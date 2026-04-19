@@ -497,3 +497,44 @@
   line-height: var(--leading-body);
   color: var(--color-text-muted);
 }
+
+/* See More Button Styles */
+.seeMoreButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  padding: 0.55rem 1.1rem;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-heading);
+  background: color-mix(in srgb, var(--color-bg-elevated) 88%, transparent);
+  border: 1px solid var(--color-border-gold);
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition:
+    transform var(--duration-med) var(--ease-out),
+    border-color var(--duration-med) var(--ease-out),
+    box-shadow var(--duration-med) var(--ease-out);
+}
+
+@media (hover: hover) {
+  .seeMoreButton:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+.seeMoreButton:active {
+  transform: translateY(0);
+}
+
+.seeMoreButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

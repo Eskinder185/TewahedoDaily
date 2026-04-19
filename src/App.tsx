@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
 import { PageLoadingFallback } from './components/ui/PageLoadingFallback'
+import { useScrollToTopOnRouteChange } from './hooks/useScroll'
 
 // Lazy load all pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })))
@@ -16,6 +17,9 @@ const YekidaneTselotPage = lazy(() => import('./pages/YekidaneTselotPage').then(
 const MehareneAbPage = lazy(() => import('./pages/MehareneAbPage').then(m => ({ default: m.MehareneAbPage })))
 
 export default function App() {
+  // Automatically scroll to top when route changes
+  useScrollToTopOnRouteChange()
+  
   return (
     <Routes>
       <Route element={<AppShell />}>

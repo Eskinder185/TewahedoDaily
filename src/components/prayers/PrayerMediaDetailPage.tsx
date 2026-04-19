@@ -4,6 +4,7 @@ import { PageSection } from '../ui/PageSection'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import type { PrayerMediaEntry } from '../../lib/prayers/mediaPrayerEntries'
 import { PrayerMediaPlayer } from './PrayerMediaPlayer'
+import { scrollToElement, isMobileViewport, getHeaderOffset } from '../../lib/scrollUtils'
 import styles from './PrayerMediaDetailPage.module.css'
 
 type RelatedPrayerLink = {
@@ -30,6 +31,15 @@ export function PrayerMediaDetailPage({
   afterMedia,
 }: Props) {
   const t = useUiLabel()
+
+  const handleSectionClick = (sectionId: string) => {
+    if (isMobileViewport()) {
+      scrollToElement(sectionId, {
+        behavior: 'smooth',
+        offset: getHeaderOffset()
+      })
+    }
+  }
 
   return (
     <PageSection>
@@ -67,17 +77,53 @@ export function PrayerMediaDetailPage({
         </div>
 
         <div className={styles.sectionChips} aria-label="Prayer page sections">
-          <a href="#prayer-media" className={styles.sectionChip}>
+          <a 
+            href="#prayer-media" 
+            className={styles.sectionChip}
+            onClick={(e) => {
+              if (isMobileViewport()) {
+                e.preventDefault()
+                handleSectionClick('#prayer-media')
+              }
+            }}
+          >
             Listen
           </a>
-          <a href="#prayer-reading" className={styles.sectionChip}>
+          <a 
+            href="#prayer-reading" 
+            className={styles.sectionChip}
+            onClick={(e) => {
+              if (isMobileViewport()) {
+                e.preventDefault()
+                handleSectionClick('#prayer-reading')
+              }
+            }}
+          >
             Read
           </a>
-          <a href="#prayer-notes" className={styles.sectionChip}>
+          <a 
+            href="#prayer-notes" 
+            className={styles.sectionChip}
+            onClick={(e) => {
+              if (isMobileViewport()) {
+                e.preventDefault()
+                handleSectionClick('#prayer-notes')
+              }
+            }}
+          >
             Notes
           </a>
           {relatedPrayers.length > 0 ? (
-            <a href="#prayer-related" className={styles.sectionChip}>
+            <a 
+              href="#prayer-related" 
+              className={styles.sectionChip}
+              onClick={(e) => {
+                if (isMobileViewport()) {
+                  e.preventDefault()
+                  handleSectionClick('#prayer-related')
+                }
+              }}
+            >
               Related
             </a>
           ) : null}

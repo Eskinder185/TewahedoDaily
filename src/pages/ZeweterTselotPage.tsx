@@ -5,6 +5,7 @@ import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
 import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
 import { ZEWETER_PRAYERS } from '../lib/prayers/zeweterData'
 import { useUiLabel } from '../lib/i18n/uiLabels'
+import { scrollToReaderOnMobile } from '../lib/scrollUtils'
 import styles from './ZeweterTselotPage.module.css'
 
 export function ZeweterTselotPage() {
@@ -27,6 +28,13 @@ export function ZeweterTselotPage() {
     () => ZEWETER_PRAYERS.find((p) => p.id === activeId) ?? ZEWETER_PRAYERS[0],
     [activeId],
   )
+
+  // Scroll to reader on mobile when prayer selection changes
+  useEffect(() => {
+    if (paramId && paramId !== defaultId) {
+      scrollToReaderOnMobile('#zeweter-reader')
+    }
+  }, [paramId, defaultId])
 
   return (
     <PageSection variant="tint">

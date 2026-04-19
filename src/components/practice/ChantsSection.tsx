@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
+  CHANT_LIBRARY,
   chantEntryKey,
   type ChantForm,
   type ChantLibraryEntry,
 } from '../../lib/practice/chantLibrary'
-import { useChantLibrary } from '../../lib/practice/useChantLibrary'
 import {
   addRecentChantSearch,
   getRecentChantSearches,
@@ -76,7 +76,7 @@ function chantSubtitle(entry: ChantLibraryEntry): string | undefined {
 
 export function ChantsSection() {
   const t = useUiLabel()
-  const { entries: CHANT_LIBRARY, loading: libraryLoading, error: libraryError } = useChantLibrary()
+  
   const [practiceEntry, setPracticeEntry] = useState<ChantLibraryEntry | null>(
     null,
   )
@@ -166,33 +166,6 @@ export function ChantsSection() {
           voiceTabLabel={t('practiceCustomVoiceTab')}
           onBack={() => setCustomPayload(null)}
         />
-      </div>
-    )
-  }
-
-  // Handle loading and error states
-  if (libraryLoading) {
-    return (
-      <div className={styles.root}>
-        <div className={styles.loadingState}>
-          <p>Loading chant library...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (libraryError) {
-    return (
-      <div className={styles.root}>
-        <div className={styles.errorState}>
-          <p>Error: {libraryError}</p>
-          <button 
-            onClick={() => window.location.reload()} 
-            className={styles.retryButton}
-          >
-            Retry
-          </button>
-        </div>
       </div>
     )
   }

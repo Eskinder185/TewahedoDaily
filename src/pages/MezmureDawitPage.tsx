@@ -5,6 +5,7 @@ import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
 import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
 import { PSALMS } from '../lib/prayers/psalmData'
 import { useUiLabel } from '../lib/i18n/uiLabels'
+import { scrollToReaderOnMobile } from '../lib/scrollUtils'
 import styles from './MezmureDawitPage.module.css'
 
 export function MezmureDawitPage() {
@@ -69,7 +70,11 @@ export function MezmureDawitPage() {
     const next = Math.max(0, Math.min(sorted.length - 1, i))
     setIndex(next)
     const p = sorted[next]
-    if (p) setParams({ n: String(p.number) })
+    if (p) {
+      setParams({ n: String(p.number) })
+      // Scroll to reader on mobile when psalm changes
+      scrollToReaderOnMobile('#mezmur-reader')
+    }
   }
 
   return (

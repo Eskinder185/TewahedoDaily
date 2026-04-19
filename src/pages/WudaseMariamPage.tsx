@@ -10,6 +10,7 @@ import {
 import type { TselotPrayer } from '../lib/practice/types'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import type { UiLabelKey } from '../lib/i18n/uiLabels'
+import { scrollToReaderOnMobile } from '../lib/scrollUtils'
 import styles from './WudaseMariamPage.module.css'
 
 const DAY_LABEL_KEYS: UiLabelKey[] = [
@@ -57,6 +58,13 @@ export function WudaseMariamPage() {
   }, [paramDay, fallbackId, setParams])
 
   const active = byId.get(activeId) ?? ordered[0]
+
+  // Scroll to reader on mobile when day selection changes
+  useEffect(() => {
+    if (paramDay && paramDay !== fallbackId.toLowerCase()) {
+      scrollToReaderOnMobile('#wudase-reader')
+    }
+  }, [paramDay, fallbackId])
 
   return (
     <PageSection variant="tint">

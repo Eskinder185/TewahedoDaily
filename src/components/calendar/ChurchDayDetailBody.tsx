@@ -22,10 +22,12 @@ const ANCHOR = calendarImageManifest.anchors.todayInChurch
 export function ChurchDayDetailBody({ snapshot }: Props) {
   const t = useUiLabel()
   const [tab, setTab] = useState('overview')
+  const [isLiturgicalGuideExpanded, setIsLiturgicalGuideExpanded] = useState(false)
   const chips = useMemo(() => dayObservanceChips(snapshot), [snapshot])
 
   useEffect(() => {
     setTab('overview')
+    setIsLiturgicalGuideExpanded(false)
   }, [snapshot.gregorian.labelLong])
 
   const tabs = useMemo(() => {
@@ -185,32 +187,48 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
                   </div>
                 )}
                 
-                {commemoration.significance && (
-                  <div className={styles.educationalSummary}>
-                    <h4 className={styles.summaryTitle}>Why it matters</h4>
-                    <p className={styles.summaryText}>{commemoration.significance}</p>
-                  </div>
+                {/* Show more content when expanded */}
+                {isLiturgicalGuideExpanded && (
+                  <>
+                    {commemoration.significance && (
+                      <div className={styles.educationalSummary}>
+                        <h4 className={styles.summaryTitle}>Why it matters</h4>
+                        <p className={styles.summaryText}>{commemoration.significance}</p>
+                      </div>
+                    )}
+                    
+                    {commemoration.practicalGuidance && (
+                      <div className={styles.educationalSummary}>
+                        <h4 className={styles.summaryTitle}>How to observe</h4>
+                        <p className={styles.summaryText}>{commemoration.practicalGuidance}</p>
+                      </div>
+                    )}
+                    
+                    {commemoration.prayAndChant && (
+                      <div className={styles.educationalSummary}>
+                        <h4 className={styles.summaryTitle}>Prayer & Chant Guidance</h4>
+                        <p className={styles.summaryText}>{commemoration.prayAndChant}</p>
+                      </div>
+                    )}
+                    
+                    {commemoration.notes && (
+                      <div className={styles.educationalSummary}>
+                        <h4 className={styles.summaryTitle}>Notes</h4>
+                        <p className={styles.summaryText}>{commemoration.notes}</p>
+                      </div>
+                    )}
+                  </>
                 )}
                 
-                {commemoration.practicalGuidance && (
-                  <div className={styles.educationalSummary}>
-                    <h4 className={styles.summaryTitle}>How to observe</h4>
-                    <p className={styles.summaryText}>{commemoration.practicalGuidance}</p>
-                  </div>
-                )}
-                
-                {commemoration.prayAndChant && (
-                  <div className={styles.educationalSummary}>
-                    <h4 className={styles.summaryTitle}>Prayer & Chant Guidance</h4>
-                    <p className={styles.summaryText}>{commemoration.prayAndChant}</p>
-                  </div>
-                )}
-                
-                {commemoration.notes && (
-                  <div className={styles.educationalSummary}>
-                    <h4 className={styles.summaryTitle}>Notes</h4>
-                    <p className={styles.summaryText}>{commemoration.notes}</p>
-                  </div>
+                {/* See more/See less button */}
+                {(commemoration.significance || commemoration.practicalGuidance || commemoration.prayAndChant || commemoration.notes) && (
+                  <button 
+                    className={styles.seeMoreButton}
+                    onClick={() => setIsLiturgicalGuideExpanded(!isLiturgicalGuideExpanded)}
+                    type="button"
+                  >
+                    {isLiturgicalGuideExpanded ? 'See less' : 'See more liturgical guidance'}
+                  </button>
                 )}
               </div>
             </div>

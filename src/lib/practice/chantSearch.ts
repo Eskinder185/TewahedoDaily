@@ -107,7 +107,7 @@ function rawWerbById(): Map<string, RawWerb> {
   return m
 }
 
-const RAW_WERB = rawWerbById()
+
 
 function mezmurExtras(item: MezmurItem): string {
   return [
@@ -145,91 +145,6 @@ function werbExtras(item: WerbEntry): string {
     .join('\n')
 }
 
-function buildDocuments(): ChantSearchDocument[] {
-  const mezById = new Map(MEZMUR_ENTRIES.map((m) => [m.id, m]))
-
-  return CHANT_LIBRARY.map((entry) => {
-    const key = chantEntryKey(entry)
-    if (entry.form === 'mezmur') {
-      const item = entry.item
-      const raw = mezById.get(item.id)
-      const cat = parseCategoryForSearch(
-        raw ? (raw as unknown as { category?: unknown }).category : item.category,
-      )
-      return {
-        key,
-        title: item.title,
-        transliterationTitle: item.titleTransliteration ?? '',
-        lyrics: item.lyricsGez ?? '',
-        transliterationLyrics: item.lyricsTransliteration ?? '',
-        form: 'mezmur',
-        categoryPrimary: cat.primary,
-        themes: cat.themes,
-        usage: cat.usage,
-        saints: cat.saints,
-        majorHoliday: cat.majorHoliday,
-        season: cat.season,
-        extras: mezmurExtras(item),
-      }
-    }
-
-    const item = entry.item
-    const raw = RAW_WERB.get(item.id)
-    const cat = parseCategoryForSearch(raw?.category)
-    const extraBlob = [
-      werbExtras(item),
-      cat.themes,
-      cat.usage,
-      cat.saints,
-    ]
-      .filter(Boolean)
-      .join('\n')
-    return {
-      key,
-      title: item.title,
-      transliterationTitle: item.transliterationTitle ?? '',
-      lyrics: item.lyrics ?? '',
-      transliterationLyrics: item.transliterationLyrics ?? '',
-      form: 'werb',
-      categoryPrimary: cat.primary,
-      themes: cat.themes,
-      usage: cat.usage,
-      saints: cat.saints,
-      majorHoliday: cat.majorHoliday,
-      season: cat.season,
-      extras: extraBlob,
-    }
-  })
-}
-
-const DOCS = buildDocuments()
-
-const entryByKey = new Map(
-  CHANT_LIBRARY.map((e) => [chantEntryKey(e), e] as const),
-)
-
-const fuse = new Fuse(DOCS, {
-  keys: [
-    { name: 'title', weight: 0.2 },
-    { name: 'transliterationTitle', weight: 0.18 },
-    { name: 'lyrics', weight: 0.12 },
-    { name: 'transliterationLyrics', weight: 0.12 },
-    { name: 'form', weight: 0.04 },
-    { name: 'categoryPrimary', weight: 0.08 },
-    { name: 'themes', weight: 0.08 },
-    { name: 'usage', weight: 0.08 },
-    { name: 'saints', weight: 0.06 },
-    { name: 'majorHoliday', weight: 0.05 },
-    { name: 'season', weight: 0.05 },
-    { name: 'extras', weight: 0.04 },
-  ],
-  threshold: 0.38,
-  distance: 120,
-  ignoreLocation: true,
-  minMatchCharLength: 1,
-  shouldSort: true,
-  includeScore: true,
-})
 
 /** Used by browse UI and fuzzy search so “English mezmur” matches `mezmur` + English, not `form === 'english'`. */
 export function matchesForm(
@@ -244,17 +159,109 @@ export function matchesForm(
 }
 
 /**
+ * Build search documents for dynamic entries
+ */
+function buildDocumentsFromEntries(entries: ChantLibraryEntry[]): ChantSearchDocument[] {
+  const rawWerbs = rawWerbById()
+  const mezById = new Map(MEZMUR_ENTRIES.map((m) => [m.id, m]))
+  
+  return entries.map((entry) => {
+    const key = chantEntryKey(entry)
+    if (entry.form === 'mezmur') {
+      const m = entry.item
+      const raw = mezById.get(m.id)
+      const cat = parseCategoryForSearch(
+        raw ? (raw as unknown as { category?: unknown }).category : m.category,
+      )
+      const extraBlob = [
+        m.meaning ?? '',
+        m.language === 'en' ? 'english' : '',
+        mezmurExtras(m),
+      ].join(' ')
+      return {
+        key,
+        title: m.title,
+        transliterationTitle: m.titleTransliteration ?? '',
+        lyrics: m.lyricsGez ?? '',
+        transliterationLyrics: m.lyricsTransliteration ?? '',
+        form: 'mezmur',
+        categoryPrimary: cat.primary,
+        themes: cat.themes,
+        usage: cat.usage,
+        saints: cat.saints,
+        majorHoliday: cat.majorHoliday,
+        season: cat.season,
+        extras: extraBlob,
+      }
+    } else {
+      const w = entry.item
+      const raw = rawWerbs.get(w.id)
+      const cat = parseCategoryForSearch(raw?.category)
+      const extraBlob = [
+        w.meaning ?? '',
+        w.teaser ?? '',
+        werbExtras(w),
+      ].join(' ')
+      return {
+        key,
+        title: w.title,
+        transliterationTitle: w.transliterationTitle ?? '',
+        lyrics: w.lyrics ?? '',
+        transliterationLyrics: w.transliterationLyrics ?? '',
+        form: 'werb',
+        categoryPrimary: cat.primary,
+        themes: cat.themes,
+        usage: cat.usage,
+        saints: cat.saints,
+        majorHoliday: cat.majorHoliday,
+        season: cat.season,
+        extras: extraBlob,
+      }
+    }
+  })
+}
+
+/**
  * Fuzzy search with fuse.js; respects form filter. Empty query returns all
  * entries matching the form filter (stable library order).
  */
 export function searchChants(
   query: string,
   formFilter: ChantFormFilter,
+  entries: ChantLibraryEntry[] = CHANT_LIBRARY,
 ): ChantLibraryEntry[] {
   const q = query.trim()
   if (!q) {
-    return CHANT_LIBRARY.filter((e) => matchesForm(e, formFilter))
+    return entries.filter((e) => matchesForm(e, formFilter))
   }
+
+  // Build search documents and fuse instance for dynamic entries
+  const docs = buildDocumentsFromEntries(entries)
+  const entryByKey = new Map(
+    entries.map((e) => [chantEntryKey(e), e] as const),
+  )
+  const fuse = new Fuse(docs, {
+    keys: [
+      { name: 'title', weight: 0.2 },
+      { name: 'transliterationTitle', weight: 0.18 },
+      { name: 'lyrics', weight: 0.12 },
+      { name: 'transliterationLyrics', weight: 0.12 },
+      { name: 'form', weight: 0.04 },
+      { name: 'categoryPrimary', weight: 0.08 },
+      { name: 'themes', weight: 0.08 },
+      { name: 'usage', weight: 0.08 },
+      { name: 'saints', weight: 0.06 },
+      { name: 'majorHoliday', weight: 0.05 },
+      { name: 'season', weight: 0.05 },
+      { name: 'extras', weight: 0.04 },
+    ],
+    threshold: 0.38,
+    distance: 120,
+    ignoreLocation: true,
+    minMatchCharLength: 1,
+    shouldSort: true,
+    includeScore: true,
+  })
 
   const hits = fuse.search(q)
   const out: ChantLibraryEntry[] = []
