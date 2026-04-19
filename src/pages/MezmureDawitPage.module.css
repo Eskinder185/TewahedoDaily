@@ -317,11 +317,51 @@
   }
 }
 
+.backButton {
+  display: none;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.backButton:hover {
+  background: var(--color-bg);
+  color: var(--color-heading);
+  border-color: var(--color-border-gold);
+}
+
 @media (max-width: 959.98px) {
   .aside {
     position: relative;
     top: auto;
     max-height: none;
+    transition: all var(--duration-med) var(--ease-out);
+  }
+
+  .asideHidden {
+    display: none;
+  }
+
+  .layoutReaderOnly {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .readerFullMobile {
+    margin-top: var(--space-3);
+  }
+
+  .backButton {
+    display: inline-flex;
+    margin: var(--space-4) var(--space-4) 0;
   }
 
   .stickyInner {
@@ -348,5 +388,31 @@
 
   .readerTabs {
     padding: var(--space-4) var(--space-4) var(--space-6);
+  }
+
+  /* Improve mobile reading experience */
+  .readerFullMobile .readerTabs :global(.prose),
+  .readerFullMobile .readerBody :global(.prose) {
+    max-width: none;
+    padding: 0 var(--space-2);
+  }
+
+  .readerFullMobile .readerTabs :global(.prose p),
+  .readerFullMobile .readerTabs :global(.prose div),
+  .readerFullMobile .readerBody :global(.prose p),
+  .readerFullMobile .readerBody :global(.prose div) {
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
+    line-height: 1.75;
+    margin-bottom: var(--space-4);
+  }
+
+  .readerFullMobile .readerTabs :global(.prose h1),
+  .readerFullMobile .readerTabs :global(.prose h2),
+  .readerFullMobile .readerTabs :global(.prose h3),
+  .readerFullMobile .readerBody :global(.prose h1),
+  .readerFullMobile .readerBody :global(.prose h2),
+  .readerFullMobile .readerBody :global(.prose h3) {
+    line-height: 1.4;
+    margin-bottom: var(--space-3);
   }
 }

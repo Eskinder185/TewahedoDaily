@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
-import { scrollToTop } from '../lib/scrollUtils'
+import { scrollToTop, forceScrollToTopOnMobile } from '../lib/scrollUtils'
 
 /**
  * Hook that scrolls to top whenever the route changes
@@ -10,8 +10,10 @@ export function useScrollToTopOnRouteChange() {
   const location = useLocation()
   
   useEffect(() => {
-    // Scroll to top when route changes, with a small delay to allow content to render
-    scrollToTop({ delay: 50, behavior: 'instant' })
+    // Force immediate scroll to top on route change
+    forceScrollToTopOnMobile()
+    // Also do a standard scroll for desktop/fallback
+    scrollToTop({ delay: 0, behavior: 'instant' })
   }, [location.pathname])
 }
 
@@ -22,6 +24,9 @@ export function useScrollToTop() {
   return {
     scrollToTop: (behavior: 'smooth' | 'instant' = 'smooth') => {
       scrollToTop({ behavior })
+    },
+    scrollToTopMobile: () => {
+      forceScrollToTopOnMobile()
     },
     scrollToElement: (selector: string, behavior: 'smooth' | 'instant' = 'smooth') => {
       const element = document.querySelector(selector)

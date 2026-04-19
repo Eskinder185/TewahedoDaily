@@ -12,17 +12,24 @@ export interface ScrollToOptions {
 }
 
 /**
- * Scroll to the top of the page
+ * Scroll to the top of the page with robust fallback
  */
 export function scrollToTop(options: ScrollToOptions = {}) {
   const { behavior = 'smooth', delay = 0, offset = 0 } = options
   
   const doScroll = () => {
-    window.scrollTo({
-      top: offset,
-      left: 0,
-      behavior,
-    })
+    // Multiple fallback methods to ensure scroll works
+    try {
+      window.scrollTo({
+        top: offset,
+        left: 0,
+        behavior,
+      })
+    } catch {
+      // Fallback for older browsers
+      document.documentElement.scrollTop = offset
+      document.body.scrollTop = offset
+    }
   }
   
   if (delay > 0) {
@@ -80,8 +87,25 @@ export function scrollToReaderOnMobile(readerSelector: string = '#reader', optio
   
   scrollToElement(readerSelector, {
     behavior: 'smooth',
-    delay: 100, // Allow state to update first
-    offset: getHeaderOffset(),
+    delay: 150, // Allow state to update first
+    offset: getHeaderOffset() + 20, // Extra padding for mobile
     ...options,
+  })
+}
+
+/**
+ * Force immediate scroll to top for prayer selection on mobile
+ */
+export function forceScrollToTopOnMobile(options: Partial<ScrollToOptions> = {}) {
+  if (!isMobileViewport()) return
+  
+  // Force immediate scroll without delay for prayer opening
+  requestAnimationFrame(() => {
+    scrollToTop({
+      behavior: 'instant',
+      delay: 0,
+      offset: 0,
+      ...options,
+    })
   })
 }

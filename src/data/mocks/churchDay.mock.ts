@@ -360,6 +360,32 @@ export function getMockDailyChurchData(gregorian: Date): DailyChurchData {
   const fastSeasonal = seasonalFast(d, eth.month)
   const movableObservancesOnDay = movableObservancesOnGregorianDay(d, d.getFullYear(), EVENT_BY_ID)
 
+  // If there's a major movable feast (like Thomas Sunday), enhance the main commemoration with its rich content
+  let enhancedCommemoration = merged
+  const majorMovableFeast = movableObservancesOnDay.find(m => 
+    ['damawi-tensae', 'fasika', 'hosanna', 'erget', 'peraklitos'].includes(m.id)
+  )
+  
+  if (majorMovableFeast) {
+    const majorEvent = EVENT_BY_ID.get(majorMovableFeast.id)
+    if (majorEvent) {
+      enhancedCommemoration = {
+        ...merged,
+        feast: majorEvent.title,
+        transliterationTitle: majorEvent.transliterationTitle,
+        summary: majorEvent.summary || merged.summary,
+        significance: majorEvent.whyItMatters || merged.significance,
+        practicalGuidance: majorEvent.howToObserve || merged.practicalGuidance,
+        prayAndChant: majorEvent.prayAndChant || merged.prayAndChant,
+        notes: majorEvent.notes || merged.notes,
+        shortDescription: majorEvent.shortDescription,
+        meaning: majorEvent.meaning,
+        observance: majorEvent.observance,
+        catalogEventId: majorEvent.id,
+      }
+    }
+  }
+
   return {
     source: 'mock',
     gregorianDate: toGregorianIsoDate(d),
@@ -367,25 +393,25 @@ export function getMockDailyChurchData(gregorian: Date): DailyChurchData {
     ethiopianDate: { year: eth.year, month: eth.month, day: eth.day },
     ethiopianLabel: formatEthiopianLong(eth),
     dayName: formatWeekdayLong(d),
-    observanceType: merged.observanceType as any,
-    summary: merged.summary,
-    significance: merged.significance,
-    practicalGuidance: merged.practicalGuidance,
-    prayAndChant: merged.prayAndChant,
-    notes: merged.notes,
+    observanceType: enhancedCommemoration.observanceType as any,
+    summary: enhancedCommemoration.summary,
+    significance: enhancedCommemoration.significance,
+    practicalGuidance: enhancedCommemoration.practicalGuidance,
+    prayAndChant: enhancedCommemoration.prayAndChant,
+    notes: enhancedCommemoration.notes,
     season,
     fast: combineFastChip(fastWeekly, fastSeasonal),
     fastWeekly,
     fastSeasonal,
-    feast: merged.feast,
-    saint: merged.saint,
-    catalogEventId: merged.catalogEventId,
-    transliterationTitle: merged.transliterationTitle,
-    shortDescription: merged.shortDescription,
-    meaning: merged.meaning,
-    observance: merged.observance,
+    feast: enhancedCommemoration.feast,
+    saint: enhancedCommemoration.saint,
+    catalogEventId: enhancedCommemoration.catalogEventId,
+    transliterationTitle: enhancedCommemoration.transliterationTitle,
+    shortDescription: enhancedCommemoration.shortDescription,
+    meaning: enhancedCommemoration.meaning,
+    observance: enhancedCommemoration.observance,
     shortMeaning: undefined,
-    longMeaning: merged.longMeaning,
+    longMeaning: enhancedCommemoration.longMeaning,
     movableObservancesOnDay,
     upcomingObservances: upcomingFromCatalog(d, eth, EVENT_BY_ID),
     miniCalendar: {

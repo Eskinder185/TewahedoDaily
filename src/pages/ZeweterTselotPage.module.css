@@ -230,18 +230,82 @@
   margin-top: var(--space-2);
 }
 
+.backButton {
+  display: none;
+  align-items: center;
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.backButton:hover {
+  background: var(--color-bg);
+  color: var(--color-heading);
+  border-color: var(--color-border-gold);
+}
+
+@media (max-width: 899.98px) {
+  .backButton {
+    display: inline-flex;
+  }
+}
+
 @media (max-width: 899.98px) {
   .rail {
     position: relative;
     top: auto;
     max-height: none;
+    transition: all var(--duration-med) var(--ease-out);
+  }
+
+  .railHidden {
+    display: none;
+  }
+
+  .gridReaderOnly {
+    grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .reader {
+    padding: var(--space-4) var(--space-3);
+    margin: 0;
+  }
+
+  .readerFullMobile {
     padding: var(--space-5) var(--space-4);
+    border-radius: var(--radius-lg);
+    margin-top: var(--space-3);
   }
 
   .readerTools {
     align-items: flex-start;
+  }
+
+  /* Improve mobile reading experience */
+  .readerFullMobile :global(.prose) {
+    max-width: none;
+    padding: 0 var(--space-2);
+  }
+
+  .readerFullMobile :global(.prose p),
+  .readerFullMobile :global(.prose div) {
+    font-size: clamp(1rem, 2.2vw, 1.125rem);
+    line-height: 1.75;
+    margin-bottom: var(--space-4);
+  }
+
+  .readerFullMobile :global(.prose h1),
+  .readerFullMobile :global(.prose h2),
+  .readerFullMobile :global(.prose h3) {
+    line-height: 1.4;
+    margin-bottom: var(--space-3);
   }
 }

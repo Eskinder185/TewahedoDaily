@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
@@ -10,7 +10,7 @@ import {
 import type { TselotPrayer } from '../lib/practice/types'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import type { UiLabelKey } from '../lib/i18n/uiLabels'
-import { scrollToReaderOnMobile } from '../lib/scrollUtils'
+import { forceScrollToTopOnMobile, isMobileViewport } from '../lib/scrollUtils'
 import styles from './WudaseMariamPage.module.css'
 
 const DAY_LABEL_KEYS: UiLabelKey[] = [
@@ -33,6 +33,7 @@ export function WudaseMariamPage() {
   const t = useUiLabel()
   const [params, setParams] = useSearchParams()
   const paramDay = (params.get('day') ?? '').toLowerCase()
+  const [showDayTabsOnMobile, setShowDayTabsOnMobile] = useState(true)
 
   const byId = useMemo(() => {
     const m = new Map<string, TselotPrayer>()
@@ -59,12 +60,21 @@ export function WudaseMariamPage() {
 
   const active = byId.get(activeId) ?? ordered[0]
 
-  // Scroll to reader on mobile when day selection changes
-  useEffect(() => {
-    if (paramDay && paramDay !== fallbackId.toLowerCase()) {
-      scrollToReaderOnMobile('#wudase-reader')
+  // Handle day selection - immediate opening on mobile
+  const handleDaySelect = (dayId: string) => {
+    setParams({ day: dayId })
+    
+    // On mobile: hide day tabs and scroll to top immediately
+    if (isMobileViewport()) {
+      setShowDayTabsOnMobile(false)
+      forceScrollToTopOnMobile()
     }
-  }, [paramDay, fallbackId])
+  }
+
+  // Show day tabs again when needed
+  const showDayTabs = () => {
+    setShowDayTabsOnMobile(true)
+  }
 
   return (
     <PageSection variant="tint">
@@ -91,9 +101,9 @@ export function WudaseMariamPage() {
         </a>
       </div>
 
-      <p className={styles.tabsLabel}>{t('prayerWudaseDays')}</p>
+      <p className={`${styles.tabsLabel} ${!showDayTabsOnMobile ? styles.tabsLabelHidden : ''}`}>{t('prayerWudaseDays')}</p>
       <div
-        className={styles.tabs}
+        className={`${styles.tabs} ${!showDayTabsOnMobile ? styles.tabsHidden : ''}`}
         id="wudase-days"
         role="tablist"
         aria-label={t('prayerWudaseDays')}
@@ -110,7 +120,7 @@ export function WudaseMariamPage() {
               role="tab"
               aria-selected={on}
               className={`${styles.tab} ${on ? styles.tabOn : ''}`}
-              onClick={() => setParams({ day: id })}
+              onClick={() => handleDaySelect(id)}
             >
               <span className={styles.tabShort}>{short}</span>
               {p?.title ? (
@@ -123,7 +133,16 @@ export function WudaseMariamPage() {
         })}
       </div>
 
-      <article className={styles.reader} id="wudase-reader" key={activeId}>
+      <article className={`${styles.reader} ${!showDayTabsOnMobile ? styles.readerFullMobile : ''}`} id="wudase-reader" key={activeId}>
+        {!showDayTabsOnMobile && (
+          <button 
+            className={styles.backButton}
+            onClick={showDayTabs}
+            type="button"
+          >
+            ← Back to days
+          </button>
+        )}
         <header className={styles.dayHead}>
           <div>
             <h2 className={styles.h2}>{active?.title}</h2>

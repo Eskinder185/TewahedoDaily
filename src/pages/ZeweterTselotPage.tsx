@@ -1,17 +1,18 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
 import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
 import { ZEWETER_PRAYERS } from '../lib/prayers/zeweterData'
 import { useUiLabel } from '../lib/i18n/uiLabels'
-import { scrollToReaderOnMobile } from '../lib/scrollUtils'
+import { forceScrollToTopOnMobile, isMobileViewport } from '../lib/scrollUtils'
 import styles from './ZeweterTselotPage.module.css'
 
 export function ZeweterTselotPage() {
   const t = useUiLabel()
   const [params, setParams] = useSearchParams()
   const paramId = params.get('id') ?? ''
+  const [showPrayerListOnMobile, setShowPrayerListOnMobile] = useState(true)
 
   const defaultId = ZEWETER_PRAYERS[0]?.id ?? ''
   const activeId = ZEWETER_PRAYERS.some((p) => p.id === paramId)
@@ -29,12 +30,21 @@ export function ZeweterTselotPage() {
     [activeId],
   )
 
-  // Scroll to reader on mobile when prayer selection changes
-  useEffect(() => {
-    if (paramId && paramId !== defaultId) {
-      scrollToReaderOnMobile('#zeweter-reader')
+  // Handle prayer selection - immediate opening on mobile
+  const handlePrayerSelect = (prayerId: string) => {
+    setParams({ id: prayerId })
+    
+    // On mobile: hide prayer list and scroll to top immediately
+    if (isMobileViewport()) {
+      setShowPrayerListOnMobile(false)
+      forceScrollToTopOnMobile()
     }
-  }, [paramId, defaultId])
+  }
+
+  // Show prayer list again when needed
+  const showPrayerList = () => {
+    setShowPrayerListOnMobile(true)
+  }
 
   return (
     <PageSection variant="tint">
@@ -61,9 +71,9 @@ export function ZeweterTselotPage() {
         </a>
       </div>
 
-      <div className={styles.grid}>
+      <div className={`${styles.grid} ${!showPrayerListOnMobile ? styles.gridReaderOnly : ''}`}>
         <aside
-          className={styles.rail}
+          className={`${styles.rail} ${!showPrayerListOnMobile ? styles.railHidden : ''}`}
           id="zeweter-index"
           aria-label={t('prayerZeweterNav')}
         >
@@ -74,7 +84,7 @@ export function ZeweterTselotPage() {
                 <button
                   type="button"
                   className={`${styles.railBtn} ${p.id === activeId ? styles.railBtnOn : ''}`}
-                  onClick={() => setParams({ id: p.id })}
+                  onClick={() => handlePrayerSelect(p.id)}
                 >
                   <span className={styles.railTitle}>{p.title}</span>
                   {p.transliterationTitle?.trim() ? (
@@ -86,7 +96,16 @@ export function ZeweterTselotPage() {
           </ul>
         </aside>
 
-        <article className={styles.reader} id="zeweter-reader" key={activeId}>
+        <article className={`${styles.reader} ${!showPrayerListOnMobile ? styles.readerFullMobile : ''}`} id="zeweter-reader" key={activeId}>
+          {!showPrayerListOnMobile && (
+            <button 
+              className={styles.backButton}
+              onClick={showPrayerList}
+              type="button"
+            >
+              ← Back to prayers
+            </button>
+          )}
           <header className={styles.readerHead}>
             <div className={styles.readerTitles}>
               <h2 className={styles.readerH2}>{active?.title}</h2>

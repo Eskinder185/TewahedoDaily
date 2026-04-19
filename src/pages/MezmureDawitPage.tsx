@@ -5,7 +5,7 @@ import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
 import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
 import { PSALMS } from '../lib/prayers/psalmData'
 import { useUiLabel } from '../lib/i18n/uiLabels'
-import { scrollToReaderOnMobile } from '../lib/scrollUtils'
+import { forceScrollToTopOnMobile, isMobileViewport } from '../lib/scrollUtils'
 import styles from './MezmureDawitPage.module.css'
 
 export function MezmureDawitPage() {
@@ -15,6 +15,7 @@ export function MezmureDawitPage() {
   const [params, setParams] = useSearchParams()
   const qRaw = params.get('n') ?? ''
   const [q, setQ] = useState(qRaw)
+  const [showPsalmIndexOnMobile, setShowPsalmIndexOnMobile] = useState(true)
 
   useEffect(() => {
     setQ(qRaw)
@@ -72,9 +73,26 @@ export function MezmureDawitPage() {
     const p = sorted[next]
     if (p) {
       setParams({ n: String(p.number) })
-      // Scroll to reader on mobile when psalm changes
-      scrollToReaderOnMobile('#mezmur-reader')
+      // On mobile: hide psalm index and scroll to top immediately
+      if (isMobileViewport()) {
+        setShowPsalmIndexOnMobile(false)
+        forceScrollToTopOnMobile()
+      }
     }
+  }
+
+  // Handle psalm selection from index
+  const handlePsalmSelect = (psalm: any) => {
+    const i = sorted.findIndex((x) => x.id === psalm.id)
+    if (i >= 0) {
+      go(i)
+      setQ(String(psalm.number))
+    }
+  }
+
+  // Show psalm index again when needed
+  const showPsalmIndex = () => {
+    setShowPsalmIndexOnMobile(true)
   }
 
   return (
@@ -102,8 +120,8 @@ export function MezmureDawitPage() {
         </a>
       </div>
 
-      <div className={styles.layout}>
-        <aside className={styles.aside} id="mezmur-index">
+      <div className={`${styles.layout} ${!showPsalmIndexOnMobile ? styles.layoutReaderOnly : ''}`}>
+        <aside className={`${styles.aside} ${!showPsalmIndexOnMobile ? styles.asideHidden : ''}`} id="mezmur-index">
           <label className={styles.searchLabel} htmlFor="psalm-search">
             {t('prayerMezmurSearch')}
           </label>
@@ -127,11 +145,7 @@ export function MezmureDawitPage() {
                   <button
                     type="button"
                     className={`${styles.indexBtn} ${on ? styles.indexBtnOn : ''}`}
-                    onClick={() => {
-                      const i = sorted.findIndex((x) => x.id === p.id)
-                      if (i >= 0) go(i)
-                      setQ(String(p.number))
-                    }}
+                    onClick={() => handlePsalmSelect(p)}
                   >
                     <span className={styles.indexNum}>{p.number}</span>
                     <span className={styles.indexTitle} lang="am">
@@ -144,7 +158,16 @@ export function MezmureDawitPage() {
           </ul>
         </aside>
 
-        <article className={styles.reader} id="mezmur-reader">
+        <article className={`${styles.reader} ${!showPsalmIndexOnMobile ? styles.readerFullMobile : ''}`} id="mezmur-reader">
+          {!showPsalmIndexOnMobile && (
+            <button 
+              className={styles.backButton}
+              onClick={showPsalmIndex}
+              type="button"
+            >
+              ← Back to psalm index
+            </button>
+          )}
           <div className={styles.sticky}>
             <div className={styles.stickyInner}>
               <div className={styles.stickyTitles}>

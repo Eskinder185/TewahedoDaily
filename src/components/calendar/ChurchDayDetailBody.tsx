@@ -190,28 +190,28 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
                 {/* Show more content when expanded */}
                 {isLiturgicalGuideExpanded && (
                   <>
-                    {commemoration.significance && (
+                    {commemoration.significance?.trim() && (
                       <div className={styles.educationalSummary}>
                         <h4 className={styles.summaryTitle}>Why it matters</h4>
                         <p className={styles.summaryText}>{commemoration.significance}</p>
                       </div>
                     )}
                     
-                    {commemoration.practicalGuidance && (
+                    {commemoration.practicalGuidance?.trim() && (
                       <div className={styles.educationalSummary}>
                         <h4 className={styles.summaryTitle}>How to observe</h4>
                         <p className={styles.summaryText}>{commemoration.practicalGuidance}</p>
                       </div>
                     )}
                     
-                    {commemoration.prayAndChant && (
+                    {commemoration.prayAndChant?.trim() && (
                       <div className={styles.educationalSummary}>
                         <h4 className={styles.summaryTitle}>Prayer & Chant Guidance</h4>
                         <p className={styles.summaryText}>{commemoration.prayAndChant}</p>
                       </div>
                     )}
                     
-                    {commemoration.notes && (
+                    {commemoration.notes?.trim() && (
                       <div className={styles.educationalSummary}>
                         <h4 className={styles.summaryTitle}>Notes</h4>
                         <p className={styles.summaryText}>{commemoration.notes}</p>
@@ -221,7 +221,7 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
                 )}
                 
                 {/* See more/See less button */}
-                {(commemoration.significance || commemoration.practicalGuidance || commemoration.prayAndChant || commemoration.notes) && (
+                {(commemoration.significance?.trim() || commemoration.practicalGuidance?.trim() || commemoration.prayAndChant?.trim() || commemoration.notes?.trim()) && (
                   <button 
                     className={styles.seeMoreButton}
                     onClick={() => setIsLiturgicalGuideExpanded(!isLiturgicalGuideExpanded)}
