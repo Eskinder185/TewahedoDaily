@@ -1,13 +1,24 @@
-import { useEffect, useMemo } from 'react'
+import { lazy, Suspense, useEffect, useMemo } from 'react'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { Disclosure } from '../components/ui/Disclosure'
 import { TabPanel } from '../components/ui/TabPanel'
 import type { TabItem } from '../components/ui/TabPanel'
-import { ChantsSection } from '../components/practice/ChantsSection'
-import { InstrumentsSection } from '../components/practice/InstrumentsSection'
 import styles from './PracticePage.module.css'
+
+// Lazy load heavy practice components
+const ChantsSection = lazy(() => import('../components/practice/ChantsSection').then(m => ({ default: m.ChantsSection })))
+const InstrumentsSection = lazy(() => import('../components/practice/InstrumentsSection').then(m => ({ default: m.InstrumentsSection })))
+
+// Simple loading fallback for practice components
+function PracticeSectionFallback() {
+  return (
+    <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-dim)' }}>
+      Loading practice content...
+    </div>
+  )
+}
 
 const TAB_IDS = ['chants', 'movement'] as const
 const LEGACY_CHANT_HASHES = new Set(['mezmur', 'werb'])
@@ -50,7 +61,9 @@ export function PracticePage() {
         label: t('tabChants'),
         content: (
           <div className={styles.panelInner}>
-            <ChantsSection />
+            <Suspense fallback={<PracticeSectionFallback />}>
+              <ChantsSection />
+            </Suspense>
           </div>
         ),
       },
@@ -59,7 +72,9 @@ export function PracticePage() {
         label: t('tabMovement'),
         content: (
           <div className={styles.panelInner}>
-            <InstrumentsSection />
+            <Suspense fallback={<PracticeSectionFallback />}>
+              <InstrumentsSection />
+            </Suspense>
           </div>
         ),
       },

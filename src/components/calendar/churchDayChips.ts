@@ -42,8 +42,15 @@ export function dayObservanceChips(snapshot: ChurchDaySnapshot): string[] {
   }
   
   // Fast chip
-  if (snapshot.fasting.combinedChip) {
-    chips.push(`Fast: ${snapshot.fasting.combinedChip}`)
+  const fastingParts: string[] = []
+  if (snapshot.fasting.seasonalFast) {
+    fastingParts.push(snapshot.fasting.seasonalFast)
+  }
+  if (snapshot.fasting.weeklyFast) {
+    fastingParts.push(snapshot.fasting.weeklyFast)
+  }
+  if (fastingParts.length > 0) {
+    chips.push(`Fast: ${fastingParts.join(', ')}`)
   }
   
   // Season chip
