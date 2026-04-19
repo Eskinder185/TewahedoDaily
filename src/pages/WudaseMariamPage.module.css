@@ -97,6 +97,92 @@
     border-color var(--duration-fast) var(--ease-out),
     color var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-fast) var(--ease-out);
+  
+  /* Enhanced mobile touch */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Mobile-first day tab improvements */
+@media (max-width: 899.98px) {
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    margin-bottom: var(--space-4);
+    transition: all var(--duration-med) var(--ease-out);
+  }
+
+  .tabsHidden {
+    display: none;
+  }
+
+  .tab {
+    flex: 0 0 auto;
+    min-width: 3.5rem;
+    padding: var(--space-2);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-elevated);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .tab:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+
+  .tabShort {
+    font-size: 0.75rem;
+    font-weight: 900;
+  }
+
+  .tabTitle {
+    font-size: 0.65rem;
+    line-height: 1.2;
+  }
+
+  .reader {
+    padding: var(--space-4) var(--space-3);
+    margin: 0 calc(-1 * var(--space-1));
+    border-radius: var(--radius-lg);
+  }
+
+  .readerFullMobile {
+    padding: var(--space-4) var(--space-3);
+    margin: var(--space-3) calc(-1 * var(--space-1)) 0;
+  }
+
+  .h2 {
+    font-size: clamp(1.35rem, 4vw, 1.5rem);
+  }
+
+  .sub {
+    font-size: clamp(0.95rem, 2vw, 1rem);
+  }
+
+  .backButton {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-3);
+    margin-bottom: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-elevated);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-out);
+  }
+
+  .backButton:hover {
+    background: var(--color-bg);
+    color: var(--color-heading);
+    border-color: var(--color-border-gold);
+  }
 }
 
 .tab:hover {
