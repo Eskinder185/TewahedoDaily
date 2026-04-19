@@ -1,0 +1,311 @@
+{
+  "commemorations": {
+    "1-1": {
+      "eventId": "enkutatash",
+      "feast": "Enkutatash — Ethiopian New Year",
+      "saint": "Holy fathers who began the year in prayer",
+      "transliterationTitle": "Enkutatash",      "observanceType": ["feast", "seasonal-observance"],
+      "summary": "The Ethiopian New Year celebrated with blessings and fresh grass (qäsäxa)",
+      "significance": "Marks the beginning of the liturgical year and God's mercy renewed annually in the Ethiopian calendar",
+      "practicalGuidance": "Attend Divine Liturgy, receive blessings from priests and elders, share traditional foods",      "shortDescription": "The liturgical new year on Meskerem 1.",
+      "meaning": "It marks a fresh year of grace in the Ethiopian Orthodox calendar and calls believers to thanksgiving and renewed attentiveness to the Church’s rhythm.",
+      "observance": "Often greeted with blessing, song, fresh grass (qäsäxa), and parish festivity.",
+      "longMeaning": "Enkutatash opens the Ethiopian year under Christ; families greet elders, churches offer liturgy, and the faithful begin the cycle of fasts and feasts again. Keep parish and episcopal books as the final word on dates that move with Easter."
+    },
+    "8-3": {
+      "eventId": "righteous-remembrance",
+      "feast": "Commemoration of the Righteous",
+      "saint": "Names from the daily Senkessar for this day — consult your parish annual book",
+      "transliterationTitle": "",
+      "observanceType": ["saint-commemoration"],
+      "summary": "A day to honor saints and righteous ones who walked faithfully before God",
+      "significance": "The Church lifts up holiness in every calling and asks the prayers of those who finished their course in peace",
+      "practicalGuidance": "Observe with Divine Liturgy when possible, pray quietly at home, practice concrete mercy toward neighbors",
+      "shortDescription": "A day to honor saints and righteous ones who walked faithfully before God.",
+      "meaning": "The Church lifts up holiness in every calling and asks the prayers of those who finished their course in peace.",
+      "observance": "Observed with the Divine Liturgy when possible, quiet prayer at home, and concrete mercy toward kin and neighbor.",
+      "longMeaning": "The Ethiopian synaxarium (Senkessar) assigns saints, feasts, and martyrs to each day. This entry is a template; replace the subtitle line with your approved daily list. Your priest remains the shepherd of fasting rules and sacraments."
+    },
+    "1-2": {
+      "feast": "The Blessed Virgin Mary",
+      "saint": "Commemoration of the Holy Theotokos",
+      "transliterationTitle": "Kidist Dingil Maryam",
+      "observanceType": ["marian-observance"],
+      "summary": "Monthly commemoration of the Virgin Mary who gave birth to Christ",
+      "significance": "Honor the Mother of God who bore the Saviour and intercedes for all Christians",
+      "practicalGuidance": "Pray the Magnificat, offer flowers at Marian icons, practice extra charity",
+      "shortDescription": "Monthly Marian commemoration honoring the Mother of God.",
+      "meaning": "The Church honors Mary as Theotokos (God-bearer) who brought Christ into the world and continues to pray for the faithful.",
+      "observance": "Special prayers to the Virgin, Marian hymns at liturgy, acts of mercy following her example.",
+      "longMeaning": "Each month the Church remembers the Blessed Virgin who said yes to God's plan and became the Mother of our Saviour. Her humility and faith remain models for Christian living."
+    },
+    "8-11": {
+      "eventId": "damawi-tensae",
+      "feast": "ዳግም ትንሣኤ (ቶማስ)",
+      "saint": "Thomas Sunday / New Sunday",
+      "transliterationTitle": "Damawi Tensae (Thomas)",
+      "observanceType": ["movable-feast"],
+      "summary": "This day is ዳግም ትንሣኤ (ቶማስ), the first Sunday after Fasika. It commemorates the appearance of the risen Lord to Saint Thomas and confirms the truth of the Resurrection.",
+      "significance": "This day represents the strengthening of faith after the Resurrection. It shows that Christ truly rose in the body and revealed Himself to His disciples, including Thomas, who confessed Him in faith.",
+      "practicalGuidance": "Attend the Divine Liturgy with Resurrection joy. Keep the festal spirit of the fifty days after Fasika. Read the Gospel of John 20:24–29. Reflect on the confession of Saint Thomas: 'My Lord and my God.' Offer thanksgiving prayers for the gift of the Resurrection. Use Resurrection chants and readings rather than penitential fasting themes.",
+      "prayAndChant": "Suggested Gospel: John 20:24–29. Suggested focus: Resurrection prayers, thanksgiving, and Paschal praise. Suggested chant theme: Resurrection / ትንሣኤ. Suggested practice direction: chants that celebrate the risen Christ and the joy of the disciples.",
+      "notes": "This is not a fixed monthly saint commemoration. It is a movable Paschal observance tied to Fasika. For 2026, Fasika is April 12, so Thomas Sunday is April 19. This day belongs to the fifty joyful days between Fasika and Pentecost.",
+      "shortDescription": "The first Sunday after Fasika, commemorating Christ's appearance to Saint Thomas.",
+      "meaning": "Thomas Sunday matters because it proclaims the Resurrection as a real and living event, not only a symbol. It teaches believers to move from doubt to confession and to rejoice in the risen Christ during the fifty joyful days after Fasika.",
+      "observance": "Kept with festal Divine Liturgy, Paschal hymns, and the Church's gentle invitation to trust the wounds and victory of Christ; customs vary by parish.",
+      "longMeaning": "This is not a fixed monthly saint commemoration. It is a movable Paschal observance tied to Fasika. For 2026, Fasika is April 12, so Thomas Sunday is April 19. This day belongs to the fifty joyful days between Fasika and Pentecost."
+    },
+    "1-3": {
+      "feast": "Saint John the Baptist",
+      "saint": "The Forerunner and Baptist of Christ",
+      "transliterationTitle": "Abba Yohannis Metsähay",
+      "observanceType": ["saint-commemoration"],
+      "summary": "The prophet who prepared the way for Christ and baptized Him in the Jordan",
+      "significance": "John shows us how to decrease so that Christ may increase in our lives",
+      "practicalGuidance": "Practice repentance, prepare hearts for Christ, live simply like John in the desert",
+      "shortDescription": "Commemoration of the Forerunner who prepared Christ's way.",
+      "meaning": "John the Baptist exemplifies the prophetic call to repentance and points all people to Christ the Lamb of God.",
+      "observance": "Prayers for spiritual preparation, reflection on baptism, acts of humility and simplicity.",
+      "longMeaning": "John the Baptist stands at the threshold between Old and New Covenants, calling all to turn from sin and be baptized. His life of prayer and fasting prepares us to receive Christ."
+    },
+    "1-10": {
+      "feast": "Feast of the Cross (Small)",
+      "saint": "Discovery of the Holy Cross",
+      "transliterationTitle": "Dämärä Mäsqäl",
+      "observanceType": ["feast"],
+      "summary": "Celebration of the cross on which Christ died for our salvation",
+      "significance": "The Cross is both Christ's throne of victory and the instrument of our redemption",
+      "practicalGuidance": "Venerate the cross, light candles, remember Christ's passion and resurrection",
+      "shortDescription": "The feast of Christ's holy and life-giving Cross.",
+      "meaning": "The Cross represents God's ultimate act of love and the victory over sin and death through Christ's sacrifice.",
+      "observance": "Lighting of the Dämärä (bonfire), church services, processions with the cross.",
+      "longMeaning": "The Cross calls us to remember both the suffering and glory of Christ, and to take up our own crosses daily in following Him."
+    },
+    "1-17": {
+      "feast": "Feast of Meskel",
+      "saint": "Finding of the True Cross",
+      "transliterationTitle": "Mäsqäl",
+      "eventId": "meskel",
+      "observanceType": ["feast"],
+      "summary": "Major feast celebrating the discovery of the True Cross by Empress Helena",
+      "significance": "The Cross is revealed as the source of life and salvation for all creation",
+      "practicalGuidance": "Join Dämärä ceremony, process with crosses, wear traditional white clothing",
+      "shortDescription": "The great feast of the True Cross discovered by Saint Helena.",
+      "meaning": "Meskel celebrates the discovery of Christ's cross and its power to transform suffering into glory.",
+      "observance": "Community Dämärä bonfire, liturgical celebrations, family gatherings, yellow flowers.",
+      "longMeaning": "Meskel is one of the greatest Orthodox feasts, when the whole community gathers to celebrate the Cross that conquered death and opened paradise to believers."
+    },
+    "2-1": {
+      "feast": "Beginning of Tikimt",
+      "saint": "Monthly saints of Tikimt",
+      "transliterationTitle": "Tikimt",
+      "observanceType": ["seasonal-observance"],
+      "summary": "The second month of the Ethiopian year as hearts turn toward Advent",
+      "significance": "Time of preparation for the Nativity season and increased spiritual discipline",
+      "practicalGuidance": "Prepare for coming fasts, increase prayer and almsgiving, read prophetic books",
+      "shortDescription": "Beginning of the month that prepares hearts for Advent fasting.",
+      "meaning": "Tikimt calls believers to prepare for the coming Nativity fast with spiritual discipline and charity.",
+      "observance": "Gradual increase in prayer, preparation for Advent fast, reading of prophetic scriptures.",
+      "longMeaning": "As the year advances toward winter, the Church begins to prepare hearts for the great fast before Christmas, following ancient patterns of spiritual preparation."
+    },
+    "3-1": {
+      "feast": "Beginning of Hidar",
+      "saint": "Saints of the Advent season",
+      "transliterationTitle": "Hidar",
+      "observanceType": ["seasonal-observance", "fast"],
+      "summary": "Beginning of the month when Advent fasting typically begins",
+      "significance": "The Church enters a season of preparation for Christ's Nativity through fasting and prayer",
+      "practicalGuidance": "Begin Advent fast if prescribed, increase prayer hours, practice almsgiving",
+      "shortDescription": "The month when the Nativity fast often begins.",
+      "meaning": "Hidar represents the Church's discipline of preparing for Christmas through fasting and spiritual works.",
+      "observance": "Vegan fasting when prescribed, increased liturgical participation, care for the poor.",
+      "longMeaning": "Like the forty days before Easter, the forty days before Christmas call believers to prepare their hearts through fasting, prayer, and works of mercy."
+    },
+    "4-3": {
+      "feast": "Genna - Nativity of Christ",
+      "saint": "Our Lord Jesus Christ",
+      "transliterationTitle": "Genna",
+      "eventId": "gena",
+      "observanceType": ["feast"],
+      "summary": "The birth of Jesus Christ, God incarnate for our salvation",
+      "significance": "God becomes man to save humanity and unite heaven and earth",
+      "practicalGuidance": "Attend midnight liturgy, break Advent fast with joy, practice generous hospitality",
+      "shortDescription": "The Nativity of our Lord and Saviour Jesus Christ.",
+      "meaning": "Christmas celebrates the Word made flesh, when God took on human nature to redeem creation.",
+      "observance": "Joyful liturgy, breaking of fast, traditional foods, singing of Nativity hymns.",
+      "longMeaning": "Genna proclaims that God has not abandoned His creation but has entered it personally to save and transform it from within."
+    },
+    "5-11": {
+      "feast": "Timkat - Epiphany and Baptism of Christ",
+      "saint": "Our Lord Jesus Christ at the Jordan",
+      "transliterationTitle": "Timkat",
+      "eventId": "timket",
+      "observanceType": ["feast"],
+      "summary": "Christ's baptism in the Jordan and the revelation of the Trinity",
+      "significance": "The Trinity is revealed and all water is sanctified through Christ's baptism",
+      "practicalGuidance": "Join Tabot processions, receive blessed water, renew baptismal vows",
+      "shortDescription": "The baptism of Christ and the manifestation of the Trinity.",
+      "meaning": "Timkat reveals the Trinity and sanctifies water as a means of grace and blessing.",
+      "observance": "Colorful Tabot processions, blessing of water, sprinkling with holy water.",
+      "longMeaning": "Timkat is the great celebration of God revealed as Trinity and of our own baptism into Christ's death and resurrection."
+    },
+    "6-1": {
+      "feast": "Beginning of Yakatit",
+      "saint": "Saints of pre-Lenten preparation",
+      "transliterationTitle": "Yakatit",
+      "observanceType": ["seasonal-observance"],
+      "summary": "The month that often leads into Great Lent preparation",
+      "significance": "Time of spiritual preparation as the Church moves toward the Great Fast",
+      "practicalGuidance": "Prepare for possible beginning of Lent, practice forgiveness, increase fasting",
+      "shortDescription": "The month that prepares believers for Great Lent.",
+      "meaning": "Yakatit represents the Church's wisdom in gradually preparing souls for the rigors of Lenten discipline.",
+      "observance": "Spiritual preparation, reconciliation with others, gradual increase in fasting.",
+      "longMeaning": "Like the weeks before Lent in other traditions, Yakatit helps believers prepare gradually for the intense spiritual discipline of Great Lent."
+    },
+    "7-1": {
+      "feast": "Beginning of Megabit",
+      "saint": "Saints of the Lenten season",
+      "transliterationTitle": "Megabit",
+      "observanceType": ["fast", "seasonal-observance"],
+      "summary": "Deep Lenten discipline leading toward Holy Week",
+      "significance": "The Church follows Christ into the desert of fasting and prayer",
+      "practicalGuidance": "Maintain strict Lenten fast, attend all possible services, practice charity",
+      "shortDescription": "The month of deep Lenten observance toward Pascha.",
+      "meaning": "Megabit represents the Church's participation in Christ's forty days of fasting and temptation.",
+      "observance": "Strict vegan fasting, increased prayer, almsgiving, preparation for Holy Week.",
+      "longMeaning": "Megabit calls believers to enter deeply into the mystery of Christ's passion through fasting, prayer, and works of mercy."
+    },
+    "8-1": {
+      "feast": "Beginning of Miazia",
+      "saint": "Saints of the Resurrection season",
+      "transliterationTitle": "Miazia",
+      "observanceType": ["feast", "seasonal-observance"],
+      "summary": "The bright season after Pascha until Ascension",
+      "significance": "Christ's resurrection transforms all of life with victory over death",
+      "practicalGuidance": "Celebrate with joy, relax fasting discipline, practice works of mercy",
+      "shortDescription": "The month of Paschal joy and celebration.",
+      "meaning": "Miazia represents the Church's fifty days of joy following Christ's resurrection from the dead.",
+      "observance": "Joyful liturgies, relaxed fasting, celebration of new life, continued almsgiving.",
+      "longMeaning": "Miazia proclaims that Christ's resurrection is the foundation of all Christian hope and the source of eternal life."
+    }
+  },
+  "seasonByEthMonth": {
+    "1": {
+      "id": "season-meskerem",
+      "title": "Meskerem — the year opens",
+      "transliterationTitle": "Meskerem",
+      "summary": "Enkutatash, Meskel, and the strong start of the liturgical year",
+      "shortDescription": "The first Ethiopian month when the new year begins and the Cross is soon honored.",
+      "meaning": "Meskerem gathers thanksgiving, the discovery of the Cross (Meskel), and the return of festal rhythm after Pagumen.",
+      "observance": "Blessings in church and home, Demera for Meskel where kept, and steady attendance at liturgy as work allows."
+    },
+    "2": {
+      "id": "season-tikimt",
+      "title": "Tikimt — toward the Nativity fast",
+      "transliterationTitle": "Tikimt",
+      "summary": "Cooler months; hearts turn toward the coming fast of the Prophets and Nativity preparation",
+      "shortDescription": "The month when the Church turns toward Advent fasting and the Lord’s birth.",
+      "meaning": "Believers align their lives with prophetic hope and the humility that receives Christ at Gena.",
+      "observance": "More frequent prayer, almsgiving, and readiness for stricter fasts as your father of confession instructs."
+    },
+    "3": {
+      "id": "season-hidar",
+      "title": "Hidar — before Gena",
+      "transliterationTitle": "Hidar",
+      "summary": "Advent fasting and anticipation of the Nativity",
+      "shortDescription": "The Nativity fast intensifies and hearts wait for the Saviour’s birth.",
+      "meaning": "God’s people simplify life so Christmas is heard as gospel, not only as holiday noise.",
+      "observance": "Vegan fasting, vigil services, confession where available, and care for the poor at the door."
+    },
+    "4": {
+      "id": "season-tahsas",
+      "title": "Tahsas — Gena draws near",
+      "transliterationTitle": "Tahsas",
+      "summary": "The Nativity is proclaimed; parishes keep the fast until the feast",
+      "shortDescription": "The month containing Gena and the great joy of the Lord’s birth.",
+      "meaning": "The eternal Word becomes flesh—God-with-us in Ethiopian Orthodox confession—without division of natures.",
+      "observance": "Liturgy at Gena, breaking the fast in order, hymns to the Virgin, and generous hospitality in humility."
+    },
+    "5": {
+      "id": "season-tir",
+      "title": "Tir — Timkat and baptismal joy",
+      "transliterationTitle": "Tir",
+      "summary": "After Nativity toward Ṭimqat; water blessed and Jordan remembered",
+      "shortDescription": "The season of Timkat, celebrating Christ’s baptism and the sanctification of water.",
+      "meaning": "The Church remembers the Trinity revealed at the Jordan and every baptism’s share in Christ.",
+      "observance": "Colorful tabot processions, blessing of water, prayer by rivers, and household blessing with blessed water as parishes teach."
+    },
+    "6": {
+      "id": "season-yakatit",
+      "title": "Yakatit — toward Great Lent",
+      "transliterationTitle": "Yakatit",
+      "summary": "Often the hinge into Abiy Tsom; dates move with Pascha",
+      "shortDescription": "A month when Great Lent often begins; the Church enters the desert with Christ.",
+      "meaning": "Fasting unites believers to Christ’s hunger for the Father’s will and to the poor who hunger daily.",
+      "observance": "Stricter diet, more liturgy, forgiveness sought early, and obedience to fasting rules as your bishop sets them."
+    },
+    "7": {
+      "id": "season-megabit",
+      "title": "Megabit — Paschal spring",
+      "transliterationTitle": "Megabit",
+      "summary": "The fast normally continues toward Siqlet and Fāsikā",
+      "shortDescription": "Deep Lenten days leading to Holy Week and the Lord’s passion.",
+      "meaning": "The Cross and Resurrection stand together: repentance now, Paschal joy soon.",
+      "observance": "Foot-washing where served, strict fast on Siqlet, all-night vigil toward Fasika as parish custom carries."
+    },
+    "8": {
+      "id": "season-miazia",
+      "title": "Miazia — the fifty days of joy",
+      "transliterationTitle": "Miazia",
+      "summary": "Bright season after Pascha until Ascension",
+      "shortDescription": "The resurrected Lord is greeted at every liturgy; fasting is relaxed in festal joy.",
+      "meaning": "Christ’s victory colors daily work: believers carry resurrection ethics into speech and giving.",
+      "observance": "Sunday and feast liturgies, greeting the risen Christ, works of mercy, no gloom where the Church rejoices."
+    },
+    "9": {
+      "id": "season-ginbot",
+      "title": "Ginbot — Ascension and Pentecost",
+      "transliterationTitle": "Ginbot",
+      "summary": "Erget and Peraklitos; the Spirit’s coming and apostolic mission",
+      "shortDescription": "The Lord ascends; ten days later the Spirit rests on the Church at Pentecost.",
+      "meaning": "The ascended Christ sends the Comforter to build one holy, apostolic Church.",
+      "observance": "Festal liturgies, prayers for the Church’s mission, kindness strengthened by the Spirit’s gifts."
+    },
+    "10": {
+      "id": "season-sene",
+      "title": "Sene — growth and ordinary fidelity",
+      "transliterationTitle": "Sene",
+      "summary": "Rainy season in many lands; steady prayer in ordinary time",
+      "shortDescription": "A time of steady growth in the Spirit between great feasts.",
+      "meaning": "Not every day is a loud feast; God forms patience and daily bread in quiet obedience.",
+      "observance": "Wednesday and Friday fasting as the Church commands, weekly liturgy, family peace."
+    },
+    "11": {
+      "id": "season-hamle",
+      "title": "Hamle — toward Filseta",
+      "transliterationTitle": "Hamle",
+      "summary": "Preparation for the Virgin’s feast (Filseta) in Nehasse for many years",
+      "shortDescription": "The Church prepares for the Falling asleep of Saint Mary with fasting and praise.",
+      "meaning": "Mary’s passage is a sign that all who hope in her Son will follow into life.",
+      "observance": "Filseta vigil and feast, Marian hymns, almsgiving, visiting the sick."
+    },
+    "12": {
+      "id": "season-nehasse",
+      "title": "Nehasse — harvest and vigilance",
+      "transliterationTitle": "Nehasse",
+      "summary": "Final month before Pagumen; thanks and readiness",
+      "shortDescription": "Late-year gratitude and watchfulness before the year turns again.",
+      "meaning": "The Church gives thanks for daily bread and examines the soul before Pagumen and Enkutatash.",
+      "observance": "Thanksgiving prayers, charity from harvest, confession where due, rest in God’s care."
+    },
+    "13": {
+      "id": "season-pagumen",
+      "title": "Pagumen — between two years",
+      "transliterationTitle": "Pagumen",
+      "summary": "Five or six epagomenal days; bridge into Meskerem",
+      "shortDescription": "The short month that ends the year and hands the people to Enkutatash.",
+      "meaning": "Time outside ordinary months teaches brevity of life and joy in God’s eternal day.",
+      "observance": "Remembrance of saints and the departed as parish books direct, simple charity, readiness for the new year."
+    }
+  }
+}

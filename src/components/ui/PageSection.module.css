@@ -1,0 +1,41 @@
+.section {
+  padding-block: var(--section-pad-y);
+  padding-inline: max(var(--space-4), env(safe-area-inset-left, 0px))
+    max(var(--space-4), env(safe-area-inset-right, 0px));
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--section-pad-y-lg);
+    padding-inline: var(--space-6);
+  }
+}
+
+/* Tonal separation between sections */
+.section + .section {
+  box-shadow:
+    inset 0 1px 0 var(--color-border-strong),
+    inset 0 8px 24px -12px var(--color-sky-glow);
+}
+
+.inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+}
+
+.tint {
+  background:
+    radial-gradient(ellipse 120% 70% at 50% 0%, color-mix(in srgb, var(--color-bg-elevated) 78%, var(--color-gold-faint)) 0%, transparent 55%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-band) 55%, var(--color-sky-faint)) 0%,
+      color-mix(in srgb, var(--color-bg) 82%, var(--color-bg-muted)) 48%,
+      var(--color-bg) 100%
+    );
+}
+
+.tint + .section {
+  box-shadow: none;
+}

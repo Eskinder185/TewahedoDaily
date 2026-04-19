@@ -1,0 +1,103 @@
+.wrap {
+  position: relative;
+  padding: var(--space-4) var(--space-4);
+  margin-top: var(--space-2);
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--color-border) 80%, var(--color-gold-line));
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #fffefb 92%, var(--color-sky-faint)) 0%,
+    var(--color-bg-elevated) 100%
+  );
+  box-shadow: inset 0 1px 0 var(--color-border);
+}
+
+@media (prefers-color-scheme: dark) {
+  .wrap {
+    background: linear-gradient(
+      180deg,
+      var(--color-bg-elevated) 0%,
+      color-mix(in srgb, var(--color-bg-muted) 90%, var(--color-gold-faint)) 100%
+    );
+    box-shadow: none;
+  }
+}
+
+.prose {
+  font-family: var(--font-body);
+  font-size: clamp(1.0625rem, 2.4vw, 1.2rem);
+  line-height: 1.88;
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+  max-width: 42rem;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    padding-inline: var(--space-5);
+  }
+
+  .prose {
+    line-height: 1.92;
+  }
+}
+
+.para {
+  margin: 0 0 var(--space-5);
+}
+
+.para:last-child {
+  margin-bottom: 0;
+}
+
+.line {
+  display: inline;
+}
+
+.verseMark {
+  display: inline-block;
+  min-width: 2em;
+  margin-right: var(--space-3);
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--color-midnight) 82%, var(--color-gold) 18%);
+  font-variant-numeric: tabular-nums;
+  vertical-align: baseline;
+}
+
+.verseRest {
+  display: inline;
+}
+
+.expandRow {
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.expandBtn {
+  min-height: var(--tap-min);
+  padding-inline: var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-gold);
+  background: color-mix(in srgb, var(--color-gold-faint) 80%, transparent);
+  color: var(--color-heading);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--duration-med) var(--ease-out),
+    box-shadow var(--duration-med) var(--ease-out);
+}
+
+.expandBtn:hover {
+  background: color-mix(in srgb, var(--color-gold-soft) 90%, transparent);
+  box-shadow: var(--shadow-card);
+}
+
+.expandBtn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

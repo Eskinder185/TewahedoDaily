@@ -1,0 +1,108 @@
+.wrap {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-card);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-bg-elevated) 96%, var(--color-gold-faint) 4%) 0%,
+    var(--color-bg) 100%
+  );
+  box-shadow: var(--shadow-soft);
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.eyebrow,
+.sectionEyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--letter-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.title,
+.sectionTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  color: var(--color-heading);
+}
+
+.title {
+  font-size: var(--text-2xl);
+}
+
+.summary {
+  margin: var(--space-3) 0 0;
+  max-width: 56rem;
+  color: var(--color-text-muted);
+}
+
+.pdfLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: 0.72rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-card);
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sections {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.sectionCard {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-midnight) 3%, var(--color-bg-elevated));
+}
+
+.sectionSummary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.sectionSummary::-webkit-details-marker {
+  display: none;
+}
+
+.sectionHead {
+  margin-bottom: var(--space-1);
+  padding-right: var(--space-6);
+}
+
+.sectionTitle {
+  font-size: var(--text-xl);
+}
+
+.reading {
+  min-width: 0;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    margin-top: var(--space-7);
+    padding: var(--space-5);
+    gap: var(--space-6);
+  }
+}

@@ -1,0 +1,522 @@
+[
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "ahade-leke-we-ahade-lemuse",
+    "title": "አሐደ ለከ",
+    "transliterationTitle": "Ahade Leke we Ahade le Musie",
+    "lyrics": "አሐደ ለከ ወአሐደ ለሙሴ (2)\nወአሐደ ለኤልያስ ንግበር ማኅደረ (4)",
+    "transliterationLyrics": "Ahade Leke we ahade le Musie (2)\nWe ahade le Eliase negber mahdere (4)",
+    "youtubeUrl": "https://youtube.com/shorts/LiPcp9scLlg",
+    "category": {
+      "primary": "liturgical",
+      "majorHoliday": [],
+      "saints": [],
+      "themes": [
+        "trinity",
+        "worship",
+        "unity-of-god"
+      ],
+      "usage": [
+        "kidase-related",
+        "chant"
+      ],
+      "season": [],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "weredo-emeskelu",
+    "title": "ወሪዶ እመስቀሉ",
+    "transliterationTitle": "Werido Emeskelu",
+    "lyrics": "ወሪዶ እመስቀሉ (2)\nእመስቀሉ አብርሃ ለኩሉ\nእመስቀሉ ለኩሉ አብርህ",
+    "transliterationLyrics": "Werido emeskelu (2)\nEmeskelu abrha lekulu\nEmeskelu lekulu abirh",
+    "youtubeUrl": "https://www.youtube.com/watch?v=zGvRmcpG0CI",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "meskel"
+      ],
+      "saints": [],
+      "themes": [
+        "cross",
+        "light",
+        "praise"
+      ],
+      "usage": [
+        "feast-program",
+        "procession",
+        "chant"
+      ],
+      "season": [
+        "meskel"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "yomse-leiliyaye",
+    "title": "ዮምሰ ለእሊአየ",
+    "transliterationTitle": "Yomse Le’iliyaye",
+    "lyrics": "ዮምሰ ለእሊአየ (፪)\nአበርህ በመስቀልየ (፬)",
+    "transliterationLyrics": "Yomse le’iliyaye (2)\nAberih bemeskeliye (4)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=6TxNaMmyU_w",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "meskel"
+      ],
+      "saints": [],
+      "themes": [
+        "cross",
+        "light",
+        "praise"
+      ],
+      "usage": [
+        "feast-program",
+        "chant"
+      ],
+      "season": [
+        "meskel"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "tsega-nesaene",
+    "title": "ጸጋ ነሣዕነ",
+    "transliterationTitle": "Tsega Nesa’ene",
+    "lyrics": "ጸጋ ነሣዕነ ወህይወተ ረከብነ\nበሐይለ መስቀሉ ለኢየሱስ ክርስቶስ በኃይለ መስቀሉ\nኪያከ እግዚኦ ነአኩት ወንሴብሐከ እግዚአብሔር\n\nጸጋን ተቀበልን ሕይወትንም አገኘን (፪)\nበመስቀሉ ኃይል በኢየሱስ ክርስቶስ በመስቀሉ ኃይል (፪)\nአቤቱ አንተን (፪) እናመሰግንሃለን እግዚአብሔር (፪)",
+    "transliterationLyrics": "Tsega nesa’ene we’hiwote rekebine\nBehayle meskelu le’Iyesus Kiristos behayle meskelu\nKiyake egzio neakut wensebhake Egziabher\n\nTsegan tekebeln hiwotinim agegnen (2)\nBemeskelu hayl be’Iyesus Kiristos bemeskelu hayl (2)\nAbetu anten (2) enameseginihalen Egziabher (2)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=yiuA47_bl64",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "meskel"
+      ],
+      "saints": [],
+      "themes": [
+        "grace",
+        "life",
+        "cross",
+        "christ"
+      ],
+      "usage": [
+        "feast-program",
+        "chant",
+        "kidase-related"
+      ],
+      "season": [
+        "meskel"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "nahu-tefetseme-tsige",
+    "title": "ናሁ ተፈጸመ",
+    "transliterationTitle": "Nahu Tefetseme",
+    "lyrics": "ናሁ ተፈጸመ ተፈጸመ ናሁ\nማኀሌተ ጽጌ ሥሙር ተፈጸመ ናሁ",
+    "transliterationLyrics": "Nahu tefetseme tefetseme nahu\nMahlete tsige simur tefetseme nahu",
+    "youtubeUrl": "https://youtu.be/66QtgEqTMxA",
+    "category": {
+      "primary": "mary",
+      "majorHoliday": [],
+      "saints": [
+        "kidist-maryam"
+      ],
+      "themes": [
+        "mary",
+        "queen-of-heaven",
+        "praise",
+        "fulfillment"
+      ],
+      "usage": [
+        "chant",
+        "saint-commemoration",
+        "feast-program"
+      ],
+      "season": [
+        "tsige"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "beki-yitfesihu",
+    "title": "ብኪ ይትፌሥሑ",
+    "transliterationTitle": "Beki Yitfesihu",
+    "lyrics": "ብኪ ይትፌሥሑ ዘገነት ጽጌ ጻድቃን",
+    "transliterationLyrics": "Beki yitfesihu zegennet tsige tsadqan",
+    "youtubeUrl": "https://www.instagram.com/reel/DQJoWmCAHtv/",
+    "category": {
+      "primary": "mary",
+      "majorHoliday": [],
+      "saints": [
+        "kidist-maryam"
+      ],
+      "themes": [
+        "mary",
+        "praise",
+        "joy",
+        "tsige"
+      ],
+      "usage": [
+        "chant",
+        "feast-program",
+        "saint-commemoration"
+      ],
+      "season": [
+        "tsige"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "misle-mikael-we-gebriel",
+    "title": "ምስለ ሚካኤል ወገብርኤል",
+    "transliterationTitle": "Misle Mikael We Gebriel",
+    "lyrics": "ምስለ ሚካኤል ወገብርኤል\nንዒ ሰናይትዬ ማርያም (፪)\n\nንዒ ••ንዒ•• ንዒ •• ንዒ /፬/\n\nእም አምላክ ንዒ ማርያም (፪)",
+    "transliterationLyrics": "Misle Mikael we Gebriel\nNi senaytye Maryam (×2)\n\nNi •• ni •• ni •• ni (×4)\n\nEm Amlak ni Maryam (×2)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=Rl4y2MYOfA8",
+    "category": {
+      "primary": "mary",
+      "majorHoliday": [],
+      "saints": [
+        "kidist-maryam",
+        "kidus-mikael",
+        "kidus-gabriel"
+      ],
+      "themes": [
+        "mary",
+        "angels",
+        "intercession",
+        "praise"
+      ],
+      "usage": [
+        "chant",
+        "saint-commemoration",
+        "feast-program"
+      ],
+      "season": [
+        "tsige"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "nahu-tefetseme-tsige-asme-ki-betu",
+    "title": "ናሁ ተፈጸመ",
+    "transliterationTitle": "Nahu Tefetseme",
+    "lyrics": "ናሁ ተፈጸመ ተፈጸመ ናሁ\nማኀሌተ ጽጌ ሥሙር ተፈጸመ ናሁ /፪/\n\nአስምኪ ቦቱ አስምኪ ቦቱ\nንግሥተ ሰማያት /፪/",
+    "transliterationLyrics": "Nahu tefetseme tefetseme nahu\nMahlete tsige simur tefetseme nahu (×2)\n\nAsimki botu asimki botu\nNigistite semayat (×2)",
+    "youtubeUrl": "https://youtu.be/66QtgEqTMxA",
+    "category": {
+      "primary": "mary",
+      "majorHoliday": [],
+      "saints": [
+        "kidist-maryam"
+      ],
+      "themes": [
+        "mary",
+        "queen-of-heaven",
+        "praise",
+        "fulfillment"
+      ],
+      "usage": [
+        "chant",
+        "saint-commemoration",
+        "feast-program"
+      ],
+      "season": [
+        "tsige"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "reiywo-nolot",
+    "title": "ርእይዎ ኖሎት",
+    "transliterationTitle": "Re'iywo Nolot",
+    "lyrics": "ርእይዎ ኖሎት /2/\nአእኩትዎ መላእክት /2 ጊዜ/\nዮም ሰማያውዊ በጎል ሰከበ\nለዘ ተወልደ እምቅድስት ድንግል /2 ጊዜ/",
+    "transliterationLyrics": "",
+    "youtubeUrl": "https://youtu.be/Nw9ztbsxdvY?si=M9BkCNtHcnDveasl",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "gena"
+      ],
+      "saints": [
+        "kidist-maryam"
+      ],
+      "themes": [
+        "birth-of-christ",
+        "angels",
+        "praise",
+        "incarnation"
+      ],
+      "usage": [
+        "chant",
+        "feast-program"
+      ],
+      "season": [
+        "gena-season"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "begol-sekebe-beatsrqt",
+    "title": "በጎል ሰከበ",
+    "transliterationTitle": "Begol Sekebe",
+    "lyrics": "በጎል ሰከበ በአዕፅርቅት ተጠብለለ\nኀደረ ማኅፀነ ድንግል /2 ጊዜ/\n\nእፎ ተሴሰየ ተሴሰየ\nሀሊበ ከመ ሕፃናት ተሴሰየ /2 ጊዜ/",
+    "transliterationLyrics": "",
+    "youtubeUrl": "https://youtu.be/_KlIL47WQKE?si=m2o0v5JmKylfx737",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "gena"
+      ],
+      "saints": [],
+      "themes": [
+        "birth-of-christ",
+        "manger",
+        "incarnation",
+        "salvation"
+      ],
+      "usage": [
+        "chant",
+        "feast-program"
+      ],
+      "season": [
+        "gena-season"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "anferatsu-sebea-segel",
+    "title": "አንፈራፁ ሰብአ ሰገል",
+    "transliterationTitle": "Anferatsu Seba Segel",
+    "lyrics": "አንፈራፁ ሰብአ ሰገል\nአንፈራፁ ሰበእ ሰገል /2 ጊዜ/\n\nአምኃሆሙ አምጽኡ መድምመ /2 ጊዜ/",
+    "transliterationLyrics": "",
+    "youtubeUrl": "https://youtu.be/N1e-hSSB0_I?si=Lj2H2E7JIhlrBpRy",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "gena"
+      ],
+      "saints": [],
+      "themes": [
+        "magi",
+        "birth-of-christ",
+        "praise",
+        "adoration"
+      ],
+      "usage": [
+        "chant",
+        "feast-program"
+      ],
+      "season": [
+        "gena-season"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "aman-beaman-menkir",
+    "title": "አማን በአማን መንክር",
+    "transliterationTitle": "Aman beAman Menkir",
+    "lyrics": "አማን በአማን /2/\nመንክር /2 ጊዜ/\n\nመንክር ስብሐተ ልደቱ /4 ጊዜ/",
+    "transliterationLyrics": "",
+    "youtubeUrl": "https://www.youtube.com/watch?v=NoUgxs9fJ_Q",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "gena"
+      ],
+      "saints": [],
+      "themes": [
+        "wonder",
+        "birth-of-christ",
+        "praise",
+        "incarnation"
+      ],
+      "usage": [
+        "chant",
+        "feast-program"
+      ],
+      "season": [
+        "gena-season"
+      ],
+      "confidence": "medium"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "begol-sekebe-beatsriqt",
+    "title": "በጎል ሰከ በአፅርቅ ተጠብለለ",
+    "transliterationTitle": "Begol Seke BeAtsriq Tetebilele",
+    "lyrics": "በጎል ሰከ በአፅርቅ ተጠብለለ /2 ጊዜ/\n\nቤዛ ኩሉ ዓልም\nቤዛ ኩለም ዮም ተወልደ /2 ጊዜ/",
+    "transliterationLyrics": "",
+    "youtubeUrl": "https://youtu.be/gvbaI5NZmCU?si=W1ZVGth2Sz1j_73L",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "gena"
+      ],
+      "saints": [],
+      "themes": [
+        "birth-of-christ",
+        "manger",
+        "incarnation",
+        "praise"
+      ],
+      "usage": [
+        "chant",
+        "feast-program"
+      ],
+      "season": [
+        "gena-season"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "aman-beaman",
+    "title": "አማን በአማን",
+    "transliterationTitle": "Aman Beaman",
+    "lyrics": "አማን በአማን (2) ተንስአ (2)\nተንስአ እምነ ሙታን (4)",
+    "transliterationLyrics": "Aman beaman (2) tense’a (2)\nTens’a eminemutan (4)",
+    "youtubeUrl": "https://youtu.be/c-I8iyHkjFI",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "tinsae"
+      ],
+      "saints": [],
+      "themes": [
+        "resurrection",
+        "praise"
+      ],
+      "usage": [
+        "holiday-worship"
+      ],
+      "season": [
+        "fasika"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "wemidrni-tigebir-fasika",
+    "title": "ወምድርኒ ትገብር ፋሲካ",
+    "transliterationTitle": "Wemidrni Tigebir Fasika",
+    "lyrics": "ወምድርኒ ትገብር ፋሲካ (2)\nተሐጺባ በደመ ክርስቶስ (4)",
+    "transliterationLyrics": "Wemidrni tigebir fasika (2)\nTehatsiba bedeme kirstos (4)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=HSjBzRMKktI",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "fasika"
+      ],
+      "saints": [],
+      "themes": [
+        "resurrection",
+        "praise"
+      ],
+      "usage": [
+        "holiday-worship"
+      ],
+      "season": [
+        "fasika"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "selam-yikun",
+    "title": "ሰላም",
+    "transliterationTitle": "Selam Yikun",
+    "lyrics": "ሰላም (4)\nእምይእዜሰ ይኩን ሰላም (4)",
+    "transliterationLyrics": "Selam (4)\nEmyieziese yikun selam (4)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=8RLIgSwQkaU",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "tinsae"
+      ],
+      "saints": [],
+      "themes": [
+        "resurrection",
+        "peace"
+      ],
+      "usage": [
+        "holiday-worship"
+      ],
+      "season": [
+        "fasika"
+      ],
+      "confidence": "high"
+    }
+  },
+  {
+    "type": "chant",
+    "form": "werb",
+    "id": "selam-selam-tinsae",
+    "title": "ሰላም ሰላም",
+    "transliterationTitle": "Selam Selam",
+    "lyrics": "ሰላም ሰላም\nእምይእዜሰ ይኩን ሰላም /x2/\n\nሰላም ሰላም\nከእንግዲህስ ይሁን ሰላም /x2/",
+    "transliterationLyrics": "Selam selam\nEmyize se yikun selam (x2)\n\nSelam selam\nKe'engidihis yihun selam (x2)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=8RLIgSwQkaU",
+    "category": {
+      "primary": "major-holiday",
+      "majorHoliday": [
+        "tinsae"
+      ],
+      "saints": [],
+      "themes": [
+        "resurrection",
+        "peace",
+        "praise"
+      ],
+      "usage": [
+        "holiday-worship",
+        "liturgy"
+      ],
+      "season": [
+        "fasika"
+      ],
+      "confidence": "high"
+    }
+  }
+]

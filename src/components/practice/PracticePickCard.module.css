@@ -1,0 +1,56 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  min-height: var(--tap-min);
+  min-width: min(260px, 85vw);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  box-shadow: var(--shadow-soft);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-med) var(--ease-out),
+    box-shadow var(--duration-med) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--color-gold) 45%, var(--color-border));
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.selected {
+  border-color: var(--color-wine);
+  box-shadow: 0 0 0 1px var(--color-wine);
+  background: color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-gold-soft));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover {
+    transform: none;
+  }
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-wine);
+  line-height: var(--leading-tight);
+}
+
+.teaser {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-body);
+}

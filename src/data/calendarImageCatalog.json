@@ -1,0 +1,310 @@
+[
+  {
+    "fileName": "Debre Zeit.png",
+    "title": "Debre Zeit",
+    "category": "feast",
+    "summary": "Sacred image representing Debre Zeit and its observance in the church calendar.",
+    "bestUse": "next-observances card or selected-day hero"
+  },
+  {
+    "fileName": "DebreTabor.jpg",
+    "title": "Debre Tabor",
+    "category": "feast",
+    "summary": "Image for Debre Tabor, suitable for feast-day presentation and observance detail.",
+    "bestUse": "next-observances card"
+  },
+  {
+    "fileName": "DebreTabor.png",
+    "title": "Debre Tabor",
+    "category": "feast",
+    "summary": "Alternate Debre Tabor image for feast presentation and holy day storytelling.",
+    "bestUse": "selected-day hero or next-observances card"
+  },
+  {
+    "fileName": "Enkutatash.png",
+    "title": "Enkutatash",
+    "category": "holiday",
+    "summary": "Image representing Enkutatash, the Ethiopian New Year, for joyful calendar presentation.",
+    "bestUse": "holiday card or featured observance"
+  },
+  {
+    "fileName": "Erget.jpg",
+    "title": "Erget",
+    "category": "feast",
+    "summary": "Image for Erget observance, suitable for feast or holy day detail display.",
+    "bestUse": "next-observances card"
+  },
+  {
+    "fileName": "EthiopianSaintsRemembrance.png",
+    "title": "Ethiopian Saints Remembrance",
+    "category": "saints",
+    "summary": "General image for commemorations of Ethiopian saints and holy fathers.",
+    "bestUse": "saint commemoration fallback image"
+  },
+  {
+    "fileName": "Fasika.png",
+    "title": "Fasika",
+    "category": "major-feast",
+    "summary": "Joyful Paschal image representing Fasika and the Resurrection feast.",
+    "bestUse": "major feast card or featured hero"
+  },
+  {
+    "fileName": "FastingSeasonAtmosphere.png",
+    "title": "Fasting Season Atmosphere",
+    "category": "fast",
+    "summary": "Atmospheric image for fasting periods, repentance, reflection, and spiritual discipline.",
+    "bestUse": "fast card fallback or seasonal background accent"
+  },
+  {
+    "fileName": "FeastDayPreparation.png",
+    "title": "Feast Day Preparation",
+    "category": "feast",
+    "summary": "Image showing preparation and readiness for a feast day or holy observance.",
+    "bestUse": "support card or observance detail"
+  },
+  {
+    "fileName": "FilsetaFast.png",
+    "title": "Filseta Fast",
+    "category": "fast",
+    "summary": "Image representing the Filseta fast and Marian devotional observance.",
+    "bestUse": "fast card or selected-day panel"
+  },
+  {
+    "fileName": "Gena.png",
+    "title": "Gena",
+    "category": "major-feast",
+    "summary": "Nativity feast image representing Gena and the birth of Christ.",
+    "bestUse": "major feast card or hero"
+  },
+  {
+    "fileName": "HolyTrinityCommemoration.png",
+    "title": "Holy Trinity Commemoration",
+    "category": "commemoration",
+    "summary": "Image for Holy Trinity commemoration and related devotional remembrance.",
+    "bestUse": "commemoration card"
+  },
+  {
+    "fileName": "Hosanna.png",
+    "title": "Hosanna",
+    "category": "major-feast",
+    "summary": "Image representing Hosanna, Christ’s triumphant entry, and the beginning of Holy Week.",
+    "bestUse": "next-observances card or selected-day hero"
+  },
+  {
+    "fileName": "JoyfulFeastSeason.jpg",
+    "title": "Joyful Feast Season",
+    "category": "season",
+    "summary": "Joyful seasonal image for feast periods, celebration, and brighter observances.",
+    "bestUse": "seasonal fallback image"
+  },
+  {
+    "fileName": "LidetaMaryam.png",
+    "title": "Lideta Maryam",
+    "category": "marian-feast",
+    "summary": "Image representing Lideta Maryam and Marian feast observance.",
+    "bestUse": "Marian observance card"
+  },
+  {
+    "fileName": "LiturgicalSeason.png",
+    "title": "Liturgical Season",
+    "category": "season",
+    "summary": "General liturgical season image for contextual calendar storytelling.",
+    "bestUse": "season card or fallback image"
+  },
+  {
+    "fileName": "MarianFeast.png",
+    "title": "Marian Feast",
+    "category": "marian-feast",
+    "summary": "General image for feast days and commemorations related to Saint Mary.",
+    "bestUse": "Marian fallback card"
+  },
+  {
+    "fileName": "Meskel.png",
+    "title": "Meskel",
+    "category": "major-feast",
+    "summary": "Image representing Meskel and the feast of the Finding of the True Cross.",
+    "bestUse": "major feast card or featured observance"
+  },
+  {
+    "fileName": "MonasticSaintsRemembrance.png",
+    "title": "Monastic Saints Remembrance",
+    "category": "saints",
+    "summary": "Image for monastic saints, ascetics, and holy fathers remembered in the calendar.",
+    "bestUse": "saint commemoration fallback"
+  },
+  {
+    "fileName": "MonthlyAbuneTeklehaymanot.png",
+    "title": "Monthly Abune Tekle Haymanot Commemoration",
+    "category": "saints",
+    "summary": "Image for the monthly commemoration of Abune Tekle Haymanot.",
+    "bestUse": "monthly saint observance card"
+  },
+  {
+    "fileName": "MonthlySaintGabrielCommemoration.png",
+    "title": "Monthly Saint Gabriel Commemoration",
+    "category": "angels",
+    "summary": "Image for the monthly commemoration of Saint Gabriel.",
+    "bestUse": "monthly angel observance card"
+  },
+  {
+    "fileName": "MonthlySaintMaryCommemoration.png",
+    "title": "Monthly Saint Mary Commemoration",
+    "category": "marian-feast",
+    "summary": "Image for the monthly commemoration of Saint Mary.",
+    "bestUse": "monthly Marian observance card"
+  },
+  {
+    "fileName": "MonthlySaintMichaelCommemoration.png",
+    "title": "Monthly Saint Michael Commemoration",
+    "category": "angels",
+    "summary": "Image for the monthly commemoration of Saint Michael.",
+    "bestUse": "monthly angel observance card"
+  },
+  {
+    "fileName": "Nineveh.jpg",
+    "title": "Nineveh Fast",
+    "category": "fast",
+    "summary": "Image representing the Fast of Nineveh and its penitential observance.",
+    "bestUse": "fast card"
+  },
+  {
+    "fileName": "Peraklitos.jpg",
+    "title": "Peraklitos",
+    "category": "feast",
+    "summary": "Image representing Peraklitos and the related holy day observance.",
+    "bestUse": "feast or commemoration card"
+  },
+  {
+    "fileName": "SacredCalendarContinuity.png",
+    "title": "Sacred Calendar Continuity",
+    "category": "general",
+    "summary": "General sacred calendar image showing continuity across seasons and observances.",
+    "bestUse": "fallback image or section banner"
+  },
+  {
+    "fileName": "SaintGabrielFeast.png",
+    "title": "Saint Gabriel Feast",
+    "category": "angels",
+    "summary": "Image for feast or commemoration days honoring Saint Gabriel.",
+    "bestUse": "angel observance card"
+  },
+  {
+    "fileName": "SaintMichaelFeast.png",
+    "title": "Saint Michael Feast",
+    "category": "angels",
+    "summary": "Image for feast or commemoration days honoring Saint Michael.",
+    "bestUse": "angel observance card"
+  },
+  {
+    "fileName": "SemuneHimamat.jpg",
+    "title": "Semune Himamat",
+    "category": "holy-week",
+    "summary": "Image representing Semune Himamat and the solemn observances of Holy Week.",
+    "bestUse": "holy week card or detail panel"
+  },
+  {
+    "fileName": "Siqlet.png",
+    "title": "Siqlet",
+    "category": "major-feast",
+    "summary": "Image representing Siqlet and the solemn remembrance of the Crucifixion.",
+    "bestUse": "major holy day card"
+  },
+  {
+    "fileName": "Timket.png",
+    "title": "Timket",
+    "category": "major-feast",
+    "summary": "Image representing Timket and the feast of the Baptism of Christ.",
+    "bestUse": "major feast card or hero"
+  },
+  {
+    "fileName": "TodayInChurch.png",
+    "title": "Today in Church",
+    "category": "general",
+    "summary": "General image for the main selected-day experience on the calendar page.",
+    "bestUse": "default selected-day hero"
+  },
+  {
+    "fileName": "TsigeSeason.jpg",
+    "title": "Tsige Season",
+    "category": "season",
+    "summary": "Image representing the Tsige season and its devotional church atmosphere.",
+    "bestUse": "seasonal observance card"
+  },
+  {
+    "fileName": "TsomeHawaryat.png",
+    "title": "Tsome Hawaryat",
+    "category": "fast",
+    "summary": "Image representing the Apostles’ Fast and its observance.",
+    "bestUse": "fast card"
+  },
+  {
+    "fileName": "TsomeNebiyat.png",
+    "title": "Tsome Nebiyat",
+    "category": "fast",
+    "summary": "Image representing the Fast of the Prophets and its observance.",
+    "bestUse": "fast card"
+  },
+  {
+    "fileName": "UpcomingHolyDays.png",
+    "title": "Upcoming Holy Days",
+    "category": "general",
+    "summary": "General image for the Next Observances section and upcoming holy day previews.",
+    "bestUse": "next-observances section banner"
+  },
+  {
+    "fileName": "AbiyTsom.png",
+    "title": "Ābiy Tsome",
+    "category": "fast",
+    "summary": "Image for the Great Fast before Pascha and its penitential observance.",
+    "bestUse": "fast card"
+  },
+  {
+    "fileName": "ApostlesRemembrance.png",
+    "title": "Apostles Remembrance",
+    "category": "saints",
+    "summary": "Image honoring the holy apostles and their remembrance in the Church calendar.",
+    "bestUse": "commemoration fallback"
+  },
+  {
+    "fileName": "ArchangelsRemembrance.png",
+    "title": "Archangels Remembrance",
+    "category": "angels",
+    "summary": "Image for archangel commemorations and the heavenly hosts in liturgical memory.",
+    "bestUse": "angel commemoration fallback"
+  },
+  {
+    "fileName": "SaintGabrielCommemoration.png",
+    "title": "Saint Gabriel Commemoration",
+    "category": "angels",
+    "summary": "Image for commemorations of Saint Gabriel, herald of the Incarnation.",
+    "bestUse": "angel observance card"
+  },
+  {
+    "fileName": "SaintMaryCommemoration.png",
+    "title": "Saint Mary Commemoration",
+    "category": "marian-feast",
+    "summary": "Image for commemorations of the Mother of God and Marian devotion.",
+    "bestUse": "Marian observance card"
+  },
+  {
+    "fileName": "SaintMichaelCommemoration.png",
+    "title": "Saint Michael Commemoration",
+    "category": "angels",
+    "summary": "Image for commemorations of Saint Michael and the heavenly hosts.",
+    "bestUse": "angel observance card"
+  },
+  {
+    "fileName": "calendar-liturgical-season.jpg",
+    "title": "Liturgical season (legacy art)",
+    "category": "season",
+    "summary": "Alternate liturgical season artwork for calendar context and seasonal storytelling.",
+    "bestUse": "seasonal banner or fallback"
+  },
+  {
+    "fileName": "calendar-upcoming-holy-days.jpg",
+    "title": "Upcoming holy days (legacy art)",
+    "category": "general",
+    "summary": "Alternate banner art for upcoming feasts and fasts in the sacred calendar.",
+    "bestUse": "section banner fallback"
+  }
+]

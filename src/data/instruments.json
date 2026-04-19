@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ins-kebro",
+    "type": "instrument",
+    "name": "Kebro (sistrum / rattle)",
+    "description": "A handheld percussion instrument used in Ethiopian Orthodox worship to mark rhythm and solemnity.",
+    "useContext": "Often during processions and certain hymnody; parish customs vary.",
+    "howToHold": "Hold the handle without gripping tightly; let the plates speak with small, controlled motion.",
+    "movementBasics": "Coordinate with the cantor’s tempo; avoid overpowering the human voice.",
+    "mistakesToAvoid": "Over-shaking, showy gestures, or treating it as performance rather than service.",
+    "relatedWerb": "w1",
+    "relatedMezmur": "m2",
+    "videoUrl": ""
+  },
+  {
+    "id": "ins-tsenatsil",
+    "type": "instrument",
+    "name": "Tsenatsil (bow / prostration)",
+    "description": "Not an object you hold — a reverent movement of the body toward God and the sacred.",
+    "useContext": "At the name of the Lord, gospel, or as parish custom directs.",
+    "howToHold": "N/A — from the waist or full prostration per guidance.",
+    "movementBasics": "Brief, reverent, and repeatable; breathe out as you bow; rise with calm.",
+    "mistakesToAvoid": "Deep prostration without blessing or health to do so; speed that looks restless.",
+    "relatedWerb": "w1"
+  },
+  {
+    "id": "ins-mequamia",
+    "type": "instrument",
+    "name": "Mequamia (staff / prayer stick)",
+    "description": "A wooden prayer staff used in standing prayer and procession; meaning is reverence and support.",
+    "useContext": "Standing prayer, liturgical processions; some homes use a simple cross or none.",
+    "howToHold": "Upright or angled gently; follow the form your parish teaches.",
+    "movementBasics": "Let the staff rest rather than wave; steps stay measured with the choir.",
+    "mistakesToAvoid": "Leaning all your weight so it becomes a prop for posture collapse.",
+    "relatedWerb": "w1",
+    "relatedMezmur": "m1"
+  }
+]

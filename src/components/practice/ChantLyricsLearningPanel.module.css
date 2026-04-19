@@ -1,0 +1,219 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 0;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.modeGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-bg-muted) 90%, var(--color-gold-faint));
+  border: 1px solid var(--color-border);
+}
+
+.modeBtn {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  min-height: 2.25rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.modeBtn:hover:not(:disabled) {
+  color: var(--color-text);
+}
+
+.modeBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.modeOn {
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+  box-shadow: var(--shadow-card);
+}
+
+.studyModes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.studyLabel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.studyBtn {
+  padding: var(--space-2) var(--space-3);
+  min-height: 2rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  cursor: pointer;
+}
+
+.studyBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.studyOn {
+  border-color: var(--color-border-gold);
+  color: var(--color-heading);
+  background: color-mix(in srgb, var(--color-gold-soft) 45%, var(--color-bg-elevated));
+}
+
+.hint {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.scroll {
+  max-height: min(70vh, 42rem);
+  overflow: auto;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-card);
+  background: var(--color-bg-elevated);
+  box-shadow: inset 0 1px 0 var(--color-gold-faint);
+}
+
+.block {
+  margin-bottom: var(--space-4);
+}
+
+.block:last-child {
+  margin-bottom: 0;
+}
+
+.blockLabel {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.text {
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.85;
+  white-space: pre-wrap;
+  color: var(--color-text);
+}
+
+.textTrans {
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.85;
+  white-space: pre-wrap;
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.lineRow {
+  border-radius: var(--radius-md);
+  padding: var(--space-2);
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    opacity var(--duration-fast) var(--ease-out);
+}
+
+.lineActive {
+  background: color-mix(in srgb, var(--color-gold-soft) 70%, transparent);
+  outline: 1px solid var(--color-border-gold);
+}
+
+.lineDim {
+  opacity: 0.32;
+}
+
+.linePick {
+  display: flex;
+  gap: var(--space-3);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: start;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.linePick:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.lineNum {
+  flex-shrink: 0;
+  width: 1.75rem;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  padding-top: 0.2em;
+}
+
+.hintLine {
+  margin: var(--space-1) 0 0 2.25rem;
+  font-size: var(--text-sm);
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--color-navy) 55%, var(--color-gold) 45%);
+}
+
+.muted {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}

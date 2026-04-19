@@ -1,0 +1,101 @@
+.group {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 75%, var(--color-gold-line));
+  background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-bg-muted));
+  box-shadow:
+    0 1px 0 var(--color-gold-faint),
+    var(--shadow-card);
+  flex-shrink: 0;
+}
+
+.seg {
+  margin: 0;
+  padding: 0;
+  width: 2.5rem;
+  min-height: var(--tap-min);
+  border: none;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.seg:hover {
+  color: var(--color-navy);
+  background: color-mix(in srgb, var(--color-gold-soft) 55%, transparent);
+}
+
+.seg:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+.segOn {
+  color: var(--color-navy-deep);
+  background: linear-gradient(
+    160deg,
+    var(--color-gold-soft) 0%,
+    color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-gold-bright)) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 55%, transparent),
+    0 1px 3px rgba(7, 14, 26, 0.12);
+}
+
+.segOn:hover {
+  color: var(--color-navy-deep);
+}
+
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+/* Manual dark theme */
+[data-theme='dark'] .segOn {
+  color: var(--color-text);
+  background: color-mix(in srgb, var(--color-navy) 42%, var(--color-bg-elevated));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme='dark'] .seg:hover {
+  color: var(--color-gold-bright);
+}
+
+/* System dark preference when data-theme unset */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .segOn {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-navy) 42%, var(--color-bg-elevated));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 1px 3px rgba(0, 0, 0, 0.35);
+  }
+
+  :root:not([data-theme]) .seg:hover {
+    color: var(--color-gold-bright);
+  }
+}
+
+@media (min-width: 768px) {
+  .seg {
+    min-height: 0;
+    height: 2rem;
+    width: 2.25rem;
+  }
+}

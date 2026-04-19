@@ -1,0 +1,1 @@
+export { TodayInChurchSection } from './TodayInChurchSection'

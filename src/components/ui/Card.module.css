@@ -1,0 +1,59 @@
+.card {
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border-card);
+  background: linear-gradient(
+    165deg,
+    var(--color-bg-elevated) 0%,
+    color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-sky-faint)) 100%
+  );
+  box-shadow: var(--shadow-card);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-med) var(--ease-out),
+    transform var(--duration-fast) var(--ease-spring);
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: color-mix(in srgb, var(--color-border-strong) 65%, var(--color-border-gold));
+    box-shadow:
+      var(--shadow-soft),
+      0 0 0 1px color-mix(in srgb, var(--color-gold-line) 35%, transparent);
+    transform: translateY(-3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition:
+      border-color var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-med) var(--ease-out);
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+.quiet {
+  box-shadow: none;
+  background: transparent;
+}
+
+.quiet:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.accent {
+  border-color: color-mix(in srgb, var(--color-gold) 28%, var(--color-border));
+  background: linear-gradient(
+    155deg,
+    var(--color-bg-elevated) 0%,
+    color-mix(in srgb, var(--color-bg-elevated) 82%, var(--color-gold-soft)) 100%
+  );
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px var(--color-gold-faint);
+}

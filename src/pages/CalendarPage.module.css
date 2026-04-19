@@ -1,0 +1,181 @@
+.head {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: var(--space-5);
+  border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 75%, var(--color-gold-line));
+  background:
+    radial-gradient(ellipse 90% 70% at 90% 15%, var(--color-sky-glow) 0%, transparent 55%),
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, #fffefa 94%, var(--color-gold-faint)) 0%,
+      color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-sky-faint)) 100%
+    );
+  box-shadow:
+    var(--shadow-soft),
+    0 0 0 1px color-mix(in srgb, var(--color-gold-line) 24%, transparent);
+  margin-bottom: var(--space-5);
+}
+
+@media (prefers-color-scheme: dark) {
+  .head {
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-bg-elevated) 96%, var(--color-gold-faint)) 0%,
+      var(--color-bg-elevated) 100%
+    );
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+.headContent {
+  display: grid;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.headImageWrap {
+  position: relative;
+  margin: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 13rem;
+}
+
+.headImageWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--color-bg-elevated) 35%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg-elevated) 18%, transparent) 100%
+  );
+}
+
+.headImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.82;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--letter-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.title {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, 2.35rem);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--letter-display);
+  color: var(--color-heading);
+}
+
+.deck {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.storyChips {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.storyChip {
+  display: grid;
+  gap: 2px;
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 92%, var(--color-gold-faint));
+}
+
+.storyLabel {
+  font-size: var(--text-xs);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.storyValue {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-heading);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.inlineHome {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-heading);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.inlineHome:hover {
+  color: var(--color-navy-deep);
+}
+
+@media (prefers-color-scheme: dark) {
+  .inlineHome:hover {
+    color: var(--color-gold-bright);
+  }
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-gold);
+  background: color-mix(in srgb, var(--color-gold-faint) 72%, var(--color-bg-elevated));
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-wine);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--color-wine-deep);
+}
+
+@media (min-width: 920px) {
+  .headContent {
+    grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
+  }
+
+  .storyChips {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

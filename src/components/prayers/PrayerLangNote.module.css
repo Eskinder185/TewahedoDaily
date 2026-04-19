@@ -1,0 +1,14 @@
+.note {
+  margin: var(--space-3) 0 0;
+  max-width: 36rem;
+  font-size: var(--text-xs);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-subtle);
+}
+
+.kicker {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}

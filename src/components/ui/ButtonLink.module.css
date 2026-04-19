@@ -1,0 +1,141 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-med) var(--ease-out),
+    transform var(--duration-fast) var(--ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition:
+      background var(--duration-fast) var(--ease-out),
+      color var(--duration-fast) var(--ease-out),
+      border-color var(--duration-fast) var(--ease-out),
+      box-shadow var(--duration-med) var(--ease-out);
+  }
+}
+
+@media (max-width: 639.98px) {
+  .btn {
+    font-size: var(--text-base);
+  }
+}
+
+.btn:not(:disabled):hover {
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:not(:disabled):hover {
+    transform: none;
+  }
+}
+
+.primary {
+  background: linear-gradient(
+    165deg,
+    var(--color-navy) 0%,
+    var(--color-navy-deep) 100%
+  );
+  color: var(--color-text-inverse);
+  border-color: color-mix(in srgb, var(--color-gold) 35%, var(--color-navy-midnight));
+  box-shadow:
+    var(--shadow-button),
+    inset 0 1px 0 rgba(255, 252, 245, 0.12);
+}
+
+.primary:hover {
+  background: var(--color-navy-deep);
+  color: var(--color-text-inverse);
+  border-color: color-mix(in srgb, var(--color-gold-bright) 42%, var(--color-navy-deep));
+  box-shadow: var(--shadow-button-hover);
+}
+
+.ghost {
+  background: linear-gradient(
+    180deg,
+    #fffefb 0%,
+    color-mix(in srgb, var(--color-bg-elevated) 95%, var(--color-sky-faint)) 100%
+  );
+  color: var(--color-text);
+  border-color: color-mix(in srgb, var(--color-border-strong) 85%, var(--color-gold-line));
+  box-shadow: var(--shadow-card);
+}
+
+.ghost:hover {
+  border-color: var(--color-border-gold);
+  color: var(--color-midnight);
+  box-shadow:
+    var(--shadow-soft),
+    0 0 0 1px color-mix(in srgb, var(--color-gold-line) 30%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ghost {
+    background: var(--color-bg-elevated);
+    border-color: var(--color-border-strong);
+  }
+
+  .ghost:hover {
+    color: var(--color-gold-bright);
+  }
+}
+
+.soft {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-gold-soft) 85%, var(--color-bg-elevated)) 0%,
+    var(--color-bg-elevated) 100%
+  );
+  color: var(--color-navy-deep);
+  border-color: var(--color-border-gold);
+}
+
+@media (prefers-color-scheme: dark) {
+  .soft {
+    color: var(--color-text);
+  }
+}
+
+.soft:hover {
+  color: var(--color-midnight);
+  border-color: color-mix(in srgb, var(--color-gold) 45%, transparent);
+  box-shadow: 0 6px 22px rgba(201, 163, 74, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  .soft:hover {
+    color: var(--color-gold-bright);
+  }
+}
+
+.active.primary,
+.active.soft {
+  box-shadow: 0 0 0 2px var(--color-focus-ring);
+}
+
+.active.ghost {
+  border-color: var(--color-border-gold);
+  color: var(--color-midnight);
+}
+
+@media (prefers-color-scheme: dark) {
+  .active.ghost {
+    color: var(--color-gold-bright);
+  }
+}

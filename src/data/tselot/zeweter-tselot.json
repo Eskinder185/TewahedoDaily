@@ -1,0 +1,322 @@
+[
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "sign-of-the-cross-opening",
+      "title": "የመስቀል ምልክት",
+      "transliterationTitle": "YeMeskel Milikit",
+      "category": {
+        "primary": "daily",
+        "usage": ["daily-prayer", "opening-prayer"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "በጌታዬ በኢየሱስ ክርስቶስ ትዕምርተ መስቀል ፊቴንና መላ ሰውነቴን ሦስት ጊዜ አማትባለሁ፡፡ አንድ አምላክ በሆኑ በአብ በወልድ በመንፈስ ቅዱስ ስም ንጹሕ ልዩ ክቡር ጽሩይ በሆኑ በሦስትነት ወይም በሥላሴ እያመንኩና እየተማጸንኩ ጠላቴ ሰይጣንን እክድሃለሁ፤ በዚህች በእናቴ በቤተ ክርስቲያን ፊት ቁሜ እክድሃለሁ ለዚህም ምስክሬ ማርያም ናት። በዚህም ዓለም በወዲያኛውም ዓለም እሷን አምባ መጠጊያ አድርጌ እክድሃለሁ።",
+        "geez": "አአትብ ገጽየ ወኵለንታየ በትእምርተ መስቀል፡፡ በስመ አብ ወወልድ ወመንፈስ ቅዱስ አሐዱ አምላክ በቅድስት ሥላሴ እንዘ አአምን ወእትመሐፀን እክሕደከ ሰይጣን በቅድመ ዛቲ እምየ ቅድስት ቤተ ክርስቲያን እንተ ይእቲ ስምዕየ ማርያም ጽዮን ለዓለመ ዓለም፡፡",
+        "english": "I cross my face and all of myself by the sign of the cross. In the name of father, and son and the Holy Spirit one God AMEN. In the Holy Trinity believing and entrusting myself, I deny you satan in front of my mother the Holy Church, who is my witness, St. Mary Tsion forever. AMEN"
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "የዘወትር ጸሎት መጀመሪያ ሲሆን በመስቀል ምልክት ራስን ለእግዚአብሔር ማስረከብና ሰይጣንን መክዳትን ያሳያል።",
+        "english": "An opening prayer made with the sign of the cross, confessing faith in the Holy Trinity and rejecting Satan before the Holy Church."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "thanksgiving-prayer",
+      "title": "የምስጋና ጸሎት",
+      "transliterationTitle": "YeMisgana Tselot",
+      "category": {
+        "primary": "daily",
+        "usage": ["daily-prayer", "thanksgiving"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "አቤቱ እናመሰግንሃለን አቤቱ እናከብርሃለን አቤቱ እንገዛልሃለን አቤቱ ቅዱስ ስምህን እናመሰግንሃለን። ጉልበት ሁሉ የሚሰግድልህ አቤቱ እንሰግድልሃለን አንደበትም ሁሉ ለአንተ ይገዛል የአምላኮች አምላክ፣ የጌቶች ጌታ፣ የንጉሦችም ንጉሥ አንተ ነህ የሥጋም የነፍስም ፈጣሪ አንተ ነህ። እናንተስ በምትጸልዩበት ጊዜ እንዲህ ብላችሁ ጸልዩ ብሎ ቅዱስ ልጅህ እንዳስተማረን እንጠራሃለን።",
+        "geez": "ነአኵተከ እግዚኦ ወንሴብሐከ ንባርከከ እግዚኦ ወንትአመነከ፡፡ ንገኒ ለከ እግዚኦ ወንትቀነይ ለስምከ ቅዱስ፡፡ ንሰግድ ለከ ኦ ዘለከ ይስግድ ኩሉ ብርክ ወለከ ይትቀነይ ኩሉ ልሳን፡፡ አንተ ውእቱ አምላከ ኣማልክት ወእግዚኣ አጋዕዝት ወንጉሠ ነገሥት አምላክ አንተ ለኵሉ ዘሥጋ ወለኩላ ዘነፍስ ወንጼውዕከ በከመ መሐረነ ቅዱስ ወልድከ እንዘ ይብል አንትሙሰ ሶበ ትጸልዩ ከመዝ በሉ፡፡",
+        "english": "We thank you Oh Lord, and we glorify you, we praise. you Oh Lord, and we rely on you, we beg you and we beseech you. We worship you and we serve to your Holy name. We bow and kneel down to you; oh, you to whom all knees should bow and who all tongues serve. You are the God of gods and the Lord of lords and the king of kings. You are God to all flesh and to. all souls, and we call you as your Holy Son taught us saying “But when you pray you shall say”, Our Father who are in heaven …"
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "ይህ ጸሎት ምስጋና፣ ክብር፣ ስግደት እና ልመናን ያካትታል።",
+        "english": "A prayer of thanksgiving and worship, praising God as Lord of all before continuing into the Lord’s Prayer."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "our-father",
+      "title": "አባታችን ሆይ",
+      "transliterationTitle": "Abatachin Hoy",
+      "category": {
+        "primary": "christ",
+        "usage": ["daily-prayer", "core-prayer", "lords-prayer"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "አባታችን ሆይ በሰማያት የምትኖር ስምህ ይቀደስ መንግሥትህ ትምጣ ፈቃድህ በሰማይ እንደሆነች እንዲሁም በምድር ትሁን የዕለት እንጀራችንን ስጠን ዛሬ፤ በደላችንንም ይቅር በለን እኛም የበደሉንን ይቅር እንደምንል። አቤቱ ወደ ፈተናም አታግባን ከክፉ ሁሉ አድነን እንጂ መንግሥት የአንተ ናትና ኃይል ክብር ምስጋና ለዘለዓለሙ አሜን።",
+        "geez": "አቡነ ዘበሰማያት ይትቀደስ ስምከ ትምጻእ መንግሥትከ ወይኩን ፈቃድከ በከመ በሰማይ ከማሁ በምድር ሲሳየነ ዘለለ ዕለትነ ሀበነ ዮም። ኅድግ ለነ አበሳነ ወጌጋየነ ከመ ንሕነኒ ንኅድግ ለዘአበሰ ለነ፡፡ ኢትኣብኣነ እግዚኦ ውስተ መንሱት። አላ ኣድኅነነ ወባልሐነ እምኵሉ እኩይ እስመ ዚአከ ይእቲ መንግሥት ኃይል ወስብሐት ለዓለመ ዓለም። አሜን፡፡",
+        "english": "Our father who art in heaven, hollowed be they name, thy Kingdom come, thy will be done in earth as it is in heaven: give us this day our daily bread and forgive us our trespasses as we forgive them that trespass against us, and lead us not into temptation but deliver us and rescue us from all evil for thine is the kingdom, the power and the. Glory for even and ever. AMEN"
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "ጌታችን ያስተማረን መሠረታዊ ጸሎት ነው።",
+        "english": "The Lord’s Prayer taught by Christ, asking for God’s kingdom, forgiveness, and deliverance from evil."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "salutation-of-saint-gabriel",
+      "title": "ሰላምታ ዘቅዱስ ገብርኤል",
+      "transliterationTitle": "Selamta ZeKidus Gebriel",
+      "category": {
+        "primary": "mary",
+        "usage": ["daily-prayer", "marian-devotion"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "እመቤታችን ቅድስት ድንግል ማርያም ሆይ በመልአኩ በቅዱስ ገብርኤል ሰላምታ ሰላም እልሻለሁ። በሀሳብሽ ድንግል ነሽ በሥጋሽም ድንግል ነሽ። የአቸናፊ የእግዚአብሔር እናት ሆይ ለአንቺ ሰላምታ ይገባል ከሴቶቹ ሁሉ ተለይተሽ አንቺ የተባረክሽ ነሽና የማኅፀንሽም ፍሬ የተባረከ ነው። ጸጋን የተመላሽ ሆይ ደስ ይበልሽ እግዚአብሔር ከአንቺ ጋር ነውና ከተወደደው ልጅሽ ከጌታችን ከመድኃኒታችን ከኢየሱስ ክርስቶስ ዘንድ ይቅርታንና ምሕረትን ለምኝልን ኃጢአታችንንም ያስተሠርይልን ዘንድ ለዘለዓለሙ አሜን።",
+        "geez": "በሰላመ ቅዱስ ገብርኤል መልአክ ኦ እግዝእትየ ማርያም ሰላም ለኪ ድንግል በኅሊናኪ ወድንግል በሥጋኪ፡፡ እመ እግዚአብሔር ጸባዖት ሰላም ለኪ፡፡ ቡርክት አንቲ እምአንስት ወቡሩክ ፍሬ ከርሥኪ። ተፈሥሒ ፍሥሕት ኦ ምልእተ ጸጋ እግዚአብሔር ምስሌኪ ሰአሊ ወጸልዪ ምህረተ ኀበ ፍቁር ወልድኪ ኢየሱስ ክርስቶስ ከመ ይሥረይ ለነ ኃጣዊኢነ፡፡",
+        "english": "By the Salutation of the Saint Angel Gabriel, O my Lady Mary I salute you, thou are Virgin in thought, and Virgin in body the Mother of God Tsabaot. (The Lord of Hosts) salutation to you. Blessed art thou, among women and blessed is the fruit of your womb. Rejoice thou who is hailed, O Graceful God is with you. Beseech and pray for our mercy to you beloved Son JESUS CHRIST that he may forgive us our sins. AMEN"
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "ይህ ለእመቤታችን ማርያም የሚቀርብ የሰላምታና የምልጃ ጸሎት ነው።",
+        "english": "A Marian prayer based on the salutation of the Archangel Gabriel, asking Saint Mary to intercede before Christ."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "nicene-creed",
+      "title": "ሃይማኖተ አበው",
+      "transliterationTitle": "Haimanote Abew",
+      "category": {
+        "primary": "liturgical",
+        "usage": ["daily-prayer", "confession-of-faith", "church-use"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "ሁሉን የፈጠረ አንድ አምላክ በሚሆን በእግዚአብሔር አብ እናምናለን። ሰማይንና ምድርን የፈጠረ የሚታየውንና የማይታየውን። ዓለም ሳይፈጠር ከእርሱ ጋር በነበረ አንድ የአብ ልጅ በሚሆን በአንድ ጌታ በኢየሱስ ክርስቶስ እናምናለን ከብርሃን የተገኘ ብርሃን ከእውነተኛ አምላክ የተገኘ አምላክ። የተወለደ እንጂ ያልተፈጠረ በባሕርዩ ከአብ ጋር የሚተካከል ሁሉ በእርሱ የሆነ በሰማይም ካለው በምድርም ካለው ያለ እርሱ ምንም ምን የሆነ የለም።\n\nስለእኛ ስለ ሰዎች እኛን ለማዳን ከሰማይ ወረደ፤ በመንፈስ ቅዱስ ግብር ከቅድስት ድንግል ማርያም ፍጹም ሰው ሆነ ደግሞም ስለእኛ ተሰቀለ በጰንጤናዊ በጲላጦስ ዘመን እርሱ መከራን ተቀበለ፣ ሞተ፣ ተቀበረ፤ በሦስተኛውም ቀን ከሙታን ተለይቶ ተነሳ፤ በቅዱሳት መጻሕፍት እንደተጻፈ በክብር በምስጋና ወደ ሰማይ ዐረገ በአባቱም ቀኝ ተቀመጠ፤ ዳግመኛም በሕያዋንና በሙታን ላይ ለመፍረድ በምስጋና ይመጣል፤ ለመንግሥቱም ፍጻሜ የለውም።\n\nበመንፈስ ቅዱስም እናምናለን እርሱም ጌታ ሕይወትን የሚሰጥ ከአብ የሠረፀ ከአብና ከወልድ ጋራ በአንድነት እንሰግድለታለን እናመሰግነዋለን እርሱም በነቢያት አድሮ የተናገረ ነው፤ ከሁሉም በላይ በምትሆን ሐዋርያት በሠሯት በአንዲት ቅድስት ቤተ ክርስቲያን እናምናለን፤ ኃጢአት በሚሠረይባት በአንዲት ጥምቀትም እናምናለን፤ የሙታንንም መነሣት ተስፋ እናደርጋለን፤ የሚመጣውንም ሕይወት ለዘለዓለሙ አሜን።",
+        "geez": "ነአምን በአሐዱ አምላክ እግዚአብሔር አብ አኃዜ ኩሉ ገባሬ ሰማያት ወምድር ዘያስተርኢ ወዘኢያስተርኢ ወነአምን በአሐዱ እግዚእ ኢየሱስ ክርስቶስ ወልደ አብ ዋሕድ ዘህልው ምስሌሁ እምቅድመ ይትፈጠር ዓለም።\n\nብርሃን ዘእምብርሃን አምላክ ዘእምአምላክ ዘበአማን፡ ዘተወልደ ወአኮ ዘተገብረ ዘዕሩይ ምስለ አብ በመለኮቱ፡፡ ዘቦቱ ኩሉ ኮነ ወዘእንበሌሁሰ ኣልቦ ዘኮነ ወኢምንትኒ ዘበሰማይኒ ወዘበምድርኒ፡፡ በእንቲአነ ለሰብእ ወበእንተ መድኃኒትነ ወረደ እምሰማያት ተሰብአ ወተሰገወ እመንፈስ ቅዱስ ወእማርያም እምቅድስት ድንግል ኮነ ብእሲ ወተሰቅለ በእንቲአነ በመዋዕለ ጲላጦስ ጰንጤናዊ። ሐመ ወሞተ ወተቀበረ ወተንሥአ እሙታን አመ ሣልስት ዕለት በከመ ጽሑፍ ውስተ ቅዱሳት መጻሕፍት ዐርገ በስብሐት ውስተ ሰማያት ወነበረ በየማነ አቡሁ ዳግመ ይመጽእ በስብሐት ይኮንን ሕያዋነ ወሙታነ ወአልቦ ማኅለቅት ለመንግሥቱ።\n\nወነአምን በመንፈስ ቅዱስ እግዚእ ማኅየዊ ዘሠረጸ እምአብ ንስግድ ሎቱ ወንሰብሖ ምስለኣብ ወወልድ ወነበሰ ሰነቢያት፡ ወነአምን በአሐቲ ቅድስት ቤተ ክርስቲያን እንተ ላዕለ ኵሉ ጉባዔ ዘሐዋርያት፡ ወነአምን በአሐቲ ጥምቀት ለሥርየተ ኃጢአት ወንሴፎ ትንሣኤ ሙታን ወሕይወተ ዘይመጽእ ለዓለመ ዓለም፡፡",
+        "english": "We believe in one God, the father Almighty, maker of heaven and earth, and all things visible and invisible and we believe in One Lord Jesus Christ the only begotten son of the Father who was with him before the creation of the World.\n\nLight from light, true God from true God, begotten not made of one essense with the Father. By whom all things were made, and without him was not anything in heaven or earth made.\n\nWho for us men and for our salvation came down from heaven was made man and was incarnate from the Holy Spirit and from the Holy Virgin Mary. Become man was crucified for our sakes in the days of Pontius Pilate suffered, died, was buried and rose from the dead on the third day as was written in the Holy Scriptures: Ascended in glory into heaven, sat at the right hand of his Father, and will come again in glory to judge the Living and the dead; there is no end to his reign.\n\nAnd we believe in the Holy Spirit, the life-giving God, who proceeded from the Father; we worship and glorify him with the Father, and the Son; who spoke by the prophets.\n\nAnd we believe in one baptism from the remission of sins, and walt for the resurrection from the dead and the life to come, world without end, AMEN."
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "የኦርቶዶክስ እምነት መሠረታዊ መግለጫ ነው።",
+        "english": "The formal confession of faith in the Father, Son, Holy Spirit, the Church, baptism, resurrection, and eternal life."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "holy-holy-holy",
+      "title": "ቅዱስ ቅዱስ ቅዱስ",
+      "transliterationTitle": "Kidus Kidus Kidus",
+      "category": {
+        "primary": "liturgical",
+        "usage": ["daily-prayer", "praise", "church-use"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "አቸናፊ እግዚአብሔር ሆይ ቅዱስ ቅዱስ ቅዱስ ተብለህ ትመሰገናለህ። ምስጋናህም በሰማይና በምድር የመላ ነው። ክርስቶስ ለአንተ እንሰግድልሃለን ከሰማያዊ ከቸር አባትህ ጋራ አዳኝ ከሆነ ከመንፈስ ቅዱስም ጋራ እንሰግድልሃለን ወደዚህ ዓለም መጥተህ አድነኸናልና።",
+        "geez": "ቅዱስ ቅዱስ ቅዱስ እግዚኣብሔር ጸባዖት ፍጹም ምሉዕ ሰማያተ ወምድረ ቅድሳተ ስብሐቲከ፡፡ ንሰግድ ለከ ክርስቶስ ምስለ አቡከ ኄር ሰማያዊ ወመንፈስከ ቅዱስ ማኅየዊ እስመ መጻእከ ወአድኃንከነ፡፡",
+        "english": "Holy, Holy, Holy God Tsabaot perfect Lord of Host, heaven and earth are full of the holiness of your Glory. We bow to you Christ, with your good heavenly Father and with your Holy Spirits the life Giver from thou didst come and save us."
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "የሥላሴን ቅድስናና የክርስቶስን ማዳን የሚያመሰግን ጸሎት ነው።",
+        "english": "A short hymn of praise confessing God’s holiness and Christ’s saving coming."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "prostration-and-cross-prayer",
+      "title": "ስግደት እና ጸሎተ መስቀል",
+      "transliterationTitle": "Sigidet Ena Tselote Meskel",
+      "category": {
+        "primary": "liturgical",
+        "usage": ["daily-prayer", "cross-devotion", "prostration"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "ለአብ ለወልድ ለመንፈስ ቅዱስ አንዲት ስግደት እሰግዳለሁ (3 ጊዜ) አንድ ሲሆን ሦስት፤ ሦስት ሲሆኑ አንድ፤ በአካል ሦስት ሲሆኑ በመለኮት አንድ ለሚሆኑ እሰግዳለሁ። አምላክን ለወለደች ለእመቤታችን ለድንግል ማርያም እሰግዳለሁ፤ ዓለምን ሁሉ ለማዳን ሲል ኢየሱስ ክርስቶስ ለተሰቀለበት መስቀልም እሰግዳለሁ። መስቀል ኃይላችን ነው፤ ኃይላችን መስቀል ነው፤ የሚያጸናን መስቀል ነው፤ መስቀል ቤዛችን ነው፤ መስቀል የነፍሳችን መዳኛ ነው። አይሁድ ይክዱታል እኛ ግን እናምነዋል ያመነው እኛም በመስቀሉ እንድናለን ድነናልም።",
+        "geez": "እሰግድ ለአብ ወወልድ ወመንፈስ ቅዱስ አሐተ ስግደተ (ሥልሰ ጊዜያተ በል)፡፡ እንዘ አሐዱ ሠለስቱ ወእንዘ ሠለስቱ አሐዱ ይሤለሱ በአካላት ወይትዋሐዱ በመለኮት እሰግድ ለእግዝእትነ ማርያም ድንግል ወላዲተ አምላክ እሰግድ ለመስቀለ እግዚእነ ኢየሱስ ክርስቶስ ዘተቀደሰ በደሙ ክቡር፡፡ መስቀል ኃይልነ መስቀል ጽንዕነ መስቀል ቤዛነ መስቀል መድኃኒተ ነፍስነ አይሁድ ክሕዱ ንሕነሰ አመነ ወእለ አመነ በኃይለ መስቀሉ ድኅነ፡፡",
+        "english": "Let us bow down to the father, and the Son, and the Holy Spirit: Three in one and one in three. Three in person and united in Godhead. I bow down to our Lady St. Mary Virgin Mother God. I bow down to the cross of our Lord Jesus Christ which was sanctified by his precious Blood. The cross is our power, the Cross is our strength, the Cross is our redemption, the cross is the salvation of our soul. The Jews denied but we believe, and those who believe in the power of the Cross are saved."
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "ይህ የሥላሴ ስግደትና የመስቀል ኃይልን የሚገልጥ ጸሎት ነው።",
+        "english": "A prayer of prostration to the Trinity, honouring Saint Mary and confessing the saving power of Christ’s Cross."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "glory-to-the-father",
+      "title": "ስብሐት ለአብ",
+      "transliterationTitle": "Sibhat LeAb",
+      "category": {
+        "primary": "liturgical",
+        "usage": ["daily-prayer", "praise", "thanksgiving"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "ለአብ ምስጋና ይገባል ለወልድም ምስጋና ይገባል ለመንፈስ ቅዱስም ምስጋና ይገባል (3 ጊዜ) አምላክን ለወለደች ለእመቤታችን ለድንግል ማርያም ምስጋና ይገባል፤ ለኢየሱስ ክርስቶስ መስቀልም ምስጋና ይገባል። ክርስቶስ በቸርነቱ ያስበን ዘንድ ዳግመኛም በመጣ ጊዜ እንዳያሳፍረን ስሙን ለማመስገን ያነቃን ዘንድ። እርሱንም በማምለክ ያፀናን ዘንድ። እመቤታችን ጸሎታችንን አሳርጊልን ኃጢአታችንንም አስተሥርዪልን በጌታችን መንበር ፊት ጸሎታችንን አሳርጊልን ይህንን ኅብስት ላበላን ይህንንም ጽዋ ላጠጣን ምግባችንንና ልብሳችንንም ላዘጋጀልን፤ ኃጢአታችንንም ሁሉ ለታገሰልን፤ ክቡር ደሙን ቅዱስ ሥጋውን ለሰጠን፤ እስከዚህችም ሰዓት ላደረሰን፤ ለእርሱ ለልዑል እግዚአብሔር ፍጹም ምስጋና ይገባል ለወለደችው ለድንግልም ምስጋና ይገባል። ለክቡር መስቀሉም ምስጋና ይገባል። የእግዚአብሔር ስሙ ፈጽሞ ይመሰገን ዘንድ ዘወትር በየጊዜያቱና በየሰዓቱ ምስጋና ይገባል።",
+        "geez": "ስብሐት ለአብ ስብሐት ለወልድ ስብሐት ለመንፈስ ቅዱስ (ሥልሰ ጊዜያተ በል)፡፡ ስብሐት ለእግዝእትነ ማርያም ድንግል ወላዲተ አምላክ ስብሐት ለመስቀለ እግዚእነ ኢየሱስ ክርስቶስ፡፡ ክርስቶስ በምሕረቱ ይዘከረነ፡፡ አመ ዳግም ምጽአቱ ኢያስተኀፍረነ፡፡ ለሰብሖተ ስሙ ያንቅሀነ ወበአምልኮቱ ያጽንአነ እግዝእትነ ማርያም አዕርጊ ጸሎተነ፡፡ ወአስተሥርዪ ኃጢአተነ፡፡ ቅድመ መንበሩ ለእግዚእነ፡፡ ለዘአብልዐነ ዘንተ ኅብስተ ወለዘአስተየነ ዘንተ ጽዋዓ ወለዘርዐ ለነ ሲሳየነ ወአራዘነ ወለዘተዐገሠ ኵሉ ኃጢአተነ ወለዘወሀበነ ሥጋሁ ቅዱሰ ወደሞ ክቡረ ወለዘአብጽሐነ እስከ ዛቲ ሰዓት፡፡ ነሀብ ሎቱ ስብሐተ ወአኰቴተ ለእግዚአብሔር ልዑል ወለወላዲቱ ድንግል ወለመስቀሉ ክቡር ይትኣኰት ወይሰባሕ ስሙ ለእግዚአብሔር ወትረ በኵሉ ጊዜ ወበኲሉ ሰዓት፡፡",
+        "english": "Glory To The Father, Glory To The Son, Glory To The Holy Spirit (Three Times). Glory to our Lady St. Mary the Virgin Mother of God. Glory to the Cross of our Lord Jesus Christ. May Christ in his mercy remember us. May he not put us to shame in his second coming. May he awaken us to the glorification of his name. In his worship may he maintain us. Our Lady St. Mary, lift up our prayer before the throne of our Lord, who gave us to eat this bread, and who gave us to drink this cup, and who prepared our food and our clothing for us, and who overlooked all our sins, and who gave us his Holy Body and his precious Blood, who brought us to this hour.\n\nLet us give glory and thanks of God the Most High and to his Virgin Mother and to his precious Cross. May the name of the Lord be thanked and glorified always at all times and at every hour."
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "ይህ የሥላሴ፣ የእመቤታችን እና የመስቀል ምስጋና ከረጅም የምስጋና ልመና ጋር የሚነበብ ጸሎት ነው።",
+        "english": "A doxology glorifying the Trinity, Saint Mary, and the Cross, followed by thanksgiving for God’s mercy and provision."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "peace-be-unto-you-mary",
+      "title": "ሰላም ለኪ ማርያም",
+      "transliterationTitle": "Selam Leki Mariam",
+      "category": {
+        "primary": "mary",
+        "usage": ["daily-prayer", "marian-devotion", "intercession"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "እናታችን ማርያም ሆይ ሰላም ለአንቺ ይሁን እያልን እንሰግድልሻለን እንማልድሻለን። ከአዳኝ አውሬ ታድኝን ዘንድ ተማጽነንብሻል። ስለ እናትሽ ስለ ሐና ብለሽ ስለ አባትሽ ስለ ኢያቄም ብለሽ ድንግል ማኅበራችንን ዛሬ ባርኪልን።",
+        "geez": "ሰላም ለኪ እንዘ ንሰግድ ንብለኪ ማርያም እምነ ናስተበቍዕኪ፡፡ እምአርዌ ነዓዊ ተማኅፀነ ብኪ፡፡ በእንተ ሐና እምኪ ወኢያቄም አቡኪ ማኅበረነ ዮም ድንግል ባርኪ።",
+        "english": "We say to you, prostrating ourselves, “Peace be unto you Mary our Mother”. We beseech you; we cling unto you against the hunting serpent. Virgin for the sake of your mother Hanna and your Father Joachim. Bless our congregation today. AMEN"
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "ለእመቤታችን ማርያም ሰላምታና የበረከት ልመና የሚቀርብ ጸሎት ነው።",
+        "english": "A short prayer of peace and supplication to Saint Mary, asking her to bless the congregation."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    },
+    {
+      "type": "prayer",
+      "collection": "zeweter-tselot",
+      "id": "magnificat-prayer",
+      "title": "ጸሎተ እግዝእትነ ማርያም",
+      "transliterationTitle": "Tselote Egzietne Mariam",
+      "category": {
+        "primary": "mary",
+        "usage": ["daily-prayer", "marian-devotion", "scriptural-prayer"],
+        "season": [],
+        "confidence": "high"
+      },
+      "text": {
+        "amharic": "አምላክን በድንግልና የወለደች የእመቤታችን የድንግል ማርያም ጸሎት ማርያምም አለች ነፍሴ እግዚአብሔርን ታላቅ ታደርገዋለች መንፈሴም በመድኃኒቴ በእግዚአብሔር ደስ ይላታል የባሪያዪቱን መዋረድ አይቷልና። እነሆ ከዛሬ ጀምሮ ትውልድ ሁሉ ያመሰግኑኛል እርሱ ብርቱ የሚሆን ታላቅ ሥራን ለእኔ አድርጓልና። ስሙም ቅዱስ ነው ለሚፈሩትም ምሕረቱ ለልጅ ልጅ ነው ኃይልን በክንዱ አደረገ። በልባቸው አሳብ የሚኮሩ ትዕቢተኞችን በታተናቸው፤ ብርቱዎችንም ከዙፋናቸው አዋረዳቸው የተዋረዱትንም ከፍ ከፍ አደረጋቸው፤ የተራቡትንም በቸርነቱ አጠገባቸው፤ ባለጠጎችንም ባዶ እጃቸውን ሰደዳቸው። ምሕረቱን እንዲያስብ እስራኤል ባርያውን ተቀበለ። ለአባቶቻችን ለአብርሃምና ለዘሩም እስከ ዘላለሙ ድረስ እንደተናገረ።",
+        "geez": "ጸሎተ እግዝእትነ ማርያም ድንግል ወላዲተ አምላክ፡፡ ተዐብዮ ነፍስየ ለእግዚአብሔር፡፡ ወትትሐሠይ መንፈስየ በአምላክየ ወመድኃኒየ እስመ ርእየ ሕማማ ለአመቱ፡፡ ናሁ እምይእዜሰ ያስተበፅዑኒ ትውልድ እስመ ገብረ ሊተ ኃይለ ዐቢያተ ወቅዱስ ስሙ፡፡ ወሣህሉኒ ለትውልደ ትውልድ ለእለ ይፈርህዎ ወጎብረ ኃይለ በመዝራዕቱ፡፡ ወዘረዎሙ ለእለ ያዐብዩ ኅሊና ልቦሙ። ወነሠቶሙ ለኃያላን እመናብርቲሆሙ። አዕበዮሙ ለትሑትሑታን ወአጽገቦሙ እምበረከቱ ለርኁባን፡፡ ወፈነዎሙ ዕራቆሙ ስብዑላን ወተወክፎ ለእስራኤል ቍልዔሁ ወተዘከረ ሣህሉ ዘይቤሎሙ ለአበዊነ ለኣብርሃም ወለዘርዑ እስከ ለዓለም፡፡",
+        "english": "My soul magnifies the Lord, and my Spirit rejoices in God My Savior, for he has regarded the low estate of his handmaiden. For behold, henceforth all generations will call me blesses; for he who is mighty had done great things for me, and holy is his name. And his mercy is on those who fear him from generation to generation. He has shown strength with his arm, he has scattered the proud in the imagination of their hearts, he has put down the mighty from their throne, and exalted those of low degree; he has filled the hungry with good things, and the rich he sent empty He has helped his servant Israel, in remembrance of his mercy as he spoke to our Fathers, to Abraham and to his posterity forever AMEN."
+      },
+      "transliteration": {
+        "amharic": "",
+        "geez": "",
+        "english": ""
+      },
+      "summary": {
+        "amharic": "ይህ የእመቤታችን ማርያም የምስጋና ጸሎት ሲሆን የእግዚአብሔርን ታላቅነት፣ ምሕረቱን፣ ኃይሉን እና ለትሑታን የሚያሳየውን ጸጋ ያመሰግናል።",
+        "english": "This is Saint Mary’s prayer of praise, magnifying God for His greatness, mercy, power, and the grace He shows to the humble and faithful."
+      },
+      "source": {
+        "bookTitle": "Zeweter Tselot",
+        "fullTextLink": "",
+        "audioUrl": ""
+      }
+    }
+]

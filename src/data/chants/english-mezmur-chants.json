@@ -1,0 +1,2567 @@
+{
+  "kind": "chant",
+  "language": "en",
+  "description": "English mezmur chants for practice (chant workshop).",
+  "implementationNotes": "Each entry matches MezmurEntry in src/data/types/mezmur.ts.",
+  "entries": [
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "cana-of-galilee",
+      "title": "Cana of Galilee",
+      "transliterationTitle": "Cana of Galilee",
+      "lyrics": "Cana of Galilee /x2/ in the matrimony\nVirgin we have found you with divinity \nOur Lord we have found you with our Lady\n\nInvited were the crowds flooding through the foyer\nCelebrating they ate emptied the wine chamber \nOur Holy Virgin the Mother of our Lord \nFor your mediation it is you they implored\n\nWith you in attendance ashamed they will not feel\nNothing is beneath you fill with wine their barrel\n“They have no wine” you said to your son our Lord \nIt is our Mother we cherish and adore \n\nDivinity of Lord that was unveiled to us\nHow fortunate it was the house of Dokimas \nAnd today in the home of this grand unity \nBlessings have spilled to us, with His humility \n\nTransfigured was the wine when it was just water \nIn Cana Galilee our eyes did not falter \nIf we ensure that He remains within our midst\nGood wine will overflow as written in the scripts",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur reflects the miracle of Christ at Cana of Galilee, where He turned water into wine during a wedding. It highlights the intercession of the Holy Virgin Mary, her role in presenting the need to Christ, and the blessing that comes when Christ is present in a home. The chant emphasizes faith, divine power, humility, and the overflowing blessings that come through God’s presence.",
+      "youtubeUrl": "https://youtu.be/hAoyUXx0mws?si=1aYA-rNwXHjQw0Rv",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "praise",
+          "intercession"
+        ],
+        "usage": [
+          "wedding",
+          "church-service"
+        ],
+        "season": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-cant-do-it-alone",
+      "title": "I can't do it alone",
+      "transliterationTitle": "I Can't Do It Alone",
+      "lyrics": "I can't do it alone, Lord be my strength /x2/\nMy soul longs for you, show me your truth /x2/\nHelp me cry and regret my sins, Lord forgive me /x2/\nGive me, a repentant heart with humility\n\nGive me tears of repentance, The Tears of St. Peter\nThe tears of the woman who cried, washed, Your feet with her hair\nGive me the tears of King David, and his humble heart\nLet me cry to cleanse my sins, give me true regret...\nI can't do it alone, Lord be my strength.\nChorus….\n\nYou are my hope and my Lord, shine your guiding light\nI repent, confess, all my sins, alone I cannot fight\nHelp me to live righteously, give me a way out\nI am empty without you, send me your spirit\nI can't do it alone, Lord be my strength.\nChorus….\n\nGrant me depth in knowing you, teach me the right path\nReveal, to me Your mysteries, please strengthen my faith\nYou suffered on my behalf, on the cross you died\nYou gave me Your flesh and blood, so I can be saved\nI can't do it alone, Lord be my strength.",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a deep prayer of repentance and dependence on God. It expresses the believer’s inability to overcome sin alone and the need for God’s strength, mercy, and guidance. It references biblical figures like St. Peter, the sinful woman, and King David, highlighting true repentance through tears, humility, and confession. The chant emphasizes faith, confession, spiritual struggle, and the saving power of Christ through His sacrifice.",
+      "youtubeUrl": "https://youtu.be/HTihxcq1INg?si=FvigAvO8TmIEy3RT",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "repentance",
+          "humility",
+          "salvation",
+          "faith"
+        ],
+        "usage": [
+          "personal-prayer",
+          "church-service"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "before-the-most-high",
+      "title": "Before the most high",
+      "transliterationTitle": "Before the Most High",
+      "lyrics": "Before the most high I will fall within His dwelling place\nAnd bring forth my praise to glorify His name\n\nFor all that He has done I will sing hymns for Him\nWithin His holy church bowing for all my sins\nTo stand before my Lord I will rise forgiven\n\nThrough my days of despair He's my shield and armor\nFind me within the church singing to the Father\nSowing my seeds of praise the heavenly gardener\n\nPraising like King David with a harp of 10 strings\nAlong with the angels with joyful noise I sing\nMy words my sacrifice accept my offerings\n\nTo the one and true God for His name I will kneel\nGiving my tithes to Him promises I'll fulfill\nTo enter His kingdom it is my Savior's will\n\nYour glory I declare as I proclaim in song\nPraying in your temple before the rise of dawn\nAlong with my fathers to you I call upon\n\nወደ ማደሪያው ገብቼ ልስገድ ለእግዚአብሔር \nምስጋናንም ላቅርብ ስለስሙ ክብር",
+      "transliterationLyrics": "Wede maderyaw gebiche lisged le Egziabher\nMisgananim laqrib sile simu kibir",
+      "meaning": "This mezmur expresses a life centered on worship, humility, and devotion to God. It speaks about entering the house of God with reverence, offering praise, repentance, and thanksgiving. The chant reflects the example of King David in worship, the importance of the church as a dwelling place of God, and the believer’s desire to live righteously, give offerings, and seek salvation. It emphasizes praise, sacrifice, and a continual relationship with God through prayer and worship.",
+      "youtubeUrl": "https://youtu.be/oVAf-j89WTA?si=Mg6yOoAD38TYhJ3h",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "worship",
+          "repentance"
+        ],
+        "usage": [
+          "church-service",
+          "personal-prayer"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "believe-in-the-lord",
+      "title": "Believe In The Lord",
+      "transliterationTitle": "Emenu Be'ersu",
+      "lyrics": "እመኑ በእርሱ ድንቅ ያደርጋል ጌታ\nበረድ አዝንቦ  ጠላት እየመታ\nውቅያኖስ ጥልቁን ፈጥኖ ያተነነ\nነገር ለወጠ ሁሉ በእርሱ ሆነ \n\nBelieve in the Lord, He works wonders and feats \nSending hail down and striking his enemies \nBy his might the depths, and the seas became haze\nHe changed the outcome, by Him all things were made  \n\nBelieve in the Lord, The mountain is ablaze \nBelieve in the Lord, The valley disarranged\nBelieve in the Lord, The evergreen is crushed \nBelieve in the Lord, and the rock ground to dust \nBelieve in the Lord, the gentiles’ statues  \nBelieve in the Lord, before Him were no more \nBelieve in the Lord, Those who invoked His name \nBelieve in the Lord, sailed calmly through the storms \n\nBelieve in the Lord, the sun will always rise\nBelieve in the Lord, every day becomes night\nBelieve in the Lord, He can perform all things\nBelieve in the Lord, our Savior, our Might\nBelieve in the Lord, to us He is Lord Love\nBelieve in the Lord, Father of creation\nBelieve in the Lord, He looks down from above\nBelieve in the Lord, His hands are stretched to us\n\nBelieve in the Lord, we have a sturdy boat\nBelieve in the Lord, no storm or waves can break\nBelieve in the Lord, so we won’t fear henceforth\nBelieve in the Lord, our lives He won’t forsake\nBelieve in the Lord, The enemy has lost \nBelieve in the Lord, Satan is put to shame \nBelieve in the Lord, let the prisons rejoice\nBelieve in the Lord, with joyful hymns of praise\n\nBelieve in the Lord, The crafty lies of foes\nBelieve in the Lord, are empty, have no might\nBelieve in the Lord, Emmanuel Logos\nBelieve in the Lord, is with us through our plight  \nBelieve in the Lord, when our Lord bestows \nBelieve in the Lord, His grace which is plenty\nBelieve in the Lord, we will stand atop death\nBelieve in the Lord, singing hymns joyfully",
+      "transliterationLyrics": "Emenu be'ersu dinik yadergal geta\nBered aznbo telat eyemeta\nWukiyanosi tilqun fet'no yatenena\nNeger lewete hulu be'ersu hone",
+      "meaning": "This mezmur is a powerful declaration of faith in God’s absolute power and sovereignty. It recounts God’s miracles, His authority over nature, and His victory over enemies. The chant encourages unwavering belief in the Lord through all circumstances, emphasizing that He controls all things, protects His people, and grants victory over sin, fear, and death. It highlights faith, trust, divine power, and the assurance of salvation through Christ.",
+      "youtubeUrl": "https://youtu.be/mp-SLV6VBdQ?si=O_KUavBfKMixTzx6",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "faith",
+          "praise",
+          "power",
+          "salvation"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "youth"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "by-the-lords-grand-design",
+      "title": "By the Lord's grand design",
+      "transliterationTitle": "Bebego Fekadu",
+      "lyrics": "By the Lord's grand design all is rightly aligned\nFor all those who love Him blessings they will find\n\nBebego fekadu hulu bersu hone\nNeger hulu bersu tekenawene\n\nThe Heavens and the Earth His splendor they convey\nEvery sunrise and night His grand work on display\nFrom the whispers of winds to the oceans that leap\nWe honor exalt Him His promises we keep\n\nFrom what came to exist each piece is His design\nIn Heaven and on Earth His wonders intertwine\nThe sovereign Lord decrees for the good and we're glad\nIn His grand creation all things good He has clad\n\nThe summer to winter and from daylight to night\nHe displays these wonders guiding our blinded sight\nIn His perfect canvas there’s no flaw to be rid\nFor there’s no one like Him our Creator is vivid\n\nHe feels our despair and joys that have lighted\nEvery twist every turn by His hand is guided\nIn joy and in sorrow His true purpose we find\nFor these eternal truths in God we will abide\n\nBy the Lord's grand design all is rightly aligned\nFor all those who love Him blessings they will find\n\nBebego fekadu hulu bersu hone\nNeger hulu bersu tekenawene",
+      "transliterationLyrics": "Bebego fekadu hulu bersu hone\nNeger hulu bersu tekenawene",
+      "meaning": "This mezmur reflects the divine order and sovereignty of God over all creation. It emphasizes that everything in existence is part of God’s perfect plan and design, both in heaven and on earth. The chant reassures believers that in every season—joy or sorrow—God is guiding all things for good for those who love Him. It highlights trust in God’s will, the beauty of creation, and the peace found in relying on His perfect purpose.",
+      "youtubeUrl": "https://youtu.be/7spDDho3yZc?si=xKRVckdxPRThlrwU",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "faith",
+          "creation",
+          "trust",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "reflection"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "come-all-let-us-rejoice",
+      "title": "Come all let us rejoice",
+      "transliterationTitle": "Sewoch Des Yibelen",
+      "lyrics": "Come all let us rejoice in the Lord Jesus Christ\nFrom slavery of sin He freed us with his might\nArise with songs of praise His favor’s abundant \nThere’s no way to repay but to be jubilant\n\nSewoch des yibelen beAmlakachin\nKehatiyat barinet netsa yawetan\nTenesu enamesgin wiletaw bizu new\nMin yikefelewal temesgen bicha new\n\nFrom my sickness of sin with chains I have been bound  \nThe Lord my medicine has raised me from the ground\nYour gifts are plentiful that You bestow on me\nAll I can give to you is praise and melody\n\nJust like Bartimeus my eyes they could not see\nBut now through the Lord’s Grace His healing I received \nI’m guided by His laws on my path they will shine\nSince I belong to Him His peace has become mine \n\nWith a proclamation showing your love to me\nI was chained by demons but with you now I’m free\nAlpha and Omega for all eternity\nYou are El Shaddai God Emmanuel we call Thee\n\nThe contract of my death to save me He has ripped\nThe wonders He performed with my eyes I witnessed \nHis Grace never-ending my God the almighty \nWe glorify Your name out loud in jubilee\n\nCome all let us rejoice in the Lord Jesus Christ\nFrom slavery of sin He freed us with his might\nArise with songs of praise His favor’s abundant \nThere’s no way to repay but to be jubilant\n\nSewoch des yibelen beAmlakachin\nKehatiyat barinet netsa yawetan\nTenesu enamesgin wiletaw bizu new\nMin yikefelewal temesgen bicha new",
+      "transliterationLyrics": "Sewoch des yibelen beAmlakachin\nKehatiyat barinet netsa yawetan\nTenesu enamesgin wiletaw bizu new\nMin yikefelewal temesgen bicha new",
+      "meaning": "This mezmur is a joyful proclamation of salvation through Jesus Christ. It celebrates freedom from sin, healing, and the abundant grace of God. The chant reflects personal transformation, referencing biblical healing such as Bartimaeus, and emphasizes gratitude, praise, and rejoicing. It highlights Christ as Savior, healer, and eternal God, calling believers to respond with thanksgiving and joyful worship.",
+      "youtubeUrl": "https://youtu.be/jCnxpMje144?si=vxhiKA4QbjL_KwcM",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "salvation",
+          "joy",
+          "healing"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "youth"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "covenant-of-mercy",
+      "title": "Covenant of Mercy",
+      "transliterationTitle": "Kidane Mehret",
+      "lyrics": "For Covenant of Mercy patiently I waited\nI was consoled all my sorrows faded\nMother of God our Lady Mary\nFor all my days bestow grace upon me \n\nDej tenahu qoyiche Kidane Mehretin\nTetsnanahugn resahu hazenen\nYamlak enat Emebetachin\nMoges hugnign qeriw zemenen\n\nThe times of misery, with ease I left behind\nDrawing nearer to you, redemption of mankind\nThe grace of your Child and your benevolence\nProtected your servant from a worrisome death\n\nMy mother, as I called your name\nAll of my torments I overcame\nIn front of, you tears fell down my face\nYou dried them, for I’m in your embrace\nPeace be unto you\n\nMy heart grew firm by you and it became lifted\nUpon my enemies, my mouth spoke convicted\nBy your healing wonders, your servant is happy\nYour child has broken arrows of the mighty\n\nMy mother, as I called your name\nAll of my torments I overcame\nIn front of, you tears fell down my face\nYou dried them, for I’m in your embrace\nPeace be unto you\n\nMy loved ones fled when my hands weren’t full and sufficed\nWhen they tried to divide with their cursed advice\nI told them that He had taken what He first gave\nBut I have my Lady, they were quickly ashamed\n\nMy mother, as I called your name\nAll of my torments I overcame\nIn front of, you tears fell down my face\nYou dried them, for I’m in your embrace\nPeace be unto you\n\nAs I stood on the stage, calling her name to praise\nWith gentle compassion, towards me she had gazed\nNo one mirrors your rare and unique thoughtfulness\nThrough you Mother Mary, I found my true solace\n\nEnate simshin sitera \nAlefe ya hulu mekera\nEnbaye kefitish fesese\nEmiye banchi yetabese\nSelam leki\n\nDej tenahu qoyiche Kidane Mehretin\nTetsnanahugn resahu hazenen\nYamlak enat Emebetachin\nMoges hugnign qeriw zemenen\n\nFor Covenant of Mercy patiently I waited\nI was consoled all my sorrows faded\nMother of God our Lady Mary\nFor all my days bestow grace upon me",
+      "transliterationLyrics": "Dej tenahu qoyiche Kidane Mehretin\nTetsnanahugn resahu hazenen\nYamlak enat Emebetachin\nMoges hugnign qeriw zemenen\n\nEnate simshin sitera \nAlefe ya hulu mekera\nEnbaye kefitish fesese\nEmiye banchi yetabese\nSelam leki",
+      "meaning": "This mezmur is a heartfelt devotion to the Holy Virgin Mary under the title of Kidane Mehret (Covenant of Mercy). It expresses patience, suffering, and ultimate consolation through her intercession. The chant reflects the believer’s reliance on the Mother of God during hardship, emphasizing her compassion, protection, and healing power. It highlights themes of endurance, faith, and the peace and comfort found through her prayers, leading to restoration and spiritual strength.",
+      "youtubeUrl": "https://youtu.be/aLQqecKcAMQ?si=YojZFAzxv1pWquKh",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [
+          "kidane-mehret"
+        ],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "intercession",
+          "comfort",
+          "healing",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "supplication",
+          "personal-prayer"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "emmanuel",
+      "title": "Emmanuel",
+      "transliterationTitle": "Amanuel",
+      "lyrics": "Emmanuel He’s loving and forgiving\nFenced by mercy in Heaven He is dwelling\nCalling upon His Father while He’s in pain\nThose who nailed Him to the Cross He didn’t blame\n\nአማኑኤል ይቅር ባይነው ፍቅር   \nምህረት ከቦት በሰማያት ቢኖር\nእያመመዉ አባቱንን የጠራ\nአይቻለዉ ለሚገድሉት ሲራራ\n\nBelieve that He is merciful for He is not a ruthless king\nHis sanctified and precious Blood will cleanse us from sin endlessly\nWith a grand wave of divine grace the Earth has been filled and flooded\nHis mercy as His source of strength from death we have been protected\n\nThe God who enlightened the dark for brighter days He paved the way\nHis spear of love pierces us all without it we are left astray\nTrials we passed with victory overcoming all with Jesus\nOur sins have been covered by Christ the Lord who died for all of us\n\nThere’s not a single sin greater than our Lord’s eternal love\nWe shouldn’t fear or hesitate to reunite with God above\nThe heavens as our homeland no one will fall or be ignored\nFor it is our inheritance by the Holy Blood of our Lord\n\nIn all the heavens and the Earth no one shows His dedication\nHis Holy name is Jesus Christ with Him He brought us affection\nAbove the grave He has risen His love left the world astonished\nOn His shoulders He carried us the children that He had cherished\n\nEmmanuel He’s loving and forgiving\nFenced by mercy in Heaven He is dwelling\nCalling upon His Father while He’s in pain\nThose who nailed Him to the Cross He didn’t blame\n\nአማኑኤል ይቅር ባይነው ፍቅር   \nምህረት ከቦት በሰማያት ቢኖር\nእያመመዉ አባቱንን የጠራ\nአይቻለዉ ለሚገድሉት ሲራራ",
+      "transliterationLyrics": "Amanuel yiqir baynew fiqir\nMihret kebot besemayat binor\nEyammemew abatun yenetara\nAyichalew lemigedlut sirara",
+      "meaning": "This mezmur reflects the boundless love and mercy of Jesus Christ (Emmanuel), emphasizing His forgiveness even during His suffering on the Cross. It highlights His sacrifice, the cleansing power of His blood, and His victory over death. The chant calls believers to trust in His mercy, overcome fear, and draw closer to God through repentance and faith. It celebrates Christ’s love, redemption, and the eternal hope of salvation through Him.",
+      "youtubeUrl": "https://youtu.be/M7yf911CwUw?si=eRFwqzQ_pVKwA6Gc",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "fasika"
+        ],
+        "saints": [],
+        "themes": [
+          "salvation",
+          "cross",
+          "resurrection",
+          "love"
+        ],
+        "usage": [
+          "church-service",
+          "holy-week",
+          "fasika"
+        ],
+        "season": [
+          "lent",
+          "fasika"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "for-my-eyes",
+      "title": "For My Eyes",
+      "transliterationTitle": "Aynoche Madanun",
+      "lyrics": "For my eyes have witnessed the Lord’s salvation (2)\nHonor and praise (2) we give with devotion\n\nAynoche madanun aytewalina (2)\nYigebawal (2) kibir ena misgana\n\nDescended from heaven for He so loved the world\nThe gracious Almighty Jesus Christ our Lord\nHidden in Bethlehem inside of the manger\nHe was born on that day our God and Savior\n\nMany were the prophets that told of His coming\nBorn from Virgin Mary saved us from suffering\nLifted us from the dust path of iniquity\nSaying hallelujah let’s sing in unity\n\nDesired to restore those who were cast away\nHonored us with His love in lowliness He came\nWhat kind of love is this everlasting mercy\nOur God being born in a barn so humbly\n\nRemained perfectly pure in the sanctuary\nGave birth to salvation with full virginity\nThe Lord that rids the world of evil transgression\nThe hope of all mankind was born from the Virgin",
+      "transliterationLyrics": "Aynoche madanun aytewalina (2)\nYigebawal (2) kibir ena misgana",
+      "meaning": "This mezmur proclaims the joy of witnessing the salvation of the Lord, focusing on the birth of Jesus Christ. It reflects on God’s love for humanity, fulfilled through the Incarnation, where Christ was born humbly in Bethlehem. The chant highlights the fulfillment of prophecy, the role of the Virgin Mary, and the restoration of humanity from sin. It emphasizes praise, unity, and gratitude for the gift of salvation brought into the world.",
+      "youtubeUrl": "https://youtu.be/R803fbrlm5U?si=cFjKYDqliBEnPB1q",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "gena"
+        ],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "incarnation",
+          "salvation",
+          "praise",
+          "joy"
+        ],
+        "usage": [
+          "church-service",
+          "holiday-worship"
+        ],
+        "season": [
+          "gena"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "for-theres-no-one-like-him",
+      "title": "For There’s No One Like Him",
+      "transliterationTitle": "Ende Egziabher Yalew Manim Yelemna",
+      "lyrics": "For There's No One Like Him Our God the almighty /x2/\nArise for Praise and sing with jumble /x2/ \n\nእንደ እግዚአብሔር ያለ ማንም የለምና\nእልል በሉ ቁሙ ለምስጋና /፪/\n\nThe water was parted revealing the sea floor, The pharaoh had fallen his screaming was no more, the meek used the new path and had treaded, the powerful were humiliated\nChorus….\n\nThe walls of Jericho untouched by any hand, What seemed invincible has crumbled down to sand, Though the mighty may seem to grow in strength, we’ll remain firm in him we have our faith \nChorus…. \n\nOur adversary had thrown a piercing rod, it tumbled to the ground were shielded by our God, let our praise soar to the trinity, for he has lost the hunting enemy\nChorus….\n\nOn the sea he strides with grace and the utmost ease, when he rises grandly the violent winds will cease, we worship him the Virgin Mary’s son, he’s merciful impossible he’s done, he’s merciful impossible he’s done. \n\nእንደ እግዚአብሔር ያለ ማንም የለምና/x2/\nእልል በሉ ቁሙ ለምስጋና /x2/\n\nFor There's No One Like Him Our God the almighty /x2/\nArise for Praise and sing with jumble /x2/",
+      "transliterationLyrics": "Ende Egziabher yalew manim yelemna\nEllil belu kumu lemisgana",
+      "meaning": "This mezmur proclaims the unmatched power and greatness of God, declaring that there is no one like Him. It reflects on His mighty works throughout history, such as parting the Red Sea and bringing down Jericho, showing His authority over all creation and enemies. The chant calls believers to stand firm in faith, rejoice, and praise God for His victories, protection, and miracles. It emphasizes divine power, faith, and joyful worship.",
+      "youtubeUrl": "https://youtu.be/c8JTij44qys?si=0Lggh_-8bvNno45_",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "power",
+          "faith",
+          "victory"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "youth"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "from-the-scorching-flames",
+      "title": "From the scorching flames",
+      "transliterationTitle": "Keminedew Isat",
+      "lyrics": "From the scorching flames and burning fire (2)\nHe swiftly removed me the Angel Gabriel my rescuer (2)\n\nከሚነደው እሳት ነበልባል (2)\nያወጣኝ እርሱ ነው የታደገኝ ፈጥኖ ገብርኤል (2)\n\nDistressed was the spirit of Nebuchadnezzar\nFor this he desired a dream interpreter \nThe false magic of the Chaldeans (Kal-dee-yuns) was exposed\nThrough God’s intervention Gabriel delivered me from being disposed (2)\n\nFrom the scorching flames and burning fire (2)\nHe swiftly removed me the Angel Gabriel my rescuer (2)\n\nLeader of the captives Ashpenaz (exactly how it looks) was amazed\nBy the edge of the fire he saw me while I praised\nThough I’m a child of God the king didn’t notice\nOur guardian angel with his might preserved us from the blazing furnace\n\nFrom the scorching flames and burning fire (2)\nHe swiftly removed me the Angel Gabriel my rescuer (2)\n\nThe enemy that induced trials lit the torch\nAlthough my body was burned my soul was not scorched\nSurvived the Babylonian fire through aid\nThe servant of the Lord with his pleas my father provided me with shade (2)\n\nFrom the scorching flames and burning fire (2)\nHe swiftly removed me the Angel Gabriel my rescuer (2)\n\nI won’t succumb though they scare with boiling water\nThe world may burn in fire but my faith won’t falter\nLike he saved Qirqos and Eyeluta from heat\nHe parted heaven to speedily save me from the ultimate defeat (2)\n\nFrom the scorching flames and burning fire (2)\nHe swiftly removed me the Angel Gabriel my rescuer (2)\n\nከሚነደው እሳት ነበልባል (2)\nያወጣኝ እርሱ ነው የታደገኝ ፈጥኖ ገብርኤል (2)",
+      "transliterationLyrics": "Keminedew isat nebelbal (2)\nYawotagn ersu new yetadegagn fet'no Gebriel (2)",
+      "meaning": "This mezmur reflects God’s deliverance from trials and dangers, especially through the intercession of the Archangel Gabriel. It draws from the biblical story of the fiery furnace and emphasizes divine protection even in the midst of suffering. The chant highlights faith that remains unshaken despite trials, the power of angels as servants of God, and victory over persecution. It also connects to saints who endured suffering and were saved by God’s grace.",
+      "youtubeUrl": "https://youtu.be/Y3gIEYphESI?si=0z_ER4JtmSVtrPPJ",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "archangel-gabriel"
+        ],
+        "themes": [
+          "protection",
+          "faith",
+          "deliverance",
+          "trials"
+        ],
+        "usage": [
+          "church-service",
+          "supplication",
+          "saints-commemoration"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "gabriel-the-powerful",
+      "title": "Gabriel the powerful",
+      "transliterationTitle": "Gebriel Hayal",
+      "lyrics": "Gabriel the powerful, the angel of peace and of the good news\nYou are rescuing, the people of God, from the fire that burns \nYour love is written, deep within our hearts \nWe stand before you, so you can bless us \n\nአዝ==\nThe stories were told of their resilience,\nWhile in Babylon, the city of death \nEven being so young, their faith was shining\nSt. Gabriel you stood, you were protecting.\n\nአዝ==\nWhen the water boiled, it caused so much fear.\nWhen death and their pain, seemed like it was near. \nThey prayed and they sang, the mother and child\nBy the fiery place, when you had arrived \n\nአዝ==\nCyricus had hope, never fearing death \nBecause St Gabriel, with them you were close\nThe son told his mom, do not be afraid \nThis difficult trial, through faith they had passed \n\nአዝ==\nI also believe that you will save me,\nIntercede to Christ, who loves patiently \nSo I cross over past this awful time \nplease give me the strength, so I overcome",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur honors the Archangel Gabriel as a powerful protector and bearer of good news. It reflects on his role in delivering and protecting the faithful, especially in times of trial and persecution. The chant references biblical and traditional stories of endurance, including the protection of the righteous in fire and the faith of saints like Cyricus. It emphasizes intercession, courage, and trust in God’s help through His angels.",
+      "youtubeUrl": "",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "archangel-gabriel"
+        ],
+        "themes": [
+          "intercession",
+          "protection",
+          "faith",
+          "trials"
+        ],
+        "usage": [
+          "church-service",
+          "supplication",
+          "saints-commemoration"
+        ],
+        "season": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "go-forth-testify",
+      "title": "Go forth testify",
+      "transliterationTitle": "Hidu Negeru",
+      "lyrics": "Go forth testify tell the whole world He’s risen can’t be conformed our Savior and Lord\nThe incapable death He destroyed with His might we are restored\nReleased us from the seal’s hold the resurrected Lord\n\nሂዱ ንገሩ አውሩ ለዓለም ተነሥቷል በዚህ የለም መድኃኔዓለም\nሞት የማይችለው የበረታ ኃያል ነው የማይረታ\nማኅተሙን የፈታ የትንሣኤው ጌታ\n\nOppressive death with His victory is defeated\nRemoved my chains and replaced with the harp of David\nSaying O death where’s your sting we sing in unison\nYour Holy Cross and name serve as our protection\nWe declare salvation\n\nGo forth testify tell the whole world He’s risen can’t be conformed our Savior and Lord\nThe incapable death He destroyed with His might we are restored\nReleased us from the seal’s hold the resurrected Lord\n\nWith Your guidance and eternal aid we have crossed through\nDemise could not confine You to the burial tomb\nThe merciless with Your might they are now imprisoned\nWe praise You Lord for Your success is never halted\nYou shall be exalted\n\nGo forth testify tell the whole world He’s risen can’t be conformed our Savior and Lord\nThe incapable death He destroyed with His might we are restored\nReleased us from the seal’s hold the resurrected Lord\n\nAside from You who can die in order to redeem\nThrough witnesses Your virtuous works will always gleam\nMy beloved Your beauty is radiant and beams\nDismay and fear were instilled into our enemies\nMarvelous are Your deeds\n\nGo forth testify tell the whole world He’s risen can’t be conformed our Savior and Lord\nThe incapable death He destroyed with His might we are restored\nReleased us from the seal’s hold the resurrected Lord\n\nProclaim this news for it is above all miracles\nFor this triumph dressed in white are His holy angels\nThe city shook and had awakened during the night\nThe hymnody made the prison tremble out of fright\nPlay the drums in delight\n\nGo forth testify tell the whole world He’s risen can’t be conformed our Savior and Lord\nThe incapable death He destroyed with His might we are restored\nReleased us from the seal’s hold the resurrected Lord\n\nሂዱ ንገሩ አውሩ ለዓለም ተነሥቷል በዚህ የለም መድኃኔዓለም\nሞት የማይችለው የበረታ ኃያል ነው የማይረታ\nማኅተሙን የፈታ የትንሣኤው ጌታ",
+      "transliterationLyrics": "Hidu negeru awru le'alem tenes'twal bezih yelem medhanealem\nMot yemaychilaw yebereta hayal new yemayreta\nMahtemun yefeta yetinsa'ew geta",
+      "meaning": "This mezmur proclaims the Resurrection of Jesus Christ and calls believers to spread the good news to the whole world. It celebrates Christ’s victory over death, the breaking of the seal of the tomb, and the restoration of humanity. The chant emphasizes salvation, the power of the Cross, and the joy of resurrection, encouraging bold testimony and praise. It reflects triumph, hope, and the eternal victory of Christ over sin and death.",
+      "youtubeUrl": "https://youtu.be/3HYZ9OsF99o?si=g80Hg325LyPf9dht",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "fasika"
+        ],
+        "saints": [],
+        "themes": [
+          "resurrection",
+          "salvation",
+          "victory",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "fasika",
+          "evangelism"
+        ],
+        "season": [
+          "fasika"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "he-is-praised",
+      "title": "He is praised",
+      "transliterationTitle": "Misgun New Yetemesegene",
+      "lyrics": "He is praised honored and glorified \nHe shows me mercy when I abide   \nI’ll praise Him give Him my offering\nFor my home is complete by my King \n\nMisgun new yetemesegene\nBaryawun enen yikir yale\nYimesgen yimesgenilign\nGojoyen Amlak molalign\n\nI know my Lord He gives for all generously\nMy void has been filled now receive my melody\nFor what I lacked you granted me its true\nAll will align for good by your virtue \n\nMy sorrow He banished so that my joy perceives\nThe emptiness has passed you fulfilled all my needs\nTo give and take He has authority\nTo knock and ask is all He needs of me\n\nI may be pushed and heaved but I won’t feel distress\nYou are my foundation my home is your fortress \nWhen you grant me tangibles to my eyes\nDo not withhold from me your paradise\n\nHe gives from His vast wealth the sovereign gracious Lord\nFor every need we have His blessings have been poured\nWhen we're deprived through Him we are restored\nPraise to our God in our hearts He’s adored \n\nHe is praised honored and glorified \nHe shows me mercy when I abide   \nI’ll praise Him give Him my offering\nFor my home is complete by my King \n\nMisgun new yetemesegene\nBaryawun enen yikir yale\nYimesgen yimesgenilign\nGojoyen Amlak molalign",
+      "transliterationLyrics": "Misgun new yetemesegene\nBaryawun enen yikir yale\nYimesgen yimesgenilign\nGojoyen Amlak molalign",
+      "meaning": "This mezmur is a song of gratitude and praise to God for His mercy, provision, and faithfulness. It expresses trust in God as the provider who fills every need and removes sorrow. The chant highlights a personal relationship with God, emphasizing reliance on Him as a foundation, gratitude for His blessings, and the joy that comes from His presence. It reflects themes of thanksgiving, faith, and divine provision.",
+      "youtubeUrl": "https://youtu.be/qfC1bGjFwCw?si=b95Ixjj6hIai-ikj",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "gratitude",
+          "faith",
+          "provision"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "personal-prayer"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "he-who-created-you",
+      "title": "He who created you",
+      "transliterationTitle": "He Who Created You",
+      "lyrics": "He who created you without blemish for the world’s salvation /2/\nBlessed be God let His name praised \nBlessed be God let His let His name be praised",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a short praise focused on God’s perfect creation and His role in salvation. It glorifies God for creating without blemish and calls believers to continually bless and praise His holy name. It emphasizes divine perfection, salvation, and worship.",
+      "youtubeUrl": "https://youtu.be/2_SWy5Tgecs?si=GSMULdyun6Gdy9Y_",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "salvation"
+        ],
+        "usage": [
+          "church-service",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "hes-done-wonders-for-me",
+      "title": "He’s done wonders for me",
+      "transliterationTitle": "Dinq AdrigoLignal",
+      "lyrics": "He’s done wonders for me the Lord God Almighty\nLifted me from the dust He never forgot me\nድንቅ አድርጎልኛል የሠራዊት ጌታ\nአልረሳኝም አምላክ አነሳኝ ከትቢያ\n\nHe’s done wonders for me --- Without counting my sins\nHe’s done wonders for me --- He called me to His home\nHe’s done wonders for me --- While I had been worthless\nHe’s done wonders for me --- Told me my child come\nHe’s done wonders for me --- In His Second Coming\nHe’s done wonders for me --- To give me His kingdom\n\nHe’s done wonders for me the Lord God Almighty\nLifted me from the dust He never forgot me\n\nHe’s done wonders for me --- From the den of lions\nHe’s done wonders for me --- His shelter kept me safe\nHe’s done wonders for me --- In front of all my foes\nHe’s done wonders for me --- I’ve been given His grace\nHe’s done wonders for me --- How can I repay Him?\nHe’s done wonders for me --- His love can’t be replaced\n\nHe’s done wonders for me the Lord God Almighty\nLifted me from the dust He never forgot me\n\nHe’s done wonders for me --- All of my enemies\nHe’s done wonders for me --- Against me they had formed\nHe’s done wonders for me --- Who will come to rescue?\nHe’s done wonders for me --- Mockingly they had told\nHe’s done wonders for me --- Swiftly came to my aid\nHe’s done wonders for me --- From death I was restored\n\nHe’s done wonders for me the Lord God Almighty\nLifted me from the dust He never forgot me\nድንቅ አድርጎልኛል የሠራዊት ጌታ\nአልረሳኝም አምላክ አነሳኝ ከትቢያ",
+      "transliterationLyrics": "Dinq adrigoLignal yeserawit geta\nAlresagnim Amlak anesagn ketbiya",
+      "meaning": "This mezmur is a testimony of God’s goodness and faithfulness. It expresses gratitude for the many wonders God has done, including forgiveness of sins, protection from danger, and restoration from suffering. The chant reflects a personal journey of being lifted from humility to grace, emphasizing God’s mercy, love, and saving power.",
+      "youtubeUrl": "https://youtu.be/l9SV15gtGVA?si=dOY-qnbJ0rbBqJEj",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "gratitude",
+          "deliverance",
+          "faith",
+          "testimony"
+        ],
+        "usage": [
+          "church-service",
+          "testimony",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "hosanna-in-ariyam",
+      "title": "Hosanna in Ariyam",
+      "transliterationTitle": "Hosanna Be Ariyam",
+      "lyrics": "Holy Jerusalem you are at peace today \nHe has entered your gates \nYour God leading the way \n\nHosanna in Ariyam \nThey sang unto their Lord\nThe children of Holy Jerusalem \n\nThe city of David O Bethlehem rejoice \nThe light of your people \nHas come hearing your voice \n\nWith their praises they sang \nHosanna to their King \nWithin Jerusalem\nTheir hearts poured offerings \n \nSuffering of Jesus \nThe pure of heart witnessed \nTheir eyes welling with tears \nThey all cried with sadness \n\nሆሳዕና በአርያም / Hosanna be ariyam \nእያሉ ዘመሩ / Eyalu zemeru\nሕጻናት በኢየሩሣሌም / Hitsanat be Eyerusalem",
+      "transliterationLyrics": "Hosanna be ariyam\nEyalu zemeru\nHitsanat be Eyerusalem",
+      "meaning": "This mezmur reflects the joyful and solemn entry of Jesus Christ into Jerusalem, where He was welcomed with praises of 'Hosanna' by the children and the people. It captures both the celebration of His kingship and the underlying sorrow, as His suffering was near. The chant highlights humility, praise, and the recognition of Christ as King and Savior.",
+      "youtubeUrl": "https://youtu.be/sE2m43ngxTc?si=VD6aDKIKqWwZ2GfP",
+      "language": "english",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "hosanna"
+        ],
+        "saints": [],
+        "themes": [
+          "praise",
+          "humility",
+          "kingship",
+          "holy-week"
+        ],
+        "usage": [
+          "church-service",
+          "hosanna",
+          "holy-week"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-call-out-your-name",
+      "title": "I call out your name",
+      "transliterationTitle": "Simish Teriche",
+      "lyrics": "With unshaken faith I call out your name\nPleading to Mary I won't fall in shame\nI find my solace when I call to you\nTo you my reverence O Virgin is due\n\nSimshin teriche meche afralew\nMariam biye meche ewedkalew\nYemitsnanabet simish newina\nDingil hoy lakrib lanchi misgana\n\nIn the land of foes swallowed by darkness\nLiving for ages trampled by meekness \nWhen the devil dragged me through misery \nThe Savior of the world you brought for me\n\nWhen I left the land of my father's place\nAmong the gentiles slavery I faced\nYou came to my aid bestowed your blessing\nMary with you I end my suffering\n\nWhen my tent was filled with the wedding guests \nThe ushers and hosts were in grave distress\nWhen stricken without gifts to give in strife\nYour swift aid steered me from the edge of life\n\nMy dreams like the clouds scattered in the breeze\nFaded like a mist like feathers with ease\nIn my shortcomings I will still stand tall\nIn Theotokos hope answers the call\n\nWhen my kin forsakes no one to confide\nWhen this heartless world cast me out aside\nWith you fear subsides power dwells in me\nThrough the fiercest winds I will sail the sea\n\nIn the grasp of foes I found agony\nPain and suffering trials aplenty\nI will never cease my praises to you\nDear Virgin Mary your marvels renew \n\nWhen tormentors loom shouting threats at me\nTheir words can't cease the love I hold for thee\nIn the scoffer's crowd your name I’ll decree\nSo my faith withstands shield me dear Mary\n\nIn the grasp of foes I found agony\nPain and suffering trials aplenty\nI will never cease my praises to you\nDear Virgin Mary your marvels renew \n\nWith unshaken faith I call out your name\nPleading to Mary I won't fall in shame\nI find my solace when I call to you\nTo you my reverence O Virgin is due\n\nSimshin teriche meche afralew\nMariam biye meche ewedkalew\nYemitsnanabet simish newina\nDingil hoy lakrib lanchi misgana",
+      "transliterationLyrics": "Simshin teriche meche afralew\nMariam biye meche ewedkalew\nYemitsnanabet simish newina\nDingil hoy lakrib lanchi misgana",
+      "meaning": "This mezmur is a deep expression of faith and reliance on the intercession of the Holy Virgin Mary. It portrays a believer calling upon her in times of suffering, loneliness, and trials, finding comfort, strength, and hope. The chant highlights her role as Theotokos, the one who brings salvation through Christ, and emphasizes perseverance, faith, and unwavering devotion even in the face of hardship.",
+      "youtubeUrl": "https://youtu.be/VYFtx3WDIGM?si=HTK5YkUb15oqAgob",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "intercession",
+          "faith",
+          "comfort",
+          "trials"
+        ],
+        "usage": [
+          "church-service",
+          "supplication",
+          "personal-prayer"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-called-unto-my-dear-lord",
+      "title": "I called unto my Dear Lord",
+      "transliterationTitle": "I Called Unto My Dear Lord",
+      "lyrics": "I called unto my Dear Lord when my life was impaired \nI called unto my Father when I had none to spare\nMy anxiousness he calmed rescued me from despair \n\nWhen I appeal to Him He hears my desperate cry\nHis ears are attentive and open are His eyes\nFor He will rescue me from a life that is grim\nI may be unworthy but still I will praise Him\n\nUnable to walk on the path of righteousness \nThe drowning waves of sin seemed to me tireless\nWhen I appealed to Him with a regretful heart\nHe brought forth His mercy and pulled me from the dark\n\nJust as you saved Noah rescue us from the storm\nShield us from the arrows coming in every form\nMy strength will be in you I won’t tremble in fear \nI will lean on the cross knowing my God is near \n\nWith abundant mercy death was left in the past\nHe never left His child showing His love is vast\nGod received me with joy with His bright shining light\nWho will stand against me with my Lord as my might",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a heartfelt prayer of calling upon God in times of distress and weakness. It expresses trust in God’s mercy, His readiness to hear prayers, and His power to rescue from sin, fear, and despair. The chant reflects repentance, dependence on God, and confidence in His protection, drawing parallels to biblical deliverance like Noah’s salvation. It emphasizes faith, repentance, and unwavering trust in God’s saving power.",
+      "youtubeUrl": "https://youtu.be/e837OT6aUgo?si=qy8mHyrAbLK1D9-9",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "repentance",
+          "faith",
+          "deliverance",
+          "trust"
+        ],
+        "usage": [
+          "church-service",
+          "personal-prayer",
+          "supplication"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-found-tranquility",
+      "title": "I found tranquility",
+      "transliterationTitle": "Ewnetegna Selam",
+      "lyrics": "I found tranquility it is within Your home\nHelp me out of chaos I ask you Lord of hope\n\nThinking of all my sins my heart beats anxiously\nBeing far from you Lord my soul lives fearfully\nReturn me to Your grace I'll find my way back home\nThe one true holy peace I found in Your abode\n\nFor prayer liturgy I could not persevere\nI stood before the crowd my praises not sincere\nMy endless temptations have dragged me far from You\nSave me Emmanuel with faith that I once knew\n\nLet my eyes pour their tears as they cry for my sins\nMay the rest of my days be spent in repentance\nAt the very hour the moment I'm redeemed\nThinking of Your love Lord I've fallen at Your feet\n\nEwnetegna selam yalew ke betih new\nErdagn alinawet eleminihalew",
+      "transliterationLyrics": "Ewnetegna selam yalew ke betih new\nErdagn alinawet eleminihalew",
+      "meaning": "This mezmur is a deep expression of repentance and longing for peace found in God’s presence. It reflects the struggle with sin, spiritual distance, and the desire to return to a life of sincere worship. The chant emphasizes confession, humility, and the healing peace found in God’s house. It calls for restoration, tears of repentance, and renewed faith in Christ.",
+      "youtubeUrl": "https://youtu.be/-buE7yA5Ezo?si=vE7mp6eWrt6Q0Pi_",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "repentance",
+          "peace",
+          "faith",
+          "humility"
+        ],
+        "usage": [
+          "church-service",
+          "personal-prayer",
+          "supplication"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-have-no-righteous-deeds",
+      "title": "I have no righteous deeds",
+      "transliterationTitle": "Enes Bemigibare",
+      "lyrics": "Enes bemigibare dekama hognalehu\nEzegnilegni Dingil Elemeneshalehu\nEzegnilegni Dingil Ematsenishalew\n\nI have no righteous deeds, I have fallen to sin\nPray for me Saint Mary, see me with compassion\nPlead for me Saint Mary, see me with compassion\n\nSo that I may escape, the eternal fire \nI call upon your name, mother of my Savior \n\nMedicine of Nahom, melody of David,\nManna of Elijah, come to us on a cloud \n\nYou are my strength Mary, whenever I am weak \nYour intercession is, what my broken heart needs\n\nMy sins and my weakness, are causing me to stress\nThe mother of my Lord, pray for my forgiveness",
+      "transliterationLyrics": "Enes bemigibare dekama hognalehu\nEzegnilegni Dingil elemeneshalehu\nEzegnilegni Dingil ematsenishalew",
+      "meaning": "This mezmur is a humble prayer of repentance and supplication to the Holy Virgin Mary. It expresses the believer’s recognition of sin and unworthiness, while seeking her intercession for mercy and forgiveness. The chant highlights Mary as a source of strength, comfort, and spiritual healing, emphasizing her role as the Mother of God who pleads on behalf of humanity. It reflects deep humility, repentance, and reliance on her compassion.",
+      "youtubeUrl": "https://youtu.be/TP86SGhuDSY?si=_RzxKJpTow_j8GtO",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "repentance",
+          "intercession",
+          "humility",
+          "supplication"
+        ],
+        "usage": [
+          "church-service",
+          "supplication",
+          "personal-prayer"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-have-seen-all-i-need",
+      "title": "I have seen all I need",
+      "transliterationTitle": "I Have Seen All I Need",
+      "lyrics": "I have seen all I need (3) (Luke 2)\nMy Lord is here indeed\n\nI was in disbelief of a virgin birth\nBut now I have seen this mystery here on earth\nI waited for so long to see this prophecy\nAnd now I have seen my Lord who came to rescue me\n\nWithout leaving His throne He came down from above\nAlthough my sins were great He came to show His love\nAnd now I can declare that I have been set free\nMy God is truly One and in One He is Three\n\nMy Lord Jesus Christ, my Savior and my King\nI always worship Him it’s His name that I sing\nThe light of the world He’s all that I can see\nThe Word became flesh, and He came to save me\n\nThe Son becoming Man this holy mystery\nNo one can understand this sacred unity\nThose who have eyes see! Those who have ears hear!\nChrist has come to this world there’s nothing else to fear",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur proclaims the revelation of Christ through the Incarnation, reflecting the fulfillment of prophecy as described in Luke 2. It expresses the joy of witnessing the Savior, emphasizing the mystery of God becoming man, the Trinity, and the salvation brought through Jesus Christ. The chant highlights faith, divine love, and the assurance that Christ’s coming removes fear and brings eternal hope.",
+      "youtubeUrl": "https://youtu.be/SQjXBVaHyAA?si=kDD-Oq4mTmRG0BSd",
+      "language": "english",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "gena"
+        ],
+        "saints": [],
+        "themes": [
+          "incarnation",
+          "salvation",
+          "trinity",
+          "joy"
+        ],
+        "usage": [
+          "church-service",
+          "holiday-worship"
+        ],
+        "season": [
+          "gena"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-know-the-one-who-has-saved-me",
+      "title": "I know the one who has saved me",
+      "transliterationTitle": "Yadanegnin Awkewalew",
+      "lyrics": "I know the one who has saved me\nJesus the Lord who died for me\nSince I have no way to repay\nI will give Him praise and glory\n\nBanishing the darkness away\nHe is the one who shined His light\nBecause of Christ I am complete\nI will follow Him day and night\nI saw the brilliant light of God\nAlways ahead guiding me now \nHis love brought me toward the church\nI chose to worship Him and bow\nI will give praise (3) For He loves me always\n\nHe gave me rest in His embrace\nMy corrupted life He maintains\nDying on the cross for my sins\nI was healed while He was in pain\nHis tireless arms carry me\nSo that I may live in honor\nFor my salvation He came down\nHumbly He laid in a manger \nI will give praise (3) For He loves me always\n\nTo glorify I will sing songs\nOn the cross Jesus shed His blood \nFor the sake of His children’s lives\nHe gave His life for those He loved\nThis love brought Christ from the heavens\nThe humble God came for my gain\nI became holy through the lamb\nOn Calvary the Lord was slain\nI will give praise (3) For He loves me always\n\nThe King who wore a crown of thorns\nLeft His throne and glory for me\nHe guided me to my honor\nWith holy blood I was redeemed\nBowing His head He raised me up\nHis righteousness brightens my face\nI will live the rest of my days\nWith Jesus Christ who gives me grace\nI will give praise (3) For He loves me always\n\nI know the one who has saved me\nJesus the Lord who died for me\nSince I have no way to repay\nI will give Him praise and glory\n\nYadanegnin awkewalew\nYemotelign Eyesus new\nSilelelegn yemikeflew\nSitotaye misgana new",
+      "transliterationLyrics": "Yadanegnin awkewalew\nYemotelign Eyesus new\nSilelelegn yemikeflew\nSitotaye misgana new",
+      "meaning": "This mezmur is a personal declaration of salvation through Jesus Christ. It expresses gratitude for His sacrifice on the Cross, His love, and the transformation He brings into a believer’s life. The chant reflects themes of redemption, guidance, and devotion, emphasizing that Christ’s sacrifice cannot be repaid except through praise and faithful living. It highlights the journey from darkness to light and the commitment to follow Him always.",
+      "youtubeUrl": "https://youtu.be/JmPYFSgH23c?si=NKJVBA1eLJIm19UY",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "salvation",
+          "praise",
+          "faith",
+          "cross"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "testimony"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-will-forever-sing-for-my-lady",
+      "title": "I will forever sing for my Lady",
+      "transliterationTitle": "Yihew Ezemiralew Le Emebete",
+      "lyrics": "I will forever sing for my Lady \nFor she has filled my home with homily\nBecause she’s visited me through this wretched life\nI will praise the Virgin until the end of time \n\nFrom my sorrowful face she soothed away my tears \nI’m made to magnify her with songs and prayers \nWith misery and pain I no longer suffer \nInto my home she came the mother of wonder\n\nThe disarray of life crumbling around me \nShe cleared it all away restored my sanity \nShe listens to my pleas my appeals and my cries\nWith her intercession my prayers will arise \n\nNo longer do I see through a clouded vision \nMy eyes have been healed by her hands of compassion \nWhen I appeal to her with sorrow and despair \nImmaculate is she, to the world I’ll declare \n\nDay and night I lament with a heavy burden \nFrom drowning she saved me so I won’t be saddened \nFor she has pulled me free from the clench of my sins \nTo her eternally I will raise up my hands \n\nI will forever sing for my Lady \nFor she has filled my home with homily\nBecause she’s visited me through this wretched life\nI will praise the Virgin until the end of time \n\nYihew ezemiralew le Emebete\nYe fiqrua bereket gebto bete\nSilegobegnechiw gosquala hiyweten\nAmeseginalehu Dingil Emebeten",
+      "transliterationLyrics": "Yihew ezemiralew le Emebete\nYe fiqrua bereket gebto bete\nSilegobegnechiw gosquala hiyweten\nAmeseginalehu Dingil Emebeten",
+      "meaning": "This mezmur is a heartfelt expression of love, gratitude, and devotion to the Holy Virgin Mary. It reflects the believer’s testimony of being comforted, healed, and restored through her intercession. The chant emphasizes her compassion, her role in lifting burdens and removing suffering, and the peace she brings into one’s life. It highlights continual praise, faith, and reliance on her as a source of spiritual strength.",
+      "youtubeUrl": "https://youtu.be/G0AY07ZJnOQ?si=WAc_gqbBgFrSrEc9",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "intercession",
+          "gratitude",
+          "healing",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "supplication",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-will-praise-you",
+      "title": "I will praise You",
+      "transliterationTitle": "Lamesginih Yene Geta",
+      "lyrics": "I will praise You with Melodies God Almighty\nCompositions will pour out of my heart for Thee\nSinging to you completes me Lord it’s my treasure \nA gift given to glorify you my Father\n\nFrom all that’s mine, I cannot find any worthy\nFill me oh Lord, all your gifts I’ll, return gladly \nYou’re my wisdom, the foundation for all glory \nBountiful are all the blessings, You’ve poured on me\n\nMy gracious Lord who tuned my heart to stand and praise\nReceive my songs from the talents of which You gave \n\nVast is the void I once called life, I’m left empty \nMy hands deprived, offered none to The Almighty\nThough I may live, a life tangled with transgression\nThe songs I sing, may You accept with compassion \n\nMy gracious Lord who tuned my heart to stand and praise\nReceive my songs from the talents of which You gave \n\nWhen you made me from the Earth's dust in your likeness\nWhat work is there aside from praise it is priceless\nDay and night I stand in the house of my father\nTo glorify tirelessly in Your honor\n\nMy gracious Lord who tuned my heart to stand and praise\nReceive my songs from the talents of which You gave \n\nEzra give me the instrument that’s Cherubic \nGrant me David your harp which is therapeutic \nCompositions and songs I learned from the clergy \nTouched by Your love I sing to You though unworthy\n\nMy gracious Lord who tuned my heart to stand and praise\nReceive my songs from the talents of which You gave\n\nLamesginih yene Geta lamesginih\nLiqegnilih yene Geta liqegnilih\nHiywete new zimare tirufate \nYesetehegn endakebrih ante abate",
+      "transliterationLyrics": "Lamesginih yene Geta lamesginih\nLiqegnilih yene Geta liqegnilih\nHiywete new zimare tirufate \nYesetehegn endakebrih ante abate",
+      "meaning": "This mezmur is a heartfelt offering of praise to God, recognizing that all gifts, talents, and abilities come from Him. It expresses humility, gratitude, and the desire to glorify God through song and worship. The chant reflects the believer’s acknowledgment of unworthiness while still offering praise with a sincere heart. It emphasizes worship as a purpose of life and highlights music as a divine gift used to honor God.",
+      "youtubeUrl": "https://youtu.be/RDNDcWwU-lQ?si=Yzm5IdD4QEzm1PN7",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "worship",
+          "gratitude",
+          "humility"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "i-wont-forget",
+      "title": "I won't Forget",
+      "transliterationTitle": "I Won't Forget",
+      "lyrics": "I won’t forget what you did for me\nOh, Lord you went to hell for me\nTo save me from misery\nOh, Lord You went to hell for me\nTo defeat my adversary\n\nI sold my soul to the serpent\nI was stripped of being Your son\nI was alone and deserted\nUntil my fate you reverted.\nYou saved the wretched one like me\nThough I don’t deserve to be\nYou surrendered Yourself for me\nWith Your blood You set me free.\n\nThe weight of my sin was a burden\nMy condition seem to worsen\nBut then you came for the rescue\nAnd paid my debt that I was due.\nYou saved the wretched one like me\nThough I don’t deserve to be\nYou surrendered Yourself for me\nWith Your blood You set me free.\n\nNever deserved, your divine gift\nUp to the cross, you loved me first\nAnd now I shout, from the rooftops\nI’ll sing for You, I will not stop.\nYou saved the wretched one like me\nThough I don’t deserve to be\nYou surrendered Yourself for me\nWith Your blood You set me free",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a powerful testimony of Christ’s sacrifice and redemption. It reflects deep gratitude for Jesus Christ, who conquered death and saved humanity from sin. The chant emphasizes the believer’s unworthiness contrasted with God’s unconditional love, highlighting the Cross, the shedding of His blood, and victory over the enemy. It calls for a life of continual praise in remembrance of His saving work.",
+      "youtubeUrl": "https://youtu.be/ClxP0TdIvG4?si=4EAYUMxjsgZpE3SE",
+      "language": "english",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "fasika"
+        ],
+        "saints": [],
+        "themes": [
+          "salvation",
+          "cross",
+          "redemption",
+          "gratitude"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "holy-week"
+        ],
+        "season": [
+          "lent",
+          "fasika"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "in-that-very-hour",
+      "title": "In That Very Hour",
+      "transliterationTitle": "Abet Yezian Gize",
+      "lyrics": "In that very hour when Christ comes once again (2)\nFrom the youth to the old (3) \nWe will all face Him then\n\nFrom the east to the west from the north to the south\nWhen the winds are released (3) to rain down the chaos.\n\nThe heavens and the Earth when they start to align (2)                             \nWe will meet our maker (3) with nowhere left to hide\n\nThe Righteous to the right to the left the sinners (2)\nWith the sound of the horns (3) with the beat of the drums\n\nThe Earth disintegrates and the bones are gathered (2)  \nIt is overwhelming (3) when God’s judgment is served\n\nThe fear of the darkness the cries and the screaming (2)\nFor those who closed the door, to the light of the Lord, for those who closed the door, when Christ had been knocking\n\nAs they enter heaven the righteous by their works (2)\nThe sinners were sentenced (3) to the eternal curse\n\nአቤት የዚያን ጊዜ ክርስቶስ ሲመጣ (2)\nትንሹም ትልቁም (3) መድረሻውን ሲያጣ",
+      "transliterationLyrics": "Abet yezian gize Kristos simeta (2)\nTinishum tilikum (3) medreshawn siyata",
+      "meaning": "This mezmur reflects the Second Coming of Jesus Christ and the final judgment. It describes the gathering of all people, the separation of the righteous and the sinners, and the overwhelming reality of God’s judgment. The chant serves as a warning and a call to repentance, encouraging believers to remain faithful and prepared for the day when all will stand before Christ.",
+      "youtubeUrl": "https://youtu.be/OjL4N0rNiIw?si=nwxswHxcmYgX2cIQ",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "judgment",
+          "second-coming",
+          "repentance",
+          "fear-of-god"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "repentance"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "in-your-temple-o-lord",
+      "title": "In Your Temple O Lord",
+      "transliterationTitle": "Be Bete Mekedese",
+      "lyrics": "In Your Temple O Lord You have raised me \nFor my tongue you have taught me melody \nMy God since birth it’s you I desire \nFrom pains of this world I have tired \n\nBe bete mekedese yasadekegn \nye afayen tibebn yastemarkegn \nye lijente amlak wedet sale \nkezi alem hasab kinde zale \n\nMy home is a poorly made creation \nQuivering it is the foundation \nFrom the strength of my foes I am exhausted \nAlone I’m no longer supported\n\nIn Your Temple O Lord You have raised me \nFor my tongue you have taught me melody \nMy God since birth it’s you I desire \nFrom pains of this world I have tired \n\nWasteful I have become rebellious \nMy sins against you are numerous \nClashing spiritually my path has blurred \nWho can reunite me with Your Word \n\nIn Your Temple O Lord You have raised me \nFor my tongue you have taught me melody \nMy God since birth it’s you I desire \nFrom pains of this world I have tired \n\nYou’re the peace that I long for all my years\nI’ve written you in my heart with tears\nThe temptations of this world have chained me \nRestore me O Lord and hear my plea \n\nIn Your Temple O Lord You have raised me \nFor my tongue you have taught me melody \nMy God since birth it’s you I desire \nFrom pains of this world I have tired \n\nRebels enter your home though unworthy \nTouched by your love they receive mercy\nFrom them your kind embrace did not depart \nYour warm compassion melted their heart\n\nIn Your Temple O Lord you have raised me \nFor my tongue you have taught me melody \nMy God since birth it’s You I desire \nFrom pains of this world I have tired \n\nBe bete mekedese yasadekegn \nye afayen tibebn yastemarkegn \nye lijente amlak wedet ale \nkezi alem hasab kinde zale",
+      "transliterationLyrics": "Be bete mekedese yasadekegn\nYe afayen tibebn yastemarkegn\nYe lijente amlak wedet ale\nKezi alem hasab kinde zale",
+      "meaning": "This mezmur expresses a deep longing for God’s presence and the peace found within His holy temple. It reflects repentance, humility, and the desire to return to a life of sincere worship. The chant highlights God’s mercy in accepting the unworthy, restoring the broken, and giving purpose through praise. It emphasizes spiritual struggle, healing, and the transformation that comes from dwelling in God’s presence.",
+      "youtubeUrl": "https://youtu.be/a6TFnd_1JBY?si=Uem4mUn5BiEUMZqj",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "repentance",
+          "worship",
+          "peace",
+          "restoration"
+        ],
+        "usage": [
+          "church-service",
+          "personal-prayer",
+          "supplication"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "let-us-give-praise",
+      "title": "Let us give praise",
+      "transliterationTitle": "Let Us Give Praise",
+      "lyrics": "Let us give praise (2) to the Almighty God\nWe praise Him for He is glorified (2)\n\nWe have crossed through the sea the waters have run dry\nUpon our enemies triumphantly we rise\nWe were freed from their hold the chains of slavery\nThe bread that gives us life is truly heavenly\n\nTrials that caused us fear abundant they all were\nWe have passed through them all with our Lord and Savior\nThough we may lose our strength weakened by obstacles\nOur salvation is God He makes all possible\n\nWe drank holy water that flowed from the boulder\nWe praise God Almighty who is full of wonder\nCome all let us rejoice our lives have been redeemed\nOur enemy Satan he has left in defeat",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a joyful proclamation of praise to God for His deliverance and salvation. It recalls biblical acts such as crossing the Red Sea and receiving life-giving provision, symbolizing God’s power to rescue His people. The chant emphasizes victory over enemies, overcoming trials through faith, and the ultimate defeat of Satan. It calls believers to rejoice and give thanks for God’s mighty works and redemption.",
+      "youtubeUrl": "https://youtu.be/clDr_G-wBQs?si=uftbU-ouD9W3xKuK",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "deliverance",
+          "victory",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "celebration"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "lord-it-is-your-grace",
+      "title": "Lord it is your grace",
+      "transliterationTitle": "Cherinetih New",
+      "lyrics": "Lord it is your grace that preserves me for all my days\nLord it is your grace that shepherds me for all my days \nUnto you I will chant these words to offer praise (2)\n\nIf I hide my talents and displease you   \nIf I don’t have my lamp nor wait for you\nDon’t forget me my Lord won’t you forgive\nWith love save me from death so I can live\nI’m never satisfied away from you \nI’m feeling so empty and hopeless too\nI know you will offer me salvation \nI’ve come in repentance with devotion \n\nI have nothing else left you’re my last hope \nBut you are kind to me that’s how I cope \nThe weight on my shoulders is lighter now \nI received your mercy to you I bow\nWhen I sing you this hymn in your temple \nWhen I tell others of your miracle   \nWho am I to praise you it's not my place\nLord I marvel at your abundant grace \n\nI stopped putting my faith onto others \nThrough mercy and kindness you're my helper \nWith you sustaining me my life has healed\nYou are my medicine you are my shield \nI’m falling short of what you asked of me\nThe mystery on the Cross I failed to see \nMy Lord disperse the fog that blocks my sight \nThen I’ll focus on you dear Jesus Christ \n\nCherinetih new yaderesegn eske zare\nCherinetih new yetebeqegn eske zare\nLamesginih yene Geta be zimare (2)\n\nቸርነትህ ነው ያደረሰኝ እስከ ዛሬ\nቸርነትህ ነው የጠበቀኝ እስከ ዛሬ\nላመስግንህ የኔ ጌታ በዝማሬ (2)",
+      "transliterationLyrics": "Cherinetih new yaderesegn eske zare\nCherinetih new yetebeqegn eske zare\nLamesginih yene Geta be zimare",
+      "meaning": "This mezmur is a reflection on God’s grace and mercy as the sustaining force throughout a believer’s life. It expresses repentance, humility, and dependence on God as the only true source of hope, healing, and salvation. The chant highlights the struggle with sin, the desire to remain faithful, and the gratitude for God’s continuous guidance and protection. It emphasizes grace, repentance, and the transformative power of Christ.",
+      "youtubeUrl": "https://youtu.be/Qteay4_jwHw?si=07w2f-Y42N1UzZgd",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "grace",
+          "repentance",
+          "faith",
+          "humility"
+        ],
+        "usage": [
+          "church-service",
+          "personal-prayer",
+          "supplication"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "melody-of-yared",
+      "title": "Melody of Yared",
+      "transliterationTitle": "Ye Yared Wub Zema",
+      "lyrics": "Melody of Yared My Lady St Mary\na treasure from above\nIn which fitting words or in what language can I \nexpress to you my love\n\nThe heavens and the earth they speak of your marvels \nAnd all of creation testifies with novels \nA tale that is ceaseless, wondrous are your deeds\nOh My Virgin Mary to you none supersede  \nMother of all Saint Mary my strength and aid\nYou swiftly come when I call I’m not afraid \nYour miracles and wonders I have witnessed \nZion Mary you have cured me of emptiness\n\nThe wisdom of our Lord unveiled by you Virgin \nAdam's children escaped the death that came from sin\nIt is you my mother the root of salvation \nWho became the ladder for all of creation\nIf the future's uncertain full of dismay\nWith you as my rod I cannot be led astray \nI’ll stand before you to give praise night and day\nWith humbleness I call you Mary I pray \n\nGenerations as one they will stand to give praise\nYou’ve abolished the curse saved them from sorrow days\nAdam and his children on Earth and in the skies \nHe will sing songs to you may his prayers arise\nThe shadows of this dark world from me they part\nIntercessions made by you have calmed my heart\nWhen you’re with me Saint Mary I shall know peace\nThe clench from the pit of sorrow will be released\n\nMelody of Yared My Lady St Mary\na treasure from above\nIn which fitting words or in what language can I \nexpress to you my love\n\nYe Yared wub zema Dingil Emebete\nSitotaye nesh\nBemin andebete endetis bale kal\nMariam libelish",
+      "transliterationLyrics": "Ye Yared wub zema Dingil Emebete\nSitotaye nesh\nBemin andebete endetis bale kal\nMariam libelish",
+      "meaning": "This mezmur is a poetic expression of devotion to the Holy Virgin Mary, inspired by the spiritual tradition of Saint Yared. It glorifies her as the Mother of God, the source of comfort, and the one through whom salvation was revealed. The chant emphasizes her intercession, her role in overcoming sin, and her place in all creation as a source of peace and hope. It reflects deep reverence, love, and admiration for her spiritual greatness.",
+      "youtubeUrl": "https://youtu.be/c_dgQujBR7Q?si=mDRsHMZLmXkVruo6",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "intercession",
+          "praise",
+          "salvation",
+          "reverence"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "supplication"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "mother-of-god",
+      "title": "Mother of God",
+      "transliterationTitle": "Emebete Ye-Amlak",
+      "lyrics": "Mother of God Virgin Mary\nDay and night I will sing to thee\nYour blessed son I'll glorify\nWorship is due to The Most High\n\nMy heart it will arise tuned for praise I will sing\nThrough my humility I give my offering \nZion you are near me Abraham's holy tent\nMother of shining light it’s you I lean against\n\nO Green Meadow of Peace the one He had chosen\nArk of the covenant you're Isaiah's virgin\nQueen of heaven and Earth standing on the Lord's right\nHonor is due to her we will sing day and night\n\nDearest Virgin Mary the mother of us all\nWith your intercession save me so I don't fall\nHelp me cross through the flames keep me on the right path\nDeath and defeat will cease since I have you at last\n\nMother of God Virgin Mary\nDay and night I will sing to thee\nYour blessed son I'll glorify\nWorship is due to The Most High\n\nEmebete Ye-Amlak enat\nLamesginish qen ke lelit\nLelijishim kibir wedase\nTaqerbalech zewtir nefse",
+      "transliterationLyrics": "Emebete Ye-Amlak enat\nLamesginish qen ke lelit\nLelijishim kibir wedase\nTaqerbalech zewtir nefse",
+      "meaning": "This mezmur is a reverent hymn dedicated to the Holy Virgin Mary, the Mother of God. It glorifies her role as Theotokos, the chosen vessel through whom salvation came into the world. The chant highlights her intercession, her symbolic titles such as Ark of the Covenant and Queen of Heaven, and her closeness to God. It expresses devotion, praise, and reliance on her guidance and protection in the spiritual journey.",
+      "youtubeUrl": "https://youtu.be/nN_NKTnZ6Hc?si=h5h0SE7YjAseLl7A",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "st-mary"
+        ],
+        "themes": [
+          "intercession",
+          "praise",
+          "theotokos",
+          "reverence"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "supplication"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "my-benevolent-lord",
+      "title": "My Benevolent Lord",
+      "transliterationTitle": "Balewiletaye",
+      "lyrics": "My Benevolent Lord\nHe Lifted me from dust when I was discarded\nI praise Him safeguarded \n\nClosed off by Simon with a heavy discernment \nThough he looked down on me with self entitlement \nWith a proclamation the Lord drew me near Him\nI washed His feet with tears no longer feeling grim\n\nThough my job was to tax collect and oversee\nI was ordered by Christ to come down from the tree\nHis overwhelming grace I struggled to carry\nFor He has blessed my home Jesus Christ set me free\n\nTo be stoned by jurors when I was surrounded\nThey listed all my sins to see me convicted\nSin returned the verdict to each their own accord\nGo home in peace He said my savior and my Lord\n\nThe God that I worship I know Him He is true\nFor all He's done for me with abundant virtue\nWithin my heart I bear His love and His statute \nI cannot leave His sight for He has made me new\n\nBalewiletaye\nKamed yanesahegn ketibya tetiye\nTemesgen Getaye",
+      "transliterationLyrics": "Balewiletaye\nKamed yanesahegn ketibya tetiye\nTemesgen Getaye",
+      "meaning": "This mezmur is a testimony of transformation through the mercy and grace of Jesus Christ. It reflects on biblical moments such as the sinful woman who washed Christ’s feet and the calling of Zacchaeus, showing how Christ lifts the rejected and forgives sins. The chant emphasizes repentance, forgiveness, and the personal relationship with Christ, highlighting His compassion and power to renew a person’s life.",
+      "youtubeUrl": "https://youtu.be/9dXNoeDYw0w?si=X4tZoprCccwbrdkG",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "repentance",
+          "grace",
+          "salvation",
+          "testimony"
+        ],
+        "usage": [
+          "church-service",
+          "testimony",
+          "supplication"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "my-lords-appearance",
+      "title": "My Lord's Appearance",
+      "transliterationTitle": "Getaye Hone",
+      "lyrics": "My Lord’s appearance disfigured and bruised\nHe bled out for me was whipped and abused\nTook on my beatings and lashed in my place\nHis honor was stripped to clothe me in grace\n\nጌታዬ ሆነ ደም ግባት አልባ\nጀርባው በጅራፍ ስለእኔ ደማ\nየእኔን መገረፍ እርሱ ተገርፎ\nክብር አለበሰኝ የእርሱ ተገፎ \n\nTrapped within hatred falsely convicted\nThe Lord gave me life while apprehended\nThe wicked see Him as an offender\nBut for me He is my liberator\nYou were chained to spare us\nMy Savior, Christ Jesus\n\nMy Lord’s appearance disfigured and bruised\nHe bled out for me was whipped and abused\nTook on my beatings and lashed in my place\nHis honor was stripped to clothe me in grace\n\nThey had spat on Him mocked and insulted\nBoldly ridiculed they were conceited\nEncircled by them He refused to speak\nTo give me a voice stayed quiet and meek\nYou were slain to spare us\nMy Savior, Christ Jesus \n\nMy Lord’s appearance disfigured and bruised\nHe bled out for me was whipped and abused\nTook on my beatings and lashed in my place\nHis honor was stripped to clothe me in grace\n\nIn Him we found life poured from His punctures\nRedeemed the watchers and the accusers\nWhen His arms and legs were struck and were nailed\nHe had plucked my thorn from death we prevailed \nYou were pierced to spare us\nMy Savior, Christ Jesus\n\nMy Lord’s appearance disfigured and bruised\nHe bled out for me was whipped and abused\nTook on my beatings and lashed in my place\nHis honor was stripped to clothe me in grace\n\nWhile bare and exposed He covered my shame\nOut of His pure love vinegar He drank\nWith His stream of grace He had quenched my soul\nHe paid the great price and He made me whole\nYou were parched to spare us\nMy Savior, Christ Jesus \n\nMy Lord’s appearance disfigured and bruised\nHe bled out for me was whipped and abused\nTook on my beatings and lashed in my place\nHis honor was stripped to clothe me in grace\n\nጌታዬ ሆነ ደም ግባት አልባ\nጀርባው በጅራፍ ስለእኔ ደማ\nየእኔን መገረፍ እርሱ ተገርፎ\nክብር አለበሰኝ የእርሱ ተገፎ",
+      "transliterationLyrics": "Getaye hone dem gibat alba\nJerbaw bejiraf sile'ene dema\nYenegn megeraf ersu tegerfo\nKibir alebesegn yersu tegefo",
+      "meaning": "This mezmur is a profound reflection on the suffering of Jesus Christ during His Passion. It vividly describes His humiliation, wounds, and sacrifice, emphasizing that He endured all suffering for the salvation of humanity. The chant highlights the exchange of grace, where Christ took on pain and shame to grant redemption and honor to believers. It calls for deep gratitude, reverence, and contemplation of the Cross and Christ’s love.",
+      "youtubeUrl": "https://youtu.be/etcpvBtp7Q8?si=X7BKOZs_-ByqZFJ5",
+      "language": "english",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "cross",
+          "suffering",
+          "salvation",
+          "love"
+        ],
+        "usage": [
+          "church-service",
+          "holy-week",
+          "meditation"
+        ],
+        "season": [
+          "lent"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "my-strength-and-power",
+      "title": "My Strength and Power",
+      "transliterationTitle": "Hayle Birtate",
+      "lyrics": "My strength and power my grace and honor(2)\nThe Trinity is forever and ever (2)\n\nኃይሌ ብርታቴ ክብሬ ሞገሴ /2/\nየዘለዓለሙ የአብረሃሙ ሥላሴ /2/\n\nMy soul has been chosen to give praise and honor\nTo the Holy Spirit to the Son and Father \nGoverning on the throne they're one as well as three \nNothing's impossible to God the Almighty\n\nMy strength and power my grace and honor (2)\nThe Trinity is forever and ever (2)\n\nStanding on the roadside helping all the needy\nI will feed the hungry and care for the sickly\nMake me like Abraham the saint I admire\nFill my home with blessings its what I desire\n\nMy strength and power my grace and honor (2)\nThe Trinity is forever and ever (2)\n\nThe Earth and the waters our God created\nThe works of our Lord by them I'm astounded\nCome so you can witness the miracles on Earth\nRejoice for the barren Sarah has given birth\n\nMy strength and power my grace and honor (2)\nThe Trinity is forever and ever (2)\n\nFor He so loved the world He gave His only son\nTewahedo's mystery God and man became one\nThe power of the Holy Spirit is revealed\nWith saints as His vessels His miracles have healed \n\nMy strength and power my grace and honor (2)\nThe Trinity is forever and ever (2)\n\nኃይሌ ብርታቴ ክብሬ ሞገሴ /2/\nየዘለዓለሙ የአብረሃሙ ሥላሴ /2/",
+      "transliterationLyrics": "Hayle birtate kibire mogese\nYezelelmu yeAbrehamu Selase",
+      "meaning": "This mezmur glorifies the Holy Trinity, emphasizing God as the source of strength, honor, and grace. It proclaims the unity and mystery of the Father, Son, and Holy Spirit while also reflecting on God's creation, miracles, and love for humanity. The chant encourages a life of service, faith, and imitation of the righteous, highlighting the believer’s desire to live according to God’s will and give continual praise.",
+      "youtubeUrl": "https://youtu.be/50UY7G0saYU?si=x65Y6cjHymu3J6Xf",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [
+          "abraham"
+        ],
+        "themes": [
+          "trinity",
+          "praise",
+          "faith",
+          "service"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "teaching"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "my-home-is-filled",
+      "title": "My Home is Filled",
+      "transliterationTitle": "Bedinkuane Elilta Mulu New",
+      "lyrics": "My home is filled with a great jubilee \nMy tent is full with His praise and glory\nFor greater is the Lord that resides within me\n\nBedinkuane elilta mulu new\nBedinkuane zimare mulu new\nBemaninete lay Egziabher talak new\n\nFrom the wrath of my enemy's anger\nHe shields me close my Lord and Protector\nWith compassion my Heavenly armor\nPeace now resides in my home and shelter\n\nMy home is filled with a great jubilee \nMy tent is full with His praise and glory\nFor greater is the Lord that resides within me\n\nHe leads the way for my path shining bright\nIn my fatigue for my knees he gives might\nWith victory He leads me from the front\nHis praise steers me for He’s never distant\n\nMy home is filled with a great jubilee \nMy tent is full with His praise and glory\nFor greater is the Lord that resides within me\n\nThough I have none He always longs for me\nI have been filled no longer unworthy\nEven in times full of uncertainty \nJoyous I am by the Lord Almighty\n\nMy home is filled with a great jubilee \nMy tent is full with His praise and glory\nFor greater is the Lord that resides within me\n\nI will not twine in lament no longer\nI've filled my speech with wisdom and scripture\nThough some days may remind me of my scar\nI will pour songs from the praise reservoir\n\nMy home is filled with a great jubilee \nMy tent is full with His praise and glory\nFor greater is the Lord that resides within me\n\nBedinkuane elilta mulu new\nBedinkuane zimare mulu new\nBemaninete lay Egziabher talak new",
+      "transliterationLyrics": "Bedinkuane elilta mulu new\nBedinkuane zimare mulu new\nBemaninete lay Egziabher talak new",
+      "meaning": "This mezmur expresses the joy and peace that come from God's presence within one's home and life. It emphasizes God's protection, guidance, and strength in times of struggle, reminding believers that true fulfillment comes from Him. The chant highlights victory over hardship, spiritual growth, and the transformation from sorrow to praise, encouraging constant trust in God's power and faithfulness.",
+      "youtubeUrl": "https://youtu.be/vWVCiddDHqk?si=0ZigfZptVlN4kZlB",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "faith",
+          "protection",
+          "joy"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "nation-of-the-cross",
+      "title": "Nation of The Cross",
+      "transliterationTitle": "Hizbe Meskel",
+      "lyrics": "We are the nation of the cross\nOur home is built in the heavens (Philippians 3:20)\nWe love Christ by choice not by force\nOur message will be forgiveness \n\nAs it is written for His sake we’re killed all day long (Romans 8:36)\nAnd we desire to live with Him where we belong\nIf Christ is magnified in our death then let it be\nFor He's the one who died on the cross and set us free\n\nWe fear not those who kill the body but not the soul (Matthew 10:28)\nBut we fear God, He who can destroy both inside hell\nWhen we live on this earth we know that we will suffer (John 16:33)\nBut Jesus overcame this world so we will cheer.\n\nThe gates of hell shall not prevail against our nation (Matthew 16:18)\nIt’s built upon the faith of rock that stays unshaken\nWe are not strange to witness the life of martyrdom\nWe know that God will honor their blood in His kingdom",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur proclaims the identity of believers as the people of the Cross, whose true home is in heaven. It emphasizes voluntary faith in Christ, a life rooted in forgiveness, and readiness to endure suffering for His sake. Drawing from scripture, it highlights courage in the face of persecution, trust in God's ultimate authority, and the victory of Christ over the world. The chant also honors martyrdom, affirming that those who sacrifice for their faith will be rewarded in God's eternal kingdom.",
+      "youtubeUrl": "https://youtu.be/bt2sCebBN-o?si=d-DeUr4ZMOK4GpRT",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "cross",
+          "faith",
+          "martyrdom",
+          "perseverance",
+          "victory"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "o-my-savior-i-can-do-all-through-you",
+      "title": "O My Savior I Can Do All Through You",
+      "transliterationTitle": "Medhanialem Yelem Yemesanew",
+      "lyrics": "O My Savior, I can do all through You\nEmmanuel, I can do all through You\nOnly declare the word, and mountains will be moved\nO My Savior, I can do all through You\n\nMedhanialem yelem yemesanew\nAmmanual yelem yemesanew\nErsu Kal Seenager Teraraw medanew\nMedhanialem yelem yemesanew\n\nI never thought I could pass this adversity\nMy bed was drenched with tears, as they rolled down my cheeks \nHis strength is made perfect, in the face of weakness \nI passed through rough waters,  my burden became less\n\nO My Savior, I can do all through You\nEmmanuel, I can do all through You\nOnly declare the word, and mountains will be moved\nO My Savior, I can do all through You\n\nHe’s the crown of my home, Advisor to my plans\nThe teacher of my soul, through the good and the bad\nHe didn’t forget me, in the day of my need \nHe wiped my tears away, and filled my home with glee\n\nO My Savior, I can do all through You\nEmmanuel, I can do all through You\nOnly declare the word, and mountains will be moved\nO My Savior, I can do all through You\n\nYesterday I was poor, I had nothing to claim \nI had not one title, and nothing to my name\nBut I’m made whole today, only by His mercy, \nGlory be to my God, He who never leaves me\n\nO My Savior, I can do all through You\nEmmanuel, I can do all through You\nOnly declare the word, and mountains will be moved\nO My Savior, I can do all through You\n\nHe removes from my path, that which is not for me, \nAnd by His Will He gives, that which does profit me\nAll things were made by Him, and without Him was naught\nGlory and Praise be to, our King Jesus Christ\n\nO My Savior, I can do all through You\nEmmanuel, I can do all through You\nOnly declare the word, and mountains will be moved\nO My Savior, I can do all through You\n\nMedhanialem yelem yemesanew\nAmmanual yelem yemesanew\nErsu Kal Seenager Teraraw medanew\nMedhanialem yelem yemesanew",
+      "transliterationLyrics": "Medhanialem yelem yemesanew\nAmmanual yelem yemesanew\nErsu kal seenager teraraw medanew\nMedhanialem yelem yemesanew",
+      "meaning": "This mezmur expresses complete reliance on Christ as the source of strength, healing, and transformation. It highlights that through the Savior, all things are possible, even in times of weakness, sorrow, and hardship. The chant reflects a journey from suffering to joy, emphasizing God's mercy, guidance, and faithfulness. It encourages believers to trust in God's word, recognizing Him as the provider, protector, and sustainer of life, and to give glory to Jesus Christ in all circumstances.",
+      "youtubeUrl": "https://youtu.be/ZPVeGqfGnaE?si=zBbZ111t9rUXaWpW",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "faith",
+          "strength",
+          "hope",
+          "praise",
+          "deliverance"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "o-the-archangel",
+      "title": "O the Archangel",
+      "transliterationTitle": "O Michael Liqe Melaikt",
+      "lyrics": "O the archangel (2) in Heaven Saint Michael\nFrom the death and demise the wages of sin\nDeliver us all with faith you strengthen\n\nThe tribe of Jacob ———— O Saint Michael\nFor the Israelites ———— O Saint Michael\nTheir guardian you are ———— O Saint Michael\nWith angelic might ———— O Saint Michael\nThe bearer of love and mercy a father to all hear our pleas\n\nYour garment shimmers ———— O Saint Michael\nDescend from above ———— O Saint Michael\nGlistening with gold ———— O Saint Michael\nWith eyes of a dove ———— O Saint Michael\nThe bearer of love and mercy a father to all hear our pleas\n\nBefore your icon ———— O Saint Michael\nI kneel for your grace ———— O Saint Michael\nYou give me comfort ———— O Saint Michael\nIn my darkest days ———— O Saint Michael\nThe bearer of love and mercy a father to all hear our pleas\n\nO Michael (2) liqe melaikt\nBehatiyat endanwedk endanimot\nFetneh teradan atsnan bemnet",
+      "transliterationLyrics": "O Michael liqe melaikt\nBehatiyat endanwedk endanimot\nFetneh teradan atsnan bemnet",
+      "meaning": "This mezmur honors Saint Michael the Archangel as a powerful intercessor and protector. It reflects the belief in his role as a guardian of the faithful, especially in times of spiritual struggle and danger. The chant calls upon his strength to deliver believers from sin and harm, while also portraying him as compassionate and attentive to prayers. It expresses reverence, trust, and reliance on Saint Michael’s heavenly assistance and intercession before God.",
+      "youtubeUrl": "https://youtu.be/rMwlj2JUD8I?si=CPOsCqOscppVDZYj",
+      "language": "english",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "michael"
+        ],
+        "themes": [
+          "intercession",
+          "protection",
+          "faith",
+          "mercy"
+        ],
+        "usage": [
+          "church-service",
+          "intercession",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "oh-all-that-you-have-done-for-me",
+      "title": "Oh All That You Have Done For Me",
+      "transliterationTitle": "Emanuel Lezelalem",
+      "lyrics": "Oh all that you have done for me with humility\nI will give praise and worship you with jubilee\nEmanuel for eternity I will submit to you my heart fully /x2/\n\nThe day that became night drowned by the darkness\nSuffering through the marsh that took me under it\nWhen I had thought I lost the ones supporting me\nHe truly stowed away my troubles endlessly\n\nOur Lord and our strength our glory and power\nHumiliated them with faith my wrongdoers\nThat you won’t forsake me finally I know truth\nAbove worldly calling I’ve committed to you\n\nFew became abundant You fed the multitudes\nTo show my gratitude enough I can’t give you\nThrough the days and the nights, the one that shines the light\nGlorious it all is your works and all Your might\n\nDeserving you are for praise and admiration\nFor the humble of heart blessings, you have given\nImpoverished I am not you are my fortune\nMy life is filled by you never again barren",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a song of gratitude and devotion to God for His mercy, provision, and faithfulness. It reflects on times of hardship, darkness, and loneliness, and how God delivered, protected, and restored the believer. The chant emphasizes humility, surrender, and lifelong commitment to Christ, recognizing Him as the true source of strength, abundance, and light. It encourages giving continual praise and acknowledging God’s blessings in both struggles and victories.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "gratitude",
+          "faith",
+          "deliverance"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "on-the-cross-i-witnessed-his-love",
+      "title": "On The Cross I Witnessed His Love",
+      "transliterationTitle": "Meskel Lay Yayehut Fikir",
+      "lyrics": "On the Cross I witnessed His love /2/\nAwakened I will sing for my Lord who’s above /2/\n\nመስቀል ላይ ያየሁት ፍቅር /2/\nይቀሰቅሰኛል ለስሙ እንድዘምር /2/\n\nHe endured agony for they had struck His face\nEven though He was pierced He gives unending grace\nHis love never wavered when they acted in wrath\nThough He was chained and shoved He still protects their path\n\nThe saint now a sinner the truth became a lie \nWhen they boldly shouted saying that He should die\nHe was tested by man the Maker was demeaned\nChrist was imprisoned and then Barabbas was freed\n\nAlthough His back was whipped without any pity\nHe embraces them with forgiveness and mercy\nIn harshness they gave Him the bitter vinegar\nAnd when they pierced His side out came blood and water\n\nHe wore a purple robe after they stripped His clothes\nThey placed it on His head the braided crown of thorns\nO Hail King of the Jews they said mocking in strife\nBut the death of Jesus provided them with life\n\nመስቀል ላይ ያየሁት ፍቅር /2/\nይቀሰቅሰኛል ለስሙ እንድዘምር /2/\n\nOn the Cross I witnessed His love /2/\nAwakened I will sing for my Lord who’s above /2/",
+      "transliterationLyrics": "Meskel lay yayehut fikir\nYiqeseqesegnall lesimu endezemir",
+      "meaning": "This mezmur reflects on the profound love of Christ revealed through His suffering and crucifixion on the Cross. It recounts the ظلم, mockery, and pain He endured, while emphasizing His unwavering mercy and forgiveness toward humanity. The chant highlights the sacrifice of Jesus as the source of life and salvation, inspiring believers to awaken spiritually and respond with praise and devotion. It calls the faithful to remember His love and remain steadfast in worship.",
+      "youtubeUrl": "https://youtu.be/6z5z1QKw7w4?si=26oZnRKhvbz03JY-",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "cross",
+          "love",
+          "sacrifice",
+          "forgiveness",
+          "salvation"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "holy-week"
+        ],
+        "season": [
+          "lent",
+          "holy-week"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "our-lord-and-king-of-peace",
+      "title": "Our Lord and King of Peace",
+      "transliterationTitle": "Yeselamu Meri Yeselamu Dagna",
+      "lyrics": "Yealemin bedel yesewin gif ayto\nZetena zetegnun melaektun tito\nTsidkin lemefetsem bedelin atfito\n            Yeselamu meri yeselamu dagna\n            Amlak tewelede tetemeke legna\n\nSeeing the sins of the world oppression of mankind\nHe came down leaving 99 legions behind  \nTo fulfill righteousness and free us from our bind\n            Our Lord and King of Peace and our judge full of grace\n            Jesus Christ is truly born and baptized for our sake\n\nThe mighty King whom the highest heavens could not bear\nFor when He was born and baptized to make us pure\nThe mountains skipped like rams trembling out of fear \n\n            Our Lord and King of Peace and our judge full of grace\n            Jesus Christ is truly born and baptized for our sake\n\nThe waters became troubled the Jordan turned to flee\nBefore the Lord’s face it could not stand to be seen\nJust as David foretold within his prophecy\n\n            Our Lord and King of Peace and our judge full of grace\n            Jesus Christ is truly born and baptized for our sake\n\nAs he founded righteousness in the Jordan River \nCame from the clouds above the Heavenly Father \nTestifying to His Son’s true divine nature\n\n            Our Lord and King of Peace and our judge full of grace\n            Jesus Christ is truly born and baptized for our sake\n\nJust as we find it written in the Holy Gospel \nThe Holy Spirit came upon Him as a dove \nPointing His wings to the Son and Father above\n\n            Our Lord and King of Peace and our judge full of grace\n            Jesus Christ is truly born and baptized for our sake\n\nWitnessing the waters flee and the mountains leaping \nThe heavens were opened and the clouds were speaking\nOn this day the world has seen this great mystery \n\n            Our Lord and King of Peace and our judge full of grace\n            Jesus Christ is truly born and baptized for our sake\n            Yeselamu meri yeselamu dagna\n            Amlak tewelede tetemeke legna",
+      "transliterationLyrics": "Yealemin bedel yesewin gif ayto\nZetena zetegnun melaektun tito\nTsidkin lemefetsem bedelin atfito\nYeselamu meri yeselamu dagna\nAmlak tewelede tetemeke legna",
+      "meaning": "This mezmur celebrates the mystery of Christ’s incarnation and baptism, emphasizing Him as the Lord and King of Peace. It reflects on His humility in coming down from heaven to save humanity and fulfill righteousness. The chant highlights the powerful events surrounding His baptism in the Jordan River, including the testimony of the Father and the descent of the Holy Spirit. It proclaims Christ’s divine nature, His role as judge full of grace, and the revelation of the Holy Trinity, calling believers to recognize and rejoice in this great mystery.",
+      "youtubeUrl": "https://youtu.be/9gBv7KqQLvI?si=3H4xAvqrUVTM3zf3",
+      "language": "english",
+      "category": {
+        "primary": "liturgical",
+        "majorHoliday": [
+          "timket"
+        ],
+        "saints": [],
+        "themes": [
+          "baptism",
+          "trinity",
+          "incarnation",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "timket",
+          "teaching"
+        ],
+        "season": [
+          "epiphany"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "praise-and-glory",
+      "title": "Praise And Glory",
+      "transliterationTitle": "Sebehwo Leamlakene",
+      "lyrics": "Praise and Glory is due unto Him\nHallelujah to our Lord and God /2/\nIn the Heavens and Earth /6/\n\nሰብህዎ ለአምላክነ  \nሰብህዎ ለአምላክነ ሃሌ ሉያ ለእግዚአብሔር /፪/  \nበሰማይ በምድር /፮/\n\nWith His word He created all the earth and the heavens\nParting the dark waters apart He split land in portions\nWe see Him and all His great works shining light on the world\nHe is Praiseworthy and worshipped by all with praiseful words\n\nPraise and Glory is due unto Him\nHallelujah to our Lord and God /2/\nIn the Heavens and Earth /6/\n\nHis great love and His vast mercy is broad and limitless\nOur God He is trustworthy He will deliver us\nThe Provider for His creation Who is full of riches\nThose who draw near to Him always will flourish in His grace\n\nPraise and Glory is due unto Him\nHallelujah to our Lord and God /2/\nIn the Heavens and Earth /6/\n\nLet Your Great Name be praised we say those whom He visited\nFor He saved us from suffering He raised us from the dead\nHe anoints the humble and meek He will raise them up high\nHis grace and compassion is vast the Mercy of the most high\n\nPraise and Glory is due unto Him\nHallelujah to our Lord and God /2/\nIn the Heavens and Earth /6/\n\nAngels in the highest heavens sing melodies to Him\nAnd on Earth David played his harp so he could praise his King\nWe who are the Children of God let us all exalt Him\nLet’s worship God of Israel let’s magnify His name\n\nPraise and Glory is due unto Him\nHallelujah to our Lord and God /2/\nIn the Heavens and Earth /6/\n\nሰብህዎ ለአምላክነ  \nሰብህዎ ለአምላክነ ሃሌ ሉያ ለእግዚአብሔር /፪/  \nበሰማይ በምድር /፮/",
+      "transliterationLyrics": "Sebehwo leamlakene\nSebehwo leamlakene halleluya legziabher\nBesemay bemidir",
+      "meaning": "This mezmur is a powerful expression of praise and worship to God, acknowledging His greatness as Creator of heaven and earth. It highlights His mighty works, mercy, and faithfulness, emphasizing that all creation—both in heaven and on earth—glorifies Him. The chant calls believers to join the angels and the saints in exalting God's name, recognizing His saving power, compassion, and provision. It encourages a life centered on worship, gratitude, and reverence for God’s eternal glory.",
+      "youtubeUrl": "https://youtu.be/k-fkurRJz8E?si=DafEXFXDd9tzsJMx",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "worship",
+          "creation",
+          "glory",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "saint-mary-has-ascended",
+      "title": "Saint Mary Has Ascended",
+      "transliterationTitle": "Mariam Aregalech Wede Genet",
+      "lyrics": "Saint Mary has ascended into paradise /2/\nAngels surrounding her comfort her with delight \nShe has risen from death, like her Son Jesus Christ \n\nMariam aregalech wede Genet/2/\nYesemay Melaikt eyaregaguwat\nEsuwam ende Lijwa tenestalech\n\nTo honor the prophecy, her father David told\nTo stand at the Lords right, wearing clothes of fine Gold \nOur mother ascended, with glory honor praise \nThrough the seven heavens, where her Lord and Son dwells\nVirgin Mary has ascended into paradise\n\nSaint Mary has ascended into paradise /2/\nAngels surrounding her comfort her with delight \nShe has risen from death, like her Son Jesus Christ \n\nLet the heavens open, and let clouds bear witness\nNo one must be silent, when the Virgin ascends \nLet’s all venerate the mother of compassion \nUnites us with her son, through her intercession\nVirgin Mary has ascended into paradise\n\nSaint Mary has ascended into paradise /2/\nAngels surrounding her comfort her with delight \nShe has risen from death, like her Son Jesus Christ \n\nYour holy flesh that the, Lord  has taken from thee\nYour holy and pure hands , carried divinity \nYou are raised by your son, from the firm grasp of death\nYou are raised with honor, we have seen it through faith \nVirgin Mary has ascended into paradise\n\nSaint Mary has ascended into paradise /2/\nAngels surrounding her comfort her with delight \nShe has risen from death, like her Son Jesus Christ \n\nRejoice all apostles, our holy fathers\nThe Lord has ascended, St Mary your mother  \nTake her linens with you, go tell to the nations\nSpeak how she has risen, with fervent devotion\nAregalech Mariam tenestalech\n\nMariam aregalech wede Genet/2/\nYesemay Melaikt eyaregaguwat\nEsuwam ende Lijwa tenestalech",
+      "transliterationLyrics": "Mariam aregalech wede Genet\nYesemay melaikt eyaregaguwat\nEsuwam ende lijwa tenestalech",
+      "meaning": "This mezmur celebrates the ascension of the Virgin Mary into paradise, honoring her as the Mother of God who was raised in glory by her Son. It reflects the fulfillment of prophecy and highlights her exalted place at the right hand of the Lord. The chant emphasizes the joy of the angels, the witness of heaven, and the faith of believers in her resurrection and ascension. It also calls the faithful to venerate her and seek her intercession, recognizing her role in uniting humanity with Christ.",
+      "youtubeUrl": "https://youtu.be/qeBpWUwamP0?si=3xY9WoSb19KEEA8b",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "intercession",
+          "resurrection",
+          "glory",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "she-is-born-for-us-all",
+      "title": "She Is Born For Us All",
+      "transliterationTitle": "Teweldalechna Yegita Enat",
+      "lyrics": "She is born for us all\nThe mother of God our Lord and Salvation\n\nWe give her our praise and our admiration our veneration\nFor she’s the hope of Adam and his children\n\nተወልዳለችና የጌታ እናት የኛ መድኃኒት\n\nእናመስግናት እናወድሳት እንውደዳት\nእንውደዳት የአዳምን ሕይወት",
+      "transliterationLyrics": "Teweldalechna yegita enat yegna medhanit\nEnamesgenat enawedsat enwededat\nEnwededat yeAdamin hiwot",
+      "meaning": "This mezmur honors the birth of the Virgin Mary as the Mother of God and the source of salvation for humanity. It expresses deep reverence, praise, and love for her, recognizing her as the hope of Adam and all his descendants. The chant emphasizes her unique role in God’s plan of salvation and calls believers to venerate her with gratitude and devotion.",
+      "youtubeUrl": "https://youtu.be/wXtQGocoylY?si=hwIROokgjrkhCH3W",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "praise",
+          "incarnation",
+          "hope",
+          "veneration"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-almighty-god-is-gracious",
+      "title": "The Almighty God is Gracious",
+      "transliterationTitle": "Egziabher Melkam New",
+      "lyrics": "The Almighty God is gracious\nHe is my safe haven through times of hardships\nእግዚአብሔር መልካም ነው\nበመከራ ቀንም መሸሸጊያ ነው\n\nWhen our father Adam was banished from Eden\nDeath had reigned over us making us feel beaten\nAs promised to save him so he would not falter\nDuring his suffering He became his shelter\n\nThe Almighty God is gracious\nHe is my safe haven through times of hardships\n\nAbraham left Harran his abode and homeland\nWith faith entered Canaan following God’s command\nHe put his hope in Him and he wasn’t deprived\nBecame vast like the sand his seed was multiplied\n\nThe Almighty God is gracious\nHe is my safe haven through times of hardships\n\nIn sorrow and trials times of my misery\nFrom my anxious spirit He removes my worry\nEvil serpent of old may rob me of my peace\nBut my God is gracious my pain came to a cease\nJesus Christ is gracious my pain came to a cease\n\nThe Almighty God is gracious\nHe is my safe haven through times of hardships\nእግዚአብሔር መልካም ነው\nበመከራ ቀንም መሸሸጊያ ነው",
+      "transliterationLyrics": "Egziabher melkam new\nBemeqera qenim mesheshegiya new",
+      "meaning": "This mezmur praises God’s goodness and faithfulness as a refuge during times of hardship. It reflects on biblical examples such as Adam and Abraham to show how God remains a protector and provider throughout history. The chant emphasizes trust in God during suffering, highlighting His power to bring peace, remove anxiety, and fulfill His promises. It encourages believers to rely on His grace, recognizing Him as a constant shelter in both trials and blessings.",
+      "youtubeUrl": "https://youtu.be/mfm5RuT7Ktk?si=6Z9AMV_TP9ZC9WPQ",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [
+          "adam",
+          "abraham"
+        ],
+        "themes": [
+          "faith",
+          "protection",
+          "grace",
+          "hope"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-angel",
+      "title": "The Angel",
+      "transliterationTitle": "Melak Yegziabher",
+      "lyrics": "The Angel of the Lord surrounds (Psalm 34:7)\nThose who fear him and bounds (Psalm 34:7)\nThem from any trap and from harm (Psalm 34:7)\nDelivers them who rely on him, delivers them (Psalm 34:7)\n \nHe led the Israelites in the desert (Exodus 23:20)\nAs he comforted Daniel the prophet (Daniel 10:13-21)\nSaint Michael is one of the Arch Angels\nWho beseeches mercy for the faithful\n \nHe saved the three children in Babylon (Daniel 3:25)\nAnnunciated Saint Mary the Virgin (Luke 2)\nIn the presence of God he stands for all (Luke 1:19)\nSaint Gabriel intercede so we don’t fall\n \nThe Angel of peace with a grace to heal\nHe gives health, the archangel Raphael\nHe gave Ezra the chalice of wisdom\nArchangel Uriel guide us to freedom\n  \nThe servants of the Lord are Archangels\nThey’re our shields in spiritual struggles\nThey are sent forth to minister for us (Hebrews 1:14)\nFor our salvation so we could be heirs",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur honors the holy archangels and their role in God’s divine plan as protectors, messengers, and servants of salvation. It draws from scripture to show how angels guard the faithful, deliver them from danger, and guide them spiritually. The chant highlights specific archangels—Michael, Gabriel, Raphael, and Uriel—emphasizing their intercession, healing, and guidance. It encourages believers to trust in God’s protection through His angels and to remain steadfast in faith during spiritual struggles.",
+      "youtubeUrl": "https://youtu.be/WBZ4xxvXNQo?si=uSP3p7nSGKo3NGb3",
+      "language": "english",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "michael",
+          "gabriel",
+          "raphael",
+          "uriel"
+        ],
+        "themes": [
+          "angels",
+          "protection",
+          "intercession",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "intercession"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-god-of-abraham",
+      "title": "The God of Abraham",
+      "transliterationTitle": "YeAbraham Amlak YeYishaq Beza",
+      "lyrics": "The God of Abraham and Issac's true Savior\nPaid our debt though His blood His love does not waver\n\nWith false testimonies on trial they accused Him\nSentencing Him to death our Lord who's without sin\n\nPilate tortured the Lord shackling Him in chains \nHis love for the Romans made him side with their fame \n\nHoly Virgin Mary her tears she could not hold\nAs she watched on the Cross her son suffer unclothed\n\nThe feet that stood on a holy throne made of light\nThey were nailed for the sins He came to overwrite\n\nThe one that gave a crown of light to all the saints \nWearing a crown of thorns on Calvary He stayed\n\nThe God of Abraham and Issac's true Savior\nPaid our debt though His blood His love does not waver\n\nየአብርሃም አምላክ የይስሐቅም ቤዛ\nወገኖቹን ሁሉ በራሱ ደም ገዛ",
+      "transliterationLyrics": "YeAbraham amlak yeYishaq beza\nWegenochun hulu berasu dem geza",
+      "meaning": "This mezmur reflects on the sacrifice of Jesus Christ as the God of Abraham and Isaac, who redeemed humanity through His blood. It recounts His suffering, unjust trial, and crucifixion, emphasizing His sinless nature and unwavering love. The chant also highlights the sorrow of the Virgin Mary and the humility of Christ, who endured pain and humiliation to save mankind. It calls believers to remember His sacrifice and recognize the depth of His love and redemption.",
+      "youtubeUrl": "https://youtu.be/o_rngm_TPkQ?si=SqcTWFe_r1avIv67",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [
+          "abraham",
+          "isaac",
+          "mary"
+        ],
+        "themes": [
+          "cross",
+          "sacrifice",
+          "love",
+          "redemption"
+        ],
+        "usage": [
+          "church-service",
+          "holy-week",
+          "praise"
+        ],
+        "season": [
+          "lent",
+          "holy-week"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-holy-apostle",
+      "title": "The Holy Apostle",
+      "transliterationTitle": "Qidus Hawariya Paulos",
+      "lyrics": "The Holy Apostle Saint Paul, the healer of the sick  \nYour message is virtuous! \nYou who received the crown,  \nBeseech and pray for all of us,  \nSo God may save our souls \nOut of his mercy and his compassion, for the sake of his holy name! \n \nThe Holy Apostle Saint Paul, the righteous,   \nThe healer of the sick, your message is virtuous! \nBeseech beseech and pray for all of us  \nSo God may save our souls /x2/\n \nThe persecutor who turned out to be God’s messenger\nAnd a pharisee yet a teacher for non-believers \nWe learned from you that God can change our past \nThrough our life if we preach the crucified Christ  \n \nYou discount your status for the sake of those who are lost \nEnduring many trials, you preached Jesus at any cost  \nFor that you received a crown of righteousness\nBecame a role model for all the Christians   \n \nWhen you’re sick God’s power became perfect in your weakness\nHis grace was sufficient that led you to strive for greatness  \nPray for us to be His chosen vessels\nSo we imitate you and all your lessons",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur honors Saint Paul the Apostle, highlighting his transformation from a persecutor of Christians to a powerful messenger of Christ. It praises his teachings, endurance through trials, and his role as a model of faith and perseverance. The chant emphasizes God's grace working through weakness and calls upon Saint Paul to intercede for believers, asking that they may follow his example in spreading the message of Christ and living a life of righteousness.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "paul"
+        ],
+        "themes": [
+          "apostles",
+          "faith",
+          "transformation",
+          "perseverance",
+          "intercession"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "intercession"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-lord-has-risen",
+      "title": "The Lord Has Risen",
+      "transliterationTitle": "Geta Tenestual",
+      "lyrics": "The Lord has risen let us all sing and shout \nOur God has risen spread the good news about \nWith His might He destroyed the death and corruption \nWe all have bore witness Jesus Christ has risen\n\nThe covenant He gave promised to save Adam \nFrom the verdict of death to pay off his ransom \nHe came from the heavens crucified for our blame \nErased death with His death witnesses we became\n\nThe Lord has risen let us all sing and shout \nOur God has risen spread the good news about \nWith His might He destroyed the death and corruption \nWe all have bore witness Jesus Christ has risen\n\nDisciples of our Lord were truly in distress \nFrom the death of their God sorrow was in excess \nWhile they were gathering not knowing what to do \nHe appeared to them and Jesus said peace to you\n\nThe Lord has risen let us all sing and shout \nOur God has risen spread the good news about \nWith His might He destroyed the death and corruption \nWe all have bore witness Jesus Christ has risen\n\nMary Magdalene was walking with misery \nBefore the rise of dawn her God she went to see \nThe one who was tortured called the King of the Jews \nShe found Jesus risen and went to spread the news\n\nGeta tenestual elil elil belu \nAmlak tenestual yemisirach belu \nMusina mekabir be haylu atfito \nHulachin ayenew Kiristos tenesto",
+      "transliterationLyrics": "Geta tenestual elil elil belu\nAmlak tenestual yemisirach belu\nMusina mekabir be haylu atfito\nHulachin ayenew Kiristos tenesto",
+      "meaning": "This mezmur proclaims the resurrection of Jesus Christ, celebrating His victory over death and corruption. It reflects on God’s promise to save humanity from death, fulfilled through Christ’s crucifixion and resurrection. The chant recounts the joy of the disciples and Mary Magdalene upon witnessing the risen Lord, emphasizing the spreading of the good news. It calls believers to rejoice, bear witness, and glorify Christ for His triumph and the salvation He has granted to all.",
+      "youtubeUrl": "https://youtu.be/adANbn7V7-k?si=XwujmEEIuMxExiyN",
+      "language": "english",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "tinsae"
+        ],
+        "saints": [
+          "mary-magdalene"
+        ],
+        "themes": [
+          "resurrection",
+          "victory",
+          "salvation",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "tinsae",
+          "praise"
+        ],
+        "season": [
+          "easter"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-old-is-gone",
+      "title": "The Old is Gone",
+      "transliterationTitle": "Addis Honku BeKristos",
+      "lyrics": "The old is gone the new has come (2nd Corinthians 5:17)\nI have been made new in Christ\nThe old is gone the new has come\nMy King comes shining in the night\n \nI left my father’s home (Luke 15:11)\nI thought there’s something better\nI was eating with swine\nI lived like a beggar\nThinking of how evil that I have been\nI went to my father without hesitation He forgave my sins\n \nThe sickness and the pain (Matthew 9:20)\nAll that I’ve endured\nThe blood from my body\nMade me feel impure\nI knew my savior would heal me I was sure\nWhen I touched His garment twelve years of disease suddenly I was cured\n \nEvery day I watched (John 5:1-15)\nOthers being healed\nUnable to move\nSadness I would feel\nThe Lord was my hope He came to rescue me\n“Carry your bed” said the King, and I was set free\n        \nDear Lord remember not\nThe sins I’ve committed\nI’m done with my past\nMy heart I’ve submitted\nMy journey is not done so I go forward\nI will not give up until I receive my heavenly reward.",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur focuses on transformation and renewal through Christ, emphasizing the message that the old life is gone and a new life has begun. Drawing from biblical stories such as the prodigal son, the woman with the issue of blood, and the healing at the pool, it illustrates God’s mercy, forgiveness, and healing power. The chant encourages repentance, perseverance, and faith, reminding believers to leave behind their past and continue forward in their spiritual journey toward salvation.",
+      "youtubeUrl": "https://youtu.be/PtA6QUMx1rk?si=K6MQytCHyif24WNL",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "repentance",
+          "renewal",
+          "faith",
+          "healing",
+          "salvation"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-purest-of-the-pure",
+      "title": "The Purest of the Pure",
+      "transliterationTitle": "Qedest Qedusan",
+      "lyrics": "The garden enclosed my dove\nThere is no spot unto you or blemish\nA fountain sealed from above\nIntercede for us so we won't perish\n\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars\n\nThe unborn bow down to you\nThe angels astonished by your meekness\nAnd the elders praise you too\nFor you've begotten their Master Jesus\n\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars\n\nThe adorned temple of God\nThe queen who will stand upon God's right side\nWhen Eve sinned, we were exiled\nBut we're given a mother who's our pride\n\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars\n\nThe unborn bow down to you\nThe angels astonished by your meekness\nAnd the elders praise you too\nFor you've begotten their Master Jesus\n\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars\nThe purest of the pure you are\nThe holiest of the holies by far\nThe shiniest of all the stars",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur praises the Virgin Mary as the purest and holiest among all creation. It highlights her role as the Mother of God, the sealed fountain, and the chosen vessel through whom Christ came into the world. The chant reflects on her humility, purity, and exalted position in heaven, honored by angels and saints alike. It also emphasizes her role as an intercessor for humanity, calling believers to seek her prayers and recognize her as the spiritual mother given to redeem what was lost through Eve.",
+      "youtubeUrl": "https://youtu.be/0HBHqNURyYk?si=QIep8JLKYx7wkz4S",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "purity",
+          "intercession",
+          "praise",
+          "incarnation"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-spirit",
+      "title": "The Spirit",
+      "transliterationTitle": "Menfes Qidus",
+      "lyrics": "The spirit within me that abides\nYou are my true teacher and my guide (John 14:26)\nOne with the Father and the Son\nI worship You with devotion (2)\n\nAs Christ had promised You came (John 16:7)\nYour temple is what my soul became\nYou kindled my heart like a flame (2)\n\nLike the wind blows where it wishes (John 3:8)\nWith the abundance of Your riches\nCome dwell in me Holy Spirit (2)\n\nHoly Spirit descend from above (Matthew 3:16)\nMy paraclete immaculate dove\nI am sealed with Your forgiving love (2) (Ephesians 4:30)\n\nWith you leading me to the truth (John 16:13)\nI walk in Christ in the days of my youth\nI will pour Your praise from my mouth (2)",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a prayer and praise to the Holy Spirit, acknowledging Him as the teacher, guide, and comforter of the believer. It reflects on the promise of Christ that the Spirit would come and dwell within His followers, transforming their hearts into His temple. The chant emphasizes the Holy Spirit’s role in leading believers into truth, granting wisdom, and sealing them with divine love. It encourages a life of devotion, surrender, and continual praise through the guidance of the Spirit.",
+      "youtubeUrl": "https://youtu.be/tfpRwLjeErA?si=3Wp0MPTdzFQdtITZ",
+      "language": "english",
+      "category": {
+        "primary": "liturgical",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "holy-spirit",
+          "trinity",
+          "guidance",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "teaching"
+        ],
+        "season": [
+          "pentecost"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-stars",
+      "title": "The Stars",
+      "transliterationTitle": "Kokeboch",
+      "lyrics": "The Stars that shine in the darkness\nFountains of hope in the desert\nListen to the march of the martyrs\nThe heroes and fighters of the faith\nDefenders of the Faith.\n\nThe first martyr Saint Stephen\nWhile they were stoning you, you showed your mercy\nFor that You saw in the heavens the Holy Trinity\nHow you lived and died is Christ’s reflection\nAnd your faith inspires our generation\n \nOh! Saint Stephen the first martyr defender of the faith.\nThe Stars…\n\nThe Armenian virgin Saint Arsema (Rasphime)\nWhen the king lusted after your beauty.\nHe didn’t know you kept yourself in purity\nYou loved Christ till death with true affection\nAnd your faith inspires our generation!\n\nOh! Saint Arsema the Armenian virgin defender of the faith\nThe Stars…\n\nSaint George the Roman soldier\nWith your faith in Christ, you slayed the beast\nIn the heavens you sit, today with the high priest\nYou overcame trials and tribulations\nAnd your faith inspires our generation!\n\nO! Saint George the Roman soldier defender of the faith.\nThe Stars…\n\nThe thirty martyrs of Orthodox\nEnemies of Christ they waged a war\nYou answered the call on the Libyan shore\nYou received your crown with persecution\nAnd your faith inspires our generation!\nO! Martyrs of the Libyan shore, defenders of the faith.",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur honors the saints and martyrs of the Orthodox faith, portraying them as shining stars who illuminate the darkness of the world. It recounts the lives and sacrifices of figures such as Saint Stephen, Saint Arsema, Saint George, and the modern martyrs, emphasizing their courage, purity, and unwavering faith in Christ. The chant inspires believers to follow their example, remain steadfast during trials, and uphold the faith with strength and devotion.",
+      "youtubeUrl": "https://youtu.be/kxXPV3Rhglo?si=B8z9tUzXftH7cArJ",
+      "language": "english",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "stephen",
+          "arsema",
+          "george"
+        ],
+        "themes": [
+          "martyrdom",
+          "faith",
+          "perseverance",
+          "inspiration"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-virgin-gave-birth-to-her-creator",
+      "title": "The Virgin Gave Birth to Her Creator",
+      "transliterationTitle": "Dingil Fetariwan Weledachew",
+      "lyrics": "The Virgin gave birth to her creator\nIn swaddling clothes, laid in a manger\nThere was no room at all, a place to rest for guests \nSt. Mary found a barn, to let her baby rest.\n\nድንግል ፈጣሪዋን ወለደችው \nበመጠቅለያም ጠቀቀለለችው\nየለምና ስፍራ ለንግዶች ማረፊያ \nግርግም አስተኛችው በከብቶች ማደርያ\n\nShe became overwhelmed, the city of David\nThe miracle of the birth of our great Lord\nTo announce the good news, the Angel descended.\nIt shined as a bright light, The glory of the child. \nThis is a mystery, that cannot be expressed,\nBut in her heart Virgin Mary kept it guarded (2)\n\nThe wise men they arrived from the eastern nations \nThey brought gold, incense, myrrh, to the child’s location \nThey found the baby while carried by his mother\nThey proclaimed of this birth, to all of the others.\nThis is a mystery, that cannot be expressed,\nBut in her heart Virgin Mary kept it guarded (2)\n\nThe land of Judah was filled with glory and praise\nA Galilean king has come from Nazareth\nabout this miracle, let Bethlehem proclaim\nWhen she stopped the census, for heavenly worship \nThis is a mystery, that cannot be expressed,\nBut in her heart Virgin Mary kept it guarded (2)\n\nGod became a human, he who could not be seen\nAs the second Adam, he came as a person\nHis wisdom mesmerized the young, and perfect bride \nThe word had become flesh, it became unified\nThis is a mystery, that cannot be expressed, \nBut in her heart Virgin Mary kept it guarded (2)\n\nድንግል ፈጣሪዋን ወለደችው \nበመጠቅለያም ጠቀቀለለችው\nየለምና ስፍራ ለንግዶች ማረፊያ \nግርግም አስተኛችው በከብቶች ማደርያ\n\nIn swaddling clothes, laid in a manger\nThere was no room at all, a place to rest for guests \nSt. Mary found a barn, to let her baby rest.",
+      "transliterationLyrics": "Dingil fetariwan weledachew\nBemeteqeleyaam teqeqelelechew\nYelemna sifra lengdoch marefiya\nGirigm astengachew bekebtoch maderiya",
+      "meaning": "This mezmur celebrates the mystery of the Incarnation, where the Virgin Mary gave birth to her Creator, Jesus Christ. It reflects on the humility of His birth in a manger, the wonder of the angels, and the witness of the wise men. The chant emphasizes the divine mystery of God becoming human for the salvation of mankind, highlighting Mary’s role as the chosen vessel who kept these wonders in her heart. It calls believers to contemplate and glorify this profound mystery with reverence and faith.",
+      "youtubeUrl": "https://youtu.be/tG-OyZDYeD0?si=J7Lxa-OrPkK7jiaP",
+      "language": "english",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "gena"
+        ],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "incarnation",
+          "nativity",
+          "mystery",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "gena",
+          "praise"
+        ],
+        "season": [
+          "christmas"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "the-gracious-and-adored-interceder",
+      "title": "The Gracious and Adored Interceder",
+      "transliterationTitle": "Cheritu Amalajitu Hoy",
+      "lyrics": "The gracious and adored interceder\nFor our God you are truly His mother\nYou were chosen by the Trinity\nSo the human race takes after thee\n\nCheritu amalajitu hoy\nEnatu neshina le Adonay\nBe Silassie fit siltan yalesh\nYe bahiryachin memekya nesh\n\nThe one who was living in grief\nThrough your Son came peace and relief\nWhen you gave birth to Jesus Christ\nAdam gained his freedom and might\n\nFor those who cry out your name\nAnd for those who will venerate\nThe Lord gave a covenant\nTo save us from the last judgement\n\nThe gracious and adored interceder\nFor our God you are truly His mother\nYou were chosen by the Trinity\nSo the human race takes after thee\n\nHe’s mindful our God from above\nCalming His children with His love\nFor you stand on the Lord’s right side\nFor sinners plead and be their guide\n\nFor those who cry out your name\nAnd for those who will venerate\nThe Lord gave a covenant\nTo save us from the last judgement\n\nThe gracious and adored interceder\nFor our God you are truly His mother\nYou were chosen by the Trinity\nSo the human race takes after thee\n\nDescended from the highest realm\nAdorned in the nature we claim \nRevealed in your arms our lady\nHeld divine for our query\n\nFor those who cry out your name\nAnd for those who will venerate\nThe Lord gave a covenant\nTo save us from the last judgement\n\nThe gracious and adored interceder\nFor our God you are truly His mother\nYou were chosen by the Trinity\nSo the human race takes after thee\n\nA treaty for restoration\nO Zion for our salvation\nCitizens of Heaven and Earth\nAll rejoice in the one you birthed \n\nFor those who cry out your name\nAnd for those who will venerate\nThe Lord gave a covenant\nTo save us from the last judgement\n\nThe gracious and adored interceder\nFor our God you are truly His mother\nYou were chosen by the Trinity\nSo the human race takes after thee\n\nCheritu amalajitu hoy\nEnatu neshina le Adonay\nBe Silassie fit siltan yalesh\nYe bahiryachin memekya nesh",
+      "transliterationLyrics": "Cheritu amalajitu hoy\nEnatu neshina le Adonay\nBe Silassie fit siltan yalesh\nYe bahiryachin memekya nesh",
+      "meaning": "This mezmur honors the Virgin Mary as the gracious and beloved intercessor, chosen by the Holy Trinity to become the Mother of God. It emphasizes her role in the salvation of humanity through the birth of Jesus Christ, bringing freedom and restoration to mankind. The chant highlights her position at the right hand of God, continuously interceding for sinners and guiding believers. It calls the faithful to venerate her, seek her prayers, and rejoice in the divine mystery revealed through her, recognizing her as a bridge between heaven and earth.",
+      "youtubeUrl": "https://youtu.be/gBnfIarqm8U?si=pdc7oIpYP6Zo2hlA",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "intercession",
+          "incarnation",
+          "salvation",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "theotokos",
+      "title": "Theotokos",
+      "transliterationTitle": "Theotokos",
+      "lyrics": "Theotokos (4)\nYou’re truly full of wonder\nYou’re truly our mother\n \nIsaiah saw this mystery (Isaiah 7:14)\nAbout your virginity\nWhen you read his prophecy\nYou showed your humility\n                 You shall rejoice O God bearer! (Luke 1:28)\n                 Since you gave us the redeemer\n                 We lift our eyes to you and pray\n                 For your compassion today\n\nYou are the true censer of gold (Exodus 30:1-9) (Leviticus 16:12)\nSince you carried the burning coal\nYou are also like Aarons rod (Numbers 17:8)\nWithout seed you brought us God\n                 O! Mary joy of angels\n                 The Virgin foretold by the prophets\n                 Rejoice for you have found favor (Luke 1:28)\n                 God’s grace is yours forever",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur praises the Virgin Mary as Theotokos, the God-bearer, emphasizing the divine mystery of her role in the Incarnation. It draws from prophetic and biblical imagery, such as Isaiah’s prophecy, the golden censer, and Aaron’s rod, to show how she was chosen and prepared to carry Christ. The chant highlights her humility, purity, and favor before God, while calling believers to rejoice in her and seek her intercession with faith and devotion.",
+      "youtubeUrl": "https://youtu.be/VxwQChAi-9E?si=Gm20yRO32lqBZMJg",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "theotokos",
+          "incarnation",
+          "prophecy",
+          "intercession"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "there-is-no-one-like-you",
+      "title": "There Is No One Like You",
+      "transliterationTitle": "Yalante Lene Man Lihonegn",
+      "lyrics": "There is no one like you Lord for me\nTouching my heart your love set me free\nYour laws have become my foundation\nEverlasting you are salvation \n\nOn my boat your teachings will be heard\nMy heart is a net to grasp your word \nWhen day turns to night your love will stand\nThe fish multiplied by your command\n\nThere is no one like you Lord for me\nTouching my heart your love set me free\nYour laws have become my foundation\nEverlasting you are salvation \n\nYou are dear to me God my treasure\nMy home and life are yours forever\nYou leveled the hills and now its clear\nWith you by my side there’s none to fear\n\nThere is no one like you Lord for me\nTouching my heart your love set me free\nYour laws have become my foundation\nEverlasting you are salvation \n\nToday I regret those lonely days\nLiving in darkness against your ways\nNow I know your love sweet as honey\nWhat life is there without you for me\n\nThere is no one like you Lord for me\nTouching my heart your love set me free\nYour laws have become my foundation\nEverlasting you are salvation \n\nYou exiled them our enemies\nWe navigated adversities \nTomorrow is a new day of praise\nWe’ll sing to our Lord and God always\n\nYalante lene man lihonegn\nGeta hoy fikrih liben nekagn\nHIgih nebere yafe mefcha\nYematiqeyer ante bicha",
+      "transliterationLyrics": "Yalante lene man lihonegn\nGeta hoy fikrih liben nekagn\nHigih nebere yafe mefcha\nYematiqeyer ante bicha",
+      "meaning": "This mezmur expresses deep personal devotion and love for God, acknowledging that there is no one like Him. It reflects on transformation through His love, from a life of darkness to one of faith and purpose. The chant emphasizes God’s teachings as a foundation, His constant presence through all circumstances, and His power to overcome adversity. It encourages gratitude, repentance, and a lifelong commitment to praising and following God.",
+      "youtubeUrl": "https://youtu.be/8J2Mfb80zzw?si=iWWIpw4pJfWm8X3I",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "praise",
+          "faith",
+          "transformation",
+          "devotion"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "there-is-power-in-your-words",
+      "title": "There Is Power in Your Words",
+      "transliterationTitle": "Dil Ale Besimih",
+      "lyrics": "There is power in Your words and victory in Your name\nThe mountains will tremble Emmanual I proclaim \nThe seas will part again my Savior I proclaim\n\nDil ale besimih dil ale beqalih\nTeraraw yinadal Ammanuel silih\nBahir yikefelal Medhanealem silih\nKadesh the great frightening desert\n\nWe have passed through without feeling thirst\nYou overthrew pharaoh to the sea\nIt is your name that has set us free \nIt is you Lord who gave Liberty\n\nThe walls of Jericho fell with shouts\nEnemies will fall without a doubt \nMarvelous how we took the city\nIt is by your will God almighty\nIt is by your will Lord almighty\n\nSurpassing the trials and hardships  \nThe marah water changed from tasteless\nIf we receive manna from above\nIts because you are the God of Love \n\nToday we will stand strong and alive\nWith your strength we continue to thrive \nFrom the fields we have gained royalty\nThrough your grace you changed our story\n\nThere is power in Your words and victory in Your name\nThe mountains will tremble Emmanual I proclaim \nThe seas will part again my Savior I proclaim\n\nDil ale besimih dil ale beqalih\nTeraraw yinadal Ammanuel silih\nBahir yikefelal Medhanealem silih",
+      "transliterationLyrics": "Dil ale besimih dil ale beqalih\nTeraraw yinadal Ammanuel silih\nBahir yikefelal Medhanealem silih",
+      "meaning": "This mezmur proclaims the power of God’s word and the victory found in His name. It reflects on biblical events such as the parting of the Red Sea, the fall of Jericho, and God’s provision in the wilderness to demonstrate His might and faithfulness. The chant emphasizes that through God’s will, believers overcome trials, receive provision, and experience transformation. It encourages faith, strength, and trust in God’s power to guide and deliver His people.",
+      "youtubeUrl": "https://youtu.be/CRXZFEQLe3Y?si=jXcJflTMaWx1puJv",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "faith",
+          "victory",
+          "power",
+          "deliverance"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "through-the-desert",
+      "title": "Through The Desert",
+      "transliterationTitle": "Bebereha Beharruru",
+      "lyrics": "በብረሃ በሃሩሩ \nበምያስፈራ በባህሩ \nእስራኤልን የታደገ \nበክንፎቹ የጋረደው ሚካኤል ነው \n\nThrough the desert and the barren\nThrough the perils of the ocean\nThe archangel Saint Micheal is \nThe one who saved Israel by his mighty wings\n\nSaint Micheal is…… my support and my strength \nSaint Micheal is…… protection in the wild\nSaint Micheal is…… he who sated my soul\nSaint Micheal is…… with water from the stone\nThe reason for my smile and my hearts inner joy \nMy blessing from the Lord my gift forevermore\n\nSaint Micheal is…… the one who brought lighetning \nSaint Micheal is…… and who conquered our foes\nSaint Micheal is…… Baharan’s beloved\nSaint Micheal is…… who cast out his sorrow\nThe one who built his house who stood him on his feet\nAs mother and father he wed him with much glee\n\nSaint Micheal is…… who raised me from my youth \nSaint Micheal is…… guiding me toward the truth\nSaint Micheal is……  my support when I’m weak\nSaint Micheal is…… my aid in times of need \nIn all of my struggles he was there through it all\nTruly it is Micheal who saved me from the falls\n\nSaint Micheal is……  he who changed my story\nSaint Micheal is…… erased my bonds of debt\nSaint Micheal is…… by his intercession \nSaint Micheal is…… who saved me from my death\nHe leads me on my path from near and from afar\nHe has written his love in the depths of my heart\n\nበብረሃ በሃሩሩ \nበምያስፈራ በባህሩ \nእስራኤልን የታደገ \nበክንፎቹ የጋረደው ሚካኤል ነው",
+      "transliterationLyrics": "Bebereha beharruru\nBemiyasfera bebahiru\nEsraelen yetadeghe\nBekinfachu yegaredow Mikael new",
+      "meaning": "This mezmur honors Saint Michael the Archangel as a protector, guide, and intercessor for God's people. It recalls his role in delivering Israel through the wilderness and portrays him as a constant source of strength, support, and salvation in personal struggles. The chant emphasizes his powerful intercession, his care for believers throughout life, and his role in transforming lives through God’s grace. It encourages trust in Saint Michael’s protection and faith in God’s deliverance through him.",
+      "youtubeUrl": "https://youtu.be/RzL2SD-Ddm4?si=5e1MGj24QXnsSWVo",
+      "language": "english",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "michael"
+        ],
+        "themes": [
+          "protection",
+          "intercession",
+          "faith",
+          "deliverance"
+        ],
+        "usage": [
+          "church-service",
+          "intercession",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "to-him-who-sits-on-the-throne",
+      "title": "To Him Who Sits on the Throne",
+      "transliterationTitle": "Leze Yetemetebeqe BeZuriyaw",
+      "lyrics": "To Him who sits on the throne\nThe Lamb who is Slain to atone\nPraise and Honor, Glory and power\nAmen amen amen forever and ever\n \nLet every creature in heaven and on earth\nWith thousands of angels and twenty-four elders\nWith the righteous and the four living beings\nPraise the Conqueror and the King of kings/x2/\n\nHe became a man and, didn’t think it a loss\nHe was obedient up to death on the Cross\nLet every knee bow, let every tongue praise\nTo Jesus Christ the name above all names/x2/\n\nBecause the wedding of the divine Lamb has come\nLet's wash and clean our robes by the blood of the groom\nAnd sing like the roar of rushing waters\nLike a mighty wave, as loud peals of thunder/x2/\n\nHe who sits on the throne will make everything new\nHe will wipe every tear, His words are always true\nHe prepared for us a place no eyes have seen\nAnd no ears have heard, for that let us all sing/x2/",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a song of worship to Jesus Christ, the Lamb who was slain and now sits on the throne in glory. Drawing from the imagery of Revelation, it proclaims praise from all creation—angels, elders, and the righteous—honoring Him as King of kings. It reflects on His humility, sacrifice on the Cross, and ultimate victory, calling all to bow and glorify His name. The chant also looks forward to the promise of eternal life, renewal, and the heavenly kingdom prepared for believers.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "liturgical",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "worship",
+          "lamb",
+          "glory",
+          "salvation",
+          "heaven"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "to-receive-the-lords-love",
+      "title": "To Receive The Lord’s Love",
+      "transliterationTitle": "Yewedegn Geta Min Adrgelet New",
+      "lyrics": "To receive the Lord’s love what have I done for Him\nAlthough it’s not enough I’m offering this hymn\nYour strength lifted me up aided my weakness then\nYou fixed this broken bridge so I can cross again\n\nየወደደኝ ጌታ ምን አድርጌለት ነው\nብዘምርለትም ያንስበታል ይኽው \nከውድቀቴ አንስተህ ድካሜን ያገዝኸኝ\nሰባራውን ድልድይ ገጥመህ ያሳለፍከኝ\n\nWhen I had nothing left begging in Jericho\nSwallowed up by darkness I had nowhere to go \nThe Lord of light had heard my cries and He drew near\nWith His hands He healed me my vision became clear\n\nFor many months and years I had been bedridden\nNo one came to my aid no support was given\nMy Lord and my Savior He came to me and said\nYour sins are forgiven rise and carry your bed \n\nWith twelve long years of pain blood flowing with no end\nI was rejected with no one to call a friend\nWhen Christ came near I touched the edge of His clothing\nThe power that came forth ended my suffering\n\nI was a drunk and thief and an adulterer\nI was the chief rebel and was a murderer\nBut I praise God because He changed my life around \nIn His power and hope today I do abound \n\nየወደደኝ ጌታ ምን አድርጌለት ነው\nብዘምርለትም ያንስበታል ይኽው \nከውድቀቴ አንስተህ ድካሜን ያገዝኸኝ\nሰባራውን ድልድይ ገጥመህ ያሳለፍከኝ\n\nTo receive the Lord’s love what have I done for Him\nAlthough it’s not enough I’m offering this hymn\nYour strength lifted me up aided my weakness then\nYou fixed this broken bridge so I can cross again",
+      "transliterationLyrics": "Yewedegn geta min adrgelet new\nBezemerletim yansbetal yihiw\nKewidqete anseteh dikamen yagezhegn\nSabarawun dildiy getme yasalefegn",
+      "meaning": "This mezmur reflects deep humility and gratitude for God’s unconditional love and mercy. It acknowledges that no human effort is enough to repay His grace, yet offers praise as a response. Through various biblical moments of healing and redemption, it shows how Christ restores the broken, forgives sins, and transforms lives. The chant emphasizes personal repentance, spiritual renewal, and the believer’s journey from darkness to light through the saving power of God.",
+      "youtubeUrl": "https://youtu.be/nHWhI6hLFx8?si=hEcl_BJQgoNYleG2",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "grace",
+          "repentance",
+          "healing",
+          "transformation"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "reflection"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "to-mother-mary",
+      "title": "To Mother Mary",
+      "transliterationTitle": "Le Mariam",
+      "lyrics": "To mother Mary/x2/\nWe will sing to her for eternity/x2/\n\nThe unblemished gate\nEzikiel’s written \nShe is truly pure \nA twofold virgin \nWe call out to her \nOur foundation\nPraise the mother of love and compassion\n\nTender hearted dove\nThe bringer of peace\nFor my gloomy life\nShine your light on me\nI will plead to your name\nVirgin for my soul\nEntrusted to you the one who consoles\n\nIt is plentiful\nAll my love for you\nIt has no limits\nUnspeakable truth\nThrough her I'm filled with joy\nBy Mary I'm proud\nCalling to her name I will sing aloud\n\nI ask her come to me\nThrough the night and day\nShe is by my side\nHere with me to stay\nGlorifying her\nThey submit their praise\nNo words can describe her marvelous ways\n\nLe Mariam /x2/\nEnzemiralen lezelalem /x2/",
+      "transliterationLyrics": "Le Mariam\nEnzemiralen lezelalem",
+      "meaning": "This mezmur expresses deep love, devotion, and reverence for the Virgin Mary as the Mother of God. It highlights her purity, her prophetic symbolism as the closed gate seen by Ezekiel, and her role as a source of peace and comfort. The chant emphasizes her intercession, portraying her as a constant presence who supports and consoles believers. It calls the faithful to honor her with continual praise and to entrust their lives to her care.",
+      "youtubeUrl": "https://youtu.be/KgV3GlD-a24?si=t3vpcHVr7enDU-NY",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "intercession",
+          "purity",
+          "praise",
+          "compassion"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "truly-with-glory",
+      "title": "Truly with Glory",
+      "transliterationTitle": "Ewnet BeEwnet Geta Tenestual",
+      "lyrics": "Truly with glory the Lord is risen\nTriumphant over death with His resurrection\n\nእውነት በእውነት ጌታ ተነሥቷል\nተነሥቷል በክብር\nሞትን ድል አድርጓል /2/\n\nThrough His death He subdued death and all corruption \nThe first fruit of the dead our Lord has risen\nThe first fruit of the dead our Lord has risen\n\nTruly with glory the Lord is risen\nTriumphant over death with His resurrection\n\nThey could conceal the tomb and guard it with soldiers\nEven by stacking rocks boulder atop boulder\nBut Earth could not bear to bury her creator\n\nTruly with glory the Lord is risen\nTriumphant over death with His resurrection\n\nThe conquering lion and King of Kings Jesus\nOn the Sabbath He has risen victorious\nOn the Sabbath He has risen victorious\n\nTruly with glory the Lord is risen\nTriumphant over death with His resurrection\n\nBy His atoning blood we have been sanctified\nLimitless is His love graciously He provides\nFor He is eternal forever magnified\n\nTruly with glory the Lord is risen\nTriumphant over death with His resurrection\n\nእውነት በእውነት ጌታ ተነሥቷል\nተነሥቷል በክብር\nሞትን ድል አድርጓል /2/",
+      "transliterationLyrics": "Ewnet beewnēt geta tenestual\nTenestual bekibir\nMotin dil adirgual",
+      "meaning": "This mezmur proclaims the resurrection of Jesus Christ with joy and certainty, declaring His victory over death and corruption. It emphasizes that through His death, He destroyed death and became the first fruit of the resurrection. The chant highlights the futility of human attempts to contain Him, affirming His divine power and eternal nature. It calls believers to rejoice in His triumph, recognizing His sacrifice, boundless love, and the salvation granted through His resurrection.",
+      "youtubeUrl": "https://youtu.be/idEvISTx5ts?si=y8nPwJ-LVRwyq4FC",
+      "language": "english",
+      "category": {
+        "primary": "major-holiday",
+        "majorHoliday": [
+          "tinsae"
+        ],
+        "saints": [],
+        "themes": [
+          "resurrection",
+          "victory",
+          "salvation",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "tinsae",
+          "praise"
+        ],
+        "season": [
+          "easter"
+        ],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "undeserving-i-am",
+      "title": "Undeserving I Am",
+      "transliterationTitle": "Saygebagn Amlak",
+      "lyrics": "Undeserving I am Undeserving\nOf your ultimate love You are giving \nA love that is always everlasting\n\nSaygebagn Amlak saygebagn\nSaygebagn Geta saygebagn\nLezih yadereskegn ene manegn/x2/\n\nYou’ve given me all that I have so faithfully \nThough you loved me I left so carelessly \nDespite my sins you wait for me so patiently\nYour blessing pours  into my life so endlessly \n\nI have received your precious gifts in abundance \nI cannot try to count they’re limitless \nIn my defeat and my weakness You hear my plea\nThrough your mercy your grace abounds and sustains me\n\nYou give your love with such passion and sacrifice\nTo save your flock from death you paid the price \nWhat can we say we can't repay our King and Lord\nFrom shamefulness you saved us God our lives restored\n\nUndeserving I am Undeserving\nOf your ultimate love You are giving \nA love that is always everlasting\n\nSaygebagn Amlak saygebagn\nSaygebagn Geta saygebagn\nLezih yadereskegn ene manegn/x2/",
+      "transliterationLyrics": "Saygebagn Amlak saygebagn\nSaygebagn Geta saygebagn\nLezih yadereskegn ene manegn",
+      "meaning": "This mezmur expresses deep humility and gratitude, acknowledging that God’s love is undeserved yet freely given. It reflects on human weakness, sin, and failure, contrasted with God’s patience, mercy, and endless grace. The chant emphasizes the abundance of God’s blessings and the sacrifice He made to save humanity. It calls believers to recognize their dependence on Him, respond with gratitude, and remain in awe of His everlasting love.",
+      "youtubeUrl": "https://youtu.be/5lcloJQeKjc?si=uctGOcS-d_TjkzZ2",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "grace",
+          "humility",
+          "repentance",
+          "love"
+        ],
+        "usage": [
+          "church-service",
+          "reflection",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "until-my-time-comes",
+      "title": "Until My Time Comes",
+      "transliterationTitle": "Eske Zemenaye Deres",
+      "lyrics": "Until my time comes, til I come to thee\nGuide me to repent, my Lord, almighty \n\nMy light, my medicine, my hope, return me back\nForget my sins my lord, give your forgiveness\nMy hope, my supporter please don’t abandon me\nMy lord, don’t leave me, preserve me from hell\n           Chorus.....\n\nMerciful, forgiving, may your mercy visit me\nPreserve me from sin, may your grace rescue me\nMy savior, my healer, please send us peace\nWith your endless love, lead to me righteousness\n\n           Chorus.....\nLord, have mercy on me\nI'm troubled, give me your peace\nKeep me guarded, protect me from evil\nShow me the righteous trail\n\n           Chorus.....\n\nAlthough I  am sinful, my sins aggravating \nWith your holy flesh and blood, wash from my doing \nI will come to you, please shelter my soul\nLet my soul rest with you, grant me salvation",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur is a humble prayer of repentance and dependence on God. It expresses a deep desire for guidance, forgiveness, and protection throughout life until the believer returns to Him. The chant highlights God as the source of healing, peace, and righteousness, while acknowledging human sinfulness and the need for His mercy. It calls upon God to guard the soul, lead it on the right path, and ultimately grant salvation through His grace and love.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "repentance",
+          "mercy",
+          "prayer",
+          "salvation"
+        ],
+        "usage": [
+          "church-service",
+          "reflection",
+          "prayer"
+        ],
+        "season": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "walk-in-the-light-of-god",
+      "title": "Walk in the Light of God",
+      "transliterationTitle": "BeBrehane Egziabher Hed",
+      "lyrics": "Walk in the light of God(2)\nEmbrace the love and the hope be brought\nWalk in the light of God(2)\n\nIn the shadows of the almighty God\nIn the peaceful springs we will rest upon\nFor the creator of our peace and love\nLet us run to him to our savior God \n\nHe who held judgment and forgiveness\nThe lord of peace is our Jesus Christ \nHe who gave us life by the Holy cross\nHe defeated dark and opened our eyes\n\nThe thoughts of fear or the darkness nights\nWill flea from us if we plea tonight\nSins harmful sharp flying through the day\nHis peaceful words will save you come pray\n\nDon’t let yourself down you can stumble on\nBe courageous brave when times get hard \nBanning every curse every tragic thought\nHe will protect you the almighty God\n\nHe who knows his name or the life he brings\nThey will rise above all powers of grace \nA long full life in the light of God\nForever adorned they will be with love \n\nO, dear Lord our hope and peace \nYou fed us from the heavens of Eade\nProving us delight when you redeem our souls\nA God like you cannot be replaced",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur encourages believers to live in the light of God, embracing His love, peace, and guidance. It emphasizes trust in God during difficult times, reminding the faithful that fear, darkness, and sin are overcome through Christ. The chant highlights the saving power of Jesus through the Cross and calls for courage, prayer, and perseverance. It ultimately points to a life of hope, protection, and eternal joy for those who walk in God’s light.",
+      "youtubeUrl": "https://youtu.be/a3ixQbgFOyo?si=o6mY9Il6pVAVM0vc",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "faith",
+          "light",
+          "hope",
+          "protection"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "we-believe",
+      "title": "We Believe",
+      "transliterationTitle": "Enamenalen",
+      "lyrics": "We believe in the father and \nWe believe in the son(2)\n\nWe also believe(4) we believe in the holy spirit",
+      "transliterationLyrics": "Enamenalen beAb\nEnamenalen beWeld\nEnamenalen beMenfes Qidus",
+      "meaning": "This mezmur is a simple proclamation of faith in the Holy Trinity—Father, Son, and Holy Spirit. It reflects the core belief of Christianity, affirming unity in the three persons of God. The chant emphasizes devotion, trust, and the foundational confession of faith shared by all believers.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "liturgical",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "trinity",
+          "faith",
+          "belief"
+        ],
+        "usage": [
+          "church-service",
+          "teaching",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "we-offer-you-glory-and-praise",
+      "title": "We Offer You Glory and Praise",
+      "transliterationTitle": "Misgana Enakerbalen",
+      "lyrics": "We offer You glory and praise\nWhile calling upon Your name\nDuring the liturgy standing unified\nLike the holy angels serving the Divine\n\nምስጋናን እናቀርባለን\nስምህን እየጠራን\nበቅዳሴው ጸሎት ቆመን በአንድነት\nእንደ አገልጋዮችህ እንደ መላእክት\n\nYou took the beatings willingly\nOn the cross endured patiently\nRedeemed by Your atoning death\nWe’ll proclaim until our last breath\n\nWe offer You glory and praise\nWhile calling upon Your name\nDuring the liturgy standing unified\nLike the holy angels serving the Divine\n\nUsing His strength and might alone\nHe left without moving the stone\nResurrected on the third day\nTo the ends of the Earth we’ll say\n\nምስጋናን እናቀርባለን \nስምህን እየጠራን\nበቅዳሴው ጸሎት ቆመን በአንድነት\nእንደ አገልጋዮችህ እንደ መላእክት\n\nOur Lord rose high with songs of praise\nAscended after forty days\nAccomplished His earthly purpose\nAt His father’s side now He sits \n\nWe offer You glory and praise\nWhile calling upon Your name\nDuring the liturgy standing unified\nLike the holy angels serving the Divine\n\nThe price paid for humanity\nYou awoke us with a decree\nYour return the second coming\nWithout doubt this we do believe\n\nWe offer You glory and praise\nWhile calling upon Your name\nDuring the liturgy standing unified\nLike the holy angels serving the Divine\n\nምስጋናን እናቀርባለን \nስምህን እየጠራን\nበቅዳሴው ጸሎት ቆመን በአንድነት\nእንደ አገልጋዮችህ እንደ መላእክት",
+      "transliterationLyrics": "Misgana enakerbalen\nSimihn eyetiran\nBeqidasie tsilot qomen beandinet\nEnde agelgayochih ende melaekt",
+      "meaning": "This mezmur is a liturgical song of praise offered to God, reflecting the unity of believers during worship. It highlights Christ’s sacrifice on the Cross, His resurrection, ascension, and promised second coming. The chant emphasizes standing together like angels in service to God, offering glory and praise with reverence. It calls the faithful to remember His redemptive work and remain steadfast in faith as they await His return.",
+      "youtubeUrl": "https://youtu.be/egLlr9GQ-Ck?si=S0KR8JEh0TWXChOp",
+      "language": "english",
+      "category": {
+        "primary": "liturgical",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "worship",
+          "liturgy",
+          "resurrection",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "liturgy",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "we-will-praise-the-trinity",
+      "title": "We Will Praise the Trinity",
+      "transliterationTitle": "Silassien Amesginu",
+      "lyrics": "We will praise the Trinity/x2/\nCreations of the world\nHonor God with hymnody\n\nTo the Father the Son and the Holy Spirit\nWe will give what is due worship for His merit\nThe creator of all things a world that is sublime\nWe shall praise night and day until the end of time\n\nCherubim Seraphim offer worship to you\nAngels in the heavens sing to their God it's true\nThe children of Adam singing to you since birth\nCalling upon Your name in the heavens and Earth\n\nIf I hunger my Lord will feed me this I know\nMy thirst will go away blessings He will bestow\nThe Trinity is my protector and my grace\nAlways guiding me through whatever I may face\n\nWe will praise the Trinity/x2/\nCreations of the world\nHonor God with hymnody\n\nSilassien amesginu/x2/\nYe midir fitretat\nZemiru elil belu",
+      "transliterationLyrics": "Silassien amesginu\nYe midir fitretat\nZemiru elil belu",
+      "meaning": "This mezmur is a joyful declaration of praise to the Holy Trinity—Father, Son, and Holy Spirit. It emphasizes that all creation, from angels to humanity, is called to worship and glorify God. The chant reflects on God's provision, protection, and guidance in daily life, encouraging continual praise both day and night. It calls believers to join in the heavenly worship, honoring God with gratitude and devotion.",
+      "youtubeUrl": "https://youtu.be/JK6cvedeSJA?si=0GKZSqaN3801fe4o",
+      "language": "english",
+      "category": {
+        "primary": "liturgical",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "trinity",
+          "praise",
+          "worship",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "when-your-mights-revealed",
+      "title": "When Your Might's Revealed",
+      "transliterationTitle": "Haylih Sigelest Besemay",
+      "lyrics": "When Your Might's Revealed In Heaven\nOh Lord Who May Dare To Stand Before You\n\nኃይልህ ሲገለጥ በሰማይ/2/\nአቤት ማን ይቆም ይሆን ክፊትህ/2/\nአቤት ማን ይቆም ይሆን ክፊትህ/2/\n\nOh Lord\nWhen Heavenly Trumpets Are Played\nWhen The Proclamation Is Read\nWhen The Righteous Receive Their Prize\nWhere Then May Our Hope Lie\n\nOh Lord\nWhen All The Angels Plow The Sky \nWhen We Hear The Thunder's First Cry\nWhen A Sound Never Been Heard \nComing From Ramah Has Emerged\n\nOh Lord\nWhen The Seven Winds Go Forward \nAnd Frighten The Land They've Cornered\nWhen The Sea Waves Are Commanded To Prepare The Land For Judgement\n\nOh Lord\nWhen They Call All The Holy Saints\nWho Have Done Great Work By Your Grace\nThose Who Did Righteous On This Earth When They Praise Him And They Serve\n\nOh Lord\nWhen Wicked Are Called For Judgement \nTo Stay In The World Of Darkness\nUnhelpful Will Be Their Shouting \nOnly Shameful Will Be Weeping\n\nOh Lord\nWhen They Call All The Holy Saints\nWho Have Done Great Work By Your Grace\nThose Who Did Righteous On This Earth When They Praise Him And They Serve\n\nWhen Your Might's Revealed In Heaven\nOh Lord Who May Dare To Stand Before You\n\nኃይልህ ሲገለጥ በሰማይ/2/\nአቤት ማን ይቆም ይሆን ክፊትህ/2/\nአቤት ማን ይቆም ይሆን ክፊትህ/2/",
+      "transliterationLyrics": "Haylih sigelest besemay\nAbet man yiqom yihon kefiteh",
+      "meaning": "This mezmur reflects on the awe and fear of God’s power revealed during the final judgment. It describes the events of the end times, including the sounding of heavenly trumpets, the gathering of angels and saints, and the separation of the righteous from the wicked. The chant calls believers to humility, repentance, and readiness, recognizing that no one can stand before God without His mercy. It emphasizes the importance of living a righteous life and seeking God’s grace before that day arrives.",
+      "youtubeUrl": "https://youtu.be/1jkp1ahJITM?si=yKECS2tCcS79E7ay",
+      "language": "english",
+      "category": {
+        "primary": "liturgical",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "judgment",
+          "repentance",
+          "fear-of-god",
+          "salvation"
+        ],
+        "usage": [
+          "church-service",
+          "reflection",
+          "teaching"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "who-else-do-i-have",
+      "title": "Who Else Do I Have",
+      "transliterationTitle": "Yeliben Hulu Leman Lamakir",
+      "lyrics": "Who else do I have when I feel alone\nYour compassion is what I’ve always known\nWhen I’m weak and frail you are my refuge \nMy sadness is calmed all because of you \n\nየልቤን ሁሉ ለማን ላማክር\nእመቤቴ ሆይ ከአንቺ በቀር\nለደካማው ሰው መጠጊያ እኮነሽ\nሃዘን ጭንቀቴን የምረሳብሽ\n\nThe saints of the past, they called you mother (2x)\nBecause they escaped the fiery chamber\nLike the righteous saints, who live in heaven (2x)\nI will always call upon the Virgin\nChorus…..\n\nIn my darkest times, you shine with your light (2x)\nYou’re a spotless dove a humble servant \nYour motherly love, resides in my heart (2x) \nYou always change my sadness to comfort\nChorus…..\n\nThe Holy Virgin, you’re loving and kind (2x) \nYou protected me since I was a child\nI am grateful for, your intercession (2x)\nWord just can’t express my adoration\nChorus…..\n\nWhen I’m in distress, you’re my source of joy (2x) \nYou respond swiftly and so I rejoice\nFor the sinful soul, your name offers hope (2x)\nThrough your Son we live and find our way home \nChorus…..\n\nYou give me my meal, so I don’t hunger (2x)\nWhen you see we’re sick you offer prayer\nWe who plead to you, with veneration (2x)\nAre not let down with your intercession\n\nWho else do I have when I feel alone\nYour compassion is what I’ve always known\nWhen I’m weak and frail you are my refuge \nMy sadness is calmed all because of you \n\nየልቤን ሁሉ ለማን ላማክር\nእመቤቴ ሆይ ከአንቺ በቀር\nለደካማው ሰው መጠጊያ እኮነሽ\nሃዘን ጭንቀቴን የምረሳብሽ",
+      "transliterationLyrics": "Yeliben hulu leman lamakir\nEmebete hoy keanchi beqer\nLedekamaw sew metegiya ekonesh\nHazen chinqeten yemresabish",
+      "meaning": "This mezmur expresses deep devotion to the Virgin Mary as a compassionate refuge and intercessor. It portrays her as a loving mother who comforts the sorrowful, protects the weak, and brings hope to those in distress. The chant highlights her role in guiding believers through hardship and leading them to her Son, Jesus Christ. It emphasizes trust in her intercession and gratitude for her constant presence and care throughout life.",
+      "youtubeUrl": "https://youtu.be/LXtXNEq9KUE?si=2uh8dV6pYAqLdYW_",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "intercession",
+          "compassion",
+          "comfort",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "with-his-love-the-lord-rescued-me",
+      "title": "With His Love The Lord Rescued Me",
+      "transliterationTitle": "Sileweddedegn Adanenegn",
+      "lyrics": "With His love the Lord rescued me\nHis graciousness my remedy\nI will stand to glorify\nSnatched from death I testify\n\nስለወደደኝ አዳነኝ\nበቸርነቱ ፈወሰኝ\nአቆመኝ ስለ ክብሩ\nከሞት ነጥቆኛል ፍቅሩ\n\nOutstretching His hands taking affliction\nEternally He shows affection\nIn my unrest He became my peace\nMy gracious Lord the one who loved me\n\nOn death’s shoulders I triumphantly stride\nBreaking my chains I'm saved from demise\nWith songs of praise I have filled my mouth\nI'm at ease through Him without a doubt\n\nThe Samaritan came with compassion \nWith His oil my wounds were lessened \nAbundant love has supported me \nHe paid the price and He set me free\n\nWith His love the Lord rescued me\nHis graciousness my remedy\nI will stand to glorify\nSnatched from death I testify\n\nስለወደደኝ አዳነኝ\nበቸርነቱ ፈወሰኝ\nአቆመኝ ስለ ክብሩ\nከሞት ነጥቆኛል ፍቅሩ",
+      "transliterationLyrics": "Sileweddedegn adanenegn\nBechernetu fewesegn\nAqomegn sile kibru\nKemot netqognal fikru",
+      "meaning": "This mezmur is a testimony of God’s saving love and mercy. It reflects on how the Lord rescues, heals, and restores the believer through His compassion and sacrifice. The chant emphasizes freedom from death and bondage, portraying Christ as the healer who brings peace in times of unrest. It calls believers to glorify God with gratitude, recognizing His love as the source of life, healing, and redemption.",
+      "youtubeUrl": "https://youtu.be/ypEI1Lj8FAw?si=UIIQpCBJNiMTDUFb",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "love",
+          "salvation",
+          "healing",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "testimony"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "with-his-mercifulness",
+      "title": "With His Mercifulness",
+      "transliterationTitle": "Bekehalinetu Beamlakinetu",
+      "lyrics": "With His mercifulness with His loving kindness \nGod will accept us He will forgive us (2) with His righteousness\n\nBekehalinetu beamlakinetu \nYikir yilenal yitadegenal (2) becherinetu\n\nHow can we thank you Lord Glorious God Almighty \nYou granted us this life to fulfill righteously \nIt is always your will to save us with your grace \nYou are love God indeed you cannot be replaced \nGod will accept us He will forgive us (2) with His righteousness \n\nNo one compares to Him in His love in His grace \nHe is patient with us He endures for our sake \nHe calls us to His way return to me He says \nLet us pray to Him now with humble repentance \nGod will accept us He will forgive us (2) with His righteousness",
+      "transliterationLyrics": "Bekehalinetu beamlakinetu\nYikir yilenal yitadegenal becherinetu",
+      "meaning": "This mezmur emphasizes God's mercy, loving-kindness, and willingness to forgive those who turn to Him. It reflects on His patience and enduring love, highlighting that salvation comes through His grace and righteousness. The chant calls believers to repentance, humility, and gratitude, encouraging them to return to God and trust in His compassion. It reminds the faithful that God’s mercy is greater than their sins and that He desires to save and restore them.",
+      "youtubeUrl": "https://youtu.be/MycMRvJQ_7o?si=JoZQQCNZCBhBv_0S",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "mercy",
+          "forgiveness",
+          "repentance",
+          "grace"
+        ],
+        "usage": [
+          "church-service",
+          "reflection",
+          "prayer"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "with-my-unfitting",
+      "title": "With My Unfitting",
+      "transliterationTitle": "BeYalhonegn Nefse",
+      "lyrics": "With my unfitting, undeserving soul\nLet me sing for her, for the mother of lord\nI have survived the earth, the dark and the\ncold\nJust thinking about her, her glory untold\n\nThe humbleness you showed is\nimmeasurable\nYou even cry for us, for the lowly people\nYou plea to save my soul, to relief my scares\nMy heart is drawn to you, Mary mother of\nGod\n\nBecause of this Mary, our affection is grand\nWe are begging you, to plead beseech for us\nYour hands are stretched up to, towards our\nGod\nTo ask for forgiveness, you look up to the\nlord\n\nSeraphim Cherubim, angles blazing like fire\nThey couldn't touch our God, his grace and\npower\nMary embraced the lord, you kissed and\nnurtured him\nOh Virgin Mary, Your love is fair and rare",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur expresses deep humility and devotion toward the Virgin Mary, acknowledging the unworthiness of the believer while offering praise to her as the Mother of God. It highlights her compassion, intercession, and unique role in nurturing Christ, whom even angels could not approach. The chant emphasizes her love for humanity and calls upon her to plead for forgiveness and mercy, drawing believers closer to God through her care and intercession.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "intercession",
+          "humility",
+          "devotion",
+          "compassion"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "within-the-sinners-tent",
+      "title": "Within the Sinner’s Tent",
+      "transliterationTitle": "KeHatiategnaw Dinkwan Qidus Qomehal",
+      "lyrics": "Within the sinner’s tent the holy has appeared\nSearching for your child my Lord you brought me near\nSince you stand by my side my challenges have passed\nThe blessings you gave me are abundantly vast\n\nከኃጢያተኛው ድንኳን ቅዱሱ ቆመሀል\nልጄ የት ነው ብለህ እኔን ፈልገሀል\nአንተ ስላለኸኝ ቀሏል መከራዬ\nለኔ ያደረከው ብዙ ነው ጌታዬ\n\nThrough your fulfilling grace you have completed me\nThis is what my heart longs to receive your mercy\nMy weakening has ceased the trials I have crossed\nYou found me the sinner like the coin that was lost\n\nFrom the time you found me the fig as my cover\nWhat I read from your face always I remember\nOvercoming burdens you tell me I'll achieve\nI can tell from your eyes you will not forget me\n\nWhat do you see in me when knocking on my door\nYou are the Holy God while I am weak and poor\nAfter this I won't soak my carpet full of tears\nEnter into my home so your word I can hear\n\nI know you are my Lord giving your love to all\nRescuing from lions deliver from the fall\nI will sing to my God For my heart it has said\nJesus Christ our Savior you’re the heavenly bread\n\nከኃጢያተኛው ድንኳን ቅዱሱ ቆመሀል\nልጄ የት ነው ብለህ እኔን ፈልገሀል\nአንተ ስላለኸኝ ቀሏል መከራዬ\nለኔ ያደረከው ብዙ ነው ጌታዬ",
+      "transliterationLyrics": "Ke hatiategnaw dinkwan qidus qomehal\nLije yet new bileh enen felgehal\nAnte selalekegn qelual mekeraye\nLene yaderekew bizu new getaye",
+      "meaning": "This mezmur expresses the profound mercy of Christ who seeks out and saves sinners. It reflects on God’s presence entering into the life of the unworthy, bringing comfort, healing, and transformation. The chant emphasizes personal redemption, comparing the believer to the lost coin found by the Lord. It highlights God’s compassion, His desire to dwell with His people, and the peace and strength He gives to overcome trials, calling believers to respond with gratitude and praise.",
+      "youtubeUrl": "https://youtu.be/xFk9n--h1t8?si=27pkb7l8bZsYbxpW",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "grace",
+          "repentance",
+          "salvation",
+          "mercy"
+        ],
+        "usage": [
+          "church-service",
+          "reflection",
+          "praise"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "without-you-my-lord",
+      "title": "Without You My Lord",
+      "transliterationTitle": "Yalante Geta Desta Mech Ale",
+      "lyrics": "Without you my Lord I have no delight\nWithout you my God barren is my life\nWhen I call Your name pleading for Your grace\nThe fires will calm from death I'll be saved\n\nYalante Geta desta mech ale\nYalante Amlake hiywet mech ale\nSimihin terto yetematsene\nKesatim weta kemotim dane\n\nAs you held my hand and led me to You\nI conquered the trials and misery too\nI'll leave them behind the hardships will pass\nMy hunger and pain I'll forget at last\n\nWith Your blessings my chalice overflowed\nI was unscathed by the rival's arrow\nWith thousands of words I will fill my mouth\nYour marvelous deeds I will sing about\n\nIf my slayer walks through the night and day\nWhile my savior God is with me to stay\nDeath lost its power I shall have no fear\nI'll worship my King throughout all my years\n\nThe praise of angels became daily bread\nConsumed by Your love my songs I'll extend\nMy despair is gone for hope is risen\nThe glory that's due to you I've given\n\nYalante Geta desta mech ale\nYalante Amlake hiywet mech ale\nSimihin terto yetematsene\nKesatim weta kemotim dane",
+      "transliterationLyrics": "Yalante Geta desta mech ale\nYalante Amlake hiywet mech ale\nSimihin terto yetematsene\nKesatim weta kemotim dane",
+      "meaning": "This mezmur expresses complete dependence on God, declaring that life without Him is empty and without joy. It reflects on how God leads, protects, and delivers the believer from hardship, fear, and even death. The chant emphasizes gratitude for God’s blessings, strength in overcoming trials, and the peace that comes from His presence. It encourages continual praise, recognizing that true fulfillment and hope are found only in Him.",
+      "youtubeUrl": "https://youtu.be/UXODsUa2yew?si=l6_fldVLjczEghTX",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "faith",
+          "dependence",
+          "hope",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "encouragement"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "you-are-without-fault",
+      "title": "You Are Without Fault",
+      "transliterationTitle": "Albeki Newer Weementeni",
+      "lyrics": "You are without fault also you have no blemish upon you (x2)\nCome forth from Lebanon O’ my sister and my bride\nCome forth from Lebanon O’ my sister and bride (2)\n\nAlbeki newer we’eementeni bela’elaeki (x2) \nTsaee imlebanos ehitiye merat (4) \n\nአልብኪ ነውር ወኢምንትኒ በላዕሌኪ(x2)\nፃኢ እምሊባኖስ እኅትየ መርዓት(x4)",
+      "transliterationLyrics": "Albeki newer weementeni bela’elaeki\nTsaee imlebanos ehitiye merat",
+      "meaning": "This mezmur praises the purity and holiness of the Virgin Mary, describing her as without blemish and chosen by God. Drawing from the imagery of the Song of Songs, it portrays her as the bride called forth in glory. The chant emphasizes her spiritual perfection, her role in the divine plan, and her exalted place among all creation, inviting believers to honor her with reverence and devotion.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary"
+        ],
+        "themes": [
+          "purity",
+          "holiness",
+          "praise",
+          "incarnation"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "you-who-saved-from-fire",
+      "title": "You Who Saved From Fire",
+      "transliterationTitle": "Zemadekegn KeEsat",
+      "lyrics": "You who saved from fire, Kirkos and his mother \nSave us as well /2/ Oh Archangel \nSave us as well /2/ Gabriel the archange",
+      "transliterationLyrics": "",
+      "meaning": "This mezmur calls upon the Archangel Gabriel for intercession, recalling the deliverance of Saint Kirkos and his mother from fire. It expresses trust in the power of God working through His angels to save and protect the faithful. The chant is a brief yet powerful prayer asking for the same mercy, protection, and deliverance in times of danger and trial.",
+      "youtubeUrl": "",
+      "language": "english",
+      "category": {
+        "primary": "saint",
+        "majorHoliday": [],
+        "saints": [
+          "gabriel",
+          "kirkos"
+        ],
+        "themes": [
+          "intercession",
+          "protection",
+          "deliverance",
+          "faith"
+        ],
+        "usage": [
+          "church-service",
+          "intercession",
+          "prayer"
+        ],
+        "season": [],
+        "confidence": "medium"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "your-love-allured-me",
+      "title": "Your Love Allured Me",
+      "transliterationTitle": "Fikrih Marekegn",
+      "lyrics": "Your love allured me throughout my life and all my years (2)\nGod my salvation my medicine\nYour love allured me throughout my life and all my years \n\nI have been purchased by Your precious blood\nSo I may serve You and leave this dark world \nBecause of Your death I received my life\nWith Your suffering my burdens have died\nFor Your grace I’ll stand and sing songs for You \nLimited I am but still I’ll praise You \n\nThe heavens and earth out loud they will shout\nTo honor and praise worship they will sprout\nThere is none like You and Your righteousness\nI will sing to You my hearts offerings \nMy fingers will play the strings of the harp \nWith psalm day and night they will never stop\n\nScattered they all were when they saw Your grace \nFor virtue they fell and they all obeyed \nCreator of the earth almighty You are\nWith love You conquer the hearts of us all \nSupported we are throughout our lives\nBy You our King with You by our side\n\nፍቅርህ ማረከኝ በሕይወቴ በዘመኔ (2)\nእግዚአብሔር ለኔ መድኃኒቴ\nፍቅርህ ማረከኝ በሕይወቴ በዘመኔ\n\nFikrih marekegn behiywete bezemene (2)\nEgziabher lene medhanite\nFikrih marekegn behiywete bezemene",
+      "transliterationLyrics": "Fikrih marekegn behiywete bezemene\nEgziabher lene medhanite\nFikrih marekegn behiywete bezemene",
+      "meaning": "This mezmur expresses the deep and transformative love of God that draws the believer throughout life. It reflects on redemption through Christ’s sacrifice, emphasizing that His blood has purchased and renewed the soul. The chant highlights continuous praise from both heaven and earth, recognizing God’s righteousness and unmatched glory. It encourages lifelong devotion, gratitude, and worship, acknowledging that God’s love sustains and guides believers in every moment.",
+      "youtubeUrl": "https://youtu.be/3GXBNYlEHHo?si=i8rGgGiiB8s_c5Lk",
+      "language": "english",
+      "category": {
+        "primary": "general",
+        "majorHoliday": [],
+        "saints": [],
+        "themes": [
+          "love",
+          "redemption",
+          "praise",
+          "devotion"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "worship"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "type": "chant",
+      "form": "mezmur",
+      "id": "youre-the-soul-for-my-soul",
+      "title": "You’re the Soul for My Soul",
+      "transliterationTitle": "Lenefese Nefeswa Nesh",
+      "lyrics": "Lenefese nefeswa nesh, Lemengede fana\nEndaltefa amnalew, Yanchi lij Negna\n\nYou’re the soul for my soul, and the Light of my path\nI know I won’t perish i’m a child of Yours\n\nMothers of the righteous, in number they’re many\nBefore and after Christ, truly they are plenty\nBut Mary You are one, there is no one like You\nYou live on for ages, guiding us all to You\n\nAll those who call on you, all who honor your name\nAll who offer praises, your glory who proclaims\nTruly he does profit, and truly does he gain\nThere is none who loses, there is none put to shame\n\nSaint Gregory and the, righteous father St John\nSt Basil who is Great, and St. Athanasius \nOur teacher St. Ephrem and St George our father\nAll profited from you, calling you their Mother\n\nGo and ask your Fathers, is what the Word proclaims\nAnd when we did ask them, all of the righteous saints \nThey did tell us of You, how you endlessly love\nHow you plead for mankind, saving us from above \n\nGabriel from heaven, Elizabeth from Earth\nTogether they did preach, honor to Virgin birth \nWhoever pleads to You, calling upon Your name\nHe can only profit, no one is put to shame",
+      "transliterationLyrics": "Lenefese nefeswa nesh, lemengede fana\nEndaltefa amnalew, yanchi lij negna",
+      "meaning": "This mezmur is a deep expression of devotion to the Virgin Mary, recognizing her as a guiding light and spiritual mother. It emphasizes her unique role among all righteous women, highlighting that there is none like her. The chant reflects on the testimony of saints and prophets who honored her and benefited from her intercession. It encourages believers to call upon her with faith, affirming that those who seek her help will not be put to shame but will receive spiritual gain and guidance.",
+      "youtubeUrl": "https://youtu.be/xupmIo5JY6c?si=PkMs3hMpoqmARvPM",
+      "language": "english",
+      "category": {
+        "primary": "mary",
+        "majorHoliday": [],
+        "saints": [
+          "mary",
+          "gabriel",
+          "elizabeth",
+          "gregory",
+          "john",
+          "basil",
+          "athanasius",
+          "ephrem",
+          "george"
+        ],
+        "themes": [
+          "intercession",
+          "devotion",
+          "guidance",
+          "praise"
+        ],
+        "usage": [
+          "church-service",
+          "praise",
+          "marian"
+        ],
+        "season": [],
+        "confidence": "high"
+      }
+    }
+  ]
+}

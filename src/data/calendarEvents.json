@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "id": "enkutatash",
+      "title": "Enkutatash — Ethiopian New Year",
+      "transliterationTitle": "Enkutatash",
+      "shortDescription": "The liturgical new year, observed on Meskerem 1.",
+      "meaning": "It marks a fresh year of grace in the Ethiopian Orthodox calendar and calls believers to thanksgiving and renewed attentiveness to the Church’s rhythm.",
+      "observance": "Often greeted with blessing, family gathering, sprays of fresh grass (qäsäxa), song and prayer; parish customs vary."
+    },
+    {
+      "id": "meskel",
+      "title": "Meskel — Finding of the True Cross",
+      "transliterationTitle": "Meskel",
+      "shortDescription": "The feast commemorating Queen Helena’s finding of the Lord’s Cross and its veneration in Ethiopian experience.",
+      "meaning": "The Cross is honored as the trophy of salvation; Meskel turns hearts toward Christ’s saving passion in joy and public witness.",
+      "observance": "Marked with the Demera bonfire, hymns, processions, and the blessing of the Cross as parishes arrange."
+    },
+    {
+      "id": "timket",
+      "title": "Timket — The Baptism of Christ",
+      "transliterationTitle": "Timket",
+      "shortDescription": "The great feast of our Lord’s baptism in the Jordan (Ṭimqāt).",
+      "meaning": "Timket proclaims the revelation of the Holy Trinity at the Jordan and the sanctification of the waters in Ethiopian liturgical memory.",
+      "observance": "Celebrated with tabot procession, blessing of water, prayer near rivers or pools, and joyful festivity after the Divine Liturgy as local custom allows."
+    },
+    {
+      "id": "gena",
+      "title": "Gena — the Nativity of Christ",
+      "transliterationTitle": "Gena",
+      "shortDescription": "The feast of Christ born of the Virgin at Bethlehem.",
+      "meaning": "Gena centers the Incarnation: God-with-us, confessed without confusion in the Ethiopian Orthodox faith.",
+      "observance": "Kept with vigil, fast-breaking according to parish rules, Christmas Divine Liturgy, and humble household joy that honors the Lord’s birth."
+    },
+    {
+      "id": "nativity-fast",
+      "title": "Nativity fast (Advent)",
+      "transliterationTitle": "Tsome Gena",
+      "shortDescription": "The fasting season preparing hearts for the Lord’s Nativity.",
+      "meaning": "Abstinence and prayer clear room for wonder at the Incarnation and for repentance before the feast.",
+      "observance": "Observed with stricter vegan discipline, more prayer and alms; exact length is set yearly on the Church calendar under the bishop’s guidance."
+    },
+    {
+      "id": "hosanna",
+      "title": "Hosanna — the Lord’s entry into Jerusalem",
+      "transliterationTitle": "Hosanna",
+      "shortDescription": "The Sunday procession that remembers Christ hailed as King entering Jerusalem.",
+      "meaning": "Hosanna praises the Messiah who comes in the name of the Lord and begins the week of Paschal mystery in Tewahedo liturgy.",
+      "observance": "Observed with palm or olive branches, processions, hymns of praise, and readiness for the holy days that follow."
+    },
+    {
+      "id": "siqlet",
+      "title": "Siqlet — Holy Crucifixion Friday",
+      "transliterationTitle": "Siqlet",
+      "shortDescription": "The solemn remembrance of the Lord’s saving death upon the Cross.",
+      "meaning": "Siqlet calls the faithful to stand at Golgotha in reverence, confessing Christ crucified for the world.",
+      "observance": "Kept with strict fast, long services, veneration of the Cross, quiet homes, and charity toward neighbor according to parish order."
+    },
+    {
+      "id": "fasika",
+      "title": "Fasika — the Resurrection of Christ",
+      "transliterationTitle": "Fasika",
+      "shortDescription": "The feast of Pascha: Christ risen from the dead.",
+      "meaning": "Fasika is the summit of the year—the victory over death—lived in the Tewahedo confession of one nature of Christ united without confusion.",
+      "observance": "Begun at the night vigil with joyful greeting “Christ is risen,” festive Divine Liturgy, breaking the long fast, and charity and forgiveness among Christians."
+    },
+    {
+      "id": "damawi-tensae",
+      "title": "ዳግም ትንሣኤ (ቶማስ)",
+      "englishTitle": "Thomas Sunday / New Sunday",
+      "transliterationTitle": "Damawi Tensae",
+      "type": "Movable (Fasika cycle)",
+      "shortDescription": "The first Sunday after Fasika, commemorating the appearance of the risen Lord to Saint Thomas and confirming the truth of the Resurrection.",
+      "summary": "This day is ዳግም ትንሣኤ (ቶማስ), the first Sunday after Fasika. It commemorates the appearance of the risen Lord to Saint Thomas and confirms the truth of the Resurrection.",
+      "meaning": "This day represents the strengthening of faith after the Resurrection. It shows that Christ truly rose in the body and revealed Himself to His disciples, including Thomas, who confessed Him in faith.",
+      "whyItMatters": "Thomas Sunday matters because it proclaims the Resurrection as a real and living event, not only a symbol. It teaches believers to move from doubt to confession and to rejoice in the risen Christ during the fifty joyful days after Fasika.",
+      "howToObserve": "Attend the Divine Liturgy with Resurrection joy. Keep the festal spirit of the fifty days after Fasika. Read the Gospel of John 20:24–29. Reflect on the confession of Saint Thomas: \"My Lord and my God.\" Offer thanksgiving prayers for the gift of the Resurrection. Use Resurrection chants and readings rather than penitential fasting themes.",
+      "prayAndChant": "Suggested Gospel: John 20:24–29. Suggested focus: Resurrection prayers, thanksgiving, and Paschal praise. Suggested chant theme: Resurrection / ትንሣኤ. Suggested practice direction: chants that celebrate the risen Christ and the joy of the disciples.",
+      "observance": "Kept with festal Divine Liturgy, Paschal hymns, and the Church's gentle invitation to trust the wounds and victory of Christ; customs vary by parish.",
+      "notes": "This is not a fixed monthly saint commemoration. It is a movable Paschal observance tied to Fasika. For 2026, Fasika is April 12, so Thomas Sunday is April 19. This day belongs to the fifty joyful days between Fasika and Pentecost.",
+      "fixedOrMovable": "movable"
+    },
+    {
+      "id": "semune-himamat",
+      "title": "Sem’une Himamat — Holy Week",
+      "transliterationTitle": "Semune Himamat",
+      "shortDescription": "The sacred week from Hōsanna through Siqlet leading to Fāsikā.",
+      "meaning": "These days walk with Christ in his passion so the soul may learn repentance, compassion, and gratitude at his redeeming love.",
+      "observance": "Served with daily offices, strict fasting, foot-washing where practiced, confession as directed, and close harmony with the congregation and priest."
+    },
+    {
+      "id": "abiy-tsom",
+      "title": "Ābiy Tsome — the Great Fast",
+      "transliterationTitle": "Abiy Tsom",
+      "shortDescription": "The long fast before Pascha (Great Lent in Ethiopian Orthodox life).",
+      "meaning": "The Church enters the Lord’s desert: prayer, fasting, and alms strip away distraction so Paschal joy is deep and humble.",
+      "observance": "Vegan discipline, increased liturgy and prostrations, mercy to the poor, and guidance from one’s father of confession."
+    },
+    {
+      "id": "nineveh-fast",
+      "title": "Fast of Nineveh",
+      "transliterationTitle": "Tsome Nineveh",
+      "shortDescription": "A three-day fast patterned on Jonah’s preaching in Nineveh.",
+      "meaning": "The Church teaches mercy and urgent repentance, trusting God who forgives when hearts turn back to him.",
+      "observance": "Kept with strict abstinence, penitential prayer, and hearing the Gospel of Jonah in community worship."
+    },
+    {
+      "id": "erget",
+      "title": "Erget — Ascension of Christ",
+      "transliterationTitle": "Erget",
+      "shortDescription": "The feast of the Lord taken up in glory to sit at the Father’s right hand.",
+      "meaning": "Erget confesses that the risen Lord rules creation and intercedes for his Church until he comes again.",
+      "observance": "Marked with festal liturgy, hymns of exaltation, and prayer for the Church on earth as the Spirit is promised."
+    },
+    {
+      "id": "peraklitos",
+      "title": "Peraklitos — Pentecost (Fiftieth day)",
+      "transliterationTitle": "Peraklitos",
+      "shortDescription": "The descent of the Holy Spirit upon the apostles on Pentecost.",
+      "meaning": "The Spirit seals the disciples for mission, gathers the Church, and comforts believers until the Lord’s return.",
+      "observance": "Celebrated with festal service, red vestiges in some places, prayers for renewal, and love of neighbor in truth."
+    },
+    {
+      "id": "tsome-hawaryat",
+      "title": "Tsome Hawaryat — Apostles’ Fast",
+      "transliterationTitle": "Tsome Hawaryat",
+      "shortDescription": "The fast preparing for the feast of Peter and Paul in Ethiopian reckoning.",
+      "meaning": "The Church unites with the apostles’ endurance and prays for missionary courage in every baptized member.",
+      "observance": "Observed with fasting discipline, liturgical prayers for the apostles, and reconciliation among brethren as able."
+    },
+    {
+      "id": "filseta",
+      "title": "Filseta — Falling asleep of Saint Mary",
+      "transliterationTitle": "Filseta",
+      "shortDescription": "The commemoration of the Virgin’s dormition and passage to life.",
+      "meaning": "Filseta honors the Mother of God as model of faithfulness; her end is a sign of hope for all who follow her Son.",
+      "observance": "Kept with vigil, festal procession where customary, Marian hymns, and generosity toward the needy in her name."
+    },
+    {
+      "id": "beale-maryam",
+      "title": "Ba‘āla Māryām — monthly feast of the Virgin Mary",
+      "transliterationTitle": "Beale Maryam",
+      "shortDescription": "Each month’s set day honoring the Virgin Mary, Mother of God.",
+      "meaning": "The Church thanks God for her consent and intercession, patterning every home after humble obedience.",
+      "observance": "Observed with Divine Liturgy, Marian hymns, almsgiving, and visiting the sick when possible."
+    },
+    {
+      "id": "beale-michael",
+      "title": "Ba‘āla Mīkhā’ēl — monthly feast of St Michael",
+      "transliterationTitle": "Beale Michael",
+      "shortDescription": "The monthly commemoration of the Archangel Michael, leader of the heavenly hosts.",
+      "meaning": "Michael names God’s strength; the Church asks his protection against spiritual harm and prays for courage in virtue.",
+      "observance": "Kept with liturgy, incense, intercessory prayer, and charity in Michael’s honor."
+    },
+    {
+      "id": "beale-gabriel",
+      "title": "Ba‘āla Gābrē’ēl — monthly feast of St Gabriel",
+      "transliterationTitle": "Beale Gabriel",
+      "shortDescription": "The monthly commemoration of the Archangel Gabriel, herald of the Incarnation.",
+      "meaning": "Gabriel reminds the faithful that God’s word breaks into history with mercy as it did at the Annunciation.",
+      "observance": "Marked with Divine Liturgy, song to the Mother of God, and reverent speech at home and church."
+    },
+    {
+      "id": "beale-selassie",
+      "title": "Ba‘ala Sellassē — monthly feast of the Holy Trinity",
+      "transliterationTitle": "Beale Selassie",
+      "shortDescription": "A monthly day fixed on the mystery of one God: Father, Son, and Holy Spirit.",
+      "meaning": "Believers adore the undivided Trinity, one ǝssence unconfused and unmixed, source of every blessing.",
+      "observance": "Observed with Trinitarian hymns, the Creed, the Eucharist, and care for the poor as God’s image."
+    },
+    {
+      "id": "tsome-nebiyat",
+      "title": "Tsome Nabīyāt — Fast of the Prophets",
+      "transliterationTitle": "Tsome Nebiyat",
+      "shortDescription": "The fast anticipating the Lord’s Nativity in prophetic hope.",
+      "meaning": "The Church waits with the prophets who foretold Christ, uniting fasting to prayer for the coming feast of Gena.",
+      "observance": "Kept with stricter diet, prophetic readings, and almsgiving toward the Nativity celebration."
+    },
+    {
+      "id": "lideta-maryam",
+      "title": "Lideta Maryam — Presentation of Mary",
+      "transliterationTitle": "Lideta Maryam",
+      "shortDescription": "The remembrance of Mary’s life consecrated to God from her youth.",
+      "meaning": "It praises her wholly given to the Lord, encouraging every believer to offer life and body to God’s will.",
+      "observance": "Celebrated with liturgy, hymns to the Virgin, and acts of consecration suited to parish custom."
+    },
+    {
+      "id": "debre-tabor",
+      "title": "Debre Tabor — the Holy Transfiguration",
+      "transliterationTitle": "Debre Tabor",
+      "shortDescription": "The feast of Christ glorified on Mount Tabor before his disciples.",
+      "meaning": "Tabor shows the same Christ who will suffer in glory—a pledge of the Kingdom for those who follow him.",
+      "observance": "Kept with festal Divine Liturgy, Gospel reading of the Transfiguration, and prayer for inner transformation."
+    },
+    {
+      "id": "debre-zeit",
+      "title": "Debre Zeit — the Lord on the Mount of Olives",
+      "transliterationTitle": "Debre Zeit",
+      "shortDescription": "A feast recalling Christ’s revelation and prayer on the holy mountain, lived in Ethiopian synaxarium memory.",
+      "meaning": "It calls souls to watch with Christ and to receive his light in the struggle of faith.",
+      "observance": "Observed in liturgical prayer, procession where customary, and sober readiness for Paschal time."
+    },
+    {
+      "id": "tsige",
+      "title": "Tsige — the Feast of the Cross (annual)",
+      "transliterationTitle": "Tsige",
+      "shortDescription": "A major movable feast of the Cross in the Ethiopian year (distinct from Meskel’s commemoration of the finding).",
+      "meaning": "The Cross is celebrated as the sign of victory over sin and death in the life of the baptized.",
+      "observance": "Marked with Cross veneration, hymns, and fasting or abstinence as the annual table directs under the bishop."
+    },
+    {
+      "id": "pagumen",
+      "title": "Pagumen — the epagomenal days",
+      "transliterationTitle": "Pagumen",
+      "shortDescription": "The short final days of the Ethiopian year before Meskerem 1.",
+      "meaning": "They bridge one liturgical year to the next, inviting thanks, small acts of charity, and remembrance of the saints.",
+      "observance": "Often observed with prayer, remembrance of the departed where customary, and readiness for Enkutatash."
+    },
+    {
+      "id": "daily-senksar-commemoration",
+      "title": "Daily Senkessar remembrance",
+      "transliterationTitle": "Senkessar",
+      "shortDescription": "The day’s saint, feast, or martyr named in the Church’s synaxarium for this calendar entry.",
+      "meaning": "Each commemoration stitches the believer into the communion of saints who followed Christ in this life.",
+      "observance": "Honored with the Divine Liturgy when possible, reading the life of the saint if available, and one concrete work of mercy."
+    },
+    {
+      "id": "righteous-remembrance",
+      "title": "Commemoration of the righteous",
+      "transliterationTitle": "",
+      "shortDescription": "A day honoring the righteous who pleased God in their generation.",
+      "meaning": "The Church praises holiness in ordinary vocations and asks their prayers for the living.",
+      "observance": "Observed by attending service when able, humble generosity, and forgiving others as Christ forgave."
+    },
+    {
+      "id": "abune-teklehaymanot",
+      "title": "Saint Abune Tekle Haymanot of Shoa",
+      "transliterationTitle": "Tekle Haymanot",
+      "shortDescription": "Commemoration of the great monastic father and evangelist of medieval Ethiopia.",
+      "meaning": "His life recalls single-hearted love for Christ, zeal for the Gospel, and endurance in ascetic prayer.",
+      "observance": "Honored with liturgical remembrance, intercession for monastics, and generosity toward the poor in his name."
+    }
+  ]
+}

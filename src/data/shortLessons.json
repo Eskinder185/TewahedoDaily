@@ -1,0 +1,38 @@
+[
+  {
+    "id": "c1",
+    "title": "How to begin prayer",
+    "duration": "0:45",
+    "tag": "Tselot",
+    "hook": "A gentle shape before the words.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=M7lc1UVf-VE",
+    "practiceTab": "prayers"
+  },
+  {
+    "id": "c2",
+    "title": "Meaning of today",
+    "duration": "0:55",
+    "tag": "Calendar",
+    "hook": "Why the Church remembers this day.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+    "homeSection": "today"
+  },
+  {
+    "id": "c3",
+    "title": "Today’s mezmur line",
+    "duration": "1:00",
+    "tag": "Mezmur",
+    "hook": "Listen once, then hum along.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+    "practiceTab": "chants"
+  },
+  {
+    "id": "c4",
+    "title": "Werb posture & breath",
+    "duration": "0:50",
+    "tag": "Werb",
+    "hook": "Standing scripture without rushing.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=L_jWHffIx5E",
+    "practiceTab": "chants"
+  }
+]

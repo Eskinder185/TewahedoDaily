@@ -1,0 +1,24 @@
+[
+  {
+    "id": "general-kebro-practice",
+    "title": "General Kebro Practice",
+    "category": "movement",
+    "subCategory": "kebro",
+    "type": "video",
+    "audience": ["beginner", "general"],
+    "tags": ["movement", "kebro", "rhythm", "practice"],
+    "description": "General kebro practice to help users understand rhythm, timing, and movement support.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=AM1sGjyLFLc"
+  },
+  {
+    "id": "werb-kebro-practice",
+    "title": "Werb Kebro Practice",
+    "category": "movement",
+    "subCategory": "kebro",
+    "type": "video",
+    "audience": ["intermediate", "werb"],
+    "tags": ["movement", "kebro", "werb", "rhythm", "practice"],
+    "description": "Kebro practice focused on werb rhythm and movement coordination.",
+    "youtubeUrl": "https://www.youtube.com/watch?v=LqDKEpwk4R0"
+  }
+]
