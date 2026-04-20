@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
@@ -10,7 +10,7 @@ import {
 import type { TselotPrayer } from '../lib/practice/types'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import type { UiLabelKey } from '../lib/i18n/uiLabels'
-import { forceScrollToTopOnMobile, isMobileViewport } from '../lib/scrollUtils'
+import { isMobileViewport, scrollTargetIntoView } from '../lib/scrollUtils'
 import styles from './WudaseMariamPage.module.css'
 
 const DAY_LABEL_KEYS: UiLabelKey[] = [
@@ -60,14 +60,22 @@ export function WudaseMariamPage() {
 
   const active = byId.get(activeId) ?? ordered[0]
 
+  useLayoutEffect(() => {
+    if (isMobileViewport() && showDayTabsOnMobile) return
+    scrollTargetIntoView('#wudase-reader', { smooth: false, flush: true })
+    requestAnimationFrame(() => {
+      if (isMobileViewport() && !showDayTabsOnMobile) {
+        document.getElementById('wudase-reader')?.focus({ preventScroll: true })
+      }
+    })
+  }, [activeId, showDayTabsOnMobile])
+
   // Handle day selection - immediate opening on mobile
   const handleDaySelect = (dayId: string) => {
     setParams({ day: dayId })
-    
-    // On mobile: hide day tabs and scroll to top immediately
+
     if (isMobileViewport()) {
       setShowDayTabsOnMobile(false)
-      forceScrollToTopOnMobile()
     }
   }
 
@@ -76,8 +84,11 @@ export function WudaseMariamPage() {
     setShowDayTabsOnMobile(true)
   }
 
+  const readingMode =
+    isMobileViewport() && !showDayTabsOnMobile ? styles.readingModeSection : ''
+
   return (
-    <PageSection variant="tint">
+    <PageSection variant="tint" className={readingMode}>
       <nav className={styles.nav} aria-label="Breadcrumb">
         <Link className={styles.crumb} to="/prayers">
           {t('navPrayers')}
@@ -88,17 +99,19 @@ export function WudaseMariamPage() {
         <span className={styles.crumbCurrent}>{t('prayerWudaseTitle')}</span>
       </nav>
 
-      <SanctuaryHero eyebrow={t('prayerWudaseEyebrow')} title={t('prayerWudaseTitle')}>
-        <p>{t('prayerWudaseIntro')}</p>
-      </SanctuaryHero>
+      <div className={styles.preReader}>
+        <SanctuaryHero eyebrow={t('prayerWudaseEyebrow')} title={t('prayerWudaseTitle')}>
+          <p>{t('prayerWudaseIntro')}</p>
+        </SanctuaryHero>
 
-      <div className={styles.jumpRow}>
-        <a href="#wudase-days" className={styles.jumpChip}>
-          Day selector
-        </a>
-        <a href="#wudase-reader" className={styles.jumpChip}>
-          Reading panel
-        </a>
+        <div className={styles.jumpRow}>
+          <a href="#wudase-days" className={styles.jumpChip}>
+            Day selector
+          </a>
+          <a href="#wudase-reader" className={styles.jumpChip}>
+            Reading panel
+          </a>
+        </div>
       </div>
 
       <p className={`${styles.tabsLabel} ${!showDayTabsOnMobile ? styles.tabsLabelHidden : ''}`}>{t('prayerWudaseDays')}</p>
@@ -119,6 +132,7 @@ export function WudaseMariamPage() {
               type="button"
               role="tab"
               aria-selected={on}
+              aria-controls="wudase-reader"
               className={`${styles.tab} ${on ? styles.tabOn : ''}`}
               onClick={() => handleDaySelect(id)}
             >
@@ -133,7 +147,12 @@ export function WudaseMariamPage() {
         })}
       </div>
 
-      <article className={`${styles.reader} ${!showDayTabsOnMobile ? styles.readerFullMobile : ''}`} id="wudase-reader" key={activeId}>
+      <article
+        className={`${styles.reader} ${!showDayTabsOnMobile ? styles.readerFullMobile : ''}`}
+        id="wudase-reader"
+        key={activeId}
+        tabIndex={-1}
+      >
         {!showDayTabsOnMobile && (
           <button 
             className={styles.backButton}
@@ -151,6 +170,13 @@ export function WudaseMariamPage() {
             ) : null}
           </div>
         </header>
+
+        <div
+          id="wudase-reading-start"
+          tabIndex={-1}
+          className={styles.readingLandmark}
+          aria-label={active?.title ?? 'Prayer reading'}
+        />
 
         {active ? (
           <PrayerTextTabs

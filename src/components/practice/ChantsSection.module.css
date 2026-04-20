@@ -17,7 +17,8 @@
 }
 
 .retryButton {
-  padding: var(--space-2) var(--space-4);
+  min-height: var(--tap-min);
+  padding: var(--space-3) var(--space-5);
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: var(--color-bg-elevated);
@@ -31,6 +32,18 @@
 
 .retryButton:hover {
   background: var(--color-gold-soft);
+}
+
+.retryButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .retryButton {
+    min-height: 0;
+    padding: var(--space-2) var(--space-4);
+  }
 }
 
 .chantHelper {
@@ -118,7 +131,7 @@
 }
 
 .searchInputWrap .search {
-  padding-right: calc(var(--space-4) + 2.25rem);
+  padding-right: calc(var(--space-4) + 2.75rem);
 }
 
 .searchClear {
@@ -126,8 +139,8 @@
   right: var(--space-2);
   top: 50%;
   transform: translateY(-50%);
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -148,6 +161,11 @@
 .searchClear:hover {
   background: var(--color-gold-soft);
   color: var(--color-heading);
+}
+
+.searchClear:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .recent {
@@ -172,6 +190,7 @@
 
 .recentChip {
   max-width: 100%;
+  min-height: var(--tap-min);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
@@ -202,7 +221,8 @@
 }
 
 .filter {
-  padding: var(--space-2) var(--space-3);
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
   background: var(--color-bg-elevated);
@@ -233,6 +253,14 @@
   color: var(--color-wine-deep);
   border-color: color-mix(in srgb, var(--color-wine) 35%, var(--color-border));
   background: var(--color-gold-soft);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-wine) 18%, transparent);
+}
+
+@media (min-width: 960px) {
+  .filter {
+    min-height: 0;
+    padding-block: var(--space-2);
+  }
 }
 
 .toolbar {
@@ -303,17 +331,16 @@
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 400px) {
+@media (min-width: 960px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-4);
+    gap: var(--space-5);
   }
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1200px) {
   .grid {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: var(--space-5);
   }
 }
 
@@ -431,7 +458,9 @@
 }
 
 .collapseBrowse {
-  padding: 0;
+  margin: 0;
+  padding: var(--space-2) 0;
+  min-height: var(--tap-min);
   border: none;
   background: none;
   font-family: var(--font-body);
@@ -441,6 +470,7 @@
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;
+  text-align: start;
 }
 
 .collapseBrowse:hover {

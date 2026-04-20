@@ -77,6 +77,7 @@ export function PrayerDocumentTabs({ title, content }: Props) {
 
       <TabPanel
         variant="compact"
+        compactWrap
         tablistAriaLabel={`${title} languages`}
         tabs={tabs}
         initialId="amharic"

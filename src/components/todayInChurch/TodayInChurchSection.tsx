@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { PageSection } from '../ui/PageSection'
 import { TabPanel } from '../ui/TabPanel'
 import { CalendarDayDetailModal } from '../calendar/CalendarDayDetailModal'
@@ -7,7 +7,7 @@ import { SelectedChurchDayPanel } from '../calendar/SelectedChurchDayPanel'
 import { CalendarImage } from '../calendar/CalendarImage'
 import { useHomeToday } from '../../hooks/useHomeToday'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
-import { buildChurchDaySnapshot } from '../../lib/churchCalendar'
+import { buildChurchDaySnapshot, computeCalendarDayMarks } from '../../lib/churchCalendar'
 import type { UpcomingObservance } from '../../lib/churchCalendar'
 import {
   calendarImageManifest,
@@ -19,6 +19,8 @@ import { ChurchCommemorationCard } from './ChurchCommemorationCard'
 import { ChurchSeasonFastingPanel } from './ChurchSeasonFastingPanel'
 import { MiniMonthCalendar } from './MiniMonthCalendar'
 import { UpcomingObservancesStrip } from './UpcomingObservancesStrip'
+import { scrollElementNodeIntoView } from '../../lib/scrollUtils'
+import { parseGregorianAnchorIso } from '../../lib/churchCalendar/upcomingObservanceDisplay'
 import styles from './TodayInChurchSection.module.css'
 
 type Props = {
@@ -47,13 +49,35 @@ export function TodayInChurchSection({
       : null,
   )
   const [observanceFocusId, setObservanceFocusId] = useState<string | null>(null)
+  const selectedDayAnchorRef = useRef<HTMLDivElement>(null)
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  const markedForView = useMemo(() => {
-    if (viewYear !== miniCalendar.year || viewMonth !== miniCalendar.monthIndex) {
-      return []
-    }
-    return miniCalendar.markedDays
-  }, [viewYear, viewMonth, miniCalendar])
+  /** Deep link from observance gallery: `?calDay=YYYY-MM-DD&calFocus=entry-id` */
+  useLayoutEffect(() => {
+    if (!embeddedOnCalendarPage) return
+    const calDay = searchParams.get('calDay')
+    if (!calDay) return
+    const parsed = parseGregorianAnchorIso(calDay)
+    if (!parsed) return
+    const y = parsed.getFullYear()
+    const m = parsed.getMonth()
+    const d = parsed.getDate()
+    setViewYear(y)
+    setViewMonth(m)
+    setSelectedDay(d)
+    setDetailDate(new Date(y, m, d))
+    const calFocus = searchParams.get('calFocus')
+    setObservanceFocusId(calFocus)
+    const next = new URLSearchParams(searchParams)
+    next.delete('calDay')
+    next.delete('calFocus')
+    setSearchParams(next, { replace: true })
+  }, [embeddedOnCalendarPage, searchParams, setSearchParams])
+
+  const dayMarkMap = useMemo(
+    () => computeCalendarDayMarks(viewYear, viewMonth),
+    [viewYear, viewMonth],
+  )
 
   const openDay = useCallback(
     (day: number) => {
@@ -63,6 +87,15 @@ export function TodayInChurchSection({
     },
     [viewYear, viewMonth],
   )
+
+  useLayoutEffect(() => {
+    if (!embeddedOnCalendarPage || !detailDate) return
+    scrollElementNodeIntoView(selectedDayAnchorRef.current, {
+      smooth: false,
+      block: 'start',
+      flush: true,
+    })
+  }, [detailDate, embeddedOnCalendarPage, selectedDay, viewMonth, viewYear])
 
   const goPrevMonth = useCallback(() => {
     const d = new Date(viewYear, viewMonth - 1, 1)
@@ -138,6 +171,12 @@ export function TodayInChurchSection({
     [embeddedOnCalendarPage, detailDate, snapshot],
   )
 
+  const selectionLiveMessage = useMemo(() => {
+    if (!detailDate) return ''
+    const snap = buildChurchDaySnapshot(detailDate)
+    return `${t('calendarSelectionAnnounce')}: ${snap.gregorian.labelLong}. ${snap.commemoration.title}.`
+  }, [detailDate, t])
+
   const reflectionImage = resolveSeasonSupportImage(
     coachSnapshot.season.id,
     coachSnapshot.fasting.seasonalFast,
@@ -179,8 +218,12 @@ export function TodayInChurchSection({
                 src={reflectionImage}
                 alt=""
                 className={styles.reflectionImage}
+                width={1600}
+                height={880}
+                sizes="(max-width: 720px) 100vw, 40vw"
                 loading="lazy"
                 decoding="async"
+                fetchPriority="low"
               />
             </figure>
             <p className={styles.expandedP}>{commemoration.whyTodayLong}</p>
@@ -232,28 +275,57 @@ export function TodayInChurchSection({
                 src={monthImage}
                 alt=""
                 className={styles.introFigureImg}
+                width={880}
+                height={550}
+                sizes="(max-width: 600px) 44vw, 220px"
                 loading="lazy"
                 decoding="async"
+                fetchPriority="low"
               />
             </figure>
           ) : null}
         </div>
       </header>
 
-      <div className={styles.shell}>
+      <div
+        className={`${styles.shell} ${embeddedOnCalendarPage ? styles.shellCalendarMobile : ''}`.trim()}
+      >
         <div className={styles.calendarColumn}>
           <div className={styles.calendarFrame}>
             <MiniMonthCalendar
               anchor={now}
               displayYear={viewYear}
               displayMonthIndex={viewMonth}
-              markedDays={markedForView}
+              dayMarks={dayMarkMap}
               selectedDay={selectedDay}
               onSelectDay={openDay}
               onPrevMonth={goPrevMonth}
               onNextMonth={goNextMonth}
             />
-            {embeddedOnCalendarPage ? (
+          </div>
+          {detailDate ? (
+            <p className={styles.srOnly} aria-live="polite" aria-atomic="true">
+              {selectionLiveMessage}
+            </p>
+          ) : null}
+        </div>
+
+        <div className={styles.mainColumn}>
+          {embeddedOnCalendarPage && detailDate ? (
+            <>
+              <div
+                ref={selectedDayAnchorRef}
+                id="calendar-selected-day"
+                className={styles.selectedDayAnchor}
+              >
+                <SelectedChurchDayPanel
+                  calendarPageLayout
+                  date={detailDate}
+                  today={now}
+                  onPrevDay={() => shiftDetailDay(-1)}
+                  onNextDay={() => shiftDetailDay(1)}
+                />
+              </div>
               <div className={styles.monthRhythm}>
                 <p className={styles.monthRhythmLabel}>Month in the Ethiopian year</p>
                 <figure className={styles.monthRhythmFigure}>
@@ -262,22 +334,11 @@ export function TodayInChurchSection({
                     fallbackSrc={calendarImageManifest.anchors.todayInChurch}
                     alt=""
                     className={styles.monthRhythmImg}
+                    fetchPriority="low"
+                    sizes="(max-width: 720px) 100vw, min(36rem, 70vw)"
                   />
                 </figure>
               </div>
-            ) : null}
-          </div>
-        </div>
-
-        <div className={styles.mainColumn}>
-          {embeddedOnCalendarPage && detailDate ? (
-            <>
-              <SelectedChurchDayPanel
-                date={detailDate}
-                today={now}
-                onPrevDay={() => shiftDetailDay(-1)}
-                onNextDay={() => shiftDetailDay(1)}
-              />
               <details className={styles.contextFold}>
                 <summary className={styles.contextSummary}>Liturgical season &amp; fasting</summary>
                 <div className={styles.contextBody}>
@@ -296,6 +357,8 @@ export function TodayInChurchSection({
                       fallbackSrc={calendarImageManifest.anchors.todayInChurch}
                       alt=""
                       className={styles.reflectionImage}
+                      fetchPriority="low"
+                      sizes="(max-width: 720px) 100vw, min(40rem, 75vw)"
                     />
                   </figure>
                   <p className={styles.expandedP}>{coachSnapshot.commemoration.whyTodayLong}</p>
@@ -329,7 +392,13 @@ export function TodayInChurchSection({
   )
 
   if (embedded) {
-    return <div className={styles.embedded}>{body}</div>
+    return (
+      <div
+        className={`${styles.embedded} ${embeddedOnCalendarPage ? styles.embeddedCalendarPage : ''}`.trim()}
+      >
+        {body}
+      </div>
+    )
   }
 
   return <PageSection id="today">{body}</PageSection>

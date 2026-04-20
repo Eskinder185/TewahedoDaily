@@ -164,6 +164,7 @@ export function PrayerTextTabs({
     <div className={styles.root}>
       <TabPanel
         variant="compact"
+        compactWrap
         tablistAriaLabel={t('prayerReaderTabsAria')}
         tabs={tabs}
         initialId="amharic"

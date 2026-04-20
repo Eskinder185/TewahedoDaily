@@ -77,6 +77,20 @@
   margin-bottom: var(--space-2);
 }
 
+@media (max-width: 639.98px) {
+  .actions {
+    gap: var(--space-3);
+  }
+
+  .splitRow {
+    gap: var(--space-3);
+  }
+
+  .splitBtn {
+    padding: var(--space-3) var(--space-4);
+  }
+}
+
 .actions:last-child {
   margin-bottom: 0;
 }
@@ -149,6 +163,41 @@
 .btnSave:disabled {
   opacity: 0.45;
   cursor: not-allowed;
+}
+
+.btn:focus-visible,
+.btnPrimary:focus-visible,
+.btnWarn:focus-visible,
+.btnGhost:focus-visible,
+.btnSave:focus-visible,
+.splitBtn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+.splitBtn:focus-visible {
+  position: relative;
+  z-index: 1;
+}
+
+.btn:active:not(:disabled),
+.btnPrimary:active:not(:disabled),
+.btnWarn:active:not(:disabled),
+.btnGhost:active:not(:disabled),
+.btnSave:active:not(:disabled),
+.splitBtn:active:not(:disabled) {
+  transform: scale(0.99);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:active:not(:disabled),
+  .btnPrimary:active:not(:disabled),
+  .btnWarn:active:not(:disabled),
+  .btnGhost:active:not(:disabled),
+  .btnSave:active:not(:disabled),
+  .splitBtn:active:not(:disabled) {
+    transform: none;
+  }
 }
 
 .savedBlock {
@@ -245,6 +294,16 @@
   color: var(--color-text);
 }
 
+@media (max-width: 959.98px) {
+  .btnMini,
+  .btnMiniDanger {
+    min-height: var(--tap-min);
+    padding-block: var(--space-2);
+    padding-inline: var(--space-4);
+    font-size: var(--text-sm);
+  }
+}
+
 .btnMini:hover {
   border-color: var(--color-wine);
   color: var(--color-wine-deep);
@@ -258,6 +317,12 @@
 
 .btnMiniDanger:hover {
   background: color-mix(in srgb, var(--color-wine) 8%, transparent);
+}
+
+.btnMini:focus-visible,
+.btnMiniDanger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .savedEmpty {

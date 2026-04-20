@@ -432,3 +432,13 @@
     color: var(--color-gold);
   }
 }
+
+@media (max-width: 767.98px) {
+  .section,
+  .helps,
+  .guidance,
+  .vision {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 480px;
+  }
+}

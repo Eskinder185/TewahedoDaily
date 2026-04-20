@@ -1,0 +1,243 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EOTC Calendar Entry",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "title",
+    "date",
+    "category",
+    "summary",
+    "observance",
+    "display",
+    "content",
+    "confidence"
+  ],
+  "properties": {
+    "type": {
+      "const": "calendar_entry"
+    },
+    "id": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "transliterationTitle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "englishTitle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "date": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "fixed",
+            "movable",
+            "monthly-recurring",
+            "weekly-recurring",
+            "season"
+          ]
+        },
+        "ethiopianMonth": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "ethiopianDay": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "gregorianHint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "movableAnchor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "offsetFromAnchor": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "monthlyRecurringDay": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "weeklyRecurringDay": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "seasonRange": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "category": {
+      "type": "object",
+      "required": [
+        "primary",
+        "secondary",
+        "majorHoliday"
+      ],
+      "properties": {
+        "primary": {
+          "type": "string"
+        },
+        "secondary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "majorHoliday": {
+          "type": "boolean"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "short",
+        "panel",
+        "whyItMatters",
+        "connection"
+      ],
+      "properties": {
+        "short": {
+          "type": "string"
+        },
+        "panel": {
+          "type": "string"
+        },
+        "whyItMatters": {
+          "type": "string"
+        },
+        "connection": {
+          "type": "string"
+        }
+      }
+    },
+    "observance": {
+      "type": "object",
+      "required": [
+        "fastStatus",
+        "liturgicalTone",
+        "commonPractices"
+      ],
+      "properties": {
+        "fastStatus": {
+          "type": "string"
+        },
+        "liturgicalTone": {
+          "type": "string"
+        },
+        "commonPractices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "display": {
+      "type": "object",
+      "required": [
+        "featured",
+        "priority",
+        "calendarBadge",
+        "calendarColor",
+        "showOnHomepage"
+      ],
+      "properties": {
+        "featured": {
+          "type": "boolean"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "calendarBadge": {
+          "type": "string"
+        },
+        "calendarColor": {
+          "type": "string"
+        },
+        "showOnHomepage": {
+          "type": "boolean"
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "required": [
+        "extended",
+        "notes",
+        "relatedEntries"
+      ],
+      "properties": {
+        "extended": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "relatedEntries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "searchKeywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "confidence": {
+      "enum": [
+        "high",
+        "medium",
+        "low"
+      ]
+    }
+  }
+}

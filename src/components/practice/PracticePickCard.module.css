@@ -54,3 +54,21 @@
   color: var(--color-text-muted);
   line-height: var(--leading-body);
 }
+
+@media (max-width: 639.98px) {
+  .card {
+    padding: var(--space-5) var(--space-4);
+    min-height: calc(var(--tap-min) + var(--space-4));
+    gap: var(--space-3);
+  }
+
+  .card:active {
+    transform: scale(0.995);
+  }
+}
+
+@media (max-width: 639.98px) and (prefers-reduced-motion: reduce) {
+  .card:active {
+    transform: none;
+  }
+}

@@ -1,0 +1,195 @@
+.root {
+  min-width: 0;
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 65%, var(--color-gold-line));
+  background: color-mix(in srgb, var(--color-bg-elevated) 95%, var(--color-gold-faint));
+  box-shadow: var(--shadow-soft);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3.8vw, 1.75rem);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-heading);
+}
+
+.deck {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+  max-width: 52rem;
+}
+
+.search {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 2.75rem;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  font-size: var(--text-base);
+  color: var(--color-heading);
+}
+
+.search:focus {
+  outline: 2px solid color-mix(in srgb, var(--color-gold) 65%, transparent);
+  outline-offset: 1px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.filterChip {
+  all: unset;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--color-heading) 88%, var(--color-text-muted));
+  border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 92%, var(--color-bg-muted));
+  max-width: 100%;
+  text-align: center;
+}
+
+.filterChip:hover {
+  border-color: color-mix(in srgb, var(--color-gold-line) 45%, var(--color-border));
+}
+
+.filterOn {
+  color: var(--color-wine-deep);
+  background: color-mix(in srgb, var(--color-gold-soft) 78%, var(--color-bg-elevated));
+  border-color: color-mix(in srgb, var(--color-gold-line) 55%, transparent);
+}
+
+.sectionsWrap {
+  display: grid;
+  gap: var(--space-6);
+  min-width: 0;
+}
+
+.section {
+  min-width: 0;
+}
+
+.sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-gold) 90%, var(--color-heading));
+}
+
+.sectionAction {
+  all: unset;
+  cursor: pointer;
+  font-size: var(--text-xs);
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-wine) 88%, var(--color-heading));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.featuredRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.featuredItem {
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.results {
+  min-width: 0;
+}
+
+.meta {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text-muted) 92%, var(--color-gold));
+}
+
+.empty {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.loadMore {
+  all: unset;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-4);
+  min-height: 2.75rem;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  font-weight: 800;
+  font-size: var(--text-sm);
+  letter-spacing: 0.05em;
+  color: var(--color-wine-deep);
+  background: color-mix(in srgb, var(--color-gold-faint) 88%, var(--color-bg));
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 55%, transparent);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@media (max-width: 479.98px) {
+  .featuredRow {
+    grid-template-columns: 1fr;
+  }
+}

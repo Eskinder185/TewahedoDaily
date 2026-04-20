@@ -23,6 +23,11 @@
   border-color: var(--color-border-gold);
 }
 
+.crumb:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
 .crumbSep {
   color: var(--color-text-subtle);
   user-select: none;
@@ -136,6 +141,11 @@
   font-weight: 600;
 }
 
+.youtubeLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
 .sectionChips {
   display: flex;
   flex-wrap: wrap;
@@ -164,6 +174,11 @@
   transform: translateY(-1px);
   border-color: var(--color-border-gold);
   background: color-mix(in srgb, var(--color-gold-faint) 72%, var(--color-bg-elevated));
+}
+
+.sectionChip:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
 }
 
 .statusBlock {
@@ -235,6 +250,11 @@
   box-shadow: var(--shadow-card);
 }
 
+.relatedCard:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
 .relatedTitle {
   display: block;
   color: var(--color-heading);
@@ -257,9 +277,39 @@
   }
 }
 
+.mainColumn,
+.sideColumn,
+.readingAnchor {
+  scroll-margin-top: calc(
+    var(--header-height) + env(safe-area-inset-top, 0px) + var(--space-3)
+  );
+}
+
 @media (max-width: 639.98px) {
   .headCard,
   .sideCard {
     padding: var(--space-4);
+  }
+
+  .crumb {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+  }
+
+  .sectionChip {
+    min-height: var(--tap-min);
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .relatedCard {
+    padding: var(--space-4);
+    min-height: var(--tap-min);
+  }
+
+  .relatedList {
+    gap: var(--space-4);
   }
 }

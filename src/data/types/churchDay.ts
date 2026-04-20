@@ -19,6 +19,17 @@ export type ObservanceType =
   | 'movable-feast'
   | 'seasonal-observance'
   | 'mixed-observance'
+/** Upcoming strip + snapshot cards — aligned with EOTC `category.primary` + `date.kind`. */
+export type UpcomingObservanceUiKind =
+  | 'feast'
+  | 'fast'
+  | 'commemoration'
+  | 'marian'
+  | 'angel'
+  | 'saint'
+  | 'season'
+  | 'weekly'
+
 export type UpcomingObservanceEntry = {
   id: string
   title: string
@@ -29,7 +40,7 @@ export type UpcomingObservanceEntry = {
   dateEthiopian: string
   dateGregorian?: string
   gregorianAnchorIso?: string
-  kind: 'feast' | 'fast' | 'commemoration'
+  kind: UpcomingObservanceUiKind
   /** Fixed senksar / fixed civil, vs tied to Fasika (Pascha) */
   scheduling?: ObservanceScheduling
   /** Human-readable rule, e.g. “First Sunday after Fasika” */
@@ -42,7 +53,8 @@ export type UpcomingObservanceEntry = {
 export type MovableObservanceOnDay = {
   id: string
   catalogEventId: string
-  scheduling: 'movable'
+  /** Paschal-cycle rows use `'movable'`; EOTC fixed/monthly highlights may use `'fixed'`. */
+  scheduling: 'movable' | 'fixed'
   title: string
   transliterationTitle?: string
   shortDescription: string

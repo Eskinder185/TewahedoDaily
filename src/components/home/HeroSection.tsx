@@ -10,6 +10,9 @@ export function HeroSection() {
           src={imageManifest.home.hero}
           alt=""
           className={styles.backdropImg}
+          width={imageManifest.home.heroWidth}
+          height={imageManifest.home.heroHeight}
+          sizes="100vw"
           fetchPriority="high"
           decoding="async"
         />

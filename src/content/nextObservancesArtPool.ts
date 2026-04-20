@@ -6,7 +6,12 @@ const CALENDAR_ROOT = '/images/calendar'
 
 /** Authoritative pool for Next Observances — filenames match `/public/images/calendar/`. */
 export const NEXT_OBSERVANCES_POOL_FILES = [
+  'AbuneTeklehaymanot.png',
+  'ArchangelRaphael.png',
+  'ArchangelsRemembrance.png',
+  'ArchangelUriel.png',
   'Debre Zeit.png',
+  'DagmawiTensia.png',
   'DebreTabor.jpg',
   'DebreTabor.png',
   'Enkutatash.png',
@@ -19,16 +24,25 @@ export const NEXT_OBSERVANCES_POOL_FILES = [
   'Gena.png',
   'HolyTrinityCommemoration.png',
   'Hosanna.png',
+  'Gizret.png',
   'JoyfulFeastSeason.jpg',
+  'KanaZeGalilee.png',
+  'KidaneMehret.png',
+  'KidusGiorgis.png',
   'LidetaMaryam.png',
   'LiturgicalSeason.png',
   'MarianFeast.png',
+  'MeetingofPriests.png',
+  'MegabitMeskel.png',
   'Meskel.png',
   'MonasticSaintsRemembrance.png',
-  'MonthlyAbuneTeklehaymanot.png',
-  'MonthlySaintGabrielCommemoration.png',
-  'MonthlySaintMaryCommemoration.png',
-  'MonthlySaintMichaelCommemoration.png',
+  'SaintGabrielCommemoration.png',
+  'SaintJohntheBaptist.png',
+  'SaintMaryCommemoration.png',
+  'SaintMichaelCommemoration.png',
+  'SaintsPeterandPaul.png',
+  'SaintStephen.png',
+  'SaintYared.png',
   'Nineveh.jpg',
   'Peraklitos.jpg',
   'SacredCalendarContinuity.png',
@@ -38,10 +52,13 @@ export const NEXT_OBSERVANCES_POOL_FILES = [
   'Siqlet.png',
   'Timket.png',
   'TodayInChurch.png',
+  'Tsinset.png',
+  'TsomeGehad.png',
   'TsigeSeason.jpg',
   'TsomeHawaryat.png',
   'TsomeNebiyat.png',
   'UpcomingHolyDays.png',
+  'ZemeneTinsae.png',
 ] as const
 
 export type NextObservancesPoolCategory =
@@ -100,20 +117,24 @@ export function inferPoolCategoryFromFileName(fileName: string): NextObservances
   ) {
     return 'fast'
   }
-  if (/monthly.*michael|saintmichaelfeast|saintgabrielfeast|monthly.*gabriel/.test(s)) {
+  if (
+    /monthly.*michael|saintmichaelcommemoration|saintmichaelfeast|saintgabrielfeast|saintgabrielcommemoration|archangel/.test(
+      s,
+    )
+  ) {
     return 'angels'
   }
   if (/mary|marian|lideta/.test(s)) {
     return 'marian-feast'
   }
-  if (/ethiopian|monastic|abune|saints?/.test(s)) {
+  if (/ethiopian|monastic|abune|saints?|yared|stephen|giorgis|baptist/.test(s)) {
     return 'saints'
   }
   if (/tsige|liturgical|joyful|season|sacredcalendar|upcoming|todayinchurch/.test(s)) {
     return 'season'
   }
   if (
-    /gena|timket|meskel|hosanna|fasika|damawi|tensae|thomas|siqlet|erget|peraklitos|enkutatash|debre|holytrinity/.test(
+    /gena|timket|meskel|hosanna|fasika|damawi|tensae|thomas|siqlet|erget|peraklitos|enkutatash|debre|holytrinity|gizret|kana|megabit|tsinset|rikbe|meetingofpriests/.test(
       s,
     )
   ) {
@@ -183,15 +204,25 @@ function poolEntryBySrc(src: string): NextObservancesPoolArt | undefined {
  * map catalog event ids to a pool filename so the card art always matches the observance.
  */
 const POOL_FILE_BY_EVENT_ID: Record<string, string> = {
+  'tsinset-annunciation': 'Tsinset.png',
   gena: 'Gena.png',
+  'lidet-gena': 'Gena.png',
+  'gizret-circumcision': 'Gizret.png',
   timket: 'Timket.png',
+  'kana-ze-galilee': 'KanaZeGalilee.png',
+  'megabit-meskel': 'MegabitMeskel.png',
   hosanna: 'Hosanna.png',
+  'good-friday': 'Siqlet.png',
   siqlet: 'Siqlet.png',
   fasika: 'Fasika.png',
-  'damawi-tensae': 'JoyfulFeastSeason.jpg',
+  'damawi-tensae': 'DagmawiTensia.png',
+  'rikbe-kahnat': 'MeetingofPriests.png',
+  ascension: 'Erget.jpg',
   erget: 'Erget.jpg',
+  pentecost: 'Peraklitos.jpg',
   peraklitos: 'Peraklitos.jpg',
   'debre-tabor': 'DebreTabor.jpg',
+  'meskel-finding-of-the-true-cross': 'Meskel.png',
   meskel: 'Meskel.png',
   'nineveh-fast': 'Nineveh.jpg',
   'abiy-tsom': 'FastingSeasonAtmosphere.png',
@@ -205,17 +236,45 @@ const POOL_FILE_BY_EVENT_ID: Record<string, string> = {
   tsige: 'TsigeSeason.jpg',
   'lideta-maryam': 'LidetaMaryam.png',
   'debre-zeit': 'Debre Zeit.png',
+  'saint-john-the-baptist': 'SaintJohntheBaptist.png',
+  'saint-george-major': 'KidusGiorgis.png',
+  'saint-george-monthly-23': 'KidusGiorgis.png',
+  'saint-tekle-haymanot-major': 'AbuneTeklehaymanot.png',
+  'saint-tekle-haymanot-monthly-24': 'AbuneTeklehaymanot.png',
+  'saint-yared-major': 'SaintYared.png',
+  'saint-stephen-major': 'SaintStephen.png',
+  'saint-peter-and-paul': 'SaintsPeterandPaul.png',
+  'saint-michael-major': 'SaintMichaelFeast.png',
+  'saint-gabriel-major': 'SaintGabrielFeast.png',
+  'saint-raphael-major': 'ArchangelRaphael.png',
+  'saint-uriel-major': 'ArchangelUriel.png',
+  'weekly-wednesday-fast': 'TsomeGehad.png',
+  'weekly-friday-fast': 'TsomeGehad.png',
+  'weekly-sunday-resurrection': 'DagmawiTensia.png',
+  'weekly-saturday-sabbath': 'SacredCalendarContinuity.png',
+  'kidane-mehret': 'KidaneMehret.png',
+  'baeta-maryam': 'MarianFeast.png',
+  'asterio-maryam': 'MarianFeast.png',
+  'filseta-assumption': 'FilsetaFast.png',
+  'apostles-fast': 'TsomeHawaryat.png',
+  'tsome-gehad': 'TsomeGehad.png',
+  'bright-season-after-fasika': 'ZemeneTinsae.png',
+  'zemene-tsige': 'TsigeSeason.jpg',
+  'holy-week': 'SemuneHimamat.jpg',
   /** Monthly Ba‘āla Māryām — prefer monthly commemoration art in the pool bundle. */
-  'beale-maryam': 'MonthlySaintMaryCommemoration.png',
-  'beale-michael': 'MonthlySaintMichaelCommemoration.png',
-  'beale-gabriel': 'MonthlySaintGabrielCommemoration.png',
+  'beale-maryam': 'SaintMaryCommemoration.png',
+  'saint-mary-monthly-21': 'SaintMaryCommemoration.png',
+  'beale-michael': 'SaintMichaelCommemoration.png',
+  'saint-michael-monthly-12': 'SaintMichaelCommemoration.png',
+  'beale-gabriel': 'SaintGabrielCommemoration.png',
+  'saint-gabriel-monthly-19': 'SaintGabrielCommemoration.png',
   'beale-selassie': 'HolyTrinityCommemoration.png',
   'daily-senksar-commemoration': 'EthiopianSaintsRemembrance.png',
   'righteous-remembrance': 'MonasticSaintsRemembrance.png',
-  'abune-teklehaymanot': 'MonthlyAbuneTeklehaymanot.png',
-  'saint-mary-commemoration': 'MonthlySaintMaryCommemoration.png',
-  'saint-michael-commemoration': 'MonthlySaintMichaelCommemoration.png',
-  'saint-gabriel-commemoration': 'MonthlySaintGabrielCommemoration.png',
+  'abune-teklehaymanot': 'AbuneTeklehaymanot.png',
+  'saint-mary-commemoration': 'SaintMaryCommemoration.png',
+  'saint-michael-commemoration': 'SaintMichaelCommemoration.png',
+  'saint-gabriel-commemoration': 'SaintGabrielCommemoration.png',
   pagumen: 'SacredCalendarContinuity.png',
 }
 
@@ -229,7 +288,11 @@ export function inferObservanceVisualNeed(
   item: UpcomingObservance,
 ): NextObservancesPoolCategory {
   const t = `${item.title} ${item.transliterationTitle ?? ''}`
-  if (item.kind === 'fast') return 'fast'
+  if (item.kind === 'fast' || item.kind === 'weekly') return 'fast'
+  if (item.kind === 'marian') return 'marian-feast'
+  if (item.kind === 'angel') return 'angels'
+  if (item.kind === 'saint') return 'saints'
+  if (item.kind === 'season') return 'season'
   if (/mary|ማርያም|marian|lideta/i.test(t)) return 'marian-feast'
   if (/michael|gabriel|raphael|archangel|መላእክት/i.test(t)) return 'angels'
   if (item.kind === 'feast') return 'feast'

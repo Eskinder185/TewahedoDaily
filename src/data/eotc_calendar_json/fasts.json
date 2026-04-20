@@ -1,0 +1,300 @@
+{
+  "type": "calendar_collection",
+  "name": "fasts",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "tsome-nebiyat",
+      "title": "ጾመ ነቢያት",
+      "transliterationTitle": "Tsome Nebiyat",
+      "englishTitle": "Fast of the Prophets / Advent Fast",
+      "date": {
+        "kind": "season",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Begins on Hedar 15 and continues until the eve of Lidet",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": {
+          "startFixed": {
+            "ethiopianMonth": "Hedar",
+            "ethiopianDay": 15
+          },
+          "endFixed": {
+            "ethiopianMonth": "Tahsas",
+            "ethiopianDay": 28
+          }
+        }
+      },
+      "category": {
+        "primary": "fast",
+        "secondary": [
+          "season",
+          "nativity-preparation"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "A preparatory fast before the Nativity, marked by waiting for the Incarnation.",
+        "panel": "Tsome Nebiyat is the fast of expectation before the Nativity of Christ.",
+        "whyItMatters": "It joins the faithful to the prophets who longed for the coming of the Messiah.",
+        "connection": "It connects the Church to prophetic expectation and preparation for the Incarnation."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Fasting",
+          "Prayer",
+          "Scripture reading",
+          "Preparation for Nativity"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Fast",
+        "calendarColor": "purple",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Tsome Nebiyat is the fast of expectation before the Nativity of Christ.",
+        "notes": [],
+        "relatedEntries": [
+          "lidet-gena"
+        ]
+      },
+      "searchKeywords": [
+        "Fast of the Prophets",
+        "Advent Fast"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "tsome-filseta",
+      "title": "ጾመ ፍልሰታ",
+      "transliterationTitle": "Tsome Filseta",
+      "englishTitle": "Fast of the Dormition",
+      "date": {
+        "kind": "season",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Nehase 1–16 (usually August)",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": {
+          "startFixed": {
+            "ethiopianMonth": "Nehase",
+            "ethiopianDay": 1
+          },
+          "endFixed": {
+            "ethiopianMonth": "Nehase",
+            "ethiopianDay": 16
+          }
+        }
+      },
+      "category": {
+        "primary": "fast",
+        "secondary": [
+          "mary",
+          "season"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "A Marian fast honoring the Dormition and Assumption of Saint Mary.",
+        "panel": "Tsome Filseta is a season of Marian devotion centered on the Dormition and Assumption.",
+        "whyItMatters": "It deepens prayer, purity, and devotion in honor of the Theotokos.",
+        "connection": "It connects the faithful to Saint Mary’s holiness, her repose, and her honored assumption."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Fasting",
+          "Daily prayer",
+          "Marian hymns",
+          "Liturgy"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Fast",
+        "calendarColor": "blue",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Tsome Filseta is a season of Marian devotion centered on the Dormition and Assumption.",
+        "notes": [],
+        "relatedEntries": [
+          "filseta-assumption",
+          "saint-mary-monthly-21"
+        ]
+      },
+      "searchKeywords": [
+        "Filseta",
+        "Dormition Fast"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "apostles-fast",
+      "title": "ጾመ ሐዋርያት",
+      "transliterationTitle": "Tsome Hawariyat",
+      "englishTitle": "Fast of the Apostles",
+      "date": {
+        "kind": "season",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Begins the day after Pentecost and ends on Hamle 5",
+        "movableAnchor": "pentecost",
+        "offsetFromAnchor": 1,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": {
+          "startAnchor": "pentecost",
+          "startOffset": 1,
+          "endFixed": {
+            "ethiopianMonth": "Hamle",
+            "ethiopianDay": 5
+          }
+        }
+      },
+      "category": {
+        "primary": "fast",
+        "secondary": [
+          "apostles",
+          "season"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "A fast honoring the apostolic witness after Pentecost.",
+        "panel": "The Fast of the Apostles remembers the discipline and witness of the Apostles after receiving the Holy Spirit.",
+        "whyItMatters": "It highlights mission, discipline, and apostolic service in the life of the Church.",
+        "connection": "It connects believers to the apostolic mission born from Pentecost."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Fasting",
+          "Prayer",
+          "Mission reflection",
+          "Liturgy"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 2,
+        "calendarBadge": "Apostolic Fast",
+        "calendarColor": "purple",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The Fast of the Apostles remembers the discipline and witness of the Apostles after receiving the Holy Spirit.",
+        "notes": [],
+        "relatedEntries": [
+          "pentecost",
+          "peter-paul"
+        ]
+      },
+      "searchKeywords": [
+        "Apostles Fast",
+        "Tsome Hawariyat"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "tsome-gehad",
+      "title": "ጾመ ገሃድ",
+      "transliterationTitle": "Tsome Gehad",
+      "englishTitle": "Vigil Fast",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Observed on feast eves such as Lidet and Timket",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "fast",
+        "secondary": [
+          "vigil"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "A vigil fast kept on the eve of major feasts such as Nativity and Epiphany.",
+        "panel": "Tsome Gehad is a vigil fast that prepares the faithful for a great feast.",
+        "whyItMatters": "It marks the transition from fasting to festal joy through reverent preparation.",
+        "connection": "It connects the faithful to watchfulness, expectation, and holy readiness."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Fasting",
+          "Vigil prayer",
+          "Preparation for feast"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Vigil Fast",
+        "calendarColor": "purple",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Tsome Gehad is a vigil fast that prepares the faithful for a great feast.",
+        "notes": [],
+        "relatedEntries": [
+          "lidet-gena",
+          "timket"
+        ]
+      },
+      "searchKeywords": [
+        "Vigil Fast",
+        "Tsome Gehad"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

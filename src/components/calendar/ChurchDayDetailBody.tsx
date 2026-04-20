@@ -1,6 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useId, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { ChurchDaySnapshot } from '../../lib/churchCalendar'
+import {
+  formatRelatedEntryLabels,
+  type EotcCalendarDatasetRow,
+} from '../../lib/eotcCalendar'
 import { TabPanel } from '../ui/TabPanel'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import {
@@ -15,12 +19,22 @@ import styles from './ChurchDayDetailBody.module.css'
 
 type Props = {
   snapshot: ChurchDaySnapshot
+  /** `/calendar` mobile: cap hero size, wrap tabs, defer decorative image below reading. */
+  calendarPageLayout?: boolean
+  /** When set (calendar page), overview tab shows ordered EOTC JSON rows instead of the generic liturgical guide block. */
+  eotcOrderedRows?: EotcCalendarDatasetRow[]
 }
 
 const ANCHOR = calendarImageManifest.anchors.todayInChurch
 
-export function ChurchDayDetailBody({ snapshot }: Props) {
+export function ChurchDayDetailBody({
+  snapshot,
+  calendarPageLayout = false,
+  eotcOrderedRows,
+}: Props) {
   const t = useUiLabel()
+  const tabShellId = useId()
+  const nativeSelectId = `${tabShellId}-cal-select`
   const [tab, setTab] = useState('overview')
   const [isLiturgicalGuideExpanded, setIsLiturgicalGuideExpanded] = useState(false)
   const chips = useMemo(() => dayObservanceChips(snapshot), [snapshot])
@@ -31,6 +45,10 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
   }, [snapshot.gregorian.labelLong])
 
   const tabs = useMemo(() => {
+    const showEotcCalendar = Boolean(
+      calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+    )
+    const eotcRows = eotcOrderedRows ?? []
     const { commemoration, season, fasting } = snapshot
     const hero = resolveSelectedDayHeroImage(snapshot)
     const heroFallback = resolveCommemorationImage(
@@ -134,24 +152,41 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
       </div>
     )
 
-    const meaningBody =
-      commemoration.meaning.trim() ? (
-        <p className={styles.p}>{commemoration.meaning}</p>
-      ) : (
-        <p className={styles.pMuted}>{t('prayerTabSummaryEmpty')}</p>
-      )
+    const primaryEotcExtended =
+      showEotcCalendar && eotcRows[0]?.entry.content.extended?.trim()
+
+    const meaningBody = primaryEotcExtended ? (
+      <div className={styles.stack}>
+        <p className={styles.p}>{primaryEotcExtended}</p>
+        {commemoration.meaning.trim() ? (
+          <details className={styles.moreBlock}>
+            <summary>{t('calendarMeaningMoreFromGuide')}</summary>
+            <div className={styles.moreInner}>{commemoration.meaning}</div>
+          </details>
+        ) : null}
+      </div>
+    ) : commemoration.meaning.trim() ? (
+      <p className={styles.p}>{commemoration.meaning}</p>
+    ) : (
+      <p className={styles.pMuted}>{t('prayerTabSummaryEmpty')}</p>
+    )
 
     return [
       {
         id: 'overview',
         label: t('calendarDayTabOverview'),
         content: (
-          <div className={styles.stack}>
+          <div
+            className={`${styles.stack} ${styles.overviewStack} ${calendarPageLayout ? styles.overviewStackCalendarPage : ''}`.trim()}
+          >
             <figure className={styles.heroWrap}>
               <CalendarImage
                 src={hero}
                 fallbackSrc={heroFallback}
                 className={styles.hero}
+                loading="eager"
+                fetchPriority="high"
+                sizes="(max-width: 719px) 100vw, min(42rem, 90vw)"
               />
             </figure>
             <div className={styles.chipRow}>
@@ -161,134 +196,235 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
                 </span>
               ))}
             </div>
-            
-            {/* Liturgical Guide Header */}
-            <div className={styles.liturgicalGuideHeader}>
-              <div className={styles.dateCluster}>
-                <h3 className={styles.observanceTitle}>{commemoration.title}</h3>
-                {commemoration.transliterationTitle && (
-                  <p className={styles.observanceSubtitle}>{commemoration.transliterationTitle}</p>
-                )}
+
+            {showEotcCalendar ? (
+              <div className={styles.eotcOverviewSecondary}>
+                <p className={styles.eotcOverviewLead}>{t('calendarOverviewEotcTabLead')}</p>
+                <details className={styles.eotcRefDetails}>
+                  <summary>{t('calendarOverviewEotcRefSummary')}</summary>
+                  <ul className={styles.eotcRefList}>
+                    {eotcRows.map((row) => {
+                      const e = row.entry
+                      const title = e.englishTitle?.trim() || e.title
+                      const badge = e.display.calendarBadge?.trim()
+                      const cat =
+                        e.category.secondary.length > 0
+                          ? `${e.category.primary} · ${e.category.secondary.join(' · ')}`
+                          : e.category.primary
+                      return (
+                        <li key={e.id} className={styles.eotcRefItem}>
+                          <div className={styles.eotcRefItemTop}>
+                            {badge ? <span className={styles.eotcRefBadge}>{badge}</span> : null}
+                            <span className={styles.eotcRefTitle}>{title}</span>
+                          </div>
+                          <p className={styles.eotcRefMeta}>
+                            {cat} · {e.observance.fastStatus} · {e.observance.liturgicalTone}
+                          </p>
+                          {e.content.relatedEntries.length > 0 ? (
+                            <p className={styles.eotcRefRelated}>
+                              <span className={styles.eotcMetaLabel}>Related</span>
+                              {formatRelatedEntryLabels(e.content.relatedEntries)}
+                            </p>
+                          ) : null}
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </details>
+                {snapshot.movableOnDay.length > 0 ? (
+                  <details className={styles.movablePack}>
+                    <summary>{t('calendarMovableOnDaySummary')}</summary>
+                    <div className={styles.movableInner}>
+                      {snapshot.movableOnDay.map((m) => (
+                        <article key={m.id} className={styles.movableCard}>
+                          <figure className={styles.movableFig} aria-hidden>
+                            <CalendarImage
+                              src={resolveEventImageById(m.catalogEventId) ?? heroFallback}
+                              fallbackSrc={heroFallback}
+                              className={styles.movableImg}
+                            />
+                          </figure>
+                          <div className={styles.movableBody}>
+                            <h4 className={styles.movableTitle}>{m.title}</h4>
+                            {m.transliterationTitle ? (
+                              <p className={styles.movableTranslit}>{m.transliterationTitle}</p>
+                            ) : null}
+                            <p className={styles.movableLead}>{m.shortDescription}</p>
+                            {m.ruleSummary ? (
+                              <p className={styles.movableMeta}>
+                                <span className={styles.movableMetaK}>
+                                  {t('calendarMovableRuleLabel')}
+                                </span>{' '}
+                                {m.ruleSummary}
+                              </p>
+                            ) : null}
+                            {m.relatedPrayerHint ? (
+                              <p className={styles.movableMeta}>
+                                <span className={styles.movableMetaK}>
+                                  {t('calendarMovablePrayerLabel')}
+                                </span>{' '}
+                                {m.relatedPrayerHint}
+                              </p>
+                            ) : null}
+                            {m.relatedChantHint ? (
+                              <p className={styles.movableMeta}>
+                                <span className={styles.movableMetaK}>
+                                  {t('calendarMovableChantLabel')}
+                                </span>{' '}
+                                {m.relatedChantHint}
+                              </p>
+                            ) : null}
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </details>
+                ) : null}
               </div>
-              <div className={styles.dateLabels}>
-                <p className={styles.gregorianDate}>{snapshot.gregorian.labelLong}</p>
-                <p className={styles.ethiopianDate}>{snapshot.ethiopian.labelLong}</p>
-              </div>
-            </div>
-            
-            {/* Daily Liturgical Guide */}
-            <div className={styles.dailyGuideSection}>
-              <div className={styles.dailyGuideHeader}>Today's Liturgical Guide</div>
-              <div className={styles.dailyGuideContent}>
-                {commemoration.summary && (
-                  <div className={styles.educationalSummary}>
-                    <h4 className={styles.summaryTitle}>What this day represents</h4>
-                    <p className={styles.summaryText}>{commemoration.summary}</p>
+            ) : (
+              <>
+                {/* Liturgical Guide Header */}
+                <div className={styles.liturgicalGuideHeader}>
+                  <div className={styles.dateCluster}>
+                    <h3 className={styles.observanceTitle}>{commemoration.title}</h3>
+                    {commemoration.transliterationTitle && (
+                      <p className={styles.observanceSubtitle}>
+                        {commemoration.transliterationTitle}
+                      </p>
+                    )}
                   </div>
-                )}
-                
-                {/* Show more content when expanded */}
-                {isLiturgicalGuideExpanded && (
-                  <>
-                    {commemoration.significance?.trim() && (
-                      <div className={styles.educationalSummary}>
-                        <h4 className={styles.summaryTitle}>Why it matters</h4>
-                        <p className={styles.summaryText}>{commemoration.significance}</p>
-                      </div>
-                    )}
-                    
-                    {commemoration.practicalGuidance?.trim() && (
-                      <div className={styles.educationalSummary}>
-                        <h4 className={styles.summaryTitle}>How to observe</h4>
-                        <p className={styles.summaryText}>{commemoration.practicalGuidance}</p>
-                      </div>
-                    )}
-                    
-                    {commemoration.prayAndChant?.trim() && (
-                      <div className={styles.educationalSummary}>
-                        <h4 className={styles.summaryTitle}>Prayer & Chant Guidance</h4>
-                        <p className={styles.summaryText}>{commemoration.prayAndChant}</p>
-                      </div>
-                    )}
-                    
-                    {commemoration.notes?.trim() && (
-                      <div className={styles.educationalSummary}>
-                        <h4 className={styles.summaryTitle}>Notes</h4>
-                        <p className={styles.summaryText}>{commemoration.notes}</p>
-                      </div>
-                    )}
-                  </>
-                )}
-                
-                {/* See more/See less button */}
-                {(commemoration.significance?.trim() || commemoration.practicalGuidance?.trim() || commemoration.prayAndChant?.trim() || commemoration.notes?.trim()) && (
-                  <button 
-                    className={styles.seeMoreButton}
-                    onClick={() => setIsLiturgicalGuideExpanded(!isLiturgicalGuideExpanded)}
-                    type="button"
-                  >
-                    {isLiturgicalGuideExpanded ? 'See less' : 'See more liturgical guidance'}
-                  </button>
-                )}
-              </div>
-            </div>
-            
-            {snapshot.movableOnDay.length > 0 ? (
-              <details className={styles.movablePack}>
-                <summary>{t('calendarMovableOnDaySummary')}</summary>
-                <div className={styles.movableInner}>
-                  {snapshot.movableOnDay.map((m) => (
-                    <article key={m.id} className={styles.movableCard}>
-                      <figure className={styles.movableFig} aria-hidden>
-                        <CalendarImage
-                          src={resolveEventImageById(m.catalogEventId) ?? heroFallback}
-                          fallbackSrc={heroFallback}
-                          className={styles.movableImg}
-                        />
-                      </figure>
-                      <div className={styles.movableBody}>
-                        <h4 className={styles.movableTitle}>{m.title}</h4>
-                        {m.transliterationTitle ? (
-                          <p className={styles.movableTranslit}>{m.transliterationTitle}</p>
-                        ) : null}
-                        <p className={styles.movableLead}>{m.shortDescription}</p>
-                        {m.ruleSummary ? (
-                          <p className={styles.movableMeta}>
-                            <span className={styles.movableMetaK}>{t('calendarMovableRuleLabel')}</span>{' '}
-                            {m.ruleSummary}
-                          </p>
-                        ) : null}
-                        {m.relatedPrayerHint ? (
-                          <p className={styles.movableMeta}>
-                            <span className={styles.movableMetaK}>{t('calendarMovablePrayerLabel')}</span>{' '}
-                            {m.relatedPrayerHint}
-                          </p>
-                        ) : null}
-                        {m.relatedChantHint ? (
-                          <p className={styles.movableMeta}>
-                            <span className={styles.movableMetaK}>{t('calendarMovableChantLabel')}</span>{' '}
-                            {m.relatedChantHint}
-                          </p>
-                        ) : null}
-                      </div>
-                    </article>
-                  ))}
+                  <div className={styles.dateLabels}>
+                    <p className={styles.gregorianDate}>{snapshot.gregorian.labelLong}</p>
+                    <p className={styles.ethiopianDate}>{snapshot.ethiopian.labelLong}</p>
+                  </div>
                 </div>
-              </details>
-            ) : null}
-            <h3 className={styles.feastTitle}>{commemoration.title}</h3>
-            {commemoration.transliterationTitle ? (
-              <p className={styles.translit}>{commemoration.transliterationTitle}</p>
-            ) : null}
+
+                {/* Daily Liturgical Guide */}
+                <div className={styles.dailyGuideSection}>
+                  <div className={styles.dailyGuideHeader}>Today's Liturgical Guide</div>
+                  <div className={styles.dailyGuideContent}>
+                    {commemoration.summary && (
+                      <div className={styles.educationalSummary}>
+                        <h4 className={styles.summaryTitle}>What this day represents</h4>
+                        <p className={styles.summaryText}>{commemoration.summary}</p>
+                      </div>
+                    )}
+
+                    {isLiturgicalGuideExpanded && (
+                      <>
+                        {commemoration.significance?.trim() && (
+                          <div className={styles.educationalSummary}>
+                            <h4 className={styles.summaryTitle}>Why it matters</h4>
+                            <p className={styles.summaryText}>{commemoration.significance}</p>
+                          </div>
+                        )}
+
+                        {commemoration.practicalGuidance?.trim() && (
+                          <div className={styles.educationalSummary}>
+                            <h4 className={styles.summaryTitle}>How to observe</h4>
+                            <p className={styles.summaryText}>
+                              {commemoration.practicalGuidance}
+                            </p>
+                          </div>
+                        )}
+
+                        {commemoration.prayAndChant?.trim() && (
+                          <div className={styles.educationalSummary}>
+                            <h4 className={styles.summaryTitle}>Prayer & Chant Guidance</h4>
+                            <p className={styles.summaryText}>{commemoration.prayAndChant}</p>
+                          </div>
+                        )}
+
+                        {commemoration.notes?.trim() && (
+                          <div className={styles.educationalSummary}>
+                            <h4 className={styles.summaryTitle}>Notes</h4>
+                            <p className={styles.summaryText}>{commemoration.notes}</p>
+                          </div>
+                        )}
+                      </>
+                    )}
+
+                    {(commemoration.significance?.trim() ||
+                      commemoration.practicalGuidance?.trim() ||
+                      commemoration.prayAndChant?.trim() ||
+                      commemoration.notes?.trim()) && (
+                      <button
+                        className={styles.seeMoreButton}
+                        onClick={() => setIsLiturgicalGuideExpanded(!isLiturgicalGuideExpanded)}
+                        type="button"
+                      >
+                        {isLiturgicalGuideExpanded
+                          ? 'See less'
+                          : 'See more liturgical guidance'}
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {snapshot.movableOnDay.length > 0 ? (
+                  <details className={styles.movablePack}>
+                    <summary>{t('calendarMovableOnDaySummary')}</summary>
+                    <div className={styles.movableInner}>
+                      {snapshot.movableOnDay.map((m) => (
+                        <article key={m.id} className={styles.movableCard}>
+                          <figure className={styles.movableFig} aria-hidden>
+                            <CalendarImage
+                              src={resolveEventImageById(m.catalogEventId) ?? heroFallback}
+                              fallbackSrc={heroFallback}
+                              className={styles.movableImg}
+                            />
+                          </figure>
+                          <div className={styles.movableBody}>
+                            <h4 className={styles.movableTitle}>{m.title}</h4>
+                            {m.transliterationTitle ? (
+                              <p className={styles.movableTranslit}>{m.transliterationTitle}</p>
+                            ) : null}
+                            <p className={styles.movableLead}>{m.shortDescription}</p>
+                            {m.ruleSummary ? (
+                              <p className={styles.movableMeta}>
+                                <span className={styles.movableMetaK}>
+                                  {t('calendarMovableRuleLabel')}
+                                </span>{' '}
+                                {m.ruleSummary}
+                              </p>
+                            ) : null}
+                            {m.relatedPrayerHint ? (
+                              <p className={styles.movableMeta}>
+                                <span className={styles.movableMetaK}>
+                                  {t('calendarMovablePrayerLabel')}
+                                </span>{' '}
+                                {m.relatedPrayerHint}
+                              </p>
+                            ) : null}
+                            {m.relatedChantHint ? (
+                              <p className={styles.movableMeta}>
+                                <span className={styles.movableMetaK}>
+                                  {t('calendarMovableChantLabel')}
+                                </span>{' '}
+                                {m.relatedChantHint}
+                              </p>
+                            ) : null}
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  </details>
+                ) : null}
+              </>
+            )}
             {commemoration.subtitle ? (
               <p className={styles.subtitle}>{commemoration.subtitle}</p>
             ) : null}
-            <p className={styles.p}>{lead}</p>
-            {commemoration.meaning.trim() ? (
-              <details className={styles.moreBlock}>
-                <summary>{t('calendarWhyMatters')}</summary>
-                <div className={styles.moreInner}>{commemoration.meaning}</div>
-              </details>
+            {!showEotcCalendar ? (
+              <>
+                <p className={styles.p}>{lead}</p>
+                {commemoration.meaning.trim() ? (
+                  <details className={styles.moreBlock}>
+                    <summary>{t('calendarWhyMatters')}</summary>
+                    <div className={styles.moreInner}>{commemoration.meaning}</div>
+                  </details>
+                ) : null}
+              </>
             ) : null}
           </div>
         ),
@@ -314,18 +450,29 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
         content: notesBody,
       },
     ]
-  }, [snapshot, t, chips])
+  }, [
+    snapshot,
+    t,
+    chips,
+    calendarPageLayout,
+    eotcOrderedRows,
+    isLiturgicalGuideExpanded,
+  ])
 
   return (
-    <div className={styles.wrap} key={snapshot.gregorian.labelLong}>
-      <label htmlFor="cal-day-tab-select" className={styles.srOnly}>
+    <div
+      className={`${styles.wrap} ${calendarPageLayout ? styles.wrapCalendarPageMobile : ''}`.trim()}
+      key={snapshot.gregorian.labelLong}
+    >
+      <label htmlFor={nativeSelectId} className={styles.srOnly}>
         {t('calendarDayTabsAria')}
       </label>
       <select
-        id="cal-day-tab-select"
+        id={nativeSelectId}
         className={styles.mobileSelect}
         value={tab}
         onChange={(e) => setTab(e.target.value)}
+        aria-controls={`${tabShellId}-panel`}
       >
         {tabs.map((x) => (
           <option key={x.id} value={x.id}>
@@ -336,7 +483,9 @@ export function ChurchDayDetailBody({ snapshot }: Props) {
       <TabPanel
         className={styles.tabRoot}
         variant="compact"
+        compactWrap={calendarPageLayout}
         tablistAriaLabel={t('calendarDayTabsAria')}
+        ariaIdPrefix={tabShellId}
         tabs={tabs}
         initialId="overview"
         selectedId={tab}

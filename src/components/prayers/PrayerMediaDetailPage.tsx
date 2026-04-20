@@ -4,7 +4,7 @@ import { PageSection } from '../ui/PageSection'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import type { PrayerMediaEntry } from '../../lib/prayers/mediaPrayerEntries'
 import { PrayerMediaPlayer } from './PrayerMediaPlayer'
-import { scrollToElement, isMobileViewport, getHeaderOffset } from '../../lib/scrollUtils'
+import { scrollTargetIntoView } from '../../lib/scrollUtils'
 import styles from './PrayerMediaDetailPage.module.css'
 
 type RelatedPrayerLink = {
@@ -33,12 +33,7 @@ export function PrayerMediaDetailPage({
   const t = useUiLabel()
 
   const handleSectionClick = (sectionId: string) => {
-    if (isMobileViewport()) {
-      scrollToElement(sectionId, {
-        behavior: 'smooth',
-        offset: getHeaderOffset()
-      })
-    }
+    scrollTargetIntoView(sectionId, { smooth: false })
   }
 
   return (
@@ -77,51 +72,43 @@ export function PrayerMediaDetailPage({
         </div>
 
         <div className={styles.sectionChips} aria-label="Prayer page sections">
-          <a 
-            href="#prayer-media" 
+          <a
+            href="#prayer-media"
             className={styles.sectionChip}
             onClick={(e) => {
-              if (isMobileViewport()) {
-                e.preventDefault()
-                handleSectionClick('#prayer-media')
-              }
+              e.preventDefault()
+              handleSectionClick('#prayer-media')
             }}
           >
             Listen
           </a>
-          <a 
-            href="#prayer-reading" 
+          <a
+            href="#prayer-reading"
             className={styles.sectionChip}
             onClick={(e) => {
-              if (isMobileViewport()) {
-                e.preventDefault()
-                handleSectionClick('#prayer-reading')
-              }
+              e.preventDefault()
+              handleSectionClick('#prayer-reading')
             }}
           >
             Read
           </a>
-          <a 
-            href="#prayer-notes" 
+          <a
+            href="#prayer-notes"
             className={styles.sectionChip}
             onClick={(e) => {
-              if (isMobileViewport()) {
-                e.preventDefault()
-                handleSectionClick('#prayer-notes')
-              }
+              e.preventDefault()
+              handleSectionClick('#prayer-notes')
             }}
           >
             Notes
           </a>
           {relatedPrayers.length > 0 ? (
-            <a 
-              href="#prayer-related" 
+            <a
+              href="#prayer-related"
               className={styles.sectionChip}
               onClick={(e) => {
-                if (isMobileViewport()) {
-                  e.preventDefault()
-                  handleSectionClick('#prayer-related')
-                }
+                e.preventDefault()
+                handleSectionClick('#prayer-related')
               }}
             >
               Related
@@ -186,7 +173,11 @@ export function PrayerMediaDetailPage({
         </aside>
       </div>
 
-      {afterMedia ? <div id="prayer-reading">{afterMedia}</div> : null}
+      {afterMedia ? (
+        <div id="prayer-reading" className={styles.readingAnchor}>
+          {afterMedia}
+        </div>
+      ) : null}
     </PageSection>
   )
 }

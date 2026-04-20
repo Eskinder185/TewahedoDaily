@@ -29,6 +29,9 @@ export function HomeTodayInChurchPreview() {
             src={imageManifest.home.todayInChurch}
             alt=""
             className={styles.figureImg}
+            width={imageManifest.home.todayInChurchWidth}
+            height={imageManifest.home.todayInChurchHeight}
+            sizes="(max-width: 767px) 100vw, 45vw"
             loading="lazy"
             decoding="async"
           />

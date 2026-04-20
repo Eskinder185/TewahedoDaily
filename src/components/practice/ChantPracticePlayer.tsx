@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { ensureYoutubeIframeApi } from '../../lib/youtube/ensureYoutubeIframeApi'
 import {
   loadSavedLoopSections,
@@ -18,6 +25,7 @@ import {
   formatChantTime,
 } from './chantPracticeModel'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { scrollTargetIntoView } from '../../lib/scrollUtils'
 import styles from './ChantPracticePlayer.module.css'
 
 const SPEEDS = [0.5, 0.75, 1, 1.25] as const
@@ -48,6 +56,7 @@ export function ChantPracticePlayer({
   const t = useUiLabel()
   const mountRef = useRef<HTMLDivElement>(null)
   const playerRef = useRef<YT.Player | null>(null)
+  const didScrollAfterPlayerReadyRef = useRef(false)
 
   const [apiReady, setApiReady] = useState(false)
   const [playerReady, setPlayerReady] = useState(false)
@@ -91,6 +100,7 @@ export function ChantPracticePlayer({
     setSplitHighlight('full')
     setPlayerReady(false)
     setIsPlaying(false)
+    didScrollAfterPlayerReadyRef.current = false
   }, [payload.entryId, videoId])
 
   useEffect(() => {
@@ -98,6 +108,25 @@ export function ChantPracticePlayer({
       loadSavedLoopSections(payload.form, payload.entryId),
     )
   }, [payload.form, payload.entryId])
+
+  const scrollToPlayerLandmark = useCallback(() => {
+    scrollTargetIntoView('#chant-practice-scroll-target', { smooth: false })
+    queueMicrotask(() => {
+      document
+        .getElementById('chant-practice-scroll-target')
+        ?.focus({ preventScroll: true })
+    })
+  }, [])
+
+  useLayoutEffect(() => {
+    scrollToPlayerLandmark()
+  }, [payload.entryId, videoId, scrollToPlayerLandmark])
+
+  useEffect(() => {
+    if (!playerReady || didScrollAfterPlayerReadyRef.current) return
+    didScrollAfterPlayerReadyRef.current = true
+    scrollToPlayerLandmark()
+  }, [playerReady, scrollToPlayerLandmark])
 
   useEffect(() => {
     if (!apiReady || !videoId || !mountRef.current) {
@@ -464,6 +493,7 @@ export function ChantPracticePlayer({
           {t('playerBack')}
         </button>
         <div className={styles.titleBlock}>
+          <p className={styles.nowPlaying}>{t('practiceChantNowPlaying')}</p>
           <span className={styles.badge}>{formLabel}</span>
           <h1 className={styles.title}>{payload.title}</h1>
           {payload.transliterationTitle ? (
@@ -474,65 +504,79 @@ export function ChantPracticePlayer({
 
       <div className={styles.layout}>
         <div className={styles.videoColumn}>
-          <div className={styles.videoShell}>
-            {videoId ? (
-              <div ref={mountRef} className={styles.playerMount} />
-            ) : (
-              <div className={styles.noVideo}>
-                <p className={styles.noVideoText}>
-                  No YouTube link is set for this chant. Lyrics are still available
-                  beside this panel.
-                </p>
-                {payload.watchUrl ? (
-                  <a
-                    className={styles.watchLink}
-                    href={payload.watchUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Open video on YouTube
-                  </a>
-                ) : null}
-              </div>
-            )}
+          <div
+            id="chant-practice-scroll-target"
+            tabIndex={-1}
+            className={styles.scrollLandmark}
+            aria-label={t('practiceChantVideoLandmark')}
+          />
+          <section
+            className={styles.playerBlock}
+            role="region"
+            aria-label={t('practicePlayerRegionAria')}
+          >
+            <div className={styles.videoShell}>
+              {videoId ? (
+                <div ref={mountRef} className={styles.playerMount} />
+              ) : (
+                <div className={styles.noVideo}>
+                  <p className={styles.noVideoText}>
+                    No YouTube link is set for this chant. Lyrics are still available
+                    beside this panel.
+                  </p>
+                  {payload.watchUrl ? (
+                    <a
+                      className={styles.watchLink}
+                      href={payload.watchUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open video on YouTube
+                    </a>
+                  ) : null}
+                </div>
+              )}
+            </div>
+
+            <ChantPlayerControls
+              disabled={controlsDisabled}
+              isPlaying={isPlaying}
+              onTogglePlay={togglePlay}
+              volume={volume}
+              onVolumeChange={onVolumeChange}
+              rate={rate}
+              onRateChange={onRateChange}
+              onSkipBack={() => skipBy(-5)}
+              onSkipForward={() => skipBy(5)}
+            />
+          </section>
+
+          <div className={styles.loopAside}>
+            <ChantLoopControls
+              disabled={controlsDisabled}
+              loopStart={loopStart}
+              loopEnd={loopEnd}
+              loopPlaying={loopPlaying}
+              loopError={loopError}
+              formatTime={formatChantTime}
+              onMarkStart={markStart}
+              onMarkEnd={markEnd}
+              onPlayLoop={playLoop}
+              onStopLoop={stopLoop}
+              onClearLoop={clearLoop}
+              savedSections={savedLoopSections}
+              onSaveSection={saveLoopSection}
+              onPlaySavedSection={playSavedLoopSection}
+              onLoadSavedSection={loadSavedLoopSectionIntoMarks}
+              onDeleteSavedSection={deleteSavedLoopSection}
+              onRenameSavedSection={renameSavedLoopSection}
+              autoSplitSections={autoSplitSections}
+              splitHighlight={splitHighlight}
+              onFullVideo={handleFullVideo}
+              onAutoSplit={handleAutoSplit}
+              onSelectAutoSection={handleSelectAutoSection}
+            />
           </div>
-
-          <ChantPlayerControls
-            disabled={controlsDisabled}
-            isPlaying={isPlaying}
-            onTogglePlay={togglePlay}
-            volume={volume}
-            onVolumeChange={onVolumeChange}
-            rate={rate}
-            onRateChange={onRateChange}
-            onSkipBack={() => skipBy(-5)}
-            onSkipForward={() => skipBy(5)}
-          />
-
-          <ChantLoopControls
-            disabled={controlsDisabled}
-            loopStart={loopStart}
-            loopEnd={loopEnd}
-            loopPlaying={loopPlaying}
-            loopError={loopError}
-            formatTime={formatChantTime}
-            onMarkStart={markStart}
-            onMarkEnd={markEnd}
-            onPlayLoop={playLoop}
-            onStopLoop={stopLoop}
-            onClearLoop={clearLoop}
-            savedSections={savedLoopSections}
-            onSaveSection={saveLoopSection}
-            onPlaySavedSection={playSavedLoopSection}
-            onLoadSavedSection={loadSavedLoopSectionIntoMarks}
-            onDeleteSavedSection={deleteSavedLoopSection}
-            onRenameSavedSection={renameSavedLoopSection}
-            autoSplitSections={autoSplitSections}
-            splitHighlight={splitHighlight}
-            onFullVideo={handleFullVideo}
-            onAutoSplit={handleAutoSplit}
-            onSelectAutoSection={handleSelectAutoSection}
-          />
         </div>
 
         <div className={styles.readColumn}>
@@ -547,6 +591,7 @@ export function ChantPracticePlayer({
             tablistAriaLabel={t('practiceChantPlayerTabsAria')}
             tabs={learningTabs}
             initialId="memorize"
+            scrollPanelIntoViewOnTabChange={false}
           />
         </div>
       </div>

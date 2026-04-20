@@ -117,3 +117,17 @@
   color: var(--color-text-subtle);
   padding-inline: 2px;
 }
+
+@media (max-width: 639.98px) {
+  .card {
+    gap: var(--space-4);
+    padding-block: var(--space-1);
+    border-radius: var(--radius-lg);
+  }
+
+  .title,
+  .subtitle,
+  .teaser {
+    padding-inline: var(--space-1);
+  }
+}

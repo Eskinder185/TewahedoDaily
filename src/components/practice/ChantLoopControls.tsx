@@ -42,6 +42,7 @@ function SectionLabelInput({
   section: SavedChantLoopSection
   onRename: (id: string, label: string) => void
 }) {
+  const t = useUiLabel()
   const [v, setV] = useState(section.label)
   useEffect(() => {
     setV(section.label)
@@ -57,7 +58,7 @@ function SectionLabelInput({
       onKeyDown={(e) => {
         if (e.key === 'Enter') (e.target as HTMLInputElement).blur()
       }}
-      aria-label="Loop name"
+      aria-label={t('loopSectionNameLabel')}
     />
   )
 }
@@ -110,6 +111,7 @@ export function ChantLoopControls({
             type="button"
             className={`${styles.splitBtn} ${splitHighlight === 'full' ? styles.splitBtnOn : ''}`}
             onClick={onFullVideo}
+            aria-pressed={splitHighlight === 'full'}
           >
             {t('loopFullVideo')}
           </button>
@@ -136,6 +138,7 @@ export function ChantLoopControls({
                 className={`${styles.splitBtn} ${on ? styles.splitBtnOn : ''}`}
                 disabled={!autoSplitSections}
                 onClick={() => onSelectAutoSection(n)}
+                aria-pressed={on}
                 title={seg != null ? `${label} (${range})` : label}
               >
                 <span className={styles.splitBtnLabel}>{label}</span>

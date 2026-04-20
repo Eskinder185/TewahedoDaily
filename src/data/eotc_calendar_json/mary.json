@@ -1,0 +1,342 @@
+{
+  "type": "calendar_collection",
+  "name": "mary",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "kidane-mehret",
+      "title": "ኪዳነ ምሕረት",
+      "transliterationTitle": "Kidane Mehret",
+      "englishTitle": "Covenant of Mercy",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Yekatit",
+        "ethiopianDay": 16,
+        "gregorianHint": "Usually February 23",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "mary",
+        "secondary": [
+          "marian-feast",
+          "intercession"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates the Covenant of Mercy and the intercession of Saint Mary.",
+        "panel": "Kidane Mehret remembers the covenant of mercy associated with Saint Mary’s intercession for sinners.",
+        "whyItMatters": "It highlights mercy, repentance, and hope through her intercession.",
+        "connection": "It connects the faithful to divine mercy and the compassion shown through Saint Mary."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Acts of mercy",
+          "Marian hymns"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Marian Feast",
+        "calendarColor": "blue",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Kidane Mehret remembers the covenant of mercy associated with Saint Mary’s intercession for sinners.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-mary-monthly-21",
+          "filseta-assumption"
+        ]
+      },
+      "searchKeywords": [
+        "Kidane Mehret",
+        "Covenant of Mercy"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "lideta-maryam",
+      "title": "ልደታ ለማርያም",
+      "transliterationTitle": "Lideta Maryam",
+      "englishTitle": "Nativity of Saint Mary",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Ginbot",
+        "ethiopianDay": 1,
+        "gregorianHint": "Usually May 9",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "mary",
+        "secondary": [
+          "marian-feast",
+          "nativity"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Celebrates the birth of Saint Mary.",
+        "panel": "Lideta Maryam commemorates the nativity of the Theotokos and the joy surrounding her birth.",
+        "whyItMatters": "It honors the one through whom the Incarnation would be made manifest.",
+        "connection": "It connects the faithful to the preparation of salvation history through Saint Mary."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Liturgy",
+          "Marian hymns",
+          "Thanksgiving prayer"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Marian Feast",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Lideta Maryam commemorates the nativity of the Theotokos and the joy surrounding her birth.",
+        "notes": [],
+        "relatedEntries": [
+          "tsinset-annunciation",
+          "kidane-mehret"
+        ]
+      },
+      "searchKeywords": [
+        "Lideta Maryam",
+        "Nativity of Mary"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "baeta-maryam",
+      "title": "በዓታ ለማርያም",
+      "transliterationTitle": "Ba'eta Mariam",
+      "englishTitle": "Presentation of Saint Mary",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Tahsas",
+        "ethiopianDay": 3,
+        "gregorianHint": "Usually December 12",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "mary",
+        "secondary": [
+          "marian-feast",
+          "presentation"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Commemorates the presentation of Saint Mary in the Temple.",
+        "panel": "Ba’eta Maryam remembers the dedication of Saint Mary in the Temple from her childhood.",
+        "whyItMatters": "It honors her consecration, holiness, and readiness for the divine mystery.",
+        "connection": "It connects the faithful to purity, devotion, and the preparation of the Mother of God."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Marian reflection"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Marian Feast",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Ba’eta Maryam remembers the dedication of Saint Mary in the Temple from her childhood.",
+        "notes": [],
+        "relatedEntries": [
+          "lideta-maryam"
+        ]
+      },
+      "searchKeywords": [
+        "Ba'eta Mariam",
+        "Presentation of Mary"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "asterio-maryam",
+      "title": "አስተርዮ ማርያም",
+      "transliterationTitle": "Asterio Mariam",
+      "englishTitle": "Dormition of Saint Mary",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Ter",
+        "ethiopianDay": 21,
+        "gregorianHint": "Usually January 29",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "mary",
+        "secondary": [
+          "marian-feast",
+          "dormition"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Commemorates the repose of Saint Mary.",
+        "panel": "Asterio Mariam remembers the repose of the Mother of God.",
+        "whyItMatters": "It honors her holy departure and the reverence of the Church toward her life and intercession.",
+        "connection": "It connects the faithful to hope, purity, and Marian devotion in the mystery of repose."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Marian prayer",
+          "Commemoration hymns"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Marian Feast",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Asterio Mariam remembers the repose of the Mother of God.",
+        "notes": [],
+        "relatedEntries": [
+          "tsome-filseta",
+          "filseta-assumption",
+          "saint-mary-monthly-21"
+        ]
+      },
+      "searchKeywords": [
+        "Asterio Mariam",
+        "Dormition"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "filseta-assumption",
+      "title": "ፍልሰታ",
+      "transliterationTitle": "Filseta",
+      "englishTitle": "Assumption / Filseta",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Nehase",
+        "ethiopianDay": 16,
+        "gregorianHint": "Usually August 22",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "mary",
+        "secondary": [
+          "marian-feast",
+          "assumption"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Celebrates the honored Assumption of Saint Mary.",
+        "panel": "Filseta celebrates the Assumption of Saint Mary after the Marian fast.",
+        "whyItMatters": "It is one of the most beloved Marian observances, marked by joy after fasting and devotion.",
+        "connection": "It connects the faithful to Saint Mary’s honor, intercession, and the hope of glory in God."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Liturgy",
+          "Marian hymns",
+          "Conclusion of Filseta Fast"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Marian Feast",
+        "calendarColor": "blue",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Filseta celebrates the Assumption of Saint Mary after the Marian fast.",
+        "notes": [],
+        "relatedEntries": [
+          "tsome-filseta",
+          "kidane-mehret"
+        ]
+      },
+      "searchKeywords": [
+        "Filseta",
+        "Assumption of Mary"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

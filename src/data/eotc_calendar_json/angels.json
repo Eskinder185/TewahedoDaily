@@ -1,0 +1,267 @@
+{
+  "type": "calendar_collection",
+  "name": "angels",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "saint-michael-major",
+      "title": "ቅዱስ ሚካኤል",
+      "transliterationTitle": "Kidus Mikael",
+      "englishTitle": "Archangel Michael",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Hedar",
+        "ethiopianDay": 12,
+        "gregorianHint": "Usually November 21",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Major annual commemoration of Archangel Michael, protector and defender of the faithful.",
+        "panel": "This commemoration honors Archangel Michael as protector, defender, and mighty servant of God.",
+        "whyItMatters": "It strengthens trust in God’s protection and the ministry of the holy angels.",
+        "connection": "It connects the faithful to angelic intercession, divine help, and spiritual victory."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Prayer for protection",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Angel Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "This commemoration honors Archangel Michael as protector, defender, and mighty servant of God.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-michael-monthly-12"
+        ]
+      },
+      "searchKeywords": [
+        "Michael",
+        "Archangel Michael"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-gabriel-major",
+      "title": "ቅዱስ ገብርኤል",
+      "transliterationTitle": "Kidus Gebriel",
+      "englishTitle": "Archangel Gabriel",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Tahsas",
+        "ethiopianDay": 19,
+        "gregorianHint": "Usually December 28",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Major annual commemoration of Archangel Gabriel, bearer of glad tidings.",
+        "panel": "This commemoration honors Archangel Gabriel as the messenger of divine joy and holy announcements.",
+        "whyItMatters": "It highlights divine message, obedience, and the nearness of God’s mercy.",
+        "connection": "It connects the faithful to the Annunciation and the joyful proclamation of salvation."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Prayer",
+          "Angel hymns"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Angel Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "This commemoration honors Archangel Gabriel as the messenger of divine joy and holy announcements.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-gabriel-monthly-19",
+          "tsinset-annunciation"
+        ]
+      },
+      "searchKeywords": [
+        "Gabriel",
+        "Archangel Gabriel"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-raphael-major",
+      "title": "ቅዱስ ሩፋኤል",
+      "transliterationTitle": "Kidus Ruphael",
+      "englishTitle": "Archangel Raphael",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Pagumen",
+        "ethiopianDay": 3,
+        "gregorianHint": "Usually early September",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Commemoration of Archangel Raphael, associated with healing and guidance.",
+        "panel": "This commemoration honors Archangel Raphael as helper, healer, and guide by God’s command.",
+        "whyItMatters": "It emphasizes healing, mercy, and divine care during the journey of life.",
+        "connection": "It connects the faithful to God’s healing and protective guidance."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer for healing",
+          "Liturgy",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 3,
+        "calendarBadge": "Angel Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "This commemoration honors Archangel Raphael as helper, healer, and guide by God’s command.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-raphael-monthly-13"
+        ]
+      },
+      "searchKeywords": [
+        "Raphael",
+        "Healing Angel"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-uriel-major",
+      "title": "ቅዱስ ዑራኤል",
+      "transliterationTitle": "Kidus Urael",
+      "englishTitle": "Archangel Uriel",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Ter",
+        "ethiopianDay": 22,
+        "gregorianHint": "Usually January 30",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Commemoration of Archangel Uriel, associated with light, wisdom, and divine service.",
+        "panel": "This commemoration honors Archangel Uriel as a minister of divine wisdom and sanctifying light.",
+        "whyItMatters": "It emphasizes light, wisdom, and God’s active care for the faithful.",
+        "connection": "It connects the faithful to heavenly guidance and the sanctifying work of God."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Prayer",
+          "Meditation on divine light"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 3,
+        "calendarBadge": "Angel Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "This commemoration honors Archangel Uriel as a minister of divine wisdom and sanctifying light.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-uriel-monthly-22"
+        ]
+      },
+      "searchKeywords": [
+        "Uriel",
+        "Archangel Uriel"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

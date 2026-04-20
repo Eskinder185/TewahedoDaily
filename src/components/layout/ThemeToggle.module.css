@@ -1,8 +1,8 @@
 .group {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 3px;
+  gap: 3px;
+  padding: 4px;
   border-radius: var(--radius-pill);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 75%, var(--color-gold-line));
   background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-bg-muted));
@@ -15,7 +15,8 @@
 .seg {
   margin: 0;
   padding: 0;
-  width: 2.5rem;
+  width: 2.875rem;
+  min-width: 2.875rem;
   min-height: var(--tap-min);
   border: none;
   border-radius: var(--radius-pill);
@@ -40,6 +41,16 @@
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
   z-index: 1;
+}
+
+.seg:active {
+  transform: scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seg:active {
+    transform: none;
+  }
 }
 
 .segOn {
@@ -93,6 +104,11 @@
 }
 
 @media (min-width: 768px) {
+  .group {
+    gap: 2px;
+    padding: 3px;
+  }
+
   .seg {
     min-height: 0;
     height: 2rem;

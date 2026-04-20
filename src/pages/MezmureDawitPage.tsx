@@ -1,11 +1,11 @@
-import { useEffect, useId, useMemo, useState } from 'react'
+import { useEffect, useId, useLayoutEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
 import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
-import { PSALMS } from '../lib/prayers/psalmData'
+import { PSALMS, type PsalmEntry } from '../lib/prayers/psalmData'
 import { useUiLabel } from '../lib/i18n/uiLabels'
-import { forceScrollToTopOnMobile, isMobileViewport } from '../lib/scrollUtils'
+import { isMobileViewport, scrollTargetIntoView } from '../lib/scrollUtils'
 import styles from './MezmureDawitPage.module.css'
 
 export function MezmureDawitPage() {
@@ -53,6 +53,16 @@ export function MezmureDawitPage() {
     setReaderTab('amharic')
   }, [active?.id])
 
+  useLayoutEffect(() => {
+    if (isMobileViewport() && showPsalmIndexOnMobile) return
+    scrollTargetIntoView('#mezmur-reader', { smooth: false, flush: true })
+    requestAnimationFrame(() => {
+      if (isMobileViewport() && !showPsalmIndexOnMobile) {
+        document.getElementById('mezmur-reader')?.focus({ preventScroll: true })
+      }
+    })
+  }, [active?.id, showPsalmIndexOnMobile])
+
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase()
     if (!needle) return sorted
@@ -73,16 +83,14 @@ export function MezmureDawitPage() {
     const p = sorted[next]
     if (p) {
       setParams({ n: String(p.number) })
-      // On mobile: hide psalm index and scroll to top immediately
       if (isMobileViewport()) {
         setShowPsalmIndexOnMobile(false)
-        forceScrollToTopOnMobile()
       }
     }
   }
 
   // Handle psalm selection from index
-  const handlePsalmSelect = (psalm: any) => {
+  const handlePsalmSelect = (psalm: PsalmEntry) => {
     const i = sorted.findIndex((x) => x.id === psalm.id)
     if (i >= 0) {
       go(i)
@@ -95,8 +103,11 @@ export function MezmureDawitPage() {
     setShowPsalmIndexOnMobile(true)
   }
 
+  const readingMode =
+    isMobileViewport() && !showPsalmIndexOnMobile ? styles.readingModeSection : ''
+
   return (
-    <PageSection variant="tint">
+    <PageSection variant="tint" className={readingMode}>
       <nav className={styles.nav} aria-label="Breadcrumb">
         <Link className={styles.crumb} to="/prayers">
           {t('navPrayers')}
@@ -107,17 +118,19 @@ export function MezmureDawitPage() {
         <span className={styles.crumbCurrent}>{t('prayerMezmurTitle')}</span>
       </nav>
 
-      <SanctuaryHero eyebrow={t('prayerMezmurEyebrow')} title={t('prayerMezmurTitle')}>
-        <p>{t('prayerMezmurIntro')}</p>
-      </SanctuaryHero>
+      <div className={styles.preReader}>
+        <SanctuaryHero eyebrow={t('prayerMezmurEyebrow')} title={t('prayerMezmurTitle')}>
+          <p>{t('prayerMezmurIntro')}</p>
+        </SanctuaryHero>
 
-      <div className={styles.jumpRow}>
-        <a href="#mezmur-index" className={styles.jumpChip}>
-          Psalm index
-        </a>
-        <a href="#mezmur-reader" className={styles.jumpChip}>
-          Reading panel
-        </a>
+        <div className={styles.jumpRow}>
+          <a href="#mezmur-index" className={styles.jumpChip}>
+            Psalm index
+          </a>
+          <a href="#mezmur-reader" className={styles.jumpChip}>
+            Reading panel
+          </a>
+        </div>
       </div>
 
       <div className={`${styles.layout} ${!showPsalmIndexOnMobile ? styles.layoutReaderOnly : ''}`}>
@@ -145,6 +158,7 @@ export function MezmureDawitPage() {
                   <button
                     type="button"
                     className={`${styles.indexBtn} ${on ? styles.indexBtnOn : ''}`}
+                    aria-current={on ? 'true' : undefined}
                     onClick={() => handlePsalmSelect(p)}
                   >
                     <span className={styles.indexNum}>{p.number}</span>
@@ -158,7 +172,11 @@ export function MezmureDawitPage() {
           </ul>
         </aside>
 
-        <article className={`${styles.reader} ${!showPsalmIndexOnMobile ? styles.readerFullMobile : ''}`} id="mezmur-reader">
+        <article
+          className={`${styles.reader} ${!showPsalmIndexOnMobile ? styles.readerFullMobile : ''}`}
+          id="mezmur-reader"
+          tabIndex={-1}
+        >
           {!showPsalmIndexOnMobile && (
             <button 
               className={styles.backButton}
@@ -215,6 +233,12 @@ export function MezmureDawitPage() {
 
           {active ? (
             <div className={styles.readerTabs} key={active.id}>
+              <div
+                id="mezmur-reading-start"
+                tabIndex={-1}
+                className={styles.readingLandmark}
+                aria-label={titlePrimary || 'Psalm reading'}
+              />
               <PrayerTextTabs
                 text={active.text}
                 split="panel"

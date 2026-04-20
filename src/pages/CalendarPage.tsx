@@ -12,7 +12,7 @@ export function CalendarPage() {
   const monthImage = resolveMonthlyImage(snapshot.ethiopian.month)
 
   return (
-    <PageSection id="calendar" variant="tint">
+    <PageSection id="calendar" variant="tint" className={styles.page}>
       <header className={styles.head}>
         <div className={styles.headContent}>
           <figure className={styles.headImageWrap} aria-hidden>
@@ -21,6 +21,8 @@ export function CalendarPage() {
               fallbackSrc={calendarImageManifest.anchors.todayInChurch}
               alt=""
               className={styles.headImage}
+              fetchPriority="low"
+              sizes="(max-width: 919px) 100vw, min(340px, 40vw)"
             />
           </figure>
           <div className={styles.copy}>
@@ -42,7 +44,9 @@ export function CalendarPage() {
           </div>
         </div>
       </header>
-      <TodayInChurchSection embedded embeddedOnCalendarPage />
+      <div className={styles.mobileStack}>
+        <TodayInChurchSection embedded embeddedOnCalendarPage />
+      </div>
     </PageSection>
   )
 }

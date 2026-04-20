@@ -35,6 +35,9 @@ export function PracticeMediaCard({
             className={styles.thumb}
             src={imageUrl}
             alt=""
+            width={1280}
+            height={720}
+            sizes="(max-width: 640px) 92vw, min(280px, 30vw)"
             loading="lazy"
             decoding="async"
           />

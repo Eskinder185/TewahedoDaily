@@ -1,0 +1,614 @@
+{
+  "type": "calendar_collection",
+  "name": "paschal-cycle",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "nineveh-fast",
+      "title": "ጾመ ነነዌ",
+      "transliterationTitle": "Tsome Nenewe",
+      "englishTitle": "Fast of Nineveh",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Calculated yearly from the Paschal cycle",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 0,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Monday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "fast",
+        "secondary": [
+          "paschal-cycle",
+          "repentance"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "A three-day fast of repentance before Great Lent.",
+        "panel": "The Fast of Nineveh remembers the repentance of the people of Nineveh after Jonah’s preaching.",
+        "whyItMatters": "It prepares the faithful through repentance before the greater struggle of Lent.",
+        "connection": "It connects believers to repentance, mercy, and the call to turn back to God."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Fasting",
+          "Repentance",
+          "Prayer of mercy"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Fast",
+        "calendarColor": "purple",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "The Fast of Nineveh remembers the repentance of the people of Nineveh after Jonah’s preaching.",
+        "notes": [],
+        "relatedEntries": [
+          "abiy-tsom",
+          "fasika"
+        ]
+      },
+      "searchKeywords": [
+        "Nineveh Fast",
+        "Tsome Nenewe"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "abiy-tsom",
+      "title": "ዓቢይ ጾም",
+      "transliterationTitle": "Abiy Tsom",
+      "englishTitle": "Great Lent",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Begins 14 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 14,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "fast",
+        "secondary": [
+          "paschal-cycle",
+          "season"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "The Great Fast of repentance, prayer, and preparation for the resurrection.",
+        "panel": "Abiy Tsom prepares the faithful through fasting, repentance, and prayer for the joy of Fasika.",
+        "whyItMatters": "It is a season of purification, discipline, mercy, and deeper union with Christ.",
+        "connection": "It connects believers to the Lord’s fasting and to the Church’s journey toward Holy Week and resurrection."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Extended fasting",
+          "Repentance",
+          "Almsgiving",
+          "Increased prayer"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Fast",
+        "calendarColor": "purple",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Abiy Tsom prepares the faithful through fasting, repentance, and prayer for the joy of Fasika.",
+        "notes": [],
+        "relatedEntries": [
+          "nineveh-fast",
+          "hosanna",
+          "good-friday",
+          "fasika"
+        ]
+      },
+      "searchKeywords": [
+        "Abiy Tsom",
+        "Great Lent"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "debre-zeit",
+      "title": "ደብረ ዘይት",
+      "transliterationTitle": "Debre Zeit",
+      "englishTitle": "Mount of Olives Sunday",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "41 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 41,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Sunday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "minor-feast",
+        "secondary": [
+          "paschal-cycle",
+          "lent"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "A Lenten Sunday focused on vigilance, judgment, and readiness.",
+        "panel": "Debre Zeit is a Lenten Sunday that draws attention to the Mount of Olives teachings and spiritual watchfulness.",
+        "whyItMatters": "It calls the faithful to vigilance, repentance, and readiness for the coming of the Lord.",
+        "connection": "It connects the Lenten journey to the teaching of Christ and the call to spiritual readiness."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Attend liturgy",
+          "Repentance",
+          "Meditation on vigilance"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Lenten Sunday",
+        "calendarColor": "purple",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Debre Zeit is a Lenten Sunday that draws attention to the Mount of Olives teachings and spiritual watchfulness.",
+        "notes": [],
+        "relatedEntries": [
+          "abiy-tsom",
+          "hosanna"
+        ]
+      },
+      "searchKeywords": [
+        "Debre Zeit"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "hosanna",
+      "title": "ሆሣዕና",
+      "transliterationTitle": "Hosanna",
+      "englishTitle": "Palm Sunday",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "62 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 62,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Sunday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "paschal-cycle",
+          "holy-week"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Christ’s triumphant entry into Jerusalem.",
+        "panel": "Hosanna remembers the Lord’s entry into Jerusalem as King before His passion.",
+        "whyItMatters": "It joins joy and solemnity, as the Church welcomes Christ while moving toward His suffering.",
+        "connection": "It connects the faithful to the beginning of Holy Week and the path to the Cross."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "solemn-joy",
+        "commonPractices": [
+          "Palm procession",
+          "Liturgy",
+          "Hosanna hymns"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "green",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Hosanna remembers the Lord’s entry into Jerusalem as King before His passion.",
+        "notes": [],
+        "relatedEntries": [
+          "good-friday",
+          "fasika"
+        ]
+      },
+      "searchKeywords": [
+        "Hosanna",
+        "Palm Sunday"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "good-friday",
+      "title": "ስቅለት",
+      "transliterationTitle": "Siklet",
+      "englishTitle": "Good Friday",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "67 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 67,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Friday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "paschal-cycle",
+          "holy-week",
+          "cross"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates the crucifixion and saving passion of Christ.",
+        "panel": "Siklet remembers the crucifixion of the Lord and the sacrifice offered for the salvation of the world.",
+        "whyItMatters": "It is the day of deep mourning, contemplation, and reverence for the Cross.",
+        "connection": "It connects the faithful to Christ’s suffering, the Cross, and the price of redemption."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "solemn",
+        "commonPractices": [
+          "Strict fasting",
+          "Prostration",
+          "Passion readings",
+          "Prayer until afternoon"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Holy Week",
+        "calendarColor": "crimson",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Siklet remembers the crucifixion of the Lord and the sacrifice offered for the salvation of the world.",
+        "notes": [],
+        "relatedEntries": [
+          "hosanna",
+          "fasika",
+          "meskel-finding-of-the-true-cross"
+        ]
+      },
+      "searchKeywords": [
+        "Good Friday",
+        "Siklet",
+        "Crucifixion"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "fasika",
+      "title": "ፋሲካ",
+      "transliterationTitle": "Fasika",
+      "englishTitle": "Resurrection / Easter",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "69 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 69,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Sunday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "paschal-cycle",
+          "resurrection"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Celebrates the resurrection of Christ and His victory over death.",
+        "panel": "Fasika is the feast of feasts, proclaiming the resurrection of Christ and the defeat of death.",
+        "whyItMatters": "It is the center of Christian joy and the foundation of the Church’s hope.",
+        "connection": "It connects the faithful directly to the risen Christ, the empty tomb, and the promise of eternal life."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Paschal liturgy",
+          "Breaking the Great Fast",
+          "Resurrection hymns"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Feast of Feasts",
+        "calendarColor": "white",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Fasika is the feast of feasts, proclaiming the resurrection of Christ and the defeat of death.",
+        "notes": [],
+        "relatedEntries": [
+          "good-friday",
+          "ascension",
+          "pentecost"
+        ]
+      },
+      "searchKeywords": [
+        "Fasika",
+        "Easter",
+        "Resurrection"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "rikbe-kahnat",
+      "title": "ርክበ ካህናት",
+      "transliterationTitle": "Rikbe Kahnat",
+      "englishTitle": "Meeting of Priests",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "93 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 93,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Wednesday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "minor-feast",
+        "secondary": [
+          "paschal-cycle"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "A Paschal-cycle observance after the resurrection period.",
+        "panel": "Rikbe Kahnat is a post-resurrection observance within the Paschal cycle.",
+        "whyItMatters": "It marks the continued unfolding of the resurrection season in the Church’s liturgical life.",
+        "connection": "It connects the faithful to the ordered rhythm of the Paschal season after Fasika."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Attend liturgy",
+          "Paschal prayer"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 3,
+        "calendarBadge": "Paschal Observance",
+        "calendarColor": "white",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Rikbe Kahnat is a post-resurrection observance within the Paschal cycle.",
+        "notes": [],
+        "relatedEntries": [
+          "fasika",
+          "ascension"
+        ]
+      },
+      "searchKeywords": [
+        "Rikbe Kahnat"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "ascension",
+      "title": "ዕርገት",
+      "transliterationTitle": "Ereget",
+      "englishTitle": "Ascension",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "108 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 108,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Thursday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "paschal-cycle",
+          "lord-feast"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Christ’s ascension into heaven.",
+        "panel": "Ereget celebrates the ascension of Christ to the Father in glory.",
+        "whyItMatters": "It confirms the exaltation of the risen Lord and His abiding promise to the Church.",
+        "connection": "It connects the faithful to Christ’s heavenly reign and the hope of being lifted with Him."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Attend liturgy",
+          "Ascension hymns",
+          "Prayer of hope"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "gold",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Ereget celebrates the ascension of Christ to the Father in glory.",
+        "notes": [],
+        "relatedEntries": [
+          "fasika",
+          "pentecost"
+        ]
+      },
+      "searchKeywords": [
+        "Ascension",
+        "Ereget"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "pentecost",
+      "title": "ጰራቅሊጦስ",
+      "transliterationTitle": "Paracletos",
+      "englishTitle": "Pentecost",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "118 days after the Fast of Nineveh",
+        "movableAnchor": "nineveh-fast",
+        "offsetFromAnchor": 118,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Sunday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "paschal-cycle",
+          "holy-spirit"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Celebrates the descent of the Holy Spirit upon the Apostles.",
+        "panel": "Paracletos remembers the descent of the Holy Spirit and the empowerment of the Church.",
+        "whyItMatters": "It reveals the life of the Church in the Spirit and the beginning of apostolic mission.",
+        "connection": "It connects the faithful to the gift of the Holy Spirit and the mission of the apostolic Church."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Attend liturgy",
+          "Pentecost hymns",
+          "Prayer for renewal"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "red",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Paracletos remembers the descent of the Holy Spirit and the empowerment of the Church.",
+        "notes": [],
+        "relatedEntries": [
+          "ascension",
+          "apostles-fast"
+        ]
+      },
+      "searchKeywords": [
+        "Pentecost",
+        "Paracletos"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

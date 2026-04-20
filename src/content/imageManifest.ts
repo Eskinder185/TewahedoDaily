@@ -2,10 +2,16 @@
  * Single source of truth for static images in `public/images/`.
  * Add files to match these paths; do not scatter `/images/...` strings in components.
  */
+/** Approximate intrinsic pixels for layout hints (CLS). Match real assets when they change. */
 export const imageManifest = {
   home: {
     hero: '/images/home/home-hero-tewahedo-daily.jpg',
+    /** Reserve space matching hero JPEG aspect (~3:2). */
+    heroWidth: 2400,
+    heroHeight: 1600,
     todayInChurch: '/images/home/lalibela.png',
+    todayInChurchWidth: 1600,
+    todayInChurchHeight: 1100,
   },
   movement: {
     mequamiaGuide: '/images/movement/movement-mequamia-guide.jpg',
@@ -14,6 +20,8 @@ export const imageManifest = {
   },
   about: {
     hero: '/images/about/about-hero.jpg',
+    heroWidth: 1920,
+    heroHeight: 1080,
   },
 } as const
 

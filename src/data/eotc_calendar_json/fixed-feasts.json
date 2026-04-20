@@ -1,0 +1,555 @@
+{
+  "type": "calendar_collection",
+  "name": "fixed-feasts",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "tsinset-annunciation",
+      "title": "ጽንሰት",
+      "transliterationTitle": "Tsinset",
+      "englishTitle": "Annunciation / Incarnation",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Megabit",
+        "ethiopianDay": 29,
+        "gregorianHint": "Usually April 7",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "lord-feast",
+          "incarnation"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates the Annunciation and the mystery of the Word taking flesh.",
+        "panel": "Tsinset remembers the moment the Word of God took flesh through the Annunciation.",
+        "whyItMatters": "It marks the beginning of the Incarnation and the fulfillment of God’s saving plan.",
+        "connection": "It connects the faithful to the mystery of Christ’s coming in the flesh and the beginning of salvation history."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Attend liturgy",
+          "Prayer of thanksgiving",
+          "Incarnation hymns"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "gold",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Tsinset remembers the moment the Word of God took flesh through the Annunciation.",
+        "notes": [],
+        "relatedEntries": [
+          "lidet-gena",
+          "timket",
+          "debre-tabor"
+        ]
+      },
+      "searchKeywords": [
+        "Tsinset",
+        "Annunciation",
+        "Incarnation",
+        "ጽንሰት"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "lidet-gena",
+      "title": "ልደት",
+      "transliterationTitle": "Lidet / Gena",
+      "englishTitle": "Nativity / Christmas",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Tahsas",
+        "ethiopianDay": 29,
+        "gregorianHint": "Usually January 7",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "lord-feast",
+          "nativity"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Celebrates the birth of Christ in the flesh.",
+        "panel": "Lidet proclaims the Nativity of Christ and the joy of God dwelling among humanity.",
+        "whyItMatters": "It reveals the humility of the Incarnation and the fulfillment of prophecy.",
+        "connection": "It connects believers to Bethlehem, the mystery of the Incarnation, and the joy of Emmanuel."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Midnight or early liturgy",
+          "Break the Prophets’ Fast",
+          "Nativity hymns"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "gold",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Lidet proclaims the Nativity of Christ and the joy of God dwelling among humanity.",
+        "notes": [],
+        "relatedEntries": [
+          "tsome-nebiyat",
+          "gizret-circumcision",
+          "timket"
+        ]
+      },
+      "searchKeywords": [
+        "Lidet",
+        "Gena",
+        "Nativity",
+        "Christmas",
+        "ልደት"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "gizret-circumcision",
+      "title": "ግዝረት",
+      "transliterationTitle": "Gizret",
+      "englishTitle": "Circumcision",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Ter",
+        "ethiopianDay": 6,
+        "gregorianHint": "Usually January 14",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "minor-feast",
+        "secondary": [
+          "lord-feast"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Commemorates the circumcision of Christ according to the law.",
+        "panel": "Gizret remembers Christ’s circumcision on the eighth day after His birth.",
+        "whyItMatters": "It shows the Lord’s humility and His fulfillment of the law on behalf of humanity.",
+        "connection": "It connects the faithful to Christ’s obedience and His full entrance into human history."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Attend liturgy",
+          "Scripture reading",
+          "Thanksgiving prayer"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Minor Feast",
+        "calendarColor": "silver",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Gizret remembers Christ’s circumcision on the eighth day after His birth.",
+        "notes": [],
+        "relatedEntries": [
+          "lidet-gena",
+          "timket"
+        ]
+      },
+      "searchKeywords": [
+        "Gizret",
+        "Circumcision",
+        "ግዝረት"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "timket",
+      "title": "ጥምቀት",
+      "transliterationTitle": "Timket",
+      "englishTitle": "Epiphany / Baptism of Christ",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Ter",
+        "ethiopianDay": 11,
+        "gregorianHint": "Usually January 19",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "lord-feast",
+          "theophany",
+          "baptism"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Celebrates the baptism of Christ and the revelation of the Holy Trinity.",
+        "panel": "Timket commemorates the baptism of the Lord and the manifestation of the Trinity.",
+        "whyItMatters": "It reveals Christ publicly and sanctifies the waters as signs of renewal and grace.",
+        "connection": "It connects the faithful to baptism, purification, and the public revelation of Christ."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Procession of the Tabot",
+          "Blessing of water",
+          "Baptismal remembrance"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "blue",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Timket commemorates the baptism of the Lord and the manifestation of the Trinity.",
+        "notes": [],
+        "relatedEntries": [
+          "lidet-gena",
+          "kana-ze-galilee"
+        ]
+      },
+      "searchKeywords": [
+        "Timket",
+        "Epiphany",
+        "Theophany",
+        "Baptism",
+        "ጥምቀት"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "kana-ze-galilee",
+      "title": "ቃና ዘገሊላ",
+      "transliterationTitle": "Kana Ze Galilee",
+      "englishTitle": "Wedding at Cana",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Ter",
+        "ethiopianDay": 12,
+        "gregorianHint": "Usually January 20",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "minor-feast",
+        "secondary": [
+          "lord-feast",
+          "miracle"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Commemorates Christ’s first public miracle at Cana of Galilee.",
+        "panel": "Kana Ze Galilee remembers the Lord’s first miracle, turning water into wine.",
+        "whyItMatters": "It manifests Christ’s glory and shows the beginning of His public signs.",
+        "connection": "It connects believers to divine transformation, joy, and the blessed intercession present at Cana."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Attend liturgy",
+          "Gospel reflection",
+          "Family prayer"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Minor Feast",
+        "calendarColor": "silver",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Kana Ze Galilee remembers the Lord’s first miracle, turning water into wine.",
+        "notes": [],
+        "relatedEntries": [
+          "timket"
+        ]
+      },
+      "searchKeywords": [
+        "Kana",
+        "Cana",
+        "ቃና"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "megabit-meskel",
+      "title": "መጋቢት መስቀል",
+      "transliterationTitle": "Megabit Meskel",
+      "englishTitle": "Megabit Meskel",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Megabit",
+        "ethiopianDay": 10,
+        "gregorianHint": "Usually March 19",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "cross",
+        "secondary": [
+          "cross",
+          "lord-feast"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Commemorates the Holy Cross in the month of Megabit.",
+        "panel": "Megabit Meskel is a Cross feast that recalls the saving power of the Lord’s Cross.",
+        "whyItMatters": "It keeps the Cross before the faithful as the sign of victory, redemption, and divine mercy.",
+        "connection": "It connects the faithful to the passion of Christ and the life-giving power of the Cross."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Attend liturgy",
+          "Cross veneration",
+          "Prayer of thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Cross Feast",
+        "calendarColor": "gold",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Megabit Meskel is a Cross feast that recalls the saving power of the Lord’s Cross.",
+        "notes": [],
+        "relatedEntries": [
+          "meskel-finding-of-the-true-cross",
+          "good-friday"
+        ]
+      },
+      "searchKeywords": [
+        "Megabit Meskel",
+        "Cross Feast"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "debre-tabor",
+      "title": "ደብረ ታቦር",
+      "transliterationTitle": "Debre Tabor",
+      "englishTitle": "Transfiguration",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Nehase",
+        "ethiopianDay": 13,
+        "gregorianHint": "Usually August 19",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "lord-feast",
+          "transfiguration"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Celebrates the revelation of Christ’s glory on Mount Tabor.",
+        "panel": "Debre Tabor commemorates the Transfiguration and the shining forth of Christ’s divine glory.",
+        "whyItMatters": "It strengthens faith in Christ’s divinity and points to the glory beyond the Cross.",
+        "connection": "It connects the faithful to the revelation of Christ’s glory and the hope of transformation."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Attend liturgy",
+          "Feast hymns",
+          "Meditation on divine glory"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "gold",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Debre Tabor commemorates the Transfiguration and the shining forth of Christ’s divine glory.",
+        "notes": [],
+        "relatedEntries": [
+          "hosanna",
+          "good-friday",
+          "fasika"
+        ]
+      },
+      "searchKeywords": [
+        "Debre Tabor",
+        "Transfiguration"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "meskel-finding-of-the-true-cross",
+      "title": "መስቀል",
+      "transliterationTitle": "Meskel",
+      "englishTitle": "Finding of the True Cross",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Meskerem",
+        "ethiopianDay": 17,
+        "gregorianHint": "Usually September 27",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "cross",
+          "lord-feast"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates the finding of the True Cross and the victory of Christ through the Cross.",
+        "panel": "Meskel remembers the discovery of the True Cross and celebrates the light of Christ revealed to the world.",
+        "whyItMatters": "The feast honors the Cross as the sign of salvation, victory, and divine mercy.",
+        "connection": "It connects the faithful to the crucifixion, redemption, and the Church’s proclamation of Christ’s triumph."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Attend liturgy",
+          "Prayer of thanksgiving",
+          "Demera where observed"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Major Feast",
+        "calendarColor": "gold",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Meskel remembers the discovery of the True Cross and celebrates the light of Christ revealed to the world.",
+        "notes": [],
+        "relatedEntries": [
+          "megabit-meskel",
+          "good-friday"
+        ]
+      },
+      "searchKeywords": [
+        "Meskel",
+        "Cross",
+        "መስቀል"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

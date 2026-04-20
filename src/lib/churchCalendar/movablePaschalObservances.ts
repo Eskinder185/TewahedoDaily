@@ -33,6 +33,8 @@ const PASCHA_SEQUENCE: Array<{
   rule: PaschalOffsetRule
   upcomingKind: UpcomingObservanceEntry['kind']
 }> = [
+  /** First Monday of Tsome Nenewe — 14 days before Ābiy Tsom Monday (aligned with EOTC `nineveh-fast` anchor). */
+  { id: 'nineveh-fast', rule: { kind: 'offset', days: -69 }, upcomingKind: 'fast' },
   { id: 'abiy-tsom', rule: { kind: 'offset', days: -55 }, upcomingKind: 'fast' },
   { id: 'hosanna', rule: { kind: 'offset', days: -7 }, upcomingKind: 'feast' },
   { id: 'semune-himamat', rule: { kind: 'offset', days: -6 }, upcomingKind: 'fast' },
@@ -57,6 +59,7 @@ function ruleSummary(rule: PaschalOffsetRule, paschaIso: string): string {
   }
   if (rule.days === 0) return 'Paschal full moon cycle — Resurrection Sunday'
   if (rule.days === -55) return 'Monday before Great Fast — tied to Fasika'
+  if (rule.days === -69) return 'Monday beginning Fast of Nineveh — tied to Fasika'
   if (rule.days === -58) return 'Approx. Nineveh fast window before Lent — tied to Fasika'
   if (rule.days === -7) return 'Seven days before Fasika — Hosanna'
   if (rule.days === -6) return 'Holy Week begins — tied to Fasika'

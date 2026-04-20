@@ -21,6 +21,7 @@ export type {
   MovableObservanceOnDay,
   ObservanceScheduling,
   UpcomingObservanceEntry,
+  UpcomingObservanceUiKind,
 } from './churchDay'
 export type { LessonVideoEntry, PracticeTabTarget } from './lesson'
 export type { InstrumentEntry } from './instrument'

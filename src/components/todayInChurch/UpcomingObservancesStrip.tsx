@@ -4,6 +4,7 @@ import {
   buildObservanceCardDates,
   simpleObservanceKindLabel,
   upcomingObservanceSortKey,
+  upcomingObservanceVisualBucket,
 } from '../../lib/churchCalendar'
 import { assignObservanceRowArts } from '../../content/nextObservancesArtPool'
 import {
@@ -20,7 +21,22 @@ type Props = {
   highlightedId?: string | null
 }
 
-type TabId = 'all' | UpcomingObservance['kind']
+/** Three gallery filters; extended EOTC kinds map into these buckets. */
+type TabId = 'all' | 'feast' | 'fast' | 'commemoration'
+
+function matchesUpcomingTab(item: UpcomingObservance, tab: TabId): boolean {
+  if (tab === 'all') return true
+  if (tab === 'feast')
+    return item.kind === 'feast' || item.kind === 'season'
+  if (tab === 'fast')
+    return item.kind === 'fast' || item.kind === 'weekly'
+  return (
+    item.kind === 'commemoration' ||
+    item.kind === 'marian' ||
+    item.kind === 'angel' ||
+    item.kind === 'saint'
+  )
+}
 
 const TABS: Array<{ id: TabId; label: string }> = [
   { id: 'all', label: 'All' },
@@ -72,9 +88,9 @@ function cardSummary(item: UpcomingObservance, hasImage: boolean): string {
   const own = item.shortDescription?.trim()
   if (own) return own
   const bucket =
-    item.kind === 'fast'
+    item.kind === 'fast' || item.kind === 'weekly'
       ? 'fasting, repentance, and holy preparation'
-      : item.kind === 'feast'
+      : item.kind === 'feast' || item.kind === 'season'
         ? 'the festal rhythm of the Church year'
         : 'the communion of saints in Ethiopian Orthodox memory'
   if (hasImage) {
@@ -97,7 +113,8 @@ export function UpcomingObservancesStrip({
   const deck = useMemo(() => mergeDeck(items), [items])
 
   const filtered = useMemo(() => {
-    const rows = tab === 'all' ? [...deck] : deck.filter((i) => i.kind === tab)
+    const rows =
+      tab === 'all' ? [...deck] : deck.filter((i) => matchesUpcomingTab(i, tab))
     return [...rows].sort(sortChronological)
   }, [deck, tab])
 
@@ -169,7 +186,12 @@ export function UpcomingObservancesStrip({
         </p>
       </header>
 
-      <div className={styles.tablist} role="tablist" aria-label="Observance category">
+      <div
+        className={styles.tablist}
+        role="tablist"
+        aria-label="Observance category"
+        aria-orientation="horizontal"
+      >
         {TABS.map((t) => {
           const selected = tab === t.id
           return (
@@ -233,6 +255,7 @@ export function UpcomingObservancesStrip({
               {rows.map((row, index) => {
                 const { item } = row
                 const typeLabel = simpleObservanceKindLabel(item.kind)
+                const visualKind = upcomingObservanceVisualBucket(item.kind)
                 const cardDates = buildObservanceCardDates(item)
                 const interactive = Boolean(onActivate) && !isCompanionObservanceId(item.id)
                 const highlighted = highlightedId === item.id
@@ -243,7 +266,7 @@ export function UpcomingObservancesStrip({
 
                 const cardClass = [
                   styles.card,
-                  styles[`kind_${item.kind}`],
+                  styles[`kind_${visualKind}`],
                   highlighted ? styles.cardActive : '',
                   summaryOpen ? styles.summaryOpen : '',
                   coarsePointer ? styles.cardTouchable : '',
@@ -300,13 +323,18 @@ export function UpcomingObservancesStrip({
                         fallbackSrc={fallbackThumb}
                         alt=""
                         className={styles.heroImg}
+                        fetchPriority="low"
+                        sizes="(max-width: 720px) 88vw, min(420px, 40vw)"
                       />
                       {dock}
                       {reveal}
                     </div>
                   ) : (
                     <div className={`${styles.visual} ${styles.visualPlaceholder}`}>
-                      <div className={`${styles.heroPlaceholder} ${styles[`ph_${item.kind}`]}`} aria-hidden>
+                      <div
+                        className={`${styles.heroPlaceholder} ${styles[`ph_${visualKind}`]}`}
+                        aria-hidden
+                      >
                         <span className={styles.phIcon}>✦</span>
                       </div>
                       {dock}

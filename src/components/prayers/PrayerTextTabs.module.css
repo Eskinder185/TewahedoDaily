@@ -13,7 +13,7 @@
   }
 
   .root {
-    margin: 0 calc(-1 * var(--space-2));
+    margin: 0;
     padding: 0 var(--space-2);
   }
 

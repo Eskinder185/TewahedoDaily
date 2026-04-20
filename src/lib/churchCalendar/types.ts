@@ -1,4 +1,7 @@
 import type { EthiopianDateParts } from '../ethiopianDate'
+import type { UpcomingObservanceUiKind } from '../../data/types/churchDay'
+
+export type { UpcomingObservanceUiKind }
 
 /**
  * Single source of truth for “Today in Church” + hero date lines.
@@ -32,7 +35,7 @@ export type UpcomingObservance = {
    * to this observance when the user selects it.
    */
   gregorianAnchorIso?: string
-  kind: 'feast' | 'fast' | 'commemoration'
+  kind: UpcomingObservanceUiKind
   scheduling?: ObservanceScheduling
   ruleSummary?: string
   relatedPrayerHint?: string
@@ -42,7 +45,8 @@ export type UpcomingObservance = {
 export type MovableObservanceOnDay = {
   id: string
   catalogEventId: string
-  scheduling: 'movable'
+  /** Paschal-cycle rows use `'movable'`; EOTC fixed/monthly highlights may use `'fixed'`. */
+  scheduling: 'movable' | 'fixed'
   title: string
   transliterationTitle?: string
   shortDescription: string

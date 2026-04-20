@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { buildChurchDaySnapshot } from '../../lib/churchCalendar'
+import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { ChurchDayDetailBody } from './ChurchDayDetailBody'
 import styles from './CalendarDayDetailModal.module.css'
 
@@ -13,6 +14,7 @@ type Props = {
 }
 
 export function CalendarDayDetailModal({ open, onClose, date, today }: Props) {
+  const t = useUiLabel()
   const panelRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -27,6 +29,12 @@ export function CalendarDayDetailModal({ open, onClose, date, today }: Props) {
   useEffect(() => {
     if (open) panelRef.current?.focus()
   }, [open])
+
+  useLayoutEffect(() => {
+    if (!open) return
+    const el = panelRef.current
+    if (el) el.scrollTop = 0
+  }, [open, date?.getTime()])
 
   const snapshot = useMemo(() => {
     if (!date) return null
@@ -63,8 +71,13 @@ export function CalendarDayDetailModal({ open, onClose, date, today }: Props) {
               <span lang="am">{snapshot.ethiopian.labelLong}</span>
             </p>
           </div>
-          <button type="button" className={styles.close} onClick={onClose}>
-            Close
+          <button
+            type="button"
+            className={styles.close}
+            onClick={onClose}
+            aria-label={t('dialogClose')}
+          >
+            {t('dialogClose')}
           </button>
         </header>
 

@@ -53,6 +53,55 @@
   gap: var(--space-3);
 }
 
+@media (max-width: 959.98px) {
+  .overviewStack {
+    gap: var(--space-4);
+  }
+
+  .overviewStack .liturgicalGuideHeader {
+    order: 1;
+  }
+
+  .overviewStack .dailyGuideSection {
+    order: 2;
+  }
+
+  .overviewStack .chipRow {
+    order: 3;
+  }
+
+  .overviewStack .movablePack {
+    order: 4;
+  }
+
+  .overviewStack .heroWrap {
+    order: 5;
+  }
+}
+
+@media (max-width: 959.98px) {
+  .wrapCalendarPageMobile {
+    gap: var(--space-5);
+  }
+
+  .wrapCalendarPageMobile .mobileSelect {
+    margin-bottom: var(--space-3);
+  }
+
+  .wrapCalendarPageMobile .overviewStackCalendarPage .heroWrap {
+    margin-top: var(--space-2);
+    max-height: min(9.25rem, 40vw);
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (min-width: 960px) {
+  .wrapCalendarPageMobile .overviewStackCalendarPage .heroWrap {
+    max-height: none;
+    aspect-ratio: 16 / 9;
+  }
+}
+
 .heroWrap {
   margin: 0;
   width: 100%;
@@ -586,4 +635,112 @@
 .seeMoreButton:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+
+/* EOTC calendar page overview: compact reference (primary story lives in SelectedChurchDayPanel) */
+.eotcOverviewSecondary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.eotcOverviewLead {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+.eotcRefDetails {
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-border) 88%, var(--color-gold-line));
+  background: color-mix(in srgb, var(--color-bg-muted) 40%, var(--color-bg-elevated));
+  padding: var(--space-2) var(--space-3);
+}
+
+.eotcRefDetails summary {
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-heading);
+  padding: var(--space-2) 0;
+}
+
+.eotcRefList {
+  margin: 0;
+  padding: 0 0 var(--space-2);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.eotcRefItem {
+  margin: 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+}
+
+.eotcRefItem:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.eotcRefItemTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2) var(--space-3);
+}
+
+.eotcRefBadge {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 45%, var(--color-border));
+  background: color-mix(in srgb, var(--color-bg-muted) 65%, var(--color-bg-elevated));
+}
+
+.eotcRefTitle {
+  flex: 1 1 10rem;
+  min-width: 0;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-heading);
+  line-height: var(--leading-snug);
+}
+
+.eotcRefMeta {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-xs);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}
+
+.eotcRefRelated {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-xs);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}
+
+.eotcMeta,
+.eotcRelated {
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}
+
+.eotcMetaLabel {
+  display: inline-block;
+  min-width: 5.5rem;
+  margin-right: var(--space-2);
+  font-weight: 700;
+  color: var(--color-heading);
 }

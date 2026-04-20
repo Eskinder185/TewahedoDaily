@@ -1,0 +1,52 @@
+{
+  "type": "calendar_index",
+  "version": "1.0.0",
+  "collections": [
+    {
+      "name": "fixed-feasts",
+      "file": "fixed-feasts.json",
+      "count": 8
+    },
+    {
+      "name": "paschal-cycle",
+      "file": "paschal-cycle.json",
+      "count": 9
+    },
+    {
+      "name": "fasts",
+      "file": "fasts.json",
+      "count": 4
+    },
+    {
+      "name": "mary",
+      "file": "mary.json",
+      "count": 5
+    },
+    {
+      "name": "angels",
+      "file": "angels.json",
+      "count": 4
+    },
+    {
+      "name": "major-saints",
+      "file": "major-saints.json",
+      "count": 6
+    },
+    {
+      "name": "monthly-commemorations",
+      "file": "monthly-commemorations.json",
+      "count": 6
+    },
+    {
+      "name": "weekly-observances",
+      "file": "weekly-observances.json",
+      "count": 4
+    },
+    {
+      "name": "liturgical-seasons",
+      "file": "liturgical-seasons.json",
+      "count": 3
+    }
+  ],
+  "totalEntries": 49
+}

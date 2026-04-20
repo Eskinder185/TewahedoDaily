@@ -1,0 +1,393 @@
+{
+  "type": "calendar_collection",
+  "name": "major-saints",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "saint-john-the-baptist",
+      "title": "ዮሐንስ መጥምቅ",
+      "transliterationTitle": "Yohannes Met'miq",
+      "englishTitle": "Saint John the Baptist",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Associated with New Year and various commemorations in Ethiopian tradition",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "saint",
+        "secondary": [
+          "forerunner"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Saint John the Baptist, the forerunner of the Lord.",
+        "panel": "Saint John the Baptist is remembered as the forerunner who prepared the way of the Lord.",
+        "whyItMatters": "He calls the faithful to repentance, purity, and readiness for Christ.",
+        "connection": "He connects the Church to prophecy, baptism, and preparation for the Messiah."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Reflection on repentance"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Major Saint",
+        "calendarColor": "brown",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Saint John the Baptist is remembered as the forerunner who prepared the way of the Lord.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "John the Baptist",
+        "Forerunner"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-george-major",
+      "title": "ቅዱስ ጊዮርጊስ",
+      "transliterationTitle": "Kidus Giorgis",
+      "englishTitle": "Saint George",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Miazia",
+        "ethiopianDay": 23,
+        "gregorianHint": "Traditional annual commemoration may vary by local usage",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "martyr",
+        "secondary": [
+          "martyr",
+          "major-saint"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Saint George, the victorious martyr and beloved intercessor.",
+        "panel": "Saint George is remembered for his courage, faithfulness, and victory in martyrdom.",
+        "whyItMatters": "His life strengthens believers in steadfast faith and holy courage.",
+        "connection": "He connects the faithful to martyrdom, spiritual victory, and bold witness to Christ."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Prayer",
+          "Martyr hymns"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 1,
+        "calendarBadge": "Major Saint",
+        "calendarColor": "red",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Saint George is remembered for his courage, faithfulness, and victory in martyrdom.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-george-monthly-23"
+        ]
+      },
+      "searchKeywords": [
+        "Saint George",
+        "Kidus Giorgis"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-tekle-haymanot-major",
+      "title": "አቡነ ተክለ ሃይማኖት",
+      "transliterationTitle": "Abune Tekle Haymanot",
+      "englishTitle": "Abune Tekle Haymanot",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Tahsas",
+        "ethiopianDay": 24,
+        "gregorianHint": "Usually January 2",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "saint",
+        "secondary": [
+          "ethiopian-saint",
+          "monastic"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Abune Tekle Haymanot, one of the greatest Ethiopian saints.",
+        "panel": "Abune Tekle Haymanot is honored as a great Ethiopian monk, teacher, and holy intercessor.",
+        "whyItMatters": "He is central to Ethiopian Orthodox memory for holiness, ascetic life, and spiritual labor.",
+        "connection": "He connects the faithful to Ethiopian monastic witness and steadfast devotion."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Prayer",
+          "Saint hymns"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 1,
+        "calendarBadge": "Major Ethiopian Saint",
+        "calendarColor": "brown",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Abune Tekle Haymanot is honored as a great Ethiopian monk, teacher, and holy intercessor.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-tekle-haymanot-monthly-24"
+        ]
+      },
+      "searchKeywords": [
+        "Tekle Haymanot",
+        "Abune Tekle Haymanot"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-yared-major",
+      "title": "ቅዱስ ያሬድ",
+      "transliterationTitle": "Kidus Yared",
+      "englishTitle": "Saint Yared",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Observed in Ethiopian Orthodox liturgical memory",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "saint",
+        "secondary": [
+          "ethiopian-saint",
+          "hymnographer"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Saint Yared, master of sacred chant and Ethiopian hymnography.",
+        "panel": "Saint Yared is honored for the gift of sacred chant and the shaping of Ethiopian liturgical music.",
+        "whyItMatters": "He is vital to the Church’s worship, hymn tradition, and devotional life.",
+        "connection": "He connects the faithful to praise, sacred music, and the beauty of worship."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Liturgy",
+          "Hymns",
+          "Praise"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Major Ethiopian Saint",
+        "calendarColor": "gold",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Saint Yared is honored for the gift of sacred chant and the shaping of Ethiopian liturgical music.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "Saint Yared",
+        "Hymnographer"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-stephen-major",
+      "title": "ቅዱስ እስጢፋኖስ",
+      "transliterationTitle": "Kidus Estifanos",
+      "englishTitle": "Saint Stephen",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Tir",
+        "ethiopianDay": 17,
+        "gregorianHint": "Usually January 25",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "martyr",
+        "secondary": [
+          "martyr"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Saint Stephen, the first martyr of the Church.",
+        "panel": "Saint Stephen is remembered as the protomartyr whose witness sealed the Gospel with blood.",
+        "whyItMatters": "He is an example of faith, forgiveness, and courage in suffering.",
+        "connection": "He connects the faithful to the early Church and the cost of witness to Christ."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Prayer",
+          "Martyr remembrance"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Major Saint",
+        "calendarColor": "red",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Saint Stephen is remembered as the protomartyr whose witness sealed the Gospel with blood.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "Stephen",
+        "Protomartyr"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-peter-and-paul",
+      "title": "ቅዱሳን ጴጥሮስ እና ጳውሎስ",
+      "transliterationTitle": "Petros ena Pawlos",
+      "englishTitle": "Saints Peter and Paul",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Hamle",
+        "ethiopianDay": 5,
+        "gregorianHint": "Usually July 12",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "apostle",
+        "secondary": [
+          "apostles"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Commemorates Saints Peter and Paul, pillars of apostolic witness.",
+        "panel": "Saints Peter and Paul are honored as chief apostles and enduring witnesses of the Gospel.",
+        "whyItMatters": "Their feast highlights apostolic mission, repentance, boldness, and faithful preaching.",
+        "connection": "They connect the faithful to apostolic succession, evangelism, and the life of the Church."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Apostolic hymns",
+          "Prayer for steadfast faith"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Apostolic Feast",
+        "calendarColor": "gold",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Saints Peter and Paul are honored as chief apostles and enduring witnesses of the Gospel.",
+        "notes": [],
+        "relatedEntries": [
+          "apostles-fast"
+        ]
+      },
+      "searchKeywords": [
+        "Peter and Paul",
+        "Apostles"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

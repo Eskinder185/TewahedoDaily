@@ -112,9 +112,34 @@ export function upcomingObservanceSortKey(item: UpcomingObservance, isCompanion:
   return Number.MAX_SAFE_INTEGER - 500_000
 }
 
+/** Collapse extended EOTC kinds onto the three visual buckets used by CSS. */
+export function upcomingObservanceVisualBucket(
+  kind: UpcomingObservance['kind'],
+): 'feast' | 'fast' | 'commemoration' {
+  if (kind === 'feast' || kind === 'season') return 'feast'
+  if (kind === 'fast' || kind === 'weekly') return 'fast'
+  return 'commemoration'
+}
+
 export function simpleObservanceKindLabel(kind: UpcomingObservance['kind']): string {
-  if (kind === 'commemoration') return 'Saint'
-  return kind === 'feast' ? 'Feast' : 'Fast'
+  switch (kind) {
+    case 'feast':
+      return 'Feast'
+    case 'season':
+      return 'Season'
+    case 'fast':
+    case 'weekly':
+      return 'Fast'
+    case 'marian':
+      return 'Mary'
+    case 'angel':
+      return 'Angel'
+    case 'saint':
+      return 'Saint'
+    case 'commemoration':
+    default:
+      return 'Saint'
+  }
 }
 
 export type ObservanceCardDates = {

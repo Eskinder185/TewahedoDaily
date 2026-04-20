@@ -33,7 +33,7 @@
 }
 
 .tab {
-  min-height: 2.5rem;
+  min-height: var(--tap-min);
   padding: var(--space-2) var(--space-5);
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
@@ -60,7 +60,14 @@
   border-color: var(--color-border-gold);
   color: var(--color-heading);
   background: color-mix(in srgb, var(--color-gold-soft) 50%, var(--color-bg-elevated));
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gold-line) 22%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-gold-line) 22%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--color-gold-line) 18%, transparent);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .carousel {
@@ -172,8 +179,10 @@
   top: 50%;
   transform: translateY(-50%);
   z-index: 3;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
   align-items: center;
   justify-content: center;
   border-radius: 999px;
@@ -201,8 +210,19 @@
   background: color-mix(in srgb, var(--color-gold-soft) 35%, var(--color-bg-elevated));
 }
 
+.navBtn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
 .navBtn:active {
   transform: translateY(-50%) scale(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navBtn:active {
+    transform: translateY(-50%);
+  }
 }
 
 .navPrev {
@@ -259,7 +279,8 @@
   border-color: var(--color-border-gold);
   box-shadow:
     var(--shadow-card),
-    0 0 0 1px color-mix(in srgb, var(--color-gold-line) 36%, transparent);
+    0 0 0 1px color-mix(in srgb, var(--color-gold-line) 36%, transparent),
+    0 0 0 4px color-mix(in srgb, var(--color-wine) 12%, transparent);
 }
 
 .summaryOpen {

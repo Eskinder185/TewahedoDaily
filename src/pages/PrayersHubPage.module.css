@@ -188,7 +188,7 @@
 }
 
 .primaryCta:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.99);
   filter: brightness(0.98);
 }
 
@@ -225,6 +225,12 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
+}
+
+@media (max-width: 639.98px) {
+  .quickRow {
+    gap: var(--space-3);
+  }
 }
 
 .quickLink,
@@ -583,7 +589,19 @@
 }
 
 .card:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.995);
+}
+
+@media (max-width: 639.98px) {
+  .card {
+    min-height: min(13.5rem, 42vh);
+    padding: var(--space-5) var(--space-4) var(--space-4);
+    gap: var(--space-4);
+  }
+
+  .pairGrid {
+    gap: var(--space-5);
+  }
 }
 
 .card:focus-visible {
@@ -705,7 +723,7 @@
   display: flex;
   align-items: center;
   min-height: var(--tap-min);
-  padding: 0.5rem 0.75rem;
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
   font-weight: 600;
   text-decoration: none;
@@ -714,11 +732,16 @@
   border: 1px solid var(--color-border-card);
   transition:
     background var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out);
+    border-color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .savedLink:hover {
   border-color: var(--color-border-gold);
+}
+
+.savedLink:active {
+  transform: scale(0.99);
 }
 
 .savedLink:focus-visible {
@@ -752,7 +775,8 @@
   .featured:hover,
   .featured:active,
   .card:hover,
-  .card:active {
+  .card:active,
+  .savedLink:active {
     transform: none;
   }
 }

@@ -1,0 +1,225 @@
+{
+  "type": "calendar_collection",
+  "name": "liturgical-seasons",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "zemene-tsige",
+      "title": "ዘመነ ጽጌ",
+      "transliterationTitle": "Zemene Tsigie",
+      "englishTitle": "Season of Flowers",
+      "date": {
+        "kind": "season",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Meskerem 26 to Hidar 5",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": {
+          "startFixed": {
+            "ethiopianMonth": "Meskerem",
+            "ethiopianDay": 26
+          },
+          "endFixed": {
+            "ethiopianMonth": "Hidar",
+            "ethiopianDay": 5
+          }
+        }
+      },
+      "category": {
+        "primary": "season",
+        "secondary": [
+          "holy-family",
+          "marian-devotion"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "A sacred season associated with the Flight to Egypt and the flowering of the land.",
+        "panel": "Zemene Tsige is the Season of Flowers, remembered with special hymns and devotion tied to the Holy Family’s journey.",
+        "whyItMatters": "It is a spiritually rich season of beauty, memory, and devotion in Ethiopian Orthodox worship.",
+        "connection": "It connects the faithful to the Flight to Egypt, Saint Mary’s endurance, and the blossoming beauty of divine grace."
+      },
+      "observance": {
+        "fastStatus": "season",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Mahlete Tsige hymns",
+          "Seasonal prayer",
+          "Sunday chants"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Liturgical Season",
+        "calendarColor": "green",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Zemene Tsige is the Season of Flowers, remembered with special hymns and devotion tied to the Holy Family’s journey.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "Zemene Tsige",
+        "Season of Flowers"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "bright-season-after-fasika",
+      "title": "ዘመነ ትንሣኤ",
+      "transliterationTitle": "Zemene Tinsae",
+      "englishTitle": "Bright Season after Fasika",
+      "date": {
+        "kind": "season",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "The 50 days after Fasika until Pentecost",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": {
+          "startAnchor": "fasika",
+          "startOffset": 0,
+          "endAnchor": "pentecost",
+          "endOffset": 0
+        }
+      },
+      "category": {
+        "primary": "season",
+        "secondary": [
+          "paschal-cycle",
+          "resurrection"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "The joyful season after the resurrection marked by Paschal celebration.",
+        "panel": "The Bright Season after Fasika is a time of resurrectional joy and the suspension of ordinary weekly fasting.",
+        "whyItMatters": "It extends the joy of the resurrection through liturgy, praise, and spiritual gladness.",
+        "connection": "It connects the faithful to the risen Lord and the triumph of life over death."
+      },
+      "observance": {
+        "fastStatus": "season",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Paschal hymns",
+          "Liturgy",
+          "Joyful celebration"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Paschal Season",
+        "calendarColor": "white",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "The Bright Season after Fasika is a time of resurrectional joy and the suspension of ordinary weekly fasting.",
+        "notes": [],
+        "relatedEntries": [
+          "fasika",
+          "pentecost"
+        ]
+      },
+      "searchKeywords": [
+        "Bright Season",
+        "Pascha Season"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "holy-week",
+      "title": "ሰሙነ ሕማማት",
+      "transliterationTitle": "Semune Himamat",
+      "englishTitle": "Holy Week",
+      "date": {
+        "kind": "season",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "The week between Hosanna and Fasika",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": {
+          "startAnchor": "hosanna",
+          "startOffset": 0,
+          "endAnchor": "fasika",
+          "endOffset": -1
+        }
+      },
+      "category": {
+        "primary": "season",
+        "secondary": [
+          "paschal-cycle",
+          "passion"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "The solemn week of Christ’s passion before the resurrection.",
+        "panel": "Holy Week gathers the faithful into the sufferings, betrayal, crucifixion, and burial of the Lord.",
+        "whyItMatters": "It is the deepest penitential and contemplative period of the year.",
+        "connection": "It connects the faithful to the passion of Christ and the path to resurrection."
+      },
+      "observance": {
+        "fastStatus": "season",
+        "liturgicalTone": "solemn",
+        "commonPractices": [
+          "Strict prayer",
+          "Fasting",
+          "Passion readings",
+          "Prostration"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Holy Week",
+        "calendarColor": "crimson",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Holy Week gathers the faithful into the sufferings, betrayal, crucifixion, and burial of the Lord.",
+        "notes": [],
+        "relatedEntries": [
+          "hosanna",
+          "good-friday",
+          "fasika"
+        ]
+      },
+      "searchKeywords": [
+        "Holy Week",
+        "Semune Himamat"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

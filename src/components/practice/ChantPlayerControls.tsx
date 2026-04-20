@@ -1,3 +1,4 @@
+import { useId } from 'react'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './ChantPlayerControls.module.css'
 
@@ -27,6 +28,8 @@ export function ChantPlayerControls({
   onSkipForward,
 }: ChantPlayerControlsProps) {
   const t = useUiLabel()
+  const volId = useId()
+  const speedLabelId = useId()
   return (
     <div className={styles.root}>
       <div className={styles.rowPrimary}>
@@ -35,7 +38,7 @@ export function ChantPlayerControls({
           className={styles.skip}
           disabled={disabled}
           onClick={onSkipBack}
-          aria-label="Back 5 seconds"
+          aria-label={t('chantSkipBack')}
         >
           −5s
         </button>
@@ -53,16 +56,17 @@ export function ChantPlayerControls({
           className={styles.skip}
           disabled={disabled}
           onClick={onSkipForward}
-          aria-label="Forward 5 seconds"
+          aria-label={t('chantSkipForward')}
         >
           +5s
         </button>
       </div>
 
       <div className={styles.row}>
-        <label className={styles.volLabel}>
+        <label className={styles.volLabel} htmlFor={volId}>
           <span className={styles.volText}>{t('volume')}</span>
           <input
+            id={volId}
             type="range"
             className={styles.volRange}
             min={0}
@@ -70,6 +74,7 @@ export function ChantPlayerControls({
             value={volume}
             disabled={disabled}
             onChange={(e) => onVolumeChange(Number(e.target.value))}
+            aria-label={t('volume')}
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={volume}
@@ -78,13 +83,13 @@ export function ChantPlayerControls({
       </div>
 
       <div className={styles.row}>
-        <span className={styles.rateLegend} id="speed-label">
+        <span className={styles.rateLegend} id={speedLabelId}>
           {t('speed')}
         </span>
         <div
           className={styles.rates}
           role="group"
-          aria-labelledby="speed-label"
+          aria-labelledby={speedLabelId}
         >
           {RATES.map((r) => (
             <button
@@ -93,6 +98,8 @@ export function ChantPlayerControls({
               className={`${styles.rateBtn} ${Math.abs(rate - r) < 0.01 ? styles.rateOn : ''}`}
               disabled={disabled}
               onClick={() => onRateChange(r)}
+              aria-pressed={Math.abs(rate - r) < 0.01}
+              aria-label={`${r === 1 ? '1×' : `${r}×`} ${t('speed')}`}
             >
               {r === 1 ? '1×' : `${r}×`}
             </button>

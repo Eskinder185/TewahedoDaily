@@ -30,6 +30,16 @@
   color: var(--color-text);
   letter-spacing: 0.01em;
   max-width: 42rem;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 767.98px) {
+  .prose {
+    font-size: clamp(1.0625rem, 3.2vw, 1.22rem);
+    line-height: 1.82;
+    max-width: none;
+  }
 }
 
 @media (min-width: 768px) {

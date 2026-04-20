@@ -42,6 +42,16 @@
   z-index: 1;
 }
 
+.seg:active {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seg:active {
+    transform: none;
+  }
+}
+
 .segOn {
   color: var(--color-navy-deep);
   background: linear-gradient(
@@ -62,9 +72,17 @@
   }
 }
 
+@media (max-width: 767.98px) {
+  .seg {
+    min-width: max(3rem, var(--tap-min));
+    padding-inline: var(--space-4);
+  }
+}
+
 @media (min-width: 768px) {
   .seg {
     min-height: 0;
+    min-width: 0;
     padding: var(--space-1) var(--space-3);
   }
 }

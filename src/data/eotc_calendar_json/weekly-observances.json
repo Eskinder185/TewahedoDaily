@@ -1,0 +1,268 @@
+{
+  "type": "calendar_collection",
+  "name": "weekly-observances",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "weekly-wednesday-fast",
+      "title": "ረቡዕ ጾም",
+      "transliterationTitle": "Rabue Tsom",
+      "englishTitle": "Wednesday Fast",
+      "date": {
+        "kind": "weekly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs every Wednesday except liturgical exceptions",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Wednesday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "weekly-observance",
+        "secondary": [
+          "fast",
+          "weekly-rhythm"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Weekly fast remembering the betrayal of Christ.",
+        "panel": "Wednesday is kept as a regular fast day in memory of the betrayal of the Lord.",
+        "whyItMatters": "It keeps the faithful in continual remembrance, repentance, and spiritual discipline.",
+        "connection": "It connects weekly Christian life to the suffering of Christ and the cost of salvation."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Fasting",
+          "Prayer",
+          "Repentance"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Weekly Fast",
+        "calendarColor": "gray",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Wednesday is kept as a regular fast day in memory of the betrayal of the Lord.",
+        "notes": [],
+        "relatedEntries": [
+          "weekly-friday-fast"
+        ]
+      },
+      "searchKeywords": [
+        "Wednesday Fast",
+        "Rabue"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "weekly-friday-fast",
+      "title": "ዓርብ ጾም",
+      "transliterationTitle": "Arb Tsom",
+      "englishTitle": "Friday Fast",
+      "date": {
+        "kind": "weekly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs every Friday except liturgical exceptions",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Friday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "weekly-observance",
+        "secondary": [
+          "fast",
+          "weekly-rhythm"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Weekly fast remembering the crucifixion of Christ.",
+        "panel": "Friday is kept as a regular fast day in memory of the crucifixion of the Lord.",
+        "whyItMatters": "It keeps the Cross and the price of salvation before the faithful every week.",
+        "connection": "It connects weekly Christian life to the passion of Christ and the mystery of redemption."
+      },
+      "observance": {
+        "fastStatus": "fast",
+        "liturgicalTone": "penitential",
+        "commonPractices": [
+          "Fasting",
+          "Prayer",
+          "Cross remembrance"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Weekly Fast",
+        "calendarColor": "gray",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Friday is kept as a regular fast day in memory of the crucifixion of the Lord.",
+        "notes": [],
+        "relatedEntries": [
+          "good-friday"
+        ]
+      },
+      "searchKeywords": [
+        "Friday Fast",
+        "Arb"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "weekly-sunday-resurrection",
+      "title": "እሑድ",
+      "transliterationTitle": "Ehud",
+      "englishTitle": "Sunday Resurrectional Observance",
+      "date": {
+        "kind": "weekly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs every Sunday",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Sunday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "weekly-observance",
+        "secondary": [
+          "resurrection",
+          "weekly-rhythm"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Weekly celebration of the resurrection of Christ.",
+        "panel": "Sunday is the Christian Sabbath and weekly resurrectional celebration in the life of the Church.",
+        "whyItMatters": "It is the weekly center of worship, joy, and Eucharistic gathering.",
+        "connection": "It connects the faithful every week to the resurrection and the life of the Church in Christ."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Liturgy",
+          "Eucharistic worship",
+          "Resurrection hymns"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 1,
+        "calendarBadge": "Weekly Feast",
+        "calendarColor": "white",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Sunday is the Christian Sabbath and weekly resurrectional celebration in the life of the Church.",
+        "notes": [],
+        "relatedEntries": [
+          "fasika"
+        ]
+      },
+      "searchKeywords": [
+        "Sunday",
+        "Resurrectional"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "weekly-saturday-sabbath",
+      "title": "ቅዳሜ",
+      "transliterationTitle": "Kidame",
+      "englishTitle": "Saturday Sabbath Observance",
+      "date": {
+        "kind": "weekly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs every Saturday",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Saturday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "weekly-observance",
+        "secondary": [
+          "weekly-rhythm",
+          "sabbath"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Weekly remembrance of the first Sabbath, honored alongside Sunday in Ethiopian Orthodox life.",
+        "panel": "Saturday is remembered as the first Sabbath and retains sacred meaning in Ethiopian Orthodox practice.",
+        "whyItMatters": "It reflects continuity with the holy rhythm of creation and rest before the resurrectional joy of Sunday.",
+        "connection": "It connects the faithful to sacred time, reverence, and the unique weekly rhythm of the Church."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy where appointed",
+          "Restful reverence"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 3,
+        "calendarBadge": "Weekly Sabbath",
+        "calendarColor": "gray",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Saturday is remembered as the first Sabbath and retains sacred meaning in Ethiopian Orthodox practice.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "Saturday",
+        "Kidame"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -20,6 +20,194 @@ export const UI_LABELS = {
   navModeLearnDesc: { en: 'Practice chants and movement', am: 'መዝሙርና እንቅስቃሴ ይለማመዱ' },
   navModePrayDesc: { en: 'Read daily prayers and sacred texts', am: 'የዕለት ጸሎቶችን እና ቅዱስ ንባብን ያንብቡ' },
   navModeKeepDayDesc: { en: 'Follow the season, feast, and observance', am: 'ወቅቱን፣ በዓሉን እና ማስታወሻውን ይከታተሉ' },
+  navPrimaryNav: { en: 'Primary navigation', am: 'ዋና አሻራ' },
+  navDrawerTitle: { en: 'Menu', am: 'ምናሌ' },
+  navMenuOpen: { en: 'Open menu', am: 'ምናሌ ክፈት' },
+  navMenuClose: { en: 'Close menu', am: 'ምናሌ ዝጋ' },
+  dialogClose: { en: 'Close', am: 'ዝጋ' },
+
+  langToggleGroup: { en: 'Language', am: 'ቋንቋ' },
+  langEnglishButton: { en: 'English', am: 'English' },
+  langAmharicButton: { en: 'Amharic', am: 'አማርኛ' },
+
+  calPrevMonth: { en: 'Previous month', am: 'ያለፈው ወር' },
+  calNextMonth: { en: 'Next month', am: 'ቀጣይ ወር' },
+  calendarGridRegion: { en: 'Month', am: 'ወር' },
+  calendarDayMarkersLegend: {
+    en: 'Legend for calendar day markers',
+    am: 'የቀን ምልክቶች መግለጫ',
+  },
+  calendarDaySelectedSuffix: { en: 'Selected.', am: 'ተመርጧል።' },
+  calendarSelectionAnnounce: {
+    en: 'Liturgical day updated',
+    am: 'የቤተክርስቲያን ቀን ተሻሽሏል',
+  },
+  calendarQuickContextAria: {
+    en: 'Liturgical context for this day',
+    am: 'ለዚህ ቀን የቤተክርስቲያን ዝርዝር',
+  },
+  calendarObservanceTagsAria: {
+    en: 'Observance tags for this day',
+    am: 'ለዚህ ቀን የአከባበር ምልክቶች',
+  },
+  calendarPreviousDay: { en: 'Previous day', am: 'ያለፈው ቀን' },
+  calendarNextDay: { en: 'Next day', am: 'ቀጣይ ቀን' },
+  /** Shown above the primary feast/saint title on the mobile calendar day panel */
+  calendarPanelCommemorationEyebrow: {
+    en: 'The Church remembers',
+    am: 'ቤተክርስቲያን የምታስበው',
+  },
+  calendarPanelConnectionHeading: {
+    en: 'How it connects',
+    am: 'ከምን ጋር ይገናኛል',
+  },
+  calendarPanelAlsoOnDayHeading: {
+    en: 'Also on this day',
+    am: 'በዚህ ቀን ደግሞ',
+  },
+  calendarPanelSecondaryExpandHint: {
+    en: 'Show grouped list',
+    am: 'ቡድን ዝርዝር አሳይ',
+  },
+  calendarPanelMetaObservance: { en: 'Observance', am: 'አከባበር' },
+  calendarPanelMetaCategory: { en: 'Category', am: 'ምድብ' },
+  calendarPanelCommonPractices: {
+    en: 'Common practices',
+    am: 'ተለመዱ ልምዶች',
+  },
+  calendarPanelObservanceMoreSummary: {
+    en: 'Tone, category, and context',
+    am: 'ድምፅ፣ ምድብና አውድ',
+  },
+  /** Group headings for additional EOTC rows (same tier shown together). */
+  calendarPanelGroupTier1: { en: 'Major feasts', am: 'ትላልቅ በዓላት' },
+  calendarPanelGroupTier2: { en: 'Major fasts', am: 'ትላልቅ ጾሞች' },
+  calendarPanelGroupTier3: { en: 'Marian days', am: 'የማርያም ቀናት' },
+  calendarPanelGroupTier4: { en: 'Saints, angels, and apostles', am: 'ቅዱሳን፣ መላእክትና ሐዋርያት' },
+  calendarPanelGroupTier5: { en: 'Other feasts and fixed days', am: 'ሌሎች በዓላትና ቋሚ ቀናት' },
+  calendarPanelGroupTier6: { en: 'Monthly commemorations', am: 'ወርሃዊ መታሰቢያዎች' },
+  calendarPanelGroupTier7: { en: 'Weekly rhythm', am: 'ሳምንታዊ ልምድ' },
+  calendarPanelGroupTier8: { en: 'Season context', am: 'የወቅት አውድ' },
+  calendarOverviewEotcTabLead: {
+    en: 'The panel above carries the main story for this civil day. Below is a compact reference for every dataset row.',
+    am: 'ለዚህ ሲቪል ቀን ዋናው ታሪክ ከላይ በፓነል ቀርቧል። ከታች ለሁሉም ረድፎች አጠቃላይ ማጣቀሻ ነው።',
+  },
+  calendarOverviewEotcRefSummary: {
+    en: 'All liturgical entries (reference)',
+    am: 'ሁሉም የቅዳሴ ግቤቶች (ማጣቀሻ)',
+  },
+  calendarMeaningMoreFromGuide: {
+    en: 'More from the daily church guide',
+    am: 'ከዕለታዊ የቤተክርስቲያን መመሪያ ተጨማሪ',
+  },
+
+  calendarEotcLookupSummary: {
+    en: 'Search liturgical observances',
+    am: 'የቅዳሴ መታሰቢያዎችን ፈልግ',
+  },
+  calendarEotcLookupPlaceholder: {
+    en: 'Title, English, transliteration, or keyword',
+    am: 'ርዕስ፣ እንግሊዝኛ፣ ድምፅ ወይም ቁልፍ ቃል',
+  },
+  calendarEotcLookupHint: {
+    en: 'Matches the calendar JSON: combine words (all must match) or pick a category filter.',
+    am: 'ከቀን መቁጠሪያ JSON ጋር ይዛመዳል፦ ቃላትን ያጣምሩ (ሁሉም ይገናኙ) ወይም የምድብ ማጣሪያ ይምረጡ።',
+  },
+  calendarEotcLookupNoResults: {
+    en: 'No entries match. Try fewer words or a different filter.',
+    am: 'የሚዛመድ ግቤት የለም። ያነሱ ቃሎች ወይም ሌላ ማጣሪያ ይሞክሩ።',
+  },
+  calendarEotcLookupIdle: {
+    en: 'Type a search or choose a category to see matching observances.',
+    am: 'ለማየት ፍለጋ ይተይቡ ወይም ምድብ ይምረጡ።',
+  },
+  calendarEotcLookupResultsAria: {
+    en: 'Search results',
+    am: 'የፍለጋ ውጤቶች',
+  },
+  calendarEotcLookupFiltersAria: {
+    en: 'Category filters',
+    am: 'የምድብ ማጣሪያዎች',
+  },
+  calendarEotcFilterMajorFeast: { en: 'Major feasts', am: 'ትላልቅ በዓላት' },
+  calendarEotcFilterFast: { en: 'Fasts', am: 'ጾሞች' },
+  calendarEotcFilterMary: { en: 'Marian', am: 'ማርያም' },
+  calendarEotcFilterAngel: { en: 'Angels', am: 'መላእክት' },
+  calendarEotcFilterSaint: { en: 'Saints & martyrs', am: 'ቅዱሳን' },
+  calendarEotcFilterSeason: { en: 'Seasons', am: 'ወቅቶች' },
+  calendarEotcFilterWeeklyObservance: { en: 'Weekly', am: 'ሳምንታዊ' },
+  calendarEotcLookupCollection: {
+    en: 'Collection',
+    am: 'ስብስብ',
+  },
+
+  calendarGalleryTitle: {
+    en: 'Browse the liturgical year',
+    am: 'የቤተክርስቲያን ዓመት ያስሱ',
+  },
+  calendarGalleryDeck: {
+    en:
+      'Every feast, fast, and commemoration from the Ethiopian Orthodox calendar dataset — open any card for full detail, or jump to its next day on the calendar.',
+    am: 'ከኢ.ኦ.ክ. የቀን መቁጠሪያ ውሂብ የተወሰኑ በዓላት፣ ጾሞች እና ማስታወሻዎች — ለሙሉ ዝርዝር ካርድ ይክፈቱ ወይም ወደ ቀኑ በቀን መቁጠሪያ ይዝለሉ።',
+  },
+  calendarGallerySearchPlaceholder: {
+    en: 'Search by title, English, transliteration, keyword…',
+    am: 'በርዕስ፣ እንግሊዝኛ፣ ድምፅ ወይም ቁልፍ ቃል ይፈልጉ…',
+  },
+  calendarGalleryFilterAria: {
+    en: 'Filter observances by category',
+    am: 'በምድብ መታሰቢያዎችን ያጣሩ',
+  },
+  calendarGalleryFilterAll: { en: 'All types', am: 'ሁሉም አይነቶች' },
+  calendarGallerySectionFeatured: {
+    en: 'Featured holy days',
+    am: 'የተመረጡ ቅድስት ቀኖች',
+  },
+  calendarGalleryViewAll: { en: 'View all in category', am: 'ሁሉን በምድብ ይመልከቱ' },
+  calendarGalleryLoadMore: { en: 'Load more', am: 'ተጨማሪ ጫን' },
+  calendarGalleryEmpty: {
+    en: 'No observances match. Try clearing filters or fewer search words.',
+    am: 'የሚዛመድ መታሰቢያ የለም። ማጣሪያዎችን ያጥፉ ወይም የፍለጋ ቃላትን ይቀንሱ።',
+  },
+  calendarGalleryShowing: { en: 'Showing', am: 'በማሳየት ላይ' },
+  calendarGalleryBucketMajorFeast: { en: 'Major feasts', am: 'ትላልቅ በዓላት' },
+  calendarGalleryBucketMinorFeast: { en: 'Minor feasts', am: 'አነስተኛ በዓላት' },
+  calendarGalleryBucketMovable: { en: 'Movable (Paschal)', am: 'አንቀሳቃሽ (ፋሲካ)' },
+  calendarGalleryBucketFast: { en: 'Fasts', am: 'ጾሞች' },
+  calendarGalleryBucketMary: { en: 'Saint Mary', am: 'ኅይወት ማርያም' },
+  calendarGalleryBucketAngel: { en: 'Angels', am: 'መላእክት' },
+  calendarGalleryBucketApostle: { en: 'Apostles', am: 'ሐዋርያት' },
+  calendarGalleryBucketMartyr: { en: 'Martyrs', am: 'ሰማዕታት' },
+  calendarGalleryBucketProphet: { en: 'Prophets', am: 'ነቢያት' },
+  calendarGalleryBucketSaint: { en: 'Saints', am: 'ቅዱሳን' },
+  calendarGalleryBucketWeeklyObservance: {
+    en: 'Weekly observances',
+    am: 'ሳምንታዊ መታሰቢያዎች',
+  },
+  calendarGalleryBucketSeason: { en: 'Seasons', am: 'ወቅቶች' },
+  calendarGalleryDetailWhy: { en: 'Why it matters', am: 'ለምን እንደሚያስፈልግ' },
+  calendarGalleryDetailConnection: {
+    en: 'Connection to the Church',
+    am: 'ከቤተ ክርስቲያን ጋር ግንኙነት',
+  },
+  calendarGalleryDetailMore: { en: 'Read more', am: 'ተጨማሪ ያንብቡ' },
+  calendarGalleryDetailPractices: {
+    en: 'Common practices',
+    am: 'ተለመዱ ልምዶች',
+  },
+  calendarGalleryDetailNotes: { en: 'Notes', am: 'ማስታወሻዎች' },
+  calendarGalleryDetailRelated: { en: 'Related observances', am: 'የተያያዙ መታሰቢያዎች' },
+  calendarGalleryShowOnCalendar: {
+    en: 'Show next on calendar',
+    am: 'ቀጣዩን በቀን መቁጠሪያ ላይ አሳይ',
+  },
+  calendarGalleryNoResolvedDay: {
+    en: 'No computable civil day in the next window — still keep this observance in prayer with your parish books.',
+    am: 'በቀጣዩ መስኮት ውስጥ የሚታሰብ ክሪሎስ ቀን የለም — ከቤተክርስቲያን መጽሐፍት ጋር በጸሎት ይያዙ።',
+  },
+
+  chantSkipBack: { en: 'Rewind 5 seconds', am: '5 ሰከንድ ወደ ኋላ' },
+  chantSkipForward: { en: 'Forward 5 seconds', am: '5 ሰከንድ ወደ ፊት' },
 
   themeSwitcherGroup: { en: 'Theme', am: 'መልክ' },
   themeSegLight: { en: 'Light', am: 'ብርሃን' },
@@ -285,9 +473,21 @@ export const UI_LABELS = {
     am: 'የመዝሙር ትምህርት ክፍሎች',
   },
   practiceChantTabMemorize: { en: 'Memorize', am: 'አስታውስ' },
+  practiceChantNowPlaying: {
+    en: 'Now practicing',
+    am: 'አሁን በልምምድ',
+  },
+  practicePlayerRegionAria: {
+    en: 'Video and playback',
+    am: 'ቪዲዮ እና ማጫወቻ',
+  },
+  practiceChantVideoLandmark: {
+    en: 'Video player',
+    am: 'የቪዲዮ ማጫወቻ',
+  },
 
   prayerReaderTabsAria: {
-    en: 'Prayer text sections',
+    en: 'Prayer reading: language, summary, and notes',
     am: 'የጸሎት ክፍሎች',
   },
   prayerTabSummary: { en: 'Summary', am: 'ማጠቃለያ' },
@@ -525,6 +725,7 @@ export const UI_LABELS = {
 
   // Loop practice
   loopLegend: { en: 'Loop practice', am: 'የዙር ልምምድ' },
+  loopSectionNameLabel: { en: 'Saved loop name', am: 'የተቀመጠ ዙር ስም' },
   markStart: { en: 'Mark start', am: 'መጀመሪያ ምልክት አድርግ' },
   markEnd: { en: 'Mark end', am: 'መጨረሻ ምልክት አድርግ' },
   playLoop: { en: 'Play loop', am: 'ዙር አጫውት' },

@@ -6,6 +6,7 @@ import type { UiLabelKey } from '../lib/i18n/uiLabels'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import type { PrayerHubRoute } from '../lib/prayers/prayerHubActivity'
 import { recordPrayerHubVisit } from '../lib/prayers/prayerHubActivity'
+import { scrollElementNodeIntoView } from '../lib/scrollUtils'
 import styles from './PrayersHubPage.module.css'
 
 const ROUTE_TITLE: Record<PrayerHubRoute, UiLabelKey> = {
@@ -21,9 +22,7 @@ function routeTitle(t: (k: UiLabelKey) => string, path: PrayerHubRoute) {
 }
 
 function scrollToEl(el: HTMLElement | null) {
-  if (!el) return
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' })
+  scrollElementNodeIntoView(el, { block: 'start' })
 }
 
 export function PrayersHubPage() {
@@ -274,7 +273,7 @@ export function PrayersHubPage() {
           {t('prayerHubSavedHeading')}
         </h2>
         {saved.length > 0 ? (
-          <ul className={styles.savedList}>
+          <ul className={styles.savedList} aria-labelledby="hub-saved-heading">
             {saved.map((path) => (
               <li key={path}>
                 <Link

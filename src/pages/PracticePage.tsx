@@ -1,20 +1,21 @@
-import { lazy, Suspense, useEffect, useMemo } from 'react'
+import { lazy, Suspense, useEffect, useLayoutEffect, useMemo } from 'react'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { Disclosure } from '../components/ui/Disclosure'
 import { TabPanel } from '../components/ui/TabPanel'
 import type { TabItem } from '../components/ui/TabPanel'
+import { scrollTargetIntoView } from '../lib/scrollUtils'
 import styles from './PracticePage.module.css'
 
 // Lazy load heavy practice components
 const ChantsSection = lazy(() => import('../components/practice/ChantsSection').then(m => ({ default: m.ChantsSection })))
 const InstrumentsSection = lazy(() => import('../components/practice/InstrumentsSection').then(m => ({ default: m.InstrumentsSection })))
 
-// Simple loading fallback for practice components
+// Reserves vertical space so the tab panel does not jump when lazy chunks mount.
 function PracticeSectionFallback() {
   return (
-    <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--color-text-dim)' }}>
+    <div className={styles.lazyPanelFallback} role="status" aria-live="polite">
       Loading practice content...
     </div>
   )
@@ -53,6 +54,10 @@ export function PracticePage() {
   const setSelectedId = (id: string) => {
     navigate({ pathname: '/practice', hash: id }, { replace: true })
   }
+
+  useLayoutEffect(() => {
+    scrollTargetIntoView('#practice-hub-anchor', { smooth: false })
+  }, [selectedId])
 
   const tabs: TabItem[] = useMemo(
     () => [
@@ -115,7 +120,7 @@ export function PracticePage() {
           </div>
         </header>
 
-        <div className={styles.tabRegion}>
+        <div className={styles.tabRegion} id="practice-hub-anchor">
           <p className={styles.tabRegionLabel} id="practice-tabs-intro">
             {t('practiceTabRegionLabel')}
           </p>

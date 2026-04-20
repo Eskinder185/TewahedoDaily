@@ -22,24 +22,33 @@
 
 .navBtn {
   flex-shrink: 0;
-  width: 2rem;
-  height: 2rem;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
   padding: 0;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   background: var(--color-bg-elevated);
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
   color: var(--color-heading);
+  box-shadow: var(--shadow-card);
   transition:
     background var(--duration-fast) var(--ease-out),
-    border-color var(--duration-fast) var(--ease-out);
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
 .navBtn:hover {
   border-color: var(--color-border-gold);
   background: color-mix(in srgb, var(--color-gold-faint) 55%, var(--color-bg-elevated));
+}
+
+.navBtn:active {
+  transform: scale(0.97);
 }
 
 .navBtn:focus-visible {
@@ -58,33 +67,138 @@
 }
 
 .legend {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  letter-spacing: 0.06em;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2) var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-text-muted);
+  max-width: 100%;
 }
 
-@media (max-width: 639.98px) {
+@media (min-width: 400px) {
   .legend {
-    font-size: var(--text-sm);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-2) var(--space-2);
+    font-size: 0.62rem;
   }
 }
 
-.dot {
-  width: 7px;
-  height: 7px;
+@media (min-width: 520px) {
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-2) var(--space-3);
+    font-size: var(--text-xs);
+    max-width: none;
+  }
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legendCue {
+  display: inline-block;
+  width: 0.72rem;
+  height: 0.72rem;
+  flex-shrink: 0;
+  border-radius: 1px;
+}
+
+@media (min-width: 400px) {
+  .legendCue {
+    width: 0.65rem;
+    height: 0.65rem;
+  }
+}
+
+.cueMajorFeast {
+  width: 0.85rem;
+  height: 0.48rem;
+  border-radius: 2px 2px 1px 1px;
+  background: linear-gradient(180deg, var(--color-gold-bright), var(--color-gold-line));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gold-soft) 75%, transparent);
+}
+
+.cueFeast {
+  border-radius: 0 0 2px 2px;
+  height: 0.45rem;
+  background: var(--color-gold-line);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gold-soft) 80%, transparent);
+}
+
+.cueMary {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 1px;
+  border: 1px solid color-mix(in srgb, var(--color-sky-deep) 55%, var(--color-border));
+  border-bottom-width: 3px;
+  border-bottom-style: double;
+  background: transparent;
+}
+
+.cueRecurring {
+  width: 0.8rem;
+  height: 4px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow:
+    -4px 0 0 0 color-mix(in srgb, var(--color-heading) 42%, var(--color-border)),
+    4px 0 0 0 color-mix(in srgb, var(--color-heading) 42%, var(--color-border));
+}
+
+.cueMovable {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  background: color-mix(in srgb, var(--color-wine) 75%, var(--color-gold-line));
+}
+
+.cueFast {
+  width: 0.35rem;
+  border-radius: 1px;
+  background: var(--color-wine-deep);
+}
+
+.cueSaint {
   border-radius: 50%;
-  background: var(--color-gold);
-  box-shadow: 0 0 0 3px var(--color-gold-soft);
+  border: 2px solid color-mix(in srgb, var(--color-heading) 55%, var(--color-border));
+  background: transparent;
+}
+
+.cueSeason {
+  height: 2px;
+  width: 0.75rem;
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--color-sky-deep) 45%, var(--color-border));
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .weekdays {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 2px;
   font-size: var(--text-xs);
   font-weight: 700;
@@ -106,13 +220,46 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: clamp(4px, 1.2vw, 8px);
 }
 
 @media (max-width: 639.98px) {
   .grid {
-    gap: var(--space-2);
+    gap: clamp(6px, 1.8vw, 10px);
+  }
+}
+
+@media (max-width: 959.98px) {
+  .wrap {
+    gap: var(--space-4);
+  }
+
+  .cell,
+  .cellEmpty {
+    min-height: max(3.125rem, var(--tap-min));
+    font-size: var(--text-base);
+  }
+
+  .monthRow {
+    gap: var(--space-3);
+  }
+
+  .selected:not(.today) {
+    outline-width: 3px;
+    outline-offset: 2px;
+    box-shadow:
+      0 10px 26px rgba(22, 38, 58, 0.12),
+      0 0 0 1px color-mix(in srgb, var(--color-gold-line) 42%, transparent);
+  }
+
+  .selected .num {
+    font-weight: 800;
+  }
+
+  .legend {
+    font-weight: 800;
+    color: var(--color-text-subtle);
   }
 }
 
@@ -121,6 +268,7 @@
   aspect-ratio: 1;
   border-radius: var(--radius-sm);
   min-width: 0;
+  min-height: 2.75rem;
 }
 
 .cellEmpty {
@@ -136,6 +284,7 @@
   font-weight: 600;
   font-family: inherit;
   color: var(--color-text-muted);
+  touch-action: manipulation;
   background: linear-gradient(
     165deg,
     color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-sky-faint)) 0%,
@@ -149,12 +298,63 @@
     background var(--duration-med) var(--ease-out);
 }
 
+.hasMark:not(.today) {
+  border-color: color-mix(in srgb, var(--color-border-gold) 35%, var(--color-border));
+}
+
+/* Borders (not only color): shapes read apart from palette and survive hover shadow. */
+.markMajorFeast:not(.today) {
+  border-bottom: 4px solid var(--color-border-gold);
+}
+
+.markFeast:not(.today) {
+  border-bottom: 3px solid var(--color-border-gold);
+}
+
+.markMary:not(.today) {
+  border-bottom: 3px double color-mix(in srgb, var(--color-sky-deep) 48%, var(--color-border-gold));
+}
+
+.markRecurring:not(.today) {
+  border-top: 2px dotted color-mix(in srgb, var(--color-heading) 32%, var(--color-border));
+}
+
+.markMovable:not(.today) {
+  border-bottom: 3px solid color-mix(in srgb, var(--color-wine) 72%, var(--color-border-gold));
+}
+
+.markFast:not(.today) {
+  border-left: 3px solid color-mix(in srgb, var(--color-wine-deep) 88%, transparent);
+}
+
+.markSaint:not(.today) {
+  border-bottom: 2px dashed color-mix(in srgb, var(--color-heading) 50%, var(--color-border));
+}
+
+.markSeason:not(.today) {
+  border-bottom: 2px solid color-mix(in srgb, var(--color-sky-deep) 42%, var(--color-border));
+}
+
+.markMajorFeast.alsoFast:not(.today),
+.markFeast.alsoFast:not(.today),
+.markMary.alsoFast:not(.today),
+.markMovable.alsoFast:not(.today),
+.markRecurring.alsoFast:not(.today),
+.markSaint.alsoFast:not(.today),
+.markSeason.alsoFast:not(.today) {
+  border-left: 3px solid color-mix(in srgb, var(--color-wine-deep) 78%, transparent);
+}
+
 .cell:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--color-gold) 52%, var(--color-border));
   box-shadow:
     0 8px 22px rgba(22, 38, 58, 0.09),
     0 0 0 1px color-mix(in srgb, var(--color-gold-line) 35%, transparent);
+}
+
+.cell:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .selected:not(.today) {
@@ -199,7 +399,7 @@
   border-color: transparent;
 }
 
-.marked:not(.today)::after {
+.markedLegacy:not(.today)::after {
   content: '';
   position: absolute;
   bottom: 5px;
@@ -207,6 +407,105 @@
   height: 5px;
   border-radius: 50%;
   background: var(--color-gold);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-gold-soft) 90%, transparent);
+}
+
+/* Visible liturgical cue under the date (pairs with border accents). */
+.markMajorFeast:not(.today)::after,
+.markFeast:not(.today)::after,
+.markMary:not(.today)::after,
+.markRecurring:not(.today)::after,
+.markMovable:not(.today)::after,
+.markFast:not(.today)::after,
+.markSaint:not(.today)::after,
+.markSeason:not(.today)::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  width: 6px;
+  height: 5px;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.markMajorFeast:not(.today)::after {
+  width: 8px;
+  height: 6px;
+  border-radius: 2px 2px 1px 1px;
+  background: linear-gradient(180deg, var(--color-gold-bright), var(--color-gold));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gold-soft) 85%, transparent);
+}
+
+.markFeast:not(.today)::after {
+  background: linear-gradient(180deg, var(--color-gold-bright), var(--color-gold));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gold-soft) 85%, transparent);
+}
+
+.markMary:not(.today)::after {
+  width: 11px;
+  height: 3px;
+  border-radius: 1px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-sky-deep) 62%, var(--color-border)) 0 38%,
+    transparent 38% 62%,
+    color-mix(in srgb, var(--color-sky-deep) 62%, var(--color-border)) 62% 100%
+  );
+}
+
+.markRecurring:not(.today)::after {
+  width: 12px;
+  height: 4px;
+  border-radius: 99px;
+  background: transparent;
+  box-shadow:
+    -4px 0 0 0 color-mix(in srgb, var(--color-heading) 44%, var(--color-border)),
+    4px 0 0 0 color-mix(in srgb, var(--color-heading) 44%, var(--color-border));
+}
+
+.markMovable:not(.today)::after {
+  width: 5px;
+  height: 5px;
+  border-radius: 1px;
+  transform: translateX(-50%) rotate(45deg);
+  background: color-mix(in srgb, var(--color-navy) 82%, var(--color-gold) 18%);
+}
+
+.markFast:not(.today)::after {
+  width: 4px;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--color-wine-deep);
+}
+
+.markSaint:not(.today)::after {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--color-heading) 38%, var(--color-gold));
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.markSeason:not(.today)::after {
+  width: 10px;
+  height: 3px;
+  border-radius: 1px;
+  background: color-mix(in srgb, var(--color-sky-deep) 55%, var(--color-border));
+}
+
+.cell.selected {
+  position: relative;
+  z-index: 1;
+}
+
+.today.selected {
+  box-shadow:
+    0 0 0 2px color-mix(in srgb, var(--color-gold-bright) 88%, transparent),
+    0 12px 30px rgba(22, 48, 78, 0.36),
+    0 0 0 1px color-mix(in srgb, var(--color-gold-line) 45%, transparent);
 }
 
 .num {
@@ -230,7 +529,12 @@
     transition: none;
   }
 
-  .cell:hover {
+  .cell:hover,
+  .cell:active {
+    transform: none;
+  }
+
+  .navBtn:active {
     transform: none;
   }
 

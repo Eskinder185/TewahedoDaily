@@ -8,17 +8,19 @@ import {
   formatGregorianLong,
   formatWeekdayLong,
 } from '../../lib/churchCalendar/formatters'
-import type { DailyChurchData, UpcomingObservanceEntry } from '../types/churchDay'
+import type { DailyChurchData, MovableObservanceOnDay } from '../types/churchDay'
 import { toGregorianIsoDate } from '../utils/gregorianIso'
 import calendarBundle from '../calendarEvents.json'
 import liturgical from '../todayInChurch.json'
-import {
-  buildPaschalUpcomingEntries,
-  markedGregorianDaysForMonth,
-  movableObservancesOnGregorianDay,
-} from '../../lib/churchCalendar/movablePaschalObservances'
+import { movableObservancesOnGregorianDay } from '../../lib/churchCalendar/movablePaschalObservances'
 import { addDays, resolvePaschaGregorianDate } from '../../lib/churchCalendar/pascha'
-import { parseGregorianAnchorIso } from '../../lib/churchCalendar/upcomingObservanceDisplay'
+import { mergeEotcIntoDailyChurch } from '../../lib/eotcCalendar/mergeEotcIntoDailyChurch'
+import { buildUpcomingObservancesFromEotc } from '../../lib/eotcCalendar/buildUpcomingObservancesFromEotc'
+import { eotcDatasetRowToMovableObservanceOnDay } from '../../lib/eotcCalendar/eotcMovableObservanceFromRow'
+import { mapEotcDatasetRowToObservanceTypes } from '../../lib/eotcCalendar/eotcObservanceUiMapping'
+import { sortEotcEntriesForCalendarPanel } from '../../lib/eotcCalendar/eotcCalendarPanelOrdering'
+import { getEntriesForDate } from '../../lib/eotcCalendar/eotcDateResolution'
+import type { EotcCalendarDatasetRow } from '../../lib/eotcCalendar/eotcTypes'
 
 type MockCommemorationKey = `${number}-${number}`
 
@@ -217,125 +219,41 @@ function resolveSeason(ethMonth: number): DailyChurchData['season'] {
   }
 }
 
-/** Observances whose civil anchors are derived from the Fasika table (not duplicated from static rows). */
-const PASCHA_DRIVEN_IDS = new Set([
-  'abiy-tsom',
-  'hosanna',
-  'semune-himamat',
-  'siqlet',
-  'fasika',
-  'damawi-tensae',
-  'erget',
-  'peraklitos',
-])
-
-function upcomingFromCatalog(
-  d: Date,
-  _eth: EthiopianDateParts,
-  eventById: Map<string, CatalogEvent>,
-): UpcomingObservanceEntry[] {
-  const toEntry = (
-    id: string,
-    kind: UpcomingObservanceEntry['kind'],
-    dateEth: string,
-    dateGreg?: string,
-    gregorianAnchorIso?: string,
-  ): UpcomingObservanceEntry | null => {
-    const ev = eventById.get(id)
-    if (!ev) return null
-    return {
-      id: ev.id,
-      title: ev.title,
-      transliterationTitle: ev.transliterationTitle,
-      shortDescription: ev.shortDescription,
-      meaning: ev.meaning,
-      observance: ev.observance,
-      kind,
-      dateEthiopian: dateEth,
-      dateGregorian: dateGreg,
-      gregorianAnchorIso,
-    }
+function overlayCommemorationWithEotcPrimary(
+  base: ReturnType<typeof mergeCommemoration>,
+  primary: EotcCalendarDatasetRow,
+): ReturnType<typeof mergeCommemoration> {
+  const e = primary.entry
+  const practices = e.observance.commonPractices.filter(Boolean)
+  return {
+    ...base,
+    feast: e.englishTitle?.trim() || e.title,
+    transliterationTitle: e.transliterationTitle ?? base.transliterationTitle,
+    observanceType: mapEotcDatasetRowToObservanceTypes(primary) as any,
+    summary: e.summary.panel?.trim() || e.summary.short || base.summary,
+    significance: e.summary.whyItMatters || base.significance,
+    practicalGuidance: practices.join(' · ') || base.practicalGuidance,
+    shortDescription: e.summary.short || base.shortDescription,
+    meaning: e.summary.whyItMatters || base.meaning,
+    observance: practices.join(', ') || base.observance,
+    longMeaning:
+      [e.summary.panel, e.content.extended, ...e.content.notes]
+        .filter(Boolean)
+        .join('\n\n')
+        .trim() || base.longMeaning,
+    catalogEventId: e.id,
   }
-  const list: UpcomingObservanceEntry[] = []
-  const push = (e: UpcomingObservanceEntry | null) => {
-    if (e) list.push(e)
-  }
-
-  /** Illustrative civil anchors for UI navigation — confirm yearly with parish books. */
-  const rows: Array<{
-    id: string
-    kind: UpcomingObservanceEntry['kind']
-    dateEth: string
-    dateGreg?: string
-    iso?: string
-  }> = [
-    { id: 'gena', kind: 'feast', dateEth: 'Tahsas 29 (approx.)', dateGreg: 'Jan 7 — confirm', iso: '2026-01-07' },
-    { id: 'timket', kind: 'feast', dateEth: 'Tir 11 (approx.)', dateGreg: 'Near Jan 19 — confirm', iso: '2026-01-19' },
-    { id: 'nineveh-fast', kind: 'fast', dateEth: 'Yakatit (3 days; movable)', dateGreg: 'Before Great Lent', iso: '2026-02-02' },
-    { id: 'debre-zeit', kind: 'feast', dateEth: 'Megabit (approx.)', dateGreg: 'Spring — confirm', iso: '2026-04-02' },
-    { id: 'tsome-hawaryat', kind: 'fast', dateEth: 'Before apostles’ feast', dateGreg: 'Summer — confirm', iso: '2026-06-15' },
-    { id: 'beale-selassie', kind: 'commemoration', dateEth: 'Monthly Trinity', dateGreg: 'Each month — confirm', iso: '2026-06-01' },
-    { id: 'righteous-remembrance', kind: 'commemoration', dateEth: 'Senkessar cycle', dateGreg: 'Varies', iso: '2026-07-20' },
-    { id: 'debre-tabor', kind: 'feast', dateEth: 'Nehasse 13 (approx.)', dateGreg: 'Aug — confirm', iso: '2026-08-19' },
-    { id: 'filseta', kind: 'feast', dateEth: 'Nehasse 16 (approx.)', dateGreg: 'Late Aug — confirm', iso: '2026-08-22' },
-    { id: 'meskel', kind: 'feast', dateEth: 'Meskerem 17', dateGreg: 'Sep 26 — confirm', iso: '2026-09-27' },
-    { id: 'pagumen', kind: 'commemoration', dateEth: 'Pagumen days', dateGreg: 'Before Enkutatash — confirm', iso: '2026-09-10' },
-    { id: 'enkutatash', kind: 'feast', dateEth: 'Meskerem 1', dateGreg: 'Sep 11 — confirm', iso: '2026-09-11' },
-    { id: 'tsige', kind: 'feast', dateEth: 'Feast of the Cross (annual)', dateGreg: 'Sep — confirm', iso: '2026-09-14' },
-    { id: 'tsome-nebiyat', kind: 'fast', dateEth: 'Hedar–Tahsas window', dateGreg: 'Before Gena — confirm', iso: '2026-11-25' },
-    { id: 'nativity-fast', kind: 'fast', dateEth: 'Advent fast', dateGreg: 'Before Gena — confirm', iso: '2026-11-28' },
-    { id: 'beale-michael', kind: 'commemoration', dateEth: 'Monthly Michael', dateGreg: 'Each month — confirm', iso: '2026-04-29' },
-    { id: 'beale-gabriel', kind: 'commemoration', dateEth: 'Monthly Gabriel', dateGreg: 'Each month — confirm', iso: '2026-05-06' },
-    { id: 'beale-maryam', kind: 'commemoration', dateEth: 'Monthly Marian feast', dateGreg: 'Each month — confirm', iso: '2026-04-21' },
-    { id: 'lideta-maryam', kind: 'feast', dateEth: 'Tahsas 21', dateGreg: 'Dec 30 — confirm', iso: '2026-12-30' },
-    { id: 'abune-teklehaymanot', kind: 'commemoration', dateEth: 'Senkessar date', dateGreg: 'Dec — confirm', iso: '2026-12-17' },
-    {
-      id: 'daily-senksar-commemoration',
-      kind: 'commemoration',
-      dateEth: 'Each day in synaxarium',
-      dateGreg: 'Today’s saint — confirm',
-      iso: '2026-04-18',
-    },
-  ]
-
-  for (const r of rows) {
-    if (PASCHA_DRIVEN_IDS.has(r.id)) continue
-    push(toEntry(r.id, r.kind, r.dateEth, r.dateGreg, r.iso))
-  }
-
-  const y = d.getFullYear()
-  const paschal = buildPaschalUpcomingEntries(y, eventById)
-  const byId = new Map<string, UpcomingObservanceEntry>()
-  for (const p of paschal) {
-    byId.set(p.id, { ...p, scheduling: 'movable' })
-  }
-  for (const x of list) {
-    if (!byId.has(x.id)) byId.set(x.id, { ...x, scheduling: 'fixed' })
-  }
-
-  const merged = [...byId.values()]
-  merged.sort((a, b) => {
-    const ta = a.gregorianAnchorIso
-      ? parseGregorianAnchorIso(a.gregorianAnchorIso)?.getTime() ?? 0
-      : 0
-    const tb = b.gregorianAnchorIso
-      ? parseGregorianAnchorIso(b.gregorianAnchorIso)?.getTime() ?? 0
-      : 0
-    if (ta !== tb) return ta - tb
-    return a.title.localeCompare(b.title, undefined, { sensitivity: 'base' })
-  })
-  return merged
 }
 
-function markedGregorianDays(year: number, monthIndex: number): number[] {
-  const key = `${year}-${monthIndex}`
-  const presets: Record<string, number[]> = {
-    '2026-3': [4, 11, 19, 29],
-    '2026-4': [1, 9, 17, 25],
+/** Civil days in a Gregorian month that have at least one resolved EOTC row (no circular snapshot dependency). */
+function markedGregorianDaysFromEotc(year: number, monthIndex: number): number[] {
+  const dim = new Date(year, monthIndex + 1, 0).getDate()
+  const days: number[] = []
+  for (let day = 1; day <= dim; day++) {
+    const dt = new Date(year, monthIndex, day)
+    if (getEntriesForDate(dt).length > 0) days.push(day)
   }
-  const base = presets[key] ?? [5, 12, 20, 27]
-  const paschal = markedGregorianDaysForMonth(year, monthIndex, EVENT_BY_ID)
-  return [...new Set([...base, ...paschal])].sort((a, b) => a - b)
+  return days
 }
 
 /**
@@ -358,35 +276,49 @@ export function getMockDailyChurchData(gregorian: Date): DailyChurchData {
   const season = resolveSeason(eth.month)
   const fastWeekly = weeklyFast(d.getDay())
   const fastSeasonal = seasonalFast(d, eth.month)
-  const movableObservancesOnDay = movableObservancesOnGregorianDay(d, d.getFullYear(), EVENT_BY_ID)
 
-  // If there's a major movable feast (like Thomas Sunday), enhance the main commemoration with its rich content
+  const eotcSorted = sortEotcEntriesForCalendarPanel(getEntriesForDate(d))
+
   let enhancedCommemoration = merged
-  const majorMovableFeast = movableObservancesOnDay.find(m => 
-    ['damawi-tensae', 'fasika', 'hosanna', 'erget', 'peraklitos'].includes(m.id)
-  )
-  
-  if (majorMovableFeast) {
-    const majorEvent = EVENT_BY_ID.get(majorMovableFeast.id)
-    if (majorEvent) {
-      enhancedCommemoration = {
-        ...merged,
-        feast: majorEvent.title,
-        transliterationTitle: majorEvent.transliterationTitle,
-        summary: majorEvent.summary || merged.summary,
-        significance: majorEvent.whyItMatters || merged.significance,
-        practicalGuidance: majorEvent.howToObserve || merged.practicalGuidance,
-        prayAndChant: majorEvent.prayAndChant || merged.prayAndChant,
-        notes: majorEvent.notes || merged.notes,
-        shortDescription: majorEvent.shortDescription,
-        meaning: majorEvent.meaning,
-        observance: majorEvent.observance,
-        catalogEventId: majorEvent.id,
+  let movableObservancesOnDay: MovableObservanceOnDay[] = []
+
+  if (eotcSorted.length > 0) {
+    enhancedCommemoration = overlayCommemorationWithEotcPrimary(merged, eotcSorted[0])
+    movableObservancesOnDay = eotcSorted
+      .slice(1)
+      .map(eotcDatasetRowToMovableObservanceOnDay)
+      .slice(0, 12)
+  } else {
+    movableObservancesOnDay = movableObservancesOnGregorianDay(
+      d,
+      d.getFullYear(),
+      EVENT_BY_ID,
+    )
+    const majorMovableFeast = movableObservancesOnDay.find((m) =>
+      ['damawi-tensae', 'fasika', 'hosanna', 'erget', 'peraklitos'].includes(m.id),
+    )
+    if (majorMovableFeast) {
+      const majorEvent = EVENT_BY_ID.get(majorMovableFeast.id)
+      if (majorEvent) {
+        enhancedCommemoration = {
+          ...merged,
+          feast: majorEvent.title,
+          transliterationTitle: majorEvent.transliterationTitle,
+          summary: majorEvent.summary || merged.summary,
+          significance: majorEvent.whyItMatters || merged.significance,
+          practicalGuidance: majorEvent.howToObserve || merged.practicalGuidance,
+          prayAndChant: majorEvent.prayAndChant || merged.prayAndChant,
+          notes: majorEvent.notes || merged.notes,
+          shortDescription: majorEvent.shortDescription,
+          meaning: majorEvent.meaning,
+          observance: majorEvent.observance,
+          catalogEventId: majorEvent.id,
+        }
       }
     }
   }
 
-  return {
+  return mergeEotcIntoDailyChurch({
     source: 'mock',
     gregorianDate: toGregorianIsoDate(d),
     gregorianLabel: formatGregorianLong(d),
@@ -413,11 +345,11 @@ export function getMockDailyChurchData(gregorian: Date): DailyChurchData {
     shortMeaning: undefined,
     longMeaning: enhancedCommemoration.longMeaning,
     movableObservancesOnDay,
-    upcomingObservances: upcomingFromCatalog(d, eth, EVENT_BY_ID),
+    upcomingObservances: buildUpcomingObservancesFromEotc(d),
     miniCalendar: {
       year: d.getFullYear(),
       monthIndex: d.getMonth(),
-      markedDays: markedGregorianDays(d.getFullYear(), d.getMonth()),
+      markedDays: markedGregorianDaysFromEotc(d.getFullYear(), d.getMonth()),
     },
-  }
+  })
 }

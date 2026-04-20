@@ -37,6 +37,9 @@ export function AboutPage() {
               src={imageManifest.about.hero}
               alt=""
               className={styles.heroBackdropImg}
+              width={imageManifest.about.heroWidth}
+              height={imageManifest.about.heroHeight}
+              sizes="(max-width: 768px) 100vw, min(44rem, 90vw)"
               fetchPriority="high"
               decoding="async"
             />

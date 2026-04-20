@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "smoke:mobile": "node scripts/mobile-smoke.mjs",
     "normalize:english-chants": "npx --yes tsx scripts/normalize-english-chants.ts",
     "normalize:amharic-chants": "node scripts/normalize-amharic-chants.mjs",
     "normalize:werb": "node scripts/normalize-chant-json.mjs",

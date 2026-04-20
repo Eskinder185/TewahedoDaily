@@ -1,0 +1,403 @@
+{
+  "type": "calendar_collection",
+  "name": "monthly-commemorations",
+  "entries": [
+    {
+      "type": "calendar_entry",
+      "id": "saint-michael-monthly-12",
+      "title": "ቅዱስ ሚካኤል",
+      "transliterationTitle": "Kidus Mikael",
+      "englishTitle": "Saint Michael Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 12th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 12,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel",
+          "monthly-commemoration"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of Archangel Michael, protector and intercessor.",
+        "panel": "The 12th day of each Ethiopian month remembers Archangel Michael and his protection of the faithful.",
+        "whyItMatters": "The Church honors Michael as a mighty servant of God, defender of the righteous, and helper of the faithful.",
+        "connection": "It connects believers to God’s protection, angelic ministry, and the victory of divine righteousness."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Commemoration hymns",
+          "Charity and thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 12th day of each Ethiopian month remembers Archangel Michael and his protection of the faithful.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-michael-major"
+        ]
+      },
+      "searchKeywords": [
+        "Saint Michael",
+        "12th day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-gabriel-monthly-19",
+      "title": "ቅዱስ ገብርኤል",
+      "transliterationTitle": "Kidus Gebriel",
+      "englishTitle": "Saint Gabriel Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 19th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 19,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel",
+          "monthly-commemoration"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of Archangel Gabriel, messenger of divine glad tidings.",
+        "panel": "The 19th day of each Ethiopian month remembers Archangel Gabriel and his ministry of holy announcement.",
+        "whyItMatters": "It keeps before the faithful the joy of divine message and God’s saving intervention.",
+        "connection": "It connects believers to the Annunciation, holy obedience, and divine comfort."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Angel hymns"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 19th day of each Ethiopian month remembers Archangel Gabriel and his ministry of holy announcement.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-gabriel-major",
+          "tsinset-annunciation"
+        ]
+      },
+      "searchKeywords": [
+        "Saint Gabriel",
+        "19th day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-mary-monthly-21",
+      "title": "ቅድስት ማርያም",
+      "transliterationTitle": "Kidist Mariam",
+      "englishTitle": "Saint Mary Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 21st of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 21,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "mary",
+        "secondary": [
+          "monthly-commemoration",
+          "marian-feast"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Primary monthly commemoration of Saint Mary and her intercession.",
+        "panel": "The 21st day of each Ethiopian month is especially dedicated to Saint Mary.",
+        "whyItMatters": "It expresses the deep Marian devotion of the Church and trust in her intercession.",
+        "connection": "It connects the faithful to mercy, hope, purity, and the motherhood of Saint Mary."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Marian prayer",
+          "Liturgy",
+          "Hymns",
+          "Acts of mercy"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 1,
+        "calendarBadge": "Monthly Marian Day",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 21st day of each Ethiopian month is especially dedicated to Saint Mary.",
+        "notes": [],
+        "relatedEntries": [
+          "kidane-mehret",
+          "filseta-assumption"
+        ]
+      },
+      "searchKeywords": [
+        "Saint Mary",
+        "21st day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-george-monthly-23",
+      "title": "ቅዱስ ጊዮርጊስ",
+      "transliterationTitle": "Kidus Giorgis",
+      "englishTitle": "Saint George Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 23rd of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 23,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "martyr",
+        "secondary": [
+          "monthly-commemoration",
+          "martyr"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of Saint George, the victorious martyr.",
+        "panel": "The 23rd day of each Ethiopian month remembers Saint George and his victorious witness.",
+        "whyItMatters": "It strengthens courage, faithfulness, and devotion to one of the Church’s beloved martyrs.",
+        "connection": "It connects the faithful to bold confession of Christ and steadfast endurance."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Martyr hymns",
+          "Liturgy"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "red",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 23rd day of each Ethiopian month remembers Saint George and his victorious witness.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-george-major"
+        ]
+      },
+      "searchKeywords": [
+        "Saint George",
+        "23rd day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-tekle-haymanot-monthly-24",
+      "title": "አቡነ ተክለ ሃይማኖት",
+      "transliterationTitle": "Abune Tekle Haymanot",
+      "englishTitle": "Abune Tekle Haymanot Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 24th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 24,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "saint",
+        "secondary": [
+          "monthly-commemoration",
+          "ethiopian-saint"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of Abune Tekle Haymanot.",
+        "panel": "The 24th day of each Ethiopian month remembers Abune Tekle Haymanot, great Ethiopian monk and saint.",
+        "whyItMatters": "It keeps before the faithful a model of holiness, discipline, and Ethiopian spiritual heritage.",
+        "connection": "It connects the faithful to Ethiopian monastic witness and enduring intercession."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Saint hymns",
+          "Liturgy"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "brown",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 24th day of each Ethiopian month remembers Abune Tekle Haymanot, great Ethiopian monk and saint.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-tekle-haymanot-major"
+        ]
+      },
+      "searchKeywords": [
+        "Tekle Haymanot",
+        "24th day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "medhane-alem-monthly-27",
+      "title": "መድኃኔ ዓለም",
+      "transliterationTitle": "Medhane Alem",
+      "englishTitle": "Medhane Alem Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 27th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 27,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "monthly-commemoration",
+          "lord-feast"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Monthly commemoration of the Savior of the World.",
+        "panel": "The 27th day of each Ethiopian month remembers Medhane Alem, the Savior of the World.",
+        "whyItMatters": "It keeps the work of salvation and the mercy of Christ before the faithful every month.",
+        "connection": "It connects believers to redemption, divine mercy, and Christ the Savior."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 1,
+        "calendarBadge": "Monthly Lord’s Day",
+        "calendarColor": "gold",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 27th day of each Ethiopian month remembers Medhane Alem, the Savior of the World.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "Medhane Alem",
+        "27th day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    }
+  ]
+}

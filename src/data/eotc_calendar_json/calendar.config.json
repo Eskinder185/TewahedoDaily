@@ -1,0 +1,44 @@
+{
+  "type": "calendar_config",
+  "version": "1.0.0",
+  "tradition": "ethiopian-orthodox-tewahedo",
+  "calendarSystem": "ethiopian",
+  "supportedDateKinds": [
+    "fixed",
+    "movable",
+    "monthly-recurring",
+    "weekly-recurring",
+    "season"
+  ],
+  "movableAnchors": [
+    "nineveh-fast",
+    "great-lent",
+    "hosanna",
+    "good-friday",
+    "fasika",
+    "ascension",
+    "pentecost"
+  ],
+  "defaultDisplayOrder": [
+    "major-feast",
+    "minor-feast",
+    "fast",
+    "mary",
+    "angel",
+    "saint",
+    "weekly-observance",
+    "season"
+  ],
+  "files": [
+    "calendar.index.json",
+    "fixed-feasts.json",
+    "paschal-cycle.json",
+    "fasts.json",
+    "mary.json",
+    "angels.json",
+    "major-saints.json",
+    "monthly-commemorations.json",
+    "weekly-observances.json",
+    "liturgical-seasons.json"
+  ]
+}
