@@ -1,11 +1,30 @@
 import { Link } from 'react-router-dom'
+import { useMemo, useState } from 'react'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { MOVEMENT_LEARNING_VIDEOS } from '../../lib/practice'
+import { parseYoutubeVideoId } from '../../data/utils/youtube'
 import { PracticeMediaCard } from './PracticeMediaCard'
 import styles from './InstrumentsSection.module.css'
 
 export function InstrumentsSection() {
   const t = useUiLabel()
+  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(() =>
+    MOVEMENT_LEARNING_VIDEOS[0]?.id ?? null,
+  )
+
+  const selectedVideo = useMemo(() => {
+    if (!selectedVideoId) return null
+    return MOVEMENT_LEARNING_VIDEOS.find((v) => v.id === selectedVideoId) ?? null
+  }, [selectedVideoId])
+
+  const selectedYoutubeId = useMemo(
+    () => parseYoutubeVideoId(selectedVideo?.youtubeUrl),
+    [selectedVideo],
+  )
+
+  const embedUrl = selectedYoutubeId
+    ? `https://www.youtube-nocookie.com/embed/${selectedYoutubeId}?rel=0&modestbranding=1`
+    : null
 
   return (
     <div className={styles.root}>
@@ -25,7 +44,7 @@ export function InstrumentsSection() {
                 <PracticeMediaCard
                   title={v.title}
                   imageUrl={v.thumbnailUrl}
-                  externalHref={v.youtubeUrl}
+                  onSelect={() => setSelectedVideoId(v.id)}
                   tag={t('practiceMovementVideoTag')}
                   subtitle={t('practiceMovementVideoSubtitle')}
                   teaserLine={v.description}
@@ -33,6 +52,47 @@ export function InstrumentsSection() {
               </li>
             ))}
           </ul>
+          {selectedVideo ? (
+            <section
+              className={styles.playerSection}
+              aria-labelledby="movement-player-heading"
+            >
+              <header className={styles.playerHead}>
+                <p id="movement-player-heading" className={styles.playerEyebrow}>
+                  {t('practiceMovementVideoTag')}
+                </p>
+                <h3 className={styles.playerTitle}>{selectedVideo.title}</h3>
+                <p className={styles.playerDeck}>{selectedVideo.description}</p>
+              </header>
+
+              {embedUrl ? (
+                <div className={styles.videoFrameWrap}>
+                  <iframe
+                    className={styles.videoFrame}
+                    src={embedUrl}
+                    title={selectedVideo.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+              ) : (
+                <p className={styles.playerFallback}>
+                  Video could not be embedded. Use the link below.
+                </p>
+              )}
+
+              <a
+                href={selectedVideo.youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.watchExternal}
+              >
+                {t('watch')} on YouTube
+              </a>
+            </section>
+          ) : null}
         </div>
       </section>
 

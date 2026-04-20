@@ -71,6 +71,87 @@
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
 }
 
+.playerSection {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid color-mix(in srgb, var(--color-border-strong) 82%, transparent);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.playerHead {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.playerEyebrow {
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.playerTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-wine);
+}
+
+.playerDeck {
+  margin: 0;
+  max-width: 44rem;
+  font-size: var(--text-sm);
+  line-height: var(--leading-body);
+  color: var(--color-text-muted);
+}
+
+.videoFrameWrap {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 86%, transparent);
+  background: color-mix(in srgb, var(--color-bg) 86%, #000 14%);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.videoFrame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+.watchExternal {
+  width: fit-content;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-wine);
+  text-decoration: none;
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 2px;
+}
+
+.watchExternal:hover {
+  color: color-mix(in srgb, var(--color-wine) 88%, var(--color-gold));
+}
+
+.watchExternal:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.playerFallback {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
 .tipRow {
   display: grid;
   gap: var(--space-4);
