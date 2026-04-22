@@ -158,16 +158,20 @@ export function matchesForm(
     if (entry.form === 'mezmur') {
       const m = entry.item
       return (
-        (m.categorySaints?.some(saint => 
-          saint.toLowerCase().includes('mary') || 
-          saint.toLowerCase().includes('mariam') || 
-          saint.toLowerCase().includes('maryam') ||
-          saint.toLowerCase().includes('ማርያም')
-        )) ||
-        (m.categoryThemes?.some(theme => 
-          theme.toLowerCase().includes('marian') || 
-          theme.toLowerCase().includes('mary')
-        ))
+        Boolean(
+          m.categorySaints?.some((saint) =>
+            saint.toLowerCase().includes('mary') ||
+            saint.toLowerCase().includes('mariam') ||
+            saint.toLowerCase().includes('maryam') ||
+            saint.toLowerCase().includes('ማርያም'),
+          ),
+        ) ||
+        Boolean(
+          m.categoryThemes?.some((theme) =>
+            theme.toLowerCase().includes('marian') ||
+            theme.toLowerCase().includes('mary'),
+          ),
+        )
       )
     }
     return false
@@ -175,7 +179,7 @@ export function matchesForm(
   if (formFilter === 'saints') {
     if (entry.form === 'mezmur') {
       const m = entry.item
-      return m.categorySaints && m.categorySaints.length > 0
+      return (m.categorySaints?.length ?? 0) > 0
     }
     return false
   }
@@ -183,8 +187,8 @@ export function matchesForm(
     if (entry.form === 'mezmur') {
       const m = entry.item
       return (
-        (m.categoryMajorHoliday && m.categoryMajorHoliday.length > 0) ||
-        (m.relatedFeast && m.relatedFeast.trim().length > 0) ||
+        (m.categoryMajorHoliday?.length ?? 0) > 0 ||
+        (m.relatedFeast?.trim().length ?? 0) > 0 ||
         (m.category === 'feast')
       )
     }
