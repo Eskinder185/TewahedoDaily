@@ -9,7 +9,7 @@ import { useLocale } from './locale'
 export const UI_LABELS = {
   // Navigation
   navHome: { en: 'Home', am: 'መነሻ' },
-  navPractice: { en: 'Practice', am: 'ተለማመዱ' },
+  navPractice: { en: 'Hymns Practice', am: 'የመዝሙር ልምምድ' },
   navCalendar: { en: 'Calendar', am: 'ቀን መቁጠሪያ' },
   navAbout: { en: 'About', am: 'ስለ ዚህ' },
   navPrayers: { en: 'Prayers', am: 'ጸሎቶች' },
@@ -346,16 +346,16 @@ export const UI_LABELS = {
   prayerDaySat: { en: 'Sat', am: 'ቅዳሜ' },
   prayerDaySun: { en: 'Sun', am: 'እሁድ' },
   tabChants: { en: 'Chants', am: 'መዝሙር' },
+  tabHymnsPractice: { en: 'Hymns Practice', am: 'የመዝሙር ልምምድ' },
   tabTselot: { en: 'Tselot', am: 'ጸሎት' },
-  tabMovement: { en: 'Movement', am: 'እንቅስቃሴ' },
   practiceHeadTitle: {
-    en: 'Chants & movement',
-    am: 'መዝሙር እና እንቅስቃሴ',
+    en: 'Hymns Practice',
+    am: 'የመዝሙር ልምምድ',
   },
   practiceHeadDeck: {
     en:
-      'Mezmur, werb, and instruments — focused practice. For prayer texts and tselot, use Daily Prayers.',
-    am: 'መዝሙር፣ ወርብ እና እንቅስቃሴ። ለጸሎት ጽሑፎች ለዕለታዊ ጸሎቶች ይሂዱ።',
+      'Mezmur, werb, and liturgical hymns — focused practice. For prayer texts and tselot, use Daily Prayers.',
+    am: 'መዝሙር፣ ወርብ እና የቤተክርስቲያን መዝሙር። ለጸሎት ጽሑፎች ለዕለታዊ ጸሎቶች ይሂዱ።',
   },
   practiceGoToPrayers: {
     en: 'Go to Daily Prayers',
@@ -386,75 +386,32 @@ export const UI_LABELS = {
       'Follow the suggested order, then in the player use slower speed and loops so the melody and drum teach your breath without haste.',
     am: 'የተጠቆሙትን ቅደር ይከተሉ፣ በፕሌየር ደግሞ ዝግታ እና ዙር ለዜማና ለቁርጥም ይጠቀሙ።',
   },
-  practiceJourneyStep3Title: { en: 'Learn the movement', am: 'እንቅስቃሴ ይማሩ' },
+  practiceJourneyStep3Title: {
+    en: 'Practice with intention',
+    am: 'በቲመታ ይለማመዱ',
+  },
   practiceJourneyStep3Body: {
     en:
-      'Movement tips beside the lyrics; reverent posture for werb, unity with the choir for mezmur. The Movement tab adds rhythm clips and context.',
-    am: 'ከጽሑፍ ጋር የእንቅስቃሴ ምክሮች፤ ለወርብ ትኩረት፣ ለመዝሙር ከመዘመራ ጋር አንድነት። እንቅስቃሴ ትር የዜማ ቅጂዎችን ያክላል።',
+      'Use the practice tools: loop sections, adjust speed, and record yourself. Focus on one hymn through the week — repetition builds devotion.',
+    am: 'የልምምድ መሳሪያዎት ይጠቀሙ፦ መባዝናት፣ ፍጅነት አቀል፣ የራስዎትን ቅብጽ።',
   },
   practiceJourneyStep4Title: {
-    en: 'Practice with confidence',
-    am: 'በታማኝነት ይለማመዱ',
+    en: 'Build your repertoire',
+    am: 'የመዝሙር ቅንቅን ልምድ',
   },
   practiceJourneyStep4Body: {
     en:
-      'Return to the same chant through the week — repetition is a small asceticism. What you memorize becomes prayer in the nave.',
-    am: 'በሳምንቱ ወደዚያው መዝሙር ይመለሱ — ድግግሞሽ ትንሽ ጾም ነው። የሚተረጉሙት ጸሎት ይሆናል።',
+      'Once comfortable with one hymn, explore different categories: mezmur, werb, Marian hymns, and feast day selections. Build a personal prayer repertoire.',
+    am: 'ከአንድ መዝሙር ጋር በጽነት በኋላ፣ የተለያያትን ክፍሎች ይጠኔጡ፦ መዝሙር፣ ወርብ፣ የማሪያም መዝሙሬች።',
   },
   practiceJourneyFoot: {
     en: ' — for scripture prayers, tselot, and holy reading beyond this practice space.',
     am: ' — ለመጽሐፍ ጸሎት፣ ጸሎትና ቅዱስ ንባብ ከዚህ ልምምድ ውጭ።',
   },
-  practiceChantsHelper: {
+  practiceHymnsHelper: {
     en:
-      'Choose a chant to open the player: memorization tools and recording beside the video.',
+      'Choose a hymn to open the player: memorization tools and recording beside the video.',
     am: 'መዝሙር ይምረጡ — በቪዲዮ አጠገብ የማስታወስ መሳሪያዎች እና ቅጂ።',
-  },
-  practiceMovementLead: {
-    en:
-      'Rhythm clips and chant-specific movement notes — a calm path beside the Chants tab.',
-    am: 'የዜማ ቅጂዎች እና የመዝሙር እንቅስቃሴ ምክሮች — ከመዝሙር ትር ጋር የሚረዳ መንገድ።',
-  },
-  practiceMovementSupportEyebrow: {
-    en: 'Rhythm & movement support',
-    am: 'የዜማና እንቅስቃሴ ድጋፍ',
-  },
-  practiceMovementSupportDeck: {
-    en:
-      'Short videos for timing and coordination. They support your practice; they do not replace parish guidance or liturgical leadership.',
-    am: 'ለጊዜና ለአቻፈርም አጭር ቪዲዮዎች። የአካባቢ መመሪያ አይተካም።',
-  },
-  practiceMovementVideoTag: {
-    en: 'Learning video',
-    am: 'የትምህርት ቪዲዮ',
-  },
-  practiceMovementVideoSubtitle: {
-    en: 'Rhythm & movement',
-    am: 'ዜማና እንቅስቃሴ',
-  },
-  practiceMovementMezmurTipsTitle: {
-    en: 'Mezmur movement tips',
-    am: 'የመዝሙር እንቅስቃሴ ምክሮች',
-  },
-  practiceMovementMezmurTipsBody: {
-    en:
-      'In the chant library, open any mezmur and use the Movement tab for posture, sway, and ensemble habits — modesty before spectacle.',
-    am:
-      'በመዝሙር ዝርዝር ማንኛውንም መዝሙር ክፈቱ፣ የእንቅስቃሴ ክፍል ለአቋምና ለጋራ ዜማ ይጠቀሙ።',
-  },
-  practiceMovementWerbTipsTitle: {
-    en: 'Werb movement tips',
-    am: 'የወርብ እንቅስቃሴ ምክሮች',
-  },
-  practiceMovementWerbTipsBody: {
-    en:
-      'For werb, open a piece and read Movement steps: feet, spine, and attention stay with the Word. Stillness and clarity come first.',
-    am:
-      'ለወርብ ዕቃ ክፈቱ እና የእንቅስቃሴ እርምጃዎችን ያንብቡ። ቃሉ በቅድሚያ ነው።',
-  },
-  practiceMovementOpenChants: {
-    en: 'Open the chant library',
-    am: 'የመዝሙር ዝርዝር ይክፈቱ',
   },
   practiceTabRegionLabel: {
     en: 'Step into practice',
@@ -514,7 +471,7 @@ export const UI_LABELS = {
     am: 'ጸሎት',
   },
   calendarMovableChantLabel: {
-    en: 'Chant',
+    en: 'Hymn',
     am: 'መዝሙር',
   },
   calendarDayTabsAria: {
@@ -536,7 +493,7 @@ export const UI_LABELS = {
     am: 'የቤተክርስቲያን ዕለታዊ ጸሎትና መዝሙር ይቀጥሉ።',
   },
   calendarDayChantLead: {
-    en: 'Open chant practice when you are ready to sing with care.',
+    en: 'Open hymn practice when you are ready to sing with care.',
     am: 'በሙድ ትኩረት ለመዘምር ዝግጁ ሲሆኑ ይዘጉ።',
   },
 
@@ -582,9 +539,18 @@ export const UI_LABELS = {
   filterAll: { en: 'All', am: 'ሁሉም' },
   chantTypeMezmur: { en: 'Mezmur', am: 'መዝሙር' },
   chantTypeWerb: { en: 'Werb', am: 'ወርብ' },
+  filterMarian: { en: 'Marian', am: 'የማርያም' },
+  filterSaints: { en: 'Saints', am: 'ቅዱሳን' },
+  filterFeastDays: { en: 'Feast Days', am: 'በዓላት' },
   filterEnglishMezmur: {
     en: 'English mezmur',
     am: 'እንግሊዝኛ መዝሙር',
+  },
+
+  // Practice helper text
+  practiceChantsHelper: {
+    en: 'Browse Ethiopian Orthodox hymns and practice with lyrics, videos, and learning tools.',
+    am: 'የኢትዮጵያ ኦርቶዶክስ መዝሙሮችን ተመልከቱ እና በግጥሞች፣ ቪዲዮዎች እና የመማሪያ መሳሪያዎች ይለማመዱ።',
   },
 
   // Chants browse

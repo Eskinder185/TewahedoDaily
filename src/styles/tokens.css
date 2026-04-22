@@ -131,10 +131,20 @@
     --text-section: clamp(1.35rem, 5vw, 1.9rem);
     --leading-body: 1.64;
     --leading-relaxed: 1.7;
-    --tap-min: 2.875rem;
+    --tap-min: 3rem; /* 48px minimum for better touch targets */
     --header-height: 3.35rem;
     --section-pad-y: var(--space-5);
     --section-pad-y-lg: var(--space-6);
+    
+    /* Mobile-specific enhancements */
+    --space-mobile-xs: 12px; /* Tighter spacing for mobile cards */
+    --space-mobile-sm: 16px; /* Standard mobile card padding */
+    --space-mobile-md: 20px; /* Larger mobile sections */
+    --space-mobile-lg: 28px; /* Major mobile section breaks */
+    --content-mobile-max: 100vw; /* Full width on mobile */
+    --border-mobile: 1.5px; /* Slightly thicker borders for mobile */
+    --radius-mobile-card: 12px; /* Optimized card radius for mobile */
+    --radius-mobile-button: 8px; /* Touch-friendly button radius */
   }
 }
 

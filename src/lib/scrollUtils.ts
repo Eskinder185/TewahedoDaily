@@ -268,6 +268,22 @@ export function scrollToReaderOnMobile(readerSelector: string = '#reader', optio
 }
 
 /**
+ * Enhanced page transition scroll for mobile - ensures clean navigation
+ */
+export function scrollToTopForPageTransition(options: Partial<ScrollToOptions> = {}) {
+  // For mobile, we want instant scrolling to ensure pages open at the top
+  // For desktop, we can use a subtle smooth scroll
+  const behavior = isMobileViewport() ? 'instant' : 'smooth'
+  
+  scrollToTop({
+    behavior,
+    delay: 0,
+    offset: 0,
+    ...options,
+  })
+}
+
+/**
  * Force immediate scroll to top for prayer selection on mobile
  */
 export function forceScrollToTopOnMobile(options: Partial<ScrollToOptions> = {}) {

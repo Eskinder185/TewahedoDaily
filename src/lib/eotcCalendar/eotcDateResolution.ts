@@ -64,10 +64,11 @@ export function getWeeklyRecurringEntriesForDate(
   rows?: EotcCalendarRowSource,
 ): EotcCalendarDatasetRow[] {
   const d = stripLocalCalendarDate(selectedDate)
+  const { pascha } = buildLiturgicalCalendarContext(d)
   return [...resolveRows(rows)].filter(
     (r) =>
       r.entry.date.kind === 'weekly-recurring' &&
-      matchesWeeklyRecurringEntry(r.entry, d),
+      matchesWeeklyRecurringEntry(r.entry, d, pascha),
   )
 }
 

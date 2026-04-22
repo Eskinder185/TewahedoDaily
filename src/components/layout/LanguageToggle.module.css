@@ -81,8 +81,9 @@
 
 @media (min-width: 768px) {
   .seg {
-    min-height: 0;
-    min-width: 0;
+    min-height: var(--tap-min); /* Maintain accessibility standard */
+    min-width: auto; /* More flexible width */
     padding: var(--space-1) var(--space-3);
+    height: auto; /* Allow natural height */
   }
 }

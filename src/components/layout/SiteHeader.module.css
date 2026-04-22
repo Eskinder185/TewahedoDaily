@@ -13,6 +13,8 @@
   box-shadow:
     0 1px 0 var(--color-gold-faint),
     0 8px 32px -16px var(--color-sky-glow);
+  /* Optimize scroll performance */
+  will-change: transform;
 }
 
 .bar {
@@ -102,6 +104,8 @@
   padding-inline: var(--space-1);
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  /* Prevent pull-to-refresh interference */
+  overscroll-behavior: contain;
 }
 
 .nav::-webkit-scrollbar {
@@ -452,6 +456,41 @@
     color-mix(in srgb, var(--color-gold-soft) 72%, var(--color-bg-elevated)) 0%,
     color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-sky-faint)) 100%
   );
+}
+
+@media (max-width: 639.98px) {
+  .bar {
+    padding-inline: max(var(--space-2), env(safe-area-inset-left, 0px))
+      max(var(--space-2), env(safe-area-inset-right, 0px));
+    /* Tighter padding on ultra-small screens */
+  }
+
+  .topRow {
+    gap: var(--space-2);
+  }
+  
+  .headerTools {
+    gap: var(--space-2);
+  }
+  
+  .toggleGroup {
+    gap: var(--space-2);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767.98px) {
+  /* Tablet improvements */
+  .topRow {
+    gap: var(--space-3); /* Slightly larger gap for tablet */
+  }
+  
+  .headerTools {
+    gap: var(--space-3);
+  }
+  
+  .toggleGroup {
+    gap: var(--space-3);
+  }
 }
 
 @media (min-width: 768px) {

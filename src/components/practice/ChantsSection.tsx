@@ -27,7 +27,7 @@ import { chantMeaningTeaser } from '../../lib/practice/chantCardTeaser'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './ChantsSection.module.css'
 
-const FORM_FILTER_IDS = ['all', 'mezmur', 'werb', 'english'] as const
+const FORM_FILTER_IDS = ['all', 'mezmur', 'werb', 'marian', 'saints', 'feast-days'] as const
 type FormFilter = (typeof FORM_FILTER_IDS)[number]
 
 const FEATURED_COUNT = 6
@@ -98,7 +98,9 @@ export function ChantsSection() {
 
   const formFilterLabel = (id: FormFilter) => {
     if (id === 'all') return t('filterAll')
-    if (id === 'english') return t('filterEnglishMezmur')
+    if (id === 'marian') return t('filterMarian')
+    if (id === 'saints') return t('filterSaints')
+    if (id === 'feast-days') return t('filterFeastDays')
     return formBadge(id)
   }
 

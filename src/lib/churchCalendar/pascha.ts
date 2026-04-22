@@ -52,3 +52,15 @@ export function damawiTensaeFromPascha(pascha: Date): Date {
   }
   return d
 }
+
+/** Fasika through Peraklitos (Pentecost), inclusive: 50 liturgical days of Paschal joy. */
+export function isInPaschalFiftyDays(selectedDate: Date, pascha: Date): boolean {
+  const local = new Date(
+    selectedDate.getFullYear(),
+    selectedDate.getMonth(),
+    selectedDate.getDate(),
+  )
+  const start = new Date(pascha.getFullYear(), pascha.getMonth(), pascha.getDate())
+  const end = addDays(start, 49)
+  return local >= start && local <= end
+}

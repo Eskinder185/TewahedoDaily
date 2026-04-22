@@ -215,6 +215,83 @@ export function resolveEventImageById(id?: string | null): string | undefined {
   return calendarImageManifest.eventsById[normalized]
 }
 
+/**
+ * Fine-tuned focal points for cover-cropped calendar cards so key subjects stay visible.
+ * Default is center-ish upper-third for icon-heavy art.
+ */
+const EVENT_IMAGE_FOCAL_POINTS: Record<string, string> = {
+  fasika: '50% 40%',
+  timket: '50% 34%',
+  gena: '50% 34%',
+  hosanna: '50% 36%',
+  siqlet: '50% 30%',
+  'good-friday': '50% 30%',
+  peraklitos: '50% 36%',
+  ascension: '50% 34%',
+  erget: '50% 34%',
+  'debre-tabor': '50% 30%',
+  meskel: '50% 34%',
+  'damawi-tensae': '50% 32%',
+  'saint-mary-commemoration': '50% 30%',
+  'saint-michael-commemoration': '50% 30%',
+  'saint-gabriel-commemoration': '50% 30%',
+  'saint-tekle-haymanot-major': '50% 28%',
+  'saint-tekle-haymanot-monthly-24': '50% 28%',
+  'saint-george-major': '50% 30%',
+  'saint-george-monthly-23': '50% 30%',
+  'saint-john-the-baptist': '50% 30%',
+}
+
+export function resolveEventImageObjectPosition(
+  id?: string | null,
+  fallback = '50% 34%',
+): string {
+  if (!id) return fallback
+  const normalized = id.trim().toLowerCase()
+  return EVENT_IMAGE_FOCAL_POINTS[normalized] ?? fallback
+}
+
+export type CalendarImagePresentation = {
+  objectFit: 'cover' | 'contain'
+  objectPosition: string
+}
+
+/**
+ * Some observance art is portrait/icon-like. For those IDs, `contain` prevents face/halo clipping.
+ * Landscape feast scenes remain `cover` with tuned focal points.
+ */
+const EVENT_IMAGE_CONTAIN_IDS = new Set<string>([
+  'saint-mary-commemoration',
+  'saint-michael-commemoration',
+  'saint-gabriel-commemoration',
+  'saint-tekle-haymanot-major',
+  'saint-tekle-haymanot-monthly-24',
+  'saint-george-major',
+  'saint-george-monthly-23',
+  'saint-john-the-baptist',
+  'saint-yared-major',
+  'saint-stephen-major',
+  'daily-senksar-commemoration',
+  'righteous-remembrance',
+  'abune-teklehaymanot',
+])
+
+export function resolveEventImagePresentation(
+  id?: string | null,
+  fallback: CalendarImagePresentation = {
+    objectFit: 'cover',
+    objectPosition: '50% 34%',
+  },
+): CalendarImagePresentation {
+  if (!id) return fallback
+  const normalized = id.trim().toLowerCase()
+  const objectPosition = EVENT_IMAGE_FOCAL_POINTS[normalized] ?? fallback.objectPosition
+  const objectFit = EVENT_IMAGE_CONTAIN_IDS.has(normalized)
+    ? 'contain'
+    : fallback.objectFit
+  return { objectFit, objectPosition }
+}
+
 export function resolveCommemorationImage(
   title: string,
   transliterationTitle?: string,

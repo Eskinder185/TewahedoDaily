@@ -35,14 +35,19 @@ body {
   font-weight: 400;
   color: var(--color-text);
   background-color: var(--color-bg);
-  /* Layered “sacred daylight”: warm base + soft gold sunrise + sky breath */
+  /* Enhanced text rendering for mobile */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent horizontal scroll issues on mobile */
+  overflow-x: hidden;
+  /* Layered "sacred daylight": warm base + soft gold sunrise + sky breath */
   background-image:
     radial-gradient(ellipse 95% 55% at 50% -18%, rgba(255, 248, 225, 0.95) 0%, transparent 52%),
     radial-gradient(ellipse 70% 50% at 100% 12%, var(--color-sky-glow) 0%, transparent 58%),
     radial-gradient(ellipse 55% 45% at 0% 55%, color-mix(in srgb, var(--color-sky-faint) 40%, transparent) 0%, transparent 52%),
     linear-gradient(180deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 92%, var(--color-bg-muted)) 100%);
   background-attachment: fixed;
-  -webkit-font-smoothing: antialiased;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -155,5 +160,178 @@ video {
   .td-fade-in,
   .td-stagger > * {
     animation: none;
+  }
+}
+
+/* ====== GLOBAL MOBILE-FIRST RESPONSIVE ENHANCEMENTS ====== */
+
+/* Enhanced touch interactions for mobile */
+@media (max-width: 639.98px) {
+  /* Better button touch targets */
+  button, 
+  .button,
+  [role="button"] {
+    min-height: var(--tap-min);
+    min-width: var(--tap-min);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+  }
+
+  /* Enhanced link touch targets */
+  a {
+    min-height: var(--space-6); /* 32px minimum */
+    display: inline-block;
+    /* Better tap feedback on mobile */
+    transition: 
+      color var(--duration-fast) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
+  }
+
+  a:active {
+    transform: scale(0.98);
+  }
+
+  /* Card layouts optimized for mobile */
+  .card, 
+  [data-card] {
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+    border-radius: var(--radius-md);
+    /* Enhanced shadows for mobile depth perception */
+    box-shadow: var(--shadow-card);
+    transition: 
+      box-shadow var(--duration-med) var(--ease-out),
+      transform var(--duration-fast) var(--ease-out);
+  }
+
+  .card:active,
+  [data-card]:active {
+    transform: scale(0.99);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Better form elements on mobile */
+  input, 
+  textarea, 
+  select {
+    min-height: var(--tap-min);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-sm);
+    font-size: var(--text-base); /* Prevent zoom on iOS */
+  }
+
+  /* Improved table responsiveness */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+
+  /* Enhanced spacing for mobile sections */
+  section {
+    padding-inline: var(--space-4);
+  }
+
+  /* Better text contrast and readability on mobile */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: var(--leading-tight);
+    margin-bottom: var(--space-3);
+    /* Better text rendering */
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Enhanced focus indicators for mobile */
+  :focus-visible {
+    outline: 3px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+/* Global improvements for all screen sizes */
+
+/* Better button consistency */
+button, 
+.button,
+[role="button"] {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 
+    background-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+button:disabled,
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Enhanced card pattern consistency */
+.card,
+[data-card] {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  transition: 
+    box-shadow var(--duration-med) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out);
+}
+
+.card:hover,
+[data-card]:hover {
+  box-shadow: var(--shadow-lift);
+  border-color: var(--color-border-strong);
+}
+
+/* Better accessibility for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep essential transforms but remove animations */
+  .card:active,
+  [data-card]:active,
+  button:active,
+  a:active {
+    transform: none;
+  }
+}
+
+/* Better print styles */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    background: white !important;
+    background-image: none !important;
+  }
+
+  .card,
+  [data-card] {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
   }
 }

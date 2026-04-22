@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { buildChurchDaySnapshot } from '../../lib/churchCalendar'
 import {
   buildSelectedDayObservanceModel,
@@ -39,6 +39,7 @@ export function SelectedChurchDayPanel({
 }: Props) {
   const t = useUiLabel()
   const snapshot = useMemo(() => buildChurchDaySnapshot(date), [date])
+  const [isPrimaryStoryExpanded, setIsPrimaryStoryExpanded] = useState(false)
 
   const calendarObservanceModel = useMemo(() => {
     if (!calendarPageLayout) return null
@@ -51,6 +52,9 @@ export function SelectedChurchDayPanel({
       : undefined
 
   const primaryEotc = calendarObservanceModel?.primary ?? undefined
+  const primaryTypeLabel = primaryEotc
+    ? primaryEotc.entry.category.primary.replace(/-/g, ' ')
+    : null
 
   const secondaryTierPreview = useMemo(() => {
     if (!calendarObservanceModel || calendarObservanceModel.secondaryTierIds.length === 0)
@@ -187,20 +191,40 @@ export function SelectedChurchDayPanel({
                 {calendarObservanceModel.primaryStory.short}
               </p>
             ) : null}
-            {calendarObservanceModel.primaryStory.why ? (
-              <div className={styles.primaryStoryBlock}>
-                <h3 className={styles.primaryStoryK}>{t('calendarWhyMatters')}</h3>
-                <p className={styles.primaryStoryP}>{calendarObservanceModel.primaryStory.why}</p>
-              </div>
+            {primaryTypeLabel ? (
+              <p className={styles.primaryStoryType}>
+                <span className={styles.primaryStoryK}>Type</span>
+                <span className={styles.primaryStoryTypeValue}>{primaryTypeLabel}</span>
+              </p>
             ) : null}
-            {calendarObservanceModel.primaryStory.connection ? (
-              <div className={styles.primaryStoryBlock}>
-                <h3 className={styles.primaryStoryK}>{t('calendarPanelConnectionHeading')}</h3>
-                <p className={styles.primaryStoryP}>
-                  {calendarObservanceModel.primaryStory.connection}
-                </p>
-              </div>
+            {isPrimaryStoryExpanded ? (
+              <>
+                {calendarObservanceModel.primaryStory.why ? (
+                  <div className={styles.primaryStoryBlock}>
+                    <h3 className={styles.primaryStoryK}>{t('calendarWhyMatters')}</h3>
+                    <p className={styles.primaryStoryP}>{calendarObservanceModel.primaryStory.why}</p>
+                  </div>
+                ) : null}
+                {calendarObservanceModel.primaryStory.connection ? (
+                  <div className={styles.primaryStoryBlock}>
+                    <h3 className={styles.primaryStoryK}>{t('calendarPanelConnectionHeading')}</h3>
+                    <p className={styles.primaryStoryP}>
+                      {calendarObservanceModel.primaryStory.connection}
+                    </p>
+                  </div>
+                ) : null}
+              </>
             ) : null}
+            {(calendarObservanceModel.primaryStory.why ||
+              calendarObservanceModel.primaryStory.connection) && (
+              <button
+                type="button"
+                className={styles.primaryStoryToggle}
+                onClick={() => setIsPrimaryStoryExpanded((prev) => !prev)}
+              >
+                {isPrimaryStoryExpanded ? 'See less' : 'See more'}
+              </button>
+            )}
           </div>
         ) : null}
 

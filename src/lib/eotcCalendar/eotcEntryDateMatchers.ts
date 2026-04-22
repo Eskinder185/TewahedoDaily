@@ -1,6 +1,10 @@
 import type { EthiopianDateParts } from '../ethiopianDate'
 import { gregorianToEthiopian } from '../ethiopianDate'
-import { addDays, sameLocalCalendarDay } from '../churchCalendar/pascha'
+import {
+  addDays,
+  isInPaschalFiftyDays,
+  sameLocalCalendarDay,
+} from '../churchCalendar/pascha'
 import type { EotcCalendarEntry, EotcSeasonRange } from './eotcTypes'
 import { anchorToGregorian, stripLocalCalendarDate } from './liturgicalCalendarContext'
 import {
@@ -133,10 +137,19 @@ export function matchesMonthlyRecurringEntry(
 export function matchesWeeklyRecurringEntry(
   entry: EotcCalendarEntry,
   selectedDate: Date,
+  pascha: Date | null,
 ): boolean {
   if (entry.date.kind !== 'weekly-recurring') return false
   const w = entry.date.weeklyRecurringDay?.toLowerCase()
   if (!w) return false
+  // Fasika → Peraklitos: suppress recurring Wednesday/Friday fast rows.
+  if (
+    pascha &&
+    isInPaschalFiftyDays(selectedDate, pascha) &&
+    (w === 'wednesday' || w === 'friday')
+  ) {
+    return false
+  }
   const js = WEEKDAY_TO_JS[w]
   if (js === undefined) return false
   return stripLocalCalendarDate(selectedDate).getDay() === js
@@ -176,7 +189,7 @@ export function matchesEntryForContext(
     case 'monthly-recurring':
       return matchesMonthlyRecurringEntry(entry, eth)
     case 'weekly-recurring':
-      return matchesWeeklyRecurringEntry(entry, selectedDate)
+      return matchesWeeklyRecurringEntry(entry, selectedDate, pascha)
     case 'season':
       return matchesSeasonEntry(entry, selectedDate, pascha)
     case 'movable':

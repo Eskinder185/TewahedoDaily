@@ -149,7 +149,12 @@ export function MiniMonthCalendar({
           </span>
         ))}
       </div>
-      <div className={styles.grid} role="region" aria-label={gridRegionLabel}>
+      <div
+        key={`${year}-${month}`}
+        className={styles.grid}
+        role="region"
+        aria-label={gridRegionLabel}
+      >
         {cells.map((cell, idx) => {
           if (cell === null) {
             return <div key={`e-${idx}`} className={styles.cellEmpty} aria-hidden="true" />

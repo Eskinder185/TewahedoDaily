@@ -13,7 +13,11 @@ import { toGregorianIsoDate } from '../utils/gregorianIso'
 import calendarBundle from '../calendarEvents.json'
 import liturgical from '../todayInChurch.json'
 import { movableObservancesOnGregorianDay } from '../../lib/churchCalendar/movablePaschalObservances'
-import { addDays, resolvePaschaGregorianDate } from '../../lib/churchCalendar/pascha'
+import {
+  addDays,
+  isInPaschalFiftyDays,
+  resolvePaschaGregorianDate,
+} from '../../lib/churchCalendar/pascha'
 import { mergeEotcIntoDailyChurch } from '../../lib/eotcCalendar/mergeEotcIntoDailyChurch'
 import { buildUpcomingObservancesFromEotc } from '../../lib/eotcCalendar/buildUpcomingObservancesFromEotc'
 import { eotcDatasetRowToMovableObservanceOnDay } from '../../lib/eotcCalendar/eotcMovableObservanceFromRow'
@@ -162,7 +166,9 @@ function defaultCommemoration(eth: EthiopianDateParts) {
   return mergeCommemoration(undefined, base, eth)
 }
 
-function weeklyFast(dow: number): string | null {
+function weeklyFast(d: Date, pascha: Date | null): string | null {
+  if (pascha && isInPaschalFiftyDays(d, pascha)) return null
+  const dow = d.getDay()
   if (dow === 5) return 'Friday — fast of the Cross (የመስቀል ወፍ)'
   if (dow === 3) return 'Wednesday — fast of the disciples (የሐዋርያት ወፍ)'
   return null
@@ -266,6 +272,11 @@ export function getMockDailyChurchData(gregorian: Date): DailyChurchData {
     gregorian.getDate(),
   )
   const eth = gregorianToEthiopian(d)
+  const y = d.getFullYear()
+  const pascha =
+    resolvePaschaGregorianDate(y) ??
+    resolvePaschaGregorianDate(y + 1) ??
+    resolvePaschaGregorianDate(y - 1)
   const key = `${eth.month}-${eth.day}` as MockCommemorationKey
   const row = COMMEMORATIONS[key]
   const rowCat = row?.eventId ? EVENT_BY_ID.get(row.eventId) : undefined
@@ -274,7 +285,7 @@ export function getMockDailyChurchData(gregorian: Date): DailyChurchData {
     : defaultCommemoration(eth)
 
   const season = resolveSeason(eth.month)
-  const fastWeekly = weeklyFast(d.getDay())
+  const fastWeekly = weeklyFast(d, pascha)
   const fastSeasonal = seasonalFast(d, eth.month)
 
   const eotcSorted = sortEotcEntriesForCalendarPanel(getEntriesForDate(d))

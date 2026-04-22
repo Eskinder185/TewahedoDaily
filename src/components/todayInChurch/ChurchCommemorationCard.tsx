@@ -54,7 +54,7 @@ export function ChurchCommemorationCard({ commemoration }: Props) {
           )}
           {prayAndChant && (
             <div className={styles.educationalSection}>
-              <h4 className={styles.educationalLabel}>Prayer & Chant Guidance</h4>
+              <h4 className={styles.educationalLabel}>Prayer & Hymn Guidance</h4>
               <p className={styles.detailP}>{prayAndChant}</p>
             </div>
           )}

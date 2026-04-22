@@ -29,11 +29,29 @@ import { scrollTargetIntoView } from '../../lib/scrollUtils'
 import styles from './ChantPracticePlayer.module.css'
 
 const SPEEDS = [0.5, 0.75, 1, 1.25] as const
+const AUTO_SPLIT_END_BUFFER_SEC = 3
+const MIN_LOOP_SPAN_SEC = 0.35
 
 function snapPlaybackRate(n: number): number {
   return SPEEDS.reduce((best, r) =>
     Math.abs(r - n) < Math.abs(best - n) ? r : best,
   )
+}
+
+function buildDefaultAutoSplitSections(
+  durationSec: number,
+): AutoSplitSectionRange[] | null {
+  if (!Number.isFinite(durationSec) || durationSec <= 0) return null
+  const usableEnd = durationSec - AUTO_SPLIT_END_BUFFER_SEC
+  if (usableEnd <= MIN_LOOP_SPAN_SEC * 3) return null
+  const third = usableEnd / 3
+  const sections: AutoSplitSectionRange[] = [
+    { start: 0, end: third },
+    { start: third, end: third * 2 },
+    { start: third * 2, end: usableEnd },
+  ]
+  const valid = sections.every((s) => s.end > s.start + MIN_LOOP_SPAN_SEC)
+  return valid ? sections : null
 }
 
 type ChantPracticePlayerProps = {
@@ -61,6 +79,8 @@ export function ChantPracticePlayer({
   const [apiReady, setApiReady] = useState(false)
   const [playerReady, setPlayerReady] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [currentTimeSec, setCurrentTimeSec] = useState(0)
+  const [durationSec, setDurationSec] = useState(0)
   const [volume, setVolume] = useState(80)
   const [rate, setRate] = useState(1)
   const [loopStart, setLoopStart] = useState<number | null>(null)
@@ -100,6 +120,8 @@ export function ChantPracticePlayer({
     setSplitHighlight('full')
     setPlayerReady(false)
     setIsPlaying(false)
+    setCurrentTimeSec(0)
+    setDurationSec(0)
     didScrollAfterPlayerReadyRef.current = false
   }, [payload.entryId, videoId])
 
@@ -165,6 +187,10 @@ export function ChantPracticePlayer({
             const r = snapPlaybackRate(p.getPlaybackRate())
             setRate(r)
             p.setPlaybackRate(r)
+            const dur = p.getDuration()
+            if (typeof dur === 'number' && Number.isFinite(dur)) {
+              setDurationSec(Math.max(0, dur))
+            }
             setPlayerReady(true)
           },
           onStateChange: (e) => {
@@ -232,6 +258,21 @@ export function ChantPracticePlayer({
     [getPlayer],
   )
 
+  const seekTo = useCallback(
+    (value: number) => {
+      const p = getPlayer()
+      if (!p) return
+      const dur = p.getDuration()
+      const target =
+        Number.isFinite(dur) && dur > 0
+          ? Math.max(0, Math.min(dur, value))
+          : Math.max(0, value)
+      p.seekTo(target, true)
+      setCurrentTimeSec(target)
+    },
+    [getPlayer],
+  )
+
   const markStart = useCallback(() => {
     setLoopError(null)
     setLoopPlaying(false)
@@ -280,31 +321,26 @@ export function ChantPracticePlayer({
     setSplitHighlight('full')
   }, [])
 
-  const handleFullVideo = useCallback(() => {
-    setLoopPlaying(false)
-    setLoopStart(null)
-    setLoopEnd(null)
-    setLoopError(null)
-    setSplitHighlight('full')
-  }, [])
-
   const handleAutoSplit = useCallback(() => {
     setLoopError(null)
     const p = getPlayer()
     if (!p || typeof p.getDuration !== 'function') return
     const d = p.getDuration()
-    if (d == null || !Number.isFinite(d) || d <= 2) {
-      setLoopError('Video length not ready yet. Try again in a moment.')
+    const sections = buildDefaultAutoSplitSections(d)
+    if (!sections) {
+      setAutoSplitSections(null)
+      setSplitHighlight('neutral')
+      if (d == null || !Number.isFinite(d) || d <= 0) {
+        setLoopError('Video length not ready yet. Try again in a moment.')
+      } else {
+        setLoopError(
+          'Auto split is unavailable for very short videos. Use Advanced Loop Practice.',
+        )
+      }
       return
     }
-    const third = d / 3
-    const sections: AutoSplitSectionRange[] = [
-      { start: 0, end: third },
-      { start: third, end: 2 * third },
-      { start: 2 * third, end: d },
-    ]
     setAutoSplitSections(sections)
-    setSplitHighlight('full')
+    setSplitHighlight(1)
     setLoopPlaying(false)
     setLoopStart(null)
     setLoopEnd(null)
@@ -432,6 +468,28 @@ export function ChantPracticePlayer({
     return () => window.clearInterval(iv)
   }, [loopPlaying, loopStart, loopEnd])
 
+  useEffect(() => {
+    if (!playerReady) return
+    const iv = window.setInterval(() => {
+      const p = playerRef.current
+      if (!p || typeof p.getCurrentTime !== 'function') return
+      const t = p.getCurrentTime()
+      if (typeof t === 'number' && Number.isFinite(t)) {
+        setCurrentTimeSec(Math.max(0, t))
+      }
+      const d = p.getDuration()
+      if (typeof d === 'number' && Number.isFinite(d)) {
+        setDurationSec(Math.max(0, d))
+      }
+    }, 220)
+    return () => window.clearInterval(iv)
+  }, [playerReady])
+
+  useEffect(() => {
+    if (!playerReady || !videoId) return
+    handleAutoSplit()
+  }, [playerReady, videoId, payload.entryId, handleAutoSplit])
+
   const memorizeLabel = learnTabLabel ?? t('practiceChantTabMemorize')
   const recordLabel = voiceTabLabel ?? 'Record'
 
@@ -541,6 +599,8 @@ export function ChantPracticePlayer({
             <ChantPlayerControls
               disabled={controlsDisabled}
               isPlaying={isPlaying}
+              currentTimeSec={currentTimeSec}
+              durationSec={durationSec}
               onTogglePlay={togglePlay}
               volume={volume}
               onVolumeChange={onVolumeChange}
@@ -548,6 +608,7 @@ export function ChantPracticePlayer({
               onRateChange={onRateChange}
               onSkipBack={() => skipBy(-5)}
               onSkipForward={() => skipBy(5)}
+              onSeek={seekTo}
             />
           </section>
 
@@ -572,8 +633,6 @@ export function ChantPracticePlayer({
               onRenameSavedSection={renameSavedLoopSection}
               autoSplitSections={autoSplitSections}
               splitHighlight={splitHighlight}
-              onFullVideo={handleFullVideo}
-              onAutoSplit={handleAutoSplit}
               onSelectAutoSection={handleSelectAutoSection}
             />
           </div>

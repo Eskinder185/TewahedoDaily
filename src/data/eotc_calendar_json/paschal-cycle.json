@@ -478,6 +478,76 @@
     },
     {
       "type": "calendar_entry",
+      "id": "damawi-tensae",
+      "title": "ዳግም ትንሣኤ (ቶማስ)",
+      "transliterationTitle": "Damawi Tensae",
+      "englishTitle": "Thomas Sunday / New Sunday",
+      "date": {
+        "kind": "movable",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "First Sunday after Fasika",
+        "movableAnchor": "fasika",
+        "offsetFromAnchor": 7,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": "Sunday",
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "paschal-cycle",
+          "resurrection"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "The first Sunday after Fasika, commemorating Christ’s appearance to Saint Thomas.",
+        "panel": "Damawi Tensae remembers the appearance of the risen Christ to Saint Thomas and strengthens the Church in resurrection faith.",
+        "whyItMatters": "It proclaims that the Resurrection is real and bodily, calling believers from doubt to confession and joy.",
+        "connection": "It connects the faithful to the living witness of the apostles within the fifty joyful Paschal days."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "joyful",
+        "commonPractices": [
+          "Paschal liturgy",
+          "Resurrection hymns",
+          "Thanksgiving prayer"
+        ]
+      },
+      "display": {
+        "featured": true,
+        "priority": 1,
+        "calendarBadge": "Paschal Feast",
+        "calendarColor": "white",
+        "showOnHomepage": true
+      },
+      "content": {
+        "extended": "Thomas Sunday stands within the Paschal joy of the Resurrection, celebrating the confession of Saint Thomas: “My Lord and my God.”",
+        "notes": [],
+        "relatedEntries": [
+          "fasika",
+          "ascension",
+          "pentecost"
+        ]
+      },
+      "searchKeywords": [
+        "Dagmawi Tensia",
+        "Damawi Tensae",
+        "Thomas Sunday",
+        "New Sunday"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
       "id": "ascension",
       "title": "ዕርገት",
       "transliterationTitle": "Ereget",

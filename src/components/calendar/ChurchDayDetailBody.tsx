@@ -136,7 +136,7 @@ export function ChurchDayDetailBody({
               />
             </figure>
             <p className={styles.linkCardK}>{t('practiceVerb')}</p>
-            <p className={styles.linkCardT}>Chants and faithful rehearsal</p>
+            <p className={styles.linkCardT}>Hymns and faithful rehearsal</p>
           </Link>
         </div>
         <p className={styles.pMuted}>{t('calendarDayChantLead')}</p>
@@ -330,7 +330,7 @@ export function ChurchDayDetailBody({
 
                         {commemoration.prayAndChant?.trim() && (
                           <div className={styles.educationalSummary}>
-                            <h4 className={styles.summaryTitle}>Prayer & Chant Guidance</h4>
+                            <h4 className={styles.summaryTitle}>Prayer & Hymn Guidance</h4>
                             <p className={styles.summaryText}>{commemoration.prayAndChant}</p>
                           </div>
                         )}

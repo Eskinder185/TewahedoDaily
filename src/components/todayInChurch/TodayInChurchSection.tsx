@@ -183,12 +183,6 @@ export function TodayInChurchSection({
   )
   const monthImage = resolveMonthlyImage(snapshot.ethiopian.month)
 
-  const monthRhythmImage = useMemo(() => {
-    const probe = new Date(viewYear, viewMonth, 12)
-    const ethMonth = buildChurchDaySnapshot(probe).ethiopian.month
-    return resolveMonthlyImage(ethMonth)
-  }, [viewYear, viewMonth])
-
   const dashboardTabs = useMemo(
     () => [
       {
@@ -319,25 +313,13 @@ export function TodayInChurchSection({
                 className={styles.selectedDayAnchor}
               >
                 <SelectedChurchDayPanel
+                  key={detailDate.toDateString()}
                   calendarPageLayout
                   date={detailDate}
                   today={now}
                   onPrevDay={() => shiftDetailDay(-1)}
                   onNextDay={() => shiftDetailDay(1)}
                 />
-              </div>
-              <div className={styles.monthRhythm}>
-                <p className={styles.monthRhythmLabel}>Month in the Ethiopian year</p>
-                <figure className={styles.monthRhythmFigure}>
-                  <CalendarImage
-                    src={monthRhythmImage}
-                    fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                    alt=""
-                    className={styles.monthRhythmImg}
-                    fetchPriority="low"
-                    sizes="(max-width: 720px) 100vw, min(36rem, 70vw)"
-                  />
-                </figure>
               </div>
               <details className={styles.contextFold}>
                 <summary className={styles.contextSummary}>Liturgical season &amp; fasting</summary>

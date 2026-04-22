@@ -5,6 +5,10 @@ type Props = {
   fallbackSrc: string
   alt?: string
   className?: string
+  /** Optional fit mode override for framed slots. */
+  objectFit?: 'cover' | 'contain'
+  /** Optional crop anchor, e.g. `50% 35%` */
+  objectPosition?: string
   /** Default `lazy`. Use `eager` for above-the-fold liturgical hero when it carries immediate meaning. */
   loading?: 'lazy' | 'eager'
   /** Hint scheduling; use `low` for decorative art, `high` for primary day hero. */
@@ -25,6 +29,8 @@ export function CalendarImage({
   fallbackSrc,
   alt = '',
   className,
+  objectFit,
+  objectPosition,
   loading = 'lazy',
   fetchPriority,
   sizes,
@@ -52,6 +58,14 @@ export function CalendarImage({
       width={width}
       height={height}
       fetchPriority={fetchPriority}
+      style={
+        objectFit || objectPosition
+          ? {
+              objectFit,
+              objectPosition,
+            }
+          : undefined
+      }
       onError={onError}
     />
   )

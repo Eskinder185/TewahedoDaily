@@ -1,8 +1,13 @@
 .shell {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
   margin-bottom: var(--space-6);
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 84%, var(--color-gold-line));
+  background: color-mix(in srgb, var(--color-bg-elevated) 96%, var(--color-bg-muted));
+  box-shadow: var(--shadow-soft);
 }
 
 .scrollLandmark {
@@ -33,7 +38,7 @@
 
 @media (max-width: 959.98px) {
   .playerBlock {
-    padding: var(--space-3);
+    padding: var(--space-2);
     border-radius: var(--radius-md);
     border: 1px solid
       color-mix(in srgb, var(--color-border-strong) 88%, var(--color-gold-line));
@@ -54,9 +59,9 @@
 
 @media (max-width: 959.98px) {
   .loopAside {
-    margin-top: var(--space-4);
-    padding-top: var(--space-4);
-    border-top: 1px dashed color-mix(in srgb, var(--color-border) 78%, transparent);
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px dashed color-mix(in srgb, var(--color-border) 70%, transparent);
   }
 }
 
@@ -155,7 +160,7 @@
 
 .layout {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
   align-items: start;
 }
 

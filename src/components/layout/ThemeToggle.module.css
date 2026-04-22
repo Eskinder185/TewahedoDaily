@@ -110,8 +110,10 @@
   }
 
   .seg {
-    min-height: 0;
-    height: 2rem;
-    width: 2.25rem;
+    /* Keep accessibility standard - don't reduce touch targets */
+    min-height: var(--tap-min);
+    height: auto;
+    width: var(--tap-min);
+    min-width: var(--tap-min);
   }
 }

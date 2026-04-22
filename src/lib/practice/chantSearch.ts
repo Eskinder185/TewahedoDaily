@@ -10,7 +10,7 @@ import {
 import { MEZMUR_ENTRIES } from './mezmurData'
 import type { MezmurItem } from './types'
 
-export type ChantFormFilter = 'all' | 'mezmur' | 'werb' | 'english'
+export type ChantFormFilter = 'all' | 'mezmur' | 'werb' | 'english' | 'marian' | 'saints' | 'feast-days'
 
 /** Single searchable document per chant — keys aligned with Fuse fields. */
 export type ChantSearchDocument = {
@@ -154,8 +154,42 @@ export function matchesForm(
   if (formFilter === 'all') return true
   if (formFilter === 'english') {
     return entry.form === 'mezmur' && entry.item.language === 'en'
+  }  if (formFilter === 'marian') {
+    if (entry.form === 'mezmur') {
+      const m = entry.item
+      return (
+        (m.categorySaints?.some(saint => 
+          saint.toLowerCase().includes('mary') || 
+          saint.toLowerCase().includes('mariam') || 
+          saint.toLowerCase().includes('maryam') ||
+          saint.toLowerCase().includes('ማርያም')
+        )) ||
+        (m.categoryThemes?.some(theme => 
+          theme.toLowerCase().includes('marian') || 
+          theme.toLowerCase().includes('mary')
+        ))
+      )
+    }
+    return false
   }
-  return entry.form === formFilter
+  if (formFilter === 'saints') {
+    if (entry.form === 'mezmur') {
+      const m = entry.item
+      return m.categorySaints && m.categorySaints.length > 0
+    }
+    return false
+  }
+  if (formFilter === 'feast-days') {
+    if (entry.form === 'mezmur') {
+      const m = entry.item
+      return (
+        (m.categoryMajorHoliday && m.categoryMajorHoliday.length > 0) ||
+        (m.relatedFeast && m.relatedFeast.trim().length > 0) ||
+        (m.category === 'feast')
+      )
+    }
+    return false
+  }  return entry.form === formFilter
 }
 
 /**

@@ -7,6 +7,8 @@ const RATES = [0.5, 0.75, 1, 1.25] as const
 type ChantPlayerControlsProps = {
   disabled: boolean
   isPlaying: boolean
+  currentTimeSec: number
+  durationSec: number
   onTogglePlay: () => void
   volume: number
   onVolumeChange: (value: number) => void
@@ -14,11 +16,14 @@ type ChantPlayerControlsProps = {
   onRateChange: (value: number) => void
   onSkipBack: () => void
   onSkipForward: () => void
+  onSeek: (value: number) => void
 }
 
 export function ChantPlayerControls({
   disabled,
   isPlaying,
+  currentTimeSec,
+  durationSec,
   onTogglePlay,
   volume,
   onVolumeChange,
@@ -26,12 +31,47 @@ export function ChantPlayerControls({
   onRateChange,
   onSkipBack,
   onSkipForward,
+  onSeek,
 }: ChantPlayerControlsProps) {
   const t = useUiLabel()
   const volId = useId()
+  const timelineId = useId()
   const speedLabelId = useId()
+  const hasDuration = Number.isFinite(durationSec) && durationSec > 0
+  const clampedNow = hasDuration
+    ? Math.max(0, Math.min(durationSec, currentTimeSec))
+    : 0
+  const remaining = hasDuration ? Math.max(0, durationSec - clampedNow) : 0
+  const fmt = (sec: number) => {
+    const s = Math.max(0, Math.floor(sec))
+    const m = Math.floor(s / 60)
+    const r = s % 60
+    return `${m}:${String(r).padStart(2, '0')}`
+  }
+
   return (
     <div className={styles.root}>
+      <div className={styles.row}>
+        <label className={styles.timelineLabel} htmlFor={timelineId}>
+          <span className={styles.timelineText}>Timeline</span>
+          <input
+            id={timelineId}
+            type="range"
+            className={styles.timelineRange}
+            min={0}
+            max={hasDuration ? Math.floor(durationSec) : 100}
+            value={hasDuration ? Math.floor(clampedNow) : 0}
+            disabled={disabled || !hasDuration}
+            onChange={(e) => onSeek(Number(e.target.value))}
+            aria-label="Playback timeline"
+          />
+          <span className={styles.timelineTimes}>
+            <span>{fmt(clampedNow)}</span>
+            <span>−{fmt(remaining)}</span>
+          </span>
+        </label>
+      </div>
+
       <div className={styles.rowPrimary}>
         <button
           type="button"

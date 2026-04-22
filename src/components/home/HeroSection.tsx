@@ -26,7 +26,7 @@ export function HeroSection() {
             Your daily church companion
           </h1>
           <p className={styles.tagline}>
-            Prayer, chants, and the Ethiopian Orthodox calendar — gathered in one quiet
+            Prayer, hymns, and the Ethiopian Orthodox calendar — gathered in one quiet
             place.
           </p>
           <div className={styles.actions}>
