@@ -91,7 +91,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 34%;
 }
 
 .todayBtn {
@@ -339,7 +339,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 40%;
 }
 
 .expandedP {

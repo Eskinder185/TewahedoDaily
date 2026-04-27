@@ -69,7 +69,10 @@ export function mezmurEntryToMezmurItem(e: MezmurEntry): MezmurItem {
     (typeof e.category === 'string' ? (e.category as MezmurCategory) : 'other')
   return {
     id: e.id,
+    slug: e.slug ?? e.id,
     title: e.title,
+    youtubeUrl: (e as { youtubeUrl?: string }).youtubeUrl,
+    audioUrl: e.audioUrl,
     youtubeId: youtubeId ?? '',
     thumbnailUrl: e.thumbnail,
     titleTransliteration: e.transliterationTitle,
@@ -178,8 +181,14 @@ export function prayerEntryToTselotPrayer(e: PrayerEntry): TselotPrayer {
 
   return {
     id: e.id,
+    slug: e.slug ?? e.id,
     title: e.title,
     transliterationTitle: e.transliterationTitle,
+    collection: e.collection ?? '',
+    collectionSlug: e.collectionSlug ?? e.collection ?? '',
+    section: e.section ?? '',
+    chapter: e.chapter == null ? '' : String(e.chapter),
+    order: e.order ?? 0,
     categoryPrimary: cat.primary,
     categoryUsage: cat.usage,
     categorySeason: cat.season,

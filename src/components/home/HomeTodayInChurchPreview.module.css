@@ -23,6 +23,7 @@
 }
 
 .figure {
+  position: relative;
   margin: 0;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -30,14 +31,138 @@
   box-shadow: var(--shadow-card);
   aspect-ratio: 16 / 11;
   background: color-mix(in srgb, var(--color-border-strong) 35%, var(--color-bg-elevated));
+  isolation: isolate;
+  touch-action: pan-y;
+}
+
+.slideStage {
+  position: absolute;
+  inset: 0;
 }
 
 .figureImg {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 30%;
+  opacity: 0;
+  transform: scale(1.01);
+  transition:
+    opacity 900ms var(--ease-out),
+    transform 1400ms var(--ease-out);
+}
+
+.figureImgActive {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.caption {
+  position: absolute;
+  z-index: 2;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: grid;
+  gap: 0.2rem;
+  max-width: min(28rem, calc(100% - var(--space-6)));
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 40%, transparent);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--color-midnight) 78%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg) 64%, transparent) 100%
+  );
+  color: var(--color-text-inverse);
+  backdrop-filter: blur(10px);
+}
+
+.caption span {
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+}
+
+.caption strong {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  line-height: var(--leading-tight);
+  color: var(--color-text-inverse);
+}
+
+.controls {
+  position: absolute;
+  z-index: 3;
+  inset-inline: var(--space-2);
+  top: 50%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.controls button {
+  pointer-events: auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 42%, transparent);
+  background: color-mix(in srgb, var(--color-midnight) 72%, transparent);
+  color: var(--color-text-inverse);
+  font-size: 1.6rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition:
+    transform var(--duration-med) var(--ease-spring),
+    background var(--duration-med) var(--ease-out);
+}
+
+.controls button:hover {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--color-midnight) 84%, var(--color-gold-faint));
+}
+
+.controls button:focus-visible,
+.dots button:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+.dots {
+  position: absolute;
+  z-index: 3;
+  right: var(--space-3);
+  top: var(--space-3);
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.35rem 0.45rem;
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--color-midnight) 60%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.dots button {
+  width: 0.5rem;
+  height: 0.5rem;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--color-gold-bright) 72%, transparent);
+  background: transparent;
+  cursor: pointer;
+}
+
+.dots .dotActive {
+  width: 1.15rem;
+  background: var(--color-gold-bright);
 }
 
 .eyebrow {
@@ -183,8 +308,43 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .figureImg {
+    transition: none;
+    transform: none;
+  }
+
+  .controls button:hover {
+    transform: none;
+  }
+
   .cta:hover {
     transform: none;
+  }
+}
+
+@media (max-width: 519.98px) {
+  .figure {
+    aspect-ratio: 4 / 3;
+  }
+
+  .caption {
+    left: var(--space-2);
+    right: var(--space-2);
+    bottom: var(--space-2);
+    padding: var(--space-2);
+  }
+
+  .caption strong {
+    font-size: var(--text-sm);
+  }
+
+  .controls {
+    inset-inline: var(--space-1);
+  }
+
+  .controls button {
+    width: 2rem;
+    height: 2rem;
   }
 }
 

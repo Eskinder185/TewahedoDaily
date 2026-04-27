@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import { PrayerTextTabs } from './PrayerTextTabs'
 import styles from './PrayerTextCard.module.css'
 
@@ -10,25 +9,12 @@ type Props = {
     geez: string
     english: string
   }
-  summary?: {
-    amharic?: string
-    english?: string
-  }
-  transliteration?: {
-    amharic: string
-    geez: string
-    english: string
-  }
-  extraNotes?: ReactNode
 }
 
 export function PrayerTextCard({
   title,
   transliterationTitle,
   text,
-  summary,
-  transliteration,
-  extraNotes,
 }: Props) {
   return (
     <section className={styles.wrap} aria-labelledby="prayer-text-card-title">
@@ -42,12 +28,7 @@ export function PrayerTextCard({
         ) : null}
       </div>
 
-      <PrayerTextTabs
-        text={text}
-        summary={summary}
-        transliteration={transliteration}
-        extraNotes={extraNotes}
-      />
+      <PrayerTextTabs text={text} />
     </section>
   )
 }

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { PageSection } from '../components/ui/PageSection'
 import { MiniMonthCalendar } from '../components/todayInChurch/MiniMonthCalendar'
 import { useHomeToday } from '../hooks/useHomeToday'
@@ -14,6 +14,10 @@ import {
 } from '../lib/churchCalendar/upcomingObservanceDisplay'
 import { CalendarImage } from '../components/calendar/CalendarImage'
 import {
+  getSynaxariumEntryForGregorianDate,
+  hasDetailedSynaxariumEntry,
+} from '../lib/synaxarium'
+import {
   calendarImageManifest,
   resolveEventImageById,
   resolveEventImagePresentation,
@@ -25,6 +29,7 @@ export function CalendarPage() {
   const [viewYear, setViewYear] = useState(now.getFullYear())
   const [viewMonth, setViewMonth] = useState(now.getMonth())
   const [selectedDay, setSelectedDay] = useState<number | null>(now.getDate())
+  const detailRef = useRef<HTMLElement | null>(null)
 
   const upcoming = useMemo(() => {
     const rows = snapshot.upcoming.filter((item) => Boolean(item.gregorianAnchorIso))
@@ -50,6 +55,11 @@ export function CalendarPage() {
     () => (selectedDate ? getEntriesForDate(selectedDate) : []),
     [selectedDate],
   )
+  const selectedSynaxarium = useMemo(
+    () => (selectedDate ? getSynaxariumEntryForGregorianDate(selectedDate) : null),
+    [selectedDate],
+  )
+  const hasDetailedSynaxarium = hasDetailedSynaxariumEntry(selectedSynaxarium)
   const selectedModel = useMemo(
     () =>
       selectedDate
@@ -59,9 +69,9 @@ export function CalendarPage() {
   )
   const selectedPrimary = selectedModel?.primary ?? null
   const selectedStory = selectedModel?.primaryStory ?? null
-  const selectedType = selectedPrimary
-    ? selectedPrimary.entry.category.primary.replace(/-/g, ' ')
-    : null
+  const selectedMonthlyRows = selectedModel
+    ? selectedModel.sortedRows.filter((row) => row.entry.date.kind === 'monthly-recurring')
+    : []
   const selectedImagePresentation = resolveEventImagePresentation(
     selectedPrimary?.entry.id,
     {
@@ -88,6 +98,15 @@ export function CalendarPage() {
     setViewYear(now.getFullYear())
     setViewMonth(now.getMonth())
     setSelectedDay(now.getDate())
+  }
+
+  const selectCalendarDay = (day: number) => {
+    setSelectedDay(day)
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      window.requestAnimationFrame(() => {
+        detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      })
+    }
   }
 
   const openObservanceInCalendar = (item: UpcomingObservance) => {
@@ -119,7 +138,7 @@ export function CalendarPage() {
                   <CalendarImage
                     src={resolveEventImageById(item.id) ?? calendarImageManifest.anchors.todayInChurch}
                     fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                    alt=""
+                    alt={`${item.title} observance image`}
                     className={styles.observanceImage}
                     objectFit={imagePresentation.objectFit}
                     objectPosition={imagePresentation.objectPosition}
@@ -164,15 +183,72 @@ export function CalendarPage() {
           displayMonthIndex={viewMonth}
           dayMarks={marks}
           selectedDay={selectedDay}
-          onSelectDay={setSelectedDay}
+          onSelectDay={selectCalendarDay}
           onPrevMonth={goPrevMonth}
           onNextMonth={goNextMonth}
         />
-        <section className={styles.dayDetail} aria-live="polite">
+        <section ref={detailRef} className={styles.dayDetail} aria-live="polite">
           {!selectedDate || !selectedSnapshot ? (
             <p className={styles.emptyDetail}>Select a day to view observance details.</p>
           ) : selectedPrimary ? (
             <>
+              {selectedSynaxarium ? (
+                <article className={styles.synaxariumCard}>
+                  <div className={styles.synaxariumHead}>
+                    <p className={styles.synaxariumDate}>
+                      <span>{selectedSnapshot.gregorian.labelLong}</span>
+                      <span aria-hidden> / </span>
+                      <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
+                    </p>
+                    <span className={styles.synaxariumBadge}>
+                      {selectedSynaxarium.importanceLevel} {selectedSynaxarium.type}
+                    </span>
+                  </div>
+                  <h2 className={styles.synaxariumTitle}>
+                    {hasDetailedSynaxarium
+                      ? selectedSynaxarium.title
+                      : `Synaxarium Reading for ${selectedSynaxarium.ethiopianMonth} ${selectedSynaxarium.ethiopianDay}`}
+                  </h2>
+                  <p className={styles.synaxariumSummary}>
+                    {hasDetailedSynaxarium
+                      ? selectedSynaxarium.shortSummary
+                      : 'Synaxarium details for this date are being prepared.'}
+                  </p>
+                  {hasDetailedSynaxarium && selectedSynaxarium.mainCommemorations.length > 0 ? (
+                    <div className={styles.synaxariumBlock}>
+                      <h3 className={styles.synaxariumBlockTitle}>Commemorations</h3>
+                      <ul className={styles.synaxariumList}>
+                        {selectedSynaxarium.mainCommemorations.slice(0, 5).map((line, index) => (
+                          <li key={`${selectedSynaxarium.id}-commemoration-${index}`}>
+                            {line}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                  {hasDetailedSynaxarium ? (
+                    <details className={styles.synaxariumMore}>
+                      <summary>Read more</summary>
+                      {selectedSynaxarium.readMore ? <p>{selectedSynaxarium.readMore}</p> : null}
+                      {selectedSynaxarium.scriptureReferences.length > 0 ? (
+                        <p>
+                          <span className={styles.synaxariumMetaLabel}>Scripture: </span>
+                          {selectedSynaxarium.scriptureReferences.join(', ')}
+                        </p>
+                      ) : null}
+                    </details>
+                  ) : null}
+                  {hasDetailedSynaxarium ? (
+                    <p className={styles.synaxariumSource}>
+                      Source: {selectedSynaxarium.sourceTitle}
+                      {selectedSynaxarium.sourcePage
+                        ? `, PDF page ${selectedSynaxarium.sourcePage}`
+                        : ''}
+                      {` (${selectedSynaxarium.sourceDateHeading})`}
+                    </p>
+                  ) : null}
+                </article>
+              ) : null}
               <figure className={styles.dayDetailMedia} aria-hidden>
                 <CalendarImage
                   src={
@@ -180,7 +256,7 @@ export function CalendarPage() {
                     calendarImageManifest.anchors.todayInChurch
                   }
                   fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                  alt=""
+                  alt={`${selectedPrimary.entry.englishTitle?.trim() || selectedPrimary.entry.title} observance image`}
                   className={styles.dayDetailImage}
                   objectFit={selectedImagePresentation.objectFit}
                   objectPosition={selectedImagePresentation.objectPosition}
@@ -189,13 +265,13 @@ export function CalendarPage() {
                 />
               </figure>
               <div className={styles.dayDetailHead}>
-                <p className={styles.dayDetailType}>{selectedType ?? 'Observance'}</p>
+                <p className={styles.dayDetailType}>Today's Feast or Commemoration</p>
                 <h2 className={styles.dayDetailTitle}>
                   {selectedPrimary.entry.englishTitle?.trim() || selectedPrimary.entry.title}
                 </h2>
                 <p className={styles.dayDetailDates}>
                   <span>{selectedSnapshot.gregorian.labelLong}</span>
-                  <span aria-hidden> · </span>
+                  <span aria-hidden> / </span>
                   <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
                 </p>
               </div>
@@ -214,20 +290,94 @@ export function CalendarPage() {
                   </div>
                 </details>
               ) : null}
+              {selectedMonthlyRows.length > 0 ? (
+                <section className={styles.dayDetailSection}>
+                  <h3 className={styles.dayDetailSectionTitle}>Monthly Commemorations</h3>
+                  <ul className={styles.dayDetailList}>
+                    {selectedMonthlyRows.map((row) => (
+                      <li key={row.entry.id}>
+                        <span>{row.entry.englishTitle?.trim() || row.entry.title}</span>
+                        <small>{row.entry.summary.short}</small>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
             </>
           ) : (
-            <div className={styles.dayDetailHead}>
+            <>
+              {selectedSynaxarium ? (
+                <article className={styles.synaxariumCard}>
+                  <div className={styles.synaxariumHead}>
+                    <p className={styles.synaxariumDate}>
+                      <span>{selectedSnapshot.gregorian.labelLong}</span>
+                      <span aria-hidden> / </span>
+                      <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
+                    </p>
+                    <span className={styles.synaxariumBadge}>
+                      {selectedSynaxarium.importanceLevel} {selectedSynaxarium.type}
+                    </span>
+                  </div>
+                  <h2 className={styles.synaxariumTitle}>
+                    {hasDetailedSynaxarium
+                      ? selectedSynaxarium.title
+                      : `Synaxarium Reading for ${selectedSynaxarium.ethiopianMonth} ${selectedSynaxarium.ethiopianDay}`}
+                  </h2>
+                  <p className={styles.synaxariumSummary}>
+                    {hasDetailedSynaxarium
+                      ? selectedSynaxarium.shortSummary
+                      : 'Synaxarium details for this date are being prepared.'}
+                  </p>
+                  {hasDetailedSynaxarium && selectedSynaxarium.mainCommemorations.length > 0 ? (
+                    <div className={styles.synaxariumBlock}>
+                      <h3 className={styles.synaxariumBlockTitle}>Commemorations</h3>
+                      <ul className={styles.synaxariumList}>
+                        {selectedSynaxarium.mainCommemorations.slice(0, 5).map((line, index) => (
+                          <li key={`${selectedSynaxarium.id}-commemoration-${index}`}>
+                            {line}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                  {hasDetailedSynaxarium ? (
+                    <details className={styles.synaxariumMore}>
+                      <summary>Read more</summary>
+                      {selectedSynaxarium.readMore ? <p>{selectedSynaxarium.readMore}</p> : null}
+                      {selectedSynaxarium.scriptureReferences.length > 0 ? (
+                        <p>
+                          <span className={styles.synaxariumMetaLabel}>Scripture: </span>
+                          {selectedSynaxarium.scriptureReferences.join(', ')}
+                        </p>
+                      ) : null}
+                    </details>
+                  ) : null}
+                  {hasDetailedSynaxarium ? (
+                    <p className={styles.synaxariumSource}>
+                      Source: {selectedSynaxarium.sourceTitle}
+                      {selectedSynaxarium.sourcePage
+                        ? `, PDF page ${selectedSynaxarium.sourcePage}`
+                        : ''}
+                      {` (${selectedSynaxarium.sourceDateHeading})`}
+                    </p>
+                  ) : null}
+                </article>
+              ) : null}
+              {!hasDetailedSynaxarium ? (
+                <div className={styles.dayDetailHead}>
               <p className={styles.dayDetailType}>Regular Day</p>
               <h2 className={styles.dayDetailTitle}>No major observance listed</h2>
               <p className={styles.dayDetailDates}>
                 <span>{selectedSnapshot.gregorian.labelLong}</span>
-                <span aria-hidden> · </span>
+                <span aria-hidden> / </span>
                 <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
               </p>
               <p className={styles.dayDetailSummary}>
                 Regular day in the liturgical calendar. Continue with daily prayer and remembrance.
               </p>
-            </div>
+                </div>
+              ) : null}
+            </>
           )}
         </section>
       </section>

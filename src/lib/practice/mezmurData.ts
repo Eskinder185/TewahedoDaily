@@ -2,6 +2,8 @@ import type { MezmurEntry } from '../../data/types/mezmur'
 import { youtubeThumbnailUrl, youtubeWatchUrl } from '../../data/utils/youtube'
 import { CHANT_WORKSHOP_MEZMUR_ENTRIES } from './chantWorkshopEntries'
 import { mezmurEntryToMezmurItem } from './fromCanonical'
+import type { MezmurItem } from './types'
+import { slugifyMezmur } from './mezmurSlug'
 
 /**
  * Practice tab mezmur entries — only `data/chants/amharic-chants.json` + `english-mezmur-chants.json`.
@@ -35,7 +37,46 @@ export const MEZMUR_ENTRIES: MezmurEntry[] = dedupeById(
   CHANT_WORKSHOP_MEZMUR_ENTRIES,
 )
 
-export const MEZMUR_ITEMS = MEZMUR_ENTRIES.map(mezmurEntryToMezmurItem)
+const SLUG_OVERRIDES_BY_ID: Record<string, string> = {
+  'dink-adirgolignyal': 'dink-adirgolignal',
+}
+
+function withUniqueSlugs(entries: MezmurEntry[]): MezmurItem[] {
+  const used = new Map<string, number>()
+
+  return entries.map((entry) => {
+    const base = slugifyMezmur(
+      SLUG_OVERRIDES_BY_ID[entry.id] ||
+        entry.slug ||
+        entry.transliterationTitle ||
+        entry.title ||
+        entry.id,
+      slugifyMezmur(entry.id, 'mezmur'),
+    )
+    const count = used.get(base) ?? 0
+    used.set(base, count + 1)
+    const slug =
+      count === 0
+        ? base
+        : `${base}-${slugifyMezmur(entry.id, String(count + 1))}`
+
+    return mezmurEntryToMezmurItem({ ...entry, slug })
+  })
+}
+
+export const MEZMUR_ITEMS = withUniqueSlugs(MEZMUR_ENTRIES)
+
+export const MEZMUR_ITEMS_BY_SLUG = new Map(
+  MEZMUR_ITEMS.flatMap((item) => [
+    [item.slug, item] as const,
+    [item.id, item] as const,
+  ]),
+)
+
+export function findMezmurBySlug(slug?: string | null): MezmurItem | undefined {
+  if (!slug) return undefined
+  return MEZMUR_ITEMS_BY_SLUG.get(slug.trim().toLowerCase())
+}
 
 export const youtubeThumbUrl = youtubeThumbnailUrl
 export { youtubeWatchUrl }

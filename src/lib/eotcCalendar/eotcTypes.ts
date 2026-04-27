@@ -85,6 +85,9 @@ export type EotcCalendarEntry = {
   title: string
   transliterationTitle: string | null
   englishTitle: string | null
+  focalPoint?: string | null
+  focalX?: number | null
+  focalY?: number | null
   date: EotcEntryDate
   category: EotcCategory
   summary: EotcSummary

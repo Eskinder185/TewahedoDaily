@@ -14,6 +14,7 @@ import {
 } from '../../lib/practice/chantSearch'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../../data/utils/youtube'
 import { youtubeThumbUrl } from '../../lib/practice'
+import { mezmurDetailPath, mezmurShareUrl } from '../../lib/practice/mezmurSlug'
 import { ChantLibraryPreview } from './ChantLibraryPreview'
 import {
   chantEntryHasVideo,
@@ -88,6 +89,7 @@ export function ChantsSection() {
   const [formFilter, setFormFilter] = useState<FormFilter>('all')
   const [recentSearches, setRecentSearches] = useState<string[]>([])
   const [customDrawerOpen, setCustomDrawerOpen] = useState(false)
+  const [copiedLink, setCopiedLink] = useState(false)
 
   useEffect(() => {
     setRecentSearches(getRecentChantSearches())
@@ -135,6 +137,11 @@ export function ChantsSection() {
     setPracticeEntry(entry)
   }
 
+  const onCopyMezmurLink = () => {
+    setCopiedLink(true)
+    window.setTimeout(() => setCopiedLink(false), 1800)
+  }
+
   const openCustomPractice = (payload: ChantPracticePayload) => {
     setPracticeEntry(null)
     setCustomPayload(payload)
@@ -175,6 +182,11 @@ export function ChantsSection() {
   return (
     <div className={styles.root}>
       <p className={styles.chantHelper}>{t('practiceChantsHelper')}</p>
+      {copiedLink ? (
+        <p className={styles.copyToast} role="status">
+          Link copied
+        </p>
+      ) : null}
 
       <section
         className={styles.chantTools}
@@ -268,6 +280,7 @@ export function ChantsSection() {
           <ChantLibraryPreview
             entries={featured}
             onSelect={openChant}
+            onCopyLink={onCopyMezmurLink}
           />
           <div className={styles.browseActions}>
             <button
@@ -318,18 +331,33 @@ export function ChantsSection() {
             </div>
           ) : (
             <ul className={styles.grid}>
-              {gridEntries.map((entry) => (
-                <li key={chantEntryKey(entry)}>
-                  <PracticeMediaCard
-                    title={entry.item.title}
-                    imageUrl={chantThumbnail(entry)}
-                    subtitle={chantSubtitle(entry)}
-                    teaserLine={chantMeaningTeaser(entry)}
-                    onSelect={() => openChant(entry)}
-                    tag={formBadge(entry.form)}
-                  />
-                </li>
-              ))}
+              {gridEntries.map((entry) => {
+                const isMezmur = entry.form === 'mezmur'
+                return (
+                  <li key={chantEntryKey(entry)}>
+                    <PracticeMediaCard
+                      title={entry.item.title}
+                      imageUrl={chantThumbnail(entry)}
+                      subtitle={chantSubtitle(entry)}
+                      teaserLine={chantMeaningTeaser(entry)}
+                      {...(isMezmur
+                        ? {
+                            internalHref: mezmurDetailPath(entry.item.slug),
+                            copyHref: mezmurShareUrl(entry.item.slug),
+                            onCopyLink: onCopyMezmurLink,
+                            onOpen: () => {
+                              if (qTrim.length >= 2) {
+                                addRecentChantSearch(qTrim)
+                                setRecentSearches(getRecentChantSearches())
+                              }
+                            },
+                          }
+                        : { onSelect: () => openChant(entry) })}
+                      tag={formBadge(entry.form)}
+                    />
+                  </li>
+                )
+              })}
             </ul>
           )}
         </>

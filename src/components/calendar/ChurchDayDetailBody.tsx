@@ -11,6 +11,7 @@ import {
   calendarImageManifest,
   resolveCommemorationImage,
   resolveEventImageById,
+  resolveEventImagePresentation,
   resolveSelectedDayHeroImage,
 } from '../../content/calendarImageManifest'
 import { dayObservanceChips } from './churchDayChips'
@@ -50,11 +51,22 @@ export function ChurchDayDetailBody({
     )
     const eotcRows = eotcOrderedRows ?? []
     const { commemoration, season, fasting } = snapshot
-    const hero = resolveSelectedDayHeroImage(snapshot)
+    const primaryEotcEntry = showEotcCalendar ? eotcRows[0]?.entry : undefined
+    const primaryImageId = primaryEotcEntry?.id ?? commemoration.catalogEventId
+    const hero =
+      resolveEventImageById(primaryImageId) ?? resolveSelectedDayHeroImage(snapshot)
     const heroFallback = resolveCommemorationImage(
       commemoration.title,
       commemoration.transliterationTitle,
       commemoration.catalogEventId,
+    )
+    const heroPresentation = resolveEventImagePresentation(
+      primaryImageId,
+      {
+        objectFit: 'cover',
+        objectPosition: '50% 30%',
+      },
+      primaryEotcEntry,
     )
     const lead =
       commemoration.shortDescription?.trim() || commemoration.whyTodayShort
@@ -184,6 +196,8 @@ export function ChurchDayDetailBody({
                 src={hero}
                 fallbackSrc={heroFallback}
                 className={styles.hero}
+                objectFit={heroPresentation.objectFit}
+                objectPosition={heroPresentation.objectPosition}
                 loading="eager"
                 fetchPriority="high"
                 sizes="(max-width: 719px) 100vw, min(42rem, 90vw)"
@@ -238,11 +252,24 @@ export function ChurchDayDetailBody({
                       {snapshot.movableOnDay.map((m) => (
                         <article key={m.id} className={styles.movableCard}>
                           <figure className={styles.movableFig} aria-hidden>
+                            {(() => {
+                              const movablePresentation = resolveEventImagePresentation(
+                                m.catalogEventId,
+                                {
+                                  objectFit: 'cover',
+                                  objectPosition: '50% 30%',
+                                },
+                              )
+                              return (
                             <CalendarImage
                               src={resolveEventImageById(m.catalogEventId) ?? heroFallback}
                               fallbackSrc={heroFallback}
                               className={styles.movableImg}
+                              objectFit={movablePresentation.objectFit}
+                              objectPosition={movablePresentation.objectPosition}
                             />
+                              )
+                            })()}
                           </figure>
                           <div className={styles.movableBody}>
                             <h4 className={styles.movableTitle}>{m.title}</h4>
@@ -368,11 +395,24 @@ export function ChurchDayDetailBody({
                       {snapshot.movableOnDay.map((m) => (
                         <article key={m.id} className={styles.movableCard}>
                           <figure className={styles.movableFig} aria-hidden>
+                            {(() => {
+                              const movablePresentation = resolveEventImagePresentation(
+                                m.catalogEventId,
+                                {
+                                  objectFit: 'cover',
+                                  objectPosition: '50% 30%',
+                                },
+                              )
+                              return (
                             <CalendarImage
                               src={resolveEventImageById(m.catalogEventId) ?? heroFallback}
                               fallbackSrc={heroFallback}
                               className={styles.movableImg}
+                              objectFit={movablePresentation.objectFit}
+                              objectPosition={movablePresentation.objectPosition}
                             />
+                              )
+                            })()}
                           </figure>
                           <div className={styles.movableBody}>
                             <h4 className={styles.movableTitle}>{m.title}</h4>

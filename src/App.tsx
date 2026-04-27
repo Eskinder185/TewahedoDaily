@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Navigate, Routes, Route } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
 import { PageLoadingFallback } from './components/ui/PageLoadingFallback'
 import { useScrollToTopOnRouteChange } from './hooks/useScroll'
@@ -7,14 +7,12 @@ import { useScrollToTopOnRouteChange } from './hooks/useScroll'
 // Lazy load all pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })))
 const PracticePage = lazy(() => import('./pages/PracticePage').then(m => ({ default: m.PracticePage })))
+const MezmurDetailPage = lazy(() => import('./pages/MezmurDetailPage').then(m => ({ default: m.MezmurDetailPage })))
 const CalendarPage = lazy(() => import('./pages/CalendarPage').then(m => ({ default: m.CalendarPage })))
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })))
-const PrayersHubPage = lazy(() => import('./pages/PrayersHubPage').then(m => ({ default: m.PrayersHubPage })))
-const ZeweterTselotPage = lazy(() => import('./pages/ZeweterTselotPage').then(m => ({ default: m.ZeweterTselotPage })))
-const WudaseMariamPage = lazy(() => import('./pages/WudaseMariamPage').then(m => ({ default: m.WudaseMariamPage })))
-const MezmureDawitPage = lazy(() => import('./pages/MezmureDawitPage').then(m => ({ default: m.MezmureDawitPage })))
-const YekidaneTselotPage = lazy(() => import('./pages/YekidaneTselotPage').then(m => ({ default: m.YekidaneTselotPage })))
-const MehareneAbPage = lazy(() => import('./pages/MehareneAbPage').then(m => ({ default: m.MehareneAbPage })))
+const PrayerListPage = lazy(() => import('./pages/PrayerListPage').then(m => ({ default: m.PrayerListPage })))
+const PrayerCollectionPage = lazy(() => import('./pages/PrayerCollectionPage').then(m => ({ default: m.PrayerCollectionPage })))
+const PrayerDetailPage = lazy(() => import('./pages/PrayerDetailPage').then(m => ({ default: m.PrayerDetailPage })))
 
 export default function App() {
   // Automatically scroll to top when route changes
@@ -33,6 +31,11 @@ export default function App() {
             <PracticePage />
           </Suspense>
         } />
+        <Route path="/practice/mezmur/:slug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <MezmurDetailPage />
+          </Suspense>
+        } />
         <Route path="/calendar" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <CalendarPage />
@@ -43,35 +46,40 @@ export default function App() {
             <AboutPage />
           </Suspense>
         } />
+        <Route path="/pray" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PrayerListPage />
+          </Suspense>
+        } />
+        <Route path="/pray/:collectionSlug/:prayerSlug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PrayerDetailPage />
+          </Suspense>
+        } />
+        <Route path="/pray/:collectionSlug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PrayerCollectionPage />
+          </Suspense>
+        } />
         <Route path="/prayers" element={
           <Suspense fallback={<PageLoadingFallback />}>
-            <PrayersHubPage />
+            <PrayerListPage />
           </Suspense>
         } />
         <Route path="/prayers/zeweter" element={
-          <Suspense fallback={<PageLoadingFallback />}>
-            <ZeweterTselotPage />
-          </Suspense>
+          <Navigate to="/pray/zewter-tselot" replace />
         } />
         <Route path="/prayers/wudase-mariam" element={
-          <Suspense fallback={<PageLoadingFallback />}>
-            <WudaseMariamPage />
-          </Suspense>
+          <Navigate to="/pray/wudasie-mariam" replace />
         } />
         <Route path="/prayers/mezmure-dawit" element={
-          <Suspense fallback={<PageLoadingFallback />}>
-            <MezmureDawitPage />
-          </Suspense>
+          <Navigate to="/pray/mezmure-dawit" replace />
         } />
         <Route path="/prayers/yekidane-tselot" element={
-          <Suspense fallback={<PageLoadingFallback />}>
-            <YekidaneTselotPage />
-          </Suspense>
+          <Navigate to="/pray/yekidane-tselot" replace />
         } />
         <Route path="/prayers/meharene-ab" element={
-          <Suspense fallback={<PageLoadingFallback />}>
-            <MehareneAbPage />
-          </Suspense>
+          <Navigate to="/pray/meharene-ab" replace />
         } />
       </Route>
     </Routes>

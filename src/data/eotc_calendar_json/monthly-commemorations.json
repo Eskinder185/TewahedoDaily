@@ -208,7 +208,11 @@
       "id": "saint-george-monthly-23",
       "title": "ቅዱስ ጊዮርጊስ",
       "transliterationTitle": "Kidus Giorgis",
-      "englishTitle": "Saint George Monthly Commemoration",
+      "englishTitle": "Saint Georgios Monthly Commemoration",
+      "image": "/images/calendar/Saint%20George.JPG",
+      "imageAlt": "Saint Georgios observance image",
+      "observanceType": "monthly-commemoration",
+      "priority": 60,
       "date": {
         "kind": "monthly-recurring",
         "ethiopianMonth": null,
@@ -229,8 +233,8 @@
         "majorHoliday": false
       },
       "summary": {
-        "short": "Monthly commemoration of Saint George, the victorious martyr.",
-        "panel": "The 23rd day of each Ethiopian month remembers Saint George and his victorious witness.",
+        "short": "Monthly commemoration of Saint Georgios, the victorious martyr.",
+        "panel": "The 23rd day of each Ethiopian month remembers Saint Georgios and his victorious witness.",
         "whyItMatters": "It strengthens courage, faithfulness, and devotion to one of the Church’s beloved martyrs.",
         "connection": "It connects the faithful to bold confession of Christ and steadfast endurance."
       },
@@ -251,13 +255,14 @@
         "showOnHomepage": false
       },
       "content": {
-        "extended": "The 23rd day of each Ethiopian month remembers Saint George and his victorious witness.",
+        "extended": "The 23rd day of each Ethiopian month remembers Saint Georgios and his victorious witness.",
         "notes": [],
         "relatedEntries": [
           "saint-george-major"
         ]
       },
       "searchKeywords": [
+        "Saint Georgios",
         "Saint George",
         "23rd day"
       ],
@@ -341,6 +346,10 @@
       "title": "መድኃኔ ዓለም",
       "transliterationTitle": "Medhane Alem",
       "englishTitle": "Medhane Alem Monthly Commemoration",
+      "image": "/images/calendar/MedhaneAlem.png",
+      "imageAlt": "Medhane Alem observance image",
+      "observanceType": "monthly-commemoration",
+      "priority": 90,
       "date": {
         "kind": "monthly-recurring",
         "ethiopianMonth": null,
@@ -395,6 +404,412 @@
         {
           "title": "EOTC calendar research note",
           "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "silase-monthly-7",
+      "title": "Silase / Holy Trinity",
+      "transliterationTitle": "Silase",
+      "englishTitle": "Silase / Holy Trinity Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 7th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 7,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "monthly-commemoration",
+          "lord-feast"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of the Holy Trinity.",
+        "panel": "The 7th day of each Ethiopian month is kept in honor of the Holy Trinity: Father, Son, and Holy Spirit.",
+        "whyItMatters": "This monthly remembrance keeps worship centered on the one God worshiped in Trinity.",
+        "connection": "It connects daily prayer to the Church's confession of the Father, the Son, and the Holy Spirit."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Trinitarian hymns"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "gold",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 7th day of each Ethiopian month is kept in honor of the Holy Trinity: Father, Son, and Holy Spirit.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "Silase",
+        "Holy Trinity",
+        "7th day"
+      ],
+      "sources": [
+        {
+          "title": "Ethiopian Orthodox Tewahedo Church, Religious Holidays and Calendar",
+          "type": "official-calendar"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-raphael-monthly-13",
+      "title": "Kidus Raphael",
+      "transliterationTitle": "Kidus Raphael",
+      "englishTitle": "Kidus Raphael Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 13th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 13,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel",
+          "monthly-commemoration"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of Archangel Raphael.",
+        "panel": "The 13th day of each Ethiopian month remembers Archangel Raphael, honored for healing and guidance by God's command.",
+        "whyItMatters": "This remembrance asks God for mercy, healing, and protection through the ministry of His angels.",
+        "connection": "It connects the faithful to the Church's angelic commemorations and prayers for healing."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Prayer for healing"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 13th day of each Ethiopian month remembers Archangel Raphael, honored for healing and guidance by God's command.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-raphael-major"
+        ]
+      },
+      "searchKeywords": [
+        "Kidus Raphael",
+        "Raphael",
+        "13th day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "kidane-mihret-monthly-16",
+      "title": "Kidane Mihret",
+      "transliterationTitle": "Kidane Mihret",
+      "englishTitle": "Kidane Mihret Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 16th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 16,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "mary",
+        "secondary": [
+          "monthly-commemoration",
+          "marian"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of Kidane Mihret, the Covenant of Mercy.",
+        "panel": "The 16th day of each Ethiopian month remembers Kidane Mihret, honoring the merciful promise associated with Saint Mary.",
+        "whyItMatters": "The commemoration points the faithful toward mercy, repentance, and the intercession of the Mother of God.",
+        "connection": "It connects the monthly calendar to the annual Kidane Mihret feast on Yekatit 16."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Marian hymns",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 16th day of each Ethiopian month remembers Kidane Mihret, honoring the merciful promise associated with Saint Mary.",
+        "notes": [],
+        "relatedEntries": [
+          "kidane-mehret"
+        ]
+      },
+      "searchKeywords": [
+        "Kidane Mihret",
+        "Covenant of Mercy",
+        "16th day"
+      ],
+      "sources": [
+        {
+          "title": "Ethiopian Orthodox Tewahedo Church, Religious Holidays and Calendar",
+          "type": "official-calendar"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-uriel-monthly-22",
+      "title": "Kidus Uriel",
+      "transliterationTitle": "Kidus Uriel",
+      "englishTitle": "Kidus Uriel Monthly Commemoration",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 22nd of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 22,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel",
+          "monthly-commemoration"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of Archangel Uriel.",
+        "panel": "The 22nd day of each Ethiopian month remembers Archangel Uriel, honored as a minister of divine light and wisdom.",
+        "whyItMatters": "This remembrance calls the faithful to seek God's light, wisdom, and protection.",
+        "connection": "It connects the monthly cycle to the Church's reverence for the holy angels."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 22nd day of each Ethiopian month remembers Archangel Uriel, honored as a minister of divine light and wisdom.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-uriel-major"
+        ]
+      },
+      "searchKeywords": [
+        "Kidus Uriel",
+        "Uriel",
+        "22nd day"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-mercurius-monthly-25",
+      "title": "St. Merkorious",
+      "transliterationTitle": "Kidus Merkorious",
+      "englishTitle": "St. Merkorious Monthly Commemoration",
+      "image": "/images/calendar/St.Merkorious.png",
+      "imageAlt": "St. Merkorious observance image",
+      "observanceType": "monthly-commemoration",
+      "priority": 60,
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 25th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 25,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "saint",
+        "secondary": [
+          "martyr",
+          "monthly-commemoration"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly commemoration of St. Merkorious.",
+        "panel": "The 25th day of each Ethiopian month remembers St. Merkorious, honored among the martyrs and warrior saints.",
+        "whyItMatters": "His remembrance encourages courage, steadfast faith, and trust in Christ under trial.",
+        "connection": "It connects monthly devotion with Synaxarium commemorations of St. Merkorious and churches dedicated in his honor."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Prayer",
+          "Commemoration hymns",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 3,
+        "calendarBadge": "Monthly Commemoration",
+        "calendarColor": "red",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 25th day of each Ethiopian month remembers St. Merkorious, honored among the martyrs and warrior saints.",
+        "notes": [],
+        "relatedEntries": []
+      },
+      "searchKeywords": [
+        "St. Merkorious",
+        "Kidus Merkorious",
+        "Kidus Mercurius",
+        "Mercurius",
+        "25th day"
+      ],
+      "sources": [
+        {
+          "title": "The Ethiopian Synaxarium",
+          "type": "synaxarium",
+          "dateHeading": "Hedar 25; Hamle 25"
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "christ-nativity-monthly-29",
+      "title": "Monthly Nativity of Christ",
+      "transliterationTitle": "Lidet",
+      "englishTitle": "Monthly Nativity of Christ",
+      "date": {
+        "kind": "monthly-recurring",
+        "ethiopianMonth": null,
+        "ethiopianDay": null,
+        "gregorianHint": "Occurs on the 29th of every Ethiopian month",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": 29,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "major-feast",
+        "secondary": [
+          "monthly-commemoration",
+          "lord-feast"
+        ],
+        "majorHoliday": false
+      },
+      "summary": {
+        "short": "Monthly remembrance of the Nativity of Christ.",
+        "panel": "The 29th day of each Ethiopian month remembers the birth of Christ, keeping the mystery of the Incarnation before the faithful.",
+        "whyItMatters": "This remembrance points to the Word of God made flesh for the salvation of the world.",
+        "connection": "It connects each month to the annual feast of Lidet/Gena on Tahsas 29."
+      },
+      "observance": {
+        "fastStatus": "commemoration",
+        "liturgicalTone": "festal",
+        "commonPractices": [
+          "Prayer",
+          "Liturgy",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Monthly Lord's Day",
+        "calendarColor": "gold",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "The 29th day of each Ethiopian month remembers the birth of Christ, keeping the mystery of the Incarnation before the faithful.",
+        "notes": [],
+        "relatedEntries": [
+          "lidet"
+        ]
+      },
+      "searchKeywords": [
+        "Nativity",
+        "Lidet",
+        "Gena",
+        "29th day"
+      ],
+      "sources": [
+        {
+          "title": "Ethiopian Orthodox Tewahedo Church, Religious Holidays and Calendar",
+          "type": "official-calendar"
         }
       ],
       "confidence": "high"

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './PracticeMediaCard.module.css'
 
@@ -12,14 +13,40 @@ type PracticeMediaCardBase = {
 }
 
 export type PracticeMediaCardProps =
-  | (PracticeMediaCardBase & { onSelect: () => void; externalHref?: undefined })
-  | (PracticeMediaCardBase & { externalHref: string; onSelect?: undefined })
+  | (PracticeMediaCardBase & {
+      onSelect: () => void
+      externalHref?: undefined
+      internalHref?: undefined
+      copyHref?: undefined
+      onCopyLink?: undefined
+      onOpen?: undefined
+    })
+  | (PracticeMediaCardBase & {
+      externalHref: string
+      onSelect?: undefined
+      internalHref?: undefined
+      copyHref?: undefined
+      onCopyLink?: undefined
+      onOpen?: undefined
+    })
+  | (PracticeMediaCardBase & {
+      internalHref: string
+      copyHref?: string
+      onCopyLink?: () => void
+      onOpen?: () => void
+      onSelect?: undefined
+      externalHref?: undefined
+    })
 
 export function PracticeMediaCard({
   title,
   imageUrl,
   onSelect,
   externalHref,
+  internalHref,
+  copyHref,
+  onCopyLink,
+  onOpen,
   tag,
   subtitle,
   teaserLine,
@@ -52,6 +79,41 @@ export function PracticeMediaCard({
       {teaserLine ? <span className={styles.teaser}>{teaserLine}</span> : null}
     </>
   )
+
+  if (internalHref) {
+    const copyLink = async () => {
+      if (!copyHref) return
+      try {
+        await navigator.clipboard.writeText(copyHref)
+        onCopyLink?.()
+      } catch {
+        window.prompt('Copy mezmur link', copyHref)
+      }
+    }
+
+    return (
+      <article className={styles.cardShell}>
+        <Link
+          to={internalHref}
+          className={styles.card}
+          aria-label={`${t('open')} ${title}`}
+          onClick={onOpen}
+        >
+          {inner}
+        </Link>
+        <div className={styles.actions}>
+          <Link to={internalHref} className={styles.openLink} onClick={onOpen}>
+            Open
+          </Link>
+          {copyHref ? (
+            <button type="button" className={styles.copyBtn} onClick={copyLink}>
+              Copy Link
+            </button>
+          ) : null}
+        </div>
+      </article>
+    )
+  }
 
   if (externalHref) {
     return (

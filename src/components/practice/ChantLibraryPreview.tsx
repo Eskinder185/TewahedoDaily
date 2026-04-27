@@ -5,6 +5,7 @@ import {
 } from '../../lib/practice/chantLibrary'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../../data/utils/youtube'
 import { youtubeThumbUrl } from '../../lib/practice'
+import { mezmurDetailPath, mezmurShareUrl } from '../../lib/practice/mezmurSlug'
 import { chantMeaningTeaser } from '../../lib/practice/chantCardTeaser'
 import { PracticeMediaCard } from './PracticeMediaCard'
 import styles from './ChantLibraryPreview.module.css'
@@ -36,11 +37,13 @@ function chantSubtitle(entry: ChantLibraryEntry): string | undefined {
 type ChantLibraryPreviewProps = {
   entries: ChantLibraryEntry[]
   onSelect: (entry: ChantLibraryEntry) => void
+  onCopyLink?: () => void
 }
 
 export function ChantLibraryPreview({
   entries,
   onSelect,
+  onCopyLink,
 }: ChantLibraryPreviewProps) {
   return (
     <section className={styles.root} aria-labelledby="chant-preview-heading">
@@ -52,18 +55,27 @@ export function ChantLibraryPreview({
         lyrics side by side.
       </p>
       <ul className={styles.grid}>
-        {entries.map((entry) => (
-          <li key={chantEntryKey(entry)}>
-            <PracticeMediaCard
-              title={entry.item.title}
-              imageUrl={chantThumbnail(entry)}
-              subtitle={chantSubtitle(entry)}
-              teaserLine={chantMeaningTeaser(entry)}
-              onSelect={() => onSelect(entry)}
-              tag={FORM_BADGE[entry.form]}
-            />
-          </li>
-        ))}
+        {entries.map((entry) => {
+          const isMezmur = entry.form === 'mezmur'
+          return (
+            <li key={chantEntryKey(entry)}>
+              <PracticeMediaCard
+                title={entry.item.title}
+                imageUrl={chantThumbnail(entry)}
+                subtitle={chantSubtitle(entry)}
+                teaserLine={chantMeaningTeaser(entry)}
+                {...(isMezmur
+                  ? {
+                      internalHref: mezmurDetailPath(entry.item.slug),
+                      copyHref: mezmurShareUrl(entry.item.slug),
+                      onCopyLink,
+                    }
+                  : { onSelect: () => onSelect(entry) })}
+                tag={FORM_BADGE[entry.form]}
+              />
+            </li>
+          )
+        })}
       </ul>
     </section>
   )

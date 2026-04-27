@@ -37,6 +37,12 @@ export type PrayerEntrySource = {
 export type PrayerEntry = {
   type: 'prayer'
   id: string
+  slug?: string
+  collection?: string
+  collectionSlug?: string
+  section?: string
+  chapter?: string | number
+  order?: number
   title: string
   transliterationTitle: string
   category: PrayerEntryCategory

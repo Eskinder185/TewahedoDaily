@@ -7,6 +7,7 @@ const CALENDAR_ROOT = '/images/calendar'
 /** Authoritative pool for Next Observances — filenames match `/public/images/calendar/`. */
 export const NEXT_OBSERVANCES_POOL_FILES = [
   'AbuneTeklehaymanot.png',
+  'AbuneAregawi.JPG',
   'ArchangelRaphael.png',
   'ArchangelsRemembrance.png',
   'ArchangelUriel.png',
@@ -32,15 +33,20 @@ export const NEXT_OBSERVANCES_POOL_FILES = [
   'LidetaMaryam.png',
   'LiturgicalSeason.png',
   'MarianFeast.png',
+  'MedhaneAlem.png',
   'MeetingofPriests.png',
   'MegabitMeskel.png',
   'Meskel.png',
   'MonasticSaintsRemembrance.png',
   'SaintGabrielCommemoration.png',
+  'Saint George.JPG',
+  'Saint Philip.JPG',
+  'SaintDavid.JPG',
   'SaintJohntheBaptist.png',
   'SaintMaryCommemoration.png',
   'SaintMichaelCommemoration.png',
   'SaintsPeterandPaul.png',
+  'SaintStephen.JPG',
   'SaintStephen.png',
   'SaintYared.png',
   'Nineveh.jpg',
@@ -50,6 +56,7 @@ export const NEXT_OBSERVANCES_POOL_FILES = [
   'SaintMichaelFeast.png',
   'SemuneHimamat.jpg',
   'Siqlet.png',
+  'St.Merkorious.png',
   'Timket.png',
   'TodayInChurch.png',
   'Tsinset.png',
@@ -127,14 +134,14 @@ export function inferPoolCategoryFromFileName(fileName: string): NextObservances
   if (/mary|marian|lideta/.test(s)) {
     return 'marian-feast'
   }
-  if (/ethiopian|monastic|abune|saints?|yared|stephen|giorgis|baptist/.test(s)) {
+  if (/ethiopian|monastic|abune|saints?|yared|stephen|estifanos|giorgis|george|david|philip|merkor|mercurius|baptist/.test(s)) {
     return 'saints'
   }
   if (/tsige|liturgical|joyful|season|sacredcalendar|upcoming|todayinchurch/.test(s)) {
     return 'season'
   }
   if (
-    /gena|timket|meskel|hosanna|fasika|damawi|tensae|thomas|siqlet|erget|peraklitos|enkutatash|debre|holytrinity|gizret|kana|megabit|tsinset|rikbe|meetingofpriests/.test(
+    /gena|timket|meskel|hosanna|fasika|damawi|tensae|thomas|siqlet|erget|peraklitos|enkutatash|debre|holytrinity|medhane|gizret|kana|megabit|tsinset|rikbe|meetingofpriests/.test(
       s,
     )
   ) {
@@ -237,12 +244,23 @@ const POOL_FILE_BY_EVENT_ID: Record<string, string> = {
   'lideta-maryam': 'LidetaMaryam.png',
   'debre-zeit': 'Debre Zeit.png',
   'saint-john-the-baptist': 'SaintJohntheBaptist.png',
-  'saint-george-major': 'KidusGiorgis.png',
-  'saint-george-monthly-23': 'KidusGiorgis.png',
+  'saint-george-major': 'Saint George.JPG',
+  'saint-georgios': 'Saint George.JPG',
+  'kidus-giorgis': 'Saint George.JPG',
+  'saint-george-monthly-23': 'Saint George.JPG',
+  'saint-georgios-monthly-23': 'Saint George.JPG',
   'saint-tekle-haymanot-major': 'AbuneTeklehaymanot.png',
   'saint-tekle-haymanot-monthly-24': 'AbuneTeklehaymanot.png',
   'saint-yared-major': 'SaintYared.png',
-  'saint-stephen-major': 'SaintStephen.png',
+  'saint-stephen-major': 'SaintStephen.JPG',
+  'kidus-estifanos': 'SaintStephen.JPG',
+  'kidus-estifanos-major': 'SaintStephen.JPG',
+  'saint-philip': 'Saint Philip.JPG',
+  'kidus-filpos': 'Saint Philip.JPG',
+  philippos: 'Saint Philip.JPG',
+  'abune-aregawi': 'AbuneAregawi.JPG',
+  'abune-aragawi': 'AbuneAregawi.JPG',
+  'saint-david': 'SaintDavid.JPG',
   'saint-peter-and-paul': 'SaintsPeterandPaul.png',
   'saint-michael-major': 'SaintMichaelFeast.png',
   'saint-gabriel-major': 'SaintGabrielFeast.png',
@@ -258,6 +276,14 @@ const POOL_FILE_BY_EVENT_ID: Record<string, string> = {
   'filseta-assumption': 'FilsetaFast.png',
   'apostles-fast': 'TsomeHawaryat.png',
   'tsome-gehad': 'TsomeGehad.png',
+  'medhane-alem': 'MedhaneAlem.png',
+  medhanealem: 'MedhaneAlem.png',
+  'medhane-alem-monthly-27': 'MedhaneAlem.png',
+  'saint-mercurius-monthly-25': 'St.Merkorious.png',
+  'st-merkorious': 'St.Merkorious.png',
+  'kidus-merkorious': 'St.Merkorious.png',
+  'kidus-mercurius': 'St.Merkorious.png',
+  mercurius: 'St.Merkorious.png',
   'bright-season-after-fasika': 'ZemeneTinsae.png',
   'zemene-tsige': 'TsigeSeason.jpg',
   'holy-week': 'SemuneHimamat.jpg',

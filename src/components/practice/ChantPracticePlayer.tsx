@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from 'react'
+import type { ReactNode } from 'react'
 import { ensureYoutubeIframeApi } from '../../lib/youtube/ensureYoutubeIframeApi'
 import {
   loadSavedLoopSections,
@@ -58,6 +59,9 @@ type ChantPracticePlayerProps = {
   payload: ChantPracticePayload
   formLabel: string
   onBack: () => void
+  backLabel?: string
+  badges?: string[]
+  headerActions?: ReactNode
   /** Overrides first learning tab (default: i18n memorize label). */
   learnTabLabel?: string
   /** Overrides second tab (default: “Record”). */
@@ -68,6 +72,9 @@ export function ChantPracticePlayer({
   payload,
   formLabel,
   onBack,
+  backLabel,
+  badges = [],
+  headerActions,
   learnTabLabel,
   voiceTabLabel,
 }: ChantPracticePlayerProps) {
@@ -548,16 +555,24 @@ export function ChantPracticePlayer({
     <div className={styles.shell}>
       <header className={styles.topBar}>
         <button type="button" className={styles.back} onClick={onBack}>
-          {t('playerBack')}
+          {backLabel ?? t('playerBack')}
         </button>
         <div className={styles.titleBlock}>
           <p className={styles.nowPlaying}>{t('practiceChantNowPlaying')}</p>
-          <span className={styles.badge}>{formLabel}</span>
+          <div className={styles.badgeRow}>
+            <span className={styles.badge}>{formLabel}</span>
+            {badges.map((badge) => (
+              <span key={badge} className={styles.badgeSubtle}>
+                {badge}
+              </span>
+            ))}
+          </div>
           <h1 className={styles.title}>{payload.title}</h1>
           {payload.transliterationTitle ? (
             <p className={styles.sub}>{payload.transliterationTitle}</p>
           ) : null}
         </div>
+        {headerActions ? <div className={styles.headerActions}>{headerActions}</div> : null}
       </header>
 
       <div className={styles.layout}>
@@ -580,7 +595,7 @@ export function ChantPracticePlayer({
                 <div className={styles.noVideo}>
                   <p className={styles.noVideoText}>
                     No YouTube link is set for this chant. Lyrics are still available
-                    beside this panel.
+                    beside this panel. Video is not available for this mezmur yet.
                   </p>
                   {payload.watchUrl ? (
                     <a

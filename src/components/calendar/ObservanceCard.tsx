@@ -6,8 +6,11 @@ import {
   galleryBucketToPlaceholderVisual,
   getObservanceGalleryBucket,
 } from '../../lib/eotcCalendar/eotcObservanceGalleryModel'
-import { resolveEventImageById } from '../../content/calendarImageManifest'
-import { calendarImageManifest } from '../../content/calendarImageManifest'
+import {
+  calendarImageManifest,
+  resolveEventImageById,
+  resolveEventImagePresentation,
+} from '../../content/calendarImageManifest'
 import { CalendarImage } from './CalendarImage'
 import styles from './ObservanceCard.module.css'
 
@@ -41,6 +44,14 @@ function ObservanceCardInner({ row, onOpen }: Props) {
   const major = e.category.majorHoliday
   const relatedCount = e.content.relatedEntries?.length ?? 0
   const imageUrl = resolveEventImageById(e.id)
+  const imagePresentation = resolveEventImagePresentation(
+    e.id,
+    {
+      objectFit: 'cover',
+      objectPosition: '50% 30%',
+    },
+    e,
+  )
 
   const onKeyDown = (ev: KeyboardEvent) => {
     if (ev.key === 'Enter' || ev.key === ' ') {
@@ -63,8 +74,10 @@ function ObservanceCardInner({ row, onOpen }: Props) {
             <CalendarImage
               src={imageUrl}
               fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-              alt=""
+              alt={`${displayTitle} observance image`}
               className={styles.image}
+              objectFit={imagePresentation.objectFit}
+              objectPosition={imagePresentation.objectPosition}
               loading="lazy"
               fetchPriority="low"
               sizes="(max-width: 600px) 45vw, 280px"

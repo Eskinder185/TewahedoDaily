@@ -23,7 +23,13 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 38%;
+}
+
+@media (max-width: 639.98px) {
+  .backdropImg {
+    object-position: 50% 32%;
+  }
 }
 
 .backdropScrim {
@@ -32,9 +38,9 @@
   /* Luminous overlay: airy ivory wash + restrained midnight depth */
   background: linear-gradient(
     118deg,
-    color-mix(in srgb, var(--color-bg-hero-wash) 88%, transparent) 0%,
-    color-mix(in srgb, var(--color-bg) 58%, transparent) 44%,
-    color-mix(in srgb, var(--color-midnight) 26%, transparent) 100%
+    color-mix(in srgb, var(--color-midnight) 76%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg) 54%, transparent) 44%,
+    color-mix(in srgb, var(--color-midnight) 30%, transparent) 100%
   );
 }
 
@@ -186,4 +192,3 @@
     justify-content: center;
   }
 }
-

@@ -70,7 +70,11 @@
       "id": "saint-george-major",
       "title": "ቅዱስ ጊዮርጊስ",
       "transliterationTitle": "Kidus Giorgis",
-      "englishTitle": "Saint George",
+      "englishTitle": "Saint Georgios",
+      "image": "/images/calendar/Saint%20George.JPG",
+      "imageAlt": "Saint Georgios observance image",
+      "observanceType": "saint",
+      "priority": 70,
       "date": {
         "kind": "fixed",
         "ethiopianMonth": "Miazia",
@@ -91,8 +95,8 @@
         "majorHoliday": true
       },
       "summary": {
-        "short": "Commemorates Saint George, the victorious martyr and beloved intercessor.",
-        "panel": "Saint George is remembered for his courage, faithfulness, and victory in martyrdom.",
+        "short": "Commemorates Saint Georgios, the victorious martyr and beloved intercessor.",
+        "panel": "Saint Georgios is remembered for his courage, faithfulness, and victory in martyrdom.",
         "whyItMatters": "His life strengthens believers in steadfast faith and holy courage.",
         "connection": "He connects the faithful to martyrdom, spiritual victory, and bold witness to Christ."
       },
@@ -113,13 +117,14 @@
         "showOnHomepage": false
       },
       "content": {
-        "extended": "Saint George is remembered for his courage, faithfulness, and victory in martyrdom.",
+        "extended": "Saint Georgios is remembered for his courage, faithfulness, and victory in martyrdom.",
         "notes": [],
         "relatedEntries": [
           "saint-george-monthly-23"
         ]
       },
       "searchKeywords": [
+        "Saint Georgios",
         "Saint George",
         "Kidus Giorgis"
       ],
@@ -266,7 +271,11 @@
       "id": "saint-stephen-major",
       "title": "ቅዱስ እስጢፋኖስ",
       "transliterationTitle": "Kidus Estifanos",
-      "englishTitle": "Saint Stephen",
+      "englishTitle": "Kidus Estifanos",
+      "image": "/images/calendar/SaintStephen.JPG",
+      "imageAlt": "Kidus Estifanos observance image",
+      "observanceType": "saint",
+      "priority": 70,
       "date": {
         "kind": "fixed",
         "ethiopianMonth": "Tir",
@@ -286,8 +295,8 @@
         "majorHoliday": true
       },
       "summary": {
-        "short": "Commemorates Saint Stephen, the first martyr of the Church.",
-        "panel": "Saint Stephen is remembered as the protomartyr whose witness sealed the Gospel with blood.",
+        "short": "Commemorates Kidus Estifanos, the first martyr of the Church.",
+        "panel": "Kidus Estifanos is remembered as the protomartyr whose witness sealed the Gospel with blood.",
         "whyItMatters": "He is an example of faith, forgiveness, and courage in suffering.",
         "connection": "He connects the faithful to the early Church and the cost of witness to Christ."
       },
@@ -308,11 +317,12 @@
         "showOnHomepage": false
       },
       "content": {
-        "extended": "Saint Stephen is remembered as the protomartyr whose witness sealed the Gospel with blood.",
+        "extended": "Kidus Estifanos is remembered as the protomartyr whose witness sealed the Gospel with blood.",
         "notes": [],
         "relatedEntries": []
       },
       "searchKeywords": [
+        "Kidus Estifanos",
         "Stephen",
         "Protomartyr"
       ],

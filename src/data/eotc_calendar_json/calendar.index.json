@@ -35,7 +35,7 @@
     {
       "name": "monthly-commemorations",
       "file": "monthly-commemorations.json",
-      "count": 6
+      "count": 12
     },
     {
       "name": "weekly-observances",
@@ -48,5 +48,5 @@
       "count": 3
     }
   ],
-  "totalEntries": 49
+  "totalEntries": 55
 }

@@ -22,6 +22,7 @@ export type MezmurCategoryDetail = {
 
 export type MezmurEntry = {
   id: string
+  slug?: string
   type: 'mezmur'
   title: string
   transliterationTitle: string
@@ -31,6 +32,7 @@ export type MezmurEntry = {
   meaning?: string
   /** Full watch URL; thumbnails derived when `thumbnail` omitted */
   youtubeUrl: string
+  audioUrl?: string
   /** Absolute image URL; if omitted, UI may derive from YouTube */
   thumbnail?: string
   category: MezmurCategory | MezmurCategoryDetail

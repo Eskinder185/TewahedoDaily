@@ -9,8 +9,11 @@ import {
 } from '../../lib/eotcCalendar/eotcObservanceGalleryModel'
 import { findNextCivilDayForEntry } from '../../lib/eotcCalendar/eotcFindEntryOccurrence'
 import { toGregorianIsoDate } from '../../data/utils/gregorianIso'
-import { resolveEventImageById } from '../../content/calendarImageManifest'
-import { calendarImageManifest } from '../../content/calendarImageManifest'
+import {
+  calendarImageManifest,
+  resolveEventImageById,
+  resolveEventImagePresentation,
+} from '../../content/calendarImageManifest'
 import { CalendarImage } from './CalendarImage'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './EotcObservanceDetailSheet.module.css'
@@ -46,6 +49,16 @@ export function EotcObservanceDetailSheet({
   const t = useUiLabel()
   const titleId = useId()
   const imageUrl = row ? resolveEventImageById(row.entry.id) : undefined
+  const imagePresentation = row
+    ? resolveEventImagePresentation(
+        row.entry.id,
+        {
+          objectFit: 'cover',
+          objectPosition: '50% 30%',
+        },
+        row.entry,
+      )
+    : undefined
 
   useEffect(() => {
     if (!open) return
@@ -107,6 +120,8 @@ export function EotcObservanceDetailSheet({
                 fallbackSrc={calendarImageManifest.anchors.todayInChurch}
                 alt=""
                 className={styles.heroImg}
+                objectFit={imagePresentation?.objectFit}
+                objectPosition={imagePresentation?.objectPosition}
                 loading="eager"
                 fetchPriority="high"
                 sizes="(max-width: 720px) 100vw, min(28rem, 90vw)"

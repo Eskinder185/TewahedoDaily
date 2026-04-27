@@ -5,10 +5,10 @@
 /** Approximate intrinsic pixels for layout hints (CLS). Match real assets when they change. */
 export const imageManifest = {
   home: {
-    hero: '/images/home/home-hero-tewahedo-daily.jpg',
-    /** Reserve space matching hero JPEG aspect (~3:2). */
-    heroWidth: 2400,
-    heroHeight: 1600,
+    hero: '/images/home/lalibela.png',
+    /** Lalibela portrait asset; hero CSS crops it responsively. */
+    heroWidth: 1856,
+    heroHeight: 2288,
     todayInChurch: '/images/home/lalibela.png',
     todayInChurchWidth: 1600,
     todayInChurchHeight: 1100,

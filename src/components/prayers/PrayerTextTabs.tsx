@@ -1,6 +1,5 @@
-import { useMemo, type ReactNode } from 'react'
+import { useMemo } from 'react'
 import { TabPanel } from '../ui/TabPanel'
-import { PrayerLangNote } from './PrayerLangNote'
 import { PrayerReadingText } from './PrayerReadingText'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './PrayerTextTabs.module.css'
@@ -9,10 +8,6 @@ type TriText = { amharic: string; geez: string; english: string }
 
 type Props = {
   text: TriText
-  summary?: { amharic?: string; english?: string }
-  transliteration?: TriText
-  /** Extra prose below the standard UI language note (e.g. psalm-specific). */
-  extraNotes?: ReactNode
   /**
    * Split tab list / panel across the DOM (e.g. Mezmure Dawit sticky language bar).
    * When set, pass `selectedId`, `onTabChange`, and `ariaIdPrefix` (same `useId()` for both mounts).
@@ -25,9 +20,6 @@ type Props = {
 
 export function PrayerTextTabs({
   text,
-  summary,
-  transliteration,
-  extraNotes,
   split = 'none',
   selectedId,
   onTabChange,
@@ -36,75 +28,6 @@ export function PrayerTextTabs({
   const t = useUiLabel()
 
   const tabs = useMemo(() => {
-    const sumAm = summary?.amharic?.trim() ?? ''
-    const sumEn = summary?.english?.trim() ?? ''
-    const tr = transliteration
-    const hasTrans = Boolean(
-      tr &&
-        (tr.amharic.trim() || tr.geez.trim() || tr.english.trim()),
-    )
-
-    const summaryBody =
-      sumAm || sumEn ? (
-        <div className={styles.summary}>
-          {sumAm ? (
-            <section className={styles.summaryBlock}>
-              <h3 className={styles.summaryH} lang="am">
-                {t('prayerLangAmharic')}
-              </h3>
-              <p className={styles.summaryP} lang="am">
-                {sumAm}
-              </p>
-            </section>
-          ) : null}
-          {sumEn ? (
-            <section className={styles.summaryBlock}>
-              <h3 className={styles.summaryH}>{t('prayerLangEnglish')}</h3>
-              <p className={styles.summaryP}>{sumEn}</p>
-            </section>
-          ) : null}
-        </div>
-      ) : (
-        <p className={styles.muted}>{t('prayerTabSummaryEmpty')}</p>
-      )
-
-    const notesBody = (
-      <div className={styles.notes}>
-        <PrayerLangNote />
-        {extraNotes}
-        {hasTrans && tr ? (
-          <dl className={styles.transList}>
-            {tr.amharic.trim() ? (
-              <>
-                <dt className={styles.transDt} lang="am">
-                  {t('prayerLangAmharic')} · {t('prayerTabNotesTransliteration')}
-                </dt>
-                <dd className={styles.transDd} lang="am">
-                  {tr.amharic.trim()}
-                </dd>
-              </>
-            ) : null}
-            {tr.geez.trim() ? (
-              <>
-                <dt className={styles.transDt} lang="am">
-                  {t('prayerLangGeez')} · {t('prayerTabNotesTransliteration')}
-                </dt>
-                <dd className={styles.transDd}>{tr.geez.trim()}</dd>
-              </>
-            ) : null}
-            {tr.english.trim() ? (
-              <>
-                <dt className={styles.transDt}>
-                  {t('prayerLangEnglish')} · {t('prayerTabNotesTransliteration')}
-                </dt>
-                <dd className={styles.transDd}>{tr.english.trim()}</dd>
-              </>
-            ) : null}
-          </dl>
-        ) : null}
-      </div>
-    )
-
     return [
       {
         id: 'amharic',
@@ -145,18 +68,8 @@ export function PrayerTextTabs({
           </div>
         ),
       },
-      {
-        id: 'summary',
-        label: t('prayerTabSummary'),
-        content: <div className={styles.panel}>{summaryBody}</div>,
-      },
-      {
-        id: 'notes',
-        label: t('prayerTabNotes'),
-        content: <div className={styles.panel}>{notesBody}</div>,
-      },
     ]
-  }, [text, summary, transliteration, extraNotes, t])
+  }, [text, t])
 
   const renderMode = split === 'tablist' ? 'tablist' : split === 'panel' ? 'panel' : 'full'
 

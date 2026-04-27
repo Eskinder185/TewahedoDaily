@@ -36,6 +36,28 @@
         "null"
       ]
     },
+    "focalPoint": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "focalX": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "focalY": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
     "date": {
       "type": "object",
       "required": [

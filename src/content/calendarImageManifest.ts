@@ -3,11 +3,12 @@ import type { ChurchDaySnapshot, UpcomingObservance } from '../lib/churchCalenda
 const CALENDAR_IMAGE_ROOT = '/images/calendar'
 
 /** Encode spaces and non-ASCII file names so `/images/calendar/Debre Zeit.png` resolves reliably. */
-const img = (name: string, ext: 'png' | 'jpg' = 'png') =>
+const img = (name: string, ext: 'png' | 'jpg' | 'JPG' = 'png') =>
   encodeURI(`${CALENDAR_IMAGE_ROOT}/${name}.${ext}`)
 
 export const calendarImageAssets = {
   abiyTsom: img('AbiyTsom'),
+  abuneAregawi: img('AbuneAregawi', 'JPG'),
   /** Canonical saint icon (legacy monthly alias remains mapped below). */
   abuneTeklehaymanot: img('AbuneTeklehaymanot'),
   apostlesPeterAndPaul: img('SaintsPeterandPaul'),
@@ -41,6 +42,7 @@ export const calendarImageAssets = {
   lidetaMaryam: img('LidetaMaryam'),
   liturgicalSeason: img('LiturgicalSeason'),
   marianFeast: img('MarianFeast'),
+  medhaneAlem: img('MedhaneAlem'),
   meetingOfPriests: img('MeetingofPriests'),
   megabitMeskel: img('MegabitMeskel'),
   meskel: img('Meskel'),
@@ -50,11 +52,16 @@ export const calendarImageAssets = {
   sacredCalendarContinuity: img('SacredCalendarContinuity'),
   saintGabrielCommemoration: img('SaintGabrielCommemoration'),
   saintGabrielFeast: img('SaintGabrielFeast'),
+  saintDavid: img('SaintDavid', 'JPG'),
+  saintGeorge: img('Saint George', 'JPG'),
   saintJohnTheBaptist: img('SaintJohntheBaptist'),
   saintMaryCommemoration: img('SaintMaryCommemoration'),
   saintMichaelCommemoration: img('SaintMichaelCommemoration'),
   saintMichaelFeast: img('SaintMichaelFeast'),
-  saintStephen: img('SaintStephen'),
+  saintPhilip: img('Saint Philip', 'JPG'),
+  saintStephen: img('SaintStephen', 'JPG'),
+  saintStephenLegacy: img('SaintStephen'),
+  stMerkorious: img('St.Merkorious'),
   saintYared: img('SaintYared'),
   semuneHimamat: img('SemuneHimamat', 'jpg'),
   siqlet: img('Siqlet'),
@@ -126,12 +133,23 @@ export const calendarImageManifest = {
     'lideta-maryam': calendarImageAssets.lidetaMaryam,
     'debre-zeit': calendarImageAssets.debreZeit,
     'saint-john-the-baptist': calendarImageAssets.saintJohnTheBaptist,
-    'saint-george-major': calendarImageAssets.kidusGiorgis,
-    'saint-george-monthly-23': calendarImageAssets.kidusGiorgis,
+    'saint-george-major': calendarImageAssets.saintGeorge,
+    'saint-georgios': calendarImageAssets.saintGeorge,
+    'kidus-giorgis': calendarImageAssets.saintGeorge,
+    'saint-george-monthly-23': calendarImageAssets.saintGeorge,
+    'saint-georgios-monthly-23': calendarImageAssets.saintGeorge,
     'saint-tekle-haymanot-major': calendarImageAssets.abuneTeklehaymanot,
     'saint-tekle-haymanot-monthly-24': calendarImageAssets.abuneTeklehaymanot,
     'saint-yared-major': calendarImageAssets.saintYared,
     'saint-stephen-major': calendarImageAssets.saintStephen,
+    'kidus-estifanos': calendarImageAssets.saintStephen,
+    'kidus-estifanos-major': calendarImageAssets.saintStephen,
+    'saint-philip': calendarImageAssets.saintPhilip,
+    'kidus-filpos': calendarImageAssets.saintPhilip,
+    philippos: calendarImageAssets.saintPhilip,
+    'abune-aregawi': calendarImageAssets.abuneAregawi,
+    'abune-aragawi': calendarImageAssets.abuneAregawi,
+    'saint-david': calendarImageAssets.saintDavid,
     'saint-peter-and-paul': calendarImageAssets.apostlesPeterAndPaul,
     'saint-michael-major': calendarImageAssets.saintMichaelFeast,
     'saint-gabriel-major': calendarImageAssets.saintGabrielFeast,
@@ -147,7 +165,19 @@ export const calendarImageManifest = {
     'filseta-assumption': calendarImageAssets.filsetaFast,
     'apostles-fast': calendarImageAssets.tsomeHawaryat,
     'tsome-gehad': calendarImageAssets.tsomeGehad,
-    'medhane-alem-monthly-27': calendarImageAssets.feastDayPreparation,
+    'medhane-alem': calendarImageAssets.medhaneAlem,
+    medhanealem: calendarImageAssets.medhaneAlem,
+    'medhane-alem-monthly-27': calendarImageAssets.medhaneAlem,
+    'silase-monthly-7': calendarImageAssets.holyTrinityCommemoration,
+    'saint-raphael-monthly-13': calendarImageAssets.archangelRaphael,
+    'kidane-mihret-monthly-16': calendarImageAssets.kidaneMehret,
+    'saint-uriel-monthly-22': calendarImageAssets.archangelUriel,
+    'saint-mercurius-monthly-25': calendarImageAssets.stMerkorious,
+    'st-merkorious': calendarImageAssets.stMerkorious,
+    'kidus-merkorious': calendarImageAssets.stMerkorious,
+    'kidus-mercurius': calendarImageAssets.stMerkorious,
+    mercurius: calendarImageAssets.stMerkorious,
+    'christ-nativity-monthly-29': calendarImageAssets.gena,
     /** Monthly Marian day — prefer dedicated monthly art when bundled. */
     'beale-maryam': calendarImageAssets.saintMaryCommemoration,
     'saint-mary-monthly-21': calendarImageAssets.saintMaryCommemoration,
@@ -183,6 +213,13 @@ export const calendarImageManifest = {
 type EventImageId = keyof typeof calendarImageManifest.eventsById
 
 const titleKeywordMap: Array<{ pattern: RegExp; image: string }> = [
+  { pattern: /abune\s+ar[ae]gawi|ar[ae]gawi|za-?\s*mikael/i, image: calendarImageAssets.abuneAregawi },
+  { pattern: /saint\s+david|king\s+david|david/i, image: calendarImageAssets.saintDavid },
+  { pattern: /giorgis|georgios|george/i, image: calendarImageAssets.saintGeorge },
+  { pattern: /estifanos|stephen|st[eé]phanos/i, image: calendarImageAssets.saintStephen },
+  { pattern: /philippos|filpos|philip/i, image: calendarImageAssets.saintPhilip },
+  { pattern: /medhane\s*alem|medhanealem|savior of the world/i, image: calendarImageAssets.medhaneAlem },
+  { pattern: /merkorious|mercurius|merkourios|philopator/i, image: calendarImageAssets.stMerkorious },
   { pattern: /teklehaymanot|ተክለሃይማኖት/i, image: calendarImageAssets.abuneTeklehaymanot },
   { pattern: /yohannes|john the baptist|መጥምቅ/i, image: calendarImageAssets.saintJohnTheBaptist },
   { pattern: /giorgis|george|ጊዮርጊስ/i, image: calendarImageAssets.kidusGiorgis },
@@ -239,6 +276,17 @@ const EVENT_IMAGE_FOCAL_POINTS: Record<string, string> = {
   'saint-tekle-haymanot-monthly-24': '50% 28%',
   'saint-george-major': '50% 30%',
   'saint-george-monthly-23': '50% 30%',
+  'saint-georgios': '50% 30%',
+  'saint-georgios-monthly-23': '50% 30%',
+  'kidus-estifanos': '50% 30%',
+  'kidus-estifanos-major': '50% 30%',
+  'saint-philip': '50% 32%',
+  'abune-aregawi': '50% 30%',
+  'abune-aragawi': '50% 30%',
+  'saint-david': '50% 32%',
+  'medhane-alem': '50% 50%',
+  'medhane-alem-monthly-27': '50% 50%',
+  'saint-mercurius-monthly-25': '50% 50%',
   'saint-john-the-baptist': '50% 30%',
 }
 
@@ -256,6 +304,25 @@ export type CalendarImagePresentation = {
   objectPosition: string
 }
 
+export type CalendarImageFocalMeta = {
+  focalPoint?: string | null
+  focalX?: number | null
+  focalY?: number | null
+}
+
+export function resolveCalendarImageFocalPoint(
+  meta?: CalendarImageFocalMeta | null,
+): string | undefined {
+  const explicit = meta?.focalPoint?.trim()
+  if (explicit) return explicit
+  if (typeof meta?.focalX === 'number' && typeof meta?.focalY === 'number') {
+    const x = Math.min(100, Math.max(0, meta.focalX))
+    const y = Math.min(100, Math.max(0, meta.focalY))
+    return `${x}% ${y}%`
+  }
+  return undefined
+}
+
 /**
  * Some observance art is portrait/icon-like. For those IDs, `contain` prevents face/halo clipping.
  * Landscape feast scenes remain `cover` with tuned focal points.
@@ -268,9 +335,17 @@ const EVENT_IMAGE_CONTAIN_IDS = new Set<string>([
   'saint-tekle-haymanot-monthly-24',
   'saint-george-major',
   'saint-george-monthly-23',
+  'saint-georgios',
+  'saint-georgios-monthly-23',
   'saint-john-the-baptist',
   'saint-yared-major',
   'saint-stephen-major',
+  'kidus-estifanos',
+  'kidus-estifanos-major',
+  'saint-philip',
+  'abune-aregawi',
+  'abune-aragawi',
+  'saint-david',
   'daily-senksar-commemoration',
   'righteous-remembrance',
   'abune-teklehaymanot',
@@ -280,12 +355,17 @@ export function resolveEventImagePresentation(
   id?: string | null,
   fallback: CalendarImagePresentation = {
     objectFit: 'cover',
-    objectPosition: '50% 34%',
+    objectPosition: '50% 30%',
   },
+  focalMeta?: CalendarImageFocalMeta | null,
 ): CalendarImagePresentation {
-  if (!id) return fallback
+  const explicitFocal = resolveCalendarImageFocalPoint(focalMeta)
+  if (!id) {
+    return explicitFocal ? { ...fallback, objectPosition: explicitFocal } : fallback
+  }
   const normalized = id.trim().toLowerCase()
-  const objectPosition = EVENT_IMAGE_FOCAL_POINTS[normalized] ?? fallback.objectPosition
+  const objectPosition =
+    explicitFocal ?? EVENT_IMAGE_FOCAL_POINTS[normalized] ?? fallback.objectPosition
   const objectFit = EVENT_IMAGE_CONTAIN_IDS.has(normalized)
     ? 'contain'
     : fallback.objectFit

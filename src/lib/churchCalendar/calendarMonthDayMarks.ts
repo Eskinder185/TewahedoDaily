@@ -2,6 +2,10 @@ import { buildChurchDaySnapshot } from './buildChurchDaySnapshot'
 import type { ChurchDaySnapshot, ObservanceType } from './types'
 import { getEntriesForDate, sortEotcEntriesForCalendarPanel } from '../eotcCalendar'
 import type { EotcCalendarDatasetRow } from '../eotcCalendar/eotcTypes'
+import {
+  getSynaxariumEntryForGregorianDate,
+  hasDetailedSynaxariumEntry,
+} from '../synaxarium'
 
 /**
  * Primary mini-calendar decoration. Shapes + border patterns (not color alone) are
@@ -135,6 +139,20 @@ function classifyDay(
   const rows = getEntriesForDate(d)
   if (rows.length > 0) {
     return buildMarkFromEotc(sortEotcEntriesForCalendarPanel(rows))
+  }
+  const synaxarium = getSynaxariumEntryForGregorianDate(d)
+  if (hasDetailedSynaxariumEntry(synaxarium) && synaxarium) {
+    const primary: CalendarCellMarkKind =
+      synaxarium.importanceLevel === 'major'
+        ? 'majorFeast'
+        : synaxarium.importanceLevel === 'medium'
+          ? 'saint'
+          : 'recurring'
+    return {
+      primary,
+      alsoFast: false,
+      label: synaxarium.title,
+    }
   }
   const snap = buildChurchDaySnapshot(d)
   return classifySnapshot(snap)

@@ -139,6 +139,114 @@
   animation: td-detail-enter var(--duration-med) var(--ease-out);
 }
 
+.synaxariumCard {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 48%, var(--color-border-card));
+  background: color-mix(in srgb, var(--color-bg-elevated) 97%, var(--color-gold-faint));
+}
+
+.synaxariumHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.synaxariumDate {
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.synaxariumBadge {
+  flex-shrink: 0;
+  max-width: 48%;
+  padding: 0.18rem 0.48rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-gold);
+  background: color-mix(in srgb, var(--color-gold-faint) 72%, var(--color-bg-elevated));
+  color: var(--color-heading);
+  font-size: 0.65rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-transform: capitalize;
+}
+
+.synaxariumTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  color: var(--color-heading);
+}
+
+.synaxariumSummary,
+.synaxariumFallback {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.synaxariumFallback {
+  color: var(--color-text-muted);
+}
+
+.synaxariumBlock {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.synaxariumBlockTitle {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.synaxariumList {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.3rem;
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.synaxariumMore summary {
+  cursor: pointer;
+  color: var(--color-heading);
+  font-size: var(--text-sm);
+  font-weight: 800;
+}
+
+.synaxariumMore p {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.synaxariumSource {
+  margin: 0;
+  padding-top: var(--space-1);
+  border-top: 1px solid color-mix(in srgb, var(--color-border-card) 78%, transparent);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.synaxariumMetaLabel {
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
 .dayDetailHead {
   display: grid;
   gap: 0.35rem;
@@ -203,6 +311,53 @@
 .dayDetailMore p {
   margin: var(--space-2) 0 0;
   font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.dayDetailSection {
+  display: grid;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+  border-top: 1px solid color-mix(in srgb, var(--color-border-card) 82%, transparent);
+}
+
+.dayDetailSectionTitle {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.dayDetailList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-1);
+}
+
+.dayDetailList li {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border-card) 62%, transparent);
+}
+
+.dayDetailList li:last-child {
+  border-bottom: 0;
+}
+
+.dayDetailList span {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.dayDetailList small {
+  font-size: var(--text-xs);
+  line-height: 1.45;
   color: var(--color-text-muted);
 }
 

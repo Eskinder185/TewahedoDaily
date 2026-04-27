@@ -11,7 +11,10 @@ import {
   COMPANION_OBSERVANCES,
   isCompanionObservanceId,
 } from '../../content/nextObservancesCompanions'
-import { calendarImageManifest } from '../../content/calendarImageManifest'
+import {
+  calendarImageManifest,
+  resolveEventImagePresentation,
+} from '../../content/calendarImageManifest'
 import { CalendarImage } from '../calendar/CalendarImage'
 import styles from './UpcomingObservancesStrip.module.css'
 
@@ -263,6 +266,13 @@ export function UpcomingObservancesStrip({
                 const summary = cardSummary(item, hasImage)
                 const meaning = item.meaning?.trim()
                 const summaryOpen = expandedSummaryId === item.id
+                const imagePresentation = resolveEventImagePresentation(item.id, {
+                  objectFit: 'cover',
+                  objectPosition:
+                    item.kind === 'fast' || item.kind === 'season' || item.kind === 'weekly'
+                      ? '50% 50%'
+                      : '50% 30%',
+                })
 
                 const cardClass = [
                   styles.card,
@@ -321,8 +331,10 @@ export function UpcomingObservancesStrip({
                       <CalendarImage
                         src={row.art.src}
                         fallbackSrc={fallbackThumb}
-                        alt=""
+                        alt={`${item.title} observance image`}
                         className={styles.heroImg}
+                        objectFit={imagePresentation.objectFit}
+                        objectPosition={imagePresentation.objectPosition}
                         fetchPriority="low"
                         sizes="(max-width: 720px) 88vw, min(420px, 40vw)"
                       />

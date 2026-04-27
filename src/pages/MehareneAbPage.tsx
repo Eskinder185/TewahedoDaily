@@ -28,14 +28,6 @@ export function MehareneAbPage() {
           title={MEHARENE_AB_CONTENT.title}
           transliterationTitle={MEHARENE_AB_CONTENT.transliterationTitle}
           text={MEHARENE_AB_CONTENT.text}
-          summary={MEHARENE_AB_CONTENT.summary}
-          transliteration={MEHARENE_AB_CONTENT.transliteration}
-          extraNotes={
-            <p>
-              English prayer text is not available in the current source yet. The Ge&apos;ez
-              transliteration is included in the notes tab for guided reading.
-            </p>
-          }
         />
       }
     />

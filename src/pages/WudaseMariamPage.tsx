@@ -179,11 +179,7 @@ export function WudaseMariamPage() {
         />
 
         {active ? (
-          <PrayerTextTabs
-            text={active.text}
-            summary={active.summary}
-            transliteration={active.transliteration}
-          />
+          <PrayerTextTabs text={active.text} />
         ) : null}
       </article>
     </PageSection>

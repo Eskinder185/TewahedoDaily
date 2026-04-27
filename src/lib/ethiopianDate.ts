@@ -49,17 +49,17 @@ export function gregorianToEthiopian(date: Date): EthiopianDateParts {
 /** 1 = Meskerem … 13 = Pagumen */
 export const ETHIOPIAN_MONTH_NAMES = [
   'Meskerem',
-  'Tikimt',
-  'Hidar',
+  'Tekemt',
+  'Hedar',
   'Tahsas',
   'Tir',
   'Yekatit',
   'Megabit',
   'Miyazya',
   'Ginbot',
-  'Sene',
+  'Senne',
   'Hamle',
-  'Nehase',
+  'Nehasse',
   'Pagumen',
 ] as const
 

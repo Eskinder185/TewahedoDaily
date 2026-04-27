@@ -6,7 +6,10 @@ export { TSELOT_PRIMARY_LABEL } from '../../data/types/tselot'
 
 export type MezmurItem = {
   id: string
+  slug: string
   title: string
+  youtubeUrl?: string
+  audioUrl?: string
   youtubeId: string
   thumbnailUrl?: string
   titleTransliteration: string
@@ -37,8 +40,14 @@ export type MezmurItem = {
 /** UI model mapped from `PrayerEntry` in `tselot/tselot.json` */
 export type TselotPrayer = {
   id: string
+  slug: string
   title: string
   transliterationTitle: string
+  collection: string
+  collectionSlug: string
+  section: string
+  chapter: string
+  order: number
   categoryPrimary: TselotPrayerPrimary
   categoryUsage: string[]
   categorySeason: string[]
