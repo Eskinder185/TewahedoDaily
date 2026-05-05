@@ -12,11 +12,11 @@
   color: var(--color-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  .heading {
+
+[data-theme='night'] .heading {
     color: var(--color-text);
   }
-}
+
 
 .deck {
   margin: 0;

@@ -420,18 +420,18 @@
 }
 
 .backLink:hover {
-  color: var(--color-navy-deep);
+  color: var(--color-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  .backLink {
+
+[data-theme='night'] .backLink {
     color: var(--color-gold-bright);
   }
 
-  .backLink:hover {
+  [data-theme='night'] .backLink:hover {
     color: var(--color-gold);
   }
-}
+
 
 @media (max-width: 767.98px) {
   .section,

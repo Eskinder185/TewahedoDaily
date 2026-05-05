@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { TabPanel } from '../ui/TabPanel'
 import { PrayerReadingText } from './PrayerReadingText'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useTranslation } from '../../i18n'
 import styles from './PrayerTextTabs.module.css'
 
 type TriText = { amharic: string; geez: string; english: string }
@@ -26,6 +27,7 @@ export function PrayerTextTabs({
   ariaIdPrefix,
 }: Props) {
   const t = useUiLabel()
+  const tr = useTranslation()
 
   const tabs = useMemo(() => {
     return [
@@ -37,7 +39,7 @@ export function PrayerTextTabs({
             {text.amharic.trim() ? (
               <PrayerReadingText text={text.amharic.trim()} lang="amharic" />
             ) : (
-              <p className={styles.muted}>Text is not available for this language yet.</p>
+              <p className={styles.muted}>{tr('prayers.detail.textUnavailable')}</p>
             )}
           </div>
         ),
@@ -50,7 +52,7 @@ export function PrayerTextTabs({
             {text.geez.trim() ? (
               <PrayerReadingText text={text.geez.trim()} lang="geez" />
             ) : (
-              <p className={styles.muted}>Text is not available for this language yet.</p>
+              <p className={styles.muted}>{tr('prayers.detail.textUnavailable')}</p>
             )}
           </div>
         ),
@@ -63,13 +65,13 @@ export function PrayerTextTabs({
             {text.english.trim() ? (
               <PrayerReadingText text={text.english.trim()} lang="english" />
             ) : (
-              <p className={styles.muted}>Text is not available for this language yet.</p>
+              <p className={styles.muted}>{tr('prayers.detail.textUnavailable')}</p>
             )}
           </div>
         ),
       },
     ]
-  }, [text, t])
+  }, [text, t, tr])
 
   const renderMode = split === 'tablist' ? 'tablist' : split === 'panel' ? 'panel' : 'full'
 

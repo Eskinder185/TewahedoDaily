@@ -61,7 +61,21 @@
       "content": {
         "extended": "Zemene Tsige is the Season of Flowers, remembered with special hymns and devotion tied to the Holy Family’s journey.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "Zemene Tsige is the Season of Flowers, remembered with special hymns and devotion tied to the Holy Family’s journey.",
+          "whatHappened": [
+            "Zemene Tsige is the Season of Flowers, remembered with special hymns and devotion tied to the Holy Family’s journey.",
+            "It connects the faithful to the Flight to Egypt, Saint Mary’s endurance, and the blossoming beauty of divine grace."
+          ],
+          "significance": "It is a spiritually rich season of beauty, memory, and devotion in Ethiopian Orthodox worship.",
+          "observanceType": "Liturgical Season",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Zemene Tsige",
@@ -133,7 +147,21 @@
         "relatedEntries": [
           "fasika",
           "pentecost"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The Bright Season after Fasika is a time of resurrectional joy and the suspension of ordinary weekly fasting.",
+          "whatHappened": [
+            "The Bright Season after Fasika is a time of resurrectional joy and the suspension of ordinary weekly fasting.",
+            "It connects the faithful to the risen Lord and the triumph of life over death."
+          ],
+          "significance": "It extends the joy of the resurrection through liturgy, praise, and spiritual gladness.",
+          "observanceType": "Paschal Season",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Bright Season",
@@ -207,7 +235,21 @@
           "hosanna",
           "good-friday",
           "fasika"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Holy Week gathers the faithful into the sufferings, betrayal, crucifixion, and burial of the Lord.",
+          "whatHappened": [
+            "Holy Week gathers the faithful into the sufferings, betrayal, crucifixion, and burial of the Lord.",
+            "It connects the faithful to the passion of Christ and the path to resurrection."
+          ],
+          "significance": "It is the deepest penitential and contemplative period of the year.",
+          "observanceType": "Holy Week",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Holy Week",

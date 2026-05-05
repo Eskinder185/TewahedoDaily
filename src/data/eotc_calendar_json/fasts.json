@@ -64,7 +64,21 @@
         "notes": [],
         "relatedEntries": [
           "lidet-gena"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Tsome Nebiyat is the fast of expectation before the Nativity of Christ.",
+          "whatHappened": [
+            "Tsome Nebiyat is the fast of expectation before the Nativity of Christ.",
+            "It connects the Church to prophetic expectation and preparation for the Incarnation."
+          ],
+          "significance": "It joins the faithful to the prophets who longed for the coming of the Messiah.",
+          "observanceType": "Major Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Fast of the Prophets",
@@ -141,7 +155,21 @@
         "relatedEntries": [
           "filseta-assumption",
           "saint-mary-monthly-21"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Tsome Filseta is a season of Marian devotion centered on the Dormition and Assumption.",
+          "whatHappened": [
+            "Tsome Filseta is a season of Marian devotion centered on the Dormition and Assumption.",
+            "It connects the faithful to Saint Mary’s holiness, her repose, and her honored assumption."
+          ],
+          "significance": "It deepens prayer, purity, and devotion in honor of the Theotokos.",
+          "observanceType": "Major Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Filseta",
@@ -216,7 +244,21 @@
         "relatedEntries": [
           "pentecost",
           "peter-paul"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The Fast of the Apostles remembers the discipline and witness of the Apostles after receiving the Holy Spirit.",
+          "whatHappened": [
+            "The Fast of the Apostles remembers the discipline and witness of the Apostles after receiving the Holy Spirit.",
+            "It connects believers to the apostolic mission born from Pentecost."
+          ],
+          "significance": "It highlights mission, discipline, and apostolic service in the life of the Church.",
+          "observanceType": "Apostolic Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Apostles Fast",
@@ -282,7 +324,21 @@
         "relatedEntries": [
           "lidet-gena",
           "timket"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Tsome Gehad is a vigil fast that prepares the faithful for a great feast.",
+          "whatHappened": [
+            "Tsome Gehad is a vigil fast that prepares the faithful for a great feast.",
+            "It connects the faithful to watchfulness, expectation, and holy readiness."
+          ],
+          "significance": "It marks the transition from fasting to festal joy through reverent preparation.",
+          "observanceType": "Vigil Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Vigil Fast",

@@ -1,6 +1,10 @@
 import { useEffect, useId } from 'react'
-import type { EotcCalendarDatasetRow } from '../../lib/eotcCalendar/eotcTypes'
+import type {
+  EotcCalendarDatasetRow,
+  EotcExpandedContent,
+} from '../../lib/eotcCalendar/eotcTypes'
 import { getEntryById } from '../../lib/eotcCalendar/eotcCalendarDataset'
+import { getExpandedObservanceContent } from '../../lib/eotcCalendar/expandedObservanceContent'
 import {
   formatEntryDateHint,
   formatObservanceStateLabel,
@@ -36,6 +40,53 @@ function initials(row: EotcCalendarDatasetRow): string {
     return `${words[0][0] ?? ''}${words[1][0] ?? ''}`.toLocaleUpperCase()
   }
   return t.slice(0, 2).toLocaleUpperCase()
+}
+
+function ExpandedContentSections({ content }: { content: EotcExpandedContent }) {
+  const t = useUiLabel()
+  const source = content.source
+  const sourcePage =
+    typeof source?.sourcePage === 'number'
+      ? source.sourcePage
+      : typeof source?.page === 'number'
+        ? source.page
+        : undefined
+  const provenanceNote =
+    source?.status === 'verified' ? 'Verified from original source' : undefined
+  return (
+    <div className={styles.expandedContent}>
+      {content.whyCelebrated?.trim() ? (
+        <section className={styles.expandedBlock}>
+          <h3 className={styles.h3}>{t('calendar.detail.whyCelebrated')}</h3>
+          <p className={styles.p}>{content.whyCelebrated.trim()}</p>
+        </section>
+      ) : null}
+      {content.whatHappened?.length ? (
+        <section className={styles.expandedBlock}>
+          <h3 className={styles.h3}>{t('calendar.detail.whatHappened')}</h3>
+          <ul className={styles.ul}>
+            {content.whatHappened.map((line, index) => (
+              <li key={`${line}-${index}`}>{line}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+      {content.significance?.trim() ? (
+        <section className={styles.expandedBlock}>
+          <h3 className={styles.h3}>{t('calendar.detail.whyMatters')}</h3>
+          <p className={styles.p}>{content.significance.trim()}</p>
+        </section>
+      ) : null}
+      {source?.title ? (
+        <p className={styles.sourceLine}>
+          {t('calendar.detail.source', { title: source.title })}
+          {source.entryLabel ? ` (${source.entryLabel})` : ''}
+          {provenanceNote ? ` - ${provenanceNote}` : ''}
+          {sourcePage ? ` - ${t('calendar.detail.originalReference', { reference: `PDF page ${sourcePage}` })}` : ''}
+        </p>
+      ) : null}
+    </div>
+  )
 }
 
 export function EotcObservanceDetailSheet({
@@ -88,6 +139,7 @@ export function EotcObservanceDetailSheet({
   const dateHint = formatEntryDateHint(row)
   const stateLabel = formatObservanceStateLabel(row)
   const related = e.content.relatedEntries ?? []
+  const expandedContent = getExpandedObservanceContent(e)
 
   const onBackdrop = () => onClose()
 
@@ -154,7 +206,7 @@ export function EotcObservanceDetailSheet({
             <div className={styles.meta}>
               <span className={styles.chip}>{stateLabel}</span>
               {e.category.majorHoliday ? (
-                <span className={styles.chipMajor}>Major</span>
+                <span className={styles.chipMajor}>{t('calendar.upcoming.labelGreatFeast')}</span>
               ) : null}
               <span className={styles.chipMuted}>{dateHint}</span>
             </div>
@@ -176,22 +228,10 @@ export function EotcObservanceDetailSheet({
           {e.summary.short?.trim() ? (
             <p className={styles.p}>{e.summary.short.trim()}</p>
           ) : null}
-          {e.summary.whyItMatters?.trim() ? (
-            <div className={styles.block}>
-              <h3 className={styles.h3}>{t('calendarGalleryDetailWhy')}</h3>
-              <p className={styles.p}>{e.summary.whyItMatters.trim()}</p>
-            </div>
-          ) : null}
-          {e.summary.connection?.trim() ? (
-            <div className={styles.block}>
-              <h3 className={styles.h3}>{t('calendarGalleryDetailConnection')}</h3>
-              <p className={styles.p}>{e.summary.connection.trim()}</p>
-            </div>
-          ) : null}
-          {e.content.extended?.trim() ? (
+          {expandedContent ? (
             <div className={styles.block}>
               <h3 className={styles.h3}>{t('calendarGalleryDetailMore')}</h3>
-              <p className={styles.p}>{e.content.extended.trim()}</p>
+              <ExpandedContentSections content={expandedContent} />
             </div>
           ) : null}
           {e.observance.commonPractices.length > 0 ? (

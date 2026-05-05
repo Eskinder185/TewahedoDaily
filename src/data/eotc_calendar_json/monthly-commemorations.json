@@ -54,7 +54,26 @@
         "notes": [],
         "relatedEntries": [
           "saint-michael-major"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 12th day of each Ethiopian month is kept in honor of Archangel Michael, a mighty servant of God and intercessor for the faithful.",
+          "whatHappened": [
+            "The Church remembers Archangel Michael as protector and defender by God's command.",
+            "This monthly remembrance keeps his intercession close to the prayer life of the faithful.",
+            "The day is commonly marked with prayer, hymns, thanksgiving, and acts of charity."
+          ],
+          "significance": "This commemoration points believers to God's protection and to the ministry of the holy angels in the life of the Church.",
+          "observanceType": "monthly angel commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Saint Michael Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Archangel Michael"
+          ]
+        }
       },
       "searchKeywords": [
         "Saint Michael",
@@ -121,7 +140,26 @@
         "relatedEntries": [
           "saint-gabriel-major",
           "tsinset-annunciation"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 19th day of each Ethiopian month honors Archangel Gabriel, the messenger of divine glad tidings.",
+          "whatHappened": [
+            "The Church remembers Gabriel's ministry of holy announcement and obedience to God.",
+            "His remembrance especially calls to mind the joy of divine message and God's saving intervention.",
+            "The day gives the faithful a recurring time to give thanks for God's messages of mercy and comfort."
+          ],
+          "significance": "This commemoration keeps before believers the nearness of God's mercy and the angelic service that announces His will.",
+          "observanceType": "monthly angel commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Saint Gabriel Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Archangel Gabriel"
+          ]
+        }
       },
       "searchKeywords": [
         "Saint Gabriel",
@@ -189,7 +227,26 @@
         "relatedEntries": [
           "kidane-mehret",
           "filseta-assumption"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 21st day of each Ethiopian month is a primary monthly remembrance of Saint Mary, the Mother of God.",
+          "whatHappened": [
+            "The Church honors Saint Mary as the one who bore Christ our Saviour in the flesh.",
+            "The monthly remembrance keeps her intercession, humility, and obedience before the faithful.",
+            "Marian prayers and hymns help believers remember her place in the mystery of salvation."
+          ],
+          "significance": "This commemoration expresses the Church's love for the Theotokos and teaches believers to follow her humility and faith.",
+          "observanceType": "monthly Marian commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Saint Mary Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Saint Mary"
+          ]
+        }
       },
       "searchKeywords": [
         "Saint Mary",
@@ -259,7 +316,26 @@
         "notes": [],
         "relatedEntries": [
           "saint-george-major"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 23rd day of each Ethiopian month remembers Saint Georgios, the victorious martyr and beloved intercessor.",
+          "whatHappened": [
+            "The Church remembers Saint Georgios for steadfast confession of Christ and courage under trial.",
+            "His monthly commemoration keeps the witness of martyrdom active in parish and household devotion.",
+            "The faithful ask his prayers and are encouraged to remain firm in faith."
+          ],
+          "significance": "This remembrance strengthens courage, endurance, and trust in Christ when believers face hardship.",
+          "observanceType": "monthly saint commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Saint Georgios Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Saint Georgios"
+          ]
+        }
       },
       "searchKeywords": [
         "Saint Georgios",
@@ -326,7 +402,26 @@
         "notes": [],
         "relatedEntries": [
           "saint-tekle-haymanot-major"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 24th day of each Ethiopian month remembers Abune Tekle Haymanot, one of Ethiopia's great saints and monastic fathers.",
+          "whatHappened": [
+            "The Church honors his holiness, prayer, discipline, and missionary labor.",
+            "His memory is kept monthly because his witness is central to Ethiopian Orthodox spiritual heritage.",
+            "The commemoration invites believers to repentance, endurance, and disciplined prayer."
+          ],
+          "significance": "This remembrance gives the faithful a model of ascetic devotion and love for the Church.",
+          "observanceType": "monthly saint commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Abune Tekle Haymanot Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Abune Tekle Haymanot"
+          ]
+        }
       },
       "searchKeywords": [
         "Tekle Haymanot",
@@ -394,7 +489,24 @@
       "content": {
         "extended": "The 27th day of each Ethiopian month remembers Medhane Alem, the Savior of the World.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "The 27th day of each Ethiopian month remembers Medhane Alem, Christ the Savior of the World.",
+          "whatHappened": [
+            "The Church turns attention to the mercy and saving work of Christ.",
+            "This monthly remembrance keeps salvation, healing, and thanksgiving before the faithful.",
+            "It is observed with prayer and reverence for the Lord who saves His people."
+          ],
+          "significance": "This commemoration centers monthly devotion on Christ's mercy and the salvation He gives to the world.",
+          "observanceType": "monthly Christological commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Medhane Alem Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": []
+        }
       },
       "searchKeywords": [
         "Medhane Alem",
@@ -458,7 +570,24 @@
       "content": {
         "extended": "The 7th day of each Ethiopian month is kept in honor of the Holy Trinity: Father, Son, and Holy Spirit.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "The 7th day of each Ethiopian month remembers the Holy Trinity, the one God worshiped as Father, Son, and Holy Spirit.",
+          "whatHappened": [
+            "The Church marks the day with worship directed to the Holy Trinity.",
+            "This monthly remembrance keeps the faithful centered on the mystery of God's life and mercy.",
+            "The day is a recurring call to prayer, thanksgiving, and right worship."
+          ],
+          "significance": "This commemoration anchors the calendar in the worship of the one God confessed in Trinity.",
+          "observanceType": "monthly feast",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Silase / Holy Trinity Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": []
+        }
       },
       "searchKeywords": [
         "Silase",
@@ -525,7 +654,26 @@
         "notes": [],
         "relatedEntries": [
           "saint-raphael-major"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 13th day of each Ethiopian month remembers Archangel Raphael, associated in Church devotion with healing, mercy, and guidance.",
+          "whatHappened": [
+            "The Church honors Raphael as a servant of God who ministers healing and help by divine command.",
+            "This monthly remembrance invites prayer for mercy, protection, and guidance.",
+            "The faithful keep the day with reverence, thanksgiving, and angelic hymns where customary."
+          ],
+          "significance": "This commemoration points believers to God's care for body and soul through His holy angels.",
+          "observanceType": "monthly angel commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Kidus Raphael Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Archangel Raphael"
+          ]
+        }
       },
       "searchKeywords": [
         "Kidus Raphael",
@@ -592,7 +740,26 @@
         "notes": [],
         "relatedEntries": [
           "kidane-mehret"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 16th day of each Ethiopian month remembers Kidane Mihret, the Covenant of Mercy, connected with devotion to Saint Mary and divine mercy.",
+          "whatHappened": [
+            "The Church remembers the mercy of God and the intercession associated with the Mother of God.",
+            "This monthly observance calls believers to repentance, hope, and trust in mercy.",
+            "The day is often kept with Marian prayer, hymns, and acts of compassion."
+          ],
+          "significance": "This commemoration teaches the faithful to seek mercy and to become merciful toward others.",
+          "observanceType": "monthly Marian commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Kidane Mihret Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Saint Mary"
+          ]
+        }
       },
       "searchKeywords": [
         "Kidane Mihret",
@@ -659,7 +826,26 @@
         "notes": [],
         "relatedEntries": [
           "saint-uriel-major"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 22nd day of each Ethiopian month is kept in honor of Archangel Uriel and his intercession.",
+          "whatHappened": [
+            "The Church remembers the works and intercession associated with Archangel Uriel.",
+            "This monthly remembrance helps the faithful keep his memory and seek his prayers.",
+            "The day points worshipers toward God's light, wisdom, and protection."
+          ],
+          "significance": "This commemoration points believers to God's help through His holy angels.",
+          "observanceType": "monthly angel commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Kidus Uriel Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Archangel Uriel"
+          ]
+        }
       },
       "searchKeywords": [
         "Kidus Uriel",
@@ -728,7 +914,26 @@
       "content": {
         "extended": "The 25th day of each Ethiopian month remembers St. Merkorious, honored among the martyrs and warrior saints.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "The 25th day of each Ethiopian month remembers Saint Merkorious, a martyr honored for courage and steadfast faith.",
+          "whatHappened": [
+            "The Church remembers Saint Merkorious as a faithful witness of Christ.",
+            "His monthly commemoration keeps the courage of the martyrs before the faithful.",
+            "The day invites believers to pray for endurance and firmness in confession."
+          ],
+          "significance": "This remembrance encourages courage, patience, and trust in Christ under trial.",
+          "observanceType": "monthly saint commemoration",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "St. Merkorious Monthly Commemoration",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Saint Merkorious"
+          ]
+        }
       },
       "searchKeywords": [
         "St. Merkorious",
@@ -798,7 +1003,27 @@
         "notes": [],
         "relatedEntries": [
           "lidet"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The 29th day of each Ethiopian month remembers the Nativity of Christ in a recurring monthly way.",
+          "whatHappened": [
+            "The Church turns again to the mystery of the Word of God made flesh.",
+            "This remembrance keeps the joy and humility of Bethlehem before believers throughout the year.",
+            "The day calls the faithful to thanksgiving for the coming of the Savior."
+          ],
+          "significance": "This commemoration points to the Incarnation and the mercy of Christ who entered the world for salvation.",
+          "observanceType": "monthly feast",
+          "source": {
+            "title": "EOTC calendar monthly commemoration dataset",
+            "file": "monthly-commemorations.json",
+            "entryLabel": "Monthly Nativity of Christ",
+            "status": "safe_summary_needs_synaxarium_review"
+          },
+          "relatedSaints": [
+            "Christ the Lord",
+            "Saint Mary"
+          ]
+        }
       },
       "searchKeywords": [
         "Nativity",

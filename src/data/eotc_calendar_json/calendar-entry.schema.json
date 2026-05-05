@@ -239,6 +239,35 @@
           "items": {
             "type": "string"
           }
+        },
+        "expandedContent": {
+          "type": "object",
+          "properties": {
+            "whyCelebrated": {
+              "type": "string"
+            },
+            "whatHappened": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "significance": {
+              "type": "string"
+            },
+            "relatedSaints": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "observanceType": {
+              "type": "string"
+            },
+            "source": {
+              "type": "object"
+            }
+          }
         }
       }
     },

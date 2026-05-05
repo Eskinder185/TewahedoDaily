@@ -63,7 +63,7 @@
 .primary {
   background: linear-gradient(
     165deg,
-    var(--color-navy) 0%,
+    var(--color-heading) 0%,
     var(--color-navy-deep) 100%
   );
   color: var(--color-text-inverse);
@@ -93,22 +93,22 @@
 
 .ghost:hover {
   border-color: var(--color-border-gold);
-  color: var(--color-midnight);
+  color: var(--color-heading);
   box-shadow:
     var(--shadow-soft),
     0 0 0 1px color-mix(in srgb, var(--color-gold-line) 30%, transparent);
 }
 
-@media (prefers-color-scheme: dark) {
-  .ghost {
+
+[data-theme='night'] .ghost {
     background: var(--color-bg-elevated);
     border-color: var(--color-border-strong);
   }
 
-  .ghost:hover {
+  [data-theme='night'] .ghost:hover {
     color: var(--color-gold-bright);
   }
-}
+
 
 .soft {
   background: linear-gradient(
@@ -116,27 +116,27 @@
     color-mix(in srgb, var(--color-gold-soft) 85%, var(--color-bg-elevated)) 0%,
     var(--color-bg-elevated) 100%
   );
-  color: var(--color-navy-deep);
+  color: var(--color-heading);
   border-color: var(--color-border-gold);
 }
 
-@media (prefers-color-scheme: dark) {
-  .soft {
+
+[data-theme='night'] .soft {
     color: var(--color-text);
   }
-}
+
 
 .soft:hover {
-  color: var(--color-midnight);
+  color: var(--color-heading);
   border-color: color-mix(in srgb, var(--color-gold) 45%, transparent);
   box-shadow: 0 6px 22px rgba(201, 163, 74, 0.14);
 }
 
-@media (prefers-color-scheme: dark) {
-  .soft:hover {
+
+[data-theme='night'] .soft:hover {
     color: var(--color-gold-bright);
   }
-}
+
 
 .active.primary,
 .active.soft {
@@ -145,11 +145,11 @@
 
 .active.ghost {
   border-color: var(--color-border-gold);
-  color: var(--color-midnight);
+  color: var(--color-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  .active.ghost {
+
+[data-theme='night'] .active.ghost {
     color: var(--color-gold-bright);
   }
-}
+

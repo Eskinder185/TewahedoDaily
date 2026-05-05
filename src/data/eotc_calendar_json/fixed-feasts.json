@@ -56,7 +56,21 @@
           "lidet-gena",
           "timket",
           "debre-tabor"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Tsinset remembers the moment the Word of God took flesh through the Annunciation.",
+          "whatHappened": [
+            "Tsinset remembers the moment the Word of God took flesh through the Annunciation.",
+            "It connects the faithful to the mystery of Christ’s coming in the flesh and the beginning of salvation history."
+          ],
+          "significance": "It marks the beginning of the Incarnation and the fulfillment of God’s saving plan.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Tsinset",
@@ -126,7 +140,21 @@
           "tsome-nebiyat",
           "gizret-circumcision",
           "timket"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Lidet proclaims the Nativity of Christ and the joy of God dwelling among humanity.",
+          "whatHappened": [
+            "Lidet proclaims the Nativity of Christ and the joy of God dwelling among humanity.",
+            "It connects believers to Bethlehem, the mystery of the Incarnation, and the joy of Emmanuel."
+          ],
+          "significance": "It reveals the humility of the Incarnation and the fulfillment of prophecy.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Lidet",
@@ -195,7 +223,21 @@
         "relatedEntries": [
           "lidet-gena",
           "timket"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Gizret remembers Christ’s circumcision on the eighth day after His birth.",
+          "whatHappened": [
+            "Gizret remembers Christ’s circumcision on the eighth day after His birth.",
+            "It connects the faithful to Christ’s obedience and His full entrance into human history."
+          ],
+          "significance": "It shows the Lord’s humility and His fulfillment of the law on behalf of humanity.",
+          "observanceType": "Minor Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Gizret",
@@ -264,7 +306,21 @@
         "relatedEntries": [
           "lidet-gena",
           "kana-ze-galilee"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Timket commemorates the baptism of the Lord and the manifestation of the Trinity.",
+          "whatHappened": [
+            "Timket commemorates the baptism of the Lord and the manifestation of the Trinity.",
+            "It connects the faithful to baptism, purification, and the public revelation of Christ."
+          ],
+          "significance": "It reveals Christ publicly and sanctifies the waters as signs of renewal and grace.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Timket",
@@ -333,7 +389,21 @@
         "notes": [],
         "relatedEntries": [
           "timket"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Kana Ze Galilee remembers the Lord’s first miracle, turning water into wine.",
+          "whatHappened": [
+            "Kana Ze Galilee remembers the Lord’s first miracle, turning water into wine.",
+            "It connects believers to divine transformation, joy, and the blessed intercession present at Cana."
+          ],
+          "significance": "It manifests Christ’s glory and shows the beginning of His public signs.",
+          "observanceType": "Minor Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Kana",
@@ -401,7 +471,21 @@
         "relatedEntries": [
           "meskel-finding-of-the-true-cross",
           "good-friday"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Megabit Meskel is a Cross feast that recalls the saving power of the Lord’s Cross.",
+          "whatHappened": [
+            "Megabit Meskel is a Cross feast that recalls the saving power of the Lord’s Cross.",
+            "It connects the faithful to the passion of Christ and the life-giving power of the Cross."
+          ],
+          "significance": "It keeps the Cross before the faithful as the sign of victory, redemption, and divine mercy.",
+          "observanceType": "Cross Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Megabit Meskel",
@@ -469,7 +553,21 @@
           "hosanna",
           "good-friday",
           "fasika"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Debre Tabor commemorates the Transfiguration and the shining forth of Christ’s divine glory.",
+          "whatHappened": [
+            "Debre Tabor commemorates the Transfiguration and the shining forth of Christ’s divine glory.",
+            "It connects the faithful to the revelation of Christ’s glory and the hope of transformation."
+          ],
+          "significance": "It strengthens faith in Christ’s divinity and points to the glory beyond the Cross.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Debre Tabor",
@@ -536,7 +634,21 @@
         "relatedEntries": [
           "megabit-meskel",
           "good-friday"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Meskel remembers the discovery of the True Cross and celebrates the light of Christ revealed to the world.",
+          "whatHappened": [
+            "Meskel remembers the discovery of the True Cross and celebrates the light of Christ revealed to the world.",
+            "It connects the faithful to the crucifixion, redemption, and the Church’s proclamation of Christ’s triumph."
+          ],
+          "significance": "The feast honors the Cross as the sign of salvation, victory, and divine mercy.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Meskel",

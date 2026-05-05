@@ -68,6 +68,22 @@ export type EotcContent = {
   extended: string
   notes: string[]
   relatedEntries: string[]
+  expandedContent?: EotcExpandedContent
+}
+
+export type EotcExpandedContent = {
+  whyCelebrated?: string
+  whatHappened?: string[]
+  significance?: string
+  relatedSaints?: string[]
+  observanceType?: string
+  source?: {
+    title?: string
+    file?: string
+    entryLabel?: string
+    status?: string
+    [key: string]: unknown
+  }
 }
 
 export type EotcConfidenceLevel = 'high' | 'medium' | 'low'

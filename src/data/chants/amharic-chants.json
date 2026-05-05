@@ -327,7 +327,7 @@
     "transliterationTitle": "Tabor Abera",
     "lyrics": "ታቦር አበራ ምድርን ከደናት ያ ደመና\nእንቅልፍ የለንም ታላቅ ነጎድጕድ ሆኗልና\nአነቃን ለምስጋና\n\nሙሴም የቀደመው ሰዉ ኤልያስ ኃይለኛው\nተገኝተዋል በታቦር ምስክርህ ሆነው\nእኛም ከገናናው ክብር ያባቱን ቃል ሰምተናል\nበረዶ ሆኗል ልብሱ እፁብ እፁብ ብለናል\n\nቃል ገብተህልኝ ነበር ልታሳየኝ ክብርህን\nንገስ ከሞት ገስግሰህ አይቼሃለሁ አሁን\nየእሳት ፈረሶች አሉህ ተዋጊው የኔ ጌታ\nአርሞንኤም ደስ አለው ሲሳራን ስለመታ\n\nእጠብቅሃለሁኝ በምታልፍበት ቆሜ\nመብራቶቼን አብርቼ ነጩን ልብስ ተሸልሜ\nየዳዊት ልጅ ሆይ ግባ ኢየሱስ ወደ ቤቴ\nጵንኤል እልሀለሁ ድናለች ሰውነቴ\n\nሁሉንም ብታከብር ሁሉንም ብትምረው\nማነው ቸርነትህን የሚከለክለው\nጠዋትም የተጠራ አምሽቶ የገባው\nሆነዋል ባለዋጋ ከበዛው ስጦታው\n\nየረዳኸው ይናገር ያሰብከው በሕይወቱ\nአቤነዘር እያለ ይዘምር ባንደበቱ\nበደስታዬም ቀን አለህ አይሃለሁ ከጎኔ\nከእኔ ጋር አልቅሰሃል አሳዝኖህ ሀዘኔ",
     "transliterationLyrics": "Tabor Abera midren kedenat ya demena\nEnkelf yelenem talak negodgud honewalna\nAnekan lemesgana\n\nMusem yeqedemew sew Elias haylegnaw\nTegegntewal betabor mesekireh honew\nEgnam ke genanaw keber yabatun qal semetenal\nBeredo honewal lebsu etsub etsub belenal\n\nQal gebtehelegn neber letasayegn kibrehen\nNeges kemot gesegeseh ayichyahalew ahun\nYeesat feresoch aluh tewagiw yene geta\nArmonem des alew Sisaran selemeta\n\nEtebqehalehugn bemitalefbet qome\nMebratochen abreche nechun lebs teshelme\nYedawit lej hoy geba Eyesus wede bete\nPeniel elhalew denalech sewnete\n\nHulunm betakeber hulunm betemerew\nManew cherenetehen yemikeleklew\nTewatm yetetera amsheto yegebaw\nHonewal balewaga kebezaw setotaw\n\nYeredehew yinagar yasebekew behiyewetu\nAbenezer eyale yezemer bandebetu\nBedestayem qen aleh ayihalew kegone\nKeene gar alqesehal asazenoh hazene",
-    "youtubeUrl": "https://youtu.be/5dBbnJbEXRI",
+    "youtubeUrl": "https://www.youtube.com/watch?v=JXIDxAwR48w",
     "category": {
       "primary": "major-holiday",
       "majorHoliday": [
@@ -629,35 +629,7 @@
       "confidence": "medium"
     }
   },
-  {
-    "type": "chant",
-    "form": "mezmur",
-    "id": "ete-musheraye",
-    "title": "እቴ ሙሸራዬ",
-    "transliterationTitle": "Ete Musheraye",
-    "lyrics": "",
-    "transliterationLyrics": "",
-    "youtubeUrl": "https://youtu.be/11Qy6NpiI1A",
-    "category": {
-      "primary": "mary",
-      "majorHoliday": [],
-      "saints": [
-        "kidist-maryam"
-      ],
-      "themes": [
-        "mary",
-        "love",
-        "honor",
-        "praise"
-      ],
-      "usage": [
-        "general-worship",
-        "saint-commemoration"
-      ],
-      "season": [],
-      "confidence": "high"
-    }
-  },
+
   {
     "type": "chant",
     "form": "mezmur",
@@ -1336,7 +1308,7 @@
     "transliterationTitle": "Kemetsge Roman",
     "lyrics": "ከመፅጌ ሮማን ከመፅጌ (2)\nአበባዬ (2) ወላዲተ አምላክ ሲሳይ (2)",
     "transliterationLyrics": "Kemetsge roman kemetsge (2)\nAbebaye (2) weladite amlak sisay (2)",
-    "youtubeUrl": "https://www.instagram.com/reel/DPoaiXYDbQk/",
+    "youtubeUrl": "https://www.youtube.com/watch?v=h3SBaBdx7GU",
     "category": {
       "primary": "mary",
       "majorHoliday": [],
@@ -1589,38 +1561,7 @@
       "confidence": "high"
     }
   },
-  {
-    "type": "chant",
-    "form": "werb",
-    "id": "beki-yitfesihu",
-    "title": "ብኪ ይትፌሥሑ",
-    "transliterationTitle": "Beki Yitfesihu",
-    "lyrics": "ብኪ ይትፌሥሑ ዘገነት ጽጌ ጻድቃን",
-    "transliterationLyrics": "Beki yitfesihu zegennet tsige tsadqan",
-    "youtubeUrl": "https://www.instagram.com/reel/DQJoWmCAHtv/",
-    "category": {
-      "primary": "mary",
-      "majorHoliday": [],
-      "saints": [
-        "kidist-maryam"
-      ],
-      "themes": [
-        "mary",
-        "praise",
-        "joy",
-        "tsige"
-      ],
-      "usage": [
-        "chant",
-        "feast-program",
-        "saint-commemoration"
-      ],
-      "season": [
-        "tsige"
-      ],
-      "confidence": "high"
-    }
-  },
+  
   {
     "type": "chant",
     "form": "mezmur",
@@ -1785,7 +1726,7 @@
     "transliterationTitle": "Wede Misraq Eyu",
     "lyrics": "ወደ ምስራቅ እዩ ወደ ፀሀይ መውጫ\nድንግልን ክበቧት እንበል ሃሌሉያ\nለአምላክ እናት ለአዛኚት\nእልል እንበል እንዘምርላት (፪)\n\nወገኖች ተነሱ እናታችን መጣች\nስሟን ስንጠራ መቼ ትቀራለች\nየተከዘን ልታጽናና ነይ ስንላት ትመጣለችና\n\nየጽጌው ማኅሌት በጸሎት ሲጀመር\nማርያም ትመጣለች በደመና በአየር\nንዒ ስንል በሰዓታት\nልትባርከን ትመጣለች በእውነት\n\nፍልሰታ ሲጀመር ቃልኪዳን ገብታለች\nየሌሊት ውዳሴ ንዒን ትሰማለች\nህፃናቱን በበረከት\nልትጎበኘን ትመጣለች በእውነት\n\nበፍጹም ቸርነት እንዲምረን ጌታ\nበአማላጅነትሽ ሁኝልን መከታ\nእናታችን አለኝታችን\nእንድናለን ድንግል አንቺን ይዘን",
     "transliterationLyrics": "Wede misraq eyu wede tsehay mewcha\nDingilin kibebwat enbel haleluyah\nLeamlak enat leazanīt\nEllil enbel enzemerlat (2)\n\nWegenoch tenesu enatachen metach\nSeman sint’era meche tik’eralach\nYetekezen letatsnana ney sinlat timetalachna\n\nYetsigew mahlet bets’elot sijemer\nMaryam timetalach bedemena beayer\nNi sinl kesa’at\nLetebarken timetalach beewnet\n\nFils’eta sijemer kal kidan gebtalach\nYelelit wudase ni tisemalach\nHits’anatun bereket\nLetgobenyan timetalach beewnet\n\nBefitsum cherinet endimren geta\nBeamalaajinetish hunyln meketa\nEnatachen alenytachen\nEndinalen dingil anchin yizen",
-    "youtubeUrl": "https://www.youtube.com/watch?v=FMSGVqH-7JE",
+    "youtubeUrl": "https://www.youtube.com/watch?v=j9LtR3s4X3U",
     "category": {
       "primary": "mary",
       "majorHoliday": [],
@@ -3840,29 +3781,36 @@
   {
     "type": "chant",
     "form": "mezmur",
-    "id": "meskel-abeba-nehi",
+    "id": "meskel-abeba-wub-abeba",
     "title": "መስቀል አበባ ነህ ውብ አበባ",
     "transliterationTitle": "Meskel Abeba Neh Wub Abeba",
-    "lyrics": "መስቀል አበባ ነህ ውብ አበባ \nአደይ አበባ ነሽ ውብ አበባ\n\nአዝ_\n\nመስቀል አበባ ተቀብሮ ሲኖር \nአደይ አበባ ስነ ስቅለቱ \nመስቀል አበባ እሌኒ አገኘች \nአደይ አበባ ደገኛይቱ\n\nአዝ____\n\nመስቀል አበባ ጥራጊውን ሞልተው \nአደይ አበባ አይሁድ በክፋት \nመስቀል አበባ ጢሱ ሰገደ \nአደይ አበባ መስቀል ካለበት\n\nአዝ____\n\nመስቀል አበባ ወንዙ ጅረቱ \nአደይ አበባ ሸለቆ ዱሩ \nመስቀል አበባ አሸብርቀው ደምቀው \nአደይ አበባ ላንተ መሰከሩ\n\nአዝ_\n\nመስቀል አበባ ተቀብሮ ሲኖር \nአደይ አበባ ስነ ስቅለቱ \nመስቀል አበባ እሌኒ አገኘች \nአደይ አበባ ደገኛይቱ",
-    "transliterationLyrics": "",
-    "youtubeUrl": "",
+    "lyrics": "መስቀል አበባ ነህ ውብ አበባ\nአደይ አበባ ነሽ ውብ አበባ\n\nመስቀል አበባ ተቀብሮ ሲኖር\nአደይ አበባ ስነ ስቅለቱ\nመስቀል አበባ እሌኒ አገኘች\nአደይ አበባ ደገኛይቱ\n\nመስቀል አበባ ጥራጊውን ሞልተው\nአደይ አበባ አይሁድ በክፋት\nመስቀል አበባ ጢሱ ሰገደ\nአደይ አበባ መስቀል ካለበት\n\nመስቀል አበባ ወንዙ ጅረቱ\nአደይ አበባ ሸለቆ ዱሩ\nመስቀል አበባ አሸብርቀው ደምቀው\nአደይ አበባ ላንተ መሰከሩ\n\nመስቀል አበባ ተቀብሮ ሲኖር\nአደይ አበባ ስነ ስቅለቱ\nመስቀል አበባ እሌኒ አገኘች\nአደይ አበባ ደገኛይቱ",
+    "transliterationLyrics": "Meskel abeba neh wub abeba\nAdey abeba nesh wub abeba\n\nMeskel abeba teqebro sinor\nAdey abeba sine siqletu\nMeskel abeba Eleni agenyech\nAdey abeba degegnayitu\n\nMeskel abeba tiragiwun moltew\nAdey abeba Ayihud be-kifat\nMeskel abeba tisu segede\nAdey abeba Meskel kalebet\n\nMeskel abeba wenzu jiretu\nAdey abeba sheleqo duru\nMeskel abeba ashebirqew demqew\nAdey abeba lante mesekeru\n\nMeskel abeba teqebro sinor\nAdey abeba sine siqletu\nMeskel abeba Eleni agenyech\nAdey abeba degegnayitu",
+    "youtubeUrl": "https://www.youtube.com/watch?v=m8xhCEDS2Fc",
     "category": {
-      "primary": "major-holiday",
+      "primary": "cross",
       "majorHoliday": [
         "meskel"
       ],
-      "saints": [],
+      "saints": [
+        "saint-helena"
+      ],
       "themes": [
-        "cross",
+        "holy-cross",
+        "crucifixion",
+        "discovery-of-cross",
+        "witness",
         "praise"
       ],
       "usage": [
-        "holiday-worship"
+        "meskel-feast",
+        "holy-cross",
+        "general-worship"
       ],
       "season": [
         "meskel"
       ],
-      "confidence": "medium"
+      "confidence": "high"
     }
   },
   {
@@ -3894,27 +3842,29 @@
   {
     "type": "chant",
     "form": "mezmur",
-    "id": "mistiregnaye-nesh",
+    "id": "Mistiregnaye Nesh",
     "title": "ምስጢረኛዬ ነሽ",
-    "transliterationTitle": "Mistiregnaye Nesh",
-    "lyrics": "አውቀዋለሁ ደጅሽን የእረፍት ቦታዬን\nጽኑ ሰላም ጸጥታ ማግኛዬን\nየት እሄዳለው አልልም ሲከፋኝ \nኪዳነ_ምህረት አንቺ እያለሽልኝ/2/\n\nከአጸደ መቅደስሽ ከስዕልሽ ስር\nእረፍቴ በዚያ ነው በቅዱሱ ደብር\nከተራራው አናት ከደጅሽ መጥቼ\nሰምሮልኛል ስምሽን ጠርቼ\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ \nኪዳነ_ምህረት መፅናኛዬ /2/\n\nአዝ___\n\nየሮማን አበባ መዓዛሽ ተወዳጅ\nበረከትን ልቅሰም ሳልለይ ካንቺ ደጅ\nአስራትሽ አድርጊኝ ጠቅልይኝ እናቴ\nታብብልኝ ትፍካልኝ ሕይወቴ\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ \nኪዳነ_ምህረት መፅናኛዬ /2/\n\nአዝ___\n\nአጠገቤ ጎኔ በዙሪያዬ እንዳለሽ\nእንደርሱ ነው ልቤ እማ የሚያወራሽ\nአልቅሼ ሲቀለኝ ነግሬሽ የውስጤን \nአትዘገይም ስትሠሪልኝ ቤቴን\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ \nኪዳነ_ምህረት መፅናኛዬ /2/\n\nአዝ___\n\nየእንጦጦዋ እናቴ እምዬ የምልሽ\nኪዳንኪ ደጓ የልብን ሰሚ ነሽ\nበሄድኩበት አለሽ ተከትለሽኛል \nስላለሽኝ ሰላም ይሰማኛል\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ \nኪዳነ_ምህረት መፅናኛዬ /2/",
-    "transliterationLyrics": "",
-    "youtubeUrl": "https://www.youtube.com/watch?v=PvtN-UZ8mu4",
+    "transliterationTitle": "Awqewalehu Dejishin",
+    "lyrics": "አውቀዋለሁ ደጅሽን የእረፍት ቦታዬን\nጽኑ ሰላም ጸጥታ ማግኛዬን\nየት እሄዳለው አልልም ሲከፋኝ\nኪዳነ ምህረት አንቺ እያለሽልኝ (2)\n\nከአጸደ መቅደስሽ ከስዕልሽ ስር\nእረፍቴ በዚያ ነው በቅዱሱ ደብር\nከተራራው አናት ከደጅሽ መጥቼ\nሰምሮልኛል ስምሽን ጠርቼ\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ\nኪዳነ ምህረት መፅናኛዬ (2)\n\nየሮማን አበባ መዓዛሽ ተወዳጅ\nበረከትን ልቅሰም ሳልለይ ካንቺ ደጅ\nአስራትሽ አድርጊኝ ጠቅልይኝ እናቴ\nታብብልኝ ትፍካልኝ ሕይወቴ\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ\nኪዳነ ምህረት መፅናኛዬ (2)\n\nአጠገቤ ጎኔ በዙሪያዬ እንዳለሽ\nእንደርሱ ነው ልቤ እማ የሚያወራሽ\nአልቅሼ ሲቀለኝ ነግሬሽ የውስጤን\nአትዘገይም ስትሠሪልኝ ቤቴን\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ\nኪዳነ ምህረት መፅናኛዬ (2)\n\nየእንጦጦዋ እናቴ እምዬ የምልሽ\nኪዳንኪ ደጓ የልብን ሰሚ ነሽ\nበሄድኩበት አለሽ ተከትለሽኛል\nስላለሽኝ ሰላም ይሰማኛል\n\nሚስጥረኛዬ ነሽ ሚስጥረኛዬ ነሽ\nኪዳነ ምህረት መፅናኛዬ (2)",
+    "transliterationLyrics": "Awqewalehu dejishin yereft botayen\nTsnu selam tsetita magnyayen\nYet ihedalehu alilm sikifagn\nKidane Mihret anchi iyalleshilign (2)\n\nKe-atsede meqdesish ke-si'ilish sir\nIrefte beziya new be-qidusu debir\nKeteraraw anat kedejish metiche\nSemrolignal simishin teteriche\n\nMistregnayayen nesh mistregnayayen nesh\nKidane Mihret metsnagnayayen (2)\n\nYe-roman abeba me’azash tewodaj\nBereketin liqsem saliley kanchi dej\nAsratish adrigign teqligign innate\nTabiblign tifikalign hiywote\n\nMistregnayayen nesh mistregnayayen nesh\nKidane Mihret metsnagnayayen (2)\n\nAtigebe gone be-zuriyaye indallesh\nIndersu new libbe imma yemiyaworash\nAlqishe siqelign negresh yewostien\nAtzegeyim sitserilign betien\n\nMistregnayayen nesh mistregnayayen nesh\nKidane Mihret metsnagnayayen (2)\n\nYe-Entotowa innate immiye yemilish\nKidanki degua yelibin semi nesh\nBe-hedkubet allesh tekittileshingal\nSilalleshign selam yisimagnal\n\nMistregnayayen nesh mistregnayayen nesh\nKidane Mihret metsnagnayayen (2)",
+    "youtubeUrl": "https://www.youtube.com/watch?v=GVNdCjcYlc4",
     "category": {
       "primary": "mary",
       "majorHoliday": [],
       "saints": [
-        "st-mary"
+        "saint-mary"
       ],
       "themes": [
-        "mary",
-        "kidane-mihret",
         "intercession",
-        "comfort"
+        "comfort",
+        "peace",
+        "faith",
+        "refuge"
       ],
       "usage": [
-        "general-worship",
-        "saint-commemoration"
+        "mary-feasts",
+        "supplication",
+        "general-worship"
       ],
       "season": [],
       "confidence": "high"
@@ -5463,6 +5413,68 @@
     ],
     "season": [],
     "confidence": "medium"
+  }
+},
+{
+  "type": "chant",
+  "form": "mezmur",
+  "id": "yom-fiseha-kone",
+  "title": "ዮም ፍስሃ ኮነ",
+  "transliterationTitle": "Yom Fiseha Kone",
+  "lyrics": "ዮም ፍስሃ ኮነ በእንተ ልደታ ለማርያም\nፍስሃ ኮነ በእንተ ልደታ ለማርያም\n\nበባርነት ሳለን ፍስሃ ኮነ\nኃጢአት በዓለም ነግሳ ፍስሃ ኮነ\nበድንግል መወለድ ፍስሃ ኮነ\nቀረልን አበሳ ፍስሃ ኮነ\nእግዚአብሔር መረጠሽ ፍስሃ ኮነ\nልትሆኚው እናቱ ፍስሃ ኮነ\nይኸው ተፈጸመ ፍስሃ ኮነ\nየዳዊት ትንቢቱ ፍስሃ ኮነ\n\nየሔዋን ተስፋዋ ፍስሃ ኮነ\nየአዳም ሕይወት ፍስሃ ኮነ\nየኢያቄም የሐና ፍስሃ ኮነ\nፍሬ በረከት ፍስሃ ኮነ\nምክንያተ ድኅነት ፍስሃ ኮነ\nኪዳን ምሕረት ፍስሃ ኮነ\nድንግል ተወለደች ፍስሃ ኮነ\nየአምላክ እናት ፍስሃ ኮነ\n\nበሔዋን ምክንያት ፍስሃ ኮነ\nየአጣነውን ሰላም ፍስሃ ኮነ\nዛሬ አገኘነው ፍስሃ ኮነ\nበድንግል ማርያም ፍስሃ ኮነ\nየምሥራች እንበል ፍስሃ ኮነ\nሐዘናችን ይጥፋ ፍስሃ ኮነ\nተወልዳለችና ፍስሃ ኮነ\nየዓለም ሁሉ ተስፋ ፍስሃ ኮነ",
+  "transliterationLyrics": "Yom fiseha kone be-ente lideta le-Mariam\nFiseha kone be-ente lideta le-Mariam\n\nBebarinet salen fiseha kone\nHatiyat be-alem negisa fiseha kone\nBe-Dingil meweled fiseha kone\nQerelin abesa fiseha kone\nIgziabher meretesh fiseha kone\nLitihonyew inatu fiseha kone\nYihew tefetseme fiseha kone\nYe-Dawit tinbitu fiseha kone\n\nYe-Hewan tesfawa fiseha kone\nYadam hiyiwet fiseha kone\nYe-Iyaqem ye-Hanna fiseha kone\nFire bereket fiseha kone\nMikniyate dihnit fiseha kone\nKidan mihret fiseha kone\nDingil teweledech fiseha kone\nYe-Amlak innat fiseha kone\n\nBe-Hewan mikniyat fiseha kone\nYatanewin selam fiseha kone\nZare agenyenew fiseha kone\nBe-Dingil Mariyam fiseha kone\nYemisrach inibel fiseha kone\nHazenachin yitfa fiseha kone\nTewelidalechina fiseha kone\nYe-alem hulu tesifa fiseha kone",
+  "youtubeUrl": "https://youtu.be/tsvhR34dN5k",
+  "category": {
+    "primary": "mary",
+    "majorHoliday": [
+      "nativity-of-mary"
+    ],
+    "saints": [
+      "saint-mary"
+    ],
+    "themes": [
+      "theotokos",
+      "nativity",
+      "joy",
+      "salvation",
+      "prophecy"
+    ],
+    "usage": [
+      "mary-feasts",
+      "nativity-of-mary",
+      "general-worship"
+    ],
+    "season": [],
+    "confidence": "high"
+  }
+},
+{
+  "type": "chant",
+  "form": "mezmur",
+  "id": "bemen-des-lasenyih",
+  "title": "በምን ደስ ላሰኝህ",
+  "transliterationTitle": "Bemen Des Lasenyih",
+  "lyrics": "በምን ደስ ላሰኝህ ጌታዬ ሆይ\nበምን ደስ ላሰኝህ አምላኬ ሆይ\nአለምና መላው ያንተው አይደለም ወይ\nየፈጠርከው ሁሉ ያንተው አይደለም ወይ\n\nኪሩቤል ሱራፌል ቅዱስ ሥሉስ ያሉህ\nመላዕክት በራማ የሚያመሰግኑህ\nድንቅ መካር ኃያል ኤልሻዳይ ነህና\nትቢያ ነኝ ምን ልስጥህ ምንስ አለኝና (2)\n\nቅዱሱን መስዋዕት ልዑል ስለሚወድ\nምን ይዤ ልምጣና በአምላኬ ፊት ልስገድ\nወደ ላይ በሰማይ ወደ ታች በጥልቀት\nአምላኬ የት አለ የማትገኝበት\nጌታ ሆይ የት አለ የማትገኝበት\n\nበኪዳን በፀሎት ቅዳሴ ሰዓታት\nአንተ የሰጠኸኝ የመንፈስ ቅዱስ ሀብት\nመልሰን ወደ አንተ ብንሰጥ ምን አለ\nተወው ጉዳችንን ስስታችን ይኸው (2)\n\nሀብትና ንብረቴስ ጉልበቴስ ምንድነው\nጤና የሰጠኝ ከአንተ በቀር ማነው\nበሰጠኸኝ እድሜ በሕይወት ዘመኔ\nከገላዬስ ቢሆን የትኛው ነው የኔ\nከአካላቴስ ቢሆን የትኛው ነው የኔ\n\nበምን ደስ ላሰኝህ ጌታዬ ሆይ\nበምን ደስ ላሰኝህ አምላኬ ሆይ\nአለምና መላው ያንተው አይደለም ወይ\nየፈጠርከው ሁሉ ያንተው አይደለም ወይ",
+  "transliterationLyrics": "Bemen des lasenyih Getaye hoy\nBemen des lasenyih Amlake hoy\nAlemena melaw yantew aydelem wey\nYefeterkew hulu yantew aydelem wey\n\nKirubel Surafel Kidus Silus yaluh\nMelaekt berama yemiyamesegenuh\nDink mekar hayal Elshaday nehna\nTenbiya negn min lishith mins alegnina (2)\n\nKidusun meswaet Leul silemiwed\nMin yize limtana beamlake fit lisged\nWede lay besemay wede tach betilket\nAmlake yet ale yematigegnibet\nGeta hoy yet ale yematigegnibet\n\nBekidan betshelot kidassie saatat\nAnte yesetehgne yemenfes kidus habt\nMelesen wede ante binset min ale\nTewew gudachinen sistachinen yihew (2)\n\nHabtina nibretes gulbetes mindenew\nTenaye yesetegn kante beker manew\nBesetehgne edme behiwot zemene\nKegelayes bihon yetignawu new yene\nKeakilates bihon yetignawu new yene\n\nBemen des lasenyih Getaye hoy\nBemen des lasenyih Amlake hoy\nAlemena melaw yantew aydelem wey\nYefeterkew hulu yantew aydelem wey",
+  "youtubeUrl": "https://youtu.be/wtfbuvOcH1o",
+  "category": {
+    "primary": "general",
+    "majorHoliday": [],
+    "saints": [],
+    "themes": [
+      "humility",
+      "worship",
+      "offering",
+      "thanksgiving",
+      "repentance"
+    ],
+    "usage": [
+      "general-worship",
+      "repentance",
+      "thanksgiving"
+    ],
+    "season": [],
+    "confidence": "high"
   }
 }
 ]

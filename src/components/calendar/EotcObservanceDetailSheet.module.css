@@ -264,6 +264,16 @@
   gap: var(--space-2);
 }
 
+.expandedContent {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.expandedBlock {
+  display: grid;
+  gap: 0.45rem;
+}
+
 .h3 {
   margin: 0;
   font-size: var(--text-xs);
@@ -278,6 +288,15 @@
   padding-left: 1.15rem;
   font-size: var(--text-sm);
   line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+.sourceLine {
+  margin: 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid color-mix(in srgb, var(--color-border-card) 70%, transparent);
+  font-size: var(--text-xs);
+  line-height: 1.4;
   color: var(--color-text-muted);
 }
 

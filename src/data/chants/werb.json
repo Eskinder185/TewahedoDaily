@@ -518,5 +518,33 @@
       ],
       "confidence": "high"
     }
+  },
+  {
+    "type": "chant",
+    "form": "mezmur",
+    "id": "bahiranini-yibe-amarya",
+    "title": "ባሕራንኒ ይቤ",
+    "transliterationTitle": "Baḥiranini Yibe",
+    "lyrics": "አማርያ\n\nባሕራንኒ ይቤ ዘነገደ ባሕረ (2x)\n\nርኢክዎ ለሚካኤል ወስዕንኩ ጠይቆቶ ስዕን (2x)",
+    "transliterationLyrics": "Amarya\n\nBaḥiranini yibe zenegede baḥire (2x)\n\nRiiko Lemikaeli wesiiniku teyikoto siluniku (2x)",
+    "youtubeUrl": "https://youtu.be/_mfJ4ltt80A",
+    "category": {
+      "primary": "angel",
+      "majorHoliday": [],
+      "saints": [
+        "saint-michael"
+      ],
+      "themes": [
+        "archangel-michael",
+        "praise",
+        "intercession"
+      ],
+      "usage": [
+        "angel-feasts",
+        "general-worship"
+      ],
+      "season": [],
+      "confidence": "high"
+    }
   }
 ]

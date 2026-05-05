@@ -25,6 +25,7 @@ import { ChantPracticePlayer } from './ChantPracticePlayer'
 import { CustomPracticeDrawer } from './CustomPracticeDrawer'
 import { PracticeMediaCard } from './PracticeMediaCard'
 import { chantMeaningTeaser } from '../../lib/practice/chantCardTeaser'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './ChantsSection.module.css'
 
@@ -77,6 +78,7 @@ function chantSubtitle(entry: ChantLibraryEntry): string | undefined {
 
 export function ChantsSection() {
   const t = useUiLabel()
+  const tt = useTranslation()
   
   const [practiceEntry, setPracticeEntry] = useState<ChantLibraryEntry | null>(
     null,
@@ -184,7 +186,7 @@ export function ChantsSection() {
       <p className={styles.chantHelper}>{t('practiceChantsHelper')}</p>
       {copiedLink ? (
         <p className={styles.copyToast} role="status">
-          Link copied
+          {tt('mezmurPractice.library.linkCopied')}
         </p>
       ) : null}
 
@@ -251,7 +253,7 @@ export function ChantsSection() {
         <div
           className={styles.filters}
           role="group"
-          aria-label="Chant type"
+          aria-label={tt('mezmurPractice.library.chantType')}
         >
           {FORM_FILTER_IDS.map((id) => (
             <button

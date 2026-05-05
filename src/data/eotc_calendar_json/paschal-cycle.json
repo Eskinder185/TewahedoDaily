@@ -55,7 +55,21 @@
         "relatedEntries": [
           "abiy-tsom",
           "fasika"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "The Fast of Nineveh remembers the repentance of the people of Nineveh after Jonah’s preaching.",
+          "whatHappened": [
+            "The Fast of Nineveh remembers the repentance of the people of Nineveh after Jonah’s preaching.",
+            "It connects believers to repentance, mercy, and the call to turn back to God."
+          ],
+          "significance": "It prepares the faithful through repentance before the greater struggle of Lent.",
+          "observanceType": "Major Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Nineveh Fast",
@@ -125,7 +139,21 @@
           "hosanna",
           "good-friday",
           "fasika"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Abiy Tsom prepares the faithful through fasting, repentance, and prayer for the joy of Fasika.",
+          "whatHappened": [
+            "Abiy Tsom prepares the faithful through fasting, repentance, and prayer for the joy of Fasika.",
+            "It connects believers to the Lord’s fasting and to the Church’s journey toward Holy Week and resurrection."
+          ],
+          "significance": "It is a season of purification, discipline, mercy, and deeper union with Christ.",
+          "observanceType": "Major Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Abiy Tsom",
@@ -192,7 +220,21 @@
         "relatedEntries": [
           "abiy-tsom",
           "hosanna"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Debre Zeit is a Lenten Sunday that draws attention to the Mount of Olives teachings and spiritual watchfulness.",
+          "whatHappened": [
+            "Debre Zeit is a Lenten Sunday that draws attention to the Mount of Olives teachings and spiritual watchfulness.",
+            "It connects the Lenten journey to the teaching of Christ and the call to spiritual readiness."
+          ],
+          "significance": "It calls the faithful to vigilance, repentance, and readiness for the coming of the Lord.",
+          "observanceType": "Lenten Sunday",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Debre Zeit"
@@ -258,7 +300,21 @@
         "relatedEntries": [
           "good-friday",
           "fasika"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Hosanna remembers the Lord’s entry into Jerusalem as King before His passion.",
+          "whatHappened": [
+            "Hosanna remembers the Lord’s entry into Jerusalem as King before His passion.",
+            "It connects the faithful to the beginning of Holy Week and the path to the Cross."
+          ],
+          "significance": "It joins joy and solemnity, as the Church welcomes Christ while moving toward His suffering.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Hosanna",
@@ -328,7 +384,21 @@
           "hosanna",
           "fasika",
           "meskel-finding-of-the-true-cross"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Siklet remembers the crucifixion of the Lord and the sacrifice offered for the salvation of the world.",
+          "whatHappened": [
+            "Siklet remembers the crucifixion of the Lord and the sacrifice offered for the salvation of the world.",
+            "It connects the faithful to Christ’s suffering, the Cross, and the price of redemption."
+          ],
+          "significance": "It is the day of deep mourning, contemplation, and reverence for the Cross.",
+          "observanceType": "Holy Week",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Good Friday",
@@ -397,7 +467,21 @@
           "good-friday",
           "ascension",
           "pentecost"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Fasika is the feast of feasts, proclaiming the resurrection of Christ and the defeat of death.",
+          "whatHappened": [
+            "Fasika is the feast of feasts, proclaiming the resurrection of Christ and the defeat of death.",
+            "It connects the faithful directly to the risen Christ, the empty tomb, and the promise of eternal life."
+          ],
+          "significance": "It is the center of Christian joy and the foundation of the Church’s hope.",
+          "observanceType": "Feast of Feasts",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Fasika",
@@ -463,7 +547,21 @@
         "relatedEntries": [
           "fasika",
           "ascension"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Rikbe Kahnat is a post-resurrection observance within the Paschal cycle.",
+          "whatHappened": [
+            "Rikbe Kahnat is a post-resurrection observance within the Paschal cycle.",
+            "It connects the faithful to the ordered rhythm of the Paschal season after Fasika."
+          ],
+          "significance": "It marks the continued unfolding of the resurrection season in the Church’s liturgical life.",
+          "observanceType": "Paschal Observance",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Rikbe Kahnat"
@@ -530,7 +628,22 @@
           "fasika",
           "ascension",
           "pentecost"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Damawi Tensae remembers the appearance of the risen Christ to Saint Thomas and strengthens the Church in resurrection faith.",
+          "whatHappened": [
+            "Damawi Tensae remembers the appearance of the risen Christ to Saint Thomas and strengthens the Church in resurrection faith.",
+            "Thomas Sunday stands within the Paschal joy of the Resurrection, celebrating the confession of Saint Thomas: “My Lord and my God.”",
+            "It connects the faithful to the living witness of the apostles within the fifty joyful Paschal days."
+          ],
+          "significance": "It proclaims that the Resurrection is real and bodily, calling believers from doubt to confession and joy.",
+          "observanceType": "Paschal Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Dagmawi Tensia",
@@ -599,7 +712,21 @@
         "relatedEntries": [
           "fasika",
           "pentecost"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Ereget celebrates the ascension of Christ to the Father in glory.",
+          "whatHappened": [
+            "Ereget celebrates the ascension of Christ to the Father in glory.",
+            "It connects the faithful to Christ’s heavenly reign and the hope of being lifted with Him."
+          ],
+          "significance": "It confirms the exaltation of the risen Lord and His abiding promise to the Church.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Ascension",
@@ -666,7 +793,21 @@
         "relatedEntries": [
           "ascension",
           "apostles-fast"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Paracletos remembers the descent of the Holy Spirit and the empowerment of the Church.",
+          "whatHappened": [
+            "Paracletos remembers the descent of the Holy Spirit and the empowerment of the Church.",
+            "It connects the faithful to the gift of the Holy Spirit and the mission of the apostolic Church."
+          ],
+          "significance": "It reveals the life of the Church in the Spirit and the beginning of apostolic mission.",
+          "observanceType": "Major Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Pentecost",

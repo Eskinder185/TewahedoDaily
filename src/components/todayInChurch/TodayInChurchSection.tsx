@@ -1,5 +1,6 @@
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import { PageSection } from '../ui/PageSection'
 import { TabPanel } from '../ui/TabPanel'
 import { CalendarDayDetailModal } from '../calendar/CalendarDayDetailModal'
@@ -35,6 +36,7 @@ export function TodayInChurchSection({
   embeddedOnCalendarPage = false,
 }: Props) {
   const t = useUiLabel()
+  const tt = useTranslation()
   const { now, snapshot } = useHomeToday()
   const { commemoration, season, fasting, upcoming, miniCalendar } = snapshot
 
@@ -240,18 +242,15 @@ export function TodayInChurchSection({
             null
           ) : (
             <>
-              <p className={styles.eyebrow}>Today in church</p>
-              <h2 className={styles.title}>The day the Church is keeping</h2>
-              <p className={styles.deck}>
-                Calendar snapshot — tap a date in the mini month to explore that
-                day, or open a section below.
-              </p>
+              <p className={styles.eyebrow}>{tt('today.section.eyebrow')}</p>
+              <h2 className={styles.title}>{tt('today.section.title')}</h2>
+              <p className={styles.deck}>{tt('today.section.deck')}</p>
               <div className={styles.introLinks}>
                 <Link to="/calendar" className={styles.pathJump}>
-                  Open full calendar page →
+                  {tt('today.section.openCalendar')} →
                 </Link>
                 <Link to="/about" className={styles.pathJump}>
-                  New here? Read about the site →
+                  {tt('today.section.newHere')} →
                 </Link>
               </div>
             </>
@@ -260,7 +259,7 @@ export function TodayInChurchSection({
         <div className={styles.introActions}>
           {!embeddedOnCalendarPage ? (
             <button type="button" className={styles.todayBtn} onClick={jumpToday}>
-              Jump to today
+              {tt('today.section.jumpToday')}
             </button>
           ) : null}
           {!embeddedOnCalendarPage ? (
@@ -322,7 +321,9 @@ export function TodayInChurchSection({
                 />
               </div>
               <details className={styles.contextFold}>
-                <summary className={styles.contextSummary}>Liturgical season &amp; fasting</summary>
+                <summary className={styles.contextSummary}>
+                  {tt('today.section.liturgicalSeasonFasting')}
+                </summary>
                 <div className={styles.contextBody}>
                   <ChurchSeasonFastingPanel
                     season={coachSnapshot.season}
@@ -331,7 +332,9 @@ export function TodayInChurchSection({
                 </div>
               </details>
               <details className={styles.contextFold}>
-                <summary className={styles.contextSummary}>Pastoral reflection</summary>
+                <summary className={styles.contextSummary}>
+                  {tt('today.section.pastoralReflection')}
+                </summary>
                 <div className={styles.contextBody}>
                   <figure className={styles.reflectionImageWrap}>
                     <CalendarImage

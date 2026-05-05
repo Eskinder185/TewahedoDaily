@@ -159,11 +159,11 @@
   color: var(--color-wine-deep);
 }
 
-@media (prefers-color-scheme: dark) {
-  .typeBadge {
+
+[data-theme='night'] .typeBadge {
     color: var(--color-gold-bright);
   }
-}
+
 
 .educationalContent {
   display: flex;

@@ -1,0 +1,135 @@
+.card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: 1px solid color-mix(in srgb, var(--color-border-card) 78%, var(--color-gold-line));
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--color-bg-elevated) 94%, var(--color-gold-soft)) 0%,
+      color-mix(in srgb, var(--color-bg-muted) 96%, var(--color-bg-elevated)) 100%
+    );
+}
+
+.head {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.kicker {
+  margin: 0;
+  font-size: 0.66rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-base);
+  color: var(--color-heading);
+}
+
+.structure {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.structure li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  font-size: var(--text-xs);
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.structure li:not(:last-child)::after {
+  content: "->";
+  color: color-mix(in srgb, var(--color-text-muted) 70%, var(--color-gold));
+}
+
+.structure span {
+  padding: 0.32rem 0.52rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-bg-elevated) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border-card) 66%, transparent);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.item {
+  display: grid;
+  gap: 0.28rem;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-bg-elevated) 72%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-border-card) 56%, transparent);
+}
+
+.item h4 {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+}
+
+.itemMain {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 750;
+  color: var(--color-text);
+}
+
+.itemMeta {
+  margin: 0;
+  font-size: var(--text-xs);
+  line-height: 1.45;
+  color: var(--color-text-muted);
+}
+
+.readingList {
+  margin: 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.18rem;
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
+.why summary {
+  min-height: 2.25rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.why p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 520px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

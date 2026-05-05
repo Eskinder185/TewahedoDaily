@@ -237,20 +237,20 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .miniGuideItem {
+
+[data-theme='night'] .miniGuideItem {
     background: color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-gold-faint));
     box-shadow: none;
   }
 
-  .guideCard {
+  [data-theme='night'] .guideCard {
     background: linear-gradient(
       180deg,
       color-mix(in srgb, var(--color-bg-elevated) 95%, var(--color-gold-faint) 5%) 0%,
       var(--color-bg) 100%
     );
   }
-}
+
 
 .lazyPanelFallback {
   min-height: min(36vh, 20rem);

@@ -1,4 +1,5 @@
 import { useId } from 'react'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './ChantPlayerControls.module.css'
 
@@ -34,6 +35,7 @@ export function ChantPlayerControls({
   onSeek,
 }: ChantPlayerControlsProps) {
   const t = useUiLabel()
+  const tt = useTranslation()
   const volId = useId()
   const timelineId = useId()
   const speedLabelId = useId()
@@ -53,7 +55,7 @@ export function ChantPlayerControls({
     <div className={styles.root}>
       <div className={styles.row}>
         <label className={styles.timelineLabel} htmlFor={timelineId}>
-          <span className={styles.timelineText}>Timeline</span>
+          <span className={styles.timelineText}>{tt('mezmurPractice.player.timeline')}</span>
           <input
             id={timelineId}
             type="range"
@@ -63,7 +65,7 @@ export function ChantPlayerControls({
             value={hasDuration ? Math.floor(clampedNow) : 0}
             disabled={disabled || !hasDuration}
             onChange={(e) => onSeek(Number(e.target.value))}
-            aria-label="Playback timeline"
+            aria-label={tt('mezmurPractice.player.playbackTimeline')}
           />
           <span className={styles.timelineTimes}>
             <span>{fmt(clampedNow)}</span>
@@ -80,7 +82,7 @@ export function ChantPlayerControls({
           onClick={onSkipBack}
           aria-label={t('chantSkipBack')}
         >
-          −5s
+          {tt('mezmurPractice.player.skipBackShort')}
         </button>
         <button
           type="button"
@@ -98,7 +100,7 @@ export function ChantPlayerControls({
           onClick={onSkipForward}
           aria-label={t('chantSkipForward')}
         >
-          +5s
+          {tt('mezmurPractice.player.skipForwardShort')}
         </button>
       </div>
 
@@ -131,19 +133,22 @@ export function ChantPlayerControls({
           role="group"
           aria-labelledby={speedLabelId}
         >
-          {RATES.map((r) => (
-            <button
-              key={r}
-              type="button"
-              className={`${styles.rateBtn} ${Math.abs(rate - r) < 0.01 ? styles.rateOn : ''}`}
-              disabled={disabled}
-              onClick={() => onRateChange(r)}
-              aria-pressed={Math.abs(rate - r) < 0.01}
-              aria-label={`${r === 1 ? '1×' : `${r}×`} ${t('speed')}`}
-            >
-              {r === 1 ? '1×' : `${r}×`}
-            </button>
-          ))}
+          {RATES.map((r) => {
+            const label = r === 1 ? '1×' : `${r}×`
+            return (
+              <button
+                key={r}
+                type="button"
+                className={`${styles.rateBtn} ${Math.abs(rate - r) < 0.01 ? styles.rateOn : ''}`}
+                disabled={disabled}
+                onClick={() => onRateChange(r)}
+                aria-pressed={Math.abs(rate - r) < 0.01}
+                aria-label={`${label} ${t('speed')}`}
+              >
+                {label}
+              </button>
+            )
+          })}
         </div>
       </div>
     </div>

@@ -8,6 +8,7 @@ import {
   type KeyboardEvent as ReactKeyboardEvent,
 } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { LanguageToggle } from './LanguageToggle'
 import { ThemeToggle } from './ThemeToggle'
@@ -25,6 +26,7 @@ function getFocusableIn(container: HTMLElement | null): HTMLElement[] {
 
 export function SiteHeader() {
   const t = useUiLabel()
+  const tt = useTranslation()
   const location = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
@@ -149,7 +151,7 @@ export function SiteHeader() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                title={`${item.label} — ${item.desc}`}
+                title={`${item.label} - ${item.desc}`}
                 onClick={closeMenu}
                 className={({ isActive }) =>
                   `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
@@ -181,8 +183,8 @@ export function SiteHeader() {
             <Link to="/" className={styles.brand}>
               <span className={styles.mark} aria-hidden />
               <span className={styles.brandText}>
-                <span className={styles.wordmark}>Tewahedo Daily</span>
-                <span className={styles.brandSub}>Quiet liturgical studio</span>
+                <span className={styles.wordmark}>{tt('brand.name')}</span>
+                <span className={styles.brandSub}>{tt('brand.subtitle')}</span>
               </span>
             </Link>
             <div className={styles.headerTools}>
@@ -221,7 +223,7 @@ export function SiteHeader() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                title={`${item.label} — ${item.desc}`}
+                title={`${item.label} - ${item.desc}`}
                 className={({ isActive }) =>
                   `${styles.modeLink} ${isActive ? styles.modeLinkOn : ''}`.trim()
                 }

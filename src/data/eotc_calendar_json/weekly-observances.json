@@ -54,7 +54,21 @@
         "notes": [],
         "relatedEntries": [
           "weekly-friday-fast"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Wednesday is kept as a regular fast day in memory of the betrayal of the Lord.",
+          "whatHappened": [
+            "Wednesday is kept as a regular fast day in memory of the betrayal of the Lord.",
+            "It connects weekly Christian life to the suffering of Christ and the cost of salvation."
+          ],
+          "significance": "It keeps the faithful in continual remembrance, repentance, and spiritual discipline.",
+          "observanceType": "Weekly Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Wednesday Fast",
@@ -120,7 +134,21 @@
         "notes": [],
         "relatedEntries": [
           "good-friday"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Friday is kept as a regular fast day in memory of the crucifixion of the Lord.",
+          "whatHappened": [
+            "Friday is kept as a regular fast day in memory of the crucifixion of the Lord.",
+            "It connects weekly Christian life to the passion of Christ and the mystery of redemption."
+          ],
+          "significance": "It keeps the Cross and the price of salvation before the faithful every week.",
+          "observanceType": "Weekly Fast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Friday Fast",
@@ -186,7 +214,21 @@
         "notes": [],
         "relatedEntries": [
           "fasika"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Sunday is the Christian Sabbath and weekly resurrectional celebration in the life of the Church.",
+          "whatHappened": [
+            "Sunday is the Christian Sabbath and weekly resurrectional celebration in the life of the Church.",
+            "It connects the faithful every week to the resurrection and the life of the Church in Christ."
+          ],
+          "significance": "It is the weekly center of worship, joy, and Eucharistic gathering.",
+          "observanceType": "Weekly Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Sunday",
@@ -250,7 +292,21 @@
       "content": {
         "extended": "Saturday is remembered as the first Sabbath and retains sacred meaning in Ethiopian Orthodox practice.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "Saturday is remembered as the first Sabbath and retains sacred meaning in Ethiopian Orthodox practice.",
+          "whatHappened": [
+            "Saturday is remembered as the first Sabbath and retains sacred meaning in Ethiopian Orthodox practice.",
+            "It connects the faithful to sacred time, reverence, and the unique weekly rhythm of the Church."
+          ],
+          "significance": "It reflects continuity with the holy rhythm of creation and rest before the resurrectional joy of Sunday.",
+          "observanceType": "Weekly Sabbath",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Saturday",

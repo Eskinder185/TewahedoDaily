@@ -223,7 +223,7 @@
   font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 800;
-  color: color-mix(in srgb, var(--color-midnight) 75%, var(--color-gold) 25%);
+  color: color-mix(in srgb, var(--color-heading) 75%, var(--color-gold) 25%);
   padding-top: 2px;
 }
 
@@ -289,7 +289,7 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-midnight) 55%, var(--color-gold) 45%);
+  color: color-mix(in srgb, var(--color-heading) 55%, var(--color-gold) 45%);
 }
 
 .h2 {

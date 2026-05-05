@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import type { AppLocale } from './locale'
 import { useLocale } from './locale'
+import { findTranslation } from '../../i18n'
 
 /**
  * Bilingual UI strings — expand keys as you translate more of the app.
@@ -209,14 +210,10 @@ export const UI_LABELS = {
   chantSkipBack: { en: 'Rewind 5 seconds', am: '5 ሰከንድ ወደ ኋላ' },
   chantSkipForward: { en: 'Forward 5 seconds', am: '5 ሰከንድ ወደ ፊት' },
 
-  themeSwitcherGroup: { en: 'Theme', am: 'መልክ' },
-  themeSegLight: { en: 'Light', am: 'ብርሃን' },
-  themeSegDark: { en: 'Dark', am: 'ጨለማ' },
-  themeSegSystem: { en: 'System', am: 'ስርተም' },
-  themeLightTitle: { en: 'Use light theme', am: 'የብርሃን መልክ ይጠቀሙ' },
-  themeDarkTitle: { en: 'Use dark theme', am: 'የጨለማ መልክ ይጠቀሙ' },
-  themeSystemTitle: { en: 'Match system appearance', am: 'ከስርተም ጋር ያዛምዱ' },
-
+  themeDayLabel: { en: 'Day', am: '??' },
+  themeNightLabel: { en: 'Night', am: '???' },
+  themeDayTitle: { en: 'Switch to Day theme', am: '?? ?? ??? ????' },
+  themeNightTitle: { en: 'Switch to Night theme', am: '?? ??? ??? ????' },
   homeGatewayEyebrow: { en: 'Three ways in', am: 'ሶስት መንገዶች' },
   homeGatewayTitle: { en: 'Enter through learning, prayer, or the day itself.', am: 'በትምህርት፣ በጸሎት ወይም በቀኑ ይግቡ።' },
   homeGatewayDeck: {
@@ -728,6 +725,8 @@ export function labelForLocale(
   locale: AppLocale,
   key: UiLabelKey,
 ): string {
+  const translated = findTranslation(locale, key)
+  if (translated) return translated
   const row = UI_LABELS[key]
   return locale === 'am' ? row.am : row.en
 }

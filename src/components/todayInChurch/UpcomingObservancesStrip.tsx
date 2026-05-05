@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { UpcomingObservance } from '../../lib/churchCalendar'
 import {
   buildObservanceCardDates,
-  simpleObservanceKindLabel,
   upcomingObservanceSortKey,
   upcomingObservanceVisualBucket,
 } from '../../lib/churchCalendar'
@@ -16,6 +15,7 @@ import {
   resolveEventImagePresentation,
 } from '../../content/calendarImageManifest'
 import { CalendarImage } from '../calendar/CalendarImage'
+import { useTranslation } from '../../i18n'
 import styles from './UpcomingObservancesStrip.module.css'
 
 type Props = {
@@ -40,13 +40,6 @@ function matchesUpcomingTab(item: UpcomingObservance, tab: TabId): boolean {
     item.kind === 'saint'
   )
 }
-
-const TABS: Array<{ id: TabId; label: string }> = [
-  { id: 'all', label: 'All' },
-  { id: 'feast', label: 'Feasts' },
-  { id: 'fast', label: 'Fasts' },
-  { id: 'commemoration', label: 'Saints' },
-]
 
 const fallbackThumb = calendarImageManifest.anchors.todayInChurch
 
@@ -107,7 +100,33 @@ export function UpcomingObservancesStrip({
   onActivate,
   highlightedId = null,
 }: Props) {
+  const tr = useTranslation()
   const [tab, setTab] = useState<TabId>('all')
+  const tabLabels: Array<{ id: TabId; label: string }> = [
+    { id: 'all', label: tr('calendar.filters.all') },
+    { id: 'feast', label: tr('calendar.filters.feast') },
+    { id: 'fast', label: tr('calendar.filters.fast') },
+    { id: 'commemoration', label: tr('calendar.filters.saints') },
+  ]
+  const kindLabel = (kind: UpcomingObservance['kind']) => {
+    switch (kind) {
+      case 'feast':
+        return tr('calendar.upcoming.labelFeast')
+      case 'season':
+        return tr('calendar.upcoming.labelSeason')
+      case 'marian':
+        return tr('calendar.upcoming.labelMary')
+      case 'fast':
+      case 'weekly':
+        return tr('calendar.upcoming.labelFast')
+      case 'angel':
+        return tr('calendar.upcoming.labelAngel')
+      case 'saint':
+      case 'commemoration':
+      default:
+        return tr('calendar.upcoming.labelSaint')
+    }
+  }
   const [expandedSummaryId, setExpandedSummaryId] = useState<string | null>(null)
   const [scrollHint, setScrollHint] = useState({ start: false, end: false })
   const trackRef = useRef<HTMLDivElement>(null)
@@ -180,34 +199,32 @@ export function UpcomingObservancesStrip({
     <section className={styles.section} aria-labelledby="upcoming-heading">
       <header className={styles.sectionHead}>
         <h3 id="upcoming-heading" className={styles.heading}>
-          Next observances
+          {tr('calendar.upcoming.nextObservances')}
         </h3>
         <p className={styles.hint}>
-          One gallery in civil-calendar order when an anchor exists; otherwise the clearest window from the data.
-          Summaries and fuller meaning open on hover (desktop) or tap (mobile). Confirm every date with your parish
-          books.
+          {tr('calendar.upcoming.helper')}
         </p>
       </header>
 
       <div
         className={styles.tablist}
         role="tablist"
-        aria-label="Observance category"
+        aria-label={tr('calendar.upcoming.categoryAria')}
         aria-orientation="horizontal"
       >
-        {TABS.map((t) => {
-          const selected = tab === t.id
+        {tabLabels.map((x) => {
+          const selected = tab === x.id
           return (
             <button
-              key={t.id}
-              id={`observance-tab-${t.id}`}
+              key={x.id}
+              id={`observance-tab-${x.id}`}
               type="button"
               role="tab"
               aria-selected={selected}
               className={`${styles.tab} ${selected ? styles.tabOn : ''}`}
-              onClick={() => setTab(t.id)}
+              onClick={() => setTab(x.id)}
             >
-              {t.label}
+              {x.label}
             </button>
           )
         })}
@@ -220,7 +237,7 @@ export function UpcomingObservancesStrip({
         aria-labelledby={`observance-tab-${tab}`}
       >
         {rows.length === 0 ? (
-          <p className={styles.empty}>Nothing in this category yet.</p>
+          <p className={styles.empty}>{tr('calendar.upcoming.emptyCategory')}</p>
         ) : (
           <>
             <div
@@ -235,7 +252,7 @@ export function UpcomingObservancesStrip({
             <button
               type="button"
               className={`${styles.navBtn} ${styles.navPrev}`}
-              aria-label="Scroll gallery left"
+              aria-label={tr('calendar.upcoming.scrollLeft')}
               onClick={() => scrollByDir(-1)}
             >
               <span aria-hidden>‹</span>
@@ -243,7 +260,7 @@ export function UpcomingObservancesStrip({
             <button
               type="button"
               className={`${styles.navBtn} ${styles.navNext}`}
-              aria-label="Scroll gallery right"
+              aria-label={tr('calendar.upcoming.scrollRight')}
               onClick={() => scrollByDir(1)}
             >
               <span aria-hidden>›</span>
@@ -257,7 +274,7 @@ export function UpcomingObservancesStrip({
             >
               {rows.map((row, index) => {
                 const { item } = row
-                const typeLabel = simpleObservanceKindLabel(item.kind)
+                const typeLabel = kindLabel(item.kind)
                 const visualKind = upcomingObservanceVisualBucket(item.kind)
                 const cardDates = buildObservanceCardDates(item)
                 const interactive = Boolean(onActivate) && !isCompanionObservanceId(item.id)
@@ -298,11 +315,15 @@ export function UpcomingObservancesStrip({
                         className={styles.openDay}
                         onClick={(e) => onCardActivate(e, item)}
                       >
-                        Open this day in the calendar
+                        {tr('calendar.upcoming.openDay')}
                       </button>
                     ) : null}
                     {coarsePointer ? (
-                      <p className={styles.tapHint}>{summaryOpen ? 'Tap card to close details' : 'Tap card for details'}</p>
+                      <p className={styles.tapHint}>
+                        {summaryOpen
+                          ? tr('calendar.upcoming.tapClose')
+                          : tr('calendar.upcoming.tapDetails')}
+                      </p>
                     ) : null}
                   </div>
                 )
@@ -331,7 +352,7 @@ export function UpcomingObservancesStrip({
                       <CalendarImage
                         src={row.art.src}
                         fallbackSrc={fallbackThumb}
-                        alt={`${item.title} observance image`}
+                        alt={tr('calendar.page.observanceImage', { title: item.title })}
                         className={styles.heroImg}
                         objectFit={imagePresentation.objectFit}
                         objectPosition={imagePresentation.objectPosition}

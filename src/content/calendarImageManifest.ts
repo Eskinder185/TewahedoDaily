@@ -53,7 +53,7 @@ export const calendarImageAssets = {
   saintGabrielCommemoration: img('SaintGabrielCommemoration'),
   saintGabrielFeast: img('SaintGabrielFeast'),
   saintDavid: img('SaintDavid', 'JPG'),
-  saintGeorge: img('Saint George', 'JPG'),
+  saintGeorge: img('Saint George'),
   saintJohnTheBaptist: img('SaintJohntheBaptist'),
   saintMaryCommemoration: img('SaintMaryCommemoration'),
   saintMichaelCommemoration: img('SaintMichaelCommemoration'),

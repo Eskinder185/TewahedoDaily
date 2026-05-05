@@ -12,11 +12,11 @@ html {
   -webkit-tap-highlight-color: color-mix(in srgb, var(--color-gold) 24%, transparent);
 }
 
-html[data-theme='dark'] {
+html[data-theme='night'] {
   color-scheme: dark;
 }
 
-html[data-theme='light'] {
+html[data-theme='day'] {
   color-scheme: light;
 }
 
@@ -50,17 +50,7 @@ body {
   background-attachment: fixed;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background-image: radial-gradient(
-      ellipse 120% 80% at 50% -20%,
-      var(--color-gold-faint) 0%,
-      transparent 55%
-    );
-  }
-}
-
-[data-theme="dark"] body {
+[data-theme="night"] body {
   background-image: radial-gradient(
     ellipse 120% 80% at 50% -20%,
     var(--color-gold-faint) 0%,
@@ -85,10 +75,18 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
-@media (prefers-color-scheme: dark) {
-  a:hover {
-    color: var(--color-accent-hover);
-  }
+input,
+textarea,
+select {
+  color: var(--color-text);
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-border-strong);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-subtle);
+  opacity: 1;
 }
 
 :focus-visible {

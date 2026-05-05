@@ -19,6 +19,7 @@ export type {
   EotcDateKind,
   EotcDisplay,
   EotcEntryDate,
+  EotcExpandedContent,
   EotcObservance,
   EotcSeasonRange,
   EotcSource,
@@ -82,6 +83,8 @@ export type {
 } from './buildSelectedDayObservanceModel'
 
 export { buildSelectedDayObservanceModel } from './buildSelectedDayObservanceModel'
+
+export { getExpandedObservanceContent } from './expandedObservanceContent'
 
 export { buildUpcomingObservancesFromEotc } from './buildUpcomingObservancesFromEotc'
 

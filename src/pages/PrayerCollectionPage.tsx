@@ -5,6 +5,7 @@ import {
   getCollectionPrayers,
   getPrayerCollection,
 } from '../lib/prayers/prayerCollections'
+import { useTranslation } from '../i18n'
 import { MEHARENE_AB_ENTRY, YEKIDANE_TSELOT_ENTRY } from '../lib/prayers/mediaPrayerEntries'
 import { prayerCollectionPath, prayerDetailPath } from '../lib/prayers/prayerSlug'
 import styles from './PrayerCollectionPage.module.css'
@@ -16,6 +17,7 @@ function collectionMedia(collectionId: string) {
 }
 
 export function PrayerCollectionPage() {
+  const tr = useTranslation()
   const { collectionSlug } = useParams()
   const collection = getPrayerCollection(collectionSlug)
   const legacyPrayer = findPrayerByLegacySlug(collectionSlug)
@@ -34,10 +36,10 @@ export function PrayerCollectionPage() {
       <PageSection variant="tint">
         <div className={styles.notFound}>
           <Link className={styles.backLink} to="/pray">
-            Back to Prayer collections
+            {tr('prayers.navigation.backToCollections')}
           </Link>
-          <h1>Prayer collection not found</h1>
-          <p>The collection link may be outdated or incomplete.</p>
+          <h1>{tr('prayers.collection.notFoundTitle')}</h1>
+          <p>{tr('prayers.collection.notFoundDescription')}</p>
         </div>
       </PageSection>
     )
@@ -49,30 +51,32 @@ export function PrayerCollectionPage() {
   return (
     <PageSection variant="tint">
       <div className={styles.shell}>
-        <nav className={styles.nav} aria-label="Prayer navigation">
+        <nav className={styles.nav} aria-label={tr('prayers.navigation.aria')}>
           <Link className={styles.backLink} to="/pray">
-            Back to Prayer collections
+            {tr('prayers.navigation.backToCollections')}
           </Link>
         </nav>
 
         <header className={styles.head}>
-          <p className={styles.eyebrow}>Prayer collection</p>
+          <p className={styles.eyebrow}>{tr('prayers.collection.label')}</p>
           <h1>{collection.title}</h1>
           <p className={styles.amharic} lang="am">
             {collection.amharicTitle}
           </p>
           <p className={styles.deck}>{collection.description}</p>
           <p className={styles.count}>
-            {prayers.length} {prayers.length === 1 ? 'section' : 'sections'}
+            {prayers.length === 1
+              ? tr('prayers.collection.sectionsCountOne', { count: prayers.length })
+              : tr('prayers.collection.sectionsCountOther', { count: prayers.length })}
           </p>
         </header>
 
         {media ? (
-          <section className={styles.media} aria-label={`${collection.title} video`}>
+          <section className={styles.media} aria-label={`${collection.title} ${tr('prayers.detail.videoAriaSuffix')}`}>
             <div className={styles.mediaHead}>
-              <h2>Watch / Listen</h2>
+              <h2>{tr('prayers.detail.watchListen')}</h2>
               <a href={media.youtubeUrl} target="_blank" rel="noreferrer">
-                Watch / Listen on YouTube
+                {tr('prayers.detail.watchListenOnYoutube')}
               </a>
             </div>
             <div className={styles.mediaFrame}>
@@ -103,14 +107,14 @@ export function PrayerCollectionPage() {
                     </small>
                   ) : null}
                 </span>
-                <span className={styles.action}>Open</span>
+                <span className={styles.action}>{tr('prayers.collection.open')}</span>
               </Link>
             </li>
           ))}
         </ul>
 
         <p className={styles.canonical}>
-          Collection URL: <Link to={prayerCollectionPath(collection.id)}>{prayerCollectionPath(collection.id)}</Link>
+          {tr('prayers.collection.urlLabel')}: <Link to={prayerCollectionPath(collection.id)}>{prayerCollectionPath(collection.id)}</Link>
         </p>
       </div>
     </PageSection>

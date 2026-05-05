@@ -8,12 +8,8 @@ import { youtubeThumbUrl } from '../../lib/practice'
 import { mezmurDetailPath, mezmurShareUrl } from '../../lib/practice/mezmurSlug'
 import { chantMeaningTeaser } from '../../lib/practice/chantCardTeaser'
 import { PracticeMediaCard } from './PracticeMediaCard'
+import { useTranslation } from '../../i18n'
 import styles from './ChantLibraryPreview.module.css'
-
-const FORM_BADGE: Record<ChantForm, string> = {
-  mezmur: 'Mezmur',
-  werb: 'Werb',
-}
 
 function chantThumbnail(entry: ChantLibraryEntry): string | undefined {
   if (entry.form === 'mezmur') {
@@ -45,15 +41,16 @@ export function ChantLibraryPreview({
   onSelect,
   onCopyLink,
 }: ChantLibraryPreviewProps) {
+  const t = useTranslation()
+  const formBadge = (form: ChantForm) =>
+    form === 'mezmur' ? t('mezmurPractice.library.mezmur') : t('mezmurPractice.library.werb')
+
   return (
     <section className={styles.root} aria-labelledby="chant-preview-heading">
       <h2 id="chant-preview-heading" className={styles.heading}>
-        Start here
+        {t('mezmurPractice.library.startHere')}
       </h2>
-      <p className={styles.deck}>
-        A short set of chants with video when available. Open one to practice with
-        lyrics side by side.
-      </p>
+      <p className={styles.deck}>{t('mezmurPractice.library.previewDeck')}</p>
       <ul className={styles.grid}>
         {entries.map((entry) => {
           const isMezmur = entry.form === 'mezmur'
@@ -71,7 +68,7 @@ export function ChantLibraryPreview({
                       onCopyLink,
                     }
                   : { onSelect: () => onSelect(entry) })}
-                tag={FORM_BADGE[entry.form]}
+                tag={formBadge(entry.form)}
               />
             </li>
           )

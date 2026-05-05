@@ -1,8 +1,11 @@
+import { useTranslation } from '../../i18n'
 import { imageManifest } from '../../content/imageManifest'
 import { ButtonLink } from '../ui/ButtonLink'
 import styles from './HeroSection.module.css'
 
 export function HeroSection() {
+  const t = useTranslation()
+
   return (
     <section className={styles.hero} aria-labelledby="hero-heading">
       <div className={styles.backdrop} aria-hidden>
@@ -21,18 +24,15 @@ export function HeroSection() {
       <div className={styles.aurora} aria-hidden />
       <div className={styles.inner}>
         <div className={styles.main}>
-          <p className={styles.eyebrow}>Tewahedo Daily</p>
+          <p className={styles.eyebrow}>{t('home.hero.eyebrow')}</p>
           <h1 id="hero-heading" className={styles.title}>
-            Your daily church companion
+            {t('home.hero.title')}
           </h1>
-          <p className={styles.tagline}>
-            Prayer, hymns, and the Ethiopian Orthodox calendar — gathered in one quiet
-            place.
-          </p>
+          <p className={styles.tagline}>{t('home.hero.tagline')}</p>
           <div className={styles.actions}>
-            <ButtonLink to="/practice">Explore Practice</ButtonLink>
+            <ButtonLink to="/practice">{t('home.hero.primaryCta')}</ButtonLink>
             <ButtonLink to="/calendar" variant="ghost">
-              See Today in Church
+              {t('home.hero.secondaryCta')}
             </ButtonLink>
           </div>
         </div>

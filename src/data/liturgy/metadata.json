@@ -1,0 +1,46 @@
+{
+  "sourcePdfTitle": "The Liturgy of the Ethiopian Church",
+  "sourcePdfEdition": "Translated by Rev. Marcos Daoud; revised by H. E. Blatta Marsie Hazen; re-edited March 22, 2006 PDF edition",
+  "sourcePdfPath": "c:\\Users\\eskew\\Downloads\\englishethiopianliturgy.pdf",
+  "sourcePdfPages": 185,
+  "extractionDate": "2026-04-30",
+  "extractionStatus": "initial full-PDF structured extraction with manual rule review notes",
+  "sectionsCompleted": [
+    {
+      "file": "base-structure.json",
+      "status": "created",
+      "notes": "Preparatory/opening, readings, general anaphora framing, and Communion framework extracted into sectional paragraph arrays."
+    },
+    {
+      "file": "anaphoras.json",
+      "status": "created",
+      "notes": "Fourteen anaphoras extracted by PDF contents page ranges with fullText paragraph arrays."
+    },
+    {
+      "file": "reading-pattern.json",
+      "status": "created",
+      "notes": "Standard five-reading pattern extracted from the introduction."
+    },
+    {
+      "file": "occasion-rules.json",
+      "status": "created",
+      "notes": "Explicit occasion notes and partial rules extracted from anaphora headings/footnotes."
+    },
+    {
+      "file": "communion.json",
+      "status": "created",
+      "notes": "Communion explanation and repeated Communion paragraphs extracted."
+    }
+  ],
+  "sectionsNeedingManualReview": [
+    "Exact daily getsawe readings are not supplied as a complete table in this PDF extraction.",
+    "Some PDF occasion notes are broad or conditional and must be mapped to calendar data by a human reviewer.",
+    "PDF text extraction may introduce line breaks, OCR-like spacing, or heading duplication; review before publishing long text in the UI.",
+    "The dismissal/going-out material on the final PDF page appears truncated by the PDF ending and should be checked against another edition."
+  ],
+  "dataDesignNotes": [
+    "Long liturgical text is stored as paragraph arrays to support mobile accordions, tabs, cards, and sectional readers.",
+    "sourcePageStart and sourcePageEnd use the visible PDF page numbers.",
+    "No rules or liturgical wording were added unless supported by the PDF text or marked as TODO/manual review."
+  ]
+}

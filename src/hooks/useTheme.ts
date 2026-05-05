@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 
-export type Theme = 'light' | 'dark' | 'auto'
+export type Theme = 'day' | 'night'
 
 interface ThemeContextType {
   theme: Theme
   setTheme: (theme: Theme) => void
-  effectiveTheme: 'light' | 'dark'
+  toggleTheme: () => void
 }
 
 export const ThemeContext = createContext<ThemeContextType | null>(null)
@@ -19,12 +19,14 @@ export function useTheme() {
 }
 
 export function getStoredTheme(): Theme {
-  if (typeof window === 'undefined') return 'auto'
+  if (typeof window === 'undefined') return 'day'
   try {
-    const stored = localStorage.getItem('tewahedo-theme') as Theme
-    return ['light', 'dark', 'auto'].includes(stored) ? stored : 'auto'
+    const stored = localStorage.getItem('tewahedo-theme')
+    if (stored === 'night' || stored === 'dark') return 'night'
+    if (stored === 'day' || stored === 'light') return 'day'
+    return 'day'
   } catch {
-    return 'auto'
+    return 'day'
   }
 }
 
@@ -37,12 +39,8 @@ export function setStoredTheme(theme: Theme) {
   }
 }
 
-export function getEffectiveTheme(theme: Theme): 'light' | 'dark' {
-  if (theme === 'auto') {
-    if (typeof window === 'undefined') return 'light'
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  }
-  return theme
+function colorSchemeForTheme(theme: Theme): 'light' | 'dark' {
+  return theme === 'night' ? 'dark' : 'light'
 }
 
 export function useThemeState() {
@@ -53,29 +51,15 @@ export function useThemeState() {
     setStoredTheme(newTheme)
   }
 
-  const effectiveTheme = getEffectiveTheme(theme)
+  const toggleTheme = () => {
+    setTheme(theme === 'night' ? 'day' : 'night')
+  }
 
   useEffect(() => {
     const root = document.documentElement
-    root.setAttribute('data-theme', effectiveTheme)
-    root.style.colorScheme = effectiveTheme
-  }, [effectiveTheme])
-
-  // Listen for system theme changes when in auto mode
-  useEffect(() => {
-    if (theme !== 'auto') return
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    const handleChange = () => {
-      const newEffective = getEffectiveTheme('auto')
-      const root = document.documentElement
-      root.setAttribute('data-theme', newEffective)
-      root.style.colorScheme = newEffective
-    }
-
-    mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
+    root.setAttribute('data-theme', theme)
+    root.style.colorScheme = colorSchemeForTheme(theme)
   }, [theme])
 
-  return { theme, setTheme, effectiveTheme }
+  return { theme, setTheme, toggleTheme }
 }

@@ -2,9 +2,6 @@ import { useLocale } from '../../lib/i18n/locale'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './LanguageToggle.module.css'
 
-/**
- * EN / አማርኛ switch. Wires to `LocaleProvider`; add translations keyed by `useLocale().locale` when ready.
- */
 export function LanguageToggle() {
   const { locale, setLocale } = useLocale()
   const t = useUiLabel()

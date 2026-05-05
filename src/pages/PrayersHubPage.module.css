@@ -60,7 +60,7 @@
   font-weight: 700;
   letter-spacing: var(--letter-eyebrow);
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-midnight) 52%, var(--color-gold) 48%);
+  color: color-mix(in srgb, var(--color-heading) 52%, var(--color-gold) 48%);
 }
 
 .heroEyebrow::after {
@@ -119,17 +119,8 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .hero {
-    background: linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-midnight) 8%) 0%,
-      color-mix(in srgb, var(--color-bg) 88%, var(--color-gold-faint) 12%) 100%
-    );
-  }
-}
 
-[data-theme='dark'] .hero {
+[data-theme='night'] .hero {
   background: linear-gradient(
     135deg,
     color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-midnight) 8%) 0%,
@@ -517,7 +508,7 @@
   font-weight: 600;
   letter-spacing: 0.03em;
   text-transform: none;
-  color: color-mix(in srgb, var(--color-midnight) 70%, var(--color-gold) 30%);
+  color: color-mix(in srgb, var(--color-heading) 70%, var(--color-gold) 30%);
 }
 
 .metaPill {
@@ -662,7 +653,7 @@
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: none;
-  color: color-mix(in srgb, var(--color-midnight) 72%, var(--color-gold) 28%);
+  color: color-mix(in srgb, var(--color-heading) 72%, var(--color-gold) 28%);
 }
 
 .cardArrow {

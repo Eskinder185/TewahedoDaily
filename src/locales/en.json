@@ -1,0 +1,555 @@
+{
+  "brand": {
+    "name": "Tewahedo Daily",
+    "subtitle": "Quiet liturgical studio"
+  },
+  "nav": {
+    "home": "Home",
+    "practice": "Hymns Practice",
+    "calendar": "Calendar",
+    "about": "About",
+    "prayers": "Prayers",
+    "pray": "Pray",
+    "keepDay": "Calendar",
+    "todayPath": "Today in the Church",
+    "modeLearnDesc": "Practice chants and movement",
+    "modePrayDesc": "Read daily prayers and sacred texts",
+    "modeKeepDayDesc": "Follow the season, feast, and observance",
+    "primaryNav": "Primary navigation",
+    "drawerTitle": "Menu",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "language": {
+    "group": "Language",
+    "english": "English",
+    "amharic": "Amharic",
+    "amharicNative": "አማርኛ"
+  },
+  "theme": {
+    "dayLabel": "Day",
+    "nightLabel": "Night",
+    "dayTitle": "Switch to Day theme",
+    "nightTitle": "Switch to Night theme"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Tewahedo Daily",
+      "title": "Your daily church companion",
+      "tagline": "Prayer, hymns, and the Ethiopian Orthodox calendar - gathered in one quiet place.",
+      "primaryCta": "Explore Practice",
+      "secondaryCta": "See Today in Church"
+    },
+    "today": {
+      "eyebrow": "Today in Church",
+      "title": "What the Church is keeping",
+      "typeLabels": {
+        "majorFeast": "Major Feast",
+        "holyDay": "Holy Day",
+        "saint": "Saint",
+        "monthlyCommemoration": "Monthly Commemoration",
+        "synaxarium": "Synaxarium",
+        "season": "Season",
+        "fallback": "Today in Church"
+      },
+      "imageAltObservance": "{title} observance image",
+      "imageAltSeason": "{title} seasonal church image",
+      "slideshowControls": "Today in Church slideshow controls",
+      "previousImage": "Previous observance image",
+      "nextImage": "Next observance image",
+      "images": "Observance images",
+      "showSlide": "Show {title}",
+      "gregorian": "Gregorian",
+      "ethiopian": "Ethiopian",
+      "seasonFast": "Season & fast",
+      "cta": "Open full calendar & Today in Church"
+    },
+    "gateway": {
+      "eyebrow": "Three ways in",
+      "title": "Enter through learning, prayer, or the day itself.",
+      "deck": "After the hero, the product should quickly orient you. Choose the mode that matches what you need now.",
+      "practiceBody": "Practice mezmur, rhythm, and movement with a more guided studio flow.",
+      "prayersBody": "Enter sacred reading with calmer prayer surfaces and shorter paths into the text.",
+      "calendarBody": "See why today matters through feast, season, observance, and practical next steps.",
+      "open": "Open {label}"
+    }
+  },
+  "today": {
+    "section": {
+      "eyebrow": "Today in church",
+      "title": "The day the Church is keeping",
+      "deck": "Calendar snapshot - tap a date in the mini month to explore that day, or open a section below.",
+      "openCalendar": "Open full calendar page",
+      "newHere": "New here? Read about the site",
+      "jumpToday": "Jump to today",
+      "liturgicalSeasonFasting": "Liturgical season & fasting",
+      "pastoralReflection": "Pastoral reflection"
+    }
+  },
+  "calendar": {
+    "page": {
+      "nextObservances": "Next observances",
+      "grid": "Calendar grid",
+      "openDate": "Open date",
+      "jumpToday": "Jump to today",
+      "selectDay": "Select a day to view observance details.",
+      "observanceImage": "{title} observance image"
+    },
+    "title": "Calendar",
+    "upcoming": {
+      "nextObservances": "Next observances",
+      "helper": "Civil-calendar order when an anchor exists; otherwise the clearest data window. Confirm every date with parish books.",
+      "categoryAria": "Observance category",
+      "openDay": "Open this day in the calendar",
+      "scrollLeft": "Scroll gallery left",
+      "scrollRight": "Scroll gallery right",
+      "tapDetails": "Tap card for details",
+      "tapClose": "Tap card to close details",
+      "labelFeast": "Feast",
+      "labelSeason": "Season",
+      "labelMary": "Mary",
+      "labelFast": "Fast",
+      "labelSaint": "Saint",
+      "labelAngel": "Angel",
+      "labelGreatFeast": "Great feast",
+      "emptyCategory": "Nothing in this category yet."
+    },
+    "navigation": {
+      "jumpToToday": "Jump to today"
+    },
+    "filters": {
+      "all": "All",
+      "feast": "Festival",
+      "majorFeasts": "Great feast",
+      "mary": "Mary",
+      "saints": "Saint",
+      "rhythm": "Rhythm",
+      "fast": "Fast",
+      "paschal": "Pascha",
+      "season": "Season"
+    },
+    "weekdays": {
+      "sunShort": "S",
+      "monShort": "M",
+      "tueShort": "T",
+      "wedShort": "W",
+      "thuShort": "T",
+      "friShort": "F",
+      "satShort": "S",
+      "sun": "Sunday",
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday"
+    },
+    "dayCell": {
+      "liturgicalObservance": "Liturgical observance.",
+      "alsoFast": "Also includes a fast day.",
+      "includesFasting": "Includes fasting.",
+      "weeklyOrMonthlyRhythm": "Weekly or monthly church rhythm.",
+      "liturgicalSeason": "Liturgical season.",
+      "feastDay": "Feast day.",
+      "marianObservance": "Marian observance.",
+      "majorFeastDay": "Great feast day.",
+      "fastDay": "Fast day.",
+      "saintCommemoration": "Saint or angel commemoration.",
+      "paschalCycle": "Paschal-cycle observance."
+    },
+    "today": {
+      "title": "Today's feast or commemoration",
+      "thisDay": "This day",
+      "selectedDay": "Selected day",
+      "readMore": "Read more",
+      "monthlyCommemoration": "Monthly commemoration",
+      "noMajorObservance": "No major observance listed",
+      "regularDaySummary": "Continue with daily prayer and remembrance.",
+      "type": "Type",
+      "seeMore": "See more",
+      "seeLess": "See less",
+      "seeMoreLiturgicalGuidance": "See more liturgical guidance",
+      "fasting": "Fasting",
+      "noWeeklyFast": "No standing Wednesday/Friday fast on this weekday.",
+      "dailyPrayersCard": "Daily prayers - Zeweter Tselot",
+      "psalmsCard": "Mezmure Dawit (Psalms)",
+      "hymnsPracticeCard": "Hymns and faithful rehearsal",
+      "notesLead": "A pastoral line from the snapshot - confirm every fast and feast with your parish calendar and spiritual father.",
+      "related": "Related",
+      "liturgicalGuideTitle": "Today's Liturgical Guide",
+      "representsTitle": "What this day represents",
+      "whyMattersTitle": "Why it matters",
+      "howToObserveTitle": "How to observe",
+      "prayerHymnGuidanceTitle": "Prayer & Hymn Guidance",
+      "notesTitle": "Notes",
+      "holyDay": "Holy day"
+    },
+    "gallery": {
+      "openDetailsFor": "Open details for {title}",
+      "relatedCountOne": "+{count} related entry",
+      "relatedCountOther": "+{count} related entries"
+    },
+    "detail": {
+      "whyCelebrated": "Why this day is celebrated",
+      "whatHappened": "What happened on this day",
+      "whyMatters": "Why it matters",
+      "commemorations": "Commemorations",
+      "readMore": "Read more",
+      "source": "Source: {title}",
+      "originalReference": "Original reference: {reference}"
+    }
+  },
+  "seasonPanel": {
+    "liturgicalSeason": "Liturgical season",
+    "fastingDiscipline": "Fasting & discipline",
+    "noWeeklyFast": "No weekly fast today (Wed/Fri).",
+    "noSeasonalFast": "No major seasonal fast in this window - confirm yearly with your parish."
+  },
+  "mezmurPractice": {
+    "title": "Hymns Practice",
+    "hero": {
+      "description": "Mezmur, werb, and liturgical hymns - focused practice. For prayer texts and tselot, use Daily Prayers."
+    },
+    "intro": {
+      "openLabel": "Hymns Practice",
+      "openText": "Open the hymn library and start with one piece.",
+      "memorizeLabel": "Memorize",
+      "memorizeText": "Use shorter lyric and rhythm passes before full repetition.",
+      "practiceLabel": "Practice",
+      "practiceText": "Return to the same hymn through the week for deeper learning.",
+      "enter": "Step into practice",
+      "quickOrientation": "Quick orientation"
+    },
+    "library": {
+      "helper": "Browse Ethiopian Orthodox hymns and practice with lyrics, videos, and learning tools.",
+      "searchLabel": "Search chants",
+      "searchPlaceholder": "Search mezmur or werb...",
+      "cantFind": "Can't find your mezmur?",
+      "customPractice": "Practice a custom chant",
+      "recent": "Recent",
+      "all": "All",
+      "mezmur": "Mezmur",
+      "werb": "Werb",
+      "marian": "Marian",
+      "saints": "Saints",
+      "feastDays": "Feast Days",
+      "startHere": "Start here",
+      "previewDeck": "A short set of chants with video when available. Open one to practice with lyrics side by side.",
+      "results": "{n} results",
+      "clearSearch": "Clear search",
+      "linkCopied": "Link copied",
+      "chantType": "Chant type",
+      "browseAll": "Browse all chants",
+      "seeMore": "See more",
+      "backToFeatured": "← Back to featured",
+      "libraryNote": "chants in the library - filters and search appear when you browse all.",
+      "noMatchTitle": "Can't find your mezmur?",
+      "noMatchDeck": "Nothing in the library matched this search. You can still open the same practice tools with a YouTube link.",
+      "pasteYoutube": "Paste a YouTube link",
+      "open": "Open",
+      "copyLink": "Copy Link",
+      "copyPrompt": "Copy mezmur link",
+      "opensInNewTab": "opens in a new tab",
+      "watch": "Watch"
+    },
+    "custom": {
+      "drawerEyebrow": "Outside the library",
+      "drawerTitle": "Custom practice from YouTube",
+      "drawerDeck": "Paste one video link. Lyrics, loops, and recording work the same as for library chants - optional fields below only help the learning panel.",
+      "drawerClose": "Close",
+      "formLabel": "Custom practice",
+      "learnTab": "Practice with lyrics",
+      "voiceTab": "Record & playback",
+      "urlLabel": "YouTube link",
+      "urlPlaceholder": "https://www.youtube.com/watch?v=...",
+      "titleOpt": "Title (optional)",
+      "titlePlaceholder": "e.g. Mezmur title",
+      "lyricsOpt": "Lyrics (optional)",
+      "lyricsPlaceholder": "Ge'ez or primary script - paste if you have them.",
+      "translitOpt": "Transliteration (optional)",
+      "translitPlaceholder": "Latin letters to sing along.",
+      "notesOpt": "Short notes (optional)",
+      "notesPlaceholder": "Context, feast day, or reminders for the learning panel.",
+      "optionalDetails": "Title, lyrics, transliteration, notes (optional)",
+      "loadVideo": "Load video",
+      "errMissing": "Paste a YouTube link or video ID to begin.",
+      "errInvalid": "That link does not look like a valid YouTube video. Try a watch URL, youtu.be link, Shorts, embed, or the 11-character video ID."
+    },
+    "loop": {
+      "title": "Loop practice",
+      "sections": "Practice sections",
+      "autoHint": "Auto split is the default practice flow. Choose a section and replay it.",
+      "section1": "Section 1",
+      "section2": "Section 2",
+      "section3": "Section 3",
+      "playSection": "Play section",
+      "notReady": "Not ready",
+      "advanced": "Advanced Loop Practice",
+      "start": "Start",
+      "end": "End",
+      "markStart": "Mark start",
+      "markEnd": "Mark end",
+      "playLoop": "Play loop",
+      "stopLoop": "Stop loop",
+      "clearMarks": "Clear marks",
+      "saveLoop": "Save loop",
+      "savedLoops": "Saved loops",
+      "savedLoopName": "Saved loop name",
+      "play": "Play",
+      "load": "Load",
+      "delete": "Delete",
+      "empty": "No saved loops yet. Mark start and end, then use Save loop.",
+      "markFirst": "Mark start and end first",
+      "maxSaved": "Maximum 30 saved loops",
+      "saveThisRange": "Save this range as a new loop",
+      "errorMarkBoth": "Mark both start and end first.",
+      "errorEndAfterStart": "End must be after start by at least a moment.",
+      "errorMarkBothSave": "Mark both start and end before saving.",
+      "errorEndAfterStartSave": "End must be after start before saving.",
+      "errorMaxSaved": "You can save up to 30 loops per chant.",
+      "errorVideoNotReady": "Video length not ready yet. Try again in a moment.",
+      "errorAutoSplitShort": "Auto split is unavailable for very short videos. Use Advanced Loop Practice.",
+      "defaultSavedName": "Loop {n}"
+    },
+    "player": {
+      "back": "← Chants library",
+      "backToPractice": "Back to Practice",
+      "nowPlaying": "Now practicing",
+      "regionAria": "Video and playback",
+      "videoLandmark": "Video player",
+      "tabsAria": "Chant learning sections",
+      "record": "Record",
+      "share": "Share",
+      "timeline": "Timeline",
+      "playbackTimeline": "Playback timeline",
+      "skipBack": "Rewind 5 seconds",
+      "skipForward": "Forward 5 seconds",
+      "skipBackShort": "−5s",
+      "skipForwardShort": "+5s",
+      "play": "Play",
+      "pause": "Pause",
+      "volume": "Volume",
+      "speed": "Speed",
+      "noVideo": "No YouTube link is set for this chant. Lyrics are still available beside this panel. Video is not available for this mezmur yet.",
+      "openYoutube": "Open video on YouTube",
+      "yourNotes": "Your notes",
+      "memoryTitle": "Practice from Memory",
+      "memoryDescription": "Practice reciting {title} from memory. The lyrics are hidden so you can listen and recall without reading.",
+      "memoryHint": "Switch to \"With Lyrics\" mode if you need to review the text.",
+      "notFoundEyebrow": "Mezmur",
+      "notFoundTitle": "Mezmur not found",
+      "notFoundDeck": "This direct link does not match a mezmur in the Practice library.",
+      "metaDescription": "Practice {title} with lyrics and video on Tewahedo Daily."
+    },
+    "tabs": {
+      "memorize": "Memorize",
+      "record": "Record",
+      "text": "Text",
+      "lyrics": "Lyrics",
+      "transliteration": "Transliteration",
+      "both": "Both",
+      "presentationStudy": "Presentation study",
+      "fullText": "Full text",
+      "lineByLine": "Line by line",
+      "stanzas": "Stanzas",
+      "lyricsDisplay": "Lyrics display",
+      "studyLayout": "Study layout",
+      "bothModeHint": "Switch to Ge'ez or transliteration only for line-by-line study tools.",
+      "noTransliteration": "Transliteration is not available for this chant."
+    },
+    "memory": {
+      "tools": "Memorization tools",
+      "title": "Memorization",
+      "revealNext": "Reveal next line",
+      "resetReveal": "Reset reveal",
+      "firstLetter": "First-letter hints",
+      "focusLine": "Focus line",
+      "centerLine": "Center line {n}",
+      "progress": "Your progress",
+      "markLearned": "Mark learned",
+      "reviewLater": "Review later",
+      "tipsAria": "Memorization tips",
+      "tipsTitle": "Memorization tips",
+      "tip1": "Read one line aloud several times before adding the next.",
+      "tip2": "Listen at slower speed, then speak with the recording.",
+      "tip3": "Use first-letter hints only as a bridge - return to full words often.",
+      "tip4": "In church, follow the cantor and keep eyes lifted toward the holy icons when appropriate."
+    },
+    "recording": {
+      "title": "Practice Recording",
+      "withLyrics": "Practice with Lyrics",
+      "fromMemory": "Practice from Memory",
+      "ready": "Ready to record",
+      "readyShort": "Ready",
+      "countdown": "Recording in {count}...",
+      "recording": "Recording... {time}",
+      "recorded": "Recorded {time}",
+      "playing": "Playing...",
+      "unsupported": "Voice recording is not supported in this browser.",
+      "start": "Start Recording",
+      "stop": "Stop Recording",
+      "play": "Play Recording",
+      "delete": "Delete",
+      "rerecord": "Re-record",
+      "stopPlayback": "Stop Playback"
+    }
+  },
+  "practice": {
+    "loading": "Loading practice content...",
+    "miniGuide": {
+      "openLabel": "Hymns Practice",
+      "openText": "Open the hymn library and start with one piece.",
+      "memorizeLabel": "Memorize",
+      "memorizeText": "Use shorter lyric and rhythm passes before full repetition.",
+      "practiceLabel": "Practice",
+      "practiceText": "Return to the same hymn through the week for deeper learning."
+    }
+  },
+  "prayers": {
+    "title": "Prayers",
+    "hero": {
+      "title": "Prayer collections",
+      "description": "Open a prayer book first, then choose its chapter, section, or prayer."
+    },
+    "dailyRhythm": {
+      "title": "Today's Prayer Rhythm",
+      "subtitle": "A simple daily prayer path"
+    },
+    "search": {
+      "searchAria": "Prayer search",
+      "resultsAria": "Search results",
+      "label": "Search all prayers",
+      "placeholder": "Search title, collection section, or text",
+      "resultsTitle": "Search results",
+      "resultsCountOne": "{count} result",
+      "resultsCountOther": "{count} results",
+      "emptyTitle": "No prayers match",
+      "emptyHint": "Try a shorter search or a collection name.",
+      "secondaryTagsTitle": "Secondary tags",
+      "secondaryTagsHelper": "Tags such as {firstTag}, Mary, repentance, liturgical, saints, and feasts remain available inside search results and prayer pages, but the main structure is organized by prayer collection."
+    },
+    "navigation": {
+      "aria": "Prayer navigation",
+      "breadcrumb": "Breadcrumb",
+      "backToCollections": "Back to Prayer collections",
+      "backToCollection": "Back to {collection}"
+    },
+    "collection": {
+      "label": "Prayer collection",
+      "open": "Open",
+      "openCollection": "Open Collection",
+      "urlLabel": "Collection URL",
+      "sectionsCountOne": "{count} section",
+      "sectionsCountOther": "{count} sections",
+      "notFoundTitle": "Prayer collection not found",
+      "notFoundDescription": "The collection link may be outdated or incomplete."
+    },
+    "detail": {
+      "notFoundTitle": "Prayer not found",
+      "notFoundDescription": "The prayer link may be outdated or incomplete.",
+      "browsePrayers": "Browse prayers",
+      "share": "Share",
+      "linkCopied": "Link copied",
+      "copyPrompt": "Copy prayer link",
+      "summaryAria": "Prayer summary",
+      "videoAria": "Prayer video",
+      "videoAriaSuffix": "video",
+      "watchListen": "Watch / Listen",
+      "watchListenOnYoutube": "Watch / Listen on YouTube",
+      "textAria": "Prayer text",
+      "sourceTitle": "Source",
+      "fullText": "Full text",
+      "audio": "Audio",
+      "textUnavailable": "Text is not available for this language yet."
+    },
+    "languages": {
+      "amharic": "Amharic",
+      "english": "English"
+    },
+    "media": {
+      "title": "Prayer media",
+      "openOnYoutube": "Open on YouTube",
+      "sectionsAria": "Prayer page sections",
+      "related": "Related",
+      "relatedPrayers": "Related prayers",
+      "lyricsPlaceholder": "Lyrics placeholder",
+      "lyricsPlaceholderDescription": "Lyrics will be added soon. For now, this page includes the zema video only."
+    }
+  },
+  "about": {
+    "title": "About",
+    "hero": {
+      "title": "Tewahedo Daily",
+      "description": "A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close to the Church between Sundays - in minutes, not marathons."
+    },
+    "whatThisSiteIs": {
+      "title": "What this website is",
+      "paragraph1": "Tewahedo Daily is a daily companion: short lessons, practice for chants and movement, a dedicated prayers space, and a quick view of today in the Church calendar. It is built for phones and busy days so you can touch prayer and tradition without feeling buried in text.",
+      "paragraph2": "We are not an encyclopedia or a social feed. We are trying to be faithful, small, and useful."
+    },
+    "audience": {
+      "title": "Who this is for",
+      "item1": "Ethiopians in the diaspora - especially when parish life is far away or schedules are tight.",
+      "item2": "Beginners who need a gentle starting place without already knowing every hymn or rubric.",
+      "item3": "Anyone who loves the Church and wants a lighter rhythm between worship, work, and family."
+    },
+    "features": {
+      "title": "Feature overview",
+      "intro": "Four threads - each one optional. Pick what fits the day.",
+      "churchDay": {
+        "title": "The Church day",
+        "description": "A quick sense of what today is - feast, season, and a short why-it-matters summary."
+      },
+      "chants": {
+        "title": "Chants",
+        "description": "Mezmur and werb together: listen, read transliteration, and open lyrics or watch only when you choose."
+      },
+      "prayers": {
+        "title": "Prayers",
+        "description": "Daily prayers, Wudase, and Mezmure Dawit under the prayer hub, with full text when you choose to open it."
+      },
+      "calendar": {
+        "title": "Calendar and seasons",
+        "description": "A simple calendar view and notes on fasts and feasts - always pointing back to your parish."
+      }
+    },
+    "howToUse": {
+      "title": "How to use it",
+      "step1": {
+        "title": "Start on the home page.",
+        "description": "Open the home page and read Today in Church - one small moment with God is enough."
+      },
+      "step2": {
+        "title": "Open Practice when you are ready.",
+        "description": "Use Practice for chants and tools, or Prayers for tselot and longer reading. Text stays in cards and dialogs until you tap."
+      },
+      "step3": {
+        "title": "Return tomorrow.",
+        "description": "The site is meant to be repeated, not finished. Same gentle shape, fresh day."
+      }
+    },
+    "cta": {
+      "home": "Back to home",
+      "practice": "Open practice"
+    },
+    "guidance": {
+      "title": "Respect and guidance",
+      "paragraph1": "This website supports learning and practice in daily life. We hope it encourages prayer, listening, and love for the Church.",
+      "paragraph2": "It does not replace your priest, parish, spiritual father, or official liturgical books. Fasting rules, sacraments, confession, and pastoral care belong in person with those the Church has given you.",
+      "paragraph3": "If something here disagrees with your bishop, books, or father of confession, trust them - not a website."
+    },
+    "futureVision": {
+      "title": "Future vision",
+      "description": "We hope to grow with real calendar data, parish-tuned content, audio that serves the liturgy, and more - always slowly, carefully, and under proper guidance. If Tewahedo Daily ever stops feeling humble next to the Church, we have missed the mark."
+    },
+    "closing": "Thank you for visiting. May it serve your salvation - even a little.",
+    "backHome": "← Back to home"
+  },
+  "footer": {
+    "portfolio": "Portfolio - eskinder.dev",
+    "copyright": "© {year} Tewahedo Daily"
+  },
+  "common": {
+    "dialogClose": "Close"
+  }
+}

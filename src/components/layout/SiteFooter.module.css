@@ -74,16 +74,16 @@
 }
 
 .portfolio:hover {
-  color: var(--color-navy);
+  color: var(--color-heading);
   border-color: color-mix(in srgb, var(--color-gold) 65%, transparent);
   background: color-mix(in srgb, var(--color-gold-faint) 70%, var(--color-bg));
 }
 
-@media (prefers-color-scheme: dark) {
-  .portfolio:hover {
+
+[data-theme='night'] .portfolio:hover {
     color: var(--color-gold-bright);
   }
-}
+
 
 .copy {
   order: 3;

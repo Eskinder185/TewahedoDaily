@@ -1,22 +1,24 @@
 import { useMemo, useRef, useState } from 'react'
+import { useTranslation } from '../i18n'
 import { PageSection } from '../components/ui/PageSection'
 import { MiniMonthCalendar } from '../components/todayInChurch/MiniMonthCalendar'
+import { LiturgyContextCard } from '../components/calendar/LiturgyContextCard'
 import { useHomeToday } from '../hooks/useHomeToday'
 import type { UpcomingObservance } from '../lib/churchCalendar'
 import { buildChurchDaySnapshot, computeCalendarDayMarks } from '../lib/churchCalendar'
-import { buildSelectedDayObservanceModel, getEntriesForDate } from '../lib/eotcCalendar'
+import {
+  buildSelectedDayObservanceModel,
+  getEntriesForDate,
+} from '../lib/eotcCalendar'
+import type { CalendarDayDetail, CalendarExpandedContent } from '../lib/calendarDayDetails/types'
+import { resolveCalendarDayDetail } from '../lib/calendarDayDetails'
 import {
   buildObservanceCardDates,
   parseGregorianAnchorIso,
-  simpleObservanceKindLabel,
   upcomingObservanceSortKey,
   upcomingObservanceVisualBucket,
 } from '../lib/churchCalendar/upcomingObservanceDisplay'
 import { CalendarImage } from '../components/calendar/CalendarImage'
-import {
-  getSynaxariumEntryForGregorianDate,
-  hasDetailedSynaxariumEntry,
-} from '../lib/synaxarium'
 import {
   calendarImageManifest,
   resolveEventImageById,
@@ -24,7 +26,80 @@ import {
 } from '../content/calendarImageManifest'
 import styles from './CalendarPage.module.css'
 
+function ExpandedContentSections({
+  content,
+}: {
+  content: CalendarExpandedContent
+}) {
+  const t = useTranslation()
+  const source = content.source
+  return (
+    <div className={styles.expandedContent}>
+      {content.whyCelebrated?.trim() ? (
+        <section className={styles.expandedBlock}>
+          <h3 className={styles.expandedHeading}>{t('calendar.detail.whyCelebrated')}</h3>
+          <p>{content.whyCelebrated.trim()}</p>
+        </section>
+      ) : null}
+      {content.whatHappened?.length ? (
+        <section className={styles.expandedBlock}>
+          <h3 className={styles.expandedHeading}>{t('calendar.detail.whatHappened')}</h3>
+          <ul className={styles.expandedList}>
+            {content.whatHappened.map((line, index) => (
+              <li key={`${line}-${index}`}>{line}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+      {content.significance?.trim() ? (
+        <section className={styles.expandedBlock}>
+          <h3 className={styles.expandedHeading}>{t('calendar.detail.whyMatters')}</h3>
+          <p>{content.significance.trim()}</p>
+        </section>
+      ) : null}
+      {source?.title ? (
+        <p className={styles.expandedSource}>
+          {t('calendar.detail.source', { title: source.title })}
+          {source.entryLabel ? ` (${source.entryLabel})` : ''}
+          {source.provenanceNote ? ` - ${source.provenanceNote}` : ''}
+          {source.originalReference
+            ? ` - ${t('calendar.detail.originalReference', { reference: source.originalReference })}`
+            : ''}
+        </p>
+      ) : null}
+    </div>
+  )
+}
+
+function NormalizedDaySections({ detail }: { detail: CalendarDayDetail }) {
+  const t = useTranslation()
+  const commemorations = detail.commemorations
+    .map((item) => item.title.trim())
+    .filter(Boolean)
+  return (
+    <>
+      {commemorations.length > 0 ? (
+        <div className={styles.synaxariumBlock}>
+          <h3 className={styles.synaxariumBlockTitle}>{t('calendar.detail.commemorations')}</h3>
+          <ul className={styles.synaxariumList}>
+            {commemorations.slice(0, 8).map((line, index) => (
+              <li key={`${detail.id}-commemoration-${index}`}>{line}</li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {detail.expandedContent ? (
+        <details className={styles.synaxariumMore}>
+          <summary>{t('calendar.detail.readMore')}</summary>
+          <ExpandedContentSections content={detail.expandedContent} />
+        </details>
+      ) : null}
+    </>
+  )
+}
+
 export function CalendarPage() {
+  const t = useTranslation()
   const { now, snapshot } = useHomeToday()
   const [viewYear, setViewYear] = useState(now.getFullYear())
   const [viewMonth, setViewMonth] = useState(now.getMonth())
@@ -55,11 +130,10 @@ export function CalendarPage() {
     () => (selectedDate ? getEntriesForDate(selectedDate) : []),
     [selectedDate],
   )
-  const selectedSynaxarium = useMemo(
-    () => (selectedDate ? getSynaxariumEntryForGregorianDate(selectedDate) : null),
-    [selectedDate],
+  const selectedDayDetail = useMemo(
+    () => (selectedDate ? resolveCalendarDayDetail(selectedDate, selectedEntries) : null),
+    [selectedDate, selectedEntries],
   )
-  const hasDetailedSynaxarium = hasDetailedSynaxariumEntry(selectedSynaxarium)
   const selectedModel = useMemo(
     () =>
       selectedDate
@@ -68,10 +142,6 @@ export function CalendarPage() {
     [selectedDate, selectedEntries],
   )
   const selectedPrimary = selectedModel?.primary ?? null
-  const selectedStory = selectedModel?.primaryStory ?? null
-  const selectedMonthlyRows = selectedModel
-    ? selectedModel.sortedRows.filter((row) => row.entry.date.kind === 'monthly-recurring')
-    : []
   const selectedImagePresentation = resolveEventImagePresentation(
     selectedPrimary?.entry.id,
     {
@@ -117,10 +187,29 @@ export function CalendarPage() {
     setViewMonth(d.getMonth())
     setSelectedDay(d.getDate())
   }
+  const upcomingKindLabel = (kind: UpcomingObservance['kind']) => {
+    switch (kind) {
+      case 'feast':
+        return t('calendar.upcoming.labelFeast')
+      case 'season':
+        return t('calendar.upcoming.labelSeason')
+      case 'marian':
+        return t('calendar.upcoming.labelMary')
+      case 'fast':
+      case 'weekly':
+        return t('calendar.upcoming.labelFast')
+      case 'angel':
+        return t('calendar.upcoming.labelAngel')
+      case 'saint':
+      case 'commemoration':
+      default:
+        return t('calendar.upcoming.labelSaint')
+    }
+  }
 
   return (
     <PageSection id="calendar" variant="tint" className={styles.page}>
-      <section className={styles.observances} aria-label="Next observances">
+      <section className={styles.observances} aria-label={t('calendar.page.nextObservances')}>
         <div className={styles.observanceTrack}>
           {upcoming.map((item) => {
             const dates = buildObservanceCardDates(item)
@@ -138,7 +227,7 @@ export function CalendarPage() {
                   <CalendarImage
                     src={resolveEventImageById(item.id) ?? calendarImageManifest.anchors.todayInChurch}
                     fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                    alt={`${item.title} observance image`}
+                    alt={t('calendar.page.observanceImage', { title: item.title })}
                     className={styles.observanceImage}
                     objectFit={imagePresentation.objectFit}
                     objectPosition={imagePresentation.objectPosition}
@@ -148,7 +237,7 @@ export function CalendarPage() {
                 </figure>
                 <div className={styles.observanceBody}>
                   <p className={styles.observanceType}>
-                    {simpleObservanceKindLabel(item.kind)}
+                    {upcomingKindLabel(item.kind)}
                   </p>
                   <h2 className={styles.observanceTitle}>{item.title}</h2>
                   <p className={styles.observanceDate}>{dates.primary}</p>
@@ -160,7 +249,7 @@ export function CalendarPage() {
                     className={styles.openDayBtn}
                     onClick={() => openObservanceInCalendar(item)}
                   >
-                    Open date
+                    {t('calendar.page.openDate')}
                   </button>
                 </div>
               </article>
@@ -169,11 +258,11 @@ export function CalendarPage() {
         </div>
       </section>
 
-      <section className={styles.calendarOnly} aria-label="Calendar grid">
+      <section className={styles.calendarOnly} aria-label={t('calendar.page.grid')}>
         <div className={styles.calendarActionsWrap}>
           <div className={styles.calendarActions}>
             <button type="button" className={styles.jumpTodayBtn} onClick={jumpToday}>
-              Jump to today
+              {t('calendar.navigation.jumpToToday')}
             </button>
           </div>
         </div>
@@ -189,196 +278,66 @@ export function CalendarPage() {
         />
         <section ref={detailRef} className={styles.dayDetail} aria-live="polite">
           {!selectedDate || !selectedSnapshot ? (
-            <p className={styles.emptyDetail}>Select a day to view observance details.</p>
-          ) : selectedPrimary ? (
+            <p className={styles.emptyDetail}>{t('calendar.page.selectDay')}</p>
+          ) : selectedDayDetail ? (
             <>
-              {selectedSynaxarium ? (
-                <article className={styles.synaxariumCard}>
-                  <div className={styles.synaxariumHead}>
-                    <p className={styles.synaxariumDate}>
-                      <span>{selectedSnapshot.gregorian.labelLong}</span>
-                      <span aria-hidden> / </span>
-                      <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
-                    </p>
-                    <span className={styles.synaxariumBadge}>
-                      {selectedSynaxarium.importanceLevel} {selectedSynaxarium.type}
-                    </span>
-                  </div>
-                  <h2 className={styles.synaxariumTitle}>
-                    {hasDetailedSynaxarium
-                      ? selectedSynaxarium.title
-                      : `Synaxarium Reading for ${selectedSynaxarium.ethiopianMonth} ${selectedSynaxarium.ethiopianDay}`}
-                  </h2>
-                  <p className={styles.synaxariumSummary}>
-                    {hasDetailedSynaxarium
-                      ? selectedSynaxarium.shortSummary
-                      : 'Synaxarium details for this date are being prepared.'}
+              {selectedPrimary ? (
+                <figure className={styles.dayDetailMedia} aria-hidden>
+                  <CalendarImage
+                    src={
+                      resolveEventImageById(selectedPrimary.entry.id) ??
+                      calendarImageManifest.anchors.todayInChurch
+                    }
+                    fallbackSrc={calendarImageManifest.anchors.todayInChurch}
+                    alt={t('calendar.page.observanceImage', { title: selectedDayDetail.title })}
+                    className={styles.dayDetailImage}
+                    objectFit={selectedImagePresentation.objectFit}
+                    objectPosition={selectedImagePresentation.objectPosition}
+                    fetchPriority="low"
+                    sizes="(max-width: 820px) 92vw, 20rem"
+                  />
+                </figure>
+              ) : null}
+              <article className={styles.synaxariumCard}>
+                <div className={styles.synaxariumHead}>
+                  <p className={styles.synaxariumDate}>
+                    <span>{selectedSnapshot.gregorian.labelLong}</span>
+                    <span aria-hidden> / </span>
+                    <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
                   </p>
-                  {hasDetailedSynaxarium && selectedSynaxarium.mainCommemorations.length > 0 ? (
-                    <div className={styles.synaxariumBlock}>
-                      <h3 className={styles.synaxariumBlockTitle}>Commemorations</h3>
-                      <ul className={styles.synaxariumList}>
-                        {selectedSynaxarium.mainCommemorations.slice(0, 5).map((line, index) => (
-                          <li key={`${selectedSynaxarium.id}-commemoration-${index}`}>
-                            {line}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                  {hasDetailedSynaxarium ? (
-                    <details className={styles.synaxariumMore}>
-                      <summary>Read more</summary>
-                      {selectedSynaxarium.readMore ? <p>{selectedSynaxarium.readMore}</p> : null}
-                      {selectedSynaxarium.scriptureReferences.length > 0 ? (
-                        <p>
-                          <span className={styles.synaxariumMetaLabel}>Scripture: </span>
-                          {selectedSynaxarium.scriptureReferences.join(', ')}
-                        </p>
-                      ) : null}
-                    </details>
-                  ) : null}
-                  {hasDetailedSynaxarium ? (
-                    <p className={styles.synaxariumSource}>
-                      Source: {selectedSynaxarium.sourceTitle}
-                      {selectedSynaxarium.sourcePage
-                        ? `, PDF page ${selectedSynaxarium.sourcePage}`
-                        : ''}
-                      {` (${selectedSynaxarium.sourceDateHeading})`}
-                    </p>
-                  ) : null}
-                </article>
-              ) : null}
-              <figure className={styles.dayDetailMedia} aria-hidden>
-                <CalendarImage
-                  src={
-                    resolveEventImageById(selectedPrimary.entry.id) ??
-                    calendarImageManifest.anchors.todayInChurch
-                  }
-                  fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                  alt={`${selectedPrimary.entry.englishTitle?.trim() || selectedPrimary.entry.title} observance image`}
-                  className={styles.dayDetailImage}
-                  objectFit={selectedImagePresentation.objectFit}
-                  objectPosition={selectedImagePresentation.objectPosition}
-                  fetchPriority="low"
-                  sizes="(max-width: 820px) 92vw, 20rem"
-                />
-              </figure>
-              <div className={styles.dayDetailHead}>
-                <p className={styles.dayDetailType}>Today's Feast or Commemoration</p>
-                <h2 className={styles.dayDetailTitle}>
-                  {selectedPrimary.entry.englishTitle?.trim() || selectedPrimary.entry.title}
-                </h2>
-                <p className={styles.dayDetailDates}>
-                  <span>{selectedSnapshot.gregorian.labelLong}</span>
-                  <span aria-hidden> / </span>
-                  <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
-                </p>
-              </div>
-              <p className={styles.dayDetailSummary}>
-                {selectedStory?.short ||
-                  selectedPrimary.entry.summary.short ||
-                  selectedPrimary.entry.summary.panel ||
-                  'Liturgical observance for this day.'}
-              </p>
-              {(selectedStory?.why || selectedStory?.connection) ? (
-                <details className={styles.dayDetailMore}>
-                  <summary>Read more</summary>
-                  <div>
-                    {selectedStory?.why ? <p>{selectedStory.why}</p> : null}
-                    {selectedStory?.connection ? <p>{selectedStory.connection}</p> : null}
-                  </div>
-                </details>
-              ) : null}
-              {selectedMonthlyRows.length > 0 ? (
-                <section className={styles.dayDetailSection}>
-                  <h3 className={styles.dayDetailSectionTitle}>Monthly Commemorations</h3>
-                  <ul className={styles.dayDetailList}>
-                    {selectedMonthlyRows.map((row) => (
-                      <li key={row.entry.id}>
-                        <span>{row.entry.englishTitle?.trim() || row.entry.title}</span>
-                        <small>{row.entry.summary.short}</small>
-                      </li>
-                    ))}
-                  </ul>
-                </section>
-              ) : null}
-            </>
-          ) : (
-            <>
-              {selectedSynaxarium ? (
-                <article className={styles.synaxariumCard}>
-                  <div className={styles.synaxariumHead}>
-                    <p className={styles.synaxariumDate}>
-                      <span>{selectedSnapshot.gregorian.labelLong}</span>
-                      <span aria-hidden> / </span>
-                      <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
-                    </p>
+                  {selectedPrimary?.entry.display.calendarBadge?.trim() ? (
                     <span className={styles.synaxariumBadge}>
-                      {selectedSynaxarium.importanceLevel} {selectedSynaxarium.type}
+                      {selectedPrimary.entry.display.calendarBadge.trim()}
                     </span>
-                  </div>
-                  <h2 className={styles.synaxariumTitle}>
-                    {hasDetailedSynaxarium
-                      ? selectedSynaxarium.title
-                      : `Synaxarium Reading for ${selectedSynaxarium.ethiopianMonth} ${selectedSynaxarium.ethiopianDay}`}
-                  </h2>
+                  ) : null}
+                </div>
+                <h2 className={styles.synaxariumTitle}>{selectedDayDetail.title}</h2>
+                {selectedDayDetail.shortDescription ? (
                   <p className={styles.synaxariumSummary}>
-                    {hasDetailedSynaxarium
-                      ? selectedSynaxarium.shortSummary
-                      : 'Synaxarium details for this date are being prepared.'}
+                    {selectedDayDetail.shortDescription}
                   </p>
-                  {hasDetailedSynaxarium && selectedSynaxarium.mainCommemorations.length > 0 ? (
-                    <div className={styles.synaxariumBlock}>
-                      <h3 className={styles.synaxariumBlockTitle}>Commemorations</h3>
-                      <ul className={styles.synaxariumList}>
-                        {selectedSynaxarium.mainCommemorations.slice(0, 5).map((line, index) => (
-                          <li key={`${selectedSynaxarium.id}-commemoration-${index}`}>
-                            {line}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                  {hasDetailedSynaxarium ? (
-                    <details className={styles.synaxariumMore}>
-                      <summary>Read more</summary>
-                      {selectedSynaxarium.readMore ? <p>{selectedSynaxarium.readMore}</p> : null}
-                      {selectedSynaxarium.scriptureReferences.length > 0 ? (
-                        <p>
-                          <span className={styles.synaxariumMetaLabel}>Scripture: </span>
-                          {selectedSynaxarium.scriptureReferences.join(', ')}
-                        </p>
-                      ) : null}
-                    </details>
-                  ) : null}
-                  {hasDetailedSynaxarium ? (
-                    <p className={styles.synaxariumSource}>
-                      Source: {selectedSynaxarium.sourceTitle}
-                      {selectedSynaxarium.sourcePage
-                        ? `, PDF page ${selectedSynaxarium.sourcePage}`
-                        : ''}
-                      {` (${selectedSynaxarium.sourceDateHeading})`}
-                    </p>
-                  ) : null}
-                </article>
+                ) : null}
+                <NormalizedDaySections detail={selectedDayDetail} />
+              </article>
+              {selectedDayDetail.liturgyContext ? (
+                <LiturgyContextCard context={selectedDayDetail.liturgyContext} />
               ) : null}
-              {!hasDetailedSynaxarium ? (
+              {selectedDayDetail.commemorations.length === 0 ? (
                 <div className={styles.dayDetailHead}>
-              <p className={styles.dayDetailType}>Regular Day</p>
-              <h2 className={styles.dayDetailTitle}>No major observance listed</h2>
-              <p className={styles.dayDetailDates}>
-                <span>{selectedSnapshot.gregorian.labelLong}</span>
-                <span aria-hidden> / </span>
-                <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
-              </p>
-              <p className={styles.dayDetailSummary}>
-                Regular day in the liturgical calendar. Continue with daily prayer and remembrance.
-              </p>
+                  <p className={styles.dayDetailType}>Regular Day</p>
+                  <h2 className={styles.dayDetailTitle}>{t('calendar.today.noMajorObservance')}</h2>
+                  <p className={styles.dayDetailDates}>
+                    <span>{selectedSnapshot.gregorian.labelLong}</span>
+                    <span aria-hidden> / </span>
+                    <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
+                  </p>
+                  <p className={styles.dayDetailSummary}>
+                    {t('calendar.today.regularDaySummary')}
+                  </p>
                 </div>
               ) : null}
             </>
-          )}
+          ) : null}
         </section>
       </section>
     </PageSection>

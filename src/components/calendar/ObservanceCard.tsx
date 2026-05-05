@@ -6,6 +6,7 @@ import {
   galleryBucketToPlaceholderVisual,
   getObservanceGalleryBucket,
 } from '../../lib/eotcCalendar/eotcObservanceGalleryModel'
+import { useTranslation } from '../../i18n'
 import {
   calendarImageManifest,
   resolveEventImageById,
@@ -32,6 +33,7 @@ function initialsFromRow(row: EotcCalendarDatasetRow): string {
 }
 
 function ObservanceCardInner({ row, onOpen }: Props) {
+  const tr = useTranslation()
   const e = row.entry
   const displayTitle = e.englishTitle?.trim() || e.title
   const nativeTitle =
@@ -67,7 +69,7 @@ function ObservanceCardInner({ row, onOpen }: Props) {
         className={styles.hit}
         onClick={() => onOpen(row)}
         onKeyDown={onKeyDown}
-        aria-label={`Open details for ${displayTitle}`}
+        aria-label={tr('calendar.gallery.openDetailsFor', { title: displayTitle })}
       >
         <div className={styles.media}>
           {imageUrl ? (
@@ -98,9 +100,9 @@ function ObservanceCardInner({ row, onOpen }: Props) {
           <div className={styles.badges}>
             <span className={styles.badge}>{badge}</span>
             {major ? (
-              <span className={styles.badgeMajor}>Major</span>
+              <span className={styles.badgeMajor}>{tr('calendar.upcoming.labelGreatFeast')}</span>
             ) : (
-              <span className={styles.badgeSubtle}>Holy day</span>
+              <span className={styles.badgeSubtle}>{tr('calendar.today.holyDay')}</span>
             )}
             <span className={styles.stateChip}>{stateLabel}</span>
           </div>
@@ -115,7 +117,9 @@ function ObservanceCardInner({ row, onOpen }: Props) {
           ) : null}
           {relatedCount > 0 ? (
             <p className={styles.relatedMeta}>
-              +{relatedCount} related {relatedCount === 1 ? 'entry' : 'entries'}
+              {relatedCount === 1
+                ? tr('calendar.gallery.relatedCountOne', { count: relatedCount })
+                : tr('calendar.gallery.relatedCountOther', { count: relatedCount })}
             </p>
           ) : null}
         </div>

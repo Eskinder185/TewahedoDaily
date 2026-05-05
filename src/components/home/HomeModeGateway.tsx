@@ -1,28 +1,30 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { PageSection } from '../ui/PageSection'
 import styles from './HomeModeGateway.module.css'
 
 export function HomeModeGateway() {
   const t = useUiLabel()
+  const tt = useTranslation()
   const items = [
     {
       to: '/practice',
       eyebrow: t('navPractice'),
       title: t('practiceHeadTitle'),
-      body: 'Practice mezmur, rhythm, and movement with a more guided studio flow.',
+      body: tt('home.gateway.practiceBody'),
     },
     {
       to: '/prayers',
       eyebrow: t('navPray'),
       title: t('navPrayers'),
-      body: 'Enter sacred reading with calmer prayer surfaces and shorter paths into the text.',
+      body: tt('home.gateway.prayersBody'),
     },
     {
       to: '/calendar',
       eyebrow: t('navKeepDay'),
       title: t('navTodayPath'),
-      body: 'See why today matters through feast, season, observance, and practical next steps.',
+      body: tt('home.gateway.calendarBody'),
     },
   ]
 
@@ -43,7 +45,9 @@ export function HomeModeGateway() {
               <p className={styles.cardEyebrow}>{item.eyebrow}</p>
               <h3 className={styles.cardTitle}>{item.title}</h3>
               <p className={styles.cardBody}>{item.body}</p>
-              <span className={styles.cardCta}>Open {item.eyebrow}</span>
+              <span className={styles.cardCta}>
+                {tt('home.gateway.open', { label: item.eyebrow })}
+              </span>
             </Link>
           ))}
         </div>

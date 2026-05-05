@@ -148,110 +148,64 @@
   }
 }
 
-/**
- * Dark theme: same two-tone identity — midnight shells, ivory type, gold accents.
- * (Does not switch the brand to unrelated blues.)
- */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --color-midnight: #162335;
-    --color-midnight-deep: #0f1826;
-    --color-midnight-ink: #e8dfd2;
+/* Manual Night theme via data-theme attribute. The app always sets day/night explicitly. */
+[data-theme="night"] {
+  --color-midnight: #182638;
+  --color-midnight-deep: #101925;
+  --color-midnight-ink: #f5efe6;
 
-    --color-navy: #1a3148;
-    --color-navy-deep: #132238;
-    --color-navy-midnight: #f0e8db;
+  --color-navy: #223a53;
+  --color-navy-deep: #17283c;
+  --color-navy-midnight: #f3eadc;
 
-    --color-gold: #c9a34a;
-    --color-gold-bright: #dcc062;
-    --color-gold-soft: rgba(201, 163, 74, 0.12);
-    --color-gold-faint: rgba(201, 163, 74, 0.06);
-    --color-gold-line: rgba(201, 163, 74, 0.28);
+  --color-wine: var(--color-navy);
+  --color-wine-deep: var(--color-navy-deep);
 
-    --color-bg: #0a0e14;
-    --color-bg-elevated: #121a24;
-    --color-bg-muted: #1a242f;
-    --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 88%, var(--color-midnight) 12%);
-    --color-bg-hero-wash: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-midnight) 10%);
+  --color-sky: #172334;
+  --color-sky-deep: #bdd3e8;
+  --color-sky-glow: rgba(122, 166, 210, 0.16);
+  --color-sky-faint: rgba(160, 190, 220, 0.18);
 
-    --color-heading: var(--color-navy-midnight);
-    --color-text: #ede6db;
-    --color-text-muted: #c4bdb2;
-    --color-text-subtle: #9f978d;
-    /** Always light ink for primary (midnight) buttons — not page “inverse” bg */
-    --color-text-inverse: #f5efe6;
-    --color-text-strong: var(--color-heading);
-    --color-text-weak: var(--color-text-muted);
+  --color-gold: #d6b45d;
+  --color-gold-bright: #f0d47a;
+  --color-gold-soft: rgba(214, 180, 93, 0.18);
+  --color-gold-faint: rgba(214, 180, 93, 0.09);
+  --color-gold-line: rgba(214, 180, 93, 0.38);
 
-    --color-border: rgba(232, 223, 206, 0.09);
-    --color-border-strong: rgba(232, 223, 206, 0.16);
-    --color-border-gold: rgba(201, 163, 74, 0.32);
-    --color-border-card: color-mix(in srgb, var(--color-border) 75%, var(--color-gold-line));
+  --color-bg: #090e15;
+  --color-bg-elevated: #121b26;
+  --color-bg-muted: #1a2531;
+  --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 82%, #263647 18%);
+  --color-bg-hero-wash: color-mix(in srgb, var(--color-bg-elevated) 88%, #263647 12%);
 
-    --color-accent: var(--color-gold-bright);
-    --color-accent-hover: color-mix(in srgb, var(--color-gold-bright) 88%, #fff 12%);
-    --color-focus-ring: rgba(220, 192, 98, 0.45);
-
-    --shadow-soft: 0 16px 48px rgba(0, 0, 0, 0.42);
-    --shadow-card: 0 6px 26px rgba(0, 0, 0, 0.38);
-    --shadow-lift: 0 22px 60px rgba(0, 0, 0, 0.48);
-    --shadow-button: 0 6px 22px rgba(0, 0, 0, 0.45);
-    --shadow-button-hover: 0 12px 34px rgba(0, 0, 0, 0.5);
-    --glow-daily: 0 0 72px rgba(201, 163, 74, 0.09);
-    --glow-navy: 0 0 56px rgba(26, 49, 72, 0.22);
-  }
-}
-
-/* Manual dark theme via data-theme attribute (takes precedence over prefers-color-scheme) */
-[data-theme="dark"] {
-  --color-midnight: #162335;
-  --color-midnight-deep: #0f1826;
-  --color-midnight-ink: #e8dfd2;
-
-  --color-navy: #1a3148;
-  --color-navy-deep: #132238;
-  --color-navy-midnight: #f0e8db;
-
-  --color-gold: #c9a34a;
-  --color-gold-bright: #dcc062;
-  --color-gold-soft: rgba(201, 163, 74, 0.12);
-  --color-gold-faint: rgba(201, 163, 74, 0.06);
-  --color-gold-line: rgba(201, 163, 74, 0.28);
-
-  --color-bg: #0a0e14;
-  --color-bg-elevated: #121a24;
-  --color-bg-muted: #1a242f;
-  --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 88%, var(--color-midnight) 12%);
-  --color-bg-hero-wash: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-midnight) 10%);
-
-  --color-heading: var(--color-navy-midnight);
-  --color-text: #ede6db;
-  --color-text-muted: #c4bdb2;
-  --color-text-subtle: #9f978d;
-  --color-text-inverse: #f5efe6;
+  --color-heading: #f5efe6;
+  --color-text: #f0e9de;
+  --color-text-muted: #d7cfc3;
+  --color-text-subtle: #c2b8aa;
+  --color-text-inverse: #f8f0e3;
   --color-text-strong: var(--color-heading);
   --color-text-weak: var(--color-text-muted);
 
-  --color-border: rgba(232, 223, 206, 0.09);
-  --color-border-strong: rgba(232, 223, 206, 0.16);
-  --color-border-gold: rgba(201, 163, 74, 0.32);
-  --color-border-card: color-mix(in srgb, var(--color-border) 75%, var(--color-gold-line));
+  --color-border: rgba(240, 233, 222, 0.13);
+  --color-border-strong: rgba(240, 233, 222, 0.24);
+  --color-border-gold: rgba(214, 180, 93, 0.42);
+  --color-border-card: color-mix(in srgb, var(--color-border) 68%, var(--color-gold-line));
 
-  --color-accent: var(--color-gold-bright);
-  --color-accent-hover: color-mix(in srgb, var(--color-gold-bright) 88%, #fff 12%);
-  --color-focus-ring: rgba(220, 192, 98, 0.45);
+  --color-accent: #f0d47a;
+  --color-accent-hover: #ffe59b;
+  --color-focus-ring: rgba(240, 212, 122, 0.58);
 
-  --shadow-soft: 0 16px 48px rgba(0, 0, 0, 0.42);
-  --shadow-card: 0 6px 26px rgba(0, 0, 0, 0.38);
-  --shadow-lift: 0 22px 60px rgba(0, 0, 0, 0.48);
+  --shadow-soft: 0 16px 48px rgba(0, 0, 0, 0.44);
+  --shadow-card: 0 6px 26px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 22px 60px rgba(0, 0, 0, 0.5);
   --shadow-button: 0 6px 22px rgba(0, 0, 0, 0.45);
   --shadow-button-hover: 0 12px 34px rgba(0, 0, 0, 0.5);
-  --glow-daily: 0 0 72px rgba(201, 163, 74, 0.09);
-  --glow-navy: 0 0 56px rgba(26, 49, 72, 0.22);
+  --glow-daily: 0 0 72px rgba(214, 180, 93, 0.11);
+  --glow-navy: 0 0 56px rgba(122, 166, 210, 0.2);
 }
 
-/* Manual light theme via data-theme attribute (ensures bright theme when explicitly selected) */
-[data-theme="light"] {
+/* Manual Day theme via data-theme attribute. */
+[data-theme="day"] {
   --color-midnight: #132238;
   --color-midnight-deep: #0e1b2d;
   --color-midnight-ink: #0a1524;
@@ -259,6 +213,14 @@
   --color-navy: #132238;
   --color-navy-deep: #0f1d30;
   --color-navy-midnight: #0a1524;
+
+  --color-wine: var(--color-navy);
+  --color-wine-deep: var(--color-navy-deep);
+
+  --color-sky: #e4ecf6;
+  --color-sky-deep: #8aa4be;
+  --color-sky-glow: rgba(120, 168, 210, 0.14);
+  --color-sky-faint: rgba(180, 205, 228, 0.35);
 
   --color-gold: #c6a03d;
   --color-gold-bright: #ddb84d;
@@ -297,57 +259,6 @@
   --glow-daily: 0 0 96px rgba(214, 176, 70, 0.14);
   --glow-navy: 0 0 80px rgba(26, 74, 110, 0.12);
 }
-
-/* Theme system for light/dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --color-midnight: #162335;
-    --color-midnight-deep: #0f1826;
-    --color-midnight-ink: #e8dfd2;
-
-    --color-navy: #1a3148;
-    --color-navy-deep: #132238;
-    --color-navy-midnight: #f0e8db;
-
-    --color-gold: #c9a34a;
-    --color-gold-bright: #dcc062;
-    --color-gold-soft: rgba(201, 163, 74, 0.12);
-    --color-gold-faint: rgba(201, 163, 74, 0.06);
-    --color-gold-line: rgba(201, 163, 74, 0.28);
-
-    --color-bg: #0a0e14;
-    --color-bg-elevated: #121a24;
-    --color-bg-muted: #1a242f;
-    --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 88%, var(--color-midnight) 12%);
-    --color-bg-hero-wash: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-midnight) 10%);
-
-    --color-heading: var(--color-navy-midnight);
-    --color-text: #ede6db;
-    --color-text-muted: #c4bdb2;
-    --color-text-subtle: #9f978d;
-    --color-text-inverse: #f5efe6;
-    --color-text-strong: var(--color-heading);
-    --color-text-weak: var(--color-text-muted);
-
-    --color-border: rgba(232, 223, 206, 0.09);
-    --color-border-strong: rgba(232, 223, 206, 0.16);
-    --color-border-gold: rgba(201, 163, 74, 0.32);
-    --color-border-card: color-mix(in srgb, var(--color-border) 75%, var(--color-gold-line));
-
-    --color-accent: var(--color-gold-bright);
-    --color-accent-hover: color-mix(in srgb, var(--color-gold-bright) 88%, #fff 12%);
-    --color-focus-ring: rgba(220, 192, 98, 0.45);
-
-    --shadow-soft: 0 16px 48px rgba(0, 0, 0, 0.42);
-    --shadow-card: 0 6px 26px rgba(0, 0, 0, 0.38);
-    --shadow-lift: 0 22px 60px rgba(0, 0, 0, 0.48);
-    --shadow-button: 0 6px 22px rgba(0, 0, 0, 0.45);
-    --shadow-button-hover: 0 12px 34px rgba(0, 0, 0, 0.5);
-    --glow-daily: 0 0 72px rgba(201, 163, 74, 0.09);
-    --glow-navy: 0 0 56px rgba(26, 49, 72, 0.22);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-fast: 0.01ms;

@@ -325,7 +325,7 @@
 }
 
 .brand:hover {
-  color: var(--color-navy);
+  color: var(--color-heading);
 }
 
 .mark {
@@ -539,28 +539,27 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .header {
+
+[data-theme='night'] .header {
     background: color-mix(in srgb, var(--color-bg-elevated) 90%, transparent);
     box-shadow:
       0 1px 0 var(--color-gold-faint),
       0 10px 36px -18px rgba(0, 0, 0, 0.45);
   }
 
-  .brand:hover {
+  [data-theme='night'] .brand:hover {
     color: var(--color-gold-bright);
   }
 
-  .homeLink:hover,
-  .modeLink:hover {
+  [data-theme='night'] .homeLink:hover, [data-theme='night'] .modeLink:hover {
     color: var(--color-text);
   }
 
-  .drawerBackdrop {
+  [data-theme='night'] .drawerBackdrop {
     background: color-mix(in srgb, #000 55%, transparent);
   }
 
-  .drawerLink:hover {
+  [data-theme='night'] .drawerLink:hover {
     color: var(--color-text);
   }
-}
+

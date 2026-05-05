@@ -148,11 +148,11 @@
   color: var(--color-wine-deep);
 }
 
-@media (prefers-color-scheme: dark) {
-  .chip {
+
+[data-theme='night'] .chip {
     color: var(--color-gold-bright);
   }
-}
+
 
 .feastTitle {
   margin: 0;

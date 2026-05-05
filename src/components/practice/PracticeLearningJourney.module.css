@@ -96,12 +96,12 @@
 }
 
 .link:hover {
-  color: var(--color-navy-deep);
+  color: var(--color-heading);
   border-bottom-color: var(--color-border-gold);
 }
 
-@media (prefers-color-scheme: dark) {
-  .link:hover {
+
+[data-theme='night'] .link:hover {
     color: var(--color-gold-bright);
   }
-}
+

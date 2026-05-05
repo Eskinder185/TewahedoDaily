@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 import type { CalendarCellMarkKind, CalendarDayCellMark } from '../../lib/churchCalendar'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useLocale } from '../../lib/i18n/locale'
+import { useTranslation } from '../../i18n'
 import styles from './MiniMonthCalendar.module.css'
-
-const WEEK_LABELS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'] as const
 
 const MARK_PRIMARY_CLASS: Record<CalendarCellMarkKind, string> = {
   majorFeast: styles.markMajorFeast,
@@ -14,17 +14,6 @@ const MARK_PRIMARY_CLASS: Record<CalendarCellMarkKind, string> = {
   recurring: styles.markRecurring,
   season: styles.markSeason,
   movable: styles.markMovable,
-}
-
-const MARK_SCREEN_READER: Record<CalendarCellMarkKind, string> = {
-  majorFeast: 'Great feast day.',
-  feast: 'Feast day.',
-  fast: 'Fast day.',
-  mary: 'Marian observance.',
-  saint: 'Saint or angel commemoration.',
-  recurring: 'Weekly or monthly church rhythm.',
-  season: 'Liturgical season.',
-  movable: 'Paschal-cycle observance.',
 }
 
 export type MiniMonthCalendarProps = {
@@ -45,9 +34,9 @@ export type MiniMonthCalendarProps = {
   onNextMonth?: () => void
 }
 
-function civilDatePhrase(year: number, monthIndex: number, day: number): string {
+function civilDatePhrase(year: number, monthIndex: number, day: number, locale: string): string {
   const d = new Date(year, monthIndex, day)
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat(locale, {
     weekday: 'long',
     month: 'long',
     day: 'numeric',
@@ -61,14 +50,16 @@ function cellAriaLabel(
   day: number,
   mark: CalendarDayCellMark | undefined,
   markedLegacy: boolean,
+  locale: string,
+  t: (key: string) => string,
 ): string {
-  const datePart = civilDatePhrase(year, monthIndex, day)
+  const datePart = civilDatePhrase(year, monthIndex, day, locale)
   if (mark?.label) {
-    const fastNote = mark.alsoFast ? ' Also includes a fast day.' : ''
+    const fastNote = mark.alsoFast ? ` ${t('calendar.dayCell.alsoFast')}` : ''
     return `${datePart}. ${mark.label}.${fastNote}`
   }
   if (markedLegacy) {
-    return `${datePart}. Liturgical observance.`
+    return `${datePart}. ${t('calendar.dayCell.liturgicalObservance')}`
   }
   return datePart
 }
@@ -85,14 +76,45 @@ export function MiniMonthCalendar({
   onNextMonth,
 }: MiniMonthCalendarProps) {
   const t = useUiLabel()
+  const tr = useTranslation()
+  const { locale } = useLocale()
   const year = displayYear ?? anchor.getFullYear()
   const month = displayMonthIndex ?? anchor.getMonth()
   const markSet = useMemo(() => new Set(markedDays), [markedDays])
 
   const { label, cells, todayDay } = useMemo(
-    () => buildMonthGrid(year, month, anchor),
-    [year, month, anchor],
+    () => buildMonthGrid(year, month, anchor, locale),
+    [year, month, anchor, locale],
   )
+  const weekLabels = [
+    tr('calendar.weekdays.sunShort'),
+    tr('calendar.weekdays.monShort'),
+    tr('calendar.weekdays.tueShort'),
+    tr('calendar.weekdays.wedShort'),
+    tr('calendar.weekdays.thuShort'),
+    tr('calendar.weekdays.friShort'),
+    tr('calendar.weekdays.satShort'),
+  ]
+  const legendLabels = [
+    tr('calendar.filters.majorFeasts'),
+    tr('calendar.upcoming.labelFeast'),
+    tr('calendar.upcoming.labelMary'),
+    tr('calendar.filters.saints'),
+    tr('calendar.filters.rhythm'),
+    tr('calendar.filters.fast'),
+    tr('calendar.filters.paschal'),
+    tr('calendar.upcoming.labelSeason'),
+  ]
+  const markScreenReader: Record<CalendarCellMarkKind, string> = {
+    majorFeast: tr('calendar.dayCell.majorFeastDay'),
+    feast: tr('calendar.dayCell.feastDay'),
+    fast: tr('calendar.dayCell.fastDay'),
+    mary: tr('calendar.dayCell.marianObservance'),
+    saint: tr('calendar.dayCell.saintCommemoration'),
+    recurring: tr('calendar.dayCell.weeklyOrMonthlyRhythm'),
+    season: tr('calendar.dayCell.liturgicalSeason'),
+    movable: tr('calendar.dayCell.paschalCycle'),
+  }
 
   const gridRegionLabel = `${t('calendarGridRegion')}: ${label}`
 
@@ -125,14 +147,14 @@ export function MiniMonthCalendar({
         <ul className={styles.legend} aria-label={t('calendarDayMarkersLegend')}>
           {(
             [
-              ['majorFeast', styles.cueMajorFeast, 'Great feast'],
-              ['feast', styles.cueFeast, 'Feast'],
-              ['mary', styles.cueMary, 'Mary'],
-              ['saint', styles.cueSaint, 'Saint'],
-              ['recurring', styles.cueRecurring, 'Rhythm'],
-              ['fast', styles.cueFast, 'Fast'],
-              ['movable', styles.cueMovable, 'Paschal'],
-              ['season', styles.cueSeason, 'Season'],
+              ['majorFeast', styles.cueMajorFeast, legendLabels[0]],
+              ['feast', styles.cueFeast, legendLabels[1]],
+              ['mary', styles.cueMary, legendLabels[2]],
+              ['saint', styles.cueSaint, legendLabels[3]],
+              ['recurring', styles.cueRecurring, legendLabels[4]],
+              ['fast', styles.cueFast, legendLabels[5]],
+              ['movable', styles.cueMovable, legendLabels[6]],
+              ['season', styles.cueSeason, legendLabels[7]],
             ] as const
           ).map(([_, cueClass, label]) => (
             <li key={label} className={styles.legendItem}>
@@ -143,7 +165,7 @@ export function MiniMonthCalendar({
         </ul>
       </div>
       <div className={styles.weekdays} aria-hidden="true">
-        {WEEK_LABELS.map((d, i) => (
+        {weekLabels.map((d, i) => (
           <span key={`${d}-${i}`} className={styles.wd}>
             {d}
           </span>
@@ -183,18 +205,18 @@ export function MiniMonthCalendar({
             .filter(Boolean)
             .join(' ')
 
-          const baseAria = cellAriaLabel(year, month, cell, mark, markedLegacy)
+          const baseAria = cellAriaLabel(year, month, cell, mark, markedLegacy, locale, tr)
           const aria =
             interactive && isSelected
               ? `${baseAria} ${t('calendarDaySelectedSuffix')}`
               : baseAria
 
           const kindSr = markKind
-            ? MARK_SCREEN_READER[markKind]
+            ? markScreenReader[markKind]
             : markedLegacy
-              ? 'Liturgical observance.'
+              ? tr('calendar.dayCell.liturgicalObservance')
               : ''
-          const fastSr = mark?.alsoFast && mark.primary !== 'fast' ? ' Includes fasting.' : ''
+          const fastSr = mark?.alsoFast && mark.primary !== 'fast' ? ` ${tr('calendar.dayCell.includesFasting')}` : ''
 
           if (!interactive) {
             return (
@@ -238,11 +260,11 @@ export function MiniMonthCalendar({
   )
 }
 
-function buildMonthGrid(year: number, month: number, anchor: Date) {
+function buildMonthGrid(year: number, month: number, anchor: Date, locale: string) {
   const first = new Date(year, month, 1)
   const startPad = first.getDay()
   const daysInMonth = new Date(year, month + 1, 0).getDate()
-  const label = new Intl.DateTimeFormat('en-US', {
+  const label = new Intl.DateTimeFormat(locale, {
     month: 'long',
     year: 'numeric',
   }).format(first)

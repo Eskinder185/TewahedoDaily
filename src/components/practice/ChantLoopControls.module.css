@@ -18,11 +18,11 @@
   color: var(--color-heading);
 }
 
-@media (prefers-color-scheme: dark) {
-  .legend {
+
+[data-theme='night'] .legend {
     color: var(--color-text);
   }
-}
+
 
 .hint {
   margin: var(--space-2) 0 var(--space-4);

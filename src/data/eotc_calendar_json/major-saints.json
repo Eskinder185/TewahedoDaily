@@ -51,7 +51,21 @@
       "content": {
         "extended": "Saint John the Baptist is remembered as the forerunner who prepared the way of the Lord.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "Saint John the Baptist is remembered as the forerunner who prepared the way of the Lord.",
+          "whatHappened": [
+            "Saint John the Baptist is remembered as the forerunner who prepared the way of the Lord.",
+            "He connects the Church to prophecy, baptism, and preparation for the Messiah."
+          ],
+          "significance": "He calls the faithful to repentance, purity, and readiness for Christ.",
+          "observanceType": "Major Saint",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "John the Baptist",
@@ -121,7 +135,21 @@
         "notes": [],
         "relatedEntries": [
           "saint-george-monthly-23"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Saint Georgios is remembered for his courage, faithfulness, and victory in martyrdom.",
+          "whatHappened": [
+            "Saint Georgios is remembered for his courage, faithfulness, and victory in martyrdom.",
+            "He connects the faithful to martyrdom, spiritual victory, and bold witness to Christ."
+          ],
+          "significance": "His life strengthens believers in steadfast faith and holy courage.",
+          "observanceType": "Major Saint",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Saint Georgios",
@@ -188,7 +216,21 @@
         "notes": [],
         "relatedEntries": [
           "saint-tekle-haymanot-monthly-24"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Abune Tekle Haymanot is honored as a great Ethiopian monk, teacher, and holy intercessor.",
+          "whatHappened": [
+            "Abune Tekle Haymanot is honored as a great Ethiopian monk, teacher, and holy intercessor.",
+            "He connects the faithful to Ethiopian monastic witness and steadfast devotion."
+          ],
+          "significance": "He is central to Ethiopian Orthodox memory for holiness, ascetic life, and spiritual labor.",
+          "observanceType": "Major Ethiopian Saint",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Tekle Haymanot",
@@ -252,7 +294,21 @@
       "content": {
         "extended": "Saint Yared is honored for the gift of sacred chant and the shaping of Ethiopian liturgical music.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "Saint Yared is honored for the gift of sacred chant and the shaping of Ethiopian liturgical music.",
+          "whatHappened": [
+            "Saint Yared is honored for the gift of sacred chant and the shaping of Ethiopian liturgical music.",
+            "He connects the faithful to praise, sacred music, and the beauty of worship."
+          ],
+          "significance": "He is vital to the Church’s worship, hymn tradition, and devotional life.",
+          "observanceType": "Major Ethiopian Saint",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Saint Yared",
@@ -319,7 +375,21 @@
       "content": {
         "extended": "Kidus Estifanos is remembered as the protomartyr whose witness sealed the Gospel with blood.",
         "notes": [],
-        "relatedEntries": []
+        "relatedEntries": [],
+        "expandedContent": {
+          "whyCelebrated": "Kidus Estifanos is remembered as the protomartyr whose witness sealed the Gospel with blood.",
+          "whatHappened": [
+            "Kidus Estifanos is remembered as the protomartyr whose witness sealed the Gospel with blood.",
+            "He connects the faithful to the early Church and the cost of witness to Christ."
+          ],
+          "significance": "He is an example of faith, forgiveness, and courage in suffering.",
+          "observanceType": "Major Saint",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Kidus Estifanos",
@@ -385,7 +455,21 @@
         "notes": [],
         "relatedEntries": [
           "apostles-fast"
-        ]
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Saints Peter and Paul are honored as chief apostles and enduring witnesses of the Gospel.",
+          "whatHappened": [
+            "Saints Peter and Paul are honored as chief apostles and enduring witnesses of the Gospel.",
+            "They connect the faithful to apostolic succession, evangelism, and the life of the Church."
+          ],
+          "significance": "Their feast highlights apostolic mission, repentance, boldness, and faithful preaching.",
+          "observanceType": "Apostolic Feast",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
       },
       "searchKeywords": [
         "Peter and Paul",

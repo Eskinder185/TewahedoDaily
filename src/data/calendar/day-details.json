@@ -1,0 +1,1257 @@
+{
+  "type": "ethiopian_calendar_day_details",
+  "version": 1,
+  "sourceSet": {
+    "synaxariumPdf": "The_Ethiopian_Synaxarium.pdf",
+    "liturgyPdf": "englishethiopianliturgy.pdf",
+    "notes": [
+      "Initial batch covers Meskerem 01 through Meskerem 07.",
+      "Gregorian dates are month/day hints for the common September alignment and need year-aware conversion for leap-year display.",
+      "Summaries are short UI summaries derived from the Synaxarium entries; full Synaxarium text is not duplicated here."
+    ]
+  },
+  "days": [
+    {
+      "id": "meskerem-01",
+      "ethiopianDate": {
+        "month": "Meskerem",
+        "day": 1
+      },
+      "gregorianDate": {
+        "month": 9,
+        "day": 11,
+        "note": "Approximate common Gregorian alignment; confirm with year-aware Ethiopian calendar conversion."
+      },
+      "title": "Meskerem 01",
+      "seasonNote": "Beginning of the Ethiopian year; the Synaxarium calls the day holy and blessed and connects it with renewal.",
+      "summary": "The Synaxarium opens the year with renewal, Job's healing at the Tekaze, the Apostle Bartholomew, Abba Melyos, Abba Melki, and the festival of Raguel the angel.",
+      "commemorations": [
+        {
+          "title": "Beginning of the Ethiopian year",
+          "category": "liturgical-year",
+          "kind": "new-year",
+          "priority": "headline",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 01 (September 11).",
+            "whatHappened": [
+              "Beginning of the Ethiopian year",
+              "This entry is classified in the calendar data as liturgical-year / new-year.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 01 (September 11)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Job the righteous man washed in the water of the Tekaze and was healed of all his sickness",
+          "category": "righteous",
+          "kind": "commemoration",
+          "priority": "primary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 01 (September 11).",
+            "whatHappened": [
+              "Job the righteous man washed in the water of the Tekaze and was healed of all his sickness",
+              "This entry is classified in the calendar data as righteous / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 01 (September 11)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Holy Apostle Bartholomew",
+          "category": "apostle",
+          "kind": "repose-or-martyrdom",
+          "priority": "primary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 01 (September 11).",
+            "whatHappened": [
+              "Holy Apostle Bartholomew",
+              "This entry is classified in the calendar data as apostle / repose-or-martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 01 (September 11)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Abba Melyos, Archbishop of Alexandria",
+          "category": "bishop",
+          "kind": "repose",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 01 (September 11).",
+            "whatHappened": [
+              "Abba Melyos, Archbishop of Alexandria",
+              "This entry is classified in the calendar data as bishop / repose.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 01 (September 11)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Abba Melki",
+          "category": "righteous",
+          "kind": "repose",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 01 (September 11).",
+            "whatHappened": [
+              "Abba Melki",
+              "This entry is classified in the calendar data as righteous / repose.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 01 (September 11)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Festival of Raguel the angel",
+          "category": "angel",
+          "kind": "feast",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 01 (September 11).",
+            "whatHappened": [
+              "Festival of Raguel the angel",
+              "This entry is classified in the calendar data as angel / feast.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 01 (September 11)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        }
+      ],
+      "liturgyContext": {
+        "structure": [
+          "Opening",
+          "Readings",
+          "Anaphora",
+          "Communion"
+        ],
+        "readings": {
+          "status": "standard-order",
+          "note": "The liturgy PDF gives the five-reading pattern and says readings come from the getsawe; exact daily readings for Meskerem 01 are not available in the extracted liturgy data."
+        },
+        "mezmur": {
+          "status": "not-linked",
+          "note": "No specific mezmur linked for this day yet."
+        },
+        "reason": "The day includes the Apostle Bartholomew, which matches an apostle memorial rule, and Raguel the angel, which matches an angel feast rule. The liturgy PDF supports both rule families but does not resolve this exact overlap in the extracted data.",
+        "anaphora": {
+          "id": "multiple-supported-rules",
+          "title": "Needs review: Apostle or Angel feast rule",
+          "reason": "The day includes the Apostle Bartholomew, which matches an apostle memorial rule, and Raguel the angel, which matches an angel feast rule. The liturgy PDF supports both rule families but does not resolve this exact overlap in the extracted data.",
+          "confidence": "needs_review"
+        },
+        "whyToday": "The day includes the Apostle Bartholomew, which matches an apostle memorial rule, and Raguel the angel, which matches an angel feast rule. The liturgy PDF supports both rule families but does not resolve this exact overlap in the extracted data."
+      },
+      "ui": {
+        "headlineCommemoration": "Beginning of the Ethiopian year",
+        "showInTodayCard": true,
+        "showLiturgyContext": true
+      },
+      "source": {
+        "synaxarium": {
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 01 (September 11)"
+        },
+        "liturgy": {
+          "file": "englishethiopianliturgy.pdf"
+        }
+      },
+      "shortDescription": "The Synaxarium opens the year with renewal, Job's healing at the Tekaze, the Apostle Bartholomew, Abba Melyos, Abba Melki, and the festival of Raguel the angel.",
+      "expandedContent": {
+        "whyCelebrated": "The Synaxarium opens the year with renewal, Job's healing at the Tekaze, the Apostle Bartholomew, Abba Melyos, Abba Melki, and the festival of Raguel the angel.",
+        "whatHappened": [
+          "Beginning of the Ethiopian year",
+          "Job the righteous man washed in the water of the Tekaze and was healed of all his sickness",
+          "Holy Apostle Bartholomew",
+          "Abba Melyos, Archbishop of Alexandria",
+          "Abba Melki"
+        ],
+        "significance": "This day helps the faithful keep the Church calendar with attention to the saints, feasts, holy events, and the mercy of God remembered in the Synaxarium.",
+        "source": {
+          "title": "The Ethiopian Synaxarium",
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 01 (September 11)",
+          "status": "initial_summary_needs_manual_review"
+        }
+      }
+    },
+    {
+      "id": "meskerem-02",
+      "ethiopianDate": {
+        "month": "Meskerem",
+        "day": 2
+      },
+      "gregorianDate": {
+        "month": 9,
+        "day": 12,
+        "note": "Approximate common Gregorian alignment; confirm with year-aware Ethiopian calendar conversion."
+      },
+      "title": "Meskerem 02",
+      "seasonNote": "",
+      "summary": "The Synaxarium commemorates the martyrdom of Saint John the Baptist, Dasya the soldier, and the martyrs Didymus and Marina.",
+      "commemorations": [
+        {
+          "title": "Saint John the Baptist, son of Zacharias the priest",
+          "category": "prophet",
+          "kind": "martyrdom",
+          "priority": "headline",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 02 (September 12).",
+            "whatHappened": [
+              "Saint John the Baptist, son of Zacharias the priest",
+              "This entry is classified in the calendar data as prophet / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 02 (September 12)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Dasya the soldier of Tayda in Egypt",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 02 (September 12).",
+            "whatHappened": [
+              "Dasya the soldier of Tayda in Egypt",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 02 (September 12)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Didymus and the holy woman Marina",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 02 (September 12).",
+            "whatHappened": [
+              "Didymus and the holy woman Marina",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 02 (September 12)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        }
+      ],
+      "liturgyContext": {
+        "structure": [
+          "Opening",
+          "Readings",
+          "Anaphora",
+          "Communion"
+        ],
+        "readings": {
+          "status": "standard-order",
+          "note": "Exact getsawe readings for Meskerem 02 are not available in the extracted liturgy data."
+        },
+        "mezmur": {
+          "status": "not-linked",
+          "note": "No specific mezmur linked for this day yet."
+        },
+        "reason": "The extracted liturgy rules do not give an explicit Meskerem 02 or Saint John the Baptist anaphora rule. Do not infer one from general mentions of John the Baptist inside prayers.",
+        "anaphora": {
+          "id": "unresolved",
+          "title": "Unresolved",
+          "reason": "The extracted liturgy rules do not give an explicit Meskerem 02 or Saint John the Baptist anaphora rule. Do not infer one from general mentions of John the Baptist inside prayers.",
+          "confidence": "unresolved"
+        },
+        "whyToday": "The extracted liturgy rules do not give an explicit Meskerem 02 or Saint John the Baptist anaphora rule. Do not infer one from general mentions of John the Baptist inside prayers."
+      },
+      "ui": {
+        "headlineCommemoration": "Saint John the Baptist",
+        "showInTodayCard": true,
+        "showLiturgyContext": true
+      },
+      "source": {
+        "synaxarium": {
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 02 (September 12)"
+        },
+        "liturgy": {
+          "file": "englishethiopianliturgy.pdf"
+        }
+      },
+      "shortDescription": "The Synaxarium commemorates the martyrdom of Saint John the Baptist, Dasya the soldier, and the martyrs Didymus and Marina.",
+      "expandedContent": {
+        "whyCelebrated": "The Synaxarium commemorates the martyrdom of Saint John the Baptist, Dasya the soldier, and the martyrs Didymus and Marina.",
+        "whatHappened": [
+          "Saint John the Baptist, son of Zacharias the priest",
+          "Dasya the soldier of Tayda in Egypt",
+          "Didymus and the holy woman Marina"
+        ],
+        "significance": "This day helps the faithful keep the Church calendar with attention to the saints, feasts, holy events, and the mercy of God remembered in the Synaxarium.",
+        "source": {
+          "title": "The Ethiopian Synaxarium",
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 02 (September 12)",
+          "status": "initial_summary_needs_manual_review"
+        }
+      }
+    },
+    {
+      "id": "meskerem-03",
+      "ethiopianDate": {
+        "month": "Meskerem",
+        "day": 3
+      },
+      "gregorianDate": {
+        "month": 9,
+        "day": 13,
+        "note": "Approximate common Gregorian alignment; confirm with year-aware Ethiopian calendar conversion."
+      },
+      "title": "Meskerem 03",
+      "seasonNote": "",
+      "summary": "The Synaxarium commemorates a council at Alexandria under Abba Dionysius, an earthquake and church collapse in Egypt, Dioscoros the martyr, Abba 'Anbes, and Abba Muse of Scete.",
+      "commemorations": [
+        {
+          "title": "General Council of Bishops in Alexandria under Abba Dionysius",
+          "category": "council",
+          "kind": "commemoration",
+          "priority": "headline",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 03 (September 13).",
+            "whatHappened": [
+              "General Council of Bishops in Alexandria under Abba Dionysius",
+              "This entry is classified in the calendar data as council / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 03 (September 13)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Earthquake in Egypt and the fall of the church of Dasya",
+          "category": "event",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 03 (September 13).",
+            "whatHappened": [
+              "Earthquake in Egypt and the fall of the church of Dasya",
+              "This entry is classified in the calendar data as event / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 03 (September 13)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Dioscoros the martyr, Archbishop Dionysius, martyrs in Tensel Yakoton, and many martyrs in Persia",
+          "category": "martyr",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 03 (September 13).",
+            "whatHappened": [
+              "Dioscoros the martyr, Archbishop Dionysius, martyrs in Tensel Yakoton, and many martyrs in Persia",
+              "This entry is classified in the calendar data as martyr / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 03 (September 13)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Abba 'Anbes of Ethiopia",
+          "category": "monastic",
+          "kind": "repose",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 03 (September 13).",
+            "whatHappened": [
+              "Abba 'Anbes of Ethiopia",
+              "This entry is classified in the calendar data as monastic / repose.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 03 (September 13)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Abba Muse of the desert of Scete",
+          "category": "monastic",
+          "kind": "repose",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 03 (September 13).",
+            "whatHappened": [
+              "Abba Muse of the desert of Scete",
+              "This entry is classified in the calendar data as monastic / repose.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 03 (September 13)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        }
+      ],
+      "liturgyContext": {
+        "structure": [
+          "Opening",
+          "Readings",
+          "Anaphora",
+          "Communion"
+        ],
+        "readings": {
+          "status": "standard-order",
+          "note": "Exact getsawe readings for Meskerem 03 are not available in the extracted liturgy data."
+        },
+        "mezmur": {
+          "status": "not-linked",
+          "note": "No specific mezmur linked for this day yet."
+        },
+        "reason": "The extracted liturgy rules include specific council dates elsewhere, but no explicit Meskerem 03 council rule was found.",
+        "anaphora": {
+          "id": "unresolved",
+          "title": "Unresolved",
+          "reason": "The extracted liturgy rules include specific council dates elsewhere, but no explicit Meskerem 03 council rule was found.",
+          "confidence": "unresolved"
+        },
+        "whyToday": "The extracted liturgy rules include specific council dates elsewhere, but no explicit Meskerem 03 council rule was found."
+      },
+      "ui": {
+        "headlineCommemoration": "General Council of Bishops in Alexandria",
+        "showInTodayCard": true,
+        "showLiturgyContext": true
+      },
+      "source": {
+        "synaxarium": {
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 03 (September 13)"
+        },
+        "liturgy": {
+          "file": "englishethiopianliturgy.pdf"
+        }
+      },
+      "shortDescription": "The Synaxarium commemorates a council at Alexandria under Abba Dionysius, an earthquake and church collapse in Egypt, Dioscoros the martyr, Abba 'Anbes, and Abba Muse of Scete.",
+      "expandedContent": {
+        "whyCelebrated": "The Synaxarium commemorates a council at Alexandria under Abba Dionysius, an earthquake and church collapse in Egypt, Dioscoros the martyr, Abba 'Anbes, and Abba Muse of Scete.",
+        "whatHappened": [
+          "General Council of Bishops in Alexandria under Abba Dionysius",
+          "Earthquake in Egypt and the fall of the church of Dasya",
+          "Dioscoros the martyr, Archbishop Dionysius, martyrs in Tensel Yakoton, and many martyrs in Persia",
+          "Abba 'Anbes of Ethiopia",
+          "Abba Muse of the desert of Scete"
+        ],
+        "significance": "This day helps the faithful keep the Church calendar with attention to the saints, feasts, holy events, and the mercy of God remembered in the Synaxarium.",
+        "source": {
+          "title": "The Ethiopian Synaxarium",
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 03 (September 13)",
+          "status": "initial_summary_needs_manual_review"
+        }
+      }
+    },
+    {
+      "id": "meskerem-04",
+      "ethiopianDate": {
+        "month": "Meskerem",
+        "day": 4
+      },
+      "gregorianDate": {
+        "month": 9,
+        "day": 14,
+        "note": "Approximate common Gregorian alignment; confirm with year-aware Ethiopian calendar conversion."
+      },
+      "title": "Meskerem 04",
+      "seasonNote": "",
+      "summary": "The Synaxarium commemorates Abba Macarius, Archbishop of Alexandria, together with Simon the anchorite, Joshua son of Nun, 'Ardase the archbishop, martyrs of Antioch, 'Enteya, and Theodore of Debra 'Eldanu.",
+      "commemorations": [
+        {
+          "title": "Abba Macarius, Archbishop of Alexandria",
+          "category": "bishop",
+          "kind": "repose",
+          "priority": "headline",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 04 (September 14).",
+            "whatHappened": [
+              "Abba Macarius, Archbishop of Alexandria",
+              "This entry is classified in the calendar data as bishop / repose.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 04 (September 14)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Simon the anchorite",
+          "category": "monastic",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 04 (September 14).",
+            "whatHappened": [
+              "Simon the anchorite",
+              "This entry is classified in the calendar data as monastic / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 04 (September 14)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Joshua the son of Nun, disciple of Moses",
+          "category": "righteous",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 04 (September 14).",
+            "whatHappened": [
+              "Joshua the son of Nun, disciple of Moses",
+              "This entry is classified in the calendar data as righteous / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 04 (September 14)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "'Ardase the archbishop",
+          "category": "bishop",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 04 (September 14).",
+            "whatHappened": [
+              "'Ardase the archbishop",
+              "This entry is classified in the calendar data as bishop / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 04 (September 14)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "One hundred and fifty martyrs who suffered in Antioch",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 04 (September 14).",
+            "whatHappened": [
+              "One hundred and fifty martyrs who suffered in Antioch",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 04 (September 14)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "'Enteya, one of the Seventy, of the people of 'Ensena",
+          "category": "disciple",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 04 (September 14).",
+            "whatHappened": [
+              "'Enteya, one of the Seventy, of the people of 'Ensena",
+              "This entry is classified in the calendar data as disciple / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 04 (September 14)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Theodore the bishop from Debra 'Eldanu",
+          "category": "bishop",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 04 (September 14).",
+            "whatHappened": [
+              "Theodore the bishop from Debra 'Eldanu",
+              "This entry is classified in the calendar data as bishop / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 04 (September 14)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        }
+      ],
+      "liturgyContext": {
+        "structure": [
+          "Opening",
+          "Readings",
+          "Anaphora",
+          "Communion"
+        ],
+        "readings": {
+          "status": "standard-order",
+          "note": "Exact getsawe readings for Meskerem 04 are not available in the extracted liturgy data."
+        },
+        "mezmur": {
+          "status": "not-linked",
+          "note": "No specific mezmur linked for this day yet."
+        },
+        "reason": "The liturgy PDF has an explicit-partial rule for memorial days of bishops, priests, and kings. Meskerem 04 centers Abba Macarius, Archbishop of Alexandria, so this is a low-confidence candidate pending manual review.",
+        "anaphora": {
+          "id": "basil",
+          "title": "The Anaphora of St. Basil",
+          "reason": "The liturgy PDF has an explicit-partial rule for memorial days of bishops, priests, and kings. Meskerem 04 centers Abba Macarius, Archbishop of Alexandria, so this is a low-confidence candidate pending manual review.",
+          "confidence": "low"
+        },
+        "whyToday": "The liturgy PDF has an explicit-partial rule for memorial days of bishops, priests, and kings. Meskerem 04 centers Abba Macarius, Archbishop of Alexandria, so this is a low-confidence candidate pending manual review."
+      },
+      "ui": {
+        "headlineCommemoration": "Abba Macarius, Archbishop of Alexandria",
+        "showInTodayCard": true,
+        "showLiturgyContext": true
+      },
+      "source": {
+        "synaxarium": {
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 04 (September 14)"
+        },
+        "liturgy": {
+          "file": "englishethiopianliturgy.pdf"
+        }
+      },
+      "shortDescription": "The Synaxarium commemorates Abba Macarius, Archbishop of Alexandria, together with Simon the anchorite, Joshua son of Nun, 'Ardase the archbishop, martyrs of Antioch, 'Enteya, and Theodore of Debra 'Eldanu.",
+      "expandedContent": {
+        "whyCelebrated": "The Synaxarium commemorates Abba Macarius, Archbishop of Alexandria, together with Simon the anchorite, Joshua son of Nun, 'Ardase the archbishop, martyrs of Antioch, 'Enteya, and Theodore of Debra 'Eldanu.",
+        "whatHappened": [
+          "Abba Macarius, Archbishop of Alexandria",
+          "Simon the anchorite",
+          "Joshua the son of Nun, disciple of Moses",
+          "'Ardase the archbishop",
+          "One hundred and fifty martyrs who suffered in Antioch"
+        ],
+        "significance": "This day helps the faithful keep the Church calendar with attention to the saints, feasts, holy events, and the mercy of God remembered in the Synaxarium.",
+        "source": {
+          "title": "The Ethiopian Synaxarium",
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 04 (September 14)",
+          "status": "initial_summary_needs_manual_review"
+        }
+      }
+    },
+    {
+      "id": "meskerem-05",
+      "ethiopianDate": {
+        "month": "Meskerem",
+        "day": 5
+      },
+      "gregorianDate": {
+        "month": 9,
+        "day": 15,
+        "note": "Approximate common Gregorian alignment; confirm with year-aware Ethiopian calendar conversion."
+      },
+      "title": "Meskerem 05",
+      "seasonNote": "",
+      "summary": "The Synaxarium commemorates the martyrdom of Saint Sophia and her daughters 'Aksosya and Barnaba, Saint Mamas, and Lebna Dengel, also called Dawit II Wanag Sagad.",
+      "commemorations": [
+        {
+          "title": "Saint Sophia and her daughters 'Aksosya and Barnaba",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "headline",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 05 (September 15).",
+            "whatHappened": [
+              "Saint Sophia and her daughters 'Aksosya and Barnaba",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 05 (September 15)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Saint Mamas",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "primary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 05 (September 15).",
+            "whatHappened": [
+              "Saint Mamas",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 05 (September 15)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Lebna Dengel, or Dawit II Wanag Sagad, King of Ethiopia",
+          "category": "king",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 05 (September 15).",
+            "whatHappened": [
+              "Lebna Dengel, or Dawit II Wanag Sagad, King of Ethiopia",
+              "This entry is classified in the calendar data as king / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 05 (September 15)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        }
+      ],
+      "liturgyContext": {
+        "structure": [
+          "Opening",
+          "Readings",
+          "Anaphora",
+          "Communion"
+        ],
+        "readings": {
+          "status": "standard-order",
+          "note": "Exact getsawe readings for Meskerem 05 are not available in the extracted liturgy data."
+        },
+        "mezmur": {
+          "status": "not-linked",
+          "note": "No specific mezmur linked for this day yet."
+        },
+        "reason": "The extracted liturgy rules do not provide an explicit rule for Saint Sophia, Saint Mamas, or this Meskerem 05 entry. The broad bishops/priests/kings rule is not applied because the king commemoration is bracketed as an additional note in the Synaxarium entry.",
+        "anaphora": {
+          "id": "unresolved",
+          "title": "Unresolved",
+          "reason": "The extracted liturgy rules do not provide an explicit rule for Saint Sophia, Saint Mamas, or this Meskerem 05 entry. The broad bishops/priests/kings rule is not applied because the king commemoration is bracketed as an additional note in the Synaxarium entry.",
+          "confidence": "unresolved"
+        },
+        "whyToday": "The extracted liturgy rules do not provide an explicit rule for Saint Sophia, Saint Mamas, or this Meskerem 05 entry. The broad bishops/priests/kings rule is not applied because the king commemoration is bracketed as an additional note in the Synaxarium entry."
+      },
+      "ui": {
+        "headlineCommemoration": "Saint Sophia and her daughters",
+        "showInTodayCard": true,
+        "showLiturgyContext": true
+      },
+      "source": {
+        "synaxarium": {
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 05 (September 15)"
+        },
+        "liturgy": {
+          "file": "englishethiopianliturgy.pdf"
+        }
+      },
+      "shortDescription": "The Synaxarium commemorates the martyrdom of Saint Sophia and her daughters 'Aksosya and Barnaba, Saint Mamas, and Lebna Dengel, also called Dawit II Wanag Sagad.",
+      "expandedContent": {
+        "whyCelebrated": "The Synaxarium commemorates the martyrdom of Saint Sophia and her daughters 'Aksosya and Barnaba, Saint Mamas, and Lebna Dengel, also called Dawit II Wanag Sagad.",
+        "whatHappened": [
+          "Saint Sophia and her daughters 'Aksosya and Barnaba",
+          "Saint Mamas",
+          "Lebna Dengel, or Dawit II Wanag Sagad, King of Ethiopia"
+        ],
+        "significance": "This day helps the faithful keep the Church calendar with attention to the saints, feasts, holy events, and the mercy of God remembered in the Synaxarium.",
+        "source": {
+          "title": "The Ethiopian Synaxarium",
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 05 (September 15)",
+          "status": "initial_summary_needs_manual_review"
+        }
+      }
+    },
+    {
+      "id": "meskerem-06",
+      "ethiopianDate": {
+        "month": "Meskerem",
+        "day": 6
+      },
+      "gregorianDate": {
+        "month": 9,
+        "day": 16,
+        "note": "Approximate common Gregorian alignment; confirm with year-aware Ethiopian calendar conversion."
+      },
+      "title": "Meskerem 06",
+      "seasonNote": "",
+      "summary": "The Synaxarium commemorates the Prophet Isaiah, the holy woman Baslantya, and the martyrs James the monk, 'Atimos the bishop, Baslis, 'Arontos, Rawrewo, Sawlwas, and Sawa.",
+      "commemorations": [
+        {
+          "title": "The great Prophet Isaiah, son of 'Amos",
+          "category": "prophet",
+          "kind": "repose-or-martyrdom",
+          "priority": "headline",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 06 (September 16).",
+            "whatHappened": [
+              "The great Prophet Isaiah, son of 'Amos",
+              "This entry is classified in the calendar data as prophet / repose-or-martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 06 (September 16)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "The holy woman Baslantya",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "primary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 06 (September 16).",
+            "whatHappened": [
+              "The holy woman Baslantya",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 06 (September 16)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "James the monk",
+          "category": "monastic",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 06 (September 16).",
+            "whatHappened": [
+              "James the monk",
+              "This entry is classified in the calendar data as monastic / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 06 (September 16)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "'Atimos the bishop",
+          "category": "bishop",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 06 (September 16).",
+            "whatHappened": [
+              "'Atimos the bishop",
+              "This entry is classified in the calendar data as bishop / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 06 (September 16)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Baslis, 'Arontos, Rawrewo, Sawlwas, and Sawa, martyrs of God",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 06 (September 16).",
+            "whatHappened": [
+              "Baslis, 'Arontos, Rawrewo, Sawlwas, and Sawa, martyrs of God",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 06 (September 16)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        }
+      ],
+      "liturgyContext": {
+        "structure": [
+          "Opening",
+          "Readings",
+          "Anaphora",
+          "Communion"
+        ],
+        "readings": {
+          "status": "standard-order",
+          "note": "Exact getsawe readings for Meskerem 06 are not available in the extracted liturgy data."
+        },
+        "mezmur": {
+          "status": "not-linked",
+          "note": "No specific mezmur linked for this day yet."
+        },
+        "reason": "The liturgy PDF explicitly lists feasts of prophets among occasions for this anaphora. Meskerem 06 centers the Prophet Isaiah; this still needs review against a formal getsawe/calendar source.",
+        "anaphora": {
+          "id": "john-son-of-thunder",
+          "title": "The Anaphora of John, Son of Thunder",
+          "reason": "The liturgy PDF explicitly lists feasts of prophets among occasions for this anaphora. Meskerem 06 centers the Prophet Isaiah; this still needs review against a formal getsawe/calendar source.",
+          "confidence": "medium"
+        },
+        "whyToday": "The liturgy PDF explicitly lists feasts of prophets among occasions for this anaphora. Meskerem 06 centers the Prophet Isaiah; this still needs review against a formal getsawe/calendar source."
+      },
+      "ui": {
+        "headlineCommemoration": "The Prophet Isaiah",
+        "showInTodayCard": true,
+        "showLiturgyContext": true
+      },
+      "source": {
+        "synaxarium": {
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 06 (September 16)"
+        },
+        "liturgy": {
+          "file": "englishethiopianliturgy.pdf"
+        }
+      },
+      "shortDescription": "The Synaxarium commemorates the Prophet Isaiah, the holy woman Baslantya, and the martyrs James the monk, 'Atimos the bishop, Baslis, 'Arontos, Rawrewo, Sawlwas, and Sawa.",
+      "expandedContent": {
+        "whyCelebrated": "The Synaxarium commemorates the Prophet Isaiah, the holy woman Baslantya, and the martyrs James the monk, 'Atimos the bishop, Baslis, 'Arontos, Rawrewo, Sawlwas, and Sawa.",
+        "whatHappened": [
+          "The great Prophet Isaiah, son of 'Amos",
+          "The holy woman Baslantya",
+          "James the monk",
+          "'Atimos the bishop",
+          "Baslis, 'Arontos, Rawrewo, Sawlwas, and Sawa, martyrs of God"
+        ],
+        "significance": "This day helps the faithful keep the Church calendar with attention to the saints, feasts, holy events, and the mercy of God remembered in the Synaxarium.",
+        "source": {
+          "title": "The Ethiopian Synaxarium",
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 06 (September 16)",
+          "status": "initial_summary_needs_manual_review"
+        }
+      }
+    },
+    {
+      "id": "meskerem-07",
+      "ethiopianDate": {
+        "month": "Meskerem",
+        "day": 7
+      },
+      "gregorianDate": {
+        "month": 9,
+        "day": 17,
+        "note": "Approximate common Gregorian alignment; confirm with year-aware Ethiopian calendar conversion."
+      },
+      "title": "Meskerem 07",
+      "seasonNote": "",
+      "summary": "The Synaxarium commemorates Abba Dioscoros, Archbishop of Alexandria, Abba Sawiros of Gabla, several martyrs, Fasiladas and his companions, and the birth of Hanna the mother of our Lady.",
+      "commemorations": [
+        {
+          "title": "Abba Dioscoros, Archbishop of Alexandria",
+          "category": "bishop",
+          "kind": "repose",
+          "priority": "headline",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 07 (September 17).",
+            "whatHappened": [
+              "Abba Dioscoros, Archbishop of Alexandria",
+              "This entry is classified in the calendar data as bishop / repose.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 07 (September 17)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Abba Sawiros, Bishop of Gabla",
+          "category": "bishop",
+          "kind": "repose",
+          "priority": "primary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 07 (September 17).",
+            "whatHappened": [
+              "Abba Sawiros, Bishop of Gabla",
+              "This entry is classified in the calendar data as bishop / repose.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 07 (September 17)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Agathon, Peter, John, Ammon, Ammona, and their mother Rapika",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 07 (September 17).",
+            "whatHappened": [
+              "Agathon, Peter, John, Ammon, Ammona, and their mother Rapika",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 07 (September 17)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Fasiladas and two thousand of his companions",
+          "category": "martyr",
+          "kind": "martyrdom",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 07 (September 17).",
+            "whatHappened": [
+              "Fasiladas and two thousand of his companions",
+              "This entry is classified in the calendar data as martyr / martyrdom.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 07 (September 17)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Das, Gagra, Nawla Bishop of Antioch, and Peter the monk",
+          "category": "mixed",
+          "kind": "commemoration",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 07 (September 17).",
+            "whatHappened": [
+              "Das, Gagra, Nawla Bishop of Antioch, and Peter the monk",
+              "This entry is classified in the calendar data as mixed / commemoration.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 07 (September 17)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        },
+        {
+          "title": "Birth of Hanna, the mother of our Lady",
+          "category": "family-of-mary",
+          "kind": "birth",
+          "priority": "secondary",
+          "expandedContent": {
+            "whyCelebrated": "The Synaxarium appoints this remembrance for Meskerem 07 (September 17).",
+            "whatHappened": [
+              "Birth of Hanna, the mother of our Lady",
+              "This entry is classified in the calendar data as family-of-mary / birth.",
+              "A fuller narrative should be reviewed against the Synaxarium PDF before adding more detail."
+            ],
+            "significance": "This remembrance helps the faithful keep the Church calendar with prayer, gratitude, and attention to the witness of the saints and holy events.",
+            "source": {
+              "title": "The Ethiopian Synaxarium",
+              "file": "The_Ethiopian_Synaxarium.pdf",
+              "entryLabel": "Meskerem 07 (September 17)",
+              "status": "initial_safe_summary_needs_manual_review"
+            }
+          }
+        }
+      ],
+      "liturgyContext": {
+        "structure": [
+          "Opening",
+          "Readings",
+          "Anaphora",
+          "Communion"
+        ],
+        "readings": {
+          "status": "standard-order",
+          "note": "Exact getsawe readings for Meskerem 07 are not available in the extracted liturgy data."
+        },
+        "mezmur": {
+          "status": "not-linked",
+          "note": "No specific mezmur linked for this day yet."
+        },
+        "reason": "The liturgy PDF explicitly names Meskerem 7 as the memorial day of the death of St. Dioscorus for this anaphora.",
+        "anaphora": {
+          "id": "dioscorus",
+          "title": "The Anaphora of St. Dioscorus",
+          "reason": "The liturgy PDF explicitly names Meskerem 7 as the memorial day of the death of St. Dioscorus for this anaphora.",
+          "confidence": "high"
+        },
+        "whyToday": "The liturgy PDF explicitly names Meskerem 7 as the memorial day of the death of St. Dioscorus for this anaphora."
+      },
+      "ui": {
+        "headlineCommemoration": "Abba Dioscoros, Archbishop of Alexandria",
+        "showInTodayCard": true,
+        "showLiturgyContext": true
+      },
+      "source": {
+        "synaxarium": {
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 07 (September 17)"
+        },
+        "liturgy": {
+          "file": "englishethiopianliturgy.pdf"
+        }
+      },
+      "shortDescription": "The Synaxarium commemorates Abba Dioscoros, Archbishop of Alexandria, Abba Sawiros of Gabla, several martyrs, Fasiladas and his companions, and the birth of Hanna the mother of our Lady.",
+      "expandedContent": {
+        "whyCelebrated": "The Synaxarium commemorates Abba Dioscoros, Archbishop of Alexandria, Abba Sawiros of Gabla, several martyrs, Fasiladas and his companions, and the birth of Hanna the mother of our Lady.",
+        "whatHappened": [
+          "Abba Dioscoros, Archbishop of Alexandria",
+          "Abba Sawiros, Bishop of Gabla",
+          "Agathon, Peter, John, Ammon, Ammona, and their mother Rapika",
+          "Fasiladas and two thousand of his companions",
+          "Das, Gagra, Nawla Bishop of Antioch, and Peter the monk"
+        ],
+        "significance": "This day helps the faithful keep the Church calendar with attention to the saints, feasts, holy events, and the mercy of God remembered in the Synaxarium.",
+        "source": {
+          "title": "The Ethiopian Synaxarium",
+          "file": "The_Ethiopian_Synaxarium.pdf",
+          "entryLabel": "Meskerem 07 (September 17)",
+          "status": "initial_summary_needs_manual_review"
+        }
+      }
+    }
+  ]
+}

@@ -25,6 +25,7 @@ import {
   type ChantPracticePayload,
   formatChantTime,
 } from './chantPracticeModel'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { scrollTargetIntoView } from '../../lib/scrollUtils'
 import styles from './ChantPracticePlayer.module.css'
@@ -79,6 +80,7 @@ export function ChantPracticePlayer({
   voiceTabLabel,
 }: ChantPracticePlayerProps) {
   const t = useUiLabel()
+  const tt = useTranslation()
   const mountRef = useRef<HTMLDivElement>(null)
   const playerRef = useRef<YT.Player | null>(null)
   const didScrollAfterPlayerReadyRef = useRef(false)
@@ -300,11 +302,11 @@ export function ChantPracticePlayer({
 
   const playLoop = useCallback(() => {
     if (loopStart === null || loopEnd === null) {
-      setLoopError('Mark both start and end first.')
+      setLoopError(tt('mezmurPractice.loop.errorMarkBoth'))
       return
     }
     if (loopEnd <= loopStart + 0.35) {
-      setLoopError('End must be after start by at least a moment.')
+      setLoopError(tt('mezmurPractice.loop.errorEndAfterStart'))
       return
     }
     setLoopError(null)
@@ -314,7 +316,7 @@ export function ChantPracticePlayer({
     setLoopPlaying(true)
     p.seekTo(loopStart, true)
     p.playVideo()
-  }, [getPlayer, loopStart, loopEnd])
+  }, [getPlayer, loopStart, loopEnd, tt])
 
   const stopLoop = useCallback(() => {
     setLoopPlaying(false)
@@ -338,11 +340,9 @@ export function ChantPracticePlayer({
       setAutoSplitSections(null)
       setSplitHighlight('neutral')
       if (d == null || !Number.isFinite(d) || d <= 0) {
-        setLoopError('Video length not ready yet. Try again in a moment.')
+        setLoopError(tt('mezmurPractice.loop.errorVideoNotReady'))
       } else {
-        setLoopError(
-          'Auto split is unavailable for very short videos. Use Advanced Loop Practice.',
-        )
+        setLoopError(tt('mezmurPractice.loop.errorAutoSplitShort'))
       }
       return
     }
@@ -351,7 +351,7 @@ export function ChantPracticePlayer({
     setLoopPlaying(false)
     setLoopStart(null)
     setLoopEnd(null)
-  }, [getPlayer])
+  }, [getPlayer, tt])
 
   const handleSelectAutoSection = useCallback(
     (n: 1 | 2 | 3) => {
@@ -373,19 +373,19 @@ export function ChantPracticePlayer({
 
   const saveLoopSection = useCallback(() => {
     if (loopStart === null || loopEnd === null) {
-      setLoopError('Mark both start and end before saving.')
+      setLoopError(tt('mezmurPractice.loop.errorMarkBothSave'))
       return
     }
     if (loopEnd <= loopStart + 0.35) {
-      setLoopError('End must be after start before saving.')
+      setLoopError(tt('mezmurPractice.loop.errorEndAfterStartSave'))
       return
     }
     if (savedLoopSections.length >= 30) {
-      setLoopError('You can save up to 30 loops per chant.')
+      setLoopError(tt('mezmurPractice.loop.errorMaxSaved'))
       return
     }
     setLoopError(null)
-    const nextLabel = `Loop ${savedLoopSections.length + 1}`
+    const nextLabel = tt('mezmurPractice.loop.defaultSavedName', { n: savedLoopSections.length + 1 })
     const section: SavedChantLoopSection = {
       id:
         typeof crypto !== 'undefined' && crypto.randomUUID
@@ -406,6 +406,7 @@ export function ChantPracticePlayer({
     savedLoopSections.length,
     payload.form,
     payload.entryId,
+    tt,
   ])
 
   const playSavedLoopSection = useCallback(
@@ -498,7 +499,7 @@ export function ChantPracticePlayer({
   }, [playerReady, videoId, payload.entryId, handleAutoSplit])
 
   const memorizeLabel = learnTabLabel ?? t('practiceChantTabMemorize')
-  const recordLabel = voiceTabLabel ?? 'Record'
+  const recordLabel = voiceTabLabel ?? tt('mezmurPractice.player.record')
 
   const learningTabs = useMemo(
     () => [
@@ -534,13 +535,12 @@ export function ChantPracticePlayer({
             )}
             {recordingMode === 'from-memory' && (
               <div className={styles.memoryMode}>
-                <h4 className={styles.memoryTitle}>Practice from Memory</h4>
+                <h4 className={styles.memoryTitle}>{tt('mezmurPractice.player.memoryTitle')}</h4>
                 <p className={styles.memoryDescription}>
-                  Practice reciting {payload.title} from memory. The lyrics are hidden so you can listen and recall
-                  without reading.
+                  {tt('mezmurPractice.player.memoryDescription', { title: payload.title })}
                 </p>
                 <p className={styles.memoryHint}>
-                  Switch to "With Lyrics" mode if you need to review the text.
+                  {tt('mezmurPractice.player.memoryHint')}
                 </p>
               </div>
             )}
@@ -548,7 +548,7 @@ export function ChantPracticePlayer({
         ),
       },
     ],
-    [payload, memorizeLabel, recordLabel, recordingMode, controlsDisabled],
+    [payload, memorizeLabel, recordLabel, recordingMode, controlsDisabled, tt],
   )
 
   return (
@@ -594,8 +594,7 @@ export function ChantPracticePlayer({
               ) : (
                 <div className={styles.noVideo}>
                   <p className={styles.noVideoText}>
-                    No YouTube link is set for this chant. Lyrics are still available
-                    beside this panel. Video is not available for this mezmur yet.
+                    {tt('mezmurPractice.player.noVideo')}
                   </p>
                   {payload.watchUrl ? (
                     <a
@@ -604,7 +603,7 @@ export function ChantPracticePlayer({
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Open video on YouTube
+                      {tt('mezmurPractice.player.openYoutube')}
                     </a>
                   ) : null}
                 </div>
@@ -656,7 +655,7 @@ export function ChantPracticePlayer({
         <div className={styles.readColumn}>
           {payload.entryId.startsWith('custom:') && payload.learning?.meaning ? (
             <div className={styles.practiceNotes}>
-              <p className={styles.practiceNotesLabel}>Your notes</p>
+              <p className={styles.practiceNotesLabel}>{tt('mezmurPractice.player.yourNotes')}</p>
               <p className={styles.practiceNotesText}>{payload.learning.meaning}</p>
             </div>
           ) : null}

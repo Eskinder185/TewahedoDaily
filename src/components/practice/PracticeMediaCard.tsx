@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './PracticeMediaCard.module.css'
 
@@ -52,7 +53,8 @@ export function PracticeMediaCard({
   teaserLine,
 }: PracticeMediaCardProps) {
   const t = useUiLabel()
-  const ariaWatchExternal = `${t('watch')} ${title} — ${t('opensInNewTab')}`
+  const tt = useTranslation()
+  const ariaWatchExternal = `${t('watch')} ${title} - ${t('opensInNewTab')}`
 
   const inner = (
     <>
@@ -87,7 +89,7 @@ export function PracticeMediaCard({
         await navigator.clipboard.writeText(copyHref)
         onCopyLink?.()
       } catch {
-        window.prompt('Copy mezmur link', copyHref)
+        window.prompt(tt('mezmurPractice.library.copyPrompt'), copyHref)
       }
     }
 
@@ -103,11 +105,11 @@ export function PracticeMediaCard({
         </Link>
         <div className={styles.actions}>
           <Link to={internalHref} className={styles.openLink} onClick={onOpen}>
-            Open
+            {tt('mezmurPractice.library.open')}
           </Link>
           {copyHref ? (
             <button type="button" className={styles.copyBtn} onClick={copyLink}>
-              Copy Link
+              {tt('mezmurPractice.library.copyLink')}
             </button>
           ) : null}
         </div>

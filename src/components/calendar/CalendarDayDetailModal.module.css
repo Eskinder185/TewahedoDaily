@@ -158,7 +158,7 @@
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-midnight) 55%, var(--color-gold) 45%);
+  color: color-mix(in srgb, var(--color-heading) 55%, var(--color-gold) 45%);
 }
 
 .p {

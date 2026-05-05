@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { TouchEvent } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import { PageSection } from '../ui/PageSection'
 import { useHomeToday } from '../../hooks/useHomeToday'
 import { CalendarImage } from '../calendar/CalendarImage'
@@ -34,7 +35,7 @@ type TodaySlide = {
   id: string
   title: string
   type: TodaySlideType
-  label: string
+  labelKey: string
   summary: string
   image: string
   imageAlt: string
@@ -48,14 +49,14 @@ type TodaySlide = {
 
 const SLIDE_INTERVAL_MS = 6500
 
-const TYPE_LABEL: Record<TodaySlideType, string> = {
-  'major-feast': 'Major Feast',
-  'holy-day': 'Holy Day',
-  saint: 'Saint',
-  'monthly-commemoration': 'Monthly Commemoration',
-  synaxarium: 'Synaxarium',
-  season: 'Season',
-  fallback: 'Today in Church',
+const TYPE_LABEL_KEY: Record<TodaySlideType, string> = {
+  'major-feast': 'home.today.typeLabels.majorFeast',
+  'holy-day': 'home.today.typeLabels.holyDay',
+  saint: 'home.today.typeLabels.saint',
+  'monthly-commemoration': 'home.today.typeLabels.monthlyCommemoration',
+  synaxarium: 'home.today.typeLabels.synaxarium',
+  season: 'home.today.typeLabels.season',
+  fallback: 'home.today.typeLabels.fallback',
 }
 
 const TYPE_PRIORITY: Record<TodaySlideType, number> = {
@@ -121,10 +122,10 @@ function buildRowSlide(
     id: e.id,
     title,
     type,
-    label: TYPE_LABEL[type],
+    labelKey: TYPE_LABEL_KEY[type],
     summary: e.summary.short || e.summary.panel,
     image,
-    imageAlt: `${title} observance image`,
+    imageAlt: title,
     priority: TYPE_PRIORITY[type],
     tags: [e.category.primary, ...e.category.secondary, e.date.kind],
     ethiopianDate: snapshot.ethiopian.labelLong,
@@ -153,10 +154,10 @@ function buildMovableSlide(
     id: item.id,
     title: item.title,
     type,
-    label: TYPE_LABEL[type],
+    labelKey: TYPE_LABEL_KEY[type],
     summary: item.shortDescription || item.meaning,
     image,
-    imageAlt: `${item.title} observance image`,
+    imageAlt: item.title,
     priority: TYPE_PRIORITY[type],
     tags: [item.scheduling, item.catalogEventId],
     ethiopianDate: snapshot.ethiopian.labelLong,
@@ -192,10 +193,10 @@ function buildCommemorationSlide(snapshot: ChurchDaySnapshot): TodaySlide {
     id: c.catalogEventId || 'today-commemoration',
     title: c.title,
     type,
-    label: TYPE_LABEL[type],
+    labelKey: TYPE_LABEL_KEY[type],
     summary: c.shortDescription || c.whyTodayShort || c.summary,
     image,
-    imageAlt: `${c.title} observance image`,
+    imageAlt: c.title,
     priority: TYPE_PRIORITY[type],
     tags: c.observanceType,
     ethiopianDate: snapshot.ethiopian.labelLong,
@@ -215,10 +216,10 @@ function buildFallbackSlide(snapshot: ChurchDaySnapshot): TodaySlide {
     id: 'today-seasonal-fallback',
     title: snapshot.season.title,
     type: 'fallback',
-    label: TYPE_LABEL.fallback,
+    labelKey: TYPE_LABEL_KEY.fallback,
     summary: snapshot.season.shortDescription || snapshot.season.summary,
     image,
-    imageAlt: `${snapshot.season.title} seasonal church image`,
+    imageAlt: snapshot.season.title,
     priority: TYPE_PRIORITY.fallback,
     tags: ['season', snapshot.season.id || 'church-year'],
     ethiopianDate: snapshot.ethiopian.labelLong,
@@ -238,10 +239,10 @@ function buildSeasonSlide(snapshot: ChurchDaySnapshot): TodaySlide {
     id: `season-${snapshot.season.id || 'church-year'}`,
     title: snapshot.season.title,
     type: 'season',
-    label: TYPE_LABEL.season,
+    labelKey: TYPE_LABEL_KEY.season,
     summary: snapshot.season.shortDescription || snapshot.season.summary,
     image,
-    imageAlt: `${snapshot.season.title} seasonal church image`,
+    imageAlt: snapshot.season.title,
     priority: TYPE_PRIORITY.season,
     tags: ['season', snapshot.season.id || 'church-year'],
     ethiopianDate: snapshot.ethiopian.labelLong,
@@ -290,6 +291,7 @@ function useReducedMotion() {
 }
 
 export function HomeTodayInChurchPreview() {
+  const t = useTranslation()
   const { snapshot } = useHomeToday()
   const { gregorian, ethiopian, commemoration, season, fasting } = snapshot
   const fast = fastLine(fasting.weeklyFast, fasting.seasonalFast)
@@ -300,6 +302,7 @@ export function HomeTodayInChurchPreview() {
   const reducedMotion = useReducedMotion()
   const touchStartX = useRef<number | null>(null)
   const activeSlide = slides[activeIndex] ?? slides[0]
+  const activeSlideLabel = t(activeSlide.labelKey)
   const hasMultipleSlides = slides.length > 1
 
   useEffect(() => {
@@ -341,8 +344,8 @@ export function HomeTodayInChurchPreview() {
     <PageSection id="today-preview" className={styles.tail}>
       <div className={styles.top}>
         <header className={styles.head}>
-          <p className={styles.eyebrow}>Today in Church</p>
-          <h2 className={styles.title}>What the Church is keeping</h2>
+          <p className={styles.eyebrow}>{t('home.today.eyebrow')}</p>
+          <h2 className={styles.title}>{t('home.today.title')}</h2>
         </header>
         <figure
           className={styles.figure}
@@ -359,7 +362,16 @@ export function HomeTodayInChurchPreview() {
                 key={`${slide.id}-${slide.image}`}
                 src={slide.image}
                 fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                alt={index === activeIndex ? slide.imageAlt : ''}
+                alt={
+                  index === activeIndex
+                    ? t(
+                        slide.type === 'season'
+                          ? 'home.today.imageAltSeason'
+                          : 'home.today.imageAltObservance',
+                        { title: slide.imageAlt },
+                      )
+                    : ''
+                }
                 className={`${styles.figureImg} ${
                   index === activeIndex ? styles.figureImgActive : ''
                 }`}
@@ -374,20 +386,20 @@ export function HomeTodayInChurchPreview() {
             ))}
           </div>
           <figcaption className={styles.caption}>
-            <span>{activeSlide.label}</span>
+            <span>{activeSlideLabel}</span>
             <strong>{activeSlide.title}</strong>
           </figcaption>
           {hasMultipleSlides ? (
             <>
-              <div className={styles.controls} aria-label="Today in Church slideshow controls">
-                <button type="button" onClick={showPrevious} aria-label="Previous observance image">
+              <div className={styles.controls} aria-label={t('home.today.slideshowControls')}>
+                <button type="button" onClick={showPrevious} aria-label={t('home.today.previousImage')}>
                   <span aria-hidden>‹</span>
                 </button>
-                <button type="button" onClick={showNext} aria-label="Next observance image">
+                <button type="button" onClick={showNext} aria-label={t('home.today.nextImage')}>
                   <span aria-hidden>›</span>
                 </button>
               </div>
-              <div className={styles.dots} role="tablist" aria-label="Observance images">
+              <div className={styles.dots} role="tablist" aria-label={t('home.today.images')}>
                 {slides.map((slide, index) => (
                   <button
                     key={`${slide.id}-dot`}
@@ -396,7 +408,7 @@ export function HomeTodayInChurchPreview() {
                     onClick={() => setActiveIndex(index)}
                     role="tab"
                     aria-selected={index === activeIndex}
-                    aria-label={`Show ${slide.title}`}
+                    aria-label={t('home.today.showSlide', { title: slide.title })}
                   />
                 ))}
               </div>
@@ -407,22 +419,22 @@ export function HomeTodayInChurchPreview() {
 
       <div className={styles.grid}>
         <div className={styles.chip}>
-          <span className={styles.label}>Gregorian</span>
+          <span className={styles.label}>{t('home.today.gregorian')}</span>
           <span className={styles.value}>{gregorian.labelLong}</span>
         </div>
         <div className={styles.chip}>
-          <span className={styles.label}>Ethiopian</span>
+          <span className={styles.label}>{t('home.today.ethiopian')}</span>
           <span className={styles.value}>{ethiopian.labelLong}</span>
         </div>
         <div className={styles.chipWide}>
-          <span className={styles.label}>{activeSlide.label}</span>
+          <span className={styles.label}>{activeSlideLabel}</span>
           <span className={styles.feast}>{activeSlide.title}</span>
           {commemoration.subtitle && activeSlide.id === commemoration.catalogEventId ? (
             <span className={styles.sub}>{commemoration.subtitle}</span>
           ) : null}
         </div>
         <div className={styles.chipWide}>
-          <span className={styles.label}>Season &amp; fast</span>
+          <span className={styles.label}>{t('home.today.seasonFast')}</span>
           <span className={styles.season}>{seasonLine}</span>
           {fast ? <span className={styles.fast}>{fast}</span> : null}
         </div>
@@ -431,7 +443,7 @@ export function HomeTodayInChurchPreview() {
       <p className={styles.meaning}>{activeSlide.summary}</p>
 
       <Link to="/calendar" className={styles.cta}>
-        Open full calendar &amp; Today in Church
+        {t('home.today.cta')}
       </Link>
     </PageSection>
   )

@@ -233,6 +233,49 @@
   color: var(--color-text-muted);
 }
 
+.expandedContent {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.expandedBlock {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.expandedHeading {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-heading);
+}
+
+.expandedBlock p,
+.expandedList {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  color: var(--color-text-muted);
+}
+
+.expandedList {
+  display: grid;
+  gap: 0.45rem;
+  padding-left: 1.05rem;
+}
+
+.expandedSource {
+  margin: 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid color-mix(in srgb, var(--color-border-card) 70%, transparent);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+}
+
 .synaxariumSource {
   margin: 0;
   padding-top: var(--space-1);
@@ -312,6 +355,17 @@
   margin: var(--space-2) 0 0;
   font-size: var(--text-sm);
   color: var(--color-text-muted);
+}
+
+.dayDetailNestedMore {
+  margin-top: 0.15rem;
+}
+
+.dayDetailNestedMore summary {
+  cursor: pointer;
+  font-size: var(--text-xs);
+  font-weight: 800;
+  color: var(--color-heading);
 }
 
 .dayDetailSection {

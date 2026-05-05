@@ -7,6 +7,7 @@ import {
 } from '../../lib/eotcCalendar'
 import { TabPanel } from '../ui/TabPanel'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useTranslation } from '../../i18n'
 import {
   calendarImageManifest,
   resolveCommemorationImage,
@@ -34,6 +35,7 @@ export function ChurchDayDetailBody({
   eotcOrderedRows,
 }: Props) {
   const t = useUiLabel()
+  const tr = useTranslation()
   const tabShellId = useId()
   const nativeSelectId = `${tabShellId}-cal-select`
   const [tab, setTab] = useState('overview')
@@ -101,14 +103,14 @@ export function ChurchDayDetailBody({
               <p className={styles.supportText}>
                 {fasting.weeklyFast
                   ? `${fasting.weeklyFast}. `
-                  : 'No standing Wednesday/Friday fast on this weekday. '}
+                  : `${tr('calendar.today.noWeeklyFast')} `}
                 {fasting.seasonalFast ?? ''}
               </p>
             </div>
           </div>
         </div>
         <p className={styles.pMuted}>
-          <strong>Season:</strong> {season.summary} — {season.shortDescription}
+          <strong>{tr('calendar.upcoming.labelSeason')}:</strong> {season.summary} — {season.shortDescription}
         </p>
       </div>
     )
@@ -126,7 +128,7 @@ export function ChurchDayDetailBody({
               />
             </figure>
             <p className={styles.linkCardK}>{t('read')}</p>
-            <p className={styles.linkCardT}>Daily prayers — Zeweter Tselot</p>
+            <p className={styles.linkCardT}>{tr('calendar.today.dailyPrayersCard')}</p>
           </Link>
           <Link className={styles.linkCard} to="/prayers/mezmure-dawit">
             <figure className={styles.linkCardFigure}>
@@ -137,7 +139,7 @@ export function ChurchDayDetailBody({
               />
             </figure>
             <p className={styles.linkCardK}>{t('read')}</p>
-            <p className={styles.linkCardT}>Mezmure Dawit (Psalms)</p>
+            <p className={styles.linkCardT}>{tr('calendar.today.psalmsCard')}</p>
           </Link>
           <Link className={styles.linkCard} to="/practice">
             <figure className={styles.linkCardFigure}>
@@ -148,7 +150,7 @@ export function ChurchDayDetailBody({
               />
             </figure>
             <p className={styles.linkCardK}>{t('practiceVerb')}</p>
-            <p className={styles.linkCardT}>Hymns and faithful rehearsal</p>
+            <p className={styles.linkCardT}>{tr('calendar.today.hymnsPracticeCard')}</p>
           </Link>
         </div>
         <p className={styles.pMuted}>{t('calendarDayChantLead')}</p>
@@ -158,7 +160,7 @@ export function ChurchDayDetailBody({
     const notesBody = (
       <div className={styles.stack}>
         <p className={styles.notesLead}>
-          A pastoral line from the snapshot — confirm every fast and feast with your parish calendar and spiritual father.
+          {tr('calendar.today.notesLead')}
         </p>
         <p className={styles.p}>{commemoration.whyTodayLong}</p>
       </div>
@@ -236,7 +238,7 @@ export function ChurchDayDetailBody({
                           </p>
                           {e.content.relatedEntries.length > 0 ? (
                             <p className={styles.eotcRefRelated}>
-                              <span className={styles.eotcMetaLabel}>Related</span>
+                              <span className={styles.eotcMetaLabel}>{tr('calendar.today.related')}</span>
                               {formatRelatedEntryLabels(e.content.relatedEntries)}
                             </p>
                           ) : null}
@@ -328,11 +330,11 @@ export function ChurchDayDetailBody({
 
                 {/* Daily Liturgical Guide */}
                 <div className={styles.dailyGuideSection}>
-                  <div className={styles.dailyGuideHeader}>Today's Liturgical Guide</div>
+                  <div className={styles.dailyGuideHeader}>{tr('calendar.today.liturgicalGuideTitle')}</div>
                   <div className={styles.dailyGuideContent}>
                     {commemoration.summary && (
                       <div className={styles.educationalSummary}>
-                        <h4 className={styles.summaryTitle}>What this day represents</h4>
+                        <h4 className={styles.summaryTitle}>{tr('calendar.today.representsTitle')}</h4>
                         <p className={styles.summaryText}>{commemoration.summary}</p>
                       </div>
                     )}
@@ -341,14 +343,14 @@ export function ChurchDayDetailBody({
                       <>
                         {commemoration.significance?.trim() && (
                           <div className={styles.educationalSummary}>
-                            <h4 className={styles.summaryTitle}>Why it matters</h4>
+                            <h4 className={styles.summaryTitle}>{tr('calendar.today.whyMattersTitle')}</h4>
                             <p className={styles.summaryText}>{commemoration.significance}</p>
                           </div>
                         )}
 
                         {commemoration.practicalGuidance?.trim() && (
                           <div className={styles.educationalSummary}>
-                            <h4 className={styles.summaryTitle}>How to observe</h4>
+                            <h4 className={styles.summaryTitle}>{tr('calendar.today.howToObserveTitle')}</h4>
                             <p className={styles.summaryText}>
                               {commemoration.practicalGuidance}
                             </p>
@@ -357,14 +359,14 @@ export function ChurchDayDetailBody({
 
                         {commemoration.prayAndChant?.trim() && (
                           <div className={styles.educationalSummary}>
-                            <h4 className={styles.summaryTitle}>Prayer & Hymn Guidance</h4>
+                            <h4 className={styles.summaryTitle}>{tr('calendar.today.prayerHymnGuidanceTitle')}</h4>
                             <p className={styles.summaryText}>{commemoration.prayAndChant}</p>
                           </div>
                         )}
 
                         {commemoration.notes?.trim() && (
                           <div className={styles.educationalSummary}>
-                            <h4 className={styles.summaryTitle}>Notes</h4>
+                            <h4 className={styles.summaryTitle}>{tr('calendar.today.notesTitle')}</h4>
                             <p className={styles.summaryText}>{commemoration.notes}</p>
                           </div>
                         )}
@@ -381,8 +383,8 @@ export function ChurchDayDetailBody({
                         type="button"
                       >
                         {isLiturgicalGuideExpanded
-                          ? 'See less'
-                          : 'See more liturgical guidance'}
+                          ? tr('calendar.today.seeLess')
+                          : tr('calendar.today.seeMoreLiturgicalGuidance')}
                       </button>
                     )}
                   </div>

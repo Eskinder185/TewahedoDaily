@@ -32,7 +32,7 @@
 }
 
 .seg:hover {
-  color: var(--color-navy);
+  color: var(--color-heading);
   background: color-mix(in srgb, var(--color-gold-soft) 70%, transparent);
 }
 
@@ -53,7 +53,7 @@
 }
 
 .segOn {
-  color: var(--color-navy-deep);
+  color: var(--color-heading);
   background: linear-gradient(
     165deg,
     var(--color-gold-soft) 0%,
@@ -61,16 +61,16 @@
   );
 }
 
-@media (prefers-color-scheme: dark) {
-  .segOn {
+
+[data-theme='night'] .segOn {
     color: var(--color-text);
     background: color-mix(in srgb, var(--color-navy) 35%, var(--color-bg-elevated));
   }
 
-  .seg:hover {
+  [data-theme='night'] .seg:hover {
     color: var(--color-gold-bright);
   }
-}
+
 
 @media (max-width: 767.98px) {
   .seg {

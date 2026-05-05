@@ -348,8 +348,8 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .title {
+
+[data-theme='night'] .title {
     color: var(--color-text);
   }
-}
+

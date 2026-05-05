@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { SavedChantLoopSection } from '../../lib/practice/chantLoopStorage'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './ChantLoopControls.module.css'
 
@@ -23,12 +24,7 @@ type ChantLoopControlsProps = {
   onLoadSavedSection: (section: SavedChantLoopSection) => void
   onDeleteSavedSection: (id: string) => void
   onRenameSavedSection: (id: string, label: string) => void
-  /** Equal thirds of the video; null until user runs auto split. */
   autoSplitSections: AutoSplitSectionRange[] | null
-  /**
-   * Which practice-segment control is emphasized: full video, a numbered third,
-   * or neutral (manual marks / saved loop — no auto-split pill active).
-   */
   splitHighlight: 'full' | 1 | 2 | 3 | 'neutral'
   onSelectAutoSection: (section: 1 | 2 | 3) => void
 }
@@ -84,14 +80,14 @@ export function ChantLoopControls({
   onSelectAutoSection,
 }: ChantLoopControlsProps) {
   const t = useUiLabel()
+  const tt = useTranslation()
   const [advancedOpen, setAdvancedOpen] = useState(false)
   const canPlayLoop =
     loopStart !== null &&
     loopEnd !== null &&
     loopEnd > loopStart + 0.35
 
-  const canSaveSection =
-    canPlayLoop && savedSections.length < 30
+  const canSaveSection = canPlayLoop && savedSections.length < 30
 
   const sectionMainLabel = (n: 1 | 2 | 3) =>
     n === 1 ? t('loopSection1') : n === 2 ? t('loopSection2') : t('loopSection3')
@@ -109,7 +105,7 @@ export function ChantLoopControls({
                   onRename={onRenameSavedSection}
                 />
                 <span className={styles.savedRange}>
-                  {formatTime(section.startSec)} – {formatTime(section.endSec)}
+                  {formatTime(section.startSec)}–{formatTime(section.endSec)}
                 </span>
               </div>
               <div className={styles.savedActions}>
@@ -131,7 +127,7 @@ export function ChantLoopControls({
                   type="button"
                   className={styles.btnMiniDanger}
                   onClick={() => onDeleteSavedSection(section.id)}
-                  aria-label={`Delete ${section.label}`}
+                  aria-label={`${tt('mezmurPractice.loop.delete')} ${section.label}`}
                 >
                   {t('loopDelete')}
                 </button>
@@ -141,9 +137,7 @@ export function ChantLoopControls({
         </ul>
       </div>
     ) : (
-      <p className={styles.savedEmpty}>
-        No saved loops yet. Mark start and end, then use <strong>Save loop</strong>.
-      </p>
+      <p className={styles.savedEmpty}>{tt('mezmurPractice.loop.empty')}</p>
     )
 
   return (
@@ -151,15 +145,15 @@ export function ChantLoopControls({
       <legend className={styles.legend}>{t('loopLegend')}</legend>
       <div className={styles.splitBlock}>
         <h3 className={styles.primaryHeading}>{t('loopAutoSplitLegend')}</h3>
-        <p className={styles.hint}>
-          Auto split is the default practice flow. Choose a section and replay it.
-        </p>
+        <p className={styles.hint}>{tt('mezmurPractice.loop.autoHint')}</p>
         <div className={styles.splitRow} role="group" aria-label={t('loopAutoSplitLegend')}>
           {([1, 2, 3] as const).map((n) => {
             const seg = autoSplitSections?.[n - 1]
             const label = sectionMainLabel(n)
             const range =
-              seg != null ? `${formatTime(seg.start)}–${formatTime(seg.end)}` : 'Not ready'
+              seg != null
+                ? `${formatTime(seg.start)}–${formatTime(seg.end)}`
+                : tt('mezmurPractice.loop.notReady')
             const on = splitHighlight === n
             return (
               <button
@@ -173,7 +167,7 @@ export function ChantLoopControls({
               >
                 <span className={styles.splitBtnLabel}>{label}</span>
                 <span className={styles.splitBtnRange}>{range}</span>
-                <span className={styles.splitBtnAction}>Play section</span>
+                <span className={styles.splitBtnAction}>{tt('mezmurPractice.loop.playSection')}</span>
               </button>
             )
           })}
@@ -187,7 +181,7 @@ export function ChantLoopControls({
         open={advancedOpen}
         onToggle={(e) => setAdvancedOpen((e.target as HTMLDetailsElement).open)}
       >
-        <summary className={styles.advancedSummary}>Advanced Loop Practice</summary>
+        <summary className={styles.advancedSummary}>{tt('mezmurPractice.loop.advanced')}</summary>
         <div className={styles.advancedBody}>
           <div className={styles.times}>
             <div className={styles.timeRow}>
@@ -233,10 +227,10 @@ export function ChantLoopControls({
               onClick={onSaveSection}
               title={
                 !canPlayLoop
-                  ? 'Mark start and end first'
+                  ? tt('mezmurPractice.loop.markFirst')
                   : savedSections.length >= 30
-                    ? 'Maximum 30 saved loops'
-                    : 'Save this range as a new loop'
+                    ? tt('mezmurPractice.loop.maxSaved')
+                    : tt('mezmurPractice.loop.saveThisRange')
               }
             >
               {t('saveLoop')}

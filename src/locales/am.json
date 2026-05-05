@@ -1,0 +1,555 @@
+{
+  "brand": {
+    "name": "Tewahedo Daily",
+    "subtitle": "ጸጥ ያለ የቅዳሴ ስቱዲዮ"
+  },
+  "nav": {
+    "home": "መነሻ",
+    "practice": "የመዝሙር ልምምድ",
+    "calendar": "ቀን መቁጠሪያ",
+    "about": "ስለ ዚህ",
+    "prayers": "ጸሎቶች",
+    "pray": "ይጸልዩ",
+    "keepDay": "ቀን መቁጠሪያ",
+    "todayPath": "ዛሬ በቤተክርስቲያን",
+    "modeLearnDesc": "መዝሙርንና እንቅስቃሴን ይለማመዱ",
+    "modePrayDesc": "የዕለት ጸሎቶችንና ቅዱስ ንባቦችን ያንብቡ",
+    "modeKeepDayDesc": "ወቅቱን፣ በዓሉንና መታሰቢያውን ይከታተሉ",
+    "primaryNav": "ዋና አሰሳ",
+    "drawerTitle": "ምናሌ",
+    "menuOpen": "ምናሌ ክፈት",
+    "menuClose": "ምናሌ ዝጋ"
+  },
+  "language": {
+    "group": "ቋንቋ",
+    "english": "English",
+    "amharic": "አማርኛ",
+    "amharicNative": "አማርኛ"
+  },
+  "theme": {
+    "dayLabel": "ቀን",
+    "nightLabel": "ሌሊት",
+    "dayTitle": "ወደ ቀን ገጽታ ቀይር",
+    "nightTitle": "ወደ ሌሊት ገጽታ ቀይር"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Tewahedo Daily",
+      "title": "የዕለት ቤተክርስቲያን ጓደኛዎ",
+      "tagline": "ጸሎት፣ መዝሙርና የኢትዮጵያ ኦርቶዶክስ ቀን መቁጠሪያ - በአንድ ጸጥ ያለ ቦታ።",
+      "primaryCta": "ወደ ልምምድ",
+      "secondaryCta": "ዛሬን በቤተክርስቲያን ይመልከቱ"
+    },
+    "today": {
+      "eyebrow": "ዛሬ በቤተክርስቲያን",
+      "title": "ቤተክርስቲያን ዛሬ የምታስበው",
+      "typeLabels": {
+        "majorFeast": "ታላቅ በዓል",
+        "holyDay": "ቅዱስ ቀን",
+        "saint": "ቅዱስ",
+        "monthlyCommemoration": "ወርሃዊ መታሰቢያ",
+        "synaxarium": "ስንክሳር",
+        "season": "ወቅት",
+        "fallback": "ዛሬ በቤተክርስቲያን"
+      },
+      "imageAltObservance": "የ{title} መታሰቢያ ምስል",
+      "imageAltSeason": "የ{title} የቤተክርስቲያን ወቅት ምስል",
+      "slideshowControls": "የዛሬ በቤተክርስቲያን ምስል መቆጣጠሪያዎች",
+      "previousImage": "ያለፈው የመታሰቢያ ምስል",
+      "nextImage": "ቀጣዩ የመታሰቢያ ምስል",
+      "images": "የመታሰቢያ ምስሎች",
+      "showSlide": "{title} አሳይ",
+      "gregorian": "ጎርጎርያን",
+      "ethiopian": "ኢትዮጵያዊ",
+      "seasonFast": "ወቅትና ጾም",
+      "cta": "ሙሉ ቀን መቁጠሪያንና ዛሬን በቤተክርስቲያን ክፈት"
+    },
+    "gateway": {
+      "eyebrow": "ሦስት መንገዶች",
+      "title": "በትምህርት፣ በጸሎት ወይም በቀኑ ይግቡ።",
+      "deck": "ከመነሻው በኋላ ገጹ ፈጣን መመሪያ ይስጥ። አሁን የሚያስፈልግዎትን መንገድ ይምረጡ።",
+      "practiceBody": "መዝሙርን፣ ምትንና እንቅስቃሴን በተመራ የልምምድ ፍሰት ይለማመዱ።",
+      "prayersBody": "በጸጥ ያለ የጸሎት ገጽታ ወደ ቅዱስ ንባብ ይግቡ።",
+      "calendarBody": "ቀኑ በበዓል፣ በወቅትና በመታሰቢያ ለምን እንደሚጠቅም ይመልከቱ።",
+      "open": "{label} ክፈት"
+    }
+  },
+  "today": {
+    "section": {
+      "eyebrow": "ዛሬ በቤተክርስቲያን",
+      "title": "ቤተክርስቲያን የምታስበው ቀን",
+      "deck": "የቀን መቁጠሪያ እይታ - ቀኑን ለማየት በትንሹ ወር ላይ ቀን ይንኩ፣ ወይም ከታች ክፍል ይክፈቱ።",
+      "openCalendar": "ሙሉ ቀን መቁጠሪያ ክፈት",
+      "newHere": "አዲስ ነዎት? ስለ ገጹ ያንብቡ",
+      "jumpToday": "ወደ ዛሬ ዝለል",
+      "liturgicalSeasonFasting": "የቅዳሴ ወቅትና ጾም",
+      "pastoralReflection": "መንፈሳዊ ምልከታ"
+    }
+  },
+  "calendar": {
+    "page": {
+      "nextObservances": "ቀጣይ መታሰቢያዎች",
+      "grid": "የቀን መቁጠሪያ መረብ",
+      "openDate": "ቀኑን ክፈት",
+      "jumpToday": "ወደ ዛሬ ዝለል",
+      "selectDay": "የመታሰቢያ ዝርዝር ለማየት ቀን ይምረጡ።",
+      "observanceImage": "የ{title} መታሰቢያ ምስል"
+    },
+    "title": "ቀን መቁጠሪያ",
+    "upcoming": {
+      "nextObservances": "ቀጣይ መታሰቢያዎች",
+      "helper": "የመክፈቻ ቀን ካለ በሲቪል ቀን ቅደም ተከተል ይታያል፤ ካልሆነ ደግሞ ከውሂቡ የተሻለው መስኮት ይጠቀማል።",
+      "categoryAria": "የመታሰቢያ ምድብ",
+      "openDay": "የተከፈተበት ቀን",
+      "scrollLeft": "ጋለሪውን ወደ ግራ አንቀሳቅስ",
+      "scrollRight": "ጋለሪውን ወደ ቀኝ አንቀሳቅስ",
+      "tapDetails": "ለዝርዝር ካርዱን ንኩ",
+      "tapClose": "ዝርዝሩን ለመዝጋት ካርዱን ንኩ",
+      "labelFeast": "በዓል",
+      "labelSeason": "ወቅት",
+      "labelMary": "ማርያም",
+      "labelFast": "ጾም",
+      "labelSaint": "ቅድስት",
+      "labelAngel": "መልአክ",
+      "labelGreatFeast": "በጣም ጥሩ ድግስ",
+      "emptyCategory": "በዚህ ምድብ ገና ምንም የለም።"
+    },
+    "navigation": {
+      "jumpToToday": "ወደ ዛሬውኑ ዝለል"
+    },
+    "filters": {
+      "all": "ሁሉም",
+      "feast": "ፌስቲቫል",
+      "majorFeasts": "በጣም ጥሩ ድግስ",
+      "mary": "ማርያም",
+      "saints": "ቅድስት",
+      "rhythm": "ሪትም",
+      "fast": "ጾም",
+      "paschal": "ፋሲካ",
+      "season": "ወቅት"
+    },
+    "weekdays": {
+      "sunShort": "እ",
+      "monShort": "ሰ",
+      "tueShort": "ማ",
+      "wedShort": "ረ",
+      "thuShort": "ሐ",
+      "friShort": "አ",
+      "satShort": "ቅ",
+      "sun": "እሁድ",
+      "mon": "ሰኞ",
+      "tue": "ማክሰኞ",
+      "wed": "ረቡዕ",
+      "thu": "ሐሙስ",
+      "fri": "አርብ",
+      "sat": "ቅዳሜ"
+    },
+    "dayCell": {
+      "liturgicalObservance": "የቅዳሴ አከባበር።",
+      "alsoFast": "ተጨማሪ የጾም ቀንም አለው።",
+      "includesFasting": "ጾምን ያካትታል።",
+      "weeklyOrMonthlyRhythm": "ሳምንታዊ ወይም ወርሃዊ የቤተክርስቲያን ምት።",
+      "liturgicalSeason": "የቅዳሴ ወቅት።",
+      "feastDay": "የበዓል ቀን።",
+      "marianObservance": "የማሪያም አከባበር።",
+      "majorFeastDay": "ታላቅ የበዓል ቀን።",
+      "fastDay": "የጾም ቀን።",
+      "saintCommemoration": "የቅዱሳን ወይም የመላእክት መታሰቢያ።",
+      "paschalCycle": "የፋሲካ ዑደት መታሰቢያ።"
+    },
+    "today": {
+      "title": "የዛሬው በዓል ወይም መታሰቢያ",
+      "thisDay": "ይህ ቀን",
+      "selectedDay": "የተመረጠ ቀን",
+      "readMore": "ተጨማሪ ያንብቡ",
+      "monthlyCommemoration": "ወርሃዊ መታሰቢያ",
+      "noMajorObservance": "ታላቅ መታሰቢያ አልተመዘገበም",
+      "regularDaySummary": "የዕለት ጸሎትን እና መታሰቢያን ይቀጥሉ።",
+      "type": "አይነት",
+      "seeMore": "ተጨማሪ አሳይ",
+      "seeLess": "አነስ አሳይ",
+      "seeMoreLiturgicalGuidance": "ተጨማሪ የቅዳሴ መመሪያ አሳይ",
+      "fasting": "ጾም",
+      "noWeeklyFast": "በዚህ ዕለት የቆሙ ረቡዕ/አርብ ጾሞች የሉም።",
+      "dailyPrayersCard": "ዘወትር ጼሎት",
+      "psalmsCard": "መዝሙር ዳዊት",
+      "hymnsPracticeCard": "መዝሙር ልምምድ",
+      "notesLead": "ከዕለቱ ማጠቃለያ የተወሰደ መንፈሳዊ ማስታወሻ ነው፤ ሁሉንም ቀኖች በደብር መጽሐፍ ያረጋግጡ።",
+      "related": "የተያያዙ",
+      "liturgicalGuideTitle": "የዛሬ የቅዳሴ መመሪያ",
+      "representsTitle": "ይህ ቀን የሚወክለው",
+      "whyMattersTitle": "ለምን አስፈላጊ ነው",
+      "howToObserveTitle": "እንዴት እንደሚከበር",
+      "prayerHymnGuidanceTitle": "የጸሎት እና የመዝሙር መመሪያ",
+      "notesTitle": "ማስታወሻዎች",
+      "holyDay": "ድግስ"
+    },
+    "gallery": {
+      "openDetailsFor": "ዝርዝር ክፈት: {title}",
+      "relatedCountOne": "+{count} ተያያዥ ግቤት",
+      "relatedCountOther": "+{count} ተያያዥ ግቤቶች"
+    },
+    "detail": {
+      "whyCelebrated": "ይህ ቀን ለምን ይከበራል",
+      "whatHappened": "በዚህ ቀን የተፈጠረው",
+      "whyMatters": "ለምን ይጠቅማል",
+      "commemorations": "መታሰቢያዎች",
+      "readMore": "ተጨማሪ ያንብቡ",
+      "source": "ምንጭ፦ {title}",
+      "originalReference": "የመጀመሪያ ማጣቀሻ፦ {reference}"
+    }
+  },
+  "seasonPanel": {
+    "liturgicalSeason": "የቅዳሴ ወቅት",
+    "fastingDiscipline": "ጾምና ሥርዓት",
+    "noWeeklyFast": "ዛሬ ሳምንታዊ ጾም የለም (ረቡዕ/ዓርብ)።",
+    "noSeasonalFast": "በዚህ ጊዜ ታላቅ የወቅት ጾም የለም - በየዓመቱ ከደብርዎ ጋር ያረጋግጡ።"
+  },
+  "mezmurPractice": {
+    "title": "የመዝሙር ልምምድ",
+    "hero": {
+      "description": "የመዝሙር፣ የወርብ እና የአምልኮ መዝሙሮች - ትኩረት የተደረገበት ልምምድ። ለጸሎት ጽሑፎች እና ለዕለታዊ ጸሎቶች፣ የጸሎት ገጹን ይጠቀሙ።"
+    },
+    "intro": {
+      "openLabel": "የመዝሙር ልምምድ",
+      "openText": "የመዝሙር ቤተ-መጽሐፍትን ይክፈቱ እና በአንድ ክፍል ይጀምሩ።",
+      "memorizeLabel": "አስታውሱ",
+      "memorizeText": "ሙሉ ድግግሞሽ ከመደረጉ በፊት አጭር የግጥም እና የሪትም ማለፊያዎችን ይጠቀሙ።",
+      "practiceLabel": "ልምምድ",
+      "practiceText": "ለበለጠ ትምህርት በሳምንቱ ውስጥ ወደ ተመሳሳይ መዝሙር ይመለሱ።",
+      "enter": "ወደ ልምምድ ይግቡ",
+      "quickOrientation": "አጭር መመሪያ"
+    },
+    "library": {
+      "helper": "የኢትዮጵያ ኦርቶዶክስ መዝሙሮችን ያስሱ እና በግጥም፣ በቪዲዮ እና በመማሪያ መሳሪያዎች ይለማመዱ።",
+      "searchLabel": "መዝሙሮችን ይፈልጉ",
+      "searchPlaceholder": "መዝሙርን ወይም ወርብን ይፈልጉ...",
+      "cantFind": "መዝሙርዎን ማግኘት አልቻሉም?",
+      "customPractice": "ብጁ ዝማሬ ይለማመዱ",
+      "recent": "የቅርብ ጊዜ",
+      "all": "ሁሉም",
+      "mezmur": "መዝሙር",
+      "werb": "ወርብ",
+      "marian": "የማርያም",
+      "saints": "ቅዱሳን",
+      "feastDays": "የበዓል ቀናት",
+      "startHere": "እዚህ ይጀምሩ",
+      "previewDeck": "ሲገኝ ቪዲዮ ያለው አጭር የዝማሬ ስብስብ። ከግጥሞች ጎን ለጎን ለመለማመድ አንዱን ይክፈቱ።",
+      "results": "{n} ውጤቶች",
+      "clearSearch": "ፍለጋ አጽዳ",
+      "linkCopied": "አገናኙ ተቀድቷል",
+      "chantType": "የዝማሬ አይነት",
+      "browseAll": "ሁሉንም መዝሙሮች ያስሱ",
+      "seeMore": "ተጨማሪ ይመልከቱ",
+      "backToFeatured": "← ወደ ተመረጡት ይመለሱ",
+      "libraryNote": "መዝሙሮች በቤተ-መጽሐፍት ውስጥ - ሁሉንም ሲያስሱ ማጣሪያዎችና ፍለጋ ይታያሉ።",
+      "noMatchTitle": "መዝሙርዎን ማግኘት አልቻሉም?",
+      "noMatchDeck": "በዚህ ፍለጋ የተዛመደ መዝሙር አልተገኘም። ነገር ግን በዩቲዩብ አገናኝ ተመሳሳይ የልምምድ መሳሪያዎችን መክፈት ይችላሉ።",
+      "pasteYoutube": "የዩቲዩብ አገናኝ ይጣሉ",
+      "open": "ክፈት",
+      "copyLink": "አገናኝ ቅዳ",
+      "copyPrompt": "የመዝሙር አገናኝ ቅዳ",
+      "opensInNewTab": "በአዲስ መክፈቻ ይከፈታል",
+      "watch": "ይመልከቱ"
+    },
+    "custom": {
+      "drawerEyebrow": "ከቤተ-መጽሐፍት ውጭ",
+      "drawerTitle": "ብጁ ልምምድ ከዩቲዩብ",
+      "drawerDeck": "አንድ የቪዲዮ አገናኝ ይጣሉ። ግጥም፣ ሉፕ እና ሪከርድ እንደ ቤተ-መጽሐፍት መዝሙሮች ይሰራሉ - ከታች ያሉ አማራጭ መስኮች ለመማሪያ ክፍሉ ብቻ ይረዳሉ።",
+      "drawerClose": "ዝጋ",
+      "formLabel": "ብጁ ልምምድ",
+      "learnTab": "በግጥሞች ተለማመድ",
+      "voiceTab": "ሪከርድና መልሶ ማጫወት",
+      "urlLabel": "የዩቲዩብ አገናኝ",
+      "urlPlaceholder": "https://www.youtube.com/watch?v=...",
+      "titleOpt": "ርዕስ (አማራጭ)",
+      "titlePlaceholder": "ለምሳሌ፦ የመዝሙር ርዕስ",
+      "lyricsOpt": "ግጥም (አማራጭ)",
+      "lyricsPlaceholder": "ግዕዝ ወይም ዋና ጽሑፍ - ካለዎት ይጣሉ።",
+      "translitOpt": "በቋንቋ ፊደል መጻፍ (አማራጭ)",
+      "translitPlaceholder": "አብሮ ለመዘመር የላቲን ፊደላት።",
+      "notesOpt": "አጭር ማስታወሻ (አማራጭ)",
+      "notesPlaceholder": "አውድ፣ የበዓል ቀን፣ ወይም ለመማሪያ ክፍሉ ማስታወሻዎች።",
+      "optionalDetails": "ርዕስ፣ ግጥም፣ በቋንቋ ፊደል መጻፍ፣ ማስታወሻ (አማራጭ)",
+      "loadVideo": "ቪዲዮ ጫን",
+      "errMissing": "ለመጀመር የዩቲዩብ አገናኝ ወይም የቪዲዮ መለያ ይጣሉ።",
+      "errInvalid": "ይህ አገናኝ ትክክለኛ የዩቲዩብ ቪዲዮ አይመስልም። watch URL፣ youtu.be፣ Shorts፣ embed፣ ወይም 11-ፊደል የቪዲዮ መለያ ይሞክሩ።"
+    },
+    "loop": {
+      "title": "የሉፕ ልምምድ",
+      "sections": "ክፍሎችን ይለማመዱ",
+      "autoHint": "ራስ-ሰር መከፋፈል ነባሪ የልምምድ ፍሰት ነው። አንድ ክፍል ይምረጡ እና እንደገና ያጫውቱት።",
+      "section1": "ክፍል 1",
+      "section2": "ክፍል 2",
+      "section3": "ክፍል 3",
+      "playSection": "ክፍሉን አጫውት",
+      "notReady": "ገና አልተዘጋጀም",
+      "advanced": "የላቀ የሉፕ ልምምድ",
+      "start": "ጀምር",
+      "end": "መጨረሻ",
+      "markStart": "መጀመሪያ ምልክት አድርግ",
+      "markEnd": "መጨረሻ ምልክት አድርግ",
+      "playLoop": "ሉፕ አጫውት",
+      "stopLoop": "ሉፕ አቁም",
+      "clearMarks": "ምልክቶችን አጽዳ",
+      "saveLoop": "ሉፕ አስቀምጥ",
+      "savedLoops": "የተቀመጡ ሉፖች",
+      "savedLoopName": "የተቀመጠ ሉፕ ስም",
+      "play": "አጫውት",
+      "load": "ጫን",
+      "delete": "ሰርዝ",
+      "empty": "ገና የተቀመጡ ሉፖች የሉም። መጀመሪያ እና መጨረሻ ምልክት አድርጉ፣ ከዚያም ሉፕ አስቀምጥን ተጠቀሙ።",
+      "markFirst": "መጀመሪያ እና መጨረሻ በፊት ምልክት አድርጉ",
+      "maxSaved": "ከፍተኛው 30 የተቀመጡ ሉፖች ነው",
+      "saveThisRange": "ይህን ክፍል እንደ አዲስ ሉፕ አስቀምጥ",
+      "errorMarkBoth": "መጀመሪያ መነሻውንና መጨረሻውን ምልክት አድርጉ።",
+      "errorEndAfterStart": "መጨረሻው ከመጀመሪያው በኋላ መሆን አለበት።",
+      "errorMarkBothSave": "ከማስቀመጥ በፊት መጀመሪያና መጨረሻ ምልክት አድርጉ።",
+      "errorEndAfterStartSave": "ከማስቀመጥ በፊት መጨረሻው ከመጀመሪያው በኋላ መሆን አለበት።",
+      "errorMaxSaved": "ለአንድ መዝሙር እስከ 30 ሉፖች ማስቀመጥ ይችላሉ።",
+      "errorVideoNotReady": "የቪዲዮው ርዝመት ገና አልተዘጋጀም። ትንሽ ቆይተው ይሞክሩ።",
+      "errorAutoSplitShort": "ለበጣም አጭር ቪዲዮ ራስ-ሰር መከፋፈል አይገኝም። የላቀ የሉፕ ልምምድን ይጠቀሙ።",
+      "defaultSavedName": "ሉፕ {n}"
+    },
+    "player": {
+      "back": "← ወደ መዝሙር ቤተ-መጽሐፍት",
+      "backToPractice": "ወደ ልምምድ ተመለስ",
+      "nowPlaying": "አሁን በልምምድ",
+      "regionAria": "ቪዲዮና መቆጣጠሪያዎች",
+      "videoLandmark": "የቪዲዮ ማጫወቻ",
+      "tabsAria": "የመዝሙር መማሪያ ክፍሎች",
+      "record": "ሪከርድ",
+      "share": "አጋራ",
+      "timeline": "የጊዜ መስመር",
+      "playbackTimeline": "የማጫወቻ ጊዜ መስመር",
+      "skipBack": "5 ሰከንድ ወደ ኋላ",
+      "skipForward": "5 ሰከንድ ወደ ፊት",
+      "skipBackShort": "−5ዎች",
+      "skipForwardShort": "+5ዎች",
+      "play": "አጫውት",
+      "pause": "አቁም",
+      "volume": "መጠን",
+      "speed": "ፍጥነት",
+      "noVideo": "ለዚህ መዝሙር የዩቲዩብ አገናኝ አልተመዘገበም። ግጥሞች ግን ከዚህ ፓነል ጎን ይገኛሉ።",
+      "openYoutube": "ቪዲዮውን በዩቲዩብ ክፈት",
+      "yourNotes": "የእርስዎ ማስታወሻዎች",
+      "memoryTitle": "ከማህደረ ትውስታ ተለማመድ",
+      "memoryDescription": "{title}ን ከማህደረ ትውስታ ለመዘመር ይለማመዱ። ለማዳመጥና ለማስታወስ ግጥሞቹ ተደብቀዋል።",
+      "memoryHint": "ጽሑፉን መመለስ ካስፈለገዎት ወደ \"በግጥሞች ተለማመድ\" ይቀይሩ።",
+      "notFoundEyebrow": "መዝሙር",
+      "notFoundTitle": "መዝሙሩ አልተገኘም",
+      "notFoundDeck": "ይህ ቀጥታ አገናኝ በልምምድ ቤተ-መጽሐፍት ውስጥ ካለ መዝሙር ጋር አይዛመድም።",
+      "metaDescription": "{title}ን በግጥምና በቪዲዮ በTewahedo Daily ይለማመዱ።"
+    },
+    "tabs": {
+      "memorize": "አስታውስ",
+      "record": "ሪከርድ",
+      "text": "ጽሑፍ",
+      "lyrics": "ግጥሞች",
+      "transliteration": "በቋንቋ ፊደል መጻፍ",
+      "both": "ሁለቱም",
+      "presentationStudy": "የአቀራረብ ጥናት",
+      "fullText": "ሙሉ ጽሑፍ",
+      "lineByLine": "መስመር በመስመር",
+      "stanzas": "ስታንዛስ",
+      "lyricsDisplay": "የግጥም እይታ",
+      "studyLayout": "የጥናት አቀራረብ",
+      "bothModeHint": "ለመስመር በመስመር የጥናት መሳሪያዎች ግዕዝን ወይም በቋንቋ ፊደል መጻፍን ብቻ ይምረጡ።",
+      "noTransliteration": "ለዚህ መዝሙር በቋንቋ ፊደል መጻፍ አልተገኘም።"
+    },
+    "memory": {
+      "tools": "የማስታወሻ መሳሪያዎች",
+      "title": "አስታውስ",
+      "revealNext": "ቀጣዩን መስመር ግለጥ",
+      "resetReveal": "መግለጫን ዳግም ጀምር",
+      "firstLetter": "የመጀመሪያ ፊደል ምልክቶች",
+      "focusLine": "መስመር ላይ ተኩር",
+      "centerLine": "መስመር {n} ወደ መካከል",
+      "progress": "የእርስዎ እድገት",
+      "markLearned": "ተማርኩ ብለህ ምልክት አድርግ",
+      "reviewLater": "በኋላ እመለሳለሁ",
+      "tipsAria": "የማስታወስ ምክሮች",
+      "tipsTitle": "የማስታወስ ምክሮች",
+      "tip1": "ቀጣዩን ከመጨመርዎ በፊት አንድ መስመር በድምፅ ብዙ ጊዜ ያንብቡ።",
+      "tip2": "በዝግተኛ ፍጥነት ያዳምጡ፣ ከዚያም ከቀረጻው ጋር ይናገሩ።",
+      "tip3": "የመጀመሪያ ፊደል ምልክቶችን እንደ ድጋፍ ብቻ ይጠቀሙ - ብዙ ጊዜ ወደ ሙሉ ቃላት ይመለሱ።",
+      "tip4": "በቤተክርስቲያን ውስጥ ቀኝ ያዥን ይከተሉ፣ ተገቢ ሲሆንም ዓይኖችዎን ወደ ቅዱሳን ምስሎች ያንሱ።"
+    },
+    "recording": {
+      "title": "ሪከርድ ተለማመድ",
+      "withLyrics": "በግጥሞች ተለማመድ",
+      "fromMemory": "ከማህደረ ትውስታ ተለማመድ",
+      "ready": "ለመቅዳት ዝግጁ",
+      "readyShort": "ዝግጁ",
+      "countdown": "ቀረጻ በ{count}...",
+      "recording": "በመቅዳት ላይ... {time}",
+      "recorded": "ተቀድቷል {time}",
+      "playing": "በመጫወት ላይ...",
+      "unsupported": "የድምጽ ቀረጻ በዚህ አሳሽ አይደገፍም።",
+      "start": "ሪከርድ ጀምር",
+      "stop": "ሪከርድ አቁም",
+      "play": "ቀረጻውን አጫውት",
+      "delete": "ሰርዝ",
+      "rerecord": "እንደገና ቅዳ",
+      "stopPlayback": "መልሶ ማጫወት አቁም"
+    }
+  },
+  "practice": {
+    "loading": "የልምምድ ይዘት በመጫን ላይ...",
+    "miniGuide": {
+      "openLabel": "የመዝሙር ልምምድ",
+      "openText": "የመዝሙር ቤተ-መጻሕፍትን ክፈትና በአንድ መዝሙር ጀምር።",
+      "memorizeLabel": "በቃል ያዝ",
+      "memorizeText": "ሙሉ ድግግሞሽ ከመጀመርዎ በፊት አጭር የግጥምና ምት ልምምድ ይጠቀሙ።",
+      "practiceLabel": "ልምምድ",
+      "practiceText": "ጥልቅ ለመማር በሳምንቱ ውስጥ ወደ ተመሳሳይ መዝሙር ይመለሱ።"
+    }
+  },
+  "prayers": {
+    "title": "ጸሎቶች",
+    "hero": {
+      "title": "የጸሎት ስብስቦች",
+      "description": "መጀመሪያ የጸሎት መጽሐፍ ይክፈቱ፣ ከዚያም ምዕራፉን፣ ክፍሉን ወይም ጸሎትን ይምረጡ።"
+    },
+    "dailyRhythm": {
+      "title": "የዛሬው የጸሎት ሪትም",
+      "subtitle": "ቀላል የዕለት ተዕለት የጸሎት መንገድ"
+    },
+    "search": {
+      "searchAria": "የጸሎት ፍለጋ",
+      "resultsAria": "የፍለጋ ውጤቶች",
+      "label": "ሁሉንም ጸሎቶች ይፈልጉ",
+      "placeholder": "ርዕስ፣ የስብስብ ክፍል ወይም ጽሑፍ ይፈልጉ",
+      "resultsTitle": "የፍለጋ ውጤቶች",
+      "resultsCountOne": "{count} ውጤት",
+      "resultsCountOther": "{count} ውጤቶች",
+      "emptyTitle": "የሚዛመድ ጸሎት አልተገኘም",
+      "emptyHint": "አጭር ፍለጋ ወይም የስብስብ ስም ይሞክሩ።",
+      "secondaryTagsTitle": "ሁለተኛ መለያዎች",
+      "secondaryTagsHelper": "እንደ ዕለታዊ፣ ማርያም፣ ንስሐ፣ የአምልኮ ሥርዓት፣ ቅዱሳን እና በዓላት ያሉ መለያዎች በፍለጋ ውጤቶች እና በጸሎት ገጾች ውስጥ ይገኛሉ፣ ነገር ግን ዋናው መዋቅር በጸሎት ስብስብ የተደራጀ ነው።"
+    },
+    "navigation": {
+      "aria": "የጸሎት አሰሳ",
+      "breadcrumb": "የመንገድ አሰሳ",
+      "backToCollections": "ወደ የጸሎት ስብስቦች ተመለስ",
+      "backToCollection": "ወደ {collection} ተመለስ"
+    },
+    "collection": {
+      "label": "የጸሎት ስብስብ",
+      "open": "ክፈት",
+      "openCollection": "ክፈት ስብስብ",
+      "urlLabel": "የስብስብ አገናኝ",
+      "sectionsCountOne": "{count} ክፍል",
+      "sectionsCountOther": "{count} ክፍሎች",
+      "notFoundTitle": "የጸሎት ስብስብ አልተገኘም",
+      "notFoundDescription": "የስብስቡ አገናኝ ያረጀ ወይም ያልተሟላ ሊሆን ይችላል።"
+    },
+    "detail": {
+      "notFoundTitle": "ጸሎቱ አልተገኘም",
+      "notFoundDescription": "የጸሎቱ አገናኝ ያረጀ ወይም ያልተሟላ ሊሆን ይችላል።",
+      "browsePrayers": "ጸሎቶችን ይመልከቱ",
+      "share": "አጋራ",
+      "linkCopied": "አገናኙ ተቀድቷል",
+      "copyPrompt": "የጸሎት አገናኝ ቅዳ",
+      "summaryAria": "የጸሎት ማጠቃለያ",
+      "videoAria": "የጸሎት ቪዲዮ",
+      "videoAriaSuffix": "ቪዲዮ",
+      "watchListen": "ተመልከት / አድምጥ",
+      "watchListenOnYoutube": "በYouTube ተመልከት / አድምጥ",
+      "textAria": "የጸሎት ጽሑፍ",
+      "sourceTitle": "ምንጭ",
+      "fullText": "ሙሉ ጽሑፍ",
+      "audio": "ድምጽ",
+      "textUnavailable": "ለዚህ ቋንቋ ጽሑፍ እስካሁን አልተገኘም።"
+    },
+    "languages": {
+      "amharic": "አማርኛ",
+      "english": "እንግሊዝኛ"
+    },
+    "media": {
+      "title": "የጸሎት ሚዲያ",
+      "openOnYoutube": "በYouTube ክፈት",
+      "sectionsAria": "የጸሎት ገጽ ክፍሎች",
+      "related": "ተያያዥ",
+      "relatedPrayers": "ተያያዥ ጸሎቶች",
+      "lyricsPlaceholder": "የግጥም ቦታ",
+      "lyricsPlaceholderDescription": "ግጥሙ በቅርብ ይጨመራል። አሁን ላይ ይህ ገጽ የዜማ ቪዲዮውን ብቻ ያካትታል።"
+    }
+  },
+  "about": {
+    "title": "ስለ",
+    "hero": {
+      "title": "ተዋህዶ ዴይሊ",
+      "description": "በእሁድ ቀናት መካከል ከቤተክርስቲያን ጋር ቅርበት እንዲኖራቸው ለሚፈልጉ የኢትዮጵያ ኦርቶዶክስ ክርስቲያኖች ጸጥ ያለ የኢንተርኔት ጥግ - በደቂቃዎች ውስጥ እንጂ በማራቶን ውድድር አይደለም።"
+    },
+    "whatThisSiteIs": {
+      "title": "ይህ ድህረ ገጽ ምንድን ነው",
+      "paragraph1": "ተዋህዶ ዴይሊ የዕለት ተዕለት ጓደኛ ነው፡ አጭር ትምህርቶች፣ ለዝማሬዎች እና ለእንቅስቃሴ ልምምድ፣ ለጸሎት እና ለቅዱስ ቁርባን የተዘጋጀ የጸሎት ቦታ እና በቤተክርስቲያን የቀን መቁጠሪያ ውስጥ የዛሬውን ፈጣን እይታ። ለስልኮች እና ለተጨናነቁ ቀናት የተገነባ ነው - ስለዚህ በጽሑፍ ውስጥ እንደተቀበረ ሳይሰማዎት ጸሎትን እና ወግን መንካት ይችላሉ።",
+      "paragraph2": "እኛ ኢንሳይክሎፒዲያ ወይም ማህበራዊ ምግብ አይደለንም። ታማኝ፣ ትንሽ እና ጠቃሚ ለመሆን እየሞከርን ነው።"
+    },
+    "audience": {
+      "title": "ለማን ነው",
+      "item1": "ለዲያስፖራ ውስጥ ላሉ ኢትዮጵያውያን - በተለይም የሰበካ ሕይወት ሩቅ በሚሆንበት ጊዜ ወይም የጊዜ ሰሌዳዎች ጥብቅ ሲሆኑ።",
+      "item2": "እያንዳንዱን መዝሙር ወይም ደንብ ሳያውቁ ረጋ ያለ የመነሻ ቦታ የሚያስፈልጋቸው ጀማሪዎች።",
+      "item3": "ቤተክርስቲያንን የሚወድ እና በቀላሉ በአምልኮ፣ በስራ እና በቤተሰብ መካከል ቀለል ያለ ምት የሚፈልግ ማንኛውም ሰው።"
+    },
+    "features": {
+      "title": "የሚረዳባቸው ክፍሎች",
+      "intro": "በአራት ክሮች የሚረዳው - እያንዳንዱ አማራጭ። ለቀኑ የሚስማማውን ይምረጡ።",
+      "churchDay": {
+        "title": "የቤተክርስቲያን ቀን",
+        "description": "ዛሬ ምን እንደሆነ ፈጣን ግንዛቤ - ድግስ፣ ወቅት እና አጭር ለምን አስፈላጊ እንደሆነ ግለጫ።"
+      },
+      "chants": {
+        "title": "ዝማሬዎች",
+        "description": "መዝሙር እና ድርብ አንድ ላይ፡ ያዳምጡ፣ በቋንቋ ፊደል ያንብቡ እና ግጥሞችን ይክፈቱ ወይም ሲመርጡ ብቻ ይመልከቱ።"
+      },
+      "prayers": {
+        "title": "ጸሎቶች",
+        "description": "ዕለታዊ ጸሎቶች፣ ውዳሴ እና መዝሙረ ዳዊት - በጸሎት ማዕከል ስር፣ ለመክፈት ሲመርጡ ሙሉ ጽሑፍ።"
+      },
+      "calendar": {
+        "title": "ቀን መቁጠሪያ እና ወቅቶች",
+        "description": "ቀላል የቀን መቁጠሪያ እይታ እና ስለ ጾም እና በዓላት ማስታወሻዎች - ሁልጊዜ ወደ ፓሪሽዎ ይጠቁማሉ።"
+      }
+    },
+    "howToUse": {
+      "title": "እንዴት እንደሚጠቀሙበት",
+      "step1": {
+        "title": "በመነሻ ገጹ ላይ ይጀምሩ።",
+        "description": "መነሻ ገጹን ይክፈቱ እና ዛሬ በቤተክርስቲያን ውስጥ ያንብቡ - ከእግዚአብሔር ጋር አንድ ትንሽ ጊዜ በቂ ነው።"
+      },
+      "step2": {
+        "title": "ዝግጁ ሲሆኑ ክፈት ልምምድ።",
+        "description": "ለዝማሬዎች እና ለመሳሪያዎች ልምምድ ይጠቀሙ፣ ወይም ለጸሎት እና ለረጅም ጊዜ ንባብ ጸሎቶች። ጽሑፉ እስክትነኩ ድረስ በካርዶች እና መገናኛዎች ውስጥ ይቆያል።"
+      },
+      "step3": {
+        "title": "ነገ ይመለሱ።",
+        "description": "ጣቢያው እንዲደገም የታሰበ ነው፣ አይጠናቀቅም። ተመሳሳይ ለስላሳ ቅርፅ፣ ትኩስ ቀን።"
+      }
+    },
+    "cta": {
+      "home": "ወደ ቤት ተመለስ",
+      "practice": "ክፈት ልምምድ"
+    },
+    "guidance": {
+      "title": "አክብሮት እና መመሪያ",
+      "paragraph1": "ይህ ድህረ ገጽ በዕለት ተዕለት ሕይወት ውስጥ መማርን እና ልምምድን ይደግፋል። ጸሎትን፣ ማዳመጥን እና ለቤተክርስቲያን ፍቅርን ያበረታታል ብለን ተስፋ እናደርጋለን።",
+      "paragraph2": "ካህንህን፣ ፓሪሽህን፣ መንፈሳዊ አባትህን ወይም ኦፊሴላዊ የአምልኮ መጻሕፍትን አይተካም። የጾም ህጎች፣ ቁርባን፣ ኑዛዜ እና የእረኝነት እንክብካቤ በአካል ይገባሉ - ቤተክርስቲያን ነፍስህን እንድትጠብቅ ከሰጠሃቸው ጋር።",
+      "paragraph3": "እዚህ ላይ የሆነ ነገር ከጳጳስህ፣ ከመጻሕፍትህ ወይም ከኑዛዜ አባትህ ጋር የማይስማማ ከሆነ፣ እነርሱን እመኑ - ድህረ ገጹን አይደለም።"
+    },
+    "futureVision": {
+      "title": "የወደፊት ራዕይ",
+      "description": "በእውነተኛ የቀን መቁጠሪያ መረጃ፣ በፓሪሽ የተስተካከሉ ይዘቶች፣ ሥርዓተ አምልኮን የሚያገለግል ድምጽ እና ሌሎችንም - ሁልጊዜ በዝግታ፣ በጥንቃቄ እና በተገቢው መመሪያ ስር ለማደግ ተስፋ እናደርጋለን። ተዋህዶ ዴይሊ ከቤተክርስቲያን አጠገብ ትሑት ሆኖ መሰማቱን ካቆመ፣ ግቡን አምልጦናል።"
+    },
+    "closing": "ስለጎበኙን እናመሰግናለን። መዳንዎን እንዲያገለግልዎ - ትንሽም ቢሆን።",
+    "backHome": "← ወደ ቤት ተመለስ"
+  },
+  "footer": {
+    "portfolio": "Portfolio - eskinder.dev",
+    "copyright": "© {year} Tewahedo Daily"
+  },
+  "common": {
+    "dialogClose": "ዝጋ"
+  }
+}

@@ -209,7 +209,7 @@
   margin: var(--space-1) 0 0 2.25rem;
   font-size: var(--text-sm);
   letter-spacing: 0.04em;
-  color: color-mix(in srgb, var(--color-navy) 55%, var(--color-gold) 45%);
+  color: color-mix(in srgb, var(--color-heading) 55%, var(--color-gold) 45%);
 }
 
 .muted {

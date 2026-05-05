@@ -44,7 +44,7 @@
   font-weight: 700;
   letter-spacing: var(--letter-eyebrow);
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-midnight) 55%, var(--color-gold) 45%);
+  color: color-mix(in srgb, var(--color-heading) 55%, var(--color-gold) 45%);
 }
 
 .title {
@@ -72,12 +72,11 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .hero {
+
+[data-theme='night'] .hero {
     background: linear-gradient(
       135deg,
       color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-midnight) 8%) 0%,
       color-mix(in srgb, var(--color-bg) 88%, var(--color-gold-faint) 12%) 100%
     );
   }
-}

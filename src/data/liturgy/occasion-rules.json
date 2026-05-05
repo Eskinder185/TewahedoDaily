@@ -1,0 +1,590 @@
+{
+  "id": "pdf-supported-anaphora-occasion-rules",
+  "title": "PDF-Supported Anaphora Occasion Rules",
+  "summary": "Rules and partial examples explicitly stated in the anaphora occasion notes. These are not a complete liturgical calendar system.",
+  "source": {
+    "title": "The Liturgy of the Ethiopian Church",
+    "edition": "Translated by Rev. Marcos Daoud; revised by H. E. Blatta Marsie Hazen; re-edited March 22, 2006 PDF edition"
+  },
+  "ruleTypes": [
+    "dayOfWeek",
+    "saintOfDay",
+    "season",
+    "feastDay",
+    "movableFeastContext",
+    "general"
+  ],
+  "interpretationNotes": [
+    "Only rules explicitly stated in the PDF occasion notes are included.",
+    "Rules marked explicit-partial need manual calendar interpretation before automation.",
+    "Where multiple anaphoras are listed for overlapping contexts, this JSON does not choose a winner; priority must be handled by a reviewed resolver."
+  ],
+  "rules": [
+    {
+      "id": "apostle-memorial",
+      "ruleType": "saintOfDay",
+      "label": "Memorial day of any apostle",
+      "status": "explicit",
+      "sourcePageStart": 43,
+      "sourcePageEnd": 43,
+      "anaphoraId": "apostles",
+      "anaphoraTitle": "The Anaphora of the Apostles"
+    },
+    {
+      "id": "hedar-6-qosquam",
+      "ruleType": "feastDay",
+      "label": "Hedar 6: consecration of St. Mary church at Qosquam Monastery",
+      "status": "explicit",
+      "sourcePageStart": 58,
+      "sourcePageEnd": 58,
+      "anaphoraId": "lord",
+      "anaphoraTitle": "The Anaphora of Our Lord"
+    },
+    {
+      "id": "sene-20-philippi",
+      "ruleType": "feastDay",
+      "label": "Sene 20: consecration of St. Mary church at Philippi",
+      "status": "explicit",
+      "sourcePageStart": 58,
+      "sourcePageEnd": 58,
+      "anaphoraId": "lord",
+      "anaphoraTitle": "The Anaphora of Our Lord"
+    },
+    {
+      "id": "nehasse-16-st-mary-body",
+      "ruleType": "feastDay",
+      "label": "Nehasse 16: ascension of St. Mary body to heaven after her death",
+      "status": "explicit",
+      "sourcePageStart": 58,
+      "sourcePageEnd": 58,
+      "anaphoraId": "lord",
+      "anaphoraTitle": "The Anaphora of Our Lord"
+    },
+    {
+      "id": "ter-4-st-john",
+      "ruleType": "saintOfDay",
+      "label": "Ter 4: commemoration of St. John passing",
+      "status": "explicit",
+      "sourcePageStart": 64,
+      "sourcePageEnd": 64,
+      "anaphoraId": "john-son-of-thunder",
+      "anaphoraTitle": "The Anaphora of John, Son of Thunder"
+    },
+    {
+      "id": "first-week-tahsas",
+      "ruleType": "season",
+      "label": "First week of Tahsas",
+      "status": "explicit",
+      "sourcePageStart": 64,
+      "sourcePageEnd": 64,
+      "anaphoraId": "john-son-of-thunder",
+      "anaphoraTitle": "The Anaphora of John, Son of Thunder"
+    },
+    {
+      "id": "season-of-flowers",
+      "ruleType": "season",
+      "label": "Season of flowers: Meskerem 26 through Hedar 5",
+      "status": "explicit",
+      "sourcePageStart": 64,
+      "sourcePageEnd": 64,
+      "anaphoraId": "john-son-of-thunder",
+      "anaphoraTitle": "The Anaphora of John, Son of Thunder"
+    },
+    {
+      "id": "fast-of-prophets",
+      "ruleType": "season",
+      "label": "During the 43 day fast of the prophets",
+      "status": "explicit",
+      "sourcePageStart": 64,
+      "sourcePageEnd": 64,
+      "anaphoraId": "john-son-of-thunder",
+      "anaphoraTitle": "The Anaphora of John, Son of Thunder"
+    },
+    {
+      "id": "prophet-feasts",
+      "ruleType": "saintOfDay",
+      "label": "Feasts of prophets",
+      "status": "explicit",
+      "sourcePageStart": 64,
+      "sourcePageEnd": 64,
+      "anaphoraId": "john-son-of-thunder",
+      "anaphoraTitle": "The Anaphora of John, Son of Thunder"
+    },
+    {
+      "id": "new-church-consecration",
+      "ruleType": "feastDay",
+      "label": "Consecration of a new church",
+      "status": "explicit-partial",
+      "sourcePageStart": 64,
+      "sourcePageEnd": 64,
+      "todo": "Calendar detection requires parish/consecration context not present in the app data.",
+      "anaphoraId": "john-son-of-thunder",
+      "anaphoraTitle": "The Anaphora of John, Son of Thunder"
+    },
+    {
+      "id": "apostle-commemorations",
+      "ruleType": "saintOfDay",
+      "label": "Commemorations of Apostles",
+      "status": "explicit",
+      "sourcePageStart": 64,
+      "sourcePageEnd": 64,
+      "anaphoraId": "john-son-of-thunder",
+      "anaphoraTitle": "The Anaphora of John, Son of Thunder"
+    },
+    {
+      "id": "most-st-mary-feasts",
+      "ruleType": "saintOfDay",
+      "label": "Most feast days of St. Mary",
+      "status": "explicit-partial",
+      "sourcePageStart": 74,
+      "sourcePageEnd": 74,
+      "todo": "The PDF says ?most? but does not enumerate all Marian feast days here.",
+      "anaphoraId": "mary",
+      "anaphoraTitle": "The Anaphora of St. Mary"
+    },
+    {
+      "id": "tahsas-28",
+      "ruleType": "feastDay",
+      "label": "Tahsas 28: day preceding the Nativity of Christ",
+      "status": "explicit",
+      "sourcePageStart": 74,
+      "sourcePageEnd": 74,
+      "anaphoraId": "mary",
+      "anaphoraTitle": "The Anaphora of St. Mary"
+    },
+    {
+      "id": "megabit-29-annunciation",
+      "ruleType": "feastDay",
+      "label": "Megabit 29: memorial day of the Annunciation",
+      "status": "explicit",
+      "sourcePageStart": 74,
+      "sourcePageEnd": 74,
+      "anaphoraId": "mary",
+      "anaphoraTitle": "The Anaphora of St. Mary"
+    },
+    {
+      "id": "tekemt-2-heryacos",
+      "ruleType": "saintOfDay",
+      "label": "Tekemt 2: memorial day of St. Heryacos, Bishop of Behnesa",
+      "status": "explicit",
+      "sourcePageStart": 74,
+      "sourcePageEnd": 74,
+      "anaphoraId": "mary",
+      "anaphoraTitle": "The Anaphora of St. Mary"
+    },
+    {
+      "id": "meskerem-21-virgin-mary",
+      "ruleType": "feastDay",
+      "label": "Meskerem 21: memorial day of the Virgin Mary",
+      "status": "explicit",
+      "sourcePageStart": 86,
+      "sourcePageEnd": 86,
+      "anaphoraId": "three-hundred",
+      "anaphoraTitle": "The Anaphora of the Three Hundred"
+    },
+    {
+      "id": "hedar-8-four-beasts",
+      "ruleType": "feastDay",
+      "label": "Hedar 8: Feast of the Four Beasts",
+      "status": "explicit",
+      "sourcePageStart": 86,
+      "sourcePageEnd": 86,
+      "anaphoraId": "three-hundred",
+      "anaphoraTitle": "The Anaphora of the Three Hundred"
+    },
+    {
+      "id": "hedar-9-nicaea",
+      "ruleType": "feastDay",
+      "label": "Hedar 9: opening day of the Council of Nicaea",
+      "status": "explicit",
+      "sourcePageStart": 86,
+      "sourcePageEnd": 86,
+      "anaphoraId": "three-hundred",
+      "anaphoraTitle": "The Anaphora of the Three Hundred"
+    },
+    {
+      "id": "hedar-24-twenty-four-priests",
+      "ruleType": "feastDay",
+      "label": "Hedar 24: Feast of the Twenty-four heavenly Priests",
+      "status": "explicit",
+      "sourcePageStart": 86,
+      "sourcePageEnd": 86,
+      "anaphoraId": "three-hundred",
+      "anaphoraTitle": "The Anaphora of the Three Hundred"
+    },
+    {
+      "id": "tahsas-29-nativity",
+      "ruleType": "feastDay",
+      "label": "Tahsas 29: Nativity of Christ",
+      "status": "explicit",
+      "sourcePageStart": 86,
+      "sourcePageEnd": 86,
+      "anaphoraId": "three-hundred",
+      "anaphoraTitle": "The Anaphora of the Three Hundred"
+    },
+    {
+      "id": "ter-13-cana",
+      "ruleType": "feastDay",
+      "label": "Ter 13: Feast of Cana of Galilee",
+      "status": "explicit",
+      "sourcePageStart": 86,
+      "sourcePageEnd": 86,
+      "anaphoraId": "three-hundred",
+      "anaphoraTitle": "The Anaphora of the Three Hundred"
+    },
+    {
+      "id": "righteous-memorial",
+      "ruleType": "saintOfDay",
+      "label": "Memorial day of any of the righteous",
+      "status": "explicit-partial",
+      "sourcePageStart": 86,
+      "sourcePageEnd": 86,
+      "todo": "Requires source-reviewed mapping of ?righteous? commemorations.",
+      "anaphoraId": "three-hundred",
+      "anaphoraTitle": "The Anaphora of the Three Hundred"
+    },
+    {
+      "id": "ginbot-7-athanasius",
+      "ruleType": "saintOfDay",
+      "label": "Ginbot 7: memorial day of the death of St. Athanasius",
+      "status": "explicit",
+      "sourcePageStart": 97,
+      "sourcePageEnd": 97,
+      "anaphoraId": "athanasius",
+      "anaphoraTitle": "The Anaphora of St. Athanasius"
+    },
+    {
+      "id": "ordinary-sunday",
+      "ruleType": "dayOfWeek",
+      "label": "Every Sunday if there is not a specific feast indicating another anaphora",
+      "status": "explicit-conditional",
+      "sourcePageStart": 97,
+      "sourcePageEnd": 97,
+      "anaphoraId": "athanasius",
+      "anaphoraTitle": "The Anaphora of St. Athanasius"
+    },
+    {
+      "id": "ter-6-basil",
+      "ruleType": "saintOfDay",
+      "label": "Ter 6: memorial day of the death of St. Basil",
+      "status": "explicit",
+      "sourcePageStart": 109,
+      "sourcePageEnd": 109,
+      "anaphoraId": "basil",
+      "anaphoraTitle": "The Anaphora of St. Basil"
+    },
+    {
+      "id": "bishops-priests-kings",
+      "ruleType": "saintOfDay",
+      "label": "Memorial days of bishops, priests, and kings",
+      "status": "explicit-partial",
+      "sourcePageStart": 109,
+      "sourcePageEnd": 109,
+      "todo": "Requires source-reviewed classification of commemorations.",
+      "anaphoraId": "basil",
+      "anaphoraTitle": "The Anaphora of St. Basil"
+    },
+    {
+      "id": "sometimes-every-day",
+      "ruleType": "general",
+      "label": "Sometimes every day",
+      "status": "explicit-partial",
+      "sourcePageStart": 109,
+      "sourcePageEnd": 109,
+      "todo": "The PDF gives this as a broad usage note, not a deterministic calendar rule.",
+      "anaphoraId": "basil",
+      "anaphoraTitle": "The Anaphora of St. Basil"
+    },
+    {
+      "id": "wednesday-before-palm-through-palm",
+      "ruleType": "movableFeastContext",
+      "label": "Five days in Lent from Wednesday before Palm Sunday until Palm Sunday",
+      "status": "explicit",
+      "sourcePageStart": 120,
+      "sourcePageEnd": 120,
+      "anaphoraId": "gregory-nyssa",
+      "anaphoraTitle": "The Anaphora of St. Gregory of Nyssa"
+    },
+    {
+      "id": "ter-21-gregory-nyssa",
+      "ruleType": "saintOfDay",
+      "label": "Ter 21: memorial day of the death of St. Gregory",
+      "status": "explicit",
+      "sourcePageStart": 120,
+      "sourcePageEnd": 120,
+      "anaphoraId": "gregory-nyssa",
+      "anaphoraTitle": "The Anaphora of St. Gregory of Nyssa"
+    },
+    {
+      "id": "ginbot-17-epiphanius",
+      "ruleType": "saintOfDay",
+      "label": "Ginbot 17: memorial day of the death of St. Epiphanius",
+      "status": "explicit",
+      "sourcePageStart": 128,
+      "sourcePageEnd": 128,
+      "anaphoraId": "epiphanius",
+      "anaphoraTitle": "The Anaphora of St. Epiphanius"
+    },
+    {
+      "id": "epiphany-fast-days",
+      "ruleType": "season",
+      "label": "Fast day or days of Epiphany",
+      "status": "explicit-partial",
+      "sourcePageStart": 128,
+      "sourcePageEnd": 128,
+      "todo": "The PDF does not enumerate exact Epiphany fast day boundaries here.",
+      "anaphoraId": "epiphanius",
+      "anaphoraTitle": "The Anaphora of St. Epiphanius"
+    },
+    {
+      "id": "great-thursday",
+      "ruleType": "movableFeastContext",
+      "label": "Great Thursday, the Thursday before Fasika",
+      "status": "explicit",
+      "sourcePageStart": 128,
+      "sourcePageEnd": 128,
+      "anaphoraId": "epiphanius",
+      "anaphoraTitle": "The Anaphora of St. Epiphanius"
+    },
+    {
+      "id": "rainy-season",
+      "ruleType": "season",
+      "label": "During the rainy season",
+      "status": "explicit-partial",
+      "sourcePageStart": 128,
+      "sourcePageEnd": 128,
+      "todo": "Requires source-reviewed Ethiopian rainy season boundaries.",
+      "anaphoraId": "epiphanius",
+      "anaphoraTitle": "The Anaphora of St. Epiphanius"
+    },
+    {
+      "id": "monthly-27-saviour",
+      "ruleType": "feastDay",
+      "label": "27th of every month: Feast of the Saviour of the world",
+      "status": "explicit",
+      "sourcePageStart": 136,
+      "sourcePageEnd": 136,
+      "anaphoraId": "john-chrysostom",
+      "anaphoraTitle": "The Anaphora of St. John Chrysostom"
+    },
+    {
+      "id": "magabit-10-cross-discovery",
+      "ruleType": "feastDay",
+      "label": "Magabit 10: memorial day of discovering the cross of the Lord by St. Helen",
+      "status": "explicit",
+      "sourcePageStart": 136,
+      "sourcePageEnd": 136,
+      "anaphoraId": "john-chrysostom",
+      "anaphoraTitle": "The Anaphora of St. John Chrysostom"
+    },
+    {
+      "id": "great-saturday",
+      "ruleType": "movableFeastContext",
+      "label": "Great Saturday preceding Easter",
+      "status": "explicit",
+      "sourcePageStart": 136,
+      "sourcePageEnd": 136,
+      "anaphoraId": "john-chrysostom",
+      "anaphoraTitle": "The Anaphora of St. John Chrysostom"
+    },
+    {
+      "id": "wednesday-friday",
+      "ruleType": "dayOfWeek",
+      "label": "Every Wednesday and Friday",
+      "status": "explicit",
+      "sourcePageStart": 136,
+      "sourcePageEnd": 136,
+      "anaphoraId": "john-chrysostom",
+      "anaphoraTitle": "The Anaphora of St. John Chrysostom"
+    },
+    {
+      "id": "ginbot-12-chrysostom",
+      "ruleType": "saintOfDay",
+      "label": "Ginbot 12: memorial day of the death of St. John Chrysostom",
+      "status": "explicit",
+      "sourcePageStart": 136,
+      "sourcePageEnd": 136,
+      "anaphoraId": "john-chrysostom",
+      "anaphoraTitle": "The Anaphora of St. John Chrysostom"
+    },
+    {
+      "id": "ascension-cyril",
+      "ruleType": "movableFeastContext",
+      "label": "Ascension day",
+      "status": "explicit",
+      "sourcePageStart": 143,
+      "sourcePageEnd": 143,
+      "anaphoraId": "cyril",
+      "anaphoraTitle": "The Anaphora of St. Cyril"
+    },
+    {
+      "id": "memorial-days-deaths",
+      "ruleType": "saintOfDay",
+      "label": "Memorial days of deaths",
+      "status": "explicit-partial",
+      "sourcePageStart": 143,
+      "sourcePageEnd": 143,
+      "todo": "Requires source-reviewed interpretation before automation.",
+      "anaphoraId": "cyril",
+      "anaphoraTitle": "The Anaphora of St. Cyril"
+    },
+    {
+      "id": "abraham-job-elijah",
+      "ruleType": "saintOfDay",
+      "label": "Feast days of Abraham, Job and Elijah",
+      "status": "explicit",
+      "sourcePageStart": 143,
+      "sourcePageEnd": 143,
+      "anaphoraId": "cyril",
+      "anaphoraTitle": "The Anaphora of St. Cyril"
+    },
+    {
+      "id": "hamle-3-cyril",
+      "ruleType": "saintOfDay",
+      "label": "Hamle 3: memorial day of the death of St. Cyril",
+      "status": "explicit",
+      "sourcePageStart": 143,
+      "sourcePageEnd": 143,
+      "anaphoraId": "cyril",
+      "anaphoraTitle": "The Anaphora of St. Cyril"
+    },
+    {
+      "id": "angel-feasts",
+      "ruleType": "saintOfDay",
+      "label": "Feast days of the angels",
+      "status": "explicit",
+      "sourcePageStart": 151,
+      "sourcePageEnd": 151,
+      "anaphoraId": "jacob-serough",
+      "anaphoraTitle": "The Anaphora of St. Jacob of Serough"
+    },
+    {
+      "id": "pagumen-days",
+      "ruleType": "season",
+      "label": "Five or six days of Pagumen",
+      "status": "explicit",
+      "sourcePageStart": 151,
+      "sourcePageEnd": 151,
+      "anaphoraId": "jacob-serough",
+      "anaphoraTitle": "The Anaphora of St. Jacob of Serough"
+    },
+    {
+      "id": "fifth-sunday-lent",
+      "ruleType": "movableFeastContext",
+      "label": "Fifth Sunday in Lent",
+      "status": "explicit-partial",
+      "sourcePageStart": 151,
+      "sourcePageEnd": 151,
+      "todo": "Requires confirmation against Ethiopian Lent Sunday naming in the app calendar.",
+      "anaphoraId": "jacob-serough",
+      "anaphoraTitle": "The Anaphora of St. Jacob of Serough"
+    },
+    {
+      "id": "sene-27-jacob",
+      "ruleType": "saintOfDay",
+      "label": "Sene 27: memorial day of his death",
+      "status": "explicit",
+      "sourcePageStart": 151,
+      "sourcePageEnd": 151,
+      "anaphoraId": "jacob-serough",
+      "anaphoraTitle": "The Anaphora of St. Jacob of Serough"
+    },
+    {
+      "id": "nativity-dioscorus",
+      "ruleType": "feastDay",
+      "label": "Christ Nativity",
+      "status": "explicit",
+      "sourcePageStart": 159,
+      "sourcePageEnd": 159,
+      "anaphoraId": "dioscorus",
+      "anaphoraTitle": "The Anaphora of St. Dioscorus"
+    },
+    {
+      "id": "epiphany-dioscorus",
+      "ruleType": "feastDay",
+      "label": "Epiphany",
+      "status": "explicit",
+      "sourcePageStart": 159,
+      "sourcePageEnd": 159,
+      "anaphoraId": "dioscorus",
+      "anaphoraTitle": "The Anaphora of St. Dioscorus"
+    },
+    {
+      "id": "fasika-dioscorus",
+      "ruleType": "movableFeastContext",
+      "label": "Christ Resurrection: Fasika",
+      "status": "explicit",
+      "sourcePageStart": 159,
+      "sourcePageEnd": 159,
+      "anaphoraId": "dioscorus",
+      "anaphoraTitle": "The Anaphora of St. Dioscorus"
+    },
+    {
+      "id": "ascension-dioscorus",
+      "ruleType": "movableFeastContext",
+      "label": "Ascension day",
+      "status": "explicit",
+      "sourcePageStart": 159,
+      "sourcePageEnd": 159,
+      "anaphoraId": "dioscorus",
+      "anaphoraTitle": "The Anaphora of St. Dioscorus"
+    },
+    {
+      "id": "pentecost-dioscorus",
+      "ruleType": "movableFeastContext",
+      "label": "Pentecost day",
+      "status": "explicit",
+      "sourcePageStart": 159,
+      "sourcePageEnd": 159,
+      "anaphoraId": "dioscorus",
+      "anaphoraTitle": "The Anaphora of St. Dioscorus"
+    },
+    {
+      "id": "monthly-7-trinity",
+      "ruleType": "feastDay",
+      "label": "Seventh day of every month: Feast of Trinity",
+      "status": "explicit",
+      "sourcePageStart": 159,
+      "sourcePageEnd": 159,
+      "anaphoraId": "dioscorus",
+      "anaphoraTitle": "The Anaphora of St. Dioscorus"
+    },
+    {
+      "id": "meskerem-7-dioscorus",
+      "ruleType": "saintOfDay",
+      "label": "Meskerem 7: memorial day of the death of St. Dioscorus",
+      "status": "explicit",
+      "sourcePageStart": 159,
+      "sourcePageEnd": 159,
+      "anaphoraId": "dioscorus",
+      "anaphoraTitle": "The Anaphora of St. Dioscorus"
+    },
+    {
+      "id": "christmas-to-nineveh",
+      "ruleType": "season",
+      "label": "Period from Christmas to the Fast of Nineveh",
+      "status": "explicit",
+      "sourcePageStart": 164,
+      "sourcePageEnd": 164,
+      "anaphoraId": "gregory-wonderworker",
+      "anaphoraTitle": "The Anaphora of St. Gregory II"
+    },
+    {
+      "id": "hosanna",
+      "ruleType": "movableFeastContext",
+      "label": "Hosanna / Palm Sunday",
+      "status": "explicit",
+      "sourcePageStart": 164,
+      "sourcePageEnd": 164,
+      "anaphoraId": "gregory-wonderworker",
+      "anaphoraTitle": "The Anaphora of St. Gregory II"
+    }
+  ],
+  "manualReviewNeeded": [
+    "Rainy season boundaries for St. Epiphanius.",
+    "New church consecration context for John, Son of Thunder.",
+    "Memorial days of deaths and righteous persons.",
+    "Ordinary use of St. Basil described as ?sometimes every day.?",
+    "Overlapping rules such as Ascension appearing for both St. Cyril and St. Dioscorus."
+  ]
+}

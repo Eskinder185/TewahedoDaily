@@ -1,0 +1,47 @@
+{
+  "id": "standard-qedasi-readings",
+  "title": "Standard Qedasi Reading Pattern",
+  "summary": "The PDF describes five Scripture readings appointed for the occasion and selected according to the liturgical calendar, getsawe.",
+  "readingOrder": [
+    {
+      "order": 1,
+      "id": "epistle-1",
+      "title": "Epistle reading 1",
+      "sourcePhrase": "Two are from the Epistles"
+    },
+    {
+      "order": 2,
+      "id": "epistle-2",
+      "title": "Epistle reading 2",
+      "sourcePhrase": "Two are from the Epistles"
+    },
+    {
+      "order": 3,
+      "id": "acts",
+      "title": "Acts of the Apostles",
+      "sourcePhrase": "one from the Acts of the Apostles"
+    },
+    {
+      "order": 4,
+      "id": "psalm",
+      "title": "Psalm",
+      "sourcePhrase": "one from Psalms"
+    },
+    {
+      "order": 5,
+      "id": "gospel",
+      "title": "Holy Gospel",
+      "sourcePhrase": "one from the Holy Gospels"
+    }
+  ],
+  "notes": [
+    "The PDF says the Holy Gospel is read by a bishop if present, otherwise by the priest celebrant.",
+    "The PDF says readings are selected according to a liturgical calendar, getsawe / plan of instruction.",
+    "TODO: This PDF does not provide a complete daily getsawe citation table in the extracted pages; add source-reviewed reading citations from a getsawe source before automating exact daily readings."
+  ],
+  "sourcePageStart": 8,
+  "sourcePageEnd": 8,
+  "fullText": [
+    "The Priest celebrant asks God that the Holy Spirit may descend upon the elements to change them into the\nreal body and blood of our Lord Jesus Christ. He makes the sign of the cross three times over each element\n(over the bread and over the Chalice). Then the absolution of the Son is read by a Bishop, if he is present, if\nnot it is done by the assistant Priest followed by the Litany. Throughout the qedasi, there are several series\nof exchanges between Deacons Priests (Deacon’s bidding prayers), and the congregation, such as :\nDeacon : Arise for prayer\nPeople : Lord have mercy upon us.\nThese announcements by the Deacon are mental wake up c alls: reminders of St. John the Baptizer,\nforerunner of the Lamb of God, who prophesied : “Prepare ye the way of the Lord, make his paths\nstraight” (Mt. 3 : 3; Mk. 1 : 3); “the crooked shall be made straight” (Lk. 3 : 5); “Make straight the way of\nthe Lord” (Jn. 1 : 23). They are powerful statements, fulfilling Isaiah’s prophecy: (40 : 3). Both the words\n“Arise (straighten up / pay attention / stand up) for praye r,” and salutations by the Priest are repeated often\nin the service. After the Litany, the prayer of the incense follows. Before being used, the incense and th e\ncenser are blessed by the Patriarch, Archbishop, or B ishop if present, otherwise the Priest blesses them\nremembering the current year and reckoning of day and night . He shall go around the ark three times with\na lighted candle carried in front of him, while another Deacon joins the procession, carrying the Epistles of\nSt. Paul. The prayer of incense is followed by five scripture readings designated for the occasion. Two are\nfrom the Epistles, one from the Acts of the Apostles, one from Psalms, and one from the Holy Gospels.\nThe Holy Gospel is read by a bishop, if present : if n ot, it is done by the Priest celebrant. Scriptural\nreadings are selected according to a liturgical calendar (ge tsawe = plan of instruction).\nFollowing the Gospel, a Deacon opens “CHAPTER IV” by dismissing the catechumens. Some\nthink this an anachronism, since we no longer suppose th at some nonmember might turn us over to the\npagan authorities, charging us with “atheism” for what w e are about to do. It is retained to remind us of\nthe witness of those who bore Christ’s Cross before us, and that we are about to enter with them and the\nangels, in spirit and truth, into the heart of the qedasi . We pray for our faithful brothers and sisters\nthroughout the world, including the Patriarch, who remembe rs the leaders of the other Churches of God.\nWe remember the Archbishop, bishops, priests, deacons, this congregation, all congregations, including\nthose who may come after us. Next, the Creed is recit ed by all. The Anaphora to be celebrated in a\nparticular qedasi determines whether the Nicaean or Apost les’ Creed is recited. This “Apostles’ Creed” is\naccording to the tradition of the Church at Jerusalem: not to be confused with another of the same name\nattributed to the Latin baptismal rite. As the Creed c oncludes, a deacon brings water to wash the principal\ncelebrant’s hands. After the hand washing, the kiss o f peace is exchanged. This is accomplished by\neveryone, starting with an exchange between the priests , the deacons, and finally everyone present\nacknowledging each other with a simple bow in every direction where fellow participants are visible.\nThe washing of the hands of the Priest celebrant may be likened to Pontius Pilate, who washed his\nhands to indicate his innocence in the condemnation of our Lord Jesus Christ. The Priest declares that he is\ninnocent of the fate of any who would dare take communion without proper preparation. (1Cor. 11:26-33)"
+  ]
+}

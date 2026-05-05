@@ -4,6 +4,7 @@ import {
   setChantProgress,
   type ChantProgress,
 } from '../../lib/practice/chantLearningStorage'
+import { useTranslation } from '../../i18n'
 import styles from './MemoryAidPanel.module.css'
 
 type Props = {
@@ -33,6 +34,7 @@ export function MemoryAidPanel({
   onToggleFocus,
   onRepeatLine,
 }: Props) {
+  const t = useTranslation()
   const [progress, setProgressState] = useState<ChantProgress | null>(() =>
     getChantProgress(entryId),
   )
@@ -50,8 +52,8 @@ export function MemoryAidPanel({
   )
 
   return (
-    <div className={styles.root} role="group" aria-label="Memorization tools">
-      <p className={styles.legend}>Memorization</p>
+    <div className={styles.root} role="group" aria-label={t('mezmurPractice.memory.tools')}>
+      <p className={styles.legend}>{t('mezmurPractice.memory.title')}</p>
       <div className={styles.row}>
         <button
           type="button"
@@ -59,7 +61,7 @@ export function MemoryAidPanel({
           onClick={onProgressiveNext}
           disabled={lineCount === 0 || progressiveCount >= lineCount}
         >
-          Reveal next line
+          {t('mezmurPractice.memory.revealNext')}
         </button>
         <button
           type="button"
@@ -67,41 +69,41 @@ export function MemoryAidPanel({
           onClick={onProgressiveReset}
           disabled={lineCount === 0}
         >
-          Reset reveal
+          {t('mezmurPractice.memory.resetReveal')}
         </button>
         <button
           type="button"
           className={`${styles.btn} ${firstLetter ? styles.btnOn : ''}`}
           onClick={onToggleFirstLetter}
         >
-          First-letter hints
+          {t('mezmurPractice.memory.firstLetter')}
         </button>
         <button
           type="button"
           className={`${styles.btn} ${focusMode ? styles.btnOn : ''}`}
           onClick={onToggleFocus}
         >
-          Focus line
+          {t('mezmurPractice.memory.focusLine')}
         </button>
         <button type="button" className={styles.btn} onClick={onRepeatLine}>
-          Center line {lineCount ? activeLine + 1 : 0}
+          {t('mezmurPractice.memory.centerLine', { n: lineCount ? activeLine + 1 : 0 })}
         </button>
       </div>
       <div className={styles.row}>
-        <span className={styles.markLabel}>Your progress</span>
+        <span className={styles.markLabel}>{t('mezmurPractice.memory.progress')}</span>
         <button
           type="button"
           className={`${styles.mark} ${progress === 'learned' ? styles.markOn : ''}`}
           onClick={() => setProgress(progress === 'learned' ? null : 'learned')}
         >
-          Mark learned
+          {t('mezmurPractice.memory.markLearned')}
         </button>
         <button
           type="button"
           className={`${styles.mark} ${progress === 'review' ? styles.markOn : ''}`}
           onClick={() => setProgress(progress === 'review' ? null : 'review')}
         >
-          Review later
+          {t('mezmurPractice.memory.reviewLater')}
         </button>
       </div>
     </div>

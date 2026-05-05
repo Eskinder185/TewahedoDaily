@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import {
   firstLetterHint,
@@ -27,6 +28,7 @@ export function ChantLyricsLearningPanel({
   showMemorizationTipsCallout = true,
 }: Props) {
   const t = useUiLabel()
+  const tt = useTranslation()
   const hasTrans = transliterationLyrics.trim().length > 0
   const [scriptMode, setScriptMode] = useState<ScriptMode>('lyrics')
   const [studyLayout, setStudyLayout] = useState<StudyLayout>('full')
@@ -80,7 +82,7 @@ export function ChantLyricsLearningPanel({
         <h2 id="chant-lyrics-h" className={styles.title}>
           {t('lyricsTextHeading')}
         </h2>
-        <div className={styles.modeGroup} role="group" aria-label="Lyrics display">
+        <div className={styles.modeGroup} role="group" aria-label={tt('mezmurPractice.tabs.lyricsDisplay')}>
           <button
             type="button"
             className={`${styles.modeBtn} ${scriptMode === 'lyrics' ? styles.modeOn : ''}`}
@@ -93,7 +95,7 @@ export function ChantLyricsLearningPanel({
             disabled={!hasTrans}
             className={`${styles.modeBtn} ${scriptMode === 'transliteration' ? styles.modeOn : ''}`}
             onClick={() => setScriptMode('transliteration')}
-            title={!hasTrans ? 'No transliteration in data' : undefined}
+            title={!hasTrans ? t('lyricsNoTrans') : undefined}
           >
             {t('lyricsTransliteration')}
           </button>
@@ -102,15 +104,15 @@ export function ChantLyricsLearningPanel({
             disabled={!hasTrans}
             className={`${styles.modeBtn} ${scriptMode === 'both' ? styles.modeOn : ''}`}
             onClick={() => setScriptMode('both')}
-            title={!hasTrans ? 'No transliteration in data' : undefined}
+            title={!hasTrans ? t('lyricsNoTrans') : undefined}
           >
             {t('lyricsBoth')}
           </button>
         </div>
       </div>
 
-      <div className={styles.studyModes} role="group" aria-label="Study layout">
-        <span className={styles.studyLabel}>Study layout</span>
+      <div className={styles.studyModes} role="group" aria-label={tt('mezmurPractice.tabs.studyLayout')}>
+        <span className={styles.studyLabel}>{tt('mezmurPractice.tabs.studyLayout')}</span>
         {(['full', 'line', 'stanza'] as const).map((m) => (
           <button
             key={m}
@@ -119,13 +121,17 @@ export function ChantLyricsLearningPanel({
             onClick={() => setStudyLayout(m)}
             disabled={scriptMode === 'both'}
           >
-            {m === 'full' ? 'Full text' : m === 'line' ? 'Line by line' : 'Stanzas'}
+            {m === 'full'
+              ? tt('mezmurPractice.tabs.fullText')
+              : m === 'line'
+                ? tt('mezmurPractice.tabs.lineByLine')
+                : tt('mezmurPractice.tabs.stanzas')}
           </button>
         ))}
       </div>
       {scriptMode === 'both' ? (
         <p className={styles.hint}>
-          Switch to Ge’ez or transliteration only for line-by-line study tools.
+          {tt('mezmurPractice.tabs.bothModeHint')}
         </p>
       ) : null}
 

@@ -99,8 +99,8 @@
   overflow-wrap: anywhere;
 }
 
-@media (prefers-color-scheme: dark) {
-  .tablist {
+
+[data-theme='night'] .tablist {
     background: linear-gradient(
       160deg,
       color-mix(in srgb, var(--color-bg-muted) 88%, var(--color-gold) 12%) 0%,
@@ -110,14 +110,14 @@
     box-shadow: inset 0 1px 0 rgba(232, 225, 214, 0.05);
   }
 
-  .tabSelected {
+  [data-theme='night'] .tabSelected {
     background: linear-gradient(
       165deg,
       var(--color-bg-elevated) 0%,
       color-mix(in srgb, var(--color-bg-elevated) 82%, var(--color-gold-soft)) 100%
     );
   }
-}
+
 
 @media (max-width: 639.98px) {
   .tablist {
@@ -214,11 +214,11 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .tabSelected {
+
+[data-theme='night'] .tabSelected {
     color: var(--color-gold-bright);
   }
-}
+
 
 @media (prefers-reduced-motion: reduce) {
   .tabSelected {

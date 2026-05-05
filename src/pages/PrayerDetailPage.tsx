@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
 import { PageSection } from '../components/ui/PageSection'
 import { findCollectionPrayer, findPrayerByLegacySlug } from '../lib/prayers/prayerCollections'
+import { useTranslation } from '../i18n'
 import { prayerShareUrl } from '../lib/prayers/prayerSlug'
 import styles from './PrayerDetailPage.module.css'
 
@@ -14,6 +15,7 @@ function youtubeEmbedUrl(youtubeId?: string, youtubeUrl?: string): string {
 }
 
 export function PrayerDetailPage() {
+  const tr = useTranslation()
   const { collectionSlug, prayerSlug, slug } = useParams()
   const prayer = prayerSlug
     ? findCollectionPrayer(collectionSlug, prayerSlug)
@@ -22,8 +24,10 @@ export function PrayerDetailPage() {
 
   useEffect(() => {
     const title = prayer?.transliterationTitle || prayer?.title
-    document.title = title ? `Tewahedo Daily | ${title}` : 'Tewahedo Daily | Prayer not found'
-  }, [prayer])
+    document.title = title
+      ? `Tewahedo Daily | ${title}`
+      : `Tewahedo Daily | ${tr('prayers.detail.notFoundTitle')}`
+  }, [prayer, tr])
 
   const copyLink = async () => {
     if (!prayer) return
@@ -33,7 +37,7 @@ export function PrayerDetailPage() {
       setCopied(true)
       window.setTimeout(() => setCopied(false), 1800)
     } catch {
-      window.prompt('Copy prayer link', url)
+      window.prompt(tr('prayers.detail.copyPrompt'), url)
     }
   }
 
@@ -42,12 +46,12 @@ export function PrayerDetailPage() {
       <PageSection variant="tint">
         <div className={styles.notFound}>
           <Link className={styles.backLink} to="/pray">
-            Back to Prayer collections
+            {tr('prayers.navigation.backToCollections')}
           </Link>
-          <h1>Prayer not found</h1>
-          <p>The prayer link may be outdated or incomplete.</p>
+          <h1>{tr('prayers.detail.notFoundTitle')}</h1>
+          <p>{tr('prayers.detail.notFoundDescription')}</p>
           <Link className={styles.primaryLink} to="/pray">
-            Browse prayers
+            {tr('prayers.detail.browsePrayers')}
           </Link>
         </div>
       </PageSection>
@@ -55,27 +59,27 @@ export function PrayerDetailPage() {
   }
 
   const summaries = [
-    prayer.summary.english.trim() ? { label: 'English', text: prayer.summary.english } : null,
-    prayer.summary.amharic.trim() ? { label: 'Amharic', text: prayer.summary.amharic } : null,
+    prayer.summary.english.trim() ? { label: tr('prayers.languages.english'), text: prayer.summary.english } : null,
+    prayer.summary.amharic.trim() ? { label: tr('prayers.languages.amharic'), text: prayer.summary.amharic } : null,
   ].filter(Boolean) as { label: string; text: string }[]
   const embedUrl = youtubeEmbedUrl(prayer.youtubeId, prayer.youtubeUrl)
 
   return (
     <PageSection variant="tint">
       <article className={styles.shell}>
-        <nav className={styles.topNav} aria-label="Prayer navigation">
+        <nav className={styles.topNav} aria-label={tr('prayers.navigation.aria')}>
           <Link className={styles.backLink} to="/pray">
-            Back to Prayer collections
+            {tr('prayers.navigation.backToCollections')}
           </Link>
           <Link className={styles.backLink} to={`/pray/${prayer.collectionSlug}`}>
-            Back to {prayer.collection}
+            {tr('prayers.navigation.backToCollection', { collection: prayer.collection })}
           </Link>
           <button className={styles.shareBtn} type="button" onClick={copyLink}>
-            Share
+            {tr('prayers.detail.share')}
           </button>
           {copied ? (
             <span className={styles.copied} role="status">
-              Link copied
+              {tr('prayers.detail.linkCopied')}
             </span>
           ) : null}
         </nav>
@@ -94,23 +98,23 @@ export function PrayerDetailPage() {
         </header>
 
         {summaries.length > 0 ? (
-          <section className={styles.summary} aria-label="Prayer summary">
+          <section className={styles.summary} aria-label={tr('prayers.detail.summaryAria')}>
             {summaries.map((summary) => (
               <div key={summary.label} className={styles.summaryBlock}>
                 <h2>{summary.label}</h2>
-                <p lang={summary.label === 'Amharic' ? 'am' : undefined}>{summary.text}</p>
+                <p lang={summary.label === tr('prayers.languages.amharic') ? 'am' : undefined}>{summary.text}</p>
               </div>
             ))}
           </section>
         ) : null}
 
         {(embedUrl || prayer.youtubeUrl) ? (
-          <section className={styles.video} aria-label="Prayer video">
+          <section className={styles.video} aria-label={tr('prayers.detail.videoAria')}>
             <div className={styles.videoHead}>
-              <h2>Watch / Listen</h2>
+              <h2>{tr('prayers.detail.watchListen')}</h2>
               {prayer.youtubeUrl ? (
                 <a href={prayer.youtubeUrl} target="_blank" rel="noreferrer">
-                  Watch / Listen on YouTube
+                  {tr('prayers.detail.watchListenOnYoutube')}
                 </a>
               ) : null}
             </div>
@@ -127,23 +131,23 @@ export function PrayerDetailPage() {
           </section>
         ) : null}
 
-        <section className={styles.reader} aria-label="Prayer text">
+        <section className={styles.reader} aria-label={tr('prayers.detail.textAria')}>
           <PrayerTextTabs text={prayer.text} />
         </section>
 
         {(prayer.source.bookTitle || prayer.source.fullTextLink || prayer.source.audioUrl) ? (
           <footer className={styles.source}>
-            <h2>Source</h2>
+            <h2>{tr('prayers.detail.sourceTitle')}</h2>
             {prayer.source.bookTitle ? <p>{prayer.source.bookTitle}</p> : null}
             <div className={styles.sourceLinks}>
               {prayer.source.fullTextLink ? (
                 <a href={prayer.source.fullTextLink} target="_blank" rel="noreferrer">
-                  Full text
+                  {tr('prayers.detail.fullText')}
                 </a>
               ) : null}
               {prayer.source.audioUrl ? (
                 <a href={prayer.source.audioUrl} target="_blank" rel="noreferrer">
-                  Audio
+                  {tr('prayers.detail.audio')}
                 </a>
               ) : null}
             </div>

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { PageSection } from '../ui/PageSection'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useTranslation } from '../../i18n'
 import type { PrayerMediaEntry } from '../../lib/prayers/mediaPrayerEntries'
 import { PrayerMediaPlayer } from './PrayerMediaPlayer'
 import { scrollTargetIntoView } from '../../lib/scrollUtils'
@@ -31,6 +32,7 @@ export function PrayerMediaDetailPage({
   afterMedia,
 }: Props) {
   const t = useUiLabel()
+  const tr = useTranslation()
 
   const handleSectionClick = (sectionId: string) => {
     scrollTargetIntoView(sectionId, { smooth: false })
@@ -38,7 +40,7 @@ export function PrayerMediaDetailPage({
 
   return (
     <PageSection>
-      <nav className={styles.nav} aria-label="Breadcrumb">
+      <nav className={styles.nav} aria-label={tr('prayers.navigation.breadcrumb')}>
         <Link className={styles.crumb} to="/prayers">
           {t('navPrayers')}
         </Link>
@@ -51,7 +53,7 @@ export function PrayerMediaDetailPage({
       <section className={styles.headCard}>
         <div className={styles.headTitles}>
           <div>
-            <p className={styles.pageEyebrow}>Prayer media</p>
+            <p className={styles.pageEyebrow}>{tr('prayers.media.title')}</p>
             <span className={styles.badge}>{prayer.badge}</span>
             <h1 className={styles.pageTitle} lang="am">
               {prayer.title}
@@ -66,12 +68,12 @@ export function PrayerMediaDetailPage({
               target="_blank"
               rel="noreferrer"
             >
-              Open on YouTube
+              {tr('prayers.media.openOnYoutube')}
             </a>
           </div>
         </div>
 
-        <div className={styles.sectionChips} aria-label="Prayer page sections">
+        <div className={styles.sectionChips} aria-label={tr('prayers.media.sectionsAria')}>
           <a
             href="#prayer-media"
             className={styles.sectionChip}
@@ -80,7 +82,7 @@ export function PrayerMediaDetailPage({
               handleSectionClick('#prayer-media')
             }}
           >
-            Listen
+            {t('listen')}
           </a>
           <a
             href="#prayer-reading"
@@ -90,7 +92,7 @@ export function PrayerMediaDetailPage({
               handleSectionClick('#prayer-reading')
             }}
           >
-            Read
+            {t('read')}
           </a>
           <a
             href="#prayer-notes"
@@ -100,7 +102,7 @@ export function PrayerMediaDetailPage({
               handleSectionClick('#prayer-notes')
             }}
           >
-            Notes
+            {t('prayerTabNotes')}
           </a>
           {relatedPrayers.length > 0 ? (
             <a
@@ -111,7 +113,7 @@ export function PrayerMediaDetailPage({
                 handleSectionClick('#prayer-related')
               }}
             >
-              Related
+              {tr('prayers.media.related')}
             </a>
           ) : null}
         </div>
@@ -144,20 +146,20 @@ export function PrayerMediaDetailPage({
           </section>
 
           <details className={styles.sideCard}>
-            <summary className={styles.summaryToggle}>Lyrics placeholder</summary>
+            <summary className={styles.summaryToggle}>{tr('prayers.media.lyricsPlaceholder')}</summary>
             <div className={styles.summaryBody}>
               <p className={styles.sideBody} lang="am">
                 ግጥም በቅርብ ይጨመራል።
               </p>
               <p className={styles.sideBody}>
-                Lyrics will be added soon. For now, this page includes the zema video only.
+                {tr('prayers.media.lyricsPlaceholderDescription')}
               </p>
             </div>
           </details>
 
           {relatedPrayers.length > 0 ? (
             <section className={styles.sideCard} id="prayer-related">
-              <h2 className={styles.sideTitle}>Related prayers</h2>
+              <h2 className={styles.sideTitle}>{tr('prayers.media.relatedPrayers')}</h2>
               <div className={styles.relatedList}>
                 {relatedPrayers.map((item) => (
                   <Link key={item.to} className={styles.relatedCard} to={item.to}>

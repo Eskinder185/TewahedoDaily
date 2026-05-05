@@ -1,14 +1,17 @@
+import { useTranslation } from '../../i18n'
 import styles from './MemorizationTipsCallout.module.css'
 
 export function MemorizationTipsCallout() {
+  const t = useTranslation()
+
   return (
-    <aside className={styles.root} aria-label="Memorization tips">
-      <p className={styles.title}>Memorization tips</p>
+    <aside className={styles.root} aria-label={t('mezmurPractice.memory.tipsAria')}>
+      <p className={styles.title}>{t('mezmurPractice.memory.tipsTitle')}</p>
       <ul className={styles.list}>
-        <li>Read one line aloud several times before adding the next.</li>
-        <li>Listen at slower speed, then speak with the recording.</li>
-        <li>Use first-letter hints only as a bridge — return to full words often.</li>
-        <li>In church, follow the cantor and keep eyes lifted toward the holy icons when appropriate.</li>
+        <li>{t('mezmurPractice.memory.tip1')}</li>
+        <li>{t('mezmurPractice.memory.tip2')}</li>
+        <li>{t('mezmurPractice.memory.tip3')}</li>
+        <li>{t('mezmurPractice.memory.tip4')}</li>
       </ul>
     </aside>
   )

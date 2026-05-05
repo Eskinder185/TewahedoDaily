@@ -6,6 +6,7 @@ import {
   type EotcCalendarDatasetRow,
 } from '../../lib/eotcCalendar'
 import { type UiLabelKey, useUiLabel } from '../../lib/i18n/uiLabels'
+import { useTranslation } from '../../i18n'
 import { ChurchDayDetailBody } from './ChurchDayDetailBody'
 import { dayObservanceChips } from './churchDayChips'
 import styles from './SelectedChurchDayPanel.module.css'
@@ -38,6 +39,7 @@ export function SelectedChurchDayPanel({
   calendarPageLayout = false,
 }: Props) {
   const t = useUiLabel()
+  const tr = useTranslation()
   const snapshot = useMemo(() => buildChurchDaySnapshot(date), [date])
   const [isPrimaryStoryExpanded, setIsPrimaryStoryExpanded] = useState(false)
 
@@ -155,8 +157,8 @@ export function SelectedChurchDayPanel({
               {calendarPageLayout
                 ? t('calendarPanelCommemorationEyebrow')
                 : isToday
-                  ? 'This day'
-                  : 'Selected day'}
+                  ? tr('calendar.today.thisDay')
+                  : tr('calendar.today.selectedDay')}
             </p>
             {calendarPageLayout && primaryEotc?.entry.display.calendarBadge?.trim() ? (
               <p className={styles.primaryBadgeRow}>
@@ -193,7 +195,7 @@ export function SelectedChurchDayPanel({
             ) : null}
             {primaryTypeLabel ? (
               <p className={styles.primaryStoryType}>
-                <span className={styles.primaryStoryK}>Type</span>
+                <span className={styles.primaryStoryK}>{tr('calendar.today.type')}</span>
                 <span className={styles.primaryStoryTypeValue}>{primaryTypeLabel}</span>
               </p>
             ) : null}
@@ -222,7 +224,7 @@ export function SelectedChurchDayPanel({
                 className={styles.primaryStoryToggle}
                 onClick={() => setIsPrimaryStoryExpanded((prev) => !prev)}
               >
-                {isPrimaryStoryExpanded ? 'See less' : 'See more'}
+                {isPrimaryStoryExpanded ? tr('calendar.today.seeLess') : tr('calendar.today.seeMore')}
               </button>
             )}
           </div>
@@ -337,19 +339,19 @@ export function SelectedChurchDayPanel({
         <section className={styles.quickContext} aria-label={t('calendarQuickContextAria')}>
           {season.summary && season.summary !== 'Church year' ? (
             <p className={styles.contextLine}>
-              <span className={styles.quickLabel}>Season</span>
+              <span className={styles.quickLabel}>{tr('calendar.upcoming.labelSeason')}</span>
               {season.summary}
             </p>
           ) : null}
           {fastingSummary ? (
             <p className={styles.contextLine}>
-              <span className={styles.quickLabel}>Fasting</span>
+              <span className={styles.quickLabel}>{tr('calendar.today.fasting')}</span>
               {fastingSummary}
             </p>
           ) : null}
           {movableSummary ? (
             <p className={styles.contextLine}>
-              <span className={styles.quickLabel}>Paschal cycle</span>
+              <span className={styles.quickLabel}>{tr('calendar.filters.paschal')}</span>
               {movableSummary}
             </p>
           ) : null}

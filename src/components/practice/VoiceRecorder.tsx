@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { useTranslation } from '../../i18n'
 import styles from './VoiceRecorder.module.css'
 
 export type RecordingMode = 'with-lyrics' | 'from-memory'
@@ -17,22 +18,23 @@ interface RecordingState {
   audioUrl: string | null
 }
 
-export function VoiceRecorder({ 
-  mode, 
-  onModeChange, 
+export function VoiceRecorder({
+  mode,
+  onModeChange,
   disabled = false,
-  className 
+  className,
 }: VoiceRecorderProps) {
+  const t = useTranslation()
   const [state, setState] = useState<RecordingState>({
     status: 'idle',
     duration: 0,
     audioBlob: null,
-    audioUrl: null
+    audioUrl: null,
   })
-  
+
   const [countdown, setCountdown] = useState<number | null>(null)
   const [isMediaRecorderSupported, setIsMediaRecorderSupported] = useState(true)
-  
+
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const timerRef = useRef<number | null>(null)
@@ -40,8 +42,9 @@ export function VoiceRecorder({
   const chunksRef = useRef<Blob[]>([])
 
   useEffect(() => {
-    // Check MediaRecorder support
-    setIsMediaRecorderSupported(typeof MediaRecorder !== 'undefined' && !!navigator.mediaDevices?.getUserMedia)
+    setIsMediaRecorderSupported(
+      typeof MediaRecorder !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia),
+    )
   }, [])
 
   const cleanup = useCallback(() => {
@@ -58,16 +61,68 @@ export function VoiceRecorder({
     }
   }, [])
 
-  useEffect(() => {
-    return cleanup
-  }, [cleanup])
+  useEffect(() => cleanup, [cleanup])
+
+  const startActualRecording = useCallback(async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        },
+      })
+
+      chunksRef.current = []
+
+      const mediaRecorder = new MediaRecorder(stream, {
+        mimeType: MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
+          ? 'audio/webm;codecs=opus'
+          : 'audio/webm',
+      })
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) chunksRef.current.push(event.data)
+      }
+
+      mediaRecorder.onstop = () => {
+        stream.getTracks().forEach((track) => track.stop())
+        const audioBlob = new Blob(chunksRef.current, { type: mediaRecorder.mimeType })
+        const audioUrl = URL.createObjectURL(audioBlob)
+
+        setState((prev) => ({
+          ...prev,
+          status: 'recorded',
+          audioBlob,
+          audioUrl,
+        }))
+
+        if (timerRef.current) {
+          clearInterval(timerRef.current)
+          timerRef.current = null
+        }
+      }
+
+      mediaRecorderRef.current = mediaRecorder
+      mediaRecorder.start(100)
+
+      setState((prev) => ({ ...prev, status: 'recording', duration: 0 }))
+
+      timerRef.current = setInterval(() => {
+        setState((prev) => ({ ...prev, duration: prev.duration + 0.1 }))
+      }, 100)
+    } catch (error) {
+      console.error('Error starting recording:', error)
+      setState((prev) => ({ ...prev, status: 'idle' }))
+    }
+  }, [])
 
   const startCountdown = useCallback(() => {
     setCountdown(3)
     let count = 3
-    
+
     countdownRef.current = setInterval(() => {
-      count--
+      count -= 1
       if (count > 0) {
         setCountdown(count)
       } else {
@@ -79,81 +134,20 @@ export function VoiceRecorder({
         startActualRecording()
       }
     }, 1000)
-  }, [])
-
-  const startActualRecording = useCallback(async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ 
-        audio: {
-          echoCancellation: true,
-          noiseSuppression: true,
-          autoGainControl: true
-        }
-      })
-
-      chunksRef.current = []
-      
-      const mediaRecorder = new MediaRecorder(stream, {
-        mimeType: MediaRecorder.isTypeSupported('audio/webm;codecs=opus') 
-          ? 'audio/webm;codecs=opus' 
-          : 'audio/webm'
-      })
-
-      mediaRecorder.ondataavailable = (event) => {
-        if (event.data.size > 0) {
-          chunksRef.current.push(event.data)
-        }
-      }
-
-      mediaRecorder.onstop = () => {
-        stream.getTracks().forEach(track => track.stop())
-        
-        const audioBlob = new Blob(chunksRef.current, { type: mediaRecorder.mimeType })
-        const audioUrl = URL.createObjectURL(audioBlob)
-        
-        setState(prev => ({
-          ...prev,
-          status: 'recorded',
-          audioBlob,
-          audioUrl
-        }))
-        
-        if (timerRef.current) {
-          clearInterval(timerRef.current)
-          timerRef.current = null
-        }
-      }
-
-      mediaRecorderRef.current = mediaRecorder
-      mediaRecorder.start(100) // Collect data every 100ms
-      
-      setState(prev => ({ ...prev, status: 'recording', duration: 0 }))
-      
-      timerRef.current = setInterval(() => {
-        setState(prev => ({ ...prev, duration: prev.duration + 0.1 }))
-      }, 100)
-
-    } catch (error) {
-      console.error('Error starting recording:', error)
-      setState(prev => ({ ...prev, status: 'idle' }))
-    }
-  }, [])
+  }, [startActualRecording])
 
   const startRecording = useCallback(() => {
     if (disabled || !isMediaRecorderSupported) return
-    
-    // Clear previous recording
-    if (state.audioUrl) {
-      URL.revokeObjectURL(state.audioUrl)
-    }
-    
-    setState(prev => ({
+
+    if (state.audioUrl) URL.revokeObjectURL(state.audioUrl)
+
+    setState((prev) => ({
       ...prev,
       audioBlob: null,
       audioUrl: null,
-      duration: 0
+      duration: 0,
     }))
-    
+
     startCountdown()
   }, [disabled, isMediaRecorderSupported, state.audioUrl, startCountdown])
 
@@ -161,25 +155,25 @@ export function VoiceRecorder({
     if (mediaRecorderRef.current?.state === 'recording') {
       mediaRecorderRef.current.stop()
     }
-    
+
     if (countdownRef.current) {
       clearTimeout(countdownRef.current)
       countdownRef.current = null
       setCountdown(null)
-      setState(prev => ({ ...prev, status: 'idle' }))
+      setState((prev) => ({ ...prev, status: 'idle' }))
     }
   }, [])
 
   const playRecording = useCallback(() => {
     if (!state.audioUrl) return
-    
+
     if (audioRef.current) {
       audioRef.current.src = state.audioUrl
       audioRef.current.play()
-      setState(prev => ({ ...prev, status: 'playing' }))
-      
+      setState((prev) => ({ ...prev, status: 'playing' }))
+
       audioRef.current.onended = () => {
-        setState(prev => ({ ...prev, status: 'recorded' }))
+        setState((prev) => ({ ...prev, status: 'recorded' }))
       }
     }
   }, [state.audioUrl])
@@ -189,17 +183,15 @@ export function VoiceRecorder({
       audioRef.current.pause()
       audioRef.current.currentTime = 0
     }
-    
-    if (state.audioUrl) {
-      URL.revokeObjectURL(state.audioUrl)
-    }
-    
-    setState(prev => ({
+
+    if (state.audioUrl) URL.revokeObjectURL(state.audioUrl)
+
+    setState((prev) => ({
       ...prev,
       status: 'idle',
       duration: 0,
       audioBlob: null,
-      audioUrl: null
+      audioUrl: null,
     }))
   }, [state.audioUrl])
 
@@ -210,14 +202,19 @@ export function VoiceRecorder({
   }
 
   const getStatusText = (): string => {
-    if (countdown) return `Recording in ${countdown}...`
-    
+    if (countdown) return t('mezmurPractice.recording.countdown', { count: countdown })
+
     switch (state.status) {
-      case 'idle': return 'Ready to record'
-      case 'recording': return `Recording... ${formatTime(state.duration)}`
-      case 'recorded': return `Recorded ${formatTime(state.duration)}`
-      case 'playing': return 'Playing...'
-      default: return 'Ready'
+      case 'idle':
+        return t('mezmurPractice.recording.ready')
+      case 'recording':
+        return t('mezmurPractice.recording.recording', { time: formatTime(state.duration) })
+      case 'recorded':
+        return t('mezmurPractice.recording.recorded', { time: formatTime(state.duration) })
+      case 'playing':
+        return t('mezmurPractice.recording.playing')
+      default:
+        return t('mezmurPractice.recording.readyShort')
     }
   }
 
@@ -225,7 +222,7 @@ export function VoiceRecorder({
     return (
       <div className={`${styles.card} ${className || ''}`}>
         <p className={styles.unsupported}>
-          Voice recording is not supported in this browser.
+          {t('mezmurPractice.recording.unsupported')}
         </p>
       </div>
     )
@@ -234,9 +231,9 @@ export function VoiceRecorder({
   return (
     <div className={`${styles.card} ${className || ''}`}>
       <audio ref={audioRef} style={{ display: 'none' }} />
-      
+
       <div className={styles.header}>
-        <h3 className={styles.title}>Practice Recording</h3>
+        <h3 className={styles.title}>{t('mezmurPractice.recording.title')}</h3>
         <div className={styles.modeSelector}>
           <button
             type="button"
@@ -244,7 +241,7 @@ export function VoiceRecorder({
             onClick={() => onModeChange('with-lyrics')}
             disabled={disabled || state.status === 'recording' || countdown !== null}
           >
-            Practice with Lyrics
+            {t('mezmurPractice.recording.withLyrics')}
           </button>
           <button
             type="button"
@@ -252,7 +249,7 @@ export function VoiceRecorder({
             onClick={() => onModeChange('from-memory')}
             disabled={disabled || state.status === 'recording' || countdown !== null}
           >
-            Practice from Memory
+            {t('mezmurPractice.recording.fromMemory')}
           </button>
         </div>
       </div>
@@ -263,7 +260,7 @@ export function VoiceRecorder({
           {!countdown && (
             <span className={styles.statusIcon}>
               {state.status === 'idle' && '●'}
-              {state.status === 'recording' && '🔴'}
+              {state.status === 'recording' && 'REC'}
               {state.status === 'recorded' && '✓'}
               {state.status === 'playing' && '▶'}
             </span>
@@ -280,7 +277,7 @@ export function VoiceRecorder({
             onClick={startRecording}
             disabled={disabled}
           >
-            Start Recording
+            {t('mezmurPractice.recording.start')}
           </button>
         )}
 
@@ -290,7 +287,7 @@ export function VoiceRecorder({
             className={`${styles.controlButton} ${styles.stopButton}`}
             onClick={stopRecording}
           >
-            Stop Recording
+            {t('mezmurPractice.recording.stop')}
           </button>
         )}
 
@@ -302,7 +299,7 @@ export function VoiceRecorder({
               onClick={playRecording}
               disabled={disabled}
             >
-              Play Recording
+              {t('mezmurPractice.recording.play')}
             </button>
             <button
               type="button"
@@ -310,7 +307,7 @@ export function VoiceRecorder({
               onClick={deleteRecording}
               disabled={disabled}
             >
-              Delete
+              {t('mezmurPractice.recording.delete')}
             </button>
             <button
               type="button"
@@ -318,7 +315,7 @@ export function VoiceRecorder({
               onClick={startRecording}
               disabled={disabled}
             >
-              Re-record
+              {t('mezmurPractice.recording.rerecord')}
             </button>
           </div>
         )}
@@ -330,10 +327,10 @@ export function VoiceRecorder({
             onClick={() => {
               audioRef.current?.pause()
               if (audioRef.current) audioRef.current.currentTime = 0
-              setState(prev => ({ ...prev, status: 'recorded' }))
+              setState((prev) => ({ ...prev, status: 'recorded' }))
             }}
           >
-            Stop Playback
+            {t('mezmurPractice.recording.stopPlayback')}
           </button>
         )}
       </div>

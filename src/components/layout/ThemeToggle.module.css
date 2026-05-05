@@ -1,72 +1,40 @@
-.group {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  padding: 4px;
-  border-radius: var(--radius-pill);
-  border: 1px solid color-mix(in srgb, var(--color-border-strong) 75%, var(--color-gold-line));
-  background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-bg-muted));
-  box-shadow:
-    0 1px 0 var(--color-gold-faint),
-    var(--shadow-card);
-  flex-shrink: 0;
-}
-
-.seg {
-  margin: 0;
-  padding: 0;
-  width: 2.875rem;
-  min-width: 2.875rem;
-  min-height: var(--tap-min);
-  border: none;
-  border-radius: var(--radius-pill);
-  background: transparent;
-  color: var(--color-text-muted);
-  cursor: pointer;
+.toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, var(--color-gold-line));
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-bg-muted));
+  color: var(--color-text);
+  box-shadow:
+    0 1px 0 var(--color-gold-faint),
+    var(--shadow-card);
+  cursor: pointer;
+  flex-shrink: 0;
   transition:
     background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
     color var(--duration-fast) var(--ease-out),
-    box-shadow var(--duration-fast) var(--ease-out);
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
 }
 
-.seg:hover {
-  color: var(--color-navy);
-  background: color-mix(in srgb, var(--color-gold-soft) 55%, transparent);
+.toggle:hover {
+  color: var(--color-heading);
+  border-color: var(--color-border-gold);
+  background: color-mix(in srgb, var(--color-bg-elevated) 82%, var(--color-gold-soft));
 }
 
-.seg:focus-visible {
+.toggle:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
-  z-index: 1;
 }
 
-.seg:active {
-  transform: scale(0.96);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .seg:active {
-    transform: none;
-  }
-}
-
-.segOn {
-  color: var(--color-navy-deep);
-  background: linear-gradient(
-    160deg,
-    var(--color-gold-soft) 0%,
-    color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-gold-bright)) 100%
-  );
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, white 55%, transparent),
-    0 1px 3px rgba(7, 14, 26, 0.12);
-}
-
-.segOn:hover {
-  color: var(--color-navy-deep);
+.toggle:active {
+  transform: scale(0.97);
 }
 
 .icon {
@@ -75,45 +43,40 @@
   flex-shrink: 0;
 }
 
-/* Manual dark theme */
-[data-theme='dark'] .segOn {
+.label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  line-height: 1;
+}
+
+[data-theme='night'] .toggle {
+  background: color-mix(in srgb, var(--color-bg-elevated) 78%, var(--color-navy) 22%);
   color: var(--color-text);
-  background: color-mix(in srgb, var(--color-navy) 42%, var(--color-bg-elevated));
+  border-color: var(--color-border-strong);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    0 1px 3px rgba(0, 0, 0, 0.35);
+    0 1px 4px rgba(0, 0, 0, 0.34);
 }
 
-[data-theme='dark'] .seg:hover {
+[data-theme='night'] .toggle:hover {
   color: var(--color-gold-bright);
+  background: color-mix(in srgb, var(--color-bg-elevated) 68%, var(--color-navy) 32%);
 }
 
-/* System dark preference when data-theme unset */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) .segOn {
-    color: var(--color-text);
-    background: color-mix(in srgb, var(--color-navy) 42%, var(--color-bg-elevated));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 1px 3px rgba(0, 0, 0, 0.35);
-  }
-
-  :root:not([data-theme]) .seg:hover {
-    color: var(--color-gold-bright);
-  }
-}
-
-@media (min-width: 768px) {
-  .group {
-    gap: 2px;
-    padding: 3px;
-  }
-
-  .seg {
-    /* Keep accessibility standard - don't reduce touch targets */
-    min-height: var(--tap-min);
-    height: auto;
+@media (max-width: 767.98px) {
+  .toggle {
     width: var(--tap-min);
     min-width: var(--tap-min);
+    padding: 0;
+  }
+
+  .label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle:active {
+    transform: none;
   }
 }

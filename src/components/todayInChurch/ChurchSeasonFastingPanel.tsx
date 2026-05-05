@@ -1,4 +1,5 @@
 import { useMemo, type ReactNode } from 'react'
+import { useTranslation } from '../../i18n'
 import type { FastingContext, LiturgicalSeason } from '../../lib/churchCalendar'
 import { TabPanel } from '../ui/TabPanel'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
@@ -15,6 +16,7 @@ type Props = {
 
 export function ChurchSeasonFastingPanel({ season, fasting }: Props) {
   const t = useUiLabel()
+  const tt = useTranslation()
   const seasonImage = resolveSeasonSupportImage(season.id, fasting.seasonalFast)
 
   const sm = season.meaning.trim()
@@ -51,7 +53,7 @@ export function ChurchSeasonFastingPanel({ season, fasting }: Props) {
             decoding="async"
           />
         </figure>
-        <h4 className={styles.panelTitle}>Liturgical season</h4>
+        <h4 className={styles.panelTitle}>{tt('seasonPanel.liturgicalSeason')}</h4>
         <p className={styles.panelHeadline}>{season.title}</p>
         {season.transliterationTitle ? (
           <p className={styles.translit}>{season.transliterationTitle}</p>
@@ -79,17 +81,17 @@ export function ChurchSeasonFastingPanel({ season, fasting }: Props) {
             decoding="async"
           />
         </figure>
-        <h4 className={styles.panelTitle}>Fasting &amp; discipline</h4>
+        <h4 className={styles.panelTitle}>{tt('seasonPanel.fastingDiscipline')}</h4>
         {fasting.weeklyFast ? (
           <p className={styles.fastLine}>{fasting.weeklyFast}</p>
         ) : (
-          <p className={styles.panelMuted}>No weekly fast today (Wed/Fri).</p>
+          <p className={styles.panelMuted}>{tt('seasonPanel.noWeeklyFast')}</p>
         )}
         {fasting.seasonalFast ? (
           <p className={styles.seasonFast}>{fasting.seasonalFast}</p>
         ) : (
           <p className={styles.panelMutedSmall}>
-            No major seasonal fast in this mock window — confirm yearly with your parish.
+            {tt('seasonPanel.noSeasonalFast')}
           </p>
         )}
       </article>
