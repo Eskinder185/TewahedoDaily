@@ -300,37 +300,27 @@
   color: var(--color-text-muted);
 }
 
-.sourceBlock {
-  display: grid;
-  gap: var(--space-2);
-  padding-top: var(--space-2);
-  border-top: 1px solid color-mix(in srgb, var(--color-border-card) 70%, transparent);
-}
-
-.sourceText {
-  margin: 0;
-  font-size: var(--text-sm);
-  line-height: var(--leading-relaxed);
-  color: var(--color-text-muted);
-}
-
-.sourceLink {
+.synaxariumButton {
   display: inline-flex;
   align-items: center;
-  width: fit-content;
-  min-height: var(--tap-min);
-  padding: 0.35rem 0.8rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border-gold);
-  background: color-mix(in srgb, var(--color-gold-faint) 72%, var(--color-bg-elevated));
-  color: var(--color-heading);
-  font-size: var(--text-sm);
-  font-weight: 700;
+  justify-content: center;
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
   text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  border: 1px solid rgba(180, 145, 60, 0.35);
+  background: linear-gradient(180deg, rgba(214, 184, 96, 0.18), rgba(214, 184, 96, 0.1));
+  color: #5c4614;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
-.sourceLink:hover {
-  background: color-mix(in srgb, var(--color-gold-soft) 68%, var(--color-bg-elevated));
+.synaxariumButton:hover {
+  transform: translateY(-1px);
 }
 
 .related {
