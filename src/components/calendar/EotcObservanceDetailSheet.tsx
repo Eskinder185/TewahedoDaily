@@ -233,6 +233,18 @@ export function EotcObservanceDetailSheet({
               <ExpandedContentSections content={expandedContent} />
             </div>
           ) : null}
+          <div className={styles.sourceBlock}>
+            <h3 className={styles.h3}>Read the full Synaxarium</h3>
+            <p className={styles.sourceText}>Open the complete source text for deeper reading.</p>
+            <a
+              href="/docs/ethiopian-synaxarium.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.sourceLink}
+            >
+              Open full PDF
+            </a>
+          </div>
           {e.observance.commonPractices.length > 0 ? (
             <div className={styles.block}>
               <h3 className={styles.h3}>{t('calendarGalleryDetailPractices')}</h3>

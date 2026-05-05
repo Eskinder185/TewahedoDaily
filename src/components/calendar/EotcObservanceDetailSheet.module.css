@@ -300,6 +300,39 @@
   color: var(--color-text-muted);
 }
 
+.sourceBlock {
+  display: grid;
+  gap: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px solid color-mix(in srgb, var(--color-border-card) 70%, transparent);
+}
+
+.sourceText {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+.sourceLink {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: var(--tap-min);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-gold);
+  background: color-mix(in srgb, var(--color-gold-faint) 72%, var(--color-bg-elevated));
+  color: var(--color-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sourceLink:hover {
+  background: color-mix(in srgb, var(--color-gold-soft) 68%, var(--color-bg-elevated));
+}
+
 .related {
   list-style: none;
   margin: 0;
