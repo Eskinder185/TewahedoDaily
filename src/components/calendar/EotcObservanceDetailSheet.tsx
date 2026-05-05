@@ -43,7 +43,6 @@ function initials(row: EotcCalendarDatasetRow): string {
 }
 
 function ExpandedContentSections({ content }: { content: EotcExpandedContent }) {
-  const t = useUiLabel()
   const source = content.source
   const sourcePage =
     typeof source?.sourcePage === 'number'
@@ -57,13 +56,13 @@ function ExpandedContentSections({ content }: { content: EotcExpandedContent }) 
     <div className={styles.expandedContent}>
       {content.whyCelebrated?.trim() ? (
         <section className={styles.expandedBlock}>
-          <h3 className={styles.h3}>{t('calendar.detail.whyCelebrated')}</h3>
+          <h3 className={styles.h3}>Why it is celebrated</h3>
           <p className={styles.p}>{content.whyCelebrated.trim()}</p>
         </section>
       ) : null}
       {content.whatHappened?.length ? (
         <section className={styles.expandedBlock}>
-          <h3 className={styles.h3}>{t('calendar.detail.whatHappened')}</h3>
+          <h3 className={styles.h3}>What happened</h3>
           <ul className={styles.ul}>
             {content.whatHappened.map((line, index) => (
               <li key={`${line}-${index}`}>{line}</li>
@@ -73,16 +72,16 @@ function ExpandedContentSections({ content }: { content: EotcExpandedContent }) 
       ) : null}
       {content.significance?.trim() ? (
         <section className={styles.expandedBlock}>
-          <h3 className={styles.h3}>{t('calendar.detail.whyMatters')}</h3>
+          <h3 className={styles.h3}>Why it matters</h3>
           <p className={styles.p}>{content.significance.trim()}</p>
         </section>
       ) : null}
       {source?.title ? (
         <p className={styles.sourceLine}>
-          {t('calendar.detail.source', { title: source.title })}
+          {`Source: ${source.title}`}
           {source.entryLabel ? ` (${source.entryLabel})` : ''}
           {provenanceNote ? ` - ${provenanceNote}` : ''}
-          {sourcePage ? ` - ${t('calendar.detail.originalReference', { reference: `PDF page ${sourcePage}` })}` : ''}
+          {sourcePage ? ` - ${`Original reference: PDF page ${sourcePage}`}` : ''}
         </p>
       ) : null}
     </div>
@@ -206,7 +205,7 @@ export function EotcObservanceDetailSheet({
             <div className={styles.meta}>
               <span className={styles.chip}>{stateLabel}</span>
               {e.category.majorHoliday ? (
-                <span className={styles.chipMajor}>{t('calendar.upcoming.labelGreatFeast')}</span>
+                <span className={styles.chipMajor}>Great Feast</span>
               ) : null}
               <span className={styles.chipMuted}>{dateHint}</span>
             </div>
