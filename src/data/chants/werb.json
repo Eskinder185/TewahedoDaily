@@ -521,7 +521,7 @@
   },
   {
     "type": "chant",
-    "form": "mezmur",
+    "form": "werb",
     "id": "bahiranini-yibe-amarya",
     "title": "ባሕራንኒ ይቤ",
     "transliterationTitle": "Baḥiranini Yibe",
@@ -529,7 +529,7 @@
     "transliterationLyrics": "Amarya\n\nBaḥiranini yibe zenegede baḥire (2x)\n\nRiiko Lemikaeli wesiiniku teyikoto siluniku (2x)",
     "youtubeUrl": "https://youtu.be/_mfJ4ltt80A",
     "category": {
-      "primary": "angel",
+      "primary": "general",
       "majorHoliday": [],
       "saints": [
         "saint-michael"
