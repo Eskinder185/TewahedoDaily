@@ -45,6 +45,14 @@ export function EotcObservanceLookup() {
       <summary className={styles.summary}>{t('calendarEotcLookupSummary')}</summary>
       <div className={styles.body}>
         <p className={styles.hint}>{t('calendarEotcLookupHint')}</p>
+        <a
+          href="/docs/ethiopian-synaxarium.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.readMoreButton}
+        >
+          Read More in Synaxarium PDF
+        </a>
         <label className={styles.srOnly} htmlFor="eotc-calendar-search-input">
           {t('calendarEotcLookupPlaceholder')}
         </label>
