@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "slug": "abune-teklehaymanot",
+    "nameAm": "??? ????????",
+    "nameEn": "Abune Tekle Haymanot",
+    "displayOrder": 1,
+    "description": "Hymns honoring Abune Tekle Haymanot and his intercession.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 2,
+    "slug": "qedus-urael",
+    "nameAm": "??? ????",
+    "nameEn": "Saint Uriel",
+    "displayOrder": 2,
+    "description": "Hymns honoring Saint Uriel the archangel.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 3,
+    "slug": "qedus-yared",
+    "nameAm": "??? ???",
+    "nameEn": "Saint Yared",
+    "displayOrder": 3,
+    "description": "Hymns connected to Saint Yared, sacred chant, and zema.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 4,
+    "slug": "qedus-yohannes-metmik",
+    "nameAm": "??? ???? ????",
+    "nameEn": "Saint John the Baptist",
+    "displayOrder": 4,
+    "description": "Hymns honoring Saint John the Baptist, forerunner and preacher of repentance.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 5,
+    "slug": "qedus-gebriel",
+    "nameAm": "??? ?????",
+    "nameEn": "Saint Gabriel",
+    "displayOrder": 5,
+    "description": "Hymns honoring Saint Gabriel the archangel and his intercession.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 6,
+    "slug": "qedus-giorgis",
+    "nameAm": "??? ?????",
+    "nameEn": "Saint George",
+    "displayOrder": 6,
+    "description": "Hymns honoring Saint George the martyr.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 7,
+    "slug": "qedist-arsema",
+    "nameAm": "???? ????",
+    "nameEn": "Saint Arsema",
+    "displayOrder": 7,
+    "description": "Hymns honoring Saint Arsema the martyr.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 8,
+    "slug": "erget-le-maryam",
+    "nameAm": "??? ???? ?????",
+    "nameEn": "Feast of the Ascension of Mary",
+    "displayOrder": 8,
+    "description": "Hymns for the ascension and heavenly glory of Saint Mary.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 9,
+    "slug": "peraklitos",
+    "nameAm": "??? ??????",
+    "nameEn": "Feast of Paraclete",
+    "displayOrder": 9,
+    "description": "Hymns for Pentecost and the feast of the Paraclete.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 10,
+    "slug": "tinsea",
+    "nameAm": "????",
+    "nameEn": "Resurrection",
+    "displayOrder": 10,
+    "description": "Hymns proclaiming the Resurrection, Fasika, and paschal joy.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 11,
+    "slug": "english",
+    "nameAm": "English",
+    "nameEn": "English",
+    "displayOrder": 11,
+    "description": "English-language mezmur and chant entries.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 12,
+    "slug": "afaan-oromoo",
+    "nameAm": "Faaruu Afaan Oromoo",
+    "nameEn": "Afaan Oromoo Hymns",
+    "displayOrder": 12,
+    "description": "Afaan Oromoo Orthodox hymns and spiritual songs.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 13,
+    "slug": "general",
+    "nameAm": "General",
+    "nameEn": "General",
+    "displayOrder": 13,
+    "description": "General hymns that do not clearly match a more specific app category.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 14,
+    "slug": "hosanna",
+    "nameAm": "????",
+    "nameEn": "Hosanna",
+    "displayOrder": 14,
+    "description": "Hymns for Hosanna and Palm Sunday.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 15,
+    "slug": "lidet-le-maryam",
+    "nameAm": "??? ?????",
+    "nameEn": "Nativity of Mary",
+    "displayOrder": 15,
+    "description": "Hymns for the nativity of Saint Mary.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 16,
+    "slug": "lidet",
+    "nameAm": "???",
+    "nameEn": "Nativity",
+    "displayOrder": 16,
+    "description": "Hymns for the Nativity of Christ and the Christmas season.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 17,
+    "slug": "meskel",
+    "nameAm": "????",
+    "nameEn": "Meskel",
+    "displayOrder": 17,
+    "description": "Hymns about the Holy Cross, Meskel, and the finding of the Cross.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 18,
+    "slug": "misgana",
+    "nameAm": "????",
+    "nameEn": "Praise and Thanksgiving",
+    "displayOrder": 18,
+    "description": "Hymns centered on praise, thanksgiving, gratitude, and worship.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 19,
+    "slug": "silase-qedus",
+    "nameAm": "??? ???",
+    "nameEn": "Holy Trinity",
+    "displayOrder": 19,
+    "description": "Hymns praising the Holy Trinity.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 20,
+    "slug": "sirege",
+    "nameAm": "???? ???",
+    "nameEn": "Wedding Service",
+    "displayOrder": 20,
+    "description": "Hymns for wedding and matrimony services.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 21,
+    "slug": "tigrigna",
+    "nameAm": "?? ???? ????",
+    "nameEn": "Tigrinya Hymns",
+    "displayOrder": 21,
+    "description": "Tigrinya-language Orthodox hymns and spiritual songs.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 22,
+    "slug": "niseha",
+    "nameAm": "???",
+    "nameEn": "Repentance",
+    "displayOrder": 22,
+    "description": "Hymns of repentance, confession, mercy, and return to God.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 23,
+    "slug": "menfes-qedus",
+    "nameAm": "???? ??? ???? ???",
+    "nameEn": "Holy Spirit",
+    "displayOrder": 23,
+    "description": "Hymns invoking and welcoming the Holy Spirit.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 24,
+    "slug": "emebetachin",
+    "nameAm": "??????",
+    "nameEn": "Our Lady",
+    "displayOrder": 24,
+    "description": "Hymns honoring Saint Mary, the Theotokos, and her intercession.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 25,
+    "slug": "kidane-mihret",
+    "nameAm": "??? ????",
+    "nameEn": "Kidane Mihret",
+    "displayOrder": 25,
+    "description": "Hymns for Kidane Mihret, the covenant of mercy, and Marian intercession.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 26,
+    "slug": "wereboch",
+    "nameAm": "????",
+    "nameEn": "Werb Chants",
+    "displayOrder": 26,
+    "description": "Werb-form chants used in liturgical and feast settings.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 27,
+    "slug": "bete-kristian",
+    "nameAm": "?? ??????",
+    "nameEn": "Church",
+    "displayOrder": 27,
+    "description": "Hymns about the Church, sanctuary, and life in the house of God.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 28,
+    "slug": "debre-tabor",
+    "nameAm": "??? ???",
+    "nameEn": "Debre Tabor",
+    "displayOrder": 28,
+    "description": "Hymns for Debre Tabor and the Transfiguration of Christ.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 29,
+    "slug": "timket",
+    "nameAm": "????",
+    "nameEn": "Timket",
+    "displayOrder": 29,
+    "description": "Hymns for Timket, baptism, Epiphany, and the Jordan revelation.",
+    "imageUrl": "",
+    "isActive": true
+  },
+  {
+    "id": 30,
+    "slug": "petros-we-pawlos",
+    "nameAm": "???? ?????",
+    "nameEn": "Peter and Paul",
+    "displayOrder": 30,
+    "description": "Hymns honoring Saints Peter and Paul and apostolic witness.",
+    "imageUrl": "",
+    "isActive": true
+  }
+]

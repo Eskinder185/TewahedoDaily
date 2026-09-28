@@ -1,0 +1,16 @@
+﻿.shell { max-width: 800px; margin: 48px auto; padding: 0 20px; }
+.shell h1 { font: 600 2.6rem var(--font-display); color: var(--color-heading); margin: 8px 0 16px; }
+.shell h2 { font-size: 1.25rem; margin: 12px 0 0; }
+.eyebrow { color: var(--color-accent); font-size: .75rem; letter-spacing: .12em; }
+.card { background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 28px; margin: 26px 0; }
+.card fieldset { display: grid; gap: 18px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.card label { display: grid; gap: 7px; font-weight: 600; }
+.card input:not([type=checkbox]),.card textarea,.card select { min-width: 0; width: 100%; padding: 12px; border: 1px solid var(--color-border-strong); border-radius: 7px; background: var(--color-bg); color: var(--color-text); font: inherit; }
+.card textarea { resize: vertical; }
+.card .check { display: flex; gap: 10px; align-items: center; }
+.card button { padding: 12px 20px; border-radius: 7px; background: var(--color-navy); color: #fff8f0; }
+.muted { color: var(--color-text-muted); font-size: .92rem; margin: 0; }
+.notice { background: var(--color-bg-muted); padding: 16px; border-radius: 7px; }
+.error { color: #842b22; background: #fbe5e1; padding: 12px; border-radius: 7px; }
+.trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+@media(max-width:600px) { .shell { margin: 24px auto; padding: 0 16px; } .card { padding: 18px; } }

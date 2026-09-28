@@ -7,8 +7,9 @@ export {
   youtubeWatchUrl,
 } from './mezmurData'
 export { WERB_ENTRIES } from './werbData'
-export { CHANT_LIBRARY, chantEntryKey } from './chantLibrary'
-export type { ChantForm, ChantLibraryEntry } from './chantLibrary'
+export { CHANT_LIBRARY } from './chantLibrary'
+export { chantEntryKey } from './chantLibraryModel'
+export type { ChantForm, ChantLibraryEntry } from './chantLibraryModel'
 export type { SavedChantLoopSection } from './chantLoopStorage'
 export {
   loadSavedLoopSections,

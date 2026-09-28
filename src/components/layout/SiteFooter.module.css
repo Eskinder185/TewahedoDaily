@@ -18,6 +18,65 @@
   text-align: center;
 }
 
+.adminLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  padding: 0.35rem 0.2rem;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  border-radius: 4px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.adminLink:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.adminLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.adminIcon {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.utilityNav {
+  order: 4;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.utilityLink {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  padding: 0.35rem 0.2rem;
+  border-radius: 4px;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.utilityLink:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.utilityLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
 @media (min-width: 480px) {
   .inner {
     gap: var(--space-4); /* Reduce gap for space efficiency on small tablets */
@@ -28,11 +87,16 @@
   .inner {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     text-align: left;
     justify-items: stretch;
     gap: var(--space-3); /* Optimized gap for desktop layout */
+  }
+
+  .utilityNav {
+    justify-content: flex-end;
   }
 }
 

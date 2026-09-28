@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState } from 'react'
 import {
-  CHANT_LIBRARY,
   chantEntryKey,
   type ChantForm,
   type ChantLibraryEntry,
-} from '../../lib/practice/chantLibrary'
+} from '../../lib/practice/chantLibraryModel'
 import {
   addRecentChantSearch,
   getRecentChantSearches,
@@ -13,7 +12,6 @@ import {
   type ChantFormFilter,
 } from '../../lib/practice/chantSearch'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../../data/utils/youtube'
-import { youtubeThumbUrl } from '../../lib/practice'
 import { mezmurDetailPath, mezmurShareUrl } from '../../lib/practice/mezmurSlug'
 import { ChantLibraryPreview } from './ChantLibraryPreview'
 import {
@@ -27,6 +25,7 @@ import { PracticeMediaCard } from './PracticeMediaCard'
 import { chantMeaningTeaser } from '../../lib/practice/chantCardTeaser'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useChantLibrary } from '../../hooks/useChantLibrary'
 import styles from './ChantsSection.module.css'
 
 const FORM_FILTER_IDS = ['all', 'mezmur', 'werb', 'marian', 'saints', 'feast-days'] as const
@@ -60,7 +59,7 @@ function pickFeatured(entries: ChantLibraryEntry[]): ChantLibraryEntry[] {
 function chantThumbnail(entry: ChantLibraryEntry): string | undefined {
   if (entry.form === 'mezmur') {
     const m = entry.item
-    return m.thumbnailUrl ?? youtubeThumbUrl(m.youtubeId)
+    return m.thumbnailUrl ?? youtubeThumbnailUrl(m.youtubeId)
   }
   const w = entry.item
   if (w.thumbnail) return w.thumbnail
@@ -79,6 +78,7 @@ function chantSubtitle(entry: ChantLibraryEntry): string | undefined {
 export function ChantsSection() {
   const t = useUiLabel()
   const tt = useTranslation()
+  const { entries: chantLibrary, isLoading } = useChantLibrary()
   
   const [practiceEntry, setPracticeEntry] = useState<ChantLibraryEntry | null>(
     null,
@@ -110,10 +110,10 @@ export function ChantsSection() {
 
   const filteredByForm = useMemo(
     () =>
-      CHANT_LIBRARY.filter((e) =>
+      chantLibrary.filter((e) =>
         matchesForm(e, formFilter as ChantFormFilter),
       ),
-    [formFilter],
+    [chantLibrary, formFilter],
   )
 
   const featured = useMemo(
@@ -125,10 +125,12 @@ export function ChantsSection() {
   const showFeatured = !browseAll && !qTrim
 
   const gridEntries = useMemo(() => {
-    if (qTrim) return searchChants(q, formFilter as ChantFormFilter)
+    if (qTrim) {
+      return searchChants(q, formFilter as ChantFormFilter, chantLibrary)
+    }
     if (browseAll) return filteredByForm
     return []
-  }, [qTrim, browseAll, formFilter, filteredByForm])
+  }, [q, qTrim, browseAll, formFilter, filteredByForm, chantLibrary])
 
   const openChant = (entry: ChantLibraryEntry) => {
     if (qTrim.length >= 2) {
@@ -152,6 +154,14 @@ export function ChantsSection() {
   const applyRecent = (s: string) => {
     setQ(s)
     setBrowseAll(true)
+  }
+
+  if (isLoading) {
+    return (
+      <div className={styles.root} role="status" aria-live="polite">
+        <p className={styles.chantHelper}>{tt('practice.loading')}</p>
+      </div>
+    )
   }
 
   if (practiceEntry) {
@@ -301,7 +311,7 @@ export function ChantsSection() {
             </button>
           </div>
           <p className={styles.browseNote}>
-            {CHANT_LIBRARY.length} {t('chantLibraryNote')}
+            {chantLibrary.length} {t('chantLibraryNote')}
           </p>
         </>
       ) : (

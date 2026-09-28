@@ -1,13 +1,9 @@
 import Fuse from 'fuse.js'
 import type { WerbEntry } from '../../data/types/werb'
-import amharicChants from '../../data/chants/amharic-chants.json'
-import werbJson from '../../data/chants/werb.json'
 import {
-  CHANT_LIBRARY,
   chantEntryKey,
   type ChantLibraryEntry,
-} from './chantLibrary'
-import { MEZMUR_ENTRIES } from './mezmurData'
+} from './chantLibraryModel'
 import type { MezmurItem } from './types'
 
 export type ChantFormFilter = 'all' | 'mezmur' | 'werb' | 'english' | 'marian' | 'saints' | 'feast-days'
@@ -73,41 +69,6 @@ export function parseCategoryForSearch(cat: unknown): {
   }
   return empty
 }
-
-type RawWerb = {
-  form?: string
-  type?: string
-  id?: string
-  category?: {
-    primary?: string
-    themes?: string[]
-    usage?: string[]
-    season?: string[]
-    majorHoliday?: string[]
-    saints?: string[]
-  }
-}
-
-function rawWerbById(): Map<string, RawWerb> {
-  const m = new Map<string, RawWerb>()
-  for (const x of werbJson as unknown[]) {
-    if (!x || typeof x !== 'object') continue
-    const o = x as RawWerb
-    if (o.form === 'werb' && o.type === 'chant' && typeof o.id === 'string') {
-      m.set(o.id, o)
-    }
-  }
-  for (const x of amharicChants as unknown[]) {
-    if (!x || typeof x !== 'object') continue
-    const o = x as RawWerb
-    if (o.form === 'werb' && o.type === 'chant' && typeof o.id === 'string') {
-      m.set(o.id, o)
-    }
-  }
-  return m
-}
-
-
 
 function mezmurExtras(item: MezmurItem): string {
   return [
@@ -200,17 +161,18 @@ export function matchesForm(
  * Build search documents for dynamic entries
  */
 function buildDocumentsFromEntries(entries: ChantLibraryEntry[]): ChantSearchDocument[] {
-  const rawWerbs = rawWerbById()
-  const mezById = new Map(MEZMUR_ENTRIES.map((m) => [m.id, m]))
-  
   return entries.map((entry) => {
     const key = chantEntryKey(entry)
     if (entry.form === 'mezmur') {
       const m = entry.item
-      const raw = mezById.get(m.id)
-      const cat = parseCategoryForSearch(
-        raw ? (raw as unknown as { category?: unknown }).category : m.category,
-      )
+      const cat = {
+        primary: m.category ?? '',
+        themes: (m.categoryThemes ?? []).join(' '),
+        usage: (m.categoryUsage ?? []).join(' '),
+        saints: (m.categorySaints ?? []).join(' '),
+        majorHoliday: (m.categoryMajorHoliday ?? []).join(' '),
+        season: m.seasonLine ?? '',
+      }
       const extraBlob = [
         m.meaning ?? '',
         m.language === 'en' ? 'english' : '',
@@ -233,8 +195,7 @@ function buildDocumentsFromEntries(entries: ChantLibraryEntry[]): ChantSearchDoc
       }
     } else {
       const w = entry.item
-      const raw = rawWerbs.get(w.id)
-      const cat = parseCategoryForSearch(raw?.category)
+      const cat = parseCategoryForSearch(w.categoryDetail)
       const extraBlob = [
         w.meaning ?? '',
         w.teaser ?? '',
@@ -266,7 +227,7 @@ function buildDocumentsFromEntries(entries: ChantLibraryEntry[]): ChantSearchDoc
 export function searchChants(
   query: string,
   formFilter: ChantFormFilter,
-  entries: ChantLibraryEntry[] = CHANT_LIBRARY,
+  entries: ChantLibraryEntry[],
 ): ChantLibraryEntry[] {
   const q = query.trim()
   if (!q) {

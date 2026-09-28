@@ -2,9 +2,8 @@ import {
   chantEntryKey,
   type ChantForm,
   type ChantLibraryEntry,
-} from '../../lib/practice/chantLibrary'
+} from '../../lib/practice/chantLibraryModel'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../../data/utils/youtube'
-import { youtubeThumbUrl } from '../../lib/practice'
 import { mezmurDetailPath, mezmurShareUrl } from '../../lib/practice/mezmurSlug'
 import { chantMeaningTeaser } from '../../lib/practice/chantCardTeaser'
 import { PracticeMediaCard } from './PracticeMediaCard'
@@ -14,7 +13,7 @@ import styles from './ChantLibraryPreview.module.css'
 function chantThumbnail(entry: ChantLibraryEntry): string | undefined {
   if (entry.form === 'mezmur') {
     const m = entry.item
-    return m.thumbnailUrl ?? youtubeThumbUrl(m.youtubeId)
+    return m.thumbnailUrl ?? youtubeThumbnailUrl(m.youtubeId)
   }
   const w = entry.item
   if (w.thumbnail) return w.thumbnail

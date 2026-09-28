@@ -28,4 +28,15 @@ export type WerbEntry = {
   mistakesToAvoid?: string
   beginnerTips?: string
   guidedSteps?: WerbGuidedStep[]
+  /** Structured chant tags used by Supabase-backed filtering and search. */
+  categoryDetail?: {
+    primary: string
+    majorHoliday?: string[]
+    saints?: string[]
+    themes?: string[]
+    usage?: string[]
+    season?: string[]
+    confidence?: string
+  }
+  language?: string
 }

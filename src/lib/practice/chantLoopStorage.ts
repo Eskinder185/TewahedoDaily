@@ -1,4 +1,4 @@
-import type { ChantForm } from './chantLibrary'
+import type { ChantForm } from './chantLibraryModel'
 
 const STORAGE_KEY = 'tewahedo-daily-chant-loop-sections'
 

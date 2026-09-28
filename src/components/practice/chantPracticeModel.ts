@@ -1,6 +1,5 @@
-import { parseYoutubeVideoId } from '../../data/utils/youtube'
-import { youtubeWatchUrl } from '../../lib/practice'
-import type { ChantForm, ChantLibraryEntry } from '../../lib/practice/chantLibrary'
+import { parseYoutubeVideoId, youtubeWatchUrl } from '../../data/utils/youtube'
+import type { ChantForm, ChantLibraryEntry } from '../../lib/practice/chantLibraryModel'
 import type { MezmurCategory } from '../../data/types/mezmur'
 
 const MEZMUR_CAT: Record<MezmurCategory, string> = {

@@ -55,6 +55,16 @@ function chantToWerbEntry(c: ChantWerbRecord): WerbEntry {
     teaser,
     usage: usageParts.length ? usageParts.join(' · ') : undefined,
     season: season || undefined,
+    categoryDetail: c.category
+      ? {
+          primary: c.category.primary ?? 'other',
+          majorHoliday: c.category.majorHoliday,
+          saints: c.category.saints,
+          themes: c.category.themes,
+          usage: c.category.usage,
+          season: c.category.season,
+        }
+      : undefined,
   }
 }
 

@@ -1,0 +1,3711 @@
+{
+  "created_at": "2026-09-28T21:19:29.050Z",
+  "summary": {
+    "mode": "dry-run",
+    "publication": "draft",
+    "sourceRows": 271,
+    "uniqueSourceRows": 255,
+    "eligible": 245,
+    "statuses": {
+      "planned": 245
+    },
+    "issues": {
+      "excluded_werb": 15,
+      "duplicate_source_id": 1,
+      "invalid_category_translation": 200,
+      "missing_singer": 245,
+      "classification_needs_review": 4,
+      "duplicate_video": 10,
+      "missing_video": 9
+    }
+  },
+  "results": [
+    {
+      "key": "mezmur:elel-belu",
+      "slug": "elel-belu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:anchin-yeyaze-sew",
+      "slug": "anchin-yeyaze-sew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yiberal-bekinfu",
+      "slug": "yiberal-be-kinfu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ende-egziabeher-yale-manim-yelem-na",
+      "slug": "ende-igziabeher-yale-manim-yelem-na",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:bale-wuletaye",
+      "slug": "bale-wuletaye",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:simih-behulu-temesgene",
+      "slug": "simih-be-hulu-temesgene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:enat-alegn-yemitabis-inba",
+      "slug": "enat-alegn-yemitabis-inba",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:dengel-weladite-kal",
+      "slug": "dengel-weladite-kal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:eyakem-we-hana",
+      "slug": "eyakem-we-hana",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kaln-lemwled",
+      "slug": "kaln-lemwled",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:aman-beaman-tesebha",
+      "slug": "aman-beaman-tesebha",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:tabor-abera",
+      "slug": "tabor-abera",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:maryam-argalech",
+      "slug": "maryam-argalech",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kidane-mihret-emebet",
+      "slug": "kidane-mihret-emebet",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:aklilachen-nesh-wubetachen",
+      "slug": "aklilachen-nesh-wubetachen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:estifanos-semeat",
+      "slug": "estifanos-semeat",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:beselam-ni",
+      "slug": "beselam-ni",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:hawaryaw-menekuse-yemeretuh-selase",
+      "slug": "hawaryaw-menekuse",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:fekade-yih-new",
+      "slug": "fekade-yih-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:silassen-amesgnu",
+      "slug": "silassen-amesgnu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:adergehlegnal-ena-amesegnalew",
+      "slug": "adergehlegnal-ena-amesegnalew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:titnash-gerum-new",
+      "slug": "titnash-gerum-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:mudaye-mena",
+      "slug": "mudaye-mena",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nu-beegziaber-des-yibelen",
+      "slug": "nu-beegziaber-des-yibelen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:egziabherin-amesegnut",
+      "slug": "egziabherin-amesegnut",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:qewamiyan",
+      "slug": "qewamiyan",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:awde-amet-le-barko",
+      "slug": "awde-amet-le-barko",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ametun-asalfeh",
+      "slug": "ametun-asalfeh",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yibelomu-iyesus",
+      "slug": "yibelomu-iyesus",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:eleni-nigist-haseset-meskelu",
+      "slug": "eleni-nigist-haseset-meskelu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:zeetan-antsere",
+      "slug": "zeetan-antsere",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:meskel-birhane",
+      "slug": "meskel-birhane",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:keme-tibarekene",
+      "slug": "keme-tibarekene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:tilin-bemeskelu-gedele",
+      "slug": "tilin-bemeskelu-gedele",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:meskelike-yikunene-beza",
+      "slug": "meskelike-yikunene-beza",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:des-yibelen",
+      "slug": "des-yibelen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:selam-selam-leki",
+      "slug": "selam-selam-leki",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:enamesegnihalen",
+      "slug": "enamesegnihalen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:sidiben-arqesh",
+      "slug": "sidiben-arqesh",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kibre-new",
+      "slug": "kibre-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:egziabher-hoy-ewedehalew",
+      "slug": "egziabher-hoy-ewedehalew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:chernetih-new",
+      "slug": "chernetih-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kemetsge-roman",
+      "slug": "kemetsge-roman",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:hes-done-wonders-for-me",
+      "slug": "dinq-adrigolignal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:praises-of-mary",
+      "slug": "praises-of-mary",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:misgana-be-meqdesih",
+      "slug": "misgana-be-meqdesih",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:barkeni-aba-yaqob",
+      "slug": "barkeni-aba-yaqob",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:andebetem-yawta",
+      "slug": "andebetem-yawta",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:gedilike-grum",
+      "slug": "gedilike-grum",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:wudase-maryam-echohalew",
+      "slug": "wudase-maryam-echohalew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:dingil-hoy-wede-ene",
+      "slug": "dingil-hoy-wede-ene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:azekri-dingil",
+      "slug": "azekri-dingil",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:hayle-birtate",
+      "slug": "hayle-birtate-kibre-mogese",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:wede-misraq-eyu",
+      "slug": "wede-misraq-eyu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:enze-yiblu",
+      "slug": "enze-yiblu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:zeawredke-mena",
+      "slug": "zeawredke-mena",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yeramaw-gebriel",
+      "slug": "yeramaw-leul-gebriel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:absera-gebriel",
+      "slug": "absera-gebriel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ye-fikir-enat",
+      "slug": "ye-fikir-enat-ye-selam",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nana-ammanuel",
+      "slug": "nana-amanuel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:gebremenfes-kidus-yealem-birhan",
+      "slug": "gebre-menfes-kidus-yealem-birhan-natchew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:tihitnash-grum-new",
+      "slug": "tihitnash-grum-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:hale-luya-nisebik",
+      "slug": "hale-luya-hale-luya",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:timkihte-zemedne",
+      "slug": "timkihte-zemedne",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:beza-kulu-alem-yom-tewolede",
+      "slug": "beza-kulu-alem-yom-tewolede",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:tebko-asadeggo-mikael",
+      "slug": "tebko-asadeggo",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:dej-tenaw-koyche",
+      "slug": "dej-tnaaw-koyche",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:qirqos-iyelutan",
+      "slug": "selestun-dekikan",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:anurognal-cherneteh",
+      "slug": "anurognal-cherneteh",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nolawi-tiguh",
+      "slug": "nolawi-tiguh-zeitnewum",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:dingil-fetariwan",
+      "slug": "dingil-fetariwan",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yesilasen-menber",
+      "slug": "yesilasen-menber",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:eme-amlak-asbign-be-serk",
+      "slug": "eme-amlak-asbign-be-serk",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:diwiy-nen",
+      "slug": "diwiy-nen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:bizu-lijoch-alut",
+      "slug": "bizu-lijoch-alut",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:le-teklehaimanot-tsadiq",
+      "slug": "le-teklehaimanot-tsadiq",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ezemeralehu-leemebete",
+      "slug": "ezemeralehu-leemebete",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kidanki-kone",
+      "slug": "kidanki-kone",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nitsum-tsoma",
+      "slug": "nitsum-tsoma",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kidane-mihret-emebet-neylin",
+      "slug": "kidane-mihret-emebet-kidane-mihret-emebet-neylin",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ene-ante-bet",
+      "slug": "ene-ante-bet",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:emebete-mariam-elemneshalew",
+      "slug": "emebete-mariam-elemneshalew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kemelaket-gar",
+      "slug": "kemelaket-gar",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:sew-le-sew",
+      "slug": "sew-le-sew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:abetu-yehonebenen-asib-egziabher",
+      "slug": "abetu-yehonebenen-asib-egziabher",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:adegnegn-enate-kesega-fetena",
+      "slug": "adegnegn-enate-kesega-fetena",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:misiganayen",
+      "slug": "misiganayen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:selamish-zare-new",
+      "slug": "selamish-zare-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:em-afe-deqiq",
+      "slug": "em-afe-deqiq",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:hosana-emrit",
+      "slug": "hosana-emrit",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yibae",
+      "slug": "yibae",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yom-fisha-kone",
+      "slug": "yom-fisha-kone",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:tinsaeke-leele-amene",
+      "slug": "tinsaeke-leele-amene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yadanegn-awqewalew",
+      "slug": "yadanegn-awqewalew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ya-deha-tetara",
+      "slug": "ya-deha-tetara",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nisebiho",
+      "slug": "nisebiho",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:eyuna-emenu-sewoch",
+      "slug": "eyuna-emenu-sewoch",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kirstos-tensae",
+      "slug": "kirstos-tensae",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:serae-lene-senbet",
+      "slug": "serae-lene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:sewoch-des-yibelen",
+      "slug": "sewoch-des-yibelen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nu-enamesegen-bezimare",
+      "slug": "nu-enamesegen-bezimare-beililta",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ellil-ellil-enbel",
+      "slug": "ellil-ellil-enbel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:meskel-lay-yayehut-fikir",
+      "slug": "meskel-lay-yayehut-fikir",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:be-gete-semani",
+      "slug": "be-gete-semani",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:silassien-amesginu",
+      "slug": "silassien-amesginu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:emebetachin-banchi-milja-bemaye-qana",
+      "slug": "emebetachin-banchi-milja",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:mar-mikael-libelih",
+      "slug": "mar-mikael-libel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:chernetih-bizu-mihretih-bizu",
+      "slug": "chernetih-bizu-mihretih-bizu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ante-degu-samrawi",
+      "slug": "ante-degu-samrawi",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:anchin-bicha-betelehem",
+      "slug": "anchin-bicha-betelehem",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:haylihi-sigelet-besemay",
+      "slug": "haylihi-sigelet-besemay",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yiqirta-libelih",
+      "slug": "yiqirta-libelih",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:amanuel-amlak-misgana-yigebahal",
+      "slug": "amanuel-amlak-misgana-yigebahal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:meskel-abeba-wub-abeba",
+      "slug": "meskel-abeba-neh-wub-abeba",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:bemin-etsnanalew-keleleh",
+      "slug": "bemin-etsnanalew-keleleh",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:Mistiregnaye Nesh",
+      "slug": "awqewalehu-dejishin",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:sobe-tezekernaha-letsiyon",
+      "slug": "sobe-tezekernaha-letsiyon",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:bemin-etsnanalew-kelelehign",
+      "slug": "bemin-etsnanalew-kelelehign",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:tinsaeke-leile-amene",
+      "slug": "tinsaeke-leile-amene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ye-birhan-gorf-nat",
+      "slug": "yebirhan-gorf-nat",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ke-getaye-feqir-yemileyegn-manew",
+      "slug": "kegetaye-feqir-yemileyegn-manew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:min-semah-yohannes",
+      "slug": "min-semah-yohannes",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:andebetn-setegn-getaye",
+      "slug": "andebetn-setegn-getaye",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ye-tsidk-ber-nesh",
+      "slug": "yetsidk-ber-nesh",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:alete-neh-anbaye",
+      "slug": "alete-neh-anbaye",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:selam-leki",
+      "slug": "selam-leki",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:bakgnalehuna",
+      "slug": "bakgnalehuna",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:amanuel-temesgen",
+      "slug": "amanuel-temesgen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:adrigeh-lignalen",
+      "slug": "adrigeh-lignalen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:kiyamew-yikirna",
+      "slug": "kiyamew-yikirna",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:liredan-meta-mikael",
+      "slug": "liredan-meta-mikael",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:quanqaye-nesh-dingil",
+      "slug": "quanqaye-nesh-dingil",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:sile-mayneger-sitotaw",
+      "slug": "sile-mayneger-sitotaw",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ye-awaj-negari-qal",
+      "slug": "yeawaj-negarit-qal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:wedase-maryam",
+      "slug": "wedase-maryam",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:amlak-tekle-haymanot",
+      "slug": "amlak-tekle-haymanot",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ebakeh-wedet-neh",
+      "slug": "ebakeh-wedet-neh",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:grum-dinq-neh",
+      "slug": "grum-dinq-neh",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:enes-bemegbare",
+      "slug": "enes-bemegbare",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yehaset-dagninet",
+      "slug": "yehaset-dagninet",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nu-bebirhanu-temelalesu",
+      "slug": "nu-bebirhanu-temelalesu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:egziabher-hoy-erdagn",
+      "slug": "egziabher-hoy-erdagn",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:behazene",
+      "slug": "behazene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:egziabheren-terahut",
+      "slug": "egziabheren-terahut",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:erdagn-zim-atbel",
+      "slug": "erdagn-zim-atbel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yesimu-tirguame",
+      "slug": "yesimu-tirguame",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:dingil-embete-yehiywete-redat",
+      "slug": "dingil-embete-yehiywete-redat",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:altewengem-geta",
+      "slug": "altewengem-geta",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:dink-adirgolignyal",
+      "slug": "dink-adirgolignal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:lene-yederegew-mikaiel-bizu-new",
+      "slug": "lene-yederegew-mikaiel-bizu-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:talaku-melaek-mikaiel-yinegesal",
+      "slug": "talaku-melaek-mikaiel-yinegesal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ende-egziabher-yale-manem-yelemna",
+      "slug": "ende-egziabher-yale-manem-yelemna",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:emebete-yamlek-enat",
+      "slug": "emebete-yamlak-enat",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:tenesitwal-bezih-yelem",
+      "slug": "tenesitwal-bezih-yelem",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yetamenk-yenefs-wodaj",
+      "slug": "yetamenk-yenefs-wodaj",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:gebriel-hayal-melake-selam",
+      "slug": "gebriel-hayal-melake-selam",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:selam-leki-eyale",
+      "slug": "selam-leki-eyale",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:betekristianin-antewim-keto",
+      "slug": "betekristianin-antewim-keto",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:simishin-le-lij-lij",
+      "slug": "simishin-le-lij-lij",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:sebhiwo-leamlakine",
+      "slug": "sebhiwo-leamlakine",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:fikirih-marekeny",
+      "slug": "fikirih-marekeny",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:hidu-ngeru-awru-lealem",
+      "slug": "hidu-ngeru",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:ete-mushraye",
+      "slug": "ete-mushraye",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:sile-mayneger-setotaw",
+      "slug": "sile-mayneger-setotaw",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:yom-fiseha-kone",
+      "slug": "yom-fiseha-kone",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:bemen-des-lasenyih",
+      "slug": "bemen-des-lasenyih",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:medhanealem-simeh-genana",
+      "slug": "medhanealem-simeh-genana",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:cana-of-galilee",
+      "slug": "cana-of-galilee",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-cant-do-it-alone",
+      "slug": "i-cant-do-it-alone",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:before-the-most-high",
+      "slug": "before-the-most-high",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:believe-in-the-lord",
+      "slug": "emenu-beersu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:by-the-lords-grand-design",
+      "slug": "bebego-fekadu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:come-all-let-us-rejoice",
+      "slug": "sewoch-des-yibelen-come-all-let-us-rejoice",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:covenant-of-mercy",
+      "slug": "kidane-mehret",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:emmanuel",
+      "slug": "amanuel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:for-my-eyes",
+      "slug": "aynoche-madanun",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:for-theres-no-one-like-him",
+      "slug": "ende-egziabher-yalew-manim-yelemna",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:from-the-scorching-flames",
+      "slug": "keminedew-isat",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:gabriel-the-powerful",
+      "slug": "gebriel-hayal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:go-forth-testify",
+      "slug": "hidu-negeru",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:he-is-praised",
+      "slug": "misgun-new-yetemesegene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:he-who-created-you",
+      "slug": "he-who-created-you",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:hosanna-in-ariyam",
+      "slug": "hosanna-be-ariyam",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-call-out-your-name",
+      "slug": "simish-teriche",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-called-unto-my-dear-lord",
+      "slug": "i-called-unto-my-dear-lord",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-found-tranquility",
+      "slug": "ewnetegna-selam",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-have-no-righteous-deeds",
+      "slug": "enes-bemigibare",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-have-seen-all-i-need",
+      "slug": "i-have-seen-all-i-need",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-know-the-one-who-has-saved-me",
+      "slug": "yadanegnin-awkewalew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-will-forever-sing-for-my-lady",
+      "slug": "yihew-ezemiralew-le-emebete",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-will-praise-you",
+      "slug": "lamesginih-yene-geta",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:i-wont-forget",
+      "slug": "i-wont-forget",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:in-that-very-hour",
+      "slug": "abet-yezian-gize",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:in-your-temple-o-lord",
+      "slug": "be-bete-mekedese",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:let-us-give-praise",
+      "slug": "let-us-give-praise",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:lord-it-is-your-grace",
+      "slug": "cherinetih-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:melody-of-yared",
+      "slug": "ye-yared-wub-zema",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:mother-of-god",
+      "slug": "emebete-ye-amlak",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:my-benevolent-lord",
+      "slug": "balewiletaye",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:my-lords-appearance",
+      "slug": "getaye-hone",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:my-strength-and-power",
+      "slug": "hayle-birtate",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:my-home-is-filled",
+      "slug": "bedinkuane-elilta-mulu-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:nation-of-the-cross",
+      "slug": "hizbe-meskel",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:o-my-savior-i-can-do-all-through-you",
+      "slug": "medhanialem-yelem-yemesanew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:o-the-archangel",
+      "slug": "o-michael-liqe-melaikt",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:oh-all-that-you-have-done-for-me",
+      "slug": "emanuel-lezelalem",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:our-lord-and-king-of-peace",
+      "slug": "yeselamu-meri-yeselamu-dagna",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:praise-and-glory",
+      "slug": "sebehwo-leamlakene",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:saint-mary-has-ascended",
+      "slug": "mariam-aregalech-wede-genet",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:she-is-born-for-us-all",
+      "slug": "teweldalechna-yegita-enat",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-almighty-god-is-gracious",
+      "slug": "egziabher-melkam-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-angel",
+      "slug": "melak-yegziabher",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-god-of-abraham",
+      "slug": "yeabraham-amlak-yeyishaq-beza",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-holy-apostle",
+      "slug": "qidus-hawariya-paulos",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-lord-has-risen",
+      "slug": "geta-tenestual",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-old-is-gone",
+      "slug": "addis-honku-bekristos",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-purest-of-the-pure",
+      "slug": "qedest-qedusan",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-spirit",
+      "slug": "menfes-qidus",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-stars",
+      "slug": "kokeboch",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-virgin-gave-birth-to-her-creator",
+      "slug": "dingil-fetariwan-weledachew",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:the-gracious-and-adored-interceder",
+      "slug": "cheritu-amalajitu-hoy",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:theotokos",
+      "slug": "theotokos",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:there-is-no-one-like-you",
+      "slug": "yalante-lene-man-lihonegn",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:there-is-power-in-your-words",
+      "slug": "dil-ale-besimih",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:through-the-desert",
+      "slug": "bebereha-beharruru",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:to-him-who-sits-on-the-throne",
+      "slug": "leze-yetemetebeqe-bezuriyaw",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:to-receive-the-lords-love",
+      "slug": "yewedegn-geta-min-adrgelet-new",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:to-mother-mary",
+      "slug": "le-mariam",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:truly-with-glory",
+      "slug": "ewnet-beewnet-geta-tenestual",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:undeserving-i-am",
+      "slug": "saygebagn-amlak",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:until-my-time-comes",
+      "slug": "eske-zemenaye-deres",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:walk-in-the-light-of-god",
+      "slug": "bebrehane-egziabher-hed",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:we-believe",
+      "slug": "enamenalen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:we-offer-you-glory-and-praise",
+      "slug": "misgana-enakerbalen",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:when-your-mights-revealed",
+      "slug": "haylih-sigelest-besemay",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:who-else-do-i-have",
+      "slug": "yeliben-hulu-leman-lamakir",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:with-his-love-the-lord-rescued-me",
+      "slug": "sileweddedegn-adanenegn",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:with-his-mercifulness",
+      "slug": "bekehalinetu-beamlakinetu",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:with-my-unfitting",
+      "slug": "beyalhonegn-nefse",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:within-the-sinners-tent",
+      "slug": "kehatiategnaw-dinkwan-qidus-qomehal",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:without-you-my-lord",
+      "slug": "yalante-geta-desta-mech-ale",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:you-are-without-fault",
+      "slug": "albeki-newer-weementeni",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:you-who-saved-from-fire",
+      "slug": "zemadekegn-keesat",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:your-love-allured-me",
+      "slug": "fikrih-marekegn",
+      "status": "planned"
+    },
+    {
+      "key": "mezmur:youre-the-soul-for-my-soul",
+      "slug": "lenefese-nefeswa-nesh",
+      "status": "planned"
+    }
+  ],
+  "issues": [
+    {
+      "key": "mezmur:ahade-leke-we-ahade-lemuse",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:weredo-emeskelu",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:yomse-leiliyaye",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:tsega-nesaene",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:nahu-tefetseme-tsige",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:misle-mikael-we-gebriel",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:reiywo-nolot",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:begol-sekebe-beatsrqt",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:anferatsu-sebea-segel",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:aman-beaman-menkir",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:begol-sekebe-beatsriqt",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:aman-beaman",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:wemidrni-tigebir-fasika",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:selam-yikun",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:selam-selam-tinsae",
+      "code": "excluded_werb",
+      "detail": "werb"
+    },
+    {
+      "key": "mezmur:hes-done-wonders-for-me",
+      "code": "duplicate_source_id",
+      "detail": "Last base row wins, matching the existing public library."
+    },
+    {
+      "key": "mezmur:elel-belu",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:elel-belu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:anchin-yeyaze-sew",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:anchin-yeyaze-sew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yiberal-bekinfu",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:yiberal-bekinfu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ende-egziabeher-yale-manim-yelem-na",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:ende-egziabeher-yale-manim-yelem-na",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:bale-wuletaye",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:bale-wuletaye",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:simih-behulu-temesgene",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:simih-behulu-temesgene",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:enat-alegn-yemitabis-inba",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:enat-alegn-yemitabis-inba",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:dengel-weladite-kal",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:dengel-weladite-kal",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:eyakem-we-hana",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:eyakem-we-hana",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kaln-lemwled",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:kaln-lemwled",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:aman-beaman-tesebha",
+      "code": "invalid_category_translation",
+      "detail": "debre-tabor"
+    },
+    {
+      "key": "mezmur:aman-beaman-tesebha",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:tabor-abera",
+      "code": "invalid_category_translation",
+      "detail": "debre-tabor"
+    },
+    {
+      "key": "mezmur:tabor-abera",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:maryam-argalech",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:maryam-argalech",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kidane-mihret-emebet",
+      "code": "invalid_category_translation",
+      "detail": "kidane-mihret"
+    },
+    {
+      "key": "mezmur:kidane-mihret-emebet",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:aklilachen-nesh-wubetachen",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:aklilachen-nesh-wubetachen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:estifanos-semeat",
+      "code": "classification_needs_review",
+      "detail": "No official category had strong enough title, lyric, language, feast, or saint signals, so this was placed in General for review."
+    },
+    {
+      "key": "mezmur:estifanos-semeat",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:beselam-ni",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:beselam-ni",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:hawaryaw-menekuse-yemeretuh-selase",
+      "code": "invalid_category_translation",
+      "detail": "silase-qedus"
+    },
+    {
+      "key": "mezmur:hawaryaw-menekuse-yemeretuh-selase",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:fekade-yih-new",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:fekade-yih-new",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:silassen-amesgnu",
+      "code": "invalid_category_translation",
+      "detail": "silase-qedus"
+    },
+    {
+      "key": "mezmur:silassen-amesgnu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:adergehlegnal-ena-amesegnalew",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:adergehlegnal-ena-amesegnalew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:titnash-gerum-new",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:titnash-gerum-new",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:beselam-niee",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:beselam-ni",
+        "slug": "beselam-niee",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:mudaye-mena",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:mudaye-mena",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nu-beegziaber-des-yibelen",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:nu-beegziaber-des-yibelen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:egziabherin-amesegnut",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:egziabherin-amesegnut",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:qewamiyan",
+      "code": "invalid_category_translation",
+      "detail": "qedus-urael"
+    },
+    {
+      "key": "mezmur:qewamiyan",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:awde-amet-le-barko",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:awde-amet-le-barko",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ametun-asalfeh",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:ametun-asalfeh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yibelomu-iyesus",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:yibelomu-iyesus",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:eleni-nigist-haseset-meskelu",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:eleni-nigist-haseset-meskelu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:zeetan-antsere",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:zeetan-antsere",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:meskel-birhane",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:meskel-birhane",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:keme-tibarekene",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:keme-tibarekene",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:tilin-bemeskelu-gedele",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:tilin-bemeskelu-gedele",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:meskelike-yikunene-beza",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:meskelike-yikunene-beza",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:des-yibelen",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:des-yibelen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:selam-selam-leki",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:selam-selam-leki",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:enamesegnihalen",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:enamesegnihalen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:sidiben-arqesh",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:sidiben-arqesh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kibre-new",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:kibre-new",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:egziabher-hoy-ewedehalew",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:egziabher-hoy-ewedehalew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:chernetih-new",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:chernetih-new",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kemetsge-roman",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:kemetsge-roman",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:hes-done-wonders-for-me",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:praises-of-mary",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:praises-of-mary",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:misgana-be-meqdesih",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:misgana-be-meqdesih",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:beselam-ni-mariyam",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:beselam-ni",
+        "slug": "beselam-ni-mariyam",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:barkeni-aba-yaqob",
+      "code": "classification_needs_review",
+      "detail": "No official category had strong enough title, lyric, language, feast, or saint signals, so this was placed in General for review."
+    },
+    {
+      "key": "mezmur:barkeni-aba-yaqob",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:andebetem-yawta",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:andebetem-yawta",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:gedilike-grum",
+      "code": "invalid_category_translation",
+      "detail": "qedus-giorgis"
+    },
+    {
+      "key": "mezmur:gedilike-grum",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:wudase-maryam-echohalew",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:wudase-maryam-echohalew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:dingil-hoy-wede-ene",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:dingil-hoy-wede-ene",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:azekri-dingil",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:azekri-dingil",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:hayle-birtate",
+      "code": "invalid_category_translation",
+      "detail": "silase-qedus"
+    },
+    {
+      "key": "mezmur:hayle-birtate",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:wede-misraq-eyu",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:wede-misraq-eyu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:enze-yiblu",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:enze-yiblu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:zeawredke-mena",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:zeawredke-mena",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yeramaw-gebriel",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:yeramaw-gebriel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:absera-gebriel",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:absera-gebriel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ye-fikir-enat",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:ye-fikir-enat",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nana-ammanuel",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:nana-ammanuel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:gebremenfes-kidus-yealem-birhan",
+      "code": "invalid_category_translation",
+      "detail": "menfes-qedus"
+    },
+    {
+      "key": "mezmur:gebremenfes-kidus-yealem-birhan",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:tihitnash-grum-new",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:tihitnash-grum-new",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:hale-luya-nisebik",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:hale-luya-nisebik",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:timkihte-zemedne",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:timkihte-zemedne",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:beza-kulu-alem-yom-tewolede",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:beza-kulu-alem-yom-tewolede",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:tebko-asadeggo-mikael",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:tebko-asadeggo-mikael",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:iyaqem-we-hana",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:eyakem-we-hana",
+        "slug": "iyaqem-we-hana",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:dej-tenaw-koyche",
+      "code": "invalid_category_translation",
+      "detail": "kidane-mihret"
+    },
+    {
+      "key": "mezmur:dej-tenaw-koyche",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:qirqos-iyelutan",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:qirqos-iyelutan",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:enat-alegn-yemitabbs-enba",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:enat-alegn-yemitabis-inba",
+        "slug": "enat-alegn-yemitabbs-enba",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:anurognal-cherneteh",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:anurognal-cherneteh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ye-fikir-enat-ye-selam",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:ye-fikir-enat",
+        "slug": "ye-fikir-enat-ye-selam-ye-fikir-enat-ye-selam",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:hawaryaw-menekuse",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:hawaryaw-menekuse-yemeretuh-selase",
+        "slug": "hawaryaw-menekuse-hawaryaw-menekuse",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:nolawi-tiguh",
+      "code": "classification_needs_review",
+      "detail": "No official category had strong enough title, lyric, language, feast, or saint signals, so this was placed in General for review."
+    },
+    {
+      "key": "mezmur:nolawi-tiguh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:dingil-fetariwan",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:dingil-fetariwan",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yesilasen-menber",
+      "code": "invalid_category_translation",
+      "detail": "silase-qedus"
+    },
+    {
+      "key": "mezmur:yesilasen-menber",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:eme-amlak-asbign-be-serk",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:eme-amlak-asbign-be-serk",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:diwiy-nen",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:diwiy-nen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:bizu-lijoch-alut",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:bizu-lijoch-alut",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:le-teklehaimanot-tsadiq",
+      "code": "invalid_category_translation",
+      "detail": "abune-teklehaymanot"
+    },
+    {
+      "key": "mezmur:le-teklehaimanot-tsadiq",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ezemeralehu-leemebete",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:ezemeralehu-leemebete",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kidanki-kone",
+      "code": "invalid_category_translation",
+      "detail": "kidane-mihret"
+    },
+    {
+      "key": "mezmur:kidanki-kone",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nitsum-tsoma",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:nitsum-tsoma",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kidane-mihret-emebet-neylin",
+      "code": "invalid_category_translation",
+      "detail": "kidane-mihret"
+    },
+    {
+      "key": "mezmur:kidane-mihret-emebet-neylin",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ene-ante-bet",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:ene-ante-bet",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:emebete-mariam-elemneshalew",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:emebete-mariam-elemneshalew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kemelaket-gar",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:kemelaket-gar",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:sew-le-sew",
+      "code": "classification_needs_review",
+      "detail": "No official category had strong enough title, lyric, language, feast, or saint signals, so this was placed in General for review."
+    },
+    {
+      "key": "mezmur:sew-le-sew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:abetu-yehonebenen-asib-egziabher",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:abetu-yehonebenen-asib-egziabher",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:adegnegn-enate-kesega-fetena",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:adegnegn-enate-kesega-fetena",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:misiganayen",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:misiganayen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:selamish-zare-new",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:selamish-zare-new",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:em-afe-deqiq",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:em-afe-deqiq",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:hosana-emrit",
+      "code": "invalid_category_translation",
+      "detail": "hosanna"
+    },
+    {
+      "key": "mezmur:hosana-emrit",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yibae",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:yibae",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yom-fisha-kone",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:yom-fisha-kone",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:tinsaeke-leele-amene",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:tinsaeke-leele-amene",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yadanegn-awqewalew",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:yadanegn-awqewalew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ya-deha-tetara",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:ya-deha-tetara",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nisebiho",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:nisebiho",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:eyuna-emenu-sewoch",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:eyuna-emenu-sewoch",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kirstos-tensae",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:kirstos-tensae",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:serae-lene-senbet",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:serae-lene-senbet",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:sewoch-des-yibelen",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:sewoch-des-yibelen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nu-enamesegen-bezimare",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:nu-enamesegen-bezimare",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ellil-ellil-enbel",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:ellil-ellil-enbel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:meskel-lay-yayehut-fikir",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:meskel-lay-yayehut-fikir",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:be-gete-semani",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:be-gete-semani",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:silassien-amesginu",
+      "code": "invalid_category_translation",
+      "detail": "silase-qedus"
+    },
+    {
+      "key": "mezmur:silassien-amesginu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nana-amanuel-na-medhanite",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:nana-ammanuel",
+        "slug": "nana-amanuel-na-medhanite",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:emebetachin-banchi-milja-bemaye-qana",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:emebetachin-banchi-milja-bemaye-qana",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:mar-mikael-libelih",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:mar-mikael-libelih",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:chernetih-bizu-mihretih-bizu",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:chernetih-bizu-mihretih-bizu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ante-degu-samrawi",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:ante-degu-samrawi",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:anchin-bicha-betelehem",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:anchin-bicha-betelehem",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:haylihi-sigelet-besemay",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:haylihi-sigelet-besemay",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yiqirta-libelih",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:yiqirta-libelih",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:amanuel-amlak-misgana-yigebahal",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:amanuel-amlak-misgana-yigebahal",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:meskel-abeba-wub-abeba",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:meskel-abeba-wub-abeba",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:bemin-etsnanalew-keleleh",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:bemin-etsnanalew-keleleh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:Mistiregnaye Nesh",
+      "code": "invalid_category_translation",
+      "detail": "kidane-mihret"
+    },
+    {
+      "key": "mezmur:Mistiregnaye Nesh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:sobe-tezekernaha-letsiyon",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:sobe-tezekernaha-letsiyon",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:bemin-etsnanalew-kelelehign",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:bemin-etsnanalew-kelelehign",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:tinsaeke-leile-amene",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:tinsaeke-leile-amene",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ye-birhan-gorf-nat",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:ye-birhan-gorf-nat",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ke-getaye-feqir-yemileyegn-manew",
+      "code": "invalid_category_translation",
+      "detail": "bete-kristian"
+    },
+    {
+      "key": "mezmur:ke-getaye-feqir-yemileyegn-manew",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:min-semah-yohannes",
+      "code": "invalid_category_translation",
+      "detail": "qedus-yohannes-metmik"
+    },
+    {
+      "key": "mezmur:min-semah-yohannes",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:andebetn-setegn-getaye",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:andebetn-setegn-getaye",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ye-tsidk-ber-nesh",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:ye-tsidk-ber-nesh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:alete-neh-anbaye",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:alete-neh-anbaye",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nu-be-egziabher-des-yibelen",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:nu-beegziaber-des-yibelen",
+        "slug": "nu-beegziabher-des-yibelen",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:selam-leki",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:selam-leki",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:bakgnalehuna",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:bakgnalehuna",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:amanuel-temesgen",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:amanuel-temesgen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:adrigeh-lignalen",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:adrigeh-lignalen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:kiyamew-yikirna",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:kiyamew-yikirna",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:liredan-meta-mikael",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:liredan-meta-mikael",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:quanqaye-nesh-dingil",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:quanqaye-nesh-dingil",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:sile-mayneger-sitotaw",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:sile-mayneger-sitotaw",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ye-awaj-negari-qal",
+      "code": "invalid_category_translation",
+      "detail": "qedus-yohannes-metmik"
+    },
+    {
+      "key": "mezmur:ye-awaj-negari-qal",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:wedase-maryam",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:wedase-maryam",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:amlak-tekle-haymanot",
+      "code": "invalid_category_translation",
+      "detail": "abune-teklehaymanot"
+    },
+    {
+      "key": "mezmur:amlak-tekle-haymanot",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ebakeh-wedet-neh",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:ebakeh-wedet-neh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:grum-dinq-neh",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:grum-dinq-neh",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:enes-bemegbare",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:enes-bemegbare",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yehaset-dagninet",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:yehaset-dagninet",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nu-bebirhanu-temelalesu",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:nu-bebirhanu-temelalesu",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:egziabher-hoy-erdagn",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:egziabher-hoy-erdagn",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:behazene",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:behazene",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:egziabheren-terahut",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:egziabheren-terahut",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:erdagn-zim-atbel",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:erdagn-zim-atbel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yesimu-tirguame",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:yesimu-tirguame",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:dingil-embete-yehiywete-redat",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:dingil-embete-yehiywete-redat",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:altewengem-geta",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:altewengem-geta",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:dink-adirgolignyal",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:dink-adirgolignyal",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:lene-yederegew-mikaiel-bizu-new",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:lene-yederegew-mikaiel-bizu-new",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:talaku-melaek-mikaiel-yinegesal",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:talaku-melaek-mikaiel-yinegesal",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ende-egziabher-yale-manem-yelemna",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:ende-egziabher-yale-manem-yelemna",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:emebete-yamlek-enat",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:emebete-yamlek-enat",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:tenesitwal-bezih-yelem",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:tenesitwal-bezih-yelem",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yetamenk-yenefs-wodaj",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:yetamenk-yenefs-wodaj",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:gebriel-hayal-melake-selam",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:gebriel-hayal-melake-selam",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:selam-leki-eyale",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:selam-leki-eyale",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:betekristianin-antewim-keto",
+      "code": "invalid_category_translation",
+      "detail": "bete-kristian"
+    },
+    {
+      "key": "mezmur:betekristianin-antewim-keto",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:simishin-le-lij-lij",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:simishin-le-lij-lij",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:sebhiwo-leamlakine",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:sebhiwo-leamlakine",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:fikirih-marekeny",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:fikirih-marekeny",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:hidu-ngeru-awru-lealem",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:hidu-ngeru-awru-lealem",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:ete-mushraye",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:ete-mushraye",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:sile-mayneger-setotaw",
+      "code": "invalid_category_translation",
+      "detail": "misgana"
+    },
+    {
+      "key": "mezmur:sile-mayneger-setotaw",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:yom-fiseha-kone",
+      "code": "invalid_category_translation",
+      "detail": "lidet-le-maryam"
+    },
+    {
+      "key": "mezmur:yom-fiseha-kone",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:bemen-des-lasenyih",
+      "code": "invalid_category_translation",
+      "detail": "niseha"
+    },
+    {
+      "key": "mezmur:bemen-des-lasenyih",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:medhanealem-simeh-genana",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:medhanealem-simeh-genana",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:cana-of-galilee",
+      "code": "invalid_category_translation",
+      "detail": "sirege"
+    },
+    {
+      "key": "mezmur:cana-of-galilee",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-cant-do-it-alone",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:before-the-most-high",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:believe-in-the-lord",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:by-the-lords-grand-design",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:come-all-let-us-rejoice",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:covenant-of-mercy",
+      "code": "invalid_category_translation",
+      "detail": "kidane-mihret"
+    },
+    {
+      "key": "mezmur:covenant-of-mercy",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:emmanuel",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:emmanuel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:for-my-eyes",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:for-my-eyes",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:for-theres-no-one-like-him",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:from-the-scorching-flames",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:from-the-scorching-flames",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:gabriel-the-powerful",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:gabriel-the-powerful",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:gabriel-the-powerful",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:go-forth-testify",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:go-forth-testify",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:he-is-praised",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:he-who-created-you",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:hosanna-in-ariyam",
+      "code": "invalid_category_translation",
+      "detail": "hosanna"
+    },
+    {
+      "key": "mezmur:hosanna-in-ariyam",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-call-out-your-name",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:i-call-out-your-name",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-called-unto-my-dear-lord",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-found-tranquility",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-have-no-righteous-deeds",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-have-seen-all-i-need",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:i-have-seen-all-i-need",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-know-the-one-who-has-saved-me",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-will-forever-sing-for-my-lady",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:i-will-forever-sing-for-my-lady",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-will-praise-you",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:i-wont-forget",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:in-that-very-hour",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:in-your-temple-o-lord",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:let-us-give-praise",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:lord-it-is-your-grace",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:melody-of-yared",
+      "code": "invalid_category_translation",
+      "detail": "qedus-yared"
+    },
+    {
+      "key": "mezmur:melody-of-yared",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:mother-of-god",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:mother-of-god",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:my-benevolent-lord",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:my-lords-appearance",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:my-lords-appearance",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:my-strength-and-power",
+      "code": "invalid_category_translation",
+      "detail": "silase-qedus"
+    },
+    {
+      "key": "mezmur:my-strength-and-power",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:my-home-is-filled",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:nation-of-the-cross",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:nation-of-the-cross",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:o-my-savior-i-can-do-all-through-you",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:o-the-archangel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:oh-all-that-you-have-done-for-me",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:oh-all-that-you-have-done-for-me",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:on-the-cross-i-witnessed-his-love",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:meskel-lay-yayehut-fikir",
+        "slug": "meskel-lay-yayehut-fikir-on-the-cross-i-witnessed-his-love",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:our-lord-and-king-of-peace",
+      "code": "invalid_category_translation",
+      "detail": "timket"
+    },
+    {
+      "key": "mezmur:our-lord-and-king-of-peace",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:praise-and-glory",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:saint-mary-has-ascended",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:saint-mary-has-ascended",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:she-is-born-for-us-all",
+      "code": "invalid_category_translation",
+      "detail": "lidet-le-maryam"
+    },
+    {
+      "key": "mezmur:she-is-born-for-us-all",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-almighty-god-is-gracious",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-angel",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:the-angel",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-god-of-abraham",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:the-god-of-abraham",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-holy-apostle",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:the-holy-apostle",
+      "code": "invalid_category_translation",
+      "detail": "petros-we-pawlos"
+    },
+    {
+      "key": "mezmur:the-holy-apostle",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-lord-has-risen",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:the-lord-has-risen",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-old-is-gone",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-purest-of-the-pure",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:the-purest-of-the-pure",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-spirit",
+      "code": "invalid_category_translation",
+      "detail": "menfes-qedus"
+    },
+    {
+      "key": "mezmur:the-spirit",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-stars",
+      "code": "invalid_category_translation",
+      "detail": "qedist-arsema"
+    },
+    {
+      "key": "mezmur:the-stars",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-virgin-gave-birth-to-her-creator",
+      "code": "invalid_category_translation",
+      "detail": "lidet"
+    },
+    {
+      "key": "mezmur:the-virgin-gave-birth-to-her-creator",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:the-gracious-and-adored-interceder",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:the-gracious-and-adored-interceder",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:theotokos",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:theotokos",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:there-is-no-one-like-you",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:there-is-power-in-your-words",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:through-the-desert",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:to-him-who-sits-on-the-throne",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:to-him-who-sits-on-the-throne",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:to-receive-the-lords-love",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:to-mother-mary",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:to-mother-mary",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:truly-with-glory",
+      "code": "invalid_category_translation",
+      "detail": "tinsea"
+    },
+    {
+      "key": "mezmur:truly-with-glory",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:undeserving-i-am",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:until-my-time-comes",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:until-my-time-comes",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:walk-in-the-light-of-god",
+      "code": "invalid_category_translation",
+      "detail": "meskel"
+    },
+    {
+      "key": "mezmur:walk-in-the-light-of-god",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:we-believe",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:we-believe",
+      "code": "invalid_category_translation",
+      "detail": "silase-qedus"
+    },
+    {
+      "key": "mezmur:we-believe",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:we-offer-you-glory-and-praise",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:we-will-praise-the-trinity",
+      "code": "duplicate_video",
+      "detail": {
+        "kept": "mezmur:silassien-amesginu",
+        "slug": "silassien-amesginu-we-will-praise-the-trinity",
+        "action": "Skipped; review before merging distinct recordings/hymns."
+      }
+    },
+    {
+      "key": "mezmur:when-your-mights-revealed",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:who-else-do-i-have",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:who-else-do-i-have",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:with-his-love-the-lord-rescued-me",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:with-his-mercifulness",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:with-my-unfitting",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:with-my-unfitting",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:with-my-unfitting",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:within-the-sinners-tent",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:without-you-my-lord",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:you-are-without-fault",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:you-are-without-fault",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:you-are-without-fault",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:you-who-saved-from-fire",
+      "code": "missing_video",
+      "detail": "Lyrics remain available; no YouTube link imported."
+    },
+    {
+      "key": "mezmur:you-who-saved-from-fire",
+      "code": "invalid_category_translation",
+      "detail": "qedus-gebriel"
+    },
+    {
+      "key": "mezmur:you-who-saved-from-fire",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:your-love-allured-me",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    },
+    {
+      "key": "mezmur:youre-the-soul-for-my-soul",
+      "code": "invalid_category_translation",
+      "detail": "emebetachin"
+    },
+    {
+      "key": "mezmur:youre-the-soul-for-my-soul",
+      "code": "missing_singer",
+      "detail": "No singer/choir attribution in source; left unassigned."
+    }
+  ]
+}

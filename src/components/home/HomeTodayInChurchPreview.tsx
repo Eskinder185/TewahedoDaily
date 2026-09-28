@@ -47,8 +47,6 @@ type TodaySlide = {
   objectPosition: string
 }
 
-const SLIDE_INTERVAL_MS = 6500
-
 const TYPE_LABEL_KEY: Record<TodaySlideType, string> = {
   'major-feast': 'home.today.typeLabels.majorFeast',
   'holy-day': 'home.today.typeLabels.holyDay',
@@ -276,20 +274,6 @@ function buildTodaySlides(snapshot: ChurchDaySnapshot): TodaySlide[] {
   return sorted.length > 0 ? sorted : [buildFallbackSlide(snapshot)]
 }
 
-function useReducedMotion() {
-  const [reduced, setReduced] = useState(false)
-
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const update = () => setReduced(query.matches)
-    update()
-    query.addEventListener('change', update)
-    return () => query.removeEventListener('change', update)
-  }, [])
-
-  return reduced
-}
-
 export function HomeTodayInChurchPreview() {
   const t = useTranslation()
   const { snapshot } = useHomeToday()
@@ -298,8 +282,6 @@ export function HomeTodayInChurchPreview() {
   const seasonLine = `${season.title} - ${season.summary}`
   const slides = useMemo(() => buildTodaySlides(snapshot), [snapshot])
   const [activeIndex, setActiveIndex] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const reducedMotion = useReducedMotion()
   const touchStartX = useRef<number | null>(null)
   const activeSlide = slides[activeIndex] ?? slides[0]
   const activeSlideLabel = t(activeSlide.labelKey)
@@ -308,14 +290,6 @@ export function HomeTodayInChurchPreview() {
   useEffect(() => {
     setActiveIndex(0)
   }, [slides])
-
-  useEffect(() => {
-    if (!hasMultipleSlides || paused || reducedMotion) return undefined
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % slides.length)
-    }, SLIDE_INTERVAL_MS)
-    return () => window.clearInterval(timer)
-  }, [hasMultipleSlides, paused, reducedMotion, slides.length])
 
   const showPrevious = () => {
     setActiveIndex((current) => (current - 1 + slides.length) % slides.length)
@@ -349,10 +323,6 @@ export function HomeTodayInChurchPreview() {
         </header>
         <figure
           className={styles.figure}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocus={() => setPaused(true)}
-          onBlur={() => setPaused(false)}
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
         >
@@ -442,7 +412,7 @@ export function HomeTodayInChurchPreview() {
 
       <p className={styles.meaning}>{activeSlide.summary}</p>
 
-      <Link to="/calendar" className={styles.cta}>
+      <Link to="/today" className={styles.cta}>
         {t('home.today.cta')}
       </Link>
     </PageSection>

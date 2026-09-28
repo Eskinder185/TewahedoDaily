@@ -4,9 +4,10 @@ import { useTranslation } from '../i18n'
 import { PageSection } from '../components/ui/PageSection'
 import { ChantPracticePlayer } from '../components/practice/ChantPracticePlayer'
 import { chantEntryToPracticePayload } from '../components/practice/chantPracticeModel'
-import { findMezmurBySlug } from '../lib/practice/mezmurData'
+import { findMezmurInLibrary } from '../lib/practice/chantLibraryModel'
 import { mezmurShareUrl } from '../lib/practice/mezmurSlug'
 import type { MezmurItem } from '../lib/practice/types'
+import { useChantLibrary } from '../hooks/useChantLibrary'
 import styles from './MezmurDetailPage.module.css'
 
 function mezmurDescription(item: MezmurItem, fallback: string): string {
@@ -45,7 +46,8 @@ export function MezmurDetailPage() {
   const t = useTranslation()
   const { slug } = useParams()
   const navigate = useNavigate()
-  const item = findMezmurBySlug(slug)
+  const { entries, isLoading } = useChantLibrary()
+  const item = useMemo(() => findMezmurInLibrary(entries, slug), [entries, slug])
   const [copied, setCopied] = useState(false)
 
   const shareUrl = item ? mezmurShareUrl(item.slug) : ''
@@ -61,6 +63,7 @@ export function MezmurDetailPage() {
   )
 
   useEffect(() => {
+    if (isLoading) return
     const previousTitle = document.title
     if (!item) {
       document.title = `Tewahedo Daily | ${t('mezmurPractice.player.notFoundTitle')}`
@@ -85,7 +88,7 @@ export function MezmurDetailPage() {
     return () => {
       document.title = previousTitle
     }
-  }, [item, t])
+  }, [isLoading, item, t])
 
   const copyShareLink = async () => {
     if (!shareUrl) return
@@ -96,6 +99,16 @@ export function MezmurDetailPage() {
     } catch {
       window.prompt(t('mezmurPractice.library.copyPrompt'), shareUrl)
     }
+  }
+
+  if (isLoading) {
+    return (
+      <PageSection variant="tint">
+        <div className={styles.notFound} role="status" aria-live="polite">
+          <p className={styles.notFoundDeck}>{t('practice.loading')}</p>
+        </div>
+      </PageSection>
+    )
   }
 
   if (!item || !payload) {
@@ -126,6 +139,9 @@ export function MezmurDetailPage() {
           badges={mezmurBadges(item)}
           headerActions={
             <div className={styles.shareGroup}>
+              <Link className={styles.shareBtn} to={`/suggest-correction?${new URLSearchParams({ type: 'correction', legacy_key: `mezmur:${item.id}`, title: item.title, page: window.location.origin + window.location.pathname })}`}>
+                Suggest a Correction
+              </Link>
               <button type="button" className={styles.shareBtn} onClick={copyShareLink}>
                 {t('mezmurPractice.player.share')}
               </button>

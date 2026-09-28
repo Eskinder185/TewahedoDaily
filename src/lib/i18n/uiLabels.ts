@@ -17,6 +17,7 @@ export const UI_LABELS = {
   navLearn: { en: 'Learn', am: 'ይማሩ' },
   navPray: { en: 'Pray', am: 'ይጸልዩ' },
   navKeepDay: { en: 'Calendar', am: 'ቀን መቁጠሪያ' },
+  navSaved: { en: 'Saved', am: 'የተቀመጡ' },
   navTodayPath: { en: 'Today in the Church', am: 'ዛሬ በቤተ ክርስቲያን' },
   navModeLearnDesc: { en: 'Practice chants and movement', am: 'መዝሙርና እንቅስቃሴ ይለማመዱ' },
   navModePrayDesc: { en: 'Read daily prayers and sacred texts', am: 'የዕለት ጸሎቶችን እና ቅዱስ ንባብን ያንብቡ' },

@@ -1,4 +1,4 @@
-import type { ChantLibraryEntry } from './chantLibrary'
+import type { ChantLibraryEntry } from './chantLibraryModel'
 
 const MAX = 118
 

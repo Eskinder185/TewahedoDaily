@@ -31,7 +31,7 @@ export function HeroSection() {
           <p className={styles.tagline}>{t('home.hero.tagline')}</p>
           <div className={styles.actions}>
             <ButtonLink to="/practice">{t('home.hero.primaryCta')}</ButtonLink>
-            <ButtonLink to="/calendar" variant="ghost">
+            <ButtonLink to="/today" variant="ghost">
               {t('home.hero.secondaryCta')}
             </ButtonLink>
           </div>
