@@ -42,8 +42,8 @@ Mezmur importer and should not be used to publish new CMS Mezmur.
 4. Add the project URL and browser-safe publishable key:
 
    ```dotenv
-   VITE_SUPABASE_URL=https://your-project.supabase.co
-   VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_replace_me
+   VITE_SUPABASE_URL=https://tgvhpibzzkqxkcumrivh.supabase.co
+   VITE_SUPABASE_PUBLISHABLE_KEY=your_browser_safe_publishable_or_anon_key
    ```
 
 5. For the one-time/local import only, also add the non-Vite variables below.

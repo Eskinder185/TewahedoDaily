@@ -4,7 +4,7 @@ import { chromium } from 'playwright'
 import { createServer } from 'vite'
 import { mkdir } from 'node:fs/promises'
 process.env.VITE_SUPABASE_URL = 'https://public-test.supabase.co'
-process.env.VITE_SUPABASE_ANON_KEY = 'sb_publishable_test'
+process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_test'
 process.env.VITE_PUBLIC_MEZMUR_SOURCE = 'supabase'
 process.env.VITE_TURNSTILE_SITE_KEY = 'test-site-key'
 const server = await createServer({

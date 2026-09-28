@@ -52,14 +52,14 @@ The Auth email-change trigger keeps provisioned profile email in sync.
 Copy `.env.example` to `.env.local` and set:
 
 ```dotenv
-VITE_SUPABASE_URL=https://YOUR_PROJECT.supabase.co
-VITE_SUPABASE_ANON_KEY=YOUR_BROWSER_SAFE_ANON_OR_PUBLISHABLE_KEY
+VITE_SUPABASE_URL=https://tgvhpibzzkqxkcumrivh.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=YOUR_BROWSER_SAFE_PUBLISHABLE_OR_ANON_KEY
 ```
 
-The existing `VITE_SUPABASE_PUBLISHABLE_KEY` is a compatibility fallback. The
-requested `VITE_SUPABASE_ANON_KEY` takes precedence. These values are public and
-bundled at build time. Set them in Cloudflare Pages build environment variables
-for the intended environment, then redeploy. Use Node 22 or later.
+`VITE_SUPABASE_ANON_KEY` remains a compatibility fallback if present. Prefer
+`VITE_SUPABASE_PUBLISHABLE_KEY`. These values are public and bundled at build
+time. Set them in Cloudflare Pages → Settings → Environment variables (Production),
+then **redeploy** so Vite embeds them. Use Node 22 or later.
 
 NEVER put service-role/secret keys in any `VITE_` variable or frontend source.
 `SUPABASE_SECRET_KEY` is used only by the existing local importer. Backend keys

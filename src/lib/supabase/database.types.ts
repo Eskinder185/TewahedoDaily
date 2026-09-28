@@ -145,6 +145,7 @@ export type Database = {
       public_discovery_facets: { Args: Record<string,never>; Returns: Json }
       search_public_content: { Args: {q:string;page_number:number}; Returns: Json }
       public_favorites: { Args: {page_number:number}; Returns: Json }
+      submit_community_submission: { Args: { payload: Json }; Returns: Json }
       review_submission: { Args: { submission_id: string; new_status: SubmissionStatus; notes: string; expected_updated_at: string }; Returns: CommunitySubmission[] }
       convert_submission: { Args: { submission_id: string; expected_updated_at: string; include_credit: boolean }; Returns: string }
       submission_duplicates: { Args: { submission_id: string }; Returns: Duplicate[] }

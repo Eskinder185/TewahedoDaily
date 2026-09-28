@@ -1,10 +1,10 @@
-﻿/** Mocked browser integration test; no Supabase project or credentials required. */
+/** Mocked browser integration test; no Supabase project or credentials required. */
 import assert from 'node:assert/strict'
 import { chromium } from 'playwright'
 import { createServer } from 'vite'
 
 process.env.VITE_SUPABASE_URL = 'https://cms-test.supabase.co'
-process.env.VITE_SUPABASE_ANON_KEY = 'sb_publishable_test_only'
+process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_test_only'
 const server = await createServer({ server: { host: '127.0.0.1', port: 4175, strictPort: true } })
 await server.listen()
 let browser

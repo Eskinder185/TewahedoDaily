@@ -35,13 +35,15 @@ export async function uploadContentFile(
   } = await db().auth.getSession()
   if (!session) throw new Error('Sign in before uploading.')
   const key =
-    import.meta.env.VITE_SUPABASE_ANON_KEY ||
-    import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
+    import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ||
+    import.meta.env.VITE_SUPABASE_ANON_KEY
+  const url = import.meta.env.VITE_SUPABASE_URL
+  if (!url || !key) throw new Error('Supabase is not configured.')
   await new Promise<void>((resolve, reject) => {
     const xhr = new XMLHttpRequest()
     xhr.open(
       'POST',
-      `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/${bucket}/${name.split('/').map(encodeURIComponent).join('/')}`,
+      `${url}/storage/v1/object/${bucket}/${name.split('/').map(encodeURIComponent).join('/')}`,
     )
     xhr.setRequestHeader('apikey', key)
     xhr.setRequestHeader('Authorization', `Bearer ${session.access_token}`)

@@ -77,9 +77,9 @@ Database helper: `cms_private.current_role()`.
 ## Community submission workflow
 
 1. Visitor posts `/submit-mezmur` or `/suggest-correction`
-2. Browser → `POST /api/submissions` (Turnstile + origin check)
-3. Function calls `receive_community_submission` as **service_role**
-4. Row created with `status = submitted`, `public_reference = TD-YYYY-#####`
+2. Browser validates input, then calls Supabase RPC `submit_community_submission` with the **publishable** key (shared Vite client — no service role in the browser)
+3. RPC inserts into `community_submissions` with `status = submitted` and returns `public_reference` (e.g. `TD-YYYY-#####`)
+4. Optional legacy path: Cloudflare Pages Function `POST /api/submissions` + Turnstile + `receive_community_submission` (service role, server-only)
 5. Editor/admin reviews via RPCs `review_submission` / `submission_duplicates`
 6. Approve → `convert_submission` creates **draft** mezmur, sets `converted_to_content`, links `related_content_id`
 7. Staff edits draft, submits for review, publishes (community-sourced mezmur cannot skip review)
@@ -95,7 +95,7 @@ Public read of published media only; staff upload per role helpers.
 
 ### Browser (Cloudflare Pages build vars)
 - `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY` (or `VITE_SUPABASE_PUBLISHABLE_KEY`)
+- `VITE_SUPABASE_PUBLISHABLE_KEY` (`VITE_SUPABASE_ANON_KEY` still accepted as fallback)
 - `VITE_TURNSTILE_SITE_KEY`
 - optional `VITE_PUBLIC_MEZMUR_SOURCE=supabase`
 
@@ -110,9 +110,9 @@ Public read of published media only; staff upload per role helpers.
 
 1. **Production deploy gap (critical):** Live bundle at tewahedodaily.pages.dev (inspected 2026-09-28) did **not** contain Admin CMS route code — `/admin/login` renders blank. Redeploy this repo with Vite env vars set at build time.
 2. `/admin/users` and `/admin/settings` are placeholders — membership is via SQL/`set_cms_member` only until a Users UI ships.
-3. `content_reports` table exists but is unused; corrections use `community_submissions`. No anon INSERT path (intentional until a verified endpoint exists).
+3. `content_reports` table exists but is unused; corrections use `community_submissions`. Public inserts go through `submit_community_submission` (no table SELECT for anon).
 4. Version “restore” loads a draft into the form; it does not auto-write until Save.
-5. Apply migration `20260928220000_admin_cms_repair.sql` on project `tgvhpibzzkqxkcumrivh` (editor taxonomy + indexes).
+5. Apply migrations through `20260928230000_browser_community_submit.sql` on project `tgvhpibzzkqxkcumrivh` (editor taxonomy + browser submit RPC).
 6. **Convert UX:** `convert_submission` uses `lower(public_reference)` as slug and does not map free-text `singer_name` / suggested tags to taxonomy FKs — editors must finish those fields before publish.
 7. **Taxonomy public read:** `taxonomy_read` is `using (true)`, so archived categories/singers/tags remain visible to anon (not a write risk).
 8. **`SITE_URL` must match deploy origin exactly** or `/api/submissions` returns 403.

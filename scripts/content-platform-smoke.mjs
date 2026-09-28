@@ -1,10 +1,10 @@
-﻿/** Browser integration with mocked Supabase HTTP. SQL security is tested separately. */
+/** Browser integration with mocked Supabase HTTP. SQL security is tested separately. */
 import assert from 'node:assert/strict'
 import { mkdir } from 'node:fs/promises'
 import { chromium } from 'playwright'
 import { createServer } from 'vite'
 process.env.VITE_SUPABASE_URL = 'https://cms-test.supabase.co'
-process.env.VITE_SUPABASE_ANON_KEY = 'sb_publishable_test_only'
+process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_test_only'
 const server = await createServer({
   server: { host: '127.0.0.1', port: 4181, strictPort: true },
 })
@@ -57,7 +57,7 @@ try {
       {
         id: 'aaaaaaaa-0000-0000-0000-000000000001',
         name: 'Praise',
-        name_amharic: 'ምስጋና',
+        name_amharic: '????',
         slug: 'praise',
         type: 'mezmur',
         is_archived: false,
@@ -278,7 +278,7 @@ try {
     await page
       .getByLabel('English text')
       .fill('Readable English ' + kind)
-    await page.getByLabel('Amharic text', { exact: true }).fill('የቅዱስ ታሪክ')
+    await page.getByLabel('Amharic text', { exact: true }).fill('???? ???')
     await page.getByLabel('Oromo text', { exact: true }).fill('Galata ' + kind)
     if (kind === 'articles')
       await page.getByLabel('Teaching category').selectOption('Bible study')
@@ -369,18 +369,18 @@ try {
       throw e
     })
   await page.getByLabel('Daily feasts').selectOption(tables.feasts[0].id)
-  await page.getByLabel('Bible reading references').fill('John 1:1–14')
+  await page.getByLabel('Bible reading references').fill('John 1:1�14')
   await page.getByLabel('Fasting indicator').selectOption('Fasting day')
   await page
     .getByLabel('Homepage announcement')
-    .fill('Welcome to today’s readings')
+    .fill('Welcome to today�s readings')
   await page.getByLabel('Publish this schedule').check()
   await page.getByRole('button', { name: 'Save schedule', exact: true }).click()
   await page.getByText('Schedule saved.', { exact: false }).waitFor()
   assert.equal(tables.daily_content[0].published, true)
   await page.goto(base + '/today')
-  await page.getByText('Welcome to today’s readings', { exact: true }).waitFor()
-  await page.getByText('John 1:1–14', { exact: true }).waitFor()
+  await page.getByText('Welcome to today�s readings', { exact: true }).waitFor()
+  await page.getByText('John 1:1�14', { exact: true }).waitFor()
   for (const path of [
     '/saints',
     '/feasts',

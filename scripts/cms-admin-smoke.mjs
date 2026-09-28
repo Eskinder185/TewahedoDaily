@@ -1,10 +1,10 @@
-﻿/** Browser integration with mocked Supabase HTTP. SQL security is tested separately. */
+/** Browser integration with mocked Supabase HTTP. SQL security is tested separately. */
 import assert from 'node:assert/strict'
 import { mkdir } from 'node:fs/promises'
 import { chromium } from 'playwright'
 import { createServer } from 'vite'
 process.env.VITE_SUPABASE_URL = 'https://cms-test.supabase.co'
-process.env.VITE_SUPABASE_ANON_KEY = 'sb_publishable_test_only'
+process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_test_only'
 const server = await createServer({ server: { host: '127.0.0.1', port: 4176, strictPort: true } })
 await server.listen()
 let browser
@@ -23,7 +23,7 @@ try {
   const now = () => new Date(++clock).toISOString()
   const tables = {
     community_submissions: [], mezmur: [], saints: [], feasts: [], prayers: [], articles: [], content_versions: [], mezmur_tags: [],
-    categories: [{ id: 'aaaaaaaa-0000-0000-0000-000000000001', name: 'Praise', name_amharic: 'ምስጋና', slug: 'praise', type: 'mezmur', is_archived: false }],
+    categories: [{ id: 'aaaaaaaa-0000-0000-0000-000000000001', name: 'Praise', name_amharic: '????', slug: 'praise', type: 'mezmur', is_archived: false }],
     singers: [{ id: 'aaaaaaaa-0000-0000-0000-000000000002', name: 'Choir', is_archived: false }],
     tags: [{ id: 'aaaaaaaa-0000-0000-0000-000000000003', name: 'Sunday', slug: 'sunday' }],
   }
@@ -99,7 +99,7 @@ try {
   await page.getByRole('alert').filter({ hasText: 'Title is required' }).waitFor()
   await page.getByLabel('Title *', { exact: true }).fill('Test Hymn')
   await page.getByRole('button', { name: 'Generate from title' }).click()
-  await page.getByLabel('Amharic title', { exact: true }).fill('ምስጋና')
+  await page.getByLabel('Amharic title', { exact: true }).fill('????')
   await page.getByLabel('English lyrics', { exact: true }).fill('Praise in the morning\nPeace in the evening')
   await page.getByLabel('Singer', { exact: true }).selectOption(tables.singers[0].id)
   await page.getByLabel('Category', { exact: true }).selectOption(tables.categories[0].id)
