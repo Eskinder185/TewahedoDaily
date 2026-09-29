@@ -120,10 +120,10 @@ Public read of published media only; staff upload per role helpers.
 
 ## Manual Supabase / Cloudflare actions
 
-1. Confirm all migrations through `20260928220000_admin_cms_repair.sql` applied.
-2. Create storage buckets if missing (see `20260928000100_cms_storage.sql`).
-3. Provision first `super_admin` via trusted SQL / `set_cms_member` (no open signup grants roles).
-4. Set Cloudflare Pages **build** env: `VITE_SUPABASE_*`, Turnstile site key.
-5. Set Pages **runtime** secrets for `/api/submissions` (see `.dev.vars.example`). Ensure `SITE_URL` matches the live origin.
-6. Redeploy so admin chunks ship in the production JS bundle.
-7. Smoke-test Flows A–E from the audit checklist after deploy.
+1. Confirm all migrations through `20260928240000_profiles_access_repair.sql` applied (fixes profiles 403 on CMS login).
+2. If you are the first CMS user, run in the Supabase SQL editor:
+   `select public.bootstrap_first_super_admin('YOUR_AUTH_USER_UUID');`
+3. Create storage buckets if missing (see `20260928000100_cms_storage.sql`).
+4. Set Cloudflare Pages **build** env: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY` (and optional Turnstile).
+5. Redeploy so admin chunks + env ship in the production JS bundle.
+6. Smoke-test Flows A–E from the audit checklist after deploy.

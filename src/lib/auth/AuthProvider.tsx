@@ -22,11 +22,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       if (next && supabase) {
         const { data, error: profileError } = await supabase.from('profiles').select('*').eq('id', next.user.id).maybeSingle()
-        if (profileError) throw profileError
+        if (profileError) {
+          const code = (profileError as { code?: string }).code
+          if (code === '42501' || /permission denied|403/i.test(profileError.message)) {
+            throw new Error(
+              'Your account signed in, but the profiles table blocked access (HTTP 403). Apply the profiles repair migration in Supabase, then refresh.',
+            )
+          }
+          throw profileError
+        }
         if (request === generation.current) setProfile(data)
       }
-    } catch {
-      if (request === generation.current) setError('Unable to verify CMS access. Try again.')
+    } catch (cause) {
+      if (request === generation.current) {
+        setError(cause instanceof Error ? cause.message : 'Unable to verify CMS access. Try again.')
+      }
     } finally {
       if (request === generation.current) setLoading(false)
     }

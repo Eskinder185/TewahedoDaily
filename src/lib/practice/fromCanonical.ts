@@ -37,9 +37,11 @@ function mezmurCategoryDetail(
 }
 
 export function mezmurEntryToMezmurItem(e: MezmurEntry): MezmurItem {
-  const youtubeId = parseYoutubeVideoId((e as any).youtubeUrl)
-  if (!youtubeId) {
-    console.warn(`[TewahedoDaily] Missing YouTube id for mezmur "${e.id}"`, { youtubeUrl: (e as any).youtubeUrl })
+  const youtubeUrl = String((e as { youtubeUrl?: unknown }).youtubeUrl ?? '').trim()
+  const youtubeId = parseYoutubeVideoId(youtubeUrl)
+  // Empty YouTube is valid (lyrics-only). Warn only when a URL is present but unusable.
+  if (import.meta.env.DEV && youtubeUrl && !youtubeId) {
+    console.warn(`[TewahedoDaily] Missing YouTube id for mezmur "${e.id}"`, { youtubeUrl })
   }
   const detail = mezmurCategoryDetail(e.category)
   const seasonParts: string[] = []

@@ -84,4 +84,6 @@ grant execute on function public.submit_community_submission(jsonb) to anon, aut
 -- Direct table INSERT remains denied for browser roles (RPC only).
 -- Staff SELECT policy unchanged.
 
+notify pgrst, 'reload schema';
+
 commit;
