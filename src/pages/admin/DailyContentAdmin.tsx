@@ -11,6 +11,7 @@ import { lookupContent } from '../../lib/cms/contentService'
 import { errorMessage } from '../../lib/cms/mezmurService'
 import { AsyncNotice, Modal } from './AdminUi'
 import s from './Admin.module.css'
+
 export function DailyContentAdmin() {
   const [day, setDay] = useState(todayInAddis())
   const unsaved = useRef(false)
@@ -47,14 +48,12 @@ export function DailyContentAdmin() {
           onDirty={trackChanges}
           initial={
             result.data || {
-              day,
+              content_date: day,
               mezmur_id: null,
               saint_id: null,
               feast_id: null,
-              bible_references: '',
-              fasting_indicator: 'Not specified',
-              fasting_notes: '',
               announcement: '',
+              summary: '',
               published: false,
             }
           }
@@ -63,6 +62,7 @@ export function DailyContentAdmin() {
     </>
   )
 }
+
 function DailyForm({
   initial,
   onDirty,
@@ -114,8 +114,16 @@ function DailyForm({
         void save()
       }}
     >
-      {error && <p role="alert">{error}</p>}
-      {message && <p role="status">{message}</p>}
+      {error && (
+        <p role="alert" className={s.error}>
+          {error}
+        </p>
+      )}
+      {message && (
+        <p role="status" className={s.success}>
+          {message}
+        </p>
+      )}
       <fieldset disabled={busy} className={s.fields}>
         {(
           [
@@ -132,36 +140,11 @@ function DailyForm({
           />
         ))}
         <label>
-          Bible reading references
+          Summary
           <textarea
             maxLength={2000}
-            value={item.bible_references}
-            onChange={(e) =>
-              setItem({ ...item, bible_references: e.target.value })
-            }
-          />
-        </label>
-        <label>
-          Fasting indicator
-          <select
-            value={item.fasting_indicator}
-            onChange={(e) =>
-              setItem({ ...item, fasting_indicator: e.target.value })
-            }
-          >
-            {['Not specified', 'Fasting day', 'No fasting'].map((x) => (
-              <option key={x}>{x}</option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Fasting notes
-          <textarea
-            maxLength={2000}
-            value={item.fasting_notes}
-            onChange={(e) =>
-              setItem({ ...item, fasting_notes: e.target.value })
-            }
+            value={item.summary}
+            onChange={(e) => setItem({ ...item, summary: e.target.value })}
           />
         </label>
         <label>
@@ -195,6 +178,7 @@ function DailyForm({
     </form>
   )
 }
+
 function Selection({
   kind,
   value,

@@ -4,6 +4,7 @@ const ID = '([a-zA-Z0-9_-]{11})'
 export function parseYoutubeVideoId(input: string | undefined | null): string | null {
   if (!input || typeof input !== 'string') return null
   const u = input.trim()
+  if (!u) return null
   const fromQuery = u.match(new RegExp(`[?&]v=${ID}(?:&|$)`))
   if (fromQuery) return fromQuery[1]
   const fromShort = u.match(new RegExp(`youtu\\.be\\/${ID}(?:\\?|$)`))
@@ -18,14 +19,39 @@ export function parseYoutubeVideoId(input: string | undefined | null): string | 
   return null
 }
 
+export function isValidYoutubeVideoId(id: string | undefined | null): id is string {
+  return typeof id === 'string' && /^[a-zA-Z0-9_-]{11}$/.test(id.trim())
+}
+
+const warnedMalformed = new Set<string>()
+
+/**
+ * Development-only: log once when a non-empty URL cannot be parsed.
+ * Empty / missing YouTube is intentional for many legacy mezmur — never warn for that.
+ */
+export function warnMalformedYoutubeUrlOnce(
+  context: string,
+  youtubeUrl: string | undefined | null,
+): void {
+  if (!import.meta.env.DEV) return
+  const raw = typeof youtubeUrl === 'string' ? youtubeUrl.trim() : ''
+  if (!raw) return
+  if (parseYoutubeVideoId(raw)) return
+  if (warnedMalformed.has(context)) return
+  warnedMalformed.add(context)
+  console.warn(`[TewahedoDaily] Unusable YouTube URL for ${context}`, { youtubeUrl: raw })
+}
+
 export function youtubeThumbnailUrl(
   videoId: string,
   quality: 'hq' | 'maxres' = 'hq',
-): string {
+): string | undefined {
+  if (!isValidYoutubeVideoId(videoId)) return undefined
   const slug = quality === 'maxres' ? 'maxresdefault' : 'hqdefault'
-  return `https://img.youtube.com/vi/${videoId}/${slug}.jpg`
+  return `https://img.youtube.com/vi/${videoId.trim()}/${slug}.jpg`
 }
 
-export function youtubeWatchUrl(videoId: string): string {
-  return `https://www.youtube.com/watch?v=${videoId}`
+export function youtubeWatchUrl(videoId: string): string | undefined {
+  if (!isValidYoutubeVideoId(videoId)) return undefined
+  return `https://www.youtube.com/watch?v=${videoId.trim()}`
 }

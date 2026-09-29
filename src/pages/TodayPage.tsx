@@ -165,26 +165,19 @@ export function TodayPage() {
                 )
               })}
             </div>
-            {(editorial.data.fasting_indicator ||
-              editorial.data.fasting_notes ||
-              editorial.data.bible_references) && (
+            {(editorial.data.summary || editorial.data.announcement) && (
               <div className={publicStyles.card}>
-                {editorial.data.fasting_indicator || editorial.data.fasting_notes ? (
+                {editorial.data.summary ? (
                   <>
-                    <h3>Prayer and fasting</h3>
-                    {editorial.data.fasting_indicator ? (
-                      <p>{editorial.data.fasting_indicator}</p>
-                    ) : null}
-                    {editorial.data.fasting_notes ? (
-                      <p>{editorial.data.fasting_notes}</p>
-                    ) : null}
+                    <h3>Today’s note</h3>
+                    <p>{editorial.data.summary}</p>
                   </>
                 ) : null}
-                {editorial.data.bible_references ? (
+                {editorial.data.announcement ? (
                   <>
-                    <h3>Bible reading references</h3>
+                    <h3>Announcement</h3>
                     <p className={publicStyles.lyrics}>
-                      {editorial.data.bible_references}
+                      {editorial.data.announcement}
                     </p>
                   </>
                 ) : null}

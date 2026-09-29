@@ -3,8 +3,10 @@ dist/
 .vite/
 .env
 .env.local
+.env.import
 .env.*.local
 !.env.example
+!.env.import.example
 .dev.vars
 .dev.vars.*
 !.dev.vars.example

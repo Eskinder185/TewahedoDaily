@@ -15,6 +15,7 @@ import {
   listContent,
   lookupContent,
   saveContent,
+  supportsContentField,
   teachingCategories,
   type EditorialContent,
   type EditorialKind,
@@ -200,11 +201,14 @@ function Editor({
       setError('Enter a title and a lowercase, hyphenated slug.')
       return
     }
-    for (const ref of [input.thumbnail_url, input.audio_url])
+    for (const key of ['thumbnail_url', 'audio_url'] as const) {
+      if (!supportsContentField(kind, key)) continue
+      const ref = input[key]
       if (ref && !ref.startsWith('storage://') && !/^https:\/\//.test(ref)) {
         setError('Media must use an HTTPS URL or a Storage reference.')
         return
       }
+    }
     if (
       (['rejected', 'archived'].includes(status) ||
         (row?.status === 'published' && status !== 'published')) &&
@@ -276,23 +280,20 @@ function Editor({
         <fieldset disabled={!canEdit || busy || uploading} className={s.fields}>
           {text('title', 'Title / name')}
           {text('title_amharic', 'Amharic title / name')}
-          {text('title_oromo', 'Oromo title / name')}
+          {supportsContentField(kind, 'title_oromo') && text('title_oromo', 'Oromo title / name')}
           {text('slug', 'Slug')}
-          {text('description', 'Description', true)}
-          {text('body_amharic', 'Amharic text', true)}
-          {text('body', 'English text', true)}
-          {text('body_oromo', 'Oromo text', true)}
+          {supportsContentField(kind, 'description') && text('description', 'Description', true)}
+          {supportsContentField(kind, 'body_amharic') && text('body_amharic', 'Amharic text', true)}
+          {supportsContentField(kind, 'body') && text('body', 'English text', true)}
+          {supportsContentField(kind, 'body_oromo') && text('body_oromo', 'Oromo text', true)}
           {kind === 'prayers' &&
+            supportsContentField(kind, 'transliteration') &&
             text('transliteration', 'Transliteration', true)}
-          {(kind === 'saints' || kind === 'feasts') && (
+          {kind === 'saints' && supportsContentField(kind, 'commemoration_month') && (
             <>
               {text('date_notes', 'Date information')}
               {(['month', 'day'] as const).map((part) => {
-                const key = (
-                  kind === 'saints'
-                    ? `commemoration_${part}`
-                    : `ethiopian_${part}`
-                ) as keyof EditorialContent
+                const key = `commemoration_${part}` as keyof EditorialContent
                 return (
                   <label key={key}>
                     Ethiopian {part}
@@ -310,7 +311,28 @@ function Editor({
               })}
             </>
           )}
-          {kind === 'feasts' && (
+          {kind === 'feasts' && supportsContentField(kind, 'ethiopian_month') && (
+            <>
+              {(['month', 'day'] as const).map((part) => {
+                const key = `ethiopian_${part}` as keyof EditorialContent
+                return (
+                  <label key={key}>
+                    Ethiopian {part}
+                    <input
+                      type="number"
+                      min={1}
+                      max={part === 'month' ? 13 : 30}
+                      value={String(input[key] ?? '')}
+                      onChange={(e) =>
+                        set(key, e.target.value ? Number(e.target.value) : null)
+                      }
+                    />
+                  </label>
+                )
+              })}
+            </>
+          )}
+          {kind === 'feasts' && supportsContentField(kind, 'is_movable') && (
             <>
               <label className={s.check}>
                 <input
@@ -320,10 +342,11 @@ function Editor({
                 />
                 Movable feast
               </label>
-              {text('fasting_info', 'Fasting information', true)}
+              {supportsContentField(kind, 'fasting_info') &&
+                text('fasting_info', 'Fasting information', true)}
             </>
           )}
-          {kind === 'articles' && (
+          {kind === 'articles' && supportsContentField(kind, 'teaching_category') && (
             <label>
               Teaching category
               <select
@@ -339,8 +362,10 @@ function Editor({
               </select>
             </label>
           )}
-          {text('thumbnail_url', 'Image URL / Storage reference')}
-          {text('audio_url', 'Audio URL / Storage reference')}
+          {supportsContentField(kind, 'thumbnail_url') &&
+            text('thumbnail_url', 'Image URL / Storage reference')}
+          {supportsContentField(kind, 'audio_url') &&
+            text('audio_url', 'Audio URL / Storage reference')}
           {row ? (
             <ContentUpload
               onBusy={setUploading}
@@ -353,10 +378,12 @@ function Editor({
           ) : (
             <p>Save a draft before uploading files.</p>
           )}
-          <RelatedPicker
-            value={input.related_content || []}
-            onChange={(value) => set('related_content', value)}
-          />
+          {supportsContentField(kind, 'related_content') && (
+            <RelatedPicker
+              value={input.related_content || []}
+              onChange={(value) => set('related_content', value)}
+            />
+          )}
           <div className={s.actions}>
             <button type="button" onClick={() => void save('draft')}>
               Save Draft

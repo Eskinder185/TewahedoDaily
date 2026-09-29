@@ -9,6 +9,7 @@ export { getMockDailyChurchData } from './mocks/churchDay.mock'
 
 export {
   parseYoutubeVideoId,
+  isValidYoutubeVideoId,
   youtubeThumbnailUrl,
   youtubeWatchUrl,
 } from './utils/youtube'

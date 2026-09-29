@@ -1,3 +1,8 @@
+/**
+ * Chant library loader for legacy PracticePage / werb workshop only.
+ * Public /practice Mezmur library uses src/lib/publicContent/service.ts (public.mezmur).
+ * This module must not be the public hymn source of truth.
+ */
 import type { MezmurCategoryDetail, MezmurEntry } from '../../data/types/mezmur'
 import type { WerbEntry } from '../../data/types/werb'
 import type { Database, Json } from '../supabase/database.types'
@@ -115,21 +120,23 @@ function compareEntries(a: ChantLibraryEntry, b: ChantLibraryEntry): number {
 }
 
 async function loadLocalLibrary(warning?: Error): Promise<ChantLibraryResult> {
+  // Legacy PracticePage only. Public library never imports JSON chant packs.
+  if (!useLegacyMezmur) {
+    return { entries: [], source: 'local', warning }
+  }
   const { CHANT_LIBRARY } = await import('./chantLibrary')
-  return { entries: useLegacyMezmur ? CHANT_LIBRARY : CHANT_LIBRARY.filter(entry=>entry.form==='werb'), source: 'local', warning }
+  return { entries: CHANT_LIBRARY, source: 'local', warning }
 }
 
-async function fetchSupabaseLibrary(): Promise<ChantLibraryEntry[]> {
+async function fetchLegacyChantsTable(): Promise<ChantLibraryEntry[]> {
   if (!supabase) return []
 
   const rows: ChantRow[] = []
   for (let from = 0; ; from += PAGE_SIZE) {
-    let query = supabase
+    const { data, error } = await supabase
       .from('chants')
       .select('*')
       .eq('published', true)
-    if (!useLegacyMezmur) query = query.eq('form', 'werb')
-    const { data, error } = await query
       .order('title', { ascending: true })
       .range(from, from + PAGE_SIZE - 1)
 
@@ -145,10 +152,20 @@ async function fetchSupabaseLibrary(): Promise<ChantLibraryEntry[]> {
 }
 
 async function loadLibrary(): Promise<ChantLibraryResult> {
+  if (!useLegacyMezmur) {
+    return {
+      entries: [],
+      source: 'supabase',
+      warning: new Error(
+        'Public mezmur library uses public.mezmur via publicContent/service — not this loader.',
+      ),
+    }
+  }
+
   if (!supabase) return loadLocalLibrary()
 
   try {
-    const entries = await fetchSupabaseLibrary()
+    const entries = await fetchLegacyChantsTable()
     if (!entries.length) {
       throw new Error('Supabase returned no published chants')
     }

@@ -1,6 +1,10 @@
-import { useCallback, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import { detail, type PublicMezmur } from '../lib/publicContent/service'
+import { lazy, Suspense, useCallback, useMemo, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import {
+  detail,
+  publicMezmurToPracticePayload,
+  type PublicMezmur,
+} from '../lib/publicContent/service'
 import { useAsync } from '../lib/cms/useAsync'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { useGlobalAudio } from '../lib/publicContent/audio'
@@ -8,6 +12,13 @@ import { Artwork, Notice } from '../components/publicContent/PublicUi'
 import { FavoriteButton } from '../components/publicContent/FavoriteButton'
 import { parseYoutubeVideoId } from '../data/utils/youtube'
 import s from '../components/publicContent/PublicContent.module.css'
+
+const ChantPracticePlayer = lazy(() =>
+  import('../components/practice/ChantPracticePlayer').then((m) => ({
+    default: m.ChantPracticePlayer,
+  })),
+)
+
 export function PublicMezmurDetail() {
   const { slug } = useParams()
   const result = useAsync(useCallback(() => detail(slug || ''), [slug]))
@@ -19,13 +30,19 @@ export function PublicMezmurDetail() {
         <>
           <h1>Mezmur not found</h1>
           <p>This hymn is not currently published.</p>
+          <div className={s.actions}>
+            <Link to="/practice">Back to library</Link>
+            <Link to="/submit-mezmur">Contribute a Mezmur</Link>
+          </div>
         </>
       )}
       {result.data && <MezmurBody key={result.data.id} item={result.data} />}
     </section>
   )
 }
+
 function MezmurBody({ item }: { item: PublicMezmur }) {
+  const navigate = useNavigate()
   const choices = (
     [
       { key: 'lyrics_amharic', label: 'Amharic lyrics', lang: 'am' },
@@ -49,39 +66,71 @@ function MezmurBody({ item }: { item: PublicMezmur }) {
     item.thumbnail_url?.startsWith('https:') ? item.thumbnail_url : undefined,
     canonical,
   )
+
+  const practicePayload = useMemo(() => publicMezmurToPracticePayload(item), [item])
+  const badges = [
+    item.form === 'werb' ? 'Werb' : 'Mezmur',
+    ...item.languages,
+    item.category_name,
+    item.singer_name,
+  ].filter(Boolean) as string[]
+
   return (
     <article>
       <header>
-        <p className={s.eyebrow}>{item.category_name || 'Mezmur'}</p>
+        {item.category_name ? <p className={s.eyebrow}>{item.category_name}</p> : null}
         <h1>{item.title}</h1>
-        {item.title_amharic && <p lang="am">{item.title_amharic}</p>}
-        {item.title_oromo && <p lang="om">{item.title_oromo}</p>}
-        <p>{item.singer_name || 'Singer / choir not recorded'}</p>
-        <p>{item.description}</p>
-        <div className={s.actions}>
-          {item.tags.map((tag) => (
-            <Link
-              key={tag.id}
-              to={`/practice?${new URLSearchParams(tag.kind === 'occasion' ? { occasion: tag.slug } : { q: tag.name })}`}
-            >
-              {tag.name}
-            </Link>
-          ))}
-        </div>
-      </header>
-      <div className={s.detail}>
-        <div>
-          <div className={s.tabs} aria-label="Lyrics language">
-            {choices.map((choice) => (
-              <button
-                key={choice.key}
-                aria-pressed={active === choice.key}
-                onClick={() => setActive(choice.key)}
+        {item.title_amharic ? <p lang="am">{item.title_amharic}</p> : null}
+        {item.title_oromo ? <p lang="om">{item.title_oromo}</p> : null}
+        {item.singer_name ? <p>{item.singer_name}</p> : null}
+        {item.description ? <p>{item.description}</p> : null}
+        {item.tags.length > 0 ? (
+          <div className={s.actions}>
+            {item.tags.map((tag) => (
+              <Link
+                key={tag.id}
+                to={`/practice?${new URLSearchParams(
+                  tag.kind === 'occasion' ? { occasion: tag.slug } : { q: tag.name },
+                )}`}
               >
-                {choice.label}
-              </button>
+                {tag.name}
+              </Link>
             ))}
           </div>
+        ) : null}
+      </header>
+
+      {(practicePayload.videoId ||
+        practicePayload.audioUrl ||
+        practicePayload.lyricsGez ||
+        practicePayload.transliterationLyrics) && (
+        <Suspense fallback={<p role="status">Loading practice player…</p>}>
+          <ChantPracticePlayer
+            payload={practicePayload}
+            formLabel={item.form === 'werb' ? 'Werb' : 'Mezmur'}
+            onBack={() => navigate('/practice')}
+            backLabel="Back to library"
+            badges={badges}
+          />
+        </Suspense>
+      )}
+
+      <div className={s.detail}>
+        <div>
+          {choices.length > 0 ? (
+            <div className={s.tabs} aria-label="Lyrics language">
+              {choices.map((choice) => (
+                <button
+                  key={choice.key}
+                  type="button"
+                  aria-pressed={active === choice.key}
+                  onClick={() => setActive(choice.key)}
+                >
+                  {choice.label}
+                </button>
+              ))}
+            </div>
+          ) : null}
           {choices
             .filter((choice) => choice.key === active)
             .map((choice) => (
@@ -99,8 +148,9 @@ function MezmurBody({ item }: { item: PublicMezmur }) {
         <aside>
           <Artwork reference={item.thumbnail_url} title={item.title} />
           <div className={s.actions}>
-            {item.audio_url && (
+            {item.audio_url ? (
               <button
+                type="button"
                 onClick={() => {
                   setShowVideo(false)
                   audio.play(item)
@@ -108,10 +158,10 @@ function MezmurBody({ item }: { item: PublicMezmur }) {
               >
                 Play audio
               </button>
-            )}
+            ) : null}
             <FavoriteButton id={item.id} />
           </div>
-          {video && (
+          {video ? (
             <>
               {showVideo ? (
                 <iframe
@@ -123,6 +173,7 @@ function MezmurBody({ item }: { item: PublicMezmur }) {
                 />
               ) : (
                 <button
+                  type="button"
                   onClick={() => {
                     audio.stop()
                     setShowVideo(true)
@@ -141,15 +192,19 @@ function MezmurBody({ item }: { item: PublicMezmur }) {
                 </a>
               </p>
             </>
-          )}
+          ) : null}
           <Link
-            to={`/suggest-correction?${new URLSearchParams({ content_id: item.id, title: item.title, page: canonical })}`}
+            to={`/suggest-correction?${new URLSearchParams({
+              content_id: item.id,
+              title: item.title,
+              page: canonical,
+            })}`}
           >
             Suggest a Correction
           </Link>
-          {item.contributor_credit && (
+          {item.contributor_credit ? (
             <p>Contributed by {item.contributor_credit}</p>
-          )}
+          ) : null}
         </aside>
       </div>
     </article>

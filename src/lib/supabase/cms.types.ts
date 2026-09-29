@@ -17,7 +17,18 @@ type Content = Timestamps & {
 }
 type Body = { body: string | null; body_amharic: string | null; body_oromo:string|null; audio_url:string|null; date_notes:string|null; related_content:Json }
 export type CmsTables = {
-  daily_content: Table<{day:string;mezmur_id:string|null;saint_id:string|null;feast_id:string|null;bible_references:string;fasting_indicator:string;fasting_notes:string;announcement:string;published:boolean;updated_at:string;updated_by:string|null},'day'>
+  daily_content: Table<{
+    id: string
+    content_date: string
+    mezmur_id: string | null
+    saint_id: string | null
+    feast_id: string | null
+    announcement: string
+    summary: string | null
+    published: boolean
+    updated_at: string
+    updated_by: string | null
+  }, 'content_date'>
   mezmur_favorites: Table<{user_id:string;mezmur_id:string;created_at:string},'mezmur_id'>
   community_submissions: Table<CommunitySubmission, 'submission_type' | 'title' | 'contributor_name'>
   profiles: Table<Timestamps & { id: string; email: string | null; display_name: string; avatar_url: string | null; role: CmsRole | null }, 'id'>

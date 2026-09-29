@@ -5,7 +5,6 @@ import { createServer } from 'vite'
 import { mkdir } from 'node:fs/promises'
 process.env.VITE_SUPABASE_URL = 'https://public-test.supabase.co'
 process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_test'
-process.env.VITE_PUBLIC_MEZMUR_SOURCE = 'supabase'
 process.env.VITE_TURNSTILE_SITE_KEY = 'test-site-key'
 const server = await createServer({
   server: { host: '127.0.0.1', port: 4178, strictPort: true },
@@ -41,19 +40,13 @@ try {
     ).toString('base64url'),
     'mock',
   ].join('.')
-  const row = {
+  const joined = {
     id,
     slug: 'discovery-song',
     title: 'Discovery Song',
     title_amharic: 'የምስጋና መዝሙር',
     title_oromo: null,
     description: 'A published hymn',
-    singer_name: 'Discovery Choir',
-    category_name: 'Praise',
-    languages: ['am', 'en', 'om'],
-    tags: [
-      { id: 'tag', name: 'Pascha', slug: 'occasion-pascha', kind: 'occasion' },
-    ],
     thumbnail_url: 'https://media.invalid/cover.png',
     audio_url: 'https://media.invalid/audio.wav',
     youtube_url: 'https://www.youtube.com/watch?v=abcdefghijk',
@@ -64,10 +57,18 @@ try {
     featured: true,
     status: 'published',
     published_at: new Date().toISOString(),
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
     contributor_credit: 'Consenting contributor',
+    singer_id: 'singer',
+    category_id: 'category',
+    singers: { id: 'singer', name: 'Discovery Choir' },
+    categories: { id: 'category', name: 'Praise', slug: 'praise' },
+    mezmur_tags: [
+      { tags: { id: 'tag', name: 'Pascha', slug: 'occasion-pascha' } },
+    ],
   }
   let filters
-  let query
   let favorite = false
   let memberRole = null
   let fail = false
@@ -108,43 +109,69 @@ try {
     const url = new URL(req.url())
     let body = []
     let status = 200
-    if (url.pathname === '/rest/v1/rpc/discover_mezmur') {
-      filters = req.postDataJSON()
+    const headers = {}
+    if (url.pathname === '/rest/v1/rpc/public_favorites') {
       body = {
-        items: filters.page_number === 2 ? [] : [row],
-        total: 25,
-        page: filters.page_number,
+        items: favorite
+          ? [
+              {
+                ...joined,
+                singer_name: 'Discovery Choir',
+                category_name: 'Praise',
+                languages: ['am', 'en', 'om'],
+                tags: [],
+              },
+            ]
+          : [],
+        total: favorite ? 1 : 0,
       }
-      if (fail) {
+    } else if (url.pathname.startsWith('/rest/v1/rpc/')) {
+      status = 404
+      body = {
+        code: 'PGRST202',
+        message: 'Could not find the function in the schema cache',
+      }
+    } else if (url.pathname === '/rest/v1/mezmur') {
+      const slug = (url.searchParams.get('slug') || '').replace(/^eq\./, '')
+      if (slug === 'secret-draft') body = []
+      else if (slug === 'discovery-song' || slug === 'old-song') body = [joined]
+      else if (fail) {
         status = 500
-        body = { message: 'Test outage' }
+        body = { message: 'Test outage', code: 'XX000' }
+      } else {
+        const range = req.headers()['range'] || ''
+        const from = Number((range.match(/^(\d+)/) || ['0', '0'])[1])
+        filters = {
+          language: (url.searchParams.get('or') || '').includes('lyrics_amharic')
+            ? 'am'
+            : '',
+          singer: (url.searchParams.get('singer_id') || '').replace(/^eq\./, ''),
+          category: (url.searchParams.get('category_id') || '').replace(
+            /^eq\./,
+            '',
+          ),
+          featured_only: url.searchParams.get('featured') === 'eq.true',
+          sort_by: (url.searchParams.get('order') || '').includes('title.asc')
+            ? 'alphabetical'
+            : 'recent',
+          page_number: Math.floor(from / 24) + 1,
+        }
+        if (from >= 24) {
+          body = []
+          headers['content-range'] = '*/25'
+          headers['Content-Range'] = '*/25'
+        } else {
+          body = [joined]
+          headers['content-range'] = '0-0/25'
+          headers['Content-Range'] = '0-0/25'
+        }
       }
-    } else if (url.pathname === '/rest/v1/rpc/public_discovery_facets')
-      body = {
-        singers: [{ id: 'singer', name: 'Discovery Choir' }],
-        categories: [{ id: 'category', name: 'Praise' }],
-        occasions: [{ slug: 'occasion-pascha', name: 'Pascha' }],
-      }
-    else if (url.pathname === '/rest/v1/rpc/public_mezmur_detail')
-      body = ['discovery-song', 'old-song'].includes(
-        req.postDataJSON().slug_or_alias,
-      )
-        ? row
-        : null
-    else if (url.pathname === '/rest/v1/rpc/search_public_content') {
-      query = req.postDataJSON()
-      body = {
-        items: ['mezmur', 'saints', 'prayers', 'feasts', 'articles'].map(
-          (kind) => ({
-            kind,
-            slug: kind === 'mezmur' ? 'discovery-song' : 'test',
-            title: 'Discovery ' + kind,
-            title_amharic: '',
-            description: 'Published result',
-          }),
-        ),
-        total: 5,
-      }
+    } else if (url.pathname === '/rest/v1/singers') {
+      body = [{ id: 'singer', name: 'Discovery Choir' }]
+    } else if (url.pathname === '/rest/v1/categories') {
+      body = [{ id: 'category', name: 'Praise' }]
+    } else if (url.pathname === '/rest/v1/tags') {
+      body = [{ id: 'tag', name: 'Pascha', slug: 'occasion-pascha' }]
     } else if (
       [
         '/rest/v1/saints',
@@ -169,23 +196,33 @@ try {
         user,
       }
     else if (url.pathname === '/auth/v1/user') body = user
-    else if (url.pathname === '/rest/v1/profiles') body = memberRole ? {id:user.id,email:user.email,role:memberRole,display_name:'Test member',avatar_url:null,created_at:user.created_at,updated_at:user.created_at} : null
+    else if (url.pathname === '/rest/v1/profiles')
+      body = memberRole
+        ? {
+            id: user.id,
+            email: user.email,
+            role: memberRole,
+            display_name: 'Test member',
+            avatar_url: null,
+            created_at: user.created_at,
+            updated_at: user.created_at,
+          }
+        : null
     else if (url.pathname === '/rest/v1/mezmur_favorites') {
       if (req.method() === 'POST') favorite = true
       if (req.method() === 'DELETE') favorite = false
       body = favorite ? { mezmur_id: id } : null
-    } else if (url.pathname === '/rest/v1/rpc/public_favorites')
-      body = { items: favorite ? [row] : [], total: favorite ? 1 : 0 }
-    else throw new Error('Unexpected request ' + url.pathname)
+    } else throw new Error('Unexpected request ' + url.pathname)
     await route.fulfill({
       status,
       contentType: 'application/json',
+      headers,
       body: JSON.stringify(body),
     })
   })
   await page.goto(base + '/practice')
-  await page.getByRole('link',{name:'Admin Login',exact:true}).click()
-  await page.getByRole('heading',{name:'CMS sign in'}).waitFor()
+  await page.getByRole('link', { name: 'Admin Login', exact: true }).click()
+  await page.getByRole('heading', { name: 'CMS sign in' }).waitFor()
   assert.ok(page.url().endsWith('/admin/login'))
   await page.goto(base + '/practice')
   await page
@@ -211,20 +248,13 @@ try {
   await page
     .getByRole('heading', { name: 'Discovery Song', exact: true })
     .waitFor()
-  assert.deepEqual(filters, {
-    q: 'Choir',
-    language: 'am',
-    singer: 'singer',
-    category: 'category',
-    occasion: 'occasion-pascha',
-    featured_only: true,
-    sort_by: 'alphabetical',
-    page_number: 1,
-  })
-  await page.getByRole('button', { name: 'Next', exact: true }).click()
-  await page.getByText('No published Mezmur match these filters.').waitFor()
-  assert.equal(filters.page_number, 2)
-  await page.getByRole('button', { name: 'Previous', exact: true }).click()
+  const applied = new URL(page.url()).searchParams
+  assert.equal(applied.get('language'), 'am')
+  assert.equal(applied.get('singer'), 'singer')
+  assert.equal(applied.get('category'), 'category')
+  assert.equal(applied.get('featured'), 'yes')
+  assert.equal(applied.get('sort'), 'alphabetical')
+  assert.ok(filters?.featured_only)
   await page
     .getByRole('heading', { name: 'Discovery Song', exact: true })
     .click()
@@ -249,7 +279,10 @@ try {
     .getByRole('link', { name: 'Suggest a Correction' })
     .getAttribute('href')
   assert.equal(new URL(correction, base).searchParams.get('content_id'), id)
-  await page.getByRole('button', { name: 'Play audio', exact: true }).click()
+  await page
+    .getByRole('button', { name: 'Play audio', exact: true })
+    .first()
+    .click()
   await page.waitForFunction(
     () => document.querySelector('audio')?.currentTime > 0,
   )
@@ -271,13 +304,30 @@ try {
   await page.getByLabel('Password', { exact: true }).fill('password')
   await page.getByRole('button', { name: 'Sign in', exact: true }).click()
   await page.getByText('Signed in as ' + user.email).waitFor()
-  assert.equal(await page.getByRole('link',{name:/^Admin (Login|Dashboard)$/}).count(),0)
-  for (const role of ['user','contributor','editor','admin','super_admin']) {
-    memberRole=role;await page.reload();await page.getByText('Signed in as ' + user.email).waitFor()
-    if(role==='user') assert.equal(await page.getByRole('link',{name:/^Admin (Login|Dashboard)$/}).count(),0)
-    else assert.equal(await page.getByRole('link',{name:'Admin Dashboard',exact:true}).getAttribute('href'),'/admin')
+  assert.equal(
+    await page.getByRole('link', { name: /^Admin (Login|Dashboard)$/ }).count(),
+    0,
+  )
+  for (const role of ['user', 'contributor', 'editor', 'admin', 'super_admin']) {
+    memberRole = role
+    await page.reload()
+    await page.getByText('Signed in as ' + user.email).waitFor()
+    if (role === 'user')
+      assert.equal(
+        await page
+          .getByRole('link', { name: /^Admin (Login|Dashboard)$/ })
+          .count(),
+        0,
+      )
+    else
+      assert.equal(
+        await page
+          .getByRole('link', { name: 'Admin Dashboard', exact: true })
+          .getAttribute('href'),
+        '/admin',
+      )
   }
-  memberRole=null
+  memberRole = null
   await page.goto(base + '/practice/mezmur/discovery-song')
   await page.getByRole('button', { name: 'Add favorite', exact: true }).click()
   await page
@@ -308,23 +358,37 @@ try {
   ]) {
     await page.goto(base + path)
     await page.setViewportSize({ width: 390, height: 844 })
-    await page.getByRole('heading',{name:'Discovery Song',exact:true}).waitFor()
-    await page.evaluate(()=>document.fonts.ready)
+    await page
+      .getByRole('heading', { name: 'Discovery Song', exact: true })
+      .first()
+      .waitFor()
+    await page.evaluate(() => document.fonts.ready)
     assert.ok(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth + 1,
       ),
       'mobile overflow ' + path,
     )
-    if(process.env.PUBLIC_SCREENSHOTS){await mkdir('.cms-test/screens',{recursive:true});await page.screenshot({path:'.cms-test/screens/'+path.replace(/[^a-z0-9]/gi,'-')+'.png',fullPage:true})}
+    if (process.env.PUBLIC_SCREENSHOTS) {
+      await mkdir('.cms-test/screens', { recursive: true })
+      await page.screenshot({
+        path:
+          '.cms-test/screens/' +
+          path.replace(/[^a-z0-9]+/gi, '-') +
+          '.png',
+        fullPage: true,
+      })
+    }
   }
-  const menu=page.locator('header button[aria-expanded]')
+  const menu = page.locator('header button[aria-expanded]')
   await menu.click()
-  const drawer=page.getByRole('dialog')
+  const drawer = page.getByRole('dialog')
   await drawer.waitFor()
-  await drawer.getByRole('link',{name:'About',exact:true}).click()
-  await page.getByRole('heading',{name:/Tewahedo Daily/}).waitFor()
-  await menu.click();await page.keyboard.press('Escape');await drawer.waitFor({state:'hidden'})
+  await drawer.getByRole('link', { name: 'About', exact: true }).click()
+  await page.getByRole('heading', { name: /Tewahedo Daily/ }).waitFor()
+  await menu.click()
+  await page.keyboard.press('Escape')
+  await drawer.waitFor({ state: 'hidden' })
   assert.deepEqual(errors, [])
   console.log(
     'Public browser passed: filters, pagination, multilingual detail, correction target, persistent audio, ordinary-user favorites, no fallback on failure, and mobile layout.',

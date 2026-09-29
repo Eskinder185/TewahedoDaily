@@ -108,9 +108,14 @@ export function ChantPracticePlayer({
   const [recordingMode, setRecordingMode] = useState<RecordingMode>('with-lyrics')
 
   const videoId = payload.videoId
+  const audioUrl = payload.audioUrl?.trim() || undefined
   const controlsDisabled = !videoId || !playerReady
 
   useEffect(() => {
+    if (!videoId) {
+      setApiReady(false)
+      return
+    }
     let cancelled = false
     ensureYoutubeIframeApi().then(() => {
       if (!cancelled) setApiReady(true)
@@ -118,7 +123,7 @@ export function ChantPracticePlayer({
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [videoId])
 
   useEffect(() => {
     setLoopStart(null)
@@ -593,9 +598,25 @@ export function ChantPracticePlayer({
                 <div ref={mountRef} className={styles.playerMount} />
               ) : (
                 <div className={styles.noVideo}>
-                  <p className={styles.noVideoText}>
-                    {tt('mezmurPractice.player.noVideo')}
-                  </p>
+                  {audioUrl ? (
+                    <>
+                      <p className={styles.noVideoText}>
+                        This mezmur has audio but no YouTube video. Lyrics remain available below.
+                      </p>
+                      <audio
+                        className={styles.fallbackAudio}
+                        controls
+                        preload="metadata"
+                        src={audioUrl}
+                      >
+                        <track kind="captions" />
+                      </audio>
+                    </>
+                  ) : (
+                    <p className={styles.noVideoText}>
+                      {tt('mezmurPractice.player.noVideo')}
+                    </p>
+                  )}
                   {payload.watchUrl ? (
                     <a
                       className={styles.watchLink}

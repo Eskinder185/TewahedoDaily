@@ -81,7 +81,7 @@ export default function App() {
         <Route path="/saved" element={<Suspense fallback={<PageLoadingFallback />}><Favorites /></Suspense>} />
         <Route path="/favorites" element={<Navigate to="/saved" replace />} />
         <Route path="/today" element={<Suspense fallback={<PageLoadingFallback />}><TodayPage /></Suspense>} />
-        <Route path="/practice/werb" element={<Suspense fallback={<PageLoadingFallback />}><PracticePage /></Suspense>} />
+        <Route path="/practice/werb" element={<Navigate to="/practice?form=werb" replace />} />
         <Route path="/submit-mezmur" element={<Suspense fallback={<PageLoadingFallback />}><CommunityForm /></Suspense>} />
         <Route path="/suggest-correction" element={<Suspense fallback={<PageLoadingFallback />}><CommunityForm /></Suspense>} />
         <Route path="/" element={

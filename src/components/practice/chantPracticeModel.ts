@@ -1,4 +1,4 @@
-import { parseYoutubeVideoId, youtubeWatchUrl } from '../../data/utils/youtube'
+import { isValidYoutubeVideoId, parseYoutubeVideoId, youtubeWatchUrl } from '../../data/utils/youtube'
 import type { ChantForm, ChantLibraryEntry } from '../../lib/practice/chantLibraryModel'
 import type { MezmurCategory } from '../../data/types/mezmur'
 
@@ -45,7 +45,10 @@ export type ChantPracticePayload = {
   /** Ge’ez (or primary script) — full string from JSON */
   lyricsGez: string
   transliterationLyrics: string
+  /** Null when the chant has no usable YouTube video (lyrics/audio-only is fine). */
   videoId: string | null
+  /** Optional non-YouTube audio when no embeddable video exists. */
+  audioUrl?: string
   /** Open in YouTube when embed is unavailable */
   watchUrl?: string
   learning?: ChantLearningMeta
@@ -56,7 +59,7 @@ export function chantEntryToPracticePayload(
 ): ChantPracticePayload {
   if (entry.form === 'mezmur') {
     const m = entry.item
-    const id = m.youtubeId?.trim() || null
+    const id = isValidYoutubeVideoId(m.youtubeId) ? m.youtubeId.trim() : null
     const joinTags = (arr: string[] | undefined) =>
       arr?.length ? arr.join(', ') : undefined
     const learning: ChantLearningMeta = {
@@ -80,7 +83,8 @@ export function chantEntryToPracticePayload(
       transliterationTitle: m.titleTransliteration,
       lyricsGez: m.lyricsGez,
       transliterationLyrics: m.lyricsTransliteration ?? '',
-      videoId: id || null,
+      videoId: id,
+      audioUrl: m.audioUrl?.trim() || undefined,
       watchUrl: id ? youtubeWatchUrl(id) : undefined,
       learning,
     }
@@ -105,7 +109,8 @@ export function chantEntryToPracticePayload(
     lyricsGez: w.lyrics,
     transliterationLyrics: w.transliterationLyrics ?? '',
     videoId: id,
-    watchUrl: w.youtubeUrl,
+    audioUrl: undefined,
+    watchUrl: id && w.youtubeUrl ? w.youtubeUrl : undefined,
     learning,
   }
 }

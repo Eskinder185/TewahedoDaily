@@ -13,7 +13,8 @@ import styles from './ChantLibraryPreview.module.css'
 function chantThumbnail(entry: ChantLibraryEntry): string | undefined {
   if (entry.form === 'mezmur') {
     const m = entry.item
-    return m.thumbnailUrl ?? youtubeThumbnailUrl(m.youtubeId)
+    if (m.thumbnailUrl) return m.thumbnailUrl
+    return youtubeThumbnailUrl(m.youtubeId)
   }
   const w = entry.item
   if (w.thumbnail) return w.thumbnail

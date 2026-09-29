@@ -12,7 +12,23 @@ export function AdminAuthLayout() {
 function SignOutButton() {
   const { signOut } = useAuth()
   const [error, setError] = useState('')
-  return <><button onClick={() => { void signOut().catch((cause: Error) => setError(cause.message)) }}>Sign out</button>{error && <p role="alert">{error}</p>}</>
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          void signOut()
+            .then(() => {
+              window.location.assign('/admin/login')
+            })
+            .catch((cause: Error) => setError(cause.message))
+        }}
+      >
+        Sign out
+      </button>
+      {error && <p role="alert">{error}</p>}
+    </>
+  )
 }
 
 export function AdminLoginPage() {
@@ -36,7 +52,7 @@ export function AdminLoginPage() {
     <h1>CMS sign in</h1>
     {!isSupabaseConfigured ? <p role="status">CMS authentication has not been configured yet.</p> : session ? <>
       <p role="alert">{error || 'Your account has not been assigned CMS access. Contact an administrator.'}</p>
-      <button onClick={() => void refreshProfile()}>Check access again</button>
+      {error && <button type="button" onClick={() => void refreshProfile()}>Check access again</button>}
       <SignOutButton />
     </> : <form onSubmit={submit} className={styles.form}>
       <label htmlFor="cms-email">Email</label>

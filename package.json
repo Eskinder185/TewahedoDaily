@@ -6,6 +6,7 @@
   "scripts": {
     "supabase:plan-mezmur": "node scripts/import-mezmur-cms.mjs --dry-run",
     "supabase:import-mezmur": "node --env-file-if-exists=.env.local scripts/import-mezmur-cms.mjs",
+    "import:chants": "node --env-file-if-exists=.env.import --env-file-if-exists=.env.local scripts/import-chants-to-supabase/index.mjs",
     "test:public": "node scripts/test-mezmur-import.mjs && node scripts/public-discovery-smoke.mjs",
     "lint:public": "eslint src/lib/publicContent src/components/publicContent src/pages/Public*.tsx",
     "dev": "vite",

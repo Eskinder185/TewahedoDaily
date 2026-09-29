@@ -4,7 +4,7 @@ import type {
   MezmurEntry,
 } from '../../data/types/mezmur'
 import type { PrayerEntry } from '../../data/types/tselot'
-import { parseYoutubeVideoId } from '../../data/utils/youtube'
+import { parseYoutubeVideoId, warnMalformedYoutubeUrlOnce } from '../../data/utils/youtube'
 import type { MezmurItem, TselotPrayer } from './types'
 
 function chantCategoryToMezmurCategory(raw: unknown): MezmurCategory | undefined {
@@ -38,11 +38,9 @@ function mezmurCategoryDetail(
 
 export function mezmurEntryToMezmurItem(e: MezmurEntry): MezmurItem {
   const youtubeUrl = String((e as { youtubeUrl?: unknown }).youtubeUrl ?? '').trim()
-  const youtubeId = parseYoutubeVideoId(youtubeUrl)
-  // Empty YouTube is valid (lyrics-only). Warn only when a URL is present but unusable.
-  if (import.meta.env.DEV && youtubeUrl && !youtubeId) {
-    console.warn(`[TewahedoDaily] Missing YouTube id for mezmur "${e.id}"`, { youtubeUrl })
-  }
+  // Missing YouTube is normal for lyrics-only legacy entries — never invent an id.
+  const youtubeId = parseYoutubeVideoId(youtubeUrl) ?? ''
+  warnMalformedYoutubeUrlOnce(`mezmur "${e.id}"`, youtubeUrl)
   const detail = mezmurCategoryDetail(e.category)
   const seasonParts: string[] = []
   if (typeof e.season === 'string' && e.season.trim()) {
@@ -73,9 +71,9 @@ export function mezmurEntryToMezmurItem(e: MezmurEntry): MezmurItem {
     id: e.id,
     slug: e.slug ?? e.id,
     title: e.title,
-    youtubeUrl: (e as { youtubeUrl?: string }).youtubeUrl,
+    youtubeUrl: youtubeUrl || undefined,
     audioUrl: e.audioUrl,
-    youtubeId: youtubeId ?? '',
+    youtubeId,
     thumbnailUrl: e.thumbnail,
     titleTransliteration: e.transliterationTitle,
     lyricsGez: e.lyrics,

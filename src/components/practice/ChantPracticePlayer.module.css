@@ -258,6 +258,11 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
+.fallbackAudio {
+  width: min(100%, 28rem);
+  max-width: 100%;
+}
+
 .watchLink {
   display: inline-flex;
   align-items: center;
