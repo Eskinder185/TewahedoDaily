@@ -339,3 +339,84 @@
   line-height: var(--leading-relaxed);
   color: var(--color-text);
 }
+
+.metaLine {
+  margin: 0 0 4px;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.amharicTitle {
+  margin: 4px 0 0;
+  font-size: 1.15rem;
+  color: var(--color-heading);
+}
+
+.sectionHeading {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-heading);
+}
+
+.privacyNote {
+  margin: 0 0 10px;
+  font-size: 0.86rem;
+  color: var(--color-text-subtle);
+}
+
+.recordBlock {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+.stickyBar {
+  position: sticky;
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-navy) 94%, black);
+  color: #fff8f0;
+  box-shadow: var(--shadow-lift);
+}
+
+.stickyBtn,
+.stickyPlay {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 999px;
+}
+
+.stickyPlay {
+  width: 52px;
+  height: 52px;
+  background: color-mix(in srgb, var(--color-gold) 70%, white);
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.stickyTime {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.85rem;
+  min-width: 5.5rem;
+}
+
+.stickyLoop {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gold-bright);
+}
+

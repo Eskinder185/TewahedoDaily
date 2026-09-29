@@ -14,8 +14,8 @@ const MezmurDetailPage = lazy(() => import('./pages/MezmurDetailPage').then(m =>
 const CalendarPage = lazy(() => import('./pages/CalendarPage').then(m => ({ default: m.CalendarPage })))
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })))
 const PrayerListPage = lazy(() => import('./pages/PrayerListPage').then(m => ({ default: m.PrayerListPage })))
-const PrayerCollectionPage = lazy(() => import('./pages/PrayerCollectionPage').then(m => ({ default: m.PrayerCollectionPage })))
-const PrayerDetailPage = lazy(() => import('./pages/PrayerDetailPage').then(m => ({ default: m.PrayerDetailPage })))
+const LibraryCollectionRoute = lazy(() => import('./pages/LibraryCollectionRoute').then(m => ({ default: m.LibraryCollectionRoute })))
+const LibraryItemRoute = lazy(() => import('./pages/LibraryItemRoute').then(m => ({ default: m.LibraryItemRoute })))
 const AdminAuthLayout = lazy(() => import('./pages/admin/AdminAuth').then(m => ({ default: m.AdminAuthLayout })))
 const AdminLoginPage = lazy(() => import('./pages/admin/AdminAuth').then(m => ({ default: m.AdminLoginPage })))
 const AdminLayout = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminLayout })))
@@ -37,6 +37,14 @@ const ContentList = lazy(() => import('./pages/admin/ContentManager').then(m => 
 const ContentEditor = lazy(() => import('./pages/admin/ContentManager').then(m => ({default:m.ContentEditor})))
 const MediaLibrary = lazy(() => import('./pages/admin/MediaLibrary').then(m => ({default:m.MediaLibrary})))
 const DailyContentAdmin = lazy(() => import('./pages/admin/DailyContentAdmin').then(m => ({default:m.DailyContentAdmin})))
+const HomepageAdmin = lazy(() => import('./pages/admin/HomepageAdmin').then(m => ({ default: m.HomepageAdmin })))
+const HomepageSlideEditor = lazy(() => import('./pages/admin/HomepageAdmin').then(m => ({ default: m.HomepageSlideEditor })))
+const StructureCollectionList = lazy(() => import('./pages/admin/StructureAdmin').then(m => ({ default: m.StructureCollectionList })))
+const StructureCollectionEditor = lazy(() => import('./pages/admin/StructureAdmin').then(m => ({ default: m.StructureCollectionEditor })))
+const SynaxariumAdmin = lazy(() => import('./pages/admin/StructureAdmin').then(m => ({ default: m.SynaxariumAdmin })))
+const SynaxariumDayEditor = lazy(() => import('./pages/admin/StructureAdmin').then(m => ({ default: m.SynaxariumDayEditor })))
+const CalendarAdmin = lazy(() => import('./pages/admin/CalendarAdmin').then(m => ({ default: m.CalendarAdmin })))
+const CalendarCardEditor = lazy(() => import('./pages/admin/CalendarAdmin').then(m => ({ default: m.CalendarCardEditor })))
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const TodayPage = lazy(() => import('./pages/TodayPage').then(m => ({ default: m.TodayPage })))
 
@@ -54,6 +62,20 @@ export default function App() {
             <Route path="mezmur" element={<MezmurList />} />
             <Route path="mezmur/new" element={<MezmurEditor />} />
             <Route path="mezmur/:id/edit" element={<MezmurEditor />} />
+            <Route path="home" element={<HomepageAdmin />} />
+            <Route path="home/new" element={<HomepageSlideEditor />} />
+            <Route path="home/:id/edit" element={<HomepageSlideEditor />} />
+            <Route path="prayers" element={<StructureCollectionList kind="prayers" />} />
+            <Route path="prayers/new" element={<StructureCollectionEditor kind="prayers" />} />
+            <Route path="prayers/:id/edit" element={<StructureCollectionEditor kind="prayers" />} />
+            <Route path="liturgy" element={<StructureCollectionList kind="liturgy" />} />
+            <Route path="liturgy/new" element={<StructureCollectionEditor kind="liturgy" />} />
+            <Route path="liturgy/:id/edit" element={<StructureCollectionEditor kind="liturgy" />} />
+            <Route path="calendar" element={<CalendarAdmin />} />
+            <Route path="calendar/new" element={<CalendarCardEditor />} />
+            <Route path="calendar/:id/edit" element={<CalendarCardEditor />} />
+            <Route path="synaxarium" element={<SynaxariumAdmin />} />
+            <Route path="synaxarium/:id/edit" element={<SynaxariumDayEditor />} />
             <Route path="categories" element={<TaxonomyPage />} />
             <Route path="singers" element={<TaxonomyPage />} />
             <Route path="tags" element={<TaxonomyPage />} />
@@ -71,7 +93,7 @@ export default function App() {
       <Route element={<AppShell />}>
         <Route path="/saints" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="saints"/></Suspense>}/>
         <Route path="/feasts" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="feasts"/></Suspense>}/>
-        <Route path="/prayer-library" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="prayers"/></Suspense>}/>
+        <Route path="/prayer-library" element={<Navigate to="/prayers" replace />} />
         <Route path="/search" element={<Navigate to="/" replace />} />
         <Route path="/teachings" element={<Navigate to="/" replace />} />
         <Route path="/teaching" element={<Navigate to="/" replace />} />
@@ -116,12 +138,12 @@ export default function App() {
         } />
         <Route path="/pray/:collectionSlug/:prayerSlug" element={
           <Suspense fallback={<PageLoadingFallback />}>
-            <PrayerDetailPage />
+            <LibraryItemRoute />
           </Suspense>
         } />
         <Route path="/pray/:collectionSlug" element={
           <Suspense fallback={<PageLoadingFallback />}>
-            <PrayerCollectionPage />
+            <LibraryCollectionRoute />
           </Suspense>
         } />
         <Route path="/prayers" element={
@@ -133,7 +155,7 @@ export default function App() {
           <Navigate to="/pray/zewter-tselot" replace />
         } />
         <Route path="/prayers/wudase-mariam" element={
-          <Navigate to="/pray/wudasie-mariam" replace />
+          <Navigate to="/pray/wudase-mariam" replace />
         } />
         <Route path="/prayers/mezmure-dawit" element={
           <Navigate to="/pray/mezmure-dawit" replace />
@@ -143,6 +165,22 @@ export default function App() {
         } />
         <Route path="/prayers/meharene-ab" element={
           <Navigate to="/pray/meharene-ab" replace />
+        } />
+        <Route path="/prayers/divine-liturgy" element={
+          <Navigate to="/pray/divine-liturgy" replace />
+        } />
+        <Route path="/prayers/synaxarium" element={
+          <Navigate to="/pray/synaxarium" replace />
+        } />
+        <Route path="/prayers/:collectionSlug/:prayerSlug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <LibraryItemRoute />
+          </Suspense>
+        } />
+        <Route path="/prayers/:collectionSlug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <LibraryCollectionRoute />
+          </Suspense>
         } />
       </Route>
     </Routes>

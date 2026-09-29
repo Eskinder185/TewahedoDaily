@@ -12,6 +12,7 @@ export type {
 export { buildChurchDaySnapshot } from './buildChurchDaySnapshot'
 export {
   computeCalendarDayMarks,
+  computeCalendarDayMarksAsync,
   eotcRowToCellMarkKind,
   type CalendarCellMarkKind,
   type CalendarDayCellMark,

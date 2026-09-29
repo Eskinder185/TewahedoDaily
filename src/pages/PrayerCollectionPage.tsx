@@ -1,10 +1,12 @@
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
+import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
+import type { CollectionPrayer } from '../lib/prayers/prayerCollections'
 import {
-  findPrayerByLegacySlug,
-  getCollectionPrayers,
-  getPrayerCollection,
-} from '../lib/prayers/prayerCollections'
+  loadPrayerCollection,
+  type PrayerCollectionBundle,
+} from '../lib/prayers/prayerSupabase'
 import { useTranslation } from '../i18n'
 import { MEHARENE_AB_ENTRY, YEKIDANE_TSELOT_ENTRY } from '../lib/prayers/mediaPrayerEntries'
 import { prayerCollectionPath, prayerDetailPath } from '../lib/prayers/prayerSlug'
@@ -16,22 +18,106 @@ function collectionMedia(collectionId: string) {
   return null
 }
 
+function countLabel(
+  collection: PrayerCollectionBundle['collection'],
+  tr: (key: string, vars?: Record<string, string | number>) => string,
+) {
+  const count =
+    collection.countLabel === 'sections'
+      ? collection.sectionCount || collection.prayerCount
+      : collection.prayerCount
+  if (collection.countLabel === 'psalms') {
+    return count === 1
+      ? tr('prayers.collection.psalmsCountOne', { count })
+      : tr('prayers.collection.psalmsCountOther', { count })
+  }
+  if (collection.countLabel === 'prayers') {
+    return count === 1
+      ? tr('prayers.collection.prayersCountOne', { count })
+      : tr('prayers.collection.prayersCountOther', { count })
+  }
+  return count === 1
+    ? tr('prayers.collection.sectionsCountOne', { count })
+    : tr('prayers.collection.sectionsCountOther', { count })
+}
+
+function PrayerLink({
+  prayer,
+  collectionSlug,
+  openLabel,
+}: {
+  prayer: CollectionPrayer
+  collectionSlug: string
+  openLabel: string
+}) {
+  return (
+    <Link className={styles.item} to={prayerDetailPath(prayer.slug, collectionSlug)}>
+      <span className={styles.order}>{String(prayer.order).padStart(2, '0')}</span>
+      <span className={styles.itemText}>
+        <strong lang="am">{prayer.title}</strong>
+        {prayer.transliterationTitle ? <span>{prayer.transliterationTitle}</span> : null}
+        {prayer.chapter || prayer.section ? (
+          <small>{[prayer.chapter, prayer.section].filter(Boolean).join(' / ')}</small>
+        ) : null}
+      </span>
+      <span className={styles.action}>{openLabel}</span>
+    </Link>
+  )
+}
+
 export function PrayerCollectionPage() {
   const tr = useTranslation()
   const { collectionSlug } = useParams()
-  const collection = getPrayerCollection(collectionSlug)
-  const legacyPrayer = findPrayerByLegacySlug(collectionSlug)
+  const [bundle, setBundle] = useState<PrayerCollectionBundle | null>()
+  const [error, setError] = useState<string>()
+  const [reloadTick, setReloadTick] = useState(0)
 
-  if (!collection && legacyPrayer) {
+  useEffect(() => {
+    let active = true
+    queueMicrotask(() => {
+      if (!active) return
+      setBundle(undefined)
+      setError(undefined)
+    })
+    void loadPrayerCollection(collectionSlug)
+      .then((result) => {
+        if (!active) return
+        setBundle(result)
+      })
+      .catch((cause) => {
+        if (!active) return
+        const message =
+          cause && typeof cause === 'object' && 'message' in cause
+            ? String((cause as { message?: unknown }).message)
+            : "We couldn't load the prayer collection."
+        if (import.meta.env.DEV) console.error('[prayers] collection', cause)
+        setError(import.meta.env.DEV ? message : "We couldn't load the prayer collection.")
+        setBundle(null)
+      })
+    return () => {
+      active = false
+    }
+  }, [collectionSlug, reloadTick])
+
+  if (bundle === undefined && !error) return <PageLoadingFallback />
+
+  if (error) {
     return (
-      <Navigate
-        to={prayerDetailPath(legacyPrayer.slug, legacyPrayer.collectionSlug)}
-        replace
-      />
+      <PageSection variant="tint">
+        <div className={styles.notFound}>
+          <Link className={styles.backLink} to="/pray">
+            {tr('prayers.navigation.backToCollections')}
+          </Link>
+          <h1>{error}</h1>
+          <button type="button" className={styles.openLink} onClick={() => setReloadTick((n) => n + 1)}>
+            Try again
+          </button>
+        </div>
+      </PageSection>
     )
   }
 
-  if (!collection) {
+  if (!bundle) {
     return (
       <PageSection variant="tint">
         <div className={styles.notFound}>
@@ -45,8 +131,9 @@ export function PrayerCollectionPage() {
     )
   }
 
-  const prayers = getCollectionPrayers(collection.id)
+  const { collection, sections, prayers } = bundle
   const media = collectionMedia(collection.id)
+  const useSections = sections.length > 0 && sections.some((section) => section.prayers.length > 0)
 
   return (
     <PageSection variant="tint">
@@ -64,11 +151,7 @@ export function PrayerCollectionPage() {
             {collection.amharicTitle}
           </p>
           <p className={styles.deck}>{collection.description}</p>
-          <p className={styles.count}>
-            {prayers.length === 1
-              ? tr('prayers.collection.sectionsCountOne', { count: prayers.length })
-              : tr('prayers.collection.sectionsCountOther', { count: prayers.length })}
-          </p>
+          <p className={styles.count}>{countLabel(collection, tr)}</p>
         </header>
 
         {media ? (
@@ -90,31 +173,41 @@ export function PrayerCollectionPage() {
           </section>
         ) : null}
 
-        <ul className={styles.list}>
-          {prayers.map((prayer) => (
-            <li key={`${prayer.collectionSlug}-${prayer.slug}`}>
-              <Link
-                className={styles.item}
-                to={prayerDetailPath(prayer.slug, prayer.collectionSlug)}
-              >
-                <span className={styles.order}>{String(prayer.order).padStart(2, '0')}</span>
-                <span className={styles.itemText}>
-                  <strong lang="am">{prayer.title}</strong>
-                  {prayer.transliterationTitle ? <span>{prayer.transliterationTitle}</span> : null}
-                  {prayer.chapter || prayer.section ? (
-                    <small>
-                      {[prayer.chapter, prayer.section].filter(Boolean).join(' / ')}
-                    </small>
-                  ) : null}
-                </span>
-                <span className={styles.action}>{tr('prayers.collection.open')}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {useSections ? (
+          sections.map((section) => (
+            <section key={section.id} className={styles.sectionBlock} aria-label={section.title}>
+              <h2 className={styles.sectionTitle}>{section.title}</h2>
+              {section.description ? <p className={styles.deck}>{section.description}</p> : null}
+              <ul className={styles.list}>
+                {section.prayers.map((prayer) => (
+                  <li key={`${prayer.collectionSlug}-${prayer.slug}`}>
+                    <PrayerLink
+                      prayer={prayer}
+                      collectionSlug={collection.id}
+                      openLabel={tr('prayers.collection.open')}
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
+        ) : (
+          <ul className={styles.list}>
+            {prayers.map((prayer) => (
+              <li key={`${prayer.collectionSlug}-${prayer.slug}`}>
+                <PrayerLink
+                  prayer={prayer}
+                  collectionSlug={collection.id}
+                  openLabel={tr('prayers.collection.open')}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
 
         <p className={styles.canonical}>
-          {tr('prayers.collection.urlLabel')}: <Link to={prayerCollectionPath(collection.id)}>{prayerCollectionPath(collection.id)}</Link>
+          {tr('prayers.collection.urlLabel')}:{' '}
+          <Link to={prayerCollectionPath(collection.id)}>{prayerCollectionPath(collection.id)}</Link>
         </p>
       </div>
     </PageSection>

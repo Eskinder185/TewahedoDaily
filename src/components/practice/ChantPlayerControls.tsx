@@ -1,9 +1,7 @@
-import { useId } from 'react'
-import { useTranslation } from '../../i18n'
-import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useId, useRef, useState } from 'react'
+import { PRACTICE_SPEEDS } from '../../lib/practice/practicePrefs'
+import { formatChantTime } from './chantPracticeModel'
 import styles from './ChantPlayerControls.module.css'
-
-const RATES = [0.5, 0.75, 1, 1.25] as const
 
 type ChantPlayerControlsProps = {
   disabled: boolean
@@ -13,11 +11,19 @@ type ChantPlayerControlsProps = {
   onTogglePlay: () => void
   volume: number
   onVolumeChange: (value: number) => void
+  muted?: boolean
+  onToggleMute?: () => void
   rate: number
   onRateChange: (value: number) => void
   onSkipBack: () => void
   onSkipForward: () => void
   onSeek: (value: number) => void
+  onPrevSection?: () => void
+  onNextSection?: () => void
+  loopStart?: number | null
+  loopEnd?: number | null
+  sectionMarks?: { start: number; end: number }[]
+  compact?: boolean
 }
 
 export function ChantPlayerControls({
@@ -28,127 +34,209 @@ export function ChantPlayerControls({
   onTogglePlay,
   volume,
   onVolumeChange,
+  muted = false,
+  onToggleMute,
   rate,
   onRateChange,
   onSkipBack,
   onSkipForward,
   onSeek,
+  onPrevSection,
+  onNextSection,
+  loopStart = null,
+  loopEnd = null,
+  sectionMarks = [],
+  compact = false,
 }: ChantPlayerControlsProps) {
-  const t = useUiLabel()
-  const tt = useTranslation()
-  const volId = useId()
   const timelineId = useId()
-  const speedLabelId = useId()
+  const volId = useId()
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [hoverRatio, setHoverRatio] = useState<number | null>(null)
   const hasDuration = Number.isFinite(durationSec) && durationSec > 0
   const clampedNow = hasDuration
     ? Math.max(0, Math.min(durationSec, currentTimeSec))
     : 0
-  const remaining = hasDuration ? Math.max(0, durationSec - clampedNow) : 0
-  const fmt = (sec: number) => {
-    const s = Math.max(0, Math.floor(sec))
-    const m = Math.floor(s / 60)
-    const r = s % 60
-    return `${m}:${String(r).padStart(2, '0')}`
+  const progress = hasDuration ? (clampedNow / durationSec) * 100 : 0
+  const loopLeft =
+    hasDuration && loopStart != null ? (loopStart / durationSec) * 100 : null
+  const loopWidth =
+    hasDuration && loopStart != null && loopEnd != null && loopEnd > loopStart
+      ? ((loopEnd - loopStart) / durationSec) * 100
+      : null
+
+  const seekFromClientX = (clientX: number) => {
+    if (!hasDuration || !trackRef.current) return
+    const rect = trackRef.current.getBoundingClientRect()
+    const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width))
+    onSeek(ratio * durationSec)
   }
 
   return (
-    <div className={styles.root}>
-      <div className={styles.row}>
-        <label className={styles.timelineLabel} htmlFor={timelineId}>
-          <span className={styles.timelineText}>{tt('mezmurPractice.player.timeline')}</span>
-          <input
-            id={timelineId}
-            type="range"
-            className={styles.timelineRange}
-            min={0}
-            max={hasDuration ? Math.floor(durationSec) : 100}
-            value={hasDuration ? Math.floor(clampedNow) : 0}
-            disabled={disabled || !hasDuration}
-            onChange={(e) => onSeek(Number(e.target.value))}
-            aria-label={tt('mezmurPractice.player.playbackTimeline')}
-          />
-          <span className={styles.timelineTimes}>
-            <span>{fmt(clampedNow)}</span>
-            <span>−{fmt(remaining)}</span>
-          </span>
-        </label>
+    <div className={`${styles.root} ${compact ? styles.compact : ''}`}>
+      <div className={styles.times}>
+        <span>{formatChantTime(clampedNow)}</span>
+        <span>{formatChantTime(hasDuration ? durationSec : null)}</span>
       </div>
 
-      <div className={styles.rowPrimary}>
+      <div
+        ref={trackRef}
+        className={styles.track}
+        role="slider"
+        tabIndex={disabled || !hasDuration ? -1 : 0}
+        aria-label="Playback timeline"
+        aria-valuemin={0}
+        aria-valuemax={hasDuration ? Math.floor(durationSec) : 0}
+        aria-valuenow={Math.floor(clampedNow)}
+        aria-disabled={disabled || !hasDuration}
+        id={timelineId}
+        onPointerDown={(event) => {
+          if (disabled || !hasDuration) return
+          trackRef.current?.setPointerCapture(event.pointerId)
+          seekFromClientX(event.clientX)
+        }}
+        onPointerMove={(event) => {
+          if (!trackRef.current || !hasDuration) return
+          const rect = trackRef.current.getBoundingClientRect()
+          setHoverRatio(Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width)))
+          if (trackRef.current.hasPointerCapture(event.pointerId)) {
+            seekFromClientX(event.clientX)
+          }
+        }}
+        onPointerUp={(event) => {
+          trackRef.current?.releasePointerCapture(event.pointerId)
+        }}
+        onPointerLeave={() => setHoverRatio(null)}
+        onKeyDown={(event) => {
+          if (disabled || !hasDuration) return
+          if (event.key === 'ArrowLeft') {
+            event.preventDefault()
+            onSeek(Math.max(0, clampedNow - 5))
+          }
+          if (event.key === 'ArrowRight') {
+            event.preventDefault()
+            onSeek(Math.min(durationSec, clampedNow + 5))
+          }
+        }}
+      >
+        <div className={styles.trackBg} />
+        {sectionMarks.map((mark, index) =>
+          hasDuration ? (
+            <span
+              key={`${mark.start}-${index}`}
+              className={styles.sectionMark}
+              style={{ left: `${(mark.start / durationSec) * 100}%` }}
+            />
+          ) : null,
+        )}
+        {loopLeft != null && loopWidth != null ? (
+          <div
+            className={styles.loopRegion}
+            style={{ left: `${loopLeft}%`, width: `${loopWidth}%` }}
+          />
+        ) : null}
+        <div className={styles.trackFill} style={{ width: `${progress}%` }} />
+        <div className={styles.thumb} style={{ left: `${progress}%` }} />
+        {hoverRatio != null && hasDuration ? (
+          <span
+            className={styles.hoverTip}
+            style={{ left: `${hoverRatio * 100}%` }}
+          >
+            {formatChantTime(hoverRatio * durationSec)}
+          </span>
+        ) : null}
+      </div>
+
+      <div className={styles.transport}>
+        {onPrevSection ? (
+          <button
+            type="button"
+            className={styles.iconBtn}
+            disabled={disabled}
+            onClick={onPrevSection}
+            aria-label="Previous section"
+          >
+            ‹‹
+          </button>
+        ) : null}
         <button
           type="button"
-          className={styles.skip}
+          className={styles.iconBtn}
           disabled={disabled}
           onClick={onSkipBack}
-          aria-label={t('chantSkipBack')}
+          aria-label="Back 5 seconds"
         >
-          {tt('mezmurPractice.player.skipBackShort')}
+          −5
         </button>
         <button
           type="button"
           className={styles.play}
           disabled={disabled}
           onClick={onTogglePlay}
-          aria-label={isPlaying ? t('pause') : t('play')}
+          aria-label={isPlaying ? 'Pause' : 'Play'}
         >
-          {isPlaying ? t('pause') : t('play')}
+          {isPlaying ? '❚❚' : '▶'}
         </button>
         <button
           type="button"
-          className={styles.skip}
+          className={styles.iconBtn}
           disabled={disabled}
           onClick={onSkipForward}
-          aria-label={t('chantSkipForward')}
+          aria-label="Forward 5 seconds"
         >
-          {tt('mezmurPractice.player.skipForwardShort')}
+          +5
         </button>
-      </div>
-
-      <div className={styles.row}>
-        <label className={styles.volLabel} htmlFor={volId}>
-          <span className={styles.volText}>{t('volume')}</span>
-          <input
-            id={volId}
-            type="range"
-            className={styles.volRange}
-            min={0}
-            max={100}
-            value={volume}
+        {onNextSection ? (
+          <button
+            type="button"
+            className={styles.iconBtn}
             disabled={disabled}
-            onChange={(e) => onVolumeChange(Number(e.target.value))}
-            aria-label={t('volume')}
-            aria-valuemin={0}
-            aria-valuemax={100}
-            aria-valuenow={volume}
-          />
-        </label>
+            onClick={onNextSection}
+            aria-label="Next section"
+          >
+            ››
+          </button>
+        ) : null}
       </div>
 
-      <div className={styles.row}>
-        <span className={styles.rateLegend} id={speedLabelId}>
-          {t('speed')}
-        </span>
-        <div
-          className={styles.rates}
-          role="group"
-          aria-labelledby={speedLabelId}
-        >
-          {RATES.map((r) => {
-            const label = r === 1 ? '1×' : `${r}×`
-            return (
-              <button
-                key={r}
-                type="button"
-                className={`${styles.rateBtn} ${Math.abs(rate - r) < 0.01 ? styles.rateOn : ''}`}
-                disabled={disabled}
-                onClick={() => onRateChange(r)}
-                aria-pressed={Math.abs(rate - r) < 0.01}
-                aria-label={`${label} ${t('speed')}`}
-              >
-                {label}
-              </button>
-            )
-          })}
+      <div className={styles.secondary}>
+        <div className={styles.rates} role="group" aria-label="Playback speed">
+          {PRACTICE_SPEEDS.map((value) => (
+            <button
+              key={value}
+              type="button"
+              className={`${styles.rateBtn} ${Math.abs(rate - value) < 0.01 ? styles.rateOn : ''}`}
+              disabled={disabled}
+              aria-pressed={Math.abs(rate - value) < 0.01}
+              onClick={() => onRateChange(value)}
+            >
+              {value === 1 ? '1×' : `${value}×`}
+            </button>
+          ))}
+        </div>
+        <div className={styles.volume}>
+          {onToggleMute ? (
+            <button
+              type="button"
+              className={styles.muteBtn}
+              disabled={disabled}
+              onClick={onToggleMute}
+              aria-label={muted || volume === 0 ? 'Unmute' : 'Mute'}
+            >
+              {muted || volume === 0 ? '🔇' : '🔊'}
+            </button>
+          ) : null}
+          <label className={styles.volLabel} htmlFor={volId}>
+            <span className={styles.srOnly}>Volume</span>
+            <input
+              id={volId}
+              type="range"
+              min={0}
+              max={100}
+              value={muted ? 0 : volume}
+              disabled={disabled}
+              onChange={(event) => onVolumeChange(Number(event.target.value))}
+            />
+          </label>
         </div>
       </div>
     </div>

@@ -72,7 +72,7 @@ export function getWeekdayPrayerRhythm(date = new Date()): WeekdayPrayerRhythm {
         title: 'Wudasie Mariam',
         label: wudase.label,
         subtitle: 'The weekday praise of Saint Mary',
-        to: prayerDetailPath(wudase.slug, 'wudasie-mariam'),
+        to: prayerDetailPath(wudase.slug, 'wudase-mariam'),
       },
       {
         id: 'mezmure-dawit',

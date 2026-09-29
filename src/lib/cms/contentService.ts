@@ -2,7 +2,7 @@ import { db, errorMessage } from './mezmurService'
 import type { ContentStatus, ContentType } from '../supabase/cms.types'
 import type { Json } from '../supabase/database.types'
 
-export const contentKinds = ['saints', 'feasts', 'prayers', 'articles'] as const
+export const contentKinds = ['saints', 'feasts', 'articles'] as const
 export type EditorialKind = (typeof contentKinds)[number]
 
 export const contentPath = (kind: string, slug: string) =>
@@ -29,8 +29,12 @@ export const contentColumns = {
     'slug',
     'title',
     'title_amharic',
+    'name',
+    'name_amharic',
     'description',
     'thumbnail_url',
+    'image_path',
+    'image_alt',
     'status',
     'created_by',
     'updated_at',
@@ -44,6 +48,8 @@ export const contentColumns = {
     'title_amharic',
     'description',
     'thumbnail_url',
+    'image_path',
+    'image_alt',
     'status',
     'created_by',
     'updated_at',
@@ -51,18 +57,6 @@ export const contentColumns = {
     'created_at',
     'ethiopian_month',
     'ethiopian_day',
-  ],
-  prayers: [
-    'id',
-    'slug',
-    'title',
-    'title_amharic',
-    'thumbnail_url',
-    'status',
-    'created_by',
-    'updated_at',
-    'published_at',
-    'created_at',
   ],
   articles: [
     'id',
@@ -89,6 +83,8 @@ export type EditorialContent = {
   body_amharic: string | null
   body_oromo: string | null
   thumbnail_url: string | null
+  image_path?: string | null
+  image_alt?: string | null
   audio_url: string | null
   date_notes: string | null
   related_content: Related[]
@@ -118,6 +114,8 @@ export function emptyContent(): EditorialContent {
     body_amharic: '',
     body_oromo: '',
     thumbnail_url: '',
+    image_path: '',
+    image_alt: '',
     audio_url: '',
     date_notes: '',
     related_content: [],
@@ -157,6 +155,8 @@ function normalizeRow(kind: EditorialKind, row: Record<string, unknown>): Editor
     body_amharic: (row.body_amharic as string | null) ?? '',
     body_oromo: (row.body_oromo as string | null) ?? '',
     thumbnail_url: (row.thumbnail_url as string | null) ?? '',
+    image_path: (row.image_path as string | null) ?? '',
+    image_alt: (row.image_alt as string | null) ?? '',
     audio_url: (row.audio_url as string | null) ?? '',
     date_notes: (row.date_notes as string | null) ?? '',
     related_content: Array.isArray(row.related_content) ? (row.related_content as Related[]) : [],
@@ -183,7 +183,11 @@ function writablePayload(kind: EditorialKind, input: EditorialContent) {
   payload.title = input.title.trim()
   payload.title_amharic = input.title_amharic || null
   payload.thumbnail_url = input.thumbnail_url || null
+  if (allowed.has('image_path')) payload.image_path = input.image_path || null
+  if (allowed.has('image_alt')) payload.image_alt = input.image_alt || null
   payload.status = input.status
+  if (allowed.has('name') && !payload.name) payload.name = input.title.trim()
+  if (allowed.has('name_amharic')) payload.name_amharic = input.title_amharic || null
   if (allowed.has('description')) payload.description = input.description || null
   if (allowed.has('body')) payload.body = input.body || null
   if (allowed.has('ethiopian_month')) payload.ethiopian_month = input.ethiopian_month ?? null
@@ -288,22 +292,35 @@ export async function saveContent(
 }
 
 export async function contentHistory(kind: EditorialKind, id: string) {
-  const [versions, authors] = await Promise.all([
-    db()
-      .from('content_versions')
-      .select('*')
-      .eq('content_type', kind)
-      .eq('content_id', id)
-      .order('created_at', { ascending: false })
-      .limit(50),
-    db().rpc('cms_version_authors', {}),
-  ])
+  const versions = await db()
+    .from('content_versions')
+    .select('*')
+    .eq('content_type', kind)
+    .eq('content_id', id)
+    .order('created_at', { ascending: false })
+    .limit(50)
   if (versions.error) throw versions.error
-  if (authors.error) {
-    if (authors.error.code === 'PGRST202') return { versions: versions.data, authors: [] }
-    throw authors.error
+
+  const authorIds = [
+    ...new Set(
+      (versions.data || [])
+        .map((row) => (row as { changed_by?: string | null }).changed_by)
+        .filter((value): value is string => typeof value === 'string' && value.length > 0),
+    ),
+  ]
+  let authors: { id: string; display_name: string }[] = []
+  if (authorIds.length) {
+    const { data, error } = await db()
+      .from('profiles')
+      .select('id,display_name')
+      .in('id', authorIds)
+    if (error && error.code !== 'PGRST202') throw error
+    authors = (data || []).map((row) => ({
+      id: row.id,
+      display_name: row.display_name || 'CMS member',
+    }))
   }
-  return { versions: versions.data, authors: authors.data }
+  return { versions: versions.data, authors }
 }
 
 export async function lookupContent(kind: ContentType, q = '') {

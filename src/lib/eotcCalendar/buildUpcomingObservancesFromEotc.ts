@@ -66,7 +66,9 @@ export function buildUpcomingObservancesFromEotc(
 
   for (let i = 0; i < horizon; i++) {
     const d = addDays(ref, i)
-    const rows = sortEotcEntriesForCalendarPanel(getEntriesForDate(d, rowSource))
+    const rows = sortEotcEntriesForCalendarPanel(getEntriesForDate(d, rowSource)).filter(
+      (row) => row.entry.date.kind !== 'weekly-recurring',
+    )
     for (const row of rows) {
       const id = row.entry.id
       if (seen.has(id)) continue

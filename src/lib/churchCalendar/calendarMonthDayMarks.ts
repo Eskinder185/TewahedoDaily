@@ -2,10 +2,9 @@ import { buildChurchDaySnapshot } from './buildChurchDaySnapshot'
 import type { ChurchDaySnapshot, ObservanceType } from './types'
 import { getEntriesForDate, sortEotcEntriesForCalendarPanel } from '../eotcCalendar'
 import type { EotcCalendarDatasetRow } from '../eotcCalendar/eotcTypes'
-import {
-  getSynaxariumEntryForGregorianDate,
-  hasDetailedSynaxariumEntry,
-} from '../synaxarium'
+import { gregorianToEthiopian } from '../ethiopianDate'
+import type { SynaxariumMonthDayPreview } from '../prayers/prayerLibraryTypes'
+import { getSynaxariumMonthDayPreviews } from '../synaxarium/synaxariumService'
 
 /**
  * Primary mini-calendar decoration. Shapes + border patterns (not color alone) are
@@ -62,16 +61,17 @@ export function eotcRowToCellMarkKind(
 }
 
 function buildMarkFromEotc(sorted: EotcCalendarDatasetRow[]): CalendarDayCellMark | null {
-  if (sorted.length === 0) return null
-  const primary = eotcRowToCellMarkKind(sorted[0])
+  const contentRows = sorted.filter((row) => row.entry.date.kind !== 'weekly-recurring')
+  if (contentRows.length === 0) return null
+  const primary = eotcRowToCellMarkKind(contentRows[0])
   const anyFast = sorted.some((r) => r.entry.observance.fastStatus === 'fast')
   const alsoFast =
     anyFast && primary !== 'fast' && primary !== 'majorFeast' && primary !== 'feast'
 
-  const head = sorted[0].entry
+  const head = contentRows[0].entry
   const labelBase = head.englishTitle?.trim() || head.title
   const label =
-    sorted.length > 1 ? `${labelBase} (+${sorted.length - 1} more)` : labelBase
+    contentRows.length > 1 ? `${labelBase} (+${contentRows.length - 1} more)` : labelBase
 
   return { primary, alsoFast, label }
 }
@@ -98,6 +98,19 @@ function classifySnapshot(snap: ChurchDaySnapshot): CalendarDayCellMark | null {
     snap.weekday.long ||
     'Liturgical day'
 
+  // Do not treat generic Wednesday/Friday fast chips as Synaxarium commemorations.
+  const looksLikeWeeklyFastOnly =
+    hasFast &&
+    !feastLikeTypes &&
+    !hasSaint &&
+    !hasMarian &&
+    !hasAngel &&
+    !movableHits &&
+    !hasSeason &&
+    /wednesday|friday/i.test(title)
+
+  if (looksLikeWeeklyFastOnly) return null
+
   if (hasMarian) {
     return {
       primary: 'mary',
@@ -117,12 +130,6 @@ function classifySnapshot(snap: ChurchDaySnapshot): CalendarDayCellMark | null {
       movableHits && !feastLikeTypes ? 'movable' : 'feast'
     return { primary, alsoFast: hasFast, label: title }
   }
-  if (hasFast) {
-    return { primary: 'fast', alsoFast: false, label: title }
-  }
-  if (snap.commemoration.subtitle?.trim()) {
-    return { primary: 'saint', alsoFast: hasFast, label: title }
-  }
   if (hasSeason) {
     return { primary: 'season', alsoFast: hasFast, label: title }
   }
@@ -130,38 +137,51 @@ function classifySnapshot(snap: ChurchDaySnapshot): CalendarDayCellMark | null {
   return null
 }
 
+function monthDayKey(month: number, day: number): string {
+  return `${month}-${day}`
+}
+
+function buildSynaxariumPreviewIndex(
+  previews: SynaxariumMonthDayPreview[],
+): Map<string, SynaxariumMonthDayPreview> {
+  const map = new Map<string, SynaxariumMonthDayPreview>()
+  for (const preview of previews) {
+    map.set(monthDayKey(preview.day.ethiopianMonthNumber, preview.day.ethiopianDay), preview)
+  }
+  return map
+}
+
 function classifyDay(
   gregorianYear: number,
   monthIndex: number,
   day: number,
+  synaxariumByEthDay: Map<string, SynaxariumMonthDayPreview>,
 ): CalendarDayCellMark | null {
   const d = new Date(gregorianYear, monthIndex, day)
   const rows = getEntriesForDate(d)
-  if (rows.length > 0) {
-    return buildMarkFromEotc(sortEotcEntriesForCalendarPanel(rows))
-  }
-  const synaxarium = getSynaxariumEntryForGregorianDate(d)
-  if (hasDetailedSynaxariumEntry(synaxarium) && synaxarium) {
-    const primary: CalendarCellMarkKind =
-      synaxarium.importanceLevel === 'major'
-        ? 'majorFeast'
-        : synaxarium.importanceLevel === 'medium'
-          ? 'saint'
-          : 'recurring'
+  const eotcMark = rows.length > 0 ? buildMarkFromEotc(sortEotcEntriesForCalendarPanel(rows)) : null
+  if (eotcMark) return eotcMark
+
+  const eth = gregorianToEthiopian(d)
+  const preview = synaxariumByEthDay.get(monthDayKey(eth.month, eth.day))
+  if (preview) {
+    const label =
+      preview.commemorationsCount > 1
+        ? `${preview.primaryTitle} (+${preview.commemorationsCount - 1} more)`
+        : preview.primaryTitle
     return {
-      primary,
+      primary: 'saint',
       alsoFast: false,
-      label: synaxarium.title,
+      label,
     }
   }
+
   const snap = buildChurchDaySnapshot(d)
   return classifySnapshot(snap)
 }
 
 /**
- * For a Gregorian month, derive which civil days carry a notable observance
- * (mini-calendar). Prefers resolved `eotc_calendar_json` rows; falls back to the
- * church snapshot when a day has no EOTC matches.
+ * Sync marks without Supabase (legacy callers). Prefer `computeCalendarDayMarksAsync`.
  */
 export function computeCalendarDayMarks(
   gregorianYear: number,
@@ -169,8 +189,42 @@ export function computeCalendarDayMarks(
 ): ReadonlyMap<number, CalendarDayCellMark> {
   const dim = new Date(gregorianYear, monthIndex + 1, 0).getDate()
   const map = new Map<number, CalendarDayCellMark>()
+  const empty = new Map<string, SynaxariumMonthDayPreview>()
   for (let day = 1; day <= dim; day++) {
-    const mark = classifyDay(gregorianYear, monthIndex, day)
+    const mark = classifyDay(gregorianYear, monthIndex, day, empty)
+    if (mark) map.set(day, mark)
+  }
+  return map
+}
+
+/**
+ * Month marks with one Supabase query per Ethiopian month spanned by the Gregorian month.
+ */
+export async function computeCalendarDayMarksAsync(
+  gregorianYear: number,
+  monthIndex: number,
+): Promise<ReadonlyMap<number, CalendarDayCellMark>> {
+  const dim = new Date(gregorianYear, monthIndex + 1, 0).getDate()
+  const ethMonths = new Set<number>()
+  for (let day = 1; day <= dim; day++) {
+    ethMonths.add(gregorianToEthiopian(new Date(gregorianYear, monthIndex, day)).month)
+  }
+
+  const previewLists = await Promise.all(
+    [...ethMonths].map(async (monthNumber) => {
+      try {
+        return await getSynaxariumMonthDayPreviews(monthNumber)
+      } catch (error) {
+        if (import.meta.env.DEV) console.error('[calendar] synaxarium month previews', error)
+        return [] as SynaxariumMonthDayPreview[]
+      }
+    }),
+  )
+  const synaxariumByEthDay = buildSynaxariumPreviewIndex(previewLists.flat())
+
+  const map = new Map<number, CalendarDayCellMark>()
+  for (let day = 1; day <= dim; day++) {
+    const mark = classifyDay(gregorianYear, monthIndex, day, synaxariumByEthDay)
     if (mark) map.set(day, mark)
   }
   return map

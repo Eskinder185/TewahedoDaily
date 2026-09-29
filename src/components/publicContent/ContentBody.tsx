@@ -83,9 +83,7 @@ export function ContentBody({
         .map((o) => (
           <section key={o.key}>
             <h2>
-              {kind === 'prayers'
-                ? 'Prayer'
-                : kind === 'saints'
+              {kind === 'saints'
                   ? 'Biography'
                   : 'Reading'}{' '}
               · {o.label}

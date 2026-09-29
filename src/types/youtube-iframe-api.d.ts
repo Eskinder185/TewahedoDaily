@@ -46,6 +46,9 @@ declare global {
       setVolume(volume: number): void
       getVolume(): number
       getPlayerState(): number
+      isMuted(): boolean
+      mute(): void
+      unMute(): void
     }
   }
 

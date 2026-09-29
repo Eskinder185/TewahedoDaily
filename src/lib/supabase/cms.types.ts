@@ -36,6 +36,10 @@ export type CmsTables = {
     lyrics_amharic: string | null; lyrics_english: string | null; lyrics_oromo: string | null
     transliteration: string | null; youtube_url: string | null; audio_url: string | null
     singer_id: string | null; category_id: string | null; source_submission_id: string | null; contributor_credit: string | null
+    language: string | null; form: 'mezmur' | 'werb' | null; category: string | null
+    occasion: string | null; occasion_tags: string[]; saint_or_angel: string | null
+    saint_tags: string[]; themes: string[]; search_keywords: string[]; source: string | null
+    thumbnail_path: string | null; image_alt: string | null
   }, 'slug' | 'title'>
   categories: Table<Timestamps & { id: string; name: string; name_amharic: string | null; slug: string; description: string | null; type: ContentType; is_archived: boolean }, 'name' | 'slug'>
   singers: Table<Timestamps & { id: string; name: string; name_amharic: string | null; description: string | null; image_url: string | null; is_archived: boolean }, 'name'>

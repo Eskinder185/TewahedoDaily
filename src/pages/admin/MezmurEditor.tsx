@@ -4,6 +4,7 @@ import { useAuth } from '../../lib/auth/useAuth'
 import type { ContentStatus } from '../../lib/supabase/cms.types'
 import { editable, emptyMezmur, errorMessage, getMezmur, getTagIds, getTaxonomy, getVersions, label, parseVersion, saveMezmur, slugify, type Mezmur, type MezmurInput, type Version } from '../../lib/cms/mezmurService'
 import { uploadMezmurFile, validateFile } from '../../lib/cms/mediaService'
+import { MediaPicker } from '../../components/admin/MediaPicker'
 import { useAsync } from '../../lib/cms/useAsync'
 import { AsyncNotice, Media, MezmurPreview, Modal, Status } from './AdminUi'
 import s from './Admin.module.css'
@@ -115,11 +116,19 @@ function EditorForm({ initial }: { initial: EditorData }) {
               {textField('lyrics_amharic', 'Amharic lyrics', true, 'am')}{textField('lyrics_english', 'English lyrics', true, 'en')}{textField('lyrics_oromo', 'Oromo lyrics', true, 'om')}{textField('transliteration', 'Transliteration', true)}
             </section>
             <section className={`${s.card} ${s.fields}`}><h2>Media</h2>{textField('youtube_url', 'YouTube URL')}
-              {!row && <p className={s.notice}>Save a draft first to enable image and audio uploads.</p>}
-              <label>Thumbnail upload (JPEG, PNG, WebP · 10 MiB)<input type="file" accept="image/jpeg,image/png,image/webp" disabled={!row} onChange={event => { const file = event.target.files?.[0]; event.target.value = ''; void upload(file, 'image') }} /></label>
-              {input.thumbnail_url?.startsWith('storage://') ? <p className={s.muted}>Uploaded thumbnail attached. Choose another image to replace it.</p> : textField('thumbnail_url', 'Thumbnail URL (optional)')}
-              {input.thumbnail_url && <div className={s.actions}><Media reference={input.thumbnail_url} /><button type="button" onClick={() => set('thumbnail_url', '')}>Remove thumbnail</button></div>}
-              <label>Audio upload (MP3, M4A, Ogg, WAV · 50 MiB)<input type="file" accept="audio/mpeg,audio/mp4,audio/ogg,audio/wav" disabled={!row} onChange={event => { const file = event.target.files?.[0]; event.target.value = ''; void upload(file, 'audio') }} /></label>
+              <MediaPicker
+                label="Thumbnail"
+                folder="mezmur"
+                value={input.thumbnail_path || input.thumbnail_url}
+                altText={input.image_alt}
+                onChange={({ storagePath, altText }) => {
+                  set('thumbnail_path', storagePath)
+                  set('image_alt', altText)
+                  if (storagePath) set('thumbnail_url', storagePath)
+                }}
+              />
+              <label>Legacy audio upload (MP3, M4A, Ogg, WAV · 50 MiB)<input type="file" accept="audio/mpeg,audio/mp4,audio/ogg,audio/wav" disabled={!row} onChange={event => { const file = event.target.files?.[0]; event.target.value = ''; void upload(file, 'audio') }} /></label>
+              {!row && <p className={s.notice}>Save a draft first to enable private-bucket audio uploads.</p>}
               {input.audio_url?.startsWith('storage://') ? <p className={s.muted}>Uploaded audio attached. Choose another file to replace it.</p> : textField('audio_url', 'Audio URL (optional)')}
               {input.audio_url && <div className={s.actions}><Media reference={input.audio_url} audio /><button type="button" onClick={() => set('audio_url', '')}>Remove audio</button></div>}
             </section>

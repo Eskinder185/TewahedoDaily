@@ -1,0 +1,7 @@
+﻿severity,scope,source_file,record_key,field,issue,action
+error,mezmure-dawit,mezmure-dawit-001-050.json,psalm-015,record,Psalm 15 is absent from the localized range file and the supplemental English file.,Not invented; add the authoritative source record before importing it.
+error,mezmure-dawit,mezmure-dawit-100-150.json,psalm-147,record,Psalm 147 is absent from the localized range file and the supplemental English file.,Not invented; add the authoritative source record before importing it.
+warning,mezmure-dawit,mezmure-dawit-english.json,psalm-035,text_english,English text is blank in both the localized range record and the supplemental English source.,Left blank; no translation was invented.
+warning,all,all requested source files,,text_oromo,Oromo text is missing for all 165 prayer records.,Left blank; no translation was invented.
+info,mezmure-dawit,mezmure-dawit-001-050.json,psalm-042..psalm-050,source_structure,Titles change from objects to strings and text values change from strings to arrays at Psalm 42.,Normalized structure only; wording and line order were preserved.
+info,mezmure-dawit,"mezmure-dawit-051-099.json, mezmure-dawit-100-150.json",all records,source_structure,Psalm number is stored in category.chapter and text values are arrays.,Normalized structure only; wording and line order were preserved.

@@ -5,11 +5,14 @@ import { formatEthiopianLong, gregorianToEthiopian } from '../ethiopianDate'
 import { ethMonthFromEnglishName } from '../eotcCalendar/eotcEthiopianMonthNames'
 import { sortEotcEntriesForCalendarPanel } from '../eotcCalendar/eotcCalendarPanelOrdering'
 import type { EotcCalendarDatasetRow, EotcSource } from '../eotcCalendar'
-import type { SynaxariumEntry } from '../synaxarium'
+import type { SynaxariumDayBundle } from '../prayers/prayerLibraryTypes'
 import {
-  getSynaxariumEntryForEthiopianDate,
-  hasDetailedSynaxariumEntry,
-} from '../synaxarium'
+  supabaseBundlePrimaryTitle,
+  supabaseBundleShortDescription,
+  supabaseCommemorationsToCalendar,
+} from './synaxariumFromSupabase'
+import { pickSynaxariumImagePath } from '../synaxarium/synaxariumService'
+import { resolveContentMediaUrl } from '../cms/contentMedia'
 import type {
   CalendarDayCommemoration,
   CalendarDayDetail,
@@ -173,7 +176,7 @@ function eotcSourcePage(source: EotcSource | undefined): number | undefined {
 
 function buildSourceMetadata(
   rows: readonly EotcCalendarDatasetRow[],
-  synaxarium: SynaxariumEntry | null,
+  synaxariumBundle: SynaxariumDayBundle | null | undefined,
 ): CalendarExpandedContent['source'] | undefined {
   const primary = rows[0]?.entry
   const expandedSource = primary?.content.expandedContent?.source
@@ -186,18 +189,17 @@ function buildSourceMetadata(
   const title =
     firstSource?.title?.trim() ||
     expandedSource?.title?.trim() ||
-    (synaxarium ? 'Ethiopian Synaxarium' : undefined)
+    (synaxariumBundle ? 'Ethiopian Synaxarium' : undefined)
   const entryLabel =
     eotcSourceField(firstSource, 'dateHeading') ||
     expandedSource?.entryLabel?.trim() ||
-    synaxarium?.sourceDateHeading
+    synaxariumBundle?.day.displayDateEnglish
   const sourcePage =
     eotcSourcePage(firstSource) ??
-    (typeof expandedSource?.sourcePage === 'number' ? expandedSource.sourcePage : undefined) ??
-    synaxarium?.sourcePage ??
-    undefined
-  const provenanceNote =
-    synaxarium?.status === 'verified' ? 'Verified from original source' : undefined
+    (typeof expandedSource?.sourcePage === 'number' ? expandedSource.sourcePage : undefined)
+  const provenanceNote = synaxariumBundle
+    ? 'Loaded from published Supabase Synaxarium'
+    : undefined
 
   if (!title && !entryLabel && !sourcePage && !provenanceNote) return undefined
   return {
@@ -211,10 +213,24 @@ function buildSourceMetadata(
 
 function eotcRowsToExpandedContent(
   rows: readonly EotcCalendarDatasetRow[],
-  synaxarium: SynaxariumEntry | null,
+  synaxariumBundle: SynaxariumDayBundle | null | undefined,
 ): CalendarExpandedContent | undefined {
   const primary = rows[0]?.entry
-  if (!primary) return synaxariumToExpandedContent(synaxarium)
+  if (!primary) {
+    const first = synaxariumBundle?.commemorations[0]
+    if (!first) return undefined
+    const summary = clean(first.summary)
+    const body = clean(first.bodyEnglish) || clean(first.bodyAmharic)
+    return {
+      whyCelebrated: summary || undefined,
+      whatHappened: body ? [body] : undefined,
+      source: {
+        title: 'Ethiopian Synaxarium',
+        entryLabel: clean(first.title) || synaxariumBundle?.day.displayDateEnglish,
+        provenanceNote: 'Loaded from published Supabase Synaxarium',
+      },
+    }
+  }
 
   const explicit = primary.content.expandedContent
   const whyCelebrated =
@@ -233,7 +249,7 @@ function eotcRowsToExpandedContent(
     ],
     [whyCelebrated, significance],
   )
-  const source = buildSourceMetadata(rows, synaxarium)
+  const source = buildSourceMetadata(rows, synaxariumBundle)
 
   if (!whyCelebrated && whatHappened.length === 0 && !significance && !source) {
     return undefined
@@ -243,33 +259,6 @@ function eotcRowsToExpandedContent(
     whatHappened,
     significance,
     source,
-  }
-}
-
-function synaxariumToExpandedContent(
-  synaxarium: SynaxariumEntry | null,
-): CalendarExpandedContent | undefined {
-  if (!synaxarium || !hasDetailedSynaxariumEntry(synaxarium)) return undefined
-  const whatHappened = synaxarium.mainCommemorations
-    .map((line) => line.trim())
-    .filter(Boolean)
-    .slice(0, 5)
-  return {
-    whyCelebrated:
-      clean(synaxarium.shortSummary) ||
-      `This day keeps the remembrance for ${synaxarium.sourceDateHeading}.`,
-    whatHappened,
-    significance:
-      'The Church keeps the memory of saints, feasts, and holy events so the faithful can learn from their witness and ask their prayers.',
-    source: {
-      title: 'Ethiopian Synaxarium',
-      entryLabel: synaxarium.sourceDateHeading,
-      provenanceNote:
-        synaxarium.status === 'verified' ? 'Verified from original source' : undefined,
-      originalReference: synaxarium.sourcePage
-        ? `PDF page ${synaxarium.sourcePage}`
-        : undefined,
-    },
   }
 }
 
@@ -283,34 +272,30 @@ function eotcRowsToCommemorations(
       category: entry.display.calendarBadge || entry.category.primary,
       kind: entry.category.primary,
       priority: index === 0 ? 'headline' : 'secondary',
-      expandedContent: eotcRowsToExpandedContent([row], null),
+      expandedContent: eotcRowsToExpandedContent([row], undefined),
     }
   })
 }
 
-function synaxariumToCommemorations(
-  synaxarium: SynaxariumEntry | null,
-): CalendarDayCommemoration[] {
-  if (!synaxarium || !hasDetailedSynaxariumEntry(synaxarium)) return []
-  return synaxarium.mainCommemorations.slice(0, 6).map((title, index) => ({
-    title,
-    category: synaxarium.type,
-    kind: synaxarium.category,
-    priority: index === 0 ? 'headline' : 'secondary',
-  }))
+function withoutWeeklyRecurring(
+  rows: readonly EotcCalendarDatasetRow[],
+): EotcCalendarDatasetRow[] {
+  return rows.filter((row) => row.entry.date.kind !== 'weekly-recurring')
 }
 
 function allCommemorationText(
   day: StoredDayDetail | null,
-  synaxarium: SynaxariumEntry | null,
+  synaxariumBundle: SynaxariumDayBundle | null | undefined,
   eotcRows: readonly EotcCalendarDatasetRow[],
 ): string {
   return [
     day?.title,
     day?.summary,
     ...(day?.commemorations.map((c) => `${c.title} ${c.category ?? ''}`) ?? []),
-    synaxarium?.title,
-    ...(synaxarium?.mainCommemorations ?? []),
+    synaxariumBundle?.day.summary,
+    ...(synaxariumBundle?.commemorations.map(
+      (item) => `${item.title} ${item.titleAmharic} ${item.summary}`,
+    ) ?? []),
     ...eotcRows.map((row) =>
       [
         row.entry.englishTitle,
@@ -447,7 +432,9 @@ function structureFromJson(): string[] {
   return titles.length ? titles : ['Opening', 'Readings', 'Anaphora', 'Communion']
 }
 
-function readingPatternFromJson(): CalendarLiturgyContext['readings']['pattern'] {
+function readingPatternFromJson(): NonNullable<
+  NonNullable<CalendarLiturgyContext['readings']>['pattern']
+> {
   return (LITURGY_RULES.readingPattern?.order ?? [])
     .map((item) => {
       if (typeof item === 'string') return { title: item }
@@ -562,13 +549,13 @@ function resolveMezmur(
 
 function buildLiturgyContext(
   day: StoredDayDetail | null,
-  synaxarium: SynaxariumEntry | null,
+  synaxariumBundle: SynaxariumDayBundle | null | undefined,
   eotcRows: readonly EotcCalendarDatasetRow[],
   ethMonthName: string,
   ethDay: number,
   weekday: string,
 ): CalendarLiturgyContext {
-  const text = allCommemorationText(day, synaxarium, eotcRows)
+  const text = allCommemorationText(day, synaxariumBundle, eotcRows)
   const categoryText = allCategoryText(day, eotcRows)
   const storedCandidate = day?.liturgyContext?.anaphora ?? day?.liturgyContext?.candidateAnaphora
   const storedResolved =
@@ -586,8 +573,8 @@ function buildLiturgyContext(
   const reason = storedResolved
     ? storedResolved.reason || 'Resolved from exact calendar day liturgy data.'
     : rule
-    ? `${rule.label || rule.note || rule.id}.`
-    : 'No source-supported anaphora mapping is available for this day yet.'
+      ? `${rule.label || rule.note || rule.id}.`
+      : 'No source-supported anaphora mapping is available for this day yet.'
 
   return {
     structure: day?.liturgyContext?.structure?.length ? day.liturgyContext.structure : structureFromJson(),
@@ -611,44 +598,81 @@ function buildLiturgyContext(
   }
 }
 
+export type ResolveCalendarDayOptions = {
+  /** When provided (including null), Supabase Synaxarium is authoritative for commemorations. */
+  synaxariumBundle?: SynaxariumDayBundle | null
+  preferAmharic?: boolean
+}
+
 export function resolveCalendarDayDetail(
   date: Date,
   eotcRows: readonly EotcCalendarDatasetRow[] = [],
+  options: ResolveCalendarDayOptions = {},
 ): CalendarDayDetail {
-  const orderedEotcRows = sortEotcEntriesForCalendarPanel(eotcRows)
+  const preferAmharic = Boolean(options.preferAmharic)
+  const synaxariumBundle = options.synaxariumBundle
+  const orderedEotcRows = withoutWeeklyRecurring(sortEotcEntriesForCalendarPanel(eotcRows))
   const eth = gregorianToEthiopian(date)
   const ethMonthName = formatEthiopianLong({ ...eth, year: eth.year }).split(' ')[0]
-  const synaxarium = getSynaxariumEntryForEthiopianDate(eth.month, eth.day)
   const weekday = date.toLocaleDateString('en-US', { weekday: 'long' }).toLocaleLowerCase()
   const stored = BY_ETHIOPIAN_DAY.get(monthDayKey(eth.month, eth.day)) ?? null
   const storedExpanded = stored?.expandedContent
-  const eotcExpanded = eotcRowsToExpandedContent(orderedEotcRows, synaxarium)
+  const eotcExpanded = eotcRowsToExpandedContent(orderedEotcRows, synaxariumBundle)
   const primaryEotc = orderedEotcRows[0]?.entry
+
+  const supabaseCommemorations =
+    synaxariumBundle === undefined
+      ? null
+      : supabaseCommemorationsToCalendar(synaxariumBundle?.commemorations ?? [], preferAmharic)
+
   const commemorations =
-    orderedEotcRows.length > 0
-      ? eotcRowsToCommemorations(orderedEotcRows)
-      : stored?.commemorations?.length
-      ? stored.commemorations
-      : synaxariumToCommemorations(synaxarium)
+    supabaseCommemorations && supabaseCommemorations.length > 0
+      ? supabaseCommemorations
+      : supabaseCommemorations
+        ? []
+        : orderedEotcRows.length > 0
+          ? eotcRowsToCommemorations(orderedEotcRows)
+          : stored?.commemorations?.length
+            ? stored.commemorations
+            : []
+
   const title =
+    (synaxariumBundle !== undefined
+      ? supabaseBundlePrimaryTitle(synaxariumBundle, preferAmharic)
+      : '') ||
     clean(primaryEotc?.englishTitle) ||
     clean(primaryEotc?.title) ||
     clean(stored?.ui?.headlineCommemoration) ||
     clean(stored?.title) ||
-    clean(synaxarium?.title) ||
     `${ethMonthName} ${String(eth.day).padStart(2, '0')}`
+
   const shortDescription =
+    (synaxariumBundle !== undefined
+      ? supabaseBundleShortDescription(synaxariumBundle, preferAmharic)
+      : '') ||
     clean(primaryEotc?.summary.short) ||
     clean(primaryEotc?.summary.panel) ||
     clean(stored?.shortDescription) ||
     clean(stored?.summary) ||
-    clean(synaxarium?.shortSummary) ||
-    'No detailed calendar note is available for this date yet.'
+    (synaxariumBundle === null
+      ? 'No Synaxarium entry is available for this date yet.'
+      : commemorations.length === 0
+        ? 'No Synaxarium entry is available for this date yet.'
+        : '')
+
+  const expandedFromSupabase = commemorations.find((item) => item.expandedContent)?.expandedContent
+  const cmsImage = pickSynaxariumImagePath(synaxariumBundle)
+  const imageUrl = cmsImage ? resolveContentMediaUrl(cmsImage.path) : undefined
 
   return {
-    id: stored?.id ?? `${ethMonthName.toLocaleLowerCase()}-${String(eth.day).padStart(2, '0')}`,
+    id:
+      synaxariumBundle?.day.slug ||
+      stored?.id ||
+      `${ethMonthName.toLocaleLowerCase()}-${String(eth.day).padStart(2, '0')}`,
     title,
     shortDescription,
+    imageUrl: imageUrl || undefined,
+    imageAlt: cmsImage?.alt || undefined,
     ethiopianDate: {
       month: ethMonthName,
       day: eth.day,
@@ -666,15 +690,19 @@ export function resolveCalendarDayDetail(
       day: date.getDate(),
     },
     commemorations,
-    expandedContent: storedExpanded ?? eotcExpanded,
-    liturgyContext: buildLiturgyContext(stored, synaxarium, orderedEotcRows, ethMonthName, eth.day, weekday),
+    expandedContent: expandedFromSupabase ?? storedExpanded ?? eotcExpanded,
+    liturgyContext: buildLiturgyContext(
+      stored,
+      synaxariumBundle,
+      orderedEotcRows,
+      ethMonthName,
+      eth.day,
+      weekday,
+    ),
     source: stored?.source ?? {
       synaxarium: {
-        file: 'src/data/eotc_calendar_json',
-        entryLabel: synaxarium?.sourceDateHeading,
-        originalReference: synaxarium?.sourcePage
-          ? `PDF page ${synaxarium.sourcePage}`
-          : undefined,
+        file: 'public.synaxarium_days / public.synaxarium_commemorations',
+        entryLabel: synaxariumBundle?.day.displayDateEnglish,
       },
       liturgy: {
         file: 'englishethiopianliturgy.pdf',

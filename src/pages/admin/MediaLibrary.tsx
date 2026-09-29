@@ -1,14 +1,21 @@
 import { useCallback, useState } from 'react'
 import { useAsync } from '../../lib/cms/useAsync'
-import { db, errorMessage } from '../../lib/cms/mezmurService'
+import { errorMessage } from '../../lib/cms/mezmurService'
 import {
-  mediaInventory,
-  uploadContentFile,
-  type LibraryFile,
-} from '../../lib/cms/libraryMedia'
+  deleteMediaAsset,
+  listMediaAssets,
+  MEDIA_FOLDERS,
+  resolveContentMediaUrl,
+  updateMediaAsset,
+  uploadContentMedia,
+  type MediaAsset,
+  type MediaFolder,
+} from '../../lib/cms/contentMedia'
+import { mediaInventory, uploadContentFile, type LibraryFile } from '../../lib/cms/libraryMedia'
 import { publicMedia } from '../../lib/publicContent/service'
 import { AsyncNotice } from './AdminUi'
 import s from './Admin.module.css'
+
 export function ContentUpload({
   kind,
   id,
@@ -30,8 +37,18 @@ export function ContentUpload({
     setError('')
     setProgress(0)
     try {
-      const result = await uploadContentFile(file, kind, id, setProgress)
-      onUploaded(result.reference, result.type)
+      if (file.type.startsWith('image/')) {
+        const folder = (
+          ['homepage', 'mezmur', 'prayers', 'liturgy', 'synaxarium', 'saints', 'feasts', 'fallback'].includes(kind)
+            ? kind
+            : 'fallback'
+        ) as MediaFolder
+        const asset = await uploadContentMedia(file, folder, { onProgress: setProgress })
+        onUploaded(asset.storage_path, 'image')
+      } else {
+        const result = await uploadContentFile(file, kind, id, setProgress)
+        onUploaded(result.reference, result.type)
+      }
     } catch (e) {
       setProgress(null)
       setError(errorMessage(e))
@@ -55,64 +72,81 @@ export function ContentUpload({
         />
       </label>
       <p className={s.muted}>
-        JPEG/PNG/WebP up to 10 MiB; MP3/M4A/Ogg/WAV up to 50 MiB. Save the
-        editor to attach uploaded files.
+        Images go to content-media (JPEG/PNG/WebP, 10 MiB). Audio uses legacy private buckets.
       </p>
       {progress !== null && (
         <>
           <progress aria-label="Upload progress" max={100} value={progress} />
-          <p role="status">
-            {busy ? `Uploading ${progress}%` : 'Upload finished'}
-          </p>
+          <p role="status">{busy ? `Uploading ${progress}%` : 'Upload finished'}</p>
         </>
       )}
       {error && <p role="alert">{error}</p>}
     </div>
   )
 }
+
 export function MediaLibrary() {
   const [q, setQ] = useState('')
-  const [type, setType] = useState('')
+  const [folder, setFolder] = useState('')
   const [page, setPage] = useState(1)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
+  const [legacy, setLegacy] = useState(false)
   const result = useAsync(
-    useCallback(() => mediaInventory(q, type, page), [q, type, page]),
+    useCallback(async () => {
+      if (legacy) return mediaInventory(q, '', page)
+      return listMediaAssets({ search: q, folder: folder || undefined, page, pageSize: 24 })
+    }, [q, folder, page, legacy]),
   )
-  async function remove(file: LibraryFile) {
-    if (!window.confirm(`Permanently delete ${file.name}?`)) return
+
+  async function removeAsset(asset: MediaAsset) {
+    if (!window.confirm(`Permanently delete ${asset.file_name}?`)) return
     setError('')
     try {
-      const { data, error } = await db()
-        .storage.from(file.bucket_id)
-        .remove([file.name])
-      if (error) throw error
-      if (!data.length)
-        throw new Error('File is referenced or deletion was denied.')
+      await deleteMediaAsset(asset)
       setMessage('File deleted.')
       result.reload()
     } catch (e) {
       setError(errorMessage(e))
     }
   }
+
+  async function removeLegacy(file: LibraryFile) {
+    if (!window.confirm(`Permanently delete ${file.name}?`)) return
+    setError('')
+    try {
+      const { db } = await import('../../lib/cms/mezmurService')
+      const { data, error: removeError } = await db()
+        .storage.from(file.bucket_id)
+        .remove([file.name])
+      if (removeError) throw removeError
+      if (!data.length) throw new Error('File is referenced or deletion was denied.')
+      setMessage('File deleted.')
+      result.reload()
+    } catch (e) {
+      setError(errorMessage(e))
+    }
+  }
+
   return (
     <>
       <h1>Media library</h1>
+      <p className={s.muted}>
+        Primary library uses the public <code>content-media</code> bucket and <code>media_assets</code> table.
+      </p>
       <ContentUpload
-        kind="library"
+        kind={folder || 'fallback'}
         id="uploads"
         onUploaded={() => {
           result.reload()
-          setMessage(
-            'Uploaded. Copy its Storage reference to attach it to content.',
-          )
+          setMessage('Uploaded.')
         }}
       />
       {error && <p role="alert">{error}</p>}
       {message && <p role="status">{message}</p>}
       <div className={s.filters}>
         <label>
-          Search files
+          Search
           <input
             value={q}
             onChange={(e) => {
@@ -122,30 +156,45 @@ export function MediaLibrary() {
           />
         </label>
         <label>
-          File type
+          Folder
           <select
-            value={type}
+            value={folder}
             onChange={(e) => {
-              setType(e.target.value)
+              setFolder(e.target.value)
               setPage(1)
             }}
+            disabled={legacy}
           >
             <option value="">All</option>
-            <option value="image">Images</option>
-            <option value="audio">Audio</option>
-            <option value="application">Documents</option>
+            {MEDIA_FOLDERS.map((name) => (
+              <option key={name} value={name}>
+                {name}
+              </option>
+            ))}
           </select>
+        </label>
+        <label className={s.check}>
+          <input
+            type="checkbox"
+            checked={legacy}
+            onChange={(e) => {
+              setLegacy(e.target.checked)
+              setPage(1)
+            }}
+          />
+          Show legacy private buckets
         </label>
       </div>
       <AsyncNotice {...result} retry={result.reload} />
-      {result.data && (
+      {result.data && !legacy && (
         <>
           <div className={s.mediaGrid}>
-            {result.data.items.map((file) => (
-              <FileCard
-                key={file.id}
-                file={file}
-                remove={() => void remove(file)}
+            {(result.data.items as MediaAsset[]).map((asset) => (
+              <AssetCard
+                key={asset.id}
+                asset={asset}
+                remove={() => void removeAsset(asset)}
+                onSaved={() => result.reload()}
               />
             ))}
           </div>
@@ -164,10 +213,98 @@ export function MediaLibrary() {
           </div>
         </>
       )}
+      {result.data && legacy && (
+        <>
+          <div className={s.mediaGrid}>
+            {(result.data.items as LibraryFile[]).map((file) => (
+              <LegacyFileCard key={file.id} file={file} remove={() => void removeLegacy(file)} />
+            ))}
+          </div>
+          {!result.data.items.length && <p>No files match.</p>}
+        </>
+      )}
     </>
   )
 }
-function FileCard({ file, remove }: { file: LibraryFile; remove: () => void }) {
+
+function AssetCard({
+  asset,
+  remove,
+  onSaved,
+}: {
+  asset: MediaAsset
+  remove: () => void
+  onSaved: () => void
+}) {
+  const url = resolveContentMediaUrl(asset.storage_path)
+  const [alt, setAlt] = useState(asset.alt_text || '')
+  const [caption, setCaption] = useState(asset.caption || '')
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
+
+  async function saveMeta() {
+    setError('')
+    try {
+      await updateMediaAsset(asset.id, { alt_text: alt || null, caption: caption || null })
+      setMessage('Saved.')
+      onSaved()
+    } catch (cause) {
+      setError(errorMessage(cause))
+    }
+  }
+
+  async function copy(value: string) {
+    try {
+      await navigator.clipboard.writeText(value)
+      setMessage('Copied path.')
+    } catch {
+      setMessage(value)
+    }
+  }
+
+  return (
+    <article className={`${s.card} ${s.mediaCard}`}>
+      <div className={s.mediaThumbWrap}>
+        {url ? (
+          <img className={s.mediaThumb} src={url} alt={alt || asset.file_name} />
+        ) : (
+          <div className={s.mediaThumbEmpty}>—</div>
+        )}
+      </div>
+      <div className={s.mediaMeta}>
+        <strong title={asset.file_name}>{asset.file_name}</strong>
+        <span className={s.mediaFolder}>
+          {asset.storage_path.split('/')[0] || 'content-media'}
+          {asset.width && asset.height ? ` · ${asset.width}×${asset.height}` : ''}
+        </span>
+        <span className={s.muted}>{new Date(asset.created_at).toLocaleDateString()}</span>
+        <label>
+          Alt text
+          <input value={alt} onChange={(e) => setAlt(e.target.value)} />
+        </label>
+        <label>
+          Caption
+          <input value={caption} onChange={(e) => setCaption(e.target.value)} />
+        </label>
+        <div className={s.actions}>
+          <button type="button" onClick={() => void saveMeta()}>
+            Save
+          </button>
+          <button type="button" onClick={() => void copy(asset.storage_path)}>
+            Copy path
+          </button>
+          <button type="button" className={s.danger} onClick={remove}>
+            Delete
+          </button>
+        </div>
+        {message ? <p role="status">{message}</p> : null}
+        {error ? <p role="alert">{error}</p> : null}
+      </div>
+    </article>
+  )
+}
+
+function LegacyFileCard({ file, remove }: { file: LibraryFile; remove: () => void }) {
   const ref = `storage://${file.bucket_id}/${file.name}`
   const url = useAsync(useCallback(() => publicMedia(ref), [ref]))
   const [message, setMessage] = useState('')
@@ -176,51 +313,34 @@ function FileCard({ file, remove }: { file: LibraryFile; remove: () => void }) {
       await navigator.clipboard.writeText(value)
       setMessage('Copied.')
     } catch {
-      setMessage('Copy failed. Select the reference text instead.')
+      setMessage(value)
     }
   }
   return (
     <article className={s.card}>
-      <h2 className={s.lyrics}>{file.name.split('/').at(-1)}</h2>
-      <p>
-        {Math.round((file.metadata?.size || 0) / 1024)} KiB ·{' '}
-        {file.metadata?.mimetype}
-      </p>
-      <AsyncNotice {...url} retry={url.reload} />
-      {url.data &&
-        (file.metadata?.mimetype?.startsWith('image/') ? (
-          <img
-            src={url.data}
-            alt={file.name}
-            loading="lazy"
-            style={{ maxWidth: '100%', maxHeight: 200 }}
-          />
-        ) : file.metadata?.mimetype?.startsWith('audio/') ? (
-          <audio
-            controls
-            preload="none"
-            src={url.data}
-            style={{ maxWidth: '100%' }}
-          />
+      {url.data ? (
+        file.metadata.mimetype?.startsWith('audio/') ? (
+          <audio controls src={url.data} />
         ) : (
-          <a href={url.data} target="_blank" rel="noreferrer">
-            Preview file
-          </a>
-        ))}
-      <p className={s.lyrics}>{ref}</p>
+          <img className={s.thumbnail} src={url.data} alt="" />
+        )
+      ) : (
+        <span className={s.noImage}>…</span>
+      )}
+      <strong>{file.name.split('/').pop()}</strong>
+      <small className={s.muted}>
+        {file.bucket_id} · {new Date(file.created_at).toLocaleDateString()}
+      </small>
+      {file.in_use ? <p className={s.muted}>In use by content</p> : null}
       <div className={s.actions}>
-        <button disabled={!url.data} onClick={() => void copy(url.data!)}>
-          Copy file URL (1 hour)
+        <button type="button" onClick={() => void copy(ref)}>
+          Copy ref
         </button>
-        <button onClick={() => void copy(ref)}>Copy Storage reference</button>
-        <button disabled={file.in_use} onClick={remove}>
+        <button type="button" className={s.danger} onClick={remove}>
           Delete
         </button>
       </div>
-      {file.in_use && (
-        <p>Protected: referenced by content or revision history.</p>
-      )}
-      {message && <p role="status">{message}</p>}
+      {message ? <p role="status">{message}</p> : null}
     </article>
   )
 }

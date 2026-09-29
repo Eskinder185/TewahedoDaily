@@ -33,19 +33,18 @@ export function VoiceRecorder({
   })
 
   const [countdown, setCountdown] = useState<number | null>(null)
-  const [isMediaRecorderSupported, setIsMediaRecorderSupported] = useState(true)
+  const [isMediaRecorderSupported] = useState(
+    () =>
+      typeof MediaRecorder !== 'undefined' &&
+      typeof navigator !== 'undefined' &&
+      Boolean(navigator.mediaDevices?.getUserMedia),
+  )
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const timerRef = useRef<number | null>(null)
   const countdownRef = useRef<number | null>(null)
   const chunksRef = useRef<Blob[]>([])
-
-  useEffect(() => {
-    setIsMediaRecorderSupported(
-      typeof MediaRecorder !== 'undefined' && Boolean(navigator.mediaDevices?.getUserMedia),
-    )
-  }, [])
 
   const cleanup = useCallback(() => {
     if (timerRef.current) {
@@ -195,6 +194,19 @@ export function VoiceRecorder({
     }))
   }, [state.audioUrl])
 
+  const downloadRecording = useCallback(() => {
+    if (!state.audioBlob || !state.audioUrl) return
+    const a = document.createElement('a')
+    a.href = state.audioUrl
+    a.download = `tewahedo-practice-${Date.now()}.webm`
+    a.click()
+  }, [state.audioBlob, state.audioUrl])
+
+  const pauseRecordingPlayback = useCallback(() => {
+    audioRef.current?.pause()
+    setState((prev) => ({ ...prev, status: 'recorded' }))
+  }, [])
+
   const formatTime = (seconds: number): string => {
     const mins = Math.floor(seconds / 60)
     const secs = Math.floor(seconds % 60)
@@ -303,6 +315,14 @@ export function VoiceRecorder({
             </button>
             <button
               type="button"
+              className={`${styles.controlButton} ${styles.playButton}`}
+              onClick={downloadRecording}
+              disabled={disabled || !state.audioBlob}
+            >
+              Save recording
+            </button>
+            <button
+              type="button"
               className={`${styles.controlButton} ${styles.deleteButton}`}
               onClick={deleteRecording}
               disabled={disabled}
@@ -324,13 +344,9 @@ export function VoiceRecorder({
           <button
             type="button"
             className={`${styles.controlButton} ${styles.stopButton}`}
-            onClick={() => {
-              audioRef.current?.pause()
-              if (audioRef.current) audioRef.current.currentTime = 0
-              setState((prev) => ({ ...prev, status: 'recorded' }))
-            }}
+            onClick={pauseRecordingPlayback}
           >
-            {t('mezmurPractice.recording.stopPlayback')}
+            Pause
           </button>
         )}
       </div>

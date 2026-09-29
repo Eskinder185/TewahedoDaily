@@ -1,6 +1,7 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
 import { PageSection } from '../components/ui/PageSection'
 import { CalendarImage } from '../components/calendar/CalendarImage'
 import { LiturgyContextCard } from '../components/calendar/LiturgyContextCard'
@@ -9,7 +10,10 @@ import { useHomeToday } from '../hooks/useHomeToday'
 import { publicDaily, todayInAddis } from '../lib/cms/dailyService'
 import { useAsync } from '../lib/cms/useAsync'
 import { resolveCalendarDayDetail } from '../lib/calendarDayDetails'
-import { getEntriesForDate } from '../lib/eotcCalendar'
+import { collectEotcMatchesForLocalDay } from '../lib/eotcCalendar'
+import { gregorianToEthiopian } from '../lib/ethiopianDate'
+import { getSynaxariumDayWithCommemorations } from '../lib/prayers/synaxariumSupabase'
+import type { SynaxariumDayBundle } from '../lib/prayers/prayerLibraryTypes'
 import { supabase } from '../lib/supabase/client'
 import {
   calendarImageManifest,
@@ -29,6 +33,8 @@ function fastLine(weekly: string | null, seasonal: string | null) {
  */
 export function TodayPage() {
   const t = useTranslation()
+  const { locale } = useLocale()
+  const preferAmharic = locale === 'am'
   const { now, snapshot } = useHomeToday()
   const day = todayInAddis()
   const editorial = useAsync(
@@ -37,18 +43,40 @@ export function TodayPage() {
       [day],
     ),
   )
+  const [synaxariumBundle, setSynaxariumBundle] = useState<SynaxariumDayBundle | null>()
 
-  const entries = useMemo(() => getEntriesForDate(now), [now])
-  const detail = useMemo(
-    () => resolveCalendarDayDetail(now, entries),
-    [now, entries],
-  )
+  useEffect(() => {
+    let active = true
+    setSynaxariumBundle(undefined)
+    const eth = gregorianToEthiopian(now)
+    void getSynaxariumDayWithCommemorations(eth.month, eth.day)
+      .then((bundle) => {
+        if (active) setSynaxariumBundle(bundle)
+      })
+      .catch((cause) => {
+        if (import.meta.env.DEV) console.error('[today] synaxarium', cause)
+        if (active) setSynaxariumBundle(null)
+      })
+    return () => {
+      active = false
+    }
+  }, [now])
+
+  const entries = useMemo(() => collectEotcMatchesForLocalDay(now), [now])
+  const detail = useMemo(() => {
+    if (synaxariumBundle === undefined) return null
+    return resolveCalendarDayDetail(now, entries, {
+      synaxariumBundle,
+      preferAmharic,
+    })
+  }, [now, entries, synaxariumBundle, preferAmharic])
   const primary = entries[0]
   const imagePresentation = resolveEventImagePresentation(primary?.entry.id, {
     objectFit: 'cover',
     objectPosition: '50% 32%',
   })
   const heroImage =
+    detail?.imageUrl ||
     (primary ? resolveEventImageById(primary.entry.id) : null) ||
     calendarImageManifest.anchors.todayInChurch
   const fast = fastLine(

@@ -1,23 +1,35 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from '../../i18n'
-import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  firstLetterHint,
-  splitLyricsLines,
-  splitLyricsStanzas,
-} from '../../lib/practice/splitLyricsForStudy'
+  loadAutoScroll,
+  loadLyricsFontSize,
+  loadLyricsMode,
+  loadScrollIntroSec,
+  loadScrollOutroSec,
+  lyricsFontPx,
+  lyricsLineHeight,
+  LYRICS_FONT_SIZES,
+  saveAutoScroll,
+  saveLyricsFontSize,
+  saveLyricsMode,
+  saveScrollIntroSec,
+  saveScrollOutroSec,
+  type AutoScrollSpeed,
+  type LyricsFontSizePx,
+  type LyricsScriptMode,
+} from '../../lib/practice/practicePrefs'
+import { useLyricsAutoScroll } from '../../hooks/useLyricsAutoScroll'
 import { MemoryAidPanel } from './MemoryAidPanel'
-import { MemorizationTipsCallout } from './MemorizationTipsCallout'
+import { splitLyricsLines } from '../../lib/practice/splitLyricsForStudy'
 import styles from './ChantLyricsLearningPanel.module.css'
-
-export type ScriptMode = 'lyrics' | 'transliteration' | 'both'
-export type StudyLayout = 'full' | 'line' | 'stanza'
 
 type Props = {
   entryId: string
   lyricsGez: string
   transliterationLyrics: string
-  /** When false, omit the general memorization tips (e.g. when shown in a separate Tips tab). */
+  lyricsEnglish?: string
+  currentTimeSec?: number
+  durationSec?: number
+  isPlaying?: boolean
   showMemorizationTipsCallout?: boolean
 }
 
@@ -25,204 +37,325 @@ export function ChantLyricsLearningPanel({
   entryId,
   lyricsGez,
   transliterationLyrics,
-  showMemorizationTipsCallout = true,
+  lyricsEnglish = '',
+  currentTimeSec = 0,
+  durationSec = 0,
+  isPlaying = false,
 }: Props) {
-  const t = useUiLabel()
-  const tt = useTranslation()
+  const hasLyrics = lyricsGez.trim().length > 0
   const hasTrans = transliterationLyrics.trim().length > 0
-  const [scriptMode, setScriptMode] = useState<ScriptMode>('lyrics')
-  const [studyLayout, setStudyLayout] = useState<StudyLayout>('full')
-  const [activeLine, setActiveLine] = useState(0)
-  const [progressiveCount, setProgressiveCount] = useState(1)
-  const [firstLetter, setFirstLetter] = useState(false)
+  const hasEnglish = lyricsEnglish.trim().length > 0
+  const [scriptMode, setScriptMode] = useState<LyricsScriptMode>(() => {
+    const saved = loadLyricsMode()
+    if (saved === 'english' && !hasEnglish) return hasLyrics ? 'lyrics' : 'transliteration'
+    if (saved === 'transliteration' && !hasTrans) return 'lyrics'
+    if (saved === 'both' && !hasTrans) return 'lyrics'
+    return saved
+  })
+  const [fontSize, setFontSize] = useState<LyricsFontSizePx>(() => loadLyricsFontSize())
+  const [autoScroll, setAutoScroll] = useState<AutoScrollSpeed>(() => loadAutoScroll())
+  const [introSec, setIntroSec] = useState<number | null>(() => loadScrollIntroSec())
+  const [outroSec, setOutroSec] = useState<number | null>(() => loadScrollOutroSec())
+  const [showTiming, setShowTiming] = useState(false)
   const [focusMode, setFocusMode] = useState(false)
-  const lineRefs = useRef<(HTMLDivElement | null)[]>([])
+  const [memorize, setMemorize] = useState(false)
+  const [revealed, setRevealed] = useState(1)
+  const scrollRef = useRef<HTMLDivElement>(null)
 
-  const primaryText = useMemo(() => {
-    if (scriptMode === 'transliteration') return transliterationLyrics
-    return lyricsGez
-  }, [scriptMode, lyricsGez, transliterationLyrics])
+  const modes = useMemo(() => {
+    const list: { id: LyricsScriptMode; label: string }[] = []
+    if (hasLyrics) list.push({ id: 'lyrics', label: 'Amharic' })
+    if (hasTrans) list.push({ id: 'transliteration', label: 'Transliteration' })
+    if (hasEnglish) list.push({ id: 'english', label: 'English' })
+    if (hasLyrics && hasTrans) list.push({ id: 'both', label: 'Both' })
+    return list
+  }, [hasLyrics, hasTrans, hasEnglish])
 
-  const lines = useMemo(() => splitLyricsLines(primaryText), [primaryText])
-  const stanzas = useMemo(() => splitLyricsStanzas(primaryText), [primaryText])
+  const fontPx = lyricsFontPx(fontSize)
+  const lineHeight = lyricsLineHeight(fontSize)
+  const layoutKey = `${entryId}:${scriptMode}:${fontPx}:${focusMode}:${memorize}:${revealed}`
 
-  const effectiveLines = useMemo(() => {
-    if (studyLayout === 'stanza') {
-      return stanzas.length > 0 ? stanzas : lines
+  const autoScrollOn = autoScroll !== 'off'
+  const { showResume, resumeAutoScroll, onScroll: onManualScroll, lyricsWindow } = useLyricsAutoScroll({
+    enabled: autoScrollOn,
+    isPlaying,
+    currentTimeSec,
+    durationSec,
+    pace: autoScroll,
+    preferredIntroSec: introSec,
+    preferredOutroSec: outroSec,
+    layoutKey,
+    scrollRef,
+  })
+
+  useEffect(() => {
+    saveLyricsMode(scriptMode)
+  }, [scriptMode])
+
+  useEffect(() => {
+    saveLyricsFontSize(fontSize)
+  }, [fontSize])
+
+  useEffect(() => {
+    saveAutoScroll(autoScroll)
+  }, [autoScroll])
+
+  useEffect(() => {
+    if (introSec != null) saveScrollIntroSec(introSec)
+  }, [introSec])
+
+  useEffect(() => {
+    if (outroSec != null) saveScrollOutroSec(outroSec)
+  }, [outroSec])
+
+  useEffect(() => {
+    setRevealed(1)
+    setMemorize(false)
+  }, [entryId])
+
+  useEffect(() => {
+    if (!focusMode) return
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setFocusMode(false)
     }
-    return lines
-  }, [studyLayout, stanzas, lines])
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [focusMode])
 
-  const lineCount = effectiveLines.length
+  const primaryText =
+    scriptMode === 'transliteration'
+      ? transliterationLyrics
+      : scriptMode === 'english'
+        ? lyricsEnglish
+        : lyricsGez
+  const lines = useMemo(() => splitLyricsLines(primaryText), [primaryText])
 
-  useEffect(() => {
-    setActiveLine(0)
-    setProgressiveCount(studyLayout === 'full' ? lineCount : 1)
-  }, [entryId, studyLayout, scriptMode, primaryText, lineCount])
+  const bumpFont = (dir: -1 | 1) => {
+    const idx = LYRICS_FONT_SIZES.indexOf(fontSize)
+    const safeIdx = idx < 0 ? LYRICS_FONT_SIZES.indexOf(20) : idx
+    const next = LYRICS_FONT_SIZES[Math.max(0, Math.min(LYRICS_FONT_SIZES.length - 1, safeIdx + dir))]
+    setFontSize(next)
+  }
 
-  useEffect(() => {
-    if (activeLine >= lineCount) setActiveLine(Math.max(0, lineCount - 1))
-  }, [activeLine, lineCount])
+  const nudgeTiming = (which: 'intro' | 'outro', delta: number) => {
+    if (which === 'intro') {
+      const base = introSec ?? Math.round(lyricsWindow.introSec)
+      setIntroSec(Math.max(0, Math.min(120, base + delta)))
+    } else {
+      const base = outroSec ?? Math.round(lyricsWindow.outroSec)
+      setOutroSec(Math.max(0, Math.min(120, base + delta)))
+    }
+  }
 
-  const visibleCount =
-    studyLayout === 'full'
-      ? lineCount
-      : Math.min(progressiveCount, lineCount)
+  const displayIntro = introSec ?? Math.round(lyricsWindow.introSec)
+  const displayOutro = outroSec ?? Math.round(lyricsWindow.outroSec)
 
-  const repeatLine = useCallback(() => {
-    const el = lineRefs.current[activeLine]
-    el?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-  }, [activeLine])
+  const enterFocus = async () => {
+    setFocusMode(true)
+    try {
+      await scrollRef.current?.requestFullscreen?.()
+    } catch {
+      /* CSS focus mode still works */
+    }
+  }
 
-  const studyToolsActive = studyLayout !== 'full' && scriptMode !== 'both'
+  const exitFocus = async () => {
+    setFocusMode(false)
+    if (document.fullscreenElement) {
+      try {
+        await document.exitFullscreen()
+      } catch {
+        /* ignore */
+      }
+    }
+  }
+
+  const lyricsStyle = {
+    ['--lyrics-font-size' as string]: `${fontPx}px`,
+    ['--lyrics-line-height' as string]: String(lineHeight),
+  }
+
+  const lyricsBody = (
+    <div
+      className={styles.scroll}
+      ref={scrollRef}
+      tabIndex={0}
+      onScroll={autoScrollOn ? onManualScroll : undefined}
+      style={lyricsStyle}
+    >
+      {scriptMode === 'both' && hasTrans ? (
+        <div className={styles.bothGrid}>
+          <div className={styles.block}>
+            <h3 className={styles.blockLabel}>Amharic</h3>
+            <p className={styles.text} lang="am">
+              {lyricsGez || '—'}
+            </p>
+          </div>
+          <div className={styles.block}>
+            <h3 className={styles.blockLabel}>Transliteration</h3>
+            <p className={styles.textTrans}>{transliterationLyrics}</p>
+          </div>
+        </div>
+      ) : memorize ? (
+        <div className={styles.lines}>
+          {lines.slice(0, revealed).map((line, index) => (
+            <button
+              key={`${index}-${line.slice(0, 12)}`}
+              type="button"
+              className={styles.linePick}
+              onClick={() => setRevealed((n) => Math.min(lines.length, n + 1))}
+            >
+              <span className={styles.lineNum}>{index + 1}</span>
+              <span className={styles.text} lang={scriptMode === 'lyrics' ? 'am' : undefined}>
+                {line}
+              </span>
+            </button>
+          ))}
+          {revealed < lines.length ? (
+            <button
+              type="button"
+              className={styles.modeBtn}
+              onClick={() => setRevealed((n) => Math.min(lines.length, n + 1))}
+            >
+              Reveal next line
+            </button>
+          ) : null}
+        </div>
+      ) : (
+        <p
+          className={scriptMode === 'lyrics' ? styles.text : styles.textTrans}
+          lang={scriptMode === 'lyrics' ? 'am' : undefined}
+        >
+          {primaryText || '—'}
+        </p>
+      )}
+    </div>
+  )
 
   return (
-    <section className={styles.root} aria-labelledby="chant-lyrics-h">
+    <section className={`${styles.root} ${focusMode ? styles.focusRoot : ''}`} aria-labelledby="chant-lyrics-h">
       <div className={styles.head}>
         <h2 id="chant-lyrics-h" className={styles.title}>
-          {t('lyricsTextHeading')}
+          Lyrics
         </h2>
-        <div className={styles.modeGroup} role="group" aria-label={tt('mezmurPractice.tabs.lyricsDisplay')}>
-          <button
-            type="button"
-            className={`${styles.modeBtn} ${scriptMode === 'lyrics' ? styles.modeOn : ''}`}
-            onClick={() => setScriptMode('lyrics')}
-          >
-            {t('lyricsLyrics')}
-          </button>
-          <button
-            type="button"
-            disabled={!hasTrans}
-            className={`${styles.modeBtn} ${scriptMode === 'transliteration' ? styles.modeOn : ''}`}
-            onClick={() => setScriptMode('transliteration')}
-            title={!hasTrans ? t('lyricsNoTrans') : undefined}
-          >
-            {t('lyricsTransliteration')}
-          </button>
-          <button
-            type="button"
-            disabled={!hasTrans}
-            className={`${styles.modeBtn} ${scriptMode === 'both' ? styles.modeOn : ''}`}
-            onClick={() => setScriptMode('both')}
-            title={!hasTrans ? t('lyricsNoTrans') : undefined}
-          >
-            {t('lyricsBoth')}
-          </button>
+        <div className={styles.modeGroup} role="group" aria-label="Lyrics display">
+          {modes.map((mode) => (
+            <button
+              key={mode.id}
+              type="button"
+              className={`${styles.modeBtn} ${scriptMode === mode.id ? styles.modeOn : ''}`}
+              onClick={() => setScriptMode(mode.id)}
+            >
+              {mode.label}
+            </button>
+          ))}
         </div>
       </div>
 
-      <div className={styles.studyModes} role="group" aria-label={tt('mezmurPractice.tabs.studyLayout')}>
-        <span className={styles.studyLabel}>{tt('mezmurPractice.tabs.studyLayout')}</span>
-        {(['full', 'line', 'stanza'] as const).map((m) => (
-          <button
-            key={m}
-            type="button"
-            className={`${styles.studyBtn} ${studyLayout === m ? styles.studyOn : ''}`}
-            onClick={() => setStudyLayout(m)}
-            disabled={scriptMode === 'both'}
-          >
-            {m === 'full'
-              ? tt('mezmurPractice.tabs.fullText')
-              : m === 'line'
-                ? tt('mezmurPractice.tabs.lineByLine')
-                : tt('mezmurPractice.tabs.stanzas')}
+      <div className={styles.toolRow} role="toolbar" aria-label="Lyrics tools">
+        <div className={styles.fontControls}>
+          <button type="button" className={styles.modeBtn} aria-label="Decrease text size" onClick={() => bumpFont(-1)}>
+            A−
           </button>
-        ))}
-      </div>
-      {scriptMode === 'both' ? (
-        <p className={styles.hint}>
-          {tt('mezmurPractice.tabs.bothModeHint')}
-        </p>
-      ) : null}
-
-      <div className={styles.scroll}>
-        {scriptMode === 'both' && hasTrans ? (
-          <>
-            <div className={styles.block}>
-              <h3 className={styles.blockLabel}>{t('lyricsLyrics')}</h3>
-              <p className={styles.text} lang="am">
-                {lyricsGez || '—'}
-              </p>
-            </div>
-            <div className={styles.block}>
-              <h3 className={styles.blockLabel}>{t('lyricsTransliteration')}</h3>
-              <p className={styles.textTrans}>{transliterationLyrics}</p>
-            </div>
-          </>
-        ) : studyLayout === 'full' ? (
-          <div className={styles.block}>
-            <p
-              className={scriptMode === 'lyrics' ? styles.text : styles.textTrans}
-              lang={scriptMode === 'lyrics' ? 'am' : undefined}
-            >
-              {primaryText || '—'}
-            </p>
-          </div>
-        ) : (
-          <div className={styles.lines}>
-            {effectiveLines.slice(0, visibleCount).map((line, i) => {
-              const isActive = i === activeLine
-              const dim = focusMode && !isActive
-              const hint =
-                firstLetter && (scriptMode === 'transliteration' || scriptMode === 'lyrics')
-                  ? firstLetterHint(line)
-                  : null
-              return (
-                <div
-                  key={i}
-                  ref={(el) => {
-                    lineRefs.current[i] = el
-                  }}
-                  className={`${styles.lineRow} ${isActive ? styles.lineActive : ''} ${dim ? styles.lineDim : ''}`}
-                >
-                  <button
-                    type="button"
-                    className={styles.linePick}
-                    onClick={() => setActiveLine(i)}
-                    aria-current={isActive ? 'true' : undefined}
-                  >
-                    <span className={styles.lineNum}>{i + 1}</span>
-                    <span
-                      className={
-                        scriptMode === 'lyrics' ? styles.text : styles.textTrans
-                      }
-                      lang={scriptMode === 'lyrics' ? 'am' : undefined}
-                    >
-                      {line}
-                    </span>
-                  </button>
-                  {firstLetter && hint ? (
-                    <p className={styles.hintLine}>{hint}</p>
-                  ) : null}
-                </div>
-              )
-            })}
-          </div>
-        )}
-        {(scriptMode === 'transliteration' || scriptMode === 'both') && !hasTrans ? (
-          <p className={styles.muted}>{t('lyricsNoTrans')}</p>
+          <span className={styles.toolLabel} aria-live="polite">
+            {fontPx}px
+          </span>
+          <button type="button" className={styles.modeBtn} aria-label="Increase text size" onClick={() => bumpFont(1)}>
+            A+
+          </button>
+        </div>
+        <label className={styles.scrollSelect}>
+          <span className={styles.toolLabel}>Scroll pace</span>
+          <select
+            value={autoScroll}
+            onChange={(e) => setAutoScroll(e.target.value as AutoScrollSpeed)}
+            aria-label="Auto scroll pace"
+          >
+            <option value="off">Off</option>
+            <option value="slow">Slow</option>
+            <option value="medium">Normal</option>
+            <option value="fast">Fast</option>
+          </select>
+        </label>
+        <button
+          type="button"
+          className={`${styles.modeBtn} ${showTiming ? styles.modeOn : ''}`}
+          aria-expanded={showTiming}
+          onClick={() => setShowTiming((v) => !v)}
+        >
+          Timing
+        </button>
+        <button
+          type="button"
+          className={`${styles.modeBtn} ${memorize ? styles.modeOn : ''}`}
+          aria-pressed={memorize}
+          onClick={() => {
+            setMemorize((v) => !v)
+            setRevealed(1)
+          }}
+        >
+          Memorize
+        </button>
+        <button type="button" className={styles.modeBtn} onClick={() => (focusMode ? exitFocus() : enterFocus())}>
+          {focusMode ? 'Exit focus' : 'Focus lyrics'}
+        </button>
+        {showResume ? (
+          <button type="button" className={`${styles.modeBtn} ${styles.modeOn}`} onClick={resumeAutoScroll}>
+            Resume auto scroll
+          </button>
         ) : null}
       </div>
 
-      {studyToolsActive && lineCount > 0 ? (
+      {showTiming ? (
+        <div className={styles.timingRow} role="group" aria-label="Auto scroll timing">
+          <div className={styles.timingGroup}>
+            <span className={styles.toolLabel}>Intro</span>
+            <button type="button" className={styles.modeBtn} aria-label="Decrease intro" onClick={() => nudgeTiming('intro', -5)}>
+              −5
+            </button>
+            <span className={styles.timingValue}>{displayIntro}s</span>
+            <button type="button" className={styles.modeBtn} aria-label="Increase intro" onClick={() => nudgeTiming('intro', 5)}>
+              +5
+            </button>
+          </div>
+          <div className={styles.timingGroup}>
+            <span className={styles.toolLabel}>Outro</span>
+            <button type="button" className={styles.modeBtn} aria-label="Decrease outro" onClick={() => nudgeTiming('outro', -5)}>
+              −5
+            </button>
+            <span className={styles.timingValue}>{displayOutro}s</span>
+            <button type="button" className={styles.modeBtn} aria-label="Increase outro" onClick={() => nudgeTiming('outro', 5)}>
+              +5
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {lyricsBody}
+
+      {memorize ? (
         <MemoryAidPanel
           entryId={entryId}
-          activeLine={activeLine}
-          lineCount={lineCount}
-          progressiveCount={progressiveCount}
-          onProgressiveNext={() =>
-            setProgressiveCount((c) => Math.min(c + 1, lineCount))
-          }
-          onProgressiveReset={() => setProgressiveCount(1)}
-          firstLetter={firstLetter}
-          onToggleFirstLetter={() => setFirstLetter((v) => !v)}
-          focusMode={focusMode}
-          onToggleFocus={() => setFocusMode((v) => !v)}
-          onRepeatLine={repeatLine}
+          activeLine={Math.max(0, revealed - 1)}
+          lineCount={lines.length}
+          progressiveCount={revealed}
+          onProgressiveNext={() => setRevealed((n) => Math.min(n + 1, lines.length))}
+          onProgressiveReset={() => setRevealed(1)}
+          firstLetter={false}
+          onToggleFirstLetter={() => undefined}
+          focusMode={false}
+          onToggleFocus={() => undefined}
+          onRepeatLine={() => undefined}
         />
       ) : null}
 
-      {showMemorizationTipsCallout ? <MemorizationTipsCallout /> : null}
+      {focusMode ? (
+        <div className={styles.focusChrome}>
+          <button type="button" className={styles.modeBtn} onClick={exitFocus}>
+            Exit focus mode
+          </button>
+        </div>
+      ) : null}
     </section>
   )
 }

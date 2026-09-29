@@ -24,6 +24,8 @@
     "merge:amharic-chant-append": "node scripts/merge-amharic-chant-append.mjs",
     "supabase:import-chants": "node --env-file-if-exists=.env.local scripts/import-chants-to-supabase.mjs",
     "supabase:check-data": "node scripts/import-chants-to-supabase.mjs --dry-run",
+    "supabase:plan-prayers": "node scripts/import-prayers.mjs --dry-run",
+    "supabase:import-prayers": "node scripts/import-prayers.mjs --apply",
     "lint:community": "eslint functions src/lib/community src/components/community src/pages/CommunityForm.tsx",
     "test:community": "node scripts/community-api-test.mjs && node scripts/community-browser-test.mjs",
     "test:platform": "node scripts/content-platform-smoke.mjs"

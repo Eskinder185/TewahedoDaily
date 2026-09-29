@@ -25,6 +25,7 @@ import { errorMessage, statuses } from '../../lib/cms/mezmurService'
 import type { ContentStatus, ContentType } from '../../lib/supabase/cms.types'
 import { AsyncNotice, Modal, Status } from './AdminUi'
 import { ContentBody } from '../../components/publicContent/ContentBody'
+import { MediaPicker } from '../../components/admin/MediaPicker'
 import { ContentUpload } from './MediaLibrary'
 import s from './Admin.module.css'
 export function ContentList({ kind }: { kind: EditorialKind }) {
@@ -286,8 +287,7 @@ function Editor({
           {supportsContentField(kind, 'body_amharic') && text('body_amharic', 'Amharic text', true)}
           {supportsContentField(kind, 'body') && text('body', 'English text', true)}
           {supportsContentField(kind, 'body_oromo') && text('body_oromo', 'Oromo text', true)}
-          {kind === 'prayers' &&
-            supportsContentField(kind, 'transliteration') &&
+          {supportsContentField(kind, 'transliteration') &&
             text('transliteration', 'Transliteration', true)}
           {kind === 'saints' && supportsContentField(kind, 'commemoration_month') && (
             <>
@@ -362,11 +362,23 @@ function Editor({
               </select>
             </label>
           )}
-          {supportsContentField(kind, 'thumbnail_url') &&
-            text('thumbnail_url', 'Image URL / Storage reference')}
+          {supportsContentField(kind, 'image_path') ? (
+            <MediaPicker
+              folder={kind === 'saints' ? 'saints' : kind === 'feasts' ? 'feasts' : 'fallback'}
+              value={input.image_path || input.thumbnail_url}
+              altText={input.image_alt}
+              onChange={({ storagePath, altText }) => {
+                set('image_path', storagePath)
+                set('image_alt', altText)
+                set('thumbnail_url', storagePath)
+              }}
+            />
+          ) : supportsContentField(kind, 'thumbnail_url') ? (
+            text('thumbnail_url', 'Image URL / Storage reference')
+          ) : null}
           {supportsContentField(kind, 'audio_url') &&
             text('audio_url', 'Audio URL / Storage reference')}
-          {row ? (
+          {row && !supportsContentField(kind, 'image_path') ? (
             <ContentUpload
               onBusy={setUploading}
               kind={kind}
@@ -375,9 +387,10 @@ function Editor({
                 set(type === 'image' ? 'thumbnail_url' : 'audio_url', ref)
               }
             />
-          ) : (
+          ) : null}
+          {row && supportsContentField(kind, 'image_path') ? null : !row ? (
             <p>Save a draft before uploading files.</p>
-          )}
+          ) : null}
           {supportsContentField(kind, 'related_content') && (
             <RelatedPicker
               value={input.related_content || []}

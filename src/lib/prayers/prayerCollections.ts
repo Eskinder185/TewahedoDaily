@@ -8,12 +8,7 @@ import { YEKIDANE_TSELOT_CONTENT } from './yekidaneTselotContent'
 import { ZEWETER_PRAYERS } from './zeweterData'
 import { slugifyPrayer } from './prayerSlug'
 
-export type PrayerCollectionId =
-  | 'zewter-tselot'
-  | 'wudasie-mariam'
-  | 'mezmure-dawit'
-  | 'yekidane-tselot'
-  | 'meharene-ab'
+export type PrayerCollectionId = string
 
 export type PrayerCollection = {
   id: PrayerCollectionId

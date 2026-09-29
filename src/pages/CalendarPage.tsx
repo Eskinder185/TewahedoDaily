@@ -1,23 +1,29 @@
-import { useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
 import { PageSection } from '../components/ui/PageSection'
 import { MiniMonthCalendar } from '../components/todayInChurch/MiniMonthCalendar'
 import { LiturgyContextCard } from '../components/calendar/LiturgyContextCard'
 import { useHomeToday } from '../hooks/useHomeToday'
-import type { UpcomingObservance } from '../lib/churchCalendar'
-import { buildChurchDaySnapshot, computeCalendarDayMarks } from '../lib/churchCalendar'
+import {
+  buildChurchDaySnapshot,
+  computeCalendarDayMarksAsync,
+  type CalendarDayCellMark,
+} from '../lib/churchCalendar'
 import {
   buildSelectedDayObservanceModel,
-  getEntriesForDate,
+  collectEotcMatchesForLocalDay,
 } from '../lib/eotcCalendar'
 import type { CalendarDayDetail, CalendarExpandedContent } from '../lib/calendarDayDetails/types'
 import { resolveCalendarDayDetail } from '../lib/calendarDayDetails'
+import { gregorianToEthiopian } from '../lib/ethiopianDate'
 import {
-  buildObservanceCardDates,
-  parseGregorianAnchorIso,
-  upcomingObservanceSortKey,
-  upcomingObservanceVisualBucket,
-} from '../lib/churchCalendar/upcomingObservanceDisplay'
+  getCalendarCards,
+  getSynaxariumDayWithCommemorations,
+  type CalendarCard,
+} from '../lib/synaxarium/synaxariumService'
+import type { SynaxariumDayBundle } from '../lib/prayers/prayerLibraryTypes'
+import { parseGregorianAnchorIso } from '../lib/churchCalendar/upcomingObservanceDisplay'
 import { CalendarImage } from '../components/calendar/CalendarImage'
 import {
   calendarImageManifest,
@@ -73,22 +79,37 @@ function ExpandedContentSections({
 
 function NormalizedDaySections({ detail }: { detail: CalendarDayDetail }) {
   const t = useTranslation()
-  const commemorations = detail.commemorations
-    .map((item) => item.title.trim())
-    .filter(Boolean)
   return (
     <>
-      {commemorations.length > 0 ? (
+      {detail.commemorations.length > 0 ? (
         <div className={styles.synaxariumBlock}>
           <h3 className={styles.synaxariumBlockTitle}>{t('calendar.detail.commemorations')}</h3>
           <ul className={styles.synaxariumList}>
-            {commemorations.slice(0, 8).map((line, index) => (
-              <li key={`${detail.id}-commemoration-${index}`}>{line}</li>
+            {detail.commemorations.map((item, index) => (
+              <li key={`${detail.id}-commemoration-${index}`}>
+                <strong>{item.title}</strong>
+                {item.titleAmharic ? (
+                  <>
+                    {' '}
+                    <span lang="am">({item.titleAmharic})</span>
+                  </>
+                ) : null}
+                {item.category && item.category !== 'other' ? (
+                  <span> · {item.category.replace(/[-_]+/g, ' ')}</span>
+                ) : null}
+                {item.summary ? <div>{item.summary}</div> : null}
+                {item.expandedContent ? (
+                  <details className={styles.synaxariumMore}>
+                    <summary>{t('calendar.detail.readMore')}</summary>
+                    <ExpandedContentSections content={item.expandedContent} />
+                  </details>
+                ) : null}
+              </li>
             ))}
           </ul>
         </div>
       ) : null}
-      {detail.expandedContent ? (
+      {detail.expandedContent && detail.commemorations.every((item) => !item.expandedContent) ? (
         <details className={styles.synaxariumMore}>
           <summary>{t('calendar.detail.readMore')}</summary>
           <ExpandedContentSections content={detail.expandedContent} />
@@ -98,57 +119,131 @@ function NormalizedDaySections({ detail }: { detail: CalendarDayDetail }) {
   )
 }
 
+function visualKindFromType(type: string): 'feast' | 'fast' | 'commemoration' {
+  const t = type.toLowerCase()
+  if (t.includes('feast') || t.includes('season')) return 'feast'
+  if (t.includes('fast')) return 'fast'
+  return 'commemoration'
+}
+
 export function CalendarPage() {
   const t = useTranslation()
-  const { now, snapshot } = useHomeToday()
+  const { locale } = useLocale()
+  const preferAmharic = locale === 'am'
+  const { now } = useHomeToday()
   const [viewYear, setViewYear] = useState(now.getFullYear())
   const [viewMonth, setViewMonth] = useState(now.getMonth())
   const [selectedDay, setSelectedDay] = useState<number | null>(now.getDate())
+  const [marks, setMarks] = useState<ReadonlyMap<number, CalendarDayCellMark>>(new Map())
+  const [synaxariumBundle, setSynaxariumBundle] = useState<SynaxariumDayBundle | null>()
+  const [synaxariumError, setSynaxariumError] = useState<string>()
+  const [synaxReloadTick, setSynaxReloadTick] = useState(0)
+  const [calendarCards, setCalendarCards] = useState<CalendarCard[]>([])
+  const [cardsError, setCardsError] = useState<string>()
+  const [cardsLoading, setCardsLoading] = useState(true)
   const detailRef = useRef<HTMLElement | null>(null)
+  const trackRef = useRef<HTMLDivElement | null>(null)
 
-  const upcoming = useMemo(() => {
-    const rows = snapshot.upcoming.filter((item) => Boolean(item.gregorianAnchorIso))
-    return [...rows]
-      .sort((a, b) => upcomingObservanceSortKey(a, false) - upcomingObservanceSortKey(b, false))
-      .slice(0, 10)
-  }, [snapshot.upcoming])
+  useEffect(() => {
+    let active = true
+    setCardsLoading(true)
+    setCardsError(undefined)
+    void getCalendarCards({ from: now, limit: 10 })
+      .then((cards) => {
+        if (!active) return
+        setCalendarCards(cards)
+      })
+      .catch((cause) => {
+        if (!active) return
+        if (import.meta.env.DEV) console.error('[calendar] cards', cause)
+        setCardsError(
+          cause && typeof cause === 'object' && 'message' in cause
+            ? String((cause as { message?: unknown }).message)
+            : 'Unable to load calendar cards.',
+        )
+        setCalendarCards([])
+      })
+      .finally(() => {
+        if (active) setCardsLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [now])
 
-  const marks = useMemo(
-    () => computeCalendarDayMarks(viewYear, viewMonth),
-    [viewYear, viewMonth],
-  )
+  useEffect(() => {
+    let active = true
+    void computeCalendarDayMarksAsync(viewYear, viewMonth)
+      .then((next) => {
+        if (active) setMarks(next)
+      })
+      .catch((cause) => {
+        if (import.meta.env.DEV) console.error('[calendar] month marks', cause)
+        if (active) setMarks(new Map())
+      })
+    return () => {
+      active = false
+    }
+  }, [viewYear, viewMonth])
+
   const selectedDate = useMemo(() => {
     if (selectedDay == null) return null
     return new Date(viewYear, viewMonth, selectedDay)
   }, [viewYear, viewMonth, selectedDay])
+
+  useEffect(() => {
+    let active = true
+    setSynaxariumBundle(undefined)
+    setSynaxariumError(undefined)
+    if (!selectedDate) {
+      setSynaxariumBundle(null)
+      return
+    }
+    const eth = gregorianToEthiopian(selectedDate)
+    void getSynaxariumDayWithCommemorations(eth.month, eth.day)
+      .then((bundle) => {
+        if (!active) return
+        setSynaxariumBundle(bundle)
+      })
+      .catch((cause) => {
+        if (!active) return
+        const message =
+          cause && typeof cause === 'object' && 'message' in cause
+            ? String((cause as { message?: unknown }).message)
+            : t('calendar.detail.synaxariumLoadError')
+        if (import.meta.env.DEV) console.error('[calendar] synaxarium day', cause)
+        setSynaxariumError(import.meta.env.DEV ? message : t('calendar.detail.synaxariumLoadError'))
+        setSynaxariumBundle(null)
+      })
+    return () => {
+      active = false
+    }
+  }, [selectedDate, synaxReloadTick, t])
 
   const selectedSnapshot = useMemo(
     () => (selectedDate ? buildChurchDaySnapshot(selectedDate) : null),
     [selectedDate],
   )
   const selectedEntries = useMemo(
-    () => (selectedDate ? getEntriesForDate(selectedDate) : []),
+    () => (selectedDate ? collectEotcMatchesForLocalDay(selectedDate) : []),
     [selectedDate],
   )
-  const selectedDayDetail = useMemo(
-    () => (selectedDate ? resolveCalendarDayDetail(selectedDate, selectedEntries) : null),
-    [selectedDate, selectedEntries],
-  )
+  const selectedDayDetail = useMemo(() => {
+    if (!selectedDate || synaxariumBundle === undefined) return null
+    return resolveCalendarDayDetail(selectedDate, selectedEntries, {
+      synaxariumBundle,
+      preferAmharic,
+    })
+  }, [selectedDate, selectedEntries, synaxariumBundle, preferAmharic])
   const selectedModel = useMemo(
-    () =>
-      selectedDate
-        ? buildSelectedDayObservanceModel(selectedEntries)
-        : null,
+    () => (selectedDate ? buildSelectedDayObservanceModel(selectedEntries) : null),
     [selectedDate, selectedEntries],
   )
   const selectedPrimary = selectedModel?.primary ?? null
-  const selectedImagePresentation = resolveEventImagePresentation(
-    selectedPrimary?.entry.id,
-    {
-      objectFit: 'cover',
-      objectPosition: '50% 32%',
-    },
-  )
+  const selectedImagePresentation = resolveEventImagePresentation(selectedPrimary?.entry.id, {
+    objectFit: 'cover',
+    objectPosition: '50% 32%',
+  })
 
   const goPrevMonth = () => {
     const d = new Date(viewYear, viewMonth - 1, 1)
@@ -179,82 +274,98 @@ export function CalendarPage() {
     }
   }
 
-  const openObservanceInCalendar = (item: UpcomingObservance) => {
-    if (!item.gregorianAnchorIso) return
-    const d = parseGregorianAnchorIso(item.gregorianAnchorIso)
+  const openCalendarCard = useCallback((card: CalendarCard) => {
+    const d = parseGregorianAnchorIso(card.gregorianIso)
     if (!d) return
     setViewYear(d.getFullYear())
     setViewMonth(d.getMonth())
     setSelectedDay(d.getDate())
-  }
-  const upcomingKindLabel = (kind: UpcomingObservance['kind']) => {
-    switch (kind) {
-      case 'feast':
-        return t('calendar.upcoming.labelFeast')
-      case 'season':
-        return t('calendar.upcoming.labelSeason')
-      case 'marian':
-        return t('calendar.upcoming.labelMary')
-      case 'fast':
-      case 'weekly':
-        return t('calendar.upcoming.labelFast')
-      case 'angel':
-        return t('calendar.upcoming.labelAngel')
-      case 'saint':
-      case 'commemoration':
-      default:
-        return t('calendar.upcoming.labelSaint')
+    if (window.matchMedia('(max-width: 959px)').matches) {
+      window.requestAnimationFrame(() => {
+        detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      })
     }
-  }
+  }, [])
+
+  const scrollCards = useCallback((direction: -1 | 1) => {
+    const track = trackRef.current
+    if (!track) return
+    const card = track.querySelector(`.${styles.observanceCard}`) as HTMLElement | null
+    const delta = (card?.offsetWidth || 280) + 16
+    track.scrollBy({ left: direction * delta, behavior: 'smooth' })
+  }, [])
 
   return (
     <PageSection id="calendar" variant="tint" className={styles.page}>
       <section className={styles.observances} aria-label={t('calendar.page.nextObservances')}>
-        <div className={styles.observanceTrack}>
-          {upcoming.map((item) => {
-            const dates = buildObservanceCardDates(item)
-            const visualKind = upcomingObservanceVisualBucket(item.kind)
-            const imagePresentation = resolveEventImagePresentation(item.id, {
-              objectFit: 'cover',
-              objectPosition: '50% 28%',
-            })
-            return (
-              <article
-                key={item.id}
-                className={`${styles.observanceCard} ${styles[`kind_${visualKind}`]}`}
-              >
-                <figure className={styles.observanceMedia} aria-hidden>
-                  <CalendarImage
-                    src={resolveEventImageById(item.id) ?? calendarImageManifest.anchors.todayInChurch}
-                    fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                    alt={t('calendar.page.observanceImage', { title: item.title })}
-                    className={styles.observanceImage}
-                    objectFit={imagePresentation.objectFit}
-                    objectPosition={imagePresentation.objectPosition}
-                    fetchPriority="low"
-                    sizes="(max-width: 820px) 76vw, 18rem"
-                  />
-                </figure>
-                <div className={styles.observanceBody}>
-                  <p className={styles.observanceType}>
-                    {upcomingKindLabel(item.kind)}
-                  </p>
-                  <h2 className={styles.observanceTitle}>{item.title}</h2>
-                  <p className={styles.observanceDate}>{dates.primary}</p>
-                  {dates.secondary ? (
-                    <p className={styles.observanceDateSecondary}>{dates.secondary}</p>
-                  ) : null}
-                  <button
-                    type="button"
-                    className={styles.openDayBtn}
-                    onClick={() => openObservanceInCalendar(item)}
+        <div className={styles.observanceCarousel}>
+          <button
+            type="button"
+            className={styles.carouselBtn}
+            aria-label="Previous calendar cards"
+            onClick={() => scrollCards(-1)}
+          >
+            ‹
+          </button>
+          <div ref={trackRef} className={styles.observanceTrack} tabIndex={0}>
+            {cardsLoading ? (
+              <p className={styles.cardsStatus} role="status">
+                …
+              </p>
+            ) : cardsError ? (
+              <p className={styles.cardsStatus} role="alert">
+                {cardsError}
+              </p>
+            ) : calendarCards.length === 0 ? (
+              <p className={styles.cardsStatus}>
+                No featured calendar cards yet. Mark commemorations as Featured in the CMS.
+              </p>
+            ) : (
+              calendarCards.map((card) => {
+                const visualKind = visualKindFromType(card.type)
+                return (
+                  <article
+                    key={card.id}
+                    className={`${styles.observanceCard} ${styles[`kind_${visualKind}`]}`}
                   >
-                    {t('calendar.page.openDate')}
-                  </button>
-                </div>
-              </article>
-            )
-          })}
+                    <figure className={styles.observanceMedia} aria-hidden>
+                      <CalendarImage
+                        src={card.imageUrl || calendarImageManifest.anchors.todayInChurch}
+                        fallbackSrc={calendarImageManifest.anchors.todayInChurch}
+                        alt={card.imageAlt || t('calendar.page.observanceImage', { title: card.title })}
+                        className={styles.observanceImage}
+                        objectFit="cover"
+                        objectPosition={card.objectPosition}
+                        fetchPriority="low"
+                        sizes="(max-width: 820px) 86vw, 19rem"
+                      />
+                    </figure>
+                    <div className={styles.observanceBody}>
+                      <p className={styles.observanceType}>{card.typeLabel}</p>
+                      <h2 className={styles.observanceTitle}>{card.title}</h2>
+                      <p className={styles.observanceDate}>{card.gregorianLabel}</p>
+                      <p className={styles.observanceDateSecondary}>{card.ethiopianLabel}</p>
+                      <button
+                        type="button"
+                        className={styles.openDayBtn}
+                        onClick={() => openCalendarCard(card)}
+                      >
+                        {t('calendar.page.openDate')}
+                      </button>
+                    </div>
+                  </article>
+                )
+              })
+            )}
+          </div>
+          <button
+            type="button"
+            className={styles.carouselBtn}
+            aria-label="Next calendar cards"
+            onClick={() => scrollCards(1)}
+          >
+            ›
+          </button>
         </div>
       </section>
 
@@ -279,17 +390,38 @@ export function CalendarPage() {
         <section ref={detailRef} className={styles.dayDetail} aria-live="polite">
           {!selectedDate || !selectedSnapshot ? (
             <p className={styles.emptyDetail}>{t('calendar.page.selectDay')}</p>
-          ) : selectedDayDetail ? (
+          ) : synaxariumError ? (
+            <div className={styles.dayDetailHead}>
+              <h2 className={styles.dayDetailTitle}>{synaxariumError}</h2>
+              <button
+                type="button"
+                className={styles.openDayBtn}
+                onClick={() => setSynaxReloadTick((n) => n + 1)}
+              >
+                {t('calendar.detail.tryAgain')}
+              </button>
+            </div>
+          ) : synaxariumBundle === undefined || !selectedDayDetail ? (
+            <p className={styles.emptyDetail} role="status">
+              …
+            </p>
+          ) : (
             <>
-              {selectedPrimary ? (
+              {selectedDayDetail.imageUrl || selectedPrimary ? (
                 <figure className={styles.dayDetailMedia} aria-hidden>
                   <CalendarImage
                     src={
-                      resolveEventImageById(selectedPrimary.entry.id) ??
+                      selectedDayDetail.imageUrl ||
+                      (selectedPrimary
+                        ? resolveEventImageById(selectedPrimary.entry.id)
+                        : null) ||
                       calendarImageManifest.anchors.todayInChurch
                     }
                     fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                    alt={t('calendar.page.observanceImage', { title: selectedDayDetail.title })}
+                    alt={
+                      selectedDayDetail.imageAlt ||
+                      t('calendar.page.observanceImage', { title: selectedDayDetail.title })
+                    }
                     className={styles.dayDetailImage}
                     objectFit={selectedImagePresentation.objectFit}
                     objectPosition={selectedImagePresentation.objectPosition}
@@ -313,31 +445,15 @@ export function CalendarPage() {
                 </div>
                 <h2 className={styles.synaxariumTitle}>{selectedDayDetail.title}</h2>
                 {selectedDayDetail.shortDescription ? (
-                  <p className={styles.synaxariumSummary}>
-                    {selectedDayDetail.shortDescription}
-                  </p>
+                  <p className={styles.synaxariumSummary}>{selectedDayDetail.shortDescription}</p>
                 ) : null}
                 <NormalizedDaySections detail={selectedDayDetail} />
+                {selectedDayDetail.liturgyContext ? (
+                  <LiturgyContextCard context={selectedDayDetail.liturgyContext} />
+                ) : null}
               </article>
-              {selectedDayDetail.liturgyContext ? (
-                <LiturgyContextCard context={selectedDayDetail.liturgyContext} />
-              ) : null}
-              {selectedDayDetail.commemorations.length === 0 ? (
-                <div className={styles.dayDetailHead}>
-                  <p className={styles.dayDetailType}>Regular Day</p>
-                  <h2 className={styles.dayDetailTitle}>{t('calendar.today.noMajorObservance')}</h2>
-                  <p className={styles.dayDetailDates}>
-                    <span>{selectedSnapshot.gregorian.labelLong}</span>
-                    <span aria-hidden> / </span>
-                    <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
-                  </p>
-                  <p className={styles.dayDetailSummary}>
-                    {t('calendar.today.regularDaySummary')}
-                  </p>
-                </div>
-              ) : null}
             </>
-          ) : null}
+          )}
         </section>
       </section>
     </PageSection>

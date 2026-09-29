@@ -1,3 +1,8 @@
+/**
+ * Local JSON backup / import helper only.
+ * Public Calendar and Pray Synaxarium pages must use
+ * `src/lib/synaxarium/synaxariumService.ts` (Supabase).
+ */
 import synaxariumData from '../../data/synaxariumEntries.json'
 import { gregorianToEthiopian } from '../ethiopianDate'
 import type { SynaxariumCalendarData, SynaxariumEntry } from './synaxariumTypes'
@@ -21,6 +26,7 @@ export function getAllSynaxariumEntries(): readonly SynaxariumEntry[] {
   return DATA.entries
 }
 
+/** @deprecated Prefer `getSynaxariumDayWithCommemorations` from synaxariumService (Supabase). */
 export function getSynaxariumEntryForEthiopianDate(
   month: number,
   day: number,
@@ -28,6 +34,7 @@ export function getSynaxariumEntryForEthiopianDate(
   return BY_ETHIOPIAN_MONTH_DAY.get(monthDayKey(month, day)) ?? null
 }
 
+/** @deprecated Prefer Supabase `synaxariumService`. */
 export function getSynaxariumEntryForGregorianDate(date: Date): SynaxariumEntry | null {
   const eth = gregorianToEthiopian(date)
   return getSynaxariumEntryForEthiopianDate(eth.month, eth.day)

@@ -196,7 +196,10 @@
       "commemorations": "Commemorations",
       "readMore": "Read more",
       "source": "Source: {title}",
-      "originalReference": "Original reference: {reference}"
+      "originalReference": "Original reference: {reference}",
+      "synaxariumUnavailable": "No Synaxarium entry is available for this date yet.",
+      "synaxariumLoadError": "We couldn't load Synaxarium for this date.",
+      "tryAgain": "Try again"
     }
   },
   "seasonPanel": {
@@ -441,6 +444,14 @@
       "urlLabel": "Collection URL",
       "sectionsCountOne": "{count} section",
       "sectionsCountOther": "{count} sections",
+      "psalmsCountOne": "{count} Psalm",
+      "psalmsCountOther": "{count} Psalms",
+      "prayersCountOne": "{count} prayer",
+      "prayersCountOther": "{count} prayers",
+      "daysCountOne": "{count} day",
+      "daysCountOther": "{count} days",
+      "commemorationsCountOne": "{count} commemoration",
+      "commemorationsCountOther": "{count} commemorations",
       "notFoundTitle": "Prayer collection not found",
       "notFoundDescription": "The collection link may be outdated or incomplete."
     },

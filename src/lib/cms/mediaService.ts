@@ -19,14 +19,31 @@ export async function uploadMezmurFile(id: string, file: File, kind: keyof typeo
 }
 export async function resolveMedia(reference: string | null | undefined) {
   if (!reference) return ''
-  if (reference.startsWith('storage://')) {
-    const [bucket, ...parts] = reference.slice(10).split('/')
+  const trimmed = reference.trim()
+  if (!trimmed) return ''
+
+  if (!trimmed.startsWith('storage://') || trimmed.startsWith('storage://content-media/')) {
+    try {
+      const { resolveContentMediaUrl } = await import('./contentMedia')
+      const resolved = resolveContentMediaUrl(trimmed)
+      if (resolved) return resolved
+    } catch {
+      /* fall through for legacy private buckets */
+    }
+  }
+
+  if (trimmed.startsWith('storage://')) {
+    const [bucket, ...parts] = trimmed.slice(10).split('/')
+    if (bucket === 'content-media') {
+      const { resolveContentMediaUrl } = await import('./contentMedia')
+      return resolveContentMediaUrl(trimmed)
+    }
     if (!['mezmur-images', 'mezmur-audio', 'saints', 'feasts', 'articles', 'general-media'].includes(bucket)) throw new Error('Unsupported media bucket.')
     const { data, error } = await db().storage.from(bucket).createSignedUrl(parts.join('/'), 300)
     if (error) throw error
     return data.signedUrl
   }
-  const url = new URL(reference)
+  const url = new URL(trimmed)
   if (url.protocol !== 'https:') throw new Error('Media links must use HTTPS.')
   return url.href
 }

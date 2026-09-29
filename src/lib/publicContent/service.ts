@@ -1,6 +1,21 @@
 import { supabase } from '../supabase/client'
 import type { ContentType, CmsTables } from '../supabase/cms.types'
 import { parseYoutubeVideoId } from '../../data/utils/youtube'
+import {
+  classificationLabel,
+  languageCodeFromNormalized,
+  normalizeLanguageParam,
+} from './labels'
+import {
+  canonicalizeCategory,
+  canonicalizeOccasion,
+  categoryMatchValues,
+  categoryOptions,
+  displayClassification,
+  isNaClassification,
+  occasionMatchValues,
+  occasionOptions,
+} from './taxonomy'
 
 /** Public mezmur library uses Supabase only when the browser client is configured. */
 export const useLegacyMezmur = !supabase
@@ -14,13 +29,26 @@ export type PublicTag = {
   kind: string
 }
 
-export type PublicMezmur = CmsTables['mezmur']['Row'] & {
-  singer_name: string | null
-  category_name: string | null
-  languages: string[]
-  form: 'mezmur' | 'werb'
-  tags: PublicTag[]
+export type ClassificationFields = {
+  language: string | null
+  form: 'mezmur' | 'werb' | null
+  category: string | null
+  occasion: string | null
+  occasion_tags: string[]
+  saint_or_angel: string | null
+  saint_tags: string[]
+  themes: string[]
+  search_keywords: string[]
+  source: string | null
 }
+
+export type PublicMezmur = CmsTables['mezmur']['Row'] &
+  ClassificationFields & {
+    singer_name: string | null
+    category_name: string | null
+    languages: string[]
+    tags: PublicTag[]
+  }
 
 export type MezmurCard = Pick<
   PublicMezmur,
@@ -28,24 +56,30 @@ export type MezmurCard = Pick<
   | 'slug'
   | 'title'
   | 'title_amharic'
-  | 'description'
   | 'thumbnail_url'
   | 'audio_url'
   | 'youtube_url'
   | 'featured'
   | 'published_at'
+  | 'created_at'
   | 'singer_name'
   | 'category_name'
   | 'languages'
   | 'form'
-  | 'tags'
+  | 'language'
+  | 'category'
+  | 'occasion'
+  | 'saint_or_angel'
+  | 'themes'
 >
 
 export type Discovery = { items: MezmurCard[]; total: number; page: number }
 export type Facets = {
   singers: { id: string; name: string }[]
-  categories: { id: string; name: string }[]
+  categories: { id: string; name: string; value: string }[]
   occasions: { slug: string; name: string }[]
+  saints: { slug: string; name: string }[]
+  themes: { slug: string; name: string }[]
 }
 export type SearchResult = {
   kind: ContentType
@@ -55,31 +89,64 @@ export type SearchResult = {
   description: string | null
 }
 
-type MezmurJoinRow = CmsTables['mezmur']['Row'] & {
-  singers: { id: string; name: string } | { id: string; name: string }[] | null
-  categories: { id: string; name: string; slug: string } | { id: string; name: string; slug: string }[] | null
-  mezmur_tags:
-    | {
-        tags: { id: string; name: string; slug: string; kind?: string | null } | null
-      }[]
-    | null
-}
+type MezmurJoinRow = CmsTables['mezmur']['Row'] &
+  Partial<ClassificationFields> & {
+    singers: { id: string; name: string } | { id: string; name: string }[] | null
+    categories:
+      | { id: string; name: string; slug: string }
+      | { id: string; name: string; slug: string }[]
+      | null
+    mezmur_tags:
+      | {
+          tags: { id: string; name: string; slug: string; kind?: string | null } | null
+        }[]
+      | null
+  }
 
-const CARD_SELECT = `
-  id, slug, title, title_amharic, title_oromo, description,
-  thumbnail_url, audio_url, youtube_url, featured, published_at, created_at, updated_at,
-  status, singer_id, category_id,
+const CARD_BASE = `
+  id, slug, title, title_amharic, thumbnail_url, thumbnail_path, image_alt, audio_url, youtube_url,
+  featured, published_at, created_at, singer_id, category_id,
   singers ( id, name ),
-  categories ( id, name, slug ),
-  mezmur_tags ( tags ( id, name, slug ) )
+  categories ( id, name, slug )
 `
 
-const DETAIL_SELECT = `
+const CARD_CLASSIFIED = `
+  ${CARD_BASE},
+  language, form, category, occasion, saint_or_angel, themes
+`
+
+const DETAIL_BASE = `
   *,
   singers ( id, name ),
   categories ( id, name, slug ),
   mezmur_tags ( tags ( id, name, slug ) )
 `
+
+let classificationEnabled: boolean | null = null
+
+async function hasClassificationColumns(): Promise<boolean> {
+  if (classificationEnabled !== null) return classificationEnabled
+  if (!supabase) {
+    classificationEnabled = false
+    return false
+  }
+  const { error } = await supabase
+    .from('mezmur')
+    .select('language,form,category,occasion,saint_or_angel,themes,search_keywords')
+    .eq('status', 'published')
+    .limit(1)
+  if (error && (error.code === '42703' || /column .* does not exist/i.test(error.message || ''))) {
+    classificationEnabled = false
+    return false
+  }
+  if (error) {
+    // Other errors (RLS etc.) — assume columns may exist; prefer classified select and fall back per query.
+    classificationEnabled = true
+    return true
+  }
+  classificationEnabled = true
+  return true
+}
 
 export function database() {
   if (!supabase) throw new Error('The content service is not configured.')
@@ -98,7 +165,27 @@ function sanitizeSearch(raw: string) {
   return raw.replace(/[,().%_*\\]/g, ' ').trim().slice(0, 200)
 }
 
+/** Preserve human taxonomy strings (spaces, slashes); strip PostgREST-hostile chars. */
+function sanitizeClassificationFilter(value: string) {
+  return value
+    .trim()
+    .replace(/[,().*\\]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .slice(0, 120)
+}
+
+function sanitizeFilterToken(value: string) {
+  return value.trim().toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '')
+}
+
+function asStringArray(value: unknown): string[] {
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === 'string' && item.trim().length > 0)
+    : []
+}
+
 export function languagesFromRow(row: {
+  language?: string | null
   lyrics_amharic?: string | null
   lyrics_english?: string | null
   lyrics_oromo?: string | null
@@ -107,6 +194,8 @@ export function languagesFromRow(row: {
   language_codes?: string[] | null
 }): string[] {
   const codes = new Set<string>()
+  const fromField = languageCodeFromNormalized(row.language || '')
+  if (fromField) codes.add(fromField)
   for (const code of row.language_codes || []) {
     if (code) codes.add(code)
   }
@@ -129,53 +218,78 @@ function tagsFromRow(row: MezmurJoinRow): PublicTag[] {
           ? 'form'
           : tag.slug.startsWith('language-')
             ? 'language'
-            : 'topic')
+            : tag.slug.startsWith('saint-') || tag.slug.startsWith('st-') || tag.slug.startsWith('qedus-')
+              ? 'saint'
+              : 'topic')
     tags.push({ id: tag.id, name: tag.name, slug: tag.slug, kind })
   }
   return tags.sort((a, b) => a.name.localeCompare(b.name))
 }
 
-function formFromTags(tags: PublicTag[]): 'mezmur' | 'werb' {
+function resolveForm(row: MezmurJoinRow, tags: PublicTag[]): 'mezmur' | 'werb' {
+  if (row.form === 'werb' || row.form === 'mezmur') return row.form
   if (tags.some((tag) => tag.slug === 'form-werb')) return 'werb'
   return 'mezmur'
 }
 
 function mapCard(row: MezmurJoinRow): MezmurCard {
   const singer = one(row.singers)
-  const category = one(row.categories)
+  const categoryRel = one(row.categories)
   const tags = tagsFromRow(row)
+  const form = resolveForm(row, tags)
+  const categoryText = displayClassification(row.category)
+  const categoryCanonical = canonicalizeCategory(categoryText) || categoryText
   return {
     id: row.id,
     slug: row.slug,
     title: row.title,
     title_amharic: row.title_amharic,
-    description: row.description,
-    thumbnail_url: row.thumbnail_url,
+    thumbnail_url: row.thumbnail_path || row.thumbnail_url,
     audio_url: row.audio_url,
     youtube_url: row.youtube_url,
     featured: row.featured,
     published_at: row.published_at,
+    created_at: row.created_at,
     singer_name: singer?.name || null,
-    category_name: category?.name || null,
+    category_name: categoryCanonical
+      ? classificationLabel(categoryCanonical)
+      : displayClassification(categoryRel?.name),
     languages: languagesFromRow(row),
-    form: formFromTags(tags),
-    tags,
+    form,
+    language: row.language || null,
+    category: categoryCanonical,
+    occasion: displayClassification(canonicalizeOccasion(row.occasion) || row.occasion),
+    saint_or_angel: displayClassification(row.saint_or_angel),
+    themes: asStringArray(row.themes).filter((theme) => !isNaClassification(theme)),
   }
 }
 
 function mapDetail(row: MezmurJoinRow): PublicMezmur {
   const card = mapCard(row)
+  const tags = tagsFromRow(row)
   return {
     ...row,
+    language: row.language || null,
+    form: card.form,
+    category: card.category,
+    occasion: card.occasion,
+    occasion_tags: asStringArray(row.occasion_tags).filter((v) => !isNaClassification(v)),
+    saint_or_angel: card.saint_or_angel,
+    saint_tags: asStringArray(row.saint_tags).filter((v) => !isNaClassification(v)),
+    themes: card.themes,
+    search_keywords: asStringArray(row.search_keywords),
+    source: row.source || null,
     singer_name: card.singer_name,
     category_name: card.category_name,
     languages: card.languages,
-    form: card.form,
-    tags: card.tags,
+    tags,
   }
 }
 
-function logDevError(context: string, error: { code?: string; message?: string; details?: string; hint?: string }) {
+function logDevError(
+  context: string,
+  error: { code?: string; message?: string; details?: string; hint?: string },
+) {
   if (import.meta.env.DEV) {
     console.error(`[public mezmur] ${context}`, {
       code: error.code,
@@ -187,62 +301,88 @@ function logDevError(context: string, error: { code?: string; message?: string; 
 }
 
 async function discoverViaTable(params: URLSearchParams): Promise<Discovery> {
+  const classified = await hasClassificationColumns()
   const page = pageNumber(params)
   const q = sanitizeSearch(params.get('q') || '')
-  const language = (params.get('language') || '').trim()
-  const singer = (params.get('singer') || '').trim()
-  const category = (params.get('category') || '').trim()
-  const occasion = (params.get('occasion') || '').trim()
-  const form = (params.get('form') || '').trim()
+  const language = normalizeLanguageParam(params.get('language') || '')
+  const categoryRaw = sanitizeClassificationFilter(params.get('category') || '')
+  const occasionRaw = sanitizeClassificationFilter(params.get('occasion') || '')
+  const form = sanitizeFilterToken(params.get('form') || '')
   const featuredOnly = params.get('featured') === 'yes'
   const sort = params.get('sort') || 'recent'
 
+  const categoryCanonical = canonicalizeCategory(categoryRaw)
+  const occasionCanonical = canonicalizeOccasion(occasionRaw)
+  const categoryValues = categoryCanonical ? categoryMatchValues(categoryCanonical) : []
+  const occasionValues = occasionCanonical ? occasionMatchValues(occasionCanonical) : []
+
   let query = database()
     .from('mezmur')
-    .select(CARD_SELECT, { count: 'exact' })
+    .select(classified ? CARD_CLASSIFIED : CARD_BASE, { count: 'exact' })
     .eq('status', 'published')
 
   if (featuredOnly) query = query.eq('featured', true)
-  if (singer) query = query.eq('singer_id', singer)
-  if (category) query = query.eq('category_id', category)
 
-  if (language === 'am') {
-    query = query.or('lyrics_amharic.not.is.null,title_amharic.not.is.null')
-  } else if (language === 'en') {
-    query = query.not('lyrics_english', 'is', null)
-  } else if (language === 'om') {
-    query = query.or('lyrics_oromo.not.is.null,title_oromo.not.is.null')
+  if (classified) {
+    if (language === 'amharic' || language === 'am') {
+      query = query.or(
+        'language.eq.amharic,language.eq.am,language.eq.geez,language.eq.gez,lyrics_amharic.not.is.null,title_amharic.not.is.null',
+      )
+    } else if (language === 'english' || language === 'en') {
+      query = query.or('language.eq.english,language.eq.en,lyrics_english.not.is.null')
+    }
+
+    if (form === 'mezmur' || form === 'werb') {
+      query = query.eq('form', form as 'mezmur' | 'werb')
+    }
+    if (categoryValues.length > 0) {
+      query = query.in('category', categoryValues)
+    }
+    if (occasionValues.length > 0) {
+      query = query.in('occasion', occasionValues)
+    }
+
+    if (q) {
+      const token = q.replace(/\s+/g, '-').toLowerCase()
+      query = query.or(
+        [
+          `title.ilike.%${q}%`,
+          `title_amharic.ilike.%${q}%`,
+          `title_oromo.ilike.%${q}%`,
+          `lyrics_amharic.ilike.%${q}%`,
+          `lyrics_english.ilike.%${q}%`,
+          `transliteration.ilike.%${q}%`,
+          `description.ilike.%${q}%`,
+          `occasion.ilike.%${q}%`,
+          `category.ilike.%${q}%`,
+          `search_keywords.cs.{${token}}`,
+          `search_keywords.cs.{${q.toLowerCase()}}`,
+        ].join(','),
+      )
+    }
+  } else {
+    if (language === 'amharic' || language === 'am') {
+      query = query.or('lyrics_amharic.not.is.null,title_amharic.not.is.null')
+    } else if (language === 'english' || language === 'en') {
+      query = query.not('lyrics_english', 'is', null)
+    }
+    if (q) {
+      query = query.or(
+        [
+          `title.ilike.%${q}%`,
+          `title_amharic.ilike.%${q}%`,
+          `lyrics_amharic.ilike.%${q}%`,
+          `lyrics_english.ilike.%${q}%`,
+          `transliteration.ilike.%${q}%`,
+          `description.ilike.%${q}%`,
+        ].join(','),
+      )
+    }
   }
 
-  if (q) {
-    query = query.or(
-      [
-        `title.ilike.%${q}%`,
-        `title_amharic.ilike.%${q}%`,
-        `title_oromo.ilike.%${q}%`,
-        `lyrics_amharic.ilike.%${q}%`,
-        `lyrics_english.ilike.%${q}%`,
-        `lyrics_oromo.ilike.%${q}%`,
-        `transliteration.ilike.%${q}%`,
-        `description.ilike.%${q}%`,
-      ].join(','),
-    )
-  }
-
-  if (occasion) {
-    query = query.filter('mezmur_tags.tags.slug', 'eq', occasion)
-  }
-
-  if (form === 'werb') {
-    query = query.filter('mezmur_tags.tags.slug', 'eq', 'form-werb')
-  } else if (form === 'mezmur') {
-    // Prefer explicit form-mezmur tags; when tags are absent, rows still appear (no exclude).
-    // PostgREST cannot easily say "missing tag OR has form-mezmur", so show all non-werb
-    // by excluding form-werb via a not-in subquery is not available — filter client-side after fetch
-    // only when we have form tags in the page. For server-side, leave unfiltered and post-filter.
-  }
-
-  if (sort === 'alphabetical' || sort === 'title') {
+  if (sort === 'title-desc' || sort === 'za') {
+    query = query.order('title', { ascending: false }).order('id')
+  } else if (sort === 'alphabetical' || sort === 'title' || sort === 'az') {
     query = query.order('title', { ascending: true }).order('id')
   } else if (sort === 'published') {
     query = query.order('published_at', { ascending: false, nullsFirst: false }).order('id')
@@ -253,68 +393,40 @@ async function discoverViaTable(params: URLSearchParams): Promise<Discovery> {
   const from = (page - 1) * PAGE_SIZE
   const { data, error, count } = await query.range(from, from + PAGE_SIZE - 1)
   if (error) {
+    if (error.code === '42703' && classified) {
+      classificationEnabled = false
+      return discoverViaTable(params)
+    }
     logDevError('discover table', error)
     throw error
   }
 
-  let items = ((data || []) as unknown as MezmurJoinRow[]).map(mapCard)
-
-  // Singer name search (when q matched title/lyrics only, expand with a second pass is heavy;
-  // include singer filter via separate query when q looks like a singer and no title hits — skip for now.
-
-  if (form === 'mezmur') {
-    items = items.filter((item) => item.form !== 'werb')
-  } else if (form === 'werb') {
-    items = items.filter((item) => item.form === 'werb')
+  return {
+    items: ((data || []) as unknown as MezmurJoinRow[]).map(mapCard),
+    total: count || 0,
+    page,
   }
-
-  return { items, total: count || 0, page }
 }
 
 export async function discover(params: URLSearchParams): Promise<Discovery> {
-  // Table path supports `form` and works without undeployed RPCs.
-  // Prefer table queries so CMS edits appear after refresh without depending on missing functions.
   return discoverViaTable(params)
 }
 
 async function facetsViaTable(): Promise<Facets> {
-  const db = database()
-  const [singersRes, categoriesRes, tagsRes] = await Promise.all([
-    db.from('singers').select('id,name').order('name').limit(500),
-    db.from('categories').select('id,name').eq('type', 'mezmur').order('name').limit(500),
-    db.from('tags').select('id,name,slug').order('name').limit(500),
-  ])
-  if (singersRes.error) {
-    logDevError('facets singers', singersRes.error)
-    throw singersRes.error
-  }
-  if (categoriesRes.error) {
-    logDevError('facets categories', categoriesRes.error)
-    throw categoriesRes.error
-  }
-  if (tagsRes.error) {
-    logDevError('facets tags', tagsRes.error)
-    throw tagsRes.error
-  }
-
-  const occasions = (tagsRes.data || [])
-    .filter((tag) => tag.slug.startsWith('occasion-'))
-    .map((tag) => ({ slug: tag.slug, name: tag.name }))
-
-  return {
-    singers: singersRes.data || [],
-    categories: categoriesRes.data || [],
-    occasions,
-  }
+  // Prefer canonical taxonomy for public filters (stable labels, no NA, no duplicates).
+  const categories = categoryOptions().map((item) => ({
+    id: item.value,
+    name: item.label,
+    value: item.value,
+  }))
+  const occasions = occasionOptions().map((item) => ({
+    slug: item.value,
+    name: item.label,
+  }))
+  return { singers: [], categories, occasions, saints: [], themes: [] }
 }
 
 export async function facets(): Promise<Facets> {
-  const { data, error } = await database().rpc('public_discovery_facets', {})
-  if (!error) return data as unknown as Facets
-  if (error.code !== 'PGRST202' && !/could not find the function/i.test(error.message || '')) {
-    logDevError('public_discovery_facets', error)
-    throw error
-  }
   return facetsViaTable()
 }
 
@@ -322,18 +434,9 @@ export async function detail(slug: string): Promise<PublicMezmur | null> {
   const normalized = slug.trim()
   if (!normalized) return null
 
-  const { data: rpcData, error: rpcError } = await database().rpc('public_mezmur_detail', {
-    slug_or_alias: normalized,
-  })
-  if (!rpcError) return rpcData as unknown as PublicMezmur | null
-  if (rpcError.code !== 'PGRST202' && !/could not find the function/i.test(rpcError.message || '')) {
-    logDevError('public_mezmur_detail', rpcError)
-    throw rpcError
-  }
-
   const { data, error } = await database()
     .from('mezmur')
-    .select(DETAIL_SELECT)
+    .select(DETAIL_BASE)
     .eq('slug', normalized)
     .eq('status', 'published')
     .maybeSingle()
@@ -349,48 +452,21 @@ export async function searchSite(
   query: string,
   page = 1,
 ): Promise<{ items: SearchResult[]; total: number }> {
-  const q = sanitizeSearch(query)
-  if (q.length < 2) return { items: [], total: 0 }
-
-  const { data, error } = await database().rpc('search_public_content', {
-    q: q.slice(0, 200),
-    page_number: page,
+  const params = new URLSearchParams({
+    q: query,
+    page: String(page),
+    sort: 'published',
   })
-  if (!error) return data as unknown as { items: SearchResult[]; total: number }
-  if (error.code !== 'PGRST202' && !/could not find the function/i.test(error.message || '')) {
-    logDevError('search_public_content', error)
-    throw error
-  }
-
-  const from = (Math.max(1, page) - 1) * PAGE_SIZE
-  const { data: rows, error: tableError, count } = await database()
-    .from('mezmur')
-    .select('slug,title,title_amharic,description', { count: 'exact' })
-    .eq('status', 'published')
-    .or(
-      [
-        `title.ilike.%${q}%`,
-        `title_amharic.ilike.%${q}%`,
-        `lyrics_amharic.ilike.%${q}%`,
-        `lyrics_english.ilike.%${q}%`,
-        `transliteration.ilike.%${q}%`,
-      ].join(','),
-    )
-    .order('published_at', { ascending: false, nullsFirst: false })
-    .range(from, from + PAGE_SIZE - 1)
-  if (tableError) {
-    logDevError('searchSite table', tableError)
-    throw tableError
-  }
+  const result = await discover(params)
   return {
-    items: (rows || []).map((row) => ({
+    items: result.items.map((item) => ({
       kind: 'mezmur' as const,
-      slug: row.slug,
-      title: row.title,
-      title_amharic: row.title_amharic,
-      description: row.description,
+      slug: item.slug,
+      title: item.title,
+      title_amharic: item.title_amharic,
+      description: null,
     })),
-    total: count || 0,
+    total: result.total,
   }
 }
 
@@ -410,8 +486,26 @@ export async function readContent(
 
 export async function publicMedia(reference: string | null | undefined) {
   if (!reference) return ''
-  if (reference.startsWith('storage://')) {
-    const [bucket, ...path] = reference.slice(10).split('/')
+  const trimmed = reference.trim()
+  if (!trimmed) return ''
+
+  // Absolute URLs and bare content-media paths
+  if (/^https?:\/\//i.test(trimmed) || !trimmed.startsWith('storage://')) {
+    try {
+      const { resolveContentMediaUrl } = await import('../cms/contentMedia')
+      const resolved = resolveContentMediaUrl(trimmed)
+      if (resolved) return resolved
+    } catch {
+      /* fall through */
+    }
+  }
+
+  if (trimmed.startsWith('storage://')) {
+    const [bucket, ...path] = trimmed.slice(10).split('/')
+    if (bucket === 'content-media') {
+      const { resolveContentMediaUrl } = await import('../cms/contentMedia')
+      return resolveContentMediaUrl(trimmed)
+    }
     if (
       ![
         'mezmur-images',
@@ -429,36 +523,41 @@ export async function publicMedia(reference: string | null | undefined) {
     if (error) throw error
     return data.signedUrl
   }
-  const url = new URL(reference)
+  const url = new URL(trimmed)
   if (url.protocol !== 'https:') throw new Error('Unsupported media URL.')
   return url.href
 }
 
-/** Map a public mezmur row into the practice player payload shape. */
-export function publicMezmurToPracticePayload(item: PublicMezmur) {
-  const videoId = parseYoutubeVideoId(item.youtube_url || '')
+export function publicMezmurToPracticePayload(item: PublicMezmur, youtubeUrl?: string | null) {
+  const activeUrl = youtubeUrl || item.youtube_url || ''
+  const videoId = parseYoutubeVideoId(activeUrl)
   const lyricsGez =
     item.lyrics_amharic?.trim() ||
     item.lyrics_english?.trim() ||
     item.lyrics_oromo?.trim() ||
     ''
   return {
-    form: item.form,
+    form: item.form || 'mezmur',
     entryId: item.id,
     title: item.title,
     transliterationTitle: item.title,
+    titleAmharic: item.title_amharic?.trim() || undefined,
     lyricsGez,
     transliterationLyrics: item.transliteration?.trim() || '',
+    lyricsEnglish: item.lyrics_english?.trim() || undefined,
     videoId,
     audioUrl: item.audio_url?.trim() || undefined,
     watchUrl: videoId ? `https://www.youtube.com/watch?v=${videoId}` : undefined,
     learning: {
       meaning: item.description?.trim() || undefined,
-      categoryLabel: item.category_name || undefined,
-      themesLine: item.tags
-        .filter((tag) => tag.kind === 'topic')
-        .map((tag) => tag.name)
-        .join(', ') || undefined,
+      categoryLabel: displayClassification(item.category_name || item.category) || undefined,
+      themesLine:
+        item.themes
+          ?.map(classificationLabel)
+          .filter(Boolean)
+          .join(', ') || undefined,
     },
   }
 }
+
+export { classificationLabel, normalizeLanguageParam }

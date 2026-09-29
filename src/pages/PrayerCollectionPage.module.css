@@ -25,7 +25,8 @@
 .backLink:focus-visible,
 .item:focus-visible,
 .mediaHead a:focus-visible,
-.canonical a:focus-visible {
+.canonical a:focus-visible,
+.openLink:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
@@ -76,6 +77,17 @@
 
 .deck {
   margin: var(--space-3) 0 0;
+}
+
+.sectionBlock {
+  margin: var(--space-5) 0;
+}
+
+.sectionTitle {
+  margin: 0 0 var(--space-3);
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
 }
 
 .count {
@@ -220,6 +232,24 @@
 .notFound p {
   margin: 0;
   color: var(--color-text-muted);
+}
+
+.openLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  margin-top: var(--space-3);
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--color-navy);
+  border-radius: var(--radius-pill);
+  background: var(--color-navy);
+  color: #fff8f0;
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 @media (max-width: 639.98px) {

@@ -1,62 +1,132 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import {
-  COLLECTION_PRAYERS,
-  PRAYER_COLLECTIONS,
-  categoryLabel,
-  collectionPrayerCount,
-} from '../lib/prayers/prayerCollections'
-import type { CollectionPrayer } from '../lib/prayers/prayerCollections'
-import {
-  prayerCollectionPath,
-  prayerDetailPath,
-} from '../lib/prayers/prayerSlug'
+  libraryCollectionPath,
+  loadPrayerLibraryCollections,
+  searchPrayerLibrary,
+} from '../lib/prayers/prayerLibrary'
+import type { PrayerLibraryCollection, PrayerSearchResult } from '../lib/prayers/prayerLibraryTypes'
 import { getWeekdayPrayerRhythm } from '../lib/prayers/weekdayPrayerRhythm'
+import { resolveContentMediaUrl } from '../lib/cms/contentMedia'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import { useTranslation } from '../i18n'
 import styles from './PrayerListPage.module.css'
 
-function searchBlob(prayer: CollectionPrayer): string {
-  return [
-    prayer.title,
-    prayer.transliterationTitle,
-    prayer.collection,
-    prayer.id,
-    prayer.slug,
-    prayer.section,
-    prayer.chapter,
-    prayer.summary.english,
-    prayer.summary.amharic,
-    prayer.text.english,
-    prayer.text.amharic,
-    prayer.text.geez,
-    prayer.categoryPrimary,
-    ...prayer.categoryUsage,
-  ]
-    .join(' ')
-    .toLowerCase()
-}
-
-function preview(prayer: CollectionPrayer): string {
-  return (
-    prayer.summary.english.trim() ||
-    prayer.text.english.trim().slice(0, 170) ||
-    prayer.text.amharic.trim().slice(0, 170) ||
-    'Open this prayer for focused reading.'
-  )
+function collectionCountLabel(
+  collection: PrayerLibraryCollection,
+  tr: (key: string, vars?: Record<string, string | number>) => string,
+) {
+  const count = collection.itemCount
+  if (collection.countKind === 'psalms') {
+    return count === 1
+      ? tr('prayers.collection.psalmsCountOne', { count })
+      : tr('prayers.collection.psalmsCountOther', { count })
+  }
+  if (collection.countKind === 'prayers') {
+    return count === 1
+      ? tr('prayers.collection.prayersCountOne', { count })
+      : tr('prayers.collection.prayersCountOther', { count })
+  }
+  if (collection.countKind === 'days') {
+    return count === 1
+      ? tr('prayers.collection.daysCountOne', { count })
+      : tr('prayers.collection.daysCountOther', { count })
+  }
+  if (collection.countKind === 'commemorations') {
+    return count === 1
+      ? tr('prayers.collection.commemorationsCountOne', { count })
+      : tr('prayers.collection.commemorationsCountOther', { count })
+  }
+  return count === 1
+    ? tr('prayers.collection.sectionsCountOne', { count })
+    : tr('prayers.collection.sectionsCountOther', { count })
 }
 
 export function PrayerListPage() {
   const t = useUiLabel()
   const tr = useTranslation()
   const [query, setQuery] = useState('')
+  const [collections, setCollections] = useState<PrayerLibraryCollection[]>([])
+  const [collectionsLoading, setCollectionsLoading] = useState(true)
+  const [collectionsError, setCollectionsError] = useState<string>()
+  const [results, setResults] = useState<PrayerSearchResult[]>([])
+  const [searchLoading, setSearchLoading] = useState(false)
+  const [searchError, setSearchError] = useState<string>()
+  const [reloadTick, setReloadTick] = useState(0)
   const rhythm = useMemo(() => getWeekdayPrayerRhythm(), [])
 
-  const results = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (!q) return []
-    return COLLECTION_PRAYERS.filter((prayer) => searchBlob(prayer).includes(q)).slice(0, 24)
+  useEffect(() => {
+    let active = true
+    queueMicrotask(() => {
+      if (!active) return
+      setCollectionsLoading(true)
+      setCollectionsError(undefined)
+    })
+    void loadPrayerLibraryCollections()
+      .then((rows) => {
+        if (!active) return
+        setCollections(rows)
+        setCollectionsLoading(false)
+      })
+      .catch((cause) => {
+        if (!active) return
+        const message =
+          cause && typeof cause === 'object' && 'message' in cause
+            ? String((cause as { message?: unknown }).message)
+            : "We couldn't load the prayer library."
+        if (import.meta.env.DEV) console.error('[prayers] library', cause)
+        setCollectionsError(import.meta.env.DEV ? message : "We couldn't load the prayer library.")
+        setCollections([])
+        setCollectionsLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [reloadTick])
+
+  useEffect(() => {
+    const normalized = query.trim()
+    let active = true
+    if (!normalized) {
+      queueMicrotask(() => {
+        if (!active) return
+        setResults([])
+        setSearchError(undefined)
+        setSearchLoading(false)
+      })
+      return () => {
+        active = false
+      }
+    }
+    queueMicrotask(() => {
+      if (!active) return
+      setSearchLoading(true)
+      setSearchError(undefined)
+    })
+    const timeout = window.setTimeout(() => {
+      void searchPrayerLibrary(normalized)
+        .then((rows) => {
+          if (!active) return
+          setResults(rows)
+          setSearchLoading(false)
+        })
+        .catch((cause) => {
+          if (!active) return
+          const message =
+            cause && typeof cause === 'object' && 'message' in cause
+              ? String((cause as { message?: unknown }).message)
+              : "We couldn't search prayers."
+          if (import.meta.env.DEV) console.error('[prayers] search', cause)
+          setSearchError(import.meta.env.DEV ? message : "We couldn't search prayers.")
+          setResults([])
+          setSearchLoading(false)
+        })
+    }, 300)
+    return () => {
+      active = false
+      window.clearTimeout(timeout)
+    }
   }, [query])
 
   const isSearching = query.trim().length > 0
@@ -91,33 +161,34 @@ export function PrayerListPage() {
             </section>
             <div className={styles.resultsHead}>
               <h2>{tr('prayers.search.resultsTitle')}</h2>
-              <p>{resultsCountLabel}</p>
+              <p>{searchLoading ? 'Searching…' : resultsCountLabel}</p>
             </div>
-            {results.length === 0 ? (
+            {searchError ? (
+              <div className={styles.empty} role="alert">
+                <h2>{searchError}</h2>
+                <p>Please try again in a moment.</p>
+              </div>
+            ) : null}
+            {!searchLoading && !searchError && results.length === 0 ? (
               <div className={styles.empty}>
                 <h2>{tr('prayers.search.emptyTitle')}</h2>
                 <p>{tr('prayers.search.emptyHint')}</p>
               </div>
-            ) : (
+            ) : null}
+            {results.length > 0 ? (
               <ul className={styles.resultList}>
-                {results.map((prayer) => (
-                  <li key={`${prayer.collectionSlug}-${prayer.slug}`}>
-                    <Link
-                      className={styles.resultLink}
-                      to={prayerDetailPath(prayer.slug, prayer.collectionSlug)}
-                    >
-                      <span className={styles.resultKicker}>
-                        {prayer.collection}
-                        {prayer.chapter ? ` / ${prayer.chapter}` : ''}
-                      </span>
-                      <strong lang="am">{prayer.title}</strong>
-                      {prayer.transliterationTitle ? <span>{prayer.transliterationTitle}</span> : null}
-                      <small>{preview(prayer)}</small>
+                {results.map((result) => (
+                  <li key={result.id}>
+                    <Link className={styles.resultLink} to={result.route}>
+                      <span className={styles.resultKicker}>{result.metadata}</span>
+                      <strong>{result.title}</strong>
+                      {result.titleAmharic ? <span lang="am">{result.titleAmharic}</span> : null}
+                      <small>{result.excerpt}</small>
                     </Link>
                   </li>
                 ))}
               </ul>
-            )}
+            ) : null}
           </section>
         ) : (
           <>
@@ -143,7 +214,9 @@ export function PrayerListPage() {
                         <small>{item.label}</small>
                         <span>{item.subtitle}</span>
                       </span>
-                      <span className={styles.rhythmOpen} aria-hidden>{tr('prayers.collection.open')} →</span>
+                      <span className={styles.rhythmOpen} aria-hidden>
+                        {tr('prayers.collection.open')} →
+                      </span>
                     </Link>
                   </li>
                 ))}
@@ -164,35 +237,61 @@ export function PrayerListPage() {
               </label>
             </section>
 
+            {collectionsLoading ? <p role="status">Loading prayers…</p> : null}
+            {collectionsError ? (
+              <div className={styles.empty} role="alert">
+                <h2>{collectionsError}</h2>
+                <button type="button" className={styles.openLink} onClick={() => setReloadTick((n) => n + 1)}>
+                  Try again
+                </button>
+              </div>
+            ) : null}
+            {!collectionsLoading && !collectionsError && collections.length === 0 ? (
+              <div className={styles.empty}>
+                <h2>No prayer collections found.</h2>
+              </div>
+            ) : null}
+
             <ul className={styles.collectionGrid} aria-label={tr('prayers.title')}>
-              {PRAYER_COLLECTIONS.map((collection) => (
-                <li key={collection.id}>
-                  <article className={styles.collectionCard}>
-                    <div>
-                      <p className={styles.collectionOrder}>
-                        {String(collection.order).padStart(2, '0')}
-                      </p>
-                      <h2 className={styles.collectionTitle}>{collection.title}</h2>
-                      <p className={styles.collectionAmharic} lang="am">
-                        {collection.amharicTitle}
-                      </p>
-                      <p className={styles.collectionText}>{collection.description}</p>
-                      <p className={styles.collectionMeta}>
-                        {collectionPrayerCount(collection.id) === 1
-                          ? tr('prayers.collection.sectionsCountOne', {
-                              count: collectionPrayerCount(collection.id),
-                            })
-                          : tr('prayers.collection.sectionsCountOther', {
-                              count: collectionPrayerCount(collection.id),
-                            })}
-                      </p>
-                    </div>
-                    <Link className={styles.openLink} to={prayerCollectionPath(collection.id)}>
-                      {tr('prayers.collection.openCollection')}
-                    </Link>
-                  </article>
-                </li>
-              ))}
+              {collections
+                .filter((collection) => Boolean(collection.title?.trim()))
+                .map((collection, index) => {
+                  const title = collection.title.trim()
+                  const titleAmharic = collection.titleAmharic?.trim() || ''
+                  const description = collection.description?.trim() || ''
+                  const imageUrl = collection.imagePath
+                    ? resolveContentMediaUrl(collection.imagePath)
+                    : ''
+                  return (
+                    <li key={`${collection.sourceType}-${collection.id}`}>
+                      <article className={styles.collectionCard}>
+                        {imageUrl ? (
+                          <img
+                            className={styles.collectionImage}
+                            src={imageUrl}
+                            alt={collection.imageAlt || ''}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : null}
+                        <div className={styles.collectionBody}>
+                          <p className={styles.collectionOrder}>{String(index + 1).padStart(2, '0')}</p>
+                          <h2 className={styles.collectionTitle}>{title}</h2>
+                          {titleAmharic ? (
+                            <p className={styles.collectionAmharic} lang="am">
+                              {titleAmharic}
+                            </p>
+                          ) : null}
+                          {description ? <p className={styles.collectionText}>{description}</p> : null}
+                          <p className={styles.collectionMeta}>{collectionCountLabel(collection, tr)}</p>
+                        </div>
+                        <Link className={styles.openLink} to={libraryCollectionPath(collection)}>
+                          {tr('prayers.collection.openCollection')}
+                        </Link>
+                      </article>
+                    </li>
+                  )
+                })}
             </ul>
           </>
         )}
@@ -200,7 +299,7 @@ export function PrayerListPage() {
         {!isSearching ? (
           <section className={styles.tagNote} aria-label={tr('prayers.search.secondaryTagsTitle')}>
             <h2>{tr('prayers.search.secondaryTagsTitle')}</h2>
-            <p>{tr('prayers.search.secondaryTagsHelper', { firstTag: categoryLabel(COLLECTION_PRAYERS[0]) })}</p>
+            <p>{tr('prayers.search.secondaryTagsHelper', { firstTag: 'Daily' })}</p>
           </section>
         ) : null}
       </div>

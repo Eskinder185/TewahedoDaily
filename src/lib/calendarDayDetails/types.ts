@@ -14,14 +14,15 @@ export type CalendarExpandedContent = {
 
 export type CalendarLiturgyContext = {
   structure: string[]
-  anaphora: {
+  /** Present when an anaphora mapping exists for the day; omit for preparatory-only contexts. */
+  anaphora?: {
     id: string
     title: string
     summary?: string
     reason: string
     confidence: string
   }
-  readings: {
+  readings?: {
     title?: string
     status: string
     note: string
@@ -35,13 +36,13 @@ export type CalendarLiturgyContext = {
       order?: number
     }>
   }
-  mezmur: {
+  mezmur?: {
     id?: string
     title?: string
     note: string
     status: string
   }
-  whyToday: string
+  whyToday?: string
   source?: {
     from: string[]
   }
@@ -49,9 +50,12 @@ export type CalendarLiturgyContext = {
 
 export type CalendarDayCommemoration = {
   title: string
+  titleAmharic?: string
   category?: string
   kind?: string
   priority?: string
+  summary?: string
+  body?: string
   expandedContent?: CalendarExpandedContent
 }
 
@@ -59,6 +63,8 @@ export type CalendarDayDetail = {
   id: string
   title: string
   shortDescription: string
+  imageUrl?: string
+  imageAlt?: string
   ethiopianDate: {
     month: string
     day: number

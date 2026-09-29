@@ -2,7 +2,9 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
 import { PageSection } from '../components/ui/PageSection'
-import { findCollectionPrayer, findPrayerByLegacySlug } from '../lib/prayers/prayerCollections'
+import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
+import type { CollectionPrayer } from '../lib/prayers/prayerCollections'
+import { loadPrayer } from '../lib/prayers/prayerSupabase'
 import { useTranslation } from '../i18n'
 import { prayerShareUrl } from '../lib/prayers/prayerSlug'
 import styles from './PrayerDetailPage.module.css'
@@ -17,10 +19,36 @@ function youtubeEmbedUrl(youtubeId?: string, youtubeUrl?: string): string {
 export function PrayerDetailPage() {
   const tr = useTranslation()
   const { collectionSlug, prayerSlug, slug } = useParams()
-  const prayer = prayerSlug
-    ? findCollectionPrayer(collectionSlug, prayerSlug)
-    : findPrayerByLegacySlug(slug)
+  const [prayer, setPrayer] = useState<CollectionPrayer | null>()
+  const [error, setError] = useState<string>()
   const [copied, setCopied] = useState(false)
+  const [reloadTick, setReloadTick] = useState(0)
+
+  useEffect(() => {
+    let active = true
+    queueMicrotask(() => {
+      if (!active) return
+      setPrayer(undefined)
+      setError(undefined)
+    })
+    void loadPrayer(collectionSlug, prayerSlug ?? slug)
+      .then((row) => {
+        if (active) setPrayer(row ?? null)
+      })
+      .catch((cause) => {
+        if (!active) return
+        const message =
+          cause && typeof cause === 'object' && 'message' in cause
+            ? String((cause as { message?: unknown }).message)
+            : "We couldn't load this prayer."
+        if (import.meta.env.DEV) console.error('[prayers] detail', cause)
+        setError(import.meta.env.DEV ? message : "We couldn't load this prayer.")
+        setPrayer(null)
+      })
+    return () => {
+      active = false
+    }
+  }, [collectionSlug, prayerSlug, slug, reloadTick])
 
   useEffect(() => {
     const title = prayer?.transliterationTitle || prayer?.title
@@ -39,6 +67,24 @@ export function PrayerDetailPage() {
     } catch {
       window.prompt(tr('prayers.detail.copyPrompt'), url)
     }
+  }
+
+  if (prayer === undefined && !error) return <PageLoadingFallback />
+
+  if (error) {
+    return (
+      <PageSection variant="tint">
+        <div className={styles.notFound}>
+          <Link className={styles.backLink} to="/pray">
+            {tr('prayers.navigation.backToCollections')}
+          </Link>
+          <h1>{error}</h1>
+          <button type="button" className={styles.primaryLink} onClick={() => setReloadTick((n) => n + 1)}>
+            Try again
+          </button>
+        </div>
+      </PageSection>
+    )
   }
 
   if (!prayer) {
@@ -108,7 +154,7 @@ export function PrayerDetailPage() {
           </section>
         ) : null}
 
-        {(embedUrl || prayer.youtubeUrl) ? (
+        {embedUrl || prayer.youtubeUrl ? (
           <section className={styles.video} aria-label={tr('prayers.detail.videoAria')}>
             <div className={styles.videoHead}>
               <h2>{tr('prayers.detail.watchListen')}</h2>
@@ -135,7 +181,7 @@ export function PrayerDetailPage() {
           <PrayerTextTabs text={prayer.text} />
         </section>
 
-        {(prayer.source.bookTitle || prayer.source.fullTextLink || prayer.source.audioUrl) ? (
+        {prayer.source.bookTitle || prayer.source.fullTextLink || prayer.source.audioUrl ? (
           <footer className={styles.source}>
             <h2>{tr('prayers.detail.sourceTitle')}</h2>
             {prayer.source.bookTitle ? <p>{prayer.source.bookTitle}</p> : null}

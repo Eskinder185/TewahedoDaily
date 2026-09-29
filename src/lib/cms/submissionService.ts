@@ -40,7 +40,14 @@ export async function convertSubmission(item: CommunitySubmission, includeCredit
  return data
 }
 export async function reviewAuthors() {
- const { data,error } = await db().rpc('cms_version_authors',{})
- if (error) throw error
- return data
+  const { data, error } = await db()
+    .from('profiles')
+    .select('id,display_name')
+    .not('role', 'is', null)
+    .order('display_name')
+  if (error) throw error
+  return (data || []).map((row) => ({
+    id: row.id as string,
+    display_name: (row.display_name as string) || 'CMS member',
+  }))
 }

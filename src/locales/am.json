@@ -196,7 +196,10 @@
       "commemorations": "መታሰቢያዎች",
       "readMore": "ተጨማሪ ያንብቡ",
       "source": "ምንጭ፦ {title}",
-      "originalReference": "የመጀመሪያ ማጣቀሻ፦ {reference}"
+      "originalReference": "የመጀመሪያ ማጣቀሻ፦ {reference}",
+      "synaxariumUnavailable": "ለዚህ ቀን የስንክሳር ግቤት ገና አልተገኘም።",
+      "synaxariumLoadError": "የስንክሳር መረጃን መጫን አልተቻለም።",
+      "tryAgain": "እንደገና ይሞክሩ"
     }
   },
   "seasonPanel": {
@@ -441,6 +444,14 @@
       "urlLabel": "የስብስብ አገናኝ",
       "sectionsCountOne": "{count} ክፍል",
       "sectionsCountOther": "{count} ክፍሎች",
+      "psalmsCountOne": "{count} መዝሙር",
+      "psalmsCountOther": "{count} መዝሙራት",
+      "prayersCountOne": "{count} ጸሎት",
+      "prayersCountOther": "{count} ጸሎቶች",
+      "daysCountOne": "{count} ቀን",
+      "daysCountOther": "{count} ቀናት",
+      "commemorationsCountOne": "{count} መታሰቢያ",
+      "commemorationsCountOther": "{count} መታሰቢያዎች",
       "notFoundTitle": "የጸሎት ስብስብ አልተገኘም",
       "notFoundDescription": "የስብስቡ አገናኝ ያረጀ ወይም ያልተሟላ ሊሆን ይችላል።"
     },

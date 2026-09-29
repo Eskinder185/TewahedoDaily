@@ -1,9 +1,6 @@
 import { useCallback } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import {
-  listContent,
-  type EditorialKind,
-} from '../lib/cms/contentService'
+import { listContent, contentPath } from '../lib/cms/contentService'
 import { useAsync } from '../lib/cms/useAsync'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import {
@@ -11,20 +8,18 @@ import {
   Notice,
   Pagination,
 } from '../components/publicContent/PublicUi'
-import { contentPath } from '../lib/cms/contentService'
 import s from '../components/publicContent/PublicContent.module.css'
 
-const LIBRARY_TITLES: Record<Exclude<EditorialKind, 'articles'>, string> = {
+const LIBRARY_TITLES: Record<'saints' | 'feasts', string> = {
   saints: 'Saints',
   feasts: 'Feasts',
-  prayers: 'Prayer library',
 }
 
-/** Public libraries for saints, feasts, and CMS prayers (not articles/teachings). */
+/** Public libraries for saints and feasts. */
 export function PublicContentLibrary({
   kind,
 }: {
-  kind: Exclude<EditorialKind, 'articles'>
+  kind: 'saints' | 'feasts'
 }) {
   const [params, setParams] = useSearchParams()
   const q = params.get('q') || ''
@@ -37,9 +32,6 @@ export function PublicContentLibrary({
   return (
     <section className={s.shell}>
       <h1>{title}</h1>
-      {kind === 'prayers' && (
-        <Link to="/prayers">Traditional prayer collections</Link>
-      )}
       <form
         className={s.filters}
         key={params.toString()}

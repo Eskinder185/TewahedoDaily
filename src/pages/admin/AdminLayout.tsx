@@ -6,12 +6,15 @@ import s from './Admin.module.css'
 
 const links = [
   'Dashboard',
+  'Homepage',
   'Mezmur',
   'Submissions',
+  'Prayers',
+  'Liturgy',
+  'Calendar',
+  'Synaxarium',
   'Saints',
   'Feasts',
-  'Prayers',
-  'Articles',
   'Categories',
   'Singers',
   'Tags',
@@ -46,6 +49,13 @@ export function AdminLayout() {
     }
     return true
   })
+
+  function linkPath(name: string) {
+    if (name === 'Dashboard') return '/admin'
+    if (name === 'Homepage') return '/admin/home'
+    if (name === 'Calendar') return '/admin/calendar'
+    return `/admin/${name.toLowerCase()}`
+  }
 
   async function logout() {
     if (!window.confirm('Sign out? Any unsaved changes will be lost.')) return
@@ -91,7 +101,7 @@ export function AdminLayout() {
             <NavLink
               key={name}
               end={name === 'Dashboard'}
-              to={name === 'Dashboard' ? '/admin' : `/admin/${name.toLowerCase()}`}
+              to={linkPath(name)}
               onClick={() => setMenu(false)}
               className={({ isActive }) => (isActive ? s.active : '')}
             >

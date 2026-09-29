@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import type { SavedChantLoopSection } from '../../lib/practice/chantLoopStorage'
+import type { PracticeSectionRange } from '../../lib/practice/autoSplit'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './ChantLoopControls.module.css'
 
-export type AutoSplitSectionRange = { start: number; end: number }
+export type AutoSplitSectionRange = PracticeSectionRange
 
 type ChantLoopControlsProps = {
   disabled: boolean
@@ -15,9 +16,16 @@ type ChantLoopControlsProps = {
   formatTime: (sec: number | null) => string
   onMarkStart: () => void
   onMarkEnd: () => void
+  onNudgeStart: (delta: number) => void
+  onNudgeEnd: (delta: number) => void
   onPlayLoop: () => void
   onStopLoop: () => void
   onClearLoop: () => void
+  loopLimit: number | 'infinite'
+  onLoopLimitChange: (value: number | 'infinite') => void
+  loopGapSec: number
+  onLoopGapChange: (value: number) => void
+  loopRepeatIndex: number
   savedSections: SavedChantLoopSection[]
   onSaveSection: () => void
   onPlaySavedSection: (section: SavedChantLoopSection) => void
@@ -25,8 +33,8 @@ type ChantLoopControlsProps = {
   onDeleteSavedSection: (id: string) => void
   onRenameSavedSection: (id: string, label: string) => void
   autoSplitSections: AutoSplitSectionRange[] | null
-  splitHighlight: 'full' | 1 | 2 | 3 | 'neutral'
-  onSelectAutoSection: (section: 1 | 2 | 3) => void
+  activeSectionIndex: number | null
+  onPlaySection: (index: number, loop: boolean) => void
 }
 
 function SectionLabelInput({
@@ -66,9 +74,16 @@ export function ChantLoopControls({
   formatTime,
   onMarkStart,
   onMarkEnd,
+  onNudgeStart,
+  onNudgeEnd,
   onPlayLoop,
   onStopLoop,
   onClearLoop,
+  loopLimit,
+  onLoopLimitChange,
+  loopGapSec,
+  onLoopGapChange,
+  loopRepeatIndex,
   savedSections,
   onSaveSection,
   onPlaySavedSection,
@@ -76,101 +91,59 @@ export function ChantLoopControls({
   onDeleteSavedSection,
   onRenameSavedSection,
   autoSplitSections,
-  splitHighlight,
-  onSelectAutoSection,
+  activeSectionIndex,
+  onPlaySection,
 }: ChantLoopControlsProps) {
   const t = useUiLabel()
   const tt = useTranslation()
   const [advancedOpen, setAdvancedOpen] = useState(false)
   const canPlayLoop =
-    loopStart !== null &&
-    loopEnd !== null &&
-    loopEnd > loopStart + 0.35
-
-  const canSaveSection = canPlayLoop && savedSections.length < 30
-
-  const sectionMainLabel = (n: 1 | 2 | 3) =>
-    n === 1 ? t('loopSection1') : n === 2 ? t('loopSection2') : t('loopSection3')
-
-  const renderSavedSections = () =>
-    savedSections.length > 0 ? (
-      <div className={styles.savedBlock}>
-        <h3 className={styles.savedHeading}>{t('savedLoops')}</h3>
-        <ul className={styles.savedList}>
-          {savedSections.map((section) => (
-            <li key={section.id} className={styles.savedRow}>
-              <div className={styles.savedMain}>
-                <SectionLabelInput
-                  section={section}
-                  onRename={onRenameSavedSection}
-                />
-                <span className={styles.savedRange}>
-                  {formatTime(section.startSec)}–{formatTime(section.endSec)}
-                </span>
-              </div>
-              <div className={styles.savedActions}>
-                <button
-                  type="button"
-                  className={styles.btnMini}
-                  onClick={() => onPlaySavedSection(section)}
-                >
-                  {t('loopPlay')}
-                </button>
-                <button
-                  type="button"
-                  className={styles.btnMini}
-                  onClick={() => onLoadSavedSection(section)}
-                >
-                  {t('loopLoad')}
-                </button>
-                <button
-                  type="button"
-                  className={styles.btnMiniDanger}
-                  onClick={() => onDeleteSavedSection(section.id)}
-                  aria-label={`${tt('mezmurPractice.loop.delete')} ${section.label}`}
-                >
-                  {t('loopDelete')}
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    ) : (
-      <p className={styles.savedEmpty}>{tt('mezmurPractice.loop.empty')}</p>
-    )
+    loopStart !== null && loopEnd !== null && loopEnd > loopStart + 0.35
+  const loopSpan =
+    canPlayLoop && loopStart != null && loopEnd != null ? loopEnd - loopStart : 0
 
   return (
-    <fieldset className={styles.root} disabled={disabled}>
-      <legend className={styles.legend}>{t('loopLegend')}</legend>
+    <section className={styles.root} aria-disabled={disabled || undefined}>
       <div className={styles.splitBlock}>
-        <h3 className={styles.primaryHeading}>{t('loopAutoSplitLegend')}</h3>
-        <p className={styles.hint}>{tt('mezmurPractice.loop.autoHint')}</p>
-        <div className={styles.splitRow} role="group" aria-label={t('loopAutoSplitLegend')}>
-          {([1, 2, 3] as const).map((n) => {
-            const seg = autoSplitSections?.[n - 1]
-            const label = sectionMainLabel(n)
-            const range =
-              seg != null
-                ? `${formatTime(seg.start)}–${formatTime(seg.end)}`
-                : tt('mezmurPractice.loop.notReady')
-            const on = splitHighlight === n
+        <h3 className={styles.primaryHeading}>Practice Sections</h3>
+        <p className={styles.hint}>Tap Play once, or Loop to repeat a section.</p>
+        <div className={styles.splitRow} role="list">
+          {(autoSplitSections || []).map((seg, index) => {
+            const on = activeSectionIndex === index
             return (
-              <button
-                key={n}
-                type="button"
-                className={`${styles.splitBtn} ${on ? styles.splitBtnOn : ''}`}
-                disabled={!seg}
-                onClick={() => onSelectAutoSection(n)}
-                aria-pressed={on}
-                title={seg != null ? `${label} (${range})` : label}
+              <div
+                key={`${seg.start}-${index}`}
+                className={`${styles.splitCard} ${on ? styles.splitCardOn : ''}`}
+                role="listitem"
               >
-                <span className={styles.splitBtnLabel}>{label}</span>
-                <span className={styles.splitBtnRange}>{range}</span>
-                <span className={styles.splitBtnAction}>{tt('mezmurPractice.loop.playSection')}</span>
-              </button>
+                <p className={styles.splitBtnLabel}>Section {index + 1}</p>
+                <p className={styles.splitBtnRange}>
+                  {formatTime(seg.start)} – {formatTime(seg.end)}
+                </p>
+                <div className={styles.splitActions}>
+                  <button
+                    type="button"
+                    className={styles.btnMini}
+                    disabled={disabled}
+                    onClick={() => onPlaySection(index, false)}
+                  >
+                    Play
+                  </button>
+                  <button
+                    type="button"
+                    className={styles.btnMini}
+                    disabled={disabled}
+                    onClick={() => onPlaySection(index, true)}
+                  >
+                    Loop
+                  </button>
+                </div>
+              </div>
             )
           })}
+          {!autoSplitSections?.length ? (
+            <p className={styles.hint}>{tt('mezmurPractice.loop.notReady')}</p>
+          ) : null}
         </div>
       </div>
 
@@ -181,64 +154,133 @@ export function ChantLoopControls({
         open={advancedOpen}
         onToggle={(e) => setAdvancedOpen((e.target as HTMLDetailsElement).open)}
       >
-        <summary className={styles.advancedSummary}>{tt('mezmurPractice.loop.advanced')}</summary>
+        <summary className={styles.advancedSummary}>Advanced Loop (A / B)</summary>
         <div className={styles.advancedBody}>
           <div className={styles.times}>
             <div className={styles.timeRow}>
-              <span className={styles.timeLabel}>{t('loopTimeStart')}</span>
+              <span className={styles.timeLabel}>A</span>
               <span className={styles.timeValue}>{formatTime(loopStart)}</span>
+              <button type="button" className={styles.btnMini} disabled={disabled || loopStart == null} onClick={() => onNudgeStart(-1)}>
+                −1s
+              </button>
+              <button type="button" className={styles.btnMini} disabled={disabled || loopStart == null} onClick={() => onNudgeStart(1)}>
+                +1s
+              </button>
             </div>
             <div className={styles.timeRow}>
-              <span className={styles.timeLabel}>{t('loopTimeEnd')}</span>
+              <span className={styles.timeLabel}>B</span>
               <span className={styles.timeValue}>{formatTime(loopEnd)}</span>
+              <button type="button" className={styles.btnMini} disabled={disabled || loopEnd == null} onClick={() => onNudgeEnd(-1)}>
+                −1s
+              </button>
+              <button type="button" className={styles.btnMini} disabled={disabled || loopEnd == null} onClick={() => onNudgeEnd(1)}>
+                +1s
+              </button>
             </div>
+            {canPlayLoop ? (
+              <p className={styles.hint}>Loop length: {formatTime(loopSpan)}</p>
+            ) : null}
+            {loopPlaying && loopLimit !== 'infinite' ? (
+              <p className={styles.hint}>
+                Repeat {Math.min(loopRepeatIndex, loopLimit)} of {loopLimit}
+              </p>
+            ) : null}
           </div>
 
           <div className={styles.actions}>
-            <button type="button" className={styles.btn} onClick={onMarkStart}>
-              {t('markStart')}
+            <button type="button" className={styles.btn} disabled={disabled} onClick={onMarkStart}>
+              Set A
             </button>
-            <button type="button" className={styles.btn} onClick={onMarkEnd}>
-              {t('markEnd')}
+            <button type="button" className={styles.btn} disabled={disabled} onClick={onMarkEnd}>
+              Set B
             </button>
-          </div>
-          <div className={styles.actions}>
             {loopPlaying ? (
               <button type="button" className={styles.btnWarn} onClick={onStopLoop}>
-                {t('stopLoop')}
+                Stop loop
               </button>
             ) : (
-              <button
-                type="button"
-                className={styles.btnPrimary}
-                disabled={!canPlayLoop}
-                onClick={onPlayLoop}
-              >
-                {t('playLoop')}
+              <button type="button" className={styles.btnPrimary} disabled={!canPlayLoop || disabled} onClick={onPlayLoop}>
+                Start loop
               </button>
             )}
-            <button type="button" className={styles.btnGhost} onClick={onClearLoop}>
-              {t('clearLoop')}
+            <button type="button" className={styles.btnGhost} disabled={disabled} onClick={onClearLoop}>
+              Clear
             </button>
-            <button
-              type="button"
-              className={styles.btnSave}
-              disabled={!canSaveSection}
-              onClick={onSaveSection}
-              title={
-                !canPlayLoop
-                  ? tt('mezmurPractice.loop.markFirst')
-                  : savedSections.length >= 30
-                    ? tt('mezmurPractice.loop.maxSaved')
-                    : tt('mezmurPractice.loop.saveThisRange')
-              }
-            >
-              {t('saveLoop')}
+            <button type="button" className={styles.btnSave} disabled={!canPlayLoop || disabled || savedSections.length >= 30} onClick={onSaveSection}>
+              Save
             </button>
           </div>
-          {renderSavedSections()}
+
+          <div className={styles.loopOptions}>
+            <label>
+              Loop count
+              <select
+                value={loopLimit === 'infinite' ? 'infinite' : String(loopLimit)}
+                disabled={disabled}
+                onChange={(e) => {
+                  const v = e.target.value
+                  onLoopLimitChange(v === 'infinite' ? 'infinite' : Number(v))
+                }}
+              >
+                <option value="infinite">Infinite</option>
+                <option value="3">3×</option>
+                <option value="5">5×</option>
+                <option value="10">10×</option>
+              </select>
+            </label>
+            <label>
+              Pause between loops
+              <select
+                value={String(loopGapSec)}
+                disabled={disabled}
+                onChange={(e) => onLoopGapChange(Number(e.target.value))}
+              >
+                <option value="0">None</option>
+                <option value="1">1 sec</option>
+                <option value="2">2 sec</option>
+                <option value="3">3 sec</option>
+                <option value="5">5 sec</option>
+              </select>
+            </label>
+          </div>
+
+          {savedSections.length > 0 ? (
+            <div className={styles.savedBlock}>
+              <h3 className={styles.savedHeading}>{t('savedLoops')}</h3>
+              <ul className={styles.savedList}>
+                {savedSections.map((section) => (
+                  <li key={section.id} className={styles.savedRow}>
+                    <div className={styles.savedMain}>
+                      <SectionLabelInput section={section} onRename={onRenameSavedSection} />
+                      <span className={styles.savedRange}>
+                        {formatTime(section.startSec)}–{formatTime(section.endSec)}
+                      </span>
+                    </div>
+                    <div className={styles.savedActions}>
+                      <button type="button" className={styles.btnMini} onClick={() => onPlaySavedSection(section)}>
+                        {t('loopPlay')}
+                      </button>
+                      <button type="button" className={styles.btnMini} onClick={() => onLoadSavedSection(section)}>
+                        {t('loopLoad')}
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.btnMiniDanger}
+                        onClick={() => onDeleteSavedSection(section.id)}
+                        aria-label={`${tt('mezmurPractice.loop.delete')} ${section.label}`}
+                      >
+                        {t('loopDelete')}
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <p className={styles.savedEmpty}>{tt('mezmurPractice.loop.empty')}</p>
+          )}
         </div>
       </details>
-    </fieldset>
+    </section>
   )
 }

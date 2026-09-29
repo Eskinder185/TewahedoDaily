@@ -138,16 +138,16 @@
 
 .text {
   margin: 0;
-  font-size: clamp(1rem, 2.2vw, 1.125rem);
-  line-height: 1.85;
+  font-size: var(--lyrics-font-size, 20px);
+  line-height: var(--lyrics-line-height, 1.7);
   white-space: pre-wrap;
   color: var(--color-text);
 }
 
 .textTrans {
   margin: 0;
-  font-size: clamp(1rem, 2.2vw, 1.125rem);
-  line-height: 1.85;
+  font-size: var(--lyrics-font-size, 20px);
+  line-height: var(--lyrics-line-height, 1.7);
   white-space: pre-wrap;
   color: var(--color-text);
   font-style: italic;
@@ -217,3 +217,101 @@
   font-size: var(--text-sm);
   color: var(--color-text-muted);
 }
+
+.toolRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.fontControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toolLabel {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.scrollSelect {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.scrollSelect select {
+  min-height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  font: inherit;
+  padding: 4px 10px;
+}
+
+.timingRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg-muted) 88%, var(--color-bg-elevated));
+}
+
+.timingGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.timingValue {
+  min-width: 2.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.bothGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.focusRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  padding: 16px;
+  background: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.focusRoot .scroll {
+  flex: 1;
+  overflow: auto;
+  padding: 12px 4px 72px;
+}
+
+.focusChrome {
+  position: sticky;
+  bottom: 0;
+  padding: 10px 0;
+  background: linear-gradient(transparent, var(--color-bg) 35%);
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 700px) {
+  .bothGrid {
+    grid-template-columns: 1fr;
+  }
+}
+

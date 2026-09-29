@@ -42,9 +42,13 @@ export type ChantPracticePayload = {
   entryId: string
   title: string
   transliterationTitle: string
-  /** Ge’ez (or primary script) — full string from JSON */
+  /** Optional Amharic display title for the practice header. */
+  titleAmharic?: string
+  /** Ge’ez / Amharic primary lyrics */
   lyricsGez: string
   transliterationLyrics: string
+  /** Optional English lyrics body. */
+  lyricsEnglish?: string
   /** Null when the chant has no usable YouTube video (lyrics/audio-only is fine). */
   videoId: string | null
   /** Optional non-YouTube audio when no embeddable video exists. */

@@ -45,13 +45,13 @@ export function slugify(text: string) {
   return text.normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 export function label(status: string) { return status.replaceAll('_', ' ') }
-export const editableKeys = ['title', 'title_amharic', 'title_oromo', 'slug', 'description', 'singer_id', 'category_id', 'lyrics_amharic', 'lyrics_english', 'lyrics_oromo', 'transliteration', 'youtube_url', 'audio_url', 'thumbnail_url', 'featured', 'status'] as const
+export const editableKeys = ['title', 'title_amharic', 'title_oromo', 'slug', 'description', 'singer_id', 'category_id', 'lyrics_amharic', 'lyrics_english', 'lyrics_oromo', 'transliteration', 'youtube_url', 'audio_url', 'thumbnail_url', 'thumbnail_path', 'image_alt', 'featured', 'status'] as const
 export type MezmurInput = Pick<Mezmur, typeof editableKeys[number]>
 export function editable(row: Mezmur): MezmurInput {
-  return Object.fromEntries(editableKeys.map(key => [key, row[key]])) as MezmurInput
+  return Object.fromEntries(editableKeys.map(key => [key, row[key as keyof Mezmur] ?? null])) as MezmurInput
 }
 export function emptyMezmur(): MezmurInput {
-  return { title: '', title_amharic: '', title_oromo: '', slug: '', description: '', singer_id: null, category_id: null, lyrics_amharic: '', lyrics_english: '', lyrics_oromo: '', transliteration: '', youtube_url: '', audio_url: '', thumbnail_url: '', featured: false, status: 'draft' }
+  return { title: '', title_amharic: '', title_oromo: '', slug: '', description: '', singer_id: null, category_id: null, lyrics_amharic: '', lyrics_english: '', lyrics_oromo: '', transliteration: '', youtube_url: '', audio_url: '', thumbnail_url: '', thumbnail_path: '', image_alt: '', featured: false, status: 'draft' }
 }
 export const PAGE_SIZE = 20
 export type Filters = { search?: string; status?: string; category?: string; singer?: string; featured?: string; sort?: string; page?: number }
@@ -122,13 +122,36 @@ export async function deleteMezmur(row: Mezmur) {
   if (!data.length) throw new Error('Content changed or you no longer have permission. Refresh the list.')
 }
 export async function getVersions(id: string) {
-  const [versions, authors] = await Promise.all([
-    db().from('content_versions').select('*').eq('content_type', 'mezmur').eq('content_id', id).order('created_at', { ascending: false }).order('id', { ascending: false }).limit(50),
-    db().rpc('cms_version_authors', {}),
-  ])
+  const versions = await db()
+    .from('content_versions')
+    .select('*')
+    .eq('content_type', 'mezmur')
+    .eq('content_id', id)
+    .order('created_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(50)
   if (versions.error) throw versions.error
-  if (authors.error) throw authors.error
-  return { versions: versions.data, authors: authors.data }
+
+  const authorIds = [
+    ...new Set(
+      (versions.data || [])
+        .map((row) => row.changed_by)
+        .filter((value): value is string => typeof value === 'string' && value.length > 0),
+    ),
+  ]
+  let authors: { id: string; display_name: string }[] = []
+  if (authorIds.length) {
+    const { data, error } = await db()
+      .from('profiles')
+      .select('id,display_name')
+      .in('id', authorIds)
+    if (error) throw error
+    authors = (data || []).map((row) => ({
+      id: row.id,
+      display_name: row.display_name || 'CMS member',
+    }))
+  }
+  return { versions: versions.data, authors }
 }
 export function parseVersion(version: Version): { input: MezmurInput; tags: string[] | null } | null {
   const snapshot = version.snapshot
