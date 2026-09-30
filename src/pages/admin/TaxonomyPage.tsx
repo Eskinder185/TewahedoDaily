@@ -8,9 +8,10 @@ import { AsyncNotice, Modal } from './AdminUi'
 import s from './Admin.module.css'
 type Kind = 'categories' | 'singers' | 'tags'
 type Item = Category | Singer | Tag
-export function TaxonomyPage() {
+export function TaxonomyPage({ kind: kindProp }: { kind?: Kind }) {
   const { pathname } = useLocation()
-  const kind = pathname.split('/')[2] as Kind
+  const segment = pathname.split('/').filter(Boolean).pop() as Kind
+  const kind = kindProp || segment
   return <TaxonomyManager key={kind} kind={kind} />
 }
 function TaxonomyManager({ kind }: { kind: Kind }) {
@@ -41,7 +42,7 @@ function TaxonomyManager({ kind }: { kind: Kind }) {
   const rows = result.data?.[kind].filter(row => row.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())) || []
   return <>
     <div className={s.heading}><div><h1 className={s.capitalize}>{kind}</h1><p className={s.muted}>Maintain the library’s names and classifications.</p></div>{canManage && <button className={s.primary} onClick={() => setEditing('new')}>Add {kind === 'categories' ? 'category' : kind === 'singers' ? 'singer' : 'tag'}</button>}</div>
-    <div className={s.actions}><Link to="/admin/categories">Categories</Link><Link to="/admin/singers">Singers</Link><Link to="/admin/tags">Tags</Link></div>
+    <div className={s.actions}><Link to="/admin/hymns/categories">Categories</Link><Link to="/admin/hymns/singers">Singers</Link><Link to="/admin/hymns/tags">Tags</Link></div>
     {!canManage && <p className={s.notice}>Only editors and administrators can manage these items.</p>}
     <label style={{ maxWidth: 380, marginBlock: 20 }}>Search {kind}<input value={search} onChange={e => setSearch(e.target.value)} /></label>
     {error && <p role="alert" className={s.error}>{error}</p>}{message && <p role="status" className={s.success}>{message}</p>}

@@ -1,0 +1,190 @@
+{
+  "generatedAt": "2026-09-30T23:05:10.968Z",
+  "counts": {
+    "prayerCollections": 5,
+    "prayerSections": 22,
+    "prayers": 165,
+    "liturgyCollections": 1,
+    "liturgySections": 20,
+    "liturgyEntries": 1000
+  },
+  "collections": [
+    {
+      "slug": "zewter-tselot",
+      "status": "published",
+      "sectionCount": 0,
+      "prayerCount": 10,
+      "sectionSlugs": [],
+      "prayersLinkedToSection": 0
+    },
+    {
+      "slug": "wudase-mariam",
+      "status": "published",
+      "sectionCount": 7,
+      "prayerCount": 7,
+      "sectionSlugs": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ],
+      "prayersLinkedToSection": 0
+    },
+    {
+      "slug": "mezmure-dawit",
+      "status": "published",
+      "sectionCount": 3,
+      "prayerCount": 148,
+      "sectionSlugs": [
+        "psalms-01-50",
+        "psalms-51-99",
+        "psalms-100-150"
+      ],
+      "prayersLinkedToSection": 0
+    },
+    {
+      "slug": "yekidane-tselot",
+      "status": "published",
+      "sectionCount": 11,
+      "prayerCount": 0,
+      "sectionSlugs": [
+        "opening-acclamations",
+        "morning-offering-of-praise",
+        "prayer-to-the-god-of-light",
+        "praise-to-christ-the-deliverer",
+        "grace-and-lifting-up-the-heart",
+        "prayer-to-the-father-giver-of-light",
+        "prayer-to-jesus-the-healer-and-light",
+        "holy-faith-and-reconciliation",
+        "prayer-to-the-immortal-father",
+        "unceasing-song-with-the-archangels",
+        "life-for-the-humble-and-refuge-for-all"
+      ],
+      "prayersLinkedToSection": 0
+    },
+    {
+      "slug": "meharene-ab",
+      "status": "published",
+      "sectionCount": 1,
+      "prayerCount": 0,
+      "sectionSlugs": [
+        "meharene-ab-full-prayer"
+      ],
+      "prayersLinkedToSection": 0
+    }
+  ],
+  "relationships": {
+    "orphans": 0,
+    "badCollectionSlug": 0,
+    "badSection": 0,
+    "missingTitle": 0,
+    "missingAllText": 0,
+    "amharicText": 165,
+    "geezText": 165,
+    "englishText": 164
+  },
+  "expected": {
+    "zewter": {
+      "slug": "zewter-tselot",
+      "status": "published",
+      "sectionCount": 0,
+      "prayerCount": 10,
+      "sectionSlugs": [],
+      "prayersLinkedToSection": 0
+    },
+    "wudase": {
+      "slug": "wudase-mariam",
+      "status": "published",
+      "sectionCount": 7,
+      "prayerCount": 7,
+      "sectionSlugs": [
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday"
+      ],
+      "prayersLinkedToSection": 0
+    },
+    "mezmureDawit": {
+      "prayerCount": 148,
+      "min": 1,
+      "max": 150,
+      "missing": [
+        15,
+        147
+      ],
+      "duplicates": [],
+      "unrecognized": []
+    },
+    "yekidane": {
+      "slug": "yekidane-tselot",
+      "status": "published",
+      "sectionCount": 11,
+      "prayerCount": 0,
+      "sectionSlugs": [
+        "opening-acclamations",
+        "morning-offering-of-praise",
+        "prayer-to-the-god-of-light",
+        "praise-to-christ-the-deliverer",
+        "grace-and-lifting-up-the-heart",
+        "prayer-to-the-father-giver-of-light",
+        "prayer-to-jesus-the-healer-and-light",
+        "holy-faith-and-reconciliation",
+        "prayer-to-the-immortal-father",
+        "unceasing-song-with-the-archangels",
+        "life-for-the-humble-and-refuge-for-all"
+      ],
+      "prayersLinkedToSection": 0
+    },
+    "meharene": {
+      "slug": "meharene-ab",
+      "status": "published",
+      "sectionCount": 1,
+      "prayerCount": 0,
+      "sectionSlugs": [
+        "meharene-ab-full-prayer"
+      ],
+      "prayersLinkedToSection": 0
+    }
+  },
+  "liturgy": [
+    {
+      "slug": "divine-liturgy",
+      "status": "published",
+      "sections": 20,
+      "entries": 1000
+    }
+  ],
+  "routes": [
+    {
+      "path": "/pray",
+      "tables": [
+        "prayer_collections",
+        "liturgy_collections",
+        "synaxarium_days"
+      ]
+    },
+    {
+      "path": "/pray/:collectionSlug",
+      "tables": [
+        "prayer_collections|liturgy_collections"
+      ]
+    },
+    {
+      "path": "/pray/:collectionSlug/:prayerSlug",
+      "tables": [
+        "prayers|liturgy_sections"
+      ]
+    },
+    {
+      "path": "/prayers/*",
+      "tables": "legacy redirects → /pray/*"
+    }
+  ]
+}

@@ -5,6 +5,8 @@ type Props = {
   value: PrayerLang
   onChange: (lang: PrayerLang) => void
   labels: { amharic: string; geez: string; english: string }
+  /** When provided, only these languages are shown. */
+  available?: PrayerLang[]
   className?: string
   idPrefix?: string
 }
@@ -13,14 +15,16 @@ export function LanguageTriToggle({
   value,
   onChange,
   labels,
+  available,
   className = '',
   idPrefix = 'lang',
 }: Props) {
-  const opts: { id: PrayerLang; label: string }[] = [
+  const all: { id: PrayerLang; label: string }[] = [
     { id: 'amharic', label: labels.amharic },
     { id: 'geez', label: labels.geez },
     { id: 'english', label: labels.english },
   ]
+  const opts = available?.length ? all.filter((o) => available.includes(o.id)) : all
   return (
     <div
       className={`${styles.group} ${className}`.trim()}

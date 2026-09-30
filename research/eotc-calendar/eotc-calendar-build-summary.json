@@ -1,0 +1,32 @@
+{
+  "total_ethiopian_days": 366,
+  "days_by_month": {
+    "Meskerem": 30,
+    "Tikimt": 30,
+    "Hidar": 30,
+    "Tahsas": 30,
+    "Tir": 30,
+    "Yekatit": 30,
+    "Megabit": 30,
+    "Miazia": 30,
+    "Ginbot": 30,
+    "Sene": 30,
+    "Hamle": 30,
+    "Nehase": 30,
+    "Pagumen": 6
+  },
+  "synaxarium_source_days": 366,
+  "total_commemorations": 1532,
+  "synaxarium_commemorations": 1166,
+  "monthly_expanded_commemorations": 366,
+  "total_saints": 25,
+  "total_feasts": 17,
+  "total_fasts": 6,
+  "total_movable_feasts": 12,
+  "total_monthly_catalog_rows": 42,
+  "total_liturgical_seasons": 3,
+  "total_sources": 10,
+  "high_confidence_records": 254,
+  "records_needing_review": 1679,
+  "quality_flags": 419
+}

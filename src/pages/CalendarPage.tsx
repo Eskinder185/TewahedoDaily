@@ -3,121 +3,27 @@ import { useTranslation } from '../i18n'
 import { useLocale } from '../lib/i18n/locale'
 import { PageSection } from '../components/ui/PageSection'
 import { MiniMonthCalendar } from '../components/todayInChurch/MiniMonthCalendar'
-import { LiturgyContextCard } from '../components/calendar/LiturgyContextCard'
+import { TodayInChurchPanel } from '../components/calendar/TodayInChurchPanel'
+import { CalendarCardWhyModal } from '../components/calendar/CalendarCardWhyModal'
 import { useHomeToday } from '../hooks/useHomeToday'
 import {
-  buildChurchDaySnapshot,
   computeCalendarDayMarksAsync,
   type CalendarDayCellMark,
 } from '../lib/churchCalendar'
 import {
-  buildSelectedDayObservanceModel,
-  collectEotcMatchesForLocalDay,
-} from '../lib/eotcCalendar'
-import type { CalendarDayDetail, CalendarExpandedContent } from '../lib/calendarDayDetails/types'
-import { resolveCalendarDayDetail } from '../lib/calendarDayDetails'
-import { gregorianToEthiopian } from '../lib/ethiopianDate'
-import {
+  cardCategoryBadge,
   getCalendarCards,
-  getSynaxariumDayWithCommemorations,
+  resolveCardSummary,
   type CalendarCard,
 } from '../lib/synaxarium/synaxariumService'
-import type { SynaxariumDayBundle } from '../lib/prayers/prayerLibraryTypes'
 import { parseGregorianAnchorIso } from '../lib/churchCalendar/upcomingObservanceDisplay'
 import { CalendarImage } from '../components/calendar/CalendarImage'
+import { calendarImageManifest } from '../content/calendarImageManifest'
 import {
-  calendarImageManifest,
-  resolveEventImageById,
-  resolveEventImagePresentation,
-} from '../content/calendarImageManifest'
+  loadDayChurchContext,
+  type DayChurchContext,
+} from '../services/dayChurchContext'
 import styles from './CalendarPage.module.css'
-
-function ExpandedContentSections({
-  content,
-}: {
-  content: CalendarExpandedContent
-}) {
-  const t = useTranslation()
-  const source = content.source
-  return (
-    <div className={styles.expandedContent}>
-      {content.whyCelebrated?.trim() ? (
-        <section className={styles.expandedBlock}>
-          <h3 className={styles.expandedHeading}>{t('calendar.detail.whyCelebrated')}</h3>
-          <p>{content.whyCelebrated.trim()}</p>
-        </section>
-      ) : null}
-      {content.whatHappened?.length ? (
-        <section className={styles.expandedBlock}>
-          <h3 className={styles.expandedHeading}>{t('calendar.detail.whatHappened')}</h3>
-          <ul className={styles.expandedList}>
-            {content.whatHappened.map((line, index) => (
-              <li key={`${line}-${index}`}>{line}</li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
-      {content.significance?.trim() ? (
-        <section className={styles.expandedBlock}>
-          <h3 className={styles.expandedHeading}>{t('calendar.detail.whyMatters')}</h3>
-          <p>{content.significance.trim()}</p>
-        </section>
-      ) : null}
-      {source?.title ? (
-        <p className={styles.expandedSource}>
-          {t('calendar.detail.source', { title: source.title })}
-          {source.entryLabel ? ` (${source.entryLabel})` : ''}
-          {source.provenanceNote ? ` - ${source.provenanceNote}` : ''}
-          {source.originalReference
-            ? ` - ${t('calendar.detail.originalReference', { reference: source.originalReference })}`
-            : ''}
-        </p>
-      ) : null}
-    </div>
-  )
-}
-
-function NormalizedDaySections({ detail }: { detail: CalendarDayDetail }) {
-  const t = useTranslation()
-  return (
-    <>
-      {detail.commemorations.length > 0 ? (
-        <div className={styles.synaxariumBlock}>
-          <h3 className={styles.synaxariumBlockTitle}>{t('calendar.detail.commemorations')}</h3>
-          <ul className={styles.synaxariumList}>
-            {detail.commemorations.map((item, index) => (
-              <li key={`${detail.id}-commemoration-${index}`}>
-                <strong>{item.title}</strong>
-                {item.titleAmharic ? (
-                  <>
-                    {' '}
-                    <span lang="am">({item.titleAmharic})</span>
-                  </>
-                ) : null}
-                {item.category && item.category !== 'other' ? (
-                  <span> · {item.category.replace(/[-_]+/g, ' ')}</span>
-                ) : null}
-                {item.summary ? <div>{item.summary}</div> : null}
-                {item.expandedContent ? (
-                  <details className={styles.synaxariumMore}>
-                    <summary>{t('calendar.detail.readMore')}</summary>
-                    <ExpandedContentSections content={item.expandedContent} />
-                  </details>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-      {detail.expandedContent && detail.commemorations.every((item) => !item.expandedContent) ? (
-        <details className={styles.synaxariumMore}>
-          <summary>{t('calendar.detail.readMore')}</summary>
-          <ExpandedContentSections content={detail.expandedContent} />
-        </details>
-      ) : null}
-    </>
-  )
-}
 
 function visualKindFromType(type: string): 'feast' | 'fast' | 'commemoration' {
   const t = type.toLowerCase()
@@ -129,20 +35,23 @@ function visualKindFromType(type: string): 'feast' | 'fast' | 'commemoration' {
 export function CalendarPage() {
   const t = useTranslation()
   const { locale } = useLocale()
-  const preferAmharic = locale === 'am'
   const { now } = useHomeToday()
   const [viewYear, setViewYear] = useState(now.getFullYear())
   const [viewMonth, setViewMonth] = useState(now.getMonth())
   const [selectedDay, setSelectedDay] = useState<number | null>(now.getDate())
   const [marks, setMarks] = useState<ReadonlyMap<number, CalendarDayCellMark>>(new Map())
-  const [synaxariumBundle, setSynaxariumBundle] = useState<SynaxariumDayBundle | null>()
-  const [synaxariumError, setSynaxariumError] = useState<string>()
-  const [synaxReloadTick, setSynaxReloadTick] = useState(0)
+  const [dayContext, setDayContext] = useState<DayChurchContext | null>(null)
+  const [dayLoading, setDayLoading] = useState(false)
+  const [dayError, setDayError] = useState<string | null>(null)
+  const [dayReloadTick, setDayReloadTick] = useState(0)
   const [calendarCards, setCalendarCards] = useState<CalendarCard[]>([])
   const [cardsError, setCardsError] = useState<string>()
   const [cardsLoading, setCardsLoading] = useState(true)
+  const [whyCard, setWhyCard] = useState<CalendarCard | null>(null)
   const detailRef = useRef<HTMLElement | null>(null)
   const trackRef = useRef<HTMLDivElement | null>(null)
+  const dayContextCacheRef = useRef<Map<string, DayChurchContext>>(new Map())
+  const dayRequestIdRef = useRef(0)
 
   useEffect(() => {
     let active = true
@@ -193,57 +102,48 @@ export function CalendarPage() {
 
   useEffect(() => {
     let active = true
-    setSynaxariumBundle(undefined)
-    setSynaxariumError(undefined)
     if (!selectedDate) {
-      setSynaxariumBundle(null)
+      setDayContext(null)
+      setDayLoading(false)
+      setDayError(null)
       return
     }
-    const eth = gregorianToEthiopian(selectedDate)
-    void getSynaxariumDayWithCommemorations(eth.month, eth.day)
-      .then((bundle) => {
-        if (!active) return
-        setSynaxariumBundle(bundle)
+
+    const cacheKey = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
+    const cached = dayContextCacheRef.current.get(cacheKey)
+    if (cached) {
+      setDayContext(cached)
+      setDayLoading(false)
+      setDayError(null)
+      return
+    }
+
+    setDayLoading(true)
+    setDayError(null)
+    setDayContext((prev) => (prev?.gregorianDate === cacheKey ? prev : null))
+    const requestId = ++dayRequestIdRef.current
+    void loadDayChurchContext(selectedDate)
+      .then((context) => {
+        if (!active || requestId !== dayRequestIdRef.current) return
+        dayContextCacheRef.current.set(cacheKey, context)
+        setDayContext(context)
       })
       .catch((cause) => {
-        if (!active) return
-        const message =
+        if (!active || requestId !== dayRequestIdRef.current) return
+        if (import.meta.env.DEV) console.error('[calendar] day context', cause)
+        setDayError(
           cause && typeof cause === 'object' && 'message' in cause
             ? String((cause as { message?: unknown }).message)
-            : t('calendar.detail.synaxariumLoadError')
-        if (import.meta.env.DEV) console.error('[calendar] synaxarium day', cause)
-        setSynaxariumError(import.meta.env.DEV ? message : t('calendar.detail.synaxariumLoadError'))
-        setSynaxariumBundle(null)
+            : t('calendar.detail.synaxariumLoadError'),
+        )
+      })
+      .finally(() => {
+        if (active && requestId === dayRequestIdRef.current) setDayLoading(false)
       })
     return () => {
       active = false
     }
-  }, [selectedDate, synaxReloadTick, t])
-
-  const selectedSnapshot = useMemo(
-    () => (selectedDate ? buildChurchDaySnapshot(selectedDate) : null),
-    [selectedDate],
-  )
-  const selectedEntries = useMemo(
-    () => (selectedDate ? collectEotcMatchesForLocalDay(selectedDate) : []),
-    [selectedDate],
-  )
-  const selectedDayDetail = useMemo(() => {
-    if (!selectedDate || synaxariumBundle === undefined) return null
-    return resolveCalendarDayDetail(selectedDate, selectedEntries, {
-      synaxariumBundle,
-      preferAmharic,
-    })
-  }, [selectedDate, selectedEntries, synaxariumBundle, preferAmharic])
-  const selectedModel = useMemo(
-    () => (selectedDate ? buildSelectedDayObservanceModel(selectedEntries) : null),
-    [selectedDate, selectedEntries],
-  )
-  const selectedPrimary = selectedModel?.primary ?? null
-  const selectedImagePresentation = resolveEventImagePresentation(selectedPrimary?.entry.id, {
-    objectFit: 'cover',
-    objectPosition: '50% 32%',
-  })
+  }, [selectedDate, dayReloadTick, t])
 
   const goPrevMonth = () => {
     const d = new Date(viewYear, viewMonth - 1, 1)
@@ -318,11 +218,14 @@ export function CalendarPage() {
               </p>
             ) : calendarCards.length === 0 ? (
               <p className={styles.cardsStatus}>
-                No featured calendar cards yet. Mark commemorations as Featured in the CMS.
+                No featured calendar cards yet. Add curated cards under Calendar → Calendar Cards.
               </p>
             ) : (
               calendarCards.map((card) => {
                 const visualKind = visualKindFromType(card.type)
+                const summary = resolveCardSummary(card, locale)
+                const category = cardCategoryBadge(card)
+                const seeMoreLabel = card.learnMoreLabel || t('calendar.page.seeMore')
                 return (
                   <article
                     key={card.id}
@@ -341,17 +244,32 @@ export function CalendarPage() {
                       />
                     </figure>
                     <div className={styles.observanceBody}>
-                      <p className={styles.observanceType}>{card.typeLabel}</p>
+                      <p className={styles.observanceType}>{category}</p>
                       <h2 className={styles.observanceTitle}>{card.title}</h2>
+                      {card.titleAmharic ? (
+                        <p className={styles.observanceTitleAm} lang="am">
+                          {card.titleAmharic}
+                        </p>
+                      ) : null}
                       <p className={styles.observanceDate}>{card.gregorianLabel}</p>
                       <p className={styles.observanceDateSecondary}>{card.ethiopianLabel}</p>
-                      <button
-                        type="button"
-                        className={styles.openDayBtn}
-                        onClick={() => openCalendarCard(card)}
-                      >
-                        {t('calendar.page.openDate')}
-                      </button>
+                      {summary ? <p className={styles.observanceSummary}>{summary}</p> : null}
+                      <div className={styles.cardActions}>
+                        <button
+                          type="button"
+                          className={styles.openDayBtn}
+                          onClick={() => setWhyCard(card)}
+                        >
+                          {seeMoreLabel}
+                        </button>
+                        <button
+                          type="button"
+                          className={styles.whyDayBtn}
+                          onClick={() => openCalendarCard(card)}
+                        >
+                          {t('calendar.page.openDate')}
+                        </button>
+                      </div>
                     </div>
                   </article>
                 )
@@ -368,6 +286,13 @@ export function CalendarPage() {
           </button>
         </div>
       </section>
+
+      <CalendarCardWhyModal
+        open={Boolean(whyCard)}
+        card={whyCard}
+        onClose={() => setWhyCard(null)}
+        onOpenDate={openCalendarCard}
+      />
 
       <section className={styles.calendarOnly} aria-label={t('calendar.page.grid')}>
         <div className={styles.calendarActionsWrap}>
@@ -388,71 +313,21 @@ export function CalendarPage() {
           onNextMonth={goNextMonth}
         />
         <section ref={detailRef} className={styles.dayDetail} aria-live="polite">
-          {!selectedDate || !selectedSnapshot ? (
+          {!selectedDate ? (
             <p className={styles.emptyDetail}>{t('calendar.page.selectDay')}</p>
-          ) : synaxariumError ? (
-            <div className={styles.dayDetailHead}>
-              <h2 className={styles.dayDetailTitle}>{synaxariumError}</h2>
-              <button
-                type="button"
-                className={styles.openDayBtn}
-                onClick={() => setSynaxReloadTick((n) => n + 1)}
-              >
-                {t('calendar.detail.tryAgain')}
-              </button>
-            </div>
-          ) : synaxariumBundle === undefined || !selectedDayDetail ? (
-            <p className={styles.emptyDetail} role="status">
-              …
-            </p>
           ) : (
-            <>
-              {selectedDayDetail.imageUrl || selectedPrimary ? (
-                <figure className={styles.dayDetailMedia} aria-hidden>
-                  <CalendarImage
-                    src={
-                      selectedDayDetail.imageUrl ||
-                      (selectedPrimary
-                        ? resolveEventImageById(selectedPrimary.entry.id)
-                        : null) ||
-                      calendarImageManifest.anchors.todayInChurch
-                    }
-                    fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                    alt={
-                      selectedDayDetail.imageAlt ||
-                      t('calendar.page.observanceImage', { title: selectedDayDetail.title })
-                    }
-                    className={styles.dayDetailImage}
-                    objectFit={selectedImagePresentation.objectFit}
-                    objectPosition={selectedImagePresentation.objectPosition}
-                    fetchPriority="low"
-                    sizes="(max-width: 820px) 92vw, 20rem"
-                  />
-                </figure>
-              ) : null}
-              <article className={styles.synaxariumCard}>
-                <div className={styles.synaxariumHead}>
-                  <p className={styles.synaxariumDate}>
-                    <span>{selectedSnapshot.gregorian.labelLong}</span>
-                    <span aria-hidden> / </span>
-                    <span lang="am">{selectedSnapshot.ethiopian.labelLong}</span>
-                  </p>
-                  {selectedPrimary?.entry.display.calendarBadge?.trim() ? (
-                    <span className={styles.synaxariumBadge}>
-                      {selectedPrimary.entry.display.calendarBadge.trim()}
-                    </span>
-                  ) : null}
-                </div>
-                <h2 className={styles.synaxariumTitle}>{selectedDayDetail.title}</h2>
-                {selectedDayDetail.shortDescription ? (
-                  <p className={styles.synaxariumSummary}>{selectedDayDetail.shortDescription}</p>
-                ) : null}
-                <NormalizedDaySections detail={selectedDayDetail} />
-                {selectedDayDetail.liturgyContext ? (
-                  <LiturgyContextCard context={selectedDayDetail.liturgyContext} />
-                ) : null}
-              </article>
-            </>
+            <TodayInChurchPanel
+              context={dayContext}
+              loading={dayLoading}
+              error={dayError}
+              onRetry={() => {
+                if (selectedDate) {
+                  const cacheKey = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
+                  dayContextCacheRef.current.delete(cacheKey)
+                }
+                setDayReloadTick((n) => n + 1)
+              }}
+            />
           )}
         </section>
       </section>

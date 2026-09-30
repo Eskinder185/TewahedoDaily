@@ -8,6 +8,7 @@ export const MEDIA_FOLDERS = [
   'prayers',
   'liturgy',
   'synaxarium',
+  'calendar',
   'saints',
   'feasts',
   'fallback',

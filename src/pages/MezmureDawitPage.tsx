@@ -1,35 +1,91 @@
 import { useEffect, useId, useLayoutEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
+import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
 import { SanctuaryHero } from '../components/prayers/SanctuaryHero'
-import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
-import { PSALMS, type PsalmEntry } from '../lib/prayers/psalmData'
+import { PrayerReader } from '../components/prayers/PrayerReader'
+import { loadPrayerCollection } from '../lib/prayers/prayerSupabase'
+import type { CollectionPrayer } from '../lib/prayers/prayerCollections'
+import { formatPsalmLabel, getPsalmNumber } from '../lib/prayers/psalmNumber'
+import { prayerCollectionPath } from '../lib/prayers/prayerSlug'
+import { DAILY_COLLECTION_SLUGS } from '../lib/prayers/dailyPrayerRhythmSchedule'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import { isMobileViewport, scrollTargetIntoView } from '../lib/scrollUtils'
 import styles from './MezmureDawitPage.module.css'
+
+const JUMP_TARGETS = [1, 25, 50, 75, 100, 125, 150]
+
+function psalmNumberOf(prayer: CollectionPrayer): number {
+  return (
+    prayer.psalmNumber ??
+    getPsalmNumber(prayer.slug, prayer.transliterationTitle || prayer.title) ??
+    prayer.order
+  )
+}
+
+function parseBound(raw: string | null): number | null {
+  if (!raw) return null
+  const n = Number.parseInt(raw, 10)
+  if (!Number.isFinite(n) || n < 1 || n > 150) return null
+  return n
+}
 
 export function MezmureDawitPage() {
   const t = useUiLabel()
   const readerTabsUid = useId()
   const [readerTab, setReaderTab] = useState('amharic')
   const [params, setParams] = useSearchParams()
+  const fromParam = parseBound(params.get('from'))
+  const toParam = parseBound(params.get('to'))
+  const rangeActive =
+    fromParam != null && toParam != null && fromParam <= toParam
+      ? { from: fromParam, to: toParam }
+      : null
   const qRaw = params.get('n') ?? ''
   const [q, setQ] = useState(qRaw)
   const [showPsalmIndexOnMobile, setShowPsalmIndexOnMobile] = useState(true)
+  const [prayers, setPrayers] = useState<CollectionPrayer[] | null>(null)
+  const [error, setError] = useState<string>()
+  const [reloadTick, setReloadTick] = useState(0)
 
   useEffect(() => {
     setQ(qRaw)
   }, [qRaw])
 
-  const sorted = useMemo(
-    () => [...PSALMS].sort((a, b) => a.number - b.number),
-    [],
-  )
+  useEffect(() => {
+    let active = true
+    setPrayers(null)
+    setError(undefined)
+    void loadPrayerCollection('mezmure-dawit')
+      .then((bundle) => {
+        if (!active) return
+        setPrayers(bundle?.prayers ?? [])
+      })
+      .catch((cause) => {
+        if (!active) return
+        if (import.meta.env.DEV) console.error('[mezmure-dawit]', cause)
+        setError("We couldn't load Mezmure Dawit.")
+        setPrayers([])
+      })
+    return () => {
+      active = false
+    }
+  }, [reloadTick])
+
+  const allSorted = useMemo(() => prayers ?? [], [prayers])
+
+  const sorted = useMemo(() => {
+    if (!rangeActive) return allSorted
+    return allSorted.filter((p) => {
+      const n = psalmNumberOf(p)
+      return n >= rangeActive.from && n <= rangeActive.to
+    })
+  }, [allSorted, rangeActive])
 
   const indexFromParam = useMemo(() => {
     const n = Number.parseInt(qRaw, 10)
     if (!Number.isFinite(n)) return 0
-    const i = sorted.findIndex((p) => p.number === n)
+    const i = sorted.findIndex((p) => psalmNumberOf(p) === n)
     return i >= 0 ? i : 0
   }, [qRaw, sorted])
 
@@ -41,19 +97,36 @@ export function MezmureDawitPage() {
 
   useEffect(() => {
     const p = sorted[index]
-    if (p && String(p.number) !== qRaw) {
-      setParams({ n: String(p.number) }, { replace: true })
+    if (!p) return
+    const nextN = String(psalmNumberOf(p))
+    if (nextN === qRaw) return
+    const next = new URLSearchParams(params)
+    next.set('n', nextN)
+    if (rangeActive) {
+      next.set('from', String(rangeActive.from))
+      next.set('to', String(rangeActive.to))
     }
-  }, [index, qRaw, setParams, sorted])
+    setParams(next, { replace: true })
+  }, [index, params, qRaw, rangeActive, setParams, sorted])
 
   const active = sorted[index] ?? sorted[0]
-  const titlePrimary = active?.title.amharic.trim() ?? ''
+  const activeNumber = active ? psalmNumberOf(active) : 0
+  const titlePrimary =
+    active?.titles?.amharic?.trim() ||
+    active?.title?.trim() ||
+    (activeNumber ? formatPsalmLabel(activeNumber) : '')
 
   useEffect(() => {
-    setReaderTab('amharic')
-  }, [active?.id])
+    const firstAvailable =
+      (active?.text.amharic.trim() && 'amharic') ||
+      (active?.text.geez.trim() && 'geez') ||
+      (active?.text.english.trim() && 'english') ||
+      'amharic'
+    setReaderTab(firstAvailable)
+  }, [active?.id, active?.text.amharic, active?.text.geez, active?.text.english])
 
   useLayoutEffect(() => {
+    if (!active) return
     if (isMobileViewport() && showPsalmIndexOnMobile) return
     scrollTargetIntoView('#mezmur-reader', { smooth: false, flush: true })
     requestAnimationFrame(() => {
@@ -67,49 +140,78 @@ export function MezmureDawitPage() {
     const needle = q.trim().toLowerCase()
     if (!needle) return sorted
     return sorted.filter((p) => {
-      const sn = String(p.number)
-      const ta = p.title.amharic + p.title.geez + p.title.english
-      return (
-        sn.includes(needle) ||
-        ta.toLowerCase().includes(needle) ||
-        p.id.toLowerCase().includes(needle)
-      )
+      const sn = String(psalmNumberOf(p))
+      const blob = [
+        p.title,
+        p.transliterationTitle,
+        p.titles?.amharic,
+        p.titles?.geez,
+        p.titles?.english,
+        p.slug,
+      ]
+        .filter(Boolean)
+        .join(' ')
+        .toLowerCase()
+      return sn.includes(needle) || blob.includes(needle)
     })
   }, [q, sorted])
 
+  const writeParams = (n: number) => {
+    const next = new URLSearchParams()
+    next.set('n', String(n))
+    if (rangeActive) {
+      next.set('from', String(rangeActive.from))
+      next.set('to', String(rangeActive.to))
+    }
+    setParams(next)
+  }
+
   const go = (i: number) => {
-    const next = Math.max(0, Math.min(sorted.length - 1, i))
-    setIndex(next)
-    const p = sorted[next]
+    const nextIndex = Math.max(0, Math.min(sorted.length - 1, i))
+    setIndex(nextIndex)
+    const p = sorted[nextIndex]
     if (p) {
-      setParams({ n: String(p.number) })
-      if (isMobileViewport()) {
-        setShowPsalmIndexOnMobile(false)
-      }
+      writeParams(psalmNumberOf(p))
+      if (isMobileViewport()) setShowPsalmIndexOnMobile(false)
     }
   }
 
-  // Handle psalm selection from index
-  const handlePsalmSelect = (psalm: PsalmEntry) => {
-    const i = sorted.findIndex((x) => x.id === psalm.id)
+  const handlePsalmSelect = (prayer: CollectionPrayer) => {
+    const i = sorted.findIndex((x) => x.id === prayer.id)
     if (i >= 0) {
       go(i)
-      setQ(String(psalm.number))
+      setQ(String(psalmNumberOf(prayer)))
     }
   }
 
-  // Show psalm index again when needed
-  const showPsalmIndex = () => {
-    setShowPsalmIndexOnMobile(true)
+  const clearRange = () => {
+    const next = new URLSearchParams()
+    if (active) next.set('n', String(psalmNumberOf(active)))
+    setParams(next)
+  }
+
+  if (prayers === null && !error) return <PageLoadingFallback />
+
+  if (error) {
+    return (
+      <PageSection variant="tint">
+        <p>{error}</p>
+        <button type="button" onClick={() => setReloadTick((n) => n + 1)}>
+          Try again
+        </button>
+      </PageSection>
+    )
   }
 
   const readingMode =
     isMobileViewport() && !showPsalmIndexOnMobile ? styles.readingModeSection : ''
 
+  const jumpTargets = JUMP_TARGETS.filter((n) => sorted.some((p) => psalmNumberOf(p) === n))
+
   return (
     <PageSection variant="tint" className={readingMode}>
       <nav className={styles.nav} aria-label="Breadcrumb">
-        <Link className={styles.crumb} to="/prayers">
+        <Link className={styles.crumb} to="/pray">
           {t('navPrayers')}
         </Link>
         <span className={styles.crumbSep} aria-hidden>
@@ -123,18 +225,47 @@ export function MezmureDawitPage() {
           <p>{t('prayerMezmurIntro')}</p>
         </SanctuaryHero>
 
+        {rangeActive ? (
+          <div className={styles.rangeBanner} role="status">
+            <p>
+              Today&apos;s reading: Psalms {rangeActive.from}–{rangeActive.to}
+            </p>
+            <div className={styles.rangeActions}>
+              <button type="button" className={styles.rangeClear} onClick={clearRange}>
+                View full Mezmure Dawit
+              </button>
+              <Link
+                className={styles.rangeClear}
+                to={prayerCollectionPath(DAILY_COLLECTION_SLUGS.mezmureDawit)}
+              >
+                Open collection
+              </Link>
+            </div>
+          </div>
+        ) : null}
+
         <div className={styles.jumpRow}>
-          <a href="#mezmur-index" className={styles.jumpChip}>
-            Psalm index
-          </a>
-          <a href="#mezmur-reader" className={styles.jumpChip}>
-            Reading panel
-          </a>
+          {jumpTargets.map((n) => (
+            <button
+              key={n}
+              type="button"
+              className={styles.jumpChip}
+              onClick={() => {
+                const i = sorted.findIndex((p) => psalmNumberOf(p) === n)
+                if (i >= 0) go(i)
+              }}
+            >
+              {formatPsalmLabel(n)}
+            </button>
+          ))}
         </div>
       </div>
 
       <div className={`${styles.layout} ${!showPsalmIndexOnMobile ? styles.layoutReaderOnly : ''}`}>
-        <aside className={`${styles.aside} ${!showPsalmIndexOnMobile ? styles.asideHidden : ''}`} id="mezmur-index">
+        <aside
+          className={`${styles.aside} ${!showPsalmIndexOnMobile ? styles.asideHidden : ''}`}
+          id="mezmur-index"
+        >
           <label className={styles.searchLabel} htmlFor="psalm-search">
             {t('prayerMezmurSearch')}
           </label>
@@ -145,13 +276,16 @@ export function MezmureDawitPage() {
             inputMode="numeric"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="1–150"
+            placeholder={rangeActive ? `${rangeActive.from}–${rangeActive.to}` : '1–150'}
             autoComplete="off"
           />
 
-          <p className={styles.indexLabel}>{t('prayerMezmurIndex')}</p>
+          <p className={styles.indexLabel}>
+            {rangeActive ? `Psalms ${rangeActive.from}–${rangeActive.to}` : t('prayerMezmurIndex')}
+          </p>
           <ul className={styles.index}>
             {filtered.map((p) => {
+              const number = psalmNumberOf(p)
               const on = p.id === active?.id
               return (
                 <li key={p.id}>
@@ -161,9 +295,12 @@ export function MezmureDawitPage() {
                     aria-current={on ? 'true' : undefined}
                     onClick={() => handlePsalmSelect(p)}
                   >
-                    <span className={styles.indexNum}>{p.number}</span>
-                    <span className={styles.indexTitle} lang="am">
-                      {p.title.amharic}
+                    <span className={styles.indexNum}>{number}</span>
+                    <span className={styles.indexTitle}>
+                      <span className={styles.indexPsalm}>{formatPsalmLabel(number)}</span>
+                      {p.titles?.amharic || p.title ? (
+                        <span lang="am">{p.titles?.amharic || p.title}</span>
+                      ) : null}
                     </span>
                   </button>
                 </li>
@@ -177,21 +314,19 @@ export function MezmureDawitPage() {
           id="mezmur-reader"
           tabIndex={-1}
         >
-          {!showPsalmIndexOnMobile && (
-            <button 
+          {!showPsalmIndexOnMobile ? (
+            <button
               className={styles.backButton}
-              onClick={showPsalmIndex}
+              onClick={() => setShowPsalmIndexOnMobile(true)}
               type="button"
             >
               ← Back to psalm index
             </button>
-          )}
+          ) : null}
           <div className={styles.sticky}>
             <div className={styles.stickyInner}>
               <div className={styles.stickyTitles}>
-                <p className={styles.psalmNo}>
-                  {active ? `№ ${active.number}` : ''}
-                </p>
+                <p className={styles.psalmNo}>{active ? formatPsalmLabel(activeNumber) : ''}</p>
                 <h2 className={styles.h2} lang="am">
                   {titlePrimary}
                 </h2>
@@ -220,8 +355,9 @@ export function MezmureDawitPage() {
 
             {active ? (
               <div className={styles.langStripe}>
-                <PrayerTextTabs
+                <PrayerReader
                   text={active.text}
+                  titles={active.titles}
                   split="tablist"
                   selectedId={readerTab}
                   onTabChange={setReaderTab}
@@ -239,14 +375,18 @@ export function MezmureDawitPage() {
                 className={styles.readingLandmark}
                 aria-label={titlePrimary || 'Psalm reading'}
               />
-              <PrayerTextTabs
+              <PrayerReader
                 text={active.text}
+                titles={active.titles}
+                showTitle
                 split="panel"
                 selectedId={readerTab}
                 onTabChange={setReaderTab}
                 ariaIdPrefix={readerTabsUid}
               />
             </div>
+          ) : sorted.length === 0 ? (
+            <p role="status">No psalms found for this range.</p>
           ) : null}
         </article>
       </div>

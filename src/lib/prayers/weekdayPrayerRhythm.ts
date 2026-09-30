@@ -1,6 +1,18 @@
+/**
+ * @deprecated Prefer `getDailyPrayerRhythm` from `src/services/dailyPrayerRhythm.ts`.
+ * Kept as a thin sync adapter for any legacy imports.
+ */
 import { prayerCollectionPath, prayerDetailPath } from './prayerSlug'
-
-type WeekdayIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6
+import {
+  DAILY_COLLECTION_SLUGS,
+  formatPsalmRangeLabel,
+  mezmureDawitRangePath,
+  PSALM_RANGE_BY_WEEKDAY,
+  WEEKDAY_LABELS,
+  WUDASE_FALLBACK_TITLE_AMHARIC,
+  WUDASE_WEEKDAY_SLUG,
+  weekdayIndexFromDate,
+} from './dailyPrayerRhythmSchedule'
 
 export type WeekdayPrayerRhythmItem = {
   id: string
@@ -16,45 +28,11 @@ export type WeekdayPrayerRhythm = {
   items: WeekdayPrayerRhythmItem[]
 }
 
-const WEEKDAYS: Record<WeekdayIndex, { english: string; amharic: string }> = {
-  0: { english: 'Sunday', amharic: 'እሁድ' },
-  1: { english: 'Monday', amharic: 'ሰኞ' },
-  2: { english: 'Tuesday', amharic: 'ማክሰኞ' },
-  3: { english: 'Wednesday', amharic: 'ረቡዕ' },
-  4: { english: 'Thursday', amharic: 'ሐሙስ' },
-  5: { english: 'Friday', amharic: 'ዓርብ' },
-  6: { english: 'Saturday', amharic: 'ቅዳሜ' },
-}
-
-const WUDASE_BY_DAY: Record<WeekdayIndex, { label: string; slug: string }> = {
-  0: { label: 'ውዳሴ ማርያም ዘእሑድ', slug: 'sunday' },
-  1: { label: 'ውዳሴ ማርያም ዘሰኑይ', slug: 'monday' },
-  2: { label: 'ውዳሴ ማርያም ዘሠሉስ', slug: 'tuesday' },
-  3: { label: 'ውዳሴ ማርያም ዘረቡዕ', slug: 'wednesday' },
-  4: { label: 'ውዳሴ ማርያም ዘሐሙስ', slug: 'thursday' },
-  5: { label: 'ውዳሴ ማርያም ዘዓርብ', slug: 'friday' },
-  6: { label: 'ውዳሴ ማርያም ዘቀዳሚት', slug: 'saturday' },
-}
-
-const PSALM_RANGE_BY_DAY: Record<WeekdayIndex, string> = {
-  0: 'Rest day / የዕረፍት ቀን',
-  1: 'መዝሙር 1–30',
-  2: 'መዝሙር 31–60',
-  3: 'መዝሙር 61–80',
-  4: 'መዝሙር 81–110',
-  5: 'መዝሙር 111–130',
-  6: 'መዝሙር 131–150',
-}
-
-function todayIndex(date = new Date()): WeekdayIndex {
-  return date.getDay() as WeekdayIndex
-}
-
 export function getWeekdayPrayerRhythm(date = new Date()): WeekdayPrayerRhythm {
-  const day = todayIndex(date)
-  const weekday = WEEKDAYS[day]
-  const wudase = WUDASE_BY_DAY[day]
-  const psalmRange = PSALM_RANGE_BY_DAY[day]
+  const day = weekdayIndexFromDate(date)
+  const weekday = WEEKDAY_LABELS[day]
+  const range = PSALM_RANGE_BY_WEEKDAY[day]
+  const wudaseSlug = WUDASE_WEEKDAY_SLUG[day]
 
   return {
     weekday: weekday.english,
@@ -65,21 +43,21 @@ export function getWeekdayPrayerRhythm(date = new Date()): WeekdayPrayerRhythm {
         title: 'Zewter Tselot',
         label: 'Daily Orthodox prayer',
         subtitle: 'Begin with the regular prayer path',
-        to: prayerCollectionPath('zewter-tselot'),
+        to: prayerCollectionPath(DAILY_COLLECTION_SLUGS.zewter),
       },
       {
-        id: 'wudasie-mariam',
-        title: 'Wudasie Mariam',
-        label: wudase.label,
+        id: 'wudase-mariam',
+        title: 'Wudase Mariam',
+        label: WUDASE_FALLBACK_TITLE_AMHARIC[day],
         subtitle: 'The weekday praise of Saint Mary',
-        to: prayerDetailPath(wudase.slug, 'wudase-mariam'),
+        to: prayerDetailPath(wudaseSlug, DAILY_COLLECTION_SLUGS.wudase),
       },
       {
         id: 'mezmure-dawit',
         title: 'Mezmure Dawit',
-        label: psalmRange,
-        subtitle: day === 0 ? 'Rest from the weekly psalm range' : 'Today’s psalm range',
-        to: prayerCollectionPath('mezmure-dawit'),
+        label: formatPsalmRangeLabel(range, 'am'),
+        subtitle: range ? "Today's psalm reading" : 'Rest from the weekly psalm range',
+        to: mezmureDawitRangePath(range),
       },
     ],
   }

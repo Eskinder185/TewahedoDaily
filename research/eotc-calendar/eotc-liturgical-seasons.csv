@@ -1,0 +1,4 @@
+﻿slug,title,title_amharic,description,start_rule,end_rule,sort_order,confidence,needs_review,source_ids
+zemene-tsige,Season of Flowers,ዘመነ ጽጌ,A sacred season associated with the Flight to Egypt and the flowering of the land.,Meskerem 26,Hidar 5,1,high,true,eotc-calendar-json
+bright-season-after-fasika,Bright Season after Fasika,ዘመነ ትንሣኤ,The joyful season after the resurrection marked by Paschal celebration.,The 50 days after Fasika until Pentecost,,1,high,true,eotc-calendar-json
+holy-week,Holy Week,ሰሙነ ሕማማት,The solemn week of Christ’s passion before the resurrection.,The week between Hosanna and Fasika,,1,high,true,eotc-calendar-json

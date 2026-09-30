@@ -1,11 +1,34 @@
 import { lazy, Suspense } from 'react'
-import { Navigate, Routes, Route } from 'react-router-dom'
+import { Navigate, Routes, Route, useParams } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
 import { PageLoadingFallback } from './components/ui/PageLoadingFallback'
 import { useScrollToTopOnRouteChange } from './hooks/useScroll'
 import { useLegacyMezmur } from './lib/publicContent/service'
-import { contentKinds } from './lib/cms/contentService'
 import { AdminErrorBoundary } from './pages/admin/AdminErrorBoundary'
+
+function LegacyMezmurEditRedirect() {
+  const { id } = useParams()
+  return <Navigate to={`/admin/hymns/mezmur/${id}/edit`} replace />
+}
+
+function LegacyPathRedirect({ to }: { to: string }) {
+  const params = useParams()
+  const resolved = to.replace(/:([A-Za-z_]+)/g, (_, key: string) => params[key] || '')
+  return <Navigate to={resolved} replace />
+}
+
+function LegacyHomeSlideRedirect() {
+  const { id } = useParams()
+  if (!id || id === 'slides' || id === 'daily') return <Navigate to="/admin/home" replace />
+  return <Navigate to={`/admin/home/slides/${id}/edit`} replace />
+}
+
+function LegacyCalendarCardRedirect() {
+  const { id } = useParams()
+  const reserved = new Set(['cards', 'synaxarium', 'saints', 'feasts', 'daily'])
+  if (!id || reserved.has(id)) return <Navigate to="/admin/calendar" replace />
+  return <Navigate to={`/admin/calendar/cards/${id}/edit`} replace />
+}
 
 // Lazy load all pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })))
@@ -45,6 +68,27 @@ const SynaxariumAdmin = lazy(() => import('./pages/admin/StructureAdmin').then(m
 const SynaxariumDayEditor = lazy(() => import('./pages/admin/StructureAdmin').then(m => ({ default: m.SynaxariumDayEditor })))
 const CalendarAdmin = lazy(() => import('./pages/admin/CalendarAdmin').then(m => ({ default: m.CalendarAdmin })))
 const CalendarCardEditor = lazy(() => import('./pages/admin/CalendarAdmin').then(m => ({ default: m.CalendarCardEditor })))
+const HomeAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HomeAdminLayout })))
+const HomeOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HomeOverview })))
+const HymnsAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HymnsAdminLayout })))
+const HymnsOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HymnsOverview })))
+const PrayAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.PrayAdminLayout })))
+const PrayOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.PrayOverview })))
+const CalendarAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.CalendarAdminLayout })))
+const CalendarOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.CalendarOverview })))
+const OrthodoxyObservancesAdmin = lazy(() =>
+  import('./pages/admin/OrthodoxyRulesAdmin').then((m) => ({ default: m.OrthodoxyObservancesAdmin })),
+)
+const OrthodoxyFastsAdmin = lazy(() =>
+  import('./pages/admin/OrthodoxyRulesAdmin').then((m) => ({ default: m.OrthodoxyFastsAdmin })),
+)
+const OrthodoxySeasonsAdmin = lazy(() =>
+  import('./pages/admin/OrthodoxyRulesAdmin').then((m) => ({ default: m.OrthodoxySeasonsAdmin })),
+)
+const OrthodoxyMonthlyAdmin = lazy(() =>
+  import('./pages/admin/OrthodoxyRulesAdmin').then((m) => ({ default: m.OrthodoxyMonthlyAdmin })),
+)
+const AboutAdminPage = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.AboutAdminPage })))
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const TodayPage = lazy(() => import('./pages/TodayPage').then(m => ({ default: m.TodayPage })))
 
@@ -59,33 +103,115 @@ export default function App() {
         <Route element={<RequireCmsRole />}>
           <Route element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
-            <Route path="mezmur" element={<MezmurList />} />
-            <Route path="mezmur/new" element={<MezmurEditor />} />
-            <Route path="mezmur/:id/edit" element={<MezmurEditor />} />
-            <Route path="home" element={<HomepageAdmin />} />
-            <Route path="home/new" element={<HomepageSlideEditor />} />
-            <Route path="home/:id/edit" element={<HomepageSlideEditor />} />
-            <Route path="prayers" element={<StructureCollectionList kind="prayers" />} />
-            <Route path="prayers/new" element={<StructureCollectionEditor kind="prayers" />} />
-            <Route path="prayers/:id/edit" element={<StructureCollectionEditor kind="prayers" />} />
-            <Route path="liturgy" element={<StructureCollectionList kind="liturgy" />} />
-            <Route path="liturgy/new" element={<StructureCollectionEditor kind="liturgy" />} />
-            <Route path="liturgy/:id/edit" element={<StructureCollectionEditor kind="liturgy" />} />
-            <Route path="calendar" element={<CalendarAdmin />} />
-            <Route path="calendar/new" element={<CalendarCardEditor />} />
-            <Route path="calendar/:id/edit" element={<CalendarCardEditor />} />
-            <Route path="synaxarium" element={<SynaxariumAdmin />} />
-            <Route path="synaxarium/:id/edit" element={<SynaxariumDayEditor />} />
-            <Route path="categories" element={<TaxonomyPage />} />
-            <Route path="singers" element={<TaxonomyPage />} />
-            <Route path="tags" element={<TaxonomyPage />} />
+
+            {/* Page-based CMS: Home */}
+            <Route path="home" element={<HomeAdminLayout />}>
+              <Route index element={<HomeOverview />} />
+              <Route path="slides" element={<HomepageAdmin />} />
+              <Route path="slides/new" element={<HomepageSlideEditor />} />
+              <Route path="slides/:id/edit" element={<HomepageSlideEditor />} />
+              <Route path="daily" element={<DailyContentAdmin />} />
+              <Route path="new" element={<Navigate to="/admin/home/slides/new" replace />} />
+              <Route path=":id/edit" element={<LegacyHomeSlideRedirect />} />
+            </Route>
+
+            {/* Page-based CMS: Hymns Practice */}
+            <Route path="hymns" element={<HymnsAdminLayout />}>
+              <Route index element={<HymnsOverview />} />
+              <Route path="mezmur" element={<MezmurList />} />
+              <Route path="mezmur/new" element={<MezmurEditor />} />
+              <Route path="mezmur/:id/edit" element={<MezmurEditor />} />
+              <Route path="singers" element={<TaxonomyPage kind="singers" />} />
+              <Route path="categories" element={<TaxonomyPage kind="categories" />} />
+              <Route path="tags" element={<TaxonomyPage kind="tags" />} />
+            </Route>
+
+            {/* Page-based CMS: Pray */}
+            <Route path="pray" element={<PrayAdminLayout />}>
+              <Route index element={<PrayOverview />} />
+              <Route path="collections" element={<StructureCollectionList kind="prayers" basePath="/admin/pray/collections" />} />
+              <Route path="collections/new" element={<StructureCollectionEditor kind="prayers" basePath="/admin/pray/collections" />} />
+              <Route path="collections/:id/edit" element={<StructureCollectionEditor kind="prayers" basePath="/admin/pray/collections" />} />
+              <Route path="prayers" element={<StructureCollectionList kind="prayers" basePath="/admin/pray/prayers" />} />
+              <Route path="prayers/new" element={<StructureCollectionEditor kind="prayers" basePath="/admin/pray/prayers" />} />
+              <Route path="prayers/:id/edit" element={<StructureCollectionEditor kind="prayers" basePath="/admin/pray/prayers" />} />
+              <Route path="liturgy" element={<StructureCollectionList kind="liturgy" basePath="/admin/pray/liturgy" />} />
+              <Route path="liturgy/new" element={<StructureCollectionEditor kind="liturgy" basePath="/admin/pray/liturgy" />} />
+              <Route path="liturgy/:id/edit" element={<StructureCollectionEditor kind="liturgy" basePath="/admin/pray/liturgy" />} />
+              <Route path="images" element={<MediaLibrary />} />
+            </Route>
+
+            {/* Page-based CMS: Calendar */}
+            <Route path="calendar" element={<CalendarAdminLayout />}>
+              <Route index element={<CalendarOverview />} />
+              <Route path="cards" element={<CalendarAdmin />} />
+              <Route path="cards/new" element={<CalendarCardEditor />} />
+              <Route path="cards/:id/edit" element={<CalendarCardEditor />} />
+              <Route path="observances" element={<OrthodoxyObservancesAdmin />} />
+              <Route path="fasts" element={<OrthodoxyFastsAdmin />} />
+              <Route path="seasons" element={<OrthodoxySeasonsAdmin />} />
+              <Route path="monthly" element={<OrthodoxyMonthlyAdmin />} />
+              <Route path="synaxarium" element={<SynaxariumAdmin />} />
+              <Route path="synaxarium/:id/edit" element={<SynaxariumDayEditor />} />
+              <Route path="saints">
+                <Route index element={<ContentList kind="saints" />} />
+                <Route path="new" element={<ContentEditor kind="saints" />} />
+                <Route path=":id/edit" element={<ContentEditor kind="saints" />} />
+              </Route>
+              <Route path="feasts">
+                <Route index element={<ContentList kind="feasts" />} />
+                <Route path="new" element={<ContentEditor kind="feasts" />} />
+                <Route path=":id/edit" element={<ContentEditor kind="feasts" />} />
+              </Route>
+              <Route path="daily" element={<DailyContentAdmin />} />
+              <Route path="new" element={<Navigate to="/admin/calendar/cards/new" replace />} />
+              <Route path=":id/edit" element={<LegacyCalendarCardRedirect />} />
+            </Route>
+
+            <Route path="about" element={<AboutAdminPage />} />
+
             <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
               <Route path="submissions" element={<SubmissionQueue />} />
               <Route path="submissions/:id" element={<SubmissionReview />} />
             </Route>
-            {contentKinds.map(kind=><Route key={kind} path={kind}><Route index element={<ContentList kind={kind}/>}/><Route path="new" element={<ContentEditor kind={kind}/>}/><Route path=":id/edit" element={<ContentEditor kind={kind}/>}/></Route>)}
-            <Route element={<RequireCmsRole allowed={['admin','super_admin']}/>}><Route path="media" element={<MediaLibrary/>}/><Route path="daily" element={<DailyContentAdmin/>}/></Route>
-            {['users', 'settings'].map(path => <Route key={path} path={path} element={<AdminPlaceholder />} />)}
+
+            <Route element={<RequireCmsRole allowed={['admin', 'super_admin']} />}>
+              <Route path="media" element={<MediaLibrary />} />
+            </Route>
+
+            {/* Articles remain available but not in the page-based sidebar */}
+            <Route path="articles">
+              <Route index element={<ContentList kind="articles" />} />
+              <Route path="new" element={<ContentEditor kind="articles" />} />
+              <Route path=":id/edit" element={<ContentEditor kind="articles" />} />
+            </Route>
+
+            {['users', 'settings'].map(path => (
+              <Route key={path} path={path} element={<AdminPlaceholder />} />
+            ))}
+
+            {/* Legacy redirects */}
+            <Route path="mezmur" element={<Navigate to="/admin/hymns/mezmur" replace />} />
+            <Route path="mezmur/new" element={<Navigate to="/admin/hymns/mezmur/new" replace />} />
+            <Route path="mezmur/:id/edit" element={<LegacyMezmurEditRedirect />} />
+            <Route path="prayers" element={<Navigate to="/admin/pray/collections" replace />} />
+            <Route path="prayers/new" element={<Navigate to="/admin/pray/collections/new" replace />} />
+            <Route path="prayers/:id/edit" element={<LegacyPathRedirect to="/admin/pray/collections/:id/edit" />} />
+            <Route path="liturgy" element={<Navigate to="/admin/pray/liturgy" replace />} />
+            <Route path="liturgy/new" element={<Navigate to="/admin/pray/liturgy/new" replace />} />
+            <Route path="liturgy/:id/edit" element={<LegacyPathRedirect to="/admin/pray/liturgy/:id/edit" />} />
+            <Route path="synaxarium" element={<Navigate to="/admin/calendar/synaxarium" replace />} />
+            <Route path="synaxarium/:id/edit" element={<LegacyPathRedirect to="/admin/calendar/synaxarium/:id/edit" />} />
+            <Route path="saints" element={<Navigate to="/admin/calendar/saints" replace />} />
+            <Route path="saints/new" element={<Navigate to="/admin/calendar/saints/new" replace />} />
+            <Route path="saints/:id/edit" element={<LegacyPathRedirect to="/admin/calendar/saints/:id/edit" />} />
+            <Route path="feasts" element={<Navigate to="/admin/calendar/feasts" replace />} />
+            <Route path="feasts/new" element={<Navigate to="/admin/calendar/feasts/new" replace />} />
+            <Route path="feasts/:id/edit" element={<LegacyPathRedirect to="/admin/calendar/feasts/:id/edit" />} />
+            <Route path="categories" element={<Navigate to="/admin/hymns/categories" replace />} />
+            <Route path="singers" element={<Navigate to="/admin/hymns/singers" replace />} />
+            <Route path="tags" element={<Navigate to="/admin/hymns/tags" replace />} />
+            <Route path="daily" element={<Navigate to="/admin/calendar/daily" replace />} />
           </Route>
         </Route>
         <Route path="*" element={<Navigate to="/admin" replace />} />
@@ -136,6 +262,9 @@ export default function App() {
             <PrayerListPage />
           </Suspense>
         } />
+        <Route path="/pray/zeweter" element={<Navigate to="/pray/zewter-tselot" replace />} />
+        <Route path="/pray/zeweter-tselot" element={<Navigate to="/pray/zewter-tselot" replace />} />
+        <Route path="/pray/wudasie-mariam" element={<Navigate to="/pray/wudase-mariam" replace />} />
         <Route path="/pray/:collectionSlug/:prayerSlug" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <LibraryItemRoute />
@@ -153,6 +282,15 @@ export default function App() {
         } />
         <Route path="/prayers/zeweter" element={
           <Navigate to="/pray/zewter-tselot" replace />
+        } />
+        <Route path="/prayers/zeweter-tselot" element={
+          <Navigate to="/pray/zewter-tselot" replace />
+        } />
+        <Route path="/prayers/zewter-tselot" element={
+          <Navigate to="/pray/zewter-tselot" replace />
+        } />
+        <Route path="/prayers/wudasie-mariam" element={
+          <Navigate to="/pray/wudase-mariam" replace />
         } />
         <Route path="/prayers/wudase-mariam" element={
           <Navigate to="/pray/wudase-mariam" replace />

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import {
   discover,
@@ -8,13 +8,14 @@ import {
   type Facets,
   type MezmurCard,
 } from '../lib/publicContent/service'
+import { suggestMezmurTitles, loadMezmurSearchCatalog } from '../lib/publicContent/mezmurSearch'
 import { classificationLabel, hymnCardMeta } from '../lib/publicContent/labels'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
 
-function useDebounced(value: string, ms = 350) {
+function useDebounced(value: string, ms = 200) {
   const [debounced, setDebounced] = useState(value)
   useEffect(() => {
     const id = window.setTimeout(() => setDebounced(value), ms)
@@ -66,17 +67,23 @@ function CardArt({ item }: { item: MezmurCard }) {
 export function PublicMezmurLibrary() {
   const [params, setParams] = useSearchParams()
   const [draftQ, setDraftQ] = useState(params.get('q') || '')
-  const debouncedQ = useDebounced(draftQ)
+  const debouncedQ = useDebounced(draftQ, 200)
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [facetData, setFacetData] = useState<Facets | null>(null)
   const [result, setResult] = useState<{
     items: MezmurCard[]
     total: number
     page: number
+    hasStrongMatch?: boolean
+    closest?: MezmurCard[]
   } | null>(null)
+  const [suggestions, setSuggestions] = useState<MezmurCard[]>([])
+  const [suggestOpen, setSuggestOpen] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
+  const searchWrapRef = useRef<HTMLDivElement>(null)
+  const listboxId = useId()
 
   usePageMeta(
     'Hymn Practice',
@@ -94,6 +101,12 @@ export function PublicMezmurLibrary() {
   }, [debouncedQ, params, setParams])
 
   useEffect(() => {
+    void loadMezmurSearchCatalog().catch((cause) => {
+      if (import.meta.env.DEV) console.error('[hymn practice] catalog prefetch', cause)
+    })
+  }, [])
+
+  useEffect(() => {
     let active = true
     void facets()
       .then((data) => {
@@ -105,6 +118,54 @@ export function PublicMezmurLibrary() {
     return () => {
       active = false
     }
+  }, [])
+
+  const language = params.get('language') || ''
+  const form = params.get('form') || ''
+  const occasion = params.get('occasion') || ''
+  const category = params.get('category') || ''
+  const sort = params.get('sort') || 'recent'
+  const page = pageNumber(params)
+
+  useEffect(() => {
+    let active = true
+    const needle = draftQ.trim()
+    if (needle.length < 2) {
+      queueMicrotask(() => {
+        if (active) setSuggestions([])
+      })
+      return () => {
+        active = false
+      }
+    }
+    const timeout = window.setTimeout(() => {
+      void suggestMezmurTitles(
+        needle,
+        { language, form, category, occasion },
+        6,
+      )
+        .then((rows) => {
+          if (active) setSuggestions(rows)
+        })
+        .catch((cause) => {
+          if (import.meta.env.DEV) console.error('[hymn practice] suggest', cause)
+          if (active) setSuggestions([])
+        })
+    }, 180)
+    return () => {
+      active = false
+      window.clearTimeout(timeout)
+    }
+  }, [draftQ, language, form, category, occasion])
+
+  useEffect(() => {
+    const onPointer = (event: MouseEvent) => {
+      if (!searchWrapRef.current?.contains(event.target as Node)) {
+        setSuggestOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onPointer)
+    return () => document.removeEventListener('mousedown', onPointer)
   }, [])
 
   const queryKey = params.toString()
@@ -149,15 +210,18 @@ export function PublicMezmurLibrary() {
 
   const clearAll = useCallback(() => {
     setDraftQ('')
+    setSuggestions([])
     setParams(new URLSearchParams())
   }, [setParams])
 
-  const language = params.get('language') || ''
-  const form = params.get('form') || ''
-  const occasion = params.get('occasion') || ''
-  const category = params.get('category') || ''
-  const sort = params.get('sort') || 'recent'
-  const page = pageNumber(params)
+  const applySuggestion = (item: MezmurCard) => {
+    setDraftQ(item.title)
+    setSuggestOpen(false)
+    const next = new URLSearchParams(params)
+    next.set('q', item.title)
+    next.delete('page')
+    setParams(next)
+  }
 
   const chips = useMemo(() => {
     const list: { key: string; label: string }[] = []
@@ -227,6 +291,8 @@ export function PublicMezmurLibrary() {
           aria-label="Sort hymns"
           value={sort}
           onChange={(event) => setFilter('sort', event.target.value)}
+          disabled={Boolean(params.get('q'))}
+          title={params.get('q') ? 'Relevance sorting is used while searching' : undefined}
         >
           <option value="recent">Recently added</option>
           <option value="az">Title A–Z</option>
@@ -236,6 +302,27 @@ export function PublicMezmurLibrary() {
       </label>
     </div>
   )
+
+  const showClosest =
+    !loading &&
+    !error &&
+    result &&
+    params.get('q') &&
+    result.items.length === 0 &&
+    (result.closest?.length || 0) > 0
+
+  const showWeakClosest =
+    !loading &&
+    !error &&
+    result &&
+    params.get('q') &&
+    result.hasStrongMatch === false &&
+    (result.closest?.length || 0) > 0
+
+  const gridItems =
+    showClosest || showWeakClosest
+      ? result!.closest || result!.items
+      : result?.items || []
 
   return (
     <section className={s.page}>
@@ -249,19 +336,45 @@ export function PublicMezmurLibrary() {
       </header>
 
       <div className={s.toolbar}>
-        <div className={s.searchRow}>
+        <div className={s.searchRow} ref={searchWrapRef}>
           <label className={s.srOnly} htmlFor="hymn-search">
             Search hymns
           </label>
-          <input
-            id="hymn-search"
-            className={s.searchInput}
-            value={draftQ}
-            onChange={(event) => setDraftQ(event.target.value)}
-            placeholder="Search title, lyrics, category, occasion…"
-            maxLength={200}
-            autoComplete="off"
-          />
+          <div className={s.searchField}>
+            <input
+              id="hymn-search"
+              className={s.searchInput}
+              value={draftQ}
+              onChange={(event) => {
+                setDraftQ(event.target.value)
+                setSuggestOpen(true)
+              }}
+              onFocus={() => setSuggestOpen(true)}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') setSuggestOpen(false)
+              }}
+              placeholder="Search by Amharic or transliterated title…"
+              maxLength={200}
+              autoComplete="off"
+              role="combobox"
+              aria-expanded={suggestOpen && suggestions.length > 0}
+              aria-controls={listboxId}
+              aria-autocomplete="list"
+            />
+            {suggestOpen && suggestions.length > 0 ? (
+              <ul id={listboxId} className={s.suggestList} role="listbox">
+                {suggestions.map((item) => (
+                  <li key={item.id} role="option">
+                    <button type="button" className={s.suggestItem} onClick={() => applySuggestion(item)}>
+                      <strong>{item.title}</strong>
+                      {item.title_amharic ? <span lang="am">{item.title_amharic}</span> : null}
+                      {item.singer_name ? <small>{item.singer_name}</small> : null}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
           <button
             type="button"
             className={s.filterToggle}
@@ -303,7 +416,9 @@ export function PublicMezmurLibrary() {
         <p>
           {loading
             ? 'Loading hymns…'
-            : `${result?.total ?? 0} hymn${(result?.total ?? 0) === 1 ? '' : 's'} found`}
+            : params.get('q')
+              ? `${result?.total ?? 0} match${(result?.total ?? 0) === 1 ? '' : 'es'}`
+              : `${result?.total ?? 0} hymn${(result?.total ?? 0) === 1 ? '' : 's'} found`}
         </p>
       </div>
 
@@ -324,9 +439,9 @@ export function PublicMezmurLibrary() {
         </div>
       ) : null}
 
-      {!loading && !error && result && result.items.length === 0 ? (
+      {!loading && !error && result && result.items.length === 0 && !showClosest ? (
         <div className={s.empty}>
-          <p>No hymns matched these filters.</p>
+          <p>No exact match found.</p>
           <div className={s.ctaRow}>
             <button type="button" className={s.ghostBtn} onClick={clearAll}>
               Clear filters
@@ -336,9 +451,17 @@ export function PublicMezmurLibrary() {
         </div>
       ) : null}
 
-      {result && result.items.length > 0 ? (
+      {showClosest || showWeakClosest ? (
+        <div className={s.closestNote} role="status">
+          <p>
+            {showClosest ? 'No exact match found.' : 'Showing closest title matches.'} Closest matches:
+          </p>
+        </div>
+      ) : null}
+
+      {gridItems.length > 0 ? (
         <div className={s.grid}>
-          {result.items.map((item) => {
+          {gridItems.map((item) => {
             const hasVideo = Boolean(parseYoutubeVideoId(item.youtube_url || ''))
             const meta = hymnCardMeta(item)
             return (
@@ -369,7 +492,7 @@ export function PublicMezmurLibrary() {
         </div>
       ) : null}
 
-      {result && result.total > PAGE_SIZE ? (
+      {result && result.total > PAGE_SIZE && !showClosest && result.hasStrongMatch !== false ? (
         <nav className={s.pager} aria-label="Results pages">
           <button
             type="button"

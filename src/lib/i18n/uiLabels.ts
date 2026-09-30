@@ -305,6 +305,10 @@ export const UI_LABELS = {
   prayerLangAmharic: { en: 'Amharic', am: 'አማርኛ' },
   prayerLangGeez: { en: "Ge'ez", am: 'ግዕዝ' },
   prayerLangEnglish: { en: 'English', am: 'እንግሊዝኛ' },
+  prayerReaderEmpty: {
+    en: 'No prayer text is available for this entry yet.',
+    am: 'ለዚህ ጸሎት ጽሑፍ ገና አልተገኘም።',
+  },
   prayerShowFull: { en: 'Show full prayer', am: 'ሙሉ ጸሎት አሳይ' },
   prayerShowLess: { en: 'Show less', am: 'ያነሱ አሳይ' },
 

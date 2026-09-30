@@ -27,8 +27,10 @@ import { AsyncNotice, Modal, Status } from './AdminUi'
 import { ContentBody } from '../../components/publicContent/ContentBody'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { ContentUpload } from './MediaLibrary'
+import { contentAdminBase } from './adminPaths'
 import s from './Admin.module.css'
 export function ContentList({ kind }: { kind: EditorialKind }) {
+  const base = contentAdminBase(kind)
   const [params, setParams] = useSearchParams()
   const q = params.get('q') || ''
   const status = params.get('status') || ''
@@ -43,7 +45,7 @@ export function ContentList({ kind }: { kind: EditorialKind }) {
     <>
       <div className={s.heading}>
         <h1 className={s.capitalize}>{kind}</h1>
-        <Link to={`/admin/${kind}/new`}>+ Create {kind}</Link>
+        <Link to={`${base}/new`}>+ Create {kind}</Link>
       </div>
       <form
         key={params.toString()}
@@ -94,7 +96,7 @@ export function ContentList({ kind }: { kind: EditorialKind }) {
                     </td>
                     <td>{new Date(row.updated_at).toLocaleDateString()}</td>
                     <td>
-                      <Link to={`/admin/${kind}/${row.id}/edit`}>
+                      <Link to={`${base}/${row.id}/edit`}>
                         Edit / review
                       </Link>
                     </td>
@@ -155,6 +157,7 @@ function Editor({
   initial: EditorialContent
   existing: boolean
 }) {
+  const base = contentAdminBase(kind)
   const navigate = useNavigate()
   const savedNavigation = useRef(false)
   const [uploading, setUploading] = useState(false)
@@ -226,7 +229,7 @@ function Editor({
       setSuccess(`Saved as ${status}.`)
       if (!row) {
         savedNavigation.current = true
-        navigate(`/admin/${kind}/${saved.id}/edit`, { replace: true })
+        navigate(`${base}/${saved.id}/edit`, { replace: true })
       }
     } catch (e) {
       setError(errorMessage(e))
@@ -254,7 +257,7 @@ function Editor({
   )
   return (
     <>
-      <Link to={`/admin/${kind}`}>← Back to {kind}</Link>
+      <Link to={base}>← Back to {kind}</Link>
       <div className={s.heading}>
         <h1>
           {row ? 'Edit' : 'Create'} {kind}

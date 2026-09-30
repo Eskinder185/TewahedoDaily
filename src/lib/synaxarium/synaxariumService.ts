@@ -27,9 +27,18 @@ export {
   formatCommemorationTypeLabel,
   getCalendarCards,
   imagePositionToObjectPosition,
+  localizedCardText,
   nextGregorianForEthiopianDate,
   normalizeImagePosition,
-  resolveCalendarCardImage,
+  cardCategoryBadge,
+  resolveCardSummary,
+  resolveCardWhatIsIt,
+  resolveCardWhy,
+  resolveCardImportant,
+  resolveCardFasting,
+  resolveCardSeason,
+  resolveCardImageCaption,
+  resolveCardScripture,
 } from './calendarCards'
 export type { CalendarCard, CalendarCardImagePosition } from './calendarCards'
 

@@ -45,13 +45,55 @@ export function slugify(text: string) {
   return text.normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
 }
 export function label(status: string) { return status.replaceAll('_', ' ') }
-export const editableKeys = ['title', 'title_amharic', 'title_oromo', 'slug', 'description', 'singer_id', 'category_id', 'lyrics_amharic', 'lyrics_english', 'lyrics_oromo', 'transliteration', 'youtube_url', 'audio_url', 'thumbnail_url', 'thumbnail_path', 'image_alt', 'featured', 'status'] as const
-export type MezmurInput = Pick<Mezmur, typeof editableKeys[number]>
+export const editableKeys = [
+  'title',
+  'title_amharic',
+  'slug',
+  'description',
+  'singer_id',
+  'category_id',
+  'lyrics_amharic',
+  'lyrics_english',
+  'transliteration',
+  'youtube_url',
+  'audio_url',
+  'thumbnail_url',
+  'thumbnail_path',
+  'image_alt',
+  'language',
+  'form',
+  'category',
+  'occasion',
+  'featured',
+  'status',
+] as const
+export type MezmurInput = Pick<Mezmur, (typeof editableKeys)[number]>
 export function editable(row: Mezmur): MezmurInput {
-  return Object.fromEntries(editableKeys.map(key => [key, row[key as keyof Mezmur] ?? null])) as MezmurInput
+  return Object.fromEntries(editableKeys.map((key) => [key, row[key as keyof Mezmur] ?? null])) as MezmurInput
 }
 export function emptyMezmur(): MezmurInput {
-  return { title: '', title_amharic: '', title_oromo: '', slug: '', description: '', singer_id: null, category_id: null, lyrics_amharic: '', lyrics_english: '', lyrics_oromo: '', transliteration: '', youtube_url: '', audio_url: '', thumbnail_url: '', thumbnail_path: '', image_alt: '', featured: false, status: 'draft' }
+  return {
+    title: '',
+    title_amharic: '',
+    slug: '',
+    description: '',
+    singer_id: null,
+    category_id: null,
+    lyrics_amharic: '',
+    lyrics_english: '',
+    transliteration: '',
+    youtube_url: '',
+    audio_url: '',
+    thumbnail_url: '',
+    thumbnail_path: '',
+    image_alt: '',
+    language: 'amharic',
+    form: 'mezmur',
+    category: null,
+    occasion: null,
+    featured: false,
+    status: 'draft',
+  }
 }
 export const PAGE_SIZE = 20
 export type Filters = { search?: string; status?: string; category?: string; singer?: string; featured?: string; sort?: string; page?: number }
@@ -59,7 +101,20 @@ export async function listMezmur(filters: Filters = {}) {
   let query = db().from('mezmur').select('*', { count: 'exact' })
   // Remove PostgREST filter syntax; allow Unicode searches without injecting expressions.
   const search = filters.search?.replace(/[,().%_*\\]/g, ' ').trim()
-  if (search) query = query.or(`title.ilike.%${search}%,title_amharic.ilike.%${search}%,title_oromo.ilike.%${search}%`)
+  if (search) {
+    // Live `search_keywords` is TEXT (pipe-separated), not text[] — never use cs/@>.
+    query = query.or(
+      [
+        `title.ilike.%${search}%`,
+        `title_amharic.ilike.%${search}%`,
+        `lyrics_amharic.ilike.%${search}%`,
+        `transliteration.ilike.%${search}%`,
+        `lyrics_english.ilike.%${search}%`,
+        `description.ilike.%${search}%`,
+        `search_keywords.ilike.%${search}%`,
+      ].join(','),
+    )
+  }
   if (statuses.includes(filters.status as ContentStatus)) query = query.eq('status', filters.status as ContentStatus)
   if (filters.category) query = query.eq('category_id', filters.category)
   if (filters.singer) query = query.eq('singer_id', filters.singer)
@@ -106,7 +161,28 @@ export async function getTagIds(id: string) {
   return data.map(row => row.tag_id)
 }
 export async function saveMezmur(input: MezmurInput, tags: string[], existing?: Mezmur, id = existing?.id || crypto.randomUUID()) {
-  const payload = { ...input, id, title: input.title.trim(), slug: input.slug.trim() }
+  // Do not include title_oromo / lyrics_oromo — the RPC preserves existing values when those
+  // keys are absent, so hidden legacy Oromo content is not wiped by the simplified editor.
+  const payload = {
+    ...input,
+    id,
+    title: input.title.trim(),
+    slug: input.slug.trim(),
+    title_amharic: input.title_amharic?.trim() || null,
+    description: input.description?.trim() || null,
+    lyrics_amharic: input.lyrics_amharic?.trim() || null,
+    lyrics_english: input.lyrics_english?.trim() || null,
+    transliteration: input.transliteration?.trim() || null,
+    youtube_url: input.youtube_url?.trim() || null,
+    audio_url: input.audio_url?.trim() || null,
+    thumbnail_url: input.thumbnail_url?.trim() || null,
+    thumbnail_path: input.thumbnail_path?.trim() || null,
+    image_alt: input.image_alt?.trim() || null,
+    language: input.language?.trim() || null,
+    form: input.form || null,
+    category: input.category?.trim() || null,
+    occasion: input.occasion?.trim() || null,
+  }
   const { data, error } = await db().rpc('save_mezmur', { payload: payload as Json, tag_ids: tags, expected_updated_at: existing?.updated_at || null }).single()
   if (error) throw error
   if (!data) throw new Error('No saved record was returned.')
@@ -114,7 +190,19 @@ export async function saveMezmur(input: MezmurInput, tags: string[], existing?: 
 }
 export async function duplicateMezmur(row: Mezmur) {
   const tags = await getTagIds(row.id)
-  return saveMezmur({ ...editable(row), title: `${row.title} (copy)`, slug: `${row.slug}-copy-${crypto.randomUUID().slice(0, 8)}`, status: 'draft', featured: false, audio_url: null, thumbnail_url: null }, tags)
+  return saveMezmur(
+    {
+      ...editable(row),
+      title: `${row.title} (copy)`,
+      slug: `${row.slug}-copy-${crypto.randomUUID().slice(0, 8)}`,
+      status: 'draft',
+      featured: false,
+      audio_url: null,
+      thumbnail_url: null,
+      thumbnail_path: null,
+    },
+    tags,
+  )
 }
 export async function deleteMezmur(row: Mezmur) {
   const { data, error } = await db().from('mezmur').delete().eq('id', row.id).eq('updated_at', row.updated_at).select('id')
@@ -162,7 +250,11 @@ export function parseVersion(version: Version): { input: MezmurInput; tags: stri
   for (const key of editableKeys) {
     if (key === 'featured') input.featured = record.featured === true
     else if (key === 'status') input.status = statuses.includes(record.status as ContentStatus) ? record.status as ContentStatus : 'draft'
-    else if (typeof record[key] === 'string' || record[key] === null) input[key] = record[key] as string
+    else if (key === 'form') {
+      input.form = record.form === 'mezmur' || record.form === 'werb' ? record.form : null
+    } else if (typeof record[key] === 'string' || record[key] === null) {
+      ;(input as Record<string, unknown>)[key] = record[key]
+    }
   }
   return { input, tags: Array.isArray(snapshot.tag_ids) ? snapshot.tag_ids.filter((id): id is string => typeof id === 'string') : null }
 }

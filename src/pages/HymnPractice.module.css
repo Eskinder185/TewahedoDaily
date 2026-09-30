@@ -58,6 +58,11 @@
   gap: 10px;
 }
 
+.searchField {
+  position: relative;
+  min-width: 0;
+}
+
 .searchInput {
   width: 100%;
   min-height: 48px;
@@ -73,6 +78,71 @@
 .searchInput:focus {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+
+.suggestList {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-card);
+  max-height: 18rem;
+  overflow: auto;
+}
+
+.suggestItem {
+  width: 100%;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.65rem 0.75rem;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.suggestItem:hover,
+.suggestItem:focus-visible {
+  background: color-mix(in srgb, var(--color-gold-soft) 35%, var(--color-bg));
+  outline: none;
+}
+
+.suggestItem strong {
+  color: var(--color-heading);
+}
+
+.suggestItem span[lang='am'] {
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.suggestItem small {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+}
+
+.closestNote {
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 50%, var(--color-border));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-gold-faint));
+}
+
+.closestNote p {
+  margin: 0;
+  color: var(--color-heading);
+  font-weight: 650;
 }
 
 .filterToggle,

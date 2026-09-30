@@ -86,7 +86,7 @@ export function HomepageAdmin() {
             Manage hero slides, images, and buttons. Active slides rotate on the public homepage.
           </p>
         </div>
-        <Link className={s.primary} to="/admin/home/new">
+        <Link className={s.primary} to="/admin/home/slides/new">
           + Add slide
         </Link>
       </div>
@@ -139,7 +139,7 @@ export function HomepageAdmin() {
                   </td>
                   <td>
                     <div className={s.actions}>
-                      <Link to={`/admin/home/${row.id}/edit`}>Edit</Link>
+                      <Link to={`/admin/home/slides/${row.id}/edit`}>Edit</Link>
                       <button
                         type="button"
                         disabled={busy || index === 0}
@@ -245,7 +245,7 @@ function SlideForm({
       const saved = await saveHomepageSlide(input, existing)
       setSuccess('Saved.')
       if (!existing) {
-        navigate(`/admin/home/${saved.id}/edit`, { replace: true })
+        navigate(`/admin/home/slides/${saved.id}/edit`, { replace: true })
       }
     } catch (cause) {
       setError(errorMessage(cause))
@@ -260,7 +260,7 @@ function SlideForm({
     <>
       <div className={s.heading}>
         <div>
-          <Link to="/admin/home">← Homepage slides</Link>
+          <Link to="/admin/home/slides">← Homepage slides</Link>
           <h1>{existing ? 'Edit slide' : 'New slide'}</h1>
           <p className={s.muted}>{busy ? 'Saving…' : success || 'Edit hero content and image.'}</p>
         </div>

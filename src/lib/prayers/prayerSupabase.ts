@@ -1,10 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { supabase } from '../supabase/client'
 import type { CollectionPrayer, PrayerCollection } from './prayerCollections'
-import {
-  UNMIGRATED_PRAYER_COLLECTIONS,
-  UNMIGRATED_PRAYERS,
-} from './unmigratedPrayerData'
+import { compareByPsalmNumber, getPsalmNumber } from './psalmNumber'
 
 type Status = 'draft' | 'pending_review' | 'published' | 'rejected' | 'archived'
 
@@ -38,12 +35,18 @@ export type PrayerRow = {
   slug: string
   title: string
   title_amharic: string | null
+  title_geez: string | null
+  title_english: string | null
   text_amharic: string | null
+  text_geez: string | null
   text_english: string | null
   text_oromo: string | null
+  transliteration: string | null
   thumbnail_url: string | null
   collection_id: string | null
   section_id: string | null
+  collection_slug: string | null
+  section_slug: string | null
   sort_order: number
   status: Status
   published_at: string | null
@@ -99,6 +102,7 @@ const prayerDb = supabase as unknown as SupabaseClient<PrayerDatabase> | null
 export function canonicalPrayerCollectionSlug(slug?: string | null): string {
   const normalized = slug?.trim().toLowerCase() ?? ''
   if (normalized === 'wudasie-mariam') return 'wudase-mariam'
+  if (normalized === 'zeweter-tselot' || normalized === 'zeweter') return 'zewter-tselot'
   return normalized
 }
 
@@ -152,51 +156,69 @@ function mapPrayer(
   collection: PrayerCollectionRow,
   section?: PrayerSectionRow,
 ): CollectionPrayer {
-  const title = row.title_amharic?.trim() || row.title
-  const english = row.text_english ?? ''
-  const amharic = row.text_amharic ?? ''
-  const oromo = row.text_oromo ?? ''
+  const titleAmharic = (row.title_amharic || '').trim()
+  const titleGeez = (row.title_geez || '').trim()
+  const titleEnglish = (row.title_english || '').trim()
+  const fallbackTitle = (row.title || '').trim()
+  const displayTitle = titleAmharic || titleGeez || titleEnglish || fallbackTitle
+
+  const amharic = (row.text_amharic || '').trim()
+  const geez = (row.text_geez || '').trim()
+  const english = (row.text_english || '').trim()
+  const oromo = (row.text_oromo || '').trim()
+  const englishOrOromo = english || oromo
+
+  const psalmNumber =
+    collection.slug === 'mezmure-dawit' ? getPsalmNumber(row.slug, row.title) : null
+  const order = psalmNumber ?? row.sort_order
+
   return {
     id: row.id,
     slug: row.slug,
-    title,
-    transliterationTitle: row.title,
+    title: displayTitle,
+    transliterationTitle: fallbackTitle && fallbackTitle !== displayTitle ? fallbackTitle : titleEnglish,
+    titles: {
+      amharic: titleAmharic,
+      geez: titleGeez,
+      english: titleEnglish,
+      fallback: fallbackTitle || displayTitle,
+    },
     collection: collection.title,
     collectionSlug: collection.slug as CollectionPrayer['collectionSlug'],
     section: section?.title ?? '',
     chapter: section?.title ?? '',
-    order: row.sort_order,
+    order,
+    psalmNumber: psalmNumber ?? undefined,
     categoryPrimary: collection.slug === 'wudase-mariam' ? 'mary' : 'liturgical',
     categoryUsage: [collection.slug, ...(section ? [section.slug] : [])],
     categorySeason: [],
     categoryConfidence: 'high',
     summary: { amharic: '', english: section?.description ?? '' },
-    text: { amharic, geez: '', english: english || oromo },
-    transliteration: { amharic: '', geez: '', english: '' },
-    source: { bookTitle: collection.title, fullTextLink: '', audioUrl: '' },
-    purposeLine: row.title,
-    fullText: [amharic, english, oromo].filter(Boolean).join('\n\n'),
-  }
-}
-
-function unmigratedCollection(slug: string) {
-  return UNMIGRATED_PRAYER_COLLECTIONS.find((collection) => collection.id === slug)
-}
-
-function unmigratedBundle(slug: string): PrayerCollectionBundle | null {
-  const collection = unmigratedCollection(slug)
-  if (!collection) return null
-  const prayers = UNMIGRATED_PRAYERS.filter((prayer) => prayer.collectionSlug === slug)
-  return {
-    collection: {
-      ...collection,
-      prayerCount: prayers.length,
-      sectionCount: 0,
-      countLabel: countLabelFor(slug, prayers.length, 0),
+    text: { amharic, geez, english: englishOrOromo },
+    transliteration: {
+      amharic: '',
+      geez: '',
+      english: (row.transliteration || '').trim(),
     },
-    sections: [],
-    prayers,
+    source: { bookTitle: collection.title, fullTextLink: '', audioUrl: '' },
+    purposeLine: fallbackTitle || displayTitle,
+    fullText: [amharic, geez, englishOrOromo].filter(Boolean).join('\n\n'),
   }
+}
+
+function sortCollectionPrayers(
+  collectionSlug: string,
+  prayers: CollectionPrayer[],
+): CollectionPrayer[] {
+  if (collectionSlug !== 'mezmure-dawit') {
+    return [...prayers].sort((a, b) => a.order - b.order || a.slug.localeCompare(b.slug))
+  }
+  return [...prayers].sort((a, b) =>
+    compareByPsalmNumber(
+      { slug: a.slug, title: a.transliterationTitle || a.title, order: a.order },
+      { slug: b.slug, title: b.transliterationTitle || b.title, order: b.order },
+    ),
+  )
 }
 
 /** Public published prayer collections (dynamic — new CMS rows appear automatically). */
@@ -206,15 +228,7 @@ export async function getPrayerCollections(): Promise<PrayerCollectionView[]> {
 
 export async function loadPrayerCollections(): Promise<PrayerCollectionView[]> {
   if (!prayerDb) {
-    return UNMIGRATED_PRAYER_COLLECTIONS.map((collection) => {
-      const prayerCount = UNMIGRATED_PRAYERS.filter((p) => p.collectionSlug === collection.id).length
-      return {
-        ...collection,
-        prayerCount,
-        sectionCount: 0,
-        countLabel: countLabelFor(collection.id, prayerCount, 0),
-      }
-    })
+    throw new Error('Supabase is not configured for prayer collections.')
   }
 
   try {
@@ -229,8 +243,10 @@ export async function loadPrayerCollections(): Promise<PrayerCollectionView[]> {
       (data ?? [])
         .filter((collection) => collection.slug !== 'divine-liturgy')
         .map(async (collection) => {
-        const [{ count: prayerCount, error: prayerCountError }, { count: sectionCount, error: sectionCountError }] =
-          await Promise.all([
+          const [
+            { count: prayerCount, error: prayerCountError },
+            { count: sectionCount, error: sectionCountError },
+          ] = await Promise.all([
             prayerDb
               .from('prayers')
               .select('id', { count: 'exact', head: true })
@@ -242,27 +258,13 @@ export async function loadPrayerCollections(): Promise<PrayerCollectionView[]> {
               .eq('collection_id', collection.id)
               .eq('status', 'published'),
           ])
-        if (prayerCountError) throw prayerCountError
-        if (sectionCountError) throw sectionCountError
-        return mapCollection(collection, prayerCount ?? 0, sectionCount ?? 0)
-      }),
+          if (prayerCountError) throw prayerCountError
+          if (sectionCountError) throw sectionCountError
+          return mapCollection(collection, prayerCount ?? 0, sectionCount ?? 0)
+        }),
     )
 
-    // Only append legacy local collections that are not yet present in Supabase.
-    const remoteSlugs = new Set(remote.map((collection) => collection.id))
-    const localOnly = UNMIGRATED_PRAYER_COLLECTIONS.filter(
-      (collection) => !remoteSlugs.has(collection.id),
-    ).map((collection) => {
-      const prayerCount = UNMIGRATED_PRAYERS.filter((p) => p.collectionSlug === collection.id).length
-      return {
-        ...collection,
-        prayerCount,
-        sectionCount: 0,
-        countLabel: countLabelFor(collection.id, prayerCount, 0) as PrayerCollectionView['countLabel'],
-      }
-    })
-
-    return [...remote, ...localOnly].sort((a, b) => a.order - b.order)
+    return remote.sort((a, b) => a.order - b.order)
   } catch (error) {
     logPrayerError('loadPrayerCollections', error)
     throw error
@@ -279,7 +281,9 @@ export async function loadPrayerCollection(
   const slug = canonicalPrayerCollectionSlug(slugInput)
   if (!slug) return null
 
-  if (!prayerDb) return unmigratedBundle(slug)
+  if (!prayerDb) {
+    throw new Error('Supabase is not configured for prayer collections.')
+  }
 
   try {
     const { data: collection, error: collectionError } = await prayerDb
@@ -289,7 +293,7 @@ export async function loadPrayerCollection(
       .eq('status', 'published')
       .maybeSingle()
     if (collectionError) throw collectionError
-    if (!collection) return unmigratedBundle(slug)
+    if (!collection) return null
 
     const [{ data: sections, error: sectionsError }, { data: prayers, error: prayersError }] =
       await Promise.all([
@@ -312,8 +316,18 @@ export async function loadPrayerCollection(
     const sectionRows = sections ?? []
     const prayerRows = prayers ?? []
     const sectionById = new Map(sectionRows.map((section) => [section.id, section]))
-    const mappedPrayers = prayerRows.map((prayer) =>
-      mapPrayer(prayer, collection, prayer.section_id ? sectionById.get(prayer.section_id) : undefined),
+
+    // Soft-link Wudase weekday prayers to sections when section_id is still null.
+    const mappedPrayers = sortCollectionPrayers(
+      collection.slug,
+      prayerRows.map((prayer) => {
+        let section = prayer.section_id ? sectionById.get(prayer.section_id) : undefined
+        if (!section && collection.slug === 'wudase-mariam') {
+          const weekday = prayer.slug.replace(/^wudase-mariam-/, '')
+          section = sectionRows.find((row) => row.slug === weekday || row.slug === prayer.slug)
+        }
+        return mapPrayer(prayer, collection, section)
+      }),
     )
 
     const sectionsView: PrayerSectionView[] = sectionRows.map((section) => ({
@@ -325,14 +339,27 @@ export async function loadPrayerCollection(
       order: section.sort_order,
       prayers: mappedPrayers.filter((prayer) => {
         const row = prayerRows.find((item) => item.id === prayer.id)
-        return row?.section_id === section.id
+        if (row?.section_id === section.id) return true
+        if (collection.slug === 'wudase-mariam') {
+          return (
+            prayer.slug === section.slug ||
+            prayer.slug === `wudase-mariam-${section.slug}` ||
+            prayer.slug.endsWith(`-${section.slug}`)
+          )
+        }
+        return false
       }),
     }))
 
-    // Include unsectioned prayers in a synthetic list by keeping them only in `prayers`.
+    // Mezmure Dawit: keep import-group sections out of the public reading model.
+    const publicSections =
+      collection.slug === 'mezmure-dawit'
+        ? []
+        : sectionsView
+
     return {
-      collection: mapCollection(collection, mappedPrayers.length, sectionRows.length),
-      sections: sectionsView,
+      collection: mapCollection(collection, mappedPrayers.length, publicSections.length || sectionRows.length),
+      sections: publicSections,
       prayers: mappedPrayers,
     }
   } catch (error) {
@@ -363,9 +390,7 @@ export async function loadPrayer(
   if (!collectionSlug || !prayerSlug) return undefined
 
   if (!prayerDb) {
-    return UNMIGRATED_PRAYERS.find(
-      (prayer) => prayer.collectionSlug === collectionSlug && prayer.slug === prayerSlug,
-    )
+    throw new Error('Supabase is not configured for prayers.')
   }
 
   try {
@@ -376,11 +401,7 @@ export async function loadPrayer(
       .eq('status', 'published')
       .maybeSingle()
     if (collectionError) throw collectionError
-    if (!collection) {
-      return UNMIGRATED_PRAYERS.find(
-        (prayer) => prayer.collectionSlug === collectionSlug && prayer.slug === prayerSlug,
-      )
-    }
+    if (!collection) return undefined
 
     const { data: prayer, error: prayerError } = await prayerDb
       .from('prayers')
@@ -414,14 +435,9 @@ export async function searchPrayers(queryInput: string): Promise<CollectionPraye
   const query = queryInput.trim().replace(/[%_,().]/g, ' ').replace(/\s+/g, ' ').slice(0, 200)
   if (!query) return []
 
-  const localMatches = UNMIGRATED_PRAYERS.filter((prayer) => {
-    const blob = [prayer.title, prayer.transliterationTitle, prayer.text.amharic, prayer.text.english]
-      .join(' ')
-      .toLowerCase()
-    return blob.includes(query.toLowerCase())
-  })
-
-  if (!prayerDb) return localMatches.slice(0, 24)
+  if (!prayerDb) {
+    throw new Error('Supabase is not configured for prayer search.')
+  }
 
   try {
     const pattern = `%${query}%`
@@ -433,7 +449,10 @@ export async function searchPrayers(queryInput: string): Promise<CollectionPraye
         [
           `title.ilike.${pattern}`,
           `title_amharic.ilike.${pattern}`,
+          `title_geez.ilike.${pattern}`,
+          `title_english.ilike.${pattern}`,
           `text_amharic.ilike.${pattern}`,
+          `text_geez.ilike.${pattern}`,
           `text_english.ilike.${pattern}`,
           `text_oromo.ilike.${pattern}`,
         ].join(','),
@@ -459,21 +478,32 @@ export async function searchPrayers(queryInput: string): Promise<CollectionPraye
 
     const collectionById = new Map((collections ?? []).map((row) => [row.id, row]))
     const sectionById = new Map((sections ?? []).map((row) => [row.id, row]))
-    const remoteMatches = (prayers ?? []).flatMap((prayer) => {
+    return (prayers ?? []).flatMap((prayer) => {
       const collection = prayer.collection_id ? collectionById.get(prayer.collection_id) : undefined
-      if (!collection) return []
-      // Prefer liturgy_collections for Divine Liturgy content.
+      if (!collection) {
+        if (import.meta.env.DEV) {
+          console.warn('[prayers] orphan prayer missing collection', {
+            prayerId: prayer.id,
+            slug: prayer.slug,
+            collection_id: prayer.collection_id,
+            collection_slug: prayer.collection_slug,
+          })
+        }
+        return []
+      }
       if (collection.slug === 'divine-liturgy') return []
-      return [
-        mapPrayer(
-          prayer,
-          collection,
-          prayer.section_id ? sectionById.get(prayer.section_id) : undefined,
-        ),
-      ]
-    })
-
-    return remoteMatches.slice(0, 24)
+      const section = prayer.section_id ? sectionById.get(prayer.section_id) : undefined
+      if (prayer.section_id && section && section.collection_id !== collection.id && import.meta.env.DEV) {
+        console.warn('[prayers] section/collection mismatch', {
+          prayerId: prayer.id,
+          slug: prayer.slug,
+          collection_id: collection.id,
+          section_id: section.id,
+          section_collection_id: section.collection_id,
+        })
+      }
+      return [mapPrayer(prayer, collection, section)]
+    }).slice(0, 24)
   } catch (error) {
     logPrayerError('searchPrayers', error)
     throw error

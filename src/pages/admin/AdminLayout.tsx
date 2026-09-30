@@ -4,29 +4,55 @@ import { useAuth } from '../../lib/auth/useAuth'
 import { errorMessage } from '../../lib/cms/mezmurService'
 import s from './Admin.module.css'
 
-const links = [
-  'Dashboard',
-  'Homepage',
-  'Mezmur',
-  'Submissions',
-  'Prayers',
-  'Liturgy',
-  'Calendar',
-  'Synaxarium',
-  'Saints',
-  'Feasts',
-  'Categories',
-  'Singers',
-  'Tags',
-  'Media',
-  'Daily',
-  'Users',
-  'Settings',
+type NavItem = {
+  label: string
+  to: string
+  end?: boolean
+  roles?: string[]
+}
+
+const NAV: NavItem[] = [
+  { label: 'Dashboard', to: '/admin', end: true },
+  { label: 'Home', to: '/admin/home' },
+  { label: 'Hymns Practice', to: '/admin/hymns' },
+  { label: 'Pray', to: '/admin/pray' },
+  { label: 'Calendar', to: '/admin/calendar' },
+  { label: 'About', to: '/admin/about' },
+  { label: 'Submissions', to: '/admin/submissions', roles: ['editor', 'admin', 'super_admin'] },
+  { label: 'Media', to: '/admin/media', roles: ['admin', 'super_admin'] },
+  { label: 'Users', to: '/admin/users', roles: ['admin', 'super_admin'] },
+  { label: 'Settings', to: '/admin/settings', roles: ['admin', 'super_admin'] },
 ]
 
 function roleLabel(role: string | null | undefined) {
   if (!role) return 'No role'
   return role.replaceAll('_', ' ')
+}
+
+function sectionLabel(pathname: string): string {
+  const part = pathname.split('/')[2] || 'dashboard'
+  const map: Record<string, string> = {
+    home: 'Home',
+    hymns: 'Hymns Practice',
+    pray: 'Pray',
+    calendar: 'Calendar',
+    about: 'About',
+    submissions: 'Submissions',
+    media: 'Media',
+    users: 'Users',
+    settings: 'Settings',
+    mezmur: 'Hymns Practice',
+    prayers: 'Pray',
+    liturgy: 'Pray',
+    synaxarium: 'Calendar',
+    saints: 'Calendar',
+    feasts: 'Calendar',
+    daily: 'Calendar',
+    categories: 'Hymns Practice',
+    singers: 'Hymns Practice',
+    tags: 'Hymns Practice',
+  }
+  return map[part] || part
 }
 
 export function AdminLayout() {
@@ -36,26 +62,12 @@ export function AdminLayout() {
   const [logoutError, setLogoutError] = useState('')
   const [signingOut, setSigningOut] = useState(false)
   const location = useLocation()
-  const section = location.pathname.split('/')[2] || 'Dashboard'
   const role = profile?.role || ''
   const displayName =
     profile?.display_name?.trim() ||
     profile?.email?.trim() ||
     'CMS user'
-  const visible = links.filter((name) => {
-    if (name === 'Submissions') return ['editor', 'admin', 'super_admin'].includes(role)
-    if (['Media', 'Daily', 'Users', 'Settings'].includes(name)) {
-      return ['admin', 'super_admin'].includes(role)
-    }
-    return true
-  })
-
-  function linkPath(name: string) {
-    if (name === 'Dashboard') return '/admin'
-    if (name === 'Homepage') return '/admin/home'
-    if (name === 'Calendar') return '/admin/calendar'
-    return `/admin/${name.toLowerCase()}`
-  }
+  const visible = NAV.filter((item) => !item.roles || item.roles.includes(role))
 
   async function logout() {
     if (!window.confirm('Sign out? Any unsaved changes will be lost.')) return
@@ -97,15 +109,21 @@ export function AdminLayout() {
           <small>CONTENT ADMINISTRATION</small>
         </Link>
         <nav aria-label="Admin navigation">
-          {visible.map((name) => (
+          {visible.map((item) => (
             <NavLink
-              key={name}
-              end={name === 'Dashboard'}
-              to={linkPath(name)}
+              key={item.to}
+              end={item.end}
+              to={item.to}
               onClick={() => setMenu(false)}
-              className={({ isActive }) => (isActive ? s.active : '')}
+              className={({ isActive }) => {
+                const nested =
+                  !item.end &&
+                  item.to !== '/admin' &&
+                  location.pathname.startsWith(item.to + '/')
+                return isActive || nested ? s.active : ''
+              }}
             >
-              {name}
+              {item.label}
             </NavLink>
           ))}
         </nav>
@@ -126,7 +144,7 @@ export function AdminLayout() {
             Menu
           </button>
           <span className={s.breadcrumb}>
-            Admin <span>/</span> {section}
+            Admin <span>/</span> {sectionLabel(location.pathname)}
           </span>
           <div className={s.topUser}>
             <strong>{displayName}</strong>
@@ -152,7 +170,7 @@ export function AdminPlaceholder() {
       <h1 className={s.capitalize}>{name}</h1>
       <div className={s.card}>
         <p>This section is reserved for a later phase.</p>
-        <Link to="/admin/mezmur">Manage Mezmur →</Link>
+        <Link to="/admin/hymns/mezmur">Manage Hymns Practice →</Link>
       </div>
     </>
   )

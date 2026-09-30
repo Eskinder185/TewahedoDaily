@@ -15,7 +15,7 @@ export type PrayerMediaEntry = {
 
 export const YEKIDANE_TSELOT_ENTRY: PrayerMediaEntry = {
   id: 'yekidane-tselot',
-  route: '/prayers/yekidane-tselot',
+  route: '/pray/yekidane-tselot',
   title: 'የኪዳን ጸሎት',
   transliteration: 'Yekidane Tselot',
   summary:
@@ -31,7 +31,7 @@ export const YEKIDANE_TSELOT_ENTRY: PrayerMediaEntry = {
 
 export const MEHARENE_AB_ENTRY: PrayerMediaEntry = {
   id: 'meharene-ab',
-  route: '/prayers/meharene-ab',
+  route: '/pray/meharene-ab',
   title: 'መሐረነ አብ',
   transliteration: 'Meharene Ab',
   summary:

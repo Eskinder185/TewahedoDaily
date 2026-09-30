@@ -4,6 +4,7 @@ import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
 import { resolveLibraryCollection } from '../lib/prayers/prayerLibrary'
 import { LiturgyCollectionPage } from './LiturgyCollectionPage'
 import { PrayerCollectionPage } from './PrayerCollectionPage'
+import { MezmureDawitPage } from './MezmureDawitPage'
 import { SynaxariumIndexPage } from './SynaxariumIndexPage'
 
 /**
@@ -41,5 +42,6 @@ export function LibraryCollectionRoute() {
   if (sourceType === undefined) return <PageLoadingFallback />
   if (sourceType === 'synaxarium') return <SynaxariumIndexPage />
   if (sourceType === 'liturgy') return <LiturgyCollectionPage />
+  if (collectionSlug?.trim().toLowerCase() === 'mezmure-dawit') return <MezmureDawitPage />
   return <PrayerCollectionPage />
 }

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import {
@@ -7,7 +7,7 @@ import {
   searchPrayerLibrary,
 } from '../lib/prayers/prayerLibrary'
 import type { PrayerLibraryCollection, PrayerSearchResult } from '../lib/prayers/prayerLibraryTypes'
-import { getWeekdayPrayerRhythm } from '../lib/prayers/weekdayPrayerRhythm'
+import { useDailyPrayerRhythm } from '../hooks/useDailyPrayerRhythm'
 import { resolveContentMediaUrl } from '../lib/cms/contentMedia'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import { useTranslation } from '../i18n'
@@ -54,7 +54,8 @@ export function PrayerListPage() {
   const [searchLoading, setSearchLoading] = useState(false)
   const [searchError, setSearchError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
-  const rhythm = useMemo(() => getWeekdayPrayerRhythm(), [])
+  const { rhythm, loading: rhythmLoading, error: rhythmError, reload: reloadRhythm } =
+    useDailyPrayerRhythm()
 
   useEffect(() => {
     let active = true
@@ -196,30 +197,79 @@ export function PrayerListPage() {
               <div className={styles.rhythmHead}>
                 <div>
                   <p className={styles.eyebrow}>{tr('prayers.dailyRhythm.title')}</p>
-                  <h2>
-                    {rhythm.weekday} / <span lang="am">{rhythm.weekdayAmharic}</span>
-                  </h2>
+                  {rhythmLoading && !rhythm ? (
+                    <div className={styles.rhythmTitleSkeleton} aria-hidden />
+                  ) : rhythm ? (
+                    <h2>
+                      {rhythm.weekday} / <span lang="am">{rhythm.weekdayAmharic}</span>
+                    </h2>
+                  ) : (
+                    <h2>Today</h2>
+                  )}
                   <p className={styles.rhythmSub}>{tr('prayers.dailyRhythm.subtitle')}</p>
+                  {rhythm?.ethiopianDateLabel ? (
+                    <p className={styles.rhythmEthDate}>{rhythm.ethiopianDateLabel}</p>
+                  ) : null}
                 </div>
               </div>
+
+              {rhythm?.context.length ? (
+                <ul className={styles.rhythmContext} aria-label="Today in the Church">
+                  {rhythm.context.map((chip) => (
+                    <li key={`${chip.kind}-${chip.title}`}>
+                      <span className={styles.rhythmContextKind}>{chip.label}</span>
+                      <strong>{chip.title}</strong>
+                      {chip.titleAmharic ? <span lang="am">{chip.titleAmharic}</span> : null}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
+              {rhythmError && !rhythm ? (
+                <div className={styles.rhythmError} role="alert">
+                  <p>{rhythmError}</p>
+                  <button type="button" className={styles.openLink} onClick={reloadRhythm}>
+                    Try again
+                  </button>
+                </div>
+              ) : null}
+
               <ul className={styles.rhythmList}>
-                {rhythm.items.map((item, index) => (
-                  <li key={item.id}>
-                    <Link className={styles.rhythmLink} to={item.to}>
-                      <span className={styles.rhythmNum} aria-hidden>
-                        {index + 1}
-                      </span>
-                      <span className={styles.rhythmText}>
-                        <strong>{item.title}</strong>
-                        <small>{item.label}</small>
-                        <span>{item.subtitle}</span>
-                      </span>
-                      <span className={styles.rhythmOpen} aria-hidden>
-                        {tr('prayers.collection.open')} →
-                      </span>
-                    </Link>
-                  </li>
-                ))}
+                {rhythmLoading && !rhythm
+                  ? [1, 2, 3].map((n) => (
+                      <li key={`skeleton-${n}`}>
+                        <div className={styles.rhythmSkeleton} aria-hidden>
+                          <span className={styles.rhythmNum}>{n}</span>
+                          <span className={styles.rhythmSkeletonText}>
+                            <span />
+                            <span />
+                            <span />
+                          </span>
+                        </div>
+                      </li>
+                    ))
+                  : null}
+                {rhythm
+                  ? rhythm.items.map((item, index) => (
+                      <li key={item.id}>
+                        <Link className={styles.rhythmLink} to={item.to}>
+                          <span className={styles.rhythmNum} aria-hidden>
+                            {index + 1}
+                          </span>
+                          <span className={styles.rhythmText}>
+                            <strong>{item.title}</strong>
+                            <small lang={item.id === 'wudase' || item.id === 'psalms' ? 'am' : undefined}>
+                              {item.label}
+                            </small>
+                            <span>{item.subtitle}</span>
+                          </span>
+                          <span className={styles.rhythmOpen} aria-hidden>
+                            {tr('prayers.collection.open')} →
+                          </span>
+                        </Link>
+                      </li>
+                    ))
+                  : null}
               </ul>
             </section>
 

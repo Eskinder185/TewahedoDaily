@@ -94,6 +94,52 @@
   margin-bottom: var(--space-5);
 }
 
+.rangeBanner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 55%, var(--color-border));
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-gold-faint));
+}
+
+.rangeBanner p {
+  margin: 0;
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+.rangeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.rangeClear {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rangeClear:hover,
+.rangeClear:focus-visible {
+  border-color: var(--color-border-gold);
+}
+
 .jumpChip {
   display: inline-flex;
   align-items: center;
@@ -231,10 +277,14 @@
   font-size: var(--text-xs);
   line-height: 1.35;
   color: var(--color-text-muted);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.indexPsalm {
+  font-weight: 800;
+  color: var(--color-heading);
 }
 
 .reader {

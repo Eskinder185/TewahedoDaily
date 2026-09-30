@@ -29,11 +29,10 @@ export function MezmurPreview({ item }: { item: MezmurInput }) {
   return <article className={s.preview}>
     <Status value={item.status} /><h2>{item.title || 'Untitled mezmur'}</h2>
     {item.title_amharic && <h3 lang="am">{item.title_amharic}</h3>}
-    {item.title_oromo && <h3 lang="om">{item.title_oromo}</h3>}
-    {item.thumbnail_url && <Media reference={item.thumbnail_url} title={item.title} />}
+    {(item.thumbnail_path || item.thumbnail_url) && <Media reference={item.thumbnail_path || item.thumbnail_url} title={item.image_alt || item.title} />}
     <p>{item.description}</p>
     {item.audio_url && <Media reference={item.audio_url} audio />}
     {item.youtube_url && /^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(item.youtube_url) && <p><a href={item.youtube_url} target="_blank" rel="noreferrer">Listen on YouTube ↗</a></p>}
-    {([['Amharic lyrics', item.lyrics_amharic, 'am'], ['English lyrics', item.lyrics_english, 'en'], ['Oromo lyrics', item.lyrics_oromo, 'om'], ['Transliteration', item.transliteration, 'en']] as const).map(([title, text, lang]) => text && <section key={title}><h3>{title}</h3><p className={s.lyrics} lang={lang}>{text}</p></section>)}
+    {([['Amharic lyrics', item.lyrics_amharic, 'am'], ['Transliteration lyrics', item.transliteration, 'en'], ['English lyrics', item.lyrics_english, 'en']] as const).map(([title, text, lang]) => text && <section key={title}><h3>{title}</h3><p className={s.lyrics} lang={lang}>{text}</p></section>)}
   </article>
 }

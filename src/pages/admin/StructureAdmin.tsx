@@ -41,8 +41,15 @@ const LABELS: Record<Kind, { title: string; folder: 'prayers' | 'liturgy'; entry
   liturgy: { title: 'Liturgy', folder: 'liturgy', entry: 'Entry' },
 }
 
-export function StructureCollectionList({ kind }: { kind: Kind }) {
+export function StructureCollectionList({
+  kind,
+  basePath,
+}: {
+  kind: Kind
+  basePath?: string
+}) {
   const label = LABELS[kind]
+  const root = basePath || (kind === 'prayers' ? '/admin/pray/collections' : '/admin/pray/liturgy')
   const result = useAsync(useCallback(() => listCollections(kind), [kind]))
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -92,7 +99,7 @@ export function StructureCollectionList({ kind }: { kind: Kind }) {
           <h1>{label.title}</h1>
           <p className={s.muted}>Collections → sections → {label.entry.toLowerCase()}s</p>
         </div>
-        <Link className={s.primary} to={`/admin/${kind}/new`}>
+        <Link className={s.primary} to={`${root}/new`}>
           + Add collection
         </Link>
       </div>
@@ -141,7 +148,7 @@ export function StructureCollectionList({ kind }: { kind: Kind }) {
                   <td>{row.sort_order}</td>
                   <td>
                     <div className={s.actions}>
-                      <Link to={`/admin/${kind}/${row.id}/edit`}>Edit</Link>
+                      <Link to={`${root}/${row.id}/edit`}>Edit</Link>
                       <button
                         type="button"
                         disabled={busy || index === 0}
@@ -181,10 +188,17 @@ export function StructureCollectionList({ kind }: { kind: Kind }) {
   )
 }
 
-export function StructureCollectionEditor({ kind }: { kind: Kind }) {
+export function StructureCollectionEditor({
+  kind,
+  basePath,
+}: {
+  kind: Kind
+  basePath?: string
+}) {
   const { id } = useParams()
   const isNew = !id || id === 'new'
   const label = LABELS[kind]
+  const root = basePath || (kind === 'prayers' ? '/admin/pray/collections' : '/admin/pray/liturgy')
   const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const sectionId = params.get('section') || ''
@@ -251,7 +265,7 @@ export function StructureCollectionEditor({ kind }: { kind: Kind }) {
       )
       setForm(null)
       setSuccess('Saved.')
-      if (isNew) navigate(`/admin/${kind}/${saved.id}/edit`, { replace: true })
+      if (isNew) navigate(`${root}/${saved.id}/edit`, { replace: true })
       else result.reload()
     } catch (cause) {
       setError(errorMessage(cause))
@@ -264,7 +278,7 @@ export function StructureCollectionEditor({ kind }: { kind: Kind }) {
     <>
       <div className={s.heading}>
         <div>
-          <Link to={`/admin/${kind}`}>← {label.title}</Link>
+          <Link to={root}>← {label.title}</Link>
           <h1>{isNew ? `New ${label.title.slice(0, -1).toLowerCase()} collection` : 'Edit collection'}</h1>
           <p className={s.muted}>{busy ? 'Saving…' : success || 'Collection details and nested content.'}</p>
         </div>
@@ -963,7 +977,7 @@ export function SynaxariumAdmin() {
                   <Status value={row.status} />
                 </td>
                 <td>
-                  <Link to={`/admin/synaxarium/${row.id}/edit`}>Edit</Link>
+                  <Link to={`/admin/calendar/synaxarium/${row.id}/edit`}>Edit</Link>
                 </td>
               </tr>
             ))}
@@ -1089,7 +1103,7 @@ export function SynaxariumDayEditor() {
     <>
       <div className={s.heading}>
         <div>
-          <Link to="/admin/synaxarium">← Synaxarium</Link>
+          <Link to="/admin/calendar/synaxarium">← Synaxarium</Link>
           <h1>Edit Synaxarium day</h1>
           <p className={s.muted}>{busy ? 'Saving…' : success || 'Day and commemorations'}</p>
         </div>

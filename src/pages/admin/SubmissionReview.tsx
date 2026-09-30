@@ -31,7 +31,7 @@ function ReviewForm({initial}:{initial:CommunitySubmission}) {
  async function convert(){
   if(dirty){setError('Save your review notes before converting.');return}
   setBusy(true);setError('')
-  try {const id=await convertSubmission(item,credit);navigate(`/admin/mezmur/${id}/edit`,{state:{saved:true}})}catch(cause){setError(errorMessage(cause));setBusy(false)}
+  try {const id=await convertSubmission(item,credit);navigate(`/admin/hymns/mezmur/${id}/edit`,{state:{saved:true}})}catch(cause){setError(errorMessage(cause));setBusy(false)}
  }
  const converted=item.status==='converted_to_content'
  const link=(url:string|null,label:string)=>url&&/^https:\/\//i.test(url)?<a href={url} target="_blank" rel="noreferrer">{label} ↗</a>:<span>{url||'—'}</span>
@@ -46,11 +46,11 @@ function ReviewForm({initial}:{initial:CommunitySubmission}) {
     <h3>Additional notes</h3><p className={s.lyrics}>{item.source_notes||'None'}</p><h3>Source / reference</h3><p>{link(item.source_reference,item.source_reference)}</p>
     {item.current_page_url&&<p>{link(item.current_page_url,'Original Mezmur page')}</p>}
     {item.related_legacy_key&&<p className={s.muted}>Legacy catalog reference: {item.related_legacy_key}. Corrections to this catalog require a separate verified content edit.</p>}
-    {item.related_content_id&&<Link to={`/admin/mezmur/${item.related_content_id}/edit`}>Open related Mezmur →</Link>}
+    {item.related_content_id&&<Link to={`/admin/hymns/mezmur/${item.related_content_id}/edit`}>Open related Mezmur →</Link>}
    </section>
    <section className={s.card}><h2>Possible duplicates</h2><p className={s.muted}>Matches are suggestions, never automatic rejections. Verify the original source before deciding.</p><AsyncNotice {...duplicates} retry={duplicates.reload}/>
     {duplicates.data&&!duplicates.data.length&&<p>No likely matches found in the CMS, submissions, or imported chant catalog.</p>}
-    <ul className={s.activityList}>{duplicates.data?.map(match=><li key={`${match.source}-${match.content_id}`}><Link to={match.source==='mezmur'?`/admin/mezmur/${match.content_id}/edit`:match.source==='submission'?`/admin/submissions/${match.content_id}`:`/practice/mezmur/${match.reference}`}>{match.title}</Link><small>{match.reason} · {match.source} · {match.reference}</small></li>)}</ul>
+    <ul className={s.activityList}>{duplicates.data?.map(match=><li key={`${match.source}-${match.content_id}`}><Link to={match.source==='mezmur'?`/admin/hymns/mezmur/${match.content_id}/edit`:match.source==='submission'?`/admin/submissions/${match.content_id}`:`/practice/mezmur/${match.reference}`}>{match.title}</Link><small>{match.reason} · {match.source} · {match.reference}</small></li>)}</ul>
    </section>
   </div><aside className={s.stack}>
    <section className={s.card}><h2>Contributor</h2><p>{item.contributor_name}</p><p>{item.contributor_email||'No email supplied'}</p><p className={s.muted}>Email is private to reviewers.</p><p>Credit requested: {item.credit_requested?'Yes':'No'}</p><p>Submitted: {new Date(item.created_at).toLocaleString()}</p>{item.reviewed_at&&<p>Last reviewed: {new Date(item.reviewed_at).toLocaleString()}</p>}</section>

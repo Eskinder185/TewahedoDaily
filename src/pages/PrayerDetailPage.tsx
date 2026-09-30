@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { PrayerTextTabs } from '../components/prayers/PrayerTextTabs'
+import { PrayerReader } from '../components/prayers/PrayerReader'
 import { PageSection } from '../components/ui/PageSection'
 import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
 import type { CollectionPrayer } from '../lib/prayers/prayerCollections'
@@ -133,12 +133,15 @@ export function PrayerDetailPage() {
         <header className={styles.header}>
           <div className={styles.badges}>
             <span>{prayer.collection}</span>
-            {prayer.chapter ? <span>{prayer.chapter}</span> : null}
+            {prayer.psalmNumber ? <span>{`Psalm ${prayer.psalmNumber}`}</span> : null}
+            {!prayer.psalmNumber && prayer.chapter ? <span>{prayer.chapter}</span> : null}
           </div>
           <h1 className={styles.title} lang="am">
-            {prayer.title}
+            {prayer.titles?.amharic || prayer.title}
           </h1>
-          {prayer.transliterationTitle ? (
+          {prayer.titles?.english && prayer.titles.english !== prayer.title ? (
+            <p className={styles.subtitle}>{prayer.titles.english}</p>
+          ) : prayer.transliterationTitle && prayer.transliterationTitle !== prayer.title ? (
             <p className={styles.subtitle}>{prayer.transliterationTitle}</p>
           ) : null}
         </header>
@@ -178,7 +181,7 @@ export function PrayerDetailPage() {
         ) : null}
 
         <section className={styles.reader} aria-label={tr('prayers.detail.textAria')}>
-          <PrayerTextTabs text={prayer.text} />
+          <PrayerReader text={prayer.text} titles={prayer.titles} showTitle />
         </section>
 
         {prayer.source.bookTitle || prayer.source.fullTextLink || prayer.source.audioUrl ? (

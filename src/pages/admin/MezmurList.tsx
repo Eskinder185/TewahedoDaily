@@ -42,7 +42,7 @@ export function MezmurList() {
     finally { setBusy(false) }
   }
   return <>
-    <div className={s.heading}><div><p className={s.eyebrow}>CONTENT LIBRARY</p><h1>Mezmur</h1><p className={s.muted}>Organize, review, and publish hymns.</p></div><Link className={s.primary} to="/admin/mezmur/new">+ Add Mezmur</Link></div>
+    <div className={s.heading}><div><p className={s.eyebrow}>CONTENT LIBRARY</p><h1>Mezmur</h1><p className={s.muted}>Organize, review, and publish hymns.</p></div><Link className={s.primary} to="/admin/hymns/mezmur/new">+ Add Mezmur</Link></div>
     <form key={key} onSubmit={filters}>
       <div className={s.filters}>
         <label>Search<input name="search" defaultValue={params.get('search') || ''} placeholder="Title or Amharic title" /></label>
@@ -64,7 +64,7 @@ export function MezmurList() {
           <td>{taxonomy.data?.singers.find(item => item.id === row.singer_id)?.name || '—'}</td><td>{taxonomy.data?.categories.find(item => item.id === row.category_id)?.name || '—'}</td>
           <td><Status value={row.status} /></td><td>{row.featured ? '★ Yes' : '—'}</td><td>{new Date(row.updated_at).toLocaleDateString()}</td>
           <td><div className={s.actions}>
-            {(staff || (row.created_by === profile?.id && row.status === 'draft')) && <Link to={`/admin/mezmur/${row.id}/edit`}>Edit</Link>}
+            {(staff || (row.created_by === profile?.id && row.status === 'draft')) && <Link to={`/admin/hymns/mezmur/${row.id}/edit`}>Edit</Link>}
             <button onClick={() => setPreview(row)}>Preview</button><button disabled={busy} onClick={() => void action(row, 'duplicate')}>Duplicate</button>
             {staff && row.status !== 'archived' && <button disabled={busy} onClick={() => void action(row, 'archive')}>Archive</button>}
             {admin && <button className={s.danger} disabled={busy} onClick={() => void action(row, 'delete')}>Delete</button>}

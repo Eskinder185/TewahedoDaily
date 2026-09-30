@@ -1,0 +1,11 @@
+﻿source_id,source_name,source_url,source_type,source_notes
+ethiopian-synaxarium-pdf,The Ethiopian Synaxarium (Budge / PDF extract),,synaxarium,Extracted into synaxariumEntries.json; OCR/summary quality varies; not a substitute for licensed full text.
+eotc-calendar-json,Tewahedo Daily eotc_calendar_json collections,src/data/eotc_calendar_json/,project-dataset,Internal curated feast/fast/season/monthly entries used by the app.
+stmaryeotctoronto-services,St. Mary EOTC Cathedral Toronto — Services / Monthly feasts,https://stmaryeotctoronto.com/services,parish,Diocesan parish listing of monthly and annual feasts.
+stmaryeotctoronto-liturgical-calendar,St. Mary EOTC Cathedral Toronto — Liturgical Calendar & Feasts,https://stmaryeotctoronto.com/liturgical-calendar-feasts,parish,Full monthly feast table and Marian feast notes.
+wikipedia-tewahedo-calendar,Wikipedia — Calendar of saints (Orthodox Tewahedo),https://en.wikipedia.org/wiki/Calendar_of_saints_(Orthodox_Tewahedo),secondary-reference,Secondary; useful for monthly table cross-check; not sole authority.
+eotcmk-gabriel,Mahibere Kidusan / EOTC Sunday School — Archangel Gabriel,https://eotcmk.org/e/the-prince-of-ramah/,church-department,Confirms monthly Gabriel on the 19th and annual commemorations.
+bahre-hasab-wiki,Wikipedia — Bahre Hasab,https://en.wikipedia.org/wiki/Bahre_Hasab,secondary-reference,"Documents Nineveh-anchored movable offsets (Abiy Tsom +14, Fasika +69, etc.)."
+geezapps-holidays,GeezApps — Ethiopian Orthodox Holidays & Liturgical Calendar,https://www.geezapps.com/articles/ethiopian-orthodox-holidays.html,secondary-reference,Summarizes movable feast windows and major fasts; verify against Bahire Hasab.
+eotc-ma-bahire-hasab,EOTC-MA — Bahire Hasab,https://www.eotc-ma.com/post/bahire-hasab-the-ethiopian-calendar,parish-education,Tewsak offsets for movable fasts/feasts from Nineveh.
+pascha-gregorian-table,Tewahedo Daily PASCHA_GREGORIAN_ISO table,src/data/paschaGregorianTable.ts,project-dataset,Curated civil Fasika dates for runtime conversion; not a computus replacement.

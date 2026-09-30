@@ -9,13 +9,16 @@ import {
 import {
   canonicalizeCategory,
   canonicalizeOccasion,
-  categoryMatchValues,
   categoryOptions,
   displayClassification,
   isNaClassification,
-  occasionMatchValues,
   occasionOptions,
 } from './taxonomy'
+import { normalizeStringList } from '../normalize/stringList'
+import {
+  loadMezmurSearchCatalog,
+  searchMezmurCatalog,
+} from './mezmurSearch'
 
 /** Public mezmur library uses Supabase only when the browser client is configured. */
 export const useLegacyMezmur = !supabase
@@ -73,7 +76,14 @@ export type MezmurCard = Pick<
   | 'themes'
 >
 
-export type Discovery = { items: MezmurCard[]; total: number; page: number }
+export type Discovery = {
+  items: MezmurCard[]
+  total: number
+  page: number
+  hasStrongMatch?: boolean
+  closest?: MezmurCard[]
+  suggestions?: MezmurCard[]
+}
 export type Facets = {
   singers: { id: string; name: string }[]
   categories: { id: string; name: string; value: string }[]
@@ -103,50 +113,12 @@ type MezmurJoinRow = CmsTables['mezmur']['Row'] &
       | null
   }
 
-const CARD_BASE = `
-  id, slug, title, title_amharic, thumbnail_url, thumbnail_path, image_alt, audio_url, youtube_url,
-  featured, published_at, created_at, singer_id, category_id,
-  singers ( id, name ),
-  categories ( id, name, slug )
-`
-
-const CARD_CLASSIFIED = `
-  ${CARD_BASE},
-  language, form, category, occasion, saint_or_angel, themes
-`
-
 const DETAIL_BASE = `
   *,
   singers ( id, name ),
   categories ( id, name, slug ),
   mezmur_tags ( tags ( id, name, slug ) )
 `
-
-let classificationEnabled: boolean | null = null
-
-async function hasClassificationColumns(): Promise<boolean> {
-  if (classificationEnabled !== null) return classificationEnabled
-  if (!supabase) {
-    classificationEnabled = false
-    return false
-  }
-  const { error } = await supabase
-    .from('mezmur')
-    .select('language,form,category,occasion,saint_or_angel,themes,search_keywords')
-    .eq('status', 'published')
-    .limit(1)
-  if (error && (error.code === '42703' || /column .* does not exist/i.test(error.message || ''))) {
-    classificationEnabled = false
-    return false
-  }
-  if (error) {
-    // Other errors (RLS etc.) — assume columns may exist; prefer classified select and fall back per query.
-    classificationEnabled = true
-    return true
-  }
-  classificationEnabled = true
-  return true
-}
 
 export function database() {
   if (!supabase) throw new Error('The content service is not configured.')
@@ -179,9 +151,7 @@ function sanitizeFilterToken(value: string) {
 }
 
 function asStringArray(value: unknown): string[] {
-  return Array.isArray(value)
-    ? value.filter((item): item is string => typeof item === 'string' && item.trim().length > 0)
-    : []
+  return normalizeStringList(value)
 }
 
 export function languagesFromRow(row: {
@@ -301,7 +271,6 @@ function logDevError(
 }
 
 async function discoverViaTable(params: URLSearchParams): Promise<Discovery> {
-  const classified = await hasClassificationColumns()
   const page = pageNumber(params)
   const q = sanitizeSearch(params.get('q') || '')
   const language = normalizeLanguageParam(params.get('language') || '')
@@ -311,100 +280,33 @@ async function discoverViaTable(params: URLSearchParams): Promise<Discovery> {
   const featuredOnly = params.get('featured') === 'yes'
   const sort = params.get('sort') || 'recent'
 
-  const categoryCanonical = canonicalizeCategory(categoryRaw)
-  const occasionCanonical = canonicalizeOccasion(occasionRaw)
-  const categoryValues = categoryCanonical ? categoryMatchValues(categoryCanonical) : []
-  const occasionValues = occasionCanonical ? occasionMatchValues(occasionCanonical) : []
-
-  let query = database()
-    .from('mezmur')
-    .select(classified ? CARD_CLASSIFIED : CARD_BASE, { count: 'exact' })
-    .eq('status', 'published')
-
-  if (featuredOnly) query = query.eq('featured', true)
-
-  if (classified) {
-    if (language === 'amharic' || language === 'am') {
-      query = query.or(
-        'language.eq.amharic,language.eq.am,language.eq.geez,language.eq.gez,lyrics_amharic.not.is.null,title_amharic.not.is.null',
-      )
-    } else if (language === 'english' || language === 'en') {
-      query = query.or('language.eq.english,language.eq.en,lyrics_english.not.is.null')
+  // Always load lightweight published metadata once, then filter/fuzzy in the browser.
+  // Live `search_keywords` / tag columns are TEXT (not text[]) — never use PostgREST cs/@>.
+  try {
+    const catalog = await loadMezmurSearchCatalog()
+    const result = searchMezmurCatalog(catalog, q, {
+      language,
+      form,
+      category: categoryRaw,
+      occasion: occasionRaw,
+      featuredOnly,
+      sort,
+      page,
+      pageSize: PAGE_SIZE,
+      suggestionLimit: 6,
+    })
+    return {
+      items: result.items,
+      total: result.total,
+      page: result.page,
+      hasStrongMatch: q ? result.hasStrongMatch : true,
+      closest: q ? result.closest : [],
+      suggestions: result.suggestions,
     }
-
-    if (form === 'mezmur' || form === 'werb') {
-      query = query.eq('form', form as 'mezmur' | 'werb')
-    }
-    if (categoryValues.length > 0) {
-      query = query.in('category', categoryValues)
-    }
-    if (occasionValues.length > 0) {
-      query = query.in('occasion', occasionValues)
-    }
-
-    if (q) {
-      const token = q.replace(/\s+/g, '-').toLowerCase()
-      query = query.or(
-        [
-          `title.ilike.%${q}%`,
-          `title_amharic.ilike.%${q}%`,
-          `title_oromo.ilike.%${q}%`,
-          `lyrics_amharic.ilike.%${q}%`,
-          `lyrics_english.ilike.%${q}%`,
-          `transliteration.ilike.%${q}%`,
-          `description.ilike.%${q}%`,
-          `occasion.ilike.%${q}%`,
-          `category.ilike.%${q}%`,
-          `search_keywords.cs.{${token}}`,
-          `search_keywords.cs.{${q.toLowerCase()}}`,
-        ].join(','),
-      )
-    }
-  } else {
-    if (language === 'amharic' || language === 'am') {
-      query = query.or('lyrics_amharic.not.is.null,title_amharic.not.is.null')
-    } else if (language === 'english' || language === 'en') {
-      query = query.not('lyrics_english', 'is', null)
-    }
-    if (q) {
-      query = query.or(
-        [
-          `title.ilike.%${q}%`,
-          `title_amharic.ilike.%${q}%`,
-          `lyrics_amharic.ilike.%${q}%`,
-          `lyrics_english.ilike.%${q}%`,
-          `transliteration.ilike.%${q}%`,
-          `description.ilike.%${q}%`,
-        ].join(','),
-      )
-    }
-  }
-
-  if (sort === 'title-desc' || sort === 'za') {
-    query = query.order('title', { ascending: false }).order('id')
-  } else if (sort === 'alphabetical' || sort === 'title' || sort === 'az') {
-    query = query.order('title', { ascending: true }).order('id')
-  } else if (sort === 'published') {
-    query = query.order('published_at', { ascending: false, nullsFirst: false }).order('id')
-  } else {
-    query = query.order('created_at', { ascending: false, nullsFirst: false }).order('id')
-  }
-
-  const from = (page - 1) * PAGE_SIZE
-  const { data, error, count } = await query.range(from, from + PAGE_SIZE - 1)
-  if (error) {
-    if (error.code === '42703' && classified) {
-      classificationEnabled = false
-      return discoverViaTable(params)
-    }
-    logDevError('discover table', error)
+  } catch (error) {
+    const err = error as { code?: string; message?: string; details?: string; hint?: string }
+    logDevError('discover table', err)
     throw error
-  }
-
-  return {
-    items: ((data || []) as unknown as MezmurJoinRow[]).map(mapCard),
-    total: count || 0,
-    page,
   }
 }
 
@@ -531,11 +433,7 @@ export async function publicMedia(reference: string | null | undefined) {
 export function publicMezmurToPracticePayload(item: PublicMezmur, youtubeUrl?: string | null) {
   const activeUrl = youtubeUrl || item.youtube_url || ''
   const videoId = parseYoutubeVideoId(activeUrl)
-  const lyricsGez =
-    item.lyrics_amharic?.trim() ||
-    item.lyrics_english?.trim() ||
-    item.lyrics_oromo?.trim() ||
-    ''
+  const lyricsGez = item.lyrics_amharic?.trim() || ''
   return {
     form: item.form || 'mezmur',
     entryId: item.id,

@@ -1,21 +1,23 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import {
   archiveCalendarCard,
   cardImagePreview,
+  CARD_CATEGORIES,
+  CARD_TYPES,
+  categoryLabel,
   CMS_ETHIOPIAN_MONTHS,
-  COMMEMORATION_TYPES,
   daysInEthiopianMonth,
   deleteCalendarCard,
   errorMessage,
-  formatKeywordsForInput,
   getCalendarCard,
   IMAGE_POSITIONS,
   listCalendarCards,
+  lookupSynaxariumDay,
   monthLabel,
-  normalizeKeywords,
   saveCalendarCard,
+  slugify,
   statuses,
   typeLabel,
   type CalendarCardInput,
@@ -55,14 +57,14 @@ export function CalendarAdmin() {
     <>
       <div className={s.heading}>
         <div>
-          <p className={s.eyebrow}>CALENDAR / SYNAXARIUM</p>
+          <p className={s.eyebrow}>EDITING: CALENDAR</p>
           <h1>Calendar cards</h1>
           <p className={s.muted}>
-            Visual cards for the public Calendar strip. Same records as Synaxarium commemorations —
-            edit title, Ethiopian date, image, featured, and publish state.
+            Curated visual cards for the public Calendar strip. Synaxarium content is managed under
+            the Synaxarium tab — not listed here.
           </p>
         </div>
-        <Link className={s.primary} to="/admin/calendar/new">
+        <Link className={s.primary} to="/admin/calendar/cards/new">
           + New Calendar Card
         </Link>
       </div>
@@ -83,7 +85,7 @@ export function CalendarAdmin() {
       >
         <label>
           Search
-          <input name="q" defaultValue={q} placeholder="Title, Amharic, keywords" />
+          <input name="q" defaultValue={q} placeholder="Title, Amharic, category" />
         </label>
         <label>
           Status
@@ -99,7 +101,7 @@ export function CalendarAdmin() {
         <label>
           Month
           <select name="month" defaultValue={month || ''}>
-            <option value="">All months</option>
+            <option value="">All</option>
             {CMS_ETHIOPIAN_MONTHS.map((item) => (
               <option key={item.number} value={item.number}>
                 {item.label}
@@ -110,8 +112,8 @@ export function CalendarAdmin() {
         <label>
           Type
           <select name="type" defaultValue={type}>
-            <option value="">All types</option>
-            {COMMEMORATION_TYPES.map((value) => (
+            <option value="">All</option>
+            {CARD_TYPES.map((value) => (
               <option key={value} value={value}>
                 {typeLabel(value)}
               </option>
@@ -136,7 +138,6 @@ export function CalendarAdmin() {
           <div className={s.mediaGrid}>
             {result.data.items.map((row) => {
               const image = cardImagePreview(row)
-              const day = row.day
               return (
                 <article key={row.id} className={`${s.card} ${s.mediaCard}`}>
                   <div className={s.mediaThumbWrap}>
@@ -154,24 +155,20 @@ export function CalendarAdmin() {
                       </span>
                     ) : null}
                     <span className={s.muted}>
-                      {day
-                        ? `${monthLabel(day.ethiopian_month_number)} ${day.ethiopian_day}`
-                        : 'No date'}
+                      {monthLabel(row.ethiopian_month_number)} {row.ethiopian_day}
                       {row.is_monthly ? ' · monthly' : ''}
                     </span>
-                    <span className={s.muted}>{typeLabel(row.commemoration_type)}</span>
+                    <span className={s.muted}>
+                      {categoryLabel(row.category, row.card_type)}
+                      {row.card_type ? ` · ${typeLabel(row.card_type)}` : ''}
+                    </span>
                     <span className={s.muted}>
                       {row.featured ? '★ Featured' : 'Not featured'} · sort {row.sort_order}
                     </span>
                     <Status value={row.status} />
-                    {row._warning ? (
-                      <span className={s.muted} role="status">
-                        Warning: {row._warning}
-                      </span>
-                    ) : null}
                     <div className={s.actions}>
-                      <Link to={`/admin/calendar/${row.id}/edit`}>Edit</Link>
-                      <Link to={`/calendar`} target="_blank" rel="noreferrer">
+                      <Link to={`/admin/calendar/cards/${row.id}/edit`}>Edit</Link>
+                      <Link to="/calendar" target="_blank" rel="noreferrer">
                         Preview
                       </Link>
                     </div>
@@ -180,7 +177,11 @@ export function CalendarAdmin() {
               )
             })}
           </div>
-          {!result.data.items.length ? <p className={s.muted}>No calendar cards match.</p> : null}
+          {!result.data.items.length ? (
+            <p className={s.muted}>
+              No calendar cards yet. Create a curated card to show on the public Calendar.
+            </p>
+          ) : null}
           <div className={s.actions}>
             <button
               type="button"
@@ -193,7 +194,9 @@ export function CalendarAdmin() {
             >
               Previous
             </button>
-            <span>Page {page}</span>
+            <span>
+              Page {page} · {result.data.total} card{result.data.total === 1 ? '' : 's'}
+            </span>
             <button
               type="button"
               disabled={page * 48 >= result.data.total}
@@ -232,39 +235,82 @@ export function CalendarCardEditor() {
   )
 }
 
+function emptyInput(existing: CalendarCardRow | null): CalendarCardInput {
+  return {
+    title: existing?.title || '',
+    title_amharic: existing?.title_amharic || '',
+    slug: existing?.slug || '',
+    category: existing?.category || categoryLabel(null, existing?.card_type || 'saint'),
+    card_type: existing?.card_type || 'saint',
+    description: existing?.description || '',
+    summary: existing?.summary || '',
+    summary_amharic: existing?.summary_amharic || '',
+    what_is_it: existing?.what_is_it || '',
+    what_is_it_amharic: existing?.what_is_it_amharic || '',
+    why_celebrated: existing?.why_celebrated || '',
+    why_celebrated_amharic: existing?.why_celebrated_amharic || '',
+    important_information: existing?.important_information || '',
+    important_information_amharic: existing?.important_information_amharic || '',
+    scripture_references: existing?.scripture_references || '',
+    fasting_notes: existing?.fasting_notes || '',
+    fasting_notes_amharic: existing?.fasting_notes_amharic || '',
+    season_notes: existing?.season_notes || '',
+    season_notes_amharic: existing?.season_notes_amharic || '',
+    short_label: existing?.short_label || '',
+    learn_more_label: existing?.learn_more_label || '',
+    sort_order: existing?.sort_order ?? 0,
+    status: existing?.status || 'published',
+    image_path: existing?.image_path || '',
+    image_alt: existing?.image_alt || '',
+    image_caption: existing?.image_caption || '',
+    image_caption_amharic: existing?.image_caption_amharic || '',
+    featured: existing ? Boolean(existing.featured) : true,
+    is_monthly: Boolean(existing?.is_monthly),
+    image_position: existing?.image_position || 'center',
+    ethiopian_month_number: existing?.ethiopian_month_number || 1,
+    ethiopian_day: existing?.ethiopian_day || 1,
+  }
+}
+
 function CardForm({ existing }: { existing: CalendarCardRow | null }) {
   const navigate = useNavigate()
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
-  const [input, setInput] = useState<CalendarCardInput>(() => ({
-    title: existing?.title || '',
-    title_amharic: existing?.title_amharic || '',
-    slug: existing?.slug || '',
-    commemoration_type: existing?.commemoration_type || 'saint',
-    summary: existing?.summary || '',
-    body_amharic: existing?.body_amharic || '',
-    body_english: existing?.body_english || '',
-    scripture_references: existing?.scripture_references || '',
-    keywords: normalizeKeywords(existing?.keywords),
-    sort_order: existing?.sort_order ?? 0,
-    status: existing?.status || 'draft',
-    image_path: existing?.image_path || '',
-    image_alt: existing?.image_alt || '',
-    featured: Boolean(existing?.featured),
-    is_monthly: Boolean(existing?.is_monthly),
-    image_position: existing?.image_position || 'center',
-    ethiopian_month_number: existing?.day?.ethiopian_month_number || 1,
-    ethiopian_day: existing?.day?.ethiopian_day || 1,
-  }))
+  const [dayLink, setDayLink] = useState<{ id: string; slug: string } | null>(
+    existing?.synaxarium_day_id
+      ? { id: existing.synaxarium_day_id, slug: existing.synaxarium_day_slug || '' }
+      : null,
+  )
+  const [input, setInput] = useState<CalendarCardInput>(() => emptyInput(existing))
 
   const maxDay = useMemo(
     () => daysInEthiopianMonth(input.ethiopian_month_number),
     [input.ethiopian_month_number],
   )
 
+  useEffect(() => {
+    let active = true
+    void lookupSynaxariumDay(input.ethiopian_month_number, input.ethiopian_day)
+      .then((found) => {
+        if (active) setDayLink(found)
+      })
+      .catch(() => {
+        if (active) setDayLink(null)
+      })
+    return () => {
+      active = false
+    }
+  }, [input.ethiopian_month_number, input.ethiopian_day])
+
   function set<K extends keyof CalendarCardInput>(key: K, value: CalendarCardInput[K]) {
-    setInput((prev) => ({ ...prev, [key]: value }))
+    setInput((prev) => {
+      const next = { ...prev, [key]: value }
+      if (key === 'title' && !existing && !(prev.slug || '').trim()) {
+        next.slug = slugify(String(value || ''))
+      }
+      return next
+    })
     setSuccess('')
   }
 
@@ -274,8 +320,8 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
     setSuccess('')
     try {
       const saved = await saveCalendarCard(input, existing)
-      setSuccess('Saved. Public Calendar updates immediately after refresh.')
-      if (!existing) navigate(`/admin/calendar/${saved.id}/edit`, { replace: true })
+      setSuccess('Saved. Public Calendar updates after refresh.')
+      if (!existing) navigate(`/admin/calendar/cards/${saved.id}/edit`, { replace: true })
     } catch (cause) {
       setError(errorMessage(cause))
     } finally {
@@ -285,11 +331,11 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
 
   async function archive() {
     if (!existing) return
-    if (!window.confirm(`Archive “${existing.title}”? The Synaxarium day is kept.`)) return
+    if (!window.confirm(`Archive “${existing.title}”? Synaxarium content is not deleted.`)) return
     setBusy(true)
     try {
       await archiveCalendarCard(existing.id)
-      navigate('/admin/calendar')
+      navigate('/admin/calendar/cards')
     } catch (cause) {
       setError(errorMessage(cause))
       setBusy(false)
@@ -300,7 +346,7 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
     if (!existing) return
     if (
       !window.confirm(
-        `Permanently delete “${existing.title}”? Prefer Archive when possible. The day and other commemorations are kept.`,
+        `Permanently delete calendar card “${existing.title}”? Synaxarium days and commemorations are kept.`,
       )
     ) {
       return
@@ -308,20 +354,39 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
     setBusy(true)
     try {
       await deleteCalendarCard(existing.id)
-      navigate('/admin/calendar')
+      navigate('/admin/calendar/cards')
     } catch (cause) {
       setError(errorMessage(cause))
       setBusy(false)
     }
   }
 
+  const preview = cardImagePreview({
+    image_path: input.image_path || null,
+    image_alt: input.image_alt || null,
+    title: input.title,
+  })
+  const previewCategory = categoryLabel(input.category, input.card_type)
+  const objectPosition =
+    input.image_position === 'top'
+      ? '50% 18%'
+      : input.image_position === 'bottom'
+        ? '50% 82%'
+        : input.image_position === 'left'
+          ? '22% 40%'
+          : input.image_position === 'right'
+            ? '78% 40%'
+            : '50% 40%'
+
   return (
     <>
       <div className={s.heading}>
         <div>
-          <Link to="/admin/calendar">← Calendar cards</Link>
+          <Link to="/admin/calendar/cards">← Calendar cards</Link>
           <h1>{existing ? 'Edit calendar card' : 'New calendar card'}</h1>
-          <p className={s.muted}>{busy ? 'Saving…' : success || 'Title, date, image, and story'}</p>
+          <p className={s.muted}>
+            {busy ? 'Saving…' : success || 'Educational card for the public Calendar strip'}
+          </p>
         </div>
         <button type="button" className={s.primary} disabled={busy} onClick={() => void save()}>
           {busy ? 'Saving…' : 'Save'}
@@ -335,116 +400,102 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
       {success ? <p role="status">{success}</p> : null}
 
       <div className={s.formGrid}>
-        <section className={s.card}>
-          <h2>Content</h2>
-          <div className={s.fields}>
-            <label>
-              Title *
-              <input value={input.title} onChange={(e) => set('title', e.target.value)} />
-            </label>
-            <label>
-              Title (Amharic)
-              <input
-                lang="am"
-                value={input.title_amharic || ''}
-                onChange={(e) => set('title_amharic', e.target.value)}
-              />
-            </label>
-            <label>
-              Type
-              <select
-                value={input.commemoration_type || ''}
-                onChange={(e) => set('commemoration_type', e.target.value)}
-              >
-                {COMMEMORATION_TYPES.map((type) => (
-                  <option key={type} value={type}>
-                    {typeLabel(type)}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Summary
-              <textarea
-                value={input.summary || ''}
-                onChange={(e) => set('summary', e.target.value)}
-              />
-            </label>
-            <label>
-              Body (English)
-              <textarea
-                value={input.body_english || ''}
-                onChange={(e) => set('body_english', e.target.value)}
-              />
-            </label>
-            <label>
-              Body (Amharic)
-              <textarea
-                lang="am"
-                value={input.body_amharic || ''}
-                onChange={(e) => set('body_amharic', e.target.value)}
-              />
-            </label>
-            <label>
-              Scripture references
-              <input
-                value={input.scripture_references || ''}
-                onChange={(e) => set('scripture_references', e.target.value)}
-              />
-            </label>
-            <label>
-              Keywords (comma separated)
-              <input
-                value={formatKeywordsForInput(input.keywords)}
-                onChange={(e) => set('keywords', normalizeKeywords(e.target.value))}
-              />
-            </label>
-            <label>
-              Status
-              <select
-                value={input.status || 'draft'}
-                onChange={(e) => set('status', e.target.value as ContentStatus)}
-              >
-                {statuses.map((value) => (
-                  <option key={value} value={value}>
-                    {value}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label>
-              Sort order
-              <input
-                type="number"
-                value={input.sort_order ?? 0}
-                onChange={(e) => set('sort_order', Number(e.target.value) || 0)}
-              />
-            </label>
-            <label className={s.check}>
-              <input
-                type="checkbox"
-                checked={Boolean(input.featured)}
-                onChange={(e) => set('featured', e.target.checked)}
-              />
-              Featured on Calendar (shows in the public card strip)
-            </label>
-            <label className={s.check}>
-              <input
-                type="checkbox"
-                checked={Boolean(input.is_monthly)}
-                onChange={(e) => set('is_monthly', e.target.checked)}
-              />
-              Monthly recurring (same Ethiopian day every month)
-            </label>
-          </div>
-        </section>
-
         <div className={s.stack}>
           <section className={s.card}>
-            <h2>Ethiopian date</h2>
+            <h2>1. Basic information</h2>
             <div className={s.fields}>
               <label>
-                Month
+                Title *
+                <input value={input.title} onChange={(e) => set('title', e.target.value)} />
+              </label>
+              <label>
+                Amharic title
+                <input
+                  lang="am"
+                  value={input.title_amharic || ''}
+                  onChange={(e) => set('title_amharic', e.target.value)}
+                />
+              </label>
+              <label>
+                Slug *
+                <input
+                  value={input.slug || ''}
+                  onChange={(e) => set('slug', e.target.value)}
+                  placeholder="saint-gabriel-monthly-19"
+                />
+              </label>
+              <label>
+                Category *
+                <select
+                  value={input.category || 'Commemoration'}
+                  onChange={(e) => set('category', e.target.value)}
+                >
+                  {CARD_CATEGORIES.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Card type
+                <select
+                  value={input.card_type || 'other'}
+                  onChange={(e) => set('card_type', e.target.value)}
+                >
+                  {CARD_TYPES.map((type) => (
+                    <option key={type} value={type}>
+                      {typeLabel(type)}
+                    </option>
+                  ))}
+                </select>
+                <small className={s.muted}>Used for visual styling on the strip.</small>
+              </label>
+              <label>
+                Status
+                <select
+                  value={input.status || 'published'}
+                  onChange={(e) => set('status', e.target.value as ContentStatus)}
+                >
+                  {statuses.map((value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Sort order
+                <input
+                  type="number"
+                  value={input.sort_order ?? 0}
+                  onChange={(e) => set('sort_order', Number(e.target.value) || 0)}
+                />
+              </label>
+              <label>
+                See more button label
+                <input
+                  value={input.learn_more_label || ''}
+                  onChange={(e) => set('learn_more_label', e.target.value)}
+                  placeholder="See more"
+                />
+              </label>
+              <label className={s.check}>
+                <input
+                  type="checkbox"
+                  checked={Boolean(input.featured)}
+                  onChange={(e) => set('featured', e.target.checked)}
+                />
+                Featured on Calendar strip
+              </label>
+            </div>
+          </section>
+
+          <section className={s.card}>
+            <h2>2. Date</h2>
+            <div className={s.fields}>
+              <label>
+                Ethiopian month
                 <select
                   value={input.ethiopian_month_number}
                   onChange={(e) => {
@@ -466,7 +517,7 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
                 </select>
               </label>
               <label>
-                Day
+                Ethiopian day
                 <select
                   value={input.ethiopian_day}
                   onChange={(e) => set('ethiopian_day', Number(e.target.value) || 1)}
@@ -478,17 +529,169 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
                   ))}
                 </select>
               </label>
+              <label className={s.check}>
+                <input
+                  type="checkbox"
+                  checked={Boolean(input.is_monthly)}
+                  onChange={(e) => set('is_monthly', e.target.checked)}
+                />
+                Monthly recurring (same Ethiopian day every month)
+              </label>
               <p className={s.muted}>
-                Saving finds or creates the matching <code>synaxarium_days</code> row and assigns{' '}
-                <code>day_id</code> / <code>day_slug</code>. No UUIDs to paste.
+                {dayLink ? (
+                  <>
+                    Linked Synaxarium day: <code>{dayLink.slug}</code> — Open date opens that day’s
+                    commemorations.
+                  </>
+                ) : (
+                  <>
+                    No matching <code>synaxarium_days</code> row yet. The card still saves; Open date
+                    uses month/day when available.
+                  </>
+                )}
               </p>
             </div>
           </section>
 
           <section className={s.card}>
-            <h2>Card image</h2>
+            <h2>3. Card content</h2>
+            <div className={s.fields}>
+              <label>
+                Short summary
+                <textarea
+                  value={input.summary || ''}
+                  onChange={(e) => set('summary', e.target.value)}
+                  rows={2}
+                  placeholder="1–2 sentences shown on the card"
+                />
+              </label>
+              <label>
+                Amharic summary
+                <textarea
+                  lang="am"
+                  value={input.summary_amharic || ''}
+                  onChange={(e) => set('summary_amharic', e.target.value)}
+                  rows={2}
+                />
+              </label>
+              <label>
+                What is this?
+                <textarea
+                  value={input.what_is_it || ''}
+                  onChange={(e) => set('what_is_it', e.target.value)}
+                  rows={3}
+                  placeholder="Concise factual explanation of the observance"
+                />
+              </label>
+              <label>
+                Amharic “What is this?”
+                <textarea
+                  lang="am"
+                  value={input.what_is_it_amharic || ''}
+                  onChange={(e) => set('what_is_it_amharic', e.target.value)}
+                  rows={3}
+                />
+              </label>
+              <label>
+                Why do we celebrate it?
+                <textarea
+                  value={input.why_celebrated || ''}
+                  onChange={(e) => set('why_celebrated', e.target.value)}
+                  rows={4}
+                  placeholder="Spiritual significance and why the Church commemorates it"
+                />
+              </label>
+              <label>
+                Why do we celebrate it? (Amharic)
+                <textarea
+                  lang="am"
+                  value={input.why_celebrated_amharic || ''}
+                  onChange={(e) => set('why_celebrated_amharic', e.target.value)}
+                  rows={4}
+                />
+              </label>
+              <label>
+                Important information
+                <textarea
+                  value={input.important_information || ''}
+                  onChange={(e) => set('important_information', e.target.value)}
+                  rows={4}
+                  placeholder="Customs, themes, related practices (optional)"
+                />
+              </label>
+              <label>
+                Important information (Amharic)
+                <textarea
+                  lang="am"
+                  value={input.important_information_amharic || ''}
+                  onChange={(e) => set('important_information_amharic', e.target.value)}
+                  rows={4}
+                />
+              </label>
+              <label>
+                Scripture references
+                <textarea
+                  value={input.scripture_references || ''}
+                  onChange={(e) => set('scripture_references', e.target.value)}
+                  rows={2}
+                  placeholder="Matthew 3:13–17&#10;John 1:29–34"
+                />
+              </label>
+              <label>
+                Fasting notes
+                <textarea
+                  value={input.fasting_notes || ''}
+                  onChange={(e) => set('fasting_notes', e.target.value)}
+                  rows={2}
+                  placeholder="Only explicit fasting guidance — do not invent rules"
+                />
+              </label>
+              <label>
+                Fasting notes (Amharic)
+                <textarea
+                  lang="am"
+                  value={input.fasting_notes_amharic || ''}
+                  onChange={(e) => set('fasting_notes_amharic', e.target.value)}
+                  rows={2}
+                />
+              </label>
+              <label>
+                Season notes
+                <textarea
+                  value={input.season_notes || ''}
+                  onChange={(e) => set('season_notes', e.target.value)}
+                  rows={2}
+                />
+              </label>
+              <label>
+                Season notes (Amharic)
+                <textarea
+                  lang="am"
+                  value={input.season_notes_amharic || ''}
+                  onChange={(e) => set('season_notes_amharic', e.target.value)}
+                  rows={2}
+                />
+              </label>
+              <label>
+                Description (internal / fallback)
+                <textarea
+                  value={input.description || ''}
+                  onChange={(e) => set('description', e.target.value)}
+                  rows={2}
+                />
+                <small className={s.muted}>
+                  Used only if summary is empty. Prefer Summary for public cards.
+                </small>
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <div className={s.stack}>
+          <section className={s.card}>
+            <h2>4. Image</h2>
             <MediaPicker
-              folder="synaxarium"
+              folder="calendar"
               value={input.image_path}
               altText={input.image_alt}
               onChange={({ storagePath, altText }) => {
@@ -500,23 +703,40 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
                 setSuccess('')
               }}
             />
-            <label>
-              Image focus
-              <select
-                value={input.image_position || 'center'}
-                onChange={(e) => set('image_position', e.target.value)}
-              >
-                {IMAGE_POSITIONS.map((pos) => (
-                  <option key={pos} value={pos}>
-                    {pos}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <div className={s.fields}>
+              <label>
+                Image position
+                <select
+                  value={input.image_position || 'center'}
+                  onChange={(e) => set('image_position', e.target.value)}
+                >
+                  {IMAGE_POSITIONS.map((pos) => (
+                    <option key={pos} value={pos}>
+                      {pos}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                Image caption
+                <input
+                  value={input.image_caption || ''}
+                  onChange={(e) => set('image_caption', e.target.value)}
+                />
+              </label>
+              <label>
+                Amharic image caption
+                <input
+                  lang="am"
+                  value={input.image_caption_amharic || ''}
+                  onChange={(e) => set('image_caption_amharic', e.target.value)}
+                />
+              </label>
+            </div>
           </section>
 
           <section className={s.card}>
-            <h2>Public preview</h2>
+            <h2>5. Public preview</h2>
             <div
               style={{
                 border: '1px solid var(--color-border)',
@@ -525,26 +745,15 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
                 maxWidth: 320,
               }}
             >
-              {input.image_path ? (
+              {preview.url ? (
                 <img
-                  src={cardImagePreview({
-                    ...((existing || {}) as CalendarCardRow),
-                    image_path: input.image_path,
-                    image_alt: input.image_alt || null,
-                    title: input.title,
-                    day: null,
-                  } as CalendarCardRow).url}
-                  alt={input.image_alt || ''}
+                  src={preview.url}
+                  alt={preview.alt}
                   style={{
                     width: '100%',
                     aspectRatio: '4/3',
                     objectFit: 'cover',
-                    objectPosition:
-                      input.image_position === 'top'
-                        ? '50% 18%'
-                        : input.image_position === 'bottom'
-                          ? '50% 82%'
-                          : '50% 40%',
+                    objectPosition,
                   }}
                 />
               ) : (
@@ -557,16 +766,58 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
                     color: 'var(--color-text-muted)',
                   }}
                 >
-                  No image yet — Upload or Choose from Media
+                  No image yet
                 </div>
               )}
               <div style={{ padding: 12 }}>
-                <small className={s.muted}>{typeLabel(input.commemoration_type)}</small>
+                <small className={s.muted}>{previewCategory}</small>
                 <strong style={{ display: 'block' }}>{input.title || 'Title'}</strong>
+                {input.title_amharic ? (
+                  <span lang="am" className={s.muted} style={{ display: 'block' }}>
+                    {input.title_amharic}
+                  </span>
+                ) : null}
                 <span className={s.muted}>
                   {monthLabel(input.ethiopian_month_number)} {input.ethiopian_day}
                   {input.is_monthly ? ' (monthly)' : ''}
                 </span>
+                {input.summary ? (
+                  <p className={s.muted} style={{ marginTop: 8, fontSize: 12 }}>
+                    {input.summary}
+                  </p>
+                ) : null}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 10 }}>
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      minHeight: 32,
+                      padding: '0 12px',
+                      borderRadius: 999,
+                      border: '1px solid var(--color-border-gold, #c9a227)',
+                      background:
+                        'color-mix(in srgb, var(--color-gold-faint, #f5e6b8) 72%, white)',
+                      fontSize: 12,
+                      fontWeight: 700,
+                    }}
+                  >
+                    {input.learn_more_label || 'See more'}
+                  </span>
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      minHeight: 32,
+                      padding: '0 12px',
+                      borderRadius: 999,
+                      border: '1px solid var(--color-border, #ccc)',
+                      fontSize: 12,
+                      fontWeight: 700,
+                    }}
+                  >
+                    Open date
+                  </span>
+                </div>
               </div>
             </div>
           </section>
@@ -576,7 +827,12 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
               <button type="button" disabled={busy} onClick={() => void archive()}>
                 Archive card
               </button>
-              <button type="button" className={s.danger} disabled={busy} onClick={() => void remove()}>
+              <button
+                type="button"
+                className={s.danger}
+                disabled={busy}
+                onClick={() => void remove()}
+              >
                 Delete card
               </button>
             </div>

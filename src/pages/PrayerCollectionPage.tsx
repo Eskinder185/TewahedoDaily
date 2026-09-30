@@ -50,13 +50,29 @@ function PrayerLink({
   collectionSlug: string
   openLabel: string
 }) {
+  const isPsalm = collectionSlug === 'mezmure-dawit'
+  const psalmNumber = prayer.psalmNumber
+  const orderLabel = isPsalm && psalmNumber
+    ? String(psalmNumber).padStart(2, '0')
+    : String(prayer.order).padStart(2, '0')
+  const primaryTitle =
+    isPsalm && psalmNumber
+      ? `Psalm ${psalmNumber}`
+      : prayer.title
+  const secondary =
+    isPsalm && psalmNumber
+      ? prayer.titles?.amharic || prayer.title
+      : prayer.transliterationTitle
+
   return (
     <Link className={styles.item} to={prayerDetailPath(prayer.slug, collectionSlug)}>
-      <span className={styles.order}>{String(prayer.order).padStart(2, '0')}</span>
+      <span className={styles.order}>{orderLabel}</span>
       <span className={styles.itemText}>
-        <strong lang="am">{prayer.title}</strong>
-        {prayer.transliterationTitle ? <span>{prayer.transliterationTitle}</span> : null}
-        {prayer.chapter || prayer.section ? (
+        <strong lang={isPsalm ? undefined : 'am'}>{primaryTitle}</strong>
+        {secondary && secondary !== primaryTitle ? (
+          <span lang="am">{secondary}</span>
+        ) : null}
+        {!isPsalm && (prayer.chapter || prayer.section) ? (
           <small>{[prayer.chapter, prayer.section].filter(Boolean).join(' / ')}</small>
         ) : null}
       </span>
@@ -134,6 +150,8 @@ export function PrayerCollectionPage() {
   const { collection, sections, prayers } = bundle
   const media = collectionMedia(collection.id)
   const useSections = sections.length > 0 && sections.some((section) => section.prayers.length > 0)
+  const emptyPublished =
+    prayers.length === 0 && sections.every((section) => section.prayers.length === 0)
 
   return (
     <PageSection variant="tint">
@@ -171,6 +189,13 @@ export function PrayerCollectionPage() {
               />
             </div>
           </section>
+        ) : null}
+
+        {emptyPublished ? (
+          <p className={styles.deck} role="status">
+            Prayer text for this collection is not published in Supabase yet. Sections may exist in
+            the CMS without prayer rows.
+          </p>
         ) : null}
 
         {useSections ? (
