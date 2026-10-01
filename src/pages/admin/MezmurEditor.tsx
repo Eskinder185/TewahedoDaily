@@ -21,6 +21,7 @@ import {
 import { uploadMezmurFile, validateFile } from '../../lib/cms/mediaService'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { useAsync } from '../../lib/cms/useAsync'
+import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice, Media, MezmurPreview, Modal, Status } from './AdminUi'
 import s from './Admin.module.css'
 
@@ -28,7 +29,7 @@ type FieldErrors = Partial<
   Record<'title' | 'title_amharic' | 'slug' | 'lyrics_amharic' | 'transliteration', string>
 >
 
-type EditorData = { row?: Mezmur; tags: string[]; taxonomy: Awaited<ReturnType<typeof getTaxonomy>> }
+type EditorData = { row?: Mezmur | null; tags: string[]; taxonomy: Awaited<ReturnType<typeof getTaxonomy>> }
 
 function validatePublishFields(input: MezmurInput): { blocking: string; errors: FieldErrors } {
   const errors: FieldErrors = {}
@@ -88,18 +89,43 @@ export function MezmurEditor() {
   const { id } = useParams()
   const result = useAsync(
     useCallback(async (): Promise<EditorData> => {
-      const [taxonomy, row, tags] = await Promise.all([
-        getTaxonomy(),
-        id ? getMezmur(id) : undefined,
-        id ? getTagIds(id) : [],
-      ])
+      const taxonomy = await getTaxonomy()
+      if (!id) return { taxonomy, row: undefined, tags: [] }
+      const row = await getMezmur(id)
+      const tags = row ? await getTagIds(row.id) : []
+      if (import.meta.env.DEV) {
+        console.debug('[MezmurEditor] load', {
+          routeId: id,
+          loadedDatabaseId: row?.id ?? null,
+          updated_at: row?.updated_at ?? null,
+        })
+      }
       return { taxonomy, row, tags }
     }, [id]),
   )
+
+  if (!result.loading && !result.error && id && result.data && !result.data.row) {
+    return (
+      <div className={s.heading}>
+        <div>
+          <h1>Mezmur not found</h1>
+          <p className={s.muted}>This Mezmur no longer exists. Return to the library or create a new draft.</p>
+          <p>
+            <Link to={ADMIN_PATHS.hymnsMezmur}>Back to Mezmur Library</Link>
+            {' · '}
+            <Link to={`${ADMIN_PATHS.hymnsMezmur}/new`}>Create New</Link>
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       <AsyncNotice {...result} retry={result.reload} />
-      {result.data && <EditorForm key={id || 'new'} initial={result.data} />}
+      {result.data && (result.data.row || !id) && (
+        <EditorForm key={result.data.row?.id || id || 'new'} initial={result.data} />
+      )}
     </>
   )
 }
@@ -109,7 +135,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const { profile } = useAuth()
   const admin = profile?.role === 'admin' || profile?.role === 'super_admin'
   const staff = admin || profile?.role === 'editor'
-  const [row, setRow] = useState(initial.row)
+  const [row, setRow] = useState<Mezmur | undefined>(initial.row ?? undefined)
   const [input, setInput] = useState<MezmurInput>(() => (initial.row ? editable(initial.row) : emptyMezmur()))
   const [tags, setTags] = useState(initial.tags)
   const [baseline, setBaseline] = useState(() =>
@@ -185,6 +211,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
       return
     }
 
+    const wasCreate = !row
     setBusy(true)
     setError('')
     setSuccess('')
@@ -196,9 +223,9 @@ function EditorForm({ initial }: { initial: EditorData }) {
       setHistoryRevision((n) => n + 1)
       setFieldErrors({})
       setSuccess(`Mezmur saved as ${label(saved.status)}.`)
-      if (!row) {
+      if (wasCreate) {
         bypass.current = true
-        navigate(`/admin/mezmur/${saved.id}/edit`, { replace: true, state: { saved: true } })
+        navigate(`${ADMIN_PATHS.hymnsMezmur}/${saved.id}/edit`, { replace: true, state: { saved: true } })
       }
     } catch (cause) {
       setError(errorMessage(cause))
@@ -281,7 +308,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
     <>
       <div className={s.heading}>
         <div>
-          <Link to="/admin/mezmur">← Mezmur library</Link>
+          <Link to={ADMIN_PATHS.hymnsMezmur}>← Mezmur library</Link>
           <h1>{row ? 'Edit Mezmur' : 'Add Mezmur'}</h1>
           <p className={s.muted}>
             {dirty ? 'Unsaved changes' : row ? 'All changes saved' : 'Not saved yet'}{' '}

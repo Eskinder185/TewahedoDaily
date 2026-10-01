@@ -1,33 +1,9 @@
--- PASTE THIS ENTIRE SCRIPT into Supabase Dashboard → SQL Editor → Run
--- Project: tgvhpibzzkqxkcumrivh
--- Fix: restore + strict create/update for public.save_mezmur
--- CREATE: omit payload.id → INSERT with gen_random_uuid()
--- UPDATE: payload.id required and must exist; stale ids raise "Mezmur not found"
--- Safe to re-run. Does not delete content. Does not wipe Oromo / keyword legacy fields.
--- Same body as supabase/migrations/20260930260000_save_mezmur_strict_create_update.sql
--- (plus is_staff bootstrap from 20260930240000).
+-- Make save_mezmur distinguish create vs update by payload.id presence.
+-- CREATE: omit id → INSERT with gen_random_uuid(); expected_updated_at must be null.
+-- UPDATE: payload.id present → require existing row; never silently INSERT a stale id.
+-- If payload.id is set but no row exists → raise 'Mezmur not found: <id>'.
 
 begin;
-
-do $$
-begin
-  if to_regprocedure('public.is_staff()') is null then
-    execute $fn$
-      create function public.is_staff()
-      returns boolean
-      language sql
-      stable
-      security definer
-      set search_path = ''
-      as $body$
-        select cms_private.current_role() in ('contributor', 'editor', 'admin', 'super_admin');
-      $body$;
-    $fn$;
-    revoke all on function public.is_staff() from public, anon;
-    grant execute on function public.is_staff() to authenticated, anon;
-  end if;
-end
-$$;
 
 create or replace function public.save_mezmur(
   payload jsonb,

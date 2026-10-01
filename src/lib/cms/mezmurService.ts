@@ -19,6 +19,9 @@ export function errorMessage(error: unknown) {
     const details = 'details' in error ? String((error as { details?: unknown }).details || '') : ''
     const hint = 'hint' in error ? String((error as { hint?: unknown }).hint || '') : ''
     if (code === 'PGRST116') return 'This item was not found, or you do not have permission to view it.'
+    if (/mezmur not found/i.test(message) || /mezmur no longer available/i.test(message)) {
+      return 'This Mezmur no longer exists. Return to the library or create a new draft.'
+    }
     if (code === '23505') return 'This slug already exists. Choose a unique slug.'
     if (code === '23503') return 'This item is in use, or a selected category, singer, or tag no longer exists. Archive used items instead.'
     if (code === '42501') return 'You do not have permission to make this change. Your role or the content status may have changed.'
@@ -134,7 +137,7 @@ export async function getPublishedMezmur(slug: string) {
 }
 export async function listPublishedMezmur(page = 1) { return listMezmur({ status: 'published', sort: 'published', page }) }
 export async function getMezmur(id: string) {
-  const { data, error } = await db().from('mezmur').select('*').eq('id', id).single()
+  const { data, error } = await db().from('mezmur').select('*').eq('id', id).maybeSingle()
   if (error) throw error
   return data
 }
@@ -160,12 +163,14 @@ export async function getTagIds(id: string) {
   if (error) throw error
   return data.map(row => row.tag_id)
 }
-export async function saveMezmur(input: MezmurInput, tags: string[], existing?: Mezmur, id = existing?.id || crypto.randomUUID()) {
+export async function saveMezmur(input: MezmurInput, tags: string[], existing?: Mezmur) {
+  // Create: omit id so Postgres / save_mezmur generates it. Update: only the loaded row id.
+  // Never invent a browser UUID — that caused "Mezmur not found" when treated as an update.
+  const mode = existing?.id ? 'update' : 'create'
   // Do not include title_oromo / lyrics_oromo — the RPC preserves existing values when those
   // keys are absent, so hidden legacy Oromo content is not wiped by the simplified editor.
-  const payload = {
+  const payload: Record<string, unknown> = {
     ...input,
-    id,
     title: input.title.trim(),
     slug: input.slug.trim(),
     title_amharic: input.title_amharic?.trim() || null,
@@ -183,9 +188,36 @@ export async function saveMezmur(input: MezmurInput, tags: string[], existing?: 
     category: input.category?.trim() || null,
     occasion: input.occasion?.trim() || null,
   }
-  const { data, error } = await db().rpc('save_mezmur', { payload: payload as Json, tag_ids: tags, expected_updated_at: existing?.updated_at || null }).single()
+  if (existing?.id) payload.id = existing.id
+  else delete payload.id
+
+  const expectedUpdatedAt = existing?.updated_at ?? null
+  if (import.meta.env.DEV) {
+    console.debug('[saveMezmur] request', {
+      mode,
+      payloadId: (payload.id as string | undefined) ?? null,
+      loadedDatabaseId: existing?.id ?? null,
+      expectedUpdatedAt,
+    })
+  }
+
+  const { data, error } = await db()
+    .rpc('save_mezmur', {
+      payload: payload as Json,
+      tag_ids: tags,
+      expected_updated_at: expectedUpdatedAt,
+    })
+    .single()
   if (error) throw error
   if (!data) throw new Error('No saved record was returned.')
+
+  if (import.meta.env.DEV) {
+    console.debug('[saveMezmur] response', {
+      mode,
+      returnedSavedId: data.id,
+      updated_at: data.updated_at,
+    })
+  }
   return data
 }
 export async function duplicateMezmur(row: Mezmur) {
