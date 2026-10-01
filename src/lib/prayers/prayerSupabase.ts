@@ -169,7 +169,7 @@ function mapPrayer(
   const englishOrOromo = english || oromo
 
   const psalmNumber =
-    collection.slug === 'mezmure-dawit' ? getPsalmNumber(row.slug, row.title) : null
+    collection.slug === 'mezmure-dawit' ? getPsalmNumber(row) : null
   const order = psalmNumber ?? row.sort_order
 
   return {

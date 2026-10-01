@@ -17,6 +17,7 @@ type ChantPlayerControlsProps = {
   onRateChange: (value: number) => void
   onSkipBack: () => void
   onSkipForward: () => void
+  onRestart?: () => void
   onSeek: (value: number) => void
   onPrevSection?: () => void
   onNextSection?: () => void
@@ -40,6 +41,7 @@ export function ChantPlayerControls({
   onRateChange,
   onSkipBack,
   onSkipForward,
+  onRestart,
   onSeek,
   onPrevSection,
   onNextSection,
@@ -50,6 +52,7 @@ export function ChantPlayerControls({
 }: ChantPlayerControlsProps) {
   const timelineId = useId()
   const volId = useId()
+  const speedId = useId()
   const trackRef = useRef<HTMLDivElement>(null)
   const [hoverRatio, setHoverRatio] = useState<number | null>(null)
   const hasDuration = Number.isFinite(durationSec) && durationSec > 0
@@ -146,99 +149,142 @@ export function ChantPlayerControls({
         ) : null}
       </div>
 
-      <div className={styles.transport}>
-        {onPrevSection ? (
-          <button
-            type="button"
-            className={styles.iconBtn}
-            disabled={disabled}
-            onClick={onPrevSection}
-            aria-label="Previous section"
-          >
-            ‹‹
-          </button>
-        ) : null}
-        <button
-          type="button"
-          className={styles.iconBtn}
-          disabled={disabled}
-          onClick={onSkipBack}
-          aria-label="Back 5 seconds"
-        >
-          −5
-        </button>
-        <button
-          type="button"
-          className={styles.play}
-          disabled={disabled}
-          onClick={onTogglePlay}
-          aria-label={isPlaying ? 'Pause' : 'Play'}
-        >
-          {isPlaying ? '❚❚' : '▶'}
-        </button>
-        <button
-          type="button"
-          className={styles.iconBtn}
-          disabled={disabled}
-          onClick={onSkipForward}
-          aria-label="Forward 5 seconds"
-        >
-          +5
-        </button>
-        {onNextSection ? (
-          <button
-            type="button"
-            className={styles.iconBtn}
-            disabled={disabled}
-            onClick={onNextSection}
-            aria-label="Next section"
-          >
-            ››
-          </button>
-        ) : null}
-      </div>
-
-      <div className={styles.secondary}>
-        <div className={styles.rates} role="group" aria-label="Playback speed">
-          {PRACTICE_SPEEDS.map((value) => (
+      <div className={styles.transport} role="group" aria-label="Primary playback controls">
+        <div className={styles.transportMain}>
+          {onPrevSection ? (
             <button
-              key={value}
               type="button"
-              className={`${styles.rateBtn} ${Math.abs(rate - value) < 0.01 ? styles.rateOn : ''}`}
+              className={styles.iconBtn}
               disabled={disabled}
-              aria-pressed={Math.abs(rate - value) < 0.01}
-              onClick={() => onRateChange(value)}
+              onClick={onPrevSection}
+              aria-label="Previous section"
             >
-              {value === 1 ? '1×' : `${value}×`}
+              <span aria-hidden="true">‹‹</span>
+              <span className={styles.btnCaption}>Prev</span>
             </button>
-          ))}
-        </div>
-        <div className={styles.volume}>
-          {onToggleMute ? (
+          ) : (
+            <span className={styles.transportSpacer} aria-hidden="true" />
+          )}
+          <button
+            type="button"
+            className={styles.play}
+            disabled={disabled}
+            onClick={onTogglePlay}
+            aria-label={isPlaying ? 'Pause mezmur' : 'Play mezmur'}
+          >
+            {isPlaying ? '❚❚' : '▶'}
+          </button>
+          {onNextSection ? (
             <button
               type="button"
-              className={styles.muteBtn}
+              className={styles.iconBtn}
               disabled={disabled}
-              onClick={onToggleMute}
-              aria-label={muted || volume === 0 ? 'Unmute' : 'Mute'}
+              onClick={onNextSection}
+              aria-label="Next section"
             >
-              {muted || volume === 0 ? '🔇' : '🔊'}
+              <span aria-hidden="true">››</span>
+              <span className={styles.btnCaption}>Next</span>
+            </button>
+          ) : (
+            <span className={styles.transportSpacer} aria-hidden="true" />
+          )}
+        </div>
+
+        <div className={styles.transportSecondary}>
+          <button
+            type="button"
+            className={styles.iconBtn}
+            disabled={disabled}
+            onClick={onSkipBack}
+            aria-label="Back 10 seconds"
+          >
+            −10s
+          </button>
+          {onRestart ? (
+            <button
+              type="button"
+              className={styles.iconBtn}
+              disabled={disabled}
+              onClick={onRestart}
+              aria-label="Restart mezmur"
+            >
+              Restart
             </button>
           ) : null}
-          <label className={styles.volLabel} htmlFor={volId}>
-            <span className={styles.srOnly}>Volume</span>
-            <input
-              id={volId}
-              type="range"
-              min={0}
-              max={100}
-              value={muted ? 0 : volume}
-              disabled={disabled}
-              onChange={(event) => onVolumeChange(Number(event.target.value))}
-            />
-          </label>
+          <button
+            type="button"
+            className={styles.iconBtn}
+            disabled={disabled}
+            onClick={onSkipForward}
+            aria-label="Forward 10 seconds"
+          >
+            +10s
+          </button>
         </div>
       </div>
+
+      <details className={styles.moreControls}>
+        <summary className={styles.moreSummary}>Speed &amp; volume</summary>
+        <div className={styles.secondary}>
+          <div className={styles.rates} role="group" aria-label="Playback speed">
+            <label className={styles.speedSelect} htmlFor={speedId}>
+              <span className={styles.speedLabel}>Speed</span>
+              <select
+                id={speedId}
+                value={String(rate)}
+                disabled={disabled}
+                onChange={(event) => onRateChange(Number(event.target.value))}
+                aria-label="Playback speed"
+              >
+                {PRACTICE_SPEEDS.map((value) => (
+                  <option key={value} value={value}>
+                    {value === 1 ? '1×' : `${value}×`}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <div className={styles.rateButtons}>
+              {PRACTICE_SPEEDS.map((value) => (
+                <button
+                  key={value}
+                  type="button"
+                  className={`${styles.rateBtn} ${Math.abs(rate - value) < 0.01 ? styles.rateOn : ''}`}
+                  disabled={disabled}
+                  aria-pressed={Math.abs(rate - value) < 0.01}
+                  onClick={() => onRateChange(value)}
+                >
+                  {value === 1 ? '1×' : `${value}×`}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className={styles.volume}>
+            {onToggleMute ? (
+              <button
+                type="button"
+                className={styles.muteBtn}
+                disabled={disabled}
+                onClick={onToggleMute}
+                aria-label={muted || volume === 0 ? 'Unmute' : 'Mute'}
+              >
+                {muted || volume === 0 ? 'Unmute' : 'Mute'}
+              </button>
+            ) : null}
+            <label className={styles.volLabel} htmlFor={volId}>
+              <span className={styles.srOnly}>Volume</span>
+              <input
+                id={volId}
+                type="range"
+                min={0}
+                max={100}
+                value={muted ? 0 : volume}
+                disabled={disabled}
+                onChange={(event) => onVolumeChange(Number(event.target.value))}
+              />
+            </label>
+          </div>
+        </div>
+      </details>
     </div>
   )
 }

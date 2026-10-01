@@ -18,7 +18,7 @@ const JUMP_TARGETS = [1, 25, 50, 75, 100, 125, 150]
 function psalmNumberOf(prayer: CollectionPrayer): number {
   return (
     prayer.psalmNumber ??
-    getPsalmNumber(prayer.slug, prayer.transliterationTitle || prayer.title) ??
+    getPsalmNumber(prayer) ??
     prayer.order
   )
 }
@@ -41,16 +41,15 @@ export function MezmureDawitPage() {
     fromParam != null && toParam != null && fromParam <= toParam
       ? { from: fromParam, to: toParam }
       : null
-  const qRaw = params.get('n') ?? ''
-  const [q, setQ] = useState(qRaw)
+  // `n` = selected Psalm number (URL). `q` = independent search box — never sync them.
+  // Previously wiring `n` into `q` filtered the index to every number containing that digit
+  // (selecting Psalm 1 showed 1, 10, 11, 12… instead of 1, 2, 3…).
+  const selectedRaw = params.get('n') ?? ''
+  const [q, setQ] = useState('')
   const [showPsalmIndexOnMobile, setShowPsalmIndexOnMobile] = useState(true)
   const [prayers, setPrayers] = useState<CollectionPrayer[] | null>(null)
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
-
-  useEffect(() => {
-    setQ(qRaw)
-  }, [qRaw])
 
   useEffect(() => {
     let active = true
@@ -83,11 +82,11 @@ export function MezmureDawitPage() {
   }, [allSorted, rangeActive])
 
   const indexFromParam = useMemo(() => {
-    const n = Number.parseInt(qRaw, 10)
+    const n = Number.parseInt(selectedRaw, 10)
     if (!Number.isFinite(n)) return 0
     const i = sorted.findIndex((p) => psalmNumberOf(p) === n)
     return i >= 0 ? i : 0
-  }, [qRaw, sorted])
+  }, [selectedRaw, sorted])
 
   const [index, setIndex] = useState(indexFromParam)
 
@@ -99,7 +98,7 @@ export function MezmureDawitPage() {
     const p = sorted[index]
     if (!p) return
     const nextN = String(psalmNumberOf(p))
-    if (nextN === qRaw) return
+    if (nextN === selectedRaw) return
     const next = new URLSearchParams(params)
     next.set('n', nextN)
     if (rangeActive) {
@@ -107,7 +106,7 @@ export function MezmureDawitPage() {
       next.set('to', String(rangeActive.to))
     }
     setParams(next, { replace: true })
-  }, [index, params, qRaw, rangeActive, setParams, sorted])
+  }, [index, params, selectedRaw, rangeActive, setParams, sorted])
 
   const active = sorted[index] ?? sorted[0]
   const activeNumber = active ? psalmNumberOf(active) : 0
@@ -139,8 +138,14 @@ export function MezmureDawitPage() {
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase()
     if (!needle) return sorted
+    const exactNumber = Number.parseInt(needle, 10)
+    const wantsExactNumber =
+      Number.isFinite(exactNumber) && String(exactNumber) === needle && exactNumber >= 1 && exactNumber <= 150
+
     return sorted.filter((p) => {
-      const sn = String(psalmNumberOf(p))
+      const number = psalmNumberOf(p)
+      if (wantsExactNumber) return number === exactNumber
+      const sn = String(number)
       const blob = [
         p.title,
         p.transliterationTitle,
@@ -152,7 +157,7 @@ export function MezmureDawitPage() {
         .filter(Boolean)
         .join(' ')
         .toLowerCase()
-      return sn.includes(needle) || blob.includes(needle)
+      return sn === needle || sn.startsWith(needle) || blob.includes(needle)
     })
   }, [q, sorted])
 
@@ -180,7 +185,8 @@ export function MezmureDawitPage() {
     const i = sorted.findIndex((x) => x.id === prayer.id)
     if (i >= 0) {
       go(i)
-      setQ(String(psalmNumberOf(prayer)))
+      // Keep the search box independent of selection so the full numeric index stays visible.
+      setQ('')
     }
   }
 

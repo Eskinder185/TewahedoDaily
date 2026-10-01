@@ -60,22 +60,23 @@ export function ChantLyricsLearningPanel({
   const [focusMode, setFocusMode] = useState(false)
   const [memorize, setMemorize] = useState(false)
   const [revealed, setRevealed] = useState(1)
+  const [displayOpen, setDisplayOpen] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const modes = useMemo(() => {
     const list: { id: LyricsScriptMode; label: string }[] = []
     if (hasLyrics) list.push({ id: 'lyrics', label: 'Amharic' })
     if (hasTrans) list.push({ id: 'transliteration', label: 'Transliteration' })
-    if (hasEnglish) list.push({ id: 'english', label: 'English' })
     if (hasLyrics && hasTrans) list.push({ id: 'both', label: 'Both' })
+    if (hasEnglish) list.push({ id: 'english', label: 'English' })
     return list
   }, [hasLyrics, hasTrans, hasEnglish])
 
   const fontPx = lyricsFontPx(fontSize)
   const lineHeight = lyricsLineHeight(fontSize)
   const layoutKey = `${entryId}:${scriptMode}:${fontPx}:${focusMode}:${memorize}:${revealed}`
-
   const autoScrollOn = autoScroll !== 'off'
+
   const { showResume, resumeAutoScroll, onScroll: onManualScroll, lyricsWindow } = useLyricsAutoScroll({
     enabled: autoScrollOn,
     isPlaying,
@@ -150,13 +151,8 @@ export function ChantLyricsLearningPanel({
   const displayIntro = introSec ?? Math.round(lyricsWindow.introSec)
   const displayOutro = outroSec ?? Math.round(lyricsWindow.outroSec)
 
-  const enterFocus = async () => {
+  const enterFocus = () => {
     setFocusMode(true)
-    try {
-      await scrollRef.current?.requestFullscreen?.()
-    } catch {
-      /* CSS focus mode still works */
-    }
   }
 
   const exitFocus = async () => {
@@ -184,7 +180,7 @@ export function ChantLyricsLearningPanel({
       style={lyricsStyle}
     >
       {scriptMode === 'both' && hasTrans ? (
-        <div className={styles.bothGrid}>
+        <div className={styles.bothStack}>
           <div className={styles.block}>
             <h3 className={styles.blockLabel}>Amharic</h3>
             <p className={styles.text} lang="am">
@@ -238,13 +234,17 @@ export function ChantLyricsLearningPanel({
         <h2 id="chant-lyrics-h" className={styles.title}>
           Lyrics
         </h2>
-        <div className={styles.modeGroup} role="group" aria-label="Lyrics display">
+      </div>
+
+      <div className={styles.modeScroller} role="group" aria-label="Text display">
+        <div className={styles.modeGroup}>
           {modes.map((mode) => (
             <button
               key={mode.id}
               type="button"
               className={`${styles.modeBtn} ${scriptMode === mode.id ? styles.modeOn : ''}`}
               onClick={() => setScriptMode(mode.id)}
+              aria-pressed={scriptMode === mode.id}
             >
               {mode.label}
             </button>
@@ -252,86 +252,120 @@ export function ChantLyricsLearningPanel({
         </div>
       </div>
 
-      <div className={styles.toolRow} role="toolbar" aria-label="Lyrics tools">
+      <div className={styles.primaryTools} role="toolbar" aria-label="Lyrics essentials">
         <div className={styles.fontControls}>
-          <button type="button" className={styles.modeBtn} aria-label="Decrease text size" onClick={() => bumpFont(-1)}>
+          <button type="button" className={styles.toolBtn} aria-label="Decrease text size" onClick={() => bumpFont(-1)}>
             A−
           </button>
           <span className={styles.toolLabel} aria-live="polite">
             {fontPx}px
           </span>
-          <button type="button" className={styles.modeBtn} aria-label="Increase text size" onClick={() => bumpFont(1)}>
+          <button type="button" className={styles.toolBtn} aria-label="Increase text size" onClick={() => bumpFont(1)}>
             A+
           </button>
         </div>
-        <label className={styles.scrollSelect}>
-          <span className={styles.toolLabel}>Scroll pace</span>
-          <select
-            value={autoScroll}
-            onChange={(e) => setAutoScroll(e.target.value as AutoScrollSpeed)}
-            aria-label="Auto scroll pace"
+
+        <div className={styles.autoScrollToggle} role="group" aria-label="Auto-scroll">
+          <span className={styles.toolLabel}>Auto-scroll</span>
+          <button
+            type="button"
+            className={`${styles.toolBtn} ${!autoScrollOn ? styles.modeOn : ''}`}
+            aria-pressed={!autoScrollOn}
+            onClick={() => setAutoScroll('off')}
           >
-            <option value="off">Off</option>
-            <option value="slow">Slow</option>
-            <option value="medium">Normal</option>
-            <option value="fast">Fast</option>
-          </select>
-        </label>
-        <button
-          type="button"
-          className={`${styles.modeBtn} ${showTiming ? styles.modeOn : ''}`}
-          aria-expanded={showTiming}
-          onClick={() => setShowTiming((v) => !v)}
-        >
-          Timing
+            Off
+          </button>
+          <button
+            type="button"
+            className={`${styles.toolBtn} ${autoScrollOn ? styles.modeOn : ''}`}
+            aria-pressed={autoScrollOn}
+            onClick={() => setAutoScroll(autoScroll === 'off' ? 'medium' : autoScroll)}
+          >
+            On
+          </button>
+        </div>
+
+        <button type="button" className={styles.toolBtn} onClick={() => (focusMode ? exitFocus() : enterFocus())}>
+          {focusMode ? 'Exit focus' : 'Focus reading'}
         </button>
-        <button
-          type="button"
-          className={`${styles.modeBtn} ${memorize ? styles.modeOn : ''}`}
-          aria-pressed={memorize}
-          onClick={() => {
-            setMemorize((v) => !v)
-            setRevealed(1)
-          }}
-        >
-          Memorize
-        </button>
-        <button type="button" className={styles.modeBtn} onClick={() => (focusMode ? exitFocus() : enterFocus())}>
-          {focusMode ? 'Exit focus' : 'Focus lyrics'}
-        </button>
+
         {showResume ? (
-          <button type="button" className={`${styles.modeBtn} ${styles.modeOn}`} onClick={resumeAutoScroll}>
+          <button type="button" className={`${styles.toolBtn} ${styles.modeOn}`} onClick={resumeAutoScroll}>
             Resume auto scroll
           </button>
         ) : null}
       </div>
 
-      {showTiming ? (
-        <div className={styles.timingRow} role="group" aria-label="Auto scroll timing">
-          <div className={styles.timingGroup}>
-            <span className={styles.toolLabel}>Intro</span>
-            <button type="button" className={styles.modeBtn} aria-label="Decrease intro" onClick={() => nudgeTiming('intro', -5)}>
-              −5
-            </button>
-            <span className={styles.timingValue}>{displayIntro}s</span>
-            <button type="button" className={styles.modeBtn} aria-label="Increase intro" onClick={() => nudgeTiming('intro', 5)}>
-              +5
-            </button>
-          </div>
-          <div className={styles.timingGroup}>
-            <span className={styles.toolLabel}>Outro</span>
-            <button type="button" className={styles.modeBtn} aria-label="Decrease outro" onClick={() => nudgeTiming('outro', -5)}>
-              −5
-            </button>
-            <span className={styles.timingValue}>{displayOutro}s</span>
-            <button type="button" className={styles.modeBtn} aria-label="Increase outro" onClick={() => nudgeTiming('outro', 5)}>
-              +5
-            </button>
-          </div>
-        </div>
-      ) : null}
-
       {lyricsBody}
+
+      <details
+        className={styles.displayDetails}
+        open={displayOpen}
+        onToggle={(event) => setDisplayOpen((event.target as HTMLDetailsElement).open)}
+      >
+        <summary className={styles.displaySummary}>Display settings</summary>
+        <div className={styles.displayBody}>
+          <label className={styles.scrollSelect}>
+            <span className={styles.toolLabel}>Scroll pace</span>
+            <select
+              value={autoScroll}
+              onChange={(e) => setAutoScroll(e.target.value as AutoScrollSpeed)}
+              aria-label="Auto scroll pace"
+            >
+              <option value="off">Off</option>
+              <option value="slow">Slow</option>
+              <option value="medium">Normal</option>
+              <option value="fast">Fast</option>
+            </select>
+          </label>
+
+          <button
+            type="button"
+            className={`${styles.toolBtn} ${showTiming ? styles.modeOn : ''}`}
+            aria-expanded={showTiming}
+            onClick={() => setShowTiming((v) => !v)}
+          >
+            Timing
+          </button>
+
+          <button
+            type="button"
+            className={`${styles.toolBtn} ${memorize ? styles.modeOn : ''}`}
+            aria-pressed={memorize}
+            onClick={() => {
+              setMemorize((v) => !v)
+              setRevealed(1)
+            }}
+          >
+            Memorize
+          </button>
+
+          {showTiming ? (
+            <div className={styles.timingRow} role="group" aria-label="Auto scroll timing">
+              <div className={styles.timingGroup}>
+                <span className={styles.toolLabel}>Intro</span>
+                <button type="button" className={styles.toolBtn} aria-label="Decrease intro" onClick={() => nudgeTiming('intro', -5)}>
+                  −5
+                </button>
+                <span className={styles.timingValue}>{displayIntro}s</span>
+                <button type="button" className={styles.toolBtn} aria-label="Increase intro" onClick={() => nudgeTiming('intro', 5)}>
+                  +5
+                </button>
+              </div>
+              <div className={styles.timingGroup}>
+                <span className={styles.toolLabel}>Outro</span>
+                <button type="button" className={styles.toolBtn} aria-label="Decrease outro" onClick={() => nudgeTiming('outro', -5)}>
+                  −5
+                </button>
+                <span className={styles.timingValue}>{displayOutro}s</span>
+                <button type="button" className={styles.toolBtn} aria-label="Increase outro" onClick={() => nudgeTiming('outro', 5)}>
+                  +5
+                </button>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      </details>
 
       {memorize ? (
         <MemoryAidPanel
@@ -351,7 +385,7 @@ export function ChantLyricsLearningPanel({
 
       {focusMode ? (
         <div className={styles.focusChrome}>
-          <button type="button" className={styles.modeBtn} onClick={exitFocus}>
+          <button type="button" className={styles.toolBtn} onClick={exitFocus}>
             Exit focus mode
           </button>
         </div>

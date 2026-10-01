@@ -89,6 +89,10 @@ export function ChantPracticePlayer({
   const [savedLoopSections, setSavedLoopSections] = useState<SavedChantLoopSection[]>([])
   const [recordingMode, setRecordingMode] = useState<RecordingMode>('with-lyrics')
   const [stickyVisible, setStickyVisible] = useState(false)
+  const [practiceOpen, setPracticeOpen] = useState(false)
+  const [isNarrow, setIsNarrow] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 959.98px)').matches,
+  )
 
   const videoId = payload.videoId
   const audioUrl = payload.audioUrl?.trim() || undefined
@@ -590,6 +594,28 @@ export function ChantPracticePlayer({
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 959.98px)')
+    const sync = () => {
+      const narrow = mq.matches
+      setIsNarrow(narrow)
+      if (!narrow) setPracticeOpen(true)
+    }
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
+
+  const restartPlayback = useCallback(() => {
+    const p = getPlayer()
+    if (!p) return
+    stopLoop()
+    p.seekTo(0, true)
+    setCurrentTimeSec(0)
+    p.pauseVideo()
+    setIsPlaying(false)
+  }, [getPlayer, stopLoop])
+
   const metaLine = useMemo(() => {
     const parts = [formLabel, ...badges].filter(Boolean)
     return parts.slice(0, 4).join(' · ')
@@ -603,22 +629,23 @@ export function ChantPracticePlayer({
         </button>
         <div className={styles.titleBlock}>
           <p className={styles.nowPlaying}>Practice</p>
-          {metaLine ? <p className={styles.metaLine}>{metaLine}</p> : null}
           <h1 className={styles.title}>{payload.title}</h1>
           {payload.titleAmharic ? (
             <p className={styles.amharicTitle} lang="am">
               {payload.titleAmharic}
             </p>
-          ) : payload.transliterationTitle &&
-            payload.transliterationTitle !== payload.title ? (
+          ) : null}
+          {payload.transliterationTitle &&
+          payload.transliterationTitle !== payload.title ? (
             <p className={styles.sub}>{payload.transliterationTitle}</p>
           ) : null}
+          {metaLine ? <p className={styles.metaLine}>{metaLine}</p> : null}
         </div>
         {headerActions ? <div className={styles.headerActions}>{headerActions}</div> : null}
       </header>
 
       <div className={styles.layout}>
-        <div className={styles.videoColumn}>
+        <div className={styles.mediaStack}>
           <div
             id="chant-practice-scroll-target"
             tabIndex={-1}
@@ -664,58 +691,15 @@ export function ChantPracticePlayer({
               onToggleMute={onToggleMute}
               rate={rate}
               onRateChange={onRateChange}
-              onSkipBack={() => skipBy(-5)}
-              onSkipForward={() => skipBy(5)}
+              onSkipBack={() => skipBy(-10)}
+              onSkipForward={() => skipBy(10)}
+              onRestart={restartPlayback}
               onSeek={seekTo}
               onPrevSection={() => goSection(-1)}
               onNextSection={() => goSection(1)}
               loopStart={loopStart}
               loopEnd={loopEnd}
               sectionMarks={autoSplitSections || []}
-            />
-          </section>
-
-          <div className={styles.loopAside}>
-            <ChantLoopControls
-              disabled={controlsDisabled}
-              loopStart={loopStart}
-              loopEnd={loopEnd}
-              loopPlaying={loopPlaying}
-              loopError={loopError}
-              formatTime={formatChantTime}
-              onMarkStart={markStart}
-              onMarkEnd={markEnd}
-              onNudgeStart={nudgeStart}
-              onNudgeEnd={nudgeEnd}
-              onPlayLoop={playLoop}
-              onStopLoop={stopLoop}
-              onClearLoop={clearLoop}
-              loopLimit={loopLimit}
-              onLoopLimitChange={setLoopLimit}
-              loopGapSec={loopGapSec}
-              onLoopGapChange={setLoopGapSec}
-              loopRepeatIndex={loopRepeatIndex}
-              savedSections={savedLoopSections}
-              onSaveSection={saveLoopSection}
-              onPlaySavedSection={playSavedLoopSection}
-              onLoadSavedSection={loadSavedLoopSectionIntoMarks}
-              onDeleteSavedSection={deleteSavedLoopSection}
-              onRenameSavedSection={renameSavedLoopSection}
-              autoSplitSections={autoSplitSections}
-              activeSectionIndex={activeSectionIndex}
-              onPlaySection={playSection}
-            />
-          </div>
-
-          <section className={styles.recordBlock} aria-label="Record your practice">
-            <h2 className={styles.sectionHeading}>Record your practice</h2>
-            <p className={styles.privacyNote}>
-              Your recording stays on this device unless you choose otherwise.
-            </p>
-            <VoiceRecorder
-              mode={recordingMode}
-              onModeChange={setRecordingMode}
-              disabled={false}
             />
           </section>
         </div>
@@ -738,28 +722,105 @@ export function ChantPracticePlayer({
             showMemorizationTipsCallout={false}
           />
         </div>
+
+        <div className={styles.practiceStack}>
+          <details
+            className={styles.collapsible}
+            open={!isNarrow || practiceOpen}
+            onToggle={(event) => {
+              if (isNarrow) setPracticeOpen((event.target as HTMLDetailsElement).open)
+            }}
+          >
+            <summary className={styles.collapsibleSummary}>Practice tools</summary>
+            <div className={styles.collapsibleBody}>
+              <section className={styles.loopAside} aria-label="Loop practice">
+                <h2 className={styles.sectionHeading}>Loop practice</h2>
+                <ChantLoopControls
+                  disabled={controlsDisabled}
+                  loopStart={loopStart}
+                  loopEnd={loopEnd}
+                  loopPlaying={loopPlaying}
+                  loopError={loopError}
+                  formatTime={formatChantTime}
+                  onMarkStart={markStart}
+                  onMarkEnd={markEnd}
+                  onNudgeStart={nudgeStart}
+                  onNudgeEnd={nudgeEnd}
+                  onPlayLoop={playLoop}
+                  onStopLoop={stopLoop}
+                  onClearLoop={clearLoop}
+                  loopLimit={loopLimit}
+                  onLoopLimitChange={setLoopLimit}
+                  loopGapSec={loopGapSec}
+                  onLoopGapChange={setLoopGapSec}
+                  loopRepeatIndex={loopRepeatIndex}
+                  savedSections={savedLoopSections}
+                  onSaveSection={saveLoopSection}
+                  onPlaySavedSection={playSavedLoopSection}
+                  onLoadSavedSection={loadSavedLoopSectionIntoMarks}
+                  onDeleteSavedSection={deleteSavedLoopSection}
+                  onRenameSavedSection={renameSavedLoopSection}
+                  autoSplitSections={autoSplitSections}
+                  activeSectionIndex={activeSectionIndex}
+                  onPlaySection={playSection}
+                />
+              </section>
+
+              <section className={styles.recordBlock} aria-label="Record yourself">
+                <h2 className={styles.sectionHeading}>Record yourself</h2>
+                <p className={styles.privacyNote}>
+                  Your recording stays on this device unless you choose otherwise.
+                </p>
+                <VoiceRecorder
+                  mode={recordingMode}
+                  onModeChange={setRecordingMode}
+                  disabled={false}
+                />
+              </section>
+            </div>
+          </details>
+        </div>
       </div>
 
       {stickyVisible ? (
         <div className={styles.stickyBar} role="region" aria-label="Mini playback controls">
-          <button type="button" className={styles.stickyBtn} onClick={() => skipBy(-5)} aria-label="Back 5 seconds">
-            −5
-          </button>
-          <button
-            type="button"
-            className={styles.stickyPlay}
-            onClick={togglePlay}
-            aria-label={isPlaying ? 'Pause' : 'Play'}
-          >
-            {isPlaying ? '❚❚' : '▶'}
-          </button>
-          <button type="button" className={styles.stickyBtn} onClick={() => skipBy(5)} aria-label="Forward 5 seconds">
-            +5
-          </button>
-          <span className={styles.stickyTime}>
-            {formatChantTime(currentTimeSec)} / {formatChantTime(durationSec || null)}
-          </span>
-          {loopPlaying ? <span className={styles.stickyLoop}>Loop</span> : null}
+          <p className={styles.stickyTitle}>{payload.title}</p>
+          <div className={styles.stickyControls}>
+            <button
+              type="button"
+              className={styles.stickyBtn}
+              onClick={() => goSection(-1)}
+              aria-label="Previous section"
+            >
+              Prev
+            </button>
+            <button
+              type="button"
+              className={styles.stickyPlay}
+              onClick={togglePlay}
+              aria-label={isPlaying ? 'Pause mezmur' : 'Play mezmur'}
+            >
+              {isPlaying ? '❚❚' : '▶'}
+            </button>
+            <button
+              type="button"
+              className={styles.stickyBtn}
+              onClick={() => goSection(1)}
+              aria-label="Next section"
+            >
+              Next
+            </button>
+            {loopPlaying ? (
+              <button
+                type="button"
+                className={styles.stickyLoop}
+                onClick={stopLoop}
+                aria-label="Stop loop"
+              >
+                Loop
+              </button>
+            ) : null}
+          </div>
         </div>
       ) : null}
     </div>
