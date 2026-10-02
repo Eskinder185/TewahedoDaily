@@ -1,24 +1,43 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { AuthChangeEvent, Session } from '@supabase/supabase-js'
 import { supabase } from '../supabase/client'
-import { AuthContext, type Profile } from './useAuth'
+import { AuthContext, isStaffRole, type Profile } from './useAuth'
+import { friendlyAuthError } from './authErrors'
+import {
+  clearGuestFavorites,
+  clearGuestProgress,
+  clearMergeOffered,
+  hasGuestDataToMerge,
+  markMergeOffered,
+} from '../userContent/guestStorage'
+import { importGuestFavorites } from '../userContent/favoritesService'
+import { importGuestProgress } from '../userContent/readingProgressService'
 
-function profileErrorMessage(error: { message?: string; code?: string; status?: number } | null): string {
-  if (!error) return 'Unable to verify CMS access. Try again.'
+function profileFetchError(error: { message?: string; code?: string; status?: number } | null): string {
+  if (!error) return 'Unable to load your account. Try again.'
   const code = error.code || ''
   const text = `${error.message || ''}`.toLowerCase()
   if (code === 'PGRST301' || error.status === 401 || text.includes('jwt') || text.includes('session')) {
     return 'Your session expired. Please sign in again.'
   }
   if (code === '42501' || error.status === 403 || text.includes('permission denied') || text.includes('403')) {
-    return 'Signed in, but profile access was denied (403). Apply supabase/FIX_NOW.sql in the Supabase SQL Editor, then use Check access again.'
+    return 'Signed in, but profile access was denied. Apply supabase/FIX_REGULAR_USER_ACCOUNTS.sql, then try again.'
   }
-  if (error.message && !/stack|exception|sqlstate/i.test(error.message)) return error.message
-  return 'Unable to verify CMS access. Try again.'
+  return friendlyAuthError(error, 'Unable to load your account. Try again.')
 }
 
-const DENIED_403 =
-  'Signed in, but profile access was denied (403). Apply supabase/FIX_NOW.sql in the Supabase SQL Editor, then use Check access again.'
+async function mergeGuestContent(userId: string) {
+  if (!hasGuestDataToMerge()) return
+  try {
+    await importGuestFavorites(userId)
+    await importGuestProgress(userId)
+    clearGuestFavorites()
+    clearGuestProgress()
+    markMergeOffered()
+  } catch (cause) {
+    if (import.meta.env.DEV) console.error('[auth] guest merge', cause)
+  }
+}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<Session | null>(null)
@@ -28,8 +47,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const generation = useRef(0)
   const currentSession = useRef<Session | null>(null)
   const profileUserId = useRef<string | null>(null)
-  /** Sticky failure key so auth events cannot spam the same failing GET. */
   const hardFailUserId = useRef<string | null>(null)
+  const mergedForUser = useRef<string | null>(null)
 
   const clearAuth = useCallback(() => {
     currentSession.current = null
@@ -44,44 +63,61 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const fetchProfile = useCallback(async (userId: string, force = false) => {
     if (!supabase) return null
     if (!force && hardFailUserId.current === userId) {
-      return { profile: null as Profile | null, error: DENIED_403, sticky: true }
+      return {
+        profile: null as Profile | null,
+        error: profileFetchError({ code: '42501', message: 'permission denied' }),
+        sticky: true,
+      }
     }
 
     const { data: sessionData, error: sessionError } = await supabase.auth.getSession()
-    if (sessionError) return { profile: null, error: profileErrorMessage(sessionError), sticky: false }
+    if (sessionError) return { profile: null, error: profileFetchError(sessionError), sticky: false }
     const active = sessionData.session
     if (!active?.access_token || active.user.id !== userId) {
-      return { profile: null, error: 'Your session expired. Please sign in again.', sticky: false, expired: true as const }
+      return {
+        profile: null,
+        error: 'Your session expired. Please sign in again.',
+        sticky: false,
+        expired: true as const,
+      }
     }
 
-    const { data, error: profileError } = await supabase
+    let { data, error: profileError } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
       .maybeSingle()
+
+    // Ensure a regular-user profile exists (pre-trigger signups / race).
+    if (!profileError && !data) {
+      const ensured = await supabase.rpc('ensure_user_profile' as never)
+      const ensuredData = (ensured as { data?: Profile | null; error?: { message?: string } | null }).data
+      const ensuredError = (ensured as { error?: { message?: string } | null }).error
+      if (!ensuredError && ensuredData) {
+        data = ensuredData
+      } else if (ensuredError) {
+        if (import.meta.env.DEV) console.warn('[auth] ensure_user_profile', ensuredError)
+      }
+    }
 
     if (profileError) {
       const sticky =
         profileError.code === '42501' ||
         /permission denied|403/i.test(profileError.message || '')
       if (sticky) hardFailUserId.current = userId
-      return { profile: null, error: profileErrorMessage(profileError), sticky }
+      return { profile: null, error: profileFetchError(profileError), sticky }
     }
 
     hardFailUserId.current = null
-    if (!data) {
-      return {
-        profile: null,
-        error:
-          'No CMS profile is assigned to this account. Ask a super admin to grant access, or run bootstrap_first_super_admin in SQL.',
-        sticky: false,
-      }
-    }
-    return { profile: data, error: null as string | null, sticky: false }
+    // Regular users may briefly have no profile row; do not treat as fatal for public browsing.
+    return { profile: (data as Profile | null) ?? null, error: null as string | null, sticky: false }
   }, [])
 
   const restore = useCallback(
-    async (next: Session | null, options?: { forceProfile?: boolean; reason?: AuthChangeEvent | 'manual' | 'signout' }) => {
+    async (
+      next: Session | null,
+      options?: { forceProfile?: boolean; reason?: AuthChangeEvent | 'manual' | 'signout'; mergeGuest?: boolean },
+    ) => {
       const request = ++generation.current
       const force = options?.forceProfile === true
       const nextId = next?.user.id ?? null
@@ -107,12 +143,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setLoading(true)
       }
 
-      // Skip duplicate profile GETs for the same user (TOKEN_REFRESHED spam).
       const alreadyLoaded = profileUserId.current === nextId && !force
       const blockedWithoutRetry = !force && hardFailUserId.current === nextId
       if (alreadyLoaded || blockedWithoutRetry) {
         if (request === generation.current) {
-          if (blockedWithoutRetry) setError(DENIED_403)
+          if (blockedWithoutRetry) setError(profileFetchError({ code: '42501' }))
           setLoading(false)
         }
         return
@@ -127,20 +162,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setError(result.error)
           return
         }
-        if (result?.error) {
+        if (result?.error && !result.profile) {
+          // Keep session for public use; surface soft error only.
           setProfile(null)
-          profileUserId.current = null
+          profileUserId.current = next.user.id
           setError(result.error)
-          return
+        } else {
+          profileUserId.current = next.user.id
+          setProfile(result?.profile ?? null)
+          setError(null)
         }
-        profileUserId.current = next.user.id
-        setProfile(result?.profile ?? null)
-        setError(null)
+
+        const shouldMerge =
+          options?.mergeGuest === true ||
+          options?.reason === 'SIGNED_IN' ||
+          (identityChanged && !!nextId)
+        if (shouldMerge && nextId && mergedForUser.current !== nextId) {
+          mergedForUser.current = nextId
+          void mergeGuestContent(nextId)
+        }
       } catch (cause) {
         if (request === generation.current) {
           setProfile(null)
-          profileUserId.current = null
-          setError(cause instanceof Error ? cause.message : 'Unable to verify CMS access. Try again.')
+          profileUserId.current = next.user.id
+          setError(friendlyAuthError(cause, 'Unable to load your account. Try again.'))
         }
       } finally {
         if (request === generation.current) setLoading(false)
@@ -158,7 +203,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, next) => {
-      // Defer out of the Auth lock. Only load profile when identity changes or on explicit sign-in.
       queueMicrotask(() => {
         if (!active) return
         if (event === 'TOKEN_REFRESHED' && next && currentSession.current?.user.id === next.user.id) {
@@ -166,7 +210,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setSession(next)
           return
         }
-        void restore(next, { reason: event })
+        void restore(next, {
+          reason: event,
+          mergeGuest: event === 'SIGNED_IN',
+        })
       })
     })
     return () => {
@@ -177,12 +224,45 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [restore])
 
   async function signIn(email: string, password: string) {
-    if (!supabase) throw new Error('CMS authentication is not configured.')
+    if (!supabase) throw new Error('Authentication is not configured.')
     hardFailUserId.current = null
     profileUserId.current = null
+    mergedForUser.current = null
     const { error: authError } = await supabase.auth.signInWithPassword({ email, password })
-    if (authError) throw new Error('Sign-in failed. Check your credentials and try again.')
-    // SIGNED_IN listener loads the profile; avoid a second parallel fetch here.
+    if (authError) throw new Error(friendlyAuthError(authError, 'The email or password is incorrect.'))
+  }
+
+  async function signUp(input: { email: string; password: string; displayName: string }) {
+    if (!supabase) throw new Error('Authentication is not configured.')
+    const displayName = input.displayName.trim()
+    if (!displayName) throw new Error('Please enter a display name.')
+    if (input.password.length < 6) throw new Error('Choose a stronger password (at least 6 characters).')
+
+    const { data, error: authError } = await supabase.auth.signUp({
+      email: input.email.trim(),
+      password: input.password,
+      options: {
+        data: { display_name: displayName },
+        // Role must never be chosen by the client — DB trigger sets role=user.
+      },
+    })
+    if (authError) throw new Error(friendlyAuthError(authError, 'Unable to create your account. Please try again.'))
+
+    const needsEmailConfirmation = !data.session
+    if (data.session?.user.id) {
+      mergedForUser.current = null
+      try {
+        await supabase.rpc('ensure_user_profile' as never)
+      } catch {
+        /* trigger may have created it */
+      }
+      // Update display name if profile already existed.
+      await supabase
+        .from('profiles')
+        .update({ display_name: displayName })
+        .eq('id', data.session.user.id)
+    }
+    return { needsEmailConfirmation }
   }
 
   async function signOut() {
@@ -191,24 +271,38 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       return
     }
     generation.current++
+    mergedForUser.current = null
+    clearMergeOffered()
     const { error: authError } = await supabase.auth.signOut()
     clearAuth()
-    if (authError) throw new Error('Sign-out failed. Please try again.')
+    if (authError) throw new Error(friendlyAuthError(authError, 'Sign-out failed. Please try again.'))
   }
 
-  return (
-    <AuthContext.Provider
-      value={{
-        session,
-        profile,
-        loading,
-        error,
-        signIn,
-        signOut,
-        refreshProfile: () => restore(currentSession.current, { forceProfile: true, reason: 'manual' }),
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
+  async function requestPasswordReset(email: string) {
+    if (!supabase) throw new Error('Authentication is not configured.')
+    const redirectTo = `${window.location.origin}/login`
+    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim(), { redirectTo })
+    if (resetError) throw new Error(friendlyAuthError(resetError, 'Unable to send a reset email. Please try again.'))
+  }
+
+  const value = useMemo(
+    () => ({
+      session,
+      user: session?.user ?? null,
+      profile,
+      role: (profile?.role as Profile['role']) ?? null,
+      loading,
+      error,
+      isAuthenticated: Boolean(session?.user),
+      isStaff: isStaffRole(profile?.role),
+      signIn,
+      signUp,
+      signOut,
+      refreshProfile: () => restore(currentSession.current, { forceProfile: true, reason: 'manual' }),
+      requestPasswordReset,
+    }),
+    [session, profile, loading, error, restore],
   )
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

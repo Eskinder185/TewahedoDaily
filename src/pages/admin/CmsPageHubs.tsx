@@ -19,7 +19,7 @@ const HYMNS_TABS = [
   { to: '/admin/hymns/browse-groups', label: 'Browse Groups' },
   { to: '/admin/hymns/occasions', label: 'Occasions' },
   { to: '/admin/hymns/categories', label: 'Categories' },
-  { to: '/admin/hymns/singers', label: 'Singers' },
+  { to: '/admin/hymns/zemaris', label: 'Zemaris' },
   { to: '/admin/hymns/tags', label: 'Tags' },
 ]
 
@@ -100,7 +100,7 @@ export function HymnsAdminLayout() {
     <AdminPageShell
       eyebrow="EDITING: HYMNS PRACTICE"
       title="Hymns Practice"
-      description="Manage Mezmur, browse groups, singers, categories, and tags that power Hymns Practice discovery."
+      description="Manage Mezmur, browse groups, Zemaris, categories, and tags that power Hymns Practice discovery."
       tabs={HYMNS_TABS}
     />
   )
@@ -139,24 +139,24 @@ export function HymnsOverview() {
           {
             to: '/admin/hymns/occasions',
             label: 'Occasions',
-            detail: 'public.mezmur_occasions + browse images',
+            detail: 'Derived from mezmur_occasion_links_import',
           },
           {
-            to: '/admin/hymns/singers',
-            label: 'Singers',
-            detail: 'public.singers',
+            to: '/admin/hymns/zemaris',
+            label: 'Zemaris',
+            detail: 'public.zemaris — singer profiles for Hymn Practice',
             count: result.data?.singers ?? '…',
           },
           {
             to: '/admin/hymns/categories',
             label: 'Categories',
-            detail: 'public.categories',
+            detail: 'Derived from mezmur_category_links_import',
             count: result.data?.categories ?? '…',
           },
           {
             to: '/admin/hymns/tags',
             label: 'Tags',
-            detail: 'public.tags + mezmur_tags',
+            detail: 'Optional tags table (empty is OK)',
             count: result.data?.tags ?? '…',
           },
           {

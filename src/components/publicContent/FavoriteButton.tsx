@@ -86,7 +86,7 @@ export function FavoriteButton({
       </button>
       {!session ? (
         <p>
-          <Link to="/account">Sign in to sync favorites</Link>
+          <Link to="/login">Sign in to sync favorites</Link>
           {favorited ? ' · Saved on this device' : null}
         </p>
       ) : null}

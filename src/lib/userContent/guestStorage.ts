@@ -8,7 +8,8 @@ import type {
 } from './types'
 import { favoriteKey, progressKey } from './types'
 
-const FAVORITES_KEY = 'td-guest-favorites-v1'
+const FAVORITES_KEY = 'tewahedo:favorites:v1'
+const FAVORITES_KEY_LEGACY = 'td-guest-favorites-v1'
 const PROGRESS_KEY = 'td-guest-progress-v1'
 const RECENT_MEZMUR_KEY = 'td-guest-recent-mezmur-v1'
 const MERGE_OFFERED_KEY = 'td-guest-merge-offered-v1'
@@ -42,7 +43,19 @@ function writeJson(key: string, value: unknown) {
 }
 
 export function getGuestFavorites(): FavoriteRecord[] {
-  return readJson<FavoriteRecord[]>(FAVORITES_KEY, [])
+  const current = readJson<FavoriteRecord[]>(FAVORITES_KEY, [])
+  if (current.length) return current
+  // One-time migrate from legacy key.
+  const legacy = readJson<FavoriteRecord[]>(FAVORITES_KEY_LEGACY, [])
+  if (legacy.length) {
+    writeJson(FAVORITES_KEY, legacy)
+    try {
+      window.localStorage.removeItem(FAVORITES_KEY_LEGACY)
+    } catch {
+      /* ignore */
+    }
+  }
+  return legacy
 }
 
 export function setGuestFavorites(items: FavoriteRecord[]) {

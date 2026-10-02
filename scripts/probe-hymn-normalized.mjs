@@ -33,16 +33,14 @@ if (!url || !key) {
 }
 const sb = createClient(url, key)
 const tables = [
-  'hymn_collections',
-  'hymn_sections',
-  'mezmur',
-  'mezmur_section_links',
-  'mezmur_occasion_links',
-  'categories',
-  'singers',
-  'mezmur_occasions',
-  'hymn_collections_with_counts',
-  'hymn_sections_with_counts',
+  'mezmur_collections_import',
+  'mezmur_sections_import',
+  'mezmur_data_import',
+  'mezmur_section_links_import',
+  'mezmur_occasion_links_import',
+  'mezmur_category_links_import',
+  'zemaris',
+  'zemaris_with_counts',
   'hymn_major_browse_groups',
   'hymn_browse_group_children',
 ]
@@ -53,40 +51,19 @@ for (const t of tables) {
 }
 
 const { data: cols, error: cErr } = await sb
-  .from('hymn_collections')
-  .select('id,slug,title,status,sort_order,is_featured')
+  .from('mezmur_collections_import')
+  .select('collection_slug,title,status,sort_order')
   .eq('status', 'published')
   .order('sort_order')
   .limit(20)
 if (cErr) console.log('collections query ERR', JSON.stringify(cErr))
 else console.log('collections', JSON.stringify(cols, null, 2))
 
-if (cols?.length) {
-  const holidays = cols.find((c) => c.slug === 'holidays-feasts')
-  if (holidays) {
-    const { data: secs, error: sErr } = await sb
-      .from('hymn_sections')
-      .select('id,slug,title,status,sort_order')
-      .eq('collection_id', holidays.id)
-      .eq('status', 'published')
-      .order('sort_order')
-    if (sErr) console.log('sections ERR', JSON.stringify(sErr))
-    else {
-      console.log('holidays section count', secs?.length)
-      console.log(
-        'holidays sections sample',
-        JSON.stringify((secs || []).slice(0, 5), null, 2),
-      )
-      const meskel = (secs || []).find(
-        (s) => s.slug.includes('meskel') || /meskel/i.test(s.title),
-      )
-      if (meskel) {
-        const { count, error: lErr } = await sb
-          .from('mezmur_section_links')
-          .select('mezmur_id', { count: 'exact', head: true })
-          .eq('section_id', meskel.id)
-        console.log('meskel', meskel.slug, lErr ? JSON.stringify(lErr) : 'links=' + count)
-      }
-    }
-  }
-}
+const occ = await sb
+  .from('mezmur_occasion_links_import')
+  .select('occasion_slug')
+  .limit(5)
+console.log(
+  'occasion_links_sample',
+  occ.error ? JSON.stringify(occ.error) : JSON.stringify(occ.data),
+)

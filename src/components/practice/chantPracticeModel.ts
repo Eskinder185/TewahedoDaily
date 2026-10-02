@@ -49,6 +49,8 @@ export type ChantPracticePayload = {
   transliterationLyrics: string
   /** Optional English lyrics body. */
   lyricsEnglish?: string
+  /** Zemari / singer display name for the mini-player. */
+  singerName?: string
   /** Null when the chant has no usable YouTube video (lyrics/audio-only is fine). */
   videoId: string | null
   /** Optional non-YouTube audio when no embeddable video exists. */

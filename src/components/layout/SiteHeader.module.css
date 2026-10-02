@@ -503,9 +503,7 @@
     gap: var(--space-1);
   }
 
-  .toggleGroup .utilityLink {
-    display: none;
-  }
+  /* Keep Sign in / Account visible; only hide non-auth utility chrome if needed. */
   .bar {
     padding-inline: max(var(--space-2), env(safe-area-inset-left, 0px))
       max(var(--space-2), env(safe-area-inset-right, 0px));
@@ -517,7 +515,7 @@
   .brand {
     flex: 1 1 auto;
     min-width: 0;
-    max-width: calc(100% - 8.25rem);
+    max-width: calc(100% - 9.5rem);
   }
 
   .wordmark {
@@ -531,9 +529,11 @@
   }
 
   .utilityLink {
-    min-width: var(--tap-min);
+    min-width: auto;
     min-height: var(--tap-min);
     height: var(--tap-min);
+    padding-inline: 0.7rem;
+    font-size: 0.78rem;
   }
 }
 

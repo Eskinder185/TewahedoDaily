@@ -3,6 +3,8 @@ import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { pageNumber, PAGE_SIZE, type MezmurCard } from '../lib/publicContent/service'
 import {
   loadHymnBrowseIndex,
+  getZemariPublicBySlug,
+  listPublishedMezmursForZemari,
   type HymnBrowseCard,
   type HymnBrowseKind,
 } from '../lib/publicContent/hymnBrowse'
@@ -49,10 +51,16 @@ type CollectionMode = HymnBrowseKind | 'occasions' | 'categories' | 'singers'
 function modeFromPath(pathname: string, paramKind?: string): CollectionMode {
   if (paramKind === 'occasion' || pathname.includes('/occasion/')) return 'occasion'
   if (paramKind === 'category' || pathname.includes('/category/')) return 'category'
-  if (paramKind === 'singer' || pathname.includes('/singer/')) return 'singer'
+  if (
+    paramKind === 'singer' ||
+    pathname.includes('/singer/') ||
+    pathname.includes('/zemari/')
+  ) {
+    return 'singer'
+  }
   if (pathname.endsWith('/occasions')) return 'occasions'
   if (pathname.endsWith('/categories')) return 'categories'
-  if (pathname.endsWith('/singers')) return 'singers'
+  if (pathname.endsWith('/singers') || pathname.endsWith('/zemaris')) return 'singers'
   return 'occasions'
 }
 
@@ -97,8 +105,19 @@ export function PublicHymnCollectionPage({
   useEffect(() => {
     let active = true
     setLoading(true)
-    void loadHymnBrowseIndex()
-      .then((index) => {
+    setError(undefined)
+    void (async () => {
+      try {
+        if (detailKind === 'singer' && !isIndex) {
+          const found = await getZemariPublicBySlug(slug)
+          if (!active) return
+          setGroup(found)
+          setAllCards([])
+          if (!found) setLoading(false)
+          return
+        }
+
+        const index = await loadHymnBrowseIndex()
         if (!active) return
         const list =
           detailKind === 'occasion'
@@ -110,15 +129,15 @@ export function PublicHymnCollectionPage({
         if (!isIndex) {
           const found = list.find((c) => c.slug === slug) || null
           setGroup(found)
+        } else {
+          setLoading(false)
         }
-      })
-      .catch((cause) => {
+      } catch (cause) {
         if (!active) return
         setError(cause instanceof Error ? cause.message : 'Unable to load collection.')
-      })
-      .finally(() => {
-        if (active && isIndex) setLoading(false)
-      })
+        setLoading(false)
+      }
+    })()
     return () => {
       active = false
     }
@@ -143,61 +162,82 @@ export function PublicHymnCollectionPage({
     setError(undefined)
     void (async () => {
       try {
-        const { listImportMezmurCards } = await import('../lib/publicContent/hymnBrowse')
-        const { supabase } = await import('../lib/supabase/client')
-        const cards = await listImportMezmurCards(1000)
-        let rows = cards.map((row) => ({
-          id: row.id,
-          slug: row.slug,
-          title: row.title,
-          title_amharic: row.title_amharic,
-          thumbnail_url: row.thumbnail_url,
-          audio_url: null as string | null,
-          youtube_url: row.youtube_url,
-          featured: false,
-          published_at: null as string | null,
-          created_at: '',
-          singer_name: row.singer_name,
-          category_name: null as string | null,
-          languages: row.language ? [row.language] : [],
-          form: (row.form as MezmurCard['form']) || null,
-          language: row.language,
-          category: null as string | null,
-          occasion: null as string | null,
-          saint_or_angel: null as string | null,
-          themes: [] as string[],
-        })) as MezmurCard[]
+        let rows: (MezmurCard & { zemari_id?: string | null })[] = []
 
         if (detailKind === 'singer') {
-          const needle = group.name.toLowerCase()
-          const slugNeedle = group.slug.toLowerCase()
-          rows = rows.filter((item) => {
-            const name = (item.singer_name || '').toLowerCase()
-            const nameSlug = name.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-            return name === needle || nameSlug === slugNeedle
-          })
-        } else if (detailKind === 'occasion' && supabase) {
-          const { data } = await supabase
-            .from('mezmur_occasion_links_import' as never)
-            .select('mezmur_slug')
-            .eq('occasion_slug', group.slug)
-          const slugs = new Set(
-            ((data || []) as Array<{ mezmur_slug?: string }>).map((r) =>
-              String(r.mezmur_slug || ''),
-            ),
-          )
-          rows = rows.filter((item) => slugs.has(item.slug))
-        } else if (detailKind === 'category' && supabase) {
-          const { data } = await supabase
-            .from('mezmur_category_links_import' as never)
-            .select('mezmur_slug')
-            .eq('category_slug', group.slug)
-          const slugs = new Set(
-            ((data || []) as Array<{ mezmur_slug?: string }>).map((r) =>
-              String(r.mezmur_slug || ''),
-            ),
-          )
-          rows = rows.filter((item) => slugs.has(item.slug))
+          const linked = await listPublishedMezmursForZemari(group.id)
+          rows = linked.map((row) => ({
+            id: row.id,
+            slug: row.slug,
+            title: row.title,
+            title_amharic: row.title_amharic,
+            thumbnail_url: row.thumbnail_url,
+            audio_url: null as string | null,
+            youtube_url: row.youtube_url,
+            featured: false,
+            published_at: null as string | null,
+            created_at: '',
+            singer_name: row.singer_name,
+            zemari_id: group.id,
+            category_name: null as string | null,
+            languages: row.language ? [row.language] : [],
+            form: (row.form as MezmurCard['form']) || null,
+            language: row.language,
+            category: null as string | null,
+            occasion: null as string | null,
+            saint_or_angel: null as string | null,
+            themes: [] as string[],
+          }))
+        } else {
+          const { listImportMezmurCards } = await import('../lib/publicContent/hymnBrowse')
+          const { supabase } = await import('../lib/supabase/client')
+          const cards = await listImportMezmurCards(1000)
+          rows = cards.map((row) => ({
+            id: row.id,
+            slug: row.slug,
+            title: row.title,
+            title_amharic: row.title_amharic,
+            thumbnail_url: row.thumbnail_url,
+            audio_url: null as string | null,
+            youtube_url: row.youtube_url,
+            featured: false,
+            published_at: null as string | null,
+            created_at: '',
+            singer_name: row.singer_name,
+            zemari_id: row.zemari_id,
+            category_name: null as string | null,
+            languages: row.language ? [row.language] : [],
+            form: (row.form as MezmurCard['form']) || null,
+            language: row.language,
+            category: null as string | null,
+            occasion: null as string | null,
+            saint_or_angel: null as string | null,
+            themes: [] as string[],
+          })) as (MezmurCard & { zemari_id?: string | null })[]
+
+          if (detailKind === 'occasion' && supabase) {
+            const { data } = await supabase
+              .from('mezmur_occasion_links_import' as never)
+              .select('mezmur_slug')
+              .eq('occasion_slug', group.slug)
+            const slugs = new Set(
+              ((data || []) as Array<{ mezmur_slug?: string }>).map((r) =>
+                String(r.mezmur_slug || ''),
+              ),
+            )
+            rows = rows.filter((item) => slugs.has(item.slug))
+          } else if (detailKind === 'category' && supabase) {
+            const { data } = await supabase
+              .from('mezmur_category_links_import' as never)
+              .select('mezmur_slug')
+              .eq('category_slug', group.slug)
+            const slugs = new Set(
+              ((data || []) as Array<{ mezmur_slug?: string }>).map((r) =>
+                String(r.mezmur_slug || ''),
+              ),
+            )
+            rows = rows.filter((item) => slugs.has(item.slug))
+          }
         }
 
         if (withinQ.trim()) {

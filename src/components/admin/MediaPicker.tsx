@@ -63,6 +63,10 @@ export function MediaPicker({
   const previewUrl = resolveContentMediaUrl(value)
   const isCalendarFolder =
     (folder || '').startsWith('calendar') || (value || '').startsWith('calendar/')
+  const preferUniqueUploadPath =
+    isCalendarFolder ||
+    (folder || '').includes('zemaris') ||
+    (suggestedPath || '').includes('/zemaris/')
 
   useEffect(() => {
     setLocalAlt(altText || '')
@@ -137,13 +141,13 @@ export function MediaPicker({
 
   async function handleUpload(file: File | undefined) {
     if (!file) return
-    // Calendar images: prefer immutable unique filenames so CDN/browser cache cannot
-    // keep serving replaced bytes at the same public URL.
-    if (isCalendarFolder && suggestedPath) {
+    // Prefer immutable unique filenames so CDN/browser cache cannot keep serving
+    // replaced bytes at the same public URL (calendar + Zemari portraits).
+    if (preferUniqueUploadPath && suggestedPath) {
       const ext = suggestedPath.includes('.')
         ? suggestedPath.slice(suggestedPath.lastIndexOf('.'))
         : '.webp'
-      const base = suggestedPath.replace(/\.[^.]+$/, '')
+      const base = suggestedPath.replace(/\.[^.]+$/, '').replace(/-\d{10,}$/, '')
       const uniquePath = `${base}-${Date.now()}${ext}`
       await performUpload(file, { upsert: false, storagePath: uniquePath })
       return

@@ -50,6 +50,12 @@ const HymnBrowseGroupsList = lazy(() =>
 const HymnBrowseGroupEditor = lazy(() =>
   import('./pages/admin/HymnBrowseGroupsAdmin').then((m) => ({ default: m.HymnBrowseGroupEditor })),
 )
+const ZemarisList = lazy(() =>
+  import('./pages/admin/ZemarisAdmin').then((m) => ({ default: m.ZemarisList })),
+)
+const ZemariEditor = lazy(() =>
+  import('./pages/admin/ZemarisAdmin').then((m) => ({ default: m.ZemariEditor })),
+)
 const AdminPlaceholder = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminPlaceholder })))
 const RequireCmsRole = lazy(() => import('./lib/auth/RequireCmsRole').then(m => ({ default: m.RequireCmsRole })))
 const CommunityForm = lazy(() => import('./pages/CommunityForm').then(m => ({ default: m.CommunityForm })))
@@ -67,8 +73,14 @@ const PublicHymnSectionPage = lazy(() =>
   import('./pages/PublicHymnSectionPage').then((m) => ({ default: m.PublicHymnSectionPage })),
 )
 const PublicContentDetail = lazy(() => import('./pages/PublicContentDetail').then(m => ({ default: m.PublicContentDetail })))
-const PublicAccount = lazy(() => import('./pages/PublicAccount').then(m => ({ default: m.PublicAccount })))
+const PublicAccount = lazy(() => import('./pages/auth/AccountPages').then(m => ({ default: m.AccountHomePage })))
 const Favorites = lazy(() => import('./pages/PublicAccount').then(m => ({ default: m.Favorites })))
+const LoginPage = lazy(() => import('./pages/auth/LoginPage').then(m => ({ default: m.LoginPage })))
+const SignupPage = lazy(() => import('./pages/auth/SignupPage').then(m => ({ default: m.SignupPage })))
+const AccountFavoritesPage = lazy(() => import('./pages/auth/AccountPages').then(m => ({ default: m.AccountFavoritesPage })))
+const AccountPrayerProgressPage = lazy(() => import('./pages/auth/AccountPages').then(m => ({ default: m.AccountPrayerProgressPage })))
+const AccountActivityPage = lazy(() => import('./pages/auth/AccountPages').then(m => ({ default: m.AccountActivityPage })))
+const RequireAuth = lazy(() => import('./lib/auth/RequireAuth').then(m => ({ default: m.RequireAuth })))
 const ContentList = lazy(() => import('./pages/admin/ContentManager').then(m => ({default:m.ContentList})))
 const ContentEditor = lazy(() => import('./pages/admin/ContentManager').then(m => ({default:m.ContentEditor})))
 const MediaLibrary = lazy(() => import('./pages/admin/MediaLibrary').then(m => ({default:m.MediaLibrary})))
@@ -144,7 +156,10 @@ export default function App() {
               <Route path="browse-groups" element={<HymnBrowseGroupsList />} />
               <Route path="browse-groups/new" element={<HymnBrowseGroupEditor />} />
               <Route path="browse-groups/:id/edit" element={<HymnBrowseGroupEditor />} />
-              <Route path="singers" element={<TaxonomyPage kind="singers" />} />
+              <Route path="zemaris" element={<ZemarisList />} />
+              <Route path="zemaris/new" element={<ZemariEditor />} />
+              <Route path="zemaris/:id/edit" element={<ZemariEditor />} />
+              <Route path="singers" element={<Navigate to="/admin/hymns/zemaris" replace />} />
               <Route path="categories" element={<TaxonomyPage kind="categories" />} />
               <Route path="occasions" element={<TaxonomyPage kind="occasions" />} />
               <Route path="tags" element={<TaxonomyPage kind="tags" />} />
@@ -237,7 +252,7 @@ export default function App() {
             <Route path="feasts/new" element={<Navigate to="/admin/calendar/feasts/new" replace />} />
             <Route path="feasts/:id/edit" element={<LegacyPathRedirect to="/admin/calendar/feasts/:id/edit" />} />
             <Route path="categories" element={<Navigate to="/admin/hymns/categories" replace />} />
-            <Route path="singers" element={<Navigate to="/admin/hymns/singers" replace />} />
+            <Route path="singers" element={<Navigate to="/admin/hymns/zemaris" replace />} />
             <Route path="tags" element={<Navigate to="/admin/hymns/tags" replace />} />
             <Route path="daily" element={<Navigate to="/admin/calendar/daily" replace />} />
           </Route>
@@ -253,7 +268,14 @@ export default function App() {
         <Route path="/teaching" element={<Navigate to="/" replace />} />
         <Route path="/articles" element={<Navigate to="/" replace />} />
         <Route path="/content/:kind/:slug" element={<Suspense fallback={<PageLoadingFallback />}><PublicContentDetail /></Suspense>} />
+        <Route path="/login" element={<Suspense fallback={<PageLoadingFallback />}><LoginPage /></Suspense>} />
+        <Route path="/signup" element={<Suspense fallback={<PageLoadingFallback />}><SignupPage /></Suspense>} />
         <Route path="/account" element={<Suspense fallback={<PageLoadingFallback />}><PublicAccount /></Suspense>} />
+        <Route element={<Suspense fallback={<PageLoadingFallback />}><RequireAuth /></Suspense>}>
+          <Route path="/account/favorites" element={<Suspense fallback={<PageLoadingFallback />}><AccountFavoritesPage /></Suspense>} />
+          <Route path="/account/prayer-progress" element={<Suspense fallback={<PageLoadingFallback />}><AccountPrayerProgressPage /></Suspense>} />
+          <Route path="/account/activity" element={<Suspense fallback={<PageLoadingFallback />}><AccountActivityPage /></Suspense>} />
+        </Route>
         <Route path="/saved" element={<Suspense fallback={<PageLoadingFallback />}><Favorites /></Suspense>} />
         <Route path="/favorites" element={<Navigate to="/saved" replace />} />
         <Route path="/today" element={<Suspense fallback={<PageLoadingFallback />}><TodayPage /></Suspense>} />
@@ -280,7 +302,8 @@ export default function App() {
         />
         <Route path="/hymns/occasion/:slug" element={<LegacyPathRedirect to="/practice/occasion/:slug" />} />
         <Route path="/hymns/category/:slug" element={<LegacyPathRedirect to="/practice/category/:slug" />} />
-        <Route path="/hymns/singer/:slug" element={<LegacyPathRedirect to="/practice/singer/:slug" />} />
+        <Route path="/hymns/singer/:slug" element={<LegacyPathRedirect to="/practice/zemari/:slug" />} />
+        <Route path="/hymns/zemari/:slug" element={<LegacyPathRedirect to="/practice/zemari/:slug" />} />
         <Route path="/practice/browse/:collectionSlug/:sectionSlug" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <PublicHymnSectionPage />
@@ -306,6 +329,11 @@ export default function App() {
             <PublicHymnCollectionPage kind="singers" />
           </Suspense>
         } />
+        <Route path="/practice/zemaris" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="singers" />
+          </Suspense>
+        } />
         <Route path="/practice/occasion/:slug" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <PublicHymnCollectionPage kind="occasion" />
@@ -317,6 +345,11 @@ export default function App() {
           </Suspense>
         } />
         <Route path="/practice/singer/:slug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="singer" />
+          </Suspense>
+        } />
+        <Route path="/practice/zemari/:slug" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <PublicHymnCollectionPage kind="singer" />
           </Suspense>

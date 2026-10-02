@@ -721,7 +721,7 @@ async function checkHymnClassification(now: string): Promise<{
             title: `Occasion alias pair: ${ca} / ${cb}`,
             description:
               `Published Mezmur use both “${ca}” (${occCounts.get(ca)}) and “${cb}” (${occCounts.get(cb)}). ` +
-              'Do not merge without Admin review — normalize via mezmur_occasions search_keywords.',
+              'Do not merge without Admin review — normalize via mezmur_occasion_links_import.',
             table: 'mezmur',
             adminRoute: ADMIN_PATHS.hymnsOccasions,
             metadata: { a: ca, b: cb },

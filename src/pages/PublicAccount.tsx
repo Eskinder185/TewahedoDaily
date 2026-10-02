@@ -1,141 +1,15 @@
-import { useCallback, useEffect, useState, type FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { useCallback, useMemo, useState } from 'react'
+import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../lib/auth/useAuth'
 import { useAsync } from '../lib/cms/useAsync'
 import { database, type MezmurCard } from '../lib/publicContent/service'
 import { MezmurCards, Notice } from '../components/publicContent/PublicUi'
-import {
-  clearGuestFavorites,
-  clearGuestProgress,
-  clearMergeOffered,
-  hasGuestDataToMerge,
-  markMergeOffered,
-  wasMergeOffered,
-} from '../lib/userContent/guestStorage'
-import { importGuestFavorites, listFavorites } from '../lib/userContent/favoritesService'
-import { importGuestProgress } from '../lib/userContent/readingProgressService'
+import { listFavorites } from '../lib/userContent/favoritesService'
 import s from '../components/publicContent/PublicContent.module.css'
-import { useMemo } from 'react'
 
+/** @deprecated Login moved to /login; keep redirect for bookmarks. */
 export function PublicAccount() {
-  const { session, loading, signIn, signOut } = useAuth()
-  const [error, setError] = useState('')
-  const [busy, setBusy] = useState(false)
-  const [mergeBusy, setMergeBusy] = useState(false)
-  const [mergeMessage, setMergeMessage] = useState('')
-  const [showMerge, setShowMerge] = useState(false)
-
-  useEffect(() => {
-    if (session && hasGuestDataToMerge() && !wasMergeOffered()) {
-      setShowMerge(true)
-    }
-  }, [session])
-
-  async function submit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    setBusy(true)
-    setError('')
-    try {
-      await signIn(String(data.get('email')), String(data.get('password')))
-      if (hasGuestDataToMerge()) setShowMerge(true)
-    } catch {
-      setError('Sign-in failed. Check your email and password.')
-    } finally {
-      setBusy(false)
-    }
-  }
-
-  async function mergeGuest() {
-    if (!session?.user.id) return
-    setMergeBusy(true)
-    setMergeMessage('')
-    try {
-      const fav = await importGuestFavorites(session.user.id)
-      const prog = await importGuestProgress(session.user.id)
-      clearGuestFavorites()
-      clearGuestProgress()
-      markMergeOffered()
-      setShowMerge(false)
-      setMergeMessage(
-        `Imported ${fav.imported} favorite(s) and ${prog.imported} reading progress item(s).`,
-      )
-    } catch {
-      setMergeMessage('Could not import device progress. Try again.')
-    } finally {
-      setMergeBusy(false)
-    }
-  }
-
-  function dismissMerge() {
-    markMergeOffered()
-    setShowMerge(false)
-  }
-
-  return (
-    <section className={s.shell}>
-      <h1>Your account</h1>
-      <p>
-        Browse and pray freely without signing in. Sign in only if you want favorites and reading
-        progress synced across devices.
-      </p>
-      {error && <p role="alert">{error}</p>}
-      {mergeMessage ? <p role="status">{mergeMessage}</p> : null}
-      {loading ? (
-        <p>Restoring session…</p>
-      ) : session ? (
-        <>
-          <p>Signed in as {session.user.email}</p>
-          <Link to="/saved">Your favorites</Link>
-          {showMerge ? (
-            <div className={s.card} style={{ marginTop: '1rem' }}>
-              <p>
-                This device has guest favorites or reading progress. Import them into your account?
-              </p>
-              <p>
-                <button type="button" disabled={mergeBusy} onClick={() => void mergeGuest()}>
-                  {mergeBusy ? 'Importing…' : 'Import device progress'}
-                </button>{' '}
-                <button type="button" disabled={mergeBusy} onClick={dismissMerge}>
-                  Keep separate
-                </button>
-              </p>
-            </div>
-          ) : null}
-          <p>
-            <button
-              type="button"
-              onClick={() => {
-                clearMergeOffered()
-                void signOut().catch(() => setError('Could not sign out. Try again.'))
-              }}
-            >
-              Sign out
-            </button>
-          </p>
-        </>
-      ) : (
-        <form className={s.filters} onSubmit={submit}>
-          <label>
-            Email
-            <input name="email" type="email" autoComplete="email" required />
-          </label>
-          <label>
-            Password
-            <input
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-            />
-          </label>
-          <button type="submit" disabled={busy}>
-            Sign in
-          </button>
-        </form>
-      )}
-    </section>
-  )
+  return <Navigate to="/account" replace />
 }
 
 export function Favorites() {
@@ -174,12 +48,12 @@ export function Favorites() {
       <h1>Saved</h1>
       <p>
         {session
-          ? 'Favorites sync to your account. Device-only items appear until imported.'
+          ? 'Favorites sync to your account.'
           : 'Favorites on this device. Sign in to sync across devices.'}
       </p>
       {!loading && !session ? (
         <p>
-          <Link to="/account">Sign in to sync favorites</Link>
+          <Link to="/login?next=/saved">Sign in to sync favorites</Link>
         </p>
       ) : null}
 

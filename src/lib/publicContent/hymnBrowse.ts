@@ -104,6 +104,7 @@ export type ImportMezmur = {
   singer_id: string | null
   singer_slug: string | null
   singer_name: string | null
+  zemari_id: string | null
   youtube_url: string | null
   audio_url: string | null
   image_path: string | null
@@ -769,6 +770,7 @@ export async function getMezmurBySlug(slug: string): Promise<ImportMezmurDetail 
     singer_id: txt(row.singer_id) || null,
     singer_slug: txt(row.singer_slug) || null,
     singer_name: txt(row.singer_name) || null,
+    zemari_id: txt(row.zemari_id) || null,
     youtube_url: txt(row.youtube_url) || null,
     audio_url: txt(row.audio_url) || null,
     image_path: image,
@@ -801,60 +803,215 @@ export async function getOccasionsForMezmur(mezmurSlug: string): Promise<string[
 
 export async function getHymnSingers(): Promise<HymnBrowseCard[]> {
   if (!supabase) return []
-  // Derive from mezmur_data_import — do not query public.singers (can 400).
-  const { data, error } = await supabase
-    .from(T.data as never)
-    .select('singer_id, singer_slug, singer_name, status')
 
-  if (error) {
-    logSchemaError('getHymnSingers', error)
-    throw permissionError(T.data, error)
+  // Canonical profile source: public.zemaris (+ counts view). Never derive profile from singer_*.
+  const viewRes = await supabase
+    .from('zemaris_with_counts' as never)
+    .select(
+      'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, published_mezmur_count, mezmur_count, updated_at',
+    )
+    .eq('status', 'published')
+    .order('is_featured', { ascending: false })
+    .order('sort_order')
+    .order('name')
+
+  let rows: Record<string, unknown>[] = []
+  if (!viewRes.error && viewRes.data) {
+    rows = (viewRes.data || []) as Record<string, unknown>[]
+  } else {
+    if (viewRes.error && !/zemaris_with_counts|PGRST205|Could not find/i.test(viewRes.error.message || '')) {
+      logSchemaError('getHymnSingers zemaris_with_counts', viewRes.error)
+    }
+    const plain = await supabase
+      .from('zemaris' as never)
+      .select(
+        'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, updated_at',
+      )
+      .eq('status', 'published')
+      .order('is_featured', { ascending: false })
+      .order('sort_order')
+      .order('name')
+    if (plain.error) {
+      logSchemaError('getHymnSingers zemaris', plain.error)
+      throw permissionError('zemaris', plain.error)
+    }
+    rows = (plain.data || []) as Record<string, unknown>[]
   }
 
-  const tally = new Map<
-    string,
-    { id: string; slug: string; name: string; count: number }
-  >()
-  for (const row of (data || []) as DataImportRow[]) {
-    if (!isPublishedStatus(row.status)) continue
-    const name = txt(row.singer_name)
-    const slug =
-      txt(row.singer_slug) ||
-      name
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-|-$/g, '')
-    if (!name && !slug) continue
-    const key = txt(row.singer_id) || slug || name
-    const prev = tally.get(key)
-    if (prev) prev.count += 1
-    else tally.set(key, { id: key, slug: slug || key, name: name || humanizeSlug(slug), count: 1 })
+  // Repair stale/zero view counts by tallying mezmur_data_import.zemari_id (not singer_*).
+  const needsCount = rows.some((row) => num(row.published_mezmur_count) <= 0 && num(row.mezmur_count) <= 0)
+  const countByZemari = new Map<string, number>()
+  if (needsCount || rows.some((row) => row.published_mezmur_count == null)) {
+    const linked = await supabase
+      .from(T.data as never)
+      .select('zemari_id, status')
+      .not('zemari_id', 'is', null)
+      .limit(5000)
+    if (!linked.error) {
+      for (const row of (linked.data || []) as Array<{ zemari_id?: string; status?: string }>) {
+        const id = txt(row.zemari_id)
+        if (!id || !isPublishedStatus(row.status)) continue
+        countByZemari.set(id, (countByZemari.get(id) || 0) + 1)
+      }
+    } else {
+      logSchemaError('getHymnSingers count', linked.error)
+    }
   }
 
   return sortCards(
-    [...tally.values()]
-      .filter((s) => s.count > 0)
-      .map((s) => ({
-        kind: 'singer' as const,
-        id: s.id,
-        slug: s.slug,
-        name: s.name,
-        nameAmharic: '',
-        description: '',
-        imagePath: null,
-        imageUrl: '',
-        imageAlt: s.name,
-        mezmurCount: s.count,
-        featured: false,
-        sortOrder: 0,
-        href: `/practice/singer/${s.slug}`,
-      })),
+    rows
+      .map((row) => {
+        const id = txt(row.id)
+        const slug = txt(row.slug)
+        const name = txt(row.name) || humanizeSlug(slug)
+        const path = txt(row.image_path) || null
+        const fromView = num(row.published_mezmur_count)
+        const repaired = countByZemari.get(id) || 0
+        const mezmurCount = fromView > 0 ? fromView : repaired
+        const updated = txt(row.updated_at)
+        const imageUrl = mediaUrl(path)
+        return {
+          kind: 'singer' as const,
+          id: id || slug,
+          slug,
+          name,
+          nameAmharic: txt(row.name_amharic),
+          description: txt(row.bio),
+          imagePath: path,
+          // Bust CDN/browser cache when image_path is reused after replace.
+          imageUrl: imageUrl && updated ? `${imageUrl}${imageUrl.includes('?') ? '&' : '?'}v=${encodeURIComponent(updated)}` : imageUrl,
+          imageAlt: txt(row.image_alt) || name,
+          mezmurCount,
+          featured: truthy(row.is_featured),
+          sortOrder: num(row.sort_order),
+          href: `/practice/zemari/${slug}`,
+        }
+      })
+      .filter((card) => card.mezmurCount > 0),
   )
+}
+
+/** Public Zemari detail: profile from public.zemaris by slug (not singer_*). */
+export async function getZemariPublicBySlug(slug: string): Promise<HymnBrowseCard | null> {
+  if (!supabase || !slug.trim()) return null
+  const needle = slug.trim()
+
+  const viewRes = await supabase
+    .from('zemaris_with_counts' as never)
+    .select(
+      'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, published_mezmur_count, updated_at',
+    )
+    .eq('slug', needle)
+    .eq('status', 'published')
+    .limit(1)
+
+  let row = !viewRes.error
+    ? ((viewRes.data || [])[0] as Record<string, unknown> | undefined)
+    : undefined
+  if (!row) {
+    const plain = await supabase
+      .from('zemaris' as never)
+      .select(
+        'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, updated_at',
+      )
+      .eq('slug', needle)
+      .eq('status', 'published')
+      .limit(1)
+    if (plain.error) {
+      logSchemaError('getZemariPublicBySlug', plain.error)
+      return null
+    }
+    row = (plain.data || [])[0] as Record<string, unknown> | undefined
+  }
+  if (!row) return null
+
+  const id = txt(row.id)
+  let mezmurCount = num(row.published_mezmur_count)
+  if (mezmurCount <= 0 && id) {
+    const linked = await supabase
+      .from(T.data as never)
+      .select('status')
+      .eq('zemari_id', id)
+      .limit(5000)
+    if (!linked.error) {
+      mezmurCount = ((linked.data || []) as Array<{ status?: string }>).filter((r) =>
+        isPublishedStatus(r.status),
+      ).length
+    }
+  }
+
+  const name = txt(row.name) || humanizeSlug(txt(row.slug))
+  const path = txt(row.image_path) || null
+  const imageUrl = mediaUrl(path)
+  const updated = txt(row.updated_at)
+  return {
+    kind: 'singer',
+    id: id || txt(row.slug),
+    slug: txt(row.slug),
+    name,
+    nameAmharic: txt(row.name_amharic),
+    description: txt(row.bio),
+    imagePath: path,
+    imageUrl:
+      imageUrl && updated
+        ? `${imageUrl}${imageUrl.includes('?') ? '&' : '?'}v=${encodeURIComponent(updated)}`
+        : imageUrl,
+    imageAlt: txt(row.image_alt) || name,
+    mezmurCount,
+    featured: truthy(row.is_featured),
+    sortOrder: num(row.sort_order),
+    href: `/practice/zemari/${txt(row.slug)}`,
+  }
+}
+
+/** Published mezmurs linked to a Zemari via mezmur_data_import.zemari_id only. */
+export async function listPublishedMezmursForZemari(zemariId: string): Promise<
+  Array<{
+    id: string
+    slug: string
+    title: string
+    title_amharic: string | null
+    thumbnail_url: string | null
+    youtube_url: string | null
+    singer_name: string | null
+    language: string | null
+    form: string | null
+  }>
+> {
+  if (!supabase || !zemariId.trim()) return []
+  const { data, error } = await supabase
+    .from(T.data as never)
+    .select(
+      'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, youtube_url, singer_name, primary_language, form, status',
+    )
+    .eq('zemari_id', zemariId.trim())
+    .order('title')
+    .limit(1000)
+  if (error) {
+    logSchemaError('listPublishedMezmursForZemari', error)
+    throw permissionError(T.data, error)
+  }
+  return ((data || []) as Record<string, unknown>[])
+    .filter((row) => isPublishedStatus(row.status))
+    .map((row) => {
+      const path = txt(row.image_path) || txt(row.legacy_thumbnail_url) || null
+      return {
+        id: txt(row.mezmur_id) || txt(row.slug),
+        slug: txt(row.slug),
+        title: txt(row.title) || txt(row.slug),
+        title_amharic: txt(row.title_amharic) || null,
+        thumbnail_url: path,
+        youtube_url: txt(row.youtube_url) || null,
+        singer_name: txt(row.singer_name) || null,
+        language: txt(row.primary_language) || null,
+        form: txt(row.form) || null,
+      }
+    })
 }
 
 export async function getHymnOccasions(): Promise<HymnBrowseCard[]> {
   if (!supabase || isMissing(T.occasions)) return []
-  const { data, error } = await supabase.from(T.occasions as never).select('*')
+  const { data, error } = await supabase.from(T.occasions as never).select('occasion_slug')
   if (error) {
     if (error.code === 'PGRST205') markMissing(T.occasions)
     logSchemaError('getHymnOccasions', error)
@@ -889,7 +1046,7 @@ export async function getHymnOccasions(): Promise<HymnBrowseCard[]> {
 
 export async function getHymnCategories(): Promise<HymnBrowseCard[]> {
   if (!supabase || isMissing(T.categories)) return []
-  const { data, error } = await supabase.from(T.categories as never).select('*').limit(1)
+  const { data, error } = await supabase.from(T.categories as never).select('category_slug')
   if (error) {
     if (error.code === 'PGRST205' || /Could not find the table/i.test(error.message || '')) {
       markMissing(T.categories)
@@ -897,16 +1054,8 @@ export async function getHymnCategories(): Promise<HymnBrowseCard[]> {
     logSchemaError('getHymnCategories', error)
     return []
   }
-  // Table exists — fetch all for counts
-  const all = data?.length
-    ? await supabase.from(T.categories as never).select('*')
-    : { data: [], error: null }
-  if (all.error) {
-    logSchemaError('getHymnCategories all', all.error)
-    return []
-  }
   const tally = new Map<string, number>()
-  for (const row of (all.data || []) as LinkImportRow[]) {
+  for (const row of (data || []) as LinkImportRow[]) {
     const slug = txt(row.category_slug)
     if (!slug) continue
     tally.set(slug, (tally.get(slug) || 0) + 1)
@@ -968,15 +1117,9 @@ export async function loadBrowseGroupDetail(
   kind: HymnBrowseKind,
   slug: string,
 ): Promise<HymnBrowseCard | null> {
+  if (kind === 'singer') return getZemariPublicBySlug(slug)
   const index = await loadHymnBrowseIndex()
-  const list =
-    kind === 'occasion'
-      ? index.occasions
-      : kind === 'category'
-        ? index.categories
-        : kind === 'singer'
-          ? index.singers
-          : []
+  const list = kind === 'occasion' ? index.occasions : kind === 'category' ? index.categories : []
   return list.find((c) => c.slug === slug) || null
 }
 
@@ -1038,15 +1181,15 @@ export async function searchHymns(query: string, limit = 50): Promise<HymnDiscov
   }
 
   for (const s of singers) {
-    const hay = `${s.name} ${s.slug}`.toLowerCase()
+    const hay = `${s.name} ${s.nameAmharic || ''} ${s.slug}`.toLowerCase()
     if (hay.includes(needle)) {
       hits.push({
         type: 'singer',
         id: s.id,
         title: s.name,
-        titleAmharic: '',
+        titleAmharic: s.nameAmharic || '',
         href: s.href,
-        meta: `${s.mezmurCount} Mezmurs · Singer`,
+        meta: `${s.mezmurCount} Mezmurs · Zemari`,
       })
     }
   }
@@ -1173,6 +1316,7 @@ export async function listImportMezmurCards(limit = 800): Promise<
     thumbnail_url: string | null
     youtube_url: string | null
     singer_name: string | null
+    zemari_id: string | null
     language: string | null
     form: string | null
     search_keywords: string[]
@@ -1182,10 +1326,41 @@ export async function listImportMezmurCards(limit = 800): Promise<
   const { data, error } = await supabase
     .from(T.data as never)
     .select(
-      'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, youtube_url, singer_name, primary_language, form, search_keywords, status',
+      'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, youtube_url, singer_name, zemari_id, primary_language, form, search_keywords, status',
     )
     .limit(limit)
   if (error) {
+    // Retry without zemari_id if column not migrated yet
+    if (/zemari_id/i.test(error.message || '')) {
+      const legacy = await supabase
+        .from(T.data as never)
+        .select(
+          'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, youtube_url, singer_name, primary_language, form, search_keywords, status',
+        )
+        .limit(limit)
+      if (legacy.error) {
+        logSchemaError('listImportMezmurCards', legacy.error)
+        return []
+      }
+      return ((legacy.data || []) as DataImportRow[])
+        .filter((row) => isPublishedStatus(row.status))
+        .map((row) => {
+          const image = txt(row.image_path) || txt(row.legacy_thumbnail_url) || null
+          return {
+            id: txt(row.mezmur_id || row.slug),
+            slug: txt(row.slug),
+            title: txt(row.title),
+            title_amharic: txt(row.title_amharic) || null,
+            thumbnail_url: image,
+            youtube_url: txt(row.youtube_url) || null,
+            singer_name: txt(row.singer_name) || null,
+            zemari_id: null,
+            language: txt(row.primary_language) || null,
+            form: txt(row.form) || null,
+            search_keywords: parseKeywords(row.search_keywords),
+          }
+        })
+    }
     logSchemaError('listImportMezmurCards', error)
     return []
   }
@@ -1201,6 +1376,7 @@ export async function listImportMezmurCards(limit = 800): Promise<
         thumbnail_url: image,
         youtube_url: txt(row.youtube_url) || null,
         singer_name: txt(row.singer_name) || null,
+        zemari_id: txt(row.zemari_id) || null,
         language: txt(row.primary_language) || null,
         form: txt(row.form) || null,
         search_keywords: parseKeywords(row.search_keywords),

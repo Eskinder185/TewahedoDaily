@@ -19,7 +19,13 @@ if (!supabaseUrl || !supabasePublishableKey) {
  */
 export const supabase =
   supabaseUrl && supabasePublishableKey
-    ? createClient<Database>(supabaseUrl, supabasePublishableKey)
+    ? createClient<Database>(supabaseUrl, supabasePublishableKey, {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true,
+        },
+      })
     : null
 
 export const isSupabaseConfigured = supabase !== null

@@ -1,210 +1,260 @@
 import { Link } from 'react-router-dom'
-import { imageManifest } from '../content/imageManifest'
-import { PageSection } from '../components/ui/PageSection'
-import { ButtonLink } from '../components/ui/ButtonLink'
-import { useTranslation } from '../i18n'
+import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import styles from './AboutPage.module.css'
 
-export function AboutPage() {
-  const tr = useTranslation()
-  const helps = [
-    {
-      id: 'day',
-      label: tr('about.features.churchDay.title'),
-      line: tr('about.features.churchDay.description'),
-    },
-    {
-      id: 'chants',
-      label: tr('about.features.chants.title'),
-      line: tr('about.features.chants.description'),
-    },
-    {
-      id: 'prayers',
-      label: tr('about.features.prayers.title'),
-      line: tr('about.features.prayers.description'),
-    },
-    {
-      id: 'calendar',
-      label: tr('about.features.calendar.title'),
-      line: tr('about.features.calendar.description'),
-    },
-  ] as const
+function EthCross({ className }: { className?: string }) {
   return (
-    <>
-      <PageSection>
-        <header className={styles.heroBand}>
-          <div className={styles.heroBackdrop} aria-hidden>
-            <img
-              src={imageManifest.about.hero}
-              srcSet={imageManifest.about.heroSrcSet}
-              alt=""
-              className={styles.heroBackdropImg}
-              width={imageManifest.about.heroWidth}
-              height={imageManifest.about.heroHeight}
-              sizes="(max-width: 430px) 100vw, (max-width: 768px) 100vw, min(44rem, 90vw)"
-              fetchPriority="high"
-              decoding="async"
-            />
-            <div className={styles.heroBackdropScrim} />
-          </div>
-          <div className={styles.heroFront}>
-            <p className={styles.eyebrow}>{tr('about.title')}</p>
-            <h1 className={styles.title}>{tr('about.hero.title')}</h1>
-            <p className={styles.lede}>{tr('about.hero.description')}</p>
-          </div>
-        </header>
-      </PageSection>
+    <svg className={className} viewBox="0 0 48 48" aria-hidden focusable="false">
+      <g fill="none" stroke="currentColor" strokeWidth="1.35">
+        <rect x="21.5" y="4" width="5" height="40" />
+        <rect x="8" y="14.5" width="32" height="5" />
+        <rect x="14" y="8" width="3.5" height="3.5" />
+        <rect x="30.5" y="8" width="3.5" height="3.5" />
+        <rect x="14" y="22.5" width="3.5" height="3.5" />
+        <rect x="30.5" y="22.5" width="3.5" height="3.5" />
+        <rect x="21.5" y="33" width="5" height="3.5" />
+      </g>
+    </svg>
+  )
+}
 
-      <PageSection variant="tint">
-        <section className={styles.section} aria-labelledby="about-what">
-          <div className={styles.sectionAccent} aria-hidden />
-          <div className={styles.sectionInner}>
-            <h2 id="about-what" className={styles.h2}>
-              {tr('about.whatThisSiteIs.title')}
-            </h2>
-            <p className={styles.p}>{tr('about.whatThisSiteIs.paragraph1')}</p>
-            <p className={styles.pMuted}>{tr('about.whatThisSiteIs.paragraph2')}</p>
-          </div>
-        </section>
-      </PageSection>
+export function AboutPage() {
+  usePageMeta(
+    'About Tewahedo Daily',
+    'A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close to the Church between Sundays.',
+  )
 
-      <PageSection>
-        <section className={styles.section} aria-labelledby="about-who">
-          <div className={styles.sectionAccent} aria-hidden />
-          <div className={styles.sectionInner}>
-            <h2 id="about-who" className={styles.h2}>
-              {tr('about.audience.title')}
-            </h2>
-            <ul className={styles.bullets}>
-              <li>
-                <span className={styles.bulletMark} aria-hidden />
-                {tr('about.audience.item1')}
-              </li>
-              <li>
-                <span className={styles.bulletMark} aria-hidden />
-                {tr('about.audience.item2')}
-              </li>
-              <li>
-                <span className={styles.bulletMark} aria-hidden />
-                {tr('about.audience.item3')}
-              </li>
-            </ul>
-          </div>
-        </section>
-      </PageSection>
-
-      <PageSection variant="tint">
-        <section className={styles.helps} aria-labelledby="about-helps">
-          <h2 id="about-helps" className={styles.helpsTitle}>
-            {tr('about.features.title')}
-          </h2>
-          <p className={styles.helpsIntro}>
-            {tr('about.features.intro')}
-          </p>
-          <ul className={styles.helpGrid}>
-            {helps.map((h) => (
-              <li key={h.id} className={styles.helpCard}>
-                <span className={styles.helpIcon} aria-hidden />
-                <h3 className={styles.helpLabel}>{h.label}</h3>
-                <p className={styles.helpLine}>{h.line}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </PageSection>
-
-      <PageSection>
-        <section className={styles.section} aria-labelledby="about-how">
-          <div className={styles.sectionAccent} aria-hidden />
-          <div className={styles.sectionInner}>
-            <h2 id="about-how" className={styles.h2}>
-              {tr('about.howToUse.title')}
-            </h2>
-            <ol className={styles.steps}>
-              <li>
-                <span className={styles.stepNum} aria-hidden>
-                  1
-                </span>
-                <div>
-                  <strong className={styles.stepHead}>{tr('about.howToUse.step1.title')}</strong>
-                  <p className={styles.stepText}>
-                    {tr('about.howToUse.step1.description')}
-                  </p>
-                </div>
-              </li>
-              <li>
-                <span className={styles.stepNum} aria-hidden>
-                  2
-                </span>
-                <div>
-                  <strong className={styles.stepHead}>{tr('about.howToUse.step2.title')}</strong>
-                  <p className={styles.stepText}>
-                    {tr('about.howToUse.step2.description')}
-                  </p>
-                </div>
-              </li>
-              <li>
-                <span className={styles.stepNum} aria-hidden>
-                  3
-                </span>
-                <div>
-                  <strong className={styles.stepHead}>{tr('about.howToUse.step3.title')}</strong>
-                  <p className={styles.stepText}>
-                    {tr('about.howToUse.step3.description')}
-                  </p>
-                </div>
-              </li>
-            </ol>
-            <div className={styles.ctaRow}>
-              <ButtonLink to="/" hash="today-preview" end>
-                {tr('about.cta.home')}
-              </ButtonLink>
-              <ButtonLink to="/practice" variant="ghost">
-                {tr('about.cta.practice')}
-              </ButtonLink>
+  return (
+    <div className={styles.page}>
+      <section className={styles.hero} aria-labelledby="about-hero-title">
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>About Tewahedo Daily</p>
+            <h1 id="about-hero-title" className={styles.heroTitle}>
+              Tewahedo Daily
+            </h1>
+            <p className={styles.heroLede}>
+              A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close
+              to the Church between Sundays — in minutes, not marathons.
+            </p>
+            <div className={styles.ornamentRule} aria-hidden>
+              <span className={styles.ruleLine} />
+              <EthCross className={styles.ruleCross} />
+              <span className={styles.ruleLine} />
             </div>
           </div>
-        </section>
-      </PageSection>
+          <div className={styles.heroArt} aria-hidden>
+            <div className={styles.arch}>
+              <div className={styles.archInner}>
+                <div className={styles.archHalo} />
+                <EthCross className={styles.archCross} />
+                <p className={styles.archCaption}>Prayer · Practice · Presence</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <PageSection variant="tint">
-        <aside className={styles.guidance} aria-labelledby="about-respect">
-          <div className={styles.guidanceBar} aria-hidden />
-          <div>
-            <h2 id="about-respect" className={styles.guidanceTitle}>
-              {tr('about.guidance.title')}
+      <section className={styles.narrowSection} aria-labelledby="about-what">
+        <h2 id="about-what" className={styles.h2}>
+          What this website is
+        </h2>
+        <p className={styles.body}>
+          Tewahedo Daily is a daily companion: short lessons, practice for chants and movement, a
+          dedicated prayers space, and a quick view of today in the Church calendar. It is built for
+          phones and busy days so you can touch prayer and tradition without feeling buried in text.
+        </p>
+        <blockquote className={styles.pullQuote}>
+          <span className={styles.pullBar} aria-hidden />
+          <div className={styles.pullMark} aria-hidden>
+            <span className={styles.ruleLineShort} />
+            <EthCross className={styles.ruleCrossSm} />
+          </div>
+          <p>
+            “We are not an encyclopedia or a social feed. We are trying to be faithful, small, and
+            useful.”
+          </p>
+        </blockquote>
+      </section>
+
+      <section className={styles.audienceBand} aria-labelledby="about-who">
+        <div className={styles.audienceInner}>
+          <p className={styles.eyebrowCenter}>A gentle beginning</p>
+          <h2 id="about-who" className={styles.h2Center}>
+            Who this is for
+          </h2>
+          <ul className={styles.audienceGrid}>
+            <li className={styles.audienceCard}>
+              <span className={styles.cardNum}>01</span>
+              <h3>Ethiopians in the diaspora</h3>
+              <p>Especially when parish life is far away or schedules are tight.</p>
+            </li>
+            <li className={styles.audienceCard}>
+              <span className={styles.cardNum}>02</span>
+              <h3>Beginners</h3>
+              <p>
+                For people who need a gentle starting place without already knowing every hymn or
+                rubric.
+              </p>
+            </li>
+            <li className={styles.audienceCard}>
+              <span className={styles.cardNum}>03</span>
+              <h3>Those who love the Church</h3>
+              <p>For anyone who wants a lighter rhythm between worship, work, and family.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section className={styles.threadsSection} aria-labelledby="about-threads">
+        <div className={styles.threadsIntro}>
+          <p className={styles.eyebrowCenter}>Daily rhythm</p>
+          <h2 id="about-threads" className={styles.h2Center}>
+            Four threads for the day
+          </h2>
+          <p className={styles.subCenter}>Each one is optional. Pick what fits the day.</p>
+        </div>
+        <ul className={styles.threadGrid}>
+          {[
+            {
+              n: 'I',
+              title: 'The Church day',
+              body: 'A quick sense of what today is — feast, season, and a short why-it-matters summary.',
+            },
+            {
+              n: 'II',
+              title: 'Chants',
+              body: 'Mezmur and werb together: listen, read transliteration, and open lyrics or watch only when you choose.',
+            },
+            {
+              n: 'III',
+              title: 'Prayers',
+              body: 'Daily prayers, Wudase, and Mezmure Dawit under the prayer hub, with full text when you choose to open it.',
+            },
+            {
+              n: 'IV',
+              title: 'Calendar and seasons',
+              body: 'A simple calendar view and notes on fasts and feasts — always pointing back to your parish.',
+            },
+          ].map((item) => (
+            <li key={item.n} className={styles.threadCard}>
+              <div className={styles.threadArt} aria-hidden>
+                <span className={styles.threadGridPattern} />
+                <div className={styles.threadArch}>
+                  <EthCross className={styles.threadCross} />
+                </div>
+                <span className={styles.roman}>{item.n}</span>
+              </div>
+              <div className={styles.threadBody}>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className={styles.howBand} aria-labelledby="about-how">
+        <div className={styles.howInner}>
+          <div className={styles.howCopy}>
+            <p className={styles.eyebrowOnDark}>A simple practice</p>
+            <h2 id="about-how" className={styles.h2OnDark}>
+              How to use it
             </h2>
-            <p className={styles.guidanceLead}>
-              {tr('about.guidance.paragraph1')}
+            <p className={styles.bodyOnDark}>
+              There is no streak to protect and no finish line. Begin with what the day can hold.
             </p>
-            <p className={styles.guidanceBody}>
-              {tr('about.guidance.paragraph2')}
+            <div className={styles.howActions}>
+              <Link to="/" className={styles.btnGhost}>
+                Back to home
+              </Link>
+              <Link to="/practice" className={styles.btnSolid}>
+                Open practice →
+              </Link>
+            </div>
+          </div>
+          <ol className={styles.timeline}>
+            <li>
+              <span className={styles.tlNum} aria-hidden>
+                1
+              </span>
+              <div>
+                <h3>Start on the home page.</h3>
+                <p>
+                  Open the home page and read Today in Church — one small moment with God is enough.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span className={styles.tlNum} aria-hidden>
+                2
+              </span>
+              <div>
+                <h3>Open Practice when you are ready.</h3>
+                <p>
+                  Use Practice for chants and tools, or Prayers for tselot and longer reading. Text
+                  stays in cards and dialogs until you tap.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span className={styles.tlNum} aria-hidden>
+                3
+              </span>
+              <div>
+                <h3>Return tomorrow.</h3>
+                <p>
+                  The site is meant to be repeated, not finished. Same gentle shape, fresh day.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section className={styles.guidanceWrap} aria-labelledby="about-respect">
+        <div className={styles.guidanceCard}>
+          <div className={styles.guidanceMotif} aria-hidden>
+            <div className={styles.guidanceCircle}>
+              <EthCross className={styles.guidanceCross} />
+            </div>
+          </div>
+          <div className={styles.guidanceText}>
+            <p className={styles.eyebrow}>With humility</p>
+            <h2 id="about-respect" className={styles.h2}>
+              Respect and guidance
+            </h2>
+            <p className={styles.body}>
+              This website supports learning and practice in daily life. We hope it encourages
+              prayer, listening, and love for the Church.
             </p>
-            <p className={styles.guidanceFoot}>
-              {tr('about.guidance.paragraph3')}
+            <p className={styles.body}>
+              It does not replace your priest, parish, spiritual father, or official liturgical
+              books. Fasting rules, sacraments, confession, and pastoral care belong in person with
+              those the Church has given you.
+            </p>
+            <hr className={styles.softRule} />
+            <p className={styles.guidanceQuote}>
+              “If something here disagrees with your bishop, books, or father of confession, trust
+              them — not a website.”
             </p>
           </div>
-        </aside>
-      </PageSection>
+        </div>
+      </section>
 
-      <PageSection>
-        <section className={styles.vision} aria-labelledby="about-future">
-          <h2 id="about-future" className={styles.visionTitle}>
-            {tr('about.futureVision.title')}
-          </h2>
-          <p className={styles.visionText}>
-            {tr('about.futureVision.description')}
-          </p>
-          <p className={styles.visionSignoff}>
-            {tr('about.closing')}
-          </p>
-          <p className={styles.visionLink}>
-            <Link to="/" className={styles.backLink}>
-              {tr('about.backHome')}
-            </Link>
-          </p>
-        </section>
-      </PageSection>
-    </>
+      <section className={styles.visionSection} aria-labelledby="about-future">
+        <h2 id="about-future" className={styles.h2}>
+          Future vision
+        </h2>
+        <p className={styles.body}>
+          We hope to grow with real calendar data, parish-tuned content, audio that serves the
+          liturgy, and more — always slowly, carefully, and under proper guidance. If Tewahedo Daily
+          ever stops feeling humble next to the Church, we have missed the mark.
+        </p>
+        <p className={styles.closing}>
+          “Thank you for visiting. May it serve your salvation — even a little.”
+        </p>
+      </section>
+    </div>
   )
 }

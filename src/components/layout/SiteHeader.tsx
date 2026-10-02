@@ -10,7 +10,7 @@ import {
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
-import { useAuth } from '../../lib/auth/useAuth'
+import { useAuth, hasCmsRole } from '../../lib/auth/useAuth'
 import { LanguageToggle } from './LanguageToggle'
 import { ThemeToggle } from './ThemeToggle'
 import styles from './SiteHeader.module.css'
@@ -25,28 +25,16 @@ function getFocusableIn(container: HTMLElement | null): HTMLElement[] {
   )
 }
 
-function IconBookmark({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M7 3.5h10a1 1 0 0 1 1 1V20l-6-3.5L6 20V4.5a1 1 0 0 1 1-1z" />
-    </svg>
-  )
-}
-
 export function SiteHeader() {
   const t = useUiLabel()
   const tt = useTranslation()
   const location = useLocation()
-  const { session } = useAuth()
+  const { session, loading: authLoading, isStaff, profile } = useAuth()
+  // Guest-first: show Sign in immediately; swap to Account once session is known.
+  const signedIn = Boolean(session)
+  const showAccount = signedIn
+  const showSignIn = !signedIn
+  const showAdmin = !authLoading && signedIn && (isStaff || hasCmsRole(profile))
   const [menuOpen, setMenuOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const drawerCloseRef = useRef<HTMLButtonElement>(null)
@@ -188,19 +176,33 @@ export function SiteHeader() {
             >
               {t('navAbout')}
             </NavLink>
-            {session ? (
+            {showAccount ? (
+              <>
+                <NavLink
+                  to="/account"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                  }
+                >
+                  Account
+                </NavLink>
+                {showAdmin ? (
+                  <NavLink
+                    to="/admin"
+                    onClick={closeMenu}
+                    className={({ isActive }) =>
+                      `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                    }
+                  >
+                    Admin
+                  </NavLink>
+                ) : null}
+              </>
+            ) : null}
+            {showSignIn ? (
               <NavLink
-                to="/saved"
-                onClick={closeMenu}
-                className={({ isActive }) =>
-                  `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-                }
-              >
-                {t('navSaved')}
-              </NavLink>
-            ) : (
-              <NavLink
-                to="/account"
+                to="/login"
                 onClick={closeMenu}
                 className={({ isActive }) =>
                   `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
@@ -208,7 +210,7 @@ export function SiteHeader() {
               >
                 Sign in
               </NavLink>
-            )}
+            ) : null}
           </nav>
         </div>
       </div>,
@@ -262,25 +264,26 @@ export function SiteHeader() {
 
           <div className={styles.headerTools}>
             <div className={styles.toggleGroup}>
-              {session ? (
-                <Link
-                  to="/saved"
-                  className={styles.utilityLink}
-                  aria-label={t('navSaved')}
-                  title={t('navSaved')}
-                >
-                  <IconBookmark className={styles.utilityIcon} />
-                </Link>
-              ) : (
+              {showAccount ? (
                 <Link
                   to="/account"
                   className={styles.utilityLink}
-                  aria-label="Sign in to save progress"
+                  aria-label="Account"
+                  title="Account"
+                >
+                  Account
+                </Link>
+              ) : null}
+              {showSignIn ? (
+                <Link
+                  to="/login"
+                  className={styles.utilityLink}
+                  aria-label="Sign in"
                   title="Sign in"
                 >
                   Sign in
                 </Link>
-              )}
+              ) : null}
               <ThemeToggle />
               <LanguageToggle />
             </div>

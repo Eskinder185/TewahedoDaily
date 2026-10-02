@@ -353,6 +353,7 @@ export function publicMezmurToPracticePayload(item: PublicMezmur, youtubeUrl?: s
     lyricsGez,
     transliterationLyrics: item.transliteration?.trim() || '',
     lyricsEnglish: item.lyrics_english?.trim() || undefined,
+    singerName: item.singer_name?.trim() || undefined,
     videoId,
     audioUrl: item.audio_url?.trim() || undefined,
     watchUrl: activeUrl.trim() || (videoId ? `https://www.youtube.com/watch?v=${videoId}` : undefined),

@@ -27,15 +27,15 @@ function IconShield({ className }: { className?: string }) {
  * + profiles.role via hasCmsRole (contributor | editor | admin | super_admin).
  */
 function AdminAccessLink() {
-  const { session, profile, loading } = useAuth()
+  const { session, profile, loading, isStaff } = useAuth()
 
   if (loading) return null
 
-  // Signed-in visitors without a CMS role (e.g. role "user") never see this link.
-  if (session && !hasCmsRole(profile)) return null
+  // Signed-in visitors without a CMS/staff role never see this link.
+  if (session && !hasCmsRole(profile) && !isStaff) return null
 
-  const to = session ? '/admin' : '/admin/login'
-  const label = session ? 'Admin Dashboard' : 'Admin Login'
+  const to = session && (hasCmsRole(profile) || isStaff) ? '/admin' : '/admin/login'
+  const label = session && (hasCmsRole(profile) || isStaff) ? 'Admin Dashboard' : 'Admin Login'
 
   return (
     <Link to={to} className={styles.adminLink} aria-label={label}>

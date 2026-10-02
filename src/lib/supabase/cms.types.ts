@@ -1,6 +1,6 @@
 ﻿import type { Json } from './database.types'
 import type { CommunitySubmission } from '../community/types'
-export type CmsRole = 'super_admin' | 'admin' | 'editor' | 'contributor'
+export type CmsRole = 'super_admin' | 'admin' | 'editor' | 'contributor' | 'user'
 export type ContentStatus = 'draft' | 'pending_review' | 'published' | 'rejected' | 'archived'
 export type ContentType = 'mezmur' | 'saints' | 'feasts' | 'prayers' | 'articles'
 type Table<Row, Required extends keyof Row = never> = {

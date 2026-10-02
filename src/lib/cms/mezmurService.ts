@@ -4,7 +4,8 @@
  */
 import { supabase } from '../supabase/client'
 import type { ContentStatus } from '../supabase/cms.types'
-import { getHymnSingers } from '../publicContent/hymnBrowse'
+import { resolveContentMediaUrl } from './contentMedia'
+import { mapStaffWriteError, requireCmsStaffSession } from './cmsStaffAuth'
 
 const DATA = 'mezmur_data_import' as const
 
@@ -26,6 +27,7 @@ export type ImportMezmurRow = {
   singer_id: string | null
   singer_slug: string | null
   singer_name: string | null
+  zemari_id: string | null
   youtube_url: string | null
   audio_url: string | null
   image_path: string | null
@@ -65,6 +67,7 @@ export type Mezmur = {
   singer_id: string | null
   singer_slug: string | null
   singer_name: string | null
+  zemari_id: string | null
   category_id: string | null
   language: string | null
   form: 'mezmur' | 'werb' | null
@@ -242,6 +245,7 @@ export function mapImportMezmur(row: ImportMezmurRow | Record<string, unknown>):
     singer_id: txt(r.singer_id) || null,
     singer_slug: txt(r.singer_slug) || null,
     singer_name: txt(r.singer_name) || null,
+    zemari_id: txt(r.zemari_id) || null,
     category_id: null,
     language: txt(r.primary_language) || null,
     form: normalizeForm(r.form),
@@ -271,6 +275,7 @@ export const editableKeys = [
   'slug',
   'description',
   'singer_id',
+  'zemari_id',
   'category_id',
   'lyrics_amharic',
   'lyrics_english',
@@ -303,6 +308,7 @@ export function emptyMezmur(): MezmurInput {
     slug: '',
     description: '',
     singer_id: null,
+    zemari_id: null,
     category_id: null,
     lyrics_amharic: '',
     lyrics_english: '',
@@ -334,7 +340,7 @@ export type Filters = {
 }
 
 const LIST_SELECT =
-  'mezmur_id, slug, title, title_amharic, title_english, description, description_amharic, lyrics_amharic, lyrics_transliteration, lyrics_english, lyrics_geez, lyrics_oromo, primary_language, form, singer_id, singer_slug, singer_name, youtube_url, audio_url, image_path, image_alt, legacy_thumbnail_url, search_keywords, status, review_status, review_notes, source_url, source_notes, created_at, updated_at'
+  'mezmur_id, slug, title, title_amharic, title_english, description, description_amharic, lyrics_amharic, lyrics_transliteration, lyrics_english, lyrics_geez, lyrics_oromo, primary_language, form, singer_id, singer_slug, singer_name, zemari_id, youtube_url, audio_url, image_path, image_alt, legacy_thumbnail_url, search_keywords, status, review_status, review_notes, source_url, source_notes, created_at, updated_at'
 
 export async function listMezmur(filters: Filters = {}) {
   let query = db().from(DATA as never).select(LIST_SELECT, { count: 'exact' })
@@ -358,7 +364,9 @@ export async function listMezmur(filters: Filters = {}) {
   if (statuses.includes(filters.status as ContentStatus)) {
     query = query.eq('status', filters.status as ContentStatus)
   }
-  if (filters.singer) query = query.eq('singer_id', filters.singer)
+  if (filters.singer) {
+    query = query.or(`singer_id.eq.${filters.singer},zemari_id.eq.${filters.singer}`)
+  }
   // featured / category_id do not exist on import — ignore filters that cannot apply
 
   const sorts = {
@@ -429,42 +437,53 @@ async function allRows<T>(
 
 async function loadDerivedSingers(): Promise<Singer[]> {
   try {
-    const cards = await getHymnSingers()
-    return cards.map((card) => ({
-      id: card.id,
-      name: card.name,
-      name_amharic: card.nameAmharic || null,
-      description: card.description || null,
-      image_url: card.imageUrl || null,
-      is_archived: false,
-      slug: card.slug,
-      mezmur_count: card.mezmurCount,
+    const { listZemaris } = await import('./zemariAdminService')
+    const rows = await listZemaris({ status: 'all' })
+    return rows.map((row) => ({
+      id: row.id,
+      name: row.name,
+      name_amharic: row.name_amharic,
+      description: row.bio,
+      image_url: row.image_path ? resolveContentMediaUrl(row.image_path) : null,
+      is_archived: row.status === 'archived',
+      slug: row.slug,
+      mezmur_count: row.mezmur_count || 0,
     }))
   } catch (cause) {
-    if (import.meta.env.DEV) console.error('[mezmurService] derived singers', cause)
+    if (import.meta.env.DEV) console.error('[mezmurService] zemaris taxonomy', cause)
     return []
   }
 }
 
+async function loadDerivedCategories(): Promise<Category[]> {
+  try {
+    const { listDerivedCategories } = await import('./hymnTaxonomyImport')
+    const rows = await listDerivedCategories()
+    return rows.map((row) => ({
+      id: row.slug,
+      name: row.name,
+      name_amharic: null,
+      slug: row.slug,
+      description: null,
+      type: 'mezmur',
+      is_archived: false,
+    }))
+  } catch (cause) {
+    if (import.meta.env.DEV) console.error('[mezmurService] derived categories', cause)
+    return []
+  }
+}
+
+export async function listTaxonomyOccasions() {
+  const { listDerivedOccasions } = await import('./hymnTaxonomyImport')
+  return listDerivedOccasions()
+}
+
 export async function getTaxonomy() {
   const [categories, singers, tags] = await Promise.all([
-    allRows<Category>((n) =>
-      db()
-        .from('categories')
-        .select('*')
-        .order('name')
-        .order('id')
-        .range(n, n + 499)
-        .then((result) => {
-          // categories table may be missing — fail soft
-          if (result.error) {
-            if (import.meta.env.DEV) console.error('[mezmurService] categories', result.error)
-            return { data: [] as Category[], error: null }
-          }
-          return result
-        }),
-    ).catch(() => [] as Category[]),
+    loadDerivedCategories(),
     loadDerivedSingers(),
+    // Tags metadata table is optional; never spam retries on miss.
     allRows<Tag>((n) =>
       db()
         .from('tags')
@@ -491,6 +510,7 @@ export async function getTagIds(_id: string) {
 
 function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, unknown> {
   const mezmurId = existing?.mezmur_id || existing?.id || crypto.randomUUID()
+  const zemariId = input.zemari_id || input.singer_id || null
   return {
     mezmur_id: mezmurId,
     slug: input.slug.trim(),
@@ -502,7 +522,8 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
     lyrics_english: input.lyrics_english?.trim() || null,
     primary_language: input.language?.trim() || null,
     form: input.form || null,
-    singer_id: input.singer_id || null,
+    zemari_id: zemariId,
+    singer_id: zemariId || input.singer_id || null,
     youtube_url: input.youtube_url?.trim() || null,
     audio_url: input.audio_url?.trim() || null,
     image_path: input.thumbnail_path?.trim() || input.thumbnail_url?.trim() || null,
@@ -513,17 +534,57 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
 }
 
 export async function saveMezmur(input: MezmurInput, _tags: string[], existing?: Mezmur) {
+  await requireCmsStaffSession('mezmur save')
   const payload = toImportPayload(input, existing)
+  const zemariId = String(payload.zemari_id || '').trim()
+  if (zemariId) {
+    try {
+      const { getZemari } = await import('./zemariAdminService')
+      const z = await getZemari(zemariId)
+      payload.singer_id = z.id
+      payload.singer_slug = z.slug
+      payload.singer_name = z.name
+      payload.zemari_id = z.id
+    } catch {
+      /* keep payload as-is if zemari lookup fails */
+    }
+  } else {
+    payload.zemari_id = null
+    payload.singer_id = null
+    payload.singer_slug = null
+    payload.singer_name = null
+  }
   if (existing?.mezmur_id || existing?.id) {
     const id = existing.mezmur_id || existing.id
-    const { data, error } = await db()
+    let { data, error } = await db()
       .from(DATA as never)
       .update(payload as never)
       .eq('mezmur_id', id)
       .select(LIST_SELECT)
       .limit(1)
-    if (error) throw error
-    const row = (data || [])[0] as ImportMezmurRow | undefined
+    if (error && /zemari_id/i.test(error.message || '') && error.code !== '42501') {
+      const { zemari_id: _drop, ...withoutZemari } = payload
+      const retry = await db()
+        .from(DATA as never)
+        .update(withoutZemari as never)
+        .eq('mezmur_id', id)
+        .select(LIST_SELECT.replace(', zemari_id', ''))
+        .limit(1)
+      error = retry.error
+      data = retry.data
+    }
+    if (error) throw mapStaffWriteError('mezmur update', error)
+    let row = (data || [])[0] as ImportMezmurRow | undefined
+    if (!row && existing.slug) {
+      const bySlug = await db()
+        .from(DATA as never)
+        .update(payload as never)
+        .eq('slug', existing.slug)
+        .select(LIST_SELECT)
+        .limit(1)
+      if (bySlug.error) throw mapStaffWriteError('mezmur update by slug', bySlug.error)
+      row = (bySlug.data || [])[0] as ImportMezmurRow | undefined
+    }
     if (!row) throw new Error('No saved record was returned.')
     return mapImportMezmur(row)
   }
@@ -533,7 +594,7 @@ export async function saveMezmur(input: MezmurInput, _tags: string[], existing?:
     .insert(payload as never)
     .select(LIST_SELECT)
     .limit(1)
-  if (error) throw error
+  if (error) throw mapStaffWriteError('mezmur insert', error)
   const row = (data || [])[0] as ImportMezmurRow | undefined
   if (!row) throw new Error('No saved record was returned.')
   return mapImportMezmur(row)

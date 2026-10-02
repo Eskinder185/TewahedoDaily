@@ -4,7 +4,7 @@
  */
 import { db, errorMessage } from './mezmurService'
 import { resolveContentMediaUrl } from './contentMedia'
-import { supabase } from '../supabase/client'
+import { requireCmsStaffSession } from './cmsStaffAuth'
 
 export type HymnCollectionRow = {
   id: string
@@ -133,12 +133,7 @@ function adminWriteError(scope: string, error: { code?: string; message?: string
 }
 
 async function requireStaffSession(): Promise<void> {
-  if (!supabase) throw new Error('Supabase is not configured.')
-  const { data, error } = await supabase.auth.getSession()
-  if (error) throw new Error(error.message || 'Could not verify session.')
-  if (!data.session?.user) {
-    throw new Error('You must be signed in to save Hymn Practice changes.')
-  }
+  await requireCmsStaffSession('hymn browse admin')
 }
 
 function mapCollection(row: Record<string, unknown>): HymnCollectionRow {

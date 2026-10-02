@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {
   getHymnCollectionBySlug,
-  getSectionsForCollection,
+  loadBrowseGroupChildren,
   type HymnBrowseCard,
   type HymnCollection,
 } from '../lib/publicContent/hymnBrowse'
@@ -40,25 +40,9 @@ export function PublicHymnBrowseGroupPage() {
           setChildren([])
           return
         }
-        const sections = await getSectionsForCollection(collection.slug)
+        const { children: next } = await loadBrowseGroupChildren(collection.slug)
         if (!active) return
-        setChildren(
-          sections.map((section) => ({
-            kind: 'section' as const,
-            id: section.id,
-            slug: section.slug,
-            name: section.title,
-            nameAmharic: section.titleAmharic,
-            description: section.description,
-            imagePath: section.imagePath,
-            imageUrl: section.imageUrl,
-            imageAlt: section.imageAlt,
-            mezmurCount: section.mezmurCount,
-            featured: section.featured,
-            sortOrder: section.sortOrder,
-            href: section.href,
-          })),
-        )
+        setChildren(next)
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] collection', cause)

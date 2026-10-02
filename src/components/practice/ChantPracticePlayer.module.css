@@ -561,66 +561,42 @@
   font-size: 0.85rem;
 }
 
+.singerLine {
+  margin: 6px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
 @media (max-width: 959.98px) {
   .metaLine {
     display: none;
   }
 
   .shell {
-    --practice-sticky-clearance: 5.5rem;
-    padding: var(--space-2);
-    gap: var(--space-3);
-    overflow-x: clip;
+    --practice-sticky-clearance: calc(
+      var(--mini-player-height, 5.75rem) + var(--bottom-nav-height, 0px) + 1rem
+    );
+    margin-bottom: calc(var(--practice-sticky-clearance) + env(safe-area-inset-bottom, 0px));
   }
 
-  .shell[data-sticky-expanded='true'] {
-    --practice-sticky-clearance: 9rem;
+  .shell[data-player-expanded='true'] {
+    --practice-sticky-clearance: calc(
+      var(--mini-player-height, 5.75rem) + var(--bottom-nav-height, 0px) + 1rem
+    );
+  }
+
+  .loopOnPage,
+  .recordOnPage {
+    display: none;
+  }
+
+  .stickyBar {
+    display: none;
   }
 
   .shellReading {
     padding: 0;
     gap: var(--space-3);
-  }
-
-  .stickyBar {
-    flex-direction: column;
-    gap: 4px;
-    border-radius: 16px;
-    padding: 6px 10px;
-    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
-  }
-
-  .stickyBarExpanded {
-    gap: 8px;
-    padding-bottom: 8px;
-  }
-
-  .stickyControls {
-    gap: 6px;
-  }
-
-  .stickyBtn {
-    min-width: 44px;
-    min-height: 44px;
-    font-size: 0.82rem;
-  }
-
-  .stickyPlay {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    min-height: 48px;
-  }
-
-  .stickyProgressRow {
-    gap: 0.3rem;
-  }
-
-  .stickyMore {
-    min-width: 2.5rem;
-    min-height: 2.5rem;
-    font-size: 0.9rem;
-    border: 1px solid rgba(255, 248, 240, 0.28);
   }
 }
 

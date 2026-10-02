@@ -14,7 +14,6 @@ import {
   parseVersion,
   saveMezmur,
   slugify,
-  db,
   type Mezmur,
   type MezmurInput,
   type Version,
@@ -251,22 +250,14 @@ function EditorForm({ initial }: { initial: EditorData }) {
       } catch (sectionErr) {
         if (import.meta.env.DEV) console.warn('[MezmurEditor] section links', sectionErr)
       }
-      // Best-effort: link occasion row when mezmur_occasions exists.
-      if (saved.id && payload.occasion) {
+      // Best-effort occasion link via import table (no mezmur_occasions).
+      if (saved.slug && payload.occasion) {
         try {
-          const { data: occ } = await db()
-            .from('mezmur_occasions' as never)
-            .select('id')
-            .ilike('name', payload.occasion)
-            .maybeSingle()
-          const occasionId = (occ as { id?: string } | null)?.id
-          if (occasionId) {
-            await db()
-              .from('mezmur_occasion_links' as never)
-              .upsert({ mezmur_id: saved.id, occasion_id: occasionId } as never)
-          }
-        } catch {
-          /* occasions table may not exist yet */
+          const { setMezmurOccasionLink } = await import('../../lib/cms/hymnTaxonomyImport')
+          const occasionSlug = slugify(payload.occasion)
+          await setMezmurOccasionLink(saved.slug, occasionSlug || null)
+        } catch (occErr) {
+          if (import.meta.env.DEV) console.warn('[MezmurEditor] occasion link', occErr)
         }
       }
       setRow(saved)
@@ -552,28 +543,37 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   </select>
                 </label>
                 <p className={s.muted} style={{ marginTop: -8, fontSize: '0.85rem' }}>
-                  Multi-occasion links use <code>mezmur_occasion_links</code> when present. Manage
-                  occasion images under{' '}
-                  <Link to={ADMIN_PATHS.hymnsOccasions}>Hymns · Occasions</Link>.
+                  Multi-occasion links use <code>mezmur_occasion_links_import</code>. Browse labels
+                  come from distinct <code>occasion_slug</code> values. Manage Zemaris under{' '}
+                  <Link to={ADMIN_PATHS.hymnsZemaris}>Hymns · Zemaris</Link>.
                 </p>
                 <label>
-                  Singer / Zemari
+                  Zemari
                   <select
-                    aria-label="Singer"
-                    value={input.singer_id || ''}
-                    onChange={(event) => set('singer_id', event.target.value || null)}
+                    aria-label="Zemari"
+                    value={input.zemari_id || input.singer_id || ''}
+                    onChange={(event) => {
+                      const next = event.target.value || null
+                      set('zemari_id', next)
+                      set('singer_id', next)
+                    }}
                   >
-                    <option value="">No singer</option>
+                    <option value="">No Zemari</option>
                     {initial.taxonomy.singers
-                      .filter((item) => !item.is_archived || item.id === input.singer_id)
+                      .filter((item) => !item.is_archived || item.id === (input.zemari_id || input.singer_id))
                       .map((item) => (
                         <option key={item.id} value={item.id}>
                           {item.name}
+                          {item.name_amharic ? ` · ${item.name_amharic}` : ''}
                           {item.is_archived ? ' (archived)' : ''}
                         </option>
                       ))}
                   </select>
                 </label>
+                <p className={s.muted} style={{ marginTop: -8, fontSize: '0.85rem' }}>
+                  Manage profiles under{' '}
+                  <Link to={ADMIN_PATHS.hymnsZemaris}>Hymns · Zemaris</Link>.
+                </p>
                 <fieldset>
                   <legend>Hymn sections</legend>
                   <p className={s.muted} style={{ fontSize: '0.85rem' }}>
