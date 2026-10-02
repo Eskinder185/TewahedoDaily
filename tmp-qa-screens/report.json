@@ -1,0 +1,66 @@
+{
+  "base": "http://127.0.0.1:4174",
+  "checks": [
+    {
+      "label": "calendar fit @360",
+      "ok": true,
+      "scrollerW": 190,
+      "cardW": 156.125,
+      "peek": 3070.890625,
+      "overflow": 0
+    },
+    {
+      "label": "calendar fit @390",
+      "ok": true,
+      "scrollerW": 220,
+      "cardW": 180.71875,
+      "peek": 3519.296875,
+      "overflow": 0
+    },
+    {
+      "label": "calendar fit @412",
+      "ok": true,
+      "scrollerW": 242,
+      "cardW": 198.765625,
+      "peek": 3847.25,
+      "overflow": 0
+    },
+    {
+      "label": "calendar fit @430",
+      "ok": true,
+      "scrollerW": 260,
+      "cardW": 213.53125,
+      "peek": 4116.484375,
+      "overflow": 0
+    },
+    {
+      "label": "holiday section images",
+      "ok": 9,
+      "n": 14,
+      "storageBroken": 0
+    },
+    {
+      "label": "search results without suggest overlay",
+      "ok": true,
+      "hasResults": true,
+      "hasSuggest": false
+    },
+    {
+      "label": "saved page reachable",
+      "ok": true,
+      "hasSavedLink": true,
+      "text": "Tewahedo Daily\nEN\nአማርኛ\nSaved\n\nFavorites on this device. Sign in to sync across devices.\n\nSign in to sync favorites\n\nNo favorites saved on this device yet.\n\nTewahedo Daily\n\nPortfolio - eskinder.dev\n\n© 2026 Tewahedo Daily\n\nAbout\nLegal\nCopyright\nPrivacy\nRemoval\nSuggest a correction\n"
+    },
+    {
+      "label": "today clean copy",
+      "ok": true,
+      "hasPdf": false,
+      "hasConfidence": false
+    },
+    {
+      "label": "mezmur detail available",
+      "ok": false,
+      "reason": "no mezmur link on /practice"
+    }
+  ]
+}

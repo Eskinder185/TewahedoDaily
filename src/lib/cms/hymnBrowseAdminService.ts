@@ -103,23 +103,33 @@ export function hymnImagePreviewUrl(path: string | null | undefined): string {
   return path ? resolveContentMediaUrl(path) : ''
 }
 
-function adminWriteError(scope: string, error: { code?: string; message?: string } | null): Error {
+function adminWriteError(scope: string, error: { code?: string; message?: string; details?: string; hint?: string } | null): Error {
   if (import.meta.env.DEV) {
     console.error(`[hymn admin] ${scope}`, error)
   }
   if (!error) return new Error('Save failed.')
   const code = error.code || ''
   const message = error.message || ''
-  if (code === '42501' || /permission denied|row-level security/i.test(message)) {
+  const details = [error.details, error.hint].filter(Boolean).join(' ')
+  if (code === '42501' || /permission denied|row-level security|rls/i.test(message)) {
     return new Error(
-      'You do not have permission to make this change. Confirm you are signed in as editor/admin, then apply FIX_MEZMUR_IMPORT_ADMIN_WRITE.sql.',
+      `Permission denied (${code || 'RLS'}). Sign in as editor/admin and ensure staff UPDATE is granted on mezmur_*_import. ${details}`.trim(),
     )
   }
-  if (code === 'PGRST116' || /0 rows|cannot coerce/i.test(message)) {
-    return new Error('No matching row was updated. Refresh and try again.')
+  if (code === 'PGRST116' || /0 rows|cannot coerce|JSON object requested/i.test(message)) {
+    return new Error(`No matching row was updated (${scope}). Refresh and try again.`)
   }
   if (code === '23505') return new Error('This slug already exists. Choose a unique slug.')
-  return new Error(errorMessage(error))
+  if (code === '23502' || /null value|violates check|invalid input/i.test(message)) {
+    return new Error(`Validation failed: ${message}`)
+  }
+  if (/Failed to fetch|NetworkError|network/i.test(message)) {
+    return new Error('Network error while saving. Check your connection and try again.')
+  }
+  if (/storage|bucket|object not found/i.test(message)) {
+    return new Error(`Storage error: ${message}`)
+  }
+  return new Error(errorMessage(error) || message || 'Save failed.')
 }
 
 async function requireStaffSession(): Promise<void> {
@@ -403,28 +413,37 @@ export async function updateSectionImage(
     image_path: image.image_path?.trim() || null,
     image_alt: image.image_alt?.trim() || null,
   }
-  const { data, error } = await db()
-    .from(T.sections as never)
-    .update(payload as never)
-    .eq('section_id', section.id)
-    .select(SECTION_SELECT)
-    .limit(1)
-  if (error) throw adminWriteError('section image update', error)
-  let row = (data || [])[0] as Record<string, unknown> | undefined
-  if (!row) {
-    const collectionSlug = section.collection_slug || section.collection_id
-    const byPair = await db()
+  const sectionId = section.id?.trim() || ''
+  const looksLikeId = Boolean(sectionId) && !sectionId.includes(':')
+
+  if (looksLikeId) {
+    const { data, error } = await db()
       .from(T.sections as never)
       .update(payload as never)
-      .eq('collection_slug', collectionSlug)
-      .eq('section_slug', section.slug)
+      .eq('section_id', sectionId)
       .select(SECTION_SELECT)
       .limit(1)
-    if (byPair.error) throw adminWriteError('section image update by slug pair', byPair.error)
-    row = (byPair.data || [])[0] as Record<string, unknown> | undefined
+    if (error) throw adminWriteError('section image update by section_id', error)
+    const row = (data || [])[0] as Record<string, unknown> | undefined
+    if (row) return mapSection(row)
   }
-  if (!row) throw new Error('Section image update returned no row.')
-  return mapSection(row)
+
+  const collectionSlug = (section.collection_slug || section.collection_id || '').trim()
+  const sectionSlug = (section.slug || '').trim()
+  if (!collectionSlug || !sectionSlug) {
+    throw new Error('Section image update needs section_id or collection_slug + section_slug.')
+  }
+  const byPair = await db()
+    .from(T.sections as never)
+    .update(payload as never)
+    .eq('collection_slug', collectionSlug)
+    .eq('section_slug', sectionSlug)
+    .select(SECTION_SELECT)
+    .limit(1)
+  if (byPair.error) throw adminWriteError('section image update by slug pair', byPair.error)
+  const mapped = (byPair.data || [])[0] as Record<string, unknown> | undefined
+  if (!mapped) throw new Error('Section image update returned no row.')
+  return mapSection(mapped)
 }
 
 /** @deprecated Prefer saveHymnSection */

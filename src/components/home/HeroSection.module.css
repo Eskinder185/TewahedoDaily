@@ -287,6 +287,18 @@
   padding-block: 0.55rem;
 }
 
+.secondaryCta {
+  color: #f7f3ea !important;
+  border-color: color-mix(in srgb, var(--color-gold) 55%, rgba(255, 248, 240, 0.5)) !important;
+  background: color-mix(in srgb, rgba(15, 29, 48, 0.42) 80%, transparent) !important;
+  text-shadow: 0 1px 10px rgba(8, 14, 26, 0.5);
+}
+
+.secondaryCta:hover {
+  background: color-mix(in srgb, rgba(15, 29, 48, 0.55) 80%, var(--color-gold-soft)) !important;
+  color: #fffaf2 !important;
+}
+
 @media (max-width: 479.98px) {
   .actions {
     flex-direction: column;

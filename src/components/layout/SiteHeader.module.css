@@ -510,12 +510,55 @@
     padding-inline: max(var(--space-2), env(safe-area-inset-left, 0px))
       max(var(--space-2), env(safe-area-inset-right, 0px));
     padding-block: 0.45rem;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: calc(100% - 8.25rem);
+  }
+
+  .wordmark {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .headerTools {
+    flex: 0 0 auto;
+    max-width: none;
   }
 
   .utilityLink {
     min-width: var(--tap-min);
     min-height: var(--tap-min);
     height: var(--tap-min);
+  }
+}
+
+@media (max-width: 359.98px) {
+  .bar {
+    gap: 0.35rem;
+    padding-inline: max(0.45rem, env(safe-area-inset-left, 0px))
+      max(0.45rem, env(safe-area-inset-right, 0px));
+  }
+
+  .toggleGroup {
+    gap: 0.25rem;
+  }
+
+  .headerTools {
+    gap: 0.25rem;
+  }
+
+  .wordmark {
+    font-size: 0.86rem;
+  }
+
+  .menuTrigger {
+    width: 2.35rem;
+    height: 2.35rem;
   }
 }
 

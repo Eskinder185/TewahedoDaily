@@ -359,7 +359,7 @@ export function PublicMezmurLibrary() {
               aria-controls={listboxId}
               aria-autocomplete="list"
             />
-            {suggestOpen && discoveryHits.length > 0 ? (
+            {suggestOpen && discoveryHits.length > 0 && !showResults ? (
               <ul id={listboxId} className={s.suggestList} role="listbox">
                 {discoveryHits.map((hit) => (
                   <li key={`${hit.type}-${hit.id}`} role="option">

@@ -55,7 +55,7 @@ export function CalendarEventCard({
           variant === 'home'
             ? '(max-width: 767px) 86vw, 280px'
             : variant === 'timeline'
-              ? '(max-width: 767px) 86vw, (max-width: 1280px) 300px, 320px'
+              ? '(max-width: 767px) 240px, (max-width: 1280px) 280px, 300px'
               : '(max-width: 767px) 240px, (max-width: 1024px) 260px, 300px'
         }
       />

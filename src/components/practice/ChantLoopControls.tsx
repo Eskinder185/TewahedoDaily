@@ -123,63 +123,101 @@ export function ChantLoopControls({
   const t = useUiLabel()
   const tt = useTranslation()
   const [advancedOpen, setAdvancedOpen] = useState(false)
+  const [editingPart, setEditingPart] = useState<QuickLoopId | null>(null)
   const canPlayLoop =
     loopStart !== null && loopEnd !== null && loopEnd > loopStart + 0.35
   const loopSpan =
     canPlayLoop && loopStart != null && loopEnd != null ? loopEnd - loopStart : 0
-
-  const sectionsBlock = (
-    <div className={styles.splitBlock}>
-      <h3 className={styles.primaryHeading}>Practice Sections</h3>
-      <p className={styles.hint}>Tap Play once, or Loop to repeat a section.</p>
-      <div className={styles.splitRow} role="list">
-        {(autoSplitSections || []).map((seg, index) => {
-          const on = activeSectionIndex === index
-          return (
-            <div
-              key={`${seg.start}-${index}`}
-              className={`${styles.splitCard} ${on ? styles.splitCardOn : ''}`}
-              role="listitem"
-            >
-              <p className={styles.splitBtnLabel}>Section {index + 1}</p>
-              <p className={styles.splitBtnRange}>
-                {formatTime(seg.start)} – {formatTime(seg.end)}
-              </p>
-              <div className={styles.splitActions}>
-                <button
-                  type="button"
-                  className={styles.btnMini}
-                  disabled={disabled}
-                  onClick={() => onPlaySection(index, false)}
-                >
-                  Play
-                </button>
-                <button
-                  type="button"
-                  className={styles.btnMini}
-                  disabled={disabled}
-                  onClick={() => onPlaySection(index, true)}
-                >
-                  Loop
-                </button>
-              </div>
-            </div>
-          )
-        })}
-        {!autoSplitSections?.length ? (
-          <p className={styles.hint}>{tt('mezmurPractice.loop.notReady')}</p>
-        ) : null}
-      </div>
-    </div>
-  )
+  const rangeHint =
+    loopStart != null && loopEnd != null && !canPlayLoop
+      ? 'End must be after start. Set End later in the track, or nudge the times.'
+      : null
 
   const advancedBody = (
     <div className={styles.advancedBody}>
-      {sectionsBlock}
-      <div className={styles.times}>
-        <div className={styles.timeRow}>
+      <p className={styles.advancedLead}>
+        I choose where my loop starts and ends — mark the current playback time, then loop that
+        section.
+      </p>
+
+      <div className={styles.abRange} aria-live="polite">
+        <div className={styles.abPoint}>
           <span className={styles.timeLabel}>Start</span>
-          <span className={styles.timeValue}>{formatTime(loopStart)}</span>
+          <span className={styles.timeValue}>{formatTime(loopStart) || '—'}</span>
+          <button
+            type="button"
+            className={styles.btnSetCurrent}
+            disabled={disabled}
+            onClick={onMarkStart}
+          >
+            Set current
+          </button>
+        </div>
+        <div className={styles.abPoint}>
+          <span className={styles.timeLabel}>End</span>
+          <span className={styles.timeValue}>{formatTime(loopEnd) || '—'}</span>
+          <button
+            type="button"
+            className={styles.btnSetCurrent}
+            disabled={disabled}
+            onClick={onMarkEnd}
+          >
+            Set current
+          </button>
+        </div>
+      </div>
+
+      <p className={styles.selectedRange}>
+        Selected range:{' '}
+        <strong>
+          {formatTime(loopStart) || '—'} → {formatTime(loopEnd) || '—'}
+          {canPlayLoop ? ` (${formatTime(loopSpan)})` : ''}
+        </strong>
+      </p>
+      {rangeHint ? (
+        <p className={styles.error} role="alert">
+          {rangeHint}
+        </p>
+      ) : null}
+
+      <div className={styles.abPrimary}>
+        {loopPlaying ? (
+          <button type="button" className={styles.btnWarn} onClick={onStopLoop}>
+            Stop looping
+          </button>
+        ) : (
+          <button
+            type="button"
+            className={styles.btnPrimary}
+            disabled={!canPlayLoop || disabled}
+            onClick={onPlayLoop}
+          >
+            Loop this section
+          </button>
+        )}
+        <button type="button" className={styles.btnGhost} disabled={disabled} onClick={onClearLoop}>
+          Clear
+        </button>
+        <button
+          type="button"
+          className={styles.btnSave}
+          disabled={!canPlayLoop || disabled || savedSections.length >= 30}
+          onClick={onSaveSection}
+        >
+          Save
+        </button>
+      </div>
+
+      {loopPlaying && loopLimit !== 'infinite' ? (
+        <p className={styles.hint}>
+          Repeat {Math.min(loopRepeatIndex, loopLimit)} of {loopLimit}
+        </p>
+      ) : null}
+
+      <details className={styles.nudgeDetails}>
+        <summary className={styles.nudgeSummary}>Fine-tune (±1s)</summary>
+        <div className={styles.nudgeRow}>
+          <span className={styles.timeLabel}>Start</span>
           <button
             type="button"
             className={styles.btnMini}
@@ -196,10 +234,7 @@ export function ChantLoopControls({
           >
             +1s
           </button>
-        </div>
-        <div className={styles.timeRow}>
           <span className={styles.timeLabel}>End</span>
-          <span className={styles.timeValue}>{formatTime(loopEnd)}</span>
           <button
             type="button"
             className={styles.btnMini}
@@ -217,47 +252,7 @@ export function ChantLoopControls({
             +1s
           </button>
         </div>
-        {canPlayLoop ? <p className={styles.hint}>Loop length: {formatTime(loopSpan)}</p> : null}
-        {loopPlaying && loopLimit !== 'infinite' ? (
-          <p className={styles.hint}>
-            Repeat {Math.min(loopRepeatIndex, loopLimit)} of {loopLimit}
-          </p>
-        ) : null}
-      </div>
-
-      <div className={styles.actions}>
-        <button type="button" className={styles.btn} disabled={disabled} onClick={onMarkStart}>
-          Set loop start
-        </button>
-        <button type="button" className={styles.btn} disabled={disabled} onClick={onMarkEnd}>
-          Set loop end
-        </button>
-        {loopPlaying ? (
-          <button type="button" className={styles.btnWarn} onClick={onStopLoop}>
-            Stop loop
-          </button>
-        ) : (
-          <button
-            type="button"
-            className={styles.btnPrimary}
-            disabled={!canPlayLoop || disabled}
-            onClick={onPlayLoop}
-          >
-            Start loop
-          </button>
-        )}
-        <button type="button" className={styles.btnGhost} disabled={disabled} onClick={onClearLoop}>
-          Clear loop
-        </button>
-        <button
-          type="button"
-          className={styles.btnSave}
-          disabled={!canPlayLoop || disabled || savedSections.length >= 30}
-          onClick={onSaveSection}
-        >
-          Save
-        </button>
-      </div>
+      </details>
 
       <div className={styles.loopOptions}>
         <label>
@@ -291,6 +286,48 @@ export function ChantLoopControls({
           </select>
         </label>
       </div>
+
+      {autoSplitSections?.length ? (
+        <div className={styles.splitBlock}>
+          <h3 className={styles.savedHeading}>Auto sections</h3>
+          <p className={styles.hint}>Optional splits from track length.</p>
+          <div className={styles.splitRow} role="list">
+            {autoSplitSections.map((seg, index) => {
+              const on = activeSectionIndex === index
+              return (
+                <div
+                  key={`${seg.start}-${index}`}
+                  className={`${styles.splitCard} ${on ? styles.splitCardOn : ''}`}
+                  role="listitem"
+                >
+                  <p className={styles.splitBtnLabel}>Section {index + 1}</p>
+                  <p className={styles.splitBtnRange}>
+                    {formatTime(seg.start)} – {formatTime(seg.end)}
+                  </p>
+                  <div className={styles.splitActions}>
+                    <button
+                      type="button"
+                      className={styles.btnMini}
+                      disabled={disabled}
+                      onClick={() => onPlaySection(index, false)}
+                    >
+                      Play
+                    </button>
+                    <button
+                      type="button"
+                      className={styles.btnMini}
+                      disabled={disabled}
+                      onClick={() => onPlaySection(index, true)}
+                    >
+                      Loop
+                    </button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      ) : null}
 
       {savedSections.length > 0 ? (
         <div className={styles.savedBlock}>
@@ -340,82 +377,96 @@ export function ChantLoopControls({
 
   return (
     <section className={styles.root} aria-disabled={disabled || undefined}>
-      <div className={styles.quickGrid}>
+      <h3 className={styles.primaryHeading}>Parts</h3>
+      <p className={styles.hint}>
+        Three practice parts from the track. Tap a part to loop it. Edit marks only when you need
+        to.
+      </p>
+
+      <div className={styles.partGrid} role="list">
         {QUICK_LOOP_IDS.map((id) => {
           const slot = quickLoops[`loop${id}` as const]
           const active = activeQuickLoop === id
           const ready = slotIsConfigured(slot)
           const err = quickLoopErrors[id]
+          const editing = editingPart === id
           const rangeLabel =
             slot.startTime != null && slot.endTime != null
-              ? `${formatTime(slot.startTime)} → ${formatTime(slot.endTime)}`
+              ? `${formatTime(slot.startTime)} – ${formatTime(slot.endTime)}`
               : slot.startTime != null
-                ? `${formatTime(slot.startTime)} → —`
-                : 'Not configured'
+                ? `${formatTime(slot.startTime)} – —`
+                : 'Waiting for duration…'
 
           return (
             <div
               key={id}
-              className={`${styles.quickSlot} ${active ? styles.quickSlotActive : ''}`.trim()}
+              className={`${styles.partCard} ${active ? styles.partCardActive : ''} ${
+                ready ? '' : styles.partCardEmpty
+              }`.trim()}
+              role="listitem"
             >
-              <div className={styles.quickHead}>
-                <p className={styles.quickTitle}>Loop {id}</p>
-                {active ? <span className={styles.activeBadge}>● ACTIVE</span> : null}
-              </div>
-              <p className={styles.quickRange}>{rangeLabel}</p>
+              <button
+                type="button"
+                className={styles.partMain}
+                disabled={disabled || !ready}
+                aria-pressed={active}
+                aria-label={
+                  active
+                    ? `Stop Part ${id}`
+                    : `Loop Part ${id}, ${rangeLabel}`
+                }
+                onClick={() => (active ? onStopQuickLoop() : onPracticeQuickLoop(id))}
+              >
+                <span className={styles.partTitle}>Part {id}</span>
+                <span className={styles.partRange}>{rangeLabel}</span>
+                <span className={styles.partAction}>{active ? 'Stop' : 'Loop'}</span>
+              </button>
               {err ? (
                 <p className={styles.quickError} role="alert">
                   {err}
                 </p>
               ) : null}
-              <div className={styles.quickActions}>
+              <div className={styles.partTools}>
                 <button
                   type="button"
-                  className={styles.quickBtn}
+                  className={styles.partToolBtn}
                   disabled={disabled}
-                  aria-label={`Set Loop ${id} start`}
-                  onClick={() => onSetQuickStart(id)}
+                  aria-expanded={editing}
+                  onClick={() => setEditingPart((prev) => (prev === id ? null : id))}
                 >
-                  Set Start
+                  {editing ? 'Hide marks' : 'Edit marks'}
                 </button>
-                <button
-                  type="button"
-                  className={styles.quickBtn}
-                  disabled={disabled}
-                  aria-label={`Set Loop ${id} end`}
-                  onClick={() => onSetQuickEnd(id)}
-                >
-                  Set End
-                </button>
-                {active ? (
-                  <button
-                    type="button"
-                    className={`${styles.quickBtn} ${styles.quickBtnWarn}`}
-                    aria-label={`Stop Loop ${id}`}
-                    onClick={onStopQuickLoop}
-                  >
-                    Stop Loop
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    className={`${styles.quickBtn} ${styles.quickBtnPrimary}`}
-                    disabled={disabled || !ready}
-                    aria-label={`Practice Loop ${id}`}
-                    onClick={() => onPracticeQuickLoop(id)}
-                  >
-                    Practice
-                  </button>
-                )}
-                <button
-                  type="button"
-                  className={styles.quickBtnGhost}
-                  disabled={disabled}
-                  aria-label={`Clear Loop ${id}`}
-                  onClick={() => onClearQuickLoop(id)}
-                >
-                  Clear
-                </button>
+                {editing ? (
+                  <>
+                    <button
+                      type="button"
+                      className={styles.partToolBtn}
+                      disabled={disabled}
+                      aria-label={`Set Part ${id} start to current time`}
+                      onClick={() => onSetQuickStart(id)}
+                    >
+                      Set start
+                    </button>
+                    <button
+                      type="button"
+                      className={styles.partToolBtn}
+                      disabled={disabled}
+                      aria-label={`Set Part ${id} end to current time`}
+                      onClick={() => onSetQuickEnd(id)}
+                    >
+                      Set end
+                    </button>
+                    <button
+                      type="button"
+                      className={styles.partToolBtn}
+                      disabled={disabled}
+                      aria-label={`Clear Part ${id}`}
+                      onClick={() => onClearQuickLoop(id)}
+                    >
+                      Clear
+                    </button>
+                  </>
+                ) : null}
               </div>
             </div>
           )
@@ -428,7 +479,7 @@ export function ChantLoopControls({
         disabled={disabled}
         onClick={onClearAllQuickLoops}
       >
-        Clear All Loops
+        Reset all parts
       </button>
 
       {loopError ? <p className={styles.error}>{loopError}</p> : null}
@@ -438,7 +489,9 @@ export function ChantLoopControls({
         open={advancedOpen}
         onToggle={(e) => setAdvancedOpen((e.target as HTMLDetailsElement).open)}
       >
-        <summary className={styles.advancedSummary}>Advanced Loop</summary>
+        <summary className={styles.advancedSummary}>
+          Advanced Loop — choose start and end yourself
+        </summary>
         {advancedBody}
       </details>
     </section>

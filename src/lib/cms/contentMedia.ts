@@ -69,6 +69,13 @@ export function isAbsoluteMediaUrl(value: string | null | undefined): boolean {
   return /^https?:\/\//i.test(value.trim())
 }
 
+/** Site-root paths such as `/images/calendar-web/Meskel.webp`. */
+export function isSiteRelativeMediaPath(value: string | null | undefined): boolean {
+  if (!value) return false
+  const trimmed = value.trim()
+  return trimmed.startsWith('/') && !trimmed.startsWith('//')
+}
+
 /**
  * Resolve a stored media value to a browser-usable URL.
  * - http(s) → used as-is
@@ -81,6 +88,7 @@ export function resolveContentMediaUrl(value: string | null | undefined): string
   if (!trimmed) return ''
 
   if (isAbsoluteMediaUrl(trimmed)) return trimmed
+  if (isSiteRelativeMediaPath(trimmed)) return trimmed
 
   if (trimmed.startsWith('storage://')) {
     const rest = trimmed.slice('storage://'.length)

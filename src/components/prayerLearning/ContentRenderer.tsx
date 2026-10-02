@@ -55,17 +55,26 @@ export function ContentRenderer({
       ) : (
         <>
           {prayers.length > 0 ? <PrayerBlock rows={prayers} /> : null}
-          <ProseBlocks rows={prose} lang={lang} />
+          <ProseBlocks rows={prose} lang={lang} sectionTitle={section.titleEnglish} />
         </>
       )}
     </div>
   )
 }
 
-function ProseBlocks({ rows, lang }: { rows: LearningContentRow[]; lang: GuideLangMode }) {
+function ProseBlocks({
+  rows,
+  lang,
+  sectionTitle,
+}: {
+  rows: LearningContentRow[]
+  lang: GuideLangMode
+  sectionTitle?: string
+}) {
   if (rows.length === 0) {
     return <p className={styles.missing}>Content not available yet.</p>
   }
+  const normalizedTitle = (sectionTitle || '').trim().toLocaleLowerCase()
   return (
     <>
       {rows.map((row) => {
@@ -75,14 +84,19 @@ function ProseBlocks({ rows, lang }: { rows: LearningContentRow[]; lang: GuideLa
           .filter(Boolean)
         const isInstruction = row.contentKind === 'instruction'
         const blockClass = isInstruction ? styles.instructionBlock : styles.bodyBlock
+        const heading = (row.heading || '').trim()
+        const duplicateHeading =
+          Boolean(heading) &&
+          Boolean(normalizedTitle) &&
+          heading.toLocaleLowerCase() === normalizedTitle
 
         return (
           <div key={row.contentId} className={blockClass} lang={row.language}>
             {lang === 'both' && row.language === 'en' ? (
               <p className={styles.translationLabel}>English translation</p>
             ) : null}
-            {row.heading && row.contentKind !== 'body' ? (
-              <p className={styles.contentHeading}>{row.heading}</p>
+            {heading && row.contentKind !== 'body' && !duplicateHeading ? (
+              <p className={styles.contentHeading}>{heading}</p>
             ) : null}
             {paragraphs.length > 0 ? (
               paragraphs.map((paragraph, index) => <p key={`${row.contentId}-${index}`}>{paragraph}</p>)

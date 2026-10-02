@@ -188,12 +188,22 @@ export function Favorites() {
       ) : null}
 
       {nonMezmur.length > 0 ? (
-        <ul>
+        <ul className={s.savedList}>
           {nonMezmur.map((item) => (
-            <li key={item.id}>
-              <Link to={item.route || '/pray'}>
-                <strong>{item.title || item.contentSlug || item.contentType}</strong>
-                <small> · {item.contentType}</small>
+            <li key={item.id} className={s.savedRow}>
+              <Link to={item.route || '/pray'} className={s.savedLink}>
+                <span className={s.savedMark} aria-hidden>
+                  ✣
+                </span>
+                <span>
+                  <span className={s.savedTitle}>
+                    {item.title || item.contentSlug || item.contentType}
+                  </span>
+                  <span className={s.savedMeta}>{item.contentType}</span>
+                </span>
+                <span className={s.savedArrow} aria-hidden>
+                  →
+                </span>
               </Link>
             </li>
           ))}
@@ -231,11 +241,24 @@ export function Favorites() {
           {(unified.data?.items || []).length === 0 ? (
             <p>No favorites saved on this device yet.</p>
           ) : null}
-          <ul>
+          <ul className={s.savedList}>
             {(unified.data?.items || []).map((item) => (
-              <li key={item.id}>
-                <Link to={item.route || '/pray'}>
-                  <strong>{item.title || item.contentSlug || item.contentType}</strong>
+              <li key={item.id} className={s.savedRow}>
+                <Link to={item.route || '/pray'} className={s.savedLink}>
+                  <span className={s.savedMark} aria-hidden>
+                    ✣
+                  </span>
+                  <span>
+                    <span className={s.savedTitle}>
+                      {item.title || item.contentSlug || item.contentType}
+                    </span>
+                    {item.contentType ? (
+                      <span className={s.savedMeta}>{item.contentType}</span>
+                    ) : null}
+                  </span>
+                  <span className={s.savedArrow} aria-hidden>
+                    →
+                  </span>
                 </Link>
               </li>
             ))}

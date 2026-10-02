@@ -90,9 +90,28 @@
 }
 
 @media (max-width: 767.98px) {
+  /* Fit inside the timeline scroller with a peek of the next card. */
   .timeline {
-    width: min(86vw, 280px);
-    max-width: 280px;
+    width: min(260px, calc(100vw - 9.5rem));
+    max-width: min(260px, calc(100vw - 9.5rem));
+  }
+
+  .timeline .title {
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  .timeline .summary {
+    -webkit-line-clamp: 2;
+    font-size: 0.72rem;
+  }
+}
+
+/* Prefer the actual scroller width when container queries are available. */
+@container calendar-timeline (max-width: 900px) {
+  .timeline {
+    width: min(260px, 82cqi);
+    max-width: min(260px, 82cqi);
   }
 }
 

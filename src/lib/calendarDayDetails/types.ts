@@ -39,7 +39,7 @@ export type CalendarLiturgyContext = {
   mezmur?: {
     id?: string
     title?: string
-    note: string
+    note?: string
     status: string
   }
   whyToday?: string

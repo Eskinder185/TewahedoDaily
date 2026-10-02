@@ -95,7 +95,11 @@ export function CalendarDateTimeline({
 
   useEffect(() => {
     if (visibleGroups.length === 0) return
-    const behavior: ScrollBehavior = lastAnchoredIso.current == null ? 'auto' : 'smooth'
+    const isFirst = lastAnchoredIso.current == null
+    const selectionChanged = lastAnchoredIso.current !== selectedIso
+    // Do not re-anchor when the range extends (arrows / edge load) — that cancels scroll.
+    if (!isFirst && !selectionChanged) return
+    const behavior: ScrollBehavior = isFirst ? 'auto' : 'smooth'
     lastAnchoredIso.current = selectedIso
     const id = window.requestAnimationFrame(() => scrollSelectedIntoView(behavior))
     return () => window.cancelAnimationFrame(id)
@@ -125,12 +129,33 @@ export function CalendarDateTimeline({
     }
   }, [onLoadEarlier, onLoadLater, canLoadEarlier, canLoadLater, updateFades])
 
+  const canScrollEarlier = showLeftFade || canLoadEarlier
+  const canScrollLater = showRightFade || canLoadLater
+
   const scrollByPage = (dir: -1 | 1) => {
     const el = scrollerRef.current
     if (!el) return
-    const amount = Math.max(300, Math.round(el.clientWidth * 0.85))
+    const max = Math.max(0, el.scrollWidth - el.clientWidth)
+    const atStart = el.scrollLeft <= 24
+    const atEnd = max <= 0 || el.scrollLeft >= max - 24
+    const amount = Math.max(140, Math.round(el.clientWidth * 0.78))
+
+    if (dir < 0 && atStart && canLoadEarlier) onLoadEarlier()
+    if (dir > 0 && atEnd && canLoadLater) onLoadLater()
+
     el.scrollBy({ left: dir * amount, behavior: 'smooth' })
+
     window.setTimeout(() => {
+      // Range extend can grow scrollWidth after paint — nudge again if room remains.
+      const max2 = Math.max(0, el.scrollWidth - el.clientWidth)
+      if (dir > 0 && el.scrollLeft < max2 - 8) {
+        el.scrollBy({
+          left: Math.min(amount, max2 - el.scrollLeft),
+          behavior: 'smooth',
+        })
+      } else if (dir < 0 && el.scrollLeft > 8 && atStart) {
+        el.scrollBy({ left: -Math.min(amount, el.scrollLeft), behavior: 'smooth' })
+      }
       updateFades()
       maybeLoadAtEdge()
     }, 320)
@@ -160,11 +185,8 @@ export function CalendarDateTimeline({
         type="button"
         className={styles.arrow}
         aria-label="Show earlier calendar events"
-        disabled={!canLoadEarlier}
-        onClick={() => {
-          onLoadEarlier()
-          scrollByPage(-1)
-        }}
+        disabled={!canScrollEarlier}
+        onClick={() => scrollByPage(-1)}
       >
         ←
       </button>
@@ -249,11 +271,8 @@ export function CalendarDateTimeline({
         type="button"
         className={styles.arrow}
         aria-label="Show later calendar events"
-        disabled={!canLoadLater}
-        onClick={() => {
-          onLoadLater()
-          scrollByPage(1)
-        }}
+        disabled={!canScrollLater}
+        onClick={() => scrollByPage(1)}
       >
         →
       </button>

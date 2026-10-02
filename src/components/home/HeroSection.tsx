@@ -174,7 +174,7 @@ export function HeroSection() {
           <p className={styles.tagline}>{current.subtitle}</p>
           <div className={styles.actions}>
             <ButtonLink to={current.primaryUrl}>{current.primaryLabel}</ButtonLink>
-            <ButtonLink to={current.secondaryUrl} variant="ghost">
+            <ButtonLink to={current.secondaryUrl} variant="ghost" className={styles.secondaryCta}>
               {current.secondaryLabel}
             </ButtonLink>
           </div>

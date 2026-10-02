@@ -97,6 +97,41 @@ export function slotIsConfigured(slot: QuickLoopSlot): boolean {
   )
 }
 
+/** True when none of the three slots have a usable range. */
+export function quickLoopsAreEmpty(loops: QuickLoopsState): boolean {
+  return QUICK_LOOP_IDS.every((id) => !slotIsConfigured(loops[quickLoopKey(id)]))
+}
+
+/**
+ * Seed Loop 1/2/3 as three contiguous parts once duration is known.
+ * Uses a short end buffer so the final second of media is not required.
+ */
+export function buildDefaultQuickLoops(durationSec: number): QuickLoopsState {
+  const empty = emptyQuickLoops()
+  if (!Number.isFinite(durationSec) || durationSec <= 0) return empty
+
+  const endBuffer = durationSec >= 8 ? 2.5 : Math.min(1, durationSec * 0.08)
+  const usableEnd = Math.max(0, durationSec - endBuffer)
+  // Too short to practice as distinct parts.
+  if (usableEnd < 6) return empty
+
+  if (usableEnd < MIN_SPAN * 3) {
+    const mid = usableEnd / 2
+    return {
+      loop1: { startTime: 0, endTime: mid },
+      loop2: { startTime: mid, endTime: usableEnd },
+      loop3: { startTime: null, endTime: null },
+    }
+  }
+
+  const third = usableEnd / 3
+  return {
+    loop1: { startTime: 0, endTime: third },
+    loop2: { startTime: third, endTime: third * 2 },
+    loop3: { startTime: third * 2, endTime: usableEnd },
+  }
+}
+
 export function validateQuickLoopRange(
   startTime: number | null,
   endTime: number | null,

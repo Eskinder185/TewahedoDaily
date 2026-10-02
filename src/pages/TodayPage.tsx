@@ -10,6 +10,7 @@ import { useHomeToday } from '../hooks/useHomeToday'
 import { publicDaily, todayInAddis } from '../lib/cms/dailyService'
 import { useAsync } from '../lib/cms/useAsync'
 import { resolveCalendarDayDetail } from '../lib/calendarDayDetails'
+import { isInternalPlaceholderCopy } from '../lib/calendarDayDetails/publicLiturgyCopy'
 import { collectEotcMatchesForLocalDay } from '../lib/eotcCalendar'
 import { gregorianToEthiopian } from '../lib/ethiopianDate'
 import { getSynaxariumDayWithCommemorations } from '../lib/prayers/synaxariumSupabase'
@@ -25,6 +26,12 @@ import styles from './TodayPage.module.css'
 function fastLine(weekly: string | null, seasonal: string | null) {
   const parts = [weekly, seasonal].filter(Boolean)
   return parts.length ? parts.join(' · ') : null
+}
+
+function publicCopy(text: string | null | undefined): string {
+  const raw = (text || '').trim()
+  if (!raw || isInternalPlaceholderCopy(raw)) return ''
+  return raw
 }
 
 /**
@@ -153,12 +160,13 @@ export function TodayPage() {
         <Notice {...editorial} retry={editorial.reload} />
         {editorial.data ? (
           <>
-            {editorial.data.announcement ? (
-              <p className={styles.summary}>{editorial.data.announcement}</p>
+            {publicCopy(editorial.data.announcement) ? (
+              <p className={styles.summary}>{publicCopy(editorial.data.announcement)}</p>
             ) : null}
             <div className={`${publicStyles.grid} ${styles.selectionGrid}`}>
               {(['mezmur', 'saint', 'feast'] as const).map((kind, i) => {
                 const item = editorial.data![kind]
+                const title = publicCopy(item?.title)
                 return (
                   <article className={publicStyles.card} key={kind}>
                     <h3>
@@ -170,7 +178,7 @@ export function TodayPage() {
                         ][i]
                       }
                     </h3>
-                    {item ? (
+                    {item && title ? (
                       <>
                         <Artwork reference={item.thumbnail_url} />
                         <Link
@@ -180,7 +188,7 @@ export function TodayPage() {
                               : `/content/${kind === 'saint' ? 'saints' : 'feasts'}/${item.slug}`
                           }
                         >
-                          {item.title}
+                          {title}
                         </Link>
                       </>
                     ) : (
@@ -190,33 +198,26 @@ export function TodayPage() {
                 )
               })}
             </div>
-            {(editorial.data.summary || editorial.data.announcement) && (
+            {(publicCopy(editorial.data.summary) || publicCopy(editorial.data.announcement)) && (
               <div className={publicStyles.card}>
-                {editorial.data.summary ? (
+                {publicCopy(editorial.data.summary) ? (
                   <>
                     <h3>Today’s note</h3>
-                    <p>{editorial.data.summary}</p>
+                    <p>{publicCopy(editorial.data.summary)}</p>
                   </>
                 ) : null}
-                {editorial.data.announcement ? (
+                {publicCopy(editorial.data.announcement) ? (
                   <>
                     <h3>Announcement</h3>
                     <p className={publicStyles.lyrics}>
-                      {editorial.data.announcement}
+                      {publicCopy(editorial.data.announcement)}
                     </p>
                   </>
                 ) : null}
               </div>
             )}
           </>
-        ) : (
-          !editorial.loading &&
-          !editorial.error && (
-            <p className={publicStyles.muted}>
-              Editorial selections for today will appear here when published.
-            </p>
-          )
-        )}
+        ) : null}
       </section>
 
       <div className={styles.actions}>

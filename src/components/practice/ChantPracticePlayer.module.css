@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  margin-bottom: calc(7.5rem + env(safe-area-inset-bottom, 0px));
+  margin-bottom: calc(var(--practice-sticky-clearance, 5.75rem) + env(safe-area-inset-bottom, 0px));
   padding: var(--space-3);
   border-radius: var(--radius-lg);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 84%, var(--color-gold-line));
@@ -567,9 +567,14 @@
   }
 
   .shell {
+    --practice-sticky-clearance: 5.5rem;
     padding: var(--space-2);
     gap: var(--space-3);
     overflow-x: clip;
+  }
+
+  .shell[data-sticky-expanded='true'] {
+    --practice-sticky-clearance: 9rem;
   }
 
   .shellReading {
@@ -579,9 +584,43 @@
 
   .stickyBar {
     flex-direction: column;
+    gap: 4px;
+    border-radius: 16px;
+    padding: 6px 10px;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .stickyBarExpanded {
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+
+  .stickyControls {
     gap: 6px;
-    border-radius: 18px;
-    padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .stickyBtn {
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 0.82rem;
+  }
+
+  .stickyPlay {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .stickyProgressRow {
+    gap: 0.3rem;
+  }
+
+  .stickyMore {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 248, 240, 0.28);
   }
 }
 
@@ -645,6 +684,10 @@
   align-items: center;
 }
 
+.stickyProgressRow:has(.stickyMore) {
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+}
+
 .stickyTime {
   font-size: 0.72rem;
   font-variant-numeric: tabular-nums;
@@ -666,11 +709,15 @@
   background: transparent;
   color: inherit;
   font: inherit;
-  font-size: 0.78rem;
-  text-decoration: underline;
+  font-size: 0.85rem;
+  line-height: 1;
   cursor: pointer;
   align-self: center;
-  min-height: 44px;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0;
+  border-radius: 999px;
+  opacity: 0.9;
 }
 
 .stickyExtras {

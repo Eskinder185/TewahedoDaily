@@ -15,6 +15,7 @@
  */
 import { supabase } from '../supabase/client'
 import { resolveContentMediaUrl } from '../cms/contentMedia'
+import { resolveHymnSectionImageUrl } from './hymnSectionArtFallbacks'
 
 export type HymnCollection = {
   id: string
@@ -258,7 +259,7 @@ function mapSectionFromRow(row: SectionImportRow): HymnSection {
     description: txt(row.description),
     descriptionAmharic: txt(row.description_amharic),
     imagePath: path,
-    imageUrl: mediaUrl(path),
+    imageUrl: resolveHymnSectionImageUrl(slug, path, mediaUrl(path)),
     imageAlt: txt(row.image_alt) || title,
     sectionType: txt(row.section_type),
     mezmurCount: 0,

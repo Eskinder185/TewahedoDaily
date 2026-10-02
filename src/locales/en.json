@@ -390,8 +390,8 @@
     },
     "recording": {
       "title": "Practice Recording",
-      "withLyrics": "Practice with Lyrics",
-      "fromMemory": "Practice from Memory",
+      "withLyrics": "With lyrics",
+      "fromMemory": "From memory",
       "ready": "Ready to record",
       "readyShort": "Ready",
       "countdown": "Recording in {count}...",

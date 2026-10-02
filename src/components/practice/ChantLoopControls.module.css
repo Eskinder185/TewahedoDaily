@@ -673,3 +673,241 @@
   }
 }
 
+/* —— Part 1 / 2 / 3 (default Loop Practice) —— */
+.partGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+@media (min-width: 640px) {
+  .partGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.partCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  border-radius: var(--radius-md);
+  border: 1px solid color-mix(in srgb, var(--color-border) 88%, transparent);
+  background: color-mix(in srgb, var(--color-bg-muted) 86%, var(--color-bg-elevated));
+  overflow: hidden;
+}
+
+.partCardActive {
+  border-color: color-mix(in srgb, var(--color-gold) 60%, var(--color-navy));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 40%, transparent),
+    0 6px 16px color-mix(in srgb, var(--color-navy) 10%, transparent);
+  background: color-mix(in srgb, var(--color-gold-faint) 58%, var(--color-bg-elevated));
+}
+
+.partCardEmpty {
+  opacity: 0.72;
+}
+
+.partMain {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    'title action'
+    'range action';
+  align-items: center;
+  gap: 0.15rem 0.75rem;
+  width: 100%;
+  min-height: 3.5rem;
+  margin: 0;
+  padding: 0.75rem 0.85rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.partMain:disabled {
+  cursor: not-allowed;
+}
+
+.partMain:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: -2px;
+}
+
+.partTitle {
+  grid-area: title;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-heading);
+}
+
+.partRange {
+  grid-area: range;
+  font-family: ui-monospace, monospace;
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: var(--color-text);
+}
+
+.partAction {
+  grid-area: action;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.5rem;
+  min-height: 2.75rem;
+  padding: 0 0.85rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-navy);
+  background: var(--color-navy);
+  color: #fff8f0;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.partCardActive .partAction {
+  background: color-mix(in srgb, #8b3a3a 88%, black);
+  border-color: #8b3a3a;
+}
+
+.partTools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0 0.75rem 0.65rem;
+}
+
+.partToolBtn {
+  min-height: 2.5rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.partToolBtn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* —— Advanced A/B loop —— */
+.advancedLead {
+  margin: 0.75rem 0 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--color-text);
+}
+
+.abRange {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+}
+
+@media (min-width: 520px) {
+  .abRange {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.abPoint {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-muted);
+}
+
+.abPoint .timeValue {
+  font-size: 1.15rem;
+}
+
+.btnSetCurrent {
+  min-height: 2.75rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.btnSetCurrent:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.btnSetCurrent:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.selectedRange {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.selectedRange strong {
+  color: var(--color-heading);
+  font-variant-numeric: tabular-nums;
+}
+
+.abPrimary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.abPrimary .btnPrimary {
+  flex: 1 1 12rem;
+  min-height: 2.85rem;
+  font-size: 0.95rem;
+}
+
+.nudgeDetails {
+  margin: 0.35rem 0 0.85rem;
+  border-radius: var(--radius-sm);
+  border: 1px dashed color-mix(in srgb, var(--color-border) 80%, transparent);
+}
+
+.nudgeSummary {
+  cursor: pointer;
+  list-style: none;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--color-text-muted);
+}
+
+.nudgeSummary::-webkit-details-marker {
+  display: none;
+}
+
+.nudgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0 0.65rem 0.65rem;
+}
+
+

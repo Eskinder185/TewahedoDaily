@@ -14,10 +14,12 @@ import {
   type SavedChantLoopSection,
 } from '../../lib/practice/chantLoopStorage'
 import {
+  buildDefaultQuickLoops,
   emptyQuickLoops,
   loadQuickLoops,
   persistQuickLoops,
   quickLoopKey,
+  quickLoopsAreEmpty,
   sanitizeQuickLoops,
   slotIsConfigured,
   validateQuickLoopRange,
@@ -170,7 +172,11 @@ export function ChantPracticePlayer({
 
   useEffect(() => {
     if (durationSec <= 0) return
-    setQuickLoops((prev) => sanitizeQuickLoops(prev, durationSec))
+    setQuickLoops((prev) => {
+      const sanitized = sanitizeQuickLoops(prev, durationSec)
+      if (!quickLoopsAreEmpty(sanitized)) return sanitized
+      return buildDefaultQuickLoops(durationSec)
+    })
   }, [durationSec, payload.entryId])
 
   useEffect(() => {
@@ -805,7 +811,12 @@ export function ChantPracticePlayer({
   const supportUrl = (payload.watchUrl || '').trim()
 
   return (
-    <div className={`${styles.shell} ${styles.shellReading}`} ref={shellRef} tabIndex={-1}>
+    <div
+      className={`${styles.shell} ${styles.shellReading}`}
+      ref={shellRef}
+      tabIndex={-1}
+      data-sticky-expanded={stickyExpanded && isNarrow ? 'true' : undefined}
+    >
       {/* 1. Hymn title / identity */}
       <header className={styles.topBar}>
         <button type="button" className={styles.back} onClick={onBack}>
@@ -1048,18 +1059,18 @@ export function ChantPracticePlayer({
             />
           </label>
           <span className={styles.stickyTime}>{formatChantTime(durationSec)}</span>
+          {isNarrow ? (
+            <button
+              type="button"
+              className={styles.stickyMore}
+              aria-expanded={stickyExpanded}
+              aria-label={stickyExpanded ? 'Hide volume and speed' : 'Show volume and speed'}
+              onClick={() => setStickyExpanded((v) => !v)}
+            >
+              {stickyExpanded ? '▴' : '▾'}
+            </button>
+          ) : null}
         </div>
-
-        {isNarrow ? (
-          <button
-            type="button"
-            className={styles.stickyMore}
-            aria-expanded={stickyExpanded}
-            onClick={() => setStickyExpanded((v) => !v)}
-          >
-            {stickyExpanded ? 'Less' : 'Volume & speed'}
-          </button>
-        ) : null}
 
         {(!isNarrow || stickyExpanded) && videoId ? (
           <div className={styles.stickyExtras}>

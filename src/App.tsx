@@ -110,6 +110,7 @@ const ContentHealthAdmin = lazy(() =>
 )
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const TodayPage = lazy(() => import('./pages/TodayPage').then(m => ({ default: m.TodayPage })))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })))
 
 export default function App() {
   // Automatically scroll to top when route changes
@@ -406,6 +407,11 @@ export default function App() {
         <Route path="/prayers/:collectionSlug" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <LibraryCollectionRoute />
+          </Suspense>
+        } />
+        <Route path="*" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <NotFoundPage />
           </Suspense>
         } />
       </Route>

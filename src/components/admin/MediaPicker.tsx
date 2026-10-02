@@ -35,6 +35,8 @@ type Props = {
   suggestedPath?: string | null
   /** Prefer converting JPEG/PNG to WebP on upload. */
   convertToWebp?: boolean
+  /** Use 4:3 cover preview (hymn section / collection cards). */
+  previewAspect?: 'default' | '4/3'
 }
 
 export function MediaPicker({
@@ -46,6 +48,7 @@ export function MediaPicker({
   required,
   suggestedPath = null,
   convertToWebp = true,
+  previewAspect = 'default',
 }: Props) {
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -223,7 +226,13 @@ export function MediaPicker({
       </div>
 
       {previewUrl ? (
-        <div className={styles.preview}>
+        <div
+          className={
+            previewAspect === '4/3'
+              ? `${styles.preview} ${styles.previewFourThree}`
+              : styles.preview
+          }
+        >
           {isCalendarFolder ? (
             <CalendarEventImage
               src={previewUrl}

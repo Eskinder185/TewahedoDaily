@@ -159,6 +159,7 @@ export function HymnBrowseGroupsList() {
                       folder={`hymns/collections`}
                       value={row.image_path || ''}
                       altText={row.image_alt}
+                      previewAspect="4/3"
                       suggestedPath={
                         row.slug ? `hymns/collections/${row.slug}.webp` : undefined
                       }
@@ -417,7 +418,15 @@ function CollectionForm({
           image_alt: next.altText || section.image_alt,
         },
       )
-      setSections((prev) => prev.map((row) => (row.id === section.id ? saved : row)))
+      setSections((prev) =>
+        prev.map((row) =>
+          row.id === section.id ||
+          (row.slug === section.slug &&
+            (row.collection_slug || '') === (section.collection_slug || existing?.slug || ''))
+            ? saved
+            : row,
+        ),
+      )
       setSuccess(`Image updated for “${saved.title}”.`)
     } catch (cause) {
       if (import.meta.env.DEV) console.error('[hymn admin] section image', cause)
@@ -560,6 +569,7 @@ function CollectionForm({
             folder="hymns/collections"
             value={form.image_path || ''}
             altText={form.image_alt}
+            previewAspect="4/3"
             suggestedPath={
               form.slug ? `hymns/collections/${form.slug}.webp` : undefined
             }
@@ -594,7 +604,8 @@ function CollectionForm({
       <section className={s.card} style={{ marginTop: '1.5rem' }}>
         <h2>Sections</h2>
         <p className={s.muted}>
-          Stored in <code>mezmur_sections_import</code>. Public path:{' '}
+          Stored in <code>mezmur_sections_import</code>. Use <strong>Change image</strong> on each
+          row — it updates <code>image_path</code> / <code>image_alt</code> only. Public path:{' '}
           <code>/practice/browse/{form.slug || '…'}/:sectionSlug</code>
         </p>
         {!existing ? (
@@ -651,13 +662,50 @@ function CollectionForm({
                   <div
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: 'minmax(120px, 200px) minmax(0, 1fr)',
+                      gridTemplateColumns: 'minmax(140px, 220px) minmax(0, 1fr)',
                       gap: '1rem',
                       alignItems: 'start',
                     }}
                   >
-                    <Thumb path={section.image_path} alt={section.image_alt || section.title} />
-                    <div className={s.fields}>
+                    <div>
+                      <Thumb path={section.image_path} alt={section.image_alt || section.title} />
+                      <p className={s.muted} style={{ margin: '0.5rem 0 0', fontSize: '0.8rem' }}>
+                        4:3 public card preview
+                      </p>
+                    </div>
+                    <div>
+                      <strong>{section.title || 'Untitled section'}</strong>
+                      {section.title_amharic ? (
+                        <div lang="am" className={s.muted}>
+                          {section.title_amharic}
+                        </div>
+                      ) : null}
+                      <div className={s.muted}>
+                        <code>{section.slug}</code>
+                        {section.section_type ? ` · ${section.section_type}` : ''}
+                        {section.status ? ` · ${section.status}` : ''}
+                      </div>
+                      <div style={{ marginTop: '0.75rem' }}>
+                        <MediaPicker
+                          label={busy ? 'Saving image…' : 'Change image'}
+                          folder={`hymns/sections/${form.slug || 'general'}`}
+                          value={section.image_path || ''}
+                          altText={section.image_alt}
+                          previewAspect="4/3"
+                          suggestedPath={
+                            form.slug && section.slug
+                              ? `hymns/sections/${form.slug}/${section.slug}.webp`
+                              : undefined
+                          }
+                          onChange={(next) => void saveSectionImage(section, next)}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <details style={{ marginTop: '1rem' }}>
+                    <summary style={{ cursor: 'pointer', fontWeight: 600 }}>Edit section details</summary>
+                    <div className={s.fields} style={{ marginTop: '0.75rem' }}>
                       <label>
                         Title
                         <input
@@ -726,18 +774,6 @@ function CollectionForm({
                           <option value="archived">archived</option>
                         </select>
                       </label>
-                      <MediaPicker
-                        label="Change image"
-                        folder={`hymns/sections/${form.slug || 'general'}`}
-                        value={section.image_path || ''}
-                        altText={section.image_alt}
-                        suggestedPath={
-                          form.slug && section.slug
-                            ? `hymns/sections/${form.slug}/${section.slug}.webp`
-                            : undefined
-                        }
-                        onChange={(next) => void saveSectionImage(section, next)}
-                      />
                       <label>
                         Image alt text
                         <input
@@ -748,7 +784,8 @@ function CollectionForm({
                         />
                       </label>
                     </div>
-                  </div>
+                  </details>
+
                   <div className={s.actions}>
                     <Link to={`/practice/browse/${form.slug}/${section.slug}`} target="_blank" rel="noreferrer">
                       Preview

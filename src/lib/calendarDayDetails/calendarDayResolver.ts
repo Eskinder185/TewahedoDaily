@@ -19,6 +19,7 @@ import type {
   CalendarExpandedContent,
   CalendarLiturgyContext,
 } from './types'
+import { sanitizePublicLiturgyCopy } from './publicLiturgyCopy'
 
 type StoredDayDetail = Omit<CalendarDayDetail, 'liturgyContext'> & {
   summary?: string
@@ -508,7 +509,7 @@ function resolveMezmur(
       id: storedMezmur.id,
       title: storedMezmur.title,
       status: storedMezmur.status || 'resolved',
-      note: storedMezmur.note || 'Linked from calendar day liturgy data.',
+      note: storedMezmur.note || undefined,
     }
   }
 
@@ -533,17 +534,14 @@ function resolveMezmur(
 
   const best = scored[0]
   if (!best) {
-    return {
-      status: 'not-linked',
-      note: 'No specific mezmur linked for this day yet.',
-    }
+    return undefined
   }
 
   return {
     id: best.item.id,
     title: best.item.title,
     status: 'metadata-match',
-    note: `Matched chant metadata: ${best.matchedTerms.slice(0, 3).join(', ')}.`,
+    note: undefined,
   }
 }
 
@@ -570,24 +568,31 @@ function buildLiturgyContext(
     : findMatchingRule(ethMonthName, ethDay, weekday, text, categoryText)
   const anaphoraId = storedResolved?.id ?? rule?.result.anaphoraId ?? rule?.result.candidateAnaphora?.id
   const anaphoraMeta = anaphoraId ? ANAPHORA_BY_ID.get(anaphoraId) : undefined
-  const reason = storedResolved
+  const reasonRaw = storedResolved
     ? storedResolved.reason || 'Resolved from exact calendar day liturgy data.'
     : rule
       ? `${rule.label || rule.note || rule.id}.`
-      : 'No source-supported anaphora mapping is available for this day yet.'
+      : ''
+  const reason = sanitizePublicLiturgyCopy(reasonRaw)
+  const anaphoraTitle = sanitizePublicLiturgyCopy(
+    storedResolved?.title || anaphoraMeta?.title || '',
+  )
+  const anaphoraSummary = sanitizePublicLiturgyCopy(anaphoraMeta?.summary)
 
   return {
     structure: day?.liturgyContext?.structure?.length ? day.liturgyContext.structure : structureFromJson(),
-    anaphora: {
-      id: anaphoraId ?? 'unresolved',
-      title: storedResolved?.title || anaphoraMeta?.title || 'Not resolved from current data',
-      summary: anaphoraMeta?.summary,
-      reason,
-      confidence: storedResolved?.confidence ?? rule?.confidence ?? 'unresolved',
-    },
+    anaphora: anaphoraTitle
+      ? {
+          id: anaphoraId ?? 'unresolved',
+          title: anaphoraTitle,
+          summary: anaphoraSummary || undefined,
+          reason: reason || 'Appointed for this observance.',
+          confidence: storedResolved?.confidence ?? rule?.confidence ?? 'unresolved',
+        }
+      : undefined,
     readings: resolveReadings(day),
     mezmur: resolveMezmur(day, text),
-    whyToday: reason,
+    whyToday: reason || undefined,
     source: {
       from: [
         'src/data/calendar/day-details.json',

@@ -1,4 +1,8 @@
 import type { CalendarLiturgyContext } from '../../lib/calendarDayDetails'
+import {
+  isInternalPlaceholderCopy,
+  sanitizePublicLiturgyCopy,
+} from '../../lib/calendarDayDetails/publicLiturgyCopy'
 import styles from './LiturgyContextCard.module.css'
 
 type Props = {
@@ -6,9 +10,9 @@ type Props = {
 }
 
 function statusLabel(status: string): string {
-  if (status === 'not-linked') return 'Not linked yet'
+  if (status === 'not-linked') return ''
   if (status === 'standard-order') return 'Standard order'
-  if (status === 'metadata-match') return 'Matched from chant metadata'
+  if (status === 'metadata-match') return ''
   return status
     .split(/[-_]/)
     .filter(Boolean)
@@ -18,14 +22,21 @@ function statusLabel(status: string): string {
 
 function hasMeaningfulContext(context: CalendarLiturgyContext): boolean {
   const hasStructure = Array.isArray(context.structure) && context.structure.length > 0
-  const hasAnaphora = Boolean(context.anaphora?.title?.trim())
+  const anaphoraTitle = sanitizePublicLiturgyCopy(context.anaphora?.title)
+  const hasAnaphora =
+    Boolean(anaphoraTitle) &&
+    context.anaphora?.confidence !== 'unresolved' &&
+    context.anaphora?.id !== 'unresolved'
+  const readingTitle = sanitizePublicLiturgyCopy(context.readings?.title)
+  const readingNote = sanitizePublicLiturgyCopy(context.readings?.note)
   const hasReadings = Boolean(
-    context.readings?.title ||
-      context.readings?.note ||
+    readingTitle ||
+      readingNote ||
       context.readings?.items?.length ||
       context.readings?.pattern?.length,
   )
-  const hasMezmur = Boolean(context.mezmur?.title || context.mezmur?.note)
+  const mezmurTitle = sanitizePublicLiturgyCopy(context.mezmur?.title)
+  const hasMezmur = Boolean(mezmurTitle) && context.mezmur?.status !== 'not-linked'
   return hasStructure || hasAnaphora || hasReadings || hasMezmur
 }
 
@@ -41,10 +52,24 @@ export function LiturgyContextCard({ context }: Props) {
   const mezmur = context.mezmur
   const structure = Array.isArray(context.structure) ? context.structure : []
 
-  const showAnaphora = Boolean(anaphora?.title?.trim())
-  const confidence = anaphora?.confidence?.trim()
+  const anaphoraTitle = sanitizePublicLiturgyCopy(anaphora?.title)
+  const showAnaphora =
+    Boolean(anaphoraTitle) &&
+    anaphora?.confidence !== 'unresolved' &&
+    anaphora?.id !== 'unresolved'
+  const anaphoraSummary = sanitizePublicLiturgyCopy(anaphora?.summary)
   const readingRows = readings?.items?.length ? readings.items : readings?.pattern
-  const mezmurTitle = mezmur?.title?.trim() || 'No specific mezmur linked yet'
+  const readingTitle = sanitizePublicLiturgyCopy(readings?.title)
+  const readingNote = sanitizePublicLiturgyCopy(readings?.note)
+  const readingStatus = sanitizePublicLiturgyCopy(statusLabel(readings?.status || ''))
+  const mezmurTitle = sanitizePublicLiturgyCopy(mezmur?.title)
+  const mezmurNote = sanitizePublicLiturgyCopy(mezmur?.note)
+  const showMezmur = Boolean(mezmurTitle) && mezmur?.status !== 'not-linked'
+  const whyText = sanitizePublicLiturgyCopy(context.whyToday || anaphora?.reason)
+
+  const showReadings =
+    Boolean(readings) &&
+    Boolean(readingTitle || readingNote || readingRows?.length || readingStatus)
 
   return (
     <aside className={styles.card} aria-label="Liturgy context">
@@ -67,20 +92,19 @@ export function LiturgyContextCard({ context }: Props) {
         {showAnaphora && anaphora ? (
           <section className={styles.item}>
             <h4>Anaphora</h4>
-            <p className={styles.itemMain}>{anaphora.title}</p>
-            {anaphora.summary ? <p className={styles.itemMeta}>{anaphora.summary}</p> : null}
-            {confidence && confidence !== 'unresolved' ? (
-              <p className={styles.itemMeta}>Confidence: {statusLabel(confidence)}</p>
+            <p className={styles.itemMain}>{anaphoraTitle}</p>
+            {anaphoraSummary && !isInternalPlaceholderCopy(anaphoraSummary) ? (
+              <p className={styles.itemMeta}>{anaphoraSummary}</p>
             ) : null}
           </section>
         ) : null}
 
-        {readings ? (
+        {showReadings ? (
           <section className={styles.item}>
             <h4>Readings</h4>
-            <p className={styles.itemMain}>
-              {readings.title || statusLabel(readings.status || 'not-linked')}
-            </p>
+            {readingTitle || readingStatus ? (
+              <p className={styles.itemMain}>{readingTitle || readingStatus}</p>
+            ) : null}
             {readingRows?.length ? (
               <ol className={styles.readingList}>
                 {readingRows.map((item, index) => (
@@ -91,23 +115,27 @@ export function LiturgyContextCard({ context }: Props) {
                 ))}
               </ol>
             ) : null}
-            {readings.note ? <p className={styles.itemMeta}>{readings.note}</p> : null}
+            {readingNote && !isInternalPlaceholderCopy(readingNote) ? (
+              <p className={styles.itemMeta}>{readingNote}</p>
+            ) : null}
           </section>
         ) : null}
 
-        {mezmur ? (
+        {showMezmur ? (
           <section className={styles.item}>
             <h4>Mezmur</h4>
             <p className={styles.itemMain}>{mezmurTitle}</p>
-            {mezmur.note ? <p className={styles.itemMeta}>{mezmur.note}</p> : null}
+            {mezmurNote && !isInternalPlaceholderCopy(mezmurNote) ? (
+              <p className={styles.itemMeta}>{mezmurNote}</p>
+            ) : null}
           </section>
         ) : null}
       </div>
 
-      {context.whyToday || anaphora?.reason ? (
+      {whyText && !isInternalPlaceholderCopy(whyText) ? (
         <details className={styles.why}>
           <summary>Why today</summary>
-          <p>{context.whyToday || anaphora?.reason}</p>
+          <p>{whyText}</p>
         </details>
       ) : null}
     </aside>

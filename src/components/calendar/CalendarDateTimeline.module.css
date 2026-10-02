@@ -43,6 +43,8 @@
 .scrollerWrap {
   position: relative;
   min-width: 0;
+  container-type: inline-size;
+  container-name: calendar-timeline;
 }
 
 .scrollerWrap::before,
@@ -89,6 +91,9 @@
   gap: var(--timeline-gap);
   overflow-x: auto;
   overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  overscroll-behavior-y: auto;
+  touch-action: pan-x pan-y;
   scroll-snap-type: x proximity;
   scroll-padding-inline: 0.25rem;
   padding: 0.2rem 0.15rem 0.55rem;
@@ -208,29 +213,51 @@
 
 @media (max-width: 767.98px) {
   .root {
-    --timeline-gap: 0.75rem;
-    --timeline-card-gap: 0.7rem;
-    gap: 0.35rem;
+    --timeline-gap: 0.65rem;
+    --timeline-card-gap: 0.55rem;
+    gap: 0.3rem;
   }
 
   .scroller {
     scroll-snap-type: x mandatory;
-    gap: 0.75rem;
+    gap: 0.65rem;
+    scroll-padding-inline: 0.4rem;
+    padding-inline: 0.1rem;
   }
 
   .dayGroup {
     scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    padding: 0.35rem 0.25rem 0.3rem;
+  }
+
+  .dayGroupSelected {
+    padding-inline: 0.4rem;
   }
 
   .arrow {
-    width: 2.15rem;
-    height: 2.15rem;
-    font-size: 0.95rem;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+    align-self: center;
   }
 
   .scrollerWrap::before,
   .scrollerWrap::after {
-    width: 1.1rem;
+    width: 0.85rem;
+    background: linear-gradient(
+      to right,
+      color-mix(in srgb, var(--color-bg) 94%, transparent),
+      transparent
+    );
+  }
+
+  .scrollerWrap::after {
+    background: linear-gradient(
+      to left,
+      color-mix(in srgb, var(--color-bg) 94%, transparent),
+      transparent
+    );
   }
 }
 

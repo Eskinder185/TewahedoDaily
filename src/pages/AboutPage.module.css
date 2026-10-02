@@ -310,6 +310,28 @@
   gap: var(--space-3);
 }
 
+@media (max-width: 767.98px) {
+  .heroBand {
+    margin-inline: 0;
+    padding: var(--space-4);
+  }
+
+  .lede {
+    font-size: var(--text-base);
+    color: var(--color-text);
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ctaRow :global(a) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Guidance — prominent aside */
 .guidance {
   display: grid;
