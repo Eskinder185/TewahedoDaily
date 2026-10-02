@@ -14,11 +14,10 @@ import {
 import { findNextCivilDayForEntry } from '../../lib/eotcCalendar/eotcFindEntryOccurrence'
 import { toGregorianIsoDate } from '../../data/utils/gregorianIso'
 import {
-  calendarImageManifest,
   resolveEventImageById,
   resolveEventImagePresentation,
 } from '../../content/calendarImageManifest'
-import { CalendarImage } from './CalendarImage'
+import { CalendarEventImage } from './CalendarEventImage'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import styles from './EotcObservanceDetailSheet.module.css'
 
@@ -112,7 +111,7 @@ export function EotcObservanceDetailSheet({
         row.entry.id,
         {
           objectFit: 'cover',
-          objectPosition: '50% 30%',
+          objectPosition: 'center center',
         },
         row.entry,
       )
@@ -174,16 +173,14 @@ export function EotcObservanceDetailSheet({
         <header className={styles.head}>
           <div className={styles.hero}>
             {imageUrl ? (
-              <CalendarImage
+              <CalendarEventImage
                 src={imageUrl}
-                fallbackSrc={calendarImageManifest.anchors.todayInChurch}
                 alt=""
-                className={styles.heroImg}
-                objectFit={imagePresentation?.objectFit}
-                objectPosition={imagePresentation?.objectPosition}
-                loading="eager"
-                fetchPriority="high"
+                position={imagePresentation?.objectPosition}
+                className={styles.heroFrame}
+                priority
                 sizes="(max-width: 720px) 100vw, min(28rem, 90vw)"
+                decorativeFallback
               />
             ) : (
               <div

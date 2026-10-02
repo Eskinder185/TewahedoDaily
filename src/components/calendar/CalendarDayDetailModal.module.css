@@ -121,8 +121,8 @@
 .heroWrap {
   margin: 0;
   width: 100%;
-  aspect-ratio: 16 / 8.4;
-  border-radius: var(--radius-md);
+  max-width: 36rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 80%, transparent);
 }
@@ -131,7 +131,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   display: block;
 }
 

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from '../i18n'
 import { useLocale } from '../lib/i18n/locale'
 import { PageSection } from '../components/ui/PageSection'
-import { CalendarImage } from '../components/calendar/CalendarImage'
+import { CalendarEventImage } from '../components/calendar/CalendarEventImage'
 import { LiturgyContextCard } from '../components/calendar/LiturgyContextCard'
 import { Artwork, Notice } from '../components/publicContent/PublicUi'
 import { useHomeToday } from '../hooks/useHomeToday'
@@ -16,7 +16,6 @@ import { getSynaxariumDayWithCommemorations } from '../lib/prayers/synaxariumSup
 import type { SynaxariumDayBundle } from '../lib/prayers/prayerLibraryTypes'
 import { supabase } from '../lib/supabase/client'
 import {
-  calendarImageManifest,
   resolveEventImageById,
   resolveEventImagePresentation,
 } from '../content/calendarImageManifest'
@@ -73,12 +72,12 @@ export function TodayPage() {
   const primary = entries[0]
   const imagePresentation = resolveEventImagePresentation(primary?.entry.id, {
     objectFit: 'cover',
-    objectPosition: '50% 32%',
+    objectPosition: 'center center',
   })
   const heroImage =
     detail?.imageUrl ||
     (primary ? resolveEventImageById(primary.entry.id) : null) ||
-    calendarImageManifest.anchors.todayInChurch
+    null
   const fast = fastLine(
     snapshot.fasting.weeklyFast,
     snapshot.fasting.seasonalFast,
@@ -106,16 +105,14 @@ export function TodayPage() {
       </header>
 
       <figure className={styles.hero}>
-        <CalendarImage
+        <CalendarEventImage
           src={heroImage}
-          fallbackSrc={calendarImageManifest.anchors.todayInChurch}
           alt={t('calendar.page.observanceImage', {
             title: detail?.title || snapshot.commemoration.title,
           })}
-          className={styles.heroImg}
-          objectFit={imagePresentation.objectFit}
-          objectPosition={imagePresentation.objectPosition}
-          fetchPriority="high"
+          position={imagePresentation.objectPosition}
+          className={styles.heroFrame}
+          priority
           sizes="(max-width: 820px) 100vw, 40rem"
         />
         <figcaption className={styles.heroCaption}>

@@ -1,14 +1,18 @@
 import type { ChurchDaySnapshot, UpcomingObservance } from '../lib/churchCalendar'
 
 const CALENDAR_IMAGE_ROOT = '/images/calendar'
+/** Optimized 4:3 WebP derivatives (see scripts/optimize-calendar-images.mjs). */
+const CALENDAR_WEB_ROOT = '/images/calendar-web'
 
 /** Encode spaces and non-ASCII file names so `/images/calendar/Debre Zeit.png` resolves reliably. */
-const img = (name: string, ext: 'png' | 'jpg' | 'JPG' = 'png') =>
-  encodeURI(`${CALENDAR_IMAGE_ROOT}/${name}.${ext}`)
+const img = (name: string, ext: 'png' | 'jpg' | 'JPG' | 'webp' = 'webp') => {
+  const root = ext === 'webp' ? CALENDAR_WEB_ROOT : CALENDAR_IMAGE_ROOT
+  return encodeURI(`${root}/${name}.${ext}`)
+}
 
 export const calendarImageAssets = {
   abiyTsom: img('AbiyTsom'),
-  abuneAregawi: img('AbuneAregawi', 'JPG'),
+  abuneAregawi: img('AbuneAregawi'),
   /** Canonical saint icon (legacy monthly alias remains mapped below). */
   abuneTeklehaymanot: img('AbuneTeklehaymanot'),
   apostlesPeterAndPaul: img('SaintsPeterandPaul'),
@@ -16,16 +20,15 @@ export const calendarImageAssets = {
   archangelRaphael: img('ArchangelRaphael'),
   archangelUriel: img('ArchangelUriel'),
   archangelsRemembrance: img('ArchangelsRemembrance'),
-  calendarLiturgicalSeasonLegacy: img('calendar-liturgical-season', 'jpg'),
-  calendarUpcomingHolyDaysLegacy: img('calendar-upcoming-holy-days', 'jpg'),
+  calendarLiturgicalSeasonLegacy: img('calendar-liturgical-season'),
+  calendarUpcomingHolyDaysLegacy: img('calendar-upcoming-holy-days'),
   dagmawiTensia: img('DagmawiTensia'),
   debreZeit: img('Debre Zeit'),
-  /** Many bundles ship `DebreTabor.jpg` only — prefer JPEG for the Transfiguration feast. */
   debreTaborPng: img('DebreTabor'),
-  debreTabor: img('DebreTabor', 'jpg'),
-  debreTaborLegacy: img('DebreTabor', 'jpg'),
+  debreTabor: img('DebreTabor'),
+  debreTaborLegacy: img('DebreTabor'),
   enkutatash: img('Enkutatash'),
-  erget: img('Erget', 'jpg'),
+  erget: img('Erget'),
   ethiopianSaintsRemembrance: img('EthiopianSaintsRemembrance'),
   fasika: img('Fasika'),
   fastingSeasonAtmosphere: img('FastingSeasonAtmosphere'),
@@ -35,7 +38,7 @@ export const calendarImageAssets = {
   gizret: img('Gizret'),
   holyTrinityCommemoration: img('HolyTrinityCommemoration'),
   hosanna: img('Hosanna'),
-  joyfulFeastSeason: img('JoyfulFeastSeason', 'jpg'),
+  joyfulFeastSeason: img('JoyfulFeastSeason'),
   kanaZeGalilee: img('KanaZeGalilee'),
   kidaneMehret: img('KidaneMehret'),
   kidusGiorgis: img('KidusGiorgis'),
@@ -47,29 +50,29 @@ export const calendarImageAssets = {
   megabitMeskel: img('MegabitMeskel'),
   meskel: img('Meskel'),
   monasticSaintsRemembrance: img('MonasticSaintsRemembrance'),
-  nineveh: img('Nineveh', 'jpg'),
-  peraklitos: img('Peraklitos', 'jpg'),
+  nineveh: img('Nineveh'),
+  peraklitos: img('Peraklitos'),
   sacredCalendarContinuity: img('SacredCalendarContinuity'),
   saintGabrielCommemoration: img('SaintGabrielCommemoration'),
   saintGabrielFeast: img('SaintGabrielFeast'),
-  saintDavid: img('SaintDavid', 'JPG'),
+  saintDavid: img('SaintDavid'),
   saintGeorge: img('Saint George'),
   saintJohnTheBaptist: img('SaintJohntheBaptist'),
   saintMaryCommemoration: img('SaintMaryCommemoration'),
   saintMichaelCommemoration: img('SaintMichaelCommemoration'),
   saintMichaelFeast: img('SaintMichaelFeast'),
-  saintPhilip: img('Saint Philip', 'JPG'),
-  saintStephen: img('SaintStephen', 'JPG'),
+  saintPhilip: img('Saint Philip'),
+  saintStephen: img('SaintStephen'),
   saintStephenLegacy: img('SaintStephen'),
   stMerkorious: img('St.Merkorious'),
   saintYared: img('SaintYared'),
-  semuneHimamat: img('SemuneHimamat', 'jpg'),
+  semuneHimamat: img('SemuneHimamat'),
   siqlet: img('Siqlet'),
   timket: img('Timket'),
   todayInChurch: img('TodayInChurch'),
   tsinset: img('Tsinset'),
   tsomeGehad: img('TsomeGehad'),
-  tsigeSeason: img('TsigeSeason', 'jpg'),
+  tsigeSeason: img('TsigeSeason'),
   tsomeHawaryat: img('TsomeHawaryat'),
   tsomeNebiyat: img('TsomeNebiyat'),
   upcomingHolyDays: img('UpcomingHolyDays'),
@@ -78,7 +81,8 @@ export const calendarImageAssets = {
 
 export const calendarImageManifest = {
   anchors: {
-    todayInChurch: calendarImageAssets.todayInChurch,
+    /** Lightweight fallback — avoid shipping multi‑MB public/calendar PNGs on miss. */
+    todayInChurch: '/images/home/home-today-in-church.jpg',
   },
   support: {
     liturgicalSeason: calendarImageAssets.liturgicalSeason,

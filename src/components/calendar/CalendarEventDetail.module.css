@@ -1,0 +1,136 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  background: rgba(10, 14, 22, 0.52);
+  backdrop-filter: blur(6px);
+}
+
+@media (min-width: 640px) {
+  .backdrop {
+    align-items: center;
+    padding: var(--space-8, 2rem);
+  }
+}
+
+.panel {
+  width: 100%;
+  max-height: min(92vh, 880px);
+  overflow: auto;
+  border-radius: 18px 18px 0 0;
+  border: 1px solid var(--color-border-card, var(--color-border));
+  background: var(--color-bg-elevated, #fff);
+  box-shadow: var(--shadow-lift, 0 18px 40px rgba(0, 0, 0, 0.18));
+  outline: none;
+}
+
+@media (min-width: 640px) {
+  .panel {
+    width: min(100%, 38rem);
+    border-radius: 16px;
+  }
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--color-bg-elevated, #fff) 94%, var(--color-gold-faint, #f4e8c8));
+}
+
+.headCopy {
+  min-width: 0;
+}
+
+.badge {
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold, #b0893d);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display, var(--font-serif, Georgia, serif));
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-heading);
+}
+
+.titleAm {
+  margin: 0.25rem 0 0;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+.dates {
+  margin: 0.45rem 0 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted, #5c564c);
+}
+
+.meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-navy, #1e2a44);
+}
+
+.close {
+  flex: 0 0 auto;
+  min-height: 2.25rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  padding: 1rem 1.15rem 1.5rem;
+}
+
+.media {
+  margin: 0;
+}
+
+.imageFrame {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.langRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.summary {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--color-text);
+}

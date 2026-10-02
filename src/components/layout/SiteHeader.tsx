@@ -198,7 +198,17 @@ export function SiteHeader() {
               >
                 {t('navSaved')}
               </NavLink>
-            ) : null}
+            ) : (
+              <NavLink
+                to="/account"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                }
+              >
+                Sign in
+              </NavLink>
+            )}
           </nav>
         </div>
       </div>,
@@ -209,46 +219,14 @@ export function SiteHeader() {
     <>
       <header className={styles.header} data-header>
         <div className={styles.bar}>
-          <div className={styles.topRow}>
-            <Link to="/" className={styles.brand}>
-              <span className={styles.mark} aria-hidden />
-              <span className={styles.brandText}>
-                <span className={styles.wordmark}>{tt('brand.name')}</span>
-                <span className={styles.brandSub}>{tt('brand.subtitle')}</span>
-              </span>
-            </Link>
-            <div className={styles.headerTools}>
-              <div className={styles.toggleGroup}>
-                {session ? (
-                  <Link
-                    to="/saved"
-                    className={styles.utilityLink}
-                    aria-label={t('navSaved')}
-                    title={t('navSaved')}
-                  >
-                    <IconBookmark className={styles.utilityIcon} />
-                  </Link>
-                ) : null}
-                <ThemeToggle />
-                <LanguageToggle />
-              </div>
-              <button
-                ref={menuButtonRef}
-                type="button"
-                className={styles.menuTrigger}
-                aria-expanded={menuOpen}
-                aria-controls={drawerId}
-                aria-label={menuOpen ? t('navMenuClose') : t('navMenuOpen')}
-                onClick={() => setMenuOpen((o) => !o)}
-              >
-                <span className={styles.menuTriggerBars} aria-hidden>
-                  <span className={styles.menuTriggerBar} />
-                  <span className={styles.menuTriggerBar} />
-                  <span className={styles.menuTriggerBar} />
-                </span>
-              </button>
-            </div>
-          </div>
+          <Link to="/" className={styles.brand}>
+            <span className={styles.mark} aria-hidden />
+            <span className={styles.brandText}>
+              <span className={styles.wordmark}>{tt('brand.name')}</span>
+              <span className={styles.brandSub}>{tt('brand.subtitle')}</span>
+            </span>
+          </Link>
+
           <nav className={styles.nav} aria-label={primaryNavLabel}>
             <NavLink
               to="/"
@@ -281,6 +259,47 @@ export function SiteHeader() {
               {t('navAbout')}
             </NavLink>
           </nav>
+
+          <div className={styles.headerTools}>
+            <div className={styles.toggleGroup}>
+              {session ? (
+                <Link
+                  to="/saved"
+                  className={styles.utilityLink}
+                  aria-label={t('navSaved')}
+                  title={t('navSaved')}
+                >
+                  <IconBookmark className={styles.utilityIcon} />
+                </Link>
+              ) : (
+                <Link
+                  to="/account"
+                  className={styles.utilityLink}
+                  aria-label="Sign in to save progress"
+                  title="Sign in"
+                >
+                  Sign in
+                </Link>
+              )}
+              <ThemeToggle />
+              <LanguageToggle />
+            </div>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              className={styles.menuTrigger}
+              aria-expanded={menuOpen}
+              aria-controls={drawerId}
+              aria-label={menuOpen ? t('navMenuClose') : t('navMenuOpen')}
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              <span className={styles.menuTriggerBars} aria-hidden>
+                <span className={styles.menuTriggerBar} />
+                <span className={styles.menuTriggerBar} />
+                <span className={styles.menuTriggerBar} />
+              </span>
+            </button>
+          </div>
         </div>
       </header>
       {drawer}

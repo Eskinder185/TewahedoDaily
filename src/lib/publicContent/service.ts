@@ -445,7 +445,7 @@ export function publicMezmurToPracticePayload(item: PublicMezmur, youtubeUrl?: s
     lyricsEnglish: item.lyrics_english?.trim() || undefined,
     videoId,
     audioUrl: item.audio_url?.trim() || undefined,
-    watchUrl: videoId ? `https://www.youtube.com/watch?v=${videoId}` : undefined,
+    watchUrl: activeUrl.trim() || (videoId ? `https://www.youtube.com/watch?v=${videoId}` : undefined),
     learning: {
       meaning: item.description?.trim() || undefined,
       categoryLabel: displayClassification(item.category_name || item.category) || undefined,

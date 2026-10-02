@@ -98,13 +98,6 @@
   margin-bottom: 12px;
 }
 
-.autoScrollToggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
 .displayDetails {
   margin-top: 12px;
   border-radius: var(--radius-md);
@@ -226,8 +219,8 @@
 
 @media (min-width: 960px) {
   .bothStack {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 16px;
   }
 
@@ -261,16 +254,16 @@
 
 .text {
   margin: 0;
-  font-size: var(--lyrics-font-size, 20px);
-  line-height: var(--lyrics-line-height, 1.7);
+  font-size: var(--lyrics-font-size, 22px);
+  line-height: var(--lyrics-line-height, 1.9);
   white-space: pre-wrap;
   color: var(--color-text);
 }
 
 .textTrans {
   margin: 0;
-  font-size: var(--lyrics-font-size, 20px);
-  line-height: var(--lyrics-line-height, 1.7);
+  font-size: calc(var(--lyrics-font-size, 22px) * 0.86);
+  line-height: 1.75;
   white-space: pre-wrap;
   color: var(--color-text);
   font-style: italic;
@@ -359,46 +352,6 @@
   font-size: 0.78rem;
   color: var(--color-text-muted);
   font-weight: 600;
-}
-
-.scrollSelect {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.scrollSelect select {
-  min-height: 44px;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-bg-elevated);
-  font: inherit;
-  padding: 4px 10px;
-}
-
-.timingRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  align-items: center;
-  margin-bottom: 12px;
-  padding: 8px 10px;
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--color-bg-muted) 88%, var(--color-bg-elevated));
-}
-
-.timingGroup {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.timingValue {
-  min-width: 2.5rem;
-  text-align: center;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--color-heading);
 }
 
 .bothGrid {

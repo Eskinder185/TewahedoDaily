@@ -4,9 +4,6 @@ const SPEED_KEY = 'tewahedo:practice-speed'
 const FONT_KEY = 'tewahedo:lyrics-font-size'
 const FONT_KEY_LEGACY = 'tewahedo:practice-lyrics-size'
 const MODE_KEY = 'tewahedo:practice-lyrics-mode'
-const SCROLL_KEY = 'tewahedo:practice-auto-scroll'
-const INTRO_KEY = 'tewahedo:lyrics-scroll-intro'
-const OUTRO_KEY = 'tewahedo:lyrics-scroll-outro'
 
 /** Pixel sizes available for lyrics text. */
 export const LYRICS_FONT_SIZES = [18, 20, 22, 24, 28, 32, 36] as const
@@ -16,7 +13,6 @@ export type LyricsFontSizePx = (typeof LYRICS_FONT_SIZES)[number]
 export type LyricsFontSize = LyricsFontSizePx
 
 export type LyricsScriptMode = 'lyrics' | 'transliteration' | 'both' | 'english'
-export type AutoScrollSpeed = 'off' | 'slow' | 'medium' | 'fast'
 
 const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5] as const
 export type PracticeSpeed = (typeof SPEEDS)[number]
@@ -83,12 +79,12 @@ export function lyricsFontPx(size: number): number {
 
 export function lyricsLineHeight(size: number): number {
   const px = clampFontPx(size)
-  if (px <= 20) return 1.7
-  if (px <= 22) return 1.7
-  if (px <= 24) return 1.65
-  if (px <= 28) return 1.6
-  if (px <= 32) return 1.55
-  return 1.5
+  if (px <= 20) return 1.85
+  if (px <= 22) return 1.9
+  if (px <= 24) return 1.85
+  if (px <= 28) return 1.75
+  if (px <= 32) return 1.7
+  return 1.65
 }
 
 export function loadLyricsMode(): LyricsScriptMode {
@@ -99,36 +95,6 @@ export function loadLyricsMode(): LyricsScriptMode {
 
 export function saveLyricsMode(mode: LyricsScriptMode) {
   write(MODE_KEY, mode)
-}
-
-export function loadAutoScroll(): AutoScrollSpeed {
-  const v = read(SCROLL_KEY)
-  if (v === 'off' || v === 'slow' || v === 'medium' || v === 'fast') return v
-  return 'off'
-}
-
-export function saveAutoScroll(speed: AutoScrollSpeed) {
-  write(SCROLL_KEY, speed)
-}
-
-export function loadScrollIntroSec(): number | null {
-  const n = Number(read(INTRO_KEY))
-  if (!Number.isFinite(n) || n < 0) return null
-  return Math.min(120, Math.round(n))
-}
-
-export function saveScrollIntroSec(sec: number) {
-  write(INTRO_KEY, String(Math.max(0, Math.min(120, Math.round(sec)))))
-}
-
-export function loadScrollOutroSec(): number | null {
-  const n = Number(read(OUTRO_KEY))
-  if (!Number.isFinite(n) || n < 0) return null
-  return Math.min(120, Math.round(n))
-}
-
-export function saveScrollOutroSec(sec: number) {
-  write(OUTRO_KEY, String(Math.max(0, Math.min(120, Math.round(sec)))))
 }
 
 export const PRACTICE_SPEEDS = SPEEDS

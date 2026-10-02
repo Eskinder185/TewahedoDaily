@@ -18,6 +18,21 @@ export type OrthodoxObservanceRow = {
   image_alt: string | null
   sort_order: number | null
   status: string | null
+  summary?: string | null
+  summary_amharic?: string | null
+  what_is_it?: string | null
+  what_is_it_amharic?: string | null
+  why_celebrated?: string | null
+  why_celebrated_amharic?: string | null
+  important_information?: string | null
+  important_information_amharic?: string | null
+  scripture_references?: string | null
+  fasting_notes?: string | null
+  fasting_notes_amharic?: string | null
+  season_notes?: string | null
+  season_notes_amharic?: string | null
+  content_review_status?: string | null
+  content_review_note?: string | null
 }
 
 export type LiturgicalFastRow = {
@@ -39,6 +54,21 @@ export type LiturgicalFastRow = {
   priority: number | null
   occasion_tag: string | null
   status: string | null
+  summary?: string | null
+  summary_amharic?: string | null
+  what_is_it?: string | null
+  what_is_it_amharic?: string | null
+  why_celebrated?: string | null
+  why_celebrated_amharic?: string | null
+  important_information?: string | null
+  important_information_amharic?: string | null
+  scripture_references?: string | null
+  fasting_notes?: string | null
+  fasting_notes_amharic?: string | null
+  season_notes?: string | null
+  season_notes_amharic?: string | null
+  content_review_status?: string | null
+  content_review_note?: string | null
 }
 
 export type LiturgicalSeasonRow = {
@@ -58,6 +88,21 @@ export type LiturgicalSeasonRow = {
   priority: number | null
   occasion_tags: string | null
   status: string | null
+  summary?: string | null
+  summary_amharic?: string | null
+  what_is_it?: string | null
+  what_is_it_amharic?: string | null
+  why_celebrated?: string | null
+  why_celebrated_amharic?: string | null
+  important_information?: string | null
+  important_information_amharic?: string | null
+  scripture_references?: string | null
+  fasting_notes?: string | null
+  fasting_notes_amharic?: string | null
+  season_notes?: string | null
+  season_notes_amharic?: string | null
+  content_review_status?: string | null
+  content_review_note?: string | null
 }
 
 export type MonthlyCommemorationRow = {
@@ -74,6 +119,38 @@ export type MonthlyCommemorationRow = {
   image_alt: string | null
   sort_order: number | null
   status: string | null
+  summary?: string | null
+  summary_amharic?: string | null
+  what_is_it?: string | null
+  what_is_it_amharic?: string | null
+  why_celebrated?: string | null
+  why_celebrated_amharic?: string | null
+  important_information?: string | null
+  important_information_amharic?: string | null
+  scripture_references?: string | null
+  fasting_notes?: string | null
+  fasting_notes_amharic?: string | null
+  season_notes?: string | null
+  season_notes_amharic?: string | null
+  content_review_status?: string | null
+  content_review_note?: string | null
+}
+
+export type DayEnrichedFields = {
+  summary: string
+  summaryAmharic: string
+  whatIsIt: string
+  whatIsItAmharic: string
+  whyCelebrated: string
+  whyCelebratedAmharic: string
+  importantInformation: string
+  importantInformationAmharic: string
+  scriptureReferences: string
+  fastingNotes: string
+  fastingNotesAmharic: string
+  seasonNotes: string
+  seasonNotesAmharic: string
+  contentReviewStatus: string
 }
 
 export type DayObservance = {
@@ -89,7 +166,9 @@ export type DayObservance = {
   occasionTag: string | null
   imagePath: string | null
   imageAlt: string
-}
+  ethiopianMonthNumber: number | null
+  ethiopianDay: number | null
+} & DayEnrichedFields
 
 export type DayFast = {
   id: string
@@ -100,7 +179,8 @@ export type DayFast = {
   fastType: string
   occasionTag: string | null
   priority: number
-}
+  fastFreeException: string
+} & DayEnrichedFields
 
 export type DaySeason = {
   id: string
@@ -111,7 +191,7 @@ export type DaySeason = {
   seasonType: string
   occasionTags: string[]
   priority: number
-}
+} & DayEnrichedFields
 
 export type DayMonthlyCommemoration = {
   id: string
@@ -122,4 +202,6 @@ export type DayMonthlyCommemoration = {
   ethiopianDay: number
   description: string
   occasionTag: string | null
-}
+  imagePath: string | null
+  imageAlt: string
+} & DayEnrichedFields

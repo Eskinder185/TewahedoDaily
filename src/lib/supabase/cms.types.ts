@@ -30,6 +30,31 @@ export type CmsTables = {
     updated_by: string | null
   }, 'content_date'>
   mezmur_favorites: Table<{user_id:string;mezmur_id:string;created_at:string},'mezmur_id'>
+  user_favorites: Table<{
+    id: string
+    user_id: string
+    content_type: string
+    content_id: string | null
+    content_slug: string | null
+    collection_slug: string | null
+    title: string | null
+    route: string | null
+    created_at: string
+  }, 'user_id' | 'content_type'>
+  user_reading_progress: Table<{
+    id: string
+    user_id: string
+    content_type: string
+    content_id: string | null
+    content_slug: string | null
+    collection_slug: string | null
+    section_slug: string | null
+    title: string | null
+    route: string | null
+    position_percent: number | null
+    scroll_offset: number | null
+    updated_at: string
+  }, 'user_id' | 'content_type'>
   community_submissions: Table<CommunitySubmission, 'submission_type' | 'title' | 'contributor_name'>
   profiles: Table<Timestamps & { id: string; email: string | null; display_name: string; avatar_url: string | null; role: CmsRole | null }, 'id'>
   mezmur: Table<Content & {
@@ -49,6 +74,34 @@ export type CmsTables = {
   feasts: Table<Content & Body & { ethiopian_month: number | null; ethiopian_day: number | null; is_movable: boolean; fasting_info:string|null }, 'slug' | 'title'>
   prayers: Table<Content & Body & { body_oromo: string | null; transliteration: string | null; audio_url: string | null }, 'slug' | 'title'>
   articles: Table<Content & Body & { body_oromo: string | null; teaching_category:string|null }, 'slug' | 'title'>
+  prayer_guides: Table<Timestamps & {
+    id: string
+    slug: string
+    title: string
+    title_amharic: string | null
+    summary: string | null
+    summary_amharic: string | null
+    status: ContentStatus
+    sort_order: number
+    source_title: string | null
+    source_reference: string | null
+    review_status: string
+    published_at: string | null
+  }, 'slug' | 'title'>
+  prayer_guide_sections: Table<Timestamps & {
+    id: string
+    guide_id: string
+    slug: string
+    title: string
+    title_amharic: string | null
+    body_english: string | null
+    body_amharic: string | null
+    sort_order: number
+    source_reference: string | null
+    review_status: string
+    review_notes: string | null
+    content_type: 'instruction' | 'prayer' | 'article' | null
+  }, 'guide_id' | 'slug' | 'title'>
   content_versions: Table<{ id: string; content_type: ContentType; content_id: string; snapshot: Json; changed_by: string | null; created_at: string }, 'content_type' | 'content_id' | 'snapshot'>
   content_reports: Table<Timestamps & { id: string; content_type: ContentType; content_id: string; message: string; reporter_email: string | null; status: 'open' | 'resolved' | 'dismissed' }, 'content_type' | 'content_id' | 'message'>
 }

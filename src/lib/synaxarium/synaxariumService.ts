@@ -26,6 +26,8 @@ export { getSynaxariumCommemorationsForDay as getCommemorationsForDay } from '..
 export {
   formatCommemorationTypeLabel,
   getCalendarCards,
+  getPublishedCalendarCardsForLinking,
+  getHomepageCalendarCards,
   imagePositionToObjectPosition,
   localizedCardText,
   nextGregorianForEthiopianDate,

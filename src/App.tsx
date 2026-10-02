@@ -74,6 +74,9 @@ const HymnsAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m =
 const HymnsOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HymnsOverview })))
 const PrayAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.PrayAdminLayout })))
 const PrayOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.PrayOverview })))
+const PrayerGuidesAdmin = lazy(() => import('./pages/admin/PrayerGuidesAdmin').then(m => ({ default: m.PrayerGuidesAdmin })))
+const PrayerGuideEditor = lazy(() => import('./pages/admin/PrayerGuidesAdmin').then(m => ({ default: m.PrayerGuideEditor })))
+const PrayerGuidePage = lazy(() => import('./pages/PrayerGuidePage').then(m => ({ default: m.PrayerGuidePage })))
 const CalendarAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.CalendarAdminLayout })))
 const CalendarOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.CalendarOverview })))
 const OrthodoxyObservancesAdmin = lazy(() =>
@@ -89,6 +92,9 @@ const OrthodoxyMonthlyAdmin = lazy(() =>
   import('./pages/admin/OrthodoxyRulesAdmin').then((m) => ({ default: m.OrthodoxyMonthlyAdmin })),
 )
 const AboutAdminPage = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.AboutAdminPage })))
+const ContentHealthAdmin = lazy(() =>
+  import('./pages/admin/ContentHealthAdmin').then((m) => ({ default: m.ContentHealthAdmin })),
+)
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const TodayPage = lazy(() => import('./pages/TodayPage').then(m => ({ default: m.TodayPage })))
 
@@ -138,6 +144,9 @@ export default function App() {
               <Route path="liturgy" element={<StructureCollectionList kind="liturgy" basePath="/admin/pray/liturgy" />} />
               <Route path="liturgy/new" element={<StructureCollectionEditor kind="liturgy" basePath="/admin/pray/liturgy" />} />
               <Route path="liturgy/:id/edit" element={<StructureCollectionEditor kind="liturgy" basePath="/admin/pray/liturgy" />} />
+              <Route path="guides" element={<PrayerGuidesAdmin />} />
+              <Route path="guides/new" element={<PrayerGuideEditor />} />
+              <Route path="guides/:id/edit" element={<PrayerGuideEditor />} />
               <Route path="images" element={<MediaLibrary />} />
             </Route>
 
@@ -171,6 +180,7 @@ export default function App() {
             <Route path="about" element={<AboutAdminPage />} />
 
             <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
+              <Route path="content-health" element={<ContentHealthAdmin />} />
               <Route path="submissions" element={<SubmissionQueue />} />
               <Route path="submissions/:id" element={<SubmissionReview />} />
             </Route>
@@ -265,6 +275,11 @@ export default function App() {
         <Route path="/pray/zeweter" element={<Navigate to="/pray/zewter-tselot" replace />} />
         <Route path="/pray/zeweter-tselot" element={<Navigate to="/pray/zewter-tselot" replace />} />
         <Route path="/pray/wudasie-mariam" element={<Navigate to="/pray/wudase-mariam" replace />} />
+        <Route path="/pray/learn-how-to-pray" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PrayerGuidePage />
+          </Suspense>
+        } />
         <Route path="/pray/:collectionSlug/:prayerSlug" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <LibraryItemRoute />

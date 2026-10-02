@@ -14,8 +14,7 @@ import {
   resolveCardWhy,
   type CalendarCard,
 } from '../../lib/synaxarium/calendarCards'
-import { CalendarImage } from './CalendarImage'
-import { calendarImageManifest } from '../../content/calendarImageManifest'
+import { CalendarEventImage } from './CalendarEventImage'
 import styles from './CalendarCardWhyModal.module.css'
 
 type Props = {
@@ -130,13 +129,11 @@ export function CalendarCardWhyModal({ open, card, onClose, onOpenDate }: Props)
 
         <div className={styles.body}>
           <figure className={styles.media}>
-            <CalendarImage
-              src={card.imageUrl || calendarImageManifest.anchors.todayInChurch}
-              fallbackSrc={calendarImageManifest.anchors.todayInChurch}
+            <CalendarEventImage
+              src={card.imageUrl}
               alt={card.imageAlt || card.title}
-              className={styles.image}
-              objectFit="cover"
-              objectPosition={card.objectPosition}
+              position={card.imagePosition || card.objectPosition}
+              className={styles.imageFrame}
               sizes="(max-width: 640px) 100vw, 36rem"
             />
             {caption ? (

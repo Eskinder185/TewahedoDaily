@@ -1,0 +1,901 @@
+/* Editorial prayer learning — Quiet Liturgical Studio */
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.hero {
+  margin: 0 0 var(--space-4);
+}
+
+.heroTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  line-height: 1.15;
+  color: var(--color-heading);
+}
+
+.heroDeck {
+  margin: var(--space-2) 0 0;
+  max-width: 36rem;
+  color: var(--color-text-muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.heroTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: var(--space-4);
+}
+
+.heroMode,
+.heroModeOn {
+  min-height: var(--tap-min);
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-pill);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.heroMode {
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-heading);
+}
+
+.heroModeOn {
+  border: 1px solid var(--color-midnight);
+  background: var(--color-midnight);
+  color: var(--color-text-inverse);
+}
+
+.heroMode:focus-visible,
+.heroModeOn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+/* Keep legacy tab classes for safety */
+.heroTab,
+.heroTabOn {
+  min-height: var(--tap-min);
+  padding: 0.2rem 0.1rem;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 650;
+  cursor: pointer;
+  color: var(--color-text-subtle);
+}
+
+.heroTabOn {
+  color: var(--color-heading);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in srgb, var(--color-gold) 55%, transparent);
+}
+
+.langSeg {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-bg-muted));
+}
+
+.langSegBtn,
+.langSegOn {
+  min-height: 2.4rem;
+  padding: 0.35rem 0.85rem;
+  border: 0;
+  border-right: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.langSegBtn:last-child,
+.langSegOn:last-child {
+  border-right: 0;
+}
+
+.langSegOn {
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-gold) 35%, transparent);
+}
+
+.langSegBtn:focus-visible,
+.langSegOn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.toolbar {
+  margin: 0 0 var(--space-4);
+}
+
+.stepper {
+  margin: 0 0 var(--space-4);
+}
+
+.stepperMeta {
+  margin: 0 0 var(--space-2);
+  font-size: 0.88rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.progressBar {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: 4px;
+  border: 0;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--color-border);
+}
+
+.progressBar > span {
+  display: block;
+  height: 100%;
+  background: color-mix(in srgb, var(--color-gold) 55%, var(--color-midnight));
+  border-radius: inherit;
+  transition: width 220ms var(--ease-out);
+}
+
+.modeHead {
+  margin: 0 0 var(--space-3);
+}
+
+.modeTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  color: var(--color-heading);
+}
+
+.resumeBanner {
+  margin: 0 0 var(--space-4);
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.resumeLink {
+  border: 0;
+  background: transparent;
+  color: var(--color-heading);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+  min-height: var(--tap-min);
+  padding: 0.15rem 0;
+}
+
+.resumeLink:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.lesson {
+  scroll-margin-top: 5rem;
+  padding: 0 0 var(--space-4);
+}
+
+.lessonNum {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--color-gold) 65%, var(--color-heading));
+}
+
+.lessonTitle {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.2vw, 1.85rem);
+  line-height: 1.25;
+  color: var(--color-heading);
+}
+
+.lessonTitleAm {
+  margin: 0.35rem 0 0;
+  font-size: clamp(1.12rem, 2.2vw, 1.28rem);
+  line-height: 1.55;
+  color: var(--color-heading);
+}
+
+.lessonSummary {
+  margin: var(--space-2) 0 0;
+  max-width: 40rem;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.lessonRule {
+  margin: var(--space-4) 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-gold) 55%, transparent),
+    var(--color-border) 40%,
+    transparent
+  );
+}
+
+.bodyStack {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 46rem;
+}
+
+.bodyBlock {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.bodyBlock[lang='am'] {
+  font-size: clamp(1.125rem, 1.4vw, 1.3125rem);
+  line-height: 1.85;
+}
+
+.bodyBlock[lang='en'] {
+  font-size: clamp(1.0625rem, 1.2vw, 1.125rem);
+  line-height: 1.75;
+}
+
+.bodyBlock p {
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--color-text);
+}
+
+.instructionBlock {
+  display: grid;
+  gap: 0.75rem;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border-left: 3px solid color-mix(in srgb, var(--color-gold) 70%, transparent);
+  background: color-mix(in srgb, var(--color-gold-faint) 55%, var(--color-bg-elevated));
+}
+
+.instructionBlock[lang='am'] {
+  font-size: clamp(1.125rem, 1.4vw, 1.3125rem);
+  line-height: 1.85;
+}
+
+.instructionBlock[lang='en'] {
+  font-size: clamp(1.0625rem, 1.2vw, 1.125rem);
+  line-height: 1.75;
+}
+
+.instructionBlock p {
+  margin: 0;
+  white-space: pre-wrap;
+  color: var(--color-text);
+}
+
+.translationLabel {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.contentHeading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 650;
+  color: var(--color-heading);
+}
+
+.missing {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.prayerBlock {
+  max-width: 46rem;
+  padding: var(--space-4) var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border-gold);
+  background: color-mix(in srgb, #fffaf2 90%, var(--color-gold-faint));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-gold-faint) 70%, transparent);
+}
+
+.prayerLabel {
+  margin: 0 0 var(--space-3);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-gold) 70%, var(--color-text-subtle));
+}
+
+.prayerToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.75rem;
+  margin-bottom: var(--space-3);
+}
+
+.toolQuiet {
+  min-height: 2.2rem;
+  padding: 0.15rem 0.1rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-subtle);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.toolQuiet:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.prayerText {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.prayerAm {
+  margin: 0;
+  font-size: 1.22em;
+  line-height: 1.9;
+  color: var(--color-heading);
+  white-space: pre-wrap;
+}
+
+.prayerEn {
+  margin: 0;
+  font-size: 1em;
+  line-height: 1.7;
+  color: var(--color-text);
+  white-space: pre-wrap;
+}
+
+.lessonActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: var(--space-4);
+}
+
+.markBtn,
+.markOn,
+.actionQuiet {
+  min-height: var(--tap-min);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.actionQuiet {
+  border: 0;
+  background: transparent;
+  color: var(--color-text-subtle);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.markBtn {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+}
+
+.markOn {
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, var(--color-border));
+  background: color-mix(in srgb, var(--color-gold-faint) 70%, white);
+  color: var(--color-heading);
+}
+
+.lessonNav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.navPrev,
+.navNext {
+  min-height: var(--tap-min);
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.navPrev {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-heading);
+}
+
+.navPrev:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.navNext {
+  border: 0;
+  background: var(--color-midnight);
+  color: var(--color-text-inverse);
+}
+
+.completion {
+  margin: var(--space-3) 0;
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.completion h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  color: var(--color-heading);
+}
+
+.completion p {
+  margin: var(--space-3) 0 var(--space-4);
+  color: var(--color-text-muted);
+  max-width: 36rem;
+  line-height: 1.6;
+}
+
+.btnPrimary {
+  min-height: var(--tap-min);
+  padding: 0.65rem 1.1rem;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-midnight);
+  color: var(--color-text-inverse);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.learnBlock {
+  margin-top: 0;
+  padding-top: 0;
+  scroll-margin-top: 5rem;
+}
+
+.learnHeading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  color: var(--color-heading);
+}
+
+.learnDeck {
+  margin: var(--space-2) 0 var(--space-4);
+  color: var(--color-text-muted);
+  max-width: 36rem;
+  line-height: 1.55;
+}
+
+.collection {
+  margin-top: var(--space-5);
+  scroll-margin-top: 5rem;
+}
+
+.collectionTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+  letter-spacing: 0.02em;
+  color: var(--color-heading);
+}
+
+.collectionDesc {
+  margin: var(--space-2) 0 var(--space-3);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  max-width: 40rem;
+  font-size: 0.98rem;
+}
+
+.sectionList {
+  border-top: 1px solid var(--color-border);
+}
+
+.sectionRow,
+.sectionRowOpen {
+  border-bottom: 1px solid var(--color-border);
+  scroll-margin-top: 5rem;
+}
+
+.sectionNameWrap {
+  margin: 0;
+  font: inherit;
+}
+
+.sectionTrigger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 0.1rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: inherit;
+  min-height: var(--tap-min);
+  cursor: pointer;
+  font: inherit;
+}
+
+.sectionTrigger:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.sectionHead {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.sectionName {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  color: var(--color-heading);
+  font-weight: 650;
+}
+
+.sectionAm {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+.sectionSummary {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+.sectionSummaryOpen {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  max-width: 40rem;
+}
+
+.sectionChevron {
+  color: var(--color-text-subtle);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+}
+
+.sectionPanel {
+  padding: 0 0 var(--space-4);
+}
+
+.childList {
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0;
+}
+
+.childLink {
+  min-height: var(--tap-min);
+  padding: 0.65rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  text-align: left;
+  font: inherit;
+  font-weight: 650;
+  color: var(--color-heading);
+  cursor: pointer;
+  width: 100%;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.childAm {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.childLink:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.childBody {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+  scroll-margin-top: 5rem;
+}
+
+.childTitle {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-heading);
+}
+
+.continueLearning {
+  display: grid;
+  gap: 0.25rem;
+  margin: var(--space-4) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.continueLabel {
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.continueLink {
+  justify-self: start;
+  min-height: var(--tap-min);
+  padding: 0.25rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-heading);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+}
+
+.continueLink:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0 0 var(--space-4);
+  padding: 0;
+  display: grid;
+  gap: 0.15rem;
+  color: var(--color-heading);
+  font-weight: 650;
+}
+
+.timeline li {
+  display: grid;
+  justify-items: start;
+}
+
+.timelinePipe {
+  color: color-mix(in srgb, var(--color-gold) 60%, var(--color-text-subtle));
+  font-weight: 400;
+  margin-left: 0.55rem;
+  line-height: 1.1;
+}
+
+.refList {
+  margin: 0 0 var(--space-4);
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.contentsBtn {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: var(--tap-min);
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-card);
+  background: color-mix(in srgb, var(--color-bg-elevated) 94%, white);
+  color: var(--color-heading);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+}
+
+.contentsBtn:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.tocSheet {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  align-items: end;
+}
+
+.tocSheet[hidden] {
+  display: none;
+}
+
+.tocBackdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(10, 21, 36, 0.32);
+  cursor: pointer;
+}
+
+.tocPanel {
+  position: relative;
+  z-index: 1;
+  max-height: min(78vh, 36rem);
+  overflow: auto;
+  padding: var(--space-4);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-lift);
+}
+
+.tocHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: var(--space-3);
+}
+
+.tocHead h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-heading);
+}
+
+.tocClose {
+  min-height: var(--tap-min);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-heading);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.tocGroup {
+  margin: var(--space-3) 0 0.45rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  font-weight: 750;
+}
+
+.tocGroup:first-child {
+  margin-top: 0;
+}
+
+.tocList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.15rem;
+}
+
+.tocLink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  min-height: var(--tap-min);
+  padding: 0.5rem 0.15rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-heading);
+  font: inherit;
+  font-weight: 650;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.tocLink:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (min-width: 48rem) {
+  .tocSheet {
+    align-items: center;
+    justify-items: end;
+    padding: 1.25rem;
+  }
+
+  .tocPanel {
+    width: min(22rem, 100%);
+    max-height: min(85vh, 40rem);
+    border-radius: var(--radius-lg);
+  }
+
+  .contentsBtn {
+    top: 5.5rem;
+    bottom: auto;
+    right: 1.25rem;
+  }
+
+  .lessonNav {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+
+  .navPrev,
+  .navNext {
+    min-width: 9.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progressBar > span {
+    transition: none;
+  }
+}

@@ -1,0 +1,212 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: clamp(13.75rem, 72vw, 16.25rem);
+  max-width: 320px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--color-border-card, var(--color-border)) 92%, transparent);
+  border-radius: var(--radius-lg, 14px);
+  background: color-mix(in srgb, var(--color-bg-elevated, #fff) 96%, var(--color-bg-muted, #f4f1ea));
+  box-shadow: var(--shadow-soft, 0 8px 20px rgba(20, 24, 36, 0.06));
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  scroll-snap-align: start;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: clamp(15rem, 28vw, 17.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: clamp(16.25rem, 20vw, 20rem);
+  }
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift, 0 12px 28px rgba(20, 24, 36, 0.1));
+  border-color: color-mix(in srgb, var(--color-gold, #c4a35a) 45%, var(--color-border));
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-gold, #c4a35a);
+  outline-offset: 3px;
+}
+
+.home {
+  width: min(100%, 24rem);
+  max-width: 420px;
+}
+
+.timeline {
+  flex: 0 0 auto;
+  width: clamp(15rem, 28vw, 20rem);
+  max-width: 340px;
+}
+
+.timeline .body {
+  gap: 0.28rem;
+  padding: 0.7rem 0.75rem 0.8rem;
+}
+
+.timeline .title {
+  font-size: 1rem;
+}
+
+.timeline .titleAm {
+  font-size: 0.88rem;
+  -webkit-line-clamp: 1;
+}
+
+.timeline .summary {
+  font-size: 0.75rem;
+  -webkit-line-clamp: 2;
+}
+
+.timeline .date {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--color-navy, #1e2a44);
+}
+
+.selected {
+  border-color: color-mix(in srgb, var(--color-gold, #c4a35a) 58%, var(--color-border));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-gold, #c4a35a) 30%, transparent),
+    var(--shadow-soft, 0 8px 20px rgba(20, 24, 36, 0.06));
+}
+
+@media (max-width: 767.98px) {
+  .timeline {
+    width: min(86vw, 280px);
+    max-width: 280px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279.98px) {
+  .timeline {
+    width: clamp(15.5rem, 26vw, 18.75rem);
+  }
+}
+
+@media (min-width: 1280px) {
+  .timeline {
+    width: clamp(17.5rem, 18vw, 21rem);
+    max-width: 360px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .timeline {
+    width: clamp(18.75rem, 16vw, 22.5rem);
+    max-width: 360px;
+  }
+}
+
+.media {
+  width: 100%;
+  border-radius: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1rem 1.05rem 1.1rem;
+  min-width: 0;
+}
+
+.home .body {
+  gap: 0.45rem;
+  padding: 1.05rem 1.1rem 1.2rem;
+}
+
+.home .title {
+  font-size: 1.28rem;
+}
+
+.home .summary {
+  -webkit-line-clamp: 3;
+}
+
+.type {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold, #b0893d);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display, var(--font-serif, Georgia, serif));
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--color-heading);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.titleAm {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--color-text);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.date {
+  margin: 0.1rem 0 0;
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: var(--color-navy, #1e2a44);
+}
+
+.summary {
+  margin: 0.15rem 0 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--color-text-muted, #5c564c);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.tone_christ .type,
+.tone_cross .type {
+  color: color-mix(in srgb, var(--color-wine, #7a2e2e) 70%, var(--color-gold));
+}
+
+.tone_fast .type {
+  color: color-mix(in srgb, var(--color-navy, #1e2a44) 80%, var(--color-gold));
+}
+
+.tone_season .type {
+  color: color-mix(in srgb, var(--color-navy, #1e2a44) 55%, #3d6b4f);
+}
+
+.tone_marian .type,
+.tone_angel .type {
+  color: color-mix(in srgb, var(--color-navy, #1e2a44) 40%, var(--color-gold));
+}

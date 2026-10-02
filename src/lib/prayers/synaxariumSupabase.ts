@@ -33,6 +33,7 @@ type CommemorationRow = {
   title_amharic: string | null
   commemoration_type: string | null
   summary: string | null
+  summary_amharic?: string | null
   body_amharic: string | null
   body_english: string | null
   scripture_references: string | null
@@ -44,6 +45,7 @@ type CommemorationRow = {
   featured?: boolean | null
   is_monthly?: boolean | null
   image_position?: string | null
+  content_review_status?: string | null
 }
 
 type CommemorationPreviewRow = {
@@ -119,6 +121,7 @@ function mapCommemoration(row: CommemorationRow): SynaxariumCommemoration {
     titleAmharic: row.title_amharic ?? '',
     commemorationType: row.commemoration_type ?? '',
     summary: row.summary ?? '',
+    summaryAmharic: row.summary_amharic ?? '',
     bodyAmharic: row.body_amharic ?? '',
     bodyEnglish: row.body_english ?? '',
     scriptureReferences: row.scripture_references ?? '',
@@ -132,6 +135,7 @@ function mapCommemoration(row: CommemorationRow): SynaxariumCommemoration {
       /monthly/i.test(row.title || '') ||
       keywords.some((k) => /monthly/i.test(k)),
     imagePosition: row.image_position ?? undefined,
+    contentReviewStatus: row.content_review_status ?? null,
   }
 }
 

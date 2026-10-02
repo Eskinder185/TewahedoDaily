@@ -90,41 +90,41 @@
 
   .wrapCalendarPageMobile .overviewStackCalendarPage .heroWrap {
     margin-top: var(--space-2);
-    max-height: min(13rem, 56vw);
-    aspect-ratio: 4 / 3;
+    max-width: 100%;
   }
 }
 
 @media (min-width: 960px) {
   .wrapCalendarPageMobile .overviewStackCalendarPage .heroWrap {
-    max-height: none;
-    aspect-ratio: 16 / 9;
+    max-width: 36rem;
   }
 }
 
 .heroWrap {
   margin: 0;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  max-height: 14rem;
-  border-radius: var(--radius-md);
+  max-width: 36rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 80%, transparent);
   box-shadow: var(--shadow-soft);
+}
+
+.heroFrame {
+  border-radius: 0;
 }
 
 .hero {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 30%;
+  object-position: center center;
   display: block;
 }
 
 @media (min-width: 720px) {
   .heroWrap {
-    aspect-ratio: 16 / 8.2;
-    max-height: none;
+    max-width: 36rem;
   }
 }
 

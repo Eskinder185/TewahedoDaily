@@ -36,6 +36,11 @@
   background: var(--color-bg-muted);
 }
 
+.calendarPreview {
+  max-width: 320px;
+  border: 1px solid var(--color-border);
+}
+
 .path {
   margin: 0;
   font-size: 0.78rem;
@@ -108,6 +113,58 @@
 .upload input {
   display: block;
   margin-top: 6px;
+}
+
+.uploadInline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 7px;
+  padding: 8px 13px;
+  background: var(--color-bg-elevated);
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.uploadInline input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.suggest {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px dashed var(--color-border-strong);
+  background: var(--color-bg-muted);
+  font-size: 0.88rem;
+}
+
+.suggest p {
+  margin: 0;
+}
+
+.suggest code,
+.conflict code {
+  font-size: 0.82rem;
+  word-break: break-all;
+}
+
+.conflict {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #c9a227;
+  background: #fff8e1;
+  color: #5c4813;
 }
 
 .grid {

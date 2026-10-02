@@ -91,6 +91,7 @@ export type SynaxariumCommemoration = {
   titleAmharic: string
   commemorationType: string
   summary: string
+  summaryAmharic?: string
   bodyAmharic: string
   bodyEnglish: string
   scriptureReferences: string
@@ -101,6 +102,7 @@ export type SynaxariumCommemoration = {
   featured?: boolean
   isMonthly?: boolean
   imagePosition?: string
+  contentReviewStatus?: string | null
 }
 
 /** Day plus ordered published commemorations (calendar / pray detail). */

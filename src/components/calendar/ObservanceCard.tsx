@@ -8,11 +8,10 @@ import {
 } from '../../lib/eotcCalendar/eotcObservanceGalleryModel'
 import { useTranslation } from '../../i18n'
 import {
-  calendarImageManifest,
   resolveEventImageById,
   resolveEventImagePresentation,
 } from '../../content/calendarImageManifest'
-import { CalendarImage } from './CalendarImage'
+import { CalendarEventImage } from './CalendarEventImage'
 import styles from './ObservanceCard.module.css'
 
 type Props = {
@@ -50,7 +49,7 @@ function ObservanceCardInner({ row, onOpen }: Props) {
     e.id,
     {
       objectFit: 'cover',
-      objectPosition: '50% 30%',
+      objectPosition: 'center center',
     },
     e,
   )
@@ -73,14 +72,11 @@ function ObservanceCardInner({ row, onOpen }: Props) {
       >
         <div className={styles.media}>
           {imageUrl ? (
-            <CalendarImage
+            <CalendarEventImage
               src={imageUrl}
-              fallbackSrc={calendarImageManifest.anchors.todayInChurch}
               alt={`${displayTitle} observance image`}
-              className={styles.image}
-              objectFit={imagePresentation.objectFit}
-              objectPosition={imagePresentation.objectPosition}
-              loading="lazy"
+              position={imagePresentation.objectPosition}
+              className={styles.imageFrame}
               fetchPriority="low"
               sizes="(max-width: 600px) 45vw, 280px"
             />

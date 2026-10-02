@@ -137,13 +137,13 @@ export function MezmurDetailPage() {
           onBack={() => navigate('/practice')}
           backLabel={t('mezmurPractice.player.backToPractice')}
           badges={mezmurBadges(item)}
-          headerActions={
+          footerActions={
             <div className={styles.shareGroup}>
               <Link className={styles.shareBtn} to={`/suggest-correction?${new URLSearchParams({ type: 'correction', legacy_key: `mezmur:${item.id}`, title: item.title, page: window.location.origin + window.location.pathname })}`}>
                 Suggest a Correction
               </Link>
               <button type="button" className={styles.shareBtn} onClick={copyShareLink}>
-                {t('mezmurPractice.player.share')}
+                🔗 {t('mezmurPractice.player.share')}
               </button>
               {copied ? (
                 <span className={styles.copied} role="status">

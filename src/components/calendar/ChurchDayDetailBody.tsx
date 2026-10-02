@@ -16,6 +16,7 @@ import {
   resolveSelectedDayHeroImage,
 } from '../../content/calendarImageManifest'
 import { dayObservanceChips } from './churchDayChips'
+import { CalendarEventImage } from './CalendarEventImage'
 import { CalendarImage } from './CalendarImage'
 import styles from './ChurchDayDetailBody.module.css'
 
@@ -66,7 +67,7 @@ export function ChurchDayDetailBody({
       primaryImageId,
       {
         objectFit: 'cover',
-        objectPosition: '50% 30%',
+        objectPosition: 'center center',
       },
       primaryEotcEntry,
     )
@@ -194,15 +195,14 @@ export function ChurchDayDetailBody({
             className={`${styles.stack} ${styles.overviewStack} ${calendarPageLayout ? styles.overviewStackCalendarPage : ''}`.trim()}
           >
             <figure className={styles.heroWrap}>
-              <CalendarImage
+              <CalendarEventImage
                 src={hero}
-                fallbackSrc={heroFallback}
-                className={styles.hero}
-                objectFit={heroPresentation.objectFit}
-                objectPosition={heroPresentation.objectPosition}
-                loading="eager"
-                fetchPriority="high"
+                alt=""
+                position={heroPresentation.objectPosition}
+                className={styles.heroFrame}
+                priority
                 sizes="(max-width: 719px) 100vw, min(42rem, 90vw)"
+                decorativeFallback
               />
             </figure>
             <div className={styles.chipRow}>

@@ -95,6 +95,7 @@ export type SynaxariumCommemorationRow = {
   title_amharic: string | null
   commemoration_type: string | null
   summary: string | null
+  summary_amharic?: string | null
   body_amharic: string | null
   body_english: string | null
   scripture_references: string | null
@@ -104,6 +105,7 @@ export type SynaxariumCommemorationRow = {
   featured: boolean | null
   sort_order: number
   status: ContentStatus
+  content_review_status?: string | null
 }
 
 export async function listCollections(kind: 'prayers' | 'liturgy') {
@@ -394,7 +396,7 @@ export async function saveCommemoration(
   input: Partial<SynaxariumCommemorationRow> & { title: string; day_id: string; slug?: string },
   existing?: SynaxariumCommemorationRow | null,
 ) {
-  const payload = {
+  const base = {
     day_id: input.day_id,
     day_slug: input.day_slug || null,
     slug: (input.slug || slugify(input.title)).trim(),
@@ -413,23 +415,44 @@ export async function saveCommemoration(
     status: (input.status || 'draft') as ContentStatus,
     updated_at: new Date().toISOString(),
   }
-  if (existing) {
+  const withReview = {
+    ...base,
+    summary_amharic: input.summary_amharic || null,
+    content_review_status: input.content_review_status || null,
+  }
+
+  const write = async (payload: Record<string, unknown>) => {
+    if (existing) {
+      const { data, error } = await db()
+        .from('synaxarium_commemorations' as never)
+        .update(payload as never)
+        .eq('id', existing.id)
+        .select('*')
+        .single()
+      if (error) throw error
+      return data as unknown as SynaxariumCommemorationRow
+    }
     const { data, error } = await db()
       .from('synaxarium_commemorations' as never)
-      .update(payload as never)
-      .eq('id', existing.id)
+      .insert(payload as never)
       .select('*')
       .single()
     if (error) throw error
     return data as unknown as SynaxariumCommemorationRow
   }
-  const { data, error } = await db()
-    .from('synaxarium_commemorations' as never)
-    .insert(payload as never)
-    .select('*')
-    .single()
-  if (error) throw error
-  return data as unknown as SynaxariumCommemorationRow
+
+  try {
+    return await write(withReview)
+  } catch (cause) {
+    const message =
+      cause && typeof cause === 'object' && 'message' in cause
+        ? String((cause as { message?: unknown }).message)
+        : ''
+    if (/summary_amharic|content_review_status|column .* does not exist/i.test(message)) {
+      return write(base)
+    }
+    throw cause
+  }
 }
 
 export async function deleteCommemoration(id: string) {

@@ -5,6 +5,7 @@
 import { supabase } from '../lib/supabase/client'
 import { gregorianToEthiopian, formatEthiopianLong, ETHIOPIAN_MONTH_NAMES } from '../lib/ethiopianDate'
 import { getSynaxariumDayWithCommemorations } from '../lib/synaxarium/synaxariumService'
+import { presentSynaxariumForDay } from '../lib/synaxarium/synaxariumPresentation'
 import type {
   LiturgyCollection,
   LiturgyEntry,
@@ -47,6 +48,9 @@ export type DayCommemorationItem = {
   imageAlt: string
   featured: boolean
   sortOrder: number
+  /** Internal only — never show in public UI. */
+  reviewStatus?: 'ok' | 'needs_review' | 'omit_public'
+  summaryDerived?: boolean
 }
 
 export type DayReadingItem = {
@@ -104,6 +108,8 @@ export type DayChurchContext = {
   primaryObservance: DayObservance | null
   observances: DayObservance[]
   activeFast: DayFast | null
+  fastFreeRule: DayFast | null
+  relatedFasts: DayFast[]
   season: DaySeason | null
   monthlyCommemorations: DayMonthlyCommemoration[]
   synaxarium: DayCommemorationItem[]
@@ -111,7 +117,9 @@ export type DayChurchContext = {
   synaxariumAvailable: boolean
   fastingStatus: {
     isFastDay: boolean
+    isFastFree: boolean
     label: string | null
+    exceptionNote: string | null
   }
   liturgySummary: DayLiturgySummary | null
   mezmurRecommendations: DayMezmurRecommendation[]
@@ -212,26 +220,6 @@ export function isGenericWeeklyFastCommemoration(item: {
   if (/^(wednesday|friday)\b/.test(title) && /fast/.test(title)) return true
   if (type === 'weekly-fast' || type === 'weekday-fast') return true
   return false
-}
-
-function mapCommemoration(row: SynaxariumCommemoration): DayCommemorationItem {
-  const path = row.imagePath?.trim() || null
-  const summary = (row.summary || '').trim()
-  const longer = (row.bodyEnglish || row.bodyAmharic || summary).trim()
-  return {
-    id: row.id,
-    slug: row.slug,
-    title: row.title,
-    titleAmharic: row.titleAmharic || '',
-    type: row.commemorationType || 'other',
-    typeLabel: formatTypeLabel(row.commemorationType),
-    summary,
-    longerSummary: longer !== summary ? longer.slice(0, 900) : summary,
-    imageUrl: path ? resolveContentMediaUrl(path) || null : null,
-    imageAlt: row.imageAlt || row.title,
-    featured: Boolean(row.featured),
-    sortOrder: row.sortOrder ?? 0,
-  }
 }
 
 function tokenize(...parts: Array<string | null | undefined>): string[] {
@@ -641,13 +629,31 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
     if (bundle?.day) {
       synaxariumAvailable = true
       synaxariumDaySlug = bundle.day.slug
-      synaxarium = (bundle.commemorations || [])
-        .filter((c: SynaxariumCommemoration) => !isGenericWeeklyFastCommemoration(c))
-        .map(mapCommemoration)
-        .sort((a, b) => {
-          if (a.featured !== b.featured) return a.featured ? -1 : 1
-          return a.sortOrder - b.sortOrder
+      synaxarium = presentSynaxariumForDay(
+        (bundle.commemorations || []).filter(
+          (c: SynaxariumCommemoration) => !isGenericWeeklyFastCommemoration(c),
+        ),
+      )
+        .map((item) => {
+          const path = item.imagePath
+          return {
+            id: item.id,
+            slug: item.slug,
+            title: item.title,
+            titleAmharic: item.titleAmharic,
+            type: item.category,
+            typeLabel: item.categoryLabel,
+            summary: item.summary,
+            longerSummary: item.body || item.summary,
+            imageUrl: path ? resolveContentMediaUrl(path) || null : null,
+            imageAlt: item.imageAlt || item.title,
+            featured: item.featured,
+            sortOrder: item.sortOrder,
+            reviewStatus: item.reviewStatus,
+            summaryDerived: item.summaryDerived,
+          } satisfies DayCommemorationItem
         })
+        // Preserve Synaxarium source order (sort_order), not featured-first.
     }
   } catch (cause) {
     if (import.meta.env.DEV) console.error('[dayChurchContext] synaxarium', cause)
@@ -681,14 +687,19 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
     `${monthName} ${eth.day}`
 
   const dayOneLiner =
+    orthodox.primaryObservance?.summary ||
     orthodox.primaryObservance?.description ||
+    orthodox.monthlyCommemorations[0]?.summary ||
     orthodox.monthlyCommemorations[0]?.description ||
     synaxarium[0]?.summary ||
     (orthodox.fastingStatus.isFastDay && orthodox.fastingStatus.label
       ? `A fasting day: ${orthodox.fastingStatus.label}.`
-      : orthodox.season
-        ? `We are in ${orthodox.season.title}.`
-        : 'A day of prayer in the Ethiopian Orthodox Tewahedo Church.')
+      : orthodox.fastingStatus.isFastFree
+        ? orthodox.fastingStatus.exceptionNote ||
+          'No regular Wednesday/Friday fast today.'
+        : orthodox.season
+          ? `We are in ${orthodox.season.title}.`
+          : 'A day of prayer in the Ethiopian Orthodox Tewahedo Church.')
 
   const practiceLinks: DayChurchContext['practiceLinks'] = [
     { label: 'Open prayer collections', href: '/pray' },
@@ -727,6 +738,8 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
     primaryObservance: orthodox.primaryObservance,
     observances: orthodox.observances,
     activeFast: orthodox.activeFast,
+    fastFreeRule: orthodox.fastFreeRule,
+    relatedFasts: orthodox.relatedFasts,
     season: orthodox.season,
     monthlyCommemorations: orthodox.monthlyCommemorations,
     synaxarium,

@@ -11,10 +11,9 @@ import {
   isCompanionObservanceId,
 } from '../../content/nextObservancesCompanions'
 import {
-  calendarImageManifest,
   resolveEventImagePresentation,
 } from '../../content/calendarImageManifest'
-import { CalendarImage } from '../calendar/CalendarImage'
+import { CalendarEventImage } from '../calendar/CalendarEventImage'
 import { useTranslation } from '../../i18n'
 import styles from './UpcomingObservancesStrip.module.css'
 
@@ -40,8 +39,6 @@ function matchesUpcomingTab(item: UpcomingObservance, tab: TabId): boolean {
     item.kind === 'saint'
   )
 }
-
-const fallbackThumb = calendarImageManifest.anchors.todayInChurch
 
 function useCoarsePrimaryPointer(): boolean {
   const [coarse, setCoarse] = useState(() =>
@@ -287,8 +284,8 @@ export function UpcomingObservancesStrip({
                   objectFit: 'cover',
                   objectPosition:
                     item.kind === 'fast' || item.kind === 'season' || item.kind === 'weekly'
-                      ? '50% 50%'
-                      : '50% 30%',
+                      ? 'center center'
+                      : 'center top',
                 })
 
                 const cardClass = [
@@ -349,13 +346,11 @@ export function UpcomingObservancesStrip({
                 const visual =
                   row.mode === 'image' ? (
                     <div className={styles.visual}>
-                      <CalendarImage
+                      <CalendarEventImage
                         src={row.art.src}
-                        fallbackSrc={fallbackThumb}
                         alt={tr('calendar.page.observanceImage', { title: item.title })}
-                        className={styles.heroImg}
-                        objectFit={imagePresentation.objectFit}
-                        objectPosition={imagePresentation.objectPosition}
+                        position={imagePresentation.objectPosition}
+                        className={styles.heroFrame}
                         fetchPriority="low"
                         sizes="(max-width: 720px) 88vw, min(420px, 40vw)"
                       />

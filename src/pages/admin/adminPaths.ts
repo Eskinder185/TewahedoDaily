@@ -8,6 +8,7 @@ export const ADMIN_PATHS = {
   prayCollections: '/admin/pray/collections',
   prayPrayers: '/admin/pray/prayers',
   prayLiturgy: '/admin/pray/liturgy',
+  prayGuides: '/admin/pray/guides',
   prayImages: '/admin/pray/images',
   calendarCards: '/admin/calendar/cards',
   calendarObservances: '/admin/calendar/observances',
@@ -22,6 +23,7 @@ export const ADMIN_PATHS = {
   homeDaily: '/admin/home/daily',
   submissions: '/admin/submissions',
   media: '/admin/media',
+  contentHealth: '/admin/content-health',
 } as const
 
 export function contentAdminBase(kind: string): string {

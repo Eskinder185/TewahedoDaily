@@ -1,0 +1,108 @@
+.layout {
+  width: min(100%, 62.5rem);
+  margin-inline: auto;
+  position: relative;
+}
+
+.main {
+  min-width: 0;
+  width: min(100%, 47.5rem);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  line-height: 1.15;
+  color: var(--color-heading);
+}
+
+.deck {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.guided {
+  scroll-margin-top: 5rem;
+}
+
+.empty {
+  margin: var(--space-3) 0;
+  color: var(--color-text-muted);
+}
+
+.shell {
+  width: min(100%, 44rem);
+  margin-inline: auto;
+}
+
+.back {
+  display: inline-flex;
+  margin-top: var(--space-5);
+  min-height: var(--tap-min);
+  align-items: center;
+  color: var(--color-heading);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.back:hover {
+  text-decoration: underline;
+}
+
+.skeleton {
+  width: min(100%, 47.5rem);
+  margin-inline: auto;
+  display: grid;
+  gap: 0.85rem;
+  padding-block: var(--space-4);
+}
+
+.skeletonLine,
+.skeletonBlock {
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--color-border) 70%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg-elevated) 80%, var(--color-gold-faint)) 50%,
+    color-mix(in srgb, var(--color-border) 70%, transparent) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonLine {
+  height: 0.85rem;
+}
+
+.skeletonBlock {
+  height: 4.5rem;
+  margin-top: 0.5rem;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeletonLine,
+  .skeletonBlock {
+    animation: none;
+  }
+}

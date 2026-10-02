@@ -29,11 +29,17 @@ export type ResolvedOrthodoxDay = {
   observances: DayObservance[]
   primaryObservance: DayObservance | null
   activeFast: DayFast | null
+  /** When today is explicitly fast-free (e.g. feast exception), the matching fast_free rule. */
+  fastFreeRule: DayFast | null
+  /** Additional matching fasts (components / secondary), excluding the primary active fast. */
+  relatedFasts: DayFast[]
   season: DaySeason | null
   monthlyCommemorations: DayMonthlyCommemoration[]
   fastingStatus: {
     isFastDay: boolean
+    isFastFree: boolean
     label: string | null
+    exceptionNote: string | null
   }
 }
 
@@ -98,6 +104,40 @@ function resolvePascha(day: Date): Date | null {
   )
 }
 
+function mapEnriched(row: {
+  summary?: string | null
+  summary_amharic?: string | null
+  what_is_it?: string | null
+  what_is_it_amharic?: string | null
+  why_celebrated?: string | null
+  why_celebrated_amharic?: string | null
+  important_information?: string | null
+  important_information_amharic?: string | null
+  scripture_references?: string | null
+  fasting_notes?: string | null
+  fasting_notes_amharic?: string | null
+  season_notes?: string | null
+  season_notes_amharic?: string | null
+  content_review_status?: string | null
+}) {
+  return {
+    summary: (row.summary || '').trim(),
+    summaryAmharic: (row.summary_amharic || '').trim(),
+    whatIsIt: (row.what_is_it || '').trim(),
+    whatIsItAmharic: (row.what_is_it_amharic || '').trim(),
+    whyCelebrated: (row.why_celebrated || '').trim(),
+    whyCelebratedAmharic: (row.why_celebrated_amharic || '').trim(),
+    importantInformation: (row.important_information || '').trim(),
+    importantInformationAmharic: (row.important_information_amharic || '').trim(),
+    scriptureReferences: (row.scripture_references || '').trim(),
+    fastingNotes: (row.fasting_notes || '').trim(),
+    fastingNotesAmharic: (row.fasting_notes_amharic || '').trim(),
+    seasonNotes: (row.season_notes || '').trim(),
+    seasonNotesAmharic: (row.season_notes_amharic || '').trim(),
+    contentReviewStatus: (row.content_review_status || '').trim(),
+  }
+}
+
 function mapObservance(row: OrthodoxObservanceRow): DayObservance {
   return {
     id: row.id,
@@ -112,6 +152,9 @@ function mapObservance(row: OrthodoxObservanceRow): DayObservance {
     occasionTag: row.occasion_tag,
     imagePath: row.image_path,
     imageAlt: row.image_alt || row.title,
+    ethiopianMonthNumber: row.ethiopian_month_number,
+    ethiopianDay: row.ethiopian_day,
+    ...mapEnriched(row),
   }
 }
 
@@ -125,6 +168,8 @@ function mapFast(row: LiturgicalFastRow): DayFast {
     fastType: row.fast_type || 'fast',
     occasionTag: row.occasion_tag,
     priority: row.priority ?? 0,
+    fastFreeException: (row.fast_free_exception || '').trim(),
+    ...mapEnriched(row),
   }
 }
 
@@ -138,6 +183,7 @@ function mapSeason(row: LiturgicalSeasonRow): DaySeason {
     seasonType: row.season_type || 'season',
     occasionTags: normalizeStringList(row.occasion_tags),
     priority: row.priority ?? 0,
+    ...mapEnriched(row),
   }
 }
 
@@ -151,6 +197,9 @@ function mapMonthly(row: MonthlyCommemorationRow): DayMonthlyCommemoration {
     ethiopianDay: row.ethiopian_day,
     description: (row.description || '').trim(),
     occasionTag: row.occasion_tag,
+    imagePath: row.image_path,
+    imageAlt: row.image_alt || row.title,
+    ...mapEnriched(row),
   }
 }
 
@@ -327,18 +376,33 @@ export function resolveOrthodoxDay(
 
   const topFast = matchingFasts[0] || null
   let activeFast: DayFast | null = null
+  let fastFreeRule: DayFast | null = null
+  let relatedFasts: DayFast[] = []
   let isFastDay = false
+  let isFastFree = false
   let fastLabel: string | null = null
+  let exceptionNote: string | null = null
 
   if (topFast) {
     const type = (topFast.fast_type || '').toLowerCase()
-    if (type === 'fast_free') {
+    if (type === 'fast_free' || type === 'fast_free_period' || type.includes('fast_free')) {
       isFastDay = false
-      fastLabel = null
+      isFastFree = true
+      fastFreeRule = mapFast(topFast)
+      fastLabel = fastFreeRule.name
+      exceptionNote =
+        fastFreeRule.fastFreeException ||
+        fastFreeRule.summary ||
+        fastFreeRule.description ||
+        null
     } else {
       activeFast = mapFast(topFast)
       isFastDay = true
       fastLabel = activeFast.name
+      relatedFasts = matchingFasts.slice(1).map(mapFast)
+      if (activeFast.fastFreeException) {
+        exceptionNote = activeFast.fastFreeException
+      }
     }
   }
 
@@ -355,11 +419,15 @@ export function resolveOrthodoxDay(
     observances,
     primaryObservance,
     activeFast,
+    fastFreeRule,
+    relatedFasts,
     season: seasonRow ? mapSeason(seasonRow) : null,
     monthlyCommemorations,
     fastingStatus: {
       isFastDay,
+      isFastFree,
       label: fastLabel,
+      exceptionNote,
     },
   }
 }

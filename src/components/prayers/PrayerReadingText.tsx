@@ -11,6 +11,8 @@ type Props = {
   lang: PrayerLang
   className?: string
   allowCollapse?: boolean
+  /** `plain` removes the bordered card shell for continuous prayer-book reading. */
+  variant?: 'card' | 'plain'
 }
 
 /** Split a single line into optional verse marker + body (English digits or Ethiopic numerals). */
@@ -34,6 +36,7 @@ export function PrayerReadingText({
   lang,
   className = '',
   allowCollapse = true,
+  variant = 'card',
 }: Props) {
   const t = useUiLabel()
   const bodyId = useId()
@@ -52,12 +55,17 @@ export function PrayerReadingText({
     })
   }, [display, lang])
 
+  const shellClass =
+    variant === 'plain'
+      ? `${styles.wrapPlain} ${className}`.trim()
+      : `${styles.wrap} ${className}`.trim()
+
   return (
-    <div className={`${styles.wrap} ${className}`.trim()}>
+    <div className={shellClass}>
       <div
         className={styles.prose}
         id={bodyId}
-        lang={lang === 'english' ? 'en' : 'am'}
+        lang={lang === 'english' ? 'en' : lang === 'geez' ? 'gez' : 'am'}
       >
         {blocks.map((para, pi) => (
           <p key={pi} className={styles.para}>

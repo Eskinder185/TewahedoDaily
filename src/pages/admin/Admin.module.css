@@ -86,6 +86,13 @@
 .error { background: #fbe5e1; color: #842b22; }
 .success { background: #e2f3e8; color: #205638; }
 .notice { background: var(--color-bg-muted); }
+.warn { color: #705318; font-weight: 650; }
+.panel { margin-top: 18px; padding: 18px; border: 1px solid var(--color-border); border-radius: 10px; background: var(--color-bg-elevated); }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.listItem { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 1px solid var(--color-border); }
+.rowActions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.inlineFields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
+.secondary, .root button.secondary { background: var(--color-bg-elevated); }
 .modal { max-width: 780px; width: calc(100% - 32px); max-height: 85dvh; overflow: auto; padding: 28px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-bg-elevated); color: var(--color-text); }
 .modal::backdrop { background: #07101fb3; }
 .preview .thumbnail { width: 180px; height: 180px; }

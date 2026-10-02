@@ -55,7 +55,8 @@ export function SiteFooter() {
         <div className={styles.brand}>
           <p className={styles.name}>{t('brand.name')}</p>
         </div>
-        <p className={styles.portfolioWrap}>
+
+        <div className={styles.center}>
           <a
             href={PORTFOLIO_URL}
             className={styles.portfolio}
@@ -64,8 +65,9 @@ export function SiteFooter() {
           >
             {t('footer.portfolio')}
           </a>
-        </p>
-        <p className={styles.copy}>{t('footer.copyright', { year })}</p>
+          <p className={styles.copy}>{t('footer.copyright', { year })}</p>
+        </div>
+
         <nav className={styles.utilityNav} aria-label="Site utilities">
           <Link to="/submit-mezmur" className={styles.utilityLink}>
             Submit a Mezmur

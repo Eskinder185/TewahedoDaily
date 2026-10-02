@@ -1,0 +1,55 @@
+.frame {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      color-mix(in srgb, var(--color-gold, #a8893c) 16%, transparent),
+      transparent 45%
+    ),
+    linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--color-navy, #1e2a44) 88%, #2c3a57) 0%,
+      color-mix(in srgb, var(--color-bg-muted, #f3ebdc) 70%, #f7f1e6) 100%
+    );
+}
+
+.frame[data-fallback='true'] {
+  background:
+    radial-gradient(
+      circle at 28% 18%,
+      color-mix(in srgb, var(--color-gold, #a8893c) 20%, transparent),
+      transparent 48%
+    ),
+    linear-gradient(155deg, #1e2a44 0%, #2c3a57 52%, #f7f1e6 165%);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.emptyLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text-inverse, #f7f1e6) 88%, #fff);
+  opacity: 0.9;
+}

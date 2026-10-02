@@ -4,6 +4,7 @@ import { countSynaxariumCommemorations, countSynaxariumDays } from '../../lib/sy
 import { getDashboard, getTaxonomy } from '../../lib/cms/mezmurService'
 import { listHomepageSlides } from '../../lib/cms/homepageService'
 import { listCollections } from '../../lib/cms/structureAdminService'
+import { countPrayerGuides } from '../../lib/cms/prayerGuideAdminService'
 import { listContent } from '../../lib/cms/contentService'
 import { listCalendarCards } from '../../lib/cms/calendarAdminService'
 import { loadOrthodoxCalendarCatalog } from '../../lib/calendar/orthodoxCalendarData'
@@ -25,6 +26,7 @@ const PRAY_TABS = [
   { to: '/admin/pray/collections', label: 'Collections' },
   { to: '/admin/pray/prayers', label: 'Prayers' },
   { to: '/admin/pray/liturgy', label: 'Liturgy' },
+  { to: '/admin/pray/guides', label: 'Learning / Guides' },
   { to: '/admin/pray/images', label: 'Images' },
 ]
 
@@ -173,11 +175,12 @@ export function PrayAdminLayout() {
 export function PrayOverview() {
   const result = useAsync(
     useCallback(async () => {
-      const [prayers, liturgy] = await Promise.all([
+      const [prayers, liturgy, guides] = await Promise.all([
         listCollections('prayers'),
         listCollections('liturgy'),
+        countPrayerGuides().catch(() => 0),
       ])
-      return { prayers: prayers.length, liturgy: liturgy.length }
+      return { prayers: prayers.length, liturgy: liturgy.length, guides }
     }, []),
   )
 
@@ -202,6 +205,12 @@ export function PrayOverview() {
             label: 'Liturgy',
             detail: 'liturgy_collections, sections, and entries',
             count: result.data?.liturgy ?? '…',
+          },
+          {
+            to: '/admin/pray/guides',
+            label: 'Learning / Guides',
+            detail: 'Educational Pray guides (prayer_guides)',
+            count: result.data?.guides ?? '…',
           },
           {
             to: '/admin/pray/images',

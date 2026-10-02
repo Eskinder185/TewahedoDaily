@@ -13,6 +13,17 @@ import {
   persistSavedLoopSections,
   type SavedChantLoopSection,
 } from '../../lib/practice/chantLoopStorage'
+import {
+  emptyQuickLoops,
+  loadQuickLoops,
+  persistQuickLoops,
+  quickLoopKey,
+  sanitizeQuickLoops,
+  slotIsConfigured,
+  validateQuickLoopRange,
+  type QuickLoopId,
+  type QuickLoopsState,
+} from '../../lib/practice/practiceQuickLoops'
 import { buildPracticeSections } from '../../lib/practice/autoSplit'
 import {
   loadPlaybackSpeed,
@@ -22,7 +33,6 @@ import {
 } from '../../lib/practice/practicePrefs'
 import { ChantLoopControls } from './ChantLoopControls'
 import { ChantLyricsLearningPanel } from './ChantLyricsLearningPanel'
-import { ChantPlayerControls } from './ChantPlayerControls'
 import { VoiceRecorder, type RecordingMode } from './VoiceRecorder'
 import {
   type ChantPracticePayload,
@@ -47,6 +57,9 @@ type ChantPracticePlayerProps = {
   onBack: () => void
   backLabel?: string
   badges?: string[]
+  /** Secondary actions rendered in the bottom “More Actions” section (favorites, copy link, etc.). */
+  footerActions?: ReactNode
+  /** @deprecated Prefer `footerActions` — kept for callers mid-migration. */
   headerActions?: ReactNode
   learnTabLabel?: string
   voiceTabLabel?: string
@@ -58,8 +71,10 @@ export function ChantPracticePlayer({
   onBack,
   backLabel,
   badges = [],
+  footerActions,
   headerActions,
 }: ChantPracticePlayerProps) {
+  const moreActions = footerActions ?? headerActions
   const t = useUiLabel()
   const tt = useTranslation()
   const mountRef = useRef<HTMLDivElement>(null)
@@ -87,9 +102,15 @@ export function ChantPracticePlayer({
   const [loopError, setLoopError] = useState<string | null>(null)
   const [activeSectionIndex, setActiveSectionIndex] = useState<number | null>(null)
   const [savedLoopSections, setSavedLoopSections] = useState<SavedChantLoopSection[]>([])
+  const [quickLoops, setQuickLoops] = useState<QuickLoopsState>(() => emptyQuickLoops())
+  const [activeQuickLoop, setActiveQuickLoop] = useState<QuickLoopId | null>(null)
+  const [quickLoopErrors, setQuickLoopErrors] = useState<Partial<Record<QuickLoopId, string>>>({})
   const [recordingMode, setRecordingMode] = useState<RecordingMode>('with-lyrics')
-  const [stickyVisible, setStickyVisible] = useState(false)
+  const quickLoopsRef = useRef(quickLoops)
+  const activeQuickLoopRef = useRef<QuickLoopId | null>(null)
+  const [stickyVisible, setStickyVisible] = useState(true)
   const [practiceOpen, setPracticeOpen] = useState(false)
+  const [stickyExpanded, setStickyExpanded] = useState(false)
   const [isNarrow, setIsNarrow] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(max-width: 959.98px)').matches,
   )
@@ -118,6 +139,14 @@ export function ChantPracticePlayer({
   }, [videoId])
 
   useEffect(() => {
+    quickLoopsRef.current = quickLoops
+  }, [quickLoops])
+
+  useEffect(() => {
+    activeQuickLoopRef.current = activeQuickLoop
+  }, [activeQuickLoop])
+
+  useEffect(() => {
     setLoopStart(null)
     setLoopEnd(null)
     setLoopPlaying(false)
@@ -130,11 +159,23 @@ export function ChantPracticePlayer({
     setLoopRepeatIndex(0)
     loopRepeatRef.current = 0
     didScrollAfterPlayerReadyRef.current = false
+    setActiveQuickLoop(null)
+    setQuickLoopErrors({})
+    setQuickLoops(loadQuickLoops(payload.entryId))
   }, [payload.entryId, videoId])
 
   useEffect(() => {
     setSavedLoopSections(loadSavedLoopSections(payload.form, payload.entryId))
   }, [payload.form, payload.entryId])
+
+  useEffect(() => {
+    if (durationSec <= 0) return
+    setQuickLoops((prev) => sanitizeQuickLoops(prev, durationSec))
+  }, [durationSec, payload.entryId])
+
+  useEffect(() => {
+    persistQuickLoops(payload.entryId, quickLoops)
+  }, [payload.entryId, quickLoops])
 
   const scrollToPlayerLandmark = useCallback(() => {
     scrollTargetIntoView('#chant-practice-scroll-target', { smooth: false })
@@ -305,15 +346,138 @@ export function ChantPracticePlayer({
         Number.isFinite(dur) && dur > 0
           ? Math.max(0, Math.min(dur, value))
           : Math.max(0, value)
+
+      const activeId = activeQuickLoopRef.current
+      if (activeId != null) {
+        const slot = quickLoopsRef.current[quickLoopKey(activeId)]
+        if (
+          slot.startTime != null &&
+          slot.endTime != null &&
+          (target < slot.startTime - 0.35 || target > slot.endTime + 0.35)
+        ) {
+          setActiveQuickLoop(null)
+        }
+      }
+
       p.seekTo(target, true)
       setCurrentTimeSec(target)
     },
     [getPlayer],
   )
 
+  const stopQuickLoop = useCallback(() => {
+    setActiveQuickLoop(null)
+  }, [])
+
+  const setQuickStart = useCallback(
+    (id: QuickLoopId) => {
+      const p = getPlayer()
+      if (!p) return
+      const now = p.getCurrentTime()
+      setQuickLoopErrors((prev) => {
+        const next = { ...prev }
+        delete next[id]
+        return next
+      })
+      setQuickLoops((prev) => {
+        const key = quickLoopKey(id)
+        const nextSlot = { ...prev[key], startTime: now }
+        const err = validateQuickLoopRange(nextSlot.startTime, nextSlot.endTime)
+        if (err) {
+          queueMicrotask(() =>
+            setQuickLoopErrors((e) => ({ ...e, [id]: err })),
+          )
+        }
+        return { ...prev, [key]: nextSlot }
+      })
+    },
+    [getPlayer],
+  )
+
+  const setQuickEnd = useCallback(
+    (id: QuickLoopId) => {
+      const p = getPlayer()
+      if (!p) return
+      const now = p.getCurrentTime()
+      setQuickLoops((prev) => {
+        const key = quickLoopKey(id)
+        const nextSlot = { ...prev[key], endTime: now }
+        const err = validateQuickLoopRange(nextSlot.startTime, nextSlot.endTime)
+        queueMicrotask(() => {
+          setQuickLoopErrors((e) => {
+            const copy = { ...e }
+            if (err) copy[id] = err
+            else delete copy[id]
+            return copy
+          })
+        })
+        return { ...prev, [key]: nextSlot }
+      })
+    },
+    [getPlayer],
+  )
+
+  const practiceQuickLoop = useCallback(
+    (id: QuickLoopId) => {
+      const slot = quickLoopsRef.current[quickLoopKey(id)]
+      if (!slotIsConfigured(slot) || slot.startTime == null || slot.endTime == null) {
+        setQuickLoopErrors((e) => ({
+          ...e,
+          [id]: 'Set both start and end before practicing.',
+        }))
+        return
+      }
+      const err = validateQuickLoopRange(slot.startTime, slot.endTime)
+      if (err) {
+        setQuickLoopErrors((e) => ({ ...e, [id]: err }))
+        return
+      }
+      setQuickLoopErrors((e) => {
+        const copy = { ...e }
+        delete copy[id]
+        return copy
+      })
+      setLoopPlaying(false)
+      setActiveSectionIndex(null)
+      if (gapTimeoutRef.current) {
+        window.clearTimeout(gapTimeoutRef.current)
+        gapTimeoutRef.current = null
+      }
+      const p = getPlayer()
+      if (!p) return
+      setActiveQuickLoop(id)
+      p.seekTo(slot.startTime, true)
+      p.playVideo()
+    },
+    [getPlayer],
+  )
+
+  const clearQuickLoop = useCallback(
+    (id: QuickLoopId) => {
+      if (activeQuickLoopRef.current === id) setActiveQuickLoop(null)
+      setQuickLoopErrors((e) => {
+        const copy = { ...e }
+        delete copy[id]
+        return copy
+      })
+      setQuickLoops((prev) => ({
+        ...prev,
+        [quickLoopKey(id)]: { startTime: null, endTime: null },
+      }))
+    },
+    [],
+  )
+
+  const clearAllQuickLoops = useCallback(() => {
+    setActiveQuickLoop(null)
+    setQuickLoopErrors({})
+    setQuickLoops(emptyQuickLoops())
+  }, [])
+
   const markStart = useCallback(() => {
     setLoopError(null)
     setLoopPlaying(false)
+    setActiveQuickLoop(null)
     const p = getPlayer()
     if (!p) return
     setLoopStart(p.getCurrentTime())
@@ -322,6 +486,7 @@ export function ChantPracticePlayer({
   const markEnd = useCallback(() => {
     setLoopError(null)
     setLoopPlaying(false)
+    setActiveQuickLoop(null)
     const p = getPlayer()
     if (!p) return
     setLoopEnd(p.getCurrentTime())
@@ -355,6 +520,7 @@ export function ChantPracticePlayer({
     setLoopError(null)
     loopRepeatRef.current = 0
     setLoopRepeatIndex(0)
+    setActiveQuickLoop(null)
     const p = getPlayer()
     if (!p) return
     setLoopPlaying(true)
@@ -390,14 +556,12 @@ export function ChantPracticePlayer({
       setLoopEnd(seg.end)
       loopRepeatRef.current = 0
       setLoopRepeatIndex(0)
+      setActiveQuickLoop(null)
       const p = getPlayer()
       if (!p) return
       setLoopPlaying(loop)
       p.seekTo(seg.start, true)
       p.playVideo()
-      if (!loop) {
-        // one-shot: stop near end via interval (loopPlaying false + section end check)
-      }
     },
     [autoSplitSections, getPlayer],
   )
@@ -454,6 +618,7 @@ export function ChantPracticePlayer({
       setLoopEnd(section.endSec)
       loopRepeatRef.current = 0
       setLoopRepeatIndex(0)
+      setActiveQuickLoop(null)
       const p = getPlayer()
       if (!p) return
       setLoopPlaying(true)
@@ -494,13 +659,33 @@ export function ChantPracticePlayer({
     [payload.form, payload.entryId],
   )
 
-  // Loop + one-shot section end
+  // Quick loops + advanced loop + one-shot section end
   useEffect(() => {
-    if (loopStart === null || loopEnd === null) return
     const iv = window.setInterval(() => {
       const p = playerRef.current
       if (!p || typeof p.getCurrentTime !== 'function') return
       const now = p.getCurrentTime()
+
+      const quickId = activeQuickLoopRef.current
+      if (quickId != null) {
+        const slot = quickLoopsRef.current[quickLoopKey(quickId)]
+        if (
+          slot.startTime == null ||
+          slot.endTime == null ||
+          slot.endTime <= slot.startTime + MIN_LOOP_SPAN_SEC
+        ) {
+          setActiveQuickLoop(null)
+          return
+        }
+        if (now >= slot.endTime - 0.12) {
+          p.seekTo(slot.startTime, true)
+          const PS = window.YT?.PlayerState
+          if (PS && p.getPlayerState() !== PS.PLAYING) p.playVideo()
+        }
+        return
+      }
+
+      if (loopStart === null || loopEnd === null) return
       if (now < loopEnd - 0.12) return
 
       if (!loopPlaying) {
@@ -535,7 +720,7 @@ export function ChantPracticePlayer({
       }
     }, 90)
     return () => window.clearInterval(iv)
-  }, [loopPlaying, loopStart, loopEnd, loopLimit, loopGapSec])
+  }, [loopPlaying, loopStart, loopEnd, loopLimit, loopGapSec, activeQuickLoop])
 
   useEffect(() => {
     if (!playerReady) return
@@ -583,127 +768,85 @@ export function ChantPracticePlayer({
   }, [togglePlay, skipBy])
 
   useEffect(() => {
+    const mq = window.matchMedia('(max-width: 959.98px)')
+    const sync = () => setIsNarrow(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    return () => mq.removeEventListener('change', sync)
+  }, [])
+
+  useEffect(() => {
     const onScroll = () => {
       const landmark = document.getElementById('chant-practice-scroll-target')
-      if (!landmark) return
+      if (!landmark) {
+        setStickyVisible(true)
+        return
+      }
       const rect = landmark.getBoundingClientRect()
-      setStickyVisible(rect.bottom < 0)
+      setStickyVisible(rect.bottom < 72 || window.scrollY > 80)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 959.98px)')
-    const sync = () => {
-      const narrow = mq.matches
-      setIsNarrow(narrow)
-      if (!narrow) setPracticeOpen(true)
-    }
-    sync()
-    mq.addEventListener('change', sync)
-    return () => mq.removeEventListener('change', sync)
-  }, [])
-
-  const restartPlayback = useCallback(() => {
-    const p = getPlayer()
-    if (!p) return
-    stopLoop()
-    p.seekTo(0, true)
-    setCurrentTimeSec(0)
-    p.pauseVideo()
-    setIsPlaying(false)
-  }, [getPlayer, stopLoop])
-
   const metaLine = useMemo(() => {
     const parts = [formLabel, ...badges].filter(Boolean)
     return parts.slice(0, 4).join(' · ')
   }, [formLabel, badges])
 
+  const displayAmharic = payload.titleAmharic?.trim() || ''
+  const displayTranslit =
+    payload.transliterationTitle?.trim() ||
+    (displayAmharic && payload.title !== displayAmharic ? payload.title : '') ||
+    (!displayAmharic ? payload.title : '')
+  const progressPct =
+    durationSec > 0 ? Math.max(0, Math.min(100, (currentTimeSec / durationSec) * 100)) : 0
+  const supportUrl = (payload.watchUrl || '').trim()
+
   return (
-    <div className={styles.shell} ref={shellRef} tabIndex={-1}>
+    <div className={`${styles.shell} ${styles.shellReading}`} ref={shellRef} tabIndex={-1}>
+      {/* 1. Hymn title / identity */}
       <header className={styles.topBar}>
         <button type="button" className={styles.back} onClick={onBack}>
           {backLabel ?? t('playerBack')}
         </button>
         <div className={styles.titleBlock}>
-          <p className={styles.nowPlaying}>Practice</p>
-          <h1 className={styles.title}>{payload.title}</h1>
-          {payload.titleAmharic ? (
-            <p className={styles.amharicTitle} lang="am">
-              {payload.titleAmharic}
-            </p>
+          {metaLine ? <p className={styles.metaPills}>{metaLine}</p> : null}
+          {displayAmharic ? (
+            <h1 className={styles.titleAmharic} lang="am">
+              {displayAmharic}
+            </h1>
+          ) : (
+            <h1 className={styles.title}>{payload.title}</h1>
+          )}
+          {displayTranslit ? (
+            <p className={displayAmharic ? styles.sub : styles.title}>{displayTranslit}</p>
           ) : null}
-          {payload.transliterationTitle &&
-          payload.transliterationTitle !== payload.title ? (
-            <p className={styles.sub}>{payload.transliterationTitle}</p>
-          ) : null}
-          {metaLine ? <p className={styles.metaLine}>{metaLine}</p> : null}
         </div>
-        {headerActions ? <div className={styles.headerActions}>{headerActions}</div> : null}
       </header>
 
-      <div className={styles.layout}>
-        <div className={styles.mediaStack}>
-          <div
-            id="chant-practice-scroll-target"
-            tabIndex={-1}
-            className={styles.scrollLandmark}
-            aria-label={t('practiceChantVideoLandmark')}
-          />
-          <section className={styles.playerBlock} role="region" aria-label={t('practicePlayerRegionAria')}>
-            <div className={styles.videoShell}>
-              {videoId ? (
-                <div ref={mountRef} className={styles.playerMount} />
-              ) : (
-                <div className={styles.noVideo}>
-                  {audioUrl ? (
-                    <>
-                      <p className={styles.noVideoText}>
-                        This hymn has audio but no YouTube video. Lyrics remain available below.
-                      </p>
-                      <audio className={styles.fallbackAudio} controls preload="metadata" src={audioUrl}>
-                        <track kind="captions" />
-                      </audio>
-                    </>
-                  ) : (
-                    <p className={styles.noVideoText}>{tt('mezmurPractice.player.noVideo')}</p>
-                  )}
-                  {payload.watchUrl ? (
-                    <a className={styles.watchLink} href={payload.watchUrl} target="_blank" rel="noreferrer">
-                      {tt('mezmurPractice.player.openYoutube')}
-                    </a>
-                  ) : null}
-                </div>
-              )}
-            </div>
+      <div
+        id="chant-practice-scroll-target"
+        tabIndex={-1}
+        className={styles.scrollLandmark}
+        aria-label={t('practiceChantVideoLandmark')}
+      />
 
-            <ChantPlayerControls
-              disabled={controlsDisabled}
-              isPlaying={isPlaying}
-              currentTimeSec={currentTimeSec}
-              durationSec={durationSec}
-              onTogglePlay={togglePlay}
-              volume={volume}
-              onVolumeChange={onVolumeChange}
-              muted={muted}
-              onToggleMute={onToggleMute}
-              rate={rate}
-              onRateChange={onRateChange}
-              onSkipBack={() => skipBy(-10)}
-              onSkipForward={() => skipBy(10)}
-              onRestart={restartPlayback}
-              onSeek={seekTo}
-              onPrevSection={() => goSection(-1)}
-              onNextSection={() => goSection(1)}
-              loopStart={loopStart}
-              loopEnd={loopEnd}
-              sectionMarks={autoSplitSections || []}
-            />
-          </section>
-        </div>
+      <div className={styles.layoutReading}>
+        {/* 2. Support the Zemari */}
+        {supportUrl ? (
+          <a
+            className={styles.supportZemari}
+            href={supportUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ❤️ Support the Zemari
+          </a>
+        ) : null}
 
+        {/* 3. Lyrics */}
         <div className={styles.readColumn}>
           {payload.entryId.startsWith('custom:') && payload.learning?.meaning ? (
             <div className={styles.practiceNotes}>
@@ -723,51 +866,61 @@ export function ChantPracticePlayer({
           />
         </div>
 
-        <div className={styles.practiceStack}>
+        <div className={styles.secondaryStack}>
+          {/* 5. Loop Practice */}
           <details
             className={styles.collapsible}
-            open={!isNarrow || practiceOpen}
-            onToggle={(event) => {
-              if (isNarrow) setPracticeOpen((event.target as HTMLDetailsElement).open)
-            }}
+            open={practiceOpen}
+            onToggle={(event) => setPracticeOpen((event.target as HTMLDetailsElement).open)}
           >
-            <summary className={styles.collapsibleSummary}>Practice tools</summary>
+            <summary className={styles.collapsibleSummary}>Loop Practice</summary>
             <div className={styles.collapsibleBody}>
-              <section className={styles.loopAside} aria-label="Loop practice">
-                <h2 className={styles.sectionHeading}>Loop practice</h2>
-                <ChantLoopControls
-                  disabled={controlsDisabled}
-                  loopStart={loopStart}
-                  loopEnd={loopEnd}
-                  loopPlaying={loopPlaying}
-                  loopError={loopError}
-                  formatTime={formatChantTime}
-                  onMarkStart={markStart}
-                  onMarkEnd={markEnd}
-                  onNudgeStart={nudgeStart}
-                  onNudgeEnd={nudgeEnd}
-                  onPlayLoop={playLoop}
-                  onStopLoop={stopLoop}
-                  onClearLoop={clearLoop}
-                  loopLimit={loopLimit}
-                  onLoopLimitChange={setLoopLimit}
-                  loopGapSec={loopGapSec}
-                  onLoopGapChange={setLoopGapSec}
-                  loopRepeatIndex={loopRepeatIndex}
-                  savedSections={savedLoopSections}
-                  onSaveSection={saveLoopSection}
-                  onPlaySavedSection={playSavedLoopSection}
-                  onLoadSavedSection={loadSavedLoopSectionIntoMarks}
-                  onDeleteSavedSection={deleteSavedLoopSection}
-                  onRenameSavedSection={renameSavedLoopSection}
-                  autoSplitSections={autoSplitSections}
-                  activeSectionIndex={activeSectionIndex}
-                  onPlaySection={playSection}
-                />
-              </section>
+              <ChantLoopControls
+                disabled={controlsDisabled}
+                formatTime={formatChantTime}
+                quickLoops={quickLoops}
+                activeQuickLoop={activeQuickLoop}
+                quickLoopErrors={quickLoopErrors}
+                onSetQuickStart={setQuickStart}
+                onSetQuickEnd={setQuickEnd}
+                onPracticeQuickLoop={practiceQuickLoop}
+                onStopQuickLoop={stopQuickLoop}
+                onClearQuickLoop={clearQuickLoop}
+                onClearAllQuickLoops={clearAllQuickLoops}
+                loopStart={loopStart}
+                loopEnd={loopEnd}
+                loopPlaying={loopPlaying}
+                loopError={loopError}
+                onMarkStart={markStart}
+                onMarkEnd={markEnd}
+                onNudgeStart={nudgeStart}
+                onNudgeEnd={nudgeEnd}
+                onPlayLoop={playLoop}
+                onStopLoop={stopLoop}
+                onClearLoop={clearLoop}
+                loopLimit={loopLimit}
+                onLoopLimitChange={setLoopLimit}
+                loopGapSec={loopGapSec}
+                onLoopGapChange={setLoopGapSec}
+                loopRepeatIndex={loopRepeatIndex}
+                savedSections={savedLoopSections}
+                onSaveSection={saveLoopSection}
+                onPlaySavedSection={playSavedLoopSection}
+                onLoadSavedSection={loadSavedLoopSectionIntoMarks}
+                onDeleteSavedSection={deleteSavedLoopSection}
+                onRenameSavedSection={renameSavedLoopSection}
+                autoSplitSections={autoSplitSections}
+                activeSectionIndex={activeSectionIndex}
+                onPlaySection={playSection}
+              />
+            </div>
+          </details>
 
+          {/* 6. Record Yourself */}
+          <details className={styles.collapsible}>
+            <summary className={styles.collapsibleSummary}>Record Yourself</summary>
+            <div className={styles.collapsibleBody}>
               <section className={styles.recordBlock} aria-label="Record yourself">
-                <h2 className={styles.sectionHeading}>Record yourself</h2>
                 <p className={styles.privacyNote}>
                   Your recording stays on this device unless you choose otherwise.
                 </p>
@@ -779,50 +932,190 @@ export function ChantPracticePlayer({
               </section>
             </div>
           </details>
+
+          {/* 7. Source Video — official embed always visible when present */}
+          <section className={styles.youtubeSource} aria-label="Source Video">
+            <h2 className={styles.sectionHeading}>Source Video</h2>
+            {videoId ? (
+              <div id="chant-youtube-frame" className={styles.videoShell}>
+                <div ref={mountRef} className={styles.playerMount} />
+              </div>
+            ) : (
+              <div className={styles.noVideoInline}>
+                {audioUrl ? (
+                  <audio className={styles.fallbackAudio} controls preload="metadata" src={audioUrl}>
+                    <track kind="captions" />
+                  </audio>
+                ) : (
+                  <p className={styles.noVideoInlineText}>{tt('mezmurPractice.player.noVideo')}</p>
+                )}
+              </div>
+            )}
+            {supportUrl ? (
+              <a
+                className={styles.watchQuiet}
+                href={supportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open original on YouTube
+              </a>
+            ) : null}
+          </section>
+
+          {/* 8. More Actions — favorites, copy link, etc. */}
+          {moreActions ? (
+            <section className={styles.moreActions} aria-label="More Actions">
+              <h2 className={styles.moreActionsHeading}>More Actions</h2>
+              <div className={styles.moreActionsRow}>{moreActions}</div>
+            </section>
+          ) : null}
         </div>
       </div>
 
-      {stickyVisible ? (
-        <div className={styles.stickyBar} role="region" aria-label="Mini playback controls">
-          <p className={styles.stickyTitle}>{payload.title}</p>
-          <div className={styles.stickyControls}>
+      {/* 4. Sticky playback controls */}
+      <div
+        className={`${styles.stickyBar} ${stickyVisible ? styles.stickyBarRaised : ''} ${stickyExpanded ? styles.stickyBarExpanded : ''}`.trim()}
+        role="region"
+        aria-label="Playback controls"
+      >
+        <div className={styles.stickyControls}>
+          <button
+            type="button"
+            className={styles.stickyBtn}
+            onClick={() => goSection(-1)}
+            disabled={controlsDisabled}
+            aria-label="Previous section"
+          >
+            ‹‹
+          </button>
+          <button
+            type="button"
+            className={styles.stickyBtn}
+            onClick={() => skipBy(-10)}
+            disabled={controlsDisabled}
+            aria-label="Seek back 10 seconds"
+          >
+            −10
+          </button>
+          <button
+            type="button"
+            className={styles.stickyPlay}
+            onClick={togglePlay}
+            disabled={controlsDisabled}
+            aria-label={isPlaying ? 'Pause' : 'Play'}
+          >
+            {isPlaying ? '❚❚' : '▶'}
+          </button>
+          <button
+            type="button"
+            className={styles.stickyBtn}
+            onClick={() => skipBy(10)}
+            disabled={controlsDisabled}
+            aria-label="Seek forward 10 seconds"
+          >
+            +10
+          </button>
+          <button
+            type="button"
+            className={styles.stickyBtn}
+            onClick={() => goSection(1)}
+            disabled={controlsDisabled}
+            aria-label="Next section"
+          >
+            ››
+          </button>
+        </div>
+
+        <div className={styles.stickyProgressRow}>
+          <span className={styles.stickyTime}>{formatChantTime(currentTimeSec)}</span>
+          <label className={styles.stickySeekLabel}>
+            <span className={styles.srOnly}>Seek</span>
+            <input
+              type="range"
+              className={styles.stickySeek}
+              min={0}
+              max={Math.max(1, durationSec)}
+              step={0.1}
+              value={Math.min(currentTimeSec, durationSec || 0)}
+              disabled={controlsDisabled || durationSec <= 0}
+              aria-valuemin={0}
+              aria-valuemax={Math.max(0, durationSec)}
+              aria-valuenow={currentTimeSec}
+              aria-valuetext={`${formatChantTime(currentTimeSec)} of ${formatChantTime(durationSec)}`}
+              onChange={(e) => seekTo(Number(e.target.value))}
+              style={{ ['--progress' as string]: `${progressPct}%` }}
+            />
+          </label>
+          <span className={styles.stickyTime}>{formatChantTime(durationSec)}</span>
+        </div>
+
+        {isNarrow ? (
+          <button
+            type="button"
+            className={styles.stickyMore}
+            aria-expanded={stickyExpanded}
+            onClick={() => setStickyExpanded((v) => !v)}
+          >
+            {stickyExpanded ? 'Less' : 'Volume & speed'}
+          </button>
+        ) : null}
+
+        {(!isNarrow || stickyExpanded) && videoId ? (
+          <div className={styles.stickyExtras}>
+            <label className={styles.stickyExtraLabel}>
+              Volume
+              <input
+                type="range"
+                min={0}
+                max={100}
+                value={muted ? 0 : volume}
+                disabled={controlsDisabled}
+                aria-label="Volume"
+                onChange={(e) => onVolumeChange(Number(e.target.value))}
+              />
+            </label>
             <button
               type="button"
-              className={styles.stickyBtn}
-              onClick={() => goSection(-1)}
-              aria-label="Previous section"
+              className={styles.stickyLoop}
+              onClick={onToggleMute}
+              disabled={controlsDisabled}
+              aria-pressed={muted}
+              aria-label={muted ? 'Unmute' : 'Mute'}
             >
-              Prev
+              {muted ? 'Unmute' : 'Mute'}
             </button>
-            <button
-              type="button"
-              className={styles.stickyPlay}
-              onClick={togglePlay}
-              aria-label={isPlaying ? 'Pause mezmur' : 'Play mezmur'}
-            >
-              {isPlaying ? '❚❚' : '▶'}
-            </button>
-            <button
-              type="button"
-              className={styles.stickyBtn}
-              onClick={() => goSection(1)}
-              aria-label="Next section"
-            >
-              Next
-            </button>
-            {loopPlaying ? (
+            <label className={styles.stickyExtraLabel}>
+              Speed
+              <select
+                value={rate}
+                disabled={controlsDisabled}
+                aria-label="Playback speed"
+                onChange={(e) => onRateChange(Number(e.target.value))}
+              >
+                {PRACTICE_SPEEDS.map((r) => (
+                  <option key={r} value={r}>
+                    {r}×
+                  </option>
+                ))}
+              </select>
+            </label>
+            {loopPlaying || activeQuickLoop != null ? (
               <button
                 type="button"
                 className={styles.stickyLoop}
-                onClick={stopLoop}
+                onClick={() => {
+                  if (activeQuickLoop != null) stopQuickLoop()
+                  else stopLoop()
+                }}
                 aria-label="Stop loop"
               >
-                Loop
+                Stop loop
               </button>
             ) : null}
           </div>
-        </div>
-      ) : null}
+        ) : null}
+      </div>
     </div>
   )
 }

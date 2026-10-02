@@ -1,23 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import {
-  loadAutoScroll,
   loadLyricsFontSize,
   loadLyricsMode,
-  loadScrollIntroSec,
-  loadScrollOutroSec,
   lyricsFontPx,
   lyricsLineHeight,
   LYRICS_FONT_SIZES,
-  saveAutoScroll,
   saveLyricsFontSize,
   saveLyricsMode,
-  saveScrollIntroSec,
-  saveScrollOutroSec,
-  type AutoScrollSpeed,
   type LyricsFontSizePx,
   type LyricsScriptMode,
 } from '../../lib/practice/practicePrefs'
-import { useLyricsAutoScroll } from '../../hooks/useLyricsAutoScroll'
 import { MemoryAidPanel } from './MemoryAidPanel'
 import { splitLyricsLines } from '../../lib/practice/splitLyricsForStudy'
 import styles from './ChantLyricsLearningPanel.module.css'
@@ -38,9 +30,6 @@ export function ChantLyricsLearningPanel({
   lyricsGez,
   transliterationLyrics,
   lyricsEnglish = '',
-  currentTimeSec = 0,
-  durationSec = 0,
-  isPlaying = false,
 }: Props) {
   const hasLyrics = lyricsGez.trim().length > 0
   const hasTrans = transliterationLyrics.trim().length > 0
@@ -53,10 +42,6 @@ export function ChantLyricsLearningPanel({
     return saved
   })
   const [fontSize, setFontSize] = useState<LyricsFontSizePx>(() => loadLyricsFontSize())
-  const [autoScroll, setAutoScroll] = useState<AutoScrollSpeed>(() => loadAutoScroll())
-  const [introSec, setIntroSec] = useState<number | null>(() => loadScrollIntroSec())
-  const [outroSec, setOutroSec] = useState<number | null>(() => loadScrollOutroSec())
-  const [showTiming, setShowTiming] = useState(false)
   const [focusMode, setFocusMode] = useState(false)
   const [memorize, setMemorize] = useState(false)
   const [revealed, setRevealed] = useState(1)
@@ -74,20 +59,6 @@ export function ChantLyricsLearningPanel({
 
   const fontPx = lyricsFontPx(fontSize)
   const lineHeight = lyricsLineHeight(fontSize)
-  const layoutKey = `${entryId}:${scriptMode}:${fontPx}:${focusMode}:${memorize}:${revealed}`
-  const autoScrollOn = autoScroll !== 'off'
-
-  const { showResume, resumeAutoScroll, onScroll: onManualScroll, lyricsWindow } = useLyricsAutoScroll({
-    enabled: autoScrollOn,
-    isPlaying,
-    currentTimeSec,
-    durationSec,
-    pace: autoScroll,
-    preferredIntroSec: introSec,
-    preferredOutroSec: outroSec,
-    layoutKey,
-    scrollRef,
-  })
 
   useEffect(() => {
     saveLyricsMode(scriptMode)
@@ -96,18 +67,6 @@ export function ChantLyricsLearningPanel({
   useEffect(() => {
     saveLyricsFontSize(fontSize)
   }, [fontSize])
-
-  useEffect(() => {
-    saveAutoScroll(autoScroll)
-  }, [autoScroll])
-
-  useEffect(() => {
-    if (introSec != null) saveScrollIntroSec(introSec)
-  }, [introSec])
-
-  useEffect(() => {
-    if (outroSec != null) saveScrollOutroSec(outroSec)
-  }, [outroSec])
 
   useEffect(() => {
     setRevealed(1)
@@ -138,19 +97,6 @@ export function ChantLyricsLearningPanel({
     setFontSize(next)
   }
 
-  const nudgeTiming = (which: 'intro' | 'outro', delta: number) => {
-    if (which === 'intro') {
-      const base = introSec ?? Math.round(lyricsWindow.introSec)
-      setIntroSec(Math.max(0, Math.min(120, base + delta)))
-    } else {
-      const base = outroSec ?? Math.round(lyricsWindow.outroSec)
-      setOutroSec(Math.max(0, Math.min(120, base + delta)))
-    }
-  }
-
-  const displayIntro = introSec ?? Math.round(lyricsWindow.introSec)
-  const displayOutro = outroSec ?? Math.round(lyricsWindow.outroSec)
-
   const enterFocus = () => {
     setFocusMode(true)
   }
@@ -172,13 +118,7 @@ export function ChantLyricsLearningPanel({
   }
 
   const lyricsBody = (
-    <div
-      className={styles.scroll}
-      ref={scrollRef}
-      tabIndex={0}
-      onScroll={autoScrollOn ? onManualScroll : undefined}
-      style={lyricsStyle}
-    >
+    <div className={styles.scroll} ref={scrollRef} tabIndex={0} style={lyricsStyle}>
       {scriptMode === 'both' && hasTrans ? (
         <div className={styles.bothStack}>
           <div className={styles.block}>
@@ -265,35 +205,9 @@ export function ChantLyricsLearningPanel({
           </button>
         </div>
 
-        <div className={styles.autoScrollToggle} role="group" aria-label="Auto-scroll">
-          <span className={styles.toolLabel}>Auto-scroll</span>
-          <button
-            type="button"
-            className={`${styles.toolBtn} ${!autoScrollOn ? styles.modeOn : ''}`}
-            aria-pressed={!autoScrollOn}
-            onClick={() => setAutoScroll('off')}
-          >
-            Off
-          </button>
-          <button
-            type="button"
-            className={`${styles.toolBtn} ${autoScrollOn ? styles.modeOn : ''}`}
-            aria-pressed={autoScrollOn}
-            onClick={() => setAutoScroll(autoScroll === 'off' ? 'medium' : autoScroll)}
-          >
-            On
-          </button>
-        </div>
-
         <button type="button" className={styles.toolBtn} onClick={() => (focusMode ? exitFocus() : enterFocus())}>
           {focusMode ? 'Exit focus' : 'Focus reading'}
         </button>
-
-        {showResume ? (
-          <button type="button" className={`${styles.toolBtn} ${styles.modeOn}`} onClick={resumeAutoScroll}>
-            Resume auto scroll
-          </button>
-        ) : null}
       </div>
 
       {lyricsBody}
@@ -305,29 +219,6 @@ export function ChantLyricsLearningPanel({
       >
         <summary className={styles.displaySummary}>Display settings</summary>
         <div className={styles.displayBody}>
-          <label className={styles.scrollSelect}>
-            <span className={styles.toolLabel}>Scroll pace</span>
-            <select
-              value={autoScroll}
-              onChange={(e) => setAutoScroll(e.target.value as AutoScrollSpeed)}
-              aria-label="Auto scroll pace"
-            >
-              <option value="off">Off</option>
-              <option value="slow">Slow</option>
-              <option value="medium">Normal</option>
-              <option value="fast">Fast</option>
-            </select>
-          </label>
-
-          <button
-            type="button"
-            className={`${styles.toolBtn} ${showTiming ? styles.modeOn : ''}`}
-            aria-expanded={showTiming}
-            onClick={() => setShowTiming((v) => !v)}
-          >
-            Timing
-          </button>
-
           <button
             type="button"
             className={`${styles.toolBtn} ${memorize ? styles.modeOn : ''}`}
@@ -339,31 +230,6 @@ export function ChantLyricsLearningPanel({
           >
             Memorize
           </button>
-
-          {showTiming ? (
-            <div className={styles.timingRow} role="group" aria-label="Auto scroll timing">
-              <div className={styles.timingGroup}>
-                <span className={styles.toolLabel}>Intro</span>
-                <button type="button" className={styles.toolBtn} aria-label="Decrease intro" onClick={() => nudgeTiming('intro', -5)}>
-                  −5
-                </button>
-                <span className={styles.timingValue}>{displayIntro}s</span>
-                <button type="button" className={styles.toolBtn} aria-label="Increase intro" onClick={() => nudgeTiming('intro', 5)}>
-                  +5
-                </button>
-              </div>
-              <div className={styles.timingGroup}>
-                <span className={styles.toolLabel}>Outro</span>
-                <button type="button" className={styles.toolBtn} aria-label="Decrease outro" onClick={() => nudgeTiming('outro', -5)}>
-                  −5
-                </button>
-                <span className={styles.timingValue}>{displayOutro}s</span>
-                <button type="button" className={styles.toolBtn} aria-label="Increase outro" onClick={() => nudgeTiming('outro', 5)}>
-                  +5
-                </button>
-              </div>
-            </div>
-          ) : null}
         </div>
       </details>
 

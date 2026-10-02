@@ -5,11 +5,14 @@
 /** Approximate intrinsic pixels for layout hints (CLS). Match real assets when they change. */
 export const imageManifest = {
   home: {
-    hero: '/images/home/lalibela.png',
-    /** Lalibela portrait asset; hero CSS crops it responsively. */
-    heroWidth: 1856,
-    heroHeight: 2288,
-    todayInChurch: '/images/home/lalibela.png',
+    /** Compressed hero (prefer JPG/WebP over multi‑MB PNG for mobile LCP). */
+    hero: '/images/home/home-hero-lalibela-1024.webp',
+    heroSrcSet:
+      '/images/home/home-hero-lalibela-640.webp 640w, /images/home/home-hero-lalibela-1024.webp 1024w, /images/home/home-hero-lalibela-1600.webp 1600w',
+    heroFallbackJpg: '/images/home/home-hero-tewahedo-daily.jpg',
+    heroWidth: 1600,
+    heroHeight: 1000,
+    todayInChurch: '/images/home/home-today-in-church.jpg',
     todayInChurchWidth: 1600,
     todayInChurchHeight: 1100,
   },

@@ -1,0 +1,689 @@
+{
+  "generatedAt": "2026-10-02T14:13:05.892Z",
+  "dryRun": false,
+  "target": {
+    "width": 1200,
+    "height": 900,
+    "quality": 78
+  },
+  "calendarSourceDir": "public/images/calendar",
+  "calendarOutputDir": "public/images/calendar-web",
+  "files": [
+    {
+      "source": "public/images/calendar/AbiyTsom.png",
+      "output": "public/images/calendar-web/AbiyTsom.webp",
+      "originalDimensions": "2470x1696",
+      "newDimensions": "1200x824",
+      "originalBytes": 9467181,
+      "newBytes": 164880,
+      "percentReduction": 98.3,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/AbuneAregawi.JPG",
+      "output": "public/images/calendar-web/AbuneAregawi.webp",
+      "originalDimensions": "1161x1575",
+      "newDimensions": "663x900",
+      "originalBytes": 2011744,
+      "newBytes": 66840,
+      "percentReduction": 96.7,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/AbuneTeklehaymanot.png",
+      "output": "public/images/calendar-web/AbuneTeklehaymanot.webp",
+      "originalDimensions": "1792x2346",
+      "newDimensions": "687x900",
+      "originalBytes": 8535564,
+      "newBytes": 93934,
+      "percentReduction": 98.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/ApostlesRemembrance.png",
+      "output": "public/images/calendar-web/ApostlesRemembrance.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 8809740,
+      "newBytes": 100384,
+      "percentReduction": 98.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/ArchangelRaphael.png",
+      "output": "public/images/calendar-web/ArchangelRaphael.webp",
+      "originalDimensions": "1632x2556",
+      "newDimensions": "575x900",
+      "originalBytes": 8998240,
+      "newBytes": 70730,
+      "percentReduction": 99.2,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/ArchangelsRemembrance.png",
+      "output": "public/images/calendar-web/ArchangelsRemembrance.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 9711996,
+      "newBytes": 120216,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/ArchangelUriel.png",
+      "output": "public/images/calendar-web/ArchangelUriel.webp",
+      "originalDimensions": "1852x2304",
+      "newDimensions": "723x900",
+      "originalBytes": 9901572,
+      "newBytes": 105622,
+      "percentReduction": 98.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/calendar-liturgical-season.jpg",
+      "output": "public/images/calendar-web/calendar-liturgical-season.webp",
+      "originalDimensions": "2816x1536",
+      "newDimensions": "1200x655",
+      "originalBytes": 1241043,
+      "newBytes": 132714,
+      "percentReduction": 89.3,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/calendar-upcoming-holy-days.jpg",
+      "output": "public/images/calendar-web/calendar-upcoming-holy-days.webp",
+      "originalDimensions": "2816x1536",
+      "newDimensions": "1200x655",
+      "originalBytes": 1316436,
+      "newBytes": 136070,
+      "percentReduction": 89.7,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/DagmawiTensia.png",
+      "output": "public/images/calendar-web/DagmawiTensia.webp",
+      "originalDimensions": "1682x2528",
+      "newDimensions": "599x900",
+      "originalBytes": 9279814,
+      "newBytes": 119824,
+      "percentReduction": 98.7,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Debre Zeit.png",
+      "output": "public/images/calendar-web/Debre Zeit.webp",
+      "originalDimensions": "923x1152",
+      "newDimensions": "721x900",
+      "originalBytes": 3041680,
+      "newBytes": 126918,
+      "percentReduction": 95.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/DebreTabor.jpg",
+      "output": "public/images/calendar-web/DebreTabor.webp",
+      "originalDimensions": "672x1024",
+      "newDimensions": "591x900",
+      "originalBytes": 171109,
+      "newBytes": 78800,
+      "percentReduction": 53.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/DebreTabor.png",
+      "output": "public/images/calendar-web/DebreTabor.webp",
+      "originalDimensions": "2528x1684",
+      "newDimensions": "skipped-existing",
+      "originalBytes": 7868377,
+      "newBytes": 78800,
+      "percentReduction": 99,
+      "skipped": true
+    },
+    {
+      "source": "public/images/calendar/Enkutatash.png",
+      "output": "public/images/calendar-web/Enkutatash.webp",
+      "originalDimensions": "1846x2304",
+      "newDimensions": "721x900",
+      "originalBytes": 9008147,
+      "newBytes": 108334,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Erget.jpg",
+      "output": "public/images/calendar-web/Erget.webp",
+      "originalDimensions": "820x1024",
+      "newDimensions": "721x900",
+      "originalBytes": 220336,
+      "newBytes": 105802,
+      "percentReduction": 52,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/EthiopianSaintsRemembrance.png",
+      "output": "public/images/calendar-web/EthiopianSaintsRemembrance.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 9070102,
+      "newBytes": 110952,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Fasika.png",
+      "output": "public/images/calendar-web/Fasika.webp",
+      "originalDimensions": "2068x2048",
+      "newDimensions": "909x900",
+      "originalBytes": 8456438,
+      "newBytes": 100662,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/FastingSeasonAtmosphere.png",
+      "output": "public/images/calendar-web/FastingSeasonAtmosphere.webp",
+      "originalDimensions": "2816x1536",
+      "newDimensions": "1200x655",
+      "originalBytes": 9241580,
+      "newBytes": 121574,
+      "percentReduction": 98.7,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/FeastDayPreparation.png",
+      "output": "public/images/calendar-web/FeastDayPreparation.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 9351490,
+      "newBytes": 110822,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/FilsetaFast.png",
+      "output": "public/images/calendar-web/FilsetaFast.webp",
+      "originalDimensions": "2264x1856",
+      "newDimensions": "1098x900",
+      "originalBytes": 10555638,
+      "newBytes": 241014,
+      "percentReduction": 97.7,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Gena.png",
+      "output": "public/images/calendar-web/Gena.webp",
+      "originalDimensions": "1196x896",
+      "newDimensions": "1196x896",
+      "originalBytes": 3180943,
+      "newBytes": 173462,
+      "percentReduction": 94.5,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Gizret.png",
+      "output": "public/images/calendar-web/Gizret.webp",
+      "originalDimensions": "2448x1728",
+      "newDimensions": "1200x847",
+      "originalBytes": 10707763,
+      "newBytes": 226194,
+      "percentReduction": 97.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/HolyTrinityCommemoration.png",
+      "output": "public/images/calendar-web/HolyTrinityCommemoration.webp",
+      "originalDimensions": "2688x1596",
+      "newDimensions": "1200x712",
+      "originalBytes": 9309837,
+      "newBytes": 127988,
+      "percentReduction": 98.6,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Hosanna.png",
+      "output": "public/images/calendar-web/Hosanna.webp",
+      "originalDimensions": "2726x1536",
+      "newDimensions": "1200x676",
+      "originalBytes": 9064006,
+      "newBytes": 129874,
+      "percentReduction": 98.6,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/JoyfulFeastSeason.jpg",
+      "output": "public/images/calendar-web/JoyfulFeastSeason.webp",
+      "originalDimensions": "1536x1024",
+      "newDimensions": "1200x800",
+      "originalBytes": 478588,
+      "newBytes": 154176,
+      "percentReduction": 67.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/KanaZeGalilee.png",
+      "output": "public/images/calendar-web/KanaZeGalilee.webp",
+      "originalDimensions": "2048x2048",
+      "newDimensions": "900x900",
+      "originalBytes": 10051940,
+      "newBytes": 147606,
+      "percentReduction": 98.5,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/KidaneMehret.png",
+      "output": "public/images/calendar-web/KidaneMehret.webp",
+      "originalDimensions": "2390x1792",
+      "newDimensions": "1200x900",
+      "originalBytes": 11656208,
+      "newBytes": 342506,
+      "percentReduction": 97.1,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/KidusGiorgis.png",
+      "output": "public/images/calendar-web/KidusGiorgis.webp",
+      "originalDimensions": "1920x2234",
+      "newDimensions": "774x900",
+      "originalBytes": 8750519,
+      "newBytes": 84310,
+      "percentReduction": 99,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/LidetaMaryam.png",
+      "output": "public/images/calendar-web/LidetaMaryam.webp",
+      "originalDimensions": "2912x1440",
+      "newDimensions": "1200x593",
+      "originalBytes": 8813498,
+      "newBytes": 86840,
+      "percentReduction": 99,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/LiturgicalSeason.png",
+      "output": "public/images/calendar-web/LiturgicalSeason.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 9272026,
+      "newBytes": 129250,
+      "percentReduction": 98.6,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/MarianFeast.png",
+      "output": "public/images/calendar-web/MarianFeast.webp",
+      "originalDimensions": "1682x2528",
+      "newDimensions": "599x900",
+      "originalBytes": 9672169,
+      "newBytes": 111382,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/MedhaneAlem.png",
+      "output": "public/images/calendar-web/MedhaneAlem.webp",
+      "originalDimensions": "2048x2058",
+      "newDimensions": "896x900",
+      "originalBytes": 7111555,
+      "newBytes": 51362,
+      "percentReduction": 99.3,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/MeetingofPriests.png",
+      "output": "public/images/calendar-web/MeetingofPriests.webp",
+      "originalDimensions": "1536x2752",
+      "newDimensions": "502x900",
+      "originalBytes": 8208775,
+      "newBytes": 69318,
+      "percentReduction": 99.2,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/MegabitMeskel.png",
+      "output": "public/images/calendar-web/MegabitMeskel.webp",
+      "originalDimensions": "1536x2752",
+      "newDimensions": "502x900",
+      "originalBytes": 9463629,
+      "newBytes": 96144,
+      "percentReduction": 99,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Meskel.png",
+      "output": "public/images/calendar-web/Meskel.webp",
+      "originalDimensions": "2880x1440",
+      "newDimensions": "1200x600",
+      "originalBytes": 10799732,
+      "newBytes": 203682,
+      "percentReduction": 98.1,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/MonasticSaintsRemembrance.png",
+      "output": "public/images/calendar-web/MonasticSaintsRemembrance.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 8706822,
+      "newBytes": 98830,
+      "percentReduction": 98.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Nineveh.jpg",
+      "output": "public/images/calendar-web/Nineveh.webp",
+      "originalDimensions": "1024x1021",
+      "newDimensions": "903x900",
+      "originalBytes": 334530,
+      "newBytes": 169784,
+      "percentReduction": 49.2,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Peraklitos.jpg",
+      "output": "public/images/calendar-web/Peraklitos.webp",
+      "originalDimensions": "724x1024",
+      "newDimensions": "636x900",
+      "originalBytes": 251679,
+      "newBytes": 126166,
+      "percentReduction": 49.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SacredCalendarContinuity.png",
+      "output": "public/images/calendar-web/SacredCalendarContinuity.webp",
+      "originalDimensions": "1536x1024",
+      "newDimensions": "1200x800",
+      "originalBytes": 3845064,
+      "newBytes": 276800,
+      "percentReduction": 92.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Saint George.png",
+      "output": "public/images/calendar-web/Saint George.webp",
+      "originalDimensions": "1824x2356",
+      "newDimensions": "697x900",
+      "originalBytes": 8910808,
+      "newBytes": 108198,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Saint Philip.JPG",
+      "output": "public/images/calendar-web/Saint Philip.webp",
+      "originalDimensions": "1290x823",
+      "newDimensions": "1200x766",
+      "originalBytes": 1178434,
+      "newBytes": 116170,
+      "percentReduction": 90.1,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintDavid.JPG",
+      "output": "public/images/calendar-web/SaintDavid.webp",
+      "originalDimensions": "1290x1668",
+      "newDimensions": "696x900",
+      "originalBytes": 2093054,
+      "newBytes": 86594,
+      "percentReduction": 95.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintGabrielCommemoration.png",
+      "output": "public/images/calendar-web/SaintGabrielCommemoration.webp",
+      "originalDimensions": "1600x2656",
+      "newDimensions": "542x900",
+      "originalBytes": 10345382,
+      "newBytes": 125612,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintGabrielFeast.png",
+      "output": "public/images/calendar-web/SaintGabrielFeast.webp",
+      "originalDimensions": "1440x2948",
+      "newDimensions": "440x900",
+      "originalBytes": 9263706,
+      "newBytes": 84012,
+      "percentReduction": 99.1,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintJohntheBaptist.png",
+      "output": "public/images/calendar-web/SaintJohntheBaptist.webp",
+      "originalDimensions": "2134x2016",
+      "newDimensions": "953x900",
+      "originalBytes": 9874891,
+      "newBytes": 150246,
+      "percentReduction": 98.5,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintMaryCommemoration.png",
+      "output": "public/images/calendar-web/SaintMaryCommemoration.webp",
+      "originalDimensions": "1792x2390",
+      "newDimensions": "675x900",
+      "originalBytes": 7726520,
+      "newBytes": 56052,
+      "percentReduction": 99.3,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintMichaelCommemoration.png",
+      "output": "public/images/calendar-web/SaintMichaelCommemoration.webp",
+      "originalDimensions": "2506x1696",
+      "newDimensions": "1200x812",
+      "originalBytes": 8568938,
+      "newBytes": 133988,
+      "percentReduction": 98.4,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintMichaelFeast.png",
+      "output": "public/images/calendar-web/SaintMichaelFeast.webp",
+      "originalDimensions": "1760x2432",
+      "newDimensions": "651x900",
+      "originalBytes": 7424562,
+      "newBytes": 68810,
+      "percentReduction": 99.1,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintsPeterandPaul.png",
+      "output": "public/images/calendar-web/SaintsPeterandPaul.webp",
+      "originalDimensions": "1824x2340",
+      "newDimensions": "702x900",
+      "originalBytes": 10308575,
+      "newBytes": 119586,
+      "percentReduction": 98.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintStephen.JPG",
+      "output": "public/images/calendar-web/SaintStephen.webp",
+      "originalDimensions": "1290x1606",
+      "newDimensions": "723x900",
+      "originalBytes": 2305208,
+      "newBytes": 97162,
+      "percentReduction": 95.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SaintStephen.png",
+      "output": "public/images/calendar-web/SaintStephen.webp",
+      "originalDimensions": "1852x2304",
+      "newDimensions": "skipped-existing",
+      "originalBytes": 10056102,
+      "newBytes": 97162,
+      "percentReduction": 99,
+      "skipped": true
+    },
+    {
+      "source": "public/images/calendar/SaintYared.png",
+      "output": "public/images/calendar-web/SaintYared.webp",
+      "originalDimensions": "2390x1792",
+      "newDimensions": "1200x900",
+      "originalBytes": 8757051,
+      "newBytes": 142586,
+      "percentReduction": 98.4,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/SemuneHimamat.jpg",
+      "output": "public/images/calendar-web/SemuneHimamat.webp",
+      "originalDimensions": "1024x931",
+      "newDimensions": "990x900",
+      "originalBytes": 262600,
+      "newBytes": 139702,
+      "percentReduction": 46.8,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Siqlet.png",
+      "output": "public/images/calendar-web/Siqlet.webp",
+      "originalDimensions": "1856x2270",
+      "newDimensions": "736x900",
+      "originalBytes": 9283352,
+      "newBytes": 116268,
+      "percentReduction": 98.7,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/St.Merkorious.png",
+      "output": "public/images/calendar-web/St.Merkorious.webp",
+      "originalDimensions": "2216x1888",
+      "newDimensions": "1056x900",
+      "originalBytes": 9893960,
+      "newBytes": 159654,
+      "percentReduction": 98.4,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Timket.png",
+      "output": "public/images/calendar-web/Timket.webp",
+      "originalDimensions": "2730x1536",
+      "newDimensions": "1200x675",
+      "originalBytes": 8506643,
+      "newBytes": 111736,
+      "percentReduction": 98.7,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/TodayInChurch.png",
+      "output": "public/images/calendar-web/TodayInChurch.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 9299429,
+      "newBytes": 81570,
+      "percentReduction": 99.1,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/TsigeSeason.jpg",
+      "output": "public/images/calendar-web/TsigeSeason.webp",
+      "originalDimensions": "820x1024",
+      "newDimensions": "721x900",
+      "originalBytes": 216515,
+      "newBytes": 98244,
+      "percentReduction": 54.6,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/Tsinset.png",
+      "output": "public/images/calendar-web/Tsinset.webp",
+      "originalDimensions": "1760x2432",
+      "newDimensions": "651x900",
+      "originalBytes": 9954337,
+      "newBytes": 97530,
+      "percentReduction": 99,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/TsomeGehad.png",
+      "output": "public/images/calendar-web/TsomeGehad.webp",
+      "originalDimensions": "1536x2752",
+      "newDimensions": "502x900",
+      "originalBytes": 8422474,
+      "newBytes": 41260,
+      "percentReduction": 99.5,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/TsomeHawaryat.png",
+      "output": "public/images/calendar-web/TsomeHawaryat.webp",
+      "originalDimensions": "3022x1408",
+      "newDimensions": "1200x559",
+      "originalBytes": 9044169,
+      "newBytes": 127288,
+      "percentReduction": 98.6,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/TsomeNebiyat.png",
+      "output": "public/images/calendar-web/TsomeNebiyat.webp",
+      "originalDimensions": "2786x1504",
+      "newDimensions": "1200x648",
+      "originalBytes": 9952678,
+      "newBytes": 164868,
+      "percentReduction": 98.3,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/UpcomingHolyDays.png",
+      "output": "public/images/calendar-web/UpcomingHolyDays.webp",
+      "originalDimensions": "2752x1536",
+      "newDimensions": "1200x670",
+      "originalBytes": 8698198,
+      "newBytes": 93056,
+      "percentReduction": 98.9,
+      "skipped": false
+    },
+    {
+      "source": "public/images/calendar/ZemeneTinsae.png",
+      "output": "public/images/calendar-web/ZemeneTinsae.webp",
+      "originalDimensions": "1536x2752",
+      "newDimensions": "502x900",
+      "originalBytes": 9189717,
+      "newBytes": 92382,
+      "percentReduction": 99,
+      "skipped": false
+    },
+    {
+      "source": "public/images/home/lalibela.png",
+      "output": "public/images/home/home-hero-lalibela-640.webp",
+      "originalDimensions": "1856x2288",
+      "newDimensions": "640x789",
+      "originalBytes": 8934586,
+      "newBytes": 72072,
+      "percentReduction": 99.2,
+      "skipped": false
+    },
+    {
+      "source": "public/images/home/lalibela.png",
+      "output": "public/images/home/home-hero-lalibela-1024.webp",
+      "originalDimensions": "1856x2288",
+      "newDimensions": "1024x1262",
+      "originalBytes": 8934586,
+      "newBytes": 164066,
+      "percentReduction": 98.2,
+      "skipped": false
+    },
+    {
+      "source": "public/images/home/lalibela.png",
+      "output": "public/images/home/home-hero-lalibela-1600.webp",
+      "originalDimensions": "1856x2288",
+      "newDimensions": "1600x1972",
+      "originalBytes": 8934586,
+      "newBytes": 365986,
+      "percentReduction": 95.9,
+      "skipped": false
+    }
+  ],
+  "totals": {
+    "count": 67,
+    "originalBytes": 492278571,
+    "newBytes": 8412426,
+    "percentReduction": 98.3
+  }
+}

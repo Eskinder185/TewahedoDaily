@@ -1,15 +1,16 @@
 import { useCallback, useEffect, useState } from 'react'
 import {
   CONTENT_MEDIA_BUCKET,
+  contentMediaPathExists,
   listMediaAssets,
-  MEDIA_FOLDERS,
+  MEDIA_FOLDER_OPTIONS,
   resolveContentMediaUrl,
   type MediaAsset,
-  type MediaFolder,
   updateMediaAsset,
   uploadContentMedia,
 } from '../../lib/cms/contentMedia'
 import { errorMessage } from '../../lib/cms/mezmurService'
+import { CalendarEventImage } from '../calendar/CalendarEventImage'
 import styles from './MediaPicker.module.css'
 
 export type MediaPickerValue = {
@@ -17,13 +18,23 @@ export type MediaPickerValue = {
   altText: string
 }
 
+type DuplicatePrompt = {
+  path: string
+  file: File
+}
+
 type Props = {
   label?: string
-  folder?: MediaFolder
+  /** Storage folder prefix used for browse filter + default uploads (e.g. calendar/angels). */
+  folder?: string
   value: string | null | undefined
   altText?: string | null
   onChange: (next: MediaPickerValue) => void
   required?: boolean
+  /** Suggested reusable path (calendar/angels/gabriel.webp). */
+  suggestedPath?: string | null
+  /** Prefer converting JPEG/PNG to WebP on upload. */
+  convertToWebp?: boolean
 }
 
 export function MediaPicker({
@@ -33,6 +44,8 @@ export function MediaPicker({
   altText = '',
   onChange,
   required,
+  suggestedPath = null,
+  convertToWebp = true,
 }: Props) {
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -42,12 +55,19 @@ export function MediaPicker({
   const [assets, setAssets] = useState<MediaAsset[]>([])
   const [localAlt, setLocalAlt] = useState(altText || '')
   const [progress, setProgress] = useState<number | null>(null)
+  const [duplicate, setDuplicate] = useState<DuplicatePrompt | null>(null)
 
   const previewUrl = resolveContentMediaUrl(value)
+  const isCalendarFolder =
+    (folder || '').startsWith('calendar') || (value || '').startsWith('calendar/')
 
   useEffect(() => {
     setLocalAlt(altText || '')
   }, [altText])
+
+  useEffect(() => {
+    setFilterFolder(folder)
+  }, [folder])
 
   const load = useCallback(async () => {
     setBusy(true)
@@ -72,33 +92,63 @@ export function MediaPicker({
     void load()
   }, [open, load])
 
-  async function handleUpload(file: File | undefined) {
-    if (!file) return
+  async function performUpload(file: File, opts: { upsert: boolean; storagePath?: string }) {
     setBusy(true)
     setError('')
     setProgress(0)
     try {
-      const asset = await uploadContentMedia(file, folder, {
+      const targetPath =
+        opts.storagePath ||
+        suggestedPath ||
+        undefined
+      const uploadFolder =
+        targetPath && targetPath.includes('/')
+          ? targetPath.slice(0, targetPath.lastIndexOf('/'))
+          : folder
+      const asset = await uploadContentMedia(file, uploadFolder, {
         altText: localAlt,
         onProgress: setProgress,
+        convertToWebp,
+        upsert: opts.upsert,
+        storagePath: targetPath,
       })
       onChange({
         storagePath: asset.storage_path,
-        altText: asset.alt_text || localAlt || file.name,
+        altText: localAlt || asset.alt_text || '',
       })
+      setDuplicate(null)
       setOpen(false)
     } catch (cause) {
-      setError(errorMessage(cause))
+      const coded = cause as Error & { code?: string; storagePath?: string }
+      if (coded?.code === 'STORAGE_PATH_EXISTS' && coded.storagePath) {
+        setDuplicate({ path: coded.storagePath, file })
+        setError('')
+      } else {
+        setError(errorMessage(cause))
+      }
     } finally {
       setBusy(false)
       setProgress(null)
     }
   }
 
+  async function handleUpload(file: File | undefined) {
+    if (!file) return
+    const targetPath = suggestedPath || undefined
+    if (targetPath) {
+      const exists = await contentMediaPathExists(targetPath)
+      if (exists) {
+        setDuplicate({ path: targetPath, file })
+        return
+      }
+    }
+    await performUpload(file, { upsert: false, storagePath: targetPath })
+  }
+
   function selectAsset(asset: MediaAsset) {
     onChange({
       storagePath: asset.storage_path,
-      altText: localAlt || asset.alt_text || asset.file_name,
+      altText: localAlt || asset.alt_text || '',
     })
     setOpen(false)
   }
@@ -118,6 +168,14 @@ export function MediaPicker({
     }
   }
 
+  function applySuggestedPath() {
+    if (!suggestedPath) return
+    onChange({
+      storagePath: suggestedPath,
+      altText: localAlt,
+    })
+  }
+
   return (
     <div className={styles.root}>
       <div className={styles.head}>
@@ -127,15 +185,27 @@ export function MediaPicker({
         </span>
         <div className={styles.actions}>
           <button type="button" onClick={() => setOpen(true)} disabled={busy}>
-            {value ? 'Replace' : 'Choose / upload'}
+            {value ? 'Change image' : 'Choose from Media'}
           </button>
+          <label className={styles.uploadInline}>
+            Upload new
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
+              disabled={busy}
+              onChange={(e) => {
+                void handleUpload(e.target.files?.[0])
+                e.target.value = ''
+              }}
+            />
+          </label>
           {value ? (
             <button
               type="button"
               className={styles.danger}
               onClick={() => onChange({ storagePath: '', altText: localAlt })}
             >
-              Remove
+              Remove image
             </button>
           ) : null}
         </div>
@@ -143,7 +213,16 @@ export function MediaPicker({
 
       {previewUrl ? (
         <div className={styles.preview}>
-          <img src={previewUrl} alt={localAlt || ''} />
+          {isCalendarFolder ? (
+            <CalendarEventImage
+              src={previewUrl}
+              alt={localAlt || ''}
+              position="center"
+              className={styles.calendarPreview}
+            />
+          ) : (
+            <img src={previewUrl} alt={localAlt || ''} />
+          )}
           <p className={styles.path}>
             {value?.startsWith('http') ? value : `${CONTENT_MEDIA_BUCKET}/${value}`}
           </p>
@@ -152,13 +231,28 @@ export function MediaPicker({
         <p className={styles.empty}>No image selected.</p>
       )}
 
+      {suggestedPath ? (
+        <div className={styles.suggest}>
+          <p>
+            Suggested path: <code>{suggestedPath}</code>
+          </p>
+          {value !== suggestedPath ? (
+            <button type="button" onClick={applySuggestedPath} disabled={busy}>
+              Use suggested path
+            </button>
+          ) : (
+            <small>Current path matches suggestion (reuse-friendly).</small>
+          )}
+        </div>
+      ) : null}
+
       <label className={styles.alt}>
-        Alt text
+        Image alt text
         <input
           value={localAlt}
           onChange={(e) => setLocalAlt(e.target.value)}
           onBlur={() => void saveAlt()}
-          placeholder="Describe the image for accessibility"
+          placeholder='e.g. "Saint Gabriel the Archangel"'
         />
       </label>
 
@@ -166,6 +260,55 @@ export function MediaPicker({
         <p className={styles.error} role="alert">
           {error}
         </p>
+      ) : null}
+
+      {duplicate ? (
+        <div className={styles.conflict} role="alertdialog" aria-label="Duplicate image path">
+          <p>
+            An image already exists at this path.
+            <br />
+            <code>{duplicate.path}</code>
+          </p>
+          <div className={styles.actions}>
+            <button
+              type="button"
+              onClick={() => {
+                onChange({
+                  storagePath: duplicate.path,
+                  altText: localAlt,
+                })
+                setDuplicate(null)
+                setOpen(false)
+              }}
+            >
+              Use existing
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                const base = duplicate.path.replace(/\.[^.]+$/, '')
+                const ext = duplicate.path.includes('.')
+                  ? duplicate.path.slice(duplicate.path.lastIndexOf('.'))
+                  : '.webp'
+                const uniquePath = `${base}-${Date.now()}${ext}`
+                void performUpload(duplicate.file, { upsert: false, storagePath: uniquePath })
+              }}
+              disabled={busy}
+            >
+              Upload as new file
+            </button>
+            <button
+              type="button"
+              onClick={() => void performUpload(duplicate.file, { upsert: true, storagePath: duplicate.path })}
+              disabled={busy}
+            >
+              Replace (may cache)
+            </button>
+            <button type="button" onClick={() => setDuplicate(null)}>
+              Cancel
+            </button>
+          </div>
+        </div>
       ) : null}
 
       {open ? (
@@ -191,9 +334,9 @@ export function MediaPicker({
                 Folder
                 <select value={filterFolder} onChange={(e) => setFilterFolder(e.target.value)}>
                   <option value="">All</option>
-                  {MEDIA_FOLDERS.map((f) => (
-                    <option key={f} value={f}>
-                      {f}
+                  {MEDIA_FOLDER_OPTIONS.map((f) => (
+                    <option key={f.value} value={f.value}>
+                      {f.label}
                     </option>
                   ))}
                 </select>
@@ -205,7 +348,7 @@ export function MediaPicker({
                 Upload new
                 <input
                   type="file"
-                  accept="image/jpeg,image/png,image/webp"
+                  accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"
                   disabled={busy}
                   onChange={(e) => {
                     void handleUpload(e.target.files?.[0])
@@ -215,9 +358,7 @@ export function MediaPicker({
               </label>
             </div>
 
-            {progress !== null ? (
-              <p role="status">Uploading {progress}%</p>
-            ) : null}
+            {progress !== null ? <p role="status">Uploading {progress}%</p> : null}
             {busy && progress === null ? <p role="status">Loading…</p> : null}
             {error ? (
               <p className={styles.error} role="alert">
@@ -231,7 +372,7 @@ export function MediaPicker({
                 return (
                   <li key={asset.id}>
                     <button type="button" className={styles.tile} onClick={() => selectAsset(asset)}>
-                      <img src={url} alt={asset.alt_text || asset.file_name} />
+                      <img src={url} alt={asset.alt_text || ''} />
                       <span>{asset.file_name}</span>
                       <small>{asset.storage_path}</small>
                     </button>

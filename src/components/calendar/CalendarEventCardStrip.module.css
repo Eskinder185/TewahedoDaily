@@ -1,0 +1,78 @@
+.root {
+  position: relative;
+  min-width: 0;
+}
+
+.scroller {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.15rem 0.15rem 0.65rem;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.scroller::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-border) 80%, transparent);
+  border-radius: 999px;
+}
+
+.item {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.empty {
+  margin: 0;
+  padding: 0.85rem 0.25rem 1rem;
+  font-size: 0.98rem;
+  color: var(--color-text-muted, #5c564c);
+}
+
+.arrow {
+  display: none;
+  position: absolute;
+  top: 42%;
+  z-index: 2;
+  transform: translateY(-50%);
+  width: 2.35rem;
+  height: 2.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg-elevated, #fff) 92%, #fff);
+  color: var(--color-navy, #1e2a44);
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft, 0 6px 16px rgba(0, 0, 0, 0.08));
+}
+
+.arrow:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+.arrowPrev {
+  left: 0.15rem;
+}
+
+.arrowNext {
+  right: 0.15rem;
+}
+
+@media (min-width: 960px) {
+  .arrow {
+    display: grid;
+    place-items: center;
+  }
+
+  .scrollerPadded {
+    padding-inline: 2.4rem;
+  }
+}

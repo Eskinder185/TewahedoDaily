@@ -1,79 +1,137 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from '../i18n'
-import { useLocale } from '../lib/i18n/locale'
+import { useSearchParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { MiniMonthCalendar } from '../components/todayInChurch/MiniMonthCalendar'
-import { TodayInChurchPanel } from '../components/calendar/TodayInChurchPanel'
-import { CalendarCardWhyModal } from '../components/calendar/CalendarCardWhyModal'
+import { CalendarDateTimeline } from '../components/calendar/CalendarDateTimeline'
+import { CalendarEventDetail } from '../components/calendar/CalendarEventDetail'
+import { SynaxariumOfTheDay } from '../components/calendar/SynaxariumOfTheDay'
+import { CalendarLangToggle } from '../components/calendar/CalendarEventDetails'
 import { useHomeToday } from '../hooks/useHomeToday'
 import {
   computeCalendarDayMarksAsync,
   type CalendarDayCellMark,
 } from '../lib/churchCalendar'
-import {
-  cardCategoryBadge,
-  getCalendarCards,
-  resolveCardSummary,
-  type CalendarCard,
-} from '../lib/synaxarium/synaxariumService'
+import { getPublishedCalendarCardsForLinking, type CalendarCard } from '../lib/synaxarium/synaxariumService'
 import { parseGregorianAnchorIso } from '../lib/churchCalendar/upcomingObservanceDisplay'
-import { CalendarImage } from '../components/calendar/CalendarImage'
-import { calendarImageManifest } from '../content/calendarImageManifest'
 import {
-  loadDayChurchContext,
-  type DayChurchContext,
-} from '../services/dayChurchContext'
+  loadCalendarDetailLang,
+  saveCalendarDetailLang,
+  type CalendarLocaleMode,
+} from '../lib/calendar/calendarEnrichedContent'
+import {
+  getCalendarEventsForRange,
+  invalidateCalendarCardsCache,
+  refreshPublishedCalendarCards,
+  type CalendarDayGroup,
+} from '../lib/calendar/getCalendarEventsForDate'
+import type { PresentableCalendarEvent } from '../lib/calendar/calendarPresentation'
+import { addDays, toIsoLocalDate } from '../lib/churchCalendar/pascha'
 import styles from './CalendarPage.module.css'
 
-function visualKindFromType(type: string): 'feast' | 'fast' | 'commemoration' {
-  const t = type.toLowerCase()
-  if (t.includes('feast') || t.includes('season')) return 'feast'
-  if (t.includes('fast')) return 'fast'
-  return 'commemoration'
+/** Type-only — runtime load is dynamic so mezmur scoring stays off the Calendar shell. */
+type DayChurchContext = import('../services/dayChurchContext').DayChurchContext
+
+async function loadDayChurchContext(date: Date): Promise<DayChurchContext> {
+  const mod = await import('../services/dayChurchContext')
+  return mod.loadDayChurchContext(date)
+}
+
+const PAST_DAYS = 7
+const FUTURE_DAYS = 14
+const EXTEND_DAYS = 10
+
+function formatLongDate(d: Date): string {
+  return d.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+function stripLocal(d: Date): Date {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate())
 }
 
 export function CalendarPage() {
-  const t = useTranslation()
-  const { locale } = useLocale()
-  const { now } = useHomeToday()
+  const { now, snapshot } = useHomeToday()
+  const [searchParams] = useSearchParams()
   const [viewYear, setViewYear] = useState(now.getFullYear())
   const [viewMonth, setViewMonth] = useState(now.getMonth())
-  const [selectedDay, setSelectedDay] = useState<number | null>(now.getDate())
+  const [selectedDay, setSelectedDay] = useState<number>(now.getDate())
   const [marks, setMarks] = useState<ReadonlyMap<number, CalendarDayCellMark>>(new Map())
   const [dayContext, setDayContext] = useState<DayChurchContext | null>(null)
+  const [todayContext, setTodayContext] = useState<DayChurchContext | null>(null)
   const [dayLoading, setDayLoading] = useState(false)
   const [dayError, setDayError] = useState<string | null>(null)
   const [dayReloadTick, setDayReloadTick] = useState(0)
   const [calendarCards, setCalendarCards] = useState<CalendarCard[]>([])
-  const [cardsError, setCardsError] = useState<string>()
-  const [cardsLoading, setCardsLoading] = useState(true)
-  const [whyCard, setWhyCard] = useState<CalendarCard | null>(null)
-  const detailRef = useRef<HTMLElement | null>(null)
-  const trackRef = useRef<HTMLDivElement | null>(null)
+  const [lang, setLang] = useState<CalendarLocaleMode>(() => loadCalendarDetailLang())
+  const [detailEvent, setDetailEvent] = useState<PresentableCalendarEvent | null>(null)
+  const [timelineGroups, setTimelineGroups] = useState<CalendarDayGroup[]>([])
+  const [timelineLoading, setTimelineLoading] = useState(true)
+  const [rangeStart, setRangeStart] = useState(() => addDays(stripLocal(now), -PAST_DAYS))
+  const [rangeEnd, setRangeEnd] = useState(() => addDays(stripLocal(now), FUTURE_DAYS))
+  const monthRef = useRef<HTMLElement | null>(null)
   const dayContextCacheRef = useRef<Map<string, DayChurchContext>>(new Map())
   const dayRequestIdRef = useRef(0)
+  const dateParamApplied = useRef(false)
+
+  useEffect(() => {
+    saveCalendarDetailLang(lang)
+  }, [lang])
+
+  useEffect(() => {
+    if (dateParamApplied.current) return
+    const raw = searchParams.get('date')
+    if (!raw) return
+    const d = parseGregorianAnchorIso(raw)
+    if (!d) return
+    dateParamApplied.current = true
+    setViewYear(d.getFullYear())
+    setViewMonth(d.getMonth())
+    setSelectedDay(d.getDate())
+    const civil = stripLocal(d)
+    setRangeStart(addDays(civil, -PAST_DAYS))
+    setRangeEnd(addDays(civil, FUTURE_DAYS))
+  }, [searchParams])
 
   useEffect(() => {
     let active = true
-    setCardsLoading(true)
-    setCardsError(undefined)
-    void getCalendarCards({ from: now, limit: 10 })
-      .then((cards) => {
-        if (!active) return
-        setCalendarCards(cards)
+    const loadCards = (force = false) => {
+      const loader = force
+        ? refreshPublishedCalendarCards()
+        : getPublishedCalendarCardsForLinking({ from: now, limit: 500 })
+      void loader
+        .then((cards) => {
+          if (active) setCalendarCards(cards)
+        })
+        .catch((cause) => {
+          if (import.meta.env.DEV) console.error('[CalendarPage] calendar_cards', cause)
+          if (active) setCalendarCards([])
+        })
+    }
+    loadCards(false)
+    const onVisible = () => {
+      if (document.visibilityState === 'visible') {
+        invalidateCalendarCardsCache()
+        loadCards(true)
+      }
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    return () => {
+      active = false
+      document.removeEventListener('visibilitychange', onVisible)
+    }
+  }, [now])
+
+  useEffect(() => {
+    let active = true
+    void loadDayChurchContext(now)
+      .then((ctx) => {
+        if (active) setTodayContext(ctx)
       })
       .catch((cause) => {
-        if (!active) return
-        if (import.meta.env.DEV) console.error('[calendar] cards', cause)
-        setCardsError(
-          cause && typeof cause === 'object' && 'message' in cause
-            ? String((cause as { message?: unknown }).message)
-            : 'Unable to load calendar cards.',
-        )
-        setCalendarCards([])
-      })
-      .finally(() => {
-        if (active) setCardsLoading(false)
+        if (import.meta.env.DEV) console.error('[CalendarPage] today context', cause)
       })
     return () => {
       active = false
@@ -86,8 +144,7 @@ export function CalendarPage() {
       .then((next) => {
         if (active) setMarks(next)
       })
-      .catch((cause) => {
-        if (import.meta.env.DEV) console.error('[calendar] month marks', cause)
+      .catch(() => {
         if (active) setMarks(new Map())
       })
     return () => {
@@ -95,21 +152,58 @@ export function CalendarPage() {
     }
   }, [viewYear, viewMonth])
 
-  const selectedDate = useMemo(() => {
-    if (selectedDay == null) return null
-    return new Date(viewYear, viewMonth, selectedDay)
-  }, [viewYear, viewMonth, selectedDay])
+  const selectedDate = useMemo(
+    () => new Date(viewYear, viewMonth, selectedDay),
+    [viewYear, viewMonth, selectedDay],
+  )
+
+  const isSelectedToday =
+    selectedDate.getFullYear() === now.getFullYear() &&
+    selectedDate.getMonth() === now.getMonth() &&
+    selectedDate.getDate() === now.getDate()
+
+  // Ensure selected date stays inside the loaded timeline window
+  useEffect(() => {
+    const selected = stripLocal(selectedDate)
+    if (selected < rangeStart) {
+      setRangeStart(addDays(selected, -PAST_DAYS))
+    } else if (selected > rangeEnd) {
+      setRangeEnd(addDays(selected, FUTURE_DAYS))
+    }
+  }, [selectedDate, rangeStart, rangeEnd])
 
   useEffect(() => {
     let active = true
-    if (!selectedDate) {
-      setDayContext(null)
+    setTimelineLoading(true)
+    void getCalendarEventsForRange(rangeStart, rangeEnd, {
+      cards: calendarCards.length ? calendarCards : undefined,
+    })
+      .then((groups) => {
+        if (!active) return
+        setTimelineGroups(groups)
+      })
+      .catch((cause) => {
+        if (import.meta.env.DEV) console.error('[CalendarPage] timeline range', cause)
+        if (active) setTimelineGroups([])
+      })
+      .finally(() => {
+        if (active) setTimelineLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [rangeStart, rangeEnd, calendarCards])
+
+  useEffect(() => {
+    let active = true
+    if (isSelectedToday && todayContext) {
+      setDayContext(todayContext)
       setDayLoading(false)
       setDayError(null)
       return
     }
 
-    const cacheKey = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
+    const cacheKey = toIsoLocalDate(selectedDate)
     const cached = dayContextCacheRef.current.get(cacheKey)
     if (cached) {
       setDayContext(cached)
@@ -120,7 +214,6 @@ export function CalendarPage() {
 
     setDayLoading(true)
     setDayError(null)
-    setDayContext((prev) => (prev?.gregorianDate === cacheKey ? prev : null))
     const requestId = ++dayRequestIdRef.current
     void loadDayChurchContext(selectedDate)
       .then((context) => {
@@ -130,11 +223,11 @@ export function CalendarPage() {
       })
       .catch((cause) => {
         if (!active || requestId !== dayRequestIdRef.current) return
-        if (import.meta.env.DEV) console.error('[calendar] day context', cause)
+        if (import.meta.env.DEV) console.error('[CalendarPage] day context', cause)
         setDayError(
           cause && typeof cause === 'object' && 'message' in cause
             ? String((cause as { message?: unknown }).message)
-            : t('calendar.detail.synaxariumLoadError'),
+            : 'Unable to load this day.',
         )
       })
       .finally(() => {
@@ -143,194 +236,166 @@ export function CalendarPage() {
     return () => {
       active = false
     }
-  }, [selectedDate, dayReloadTick, t])
+  }, [selectedDate, dayReloadTick, isSelectedToday, todayContext])
+
+  const gregorianLabel = formatLongDate(selectedDate)
+  const ethiopianLabel =
+    dayContext?.ethiopianLabel ||
+    (isSelectedToday ? snapshot.ethiopian?.labelLong || '' : '') ||
+    (dayContext
+      ? `${dayContext.ethiopianDate.monthName} ${dayContext.ethiopianDate.day}, ${dayContext.ethiopianDate.year}`
+      : '') ||
+    timelineGroups.find((g) => g.iso === toIsoLocalDate(selectedDate))?.ethiopianLabel ||
+    ''
+
+  const setSelectedCivilDate = useCallback((d: Date) => {
+    const civil = stripLocal(d)
+    setViewYear(civil.getFullYear())
+    setViewMonth(civil.getMonth())
+    setSelectedDay(civil.getDate())
+    setDetailEvent(null)
+  }, [])
+
+  const jumpToday = () => {
+    const civil = stripLocal(now)
+    setSelectedCivilDate(civil)
+    setRangeStart(addDays(civil, -PAST_DAYS))
+    setRangeEnd(addDays(civil, FUTURE_DAYS))
+  }
 
   const goPrevMonth = () => {
     const d = new Date(viewYear, viewMonth - 1, 1)
+    const max = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
     setViewYear(d.getFullYear())
     setViewMonth(d.getMonth())
-    setSelectedDay(null)
+    setSelectedDay((prev) => Math.min(prev, max))
+    setDetailEvent(null)
   }
 
   const goNextMonth = () => {
     const d = new Date(viewYear, viewMonth + 1, 1)
+    const max = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
     setViewYear(d.getFullYear())
     setViewMonth(d.getMonth())
-    setSelectedDay(null)
-  }
-
-  const jumpToday = () => {
-    setViewYear(now.getFullYear())
-    setViewMonth(now.getMonth())
-    setSelectedDay(now.getDate())
+    setSelectedDay((prev) => Math.min(prev, max))
+    setDetailEvent(null)
   }
 
   const selectCalendarDay = (day: number) => {
     setSelectedDay(day)
-    if (window.matchMedia('(max-width: 959px)').matches) {
-      window.requestAnimationFrame(() => {
-        detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-      })
-    }
+    setDetailEvent(null)
   }
 
-  const openCalendarCard = useCallback((card: CalendarCard) => {
-    const d = parseGregorianAnchorIso(card.gregorianIso)
-    if (!d) return
-    setViewYear(d.getFullYear())
-    setViewMonth(d.getMonth())
-    setSelectedDay(d.getDate())
-    if (window.matchMedia('(max-width: 959px)').matches) {
-      window.requestAnimationFrame(() => {
-        detailRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-      })
-    }
+  const openEvent = useCallback((event: PresentableCalendarEvent, date: Date) => {
+    const civil = stripLocal(date)
+    setViewYear(civil.getFullYear())
+    setViewMonth(civil.getMonth())
+    setSelectedDay(civil.getDate())
+    setDetailEvent(event)
   }, [])
 
-  const scrollCards = useCallback((direction: -1 | 1) => {
-    const track = trackRef.current
-    if (!track) return
-    const card = track.querySelector(`.${styles.observanceCard}`) as HTMLElement | null
-    const delta = (card?.offsetWidth || 280) + 16
-    track.scrollBy({ left: direction * delta, behavior: 'smooth' })
+  const closeDetail = useCallback(() => {
+    setDetailEvent(null)
   }, [])
+
+  const loadEarlier = useCallback(() => {
+    setRangeStart((prev) => addDays(prev, -EXTEND_DAYS))
+  }, [])
+
+  const loadLater = useCallback(() => {
+    setRangeEnd((prev) => addDays(prev, EXTEND_DAYS))
+  }, [])
+
+  const synaxariumItems = dayContext?.synaxarium || []
 
   return (
     <PageSection id="calendar" variant="tint" className={styles.page}>
-      <section className={styles.observances} aria-label={t('calendar.page.nextObservances')}>
-        <div className={styles.observanceCarousel}>
-          <button
-            type="button"
-            className={styles.carouselBtn}
-            aria-label="Previous calendar cards"
-            onClick={() => scrollCards(-1)}
-          >
-            ‹
-          </button>
-          <div ref={trackRef} className={styles.observanceTrack} tabIndex={0}>
-            {cardsLoading ? (
-              <p className={styles.cardsStatus} role="status">
-                …
-              </p>
-            ) : cardsError ? (
-              <p className={styles.cardsStatus} role="alert">
-                {cardsError}
-              </p>
-            ) : calendarCards.length === 0 ? (
-              <p className={styles.cardsStatus}>
-                No featured calendar cards yet. Add curated cards under Calendar → Calendar Cards.
-              </p>
-            ) : (
-              calendarCards.map((card) => {
-                const visualKind = visualKindFromType(card.type)
-                const summary = resolveCardSummary(card, locale)
-                const category = cardCategoryBadge(card)
-                const seeMoreLabel = card.learnMoreLabel || t('calendar.page.seeMore')
-                return (
-                  <article
-                    key={card.id}
-                    className={`${styles.observanceCard} ${styles[`kind_${visualKind}`]}`}
-                  >
-                    <figure className={styles.observanceMedia} aria-hidden>
-                      <CalendarImage
-                        src={card.imageUrl || calendarImageManifest.anchors.todayInChurch}
-                        fallbackSrc={calendarImageManifest.anchors.todayInChurch}
-                        alt={card.imageAlt || t('calendar.page.observanceImage', { title: card.title })}
-                        className={styles.observanceImage}
-                        objectFit="cover"
-                        objectPosition={card.objectPosition}
-                        fetchPriority="low"
-                        sizes="(max-width: 820px) 86vw, 19rem"
-                      />
-                    </figure>
-                    <div className={styles.observanceBody}>
-                      <p className={styles.observanceType}>{category}</p>
-                      <h2 className={styles.observanceTitle}>{card.title}</h2>
-                      {card.titleAmharic ? (
-                        <p className={styles.observanceTitleAm} lang="am">
-                          {card.titleAmharic}
-                        </p>
-                      ) : null}
-                      <p className={styles.observanceDate}>{card.gregorianLabel}</p>
-                      <p className={styles.observanceDateSecondary}>{card.ethiopianLabel}</p>
-                      {summary ? <p className={styles.observanceSummary}>{summary}</p> : null}
-                      <div className={styles.cardActions}>
-                        <button
-                          type="button"
-                          className={styles.openDayBtn}
-                          onClick={() => setWhyCard(card)}
-                        >
-                          {seeMoreLabel}
-                        </button>
-                        <button
-                          type="button"
-                          className={styles.whyDayBtn}
-                          onClick={() => openCalendarCard(card)}
-                        >
-                          {t('calendar.page.openDate')}
-                        </button>
-                      </div>
-                    </div>
-                  </article>
-                )
-              })
-            )}
+      <header className={styles.header}>
+        <div className={styles.headerTop}>
+          <div>
+            <p className={styles.eyebrow}>Calendar</p>
+            <h1 className={styles.title}>Church Calendar</h1>
           </div>
-          <button
-            type="button"
-            className={styles.carouselBtn}
-            aria-label="Next calendar cards"
-            onClick={() => scrollCards(1)}
-          >
-            ›
-          </button>
-        </div>
-      </section>
-
-      <CalendarCardWhyModal
-        open={Boolean(whyCard)}
-        card={whyCard}
-        onClose={() => setWhyCard(null)}
-        onOpenDate={openCalendarCard}
-      />
-
-      <section className={styles.calendarOnly} aria-label={t('calendar.page.grid')}>
-        <div className={styles.calendarActionsWrap}>
-          <div className={styles.calendarActions}>
-            <button type="button" className={styles.jumpTodayBtn} onClick={jumpToday}>
-              {t('calendar.navigation.jumpToToday')}
+          <div className={styles.headerActions}>
+            <button type="button" className={styles.btnPrimary} onClick={jumpToday}>
+              Today
             </button>
+            <CalendarLangToggle value={lang} onChange={setLang} />
           </div>
         </div>
-        <MiniMonthCalendar
-          anchor={now}
-          displayYear={viewYear}
-          displayMonthIndex={viewMonth}
-          dayMarks={marks}
-          selectedDay={selectedDay}
-          onSelectDay={selectCalendarDay}
-          onPrevMonth={goPrevMonth}
-          onNextMonth={goNextMonth}
-        />
-        <section ref={detailRef} className={styles.dayDetail} aria-live="polite">
-          {!selectedDate ? (
-            <p className={styles.emptyDetail}>{t('calendar.page.selectDay')}</p>
-          ) : (
-            <TodayInChurchPanel
-              context={dayContext}
-              loading={dayLoading}
-              error={dayError}
-              onRetry={() => {
-                if (selectedDate) {
-                  const cacheKey = `${selectedDate.getFullYear()}-${String(selectedDate.getMonth() + 1).padStart(2, '0')}-${String(selectedDate.getDate()).padStart(2, '0')}`
-                  dayContextCacheRef.current.delete(cacheKey)
-                }
+      </header>
+
+      <section className={styles.selectedBlock} aria-labelledby="timeline-heading">
+        <header className={styles.selectedHead}>
+          <h2 id="timeline-heading" className={styles.selectedGregorian}>
+            {gregorianLabel}
+          </h2>
+          {ethiopianLabel ? (
+            <p className={styles.selectedEthiopian}>{ethiopianLabel}</p>
+          ) : null}
+        </header>
+
+        {dayError && !dayContext && timelineGroups.length === 0 ? (
+          <div className={styles.errorBox} role="alert">
+            <p>{dayError}</p>
+            <button
+              type="button"
+              className={styles.btnGhost}
+              onClick={() => {
+                dayContextCacheRef.current.delete(toIsoLocalDate(selectedDate))
                 setDayReloadTick((n) => n + 1)
               }}
-            />
-          )}
-        </section>
+            >
+              Try again
+            </button>
+          </div>
+        ) : (
+          <CalendarDateTimeline
+            groups={timelineGroups}
+            selectedDate={selectedDate}
+            today={now}
+            lang={lang}
+            loading={timelineLoading && timelineGroups.length === 0}
+            onSelectDate={setSelectedCivilDate}
+            onOpenEvent={openEvent}
+            onLoadEarlier={loadEarlier}
+            onLoadLater={loadLater}
+          />
+        )}
       </section>
+
+      <div className={styles.mainSplit}>
+        <section ref={monthRef} className={styles.monthPane} aria-label="Month calendar">
+          <MiniMonthCalendar
+            anchor={now}
+            displayYear={viewYear}
+            displayMonthIndex={viewMonth}
+            dayMarks={marks}
+            selectedDay={selectedDay}
+            onSelectDay={selectCalendarDay}
+            onPrevMonth={goPrevMonth}
+            onNextMonth={goNextMonth}
+          />
+        </section>
+
+        <SynaxariumOfTheDay
+          ethiopianLabel={ethiopianLabel}
+          gregorianLabel={gregorianLabel}
+          items={synaxariumItems}
+          loading={dayLoading && !dayContext}
+          daySlug={dayContext?.synaxariumDaySlug}
+        />
+      </div>
+
+      <CalendarEventDetail
+        open={detailEvent != null}
+        event={detailEvent}
+        dateLabel={gregorianLabel}
+        ethiopianLabel={ethiopianLabel || undefined}
+        lang={lang}
+        onLangChange={setLang}
+        onClose={closeDetail}
+      />
     </PageSection>
   )
 }

@@ -1,0 +1,109 @@
+{
+  "guides": [
+    {
+      "slug": "learn-how-to-pray",
+      "title": "Learn How to Pray",
+      "title_amharic": "እንዴት መጸለይ እንደሚገባ",
+      "summary": "A practical guide to prayer and preparing for church in the Ethiopian Orthodox Tewahedo tradition.",
+      "summary_amharic": "ወደ ቤተ ክርስቲያን ለመሔድና ቅዳሴ ለማስቀደስ የሚደረጉ ስርአተ ቤተ ክርስቲያን።",
+      "status": "published",
+      "sort_order": 10,
+      "source_title": "User-provided Amharic text",
+      "source_reference": "",
+      "review_status": "needs_review",
+      "sections": [
+        {
+          "slug": "preparing",
+          "title": "Preparing to Go to Church",
+          "title_amharic": "ለቤተ ክርስቲያን መዘጋጀት",
+          "body_english": "When we wake from sleep, we wash our faces, keep ourselves clean, wear white Christian clothing, and go to church.",
+          "body_amharic": "1.. በመጀመሪያከእንቅልፍ ስንነሳ ፊታችን ታጥበን ንፅህናችን ጠብቀን ክርስቲያናዊ ልብስ ነጭ ለብሰን መሔድ::",
+          "sort_order": 1,
+          "source_reference": "User-provided Amharic text",
+          "review_status": "needs_review",
+          "review_notes": ""
+        },
+        {
+          "slug": "grounds",
+          "title": "Entering the Church Grounds",
+          "title_amharic": "ወደ ቤተ ክርስቲያን ግቢ ሲደርሱ",
+          "body_english": "When we reach the church grounds, the step we cross is called “መቃምድር” in the source. We step with our right foot first.",
+          "body_amharic": "2.. ከቤተ ክርስቲያን ቅጥር ግቢ ስንደርስ እምንራመደው ደረጃ በቤተ ክርስቲያን መቃምድር ይባላል: እሱን ስንራመድ እምናስቀድመው ቀኝ እግራችንን ነው::",
+          "sort_order": 2,
+          "source_reference": "User-provided Amharic text",
+          "review_status": "needs_review",
+          "review_notes": "Verify the term መቃምድር and this step against the original source."
+        },
+        {
+          "slug": "entering",
+          "title": "Entering the Church",
+          "title_amharic": "ወደ ቤተ ክርስቲያን መግባት",
+          "body_english": "As we enter, we kiss the door.",
+          "body_amharic": "3.. ወደ ውጥ ስንገባበሩን መሳለም::",
+          "sort_order": 3,
+          "source_reference": "User-provided Amharic text",
+          "review_status": "needs_review",
+          "review_notes": "The phrase ወደ ውጥ appears unclear; Amharic preserved verbatim."
+        },
+        {
+          "slug": "sanctuary",
+          "title": "At the Entrance of the Sanctuary",
+          "title_amharic": "በቤተ መቅደሱ በር",
+          "body_english": "When we reach the door of the Bet Mekdes, we bow three times. We make the sign of the Cross three times in the name of the Father, the Son, and the Holy Spirit.\n\nO Church, I greet you with peace, for you are fashioned in the likeness of Jerusalem.",
+          "body_amharic": "4.. ቤተ መቅደሱ በር ስንደርስ 3 ጊዜ እየሰገድን እምንለው: በአብ በወል በመንፈስ ቅዱስም ስም ፊትን ሶስት ጊዜ በማማተብ ወይም በመባረክ ቤተ ክርስቲያን ሆይ ሰላም እልሻለሁ በኢየሩሳሌም አምሳል ተጽፈሻልና ብለን ፊታችንን ሶስት ጊዜ ባርከን የሕሊናጸሎት",
+          "sort_order": 4,
+          "source_reference": "User-provided Amharic text",
+          "review_status": "needs_review",
+          "review_notes": "Check possible typing errors including በወል and በማማተብ; translation is a draft."
+        },
+        {
+          "slug": "thanksgiving",
+          "title": "Thanksgiving Prayer",
+          "title_amharic": "ምጋና",
+          "body_english": "We pray inwardly: We thank You for guarding us from the day we were born until today, for giving us health and life, and for allowing us to see the light of this day.",
+          "body_amharic": "ምጋና\nእንጸልያለን ጸሎታችን ከተወለድንበት ጀምሮ እስከ ዛሬ ድረስ የጠበቀነን የመገነን ጤና የሰጠንን እንድንኖር የዛሬየዋን ብርሃን እንድናይ ስለፈቀክልን::\nእናመሰግናለን::",
+          "sort_order": 5,
+          "source_reference": "User-provided Amharic text",
+          "review_status": "needs_review",
+          "review_notes": "Check ምጋና, የመገነን, and other possible typing errors against the original."
+        },
+        {
+          "slug": "supplication",
+          "title": "Supplication Prayer",
+          "title_amharic": "ልመና",
+          "body_english": "O God, You have added to my years and kept me in blessing until now. Bless the rest of my days more than those that have passed, and keep me in health. Christ, Savior of the World, who heard my prayer yesterday, guard me from temptation now and keep me in peace.\n\nAmen.",
+          "body_amharic": "ልመና\nእግዚአብሔር ሆይ በእድሜየ ለይ ጨምረህ እስካሁን በበረከት የጠበቀኝ አምላክ ቀሪ ዘመኔ ከእስከ አሁኑ የበለጠ ባርክህ በጤና አኑረኝ: ትላንት ጽእሎቴን የሰማህ መድኃኔዓለም ክርስቶስ አሁንም ከፈተና ጠብቀህ በሰላም አኑረኝ::\nዓሜን::",
+          "sort_order": 6,
+          "source_reference": "User-provided Amharic text",
+          "review_status": "needs_review",
+          "review_notes": "Check apparent typing errors, especially ከእስከ and ጽእሎቴን; translation is a draft."
+        }
+      ]
+    },
+    {
+      "slug": "the-order-of-prayer",
+      "title": "The Order of Prayer",
+      "title_amharic": "የጸሎት ሥርዓት",
+      "summary": "Source material on canonical hours, kinds of prayer, prayer practices, litany, and prayer for the dead.",
+      "summary_amharic": "",
+      "status": "draft",
+      "sort_order": 20,
+      "source_title": "User-provided “The Order of Prayer” attachment",
+      "source_reference": "",
+      "review_status": "needs_review",
+      "sections": [
+        {
+          "slug": "full_source",
+          "title": "Full English Source",
+          "title_amharic": "",
+          "body_english": "THE ORDER OF PRAYER\n\n​\n\nPrayer is a word by which man communicates with his Creator in Faith, thanking and beseeching Him for the forgiveness of his sin. (Fetha Negest 14:528). The basis of prayer is the divine word which runs “Ask, and it will be given to you, seek, and you will find, knock and it will be opened to you”. (Mt. 7:7).\n\nFor prayer, there is a particular time and place. The time during which the clergy and the laity go to church are mornings and evenings also mid days in the fasting season.\n\n​\n\nA. Canonical Hours of Prayer\n\n​\n\nPrayers are said seven times a day: - (Ps. 118:164).\n\n​\n\na) In the morning\n\nb) At the third hour\n\nc) At noon\n\nd) At the ninth hour\n\ne) At sun set (evening)\n\nf) At bedtime\n\ng) At midnight (Our Lord and Saviour Eyesus Christos born, baptized, rose from the dead and will come again for judgment at midnight)\n\n​\n\nThe faithful and the clergy have to go to the church every morning and evening. But in the remaining hours they can pray wherever they are. (Fetha Negest 14; Didas 12).\n\n​\n\n​\n\nB. Kinds of prayers\n\n​\n\nThere are three kinds of prayers.\n\n​\n\na) Private prayer\n\nb) Family prayer\n\nc) Public prayer\n\na) Private Prayer\n\n​\n\nPrivate prayer is said at home and at any appropriate place. It is a solemn prayer made to God privately by shutting his room so as not be seen and heard by any one, and lifting his heart to the Creator to be seen and heard by Him alone. (Mt. 6:5-13).\n\n​\n\nb) Family Prayer\n\n​\n\nAs the word indicates family prayer is a prayer offered by all the members of a family together. For this the prayer of Cornelius the Centurion will be an example. (Acts 10:2-6).\n\nc) Public Prayer\n\n​\n\nIt is a prayer to be said by the clergy and the laity, men and women, old and young gathered together in the church and in all convenient places. We read in the Scriptures that the faithful in the Old Testament used to go to the temple and pray (1 Sam. 1:9-13; Ps. 12:1; Lk. 18:10-14). Also at the time of the New Testament the apostles and their followers used to pray in the upper room and at the house Mariam, St. Mark’s mother, which served as Christian gathering. They used also together and pray at the first church of Antioch (Acts 1:14, 25, 3:1, 12:12, 13:1-3)\n\n​\n\nAccording to this, our Church has laid down rules that the clergy and the laity together praise the Lord in prayer, hymn, liturgy, horology (Saatat).\n\n​\n\nSaatat (ሰአታት - Seatati) is conducted throughout the year in monasteries and big churches, on Sundays and holidays. Saatat is also performed for the dead during the night. For the day time also, there is Saatat. It is said daily at every hour during the time of fast. (Abba Georgia’ Saatat). Cantillation (Hymn) is a song performed in union by the clergy with prayer sticks (መቋሚያ - Mekwamiya), sistrums (ፀናፅል -Tsenat͟sili) and drums (ከበሮ - Kebero); the hymn of Lent is sung without sistrums and drums; it is sung with prayer sticks only.\n\nPrayers that are conducted by priests with participation of the laity are:-\n\n​\n\nprayer of the consecration or dedication of a new church\nprayer of Baptism\n\nprayer of Ordination and Consecration\n\nprayer of Matrimony\n\nprayer of Litany\n\nprayer for the Dead\n\nprayer of Liturgy\n\nEthiopian Orthodox Tewahedo Church Liturgical prayer has three parts:\n\n​\n\n1. From “O my brother, think of thy sin” upto “How awful this day” which is the preparatory service.\n\n2. From “How awful is this day” upto “Go forth, Ye catechumen” which is the first part of the Eucharist.\n\n3. After this the main part of the Holy Liturgy which comes after “Go forth, Ye catechumen” is said.\n\n​\n\nThe procedure for carrying out this is given in detail in the Holy Liturgy and the Fetha Negest Article 12.\n\nThe Ethiopian Orthodox Tewahedo Church has fourteen anaphora’s by which it celebrates the Holy Communion.\n\nThese are:\n\n​\n\nThe Anaphora of the Apostles\n\nThe Anaphora of the Lord\n\nThe Anaphora of John, Son of Thunder\n\nThe Anaphora of St. Our Holy Mother Virgin Mariam\n\nThe Anaphora of The three Hundred\n\nThe Anaphora of St. Athanasius\n\nThe Anaphora of St. Bassilios\n\nThe Anaphora of St. Gregory, Brother of St. Bassilios\n\nThe Anaphora of St. Ephiphanius\n\nThe Anaphora of St. John Chrysostom\n\nThe Anaphora of St. Cyril\n\nThe Anaphora of St. Jacob of Serough\n\nThe Anaphora of Dioscorus\n\nThe Anaphora of St. Gregory Second\n\nThe Performance of Private and Public Prayer in Ethiopian Orthodox Tewahedo Church\n\n​\n\nIn the time of prayer one has to follow these orders.\n\n​\n\na) Standing erect on two feet without leaning on a pole or a wall (Ps. 5:3).\n\nb) Girding the loin, wearing clothes down over the shoulders and round the waist. (Lk. 12:35; the Fetha Negest Article 14).\n\nc) Standing up turning the face towards the east without moving to and from and without looking left and right. It is essential to pray stretching the hands and lifting up the heart. (Ps. 133:2; Jn. 11:41).\n\nd) At the beginning and closing of prayer, one has to cross himself with the pointing finger placed in such a way that it makes a cross in relation to the three joined curved fingers. Crossing oneself is done from the forehead downward and from left to right. At the time of crossing it is necessary to remember Our Lord and Saviour Eyesus Christos’s suffering. (Lk. 11:20). Whosoever prays while crossing himself shall say first “In the name of the Father, of the Son, and of the Holy Spirit, One God, I cross my face and all my body in the sign of the cross”.\n\ne) Whosoever prays shall say his prayer humbly and silently not to be heard by others except to his ears. (1Sam. 1:3).\n\nf) Whosoever prays shall put all his thoughts before God and neglect worldly thoughts.\n\ng) Whosoever prays should not talk at all with any person interrupting his prayer.\n\nPrayer of Litany\n\n​\n\nIt is a prayer which we should pray to God to alter his wrath with mercy, his anger with patience. This prayer is also conducted whenever there is drought, plague, war and when chastisement is manifested. (Num. 16, 46-50; Jon. 3:5-10; Joel 2:12-19; 1Kgs. 8:25-55). Therefore, Our Church teaches that when a particular problem is created the faithful shall beseech God in fast and prayer in every parish church in the morning and evening.\n\n​\n\nPrayer for the Dead\n\nPrayer for the dead is a prayer offered to God that the dead might be released from the bondage of sin. The Church orders that prayer for the dead should be conducted. This prayer enables the deceased to receive forgiveness of sin, mercy and rest for the soul. For the righteous it brings grace upon grace and joyous life. It is through prayer that the dead and the living communicate. “The living pray for the dead and the dead for the living (Enoch 12:34), because their souls are alive. (Mt. 22:31-32; Lk. 20:3739; Barock 3:4). The Holy Apostles have commanded that prayer should be conducted for the dead both in the Church and burial places and offering should be presented for them. For the sake of your brother Christians and martyrs who died in Our Lord and Saviour Eyesus Christos, Gather in the Church without wickedness, bring offerings for them when you take them to the church and the burial places and pray the Psalms of David. (Didasc. Art. 33). The Fetha Negest in its spiritual part affirms what is quoted in Didasc. Art. 22. According to this, our church prays and presents a Psalm of Praise for the dead from the moment of death, up to the laying down in the grave, from home up to the church.\n\nThe commemoration for the dead is from the day of death up to a year and beyond.\n\n​\n\nOn the day of death\n\nOn the third day\n\nOn the seventh day\n\nOn the twelve day\n\nOn the thirtieth day\n\nOn the fortieth day\n\nOn the eightieth day\n\nIn the sixth month\n\nA year after the day of death.\n\n​\n\nThe church orders that on these days prayer should be conducted, incense should be burned, offerings should be given, commemoration should be held, and alms should be offered (Fetha Negest Art. 22).\n\nAlong with all these the Church prays:-\n\n​\n\nfor the sick\n\nfor the travelers\n\nfor the rain\n\nfor the fruit of the earth\n\nfor the water of the rivers\n\nfor the dead and the living\n\nfor the catechumens\n\nfor the unity of the church\n\nfor the peace of the country and the world\n\nfor the leaders and the clergy of the church and the needy\n\nfor the immigrants\n\nfor the sad and the sorrowful\n\nfor the imprisoned\n\nfor the transgressors\n\nfor the strengthening of faith\n\nfor the faithful men and women",
+          "body_amharic": "",
+          "sort_order": 1,
+          "source_reference": "User-provided “The Order of Prayer” attachment",
+          "review_status": "needs_review",
+          "review_notes": "Original English source retained verbatim; Amharic translation not supplied."
+        }
+      ]
+    }
+  ]
+}

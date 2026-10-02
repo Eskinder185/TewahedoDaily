@@ -10,6 +10,7 @@ import { displayClassification } from '../lib/publicContent/taxonomy'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { useAsync } from '../lib/cms/useAsync'
 import { FavoriteButton } from '../components/publicContent/FavoriteButton'
+import { recordGuestRecentMezmur } from '../lib/userContent/guestStorage'
 import { ChantPracticePlayer } from '../components/practice/ChantPracticePlayer'
 import {
   clearCustomHymnVideo,
@@ -26,9 +27,6 @@ export function PublicMezmurDetail() {
 
   return (
     <section className={s.page}>
-      <Link className={s.backLink} to="/practice">
-        ← Hymn library
-      </Link>
       {result.loading ? <p role="status">Loading hymn…</p> : null}
       {result.error ? (
         <div className={s.errorBox} role="alert">
@@ -64,7 +62,8 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
     setCustomUrl(readCustomHymnVideo(item.slug))
     setCustomDraft('')
     setCustomError('')
-  }, [item.slug])
+    recordGuestRecentMezmur(item.slug, item.title)
+  }, [item.slug, item.title])
 
   const libraryUrl = item.youtube_url || ''
   const activeUrl = customUrl || libraryUrl
@@ -146,12 +145,18 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
         badges={badges}
         onBack={() => navigate('/practice')}
         backLabel="Back to library"
-        headerActions={
+        footerActions={
           <div className={s.customActions}>
-            <FavoriteButton id={item.id} />
+            <FavoriteButton
+              id={item.id}
+              contentType="mezmur"
+              contentSlug={item.slug}
+              title={item.title}
+              route={`/practice/mezmur/${item.slug}`}
+            />
             {activeUrl || payload.videoId ? (
-              <button type="button" className={s.ghostBtn} onClick={copyActive}>
-                {copied ? 'Copied' : 'Copy video link'}
+              <button type="button" className={s.footerActionBtn} onClick={copyActive}>
+                {copied ? 'Copied' : '🔗 Copy video link'}
               </button>
             ) : null}
           </div>

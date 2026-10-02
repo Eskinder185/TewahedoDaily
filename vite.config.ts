@@ -39,14 +39,32 @@ export default defineConfig({
             return 'chant-data-misc'
           }
           
-          // Practice-related components
-          if (id.includes('src/components/practice/') || id.includes('src/lib/practice/')) {
-            return 'practice'
+          // Large static EOTC JSON dataset — separate from interactive calendar UI
+          if (id.includes('src/data/eotc_calendar_json/') || id.includes('src/data/calendar/')) {
+            return 'eotc-dataset'
+          }
+
+          // Calendar page + shared calendar libs (keep Homepage out via dynamic imports)
+          if (
+            id.includes('src/pages/CalendarPage') ||
+            id.includes('src/lib/calendar/') ||
+            id.includes('src/lib/eotcCalendar/') ||
+            id.includes('src/lib/churchCalendar/') ||
+            id.includes('src/components/calendar/') ||
+            id.includes('src/components/todayInChurch/')
+          ) {
+            return 'calendar'
           }
           
-          // Calendar-related components
-          if (id.includes('src/components/calendar/') || id.includes('src/components/todayInChurch/') || id.includes('src/lib/churchCalendar/')) {
-            return 'calendar'
+          // Practice-related components + chant workshop (not homepage)
+          if (
+            id.includes('src/components/practice/') ||
+            id.includes('src/lib/practice/') ||
+            id.includes('src/pages/PracticePage') ||
+            id.includes('src/pages/MezmurDetailPage') ||
+            id.includes('src/pages/HymnPractice')
+          ) {
+            return 'practice'
           }
           
           // Prayer-related components

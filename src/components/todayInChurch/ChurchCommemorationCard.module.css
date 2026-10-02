@@ -71,8 +71,9 @@
 .heroWrap {
   margin: 0 0 var(--space-4);
   width: 100%;
-  aspect-ratio: 16 / 8.6;
-  border-radius: var(--radius-md);
+  max-width: 36rem;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, transparent);
 }
@@ -82,7 +83,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
 }
 
 .kicker {

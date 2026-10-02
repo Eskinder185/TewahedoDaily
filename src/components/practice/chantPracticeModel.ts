@@ -89,7 +89,7 @@ export function chantEntryToPracticePayload(
       transliterationLyrics: m.lyricsTransliteration ?? '',
       videoId: id,
       audioUrl: m.audioUrl?.trim() || undefined,
-      watchUrl: id ? youtubeWatchUrl(id) : undefined,
+      watchUrl: (m.youtubeUrl && id ? m.youtubeUrl.trim() : null) || (id ? youtubeWatchUrl(id) : undefined),
       learning,
     }
   }

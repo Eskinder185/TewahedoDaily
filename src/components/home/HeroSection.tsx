@@ -137,21 +137,26 @@ export function HeroSection() {
       }}
     >
       <div className={styles.backdrop} aria-hidden>
-        {slides.map((slide, slideIndex) => (
-          <img
-            key={slide.id}
-            src={slide.imageUrl}
-            alt=""
-            className={`${styles.backdropImg} ${animationClass} ${
-              slideIndex === index ? styles.backdropActive : styles.backdropIdle
-            }`}
-            width={imageManifest.home.heroWidth}
-            height={imageManifest.home.heroHeight}
-            sizes="100vw"
-            fetchPriority={slideIndex === 0 ? 'high' : 'low'}
-            decoding="async"
-          />
-        ))}
+        {slides.map((slide, slideIndex) => {
+          const isFallbackHero = slide.imageUrl === imageManifest.home.hero || slide.id === 'fallback'
+          return (
+            <img
+              key={slide.id}
+              src={slide.imageUrl}
+              srcSet={isFallbackHero ? imageManifest.home.heroSrcSet : undefined}
+              alt=""
+              className={`${styles.backdropImg} ${animationClass} ${
+                slideIndex === index ? styles.backdropActive : styles.backdropIdle
+              }`}
+              width={imageManifest.home.heroWidth}
+              height={imageManifest.home.heroHeight}
+              sizes="100vw"
+              fetchPriority={slideIndex === 0 ? 'high' : 'low'}
+              loading={slideIndex === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          )
+        })}
         <div className={styles.backdropScrim} />
       </div>
       <div className={styles.aurora} aria-hidden />

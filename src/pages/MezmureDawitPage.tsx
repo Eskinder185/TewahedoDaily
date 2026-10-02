@@ -11,6 +11,7 @@ import { prayerCollectionPath } from '../lib/prayers/prayerSlug'
 import { DAILY_COLLECTION_SLUGS } from '../lib/prayers/dailyPrayerRhythmSchedule'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import { isMobileViewport, scrollTargetIntoView } from '../lib/scrollUtils'
+import { useReadingProgressTracker } from '../lib/userContent/useReadingProgressTracker'
 import styles from './MezmureDawitPage.module.css'
 
 const JUMP_TARGETS = [1, 25, 50, 75, 100, 125, 150]
@@ -50,6 +51,24 @@ export function MezmureDawitPage() {
   const [prayers, setPrayers] = useState<CollectionPrayer[] | null>(null)
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
+
+  const selectedPsalm = Number.parseInt(selectedRaw, 10)
+  useReadingProgressTracker({
+    contentType: 'psalm',
+    contentSlug:
+      Number.isFinite(selectedPsalm) && selectedPsalm >= 1 && selectedPsalm <= 150
+        ? `psalm-${selectedPsalm}`
+        : 'mezmure-dawit',
+    collectionSlug: DAILY_COLLECTION_SLUGS.mezmureDawit,
+    title:
+      Number.isFinite(selectedPsalm) && selectedPsalm >= 1 && selectedPsalm <= 150
+        ? formatPsalmLabel(selectedPsalm)
+        : 'Mezmure Dawit',
+    route:
+      Number.isFinite(selectedPsalm) && selectedPsalm >= 1 && selectedPsalm <= 150
+        ? `${prayerCollectionPath(DAILY_COLLECTION_SLUGS.mezmureDawit)}?n=${selectedPsalm}`
+        : prayerCollectionPath(DAILY_COLLECTION_SLUGS.mezmureDawit),
+  })
 
   useEffect(() => {
     let active = true

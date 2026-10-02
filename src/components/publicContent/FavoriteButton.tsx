@@ -2,41 +2,65 @@ import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useAsync } from '../../lib/cms/useAsync'
-import { database } from '../../lib/publicContent/service'
-export function FavoriteButton({ id }: { id: string }) {
+import { isFavorited, toggleFavorite } from '../../lib/userContent/favoritesService'
+import type { UserContentType } from '../../lib/userContent/types'
+
+type Props = {
+  id?: string
+  contentType?: UserContentType
+  contentSlug?: string
+  collectionSlug?: string
+  title?: string
+  route?: string
+}
+
+export function FavoriteButton({
+  id,
+  contentType = 'mezmur',
+  contentSlug,
+  collectionSlug,
+  title,
+  route,
+}: Props) {
   const { session, loading } = useAuth()
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
+  const [syncNote, setSyncNote] = useState('')
   const userId = session?.user.id
+  const identity = {
+    contentType,
+    contentId: id || null,
+    contentSlug: contentSlug || null,
+    collectionSlug: collectionSlug || null,
+    title: title || null,
+    route: route || null,
+  }
+
   const result = useAsync(
     useCallback(async () => {
-      if (!userId) return false
-      const { data, error } = await database()
-        .from('mezmur_favorites')
-        .select('mezmur_id')
-        .eq('user_id', userId)
-        .eq('mezmur_id', id)
-        .maybeSingle()
-      if (error) throw error
-      return !!data
-    }, [id, userId]),
+      const state = await isFavorited(userId, identity)
+      if (state.error && userId && import.meta.env.DEV) {
+        console.error('[FavoriteButton] load', state.error)
+      }
+      // Authenticated table failure: still allow local state; show retry only when auth + hard fail with no local fallback path
+      if (state.error && userId && state.source === 'none') {
+        throw new Error(state.error)
+      }
+      return { favorited: state.favorited, softError: state.error && userId ? state.error : '' }
+    }, [id, contentType, contentSlug, collectionSlug, userId]),
   )
+
   async function toggle() {
-    if (!userId) return
     setBusy(true)
     setError('')
+    setSyncNote('')
     try {
-      const request = result.data
-        ? database()
-            .from('mezmur_favorites')
-            .delete()
-            .eq('user_id', userId)
-            .eq('mezmur_id', id)
-        : database()
-            .from('mezmur_favorites')
-            .insert({ user_id: userId, mezmur_id: id })
-      const { error } = await request
-      if (error) throw error
+      const currently = !!result.data?.favorited
+      const next = await toggleFavorite(userId, identity, currently)
+      if (next.error) {
+        if (userId) setSyncNote(next.error)
+        else setSyncNote('')
+      }
       result.reload()
     } catch {
       setError('Could not update favorite. Try again.')
@@ -44,23 +68,37 @@ export function FavoriteButton({ id }: { id: string }) {
       setBusy(false)
     }
   }
+
   if (loading) return null
-  if (!session) return <Link to="/account">Sign in to save favorites</Link>
+
+  const favorited = !!result.data?.favorited
+  const loadError = result.error || result.data?.softError || error
+
   return (
-    <>
+    <div>
       <button
-        disabled={busy || result.loading || !!result.error}
-        aria-pressed={!!result.data}
+        type="button"
+        disabled={busy || result.loading}
+        aria-pressed={favorited}
         onClick={() => void toggle()}
       >
-        {result.data ? 'Remove favorite' : 'Add favorite'}
+        {favorited ? '♥ Favorited' : '♡ Add to favorites'}
       </button>
-      {(error || result.error) && (
+      {!session ? (
+        <p>
+          <Link to="/account">Sign in to sync favorites</Link>
+          {favorited ? ' · Saved on this device' : null}
+        </p>
+      ) : null}
+      {session && loadError ? (
         <span role="alert">
-          {error || 'Could not load favorites.'}{' '}
-          <button onClick={result.reload}>Retry</button>
+          {loadError}{' '}
+          <button type="button" onClick={result.reload}>
+            Retry
+          </button>
         </span>
-      )}
-    </>
+      ) : null}
+      {syncNote && !loadError ? <span role="status">{syncNote}</span> : null}
+    </div>
   )
 }

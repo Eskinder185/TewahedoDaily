@@ -1277,13 +1277,57 @@ export function SynaxariumDayEditor() {
                     onChange={(e) =>
                       setCommForm({ ...commWorking, commemoration_type: e.target.value })
                     }
+                    placeholder="martyr, saint, bishop, feast…"
                   />
                 </label>
                 <label>
-                  Summary
+                  Compact summary (Calendar preview)
                   <textarea
                     value={commWorking.summary || ''}
                     onChange={(e) => setCommForm({ ...commWorking, summary: e.target.value })}
+                    rows={3}
+                    placeholder="1–2 sentences for the Calendar panel. Leave blank to derive carefully from the body."
+                  />
+                </label>
+                <label>
+                  Compact summary (Amharic)
+                  <textarea
+                    lang="am"
+                    value={commWorking.summary_amharic || ''}
+                    onChange={(e) =>
+                      setCommForm({ ...commWorking, summary_amharic: e.target.value })
+                    }
+                    rows={3}
+                  />
+                </label>
+                <label>
+                  Review status
+                  <select
+                    value={commWorking.content_review_status || ''}
+                    onChange={(e) =>
+                      setCommForm({
+                        ...commWorking,
+                        content_review_status: e.target.value || null,
+                      })
+                    }
+                  >
+                    <option value="">Default (auto)</option>
+                    <option value="ok">ok</option>
+                    <option value="needs_review">needs_review</option>
+                    <option value="omit_public">omit_public</option>
+                  </select>
+                </label>
+                <label>
+                  Sort order
+                  <input
+                    type="number"
+                    value={commWorking.sort_order ?? 0}
+                    onChange={(e) =>
+                      setCommForm({
+                        ...commWorking,
+                        sort_order: Number(e.target.value) || 0,
+                      })
+                    }
                   />
                 </label>
                 <label>
@@ -1293,6 +1337,7 @@ export function SynaxariumDayEditor() {
                     onChange={(e) =>
                       setCommForm({ ...commWorking, body_english: e.target.value })
                     }
+                    rows={8}
                   />
                 </label>
                 <label>
@@ -1303,6 +1348,7 @@ export function SynaxariumDayEditor() {
                     onChange={(e) =>
                       setCommForm({ ...commWorking, body_amharic: e.target.value })
                     }
+                    rows={8}
                   />
                 </label>
                 <label>

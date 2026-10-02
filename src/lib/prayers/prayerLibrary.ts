@@ -1,7 +1,6 @@
 import {
   loadPrayerCollection,
   loadPrayerCollections,
-  searchPrayers as searchNormalPrayers,
 } from './prayerSupabase'
 import {
   countLiturgySections,
@@ -10,17 +9,15 @@ import {
   getLiturgyEntriesForSection,
   getLiturgySectionBySlug,
   getLiturgySections,
-  searchLiturgyEntries,
 } from './liturgySupabase'
 import {
   countSynaxariumDays,
   getSynaxariumCommemorationsForDay,
   getSynaxariumDayBySlug,
   getSynaxariumDays,
-  searchSynaxarium,
   SYNAXARIUM_LIBRARY_SORT_ORDER,
 } from './synaxariumSupabase'
-import { prayerCollectionPath, prayerDetailPath } from './prayerSlug'
+import { prayerCollectionPath } from './prayerSlug'
 import type {
   PrayerLibraryCollection,
   PrayerSearchResult,
@@ -30,11 +27,6 @@ const LEGACY_LITURGY_PRAYER_SLUGS = new Set(['divine-liturgy'])
 
 export function libraryCollectionPath(collection: Pick<PrayerLibraryCollection, 'slug'>): string {
   return prayerCollectionPath(collection.slug)
-}
-
-function excerptFrom(...parts: (string | null | undefined)[]): string {
-  const text = parts.map((part) => (part || '').trim()).find(Boolean) || ''
-  return text.length > 170 ? `${text.slice(0, 167)}…` : text
 }
 
 function normalizeLibraryText(value: string | null | undefined): string {
@@ -229,55 +221,14 @@ export async function resolveLibraryCollection(slugInput?: string | null) {
 }
 
 export async function searchPrayerLibrary(queryInput: string): Promise<PrayerSearchResult[]> {
-  const query = queryInput.trim()
-  if (!query) return []
+  const { searchPrayCatalog } = await import('./prayerSearch')
+  const { results } = await searchPrayCatalog(queryInput, { limit: 30 })
+  return results
+}
 
-  const [prayers, liturgyEntries, commemorations] = await Promise.all([
-    searchNormalPrayers(query).catch(() => []),
-    searchLiturgyEntries(query, 10).catch(() => []),
-    searchSynaxarium(query, 10).catch(() => []),
-  ])
-
-  const prayerResults: PrayerSearchResult[] = prayers.map((prayer) => ({
-    id: `prayer:${prayer.id}`,
-    sourceType: 'prayer',
-    title: prayer.transliterationTitle || prayer.title,
-    titleAmharic: prayer.title,
-    excerpt: excerptFrom(prayer.summary.english, prayer.text.english, prayer.text.amharic),
-    route: prayerDetailPath(prayer.slug, prayer.collectionSlug),
-    metadata: [prayer.collection, prayer.chapter].filter(Boolean).join(' · '),
-  }))
-
-  const liturgyResults: PrayerSearchResult[] = liturgyEntries.map((entry) => {
-    const collectionSlug = entry.collectionSlug || 'divine-liturgy'
-    const sectionSlug = entry.sectionSlug
-    const hash = entry.slug ? `#entry-${entry.slug}` : ''
-    return {
-      id: `liturgy:${entry.id}`,
-      sourceType: 'liturgy' as const,
-      title: entry.title || entry.transliteration || entry.contentType || 'Liturgy entry',
-      titleAmharic: entry.titleAmharic,
-      excerpt: excerptFrom(entry.textEnglish, entry.textAmharic, entry.transliteration),
-      route: sectionSlug
-        ? `/pray/${collectionSlug}/${sectionSlug}${hash}`
-        : `/pray/${collectionSlug}`,
-      metadata: ['Divine Liturgy', entry.contentType, entry.speaker]
-        .filter((part) => part && part.toLowerCase() !== 'unknown')
-        .join(' · '),
-    }
-  })
-
-  const synaxariumResults: PrayerSearchResult[] = commemorations.map((item) => ({
-    id: `synaxarium:${item.id}`,
-    sourceType: 'synaxarium',
-    title: item.title,
-    titleAmharic: item.titleAmharic,
-    excerpt: excerptFrom(item.summary, item.bodyEnglish, item.bodyAmharic),
-    route: `/pray/synaxarium/${item.daySlug}`,
-    metadata: ['Synaxarium', item.daySlug, item.commemorationType].filter(Boolean).join(' · '),
-  }))
-
-  return [...prayerResults, ...liturgyResults, ...synaxariumResults].slice(0, 30)
+export async function suggestPrayerLibrary(queryInput: string, limit = 8) {
+  const { searchPrayCatalog } = await import('./prayerSearch')
+  return searchPrayCatalog(queryInput, { limit, suggestionLimit: limit })
 }
 
 export {

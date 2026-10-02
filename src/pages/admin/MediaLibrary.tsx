@@ -4,7 +4,7 @@ import { errorMessage } from '../../lib/cms/mezmurService'
 import {
   deleteMediaAsset,
   listMediaAssets,
-  MEDIA_FOLDERS,
+  MEDIA_FOLDER_OPTIONS,
   resolveContentMediaUrl,
   updateMediaAsset,
   uploadContentMedia,
@@ -166,9 +166,9 @@ export function MediaLibrary() {
             disabled={legacy}
           >
             <option value="">All</option>
-            {MEDIA_FOLDERS.map((name) => (
-              <option key={name} value={name}>
-                {name}
+            {MEDIA_FOLDER_OPTIONS.map((entry) => (
+              <option key={entry.value} value={entry.value}>
+                {entry.label}
               </option>
             ))}
           </select>

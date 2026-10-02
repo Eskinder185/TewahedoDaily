@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { PrayerReader } from '../components/prayers/PrayerReader'
 import { PageSection } from '../components/ui/PageSection'
 import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
+import { FavoriteButton } from '../components/publicContent/FavoriteButton'
 import type { CollectionPrayer } from '../lib/prayers/prayerCollections'
 import { loadPrayer } from '../lib/prayers/prayerSupabase'
 import { useTranslation } from '../i18n'
-import { prayerShareUrl } from '../lib/prayers/prayerSlug'
+import { prayerDetailPath, prayerShareUrl } from '../lib/prayers/prayerSlug'
+import { useReadingProgressTracker } from '../lib/userContent/useReadingProgressTracker'
 import styles from './PrayerDetailPage.module.css'
 
 function youtubeEmbedUrl(youtubeId?: string, youtubeUrl?: string): string {
@@ -56,6 +58,21 @@ export function PrayerDetailPage() {
       ? `Tewahedo Daily | ${title}`
       : `Tewahedo Daily | ${tr('prayers.detail.notFoundTitle')}`
   }, [prayer, tr])
+
+  const progressIdentity = useMemo(() => {
+    if (!prayer) return null
+    return {
+      contentType: (prayer.psalmNumber ? 'psalm' : 'prayer') as 'psalm' | 'prayer',
+      contentId: prayer.id || null,
+      contentSlug: prayer.slug,
+      collectionSlug: prayer.collectionSlug,
+      sectionSlug: prayer.section || null,
+      title: prayer.transliterationTitle || prayer.title,
+      route: prayerDetailPath(prayer.slug, prayer.collectionSlug),
+    }
+  }, [prayer])
+
+  useReadingProgressTracker(progressIdentity)
 
   const copyLink = async () => {
     if (!prayer) return
@@ -128,6 +145,14 @@ export function PrayerDetailPage() {
               {tr('prayers.detail.linkCopied')}
             </span>
           ) : null}
+          <FavoriteButton
+            id={prayer.id}
+            contentType={prayer.psalmNumber ? 'psalm' : 'prayer'}
+            contentSlug={prayer.slug}
+            collectionSlug={prayer.collectionSlug}
+            title={prayer.transliterationTitle || prayer.title}
+            route={prayerDetailPath(prayer.slug, prayer.collectionSlug)}
+          />
         </nav>
 
         <header className={styles.header}>

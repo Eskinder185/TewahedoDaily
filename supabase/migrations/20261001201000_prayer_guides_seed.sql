@@ -1,0 +1,492 @@
+-- Seed prayer guides from data/tewahedo_prayer_resources.csv
+-- Idempotent upserts by slug / (guide_id, section slug).
+begin;
+
+-- Guide: learn-how-to-pray
+insert into public.prayer_guides (
+  slug, title, title_amharic, summary, summary_amharic, status, sort_order, source_title, source_reference, review_status, published_at
+) values (
+  'learn-how-to-pray',
+  'Learn How to Pray',
+  'እንዴት መጸለይ እንደሚገባ',
+  'A practical guide to prayer and preparing for church in the Ethiopian Orthodox Tewahedo tradition.',
+  'ወደ ቤተ ክርስቲያን ለመሔድና ቅዳሴ ለማስቀደስ የሚደረጉ ስርአተ ቤተ ክርስቲያን።',
+  'published'::public.content_status,
+  10,
+  'User-provided Amharic text',
+  null,
+  'needs_review',
+  now()
+)
+on conflict (slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  summary = excluded.summary,
+  summary_amharic = excluded.summary_amharic,
+  status = excluded.status,
+  sort_order = excluded.sort_order,
+  source_title = excluded.source_title,
+  review_status = excluded.review_status,
+  published_at = coalesce(public.prayer_guides.published_at, excluded.published_at),
+  updated_at = now();
+
+insert into public.prayer_guide_sections (
+  guide_id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, review_status, review_notes
+)
+select g.id,
+  'preparing',
+  'Preparing to Go to Church',
+  'ለቤተ ክርስቲያን መዘጋጀት',
+  'When we wake from sleep, we wash our faces, keep ourselves clean, wear white Christian clothing, and go to church.',
+  '1.. በመጀመሪያከእንቅልፍ ስንነሳ ፊታችን ታጥበን ንፅህናችን ጠብቀን ክርስቲያናዊ ልብስ ነጭ ለብሰን መሔድ::',
+  1,
+  'User-provided Amharic text',
+  'needs_review',
+  null
+from public.prayer_guides g
+where g.slug = 'learn-how-to-pray'
+on conflict (guide_id, slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  body_english = excluded.body_english,
+  body_amharic = excluded.body_amharic,
+  sort_order = excluded.sort_order,
+  source_reference = excluded.source_reference,
+  review_status = excluded.review_status,
+  review_notes = excluded.review_notes,
+  updated_at = now();
+
+insert into public.prayer_guide_sections (
+  guide_id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, review_status, review_notes
+)
+select g.id,
+  'grounds',
+  'Entering the Church Grounds',
+  'ወደ ቤተ ክርስቲያን ግቢ ሲደርሱ',
+  'When we reach the church grounds, the step we cross is called “መቃምድር” in the source. We step with our right foot first.',
+  '2.. ከቤተ ክርስቲያን ቅጥር ግቢ ስንደርስ እምንራመደው ደረጃ በቤተ ክርስቲያን መቃምድር ይባላል: እሱን ስንራመድ እምናስቀድመው ቀኝ እግራችንን ነው::',
+  2,
+  'User-provided Amharic text',
+  'needs_review',
+  'Verify the term መቃምድር and this step against the original source.'
+from public.prayer_guides g
+where g.slug = 'learn-how-to-pray'
+on conflict (guide_id, slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  body_english = excluded.body_english,
+  body_amharic = excluded.body_amharic,
+  sort_order = excluded.sort_order,
+  source_reference = excluded.source_reference,
+  review_status = excluded.review_status,
+  review_notes = excluded.review_notes,
+  updated_at = now();
+
+insert into public.prayer_guide_sections (
+  guide_id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, review_status, review_notes
+)
+select g.id,
+  'entering',
+  'Entering the Church',
+  'ወደ ቤተ ክርስቲያን መግባት',
+  'As we enter, we kiss the door.',
+  '3.. ወደ ውጥ ስንገባበሩን መሳለም::',
+  3,
+  'User-provided Amharic text',
+  'needs_review',
+  'The phrase ወደ ውጥ appears unclear; Amharic preserved verbatim.'
+from public.prayer_guides g
+where g.slug = 'learn-how-to-pray'
+on conflict (guide_id, slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  body_english = excluded.body_english,
+  body_amharic = excluded.body_amharic,
+  sort_order = excluded.sort_order,
+  source_reference = excluded.source_reference,
+  review_status = excluded.review_status,
+  review_notes = excluded.review_notes,
+  updated_at = now();
+
+insert into public.prayer_guide_sections (
+  guide_id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, review_status, review_notes
+)
+select g.id,
+  'sanctuary',
+  'At the Entrance of the Sanctuary',
+  'በቤተ መቅደሱ በር',
+  'When we reach the door of the Bet Mekdes, we bow three times. We make the sign of the Cross three times in the name of the Father, the Son, and the Holy Spirit.
+
+O Church, I greet you with peace, for you are fashioned in the likeness of Jerusalem.',
+  '4.. ቤተ መቅደሱ በር ስንደርስ 3 ጊዜ እየሰገድን እምንለው: በአብ በወል በመንፈስ ቅዱስም ስም ፊትን ሶስት ጊዜ በማማተብ ወይም በመባረክ ቤተ ክርስቲያን ሆይ ሰላም እልሻለሁ በኢየሩሳሌም አምሳል ተጽፈሻልና ብለን ፊታችንን ሶስት ጊዜ ባርከን የሕሊናጸሎት',
+  4,
+  'User-provided Amharic text',
+  'needs_review',
+  'Check possible typing errors including በወል and በማማተብ; translation is a draft.'
+from public.prayer_guides g
+where g.slug = 'learn-how-to-pray'
+on conflict (guide_id, slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  body_english = excluded.body_english,
+  body_amharic = excluded.body_amharic,
+  sort_order = excluded.sort_order,
+  source_reference = excluded.source_reference,
+  review_status = excluded.review_status,
+  review_notes = excluded.review_notes,
+  updated_at = now();
+
+insert into public.prayer_guide_sections (
+  guide_id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, review_status, review_notes
+)
+select g.id,
+  'thanksgiving',
+  'Thanksgiving Prayer',
+  'ምጋና',
+  'We pray inwardly: We thank You for guarding us from the day we were born until today, for giving us health and life, and for allowing us to see the light of this day.',
+  'ምጋና
+እንጸልያለን ጸሎታችን ከተወለድንበት ጀምሮ እስከ ዛሬ ድረስ የጠበቀነን የመገነን ጤና የሰጠንን እንድንኖር የዛሬየዋን ብርሃን እንድናይ ስለፈቀክልን::
+እናመሰግናለን::',
+  5,
+  'User-provided Amharic text',
+  'needs_review',
+  'Check ምጋና, የመገነን, and other possible typing errors against the original.'
+from public.prayer_guides g
+where g.slug = 'learn-how-to-pray'
+on conflict (guide_id, slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  body_english = excluded.body_english,
+  body_amharic = excluded.body_amharic,
+  sort_order = excluded.sort_order,
+  source_reference = excluded.source_reference,
+  review_status = excluded.review_status,
+  review_notes = excluded.review_notes,
+  updated_at = now();
+
+insert into public.prayer_guide_sections (
+  guide_id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, review_status, review_notes
+)
+select g.id,
+  'supplication',
+  'Supplication Prayer',
+  'ልመና',
+  'O God, You have added to my years and kept me in blessing until now. Bless the rest of my days more than those that have passed, and keep me in health. Christ, Savior of the World, who heard my prayer yesterday, guard me from temptation now and keep me in peace.
+
+Amen.',
+  'ልመና
+እግዚአብሔር ሆይ በእድሜየ ለይ ጨምረህ እስካሁን በበረከት የጠበቀኝ አምላክ ቀሪ ዘመኔ ከእስከ አሁኑ የበለጠ ባርክህ በጤና አኑረኝ: ትላንት ጽእሎቴን የሰማህ መድኃኔዓለም ክርስቶስ አሁንም ከፈተና ጠብቀህ በሰላም አኑረኝ::
+ዓሜን::',
+  6,
+  'User-provided Amharic text',
+  'needs_review',
+  'Check apparent typing errors, especially ከእስከ and ጽእሎቴን; translation is a draft.'
+from public.prayer_guides g
+where g.slug = 'learn-how-to-pray'
+on conflict (guide_id, slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  body_english = excluded.body_english,
+  body_amharic = excluded.body_amharic,
+  sort_order = excluded.sort_order,
+  source_reference = excluded.source_reference,
+  review_status = excluded.review_status,
+  review_notes = excluded.review_notes,
+  updated_at = now();
+
+-- Guide: the-order-of-prayer
+insert into public.prayer_guides (
+  slug, title, title_amharic, summary, summary_amharic, status, sort_order, source_title, source_reference, review_status, published_at
+) values (
+  'the-order-of-prayer',
+  'The Order of Prayer',
+  'የጸሎት ሥርዓት',
+  'Source material on canonical hours, kinds of prayer, prayer practices, litany, and prayer for the dead.',
+  null,
+  'draft'::public.content_status,
+  20,
+  'User-provided “The Order of Prayer” attachment',
+  null,
+  'needs_review',
+  null
+)
+on conflict (slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  summary = excluded.summary,
+  summary_amharic = excluded.summary_amharic,
+  status = excluded.status,
+  sort_order = excluded.sort_order,
+  source_title = excluded.source_title,
+  review_status = excluded.review_status,
+  published_at = coalesce(public.prayer_guides.published_at, excluded.published_at),
+  updated_at = now();
+
+insert into public.prayer_guide_sections (
+  guide_id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, review_status, review_notes
+)
+select g.id,
+  'full_source',
+  'Full English Source',
+  null,
+  'THE ORDER OF PRAYER
+
+​
+
+Prayer is a word by which man communicates with his Creator in Faith, thanking and beseeching Him for the forgiveness of his sin. (Fetha Negest 14:528). The basis of prayer is the divine word which runs “Ask, and it will be given to you, seek, and you will find, knock and it will be opened to you”. (Mt. 7:7).
+
+For prayer, there is a particular time and place. The time during which the clergy and the laity go to church are mornings and evenings also mid days in the fasting season.
+
+​
+
+A. Canonical Hours of Prayer
+
+​
+
+Prayers are said seven times a day: - (Ps. 118:164).
+
+​
+
+a) In the morning
+
+b) At the third hour
+
+c) At noon
+
+d) At the ninth hour
+
+e) At sun set (evening)
+
+f) At bedtime
+
+g) At midnight (Our Lord and Saviour Eyesus Christos born, baptized, rose from the dead and will come again for judgment at midnight)
+
+​
+
+The faithful and the clergy have to go to the church every morning and evening. But in the remaining hours they can pray wherever they are. (Fetha Negest 14; Didas 12).
+
+​
+
+​
+
+B. Kinds of prayers
+
+​
+
+There are three kinds of prayers.
+
+​
+
+a) Private prayer
+
+b) Family prayer
+
+c) Public prayer
+
+a) Private Prayer
+
+​
+
+Private prayer is said at home and at any appropriate place. It is a solemn prayer made to God privately by shutting his room so as not be seen and heard by any one, and lifting his heart to the Creator to be seen and heard by Him alone. (Mt. 6:5-13).
+
+​
+
+b) Family Prayer
+
+​
+
+As the word indicates family prayer is a prayer offered by all the members of a family together. For this the prayer of Cornelius the Centurion will be an example. (Acts 10:2-6).
+
+c) Public Prayer
+
+​
+
+It is a prayer to be said by the clergy and the laity, men and women, old and young gathered together in the church and in all convenient places. We read in the Scriptures that the faithful in the Old Testament used to go to the temple and pray (1 Sam. 1:9-13; Ps. 12:1; Lk. 18:10-14). Also at the time of the New Testament the apostles and their followers used to pray in the upper room and at the house Mariam, St. Mark’s mother, which served as Christian gathering. They used also together and pray at the first church of Antioch (Acts 1:14, 25, 3:1, 12:12, 13:1-3)
+
+​
+
+According to this, our Church has laid down rules that the clergy and the laity together praise the Lord in prayer, hymn, liturgy, horology (Saatat).
+
+​
+
+Saatat (ሰአታት - Seatati) is conducted throughout the year in monasteries and big churches, on Sundays and holidays. Saatat is also performed for the dead during the night. For the day time also, there is Saatat. It is said daily at every hour during the time of fast. (Abba Georgia’ Saatat). Cantillation (Hymn) is a song performed in union by the clergy with prayer sticks (መቋሚያ - Mekwamiya), sistrums (ፀናፅል -Tsenat͟sili) and drums (ከበሮ - Kebero); the hymn of Lent is sung without sistrums and drums; it is sung with prayer sticks only.
+
+Prayers that are conducted by priests with participation of the laity are:-
+
+​
+
+prayer of the consecration or dedication of a new church
+prayer of Baptism
+
+prayer of Ordination and Consecration
+
+prayer of Matrimony
+
+prayer of Litany
+
+prayer for the Dead
+
+prayer of Liturgy
+
+Ethiopian Orthodox Tewahedo Church Liturgical prayer has three parts:
+
+​
+
+1. From “O my brother, think of thy sin” upto “How awful this day” which is the preparatory service.
+
+2. From “How awful is this day” upto “Go forth, Ye catechumen” which is the first part of the Eucharist.
+
+3. After this the main part of the Holy Liturgy which comes after “Go forth, Ye catechumen” is said.
+
+​
+
+The procedure for carrying out this is given in detail in the Holy Liturgy and the Fetha Negest Article 12.
+
+The Ethiopian Orthodox Tewahedo Church has fourteen anaphora’s by which it celebrates the Holy Communion.
+
+These are:
+
+​
+
+The Anaphora of the Apostles
+
+The Anaphora of the Lord
+
+The Anaphora of John, Son of Thunder
+
+The Anaphora of St. Our Holy Mother Virgin Mariam
+
+The Anaphora of The three Hundred
+
+The Anaphora of St. Athanasius
+
+The Anaphora of St. Bassilios
+
+The Anaphora of St. Gregory, Brother of St. Bassilios
+
+The Anaphora of St. Ephiphanius
+
+The Anaphora of St. John Chrysostom
+
+The Anaphora of St. Cyril
+
+The Anaphora of St. Jacob of Serough
+
+The Anaphora of Dioscorus
+
+The Anaphora of St. Gregory Second
+
+The Performance of Private and Public Prayer in Ethiopian Orthodox Tewahedo Church
+
+​
+
+In the time of prayer one has to follow these orders.
+
+​
+
+a) Standing erect on two feet without leaning on a pole or a wall (Ps. 5:3).
+
+b) Girding the loin, wearing clothes down over the shoulders and round the waist. (Lk. 12:35; the Fetha Negest Article 14).
+
+c) Standing up turning the face towards the east without moving to and from and without looking left and right. It is essential to pray stretching the hands and lifting up the heart. (Ps. 133:2; Jn. 11:41).
+
+d) At the beginning and closing of prayer, one has to cross himself with the pointing finger placed in such a way that it makes a cross in relation to the three joined curved fingers. Crossing oneself is done from the forehead downward and from left to right. At the time of crossing it is necessary to remember Our Lord and Saviour Eyesus Christos’s suffering. (Lk. 11:20). Whosoever prays while crossing himself shall say first “In the name of the Father, of the Son, and of the Holy Spirit, One God, I cross my face and all my body in the sign of the cross”.
+
+e) Whosoever prays shall say his prayer humbly and silently not to be heard by others except to his ears. (1Sam. 1:3).
+
+f) Whosoever prays shall put all his thoughts before God and neglect worldly thoughts.
+
+g) Whosoever prays should not talk at all with any person interrupting his prayer.
+
+Prayer of Litany
+
+​
+
+It is a prayer which we should pray to God to alter his wrath with mercy, his anger with patience. This prayer is also conducted whenever there is drought, plague, war and when chastisement is manifested. (Num. 16, 46-50; Jon. 3:5-10; Joel 2:12-19; 1Kgs. 8:25-55). Therefore, Our Church teaches that when a particular problem is created the faithful shall beseech God in fast and prayer in every parish church in the morning and evening.
+
+​
+
+Prayer for the Dead
+
+Prayer for the dead is a prayer offered to God that the dead might be released from the bondage of sin. The Church orders that prayer for the dead should be conducted. This prayer enables the deceased to receive forgiveness of sin, mercy and rest for the soul. For the righteous it brings grace upon grace and joyous life. It is through prayer that the dead and the living communicate. “The living pray for the dead and the dead for the living (Enoch 12:34), because their souls are alive. (Mt. 22:31-32; Lk. 20:3739; Barock 3:4). The Holy Apostles have commanded that prayer should be conducted for the dead both in the Church and burial places and offering should be presented for them. For the sake of your brother Christians and martyrs who died in Our Lord and Saviour Eyesus Christos, Gather in the Church without wickedness, bring offerings for them when you take them to the church and the burial places and pray the Psalms of David. (Didasc. Art. 33). The Fetha Negest in its spiritual part affirms what is quoted in Didasc. Art. 22. According to this, our church prays and presents a Psalm of Praise for the dead from the moment of death, up to the laying down in the grave, from home up to the church.
+
+The commemoration for the dead is from the day of death up to a year and beyond.
+
+​
+
+On the day of death
+
+On the third day
+
+On the seventh day
+
+On the twelve day
+
+On the thirtieth day
+
+On the fortieth day
+
+On the eightieth day
+
+In the sixth month
+
+A year after the day of death.
+
+​
+
+The church orders that on these days prayer should be conducted, incense should be burned, offerings should be given, commemoration should be held, and alms should be offered (Fetha Negest Art. 22).
+
+Along with all these the Church prays:-
+
+​
+
+for the sick
+
+for the travelers
+
+for the rain
+
+for the fruit of the earth
+
+for the water of the rivers
+
+for the dead and the living
+
+for the catechumens
+
+for the unity of the church
+
+for the peace of the country and the world
+
+for the leaders and the clergy of the church and the needy
+
+for the immigrants
+
+for the sad and the sorrowful
+
+for the imprisoned
+
+for the transgressors
+
+for the strengthening of faith
+
+for the faithful men and women',
+  null,
+  1,
+  'User-provided “The Order of Prayer” attachment',
+  'needs_review',
+  'Original English source retained verbatim; Amharic translation not supplied.'
+from public.prayer_guides g
+where g.slug = 'the-order-of-prayer'
+on conflict (guide_id, slug) do update set
+  title = excluded.title,
+  title_amharic = excluded.title_amharic,
+  body_english = excluded.body_english,
+  body_amharic = excluded.body_amharic,
+  sort_order = excluded.sort_order,
+  source_reference = excluded.source_reference,
+  review_status = excluded.review_status,
+  review_notes = excluded.review_notes,
+  updated_at = now();
+
+commit;

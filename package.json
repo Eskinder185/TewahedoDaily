@@ -26,9 +26,14 @@
     "supabase:check-data": "node scripts/import-chants-to-supabase.mjs --dry-run",
     "supabase:plan-prayers": "node scripts/import-prayers.mjs --dry-run",
     "supabase:import-prayers": "node scripts/import-prayers.mjs --apply",
+    "supabase:plan-prayer-guides": "node --env-file-if-exists=.env.local scripts/import-prayer-guides.mjs --dry-run",
+    "supabase:import-prayer-guides": "node --env-file-if-exists=.env.local scripts/import-prayer-guides.mjs --apply",
     "lint:community": "eslint functions src/lib/community src/components/community src/pages/CommunityForm.tsx",
     "test:community": "node scripts/community-api-test.mjs && node scripts/community-browser-test.mjs",
-    "test:platform": "node scripts/content-platform-smoke.mjs"
+    "test:platform": "node scripts/content-platform-smoke.mjs",
+    "test:calendar-cards": "node scripts/test-calendar-card-reconciliation.mjs",
+    "test:synaxarium-presentation": "node --experimental-strip-types scripts/test-synaxarium-presentation.mjs",
+    "optimize:calendar-images": "node scripts/optimize-calendar-images.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.114.0",
@@ -48,6 +53,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "sharp": "^0.35.5",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.0",
     "vite": "^8.0.4"

@@ -3,6 +3,7 @@ import type { CalendarCellMarkKind, CalendarDayCellMark } from '../../lib/church
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { useLocale } from '../../lib/i18n/locale'
 import { useTranslation } from '../../i18n'
+import { gregorianToEthiopian } from '../../lib/ethiopianDate'
 import styles from './MiniMonthCalendar.module.css'
 
 const MARK_PRIMARY_CLASS: Record<CalendarCellMarkKind, string> = {
@@ -227,6 +228,9 @@ export function MiniMonthCalendar({
                 aria-current={isToday ? 'date' : undefined}
               >
                 <span className={styles.num}>{cell}</span>
+                <span className={styles.ethNum} aria-hidden>
+                  {gregorianToEthiopian(new Date(year, month, cell)).day}
+                </span>
                 {kindSr ? (
                   <span className={styles.srOnly}>
                     {kindSr}
@@ -246,6 +250,9 @@ export function MiniMonthCalendar({
               onClick={() => onSelectDay!(cell)}
             >
               <span className={styles.num}>{cell}</span>
+              <span className={styles.ethNum} aria-hidden>
+                {gregorianToEthiopian(new Date(year, month, cell)).day}
+              </span>
               {kindSr ? (
                 <span className={styles.srOnly}>
                   {kindSr}
