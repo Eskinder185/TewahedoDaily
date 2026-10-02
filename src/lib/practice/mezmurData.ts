@@ -6,12 +6,10 @@ import type { MezmurItem } from './types'
 import { slugifyMezmur } from './mezmurSlug'
 
 /**
- * Practice tab mezmur entries — only `data/chants/amharic-chants.json` + `english-mezmur-chants.json`.
- * Full Psalm text lives under Prayers (`tselot/mezmure-dawit`).
+ * Legacy Practice workshop mezmur list — empty in production (Supabase `mezmur` is SoT).
+ * Archived packs: `archive/local-data/chants/`.
  *
- * Duplicate `id` values: **last row in the merged list wins** (so appended JSON edits and
- * `npm run normalize:*` rewrites override earlier copies). First-wins used to hide new rows
- * when the file accidentally contained two blocks with overlapping ids.
+ * Duplicate `id` values: **last row in the merged list wins** if packs are ever restored.
  */
 function dedupeById(entries: MezmurEntry[]): MezmurEntry[] {
   const byId = new Map<string, MezmurEntry>()

@@ -77,7 +77,7 @@ export type PrayerLearningTree = {
   collections: LearningCollection[]
   guided: LearningCollection | null
   learnCollections: LearningCollection[]
-  source: 'supabase' | 'seed'
+  source: 'supabase' | 'supabase-guides' | 'seed'
 }
 
 type CollectionRow = {
@@ -168,7 +168,7 @@ function buildTree(
   collectionRows: CollectionRow[],
   sectionRows: SectionRow[],
   contentRows: ContentRow[],
-  source: 'supabase' | 'seed',
+  source: PrayerLearningTree['source'],
 ): PrayerLearningTree {
   const content = contentRows.map(mapContent)
   const sections = sectionRows
@@ -286,8 +286,176 @@ async function fetchPublishedLearning(): Promise<{
 export async function loadPrayerLearningTree(): Promise<PrayerLearningTree> {
   const remote = await fetchPublishedLearning()
   if (remote) return buildTree(remote.collections, remote.sections, remote.content, 'supabase')
+
+  const fromGuides = await fetchPublishedGuidesAsLearning()
+  if (fromGuides) {
+    return buildTree(fromGuides.collections, fromGuides.sections, fromGuides.content, 'supabase-guides')
+  }
+
   const local = seedRows()
   return buildTree(local.collections, local.sections, local.content, 'seed')
+}
+
+/**
+ * Admin Prayer Guides CMS writes `prayer_guides` / `prayer_guide_sections`.
+ * When normalized prayer_learning_* tables are empty, adapt published guides
+ * into the learning tree so CMS content can still appear publicly.
+ * Does not invent religious wording — bodies come from published CMS rows only.
+ */
+async function fetchPublishedGuidesAsLearning(): Promise<{
+  collections: CollectionRow[]
+  sections: SectionRow[]
+  content: ContentRow[]
+} | null> {
+  if (!supabase) return null
+
+  const { data, error } = await supabase
+    .from('prayer_guides' as never)
+    .select(
+      'id, slug, title, title_amharic, summary, summary_amharic, status, sort_order, source_reference',
+    )
+    .eq('status', 'published')
+    .order('sort_order', { ascending: true })
+
+  if (error) {
+    if (import.meta.env.DEV) console.warn('[prayerLearning] prayer_guides', error.message)
+    return null
+  }
+
+  const guides = (data || []) as unknown as Array<{
+    id: string
+    slug: string
+    title: string
+    title_amharic: string | null
+    summary: string | null
+    summary_amharic: string | null
+    status: string
+    sort_order: number
+    source_reference: string | null
+  }>
+
+  if (guides.length === 0) return null
+
+  const collections: CollectionRow[] = []
+  const sections: SectionRow[] = []
+  const content: ContentRow[] = []
+
+  for (const guide of guides) {
+    const isGuided = guide.slug === 'learn-how-to-pray' || guide.slug === 'guided-practice'
+    const collectionSlug = isGuided ? 'guided-practice' : guide.slug
+
+    collections.push({
+      collection_slug: collectionSlug,
+      title_english: guide.title,
+      title_amharic: guide.title_amharic,
+      description_english: guide.summary,
+      description_amharic: guide.summary_amharic,
+      sort_order: guide.sort_order,
+      display_style: isGuided ? 'guided_steps' : 'accordion_group',
+      status: guide.status,
+    })
+
+    const sectionsRes = await supabase
+      .from('prayer_guide_sections' as never)
+      .select(
+        'id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference, content_type',
+      )
+      .eq('guide_id', guide.id)
+      .order('sort_order', { ascending: true })
+
+    // content_type may be missing until migration; retry without it.
+    let sectionRows = sectionsRes.data as unknown as Array<{
+      id: string
+      slug: string
+      title: string
+      title_amharic: string | null
+      body_english: string | null
+      body_amharic: string | null
+      sort_order: number
+      source_reference: string | null
+      content_type?: string | null
+    }> | null
+
+    if (sectionsRes.error && /content_type/i.test(sectionsRes.error.message)) {
+      const fallback = await supabase
+        .from('prayer_guide_sections' as never)
+        .select(
+          'id, slug, title, title_amharic, body_english, body_amharic, sort_order, source_reference',
+        )
+        .eq('guide_id', guide.id)
+        .order('sort_order', { ascending: true })
+      if (fallback.error) {
+        if (import.meta.env.DEV) {
+          console.warn('[prayerLearning] prayer_guide_sections', fallback.error.message)
+        }
+        continue
+      }
+      sectionRows = (fallback.data || []) as typeof sectionRows
+    } else if (sectionsRes.error) {
+      if (import.meta.env.DEV) {
+        console.warn('[prayerLearning] prayer_guide_sections', sectionsRes.error.message)
+      }
+      continue
+    }
+
+    for (const row of sectionRows || []) {
+      const contentType = row.content_type || (isGuided ? 'instruction' : 'article')
+      const isPrayer = contentType === 'prayer'
+      const displayStyle = isGuided
+        ? isPrayer
+          ? 'prayer_block'
+          : 'step_card'
+        : 'accordion'
+
+      sections.push({
+        section_slug: row.slug,
+        collection_slug: collectionSlug,
+        parent_section_slug: null,
+        sort_order: row.sort_order,
+        title_english: row.title,
+        title_amharic: row.title_amharic,
+        summary_english: '',
+        summary_amharic: '',
+        content_type: contentType,
+        display_style: displayStyle,
+        show_in_contents: true,
+        step_number: isGuided ? row.sort_order : null,
+        is_expandable: !isGuided,
+        status: 'published',
+      })
+
+      const sourceRef = row.source_reference || guide.source_reference || ''
+      if (row.body_amharic?.trim()) {
+        content.push({
+          content_id: `${row.id}-am`,
+          section_slug: row.slug,
+          content_order: 1,
+          content_kind: isPrayer ? 'prayer' : isGuided ? 'instruction' : 'body',
+          language: 'am',
+          heading: row.title_amharic || row.title,
+          body: row.body_amharic,
+          source_reference: sourceRef,
+          status: 'published',
+        })
+      }
+      if (row.body_english?.trim()) {
+        content.push({
+          content_id: `${row.id}-en`,
+          section_slug: row.slug,
+          content_order: 2,
+          content_kind: isPrayer ? 'prayer' : isGuided ? 'instruction' : 'body',
+          language: 'en',
+          heading: row.title,
+          body: row.body_english,
+          source_reference: sourceRef,
+          status: 'published',
+        })
+      }
+    }
+  }
+
+  if (collections.length === 0 || sections.length === 0) return null
+  return { collections, sections, content }
 }
 
 export function guidedSteps(collection: LearningCollection | null): LearningSection[] {

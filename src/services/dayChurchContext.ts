@@ -353,48 +353,52 @@ function toMezmurRec(row: MezmurCandidate, reason: string): DayMezmurRecommendat
 
 async function loadMezmurCandidates(): Promise<MezmurCandidate[]> {
   if (!supabase) return []
-  const selectClassified = `
-    id, slug, title, title_amharic, language, thumbnail_url, thumbnail_path, image_alt,
-    youtube_url, audio_url, featured, occasion, occasion_tags, saint_or_angel, saint_tags,
-    themes, search_keywords, category,
-    mezmur_tags ( tags ( name, slug ) )
-  `
+  // Use mezmur_data_import only — public.mezmur does not exist.
   try {
     const { data, error } = await supabase
-      .from('mezmur')
-      .select(selectClassified)
+      .from('mezmur_data_import' as never)
+      .select(
+        'mezmur_id, slug, title, title_amharic, primary_language, image_path, image_alt, legacy_thumbnail_url, youtube_url, audio_url, search_keywords, status, form, singer_name',
+      )
       .eq('status', 'published')
-      .order('featured', { ascending: false })
       .limit(120)
     if (error) {
       if (import.meta.env.DEV) {
-        console.error('[dayChurchContext] mezmur', {
+        console.error('[dayChurchContext] mezmur_data_import', {
           code: error.code,
           message: error.message,
           details: error.details,
           hint: error.hint,
         })
       }
-      const flat = await supabase
-        .from('mezmur')
-        .select(
-          'id, slug, title, title_amharic, language, thumbnail_url, thumbnail_path, image_alt, youtube_url, audio_url, featured, category, occasion, search_keywords, occasion_tags, saint_tags, themes, saint_or_angel',
-        )
-        .eq('status', 'published')
-        .order('featured', { ascending: false })
-        .limit(80)
-      if (flat.error || !flat.data) return []
-      return flat.data as unknown as MezmurCandidate[]
+      return []
     }
-    return ((data || []) as unknown[]).map((raw) => {
-      const r = raw as MezmurCandidate & {
-        mezmur_tags?: { tags: { name: string; slug: string } | null }[] | null
-      }
-      const tags =
-        r.mezmur_tags
-          ?.map((mt) => mt.tags)
-          .filter((t): t is { name: string; slug: string } => Boolean(t)) || []
-      return { ...r, tags }
+    return ((data || []) as Array<Record<string, unknown>>).map((raw) => {
+      const image =
+        String(raw.image_path || '').trim() ||
+        String(raw.legacy_thumbnail_url || '').trim() ||
+        null
+      return {
+        id: String(raw.mezmur_id || raw.slug || ''),
+        slug: String(raw.slug || ''),
+        title: String(raw.title || ''),
+        title_amharic: (raw.title_amharic as string | null) || null,
+        language: (raw.primary_language as string | null) || null,
+        thumbnail_url: image,
+        thumbnail_path: (raw.image_path as string | null) || null,
+        image_alt: (raw.image_alt as string | null) || null,
+        youtube_url: (raw.youtube_url as string | null) || null,
+        audio_url: (raw.audio_url as string | null) || null,
+        featured: false,
+        occasion: null,
+        occasion_tags: [],
+        saint_or_angel: null,
+        saint_tags: [],
+        themes: [],
+        search_keywords: raw.search_keywords ?? [],
+        category: null,
+        tags: [],
+      } satisfies MezmurCandidate
     })
   } catch (cause) {
     if (import.meta.env.DEV) console.error('[dayChurchContext] mezmur load', cause)

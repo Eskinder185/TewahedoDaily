@@ -200,13 +200,13 @@ function resolveCalendarCardForSource(cards, sourceType, sourceId, sourceSlug) {
   return pickCanonicalCalendarCard(bySlug)
 }
 
-function resolveImage(sourcePath, card) {
+/** Card owns the image — never borrow structured-source artwork. */
+function resolveImage(_sourcePath, card) {
   const cardPath = trim(card?.imagePath)
   const cardUrl = trim(card?.imageUrl)
-  if (cardUrl) return { url: cardUrl, hasImage: true }
-  if (cardPath) return { url: `resolved:${cardPath}`, hasImage: true }
-  if (trim(sourcePath)) return { url: `resolved:${sourcePath}`, hasImage: true }
-  return { url: null, hasImage: false }
+  if (cardUrl) return { url: cardUrl, hasImage: true, path: cardPath || null }
+  if (cardPath) return { url: `resolved:${cardPath}`, hasImage: true, path: cardPath }
+  return { url: null, hasImage: false, path: null }
 }
 
 function normalizePresentable(source, card) {
@@ -477,4 +477,134 @@ const gained = mergeNeverClearsImage(
 )
 assert.equal(gained.image_path, 'calendar/angels/gabriel.webp')
 
+// --- resolveCalendarEventPresentation: Calendar + Homepage same cardId ---
+function resolveCalendarEventPresentation(input) {
+  const card = resolveCalendarCardForSource(
+    input.cards,
+    input.sourceType,
+    input.sourceId,
+    input.sourceSlug,
+  )
+  const imagePath = trim(card?.imagePath) || null
+  return {
+    cardId: card?.id || null,
+    sourceType: normalizeSourceType(input.sourceType),
+    sourceId: trim(input.sourceId),
+    sourceSlug: trim(input.sourceSlug) || null,
+    imagePath,
+    hasImage: Boolean(imagePath),
+    title: inheritField(card?.title, input.source.title) || input.source.title,
+  }
+}
+
+function findDuplicateCalendarCardGroups(list) {
+  const byId = new Map()
+  for (const card of list) {
+    const type = normalizeSourceType(card.sourceType)
+    if (type === 'manual') continue
+    const id = trim(card.sourceId)
+    if (!id) continue
+    const key = `${type}:id:${id}`
+    const bucket = byId.get(key) || []
+    bucket.push(card)
+    byId.set(key, bucket)
+  }
+  const out = []
+  for (const [key, bucket] of byId) {
+    if (bucket.length < 2) continue
+    out.push({
+      key,
+      cardIds: bucket.map((c) => c.id),
+      canonicalId: pickCanonicalCalendarCard(bucket)?.id || null,
+    })
+  }
+  return out
+}
+
+const calendarResolved = resolveCalendarEventPresentation({
+  sourceType: 'monthly_commemoration',
+  sourceId: bisrateSource.id,
+  sourceSlug: bisrateSource.slug,
+  source: { title: bisrateSource.title },
+  cards: duplicateCards,
+})
+const homepageResolved = resolveCalendarEventPresentation({
+  sourceType: 'monthly_commemoration',
+  sourceId: bisrateSource.id,
+  sourceSlug: bisrateSource.slug,
+  source: { title: bisrateSource.title },
+  cards: duplicateCards,
+})
+assert.equal(calendarResolved.cardId, homepageResolved.cardId)
+assert.equal(calendarResolved.cardId, 'card-bisrate-canonical')
+assert.equal(calendarResolved.imagePath, homepageResolved.imagePath)
+assert.equal(calendarResolved.imagePath, 'calendar/angels/bisrate-gabriel-20261002.webp')
+
+// Missing image → neutral (no borrow from Bisrate)
+const urielMissing = resolveCalendarEventPresentation({
+  sourceType: 'monthly_commemoration',
+  sourceId: 'mon-uri',
+  sourceSlug: 'archangel-uriel',
+  source: { title: 'Archangel Uriel' },
+  cards: [
+    ...duplicateCards,
+    {
+      id: 'card-uri-empty',
+      sourceType: 'monthly_commemoration',
+      sourceId: 'mon-uri',
+      sourceSlug: 'archangel-uriel',
+      imagePath: null,
+    },
+  ],
+})
+assert.equal(urielMissing.hasImage, false)
+assert.notEqual(urielMissing.imagePath, calendarResolved.imagePath)
+
+// Source artwork alone must NOT satisfy Needs Image when card.image_path is empty
+const sourceOnlyArt = resolveCalendarEventPresentation({
+  sourceType: 'monthly_commemoration',
+  sourceId: 'mon-no-card-art',
+  sourceSlug: 'no-card-art',
+  source: {
+    title: 'No Card Art',
+    imagePath: 'calendar/angels/should-not-borrow.webp',
+  },
+  cards: [
+    {
+      id: 'card-no-art',
+      sourceType: 'monthly_commemoration',
+      sourceId: 'mon-no-card-art',
+      sourceSlug: 'no-card-art',
+      imagePath: null,
+    },
+  ],
+})
+assert.equal(sourceOnlyArt.hasImage, false)
+assert.equal(sourceOnlyArt.imagePath, null)
+
+// Observance second-type check
+const observanceResolved = resolveCalendarEventPresentation({
+  sourceType: 'observance',
+  sourceId: 'obs-gena',
+  sourceSlug: 'gena',
+  source: { title: 'Gena' },
+  cards,
+})
+assert.equal(observanceResolved.cardId, 'card-gena')
+assert.equal(observanceResolved.imagePath, 'calendar/christ/gena.webp')
+assert.notEqual(observanceResolved.imagePath, calendarResolved.imagePath)
+
+const dups = findDuplicateCalendarCardGroups(duplicateCards)
+assert.equal(dups.length, 1)
+assert.equal(dups[0].canonicalId, 'card-bisrate-canonical')
+assert.deepEqual(dups[0].cardIds.sort(), ['card-bisrate-canonical', 'card-bisrate-stale'].sort())
+
+// Sync preserve image_path (merge never clears)
+const afterSync = mergeNeverClearsImage(
+  { image_path: 'calendar/mary/annunciation.webp' },
+  { image_path: null },
+)
+assert.equal(afterSync.image_path, 'calendar/mary/annunciation.webp')
+
 console.log('calendar-card-reconciliation pure checks: ok')
+

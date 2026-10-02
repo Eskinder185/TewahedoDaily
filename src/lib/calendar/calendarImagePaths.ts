@@ -184,11 +184,31 @@ export function buildCalendarImagePath(
 }
 
 /**
+ * Immutable upload path — unique suffix avoids CDN/browser cache collisions when replacing art.
+ * Example: calendar/mary/bisrate-gabriel-a1b2c3d4.webp
+ */
+export function buildUniqueCalendarImagePath(
+  folder: CalendarImageCategoryFolder,
+  subjectStem: string,
+  extension: 'webp' | 'jpg' | 'jpeg' | 'png' = 'webp',
+): string {
+  const stem = normalizeCalendarImageSubject(subjectStem)
+  const ext = extension === 'jpeg' ? 'jpg' : extension
+  const unique =
+    typeof crypto !== 'undefined' && 'randomUUID' in crypto
+      ? crypto.randomUUID().slice(0, 8)
+      : `${Date.now().toString(36)}`
+  return `${CALENDAR_IMAGE_ROOT}/${folder}/${stem}-${unique}.${ext}`
+}
+
+/**
  * Suggest a reusable storage path for a calendar card / linked source.
  * Example: gabriel-monthly + Angel → calendar/angels/gabriel.webp
+ * Prefer buildUniqueCalendarImagePath for new uploads.
  */
 export function getSuggestedCalendarImagePath(
   source: CalendarImageSuggestInput,
+  options?: { unique?: boolean },
 ): string | null {
   const folder = calendarCategoryToImageFolder(source.category, source.cardType)
   const raw =
@@ -198,7 +218,9 @@ export function getSuggestedCalendarImagePath(
   if (!raw) return null
   const subject = normalizeCalendarImageSubject(raw)
   if (!subject || subject === 'image') return null
-  return buildCalendarImagePath(folder, subject, 'webp')
+  return options?.unique
+    ? buildUniqueCalendarImagePath(folder, subject, 'webp')
+    : buildCalendarImagePath(folder, subject, 'webp')
 }
 
 /** True when path looks like calendar/<known-folder>/… */

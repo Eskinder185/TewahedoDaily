@@ -75,7 +75,7 @@ const CARD_SELECT_FULL = `id,slug,title,title_amharic,category,card_type,descrip
          ethiopian_month_number,ethiopian_day,is_monthly,synaxarium_day_id,synaxarium_day_slug,
          featured,show_on_home,home_featured,home_sort_order,home_start_date,home_end_date,
          source_type,source_id,source_slug,
-         sort_order,status`
+         sort_order,status,updated_at`
 
 const CARD_SELECT_LEGACY = `id,slug,title,title_amharic,card_type,description,image_path,image_alt,image_position,
        ethiopian_month_number,ethiopian_day,is_monthly,synaxarium_day_id,synaxarium_day_slug,

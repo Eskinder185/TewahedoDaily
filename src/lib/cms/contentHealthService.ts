@@ -161,9 +161,61 @@ type MezmurRow = {
   image_alt: string | null
   description: string | null
   singer_id: string | null
+  singer_name: string | null
   category_id: string | null
   status: string
   featured: boolean | null
+}
+
+type TagLink = { mezmur_id: string; tag_id: string }
+type CategoryRow = { id: string }
+type TagRow = { id: string }
+
+async function loadImportMezmurRows(): Promise<MezmurRow[]> {
+  const raw = await fetchAll<Record<string, unknown>>(
+    'mezmur_data_import',
+    'mezmur_id, slug, title, title_amharic, lyrics_amharic, lyrics_english, lyrics_transliteration, youtube_url, audio_url, image_path, image_alt, legacy_thumbnail_url, description, singer_id, singer_name, status, updated_at',
+    { column: 'updated_at', ascending: false },
+  )
+  return raw.map((row) => {
+    const id = String(row.mezmur_id || row.slug || '')
+    const image =
+      String(row.image_path || '').trim() ||
+      String(row.legacy_thumbnail_url || '').trim() ||
+      null
+    return {
+      id,
+      slug: String(row.slug || ''),
+      title: (row.title as string | null) || null,
+      title_amharic: (row.title_amharic as string | null) || null,
+      lyrics_amharic: (row.lyrics_amharic as string | null) || null,
+      lyrics_english: (row.lyrics_english as string | null) || null,
+      transliteration: (row.lyrics_transliteration as string | null) || null,
+      youtube_url: (row.youtube_url as string | null) || null,
+      audio_url: (row.audio_url as string | null) || null,
+      thumbnail_url: image,
+      thumbnail_path: (row.image_path as string | null) || null,
+      image_alt: (row.image_alt as string | null) || null,
+      description: (row.description as string | null) || null,
+      singer_id: (row.singer_id as string | null) || null,
+      singer_name: (row.singer_name as string | null) || null,
+      category_id: null,
+      status: String(row.status || ''),
+      featured: false,
+    }
+  })
+}
+
+async function softFetchAll<T extends Record<string, unknown>>(
+  table: string,
+  select: string,
+): Promise<T[]> {
+  try {
+    return await fetchAll<T>(table, select)
+  } catch (cause) {
+    if (import.meta.env.DEV) console.error(`[contentHealth] skip ${table}`, cause)
+    return []
+  }
 }
 
 type PrayerCollectionRow = {
@@ -270,33 +322,23 @@ type LiturgyEntryRow = {
   status: string
 }
 
-type TagLink = { mezmur_id: string; tag_id: string }
-type SingerRow = { id: string }
-type CategoryRow = { id: string }
-type TagRow = { id: string }
-
 async function checkMezmur(now: string): Promise<{
   issues: ContentHealthIssue[]
   records: number
   coverage: CoverageMetric[]
 }> {
-  const [mezmur, singers, categories, tags, tagLinks] = await Promise.all([
-    fetchAll<MezmurRow>(
-      'mezmur',
-      'id,slug,title,title_amharic,lyrics_amharic,lyrics_english,transliteration,youtube_url,audio_url,thumbnail_url,thumbnail_path,image_alt,description,singer_id,category_id,status,featured',
-      { column: 'updated_at', ascending: false },
-    ),
-    fetchAll<SingerRow>('singers', 'id'),
-    fetchAll<CategoryRow>('categories', 'id'),
-    fetchAll<TagRow>('tags', 'id'),
-    fetchAll<TagLink>('mezmur_tags', 'mezmur_id,tag_id'),
+  const [mezmur, categories, tags, tagLinks] = await Promise.all([
+    loadImportMezmurRows(),
+    softFetchAll<CategoryRow>('categories', 'id'),
+    softFetchAll<TagRow>('tags', 'id'),
+    softFetchAll<TagLink>('mezmur_tags', 'mezmur_id,tag_id'),
   ])
 
   const issues: ContentHealthIssue[] = []
-  const singerIds = new Set(singers.map((r) => r.id))
   const categoryIds = new Set(categories.map((r) => r.id))
   const tagIds = new Set(tags.map((r) => r.id))
   const mezmurIds = new Set(mezmur.map((r) => r.id))
+  // Singers derived from mezmur_data_import — do not query public.singers.
 
   for (const [slug, ids] of findDuplicateSlugs(mezmur)) {
     issues.push(
@@ -477,15 +519,15 @@ async function checkMezmur(now: string): Promise<{
       )
     }
 
-    if (row.singer_id && !singerIds.has(row.singer_id)) {
+    if (row.singer_id && !hasText(row.singer_name)) {
       issues.push(
         issue(
           {
             ...base,
-            severity: 'critical',
-            issueType: 'orphan_singer',
-            title: 'Mezmur singer_id is invalid',
-            description: `“${row.title || row.slug}” points to missing singer ${row.singer_id}.`,
+            severity: 'review',
+            issueType: 'missing_singer_name',
+            title: 'Mezmur has singer_id without singer_name',
+            description: `“${row.title || row.slug}” has singer_id ${row.singer_id} but no singer_name.`,
             domain: 'relationships',
             metadata: { singer_id: row.singer_id },
           },
@@ -571,6 +613,208 @@ async function checkMezmur(now: string): Promise<{
       coverage('mezmur-transliteration', 'Mezmur with transliteration', withTranslit, total),
       coverage('mezmur-image', 'Mezmur with thumbnail', withImage, total),
       coverage('mezmur-playback', 'Mezmur with playable media', withPlayback, total),
+    ],
+  }
+}
+
+/** Hymn browse / classification health (taxonomy + browse groups). */
+async function checkHymnClassification(now: string): Promise<{
+  issues: ContentHealthIssue[]
+  records: number
+  coverage: CoverageMetric[]
+}> {
+  const issues: ContentHealthIssue[] = []
+  const mezmur = await loadImportMezmurRows().then((rows) =>
+    rows.map((m) => ({
+      id: m.id,
+      slug: m.slug,
+      title: m.title,
+      category: null as string | null,
+      category_id: m.category_id,
+      occasion: null as string | null,
+      singer_id: m.singer_id,
+      status: m.status,
+    })),
+  )
+
+  let missingCategory = 0
+  let missingOccasion = 0
+  let missingSinger = 0
+  const published = mezmur.filter((m) => m.status === 'published')
+
+  for (const row of published) {
+    const cat = (row.category || '').trim()
+    const occ = (row.occasion || '').trim()
+    const noCat =
+      !row.category_id && (!cat || /^na$/i.test(cat) || cat === '-' || cat === '—')
+    const noOcc = !occ || /^na$/i.test(occ) || occ === '-' || occ === '—'
+    if (noCat) {
+      missingCategory += 1
+      if (missingCategory <= 25) {
+        issues.push(
+          issue(
+            {
+              severity: 'review',
+              domain: 'mezmur',
+              issueType: 'hymn_missing_category',
+              title: 'Mezmur with no category',
+              description: `“${row.title || row.slug}” has no category / category_id.`,
+              table: 'mezmur',
+              recordId: row.id,
+              recordSlug: row.slug,
+              adminRoute: `${ADMIN_PATHS.hymnsMezmur}/${row.id}/edit`,
+            },
+            now,
+          ),
+        )
+      }
+    }
+    if (noOcc) {
+      missingOccasion += 1
+      if (missingOccasion <= 25) {
+        issues.push(
+          issue(
+            {
+              severity: 'review',
+              domain: 'mezmur',
+              issueType: 'hymn_missing_occasion',
+              title: 'Mezmur with no occasion',
+              description: `“${row.title || row.slug}” has no occasion.`,
+              table: 'mezmur',
+              recordId: row.id,
+              recordSlug: row.slug,
+              adminRoute: `${ADMIN_PATHS.hymnsMezmur}/${row.id}/edit`,
+            },
+            now,
+          ),
+        )
+      }
+    }
+    if (!row.singer_id) {
+      missingSinger += 1
+    }
+  }
+
+  // Alias / duplicate occasion spellings (report only — do not merge)
+  const occCounts = new Map<string, number>()
+  for (const row of published) {
+    const occ = (row.occasion || '').trim()
+    if (!occ || /^na$/i.test(occ)) continue
+    occCounts.set(occ, (occCounts.get(occ) || 0) + 1)
+  }
+  const aliasPairs: Array<[string, string]> = [
+    ['Timket', 'Timkat'],
+    ['Epiphany', 'Timkat'],
+    ['Fasika', 'Tinsae'],
+    ['Easter', 'Tinsae'],
+  ]
+  for (const [a, b] of aliasPairs) {
+    const ca = [...occCounts.keys()].find((k) => k.toLowerCase() === a.toLowerCase())
+    const cb = [...occCounts.keys()].find((k) => k.toLowerCase() === b.toLowerCase())
+    if (ca && cb && ca !== cb) {
+      issues.push(
+        issue(
+          {
+            severity: 'review',
+            domain: 'mezmur',
+            issueType: 'hymn_occasion_alias',
+            title: `Occasion alias pair: ${ca} / ${cb}`,
+            description:
+              `Published Mezmur use both “${ca}” (${occCounts.get(ca)}) and “${cb}” (${occCounts.get(cb)}). ` +
+              'Do not merge without Admin review — normalize via mezmur_occasions search_keywords.',
+            table: 'mezmur',
+            adminRoute: ADMIN_PATHS.hymnsOccasions,
+            metadata: { a: ca, b: cb },
+          },
+          now,
+        ),
+      )
+    }
+  }
+
+  // Import hymn collections + sections
+  try {
+    const groups = await fetchAll<{
+      collection_id: string
+      collection_slug: string
+      title: string
+      status: string
+    }>('mezmur_collections_import', 'collection_id,collection_slug,title,status')
+    const items = await fetchAll<{
+      section_id: string
+      collection_slug: string
+      status: string
+    }>('mezmur_sections_import', 'section_id,collection_slug,status')
+    for (const g of groups.filter((x) => x.status === 'published' || !x.status)) {
+      const childCount = items.filter(
+        (i) =>
+          i.collection_slug === g.collection_slug &&
+          (i.status === 'published' || !i.status),
+      ).length
+      if (
+        childCount === 0 &&
+        g.collection_slug !== 'zemari-singers' &&
+        g.collection_slug !== 'english-mezmur'
+      ) {
+        issues.push(
+          issue(
+            {
+              severity: 'warning',
+              domain: 'mezmur',
+              issueType: 'empty_browse_group',
+              title: `Empty collection: ${g.title}`,
+              description: `Published collection “${g.collection_slug}” has no published sections.`,
+              table: 'mezmur_collections_import',
+              recordId: g.collection_id,
+              recordSlug: g.collection_slug,
+              adminRoute: `${ADMIN_PATHS.hymnsBrowseGroups}/${g.collection_id}/edit`,
+            },
+            now,
+          ),
+        )
+      }
+    }
+  } catch {
+    issues.push(
+      issue(
+        {
+          severity: 'review',
+          domain: 'mezmur',
+          issueType: 'browse_groups_missing',
+          title: 'Hymn import collections not available',
+          description:
+            'Ensure mezmur_collections_import / mezmur_sections_import are readable (MEZMUR_IMPORT_PUBLIC_READ_GRANTS.sql).',
+          table: 'mezmur_collections_import',
+          adminRoute: ADMIN_PATHS.hymnsBrowseGroups,
+        },
+        now,
+      ),
+    )
+  }
+
+  const total = published.length || 1
+  return {
+    issues,
+    records: published.length,
+    coverage: [
+      coverage(
+        'hymn-with-category',
+        'Published Mezmur with category',
+        published.length - missingCategory,
+        total,
+      ),
+      coverage(
+        'hymn-with-occasion',
+        'Published Mezmur with occasion',
+        published.length - missingOccasion,
+        total,
+      ),
+      coverage(
+        'hymn-with-singer',
+        'Published Mezmur with singer',
+        published.length - missingSinger,
+        total,
+      ),
     ],
   }
 }
@@ -2646,23 +2890,7 @@ async function checkUserPersistence(now: string): Promise<{ issues: ContentHealt
     )
   }
 
-  const mezmurFav = await client.from('mezmur_favorites').select('mezmur_id', { count: 'exact', head: true }).limit(1)
-  if (mezmurFav.error) {
-    logErr('mezmur_favorites probe', mezmurFav.error)
-    issues.push(
-      issue(
-        {
-          severity: 'warning',
-          domain: 'system',
-          issueType: 'mezmur_favorites_inaccessible',
-          title: 'Legacy mezmur_favorites inaccessible',
-          description: `${mezmurFav.error.message}. Hymn Saved page may fail until the table/RPC is repaired.`,
-          table: 'mezmur_favorites',
-        },
-        now,
-      ),
-    )
-  }
+  // Legacy public.mezmur_favorites is retired — favorites use public.user_favorites only.
 
   // Sample Pray search catalog for missing routes / duplicate slugs within a collection
   try {
@@ -2776,17 +3004,20 @@ export async function runContentHealthCheck(
   onProgress?.({ phase: 'Checking Mezmur…', domain: 'mezmur' })
   try {
     const mezmur = await checkMezmur(now)
-    allIssues.push(...mezmur.issues)
-    coverage.push(...mezmur.coverage)
+    const hymnClass = await checkHymnClassification(now)
+    allIssues.push(...mezmur.issues, ...hymnClass.issues)
+    coverage.push(...mezmur.coverage, ...hymnClass.coverage)
     recordsChecked += mezmur.records
-    const sev = countBySeverity(mezmur.issues, 'mezmur')
+    const sev = countBySeverity([...mezmur.issues, ...hymnClass.issues], 'mezmur')
     const mediaSev = countBySeverity(mezmur.issues, 'media')
     domains.push({
       domain: 'mezmur',
-      label: 'Mezmur',
+      label: 'Mezmur / Hymn Classification',
       recordCount: mezmur.records,
       ...sev,
-      highlights: mezmur.coverage.slice(0, 2).map((c) => `${c.label}: ${c.percent}%`),
+      highlights: [...mezmur.coverage, ...hymnClass.coverage]
+        .slice(0, 3)
+        .map((c) => `${c.label}: ${c.percent}%`),
     })
     // fold mezmur media into media domain later
     void mediaSev

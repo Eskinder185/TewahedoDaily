@@ -5,6 +5,7 @@ import styles from './prayerLearning.module.css'
 export function GuidedStepCard({
   section,
   index,
+  total: _total,
   lang,
   learned,
   onToggleLearned,
@@ -22,7 +23,7 @@ export function GuidedStepCard({
   onNext: () => void
   isLast: boolean
 }) {
-  const stepLabel = String(index + 1).padStart(2, '0')
+  void _total
   const summary =
     lang === 'en'
       ? section.summaryEnglish
@@ -31,40 +32,47 @@ export function GuidedStepCard({
         : section.summaryAmharic || section.summaryEnglish
 
   return (
-    <article className={styles.lesson} id={section.sectionSlug} aria-labelledby={`${section.sectionSlug}-title`}>
-      <p className={styles.lessonNum} aria-hidden="true">
-        {stepLabel}
-      </p>
-      <h2 id={`${section.sectionSlug}-title`} className={styles.lessonTitle}>
-        {section.titleEnglish}
-      </h2>
-      {section.titleAmharic ? (
-        <p className={styles.lessonTitleAm} lang="am">
-          {section.titleAmharic}
-        </p>
-      ) : null}
+    <article
+      className={styles.stepCard}
+      id={section.sectionSlug}
+      aria-labelledby={`${section.sectionSlug}-title`}
+    >
+      <header className={styles.stepCardHead}>
+        <span className={styles.stepBadge} aria-hidden="true">
+          {index + 1}
+        </span>
+        <div className={styles.stepCardTitles}>
+          <h2 id={`${section.sectionSlug}-title`} className={styles.lessonTitle}>
+            {section.titleEnglish}
+          </h2>
+          {section.titleAmharic ? (
+            <p className={styles.lessonTitleAm} lang="am">
+              {section.titleAmharic}
+            </p>
+          ) : null}
+        </div>
+      </header>
+
       {summary ? <p className={styles.lessonSummary}>{summary}</p> : null}
-      <div className={styles.lessonRule} aria-hidden="true" />
 
-      <ContentRenderer section={section} lang={lang} />
+      <div className={styles.stepCardBody}>
+        <ContentRenderer section={section} lang={lang} />
+      </div>
 
-      <div className={styles.lessonActions}>
+      <nav className={styles.stepActions} aria-label="Step actions">
+        <button type="button" className={styles.navPrev} onClick={onBack} disabled={index === 0}>
+          Previous
+        </button>
         <button
           type="button"
           className={learned ? styles.markOn : styles.markBtn}
           aria-pressed={learned}
           onClick={onToggleLearned}
         >
-          {learned ? 'Practiced' : 'Mark as practiced'}
-        </button>
-      </div>
-
-      <nav className={styles.lessonNav} aria-label="Step navigation">
-        <button type="button" className={styles.navPrev} onClick={onBack} disabled={index === 0}>
-          Previous
+          {learned ? 'Practiced ✓' : 'Mark as practiced'}
         </button>
         <button type="button" className={styles.navNext} onClick={onNext}>
-          {isLast ? 'Finish' : 'Next Step'}
+          {isLast ? 'Finish' : 'Next'}
         </button>
       </nav>
     </article>

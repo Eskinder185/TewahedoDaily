@@ -4,9 +4,9 @@ import { PageSection } from '../components/ui/PageSection'
 import { CollectionSection } from '../components/prayerLearning/CollectionSection'
 import { ContentsDrawer } from '../components/prayerLearning/ContentsDrawer'
 import { GuidedStepCard } from '../components/prayerLearning/GuidedStepCard'
-import { LanguageSwitcher } from '../components/prayerLearning/LanguageSwitcher'
-import { PrayerLearningHero } from '../components/prayerLearning/PrayerLearningHero'
-import { ProgressIndicator } from '../components/prayerLearning/ProgressIndicator'
+import { LearnHowToPrayControls } from '../components/prayerLearning/LearnHowToPrayControls'
+import { LearnHowToPrayHeader } from '../components/prayerLearning/PrayerLearningHero'
+import { GuidedPracticeProgress } from '../components/prayerLearning/ProgressIndicator'
 import { useAuth } from '../lib/auth/useAuth'
 import {
   findSectionBySlug,
@@ -58,7 +58,11 @@ export function PrayerGuidePage() {
         setTree(result)
         if (import.meta.env.DEV && result.source === 'seed') {
           console.info(
-            '[prayerLearning] Using bundled seed. Publish prayer_learning_* rows in Supabase for live CMS content.',
+            '[prayerLearning] Using bundled seed. Publish prayer_learning_* rows (or prayer_guides) in Supabase for live CMS content.',
+          )
+        } else if (import.meta.env.DEV && result.source === 'supabase-guides') {
+          console.info(
+            '[prayerLearning] Using published prayer_guides. Prefer prayer_learning_* when those tables are populated.',
           )
         }
       })
@@ -217,6 +221,10 @@ export function PrayerGuidePage() {
   }
 
   const currentStep = steps[stepIndex]
+  const activeSlug =
+    activeTab === 'guided' && currentStep && !showCompletion
+      ? currentStep.sectionSlug
+      : openSlug || lastSlug
 
   return (
     <PageSection>
@@ -229,39 +237,37 @@ export function PrayerGuidePage() {
           onOpen={() => setTocOpen(true)}
           onClose={() => setTocOpen(false)}
           onNavigate={navigateToSlug}
+          activeSlug={activeSlug}
         />
 
-        <main className={styles.main}>
-          <PrayerLearningHero
-            active={activeTab}
-            onGuided={() => {
-              setActiveTab('guided')
-              setShowCompletion(false)
-            }}
-            onLearn={() => setActiveTab('learn')}
-          />
+        <div className={styles.main}>
+          <LearnHowToPrayHeader />
 
-          <div className={ui.toolbar}>
-            <LanguageSwitcher value={lang} onChange={handleLangChange} />
-          </div>
+          <LearnHowToPrayControls
+            mode={activeTab}
+            lang={lang}
+            onModeChange={(mode) => {
+              setActiveTab(mode)
+              if (mode === 'guided') setShowCompletion(false)
+            }}
+            onLangChange={handleLangChange}
+          />
 
           {resumeSection && activeTab === 'learn' ? (
             <p className={ui.resumeBanner}>
               <span>Continue where you left off:</span>{' '}
-              <button type="button" className={ui.resumeLink} onClick={() => navigateToSlug(resumeSection.sectionSlug)}>
+              <button
+                type="button"
+                className={ui.resumeLink}
+                onClick={() => navigateToSlug(resumeSection.sectionSlug)}
+              >
                 {resumeSection.titleEnglish} →
               </button>
             </p>
           ) : null}
 
           {activeTab === 'guided' ? (
-            <section className={styles.guided} id="guided-practice" aria-labelledby="guided-heading">
-              <div className={ui.modeHead}>
-                <h2 id="guided-heading" className={ui.modeTitle}>
-                  Guided Practice
-                </h2>
-              </div>
-
+            <section className={styles.guided} id="guided-practice" aria-label="Guided practice">
               {steps.length === 0 ? (
                 <p className={styles.empty}>Guided practice steps are not available yet.</p>
               ) : showCompletion ? (
@@ -280,8 +286,15 @@ export function PrayerGuidePage() {
                   </button>
                 </div>
               ) : currentStep ? (
-                <>
-                  <ProgressIndicator currentIndex={stepIndex} total={steps.length} />
+                <div className={styles.guidedStack} key={currentStep.sectionSlug}>
+                  <GuidedPracticeProgress
+                    currentIndex={stepIndex}
+                    total={steps.length}
+                    completedSlugs={completedSlugs}
+                    stepSlugs={steps.map((step) => step.sectionSlug)}
+                    stepTitles={steps.map((step) => step.titleEnglish)}
+                    onSelect={goToStep}
+                  />
                   <GuidedStepCard
                     section={currentStep}
                     index={stepIndex}
@@ -293,7 +306,7 @@ export function PrayerGuidePage() {
                     onNext={handleNext}
                     isLast={stepIndex === steps.length - 1}
                   />
-                </>
+                </div>
               ) : null}
             </section>
           ) : (
@@ -325,7 +338,7 @@ export function PrayerGuidePage() {
           <Link className={styles.back} to="/pray">
             ← Back to Pray
           </Link>
-        </main>
+        </div>
       </div>
     </PageSection>
   )

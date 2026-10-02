@@ -499,6 +499,13 @@
 }
 
 @media (max-width: 639.98px) {
+  .bar, .headerTools {
+    gap: var(--space-1);
+  }
+
+  .toggleGroup .utilityLink {
+    display: none;
+  }
   .bar {
     padding-inline: max(var(--space-2), env(safe-area-inset-left, 0px))
       max(var(--space-2), env(safe-area-inset-right, 0px));

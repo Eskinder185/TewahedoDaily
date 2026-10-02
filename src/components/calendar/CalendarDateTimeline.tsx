@@ -221,7 +221,10 @@ export function CalendarDateTimeline({
                 <div className={styles.dayCards}>
                   {group.events.map((event) => (
                     <CalendarEventCard
-                      key={`${group.iso}-${event.kind}-${event.sourceId || event.id}-${event.cardId || 'nocard'}`}
+                      key={
+                        event.occurrenceKey ||
+                        `${group.iso}-${event.kind}-${event.sourceId || event.id}-${event.cardId || 'nocard'}`
+                      }
                       event={event}
                       dateLabel={`${group.gregorianShort} · ${group.ethiopianLabel}`}
                       lang={lang}

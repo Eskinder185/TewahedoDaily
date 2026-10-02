@@ -1,0 +1,22 @@
+{
+  "total": 0,
+  "withImage": 0,
+  "withoutImage": 0,
+  "published": 0,
+  "draft": 0,
+  "archived": 0,
+  "manual": 0,
+  "withImagePublished": 0,
+  "withoutImagePublished": 0,
+  "validSource": 0,
+  "missingSourceLink": 0,
+  "idNoSlug": 0,
+  "slugNoId": 0,
+  "missingLinkedSourceRow": 0,
+  "orphanish": 0,
+  "duplicateSourceIdGroups": 0,
+  "duplicateSourceSlugGroups": 0,
+  "duplicatesById": [],
+  "bisrate": [],
+  "demera": []
+}

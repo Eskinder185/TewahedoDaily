@@ -601,7 +601,7 @@ function placeholderCardPayload(linked: LinkedCalendarSource) {
 
   return {
     slug: slugify(linked.sourceSlug || linked.title || 'calendar-card'),
-    title: null as string | null,
+    title: linked.title || linked.sourceSlug || 'Calendar card',
     title_amharic: null,
     category: linked.category || null,
     card_type: linked.cardType || 'other',

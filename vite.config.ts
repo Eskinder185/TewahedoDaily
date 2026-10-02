@@ -25,21 +25,7 @@ export default defineConfig({
             return 'vendor'
           }
           
-          // Separate chunk for chant data files
-          if (id.includes('src/data/chants/')) {
-            if (id.includes('mezmure-dawit')) {
-              return 'chant-data-psalms'
-            }
-            if (id.includes('amharic-chants') || id.includes('english-mezmur-chants')) {
-              return 'chant-data-mezmur'
-            }
-            if (id.includes('werb') || id.includes('tselot') || id.includes('wudase-mariam')) {
-              return 'chant-data-prayers'
-            }
-            return 'chant-data-misc'
-          }
-          
-          // Large static EOTC JSON dataset — separate from interactive calendar UI
+          // EOTC rule-engine datasets (date resolution / movable feasts) — not CMS copy
           if (id.includes('src/data/eotc_calendar_json/') || id.includes('src/data/calendar/')) {
             return 'eotc-dataset'
           }

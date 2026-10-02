@@ -61,7 +61,7 @@ export function MezmurList() {
         <thead><tr>{['Thumbnail', 'Title', 'Amharic title', 'Singer', 'Category', 'Status', 'Featured', 'Updated', 'Actions'].map(name => <th key={name} scope="col">{name}</th>)}</tr></thead>
         <tbody>{result.data.rows.map(row => <tr key={row.id}>
           <td><Media reference={row.thumbnail_url} /></td><td><strong>{row.title}</strong></td><td lang="am">{row.title_amharic || '—'}</td>
-          <td>{taxonomy.data?.singers.find(item => item.id === row.singer_id)?.name || '—'}</td><td>{taxonomy.data?.categories.find(item => item.id === row.category_id)?.name || '—'}</td>
+          <td>{row.singer_name || taxonomy.data?.singers.find(item => item.id === row.singer_id)?.name || '—'}</td><td>{taxonomy.data?.categories.find(item => item.id === row.category_id)?.name || '—'}</td>
           <td><Status value={row.status} /></td><td>{row.featured ? '★ Yes' : '—'}</td><td>{new Date(row.updated_at).toLocaleDateString()}</td>
           <td><div className={s.actions}>
             {(staff || (row.created_by === profile?.id && row.status === 'draft')) && <Link to={`/admin/hymns/mezmur/${row.id}/edit`}>Edit</Link>}

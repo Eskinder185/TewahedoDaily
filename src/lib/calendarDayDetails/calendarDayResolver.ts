@@ -1,6 +1,6 @@
 import rawDayDetails from '../../data/calendar/day-details.json'
 import rawLiturgyRules from '../../data/calendar/liturgy-rules.json'
-import rawMezmurIndex from '../../data/calendar/mezmur-index.json'
+// mezmur-index.json (~227KB) archived — day mezmur hints come from stored day-details or Supabase.
 import { formatEthiopianLong, gregorianToEthiopian } from '../ethiopianDate'
 import { ethMonthFromEnglishName } from '../eotcCalendar/eotcEthiopianMonthNames'
 import { sortEotcEntriesForCalendarPanel } from '../eotcCalendar/eotcCalendarPanelOrdering'
@@ -109,7 +109,7 @@ type MezmurIndexFile = {
 
 const DAY_DETAILS = rawDayDetails as unknown as DayDetailsFile
 const LITURGY_RULES = rawLiturgyRules as unknown as LiturgyRulesFile
-const MEZMUR_INDEX = rawMezmurIndex as unknown as MezmurIndexFile
+const MEZMUR_INDEX: MezmurIndexFile = { items: [] }
 
 const ANAPHORA_BY_ID = new Map(
   (LITURGY_RULES.anaphoras ?? []).map((anaphora) => [anaphora.id, anaphora]),
@@ -592,7 +592,7 @@ function buildLiturgyContext(
       from: [
         'src/data/calendar/day-details.json',
         'src/data/calendar/liturgy-rules.json',
-        'src/data/calendar/mezmur-index.json',
+        'Supabase mezmur (catalog index archived)',
       ],
     },
   }

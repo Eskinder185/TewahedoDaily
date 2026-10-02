@@ -38,7 +38,6 @@ export type MezmurSearchResult = {
 }
 
 const CATALOG_TTL_MS = 5 * 60 * 1000
-const PAGE_FETCH = 500
 
 let catalogCache: { at: number; docs: MezmurSearchDoc[] } | null = null
 let catalogPromise: Promise<MezmurSearchDoc[]> | null = null
@@ -144,62 +143,39 @@ function toCard(doc: MezmurSearchDoc): MezmurCard {
 async function fetchAllPublishedSearchRows(): Promise<RawRow[]> {
   if (!supabase) return []
 
-  // Keep this select schema-safe: live DB stores search_keywords/themes/tags as TEXT
-  // (often pipe-separated), not text[]. Never filter with cs/@> against these columns.
-  const selectClassified = `
-    id, slug, title, title_amharic, thumbnail_url, thumbnail_path, image_alt,
-    audio_url, youtube_url, featured, published_at, created_at,
-    language, form, category, occasion, saint_or_angel, themes, search_keywords,
-    singers ( id, name ),
-    categories ( id, name, slug )
-  `
-  const selectBase = `
-    id, slug, title, title_amharic, thumbnail_url, thumbnail_path, image_alt,
-    audio_url, youtube_url, featured, published_at, created_at,
-    singers ( id, name ),
-    categories ( id, name, slug )
-  `
-
-  let useClassified = true
-  const rows: RawRow[] = []
-
-  for (let offset = 0; ; offset += PAGE_FETCH) {
-    const { data, error } = await supabase
-      .from('mezmur')
-      .select(useClassified ? selectClassified : selectBase)
-      .eq('status', 'published')
-      .order('created_at', { ascending: false })
-      .order('id')
-      .range(offset, offset + PAGE_FETCH - 1)
-
-    if (error) {
-      if (import.meta.env.DEV) {
-        console.error('[mezmurSearch] catalog fetch', {
-          code: error.code,
-          message: error.message,
-          details: error.details,
-          hint: error.hint,
-        })
-      }
-      if (
-        useClassified &&
-        (error.code === '42703' ||
-          /column .* does not exist/i.test(error.message || '') ||
-          /operator does not exist/i.test(error.message || ''))
-      ) {
-        useClassified = false
-        offset -= PAGE_FETCH
-        continue
-      }
-      throw error
+  // Hymns Practice catalog: mezmur_data_import only (never public.mezmur).
+  try {
+    const { listImportMezmurCards } = await import('./hymnBrowse')
+    const imported = await listImportMezmurCards(1000)
+    return imported.map((row) => ({
+      id: row.id,
+      slug: row.slug,
+      title: row.title,
+      title_amharic: row.title_amharic,
+      thumbnail_url: row.thumbnail_url,
+      thumbnail_path: row.thumbnail_url,
+      image_alt: null,
+      audio_url: null,
+      youtube_url: row.youtube_url,
+      featured: false,
+      published_at: null,
+      created_at: '',
+      language: row.language,
+      form: row.form,
+      category: null,
+      occasion: null,
+      saint_or_angel: null,
+      themes: null,
+      search_keywords: row.search_keywords,
+      singers: row.singer_name ? { id: row.singer_name, name: row.singer_name } : null,
+      categories: null,
+    })) as unknown as RawRow[]
+  } catch (cause) {
+    if (import.meta.env.DEV) {
+      console.error('[mezmurSearch] import catalog', cause)
     }
-
-    const batch = (data || []) as unknown as RawRow[]
-    rows.push(...batch)
-    if (batch.length < PAGE_FETCH) break
+    return []
   }
-
-  return rows
 }
 
 export async function loadMezmurSearchCatalog(force = false): Promise<MezmurSearchDoc[]> {

@@ -288,6 +288,9 @@ export async function listCalendarCards(options?: {
   category?: string
   featured?: 'yes' | 'no' | ''
   homepage?: 'all' | 'home' | 'home_featured' | ''
+  /** Server-side image presence filter (do not rely on client-only page filters). */
+  image?: 'has' | 'needs' | ''
+  sourceType?: string
   page?: number
   pageSize?: number
 }) {
@@ -311,6 +314,15 @@ export async function listCalendarCards(options?: {
   if (options?.homepage === 'home') query = query.eq('show_on_home', true)
   if (options?.homepage === 'home_featured') {
     query = query.eq('show_on_home', true).eq('home_featured', true)
+  }
+  if (options?.image === 'needs') {
+    query = query.or('image_path.is.null,image_path.eq.')
+  }
+  if (options?.image === 'has') {
+    query = query.not('image_path', 'is', null).neq('image_path', '')
+  }
+  if (options?.sourceType) {
+    query = query.eq('source_type', options.sourceType)
   }
   if (options?.monthNumber) {
     query = query.eq('ethiopian_month_number', options.monthNumber)
@@ -374,6 +386,50 @@ export async function findOrCreateSynaxariumDay(monthNumber: number, day: number
   throw new Error(
     `No Synaxarium day exists for ${monthLabel(monthNumber)} ${day}. Create it under Calendar → Synaxarium first, or save the card without a day link.`,
   )
+}
+
+/**
+ * Image-only update by exact calendar_cards.id.
+ * Does not touch source_type / source_id / source_slug / dates / educational text.
+ * Refetches the row and verifies image_path before returning success.
+ */
+export async function saveCalendarCardImage(
+  cardId: string,
+  input: {
+    image_path: string
+    image_alt?: string | null
+    image_position?: string | null
+  },
+): Promise<CalendarCardRow> {
+  const id = (cardId || '').trim()
+  if (!id) throw new Error('Calendar Card ID is required.')
+  const imagePath = trimOrNull(input.image_path)
+  if (!imagePath) throw new Error('Choose or upload an image before saving.')
+
+  const { data, error } = await db()
+    .from('calendar_cards' as never)
+    .update({
+      image_path: imagePath,
+      image_alt: trimOrNull(input.image_alt),
+      image_position: input.image_position || 'center',
+      updated_at: new Date().toISOString(),
+    } as never)
+    .eq('id', id)
+    .select('id')
+    .single()
+  if (error) {
+    logSupabaseError('saveCalendarCardImage', error)
+    throw error
+  }
+
+  const saved = await getCalendarCard((data as { id: string }).id)
+  if (saved.image_path !== imagePath) {
+    throw new Error(
+      `Image path did not persist on card ${saved.id}. Expected “${imagePath}”, got “${saved.image_path || ''}”.`,
+    )
+  }
+  invalidateCalendarCardsCache()
+  return saved
 }
 
 export async function saveCalendarCard(

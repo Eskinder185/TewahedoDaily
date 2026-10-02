@@ -2,7 +2,6 @@
  * Shared presentation helpers for Calendar page + Homepage Today in Church.
  * Structured orthodox day data is authoritative; calendar_cards supply images/overrides only.
  */
-import { resolveContentMediaUrl } from '../cms/contentMedia'
 import { calendarImageManifest } from '../../content/calendarImageManifest'
 import type {
   DayEnrichedFields,
@@ -22,7 +21,25 @@ import {
   type EnrichedContentFields,
 } from './calendarEnrichedContent'
 import type { ResolvedCalendarCard } from './resolveCalendarCard'
-import { inheritField, normalizeSourceType } from './resolveCalendarCard'
+import {
+  resolveCalendarEventPresentation,
+  resolveCalendarCardForSource,
+  pickCanonicalCalendarCard,
+  type CalendarCardSourceMatch,
+} from './resolveCalendarEventPresentation'
+
+export type { CalendarCardSourceMatch }
+export { resolveCalendarCardForSource, pickCanonicalCalendarCard }
+
+/** @deprecated Prefer resolveCalendarCardForSource */
+export function findCardForSource(
+  cards: ResolvedCalendarCard[],
+  sourceType: string,
+  sourceId: string,
+  sourceSlug?: string | null,
+): ResolvedCalendarCard | null {
+  return resolveCalendarCardForSource(cards, sourceType, sourceId, sourceSlug)
+}
 
 export type CalendarCategoryTone =
   | 'christ'
@@ -45,6 +62,10 @@ export type PresentableCalendarEvent = {
   sourceId?: string | null
   sourceSlug?: string | null
   imagePath?: string | null
+  /** Stable React key: occurrenceDate:sourceType:sourceId */
+  occurrenceKey?: string
+  imagePosition?: string | null
+  cardUpdatedAt?: string | null
   title: string
   titleAmharic: string
   categoryLabel: string
@@ -107,309 +128,234 @@ function fieldsFromDay(row: DayEnrichedFields & { description?: string }): Enric
   }
 }
 
-function resolveImage(
-  sourcePath: string | null | undefined,
-  card?: ResolvedCalendarCard | null,
-): { url: string | null; alt: string; objectPosition: string; hasImage: boolean } {
-  // Prefer THIS card's resolved image only — never a shared catalog fallback.
-  const cardPath = trim(card?.imagePath)
-  const cardUrl = trim(card?.imageUrl)
-  if (cardUrl) {
-    return {
-      url: cardUrl,
-      alt: card?.imageAlt || card?.title || '',
-      objectPosition: card?.objectPosition || 'center center',
-      hasImage: true,
-    }
-  }
-  if (cardPath) {
-    const url = resolveContentMediaUrl(cardPath)
-    if (url) {
-      return {
-        url,
-        alt: card?.imageAlt || card?.title || '',
-        objectPosition: card?.objectPosition || 'center center',
-        hasImage: true,
-      }
-    }
-  }
-  // Structured source image is allowed only when no card image exists.
-  const fromSource = sourcePath ? resolveContentMediaUrl(sourcePath) : ''
-  if (fromSource) {
-    return {
-      url: fromSource,
-      alt: '',
-      objectPosition: 'center center',
-      hasImage: true,
-    }
-  }
+function presentFromResolved(
+  base: Omit<
+    PresentableCalendarEvent,
+    | 'cardId'
+    | 'sourceType'
+    | 'sourceId'
+    | 'sourceSlug'
+    | 'imagePath'
+    | 'imageUrl'
+    | 'imageAlt'
+    | 'objectPosition'
+    | 'hasImage'
+    | 'title'
+    | 'titleAmharic'
+    | 'occurrenceKey'
+    | 'imagePosition'
+    | 'cardUpdatedAt'
+  > & { title?: string; titleAmharic?: string },
+  presentation: ReturnType<typeof resolveCalendarEventPresentation>,
+): PresentableCalendarEvent {
   return {
-    url: null,
-    alt: '',
-    objectPosition: 'center center',
-    hasImage: false,
+    ...base,
+    cardId: presentation.cardId,
+    sourceType: presentation.sourceType,
+    sourceId: presentation.sourceId,
+    sourceSlug: presentation.sourceSlug,
+    imagePath: presentation.imagePath,
+    imageUrl: presentation.imageUrl,
+    imageAlt: presentation.imageAlt || base.title || presentation.title,
+    objectPosition: presentation.objectPosition,
+    hasImage: presentation.hasImage,
+    title: presentation.title || base.title || '',
+    titleAmharic: presentation.titleAmharic || base.titleAmharic || '',
+    occurrenceKey: presentation.occurrenceKey,
+    imagePosition: presentation.imagePosition,
+    cardUpdatedAt: presentation.cardUpdatedAt,
   }
-}
-
-function trim(value?: string | null): string {
-  return (value || '').trim()
-}
-
-/** Minimal fields needed to pick a canonical presentation card for a source. */
-export type CalendarCardSourceMatch = {
-  id: string
-  sourceType: string
-  sourceId?: string | null
-  sourceSlug?: string | null
-  imagePath?: string | null
-  imageUrl?: string | null
-  title?: string | null
-  titleAmharic?: string | null
-  summary?: string | null
-  imageAlt?: string | null
-  imagePosition?: string | null
-  featured?: boolean
-  showOnHome?: boolean
-  homeFeatured?: boolean
-  sortOrder?: number
-  updatedAt?: string | null
-}
-
-function presentationIntentScore(card: CalendarCardSourceMatch): number {
-  let score = 0
-  if (trim(card.imagePath) || trim(card.imageUrl)) score += 8
-  if (trim(card.imageAlt)) score += 2
-  if (trim(card.imagePosition) && trim(card.imagePosition) !== 'center') score += 1
-  if (trim(card.title)) score += 1
-  if (trim(card.titleAmharic)) score += 1
-  if (trim(card.summary)) score += 1
-  if (card.showOnHome) score += 1
-  if (card.homeFeatured) score += 1
-  if (card.featured) score += 1
-  return score
-}
-
-/**
- * Deterministic canonical card among duplicates for the same source.
- * Prefer: correct source_id link → explicit image → presentation settings → sort → newest → id.
- */
-export function pickCanonicalCalendarCard<T extends CalendarCardSourceMatch>(
-  candidates: T[],
-): T | null {
-  if (!candidates.length) return null
-  if (candidates.length === 1) return candidates[0]
-  return [...candidates].sort((a, b) => {
-    const aIdLinked = trim(a.sourceId) ? 1 : 0
-    const bIdLinked = trim(b.sourceId) ? 1 : 0
-    if (bIdLinked !== aIdLinked) return bIdLinked - aIdLinked
-
-    const aImg = trim(a.imagePath) || trim(a.imageUrl) ? 1 : 0
-    const bImg = trim(b.imagePath) || trim(b.imageUrl) ? 1 : 0
-    if (bImg !== aImg) return bImg - aImg
-
-    const intent = presentationIntentScore(b) - presentationIntentScore(a)
-    if (intent !== 0) return intent
-
-    const aSort = Number.isFinite(Number(a.sortOrder)) ? Number(a.sortOrder) : 9999
-    const bSort = Number.isFinite(Number(b.sortOrder)) ? Number(b.sortOrder) : 9999
-    if (aSort !== bSort) return aSort - bSort
-
-    const aUpdated = trim(a.updatedAt)
-    const bUpdated = trim(b.updatedAt)
-    if (aUpdated !== bUpdated) return bUpdated.localeCompare(aUpdated)
-
-    return a.id.localeCompare(b.id)
-  })[0]
-}
-
-/**
- * Shared Calendar / Homepage card lookup for a structured source.
- * Resolution order:
- * 1. exact source_type + source_id
- * 2. if missing, exact source_type + source_slug
- * Never resolves by title, array index, or "first monthly of the day".
- */
-export function resolveCalendarCardForSource<T extends CalendarCardSourceMatch>(
-  cards: T[],
-  sourceType: string,
-  sourceId: string,
-  sourceSlug?: string | null,
-): T | null {
-  const type = normalizeSourceType(sourceType)
-  const id = (sourceId || '').trim()
-  const slug = (sourceSlug || '').trim()
-  if (!id && !slug) return null
-
-  const ofType = cards.filter((c) => normalizeSourceType(c.sourceType) === type)
-  const byId = id ? ofType.filter((c) => (c.sourceId || '').trim() === id) : []
-  if (byId.length) return pickCanonicalCalendarCard(byId)
-
-  if (!slug) return null
-  const bySlug = ofType.filter((c) => (c.sourceSlug || '').trim() === slug)
-  return pickCanonicalCalendarCard(bySlug)
-}
-
-/** @deprecated Prefer resolveCalendarCardForSource — kept as alias for callers/tests. */
-export function findCardForSource(
-  cards: ResolvedCalendarCard[],
-  sourceType: string,
-  sourceId: string,
-  sourceSlug?: string | null,
-): ResolvedCalendarCard | null {
-  return resolveCalendarCardForSource(cards, sourceType, sourceId, sourceSlug)
 }
 
 export function presentObservance(
   row: DayObservance,
   cards: ResolvedCalendarCard[] = [],
   ethMonthName?: string,
+  options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent {
-  const card = resolveCalendarCardForSource(cards, 'observance', row.id, row.slug)
   const fields = fieldsFromDay(row)
   const summary = enrichedSummary(fields)
   const kindLabel = observanceKindLabel(row.observanceType, row.isMajor)
   const tone = categoryToneFromText(row.category, row.observanceType, row.title, kindLabel)
-  const image = resolveImage(row.imagePath, card)
   const isEve =
     tone === 'eve' ||
     /eve|vigil|preparation|demera|ketera|gahad/i.test(`${row.observanceType} ${row.title}`)
-
-  return {
-    id: row.id,
-    slug: row.slug,
-    kind: 'observance',
-    cardId: card?.id || null,
+  const presentation = resolveCalendarEventPresentation({
     sourceType: 'observance',
     sourceId: row.id,
     sourceSlug: row.slug,
-    imagePath: card?.imagePath || (image.hasImage ? row.imagePath : null) || null,
-    title: inheritField(card?.title, row.title) || row.title,
-    titleAmharic: inheritField(card?.titleAmharic, row.titleAmharic),
-    categoryLabel: kindLabel.toUpperCase(),
-    tone,
-    isMajor: row.isMajor && !isEve,
-    isEveOrPreparation: isEve,
-    movableLabel: movableFriendlyLabel(row.isMovable),
-    ethiopianDateLabel: ethDateLabel(row.ethiopianMonthNumber, row.ethiopianDay, ethMonthName),
-    summary: summary.english,
-    summaryAmharic: summary.amharic,
-    description: row.description,
-    imageUrl: image.url,
-    imageAlt: image.alt || row.imageAlt || row.title,
-    objectPosition: image.objectPosition,
-    hasImage: image.hasImage,
-    fields,
-    occasionTag: row.occasionTag,
-  }
+    occurrenceDate: options?.occurrenceDate,
+    source: {
+      title: row.title,
+      titleAmharic: row.titleAmharic,
+      summary: row.summary,
+      description: row.description,
+      imagePath: row.imagePath,
+      imageAlt: row.imageAlt,
+    },
+    cards,
+    surface: options?.surface,
+  })
+
+  return presentFromResolved(
+    {
+      id: row.id,
+      slug: row.slug,
+      kind: 'observance',
+      title: row.title,
+      titleAmharic: row.titleAmharic,
+      categoryLabel: kindLabel.toUpperCase(),
+      tone,
+      isMajor: row.isMajor && !isEve,
+      isEveOrPreparation: isEve,
+      movableLabel: movableFriendlyLabel(row.isMovable),
+      ethiopianDateLabel: ethDateLabel(row.ethiopianMonthNumber, row.ethiopianDay, ethMonthName),
+      summary: summary.english,
+      summaryAmharic: summary.amharic,
+      description: row.description,
+      fields,
+      occasionTag: row.occasionTag,
+    },
+    presentation,
+  )
 }
 
-export function presentFast(row: DayFast, cards: ResolvedCalendarCard[] = []): PresentableCalendarEvent {
-  const card = resolveCalendarCardForSource(cards, 'fast', row.id, row.slug)
+export function presentFast(
+  row: DayFast,
+  cards: ResolvedCalendarCard[] = [],
+  options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
+): PresentableCalendarEvent {
   const fields = fieldsFromDay(row)
   const summary = enrichedSummary(fields)
-  const image = resolveImage(null, card)
-  return {
-    id: row.id,
-    slug: row.slug,
-    kind: 'fast',
-    cardId: card?.id || null,
+  const presentation = resolveCalendarEventPresentation({
     sourceType: 'fast',
     sourceId: row.id,
     sourceSlug: row.slug,
-    imagePath: card?.imagePath || null,
-    title: inheritField(card?.title, row.name) || row.name,
-    titleAmharic: inheritField(card?.titleAmharic, row.nameAmharic),
-    categoryLabel: isFastFreeType(row.fastType) ? 'FAST-FREE' : 'FAST',
-    tone: 'fast',
-    isMajor: false,
-    isEveOrPreparation: false,
-    movableLabel: null,
-    ethiopianDateLabel: '',
-    summary: summary.english,
-    summaryAmharic: summary.amharic,
-    description: row.description,
-    imageUrl: image.url,
-    imageAlt: image.alt || row.name,
-    objectPosition: image.objectPosition,
-    hasImage: image.hasImage,
-    fields,
-    fastTypeLabel: humanFastTypeLabel(row.fastType),
-    occasionTag: row.occasionTag,
-  }
+    occurrenceDate: options?.occurrenceDate,
+    source: {
+      title: row.name,
+      titleAmharic: row.nameAmharic,
+      summary: row.summary,
+      description: row.description,
+    },
+    cards,
+    surface: options?.surface,
+  })
+
+  return presentFromResolved(
+    {
+      id: row.id,
+      slug: row.slug,
+      kind: 'fast',
+      title: row.name,
+      titleAmharic: row.nameAmharic,
+      categoryLabel: isFastFreeType(row.fastType) ? 'FAST-FREE' : 'FAST',
+      tone: 'fast',
+      isMajor: false,
+      isEveOrPreparation: false,
+      movableLabel: null,
+      ethiopianDateLabel: '',
+      summary: summary.english,
+      summaryAmharic: summary.amharic,
+      description: row.description,
+      fields,
+      fastTypeLabel: humanFastTypeLabel(row.fastType),
+      occasionTag: row.occasionTag,
+    },
+    presentation,
+  )
 }
 
 export function presentSeason(
   row: DaySeason,
   cards: ResolvedCalendarCard[] = [],
+  options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent {
-  const card = resolveCalendarCardForSource(cards, 'season', row.id, row.slug)
   const fields = fieldsFromDay(row)
   const summary = enrichedSummary(fields)
-  const image = resolveImage(null, card)
-  return {
-    id: row.id,
-    slug: row.slug,
-    kind: 'season',
-    cardId: card?.id || null,
+  const presentation = resolveCalendarEventPresentation({
     sourceType: 'season',
     sourceId: row.id,
     sourceSlug: row.slug,
-    imagePath: card?.imagePath || null,
-    title: inheritField(card?.title, row.title) || row.title,
-    titleAmharic: inheritField(card?.titleAmharic, row.titleAmharic),
-    categoryLabel: 'SEASON',
-    tone: 'season',
-    isMajor: false,
-    isEveOrPreparation: false,
-    movableLabel: null,
-    ethiopianDateLabel: '',
-    summary: summary.english,
-    summaryAmharic: summary.amharic,
-    description: row.description,
-    imageUrl: image.url,
-    imageAlt: image.alt || row.title,
-    objectPosition: image.objectPosition,
-    hasImage: image.hasImage,
-    fields,
-    occasionTag: row.occasionTags[0] || null,
-  }
+    occurrenceDate: options?.occurrenceDate,
+    source: {
+      title: row.title,
+      titleAmharic: row.titleAmharic,
+      summary: row.summary,
+      description: row.description,
+    },
+    cards,
+    surface: options?.surface,
+  })
+
+  return presentFromResolved(
+    {
+      id: row.id,
+      slug: row.slug,
+      kind: 'season',
+      title: row.title,
+      titleAmharic: row.titleAmharic,
+      categoryLabel: 'SEASON',
+      tone: 'season',
+      isMajor: false,
+      isEveOrPreparation: false,
+      movableLabel: null,
+      ethiopianDateLabel: '',
+      summary: summary.english,
+      summaryAmharic: summary.amharic,
+      description: row.description,
+      fields,
+      occasionTag: row.occasionTags[0] || null,
+    },
+    presentation,
+  )
 }
 
 export function presentMonthly(
   row: DayMonthlyCommemoration,
   cards: ResolvedCalendarCard[] = [],
+  options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent {
-  const card = resolveCalendarCardForSource(cards, 'monthly_commemoration', row.id, row.slug)
   const fields = fieldsFromDay(row)
   const summary = enrichedSummary(fields)
-  const image = resolveImage(row.imagePath, card)
-  return {
-    id: row.id,
-    slug: row.slug,
-    kind: 'monthly',
-    cardId: card?.id || null,
+  const presentation = resolveCalendarEventPresentation({
     sourceType: 'monthly_commemoration',
     sourceId: row.id,
     sourceSlug: row.slug,
-    imagePath: card?.imagePath || (image.hasImage ? row.imagePath : null) || null,
-    title: inheritField(card?.title, row.title) || row.title,
-    titleAmharic: inheritField(card?.titleAmharic, row.titleAmharic),
-    categoryLabel: 'MONTHLY COMMEMORATION',
-    tone: categoryToneFromText(row.category, row.title),
-    isMajor: false,
-    isEveOrPreparation: false,
-    movableLabel: null,
-    ethiopianDateLabel: `Day ${row.ethiopianDay}`,
-    summary: summary.english,
-    summaryAmharic: summary.amharic,
-    description: row.description,
-    imageUrl: image.url,
-    imageAlt: image.alt || row.imageAlt || row.title,
-    objectPosition: image.objectPosition,
-    hasImage: image.hasImage,
-    fields,
-    occasionTag: row.occasionTag,
-  }
+    occurrenceDate: options?.occurrenceDate,
+    source: {
+      title: row.title,
+      titleAmharic: row.titleAmharic,
+      summary: row.summary,
+      description: row.description,
+      imagePath: row.imagePath,
+      imageAlt: row.imageAlt,
+    },
+    cards,
+    surface: options?.surface,
+  })
+
+  return presentFromResolved(
+    {
+      id: row.id,
+      slug: row.slug,
+      kind: 'monthly',
+      title: row.title,
+      titleAmharic: row.titleAmharic,
+      categoryLabel: 'MONTHLY COMMEMORATION',
+      tone: categoryToneFromText(row.category, row.title),
+      isMajor: false,
+      isEveOrPreparation: false,
+      movableLabel: null,
+      ethiopianDateLabel: `Day ${row.ethiopianDay}`,
+      summary: summary.english,
+      summaryAmharic: summary.amharic,
+      description: row.description,
+      fields,
+      occasionTag: row.occasionTag,
+    },
+    presentation,
+  )
 }
 
 export function displaySummary(
@@ -518,34 +464,14 @@ export function presentEventsForDayContext(
     ethiopianDate: { monthName: string }
   },
   cards: ResolvedCalendarCard[] = [],
+  options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent[] {
   const ethName = ctx.ethiopianDate.monthName
+  const presentOpts = { occurrenceDate: options?.occurrenceDate, surface: options?.surface }
   const items: PresentableCalendarEvent[] = []
-  for (const o of ctx.observances) items.push(presentObservance(o, cards, ethName))
-  for (const m of ctx.monthlyCommemorations) items.push(presentMonthly(m, cards))
-  if (ctx.activeFast) items.push(presentFast(ctx.activeFast, cards))
-  if (ctx.season) items.push(presentSeason(ctx.season, cards))
-  const sorted = sortPresentableCalendarEvents(items)
-  if (import.meta.env.DEV && typeof console !== 'undefined') {
-    for (const event of sorted) {
-      const card = event.cardId
-        ? cards.find((c) => c.id === event.cardId) || null
-        : resolveCalendarCardForSource(cards, event.sourceType || '', event.sourceId || '', event.sourceSlug)
-      console.debug('[calendar-debug]', {
-        occurrenceDate: ethName,
-        sourceType: event.sourceType,
-        sourceId: event.sourceId,
-        sourceSlug: event.sourceSlug,
-        cardId: event.cardId,
-        cardImagePath: card?.imagePath || null,
-        cardTitleOverride: trim(card?.title) || null,
-        sourceTitle: event.title,
-        finalTitle: event.title,
-        finalImagePath: event.imagePath,
-        finalImageUrl: event.imageUrl,
-        rule: event.ethiopianDateLabel || event.movableLabel,
-      })
-    }
-  }
-  return sorted
+  for (const o of ctx.observances) items.push(presentObservance(o, cards, ethName, presentOpts))
+  for (const m of ctx.monthlyCommemorations) items.push(presentMonthly(m, cards, presentOpts))
+  if (ctx.activeFast) items.push(presentFast(ctx.activeFast, cards, presentOpts))
+  if (ctx.season) items.push(presentSeason(ctx.season, cards, presentOpts))
+  return sortPresentableCalendarEvents(items)
 }

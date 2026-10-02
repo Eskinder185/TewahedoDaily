@@ -32,6 +32,7 @@
     "test:community": "node scripts/community-api-test.mjs && node scripts/community-browser-test.mjs",
     "test:platform": "node scripts/content-platform-smoke.mjs",
     "test:calendar-cards": "node scripts/test-calendar-card-reconciliation.mjs",
+    "test:hymn-browse": "node scripts/test-hymn-browse.mjs",
     "test:synaxarium-presentation": "node --experimental-strip-types scripts/test-synaxarium-presentation.mjs",
     "optimize:calendar-images": "node scripts/optimize-calendar-images.mjs"
   },

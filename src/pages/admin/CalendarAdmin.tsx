@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import {
@@ -55,6 +55,16 @@ import {
 import { useAsync } from '../../lib/cms/useAsync'
 import { AsyncNotice, Status } from './AdminUi'
 import s from './Admin.module.css'
+
+const CalendarCardQuickImageModal = lazy(() =>
+  import('../../components/calendar/CalendarCardQuickImageModal').then((mod) => {
+    const Component = mod.CalendarCardQuickImageModal ?? mod.default
+    if (!Component) {
+      throw new Error('CalendarCardQuickImageModal export is missing from module.')
+    }
+    return { default: Component }
+  }),
+)
 
 function SyncCalendarCardsPanel({ onDone }: { onDone: () => void }) {
   const [busy, setBusy] = useState(false)
@@ -174,6 +184,8 @@ export function CalendarAdmin() {
   const image = (params.get('image') || '') as '' | 'has' | 'needs'
   const source = params.get('source') || ''
   const page = Math.max(1, Number(params.get('page')) || 1)
+  const [quickImageId, setQuickImageId] = useState<string | null>(null)
+  const [listPatch, setListPatch] = useState<Record<string, CalendarCardRow>>({})
 
   const result = useAsync(
     useCallback(
@@ -185,38 +197,100 @@ export function CalendarAdmin() {
           type: type || undefined,
           featured,
           homepage: homepage || undefined,
+          image: image || undefined,
+          sourceType:
+            source &&
+            !['orphaned', 'needs_review', 'problems'].includes(source)
+              ? source
+              : undefined,
           page,
           pageSize: 48,
         }).then(async (pageResult) => {
           const linkedMap = await loadLinkedSourcesForCards(pageResult.items)
           return { ...pageResult, linkedMap }
         }),
-      [q, status, month, type, featured, homepage, page],
+      [q, status, month, type, featured, homepage, image, source, page],
     ),
   )
 
   const filteredItems = useMemo(() => {
-    const items = result.data?.items || []
+    const items = (result.data?.items || []).map((row) => listPatch[row.id] || row)
+    const needle = q.trim().toLowerCase()
     return items.filter((row) => {
-      if (image === 'has' && !row.image_path) return false
-      if (image === 'needs' && row.image_path) return false
-      if (source) {
+      if (source === 'orphaned') {
         const normalized = normalizeSourceType(row.source_type)
-        if (source === 'orphaned') {
-          return isLinkedSourceType(normalized) && !row.source_id && !row.source_slug
+        return isLinkedSourceType(normalized) && !row.source_id && !row.source_slug
+      }
+      if (source === 'needs_review' || source === 'problems') {
+        const normalized = normalizeSourceType(row.source_type)
+        if (!isLinkedSourceType(normalized)) {
+          return source === 'problems' ? row.status !== 'published' && Boolean(row.image_path) : false
         }
-        if (source === 'needs_review') {
-          // Heuristic until sync audit is applied: linked without id/slug, or non-empty title
-          // that may be a legacy placeholder override.
-          if (!isLinkedSourceType(normalized)) return false
-          if (!row.source_id && !row.source_slug) return true
-          return Boolean(row.title?.trim())
-        }
-        if (normalizeSourceType(source) !== normalized) return false
+        if (!row.source_id && !row.source_slug) return true
+        const linkedSource = result.data?.linkedMap
+          ? lookupLinkedInMap(
+              result.data.linkedMap,
+              row.source_type,
+              row.source_id,
+              row.source_slug,
+            )
+          : null
+        if (!linkedSource) return true
+        if (source === 'problems' && row.status !== 'published' && row.image_path) return true
+        return Boolean(row.title?.trim()) && source === 'needs_review'
+      }
+      if (needle) {
+        const linkedSource = result.data?.linkedMap
+          ? lookupLinkedInMap(
+              result.data.linkedMap,
+              row.source_type,
+              row.source_id,
+              row.source_slug,
+            )
+          : null
+        const hay = [
+          row.title,
+          row.title_amharic,
+          row.slug,
+          row.source_slug,
+          row.source_id,
+          linkedSource?.title,
+          linkedSource?.titleAmharic,
+          linkedSource?.sourceSlug,
+        ]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase()
+        if (!hay.includes(needle)) return false
       }
       return true
     })
-  }, [result.data?.items, image, source])
+  }, [result.data?.items, result.data?.linkedMap, source, q, listPatch])
+
+  const missingImageQueue = useMemo(
+    () => filteredItems.filter((row) => !(row.image_path || '').trim()),
+    [filteredItems],
+  )
+
+  const quickCard = useMemo(
+    () => filteredItems.find((row) => row.id === quickImageId) || null,
+    [filteredItems, quickImageId],
+  )
+
+  function setFilterChip(next: Record<string, string>) {
+    setParams({
+      q,
+      status,
+      month: month ? String(month) : '',
+      type,
+      featured,
+      homepage,
+      image,
+      source,
+      page: '1',
+      ...next,
+    })
+  }
 
   return (
     <>
@@ -236,6 +310,51 @@ export function CalendarAdmin() {
 
       <SyncCalendarCardsPanel onDone={() => result.reload()} />
 
+      <div className={s.actions} style={{ flexWrap: 'wrap', gap: '0.4rem', marginBottom: '0.75rem' }}>
+        {(
+          [
+            { label: 'All', next: { image: '', source: '', homepage: '', status: '' } },
+            { label: 'Needs Image', next: { image: 'needs' } },
+            { label: 'Has Image', next: { image: 'has' } },
+            { label: 'Observances', next: { source: 'observance' } },
+            { label: 'Monthly', next: { source: 'monthly_commemoration' } },
+            { label: 'Fasts', next: { source: 'fast' } },
+            { label: 'Seasons', next: { source: 'season' } },
+            { label: 'Homepage', next: { homepage: 'home' } },
+            { label: 'Problems', next: { source: 'problems' } },
+            { label: 'Draft', next: { status: 'draft' } },
+          ] as const
+        ).map((chip) => (
+          <button
+            key={chip.label}
+            type="button"
+            className={
+              (chip.label === 'Needs Image' && image === 'needs') ||
+              (chip.label === 'Has Image' && image === 'has') ||
+              (chip.label === 'Homepage' && homepage === 'home') ||
+              (chip.label === 'Draft' && status === 'draft') ||
+              (chip.label === 'Problems' && source === 'problems') ||
+              (chip.label === 'Observances' && source === 'observance') ||
+              (chip.label === 'Monthly' && source === 'monthly_commemoration') ||
+              (chip.label === 'Fasts' && source === 'fast') ||
+              (chip.label === 'Seasons' && source === 'season') ||
+              (chip.label === 'All' && !image && !source && !homepage && !status)
+                ? s.primary
+                : undefined
+            }
+            onClick={() => setFilterChip(chip.next)}
+          >
+            {chip.label}
+          </button>
+        ))}
+      </div>
+
+      <p className={s.muted} style={{ marginTop: 0 }}>
+        Tip: use <strong>Needs Image</strong> → <strong>Add/Change Image</strong> for the fast
+        workflow. Public Calendar only shows <strong>published</strong> cards — draft cards with
+        images still appear as Needs Image on the public site.
+      </p>
+
       <form
         className={s.filters}
         onSubmit={(event) => {
@@ -250,12 +369,17 @@ export function CalendarAdmin() {
             homepage: String(data.get('homepage') || ''),
             image: String(data.get('image') || ''),
             source: String(data.get('source') || ''),
+            page: '1',
           })
         }}
       >
         <label>
           Search
-          <input name="q" defaultValue={q} placeholder="Title, Amharic, slug" />
+          <input
+            name="q"
+            defaultValue={q}
+            placeholder="Bisrate Gabriel, demera, Amharic, source_slug…"
+          />
         </label>
         <label>
           Status
@@ -279,6 +403,7 @@ export function CalendarAdmin() {
             <option value="manual">Manual</option>
             <option value="orphaned">Orphaned link</option>
             <option value="needs_review">Needs Review</option>
+            <option value="problems">Problems</option>
           </select>
         </label>
         <label>
@@ -387,6 +512,11 @@ export function CalendarAdmin() {
                       ) : (
                         <span className={s.badge}>NEEDS IMAGE</span>
                       )}
+                      {row.status !== 'published' ? (
+                        <span className={s.badge} title="Not visible on public Calendar">
+                          {row.status.toUpperCase()} · NOT PUBLIC
+                        </span>
+                      ) : null}
                       {row.show_on_home ? (
                         <span className={s.badge} title="Shown on homepage">
                           HOME
@@ -402,12 +532,22 @@ export function CalendarAdmin() {
                     </span>
                     <span className={s.muted}>Date rule: {dateRule}</span>
                     <Status value={row.status} />
-                    <div className={s.actions}>
-                      <Link to={`/admin/calendar/cards/${row.id}/edit`}>Edit</Link>
+                    <div className={s.actions} style={{ flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        className={s.primary}
+                        onClick={() => setQuickImageId(row.id)}
+                      >
+                        {imagePreview.url ? 'Change Image' : 'Add Image'}
+                      </button>
+                      <Link to={`/admin/calendar/cards/${row.id}/edit`}>Edit details</Link>
                       <Link to="/calendar" target="_blank" rel="noreferrer">
                         Preview
                       </Link>
                     </div>
+                    <span className={s.muted} style={{ fontSize: '0.75rem' }}>
+                      Card ID: <code>{row.id}</code>
+                    </span>
                   </div>
                 </article>
               )
@@ -417,6 +557,31 @@ export function CalendarAdmin() {
             <p className={s.muted}>
               No calendar cards match these filters. Run Sync to create missing linked placeholders.
             </p>
+          ) : null}
+          {quickCard ? (
+            <Suspense fallback={null}>
+              <CalendarCardQuickImageModal
+                card={quickCard}
+                linked={
+                  result.data?.linkedMap
+                    ? lookupLinkedInMap(
+                        result.data.linkedMap,
+                        quickCard.source_type,
+                        quickCard.source_id,
+                        quickCard.source_slug,
+                      )
+                    : null
+                }
+                missingQueue={missingImageQueue}
+                onClose={() => setQuickImageId(null)}
+                onSaved={(saved, nextMissing) => {
+                  setListPatch((prev) => ({ ...prev, [saved.id]: saved }))
+                  if (nextMissing) setQuickImageId(nextMissing.id)
+                  else setQuickImageId(null)
+                  void result.reload()
+                }}
+              />
+            </Suspense>
           ) : null}
           <div className={s.actions}>
             <button
@@ -533,6 +698,8 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
   const [sourceHits, setSourceHits] = useState<CalendarSourceSearchHit[]>([])
   const [sourceSearching, setSourceSearching] = useState(false)
   const [linkedPreview, setLinkedPreview] = useState<LinkedCalendarSource | null>(null)
+  /** Existing linked cards hide the source picker until the user opts in. */
+  const [changingSource, setChangingSource] = useState(() => !existing)
 
   const maxDay = useMemo(() => {
     const month = input.ethiopian_month_number
@@ -575,7 +742,7 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
   }, [linkedMode, input.source_type, input.source_id, input.source_slug])
 
   useEffect(() => {
-    if (!linkedMode) return
+    if (!linkedMode || !changingSource) return
     const type = normalizeSourceType(input.source_type) as CalendarCardSourceType
     if (type === 'manual') return
     let active = true
@@ -591,7 +758,7 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
       active = false
       window.clearTimeout(timeout)
     }
-  }, [linkedMode, input.source_type, sourceQuery])
+  }, [linkedMode, input.source_type, sourceQuery, changingSource])
 
   function set<K extends keyof CalendarCardInput>(key: K, value: CalendarCardInput[K]) {
     setInput((prev) => {
@@ -607,7 +774,6 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
   function setMode(mode: 'manual' | 'linked') {
     if (mode === 'manual') {
       set('source_type', 'manual')
-      // Keep source_id/slug for non-destructive switch — clear only type for resolve
       return
     }
     const nextType =
@@ -615,29 +781,43 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
         ? 'observance'
         : normalizeSourceType(input.source_type)
     set('source_type', nextType)
+    if (existing) setChangingSource(true)
   }
 
   function selectSource(hit: CalendarSourceSearchHit) {
+    const sameLink =
+      Boolean(existing) &&
+      normalizeSourceType(input.source_type) === hit.sourceType &&
+      ((input.source_id && input.source_id === hit.id) ||
+        (input.source_slug && input.source_slug === hit.slug))
+
+    if (existing && !sameLink) {
+      const currentLabel =
+        linkedPreview?.title ||
+        input.source_slug ||
+        input.title ||
+        existing.title ||
+        'the current source'
+      const ok = window.confirm(
+        `Changing the linked source will make this Calendar Card represent a different calendar event.\n\n` +
+          `Current: ${currentLabel}\n` +
+          `New: ${hit.title} (${hit.sourceType} · ${hit.slug})\n\n` +
+          `Existing image and presentation settings will remain attached to this card (id ${existing.id}).\n\n` +
+          `Continue?`,
+      )
+      if (!ok) return
+    }
+
     setInput((prev) => {
       const nextCategory = hit.category || prev.category
-      const nextType = hit.cardType || prev.card_type
-      const suggested = getSuggestedCalendarImagePath({
-        sourceSlug: hit.slug,
-        cardSlug: prev.slug || hit.slug,
-        category: nextCategory,
-        cardType: nextType,
-        title: hit.title,
-      })
       return {
         ...prev,
         source_type: hit.sourceType,
         source_id: hit.id,
         source_slug: hit.slug,
-        // Do not copy source title/summary into the card — inherit at resolve time.
-        // Clear identical legacy placeholders only via Sync; leave intentional overrides alone.
         is_monthly: hit.sourceType === 'monthly_commemoration' ? true : prev.is_monthly,
-        // Suggest reusable image path only when the card has no image yet.
-        image_path: prev.image_path?.trim() ? prev.image_path : suggested || prev.image_path,
+        // Do NOT auto-write a suggested path — that falsely clears "Needs Image" without an upload.
+        image_path: prev.image_path,
         image_alt:
           prev.image_alt?.trim() ||
           suggestCalendarImageAlt(hit.title, nextCategory) ||
@@ -645,6 +825,8 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
       }
     })
     setSourceQuery('')
+    setSourceHits([])
+    setChangingSource(false)
     setSuccess('')
   }
 
@@ -653,14 +835,26 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
     setError('')
     setSuccess('')
     try {
+      // Exact-ID mutation: existing card id is required for updates.
       const saved = await saveCalendarCard(input, existing)
-      // Rehydrate from DB so preview shows persisted image_path, not picker-only state.
       setInput(emptyInput(saved))
-      setSuccess(
-        saved.image_path
-          ? `Saved. Image confirmed: ${saved.image_path}. Public pages refresh on next visit (cache cleared).`
-          : 'Saved. Public Calendar/Homepage pick up card changes on next visit (cache cleared).',
-      )
+      setChangingSource(false)
+      const displayName =
+        linkedPreview?.title ||
+        saved.title ||
+        saved.source_slug ||
+        'Calendar Card'
+      const lines = [
+        saved.image_path ? 'Image saved.' : 'Calendar Card saved.',
+        `Calendar Card: ${displayName}`,
+        saved.title_amharic ? `Amharic: ${saved.title_amharic}` : null,
+        `Card ID: ${saved.id}`,
+        `Source type: ${sourceTypeBadge(saved.source_type)}`,
+        saved.source_slug ? `Source slug: ${saved.source_slug}` : null,
+        saved.source_id ? `Source ID: ${saved.source_id}` : null,
+        saved.image_path ? `Image path: ${saved.image_path}` : 'Image path: (none)',
+      ].filter(Boolean)
+      setSuccess(lines.join('\n'))
       if (!existing) navigate(`/admin/calendar/cards/${saved.id}/edit`, { replace: true })
     } catch (cause) {
       setError(errorMessage(cause))
@@ -758,6 +952,22 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
   const previewCategory = resolvedPreview.categoryLabel
   const objectPosition = resolvedPreview.objectPosition
 
+  const identityTitle =
+    linkedPreview?.title ||
+    input.title?.trim() ||
+    existing?.title ||
+    '(untitled card)'
+  const identityAmharic =
+    linkedPreview?.titleAmharic || input.title_amharic || existing?.title_amharic || ''
+  const dateRule = formatCardDateRuleDisplay({
+    sourceType: input.source_type,
+    linked: linkedPreview,
+    cardMonth: input.ethiopian_month_number,
+    cardDay: input.ethiopian_day,
+    isMonthly: input.is_monthly,
+  })
+  const showSourcePicker = !existing || !linkedMode || changingSource
+
   return (
     <>
       <div className={s.heading}>
@@ -767,124 +977,224 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
           <p className={s.muted}>
             {busy
               ? 'Saving…'
-              : success ||
-                'Visual card for the public Calendar strip — link structured data or write a manual card.'}
+              : 'Visual card for the public Calendar strip — images stay on this exact card ID.'}
           </p>
         </div>
         <button type="button" className={s.primary} disabled={busy} onClick={() => void save()}>
           {busy ? 'Saving…' : 'Save'}
         </button>
       </div>
+
+      {existing ? (
+        <section
+          className={s.card}
+          style={{
+            marginBottom: '1rem',
+            borderColor: 'var(--color-gold, #b08a3c)',
+            background: 'color-mix(in srgb, var(--color-gold, #b08a3c) 8%, transparent)',
+          }}
+        >
+          <p className={s.eyebrow} style={{ margin: 0 }}>
+            EDITING CALENDAR CARD
+          </p>
+          <h2 style={{ margin: '0.35rem 0' }}>{identityTitle}</h2>
+          {identityAmharic ? (
+            <p lang="am" style={{ margin: '0 0 0.5rem', fontSize: '1.15rem' }}>
+              {identityAmharic}
+            </p>
+          ) : null}
+          <div className={s.muted} style={{ display: 'grid', gap: '0.25rem' }}>
+            <div>
+              Type: <strong>{sourceTypeBadge(input.source_type)}</strong>
+            </div>
+            <div>
+              Source slug: <code>{input.source_slug || '—'}</code>
+            </div>
+            <div>
+              Source ID: <code>{input.source_id || '—'}</code>
+            </div>
+            <div>
+              Card ID: <code>{existing.id}</code>
+            </div>
+            <div>
+              Current image:{' '}
+              {input.image_path ? <code>{input.image_path}</code> : <em>Needs image</em>}
+            </div>
+            <div>Date rule: {dateRule}</div>
+          </div>
+        </section>
+      ) : null}
+
       {error ? (
         <p role="alert" className={s.notice}>
           {error}
         </p>
       ) : null}
-      {success ? <p role="status">{success}</p> : null}
+      {success ? (
+        <pre
+          role="status"
+          className={s.notice}
+          style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit' }}
+        >
+          {success}
+        </pre>
+      ) : null}
 
       <div className={s.formGrid}>
         <div className={s.stack}>
           <section className={s.card}>
-            <h2>Content source</h2>
-            <p className={s.muted}>
-              Link authoritative calendar data, or keep a fully manual card. Switching modes does not
-              delete your text — blank overrides inherit from the linked source.
-            </p>
-            <div className={s.fields}>
-              <label>
-                Mode
-                <select
-                  value={linkedMode ? 'linked' : 'manual'}
-                  onChange={(e) => setMode(e.target.value === 'linked' ? 'linked' : 'manual')}
-                >
-                  <option value="linked">Link existing calendar content</option>
-                  <option value="manual">Manual card</option>
-                </select>
-              </label>
-              {linkedMode ? (
-                <>
-                  <label>
-                    Source type
-                    <select
-                      value={normalizeSourceType(input.source_type)}
-                      onChange={(e) => {
-                        set('source_type', e.target.value)
-                        set('source_id', '')
-                        set('source_slug', '')
-                        setLinkedPreview(null)
-                      }}
-                    >
-                      {CALENDAR_CARD_SOURCE_TYPES.filter((t) => t !== 'manual').map((value) => (
-                        <option key={value} value={value}>
-                          {sourceTypeBadge(value)}
-                        </option>
-                      ))}
-                    </select>
-                  </label>
-                  <label>
-                    Search source
-                    <input
-                      value={sourceQuery}
-                      onChange={(e) => setSourceQuery(e.target.value)}
-                      placeholder="Title, Amharic, slug…"
-                    />
-                  </label>
-                  {sourceSearching ? <p className={s.muted}>Searching…</p> : null}
-                  {sourceHits.length ? (
-                    <ul className={s.stack} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                      {sourceHits.map((hit) => (
-                        <li key={`${hit.sourceType}:${hit.id}`}>
-                          <button
-                            type="button"
-                            className={s.card}
-                            style={{ width: '100%', textAlign: 'left', cursor: 'pointer' }}
-                            onClick={() => selectSource(hit)}
-                          >
-                            <strong>{hit.title}</strong>
-                            {hit.titleAmharic ? (
-                              <div lang="am" className={s.muted}>
-                                {hit.titleAmharic}
-                              </div>
-                            ) : null}
-                            <div className={s.muted}>{hit.meta}</div>
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                  {linkedPreview ? (
-                    <div className={s.notice}>
-                      <p>
-                        <strong>Linked Source (read-only)</strong>
-                      </p>
-                      <p>
-                        {sourceTypeBadge(linkedPreview.sourceType)} · {linkedPreview.title}
-                      </p>
-                      {linkedPreview.titleAmharic ? (
-                        <p lang="am">{linkedPreview.titleAmharic}</p>
-                      ) : null}
-                      <p className={s.muted}>
-                        slug: <code>{linkedPreview.sourceSlug}</code>
-                        {linkedPreview.rangeLabel ? ` · ${linkedPreview.rangeLabel}` : ''}
-                      </p>
-                      {linkedPreview.summary || linkedPreview.description ? (
-                        <p>{(linkedPreview.summary || linkedPreview.description).slice(0, 280)}</p>
-                      ) : null}
-                      <p className={s.muted}>
-                        Factual text refreshes from this source automatically. Image and homepage
-                        settings stay on this card.
-                      </p>
-                    </div>
-                  ) : (
-                    <p className={s.muted}>Select a source record above.</p>
-                  )}
-                </>
-              ) : (
+            <h2>Linked Source</h2>
+            {!linkedMode ? (
+              <div className={s.fields}>
                 <p className={s.muted}>
                   Manual mode uses this card&apos;s own fields for title, date, and educational copy.
                 </p>
-              )}
-            </div>
+                <label>
+                  Mode
+                  <select
+                    value="manual"
+                    onChange={(e) => setMode(e.target.value === 'linked' ? 'linked' : 'manual')}
+                  >
+                    <option value="manual">Manual card</option>
+                    <option value="linked">Link existing calendar content</option>
+                  </select>
+                </label>
+              </div>
+            ) : (
+              <div className={s.fields}>
+                {linkedPreview ? (
+                  <div className={s.notice}>
+                    <p>
+                      <strong>{linkedPreview.title}</strong>
+                    </p>
+                    {linkedPreview.titleAmharic ? (
+                      <p lang="am">{linkedPreview.titleAmharic}</p>
+                    ) : null}
+                    <p>
+                      {sourceTypeBadge(linkedPreview.sourceType)} ·{' '}
+                      <code>{linkedPreview.sourceSlug}</code>
+                    </p>
+                    <p className={s.muted}>
+                      Source ID: <code>{linkedPreview.sourceId}</code>
+                    </p>
+                    <p>
+                      <strong>Date rule:</strong> {linkedPreview.rangeLabel || dateRule}
+                    </p>
+                    <p className={s.muted}>
+                      Factual text refreshes from this source. Image and homepage settings stay on{' '}
+                      <strong>this card</strong>
+                      {existing ? (
+                        <>
+                          {' '}
+                          (<code>{existing.id}</code>)
+                        </>
+                      ) : null}
+                      .
+                    </p>
+                  </div>
+                ) : (
+                  <p className={s.muted}>
+                    No linked source resolved yet. Choose a source below
+                    {existing ? ' (Change linked source)' : ''}.
+                  </p>
+                )}
+
+                {existing && linkedMode && !changingSource ? (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          'Open the source picker?\n\nOnly use this if you intentionally want this Calendar Card to represent a different event. Image files already on this card will stay on this card ID.',
+                        )
+                      ) {
+                        setChangingSource(true)
+                      }
+                    }}
+                  >
+                    Change linked source…
+                  </button>
+                ) : null}
+
+                {showSourcePicker ? (
+                  <>
+                    {!existing ? (
+                      <label>
+                        Mode
+                        <select
+                          value={linkedMode ? 'linked' : 'manual'}
+                          onChange={(e) =>
+                            setMode(e.target.value === 'linked' ? 'linked' : 'manual')
+                          }
+                        >
+                          <option value="linked">Link existing calendar content</option>
+                          <option value="manual">Manual card</option>
+                        </select>
+                      </label>
+                    ) : (
+                      <p className={s.muted}>
+                        Relinking is open. Pick a new source, or{' '}
+                        <button type="button" onClick={() => setChangingSource(false)}>
+                          cancel
+                        </button>
+                        .
+                      </p>
+                    )}
+                    <label>
+                      Source type
+                      <select
+                        value={normalizeSourceType(input.source_type)}
+                        onChange={(e) => {
+                          set('source_type', e.target.value)
+                          set('source_id', '')
+                          set('source_slug', '')
+                          setLinkedPreview(null)
+                        }}
+                      >
+                        {CALENDAR_CARD_SOURCE_TYPES.filter((t) => t !== 'manual').map((value) => (
+                          <option key={value} value={value}>
+                            {sourceTypeBadge(value)}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label>
+                      Search source
+                      <input
+                        value={sourceQuery}
+                        onChange={(e) => setSourceQuery(e.target.value)}
+                        placeholder="Title, Amharic, slug…"
+                      />
+                    </label>
+                    {sourceSearching ? <p className={s.muted}>Searching…</p> : null}
+                    {sourceHits.length ? (
+                      <ul className={s.stack} style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                        {sourceHits.map((hit) => (
+                          <li key={`${hit.sourceType}:${hit.id}`}>
+                            <button
+                              type="button"
+                              className={s.card}
+                              style={{ width: '100%', textAlign: 'left', cursor: 'pointer' }}
+                              onClick={() => selectSource(hit)}
+                            >
+                              <strong>{hit.title}</strong>
+                              {hit.titleAmharic ? (
+                                <div lang="am" className={s.muted}>
+                                  {hit.titleAmharic}
+                                </div>
+                              ) : null}
+                              <div className={s.muted}>
+                                {hit.meta} · <code>{hit.slug}</code>
+                              </div>
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </>
+                ) : null}
+              </div>
+            )}
           </section>
 
           <section className={s.card}>
@@ -1282,23 +1592,47 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
         <div className={s.stack}>
           <section className={s.card}>
             <h2>4. Image</h2>
-            <p className={s.muted}>
-              Store relative paths in content-media (e.g. calendar/angels/gabriel.webp). Reuse the
-              same subject image across monthly commemorations whenever possible.
+            <p className={s.eyebrow} style={{ margin: 0 }}>
+              IMAGE FOR:
             </p>
+            <h3 style={{ margin: '0.25rem 0 0.75rem' }}>{identityTitle}</h3>
+            {identityAmharic ? (
+              <p lang="am" className={s.muted} style={{ marginTop: 0 }}>
+                {identityAmharic}
+              </p>
+            ) : null}
+            {existing ? (
+              <p className={s.muted}>
+                Updates attach to card <code>{existing.id}</code>
+                {input.source_slug ? (
+                  <>
+                    {' '}
+                    · source <code>{input.source_slug}</code>
+                  </>
+                ) : null}
+                . They do not follow whichever source is selected in a picker.
+              </p>
+            ) : (
+              <p className={s.muted}>
+                Store relative paths in content-media (e.g. calendar/angels/gabriel.webp).
+              </p>
+            )}
             <MediaPicker
               label="Calendar card image"
               folder={calendarMediaFolderPrefix(
                 linkedPreview?.category || input.category,
                 linkedPreview?.cardType || input.card_type,
               )}
-              suggestedPath={getSuggestedCalendarImagePath({
-                sourceSlug: input.source_slug,
-                cardSlug: input.slug,
-                category: linkedPreview?.category || input.category,
-                cardType: linkedPreview?.cardType || input.card_type,
-                title: linkedPreview?.title || input.title,
-              })}
+              suggestedPath={getSuggestedCalendarImagePath(
+                {
+                  sourceSlug: input.source_slug,
+                  cardSlug: input.slug,
+                  category: linkedPreview?.category || input.category,
+                  cardType: linkedPreview?.cardType || input.card_type,
+                  title: linkedPreview?.title || input.title,
+                },
+                { unique: true },
+              )}
               convertToWebp
               value={input.image_path}
               altText={input.image_alt}
@@ -1317,6 +1651,12 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
                 setSuccess('')
               }}
             />
+            {existing && input.status !== 'published' ? (
+              <p className={s.error} role="status">
+                This card is “{input.status}”. Public Calendar/Homepage only load published cards —
+                publish it or the site will keep showing Needs Image.
+              </p>
+            ) : null}
             <div className={s.fields}>
               <label>
                 Image position

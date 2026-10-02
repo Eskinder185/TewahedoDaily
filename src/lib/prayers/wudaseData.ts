@@ -1,9 +1,11 @@
-import type { PrayerEntry } from '../../data/types/tselot'
-import wudaseJson from '../../data/tselot/wudase-mariam.json'
-import { prayerEntryToTselotPrayer } from '../practice/fromCanonical'
+/**
+ * Legacy Wudase Mariam JSON — production Pray uses Supabase collections.
+ * Archived: `archive/local-data/tselot/wudase-mariam.json`
+ */
+import type { TselotPrayer } from '../practice/types'
 
-export const WUDASE_ENTRIES = wudaseJson as unknown as PrayerEntry[]
-export const WUDASE_PRAYERS = WUDASE_ENTRIES.map(prayerEntryToTselotPrayer)
+export const WUDASE_ENTRIES: unknown[] = []
+export const WUDASE_PRAYERS: TselotPrayer[] = []
 
 export const WUDASE_DAY_ORDER = [
   'wudase-mariam-monday',

@@ -3,7 +3,6 @@ import { Navigate, Routes, Route, useParams } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
 import { PageLoadingFallback } from './components/ui/PageLoadingFallback'
 import { useScrollToTopOnRouteChange } from './hooks/useScroll'
-import { useLegacyMezmur } from './lib/publicContent/service'
 import { AdminErrorBoundary } from './pages/admin/AdminErrorBoundary'
 
 function LegacyMezmurEditRedirect() {
@@ -32,10 +31,9 @@ function LegacyCalendarCardRedirect() {
 
 // Lazy load all pages for code splitting
 const HomePage = lazy(() => import('./pages/HomePage').then(m => ({ default: m.HomePage })))
-const PracticePage = lazy(() => import('./pages/PracticePage').then(m => ({ default: m.PracticePage })))
-const MezmurDetailPage = lazy(() => import('./pages/MezmurDetailPage').then(m => ({ default: m.MezmurDetailPage })))
 const CalendarPage = lazy(() => import('./pages/CalendarPage').then(m => ({ default: m.CalendarPage })))
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })))
+const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })))
 const PrayerListPage = lazy(() => import('./pages/PrayerListPage').then(m => ({ default: m.PrayerListPage })))
 const LibraryCollectionRoute = lazy(() => import('./pages/LibraryCollectionRoute').then(m => ({ default: m.LibraryCollectionRoute })))
 const LibraryItemRoute = lazy(() => import('./pages/LibraryItemRoute').then(m => ({ default: m.LibraryItemRoute })))
@@ -46,6 +44,12 @@ const AdminDashboard = lazy(() => import('./pages/admin/adminPages').then(m => (
 const MezmurList = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurList })))
 const MezmurEditor = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurEditor })))
 const TaxonomyPage = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.TaxonomyPage })))
+const HymnBrowseGroupsList = lazy(() =>
+  import('./pages/admin/HymnBrowseGroupsAdmin').then((m) => ({ default: m.HymnBrowseGroupsList })),
+)
+const HymnBrowseGroupEditor = lazy(() =>
+  import('./pages/admin/HymnBrowseGroupsAdmin').then((m) => ({ default: m.HymnBrowseGroupEditor })),
+)
 const AdminPlaceholder = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminPlaceholder })))
 const RequireCmsRole = lazy(() => import('./lib/auth/RequireCmsRole').then(m => ({ default: m.RequireCmsRole })))
 const CommunityForm = lazy(() => import('./pages/CommunityForm').then(m => ({ default: m.CommunityForm })))
@@ -53,6 +57,15 @@ const SubmissionQueue = lazy(() => import('./pages/admin/SubmissionQueue').then(
 const SubmissionReview = lazy(() => import('./pages/admin/SubmissionReview').then(m => ({ default: m.SubmissionReview })))
 const PublicMezmurLibrary = lazy(() => import('./pages/PublicMezmurLibrary').then(m => ({ default: m.PublicMezmurLibrary })))
 const PublicMezmurDetail = lazy(() => import('./pages/PublicMezmurDetail').then(m => ({ default: m.PublicMezmurDetail })))
+const PublicHymnCollectionPage = lazy(() =>
+  import('./pages/PublicHymnCollectionPage').then((m) => ({ default: m.PublicHymnCollectionPage })),
+)
+const PublicHymnBrowseGroupPage = lazy(() =>
+  import('./pages/PublicHymnBrowseGroupPage').then((m) => ({ default: m.PublicHymnBrowseGroupPage })),
+)
+const PublicHymnSectionPage = lazy(() =>
+  import('./pages/PublicHymnSectionPage').then((m) => ({ default: m.PublicHymnSectionPage })),
+)
 const PublicContentDetail = lazy(() => import('./pages/PublicContentDetail').then(m => ({ default: m.PublicContentDetail })))
 const PublicAccount = lazy(() => import('./pages/PublicAccount').then(m => ({ default: m.PublicAccount })))
 const Favorites = lazy(() => import('./pages/PublicAccount').then(m => ({ default: m.Favorites })))
@@ -127,8 +140,12 @@ export default function App() {
               <Route path="mezmur" element={<MezmurList />} />
               <Route path="mezmur/new" element={<MezmurEditor />} />
               <Route path="mezmur/:id/edit" element={<MezmurEditor />} />
+              <Route path="browse-groups" element={<HymnBrowseGroupsList />} />
+              <Route path="browse-groups/new" element={<HymnBrowseGroupEditor />} />
+              <Route path="browse-groups/:id/edit" element={<HymnBrowseGroupEditor />} />
               <Route path="singers" element={<TaxonomyPage kind="singers" />} />
               <Route path="categories" element={<TaxonomyPage kind="categories" />} />
+              <Route path="occasions" element={<TaxonomyPage kind="occasions" />} />
               <Route path="tags" element={<TaxonomyPage kind="tags" />} />
             </Route>
 
@@ -249,12 +266,63 @@ export default function App() {
         } />
         <Route path="/practice" element={
           <Suspense fallback={<PageLoadingFallback />}>
-            {useLegacyMezmur ? <PracticePage /> : <PublicMezmurLibrary />}
+            <PublicMezmurLibrary />
+          </Suspense>
+        } />
+        <Route path="/hymns" element={<Navigate to="/practice" replace />} />
+        <Route path="/hymns/browse/:collectionSlug/:sectionSlug" element={
+          <LegacyPathRedirect to="/practice/browse/:collectionSlug/:sectionSlug" />
+        } />
+        <Route
+          path="/hymns/browse/:slug"
+          element={<LegacyPathRedirect to="/practice/browse/:slug" />}
+        />
+        <Route path="/hymns/occasion/:slug" element={<LegacyPathRedirect to="/practice/occasion/:slug" />} />
+        <Route path="/hymns/category/:slug" element={<LegacyPathRedirect to="/practice/category/:slug" />} />
+        <Route path="/hymns/singer/:slug" element={<LegacyPathRedirect to="/practice/singer/:slug" />} />
+        <Route path="/practice/browse/:collectionSlug/:sectionSlug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnSectionPage />
+          </Suspense>
+        } />
+        <Route path="/practice/browse/:slug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnBrowseGroupPage />
+          </Suspense>
+        } />
+        <Route path="/practice/occasions" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="occasions" />
+          </Suspense>
+        } />
+        <Route path="/practice/categories" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="categories" />
+          </Suspense>
+        } />
+        <Route path="/practice/singers" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="singers" />
+          </Suspense>
+        } />
+        <Route path="/practice/occasion/:slug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="occasion" />
+          </Suspense>
+        } />
+        <Route path="/practice/category/:slug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="category" />
+          </Suspense>
+        } />
+        <Route path="/practice/singer/:slug" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicHymnCollectionPage kind="singer" />
           </Suspense>
         } />
         <Route path="/practice/mezmur/:slug" element={
           <Suspense fallback={<PageLoadingFallback />}>
-            {useLegacyMezmur ? <MezmurDetailPage /> : <PublicMezmurDetail />}
+            <PublicMezmurDetail />
           </Suspense>
         } />
         <Route path="/calendar" element={
@@ -265,6 +333,11 @@ export default function App() {
         <Route path="/about" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <AboutPage />
+          </Suspense>
+        } />
+        <Route path="/legal" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <LegalPage />
           </Suspense>
         } />
         <Route path="/pray" element={

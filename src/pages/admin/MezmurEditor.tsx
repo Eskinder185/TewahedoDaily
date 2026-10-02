@@ -14,13 +14,20 @@ import {
   parseVersion,
   saveMezmur,
   slugify,
+  db,
   type Mezmur,
   type MezmurInput,
   type Version,
 } from '../../lib/cms/mezmurService'
+import {
+  listAllHymnSections,
+  listMezmurSectionLinks,
+  setMezmurSectionLinks,
+} from '../../lib/cms/hymnBrowseAdminService'
 import { uploadMezmurFile, validateFile } from '../../lib/cms/mediaService'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { useAsync } from '../../lib/cms/useAsync'
+import { CANONICAL_OCCASIONS } from '../../lib/publicContent/taxonomy'
 import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice, Media, MezmurPreview, Modal, Status } from './AdminUi'
 import s from './Admin.module.css'
@@ -29,7 +36,13 @@ type FieldErrors = Partial<
   Record<'title' | 'title_amharic' | 'slug' | 'lyrics_amharic' | 'transliteration', string>
 >
 
-type EditorData = { row?: Mezmur | null; tags: string[]; taxonomy: Awaited<ReturnType<typeof getTaxonomy>> }
+type EditorData = {
+  row?: Mezmur | null
+  tags: string[]
+  sectionIds: string[]
+  sections: Awaited<ReturnType<typeof listAllHymnSections>>
+  taxonomy: Awaited<ReturnType<typeof getTaxonomy>>
+}
 
 function validatePublishFields(input: MezmurInput): { blocking: string; errors: FieldErrors } {
   const errors: FieldErrors = {}
@@ -90,9 +103,13 @@ export function MezmurEditor() {
   const result = useAsync(
     useCallback(async (): Promise<EditorData> => {
       const taxonomy = await getTaxonomy()
-      if (!id) return { taxonomy, row: undefined, tags: [] }
+      const sections = await listAllHymnSections().catch(() => [])
+      if (!id) return { taxonomy, row: undefined, tags: [], sectionIds: [], sections }
       const row = await getMezmur(id)
       const tags = row ? await getTagIds(row.id) : []
+      const sectionIds = row
+        ? (await listMezmurSectionLinks(row.id).catch(() => [])).map((l) => l.section_id)
+        : []
       if (import.meta.env.DEV) {
         console.debug('[MezmurEditor] load', {
           routeId: id,
@@ -100,7 +117,7 @@ export function MezmurEditor() {
           updated_at: row?.updated_at ?? null,
         })
       }
-      return { taxonomy, row, tags }
+      return { taxonomy, row, tags, sectionIds, sections }
     }, [id]),
   )
 
@@ -138,8 +155,13 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const [row, setRow] = useState<Mezmur | undefined>(initial.row ?? undefined)
   const [input, setInput] = useState<MezmurInput>(() => (initial.row ? editable(initial.row) : emptyMezmur()))
   const [tags, setTags] = useState(initial.tags)
+  const [sectionIds, setSectionIds] = useState(initial.sectionIds)
   const [baseline, setBaseline] = useState(() =>
-    JSON.stringify({ input: initial.row ? editable(initial.row) : emptyMezmur(), tags: initial.tags }),
+    JSON.stringify({
+      input: initial.row ? editable(initial.row) : emptyMezmur(),
+      tags: initial.tags,
+      sectionIds: initial.sectionIds,
+    }),
   )
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -151,7 +173,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const [historyRevision, setHistoryRevision] = useState(0)
   const navigate = useNavigate()
   const bypass = useRef(false)
-  const dirty = JSON.stringify({ input, tags }) !== baseline
+  const dirty = JSON.stringify({ input, tags, sectionIds }) !== baseline
   const canEdit = staff || !row || (row.created_by === profile?.id && row.status === 'draft')
   const blocker = useBlocker(() => !bypass.current && (dirty || busy))
 
@@ -216,10 +238,40 @@ function EditorForm({ initial }: { initial: EditorData }) {
     setError('')
     setSuccess('')
     try {
-      const saved = await saveMezmur({ ...input, status }, tags, row)
+      const selectedCategory = initial.taxonomy.categories.find((c) => c.id === input.category_id)
+      const payload: MezmurInput = {
+        ...input,
+        status,
+        // Keep public discovery text `category` in sync with the FK selection.
+        category: selectedCategory?.name || input.category || null,
+      }
+      const saved = await saveMezmur(payload, tags, row)
+      try {
+        await setMezmurSectionLinks(saved.id, sectionIds)
+      } catch (sectionErr) {
+        if (import.meta.env.DEV) console.warn('[MezmurEditor] section links', sectionErr)
+      }
+      // Best-effort: link occasion row when mezmur_occasions exists.
+      if (saved.id && payload.occasion) {
+        try {
+          const { data: occ } = await db()
+            .from('mezmur_occasions' as never)
+            .select('id')
+            .ilike('name', payload.occasion)
+            .maybeSingle()
+          const occasionId = (occ as { id?: string } | null)?.id
+          if (occasionId) {
+            await db()
+              .from('mezmur_occasion_links' as never)
+              .upsert({ mezmur_id: saved.id, occasion_id: occasionId } as never)
+          }
+        } catch {
+          /* occasions table may not exist yet */
+        }
+      }
       setRow(saved)
       setInput(editable(saved))
-      setBaseline(JSON.stringify({ input: editable(saved), tags }))
+      setBaseline(JSON.stringify({ input: editable(saved), tags, sectionIds }))
       setHistoryRevision((n) => n + 1)
       setFieldErrors({})
       setSuccess(`Mezmur saved as ${label(saved.status)}.`)
@@ -433,6 +485,10 @@ function EditorForm({ initial }: { initial: EditorData }) {
             <aside className={s.stack}>
               <section className={`${s.card} ${s.fields}`}>
                 <h2>Classification</h2>
+                <p className={s.muted} style={{ marginTop: 0, fontSize: '0.85rem' }}>
+                  Browse groups are derived from these taxonomy fields — you do not assign browse
+                  groups on each Mezmur.
+                </p>
                 <label>
                   Language
                   <select
@@ -444,17 +500,18 @@ function EditorForm({ initial }: { initial: EditorData }) {
                     <option value="geez">Ge&apos;ez</option>
                     <option value="english">English</option>
                     <option value="oromo">Oromo</option>
+                    <option value="bilingual">Bilingual</option>
                   </select>
                 </label>
                 <label>
-                  Form
+                  Form (Mezmur / Wereb)
                   <select
                     aria-label="Form"
                     value={input.form || 'mezmur'}
                     onChange={(event) => set('form', event.target.value as MezmurInput['form'])}
                   >
                     <option value="mezmur">Mezmur</option>
-                    <option value="werb">Werb</option>
+                    <option value="werb">Wereb</option>
                   </select>
                 </label>
                 <label>
@@ -476,15 +533,31 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   </select>
                 </label>
                 <label>
-                  Occasion
-                  <input
+                  Occasion (primary)
+                  <select
+                    aria-label="Occasion"
                     value={input.occasion || ''}
                     onChange={(event) => set('occasion', event.target.value || null)}
-                    placeholder="e.g. Fasika, Timket"
-                  />
+                  >
+                    <option value="">No occasion</option>
+                    {CANONICAL_OCCASIONS.map((name) => (
+                      <option key={name} value={name}>
+                        {name}
+                      </option>
+                    ))}
+                    {input.occasion &&
+                    !(CANONICAL_OCCASIONS as readonly string[]).includes(input.occasion) ? (
+                      <option value={input.occasion}>{input.occasion} (current)</option>
+                    ) : null}
+                  </select>
                 </label>
+                <p className={s.muted} style={{ marginTop: -8, fontSize: '0.85rem' }}>
+                  Multi-occasion links use <code>mezmur_occasion_links</code> when present. Manage
+                  occasion images under{' '}
+                  <Link to={ADMIN_PATHS.hymnsOccasions}>Hymns · Occasions</Link>.
+                </p>
                 <label>
-                  Singer
+                  Singer / Zemari
                   <select
                     aria-label="Singer"
                     value={input.singer_id || ''}
@@ -501,6 +574,34 @@ function EditorForm({ initial }: { initial: EditorData }) {
                       ))}
                   </select>
                 </label>
+                <fieldset>
+                  <legend>Hymn sections</legend>
+                  <p className={s.muted} style={{ fontSize: '0.85rem' }}>
+                    Assign this Mezmur to one or more <code>hymn_sections</code> via{' '}
+                    <code>mezmur_section_links</code>. Does not duplicate the Mezmur row.
+                  </p>
+                  {!initial.sections.length ? (
+                    <p className={s.muted}>No sections available yet.</p>
+                  ) : (
+                    initial.sections.map((section) => (
+                      <label className={s.check} key={section.id}>
+                        <input
+                          type="checkbox"
+                          checked={sectionIds.includes(section.id)}
+                          onChange={(event) =>
+                            setSectionIds((previous) =>
+                              event.target.checked
+                                ? [...previous, section.id]
+                                : previous.filter((id) => id !== section.id),
+                            )
+                          }
+                        />
+                        {section.title}
+                        <span className={s.muted}> ({section.slug})</span>
+                      </label>
+                    ))
+                  )}
+                </fieldset>
                 <fieldset>
                   <legend>Tags</legend>
                   {!initial.taxonomy.tags.length && <p className={s.muted}>No tags available.</p>}

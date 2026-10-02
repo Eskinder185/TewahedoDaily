@@ -36,11 +36,12 @@ export function AboutPage() {
           <div className={styles.heroBackdrop} aria-hidden>
             <img
               src={imageManifest.about.hero}
+              srcSet={imageManifest.about.heroSrcSet}
               alt=""
               className={styles.heroBackdropImg}
               width={imageManifest.about.heroWidth}
               height={imageManifest.about.heroHeight}
-              sizes="(max-width: 768px) 100vw, min(44rem, 90vw)"
+              sizes="(max-width: 430px) 100vw, (max-width: 768px) 100vw, min(44rem, 90vw)"
               fetchPriority="high"
               decoding="async"
             />

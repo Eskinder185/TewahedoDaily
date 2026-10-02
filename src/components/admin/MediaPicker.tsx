@@ -134,6 +134,17 @@ export function MediaPicker({
 
   async function handleUpload(file: File | undefined) {
     if (!file) return
+    // Calendar images: prefer immutable unique filenames so CDN/browser cache cannot
+    // keep serving replaced bytes at the same public URL.
+    if (isCalendarFolder && suggestedPath) {
+      const ext = suggestedPath.includes('.')
+        ? suggestedPath.slice(suggestedPath.lastIndexOf('.'))
+        : '.webp'
+      const base = suggestedPath.replace(/\.[^.]+$/, '')
+      const uniquePath = `${base}-${Date.now()}${ext}`
+      await performUpload(file, { upsert: false, storagePath: uniquePath })
+      return
+    }
     const targetPath = suggestedPath || undefined
     if (targetPath) {
       const exists = await contentMediaPathExists(targetPath)

@@ -10,6 +10,7 @@ export function ContentsDrawer({
   onOpen,
   onClose,
   onNavigate,
+  activeSlug,
 }: {
   guided: LearningCollection | null
   learnCollections: LearningCollection[]
@@ -18,10 +19,15 @@ export function ContentsDrawer({
   onOpen: () => void
   onClose: () => void
   onNavigate: (slug: string) => void
+  activeSlug?: string | null
 }) {
   const steps = guidedSteps(guided)
 
   function label(section: LearningSection) {
+    if (lang === 'both') {
+      const am = section.titleAmharic?.trim()
+      return am ? `${am} / ${section.titleEnglish}` : section.titleEnglish
+    }
     return lang === 'en' ? section.titleEnglish : section.titleAmharic || section.titleEnglish
   }
 
@@ -32,12 +38,29 @@ export function ContentsDrawer({
 
   return (
     <>
-      <button type="button" className={styles.contentsBtn} onClick={onOpen} aria-expanded={open}>
+      <button
+        type="button"
+        className={styles.contentsBtn}
+        onClick={onOpen}
+        aria-expanded={open}
+        aria-haspopup="dialog"
+      >
         Contents
       </button>
 
-      <div className={styles.tocSheet} hidden={!open} role="dialog" aria-modal="true" aria-label="Contents">
-        <button type="button" className={styles.tocBackdrop} aria-label="Close contents" onClick={onClose} />
+      <div
+        className={styles.tocSheet}
+        hidden={!open}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Contents"
+      >
+        <button
+          type="button"
+          className={styles.tocBackdrop}
+          aria-label="Close contents"
+          onClick={onClose}
+        />
         <div className={styles.tocPanel}>
           <div className={styles.tocHead}>
             <h2>Contents</h2>
@@ -48,15 +71,24 @@ export function ContentsDrawer({
           <nav>
             {guided ? (
               <>
-                <p className={styles.tocGroup}>Guided Practice</p>
+                <p className={styles.tocGroup}>Steps</p>
                 <ol className={styles.tocList}>
-                  {steps.map((step, index) => (
-                    <li key={step.sectionSlug}>
-                      <button type="button" className={styles.tocLink} onClick={() => go(step.sectionSlug)}>
-                        {index + 1}. {label(step)}
-                      </button>
-                    </li>
-                  ))}
+                  {steps.map((step, index) => {
+                    const isActive = activeSlug === step.sectionSlug
+                    return (
+                      <li key={step.sectionSlug}>
+                        <button
+                          type="button"
+                          className={isActive ? styles.tocLinkActive : styles.tocLink}
+                          aria-current={isActive ? 'step' : undefined}
+                          onClick={() => go(step.sectionSlug)}
+                        >
+                          <span className={styles.tocStepNum}>{index + 1}</span>
+                          <span>{label(step)}</span>
+                        </button>
+                      </li>
+                    )
+                  })}
                 </ol>
               </>
             ) : null}
@@ -69,7 +101,16 @@ export function ContentsDrawer({
                     .filter((section) => section.showInContents || section.children.length > 0)
                     .map((section) => (
                       <li key={section.sectionSlug}>
-                        <button type="button" className={styles.tocLink} onClick={() => go(section.sectionSlug)}>
+                        <button
+                          type="button"
+                          className={
+                            activeSlug === section.sectionSlug
+                              ? styles.tocLinkActive
+                              : styles.tocLink
+                          }
+                          aria-current={activeSlug === section.sectionSlug ? 'true' : undefined}
+                          onClick={() => go(section.sectionSlug)}
+                        >
                           {label(section)}
                         </button>
                         {section.children.length > 0 ? (
@@ -78,8 +119,15 @@ export function ContentsDrawer({
                               <li key={child.sectionSlug}>
                                 <button
                                   type="button"
-                                  className={styles.tocLink}
+                                  className={
+                                    activeSlug === child.sectionSlug
+                                      ? styles.tocLinkActive
+                                      : styles.tocLink
+                                  }
                                   style={{ paddingInlineStart: '0.85rem' }}
+                                  aria-current={
+                                    activeSlug === child.sectionSlug ? 'true' : undefined
+                                  }
                                   onClick={() => go(child.sectionSlug)}
                                 >
                                   {label(child)}

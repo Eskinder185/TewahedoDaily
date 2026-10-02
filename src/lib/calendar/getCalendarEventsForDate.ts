@@ -110,7 +110,10 @@ export async function getCalendarEventsForDate(
 
   let events: PresentableCalendarEvent[] = []
   try {
-    events = presentEventsForDayContext(context, asResolvedCards(cards))
+    events = presentEventsForDayContext(context, asResolvedCards(cards), {
+      occurrenceDate: date,
+      surface: 'calendar',
+    })
   } catch (cause) {
     if (import.meta.env.DEV) console.error('[getCalendarEventsForDate] present', cause)
     events = []
@@ -127,8 +130,31 @@ export async function getHomepageTodayEvents(
   date: Date,
   options?: { cards?: CalendarCard[] },
 ): Promise<PresentableCalendarEvent[]> {
-  const groups = await getCalendarEventsForRange(date, date, options)
-  return groups[0]?.events || []
+  // Same occurrence engine + canonical card resolver as Calendar — never a separate card table walk.
+  const start = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  const [catalog, cards] = await Promise.all([
+    loadOrthodoxCalendarCatalog(),
+    options?.cards ? Promise.resolve(options.cards) : loadCardsCached(),
+  ])
+  const eth = gregorianToEthiopian(start)
+  const monthName = ETHIOPIAN_MONTH_NAMES[eth.month - 1] || `Month ${eth.month}`
+  const orthodox = resolveOrthodoxDay(start, catalog)
+  try {
+    return presentEventsForDayContext(
+      {
+        observances: orthodox.observances,
+        monthlyCommemorations: orthodox.monthlyCommemorations,
+        activeFast: orthodox.activeFast,
+        season: orthodox.season,
+        ethiopianDate: { monthName },
+      },
+      asResolvedCards(cards),
+      { occurrenceDate: start, surface: 'homepage' },
+    )
+  } catch (cause) {
+    if (import.meta.env.DEV) console.error('[getHomepageTodayEvents] present', cause)
+    return []
+  }
 }
 
 export function eventsFromDayContext(
@@ -181,6 +207,7 @@ export async function getCalendarEventsForRange(
           ethiopianDate: { monthName },
         },
         resolvedCards,
+        { occurrenceDate: day, surface: 'calendar' },
       )
     } catch (cause) {
       if (import.meta.env.DEV) console.error('[getCalendarEventsForRange] present', cause)

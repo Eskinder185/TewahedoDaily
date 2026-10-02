@@ -1,21 +1,21 @@
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
-import {
-  discover,
-  facets,
-  pageNumber,
-  PAGE_SIZE,
-  type Facets,
-  type MezmurCard,
-} from '../lib/publicContent/service'
-import { suggestMezmurTitles, loadMezmurSearchCatalog } from '../lib/publicContent/mezmurSearch'
-import { classificationLabel, hymnCardMeta } from '../lib/publicContent/labels'
-import { usePageMeta } from '../lib/publicContent/usePageMeta'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
+import {
+  getHymnCollections,
+  searchHymns,
+  searchImportMezmurs,
+  type HymnCollection,
+  type HymnDiscoveryHit,
+} from '../lib/publicContent/hymnBrowse'
+import { usePageMeta } from '../lib/publicContent/usePageMeta'
+import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
 import s from './HymnPractice.module.css'
 
-function useDebounced(value: string, ms = 200) {
+type SearchItem = Awaited<ReturnType<typeof searchImportMezmurs>>['items'][number]
+
+function useDebounced(value: string, ms = 280) {
   const [debounced, setDebounced] = useState(value)
   useEffect(() => {
     const id = window.setTimeout(() => setDebounced(value), ms)
@@ -24,8 +24,8 @@ function useDebounced(value: string, ms = 200) {
   return debounced
 }
 
-function CardArt({ item }: { item: MezmurCard }) {
-  const [src, setSrc] = useState<string>('')
+function CardArt({ item }: { item: SearchItem }) {
+  const [src, setSrc] = useState('')
   const [failed, setFailed] = useState(false)
   useEffect(() => {
     let active = true
@@ -64,30 +64,151 @@ function CardArt({ item }: { item: MezmurCard }) {
   )
 }
 
+function CollectionSkeletonGrid() {
+  return (
+    <div className={s.browseGrid} aria-hidden>
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} className={s.skeletonCard}>
+          <div className={s.skeletonMedia} />
+          <div className={s.skeletonLines}>
+            <div className={s.skeletonLine} />
+            <div className={`${s.skeletonLine} ${s.skeletonLineShort}`} />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function MezmurSkeletonGrid() {
+  return (
+    <div className={s.grid} aria-hidden>
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div key={i} className={s.skeletonCard}>
+          <div className={s.skeletonMedia} />
+          <div className={s.skeletonLines}>
+            <div className={s.skeletonLine} />
+            <div className={`${s.skeletonLine} ${s.skeletonLineShort}`} />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function BrowseSection({
+  title,
+  groups,
+  emptyHint,
+}: {
+  title: string
+  groups: HymnCollection[]
+  emptyHint?: string
+}) {
+  if (!groups.length) {
+    return emptyHint ? (
+      <section className={s.browseSection}>
+        <header className={s.browseHead}>
+          <h2 className={s.browseTitle}>{title}</h2>
+        </header>
+        <p className={s.browseEmpty}>{emptyHint}</p>
+      </section>
+    ) : null
+  }
+
+  return (
+    <section className={s.browseSection}>
+      <header className={s.browseHead}>
+        <h2 className={s.browseTitle}>{title}</h2>
+      </header>
+      <div className={s.browseGrid}>
+        {groups.map((group, index) => (
+          <HymnMajorBrowseCardView key={group.id} group={group} priority={index < 3} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function MezmurResultGrid({
+  items,
+  loading,
+  error,
+  onRetry,
+}: {
+  items: SearchItem[]
+  loading: boolean
+  error?: string
+  onRetry: () => void
+}) {
+  if (loading) return <MezmurSkeletonGrid />
+  if (error) {
+    return (
+      <div className={s.status} role="alert">
+        <p>{error}</p>
+        <button type="button" className={s.textBtn} onClick={onRetry}>
+          Retry
+        </button>
+      </div>
+    )
+  }
+  if (!items.length) {
+    return <p className={s.status}>No hymns matched your search.</p>
+  }
+  return (
+    <div className={s.grid}>
+      {items.map((item) => {
+        const english = item.title_english || item.title
+        const meta = [item.singer_name, item.form || item.language].filter(Boolean).join(' · ')
+        return (
+          <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
+            <CardArt item={item} />
+            <div className={s.cardBody}>
+              {item.title_amharic ? (
+                <p className={s.cardAm} lang="am">
+                  {item.title_amharic}
+                </p>
+              ) : null}
+              <h3 className={s.cardTitle}>{english}</h3>
+              {meta ? <p className={s.cardMeta}>{meta}</p> : null}
+            </div>
+          </Link>
+        )
+      })}
+    </div>
+  )
+}
+
+/**
+ * Hymns Practice landing — collections browse + search over mezmur_data_import.
+ */
 export function PublicMezmurLibrary() {
+  const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const [draftQ, setDraftQ] = useState(params.get('q') || '')
-  const debouncedQ = useDebounced(draftQ, 200)
-  const [filtersOpen, setFiltersOpen] = useState(false)
-  const [facetData, setFacetData] = useState<Facets | null>(null)
+  const debouncedQ = useDebounced(draftQ, 280)
+  const [browse, setBrowse] = useState<HymnCollection[] | null>(null)
+  const [browseError, setBrowseError] = useState<string>()
+  const [discoveryHits, setDiscoveryHits] = useState<HymnDiscoveryHit[]>([])
   const [result, setResult] = useState<{
-    items: MezmurCard[]
+    items: SearchItem[]
     total: number
     page: number
-    hasStrongMatch?: boolean
-    closest?: MezmurCard[]
   } | null>(null)
-  const [suggestions, setSuggestions] = useState<MezmurCard[]>([])
-  const [suggestOpen, setSuggestOpen] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
+  const [suggestOpen, setSuggestOpen] = useState(false)
   const searchWrapRef = useRef<HTMLDivElement>(null)
   const listboxId = useId()
 
+  const hasQuery = Boolean((params.get('q') || '').trim())
+  const showResults = hasQuery
+  const page = Math.max(1, Number(params.get('page') || '1') || 1)
+
   usePageMeta(
-    'Hymn Practice',
-    'Practice Ethiopian Orthodox mezmur, werb, and hymns with lyrics, transliteration, and audio/video.',
+    'Hymns Practice',
+    'Learn and practice Ethiopian Orthodox Mezmur — browse by feast, saint, or zemari.',
   )
 
   useEffect(() => {
@@ -101,79 +222,73 @@ export function PublicMezmurLibrary() {
   }, [debouncedQ, params, setParams])
 
   useEffect(() => {
-    void loadMezmurSearchCatalog().catch((cause) => {
-      if (import.meta.env.DEV) console.error('[hymn practice] catalog prefetch', cause)
-    })
-  }, [])
-
-  useEffect(() => {
+    if (showResults) return
     let active = true
-    void facets()
+    setBrowse(null)
+    setBrowseError(undefined)
+    void getHymnCollections()
       .then((data) => {
-        if (active) setFacetData(data)
+        if (active) {
+          setBrowse(data)
+          setBrowseError(undefined)
+        }
       })
       .catch((cause) => {
-        if (import.meta.env.DEV) console.error('[hymn practice] facets', cause)
+        if (!active) return
+        if (import.meta.env.DEV) console.error('[hymn practice] browse', cause)
+        setBrowseError('Unable to load Hymn Practice.')
+        setBrowse([])
       })
     return () => {
       active = false
     }
-  }, [])
-
-  const language = params.get('language') || ''
-  const form = params.get('form') || ''
-  const occasion = params.get('occasion') || ''
-  const category = params.get('category') || ''
-  const sort = params.get('sort') || 'recent'
-  const page = pageNumber(params)
+  }, [showResults, reloadTick])
 
   useEffect(() => {
-    let active = true
     const needle = draftQ.trim()
+    let active = true
     if (needle.length < 2) {
       queueMicrotask(() => {
-        if (active) setSuggestions([])
+        if (active) setDiscoveryHits([])
       })
       return () => {
         active = false
       }
     }
     const timeout = window.setTimeout(() => {
-      void suggestMezmurTitles(
-        needle,
-        { language, form, category, occasion },
-        6,
-      )
-        .then((rows) => {
-          if (active) setSuggestions(rows)
+      void searchHymns(needle, 8)
+        .then((hits) => {
+          if (active) setDiscoveryHits(hits)
         })
-        .catch((cause) => {
-          if (import.meta.env.DEV) console.error('[hymn practice] suggest', cause)
-          if (active) setSuggestions([])
+        .catch(() => {
+          if (active) setDiscoveryHits([])
         })
-    }, 180)
+    }, 280)
     return () => {
       active = false
       window.clearTimeout(timeout)
     }
-  }, [draftQ, language, form, category, occasion])
+  }, [draftQ])
 
   useEffect(() => {
     const onPointer = (event: MouseEvent) => {
-      if (!searchWrapRef.current?.contains(event.target as Node)) {
-        setSuggestOpen(false)
-      }
+      if (!searchWrapRef.current?.contains(event.target as Node)) setSuggestOpen(false)
     }
     document.addEventListener('mousedown', onPointer)
     return () => document.removeEventListener('mousedown', onPointer)
   }, [])
 
-  const queryKey = params.toString()
   useEffect(() => {
+    if (!showResults) {
+      setResult(null)
+      setLoading(false)
+      return
+    }
     let active = true
     setLoading(true)
     setError(undefined)
-    void discover(new URLSearchParams(queryKey))
+    const q = (params.get('q') || '').trim()
+    void searchImportMezmurs(q, { page, pageSize: 24 })
       .then((data) => {
         if (active) {
           setResult(data)
@@ -181,164 +296,47 @@ export function PublicMezmurLibrary() {
         }
       })
       .catch((cause) => {
-        if (active) {
-          const message =
-            cause && typeof cause === 'object' && 'message' in cause
-              ? String((cause as { message?: unknown }).message)
-              : "We couldn't load the hymn library."
-          if (import.meta.env.DEV) console.error('[hymn practice] discover', cause)
-          setError(import.meta.env.DEV ? message : "We couldn't load the hymn library.")
-          setResult(null)
-          setLoading(false)
-        }
+        if (!active) return
+        if (import.meta.env.DEV) console.error('[hymn practice] search', cause)
+        setError('Unable to load Hymn Practice.')
+        setResult(null)
+        setLoading(false)
       })
     return () => {
       active = false
     }
-  }, [queryKey, reloadTick])
+  }, [params, page, reloadTick, showResults])
 
-  const setFilter = useCallback(
-    (key: string, value: string) => {
-      const next = new URLSearchParams(params)
-      if (value) next.set(key, value)
-      else next.delete(key)
-      if (key !== 'page') next.delete('page')
-      setParams(next)
-    },
-    [params, setParams],
-  )
-
-  const clearAll = useCallback(() => {
+  const applyDiscoveryHit = (hit: HymnDiscoveryHit) => {
+    setSuggestOpen(false)
+    if (hit.type === 'mezmur') {
+      navigate(hit.href)
+      return
+    }
     setDraftQ('')
-    setSuggestions([])
+    navigate(hit.href)
+  }
+
+  const clearSearch = useCallback(() => {
+    setDraftQ('')
+    setDiscoveryHits([])
     setParams(new URLSearchParams())
   }, [setParams])
 
-  const applySuggestion = (item: MezmurCard) => {
-    setDraftQ(item.title)
-    setSuggestOpen(false)
-    const next = new URLSearchParams(params)
-    next.set('q', item.title)
-    next.delete('page')
-    setParams(next)
-  }
-
-  const chips = useMemo(() => {
-    const list: { key: string; label: string }[] = []
-    if (language) list.push({ key: 'language', label: classificationLabel(language) })
-    if (form) list.push({ key: 'form', label: classificationLabel(form) })
-    if (category) list.push({ key: 'category', label: classificationLabel(category) || category })
-    if (occasion) list.push({ key: 'occasion', label: classificationLabel(occasion) || occasion })
-    if (params.get('q')) list.push({ key: 'q', label: `“${params.get('q')}”` })
-    return list
-  }, [language, form, occasion, category, params])
-
-  const filterPanel = (
-    <div className={s.filterGrid}>
-      <label>
-        Language
-        <select
-          aria-label="Language"
-          value={language}
-          onChange={(event) => setFilter('language', event.target.value)}
-        >
-          <option value="">All languages</option>
-          <option value="amharic">Amharic</option>
-          <option value="english">English</option>
-        </select>
-      </label>
-      <label>
-        Type
-        <select aria-label="Type" value={form} onChange={(event) => setFilter('form', event.target.value)}>
-          <option value="">All types</option>
-          <option value="mezmur">Mezmur</option>
-          <option value="werb">Werb</option>
-        </select>
-      </label>
-      <label>
-        Category
-        <select
-          aria-label="Category"
-          value={category}
-          onChange={(event) => setFilter('category', event.target.value)}
-        >
-          <option value="">All categories</option>
-          {(facetData?.categories || []).map((item) => (
-            <option key={item.value} value={item.value}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Occasion
-        <select
-          aria-label="Occasion"
-          value={occasion}
-          onChange={(event) => setFilter('occasion', event.target.value)}
-        >
-          <option value="">All occasions</option>
-          {(facetData?.occasions || []).map((item) => (
-            <option key={item.slug} value={item.slug}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Sort
-        <select
-          aria-label="Sort hymns"
-          value={sort}
-          onChange={(event) => setFilter('sort', event.target.value)}
-          disabled={Boolean(params.get('q'))}
-          title={params.get('q') ? 'Relevance sorting is used while searching' : undefined}
-        >
-          <option value="recent">Recently added</option>
-          <option value="az">Title A–Z</option>
-          <option value="za">Title Z–A</option>
-          <option value="published">Recently published</option>
-        </select>
-      </label>
-    </div>
-  )
-
-  const showClosest =
-    !loading &&
-    !error &&
-    result &&
-    params.get('q') &&
-    result.items.length === 0 &&
-    (result.closest?.length || 0) > 0
-
-  const showWeakClosest =
-    !loading &&
-    !error &&
-    result &&
-    params.get('q') &&
-    result.hasStrongMatch === false &&
-    (result.closest?.length || 0) > 0
-
-  const gridItems =
-    showClosest || showWeakClosest
-      ? result!.closest || result!.items
-      : result?.items || []
+  const totalPages = result ? Math.max(1, Math.ceil(result.total / 24)) : 1
 
   return (
     <section className={s.page}>
       <header className={s.intro}>
         <p className={s.eyebrow}>Listen · Learn · Pray</p>
-        <h1 className={s.title}>Hymn Practice</h1>
-        <p className={s.subtitle}>
-          Practice Ethiopian Orthodox mezmur, werb, and hymns with lyrics, transliteration, and
-          audio/video.
-        </p>
+        <h1 className={s.title}>Hymns Practice</h1>
+        <p className={s.subtitle}>Learn and practice Ethiopian Orthodox Mezmur.</p>
       </header>
 
       <div className={s.toolbar}>
         <div className={s.searchRow} ref={searchWrapRef}>
           <label className={s.srOnly} htmlFor="hymn-search">
-            Search hymns
+            Search hymns, saints, singers, occasions
           </label>
           <div className={s.searchField}>
             <input
@@ -353,172 +351,120 @@ export function PublicMezmurLibrary() {
               onKeyDown={(event) => {
                 if (event.key === 'Escape') setSuggestOpen(false)
               }}
-              placeholder="Search by Amharic or transliterated title…"
+              placeholder="Search hymns, saints, singers, occasions…"
               maxLength={200}
               autoComplete="off"
               role="combobox"
-              aria-expanded={suggestOpen && suggestions.length > 0}
+              aria-expanded={suggestOpen && discoveryHits.length > 0}
               aria-controls={listboxId}
               aria-autocomplete="list"
             />
-            {suggestOpen && suggestions.length > 0 ? (
+            {suggestOpen && discoveryHits.length > 0 ? (
               <ul id={listboxId} className={s.suggestList} role="listbox">
-                {suggestions.map((item) => (
-                  <li key={item.id} role="option">
-                    <button type="button" className={s.suggestItem} onClick={() => applySuggestion(item)}>
-                      <strong>{item.title}</strong>
-                      {item.title_amharic ? <span lang="am">{item.title_amharic}</span> : null}
-                      {item.singer_name ? <small>{item.singer_name}</small> : null}
+                {discoveryHits.map((hit) => (
+                  <li key={`${hit.type}-${hit.id}`} role="option">
+                    <button
+                      type="button"
+                      className={s.suggestItem}
+                      onClick={() => applyDiscoveryHit(hit)}
+                    >
+                      {hit.titleAmharic ? (
+                        <strong lang="am">{hit.titleAmharic}</strong>
+                      ) : (
+                        <strong>{hit.title}</strong>
+                      )}
+                      {hit.titleAmharic ? <span>{hit.title}</span> : null}
+                      <small>{hit.meta}</small>
                     </button>
                   </li>
                 ))}
               </ul>
             ) : null}
           </div>
-          <button
-            type="button"
-            className={s.filterToggle}
-            aria-expanded={filtersOpen}
-            onClick={() => setFiltersOpen((open) => !open)}
-          >
-            Filters
-          </button>
+          {showResults ? (
+            <button type="button" className={s.clearBtn} onClick={clearSearch}>
+              Clear
+            </button>
+          ) : null}
         </div>
+      </div>
 
-        <div className={s.desktopFilters}>{filterPanel}</div>
-        {filtersOpen ? <div className={s.mobileFilters}>{filterPanel}</div> : null}
-
-        {chips.length > 0 ? (
-          <div className={s.chips} aria-label="Active filters">
-            {chips.map((chip) => (
-              <span className={s.chip} key={chip.key}>
-                {chip.label}
-                <button
-                  type="button"
-                  aria-label={`Remove ${chip.label} filter`}
-                  onClick={() => {
-                    if (chip.key === 'q') setDraftQ('')
-                    setFilter(chip.key, '')
-                  }}
-                >
-                  ×
-                </button>
+      {showResults ? (
+        <>
+          <div className={s.resultsHead}>
+            <h2 className={s.browseTitle}>
+              Search results
+              {result ? ` · ${result.total}` : ''}
+            </h2>
+            <Link to="/practice" className={s.viewAll}>
+              Back to browse
+            </Link>
+          </div>
+          <MezmurResultGrid
+            items={result?.items || []}
+            loading={loading}
+            error={error}
+            onRetry={() => setReloadTick((n) => n + 1)}
+          />
+          {result && totalPages > 1 ? (
+            <div className={s.pager}>
+              <button
+                type="button"
+                disabled={page <= 1}
+                onClick={() => {
+                  const next = new URLSearchParams(params)
+                  next.set('page', String(page - 1))
+                  setParams(next)
+                }}
+              >
+                Previous
+              </button>
+              <span>
+                Page {page} of {totalPages}
               </span>
-            ))}
-            <button type="button" className={s.ghostBtn} onClick={clearAll}>
-              Clear all
-            </button>
-          </div>
-        ) : null}
-      </div>
+              <button
+                type="button"
+                disabled={page >= totalPages}
+                onClick={() => {
+                  const next = new URLSearchParams(params)
+                  next.set('page', String(page + 1))
+                  setParams(next)
+                }}
+              >
+                Next
+              </button>
+            </div>
+          ) : null}
+        </>
+      ) : (
+        <>
+          {browseError ? (
+            <div className={s.status} role="alert">
+              <p>{browseError}</p>
+              <button type="button" className={s.textBtn} onClick={() => setReloadTick((n) => n + 1)}>
+                Retry
+              </button>
+            </div>
+          ) : null}
 
-      <div className={s.metaRow}>
-        <p>
-          {loading
-            ? 'Loading hymns…'
-            : params.get('q')
-              ? `${result?.total ?? 0} match${(result?.total ?? 0) === 1 ? '' : 'es'}`
-              : `${result?.total ?? 0} hymn${(result?.total ?? 0) === 1 ? '' : 's'} found`}
-        </p>
-      </div>
+          {!browse && !browseError ? (
+            <>
+              <header className={s.browseHead}>
+                <h2 className={s.browseTitle}>Browse</h2>
+              </header>
+              <CollectionSkeletonGrid />
+            </>
+          ) : null}
 
-      <div className={s.ctaRow}>
-        <Link to="/submit-mezmur">Contribute a Mezmur</Link>
-      </div>
-
-      {error ? (
-        <div className={s.errorBox} role="alert">
-          <p>{error}</p>
-          <button
-            type="button"
-            className={s.primaryBtn}
-            onClick={() => setReloadTick((n) => n + 1)}
-          >
-            Try again
-          </button>
-        </div>
-      ) : null}
-
-      {!loading && !error && result && result.items.length === 0 && !showClosest ? (
-        <div className={s.empty}>
-          <p>No exact match found.</p>
-          <div className={s.ctaRow}>
-            <button type="button" className={s.ghostBtn} onClick={clearAll}>
-              Clear filters
-            </button>
-            <Link to="/submit-mezmur">Contribute a Mezmur</Link>
-          </div>
-        </div>
-      ) : null}
-
-      {showClosest || showWeakClosest ? (
-        <div className={s.closestNote} role="status">
-          <p>
-            {showClosest ? 'No exact match found.' : 'Showing closest title matches.'} Closest matches:
-          </p>
-        </div>
-      ) : null}
-
-      {gridItems.length > 0 ? (
-        <div className={s.grid}>
-          {gridItems.map((item) => {
-            const hasVideo = Boolean(parseYoutubeVideoId(item.youtube_url || ''))
-            const meta = hymnCardMeta(item)
-            return (
-              <article className={s.card} key={item.id}>
-                <Link className={s.cardLink} to={`/practice/mezmur/${item.slug}`}>
-                  <CardArt item={item} />
-                  <h2 className={s.cardTitle}>{item.title}</h2>
-                  {item.title_amharic ? (
-                    <p className={s.cardAmharic} lang="am">
-                      {item.title_amharic}
-                    </p>
-                  ) : null}
-                  {meta ? <p className={s.cardMeta}>{meta}</p> : null}
-                </Link>
-                <div className={s.cardActions}>
-                  <Link className={s.primaryBtn} to={`/practice/mezmur/${item.slug}`}>
-                    Practice
-                  </Link>
-                  {hasVideo ? (
-                    <Link className={s.ghostBtn} to={`/practice/mezmur/${item.slug}`}>
-                      Play
-                    </Link>
-                  ) : null}
-                </div>
-              </article>
-            )
-          })}
-        </div>
-      ) : null}
-
-      {result && result.total > PAGE_SIZE && !showClosest && result.hasStrongMatch !== false ? (
-        <nav className={s.pager} aria-label="Results pages">
-          <button
-            type="button"
-            className={s.ghostBtn}
-            disabled={page <= 1}
-            onClick={() => setFilter('page', String(page - 1))}
-          >
-            Previous
-          </button>
-          <span>
-            Page {page} of {Math.max(1, Math.ceil(result.total / PAGE_SIZE))}
-          </span>
-          <button
-            type="button"
-            className={s.ghostBtn}
-            disabled={page * PAGE_SIZE >= result.total}
-            onClick={() => {
-              const next = new URLSearchParams(params)
-              next.set('page', String(page + 1))
-              setParams(next)
-            }}
-          >
-            Next
-          </button>
-        </nav>
-      ) : null}
+          {browse && !browseError ? (
+            <BrowseSection
+              title="Browse"
+              groups={browse}
+              emptyHint="No collections are visible yet. If data exists in Supabase Table Editor, apply supabase/mezmur-import/FIX_MEZMUR_IMPORT_ANON_READ.sql so anon can read the import tables."
+            />
+          ) : null}
+        </>
+      )}
     </section>
   )
 }

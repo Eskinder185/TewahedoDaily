@@ -387,7 +387,7 @@
 
 .art {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius: 10px;
   background:
@@ -628,7 +628,200 @@
     grid-template-columns: 1fr;
   }
 
+  .browseGrid {
+    grid-template-columns: 1fr;
+  }
+
   .sideBySide {
     grid-template-columns: 1fr;
+  }
+
+  .collectionHero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.browseSection {
+  margin: 1.75rem 0 2rem;
+}
+
+.browseHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.browseTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  color: var(--color-heading);
+}
+
+.viewAll,
+.textBtn,
+.clearBtn,
+.allLink {
+  color: var(--color-gold);
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.viewAll:hover,
+.allLink:hover,
+.textBtn:hover {
+  text-decoration: underline;
+}
+
+.browseGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.browseEmpty,
+.status,
+.hint {
+  color: var(--color-text-muted);
+}
+
+.resultsHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.allLinkRow {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border-card, rgba(28, 40, 58, 0.1));
+}
+
+.backRow {
+  margin: 0 0 0.75rem;
+}
+
+.collectionHero {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.collectionArt,
+.collectionArtEmpty {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg, 16px);
+  object-fit: cover;
+  background: var(--color-bg-soft, #f3eee4);
+}
+
+.collectionAm {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-amharic, var(--font-display));
+  font-size: 1.25rem;
+  color: var(--color-heading);
+}
+
+.collectionCount {
+  margin: 0.5rem 0 0;
+  color: var(--color-text-muted);
+}
+
+.withinSearch {
+  display: block;
+  margin: 0 0 1.25rem;
+}
+
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pager button {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+}
+
+@media (min-width: 1200px) {
+  .browseGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .browseGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .browseGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .collectionHero {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skeletonCard {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-lg, 16px);
+  border: 1px solid var(--color-border-card, rgba(28, 40, 58, 0.1));
+  background: var(--color-bg-elevated, #fffdf8);
+}
+
+.skeletonMedia {
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(
+    90deg,
+    rgba(28, 40, 58, 0.06) 0%,
+    rgba(28, 40, 58, 0.1) 50%,
+    rgba(28, 40, 58, 0.06) 100%
+  );
+  background-size: 200% 100%;
+  animation: hymnSkeleton 1.2s ease-in-out infinite;
+}
+
+.skeletonLines {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.95rem 1rem 1.05rem;
+}
+
+.skeletonLine {
+  height: 0.85rem;
+  border-radius: 999px;
+  background: rgba(28, 40, 58, 0.08);
+}
+
+.skeletonLineShort {
+  width: 55%;
+}
+
+@keyframes hymnSkeleton {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
   }
 }

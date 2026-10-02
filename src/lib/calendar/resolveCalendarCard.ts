@@ -105,6 +105,7 @@ export type CalendarCardRawFields = {
   source_type?: string | null
   source_id?: string | null
   source_slug?: string | null
+  updated_at?: string | null
 }
 
 /** Public resolved card — same shape Calendar / Homepage / See More consume. */
@@ -163,6 +164,7 @@ export type ResolvedCalendarCard = {
   sourceSlug: string | null
   isManual: boolean
   sourceMissing: boolean
+  updatedAt: string | null
 }
 
 function trim(value?: string | null): string {
@@ -455,14 +457,18 @@ export function resolveCalendarCard(
   const seasonNotesAmharic = inheritField(row.season_notes_amharic, effectiveLink?.seasonNotesAmharic)
 
   const alt = trim(row.image_alt) || trim(effectiveLink?.imageAlt) || title || 'Calendar observance'
-  // Presentation image comes ONLY from this card (or explicit source image_path).
-  // Never borrow another event's catalog artwork via slug/title fuzzy match.
-  const storedPath = trim(row.image_path) || trim(effectiveLink?.imagePath) || null
+  // Presentation image is ONLY calendar_cards.image_path (never linked source / catalog borrow).
+  const storedPath = trim(row.image_path) || null
   let imageUrl = storedPath ? resolveContentMediaUrl(storedPath) : ''
   let imagePath: string | null = storedPath
   if (!imageUrl) {
     imageUrl = ''
     imagePath = null
+  }
+  const updatedAt = trim((row as { updated_at?: string | null }).updated_at) || null
+  if (imageUrl && updatedAt) {
+    const stamp = encodeURIComponent(updatedAt)
+    imageUrl = imageUrl.includes('?') ? `${imageUrl}&v=${stamp}` : `${imageUrl}?v=${stamp}`
   }
 
   if (import.meta.env.DEV && typeof console !== 'undefined') {
@@ -551,6 +557,7 @@ export function resolveCalendarCard(
     sourceSlug: trim(row.source_slug) || effectiveLink?.sourceSlug || null,
     isManual: !wantsLink || sourceType === 'manual',
     sourceMissing,
+    updatedAt,
   }
 }
 

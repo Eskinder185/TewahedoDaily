@@ -1,0 +1,101 @@
+/**
+ * Generate mezmur_sections_final.csv (UTF-8-SIG).
+ * Maps product section slugs → canonical hymn_browse_group_items / taxonomy.
+ */
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const root = path.resolve(__dirname, '..')
+
+/** @type {string[][]} */
+const rows = [
+  ['meskel', 'holidays-feasts', '', 'Meskel / Holy Cross', '', '', '', 'occasion', 'occasion', 'meskel', 'hymns/sections/meskel.webp', 'Meskel / Holy Cross', '10', 'true', 'published'],
+  ['hosanna', 'holidays-feasts', '', 'Hosanna / Palm Sunday', '', '', '', 'occasion', 'occasion', 'hosanna', 'hymns/sections/hosanna.webp', 'Hosanna / Palm Sunday', '20', 'true', 'published'],
+  ['enkutatash', 'holidays-feasts', '', 'Enkutatash / New Year', '', '', '', 'occasion', 'occasion', 'new-year', 'hymns/sections/enkutatash.webp', 'Enkutatash / New Year', '30', 'true', 'published'],
+  ['gena', 'holidays-feasts', '', 'Gena / Christmas', '', '', '', 'occasion', 'occasion', 'gena', 'hymns/sections/gena.webp', 'Gena / Christmas', '40', 'true', 'published'],
+  ['timkat', 'holidays-feasts', '', 'Timkat / Epiphany', '', '', '', 'occasion', 'occasion', 'timket', 'hymns/sections/timkat.webp', 'Timkat / Epiphany', '50', 'true', 'published'],
+  ['tinsae', 'holidays-feasts', '', 'Tinsae / Resurrection', '', '', '', 'occasion', 'occasion', 'tinsae', 'hymns/sections/tinsae.webp', 'Tinsae / Resurrection', '60', 'true', 'published'],
+  ['debre-tabor', 'holidays-feasts', '', 'Debre Tabor / Transfiguration', '', '', '', 'occasion', 'occasion', 'debre-tabor', 'hymns/sections/debre-tabor.webp', 'Debre Tabor / Transfiguration', '70', 'false', 'published'],
+  ['filseta', 'holidays-feasts', '', 'Filseta', '', '', '', 'occasion', 'occasion', 'filseta', 'hymns/sections/filseta.webp', 'Filseta', '80', 'true', 'published'],
+  ['ascension', 'holidays-feasts', '', 'Ascension', '', '', '', 'occasion', 'occasion', 'erget', 'hymns/sections/ascension.webp', 'Ascension', '90', 'false', 'published'],
+  ['pentecost', 'holidays-feasts', '', 'Pentecost', '', '', '', 'occasion', 'occasion', 'pentecost', 'hymns/sections/pentecost.webp', 'Pentecost', '100', 'false', 'published'],
+  ['holy-week', 'holidays-feasts', '', 'Holy Week', '', '', '', 'occasion', 'occasion', 'holy-week', 'hymns/sections/holy-week.webp', 'Holy Week', '110', 'true', 'published'],
+  ['good-friday', 'holidays-feasts', '', 'Good Friday', '', '', '', 'occasion', 'occasion', 'siklet', 'hymns/sections/good-friday.webp', 'Good Friday', '120', 'true', 'published'],
+  ['bisrate-gabriel', 'holidays-feasts', '', 'Annunciation / Bisrate Gabriel', '', '', '', 'occasion', 'occasion', 'bisrate-gabriel', 'hymns/sections/bisrate-gabriel.webp', 'Annunciation / Bisrate Gabriel', '130', 'true', 'published'],
+  ['nineveh', 'holidays-feasts', '', 'Nineveh', '', '', '', 'occasion', 'occasion', 'tsome-nineveh', 'hymns/sections/nineveh.webp', 'Nineveh', '140', 'false', 'published'],
+  ['st-michael', 'angels-saints', '', 'St. Michael', '', '', '', 'saint', 'category', 'kidus-michael', 'hymns/sections/st-michael.webp', 'St. Michael', '10', 'true', 'published'],
+  ['st-gabriel', 'angels-saints', '', 'St. Gabriel', '', '', '', 'angel', 'category', 'kidus-gabriel', 'hymns/sections/st-gabriel.webp', 'St. Gabriel', '20', 'true', 'published'],
+  ['st-uriel', 'angels-saints', '', 'St. Uriel', '', '', '', 'angel', 'category', 'kidus-uriel', 'hymns/sections/st-uriel.webp', 'St. Uriel', '30', 'false', 'published'],
+  ['st-raphael', 'angels-saints', '', 'St. Raphael', '', '', '', 'angel', 'category', 'kidus-raphael', 'hymns/sections/st-raphael.webp', 'St. Raphael', '40', 'false', 'published'],
+  ['st-george', 'angels-saints', '', 'St. George', '', '', '', 'saint', 'category', 'kidus-giorgis', 'hymns/sections/st-george.webp', 'St. George', '50', 'true', 'published'],
+  ['st-arsema', 'angels-saints', '', 'St. Arsema', '', '', '', 'saint', 'category', 'kidist-arsema', 'hymns/sections/st-arsema.webp', 'St. Arsema', '60', 'false', 'published'],
+  ['apostles', 'angels-saints', '', 'Apostles', '', '', '', 'saint', 'category', 'apostles', 'hymns/sections/apostles.webp', 'Apostles', '70', 'false', 'published'],
+  ['martyrs', 'angels-saints', '', 'Martyrs', '', '', '', 'saint', 'category', 'martyrs', 'hymns/sections/martyrs.webp', 'Martyrs', '80', 'false', 'published'],
+  ['prophets', 'angels-saints', '', 'Prophets', '', '', '', 'saint', 'category', 'prophets', 'hymns/sections/prophets.webp', 'Prophets', '90', 'false', 'published'],
+  ['general-saints', 'angels-saints', '', 'General Saints', '', '', '', 'saint', 'category', 'saints', 'hymns/sections/general-saints.webp', 'General Saints', '100', 'true', 'published'],
+  ['holy-angels', 'angels-saints', '', 'Holy Angels', '', '', '', 'angel', 'category', 'angels', 'hymns/sections/holy-angels.webp', 'Holy Angels', '110', 'true', 'published'],
+  ['mary-general', 'virgin-mary', '', 'St. Mary Praise', '', '', '', 'subject', 'category', 'virgin-mary', 'hymns/sections/mary-general.webp', 'St. Mary Praise', '10', 'true', 'published'],
+  ['lideta-maryam', 'virgin-mary', '', 'Lideta Maryam', '', '', '', 'occasion', 'occasion', 'lideta-maryam', 'hymns/sections/lideta-maryam.webp', 'Lideta Maryam', '20', 'false', 'published'],
+  ['filseta', 'virgin-mary', '', 'Filseta', '', '', '', 'occasion', 'occasion', 'filseta', 'hymns/sections/filseta.webp', 'Filseta', '30', 'true', 'published'],
+  ['bisrate-gabriel', 'virgin-mary', '', 'Annunciation / Bisrate Gabriel', '', '', '', 'occasion', 'occasion', 'bisrate-gabriel', 'hymns/sections/bisrate-gabriel.webp', 'Annunciation / Bisrate Gabriel', '40', 'true', 'published'],
+  ['marian-feasts', 'virgin-mary', '', 'Other Marian Feasts', '', '', '', 'occasion', 'occasion', 'marian-feasts', 'hymns/sections/marian-feasts.webp', 'Other Marian Feasts', '50', 'false', 'published'],
+  ['christ-general', 'jesus-christ', '', 'Praise of Christ', '', '', '', 'subject', 'category', 'jesus-christ', 'hymns/sections/christ-general.webp', 'Praise of Christ', '10', 'true', 'published'],
+  ['gena', 'jesus-christ', '', 'Nativity / Gena', '', '', '', 'occasion', 'occasion', 'gena', 'hymns/sections/gena.webp', 'Nativity / Gena', '20', 'true', 'published'],
+  ['timkat', 'jesus-christ', '', 'Baptism / Timkat', '', '', '', 'occasion', 'occasion', 'timket', 'hymns/sections/timkat.webp', 'Baptism / Timkat', '30', 'true', 'published'],
+  ['hosanna', 'jesus-christ', '', 'Hosanna', '', '', '', 'occasion', 'occasion', 'hosanna', 'hymns/sections/hosanna.webp', 'Hosanna', '40', 'true', 'published'],
+  ['passion', 'jesus-christ', '', 'Passion / Crucifixion', '', '', '', 'occasion', 'occasion', 'siklet', 'hymns/sections/good-friday.webp', 'Passion / Crucifixion', '50', 'true', 'published'],
+  ['tinsae', 'jesus-christ', '', 'Resurrection / Tinsae', '', '', '', 'occasion', 'occasion', 'tinsae', 'hymns/sections/tinsae.webp', 'Resurrection / Tinsae', '60', 'true', 'published'],
+  ['ascension', 'jesus-christ', '', 'Ascension', '', '', '', 'occasion', 'occasion', 'erget', 'hymns/sections/ascension.webp', 'Ascension', '70', 'false', 'published'],
+  ['debre-tabor', 'jesus-christ', '', 'Transfiguration / Debre Tabor', '', '', '', 'occasion', 'occasion', 'debre-tabor', 'hymns/sections/debre-tabor.webp', 'Transfiguration / Debre Tabor', '80', 'false', 'published'],
+  ['repentance', 'repentance-fasting', '', 'Repentance', '', '', '', 'subject', 'category', 'repentance', 'hymns/sections/repentance.webp', 'Repentance', '10', 'true', 'published'],
+  ['abiy-tsom', 'repentance-fasting', '', 'Abiy Tsom', '', '', '', 'occasion', 'occasion', 'abiy-tsom', 'hymns/sections/abiy-tsom.webp', 'Abiy Tsom', '20', 'true', 'published'],
+  ['nineveh', 'repentance-fasting', '', 'Nineveh', '', '', '', 'occasion', 'occasion', 'tsome-nineveh', 'hymns/sections/nineveh.webp', 'Nineveh', '30', 'false', 'published'],
+  ['wednesday-friday', 'repentance-fasting', '', 'Wednesday & Friday', '', '', '', 'occasion', 'occasion', 'wednesday-friday', 'hymns/sections/wednesday-friday.webp', 'Wednesday & Friday', '40', 'false', 'published'],
+  ['holy-week', 'repentance-fasting', '', 'Holy Week', '', '', '', 'occasion', 'occasion', 'holy-week', 'hymns/sections/holy-week.webp', 'Holy Week', '50', 'true', 'published'],
+  ['general-fasting', 'repentance-fasting', '', 'General Fasting', '', '', '', 'occasion', 'occasion', 'general-fasting', 'hymns/sections/general-fasting.webp', 'General Fasting', '60', 'false', 'published'],
+  ['english', 'english-mezmur', '', 'English', '', '', '', 'language', 'language', 'english', 'hymns/sections/english.webp', 'English', '10', 'true', 'published'],
+  ['bilingual', 'english-mezmur', '', 'Bilingual', '', '', '', 'language', 'language', 'bilingual', 'hymns/sections/bilingual.webp', 'Bilingual', '20', 'false', 'published'],
+  ['wedding', 'sacraments-church-life', '', 'Wedding', '', '', '', 'sacrament', 'occasion', 'wedding', 'hymns/sections/wedding.webp', 'Wedding', '10', 'true', 'published'],
+  ['communion', 'sacraments-church-life', '', 'Communion', '', '', '', 'sacrament', 'occasion', 'communion', 'hymns/sections/communion.webp', 'Communion', '20', 'false', 'published'],
+  ['baptism', 'sacraments-church-life', '', 'Baptism', '', '', '', 'sacrament', 'occasion', 'baptism', 'hymns/sections/baptism.webp', 'Baptism', '30', 'false', 'published'],
+  ['funeral', 'sacraments-church-life', '', 'Funeral', '', '', '', 'sacrament', 'occasion', 'funeral', 'hymns/sections/funeral.webp', 'Funeral', '40', 'false', 'published'],
+  ['sunday-school', 'sacraments-church-life', '', 'Sunday School', '', '', '', 'general', 'occasion', 'sunday-school', 'hymns/sections/sunday-school.webp', 'Sunday School', '50', 'true', 'published'],
+  ['church-worship', 'sacraments-church-life', '', 'Church Worship', '', '', '', 'general', 'occasion', 'church-worship', 'hymns/sections/church-worship.webp', 'Church Worship', '60', 'false', 'published'],
+  ['children-youth', 'sacraments-church-life', '', 'Children & Youth', '', '', '', 'general', 'occasion', 'children-youth', 'hymns/sections/children-youth.webp', 'Children & Youth', '70', 'false', 'published'],
+  ['general-praise', 'praise-general', '', 'General Praise', '', '', '', 'general', 'category', 'praise-worship', 'hymns/sections/general-praise.webp', 'General Praise', '10', 'true', 'published'],
+  ['short-hymns', 'praise-general', '', 'Short Hymns', '', '', '', 'general', 'occasion', 'short-hymns', 'hymns/sections/short-hymns.webp', 'Short Hymns', '20', 'true', 'published'],
+  ['wereb', 'praise-general', '', 'Wereb', '', '', '', 'general', 'category', 'wereb', 'hymns/sections/wereb.webp', 'Wereb', '30', 'false', 'published'],
+  ['sunday-school', 'praise-general', '', 'Sunday School', '', '', '', 'general', 'occasion', 'sunday-school', 'hymns/sections/sunday-school.webp', 'Sunday School', '40', 'true', 'published'],
+  ['holiday-wereb', 'praise-general', '', 'Various Holidays Wereb', '', '', '', 'general', 'occasion', 'holiday-wereb', 'hymns/sections/holiday-wereb.webp', 'Various Holidays Wereb', '50', 'false', 'published'],
+  ['general-worship', 'praise-general', '', 'General Worship', '', '', '', 'general', 'category', 'general', 'hymns/sections/general-worship.webp', 'General Worship', '60', 'false', 'published'],
+]
+
+const header = [
+  'section_slug',
+  'collection_slug',
+  'parent_section_slug',
+  'title',
+  'title_amharic',
+  'description',
+  'description_amharic',
+  'section_type',
+  'source_entity_type',
+  'source_entity_slug',
+  'image_path',
+  'image_alt',
+  'sort_order',
+  'is_featured',
+  'status',
+]
+
+function esc(value) {
+  const s = String(value ?? '')
+  return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s
+}
+
+const body = [header.join(','), ...rows.map((r) => r.map(esc).join(','))].join('\r\n') + '\r\n'
+const out = path.join(root, 'mezmur_sections_final.csv')
+fs.writeFileSync(out, `\uFEFF${body}`, 'utf8')
+console.log(`Wrote ${rows.length} rows → ${out}`)

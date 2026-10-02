@@ -22,9 +22,12 @@ export const imageManifest = {
     kebroGuide: '/images/movement/movement-kebro-guide.jpg',
   },
   about: {
-    hero: '/images/about/about-hero.jpg',
-    heroWidth: 1920,
-    heroHeight: 1080,
+    hero: '/images/about/about-hero-1024.webp',
+    heroSrcSet:
+      '/images/about/about-hero-640.webp 640w, /images/about/about-hero-1024.webp 1024w, /images/about/about-hero-1600.webp 1600w',
+    heroFallbackJpg: '/images/about/about-hero.jpg',
+    heroWidth: 1600,
+    heroHeight: 873,
   },
 } as const
 

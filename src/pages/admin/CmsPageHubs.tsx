@@ -16,8 +16,10 @@ import s from './Admin.module.css'
 const HYMNS_TABS = [
   { to: '/admin/hymns', label: 'Overview', end: true },
   { to: '/admin/hymns/mezmur', label: 'Mezmur' },
-  { to: '/admin/hymns/singers', label: 'Singers' },
+  { to: '/admin/hymns/browse-groups', label: 'Browse Groups' },
+  { to: '/admin/hymns/occasions', label: 'Occasions' },
   { to: '/admin/hymns/categories', label: 'Categories' },
+  { to: '/admin/hymns/singers', label: 'Singers' },
   { to: '/admin/hymns/tags', label: 'Tags' },
 ]
 
@@ -98,7 +100,7 @@ export function HymnsAdminLayout() {
     <AdminPageShell
       eyebrow="EDITING: HYMNS PRACTICE"
       title="Hymns Practice"
-      description="Manage Mezmur, singers, categories, and tags that power the public Hymns Practice page."
+      description="Manage Mezmur, browse groups, singers, categories, and tags that power Hymns Practice discovery."
       tabs={HYMNS_TABS}
     />
   )
@@ -128,6 +130,16 @@ export function HymnsOverview() {
             label: 'Mezmur',
             detail: 'Hymn library (public.mezmur)',
             count: result.data ? `${result.data.published} published / ${result.data.mezmur}` : '…',
+          },
+          {
+            to: '/admin/hymns/browse-groups',
+            label: 'Browse Groups',
+            detail: 'Level-1 Hymns Practice discovery cards',
+          },
+          {
+            to: '/admin/hymns/occasions',
+            label: 'Occasions',
+            detail: 'public.mezmur_occasions + browse images',
           },
           {
             to: '/admin/hymns/singers',

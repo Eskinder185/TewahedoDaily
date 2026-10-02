@@ -2,9 +2,9 @@ import type { UpcomingObservance } from '../lib/churchCalendar'
 import { resolveUpcomingImage } from './calendarImageManifest'
 import { COMPANION_IMAGE_FILE, isCompanionObservanceId } from './nextObservancesCompanions'
 
-const CALENDAR_ROOT = '/images/calendar'
+const CALENDAR_WEB_ROOT = '/images/calendar-web'
 
-/** Authoritative pool for Next Observances — filenames match `/public/images/calendar/`. */
+/** Authoritative pool for Next Observances — stems match `/public/images/calendar-web/*.webp`. */
 export const NEXT_OBSERVANCES_POOL_FILES = [
   'AbuneTeklehaymanot.png',
   'AbuneAregawi.JPG',
@@ -87,7 +87,8 @@ export type NextObservancesPoolArt = {
 }
 
 export function poolImageSrc(fileName: string): string {
-  return encodeURI(`${CALENDAR_ROOT}/${fileName}`)
+  const stem = fileName.replace(/\.(png|jpg|jpeg|JPG|webp)$/i, '')
+  return encodeURI(`${CALENDAR_WEB_ROOT}/${stem}.webp`)
 }
 
 function stemFromFileName(fileName: string): string {

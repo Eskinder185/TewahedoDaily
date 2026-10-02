@@ -1,7 +1,8 @@
-﻿import amharic from '../../src/data/chants/amharic-chants.json'
-import english from '../../src/data/chants/english-mezmur-chants.json'
-// The current public fallback remains bundled JSON. Never import private CMS data here.
-export function bundledMezmur(key: string) {
-  const rows = [...amharic, ...english.entries] as { id: string; title: string; type: string; form?: string }[]
-  return rows.findLast(row => `mezmur:${row.id}` === key && (row.type === 'mezmur' || row.form === 'mezmur'))
+﻿/**
+ * Cloudflare function helper — browser no longer ships local mezmur packs.
+ * Local JSON lives under `archive/local-data/chants/` for migration only.
+ * Workers should resolve titles from Supabase; this returns undefined.
+ */
+export function bundledMezmur(_key: string): { title: string } | undefined {
+  return undefined
 }

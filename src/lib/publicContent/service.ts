@@ -3,18 +3,13 @@ import type { ContentType, CmsTables } from '../supabase/cms.types'
 import { parseYoutubeVideoId } from '../../data/utils/youtube'
 import {
   classificationLabel,
-  languageCodeFromNormalized,
   normalizeLanguageParam,
 } from './labels'
 import {
-  canonicalizeCategory,
-  canonicalizeOccasion,
   categoryOptions,
   displayClassification,
-  isNaClassification,
   occasionOptions,
 } from './taxonomy'
-import { normalizeStringList } from '../normalize/stringList'
 import {
   loadMezmurSearchCatalog,
   searchMezmurCatalog,
@@ -99,27 +94,6 @@ export type SearchResult = {
   description: string | null
 }
 
-type MezmurJoinRow = CmsTables['mezmur']['Row'] &
-  Partial<ClassificationFields> & {
-    singers: { id: string; name: string } | { id: string; name: string }[] | null
-    categories:
-      | { id: string; name: string; slug: string }
-      | { id: string; name: string; slug: string }[]
-      | null
-    mezmur_tags:
-      | {
-          tags: { id: string; name: string; slug: string; kind?: string | null } | null
-        }[]
-      | null
-  }
-
-const DETAIL_BASE = `
-  *,
-  singers ( id, name ),
-  categories ( id, name, slug ),
-  mezmur_tags ( tags ( id, name, slug ) )
-`
-
 export function database() {
   if (!supabase) throw new Error('The content service is not configured.')
   return supabase
@@ -127,11 +101,6 @@ export function database() {
 
 export const pageNumber = (params: URLSearchParams) =>
   Math.min(10000, Math.max(1, Math.floor(Number(params.get('page'))) || 1))
-
-function one<T>(value: T | T[] | null | undefined): T | null {
-  if (!value) return null
-  return Array.isArray(value) ? value[0] || null : value
-}
 
 function sanitizeSearch(raw: string) {
   return raw.replace(/[,().%_*\\]/g, ' ').trim().slice(0, 200)
@@ -148,112 +117,6 @@ function sanitizeClassificationFilter(value: string) {
 
 function sanitizeFilterToken(value: string) {
   return value.trim().toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '')
-}
-
-function asStringArray(value: unknown): string[] {
-  return normalizeStringList(value)
-}
-
-export function languagesFromRow(row: {
-  language?: string | null
-  lyrics_amharic?: string | null
-  lyrics_english?: string | null
-  lyrics_oromo?: string | null
-  title_amharic?: string | null
-  title_oromo?: string | null
-  language_codes?: string[] | null
-}): string[] {
-  const codes = new Set<string>()
-  const fromField = languageCodeFromNormalized(row.language || '')
-  if (fromField) codes.add(fromField)
-  for (const code of row.language_codes || []) {
-    if (code) codes.add(code)
-  }
-  if (row.lyrics_amharic?.trim() || row.title_amharic?.trim()) codes.add('am')
-  if (row.lyrics_english?.trim()) codes.add('en')
-  if (row.lyrics_oromo?.trim() || row.title_oromo?.trim()) codes.add('om')
-  return [...codes]
-}
-
-function tagsFromRow(row: MezmurJoinRow): PublicTag[] {
-  const tags: PublicTag[] = []
-  for (const link of row.mezmur_tags || []) {
-    const tag = link?.tags
-    if (!tag?.id) continue
-    const kind =
-      tag.kind ||
-      (tag.slug.startsWith('occasion-')
-        ? 'occasion'
-        : tag.slug.startsWith('form-')
-          ? 'form'
-          : tag.slug.startsWith('language-')
-            ? 'language'
-            : tag.slug.startsWith('saint-') || tag.slug.startsWith('st-') || tag.slug.startsWith('qedus-')
-              ? 'saint'
-              : 'topic')
-    tags.push({ id: tag.id, name: tag.name, slug: tag.slug, kind })
-  }
-  return tags.sort((a, b) => a.name.localeCompare(b.name))
-}
-
-function resolveForm(row: MezmurJoinRow, tags: PublicTag[]): 'mezmur' | 'werb' {
-  if (row.form === 'werb' || row.form === 'mezmur') return row.form
-  if (tags.some((tag) => tag.slug === 'form-werb')) return 'werb'
-  return 'mezmur'
-}
-
-function mapCard(row: MezmurJoinRow): MezmurCard {
-  const singer = one(row.singers)
-  const categoryRel = one(row.categories)
-  const tags = tagsFromRow(row)
-  const form = resolveForm(row, tags)
-  const categoryText = displayClassification(row.category)
-  const categoryCanonical = canonicalizeCategory(categoryText) || categoryText
-  return {
-    id: row.id,
-    slug: row.slug,
-    title: row.title,
-    title_amharic: row.title_amharic,
-    thumbnail_url: row.thumbnail_path || row.thumbnail_url,
-    audio_url: row.audio_url,
-    youtube_url: row.youtube_url,
-    featured: row.featured,
-    published_at: row.published_at,
-    created_at: row.created_at,
-    singer_name: singer?.name || null,
-    category_name: categoryCanonical
-      ? classificationLabel(categoryCanonical)
-      : displayClassification(categoryRel?.name),
-    languages: languagesFromRow(row),
-    form,
-    language: row.language || null,
-    category: categoryCanonical,
-    occasion: displayClassification(canonicalizeOccasion(row.occasion) || row.occasion),
-    saint_or_angel: displayClassification(row.saint_or_angel),
-    themes: asStringArray(row.themes).filter((theme) => !isNaClassification(theme)),
-  }
-}
-
-function mapDetail(row: MezmurJoinRow): PublicMezmur {
-  const card = mapCard(row)
-  const tags = tagsFromRow(row)
-  return {
-    ...row,
-    language: row.language || null,
-    form: card.form,
-    category: card.category,
-    occasion: card.occasion,
-    occasion_tags: asStringArray(row.occasion_tags).filter((v) => !isNaClassification(v)),
-    saint_or_angel: card.saint_or_angel,
-    saint_tags: asStringArray(row.saint_tags).filter((v) => !isNaClassification(v)),
-    themes: card.themes,
-    search_keywords: asStringArray(row.search_keywords),
-    source: row.source || null,
-    singer_name: card.singer_name,
-    category_name: card.category_name,
-    languages: card.languages,
-    tags,
-  }
 }
 
 function logDevError(
@@ -336,18 +199,65 @@ export async function detail(slug: string): Promise<PublicMezmur | null> {
   const normalized = slug.trim()
   if (!normalized) return null
 
-  const { data, error } = await database()
-    .from('mezmur')
-    .select(DETAIL_BASE)
-    .eq('slug', normalized)
-    .eq('status', 'published')
-    .maybeSingle()
-  if (error) {
-    logDevError('detail table', error)
-    throw error
+  // Hymns Practice SoT: mezmur_data_import only (do not query public.mezmur).
+  try {
+    const { getMezmurBySlug } = await import('./hymnBrowse')
+    const imported = await getMezmurBySlug(normalized)
+    if (imported) {
+      const form =
+        imported.form === 'werb' || imported.form === 'wereb'
+          ? 'werb'
+          : imported.form === 'mezmur'
+            ? 'mezmur'
+            : null
+      return {
+        id: imported.id,
+        slug: imported.slug,
+        title: imported.title,
+        title_amharic: imported.title_amharic,
+        title_oromo: null,
+        description: imported.description,
+        lyrics_amharic: imported.lyrics_amharic,
+        transliteration: imported.lyrics_transliteration,
+        lyrics_english: imported.lyrics_english,
+        lyrics_geez: imported.lyrics_geez,
+        lyrics_oromo: imported.lyrics_oromo,
+        youtube_url: imported.youtube_url,
+        audio_url: imported.audio_url,
+        thumbnail_url: imported.thumbnail_url,
+        thumbnail_path: imported.image_path,
+        image_alt: imported.image_alt,
+        status: (imported.status as PublicMezmur['status']) || 'published',
+        featured: false,
+        published_at: null,
+        created_at: '',
+        updated_at: '',
+        created_by: null,
+        updated_by: null,
+        singer_id: imported.singer_id,
+        category_id: null,
+        language: imported.language,
+        form,
+        category: null,
+        occasion: imported.occasion_slugs[0] || null,
+        occasion_tags: imported.occasion_slugs,
+        saint_or_angel: null,
+        saint_tags: [],
+        themes: [],
+        search_keywords: imported.search_keywords,
+        source: null,
+        singer_name: imported.singer_name,
+        category_name: null,
+        languages: imported.language ? [imported.language] : [],
+        tags: [],
+      } as unknown as PublicMezmur
+    }
+  } catch (cause) {
+    logDevError('detail import', cause as { message?: string; code?: string })
+    throw cause instanceof Error ? cause : new Error('Unable to load hymn.')
   }
-  if (!data) return null
-  return mapDetail(data as unknown as MezmurJoinRow)
+
+  return null
 }
 
 export async function searchSite(

@@ -172,9 +172,9 @@ async function loadLibrary(): Promise<ChantLibraryResult> {
     return { entries, source: 'supabase' }
   } catch (cause) {
     const warning =
-      cause instanceof Error ? cause : new Error('Unable to load chants from Supabase')
-    console.warn('[TewahedoDaily] Using bundled chant data:', warning.message)
-    return loadLocalLibrary(warning)
+      cause instanceof Error ? cause : new Error('Unable to load content. Please try again.')
+    // Do not ship archived mezmur JSON as a silent fallback.
+    return { entries: [], source: 'supabase', warning }
   }
 }
 

@@ -69,6 +69,24 @@ export function SiteFooter() {
         </div>
 
         <nav className={styles.utilityNav} aria-label="Site utilities">
+          <Link to="/about" className={styles.utilityLink}>
+            About
+          </Link>
+          <Link to="/legal" className={styles.utilityLink}>
+            Legal
+          </Link>
+          <Link to="/legal#copyright" className={styles.utilityLink}>
+            Copyright
+          </Link>
+          <Link to="/legal#privacy" className={styles.utilityLink}>
+            Privacy
+          </Link>
+          <Link to="/legal#removal" className={styles.utilityLink}>
+            Removal
+          </Link>
+          <Link to="/suggest-correction" className={styles.utilityLink}>
+            Suggest a correction
+          </Link>
           <Link to="/submit-mezmur" className={styles.utilityLink}>
             Submit a Mezmur
           </Link>

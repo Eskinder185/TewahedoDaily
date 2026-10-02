@@ -1,19 +1,15 @@
-import type { PrayerEntry } from '../../data/types/tselot'
-import zeweterJson from '../../data/tselot/zeweter-tselot.json'
-import { prayerEntryToTselotPrayer } from '../practice/fromCanonical'
-import { slugifyPrayer } from './prayerSlug'
+/**
+ * Legacy Zeweter local JSON — production continuous Zeweter uses Supabase.
+ * Archived: `archive/local-data/tselot/zeweter-tselot.json`
+ */
+export type ZeweterPrayerStub = {
+  id: string
+  slug: string
+  title: string
+  transliterationTitle?: string
+  titleAmharic?: string
+  bodyAmharic?: string
+  bodyEnglish?: string
+}
 
-export const ZEWETER_ENTRIES = zeweterJson as unknown as PrayerEntry[]
-
-const usedSlugs = new Map<string, number>()
-
-export const ZEWETER_PRAYERS = ZEWETER_ENTRIES.map((entry) => {
-  const base = slugifyPrayer(
-    entry.slug || entry.transliterationTitle || entry.title || entry.id,
-    slugifyPrayer(entry.id, 'prayer'),
-  )
-  const count = usedSlugs.get(base) ?? 0
-  usedSlugs.set(base, count + 1)
-  const slug = count === 0 ? base : `${base}-${slugifyPrayer(entry.id, String(count + 1))}`
-  return prayerEntryToTselotPrayer({ ...entry, slug })
-})
+export const ZEWETER_PRAYERS: ZeweterPrayerStub[] = []
