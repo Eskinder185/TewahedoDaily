@@ -3,23 +3,59 @@
   right: max(1rem, env(safe-area-inset-right, 0px));
   bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   z-index: 55;
-  min-height: 48px;
-  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
   max-width: calc(100vw - 2rem);
-  padding: 0.7rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-border-strong) 80%, var(--color-gold));
+  padding: 0.45rem 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold-line) 70%, var(--color-border));
   border-radius: var(--radius-pill);
-  background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-bg));
+  background: color-mix(in srgb, var(--color-bg-elevated) 82%, transparent);
   color: var(--color-heading);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 4px 16px rgba(8, 14, 26, 0.12);
   font: inherit;
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 650;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
   cursor: pointer;
   transition: bottom 180ms var(--ease-out);
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.fabIcon {
+  font-size: 1.05rem;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.fabLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 430px) {
+  .fab {
+    padding: 0.45rem 0.55rem;
+  }
+
+  .fabLabel {
+    /* Compact icon-led control on narrow phones; label stays for a11y via aria-label. */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 :global(html[data-practice-mini-player='true']) .fab {

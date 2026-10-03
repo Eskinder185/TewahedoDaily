@@ -1,7 +1,7 @@
 /* Compact Today in Church band — content-sized, top-aligned two-column desktop. */
 #today-preview.tail,
 .tail {
-  padding-block: 2.5rem 3rem;
+  padding-block: 3rem 3.25rem;
   margin-bottom: 0;
 }
 
@@ -44,11 +44,18 @@
 }
 
 .dateLine {
-  margin: 0 0 1.55rem;
+  margin: 0 0 1.75rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-text-muted);
   line-height: 1.45;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
 }
 
 .cta {
@@ -225,7 +232,7 @@
 @media (max-width: 899.98px) {
   #today-preview.tail,
   .tail {
-    padding-block: 2.5rem 3rem;
+    padding-block: 2.85rem 3.1rem;
   }
 
   .layout {

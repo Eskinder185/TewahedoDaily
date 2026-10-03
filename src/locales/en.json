@@ -41,7 +41,7 @@
     "hero": {
       "eyebrow": "Tewahedo Daily",
       "title": "Your daily church companion",
-      "tagline": "Prayer, hymns, and the Ethiopian Orthodox calendar - gathered in one quiet place.",
+      "tagline": "Prayer, hymns, and the Ethiopian Orthodox calendar — gathered in one quiet place.",
       "primaryCta": "Explore Hymns",
       "secondaryCta": "See Today in Church",
       "quickNavLabel": "Quick links",
@@ -632,7 +632,8 @@
     "aboutLinkLead": "For product background and intent, see"
   },
   "searchBuddy": {
-    "fab": "Find Something",
+    "fab": "Search",
+    "fabAria": "Open search",
     "title": "Tewahedo Daily Assistant",
     "subtitle": "Find hymns, prayers, saints, calendar events, and pages.",
     "placeholder": "Find Meskel hymns, Calendar, a Zemari…",

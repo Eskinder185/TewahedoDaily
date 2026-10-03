@@ -2,7 +2,6 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { imageManifest } from '../../content/imageManifest'
-import { ButtonLink } from '../ui/ButtonLink'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
 import { listHomepageSlides, type HomepageSlide } from '../../lib/cms/homepageService'
 import styles from './HeroSection.module.css'
@@ -23,10 +22,6 @@ type SlideView = {
   subtitle: string
   imageUrl: string
   imageAlt: string
-  primaryLabel: string
-  primaryUrl: string
-  secondaryLabel: string
-  secondaryUrl: string
   animation: HomepageSlide['animation_style']
   duration: number
 }
@@ -40,10 +35,6 @@ function toView(slide: HomepageSlide, fallback: SlideView): SlideView {
     subtitle: slide.subtitle?.trim() || fallback.subtitle,
     imageUrl: resolveContentMediaUrl(slide.image_path) || fallback.imageUrl,
     imageAlt: slide.image_alt?.trim() || fallback.imageAlt,
-    primaryLabel: slide.primary_button_label?.trim() || fallback.primaryLabel,
-    primaryUrl: slide.primary_button_url?.trim() || fallback.primaryUrl,
-    secondaryLabel: slide.secondary_button_label?.trim() || fallback.secondaryLabel,
-    secondaryUrl: slide.secondary_button_url?.trim() || fallback.secondaryUrl,
     animation: slide.animation_style || 'fade',
     duration: slide.display_duration || 7000,
   }
@@ -65,10 +56,6 @@ export function HeroSection() {
     subtitle: t('home.hero.tagline'),
     imageUrl: imageManifest.home.hero,
     imageAlt: '',
-    primaryLabel: t('home.hero.primaryCta'),
-    primaryUrl: '/practice',
-    secondaryLabel: t('home.hero.secondaryCta'),
-    secondaryUrl: '/today',
     animation: 'fade',
     duration: 7000,
   }
@@ -181,12 +168,6 @@ export function HeroSection() {
             </p>
           ) : null}
           <p className={styles.tagline}>{current.subtitle}</p>
-          <div className={styles.actions}>
-            <ButtonLink to={current.primaryUrl}>{current.primaryLabel}</ButtonLink>
-            <ButtonLink to={current.secondaryUrl} variant="ghost" className={styles.secondaryCta}>
-              {current.secondaryLabel}
-            </ButtonLink>
-          </div>
           <nav className={styles.quickNav} aria-label={t('home.hero.quickNavLabel')}>
             {HERO_QUICK_LINKS.map((item) => (
               <Link key={item.key} to={item.to} className={styles.quickChip}>

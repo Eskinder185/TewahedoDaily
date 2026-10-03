@@ -103,9 +103,11 @@ export function HomeTodayInChurchPreview() {
           <p className={styles.eyebrow}>{t('home.today.eyebrow')}</p>
           <h2 className={styles.title}>{t('home.today.title')}</h2>
           {dateLine ? <p className={styles.dateLine}>{dateLine}</p> : null}
-          <Link to="/calendar" className={styles.cta}>
-            {t('home.today.cta')}
-          </Link>
+          <div className={styles.actions}>
+            <Link to="/today" className={styles.cta}>
+              {t('home.today.cta')}
+            </Link>
+          </div>
         </div>
 
         <div

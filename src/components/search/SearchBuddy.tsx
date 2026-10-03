@@ -521,12 +521,16 @@ export function SearchBuddy() {
         ref={fabRef}
         type="button"
         className={styles.fab}
+        aria-label={t('searchBuddy.fabAria')}
         aria-haspopup="dialog"
         aria-expanded={open}
         tabIndex={open ? -1 : 0}
         onClick={() => setOpen(true)}
       >
-        {t('searchBuddy.fab')}
+        <span className={styles.fabIcon} aria-hidden>
+          ⌕
+        </span>
+        <span className={styles.fabLabel}>{t('searchBuddy.fab')}</span>
       </button>
       {panel}
     </>
