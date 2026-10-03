@@ -142,7 +142,7 @@ export function PublicHymnSectionPage() {
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] section', cause)
-        setError('Unable to load Hymn Practice.')
+        setError('Unable to load Hymns.')
       } finally {
         if (active) setLoading(false)
       }

@@ -256,7 +256,7 @@ export function PublicHymnCollectionPage({
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] collection hymns', cause)
-        setError('Unable to load Hymn Practice.')
+        setError('Unable to load Hymns.')
         setLoading(false)
       }
     })()
@@ -270,7 +270,7 @@ export function PublicHymnCollectionPage({
       <section className={s.page}>
         <p className={s.backRow}>
           <Link to="/practice" className={s.viewAll}>
-            ← Back to Hymns Practice
+            ← Back to Hymns
           </Link>
         </p>
         <header className={s.intro}>
@@ -285,9 +285,9 @@ export function PublicHymnCollectionPage({
         {!loading && !error && allCards.length === 0 ? (
           <p className={s.browseEmpty}>
             {kind === 'singers'
-              ? 'No published Zemari profiles with linked Mezmurs are available yet. Browse Hymns Practice for feast and saint collections, or open Search Buddy to find a singer by name.'
+              ? 'No published Zemari profiles with linked Mezmurs are available yet. Browse Hymns for feast and saint collections, or open Search Buddy to find a singer by name.'
               : 'No published items are available in this browse list yet.'}{' '}
-            <Link to="/practice">Back to Hymns Practice</Link>
+            <Link to="/practice">Back to Hymns</Link>
           </p>
         ) : null}
         <div className={s.browseGrid}>
@@ -308,7 +308,7 @@ export function PublicHymnCollectionPage({
     <section className={s.page}>
       <p className={s.backRow}>
         <Link to="/practice" className={s.viewAll}>
-          ← Back to Hymns Practice
+          ← Back to Hymns
         </Link>
       </p>
 

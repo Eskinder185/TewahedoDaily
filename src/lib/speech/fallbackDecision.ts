@@ -18,6 +18,9 @@ export type FallbackDecisionOptions = {
  * Important: `service-not-allowed` is NOT the same as microphone permission denial.
  * Many browsers report it (or related codes) when Amharic speech service is unavailable
  * even though the mic already works for English.
+ *
+ * Callers must pass `isWhisperCapable()` for `whisperCapable`. That helper is hard-gated
+ * so mobile never enters the heavy local ASR path (see `BROWSER_WHISPER_ENABLED`).
  */
 export function decideNativeFallback(
   code: NativeSpeechErrorCode,
@@ -29,10 +32,12 @@ export function decideNativeFallback(
   switch (code) {
     case 'not-allowed':
       // True mic denial for English stays a permission message.
-      // For Amharic, some engines misuse not-allowed for unsupported speech services —
-      // enter Whisper so getUserMedia can confirm real permission state.
-      if (isAmharic && whisperCapable) {
-        return { action: 'whisper', reason: 'not-allowed-amharic-verify' }
+      // Amharic engines often misuse not-allowed for unsupported speech services —
+      // never show "microphone blocked" for that case; use typed Amharic fallback.
+      if (isAmharic) {
+        return whisperCapable
+          ? { action: 'whisper', reason: 'not-allowed-amharic-verify' }
+          : { action: 'text-only', reason: 'amharic-unavailable' }
       }
       return { action: 'permission', reason: code }
 
@@ -63,30 +68,25 @@ export function decideNativeFallback(
 
     case 'unknown':
     default:
-      // Amharic: always prefer Whisper over a generic dead-end error.
-      if (isAmharic || whisperCapable) {
-        return whisperCapable
-          ? { action: 'whisper', reason: code === 'unknown' ? 'unknown' : String(code) }
-          : { action: 'text-only', reason: 'unknown' }
+      if (whisperCapable) {
+        return { action: 'whisper', reason: code === 'unknown' ? 'unknown' : String(code) }
       }
-      return { action: 'text-only', reason: 'unknown' }
+      return { action: 'text-only', reason: isAmharic ? 'amharic-unavailable' : 'unknown' }
   }
 }
 
+/**
+ * Whether in-browser Whisper may be used.
+ * Currently always false — Xenova/whisper-tiny via transformers.js crashes mobile tabs.
+ * Re-enable only after a memory-safe path exists; also flip `BROWSER_WHISPER_ENABLED`.
+ */
 export function isWhisperCapable(
   win: (Window & typeof globalThis) | undefined = typeof window !== 'undefined' ? window : undefined,
 ): boolean {
-  if (!win) return false
-  if (win.isSecureContext === false) return false
-  if (typeof Worker === 'undefined') return false
-  if (!win.navigator?.mediaDevices?.getUserMedia) return false
-  if (
-    typeof win.AudioContext === 'undefined' &&
-    typeof (win as unknown as { webkitAudioContext?: unknown }).webkitAudioContext === 'undefined'
-  ) {
-    return false
-  }
-  return true
+  // Hard-disabled for stability. Runtime gates also live in whisperClient.ts
+  // via BROWSER_WHISPER_ENABLED — keep both false until a memory-safe ASR path exists.
+  void win
+  return false
 }
 
 export function whisperLanguageFromSpeechLang(lang: 'am-ET' | 'en-US'): 'am' | 'en' {

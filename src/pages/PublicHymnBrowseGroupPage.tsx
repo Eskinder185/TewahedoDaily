@@ -46,7 +46,7 @@ export function PublicHymnBrowseGroupPage() {
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] collection', cause)
-        setError('Unable to load Hymn Practice.')
+        setError('Unable to load Hymns.')
       } finally {
         if (active) setLoading(false)
       }
@@ -60,7 +60,7 @@ export function PublicHymnBrowseGroupPage() {
     <section className={s.page}>
       <p className={s.backRow}>
         <Link to="/practice" className={s.viewAll}>
-          ← Hymns Practice
+          ← Hymns
         </Link>
       </p>
 
@@ -101,7 +101,7 @@ export function PublicHymnBrowseGroupPage() {
       {!loading && !error && group && !children.length ? (
         <p className={s.browseEmpty}>
           No published sections in this collection yet. Try search from{' '}
-          <Link to="/practice">Hymns Practice</Link>.
+          <Link to="/practice">Hymns</Link>.
         </p>
       ) : null}
 

@@ -30,14 +30,16 @@ export const ROUTE_CATALOG: RouteCatalogEntry[] = [
   },
   {
     id: 'page:hymns',
-    title: 'Hymns Practice',
+    title: 'Hymns',
     description: 'Browse and practice Ethiopian Orthodox Mezmurs.',
     route: '/practice',
     aliases: [
+      'hymns',
       'hymns practice',
       'hymn practice',
       'practice mezmur',
       'chant practice',
+      'መዝሙር',
       'መዝሙር ልምምድ',
     ],
     sourceType: 'page',

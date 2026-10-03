@@ -52,3 +52,10 @@ export const WHISPER_MAX_RECORD_MS = 10_000
 /** Maximum native listen / Whisper record window (maximum, not minimum). */
 export const VOICE_MAX_LISTEN_MS = 10_000
 export const WHISPER_SAMPLE_RATE = 16_000
+
+/**
+ * Hard kill switch for in-browser Whisper / transformers.js.
+ * Loading Xenova/whisper-tiny (WebGPU→WASM) has crashed mobile tabs on Amharic fallback.
+ * Keep false until a lightweight, memory-safe path exists (prefer server ASR later).
+ */
+export const BROWSER_WHISPER_ENABLED = false

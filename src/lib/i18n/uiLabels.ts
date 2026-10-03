@@ -10,7 +10,7 @@ import { findTranslation } from '../../i18n'
 export const UI_LABELS = {
   // Navigation
   navHome: { en: 'Home', am: 'መነሻ' },
-  navPractice: { en: 'Hymns Practice', am: 'የመዝሙር ልምምድ' },
+  navPractice: { en: 'Hymns', am: 'መዝሙር' },
   navCalendar: { en: 'Calendar', am: 'ቀን መቁጠሪያ' },
   navAbout: { en: 'About', am: 'ስለ ዚህ' },
   navPrayers: { en: 'Prayers', am: 'ጸሎቶች' },
@@ -365,11 +365,11 @@ export const UI_LABELS = {
   prayerDaySat: { en: 'Sat', am: 'ቅዳሜ' },
   prayerDaySun: { en: 'Sun', am: 'እሁድ' },
   tabChants: { en: 'Chants', am: 'መዝሙር' },
-  tabHymnsPractice: { en: 'Hymns Practice', am: 'የመዝሙር ልምምድ' },
+  tabHymnsPractice: { en: 'Hymns', am: 'መዝሙር' },
   tabTselot: { en: 'Tselot', am: 'ጸሎት' },
   practiceHeadTitle: {
-    en: 'Hymns Practice',
-    am: 'የመዝሙር ልምምድ',
+    en: 'Hymns',
+    am: 'መዝሙር',
   },
   practiceHeadDeck: {
     en:

@@ -29,7 +29,7 @@ const messages = {
     amharicNativeFallback:
       "Native Amharic voice recognition isn't available here. Using Amharic voice fallback…",
     amharicTextOnly:
-      "Amharic voice recognition isn't supported on this device yet. You can still type your search in Amharic.",
+      "Amharic voice recognition isn't available on this device yet. You can still type your search in Amharic.",
     voiceLang: 'Voice language',
     searchByVoice: 'Search by voice',
     stop: 'Stop',

@@ -1,4 +1,5 @@
 import {
+  BROWSER_WHISPER_ENABLED,
   WHISPER_MODEL_ID,
   WHISPER_SAMPLE_RATE,
   type WhisperWorkerIn,
@@ -19,6 +20,9 @@ let loadPromise: Promise<void> | null = null
 let pendingTranscribe: Pending | null = null
 
 function ensureWorker(): Worker {
+  if (!BROWSER_WHISPER_ENABLED) {
+    throw new Error('Browser Whisper is disabled for memory safety.')
+  }
   if (worker) return worker
   worker = new Worker(new URL('./whisperWorker.ts', import.meta.url), { type: 'module' })
   worker.onmessage = (event: MessageEvent<WhisperWorkerOut>) => {
@@ -58,7 +62,7 @@ function post(message: WhisperWorkerIn) {
 }
 
 export function isWhisperClientAvailable(): boolean {
-  return typeof Worker !== 'undefined'
+  return BROWSER_WHISPER_ENABLED && typeof Worker !== 'undefined'
 }
 
 /** Lazy-load / warm the Whisper model (singleton per session). */
@@ -66,6 +70,9 @@ export async function ensureWhisperLoaded(
   onProgress?: ProgressHandler,
   modelId: string = WHISPER_MODEL_ID,
 ): Promise<void> {
+  if (!BROWSER_WHISPER_ENABLED) {
+    throw new Error('Browser Whisper is disabled for memory safety.')
+  }
   if (readyModelId === modelId) return
   if (loadPromise) {
     await loadPromise
@@ -101,6 +108,9 @@ export async function transcribeWithWhisper(
   language: 'am' | 'en',
   onProgress?: ProgressHandler,
 ): Promise<string> {
+  if (!BROWSER_WHISPER_ENABLED) {
+    throw new Error('Browser Whisper is disabled for memory safety.')
+  }
   if (audio.length < 1600) {
     // < ~0.1s at 16 kHz
     throw new Error('Recording was too short. Try again.')
@@ -136,8 +146,16 @@ export function disposeWhisperClient() {
     pendingTranscribe = null
   }
   if (worker) {
-    post({ type: 'dispose' })
-    worker.terminate()
+    try {
+      worker.postMessage({ type: 'dispose' } satisfies WhisperWorkerIn)
+    } catch {
+      /* ignore */
+    }
+    try {
+      worker.terminate()
+    } catch {
+      /* ignore */
+    }
     worker = null
   }
   readyModelId = null

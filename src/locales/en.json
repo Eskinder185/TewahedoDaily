@@ -5,7 +5,7 @@
   },
   "nav": {
     "home": "Home",
-    "practice": "Hymns Practice",
+    "practice": "Hymns",
     "calendar": "Calendar",
     "about": "About",
     "prayers": "Prayers",
@@ -42,7 +42,7 @@
       "eyebrow": "Tewahedo Daily",
       "title": "Your daily church companion",
       "tagline": "Prayer, hymns, and the Ethiopian Orthodox calendar - gathered in one quiet place.",
-      "primaryCta": "Explore Practice",
+      "primaryCta": "Explore Hymns",
       "secondaryCta": "See Today in Church",
       "quickNavLabel": "Quick links",
       "quickNav": {
@@ -232,12 +232,12 @@
     "noSeasonalFast": "No major seasonal fast in this window - confirm yearly with your parish."
   },
   "mezmurPractice": {
-    "title": "Hymns Practice",
+    "title": "Hymns",
     "hero": {
       "description": "Mezmur, werb, and liturgical hymns - focused practice. For prayer texts and tselot, use Daily Prayers."
     },
     "intro": {
-      "openLabel": "Hymns Practice",
+      "openLabel": "Hymns",
       "openText": "Open the hymn library and start with one piece.",
       "memorizeLabel": "Memorize",
       "memorizeText": "Use shorter lyric and rhythm passes before full repetition.",
@@ -422,9 +422,9 @@
   },
   "practice": {
     "loading": "Loading practice content...",
-    "metaTitle": "Hymns Practice",
+    "metaTitle": "Hymns",
     "metaDescription": "Learn and practice Ethiopian Orthodox Mezmur — browse by feast, saint, or zemari.",
-    "title": "Hymns Practice",
+    "title": "Hymns",
     "eyebrow": "Listen · Learn · Pray",
     "subtitle": "Learn and practice Ethiopian Orthodox Mezmur.",
     "searchLabel": "Search hymns, saints, singers, occasions",
@@ -439,9 +439,9 @@
     "backToBrowse": "Back to browse",
     "matchingSectionsAria": "Matching sections and singers",
     "browse": "Browse",
-    "loadError": "Unable to load Hymn Practice.",
+    "loadError": "Unable to load Hymns.",
     "miniGuide": {
-      "openLabel": "Hymns Practice",
+      "openLabel": "Hymns",
       "openText": "Open the hymn library and start with one piece.",
       "memorizeLabel": "Memorize",
       "memorizeText": "Use shorter lyric and rhythm passes before full repetition.",
@@ -643,7 +643,7 @@
     "looking": "Looking…",
     "searching": "Searching Tewahedo Daily…",
     "defaultMessage": "Ask for a hymn, prayer, Zemari, feast, or page — I will take you there.",
-    "unavailable": "Search is temporarily unavailable. Try browsing Hymns Practice or Pray.",
+    "unavailable": "Search is temporarily unavailable. Try browsing Hymns or Pray.",
     "foundOne": "I found {title}.",
     "foundMany": "I found {count} places related to your search.",
     "foundGeneric": "Here is what I found.",
@@ -758,7 +758,7 @@
     "homeDesc": "Start from the main page",
     "today": "Today in Church",
     "todayDesc": "Today’s commemorations and readings",
-    "practice": "Hymns Practice",
+    "practice": "Hymns",
     "practiceDesc": "Browse and practice Mezmur",
     "pray": "Pray",
     "prayDesc": "Prayers, Psalms, and liturgy",

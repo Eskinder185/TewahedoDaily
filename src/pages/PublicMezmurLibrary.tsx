@@ -244,7 +244,7 @@ export function PublicMezmurLibrary() {
       .catch((cause) => {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] browse', cause)
-        setBrowseError('Unable to load Hymn Practice.')
+        setBrowseError('Unable to load Hymns.')
         setBrowse([])
       })
     return () => {
