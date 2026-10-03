@@ -1,11 +1,13 @@
 import { useState, type FormEvent } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import { useAuth } from '../../lib/auth/useAuth'
 import { RedirectIfAuthenticated } from '../../lib/auth/RequireAuth'
 import { friendlyAuthError } from '../../lib/auth/authErrors'
 import styles from './AuthPages.module.css'
 
 function LoginForm() {
+  const t = useTranslation()
   const { signIn, requestPasswordReset } = useAuth()
   const navigate = useNavigate()
   const [params] = useSearchParams()
@@ -25,7 +27,7 @@ function LoginForm() {
       await signIn(String(data.get('email')), String(data.get('password')))
       navigate(next.startsWith('/') ? next : '/account', { replace: true })
     } catch (cause) {
-      setError(friendlyAuthError(cause, 'The email or password is incorrect.'))
+      setError(friendlyAuthError(cause, t('auth.badCredentials')))
     } finally {
       setBusy(false)
     }
@@ -35,7 +37,7 @@ function LoginForm() {
     const emailInput = document.querySelector<HTMLInputElement>('input[name="email"]')
     const email = emailInput?.value?.trim() || ''
     if (!email) {
-      setError('Enter your email above, then tap Forgot password.')
+      setError(t('auth.forgotNeedEmail'))
       return
     }
     setBusy(true)
@@ -43,9 +45,9 @@ function LoginForm() {
     setInfo('')
     try {
       await requestPasswordReset(email)
-      setInfo('If an account exists for that email, a reset link is on the way.')
+      setInfo(t('auth.resetSent'))
     } catch (cause) {
-      setError(friendlyAuthError(cause, 'Unable to send a reset email. Please try again.'))
+      setError(friendlyAuthError(cause, t('auth.resetFailed')))
     } finally {
       setBusy(false)
     }
@@ -53,11 +55,8 @@ function LoginForm() {
 
   return (
     <section className={styles.shell}>
-      <h1 className={styles.title}>Sign in</h1>
-      <p className={styles.lead}>
-        Optional. Browse and pray freely without an account — sign in only to sync favorites and
-        progress across devices.
-      </p>
+      <h1 className={styles.title}>{t('auth.signInTitle')}</h1>
+      <p className={styles.lead}>{t('auth.signInLead')}</p>
 
       <div className={styles.panel}>
         {error ? (
@@ -73,11 +72,11 @@ function LoginForm() {
 
         <form className={styles.form} onSubmit={(e) => void onSubmit(e)}>
           <label className={styles.field}>
-            <span>Email</span>
+            <span>{t('auth.email')}</span>
             <input name="email" type="email" autoComplete="email" required />
           </label>
           <label className={styles.field}>
-            <span>Password</span>
+            <span>{t('auth.password')}</span>
             <div className={styles.passwordRow}>
               <input
                 name="password"
@@ -91,26 +90,31 @@ function LoginForm() {
                 onClick={() => setShowPassword((v) => !v)}
                 aria-pressed={showPassword}
               >
-                {showPassword ? 'Hide' : 'Show'}
+                {showPassword ? t('auth.hidePassword') : t('auth.showPassword')}
               </button>
             </div>
           </label>
           <button type="submit" className={styles.primaryBtn} disabled={busy}>
-            {busy ? 'Signing in…' : 'Sign in'}
+            {busy ? t('auth.signingIn') : t('auth.signIn')}
           </button>
         </form>
 
         <div className={styles.links}>
-          <Link to="/signup">Create an account</Link>
-          <button type="button" className={styles.linkBtn} onClick={() => void onForgot()} disabled={busy}>
-            Forgot password
+          <Link to="/signup">{t('auth.createAccount')}</Link>
+          <button
+            type="button"
+            className={styles.linkBtn}
+            onClick={() => void onForgot()}
+            disabled={busy}
+          >
+            {t('auth.forgotPassword')}
           </button>
         </div>
       </div>
 
       <p className={styles.actions} style={{ marginTop: '1.25rem' }}>
         <Link className={styles.secondary} to="/">
-          Continue without signing in
+          {t('auth.continueGuest')}
         </Link>
       </p>
     </section>

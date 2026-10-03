@@ -3,8 +3,8 @@ import {
   displaySummary,
   type PresentableCalendarEvent,
 } from '../../lib/calendar/calendarPresentation'
-import type { CalendarLocaleMode } from '../../lib/calendar/calendarEnrichedContent'
-import { CalendarEventDetails, CalendarLangToggle } from './CalendarEventDetails'
+import { useLocale } from '../../lib/i18n/locale'
+import { CalendarEventDetails } from './CalendarEventDetails'
 import { CalendarEventImage } from './CalendarEventImage'
 import styles from './CalendarEventDetail.module.css'
 
@@ -14,8 +14,6 @@ export type CalendarEventDetailProps = {
   /** Selected civil date label shown under titles. */
   dateLabel?: string
   ethiopianLabel?: string
-  lang: CalendarLocaleMode
-  onLangChange?: (mode: CalendarLocaleMode) => void
   onClose: () => void
 }
 
@@ -28,10 +26,9 @@ export function CalendarEventDetail({
   event,
   dateLabel,
   ethiopianLabel,
-  lang,
-  onLangChange,
   onClose,
 }: CalendarEventDetailProps) {
+  const { contentLocale: lang } = useLocale()
   const panelRef = useRef<HTMLDivElement>(null)
   const previouslyFocused = useRef<HTMLElement | null>(null)
   const titleId = useId()
@@ -148,12 +145,6 @@ export function CalendarEventDetail({
               sizes="(max-width: 640px) 100vw, 36rem"
             />
           </figure>
-
-          {onLangChange ? (
-            <div className={styles.langRow}>
-              <CalendarLangToggle value={lang} onChange={onLangChange} />
-            </div>
-          ) : null}
 
           {summary ? <p className={styles.summary}>{summary}</p> : null}
 

@@ -10,7 +10,9 @@ import {
   type HymnDiscoveryHit,
 } from '../lib/publicContent/hymnBrowse'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
+import { expandSearchAliases } from '../lib/search/routeCatalog'
 import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
+import { MezmurVoiceSearch } from '../components/search/MezmurVoiceSearch'
 import s from './HymnPractice.module.css'
 
 type SearchItem = Awaited<ReturnType<typeof searchImportMezmurs>>['items'][number]
@@ -256,7 +258,7 @@ export function PublicMezmurLibrary() {
       }
     }
     const timeout = window.setTimeout(() => {
-      void searchHymns(needle, 8)
+      void searchHymns(expandSearchAliases(needle), 8)
         .then((hits) => {
           if (active) setDiscoveryHits(hits)
         })
@@ -287,6 +289,7 @@ export function PublicMezmurLibrary() {
     let active = true
     setLoading(true)
     setError(undefined)
+    setResult(null)
     const q = (params.get('q') || '').trim()
     void searchImportMezmurs(q, { page, pageSize: 24 })
       .then((data) => {
@@ -387,22 +390,47 @@ export function PublicMezmurLibrary() {
             </button>
           ) : null}
         </div>
+        <MezmurVoiceSearch onTranscript={(text) => {
+          setDraftQ(text)
+          setSuggestOpen(false)
+        }} />
       </div>
 
       {showResults ? (
         <>
           <div className={s.resultsHead}>
             <h2 className={s.browseTitle}>
-              Search results
-              {result ? ` · ${result.total}` : ''}
+              {loading || !result
+                ? 'Searching…'
+                : `Search results · ${result.total}`}
             </h2>
             <Link to="/practice" className={s.viewAll}>
               Back to browse
             </Link>
           </div>
+          {!loading && discoveryHits.length > 0 ? (
+            <ul className={s.suggestList} aria-label="Matching sections and singers">
+              {discoveryHits
+                .filter((hit) => hit.type === 'section' || hit.type === 'singer' || hit.type === 'collection')
+                .slice(0, 6)
+                .map((hit) => (
+                  <li key={`${hit.type}-${hit.id}`}>
+                    <button
+                      type="button"
+                      className={s.suggestItem}
+                      onClick={() => applyDiscoveryHit(hit)}
+                    >
+                      <strong>{hit.title}</strong>
+                      {hit.titleAmharic ? <span lang="am">{hit.titleAmharic}</span> : null}
+                      <small>{hit.meta}</small>
+                    </button>
+                  </li>
+                ))}
+            </ul>
+          ) : null}
           <MezmurResultGrid
             items={result?.items || []}
-            loading={loading}
+            loading={loading || !result}
             error={error}
             onRetry={() => setReloadTick((n) => n + 1)}
           />

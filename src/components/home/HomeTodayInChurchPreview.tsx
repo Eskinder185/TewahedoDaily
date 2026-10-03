@@ -7,17 +7,14 @@ import { CalendarEventCard } from '../calendar/CalendarEventCard'
 import { CalendarEventDetail } from '../calendar/CalendarEventDetail'
 import { getHomepageTodayEvents, invalidateCalendarCardsCache } from '../../lib/calendar/getCalendarEventsForDate'
 import type { PresentableCalendarEvent } from '../../lib/calendar/calendarPresentation'
-import {
-  loadCalendarDetailLang,
-  saveCalendarDetailLang,
-  type CalendarLocaleMode,
-} from '../../lib/calendar/calendarEnrichedContent'
+import { useLocale } from '../../lib/i18n/locale'
 import styles from './HomeTodayInChurchPreview.module.css'
 
 const AUTOPLAY_MS = 6500
 
 export function HomeTodayInChurchPreview() {
   const t = useTranslation()
+  const { contentLocale: lang } = useLocale()
   const { snapshot, now } = useHomeToday()
   const { gregorian, ethiopian } = snapshot
 
@@ -26,13 +23,8 @@ export function HomeTodayInChurchPreview() {
   const [error, setError] = useState<string>()
   const [slide, setSlide] = useState(0)
   const [detailEvent, setDetailEvent] = useState<PresentableCalendarEvent | null>(null)
-  const [lang, setLang] = useState<CalendarLocaleMode>(() => loadCalendarDetailLang())
   const [paused, setPaused] = useState(false)
   const regionRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    saveCalendarDetailLang(lang)
-  }, [lang])
 
   useEffect(() => {
     let active = true
@@ -213,8 +205,6 @@ export function HomeTodayInChurchPreview() {
         event={detailEvent}
         dateLabel={gregorian.labelLong}
         ethiopianLabel={ethiopian.labelLong}
-        lang={lang}
-        onLangChange={setLang}
         onClose={() => setDetailEvent(null)}
       />
     </PageSection>

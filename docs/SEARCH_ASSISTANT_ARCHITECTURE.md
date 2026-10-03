@@ -33,9 +33,12 @@ User query
 | Zemaris | `public.zemaris` | `/practice/zemari/:slug` |
 | Collections | `mezmur_collections_import` | `/practice/browse/:slug` |
 | Prayers / guides | `prayerSearch` | `/pray/...`, learn-how-to-pray |
+| Synaxarium | `synaxariumSearch` ← published `synaxarium_days` + `synaxarium_commemorations` | `/pray/synaxarium/:slug` |
 | Durable index (optional) | `public.search_documents` | synced via script |
 
 **Not indexed:** favorites, profiles, drafts, CMS notes, env/secrets, admin-only code.
+
+Synaxarium hits only include `status=published` days and commemorations that resolve to a published day slug. In-assistant preview supports **Back to results** (same scroll); **Open full page** navigates once with `fromSearchBuddy` state; **Back to Search Buddy** reopens the session from `sessionStorage` without inventing history loops.
 
 ## Indexing strategy
 

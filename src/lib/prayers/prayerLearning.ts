@@ -1,11 +1,14 @@
 /**
  * Normalized Learn How to Pray data: collection → section → bilingual content.
  */
+import type { AppLocale } from '../i18n/locale'
 import { supabase } from '../supabase/client'
 import seed from './prayerLearningSeed.json'
 
 export type LearningLang = 'am' | 'en'
-export type GuideLangMode = 'am' | 'en' | 'both'
+
+/** @deprecated Prefer AppLocale — same values. */
+export type GuideLangMode = AppLocale
 
 export type LearningContentKind =
   | 'instruction'
@@ -500,20 +503,25 @@ export function proseItems(section: LearningSection, lang: GuideLangMode): Learn
 export const GUIDE_LANG_STORAGE_KEY = 'td-prayer-guide-lang-v1'
 export const LAST_SECTION_STORAGE_KEY = 'td-learn-how-to-pray-last-section-v1'
 
+/** @deprecated Use useLocale().contentLocale */
 export function loadGuideLang(): GuideLangMode {
-  if (typeof window === 'undefined') return 'am'
+  if (typeof window === 'undefined') return 'en'
   try {
+    const primary = window.localStorage.getItem('tewahedo-daily-locale')
+    if (primary === 'am' || primary === 'en' || primary === 'both') return primary
     const raw = window.localStorage.getItem(GUIDE_LANG_STORAGE_KEY)
     if (raw === 'am' || raw === 'en' || raw === 'both') return raw
   } catch {
     /* ignore */
   }
-  return 'am'
+  return 'en'
 }
 
+/** @deprecated Use useLocale().setLocale */
 export function saveGuideLang(mode: GuideLangMode) {
   if (typeof window === 'undefined') return
   try {
+    window.localStorage.setItem('tewahedo-daily-locale', mode)
     window.localStorage.setItem(GUIDE_LANG_STORAGE_KEY, mode)
   } catch {
     /* ignore */

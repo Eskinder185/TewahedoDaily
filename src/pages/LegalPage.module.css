@@ -1,15 +1,15 @@
-/* Legal — printed editorial document */
+/* Legal — editorial document on shared theme tokens */
 
 .page {
-  --legal-ivory: #f5f0e5;
-  --legal-parchment: #efe5d4;
-  --legal-navy: #13232d;
-  --legal-ink: #10222d;
-  --legal-muted: #5a6670;
-  --legal-gold: #b48a3b;
-  --legal-gold-line: rgba(180, 138, 59, 0.45);
-  --legal-border: rgba(90, 78, 55, 0.18);
-  --legal-active: #7a3f3f;
+  --legal-ivory: var(--color-bg);
+  --legal-parchment: var(--color-bg-muted);
+  --legal-navy: var(--color-navy);
+  --legal-ink: var(--color-heading);
+  --legal-muted: var(--color-text-muted);
+  --legal-gold: var(--color-gold);
+  --legal-gold-line: var(--color-gold-line);
+  --legal-border: var(--color-border);
+  --legal-active: var(--color-accent-editorial);
   --legal-max: min(1240px, calc(100% - 48px));
 
   background: var(--legal-ivory);
@@ -90,39 +90,45 @@
 }
 
 /* —— Mobile horizontal nav —— */
-.mobileNav {
-  display: flex;
-  gap: 0.35rem;
+.mobileNavWrap {
   width: var(--legal-max);
   margin: 0 auto;
-  padding: 1rem 0 0.25rem;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
 }
 
-.mobileNav::-webkit-scrollbar {
+.mobileNav {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0 0.25rem;
+}
+
+.mobileNavHint {
   display: none;
 }
 
 .mobileNav a {
-  flex: 0 0 auto;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.65rem 0.9rem;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.7rem 0.2rem;
   border-bottom: 1px solid var(--legal-border);
   color: var(--legal-muted);
   text-decoration: none;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .mobileNav a span {
   color: var(--legal-gold);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
 }
 
 .mobileNavActive {
@@ -131,7 +137,7 @@
 }
 
 @media (min-width: 900px) {
-  .mobileNav {
+  .mobileNavWrap {
     display: none;
   }
 }
@@ -220,6 +226,16 @@
 
 .content {
   min-width: 0;
+}
+
+.languageNote {
+  margin: 0 0 1.25rem;
+  padding: 0.65rem 0.85rem;
+  border-left: 3px solid var(--legal-gold);
+  background: color-mix(in srgb, var(--legal-parchment) 85%, var(--color-bg-elevated));
+  color: var(--legal-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .section {

@@ -1,24 +1,21 @@
-import {
-  normalizeAmharicSearchText,
-  normalizeLatinSearchText,
-} from '../publicContent/mezmurSearch'
+import { normalizeSearchText } from './searchCore'
 import { QUERY_ALIASES, ROUTE_CATALOG, type RouteCatalogEntry } from './routeCatalog'
 import type { SiteSearchResult } from './types'
 
 function scoreAlias(queryNorm: string, entry: RouteCatalogEntry): number | null {
-  const titleNorm = normalizeLatinSearchText(entry.title)
+  const titleNorm = normalizeSearchText(entry.title)
   if (titleNorm === queryNorm) return 0.001
   if (titleNorm.startsWith(queryNorm) && queryNorm.length >= 3) return 0.02
 
   for (const alias of entry.aliases) {
-    const a = normalizeLatinSearchText(alias)
-    const am = normalizeAmharicSearchText(alias)
+    const a = normalizeSearchText(alias)
+    const am = alias.replace(/\s+/g, ' ').trim()
     if (a === queryNorm || am === queryNorm) return 0.005
     if (a.includes(queryNorm) && queryNorm.length >= 3) return 0.04
     if (queryNorm.includes(a) && a.length >= 4) return 0.05
   }
 
-  const blob = normalizeLatinSearchText(
+  const blob = normalizeSearchText(
     `${entry.title} ${entry.description} ${entry.aliases.join(' ')}`,
   )
   if (queryNorm.length >= 3 && blob.includes(queryNorm)) return 0.12
@@ -28,12 +25,12 @@ function scoreAlias(queryNorm: string, entry: RouteCatalogEntry): number | null 
 export function searchRouteCatalog(queryRaw: string, limit = 8): SiteSearchResult[] {
   const query = queryRaw.trim()
   if (!query) return []
-  const queryNorm = normalizeLatinSearchText(query)
-  const queryAm = normalizeAmharicSearchText(query)
+  const queryNorm = normalizeSearchText(query)
+  const queryAm = query.replace(/\s+/g, ' ').trim()
   const expanded = new Set<string>([queryNorm, queryAm])
   for (const [key, vals] of Object.entries(QUERY_ALIASES)) {
-    if (queryNorm.includes(normalizeLatinSearchText(key))) {
-      for (const v of vals) expanded.add(normalizeLatinSearchText(v))
+    if (queryNorm.includes(normalizeSearchText(key))) {
+      for (const v of vals) expanded.add(normalizeSearchText(v))
     }
   }
 
@@ -51,7 +48,6 @@ export function searchRouteCatalog(queryRaw: string, limit = 8): SiteSearchResul
       }
     }
     if (best == null) continue
-    // Lower score is better (Fuse-like); convert with priority boost
     const score = best - entry.priority / 100000
     hits.push({
       sourceType: entry.sourceType,
@@ -72,7 +68,7 @@ export function searchRouteCatalog(queryRaw: string, limit = 8): SiteSearchResul
 
 /** Direct navigation intents (“go to calendar”, “open hymns”). */
 export function matchNavigationIntent(queryRaw: string): SiteSearchResult | null {
-  const q = normalizeLatinSearchText(queryRaw)
+  const q = normalizeSearchText(queryRaw)
   if (!q) return null
 
   const go =
@@ -83,8 +79,13 @@ export function matchNavigationIntent(queryRaw: string): SiteSearchResult | null
   const hits = searchRouteCatalog(target, 3)
   if (!hits.length) return null
 
-  // Only treat as pure intent when strongly matched
   const top = hits[0]
+  // Prefer deterministic page/guide/calendar intents over feast sections for "take me to"
+  if (go && (top.sourceType === 'page' || top.sourceType === 'calendar' || top.sourceType === 'guide')) {
+    if (top.matchKind === 'exact' || top.matchKind === 'alias' || top.score <= 0.15) {
+      return { ...top, matchKind: 'intent' }
+    }
+  }
   if (top.matchKind === 'exact' || top.matchKind === 'alias' || top.score <= 0.06) {
     return { ...top, matchKind: 'intent' }
   }

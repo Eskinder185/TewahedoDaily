@@ -1,0 +1,52 @@
+{
+  "base": "http://127.0.0.1:4181/",
+  "steps": [
+    {
+      "step": "before-live",
+      "shot": "before-live-390.png"
+    },
+    {
+      "step": "zero",
+      "status": "I couldn't find that in Tewahedo Daily. Try a feast name, Zemari, prayer, or page like Calendar.",
+      "btnCount": 0,
+      "linkCount": 0
+    },
+    {
+      "step": "today",
+      "status": "I found 7 places related to your search.",
+      "btnCount": 4,
+      "linkCount": 1
+    },
+    {
+      "step": "preview-card-count",
+      "n": 4
+    },
+    {
+      "step": "preview",
+      "hasBack": true
+    },
+    {
+      "step": "back-to-results",
+      "ok": true
+    },
+    {
+      "step": "open-full",
+      "url": "http://127.0.0.1:4181/pray/synaxarium/meskerem-22"
+    },
+    {
+      "step": "back-to-search-buddy-visible",
+      "hasBuddyBack": true
+    },
+    {
+      "step": "restored",
+      "status": "I found 7 places related to your search."
+    },
+    {
+      "step": "amharic",
+      "status": "I found 12 places related to your search.",
+      "btnCount": 4,
+      "linkCount": 1
+    }
+  ],
+  "ok": true
+}

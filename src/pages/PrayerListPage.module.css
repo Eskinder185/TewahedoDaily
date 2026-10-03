@@ -476,6 +476,10 @@
   font-size: var(--text-sm);
 }
 
+.rhythmPrimary {
+  margin: var(--space-3) 0 0;
+}
+
 .rhythmContext {
   list-style: none;
   display: flex;

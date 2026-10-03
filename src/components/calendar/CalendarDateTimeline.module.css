@@ -14,8 +14,10 @@
 .arrow {
   z-index: 2;
   align-self: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  min-width: 44px;
+  min-height: 44px;
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: color-mix(in srgb, var(--color-bg-elevated, #fff) 94%, #fff);
@@ -212,17 +214,25 @@
 }
 
 @media (max-width: 767.98px) {
+  /* Full-width scroller; overlay arrows so cards keep readable width. */
   .root {
     --timeline-gap: 0.65rem;
     --timeline-card-gap: 0.55rem;
-    gap: 0.3rem;
+    display: block;
+    position: relative;
+    gap: 0;
+  }
+
+  .scrollerWrap {
+    width: 100%;
   }
 
   .scroller {
     scroll-snap-type: x mandatory;
     gap: 0.65rem;
-    scroll-padding-inline: 0.4rem;
-    padding-inline: 0.1rem;
+    scroll-padding-inline: 0.35rem;
+    /* Arrows overlay the rail — keep only a light peek inset, not full arrow gutters. */
+    padding-inline: 0.35rem;
   }
 
   .dayGroup {
@@ -236,10 +246,24 @@
   }
 
   .arrow {
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.9rem;
-    align-self: center;
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    z-index: 3;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 0.95rem;
+    background: color-mix(in srgb, var(--color-bg-elevated, #fff) 92%, transparent);
+  }
+
+  .arrow:first-of-type {
+    left: 0.1rem;
+  }
+
+  .arrow:last-of-type {
+    right: 0.1rem;
   }
 
   .scrollerWrap::before,

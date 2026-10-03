@@ -1,12 +1,8 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { DayChurchContext } from '../../services/dayChurchContext'
 import type { ResolvedCalendarCard } from '../../lib/calendar/resolveCalendarCard'
-import {
-  loadCalendarDetailLang,
-  saveCalendarDetailLang,
-  type CalendarLocaleMode,
-} from '../../lib/calendar/calendarEnrichedContent'
+import type { CalendarLocaleMode } from '../../lib/calendar/calendarEnrichedContent'
 import {
   displaySummary,
   presentFast,
@@ -15,7 +11,8 @@ import {
   presentSeason,
   type PresentableCalendarEvent,
 } from '../../lib/calendar/calendarPresentation'
-import { CalendarEventDetails, CalendarLangToggle } from './CalendarEventDetails'
+import { useLocale } from '../../lib/i18n/locale'
+import { CalendarEventDetails } from './CalendarEventDetails'
 import { CalendarEventImage } from './CalendarEventImage'
 import styles from './TodayInChurchPanel.module.css'
 
@@ -28,9 +25,6 @@ type Props = {
   cards?: ResolvedCalendarCard[]
   /** Compact mode for homepage reuse. */
   compact?: boolean
-  /** Controlled language mode (falls back to localStorage). */
-  lang?: CalendarLocaleMode
-  onLangChange?: (mode: CalendarLocaleMode) => void
   onLearnMore?: (event: PresentableCalendarEvent) => void
 }
 
@@ -159,20 +153,8 @@ export function TodayInChurchPanel({
   onRetry,
   cards = [],
   compact = false,
-  lang: langProp,
-  onLangChange,
 }: Props) {
-  const [langInternal, setLangInternal] = useState<CalendarLocaleMode>(() => loadCalendarDetailLang())
-  const lang = langProp ?? langInternal
-  const setLang = (mode: CalendarLocaleMode) => {
-    saveCalendarDetailLang(mode)
-    setLangInternal(mode)
-    onLangChange?.(mode)
-  }
-
-  useEffect(() => {
-    if (langProp) saveCalendarDetailLang(langProp)
-  }, [langProp])
+  const { contentLocale: lang } = useLocale()
 
   const presented = useMemo(() => {
     if (!context) return null
@@ -235,7 +217,6 @@ export function TodayInChurchPanel({
           <p className={styles.eyebrow}>{compact ? 'Today in Church' : 'Selected day'}</p>
           <h2 className={styles.gregorian}>{context.gregorianLabel}</h2>
           <p className={styles.ethiopian}>{context.ethiopianLabel}</p>
-          <CalendarLangToggle value={lang} onChange={setLang} className={styles.langSlot} />
         </div>
         {primary ? (
           <div className={`${styles.featured} ${primary.isMajor ? styles.featuredMajor : ''} ${toneClass(primary.tone)}`}>

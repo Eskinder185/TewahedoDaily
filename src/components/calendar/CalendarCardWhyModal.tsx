@@ -43,7 +43,7 @@ function Paragraphs({ text, className }: { text: string; className: string }) {
 export function CalendarCardWhyModal({ open, card, onClose, onOpenDate }: Props) {
   const t = useTranslation()
   const ui = useUiLabel()
-  const { locale } = useLocale()
+  const { contentLocale: locale } = useLocale()
   const panelRef = useRef<HTMLDivElement>(null)
   const titleId = useId()
 

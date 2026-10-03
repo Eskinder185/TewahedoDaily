@@ -28,6 +28,30 @@ import type { ReadingProgressRecord } from '../lib/userContent/types'
 import { getLastPrayerHubVisit, getRecentPrayerHubPaths } from '../lib/prayers/prayerHubActivity'
 import styles from './PrayerListPage.module.css'
 
+const CONTINUE_TITLE_BY_PATH: Record<string, string> = {
+  '/pray/learn-how-to-pray': 'Learn How to Pray',
+  '/pray/learn-how-to-pray#guided-practice': 'Guided Practice',
+  '/pray/zewter-tselot': 'Zewter Tselot',
+  '/pray/wudase-mariam': 'Wudase Mariam',
+  '/pray/mezmure-dawit': 'Mezmure Dawit',
+  '/pray/yekidane-tselot': 'Yekidane Tselot',
+  '/pray/meharene-ab': 'Meharene Ab',
+  '/pray/synaxarium': 'Synaxarium',
+}
+
+function humanizePrayerPath(path: string): string {
+  const base = path.split('#')[0]
+  if (CONTINUE_TITLE_BY_PATH[path] || CONTINUE_TITLE_BY_PATH[base]) {
+    return CONTINUE_TITLE_BY_PATH[path] || CONTINUE_TITLE_BY_PATH[base]
+  }
+  const leaf = base.split('/').filter(Boolean).pop() || path
+  return leaf
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ')
+}
+
 function collectionCountLabel(
   collection: PrayerLibraryCollection,
   tr: (key: string, vars?: Record<string, string | number>) => string,
@@ -245,7 +269,12 @@ export function PrayerListPage() {
     void listReadingProgress(session?.user.id, 6).then((result) => {
       if (!active) return
       if (result.items.length) {
-        setContinueItems(result.items)
+        setContinueItems(
+          result.items.map((item) => ({
+            ...item,
+            title: humanizePrayerPath(item.route || item.title || item.contentSlug || ''),
+          })),
+        )
         return
       }
       // Fallback to hub activity for guests / empty progress
@@ -253,21 +282,27 @@ export function PrayerListPage() {
       const recent = getRecentPrayerHubPaths()
       const paths = last ? [last.path, ...recent.filter((p) => p !== last.path)] : recent
       setContinueItems(
-        paths.slice(0, 4).map((path, index) => ({
-          id: `hub:${path}`,
-          contentType: 'collection' as const,
-          route: path.startsWith('/prayers/')
-            ? path
-                .replace('/prayers/zeweter', '/pray/zewter-tselot')
-                .replace('/prayers/wudase-mariam', '/pray/wudase-mariam')
-                .replace('/prayers/mezmure-dawit', '/pray/mezmure-dawit')
-                .replace('/prayers/yekidane-tselot', '/pray/yekidane-tselot')
-                .replace('/prayers/meharene-ab', '/pray/meharene-ab')
-            : path,
-          title: path.split('/').pop()?.replace(/-/g, ' ') || path,
-          updatedAt: new Date(Date.now() - index).toISOString(),
-          source: 'local' as const,
-        })),
+        paths
+          .filter((path) => !path.includes('guided-practice') || path.includes('learn-how-to-pray'))
+          .slice(0, 4)
+          .map((path, index) => {
+            const route = path.startsWith('/prayers/')
+              ? path
+                  .replace('/prayers/zeweter', '/pray/zewter-tselot')
+                  .replace('/prayers/wudase-mariam', '/pray/wudase-mariam')
+                  .replace('/prayers/mezmure-dawit', '/pray/mezmure-dawit')
+                  .replace('/prayers/yekidane-tselot', '/pray/yekidane-tselot')
+                  .replace('/prayers/meharene-ab', '/pray/meharene-ab')
+              : path.replace(/#guided-practice$/, '')
+            return {
+              id: `hub:${path}`,
+              contentType: 'collection' as const,
+              route,
+              title: humanizePrayerPath(route),
+              updatedAt: new Date(Date.now() - index).toISOString(),
+              source: 'local' as const,
+            }
+          }),
       )
     })
     return () => {
@@ -357,33 +392,6 @@ export function PrayerListPage() {
           <p className={styles.deck}>{tr('prayers.hero.description')}</p>
         </header>
 
-        {!isSearching && continueItems.length > 0 ? (
-          <section className={styles.continue} aria-label="Continue reading">
-            <div className={styles.continueHead}>
-              <h2>Continue Reading</h2>
-              {!session ? (
-                <Link className={styles.openLink} to="/account">
-                  Save your progress
-                </Link>
-              ) : null}
-            </div>
-            <ul className={styles.continueList}>
-              {continueItems.map((item) => (
-                <li key={item.id}>
-                  <Link className={styles.continueLink} to={item.route || '/pray'}>
-                    <strong>{item.title || item.contentSlug || 'Continue'}</strong>
-                    <span>
-                      {[item.collectionSlug, item.sectionSlug].filter(Boolean).join(' · ') ||
-                        item.contentType}
-                    </span>
-                    <span className={styles.continueCta}>Continue →</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
-
         {isSearching ? (
           <section className={styles.searchResults} aria-label={tr('prayers.search.resultsAria')}>
             {searchField}
@@ -436,7 +444,15 @@ export function PrayerListPage() {
                     <div className={styles.rhythmTitleSkeleton} aria-hidden />
                   ) : rhythm ? (
                     <h2>
-                      {rhythm.weekday} / <span lang="am">{rhythm.weekdayAmharic}</span>
+                      {rhythm.weekday}
+                      {rhythm.weekdayAmharic &&
+                      rhythm.weekdayAmharic.trim().toLowerCase() !==
+                        rhythm.weekday.trim().toLowerCase() ? (
+                        <>
+                          {' '}
+                          / <span lang="am">{rhythm.weekdayAmharic}</span>
+                        </>
+                      ) : null}
                     </h2>
                   ) : (
                     <h2>Today</h2>
@@ -444,6 +460,13 @@ export function PrayerListPage() {
                   <p className={styles.rhythmSub}>{tr('prayers.dailyRhythm.subtitle')}</p>
                   {rhythm?.ethiopianDateLabel ? (
                     <p className={styles.rhythmEthDate}>{rhythm.ethiopianDateLabel}</p>
+                  ) : null}
+                  {rhythm?.items[0] ? (
+                    <p className={styles.rhythmPrimary}>
+                      <Link className={styles.openLink} to={rhythm.items[0].to}>
+                        Begin with {rhythm.items[0].title} →
+                      </Link>
+                    </p>
                   ) : null}
                 </div>
               </div>
@@ -485,7 +508,11 @@ export function PrayerListPage() {
                     ))
                   : null}
                 {rhythm
-                  ? rhythm.items.map((item, index) => (
+                  ? rhythm.items.map((item, index) => {
+                      const labelLooksLikeWeekday =
+                        Boolean(rhythm.weekday) &&
+                        item.label.trim().toLowerCase() === rhythm.weekday.trim().toLowerCase()
+                      return (
                       <li key={item.id}>
                         <Link className={styles.rhythmLink} to={item.to}>
                           <span className={styles.rhythmNum} aria-hidden>
@@ -493,9 +520,11 @@ export function PrayerListPage() {
                           </span>
                           <span className={styles.rhythmText}>
                             <strong>{item.title}</strong>
-                            <small lang={item.id === 'wudase' || item.id === 'psalms' ? 'am' : undefined}>
-                              {item.label}
-                            </small>
+                            {!labelLooksLikeWeekday && item.label ? (
+                              <small lang={item.id === 'wudase' || item.id === 'psalms' ? 'am' : undefined}>
+                                {item.label}
+                              </small>
+                            ) : null}
                             <span>{item.subtitle}</span>
                           </span>
                           <span className={styles.rhythmOpen} aria-hidden>
@@ -503,10 +532,38 @@ export function PrayerListPage() {
                           </span>
                         </Link>
                       </li>
-                    ))
+                      )
+                    })
                   : null}
               </ul>
             </section>
+
+            {continueItems.length > 0 ? (
+              <section className={styles.continue} aria-label="Continue reading">
+                <div className={styles.continueHead}>
+                  <h2>Continue Reading</h2>
+                  {!session ? (
+                    <Link className={styles.openLink} to="/account">
+                      Save your progress
+                    </Link>
+                  ) : null}
+                </div>
+                <ul className={styles.continueList}>
+                  {continueItems.map((item) => (
+                    <li key={item.id}>
+                      <Link className={styles.continueLink} to={item.route || '/pray'}>
+                        <strong>
+                          {humanizePrayerPath(item.route || '') ||
+                            item.title ||
+                            'Continue'}
+                        </strong>
+                        <span className={styles.continueCta}>Continue →</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
 
             {searchField}
 

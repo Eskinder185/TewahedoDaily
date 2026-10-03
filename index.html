@@ -14,12 +14,13 @@
     <script>
       ;(function () {
         try {
-          var key = 'tewahedo-theme'
-          var stored = localStorage.getItem(key)
-          var theme = stored === 'night' || stored === 'dark' ? 'night' : 'day'
           var root = document.documentElement
+          var themeStored = localStorage.getItem('tewahedo-theme')
+          var theme = themeStored === 'night' || themeStored === 'dark' ? 'night' : 'day'
           root.setAttribute('data-theme', theme)
           root.style.colorScheme = theme === 'night' ? 'dark' : 'light'
+          var localeStored = localStorage.getItem('tewahedo-daily-locale')
+          root.lang = localeStored === 'am' ? 'am' : 'en'
         } catch (e) {
           /* ignore */
         }

@@ -1,17 +1,11 @@
-import type { GuideLangMode } from '../../lib/prayers/prayerLearning'
-import { LanguageSwitcher } from './LanguageSwitcher'
 import styles from './prayerLearning.module.css'
 
 export function LearnHowToPrayControls({
   mode,
-  lang,
   onModeChange,
-  onLangChange,
 }: {
   mode: 'guided' | 'learn'
-  lang: GuideLangMode
   onModeChange: (mode: 'guided' | 'learn') => void
-  onLangChange: (mode: GuideLangMode) => void
 }) {
   return (
     <div className={styles.controlBar}>
@@ -35,7 +29,6 @@ export function LearnHowToPrayControls({
           Learn About Prayer
         </button>
       </div>
-      <LanguageSwitcher value={lang} onChange={onLangChange} />
     </div>
   )
 }

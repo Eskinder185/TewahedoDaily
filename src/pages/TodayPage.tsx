@@ -39,8 +39,8 @@ function publicCopy(text: string | null | undefined): string {
  */
 export function TodayPage() {
   const t = useTranslation()
-  const { locale } = useLocale()
-  const preferAmharic = locale === 'am'
+  const { contentLocale } = useLocale()
+  const preferAmharic = contentLocale === 'am'
   const { now, snapshot } = useHomeToday()
   const day = todayInAddis()
   const editorial = useAsync(
@@ -155,70 +155,77 @@ export function TodayPage() {
         <LiturgyContextCard context={detail.liturgyContext} />
       ) : null}
 
-      <section className={styles.block} aria-label="Editorial selections for today">
-        <h2 className={styles.blockTitle}>Today’s selections</h2>
-        <Notice {...editorial} retry={editorial.reload} />
-        {editorial.data ? (
-          <>
-            {publicCopy(editorial.data.announcement) ? (
-              <p className={styles.summary}>{publicCopy(editorial.data.announcement)}</p>
+      {(() => {
+        const data = editorial.data
+        const selectedKinds = (['mezmur', 'saint', 'feast'] as const).filter((kind) =>
+          Boolean(publicCopy(data?.[kind]?.title)),
+        )
+        const hasNote = Boolean(
+          publicCopy(data?.summary) || publicCopy(data?.announcement),
+        )
+        if (!data || (!selectedKinds.length && !hasNote && !editorial.loading)) {
+          return null
+        }
+        return (
+          <section className={styles.block} aria-label="Editorial selections for today">
+            <h2 className={styles.blockTitle}>Today’s selections</h2>
+            <Notice {...editorial} retry={editorial.reload} />
+            {publicCopy(data.announcement) ? (
+              <p className={styles.summary}>{publicCopy(data.announcement)}</p>
             ) : null}
-            <div className={`${publicStyles.grid} ${styles.selectionGrid}`}>
-              {(['mezmur', 'saint', 'feast'] as const).map((kind, i) => {
-                const item = editorial.data![kind]
-                const title = publicCopy(item?.title)
-                return (
-                  <article className={publicStyles.card} key={kind}>
-                    <h3>
-                      {
-                        [
-                          'Mezmur of the Day',
-                          'Saint of the Day',
-                          'Feast of the Day',
-                        ][i]
-                      }
-                    </h3>
-                    {item && title ? (
-                      <>
-                        <Artwork reference={item.thumbnail_url} />
-                        <Link
-                          to={
-                            kind === 'mezmur'
-                              ? `/practice/mezmur/${item.slug}`
-                              : `/content/${kind === 'saint' ? 'saints' : 'feasts'}/${item.slug}`
-                          }
-                        >
-                          {title}
-                        </Link>
-                      </>
-                    ) : (
-                      <p className={publicStyles.muted}>No selection for today.</p>
-                    )}
-                  </article>
-                )
-              })}
-            </div>
-            {(publicCopy(editorial.data.summary) || publicCopy(editorial.data.announcement)) && (
+            {selectedKinds.length ? (
+              <div className={`${publicStyles.grid} ${styles.selectionGrid}`}>
+                {selectedKinds.map((kind) => {
+                  const item = data[kind]!
+                  const title = publicCopy(item.title)
+                  const heading =
+                    kind === 'mezmur'
+                      ? 'Mezmur of the Day'
+                      : kind === 'saint'
+                        ? 'Saint of the Day'
+                        : 'Feast of the Day'
+                  return (
+                    <article className={publicStyles.card} key={kind}>
+                      <h3>{heading}</h3>
+                      <Artwork reference={item.thumbnail_url} />
+                      <Link
+                        to={
+                          kind === 'mezmur'
+                            ? `/practice/mezmur/${item.slug}`
+                            : `/content/${kind === 'saint' ? 'saints' : 'feasts'}/${item.slug}`
+                        }
+                      >
+                        {title}
+                      </Link>
+                    </article>
+                  )
+                })}
+              </div>
+            ) : !editorial.loading ? (
+              <p className={publicStyles.muted}>
+                No editorial selections are published for today. See the calendar for feasts and
+                commemorations.
+              </p>
+            ) : null}
+            {hasNote ? (
               <div className={publicStyles.card}>
-                {publicCopy(editorial.data.summary) ? (
+                {publicCopy(data.summary) ? (
                   <>
                     <h3>Today’s note</h3>
-                    <p>{publicCopy(editorial.data.summary)}</p>
+                    <p>{publicCopy(data.summary)}</p>
                   </>
                 ) : null}
-                {publicCopy(editorial.data.announcement) ? (
+                {publicCopy(data.announcement) ? (
                   <>
                     <h3>Announcement</h3>
-                    <p className={publicStyles.lyrics}>
-                      {publicCopy(editorial.data.announcement)}
-                    </p>
+                    <p className={publicStyles.lyrics}>{publicCopy(data.announcement)}</p>
                   </>
                 ) : null}
               </div>
-            )}
-          </>
-        ) : null}
-      </section>
+            ) : null}
+          </section>
+        )
+      })()}
 
       <div className={styles.actions}>
         <Link to="/calendar" className={styles.primaryAction}>

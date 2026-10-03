@@ -11,16 +11,14 @@ import { useAuth } from '../lib/auth/useAuth'
 import {
   findSectionBySlug,
   guidedSteps,
-  loadGuideLang,
   loadLastSectionSlug,
   loadPrayerLearningTree,
   orderedLearnSections,
-  saveGuideLang,
   saveLastSectionSlug,
-  type GuideLangMode,
   type LearningSection,
   type PrayerLearningTree,
 } from '../lib/prayers/prayerLearning'
+import { useLocale } from '../lib/i18n/locale'
 import {
   getGuidedProgress,
   markStepLearned,
@@ -31,9 +29,9 @@ import styles from './PrayerGuidePage.module.css'
 
 export function PrayerGuidePage() {
   const { session } = useAuth()
+  const { contentLocale: lang } = useLocale()
   const [tree, setTree] = useState<PrayerLearningTree | null | undefined>(undefined)
   const [error, setError] = useState<string | null>(null)
-  const [lang, setLang] = useState<GuideLangMode>('am')
   const [stepIndex, setStepIndex] = useState(0)
   const [showCompletion, setShowCompletion] = useState(false)
   const [completedSlugs, setCompletedSlugs] = useState<string[]>([])
@@ -43,7 +41,6 @@ export function PrayerGuidePage() {
   const [lastSlug, setLastSlug] = useState<string | null>(null)
 
   useEffect(() => {
-    setLang(loadGuideLang())
     setCompletedSlugs(getGuidedProgress().completedSlugs)
     setLastSlug(loadLastSectionSlug())
   }, [])
@@ -101,11 +98,6 @@ export function PrayerGuidePage() {
     navigateToSlug(hash, false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tree])
-
-  function handleLangChange(mode: GuideLangMode) {
-    setLang(mode)
-    saveGuideLang(mode)
-  }
 
   function rememberSlug(slug: string) {
     saveLastSectionSlug(slug)
@@ -245,12 +237,10 @@ export function PrayerGuidePage() {
 
           <LearnHowToPrayControls
             mode={activeTab}
-            lang={lang}
             onModeChange={(mode) => {
               setActiveTab(mode)
               if (mode === 'guided') setShowCompletion(false)
             }}
-            onLangChange={handleLangChange}
           />
 
           {resumeSection && activeTab === 'learn' ? (

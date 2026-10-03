@@ -185,7 +185,7 @@ export function SiteHeader() {
                     `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
                   }
                 >
-                  Account
+                  {tt('account.account')}
                 </NavLink>
                 {showAdmin ? (
                   <NavLink
@@ -195,7 +195,7 @@ export function SiteHeader() {
                       `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
                     }
                   >
-                    Admin
+                    {tt('account.admin')}
                   </NavLink>
                 ) : null}
               </>
@@ -208,10 +208,14 @@ export function SiteHeader() {
                   `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
                 }
               >
-                Sign in
+                {tt('account.signIn')}
               </NavLink>
             ) : null}
           </nav>
+          <div className={styles.drawerTools}>
+            <ThemeToggle />
+            <LanguageToggle variant="full" />
+          </div>
         </div>
       </div>,
       document.body,
@@ -268,24 +272,28 @@ export function SiteHeader() {
                 <Link
                   to="/account"
                   className={styles.utilityLink}
-                  aria-label="Account"
-                  title="Account"
+                  aria-label={tt('account.account')}
+                  title={tt('account.account')}
                 >
-                  Account
+                  {tt('account.account')}
                 </Link>
               ) : null}
               {showSignIn ? (
                 <Link
                   to="/login"
                   className={styles.utilityLink}
-                  aria-label="Sign in"
-                  title="Sign in"
+                  aria-label={tt('account.signIn')}
+                  title={tt('account.signIn')}
                 >
-                  Sign in
+                  {tt('account.signIn')}
                 </Link>
               ) : null}
-              <ThemeToggle />
-              <LanguageToggle />
+              <span className={styles.compactChrome}>
+                <ThemeToggle />
+              </span>
+              <span className={styles.compactChrome}>
+                <LanguageToggle />
+              </span>
             </div>
             <button
               ref={menuButtonRef}

@@ -176,7 +176,7 @@ export function ChantLyricsLearningPanel({
         </h2>
       </div>
 
-      <div className={styles.modeScroller} role="group" aria-label="Text display">
+      <div className={styles.modeScroller} role="group" aria-label="Reading script (not site language)">
         <div className={styles.modeGroup}>
           {modes.map((mode) => (
             <button
@@ -192,15 +192,15 @@ export function ChantLyricsLearningPanel({
         </div>
       </div>
 
-      <div className={styles.primaryTools} role="toolbar" aria-label="Lyrics essentials">
+      <div className={styles.primaryTools} role="toolbar" aria-label="Reading text size">
         <div className={styles.fontControls}>
-          <button type="button" className={styles.toolBtn} aria-label="Decrease text size" onClick={() => bumpFont(-1)}>
+          <button type="button" className={styles.toolBtn} aria-label="Decrease reading text size" onClick={() => bumpFont(-1)}>
             A−
           </button>
           <span className={styles.toolLabel} aria-live="polite">
             {fontPx}px
           </span>
-          <button type="button" className={styles.toolBtn} aria-label="Increase text size" onClick={() => bumpFont(1)}>
+          <button type="button" className={styles.toolBtn} aria-label="Increase reading text size" onClick={() => bumpFont(1)}>
             A+
           </button>
         </div>

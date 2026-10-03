@@ -6,28 +6,31 @@ import { listFavorites } from '../../lib/userContent/favoritesService'
 import { listReadingProgress } from '../../lib/userContent/readingProgressService'
 import { getGuestRecentMezmur } from '../../lib/userContent/guestStorage'
 import { supabase } from '../../lib/supabase/client'
+import { useLocale, type AppLocale } from '../../lib/i18n/locale'
 import styles from './AuthPages.module.css'
 
 const PREFS_KEY = 'tewahedo:prefs:v1'
 
 type Prefs = {
   textSize: 'regular' | 'large'
-  language: 'en' | 'am' | 'both'
 }
 
 function readPrefs(): Prefs {
   try {
     const raw = localStorage.getItem(PREFS_KEY)
-    if (!raw) return { textSize: 'regular', language: 'both' }
-    return { textSize: 'regular', language: 'both', ...JSON.parse(raw) } as Prefs
+    if (!raw) return { textSize: 'regular' }
+    const parsed = JSON.parse(raw) as Prefs
+    return { textSize: parsed.textSize === 'large' ? 'large' : 'regular' }
   } catch {
-    return { textSize: 'regular', language: 'both' }
+    return { textSize: 'regular' }
   }
 }
 
-function writePrefs(prefs: Prefs) {
+function writePrefs(prefs: Prefs & { language?: AppLocale }) {
   try {
-    localStorage.setItem(PREFS_KEY, JSON.stringify(prefs))
+    const raw = localStorage.getItem(PREFS_KEY)
+    const prev = raw ? (JSON.parse(raw) as Record<string, unknown>) : {}
+    localStorage.setItem(PREFS_KEY, JSON.stringify({ ...prev, ...prefs }))
   } catch {
     /* ignore */
   }
@@ -35,6 +38,7 @@ function writePrefs(prefs: Prefs) {
 
 export function AccountHomePage() {
   const { session, profile, role, loading, isStaff, signOut, refreshProfile } = useAuth()
+  const { locale, setLocale } = useLocale()
   const [error, setError] = useState('')
   const [prefs, setPrefs] = useState<Prefs>(() => readPrefs())
   const [nameBusy, setNameBusy] = useState(false)
@@ -159,13 +163,13 @@ export function AccountHomePage() {
         </h2>
         <p className={styles.note}>Stored on this device. Practice and theme settings stay local.</p>
         <label className={styles.field}>
-          <span>Text size</span>
+          <span>Text size (reading)</span>
           <select
             value={prefs.textSize}
             onChange={(e) => {
               const next = { ...prefs, textSize: e.target.value as Prefs['textSize'] }
               setPrefs(next)
-              writePrefs(next)
+              writePrefs({ ...next, language: locale })
             }}
             style={{ minHeight: 48, borderRadius: 12, padding: '0.65rem 0.8rem', font: 'inherit' }}
           >
@@ -174,19 +178,19 @@ export function AccountHomePage() {
           </select>
         </label>
         <label className={styles.field}>
-          <span>Preferred language</span>
+          <span>Language</span>
           <select
-            value={prefs.language}
+            value={locale}
             onChange={(e) => {
-              const next = { ...prefs, language: e.target.value as Prefs['language'] }
-              setPrefs(next)
-              writePrefs(next)
+              const next = e.target.value as AppLocale
+              setLocale(next)
+              writePrefs({ ...prefs, language: next })
             }}
             style={{ minHeight: 48, borderRadius: 12, padding: '0.65rem 0.8rem', font: 'inherit' }}
           >
-            <option value="both">Amharic & English</option>
             <option value="en">English</option>
             <option value="am">Amharic</option>
+            <option value="both">Both (Amharic & English)</option>
           </select>
         </label>
       </div>

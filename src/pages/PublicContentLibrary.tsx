@@ -29,6 +29,7 @@ export function PublicContentLibrary({
   )
   const title = LIBRARY_TITLES[kind]
   usePageMeta(title, `Explore ${title.toLowerCase()} on Tewahedo Daily.`)
+  const empty = Boolean(result.data && !result.data.items.length)
   return (
     <section className={s.shell}>
       <h1>{title}</h1>
@@ -64,14 +65,40 @@ export function PublicContentLibrary({
               </article>
             ))}
           </div>
-          {!result.data.items.length && (
-            <p>No published content matches yet.</p>
-          )}
-          <Pagination
-            page={page}
-            total={result.data.total}
-            change={(p) => setParams({ q, page: String(p) })}
-          />
+          {empty ? (
+            <div className={s.emptyState}>
+              <p>
+                {q
+                  ? `No published ${title.toLowerCase()} matched “${q}”.`
+                  : `No published ${title.toLowerCase()} are listed here yet.`}
+              </p>
+              <p>
+                Continue with{' '}
+                <Link to="/calendar">Calendar</Link>
+                {kind === 'saints' ? (
+                  <>
+                    {' '}
+                    or browse{' '}
+                    <Link to="/practice/browse/angels-saints">Angels &amp; Saints hymns</Link>
+                  </>
+                ) : (
+                  <>
+                    {' '}
+                    or browse{' '}
+                    <Link to="/practice/browse/holidays-feasts">Holidays &amp; Feasts hymns</Link>
+                  </>
+                )}
+                , or open Search Buddy to find a feast or saint name.
+              </p>
+            </div>
+          ) : null}
+          {!empty ? (
+            <Pagination
+              page={page}
+              total={result.data.total}
+              change={(p) => setParams({ q, page: String(p) })}
+            />
+          ) : null}
         </>
       )}
     </section>

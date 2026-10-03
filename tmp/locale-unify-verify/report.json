@@ -1,0 +1,135 @@
+{
+  "base": "http://127.0.0.1:4181/",
+  "widths": {
+    "320": {
+      "overflowX": false,
+      "ok": true
+    },
+    "390": {
+      "overflowX": false,
+      "ok": true
+    },
+    "430": {
+      "overflowX": false,
+      "ok": true
+    },
+    "1280": {
+      "overflowX": false,
+      "ok": true
+    }
+  },
+  "pages": {
+    "home:en@320": {
+      "htmlLang": "en",
+      "dataLang": "en",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-en-320.png",
+      "ok": true
+    },
+    "home:am@320": {
+      "htmlLang": "am",
+      "dataLang": "am",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-am-320.png",
+      "ok": true
+    },
+    "home:both@320": {
+      "htmlLang": "en",
+      "dataLang": "both",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-both-320.png",
+      "ok": true
+    },
+    "home:en@390": {
+      "htmlLang": "en",
+      "dataLang": "en",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-en-390.png",
+      "ok": true
+    },
+    "home:am@390": {
+      "htmlLang": "am",
+      "dataLang": "am",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-am-390.png",
+      "ok": true
+    },
+    "home:both@390": {
+      "htmlLang": "en",
+      "dataLang": "both",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-both-390.png",
+      "ok": true
+    },
+    "home:en@430": {
+      "htmlLang": "en",
+      "dataLang": "en",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-en-430.png",
+      "ok": true
+    },
+    "home:am@430": {
+      "htmlLang": "am",
+      "dataLang": "am",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-am-430.png",
+      "ok": true
+    },
+    "home:both@430": {
+      "htmlLang": "en",
+      "dataLang": "both",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-both-430.png",
+      "ok": true
+    },
+    "home:en@1280": {
+      "htmlLang": "en",
+      "dataLang": "en",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-en-1280.png",
+      "ok": true
+    },
+    "home:am@1280": {
+      "htmlLang": "am",
+      "dataLang": "am",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-am-1280.png",
+      "ok": true
+    },
+    "home:both@1280": {
+      "htmlLang": "en",
+      "dataLang": "both",
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\home-both-1280.png",
+      "ok": true
+    },
+    "calendar:en": {
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\calendar-en-390.png"
+    },
+    "calendar:am": {
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\calendar-am-390.png"
+    },
+    "calendar:both": {
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\calendar-both-390.png"
+    },
+    "both@320:/": {
+      "overflowX": false,
+      "ok": true,
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\both-320-_.png"
+    },
+    "both@320:/calendar": {
+      "overflowX": false,
+      "ok": true,
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\both-320-_calendar.png"
+    },
+    "both@320:/practice": {
+      "overflowX": false,
+      "ok": true,
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\both-320-_practice.png"
+    },
+    "both@320:/pray": {
+      "overflowX": false,
+      "ok": true,
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\both-320-_pray.png"
+    },
+    "both@320:/about": {
+      "overflowX": false,
+      "ok": true,
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\both-320-_about.png"
+    },
+    "both@320:/legal": {
+      "overflowX": false,
+      "ok": true,
+      "shot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\locale-unify-verify\\both-320-_legal.png"
+    }
+  },
+  "calendarPageLangToggle": 0
+}

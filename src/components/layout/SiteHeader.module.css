@@ -514,8 +514,8 @@
 
   .brand {
     flex: 1 1 auto;
-    min-width: 0;
-    max-width: calc(100% - 9.5rem);
+    min-width: 7.5rem;
+    max-width: none;
   }
 
   .wordmark {
@@ -535,6 +535,14 @@
     padding-inline: 0.7rem;
     font-size: 0.78rem;
   }
+
+}
+
+@media (max-width: 430px) {
+  /* Theme/language move into the drawer; keep Account / Sign in when space allows. */
+  .compactChrome {
+    display: none;
+  }
 }
 
 @media (max-width: 359.98px) {
@@ -544,21 +552,49 @@
       max(0.45rem, env(safe-area-inset-right, 0px));
   }
 
-  .toggleGroup {
-    gap: 0.25rem;
-  }
-
   .headerTools {
     gap: 0.25rem;
   }
 
+  /* Logo + menu (+ optional Sign in) must stay usable at 320px. */
+  .brand {
+    flex: 1 1 auto;
+    min-width: 6.75rem;
+  }
+
+  .mark {
+    width: 12px;
+    height: 12px;
+  }
+
   .wordmark {
-    font-size: 0.86rem;
+    font-size: 0.92rem;
+  }
+
+  .utilityLink {
+    display: none;
   }
 
   .menuTrigger {
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+.drawerTools {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+@media (max-width: 430px) {
+  .drawerTools {
+    display: flex;
   }
 }
 

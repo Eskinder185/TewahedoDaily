@@ -24,7 +24,12 @@
     "group": "Language",
     "english": "English",
     "amharic": "Amharic",
-    "amharicNative": "አማርኛ"
+    "amharicNative": "አማርኛ",
+    "both": "Both",
+    "selected": "Language: {language}",
+    "readingSettings": "Reading settings",
+    "transliteration": "Transliteration",
+    "textSize": "Text size"
   },
   "theme": {
     "dayLabel": "Day",
@@ -499,9 +504,12 @@
   },
   "about": {
     "title": "About",
+    "metaDescription": "A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close to the Church between Sundays.",
     "hero": {
+      "eyebrow": "About Tewahedo Daily",
       "title": "Tewahedo Daily",
-      "description": "A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close to the Church between Sundays - in minutes, not marathons."
+      "description": "A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close to the Church between Sundays — in minutes, not marathons.",
+      "archCaption": "Prayer · Practice · Presence"
     },
     "whatThisSiteIs": {
       "title": "What this website is",
@@ -509,17 +517,22 @@
       "paragraph2": "We are not an encyclopedia or a social feed. We are trying to be faithful, small, and useful."
     },
     "audience": {
+      "eyebrow": "A gentle beginning",
       "title": "Who this is for",
-      "item1": "Ethiopians in the diaspora - especially when parish life is far away or schedules are tight.",
-      "item2": "Beginners who need a gentle starting place without already knowing every hymn or rubric.",
-      "item3": "Anyone who loves the Church and wants a lighter rhythm between worship, work, and family."
+      "card1Title": "Ethiopians in the diaspora",
+      "card1Body": "Especially when parish life is far away or schedules are tight.",
+      "card2Title": "Beginners",
+      "card2Body": "For people who need a gentle starting place without already knowing every hymn or rubric.",
+      "card3Title": "Those who love the Church",
+      "card3Body": "For anyone who wants a lighter rhythm between worship, work, and family."
     },
     "features": {
-      "title": "Feature overview",
-      "intro": "Four threads - each one optional. Pick what fits the day.",
+      "eyebrow": "Daily rhythm",
+      "title": "Four threads for the day",
+      "intro": "Each one is optional. Pick what fits the day.",
       "churchDay": {
         "title": "The Church day",
-        "description": "A quick sense of what today is - feast, season, and a short why-it-matters summary."
+        "description": "A quick sense of what today is — feast, season, and a short why-it-matters summary."
       },
       "chants": {
         "title": "Chants",
@@ -531,14 +544,16 @@
       },
       "calendar": {
         "title": "Calendar and seasons",
-        "description": "A simple calendar view and notes on fasts and feasts - always pointing back to your parish."
+        "description": "A simple calendar view and notes on fasts and feasts — always pointing back to your parish."
       }
     },
     "howToUse": {
+      "eyebrow": "A simple practice",
       "title": "How to use it",
+      "lede": "There is no streak to protect and no finish line. Begin with what the day can hold.",
       "step1": {
         "title": "Start on the home page.",
-        "description": "Open the home page and read Today in Church - one small moment with God is enough."
+        "description": "Open the home page and read Today in Church — one small moment with God is enough."
       },
       "step2": {
         "title": "Open Practice when you are ready.",
@@ -551,26 +566,216 @@
     },
     "cta": {
       "home": "Back to home",
-      "practice": "Open practice"
+      "practice": "Open practice →"
     },
     "guidance": {
+      "eyebrow": "With humility",
       "title": "Respect and guidance",
       "paragraph1": "This website supports learning and practice in daily life. We hope it encourages prayer, listening, and love for the Church.",
       "paragraph2": "It does not replace your priest, parish, spiritual father, or official liturgical books. Fasting rules, sacraments, confession, and pastoral care belong in person with those the Church has given you.",
-      "paragraph3": "If something here disagrees with your bishop, books, or father of confession, trust them - not a website."
+      "paragraph3": "If something here disagrees with your bishop, books, or father of confession, trust them — not a website."
     },
     "futureVision": {
       "title": "Future vision",
-      "description": "We hope to grow with real calendar data, parish-tuned content, audio that serves the liturgy, and more - always slowly, carefully, and under proper guidance. If Tewahedo Daily ever stops feeling humble next to the Church, we have missed the mark."
+      "description": "We hope to grow with real calendar data, parish-tuned content, audio that serves the liturgy, and more — always slowly, carefully, and under proper guidance. If Tewahedo Daily ever stops feeling humble next to the Church, we have missed the mark."
     },
-    "closing": "Thank you for visiting. May it serve your salvation - even a little.",
+    "closing": "Thank you for visiting. May it serve your salvation — even a little.",
     "backHome": "← Back to home"
+  },
+  "legal": {
+    "title": "Legal",
+    "metaDescription": "Copyright, privacy, removal requests, and source notes for Tewahedo Daily.",
+    "eyebrow": "Legal",
+    "lede": "Short notices about copyright, privacy, content removal, and sources. This page is informational and does not replace pastoral guidance or professional legal advice.",
+    "onThisPage": "On this page",
+    "sections": {
+      "copyright": "Copyright",
+      "privacy": "Privacy",
+      "removal": "Removal requests",
+      "sources": "Sources"
+    },
+    "short": {
+      "copyright": "Copyright",
+      "privacy": "Privacy",
+      "removal": "Removal",
+      "sources": "Sources"
+    },
+    "originalLanguageNote": "Full notice (English)",
+    "suggestCorrection": "Suggest a correction",
+    "aboutLink": "About →",
+    "aboutLinkLead": "For product background and intent, see"
+  },
+  "searchBuddy": {
+    "fab": "Find Something",
+    "title": "Tewahedo Daily Assistant",
+    "subtitle": "Find hymns, prayers, saints, calendar events, and pages.",
+    "placeholder": "Find Meskel hymns, Calendar, a Zemari…",
+    "inputAria": "Search Tewahedo Daily",
+    "find": "Find",
+    "close": "Close",
+    "closeAssistant": "Close assistant",
+    "looking": "Looking…",
+    "searching": "Searching Tewahedo Daily…",
+    "defaultMessage": "Ask for a hymn, prayer, Zemari, feast, or page — I will take you there.",
+    "unavailable": "Search is temporarily unavailable. Try browsing Hymns Practice or Pray.",
+    "foundOne": "I found {title}.",
+    "foundMany": "I found {count} places related to your search.",
+    "foundGeneric": "Here is what I found.",
+    "zero": "I couldn't find that in Tewahedo Daily. Try a feast name, Zemari, prayer, or page like Calendar.",
+    "opening": "Opening {title}.",
+    "favoritesMessage": "Here is your favorites page.",
+    "favoritesTitle": "Your favorites",
+    "favoritesDescSignedIn": "Open your synced saved hymns and prayers.",
+    "favoritesDescGuest": "Open favorites saved on this device.",
+    "open": "Open →",
+    "preview": "Preview →",
+    "previewTitle": "Synaxarium preview",
+    "previewSubtitle": "Published commemorations only — open the full day when you are ready.",
+    "backToResults": "Back to results",
+    "backToSearchBuddy": "Back to Search Buddy",
+    "openFullPage": "Open full page",
+    "source": "Source",
+    "clearSession": "Clear search",
+    "starters": {
+      "meskel": "Find Meskel hymns",
+      "learnPray": "Learn how to pray",
+      "zemari": "Find a Zemari",
+      "synaxarium": "Today's Synaxarium",
+      "fasting": "Show fasting information",
+      "calendar": "Open Calendar",
+      "prayers": "Find prayers"
+    },
+    "types": {
+      "page": "Page",
+      "mezmur": "Mezmur",
+      "section": "Section",
+      "collection": "Collection",
+      "prayer": "Prayer",
+      "guide": "Guide",
+      "zemari": "Zemari",
+      "calendar": "Calendar",
+      "account": "Account",
+      "liturgy": "Liturgy",
+      "prayerCollection": "Prayer Collection",
+      "prayerSection": "Prayer Section",
+      "psalm": "Psalm",
+      "synaxarium": "Synaxarium"
+    },
+    "seeMore": "See more ({count})",
+    "partial": "Some catalogs were slow; showing what is ready.",
+    "tryNearby": "Try one of these nearby pages"
   },
   "footer": {
     "portfolio": "Portfolio - eskinder.dev",
-    "copyright": "© {year} Tewahedo Daily"
+    "copyright": "© {year} Tewahedo Daily",
+    "utilitiesAria": "Site utilities",
+    "about": "About",
+    "legal": "Legal",
+    "copyrightLink": "Copyright",
+    "privacy": "Privacy",
+    "removal": "Removal",
+    "suggestCorrection": "Suggest a correction",
+    "submitMezmur": "Submit a Mezmur",
+    "saved": "Saved",
+    "adminLogin": "Admin Login",
+    "adminDashboard": "Admin Dashboard"
+  },
+  "account": {
+    "signIn": "Sign in",
+    "account": "Account",
+    "admin": "Admin"
   },
   "common": {
-    "dialogClose": "Close"
+    "dialogClose": "Close",
+    "languageLabel": "Language"
+  },
+  "auth": {
+    "signInTitle": "Sign in",
+    "signInLead": "Optional. Browse and pray freely without an account — sign in only to sync favorites and progress across devices.",
+    "email": "Email",
+    "password": "Password",
+    "showPassword": "Show",
+    "hidePassword": "Hide",
+    "signingIn": "Signing in…",
+    "signIn": "Sign in",
+    "createAccount": "Create an account",
+    "forgotPassword": "Forgot password",
+    "continueGuest": "Continue without signing in",
+    "badCredentials": "The email or password is incorrect.",
+    "forgotNeedEmail": "Enter your email above, then tap Forgot password.",
+    "resetSent": "If an account exists for that email, a reset link is on the way.",
+    "resetFailed": "Unable to send a reset email. Please try again.",
+    "signupTitle": "Create an account",
+    "signupLead": "Optional convenience for syncing favorites and prayer progress. You can keep using the site as a guest anytime.",
+    "confirmPassword": "Confirm password",
+    "passwordMismatch": "Passwords do not match.",
+    "creating": "Creating account…",
+    "create": "Create account",
+    "haveAccount": "Already have an account? Sign in",
+    "signupFailed": "Unable to create your account. Please try again.",
+    "displayName": "Display name",
+    "signupConfirmEmail": "Account created. Check your email to confirm, then sign in.",
+    "memberNote": "Your account is created as a regular member. Staff access is granted separately."
+  },
+  "notFound": {
+    "title": "Page not found",
+    "metaDescription": "This page does not exist on Tewahedo Daily.",
+    "lede": "That address is not part of Tewahedo Daily. Choose a main area below, or go home.",
+    "navAria": "Main areas",
+    "home": "Home",
+    "homeDesc": "Start from the main page",
+    "today": "Today in Church",
+    "todayDesc": "Today’s commemorations and readings",
+    "practice": "Hymns Practice",
+    "practiceDesc": "Browse and practice Mezmur",
+    "pray": "Pray",
+    "prayDesc": "Prayers, Psalms, and liturgy",
+    "calendar": "Calendar",
+    "calendarDesc": "Church calendar and holy days",
+    "about": "About",
+    "aboutDesc": "About Tewahedo Daily"
+  },
+  "forms": {
+    "eyebrow": "Help grow our shared library",
+    "correctionTitle": "Suggest a Correction",
+    "mezmurTitle": "Submit a Mezmur",
+    "intro": "Share a hymn or help improve an existing entry. Every contribution is reviewed and verified before it can become a draft, receive final review, and be published.",
+    "noAccount": "No account is needed. Your email will never be displayed publicly.",
+    "notConfigured": "Community submissions are not configured yet. Please check back soon.",
+    "thankYouEyebrow": "Thank you for contributing",
+    "receivedTitle": "Submission received",
+    "receivedRef": "Your reference is {reference}. Please keep it for any follow-up.",
+    "receivedReview": "Our editors will review and verify your contribution. Nothing is published automatically.",
+    "returnLibrary": "Return to the Mezmur library →",
+    "correctionFor": "Correction for",
+    "correctionType": "Correction type",
+    "chooseIssue": "Choose an issue",
+    "suggestedCorrection": "Suggested correction",
+    "explanation": "Explanation",
+    "mezmurTitleField": "Mezmur title",
+    "amharicTitle": "Amharic title",
+    "singer": "Singer / choir",
+    "youtube": "YouTube link",
+    "titleOrLyricsHint": "Add a recognizable title and either a YouTube video link or lyrics.",
+    "lyricsAmharic": "Amharic lyrics",
+    "lyricsEnglish": "English lyrics",
+    "lyricsOromo": "Oromo lyrics",
+    "transliteration": "Transliteration",
+    "suggestedCategory": "Suggested category",
+    "suggestedTags": "Suggested tags",
+    "tagsPlaceholder": "Separate tags with commas",
+    "additionalNotes": "Additional notes",
+    "sourceReference": "Source / reference",
+    "yourContribution": "Your contribution",
+    "contributorName": "Contributor name",
+    "contributorEmail": "Contributor email (optional)",
+    "emailPrivacy": "An email address lets reviewers contact you if clarification is needed. It is visible only to authorized reviewers.",
+    "creditMe": "Credit me if this submission is published",
+    "creditNote": "Your name will be public only if you request credit and an editor chooses to include it. Please share only material you have permission to contribute, and avoid private information in lyrics or notes.",
+    "submitting": "Submitting…",
+    "sendCorrection": "Send correction",
+    "submitReview": "Submit for review",
+    "verifyChallenge": "Complete the verification challenge.",
+    "submitFailed": "Unable to submit. Your form has been kept; please try again."
   }
 }

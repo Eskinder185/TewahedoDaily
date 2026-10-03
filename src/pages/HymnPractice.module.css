@@ -729,6 +729,25 @@
   background: var(--color-bg-soft, #f3eee4);
 }
 
+.collectionArtEmpty {
+  display: grid;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+  background:
+    repeating-linear-gradient(
+      -28deg,
+      transparent,
+      transparent 12px,
+      rgba(180, 138, 59, 0.05) 12px,
+      rgba(180, 138, 59, 0.05) 13px
+    ),
+    #f5f0e5;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 3.75rem);
+  font-weight: 500;
+  color: #b48a3b;
+}
+
 .collectionAm {
   margin: 0 0 0.35rem;
   font-family: var(--font-amharic, var(--font-display));

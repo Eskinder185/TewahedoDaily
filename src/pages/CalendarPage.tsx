@@ -5,7 +5,6 @@ import { MiniMonthCalendar } from '../components/todayInChurch/MiniMonthCalendar
 import { CalendarDateTimeline } from '../components/calendar/CalendarDateTimeline'
 import { CalendarEventDetail } from '../components/calendar/CalendarEventDetail'
 import { SynaxariumOfTheDay } from '../components/calendar/SynaxariumOfTheDay'
-import { CalendarLangToggle } from '../components/calendar/CalendarEventDetails'
 import { useHomeToday } from '../hooks/useHomeToday'
 import {
   computeCalendarDayMarksAsync,
@@ -14,11 +13,6 @@ import {
 import { getPublishedCalendarCardsForLinking, type CalendarCard } from '../lib/synaxarium/synaxariumService'
 import { parseGregorianAnchorIso } from '../lib/churchCalendar/upcomingObservanceDisplay'
 import {
-  loadCalendarDetailLang,
-  saveCalendarDetailLang,
-  type CalendarLocaleMode,
-} from '../lib/calendar/calendarEnrichedContent'
-import {
   getCalendarEventsForRange,
   invalidateCalendarCardsCache,
   refreshPublishedCalendarCards,
@@ -26,6 +20,8 @@ import {
 } from '../lib/calendar/getCalendarEventsForDate'
 import type { PresentableCalendarEvent } from '../lib/calendar/calendarPresentation'
 import { addDays, toIsoLocalDate } from '../lib/churchCalendar/pascha'
+import { useLocale } from '../lib/i18n/locale'
+import { useTranslation } from '../i18n'
 import styles from './CalendarPage.module.css'
 
 /** Type-only — runtime load is dynamic so mezmur scoring stays off the Calendar shell. */
@@ -54,6 +50,8 @@ function stripLocal(d: Date): Date {
 
 export function CalendarPage() {
   const { now, snapshot } = useHomeToday()
+  const { contentLocale } = useLocale()
+  const t = useTranslation()
   const [searchParams] = useSearchParams()
   const [viewYear, setViewYear] = useState(now.getFullYear())
   const [viewMonth, setViewMonth] = useState(now.getMonth())
@@ -65,7 +63,6 @@ export function CalendarPage() {
   const [dayError, setDayError] = useState<string | null>(null)
   const [dayReloadTick, setDayReloadTick] = useState(0)
   const [calendarCards, setCalendarCards] = useState<CalendarCard[]>([])
-  const [lang, setLang] = useState<CalendarLocaleMode>(() => loadCalendarDetailLang())
   const [detailEvent, setDetailEvent] = useState<PresentableCalendarEvent | null>(null)
   const [timelineGroups, setTimelineGroups] = useState<CalendarDayGroup[]>([])
   const [timelineLoading, setTimelineLoading] = useState(true)
@@ -75,10 +72,6 @@ export function CalendarPage() {
   const dayContextCacheRef = useRef<Map<string, DayChurchContext>>(new Map())
   const dayRequestIdRef = useRef(0)
   const dateParamApplied = useRef(false)
-
-  useEffect(() => {
-    saveCalendarDetailLang(lang)
-  }, [lang])
 
   useEffect(() => {
     if (dateParamApplied.current) return
@@ -313,14 +306,13 @@ export function CalendarPage() {
       <header className={styles.header}>
         <div className={styles.headerTop}>
           <div>
-            <p className={styles.eyebrow}>Calendar</p>
-            <h1 className={styles.title}>Church Calendar</h1>
+            <p className={styles.eyebrow}>{t('nav.calendar')}</p>
+            <h1 className={styles.title}>{t('nav.calendar')}</h1>
           </div>
           <div className={styles.headerActions}>
             <button type="button" className={styles.btnPrimary} onClick={jumpToday}>
-              Today
+              {t('calendar.page.jumpToday')}
             </button>
-            <CalendarLangToggle value={lang} onChange={setLang} />
           </div>
         </div>
       </header>
@@ -354,7 +346,7 @@ export function CalendarPage() {
             groups={timelineGroups}
             selectedDate={selectedDate}
             today={now}
-            lang={lang}
+            lang={contentLocale}
             loading={timelineLoading && timelineGroups.length === 0}
             onSelectDate={setSelectedCivilDate}
             onOpenEvent={openEvent}
@@ -392,8 +384,6 @@ export function CalendarPage() {
         event={detailEvent}
         dateLabel={gregorianLabel}
         ethiopianLabel={ethiopianLabel || undefined}
-        lang={lang}
-        onLangChange={setLang}
         onClose={closeDetail}
       />
     </PageSection>

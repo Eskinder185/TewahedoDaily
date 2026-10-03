@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
 import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
 import {
@@ -8,10 +8,18 @@ import {
 } from '../lib/prayers/synaxariumSupabase'
 import type { SynaxariumCommemoration, SynaxariumDay } from '../lib/prayers/prayerLibraryTypes'
 import { useTranslation } from '../i18n'
+import { useSearchBuddyOptional } from '../lib/search/searchBuddySession'
 import styles from './PrayerDetailPage.module.css'
+
+type LocationState = { fromSearchBuddy?: boolean } | null
 
 export function SynaxariumDayPage() {
   const tr = useTranslation()
+  const location = useLocation()
+  const searchBuddy = useSearchBuddyOptional()
+  const fromSearchBuddy =
+    Boolean((location.state as LocationState)?.fromSearchBuddy) ||
+    Boolean(searchBuddy?.snapshot.hasSearched)
   const { daySlug, prayerSlug } = useParams()
   const resolvedDaySlug = daySlug || prayerSlug
   const [day, setDay] = useState<SynaxariumDay | null>()
@@ -86,6 +94,15 @@ export function SynaxariumDayPage() {
     <PageSection variant="tint">
       <article className={styles.shell}>
         <nav className={styles.topNav} aria-label={tr('prayers.navigation.aria')}>
+          {fromSearchBuddy && searchBuddy ? (
+            <button
+              type="button"
+              className={styles.primaryLink}
+              onClick={() => searchBuddy.reopenWithSession()}
+            >
+              {tr('searchBuddy.backToSearchBuddy')}
+            </button>
+          ) : null}
           <Link className={styles.backLink} to="/pray">
             {tr('prayers.navigation.backToCollections')}
           </Link>

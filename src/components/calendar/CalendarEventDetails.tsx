@@ -5,11 +5,12 @@ import {
   type DetailSection,
   type EnrichedContentFields,
 } from '../../lib/calendar/calendarEnrichedContent'
+import { BilingualText } from '../i18n/BilingualText'
 import styles from './CalendarEventDetails.module.css'
 
 type Props = {
   fields: EnrichedContentFields
-  lang: CalendarLocaleMode
+  lang?: CalendarLocaleMode
   /** When true, open the first section by default. */
   defaultOpenFirst?: boolean
   className?: string
@@ -20,34 +21,17 @@ function SectionBody({
   lang,
 }: {
   section: DetailSection
-  lang: CalendarLocaleMode
+  lang?: CalendarLocaleMode
 }) {
-  if (lang === 'am') {
-    const text = section.amharic || section.english
-    return text ? (
-      <p className={styles.body} lang={section.amharic ? 'am' : undefined}>
-        {text}
-      </p>
-    ) : null
-  }
-  if (lang === 'both') {
-    return (
-      <div className={styles.bilingual}>
-        {section.amharic ? (
-          <p className={styles.bodyAm} lang="am">
-            {section.amharic}
-          </p>
-        ) : null}
-        {section.english ? <p className={styles.body}>{section.english}</p> : null}
-      </div>
-    )
-  }
-  const text = section.english || section.amharic
-  return text ? (
-    <p className={styles.body} lang={!section.english && section.amharic ? 'am' : undefined}>
-      {text}
-    </p>
-  ) : null
+  return (
+    <BilingualText
+      english={section.english}
+      amharic={section.amharic}
+      mode={lang}
+      className={styles.body}
+      showLabels
+    />
+  )
 }
 
 export function CalendarEventDetails({
@@ -101,33 +85,12 @@ export function CalendarEventDetails({
   )
 }
 
-export function CalendarLangToggle({
-  value,
-  onChange,
-  className,
-}: {
-  value: CalendarLocaleMode
-  onChange: (mode: CalendarLocaleMode) => void
+/** @deprecated Use global LanguageToggle in the site header / menu. */
+export function CalendarLangToggle(_unused?: {
+  value?: CalendarLocaleMode
+  onChange?: (mode: CalendarLocaleMode) => void
   className?: string
 }) {
-  const modes: Array<{ id: CalendarLocaleMode; label: string }> = [
-    { id: 'en', label: 'English' },
-    { id: 'am', label: 'Amharic' },
-    { id: 'both', label: 'Both' },
-  ]
-  return (
-    <div className={`${styles.langToggle} ${className || ''}`.trim()} role="group" aria-label="Language">
-      {modes.map((m) => (
-        <button
-          key={m.id}
-          type="button"
-          className={`${styles.langBtn} ${value === m.id ? styles.langBtnActive : ''}`}
-          aria-pressed={value === m.id}
-          onClick={() => onChange(m.id)}
-        >
-          {m.label}
-        </button>
-      ))}
-    </div>
-  )
+  void _unused
+  return null
 }

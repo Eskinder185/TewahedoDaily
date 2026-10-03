@@ -9,7 +9,7 @@ import {
 } from '../lib/prayers/prayerSupabase'
 import { useTranslation } from '../i18n'
 import { MEHARENE_AB_ENTRY, YEKIDANE_TSELOT_ENTRY } from '../lib/prayers/mediaPrayerEntries'
-import { prayerCollectionPath, prayerDetailPath } from '../lib/prayers/prayerSlug'
+import { prayerDetailPath } from '../lib/prayers/prayerSlug'
 import styles from './PrayerCollectionPage.module.css'
 
 function collectionMedia(collectionId: string) {
@@ -230,10 +230,6 @@ export function PrayerCollectionPage() {
           </ul>
         )}
 
-        <p className={styles.canonical}>
-          {tr('prayers.collection.urlLabel')}:{' '}
-          <Link to={prayerCollectionPath(collection.id)}>{prayerCollectionPath(collection.id)}</Link>
-        </p>
       </div>
     </PageSection>
   )

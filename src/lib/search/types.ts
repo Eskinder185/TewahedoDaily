@@ -2,6 +2,7 @@
  * Unified site search result — used by Search Buddy, autocomplete, and future /search.
  * Every result must resolve to a real public route.
  */
+
 export type SiteSearchSourceType =
   | 'page'
   | 'mezmur'
@@ -14,6 +15,8 @@ export type SiteSearchSourceType =
   | 'liturgy'
   | 'guide'
   | 'calendar'
+  | 'synaxarium'
+  | 'synaxarium_commemoration'
   | 'account'
   | 'other'
 
@@ -28,11 +31,23 @@ export type SiteSearchResult = {
   score: number
   matchKind: 'exact' | 'alias' | 'prefix' | 'fuzzy' | 'keyword' | 'intent' | 'personal'
   typeLabel: string
+  /** Optional bilingual date line for Synaxarium / calendar hits */
+  dateLabel?: string
+  /** Short verified excerpt (never invented) */
+  excerpt?: string
+  /** Source label when available (e.g. Synaxarium) */
+  sourceLabel?: string
 }
 
 export type SiteSearchResponse = {
   query: string
+  /** Query actually executed after follow-up resolution */
+  resolvedQuery: string
   results: SiteSearchResult[]
   intentMessage: string | null
   zeroResults: boolean
+  /** True when at least one catalog source failed but others returned */
+  partial: boolean
+  totalCount: number
+  isFollowUp: boolean
 }

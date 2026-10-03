@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from '../i18n'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import styles from './AboutPage.module.css'
 
@@ -19,24 +20,43 @@ function EthCross({ className }: { className?: string }) {
 }
 
 export function AboutPage() {
-  usePageMeta(
-    'About Tewahedo Daily',
-    'A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close to the Church between Sundays.',
-  )
+  const t = useTranslation()
+
+  usePageMeta(t('about.title'), t('about.metaDescription'))
+
+  const threads = [
+    {
+      n: 'I',
+      title: t('about.features.churchDay.title'),
+      body: t('about.features.churchDay.description'),
+    },
+    {
+      n: 'II',
+      title: t('about.features.chants.title'),
+      body: t('about.features.chants.description'),
+    },
+    {
+      n: 'III',
+      title: t('about.features.prayers.title'),
+      body: t('about.features.prayers.description'),
+    },
+    {
+      n: 'IV',
+      title: t('about.features.calendar.title'),
+      body: t('about.features.calendar.description'),
+    },
+  ]
 
   return (
     <div className={styles.page}>
       <section className={styles.hero} aria-labelledby="about-hero-title">
         <div className={styles.heroInner}>
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>About Tewahedo Daily</p>
+            <p className={styles.eyebrow}>{t('about.hero.eyebrow')}</p>
             <h1 id="about-hero-title" className={styles.heroTitle}>
-              Tewahedo Daily
+              {t('about.hero.title')}
             </h1>
-            <p className={styles.heroLede}>
-              A quiet corner of the internet for Ethiopian Orthodox Christians who want to stay close
-              to the Church between Sundays — in minutes, not marathons.
-            </p>
+            <p className={styles.heroLede}>{t('about.hero.description')}</p>
             <div className={styles.ornamentRule} aria-hidden>
               <span className={styles.ruleLine} />
               <EthCross className={styles.ruleCross} />
@@ -48,7 +68,7 @@ export function AboutPage() {
               <div className={styles.archInner}>
                 <div className={styles.archHalo} />
                 <EthCross className={styles.archCross} />
-                <p className={styles.archCaption}>Prayer · Practice · Presence</p>
+                <p className={styles.archCaption}>{t('about.hero.archCaption')}</p>
               </div>
             </div>
           </div>
@@ -57,50 +77,40 @@ export function AboutPage() {
 
       <section className={styles.narrowSection} aria-labelledby="about-what">
         <h2 id="about-what" className={styles.h2}>
-          What this website is
+          {t('about.whatThisSiteIs.title')}
         </h2>
-        <p className={styles.body}>
-          Tewahedo Daily is a daily companion: short lessons, practice for chants and movement, a
-          dedicated prayers space, and a quick view of today in the Church calendar. It is built for
-          phones and busy days so you can touch prayer and tradition without feeling buried in text.
-        </p>
+        <p className={styles.body}>{t('about.whatThisSiteIs.paragraph1')}</p>
         <blockquote className={styles.pullQuote}>
           <span className={styles.pullBar} aria-hidden />
           <div className={styles.pullMark} aria-hidden>
             <span className={styles.ruleLineShort} />
             <EthCross className={styles.ruleCrossSm} />
           </div>
-          <p>
-            “We are not an encyclopedia or a social feed. We are trying to be faithful, small, and
-            useful.”
-          </p>
+          <p>“{t('about.whatThisSiteIs.paragraph2')}”</p>
         </blockquote>
       </section>
 
       <section className={styles.audienceBand} aria-labelledby="about-who">
         <div className={styles.audienceInner}>
-          <p className={styles.eyebrowCenter}>A gentle beginning</p>
+          <p className={styles.eyebrowCenter}>{t('about.audience.eyebrow')}</p>
           <h2 id="about-who" className={styles.h2Center}>
-            Who this is for
+            {t('about.audience.title')}
           </h2>
           <ul className={styles.audienceGrid}>
             <li className={styles.audienceCard}>
               <span className={styles.cardNum}>01</span>
-              <h3>Ethiopians in the diaspora</h3>
-              <p>Especially when parish life is far away or schedules are tight.</p>
+              <h3>{t('about.audience.card1Title')}</h3>
+              <p>{t('about.audience.card1Body')}</p>
             </li>
             <li className={styles.audienceCard}>
               <span className={styles.cardNum}>02</span>
-              <h3>Beginners</h3>
-              <p>
-                For people who need a gentle starting place without already knowing every hymn or
-                rubric.
-              </p>
+              <h3>{t('about.audience.card2Title')}</h3>
+              <p>{t('about.audience.card2Body')}</p>
             </li>
             <li className={styles.audienceCard}>
               <span className={styles.cardNum}>03</span>
-              <h3>Those who love the Church</h3>
-              <p>For anyone who wants a lighter rhythm between worship, work, and family.</p>
+              <h3>{t('about.audience.card3Title')}</h3>
+              <p>{t('about.audience.card3Body')}</p>
             </li>
           </ul>
         </div>
@@ -108,35 +118,14 @@ export function AboutPage() {
 
       <section className={styles.threadsSection} aria-labelledby="about-threads">
         <div className={styles.threadsIntro}>
-          <p className={styles.eyebrowCenter}>Daily rhythm</p>
+          <p className={styles.eyebrowCenter}>{t('about.features.eyebrow')}</p>
           <h2 id="about-threads" className={styles.h2Center}>
-            Four threads for the day
+            {t('about.features.title')}
           </h2>
-          <p className={styles.subCenter}>Each one is optional. Pick what fits the day.</p>
+          <p className={styles.subCenter}>{t('about.features.intro')}</p>
         </div>
         <ul className={styles.threadGrid}>
-          {[
-            {
-              n: 'I',
-              title: 'The Church day',
-              body: 'A quick sense of what today is — feast, season, and a short why-it-matters summary.',
-            },
-            {
-              n: 'II',
-              title: 'Chants',
-              body: 'Mezmur and werb together: listen, read transliteration, and open lyrics or watch only when you choose.',
-            },
-            {
-              n: 'III',
-              title: 'Prayers',
-              body: 'Daily prayers, Wudase, and Mezmure Dawit under the prayer hub, with full text when you choose to open it.',
-            },
-            {
-              n: 'IV',
-              title: 'Calendar and seasons',
-              body: 'A simple calendar view and notes on fasts and feasts — always pointing back to your parish.',
-            },
-          ].map((item) => (
+          {threads.map((item) => (
             <li key={item.n} className={styles.threadCard}>
               <div className={styles.threadArt} aria-hidden>
                 <span className={styles.threadGridPattern} />
@@ -157,19 +146,17 @@ export function AboutPage() {
       <section className={styles.howBand} aria-labelledby="about-how">
         <div className={styles.howInner}>
           <div className={styles.howCopy}>
-            <p className={styles.eyebrowOnDark}>A simple practice</p>
+            <p className={styles.eyebrowOnDark}>{t('about.howToUse.eyebrow')}</p>
             <h2 id="about-how" className={styles.h2OnDark}>
-              How to use it
+              {t('about.howToUse.title')}
             </h2>
-            <p className={styles.bodyOnDark}>
-              There is no streak to protect and no finish line. Begin with what the day can hold.
-            </p>
+            <p className={styles.bodyOnDark}>{t('about.howToUse.lede')}</p>
             <div className={styles.howActions}>
               <Link to="/" className={styles.btnGhost}>
-                Back to home
+                {t('about.cta.home')}
               </Link>
               <Link to="/practice" className={styles.btnSolid}>
-                Open practice →
+                {t('about.cta.practice')}
               </Link>
             </div>
           </div>
@@ -179,10 +166,8 @@ export function AboutPage() {
                 1
               </span>
               <div>
-                <h3>Start on the home page.</h3>
-                <p>
-                  Open the home page and read Today in Church — one small moment with God is enough.
-                </p>
+                <h3>{t('about.howToUse.step1.title')}</h3>
+                <p>{t('about.howToUse.step1.description')}</p>
               </div>
             </li>
             <li>
@@ -190,11 +175,8 @@ export function AboutPage() {
                 2
               </span>
               <div>
-                <h3>Open Practice when you are ready.</h3>
-                <p>
-                  Use Practice for chants and tools, or Prayers for tselot and longer reading. Text
-                  stays in cards and dialogs until you tap.
-                </p>
+                <h3>{t('about.howToUse.step2.title')}</h3>
+                <p>{t('about.howToUse.step2.description')}</p>
               </div>
             </li>
             <li>
@@ -202,10 +184,8 @@ export function AboutPage() {
                 3
               </span>
               <div>
-                <h3>Return tomorrow.</h3>
-                <p>
-                  The site is meant to be repeated, not finished. Same gentle shape, fresh day.
-                </p>
+                <h3>{t('about.howToUse.step3.title')}</h3>
+                <p>{t('about.howToUse.step3.description')}</p>
               </div>
             </li>
           </ol>
@@ -220,40 +200,24 @@ export function AboutPage() {
             </div>
           </div>
           <div className={styles.guidanceText}>
-            <p className={styles.eyebrow}>With humility</p>
+            <p className={styles.eyebrow}>{t('about.guidance.eyebrow')}</p>
             <h2 id="about-respect" className={styles.h2}>
-              Respect and guidance
+              {t('about.guidance.title')}
             </h2>
-            <p className={styles.body}>
-              This website supports learning and practice in daily life. We hope it encourages
-              prayer, listening, and love for the Church.
-            </p>
-            <p className={styles.body}>
-              It does not replace your priest, parish, spiritual father, or official liturgical
-              books. Fasting rules, sacraments, confession, and pastoral care belong in person with
-              those the Church has given you.
-            </p>
+            <p className={styles.body}>{t('about.guidance.paragraph1')}</p>
+            <p className={styles.body}>{t('about.guidance.paragraph2')}</p>
             <hr className={styles.softRule} />
-            <p className={styles.guidanceQuote}>
-              “If something here disagrees with your bishop, books, or father of confession, trust
-              them — not a website.”
-            </p>
+            <p className={styles.guidanceQuote}>“{t('about.guidance.paragraph3')}”</p>
           </div>
         </div>
       </section>
 
       <section className={styles.visionSection} aria-labelledby="about-future">
         <h2 id="about-future" className={styles.h2}>
-          Future vision
+          {t('about.futureVision.title')}
         </h2>
-        <p className={styles.body}>
-          We hope to grow with real calendar data, parish-tuned content, audio that serves the
-          liturgy, and more — always slowly, carefully, and under proper guidance. If Tewahedo Daily
-          ever stops feeling humble next to the Church, we have missed the mark.
-        </p>
-        <p className={styles.closing}>
-          “Thank you for visiting. May it serve your salvation — even a little.”
-        </p>
+        <p className={styles.body}>{t('about.futureVision.description')}</p>
+        <p className={styles.closing}>“{t('about.closing')}”</p>
       </section>
     </div>
   )

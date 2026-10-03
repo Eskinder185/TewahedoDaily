@@ -78,14 +78,14 @@ export function MiniMonthCalendar({
 }: MiniMonthCalendarProps) {
   const t = useUiLabel()
   const tr = useTranslation()
-  const { locale } = useLocale()
+  const { uiLocale } = useLocale()
   const year = displayYear ?? anchor.getFullYear()
   const month = displayMonthIndex ?? anchor.getMonth()
   const markSet = useMemo(() => new Set(markedDays), [markedDays])
 
   const { label, cells, todayDay } = useMemo(
-    () => buildMonthGrid(year, month, anchor, locale),
-    [year, month, anchor, locale],
+    () => buildMonthGrid(year, month, anchor, uiLocale),
+    [year, month, anchor, uiLocale],
   )
   const weekLabels = [
     tr('calendar.weekdays.sunShort'),
@@ -206,7 +206,7 @@ export function MiniMonthCalendar({
             .filter(Boolean)
             .join(' ')
 
-          const baseAria = cellAriaLabel(year, month, cell, mark, markedLegacy, locale, tr)
+          const baseAria = cellAriaLabel(year, month, cell, mark, markedLegacy, uiLocale, tr)
           const aria =
             interactive && isSelected
               ? `${baseAria} ${t('calendarDaySelectedSuffix')}`

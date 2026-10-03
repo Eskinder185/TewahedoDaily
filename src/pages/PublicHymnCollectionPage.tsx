@@ -282,11 +282,24 @@ export function PublicHymnCollectionPage({
             {error}
           </p>
         ) : null}
+        {!loading && !error && allCards.length === 0 ? (
+          <p className={s.browseEmpty}>
+            {kind === 'singers'
+              ? 'No published Zemari profiles with linked Mezmurs are available yet. Browse Hymns Practice for feast and saint collections, or open Search Buddy to find a singer by name.'
+              : 'No published items are available in this browse list yet.'}{' '}
+            <Link to="/practice">Back to Hymns Practice</Link>
+          </p>
+        ) : null}
         <div className={s.browseGrid}>
           {allCards.map((card) => (
             <HymnBrowseCardView key={card.id} card={card} />
           ))}
         </div>
+        {!loading && !error && kind === 'singers' && allCards.length > 0 && allCards.length < 4 ? (
+          <p className={s.browseEmpty}>
+            A growing library — only published Zemari profiles with linked Mezmurs appear here.
+          </p>
+        ) : null}
       </section>
     )
   }
@@ -313,7 +326,9 @@ export function PublicHymnCollectionPage({
                 height={480}
               />
             ) : (
-              <div className={s.collectionArtEmpty} aria-hidden />
+              <div className={s.collectionArtEmpty} aria-hidden>
+                {(group?.name || '?').trim().charAt(0).toUpperCase()}
+              </div>
             )}
             <div>
               {group?.nameAmharic ? (
@@ -322,7 +337,14 @@ export function PublicHymnCollectionPage({
                 </p>
               ) : null}
               <h1 className={s.title}>{group?.name || '…'}</h1>
-              {group?.description ? <p className={s.subtitle}>{group.description}</p> : null}
+              {group?.description?.trim() ? (
+                <p className={s.subtitle}>{group.description}</p>
+              ) : detailKind === 'singer' ? (
+                <p className={s.subtitle}>
+                  Published Mezmurs linked to this Zemari. Biographical notes will appear when
+                  editors add them.
+                </p>
+              ) : null}
               <p className={s.collectionCount}>
                 {group ? `${group.mezmurCount} Mezmur${group.mezmurCount === 1 ? '' : 's'}` : ''}
               </p>

@@ -90,10 +90,10 @@
 }
 
 @media (max-width: 767.98px) {
-  /* Fit inside the timeline scroller with a peek of the next card. */
+  /* Readable card + neighbor peek: ~256@320, ~280@360, ~300@390+. */
   .timeline {
-    width: min(260px, calc(100vw - 9.5rem));
-    max-width: min(260px, calc(100vw - 9.5rem));
+    width: 256px;
+    max-width: 256px;
   }
 
   .timeline .title {
@@ -107,13 +107,25 @@
   }
 }
 
-/* Prefer the actual scroller width when container queries are available. */
-@container calendar-timeline (max-width: 900px) {
+@media (min-width: 360px) and (max-width: 389.98px) {
   .timeline {
-    width: min(260px, 82cqi);
-    max-width: min(260px, 82cqi);
+    width: 280px;
+    max-width: 280px;
   }
 }
+
+@media (min-width: 390px) and (max-width: 767.98px) {
+  .timeline {
+    width: 300px;
+    max-width: 300px;
+  }
+}
+
+/*
+ * Card width is set by the viewport media queries above.
+ * Do not shrink by cqi — a 16–24px neighbor peek comes from cards
+ * being slightly wider than the remaining visible rail.
+ */
 
 @media (min-width: 768px) and (max-width: 1279.98px) {
   .timeline {
@@ -137,6 +149,8 @@
 
 .media {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: 0;
 }
 

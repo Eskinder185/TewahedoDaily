@@ -23,18 +23,20 @@
   --color-sky-faint: rgba(180, 205, 228, 0.35);
 
   /* Antique gold — richer & more intentional on bright surfaces */
-  --color-gold: #c6a03d;
-  --color-gold-bright: #ddb84d;
-  --color-gold-soft: rgba(198, 160, 61, 0.18);
-  --color-gold-faint: rgba(198, 160, 61, 0.09);
-  --color-gold-line: rgba(198, 160, 61, 0.28);
+  --color-gold: #b48a3b;
+  --color-gold-bright: #c9a14a;
+  --color-gold-soft: rgba(180, 138, 59, 0.18);
+  --color-gold-faint: rgba(180, 138, 59, 0.09);
+  --color-gold-line: rgba(180, 138, 59, 0.42);
 
-  /* Light theme: warm page shell + cleaner elevated surfaces for legible cards */
-  --color-bg: #fff8f0;
-  --color-bg-elevated: #ffffff;
-  --color-bg-muted: #f0e6d8;
-  --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 72%, var(--color-sky-faint) 28%);
-  --color-bg-hero-wash: color-mix(in srgb, #fffefc 82%, var(--color-sky-faint) 18%);
+  /* Light theme: shared warm ivory / parchment for all public surfaces */
+  --color-bg: #f5f0e5;
+  --color-bg-elevated: #faf7f0;
+  --color-bg-muted: #efe5d4;
+  --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 78%, var(--color-sky-faint) 22%);
+  --color-bg-hero-wash: color-mix(in srgb, #faf7f0 86%, var(--color-sky-faint) 14%);
+  /* Editorial accent used by Legal nav active state */
+  --color-accent-editorial: #7a3f3f;
 
   /* Stronger body / secondary contrast (esp. phones in sunlight) */
   --color-heading: var(--color-midnight);
@@ -177,6 +179,7 @@
   --color-bg-muted: #1a2531;
   --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 82%, #263647 18%);
   --color-bg-hero-wash: color-mix(in srgb, var(--color-bg-elevated) 88%, #263647 12%);
+  --color-accent-editorial: #d4a07a;
 
   --color-heading: #f5efe6;
   --color-text: #f0e9de;
@@ -222,17 +225,18 @@
   --color-sky-glow: rgba(120, 168, 210, 0.14);
   --color-sky-faint: rgba(180, 205, 228, 0.35);
 
-  --color-gold: #c6a03d;
-  --color-gold-bright: #ddb84d;
-  --color-gold-soft: rgba(198, 160, 61, 0.18);
-  --color-gold-faint: rgba(198, 160, 61, 0.09);
-  --color-gold-line: rgba(198, 160, 61, 0.28);
+  --color-gold: #b48a3b;
+  --color-gold-bright: #c9a14a;
+  --color-gold-soft: rgba(180, 138, 59, 0.18);
+  --color-gold-faint: rgba(180, 138, 59, 0.09);
+  --color-gold-line: rgba(180, 138, 59, 0.42);
 
-  --color-bg: #fff8f0;
-  --color-bg-elevated: #ffffff;
-  --color-bg-muted: #f0e6d8;
-  --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 72%, var(--color-sky-faint) 28%);
-  --color-bg-hero-wash: color-mix(in srgb, #fffefc 82%, var(--color-sky-faint) 18%);
+  --color-bg: #f5f0e5;
+  --color-bg-elevated: #faf7f0;
+  --color-bg-muted: #efe5d4;
+  --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 78%, var(--color-sky-faint) 22%);
+  --color-bg-hero-wash: color-mix(in srgb, #faf7f0 86%, var(--color-sky-faint) 14%);
+  --color-accent-editorial: #7a3f3f;
 
   --color-heading: var(--color-midnight);
   --color-text: #1e252d;

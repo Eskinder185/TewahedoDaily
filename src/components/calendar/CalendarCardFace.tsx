@@ -35,19 +35,31 @@ export function CalendarCardFace({
   showOpenDate = true,
 }: CalendarCardFaceProps) {
   const t = useTranslation()
-  const { locale } = useLocale()
+  const { contentLocale } = useLocale()
   const visualKind = visualKindFromType(card.type)
-  const summary = resolveCardSummary(card, locale)
+  const summary = resolveCardSummary(card, contentLocale)
   const category = cardCategoryBadge(card)
   const seeMoreLabel = card.learnMoreLabel || t('calendar.page.seeMore')
-  const titleForLocale =
-    locale === 'am' ? card.titleAmharic || card.title : card.title
-  const amharicSecondary =
-    locale === 'am'
-      ? card.title !== titleForLocale
-        ? card.title
+  const titleEn = (card.title || '').trim()
+  const titleAm = (card.titleAmharic || '').trim()
+  const primaryTitle =
+    contentLocale === 'am'
+      ? titleAm || titleEn
+      : contentLocale === 'both'
+        ? titleAm || titleEn
+        : titleEn || titleAm
+  const secondaryTitle =
+    contentLocale === 'both'
+      ? titleAm && titleEn && titleAm !== titleEn
+        ? titleEn
         : ''
-      : card.titleAmharic
+      : contentLocale === 'am'
+        ? titleEn && titleEn !== primaryTitle
+          ? titleEn
+          : ''
+        : titleAm && titleAm !== primaryTitle
+          ? titleAm
+          : ''
 
   return (
     <article
@@ -67,10 +79,12 @@ export function CalendarCardFace({
       />
       <div className={styles.body}>
         <p className={styles.type}>{category}</p>
-        <h2 className={styles.title}>{titleForLocale}</h2>
-        {amharicSecondary ? (
-          <p className={styles.titleAm} lang={locale === 'am' ? undefined : 'am'}>
-            {amharicSecondary}
+        <h2 className={styles.title} lang={primaryTitle === titleAm ? 'am' : undefined}>
+          {primaryTitle}
+        </h2>
+        {secondaryTitle ? (
+          <p className={styles.titleAm} lang={secondaryTitle === titleAm ? 'am' : 'en'}>
+            {secondaryTitle}
           </p>
         ) : null}
         <p className={styles.date}>{card.gregorianLabel}</p>

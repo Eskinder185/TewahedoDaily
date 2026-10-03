@@ -1123,11 +1123,60 @@ export async function loadBrowseGroupDetail(
   return list.find((c) => c.slug === slug) || null
 }
 
-export async function searchHymns(query: string, limit = 50): Promise<HymnDiscoveryHit[]> {
-  const needle = query.trim().toLowerCase()
-  if (needle.length < 2 || !supabase) return []
+const SEARCH_STOP = new Set([
+  'a',
+  'an',
+  'the',
+  'of',
+  'and',
+  'or',
+  'to',
+  'for',
+  'in',
+  'on',
+  'st',
+  'saint',
+  'find',
+  'show',
+  'open',
+  'me',
+  'my',
+])
 
-  const hits: HymnDiscoveryHit[] = []
+function searchTokens(query: string): string[] {
+  const parts = query
+    .trim()
+    .toLowerCase()
+    .split(/[\s,/|·]+/)
+    .map((t) => t.trim())
+    .filter((t) => t.length >= 3 && !SEARCH_STOP.has(t))
+  // Keep meaningful short tokens only when they are the whole query (e.g. "እግ")
+  if (!parts.length) {
+    const fallback = query
+      .trim()
+      .toLowerCase()
+      .split(/[\s,/|·]+/)
+      .map((t) => t.trim())
+      .filter((t) => t.length >= 2 && !SEARCH_STOP.has(t))
+    return [...new Set(fallback)]
+  }
+  return [...new Set(parts)]
+}
+
+function hayMatchesTokens(hay: string, tokens: string[]): boolean {
+  if (!tokens.length) return false
+  // Prefer any token match so alias-expanded queries ("timkat timket epiphany") work.
+  return tokens.some((t) => hay.includes(t))
+}
+
+export async function searchHymns(query: string, limit = 50): Promise<HymnDiscoveryHit[]> {
+  const tokens = searchTokens(query)
+  if (!tokens.length || !supabase) return []
+
+  const sectionHits: HymnDiscoveryHit[] = []
+  const mezmurHits: HymnDiscoveryHit[] = []
+  const singerHits: HymnDiscoveryHit[] = []
+  const collectionHits: HymnDiscoveryHit[] = []
 
   const [collections, sectionsRes, dataRes, singers] = await Promise.all([
     getMajorHymnGroups().catch(() => [] as HymnCollection[]),
@@ -1139,38 +1188,16 @@ export async function searchHymns(query: string, limit = 50): Promise<HymnDiscov
     getHymnSingers().catch(() => [] as HymnBrowseCard[]),
   ])
 
-  for (const g of collections) {
-    const hay = `${g.title} ${g.titleAmharic} ${g.description} ${g.slug}`.toLowerCase()
-    if (hay.includes(needle)) {
-      hits.push({
-        type: 'collection',
-        id: g.id,
-        title: g.title,
-        titleAmharic: g.titleAmharic,
-        href: g.href,
-        meta: 'Collection',
-      })
-      hits.push({
-        type: 'browse_group',
-        id: g.id,
-        title: g.title,
-        titleAmharic: g.titleAmharic,
-        href: g.href,
-        meta: 'Collection',
-      })
-    }
-  }
-
   if (!sectionsRes.error && sectionsRes.data) {
     for (const row of sectionsRes.data as SectionImportRow[]) {
       if (!isPublishedStatus(row.status)) continue
       const section = mapSectionFromRow(row)
-      const hay = `${section.title} ${section.titleAmharic} ${section.slug}`.toLowerCase()
-      if (!hay.includes(needle)) continue
-      hits.push({
+      const hay = `${section.title} ${section.titleAmharic} ${section.slug} ${section.description}`.toLowerCase()
+      if (!hayMatchesTokens(hay, tokens)) continue
+      sectionHits.push({
         type: 'section',
         id: section.id,
-        title: section.title,
+        title: section.title || humanizeSlug(section.slug),
         titleAmharic: section.titleAmharic,
         href: section.href,
         meta: humanizeSlug(section.collectionSlug),
@@ -1182,16 +1209,15 @@ export async function searchHymns(query: string, limit = 50): Promise<HymnDiscov
 
   for (const s of singers) {
     const hay = `${s.name} ${s.nameAmharic || ''} ${s.slug}`.toLowerCase()
-    if (hay.includes(needle)) {
-      hits.push({
-        type: 'singer',
-        id: s.id,
-        title: s.name,
-        titleAmharic: s.nameAmharic || '',
-        href: s.href,
-        meta: `${s.mezmurCount} Mezmurs · Zemari`,
-      })
-    }
+    if (!hayMatchesTokens(hay, tokens)) continue
+    singerHits.push({
+      type: 'singer',
+      id: s.id,
+      title: s.name || humanizeSlug(s.slug),
+      titleAmharic: s.nameAmharic || '',
+      href: s.href,
+      meta: `${s.mezmurCount} Mezmurs · Zemari`,
+    })
   }
 
   if (!dataRes.error && dataRes.data) {
@@ -1205,22 +1231,36 @@ export async function searchHymns(query: string, limit = 50): Promise<HymnDiscov
       const slug = txt(row.slug)
       const hay =
         `${title} ${titleAmharic} ${titleEnglish} ${slug} ${singerName} ${keywords}`.toLowerCase()
-      if (!hay.includes(needle)) continue
-      hits.push({
+      if (!hayMatchesTokens(hay, tokens)) continue
+      mezmurHits.push({
         type: 'mezmur',
         id: txt(row.mezmur_id || slug),
-        title,
+        title: titleEnglish || title || humanizeSlug(slug),
         titleAmharic,
         href: `/practice/mezmur/${slug}`,
         meta: singerName ? `Mezmur · ${singerName}` : 'Mezmur',
       })
-      if (hits.length >= limit * 2) break
+      if (mezmurHits.length >= limit * 2) break
     }
   } else if (dataRes.error) {
     logSchemaError('searchHymns data', dataRes.error)
   }
 
-  return hits.slice(0, limit)
+  for (const g of collections) {
+    const hay = `${g.title} ${g.titleAmharic} ${g.description} ${g.slug}`.toLowerCase()
+    if (!hayMatchesTokens(hay, tokens)) continue
+    collectionHits.push({
+      type: 'collection',
+      id: g.id,
+      title: g.title || humanizeSlug(g.slug),
+      titleAmharic: g.titleAmharic,
+      href: g.href,
+      meta: 'Collection',
+    })
+  }
+
+  // Specific entities first: sections → mezmurs → singers → collections
+  return [...sectionHits, ...mezmurHits, ...singerHits, ...collectionHits].slice(0, limit)
 }
 
 /** @deprecated Prefer searchHymns */

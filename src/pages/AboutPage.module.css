@@ -1,15 +1,15 @@
-/* About — editorial manuscript / Ethiopian Orthodox journal */
+/* About — editorial layout on shared theme tokens */
 
 .page {
-  --about-ivory: #f5f0e5;
-  --about-parchment: #efe5d4;
-  --about-navy: #13232d;
-  --about-ink: #10222d;
-  --about-muted: #5a6670;
-  --about-gold: #b48a3b;
-  --about-gold-line: rgba(180, 138, 59, 0.45);
-  --about-border: rgba(90, 78, 55, 0.18);
-  --about-card: #faf7f0;
+  --about-ivory: var(--color-bg);
+  --about-parchment: var(--color-bg-muted);
+  --about-navy: var(--color-navy);
+  --about-ink: var(--color-heading);
+  --about-muted: var(--color-text-muted);
+  --about-gold: var(--color-gold);
+  --about-gold-line: var(--color-gold-line);
+  --about-border: var(--color-border);
+  --about-card: var(--color-bg-elevated);
   --about-max: min(1240px, calc(100% - 48px));
 
   background: var(--about-ivory);
@@ -403,7 +403,7 @@
 .threadBody {
   padding: 1.5rem 1.4rem 1.65rem;
   border-top: 1px solid var(--about-border);
-  background: #fbf8f1;
+  background: var(--about-card);
   flex: 1;
 }
 
@@ -653,10 +653,37 @@
   }
 
   .hero {
-    padding-top: 3rem;
+    padding: 2.25rem 0 2.5rem;
+  }
+
+  .heroInner {
+    gap: 1.75rem;
+  }
+
+  .heroLede {
+    margin-bottom: 1.25rem;
   }
 
   .arch {
-    width: min(100%, 18.5rem);
+    width: min(100%, 12.5rem);
+    aspect-ratio: 3 / 3.2;
+    max-height: 14rem;
+  }
+
+  .archCross {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .archHalo {
+    width: 7.5rem;
+    height: 7.5rem;
+    box-shadow:
+      0 0 0 1.4rem rgba(180, 138, 59, 0.04),
+      inset 0 0 0 1.3rem rgba(180, 138, 59, 0.035);
+  }
+
+  .narrowSection {
+    padding-top: 2.75rem;
   }
 }

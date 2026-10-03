@@ -1,6 +1,7 @@
 import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { DayCommemorationItem } from '../../services/dayChurchContext'
+import { useLocale } from '../../lib/i18n/locale'
 import styles from './SynaxariumOfTheDay.module.css'
 
 export type SynaxariumOfTheDayProps = {
@@ -14,9 +15,24 @@ export type SynaxariumOfTheDayProps = {
 function CommemorationRow({ item }: { item: DayCommemorationItem }) {
   const panelId = useId()
   const [open, setOpen] = useState(false)
+  const { contentLocale } = useLocale()
   const preview = (item.summary || '').trim()
   const fullBody = (item.longerSummary || '').trim()
   const showFullDistinct = Boolean(fullBody && fullBody !== preview)
+  const titleEn = (item.title || '').trim()
+  const titleAm = (item.titleAmharic || '').trim()
+  const primaryTitle =
+    contentLocale === 'en' ? titleEn || titleAm : titleAm || titleEn
+  const secondaryTitle =
+    contentLocale === 'both' && titleEn && titleAm && titleEn !== titleAm
+      ? primaryTitle === titleAm
+        ? titleEn
+        : titleAm
+      : contentLocale === 'am' && titleEn && titleEn !== primaryTitle
+        ? titleEn
+        : contentLocale === 'en' && titleAm && titleAm !== primaryTitle
+          ? titleAm
+          : ''
 
   return (
     <div className={`${styles.item} ${open ? styles.itemOpen : ''}`}>
@@ -29,7 +45,9 @@ function CommemorationRow({ item }: { item: DayCommemorationItem }) {
         onClick={() => setOpen((v) => !v)}
       >
         <span className={styles.itemTitles}>
-          <span className={styles.itemTitle}>{item.title}</span>
+          <span className={styles.itemTitle} lang={primaryTitle === titleAm ? 'am' : undefined}>
+            {primaryTitle || 'Commemoration'}
+          </span>
           {item.typeLabel ? <span className={styles.itemType}>{item.typeLabel}</span> : null}
           {!open && preview ? <span className={styles.itemPreview}>{preview}</span> : null}
         </span>
@@ -44,9 +62,9 @@ function CommemorationRow({ item }: { item: DayCommemorationItem }) {
           aria-labelledby={`${panelId}-btn`}
           className={styles.itemBody}
         >
-          {item.titleAmharic ? (
-            <p className={styles.itemAm} lang="am">
-              {item.titleAmharic}
+          {secondaryTitle ? (
+            <p className={styles.itemAm} lang={secondaryTitle === titleAm ? 'am' : 'en'}>
+              {secondaryTitle}
             </p>
           ) : null}
           {preview ? <p className={styles.summary}>{preview}</p> : null}
@@ -98,11 +116,7 @@ export function SynaxariumOfTheDay({
         <Link className={styles.fullLink} to={`/pray/synaxarium/${daySlug}`}>
           Open full Synaxarium day
         </Link>
-      ) : (
-        <Link className={styles.fullLink} to="/pray/synaxarium">
-          Browse Synaxarium
-        </Link>
-      )}
+      ) : null}
     </aside>
   )
 }

@@ -4,6 +4,7 @@ import { SiteHeader } from './SiteHeader'
 import { SiteFooter } from './SiteFooter'
 import styles from './AppShell.module.css'
 import { AuthProvider } from '../../lib/auth/AuthProvider'
+import { SearchBuddyProvider } from '../../lib/search/searchBuddySession'
 import { GlobalAudio } from '../publicContent/GlobalAudio'
 
 const SearchBuddy = lazy(() =>
@@ -13,18 +14,20 @@ const SearchBuddy = lazy(() =>
 export function AppShell() {
   return (
     <AuthProvider>
-      <GlobalAudio>
-        <div className={styles.shell}>
-          <SiteHeader />
-          <main className={styles.main} id="main">
-            <Outlet />
-          </main>
-          <SiteFooter />
-          <Suspense fallback={null}>
-            <SearchBuddy />
-          </Suspense>
-        </div>
-      </GlobalAudio>
+      <SearchBuddyProvider>
+        <GlobalAudio>
+          <div className={styles.shell}>
+            <SiteHeader />
+            <main className={styles.main} id="main">
+              <Outlet />
+            </main>
+            <SiteFooter />
+            <Suspense fallback={null}>
+              <SearchBuddy />
+            </Suspense>
+          </div>
+        </GlobalAudio>
+      </SearchBuddyProvider>
     </AuthProvider>
   )
 }

@@ -27,6 +27,7 @@ function IconShield({ className }: { className?: string }) {
  * + profiles.role via hasCmsRole (contributor | editor | admin | super_admin).
  */
 function AdminAccessLink() {
+  const t = useTranslation()
   const { session, profile, loading, isStaff } = useAuth()
 
   if (loading) return null
@@ -35,7 +36,10 @@ function AdminAccessLink() {
   if (session && !hasCmsRole(profile) && !isStaff) return null
 
   const to = session && (hasCmsRole(profile) || isStaff) ? '/admin' : '/admin/login'
-  const label = session && (hasCmsRole(profile) || isStaff) ? 'Admin Dashboard' : 'Admin Login'
+  const label =
+    session && (hasCmsRole(profile) || isStaff)
+      ? t('footer.adminDashboard')
+      : t('footer.adminLogin')
 
   return (
     <Link to={to} className={styles.adminLink} aria-label={label}>
@@ -68,30 +72,30 @@ export function SiteFooter() {
           <p className={styles.copy}>{t('footer.copyright', { year })}</p>
         </div>
 
-        <nav className={styles.utilityNav} aria-label="Site utilities">
+        <nav className={styles.utilityNav} aria-label={t('footer.utilitiesAria')}>
           <Link to="/about" className={styles.utilityLink}>
-            About
+            {t('footer.about')}
           </Link>
           <Link to="/legal" className={styles.utilityLink}>
-            Legal
+            {t('footer.legal')}
           </Link>
           <Link to="/legal#copyright" className={styles.utilityLink}>
-            Copyright
+            {t('footer.copyrightLink')}
           </Link>
           <Link to="/legal#privacy" className={styles.utilityLink}>
-            Privacy
+            {t('footer.privacy')}
           </Link>
           <Link to="/legal#removal" className={styles.utilityLink}>
-            Removal
+            {t('footer.removal')}
           </Link>
           <Link to="/suggest-correction" className={styles.utilityLink}>
-            Suggest a correction
+            {t('footer.suggestCorrection')}
           </Link>
           <Link to="/submit-mezmur" className={styles.utilityLink}>
-            Submit a Mezmur
+            {t('footer.submitMezmur')}
           </Link>
           <Link to="/saved" className={styles.utilityLink}>
-            Saved
+            {t('footer.saved')}
           </Link>
           <AdminAccessLink />
         </nav>

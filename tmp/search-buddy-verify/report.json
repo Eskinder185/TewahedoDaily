@@ -1,0 +1,488 @@
+{
+  "afterUrl": "http://127.0.0.1:4180/",
+  "widths": {
+    "320": {
+      "ok": true,
+      "overflowX": false,
+      "formWidth": 254,
+      "inputBottom": 364.59375,
+      "btnTop": 372.59375,
+      "panelWidth": 320,
+      "viewport": 320
+    },
+    "360": {
+      "ok": true,
+      "overflowX": false,
+      "formWidth": 294,
+      "inputBottom": 415.78125,
+      "btnTop": 423.78125,
+      "panelWidth": 360,
+      "viewport": 360
+    },
+    "390": {
+      "ok": true,
+      "overflowX": false,
+      "formWidth": 324,
+      "inputBottom": 415.78125,
+      "btnTop": 423.78125,
+      "panelWidth": 390,
+      "viewport": 390
+    },
+    "430": {
+      "ok": true,
+      "overflowX": false,
+      "formWidth": 364,
+      "inputBottom": 415.78125,
+      "btnTop": 423.78125,
+      "panelWidth": 430,
+      "viewport": 430
+    },
+    "landscape740x360": {
+      "ok": true,
+      "overflowX": false
+    }
+  },
+  "queries": {
+    "Find Meskel hymns": {
+      "status": "I found 12 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/practice/browse/holidays-feasts/holidays-meskel",
+          "title": "Meskel / Holy Cross",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/browse/praise-general/holy-cross",
+          "title": "Holy Cross",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/mezmur/meskel-abeba-wub-abeba",
+          "title": "Meskel Abeba Neh Wub Abeba",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/meskel-birhane",
+          "title": "Meskel Birhane",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/meskel-lay-yayehut-fikir",
+          "title": "Meskel Lay Yayehut Fikir",
+          "type": "MEZMUR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Take me to the calendar": {
+      "status": "Opening Calendar.",
+      "count": 1,
+      "top": [
+        {
+          "href": "/calendar",
+          "title": "Calendar",
+          "type": "CALENDAR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Where can I learn how to pray?": {
+      "status": "I found 6 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/pray/learn-how-to-pray",
+          "title": "Learn How to Pray",
+          "type": "GUIDE"
+        },
+        {
+          "href": "/practice/mezmur/cana-of-galilee",
+          "title": "Cana of Galilee",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/i-cant-do-it-alone",
+          "title": "I can't do it alone",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/o-my-savior-i-can-do-all-through-you",
+          "title": "O My Savior I Can Do All Through You",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/browse/english-mezmur",
+          "title": "English Mezmur",
+          "type": "COLLECTION"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Find St Michael hymns": {
+      "status": "I found 12 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/practice/browse/angels-saints/saint-michael",
+          "title": "St. Michael",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/mezmur/mar-mikael-libelih",
+          "title": "Mar Mikael Libel",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/misle-mikael-we-gebriel",
+          "title": "Misle Mikael We Gebriel",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/liredan-meta-mikael",
+          "title": "Liredan Meta Mikael",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/lene-yederegew-mikaiel-bizu-new",
+          "title": "Lene Yederegew Mikaiel Bizu New",
+          "type": "MEZMUR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Show me fasting information": {
+      "status": "I found 4 places related to your search.",
+      "count": 4,
+      "top": [
+        {
+          "href": "/practice/browse/repentance-fasting/general-fasting",
+          "title": "General Fasting / Lent",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/mezmur/nitsum-tsoma",
+          "title": "Nitsum Tsoma",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/browse/repentance-fasting",
+          "title": "Repentance & Fasting",
+          "type": "COLLECTION"
+        },
+        {
+          "href": "/calendar",
+          "title": "Calendar",
+          "type": "CALENDAR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Find a Zemari": {
+      "status": "I found 2 places related to your search.",
+      "count": 2,
+      "top": [
+        {
+          "href": "/practice/browse/zemari-singers",
+          "title": "Zemari / Singers",
+          "type": "COLLECTION"
+        },
+        {
+          "href": "/practice/zemaris",
+          "title": "Zemari Library",
+          "type": "PAGE"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Show English Mezmurs": {
+      "status": "I found 4 places related to your search.",
+      "count": 4,
+      "top": [
+        {
+          "href": "/practice/browse/english-mezmur/english-language",
+          "title": "English",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/browse/english-mezmur",
+          "title": "English Mezmur",
+          "type": "COLLECTION"
+        },
+        {
+          "href": "/practice/browse/zemari-singers",
+          "title": "Zemari / Singers",
+          "type": "COLLECTION"
+        },
+        {
+          "href": "/practice/zemaris",
+          "title": "Zemari Library",
+          "type": "PAGE"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Find a prayer": {
+      "status": "I found 12 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/pray",
+          "title": "Pray",
+          "type": "PAGE"
+        },
+        {
+          "href": "/pray/divine-liturgy/prayer-of-the-covenant#entry-prayer-of-the-covenant-340",
+          "title": "Evening Prayer of the Covenant",
+          "type": "LITURGY"
+        },
+        {
+          "href": "/pray/divine-liturgy/prayer-of-the-covenant#entry-prayer-of-the-covenant-210",
+          "title": "Morning Prayer of the Covenant",
+          "type": "LITURGY"
+        },
+        {
+          "href": "/pray/divine-liturgy/anaphora-of-st-mary#entry-anaphora-of-st-mary-2440",
+          "title": "The Laying on of the Hand Prayer",
+          "type": "LITURGY"
+        },
+        {
+          "href": "/pray/divine-liturgy/prayer-of-the-covenant#entry-prayer-of-the-covenant-430",
+          "title": "Prayer Of The Covenant#entry Prayer Of The Covenant",
+          "type": "LITURGY"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Timkat": {
+      "status": "I found 5 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/practice/browse/holidays-feasts/holidays-timket",
+          "title": "Timkat / Epiphany",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/browse/jesus-christ/christ-timket",
+          "title": "Timkat / Baptism",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/mezmur/our-lord-and-king-of-peace",
+          "title": "Our Lord and King of Peace",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/calendar",
+          "title": "Epiphany / Baptism of Christ",
+          "type": "CALENDAR"
+        },
+        {
+          "href": "/practice/browse/holidays-feasts",
+          "title": "Holidays & Feasts",
+          "type": "COLLECTION"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "repentance": {
+      "status": "I found 8 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/practice/browse/repentance-fasting/repentance",
+          "title": "Repentance",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/browse/repentance-fasting/repentance-holy-week",
+          "title": "Holy Week",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/mezmur/emebete-mariam-elemneshalew",
+          "title": "Emebete Mariam Elemneshalew",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/i-cant-do-it-alone",
+          "title": "I can't do it alone",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/with-his-mercifulness",
+          "title": "With His Mercifulness",
+          "type": "MEZMUR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "show my favorites": {
+      "status": "Here is your favorites page.",
+      "count": 1,
+      "top": [
+        {
+          "href": "/saved",
+          "title": "Your favorites",
+          "type": "ACCOUNT"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Meskle": {
+      "status": "I found 11 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/practice/browse/holidays-feasts/holidays-meskel",
+          "title": "Meskel / Holy Cross",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/mezmur/meskel-abeba-wub-abeba",
+          "title": "Meskel Abeba Neh Wub Abeba",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/meskel-birhane",
+          "title": "Meskel Birhane",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/meskel-lay-yayehut-fikir",
+          "title": "Meskel Lay Yayehut Fikir",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/meskelike-yikunene-beza",
+          "title": "Meskelike Yikunene Beza",
+          "type": "MEZMUR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "መስቀል": {
+      "status": "I found 9 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/pray/zewter-tselot/prostration-and-cross-prayer",
+          "title": "Sigidet Ena Tselote Meskel",
+          "type": "PRAYER"
+        },
+        {
+          "href": "/pray/zewter-tselot/sign-of-the-cross-opening",
+          "title": "YeMeskel Milikit",
+          "type": "PRAYER"
+        },
+        {
+          "href": "/practice/browse/holidays-feasts/holidays-meskel",
+          "title": "Meskel / Holy Cross",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/mezmur/meskel-abeba-wub-abeba",
+          "title": "Meskel Abeba Neh Wub Abeba",
+          "type": "MEZMUR"
+        },
+        {
+          "href": "/practice/mezmur/meskel-birhane",
+          "title": "Meskel Birhane",
+          "type": "MEZMUR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "Meskel ጸሎት": {
+      "status": "I found 12 places related to your search.",
+      "count": 5,
+      "top": [
+        {
+          "href": "/calendar",
+          "title": "Megabit Meskel",
+          "type": "CALENDAR"
+        },
+        {
+          "href": "/practice/browse/holidays-feasts/holidays-meskel",
+          "title": "Meskel / Holy Cross",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/browse/praise-general/holy-cross",
+          "title": "Holy Cross",
+          "type": "SECTION"
+        },
+        {
+          "href": "/practice/browse/holidays-feasts",
+          "title": "Holidays & Feasts",
+          "type": "COLLECTION"
+        },
+        {
+          "href": "/practice/mezmur/meskel-abeba-wub-abeba",
+          "title": "Meskel Abeba Neh Wub Abeba",
+          "type": "MEZMUR"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    },
+    "xyzzy-no-such-content-999": {
+      "status": "I couldn't find that in Tewahedo Daily. Try a feast name, Zemari, prayer, or page like Calendar.",
+      "count": 3,
+      "top": [
+        {
+          "href": "/calendar",
+          "title": "Calendar",
+          "type": "CALENDAR"
+        },
+        {
+          "href": "/practice",
+          "title": "Hymns Practice",
+          "type": "PAGE"
+        },
+        {
+          "href": "/pray",
+          "title": "Pray",
+          "type": "PAGE"
+        }
+      ],
+      "slugTitles": [],
+      "badRoutes": [],
+      "ok": true
+    }
+  },
+  "a11y": {
+    "escapeCloses": true,
+    "focusRestored": true
+  },
+  "beforeShot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\search-buddy-verify\\before-320.png",
+  "afterShot": "C:\\Users\\eskew\\github\\TewahedoDaily\\tmp\\search-buddy-verify\\after-320.png"
+}

@@ -1,14 +1,15 @@
 .shell {
-  --auth-cream: #f7f1e6;
-  --auth-navy: #1c2a3a;
-  --auth-gold: #b08a3c;
-  --auth-ink: #243041;
-  --auth-muted: #5c6674;
-  --auth-line: rgba(28, 42, 58, 0.12);
+  --auth-cream: var(--color-bg);
+  --auth-navy: var(--color-navy);
+  --auth-gold: var(--color-gold);
+  --auth-ink: var(--color-heading);
+  --auth-muted: var(--color-text-muted);
+  --auth-line: var(--color-border);
   max-width: 28rem;
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
   color: var(--auth-ink);
+  background: transparent;
 }
 
 .title {

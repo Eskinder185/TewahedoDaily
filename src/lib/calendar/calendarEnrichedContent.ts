@@ -2,7 +2,10 @@
  * Public-safe enriched calendar content helpers.
  * Never exposes content_review_* fields to the public UI.
  */
-export type CalendarLocaleMode = 'en' | 'am' | 'both'
+import type { AppLocale } from '../i18n/locale'
+
+/** @deprecated Prefer AppLocale from lib/i18n/locale — same values. */
+export type CalendarLocaleMode = AppLocale
 
 export type EnrichedContentFields = {
   summary?: string | null
@@ -212,11 +215,15 @@ export function buildDetailSections(fields: EnrichedContentFields): DetailSectio
   return sections
 }
 
+/** @deprecated Use global LocaleProvider / tewahedo-daily-locale. */
 export const CALENDAR_DETAIL_LANG_KEY = 'td-calendar-detail-lang-v1'
 
+/** @deprecated Use useLocale().contentLocale */
 export function loadCalendarDetailLang(): CalendarLocaleMode {
   if (typeof window === 'undefined') return 'en'
   try {
+    const primary = window.localStorage.getItem('tewahedo-daily-locale')
+    if (primary === 'en' || primary === 'am' || primary === 'both') return primary
     const raw = window.localStorage.getItem(CALENDAR_DETAIL_LANG_KEY)
     if (raw === 'en' || raw === 'am' || raw === 'both') return raw
   } catch {
@@ -225,9 +232,11 @@ export function loadCalendarDetailLang(): CalendarLocaleMode {
   return 'en'
 }
 
+/** @deprecated Use useLocale().setLocale */
 export function saveCalendarDetailLang(mode: CalendarLocaleMode) {
   if (typeof window === 'undefined') return
   try {
+    window.localStorage.setItem('tewahedo-daily-locale', mode)
     window.localStorage.setItem(CALENDAR_DETAIL_LANG_KEY, mode)
   } catch {
     /* ignore */

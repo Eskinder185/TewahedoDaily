@@ -38,6 +38,11 @@
   color: var(--color-bg);
 }
 
+button.primaryLink {
+  cursor: pointer;
+  font: inherit;
+}
+
 .shareBtn {
   cursor: pointer;
 }

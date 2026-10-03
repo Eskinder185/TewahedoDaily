@@ -24,7 +24,12 @@
     "group": "ቋንቋ",
     "english": "English",
     "amharic": "አማርኛ",
-    "amharicNative": "አማርኛ"
+    "amharicNative": "አማርኛ",
+    "both": "ሁለቱም",
+    "selected": "ቋንቋ፦ {language}",
+    "readingSettings": "የንባብ ቅንብሮች",
+    "transliteration": "ፊደል ጽሁፍ",
+    "textSize": "የጽሁፍ መጠን"
   },
   "theme": {
     "dayLabel": "ቀን",
@@ -499,9 +504,12 @@
   },
   "about": {
     "title": "ስለ",
+    "metaDescription": "በእሁድ ቀናት መካከል ከቤተክርስቲያን ጋር ቅርበት እንዲኖራቸው ለሚፈልጉ የኢትዮጵያ ኦርቶዶክስ ክርስቲያኖች ጸጥ ያለ የኢንተርኔት ጥግ።",
     "hero": {
+      "eyebrow": "ስለ ተዋህዶ ዴይሊ",
       "title": "ተዋህዶ ዴይሊ",
-      "description": "በእሁድ ቀናት መካከል ከቤተክርስቲያን ጋር ቅርበት እንዲኖራቸው ለሚፈልጉ የኢትዮጵያ ኦርቶዶክስ ክርስቲያኖች ጸጥ ያለ የኢንተርኔት ጥግ - በደቂቃዎች ውስጥ እንጂ በማራቶን ውድድር አይደለም።"
+      "description": "በእሁድ ቀናት መካከል ከቤተክርስቲያን ጋር ቅርበት እንዲኖራቸው ለሚፈልጉ የኢትዮጵያ ኦርቶዶክስ ክርስቲያኖች ጸጥ ያለ የኢንተርኔት ጥግ - በደቂቃዎች ውስጥ እንጂ በማራቶን ውድድር አይደለም።",
+      "archCaption": "ጸሎት · ልምምድ · መገኘት"
     },
     "whatThisSiteIs": {
       "title": "ይህ ድህረ ገጽ ምንድን ነው",
@@ -509,14 +517,19 @@
       "paragraph2": "እኛ ኢንሳይክሎፒዲያ ወይም ማህበራዊ ምግብ አይደለንም። ታማኝ፣ ትንሽ እና ጠቃሚ ለመሆን እየሞከርን ነው።"
     },
     "audience": {
+      "eyebrow": "ረጋ ያለ መጀመሪያ",
       "title": "ለማን ነው",
-      "item1": "ለዲያስፖራ ውስጥ ላሉ ኢትዮጵያውያን - በተለይም የሰበካ ሕይወት ሩቅ በሚሆንበት ጊዜ ወይም የጊዜ ሰሌዳዎች ጥብቅ ሲሆኑ።",
-      "item2": "እያንዳንዱን መዝሙር ወይም ደንብ ሳያውቁ ረጋ ያለ የመነሻ ቦታ የሚያስፈልጋቸው ጀማሪዎች።",
-      "item3": "ቤተክርስቲያንን የሚወድ እና በቀላሉ በአምልኮ፣ በስራ እና በቤተሰብ መካከል ቀለል ያለ ምት የሚፈልግ ማንኛውም ሰው።"
+      "card1Title": "ለዲያስፖራ ውስጥ ላሉ ኢትዮጵያውያን",
+      "card1Body": "በተለይም የሰበካ ሕይወት ሩቅ በሚሆንበት ጊዜ ወይም የጊዜ ሰሌዳዎች ጥብቅ ሲሆኑ።",
+      "card2Title": "ጀማሪዎች",
+      "card2Body": "እያንዳንዱን መዝሙር ወይም ደንብ ሳያውቁ ረጋ ያለ የመነሻ ቦታ የሚያስፈልጋቸው ጀማሪዎች።",
+      "card3Title": "ቤተክርስቲያንን የሚወዱ",
+      "card3Body": "ቤተክርስቲያንን የሚወድ እና በቀላሉ በአምልኮ፣ በስራ እና በቤተሰብ መካከል ቀለል ያለ ምት የሚፈልግ ማንኛውም ሰው።"
     },
     "features": {
-      "title": "የሚረዳባቸው ክፍሎች",
-      "intro": "በአራት ክሮች የሚረዳው - እያንዳንዱ አማራጭ። ለቀኑ የሚስማማውን ይምረጡ።",
+      "eyebrow": "የዕለት ምት",
+      "title": "ለቀኑ አራት ክሮች",
+      "intro": "እያንዳንዱ አማራጭ ነው። ለቀኑ የሚስማማውን ይምረጡ።",
       "churchDay": {
         "title": "የቤተክርስቲያን ቀን",
         "description": "ዛሬ ምን እንደሆነ ፈጣን ግንዛቤ - ድግስ፣ ወቅት እና አጭር ለምን አስፈላጊ እንደሆነ ግለጫ።"
@@ -535,7 +548,9 @@
       }
     },
     "howToUse": {
+      "eyebrow": "ቀላል ልምምድ",
       "title": "እንዴት እንደሚጠቀሙበት",
+      "lede": "ለመጠበቅ ስትሪክ የለም፣ የመጨረሻ መስመርም የለም። ቀኑ የሚይዘውን ይጀምሩ።",
       "step1": {
         "title": "በመነሻ ገጹ ላይ ይጀምሩ።",
         "description": "መነሻ ገጹን ይክፈቱ እና ዛሬ በቤተክርስቲያን ውስጥ ያንብቡ - ከእግዚአብሔር ጋር አንድ ትንሽ ጊዜ በቂ ነው።"
@@ -551,9 +566,10 @@
     },
     "cta": {
       "home": "ወደ ቤት ተመለስ",
-      "practice": "ክፈት ልምምድ"
+      "practice": "ልምምድ ክፈት →"
     },
     "guidance": {
+      "eyebrow": "በትህትና",
       "title": "አክብሮት እና መመሪያ",
       "paragraph1": "ይህ ድህረ ገጽ በዕለት ተዕለት ሕይወት ውስጥ መማርን እና ልምምድን ይደግፋል። ጸሎትን፣ ማዳመጥን እና ለቤተክርስቲያን ፍቅርን ያበረታታል ብለን ተስፋ እናደርጋለን።",
       "paragraph2": "ካህንህን፣ ፓሪሽህን፣ መንፈሳዊ አባትህን ወይም ኦፊሴላዊ የአምልኮ መጻሕፍትን አይተካም። የጾም ህጎች፣ ቁርባን፣ ኑዛዜ እና የእረኝነት እንክብካቤ በአካል ይገባሉ - ቤተክርስቲያን ነፍስህን እንድትጠብቅ ከሰጠሃቸው ጋር።",
@@ -568,9 +584,198 @@
   },
   "footer": {
     "portfolio": "Portfolio - eskinder.dev",
-    "copyright": "© {year} Tewahedo Daily"
+    "copyright": "© {year} ተዋህዶ ዴይሊ",
+    "utilitiesAria": "የጣቢያ አገልግሎቶች",
+    "about": "ስለ",
+    "legal": "ሕጋዊ",
+    "copyrightLink": "ቅጂ መብት",
+    "privacy": "ግላዊነት",
+    "removal": "ማስወገድ",
+    "suggestCorrection": "እርማት ይጠቁሙ",
+    "submitMezmur": "መዝሙር አስገባ",
+    "saved": "የተቀመጡ",
+    "adminLogin": "የአስተዳዳሪ መግቢያ",
+    "adminDashboard": "የአስተዳዳሪ ሰሌዳ"
   },
   "common": {
-    "dialogClose": "ዝጋ"
+    "dialogClose": "ዝጋ",
+    "languageLabel": "ቋንቋ"
+  },
+  "legal": {
+    "title": "ሕጋዊ",
+    "metaDescription": "የቅጂ መብት፣ ግላዊነት፣ የማስወገድ ጥያቄዎች እና የምንጮች ማስታወሻዎች።",
+    "eyebrow": "ሕጋዊ",
+    "lede": "ስለ ቅጂ መብት፣ ግላዊነት፣ ይዘት ማስወገድ እና ምንጮች አጋር ማስታወሻዎች። ይህ ገጽ መረጋ ነው፤ የአርብቶ አደር መመሪያን ወይም ሙያዊ ሕጋዊ ምክርን አይተካም።",
+    "onThisPage": "በዚህ ገጽ ላይ",
+    "sections": {
+      "copyright": "ቅጂ መብት",
+      "privacy": "ግላዊነት",
+      "removal": "የማስወገድ ጥያቄዎች",
+      "sources": "ምንጮች"
+    },
+    "short": {
+      "copyright": "ቅጂ መብት",
+      "privacy": "ግላዊነት",
+      "removal": "ማስወገድ",
+      "sources": "ምንጮች"
+    },
+    "originalLanguageNote": "ሙሉ ማስታወሻ (እንግሊዝኛ)",
+    "suggestCorrection": "እርማት ይጠቁሙ",
+    "aboutLink": "ስለ →",
+    "aboutLinkLead": "ለምርት ዳራ እና ዓላማ ይመልከቱ"
+  },
+  "searchBuddy": {
+    "fab": "አግኝ",
+    "title": "ተዋህዶ ዴይሊ ረዳት",
+    "subtitle": "መዝሙሮችን፣ ጸሎቶችን፣ ቅዱሳንን፣ የቀን መቁጠሪያ ክስተቶችን እና ገጾችን ያግኙ።",
+    "placeholder": "ዝማሬዎች፣ ቀን መቁጠሪያ፣ ዘማሪ…",
+    "inputAria": "ተዋህዶ ዴይሊን ፈልግ",
+    "find": "ፈልግ",
+    "close": "ዝጋ",
+    "closeAssistant": "ረዳቱን ዝጋ",
+    "looking": "በመፈለግ ላይ…",
+    "searching": "ተዋህዶ ዴይሊን በመፈለግ ላይ…",
+    "defaultMessage": "መዝሙር፣ ጸሎት፣ ዘማሪ፣ በዓል ወይም ገጽ ይጠይቁ — ወደዚያ እወስድዎታለሁ።",
+    "unavailable": "ፍለጋ ለጊዜው አይገኝም። ልምምድ ወይም ጸሎትን ይሞክሩ።",
+    "foundOne": "{title} አገኝሁ።",
+    "foundMany": "ከፍለጋዎ ጋር የተያያዙ {count} ቦታዎች አገኝሁ።",
+    "foundGeneric": "ያገኝሁት እነሆ።",
+    "zero": "በተዋህዶ ዴይሊ ውስጥ አላገኝሁም። ቀን መቁጠሪያ ወይም ዘማሪ ወይም ጸሎት ይሞክሩ።",
+    "opening": "{title}ን በመክፈት ላይ።",
+    "favoritesMessage": "የተወዳጆች ገጽዎ እነሆ።",
+    "favoritesTitle": "ተወዳጆቾ",
+    "favoritesDescSignedIn": "የተቀመጡ መዝሙሮችን እና ጸሎቶችን ክፈትኩ።",
+    "favoritesDescGuest": "በዚህ መሳሪያ ላይ የተቀመጡ ተወዳጆችን ክፈትኩ።",
+    "open": "ክፈት →",
+    "starters": {
+      "meskel": "አግኝ የመስቀል መዝሙሮች",
+      "learnPray": "መጸለይን ተማር",
+      "zemari": "አግኝ ዘማሪ",
+      "fasting": "ስለ ጾም መረጋ አሳይ",
+      "calendar": "ክፈት ቀን መቁጠሪያ",
+      "prayers": "አግኝ ጸሎቶች",
+      "synaxarium": "የዛሬ ስንክሳር"
+    },
+    "types": {
+      "page": "ገጽ",
+      "mezmur": "መዝሙር",
+      "section": "ክፍል",
+      "collection": "ስብስብ",
+      "prayer": "ጸሎት",
+      "guide": "መመሪያ",
+      "zemari": "ዘማሪ",
+      "calendar": "ቀን መቁጠሪያ",
+      "account": "መለያ",
+      "liturgy": "ሥርዓተ አምልኮ",
+      "prayerCollection": "የጸሎት ስብስብ",
+      "prayerSection": "የጸሎት ክፍል",
+      "psalm": "መዝሙር",
+      "synaxarium": "ስንክሳር"
+    },
+    "seeMore": "ተጨማሪ አሳይ ({count})",
+    "partial": "አንዳንድ መረጃዎች ቀስ ብለዋል፤ የተዘጋጀውን እያሳየን ነው።",
+    "tryNearby": "ከእነዚህ ቅርብ ገጾች ይሞክሩ",
+    "preview": "ቅድመ እይታ →",
+    "previewTitle": "የስንክሳር ቅድመ እይታ",
+    "previewSubtitle": "የታተሙ ትውስታዎች ብቻ — ሲዘጋጁ ሙሉውን ቀን ይክፈቱ።",
+    "backToResults": "ወደ ውጤቶች ተመለስ",
+    "backToSearchBuddy": "ወደ ፍለጋ ረዳት ተመለስ",
+    "openFullPage": "ሙሉ ገጽ ክፈት",
+    "source": "ምንጭ",
+    "clearSession": "ፍለጋ አጽዳ"
+  },
+  "account": {
+    "signIn": "ግባ",
+    "account": "መለያ",
+    "admin": "አስተዳዳሪ"
+  },
+  "auth": {
+    "signInTitle": "ግባ",
+    "signInLead": "አማራጽ። ያለ መለያ ያለኈር ይጸልዩ። እንድ ተወዳጆች እና እድገት ለማስመመር ብቻ ግባ።",
+    "email": "ኢሜይል",
+    "password": "የአላፍል ቃል",
+    "showPassword": "አሳይ",
+    "hidePassword": "ደብቅ",
+    "signingIn": "ግባ…",
+    "signIn": "ግባ",
+    "createAccount": "መለያ ፍጠር",
+    "forgotPassword": "የአላፍል ቃል ረሳሁ",
+    "continueGuest": "ያለ መግባ ቀጥል",
+    "badCredentials": "ኢሜይል ወይም የአላፍል ቃል ትክክ አይደለም።",
+    "forgotNeedEmail": "ከላይ ኢሜይል ያስገቡ፣ ከዚያ የአላፍል ቃል ረሳሁ ይጉቱ።",
+    "resetSent": "አጥቃ ከለ ኢሜይል አላ መለያ ከለ የአላፍል ቃል ማስጊያ ሊንክ ተለክዎል።",
+    "resetFailed": "የአላፍል ቃል ኢሜይል ማላክ አልተቻም። እባክ ድገም ይሞክሩ።",
+    "signupTitle": "መለያ ፍጠር",
+    "signupLead": "አማራጽ። መለያ ተወዳጆች እና እድገት በሜዳዩች ይአስማማራል።",
+    "confirmPassword": "የአላፍል ቃል አርጋግጥ",
+    "passwordMismatch": "የአላፍል ቃሎች አይተማማሉም።",
+    "creating": "መለያ በመፍጠር ላይ…",
+    "create": "መለያ ፍጠር",
+    "haveAccount": "አስቀ መለያ አለዎት? ግባ",
+    "signupFailed": "መለያ መፍጠር አልተቻም። እባክ ድገም ይሞክሩ።",
+    "displayName": "የማዘመሪያ ስም",
+    "signupConfirmEmail": "መለያ ተፍጥሯአል። ከዚያ ለማአረጋግጥ ኢሜይል ዎን ይመልከቱ፣ ከዚያ ግባ።",
+    "memberNote": "መለዎ አንድ እንደ አባል አድላዲ ይፍጠራል። የሰራ መአስከል በዬሉ ይሰጣል።"
+  },
+  "notFound": {
+    "title": "ገጽ አልተገኛም",
+    "metaDescription": "ይህ ገጽ በተዋህዶ ዴይሊ ላይ አይገኛም።",
+    "lede": "ይህ አድራሻ የተዋህዶ ዴይሊ አይደለም። ከዚህ አስራ አኩባል ይምረጡ ወይም ወደ ቤት ይሁዱ።",
+    "navAria": "ዳና አሰሳዎች",
+    "home": "መነሻ",
+    "homeDesc": "ከዳናው ገጽ ይጀምሩ",
+    "today": "ዛሬ በቤተክርስቲያን",
+    "todayDesc": "የዘሬ መታሰቢያዎች እና ንባቦች",
+    "practice": "የመዝሙር ልምምድ",
+    "practiceDesc": "መዝሙር ይደምሱ ይለማመዱ",
+    "pray": "ይጸልዩ",
+    "prayDesc": "ጸሎቶች፣ መዝሙር፣ ሥርዓተ አምልኮ",
+    "calendar": "ቀን መቁጠሪያ",
+    "calendarDesc": "የቤተክርስቲያን ቀን መቁጠሪያ እና ቅዱሳት ቀናት",
+    "about": "ስለ",
+    "aboutDesc": "ስለ ተዋህዶ ዴይሊ"
+  },
+  "forms": {
+    "eyebrow": "የጃራ ቤተመጽገት ብይላድርጁ",
+    "correctionTitle": "እርማት ይጠቁሙ",
+    "mezmurTitle": "መዝሙር አስገባ",
+    "intro": "Share a hymn or help improve an existing entry. Every contribution is reviewed and verified before it can become a draft, receive final review, and be published.",
+    "noAccount": "No account is needed. Your email will never be displayed publicly.",
+    "notConfigured": "Community submissions are not configured yet. Please check back soon.",
+    "thankYouEyebrow": "ስለአስተዋፍዎ አናመሰግናለን",
+    "receivedTitle": "አስገባ ተቀበለ",
+    "receivedRef": "Your reference is {reference}. Please keep it for any follow-up.",
+    "receivedReview": "Our editors will review and verify your contribution. Nothing is published automatically.",
+    "returnLibrary": "ወደ መዝሙር ቤተመጽገት ተመለስ →",
+    "correctionFor": "Correction for",
+    "correctionType": "Correction type",
+    "chooseIssue": "Choose an issue",
+    "suggestedCorrection": "Suggested correction",
+    "explanation": "Explanation",
+    "mezmurTitleField": "Mezmur title",
+    "amharicTitle": "Amharic title",
+    "singer": "Singer / choir",
+    "youtube": "YouTube link",
+    "titleOrLyricsHint": "Add a recognizable title and either a YouTube video link or lyrics.",
+    "lyricsAmharic": "Amharic lyrics",
+    "lyricsEnglish": "English lyrics",
+    "lyricsOromo": "Oromo lyrics",
+    "transliteration": "Transliteration",
+    "suggestedCategory": "Suggested category",
+    "suggestedTags": "Suggested tags",
+    "tagsPlaceholder": "Separate tags with commas",
+    "additionalNotes": "Additional notes",
+    "sourceReference": "Source / reference",
+    "yourContribution": "የእርስዎ አስተዋፍ",
+    "contributorName": "Contributor name",
+    "contributorEmail": "Contributor email (optional)",
+    "emailPrivacy": "An email address lets reviewers contact you if clarification is needed. It is visible only to authorized reviewers.",
+    "creditMe": "Credit me if this submission is published",
+    "creditNote": "Your name will be public only if you request credit and an editor chooses to include it. Please share only material you have permission to contribute, and avoid private information in lyrics or notes.",
+    "submitting": "በመላክ ላይ…",
+    "sendCorrection": "እርማት ላክ",
+    "submitReview": "ለግምግና አስገባ",
+    "verifyChallenge": "Complete the verification challenge.",
+    "submitFailed": "Unable to submit. Your form has been kept; please try again."
   }
 }

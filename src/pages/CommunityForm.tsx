@@ -1,11 +1,13 @@
 ﻿import { useState, type FormEvent } from 'react'
 import { Link, useLocation, useSearchParams } from 'react-router-dom'
+import { useTranslation } from '../i18n'
 import { Turnstile } from '../components/community/Turnstile'
 import { isSupabaseConfigured, submitCommunityPayload } from '../lib/community/submit'
 import { correctionTypes, limits, validateSubmission } from '../lib/community/validation'
 import s from './CommunityForm.module.css'
 
 export function CommunityForm() {
+  const t = useTranslation()
   const [params] = useSearchParams()
   const correction = useLocation().pathname === '/suggest-correction'
   const [token, setToken] = useState('')
@@ -35,7 +37,7 @@ export function CommunityForm() {
         related_content_title: params.get('title') || '',
         current_page_url: params.get('page') || '',
       })
-      if (turnstileEnabled && !token) throw new Error('Complete the verification challenge.')
+      if (turnstileEnabled && !token) throw new Error(t('forms.verifyChallenge'))
       setBusy(true)
       const ref = await submitCommunityPayload(payload, {
         website: String(fields.website || ''),
@@ -43,11 +45,7 @@ export function CommunityForm() {
       })
       setReference(ref)
     } catch (cause) {
-      setError(
-        cause instanceof Error
-          ? cause.message
-          : 'Unable to submit. Your form has been kept; please try again.',
-      )
+      setError(cause instanceof Error ? cause.message : t('forms.submitFailed'))
     } finally {
       setBusy(false)
       setToken('')
@@ -83,15 +81,11 @@ export function CommunityForm() {
     return (
       <section className={s.shell}>
         <div className={s.card} role="status">
-          <p className={s.eyebrow}>THANK YOU FOR CONTRIBUTING</p>
-          <h1>Submission received</h1>
-          <p>
-            Your reference is <strong>{reference}</strong>. Please keep it for any follow-up.
-          </p>
-          <p>
-            Our editors will review and verify your contribution. Nothing is published automatically.
-          </p>
-          <Link to="/practice">Return to the Mezmur library →</Link>
+          <p className={s.eyebrow}>{t('forms.thankYouEyebrow')}</p>
+          <h1>{t('forms.receivedTitle')}</h1>
+          <p>{t('forms.receivedRef', { reference })}</p>
+          <p>{t('forms.receivedReview')}</p>
+          <Link to="/practice">{t('forms.returnLibrary')}</Link>
         </div>
       </section>
     )
@@ -100,17 +94,14 @@ export function CommunityForm() {
   return (
     <section className={s.shell}>
       <header>
-        <p className={s.eyebrow}>HELP GROW OUR SHARED LIBRARY</p>
-        <h1>{correction ? 'Suggest a Correction' : 'Submit a Mezmur'}</h1>
-        <p>
-          Share a hymn or help improve an existing entry. Every contribution is reviewed and verified
-          before it can become a draft, receive final review, and be published.
-        </p>
-        <p className={s.muted}>No account is needed. Your email will never be displayed publicly.</p>
+        <p className={s.eyebrow}>{t('forms.eyebrow')}</p>
+        <h1>{correction ? t('forms.correctionTitle') : t('forms.mezmurTitle')}</h1>
+        <p>{t('forms.intro')}</p>
+        <p className={s.muted}>{t('forms.noAccount')}</p>
       </header>
       {!configured && (
         <p role="status" className={s.notice}>
-          Community submissions are not configured yet. Please check back soon.
+          {t('forms.notConfigured')}
         </p>
       )}
       <form onSubmit={submit} className={s.card}>
@@ -118,13 +109,14 @@ export function CommunityForm() {
           {correction ? (
             <>
               <p>
-                Correction for <strong>{params.get('title') || 'Mezmur'}</strong>
+                {t('forms.correctionFor')}{' '}
+                <strong>{params.get('title') || 'Mezmur'}</strong>
               </p>
               <input type="hidden" name="title" value={params.get('title') || ''} />
               <label>
-                Correction type *
-                <select name="correction_type" aria-label="Correction type" required>
-                  <option value="">Choose an issue</option>
+                {t('forms.correctionType')} *
+                <select name="correction_type" aria-label={t('forms.correctionType')} required>
+                  <option value="">{t('forms.chooseIssue')}</option>
                   {correctionTypes.map((type) => (
                     <option value={type} key={type}>
                       {type.replaceAll('_', ' ')}
@@ -132,50 +124,54 @@ export function CommunityForm() {
                   ))}
                 </select>
               </label>
-              {field('suggested_correction', 'Suggested correction', true, true)}
-              {field('explanation', 'Explanation', true, true)}
+              {field('suggested_correction', t('forms.suggestedCorrection'), true, true)}
+              {field('explanation', t('forms.explanation'), true, true)}
             </>
           ) : (
             <>
-              {field('title', 'Mezmur title', false, true)}
-              {field('title_amharic', 'Amharic title')}
-              {field('singer_name', 'Singer / choir')}
-              {field('youtube_url', 'YouTube link')}
-              <p className={s.muted}>Add a recognizable title and either a YouTube video link or lyrics.</p>
-              {field('lyrics_amharic', 'Amharic lyrics', true)}
-              {field('lyrics_english', 'English lyrics', true)}
-              {field('lyrics_oromo', 'Oromo lyrics', true)}
-              {field('transliteration', 'Transliteration', true)}
-              {field('suggested_category', 'Suggested category')}
+              {field('title', t('forms.mezmurTitleField'), false, true)}
+              {field('title_amharic', t('forms.amharicTitle'))}
+              {field('singer_name', t('forms.singer'))}
+              {field('youtube_url', t('forms.youtube'))}
+              <p className={s.muted}>{t('forms.titleOrLyricsHint')}</p>
+              {field('lyrics_amharic', t('forms.lyricsAmharic'), true)}
+              {field('lyrics_english', t('forms.lyricsEnglish'), true)}
+              {field('lyrics_oromo', t('forms.lyricsOromo'), true)}
+              {field('transliteration', t('forms.transliteration'), true)}
+              {field('suggested_category', t('forms.suggestedCategory'))}
               <label>
-                Suggested tags
-                <input name="suggested_tags" maxLength={1200} placeholder="Separate tags with commas" />
+                {t('forms.suggestedTags')}
+                <input
+                  name="suggested_tags"
+                  maxLength={1200}
+                  placeholder={t('forms.tagsPlaceholder')}
+                />
               </label>
-              {field('source_notes', 'Additional notes', true)}
+              {field('source_notes', t('forms.additionalNotes'), true)}
             </>
           )}
-          {field('source_reference', 'Source / reference')}
-          <h2>Your contribution</h2>
-          {field('contributor_name', 'Contributor name', false, true)}
-          {field('contributor_email', 'Contributor email (optional)')}
-          <p className={s.muted}>
-            An email address lets reviewers contact you if clarification is needed. It is visible only to
-            authorized reviewers.
-          </p>
+          {field('source_reference', t('forms.sourceReference'))}
+          <h2>{t('forms.yourContribution')}</h2>
+          {field('contributor_name', t('forms.contributorName'), false, true)}
+          {field('contributor_email', t('forms.contributorEmail'))}
+          <p className={s.muted}>{t('forms.emailPrivacy')}</p>
           <label className={s.check}>
             <input type="checkbox" name="credit_requested" />
-            Credit me if this submission is published
+            {t('forms.creditMe')}
           </label>
-          <p className={s.muted}>
-            Your name will be public only if you request credit and an editor chooses to include it. Please
-            share only material you have permission to contribute, and avoid private information in lyrics or
-            notes.
-          </p>
+          <p className={s.muted}>{t('forms.creditNote')}</p>
           <div className={s.trap} aria-hidden="true">
-            <label>
+            <label htmlFor="community-website-hp" className={s.trapLabel}>
               Website
-              <input name="website" tabIndex={-1} autoComplete="off" />
             </label>
+            <input
+              id="community-website-hp"
+              name="website"
+              type="text"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
           </div>
           {configured && turnstileEnabled && <Turnstile key={attempt} onToken={setToken} />}
           {error && (
@@ -184,7 +180,11 @@ export function CommunityForm() {
             </p>
           )}
           <button type="submit" disabled={busy || (turnstileEnabled && !token)}>
-            {busy ? 'Submitting…' : correction ? 'Send correction' : 'Submit for review'}
+            {busy
+              ? t('forms.submitting')
+              : correction
+                ? t('forms.sendCorrection')
+                : t('forms.submitReview')}
           </button>
         </fieldset>
       </form>

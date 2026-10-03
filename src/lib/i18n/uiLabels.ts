@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import type { AppLocale } from './locale'
+import type { UiLocale } from './locale'
 import { useLocale } from './locale'
 import { findTranslation } from '../../i18n'
 
@@ -31,6 +31,11 @@ export const UI_LABELS = {
   langToggleGroup: { en: 'Language', am: 'ቋንቋ' },
   langEnglishButton: { en: 'English', am: 'English' },
   langAmharicButton: { en: 'Amharic', am: 'አማርኛ' },
+  langBothButton: { en: 'Both', am: 'ሁለቱም' },
+  langSelected: { en: 'Selected', am: 'ተመርጧል' },
+  langReadingSettings: { en: 'Reading settings', am: 'የንባብ ቅንብሮች' },
+  langTransliteration: { en: 'Transliteration', am: 'ፊደል ጽሁፍ' },
+  langTextSize: { en: 'Text size', am: 'የጽሁፍ መጠን' },
 
   calPrevMonth: { en: 'Previous month', am: 'ያለፈው ወር' },
   calNextMonth: { en: 'Next month', am: 'ቀጣይ ወር' },
@@ -737,7 +742,7 @@ export const UI_LABELS = {
 export type UiLabelKey = keyof typeof UI_LABELS
 
 export function labelForLocale(
-  locale: AppLocale,
+  locale: UiLocale,
   key: UiLabelKey,
 ): string {
   const translated = findTranslation(locale, key)
@@ -748,9 +753,9 @@ export function labelForLocale(
 
 /** Hook: `const t = useUiLabel(); t('navHome')` */
 export function useUiLabel() {
-  const { locale } = useLocale()
+  const { uiLocale } = useLocale()
   return useCallback(
-    (key: UiLabelKey) => labelForLocale(locale, key),
-    [locale],
+    (key: UiLabelKey) => labelForLocale(uiLocale, key),
+    [uiLocale],
   )
 }

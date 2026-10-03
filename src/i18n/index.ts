@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import type { AppLocale } from '../lib/i18n/locale'
+import type { UiLocale } from '../lib/i18n/locale'
 import { useLocale } from '../lib/i18n/locale'
 import en from '../locales/en.json'
 import am from '../locales/am.json'
@@ -7,7 +7,7 @@ import am from '../locales/am.json'
 type TranslationTree = typeof en
 type TranslationParams = Record<string, string | number>
 
-const DICTIONARIES: Record<AppLocale, TranslationTree> = {
+const DICTIONARIES: Record<UiLocale, TranslationTree> = {
   en,
   am: am as TranslationTree,
 }
@@ -32,6 +32,8 @@ const LEGACY_KEY_ALIASES: Record<string, string> = {
   langToggleGroup: 'language.group',
   langEnglishButton: 'language.english',
   langAmharicButton: 'language.amharic',
+  langBothButton: 'language.both',
+  langSelected: 'language.selected',
   themeDayLabel: 'theme.dayLabel',
   themeNightLabel: 'theme.nightLabel',
   themeDayTitle: 'theme.dayTitle',
@@ -150,14 +152,14 @@ function interpolate(value: string, params?: TranslationParams): string {
   })
 }
 
-function warnMissing(locale: AppLocale, key: string) {
+function warnMissing(locale: UiLocale, key: string) {
   if (import.meta.env.DEV) {
     console.warn(`[i18n] Missing translation for "${key}" in "${locale}"`)
   }
 }
 
 export function translate(
-  locale: AppLocale,
+  locale: UiLocale,
   key: string,
   params?: TranslationParams,
 ): string {
@@ -175,7 +177,7 @@ export function translate(
 }
 
 export function findTranslation(
-  locale: AppLocale,
+  locale: UiLocale,
   key: string,
   params?: TranslationParams,
 ): string | undefined {
@@ -187,9 +189,9 @@ export function findTranslation(
 }
 
 export function useTranslation() {
-  const { locale } = useLocale()
+  const { uiLocale } = useLocale()
   return useCallback(
-    (key: string, params?: TranslationParams) => translate(locale, key, params),
-    [locale],
+    (key: string, params?: TranslationParams) => translate(uiLocale, key, params),
+    [uiLocale],
   )
 }
