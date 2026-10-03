@@ -1,11 +1,10 @@
 /**
- * Regression checks for shared voice-search support (mobile failure messaging).
+ * Regression checks for shared voice-search support (English-only recognition).
  * Run: node --experimental-strip-types --no-warnings scripts/test-voice-search-support.mjs
  */
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import {
-  amharicRecognitionNote,
   detectVoiceSupport,
   extractTranscript,
   speechLocales,
@@ -13,12 +12,14 @@ import {
   voiceErrorMessage,
   voiceSupportMessage,
 } from '../src/lib/speech/voiceSearchSupport.ts'
+import { VOICE_MAX_LISTEN_MS, VOICE_RECOGNITION_LANG } from '../src/lib/speech/speechTypes.ts'
 
-assert.equal(speechLocales.am, 'am-ET')
 assert.equal(speechLocales.en, 'en-US')
-assert.equal(toSpeechLocale('am'), 'am-ET')
+assert.equal(toSpeechLocale('am'), 'en-US')
 assert.equal(toSpeechLocale('en'), 'en-US')
 assert.equal(toSpeechLocale('both'), 'en-US')
+assert.equal(VOICE_RECOGNITION_LANG, 'en-US')
+assert.equal(VOICE_MAX_LISTEN_MS, 15_000)
 
 const insecure = {
   isSecureContext: false,
@@ -60,8 +61,6 @@ const extracted = extractTranscript({
 assert.equal(extracted.transcript, `${qidus} ${george}`)
 assert.equal(extracted.isFinal, true)
 
-assert.match(amharicRecognitionNote('en'), /browser/i)
-
 const buddy = readFileSync(new URL('../src/components/search/SearchBuddy.tsx', import.meta.url), 'utf8')
 assert.match(buddy, /MezmurVoiceSearch/)
 assert.match(buddy, /active=\{open && !preview\}/)
@@ -71,15 +70,16 @@ const voiceUi = readFileSync(new URL('../src/components/search/MezmurVoiceSearch
 assert.match(voiceUi, /detectVoiceSupport/)
 assert.match(voiceUi, /continuous = false/)
 assert.match(voiceUi, /interimResults = false/)
-assert.match(voiceUi, /recognition\.lang = language/)
-assert.match(voiceUi, /am-ET/)
+assert.match(voiceUi, /VOICE_RECOGNITION_LANG/)
+assert.match(voiceUi, /recognition\.lang = VOICE_RECOGNITION_LANG/)
+assert.doesNotMatch(voiceUi, /am-ET/)
+assert.doesNotMatch(voiceUi, /languageOverride/)
+assert.doesNotMatch(voiceUi, /Voice language/)
 assert.match(voiceUi, /onstart/)
-assert.match(voiceUi, /stopAll\('lang-change'\)/)
 assert.match(voiceUi, /type="button"/)
 assert.match(voiceUi, /stopPropagation/)
 assert.match(voiceUi, /visibilitychange/)
 assert.match(voiceUi, /voiceDebug/)
-assert.match(voiceUi, /amharicTextOnly/)
 assert.match(voiceUi, /disposeWhisperClient/)
 assert.match(voiceUi, /voiceTimeoutRef/)
 assert.match(voiceUi, /clearVoiceTimeout/)
@@ -93,9 +93,18 @@ assert.doesNotMatch(voiceUi, /runWhisperFallback/)
 assert.doesNotMatch(voiceUi, /🎙/)
 
 const speechTypes = readFileSync(new URL('../src/lib/speech/speechTypes.ts', import.meta.url), 'utf8')
-assert.match(speechTypes, /VOICE_MAX_LISTEN_MS = 10_000/)
-assert.match(speechTypes, /WHISPER_MAX_RECORD_MS = 10_000/)
-
+assert.match(speechTypes, /VOICE_MAX_LISTEN_MS = 15_000/)
+assert.match(speechTypes, /WHISPER_MAX_RECORD_MS = 15_000/)
 assert.match(speechTypes, /BROWSER_WHISPER_ENABLED = false/)
+assert.match(speechTypes, /VOICE_RECOGNITION_LANG/)
+
+const hymns = readFileSync(new URL('../src/pages/PublicMezmurLibrary.tsx', import.meta.url), 'utf8')
+assert.match(hymns, /Say the letters separately, not the whole word/)
+
+const homeToday = readFileSync(
+  new URL('../src/components/home/HomeTodayInChurchPreview.tsx', import.meta.url),
+  'utf8',
+)
+assert.doesNotMatch(homeToday, /Explore Today|home\.today\.cta|to=\"\/today\"/)
 
 console.log('test-voice-search-support: ok')

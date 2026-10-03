@@ -24,13 +24,6 @@ const messages = {
     processing: 'Processing…',
     stopped: 'Voice search stopped.',
     startFailed: 'Could not start voice search. Please try again, or type your search.',
-    amharicNote:
-      'Amharic recognition uses your browser’s speech service when available. Offline voice is used if needed.',
-    amharicNativeFallback:
-      "Native Amharic voice recognition isn't available here. Using Amharic voice fallback…",
-    amharicTextOnly:
-      "Amharic voice recognition isn't available on this device yet. You can still type your search in Amharic.",
-    voiceLang: 'Voice language',
     searchByVoice: 'Search by voice',
     stop: 'Stop',
     startAria: 'Start voice search',
@@ -76,13 +69,6 @@ const messages = {
     stopped: '\u134d\u1208\u130b\u12cd \u1270\u124b\u122d\u1327\u120d\u1362',
     startFailed:
       '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u120a\u1300\u121d\u122d \u12a0\u120d\u127b\u1208\u121d\u1362 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229 \u12c8\u12ed\u121d \u1260\u133d\u1201\u134d \u12ed\u1348\u120d\u1309\u1362',
-    amharicNote:
-      'የአማርኛ ድምፅ ማወቂያ በአሳሾ አገልግሎት ይጠቀማል። አስፈላጊ ድምፅ እንደራሊ ይጠቀማል።',
-    amharicNativeFallback:
-      '\u12e8\u12a0\u1233\u123d \u12a0\u121b\u122d\u129b \u12f5\u121d\u1335 \u121b\u12c8\u1242\u12eb \u12a0\u120d\u1270\u1308\u1298\u121d\u1362 \u12e8\u12a0\u12ab\u1263\u12ed \u12f5\u130d\u134d \u12ed\u1300\u1240\u121b\u120d\u2026',
-    amharicTextOnly:
-      '\u12e8\u12a0\u121b\u122d\u129b \u12f5\u121d\u1335 \u121b\u12c8\u1242\u12eb \u1260\u12da\u1205 \u121c\u12ab\u122d \u12a0\u12ed\u1308\u129d\u121d\u1362 \u12a5\u1263\u12ad\u12ce \u1260\u12a0\u121b\u122d\u129b \u12ed\u1348\u120d\u1309\u1362',
-    voiceLang: '\u12e8\u12f5\u121d\u1345 \u124b\u1295\u124b',
     searchByVoice: '\u1260\u12f5\u121d\u1345 \u1348\u120d\u130d',
     stop: '\u12a0\u1241\u121d',
     startAria: '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u1300\u121d\u122d',
@@ -105,13 +91,12 @@ const messages = {
   },
 } as const
 
-/** UI locale → Web Speech BCP-47 tag. Keep app locale ids separate from recognition locales. */
+/** Voice recognition is English-only. UI locale remains separate for status copy. */
 export const speechLocales = {
-  am: 'am-ET',
   en: 'en-US',
 } as const
 
-export type VoiceSearchLang = (typeof speechLocales)[keyof typeof speechLocales]
+export type VoiceSearchLang = 'en-US'
 export type VoiceUiLang = 'en' | 'am'
 export type VoicePhase =
   | 'idle'
@@ -166,8 +151,10 @@ function msg(ui: VoiceUiLang, key: MsgKey, params?: Record<string, string>): str
   return text
 }
 
-export function toSpeechLocale(appLocale: string | null | undefined): VoiceSearchLang {
-  return appLocale === 'am' ? speechLocales.am : speechLocales.en
+/** Always English recognition, regardless of UI/content locale. */
+export function toSpeechLocale(_appLocale?: string | null): VoiceSearchLang {
+  void _appLocale
+  return speechLocales.en
 }
 
 export function getSpeechConstructor(
@@ -274,13 +261,8 @@ export function voiceStartFailedMessage(ui: VoiceUiLang): string {
   return msg(ui, 'startFailed')
 }
 
-export function amharicRecognitionNote(ui: VoiceUiLang): string {
-  return msg(ui, 'amharicNote')
-}
-
 export function voiceUiLabels(ui: VoiceUiLang) {
   return {
-    voiceLang: msg(ui, 'voiceLang'),
     searchByVoice: msg(ui, 'searchByVoice'),
     stop: msg(ui, 'stop'),
     startAria: msg(ui, 'startAria'),

@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { useTranslation } from '../../i18n'
+import { VOICE_MAX_LISTEN_MS } from '../../lib/speech/speechTypes'
 import styles from './VoiceRecorder.module.css'
 
 export type RecordingMode = 'with-lyrics' | 'from-memory'
@@ -44,7 +45,15 @@ export function VoiceRecorder({
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const timerRef = useRef<number | null>(null)
   const countdownRef = useRef<number | null>(null)
+  const maxDurationRef = useRef<number | null>(null)
   const chunksRef = useRef<Blob[]>([])
+
+  const clearMaxDuration = useCallback(() => {
+    if (maxDurationRef.current != null) {
+      window.clearTimeout(maxDurationRef.current)
+      maxDurationRef.current = null
+    }
+  }, [])
 
   const cleanup = useCallback(() => {
     if (timerRef.current) {
@@ -52,13 +61,14 @@ export function VoiceRecorder({
       timerRef.current = null
     }
     if (countdownRef.current) {
-      clearTimeout(countdownRef.current)
+      clearInterval(countdownRef.current)
       countdownRef.current = null
     }
+    clearMaxDuration()
     if (mediaRecorderRef.current?.state === 'recording') {
       mediaRecorderRef.current.stop()
     }
-  }, [])
+  }, [clearMaxDuration])
 
   useEffect(() => cleanup, [cleanup])
 
@@ -89,6 +99,7 @@ export function VoiceRecorder({
 
       mediaRecorder.onstop = () => {
         stream.getTracks().forEach((track) => track.stop())
+        clearMaxDuration()
         const audioBlob = new Blob(chunksRef.current, { type: mediaRecorder.mimeType })
         const audioUrl = URL.createObjectURL(audioBlob)
 
@@ -113,11 +124,20 @@ export function VoiceRecorder({
       timerRef.current = window.setInterval(() => {
         setState((prev) => ({ ...prev, duration: prev.duration + 0.1 }))
       }, 100)
+
+      clearMaxDuration()
+      maxDurationRef.current = window.setTimeout(() => {
+        maxDurationRef.current = null
+        if (mediaRecorderRef.current?.state === 'recording') {
+          mediaRecorderRef.current.stop()
+        }
+      }, VOICE_MAX_LISTEN_MS)
     } catch (error) {
       console.error('Error starting recording:', error)
+      clearMaxDuration()
       setState((prev) => ({ ...prev, status: 'idle' }))
     }
-  }, [])
+  }, [clearMaxDuration])
 
   const startCountdown = useCallback(() => {
     setCountdown(3)
@@ -154,17 +174,18 @@ export function VoiceRecorder({
   }, [disabled, isMediaRecorderSupported, state.audioUrl, startCountdown])
 
   const stopRecording = useCallback(() => {
+    clearMaxDuration()
     if (mediaRecorderRef.current?.state === 'recording') {
       mediaRecorderRef.current.stop()
     }
 
     if (countdownRef.current) {
-      clearTimeout(countdownRef.current)
+      clearInterval(countdownRef.current)
       countdownRef.current = null
       setCountdown(null)
       setState((prev) => ({ ...prev, status: 'idle' }))
     }
-  }, [])
+  }, [clearMaxDuration])
 
   const playRecording = useCallback(() => {
     if (!state.audioUrl) return

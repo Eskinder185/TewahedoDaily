@@ -481,10 +481,13 @@ export function PublicMezmurLibrary() {
             </button>
           ) : null}
         </div>
-        <MezmurVoiceSearch onTranscript={(text) => {
-          setDraftQ(text)
-          setSuggestOpen(false)
-        }} />
+        <MezmurVoiceSearch
+          helperCaption="Say the letters separately, not the whole word."
+          onTranscript={(text) => {
+            setDraftQ(text)
+            setSuggestOpen(false)
+          }}
+        />
       </div>
 
       {showResults ? (

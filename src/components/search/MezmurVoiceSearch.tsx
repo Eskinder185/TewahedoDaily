@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { useLocale } from '../../lib/i18n/locale'
 import { decideNativeFallback, isWhisperCapable } from '../../lib/speech/fallbackDecision'
-import { VOICE_MAX_LISTEN_MS, type NativeSpeechErrorCode } from '../../lib/speech/speechTypes'
 import {
-  amharicRecognitionNote,
+  VOICE_MAX_LISTEN_MS,
+  VOICE_RECOGNITION_LANG,
+  type NativeSpeechErrorCode,
+} from '../../lib/speech/speechTypes'
+import {
   detectVoiceSupport,
   extractTranscript,
   phaseStatus,
   stopRecognition,
-  toSpeechLocale,
   voiceDebug,
   voiceErrorMessage,
   voiceMessage,
@@ -16,7 +18,6 @@ import {
   voiceUiLabels,
   type BrowserSpeechRecognition,
   type VoicePhase,
-  type VoiceSearchLang,
 } from '../../lib/speech/voiceSearchSupport'
 import { disposeWhisperClient } from '../../lib/speech/whisperClient'
 import styles from './MezmurVoiceSearch.module.css'
@@ -42,15 +43,16 @@ export function MezmurVoiceSearch({
   onFinalTranscript,
   active = true,
   compact = false,
+  helperCaption,
 }: {
   onTranscript: (text: string) => void
   onFinalTranscript?: (text: string) => void
   active?: boolean
   compact?: boolean
+  /** Optional muted caption (e.g. transliteration letter guidance). */
+  helperCaption?: string
 }) {
   const { locale } = useLocale()
-  const [languageOverride, setLanguageOverride] = useState<VoiceSearchLang | null>(null)
-  const language = languageOverride ?? toSpeechLocale(locale)
   const [phase, setPhase] = useState<VoicePhase>('idle')
   const [status, setStatus] = useState('')
   const recognitionRef = useRef<BrowserSpeechRecognition | null>(null)
@@ -64,8 +66,6 @@ export function MezmurVoiceSearch({
   const ui = locale === 'am' ? 'am' : 'en'
   const labels = voiceUiLabels(ui)
   const nativeSupport = detectVoiceSupport()
-  // Browser Whisper is hard-disabled (crashes mobile). Keep the check so a future
-  // re-enable still flows through decideNativeFallback safely.
   const whisperCapable = isWhisperCapable()
 
   function setPhaseSafe(next: VoicePhase) {
@@ -147,26 +147,16 @@ export function MezmurVoiceSearch({
   }
 
   function showUnavailableFallback(reason: string) {
-    voiceDebug('voice unavailable', { reason, lang: language })
+    voiceDebug('voice unavailable', { reason, lang: VOICE_RECOGNITION_LANG })
     setPhaseSafe('error')
-    if (language === 'am-ET') {
-      setStatus(voiceMessage(ui, 'amharicTextOnly'))
-    } else {
-      setStatus(voiceMessage(ui, 'textOnly'))
-    }
+    setStatus(voiceMessage(ui, 'textOnly'))
   }
 
-  function stopAll(reason: 'user' | 'inactive' | 'unmount' | 'lang-change') {
+  function stopAll(reason: 'user' | 'inactive' | 'unmount') {
     voiceSessionRef.current += 1
     clearVoiceTimeout()
     hardStopNative(reason)
-    // Ensure any prior Whisper worker/session cannot linger after Search Buddy closes.
     disposeWhisperClient()
-    if (reason === 'lang-change') {
-      setPhaseSafe('idle')
-      setStatus('')
-      return
-    }
     if (reason === 'user' || reason === 'inactive') {
       setPhaseSafe('idle')
       setStatus(voiceStoppedMessage(ui))
@@ -174,13 +164,10 @@ export function MezmurVoiceSearch({
   }
 
   useEffect(() => {
-    // Belt-and-suspenders: never leave a heavy ASR worker alive from an older build/session.
     disposeWhisperClient()
     if (!nativeSupport.ok) {
       setPhaseSafe('unsupported')
-      setStatus(
-        language === 'am-ET' ? voiceMessage(ui, 'amharicTextOnly') : voiceMessage(ui, 'textOnly'),
-      )
+      setStatus(voiceMessage(ui, 'textOnly'))
     }
     return () => stopAll('unmount')
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -204,10 +191,9 @@ export function MezmurVoiceSearch({
 
   function handleNativeFailure(code: NativeSpeechErrorCode) {
     hardStopNative(code)
-    const decision = decideNativeFallback(code, whisperCapable, { lang: language })
-    voiceDebug('native failure decision', { code, lang: language, decision, whisperCapable })
+    const decision = decideNativeFallback(code, whisperCapable)
+    voiceDebug('native failure decision', { code, lang: VOICE_RECOGNITION_LANG, decision, whisperCapable })
 
-    // Browser Whisper is disabled — never start local ASR / MediaRecorder inference.
     if (decision.action === 'whisper') {
       showUnavailableFallback(decision.reason)
       return
@@ -227,7 +213,6 @@ export function MezmurVoiceSearch({
       setStatus(voiceStoppedMessage(ui))
       return
     }
-    // text-only
     if (code === 'audio-capture') {
       setPhaseSafe('error')
       setStatus(voiceErrorMessage(code, ui))
@@ -245,7 +230,6 @@ export function MezmurVoiceSearch({
     const sessionId = ++voiceSessionRef.current
     heardFinalRef.current = false
 
-    // Always create a fresh instance so an English session cannot keep a stale locale.
     const recognition = new nativeSupport.ctor()
     recognition.continuous = false
     recognition.interimResults = false
@@ -283,7 +267,6 @@ export function MezmurVoiceSearch({
           error: speechEvent.error,
           message: speechEvent.message,
           locale: recognition.lang,
-          selected: language,
         })
       }
       voiceDebug('native onerror', {
@@ -324,8 +307,8 @@ export function MezmurVoiceSearch({
     }, 4000)
 
     try {
-      recognition.lang = language === 'am-ET' ? 'am-ET' : 'en-US'
-      voiceDebug('native start', { lang: recognition.lang, selected: language, sessionId })
+      recognition.lang = VOICE_RECOGNITION_LANG
+      voiceDebug('native start', { lang: recognition.lang, sessionId })
       recognition.start()
     } catch (error) {
       clearStartWatchdog()
@@ -367,23 +350,6 @@ export function MezmurVoiceSearch({
 
   return (
     <div className={compact ? `${styles.root} ${styles.compact}` : styles.root}>
-      <label className={styles.language}>
-        <span>{labels.voiceLang}</span>
-        <select
-          value={language}
-          disabled={busy}
-          onChange={(event) => {
-            stopAll('lang-change')
-            const next = event.target.value as VoiceSearchLang
-            setLanguageOverride(next)
-            setStatus(next === 'am-ET' ? amharicRecognitionNote(ui) : '')
-            voiceDebug('language override', next)
-          }}
-        >
-          <option value="en-US">English</option>
-          <option value="am-ET">አማርኛ</option>
-        </select>
-      </label>
       <button
         className={`${styles.button} ${busy ? styles.buttonListening : ''} ${phase === 'error' || phase === 'native-failed' ? styles.buttonError : ''}`}
         type="button"
@@ -394,6 +360,7 @@ export function MezmurVoiceSearch({
       >
         {buttonLabel}
       </button>
+      {helperCaption ? <p className={styles.helperCaption}>{helperCaption}</p> : null}
       <p
         className={`${styles.status} ${phase === 'error' || phase === 'unsupported' || phase === 'native-failed' ? styles.statusError : ''}`}
         role="status"

@@ -8,13 +8,15 @@ async function main() {
   await context.grantPermissions(['microphone'], { origin: BASE })
   const page = await context.newPage()
   await page.goto(`${BASE}/`, { waitUntil: 'networkidle', timeout: 60000 })
-  await page.getByRole('button', { name: /find something/i }).click()
-  await page.getByLabel(/voice language/i).selectOption('am-ET')
-  const afterLang = await page.locator('[class*="status"]').first().innerText()
-  console.log('after am select:', afterLang.slice(0, 140))
+  await page.getByRole('button', { name: /search|find something|open search/i }).click()
+
+  // Voice language toggle must be gone (English-only recognition).
+  const langToggle = page.getByLabel(/voice language/i)
+  if ((await langToggle.count()) > 0) {
+    throw new Error('Voice language toggle should not be visible')
+  }
 
   await page.getByRole('button', { name: /start voice search|search by voice/i }).click()
-  // Either Listening… or a clear error/timeout — never silent idle with no status.
   await page.waitForFunction(() => {
     const status = document.querySelector('[class*="status"]')?.textContent || ''
     const btn = document.querySelector('button[aria-pressed]')?.textContent || ''
@@ -39,41 +41,23 @@ async function main() {
     })),
   )
 
-  // Force idle before language-switch race test.
   await page.getByRole('button', { name: /stop voice search|stop|starting/i }).click().catch(() => {})
   await page.waitForTimeout(200)
-  // If still busy (hung start), wait for watchdog to clear the select.
-  await page.waitForFunction(() => {
-    const select = document.querySelector('label select, select')
-    return select instanceof HTMLSelectElement && !select.disabled
-  }, null, { timeout: 6000 })
 
-  await page.getByLabel(/voice language/i).selectOption('en-US')
+  // Second session should still start cleanly (no stale 15s timer).
   await page.getByRole('button', { name: /start voice search|search by voice/i }).click()
-  await page.waitForTimeout(400)
-  // Switch language while/after session — hardStop must clear ref so next tap can start.
-  await page.waitForFunction(() => {
-    const select = document.querySelector('label select, select')
-    return select instanceof HTMLSelectElement && !select.disabled
-  }, null, { timeout: 6000 }).catch(async () => {
-    await page.getByRole('button', { name: /stop voice search|stop|starting/i }).click()
-  })
-  await page.getByLabel(/voice language/i).selectOption('am-ET')
-  await page.waitForTimeout(120)
-  await page.getByRole('button', { name: /start voice search|search by voice/i }).click()
-  await page.waitForTimeout(700)
-  const afterSwitchBtn = await page
+  await page.waitForTimeout(500)
+  const retapBtn = await page
     .getByRole('button', { name: /stop voice search|stop|start voice search|search by voice|starting/i })
     .first()
     .innerText()
-  const afterSwitchStatus = await page.locator('[class*="status"]').first().innerText()
-  console.log('after en->am retap button:', afterSwitchBtn)
-  console.log('after en->am retap status:', afterSwitchStatus.slice(0, 160))
-  if (!afterSwitchStatus.trim() && !/stop|starting|listening/i.test(afterSwitchBtn)) {
-    throw new Error('Amharic retap produced no visible feedback')
+  const retapStatus = await page.locator('[class*="status"]').first().innerText()
+  console.log('retap button:', retapBtn)
+  console.log('retap status:', retapStatus.slice(0, 160))
+  if (!retapStatus.trim() && !/stop|starting|listening/i.test(retapBtn)) {
+    throw new Error('English retap produced no visible feedback')
   }
 
-  // 360px layout: mic visible and tappable size
   await page.setViewportSize({ width: 360, height: 740 })
   const box = await page.getByRole('button', { name: /start voice search|search by voice|stop/i }).boundingBox()
   console.log('360px mic box', box)
@@ -83,7 +67,7 @@ async function main() {
   console.log('verify-search-buddy-voice: ok')
 }
 
-main().catch((err) => {
-  console.error(err)
+main().catch((error) => {
+  console.error(error)
   process.exit(1)
 })

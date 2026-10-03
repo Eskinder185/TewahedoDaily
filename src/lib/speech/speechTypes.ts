@@ -1,6 +1,9 @@
-export type VoiceSearchLang = 'am-ET' | 'en-US'
+/** Voice recognition is English-only (`en-US`). */
+export type VoiceSearchLang = 'en-US'
 export type VoiceUiLang = 'en' | 'am'
 export type SpeechProvider = 'native' | 'whisper' | 'none'
+
+export const VOICE_RECOGNITION_LANG: VoiceSearchLang = 'en-US'
 
 export type VoicePhase =
   | 'idle'
@@ -48,9 +51,9 @@ export type WhisperWorkerOut =
 
 export const WHISPER_MODEL_ID = 'Xenova/whisper-tiny'
 /** Multilingual tiny; quantized ONNX is typically ~40–75 MB on first download. */
-export const WHISPER_MAX_RECORD_MS = 10_000
-/** Maximum native listen / Whisper record window (maximum, not minimum). */
-export const VOICE_MAX_LISTEN_MS = 10_000
+export const WHISPER_MAX_RECORD_MS = 15_000
+/** Maximum native listen / practice record window (maximum, not minimum). */
+export const VOICE_MAX_LISTEN_MS = 15_000
 export const WHISPER_SAMPLE_RATE = 16_000
 
 /**

@@ -956,6 +956,9 @@ export function ChantPracticePlayer({
                 <p className={styles.privacyNote}>
                   Your recording stays on this device unless you choose otherwise.
                 </p>
+                <p className={styles.voiceHint}>
+                  Say the letters separately, not the whole word.
+                </p>
                 <VoiceRecorder
                   mode={recordingMode}
                   onModeChange={setRecordingMode}
@@ -1033,6 +1036,9 @@ export function ChantPracticePlayer({
               <h3 className={miniStyles.sheetSectionTitle}>Record</h3>
               <p className={styles.privacyNote}>
                 Your recording stays on this device unless you choose otherwise.
+              </p>
+              <p className={styles.voiceHint}>
+                Say the letters separately, not the whole word.
               </p>
               <VoiceRecorder
                 mode={recordingMode}
