@@ -5,7 +5,8 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { decideNativeFallback, whisperLanguageFromSpeechLang } from '../src/lib/speech/fallbackDecision.ts'
-import { WHISPER_MODEL_ID } from '../src/lib/speech/speechTypes.ts'
+import { VOICE_MAX_LISTEN_MS, WHISPER_MAX_RECORD_MS, WHISPER_MODEL_ID } from '../src/lib/speech/speechTypes.ts'
+import { voiceErrorMessage } from '../src/lib/speech/voiceSearchSupport.ts'
 
 function resampleMono(input, fromRate, toRate) {
   if (fromRate === toRate) return input
@@ -23,11 +24,22 @@ function resampleMono(input, fromRate, toRate) {
 }
 
 assert.equal(WHISPER_MODEL_ID, 'Xenova/whisper-tiny')
+assert.equal(VOICE_MAX_LISTEN_MS, 10_000)
+assert.equal(WHISPER_MAX_RECORD_MS, 10_000)
 assert.equal(whisperLanguageFromSpeechLang('am-ET'), 'am')
 assert.equal(whisperLanguageFromSpeechLang('en-US'), 'en')
 
-assert.equal(decideNativeFallback('not-allowed', true).action, 'permission')
-assert.equal(decideNativeFallback('service-not-allowed', true).action, 'permission')
+// True mic denial (English) stays permission-only.
+assert.equal(decideNativeFallback('not-allowed', true, { lang: 'en-US' }).action, 'permission')
+
+// Amharic not-allowed → Whisper first (verify mic via getUserMedia; do not assume blocked).
+assert.equal(decideNativeFallback('not-allowed', true, { lang: 'am-ET' }).action, 'whisper')
+
+// service-not-allowed is a speech-service failure, never mic-blocked messaging.
+assert.equal(decideNativeFallback('service-not-allowed', true, { lang: 'am-ET' }).action, 'whisper')
+assert.equal(decideNativeFallback('service-not-allowed', true, { lang: 'en-US' }).action, 'whisper')
+assert.equal(decideNativeFallback('service-not-allowed', false, { lang: 'am-ET' }).action, 'text-only')
+
 assert.equal(decideNativeFallback('no-speech', true).action, 'retry')
 assert.equal(decideNativeFallback('aborted', true).action, 'idle')
 assert.equal(decideNativeFallback('audio-capture', true).action, 'text-only')
@@ -36,6 +48,11 @@ assert.equal(decideNativeFallback('network', true).action, 'whisper')
 assert.equal(decideNativeFallback('unsupported', true).action, 'whisper')
 assert.equal(decideNativeFallback('start-timeout', true).action, 'whisper')
 assert.equal(decideNativeFallback('start-threw', false).action, 'text-only')
+assert.equal(decideNativeFallback('unknown', true, { lang: 'am-ET' }).action, 'whisper')
+
+assert.match(voiceErrorMessage('not-allowed', 'en'), /blocked|settings/i)
+assert.doesNotMatch(voiceErrorMessage('service-not-allowed', 'en'), /blocked|settings/i)
+assert.match(voiceErrorMessage('service-not-allowed', 'en'), /unavailable|fallback|language/i)
 
 const input = Float32Array.from([0, 1, 0, -1, 0, 1, 0, -1])
 const out = resampleMono(input, 32_000, 16_000)
@@ -49,6 +66,17 @@ assert.match(voiceUi, /runWhisperFallback/)
 assert.match(voiceUi, /interimResults = false/)
 assert.match(voiceUi, /decideNativeFallback/)
 assert.match(voiceUi, /transcribeWithWhisper/)
+assert.match(voiceUi, /amharicNativeFallback/)
+assert.match(voiceUi, /SpeechRecognition error/)
+assert.match(voiceUi, /recognition\.lang = language === 'am-ET' \? 'am-ET' : 'en-US'/)
+assert.match(voiceUi, /maxMs: VOICE_MAX_LISTEN_MS/)
+assert.match(voiceUi, /onMaxDuration/)
+assert.match(voiceUi, /finishWhisperRecording/)
+
+const audioCapture = readFileSync(new URL('../src/lib/speech/audioCapture.ts', import.meta.url), 'utf8')
+assert.match(audioCapture, /stopPromise/)
+assert.match(audioCapture, /track\.stop\(\)/)
+assert.match(audioCapture, /onMaxDuration\?\.\(\)/)
 
 const worker = readFileSync(new URL('../src/lib/speech/whisperWorker.ts', import.meta.url), 'utf8')
 assert.match(worker, /@huggingface\/transformers/)

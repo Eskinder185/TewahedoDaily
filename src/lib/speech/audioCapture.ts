@@ -77,13 +77,20 @@ export async function startAudioCapture(
   const startedAt = performance.now()
   let maxTimer: number | null = null
   let stopped = false
+  let stopPromise: Promise<Float32Array> | null = null
 
   recorder.ondataavailable = (event) => {
     if (event.data.size > 0) chunks.push(event.data)
   }
 
   const stopTracks = () => {
-    stream.getTracks().forEach((track) => track.stop())
+    stream.getTracks().forEach((track) => {
+      try {
+        track.stop()
+      } catch {
+        /* ignore */
+      }
+    })
   }
 
   const decodeToWhisperPcm = async (): Promise<Float32Array> => {
@@ -104,10 +111,13 @@ export async function startAudioCapture(
   }
 
   const stop = async (): Promise<Float32Array> => {
-    if (stopped) return decodeToWhisperPcm()
+    if (stopPromise) return stopPromise
     stopped = true
-    if (maxTimer != null) window.clearTimeout(maxTimer)
-    const pcm = await new Promise<Float32Array>((resolve, reject) => {
+    if (maxTimer != null) {
+      window.clearTimeout(maxTimer)
+      maxTimer = null
+    }
+    stopPromise = new Promise<Float32Array>((resolve, reject) => {
       recorder.onerror = () => {
         stopTracks()
         reject(new Error('Recording failed.'))
@@ -122,13 +132,19 @@ export async function startAudioCapture(
         resolve(new Float32Array(0))
       }
     })
-    return pcm
+    return stopPromise
   }
 
   const cancel = () => {
-    if (stopped) return
+    if (stopped) {
+      stopTracks()
+      return
+    }
     stopped = true
-    if (maxTimer != null) window.clearTimeout(maxTimer)
+    if (maxTimer != null) {
+      window.clearTimeout(maxTimer)
+      maxTimer = null
+    }
     try {
       if (recorder.state === 'recording') recorder.stop()
     } catch {
@@ -136,12 +152,14 @@ export async function startAudioCapture(
     }
     stopTracks()
     chunks.length = 0
+    stopPromise = Promise.resolve(new Float32Array(0))
   }
 
   recorder.start(200)
   maxTimer = window.setTimeout(() => {
-    options.onMaxDuration?.()
-    void stop()
+    void stop().then(() => {
+      options.onMaxDuration?.()
+    })
   }, maxMs)
 
   return {

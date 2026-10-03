@@ -5,6 +5,7 @@ import { useLocale } from '../lib/i18n/locale'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { loadBibleBook, loadBibleCatalog, loadChapterText } from '../lib/bible/bibleQueries'
 import type { BibleBookDetail, BibleLanguage, CanonicalBook, ChapterText, ReaderChapter, SourceBook } from '../lib/bible/bibleTypes'
+import { BibleSearchBar } from '../components/bible/BibleSearchBar'
 import s from './BiblePage.module.css'
 
 const WORDS = {
@@ -108,6 +109,7 @@ export function BibleCatalogPage() {
   const books = result.data?.books.filter((book) => book.collection === testament) || []
   return <section className={s.shell}>
     <header className={s.hero}><p className={s.eyebrow}>Tewahedo Daily</p><h1>{w.bible}</h1><p>{w.subtitle}</p></header>
+    <BibleSearchBar />
     <div className={s.testaments} role="group" aria-label={w.bible}>
       <button type="button" aria-pressed={testament === 'old'} onClick={() => setTestament('old')}>{w.old} <span>46</span></button>
       <button type="button" aria-pressed={testament === 'new'} onClick={() => setTestament('new')}>{w.newer} <span>35</span></button>

@@ -43,7 +43,15 @@
       "title": "Your daily church companion",
       "tagline": "Prayer, hymns, and the Ethiopian Orthodox calendar - gathered in one quiet place.",
       "primaryCta": "Explore Practice",
-      "secondaryCta": "See Today in Church"
+      "secondaryCta": "See Today in Church",
+      "quickNavLabel": "Quick links",
+      "quickNav": {
+        "bible": "Bible",
+        "pray": "Pray",
+        "hymns": "Hymns",
+        "calendar": "Calendar",
+        "learn": "Learn"
+      }
     },
     "today": {
       "eyebrow": "Today in Church",

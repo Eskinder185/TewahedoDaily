@@ -1,10 +1,19 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { imageManifest } from '../../content/imageManifest'
 import { ButtonLink } from '../ui/ButtonLink'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
 import { listHomepageSlides, type HomepageSlide } from '../../lib/cms/homepageService'
 import styles from './HeroSection.module.css'
+
+const HERO_QUICK_LINKS = [
+  { key: 'bible', to: '/bible' },
+  { key: 'pray', to: '/pray' },
+  { key: 'hymns', to: '/practice' },
+  { key: 'calendar', to: '/calendar' },
+  { key: 'learn', to: '/pray/learn-how-to-pray' },
+] as const
 
 type SlideView = {
   id: string
@@ -178,6 +187,13 @@ export function HeroSection() {
               {current.secondaryLabel}
             </ButtonLink>
           </div>
+          <nav className={styles.quickNav} aria-label={t('home.hero.quickNavLabel')}>
+            {HERO_QUICK_LINKS.map((item) => (
+              <Link key={item.key} to={item.to} className={styles.quickChip}>
+                {t(`home.hero.quickNav.${item.key}`)}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         {multi ? (

@@ -43,7 +43,15 @@
       "title": "የዕለት ቤተክርስቲያን ጓደኛዎ",
       "tagline": "ጸሎት፣ መዝሙርና የኢትዮጵያ ኦርቶዶክስ ቀን መቁጠሪያ - በአንድ ጸጥ ያለ ቦታ።",
       "primaryCta": "ወደ ልምምድ",
-      "secondaryCta": "ዛሬን በቤተክርስቲያን ይመልከቱ"
+      "secondaryCta": "ዛሬን በቤተክርስቲያን ይመልከቱ",
+      "quickNavLabel": "ፈጣን አገናኞች",
+      "quickNav": {
+        "bible": "መጽሐፍ ቅዱስ",
+        "pray": "ጸሎት",
+        "hymns": "መዝሙር",
+        "calendar": "ቀን መቁጠሪያ",
+        "learn": "ተማር"
+      }
     },
     "today": {
       "eyebrow": "ዛሬ በቤተክርስቲያን",

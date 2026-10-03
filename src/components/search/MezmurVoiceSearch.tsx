@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { useLocale } from '../../lib/i18n/locale'
 import { canCaptureAudio, startAudioCapture, type AudioCaptureSession } from '../../lib/speech/audioCapture'
 import { decideNativeFallback, isWhisperCapable, whisperLanguageFromSpeechLang } from '../../lib/speech/fallbackDecision'
+import { VOICE_MAX_LISTEN_MS, type NativeSpeechErrorCode } from '../../lib/speech/speechTypes'
 import {
   amharicRecognitionNote,
   detectVoiceSupport,
@@ -19,8 +20,9 @@ import {
   type VoiceSearchLang,
 } from '../../lib/speech/voiceSearchSupport'
 import { ensureWhisperLoaded, isWhisperClientAvailable, transcribeWithWhisper } from '../../lib/speech/whisperClient'
-import type { NativeSpeechErrorCode } from '../../lib/speech/speechTypes'
 import styles from './MezmurVoiceSearch.module.css'
+
+const VOICE_MAX_SECONDS = Math.round(VOICE_MAX_LISTEN_MS / 1000)
 
 function mapNativeError(code: string): NativeSpeechErrorCode {
   const known: NativeSpeechErrorCode[] = [
@@ -57,6 +59,10 @@ export function MezmurVoiceSearch({
   const phaseRef = useRef<VoicePhase>('idle')
   const ignoreAbortedRef = useRef(false)
   const startWatchdogRef = useRef<number | null>(null)
+  const voiceTimeoutRef = useRef<number | null>(null)
+  const voiceCountdownRef = useRef<number | null>(null)
+  const voiceSessionRef = useRef(0)
+  const heardFinalRef = useRef(false)
   const preferWhisperNextTapRef = useRef(false)
   const cancelledRef = useRef(false)
   const ui = locale === 'am' ? 'am' : 'en'
@@ -76,14 +82,79 @@ export function MezmurVoiceSearch({
     }
   }
 
+  function clearVoiceTimeout() {
+    if (voiceTimeoutRef.current != null) {
+      window.clearTimeout(voiceTimeoutRef.current)
+      voiceTimeoutRef.current = null
+    }
+    if (voiceCountdownRef.current != null) {
+      window.clearInterval(voiceCountdownRef.current)
+      voiceCountdownRef.current = null
+    }
+  }
+
+  function startVoiceTimeout(
+    sessionId: number,
+    mode: 'listening' | 'recording',
+    onTimeout: () => void,
+  ) {
+    clearVoiceTimeout()
+    let secondsLeft = VOICE_MAX_SECONDS
+    const tickStatus = () => {
+      if (voiceSessionRef.current !== sessionId) return
+      if (mode === 'listening' && phaseRef.current === 'listening-native') {
+        setStatus(voiceMessage(ui, 'listeningCountdown', { seconds: String(secondsLeft) }))
+      }
+      if (mode === 'recording' && phaseRef.current === 'recording') {
+        setStatus(
+          `${voiceMessage(ui, 'recordingCountdown', { seconds: String(secondsLeft) })} ${voiceMessage(ui, 'offlineLocal')}`,
+        )
+      }
+    }
+    tickStatus()
+    voiceCountdownRef.current = window.setInterval(() => {
+      if (voiceSessionRef.current !== sessionId) {
+        clearVoiceTimeout()
+        return
+      }
+      secondsLeft = Math.max(0, secondsLeft - 1)
+      if (secondsLeft > 0) tickStatus()
+    }, 1000)
+    voiceTimeoutRef.current = window.setTimeout(() => {
+      voiceTimeoutRef.current = null
+      if (voiceCountdownRef.current != null) {
+        window.clearInterval(voiceCountdownRef.current)
+        voiceCountdownRef.current = null
+      }
+      if (voiceSessionRef.current !== sessionId) return
+      voiceDebug('voice max duration', { mode, sessionId })
+      onTimeout()
+    }, VOICE_MAX_LISTEN_MS)
+  }
+
   function hardStopNative(reason: string) {
     clearStartWatchdog()
+    clearVoiceTimeout()
     const recognition = recognitionRef.current
     if (!recognition) return
     ignoreAbortedRef.current = true
     recognitionRef.current = null
     stopRecognition(recognition)
     voiceDebug('hardStopNative', reason)
+  }
+
+  /** Soft stop keeps handlers so final results can still arrive. */
+  function softStopNative(reason: string) {
+    clearStartWatchdog()
+    clearVoiceTimeout()
+    const recognition = recognitionRef.current
+    if (!recognition) return
+    voiceDebug('softStopNative', reason)
+    try {
+      recognition.stop()
+    } catch {
+      /* ignore */
+    }
   }
 
   function cancelCapture() {
@@ -93,6 +164,8 @@ export function MezmurVoiceSearch({
 
   function stopAll(reason: 'user' | 'inactive' | 'unmount' | 'lang-change') {
     cancelledRef.current = true
+    voiceSessionRef.current += 1
+    clearVoiceTimeout()
     hardStopNative(reason)
     cancelCapture()
     if (reason === 'lang-change') {
@@ -134,29 +207,40 @@ export function MezmurVoiceSearch({
   async function runWhisperFallback(trigger: string) {
     if (!whisperCapable) {
       setPhaseSafe('error')
-      setStatus(voiceMessage(ui, 'textOnly'))
+      setStatus(language === 'am-ET' ? voiceMessage(ui, 'amharicTextOnly') : voiceMessage(ui, 'textOnly'))
       return
     }
 
     cancelledRef.current = false
-    voiceDebug('whisper fallback', trigger)
+    const sessionId = ++voiceSessionRef.current
+    heardFinalRef.current = false
+    voiceDebug('whisper fallback', trigger, { lang: language, sessionId })
     preferWhisperNextTapRef.current = false
 
     try {
       setPhaseSafe('requesting-mic')
-      setStatus(phaseStatus('requesting-mic', '', ui))
+      setStatus(
+        language === 'am-ET'
+          ? voiceMessage(ui, 'amharicNativeFallback')
+          : phaseStatus('requesting-mic', '', ui),
+      )
       const capture = await startAudioCapture({
+        maxMs: VOICE_MAX_LISTEN_MS,
         onMaxDuration: () => {
-          voiceDebug('max recording duration')
+          if (voiceSessionRef.current !== sessionId || cancelledRef.current) return
+          voiceDebug('max recording duration → finish', { sessionId })
+          void finishWhisperRecording()
         },
       })
-      if (cancelledRef.current) {
+      if (cancelledRef.current || voiceSessionRef.current !== sessionId) {
         capture.cancel()
         return
       }
       captureRef.current = capture
       setPhaseSafe('recording')
-      setStatus(`${phaseStatus('recording', '', ui)} ${voiceMessage(ui, 'offlineLocal')}`)
+      startVoiceTimeout(sessionId, 'recording', () => {
+        // audioCapture also enforces maxMs; countdown UI only here.
+      })
 
       // Warm model while user speaks (lazy; singleton).
       void ensureWhisperLoaded((info) => {
@@ -167,6 +251,7 @@ export function MezmurVoiceSearch({
       }).catch((error) => voiceDebug('prefetch model failed', error))
     } catch (error) {
       voiceDebug('getUserMedia failed', error)
+      clearVoiceTimeout()
       const name = error instanceof DOMException ? error.name : ''
       if (name === 'NotAllowedError' || name === 'PermissionDeniedError') {
         setPhaseSafe('error')
@@ -189,6 +274,7 @@ export function MezmurVoiceSearch({
     const capture = captureRef.current
     if (!capture) return
     captureRef.current = null
+    clearVoiceTimeout()
     try {
       setPhaseSafe('loading-model')
       setStatus(voiceMessage(ui, 'preparingOffline'))
@@ -196,7 +282,7 @@ export function MezmurVoiceSearch({
       if (cancelledRef.current) return
       if (pcm.length === 0) {
         setPhaseSafe('error')
-        setStatus(voiceMessage(ui, 'emptyTranscript'))
+        setStatus(voiceMessage(ui, 'noSpeech'))
         return
       }
 
@@ -221,7 +307,7 @@ export function MezmurVoiceSearch({
       const transcript = text.trim()
       if (!transcript) {
         setPhaseSafe('error')
-        setStatus(voiceMessage(ui, 'emptyTranscript'))
+        setStatus(voiceMessage(ui, 'noSpeech'))
         return
       }
       // Raw Ethiopic/Latin from the model — no transliteration/translation.
@@ -242,11 +328,11 @@ export function MezmurVoiceSearch({
 
   function handleNativeFailure(code: NativeSpeechErrorCode) {
     hardStopNative(code)
-    const decision = decideNativeFallback(code, whisperCapable)
-    voiceDebug('native failure decision', code, decision)
+    const decision = decideNativeFallback(code, whisperCapable, { lang: language })
+    voiceDebug('native failure decision', { code, lang: language, decision })
     if (decision.action === 'permission') {
       setPhaseSafe('error')
-      setStatus(voiceErrorMessage(code === 'service-not-allowed' ? 'not-allowed' : code, ui))
+      setStatus(voiceErrorMessage(code, ui))
       return
     }
     if (decision.action === 'retry') {
@@ -261,10 +347,16 @@ export function MezmurVoiceSearch({
     }
     if (decision.action === 'text-only') {
       setPhaseSafe('error')
-      setStatus(voiceMessage(ui, 'textOnly'))
+      if (code === 'audio-capture') {
+        setStatus(voiceErrorMessage(code, ui))
+      } else if (language === 'am-ET') {
+        setStatus(voiceMessage(ui, 'amharicTextOnly'))
+      } else {
+        setStatus(voiceMessage(ui, 'textOnly'))
+      }
       return
     }
-    // whisper
+    // whisper — never show "microphone blocked" for Amharic service failures
     void runWhisperFallback(decision.reason)
   }
 
@@ -274,8 +366,11 @@ export function MezmurVoiceSearch({
       return
     }
 
+    const sessionId = ++voiceSessionRef.current
+    heardFinalRef.current = false
+
+    // Always create a fresh instance so an English session cannot keep a stale locale.
     const recognition = new nativeSupport.ctor()
-    recognition.lang = language
     recognition.continuous = false
     recognition.interimResults = false
     recognition.maxAlternatives = 1
@@ -283,9 +378,12 @@ export function MezmurVoiceSearch({
     recognition.onstart = () => {
       clearStartWatchdog()
       ignoreAbortedRef.current = false
+      if (voiceSessionRef.current !== sessionId) return
       setPhaseSafe('listening-native')
-      setStatus(phaseStatus('listening-native', '', ui))
-      voiceDebug('native onstart', { lang: language })
+      startVoiceTimeout(sessionId, 'listening', () => {
+        softStopNative('max-listen')
+      })
+      voiceDebug('native onstart', { lang: recognition.lang, sessionId })
     }
 
     recognition.onresult = (speechEvent) => {
@@ -293,6 +391,8 @@ export function MezmurVoiceSearch({
       if (!transcript) return
       onTranscript(transcript)
       if (isFinal) {
+        heardFinalRef.current = true
+        clearVoiceTimeout()
         onFinalTranscript?.(transcript)
         setPhaseSafe('processing')
         setStatus(phaseStatus('processing', transcript, ui))
@@ -301,6 +401,20 @@ export function MezmurVoiceSearch({
 
     recognition.onerror = (speechEvent) => {
       clearStartWatchdog()
+      clearVoiceTimeout()
+      if (import.meta.env.DEV) {
+        console.debug('SpeechRecognition error', {
+          error: speechEvent.error,
+          message: speechEvent.message,
+          locale: recognition.lang,
+          selected: language,
+        })
+      }
+      voiceDebug('native onerror', {
+        error: speechEvent.error,
+        message: speechEvent.message,
+        locale: recognition.lang,
+      })
       if (speechEvent.error === 'aborted' && ignoreAbortedRef.current) {
         ignoreAbortedRef.current = false
         return
@@ -310,15 +424,17 @@ export function MezmurVoiceSearch({
 
     recognition.onend = () => {
       clearStartWatchdog()
+      clearVoiceTimeout()
       if (recognitionRef.current === recognition) recognitionRef.current = null
       const prior = phaseRef.current
-      if (prior === 'processing') {
+      if (prior === 'processing' || heardFinalRef.current) {
         setPhaseSafe('idle')
         return
       }
       if (prior === 'listening-native' || prior === 'starting-native') {
-        // Ended with no usable transcript and no error path.
-        setPhaseSafe('idle')
+        // Ended with no usable transcript (timeout or browser silence end).
+        setPhaseSafe('error')
+        setStatus(voiceMessage(ui, 'noSpeech'))
       }
     }
 
@@ -334,9 +450,13 @@ export function MezmurVoiceSearch({
     }, 4000)
 
     try {
+      // Assign locale immediately before start — never reuse a prior English lang.
+      recognition.lang = language === 'am-ET' ? 'am-ET' : 'en-US'
+      voiceDebug('native start', { lang: recognition.lang, selected: language, sessionId })
       recognition.start()
     } catch (error) {
       clearStartWatchdog()
+      clearVoiceTimeout()
       recognitionRef.current = null
       voiceDebug('native start threw', error)
       handleNativeFailure('start-threw')
