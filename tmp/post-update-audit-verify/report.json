@@ -1,0 +1,68 @@
+{
+  "base": "http://127.0.0.1:4181/",
+  "checks": [
+    {
+      "name": "L01 focus trap",
+      "ok": true,
+      "detail": {
+        "inside": true,
+        "onFab": true
+      }
+    },
+    {
+      "name": "L03 Timkat hero naturalWidth",
+      "ok": true,
+      "detail": {
+        "present": true,
+        "complete": true,
+        "naturalWidth": 1200,
+        "src": "http://127.0.0.1:4181/images/calendar-web/Timket.webp"
+      }
+    },
+    {
+      "name": "L04 mezmur title in viewport",
+      "ok": true,
+      "detail": {
+        "scrollY": 0,
+        "h1Top": 148.046875,
+        "text": "Our Lord and King of Peace"
+      }
+    },
+    {
+      "name": "L05 Timkat practice search",
+      "ok": true,
+      "detail": {
+        "hasSection": true,
+        "snippet": "LISTEN · LEARN · PRAY\n\nHymns Practice\n\nLearn and practice Ethiopian Orthodox Mezmur.\n\nSearch hymns, saints, singers, occasions\nClear\nVoice language\nEnglish\nአማርኛ\n🎙 Search by voice\n\nSearch results · 1\nBack to browse\nTimkat / Epiphany\nጥምቀት\nHolidays Feasts\nTimkat / Baptism\nጥምቀት\nJesus Christ\nOur Lord and King of Peace\n\nmezmur"
+      }
+    },
+    {
+      "name": "L07 Amharic feast label",
+      "ok": true,
+      "detail": {
+        "avoidedBadPhrase": true
+      }
+    },
+    {
+      "name": "L08 weekday dedupe",
+      "ok": true,
+      "detail": {
+        "ok": true
+      }
+    },
+    {
+      "name": "L09 single main landmark",
+      "ok": true,
+      "detail": {
+        "count": 1
+      }
+    },
+    {
+      "name": "L13 legal target height",
+      "ok": true,
+      "detail": {
+        "height": 45.468719482421875
+      }
+    }
+  ]
+}

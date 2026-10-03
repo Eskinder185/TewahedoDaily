@@ -121,16 +121,23 @@ export function ChantLyricsLearningPanel({
     <div className={styles.scroll} ref={scrollRef} tabIndex={0} style={lyricsStyle}>
       {scriptMode === 'both' && hasTrans ? (
         <div className={styles.bothStack}>
-          <div className={styles.block}>
-            <h3 className={styles.blockLabel}>Amharic</h3>
-            <p className={styles.text} lang="am">
-              {lyricsGez || '—'}
-            </p>
-          </div>
+          {hasLyrics ? (
+            <div className={styles.block}>
+              <h3 className={styles.blockLabel}>Amharic</h3>
+              <p className={styles.text} lang="am">
+                {lyricsGez}
+              </p>
+            </div>
+          ) : null}
           <div className={styles.block}>
             <h3 className={styles.blockLabel}>Transliteration</h3>
             <p className={styles.textTrans}>{transliterationLyrics}</p>
           </div>
+          {!hasLyrics ? (
+            <p className={styles.textTrans} role="status">
+              Amharic lyrics are not available for this Mezmur.
+            </p>
+          ) : null}
         </div>
       ) : memorize ? (
         <div className={styles.lines}>

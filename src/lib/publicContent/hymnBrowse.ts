@@ -1291,10 +1291,14 @@ export async function searchImportMezmurs(
   total: number
   page: number
 }> {
-  const needle = query.trim().toLowerCase()
+  const rawNeedle = query.trim()
   const page = Math.max(1, options?.page || 1)
   const pageSize = Math.min(50, Math.max(1, options?.pageSize || 24))
-  if (!supabase || needle.length < 2) return { items: [], total: 0, page }
+  if (!supabase || rawNeedle.length < 2) return { items: [], total: 0, page }
+
+  const tokens = searchTokens(rawNeedle)
+  const needle = rawNeedle.toLowerCase()
+  if (!tokens.length && needle.length < 2) return { items: [], total: 0, page }
 
   const { data, error } = await supabase
     .from(T.data as never)
@@ -1319,9 +1323,12 @@ export async function searchImportMezmurs(
       const keywords = parseKeywords(row.search_keywords).join(' ')
       const hay =
         `${title} ${titleAmharic} ${titleEnglish} ${singer} ${keywords} ${slug}`.toLowerCase()
-      return { row, hay, score: hay.includes(needle) ? 1 : 0 }
+      const tokenHit = tokens.length ? hayMatchesTokens(hay, tokens) : false
+      const score = hay.includes(needle) ? 2 : tokenHit ? 1 : 0
+      return { row, hay, score }
     })
     .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score)
 
   const total = matched.length
   const slice = matched.slice((page - 1) * pageSize, page * pageSize)

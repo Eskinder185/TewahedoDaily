@@ -1,0 +1,11 @@
+{
+  "today": {
+    "selectionsAria": "የዛሬ የአርታዩ ምርጫዎች",
+    "selectionsTitle": "የዛሬ ምርጫዎች",
+    "mezmurOfDay": "የዛሬ መዝሙር",
+    "saintOfDay": "የዛሬ ቅዱስ",
+    "feastOfDay": "የዛሬ በዓል"
+  },
+  "feast": "ታላቅ በዓል",
+  "practice": "የመዝሙር ልምምድ"
+}

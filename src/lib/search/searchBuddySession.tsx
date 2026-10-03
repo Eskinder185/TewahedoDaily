@@ -12,11 +12,24 @@ import type { SearchSessionContext } from './searchCore'
 
 const STORAGE_KEY = 'td:searchBuddy:v1'
 
+/** Locale-independent reply payload — localize at render time (audit L10). */
+export type SearchBuddyReply =
+  | { kind: 'searching' }
+  | { kind: 'unavailable' }
+  | { kind: 'zero' }
+  | { kind: 'favorites' }
+  | { kind: 'opening'; title: string }
+  | { kind: 'foundOne'; title: string; partial?: boolean }
+  | { kind: 'foundMany'; count: number; partial?: boolean }
+  | { kind: 'generic'; partial?: boolean }
+
 export type SearchBuddySnapshot = {
   query: string
   results: SiteSearchResult[]
   suggestions: SiteSearchResult[]
+  /** @deprecated Prefer `reply` — kept for older sessionStorage payloads */
   message: string
+  reply: SearchBuddyReply | null
   hasSearched: boolean
   showAll: boolean
   resultsScrollTop: number
@@ -41,6 +54,7 @@ const EMPTY: SearchBuddySnapshot = {
   results: [],
   suggestions: [],
   message: '',
+  reply: null,
   hasSearched: false,
   showAll: false,
   resultsScrollTop: 0,
@@ -64,6 +78,7 @@ function readStored(): SearchBuddySnapshot {
       suggestions: Array.isArray(parsed.suggestions) ? parsed.suggestions : [],
       preview: parsed.preview ?? null,
       followUp: parsed.followUp ?? null,
+      reply: parsed.reply ?? null,
     }
   } catch {
     return EMPTY

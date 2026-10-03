@@ -4,6 +4,7 @@ import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import {
   getHymnCollections,
+  getMezmursForSection,
   searchHymns,
   searchImportMezmurs,
   type HymnCollection,
@@ -11,6 +12,7 @@ import {
 } from '../lib/publicContent/hymnBrowse'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { expandSearchAliases } from '../lib/search/routeCatalog'
+import { useTranslation } from '../i18n'
 import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { MezmurVoiceSearch } from '../components/search/MezmurVoiceSearch'
 import s from './HymnPractice.module.css'
@@ -137,11 +139,13 @@ function MezmurResultGrid({
   loading,
   error,
   onRetry,
+  emptyMessage,
 }: {
   items: SearchItem[]
   loading: boolean
   error?: string
   onRetry: () => void
+  emptyMessage: string
 }) {
   if (loading) return <MezmurSkeletonGrid />
   if (error) {
@@ -155,7 +159,7 @@ function MezmurResultGrid({
     )
   }
   if (!items.length) {
-    return <p className={s.status}>No hymns matched your search.</p>
+    return <p className={s.status}>{emptyMessage}</p>
   }
   return (
     <div className={s.grid}>
@@ -185,6 +189,7 @@ function MezmurResultGrid({
  * Hymns Practice landing — collections browse + search over mezmur_data_import.
  */
 export function PublicMezmurLibrary() {
+  const t = useTranslation()
   const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const [draftQ, setDraftQ] = useState(params.get('q') || '')
@@ -196,6 +201,7 @@ export function PublicMezmurLibrary() {
     items: SearchItem[]
     total: number
     page: number
+    fromSections?: boolean
   } | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string>()
@@ -209,8 +215,8 @@ export function PublicMezmurLibrary() {
   const page = Math.max(1, Number(params.get('page') || '1') || 1)
 
   usePageMeta(
-    'Hymns Practice',
-    'Learn and practice Ethiopian Orthodox Mezmur — browse by feast, saint, or zemari.',
+    t('practice.metaTitle'),
+    t('practice.metaDescription'),
   )
 
   useEffect(() => {
@@ -290,25 +296,87 @@ export function PublicMezmurLibrary() {
     setLoading(true)
     setError(undefined)
     setResult(null)
-    const q = (params.get('q') || '').trim()
-    void searchImportMezmurs(q, { page, pageSize: 24 })
-      .then((data) => {
-        if (active) {
-          setResult(data)
+    const qRaw = (params.get('q') || '').trim()
+    const q = expandSearchAliases(qRaw)
+    void (async () => {
+      try {
+        const [data, hits] = await Promise.all([
+          searchImportMezmurs(q, { page, pageSize: 24 }),
+          searchHymns(q, 8),
+        ])
+        if (!active) return
+        setDiscoveryHits(hits)
+
+        if (data.total > 0) {
+          setResult({ ...data, fromSections: false })
           setLoading(false)
+          return
         }
-      })
-      .catch((cause) => {
+
+        // Title search empty but section/singer matches exist — surface linked Mezmurs
+        const sectionHits = hits.filter((h) => h.type === 'section').slice(0, 3)
+        if (sectionHits.length) {
+          const linkedBatches = await Promise.all(
+            sectionHits.map(async (hit) => {
+              const parts = hit.href.split('/').filter(Boolean)
+              // practice / browse / :collection / :section
+              const collectionSlug = parts[2] || ''
+              const sectionSlug = parts[3] || ''
+              if (!collectionSlug || !sectionSlug) return [] as SearchItem[]
+              const linked = await getMezmursForSection(collectionSlug, sectionSlug, {
+                page: 1,
+                pageSize: 24,
+              })
+              return linked.items.map((item) => ({
+                id: item.id,
+                slug: item.slug,
+                title: item.title,
+                title_amharic: item.titleAmharic || null,
+                title_english: item.titleEnglish || null,
+                thumbnail_url: item.thumbnailUrl,
+                youtube_url: item.youtubeUrl,
+                singer_name: item.singerName,
+                language: null,
+                form: null,
+              }))
+            }),
+          )
+          if (!active) return
+          const seen = new Set<string>()
+          const merged: SearchItem[] = []
+          for (const batch of linkedBatches) {
+            for (const item of batch) {
+              if (seen.has(item.id)) continue
+              seen.add(item.id)
+              merged.push(item)
+            }
+          }
+          if (merged.length) {
+            setResult({
+              items: merged.slice(0, 24),
+              total: merged.length,
+              page: 1,
+              fromSections: true,
+            })
+            setLoading(false)
+            return
+          }
+        }
+
+        setResult({ ...data, fromSections: false })
+        setLoading(false)
+      } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] search', cause)
-        setError('Unable to load Hymn Practice.')
+        setError(t('practice.loadError'))
         setResult(null)
         setLoading(false)
-      })
+      }
+    })()
     return () => {
       active = false
     }
-  }, [params, page, reloadTick, showResults])
+  }, [params, page, reloadTick, showResults, t])
 
   const applyDiscoveryHit = (hit: HymnDiscoveryHit) => {
     setSuggestOpen(false)
@@ -328,18 +396,41 @@ export function PublicMezmurLibrary() {
 
   const totalPages = result ? Math.max(1, Math.ceil(result.total / 24)) : 1
 
+  const sectionMatchCount = discoveryHits.filter(
+    (hit) => hit.type === 'section' || hit.type === 'singer' || hit.type === 'collection',
+  ).length
+
+  const resultsHeading = (() => {
+    if (loading || !result) return t('practice.searching')
+    if (result.fromSections) {
+      return t('practice.resultsFromSections', {
+        hymns: result.total,
+        sections: sectionMatchCount || 1,
+      })
+    }
+    if (result.total === 0 && sectionMatchCount > 0) {
+      return t('practice.resultsSectionsOnly', { count: sectionMatchCount })
+    }
+    return t('practice.resultsCount', { count: result.total })
+  })()
+
+  const emptyMessage =
+    sectionMatchCount > 0
+      ? t('practice.emptyTitlesWithSections')
+      : t('practice.emptyHymns')
+
   return (
     <section className={s.page}>
       <header className={s.intro}>
-        <p className={s.eyebrow}>Listen · Learn · Pray</p>
-        <h1 className={s.title}>Hymns Practice</h1>
-        <p className={s.subtitle}>Learn and practice Ethiopian Orthodox Mezmur.</p>
+        <p className={s.eyebrow}>{t('practice.eyebrow')}</p>
+        <h1 className={s.title}>{t('practice.title')}</h1>
+        <p className={s.subtitle}>{t('practice.subtitle')}</p>
       </header>
 
       <div className={s.toolbar}>
         <div className={s.searchRow} ref={searchWrapRef}>
           <label className={s.srOnly} htmlFor="hymn-search">
-            Search hymns, saints, singers, occasions
+            {t('practice.searchLabel')}
           </label>
           <div className={s.searchField}>
             <input
@@ -354,7 +445,7 @@ export function PublicMezmurLibrary() {
               onKeyDown={(event) => {
                 if (event.key === 'Escape') setSuggestOpen(false)
               }}
-              placeholder="Search hymns, saints, singers, occasions…"
+              placeholder={t('practice.searchPlaceholder')}
               maxLength={200}
               autoComplete="off"
               role="combobox"
@@ -386,7 +477,7 @@ export function PublicMezmurLibrary() {
           </div>
           {showResults ? (
             <button type="button" className={s.clearBtn} onClick={clearSearch}>
-              Clear
+              {t('practice.clear')}
             </button>
           ) : null}
         </div>
@@ -399,17 +490,13 @@ export function PublicMezmurLibrary() {
       {showResults ? (
         <>
           <div className={s.resultsHead}>
-            <h2 className={s.browseTitle}>
-              {loading || !result
-                ? 'Searching…'
-                : `Search results · ${result.total}`}
-            </h2>
+            <h2 className={s.browseTitle}>{resultsHeading}</h2>
             <Link to="/practice" className={s.viewAll}>
-              Back to browse
+              {t('practice.backToBrowse')}
             </Link>
           </div>
-          {!loading && discoveryHits.length > 0 ? (
-            <ul className={s.suggestList} aria-label="Matching sections and singers">
+          {!loading && sectionMatchCount > 0 ? (
+            <ul className={s.suggestList} aria-label={t('practice.matchingSectionsAria')}>
               {discoveryHits
                 .filter((hit) => hit.type === 'section' || hit.type === 'singer' || hit.type === 'collection')
                 .slice(0, 6)
@@ -433,6 +520,7 @@ export function PublicMezmurLibrary() {
             loading={loading || !result}
             error={error}
             onRetry={() => setReloadTick((n) => n + 1)}
+            emptyMessage={emptyMessage}
           />
           {result && totalPages > 1 ? (
             <div className={s.pager}>
@@ -478,7 +566,7 @@ export function PublicMezmurLibrary() {
           {!browse && !browseError ? (
             <>
               <header className={s.browseHead}>
-                <h2 className={s.browseTitle}>Browse</h2>
+                <h2 className={s.browseTitle}>{t('practice.browse')}</h2>
               </header>
               <CollectionSkeletonGrid />
             </>

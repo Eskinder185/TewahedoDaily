@@ -65,8 +65,8 @@ export function GuidedPrayerStepper({
         })}
       </ol>
 
-      {/* Compact mobile dots */}
-      <ol className={styles.stepDots} aria-hidden="true">
+      {/* Compact mobile numbered steps (single-row scroll) */}
+      <ol className={styles.stepDots} aria-label={`Step ${currentIndex + 1} of ${total}`}>
         {stepSlugs.map((slug, index) => {
           const isCurrent = index === currentIndex
           const isDone = done.has(slug)
@@ -74,7 +74,6 @@ export function GuidedPrayerStepper({
             <li key={`d-${slug}`}>
               <button
                 type="button"
-                tabIndex={-1}
                 className={[
                   styles.stepDot,
                   isCurrent ? styles.stepDotCurrent : '',
@@ -82,9 +81,12 @@ export function GuidedPrayerStepper({
                 ]
                   .filter(Boolean)
                   .join(' ')}
+                aria-current={isCurrent ? 'step' : undefined}
+                aria-label={`${isDone ? 'Completed' : 'Step'} ${index + 1}: ${stepTitles[index] || slug}`}
                 onClick={() => onSelect(index)}
-                aria-label={`Go to step ${index + 1}`}
-              />
+              >
+                {isDone && !isCurrent ? '✓' : String(index + 1)}
+              </button>
             </li>
           )
         })}

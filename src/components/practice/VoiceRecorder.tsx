@@ -74,11 +74,14 @@ export function VoiceRecorder({
 
       chunksRef.current = []
 
-      const mediaRecorder = new MediaRecorder(stream, {
-        mimeType: MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
-          ? 'audio/webm;codecs=opus'
-          : 'audio/webm',
-      })
+      const mimeType = [
+        'audio/mp4',
+        'audio/webm;codecs=opus',
+        'audio/webm',
+      ].find((candidate) => MediaRecorder.isTypeSupported(candidate))
+      const mediaRecorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream)
 
       mediaRecorder.ondataavailable = (event) => {
         if (event.data.size > 0) chunksRef.current.push(event.data)

@@ -73,7 +73,13 @@ function PrayerLink({
           <span lang="am">{secondary}</span>
         ) : null}
         {!isPsalm && (prayer.chapter || prayer.section) ? (
-          <small>{[prayer.chapter, prayer.section].filter(Boolean).join(' / ')}</small>
+          <small>
+            {[prayer.chapter, prayer.section]
+              .map((part) => (part || '').trim())
+              .filter(Boolean)
+              .filter((part, index, all) => all.findIndex((p) => p.toLowerCase() === part.toLowerCase()) === index)
+              .join(' / ')}
+          </small>
         ) : null}
       </span>
       <span className={styles.action}>{openLabel}</span>

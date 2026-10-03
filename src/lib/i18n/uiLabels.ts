@@ -216,10 +216,10 @@ export const UI_LABELS = {
   chantSkipBack: { en: 'Rewind 5 seconds', am: '5 ሰከንድ ወደ ኋላ' },
   chantSkipForward: { en: 'Forward 5 seconds', am: '5 ሰከንድ ወደ ፊት' },
 
-  themeDayLabel: { en: 'Day', am: '??' },
-  themeNightLabel: { en: 'Night', am: '???' },
-  themeDayTitle: { en: 'Switch to Day theme', am: '?? ?? ??? ????' },
-  themeNightTitle: { en: 'Switch to Night theme', am: '?? ??? ??? ????' },
+  themeDayLabel: { en: 'Day', am: 'ቀን' },
+  themeNightLabel: { en: 'Night', am: 'ሌሊት' },
+  themeDayTitle: { en: 'Switch to Day theme', am: 'ወደ ቀን ገጽታ ቀይር' },
+  themeNightTitle: { en: 'Switch to Night theme', am: 'ወደ ሌሊት ገጽታ ቀይር' },
   homeGatewayEyebrow: { en: 'Three ways in', am: 'ሶስት መንገዶች' },
   homeGatewayTitle: { en: 'Enter through learning, prayer, or the day itself.', am: 'በትምህርት፣ በጸሎት ወይም በቀኑ ይግቡ።' },
   homeGatewayDeck: {

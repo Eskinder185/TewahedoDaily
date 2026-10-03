@@ -4,7 +4,6 @@ import {
   useRef,
   useState,
   type FormEvent,
-  type KeyboardEvent as ReactKeyboardEvent,
   type RefObject,
 } from 'react'
 import { createPortal } from 'react-dom'
@@ -18,8 +17,12 @@ import {
 } from '../../lib/search/searchSite'
 import { INITIAL_RESULT_COUNT } from '../../lib/search/searchCore'
 import type { SiteSearchResult } from '../../lib/search/types'
-import { useSearchBuddy } from '../../lib/search/searchBuddySession'
+import {
+  useSearchBuddy,
+  type SearchBuddyReply,
+} from '../../lib/search/searchBuddySession'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
+import { MezmurVoiceSearch } from './MezmurVoiceSearch'
 import { SearchResultCard } from './SearchResultCard'
 import styles from './SearchBuddy.module.css'
 
@@ -67,29 +70,54 @@ function localizeResult(
   return result
 }
 
-function replyFromResponse(
-  response: {
-    zeroResults: boolean
-    results: SiteSearchResult[]
-    partial: boolean
-  },
-  t: (key: string, params?: Record<string, string | number>) => string,
-): string {
-  if (response.zeroResults) return t('searchBuddy.zero')
+function replyFromResponse(response: {
+  zeroResults: boolean
+  results: SiteSearchResult[]
+  partial: boolean
+}): SearchBuddyReply {
+  if (response.zeroResults) return { kind: 'zero' }
   const first = response.results[0]
-  if (!first) return t('searchBuddy.foundGeneric')
+  if (!first) return { kind: 'generic', partial: response.partial }
   if (first.matchKind === 'personal' && first.route === '/saved') {
-    return t('searchBuddy.favoritesMessage')
+    return { kind: 'favorites' }
   }
   if (first.matchKind === 'intent' && response.results.length === 1) {
-    return t('searchBuddy.opening', { title: first.title })
+    return { kind: 'opening', title: first.title }
   }
-  let msg =
-    response.results.length === 1
-      ? t('searchBuddy.foundOne', { title: first.title })
-      : t('searchBuddy.foundMany', { count: response.results.length })
-  if (response.partial) msg = `${msg} ${t('searchBuddy.partial')}`
-  return msg
+  if (response.results.length === 1) {
+    return { kind: 'foundOne', title: first.title, partial: response.partial }
+  }
+  return { kind: 'foundMany', count: response.results.length, partial: response.partial }
+}
+
+function formatReply(
+  reply: SearchBuddyReply | null,
+  t: (key: string, params?: Record<string, string | number>) => string,
+  fallbackMessage: string,
+): string {
+  if (!reply) return fallbackMessage
+  const withPartial = (msg: string, partial?: boolean) =>
+    partial ? `${msg} ${t('searchBuddy.partial')}` : msg
+  switch (reply.kind) {
+    case 'searching':
+      return t('searchBuddy.searching')
+    case 'unavailable':
+      return t('searchBuddy.unavailable')
+    case 'zero':
+      return t('searchBuddy.zero')
+    case 'favorites':
+      return t('searchBuddy.favoritesMessage')
+    case 'opening':
+      return t('searchBuddy.opening', { title: reply.title })
+    case 'foundOne':
+      return withPartial(t('searchBuddy.foundOne', { title: reply.title }), reply.partial)
+    case 'foundMany':
+      return withPartial(t('searchBuddy.foundMany', { count: reply.count }), reply.partial)
+    case 'generic':
+      return withPartial(t('searchBuddy.foundGeneric'), reply.partial)
+    default:
+      return fallbackMessage
+  }
 }
 
 export function SearchBuddy() {
@@ -123,6 +151,7 @@ export function SearchBuddy() {
     results,
     suggestions,
     message,
+    reply,
     hasSearched,
     showAll,
     preview,
@@ -132,9 +161,9 @@ export function SearchBuddy() {
 
   const statusMessage = error
     ? t('searchBuddy.unavailable')
-    : hasSearched
-      ? message
-      : t('searchBuddy.defaultMessage')
+    : !hasSearched
+      ? t('searchBuddy.defaultMessage')
+      : formatReply(reply, t, message || t('searchBuddy.foundGeneric'))
 
   const visibleResults = showAll ? results : results.slice(0, INITIAL_RESULT_COUNT)
   const hasMore = results.length > INITIAL_RESULT_COUNT && !showAll
@@ -142,6 +171,11 @@ export function SearchBuddy() {
   useEffect(() => {
     if (!open) return
     const fab = fabRef.current
+    const mainEl = document.getElementById('main')
+    const footerEl = document.querySelector('footer')
+    const inertTargets = [mainEl, footerEl].filter(Boolean) as HTMLElement[]
+    for (const el of inertTargets) el.setAttribute('inert', '')
+
     const timer = window.setTimeout(() => {
       if (preview) {
         backToResultsRef.current?.focus()
@@ -153,7 +187,8 @@ export function SearchBuddy() {
         restoreScrollPending.current = false
       }
     }, 40)
-    const onKey = (e: KeyboardEvent) => {
+
+    const trapTab = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault()
         if (preview) {
@@ -162,15 +197,46 @@ export function SearchBuddy() {
           return
         }
         setOpen(false)
+        return
+      }
+      if (e.key !== 'Tab' || !panelRef.current) return
+      const nodes = getFocusableIn(panelRef.current)
+      if (nodes.length === 0) return
+      const first = nodes[0]
+      const last = nodes[nodes.length - 1]
+      const active = document.activeElement as HTMLElement | null
+      if (e.shiftKey) {
+        if (!active || active === first || !panelRef.current.contains(active)) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else if (!active || active === last || !panelRef.current.contains(active)) {
+        e.preventDefault()
+        first.focus()
       }
     }
-    document.addEventListener('keydown', onKey)
+
+    const onFocusIn = (e: FocusEvent) => {
+      if (!panelRef.current) return
+      const target = e.target as Node | null
+      if (target && panelRef.current.contains(target)) return
+      if (target === fabRef.current) {
+        e.preventDefault()
+        const nodes = getFocusableIn(panelRef.current)
+        nodes[0]?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', trapTab, true)
+    document.addEventListener('focusin', onFocusIn)
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       window.clearTimeout(timer)
-      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('keydown', trapTab, true)
+      document.removeEventListener('focusin', onFocusIn)
       document.body.style.overflow = prev
+      for (const el of inertTargets) el.removeAttribute('inert')
       fab?.focus()
     }
   }, [open, preview, resultsScrollTop, setOpen, setSnapshot])
@@ -178,23 +244,6 @@ export function SearchBuddy() {
   useEffect(() => {
     if (open) restoreScrollPending.current = true
   }, [open])
-
-  function handlePanelKeyDown(e: ReactKeyboardEvent<HTMLElement>) {
-    if (e.key !== 'Tab' || !panelRef.current) return
-    const nodes = getFocusableIn(panelRef.current)
-    if (nodes.length === 0) return
-    const first = nodes[0]
-    const last = nodes[nodes.length - 1]
-    if (e.shiftKey) {
-      if (document.activeElement === first) {
-        e.preventDefault()
-        last.focus()
-      }
-    } else if (document.activeElement === last) {
-      e.preventDefault()
-      first.focus()
-    }
-  }
 
   function onBodyScroll() {
     if (!bodyRef.current || preview) return
@@ -214,7 +263,8 @@ export function SearchBuddy() {
       results: [],
       suggestions: [],
       preview: null,
-      message: t('searchBuddy.searching'),
+      reply: { kind: 'searching' },
+      message: '',
       resultsScrollTop: 0,
     })
     try {
@@ -234,7 +284,8 @@ export function SearchBuddy() {
       setSnapshot({
         query: q,
         results: localized,
-        message: replyFromResponse({ ...response, results: localized }, t),
+        reply: replyFromResponse({ ...response, results: localized }),
+        message: '',
         followUp,
         suggestions: response.zeroResults
           ? zeroResultSuggestions().map((result) =>
@@ -251,7 +302,8 @@ export function SearchBuddy() {
         results: [],
         suggestions: [],
         error: true,
-        message: t('searchBuddy.unavailable'),
+        reply: { kind: 'unavailable' },
+        message: '',
         preview: null,
       })
     } finally {
@@ -302,10 +354,9 @@ export function SearchBuddy() {
     open &&
     createPortal(
       <div className={styles.root}>
-        <button
-          type="button"
+        <div
           className={styles.backdrop}
-          aria-label={t('searchBuddy.closeAssistant')}
+          aria-hidden="true"
           onClick={() => setOpen(false)}
         />
         <section
@@ -314,7 +365,6 @@ export function SearchBuddy() {
           role="dialog"
           aria-modal="true"
           aria-labelledby={preview ? previewTitleId : titleId}
-          onKeyDown={handlePanelKeyDown}
         >
           <header className={styles.header}>
             <div className={styles.headerCopy}>
@@ -364,6 +414,11 @@ export function SearchBuddy() {
                     {busy ? '…' : t('searchBuddy.find')}
                   </button>
                 </form>
+                <MezmurVoiceSearch
+                  compact
+                  active={open && !preview}
+                  onTranscript={(text) => setSnapshot({ query: text })}
+                />
 
                 {!results.length && !busy && !hasSearched ? (
                   <div className={styles.suggestions}>
@@ -461,6 +516,7 @@ export function SearchBuddy() {
         className={styles.fab}
         aria-haspopup="dialog"
         aria-expanded={open}
+        tabIndex={open ? -1 : 0}
         onClick={() => setOpen(true)}
       >
         {t('searchBuddy.fab')}

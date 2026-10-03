@@ -126,7 +126,7 @@
       "labelFast": "ጾም",
       "labelSaint": "ቅድስት",
       "labelAngel": "መልአክ",
-      "labelGreatFeast": "በጣም ጥሩ ድግስ",
+      "labelGreatFeast": "ታላቅ በዓል",
       "emptyCategory": "በዚህ ምድብ ገና ምንም የለም።"
     },
     "navigation": {
@@ -135,7 +135,7 @@
     "filters": {
       "all": "ሁሉም",
       "feast": "ፌስቲቫል",
-      "majorFeasts": "በጣም ጥሩ ድግስ",
+      "majorFeasts": "ታላቅ በዓላት",
       "mary": "ማርያም",
       "saints": "ቅድስት",
       "rhythm": "ሪትም",
@@ -421,7 +421,25 @@
       "memorizeText": "ሙሉ ድግግሞሽ ከመጀመርዎ በፊት አጭር የግጥምና ምት ልምምድ ይጠቀሙ።",
       "practiceLabel": "ልምምድ",
       "practiceText": "ጥልቅ ለመማር በሳምንቱ ውስጥ ወደ ተመሳሳይ መዝሙር ይመለሱ።"
-    }
+    },
+    "metaTitle": "የመዝሙር ልምምድ",
+    "metaDescription": "የኢትዮጵያ ኦርቶዶክስ መዝሙር ይማሩ እና ይለማመዱ",
+    "title": "የመዝሙር ልምምድ",
+    "eyebrow": "ያዳምጱ · ይማሩ · ይጸልዮ",
+    "subtitle": "የኢትዮጵያ ኦርቶዶክስ መዝሙር ይማሩ እና ይለማመዱ።",
+    "searchLabel": "መዝሙር፣ ቅዱሳን፣ ዘማሪዎች፣ አጋጣሚዎችን ፈልግ",
+    "searchPlaceholder": "መዝሙር፣ ቅዱሳን፣ ዘማሪዎች፣ አጋጣሚዎችን ፈልግ…",
+    "clear": "አጽዳ",
+    "searching": "በመፈለግ ላይ…",
+    "resultsCount": "የፍለጋ ውጤቶች · {count}",
+    "resultsFromSections": "ከተገኙ ክፍሎች {hymns} መዝሙሮች",
+    "resultsSectionsOnly": "{count} ተዛማጵ ክፍሎች · የመዝሙር ርዕስ አልተገኘም",
+    "emptyHymns": "ምንም መዝሙር አልተገኘም።",
+    "emptyTitlesWithSections": "የመዝሙር ርዕስ አልተገኘም — ከላይ ያለውን ተዛማጵ ክፍል ይክፈቱ።",
+    "backToBrowse": "ወደ ዳሰሳ ተመለስ",
+    "matchingSectionsAria": "ተዛማጵ ክፍሎች እና ዘማሪዎች",
+    "browse": "ዳሰሳ",
+    "loadError": "የመዝሙር ልምምድ መጋን አልተቻለም።"
   },
   "prayers": {
     "title": "ጸሎቶች",
@@ -777,5 +795,31 @@
     "submitReview": "ለግምግና አስገባ",
     "verifyChallenge": "Complete the verification challenge.",
     "submitFailed": "Unable to submit. Your form has been kept; please try again."
+  },
+  "saved": {
+    "title": "የተቀመጡ",
+    "syncAccount": "ተወዳጆች ከመለያዎ ጋር ይመሳሰላሉ።",
+    "syncGuest": "በዚህ መሳሪያ ላይ የተቀመጡ ተወዳጆች። በመሳሪያዎች መካከል ለማስመስረት ይግቡ።",
+    "signInSync": "ተወዳጆችን ለማስመስረት ይግቡ",
+    "mezmurHeading": "መዝሙር",
+    "empty": "እስካሁን ተወዳጆች የሉም።",
+    "emptyGuest": "በዚህ መሳሪያ ላይ እስካሁን ተወዳጆች አልተቀመጡም።",
+    "previous": "ቀዳሚ",
+    "next": "ቀጣይ",
+    "page": "ገጽ {page}"
+  },
+  "synaxariumPage": {
+    "backToIndex": "ወደ ስንክሳር ተመለስ",
+    "loadError": "ይህን የስንክሳር ቀን መጋን አልተቻለም።",
+    "tryAgain": "እንደገና ይሞክሩ",
+    "commemorations": "መታሰቢያዎች",
+    "emptyDay": "ለዚህ ቀን የታተሙ መታሰቢያዎች የሉም።"
+  },
+  "todayPage": {
+    "selectionsAria": "የዛሬ የአርታዩ ምርጫዎች",
+    "selectionsTitle": "የዛሬ ምርጫዎች",
+    "mezmurOfDay": "የዛሬ መዝሙር",
+    "saintOfDay": "የዛሬ ቅዱስ",
+    "feastOfDay": "የዛሬ በዓል"
   }
 }

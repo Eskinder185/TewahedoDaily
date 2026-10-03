@@ -1,7 +1,6 @@
 import {
   useCallback,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -44,7 +43,6 @@ import {
 } from './chantPracticeModel'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
-import { scrollTargetIntoView } from '../../lib/scrollUtils'
 import { useGlobalAudio } from '../../lib/publicContent/audio'
 import styles from './ChantPracticePlayer.module.css'
 
@@ -86,7 +84,6 @@ export function ChantPracticePlayer({
   const mountRef = useRef<HTMLDivElement>(null)
   const playerRef = useRef<YT.Player | null>(null)
   const shellRef = useRef<HTMLDivElement>(null)
-  const didScrollAfterPlayerReadyRef = useRef(false)
   const volumeBeforeMute = useRef(80)
   const loopRepeatRef = useRef(0)
   const gapTimeoutRef = useRef<number | null>(null)
@@ -163,7 +160,6 @@ export function ChantPracticePlayer({
     setDurationSec(0)
     setLoopRepeatIndex(0)
     loopRepeatRef.current = 0
-    didScrollAfterPlayerReadyRef.current = false
     setActiveQuickLoop(null)
     setQuickLoopErrors({})
     setQuickLoops(loadQuickLoops(payload.entryId))
@@ -186,24 +182,9 @@ export function ChantPracticePlayer({
     persistQuickLoops(payload.entryId, quickLoops)
   }, [payload.entryId, quickLoops])
 
-  const scrollToPlayerLandmark = useCallback(() => {
-    scrollTargetIntoView('#chant-practice-scroll-target', { smooth: false })
-    queueMicrotask(() => {
-      document
-        .getElementById('chant-practice-scroll-target')
-        ?.focus({ preventScroll: true })
-    })
-  }, [])
-
-  useLayoutEffect(() => {
-    scrollToPlayerLandmark()
-  }, [payload.entryId, videoId, scrollToPlayerLandmark])
-
-  useEffect(() => {
-    if (!playerReady || didScrollAfterPlayerReadyRef.current) return
-    didScrollAfterPlayerReadyRef.current = true
-    scrollToPlayerLandmark()
-  }, [playerReady, scrollToPlayerLandmark])
+  // Do not auto-scroll the player into view on route entry — that hid the
+  // Mezmur title above the viewport (audit L04). Route-level scroll-to-top
+  // and browser Back restoration handle navigation; users scroll to the player.
 
   useEffect(() => {
     if (!apiReady || !videoId || !mountRef.current) {

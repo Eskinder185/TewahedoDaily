@@ -48,16 +48,16 @@ export function SynaxariumDayPage() {
         const message =
           cause && typeof cause === 'object' && 'message' in cause
             ? String((cause as { message?: unknown }).message)
-            : "We couldn't load this Synaxarium day."
+            : tr('synaxariumPage.loadError')
         if (import.meta.env.DEV) console.error('[synaxarium] day', cause)
-        setError(import.meta.env.DEV ? message : "We couldn't load this Synaxarium day.")
+        setError(import.meta.env.DEV ? message : tr('synaxariumPage.loadError'))
         setDay(null)
       }
     })()
     return () => {
       active = false
     }
-  }, [resolvedDaySlug, reloadTick])
+  }, [resolvedDaySlug, reloadTick, tr])
 
   if (day === undefined && !error) return <PageLoadingFallback />
 
@@ -66,11 +66,11 @@ export function SynaxariumDayPage() {
       <PageSection variant="tint">
         <div className={styles.notFound}>
           <Link className={styles.backLink} to="/pray/synaxarium">
-            Back to Synaxarium
+            {tr('synaxariumPage.backToIndex')}
           </Link>
           <h1>{error}</h1>
           <button type="button" className={styles.primaryLink} onClick={() => setReloadTick((n) => n + 1)}>
-            Try again
+            {tr('synaxariumPage.tryAgain')}
           </button>
         </div>
       </PageSection>
@@ -82,7 +82,7 @@ export function SynaxariumDayPage() {
       <PageSection variant="tint">
         <div className={styles.notFound}>
           <Link className={styles.backLink} to="/pray/synaxarium">
-            Back to Synaxarium
+            {tr('synaxariumPage.backToIndex')}
           </Link>
           <h1>{tr('prayers.detail.notFoundTitle')}</h1>
         </div>
@@ -107,13 +107,13 @@ export function SynaxariumDayPage() {
             {tr('prayers.navigation.backToCollections')}
           </Link>
           <Link className={styles.backLink} to="/pray/synaxarium">
-            Back to Synaxarium
+            {tr('synaxariumPage.backToIndex')}
           </Link>
         </nav>
 
         <header className={styles.header}>
           <div className={styles.badges}>
-            <span>Synaxarium</span>
+            <span>{tr('searchBuddy.types.synaxarium')}</span>
             <span>{day.ethiopianMonth}</span>
           </div>
           <h1 className={styles.title}>{day.displayDateEnglish}</h1>
@@ -124,8 +124,8 @@ export function SynaxariumDayPage() {
           ) : null}
         </header>
 
-        <section className={styles.summary} aria-label="Commemorations">
-          {items.length === 0 ? <p>No commemorations published for this day.</p> : null}
+        <section className={styles.summary} aria-label={tr('synaxariumPage.commemorations')}>
+          {items.length === 0 ? <p>{tr('synaxariumPage.emptyDay')}</p> : null}
           {items.map((item) => (
             <article key={item.id} className={styles.summaryBlock}>
               {item.commemorationType && item.commemorationType !== 'other' ? (

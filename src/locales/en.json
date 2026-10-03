@@ -414,6 +414,24 @@
   },
   "practice": {
     "loading": "Loading practice content...",
+    "metaTitle": "Hymns Practice",
+    "metaDescription": "Learn and practice Ethiopian Orthodox Mezmur — browse by feast, saint, or zemari.",
+    "title": "Hymns Practice",
+    "eyebrow": "Listen · Learn · Pray",
+    "subtitle": "Learn and practice Ethiopian Orthodox Mezmur.",
+    "searchLabel": "Search hymns, saints, singers, occasions",
+    "searchPlaceholder": "Search hymns, saints, singers, occasions…",
+    "clear": "Clear",
+    "searching": "Searching…",
+    "resultsCount": "Search results · {count}",
+    "resultsFromSections": "{hymns} hymns from matching sections",
+    "resultsSectionsOnly": "{count} matching sections · no hymn titles matched",
+    "emptyHymns": "No hymns matched your search.",
+    "emptyTitlesWithSections": "No hymn titles matched — open a matching section above.",
+    "backToBrowse": "Back to browse",
+    "matchingSectionsAria": "Matching sections and singers",
+    "browse": "Browse",
+    "loadError": "Unable to load Hymn Practice.",
     "miniGuide": {
       "openLabel": "Hymns Practice",
       "openText": "Open the hymn library and start with one piece.",
@@ -777,5 +795,31 @@
     "submitReview": "Submit for review",
     "verifyChallenge": "Complete the verification challenge.",
     "submitFailed": "Unable to submit. Your form has been kept; please try again."
+  },
+  "saved": {
+    "title": "Saved",
+    "syncAccount": "Favorites sync to your account.",
+    "syncGuest": "Favorites on this device. Sign in to sync across devices.",
+    "signInSync": "Sign in to sync favorites",
+    "mezmurHeading": "Mezmur",
+    "empty": "No favorites yet.",
+    "emptyGuest": "No favorites saved on this device yet.",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {page}"
+  },
+  "synaxariumPage": {
+    "backToIndex": "Back to Synaxarium",
+    "loadError": "We couldn't load this Synaxarium day.",
+    "tryAgain": "Try again",
+    "commemorations": "Commemorations",
+    "emptyDay": "No commemorations published for this day."
+  },
+  "todayPage": {
+    "selectionsAria": "Editorial selections for today",
+    "selectionsTitle": "Today's selections",
+    "mezmurOfDay": "Mezmur of the Day",
+    "saintOfDay": "Saint of the Day",
+    "feastOfDay": "Feast of the Day"
   }
 }

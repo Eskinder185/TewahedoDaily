@@ -167,8 +167,8 @@ export function TodayPage() {
           return null
         }
         return (
-          <section className={styles.block} aria-label="Editorial selections for today">
-            <h2 className={styles.blockTitle}>Today’s selections</h2>
+          <section className={styles.block} aria-label={t('todayPage.selectionsAria')}>
+            <h2 className={styles.blockTitle}>{t('todayPage.selectionsTitle')}</h2>
             <Notice {...editorial} retry={editorial.reload} />
             {publicCopy(data.announcement) ? (
               <p className={styles.summary}>{publicCopy(data.announcement)}</p>
@@ -180,10 +180,10 @@ export function TodayPage() {
                   const title = publicCopy(item.title)
                   const heading =
                     kind === 'mezmur'
-                      ? 'Mezmur of the Day'
+                      ? t('todayPage.mezmurOfDay')
                       : kind === 'saint'
-                        ? 'Saint of the Day'
-                        : 'Feast of the Day'
+                        ? t('todayPage.saintOfDay')
+                        : t('todayPage.feastOfDay')
                   return (
                     <article className={publicStyles.card} key={kind}>
                       <h3>{heading}</h3>

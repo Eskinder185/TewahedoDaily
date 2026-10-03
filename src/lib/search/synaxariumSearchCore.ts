@@ -122,10 +122,14 @@ export function searchSynaxariumCatalog(
     if (!matched) continue
 
     const dateLabel = dualCalendarLabel(doc)
+    const titled =
+      doc.kind === 'commemoration' && doc.title && !doc.title.includes(doc.ethiopianLabel)
+        ? `${doc.title} · ${doc.ethiopianLabel}`
+        : doc.title
     hits.push({
       sourceType: doc.kind === 'day' ? 'synaxarium' : 'synaxarium_commemoration',
       sourceId: doc.id,
-      title: displayTitle(doc.title, dayRoute(doc.daySlug)),
+      title: displayTitle(titled, dayRoute(doc.daySlug)),
       titleAmharic: doc.titleAmharic,
       description: dateLabel || 'Synaxarium',
       route: dayRoute(doc.daySlug),

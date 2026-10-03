@@ -8,10 +8,47 @@ import {
   type HymnSection,
   type HymnSectionMezmur,
 } from '../lib/publicContent/hymnBrowse'
+import { hymnSectionArtFallback } from '../lib/publicContent/hymnSectionArtFallbacks'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
+
+function SectionHeroArt({
+  imageUrl,
+  imageAlt,
+  slug,
+  title,
+}: {
+  imageUrl?: string | null
+  imageAlt?: string | null
+  slug?: string | null
+  title?: string
+}) {
+  const localFallback = hymnSectionArtFallback(slug)
+  const [phase, setPhase] = useState<'primary' | 'fallback' | 'empty'>(() =>
+    imageUrl ? 'primary' : localFallback ? 'fallback' : 'empty',
+  )
+  useEffect(() => {
+    setPhase(imageUrl ? 'primary' : localFallback ? 'fallback' : 'empty')
+  }, [imageUrl, localFallback])
+  const src = phase === 'primary' ? imageUrl : phase === 'fallback' ? localFallback : ''
+  if (!src || phase === 'empty') {
+    return <div className={s.collectionArtEmpty} aria-hidden />
+  }
+  return (
+    <img
+      className={s.collectionArt}
+      src={src}
+      alt={imageAlt || title || ''}
+      width={640}
+      height={480}
+      onError={() => {
+        setPhase((prev) => (prev === 'primary' && localFallback ? 'fallback' : 'empty'))
+      }}
+    />
+  )
+}
 
 function CardArt({ item }: { item: HymnSectionMezmur }) {
   const [src, setSrc] = useState('')
@@ -128,17 +165,12 @@ export function PublicHymnSectionPage() {
       ) : (
         <>
           <header className={s.collectionHero}>
-            {section?.imageUrl ? (
-              <img
-                className={s.collectionArt}
-                src={section.imageUrl}
-                alt={section.imageAlt || section.title}
-                width={640}
-                height={480}
-              />
-            ) : (
-              <div className={s.collectionArtEmpty} aria-hidden />
-            )}
+            <SectionHeroArt
+              imageUrl={section?.imageUrl}
+              imageAlt={section?.imageAlt}
+              slug={section?.slug || sectionSlug}
+              title={section?.title}
+            />
             <div>
               {section?.titleAmharic ? (
                 <p className={s.collectionAm} lang="am">

@@ -5,6 +5,7 @@ import { useAsync } from '../lib/cms/useAsync'
 import { database, type MezmurCard } from '../lib/publicContent/service'
 import { MezmurCards, Notice } from '../components/publicContent/PublicUi'
 import { listFavorites } from '../lib/userContent/favoritesService'
+import { useTranslation } from '../i18n'
 import s from '../components/publicContent/PublicContent.module.css'
 
 /** @deprecated Login moved to /login; keep redirect for bookmarks. */
@@ -13,6 +14,7 @@ export function PublicAccount() {
 }
 
 export function Favorites() {
+  const t = useTranslation()
   const { session, loading } = useAuth()
   const [page, setPage] = useState(1)
   const userId = session?.user.id
@@ -45,15 +47,11 @@ export function Favorites() {
 
   return (
     <section className={s.shell}>
-      <h1>Saved</h1>
-      <p>
-        {session
-          ? 'Favorites sync to your account.'
-          : 'Favorites on this device. Sign in to sync across devices.'}
-      </p>
+      <h1>{t('saved.title')}</h1>
+      <p>{session ? t('saved.syncAccount') : t('saved.syncGuest')}</p>
       {!loading && !session ? (
         <p>
-          <Link to="/login?next=/saved">Sign in to sync favorites</Link>
+          <Link to="/login?next=/saved">{t('saved.signInSync')}</Link>
         </p>
       ) : null}
 
@@ -89,22 +87,22 @@ export function Favorites() {
           <Notice {...mezmurPage} retry={mezmurPage.reload} />
           {mezmurPage.data ? (
             <>
-              <h2>Mezmur</h2>
+              <h2>{t('saved.mezmurHeading')}</h2>
               <MezmurCards items={mezmurPage.data.items} />
               {!mezmurPage.data.items.length && !nonMezmur.length ? (
-                <p>No favorites yet.</p>
+                <p>{t('saved.empty')}</p>
               ) : null}
               <div className={s.actions}>
                 <button type="button" disabled={page === 1} onClick={() => setPage(page - 1)}>
-                  Previous
+                  {t('saved.previous')}
                 </button>
-                <span>Page {page}</span>
+                <span>{t('saved.page', { page })}</span>
                 <button
                   type="button"
                   disabled={!mezmurPage.data.more}
                   onClick={() => setPage(page + 1)}
                 >
-                  Next
+                  {t('saved.next')}
                 </button>
               </div>
             </>
@@ -113,7 +111,7 @@ export function Favorites() {
       ) : (
         <>
           {(unified.data?.items || []).length === 0 ? (
-            <p>No favorites saved on this device yet.</p>
+            <p>{t('saved.emptyGuest')}</p>
           ) : null}
           <ul className={s.savedList}>
             {(unified.data?.items || []).map((item) => (

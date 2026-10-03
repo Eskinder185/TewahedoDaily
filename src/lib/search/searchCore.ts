@@ -52,6 +52,10 @@ export const QUERY_ALIASES: Record<string, string[]> = {
   mikael: ['michael', 'mikael', 'st michael', 'saint michael', 'ሚካኤል'],
   'st michael': ['michael', 'mikael', 'st michael', 'saint michael', 'ሚካኤል'],
   'saint michael': ['michael', 'mikael', 'st michael', 'saint michael', 'ሚካኤል'],
+  uriel: ['uriel', 'st uriel', 'saint uriel'],
+  'st uriel': ['uriel', 'st uriel', 'saint uriel'],
+  'saint uriel': ['uriel', 'st uriel', 'saint uriel'],
+  gabriel: ['gabriel', 'st gabriel', 'saint gabriel', 'ገብርኤል'],
   zemary: ['zemari', 'singer'],
   zemari: ['zemari', 'singer', 'ዘማሪ'],
   synaxarium: ['synaxarium', 'senkesar', 'senkessar', 'ስንክሳር', 'synaxaria'],
@@ -286,10 +290,16 @@ export function relevanceAdjustedScore(
       result.sourceType === 'prayer_section' ||
       result.sourceType === 'prayer_collection' ||
       result.sourceType === 'guide' ||
-      result.sourceType === 'liturgy' ||
-      result.route.startsWith('/pray')
+      result.sourceType === 'liturgy'
     ) {
-      score -= 0.12
+      score -= 0.14
+    } else if (result.route === '/pray') {
+      score -= 0.08
+    } else if (
+      result.sourceType === 'synaxarium' ||
+      result.sourceType === 'synaxarium_commemoration'
+    ) {
+      score += 0.28
     } else if (
       result.sourceType === 'mezmur' ||
       result.sourceType === 'hymn_section' ||
@@ -297,6 +307,38 @@ export function relevanceAdjustedScore(
     ) {
       score += 0.22
     }
+  }
+
+  if (wantsHymn) {
+    if (result.sourceType === 'hymn_section' || result.sourceType === 'mezmur') {
+      score -= 0.06
+    }
+    if (
+      result.sourceType === 'synaxarium' ||
+      result.sourceType === 'synaxarium_commemoration'
+    ) {
+      score += 0.2
+    }
+  }
+
+  // Synaxarium hub is secondary when a specific entity was requested
+  if (
+    result.route === '/pray/synaxarium' &&
+    entityTokens.length > 0 &&
+    !entityTokens.every((t) => ['synaxarium', 'senkesar', 'senkessar', 'ስንክሳር'].includes(t))
+  ) {
+    score += 0.18
+  }
+
+  // Prefer Synaxarium titles that carry the entity (not bare "Michael.")
+  if (
+    (result.sourceType === 'synaxarium' || result.sourceType === 'synaxarium_commemoration') &&
+    entityTokens.length
+  ) {
+    const strong = entityTokens.some(
+      (t) => t.length >= 4 && (title.includes(t) || am.includes(t)),
+    )
+    if (!strong) score += 0.14
   }
 
   // Generic hubs should not outrank specific content for feast/entity queries
@@ -375,6 +417,17 @@ export function rankSearchResults(
   const out: SiteSearchResult[] = []
   let collectionCount = 0
   let weakSectionCount = 0
+  let synaxCount = 0
+  const hasHymnAnswer = filtered.some(
+    (r) => r.sourceType === 'hymn_section' || r.sourceType === 'mezmur',
+  )
+  const hasPrayerAnswer = filtered.some(
+    (r) =>
+      r.sourceType === 'prayer' ||
+      r.sourceType === 'prayer_section' ||
+      r.sourceType === 'guide' ||
+      r.sourceType === 'liturgy',
+  )
   for (const row of filtered) {
     if (row.sourceType === 'hymn_collection' || row.sourceType === 'prayer_collection') {
       collectionCount += 1
@@ -395,6 +448,15 @@ export function rankSearchResults(
       if (weakSectionCount > 0 && out.some((r) => r.sourceType === 'hymn_section' || r.sourceType === 'mezmur')) {
         continue
       }
+    }
+    if (
+      row.sourceType === 'synaxarium' ||
+      row.sourceType === 'synaxarium_commemoration'
+    ) {
+      synaxCount += 1
+      // Keep Synaxarium useful, but don't bury hymn/prayer answers under many day rows
+      if ((hasHymnAnswer || hasPrayerAnswer || prayerMode) && synaxCount > 3) continue
+      if (hasHymnAnswer && wantsHymn && synaxCount > 2) continue
     }
     const { _adj, _spec, ...rest } = row
     void _adj

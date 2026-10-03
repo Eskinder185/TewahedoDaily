@@ -329,7 +329,7 @@ export function ZeweterContinuousPage() {
           </nav>
         ) : null}
 
-        <main>
+        <div>
           <article ref={articleRef} className={styles.reading} aria-label={t('prayerZeweterReading')}>
             {blocks.map((block) => {
               if (block.kind === 'section') {
@@ -374,7 +374,7 @@ export function ZeweterContinuousPage() {
               )
             })}
           </article>
-        </main>
+        </div>
       </div>
     </PageSection>
   )
