@@ -5,16 +5,24 @@
  *
  *   node scripts/bible/validate.mjs
  *   node scripts/bible/import.mjs --dry-run
+ *   node scripts/bible/import.mjs --export-sql
+ *   node scripts/bible/import.mjs --export-csv
  *   node --env-file-if-exists=.env.local scripts/bible/import.mjs --apply
  */
 import { createHash } from 'node:crypto'
 import path from 'node:path'
 import process from 'node:process'
-import { validateBibleSources } from './validate.mjs'
+import { projectRoot, validateBibleSources } from './validate.mjs'
+import { exportBibleSql } from './sqlExport.mjs'
+import { exportBibleCsv } from './csvExport.mjs'
 
 const args = new Set(process.argv.slice(2))
-if (args.has('--apply') && args.has('--dry-run')) throw new Error('Choose --apply or --dry-run.')
+if (['--apply', '--dry-run', '--export-sql', '--export-csv'].filter((mode) => args.has(mode)).length > 1) {
+  throw new Error('Choose --apply, --dry-run, --export-sql, or --export-csv.')
+}
 const apply = args.has('--apply')
+const exportSql = args.has('--export-sql')
+const exportCsv = args.has('--export-csv')
 
 function stableId(...parts) {
   const hex = createHash('sha256').update(parts.join('|')).digest('hex')
@@ -78,27 +86,17 @@ function webChapters(volume) {
   }
   return [...chapters].map(([number, verses], index) => ({
     number, order: index + 1,
-    sections: [{
-      title: null, order: 1,
-      verses: verses.map((verse, verseIndex) => ({
-        number: verse.verse, order: verseIndex + 1, text: verse.text,
-      })),
-    }],
+    sections: [],
+    verses: verses.map((verse, verseIndex) => ({
+      number: verse.verse, order: verseIndex + 1, text: verse.text,
+    })),
   }))
 }
 
-async function importVolume(client, edition, source, chapters) {
+function volumeRows(edition, source, chapters) {
   const mapping = source.mapping
   const sourceId = stableId('bible-source', edition.code, mapping.sourceBookNumber)
-  const { data: existing, error: lookupError } = await client.from('bible_source_books')
-    .select('is_public,source_metadata').eq('id', sourceId).maybeSingle()
-  if (lookupError) throw new Error(`Could not inspect source ${edition.code}:${mapping.sourceBookNumber}: ${lookupError.message}`)
-  if (existing?.is_public) throw new Error(`Refusing to overwrite published source ${edition.code}:${mapping.sourceBookNumber}.`)
   const digest = sha256(source.raw)
-  if (existing?.source_metadata?.sha256 && existing.source_metadata.sha256 !== digest) {
-    throw new Error(`Source ${edition.code}:${mapping.sourceBookNumber} changed; review and version it before reimport.`)
-  }
-
   const sourceRow = {
     id: sourceId,
     edition_id: edition.id,
@@ -120,7 +118,6 @@ async function importVolume(client, edition, source, chapters) {
     review_status: mapping.reviewStatus ?? 'draft',
     is_public: false,
   }
-  await upsert(client, 'bible_source_books', [sourceRow])
 
   const chapterRows = []
   const sectionRows = []
@@ -134,47 +131,86 @@ async function importVolume(client, edition, source, chapters) {
       for (const verse of section.verses) {
         verseRows.push({
           id: stableId('bible-verse', edition.code, mapping.sourceBookNumber, chapter.order, section.order, verse.order),
-          section_id: sectionId, source_order: verse.order,
+          chapter_id: chapterId, section_id: sectionId, source_order: verse.order,
           verse_number: verse.number, text: verse.text,
         })
       }
     }
+    for (const verse of chapter.verses ?? []) {
+      verseRows.push({
+        id: stableId('bible-verse', edition.code, mapping.sourceBookNumber, chapter.order, 'direct', verse.order),
+        chapter_id: chapterId, section_id: null, source_order: verse.order,
+        verse_number: verse.number, text: verse.text,
+      })
+    }
   }
+  return { editionCode: edition.code, sourceBookNumber: mapping.sourceBookNumber,
+    sourceRow, chapterRows, sectionRows, verseRows }
+}
+
+async function importVolume(client, volume) {
+  const { editionCode, sourceBookNumber, sourceRow, chapterRows, sectionRows, verseRows } = volume
+  const { data: existing, error: lookupError } = await client.from('bible_source_books')
+    .select('is_public,source_metadata').eq('id', sourceRow.id).maybeSingle()
+  if (lookupError) throw new Error(`Could not inspect source ${editionCode}:${sourceBookNumber}: ${lookupError.message}`)
+  if (existing?.is_public) throw new Error(`Refusing to overwrite published source ${editionCode}:${sourceBookNumber}.`)
+  if (existing?.source_metadata?.sha256 && existing.source_metadata.sha256 !== sourceRow.source_metadata.sha256) {
+    throw new Error(`Source ${editionCode}:${sourceBookNumber} changed; review and version it before reimport.`)
+  }
+  await upsert(client, 'bible_source_books', [sourceRow])
   await upsert(client, 'bible_chapters', chapterRows)
   await upsert(client, 'bible_sections', sectionRows)
   await upsert(client, 'bible_verses', verseRows)
-  console.log(`Staged ${edition.code} source ${mapping.sourceBookNumber}: ${chapterRows.length} chapters, ${verseRows.length} verses.`)
+  console.log(`Staged ${editionCode} source ${sourceBookNumber}: ${chapterRows.length} chapters, ${verseRows.length} verses.`)
+}
+
+function importPlan(report) {
+  const amEdition = editionRow('am', 'Amharic Ethiopian Orthodox source', 'am', { sourceDirectory: 'data/bible/am' })
+  const webEdition = editionRow('web', 'World English Bible', 'en', report.webData.metadata ?? {})
+  const volumes = report.amSources.map((source) => volumeRows(amEdition, source, amChapters(source)))
+  for (const [sourceBookNumber, volume] of report.webVolumes) {
+    volumes.push(volumeRows(webEdition, {
+      ...volume,
+      sourceFile: path.posix.join('data/bible/EN', 'web.json'),
+      raw: report.webRaw,
+      data: { book_name_en: volume.name },
+      mapping: { ...volume.mapping, sourceBookNumber },
+    }, webChapters(volume)))
+  }
+  volumes.sort((a, b) => a.editionCode.localeCompare(b.editionCode) || a.sourceBookNumber - b.sourceBookNumber)
+  return { editions: [amEdition, webEdition], canonicalBooks: canonicalRows(report), volumes }
 }
 
 const report = await validateBibleSources()
 console.log(JSON.stringify({ ...report.summary, warnings: report.warnings, errors: report.errors }, null, 2))
 if (report.errors.length) throw new Error('Bible validation failed; import stopped.')
 if (!apply) {
-  console.log('Dry run complete. No database calls were made.')
+  if (exportSql) {
+    const output = await exportBibleSql(importPlan(report), projectRoot)
+    console.log(`SQL export complete: ${output.directory} (${output.sqlFiles.length} SQL files). No database calls were made.`)
+  } else if (exportCsv) {
+    const output = await exportBibleCsv(importPlan(report), projectRoot)
+    console.log(JSON.stringify(output, null, 2))
+    console.log('CSV export complete. No database calls were made.')
+  } else {
+    console.log('Dry run complete. No database calls were made.')
+  }
 } else {
   const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY
   if (!url || !key) throw new Error('Apply requires SUPABASE_URL and a server-only service role key.')
   const { createClient } = await import('@supabase/supabase-js')
   const client = createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } })
-  const amEdition = editionRow('am', 'Amharic Ethiopian Orthodox source', 'am', { sourceDirectory: 'data/bible/am' })
-  const webEdition = editionRow('web', 'World English Bible', 'en', report.webData.metadata ?? {})
-  for (const edition of [amEdition, webEdition]) {
+  const { error: schemaError } = await client.from('bible_verses').select('chapter_id').limit(0)
+  if (schemaError) throw new Error(`Apply the direct-chapter-verse migration before importing: ${schemaError.message}`)
+  const plan = importPlan(report)
+  for (const edition of plan.editions) {
     const { data: existing, error } = await client.from('bible_editions').select('is_public').eq('id', edition.id).maybeSingle()
     if (error) throw new Error(`Edition lookup failed: ${error.message}`)
     if (existing?.is_public) throw new Error(`Refusing to overwrite published edition ${edition.code}.`)
   }
-  await upsert(client, 'bible_editions', [amEdition, webEdition])
-  await upsert(client, 'bible_canonical_books', canonicalRows(report))
-  for (const source of report.amSources) await importVolume(client, amEdition, source, amChapters(source))
-  for (const [sourceBookNumber, volume] of report.webVolumes) {
-    await importVolume(client, webEdition, {
-      ...volume,
-      sourceFile: path.posix.join('data/bible/EN', 'web.json'),
-      raw: report.webRaw,
-      data: { book_name_en: volume.name },
-      mapping: { ...volume.mapping, sourceBookNumber },
-    }, webChapters(volume))
-  }
+  await upsert(client, 'bible_editions', plan.editions)
+  await upsert(client, 'bible_canonical_books', plan.canonicalBooks)
+  for (const volume of plan.volumes) await importVolume(client, volume)
   console.log('Bible data staged as nonpublic draft. Publication requires separate review.')
 }

@@ -110,7 +110,7 @@ export function VoiceRecorder({
 
       setState((prev) => ({ ...prev, status: 'recording', duration: 0 }))
 
-      timerRef.current = setInterval(() => {
+      timerRef.current = window.setInterval(() => {
         setState((prev) => ({ ...prev, duration: prev.duration + 0.1 }))
       }, 100)
     } catch (error) {
@@ -123,14 +123,14 @@ export function VoiceRecorder({
     setCountdown(3)
     let count = 3
 
-    countdownRef.current = setInterval(() => {
+    countdownRef.current = window.setInterval(() => {
       count -= 1
       if (count > 0) {
         setCountdown(count)
       } else {
         setCountdown(null)
         if (countdownRef.current) {
-          clearInterval(countdownRef.current)
+          window.clearInterval(countdownRef.current)
           countdownRef.current = null
         }
         startActualRecording()

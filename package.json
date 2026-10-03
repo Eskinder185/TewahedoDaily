@@ -34,9 +34,11 @@
     "test:calendar-cards": "node scripts/test-calendar-card-reconciliation.mjs",
     "test:hymn-browse": "node scripts/test-hymn-browse.mjs",
     "test:search-site": "node --experimental-strip-types --no-warnings scripts/test-search-site.mjs",
+    "test:bible-search": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-bible-search.mjs",
     "test:synaxarium-search": "node --experimental-strip-types --no-warnings scripts/test-synaxarium-search.mjs",
     "test:post-update-audit": "node --experimental-strip-types --no-warnings scripts/test-post-update-audit.mjs",
     "test:voice-search": "node --experimental-strip-types --no-warnings scripts/test-voice-search-support.mjs",
+    "test:voice-whisper": "node --experimental-strip-types --no-warnings scripts/test-voice-whisper-fallback.mjs",
     "test:prayer-learning-theme": "node scripts/test-prayer-learning-theme.mjs",
     "verify:voice-pray-theme": "node scripts/verify-voice-and-pray-theme.mjs",
     "test:locale-unify": "node --experimental-strip-types --no-warnings scripts/test-locale-unify.mjs",
@@ -44,6 +46,7 @@
     "optimize:calendar-images": "node scripts/optimize-calendar-images.mjs"
   },
   "dependencies": {
+    "@huggingface/transformers": "^3.5.1",
     "@supabase/supabase-js": "^2.114.0",
     "fuse.js": "^7.3.0",
     "playwright": "^1.49.1",

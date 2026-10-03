@@ -17,6 +17,11 @@ export type SiteSearchSourceType =
   | 'calendar'
   | 'synaxarium'
   | 'synaxarium_commemoration'
+  | 'bible-book'
+  | 'bible-chapter'
+  | 'bible-verse'
+  | 'bible-range'
+  | 'bible-text'
   | 'account'
   | 'other'
 

@@ -1,0 +1,51 @@
+.shell { width: min(100%, 72rem); margin-inline: auto; padding: clamp(1.25rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem) 5rem; color: var(--color-text); }
+.reader { max-width: 48rem; }
+.hero { margin: 0 0 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--color-border-gold); }
+.eyebrow { margin: 0 0 .7rem; color: var(--color-text-subtle); font-size: .78rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+.hero h1 { margin: 0; color: var(--color-heading); font-family: var(--font-display); font-size: clamp(2.5rem, 8vw, 4rem); line-height: 1.1; overflow-wrap: anywhere; }
+.hero h1 span { display: block; font-family: var(--font-body); font-size: clamp(1.15rem, 4vw, 1.6rem); font-weight: 500; margin-top: .35rem; }
+.hero p:not(.eyebrow) { margin: .65rem 0 0; color: var(--color-text-muted); font-size: 1.05rem; line-height: 1.6; }
+.testaments, .language { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.5rem 0; }
+.testaments button, .language button { min-height: var(--tap-min); padding: .65rem 1rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-pill); background: var(--color-bg-elevated); color: var(--color-heading); font: inherit; font-weight: 650; cursor: pointer; }
+.testaments button[aria-pressed="true"], .language button[aria-pressed="true"] { color: var(--color-text-inverse); background: var(--color-midnight); border-color: var(--color-midnight); }
+.testaments button span { margin-left: .3rem; opacity: .8; font-size: .85em; }
+.sectionTitle { display: flex; flex-wrap: wrap; align-items: baseline; gap: .6rem; margin: 1.8rem 0 1rem; color: var(--color-heading); font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.4rem); }
+.sectionTitle small { color: var(--color-text-muted); font-family: var(--font-body); font-size: .8rem; font-weight: 500; }
+.bookList { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr)); gap: .65rem; padding: 0; margin: 0; list-style: none; }
+.bookCard { display: flex; align-items: center; gap: .8rem; min-height: 4.6rem; padding: .75rem 1rem; border: 1px solid var(--color-border-card); border-radius: var(--radius-md); background: var(--color-bg-elevated); box-shadow: var(--shadow-card); color: var(--color-heading); text-decoration: none; }
+a.bookCard:hover { border-color: var(--color-gold); }
+.bookCardDisabled { opacity: .72; box-shadow: none; }
+.bookNumber { flex: 0 0 1.8rem; color: var(--color-gold); font-family: var(--font-display); font-size: 1.5rem; }
+.bookNames { display: grid; gap: .1rem; flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
+.bookNames strong { font-size: 1rem; line-height: 1.35; }
+.bookNames small { color: var(--color-text-muted); font-size: .85rem; line-height: 1.35; }
+.badges { display: flex; flex-wrap: wrap; gap: .25rem; justify-content: flex-end; font-size: .7rem; }
+.badges span, .unavailable { padding: .25rem .5rem; border-radius: var(--radius-pill); background: var(--color-bg-muted); color: var(--color-text-muted); white-space: nowrap; }
+.unavailable { font-size: .72rem; }
+.crumbs { display: flex; flex-wrap: wrap; gap: .45rem; align-items: center; margin-bottom: 1.6rem; font-size: .9rem; }
+.crumbs a, .backLink a { color: var(--color-accent); text-underline-offset: .2em; }
+.notice, .status { padding: 1rem 1.2rem; border: 1px solid var(--color-border-card); border-radius: var(--radius-md); background: var(--color-bg-elevated); color: var(--color-text-muted); line-height: 1.55; }
+.status button { min-height: var(--tap-min); padding: .5rem 1rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: var(--color-bg); color: var(--color-heading); font: inherit; cursor: pointer; }
+.chapterGroups { display: grid; gap: 1.75rem; }
+.sourceTitle { margin: 0 0 .65rem; color: var(--color-text-muted); font-size: 1.05rem; font-weight: 650; }
+.chapterGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.1rem, 1fr)); gap: .55rem; }
+.chapterGrid a { display: grid; place-items: center; min-height: 3.2rem; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); background: var(--color-bg-elevated); color: var(--color-heading); font-size: 1.05rem; font-weight: 650; text-decoration: none; }
+.chapterGrid a:hover { border-color: var(--color-gold); background: var(--color-bg-muted); }
+.chapterPicker { display: grid; gap: .45rem; max-width: 24rem; margin: 1.5rem 0; color: var(--color-text-muted); font-size: .85rem; font-weight: 650; }
+.chapterPicker select { width: 100%; min-height: var(--tap-min); padding: .6rem .8rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: var(--color-bg-elevated); color: var(--color-heading); font: inherit; font-size: 1rem; }
+.editionBlock { margin: 2rem 0 2.8rem; }
+.editionBlock > h2 { display: grid; gap: .2rem; margin: 0 0 1.2rem; color: var(--color-heading); font-family: var(--font-display); font-size: 1.9rem; }
+.editionBlock > h2 small { color: var(--color-text-muted); font-family: var(--font-body); font-size: .8rem; font-weight: 500; }
+.section { margin: 0 0 1.8rem; }
+.section h3 { margin: 1.6rem 0 .7rem; padding-left: .8rem; border-left: 3px solid var(--color-gold); color: var(--color-heading); font-size: 1.13rem; line-height: 1.6; overflow-wrap: anywhere; }
+.verses { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.verses li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .5rem; align-items: start; min-width: 0; }
+.verseNumber { color: var(--color-accent); font-size: .78rem; font-weight: 750; line-height: 1.9; font-variant-numeric: tabular-nums; }
+.amharicVerse { font-size: clamp(1.35rem, 4.3vw, 1.5rem); line-height: 1.8; overflow-wrap: anywhere; }
+.englishVerse { font-size: clamp(1.09rem, 3.5vw, 1.2rem); line-height: 1.75; overflow-wrap: anywhere; }
+.chapterNav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .8rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border-gold); }
+.chapterNav a, .chapterNav span { display: inline-flex; align-items: center; min-height: var(--tap-min); padding: .55rem .75rem; color: var(--color-accent); }
+.chapterNav span { opacity: .45; }
+.backLink { margin-top: 1.5rem; }
+.shell :is(a, button):focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 3px; }
+@media (max-width: 390px) { .bookCard { flex-wrap: wrap; } .badges, .unavailable { margin-left: 2.6rem; } .testaments button { flex: 1 1 100%; } .chapterNav a, .chapterNav span { flex: 1 1 100%; } }

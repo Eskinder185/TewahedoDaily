@@ -18,8 +18,17 @@ const TYPE_KEY: Record<SiteSearchSourceType, string> = {
   calendar: 'searchBuddy.types.calendar',
   synaxarium: 'searchBuddy.types.synaxarium',
   synaxarium_commemoration: 'searchBuddy.types.synaxarium',
+  'bible-book': 'searchBuddy.types.bibleBook',
+  'bible-chapter': 'searchBuddy.types.bibleChapter',
+  'bible-verse': 'searchBuddy.types.bibleVerse',
+  'bible-range': 'searchBuddy.types.bibleRange',
+  'bible-text': 'searchBuddy.types.bibleText',
   account: 'searchBuddy.types.account',
   other: 'searchBuddy.types.page',
+}
+
+function isBibleResult(result: SiteSearchResult): boolean {
+  return result.sourceType.startsWith('bible')
 }
 
 export function SearchResultCard({
@@ -39,7 +48,16 @@ export function SearchResultCard({
   const dateLine = result.dateLabel || ''
   const excerpt = result.excerpt?.trim() || ''
   const desc = dateLine || result.description
-  const openLabel = preferPreview ? t('searchBuddy.preview') : t('searchBuddy.open')
+  const bible = isBibleResult(result)
+  const openLabel = preferPreview
+    ? t('searchBuddy.preview')
+    : bible
+      ? t('searchBuddy.openBible')
+      : t('searchBuddy.open')
+  const excerptLang =
+    bible && (result.sourceLabel?.includes('Amharic') || /[\u1200-\u137F]/.test(excerpt))
+      ? 'am'
+      : undefined
 
   const body = (
     <>
@@ -55,12 +73,16 @@ export function SearchResultCard({
             {result.titleAmharic}
           </p>
         ) : null}
-        <h3 className={styles.cardTitle}>{result.title}</h3>
+        <h3 className={styles.cardTitle} lang={/[\u1200-\u137F]/.test(result.title) ? 'am' : undefined}>
+          {result.title}
+        </h3>
         {desc ? <p className={styles.cardDesc}>{desc}</p> : null}
         {excerpt && !preferPreview ? (
-          <p className={styles.cardExcerpt}>{excerpt}</p>
+          <p className={styles.cardExcerpt} lang={excerptLang}>
+            {excerpt}
+          </p>
         ) : null}
-        {result.sourceLabel && preferPreview ? (
+        {result.sourceLabel && (preferPreview || bible) ? (
           <p className={styles.cardSource}>
             {t('searchBuddy.source')}: {result.sourceLabel}
           </p>

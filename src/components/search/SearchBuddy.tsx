@@ -9,6 +9,7 @@ import {
 import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
+import { useLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
 import {
   buildSessionContext,
@@ -122,6 +123,7 @@ function formatReply(
 
 export function SearchBuddy() {
   const t = useTranslation()
+  const { uiLocale } = useLocale()
   const { user } = useAuth()
   const navigate = useNavigate()
   const {
@@ -273,6 +275,7 @@ export function SearchBuddy() {
         includePersonal: true,
         userId: user?.id ?? null,
         session: followUpRef.current,
+        language: uiLocale === 'am' ? 'am' : 'en',
       })
       if (requestId !== requestIdRef.current) return
 
@@ -417,7 +420,11 @@ export function SearchBuddy() {
                 <MezmurVoiceSearch
                   compact
                   active={open && !preview}
-                  onTranscript={(text) => setSnapshot({ query: text })}
+                  onTranscript={(text) => {
+                    // Interim + final Ethiopic/Latin text into the existing editable input.
+                    // Search still runs only when the user submits (Find) — no per-token search.
+                    setSnapshot({ query: text })
+                  }}
                 />
 
                 {!results.length && !busy && !hasSearched ? (

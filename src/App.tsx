@@ -122,6 +122,9 @@ const ContentHealthAdmin = lazy(() =>
 )
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const TodayPage = lazy(() => import('./pages/TodayPage').then(m => ({ default: m.TodayPage })))
+const BibleCatalogPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleCatalogPage })))
+const BibleBookPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleBookPage })))
+const BibleChapterPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleChapterPage })))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })))
 
 export default function App() {
@@ -260,6 +263,9 @@ export default function App() {
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Route>
       <Route element={<AppShell />}>
+        <Route path="/bible" element={<Suspense fallback={<PageLoadingFallback />}><BibleCatalogPage /></Suspense>} />
+        <Route path="/bible/:bookSlug" element={<Suspense fallback={<PageLoadingFallback />}><BibleBookPage /></Suspense>} />
+        <Route path="/bible/:bookSlug/:chapter" element={<Suspense fallback={<PageLoadingFallback />}><BibleChapterPage /></Suspense>} />
         <Route path="/saints" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="saints"/></Suspense>}/>
         <Route path="/feasts" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="feasts"/></Suspense>}/>
         <Route path="/prayer-library" element={<Navigate to="/prayers" replace />} />

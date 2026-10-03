@@ -646,6 +646,7 @@
     "favoritesDescSignedIn": "Open your synced saved hymns and prayers.",
     "favoritesDescGuest": "Open favorites saved on this device.",
     "open": "Open →",
+    "openBible": "Open in Bible →",
     "preview": "Preview →",
     "previewTitle": "Synaxarium preview",
     "previewSubtitle": "Published commemorations only — open the full day when you are ready.",
@@ -677,7 +678,12 @@
       "prayerCollection": "Prayer Collection",
       "prayerSection": "Prayer Section",
       "psalm": "Psalm",
-      "synaxarium": "Synaxarium"
+      "synaxarium": "Synaxarium",
+      "bibleBook": "Bible",
+      "bibleChapter": "Bible chapter",
+      "bibleVerse": "Bible verse",
+      "bibleRange": "Bible range",
+      "bibleText": "Bible text"
     },
     "seeMore": "See more ({count})",
     "partial": "Some catalogs were slow; showing what is ready.",

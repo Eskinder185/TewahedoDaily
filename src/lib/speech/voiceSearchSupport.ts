@@ -1,52 +1,116 @@
 /** Shared Web Speech API helpers for Mezmur + Search Buddy voice input. */
 
 const messages = {
-  "en": {
-    "insecure": "Voice search needs a secure (HTTPS) connection. Please type your search.",
-    "unsupported": "Voice search is unavailable in this browser. Please type your search.",
-    "notAllowed": "Microphone permission was denied. You can still type your search.",
-    "noSpeech": "No speech heard. Please try again, or type your search.",
-    "audioCapture": "No microphone was found or audio capture failed. You can still type your search.",
-    "network": "Voice recognition could not reach the network. Check your connection, or type your search.",
-    "langUnsupported": "This browser does not support the selected voice language. Try English, or type your search.",
-    "badGrammar": "Voice search could not understand that input. Please try again, or type your search.",
-    "aborted": "Voice search stopped.",
-    "failed": "Voice search failed. Please type your search.",
-    "listening": "Listening…",
-    "listeningWith": "Listening… {transcript}",
-    "heard": "Heard: {transcript}",
-    "stopped": "Voice search stopped.",
-    "startFailed": "Could not start voice search.",
-    "amharicNote": "Amharic voice recognition depends on your browser and has not been verified here. Typed search remains available.",
-    "voiceLang": "Voice language",
-    "searchByVoice": "Search by voice",
-    "stop": "Stop"
+  en: {
+    insecure: 'Voice search needs a secure (HTTPS) connection. Please type your search.',
+    unsupported: "Voice search isn't supported by this browser. You can still type your search.",
+    notAllowed:
+      'Microphone access was blocked. Allow microphone access in your browser settings and try again.',
+    noSpeech: "I didn't hear anything. Try again.",
+    audioCapture: 'No microphone was detected.',
+    network: "Voice recognition couldn't connect. Try again.",
+    langUnsupported:
+      'This browser does not support the selected voice language. Try English, or type your search.',
+    badGrammar: 'Voice search could not understand that input. Please try again, or type your search.',
+    aborted: 'Voice search stopped.',
+    failed: 'Voice search failed. Please type your search.',
+    starting: 'Starting…',
+    listening: 'Listening…',
+    listeningWith: 'Listening… {transcript}',
+    heard: 'Heard: {transcript}',
+    processing: 'Processing…',
+    stopped: 'Voice search stopped.',
+    startFailed: 'Could not start voice search. Please try again, or type your search.',
+    amharicNote:
+      'Amharic recognition uses your browser’s speech service when available. Offline voice is used if needed.',
+    voiceLang: 'Voice language',
+    searchByVoice: 'Search by voice',
+    stop: 'Stop',
+    startAria: 'Start voice search',
+    stopAria: 'Stop voice search',
+    preparingOffline: 'Preparing offline voice recognition…',
+    downloadingModel: 'Downloading speech model… {progress}%',
+    downloadingModelIndeterminate: 'Downloading speech model…',
+    requestingMic: 'Requesting microphone…',
+    recording: 'Recording… Tap stop when finished.',
+    transcribing: 'Transcribing…',
+    offlineLocal: 'Voice is processed on your device.',
+    tapAgainOffline: 'Browser voice was unavailable. Tap the microphone to record offline.',
+    emptyTranscript: 'No speech detected. Try again, or type your search.',
+    whisperFailed: 'Offline voice recognition failed. You can still type your search.',
+    textOnly: "Voice search isn't available on this browser. You can still type your search.",
   },
-  "am": {
-    "insecure": "የድምፅ ፍለጋ ለደህንነት ምክንያት በ HTTPS ብቻ ይገኛል። በጽሁፍ ይፈልጉ።",
-    "unsupported": "በዚህ አሳሽ የድምፅ ፍለጋ አይገኝም። እባክዎ በጽሁፍ ይፈልጉ።",
-    "notAllowed": "የማይክሮፎን ፈቃድ አልተሰጠም። በጽሁፍ መፈለግ ይችላሉ።",
-    "noSpeech": "ድምፅ አልተሰማም። እባክዎ እንደገና ይሞክሩ ወይም በጽሁፍ ይፈልጉ።",
-    "audioCapture": "ማይክሮፎን አልተገኘም ወይም ድምፅ ማንሳት አልተሳካም። በጽሁፍ መፈለግ ይችላሉ።",
-    "network": "የድምፅ ፍለጋ ከኔትወርክ ጋር መገናኘት አልቻለም። ግንኙነትዎን ይፈትሹ ወይም በጽሁፍ ይፈልጉ።",
-    "langUnsupported": "ይህ አሳሽ የተመረጠውን ቋንቋ አይደግፍም። እንግሊዝኛ ይሞክሩ ወይም በጽሁፍ ይፈልጉ።",
-    "badGrammar": "የድምፅ ግብአቱ አልተረዳም። እንደገና ይሞክሩ ወይም በጽሁፍ ይፈልጉ።",
-    "aborted": "የድምፅ ፍለጋ ተቋርጧል።",
-    "failed": "የድምፅ ፍለጋ አልተሳካም። በጽሁፍ ይሞክሩ።",
-    "listening": "እየሰማ ነው…",
-    "listeningWith": "እየሰማ… {transcript}",
-    "heard": "የተሰማው፦ {transcript}",
-    "stopped": "ፍለጋው ተቋርጧል።",
-    "startFailed": "የድምፅ ፍለጋ ሊጀምር አልቻለም።",
-    "amharicNote": "የአማርኛ ድምፅ ማወቂያ በአሳሾ ላይ የተመካ ነው፤ እዚህ ላይ አልተረጋገጠም። ጽሁፍ ማስገባት ይቻላል።",
-    "voiceLang": "የድምፅ ቋንቋ",
-    "searchByVoice": "በድምፅ ፈልግ",
-    "stop": "አቁም"
-  }
+  am: {
+    insecure:
+      '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u1208\u12f0\u1205\u1295\u1290\u1275 \u121d\u12ad\u1295\u12eb\u1275 \u1260 HTTPS \u1265\u127b \u12ed\u1308\u129b\u120d\u1362 \u1260\u133d\u1201\u134d \u12ed\u1348\u120d\u1309\u1362',
+    unsupported:
+      '\u1260\u12da\u1205 \u12a0\u1233\u123d \u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u12a0\u12ed\u1308\u129d\u121d\u1362 \u12a5\u1263\u12ad\u12ce \u1260\u133d\u1201\u134d \u12ed\u1348\u120d\u1309\u1362',
+    notAllowed:
+      '\u12e8\u121b\u12ed\u12ad\u122e\u134e\u1295 \u1348\u1243\u12f5 \u1270\u12a8\u120d\u12ad\u120f\u120d\u1362 \u1260\u12a0\u1233\u123d \u1245\u1295\u1325\u1266\u127d \u12ed\u134d\u1240\u12f1 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229\u1362',
+    noSpeech: '\u12f5\u121d\u1345 \u12a0\u120d\u1270\u1230\u121b\u121d\u1362 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229\u1362',
+    audioCapture: '\u121b\u12ed\u12ad\u122e\u134e\u1295 \u12a0\u120d\u1270\u1308\u1298\u121d\u1362',
+    network:
+      '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u1218\u1308\u1293\u1298\u1275 \u12a0\u120d\u127b\u1208\u121d\u1362 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229\u1362',
+    langUnsupported:
+      '\u12ed\u1205 \u12a0\u1233\u123d \u12e8\u1270\u1218\u1228\u1320\u12cd\u1295 \u124b\u1295\u124b \u12a0\u12ed\u12f0\u130d\u134d\u121d\u1362 \u12a5\u1295\u130d\u120a\u12dd\u129b \u12ed\u121e\u12ad\u1229 \u12c8\u12ed\u121d \u1260\u133d\u1201\u134d \u12ed\u1348\u120d\u1309\u1362',
+    badGrammar:
+      '\u12e8\u12f5\u121d\u1345 \u130d\u1265\u12a0\u1271 \u12a0\u120d\u1270\u1228\u12f3\u121d\u1362 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229 \u12c8\u12ed\u121d \u1260\u133d\u1201\u134d \u12ed\u1348\u120d\u1309\u1362',
+    aborted: '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u1270\u124b\u122d\u1327\u120d\u1362',
+    failed: '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u12a0\u120d\u1270\u1233\u12ab\u121d\u1362 \u1260\u133d\u1201\u134d \u12ed\u121e\u12ad\u1229\u1362',
+    starting: '\u12a5\u12e8\u1300\u121d\u122d \u1290\u12cd\u2026',
+    listening: '\u12a5\u12e8\u1230\u121b \u1290\u12cd\u2026',
+    listeningWith: '\u12a5\u12e8\u1230\u121b\u2026 {transcript}',
+    heard: '\u12e8\u1270\u1230\u121b\u12cd\u1366 {transcript}',
+    processing: '\u12a5\u12e8\u1230\u122b \u1290\u12cd\u2026',
+    stopped: '\u134d\u1208\u130b\u12cd \u1270\u124b\u122d\u1327\u120d\u1362',
+    startFailed:
+      '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u120a\u1300\u121d\u122d \u12a0\u120d\u127b\u1208\u121d\u1362 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229 \u12c8\u12ed\u121d \u1260\u133d\u1201\u134d \u12ed\u1348\u120d\u1309\u1362',
+    amharicNote:
+      'የአማርኛ ድምፅ ማወቂያ በአሳሾ አገልግሎት ይጠቀማል። አስፈላጊ ድምፅ እንደራሊ ይጠቀማል።',
+    voiceLang: '\u12e8\u12f5\u121d\u1345 \u124b\u1295\u124b',
+    searchByVoice: '\u1260\u12f5\u121d\u1345 \u1348\u120d\u130d',
+    stop: '\u12a0\u1241\u121d',
+    startAria: '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u1300\u121d\u122d',
+    stopAria: '\u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u12a0\u1241\u121d',
+    preparingOffline: '\u12e8\u12a0\u1235\u1348\u120b\u130a \u12f5\u121d\u1345 \u121b\u12c8\u1242\u12eb \u12a5\u12e8\u12a0\u12d8\u130b\u1305 \u1290\u12cd\u2026',
+    downloadingModel: '\u12e8\u12f5\u121d\u1345 \u121e\u12f4\u120d \u12a5\u12e8\u12c8\u1228\u12f0 \u1290\u12cd\u2026 {progress}%',
+    downloadingModelIndeterminate: '\u12e8\u12f5\u121d\u1345 \u121e\u12f4\u120d \u12a5\u12e8\u12c8\u1228\u12f0 \u1290\u12cd\u2026',
+    requestingMic: '\u121b\u12ed\u12ad\u122e\u134e\u1295 \u12a5\u12e8\u1218\u1320\u12e8\u1245 \u1290\u12cd\u2026',
+    recording: '\u12a5\u12e8\u1240\u12f5 \u1290\u12cd\u2026 \u1235\u1270\u1218\u120d\u1241 \u12a0\u1241\u121d \u12ed\u1305\u1231\u1362',
+    transcribing: '\u12a5\u12e8\u1230\u122b \u1290\u12cd\u2026',
+    offlineLocal: '\u12f5\u121d\u1335 \u1260\u121c\u12ab\u122d\u12ce \u120b\u12ed \u12ed\u1230\u122b\u120d\u1362',
+    tapAgainOffline:
+      '\u12e8\u12a0\u1233\u123d \u12f5\u121d\u1345 \u12a0\u120d\u1270\u1308\u1298\u121d\u1362 \u1208\u12a0\u1235\u1348\u120b\u130a \u1240\u12f3 \u121b\u12ed\u12ad\u122e\u134e\u1291\u1295 \u12ed\u1295\u12a9\u1362',
+    emptyTranscript: '\u12f5\u121d\u1345 \u12a0\u120d\u1270\u1230\u121b\u121d\u1362 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229\u1362',
+    whisperFailed:
+      '\u12e8\u12a0\u1235\u1348\u120b\u130a \u12f5\u121d\u1345 \u121b\u12c8\u1242\u12eb \u12a0\u120d\u1270\u1233\u12ab\u121d\u1362 \u1260\u133d\u1201\u134d \u1218\u1348\u1208\u130d \u12ed\u127b\u120b\u120d\u1362',
+    textOnly:
+      '\u1260\u12da\u1205 \u12a0\u1233\u123d \u12e8\u12f5\u121d\u1345 \u134d\u1208\u130b \u12a0\u12ed\u1308\u129d\u121d\u1362 \u1260\u133d\u1201\u134d \u12ed\u1348\u120d\u1309\u1362',
+  },
 } as const
 
-export type VoiceSearchLang = 'am-ET' | 'en-US'
+/** UI locale → Web Speech BCP-47 tag. Keep app locale ids separate from recognition locales. */
+export const speechLocales = {
+  am: 'am-ET',
+  en: 'en-US',
+} as const
+
+export type VoiceSearchLang = (typeof speechLocales)[keyof typeof speechLocales]
 export type VoiceUiLang = 'en' | 'am'
+export type VoicePhase =
+  | 'idle'
+  | 'starting'
+  | 'listening'
+  | 'starting-native'
+  | 'listening-native'
+  | 'native-failed'
+  | 'loading-model'
+  | 'requesting-mic'
+  | 'recording'
+  | 'processing'
+  | 'success'
+  | 'error'
+  | 'unsupported'
 
 export type SpeechResultLike = { transcript: string; isFinal?: boolean }
 export type SpeechEventLike = {
@@ -60,6 +124,7 @@ export type BrowserSpeechRecognition = {
   continuous: boolean
   interimResults: boolean
   maxAlternatives: number
+  onstart: (() => void) | null
   onresult: ((event: SpeechEventLike) => void) | null
   onerror: ((event: SpeechErrorLike) => void) | null
   onend: (() => void) | null
@@ -83,6 +148,10 @@ function msg(ui: VoiceUiLang, key: MsgKey, params?: Record<string, string>): str
     text = text.replaceAll(`{${name}}`, value)
   }
   return text
+}
+
+export function toSpeechLocale(appLocale: string | null | undefined): VoiceSearchLang {
+  return appLocale === 'am' ? speechLocales.am : speechLocales.en
 }
 
 export function getSpeechConstructor(
@@ -131,19 +200,53 @@ export function voiceErrorMessage(errorCode: string, ui: VoiceUiLang): string {
   return key ? msg(ui, key) : msg(ui, 'failed')
 }
 
+/** Join all result pieces from resultIndex (keeps multi-word Ethiopic phrases intact). */
 export function extractTranscript(event: SpeechEventLike): { transcript: string; isFinal: boolean } {
-  let transcript = ''
+  const parts: string[] = []
+  let isFinal = true
   for (let i = event.resultIndex; i < event.results.length; i += 1) {
-    const piece = event.results[i]?.[0]?.transcript?.trim()
-    if (piece) transcript = piece
+    const row = event.results[i]
+    const piece = row?.[0]?.transcript?.trim()
+    if (piece) parts.push(piece)
+    if (!row?.isFinal) isFinal = false
   }
-  const last = event.results[event.results.length - 1] as { isFinal?: boolean } | undefined
-  return { transcript, isFinal: Boolean(last?.isFinal) }
+  return { transcript: parts.join(' ').replace(/\s+/g, ' ').trim(), isFinal }
 }
 
-export function listeningStatus(transcript: string, isFinal: boolean, ui: VoiceUiLang): string {
-  if (!transcript) return msg(ui, 'listening')
-  return isFinal ? msg(ui, 'heard', { transcript }) : msg(ui, 'listeningWith', { transcript })
+export function phaseStatus(
+  phase: VoicePhase,
+  transcript: string,
+  ui: VoiceUiLang,
+): string {
+  switch (phase) {
+    case 'starting':
+    case 'starting-native':
+      return msg(ui, 'starting')
+    case 'listening':
+    case 'listening-native':
+      return transcript ? msg(ui, 'listeningWith', { transcript }) : msg(ui, 'listening')
+    case 'loading-model':
+      return msg(ui, 'preparingOffline')
+    case 'requesting-mic':
+      return msg(ui, 'requestingMic')
+    case 'recording':
+      return msg(ui, 'recording')
+    case 'processing':
+      return transcript ? msg(ui, 'heard', { transcript }) : msg(ui, 'transcribing')
+    case 'native-failed':
+      return msg(ui, 'tapAgainOffline')
+    case 'unsupported':
+      return msg(ui, 'textOnly')
+    case 'idle':
+    case 'success':
+    case 'error':
+    default:
+      return ''
+  }
+}
+
+export function voiceMessage(ui: VoiceUiLang, key: MsgKey, params?: Record<string, string>): string {
+  return msg(ui, key, params)
 }
 
 export function voiceStoppedMessage(ui: VoiceUiLang): string {
@@ -154,7 +257,6 @@ export function voiceStartFailedMessage(ui: VoiceUiLang): string {
   return msg(ui, 'startFailed')
 }
 
-/** Do not claim Amharic recognition works without a successful spoken Amharic test. */
 export function amharicRecognitionNote(ui: VoiceUiLang): string {
   return msg(ui, 'amharicNote')
 }
@@ -164,11 +266,23 @@ export function voiceUiLabels(ui: VoiceUiLang) {
     voiceLang: msg(ui, 'voiceLang'),
     searchByVoice: msg(ui, 'searchByVoice'),
     stop: msg(ui, 'stop'),
+    startAria: msg(ui, 'startAria'),
+    stopAria: msg(ui, 'stopAria'),
+    starting: msg(ui, 'starting'),
+    listening: msg(ui, 'listening'),
   }
 }
 
+export function voiceDebug(...args: unknown[]) {
+  if (import.meta.env.DEV) {
+    console.debug('[voice-search]', ...args)
+  }
+}
+
+/** Stop recognition without relying on async onend to clear the ref. */
 export function stopRecognition(recognition: BrowserSpeechRecognition | null | undefined) {
   if (!recognition) return
+  recognition.onstart = null
   recognition.onresult = null
   recognition.onerror = null
   recognition.onend = null

@@ -1,14 +1,23 @@
+/**
+ * Auth + Account surfaces.
+ * Use semantic tokens so day (cream/navy) and night (elevated dark / light ink) both stay readable.
+ * Headings must use --color-heading — never --color-navy for text (navy stays structural in night theme).
+ */
 .shell {
-  --auth-cream: var(--color-bg);
-  --auth-navy: var(--color-navy);
-  --auth-gold: var(--color-gold);
+  --auth-surface: var(--color-bg-elevated);
   --auth-ink: var(--color-heading);
+  --auth-body: var(--color-text);
   --auth-muted: var(--color-text-muted);
-  --auth-line: var(--color-border);
+  --auth-line: var(--color-border-card);
+  --auth-line-soft: var(--color-border);
+  --auth-gold: var(--color-gold);
+  --auth-action: var(--color-navy);
+  --auth-action-text: var(--color-text-inverse);
+  --auth-control: color-mix(in srgb, var(--color-bg-elevated) 88%, #fffdf8 12%);
   max-width: 28rem;
   margin: 0 auto;
   padding: 2rem 1.25rem 3rem;
-  color: var(--auth-ink);
+  color: var(--auth-body);
   background: transparent;
 }
 
@@ -18,7 +27,16 @@
   font-size: clamp(1.75rem, 4vw, 2.15rem);
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--auth-navy);
+  color: var(--auth-ink);
+}
+
+.sectionTitle {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display, Georgia, 'Times New Roman', serif);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--auth-ink);
 }
 
 .lead {
@@ -32,9 +50,10 @@
   display: grid;
   gap: 1rem;
   padding: 1.25rem;
-  background: color-mix(in srgb, var(--auth-cream) 80%, white);
+  background: var(--auth-surface);
   border: 1px solid var(--auth-line);
-  border-radius: 1rem;
+  border-radius: var(--radius-md, 0.9rem);
+  box-shadow: var(--shadow-card);
 }
 
 .form {
@@ -46,27 +65,36 @@
   display: grid;
   gap: 0.35rem;
   font-size: 0.95rem;
+  color: var(--auth-body);
 }
 
 .field span {
-  color: var(--auth-navy);
-  font-weight: 560;
+  color: var(--auth-ink);
+  font-weight: 600;
 }
 
-.field input {
+.field input,
+.control {
   width: 100%;
   min-height: 48px;
   padding: 0.75rem 0.9rem;
-  border: 1px solid var(--auth-line);
+  border: 1px solid var(--color-border-strong);
   border-radius: 0.75rem;
-  background: #fffdf8;
-  color: var(--auth-ink);
+  background: var(--auth-control);
+  color: var(--auth-body);
   font: inherit;
+  box-sizing: border-box;
 }
 
-.field input:focus {
-  outline: 2px solid color-mix(in srgb, var(--auth-gold) 55%, transparent);
-  outline-offset: 1px;
+.field input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.field input:focus,
+.control:focus {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: color-mix(in srgb, var(--auth-gold) 55%, var(--color-border-strong));
 }
 
 .passwordRow {
@@ -84,12 +112,17 @@
   min-height: 48px;
   min-width: 48px;
   padding: 0 0.85rem;
-  border: 1px solid var(--auth-line);
+  border: 1px solid var(--color-border-strong);
   border-radius: 0.75rem;
-  background: #fff;
-  color: var(--auth-navy);
+  background: var(--auth-control);
+  color: var(--auth-ink);
   font: inherit;
   font-size: 0.85rem;
+}
+
+.togglePw:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .actions {
@@ -119,9 +152,9 @@
 
 .primary,
 .primaryBtn {
-  color: #fffdf8;
-  background: var(--auth-navy);
-  border-color: var(--auth-navy);
+  color: var(--auth-action-text);
+  background: var(--auth-action);
+  border-color: var(--auth-action);
 }
 
 .primaryBtn {
@@ -133,6 +166,20 @@
   cursor: pointer;
 }
 
+.primary:hover,
+.primaryBtn:hover {
+  background: var(--color-navy-deep);
+  border-color: var(--color-navy-deep);
+}
+
+.primary:focus-visible,
+.primaryBtn:focus-visible,
+.secondary:focus-visible,
+.ghost:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
 .primaryBtn:disabled,
 .primary:disabled {
   opacity: 0.65;
@@ -140,14 +187,23 @@
 }
 
 .secondary {
-  color: var(--auth-navy);
+  color: var(--auth-ink);
   background: transparent;
-  border-color: var(--auth-line);
+  border-color: var(--color-border-strong);
+}
+
+.secondary:hover {
+  border-color: color-mix(in srgb, var(--auth-gold) 45%, var(--color-border-strong));
+  background: color-mix(in srgb, var(--color-gold-soft) 40%, transparent);
 }
 
 .ghost {
   color: var(--auth-muted);
   background: transparent;
+}
+
+.ghost:hover {
+  color: var(--auth-ink);
 }
 
 .linkBtn {
@@ -169,27 +225,32 @@
 }
 
 .links a {
-  color: var(--auth-navy);
+  color: var(--auth-ink);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.links a:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .error {
   margin: 0;
   padding: 0.75rem 0.9rem;
   border-radius: 0.75rem;
-  background: color-mix(in srgb, #8b2e2e 10%, white);
-  color: #6d2424;
-  border: 1px solid color-mix(in srgb, #8b2e2e 22%, transparent);
+  background: color-mix(in srgb, #8b2e2e 12%, var(--auth-surface));
+  color: color-mix(in srgb, #6d2424 70%, var(--auth-ink));
+  border: 1px solid color-mix(in srgb, #8b2e2e 28%, transparent);
 }
 
 .success {
   margin: 0;
   padding: 0.75rem 0.9rem;
   border-radius: 0.75rem;
-  background: color-mix(in srgb, #2f6b4f 10%, white);
-  color: #214c38;
-  border: 1px solid color-mix(in srgb, #2f6b4f 22%, transparent);
+  background: color-mix(in srgb, #2f6b4f 12%, var(--auth-surface));
+  color: color-mix(in srgb, #214c38 70%, var(--auth-ink));
+  border: 1px solid color-mix(in srgb, #2f6b4f 28%, transparent);
 }
 
 .status {
@@ -213,28 +274,55 @@
   display: grid;
   gap: 0.25rem;
   padding: 1rem 1.1rem;
-  border-radius: 0.9rem;
+  border-radius: var(--radius-md, 0.9rem);
   border: 1px solid var(--auth-line);
-  background: color-mix(in srgb, var(--auth-cream) 70%, white);
+  background: var(--auth-surface);
+  box-shadow: var(--shadow-card);
   color: inherit;
   text-decoration: none;
+  transition:
+    border-color var(--duration-fast, 180ms) var(--ease-out, ease),
+    box-shadow var(--duration-fast, 180ms) var(--ease-out, ease);
+}
+
+.accountCard:hover {
+  border-color: color-mix(in srgb, var(--auth-gold) 42%, var(--auth-line));
+  box-shadow: var(--shadow-card), 0 0 0 1px color-mix(in srgb, var(--color-gold-line) 28%, transparent);
+}
+
+.accountCard:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: color-mix(in srgb, var(--auth-gold) 50%, var(--auth-line));
 }
 
 .accountCard strong {
-  color: var(--auth-navy);
+  color: var(--auth-ink);
   font-size: 1.05rem;
 }
 
 .accountCard span {
   color: var(--auth-muted);
   font-size: 0.92rem;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .meta {
   margin: 0 0 1rem;
   color: var(--auth-muted);
   font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.meta a {
+  color: var(--auth-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.meta a:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .list {
@@ -252,9 +340,14 @@
   padding: 0.85rem 1rem;
   border-radius: 0.8rem;
   border: 1px solid var(--auth-line);
-  background: #fffdf8;
-  color: inherit;
+  background: var(--auth-surface);
+  color: var(--auth-ink);
   text-decoration: none;
+}
+
+.list a:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .listMeta {
@@ -265,5 +358,51 @@
 @media (max-width: 430px) {
   .shell {
     padding: 1.5rem 1rem 2.5rem;
+    max-width: 100%;
   }
+
+  .panel,
+  .accountCard {
+    padding: 1rem;
+  }
+
+  .field input,
+  .control,
+  .primaryBtn,
+  .primary,
+  .secondary {
+    width: 100%;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Night: elevated cards + light ink; lift action fill so navy buttons stay visible on near-black. */
+:global([data-theme='night']) .shell {
+  --auth-control: color-mix(in srgb, var(--color-bg-elevated) 82%, var(--color-bg-muted) 18%);
+  --auth-action: #3e6188;
+  --auth-action-text: #f5efe6;
+}
+
+:global([data-theme='night']) .primary:hover,
+:global([data-theme='night']) .primaryBtn:hover {
+  background: color-mix(in srgb, var(--auth-action) 88%, var(--color-gold) 12%);
+  border-color: color-mix(in srgb, var(--auth-action) 88%, var(--color-gold) 12%);
+}
+
+:global([data-theme='night']) .secondary {
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, transparent);
+}
+
+:global([data-theme='night']) .error {
+  color: #f0c4c4;
+  background: color-mix(in srgb, #8b2e2e 22%, var(--auth-surface));
+}
+
+:global([data-theme='night']) .success {
+  color: #c8e6d4;
+  background: color-mix(in srgb, #2f6b4f 22%, var(--auth-surface));
 }

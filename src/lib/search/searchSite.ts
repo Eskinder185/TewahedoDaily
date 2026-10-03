@@ -28,6 +28,7 @@ import {
   type SearchSessionContext,
 } from './searchCore'
 import { loadSynaxariumSearchCatalog, searchSynaxariumCatalog } from './synaxariumSearch'
+import { searchBible } from '../bible/bibleSearch'
 import type { SiteSearchResponse, SiteSearchResult } from './types'
 
 export type { SearchSessionContext }
@@ -37,6 +38,8 @@ type SearchOptions = {
   includePersonal?: boolean
   userId?: string | null
   session?: SearchSessionContext | null
+  /** UI locale preference for Bible edition ordering */
+  language?: 'am' | 'en'
 }
 
 type SettledSource = {
@@ -199,7 +202,49 @@ export async function searchSite(
   }
 
   const expanded = expandSearchAliases(query)
+  const bibleLanguage = options.language === 'am' ? 'am' : 'en'
+
+  // Bible first: direct references bypass other catalogs for verse/chapter hits.
+  let bibleIntent: string | null = null
+  let bibleDirect = false
+  let bibleResults: SiteSearchResult[] = []
+  let bibleFailed = false
+  try {
+    const bible = await searchBible(query, { language: bibleLanguage, textLimit: 12 })
+    bibleResults = bible.results
+    bibleIntent = bible.intentMessage
+    bibleDirect = bible.directReference
+  } catch {
+    bibleFailed = true
+  }
+
+  if (bibleDirect && bibleResults.some((r) => r.sourceType !== 'bible-book')) {
+    // Exact chapter / verse / range (or calm missing notice): return Bible-primary results.
+    // Still allow a light site pass for book-adjacent navigation when the hit is a real verse.
+    const hasScripture = bibleResults.some(
+      (r) =>
+        r.sourceType === 'bible-verse' ||
+        r.sourceType === 'bible-range' ||
+        r.sourceType === 'bible-chapter' ||
+        r.sourceType === 'bible-text',
+    )
+    if (hasScripture || bibleResults.length) {
+      const ranked = rankSearchResults(bibleResults, query, limit)
+      return {
+        query: queryRaw,
+        resolvedQuery: query,
+        results: ranked,
+        intentMessage: bibleIntent,
+        zeroResults: ranked.length === 0,
+        partial: bibleFailed,
+        totalCount: ranked.length,
+        isFollowUp: follow.isFollowUp,
+      }
+    }
+  }
+
   const sources: SettledSource[] = [
+    { name: 'bible', results: bibleResults, failed: bibleFailed },
     { name: 'routes', results: searchRouteCatalog(expanded, 8), failed: false },
     { name: 'calendar', results: searchStaticCalendar(expanded, 6), failed: false },
   ]
@@ -399,13 +444,15 @@ export async function searchSite(
   const anyFailed = sources.some((s) => s.failed)
   const partial = anyFailed && ranked.length > 0
 
-  let intentMessage: string | null = null
-  if (ranked.length) {
+  let intentMessage: string | null = bibleIntent
+  if (!intentMessage && ranked.length) {
     intentMessage =
       ranked.length === 1
         ? `I found ${ranked[0].title}.`
         : `I found ${ranked.length} places related to your search.`
-    if (partial) intentMessage += ' Some catalogs were slow; showing what is ready.'
+  }
+  if (intentMessage && partial) {
+    intentMessage += ' Some catalogs were slow; showing what is ready.'
   }
 
   return {

@@ -688,7 +688,12 @@
       "prayerCollection": "የጸሎት ስብስብ",
       "prayerSection": "የጸሎት ክፍል",
       "psalm": "መዝሙር",
-      "synaxarium": "ስንክሳር"
+      "synaxarium": "ስንክሳር",
+      "bibleBook": "መጽሐፍ ቅዱስ",
+      "bibleChapter": "የመጽሐፍ ቅዱስ ምዕራፍ",
+      "bibleVerse": "የመጽሐፍ ቅዱስ ቁጥር",
+      "bibleRange": "የመጽሐፍ ቅዱስ ክልል",
+      "bibleText": "የመጽሐፍ ቅዱስ ጽሑፍ"
     },
     "seeMore": "ተጨማሪ አሳይ ({count})",
     "partial": "አንዳንድ መረጃዎች ቀስ ብለዋል፤ የተዘጋጀውን እያሳየን ነው።",
@@ -700,7 +705,8 @@
     "backToSearchBuddy": "ወደ ፍለጋ ረዳት ተመለስ",
     "openFullPage": "ሙሉ ገጽ ክፈት",
     "source": "ምንጭ",
-    "clearSession": "ፍለጋ አጽዳ"
+    "clearSession": "ፍለጋ አጽዳ",
+    "openBible": "በመጽሐፍ ቅዱስ ክፈት →"
   },
   "account": {
     "signIn": "ግባ",

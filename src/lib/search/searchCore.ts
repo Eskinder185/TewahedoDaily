@@ -207,6 +207,10 @@ export function specificityRank(
   }
 
   switch (type) {
+    case 'bible-verse':
+    case 'bible-range':
+    case 'bible-chapter':
+    case 'bible-book':
     case 'hymn_section':
     case 'mezmur':
     case 'prayer':
@@ -216,6 +220,7 @@ export function specificityRank(
     case 'synaxarium':
     case 'synaxarium_commemoration':
       return 0
+    case 'bible-text':
     case 'hymn_collection':
     case 'prayer_collection':
     case 'liturgy':
@@ -357,7 +362,10 @@ export function dedupeResults(results: SiteSearchResult[]): SiteSearchResult[] {
   const out: SiteSearchResult[] = []
   for (const r of results) {
     if (!isPublicContentRoute(r.route)) continue
-    const key = `${r.sourceType}:${r.route}`
+    // Bible hits can share a chapter route; keep distinct verse/text rows.
+    const key = r.sourceType.startsWith('bible')
+      ? `${r.sourceType}:${r.sourceId}`
+      : `${r.sourceType}:${r.route}`
     if (seen.has(key)) continue
     seen.add(key)
     out.push({

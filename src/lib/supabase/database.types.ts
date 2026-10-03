@@ -1,5 +1,6 @@
 import type { CmsTables, CmsRole, ContentStatus, ContentType } from './cms.types'
 import type { CommunitySubmission, Duplicate, SubmissionStatus } from '../community/types'
+import type { BibleTables } from '../bible/bibleTypes'
 
 export type Json =
   | string
@@ -11,7 +12,7 @@ export type Json =
 
 export type Database = {
   public: {
-    Tables: CmsTables & {
+    Tables: CmsTables & BibleTables & {
       chant_categories: {
         Row: {
           slug: string

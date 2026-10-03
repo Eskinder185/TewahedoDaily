@@ -138,9 +138,7 @@ export function AccountHomePage() {
       </nav>
 
       <div className={styles.panel}>
-        <h2 className={styles.title} style={{ fontSize: '1.35rem' }}>
-          Profile
-        </h2>
+        <h2 className={styles.sectionTitle}>Profile</h2>
         <form className={styles.form} onSubmit={(e) => void saveDisplayName(e)}>
           <label className={styles.field}>
             <span>Display name</span>
@@ -158,20 +156,18 @@ export function AccountHomePage() {
       </div>
 
       <div className={styles.panel} style={{ marginTop: '1rem' }}>
-        <h2 className={styles.title} style={{ fontSize: '1.35rem' }}>
-          Preferences
-        </h2>
+        <h2 className={styles.sectionTitle}>Preferences</h2>
         <p className={styles.note}>Stored on this device. Practice and theme settings stay local.</p>
         <label className={styles.field}>
           <span>Text size (reading)</span>
           <select
+            className={styles.control}
             value={prefs.textSize}
             onChange={(e) => {
               const next = { ...prefs, textSize: e.target.value as Prefs['textSize'] }
               setPrefs(next)
               writePrefs({ ...next, language: locale })
             }}
-            style={{ minHeight: 48, borderRadius: 12, padding: '0.65rem 0.8rem', font: 'inherit' }}
           >
             <option value="regular">Regular</option>
             <option value="large">Large</option>
@@ -180,13 +176,13 @@ export function AccountHomePage() {
         <label className={styles.field}>
           <span>Language</span>
           <select
+            className={styles.control}
             value={locale}
             onChange={(e) => {
               const next = e.target.value as AppLocale
               setLocale(next)
               writePrefs({ ...prefs, language: next })
             }}
-            style={{ minHeight: 48, borderRadius: 12, padding: '0.65rem 0.8rem', font: 'inherit' }}
           >
             <option value="en">English</option>
             <option value="am">Amharic</option>

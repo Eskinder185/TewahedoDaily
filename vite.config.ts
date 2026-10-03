@@ -22,7 +22,15 @@ export default defineConfig({
             if (id.includes('fuse.js')) {
               return 'search-vendor'
             }
+            // Keep Whisper / ONNX runtime out of the main vendor + Search Buddy chunks.
+            if (id.includes('@huggingface/transformers') || id.includes('onnxruntime')) {
+              return 'whisper-vendor'
+            }
             return 'vendor'
+          }
+
+          if (id.includes('src/lib/speech/whisper')) {
+            return 'whisper-speech'
           }
           
           // EOTC rule-engine datasets (date resolution / movable feasts) — not CMS copy

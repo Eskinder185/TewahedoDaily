@@ -56,6 +56,11 @@ export function SiteHeader() {
       desc: t('navModePrayDesc'),
     },
     {
+      to: '/bible',
+      label: t('navBible'),
+      desc: t('navModeBibleDesc'),
+    },
+    {
       to: '/calendar',
       label: t('navKeepDay'),
       desc: t('navModeKeepDayDesc'),
