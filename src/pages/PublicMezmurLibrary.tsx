@@ -293,9 +293,13 @@ export function PublicMezmurLibrary() {
       }
     }
     const timeout = window.setTimeout(() => {
+      // Browse facets only (sections / singers / collections). Hymn titles come
+      // from GET /api/hymns/search — do not surface local exact title matches here.
       void searchHymns(expandSearchAliases(needle), 8)
         .then((hits) => {
-          if (active) setDiscoveryHits(hits)
+          if (active) {
+            setDiscoveryHits(hits.filter((hit) => hit.type !== 'mezmur'))
+          }
         })
         .catch(() => {
           if (active) setDiscoveryHits([])
@@ -453,9 +457,11 @@ export function PublicMezmurLibrary() {
         <VoiceTranscriptionControl
           ariaLabel="Search hymns by voice"
           defaultLanguage="am"
+          amharicOnly
           onTranscript={(text) => {
             const transcript = text.trim()
             if (!transcript) return
+            // Voice → raw transcript → same GET /api/hymns/search as typed (via draftQ).
             setHeardTranscript(transcript)
             setDraftQ(transcript)
             setSuggestOpen(false)

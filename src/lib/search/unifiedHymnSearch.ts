@@ -1,20 +1,19 @@
 /**
  * Mezmur / hymn search for the Practice library.
  *
- * Source of truth: GET /api/hymns/search (backend ranking).
- * Typed and voice both pass the same raw query string — no frontend re-rank,
- * no exact-match prefilter, no merge that reorders API hits.
+ * Source of truth: GET /api/hymns/search?q=&limit=20 (backend ranking).
+ * Typed and voice both pass the same raw query — no /api/chat, no frontend
+ * re-rank, no exact-match prefilter before the backend.
  *
- * Local Supabase is used only when the AI API is not configured or the request fails.
+ * Local Supabase is used only when VITE_TEWAHEDO_AI_API_URL is not configured.
+ * When the API is configured, empty/error yields empty results (not a local re-rank).
  */
 import { AiClientError } from '../ai/aiTypes.ts'
 import { searchImportMezmurs } from '../publicContent/hymnBrowse.ts'
 import { resolveMezmurDetailPath } from '../searchBuddy/mezmurRoute.ts'
 import type { HymnRow } from '../searchBuddy/apiTypes.ts'
-import {
-  canAttemptStructuredSearchApi,
-  fetchHymnsSearchApi,
-} from './structuredSearchApi.ts'
+import { canAttemptStructuredSearchApi } from './structuredSearchApi.ts'
+import { searchHymns } from './searchHymns.ts'
 
 export type UnifiedMezmurSearchItem = {
   id: string
@@ -107,13 +106,13 @@ export async function searchMezmursUnified(
     return { items: [], total: 0, page, source: 'local', query: q }
   }
 
+  // Production path: shared searchHymns → GET /api/hymns/search (backend ranking).
   if (canAttemptStructuredSearchApi()) {
     try {
-      const api = await fetchHymnsSearchApi(q, {
+      const api = await searchHymns(q, {
         limit,
         signal: options.signal,
       })
-      // Preserve backend ranking — do not re-sort or merge with local.
       const items = api.results
         .map((row) => hymnRowToItem(row))
         .filter((row): row is UnifiedMezmurSearchItem => Boolean(row))
@@ -126,10 +125,12 @@ export async function searchMezmursUnified(
       }
     } catch (error) {
       if (error instanceof AiClientError && error.code === 'aborted') throw error
-      // fall through to local
+      // Do not substitute local exact-match ranking when the API is the source of truth.
+      return { items: [], total: 0, page: 1, source: 'api', query: q }
     }
   }
 
+  // Dev / offline only — AI URL not configured.
   const local = await searchImportMezmurs(q, { page: 1, pageSize: limit })
   const items: UnifiedMezmurSearchItem[] = local.items.map((item) => ({
     id: item.id,
@@ -151,7 +152,7 @@ export async function searchMezmursUnified(
     items,
     total: local.total,
     page: 1,
-    source: canAttemptStructuredSearchApi() ? 'local-fallback' : 'local',
+    source: 'local',
     query: q,
   }
 }

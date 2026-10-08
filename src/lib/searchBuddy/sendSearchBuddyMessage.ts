@@ -5,12 +5,19 @@ import { prepareSearchBuddyMessage } from '../search/normalizeSearchQuery.ts'
 import {
   resolveAmharicStructuredSearch,
   shouldUseAmharicStructuredPath,
+  type AmharicStructuredSearchOptions,
 } from './amharicStructuredSearch.ts'
 import {
   isEmptySearchBuddyResponse,
   parseSearchBuddyResponse,
 } from './parseSearchBuddyResponse.ts'
 import type { SearchBuddyApiResponse } from './apiTypes.ts'
+
+export type SendSearchBuddyOptions = {
+  signal?: AbortSignal
+  /** When true, Amharic routing may use hymn search for non-Bible queries. */
+  hymnContext?: boolean
+}
 
 export type SendSearchBuddyResult = {
   response: SearchBuddyApiResponse
@@ -21,12 +28,18 @@ export type SendSearchBuddyResult = {
 
 /**
  * Single Search Buddy API entry point (also used by the Bible page adapter).
- * Shared prepareSearchBuddyMessage → Amharic structured GETs or POST /api/chat.
+ * Voice and typed input share this function — same routing for the same text.
  */
 export async function sendSearchBuddyMessage(
   message: string,
-  signal?: AbortSignal,
+  signalOrOptions?: AbortSignal | SendSearchBuddyOptions,
 ): Promise<SendSearchBuddyResult> {
+  const options: SendSearchBuddyOptions =
+    signalOrOptions instanceof AbortSignal || signalOrOptions === undefined
+      ? { signal: signalOrOptions }
+      : signalOrOptions
+  const signal = options.signal
+
   // Preserve ASR wording for Amharic Bible chat; English still gets Bible rewrite.
   const rawTrimmed = (message || '').replace(/\s+/g, ' ').trim()
   const prepared = prepareSearchBuddyMessage(message)
@@ -47,8 +60,12 @@ export async function sendSearchBuddyMessage(
   }
 
   if (shouldUseAmharicStructuredPath(forRouting)) {
+    const amOptions: AmharicStructuredSearchOptions = {
+      signal,
+      hymnContext: options.hymnContext,
+    }
     // Pass raw transcript so Bible-like Amharic hits POST /api/chat unchanged.
-    const response = await resolveAmharicStructuredSearch(rawTrimmed || forRouting, signal)
+    const response = await resolveAmharicStructuredSearch(rawTrimmed || forRouting, amOptions)
     if (response) {
       return {
         response,
@@ -89,4 +106,10 @@ export function missingApiUrlDevMessage(): string | null {
   if (!import.meta.env.DEV) return null
   if (isAiApiConfigured()) return null
   return 'Developer: VITE_TEWAHEDO_AI_API_URL is not set. Add it to .env.local and restart Vite to use the FastAPI Search Buddy backend.'
+}
+
+/** True when the current page should enable Mezmur hymn routing in Search Buddy. */
+export function isMezmurHymnContextPath(pathname: string | null | undefined): boolean {
+  const path = (pathname || '').split('?')[0] || ''
+  return path === '/practice' || path.startsWith('/practice/')
 }

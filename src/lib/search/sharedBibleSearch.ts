@@ -1,35 +1,26 @@
 /**
  * Shared Bible search adapter for Search Buddy + Bible page (typed and voice).
  *
- * Pipeline (identical for typed and voice transcripts):
- *   raw text → POST /api/chat (via sendSearchBuddyMessage)
+ * Pipeline:
+ *   raw text → resolveBibleQuery (POST /api/chat)
  *     → bible_reference | bible_chapter  → stop; render structured result
- *     → bible_search                     → use structured hits
  *     → otherwise                        → ordinary Bible text search only
  *
- * Amharic spoken references are NOT resolved by frontend book/number parsers.
- * No separate voice-only matcher.
+ * No frontend Amharic book/number/ASR matching.
  */
 import { searchBible, searchBibleText, type BibleSearchOptions } from '../bible/bibleSearch.ts'
 import { AiClientError } from '../ai/aiTypes.ts'
 import { containsEthiopic } from '../searchBuddy/amharicText.ts'
-import {
-  searchBuddyApiReady,
-  sendSearchBuddyMessage,
-} from '../searchBuddy/sendSearchBuddyMessage.ts'
 import type { SearchBuddyApiResponse } from '../searchBuddy/apiTypes.ts'
 import { resolveBibleDetailPath } from './bibleRoute.ts'
-import { prepareSearchBuddyMessage } from './normalizeSearchQuery.ts'
+import { canResolveBibleQuery, resolveBibleQuery } from './resolveBibleQuery.ts'
 import type { SiteSearchResult } from './types.ts'
 
 export type SharedBibleSearchSource = 'buddy-api' | 'local' | 'local-fallback'
 
 export type SharedBibleSearchResult = {
-  /** Message after shared normalization / Bible rewrite. */
   normalizedQuery: string
-  /** Structured FastAPI payload when bible_* succeeded. */
   structured: SearchBuddyApiResponse | null
-  /** Navigation list (from structured mapping and/or local Supabase). */
   siteResults: SiteSearchResult[]
   empty: boolean
   source: SharedBibleSearchSource
@@ -87,23 +78,26 @@ function siteResultsFromStructured(response: SearchBuddyApiResponse): SiteSearch
         response.book.slug) ||
       route.split('/')[2] ||
       'bible'
-    const mapped: SiteSearchResult = {
-      sourceType: response.type === 'bible_reference' ? 'bible-verse' : 'bible-chapter',
-      sourceId: `buddy:${response.type}:${slug}:${response.chapter || 0}:${verse || 0}`,
-      title: displayTitle,
-      titleAmharic:
-        typeof response.book === 'object' && response.book && typeof response.book.name_am === 'string'
-          ? response.book.name_am
-          : '',
-      description: response.type === 'bible_reference' ? 'Bible reference' : 'Bible chapter',
-      route,
-      imagePath: null,
-      score: 0.001,
-      matchKind: 'exact',
-      typeLabel: response.type === 'bible_reference' ? 'Bible verse' : 'Bible chapter',
-      excerpt: excerpt ? truncateExcerpt(excerpt) : undefined,
-    }
-    return [mapped]
+    return [
+      {
+        sourceType: response.type === 'bible_reference' ? 'bible-verse' : 'bible-chapter',
+        sourceId: `buddy:${response.type}:${slug}:${response.chapter || 0}:${verse || 0}`,
+        title: displayTitle,
+        titleAmharic:
+          typeof response.book === 'object' &&
+          response.book &&
+          typeof response.book.name_am === 'string'
+            ? response.book.name_am
+            : '',
+        description: response.type === 'bible_reference' ? 'Bible reference' : 'Bible chapter',
+        route,
+        imagePath: null,
+        score: 0.001,
+        matchKind: 'exact',
+        typeLabel: response.type === 'bible_reference' ? 'Bible verse' : 'Bible chapter',
+        excerpt: excerpt ? truncateExcerpt(excerpt) : undefined,
+      },
+    ]
   }
 
   if (response.type === 'bible_search') {
@@ -167,17 +161,13 @@ function intentForStructured(response: SearchBuddyApiResponse): string {
 }
 
 /**
- * Shared Bible search used by the Bible page (typed + voice).
- * Sends the raw transcript/text to the same Search Buddy chat resolver.
+ * Bible page + shared adapter: raw text → resolveBibleQuery → optional text search.
  */
 export async function searchBibleShared(
   queryRaw: string,
   options: BibleSearchOptions & { signal?: AbortSignal } = {},
 ): Promise<SharedBibleSearchResult> {
-  // Preserve ASR / typed wording for /api/chat (incl. Ethiopic ፥). Do not
-  // run frontend Amharic book/number parsing before the backend resolver.
   const rawForChat = (queryRaw || '').replace(/\s+/g, ' ').trim()
-  const normalizedQuery = prepareSearchBuddyMessage(queryRaw) || rawForChat
 
   if (!rawForChat) {
     return {
@@ -191,57 +181,54 @@ export async function searchBibleShared(
     }
   }
 
-  if (searchBuddyApiReady()) {
+  if (canResolveBibleQuery()) {
     try {
-      const { response, empty, normalizedMessage } = await sendSearchBuddyMessage(
-        rawForChat,
-        options.signal,
-      )
+      const resolved = await resolveBibleQuery(rawForChat, { signal: options.signal })
 
-      // Structured Bible reference/chapter from backend — stop immediately.
-      if (response.type === 'bible_reference' || response.type === 'bible_chapter') {
-        const siteResults = empty ? [] : siteResultsFromStructured(response)
+      // bible_reference / bible_chapter — stop; do not run local book matching.
+      if (
+        resolved.response.type === 'bible_reference' ||
+        resolved.response.type === 'bible_chapter'
+      ) {
+        const siteResults = resolved.empty ? [] : siteResultsFromStructured(resolved.response)
         return {
-          normalizedQuery: normalizedMessage || normalizedQuery,
-          structured: response,
+          normalizedQuery: resolved.query,
+          structured: resolved.response,
           siteResults,
           empty: siteResults.length === 0,
           source: 'buddy-api',
-          intentMessage: empty ? null : intentForStructured(response),
+          intentMessage: resolved.empty ? null : intentForStructured(resolved.response),
           directReference: true,
         }
       }
 
-      if (response.type === 'bible_search' && !empty) {
-        const siteResults = siteResultsFromStructured(response)
+      if (resolved.response.type === 'bible_search' && !resolved.empty) {
+        const siteResults = siteResultsFromStructured(resolved.response)
         return {
-          normalizedQuery: normalizedMessage || normalizedQuery,
-          structured: response,
+          normalizedQuery: resolved.query,
+          structured: resolved.response,
           siteResults,
           empty: siteResults.length === 0,
           source: 'buddy-api',
-          intentMessage: intentForStructured(response),
+          intentMessage: intentForStructured(resolved.response),
           directReference: false,
         }
       }
-      // Non-bible chat/structured types → ordinary text search below (no local ref matcher).
+      // Non-bible chat types → ordinary text search (not local reference parsing).
     } catch (error) {
       if (error instanceof AiClientError && error.code === 'aborted') throw error
-      // network / timeout / not_configured → local text (or English) fallback
     }
   }
 
-  // Ethiopic: never use the weak frontend reference parser (produces false
-  // "no matching book/verse" before the backend had a chance, or when chat
-  // returned a non-bible type). Keyword text search only.
+  // Ethiopic: keyword text search only — never the weak local reference parser.
   if (containsEthiopic(rawForChat)) {
     const textResults = await searchBibleText(rawForChat, options)
     return {
-      normalizedQuery,
+      normalizedQuery: rawForChat,
       structured: null,
       siteResults: textResults,
       empty: textResults.length === 0,
-      source: searchBuddyApiReady() ? 'local-fallback' : 'local',
+      source: canResolveBibleQuery() ? 'local-fallback' : 'local',
       intentMessage: textResults.length
         ? `I found ${textResults.length} Bible passage${textResults.length === 1 ? '' : 's'} matching your search.`
         : null,
@@ -249,20 +236,19 @@ export async function searchBibleShared(
     }
   }
 
-  // English / Latin: local catalog may still resolve classic "John 3:16" when API is down.
-  const local = await searchBible(normalizedQuery, options)
+  // English / Latin offline fallback only when chat is unavailable.
+  const local = await searchBible(rawForChat, options)
   return {
-    normalizedQuery,
+    normalizedQuery: rawForChat,
     structured: null,
     siteResults: local.results,
     empty: local.results.length === 0,
-    source: searchBuddyApiReady() ? 'local-fallback' : 'local',
+    source: canResolveBibleQuery() ? 'local-fallback' : 'local',
     intentMessage: local.intentMessage,
     directReference: local.directReference,
   }
 }
 
-/** Canonical navigation destination for an equivalent query (for tests / callers). */
 export function resolveSharedBibleDestination(
   result: SharedBibleSearchResult,
 ): string | null {

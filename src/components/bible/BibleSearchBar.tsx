@@ -1,6 +1,5 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { parseBibleReference } from '../../lib/bible/parseBibleReference'
 import { searchBibleShared } from '../../lib/search/sharedBibleSearch'
 import type { SearchBuddyApiResponse } from '../../lib/searchBuddy/apiTypes'
 import { looksLikeAmharicBibleReference } from '../../lib/searchBuddy/amharicStructuredSearch'
@@ -39,9 +38,12 @@ const COPY = {
 } as const
 
 function shouldSearchImmediately(query: string): boolean {
-  // Amharic spoken refs are resolved by POST /api/chat, not parseBibleReference.
+  // Debounce hint only — resolution is always POST /api/chat via resolveBibleQuery.
+  // No local book-name / spoken-number parsing.
   if (looksLikeAmharicBibleReference(query)) return true
-  return parseBibleReference(query).isReference
+  if (/\d+\s*[:\u1365]\s*\d+/.test(query)) return true
+  if (/[A-Za-z].*\d/.test(query)) return true
+  return false
 }
 
 export function BibleSearchBar() {
@@ -85,8 +87,8 @@ export function BibleSearchBar() {
     setStatus('loading')
     setMessage(null)
     try {
-      // Same resolver as Search Buddy: raw transcript/text → POST /api/chat.
-      // bible_reference / bible_chapter short-circuit; no local Amharic book matcher.
+      // Shared resolveBibleQuery → POST /api/chat (same as Search Buddy Bible path).
+      // Empty Amharic copy only after the backend resolver has finished.
       const response = await searchBibleShared(q, {
         language: uiLocale === 'am' ? 'am' : 'en',
         textLimit: 12,
@@ -190,6 +192,7 @@ export function BibleSearchBar() {
         <div className={styles.voiceRow}>
           <VoiceTranscriptionControl
             ariaLabel={copy.voiceAria}
+            defaultLanguage="am"
             onTranscript={applyTranscript}
           />
           {voicePending ? (

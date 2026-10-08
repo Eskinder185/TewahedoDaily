@@ -6,7 +6,7 @@ import {
   type RefObject,
 } from 'react'
 import { createPortal } from 'react-dom'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { useLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
@@ -26,6 +26,7 @@ import {
   type SearchBuddyReply,
 } from '../../lib/search/searchBuddySession'
 import {
+  isMezmurHymnContextPath,
   missingApiUrlDevMessage,
   searchBuddyApiReady,
   sendSearchBuddyMessage,
@@ -125,7 +126,9 @@ export function SearchBuddy() {
   const t = useTranslation()
   const { uiLocale } = useLocale()
   const { user } = useAuth()
+  const location = useLocation()
   const navigate = useNavigate()
+  const hymnContext = isMezmurHymnContextPath(location.pathname)
   const {
     open,
     setOpen,
@@ -402,7 +405,11 @@ export function SearchBuddy() {
         aiAbortRef.current = controller
         try {
           // Display history stays local; API payload remains { message } only.
-          const { response, empty } = await sendSearchBuddyMessage(q, controller.signal)
+          // Voice and typed share this path. hymnContext enables lyric/title hymns on /practice.
+          const { response, empty } = await sendSearchBuddyMessage(q, {
+            signal: controller.signal,
+            hymnContext,
+          })
           if (requestId !== requestIdRef.current) return
           const lead = assistantLeadForResponse(response, empty)
           setSnapshot((prev) => ({

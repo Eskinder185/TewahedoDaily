@@ -58,6 +58,7 @@ export function MezmurVoiceSearch({
   helperCaption,
   startAriaLabel,
   defaultLanguage = 'en',
+  amharicOnly = false,
 }: {
   onTranscript: (text: string) => void
   onFinalTranscript?: (text: string) => void
@@ -72,10 +73,17 @@ export function MezmurVoiceSearch({
    * and recording uses POST /api/transcribe (not browser SpeechRecognition).
    */
   defaultLanguage?: VoiceInputLanguage
+  /**
+   * Mezmur Practice: lock to Amharic + POST /api/transcribe.
+   * Hides the EN language chip and never starts browser SpeechRecognition.
+   */
+  amharicOnly?: boolean
 }) {
   const { locale } = useLocale()
   const langGroupId = useId()
-  const [voiceLang, setVoiceLang] = useState<VoiceInputLanguage>(defaultLanguage)
+  const [voiceLang, setVoiceLang] = useState<VoiceInputLanguage>(
+    amharicOnly ? 'am' : defaultLanguage,
+  )
   const [langMenuOpen, setLangMenuOpen] = useState(false)
   const [phase, setPhase] = useState<VoicePhase>('idle')
   const [status, setStatus] = useState('')
@@ -244,9 +252,12 @@ export function MezmurVoiceSearch({
   }, [ui])
 
   const showAmharicOption = amharicReady && canRecordAmharic
-  // Mezmur (defaultLanguage=am): keep አማ even when API is briefly unavailable —
-  // do not auto-flip the badge to EN. Search Buddy (default en) may still fall back.
-  const lockAmharicDefault = defaultLanguage === 'am'
+  // Mezmur: keep አማ (never auto-flip to EN). Search Buddy (default en) may fall back.
+  const lockAmharicDefault = amharicOnly || defaultLanguage === 'am'
+
+  useEffect(() => {
+    if (amharicOnly && voiceLang !== 'am') setVoiceLang('am')
+  }, [amharicOnly, voiceLang])
 
   useEffect(() => {
     if (voiceLang === 'am' && !showAmharicOption && !lockAmharicDefault) {
@@ -561,8 +572,9 @@ export function MezmurVoiceSearch({
       return
     }
 
-    const lang = langOverride ?? voiceLang
-    if (lang === 'am') {
+    const lang = amharicOnly ? 'am' : (langOverride ?? voiceLang)
+    // Mezmur Amharic path: MediaRecorder → POST /api/transcribe only.
+    if (lang === 'am' || amharicOnly) {
       void startAmharicRecording()
       return
     }
@@ -592,10 +604,13 @@ export function MezmurVoiceSearch({
     phase === 'requesting-mic' ||
     (voiceLang === 'en' && phase === 'unsupported')
 
-  // Mezmur locks Amharic as the voice mode unless the user explicitly picks English.
+  // Mezmur (amharicOnly / default am): always አማ unless the user picks English.
   // Otherwise only advertise Amharic when /api/transcribe is reachable.
-  const effectiveLang: VoiceInputLanguage =
-    voiceLang === 'am' && (showAmharicOption || lockAmharicDefault) ? 'am' : 'en'
+  const effectiveLang: VoiceInputLanguage = amharicOnly
+    ? 'am'
+    : voiceLang === 'am' && (showAmharicOption || lockAmharicDefault)
+      ? 'am'
+      : 'en'
 
   const idleAria =
     startAriaLabel ||
@@ -646,13 +661,17 @@ export function MezmurVoiceSearch({
     </svg>
   )
 
-  const showLangPicker = showAmharicOption || lockAmharicDefault
+  const showLangPicker = !amharicOnly && (showAmharicOption || lockAmharicDefault)
 
   if (compact) {
     return (
       <div className={`${styles.root} ${styles.compact}`}>
         <div className={styles.composerBar}>
-          {showLangPicker ? (
+          {amharicOnly ? (
+            <span className={styles.langChip} aria-label="Voice language Amharic">
+              አማ
+            </span>
+          ) : showLangPicker ? (
             <>
               <button
                 type="button"
