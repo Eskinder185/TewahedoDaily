@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { useLocale } from '../../lib/i18n/locale'
 import { decideNativeFallback, isWhisperCapable } from '../../lib/speech/fallbackDecision'
 import {
-  VOICE_MAX_LISTEN_MS,
+  VOICE_MAX_DURATION_MS,
   VOICE_RECOGNITION_LANG,
   type NativeSpeechErrorCode,
 } from '../../lib/speech/speechTypes'
@@ -22,7 +22,7 @@ import {
 import { disposeWhisperClient } from '../../lib/speech/whisperClient'
 import styles from './MezmurVoiceSearch.module.css'
 
-const VOICE_MAX_SECONDS = Math.round(VOICE_MAX_LISTEN_MS / 1000)
+const VOICE_MAX_SECONDS = Math.round(VOICE_MAX_DURATION_MS / 1000)
 
 function mapNativeError(code: string): NativeSpeechErrorCode {
   const known: NativeSpeechErrorCode[] = [
@@ -118,7 +118,7 @@ export function MezmurVoiceSearch({
       if (voiceSessionRef.current !== sessionId) return
       voiceDebug('voice max duration', { sessionId })
       onTimeout()
-    }, VOICE_MAX_LISTEN_MS)
+    }, VOICE_MAX_DURATION_MS)
   }
 
   function hardStopNative(reason: string) {

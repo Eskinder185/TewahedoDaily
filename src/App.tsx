@@ -268,11 +268,13 @@ export default function App() {
         <Route path="/bible/:bookSlug/:chapter" element={<Suspense fallback={<PageLoadingFallback />}><BibleChapterPage /></Suspense>} />
         <Route path="/saints" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="saints"/></Suspense>}/>
         <Route path="/feasts" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="feasts"/></Suspense>}/>
+        <Route path="/learn" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="articles"/></Suspense>}/>
         <Route path="/prayer-library" element={<Navigate to="/prayers" replace />} />
         <Route path="/search" element={<Navigate to="/" replace />} />
-        <Route path="/teachings" element={<Navigate to="/" replace />} />
-        <Route path="/teaching" element={<Navigate to="/" replace />} />
-        <Route path="/articles" element={<Navigate to="/" replace />} />
+        <Route path="/teachings" element={<Navigate to="/learn" replace />} />
+        <Route path="/teaching" element={<Navigate to="/learn" replace />} />
+        <Route path="/articles" element={<Navigate to="/learn" replace />} />
+        <Route path="/encyclopedia" element={<Navigate to="/learn" replace />} />
         <Route path="/content/:kind/:slug" element={<Suspense fallback={<PageLoadingFallback />}><PublicContentDetail /></Suspense>} />
         <Route path="/login" element={<Suspense fallback={<PageLoadingFallback />}><LoginPage /></Suspense>} />
         <Route path="/signup" element={<Suspense fallback={<PageLoadingFallback />}><SignupPage /></Suspense>} />

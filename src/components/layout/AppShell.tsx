@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import { Outlet } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import { SiteHeader } from './SiteHeader'
 import { SiteFooter } from './SiteFooter'
 import styles from './AppShell.module.css'
@@ -11,22 +12,32 @@ const SearchBuddy = lazy(() =>
   import('../search/SearchBuddy').then((m) => ({ default: m.SearchBuddy })),
 )
 
+function AppShellFrame() {
+  const t = useTranslation()
+  return (
+    <GlobalAudio>
+      <div className={styles.shell}>
+        <a href="#main" className={styles.skipLink}>
+          {t('a11y.skipToMain')}
+        </a>
+        <SiteHeader />
+        <main className={styles.main} id="main" tabIndex={-1}>
+          <Outlet />
+        </main>
+        <SiteFooter />
+        <Suspense fallback={null}>
+          <SearchBuddy />
+        </Suspense>
+      </div>
+    </GlobalAudio>
+  )
+}
+
 export function AppShell() {
   return (
     <AuthProvider>
       <SearchBuddyProvider>
-        <GlobalAudio>
-          <div className={styles.shell}>
-            <SiteHeader />
-            <main className={styles.main} id="main">
-              <Outlet />
-            </main>
-            <SiteFooter />
-            <Suspense fallback={null}>
-              <SearchBuddy />
-            </Suspense>
-          </div>
-        </GlobalAudio>
+        <AppShellFrame />
       </SearchBuddyProvider>
     </AuthProvider>
   )

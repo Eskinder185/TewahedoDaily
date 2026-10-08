@@ -621,7 +621,11 @@
     "submitMezmur": "መዝሙር አስገባ",
     "saved": "የተቀመጡ",
     "adminLogin": "የአስተዳዳሪ መግቢያ",
-    "adminDashboard": "የአስተዳዳሪ ሰሌዳ"
+    "adminDashboard": "የአስተዳዳሪ ሰሌዳ",
+    "saints": "ቅዱሳን",
+    "feasts": "በዓላት",
+    "bible": "መጽሀፍ ቅዱስ",
+    "learn": "ተማር"
   },
   "common": {
     "dialogClose": "ዝጋ",
@@ -654,14 +658,20 @@
     "fab": "ፈልግ",
     "fabAria": "ፍለጋ ክፈት",
     "title": "ተዋህዶ ዴይሊ ረዳት",
-    "subtitle": "መዝሙሮችን፣ ጸሎቶችን፣ ቅዱሳንን፣ የቀን መቁጠሪያ ክስተቶችን እና ገጾችን ያግኙ።",
-    "placeholder": "ዝማሬዎች፣ ቀን መቁጠሪያ፣ ዘማሪ…",
-    "inputAria": "ተዋህዶ ዴይሊን ፈልግ",
+    "subtitle": "ቅዱሳት መጻሕፍት፣ ጸሎቶች፣ መዝሙሮች፣ ቅዱሳን እና የቤተ ክርስቲያን ቀን መቁጠሪያ።",
+    "placeholder": "ስለ ቅዱሳት መጻሕፍት፣ ጸሎት፣ መዝሙር ወይም ዛሬ ይጠይቁ…",
+    "inputAria": "ተዋህዶ ዴይሊ ረዳትን ይጠይቁ",
     "find": "ፈልግ",
+    "findBusy": "በመፈለግ ላይ",
     "close": "ዝጋ",
     "closeAssistant": "ረዳቱን ዝጋ",
     "looking": "በመፈለግ ላይ…",
     "searching": "ተዋህዶ ዴይሊን በመፈለግ ላይ…",
+    "welcomeTitle": "ምን ማግኘት ይፈልጋሉ?",
+    "welcomeCopy": "ስለ ቅዱሳት መጻሕፍት፣ ጸሎቶች፣ መዝሙሮች፣ ቅዱሳን፣ ጾም ወይም የዛሬ ቀን መቁጠሪያ ይጠይቁ።",
+    "suggestionsAria": "የተጠቆሙ ፍለጋዎች",
+    "youAsked": "የጠየቁት",
+    "retry": "ድገም",
     "defaultMessage": "መዝሙር፣ ጸሎት፣ ዘማሪ፣ በዓል ወይም ገጽ ይጠይቁ — ወደዚያ እወስድዎታለሁ።",
     "unavailable": "ፍለጋ ለጊዜው አይገኝም። ልምምድ ወይም ጸሎትን ይሞክሩ።",
     "foundOne": "{title} አገኝሁ።",
@@ -707,6 +717,9 @@
     "seeMore": "ተጨማሪ አሳይ ({count})",
     "partial": "አንዳንድ መረጃዎች ቀስ ብለዋል፤ የተዘጋጀውን እያሳየን ነው።",
     "tryNearby": "ከእነዚህ ቅርብ ገጾች ይሞክሩ",
+    "aiThinking": "ተጨማሪ መልስ በመዘጋጀት ላይ…",
+    "aiAnswerLabel": "ተጨማሪ መልስ",
+    "aiUnavailable": "ተጨማሪ መልሶች ለጊዜው አይገኙም።",
     "preview": "ቅድመ እይታ →",
     "previewTitle": "የስንክሳር ቅድመ እይታ",
     "previewSubtitle": "የታተሙ ትውስታዎች ብቻ — ሲዘጋጁ ሙሉውን ቀን ይክፈቱ።",
@@ -715,7 +728,11 @@
     "openFullPage": "ሙሉ ገጽ ክፈት",
     "source": "ምንጭ",
     "clearSession": "ፍለጋ አጽዳ",
-    "openBible": "በመጽሐፍ ቅዱስ ክፈት →"
+    "clearInput": "የፍለጋ ጽሑፍ አጽዳ",
+    "openBible": "በመጽሐፍ ቅዱስ ክፈት →",
+    "aiThinking": "ተጨማሪ መልስ በማዘጋጀት ላይ…",
+    "aiAnswerLabel": "ተጨማሪ መልስ",
+    "aiUnavailable": "ተጨማሪ መልሶች ለጊዜው አይገኙም።"
   },
   "account": {
     "signIn": "ግባ",
@@ -836,5 +853,8 @@
     "mezmurOfDay": "የዛሬ መዝሙር",
     "saintOfDay": "የዛሬ ቅዱስ",
     "feastOfDay": "የዛሬ በዓል"
+  },
+  "a11y": {
+    "skipToMain": "ወደ ዋና ይዘት ዝለል"
   }
 }

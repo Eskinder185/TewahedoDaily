@@ -635,14 +635,20 @@
     "fab": "Search",
     "fabAria": "Open search",
     "title": "Tewahedo Daily Assistant",
-    "subtitle": "Find hymns, prayers, saints, calendar events, and pages.",
-    "placeholder": "Find Meskel hymns, Calendar, a Zemari…",
-    "inputAria": "Search Tewahedo Daily",
+    "subtitle": "Scripture, prayers, hymns, saints, and the church calendar.",
+    "placeholder": "Ask about Scripture, prayers, hymns, or today…",
+    "inputAria": "Ask the Tewahedo Daily Assistant",
     "find": "Find",
+    "findBusy": "Searching",
     "close": "Close",
     "closeAssistant": "Close assistant",
     "looking": "Looking…",
     "searching": "Searching Tewahedo Daily…",
+    "welcomeTitle": "What would you like to find?",
+    "welcomeCopy": "Ask about Scripture, prayers, hymns, saints, fasting, or today's church calendar.",
+    "suggestionsAria": "Suggested searches",
+    "youAsked": "You asked",
+    "retry": "Retry",
     "defaultMessage": "Ask for a hymn, prayer, Zemari, feast, or page — I will take you there.",
     "unavailable": "Search is temporarily unavailable. Try browsing Hymns or Pray.",
     "foundOne": "I found {title}.",
@@ -664,6 +670,7 @@
     "openFullPage": "Open full page",
     "source": "Source",
     "clearSession": "Clear search",
+    "clearInput": "Clear search text",
     "starters": {
       "meskel": "Find Meskel hymns",
       "learnPray": "Learn how to pray",
@@ -696,13 +703,20 @@
     },
     "seeMore": "See more ({count})",
     "partial": "Some catalogs were slow; showing what is ready.",
-    "tryNearby": "Try one of these nearby pages"
+    "tryNearby": "Try one of these nearby pages",
+    "aiThinking": "Preparing an extended answer…",
+    "aiAnswerLabel": "Extended answer",
+    "aiUnavailable": "Extended answers are temporarily unavailable."
   },
   "footer": {
     "portfolio": "Portfolio - eskinder.dev",
     "copyright": "© {year} Tewahedo Daily",
     "utilitiesAria": "Site utilities",
     "about": "About",
+    "saints": "Saints",
+    "feasts": "Feasts",
+    "bible": "Bible",
+    "learn": "Learn",
     "legal": "Legal",
     "copyrightLink": "Copyright",
     "privacy": "Privacy",
@@ -712,6 +726,9 @@
     "saved": "Saved",
     "adminLogin": "Admin Login",
     "adminDashboard": "Admin Dashboard"
+  },
+  "a11y": {
+    "skipToMain": "Skip to main content"
   },
   "account": {
     "signIn": "Sign in",

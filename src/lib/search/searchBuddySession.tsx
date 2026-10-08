@@ -7,6 +7,8 @@ import {
   useState,
   type ReactNode,
 } from 'react'
+import type { AiSource, AiUiStatus } from '../ai/aiTypes.ts'
+import type { SearchBuddyApiResponse } from '../searchBuddy/apiTypes.ts'
 import type { SiteSearchResult } from './types'
 import type { SearchSessionContext } from './searchCore'
 
@@ -23,6 +25,15 @@ export type SearchBuddyReply =
   | { kind: 'foundMany'; count: number; partial?: boolean }
   | { kind: 'generic'; partial?: boolean }
 
+/** Optional AI/RAG answer layer — never replaces deterministic catalog results. */
+export type SearchBuddyAiAnswer = {
+  status: AiUiStatus
+  answer?: string
+  sources?: AiSource[]
+  /** Subtle notice when AI was requested but unavailable (not a hard error). */
+  notice?: string
+}
+
 export type SearchBuddySnapshot = {
   query: string
   results: SiteSearchResult[]
@@ -36,6 +47,15 @@ export type SearchBuddySnapshot = {
   preview: SiteSearchResult | null
   followUp: SearchSessionContext | null
   error: boolean
+  /** Future AI answer; omitted / null when unused. */
+  aiAnswer: SearchBuddyAiAnswer | null
+  /** Structured FastAPI Search Buddy payload when the AI API is used. */
+  apiResponse: SearchBuddyApiResponse | null
+  apiEmpty: boolean
+  /** Most recent query that returned a successful API or local response. */
+  lastSuccessfulQuery: string
+  /** Calm remote/API error notice; does not wipe local catalog results. */
+  remoteError: string | null
 }
 
 type SearchBuddyApi = {
@@ -61,6 +81,11 @@ const EMPTY: SearchBuddySnapshot = {
   preview: null,
   followUp: null,
   error: false,
+  aiAnswer: null,
+  apiResponse: null,
+  apiEmpty: false,
+  lastSuccessfulQuery: '',
+  remoteError: null,
 }
 
 const SearchBuddyContext = createContext<SearchBuddyApi | null>(null)
@@ -79,6 +104,12 @@ function readStored(): SearchBuddySnapshot {
       preview: parsed.preview ?? null,
       followUp: parsed.followUp ?? null,
       reply: parsed.reply ?? null,
+      aiAnswer: parsed.aiAnswer ?? null,
+      apiResponse: parsed.apiResponse ?? null,
+      apiEmpty: Boolean(parsed.apiEmpty),
+      lastSuccessfulQuery:
+        typeof parsed.lastSuccessfulQuery === 'string' ? parsed.lastSuccessfulQuery : '',
+      remoteError: typeof parsed.remoteError === 'string' ? parsed.remoteError : null,
     }
   } catch {
     return EMPTY

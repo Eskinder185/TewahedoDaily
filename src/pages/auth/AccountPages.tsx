@@ -4,7 +4,7 @@ import { useAuth, hasCmsRole } from '../../lib/auth/useAuth'
 import { useAsync } from '../../lib/cms/useAsync'
 import { listFavorites } from '../../lib/userContent/favoritesService'
 import { listReadingProgress } from '../../lib/userContent/readingProgressService'
-import { getGuestRecentMezmur } from '../../lib/userContent/guestStorage'
+import { getGuestRecentViewed } from '../../lib/userContent/guestStorage'
 import { supabase } from '../../lib/supabase/client'
 import { useLocale, type AppLocale } from '../../lib/i18n/locale'
 import styles from './AuthPages.module.css'
@@ -304,11 +304,11 @@ export function AccountPrayerProgressPage() {
 export function AccountActivityPage() {
   const { session, loading } = useAuth()
   const userId = session?.user.id
-  const [recent, setRecent] = useState(() => getGuestRecentMezmur())
+  const [recent, setRecent] = useState(() => getGuestRecentViewed())
   const progress = useAsync(useCallback(() => listReadingProgress(userId), [userId]))
 
   useEffect(() => {
-    setRecent(getGuestRecentMezmur())
+    setRecent(getGuestRecentViewed())
   }, [session?.user.id])
 
   const recentReading = useMemo(
@@ -324,18 +324,20 @@ export function AccountActivityPage() {
         <Link to="/account">← Account</Link>
       </p>
       <h1 className={styles.title}>Activity</h1>
-      <p className={styles.lead}>Recently played Mezmurs and opened prayers on this device.</p>
+      <p className={styles.lead}>
+        Recently viewed hymns, Scripture, saints, feasts, and reading progress on this device.
+      </p>
 
       <h2 className={styles.title} style={{ fontSize: '1.25rem', marginTop: '1.5rem' }}>
-        Recently played
+        Recently viewed
       </h2>
-      {recent.length === 0 ? <p className={styles.status}>No recent Mezmur yet.</p> : null}
+      {recent.length === 0 ? <p className={styles.status}>No recently viewed content yet.</p> : null}
       <ul className={styles.list}>
         {recent.map((item) => (
-          <li key={item.slug}>
-            <Link to={`/practice/mezmur/${item.slug}`}>
-              <span>{item.title || item.slug}</span>
-              <span className={styles.listMeta}>Mezmur</span>
+          <li key={`${item.contentType}:${item.contentSlug}`}>
+            <Link to={item.route}>
+              <span>{item.title || item.contentSlug}</span>
+              <span className={styles.listMeta}>{item.contentType}</span>
             </Link>
           </li>
         ))}

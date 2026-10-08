@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { useLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
+import { canAttemptAiChat, friendlyAiError, postAiChat } from '../../lib/ai'
+import { shouldAttemptAiAnswer } from '../../lib/search/aiRouting'
 import {
   buildSessionContext,
   searchSite,
@@ -22,19 +24,35 @@ import {
   useSearchBuddy,
   type SearchBuddyReply,
 } from '../../lib/search/searchBuddySession'
+import {
+  missingApiUrlDevMessage,
+  searchBuddyApiReady,
+  sendSearchBuddyMessage,
+} from '../../lib/searchBuddy'
+import { searchBuddyErrorMessage } from '../../lib/searchBuddy/errorMessages.ts'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
 import { MezmurVoiceSearch } from './MezmurVoiceSearch'
 import { SearchResultCard } from './SearchResultCard'
+import { SearchBuddyResults } from './results/SearchBuddyResults'
 import styles from './SearchBuddy.module.css'
 
-const STARTER_KEYS = [
+/** Compact empty-state examples the FastAPI backend already understands. */
+const API_EXAMPLE_QUERIES = [
+  'John 3:16',
+  'Calendar today',
+  'Fasting today',
+  'Search hymns for Gena',
+  "Today's Synaxarium",
+  'Morning prayers',
+] as const
+
+const LOCAL_STARTER_KEYS = [
   { key: 'meskel', query: 'Find Meskel hymns' },
   { key: 'learnPray', query: 'Learn how to pray' },
   { key: 'zemari', query: 'Find a Zemari' },
   { key: 'synaxarium', query: "today's Synaxarium" },
   { key: 'fasting', query: 'Show fasting information' },
   { key: 'calendar', query: 'Open Calendar' },
-  { key: 'prayers', query: 'Find prayers' },
 ] as const
 
 const FOCUSABLE =
@@ -101,7 +119,7 @@ function formatReply(
     partial ? `${msg} ${t('searchBuddy.partial')}` : msg
   switch (reply.kind) {
     case 'searching':
-      return t('searchBuddy.searching')
+      return ''
     case 'unavailable':
       return t('searchBuddy.unavailable')
     case 'zero':
@@ -115,7 +133,7 @@ function formatReply(
     case 'foundMany':
       return withPartial(t('searchBuddy.foundMany', { count: reply.count }), reply.partial)
     case 'generic':
-      return withPartial(t('searchBuddy.foundGeneric'), reply.partial)
+      return ''
     default:
       return fallbackMessage
   }
@@ -138,8 +156,11 @@ export function SearchBuddy() {
 
   const [busy, setBusy] = useState(false)
   const requestIdRef = useRef(0)
+  const aiAbortRef = useRef<AbortController | null>(null)
   const titleId = useId()
   const previewTitleId = useId()
+  const welcomeId = useId()
+  const inputId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLElement>(null)
@@ -147,6 +168,9 @@ export function SearchBuddy() {
   const fabRef = useRef<HTMLButtonElement>(null)
   const backToResultsRef = useRef<HTMLButtonElement>(null)
   const restoreScrollPending = useRef(false)
+
+  const apiReady = searchBuddyApiReady()
+  const devApiNotice = missingApiUrlDevMessage()
 
   const {
     query,
@@ -159,16 +183,40 @@ export function SearchBuddy() {
     preview,
     error,
     resultsScrollTop,
+    aiAnswer,
+    apiResponse,
+    apiEmpty,
+    lastSuccessfulQuery,
+    remoteError,
   } = snapshot
 
+  function cancelAiRequest() {
+    if (aiAbortRef.current) {
+      aiAbortRef.current.abort()
+      aiAbortRef.current = null
+    }
+  }
+
+  const showWelcome = !hasSearched && !busy && !preview
+  const showApiResults = Boolean(apiResponse) && !preview
+  const showLocalResults = !showApiResults && results.length > 0 && !preview
+  const submittedQuery = (lastSuccessfulQuery || query).trim()
+
   const statusMessage = error
-    ? t('searchBuddy.unavailable')
-    : !hasSearched
-      ? t('searchBuddy.defaultMessage')
-      : formatReply(reply, t, message || t('searchBuddy.foundGeneric'))
+    ? message || t('searchBuddy.unavailable')
+    : showWelcome
+      ? ''
+      : apiResponse
+        ? apiEmpty
+          ? t('searchBuddy.zero')
+          : ''
+        : formatReply(reply, t, message || '')
 
   const visibleResults = showAll ? results : results.slice(0, INITIAL_RESULT_COUNT)
   const hasMore = results.length > INITIAL_RESULT_COUNT && !showAll
+  const exampleQueries = apiReady
+    ? API_EXAMPLE_QUERIES
+    : LOCAL_STARTER_KEYS.map((starter) => starter.query)
 
   useEffect(() => {
     if (!open) return
@@ -247,67 +295,167 @@ export function SearchBuddy() {
     if (open) restoreScrollPending.current = true
   }, [open])
 
+  useEffect(() => {
+    if (!open) cancelAiRequest()
+    return () => cancelAiRequest()
+  }, [open])
+
   function onBodyScroll() {
     if (!bodyRef.current || preview) return
     persistScroll(bodyRef.current.scrollTop)
   }
 
+  async function runLocalSearch(q: string, requestId: number, options?: { keepRemoteError?: string }) {
+    const response = await searchSite(q, {
+      limit: 12,
+      includePersonal: true,
+      userId: user?.id ?? null,
+      session: followUpRef.current,
+      language: uiLocale === 'am' ? 'am' : 'en',
+    })
+    if (requestId !== requestIdRef.current) return
+
+    const localized = response.results.map((result) =>
+      localizeResult(result, t, Boolean(user?.id)),
+    )
+    const followUp = buildSessionContext(response.resolvedQuery || q, localized)
+    followUpRef.current = followUp
+    setSnapshot({
+      query: q,
+      results: localized,
+      reply: replyFromResponse({ ...response, results: localized }),
+      message: '',
+      followUp,
+      suggestions: response.zeroResults
+        ? zeroResultSuggestions().map((result) =>
+            localizeResult(result, t, Boolean(user?.id)),
+          )
+        : [],
+      error: false,
+      hasSearched: true,
+      preview: null,
+      aiAnswer: null,
+      apiResponse: null,
+      apiEmpty: false,
+      lastSuccessfulQuery: q,
+      remoteError: options?.keepRemoteError ?? null,
+    })
+
+    if (canAttemptAiChat() && !apiReady && shouldAttemptAiAnswer(q, localized)) {
+      const controller = new AbortController()
+      aiAbortRef.current = controller
+      setSnapshot({ aiAnswer: { status: 'thinking' } })
+      try {
+        const chat = await postAiChat(
+          {
+            message: q,
+            language: uiLocale === 'am' ? 'am' : 'en',
+            context: { page: typeof window !== 'undefined' ? window.location.pathname : '/' },
+          },
+          controller.signal,
+        )
+        if (requestId !== requestIdRef.current) return
+        const answer = (chat.answer || '').trim()
+        if (!answer) {
+          setSnapshot({ aiAnswer: null })
+          return
+        }
+        setSnapshot({
+          aiAnswer: {
+            status: 'success',
+            answer,
+            sources: Array.isArray(chat.sources) ? chat.sources : undefined,
+          },
+        })
+      } catch (aiErr) {
+        if (requestId !== requestIdRef.current) return
+        const notice = friendlyAiError(aiErr)
+        setSnapshot({
+          aiAnswer: notice ? { status: 'unavailable', notice } : null,
+          remoteError: notice || null,
+        })
+      } finally {
+        if (aiAbortRef.current === controller) aiAbortRef.current = null
+      }
+    }
+  }
+
   async function runSearch(raw: string) {
     const q = raw.trim()
-    if (!q) return
+    if (!q || busy) return
     const requestId = ++requestIdRef.current
+    cancelAiRequest()
     setBusy(true)
+    // Keep prior successful results visible while the new request loads.
     setSnapshot({
       query: q,
       error: false,
       hasSearched: true,
       showAll: false,
-      results: [],
-      suggestions: [],
       preview: null,
       reply: { kind: 'searching' },
       message: '',
       resultsScrollTop: 0,
+      aiAnswer: null,
+      remoteError: null,
     })
-    try {
-      const response = await searchSite(q, {
-        limit: 12,
-        includePersonal: true,
-        userId: user?.id ?? null,
-        session: followUpRef.current,
-        language: uiLocale === 'am' ? 'am' : 'en',
-      })
-      if (requestId !== requestIdRef.current) return
 
-      const localized = response.results.map((result) =>
-        localizeResult(result, t, Boolean(user?.id)),
-      )
-      const followUp = buildSessionContext(response.resolvedQuery || q, localized)
-      followUpRef.current = followUp
-      setSnapshot({
-        query: q,
-        results: localized,
-        reply: replyFromResponse({ ...response, results: localized }),
-        message: '',
-        followUp,
-        suggestions: response.zeroResults
-          ? zeroResultSuggestions().map((result) =>
-              localizeResult(result, t, Boolean(user?.id)),
-            )
-          : [],
-        error: false,
-        hasSearched: true,
-        preview: null,
-      })
+    try {
+      if (apiReady) {
+        const controller = new AbortController()
+        aiAbortRef.current = controller
+        try {
+          const { response, empty } = await sendSearchBuddyMessage(q, controller.signal)
+          if (requestId !== requestIdRef.current) return
+          setSnapshot({
+            query: q,
+            results: [],
+            suggestions: [],
+            reply: empty ? { kind: 'zero' } : { kind: 'generic' },
+            message: '',
+            followUp: null,
+            error: false,
+            hasSearched: true,
+            preview: null,
+            aiAnswer: null,
+            apiResponse: response,
+            apiEmpty: empty,
+            lastSuccessfulQuery: q,
+            remoteError: null,
+          })
+          return
+        } catch (apiErr) {
+          if (requestId !== requestIdRef.current) return
+          const notice = searchBuddyErrorMessage(apiErr)
+          if (!notice) return
+          try {
+            await runLocalSearch(q, requestId, { keepRemoteError: notice })
+            return
+          } catch {
+            // Preserve any prior deterministic results; only mark remote failure.
+            setSnapshot({
+              error: false,
+              reply: results.length || apiResponse ? { kind: 'generic' } : { kind: 'unavailable' },
+              message: notice,
+              remoteError: notice,
+              aiAnswer: null,
+            })
+            return
+          }
+        } finally {
+          if (aiAbortRef.current === controller) aiAbortRef.current = null
+        }
+      }
+
+      await runLocalSearch(q, requestId)
     } catch {
       if (requestId !== requestIdRef.current) return
       setSnapshot({
-        results: [],
-        suggestions: [],
         error: true,
         reply: { kind: 'unavailable' },
-        message: '',
-        preview: null,
+        message: t('searchBuddy.unavailable'),
+        remoteError: t('searchBuddy.unavailable'),
+        aiAnswer: null,
       })
     } finally {
       if (requestId === requestIdRef.current) setBusy(false)
@@ -317,6 +465,23 @@ export function SearchBuddy() {
   function onSubmit(e: FormEvent) {
     e.preventDefault()
     void runSearch(query)
+  }
+
+  function clearQuery() {
+    setSnapshot({ query: '' })
+    inputRef.current?.focus()
+  }
+
+  function resetSession() {
+    cancelAiRequest()
+    clearSession()
+    setBusy(false)
+    inputRef.current?.focus()
+  }
+
+  function retryLast() {
+    const q = (lastSuccessfulQuery || query).trim()
+    if (q) void runSearch(q)
   }
 
   function openPreview(result: SiteSearchResult) {
@@ -340,7 +505,6 @@ export function SearchBuddy() {
     if (bodyRef.current && !preview) persistScroll(bodyRef.current.scrollTop)
     setSnapshot({ preview: null })
     setOpen(false)
-    // One forward history entry; browser Back returns to the prior page (no loop).
     navigate(result.route, { state: { fromSearchBuddy: true } })
   }
 
@@ -368,6 +532,8 @@ export function SearchBuddy() {
           role="dialog"
           aria-modal="true"
           aria-labelledby={preview ? previewTitleId : titleId}
+          aria-describedby={showWelcome ? welcomeId : undefined}
+          aria-busy={busy || undefined}
         >
           <header className={styles.header}>
             <div className={styles.headerCopy}>
@@ -393,6 +559,61 @@ export function SearchBuddy() {
               ×
             </button>
           </header>
+
+          {!preview ? (
+            <div className={styles.composer}>
+              <form className={styles.form} onSubmit={onSubmit} role="search">
+                <label className={styles.srOnly} htmlFor={inputId}>
+                  {t('searchBuddy.inputAria')}
+                </label>
+                <div className={styles.composerField}>
+                  <span className={styles.composerIcon} aria-hidden>
+                    ⌕
+                  </span>
+                  <input
+                    id={inputId}
+                    ref={inputRef}
+                    value={query}
+                    onChange={(e) => setSnapshot({ query: e.target.value })}
+                    placeholder={t('searchBuddy.placeholder')}
+                    autoComplete="off"
+                    enterKeyHint="search"
+                    disabled={busy}
+                    spellCheck={false}
+                  />
+                  {query ? (
+                    <button
+                      type="button"
+                      className={styles.clearInput}
+                      aria-label={t('searchBuddy.clearInput')}
+                      onClick={clearQuery}
+                      disabled={busy}
+                    >
+                      ×
+                    </button>
+                  ) : null}
+                </div>
+                <button
+                  type="submit"
+                  className={styles.submitBtn}
+                  disabled={busy || !query.trim()}
+                  aria-label={t('searchBuddy.find')}
+                >
+                  {busy ? t('searchBuddy.findBusy') : t('searchBuddy.find')}
+                </button>
+              </form>
+              <div className={styles.composerTools}>
+                <MezmurVoiceSearch
+                  compact
+                  active={open && !preview && !busy}
+                  onTranscript={(text) => {
+                    setSnapshot({ query: text })
+                  }}
+                />
+              </div>
+            </div>
+          ) : null}
+
           <div ref={bodyRef} className={styles.body} onScroll={onBodyScroll}>
             {preview ? (
               <SynaxariumPreview
@@ -403,45 +624,37 @@ export function SearchBuddy() {
               />
             ) : (
               <>
-                <form className={styles.form} onSubmit={onSubmit}>
-                  <input
-                    ref={inputRef}
-                    value={query}
-                    onChange={(e) => setSnapshot({ query: e.target.value })}
-                    placeholder={t('searchBuddy.placeholder')}
-                    aria-label={t('searchBuddy.inputAria')}
-                    autoComplete="off"
-                    enterKeyHint="search"
-                  />
-                  <button type="submit" disabled={busy || !query.trim()}>
-                    {busy ? '…' : t('searchBuddy.find')}
-                  </button>
-                </form>
-                <MezmurVoiceSearch
-                  compact
-                  active={open && !preview}
-                  onTranscript={(text) => {
-                    // Interim + final Ethiopic/Latin text into the existing editable input.
-                    // Search still runs only when the user submits (Find) — no per-token search.
-                    setSnapshot({ query: text })
-                  }}
-                />
+                {devApiNotice && !apiReady ? (
+                  <p className={styles.devNotice} role="status">
+                    {devApiNotice}
+                  </p>
+                ) : null}
 
-                {!results.length && !busy && !hasSearched ? (
-                  <div className={styles.suggestions}>
-                    {STARTER_KEYS.map((starter) => (
-                      <button
-                        key={starter.key}
-                        type="button"
-                        className={styles.chip}
-                        onClick={() => {
-                          setSnapshot({ query: starter.query })
-                          void runSearch(starter.query)
-                        }}
-                      >
-                        {t(`searchBuddy.starters.${starter.key}`)}
-                      </button>
-                    ))}
+                {showWelcome ? (
+                  <div className={styles.welcome} id={welcomeId}>
+                    <p className={styles.welcomeTitle}>{t('searchBuddy.welcomeTitle')}</p>
+                    <p className={styles.welcomeCopy}>{t('searchBuddy.welcomeCopy')}</p>
+                    <div className={styles.suggestions} role="group" aria-label={t('searchBuddy.suggestionsAria')}>
+                      {exampleQueries.map((example) => {
+                        const localKey = LOCAL_STARTER_KEYS.find((s) => s.query === example)?.key
+                        return (
+                          <button
+                            key={example}
+                            type="button"
+                            className={styles.chip}
+                            disabled={busy}
+                            onClick={() => {
+                              setSnapshot({ query: example })
+                              void runSearch(example)
+                            }}
+                          >
+                            {apiReady || !localKey
+                              ? example
+                              : t(`searchBuddy.starters.${localKey}`)}
+                          </button>
+                        )
+                      })}
+                    </div>
                   </div>
                 ) : null}
 
@@ -450,37 +663,105 @@ export function SearchBuddy() {
                     <button
                       type="button"
                       className={styles.sessionClear}
-                      onClick={() => {
-                        clearSession()
-                        setBusy(false)
-                      }}
+                      onClick={resetSession}
                     >
                       {t('searchBuddy.clearSession')}
                     </button>
                   </div>
                 ) : null}
 
-                <p className={styles.message} role="status" aria-live="polite">
-                  {statusMessage}
-                </p>
+                {busy ? (
+                  <div className={styles.loading} role="status" aria-live="polite">
+                    <span className={styles.loadingDots} aria-hidden>
+                      <span />
+                      <span />
+                      <span />
+                    </span>
+                    <p className={styles.loadingText}>{t('searchBuddy.searching')}</p>
+                  </div>
+                ) : null}
 
-                {busy ? <p className={styles.status}>{t('searchBuddy.looking')}</p> : null}
+                {remoteError ? (
+                  <div className={styles.errorCard} role="alert">
+                    <p className={styles.errorText}>{remoteError}</p>
+                    <button
+                      type="button"
+                      className={styles.retryBtn}
+                      onClick={retryLast}
+                      disabled={busy || !(lastSuccessfulQuery || query).trim()}
+                    >
+                      {t('searchBuddy.retry')}
+                    </button>
+                  </div>
+                ) : null}
 
-                <div className={styles.results}>
-                  {visibleResults.map((result) => (
-                    <SearchResultCard
-                      key={`${result.sourceType}:${result.sourceId}:${result.route}`}
-                      result={result}
-                      preferPreview={isSynaxariumResult(result)}
-                      onOpen={() => handleResultOpen(result)}
-                      onPreview={
-                        isSynaxariumResult(result) ? () => openPreview(result) : undefined
-                      }
-                    />
-                  ))}
-                </div>
+                {statusMessage ? (
+                  <p className={styles.message} role="status" aria-live="polite">
+                    {statusMessage}
+                  </p>
+                ) : null}
 
-                {hasMore ? (
+                {aiAnswer?.status === 'thinking' ? (
+                  <p className={styles.aiNotice} role="status">
+                    {t('searchBuddy.aiThinking')}
+                  </p>
+                ) : null}
+
+                {aiAnswer?.status === 'success' && aiAnswer.answer ? (
+                  <div className={styles.aiAnswer} aria-live="polite">
+                    <p className={styles.aiAnswerLabel}>{t('searchBuddy.aiAnswerLabel')}</p>
+                    <p className={styles.aiAnswerText}>{aiAnswer.answer}</p>
+                    {aiAnswer.sources?.length ? (
+                      <ul className={styles.aiSources}>
+                        {aiAnswer.sources.map((source, index) => (
+                          <li key={source.id || `${source.title}-${index}`}>
+                            {source.url ? (
+                              <a href={source.url} target="_blank" rel="noreferrer">
+                                {source.title}
+                              </a>
+                            ) : (
+                              <span>{source.title}</span>
+                            )}
+                            {source.excerpt ? (
+                              <span className={styles.aiSourceExcerpt}> — {source.excerpt}</span>
+                            ) : null}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                ) : null}
+
+                {!busy && hasSearched && submittedQuery && (showApiResults || showLocalResults || apiEmpty) ? (
+                  <p className={styles.queryLabel}>
+                    <span className={styles.queryLabelPrefix}>{t('searchBuddy.youAsked')}</span>{' '}
+                    <span className={styles.queryLabelText}>{submittedQuery}</span>
+                  </p>
+                ) : null}
+
+                {showApiResults ? (
+                  <div className={styles.results} aria-live="polite">
+                    <SearchBuddyResults response={apiResponse} empty={apiEmpty} />
+                  </div>
+                ) : null}
+
+                {showLocalResults ? (
+                  <div className={styles.results} aria-live="polite">
+                    {visibleResults.map((result) => (
+                      <SearchResultCard
+                        key={`${result.sourceType}:${result.sourceId}:${result.route}`}
+                        result={result}
+                        preferPreview={isSynaxariumResult(result)}
+                        onOpen={() => handleResultOpen(result)}
+                        onPreview={
+                          isSynaxariumResult(result) ? () => openPreview(result) : undefined
+                        }
+                      />
+                    ))}
+                  </div>
+                ) : null}
+
+                {showLocalResults && hasMore ? (
                   <button
                     type="button"
                     className={styles.seeMore}
@@ -490,7 +771,7 @@ export function SearchBuddy() {
                   </button>
                 ) : null}
 
-                {!busy && hasSearched && !results.length && suggestions.length ? (
+                {!busy && hasSearched && !results.length && !apiResponse && suggestions.length ? (
                   <div className={styles.nearby}>
                     <p className={styles.nearbyLabel}>{t('searchBuddy.tryNearby')}</p>
                     <div className={styles.results}>
@@ -505,6 +786,24 @@ export function SearchBuddy() {
                         />
                       ))}
                     </div>
+                  </div>
+                ) : null}
+
+                {!busy && hasSearched && apiEmpty ? (
+                  <div className={styles.suggestions}>
+                    {API_EXAMPLE_QUERIES.slice(0, 4).map((example) => (
+                      <button
+                        key={`retry:${example}`}
+                        type="button"
+                        className={styles.chip}
+                        onClick={() => {
+                          setSnapshot({ query: example })
+                          void runSearch(example)
+                        }}
+                      >
+                        {example}
+                      </button>
+                    ))}
                   </div>
                 ) : null}
               </>
@@ -590,4 +889,3 @@ function SynaxariumPreview({
     </div>
   )
 }
-

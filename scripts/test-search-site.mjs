@@ -3,6 +3,7 @@
  * Run: npm run test:search-site
  */
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import {
   displayTitle,
   expandSearchAliases,
@@ -167,5 +168,20 @@ for (const entry of CURATED) {
 // --- no invented admin routes ---
 assert.equal(isPublicContentRoute('/admin/content'), false)
 assert.equal(isPublicContentRoute('/practice/mezmur/:slug'), false)
+
+// --- expanded catalog hubs (Bible / saints / feasts) ---
+const routeCatalogSrc = readFileSync(
+  new URL('../src/lib/search/routeCatalog.ts', import.meta.url),
+  'utf8',
+)
+assert.match(routeCatalogSrc, /route: '\/bible'/)
+assert.match(routeCatalogSrc, /route: '\/saints'/)
+assert.match(routeCatalogSrc, /route: '\/feasts'/)
+assert.match(routeCatalogSrc, /bible hub/)
+
+const zeroSrc = readFileSync(new URL('../src/lib/search/searchSite.ts', import.meta.url), 'utf8')
+assert.match(zeroSrc, /bible hub/)
+assert.match(zeroSrc, /searchRouteCatalog\('saints'/)
+assert.match(zeroSrc, /searchRouteCatalog\('feasts'/)
 
 console.log('search-site pure checks: ok')

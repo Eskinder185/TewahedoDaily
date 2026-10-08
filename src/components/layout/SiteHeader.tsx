@@ -83,14 +83,21 @@ export function SiteHeader() {
       }
     }
 
+    const mainEl = document.getElementById('main')
+    const footerEl = document.querySelector('footer')
+    const inertTargets = [mainEl, footerEl].filter(Boolean) as HTMLElement[]
+    for (const el of inertTargets) el.setAttribute('inert', '')
+
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     document.addEventListener('keydown', onKeyDown)
+    const menuButton = menuButtonRef.current
 
     return () => {
       document.removeEventListener('keydown', onKeyDown)
       document.body.style.overflow = prevOverflow
-      menuButtonRef.current?.focus()
+      for (const el of inertTargets) el.removeAttribute('inert')
+      menuButton?.focus()
     }
   }, [menuOpen])
 

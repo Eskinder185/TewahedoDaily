@@ -1,0 +1,250 @@
+.stack {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.card {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: inherit;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.cardQuiet {
+  background: color-mix(in srgb, var(--color-bg) 70%, var(--color-bg-elevated));
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  line-height: 1.3;
+}
+
+.titleAm {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-heading);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.meta {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.preview {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+}
+
+.label {
+  display: inline-block;
+  margin: 0.1rem 0 0;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--color-gold-line) 55%, var(--color-border));
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--color-heading);
+  background: color-mix(in srgb, var(--color-bg-elevated) 80%, transparent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.25rem;
+}
+
+.actionLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.actionLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.verseList {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0.35rem 0 0;
+  max-height: min(40vh, 22rem);
+  overflow-y: auto;
+  padding-right: 0.15rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.verseRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.55rem;
+  align-items: start;
+}
+
+.verseNum {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  line-height: 1.6;
+  min-width: 1.4rem;
+}
+
+.verseText {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.headingBlock {
+  display: grid;
+  gap: 0.2rem;
+  margin-bottom: 0.15rem;
+}
+
+.aiCard {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--color-border-strong) 70%, var(--color-gold-line));
+  background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-bg-muted));
+}
+
+.aiLabel {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 650;
+}
+
+.aiBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  white-space: pre-wrap;
+}
+
+.aiSources {
+  margin: 0.4rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.aiSources a {
+  color: var(--color-link, var(--color-accent));
+}
+
+.genericDev {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.genericDev pre {
+  margin: 0.4rem 0 0;
+  max-height: 8rem;
+  overflow: auto;
+  font-size: 0.72rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.emptyNote {
+  margin: 0;
+  padding: 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.factList {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.factRow {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 360px) {
+  .factRow {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.1rem;
+  }
+}
+
+.factLabel {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-weight: 650;
+}
+
+.factValue {
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+
+.refList {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}

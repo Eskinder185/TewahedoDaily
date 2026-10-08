@@ -87,6 +87,8 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
     occasionLabel ? `Occasion: ${occasionLabel}` : null,
   ].filter(Boolean) as string[]
 
+  const relatedBrowse = relatedBrowseLinks(item)
+
   usePageMeta(
     item.title,
     (item.description || `${item.title} — practice on Tewahedo Daily`).slice(0, 180),
@@ -167,6 +169,19 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
         <p className={s.metaLine}>{classificationLines.join(' · ')}</p>
       ) : null}
 
+      {relatedBrowse.length > 0 ? (
+        <nav className={s.relatedBrowse} aria-label="Related browsing">
+          <p className={s.relatedBrowseLabel}>Related browsing</p>
+          <ul className={s.relatedBrowseList}>
+            {relatedBrowse.map((link) => (
+              <li key={link.to}>
+                <Link to={link.to}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
+
       <div className={s.customVideo}>
         <strong>Use another YouTube video</strong>
         <p className={s.metaLine}>
@@ -218,4 +233,45 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
       </div>
     </div>
   )
+}
+
+/** Deterministic browse links from published occasion tags — no invented theology. */
+function relatedBrowseLinks(item: PublicMezmur): { to: string; label: string }[] {
+  const blob = [
+    item.occasion,
+    ...(item.occasion_tags || []),
+    item.saint_or_angel,
+    ...(item.saint_tags || []),
+    item.category,
+    item.category_name,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+
+  const links: { to: string; label: string }[] = []
+  const push = (to: string, label: string) => {
+    if (!links.some((row) => row.to === to)) links.push({ to, label })
+  }
+
+  if (
+    /\b(saint|angel|mikael|michael|gabriel|raphael|mary|mariam|giorgis|george|kidus|kidist)\b/.test(
+      blob,
+    )
+  ) {
+    push('/practice/browse/angels-saints', 'Angels & Saints hymns')
+    push('/saints', 'Saints library')
+  }
+
+  if (
+    /\b(feast|holiday|meskel|timkat|timket|gena|fasika|epiphany|christmas|fast|tsom|filseta)\b/.test(
+      blob,
+    )
+  ) {
+    push('/practice/browse/holidays-feasts', 'Holidays & Feasts hymns')
+    push('/feasts', 'Feasts library')
+  }
+
+  if (links.length) push('/calendar', 'Church calendar')
+  return links
 }

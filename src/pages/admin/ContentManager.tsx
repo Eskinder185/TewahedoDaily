@@ -14,6 +14,7 @@ import {
   getContent,
   listContent,
   lookupContent,
+  normalizeRelatedList,
   saveContent,
   supportsContentField,
   teachingCategories,
@@ -25,6 +26,7 @@ import { errorMessage, statuses } from '../../lib/cms/mezmurService'
 import type { ContentStatus, ContentType } from '../../lib/supabase/cms.types'
 import { AsyncNotice, Modal, Status } from './AdminUi'
 import { ContentBody } from '../../components/publicContent/ContentBody'
+import { EncyclopediaTopic } from '../../components/publicContent/EncyclopediaTopic'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { ContentUpload } from './MediaLibrary'
 import { contentAdminBase } from './adminPaths'
@@ -471,7 +473,11 @@ function Editor({
       </section>
       {preview && (
         <Modal title="Content preview" close={() => setPreview(false)}>
-          <ContentBody item={input} kind={kind} preview />
+          {kind === 'articles' ? (
+            <EncyclopediaTopic item={input} kind={kind} preview />
+          ) : (
+            <ContentBody item={input} kind={kind} preview />
+          )}
         </Modal>
       )}
       {blocker.state === 'blocked' && (
@@ -483,6 +489,8 @@ function Editor({
     </>
   )
 }
+type PickerKind = ContentType | 'bible'
+
 export function RelatedPicker({
   value,
   onChange,
@@ -490,61 +498,134 @@ export function RelatedPicker({
   value: Related[]
   onChange: (value: Related[]) => void
 }) {
-  const [kind, setKind] = useState<ContentType>('mezmur')
+  const [kind, setKind] = useState<PickerKind>('mezmur')
   const [q, setQ] = useState('')
-  const result = useAsync(useCallback(() => lookupContent(kind, q), [kind, q]))
+  const [biblePath, setBiblePath] = useState('')
+  const [bibleError, setBibleError] = useState('')
+  const result = useAsync(
+    useCallback(() => {
+      if (kind === 'bible') return Promise.resolve([])
+      return lookupContent(kind, q)
+    }, [kind, q]),
+  )
+
+  function addBibleRelation() {
+    setBibleError('')
+    const raw = biblePath.trim()
+    const asRoute = raw.startsWith('/bible/') ? raw : ''
+    const match = asRoute.match(/^\/bible\/([a-z0-9-]+)\/(\d+)$/i)
+    const candidate = match
+      ? [
+          {
+            type: 'bible' as const,
+            id: `${match[1].toLowerCase()}:${match[2]}`,
+            title: '',
+            route: `/bible/${match[1].toLowerCase()}/${match[2]}`,
+          },
+        ]
+      : []
+    const normalized = normalizeRelatedList(candidate)
+    if (!normalized.length) {
+      setBibleError('Use an existing Bible route like /bible/john/3 (no invented verses).')
+      return
+    }
+    const next = normalized[0]
+    if (value.length >= 30) {
+      setBibleError('At most 30 related items.')
+      return
+    }
+    if (value.some((x) => x.type === 'bible' && x.id === next.id)) {
+      setBibleError('That Bible link is already related.')
+      return
+    }
+    onChange([...value, next])
+    setBiblePath('')
+  }
+
   return (
     <section>
       <h2>Related content</h2>
+      <p>
+        Link only published CMS rows or an existing Bible chapter route. Unpublished or deleted
+        targets are hidden on the public site.
+      </p>
       <label>
         Content type
         <select
           value={kind}
-          onChange={(e) => setKind(e.target.value as ContentType)}
+          onChange={(e) => setKind(e.target.value as PickerKind)}
         >
-          {['mezmur', 'saints', 'feasts', 'prayers', 'articles'].map((x) => (
-            <option key={x}>{x}</option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Find published content
-        <input
-          value={q}
-          maxLength={100}
-          onChange={(e) => setQ(e.target.value)}
-        />
-      </label>
-      <AsyncNotice {...result} retry={result.reload} />
-      <label>
-        Add relation
-        <select
-          value=""
-          onChange={(e) => {
-            const row = result.data?.find((x) => x.id === e.target.value)
-            if (
-              row &&
-              value.length < 30 &&
-              !value.some((x) => x.type === kind && x.id === row.id)
-            )
-              onChange([...value, { type: kind, id: row.id, title: row.title }])
-          }}
-        >
-          <option value="">Select content</option>
-          {result.data?.map((x) => (
-            <option key={x.id} value={x.id}>
-              {x.title}
+          {['mezmur', 'saints', 'feasts', 'prayers', 'articles', 'bible'].map((x) => (
+            <option key={x} value={x}>
+              {x}
             </option>
           ))}
         </select>
       </label>
+      {kind === 'bible' ? (
+        <>
+          <label>
+            Bible chapter route
+            <input
+              value={biblePath}
+              maxLength={120}
+              placeholder="/bible/john/3"
+              onChange={(e) => {
+                setBiblePath(e.target.value)
+                setBibleError('')
+              }}
+            />
+          </label>
+          {bibleError ? <p role="alert">{bibleError}</p> : null}
+          <button type="button" onClick={addBibleRelation}>
+            Add Bible link
+          </button>
+        </>
+      ) : (
+        <>
+          <label>
+            Find published content
+            <input
+              value={q}
+              maxLength={100}
+              onChange={(e) => setQ(e.target.value)}
+            />
+          </label>
+          <AsyncNotice {...result} retry={result.reload} />
+          <label>
+            Add relation
+            <select
+              value=""
+              onChange={(e) => {
+                const row = result.data?.find((x) => x.id === e.target.value)
+                if (
+                  row &&
+                  value.length < 30 &&
+                  !value.some((x) => x.type === kind && x.id === row.id)
+                )
+                  onChange([
+                    ...value,
+                    { type: kind as ContentType, id: row.id, title: row.title },
+                  ])
+              }}
+            >
+              <option value="">Select content</option>
+              {result.data?.map((x) => (
+                <option key={x.id} value={x.id}>
+                  {x.title}
+                </option>
+              ))}
+            </select>
+          </label>
+        </>
+      )}
       <ul>
         {value.map((x) => (
           <li key={x.type + x.id}>
-            {x.title || x.type}{' '}
+            {x.title || x.route || x.type}{' '}
             <button
               type="button"
-              onClick={() => onChange(value.filter((y) => y !== x))}
+              onClick={() => onChange(value.filter((y) => !(y.type === x.type && y.id === x.id)))}
             >
               Remove
             </button>

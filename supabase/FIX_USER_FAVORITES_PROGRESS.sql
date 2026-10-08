@@ -11,7 +11,8 @@ create table if not exists public.user_favorites (
   user_id uuid not null references auth.users(id) on delete cascade,
   content_type text not null
     check (content_type in (
-      'prayer', 'psalm', 'liturgy', 'mezmur', 'calendar_card', 'synaxarium', 'collection'
+      'prayer', 'psalm', 'liturgy', 'mezmur', 'calendar_card', 'synaxarium',
+      'collection', 'saint', 'feast', 'bible'
     )),
   content_id uuid,
   content_slug text,
@@ -68,7 +69,8 @@ create table if not exists public.user_reading_progress (
   user_id uuid not null references auth.users(id) on delete cascade,
   content_type text not null
     check (content_type in (
-      'prayer', 'psalm', 'liturgy', 'mezmur', 'collection', 'synaxarium'
+      'prayer', 'psalm', 'liturgy', 'mezmur', 'collection', 'synaxarium',
+      'saint', 'feast', 'bible'
     )),
   content_id uuid,
   content_slug text,

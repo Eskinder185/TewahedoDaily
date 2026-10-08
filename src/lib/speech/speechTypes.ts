@@ -50,10 +50,15 @@ export type WhisperWorkerOut =
   | { type: 'error'; message: string }
 
 export const WHISPER_MODEL_ID = 'Xenova/whisper-tiny'
+/**
+ * Shared max for native listen, practice record, and future server transcription upload.
+ * (Maximum window, not a minimum.)
+ */
+export const VOICE_MAX_DURATION_MS = 15_000
+/** @deprecated Prefer VOICE_MAX_DURATION_MS — kept for existing call sites. */
+export const VOICE_MAX_LISTEN_MS = VOICE_MAX_DURATION_MS
 /** Multilingual tiny; quantized ONNX is typically ~40–75 MB on first download. */
-export const WHISPER_MAX_RECORD_MS = 15_000
-/** Maximum native listen / practice record window (maximum, not minimum). */
-export const VOICE_MAX_LISTEN_MS = 15_000
+export const WHISPER_MAX_RECORD_MS = VOICE_MAX_DURATION_MS
 export const WHISPER_SAMPLE_RATE = 16_000
 
 /**

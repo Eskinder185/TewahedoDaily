@@ -5,13 +5,16 @@ import type {
   FavoriteRecord,
   ProgressIdentity,
   ReadingProgressRecord,
-} from './types'
-import { favoriteKey, progressKey } from './types'
+  RecentViewedItem,
+  UserContentType,
+} from './types.ts'
+import { favoriteKey, progressKey } from './types.ts'
 
 const FAVORITES_KEY = 'tewahedo:favorites:v1'
 const FAVORITES_KEY_LEGACY = 'td-guest-favorites-v1'
 const PROGRESS_KEY = 'td-guest-progress-v1'
 const RECENT_MEZMUR_KEY = 'td-guest-recent-mezmur-v1'
+const RECENT_VIEWED_KEY = 'td-guest-recent-viewed-v1'
 const MERGE_OFFERED_KEY = 'td-guest-merge-offered-v1'
 
 export const USER_CONTENT_UPDATE = 'td-user-content-update'
@@ -126,18 +129,80 @@ export function clearGuestProgress() {
   writeJson(PROGRESS_KEY, [])
 }
 
-export function recordGuestRecentMezmur(slug: string, title: string) {
-  if (!slug) return
-  const current = readJson<Array<{ slug: string; title: string; at: number }>>(RECENT_MEZMUR_KEY, [])
-  const next = [{ slug, title, at: Date.now() }, ...current.filter((item) => item.slug !== slug)].slice(
-    0,
-    8,
+export function recordGuestRecentViewed(input: {
+  contentType: UserContentType
+  contentSlug: string
+  title: string
+  route: string
+}) {
+  const contentSlug = input.contentSlug.trim()
+  const route = input.route.trim()
+  if (!contentSlug || !route) return
+  const current = readJson<RecentViewedItem[]>(RECENT_VIEWED_KEY, [])
+  const next: RecentViewedItem[] = [
+    {
+      contentType: input.contentType,
+      contentSlug,
+      title: input.title.trim() || contentSlug,
+      route,
+      at: Date.now(),
+    },
+    ...current.filter(
+      (item) => !(item.contentType === input.contentType && item.contentSlug === contentSlug),
+    ),
+  ].slice(0, 16)
+  writeJson(RECENT_VIEWED_KEY, next)
+
+  // Keep legacy mezmur list in sync for existing Account Activity UI.
+  if (input.contentType === 'mezmur') {
+    const mezmur = readJson<Array<{ slug: string; title: string; at: number }>>(
+      RECENT_MEZMUR_KEY,
+      [],
+    )
+    writeJson(
+      RECENT_MEZMUR_KEY,
+      [
+        { slug: contentSlug, title: input.title.trim() || contentSlug, at: Date.now() },
+        ...mezmur.filter((item) => item.slug !== contentSlug),
+      ].slice(0, 8),
+    )
+  }
+}
+
+export function getGuestRecentViewed(): RecentViewedItem[] {
+  const modern = readJson<RecentViewedItem[]>(RECENT_VIEWED_KEY, [])
+  if (modern.length) return modern
+  // Migrate legacy mezmur-only list once.
+  const legacy = readJson<Array<{ slug: string; title: string; at: number }>>(
+    RECENT_MEZMUR_KEY,
+    [],
   )
-  writeJson(RECENT_MEZMUR_KEY, next)
+  if (!legacy.length) return []
+  const migrated: RecentViewedItem[] = legacy.map((item) => ({
+    contentType: 'mezmur' as const,
+    contentSlug: item.slug,
+    title: item.title || item.slug,
+    route: `/practice/mezmur/${item.slug}`,
+    at: item.at || Date.now(),
+  }))
+  writeJson(RECENT_VIEWED_KEY, migrated)
+  return migrated
+}
+
+/** @deprecated Prefer recordGuestRecentViewed — kept for existing call sites. */
+export function recordGuestRecentMezmur(slug: string, title: string) {
+  recordGuestRecentViewed({
+    contentType: 'mezmur',
+    contentSlug: slug,
+    title,
+    route: `/practice/mezmur/${slug}`,
+  })
 }
 
 export function getGuestRecentMezmur() {
-  return readJson<Array<{ slug: string; title: string; at: number }>>(RECENT_MEZMUR_KEY, [])
+  return getGuestRecentViewed()
+    .filter((item) => item.contentType === 'mezmur')
+    .map((item) => ({ slug: item.contentSlug, title: item.title, at: item.at }))
 }
 
 export function hasGuestDataToMerge(): boolean {

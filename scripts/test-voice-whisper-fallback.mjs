@@ -7,6 +7,7 @@ import { readFileSync } from 'node:fs'
 import { decideNativeFallback, isWhisperCapable } from '../src/lib/speech/fallbackDecision.ts'
 import {
   BROWSER_WHISPER_ENABLED,
+  VOICE_MAX_DURATION_MS,
   VOICE_MAX_LISTEN_MS,
   VOICE_RECOGNITION_LANG,
   WHISPER_MAX_RECORD_MS,
@@ -30,8 +31,9 @@ function resampleMono(input, fromRate, toRate) {
 }
 
 assert.equal(WHISPER_MODEL_ID, 'Xenova/whisper-tiny')
-assert.equal(VOICE_MAX_LISTEN_MS, 15_000)
-assert.equal(WHISPER_MAX_RECORD_MS, 15_000)
+assert.equal(VOICE_MAX_DURATION_MS, 15_000)
+assert.equal(VOICE_MAX_LISTEN_MS, VOICE_MAX_DURATION_MS)
+assert.equal(WHISPER_MAX_RECORD_MS, VOICE_MAX_DURATION_MS)
 assert.equal(VOICE_RECOGNITION_LANG, 'en-US')
 assert.equal(BROWSER_WHISPER_ENABLED, false)
 assert.equal(isWhisperCapable(), false)
@@ -76,7 +78,7 @@ assert.doesNotMatch(voiceUi, /am-ET/)
 assert.doesNotMatch(voiceUi, /amharicTextOnly/)
 assert.doesNotMatch(voiceUi, /languageOverride/)
 assert.match(voiceUi, /disposeWhisperClient/)
-assert.match(voiceUi, /VOICE_MAX_LISTEN_MS/)
+assert.match(voiceUi, /VOICE_MAX_DURATION_MS/)
 assert.match(voiceUi, /softStopNative/)
 assert.doesNotMatch(voiceUi, /ensureWhisperLoaded/)
 assert.doesNotMatch(voiceUi, /transcribeWithWhisper/)
@@ -85,7 +87,8 @@ assert.doesNotMatch(voiceUi, /runWhisperFallback/)
 
 const speechTypesSrc = readFileSync(new URL('../src/lib/speech/speechTypes.ts', import.meta.url), 'utf8')
 assert.match(speechTypesSrc, /BROWSER_WHISPER_ENABLED = false/)
-assert.match(speechTypesSrc, /VOICE_MAX_LISTEN_MS = 15_000/)
+assert.match(speechTypesSrc, /VOICE_MAX_DURATION_MS = 15_000/)
+assert.match(speechTypesSrc, /VOICE_MAX_LISTEN_MS = VOICE_MAX_DURATION_MS/)
 
 const client = readFileSync(new URL('../src/lib/speech/whisperClient.ts', import.meta.url), 'utf8')
 assert.match(client, /BROWSER_WHISPER_ENABLED/)

@@ -12,14 +12,19 @@ import {
   voiceErrorMessage,
   voiceSupportMessage,
 } from '../src/lib/speech/voiceSearchSupport.ts'
-import { VOICE_MAX_LISTEN_MS, VOICE_RECOGNITION_LANG } from '../src/lib/speech/speechTypes.ts'
+import {
+  VOICE_MAX_DURATION_MS,
+  VOICE_MAX_LISTEN_MS,
+  VOICE_RECOGNITION_LANG,
+} from '../src/lib/speech/speechTypes.ts'
 
 assert.equal(speechLocales.en, 'en-US')
 assert.equal(toSpeechLocale('am'), 'en-US')
 assert.equal(toSpeechLocale('en'), 'en-US')
 assert.equal(toSpeechLocale('both'), 'en-US')
 assert.equal(VOICE_RECOGNITION_LANG, 'en-US')
-assert.equal(VOICE_MAX_LISTEN_MS, 15_000)
+assert.equal(VOICE_MAX_DURATION_MS, 15_000)
+assert.equal(VOICE_MAX_LISTEN_MS, VOICE_MAX_DURATION_MS)
 
 const insecure = {
   isSecureContext: false,
@@ -85,7 +90,7 @@ assert.match(voiceUi, /voiceTimeoutRef/)
 assert.match(voiceUi, /clearVoiceTimeout/)
 assert.match(voiceUi, /startVoiceTimeout/)
 assert.match(voiceUi, /softStopNative/)
-assert.match(voiceUi, /VOICE_MAX_LISTEN_MS/)
+assert.match(voiceUi, /VOICE_MAX_DURATION_MS/)
 assert.match(voiceUi, /recognition\.stop\(\)/)
 assert.doesNotMatch(voiceUi, /ensureWhisperLoaded/)
 assert.doesNotMatch(voiceUi, /transcribeWithWhisper/)
@@ -93,8 +98,9 @@ assert.doesNotMatch(voiceUi, /runWhisperFallback/)
 assert.doesNotMatch(voiceUi, /🎙/)
 
 const speechTypes = readFileSync(new URL('../src/lib/speech/speechTypes.ts', import.meta.url), 'utf8')
-assert.match(speechTypes, /VOICE_MAX_LISTEN_MS = 15_000/)
-assert.match(speechTypes, /WHISPER_MAX_RECORD_MS = 15_000/)
+assert.match(speechTypes, /VOICE_MAX_DURATION_MS = 15_000/)
+assert.match(speechTypes, /VOICE_MAX_LISTEN_MS = VOICE_MAX_DURATION_MS/)
+assert.match(speechTypes, /WHISPER_MAX_RECORD_MS = VOICE_MAX_DURATION_MS/)
 assert.match(speechTypes, /BROWSER_WHISPER_ENABLED = false/)
 assert.match(speechTypes, /VOICE_RECOGNITION_LANG/)
 

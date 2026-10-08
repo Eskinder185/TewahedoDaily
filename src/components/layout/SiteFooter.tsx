@@ -76,6 +76,18 @@ export function SiteFooter() {
           <Link to="/about" className={styles.utilityLink}>
             {t('footer.about')}
           </Link>
+          <Link to="/saints" className={styles.utilityLink}>
+            {t('footer.saints')}
+          </Link>
+          <Link to="/feasts" className={styles.utilityLink}>
+            {t('footer.feasts')}
+          </Link>
+          <Link to="/bible" className={styles.utilityLink}>
+            {t('footer.bible')}
+          </Link>
+          <Link to="/learn" className={styles.utilityLink}>
+            {t('footer.learn')}
+          </Link>
           <Link to="/legal" className={styles.utilityLink}>
             {t('footer.legal')}
           </Link>

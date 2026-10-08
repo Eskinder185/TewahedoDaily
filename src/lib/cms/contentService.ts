@@ -1,6 +1,14 @@
 import { db, errorMessage } from './mezmurService'
 import type { ContentStatus, ContentType } from '../supabase/cms.types'
 import type { Json } from '../supabase/database.types'
+import {
+  ENCYCLOPEDIA_CATEGORIES,
+  isCmsRelationType,
+  mergeResolvedRelations,
+  normalizeRelatedList,
+  type Related,
+  type ResolvedRelated,
+} from './contentRelations.ts'
 
 export const contentKinds = ['saints', 'feasts', 'articles'] as const
 export type EditorialKind = (typeof contentKinds)[number]
@@ -8,20 +16,22 @@ export type EditorialKind = (typeof contentKinds)[number]
 export const contentPath = (kind: string, slug: string) =>
   kind === 'mezmur' ? `/practice/mezmur/${slug}` : `/content/${kind}/${slug}`
 
-export const teachingCategories = [
-  'Church teaching',
-  'Saints',
-  'Feasts',
-  'Bible study',
-  'Church history',
-  'The Seven Mysteries',
-]
+/** @deprecated Prefer ENCYCLOPEDIA_CATEGORIES from contentRelations */
+export const teachingCategories = [...ENCYCLOPEDIA_CATEGORIES]
 
-export type Related = { type: ContentType; id: string; title?: string }
+export type { Related, ResolvedRelated }
+export {
+  ENCYCLOPEDIA_CATEGORIES,
+  encyclopediaTemplateKind,
+  isEncyclopediaCategory,
+  normalizeRelatedList,
+  relationTypeLabel,
+} from './contentRelations.ts'
 
 /**
- * Columns confirmed present on the live Supabase project after the compatibility
- * migration. Selects/writes must stay within these sets to avoid HTTP 400s.
+ * Columns expected after FIX_CONTENT_RELATIONS.sql / platform migration.
+ * Keep selects/writes within these sets to avoid HTTP 400s on older DBs —
+ * run the FIX script before relying on related_content in production.
  */
 export const contentColumns = {
   saints: [
@@ -32,14 +42,19 @@ export const contentColumns = {
     'name',
     'name_amharic',
     'description',
+    'body',
+    'body_amharic',
     'thumbnail_url',
     'image_path',
     'image_alt',
+    'related_content',
     'status',
     'created_by',
     'updated_at',
     'published_at',
     'created_at',
+    'commemoration_month',
+    'commemoration_day',
   ],
   feasts: [
     'id',
@@ -47,9 +62,12 @@ export const contentColumns = {
     'title',
     'title_amharic',
     'description',
+    'body',
+    'body_amharic',
     'thumbnail_url',
     'image_path',
     'image_alt',
+    'related_content',
     'status',
     'created_by',
     'updated_at',
@@ -57,14 +75,20 @@ export const contentColumns = {
     'created_at',
     'ethiopian_month',
     'ethiopian_day',
+    'is_movable',
+    'fasting_info',
   ],
   articles: [
     'id',
     'slug',
     'title',
     'title_amharic',
+    'description',
     'thumbnail_url',
     'body',
+    'body_amharic',
+    'related_content',
+    'teaching_category',
     'status',
     'updated_at',
     'published_at',
@@ -87,7 +111,7 @@ export type EditorialContent = {
   image_alt?: string | null
   audio_url: string | null
   date_notes: string | null
-  related_content: Related[]
+    related_content: Related[]
   status: ContentStatus
   created_by: string | null
   updated_at: string
@@ -96,7 +120,7 @@ export type EditorialContent = {
   commemoration_day?: number | null
   ethiopian_month?: number | null
   ethiopian_day?: number | null
-  is_movable?: boolean
+  is_movable?: boolean | null
   fasting_info?: string | null
   teaching_category?: string | null
   transliteration?: string | null
@@ -141,6 +165,7 @@ export function supportsContentField(kind: EditorialKind, field: string) {
 function listSelect(kind: EditorialKind) {
   const cols = ['id', 'slug', 'title', 'title_amharic', 'status', 'updated_at', 'thumbnail_url']
   if (supportsContentField(kind, 'description')) cols.push('description')
+  if (supportsContentField(kind, 'teaching_category')) cols.push('teaching_category')
   return cols.join(',')
 }
 
@@ -159,7 +184,7 @@ function normalizeRow(kind: EditorialKind, row: Record<string, unknown>): Editor
     image_alt: (row.image_alt as string | null) ?? '',
     audio_url: (row.audio_url as string | null) ?? '',
     date_notes: (row.date_notes as string | null) ?? '',
-    related_content: Array.isArray(row.related_content) ? (row.related_content as Related[]) : [],
+    related_content: normalizeRelatedList(row.related_content),
     created_by: (row.created_by as string | null) ?? null,
     published_at: (row.published_at as string | null) ?? null,
     ethiopian_month: supportsContentField(kind, 'ethiopian_month')
@@ -167,6 +192,21 @@ function normalizeRow(kind: EditorialKind, row: Record<string, unknown>): Editor
       : null,
     ethiopian_day: supportsContentField(kind, 'ethiopian_day')
       ? ((row.ethiopian_day as number | null) ?? null)
+      : null,
+    teaching_category: supportsContentField(kind, 'teaching_category')
+      ? ((row.teaching_category as string | null) ?? null)
+      : null,
+    fasting_info: supportsContentField(kind, 'fasting_info')
+      ? ((row.fasting_info as string | null) ?? null)
+      : null,
+    is_movable: supportsContentField(kind, 'is_movable')
+      ? Boolean(row.is_movable)
+      : false,
+    commemoration_month: supportsContentField(kind, 'commemoration_month')
+      ? ((row.commemoration_month as number | null) ?? null)
+      : null,
+    commemoration_day: supportsContentField(kind, 'commemoration_day')
+      ? ((row.commemoration_day as number | null) ?? null)
       : null,
   }
 }
@@ -190,8 +230,23 @@ function writablePayload(kind: EditorialKind, input: EditorialContent) {
   if (allowed.has('name_amharic')) payload.name_amharic = input.title_amharic || null
   if (allowed.has('description')) payload.description = input.description || null
   if (allowed.has('body')) payload.body = input.body || null
+  if (allowed.has('body_amharic')) payload.body_amharic = input.body_amharic || null
   if (allowed.has('ethiopian_month')) payload.ethiopian_month = input.ethiopian_month ?? null
   if (allowed.has('ethiopian_day')) payload.ethiopian_day = input.ethiopian_day ?? null
+  if (allowed.has('is_movable')) payload.is_movable = Boolean(input.is_movable)
+  if (allowed.has('fasting_info')) payload.fasting_info = input.fasting_info || null
+  if (allowed.has('teaching_category')) {
+    payload.teaching_category = input.teaching_category || null
+  }
+  if (allowed.has('commemoration_month')) {
+    payload.commemoration_month = input.commemoration_month ?? null
+  }
+  if (allowed.has('commemoration_day')) {
+    payload.commemoration_day = input.commemoration_day ?? null
+  }
+  if (allowed.has('related_content')) {
+    payload.related_content = normalizeRelatedList(input.related_content)
+  }
   if (input.status === 'published') {
     payload.published_at = input.published_at || new Date().toISOString()
   } else {
@@ -226,8 +281,13 @@ export async function listContent(
     query = query.or(filters.join(','))
   }
   if (status) query = query.eq('status', status as ContentStatus)
-  // teaching_category is not on the live articles table — ignore category filter.
-  void category
+  if (kind === 'articles' && category && supportsContentField(kind, 'teaching_category')) {
+    // Narrowed to articles — teaching_category is not on saints/feasts row types.
+    query = (query as typeof query & { eq: (c: string, v: string) => typeof query }).eq(
+      'teaching_category',
+      category,
+    )
+  }
   const { data, error, count } = await query
     .order('updated_at', { ascending: false })
     .order('id')
@@ -335,24 +395,59 @@ export async function lookupContent(kind: ContentType, q = '') {
   return data
 }
 
-export async function publicRelations(relations: Related[]) {
-  return (
+/**
+ * Resolve related_content for public pages.
+ * - Only published CMS rows hydrate
+ * - Missing / unpublished / deleted IDs are omitted (no errors to visitors)
+ * - Bible entries with a valid route are kept without inventing verse text
+ * - Editor order is preserved
+ */
+export async function publicRelations(relations: Related[]): Promise<ResolvedRelated[]> {
+  const requested = normalizeRelatedList(relations)
+  if (!requested.length) return []
+
+  const cmsKinds = [
+    ...new Set(
+      requested.map((r) => r.type).filter((t): t is ContentType => isCmsRelationType(t)),
+    ),
+  ]
+
+  const hydrated = (
     await Promise.all(
-      (['mezmur', ...contentKinds] as const).map(async (kind) => {
-        const ids = relations
-          .filter((r) => r.type === kind)
-          .slice(0, 30)
-          .map((r) => r.id)
-        if (!ids.length) return []
-        const { data, error } = await db()
-          .from(kind)
-          .select('id,title,slug')
-          .in('id', ids)
-          .eq('status', 'published')
-          .limit(30)
-        if (error) throw error
-        return data.map((row) => ({ ...row, type: kind }))
+      cmsKinds.map(async (kind) => {
+        const ids = requested.filter((r) => r.type === kind).map((r) => r.id)
+        if (!ids.length) return [] as Array<{
+          type: ContentType
+          id: string
+          title: string
+          slug: string
+        }>
+        try {
+          const { data, error } = await db()
+            .from(kind)
+            .select('id,title,slug')
+            .in('id', ids)
+            .eq('status', 'published')
+            .limit(30)
+          if (error) {
+            if (import.meta.env.DEV) {
+              console.warn(`[publicRelations] ${kind}`, error.message)
+            }
+            return []
+          }
+          return (data || []).map((row) => ({
+            type: kind,
+            id: row.id as string,
+            title: (row.title as string) || '',
+            slug: (row.slug as string) || '',
+          }))
+        } catch (cause) {
+          if (import.meta.env.DEV) console.warn(`[publicRelations] ${kind}`, cause)
+          return []
+        }
       }),
     )
   ).flat()
+
+  return mergeResolvedRelations(requested, hydrated)
 }

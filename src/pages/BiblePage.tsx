@@ -1,10 +1,11 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useAsync } from '../lib/cms/useAsync'
 import { useLocale } from '../lib/i18n/locale'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { loadBibleBook, loadBibleCatalog, loadChapterText } from '../lib/bible/bibleQueries'
 import type { BibleBookDetail, BibleLanguage, CanonicalBook, ChapterText, ReaderChapter, SourceBook } from '../lib/bible/bibleTypes'
+import { recordGuestRecentViewed } from '../lib/userContent/guestStorage'
 import { BibleSearchBar } from '../components/bible/BibleSearchBar'
 import s from './BiblePage.module.css'
 
@@ -202,6 +203,15 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
   const chapters = useMemo(() => choice === 'both' ? [am, en].filter((chapter): chapter is ReaderChapter => Boolean(chapter)) : [choice === 'en' ? en : am].filter((chapter): chapter is ReaderChapter => Boolean(chapter)), [choice, am, en])
   const load = useCallback(() => Promise.all(chapters.map(loadChapterText)), [chapters])
   const result = useAsync(load)
+  const title = `${bookName(detail.book, uiLocale)} ${w.chapter} ${ordinal}`
+  useEffect(() => {
+    recordGuestRecentViewed({
+      contentType: 'bible',
+      contentSlug: `${detail.book.slug}:${ordinal}`,
+      title,
+      route: `/bible/${detail.book.slug}/${ordinal}`,
+    })
+  }, [detail.book.slug, ordinal, title])
   if (!choice) return <p className={s.status}>{w.invalidChapter}</p>
   const primary = choice === 'en' ? en : am || en
   const maxOrdinal = choice === 'both'

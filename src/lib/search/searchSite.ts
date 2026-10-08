@@ -488,11 +488,22 @@ export function buildAssistantReply(response: SiteSearchResponse): string {
 
 /** Nearby suggestions when zero results — only real catalog routes. */
 export function zeroResultSuggestions(): SiteSearchResult[] {
-  return [
+  const hubs = [
     ...searchRouteCatalog('calendar', 1),
+    ...searchRouteCatalog('bible hub', 1),
     ...searchRouteCatalog('hymns practice', 1),
     ...searchRouteCatalog('pray hub', 1),
-  ].map((r) => ({ ...r, matchKind: 'keyword' as const }))
+    ...searchRouteCatalog('saints', 1),
+    ...searchRouteCatalog('feasts', 1),
+  ]
+  const seen = new Set<string>()
+  const out: SiteSearchResult[] = []
+  for (const row of hubs) {
+    if (seen.has(row.route)) continue
+    seen.add(row.route)
+    out.push({ ...row, matchKind: 'keyword' as const })
+  }
+  return out
 }
 
 export { expandSearchAliases, extractTopics, normalizeSearchText, resolveFollowUpQuery }

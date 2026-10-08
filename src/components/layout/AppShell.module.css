@@ -4,6 +4,29 @@
   flex-direction: column;
 }
 
+.skipLink {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  z-index: 10000;
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-sm, 8px);
+  background: var(--color-bg-elevated, #fff);
+  color: var(--color-heading, inherit);
+  border: 2px solid var(--color-focus-ring, currentColor);
+  font: inherit;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+
+.skipLink:focus,
+.skipLink:focus-visible {
+  transform: translateY(0);
+  outline: none;
+}
+
 .main {
   flex: 1;
   width: 100%;

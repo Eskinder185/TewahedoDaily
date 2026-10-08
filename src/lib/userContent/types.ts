@@ -8,6 +8,18 @@ export type UserContentType =
   | 'calendar_card'
   | 'synaxarium'
   | 'collection'
+  | 'saint'
+  | 'feast'
+  | 'bible'
+
+/** Guest recently-viewed row (device-local; not invented content). */
+export type RecentViewedItem = {
+  contentType: UserContentType
+  contentSlug: string
+  title: string
+  route: string
+  at: number
+}
 
 export type FavoriteRecord = {
   id: string
