@@ -18,6 +18,11 @@ export {
   postAiTranscribe,
 } from './transcriptionApi.ts'
 export {
+  canAttemptAmharicTranscription,
+  transcribeAudio,
+  type TranscriptionResponse,
+} from './transcribeAudio.ts'
+export {
   AiClientError,
   type AiCapabilities,
   type AiChatRequest,

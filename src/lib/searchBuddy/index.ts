@@ -25,3 +25,8 @@ export {
   type SendSearchBuddyResult,
 } from './sendSearchBuddyMessage.ts'
 export { searchBuddyErrorMessage } from './errorMessages.ts'
+export { containsEthiopic, normalizeAmharicSearchText } from './amharicText.ts'
+export {
+  resolveAmharicStructuredSearch,
+  shouldUseAmharicStructuredPath,
+} from './amharicStructuredSearch.ts'

@@ -22,7 +22,8 @@ export async function postAiTranscribe(
   }
 
   const form = new FormData()
-  form.append('audio', input.audio, input.filename || 'recording.webm')
+  // Backend contract: multipart field name must be `file`.
+  form.append('file', input.audio, input.filename || 'speech.webm')
   if (input.language) form.append('language', input.language)
 
   return aiFetch<AiTranscribeResponse>({

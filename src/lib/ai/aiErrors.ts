@@ -8,7 +8,7 @@ const FRIENDLY: Record<AiErrorCode, string> = {
   rate_limited: 'Extended answers are briefly limited. Please try again shortly.',
   bad_request: 'That request could not be processed. Try a shorter question.',
   unauthorized: 'Extended answers are temporarily unavailable.',
-  transcription_failed: 'Voice transcription failed. You can still type your search.',
+  transcription_failed: 'Could not transcribe that recording. Try again, or type your search.',
   ocr_failed: 'Document reading failed. Please try again later.',
   aborted: '',
   unknown: 'Extended answers are temporarily unavailable.',
@@ -27,6 +27,18 @@ function isAiClientError(error: unknown): error is AiClientError {
 
 export function friendlyAiError(error: unknown): string {
   if (isAiClientError(error)) {
+    const isViteDev =
+      typeof import.meta !== 'undefined' &&
+      Boolean(import.meta.env && (import.meta.env as { DEV?: boolean }).DEV)
+    if (error.code === 'not_configured' && isViteDev && error.message.trim()) {
+      return error.message
+    }
+    if (error.code === 'network' && typeof navigator !== 'undefined' && navigator.onLine === false) {
+      return 'You appear to be offline. Reconnect and try again.'
+    }
+    if (error.code === 'transcription_failed' && error.message.trim()) {
+      return error.message
+    }
     return FRIENDLY[error.code] ?? FRIENDLY.unknown
   }
   if (error instanceof DOMException && error.name === 'AbortError') {

@@ -2,6 +2,10 @@ import { AI_TIMEOUTS_MS, getAiApiBaseUrl, isAiApiConfigured } from '../ai/aiConf
 import { aiFetch } from '../ai/aiClient.ts'
 import { AiClientError } from '../ai/aiTypes.ts'
 import {
+  resolveAmharicStructuredSearch,
+  shouldUseAmharicStructuredPath,
+} from './amharicStructuredSearch.ts'
+import {
   isEmptySearchBuddyResponse,
   parseSearchBuddyResponse,
 } from './parseSearchBuddyResponse.ts'
@@ -14,7 +18,8 @@ export type SendSearchBuddyResult = {
 
 /**
  * Single Search Buddy API entry point.
- * POST /api/chat  body: { message }
+ * Amharic / Ethiopic: structured retrieval first (never LLM).
+ * English / other: POST /api/chat  body: { message }
  */
 export async function sendSearchBuddyMessage(
   message: string,
@@ -32,6 +37,13 @@ export async function sendSearchBuddyMessage(
         ? 'Set VITE_TEWAHEDO_AI_API_URL in .env.local (e.g. http://10.0.0.86:8000) and restart Vite.'
         : 'Extended Search Buddy answers are temporarily unavailable.'
     throw new AiClientError('not_configured', hint)
+  }
+
+  if (shouldUseAmharicStructuredPath(trimmed)) {
+    const response = await resolveAmharicStructuredSearch(trimmed, signal)
+    if (response) {
+      return { response, empty: isEmptySearchBuddyResponse(response) }
+    }
   }
 
   const raw = await aiFetch<unknown>({
@@ -57,7 +69,6 @@ export function searchBuddyApiReady(): boolean {
   return isAiApiConfigured()
 }
 
-/** Developer-facing notice when local URL is missing (never shown as a scary production error). */
 export function missingApiUrlDevMessage(): string | null {
   if (!import.meta.env.DEV) return null
   if (isAiApiConfigured()) return null

@@ -11,8 +11,11 @@ import type { AiSource, AiUiStatus } from '../ai/aiTypes.ts'
 import type { SearchBuddyApiResponse } from '../searchBuddy/apiTypes.ts'
 import type { SiteSearchResult } from './types'
 import type { SearchSessionContext } from './searchCore'
+import type { ChatMessage } from './chatTypes'
+import { createChatMessageId } from './chatTypes'
 
-const STORAGE_KEY = 'td:searchBuddy:v1'
+const STORAGE_KEY = 'td:searchBuddy:v2'
+const LEGACY_STORAGE_KEY = 'td:searchBuddy:v1'
 
 /** Locale-independent reply payload — localize at render time (audit L10). */
 export type SearchBuddyReply =
@@ -35,7 +38,10 @@ export type SearchBuddyAiAnswer = {
 }
 
 export type SearchBuddySnapshot = {
+  /** Draft text in the chat composer (not the conversation history). */
   query: string
+  /** Scrollable conversation thread. */
+  messages: ChatMessage[]
   results: SiteSearchResult[]
   suggestions: SiteSearchResult[]
   /** @deprecated Prefer `reply` — kept for older sessionStorage payloads */
@@ -49,7 +55,7 @@ export type SearchBuddySnapshot = {
   error: boolean
   /** Future AI answer; omitted / null when unused. */
   aiAnswer: SearchBuddyAiAnswer | null
-  /** Structured FastAPI Search Buddy payload when the AI API is used. */
+  /** Most recent structured FastAPI payload (compat / reopen helpers). */
   apiResponse: SearchBuddyApiResponse | null
   apiEmpty: boolean
   /** Most recent query that returned a successful API or local response. */
@@ -62,7 +68,9 @@ type SearchBuddyApi = {
   open: boolean
   setOpen: (open: boolean) => void
   snapshot: SearchBuddySnapshot
-  setSnapshot: (patch: Partial<SearchBuddySnapshot> | ((prev: SearchBuddySnapshot) => SearchBuddySnapshot)) => void
+  setSnapshot: (
+    patch: Partial<SearchBuddySnapshot> | ((prev: SearchBuddySnapshot) => SearchBuddySnapshot),
+  ) => void
   persistScroll: (scrollTop: number) => void
   clearSession: () => void
   reopenWithSession: () => void
@@ -71,6 +79,7 @@ type SearchBuddyApi = {
 
 const EMPTY: SearchBuddySnapshot = {
   query: '',
+  messages: [],
   results: [],
   suggestions: [],
   message: '',
@@ -90,27 +99,79 @@ const EMPTY: SearchBuddySnapshot = {
 
 const SearchBuddyContext = createContext<SearchBuddyApi | null>(null)
 
+function migrateLegacyMessages(parsed: Partial<SearchBuddySnapshot>): ChatMessage[] {
+  if (Array.isArray(parsed.messages) && parsed.messages.length) {
+    return parsed.messages.filter(
+      (m): m is ChatMessage =>
+        Boolean(m) &&
+        typeof m === 'object' &&
+        (m.role === 'user' || m.role === 'assistant') &&
+        typeof m.id === 'string',
+    )
+  }
+
+  const q =
+    (typeof parsed.lastSuccessfulQuery === 'string' && parsed.lastSuccessfulQuery.trim()) ||
+    (typeof parsed.query === 'string' && parsed.query.trim()) ||
+    ''
+  if (!q || !parsed.hasSearched) return []
+
+  const user: ChatMessage = {
+    id: createChatMessageId(),
+    role: 'user',
+    createdAt: Date.now() - 2,
+    text: q,
+    status: 'complete',
+  }
+
+  const assistant: ChatMessage = {
+    id: createChatMessageId(),
+    role: 'assistant',
+    createdAt: Date.now() - 1,
+    status: 'complete',
+    response: parsed.apiResponse ?? undefined,
+    empty: Boolean(parsed.apiEmpty),
+    localResults: Array.isArray(parsed.results) && parsed.results.length ? parsed.results : undefined,
+    suggestions:
+      Array.isArray(parsed.suggestions) && parsed.suggestions.length
+        ? parsed.suggestions
+        : undefined,
+    errorText: typeof parsed.remoteError === 'string' ? parsed.remoteError : undefined,
+  }
+
+  if (!assistant.response && !assistant.localResults?.length && !assistant.errorText) {
+    return [user]
+  }
+  return [user, assistant]
+}
+
+function normalizeSnapshot(parsed: Partial<SearchBuddySnapshot>): SearchBuddySnapshot {
+  return {
+    ...EMPTY,
+    ...parsed,
+    messages: migrateLegacyMessages(parsed),
+    results: Array.isArray(parsed.results) ? parsed.results : [],
+    suggestions: Array.isArray(parsed.suggestions) ? parsed.suggestions : [],
+    preview: parsed.preview ?? null,
+    followUp: parsed.followUp ?? null,
+    reply: parsed.reply ?? null,
+    aiAnswer: parsed.aiAnswer ?? null,
+    apiResponse: parsed.apiResponse ?? null,
+    apiEmpty: Boolean(parsed.apiEmpty),
+    lastSuccessfulQuery:
+      typeof parsed.lastSuccessfulQuery === 'string' ? parsed.lastSuccessfulQuery : '',
+    remoteError: typeof parsed.remoteError === 'string' ? parsed.remoteError : null,
+    query: typeof parsed.query === 'string' ? parsed.query : '',
+  }
+}
+
 function readStored(): SearchBuddySnapshot {
   if (typeof window === 'undefined') return EMPTY
   try {
-    const raw = sessionStorage.getItem(STORAGE_KEY)
+    const raw = sessionStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(LEGACY_STORAGE_KEY)
     if (!raw) return EMPTY
     const parsed = JSON.parse(raw) as Partial<SearchBuddySnapshot>
-    return {
-      ...EMPTY,
-      ...parsed,
-      results: Array.isArray(parsed.results) ? parsed.results : [],
-      suggestions: Array.isArray(parsed.suggestions) ? parsed.suggestions : [],
-      preview: parsed.preview ?? null,
-      followUp: parsed.followUp ?? null,
-      reply: parsed.reply ?? null,
-      aiAnswer: parsed.aiAnswer ?? null,
-      apiResponse: parsed.apiResponse ?? null,
-      apiEmpty: Boolean(parsed.apiEmpty),
-      lastSuccessfulQuery:
-        typeof parsed.lastSuccessfulQuery === 'string' ? parsed.lastSuccessfulQuery : '',
-      remoteError: typeof parsed.remoteError === 'string' ? parsed.remoteError : null,
-    }
+    return normalizeSnapshot(parsed)
   } catch {
     return EMPTY
   }
@@ -118,11 +179,13 @@ function readStored(): SearchBuddySnapshot {
 
 function writeStored(snapshot: SearchBuddySnapshot) {
   try {
-    if (!snapshot.hasSearched && !snapshot.query) {
+    if (!snapshot.hasSearched && !snapshot.query && !snapshot.messages.length) {
       sessionStorage.removeItem(STORAGE_KEY)
+      sessionStorage.removeItem(LEGACY_STORAGE_KEY)
       return
     }
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot))
+    sessionStorage.removeItem(LEGACY_STORAGE_KEY)
   } catch {
     /* ignore */
   }
@@ -134,7 +197,9 @@ export function SearchBuddyProvider({ children }: { children: ReactNode }) {
   const followUpRef = useRef<SearchSessionContext | null>(snapshot.followUp)
 
   const setSnapshot = useCallback(
-    (patch: Partial<SearchBuddySnapshot> | ((prev: SearchBuddySnapshot) => SearchBuddySnapshot)) => {
+    (
+      patch: Partial<SearchBuddySnapshot> | ((prev: SearchBuddySnapshot) => SearchBuddySnapshot),
+    ) => {
       setSnapshotState((prev) => {
         const next = typeof patch === 'function' ? patch(prev) : { ...prev, ...patch }
         followUpRef.current = next.followUp
@@ -149,15 +214,19 @@ export function SearchBuddyProvider({ children }: { children: ReactNode }) {
     setOpenState(next)
   }, [])
 
-  const persistScroll = useCallback((scrollTop: number) => {
-    setSnapshot((prev) => ({ ...prev, resultsScrollTop: scrollTop }))
-  }, [setSnapshot])
+  const persistScroll = useCallback(
+    (scrollTop: number) => {
+      setSnapshot((prev) => ({ ...prev, resultsScrollTop: scrollTop }))
+    },
+    [setSnapshot],
+  )
 
   const clearSession = useCallback(() => {
     followUpRef.current = null
     setSnapshotState(EMPTY)
     try {
       sessionStorage.removeItem(STORAGE_KEY)
+      sessionStorage.removeItem(LEGACY_STORAGE_KEY)
     } catch {
       /* ignore */
     }

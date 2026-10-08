@@ -14,7 +14,7 @@ import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { expandSearchAliases } from '../lib/search/routeCatalog'
 import { useTranslation } from '../i18n'
 import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
-import { MezmurVoiceSearch } from '../components/search/MezmurVoiceSearch'
+import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
 import s from './HymnPractice.module.css'
 
 type SearchItem = Awaited<ReturnType<typeof searchImportMezmurs>>['items'][number]
@@ -481,10 +481,13 @@ export function PublicMezmurLibrary() {
             </button>
           ) : null}
         </div>
-        <MezmurVoiceSearch
+        <VoiceTranscriptionControl
+          ariaLabel="Search hymns by voice"
           helperCaption="Say the letters separately, not the whole word."
           onTranscript={(text) => {
-            setDraftQ(text)
+            const transcript = text.trim()
+            if (!transcript) return
+            setDraftQ(transcript)
             setSuggestOpen(false)
           }}
         />

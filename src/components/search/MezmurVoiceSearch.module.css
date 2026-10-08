@@ -5,6 +5,46 @@
   gap: 8px 12px;
 }
 
+.langToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-bg) 80%, var(--color-bg-elevated));
+}
+
+.langBtn {
+  min-height: 36px;
+  min-width: 2.75rem;
+  padding: 0.25rem 0.65rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.langBtnActive {
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-gold-line) 45%, transparent);
+}
+
+.langBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.langBtn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+
 .button {
   min-height: 44px;
   padding: 8px 14px;

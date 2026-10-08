@@ -52,7 +52,9 @@ export type AiChatResponse = {
 export type AiTranscribeResponse = {
   text: string
   language?: AiLanguage | string
-  duration?: number
+  detected_language?: string | null
+  duration?: number | null
+  model?: string | null
 }
 
 export type AiOcrResponse = {

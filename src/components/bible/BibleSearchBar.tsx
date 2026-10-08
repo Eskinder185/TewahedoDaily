@@ -4,6 +4,7 @@ import { searchBible } from '../../lib/bible/bibleSearch'
 import { parseBibleReference } from '../../lib/bible/parseBibleReference'
 import type { SiteSearchResult } from '../../lib/search/types'
 import { useLocale } from '../../lib/i18n/locale'
+import { VoiceTranscriptionControl } from '../search/VoiceTranscriptionControl'
 import styles from './BibleSearchBar.module.css'
 
 const COPY = {
@@ -15,15 +16,20 @@ const COPY = {
     error: 'Bible search is temporarily unavailable. Please try again.',
     open: 'Open →',
     clear: 'Clear',
+    voiceAria: 'Search the Bible by voice',
   },
   am: {
     label: '\u1218\u133d\u1210\u134d \u1245\u12f1\u1235\u1295 \u1348\u120d\u130d',
-    placeholder: '\u1218\u133b\u1215\u134d\u1275\u1363 \u121d\u12d5\u122b\u134e\u127d\u1363 \u1241\u1325\u122e\u127d \u12c8\u12ed\u121d \u1243\u120b\u1275\u1295 \u1348\u120d\u1309\u2026',
+    placeholder:
+      '\u1218\u133b\u1215\u134d\u1275\u1363 \u121d\u12d5\u122b\u134e\u127d\u1363 \u1241\u1325\u122e\u127d \u12c8\u12ed\u121d \u1243\u120b\u1275\u1295 \u1348\u120d\u1309\u2026',
     searching: '\u1260\u1218\u1348\u1208\u130d \u120b\u12ed\u2026',
-    empty: '\u1270\u1218\u1233\u1233\u12ed \u1218\u133d\u1210\u134d \u12c8\u12ed\u121d \u1241\u1325\u122d \u12a0\u120d\u1270\u1308\u1298\u121d\u1362',
-    error: '\u12e8\u1218\u133d\u1210\u134d \u1245\u12f1\u1235 \u134d\u1208\u130b \u1208\u130a\u12dc\u12cd \u12a0\u12ed\u1308\u129d\u121d\u1362 \u12a5\u1263\u12ad\u12ce \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229\u1362',
+    empty:
+      '\u1270\u1218\u1233\u1233\u12ed \u1218\u133d\u1210\u134d \u12c8\u12ed\u121d \u1241\u1325\u122d \u12a0\u120d\u1270\u1308\u1298\u121d\u1362',
+    error:
+      '\u12e8\u1218\u133d\u1210\u134d \u1245\u12f1\u1235 \u134d\u1208\u130b \u1208\u130a\u12dc\u12cd \u12a0\u12ed\u1308\u129d\u121d\u1362 \u12a5\u1263\u12ad\u12ce \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229\u1362',
     open: '\u12ad\u1348\u1275 \u2192',
     clear: '\u12a0\u133d\u12f3',
+    voiceAria: '\u1218\u133d\u1210\u134d \u1245\u12f1\u1235\u1295 \u1260\u12f5\u121d\u1335 \u1348\u120d\u130d',
   },
 } as const
 
@@ -42,6 +48,7 @@ export function BibleSearchBar() {
   const [message, setMessage] = useState<string | null>(null)
   const requestIdRef = useRef(0)
   const debounceRef = useRef<number | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     return () => {
@@ -90,6 +97,14 @@ export function BibleSearchBar() {
     }, delay)
   }
 
+  function applyTranscript(text: string) {
+    const transcript = text.trim()
+    if (!transcript) return
+    setQuery(transcript)
+    scheduleSearch(transcript)
+    window.setTimeout(() => inputRef.current?.focus(), 0)
+  }
+
   function onSubmit(event: FormEvent) {
     event.preventDefault()
     if (debounceRef.current != null) window.clearTimeout(debounceRef.current)
@@ -108,6 +123,7 @@ export function BibleSearchBar() {
           </span>
           <input
             id={inputId}
+            ref={inputRef}
             className={styles.input}
             value={query}
             onChange={(event) => {
@@ -133,6 +149,12 @@ export function BibleSearchBar() {
               {copy.clear}
             </button>
           ) : null}
+        </div>
+        <div className={styles.voiceRow}>
+          <VoiceTranscriptionControl
+            ariaLabel={copy.voiceAria}
+            onTranscript={applyTranscript}
+          />
         </div>
       </form>
 
