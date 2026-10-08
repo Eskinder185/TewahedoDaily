@@ -158,8 +158,32 @@ export function emptyContent(): EditorialContent {
   }
 }
 
+/** Runtime: columns declared in contentColumns but missing on the live DB. */
+const unavailableContentFields = new Set<string>()
+
+function contentFieldKey(kind: EditorialKind, field: string) {
+  return `${kind}.${field}`
+}
+
 export function supportsContentField(kind: EditorialKind, field: string) {
+  if (unavailableContentFields.has(contentFieldKey(kind, field))) return false
   return (contentColumns[kind] as readonly string[]).includes(field)
+}
+
+function markUnavailableContentField(kind: EditorialKind, field: string) {
+  unavailableContentFields.add(contentFieldKey(kind, field))
+}
+
+function isMissingColumnError(
+  error: { code?: string; message?: string } | null | undefined,
+  column: string,
+) {
+  if (!error) return false
+  const message = error.message || ''
+  if (error.code === '42703' || /column .* does not exist/i.test(message)) {
+    return new RegExp(`\\b${column}\\b`, 'i').test(message)
+  }
+  return false
 }
 
 function listSelect(kind: EditorialKind) {
@@ -292,7 +316,27 @@ export async function listContent(
     .order('updated_at', { ascending: false })
     .order('id')
     .range((page - 1) * 24, page * 24 - 1)
-  if (error) throw error
+  if (error) {
+    // Live DBs may lag migrations (TD-01): retry with supported columns only.
+    let marked = false
+    for (const field of ['description', 'teaching_category'] as const) {
+      if (supportsContentField(kind, field) && isMissingColumnError(error, field)) {
+        markUnavailableContentField(kind, field)
+        marked = true
+      }
+    }
+    if (
+      !marked &&
+      kind === 'articles' &&
+      (error.code === '42703' || /column .* does not exist/i.test(error.message || ''))
+    ) {
+      markUnavailableContentField(kind, 'description')
+      markUnavailableContentField(kind, 'teaching_category')
+      marked = true
+    }
+    if (marked) return listContent(kind, q, status, page, category)
+    throw error
+  }
   return { items: (data as unknown as EditorialContent[]) || [], total: count || 0 }
 }
 

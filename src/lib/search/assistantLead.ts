@@ -29,7 +29,13 @@ export function assistantLeadForResponse(
     case 'synaxarium_search':
     case 'synaxarium_day':
       return 'Here is what I found in the Synaxarium.'
-    case 'bible_reference':
+    case 'bible_reference': {
+      const ref =
+        typeof response.reference === 'string' && response.reference.trim()
+          ? response.reference.trim()
+          : ''
+      return ref ? `Here is ${ref}.` : 'Here is the Scripture I found.'
+    }
     case 'bible_chapter':
     case 'bible_search':
       return 'Here is the Scripture I found.'

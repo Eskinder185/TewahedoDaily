@@ -37,9 +37,21 @@ export type BibleVerseRow = {
   [key: string]: unknown
 }
 
+/** Nested book object returned by GET /api/bible/search and chat bible_* types. */
+export type BibleBookRef = {
+  id?: string | null
+  slug?: string | null
+  name_en?: string | null
+  name_am?: string | null
+  [key: string]: unknown
+}
+
 export type BibleSearchHit = {
-  book?: string | null
+  book?: string | BibleBookRef | null
   book_name?: string | null
+  book_slug?: string | null
+  book_name_amharic?: string | null
+  reference?: string | null
   chapter?: number | string | null
   verse?: number | string | null
   verse_number?: number | string | null
@@ -63,6 +75,7 @@ export type HymnRow = {
   audio_url?: string | null
   zemari?: string | null
   singer_name?: string | null
+  primary_language?: string | null
   occasion?: string | null
   occasion_label?: string | null
   [key: string]: unknown
@@ -103,27 +116,32 @@ export type BibleSearchResponse = {
 
 export type BibleReferenceResponse = {
   type: 'bible_reference'
-  book?: string | null
+  book?: string | BibleBookRef | null
   book_name?: string | null
+  book_slug?: string | null
   chapter?: number | string | null
   verse?: number | string | null
   verse_end?: number | string | null
+  end_verse?: number | string | null
   language?: string | null
   text?: string | null
   text_amharic?: string | null
   text_english?: string | null
   verses?: BibleVerseRow[]
   message?: string
+  reference?: string | null
 }
 
 export type BibleChapterResponse = {
   type: 'bible_chapter'
-  book?: string | null
+  book?: string | BibleBookRef | null
   book_name?: string | null
+  book_slug?: string | null
   chapter?: number | string | null
   language?: string | null
   verses?: BibleVerseRow[]
   message?: string
+  reference?: string | null
 }
 
 export type HymnSearchResponse = {

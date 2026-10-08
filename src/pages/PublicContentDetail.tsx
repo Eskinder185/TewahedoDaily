@@ -104,7 +104,7 @@ export function PublicContentDetail() {
       <Link to={libraryPath(kindKey)}>← Back to {libraryLabel(kindKey)}</Link>
       <Notice {...result} retry={result.reload} />
       {notFound ? (
-        <EmptyState title="Content not found">
+        <EmptyState title="Content not found" headingLevel="h1">
           <p>
             This{' '}
             {kindKey === 'saints'

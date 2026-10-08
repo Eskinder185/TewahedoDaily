@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { imageManifest } from '../../content/imageManifest'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
 import { listHomepageSlides, type HomepageSlide } from '../../lib/cms/homepageService'
+import { useLocale } from '../../lib/i18n/locale'
 import styles from './HeroSection.module.css'
 
 const HERO_QUICK_LINKS = [
@@ -26,13 +27,40 @@ type SlideView = {
   duration: number
 }
 
-function toView(slide: HomepageSlide, fallback: SlideView): SlideView {
+/**
+ * Map CMS slides into the active UI locale.
+ * - Amharic UI: prefer title_amharic / localized chrome strings; keep English CMS
+ *   title as secondary only when it differs (does not invent religious copy).
+ * - English UI: CMS English fields with Amharic secondary when present.
+ */
+function toView(slide: HomepageSlide, fallback: SlideView, preferAmharic: boolean): SlideView {
+  const cmsTitleEn = slide.title?.trim() || ''
+  const cmsTitleAm = slide.title_amharic?.trim() || ''
+  const cmsEyebrow = slide.eyebrow?.trim() || ''
+  const cmsSubtitle = slide.subtitle?.trim() || ''
+
+  if (preferAmharic) {
+    const title = cmsTitleAm || fallback.title
+    const secondaryEn = cmsTitleEn && cmsTitleEn !== title ? cmsTitleEn : ''
+    return {
+      id: slide.id,
+      eyebrow: fallback.eyebrow,
+      title,
+      titleAmharic: secondaryEn,
+      subtitle: fallback.subtitle,
+      imageUrl: resolveContentMediaUrl(slide.image_path) || fallback.imageUrl,
+      imageAlt: slide.image_alt?.trim() || fallback.imageAlt,
+      animation: slide.animation_style || 'fade',
+      duration: slide.display_duration || 7000,
+    }
+  }
+
   return {
     id: slide.id,
-    eyebrow: slide.eyebrow?.trim() || fallback.eyebrow,
-    title: slide.title?.trim() || fallback.title,
-    titleAmharic: slide.title_amharic?.trim() || '',
-    subtitle: slide.subtitle?.trim() || fallback.subtitle,
+    eyebrow: cmsEyebrow || fallback.eyebrow,
+    title: cmsTitleEn || fallback.title,
+    titleAmharic: cmsTitleAm,
+    subtitle: cmsSubtitle || fallback.subtitle,
     imageUrl: resolveContentMediaUrl(slide.image_path) || fallback.imageUrl,
     imageAlt: slide.image_alt?.trim() || fallback.imageAlt,
     animation: slide.animation_style || 'fade',
@@ -42,23 +70,28 @@ function toView(slide: HomepageSlide, fallback: SlideView): SlideView {
 
 export function HeroSection() {
   const t = useTranslation()
+  const { uiLocale } = useLocale()
+  const preferAmharic = uiLocale === 'am'
   const headingId = useId()
   const reducedMotion = useRef(
     typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches,
   )
 
-  const fallback: SlideView = {
-    id: 'fallback',
-    eyebrow: t('home.hero.eyebrow'),
-    title: t('home.hero.title'),
-    titleAmharic: '',
-    subtitle: t('home.hero.tagline'),
-    imageUrl: imageManifest.home.hero,
-    imageAlt: '',
-    animation: 'fade',
-    duration: 7000,
-  }
+  const fallback = useMemo<SlideView>(
+    () => ({
+      id: 'fallback',
+      eyebrow: t('home.hero.eyebrow'),
+      title: t('home.hero.title'),
+      titleAmharic: '',
+      subtitle: t('home.hero.tagline'),
+      imageUrl: imageManifest.home.hero,
+      imageAlt: '',
+      animation: 'fade',
+      duration: 7000,
+    }),
+    [t],
+  )
 
   const [slides, setSlides] = useState<SlideView[]>([fallback])
   const [index, setIndex] = useState(0)
@@ -71,13 +104,12 @@ export function HeroSection() {
         setSlides([fallback])
         return
       }
-      setSlides(rows.map((row) => toView(row, fallback)))
+      setSlides(rows.map((row) => toView(row, fallback, preferAmharic)))
       setIndex(0)
     } catch {
       setSlides([fallback])
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [fallback, preferAmharic])
 
   useEffect(() => {
     void load()
@@ -163,7 +195,7 @@ export function HeroSection() {
             {current.title}
           </h1>
           {current.titleAmharic ? (
-            <p className={styles.titleAm} lang="am">
+            <p className={styles.titleAm} lang={preferAmharic ? 'en' : 'am'}>
               {current.titleAmharic}
             </p>
           ) : null}
@@ -182,19 +214,18 @@ export function HeroSection() {
             <button
               type="button"
               className={styles.controlBtn}
-              aria-label="Previous slide"
+              aria-label={t('home.hero.prevSlide')}
               onClick={() => setIndex((prev) => (prev - 1 + slides.length) % slides.length)}
             >
               ‹
             </button>
-            <div className={styles.dots} role="tablist" aria-label="Homepage slides">
+            <div className={styles.dots} role="group" aria-label={t('home.hero.slidesLabel')}>
               {slides.map((slide, slideIndex) => (
                 <button
                   key={slide.id}
                   type="button"
-                  role="tab"
-                  aria-selected={slideIndex === index}
-                  aria-label={`Slide ${slideIndex + 1}`}
+                  aria-pressed={slideIndex === index}
+                  aria-label={t('home.hero.slideN', { n: slideIndex + 1 })}
                   className={`${styles.dot} ${slideIndex === index ? styles.dotActive : ''}`}
                   onClick={() => setIndex(slideIndex)}
                 />
@@ -203,7 +234,7 @@ export function HeroSection() {
             <button
               type="button"
               className={styles.controlBtn}
-              aria-label="Next slide"
+              aria-label={t('home.hero.nextSlide')}
               onClick={() => setIndex((prev) => (prev + 1) % slides.length)}
             >
               ›

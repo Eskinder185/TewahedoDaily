@@ -47,7 +47,8 @@ export function MezmureDawitPage() {
   // (selecting Psalm 1 showed 1, 10, 11, 12… instead of 1, 2, 3…).
   const selectedRaw = params.get('n') ?? ''
   const [q, setQ] = useState('')
-  const [showPsalmIndexOnMobile, setShowPsalmIndexOnMobile] = useState(true)
+  // Mobile: prefer the reader when a psalm is already selected (TD-07).
+  const [showPsalmIndexOnMobile, setShowPsalmIndexOnMobile] = useState(() => !params.get('n'))
   const [prayers, setPrayers] = useState<CollectionPrayer[] | null>(null)
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)

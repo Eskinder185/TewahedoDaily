@@ -150,7 +150,9 @@ export function parseBibleReference(queryRaw: string): ParsedBibleReference {
     .replace(/\s*-\s*/g, '-')
 
   // Strip soft words while keeping structure.
+  // Leading action phrases ("Open John 3:16") must not become part of the book token.
   text = text
+    .replace(/^(open|go to|show(?:\s+me)?|find|read|look\s*up)\s+/i, '')
     .replace(/\b(chapter|chapters|ch)\b\.?/gi, ' ')
     .replace(/\b(verses|verse|vss|vs|v)\b\.?/gi, ':')
     .replace(/\s*:\s*/g, ':')

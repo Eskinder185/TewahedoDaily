@@ -45,6 +45,10 @@
       "primaryCta": "Explore Hymns",
       "secondaryCta": "See Today in Church",
       "quickNavLabel": "Quick links",
+      "prevSlide": "Previous slide",
+      "nextSlide": "Next slide",
+      "slidesLabel": "Homepage slides",
+      "slideN": "Slide {n}",
       "quickNav": {
         "bible": "Bible",
         "pray": "Pray",

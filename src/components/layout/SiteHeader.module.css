@@ -48,10 +48,10 @@
   align-items: center;
   justify-content: center;
   width: auto;
-  min-width: 2.25rem;
-  min-height: 2.25rem;
-  height: 2.25rem;
-  padding: 0 0.65rem;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  height: auto;
+  padding: 0 0.7rem;
   border-radius: var(--radius-pill);
   border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, var(--color-gold-line));
   background: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-bg-muted));
@@ -414,9 +414,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.15rem;
-  height: 2.15rem;
-  padding: 0 0.8rem;
+  min-height: var(--tap-min);
+  height: auto;
+  padding: 0 0.85rem;
   border-radius: var(--radius-pill);
   background: color-mix(in srgb, var(--color-bg-elevated) 93%, var(--color-gold-faint));
   font-size: 0.8rem;
@@ -431,8 +431,8 @@
   align-content: center;
   min-width: 0;
   max-width: 9.75rem;
-  min-height: 2.15rem;
-  padding: 0.28rem 0.65rem;
+  min-height: var(--tap-min);
+  padding: 0.35rem 0.7rem;
   border-radius: 12px;
   background: linear-gradient(
     180deg,

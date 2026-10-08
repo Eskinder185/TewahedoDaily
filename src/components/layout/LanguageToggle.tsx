@@ -3,12 +3,16 @@ import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { useTranslation } from '../../i18n'
 import styles from './LanguageToggle.module.css'
 
-const OPTIONS: Array<{ id: AppLocale; short: string; labelKey: 'langEnglishButton' | 'langAmharicButton' | 'langBothButton'; langAttr?: string }> =
-  [
-    { id: 'en', short: 'EN', labelKey: 'langEnglishButton', langAttr: 'en' },
-    { id: 'am', short: 'አማ', labelKey: 'langAmharicButton', langAttr: 'am' },
-    { id: 'both', short: 'Both', labelKey: 'langBothButton' },
-  ]
+const OPTIONS: Array<{
+  id: AppLocale
+  short: { en: string; am: string }
+  labelKey: 'langEnglishButton' | 'langAmharicButton' | 'langBothButton'
+  langAttr?: string
+}> = [
+  { id: 'en', short: { en: 'EN', am: 'EN' }, labelKey: 'langEnglishButton', langAttr: 'en' },
+  { id: 'am', short: { en: 'አማ', am: 'አማ' }, labelKey: 'langAmharicButton', langAttr: 'am' },
+  { id: 'both', short: { en: 'Both', am: 'ሁ' }, labelKey: 'langBothButton' },
+]
 
 type Props = {
   /** Use fuller labels (drawer / desktop). */
@@ -17,11 +21,12 @@ type Props = {
 }
 
 export function LanguageToggle({ variant = 'compact', className }: Props) {
-  const { locale, setLocale } = useLocale()
+  const { locale, setLocale, uiLocale } = useLocale()
   const t = useUiLabel()
   const tt = useTranslation()
   const selectedLabel =
     locale === 'am' ? t('langAmharicButton') : locale === 'both' ? t('langBothButton') : t('langEnglishButton')
+  const shortLocale = uiLocale === 'am' ? 'am' : 'en'
 
   return (
     <div
@@ -49,7 +54,7 @@ export function LanguageToggle({ variant = 'compact', className }: Props) {
             lang={opt.langAttr}
           >
             <span className={styles.segShort} aria-hidden>
-              {opt.short}
+              {opt.short[shortLocale]}
             </span>
             <span className={styles.segFull}>{label}</span>
           </button>

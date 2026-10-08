@@ -1,6 +1,7 @@
 import { AI_TIMEOUTS_MS, getAiApiBaseUrl, isAiApiConfigured } from '../ai/aiConfig.ts'
 import { aiFetch } from '../ai/aiClient.ts'
 import { AiClientError } from '../ai/aiTypes.ts'
+import { prepareSearchBuddyMessage } from '../search/normalizeSearchQuery.ts'
 import {
   resolveAmharicStructuredSearch,
   shouldUseAmharicStructuredPath,
@@ -14,19 +15,25 @@ import type { SearchBuddyApiResponse } from './apiTypes.ts'
 export type SendSearchBuddyResult = {
   response: SearchBuddyApiResponse
   empty: boolean
+  /** Query after shared normalization (Bible rewrite, Amharic/ASR cleanup). */
+  normalizedMessage: string
 }
 
 /**
- * Single Search Buddy API entry point.
- * Amharic / Ethiopic: structured retrieval first (never LLM).
- * English / other: POST /api/chat  body: { message }
+ * Single Search Buddy API entry point (also used by the Bible page adapter).
+ * Shared prepareSearchBuddyMessage → Amharic structured GETs or POST /api/chat.
  */
 export async function sendSearchBuddyMessage(
   message: string,
   signal?: AbortSignal,
 ): Promise<SendSearchBuddyResult> {
-  const trimmed = message.trim()
-  if (!trimmed) {
+  // Preserve ASR wording for Amharic Bible chat; English still gets Bible rewrite.
+  const rawTrimmed = (message || '').replace(/\s+/g, ' ').trim()
+  const prepared = prepareSearchBuddyMessage(message)
+  const forRouting = shouldUseAmharicStructuredPath(rawTrimmed)
+    ? rawTrimmed || prepared
+    : prepared
+  if (!forRouting) {
     throw new AiClientError('bad_request', 'Enter a search question first.')
   }
 
@@ -39,10 +46,15 @@ export async function sendSearchBuddyMessage(
     throw new AiClientError('not_configured', hint)
   }
 
-  if (shouldUseAmharicStructuredPath(trimmed)) {
-    const response = await resolveAmharicStructuredSearch(trimmed, signal)
+  if (shouldUseAmharicStructuredPath(forRouting)) {
+    // Pass raw transcript so Bible-like Amharic hits POST /api/chat unchanged.
+    const response = await resolveAmharicStructuredSearch(rawTrimmed || forRouting, signal)
     if (response) {
-      return { response, empty: isEmptySearchBuddyResponse(response) }
+      return {
+        response,
+        empty: isEmptySearchBuddyResponse(response),
+        normalizedMessage: forRouting,
+      }
     }
   }
 
@@ -50,7 +62,7 @@ export async function sendSearchBuddyMessage(
     path: '/api/chat',
     method: 'POST',
     json: {
-      message: trimmed,
+      message: prepared || forRouting,
       timezone:
         typeof Intl !== 'undefined'
           ? Intl.DateTimeFormat().resolvedOptions().timeZone
@@ -62,7 +74,11 @@ export async function sendSearchBuddyMessage(
   })
 
   const response = parseSearchBuddyResponse(raw)
-  return { response, empty: isEmptySearchBuddyResponse(response) }
+  return {
+    response,
+    empty: isEmptySearchBuddyResponse(response),
+    normalizedMessage: prepared || forRouting,
+  }
 }
 
 export function searchBuddyApiReady(): boolean {

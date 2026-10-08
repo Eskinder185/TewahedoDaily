@@ -1,5 +1,9 @@
 import {
   KNOWN_SEARCH_BUDDY_TYPES,
+  type BibleBookRef,
+  type BibleChapterResponse,
+  type BibleReferenceResponse,
+  type BibleVerseRow,
   type SearchBuddyApiResponse,
 } from './apiTypes.ts'
 
@@ -7,6 +11,87 @@ const STRUCTURED_TYPES = new Set<string>(KNOWN_SEARCH_BUDDY_TYPES)
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
+}
+
+function asTrimmedString(value: unknown): string | null {
+  if (typeof value !== 'string') return null
+  const trimmed = value.trim()
+  return trimmed || null
+}
+
+function asChapterOrVerse(value: unknown): number | string | null {
+  if (typeof value === 'number' && Number.isFinite(value)) return value
+  if (typeof value === 'string' && value.trim()) return value.trim()
+  return null
+}
+
+function normalizeBookRef(raw: unknown): string | BibleBookRef | null {
+  if (isRecord(raw)) {
+    const slug = asTrimmedString(raw.slug)
+    const nameEn = asTrimmedString(raw.name_en)
+    const nameAm = asTrimmedString(raw.name_am)
+    const id = asTrimmedString(raw.id)
+    if (!slug && !nameEn && !nameAm) return null
+    return {
+      ...raw,
+      id,
+      slug,
+      name_en: nameEn,
+      name_am: nameAm,
+    }
+  }
+  return asTrimmedString(raw)
+}
+
+function normalizeVerses(raw: unknown): BibleVerseRow[] {
+  if (!Array.isArray(raw)) return []
+  return raw.filter((row): row is BibleVerseRow => isRecord(row))
+}
+
+/**
+ * Preserve FastAPI bible_reference shape (nested book + verses) as a first-class
+ * structured result — never collapse it into a generic AI answer.
+ */
+export function normalizeBibleReferenceResponse(
+  payload: Record<string, unknown>,
+): BibleReferenceResponse {
+  const book = normalizeBookRef(payload.book)
+  const verse = asChapterOrVerse(payload.verse)
+  const endVerse =
+    asChapterOrVerse(payload.end_verse) ?? asChapterOrVerse(payload.verse_end)
+  return {
+    type: 'bible_reference',
+    reference: asTrimmedString(payload.reference),
+    book,
+    book_name: asTrimmedString(payload.book_name),
+    book_slug: asTrimmedString(payload.book_slug),
+    chapter: asChapterOrVerse(payload.chapter),
+    verse,
+    verse_end: endVerse,
+    end_verse: endVerse,
+    language: asTrimmedString(payload.language),
+    text: asTrimmedString(payload.text),
+    text_amharic: asTrimmedString(payload.text_amharic),
+    text_english: asTrimmedString(payload.text_english),
+    verses: normalizeVerses(payload.verses),
+    message: asTrimmedString(payload.message) || undefined,
+  }
+}
+
+function normalizeBibleChapterResponse(
+  payload: Record<string, unknown>,
+): BibleChapterResponse {
+  return {
+    type: 'bible_chapter',
+    reference: asTrimmedString(payload.reference),
+    book: normalizeBookRef(payload.book),
+    book_name: asTrimmedString(payload.book_name),
+    book_slug: asTrimmedString(payload.book_slug),
+    chapter: asChapterOrVerse(payload.chapter),
+    language: asTrimmedString(payload.language),
+    verses: normalizeVerses(payload.verses),
+    message: asTrimmedString(payload.message) || undefined,
+  }
 }
 
 /**
@@ -41,6 +126,14 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
       message: 'The assistant response was missing a type.',
       ...payload,
     }
+  }
+
+  // Structured bible_* must stay structured even if an `answer` field is also present.
+  if (type === 'bible_reference') {
+    return normalizeBibleReferenceResponse(payload)
+  }
+  if (type === 'bible_chapter') {
+    return normalizeBibleChapterResponse(payload)
   }
 
   if (STRUCTURED_TYPES.has(type)) {

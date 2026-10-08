@@ -81,13 +81,51 @@
 
 .sectionBlock {
   margin: var(--space-5) 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  padding: 0.35rem 0.85rem 0.85rem;
+}
+
+.sectionBlock > .list {
+  margin-top: var(--space-3);
 }
 
 .sectionTitle {
-  margin: 0 0 var(--space-3);
+  margin: 0;
   color: var(--color-heading);
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  min-height: var(--tap-min);
+  padding: 0.55rem 0.15rem;
+}
+
+.sectionTitle::-webkit-details-marker {
+  display: none;
+}
+
+.sectionTitle::after {
+  content: '';
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: rotate(45deg);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.sectionBlock[open] > .sectionTitle::after {
+  transform: rotate(225deg);
+  translate: 0 0.2rem;
 }
 
 .count {

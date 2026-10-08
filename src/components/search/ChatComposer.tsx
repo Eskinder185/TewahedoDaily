@@ -20,9 +20,10 @@ type Props = {
   inputAria: string
   sendLabel: string
   sendBusyLabel: string
+  clearLabel?: string
 }
 
-const MAX_TEXTAREA_PX = 140
+const MAX_TEXTAREA_PX = 120
 
 export function ChatComposer({
   value,
@@ -36,6 +37,7 @@ export function ChatComposer({
   inputAria,
   sendLabel,
   sendBusyLabel,
+  clearLabel = 'Clear message',
 }: Props) {
   const inputId = useId()
 
@@ -66,6 +68,7 @@ export function ChatComposer({
         <label className={styles.srOnly} htmlFor={inputId}>
           {inputAria}
         </label>
+
         <div className={styles.composerField}>
           <textarea
             id={inputId}
@@ -81,14 +84,32 @@ export function ChatComposer({
             spellCheck={false}
             aria-label={inputAria}
           />
+          {value.trim() ? (
+            <button
+              type="button"
+              className={styles.clearComposer}
+              aria-label={clearLabel}
+              disabled={busy}
+              onClick={() => {
+                onChange('')
+                inputRef.current?.focus()
+              }}
+            >
+              ×
+            </button>
+          ) : null}
         </div>
+
         <div className={styles.composerActions}>
           <div className={styles.composerTools}>
             <MezmurVoiceSearch
               key={voiceRemountKey}
               compact
               active={voiceActive}
+              startAriaLabel="Dictate a message"
               onTranscript={(text) => {
+                // Fill the composer only — do not auto-submit or navigate.
+                // User reviews/corrects, then Send runs the same path as typed text.
                 const transcript = text.trim()
                 if (!transcript) return
                 onChange(transcript)

@@ -218,6 +218,8 @@ export function UpcomingObservancesStrip({
               type="button"
               role="tab"
               aria-selected={selected}
+              aria-controls={`observances-panel-${x.id}`}
+              tabIndex={selected ? 0 : -1}
               className={`${styles.tab} ${selected ? styles.tabOn : ''}`}
               onClick={() => setTab(x.id)}
             >

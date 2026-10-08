@@ -167,11 +167,12 @@ export async function listPublishedZemarisWithMezmurs(): Promise<ZemariRow[]> {
 export async function getZemari(idOrSlug: string): Promise<ZemariRow> {
   const needle = idOrSlug.trim()
   if (!viewMissing) {
-    let { data, error } = await db()
+    const first = await db()
       .from(VIEW as never)
       .select(VIEW_SELECT)
       .eq('id', needle)
       .limit(1)
+    const { data, error } = first
     if (error && /zemaris_with_counts|PGRST205/i.test(error.message || '')) {
       viewMissing = true
     } else if (error) {

@@ -233,18 +233,25 @@ export function LiturgySectionPage() {
         <div className={styles.toolbar}>
           {langs.length > 1 ? (
             <div className={styles.langTabs} role="tablist" aria-label="Language">
-              {langs.map((tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  role="tab"
-                  aria-selected={lang === tab}
-                  className={`${styles.langTab}${lang === tab ? ` ${styles.langTabActive}` : ''}`}
-                  onClick={() => setLang(tab)}
-                >
-                  {langLabel(tab)}
-                </button>
-              ))}
+              {langs.map((tab) => {
+                const panelId = 'liturgy-reader'
+                const tabId = `liturgy-lang-${tab}`
+                return (
+                  <button
+                    key={tab}
+                    id={tabId}
+                    type="button"
+                    role="tab"
+                    aria-selected={lang === tab}
+                    aria-controls={panelId}
+                    tabIndex={lang === tab ? 0 : -1}
+                    className={`${styles.langTab}${lang === tab ? ` ${styles.langTabActive}` : ''}`}
+                    onClick={() => setLang(tab)}
+                  >
+                    {langLabel(tab)}
+                  </button>
+                )
+              })}
             </div>
           ) : (
             <span />
@@ -271,7 +278,14 @@ export function LiturgySectionPage() {
           ) : null}
         </div>
 
-        <section ref={readerRef} className={styles.reader} aria-label="Liturgy text">
+        <section
+          id="liturgy-reader"
+          ref={readerRef}
+          className={styles.reader}
+          role={langs.length > 1 ? 'tabpanel' : undefined}
+          aria-labelledby={langs.length > 1 ? `liturgy-lang-${lang}` : undefined}
+          aria-label="Liturgy text"
+        >
           {entries.length === 0 ? (
             <p className={styles.empty}>No published entries in this section.</p>
           ) : (

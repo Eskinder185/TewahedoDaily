@@ -25,6 +25,8 @@
   /* Antique gold — richer & more intentional on bright surfaces */
   --color-gold: #b48a3b;
   --color-gold-bright: #c9a14a;
+  /* Text on cream/ivory — darker than decorative gold for WCAG AA (~4.5:1) */
+  --color-gold-ink: #6f531f;
   --color-gold-soft: rgba(180, 138, 59, 0.18);
   --color-gold-faint: rgba(180, 138, 59, 0.09);
   --color-gold-line: rgba(180, 138, 59, 0.42);

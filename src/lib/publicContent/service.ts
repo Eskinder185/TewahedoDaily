@@ -296,54 +296,74 @@ export async function readContent(
   return data
 }
 
+const publicMediaCache = new Map<string, Promise<string>>()
+
 export async function publicMedia(reference: string | null | undefined) {
   if (!reference) return ''
   const trimmed = reference.trim()
   if (!trimmed) return ''
 
-  // Absolute URLs and bare content-media paths
-  if (/^https?:\/\//i.test(trimmed) || !trimmed.startsWith('storage://')) {
-    try {
-      const { resolveContentMediaUrl } = await import('../cms/contentMedia')
-      const resolved = resolveContentMediaUrl(trimmed)
-      if (resolved) return resolved
-    } catch {
-      /* fall through */
-    }
-  }
+  const cached = publicMediaCache.get(trimmed)
+  if (cached) return cached
 
-  if (trimmed.startsWith('storage://')) {
-    const [bucket, ...path] = trimmed.slice(10).split('/')
-    if (bucket === 'content-media') {
-      const { resolveContentMediaUrl } = await import('../cms/contentMedia')
-      return resolveContentMediaUrl(trimmed)
+  const pending = (async () => {
+    // Absolute URLs and bare content-media paths
+    if (/^https?:\/\//i.test(trimmed) || !trimmed.startsWith('storage://')) {
+      try {
+        const { resolveContentMediaUrl } = await import('../cms/contentMedia')
+        const resolved = resolveContentMediaUrl(trimmed)
+        if (resolved) return resolved
+      } catch {
+        /* fall through */
+      }
     }
-    if (
-      ![
-        'mezmur-images',
-        'mezmur-audio',
-        'saints',
-        'feasts',
-        'articles',
-        'general-media',
-      ].includes(bucket)
-    )
-      throw new Error('Unsupported media.')
-    const { data, error } = await database()
-      .storage.from(bucket)
-      .createSignedUrl(path.join('/'), 3600)
-    if (error) throw error
-    return data.signedUrl
+
+    if (trimmed.startsWith('storage://')) {
+      const [bucket, ...path] = trimmed.slice(10).split('/')
+      if (bucket === 'content-media') {
+        const { resolveContentMediaUrl } = await import('../cms/contentMedia')
+        return resolveContentMediaUrl(trimmed)
+      }
+      if (
+        ![
+          'mezmur-images',
+          'mezmur-audio',
+          'saints',
+          'feasts',
+          'articles',
+          'general-media',
+        ].includes(bucket)
+      )
+        throw new Error('Unsupported media.')
+      const { data, error } = await database()
+        .storage.from(bucket)
+        .createSignedUrl(path.join('/'), 3600)
+      if (error) throw error
+      return data.signedUrl
+    }
+    const url = new URL(trimmed)
+    if (url.protocol !== 'https:') throw new Error('Unsupported media URL.')
+    return url.href
+  })()
+
+  publicMediaCache.set(trimmed, pending)
+  try {
+    return await pending
+  } catch (error) {
+    publicMediaCache.delete(trimmed)
+    throw error
   }
-  const url = new URL(trimmed)
-  if (url.protocol !== 'https:') throw new Error('Unsupported media URL.')
-  return url.href
 }
 
 export function publicMezmurToPracticePayload(item: PublicMezmur, youtubeUrl?: string | null) {
   const activeUrl = youtubeUrl || item.youtube_url || ''
   const videoId = parseYoutubeVideoId(activeUrl)
   const lyricsGez = item.lyrics_amharic?.trim() || ''
+  const transliterationLyrics = item.transliteration?.trim() || ''
+  const lyricsEnglish =
+    item.lyrics_english?.trim() ||
+    // Some English mezmurs store readable English under transliteration only (TD-11).
+    (!lyricsGez && transliterationLyrics ? transliterationLyrics : undefined)
   return {
     form: item.form || 'mezmur',
     entryId: item.id,
@@ -351,8 +371,8 @@ export function publicMezmurToPracticePayload(item: PublicMezmur, youtubeUrl?: s
     transliterationTitle: item.title,
     titleAmharic: item.title_amharic?.trim() || undefined,
     lyricsGez,
-    transliterationLyrics: item.transliteration?.trim() || '',
-    lyricsEnglish: item.lyrics_english?.trim() || undefined,
+    transliterationLyrics,
+    lyricsEnglish,
     singerName: item.singer_name?.trim() || undefined,
     videoId,
     audioUrl: item.audio_url?.trim() || undefined,

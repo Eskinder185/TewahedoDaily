@@ -408,13 +408,13 @@ export async function getMezmur(id: string) {
   const needle = id.trim()
   if (!needle) return null
   // Prefer mezmur_id; also allow slug for legacy edit URLs.
-  let { data, error } = await db()
+  const first = await db()
     .from(DATA as never)
     .select(LIST_SELECT)
     .eq('mezmur_id', needle)
     .limit(1)
-  if (error) throw error
-  let row = (data || [])[0] as ImportMezmurRow | undefined
+  if (first.error) throw first.error
+  let row = (first.data || [])[0] as ImportMezmurRow | undefined
   if (!row) {
     const bySlug = await db().from(DATA as never).select(LIST_SELECT).eq('slug', needle).limit(1)
     if (bySlug.error) throw bySlug.error

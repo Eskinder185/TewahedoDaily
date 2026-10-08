@@ -26,7 +26,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-gold-ink, var(--color-text-muted));
   font-weight: 700;
 }
 
@@ -68,6 +68,17 @@
   line-height: 1.45;
 }
 
+.previewClamp {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
 .label {
   display: inline-block;
   margin: 0.1rem 0 0;
@@ -83,15 +94,38 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.45rem;
-  margin-top: 0.25rem;
+  margin-top: 0.4rem;
+}
+
+.actionPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-pill);
+  border: 0;
+  background: var(--color-navy);
+  color: var(--color-text-inverse);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.actionPrimary:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 .actionLink {
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
-  padding: 0.3rem 0.7rem;
+  min-height: 44px;
+  padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);
   background: var(--color-bg-elevated);
@@ -128,7 +162,7 @@
 .verseNum {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-gold);
+  color: var(--color-gold-ink, var(--color-text-muted));
   line-height: 1.6;
   min-width: 1.4rem;
 }

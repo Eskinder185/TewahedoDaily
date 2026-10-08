@@ -1,23 +1,26 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
+import { responsiveImageAttrs } from '../lib/media/responsiveImage'
 import { publicMedia } from '../lib/publicContent/service'
 import {
   getHymnCollections,
-  getMezmursForSection,
   searchHymns,
-  searchImportMezmurs,
   type HymnCollection,
   type HymnDiscoveryHit,
 } from '../lib/publicContent/hymnBrowse'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { expandSearchAliases } from '../lib/search/routeCatalog'
+import {
+  searchMezmursUnified,
+  type UnifiedMezmurSearchItem,
+} from '../lib/search/unifiedHymnSearch'
 import { useTranslation } from '../i18n'
 import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
 import s from './HymnPractice.module.css'
 
-type SearchItem = Awaited<ReturnType<typeof searchImportMezmurs>>['items'][number]
+type SearchItem = UnifiedMezmurSearchItem
 
 function useDebounced(value: string, ms = 280) {
   const [debounced, setDebounced] = useState(value)
@@ -56,13 +59,24 @@ function CardArt({ item }: { item: SearchItem }) {
     )
   }
 
+  const attrs = responsiveImageAttrs(src, {
+    sizes: '(max-width: 430px) 42vw, (max-width: 768px) 30vw, 180px',
+    width: 320,
+    height: 240,
+  })
+
   return (
     <img
       className={s.art}
-      src={src}
+      src={attrs?.src || src}
+      srcSet={attrs?.srcSet}
+      sizes={attrs?.sizes}
       alt=""
-      loading="lazy"
+      loading={attrs?.loading || 'lazy'}
       decoding="async"
+      width={attrs?.width || 320}
+      height={attrs?.height || 240}
+      fetchPriority={attrs?.fetchPriority}
       onError={() => setFailed(true)}
     />
   )
@@ -159,15 +173,21 @@ function MezmurResultGrid({
     )
   }
   if (!items.length) {
-    return <p className={s.status}>{emptyMessage}</p>
+    return (
+      <p className={s.status} lang="am">
+        {emptyMessage}
+      </p>
+    )
   }
   return (
     <div className={s.grid}>
       {items.map((item) => {
         const english = item.title_english || item.title
-        const meta = [item.singer_name, item.form || item.language].filter(Boolean).join(' · ')
+        const meta = [item.zemari || item.singer_name, item.form || item.primary_language]
+          .filter(Boolean)
+          .join(' · ')
         return (
-          <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
+          <Link key={item.id || item.slug} to={`/practice/mezmur/${item.slug}`} className={s.card}>
             <CardArt item={item} />
             <div className={s.cardBody}>
               {item.title_amharic ? (
@@ -175,8 +195,17 @@ function MezmurResultGrid({
                   {item.title_amharic}
                 </p>
               ) : null}
-              <h3 className={s.cardTitle}>{english}</h3>
+              {english && english !== item.title_amharic ? (
+                <h3 className={s.cardTitle}>{english}</h3>
+              ) : !item.title_amharic ? (
+                <h3 className={s.cardTitle}>{item.title}</h3>
+              ) : null}
               {meta ? <p className={s.cardMeta}>{meta}</p> : null}
+              {item.preview ? (
+                <p className={s.cardMeta} lang={/[\u1200-\u137F]/.test(item.preview) ? 'am' : undefined}>
+                  {item.preview.length > 160 ? `${item.preview.slice(0, 157).trim()}…` : item.preview}
+                </p>
+              ) : null}
             </div>
           </Link>
         )
@@ -201,18 +230,18 @@ export function PublicMezmurLibrary() {
     items: SearchItem[]
     total: number
     page: number
-    fromSections?: boolean
   } | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
   const [suggestOpen, setSuggestOpen] = useState(false)
+  /** Last voice transcript shown as የተሰማው፦ … */
+  const [heardTranscript, setHeardTranscript] = useState<string | null>(null)
   const searchWrapRef = useRef<HTMLDivElement>(null)
   const listboxId = useId()
 
   const hasQuery = Boolean((params.get('q') || '').trim())
   const showResults = hasQuery
-  const page = Math.max(1, Number(params.get('page') || '1') || 1)
 
   usePageMeta(
     t('practice.metaTitle'),
@@ -296,77 +325,27 @@ export function PublicMezmurLibrary() {
     setLoading(true)
     setError(undefined)
     setResult(null)
-    const qRaw = (params.get('q') || '').trim()
-    const q = expandSearchAliases(qRaw)
+    // Raw query → GET /api/hymns/search (same path for typed and voice).
+    // Do not expand aliases or run local exact-match before the backend.
+    const q = (params.get('q') || '').replace(/\s+/g, ' ').trim()
+    const controller = new AbortController()
     void (async () => {
       try {
         const [data, hits] = await Promise.all([
-          searchImportMezmurs(q, { page, pageSize: 24 }),
-          searchHymns(q, 8),
+          searchMezmursUnified(q, { limit: 20, signal: controller.signal }),
+          // Browse discovery only (sections/singers) — does not drive hymn ranking.
+          searchHymns(expandSearchAliases(q), 8).catch(() => [] as HymnDiscoveryHit[]),
         ])
         if (!active) return
         setDiscoveryHits(hits)
-
-        if (data.total > 0) {
-          setResult({ ...data, fromSections: false })
-          setLoading(false)
-          return
-        }
-
-        // Title search empty but section/singer matches exist — surface linked Mezmurs
-        const sectionHits = hits.filter((h) => h.type === 'section').slice(0, 3)
-        if (sectionHits.length) {
-          const linkedBatches = await Promise.all(
-            sectionHits.map(async (hit) => {
-              const parts = hit.href.split('/').filter(Boolean)
-              // practice / browse / :collection / :section
-              const collectionSlug = parts[2] || ''
-              const sectionSlug = parts[3] || ''
-              if (!collectionSlug || !sectionSlug) return [] as SearchItem[]
-              const linked = await getMezmursForSection(collectionSlug, sectionSlug, {
-                page: 1,
-                pageSize: 24,
-              })
-              return linked.items.map((item) => ({
-                id: item.id,
-                slug: item.slug,
-                title: item.title,
-                title_amharic: item.titleAmharic || null,
-                title_english: item.titleEnglish || null,
-                thumbnail_url: item.thumbnailUrl,
-                youtube_url: item.youtubeUrl,
-                singer_name: item.singerName,
-                language: null,
-                form: null,
-              }))
-            }),
-          )
-          if (!active) return
-          const seen = new Set<string>()
-          const merged: SearchItem[] = []
-          for (const batch of linkedBatches) {
-            for (const item of batch) {
-              if (seen.has(item.id)) continue
-              seen.add(item.id)
-              merged.push(item)
-            }
-          }
-          if (merged.length) {
-            setResult({
-              items: merged.slice(0, 24),
-              total: merged.length,
-              page: 1,
-              fromSections: true,
-            })
-            setLoading(false)
-            return
-          }
-        }
-
-        setResult({ ...data, fromSections: false })
+        setResult({
+          items: data.items,
+          total: data.items.length,
+          page: 1,
+        })
         setLoading(false)
       } catch (cause) {
-        if (!active) return
+        if (!active || controller.signal.aborted) return
         if (import.meta.env.DEV) console.error('[hymn practice] search', cause)
         setError(t('practice.loadError'))
         setResult(null)
@@ -375,8 +354,9 @@ export function PublicMezmurLibrary() {
     })()
     return () => {
       active = false
+      controller.abort()
     }
-  }, [params, page, reloadTick, showResults, t])
+  }, [params, reloadTick, showResults, t])
 
   const applyDiscoveryHit = (hit: HymnDiscoveryHit) => {
     setSuggestOpen(false)
@@ -391,10 +371,9 @@ export function PublicMezmurLibrary() {
   const clearSearch = useCallback(() => {
     setDraftQ('')
     setDiscoveryHits([])
+    setHeardTranscript(null)
     setParams(new URLSearchParams())
   }, [setParams])
-
-  const totalPages = result ? Math.max(1, Math.ceil(result.total / 24)) : 1
 
   const sectionMatchCount = discoveryHits.filter(
     (hit) => hit.type === 'section' || hit.type === 'singer' || hit.type === 'collection',
@@ -402,22 +381,11 @@ export function PublicMezmurLibrary() {
 
   const resultsHeading = (() => {
     if (loading || !result) return t('practice.searching')
-    if (result.fromSections) {
-      return t('practice.resultsFromSections', {
-        hymns: result.total,
-        sections: sectionMatchCount || 1,
-      })
-    }
-    if (result.total === 0 && sectionMatchCount > 0) {
-      return t('practice.resultsSectionsOnly', { count: sectionMatchCount })
-    }
     return t('practice.resultsCount', { count: result.total })
   })()
 
-  const emptyMessage =
-    sectionMatchCount > 0
-      ? t('practice.emptyTitlesWithSections')
-      : t('practice.emptyHymns')
+  // Always the Amharic empty copy when the backend returns no hymns.
+  const emptyMessage = '\u121D\u1295\u121D \u1218\u12DD\u1219\u122D \u12A0\u120D\u1270\u1308\u1298\u121D\u1362'
 
   return (
     <section className={s.page}>
@@ -439,6 +407,7 @@ export function PublicMezmurLibrary() {
               value={draftQ}
               onChange={(event) => {
                 setDraftQ(event.target.value)
+                setHeardTranscript(null)
                 setSuggestOpen(true)
               }}
               onFocus={() => setSuggestOpen(true)}
@@ -456,7 +425,7 @@ export function PublicMezmurLibrary() {
             {suggestOpen && discoveryHits.length > 0 && !showResults ? (
               <ul id={listboxId} className={s.suggestList} role="listbox">
                 {discoveryHits.map((hit) => (
-                  <li key={`${hit.type}-${hit.id}`} role="option">
+                  <li key={`${hit.type}-${hit.id}`} role="option" aria-selected="false">
                     <button
                       type="button"
                       className={s.suggestItem}
@@ -483,15 +452,23 @@ export function PublicMezmurLibrary() {
         </div>
         <VoiceTranscriptionControl
           ariaLabel="Search hymns by voice"
-          helperCaption="Say the letters separately, not the whole word."
+          defaultLanguage="am"
           onTranscript={(text) => {
             const transcript = text.trim()
             if (!transcript) return
+            setHeardTranscript(transcript)
             setDraftQ(transcript)
             setSuggestOpen(false)
           }}
         />
       </div>
+
+      {heardTranscript ? (
+        <p className={s.browseEmpty} lang="am" role="status">
+          {'\u12E8\u1270\u1230\u121B\u12CD\u1356 '}
+          {heardTranscript}
+        </p>
+      ) : null}
 
       {showResults ? (
         <>
@@ -528,35 +505,6 @@ export function PublicMezmurLibrary() {
             onRetry={() => setReloadTick((n) => n + 1)}
             emptyMessage={emptyMessage}
           />
-          {result && totalPages > 1 ? (
-            <div className={s.pager}>
-              <button
-                type="button"
-                disabled={page <= 1}
-                onClick={() => {
-                  const next = new URLSearchParams(params)
-                  next.set('page', String(page - 1))
-                  setParams(next)
-                }}
-              >
-                Previous
-              </button>
-              <span>
-                Page {page} of {totalPages}
-              </span>
-              <button
-                type="button"
-                disabled={page >= totalPages}
-                onClick={() => {
-                  const next = new URLSearchParams(params)
-                  next.set('page', String(page + 1))
-                  setParams(next)
-                }}
-              >
-                Next
-              </button>
-            </div>
-          ) : null}
         </>
       ) : (
         <>

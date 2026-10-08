@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAsync } from '../lib/cms/useAsync'
 import { useLocale } from '../lib/i18n/locale'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
@@ -178,7 +178,18 @@ function VerseBlock({ text }: { text: ChapterText }) {
   const w = useWords()
   const { uiLocale } = useLocale()
   const isAm = text.chapter.edition === 'am'
-  const verseList = (verses: ChapterText['verses']) => <ol className={s.verses} lang={isAm ? 'am' : 'en'}>{verses.map((verse) => <li key={verse.id}><span className={s.verseNumber} aria-label={`${verse.verse_number}`}>{verse.verse_number}</span><span className={isAm ? s.amharicVerse : s.englishVerse}>{verse.text}</span></li>)}</ol>
+  const verseList = (verses: ChapterText['verses']) => (
+    <ol className={s.verses} lang={isAm ? 'am' : 'en'}>
+      {verses.map((verse) => (
+        <li key={verse.id} id={`verse-${verse.verse_number}`}>
+          <span className={s.verseNumber} aria-label={`${verse.verse_number}`}>
+            {verse.verse_number}
+          </span>
+          <span className={isAm ? s.amharicVerse : s.englishVerse}>{verse.text}</span>
+        </li>
+      ))}
+    </ol>
+  )
   return <section className={s.editionBlock} aria-label={isAm ? w.am : w.en}>
     <h2>{isAm ? w.am : w.en} <small>{sourceName(text.chapter.source, uiLocale)} · {w.chapter} {text.chapter.chapter_number}</small></h2>
     {isAm ? <>
@@ -194,6 +205,7 @@ function VerseBlock({ text }: { text: ChapterText }) {
 
 function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: number }) {
   const navigate = useNavigate()
+  const location = useLocation()
   const { locale, uiLocale, setLocale } = useLocale()
   const w = useWords()
   const am = detail.chapters.am[ordinal - 1]
@@ -212,6 +224,17 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
       route: `/bible/${detail.book.slug}/${ordinal}`,
     })
   }, [detail.book.slug, ordinal, title])
+
+  // Honor #verse-N from Search Buddy "Open in Bible" after chapter text loads.
+  useEffect(() => {
+    if (result.loading || !result.data) return
+    const hash = location.hash.replace(/^#/, '')
+    const match = /^verse-(\d+)$/.exec(hash)
+    if (!match) return
+    const el = document.getElementById(`verse-${match[1]}`)
+    if (!el) return
+    el.scrollIntoView({ block: 'center', behavior: 'smooth' })
+  }, [result.loading, result.data, location.hash, ordinal, detail.book.slug])
   if (!choice) return <p className={s.status}>{w.invalidChapter}</p>
   const primary = choice === 'en' ? en : am || en
   const maxOrdinal = choice === 'both'
@@ -231,14 +254,27 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     {locale !== choice && locale !== 'both' && <p className={s.notice}>{w.languageFallback}</p>}
     <label className={s.chapterPicker}>{w.selectChapter}
       <select value={ordinal} onChange={(event) => navigate(`/bible/${detail.book.slug}/${event.target.value}`)}>
-        {pickerChapters.map((chapter) => <option key={chapter.id} value={chapter.ordinal}>{detail.sources.length > 1 ? `${sourceName(chapter.source, uiLocale)} · ` : ''}${w.chapter} ${chapter.chapter_number}</option>)}
+        {pickerChapters.map((chapter) => (
+          <option key={chapter.id} value={chapter.ordinal}>
+            {(detail.sources.length > 1 ? `${sourceName(chapter.source, uiLocale)} · ` : '') +
+              `${w.chapter} ${chapter.chapter_number}`}
+          </option>
+        ))}
       </select>
     </label>
     <Status loading={result.loading} error={result.error} onRetry={result.reload} />
     {result.data?.map((text) => <VerseBlock key={text.chapter.id} text={text} />)}
     <nav className={s.chapterNav} aria-label={w.chapters}>
-      {ordinal > 1 ? <Link to={`/bible/${detail.book.slug}/${ordinal - 1}`}>← {w.previous}</Link> : <span aria-disabled="true">← {w.previous}</span>}
-      {ordinal < maxOrdinal ? <Link to={`/bible/${detail.book.slug}/${ordinal + 1}`}>{w.next} →</Link> : <span aria-disabled="true">{w.next} →</span>}
+      {ordinal > 1 ? (
+        <Link to={`/bible/${detail.book.slug}/${ordinal - 1}`}>← {w.previous}</Link>
+      ) : (
+        <span aria-hidden="true">← {w.previous}</span>
+      )}
+      {ordinal < maxOrdinal ? (
+        <Link to={`/bible/${detail.book.slug}/${ordinal + 1}`}>{w.next} →</Link>
+      ) : (
+        <span aria-hidden="true">{w.next} →</span>
+      )}
     </nav>
   </>
 }

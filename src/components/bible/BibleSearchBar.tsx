@@ -1,10 +1,13 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
-import { searchBible } from '../../lib/bible/bibleSearch'
 import { parseBibleReference } from '../../lib/bible/parseBibleReference'
+import { searchBibleShared } from '../../lib/search/sharedBibleSearch'
+import type { SearchBuddyApiResponse } from '../../lib/searchBuddy/apiTypes'
+import { looksLikeAmharicBibleReference } from '../../lib/searchBuddy/amharicStructuredSearch'
 import type { SiteSearchResult } from '../../lib/search/types'
 import { useLocale } from '../../lib/i18n/locale'
 import { VoiceTranscriptionControl } from '../search/VoiceTranscriptionControl'
+import { SearchBuddyResults } from '../search/results/SearchBuddyResults'
 import styles from './BibleSearchBar.module.css'
 
 const COPY = {
@@ -17,6 +20,7 @@ const COPY = {
     open: 'Open →',
     clear: 'Clear',
     voiceAria: 'Search the Bible by voice',
+    voiceHint: 'Review the transcript, then search.',
   },
   am: {
     label: '\u1218\u133d\u1210\u134d \u1245\u12f1\u1235\u1295 \u1348\u120d\u130d',
@@ -30,10 +34,13 @@ const COPY = {
     open: '\u12ad\u1348\u1275 \u2192',
     clear: '\u12a0\u133d\u12f3',
     voiceAria: '\u1218\u133d\u1210\u134d \u1245\u12f1\u1235\u1295 \u1260\u12f5\u121d\u1335 \u1348\u120d\u130d',
+    voiceHint: 'Review the transcript, then search.',
   },
 } as const
 
 function shouldSearchImmediately(query: string): boolean {
+  // Amharic spoken refs are resolved by POST /api/chat, not parseBibleReference.
+  if (looksLikeAmharicBibleReference(query)) return true
   return parseBibleReference(query).isReference
 }
 
@@ -43,42 +50,58 @@ export function BibleSearchBar() {
   const inputId = useId()
   const listId = useId()
   const [query, setQuery] = useState('')
-  const [results, setResults] = useState<SiteSearchResult[]>([])
+  const [siteResults, setSiteResults] = useState<SiteSearchResult[]>([])
+  const [structured, setStructured] = useState<SearchBuddyApiResponse | null>(null)
   const [status, setStatus] = useState<'idle' | 'loading' | 'empty' | 'error' | 'ready'>('idle')
   const [message, setMessage] = useState<string | null>(null)
+  const [voicePending, setVoicePending] = useState(false)
   const requestIdRef = useRef(0)
+  const abortRef = useRef<AbortController | null>(null)
   const debounceRef = useRef<number | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     return () => {
       if (debounceRef.current != null) window.clearTimeout(debounceRef.current)
+      abortRef.current?.abort()
     }
   }, [])
 
   async function runSearch(raw: string) {
     const q = raw.trim()
+    setVoicePending(false)
     if (!q) {
-      setResults([])
+      abortRef.current?.abort()
+      setSiteResults([])
+      setStructured(null)
       setStatus('idle')
       setMessage(null)
       return
     }
     const requestId = ++requestIdRef.current
+    abortRef.current?.abort()
+    const controller = new AbortController()
+    abortRef.current = controller
     setStatus('loading')
     setMessage(null)
     try {
-      const response = await searchBible(q, {
+      // Same resolver as Search Buddy: raw transcript/text → POST /api/chat.
+      // bible_reference / bible_chapter short-circuit; no local Amharic book matcher.
+      const response = await searchBibleShared(q, {
         language: uiLocale === 'am' ? 'am' : 'en',
         textLimit: 12,
+        signal: controller.signal,
       })
       if (requestId !== requestIdRef.current) return
-      setResults(response.results)
+      setStructured(response.structured)
+      // When structured bible_* is present, SearchBuddyResults owns the UI.
+      setSiteResults(response.structured ? [] : response.siteResults)
       setMessage(response.intentMessage)
-      setStatus(response.results.length ? 'ready' : 'empty')
-    } catch {
-      if (requestId !== requestIdRef.current) return
-      setResults([])
+      setStatus(response.empty ? 'empty' : 'ready')
+    } catch (_error) {
+      if (controller.signal.aborted || requestId !== requestIdRef.current) return
+      setSiteResults([])
+      setStructured(null)
       setStatus('error')
       setMessage(copy.error)
     }
@@ -98,10 +121,16 @@ export function BibleSearchBar() {
   }
 
   function applyTranscript(text: string) {
+    // Editable before submit — same policy as Search Buddy composer (no auto-navigate).
     const transcript = text.trim()
     if (!transcript) return
+    if (debounceRef.current != null) window.clearTimeout(debounceRef.current)
     setQuery(transcript)
-    scheduleSearch(transcript)
+    setVoicePending(true)
+    setStatus('idle')
+    setSiteResults([])
+    setStructured(null)
+    setMessage(null)
     window.setTimeout(() => inputRef.current?.focus(), 0)
   }
 
@@ -110,6 +139,12 @@ export function BibleSearchBar() {
     if (debounceRef.current != null) window.clearTimeout(debounceRef.current)
     void runSearch(query)
   }
+
+  const showStructured =
+    structured &&
+    (structured.type === 'bible_reference' ||
+      structured.type === 'bible_chapter' ||
+      structured.type === 'bible_search')
 
   return (
     <div className={styles.root}>
@@ -129,13 +164,14 @@ export function BibleSearchBar() {
             onChange={(event) => {
               const next = event.target.value
               setQuery(next)
+              setVoicePending(false)
               scheduleSearch(next)
             }}
             placeholder={copy.placeholder}
             autoComplete="off"
             enterKeyHint="search"
             aria-controls={listId}
-            aria-expanded={results.length > 0}
+            aria-expanded={siteResults.length > 0 || Boolean(showStructured)}
           />
           {query ? (
             <button
@@ -143,6 +179,7 @@ export function BibleSearchBar() {
               className={styles.clear}
               onClick={() => {
                 setQuery('')
+                setVoicePending(false)
                 void runSearch('')
               }}
             >
@@ -155,6 +192,11 @@ export function BibleSearchBar() {
             ariaLabel={copy.voiceAria}
             onTranscript={applyTranscript}
           />
+          {voicePending ? (
+            <p className={styles.voiceHint} role="status">
+              {copy.voiceHint}
+            </p>
+          ) : null}
         </div>
       </form>
 
@@ -174,9 +216,15 @@ export function BibleSearchBar() {
         </p>
       ) : null}
 
-      {results.length > 0 ? (
+      {showStructured ? (
+        <div id={listId} className={styles.structured} aria-label={copy.label}>
+          <SearchBuddyResults response={structured} empty={false} />
+        </div>
+      ) : null}
+
+      {!showStructured && siteResults.length > 0 ? (
         <ul id={listId} className={styles.results} aria-label={copy.label}>
-          {results.map((result) => {
+          {siteResults.map((result) => {
             const ethiopic =
               /[\u1200-\u137F]/.test(result.excerpt || '') ||
               Boolean(result.sourceLabel?.includes('Amharic'))

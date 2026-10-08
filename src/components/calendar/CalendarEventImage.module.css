@@ -46,10 +46,9 @@
 }
 
 .emptyLabel {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--color-text-inverse, #f7f1e6) 88%, #fff);
-  opacity: 0.9;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--color-gold-line, rgba(180, 138, 59, 0.42)) 70%, transparent);
+  background: color-mix(in srgb, var(--color-gold-soft, rgba(180, 138, 59, 0.18)) 55%, transparent);
 }

@@ -107,8 +107,8 @@
 }
 
 .langTab {
-  min-height: 2.2rem;
-  padding: 0.3rem 0.8rem;
+  min-height: var(--tap-min);
+  padding: 0.35rem 0.9rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-bg-elevated);
@@ -127,7 +127,10 @@
 .toc {
   display: grid;
   gap: 0.35rem;
-  min-width: min(100%, 16rem);
+  flex: 1 1 12rem;
+  min-width: 0;
+  max-width: 100%;
+  width: min(100%, 20rem);
 }
 
 .tocLabel {
@@ -138,12 +141,26 @@
 
 .tocSelect {
   min-height: var(--tap-min);
+  max-width: 100%;
+  width: 100%;
   padding: 0.45rem 0.7rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg-elevated);
   color: var(--color-heading);
   font: inherit;
+  box-sizing: border-box;
+}
+
+@media (max-width: 430px) {
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toc {
+    width: 100%;
+  }
 }
 
 .reader {

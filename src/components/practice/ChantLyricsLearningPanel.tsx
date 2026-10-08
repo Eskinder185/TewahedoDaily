@@ -32,13 +32,25 @@ export function ChantLyricsLearningPanel({
   lyricsEnglish = '',
 }: Props) {
   const hasLyrics = lyricsGez.trim().length > 0
-  const hasTrans = transliterationLyrics.trim().length > 0
-  const hasEnglish = lyricsEnglish.trim().length > 0
+  const dedicatedEnglish = lyricsEnglish.trim()
+  const translit = transliterationLyrics.trim()
+  // Prefer dedicated English; when Amharic is empty, treat Latin transliteration as English (TD-11).
+  const englishFromTranslit = !hasLyrics && !dedicatedEnglish && !!translit
+  const englishText = dedicatedEnglish || (englishFromTranslit ? translit : '')
+  const hasEnglish = englishText.length > 0
+  const hasTrans = translit.length > 0 && !englishFromTranslit
   const [scriptMode, setScriptMode] = useState<LyricsScriptMode>(() => {
     const saved = loadLyricsMode()
-    if (saved === 'english' && !hasEnglish) return hasLyrics ? 'lyrics' : 'transliteration'
-    if (saved === 'transliteration' && !hasTrans) return 'lyrics'
-    if (saved === 'both' && !hasTrans) return 'lyrics'
+    const firstAvailable = (): LyricsScriptMode => {
+      if (hasLyrics) return 'lyrics'
+      if (hasEnglish) return 'english'
+      if (hasTrans) return 'transliteration'
+      return 'lyrics'
+    }
+    if (saved === 'english' && !hasEnglish) return firstAvailable()
+    if (saved === 'transliteration' && !hasTrans) return firstAvailable()
+    if (saved === 'both' && !(hasLyrics && hasTrans)) return firstAvailable()
+    if (saved === 'lyrics' && !hasLyrics) return firstAvailable()
     return saved
   })
   const [fontSize, setFontSize] = useState<LyricsFontSizePx>(() => loadLyricsFontSize())
@@ -86,7 +98,7 @@ export function ChantLyricsLearningPanel({
     scriptMode === 'transliteration'
       ? transliterationLyrics
       : scriptMode === 'english'
-        ? lyricsEnglish
+        ? englishText
         : lyricsGez
   const lines = useMemo(() => splitLyricsLines(primaryText), [primaryText])
 

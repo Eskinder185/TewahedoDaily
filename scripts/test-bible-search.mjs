@@ -32,6 +32,20 @@ assertParse('John 3:16', {
   verseEnd: 16,
   isReference: true,
 })
+assertParse('Open John 3:16', {
+  bookQuery: 'John',
+  chapter: 3,
+  verseStart: 16,
+  verseEnd: 16,
+  isReference: true,
+})
+assertParse('Show me John 3:16', {
+  bookQuery: 'John',
+  chapter: 3,
+  verseStart: 16,
+  verseEnd: 16,
+  isReference: true,
+})
 assertParse('john 3:16', {
   bookQuery: 'john',
   chapter: 3,

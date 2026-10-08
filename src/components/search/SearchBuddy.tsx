@@ -640,6 +640,7 @@ export function SearchBuddy() {
                 inputAria={t('searchBuddy.inputAria')}
                 sendLabel={t('searchBuddy.send')}
                 sendBusyLabel={t('searchBuddy.sendBusy')}
+                clearLabel={t('searchBuddy.clearInput')}
               />
             </>
           )}

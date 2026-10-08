@@ -1,0 +1,832 @@
+﻿
+> tewahedo-daily@0.0.0 lint
+> eslint .
+
+
+C:\Users\eskew\github\TewahedoDaily\functions\lib\legacyTargets.ts
+  6:31  error  '_key' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\CalendarDateTimeline.tsx
+  109:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\CalendarDateTimeline.tsx:109:5
+  107 |
+  108 |   useEffect(() => {
+> 109 |     updateFades()
+      |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  110 |   }, [visibleGroups, updateFades])
+  111 |
+  112 |   const maybeLoadAtEdge = useCallback(() => {  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\CalendarDayDetailModal.tsx
+  37:13  warning  React Hook useLayoutEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked  react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\CalendarEventCardStrip.tsx
+  47:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\CalendarEventCardStrip.tsx:47:5
+  45 |     const el = scrollerRef.current
+  46 |     if (!el) return
+> 47 |     syncArrows()
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  48 |     el.addEventListener('scroll', syncArrows, { passive: true })
+  49 |     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(syncArrows) : null
+  50 |     ro?.observe(el)  react-hooks/set-state-in-effect
+  60:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\CalendarEventCardStrip.tsx:60:5
+  58 |     const el = scrollerRef.current
+  59 |     if (el) el.scrollLeft = 0
+> 60 |     syncArrows()
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  61 |   }, [events, syncArrows])
+  62 |
+  63 |   const scrollByDir = (dir: -1 | 1) => {                                                                                                      react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx
+   47:5   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:47:5
+  45 |
+  46 |   useEffect(() => {
+> 47 |     setTab('overview')
+     |     ^^^^^^ Avoid calling setState() directly within an effect
+  48 |     setIsLiturgicalGuideExpanded(false)
+  49 |   }, [snapshot.gregorian.labelLong])
+  50 |                                                                                                                                                                      react-hooks/set-state-in-effect
+   51:24  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `tr`, but the source dependencies were [snapshot, t, chips, calendarPageLayout, eotcOrderedRows, isLiturgicalGuideExpanded]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:51:24
+   49 |   }, [snapshot.gregorian.labelLong])
+   50 |
+>  51 |   const tabs = useMemo(() => {
+      |                        ^^^^^^^
+>  52 |     const showEotcCalendar = Boolean(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 |       calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |     ]
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |   }, [
+      | ^^^^ Could not preserve existing manual memoization
+  496 |     snapshot,
+  497 |     t,
+  498 |     chips,  react-hooks/preserve-manual-memoization
+   51:24  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `tr`, but the source dependencies were [snapshot, t, chips, calendarPageLayout, eotcOrderedRows, isLiturgicalGuideExpanded]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:51:24
+   49 |   }, [snapshot.gregorian.labelLong])
+   50 |
+>  51 |   const tabs = useMemo(() => {
+      |                        ^^^^^^^
+>  52 |     const showEotcCalendar = Boolean(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 |       calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |     ]
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |   }, [
+      | ^^^^ Could not preserve existing manual memoization
+  496 |     snapshot,
+  497 |     t,
+  498 |     chips,  react-hooks/preserve-manual-memoization
+   51:24  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `tr`, but the source dependencies were [snapshot, t, chips, calendarPageLayout, eotcOrderedRows, isLiturgicalGuideExpanded]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:51:24
+   49 |   }, [snapshot.gregorian.labelLong])
+   50 |
+>  51 |   const tabs = useMemo(() => {
+      |                        ^^^^^^^
+>  52 |     const showEotcCalendar = Boolean(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 |       calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |     ]
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |   }, [
+      | ^^^^ Could not preserve existing manual memoization
+  496 |     snapshot,
+  497 |     t,
+  498 |     chips,  react-hooks/preserve-manual-memoization
+   51:24  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `tr`, but the source dependencies were [snapshot, t, chips, calendarPageLayout, eotcOrderedRows, isLiturgicalGuideExpanded]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:51:24
+   49 |   }, [snapshot.gregorian.labelLong])
+   50 |
+>  51 |   const tabs = useMemo(() => {
+      |                        ^^^^^^^
+>  52 |     const showEotcCalendar = Boolean(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 |       calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |     ]
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |   }, [
+      | ^^^^ Could not preserve existing manual memoization
+  496 |     snapshot,
+  497 |     t,
+  498 |     chips,  react-hooks/preserve-manual-memoization
+   51:24  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `tr`, but the source dependencies were [snapshot, t, chips, calendarPageLayout, eotcOrderedRows, isLiturgicalGuideExpanded]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:51:24
+   49 |   }, [snapshot.gregorian.labelLong])
+   50 |
+>  51 |   const tabs = useMemo(() => {
+      |                        ^^^^^^^
+>  52 |     const showEotcCalendar = Boolean(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 |       calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |     ]
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |   }, [
+      | ^^^^ Could not preserve existing manual memoization
+  496 |     snapshot,
+  497 |     t,
+  498 |     chips,  react-hooks/preserve-manual-memoization
+   51:24  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `tr`, but the source dependencies were [snapshot, t, chips, calendarPageLayout, eotcOrderedRows, isLiturgicalGuideExpanded]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:51:24
+   49 |   }, [snapshot.gregorian.labelLong])
+   50 |
+>  51 |   const tabs = useMemo(() => {
+      |                        ^^^^^^^
+>  52 |     const showEotcCalendar = Boolean(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 |       calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |     ]
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |   }, [
+      | ^^^^ Could not preserve existing manual memoization
+  496 |     snapshot,
+  497 |     t,
+  498 |     chips,  react-hooks/preserve-manual-memoization
+   51:24  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `tr`, but the source dependencies were [snapshot, t, chips, calendarPageLayout, eotcOrderedRows, isLiturgicalGuideExpanded]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\components\calendar\ChurchDayDetailBody.tsx:51:24
+   49 |   }, [snapshot.gregorian.labelLong])
+   50 |
+>  51 |   const tabs = useMemo(() => {
+      |                        ^^^^^^^
+>  52 |     const showEotcCalendar = Boolean(
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+>  53 |       calendarPageLayout && eotcOrderedRows && eotcOrderedRows.length > 0,
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 494 |     ]
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 495 |   }, [
+      | ^^^^ Could not preserve existing manual memoization
+  496 |     snapshot,
+  497 |     t,
+  498 |     chips,  react-hooks/preserve-manual-memoization
+  495:6   warning  React Hook useMemo has a missing dependency: 'tr'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\components\layout\SiteHeader.tsx
+  71:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\layout\SiteHeader.tsx:71:5
+  69 |
+  70 |   useEffect(() => {
+> 71 |     setMenuOpen(false)
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  72 |   }, [location.pathname])
+  73 |
+  74 |   useEffect(() => {  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\liturgy\LiturgyEntryRenderer.tsx
+  81:5  error  Expected a 'break' statement before 'case'  no-fallthrough
+
+C:\Users\eskew\github\TewahedoDaily\src\components\practice\ChantLoopControls.tsx
+  67:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\practice\ChantLoopControls.tsx:67:5
+  65 |   const [v, setV] = useState(section.label)
+  66 |   useEffect(() => {
+> 67 |     setV(section.label)
+     |     ^^^^ Avoid calling setState() directly within an effect
+  68 |   }, [section.id, section.label])
+  69 |
+  70 |   return (  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\practice\ChantLyricsLearningPanel.tsx
+  84:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\practice\ChantLyricsLearningPanel.tsx:84:5
+  82 |
+  83 |   useEffect(() => {
+> 84 |     setRevealed(1)
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  85 |     setMemorize(false)
+  86 |   }, [entryId])
+  87 |  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\practice\ChantsSection.tsx
+  98:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\practice\ChantsSection.tsx:98:5
+   96 |
+   97 |   useEffect(() => {
+>  98 |     setRecentSearches(getRecentChantSearches())
+      |     ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+   99 |   }, [])
+  100 |
+  101 |   const formBadge = (form: ChantForm) =>  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\practice\PracticeMiniPlayer.tsx
+  108:20  warning  The ref value 'expandBtnRef.current' will likely have changed by the time this effect cleanup function runs. If this ref points to a node rendered by React, copy 'expandBtnRef.current' to a variable inside the effect, and use that variable in the cleanup function  react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\components\prayerLearning\LanguageSwitcher.tsx
+  5:34  error  '_props' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\components\prayers\PrayerMediaPlayer.tsx
+  210:6  warning  React Hook useEffect has missing dependencies: 'loop', 'speed', and 'volume'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\components\prayers\PrayerReader.tsx
+  62:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\prayers\PrayerReader.tsx:62:5
+  60 |   useEffect(() => {
+  61 |     if (controlled) return
+> 62 |     setInternalLang(defaultLang)
+     |     ^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  63 |   }, [controlled, defaultLang, text.amharic, text.geez, text.english])
+  64 |
+  65 |   const activeId = controlled ? selectedId! : internalLang  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\prayers\PrayerReadingText.tsx
+  27:35  error  Unnecessary escape character: \.  no-useless-escape
+
+C:\Users\eskew\github\TewahedoDaily\src\components\publicContent\FavoriteButton.tsx
+  50:8  warning  React Hook useCallback has a missing dependency: 'identity'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\components\search\ChatStarterPrompts.tsx
+  3:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\eskew\github\TewahedoDaily\src\components\todayInChurch\MiniMonthCalendar.tsx
+  160:19  error  '_' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\components\todayInChurch\TodayInChurchSection.tsx
+  67:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\todayInChurch\TodayInChurchSection.tsx:67:5
+  65 |     const m = parsed.getMonth()
+  66 |     const d = parsed.getDate()
+> 67 |     setViewYear(y)
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  68 |     setViewMonth(m)
+  69 |     setSelectedDay(d)
+  70 |     setDetailDate(new Date(y, m, d))  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\components\todayInChurch\UpcomingObservancesStrip.tsx
+  167:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\components\todayInChurch\UpcomingObservancesStrip.tsx:167:5
+  165 |
+  166 |   useEffect(() => {
+> 167 |     setExpandedSummaryId(null)
+      |     ^^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  168 |     const el = trackRef.current
+  169 |     if (el) el.scrollTo({ left: 0, behavior: 'auto' })
+  170 |   }, [tab])  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\data\mocks\churchDay.mock.ts
+  238:68  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  339:61  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\eskew\github\TewahedoDaily\src\hooks\useDailyPrayerRhythm.ts
+  26:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\hooks\useDailyPrayerRhythm.ts:26:5
+  24 |   useEffect(() => {
+  25 |     let active = true
+> 26 |     setState((current) => ({
+     |     ^^^^^^^^ Avoid calling setState() directly within an effect
+  27 |       ...current,
+  28 |       loading: current.rhythm?.dateKey === localDateKey(date) ? false : true,
+  29 |       error: null,  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\auth\AuthProvider.tsx
+   85:24  error    'profileError' is never reassigned. Use 'const' instead                                                   prefer-const
+  304:5   warning  React Hook useMemo has a missing dependency: 'signOut'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\calendar\resolveCalendarEventPresentation.ts
+  87:3  error  '_sourceImagePath' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\churchCalendar\fromDailyChurchData.ts
+  37:46  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  41:30  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+  42:23  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\cms\hymnBrowseAdminService.ts
+  193:9   error  'data' is never reassigned. Use 'const' instead   prefer-const
+  193:15  error  'error' is never reassigned. Use 'const' instead  prefer-const
+  284:7   error  'query' is never reassigned. Use 'const' instead  prefer-const
+  290:9   error  'data' is never reassigned. Use 'const' instead   prefer-const
+  290:15  error  'error' is never reassigned. Use 'const' instead  prefer-const
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\cms\mezmurService.ts
+  411:9   error  'data' is never reassigned. Use 'const' instead   prefer-const
+  411:15  error  'error' is never reassigned. Use 'const' instead  prefer-const
+  506:33  error  '_id' is defined but never used                   @typescript-eslint/no-unused-vars
+  566:26  error  '_drop' is assigned a value but never used        @typescript-eslint/no-unused-vars
+  632:35  error  '_id' is defined but never used                   @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\cms\zemariAdminService.ts
+  170:11  error  'data' is never reassigned. Use 'const' instead   prefer-const
+  170:17  error  'error' is never reassigned. Use 'const' instead  prefer-const
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\prayers\prayerCollections.ts
+  66:38  error  '_collectionSlug' is defined but never used  @typescript-eslint/no-unused-vars
+  72:3   error  '_collectionSlug' is defined but never used  @typescript-eslint/no-unused-vars
+  73:3   error  '_prayerSlug' is defined but never used      @typescript-eslint/no-unused-vars
+  79:40  error  '_slug' is defined but never used            @typescript-eslint/no-unused-vars
+  84:39  error  '_collectionSlug' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\publicContent\mezmurSearch.ts
+  134:22  error  '_k' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  135:16  error  '_t' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  136:23  error  '_a' is assigned a value but never used   @typescript-eslint/no-unused-vars
+  137:19  error  '_kw' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\synaxarium\synaxariumDataset.ts
+  13:44  error  '_entry' is defined but never used  @typescript-eslint/no-unused-vars
+  19:3   error  '_month' is defined but never used  @typescript-eslint/no-unused-vars
+  20:3   error  '_day' is defined but never used    @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\userContent\useReadingProgressTracker.ts
+  19:3  error    Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\eskew\github\TewahedoDaily\src\lib\userContent\useReadingProgressTracker.ts:19:3
+  17 |   const timer = useRef<number | null>(null)
+  18 |
+> 19 |   latest.current = identity
+     |   ^^^^^^^^^^^^^^ Cannot update ref during render
+  20 |
+  21 |   const flush = useCallback(() => {
+  22 |     const current = latest.current  react-hooks/refs
+  43:6  warning  React Hook useEffect has a missing dependency: 'identity'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\CalendarPage.tsx
+   83:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\CalendarPage.tsx:83:5
+  81 |     if (!d) return
+  82 |     dateParamApplied.current = true
+> 83 |     setViewYear(d.getFullYear())
+     |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  84 |     setViewMonth(d.getMonth())
+  85 |     setSelectedDay(d.getDate())
+  86 |     const civil = stripLocal(d)                                                       react-hooks/set-state-in-effect
+  162:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\CalendarPage.tsx:162:7
+  160 |     const selected = stripLocal(selectedDate)
+  161 |     if (selected < rangeStart) {
+> 162 |       setRangeStart(addDays(selected, -PAST_DAYS))
+      |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  163 |     } else if (selected > rangeEnd) {
+  164 |       setRangeEnd(addDays(selected, FUTURE_DAYS))
+  165 |     }  react-hooks/set-state-in-effect
+  170:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\CalendarPage.tsx:170:5
+  168 |   useEffect(() => {
+  169 |     let active = true
+> 170 |     setTimelineLoading(true)
+      |     ^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  171 |     void getCalendarEventsForRange(rangeStart, rangeEnd, {
+  172 |       cards: calendarCards.length ? calendarCards : undefined,
+  173 |     })                       react-hooks/set-state-in-effect
+  193:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\CalendarPage.tsx:193:7
+  191 |     let active = true
+  192 |     if (isSelectedToday && todayContext) {
+> 193 |       setDayContext(todayContext)
+      |       ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  194 |       setDayLoading(false)
+  195 |       setDayError(null)
+  196 |       return                                                               react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LibraryCollectionRoute.tsx
+  25:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LibraryCollectionRoute.tsx:25:5
+  23 |   useEffect(() => {
+  24 |     let active = true
+> 25 |     setSourceType(undefined)
+     |     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  26 |     const slug = collectionSlug?.trim().toLowerCase()
+  27 |     if (!slug) {
+  28 |       setSourceType('prayer')  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LibraryItemRoute.tsx
+  24:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LibraryItemRoute.tsx:24:5
+  22 |   useEffect(() => {
+  23 |     let active = true
+> 24 |     setSourceType(undefined)
+     |     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  25 |     const collection = collectionSlug?.trim().toLowerCase()
+  26 |     if (!collection) {
+  27 |       setSourceType('prayer')  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LiturgyCollectionPage.tsx
+  24:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LiturgyCollectionPage.tsx:24:5
+  22 |   useEffect(() => {
+  23 |     let active = true
+> 24 |     setCollection(undefined)
+     |     ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  25 |     setError(undefined)
+  26 |     void (async () => {
+  27 |       try {  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LiturgySectionPage.tsx
+   66:7  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LiturgySectionPage.tsx:66:7
+  64 |   useEffect(() => {
+  65 |     if (!langs.length) {
+> 66 |       setLang(null)
+     |       ^^^^^^^ Avoid calling setState() directly within an effect
+  67 |       return
+  68 |     }
+  69 |     setLang((current) => (current && langs.includes(current) ? current : defaultLangMode(langs)))  react-hooks/set-state-in-effect
+   74:5  error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\LiturgySectionPage.tsx:74:5
+  72 |   useEffect(() => {
+  73 |     let active = true
+> 74 |     setSection(undefined)
+     |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  75 |     setError(undefined)
+  76 |     setSourceOpen(false)
+  77 |     if (!resolvedSectionSlug) {                                  react-hooks/set-state-in-effect
+  129:6  warning  React Hook useEffect has a missing dependency: 'section'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\MezmureDawitPage.tsx
+   41:9  warning  The 'rangeActive' conditional could make the dependencies of useMemo Hook (at line 102) change on every render. To fix this, wrap the initialization of 'rangeActive' in its own useMemo() Hook    react-hooks/exhaustive-deps
+   41:9  warning  The 'rangeActive' conditional could make the dependencies of useEffect Hook (at line 129) change on every render. To fix this, wrap the initialization of 'rangeActive' in its own useMemo() Hook  react-hooks/exhaustive-deps
+  156:6  warning  React Hook useLayoutEffect has a missing dependency: 'active'. Either include it or remove the dependency array                                                                                    react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PrayerListPage.tsx
+  105:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PrayerListPage.tsx:105:5
+  103 |
+  104 |   useEffect(() => {
+> 105 |     setOpen(suggestions.length > 0 && query.trim().length > 0)
+      |     ^^^^^^^ Avoid calling setState() directly within an effect
+  106 |     setActive(-1)
+  107 |   }, [suggestions, query])
+  108 |  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicHymnCollectionPage.tsx
+  266:6  warning  React Hook useEffect has a missing dependency: 'page'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicHymnSectionPage.tsx
+  33:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicHymnSectionPage.tsx:33:5
+  31 |   )
+  32 |   useEffect(() => {
+> 33 |     setPhase(imageUrl ? 'primary' : localFallback ? 'fallback' : 'empty')
+     |     ^^^^^^^^ Avoid calling setState() directly within an effect
+  34 |   }, [imageUrl, localFallback])
+  35 |   const src = phase === 'primary' ? imageUrl : phase === 'fallback' ? localFallback : ''
+  36 |   if (!src || phase === 'empty') {  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicMezmurDetail.tsx
+  62:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicMezmurDetail.tsx:62:5
+  60 |
+  61 |   useEffect(() => {
+> 62 |     setCustomUrl(readCustomHymnVideo(item.slug))
+     |     ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  63 |     setCustomDraft('')
+  64 |     setCustomError('')
+  65 |     recordGuestRecentMezmur(item.slug, item.title)  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicMezmurLibrary.tsx
+   36:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicMezmurLibrary.tsx:36:5
+  34 |   useEffect(() => {
+  35 |     let active = true
+> 36 |     setFailed(false)
+     |     ^^^^^^^^^ Avoid calling setState() directly within an effect
+  37 |     const videoId = parseYoutubeVideoId(item.youtube_url || '')
+  38 |     const yt = videoId ? youtubeThumbnailUrl(videoId) || '' : ''
+  39 |     void publicMedia(item.thumbnail_url)  react-hooks/set-state-in-effect
+  238:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicMezmurLibrary.tsx:238:5
+  236 |     if (showResults) return
+  237 |     let active = true
+> 238 |     setBrowse(null)
+      |     ^^^^^^^^^ Avoid calling setState() directly within an effect
+  239 |     setBrowseError(undefined)
+  240 |     void getHymnCollections()
+  241 |       .then((data) => {                                                                         react-hooks/set-state-in-effect
+  294:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\PublicMezmurLibrary.tsx:294:7
+  292 |   useEffect(() => {
+  293 |     if (!showResults) {
+> 294 |       setResult(null)
+      |       ^^^^^^^^^ Avoid calling setState() directly within an effect
+  295 |       setLoading(false)
+  296 |       return
+  297 |     }                                                                                                                    react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\SynaxariumDayPage.tsx
+  32:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\SynaxariumDayPage.tsx:32:5
+  30 |   useEffect(() => {
+  31 |     let active = true
+> 32 |     setDay(undefined)
+     |     ^^^^^^ Avoid calling setState() directly within an effect
+  33 |     setError(undefined)
+  34 |     void (async () => {
+  35 |       try {  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\SynaxariumIndexPage.tsx
+  18:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\SynaxariumIndexPage.tsx:18:5
+  16 |   useEffect(() => {
+  17 |     let active = true
+> 18 |     setDays(undefined)
+     |     ^^^^^^^ Avoid calling setState() directly within an effect
+  19 |     setError(undefined)
+  20 |     void getSynaxariumDays()
+  21 |       .then((rows) => {  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\TodayPage.tsx
+  56:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\TodayPage.tsx:56:5
+  54 |   useEffect(() => {
+  55 |     let active = true
+> 56 |     setSynaxariumBundle(undefined)
+     |     ^^^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  57 |     const eth = gregorianToEthiopian(now)
+  58 |     void getSynaxariumDayWithCommemorations(eth.month, eth.day)
+  59 |       .then((bundle) => {  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\admin\CalendarAdmin.tsx
+  216:33  error  Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `result.data`, but the source dependencies were [result.data?.items, result.data?.linkedMap, source, q, listPatch]. Inferred less specific property than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\admin\CalendarAdmin.tsx:216:33
+  214 |   )
+  215 |
+> 216 |   const filteredItems = useMemo(() => {
+      |                                 ^^^^^^^
+> 217 |     const items = (result.data?.items || []).map((row) => listPatch[row.id] || row)
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 218 |     const needle = q.trim().toLowerCase()
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 267 |     })
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 268 |   }, [result.data?.items, result.data?.linkedMap, source, q, listPatch])
+      | ^^^^ Could not preserve existing manual memoization
+  269 |
+  270 |   const missingImageQueue = useMemo(
+  271 |     () => filteredItems.filter((row) => !(row.image_path || '').trim()),  react-hooks/preserve-manual-memoization
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\auth\AccountPages.tsx
+  311:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\auth\AccountPages.tsx:311:5
+  309 |
+  310 |   useEffect(() => {
+> 311 |     setRecent(getGuestRecentViewed())
+      |     ^^^^^^^^^ Avoid calling setState() directly within an effect
+  312 |   }, [session?.user.id])
+  313 |
+  314 |   const recentReading = useMemo(  react-hooks/set-state-in-effect
+
+C:\Users\eskew\github\TewahedoDaily\tmp\am-voice-strings.mjs
+  42:64  error  Parsing error: Unexpected token $
+
+Γ£û 90 problems (78 errors, 12 warnings)
+  9 errors and 0 warnings potentially fixable with the `--fix` option.
+

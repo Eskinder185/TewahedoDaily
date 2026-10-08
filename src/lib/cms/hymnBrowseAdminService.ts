@@ -190,13 +190,13 @@ export async function listHymnBrowseGroups(includeArchived = true): Promise<Hymn
 
 export async function getHymnCollection(id: string): Promise<HymnCollectionRow> {
   const needle = id.trim()
-  let { data, error } = await db()
+  const first = await db()
     .from(T.collections as never)
     .select(COLLECTION_SELECT)
     .eq('collection_id', needle)
     .limit(1)
-  if (error) throw new Error(errorMessage(error))
-  let row = (data || [])[0] as Record<string, unknown> | undefined
+  if (first.error) throw new Error(errorMessage(first.error))
+  let row = (first.data || [])[0] as Record<string, unknown> | undefined
   if (!row) {
     const bySlug = await db()
       .from(T.collections as never)
@@ -281,13 +281,13 @@ export async function updateCollectionImage(
     image_path: image.image_path?.trim() || null,
     image_alt: image.image_alt?.trim() || null,
   }
-  let query = db()
+  const query = db()
     .from(T.collections as never)
     .update(payload as never)
     .eq('collection_id', collection.id)
     .select(COLLECTION_SELECT)
     .limit(1)
-  let { data, error } = await query
+  const { data, error } = await query
   if (error) throw adminWriteError('collection image update', error)
   let row = (data || [])[0] as Record<string, unknown> | undefined
   if (!row && collection.slug) {

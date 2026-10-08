@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { SiteHeader } from './SiteHeader'
 import { SiteFooter } from './SiteFooter'
+import { OutletErrorBoundary } from './OutletErrorBoundary'
 import styles from './AppShell.module.css'
 import { AuthProvider } from '../../lib/auth/AuthProvider'
 import { SearchBuddyProvider } from '../../lib/search/searchBuddySession'
@@ -22,7 +23,9 @@ function AppShellFrame() {
         </a>
         <SiteHeader />
         <main className={styles.main} id="main" tabIndex={-1}>
-          <Outlet />
+          <OutletErrorBoundary>
+            <Outlet />
+          </OutletErrorBoundary>
         </main>
         <SiteFooter />
         <Suspense fallback={null}>

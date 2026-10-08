@@ -74,8 +74,8 @@
 }
 
 .controlBtn {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: var(--tap-min);
+  height: var(--tap-min);
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--color-gold-line) 55%, transparent);
   background: color-mix(in srgb, var(--color-bg-elevated) 72%, transparent);
@@ -97,12 +97,16 @@
 }
 
 .dot {
+  box-sizing: content-box;
   width: 0.55rem;
   height: 0.55rem;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
   border-radius: 999px;
   border: 0;
-  padding: 0;
-  background: color-mix(in srgb, #fff 42%, transparent);
+  padding: calc((var(--tap-min) - 0.55rem) / 2);
+  background-clip: content-box;
+  background-color: color-mix(in srgb, #fff 42%, transparent);
   cursor: pointer;
 }
 

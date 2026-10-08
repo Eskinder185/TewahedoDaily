@@ -67,7 +67,9 @@ const out = resampleMono(input, 32_000, 16_000)
 assert.equal(out.length, 4)
 
 const buddy = readFileSync(new URL('../src/components/search/SearchBuddy.tsx', import.meta.url), 'utf8')
-assert.match(buddy, /MezmurVoiceSearch/)
+assert.match(buddy, /ChatComposer/)
+const composer = readFileSync(new URL('../src/components/search/ChatComposer.tsx', import.meta.url), 'utf8')
+assert.match(composer, /MezmurVoiceSearch/)
 
 const voiceUi = readFileSync(new URL('../src/components/search/MezmurVoiceSearch.tsx', import.meta.url), 'utf8')
 assert.match(voiceUi, /interimResults = false/)

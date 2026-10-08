@@ -24,7 +24,7 @@ export const UI_LABELS = {
   navModeLearnDesc: { en: 'Practice chants and movement', am: 'መዝሙርና እንቅስቃሴ ይለማመዱ' },
   navModePrayDesc: { en: 'Read daily prayers and sacred texts', am: 'የዕለት ጸሎቶችን እና ቅዱስ ንባብን ያንብቡ' },
   navModeKeepDayDesc: { en: 'Follow the season, feast, and observance', am: 'ወቅቱን፣ በዓሉን እና ማስታወሻውን ይከታተሉ' },
-  navPrimaryNav: { en: 'Primary navigation', am: 'ዋና አሻራ' },
+  navPrimaryNav: { en: 'Primary navigation', am: 'ዋና አሰሳ' },
   navDrawerTitle: { en: 'Menu', am: 'ምናሌ' },
   navMenuOpen: { en: 'Open menu', am: 'ምናሌ ክፈት' },
   navMenuClose: { en: 'Close menu', am: 'ምናሌ ዝጋ' },

@@ -171,13 +171,12 @@ export function HomeTodayInChurchPreview() {
               </div>
 
               {multi ? (
-                <div className={styles.dots} role="tablist" aria-label="Today's observances">
+                <div className={styles.dots} role="group" aria-label="Today's observances">
                   {events.map((event, index) => (
                     <button
                       key={`${event.kind}-${event.id}`}
                       type="button"
-                      role="tab"
-                      aria-selected={index === slide}
+                      aria-pressed={index === slide}
                       aria-label={`Show card ${index + 1} of ${count}: ${event.title}`}
                       className={index === slide ? styles.dotActive : undefined}
                       onClick={() => setSlide(index)}

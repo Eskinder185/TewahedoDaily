@@ -77,8 +77,12 @@ export function CalendarEventImage({
       data-empty={showEmpty ? 'true' : undefined}
     >
       {showEmpty ? (
-        <div className={styles.empty} role="img" aria-label={alt ? `${alt} (needs image)` : 'Needs image'}>
-          <span className={styles.emptyLabel}>Needs image</span>
+        <div
+          className={styles.empty}
+          role="img"
+          aria-label={alt ? `${alt} (image coming soon)` : 'Image coming soon'}
+        >
+          <span className={styles.emptyLabel} aria-hidden="true" />
         </div>
       ) : (
         <img

@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom'
 import type { HymnRow, HymnSearchResponse } from '../../../lib/searchBuddy/apiTypes.ts'
+import { resolveMezmurDetailPath } from '../../../lib/searchBuddy/mezmurRoute.ts'
+import { useSearchBuddyOptional } from '../../../lib/search/searchBuddySession.tsx'
 import { displayText, safeExternalUrl, textOrNull } from './resultHelpers.ts'
 import styles from './ResultCard.module.css'
 
 function HymnCard({ hymn, occasion }: { hymn: HymnRow; occasion?: string | null }) {
+  const searchBuddy = useSearchBuddyOptional()
   const titleAm = textOrNull(hymn.title_amharic)
   const titleSecondary = displayText(
     hymn.title_english,
@@ -16,6 +20,12 @@ function HymnCard({ hymn, occasion }: { hymn: HymnRow; occasion?: string | null 
   const zemari = textOrNull(hymn.zemari) || textOrNull(hymn.singer_name)
   const occasionLabel =
     textOrNull(occasion) || textOrNull(hymn.occasion_label) || textOrNull(hymn.occasion)
+  const detailPath = resolveMezmurDetailPath(hymn)
+  const openLabel = titleAm
+    ? `Open Mezmur: ${titleAm}`
+    : titleSecondary
+      ? `Open Mezmur: ${titleSecondary}`
+      : 'Open Mezmur'
 
   return (
     <article className={styles.card}>
@@ -32,33 +42,43 @@ function HymnCard({ hymn, occasion }: { hymn: HymnRow; occasion?: string | null 
         <h3 className={styles.title}>Hymn</h3>
       ) : null}
       {zemari ? <p className={styles.meta}>{zemari}</p> : null}
-      {preview ? <p className={styles.preview}>{preview}</p> : null}
-      {(youtube || audio) && (
-        <div className={styles.actions}>
-          {youtube ? (
-            <a
-              className={styles.actionLink}
-              href={youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open YouTube recording"
-            >
-              YouTube
-            </a>
-          ) : null}
-          {audio ? (
-            <a
-              className={styles.actionLink}
-              href={audio}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open audio recording"
-            >
-              Audio
-            </a>
-          ) : null}
-        </div>
-      )}
+      {preview ? <p className={styles.previewClamp}>{preview}</p> : null}
+
+      <div className={styles.actions}>
+        {detailPath ? (
+          <Link
+            className={styles.actionPrimary}
+            to={detailPath}
+            state={{ fromSearchBuddy: true }}
+            aria-label={openLabel}
+            onClick={() => searchBuddy?.setOpen(false)}
+          >
+            Open Mezmur
+          </Link>
+        ) : null}
+        {youtube ? (
+          <a
+            className={styles.actionLink}
+            href={youtube}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open YouTube recording"
+          >
+            YouTube
+          </a>
+        ) : null}
+        {audio ? (
+          <a
+            className={styles.actionLink}
+            href={audio}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open audio recording"
+          >
+            Audio
+          </a>
+        ) : null}
+      </div>
     </article>
   )
 }
@@ -71,7 +91,10 @@ export function HymnResults({ data }: { data: HymnSearchResponse }) {
   return (
     <div className={styles.stack} aria-label="Hymn search results">
       {results.map((hymn, index) => (
-        <HymnCard key={String(hymn.id || hymn.slug || index)} hymn={hymn} />
+        <HymnCard
+          key={String(hymn.id || hymn.slug || `hymn-${index}`)}
+          hymn={hymn}
+        />
       ))}
     </div>
   )

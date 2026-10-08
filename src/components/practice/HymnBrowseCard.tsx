@@ -2,7 +2,10 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { HymnBrowseCard, HymnMajorBrowseGroup } from '../../lib/publicContent/hymnBrowse'
 import { hymnSectionArtFallback } from '../../lib/publicContent/hymnSectionArtFallbacks'
+import { responsiveImageAttrs } from '../../lib/media/responsiveImage'
 import styles from './HymnBrowseCard.module.css'
+
+const BROWSE_SIZES = '(max-width: 430px) 92vw, (max-width: 768px) 44vw, 280px'
 
 export type HymnBrowseCardProps = {
   card: HymnBrowseCard
@@ -37,15 +40,25 @@ function BrowseCardMedia({
     )
   }
 
+  const attrs = responsiveImageAttrs(src, {
+    sizes: BROWSE_SIZES,
+    width: 640,
+    height: 480,
+    priority,
+  })
+
   return (
     <img
-      src={src}
+      src={attrs?.src || src}
+      srcSet={attrs?.srcSet}
+      sizes={attrs?.sizes || BROWSE_SIZES}
       alt={imageAlt || ''}
       className={styles.image}
-      loading={priority ? 'eager' : 'lazy'}
+      loading={attrs?.loading || (priority ? 'eager' : 'lazy')}
       decoding="async"
-      width={640}
-      height={480}
+      width={attrs?.width || 640}
+      height={attrs?.height || 480}
+      fetchPriority={attrs?.fetchPriority}
       onError={() => {
         setPhase((prev) => {
           if (prev === 'primary' && localFallback) return 'fallback'

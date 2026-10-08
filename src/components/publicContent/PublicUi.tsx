@@ -28,6 +28,9 @@ export function Artwork({
       alt={title}
       loading="lazy"
       decoding="async"
+      width={640}
+      height={360}
+      sizes="(max-width: 768px) 92vw, 640px"
     />
   ) : (
     <div className={s.artwork} aria-hidden>

@@ -1,6 +1,6 @@
 {
   "brand": {
-    "name": "Tewahedo Daily",
+    "name": "ተዋህዶ ዴይሊ",
     "subtitle": "ጸጥ ያለ የቅዳሴ ስቱዲዮ"
   },
   "nav": {
@@ -39,12 +39,16 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Tewahedo Daily",
+      "eyebrow": "ተዋህዶ ዴይሊ",
       "title": "የዕለት ቤተክርስቲያን ጓደኛዎ",
       "tagline": "ጸሎት፣ መዝሙርና የኢትዮጵያ ኦርቶዶክስ ቀን መቁጠሪያ - በአንድ ጸጥ ያለ ቦታ።",
       "primaryCta": "ወደ ልምምድ",
       "secondaryCta": "ዛሬን በቤተክርስቲያን ይመልከቱ",
       "quickNavLabel": "ፈጣን አገናኞች",
+      "prevSlide": "ቀዳሚ ስላይድ",
+      "nextSlide": "ቀጣይ ስላይድ",
+      "slidesLabel": "የመነሻ ገጽ ስላይዶች",
+      "slideN": "ስላይድ {n}",
       "quickNav": {
         "bible": "መጽሐፍ ቅዱስ",
         "pray": "ጸሎት",

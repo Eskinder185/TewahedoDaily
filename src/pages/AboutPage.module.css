@@ -26,7 +26,7 @@
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--about-gold);
+  color: var(--color-gold-ink, var(--about-ink));
 }
 
 .eyebrowCenter {
@@ -82,7 +82,13 @@
 
 /* —— Hero —— */
 .hero {
-  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(4rem, 9vw, 7rem);
+  padding: clamp(2.25rem, 6vw, 5rem) 0 clamp(2.5rem, 7vw, 5.5rem);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 0 2.25rem;
+  }
 }
 
 .heroInner {
@@ -226,7 +232,7 @@
 .narrowSection {
   width: min(42rem, var(--about-max));
   margin-inline: auto;
-  padding: clamp(4.5rem, 10vw, 7.5rem) 0;
+  padding: clamp(2.75rem, 8vw, 6rem) 0;
 }
 
 .pullQuote {
@@ -265,7 +271,7 @@
 /* —— Who this is for —— */
 .audienceBand {
   background: var(--about-parchment);
-  padding: clamp(4.5rem, 10vw, 7rem) 0;
+  padding: clamp(2.75rem, 8vw, 5.5rem) 0;
 }
 
 .audienceInner {
@@ -302,7 +308,7 @@
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.18em;
-  color: var(--about-gold);
+  color: var(--color-gold-ink, var(--about-ink));
 }
 
 .audienceCard h3 {
@@ -325,7 +331,7 @@
 .threadsSection {
   width: var(--about-max);
   margin-inline: auto;
-  padding: clamp(4.5rem, 10vw, 7.5rem) 0;
+  padding: clamp(2.75rem, 8vw, 6rem) 0;
 }
 
 .threadsIntro {
@@ -426,7 +432,7 @@
 .howBand {
   background: var(--about-navy);
   color: #f5efe6;
-  padding: clamp(4.5rem, 10vw, 7rem) 0;
+  padding: clamp(2.75rem, 8vw, 5.5rem) 0;
 }
 
 .howInner {
@@ -553,7 +559,7 @@
 .guidanceWrap {
   width: var(--about-max);
   margin-inline: auto;
-  padding: clamp(4.5rem, 10vw, 7.5rem) 0 clamp(3rem, 6vw, 4rem);
+  padding: clamp(2.75rem, 8vw, 6rem) 0 clamp(2.25rem, 5vw, 3.5rem);
 }
 
 .guidanceCard {
@@ -635,7 +641,7 @@
 .visionSection {
   width: min(42rem, var(--about-max));
   margin-inline: auto;
-  padding: clamp(3rem, 7vw, 5rem) 0 clamp(5rem, 12vw, 8rem);
+  padding: clamp(2.25rem, 6vw, 4.5rem) 0 clamp(3rem, 9vw, 6rem);
 }
 
 .closing {
@@ -683,7 +689,13 @@
       inset 0 0 0 1.3rem rgba(180, 138, 59, 0.035);
   }
 
-  .narrowSection {
-    padding-top: 2.75rem;
+  .narrowSection,
+  .audienceBand,
+  .threadsSection,
+  .howBand,
+  .guidanceWrap,
+  .visionSection {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
   }
 }

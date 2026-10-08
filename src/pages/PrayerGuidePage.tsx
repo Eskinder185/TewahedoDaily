@@ -257,7 +257,12 @@ export function PrayerGuidePage() {
           ) : null}
 
           {activeTab === 'guided' ? (
-            <section className={styles.guided} id="guided-practice" aria-label="Guided practice">
+            <section
+              className={styles.guided}
+              id="guided-practice"
+              role="tabpanel"
+              aria-labelledby="pray-mode-guided"
+            >
               {steps.length === 0 ? (
                 <p className={styles.empty}>Guided practice steps are not available yet.</p>
               ) : showCompletion ? (
@@ -300,7 +305,12 @@ export function PrayerGuidePage() {
               ) : null}
             </section>
           ) : (
-            <section className={ui.learnBlock} id="learn-about-prayer" aria-labelledby="learn-heading">
+            <section
+              className={ui.learnBlock}
+              id="learn-about-prayer"
+              role="tabpanel"
+              aria-labelledby="pray-mode-learn learn-heading"
+            >
               <h2 id="learn-heading" className={ui.learnHeading}>
                 Learn About Prayer
               </h2>

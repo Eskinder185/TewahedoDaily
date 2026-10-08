@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { responsiveImageAttrs } from '../../lib/media/responsiveImage'
 import styles from './PracticeMediaCard.module.css'
+
+const THUMB_SIZES = '(max-width: 640px) 92vw, min(280px, 30vw)'
 
 type PracticeMediaCardBase = {
   title: string
@@ -55,6 +58,13 @@ export function PracticeMediaCard({
   const t = useUiLabel()
   const tt = useTranslation()
   const ariaWatchExternal = `${t('watch')} ${title} - ${t('opensInNewTab')}`
+  const imageAttrs = imageUrl
+    ? responsiveImageAttrs(imageUrl, {
+        sizes: THUMB_SIZES,
+        width: 640,
+        height: 360,
+      })
+    : null
 
   const inner = (
     <>
@@ -62,13 +72,15 @@ export function PracticeMediaCard({
         {imageUrl ? (
           <img
             className={styles.thumb}
-            src={imageUrl}
+            src={imageAttrs?.src || imageUrl}
+            srcSet={imageAttrs?.srcSet}
             alt=""
-            width={1280}
-            height={720}
-            sizes="(max-width: 640px) 92vw, min(280px, 30vw)"
-            loading="lazy"
+            width={imageAttrs?.width || 640}
+            height={imageAttrs?.height || 360}
+            sizes={imageAttrs?.sizes || THUMB_SIZES}
+            loading={imageAttrs?.loading || 'lazy'}
             decoding="async"
+            fetchPriority={imageAttrs?.fetchPriority}
           />
         ) : (
           <div className={styles.thumbPh} aria-hidden />

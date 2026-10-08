@@ -24,7 +24,7 @@ function splitVersePrefix(line: string, lang: PrayerLang): { mark: string; rest:
     if (m) return { mark: m[1], rest: m[2] }
     return { mark: '', rest: t }
   }
-  const eth = /^([\u1369-\u137C]+[\.፤፡]?\s+)([\s\S]*)$/.exec(t)
+  const eth = /^([\u1369-\u137C]+[.፤፡]?\s+)([\s\S]*)$/.exec(t)
   if (eth) {
     return { mark: eth[1].trim(), rest: eth[2] ?? '' }
   }

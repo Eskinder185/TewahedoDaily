@@ -1,0 +1,71 @@
+.root {
+  max-width: 32rem;
+  margin: clamp(2rem, 6vw, 4rem) auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 600;
+  color: var(--color-heading);
+  line-height: 1.25;
+}
+
+.copy {
+  margin: 0 0 1.25rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  font-size: 1.02rem;
+}
+
+.detail {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-muted);
+  color: var(--color-text-subtle);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.primary,
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-min);
+  padding: 0.55rem 1.15rem;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary {
+  border: 0;
+  background: var(--color-navy);
+  color: var(--color-text-inverse);
+}
+
+.primary:focus-visible,
+.secondary:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.secondary {
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg-elevated);
+  color: var(--color-heading);
+}

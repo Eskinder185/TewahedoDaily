@@ -1,7 +1,10 @@
 import { AI_TIMEOUTS_MS } from '../ai/aiConfig.ts'
 import { aiFetch } from '../ai/aiClient.ts'
+import {
+  fetchBibleSearchApi,
+  fetchHymnsSearchApi,
+} from '../search/structuredSearchApi.ts'
 import type {
-  BibleSearchHit,
   HymnRow,
   PrayerRow,
   SearchBuddyApiResponse,
@@ -47,6 +50,21 @@ const AMHARIC_INTENT_ALIASES: IntentAlias[] = [
   },
 ]
 
+/**
+ * ASR / typed Bible-reference signals (incl. common misrecognitions).
+ * Presence of any signal means: try POST /api/chat before hymn search.
+ */
+const AMHARIC_BIBLE_REFERENCE_SIGNALS = [
+  '\u121D\u12D5\u122B\u134D', // ምዕራፍ
+  '\u121D\u12D5\u122B\u1265', // ምዕራብ (ASR)
+  '\u121D\u122B\u134D', // ምራፍ (ASR)
+  '\u1241\u1325\u122D', // ቁጥር
+  '\u12C8\u1295\u130C\u120D', // ወንጌል
+  '\u12C8\u1295\u1308\u120D', // ወንገል (ASR)
+  '\u12CB\u1295\u130C\u120D', // ዋንጌል (ASR)
+  '\u12C8\u1295\u130C\u12F5', // ወንጌድ (ASR)
+] as const
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
 }
@@ -64,6 +82,38 @@ function matchAmharicIntent(normalized: string): IntentAlias | null {
   return null
 }
 
+/** True when the query looks like a scripture reference, not a hymn title. */
+export function looksLikeAmharicBibleReference(text: string): boolean {
+  const raw = (text || '').replace(/\s+/g, ' ').trim()
+  if (!raw || !containsEthiopic(raw)) return false
+
+  const hay = normalizeAmharicSearchText(raw)
+  if (!hay) return false
+
+  if (AMHARIC_BIBLE_REFERENCE_SIGNALS.some((signal) => hay.includes(signal))) {
+    return true
+  }
+
+  // Digit chapter:verse (Ethiopic ፥ or ASCII :) — check raw before punctuation strip.
+  // e.g. ዮሐንስ 3፥16 / ዮሐንስ 3:16
+  if (/\d+\s*[\u1365:]\s*\d+/.test(raw)) return true
+
+  // After normalize (፥ → space): "ዮሐንስ 3 16"
+  if (/\d+\s+\d+/.test(hay)) return true
+
+  return false
+}
+
+function explicitlyAsksForHymns(text: string): boolean {
+  const hay = normalizeAmharicSearchText(text)
+  if (!hay) return false
+  return (
+    hay.includes('\u1218\u12DD\u1219\u122D') || // መዝሙር
+    /\bmezmur\b/i.test(hay) ||
+    /\bhymn\b/i.test(hay)
+  )
+}
+
 async function getJson(path: string, signal?: AbortSignal): Promise<unknown> {
   return aiFetch<unknown>({
     path,
@@ -74,7 +124,8 @@ async function getJson(path: string, signal?: AbortSignal): Promise<unknown> {
   })
 }
 
-async function postEnglishChat(message: string, signal?: AbortSignal): Promise<SearchBuddyApiResponse> {
+/** POST /api/chat — used for English intents and Amharic Bible references. */
+async function postChat(message: string, signal?: AbortSignal): Promise<SearchBuddyApiResponse> {
   const raw = await aiFetch<unknown>({
     path: '/api/chat',
     method: 'POST',
@@ -92,16 +143,11 @@ async function postEnglishChat(message: string, signal?: AbortSignal): Promise<S
   return parseSearchBuddyResponse(raw)
 }
 
-function asHymnSearch(query: string, payload: unknown): SearchBuddyApiResponse | null {
-  if (!isRecord(payload)) return null
-  const results = Array.isArray(payload.results) ? (payload.results as HymnRow[]) : []
-  if (!results.length) return null
-  return {
-    type: 'hymn_search',
-    query,
-    results,
-    message: typeof payload.message === 'string' ? payload.message : undefined,
+function isResolvedBibleStructured(response: SearchBuddyApiResponse): boolean {
+  if (response.type !== 'bible_reference' && response.type !== 'bible_chapter') {
+    return false
   }
+  return !isEmptySearchBuddyResponse(response)
 }
 
 function asPrayerSearch(query: string, payload: unknown): SearchBuddyApiResponse | null {
@@ -109,13 +155,6 @@ function asPrayerSearch(query: string, payload: unknown): SearchBuddyApiResponse
   const results = Array.isArray(payload.results) ? (payload.results as PrayerRow[]) : []
   if (!results.length) return null
   return { type: 'prayer_search', query, results }
-}
-
-function asBibleSearch(query: string, payload: unknown): SearchBuddyApiResponse | null {
-  if (!isRecord(payload)) return null
-  const results = Array.isArray(payload.results) ? (payload.results as BibleSearchHit[]) : []
-  if (!results.length) return null
-  return { type: 'bible_search', query, results }
 }
 
 function asSynaxariumSearch(query: string, payload: unknown): SearchBuddyApiResponse | null {
@@ -159,28 +198,21 @@ async function searchHymnsAmharic(
   normalized: string,
   signal?: AbortSignal,
 ): Promise<SearchBuddyApiResponse | null> {
-  const full = await getJson(
-    `/api/hymns/search?q=${encodeURIComponent(normalized)}&limit=12`,
-    signal,
-  )
-  const hit = asHymnSearch(normalized, full)
-  if (hit) return hit
+  const full = await fetchHymnsSearchApi(normalized, { limit: 12, signal })
+  if (full.results.length) {
+    return { type: 'hymn_search', query: normalized, results: full.results }
+  }
 
   const tokens = normalized.split(/\s+/).filter((t) => t.length >= 2)
   const merged: HymnRow[] = []
   const seen = new Set<string>()
   for (const token of tokens) {
-    const part = await getJson(
-      `/api/hymns/search?q=${encodeURIComponent(token)}&limit=8`,
-      signal,
-    )
-    if (!isRecord(part) || !Array.isArray(part.results)) continue
+    const part = await fetchHymnsSearchApi(token, { limit: 8, signal })
     for (const row of part.results) {
-      if (!isRecord(row)) continue
       const key = String(row.slug || row.id || row.title_amharic || row.title || '')
       if (!key || seen.has(key)) continue
       seen.add(key)
-      merged.push(row as HymnRow)
+      merged.push(row)
     }
   }
   if (!merged.length) return null
@@ -193,8 +225,13 @@ const UNKNOWN_AMHARIC: SearchBuddyApiResponse = {
 }
 
 /**
- * Amharic / Ethiopic structured-first Search Buddy path.
- * Never sends Ethiopic text to the LLM chat fallback.
+ * Amharic / Ethiopic structured Search Buddy path.
+ *
+ * Priority:
+ * 1. Calendar / fasting / synaxarium today intents
+ * 2. Bible-reference signals → POST /api/chat with the raw transcript (before hymns)
+ * 3. Hymns only when the query is not Bible-like (or user explicitly asked for hymns)
+ * 4. Prayers / keyword bible_search / synaxarium search
  */
 export async function resolveAmharicStructuredSearch(
   rawMessage: string,
@@ -202,16 +239,18 @@ export async function resolveAmharicStructuredSearch(
 ): Promise<SearchBuddyApiResponse | null> {
   if (!containsEthiopic(rawMessage)) return null
 
+  // Keep ASR wording for /api/chat; only collapse whitespace.
+  const rawForChat = rawMessage.replace(/\s+/g, ' ').trim()
   const normalized = normalizeAmharicSearchText(rawMessage)
-  if (!normalized) {
+  if (!normalized && !rawForChat) {
     return UNKNOWN_AMHARIC
   }
 
-  const intent = matchAmharicIntent(normalized)
+  const intent = matchAmharicIntent(normalized || rawForChat)
   if (intent) {
     if (intent.englishChat) {
       try {
-        const viaChat = await postEnglishChat(intent.englishChat, signal)
+        const viaChat = await postChat(intent.englishChat, signal)
         if (viaChat.type !== 'ai' && !isEmptySearchBuddyResponse(viaChat)) {
           return viaChat
         }
@@ -225,29 +264,85 @@ export async function resolveAmharicStructuredSearch(
     }
   }
 
-  const hymn = await searchHymnsAmharic(normalized, signal)
-  if (hymn) return hymn
+  const bibleLike = looksLikeAmharicBibleReference(rawForChat)
+  const wantsHymns = explicitlyAsksForHymns(rawForChat)
 
-  const prayerPayload = await getJson(
-    `/api/prayers/search?q=${encodeURIComponent(normalized)}&limit=12`,
-    signal,
-  )
-  const prayer = asPrayerSearch(normalized, prayerPayload)
-  if (prayer) return prayer
+  // Bible references MUST resolve before hymn search.
+  if (bibleLike) {
+    try {
+      const bibleChat = await postChat(rawForChat, signal)
+      if (isResolvedBibleStructured(bibleChat)) {
+        return bibleChat
+      }
+    } catch {
+      /* try keyword bible GET next */
+    }
 
-  const biblePayload = await getJson(
-    `/api/bible/search?q=${encodeURIComponent(normalized)}&language=am&limit=12`,
-    signal,
-  )
-  const bible = asBibleSearch(normalized, biblePayload)
-  if (bible) return bible
+    try {
+      const bibleApi = await fetchBibleSearchApi(normalized || rawForChat, {
+        language: 'am',
+        limit: 12,
+        signal,
+      })
+      if (bibleApi.results.length) {
+        return { type: 'bible_search', query: normalized || rawForChat, results: bibleApi.results }
+      }
+    } catch {
+      /* gateway blip — do not abort the whole Amharic route */
+    }
 
-  const synPayload = await getJson(
-    `/api/synaxarium/search?q=${encodeURIComponent(normalized)}&limit=12`,
-    signal,
-  )
-  const syn = asSynaxariumSearch(normalized, synPayload)
-  if (syn) return syn
+    // Bible-looking query: never fall through to hymns unless user asked for hymns.
+    if (!wantsHymns) {
+      return UNKNOWN_AMHARIC
+    }
+  }
+
+  // Hymn search only for non-Bible queries (or explicit hymn asks).
+  if (!bibleLike || wantsHymns) {
+    try {
+      const hymn = await searchHymnsAmharic(normalized || rawForChat, signal)
+      if (hymn) return hymn
+    } catch {
+      /* continue */
+    }
+  }
+
+  try {
+    const prayerPayload = await getJson(
+      `/api/prayers/search?q=${encodeURIComponent(normalized || rawForChat)}&limit=12`,
+      signal,
+    )
+    const prayer = asPrayerSearch(normalized || rawForChat, prayerPayload)
+    if (prayer) return prayer
+  } catch {
+    /* continue */
+  }
+
+  if (!bibleLike) {
+    try {
+      const bibleApi = await fetchBibleSearchApi(normalized || rawForChat, {
+        language: 'am',
+        limit: 12,
+        signal,
+      })
+      if (bibleApi.results.length) {
+        return { type: 'bible_search', query: normalized || rawForChat, results: bibleApi.results }
+      }
+    } catch {
+      /* continue */
+    }
+  }
+
+  try {
+    const synPayload = await getJson(
+      `/api/synaxarium/search?q=${encodeURIComponent(normalized || rawForChat)}&limit=12`,
+      signal,
+    )
+    const syn = asSynaxariumSearch(normalized || rawForChat, synPayload)
+    if (syn) return syn
+  } catch {
+    /* continue */
+  }
 
   return UNKNOWN_AMHARIC
 }

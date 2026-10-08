@@ -82,11 +82,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
     }
 
-    let { data, error: profileError } = await supabase
+    const profileQuery = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
       .maybeSingle()
+    let data = profileQuery.data
+    const profileError = profileQuery.error
 
     // Ensure a regular-user profile exists (pre-trigger signups / race).
     if (!profileError && !data) {

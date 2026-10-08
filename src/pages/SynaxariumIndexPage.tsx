@@ -47,6 +47,10 @@ export function SynaxariumIndexPage() {
     return [...map.entries()]
   }, [days])
 
+  // undefined = follow default (first month); null = user collapsed all.
+  const [openMonth, setOpenMonth] = useState<string | null | undefined>(undefined)
+  const activeMonth = openMonth === undefined ? (months[0]?.[0] ?? null) : openMonth
+
   if (days === undefined && !error) return <PageLoadingFallback />
 
   if (error) {
@@ -90,26 +94,44 @@ export function SynaxariumIndexPage() {
           </p>
         </header>
 
-        {months.map(([month, monthDays]) => (
-          <section key={month} className={styles.sectionBlock} aria-label={month}>
-            <h2 className={styles.sectionTitle}>{month}</h2>
-            <ul className={styles.list}>
-              {monthDays.map((day) => (
-                <li key={day.id}>
-                  <Link className={styles.item} to={`/pray/synaxarium/${day.slug}`}>
-                    <span className={styles.order}>{String(day.ethiopianDay).padStart(2, '0')}</span>
-                    <span className={styles.itemText}>
-                      <strong>{day.displayDateEnglish}</strong>
-                      {day.displayDateAmharic ? <span lang="am">{day.displayDateAmharic}</span> : null}
-                      {day.summary ? <small>{day.summary}</small> : null}
-                    </span>
-                    <span className={styles.action}>{tr('prayers.collection.open')}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+        {months.map(([month, monthDays]) => {
+          const expanded = activeMonth === month
+          return (
+            <details
+              key={month}
+              className={styles.sectionBlock}
+              open={expanded}
+              onToggle={(event) => {
+                const nextOpen = event.currentTarget.open
+                setOpenMonth(nextOpen ? month : null)
+              }}
+            >
+              <summary className={styles.sectionTitle}>
+                {month}
+                <span className={styles.count}>
+                  {monthDays.length === 1
+                    ? tr('prayers.collection.daysCountOne', { count: monthDays.length })
+                    : tr('prayers.collection.daysCountOther', { count: monthDays.length })}
+                </span>
+              </summary>
+              <ul className={styles.list}>
+                {monthDays.map((day) => (
+                  <li key={day.id}>
+                    <Link className={styles.item} to={`/pray/synaxarium/${day.slug}`}>
+                      <span className={styles.order}>{String(day.ethiopianDay).padStart(2, '0')}</span>
+                      <span className={styles.itemText}>
+                        <strong>{day.displayDateEnglish}</strong>
+                        {day.displayDateAmharic ? <span lang="am">{day.displayDateAmharic}</span> : null}
+                        {day.summary ? <small>{day.summary}</small> : null}
+                      </span>
+                      <span className={styles.action}>{tr('prayers.collection.open')}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )
+        })}
       </div>
     </PageSection>
   )
