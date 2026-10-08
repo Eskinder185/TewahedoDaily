@@ -6,7 +6,7 @@ import { AI_TIMEOUTS_MS } from '../ai/aiConfig.ts'
 import { aiFetch } from '../ai/aiClient.ts'
 import { ETHIOPIAN_MONTH_NAMES } from '../ethiopianDate.ts'
 import { ethMonthFromEnglishName } from '../eotcCalendar/eotcEthiopianMonthNames.ts'
-import { containsEthiopic, normalizeAmharicSearchText } from './amharicText.ts'
+import { normalizeAmharicSearchText } from './amharicText.ts'
 import { parseSearchBuddyResponse } from './parseSearchBuddyResponse.ts'
 import type { SearchBuddyApiResponse } from './apiTypes.ts'
 
@@ -385,17 +385,18 @@ async function resolveSynaxariumToday(signal?: AbortSignal): Promise<SearchBuddy
   const today = await fetchCalendarToday(signal)
   if (!isRecord(today)) return null
   const eth = isRecord(today.ethiopian_date) ? today.ethiopian_date : null
+  const synaxariumDay = isRecord(today.synaxarium_day) ? today.synaxarium_day : null
   const monthName =
     textOrNull(eth?.month_name) ||
     (typeof eth?.month === 'number'
       ? ETHIOPIAN_MONTH_NAMES[eth.month - 1]
       : null) ||
-    textOrNull(isRecord(today.synaxarium_day)?.ethiopian_month)
+    textOrNull(synaxariumDay?.ethiopian_month)
   const dayNum =
     typeof eth?.day === 'number'
       ? eth.day
-      : typeof isRecord(today.synaxarium_day)?.ethiopian_day === 'number'
-        ? (isRecord(today.synaxarium_day)?.ethiopian_day as number)
+      : typeof synaxariumDay?.ethiopian_day === 'number'
+        ? synaxariumDay.ethiopian_day
         : null
   if (!monthName || dayNum == null) return null
 
