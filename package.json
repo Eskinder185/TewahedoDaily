@@ -40,6 +40,7 @@
     "test:bible-page-chat-refs": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-bible-page-chat-refs.mjs",
     "test:mezmur-api-search": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-mezmur-api-search.mjs",
     "test:search-buddy-routing": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-search-buddy-routing.mjs",
+    "test:calendar-intent-routing": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-calendar-intent-routing.mjs",
     "test:search-regression": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-search-regression.mjs",
     "test:bible-search": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-bible-search.mjs",
     "test:synaxarium-search": "node --experimental-strip-types --no-warnings scripts/test-synaxarium-search.mjs",

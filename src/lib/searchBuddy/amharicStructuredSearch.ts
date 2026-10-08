@@ -11,9 +11,9 @@ import type {
 } from './apiTypes.ts'
 import { containsEthiopic, normalizeAmharicSearchText } from './amharicText.ts'
 import {
-  isEmptySearchBuddyResponse,
-  parseSearchBuddyResponse,
-} from './parseSearchBuddyResponse.ts'
+  detectCalendarRoute,
+  resolveCalendarStructuredSearch,
+} from './calendarStructuredSearch.ts'
 
 export type AmharicStructuredSearchOptions = {
   signal?: AbortSignal
@@ -24,39 +24,11 @@ export type AmharicStructuredSearchOptions = {
   hymnContext?: boolean
 }
 
-type IntentAlias = {
-  patterns: string[]
-  englishChat?: string
-  direct?: 'calendar_today' | 'fasting_today' | 'synaxarium_today'
-}
-
-const AMHARIC_INTENT_ALIASES: IntentAlias[] = [
-  {
-    patterns: [
-      '\u12DB\u122C \u133E\u121D \u1290\u12CD',
-      '\u12DB\u122C \u133E\u121D',
-    ],
-    englishChat: 'fasting today',
-    direct: 'fasting_today',
-  },
-  {
-    patterns: [
-      '\u12E8\u12DB\u122C \u1240\u1295',
-      '\u12DB\u122C \u121D\u1295 \u1240\u1295 \u1290\u12CD',
-      '\u12DB\u122C \u121D\u1295 \u1240\u1295',
-    ],
-    englishChat: 'calendar today',
-    direct: 'calendar_today',
-  },
-  {
-    patterns: [
-      '\u12E8\u12DB\u122C \u1245\u12F1\u1233\u1295',
-      '\u12DB\u122C \u12E8\u121A\u1273\u1230\u1261 \u1245\u12F1\u1233\u1295',
-      '\u12DB\u122C \u1245\u12F1\u1233\u1295',
-    ],
-    direct: 'synaxarium_today',
-  },
-]
+export {
+  detectCalendarTodayIntent,
+  normalizeCalendarIntentText,
+  detectCalendarRoute,
+} from './calendarStructuredSearch.ts'
 
 /**
  * ASR / typed Bible-reference signals (incl. common misrecognitions).
@@ -106,19 +78,6 @@ const AMHARIC_NUMBER_WORDS = [
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
-}
-
-function matchAmharicIntent(normalized: string): IntentAlias | null {
-  const compact = normalized.replace(/\s+/g, ' ').trim()
-  if (!compact) return null
-  for (const alias of AMHARIC_INTENT_ALIASES) {
-    for (const pattern of alias.patterns) {
-      if (compact === pattern || compact.includes(pattern)) {
-        return alias
-      }
-    }
-  }
-  return null
 }
 
 function hasChapterVerseNumberCue(raw: string, hay: string): boolean {
@@ -204,25 +163,6 @@ async function getJson(path: string, signal?: AbortSignal): Promise<unknown> {
   })
 }
 
-/** POST /api/chat — English calendar/fasting intent aliases only. */
-async function postChat(message: string, signal?: AbortSignal): Promise<SearchBuddyApiResponse> {
-  const raw = await aiFetch<unknown>({
-    path: '/api/chat',
-    method: 'POST',
-    json: {
-      message,
-      timezone:
-        typeof Intl !== 'undefined'
-          ? Intl.DateTimeFormat().resolvedOptions().timeZone
-          : 'UTC',
-    },
-    timeoutMs: AI_TIMEOUTS_MS.chat,
-    signal,
-    withAuth: true,
-  })
-  return parseSearchBuddyResponse(raw)
-}
-
 function asPrayerSearch(query: string, payload: unknown): SearchBuddyApiResponse | null {
   if (!isRecord(payload)) return null
   const results = Array.isArray(payload.results) ? (payload.results as PrayerRow[]) : []
@@ -235,36 +175,6 @@ function asSynaxariumSearch(query: string, payload: unknown): SearchBuddyApiResp
   const results = Array.isArray(payload.results) ? (payload.results as SynaxariumRow[]) : []
   if (!results.length) return null
   return { type: 'synaxarium_search', query, results }
-}
-
-function calendarTodayAsTyped(
-  payload: unknown,
-  type: 'calendar_today' | 'fasting_today' | 'synaxarium_today',
-): SearchBuddyApiResponse {
-  const base = isRecord(payload) ? payload : {}
-  if (type === 'fasting_today') {
-    return parseSearchBuddyResponse({ ...base, type: 'fasting_today' })
-  }
-  if (type === 'synaxarium_today') {
-    const commemorations =
-      (Array.isArray(base.synaxarium) && base.synaxarium) ||
-      (Array.isArray(base.commemorations) && base.commemorations) ||
-      (isRecord(base.synaxarium_day) && Array.isArray(base.synaxarium_day.commemorations)
-        ? base.synaxarium_day.commemorations
-        : [])
-    return parseSearchBuddyResponse({
-      ...base,
-      type: 'synaxarium_today',
-      commemorations,
-      title:
-        (isRecord(base.synaxarium_day) &&
-          (base.synaxarium_day.title || base.synaxarium_day.display_date_english)) ||
-        base.ethiopian_label ||
-        base.title,
-      display_date_english: base.ethiopian_label || base.display_date_english,
-    })
-  }
-  return parseSearchBuddyResponse({ ...base, type: 'calendar_today' })
 }
 
 /** Full-query hymn search via shared searchHymns helper (no per-token fallback). */
@@ -287,11 +197,13 @@ const UNKNOWN_AMHARIC: SearchBuddyApiResponse = {
 /**
  * Amharic / Ethiopic structured Search Buddy path.
  *
- * Strict priority:
- * 1. Calendar / fasting / synaxarium today intents
- * 2. Bible-like → POST /api/chat (raw) → stop on bible_reference / bible_chapter
- * 3. Hymns only when explicit / Mezmur context / confident title match
- * 4. Prefer unknown over the wrong structured domain
+ * Priority:
+ * 1. Bible reference → resolveBibleQuery (stop on bible_*)
+ * 2. Calendar / today / date / day / search + synaxarium-today (stop on success)
+ * 3. Synaxarium keyword search
+ * 4. Prayer search
+ * 5. Explicit hymn / Mezmur context / confident title only
+ * 6. Unknown — never hymn-as-catch-all
  */
 export async function resolveAmharicStructuredSearch(
   rawMessage: string,
@@ -312,35 +224,18 @@ export async function resolveAmharicStructuredSearch(
     return UNKNOWN_AMHARIC
   }
 
-  const intent = matchAmharicIntent(normalized || rawForChat)
-  if (intent) {
-    if (intent.englishChat) {
-      try {
-        const viaChat = await postChat(intent.englishChat, signal)
-        if (viaChat.type !== 'ai' && !isEmptySearchBuddyResponse(viaChat)) {
-          return viaChat
-        }
-      } catch {
-        /* fall through to direct GET */
-      }
-    }
-    if (intent.direct) {
-      const today = await getJson('/api/calendar/today', signal)
-      return calendarTodayAsTyped(today, intent.direct)
-    }
-  }
-
   const bibleLike = looksLikeAmharicBibleReference(rawForChat)
+  const calendarRoute = detectCalendarRoute(rawForChat)
   const wantsHymns = explicitlyAsksForHymns(rawForChat)
+  const queryKey = normalized || rawForChat
 
-  // Bible references MUST resolve before hymn search — never fall through to hymns.
-  if (bibleLike) {
+  // 1) Bible references — before calendar/hymns.
+  if (bibleLike && !calendarRoute) {
     try {
       const bible = await resolveBibleQuery(rawForChat, { signal })
       if (bible.resolved) {
         return bible.response
       }
-      // Backend returned bible_* but empty — still stop; do not run hymns.
       if (
         bible.response.type === 'bible_reference' ||
         bible.response.type === 'bible_chapter'
@@ -352,70 +247,83 @@ export async function resolveAmharicStructuredSearch(
     }
 
     try {
-      const bibleApi = await fetchBibleSearchApi(normalized || rawForChat, {
+      const bibleApi = await fetchBibleSearchApi(queryKey, {
         language: 'am',
         limit: 12,
         signal,
       })
       if (bibleApi.results.length) {
-        return { type: 'bible_search', query: normalized || rawForChat, results: bibleApi.results }
+        return { type: 'bible_search', query: queryKey, results: bibleApi.results }
       }
     } catch {
       /* gateway blip */
     }
 
-    // Ambiguous / unresolved Bible-shaped query: prefer no structured domain.
     return UNKNOWN_AMHARIC
   }
 
-  // Hymn routing — not a generic Amharic fallback.
-  const queryForHymns = normalized || rawForChat
-  if (wantsHymns || hymnContext) {
+  // 2) Calendar / feast / fast / synaxarium-today — STOP; never fall through to hymns.
+  if (calendarRoute) {
+    const calendar = await resolveCalendarStructuredSearch(rawForChat, { signal })
+    if (calendar) return calendar
+    return UNKNOWN_AMHARIC
+  }
+
+  // Bible-like that also looked calendar-ish is rare; if bibleLike remains, try bible.
+  if (bibleLike) {
     try {
-      const hymn = await searchHymnsFullQuery(queryForHymns, signal)
-      if (hymn) return hymn
-    } catch {
-      /* continue */
-    }
-  } else {
-    // Search Buddy (non-Mezmur): only confident title matches.
-    try {
-      const hymn = await searchHymnsFullQuery(queryForHymns, signal)
-      const top =
-        hymn && hymn.type === 'hymn_search' && Array.isArray(hymn.results)
-          ? hymn.results[0]
-          : undefined
-      if (hymn && top && isConfidentHymnTitleMatch(queryForHymns, top)) {
-        return hymn
-      }
+      const bible = await resolveBibleQuery(rawForChat, { signal })
+      if (bible.resolved) return bible.response
     } catch {
       /* continue */
     }
   }
 
+  // 3) Synaxarium keyword search (non-today queries)
   try {
-    const prayerPayload = await getJson(
-      `/api/prayers/search?q=${encodeURIComponent(queryForHymns)}&limit=12`,
+    const synPayload = await getJson(
+      `/api/synaxarium/search?q=${encodeURIComponent(queryKey)}&limit=12`,
       signal,
     )
-    const prayer = asPrayerSearch(queryForHymns, prayerPayload)
+    const syn = asSynaxariumSearch(queryKey, synPayload)
+    if (syn) return syn
+  } catch {
+    /* continue */
+  }
+
+  // 4) Prayer search
+  try {
+    const prayerPayload = await getJson(
+      `/api/prayers/search?q=${encodeURIComponent(queryKey)}&limit=12`,
+      signal,
+    )
+    const prayer = asPrayerSearch(queryKey, prayerPayload)
     if (prayer) return prayer
   } catch {
     /* continue */
   }
 
-  // Do not run keyword bible_search for non-Bible-like Amharic — that returns the
-  // wrong domain for hymn lyrics. Bible keyword search only happens above when bibleLike.
-
-  try {
-    const synPayload = await getJson(
-      `/api/synaxarium/search?q=${encodeURIComponent(queryForHymns)}&limit=12`,
-      signal,
-    )
-    const syn = asSynaxariumSearch(queryForHymns, synPayload)
-    if (syn) return syn
-  } catch {
-    /* continue */
+  // 5) Hymns — explicit ask, Mezmur context, or confident title only (never catch-all).
+  if (wantsHymns || hymnContext) {
+    try {
+      const hymn = await searchHymnsFullQuery(queryKey, signal)
+      if (hymn) return hymn
+    } catch {
+      /* continue */
+    }
+  } else {
+    try {
+      const hymn = await searchHymnsFullQuery(queryKey, signal)
+      const top =
+        hymn && hymn.type === 'hymn_search' && Array.isArray(hymn.results)
+          ? hymn.results[0]
+          : undefined
+      if (hymn && top && isConfidentHymnTitleMatch(queryKey, top)) {
+        return hymn
+      }
+    } catch {
+      /* continue */
+    }
   }
 
   return UNKNOWN_AMHARIC

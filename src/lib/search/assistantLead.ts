@@ -18,7 +18,9 @@ export function assistantLeadForResponse(
       return "Here is today's fasting information."
     case 'calendar_today':
     case 'calendar_day':
-      return "Here is today's church calendar."
+      return 'Here is the church calendar information.'
+    case 'calendar_search':
+      return 'Here is what I found in the church calendar.'
     case 'season_today':
     case 'calendar_season':
       return "Here is today's liturgical season."

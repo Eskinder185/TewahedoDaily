@@ -18,6 +18,7 @@ export type SearchBuddyResponseType =
   | 'ai'
   | 'calendar_day'
   | 'calendar_today'
+  | 'calendar_search'
   | 'calendar_fast'
   | 'calendar_season'
   | 'fasting_today'
@@ -249,6 +250,32 @@ export type CalendarTodayResponse = CalendarTodayFields & {
   type: 'calendar_today' | 'calendar_day'
 }
 
+/** Hit from GET /api/calendar/search — render only returned fields. */
+export type CalendarSearchHit = {
+  source_type?: string | null
+  slug?: string | null
+  title?: string | null
+  title_amharic?: string | null
+  category?: string | null
+  preview?: string | null
+  summary?: string | null
+  description?: string | null
+  ethiopian_month_number?: number | null
+  ethiopian_day?: number | null
+  fasting_notes?: string | null
+  season_notes?: string | null
+  scripture_references?: string | null
+  [key: string]: unknown
+}
+
+export type CalendarSearchResponse = {
+  type: 'calendar_search'
+  query?: string | null
+  count?: number | null
+  results?: CalendarSearchHit[]
+  message?: string | null
+}
+
 export type FastingTodayResponse = CalendarTodayFields & {
   type: 'fasting_today' | 'fast_today' | 'calendar_fast'
 }
@@ -293,6 +320,7 @@ export type SearchBuddyApiResponse =
   | SynaxariumTodayResponse
   | AiAssistantResponse
   | CalendarTodayResponse
+  | CalendarSearchResponse
   | FastingTodayResponse
   | SeasonTodayResponse
   | EthiopianDateTodayResponse
@@ -313,6 +341,7 @@ export const KNOWN_SEARCH_BUDDY_TYPES = [
   'ai',
   'calendar_day',
   'calendar_today',
+  'calendar_search',
   'calendar_fast',
   'calendar_season',
   'fasting_today',

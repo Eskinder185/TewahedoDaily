@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom'
 import type {
+  CalendarSearchHit,
+  CalendarSearchResponse,
   CalendarTodayFields,
   CalendarTodayResponse,
   EthiopianDateTodayResponse,
@@ -97,6 +100,20 @@ function isOptionalFast(fastType: string | null): boolean {
   )
 }
 
+function listRecords(value: unknown): Record<string, unknown>[] {
+  if (!Array.isArray(value)) return []
+  return value.map(asRecord).filter((row): row is Record<string, unknown> => Boolean(row))
+}
+
+function observanceTitle(row: Record<string, unknown>): string | null {
+  return displayText(
+    textOrNull(row.title),
+    textOrNull(row.name),
+    textOrNull(row.title_english),
+    textOrNull(row.observance_title),
+  )
+}
+
 export function CalendarTodayResult({ data }: { data: CalendarTodayResponse }) {
   const ethAm = fieldText(data, 'ethiopian_date_amharic', 'display_date_amharic')
   const ethEn = fieldText(
@@ -108,13 +125,15 @@ export function CalendarTodayResult({ data }: { data: CalendarTodayResponse }) {
   )
   const weekday = fieldText(data, 'weekday')
   const gregorian = fieldText(data, 'gregorian_date_english', 'gregorian_date')
-  const observance = fieldText(
-    data,
-    'primary_observance',
-    'observance_title',
-    'observance',
-    'title',
-  )
+  const primaryObs = asRecord(data.primary_observance)
+  const observance =
+    fieldText(data, 'primary_observance', 'observance_title', 'observance', 'title') ||
+    textOrNull(primaryObs?.title) ||
+    textOrNull(primaryObs?.name)
+  const observanceAm =
+    fieldText(data, 'title_amharic') ||
+    textOrNull(primaryObs?.title_amharic) ||
+    textOrNull(primaryObs?.name_amharic)
   const fastingNested = asRecord(data.fasting_status)
   const activeFastNested = asRecord(data.active_fast)
   const fastingStatus =
@@ -124,72 +143,212 @@ export function CalendarTodayResult({ data }: { data: CalendarTodayResponse }) {
   const isFasting = fieldBool(data, 'is_fasting', 'fasting', 'fasting_status')
   const activeFast =
     fieldText(data, 'active_fast', 'fast_name') || textOrNull(activeFastNested?.name)
+  const activeFastAm = textOrNull(activeFastNested?.name_amharic)
   const fastType =
     fieldText(data, 'fast_type') || textOrNull(activeFastNested?.fast_type)
   const optional = isOptionalFast(fastType)
+  const seasonNested = asRecord(data.season)
   const season =
     fieldText(data, 'liturgical_season', 'season_name', 'season') ||
-    textOrNull(asRecord(data.season)?.name) ||
-    textOrNull(asRecord(data.season)?.title)
+    textOrNull(seasonNested?.name) ||
+    textOrNull(seasonNested?.title)
+  const seasonAm = textOrNull(seasonNested?.title_amharic) || textOrNull(seasonNested?.name_amharic)
   const synCount = fieldNumber(data, 'synaxarium_count', 'commemorations_count')
-  const summary = fieldText(data, 'summary', 'message')
+  const summary =
+    fieldText(data, 'summary', 'message') ||
+    textOrNull(primaryObs?.summary) ||
+    textOrNull(primaryObs?.description) ||
+    textOrNull(activeFastNested?.summary)
+  const description =
+    textOrNull(primaryObs?.what_is_it) ||
+    textOrNull(primaryObs?.important_information) ||
+    textOrNull(activeFastNested?.what_is_it)
   const gregorianLine = [weekday, gregorian].filter(Boolean).join(' · ')
+  const calendarHref =
+    typeof data.gregorian_date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(data.gregorian_date)
+      ? `/calendar?date=${data.gregorian_date}`
+      : '/calendar'
+
+  const observances = listRecords(data.observances)
+  const monthly = listRecords(data.monthly_commemorations)
+  const commemorations = listRecords(data.synaxarium).length
+    ? listRecords(data.synaxarium)
+    : listRecords(data.commemorations)
 
   return (
-    <article className={styles.card} aria-label="Today in the Church">
-      <p className={styles.eyebrow}>Today</p>
-      {ethAm ? (
+    <div className={styles.stack} aria-label="Church calendar">
+      <article className={styles.card}>
+        <p className={styles.eyebrow}>{data.type === 'calendar_day' ? 'Calendar day' : 'Calendar'}</p>
+        {observanceAm ? (
+          <h3 className={styles.titleAm} lang="am">
+            {observanceAm}
+          </h3>
+        ) : null}
+        {observance ? (
+          <p className={observanceAm ? styles.subtitle : styles.title}>{observance}</p>
+        ) : null}
+        {ethAm ? (
+          <p className={styles.titleAm} lang="am">
+            {ethAm}
+          </p>
+        ) : null}
+        {ethEn ? <p className={styles.meta}>{ethEn}</p> : null}
+        {gregorianLine ? <p className={styles.meta}>{gregorianLine}</p> : null}
+
+        <div className={styles.factList}>
+          {fastingStatus || isFasting !== null || activeFast ? (
+            <p className={styles.factRow}>
+              <span className={styles.factLabel}>Fasting</span>
+              <span className={styles.factValue}>
+                {fastingStatus ||
+                  (activeFast
+                    ? activeFast
+                    : isFasting
+                      ? 'Fasting day'
+                      : isFasting === false
+                        ? 'Not a fasting day'
+                        : null)}
+                {activeFastAm ? ` · ${activeFastAm}` : null}
+              </span>
+            </p>
+          ) : null}
+          {optional ? (
+            <p className={styles.factRow}>
+              <span className={styles.factLabel}>Note</span>
+              <span className={styles.factValue}>Optional devotional fast</span>
+            </p>
+          ) : null}
+          {season || seasonAm ? (
+            <p className={styles.factRow}>
+              <span className={styles.factLabel}>Season</span>
+              <span className={styles.factValue}>
+                {[season, seasonAm].filter(Boolean).join(' · ')}
+              </span>
+            </p>
+          ) : null}
+          {synCount !== null ? (
+            <p className={styles.factRow}>
+              <span className={styles.factLabel}>Synaxarium</span>
+              <span className={styles.factValue}>
+                {synCount === 1 ? '1 commemoration' : `${synCount} commemorations`}
+              </span>
+            </p>
+          ) : null}
+        </div>
+        {summary ? <p className={styles.preview}>{summary}</p> : null}
+        {description && description !== summary ? (
+          <p className={styles.previewClamp}>{description}</p>
+        ) : null}
+        <div className={styles.actions}>
+          <Link className={styles.actionPrimary} to={calendarHref}>
+            Open calendar
+          </Link>
+        </div>
+      </article>
+
+      {observances.length
+        ? observances.slice(0, 6).map((row, index) => {
+            const title = observanceTitle(row)
+            const titleAm = textOrNull(row.title_amharic)
+            const preview =
+              textOrNull(row.summary) ||
+              textOrNull(row.description) ||
+              textOrNull(row.preview) ||
+              textOrNull(row.what_is_it)
+            if (!title && !titleAm && !preview) return null
+            return (
+              <article
+                key={String(row.slug || row.id || index)}
+                className={`${styles.card} ${styles.cardQuiet}`}
+              >
+                <p className={styles.eyebrow}>Observance</p>
+                {titleAm ? (
+                  <h3 className={styles.titleAm} lang="am">
+                    {titleAm}
+                  </h3>
+                ) : null}
+                {title ? <p className={titleAm ? styles.subtitle : styles.title}>{title}</p> : null}
+                {preview ? <p className={styles.previewClamp}>{preview}</p> : null}
+              </article>
+            )
+          })
+        : null}
+
+      {monthly.length
+        ? monthly.slice(0, 4).map((row, index) => {
+            const title = observanceTitle(row)
+            const titleAm = textOrNull(row.title_amharic)
+            const preview =
+              textOrNull(row.summary) ||
+              textOrNull(row.description) ||
+              textOrNull(row.preview)
+            if (!title && !titleAm) return null
+            return (
+              <article
+                key={String(row.slug || `monthly-${index}`)}
+                className={`${styles.card} ${styles.cardQuiet}`}
+              >
+                <p className={styles.eyebrow}>Monthly commemoration</p>
+                {titleAm ? (
+                  <h3 className={styles.titleAm} lang="am">
+                    {titleAm}
+                  </h3>
+                ) : null}
+                {title ? <p className={titleAm ? styles.subtitle : styles.title}>{title}</p> : null}
+                {preview ? <p className={styles.previewClamp}>{preview}</p> : null}
+              </article>
+            )
+          })
+        : null}
+
+      {commemorations.length
+        ? commemorations.slice(0, 4).map((row, index) => (
+            <SynaxariumCard key={String(row.id || row.slug || index)} row={row} />
+          ))
+        : null}
+    </div>
+  )
+}
+
+export function CalendarSearchResults({ data }: { data: CalendarSearchResponse }) {
+  const results = Array.isArray(data.results) ? data.results : []
+  return (
+    <div className={styles.stack} aria-label="Calendar search results">
+      {results.map((row, index) => (
+        <CalendarSearchCard key={String(row.slug || row.title || index)} row={row} />
+      ))}
+    </div>
+  )
+}
+
+function CalendarSearchCard({ row }: { row: CalendarSearchHit }) {
+  const title = displayText(row.title, row.slug)
+  const titleAm = textOrNull(row.title_amharic)
+  const preview = displayText(row.preview, row.summary, row.description)
+  const source = textOrNull(row.source_type) || textOrNull(row.category)
+  const ethDay =
+    typeof row.ethiopian_month_number === 'number' && typeof row.ethiopian_day === 'number'
+      ? `Ethiopian month ${row.ethiopian_month_number}, day ${row.ethiopian_day}`
+      : null
+  const notes = displayText(row.fasting_notes, row.season_notes, row.scripture_references)
+
+  return (
+    <article className={styles.card}>
+      {source ? <p className={styles.eyebrow}>{source.replace(/_/g, ' ')}</p> : null}
+      {titleAm ? (
         <h3 className={styles.titleAm} lang="am">
-          {ethAm}
+          {titleAm}
         </h3>
       ) : null}
-      {ethEn ? <p className={ethAm ? styles.subtitle : styles.title}>{ethEn}</p> : null}
-      {gregorianLine ? <p className={styles.meta}>{gregorianLine}</p> : null}
-
-      <div className={styles.factList}>
-        {observance ? (
-          <p className={styles.factRow}>
-            <span className={styles.factLabel}>Observance</span>
-            <span className={styles.factValue}>{observance}</span>
-          </p>
-        ) : null}
-        {fastingStatus || isFasting !== null || activeFast ? (
-          <p className={styles.factRow}>
-            <span className={styles.factLabel}>Fasting</span>
-            <span className={styles.factValue}>
-              {fastingStatus ||
-                (activeFast
-                  ? activeFast
-                  : isFasting
-                    ? 'Fasting day'
-                    : isFasting === false
-                      ? 'Not a fasting day'
-                      : null)}
-            </span>
-          </p>
-        ) : null}
-        {optional ? (
-          <p className={styles.factRow}>
-            <span className={styles.factLabel}>Note</span>
-            <span className={styles.factValue}>Optional devotional fast</span>
-          </p>
-        ) : null}
-        {season ? (
-          <p className={styles.factRow}>
-            <span className={styles.factLabel}>Season</span>
-            <span className={styles.factValue}>{season}</span>
-          </p>
-        ) : null}
-        {synCount !== null ? (
-          <p className={styles.factRow}>
-            <span className={styles.factLabel}>Synaxarium</span>
-            <span className={styles.factValue}>
-              {synCount === 1 ? '1 commemoration' : `${synCount} commemorations`}
-            </span>
-          </p>
-        ) : null}
+      {title ? <p className={titleAm ? styles.subtitle : styles.title}>{title}</p> : null}
+      {ethDay ? <p className={styles.meta}>{ethDay}</p> : null}
+      {preview ? <p className={styles.previewClamp}>{preview}</p> : null}
+      {notes ? <p className={styles.meta}>{notes}</p> : null}
+      <div className={styles.actions}>
+        <Link className={styles.actionLink} to="/calendar">
+          Open calendar
+        </Link>
       </div>
-      {summary ? <p className={styles.preview}>{summary}</p> : null}
     </article>
   )
 }
@@ -344,6 +503,11 @@ export function SynaxariumTodayResult({ data }: { data: SynaxariumTodayResponse 
           <h3 className={styles.title}>{dateLine}</h3>
         ) : null}
         {dateLine && (title || titleAm) ? <p className={styles.meta}>{dateLine}</p> : null}
+        <div className={styles.actions}>
+          <Link className={styles.actionLink} to="/calendar">
+            Open calendar
+          </Link>
+        </div>
       </div>
       {rows.length ? (
         rows.map((row, index) => {

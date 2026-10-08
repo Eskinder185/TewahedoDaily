@@ -113,9 +113,27 @@ assert.ok(searchHymnsSrc.includes('fetchHymnsSearchApi'))
 const amharicRoute = readSrc('src/lib/searchBuddy/amharicStructuredSearch.ts')
 assert.ok(amharicRoute.includes('resolveBibleQuery'))
 assert.ok(amharicRoute.includes('searchHymns'))
-const bibleIdx = amharicRoute.indexOf('if (bibleLike)')
-const hymnIdx = amharicRoute.indexOf('// Hymn routing')
-assert.ok(bibleIdx >= 0 && hymnIdx > bibleIdx, 'Bible routing must precede hymn routing')
+assert.ok(amharicRoute.includes('detectCalendarRoute'))
+assert.ok(amharicRoute.includes('resolveCalendarStructuredSearch'))
+const calendarSrc = readSrc('src/lib/searchBuddy/calendarStructuredSearch.ts')
+assert.ok(calendarSrc.includes('/api/calendar/today?tz='))
+assert.ok(calendarSrc.includes('/api/calendar/date?date_value='))
+assert.ok(calendarSrc.includes('/api/calendar/day?month='))
+assert.ok(calendarSrc.includes('/api/calendar/search?q='))
+assert.ok(calendarSrc.includes('/api/synaxarium/day?month='))
+const bibleIdx = amharicRoute.indexOf('// 1) Bible')
+const calendarIdx = amharicRoute.indexOf('// 2) Calendar')
+const synaxIdx = amharicRoute.indexOf('// 3) Synaxarium')
+const prayerIdx = amharicRoute.indexOf('// 4) Prayer')
+const hymnIdx = amharicRoute.indexOf('// 5) Hymns')
+assert.ok(
+  bibleIdx >= 0 &&
+    calendarIdx > bibleIdx &&
+    synaxIdx > calendarIdx &&
+    prayerIdx > synaxIdx &&
+    hymnIdx > prayerIdx,
+  'routing priority: Bible → Calendar → Synaxarium → Prayer → Hymns',
+)
 
 const voiceSrc = readSrc('src/components/search/MezmurVoiceSearch.tsx')
 assert.ok(voiceSrc.includes('amharicOnly'))
@@ -216,11 +234,52 @@ globalThis.fetch = async (input, init = {}) => {
     })
   }
 
+  if (path.startsWith('/api/calendar/today') || path.startsWith('/api/calendar/date')) {
+    return jsonResponse({
+      gregorian_date: '2026-10-08',
+      ethiopian_label: 'Mock Today',
+      ethiopian_date: { year: 2019, month: 1, month_name: 'Meskerem', day: 28 },
+      fasting_status: { is_fast_day: false, label: 'Not a fasting day' },
+      season: { title: 'Mock Season' },
+      synaxarium: [],
+      observances: [],
+    })
+  }
+
+  if (path.startsWith('/api/calendar/day')) {
+    return jsonResponse({
+      ethiopian_month_number: 1,
+      ethiopian_day: 17,
+      observances: [{ slug: 'meskel', title: 'Meskel', title_amharic: '\u1218\u1235\u1240\u120D' }],
+      monthly_commemorations: [],
+    })
+  }
+
+  if (path.startsWith('/api/calendar/search')) {
+    return jsonResponse({
+      query: 'Meskel',
+      count: 1,
+      results: [{ source_type: 'observance', slug: 'meskel', title: 'Meskel', preview: 'True Cross' }],
+    })
+  }
+
+  if (path.startsWith('/api/synaxarium/day')) {
+    return jsonResponse({
+      day: {
+        slug: 'meskerem-28',
+        ethiopian_month: 'Meskerem',
+        ethiopian_day: 28,
+        display_date_english: 'Meskerem 28',
+      },
+      count: 1,
+      commemorations: [{ slug: 'mock-saint', title: 'Mock Saint', preview: 'Commemoration' }],
+    })
+  }
+
   if (
     path.startsWith('/api/prayers/') ||
     path.startsWith('/api/synaxarium/') ||
-    path.startsWith('/api/bible/search') ||
-    path.startsWith('/api/calendar/')
+    path.startsWith('/api/bible/search')
   ) {
     return jsonResponse({ results: [], count: 0, query: '' })
   }
@@ -302,6 +361,21 @@ assert.equal(sb1.response.reference, 'John 2:3')
 assert.equal(hymnCalls().length, 0, 'no hymn search after bible_reference')
 assert.notEqual(assistantLeadForResponse(sb1.response, sb1.empty), 'Here are the hymns I found.')
 console.log(JSON.stringify({ buddy: 'john', hymnsAfter: 0 }))
+
+resetCalls()
+const FEAST_ASR = '\u12DB\u122C \u1260\u12A0\u1209 \u121D\u1295\u12F5\u12F3\u12CD'
+const sbFeast = await sendSearchBuddyMessage(FEAST_ASR)
+assert.equal(sbFeast.response.type, 'calendar_today', 'feast ASR → calendar_today')
+assert.equal(hymnCalls().length, 0, 'feast must not hit hymn search')
+assert.ok(
+  calls.some(
+    (c) =>
+      String(c.path).startsWith('/api/calendar/today') && String(c.url || '').includes('tz='),
+  ),
+  'calendar today must include tz',
+)
+assert.notEqual(assistantLeadForResponse(sbFeast.response, sbFeast.empty), 'Here are the hymns I found.')
+console.log(JSON.stringify({ buddy: 'feast-asr', type: 'calendar_today', hymnsAfter: 0 }))
 
 resetCalls()
 const sb2 = await sendSearchBuddyMessage(HYMN_TITLE)

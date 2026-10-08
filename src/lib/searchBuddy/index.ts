@@ -50,10 +50,19 @@ export {
   looksLikeAmharicBibleReference,
   explicitlyAsksForHymns,
   isConfidentHymnTitleMatch,
+  detectCalendarTodayIntent,
+  normalizeCalendarIntentText,
+  detectCalendarRoute,
   resolveAmharicStructuredSearch,
   shouldUseAmharicStructuredPath,
   type AmharicStructuredSearchOptions,
 } from './amharicStructuredSearch.ts'
+export {
+  resolveCalendarStructuredSearch,
+  gregorianYmdInTimezone,
+  userTimezone,
+  type CalendarRoute,
+} from './calendarStructuredSearch.ts'
 export {
   isSafeMezmurSlug,
   resolveMezmurDetailPath,

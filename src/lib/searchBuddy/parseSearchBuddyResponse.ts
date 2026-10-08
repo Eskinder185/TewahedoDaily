@@ -181,6 +181,8 @@ export function isEmptySearchBuddyResponse(response: SearchBuddyApiResponse): bo
     case 'prayer_search':
     case 'synaxarium_search':
       return !(Array.isArray(response.results) && response.results.length > 0)
+    case 'calendar_search':
+      return !(Array.isArray(response.results) && response.results.length > 0)
     case 'calendar_today':
     case 'calendar_day':
     case 'fasting_today':
@@ -193,19 +195,25 @@ export function isEmptySearchBuddyResponse(response: SearchBuddyApiResponse): bo
         response.ethiopian_date,
         response.ethiopian_date_english,
         response.ethiopian_date_amharic,
+        response.ethiopian_label,
         response.gregorian_date,
         response.primary_observance,
         response.fast_name,
         response.active_fast,
+        response.fasting_status,
         response.liturgical_season,
         response.season,
         response.season_name,
         response.summary,
         response.message,
         response.title,
+        response.observances,
+        response.monthly_commemorations,
+        response.synaxarium,
       ]
       return !fields.some((value) => {
         if (typeof value === 'string') return Boolean(value.trim())
+        if (Array.isArray(value)) return value.length > 0
         return value !== null && value !== undefined && value !== ''
       })
     }

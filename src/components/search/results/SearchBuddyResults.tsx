@@ -3,6 +3,7 @@
   BibleChapterResponse,
   BibleReferenceResponse,
   BibleSearchResponse,
+  CalendarSearchResponse,
   CalendarTodayResponse,
   EthiopianDateTodayResponse,
   FastingTodayResponse,
@@ -24,6 +25,7 @@ import { BibleChapterResult } from './BibleChapterResult.tsx'
 import { BibleReferenceResult } from './BibleReferenceResult.tsx'
 import { BibleSearchResults } from './BibleSearchResults.tsx'
 import {
+  CalendarSearchResults,
   CalendarTodayResult,
   EthiopianDateTodayResult,
   FastingTodayResult,
@@ -90,6 +92,9 @@ export function SearchBuddyResults({ response, empty }: Props) {
     case 'calendar_today':
     case 'calendar_day':
       return <CalendarTodayResult data={response as CalendarTodayResponse} />
+
+    case 'calendar_search':
+      return <CalendarSearchResults data={response as CalendarSearchResponse} />
 
     case 'fasting_today':
     case 'fast_today':

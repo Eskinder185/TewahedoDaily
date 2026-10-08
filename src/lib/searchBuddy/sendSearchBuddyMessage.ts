@@ -7,6 +7,7 @@ import {
   shouldUseAmharicStructuredPath,
   type AmharicStructuredSearchOptions,
 } from './amharicStructuredSearch.ts'
+import { resolveCalendarStructuredSearch } from './calendarStructuredSearch.ts'
 import {
   isEmptySearchBuddyResponse,
   parseSearchBuddyResponse,
@@ -70,6 +71,18 @@ export async function sendSearchBuddyMessage(
       return {
         response,
         empty: isEmptySearchBuddyResponse(response),
+        normalizedMessage: forRouting,
+      }
+    }
+  } else {
+    // English / Latin: calendar intents hit structured calendar APIs before /api/chat.
+    const calendar = await resolveCalendarStructuredSearch(rawTrimmed || forRouting, {
+      signal,
+    })
+    if (calendar) {
+      return {
+        response: calendar,
+        empty: isEmptySearchBuddyResponse(calendar),
         normalizedMessage: forRouting,
       }
     }
