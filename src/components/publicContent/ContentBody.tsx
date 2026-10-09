@@ -34,11 +34,11 @@ export function ContentBody({
     () => normalizeRelatedList(item.related_content),
     [item.related_content],
   )
+  // Interface reading languages: English + Amharic only (Oromo content retained in CMS).
   const options = (
     [
       { key: 'body_amharic', label: 'Amharic', lang: 'am' },
       { key: 'body', label: 'English', lang: 'en' },
-      { key: 'body_oromo', label: 'Oromo', lang: 'om' },
       { key: 'transliteration', label: 'Transliteration', lang: 'en' },
     ] as const
   ).filter((o) => item[o.key])
@@ -83,7 +83,6 @@ export function ContentBody({
         </div>
       ) : null}
       {item.title_amharic && <p lang="am">{item.title_amharic}</p>}
-      {item.title_oromo && <p lang="om">{item.title_oromo}</p>}
       <p>{item.description}</p>
       {item.thumbnail_url && (
         <Artwork reference={item.thumbnail_url} title={item.title} />

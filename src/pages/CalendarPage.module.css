@@ -85,7 +85,48 @@
 .selectedHead {
   display: flex;
   flex-direction: column;
+  gap: 0.35rem;
+}
+
+.dayNav {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.selectedHeadCopy {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
   gap: 0.15rem;
+  text-align: center;
+}
+
+.dayNavBtn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-min, 44px);
+  height: var(--tap-min, 44px);
+  min-width: var(--tap-min, 44px);
+  min-height: var(--tap-min, 44px);
+  margin: 0;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong, var(--color-border));
+  background: color-mix(in srgb, var(--color-bg-elevated, #fff) 92%, var(--color-gold-faint, #f4e8c8));
+  color: var(--color-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dayNavBtn:focus-visible {
+  outline: 2px solid var(--color-focus-ring, var(--color-gold));
+  outline-offset: 2px;
 }
 
 .selectedGregorian {

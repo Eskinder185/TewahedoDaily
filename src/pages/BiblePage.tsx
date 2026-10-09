@@ -4,6 +4,13 @@ import { useAsync } from '../lib/cms/useAsync'
 import { useLocale } from '../lib/i18n/locale'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
 import { loadBibleBook, loadBibleCatalog, loadChapterText } from '../lib/bible/bibleQueries'
+import {
+  buildCatalogMeta,
+  displayBookName,
+  displaySourceName,
+  hasBilingualBookNames,
+  uniqueCanonicalBooks,
+} from '../lib/bible/bibleCatalogPresentation'
 import type { BibleBookDetail, BibleLanguage, CanonicalBook, ChapterText, ReaderChapter, SourceBook } from '../lib/bible/bibleTypes'
 import { recordGuestRecentViewed } from '../lib/userContent/guestStorage'
 import { BibleSearchBar } from '../components/bible/BibleSearchBar'
@@ -27,6 +34,9 @@ const WORDS = {
     published: 'Published editions', noBooks: 'The Bible catalog is not available yet.',
     sourcePart: 'Source volume', selectChapter: 'Choose a chapter',
     sequences: 'Chapter sequences can differ between editions. Check the source volume and chapter shown above.',
+    volumes: '{count} volumes',
+    volumesOne: '1 volume',
+    volumesHeading: 'Volumes in this book',
   },
   am: {
     bible: 'መጽሐፍ ቅዱስ', subtitle: 'ቅዱሳት መጻሕፍትን በአማርኛ እና በእንግሊዝኛ ያንብቡ።',
@@ -45,6 +55,9 @@ const WORDS = {
     published: 'የታተሙ እትሞች', noBooks: 'የመጽሐፍ ቅዱስ ዝርዝር ገና አይገኝም።',
     sourcePart: 'የምንጭ ክፍል', selectChapter: 'ምዕራፍ ይምረጡ',
     sequences: 'የምዕራፍ ቅደም ተከተል በእትሞች መካከል ሊለያይ ይችላል። የሚታየውን የምንጭ ክፍል እና ምዕራፍ ያረጋግጡ።',
+    volumes: '{count} ክፍሎች',
+    volumesOne: '1 ክፍል',
+    volumesHeading: 'በዚህ መጽሐፍ ውስጥ ያሉ ክፍሎች',
   },
 } as const
 
@@ -54,12 +67,16 @@ function useWords() {
 }
 
 function bookName(book: CanonicalBook, language: 'en' | 'am') {
-  return (language === 'am' ? book.name_am || book.name_en : book.name_en || book.name_am) || book.slug
+  return displayBookName(book, language)
 }
 
 function sourceName(source: SourceBook, language: 'en' | 'am') {
-  return (language === 'am' ? source.source_name_am || source.source_name_en : source.source_name_en || source.source_name_am)
-    || `Volume ${source.source_book_number}`
+  return displaySourceName(source, language, source.source_book_number)
+}
+
+function volumeLabel(count: number, w: { volumes: string }) {
+  if (count <= 1) return null
+  return w.volumes.replace('{count}', String(count))
 }
 
 function editionAvailability(detail: BibleBookDetail) {
@@ -85,7 +102,12 @@ function Status({ loading, error, onRetry }: { loading: boolean; error?: string;
 function Availability({ am, en }: { am: boolean; en: boolean }) {
   const w = useWords()
   if (!am && !en) return <span className={s.unavailable}>{w.unavailable}</span>
-  return <span className={s.badges}>{am && <span lang="am">{w.am}</span>}{en && <span>{w.en}</span>}</span>
+  return (
+    <span className={s.badges} aria-label={w.available}>
+      {am ? <span lang="am">{w.am}</span> : null}
+      {en ? <span>{w.en}</span> : null}
+    </span>
+  )
 }
 
 export function BibleCatalogPage() {
@@ -95,40 +117,100 @@ export function BibleCatalogPage() {
   const load = useCallback(() => loadBibleCatalog(), [])
   const result = useAsync(load)
   usePageMeta(w.bible, w.subtitle)
-  const sourcesByBook = useMemo(() => {
-    const map = new Map<string, { am: boolean; en: boolean }>()
-    const editions = new Map(result.data?.editions.map((edition) => [edition.id, edition.code]) || [])
-    for (const source of result.data?.sources || []) {
-      const entry = map.get(source.canonical_book_id) || { am: false, en: false }
-      const code = editions.get(source.edition_id)
-      if (code === 'am') entry.am = true
-      if (code === 'web') entry.en = true
-      map.set(source.canonical_book_id, entry)
-    }
-    return map
+
+  const catalogMeta = useMemo(() => {
+    if (!result.data) return []
+    return buildCatalogMeta(result.data.books, result.data.sources, result.data.editions)
   }, [result.data])
-  const books = result.data?.books.filter((book) => book.collection === testament) || []
-  return <section className={s.shell}>
-    <header className={s.hero}><p className={s.eyebrow}>Tewahedo Daily</p><h1>{w.bible}</h1><p>{w.subtitle}</p></header>
-    <BibleSearchBar />
-    <div className={s.testaments} role="group" aria-label={w.bible}>
-      <button type="button" aria-pressed={testament === 'old'} onClick={() => setTestament('old')}>{w.old} <span>46</span></button>
-      <button type="button" aria-pressed={testament === 'new'} onClick={() => setTestament('new')}>{w.newer} <span>35</span></button>
-    </div>
-    <Status loading={result.loading} error={result.error} onRetry={result.reload} />
-    {result.data && <div>
-      <h2 className={s.sectionTitle}>{testament === 'old' ? w.old : w.newer} <small>{books.length} {w.books}</small></h2>
-      {!books.length && <p className={s.status}>{w.noBooks}</p>}
-      <ol className={s.bookList}>
-        {books.map((book) => {
-          const availability = sourcesByBook.get(book.id) || { am: false, en: false }
-          const content = <><span className={s.bookNumber}>{String(book.canonical_number).padStart(2, '0')}</span><span className={s.bookNames}><strong lang={uiLocale}>{bookName(book, uiLocale)}</strong>{book.name_am && book.name_en && <small lang={uiLocale === 'am' ? 'en' : 'am'}>{bookName(book, uiLocale === 'am' ? 'en' : 'am')}</small>}</span><Availability {...availability} /></>
-          return <li key={book.id}>{availability.am || availability.en ? <Link className={s.bookCard} to={`/bible/${book.slug}`}>{content}</Link> : <div className={`${s.bookCard} ${s.bookCardDisabled}`}>{content}</div>}</li>
-        })}
-      </ol>
-      {!result.data.sources.length && <p className={s.notice}>{w.notPublic}</p>}
-    </div>}
-  </section>
+
+  const oldCount = catalogMeta.filter((row) => row.book.collection === 'old').length
+  const newCount = catalogMeta.filter((row) => row.book.collection === 'new').length
+  const books = catalogMeta.filter((row) => row.book.collection === testament)
+  const catalogBooks = useMemo(
+    () => uniqueCanonicalBooks(result.data?.books || []),
+    [result.data?.books],
+  )
+
+  return (
+    <section className={s.shell}>
+      <header className={s.hero}>
+        <p className={s.eyebrow}>Tewahedo Daily</p>
+        <h1>{w.bible}</h1>
+        <p>{w.subtitle}</p>
+      </header>
+
+      <BibleSearchBar catalogBooks={catalogBooks} />
+
+      <div className={s.catalogChrome}>
+        <div className={s.testaments} role="group" aria-label={w.bible}>
+          <button type="button" aria-pressed={testament === 'old'} onClick={() => setTestament('old')}>
+            {w.old} <span>{oldCount || 46}</span>
+          </button>
+          <button type="button" aria-pressed={testament === 'new'} onClick={() => setTestament('new')}>
+            {w.newer} <span>{newCount || 35}</span>
+          </button>
+        </div>
+      </div>
+
+      <Status loading={result.loading} error={result.error} onRetry={result.reload} />
+
+      {result.data ? (
+        <div>
+          <h2 className={s.sectionTitle}>
+            {testament === 'old' ? w.old : w.newer}{' '}
+            <small>
+              {books.length} {w.books}
+            </small>
+          </h2>
+          {!books.length ? <p className={s.status}>{w.noBooks}</p> : null}
+          <ol className={s.bookList}>
+            {books.map(({ book, availability, volumeCount }) => {
+              const primary = bookName(book, uiLocale)
+              const secondaryLang = uiLocale === 'am' ? 'en' : 'am'
+              const secondary = bookName(book, secondaryLang)
+              const showSecondary =
+                hasBilingualBookNames(book) &&
+                secondary !== primary &&
+                secondary !== book.slug
+              const volumes = volumeLabel(volumeCount, w)
+              const available = availability.am || availability.en
+              const content = (
+                <>
+                  <span className={s.bookNumber}>{String(book.canonical_number).padStart(2, '0')}</span>
+                  <span className={s.bookNames}>
+                    <strong lang={uiLocale}>{primary}</strong>
+                    {showSecondary ? <small lang={secondaryLang}>{secondary}</small> : null}
+                    {volumes ? (
+                      <span className={s.volumeHint}>{volumes}</span>
+                    ) : null}
+                  </span>
+                  <Availability {...availability} />
+                </>
+              )
+              return (
+                <li key={book.id}>
+                  {available ? (
+                    <Link className={s.bookCard} to={`/bible/${book.slug}`}>
+                      {content}
+                    </Link>
+                  ) : (
+                    <div
+                      className={`${s.bookCard} ${s.bookCardDisabled}`}
+                      role="group"
+                      aria-label={`${primary}. ${w.unavailable}`}
+                    >
+                      {content}
+                    </div>
+                  )}
+                </li>
+              )
+            })}
+          </ol>
+          {!result.data.sources.length ? <p className={s.notice}>{w.notPublic}</p> : null}
+        </div>
+      ) : null}
+    </section>
+  )
 }
 
 function ChapterGrid({ chapters, slug, language }: { chapters: ReaderChapter[]; slug: string; language: 'am' | 'en' }) {
@@ -136,15 +218,45 @@ function ChapterGrid({ chapters, slug, language }: { chapters: ReaderChapter[]; 
   const { uiLocale } = useLocale()
   const groups = useMemo(() => {
     const map = new Map<string, ReaderChapter[]>()
-    for (const chapter of chapters) map.set(chapter.source.id, [...(map.get(chapter.source.id) || []), chapter])
+    for (const chapter of chapters) {
+      const list = map.get(chapter.source.id) || []
+      list.push(chapter)
+      map.set(chapter.source.id, list)
+    }
     return [...map.values()]
   }, [chapters])
-  return <div className={s.chapterGroups}>{groups.map((group) => <section key={group[0].source.id}>
-    {groups.length > 1 && <h3 className={s.sourceTitle}>{sourceName(group[0].source, uiLocale)}</h3>}
-    <div className={s.chapterGrid} aria-label={`${w.chapters} — ${sourceName(group[0].source, uiLocale)}`}>
-      {group.map((chapter) => <Link key={chapter.id} to={`/bible/${slug}/${chapter.ordinal}`} aria-label={`${sourceName(chapter.source, uiLocale)}, ${w.chapter} ${chapter.chapter_number}`} lang={language === 'am' ? 'am' : 'en'}>{chapter.chapter_number}</Link>)}
+  const multi = groups.length > 1
+  return (
+    <div className={s.chapterGroups}>
+      {groups.map((group) => {
+        const title = sourceName(group[0].source, uiLocale)
+        return (
+          <section key={group[0].source.id} className={multi ? s.volumeSection : undefined}>
+            {multi ? (
+              <h3 className={s.sourceTitle} lang={uiLocale === 'am' ? 'am' : 'en'}>
+                {title}
+              </h3>
+            ) : null}
+            <div
+              className={s.chapterGrid}
+              aria-label={`${w.chapters}${multi ? ` — ${title}` : ''}`}
+            >
+              {group.map((chapter) => (
+                <Link
+                  key={chapter.id}
+                  to={`/bible/${slug}/${chapter.ordinal}`}
+                  aria-label={`${multi ? `${title}, ` : ''}${w.chapter} ${chapter.chapter_number}`}
+                  lang={language === 'am' ? 'am' : 'en'}
+                >
+                  {chapter.chapter_number}
+                </Link>
+              ))}
+            </div>
+          </section>
+        )
+      })}
     </div>
-  </section>)}</div>
+  )
 }
 
 export function BibleBookPage() {
@@ -158,20 +270,89 @@ export function BibleBookPage() {
   const choice = chooseLanguage(locale, availability.am, availability.en)
   const gridEdition = choice === 'en' ? 'web' : availability.am ? 'am' : 'web'
   usePageMeta(detail?.book.name_en || w.bible, w.subtitle)
-  return <section className={s.shell}>
-    <nav className={s.crumbs} aria-label="Breadcrumb"><Link to="/bible">← {w.backBible}</Link></nav>
-    <Status loading={result.loading} error={result.error} onRetry={result.reload} />
-    {result.data === null && <p className={s.status}>{w.notFound}</p>}
-    {detail && <>
-      <header className={s.hero}><p className={s.eyebrow}>{detail.book.collection === 'old' ? w.old : w.newer} · {detail.book.canonical_number}</p><h1 lang={uiLocale}>{bookName(detail.book, uiLocale)}</h1>{detail.book.name_am && detail.book.name_en && <p lang={uiLocale === 'am' ? 'en' : 'am'}>{bookName(detail.book, uiLocale === 'am' ? 'en' : 'am')}</p>}<Availability {...availability} /></header>
-      {!choice ? <p className={s.notice}>{detail.book.source_status === 'missing' ? w.noSource : w.notPublic}</p> : <>
-        {locale !== choice && locale !== 'both' && <p className={s.notice}>{w.languageFallback}</p>}
-        {availability.am && availability.en && <div className={s.language} role="group" aria-label={w.choose}><button type="button" aria-pressed={gridEdition === 'am'} onClick={() => setLocale('am')}>{w.am}</button><button type="button" aria-pressed={gridEdition === 'web'} onClick={() => setLocale('en')}>{w.en}</button></div>}
-        <h2 className={s.sectionTitle}>{w.chapters}</h2>
-        <ChapterGrid chapters={detail.chapters[gridEdition]} slug={detail.book.slug} language={gridEdition === 'am' ? 'am' : 'en'} />
-      </>}
-    </>}
-  </section>
+
+  const volumeSources = useMemo(() => {
+    if (!detail) return []
+    const seen = new Set<string>()
+    const ordered: SourceBook[] = []
+    for (const chapter of detail.chapters[gridEdition]) {
+      if (seen.has(chapter.source.id)) continue
+      seen.add(chapter.source.id)
+      ordered.push(chapter.source)
+    }
+    return ordered
+  }, [detail, gridEdition])
+
+  return (
+    <section className={s.shell}>
+      <nav className={s.crumbs} aria-label="Breadcrumb">
+        <Link to="/bible">← {w.backBible}</Link>
+      </nav>
+      <Status loading={result.loading} error={result.error} onRetry={result.reload} />
+      {result.data === null ? <p className={s.status}>{w.notFound}</p> : null}
+      {detail ? (
+        <>
+          <header className={s.hero}>
+            <p className={s.eyebrow}>
+              {detail.book.collection === 'old' ? w.old : w.newer} · {detail.book.canonical_number}
+            </p>
+            <h1 lang={uiLocale}>{bookName(detail.book, uiLocale)}</h1>
+            {hasBilingualBookNames(detail.book) ? (
+              <p lang={uiLocale === 'am' ? 'en' : 'am'}>
+                {bookName(detail.book, uiLocale === 'am' ? 'en' : 'am')}
+              </p>
+            ) : null}
+            <Availability {...availability} />
+          </header>
+          {!choice ? (
+            <p className={s.notice}>
+              {detail.book.source_status === 'missing' ? w.noSource : w.notPublic}
+            </p>
+          ) : (
+            <>
+              {locale !== choice ? <p className={s.notice}>{w.languageFallback}</p> : null}
+              {availability.am && availability.en ? (
+                <div className={s.language} role="group" aria-label={w.choose}>
+                  <button
+                    type="button"
+                    aria-pressed={gridEdition === 'am'}
+                    onClick={() => setLocale('am')}
+                  >
+                    {w.am}
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={gridEdition === 'web'}
+                    onClick={() => setLocale('en')}
+                  >
+                    {w.en}
+                  </button>
+                </div>
+              ) : null}
+              {volumeSources.length > 1 ? (
+                <div className={s.volumeList}>
+                  <h2 className={s.volumeListTitle}>{w.volumesHeading}</h2>
+                  <ol>
+                    {volumeSources.map((source) => (
+                      <li key={source.id} lang={uiLocale === 'am' ? 'am' : 'en'}>
+                        {sourceName(source, uiLocale)}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ) : null}
+              <h2 className={s.sectionTitle}>{w.chapters}</h2>
+              <ChapterGrid
+                chapters={detail.chapters[gridEdition]}
+                slug={detail.book.slug}
+                language={gridEdition === 'am' ? 'am' : 'en'}
+              />
+            </>
+          )}
+        </>
+      ) : null}
+    </section>
+  )
 }
 
 function VerseBlock({ text }: { text: ChapterText }) {
@@ -211,7 +392,12 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
   const am = detail.chapters.am[ordinal - 1]
   const en = detail.chapters.web[ordinal - 1]
   const review = detail.book.slug === 'proverbs' || detail.book.slug === 'tegsats'
-  const choice = chooseLanguage(locale, Boolean(am), Boolean(en), !review)
+  // Site UI is EN/AM only; side-by-side Bible reading stays a page-local preference.
+  const [readingLang, setReadingLang] = useState<BibleLanguage>(() => locale)
+  useEffect(() => {
+    setReadingLang((prev) => (prev === 'both' ? prev : locale))
+  }, [locale])
+  const choice = chooseLanguage(readingLang, Boolean(am), Boolean(en), !review)
   const chapters = useMemo(() => choice === 'both' ? [am, en].filter((chapter): chapter is ReaderChapter => Boolean(chapter)) : [choice === 'en' ? en : am].filter((chapter): chapter is ReaderChapter => Boolean(chapter)), [choice, am, en])
   const load = useCallback(() => Promise.all(chapters.map(loadChapterText)), [chapters])
   const result = useAsync(load)
@@ -241,17 +427,21 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     ? Math.min(detail.chapters.am.length, detail.chapters.web.length)
     : detail.chapters[choice === 'en' ? 'web' : 'am'].length
   const pickerChapters = detail.chapters[choice === 'en' ? 'web' : 'am'].slice(0, maxOrdinal)
+  const setReading = (next: BibleLanguage) => {
+    setReadingLang(next)
+    if (next === 'am' || next === 'en') setLocale(next)
+  }
   return <>
     <header className={s.hero}><p className={s.eyebrow}>{detail.book.collection === 'old' ? w.old : w.newer}</p><h1>{bookName(detail.book, uiLocale)} <span>{w.chapter} {primary?.chapter_number}</span></h1>{primary && (detail.sources.length > 1) && <p>{sourceName(primary.source, uiLocale)}</p>}</header>
     {am && en && <div className={s.language} role="group" aria-label={w.choose}>
-      <button type="button" aria-pressed={choice === 'am'} onClick={() => setLocale('am')}>{w.am}</button>
-      <button type="button" aria-pressed={choice === 'en'} onClick={() => setLocale('en')}>{w.en}</button>
-      {!review && <button type="button" aria-pressed={choice === 'both'} onClick={() => setLocale('both')}>{w.both}</button>}
+      <button type="button" aria-pressed={choice === 'am'} onClick={() => setReading('am')}>{w.am}</button>
+      <button type="button" aria-pressed={choice === 'en'} onClick={() => setReading('en')}>{w.en}</button>
+      {!review && <button type="button" aria-pressed={choice === 'both'} onClick={() => setReading('both')}>{w.both}</button>}
     </div>}
     {review && am && en && <p className={s.notice}>{w.review}</p>}
     {choice === 'both' && <p className={s.notice}>{w.independent}</p>}
     {detail.sources.length > 2 && am && en && <p className={s.notice}>{w.sequences}</p>}
-    {locale !== choice && locale !== 'both' && <p className={s.notice}>{w.languageFallback}</p>}
+    {locale !== choice && choice !== 'both' && <p className={s.notice}>{w.languageFallback}</p>}
     <label className={s.chapterPicker}>{w.selectChapter}
       <select value={ordinal} onChange={(event) => navigate(`/bible/${detail.book.slug}/${event.target.value}`)}>
         {pickerChapters.map((chapter) => (

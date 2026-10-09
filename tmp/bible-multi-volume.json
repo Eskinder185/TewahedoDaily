@@ -1,0 +1,110 @@
+[
+  {
+    "number": 9,
+    "en": "Samuel",
+    "am": null,
+    "slug": "samuel",
+    "volumes": [
+      {
+        "en": "1 Samuel",
+        "am": "መጽሐፈ ሳሙኤል ቀዳማዊ"
+      },
+      {
+        "en": "2 Samuel",
+        "am": "መጽሐፈ ሳሙኤል ካልዕ"
+      }
+    ]
+  },
+  {
+    "number": 10,
+    "en": "Kings",
+    "am": null,
+    "slug": "kings",
+    "volumes": [
+      {
+        "en": "1 Kings",
+        "am": "መጽሐፈ ነገሥት ቀዳማዊ"
+      },
+      {
+        "en": "2 Kings",
+        "am": "መጽሐፈ ነገሥት ካልዕ"
+      }
+    ]
+  },
+  {
+    "number": 15,
+    "en": "Ezra and Nehemiah",
+    "am": null,
+    "slug": "ezra-nehemiah",
+    "volumes": [
+      {
+        "en": "Ezra",
+        "am": "መጽሐፈ ዕዝራ"
+      },
+      {
+        "en": "Nehemiah",
+        "am": "መጽሐፈ ነህምያ"
+      }
+    ]
+  },
+  {
+    "number": 16,
+    "en": "Second Ezra and Ezra Sutuel",
+    "am": null,
+    "slug": "second-ezra-and-ezra-sutuel",
+    "volumes": [
+      {
+        "en": "3 Book of Ezra",
+        "am": "መጽሐፈ ዕዝራ ሱቱኤል"
+      },
+      {
+        "en": "2nd Book of Ezra",
+        "am": "መጽሐፈ ዕዝራ ካልእ"
+      }
+    ]
+  },
+  {
+    "number": 30,
+    "en": "Jeremiah Collection",
+    "am": null,
+    "slug": "jeremiah-collection",
+    "volumes": [
+      {
+        "en": "Jeremiah",
+        "am": "ትንቢተ ኤርምያስ"
+      },
+      {
+        "en": "Baruch",
+        "am": "መጽሐፈ ባሮክ"
+      },
+      {
+        "en": "Lamentations",
+        "am": "ሰቆቃወ ኤርምያስ"
+      },
+      {
+        "en": "Thr letter of Jeremiah",
+        "am": "ተረፈ ኤርምያስ"
+      },
+      {
+        "en": "Teref Baruch",
+        "am": "ተረፈ ባሮክ"
+      }
+    ]
+  },
+  {
+    "number": 21,
+    "en": "Second and Third Meqabyan",
+    "am": null,
+    "slug": "second-and-third-meqabyan",
+    "volumes": [
+      {
+        "en": "2 Maccabees",
+        "am": "መጽሐፈ መቃብያን ካልእ"
+      },
+      {
+        "en": "3 Maccabees",
+        "am": "መጽሐፈ መቃብያን ሣልስ"
+      }
+    ]
+  }
+]

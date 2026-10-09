@@ -24,10 +24,6 @@ export function ContentsDrawer({
   const steps = guidedSteps(guided)
 
   function label(section: LearningSection) {
-    if (lang === 'both') {
-      const am = section.titleAmharic?.trim()
-      return am ? `${am} / ${section.titleEnglish}` : section.titleEnglish
-    }
     return lang === 'en' ? section.titleEnglish : section.titleAmharic || section.titleEnglish
   }
 

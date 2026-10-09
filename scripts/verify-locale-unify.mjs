@@ -1,5 +1,5 @@
 /**
- * Browser verify: global EN / AM / Both across key pages and widths.
+ * Browser verify: global EN / AM across key pages and widths.
  * Usage: node scripts/verify-locale-unify.mjs [baseUrl]
  */
 import { chromium } from 'playwright'
@@ -9,20 +9,36 @@ import path from 'node:path'
 const BASE = process.argv[2] || 'http://127.0.0.1:4181/'
 const OUT = path.resolve('tmp/locale-unify-verify')
 const WIDTHS = [320, 390, 430, 1280]
-const MODES = ['en', 'am', 'both']
+const MODES = ['en', 'am']
 const PAGES = ['/', '/calendar', '/practice', '/pray', '/about', '/legal']
 
 async function setLanguage(page, modeId) {
-  const menuBtn = page.getByRole('button', { name: /open menu|ምናሌ ክፈት/i })
-  if (await menuBtn.isVisible().catch(() => false)) {
-    await menuBtn.click()
+  const nameRe = modeId === 'en' ? /^english$/i : /^(amharic|አማርኛ)$/i
+
+  // Mobile header: globe menu button
+  const menuTrigger = page.getByRole('button', { name: /language|ቋንቋ/i }).first()
+  if (await menuTrigger.isVisible().catch(() => false)) {
+    const expanded = await menuTrigger.getAttribute('aria-expanded')
+    if (expanded !== 'true') await menuTrigger.click()
+    const item = page.getByRole('menuitemradio', { name: nameRe })
+    if (await item.count()) {
+      await item.first().click()
+      await page.waitForFunction(
+        (expected) => document.documentElement.dataset.lang === expected,
+        modeId,
+        { timeout: 4000 },
+      )
+      return
+    }
+  }
+
+  // Desktop segment control / drawer radios
+  const drawerBtn = page.getByRole('button', { name: /open menu|ምናሌ ክፈት/i })
+  if (await drawerBtn.isVisible().catch(() => false)) {
+    await drawerBtn.click()
     await page.waitForTimeout(150)
   }
 
-  const nameRe =
-    modeId === 'en' ? /^english$/i : modeId === 'am' ? /^(amharic|አማርኛ)$/i : /^(both|ሁለቱም)$/i
-
-  // Click the visible language radio (header on desktop, drawer on mobile).
   const radio = page.getByRole('radio', { name: nameRe })
   const count = await radio.count()
   let clicked = false
@@ -34,7 +50,7 @@ async function setLanguage(page, modeId) {
       break
     }
   }
-  if (!clicked) throw new Error(`No visible language radio for ${modeId}`)
+  if (!clicked) throw new Error(`No visible language control for ${modeId}`)
   await page.waitForFunction(
     (expected) => document.documentElement.dataset.lang === expected,
     modeId,
@@ -74,8 +90,7 @@ async function main() {
         shot,
         ok:
           (mode === 'am' && langAttr.htmlLang === 'am' && langAttr.dataLang === 'am') ||
-          (mode === 'en' && langAttr.htmlLang === 'en' && langAttr.dataLang === 'en') ||
-          (mode === 'both' && langAttr.htmlLang === 'en' && langAttr.dataLang === 'both'),
+          (mode === 'en' && langAttr.htmlLang === 'en' && langAttr.dataLang === 'en'),
       }
     }
     await page.close()
@@ -108,16 +123,16 @@ async function main() {
   {
     const page = await browser.newPage({ viewport: { width: 320, height: 720 } })
     await page.goto(BASE, { waitUntil: 'domcontentloaded' })
-    await setLanguage(page, 'both')
+    await setLanguage(page, 'am')
     for (const route of PAGES) {
       await page.goto(new URL(route, BASE).toString(), { waitUntil: 'domcontentloaded' })
       await page.waitForTimeout(350)
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
       )
-      const shot = path.join(OUT, `both-320-${route.replace(/\//g, '_') || 'home'}.png`)
+      const shot = path.join(OUT, `am-320-${route.replace(/\//g, '_') || 'home'}.png`)
       await page.screenshot({ path: shot, fullPage: false })
-      report.pages[`both@320:${route}`] = { overflowX: overflow, ok: !overflow, shot }
+      report.pages[`am@320:${route}`] = { overflowX: overflow, ok: !overflow, shot }
     }
     await page.close()
   }

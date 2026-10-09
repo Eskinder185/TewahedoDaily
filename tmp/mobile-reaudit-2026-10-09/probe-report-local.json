@@ -1,0 +1,69 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checks": {
+    "language": {
+      "menuButtonVisible": true,
+      "menuButtonCount": 1,
+      "headerRadioVisible": false,
+      "headerRadioCount": 0,
+      "hamburgerVisible": true,
+      "triggerText": "EN",
+      "drawer": {
+        "hasEnglish": true,
+        "hasAmharic": true,
+        "hasOromo": false,
+        "hasBoth": false
+      }
+    },
+    "calendar": {
+      "prevMonth": 1,
+      "nextMonth": 1,
+      "prevDay": 1,
+      "nextDay": 1,
+      "openDetailsButtons": 64,
+      "detail": {
+        "opened": true,
+        "height": 608,
+        "heightVh": 72,
+        "top": 236,
+        "closeVisible": true,
+        "closeMin": 48,
+        "overflowY": "auto",
+        "maxHeight": "607.68px"
+      },
+      "backBehavior": {
+        "urlBefore": "http://127.0.0.1:4173/calendar",
+        "urlAfter": "http://127.0.0.1:4173/calendar",
+        "dialogStillOpen": false,
+        "stayedOnCalendar": true,
+        "closedDetail": true
+      }
+    },
+    "bible": {
+      "searchVisible": true,
+      "afterRace": {
+        "mentionsJohn316": false,
+        "mentionsMark11": true
+      }
+    },
+    "touch": {
+      "sampled": 27,
+      "undersized": [
+        {
+          "text": "Tewahedo DailyQuiet liturgical studio",
+          "w": 192,
+          "h": 32
+        },
+        {
+          "text": "Bible",
+          "w": 43,
+          "h": 48
+        }
+      ]
+    }
+  }
+}

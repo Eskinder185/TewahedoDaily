@@ -1,0 +1,650 @@
+[
+  {
+    "canonical_number": 1,
+    "slug": "genesis",
+    "name_en": "Genesis",
+    "name_am": "ኦሪት ዘፍጥረት",
+    "collection": "old",
+    "sort_order": 1
+  },
+  {
+    "canonical_number": 2,
+    "slug": "exodus",
+    "name_en": "Exodus",
+    "name_am": "ኦሪት ዘጸአት",
+    "collection": "old",
+    "sort_order": 2
+  },
+  {
+    "canonical_number": 3,
+    "slug": "leviticus",
+    "name_en": "Leviticus",
+    "name_am": "ኦሪት ዘሌዋውያን",
+    "collection": "old",
+    "sort_order": 3
+  },
+  {
+    "canonical_number": 4,
+    "slug": "numbers",
+    "name_en": "Numbers",
+    "name_am": "ኦሪት ዘኍልቍ",
+    "collection": "old",
+    "sort_order": 4
+  },
+  {
+    "canonical_number": 5,
+    "slug": "deuteronomy",
+    "name_en": "Deuteronomy",
+    "name_am": "ኦሪት ዘዳግም",
+    "collection": "old",
+    "sort_order": 5
+  },
+  {
+    "canonical_number": 6,
+    "slug": "joshua",
+    "name_en": "Joshua",
+    "name_am": "መጽሐፈ ኢያሱ",
+    "collection": "old",
+    "sort_order": 6
+  },
+  {
+    "canonical_number": 7,
+    "slug": "judges",
+    "name_en": "Judges",
+    "name_am": "መጽሐፈ መሳፍንት",
+    "collection": "old",
+    "sort_order": 7
+  },
+  {
+    "canonical_number": 8,
+    "slug": "ruth",
+    "name_en": "Ruth",
+    "name_am": "መጽሐፈ ሩት",
+    "collection": "old",
+    "sort_order": 8
+  },
+  {
+    "canonical_number": 9,
+    "slug": "samuel",
+    "name_en": "Samuel",
+    "name_am": null,
+    "collection": "old",
+    "sort_order": 9
+  },
+  {
+    "canonical_number": 10,
+    "slug": "kings",
+    "name_en": "Kings",
+    "name_am": null,
+    "collection": "old",
+    "sort_order": 10
+  },
+  {
+    "canonical_number": 11,
+    "slug": "first-chronicles",
+    "name_en": "First Chronicles",
+    "name_am": "መጽሐፈ ዜና መዋዕል ቀዳማዊ",
+    "collection": "old",
+    "sort_order": 11
+  },
+  {
+    "canonical_number": 12,
+    "slug": "second-chronicles",
+    "name_en": "Second Chronicles",
+    "name_am": "መጽሐፈ ዜና መዋዕል ካልዕ",
+    "collection": "old",
+    "sort_order": 12
+  },
+  {
+    "canonical_number": 13,
+    "slug": "jubilees",
+    "name_en": "Jubilees",
+    "name_am": "መጽሐፈ ኩፋሌ",
+    "collection": "old",
+    "sort_order": 13
+  },
+  {
+    "canonical_number": 14,
+    "slug": "enoch",
+    "name_en": "Enoch",
+    "name_am": "መጽሐፈ ሄኖክ",
+    "collection": "old",
+    "sort_order": 14
+  },
+  {
+    "canonical_number": 15,
+    "slug": "ezra-nehemiah",
+    "name_en": "Ezra and Nehemiah",
+    "name_am": null,
+    "collection": "old",
+    "sort_order": 15
+  },
+  {
+    "canonical_number": 16,
+    "slug": "second-ezra-and-ezra-sutuel",
+    "name_en": "Second Ezra and Ezra Sutuel",
+    "name_am": null,
+    "collection": "old",
+    "sort_order": 16
+  },
+  {
+    "canonical_number": 17,
+    "slug": "tobit",
+    "name_en": "Tobit",
+    "name_am": "መጽሐፈ ጦቢት",
+    "collection": "old",
+    "sort_order": 17
+  },
+  {
+    "canonical_number": 18,
+    "slug": "judith",
+    "name_en": "Judith",
+    "name_am": "መጽሐፈ ዮዲት",
+    "collection": "old",
+    "sort_order": 18
+  },
+  {
+    "canonical_number": 19,
+    "slug": "esther",
+    "name_en": "Esther",
+    "name_am": "መጽሐፈ አስቴር",
+    "collection": "old",
+    "sort_order": 19
+  },
+  {
+    "canonical_number": 20,
+    "slug": "first-meqabyan",
+    "name_en": "First Meqabyan",
+    "name_am": "መጽሐፈ መቃብያን ቀዳማዊ",
+    "collection": "old",
+    "sort_order": 20
+  },
+  {
+    "canonical_number": 21,
+    "slug": "second-and-third-meqabyan",
+    "name_en": "Second and Third Meqabyan",
+    "name_am": null,
+    "collection": "old",
+    "sort_order": 21
+  },
+  {
+    "canonical_number": 22,
+    "slug": "job",
+    "name_en": "Job",
+    "name_am": "መጽሐፈ ኢዮብ",
+    "collection": "old",
+    "sort_order": 22
+  },
+  {
+    "canonical_number": 23,
+    "slug": "psalms",
+    "name_en": "Psalms",
+    "name_am": "መዝሙረ ዳዊት",
+    "collection": "old",
+    "sort_order": 23
+  },
+  {
+    "canonical_number": 24,
+    "slug": "proverbs",
+    "name_en": "Proverbs",
+    "name_am": "መጽሐፈ ምሳሌ",
+    "collection": "old",
+    "sort_order": 24
+  },
+  {
+    "canonical_number": 25,
+    "slug": "tegsats",
+    "name_en": "Tegsats (Reproof)",
+    "name_am": "መጽሐፈ ተግሣጽ",
+    "collection": "old",
+    "sort_order": 25
+  },
+  {
+    "canonical_number": 26,
+    "slug": "wisdom",
+    "name_en": "Wisdom of Solomon",
+    "name_am": "መጽሐፈ ጥበብ",
+    "collection": "old",
+    "sort_order": 26
+  },
+  {
+    "canonical_number": 27,
+    "slug": "ecclesiastes",
+    "name_en": "Ecclesiastes",
+    "name_am": "መጽሐፈ መክብብ",
+    "collection": "old",
+    "sort_order": 27
+  },
+  {
+    "canonical_number": 28,
+    "slug": "song-of-songs",
+    "name_en": "Song of Songs",
+    "name_am": "መኃልየ መኃልይ ዘሰሎሞን",
+    "collection": "old",
+    "sort_order": 28
+  },
+  {
+    "canonical_number": 29,
+    "slug": "isaiah",
+    "name_en": "Isaiah",
+    "name_am": "ትንቢተ ኢሳይያስ",
+    "collection": "old",
+    "sort_order": 29
+  },
+  {
+    "canonical_number": 30,
+    "slug": "jeremiah-collection",
+    "name_en": "Jeremiah Collection",
+    "name_am": null,
+    "collection": "old",
+    "sort_order": 30
+  },
+  {
+    "canonical_number": 31,
+    "slug": "ezekiel",
+    "name_en": "Ezekiel",
+    "name_am": "ትንቢተ ሕዝቅኤል",
+    "collection": "old",
+    "sort_order": 31
+  },
+  {
+    "canonical_number": 32,
+    "slug": "daniel",
+    "name_en": "Daniel",
+    "name_am": "ትንቢተ ዳንኤል",
+    "collection": "old",
+    "sort_order": 32
+  },
+  {
+    "canonical_number": 33,
+    "slug": "hosea",
+    "name_en": "Hosea",
+    "name_am": "ትንቢተ ሆሴዕ",
+    "collection": "old",
+    "sort_order": 33
+  },
+  {
+    "canonical_number": 34,
+    "slug": "amos",
+    "name_en": "Amos",
+    "name_am": "ትንቢተ ዓሞጽ",
+    "collection": "old",
+    "sort_order": 34
+  },
+  {
+    "canonical_number": 35,
+    "slug": "micah",
+    "name_en": "Micah",
+    "name_am": "ትንቢተ ሚክያስ",
+    "collection": "old",
+    "sort_order": 35
+  },
+  {
+    "canonical_number": 36,
+    "slug": "joel",
+    "name_en": "Joel",
+    "name_am": "ትንቢተ ኢዮኤል",
+    "collection": "old",
+    "sort_order": 36
+  },
+  {
+    "canonical_number": 37,
+    "slug": "obadiah",
+    "name_en": "Obadiah",
+    "name_am": "ትንቢተ አብድዩ",
+    "collection": "old",
+    "sort_order": 37
+  },
+  {
+    "canonical_number": 38,
+    "slug": "jonah",
+    "name_en": "Jonah",
+    "name_am": "ትንቢተ ዮናስ",
+    "collection": "old",
+    "sort_order": 38
+  },
+  {
+    "canonical_number": 39,
+    "slug": "nahum",
+    "name_en": "Nahum",
+    "name_am": "ትንቢተ ናሆም",
+    "collection": "old",
+    "sort_order": 39
+  },
+  {
+    "canonical_number": 40,
+    "slug": "habakkuk",
+    "name_en": "Habakkuk",
+    "name_am": "ትንቢተ ዕንባቆም",
+    "collection": "old",
+    "sort_order": 40
+  },
+  {
+    "canonical_number": 41,
+    "slug": "zephaniah",
+    "name_en": "Zephaniah",
+    "name_am": "ትንቢተ ሶፎንያስ",
+    "collection": "old",
+    "sort_order": 41
+  },
+  {
+    "canonical_number": 42,
+    "slug": "haggai",
+    "name_en": "Haggai",
+    "name_am": "ትንቢተ ሐጌ",
+    "collection": "old",
+    "sort_order": 42
+  },
+  {
+    "canonical_number": 43,
+    "slug": "zechariah",
+    "name_en": "Zechariah",
+    "name_am": "ትንቢተ ዘካርያስ",
+    "collection": "old",
+    "sort_order": 43
+  },
+  {
+    "canonical_number": 44,
+    "slug": "malachi",
+    "name_en": "Malachi",
+    "name_am": "ትንቢተ ሚልክያስ",
+    "collection": "old",
+    "sort_order": 44
+  },
+  {
+    "canonical_number": 45,
+    "slug": "sirach",
+    "name_en": "Sirach",
+    "name_am": "መጽሐፈ ሲራክ",
+    "collection": "old",
+    "sort_order": 45
+  },
+  {
+    "canonical_number": 46,
+    "slug": "josephas-son-of-bengorion",
+    "name_en": "Josephas, son of Bengorion",
+    "name_am": null,
+    "collection": "old",
+    "sort_order": 46
+  },
+  {
+    "canonical_number": 1,
+    "slug": "matthew",
+    "name_en": "Matthew",
+    "name_am": "የማቴዎስ ወንጌል",
+    "collection": "new",
+    "sort_order": 47
+  },
+  {
+    "canonical_number": 2,
+    "slug": "mark",
+    "name_en": "Mark",
+    "name_am": "የማርቆስ ወንጌል",
+    "collection": "new",
+    "sort_order": 48
+  },
+  {
+    "canonical_number": 3,
+    "slug": "luke",
+    "name_en": "Luke",
+    "name_am": "የሉቃስ ወንጌል",
+    "collection": "new",
+    "sort_order": 49
+  },
+  {
+    "canonical_number": 4,
+    "slug": "john",
+    "name_en": "John",
+    "name_am": "የዮሐንስ ወንጌል",
+    "collection": "new",
+    "sort_order": 50
+  },
+  {
+    "canonical_number": 5,
+    "slug": "acts",
+    "name_en": "Acts",
+    "name_am": "የሐዋርያት ሥራ",
+    "collection": "new",
+    "sort_order": 51
+  },
+  {
+    "canonical_number": 6,
+    "slug": "romans",
+    "name_en": "Romans",
+    "name_am": "ወደ ሮሜ ሰዎች",
+    "collection": "new",
+    "sort_order": 52
+  },
+  {
+    "canonical_number": 7,
+    "slug": "first-corinthians",
+    "name_en": "First Corinthians",
+    "name_am": "1ኛ ወደ ቆሮንቶስ ሰዎች",
+    "collection": "new",
+    "sort_order": 53
+  },
+  {
+    "canonical_number": 8,
+    "slug": "second-corinthians",
+    "name_en": "Second Corinthians",
+    "name_am": "2ኛ ወደ ቆሮንቶስ ሰዎች",
+    "collection": "new",
+    "sort_order": 54
+  },
+  {
+    "canonical_number": 9,
+    "slug": "galatians",
+    "name_en": "Galatians",
+    "name_am": "ወደ ገላትያ ሰዎች",
+    "collection": "new",
+    "sort_order": 55
+  },
+  {
+    "canonical_number": 10,
+    "slug": "ephesians",
+    "name_en": "Ephesians",
+    "name_am": "ወደ ኤፌሶን ሰዎች",
+    "collection": "new",
+    "sort_order": 56
+  },
+  {
+    "canonical_number": 11,
+    "slug": "philippians",
+    "name_en": "Philippians",
+    "name_am": "ወደ ፊልጵስዩስ ሰዎች",
+    "collection": "new",
+    "sort_order": 57
+  },
+  {
+    "canonical_number": 12,
+    "slug": "colossians",
+    "name_en": "Colossians",
+    "name_am": "ወደ ቆላስይስ ሰዎች",
+    "collection": "new",
+    "sort_order": 58
+  },
+  {
+    "canonical_number": 13,
+    "slug": "first-thessalonians",
+    "name_en": "First Thessalonians",
+    "name_am": "1ኛ ወደ ተሰሎንቄ ሰዎች",
+    "collection": "new",
+    "sort_order": 59
+  },
+  {
+    "canonical_number": 14,
+    "slug": "second-thessalonians",
+    "name_en": "Second Thessalonians",
+    "name_am": "2ኛ ወደ ተሰሎንቄ ሰዎች",
+    "collection": "new",
+    "sort_order": 60
+  },
+  {
+    "canonical_number": 15,
+    "slug": "first-timothy",
+    "name_en": "First Timothy",
+    "name_am": "1ኛ ወደ ጢሞቴዎስ",
+    "collection": "new",
+    "sort_order": 61
+  },
+  {
+    "canonical_number": 16,
+    "slug": "second-timothy",
+    "name_en": "Second Timothy",
+    "name_am": "2ኛ ወደ ጢሞቴዎስ",
+    "collection": "new",
+    "sort_order": 62
+  },
+  {
+    "canonical_number": 17,
+    "slug": "titus",
+    "name_en": "Titus",
+    "name_am": "ወደ ቲቶ",
+    "collection": "new",
+    "sort_order": 63
+  },
+  {
+    "canonical_number": 18,
+    "slug": "philemon",
+    "name_en": "Philemon",
+    "name_am": "ወደ ፊልሞና",
+    "collection": "new",
+    "sort_order": 64
+  },
+  {
+    "canonical_number": 19,
+    "slug": "hebrews",
+    "name_en": "Hebrews",
+    "name_am": "ወደ ዕብራውያን",
+    "collection": "new",
+    "sort_order": 65
+  },
+  {
+    "canonical_number": 20,
+    "slug": "first-peter",
+    "name_en": "First Peter",
+    "name_am": "1ኛ የጴጥሮስ መልእክት",
+    "collection": "new",
+    "sort_order": 66
+  },
+  {
+    "canonical_number": 21,
+    "slug": "second-peter",
+    "name_en": "Second Peter",
+    "name_am": "2ኛ የጴጥሮስ መልእክት",
+    "collection": "new",
+    "sort_order": 67
+  },
+  {
+    "canonical_number": 22,
+    "slug": "first-john",
+    "name_en": "First John",
+    "name_am": "1ኛ የዮሐንስ መልእክት",
+    "collection": "new",
+    "sort_order": 68
+  },
+  {
+    "canonical_number": 23,
+    "slug": "second-john",
+    "name_en": "Second John",
+    "name_am": "2ኛ የዮሐንስ መልእክት",
+    "collection": "new",
+    "sort_order": 69
+  },
+  {
+    "canonical_number": 24,
+    "slug": "third-john",
+    "name_en": "Third John",
+    "name_am": "3ኛ የዮሐንስ መልእክት",
+    "collection": "new",
+    "sort_order": 70
+  },
+  {
+    "canonical_number": 25,
+    "slug": "james",
+    "name_en": "James",
+    "name_am": "የያዕቆን መልእክት",
+    "collection": "new",
+    "sort_order": 71
+  },
+  {
+    "canonical_number": 26,
+    "slug": "jude",
+    "name_en": "Jude",
+    "name_am": "የይሁዳ መልእክት",
+    "collection": "new",
+    "sort_order": 72
+  },
+  {
+    "canonical_number": 27,
+    "slug": "revelation",
+    "name_en": "Revelation",
+    "name_am": "የዮሐንስ ራዕይ",
+    "collection": "new",
+    "sort_order": 73
+  },
+  {
+    "canonical_number": 28,
+    "slug": "sirate-tsion",
+    "name_en": "Sirate Tsion",
+    "name_am": null,
+    "collection": "new",
+    "sort_order": 74
+  },
+  {
+    "canonical_number": 29,
+    "slug": "tizaz",
+    "name_en": "Tizaz",
+    "name_am": null,
+    "collection": "new",
+    "sort_order": 75
+  },
+  {
+    "canonical_number": 30,
+    "slug": "gitsew",
+    "name_en": "Gitsew",
+    "name_am": null,
+    "collection": "new",
+    "sort_order": 76
+  },
+  {
+    "canonical_number": 31,
+    "slug": "abtilis",
+    "name_en": "Abtilis",
+    "name_am": null,
+    "collection": "new",
+    "sort_order": 77
+  },
+  {
+    "canonical_number": 32,
+    "slug": "first-dominos",
+    "name_en": "First Dominos",
+    "name_am": null,
+    "collection": "new",
+    "sort_order": 78
+  },
+  {
+    "canonical_number": 33,
+    "slug": "second-dominos",
+    "name_en": "Second Dominos",
+    "name_am": null,
+    "collection": "new",
+    "sort_order": 79
+  },
+  {
+    "canonical_number": 34,
+    "slug": "clement",
+    "name_en": "Clement",
+    "name_am": "መጽሐፈ ቀሌምንጦስ",
+    "collection": "new",
+    "sort_order": 80
+  },
+  {
+    "canonical_number": 35,
+    "slug": "didascalia",
+    "name_en": "Didascalia",
+    "name_am": "መጽሐፈ ዲድስቅልያ",
+    "collection": "new",
+    "sort_order": 81
+  }
+]

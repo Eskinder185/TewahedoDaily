@@ -72,6 +72,9 @@ export function CalendarPage() {
   const dayContextCacheRef = useRef<Map<string, DayChurchContext>>(new Map())
   const dayRequestIdRef = useRef(0)
   const dateParamApplied = useRef(false)
+  /** CAL-05: restore page scroll after closing detail sheet. */
+  const savedScrollY = useRef(0)
+  const prevScrollRestoration = useRef<ScrollRestoration | null>(null)
 
   useEffect(() => {
     if (dateParamApplied.current) return
@@ -256,6 +259,24 @@ export function CalendarPage() {
     setRangeEnd(addDays(civil, FUTURE_DAYS))
   }
 
+  const shiftSelectedDay = useCallback((delta: number) => {
+    const next = addDays(new Date(viewYear, viewMonth, selectedDay), delta)
+    setViewYear(next.getFullYear())
+    setViewMonth(next.getMonth())
+    setSelectedDay(next.getDate())
+    setDetailEvent(null)
+    setRangeStart((start) => {
+      const civil = stripLocal(next)
+      if (civil < start) return addDays(civil, -PAST_DAYS)
+      return start
+    })
+    setRangeEnd((end) => {
+      const civil = stripLocal(next)
+      if (civil > end) return addDays(civil, FUTURE_DAYS)
+      return end
+    })
+  }, [viewYear, viewMonth, selectedDay])
+
   const goPrevMonth = () => {
     const d = new Date(viewYear, viewMonth - 1, 1)
     const max = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
@@ -280,6 +301,15 @@ export function CalendarPage() {
   }
 
   const openEvent = useCallback((event: PresentableCalendarEvent, date: Date) => {
+    savedScrollY.current = window.scrollY
+    try {
+      if (prevScrollRestoration.current == null) {
+        prevScrollRestoration.current = window.history.scrollRestoration
+      }
+      window.history.scrollRestoration = 'manual'
+    } catch {
+      /* ignore */
+    }
     const civil = stripLocal(date)
     setViewYear(civil.getFullYear())
     setViewMonth(civil.getMonth())
@@ -289,6 +319,28 @@ export function CalendarPage() {
 
   const closeDetail = useCallback(() => {
     setDetailEvent(null)
+    const y = savedScrollY.current
+    const restore = () => {
+      const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
+      window.scrollTo({ top: Math.min(y, maxY), left: 0, behavior: 'auto' })
+    }
+    restore()
+    window.requestAnimationFrame(() => {
+      restore()
+      window.requestAnimationFrame(() => {
+        restore()
+        try {
+          if (prevScrollRestoration.current != null) {
+            window.history.scrollRestoration = prevScrollRestoration.current
+            prevScrollRestoration.current = null
+          }
+        } catch {
+          /* ignore */
+        }
+      })
+    })
+    window.setTimeout(restore, 80)
+    window.setTimeout(restore, 200)
   }, [])
 
   const loadEarlier = useCallback(() => {
@@ -319,12 +371,32 @@ export function CalendarPage() {
 
       <section className={styles.selectedBlock} aria-labelledby="timeline-heading">
         <header className={styles.selectedHead}>
-          <h2 id="timeline-heading" className={styles.selectedGregorian}>
-            {gregorianLabel}
-          </h2>
-          {ethiopianLabel ? (
-            <p className={styles.selectedEthiopian}>{ethiopianLabel}</p>
-          ) : null}
+          <div className={styles.dayNav}>
+            <button
+              type="button"
+              className={styles.dayNavBtn}
+              aria-label={t('calendar.page.previousDay')}
+              onClick={() => shiftSelectedDay(-1)}
+            >
+              ←
+            </button>
+            <div className={styles.selectedHeadCopy}>
+              <h2 id="timeline-heading" className={styles.selectedGregorian}>
+                {gregorianLabel}
+              </h2>
+              {ethiopianLabel ? (
+                <p className={styles.selectedEthiopian}>{ethiopianLabel}</p>
+              ) : null}
+            </div>
+            <button
+              type="button"
+              className={styles.dayNavBtn}
+              aria-label={t('calendar.page.nextDay')}
+              onClick={() => shiftSelectedDay(1)}
+            >
+              →
+            </button>
+          </div>
         </header>
 
         {dayError && !dayContext && timelineGroups.length === 0 ? (

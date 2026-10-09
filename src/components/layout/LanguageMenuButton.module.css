@@ -1,0 +1,81 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  height: var(--tap-min);
+  padding: 0 0.55rem;
+  margin: 0;
+  border-radius: var(--radius-pill);
+  border: 1px solid color-mix(in srgb, var(--color-border-strong) 78%, var(--color-gold-line));
+  background: color-mix(in srgb, var(--color-bg-elevated) 90%, var(--color-bg-muted));
+  box-shadow:
+    0 1px 0 var(--color-gold-faint),
+    var(--shadow-card);
+  color: var(--color-heading);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    color var(--duration-fast) var(--ease-out);
+}
+
+.trigger:hover {
+  border-color: var(--color-border-gold);
+  background: color-mix(in srgb, var(--color-bg-elevated) 82%, var(--color-gold-soft));
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.globe {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.abbr {
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 359.98px) {
+  .trigger {
+    padding-inline: 0.45rem;
+    gap: 0.2rem;
+  }
+
+  .abbr {
+    font-size: 0.72rem;
+  }
+}
+
+[data-theme='night'] .trigger {
+  background: color-mix(in srgb, var(--color-navy) 28%, var(--color-bg-elevated));
+}

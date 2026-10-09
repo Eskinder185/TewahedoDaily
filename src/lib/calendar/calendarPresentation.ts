@@ -363,7 +363,6 @@ export function displaySummary(
   mode: CalendarLocaleMode,
 ): string {
   if (mode === 'am') return event.summaryAmharic || event.summary || event.description
-  if (mode === 'both') return event.summaryAmharic || event.summary || event.description
   return event.summary || event.description || event.summaryAmharic
 }
 

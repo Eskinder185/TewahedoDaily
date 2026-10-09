@@ -11,6 +11,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { useAuth, hasCmsRole } from '../../lib/auth/useAuth'
+import { LanguageMenuButton } from './LanguageMenuButton'
 import { LanguageToggle } from './LanguageToggle'
 import { ThemeToggle } from './ThemeToggle'
 import styles from './SiteHeader.module.css'
@@ -303,7 +304,9 @@ export function SiteHeader() {
               <span className={styles.compactChrome}>
                 <ThemeToggle />
               </span>
-              <span className={styles.compactChrome}>
+              {/* Always visible on mobile — one-tap EN ↔ አማ (not in hamburger). */}
+              <LanguageMenuButton className={styles.languageAlways} />
+              <span className={styles.desktopLanguage}>
                 <LanguageToggle />
               </span>
             </div>

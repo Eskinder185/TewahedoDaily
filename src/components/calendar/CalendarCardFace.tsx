@@ -43,23 +43,15 @@ export function CalendarCardFace({
   const titleEn = (card.title || '').trim()
   const titleAm = (card.titleAmharic || '').trim()
   const primaryTitle =
-    contentLocale === 'am'
-      ? titleAm || titleEn
-      : contentLocale === 'both'
-        ? titleAm || titleEn
-        : titleEn || titleAm
+    contentLocale === 'am' ? titleAm || titleEn : titleEn || titleAm
   const secondaryTitle =
-    contentLocale === 'both'
-      ? titleAm && titleEn && titleAm !== titleEn
+    contentLocale === 'am'
+      ? titleEn && titleEn !== primaryTitle
         ? titleEn
         : ''
-      : contentLocale === 'am'
-        ? titleEn && titleEn !== primaryTitle
-          ? titleEn
-          : ''
-        : titleAm && titleAm !== primaryTitle
-          ? titleAm
-          : ''
+      : titleAm && titleAm !== primaryTitle
+        ? titleAm
+        : ''
 
   return (
     <article

@@ -14,8 +14,8 @@ export function PrayerTextBlock({
   const [textScale, setTextScale] = useState(1)
   const [copied, setCopied] = useState(false)
 
-  const displayAm = lang === 'am' || lang === 'both'
-  const displayEn = lang === 'en' || lang === 'both'
+  const displayAm = lang === 'am'
+  const displayEn = lang === 'en'
 
   const copyText = useMemo(() => {
     const parts: string[] = []

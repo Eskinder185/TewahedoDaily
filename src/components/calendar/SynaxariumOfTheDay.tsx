@@ -24,7 +24,7 @@ function CommemorationRow({ item }: { item: DayCommemorationItem }) {
   const primaryTitle =
     contentLocale === 'en' ? titleEn || titleAm : titleAm || titleEn
   const secondaryTitle =
-    contentLocale === 'both' && titleEn && titleAm && titleEn !== titleAm
+    contentLocale === 'am' && titleEn && titleAm && titleEn !== titleAm
       ? primaryTitle === titleAm
         ? titleEn
         : titleAm

@@ -1,5 +1,11 @@
-import { useEffect, useId, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  displayBookName,
+  hasBilingualBookNames,
+  matchCatalogBooks,
+} from '../../lib/bible/bibleCatalogPresentation'
+import type { CanonicalBook } from '../../lib/bible/bibleTypes'
 import { searchBibleShared } from '../../lib/search/sharedBibleSearch'
 import type { SearchBuddyApiResponse } from '../../lib/searchBuddy/apiTypes'
 import { looksLikeAmharicBibleReference } from '../../lib/searchBuddy/amharicStructuredSearch'
@@ -20,6 +26,8 @@ const COPY = {
     clear: 'Clear',
     voiceAria: 'Search the Bible by voice',
     voiceHint: 'Review the transcript, then search.',
+    books: 'Books',
+    book: 'Bible book',
   },
   am: {
     label: '\u1218\u133d\u1210\u134d \u1245\u12f1\u1235\u1295 \u1348\u120d\u130d',
@@ -34,6 +42,8 @@ const COPY = {
     clear: '\u12a0\u133d\u12f3',
     voiceAria: '\u1218\u133d\u1210\u134d \u1245\u12f1\u1235\u1295 \u1260\u12f5\u121d\u1335 \u1348\u120d\u130d',
     voiceHint: 'Review the transcript, then search.',
+    books: '\u1218\u133b\u1215\u134d\u1275',
+    book: '\u1218\u133d\u1210\u134d',
   },
 } as const
 
@@ -46,7 +56,12 @@ function shouldSearchImmediately(query: string): boolean {
   return false
 }
 
-export function BibleSearchBar() {
+type Props = {
+  /** Canonical catalog books for instant local book-name matches. */
+  catalogBooks?: CanonicalBook[]
+}
+
+export function BibleSearchBar({ catalogBooks = [] }: Props) {
   const { uiLocale } = useLocale()
   const copy = COPY[uiLocale]
   const inputId = useId()
@@ -61,6 +76,11 @@ export function BibleSearchBar() {
   const abortRef = useRef<AbortController | null>(null)
   const debounceRef = useRef<number | null>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  const bookHits = useMemo(
+    () => matchCatalogBooks(query, catalogBooks, 8),
+    [query, catalogBooks],
+  )
 
   useEffect(() => {
     return () => {
@@ -148,6 +168,10 @@ export function BibleSearchBar() {
       structured.type === 'bible_chapter' ||
       structured.type === 'bible_search')
 
+  const showBookHits = bookHits.length > 0 && !showStructured
+  const showEmpty =
+    status === 'empty' && !showBookHits && !showStructured && siteResults.length === 0
+
   return (
     <div className={styles.root}>
       <form className={styles.form} onSubmit={onSubmit} role="search">
@@ -173,7 +197,9 @@ export function BibleSearchBar() {
             autoComplete="off"
             enterKeyHint="search"
             aria-controls={listId}
-            aria-expanded={siteResults.length > 0 || Boolean(showStructured)}
+            aria-expanded={
+              siteResults.length > 0 || showBookHits || Boolean(showStructured)
+            }
           />
           {query ? (
             <button
@@ -208,7 +234,7 @@ export function BibleSearchBar() {
           {copy.searching}
         </p>
       ) : null}
-      {status === 'empty' ? (
+      {showEmpty ? (
         <p className={styles.status} role="status">
           {copy.empty}
         </p>
@@ -219,6 +245,36 @@ export function BibleSearchBar() {
         </p>
       ) : null}
 
+      {showBookHits ? (
+        <ul id={listId} className={styles.results} aria-label={copy.books}>
+          {bookHits.map((book) => {
+            const primary = displayBookName(book, uiLocale)
+            const secondaryLang = uiLocale === 'am' ? 'en' : 'am'
+            const secondary = displayBookName(book, secondaryLang)
+            return (
+              <li key={book.id}>
+                <Link to={`/bible/${book.slug}`} className={styles.result}>
+                  <div className={styles.resultBody}>
+                    <p className={styles.resultType}>{copy.book}</p>
+                    <h3 className={styles.resultTitle} lang={uiLocale}>
+                      {primary}
+                    </h3>
+                    {hasBilingualBookNames(book) &&
+                    secondary !== primary &&
+                    secondary !== book.slug ? (
+                      <p className={styles.resultMeta} lang={secondaryLang}>
+                        {secondary}
+                      </p>
+                    ) : null}
+                  </div>
+                  <span className={styles.resultOpen}>{copy.open}</span>
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
+      ) : null}
+
       {showStructured ? (
         <div id={listId} className={styles.structured} aria-label={copy.label}>
           <SearchBuddyResults response={structured} empty={false} />
@@ -226,7 +282,11 @@ export function BibleSearchBar() {
       ) : null}
 
       {!showStructured && siteResults.length > 0 ? (
-        <ul id={listId} className={styles.results} aria-label={copy.label}>
+        <ul
+          id={showBookHits ? undefined : listId}
+          className={styles.results}
+          aria-label={copy.label}
+        >
           {siteResults.map((result) => {
             const ethiopic =
               /[\u1200-\u137F]/.test(result.excerpt || '') ||

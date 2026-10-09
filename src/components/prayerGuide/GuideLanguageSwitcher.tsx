@@ -2,9 +2,8 @@ import type { GuideLangMode } from '../../lib/prayers/learnHowToPrayModel'
 import styles from './prayerGuideUi.module.css'
 
 const OPTIONS: { value: GuideLangMode; label: string }[] = [
-  { value: 'am', label: 'Amharic' },
   { value: 'en', label: 'English' },
-  { value: 'both', label: 'Both' },
+  { value: 'am', label: 'አማርኛ' },
 ]
 
 export function GuideLanguageSwitcher({

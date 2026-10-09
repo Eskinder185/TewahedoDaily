@@ -1,0 +1,134 @@
+{
+  "base": "https://tewahedodaily.pages.dev",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "checks": {
+    "language": {
+      "menuButtonVisible": false,
+      "menuButtonCount": 0,
+      "headerRadioVisible": false,
+      "headerRadioCount": 0,
+      "hamburgerVisible": true,
+      "triggerText": "",
+      "drawer": {
+        "hasEnglish": true,
+        "hasAmharic": true,
+        "hasOromo": false,
+        "hasBoth": true
+      }
+    },
+    "calendar": {
+      "prevMonth": 1,
+      "nextMonth": 1,
+      "prevDay": 0,
+      "nextDay": 0,
+      "openDetailsButtons": 64,
+      "detail": {
+        "opened": true,
+        "height": 776,
+        "heightVh": 92,
+        "top": -234,
+        "closeVisible": false,
+        "closeMin": 36,
+        "overflowY": "visible",
+        "maxHeight": "776.48px"
+      },
+      "backBehavior": {
+        "urlBefore": "https://tewahedodaily.pages.dev/calendar",
+        "urlAfter": "https://tewahedodaily.pages.dev/",
+        "dialogStillOpen": false,
+        "stayedOnCalendar": false,
+        "closedDetail": false
+      }
+    },
+    "bible": {
+      "searchVisible": true,
+      "afterRace": {
+        "mentionsJohn316": false,
+        "mentionsMark11": true
+      }
+    },
+    "touch": {
+      "sampled": 27,
+      "undersized": [
+        {
+          "text": "Tewahedo DailyQuiet liturgical studio",
+          "w": 256,
+          "h": 32
+        },
+        {
+          "text": "Portfolio - eskinder.dev",
+          "w": 188,
+          "h": 39
+        },
+        {
+          "text": "About",
+          "w": 43,
+          "h": 34
+        },
+        {
+          "text": "Saints",
+          "w": 43,
+          "h": 34
+        },
+        {
+          "text": "Feasts",
+          "w": 44,
+          "h": 34
+        },
+        {
+          "text": "Bible",
+          "w": 37,
+          "h": 34
+        },
+        {
+          "text": "Learn",
+          "w": 40,
+          "h": 34
+        },
+        {
+          "text": "Legal",
+          "w": 38,
+          "h": 34
+        },
+        {
+          "text": "Copyright",
+          "w": 66,
+          "h": 34
+        },
+        {
+          "text": "Privacy",
+          "w": 50,
+          "h": 34
+        },
+        {
+          "text": "Removal",
+          "w": 59,
+          "h": 34
+        },
+        {
+          "text": "Suggest a correction",
+          "w": 132,
+          "h": 34
+        },
+        {
+          "text": "Submit a Mezmur",
+          "w": 115,
+          "h": 34
+        },
+        {
+          "text": "Saved",
+          "w": 43,
+          "h": 34
+        },
+        {
+          "text": "Admin Login",
+          "w": 104,
+          "h": 34
+        }
+      ]
+    }
+  }
+}

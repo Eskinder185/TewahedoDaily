@@ -7,6 +7,7 @@ import { listReadingProgress } from '../../lib/userContent/readingProgressServic
 import { getGuestRecentViewed } from '../../lib/userContent/guestStorage'
 import { supabase } from '../../lib/supabase/client'
 import { useLocale, type AppLocale } from '../../lib/i18n/locale'
+import { normalizeAppLocale } from '../../lib/i18n/localeHelpers'
 import styles from './AuthPages.module.css'
 
 const PREFS_KEY = 'tewahedo:prefs:v1'
@@ -179,14 +180,13 @@ export function AccountHomePage() {
             className={styles.control}
             value={locale}
             onChange={(e) => {
-              const next = e.target.value as AppLocale
+              const next = normalizeAppLocale(e.target.value)
               setLocale(next)
               writePrefs({ ...prefs, language: next })
             }}
           >
             <option value="en">English</option>
-            <option value="am">Amharic</option>
-            <option value="both">Both (Amharic & English)</option>
+            <option value="am">አማርኛ (Amharic)</option>
           </select>
         </label>
       </div>

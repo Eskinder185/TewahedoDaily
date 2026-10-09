@@ -223,9 +223,11 @@ export function loadCalendarDetailLang(): CalendarLocaleMode {
   if (typeof window === 'undefined') return 'en'
   try {
     const primary = window.localStorage.getItem('tewahedo-daily-locale')
-    if (primary === 'en' || primary === 'am' || primary === 'both') return primary
+    if (primary === 'en' || primary === 'am') return primary
+    if (primary) return 'en' // legacy both / Oromo
     const raw = window.localStorage.getItem(CALENDAR_DETAIL_LANG_KEY)
-    if (raw === 'en' || raw === 'am' || raw === 'both') return raw
+    if (raw === 'en' || raw === 'am') return raw
+    if (raw) return 'en'
   } catch {
     /* ignore */
   }

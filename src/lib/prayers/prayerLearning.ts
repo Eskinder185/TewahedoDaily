@@ -7,7 +7,7 @@ import seed from './prayerLearningSeed.json'
 
 export type LearningLang = 'am' | 'en'
 
-/** @deprecated Prefer AppLocale — same values. */
+/** @deprecated Prefer AppLocale — same values (en | am). */
 export type GuideLangMode = AppLocale
 
 export type LearningContentKind =
@@ -508,9 +508,12 @@ export function loadGuideLang(): GuideLangMode {
   if (typeof window === 'undefined') return 'en'
   try {
     const primary = window.localStorage.getItem('tewahedo-daily-locale')
-    if (primary === 'am' || primary === 'en' || primary === 'both') return primary
+    if (primary === 'am' || primary === 'en') return primary
+    // Legacy both / Oromo → English
+    if (primary) return 'en'
     const raw = window.localStorage.getItem(GUIDE_LANG_STORAGE_KEY)
-    if (raw === 'am' || raw === 'en' || raw === 'both') return raw
+    if (raw === 'am' || raw === 'en') return raw
+    if (raw) return 'en'
   } catch {
     /* ignore */
   }

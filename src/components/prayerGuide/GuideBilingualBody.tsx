@@ -27,24 +27,27 @@ export function GuideBilingualBody({
 
   return (
     <div className={`${styles.bilingualBody} ${className}`.trim()}>
-      {lang === 'am' || lang === 'both' ? (
+      {lang === 'am' ? (
         <div className={styles.bodyAm} lang="am">
           {amParts.length > 0 ? (
             amParts.map((part, index) => <p key={`am-${index}`}>{part}</p>)
+          ) : enParts.length > 0 ? (
+            enParts.map((part, index) => <p key={`en-fallback-${index}`}>{part}</p>)
           ) : (
             <p className={styles.missing}>Translation not available yet.</p>
           )}
         </div>
-      ) : null}
-      {lang === 'en' || lang === 'both' ? (
+      ) : (
         <div className={styles.bodyEn} lang="en">
           {enParts.length > 0 ? (
             enParts.map((part, index) => <p key={`en-${index}`}>{part}</p>)
+          ) : amParts.length > 0 ? (
+            amParts.map((part, index) => <p key={`am-fallback-${index}`} lang="am">{part}</p>)
           ) : (
             <p className={styles.missing}>Translation not available yet.</p>
           )}
         </div>
-      ) : null}
+      )}
     </div>
   )
 }

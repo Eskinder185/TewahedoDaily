@@ -538,8 +538,28 @@
 
 }
 
+/* Mobile: language stays in the header; theme can move to the drawer. */
+.languageAlways {
+  display: inline-flex;
+}
+
+.desktopLanguage {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  /* Desktop: prefer the segment control; hide the compact globe menu. */
+  .languageAlways {
+    display: none;
+  }
+
+  .desktopLanguage {
+    display: inline-flex;
+  }
+}
+
 @media (max-width: 430px) {
-  /* Theme/language move into the drawer; keep Account / Sign in when space allows. */
+  /* Theme moves into the drawer; language remains in the header. */
   .compactChrome {
     display: none;
   }

@@ -5,29 +5,39 @@
 import assert from 'node:assert/strict'
 import {
   isAppLocale,
+  normalizeAppLocale,
   prefersAmharicContent,
   toContentLocale,
   toUiLocale,
 } from '../src/lib/i18n/localeHelpers.ts'
 import { bilingualLines, pickContentString } from '../src/lib/i18n/bilingualContent.ts'
 
-assert.equal(isAppLocale('both'), true)
+assert.equal(isAppLocale('en'), true)
+assert.equal(isAppLocale('am'), true)
+assert.equal(isAppLocale('both'), false)
+assert.equal(isAppLocale('om'), false)
 assert.equal(isAppLocale('fr'), false)
-assert.equal(toUiLocale('both'), 'en')
+
+assert.equal(normalizeAppLocale('en'), 'en')
+assert.equal(normalizeAppLocale('am'), 'am')
+assert.equal(normalizeAppLocale('both'), 'en')
+assert.equal(normalizeAppLocale('om'), 'en')
+assert.equal(normalizeAppLocale('oromo'), 'en')
+assert.equal(normalizeAppLocale('afaan-oromoo'), 'en')
+
 assert.equal(toUiLocale('am'), 'am')
-assert.equal(toContentLocale('both'), 'both')
+assert.equal(toUiLocale('en'), 'en')
+assert.equal(toContentLocale('am'), 'am')
 assert.equal(prefersAmharicContent('am'), true)
-assert.equal(prefersAmharicContent('both'), false)
+assert.equal(prefersAmharicContent('en'), false)
 
 const block = { english: 'Cross', amharic: 'መስቀል' }
 assert.equal(pickContentString(block, 'en').text, 'Cross')
 assert.equal(pickContentString(block, 'am').text, 'መስቀል')
-assert.equal(pickContentString(block, 'both').text, 'መስቀል')
 
-const both = bilingualLines(block, 'both')
-assert.equal(both.length, 2)
-assert.equal(both[0].lang, 'am')
-assert.equal(both[1].lang, 'en')
+const amLines = bilingualLines(block, 'am')
+assert.equal(amLines.length, 1)
+assert.equal(amLines[0].lang, 'am')
 
 const fallback = bilingualLines({ english: 'Only EN', amharic: '' }, 'am')
 assert.equal(fallback.length, 1)

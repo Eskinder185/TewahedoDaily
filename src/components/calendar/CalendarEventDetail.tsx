@@ -1,4 +1,5 @@
 import { useEffect, useId, useLayoutEffect, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import {
   displaySummary,
   type PresentableCalendarEvent,
@@ -17,9 +18,12 @@ export type CalendarEventDetailProps = {
   onClose: () => void
 }
 
+const DETAIL_HISTORY_KEY = 'td-calendar-detail'
+
 /**
  * Enriched Calendar event detail (modal on desktop, bottom sheet on mobile).
- * Single place for what / why / important / scripture / fasting / season fields.
+ * CAL-01 sheet height · CAL-02 history Back · CAL-03 focus trap / restore.
+ * Portaled to document.body so AppShell route transforms cannot break position:fixed.
  */
 export function CalendarEventDetail({
   open,
@@ -31,17 +35,61 @@ export function CalendarEventDetail({
   const { contentLocale: lang } = useLocale()
   const panelRef = useRef<HTMLDivElement>(null)
   const previouslyFocused = useRef<HTMLElement | null>(null)
+  const pushedHistory = useRef(false)
   const titleId = useId()
+
+  // CAL-02: Browser Back closes the sheet instead of leaving Calendar.
+  useEffect(() => {
+    if (!open || !event) return
+
+    const state = { [DETAIL_HISTORY_KEY]: event.id }
+    try {
+      const current = window.history.state
+      if (!current || current[DETAIL_HISTORY_KEY] !== event.id) {
+        window.history.pushState(state, '')
+        pushedHistory.current = true
+      }
+    } catch {
+      pushedHistory.current = false
+    }
+
+    const onPop = () => {
+      pushedHistory.current = false
+      onClose()
+    }
+    window.addEventListener('popstate', onPop)
+    return () => {
+      window.removeEventListener('popstate', onPop)
+    }
+  }, [open, event?.id, onClose])
+
+  const handleClose = () => {
+    if (pushedHistory.current) {
+      pushedHistory.current = false
+      try {
+        window.history.back()
+        return
+      } catch {
+        /* fall through */
+      }
+    }
+    onClose()
+  }
 
   useEffect(() => {
     if (!open) return
     previouslyFocused.current = document.activeElement as HTMLElement | null
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        handleClose()
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [open, onClose])
+    // handleClose closes via history when we pushed; intentional
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- stable open/close cycle
+  }, [open, event?.id])
 
   useEffect(() => {
     if (!open) return
@@ -54,15 +102,22 @@ export function CalendarEventDetail({
 
   useLayoutEffect(() => {
     if (!open) return
-    if (panelRef.current) panelRef.current.scrollTop = 0
+    const body = panelRef.current?.querySelector<HTMLElement>(`.${styles.body}`)
+    if (body) body.scrollTop = 0
   }, [open, event?.id])
 
   useEffect(() => {
     if (!open) return
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
+    const mainEl = document.getElementById('main')
+    const footerEl = document.querySelector('footer')
+    const headerEl = document.querySelector('[data-header]')
+    const inertTargets = [mainEl, footerEl, headerEl].filter(Boolean) as HTMLElement[]
+    for (const el of inertTargets) el.setAttribute('inert', '')
     return () => {
       document.body.style.overflow = prev
+      for (const el of inertTargets) el.removeAttribute('inert')
     }
   }, [open])
 
@@ -94,8 +149,8 @@ export function CalendarEventDetail({
 
   const summary = displaySummary(event, lang)
 
-  return (
-    <div className={styles.backdrop} role="presentation" onClick={onClose}>
+  return createPortal(
+    <div className={styles.backdrop} role="presentation" onClick={handleClose}>
       <div
         className={styles.panel}
         role="dialog"
@@ -123,14 +178,14 @@ export function CalendarEventDetail({
                   <span aria-hidden> · </span>
                 ) : null}
                 {ethiopianLabel || event.ethiopianDateLabel ? (
-                  <span lang="am">{ethiopianLabel || event.ethiopianDateLabel}</span>
+                  <span>{ethiopianLabel || event.ethiopianDateLabel}</span>
                 ) : null}
               </p>
             )}
             {event.movableLabel ? <p className={styles.meta}>{event.movableLabel}</p> : null}
             {event.fastTypeLabel ? <p className={styles.meta}>{event.fastTypeLabel}</p> : null}
           </div>
-          <button type="button" className={styles.close} onClick={onClose} aria-label="Close">
+          <button type="button" className={styles.close} onClick={handleClose} aria-label="Close">
             Close
           </button>
         </header>
@@ -151,6 +206,7 @@ export function CalendarEventDetail({
           <CalendarEventDetails fields={event.fields} lang={lang} defaultOpenFirst />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }

@@ -27,6 +27,7 @@
     "amharicNative": "አማርኛ",
     "both": "Both",
     "selected": "Language: {language}",
+    "switchTo": "Switch to {language}",
     "readingSettings": "Reading settings",
     "transliteration": "Transliteration",
     "textSize": "Text size"
@@ -119,6 +120,8 @@
       "seasonHeading": "Season",
       "whyEmpty": "No explanation has been added for this observance yet.",
       "jumpToday": "Jump to today",
+      "previousDay": "Previous day",
+      "nextDay": "Next day",
       "selectDay": "Select a day to view observance details.",
       "observanceImage": "{title} observance image"
     },

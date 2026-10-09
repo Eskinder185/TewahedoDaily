@@ -84,10 +84,7 @@ function ExpandableEvent({
 }) {
   const [open, setOpen] = useState(defaultOpen)
   const panelId = `cal-event-${event.kind}-${event.id}`
-  const summary =
-    lang === 'both'
-      ? null
-      : displaySummary(event, lang)
+  const summary = displaySummary(event, lang)
   return (
     <article className={`${styles.expandRow} ${toneClass(event.tone)}`}>
       <div className={styles.expandMain}>
@@ -111,18 +108,7 @@ function ExpandableEvent({
             {[event.fastTypeLabel, event.movableLabel].filter(Boolean).join(' · ')}
           </p>
         ) : null}
-        {lang === 'both' ? (
-          <div className={styles.summaryStack}>
-            {event.summaryAmharic ? (
-              <p className={styles.summaryAm} lang="am">
-                {event.summaryAmharic}
-              </p>
-            ) : null}
-            {event.summary || event.description ? (
-              <p className={styles.summary}>{event.summary || event.description}</p>
-            ) : null}
-          </div>
-        ) : summary ? (
+        {summary ? (
           <p className={styles.summary} lang={lang === 'am' ? 'am' : undefined}>
             {summary}
           </p>
@@ -203,12 +189,9 @@ export function TodayInChurchPanel({
   }
 
   const { primary, others, fast, fastFree, related, season, monthly } = presented
-  const summaryText =
-    primary && lang !== 'both'
-      ? displaySummary(primary, lang)
-      : primary
-        ? primary.summary || primary.description
-        : context.dayOneLiner
+  const summaryText = primary
+    ? displaySummary(primary, lang)
+    : context.dayOneLiner
 
   return (
     <div className={`${styles.panel} ${compact ? styles.compact : ''}`}>
@@ -239,18 +222,7 @@ export function TodayInChurchPanel({
               ) : primary.movableLabel ? (
                 <p className={styles.metaLine}>{primary.movableLabel}</p>
               ) : null}
-              {lang === 'both' ? (
-                <div className={styles.summaryStack}>
-                  {primary.summaryAmharic ? (
-                    <p className={styles.summaryAm} lang="am">
-                      {primary.summaryAmharic}
-                    </p>
-                  ) : null}
-                  {(primary.summary || primary.description) && (
-                    <p className={styles.summary}>{primary.summary || primary.description}</p>
-                  )}
-                </div>
-              ) : summaryText ? (
+              {summaryText ? (
                 <p className={styles.summary} lang={lang === 'am' ? 'am' : undefined}>
                   {summaryText}
                 </p>

@@ -6,12 +6,11 @@ import styles from './LanguageToggle.module.css'
 const OPTIONS: Array<{
   id: AppLocale
   short: { en: string; am: string }
-  labelKey: 'langEnglishButton' | 'langAmharicButton' | 'langBothButton'
-  langAttr?: string
+  labelKey: 'langEnglishButton' | 'langAmharicButton'
+  langAttr: string
 }> = [
   { id: 'en', short: { en: 'EN', am: 'EN' }, labelKey: 'langEnglishButton', langAttr: 'en' },
   { id: 'am', short: { en: 'አማ', am: 'አማ' }, labelKey: 'langAmharicButton', langAttr: 'am' },
-  { id: 'both', short: { en: 'Both', am: 'ሁ' }, labelKey: 'langBothButton' },
 ]
 
 type Props = {
@@ -24,8 +23,7 @@ export function LanguageToggle({ variant = 'compact', className }: Props) {
   const { locale, setLocale, uiLocale } = useLocale()
   const t = useUiLabel()
   const tt = useTranslation()
-  const selectedLabel =
-    locale === 'am' ? t('langAmharicButton') : locale === 'both' ? t('langBothButton') : t('langEnglishButton')
+  const selectedLabel = locale === 'am' ? t('langAmharicButton') : t('langEnglishButton')
   const shortLocale = uiLocale === 'am' ? 'am' : 'en'
 
   return (
@@ -33,7 +31,6 @@ export function LanguageToggle({ variant = 'compact', className }: Props) {
       className={`${styles.group} ${variant === 'full' ? styles.groupFull : ''} ${className || ''}`.trim()}
       role="radiogroup"
       aria-label={t('langToggleGroup')}
-      aria-describedby={undefined}
     >
       <span className={styles.srOnly} aria-live="polite">
         {tt('language.selected', { language: selectedLabel })}

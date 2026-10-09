@@ -32,7 +32,7 @@ export function BilingualText({
   const lines = bilingualLines(block, locale)
   if (!lines.length) return null
 
-  const labelMode = showLabels ?? (locale === 'both' || lines.some((l) => l.isFallback))
+  const labelMode = showLabels ?? lines.some((l) => l.isFallback)
 
   if (lines.length === 1 && !labelMode) {
     const line = lines[0]

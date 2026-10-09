@@ -383,7 +383,6 @@ export function localizedCardText(locale: string, english: string, amharic: stri
   const en = (english || '').trim()
   const am = (amharic || '').trim()
   if (locale === 'am') return am || en
-  if (locale === 'both') return am || en
   return en || am
 }
 

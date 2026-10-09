@@ -55,7 +55,7 @@ export function ContentRenderer({
       ) : (
         <>
           {prayers.length > 0 ? <PrayerBlock rows={prayers} /> : null}
-          <ProseBlocks rows={prose} lang={lang} sectionTitle={section.titleEnglish} />
+          <ProseBlocks rows={prose} sectionTitle={section.titleEnglish} />
         </>
       )}
     </div>
@@ -64,11 +64,9 @@ export function ContentRenderer({
 
 function ProseBlocks({
   rows,
-  lang,
   sectionTitle,
 }: {
   rows: LearningContentRow[]
-  lang: GuideLangMode
   sectionTitle?: string
 }) {
   if (rows.length === 0) {
@@ -92,9 +90,6 @@ function ProseBlocks({
 
         return (
           <div key={row.contentId} className={blockClass} lang={row.language}>
-            {lang === 'both' && row.language === 'en' ? (
-              <p className={styles.translationLabel}>English translation</p>
-            ) : null}
             {heading && row.contentKind !== 'body' && !duplicateHeading ? (
               <p className={styles.contentHeading}>{heading}</p>
             ) : null}

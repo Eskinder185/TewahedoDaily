@@ -4,7 +4,7 @@
  */
 import type { PrayerGuideSection } from './prayerGuides'
 
-export type GuideLangMode = 'am' | 'en' | 'both'
+export type GuideLangMode = 'am' | 'en'
 export type GuideSectionKind = 'instruction' | 'prayer' | 'article'
 
 export type LearnTopicGroup = {
@@ -152,7 +152,9 @@ export function loadGuideLang(): GuideLangMode {
   if (typeof window === 'undefined') return 'am'
   try {
     const raw = window.localStorage.getItem(GUIDE_LANG_STORAGE_KEY)
-    if (raw === 'am' || raw === 'en' || raw === 'both') return raw
+    if (raw === 'am' || raw === 'en') return raw
+    // Legacy both → English (interface languages are EN/AM only)
+    if (raw === 'both') return 'en'
   } catch {
     /* ignore */
   }

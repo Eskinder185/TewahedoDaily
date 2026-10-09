@@ -27,6 +27,7 @@
     "amharicNative": "አማርኛ",
     "both": "ሁለቱም",
     "selected": "ቋንቋ፦ {language}",
+    "switchTo": "ወደ {language} ቀይር",
     "readingSettings": "የንባብ ቅንብሮች",
     "transliteration": "ፊደል ጽሁፍ",
     "textSize": "የጽሁፍ መጠን"
@@ -119,6 +120,8 @@
       "seasonHeading": "ወቅት",
       "whyEmpty": "ለዚህ መታሰቢያ ገና ማብራሪያ አልተጨመረም።",
       "jumpToday": "ወደ ዛሬ ዝለል",
+      "previousDay": "ያለፈው ቀን",
+      "nextDay": "ቀጣዩ ቀን",
       "selectDay": "የመታሰቢያ ዝርዝር ለማየት ቀን ይምረጡ።",
       "observanceImage": "የ{title} መታሰቢያ ምስል"
     },
