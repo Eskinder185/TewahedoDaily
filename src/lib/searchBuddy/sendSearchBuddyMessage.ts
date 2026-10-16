@@ -44,9 +44,8 @@ export async function sendSearchBuddyMessage(
   // Preserve ASR wording for Amharic Bible chat; English still gets Bible rewrite.
   const rawTrimmed = (message || '').replace(/\s+/g, ' ').trim()
   const prepared = prepareSearchBuddyMessage(message)
-  const forRouting = shouldUseAmharicStructuredPath(rawTrimmed)
-    ? rawTrimmed || prepared
-    : prepared
+  const useAmharicStructured = shouldUseAmharicStructuredPath(rawTrimmed)
+  const forRouting = useAmharicStructured ? rawTrimmed || prepared : prepared
   if (!forRouting) {
     throw new AiClientError('bad_request', 'Enter a search question first.')
   }
@@ -60,7 +59,7 @@ export async function sendSearchBuddyMessage(
     throw new AiClientError('not_configured', hint)
   }
 
-  if (shouldUseAmharicStructuredPath(forRouting)) {
+  if (useAmharicStructured) {
     const amOptions: AmharicStructuredSearchOptions = {
       signal,
       hymnContext: options.hymnContext,
@@ -75,7 +74,8 @@ export async function sendSearchBuddyMessage(
       }
     }
   } else {
-    // English / Latin: calendar intents hit structured calendar APIs before /api/chat.
+    // English / Latin / theology-with-Ethiopic: calendar intents before /api/chat.
+    // (Explanatory theology skips Amharic keyword Synaxarium via shouldUseAmharicStructuredPath.)
     const calendar = await resolveCalendarStructuredSearch(rawTrimmed || forRouting, {
       signal,
     })

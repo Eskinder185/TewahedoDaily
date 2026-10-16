@@ -308,6 +308,13 @@ export async function resolveAmharicStructuredSearch(
     return null
   }
 
+  // Doctrinal / open Q&A (incl. bilingual Ethiopic parentheses and Amharic
+  // interrogatives) must reach POST /api/chat. Never let loose Synaxarium/prayer
+  // keyword hits terminate them. Explicit calendar/synaxarium-today already returned above.
+  if (isExplanatoryTheologyQuery(rawForChat) || shouldFallThroughAmharicToChat(rawForChat)) {
+    return null
+  }
+
   // Bible-like that also looked calendar-ish is rare; if bibleLike remains, try bible.
   if (bibleLike) {
     try {
@@ -371,6 +378,13 @@ export async function resolveAmharicStructuredSearch(
   return shouldFallThroughAmharicToChat(rawForChat) ? null : UNKNOWN_AMHARIC
 }
 
+/**
+ * Ethiopic text usually uses the Amharic structured path (Bible / calendar /
+ * Synaxarium / prayer / hymn). Explanatory theology is excluded so bilingual
+ * English+Amharic doctrine questions are not keyword-searched against Synaxarium.
+ */
 export function shouldUseAmharicStructuredPath(message: string): boolean {
-  return containsEthiopic(message)
+  if (!containsEthiopic(message)) return false
+  if (isExplanatoryTheologyQuery(message)) return false
+  return true
 }

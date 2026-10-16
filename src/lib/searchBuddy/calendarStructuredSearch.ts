@@ -77,24 +77,40 @@ function includesEnglishWord(hay: string, word: string): boolean {
 
 /**
  * Open-ended theology / "why / explain / meaning" questions must reach /api/chat,
- * not calendar_search (which returns unknown when no feast record matches).
+ * not calendar_search or keyword Synaxarium/prayer hits.
+ *
+ * Kept as intent heuristics (not a giant doctrine glossary). Structured lookups
+ * (Bible refs, feast/fast/today, explicit Synaxarium) win via other detectors.
  */
 export function isExplanatoryTheologyQuery(text: string): boolean {
   const hay = normalizeCalendarIntentText(text)
   if (!hay) return false
+  // Fold Ethiopic U+1225 into U+1235 so mystery/Trinity stems match both spellings.
+  const folded = hay.replace(/\u1225/g, '\u1235')
+
   if (
-    /\b(explain|explanation|theolog(?:y|ical)|significance|meaning|doctrine|dogma|mystery|incarnation|trinity|theotokos|salvation|why)\b/i.test(
+    /\b(explain|explanation|theolog(?:y|ical)|significance|meaning|doctrine|dogma|myster(?:y|ies)|sacrament(?:s)?|incarnation|trinity|theotokos|salvation|why)\b/i.test(
       hay,
     )
   ) {
     return true
   }
-  // Amharic: mystery / why / meaning / significance
+
+  // "What are the Five Mysteries / Seven Sacraments ..." list-explain questions.
+  if (
+    /\bwhat\s+are\s+the\b/i.test(hay) &&
+    /\b(myster|sacrament|pillar|commandment)/i.test(hay)
+  ) {
+    return true
+  }
+
+  // Amharic: mystery (ምስጢር / ምሥጢራት) / Trinity / why / meaning / significance
   return (
-    hay.includes('\u121D\u1235\u1322\u122D') || // ምስጢር
-    hay.includes('\u1235\u1208\u121D\u1295') || // ስለምን
-    hay.includes('\u1275\u122D\u1309\u121D') || // ትርጉም
-    hay.includes('\u12A0\u1235\u1348\u120B\u130A') // አስፈላጊ (significance-ish)
+    folded.includes('\u121D\u1235\u1322') || // mystery stem (covers singular + plural)
+    folded.includes('\u1235\u120B\u1234') || // Trinity stem
+    hay.includes('\u1235\u1208\u121D\u1295') || // why
+    hay.includes('\u1275\u122D\u1309\u121D') || // meaning
+    hay.includes('\u12A0\u1235\u1348\u120B\u130A') // significance-ish
   )
 }
 

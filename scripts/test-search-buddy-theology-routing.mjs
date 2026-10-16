@@ -3,7 +3,10 @@
  * Run: npm run test:search-buddy-theology-routing
  */
 import assert from 'node:assert/strict'
-import { detectCalendarRoute } from '../src/lib/searchBuddy/calendarStructuredSearch.ts'
+import {
+  detectCalendarRoute,
+  isExplanatoryTheologyQuery,
+} from '../src/lib/searchBuddy/calendarStructuredSearch.ts'
 import { shouldUseAmharicStructuredPath } from '../src/lib/searchBuddy/amharicStructuredSearch.ts'
 import {
   isEmptySearchBuddyResponse,
@@ -52,8 +55,18 @@ assert.equal(detectCalendarRoute(AM_MYSTERY), null, 'Amharic mystery must not hi
 assert.equal(detectCalendarRoute(AM_THEOTOKOS), null, 'Amharic Theotokos must not hit calendar')
 assert.equal(detectCalendarRoute(AM_TIMKAT), null, 'Amharic Timkat theology must not hit calendar')
 assert.equal(detectCalendarRoute(JOHN), null, 'John 3:16 is not calendar')
-assert.equal(shouldUseAmharicStructuredPath(AM_THEOTOKOS), true)
-assert.equal(shouldUseAmharicStructuredPath(AM_TIMKAT), true)
+// Mystery/Timkat theology skips Amharic keyword path; other Ethiopic Q&A may enter
+// it but must fall through to /api/chat before Synaxarium keyword hits.
+assert.equal(isExplanatoryTheologyQuery(AM_TIMKAT), true)
+assert.equal(shouldUseAmharicStructuredPath(AM_TIMKAT), false)
+assert.equal(
+  shouldUseAmharicStructuredPath(
+    'What are the Five Mysteries (\u12A0\u121D\u1235\u1271 \u121D\u1225\u1322\u122B\u1275)?',
+  ),
+  false,
+)
+assert.equal(isExplanatoryTheologyQuery('What are the Five Mysteries?'), true)
+assert.equal(isExplanatoryTheologyQuery('mysteries'), true)
 
 const meskelRoute = detectCalendarRoute(MESKEL)
 assert.equal(meskelRoute?.kind, 'calendar_search', 'Meskel feast lookup stays calendar_search')
@@ -70,7 +83,10 @@ const fastRoute = detectCalendarRoute(FAST_TODAY)
 assert.equal(fastRoute?.kind, 'calendar_today', 'fasting today → calendar_today')
 assert.equal(fastRoute?.focus, 'fasting')
 
-assert.equal(shouldUseAmharicStructuredPath(AM_MYSTERY), true)
+assert.equal(isExplanatoryTheologyQuery(AM_MYSTERY), true)
+assert.equal(shouldUseAmharicStructuredPath(AM_MYSTERY), false)
+// Non-theology Ethiopic still uses Amharic structured path.
+assert.equal(shouldUseAmharicStructuredPath('\u12E8\u12DB\u122C \u1235\u1295\u12AD\u1233\u122D'), true)
 
 // type:ai with answer must never be empty
 const aiParsed = parseSearchBuddyResponse({

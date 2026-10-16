@@ -27,6 +27,7 @@ import {
   type SearchBuddyReply,
 } from '../../lib/search/searchBuddySession'
 import {
+  isExplanatoryTheologyQuery,
   isMezmurHymnContextPath,
   missingApiUrlDevMessage,
   searchBuddyApiReady,
@@ -472,6 +473,24 @@ export function SearchBuddy() {
           logSearchBuddyDiagnostic(apiErr, 'api')
           const notice =
             searchBuddyErrorMessage(apiErr) || t('searchBuddy.reachError')
+          // Theology / doctrine Q&A must not degrade into Synaxarium keyword noise
+          // when POST /api/chat fails — surface retry instead.
+          if (isExplanatoryTheologyQuery(q)) {
+            setSnapshot((prev) => ({
+              ...prev,
+              error: false,
+              reply: { kind: 'unavailable' },
+              message: notice,
+              remoteError: notice,
+              aiAnswer: null,
+              messages: patchMessage(prev.messages, assistantId, {
+                status: 'error',
+                text: undefined,
+                errorText: notice,
+              }),
+            }))
+            return
+          }
           try {
             await runLocalSearch(q, requestId, assistantId, { keepRemoteError: notice })
             return
