@@ -1,4 +1,5 @@
 import { useId, useState } from 'react'
+import { useTranslation } from '../../i18n'
 import {
   buildDetailSections,
   type CalendarLocaleMode,
@@ -7,6 +8,15 @@ import {
 } from '../../lib/calendar/calendarEnrichedContent'
 import { BilingualText } from '../i18n/BilingualText'
 import styles from './CalendarEventDetails.module.css'
+
+const SECTION_TITLE_KEYS: Record<string, string> = {
+  what: 'calendar.page.whatIsThisHeading',
+  why: 'calendar.page.whyHeading',
+  important: 'calendar.page.importantHeading',
+  scripture: 'calendar.page.scriptureHeading',
+  fasting: 'calendar.page.fastingHeading',
+  season: 'calendar.page.seasonHeading',
+}
 
 type Props = {
   fields: EnrichedContentFields
@@ -40,6 +50,7 @@ export function CalendarEventDetails({
   defaultOpenFirst = false,
   className,
 }: Props) {
+  const t = useTranslation()
   const baseId = useId()
   const sections = buildDetailSections(fields)
   const [openId, setOpenId] = useState<string | null>(
@@ -53,6 +64,8 @@ export function CalendarEventDetails({
       {sections.map((section) => {
         const panelId = `${baseId}-${section.id}`
         const open = openId === section.id
+        const titleKey = SECTION_TITLE_KEYS[section.id]
+        const title = titleKey ? t(titleKey) : section.title
         return (
           <div key={section.id} className={`${styles.item} ${open ? styles.itemOpen : ''}`}>
             <button
@@ -63,7 +76,7 @@ export function CalendarEventDetails({
               id={`${panelId}-btn`}
               onClick={() => setOpenId(open ? null : section.id)}
             >
-              <span className={styles.title}>{section.title}</span>
+              <span className={styles.title}>{title}</span>
               <span className={styles.chevron} aria-hidden>
                 {open ? '−' : '+'}
               </span>

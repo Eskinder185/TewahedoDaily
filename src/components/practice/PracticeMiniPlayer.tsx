@@ -57,9 +57,16 @@ export function PracticeMiniPlayer({
     root.dataset.practiceMiniPlayer = 'true'
     return () => {
       delete root.dataset.practiceMiniPlayer
+      delete root.dataset.practiceMiniExpanded
       root.style.removeProperty('--mini-player-height')
     }
   }, [])
+
+  useEffect(() => {
+    const root = document.documentElement
+    if (expanded) root.dataset.practiceMiniExpanded = 'true'
+    else delete root.dataset.practiceMiniExpanded
+  }, [expanded])
 
   useEffect(() => {
     const dock = document.getElementById('practice-mini-dock')

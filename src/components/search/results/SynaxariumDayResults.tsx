@@ -1,13 +1,13 @@
 import type { SynaxariumDayResponse } from '../../../lib/searchBuddy/apiTypes.ts'
-import { displayText, textOrNull } from './resultHelpers.ts'
+import { displayText, looksLikeInternalSlug, textOrNull } from './resultHelpers.ts'
 import { SynaxariumCard } from './SynaxariumSearchResults.tsx'
 import styles from './ResultCard.module.css'
 
 export function SynaxariumDayResults({ data }: { data: SynaxariumDayResponse }) {
-  const title = textOrNull(data.title)
+  const titleRaw = textOrNull(data.title)
+  const title = titleRaw && !looksLikeInternalSlug(titleRaw) ? titleRaw : null
   const titleAm = textOrNull(data.title_amharic)
   const dateLine = displayText(data.display_date_english, data.display_date_amharic)
-  const daySlug = textOrNull(data.day_slug)
   // Preserve API order — do not reorder by guessed importance.
   const commemorations = Array.isArray(data.commemorations) ? data.commemorations : []
 
@@ -22,13 +22,12 @@ export function SynaxariumDayResults({ data }: { data: SynaxariumDayResponse }) 
         ) : null}
         {title && title !== titleAm ? (
           <p className={titleAm ? styles.subtitle : styles.title}>{title}</p>
-        ) : !titleAm && daySlug ? (
-          <h3 className={styles.title}>{daySlug}</h3>
+        ) : !titleAm && dateLine ? (
+          <h3 className={styles.title}>{dateLine}</h3>
+        ) : !titleAm ? (
+          <h3 className={styles.title}>Synaxarium</h3>
         ) : null}
-        {dateLine ? <p className={styles.meta}>{dateLine}</p> : null}
-        {daySlug && (title || titleAm || dateLine) ? (
-          <p className={styles.meta}>{daySlug}</p>
-        ) : null}
+        {dateLine && (title || titleAm) ? <p className={styles.meta}>{dateLine}</p> : null}
       </div>
       {commemorations.length ? (
         commemorations.map((row, index) => (

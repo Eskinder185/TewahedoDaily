@@ -41,6 +41,37 @@
   }
 }
 
+@media (orientation: landscape) and (max-height: 500px) {
+  .panel {
+    height: min(92dvh, 100%);
+    max-height: min(92dvh, 100%);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .head {
+    padding: 0.55rem 0.85rem;
+  }
+
+  .body {
+    padding-top: 0.65rem;
+  }
+}
+
+.dragHandle {
+  display: none;
+  width: 2.75rem;
+  height: 0.28rem;
+  margin: 0.45rem auto 0;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text-muted, #888) 55%, transparent);
+}
+
+@media (max-width: 639px) {
+  .dragHandle {
+    display: block;
+  }
+}
+
 .head {
   display: flex;
   align-items: flex-start;

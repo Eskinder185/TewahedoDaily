@@ -211,7 +211,7 @@ export function CalendarDateTimeline({
             const isSelected = group.iso === selectedIso
             const isToday = group.iso === todayIso
             return (
-              <section
+              <div
                 key={group.iso}
                 data-date-iso={group.iso}
                 className={[
@@ -261,7 +261,7 @@ export function CalendarDateTimeline({
                     />
                   ))}
                 </div>
-              </section>
+              </div>
             )
           })}
         </div>

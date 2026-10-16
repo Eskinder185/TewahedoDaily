@@ -39,6 +39,40 @@ const CONTINUE_TITLE_BY_PATH: Record<string, string> = {
   '/pray/synaxarium': 'Synaxarium',
 }
 
+function localizeRhythmCard(
+  item: { id: string; title: string; label: string; subtitle: string },
+  tr: (key: string, params?: Record<string, string | number>) => string,
+) {
+  if (item.id === 'zewter') {
+    return {
+      title: tr('prayers.rhythmCards.zewter.title'),
+      label: tr('prayers.rhythmCards.zewter.label'),
+      subtitle: tr('prayers.rhythmCards.zewter.subtitle'),
+    }
+  }
+  if (item.id === 'wudase') {
+    return {
+      title: tr('prayers.rhythmCards.wudase.title'),
+      label: item.label,
+      subtitle: tr('prayers.rhythmCards.wudase.subtitle'),
+    }
+  }
+  if (item.id === 'psalms') {
+    const rest = /rest/i.test(item.subtitle)
+    return {
+      title: tr('prayers.rhythmCards.psalms.title'),
+      label:
+        item.label === 'Open Mezmure Dawit'
+          ? tr('prayers.rhythmCards.psalms.openLabel')
+          : item.label,
+      subtitle: rest
+        ? tr('prayers.rhythmCards.psalms.subtitleRest')
+        : tr('prayers.rhythmCards.psalms.subtitle'),
+    }
+  }
+  return item
+}
+
 function humanizePrayerPath(path: string): string {
   const base = path.split('#')[0]
   if (CONTINUE_TITLE_BY_PATH[path] || CONTINUE_TITLE_BY_PATH[base]) {
@@ -376,8 +410,8 @@ export function PrayerListPage() {
       />
       {!session ? (
         <p className={styles.continueHint}>
-          <Link to="/account">Sign in</Link> to sync favorites and continue reading across devices.
-          Progress on this device is saved locally.
+          <Link to="/account">{tr('account.signIn')}</Link>{' '}
+          {tr('prayers.syncFavoritesRest')}
         </p>
       ) : null}
     </section>
@@ -455,7 +489,7 @@ export function PrayerListPage() {
                       ) : null}
                     </h2>
                   ) : (
-                    <h2>Today</h2>
+                    <h2>{tr('prayers.dailyRhythm.todayFallback')}</h2>
                   )}
                   <p className={styles.rhythmSub}>{tr('prayers.dailyRhythm.subtitle')}</p>
                   {rhythm?.ethiopianDateLabel ? (
@@ -464,7 +498,9 @@ export function PrayerListPage() {
                   {rhythm?.items[0] ? (
                     <p className={styles.rhythmPrimary}>
                       <Link className={styles.openLink} to={rhythm.items[0].to}>
-                        Begin with {rhythm.items[0].title} →
+                        {tr('prayers.dailyRhythm.beginWith', {
+                          title: localizeRhythmCard(rhythm.items[0], tr).title,
+                        })}
                       </Link>
                     </p>
                   ) : null}
@@ -472,10 +508,20 @@ export function PrayerListPage() {
               </div>
 
               {rhythm?.context.length ? (
-                <ul className={styles.rhythmContext} aria-label="Today in the Church">
+                <ul className={styles.rhythmContext} aria-label={tr('prayers.dailyRhythm.contextAria')}>
                   {rhythm.context.map((chip) => (
                     <li key={`${chip.kind}-${chip.title}`}>
-                      <span className={styles.rhythmContextKind}>{chip.label}</span>
+                      <span className={styles.rhythmContextKind}>
+                        {chip.kind === 'fast'
+                          ? tr('prayers.dailyRhythm.labelFast')
+                          : chip.kind === 'season'
+                            ? tr('prayers.dailyRhythm.labelSeason')
+                            : chip.kind === 'feast'
+                              ? tr('prayers.dailyRhythm.labelFeast')
+                              : chip.kind === 'commemoration'
+                                ? tr('prayers.dailyRhythm.labelCommemoration')
+                                : chip.label}
+                      </span>
                       <strong>{chip.title}</strong>
                       {chip.titleAmharic ? <span lang="am">{chip.titleAmharic}</span> : null}
                     </li>
@@ -487,7 +533,7 @@ export function PrayerListPage() {
                 <div className={styles.rhythmError} role="alert">
                   <p>{rhythmError}</p>
                   <button type="button" className={styles.openLink} onClick={reloadRhythm}>
-                    Try again
+                    {tr('prayers.dailyRhythm.tryAgain')}
                   </button>
                 </div>
               ) : null}
@@ -509,9 +555,10 @@ export function PrayerListPage() {
                   : null}
                 {rhythm
                   ? rhythm.items.map((item, index) => {
+                      const localized = localizeRhythmCard(item, tr)
                       const labelLooksLikeWeekday =
                         Boolean(rhythm.weekday) &&
-                        item.label.trim().toLowerCase() === rhythm.weekday.trim().toLowerCase()
+                        localized.label.trim().toLowerCase() === rhythm.weekday.trim().toLowerCase()
                       return (
                       <li key={item.id}>
                         <Link className={styles.rhythmLink} to={item.to}>
@@ -519,13 +566,13 @@ export function PrayerListPage() {
                             {index + 1}
                           </span>
                           <span className={styles.rhythmText}>
-                            <strong>{item.title}</strong>
-                            {!labelLooksLikeWeekday && item.label ? (
+                            <strong>{localized.title}</strong>
+                            {!labelLooksLikeWeekday && localized.label ? (
                               <small lang={item.id === 'wudase' || item.id === 'psalms' ? 'am' : undefined}>
-                                {item.label}
+                                {localized.label}
                               </small>
                             ) : null}
-                            <span>{item.subtitle}</span>
+                            <span>{localized.subtitle}</span>
                           </span>
                           <span className={styles.rhythmOpen} aria-hidden>
                             {tr('prayers.collection.open')} →
@@ -539,12 +586,12 @@ export function PrayerListPage() {
             </section>
 
             {continueItems.length > 0 ? (
-              <section className={styles.continue} aria-label="Continue reading">
+              <section className={styles.continue} aria-label={tr('prayers.continueReading.title')}>
                 <div className={styles.continueHead}>
-                  <h2>Continue Reading</h2>
+                  <h2>{tr('prayers.continueReading.title')}</h2>
                   {!session ? (
                     <Link className={styles.openLink} to="/account">
-                      Save your progress
+                      {tr('prayers.continueReading.saveProgress')}
                     </Link>
                   ) : null}
                 </div>
@@ -555,9 +602,11 @@ export function PrayerListPage() {
                         <strong>
                           {humanizePrayerPath(item.route || '') ||
                             item.title ||
-                            'Continue'}
+                            tr('prayers.continueReading.continueFallback')}
                         </strong>
-                        <span className={styles.continueCta}>Continue →</span>
+                        <span className={styles.continueCta}>
+                          {tr('prayers.continueReading.continue')}
+                        </span>
                       </Link>
                     </li>
                   ))}
@@ -567,8 +616,8 @@ export function PrayerListPage() {
 
             {searchField}
 
-            <section className={styles.learn} aria-label="Learn about prayer">
-              <p className={styles.learnEyebrow}>Learn How to Pray</p>
+            <section className={styles.learn} aria-label={tr('prayers.learnHowToPray.sectionAria')}>
+              <p className={styles.learnEyebrow}>{tr('prayers.learnHowToPray.eyebrow')}</p>
               <ul className={styles.learnGrid}>
                 {guides.map((guide) => (
                   <li key={guide.id}>
@@ -582,7 +631,7 @@ export function PrayerListPage() {
                         ) : null}
                         <p className={styles.learnText}>
                           {guide.slug === 'learn-how-to-pray'
-                            ? 'Build a foundation for Orthodox prayer through guided practice and teaching.'
+                            ? tr('prayers.learnHowToPray.foundation')
                             : guide.summary || LEARN_HOW_TO_PRAY_CARD.summary}
                         </p>
                       </div>

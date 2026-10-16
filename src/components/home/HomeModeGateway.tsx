@@ -15,7 +15,7 @@ export function HomeModeGateway() {
       body: tt('home.gateway.practiceBody'),
     },
     {
-      to: '/prayers',
+      to: '/pray',
       eyebrow: t('navPray'),
       title: t('navPrayers'),
       body: tt('home.gateway.prayersBody'),

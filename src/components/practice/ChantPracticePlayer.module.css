@@ -259,6 +259,23 @@
   outline-offset: 3px;
 }
 
+.supportZemariQuiet {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0.35rem 0;
+  color: var(--color-text-muted, #9aa3b2);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.supportZemariQuiet:hover {
+  color: var(--color-gold, #d4a84b);
+}
+
 .youtubeSource {
   display: flex;
   flex-direction: column;

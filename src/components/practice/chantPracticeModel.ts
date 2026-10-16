@@ -40,6 +40,8 @@ export type ChantPracticePayload = {
   form: ChantForm
   /** Stable key for React / player teardown */
   entryId: string
+  /** URL slug for mezmur detail / continue-session routing. */
+  slug?: string
   title: string
   transliterationTitle: string
   /** Optional Amharic display title for the practice header. */
@@ -85,6 +87,7 @@ export function chantEntryToPracticePayload(
     return {
       form: 'mezmur',
       entryId: m.id,
+      slug: m.slug,
       title: m.title,
       transliterationTitle: m.titleTransliteration,
       lyricsGez: m.lyricsGez,

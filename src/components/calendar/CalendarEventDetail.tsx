@@ -4,6 +4,7 @@ import {
   displaySummary,
   type PresentableCalendarEvent,
 } from '../../lib/calendar/calendarPresentation'
+import { useTranslation } from '../../i18n'
 import { useLocale } from '../../lib/i18n/locale'
 import { CalendarEventDetails } from './CalendarEventDetails'
 import { CalendarEventImage } from './CalendarEventImage'
@@ -33,9 +34,13 @@ export function CalendarEventDetail({
   onClose,
 }: CalendarEventDetailProps) {
   const { contentLocale: lang } = useLocale()
+  const t = useTranslation()
   const panelRef = useRef<HTMLDivElement>(null)
   const previouslyFocused = useRef<HTMLElement | null>(null)
   const pushedHistory = useRef(false)
+  /** When true, the next popstate is from our own history.back() after UI close — do not double-handle. */
+  const ignoreNextPop = useRef(false)
+  const touchStartY = useRef<number | null>(null)
   const titleId = useId()
 
   // CAL-02: Browser Back closes the sheet instead of leaving Calendar.
@@ -48,12 +53,20 @@ export function CalendarEventDetail({
       if (!current || current[DETAIL_HISTORY_KEY] !== event.id) {
         window.history.pushState(state, '')
         pushedHistory.current = true
+      } else {
+        // Remount / Strict Mode: history entry already ours — Back should still dismiss.
+        pushedHistory.current = true
       }
     } catch {
       pushedHistory.current = false
     }
 
     const onPop = () => {
+      if (ignoreNextPop.current) {
+        ignoreNextPop.current = false
+        pushedHistory.current = false
+        return
+      }
       pushedHistory.current = false
       onClose()
     }
@@ -64,16 +77,18 @@ export function CalendarEventDetail({
   }, [open, event?.id, onClose])
 
   const handleClose = () => {
+    // Always dismiss UI immediately. Relying only on popstate left the sheet stuck
+    // when history.back() did not deliver a popstate (observed on mobile Close taps).
+    onClose()
     if (pushedHistory.current) {
       pushedHistory.current = false
+      ignoreNextPop.current = true
       try {
         window.history.back()
-        return
       } catch {
-        /* fall through */
+        ignoreNextPop.current = false
       }
     }
-    onClose()
   }
 
   useEffect(() => {
@@ -159,7 +174,22 @@ export function CalendarEventDetail({
         tabIndex={-1}
         ref={panelRef}
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={(e) => {
+          touchStartY.current = e.touches[0]?.clientY ?? null
+        }}
+        onTouchEnd={(e) => {
+          const start = touchStartY.current
+          touchStartY.current = null
+          if (start == null) return
+          const end = e.changedTouches[0]?.clientY
+          if (end == null) return
+          // Swipe down to dismiss when gesture starts near the sheet top.
+          if (end - start > 90 && start < window.innerHeight * 0.45) {
+            handleClose()
+          }
+        }}
       >
+        <div className={styles.dragHandle} aria-hidden />
         <header className={styles.head}>
           <div className={styles.headCopy}>
             <p className={styles.badge}>{event.categoryLabel}</p>
@@ -185,8 +215,13 @@ export function CalendarEventDetail({
             {event.movableLabel ? <p className={styles.meta}>{event.movableLabel}</p> : null}
             {event.fastTypeLabel ? <p className={styles.meta}>{event.fastTypeLabel}</p> : null}
           </div>
-          <button type="button" className={styles.close} onClick={handleClose} aria-label="Close">
-            Close
+          <button
+            type="button"
+            className={styles.close}
+            onClick={handleClose}
+            aria-label={t('dialogClose')}
+          >
+            {t('dialogClose')}
           </button>
         </header>
 

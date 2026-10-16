@@ -90,6 +90,18 @@
       "prayersBody": "በጸጥ ያለ የጸሎት ገጽታ ወደ ቅዱስ ንባብ ይግቡ።",
       "calendarBody": "ቀኑ በበዓል፣ በወቅትና በመታሰቢያ ለምን እንደሚጠቅም ይመልከቱ።",
       "open": "{label} ክፈት"
+    },
+    "todayLoading": "የዛሬ ቤተ ክርስቲያን በመጫን ላይ",
+    "continue": {
+      "aria": "ከቆሙበት ይቀጥሉ",
+      "title": "ቀጥል",
+      "emptyHint": "ጸሎት፣ መጽሓፍ ቅዱስ ወይም መዝሙር በመክፈት እዚህ ይቀጥሉ።"
+    },
+    "todayHub": {
+      "heading": "ዛሬ",
+      "deck": "ጾምን፣ ወቅትንና መታሰቢያዎችን ይመልከቱ — ከዚያ ይጸልዩ፣ ያንብቡ ወይም ቀን መቁጠሪያን ይክፈቱ።",
+      "prayCta": "የዛሬ ጸሎቶች",
+      "bibleCta": "ቅዱሳት መጻሕፍት"
     }
   },
   "today": {
@@ -230,6 +242,16 @@
       "synaxariumUnavailable": "ለዚህ ቀን የስንክሳር ግቤት ገና አልተገኘም።",
       "synaxariumLoadError": "የስንክሳር መረጃን መጫን አልተቻለም።",
       "tryAgain": "እንደገና ይሞክሩ"
+    },
+    "reminders": {
+      "on": "የዕለት ማስታወሻ በርቷል",
+      "off": "ዕለታዊ ማስታወሻ",
+      "hint": "የአሳሽ ማሳወቂያ በጠዋት 7:00 አካባቢ።",
+      "enabled": "የቀን መቁጠሪያ ማስታወሻ ነቅቷል።",
+      "disabled": "የቀን መቁጠሪያ ማስታወሻ ጠፍቷል።",
+      "denied": "ማሳወቂያዎች ተከልክለዋል። በአሳሹ ቅንብሮች ውስጥ ያብሩ።",
+      "notificationTitle": "ተዋሕዶ ደይሊ",
+      "notificationBody": "ዛሬ በቤተ ክርስቲያን — {ethiopian} · {gregorian}"
     }
   },
   "seasonPanel": {
@@ -454,7 +476,14 @@
     "backToBrowse": "ወደ ዳሰሳ ተመለስ",
     "matchingSectionsAria": "ተዛማጵ ክፍሎች እና ዘማሪዎች",
     "browse": "ዳሰሳ",
-    "loadError": "መዝሙር መጫን አልተቻለም።"
+    "loadError": "መዝሙር መጫን አልተቻለም።",
+    "continueDock": {
+      "aria": "የመዝሙር ልምምድ ቀጥል",
+      "eyebrow": "ቀጥል",
+      "play": "አጫውት",
+      "open": "ክፈት",
+      "dismiss": "ዝጋ"
+    }
   },
   "prayers": {
     "title": "ጸሎቶች",
@@ -464,7 +493,26 @@
     },
     "dailyRhythm": {
       "title": "የዛሬው የጸሎት ሪትም",
-      "subtitle": "ቀላል የዕለት ተዕለት የጸሎት መንገድ"
+      "subtitle": "ቀላል የዕለት ተዕለት የጸሎት መንገድ",
+      "beginWith": "በ{title} ይጀምሩ →",
+      "contextAria": "ዛሬ በቤተ ክርስቲያን",
+      "labelFast": "ጾም",
+      "labelSeason": "ወቅት",
+      "labelFeast": "በዓል",
+      "labelCommemoration": "መታሰቢያ",
+      "tryAgain": "እንደገና ሞክር",
+      "todayFallback": "ዛሬ"
+    },
+    "continueReading": {
+      "title": "ንባብን ቀጥል",
+      "saveProgress": "ሂደትዎን ያስቀምጡ",
+      "continue": "ቀጥል →",
+      "continueFallback": "ቀጥል"
+    },
+    "learnHowToPray": {
+      "eyebrow": "እንዴት መጸለይ እንደሚገባ",
+      "sectionAria": "ስለ ጸሎት ይማሩ",
+      "foundation": "በመምሪያ ልምምድና ትምህርት የኦርቶዶክስ ጸሎት መሠረት ይገንቡ።"
     },
     "search": {
       "searchAria": "የጸሎት ፍለጋ",
@@ -533,6 +581,24 @@
       "relatedPrayers": "ተያያዥ ጸሎቶች",
       "lyricsPlaceholder": "የግጥም ቦታ",
       "lyricsPlaceholderDescription": "ግጥሙ በቅርብ ይጨመራል። አሁን ላይ ይህ ገጽ የዜማ ቪዲዮውን ብቻ ያካትታል።"
+    },
+    "syncFavoritesRest": "ለማስመስረት እና በመሣሪያዎች መካከል ንባብን ለመቀጠል ይግቡ። በዚህ መሣሪያ ላይ ያለ ሂደት በአካባቢው ይቀመጣል።",
+    "rhythmCards": {
+      "zewter": {
+        "title": "ዘወትር ጸሎት",
+        "label": "ዕለታዊ የኦርቶዶክስ ጸሎት",
+        "subtitle": "በመደበኛው የጸሎት መንገድ ይጀምሩ"
+      },
+      "wudase": {
+        "title": "ውዳሴ ማርያም",
+        "subtitle": "የሳምንቱ የቅድስት ማርያም ውዳሴ"
+      },
+      "psalms": {
+        "title": "መዝሙረ ዳዊት",
+        "subtitle": "የዛሬ የመዝሙር ንባብ",
+        "subtitleRest": "ከሳምንታዊ የመዝሙር ክልል እረፍት",
+        "openLabel": "መዝሙረ ዳዊት ክፈት"
+      }
     }
   },
   "about": {
@@ -745,7 +811,11 @@
     "lookingUp": "እያስተካከልኩ ነው…",
     "reachError": "ረዳቱን አሁን ማግኛት አልቻልኩም። እንደገና ይሞክሩ።",
     "newChat": "አዲስ ውይይት",
-    "newChatAria": "አዲስ ውይይት ጀምር"
+    "newChatAria": "አዲስ ውይይት ጀምር",
+    "sourcesHeading": "ምንጮች",
+    "noSources": "ምንጮች አልተሰጡም።",
+    "aiEmpty": "ረዳቱ ምላሽ አልሰጠም።",
+    "sourceN": "ምንጭ {n}"
   },
   "account": {
     "signIn": "ግባ",

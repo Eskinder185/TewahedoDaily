@@ -52,7 +52,7 @@ export function SiteHeader() {
       desc: t('navModeLearnDesc'),
     },
     {
-      to: '/prayers',
+      to: '/pray',
       label: t('navPray'),
       desc: t('navModePrayDesc'),
     },
@@ -260,13 +260,16 @@ export function SiteHeader() {
               <NavLink
                 key={item.to}
                 to={item.to}
-                title={`${item.label} - ${item.desc}`}
+                title={item.desc}
+                aria-label={item.label}
                 className={({ isActive }) =>
                   `${styles.modeLink} ${isActive ? styles.modeLinkOn : ''}`.trim()
                 }
               >
                 <span className={styles.modeLabel}>{item.label}</span>
-                <span className={styles.modeDesc}>{item.desc}</span>
+                <span className={styles.modeDesc} aria-hidden="true">
+                  {item.desc}
+                </span>
               </NavLink>
             ))}
             <NavLink

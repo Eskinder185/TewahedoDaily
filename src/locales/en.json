@@ -90,6 +90,18 @@
       "prayersBody": "Enter sacred reading with calmer prayer surfaces and shorter paths into the text.",
       "calendarBody": "See why today matters through feast, season, observance, and practical next steps.",
       "open": "Open {label}"
+    },
+    "todayLoading": "Today in Church loading",
+    "todayHub": {
+      "heading": "Today",
+      "deck": "See the fast, season, and commemorations — then pray, read, or open the calendar.",
+      "prayCta": "Today’s prayers",
+      "bibleCta": "Read Scripture"
+    },
+    "continue": {
+      "aria": "Continue where you left off",
+      "title": "Continue",
+      "emptyHint": "Open a prayer, Bible chapter, or hymn to resume it here."
     }
   },
   "today": {
@@ -124,6 +136,16 @@
       "nextDay": "Next day",
       "selectDay": "Select a day to view observance details.",
       "observanceImage": "{title} observance image"
+    },
+    "reminders": {
+      "on": "Daily reminder on",
+      "off": "Remind me daily",
+      "hint": "Browser notification around 7:00 local time.",
+      "enabled": "Daily calendar reminder enabled.",
+      "disabled": "Daily calendar reminder turned off.",
+      "denied": "Notifications were blocked. Enable them in the browser settings to get reminders.",
+      "notificationTitle": "Tewahedo Daily",
+      "notificationBody": "Today in the Church — {ethiopian} · {gregorian}"
     },
     "title": "Calendar",
     "upcoming": {
@@ -454,6 +476,13 @@
       "memorizeText": "Use shorter lyric and rhythm passes before full repetition.",
       "practiceLabel": "Practice",
       "practiceText": "Return to the same hymn through the week for deeper learning."
+    },
+    "continueDock": {
+      "aria": "Continue hymn practice",
+      "eyebrow": "Continue",
+      "play": "Play",
+      "open": "Open",
+      "dismiss": "Dismiss continue dock"
     }
   },
   "prayers": {
@@ -464,7 +493,44 @@
     },
     "dailyRhythm": {
       "title": "Today's Prayer Rhythm",
-      "subtitle": "A simple daily prayer path"
+      "subtitle": "A simple daily prayer path",
+      "beginWith": "Begin with {title} →",
+      "contextAria": "Today in the Church",
+      "labelFast": "Fast",
+      "labelSeason": "Season",
+      "labelFeast": "Feast",
+      "labelCommemoration": "Commemoration",
+      "tryAgain": "Try again",
+      "todayFallback": "Today"
+    },
+    "continueReading": {
+      "title": "Continue Reading",
+      "saveProgress": "Save your progress",
+      "continue": "Continue →",
+      "continueFallback": "Continue"
+    },
+    "learnHowToPray": {
+      "eyebrow": "Learn How to Pray",
+      "sectionAria": "Learn about prayer",
+      "foundation": "Build a foundation for Orthodox prayer through guided practice and teaching."
+    },
+    "syncFavoritesRest": "to sync favorites and continue reading across devices. Progress on this device is saved locally.",
+    "rhythmCards": {
+      "zewter": {
+        "title": "Zewter Tselot",
+        "label": "Daily Orthodox prayer",
+        "subtitle": "Begin with the regular prayer path"
+      },
+      "wudase": {
+        "title": "Wudase Mariam",
+        "subtitle": "The weekday praise of Saint Mary"
+      },
+      "psalms": {
+        "title": "Mezmure Dawit",
+        "subtitle": "Today's psalm reading",
+        "subtitleRest": "Rest from the weekly psalm range",
+        "openLabel": "Open Mezmure Dawit"
+      }
     },
     "search": {
       "searchAria": "Prayer search",
@@ -722,7 +788,11 @@
     "tryNearby": "Try one of these nearby pages",
     "aiThinking": "Preparing an extended answer…",
     "aiAnswerLabel": "Extended answer",
-    "aiUnavailable": "Extended answers are temporarily unavailable."
+    "aiUnavailable": "Extended answers are temporarily unavailable.",
+    "aiEmpty": "The assistant did not return a response.",
+    "sourcesHeading": "Sources",
+    "noSources": "No sources were provided.",
+    "sourceN": "Source {n}"
   },
   "footer": {
     "portfolio": "Portfolio - eskinder.dev",

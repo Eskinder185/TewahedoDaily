@@ -44,6 +44,7 @@ import {
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { useGlobalAudio } from '../../lib/publicContent/audio'
+import { rememberPracticeContinue } from '../../lib/practice/practiceContinueSession'
 import styles from './ChantPracticePlayer.module.css'
 
 const MIN_LOOP_SPAN_SEC = 0.35
@@ -120,6 +121,16 @@ export function ChantPracticePlayer({
   const videoId = payload.videoId
   const audioUrl = payload.audioUrl?.trim() || undefined
   const controlsDisabled = !videoId || !playerReady
+
+  useEffect(() => {
+    const slug = payload.slug?.trim()
+    if (!slug) return
+    rememberPracticeContinue({
+      slug,
+      title: payload.title,
+      audioUrl: audioUrl || null,
+    })
+  }, [payload.slug, payload.title, audioUrl])
 
   const autoSplitSections = useMemo(
     () => (durationSec > 0 ? buildPracticeSections(durationSec) : null),
@@ -908,19 +919,7 @@ export function ChantPracticePlayer({
       />
 
       <div className={styles.layoutReading}>
-        {/* 2. Support the Zemari */}
-        {supportUrl ? (
-          <a
-            className={styles.supportZemari}
-            href={supportUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ❤️ Support the Zemari
-          </a>
-        ) : null}
-
-        {/* 3. Lyrics */}
+        {/* Lyrics first — Support lives under Source Video / More Actions */}
         <div className={styles.readColumn}>
           {payload.entryId.startsWith('custom:') && payload.learning?.meaning ? (
             <div className={styles.practiceNotes}>
@@ -994,6 +993,16 @@ export function ChantPracticePlayer({
                 rel="noopener noreferrer"
               >
                 Open original on YouTube
+              </a>
+            ) : null}
+            {supportUrl ? (
+              <a
+                className={styles.supportZemariQuiet}
+                href={supportUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Support the Zemari
               </a>
             ) : null}
           </section>

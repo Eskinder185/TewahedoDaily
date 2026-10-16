@@ -67,7 +67,12 @@
   bottom: calc(
     var(--mini-player-height, 5.75rem) + 0.75rem + env(safe-area-inset-bottom, 0px)
   );
-  z-index: 55;
+  z-index: 40;
+}
+
+/* Expanded practice sheet owns the bottom of the screen — hide the assistant FAB. */
+:global(html[data-practice-mini-expanded='true']) .fab {
+  display: none;
 }
 
 .fab:focus-visible {

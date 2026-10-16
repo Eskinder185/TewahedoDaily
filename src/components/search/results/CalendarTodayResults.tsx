@@ -9,7 +9,7 @@ import type {
   SeasonTodayResponse,
   SynaxariumTodayResponse,
 } from '../../../lib/searchBuddy/apiTypes.ts'
-import { displayText, textOrNull } from './resultHelpers.ts'
+import { displayText, looksLikeInternalSlug, textOrNull } from './resultHelpers.ts'
 import { SynaxariumCard } from './SynaxariumSearchResults.tsx'
 import styles from './ResultCard.module.css'
 
@@ -322,7 +322,13 @@ export function CalendarSearchResults({ data }: { data: CalendarSearchResponse }
 }
 
 function CalendarSearchCard({ row }: { row: CalendarSearchHit }) {
-  const title = displayText(row.title, row.slug)
+  const rawTitle = displayText(row.title)
+  const title =
+    rawTitle && !looksLikeInternalSlug(rawTitle)
+      ? rawTitle
+      : textOrNull(row.slug) && !looksLikeInternalSlug(row.slug)
+        ? textOrNull(row.slug)
+        : null
   const titleAm = textOrNull(row.title_amharic)
   const preview = displayText(row.preview, row.summary, row.description)
   const source = textOrNull(row.source_type) || textOrNull(row.category)

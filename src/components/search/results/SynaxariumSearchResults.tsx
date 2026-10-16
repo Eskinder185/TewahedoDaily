@@ -5,6 +5,7 @@ import type {
 import {
   displayText,
   formatCommemorationType,
+  looksLikeInternalSlug,
   textOrNull,
 } from './resultHelpers.ts'
 import styles from './ResultCard.module.css'
@@ -14,11 +15,11 @@ export function SynaxariumCard({ row }: { row: SynaxariumRow }) {
   const titleAm = textOrNull(row.title_amharic)
   const preview = textOrNull(row.preview)
   const typeLabel = formatCommemorationType(row.commemoration_type)
-  const dayContext = displayText(
-    row.display_date_english,
-    row.display_date_amharic,
-    row.day_slug,
-  )
+  // Never surface day_slug (e.g. tikimt-06) as visible meta.
+  const dayContext = displayText(row.display_date_english, row.display_date_amharic)
+  const safeTitle =
+    title && !looksLikeInternalSlug(title) ? title : null
+  const headingFallback = safeTitle || titleAm ? null : 'Commemoration'
 
   return (
     <article className={styles.card}>
@@ -29,10 +30,10 @@ export function SynaxariumCard({ row }: { row: SynaxariumRow }) {
           {titleAm}
         </h3>
       ) : null}
-      {title && title !== titleAm ? (
-        <p className={titleAm ? styles.subtitle : styles.title}>{title}</p>
-      ) : !titleAm ? (
-        <h3 className={styles.title}>Commemoration</h3>
+      {safeTitle && safeTitle !== titleAm ? (
+        <p className={titleAm ? styles.subtitle : styles.title}>{safeTitle}</p>
+      ) : headingFallback ? (
+        <h3 className={styles.title}>{headingFallback}</h3>
       ) : null}
       {dayContext ? <p className={styles.meta}>{dayContext}</p> : null}
       {preview ? <p className={styles.preview}>{preview}</p> : null}

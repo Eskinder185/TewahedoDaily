@@ -111,8 +111,41 @@ export function safeExternalUrl(url: unknown): string | null {
   return null
 }
 
+/** Human labels for synaxarium type codes. Returns null for opaque codes (e.g. "other"). */
 export function formatCommemorationType(value: unknown): string | null {
   const raw = textOrNull(value)
   if (!raw) return null
+  const key = raw.toLowerCase().replace(/\s+/g, '_')
+  if (key === 'other' || key === 'unknown' || key === 'null') return null
+  const labels: Record<string, string> = {
+    saint: 'Saint',
+    saints: 'Saints',
+    martyr: 'Martyr',
+    martyrs: 'Martyrs',
+    prophet: 'Prophet',
+    apostle: 'Apostle',
+    bishop: 'Bishop',
+    monk: 'Monk',
+    feast: 'Feast',
+    virgin: 'Virgin',
+    angel: 'Angel',
+    commemoration: 'Commemoration',
+  }
+  if (labels[key]) return labels[key]
+  // Avoid showing raw slug-like tokens (tikimt-06, foo_bar) as UI chrome.
+  if (/^[a-z0-9]+(?:[_-][a-z0-9]+)+$/i.test(raw) && !/^[a-z]+$/i.test(raw.replace(/[_-]/g, ''))) {
+    const looksLikeDateSlug = /\d/.test(raw)
+    if (looksLikeDateSlug) return null
+  }
   return raw.replace(/_/g, ' ')
+}
+
+/** True when a string looks like an internal day/route slug, not a display title. */
+export function looksLikeInternalSlug(value: unknown): boolean {
+  const raw = textOrNull(value)
+  if (!raw) return false
+  if (/^[a-z]{3,}-?\d{1,2}$/i.test(raw)) return true
+  if (/^(meskerem|teqemt|tekemt|tikimt|hidar|tahsas|tir|yekatit|megabit|miazia|ginbot|sene|hamle|nehasse|pagumen)-\d{1,2}$/i.test(raw))
+    return true
+  return false
 }

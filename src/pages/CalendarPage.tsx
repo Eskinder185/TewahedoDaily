@@ -22,6 +22,7 @@ import type { PresentableCalendarEvent } from '../lib/calendar/calendarPresentat
 import { addDays, toIsoLocalDate } from '../lib/churchCalendar/pascha'
 import { useLocale } from '../lib/i18n/locale'
 import { useTranslation } from '../i18n'
+import { CalendarReminderToggle } from '../components/calendar/CalendarReminderToggle'
 import styles from './CalendarPage.module.css'
 
 /** Type-only — runtime load is dynamic so mezmur scoring stays off the Calendar shell. */
@@ -362,6 +363,7 @@ export function CalendarPage() {
             <h1 className={styles.title}>{t('nav.calendar')}</h1>
           </div>
           <div className={styles.headerActions}>
+            <CalendarReminderToggle />
             <button type="button" className={styles.btnPrimary} onClick={jumpToday}>
               {t('calendar.page.jumpToday')}
             </button>

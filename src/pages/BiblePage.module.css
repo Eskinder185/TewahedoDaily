@@ -97,6 +97,21 @@ a.bookCard:hover { border-color: var(--color-gold); }
 .chapterGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.1rem, 1fr)); gap: .55rem; }
 .chapterGrid a { display: grid; place-items: center; min-height: 3.2rem; border: 1px solid var(--color-border-card); border-radius: var(--radius-sm); background: var(--color-bg-elevated); color: var(--color-heading); font-size: 1.05rem; font-weight: 650; text-decoration: none; }
 .chapterGrid a:hover { border-color: var(--color-gold); background: var(--color-bg-muted); }
+.chromeHidden {
+  opacity: 0;
+  max-height: 0;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  overflow: hidden;
+  pointer-events: none;
+  transition: opacity 160ms ease, max-height 160ms ease, margin 160ms ease, padding 160ms ease;
+}
+.reader .hero,
+.reader .language,
+.reader .chapterPicker {
+  transition: opacity 160ms ease, max-height 160ms ease, margin 160ms ease, padding 160ms ease;
+}
 .chapterPicker { display: grid; gap: .45rem; max-width: 24rem; margin: 1.5rem 0; color: var(--color-text-muted); font-size: .85rem; font-weight: 650; }
 .chapterPicker select { width: 100%; min-height: var(--tap-min); padding: .6rem .8rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: var(--color-bg-elevated); color: var(--color-heading); font: inherit; font-size: 1rem; }
 .editionBlock { margin: 2rem 0 2.8rem; }
@@ -109,9 +124,38 @@ a.bookCard:hover { border-color: var(--color-gold); }
 .verseNumber { color: var(--color-accent); font-size: .78rem; font-weight: 750; line-height: 1.9; font-variant-numeric: tabular-nums; }
 .amharicVerse { font-size: clamp(1.35rem, 4.3vw, 1.5rem); line-height: 1.8; overflow-wrap: anywhere; }
 .englishVerse { font-size: clamp(1.09rem, 3.5vw, 1.2rem); line-height: 1.75; overflow-wrap: anywhere; }
-.chapterNav { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .8rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border-gold); }
+.chapterNav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .8rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border-gold);
+}
 .chapterNav a, .chapterNav span { display: inline-flex; align-items: center; min-height: var(--tap-min); padding: .55rem .75rem; color: var(--color-accent); }
 .chapterNav span { opacity: .45; }
+@media (max-width: 768px) {
+  .reader .language {
+    position: sticky;
+    top: calc(var(--header-height, 3.35rem) + env(safe-area-inset-top, 0px));
+    z-index: 3;
+    margin-top: 0;
+    padding: 0.45rem 0;
+    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .reader .chapterNav {
+    position: sticky;
+    bottom: calc(0.35rem + env(safe-area-inset-bottom, 0px));
+    z-index: 3;
+    margin: 1.25rem 0 0;
+    padding: 0.55rem 0.35rem;
+    border: 1px solid var(--color-border-gold);
+    border-radius: 14px;
+    background: color-mix(in srgb, var(--color-bg-elevated) 94%, transparent);
+    backdrop-filter: blur(10px);
+  }
+}
 .backLink { margin-top: 1.5rem; }
 .shell :is(a, button):focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 3px; }
 @media (max-width: 430px) {

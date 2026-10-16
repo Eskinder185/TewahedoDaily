@@ -211,8 +211,23 @@
   contain: layout;
 }
 
+.aiSourcesBlock {
+  margin-top: 0.55rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+}
+
+.aiSourcesHeading {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 650;
+  color: var(--color-text-muted);
+}
+
 .aiSources {
-  margin: 0.4rem 0 0;
+  margin: 0;
   padding-left: 1.1rem;
   font-size: 0.85rem;
   color: var(--color-text-muted);
@@ -221,6 +236,16 @@
 
 .aiSources a {
   color: var(--color-link, var(--color-accent));
+}
+
+.aiSourceExcerpt {
+  color: var(--color-text-muted);
+}
+
+.aiNoSources {
+  margin: 0.45rem 0 0;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
 }
 
 .genericDev {

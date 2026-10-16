@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAsync } from '../lib/cms/useAsync'
 import { useLocale } from '../lib/i18n/locale'
@@ -394,9 +394,23 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
   const review = detail.book.slug === 'proverbs' || detail.book.slug === 'tegsats'
   // Site UI is EN/AM only; side-by-side Bible reading stays a page-local preference.
   const [readingLang, setReadingLang] = useState<BibleLanguage>(() => locale)
+  const [chromeHidden, setChromeHidden] = useState(false)
+  const lastScrollY = useRef(0)
   useEffect(() => {
     setReadingLang((prev) => (prev === 'both' ? prev : locale))
   }, [locale])
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY || 0
+      const delta = y - lastScrollY.current
+      if (y < 48) setChromeHidden(false)
+      else if (delta > 8) setChromeHidden(true)
+      else if (delta < -8) setChromeHidden(false)
+      lastScrollY.current = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
   const choice = chooseLanguage(readingLang, Boolean(am), Boolean(en), !review)
   const chapters = useMemo(() => choice === 'both' ? [am, en].filter((chapter): chapter is ReaderChapter => Boolean(chapter)) : [choice === 'en' ? en : am].filter((chapter): chapter is ReaderChapter => Boolean(chapter)), [choice, am, en])
   const load = useCallback(() => Promise.all(chapters.map(loadChapterText)), [chapters])
@@ -432,8 +446,8 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     if (next === 'am' || next === 'en') setLocale(next)
   }
   return <>
-    <header className={s.hero}><p className={s.eyebrow}>{detail.book.collection === 'old' ? w.old : w.newer}</p><h1>{bookName(detail.book, uiLocale)} <span>{w.chapter} {primary?.chapter_number}</span></h1>{primary && (detail.sources.length > 1) && <p>{sourceName(primary.source, uiLocale)}</p>}</header>
-    {am && en && <div className={s.language} role="group" aria-label={w.choose}>
+    <header className={`${s.hero} ${chromeHidden ? s.chromeHidden : ''}`.trim()}><p className={s.eyebrow}>{detail.book.collection === 'old' ? w.old : w.newer}</p><h1>{bookName(detail.book, uiLocale)} <span>{w.chapter} {primary?.chapter_number}</span></h1>{primary && (detail.sources.length > 1) && <p>{sourceName(primary.source, uiLocale)}</p>}</header>
+    {am && en && <div className={`${s.language} ${chromeHidden ? s.chromeHidden : ''}`.trim()} role="group" aria-label={w.choose}>
       <button type="button" aria-pressed={choice === 'am'} onClick={() => setReading('am')}>{w.am}</button>
       <button type="button" aria-pressed={choice === 'en'} onClick={() => setReading('en')}>{w.en}</button>
       {!review && <button type="button" aria-pressed={choice === 'both'} onClick={() => setReading('both')}>{w.both}</button>}
@@ -442,7 +456,7 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     {choice === 'both' && <p className={s.notice}>{w.independent}</p>}
     {detail.sources.length > 2 && am && en && <p className={s.notice}>{w.sequences}</p>}
     {locale !== choice && choice !== 'both' && <p className={s.notice}>{w.languageFallback}</p>}
-    <label className={s.chapterPicker}>{w.selectChapter}
+    <label className={`${s.chapterPicker} ${chromeHidden ? s.chromeHidden : ''}`.trim()}>{w.selectChapter}
       <select value={ordinal} onChange={(event) => navigate(`/bible/${detail.book.slug}/${event.target.value}`)}>
         {pickerChapters.map((chapter) => (
           <option key={chapter.id} value={chapter.ordinal}>
