@@ -68,17 +68,11 @@ function toView(slide: HomepageSlide, fallback: SlideView, preferAmharic: boolea
   }
 }
 
-type HeroSectionProps = {
-  /** Primary full hero (legacy) or compact band below Today hub. */
-  variant?: 'primary' | 'secondary'
-}
-
-export function HeroSection({ variant = 'primary' }: HeroSectionProps) {
+export function HeroSection() {
   const t = useTranslation()
   const { uiLocale } = useLocale()
   const preferAmharic = uiLocale === 'am'
   const headingId = useId()
-  const compact = variant === 'secondary'
   const reducedMotion = useRef(
     typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -158,7 +152,7 @@ export function HeroSection({ variant = 'primary' }: HeroSectionProps) {
 
   return (
     <section
-      className={`${styles.hero} ${compact ? styles.heroSecondary : ''}`.trim()}
+      className={styles.hero}
       aria-labelledby={headingId}
       aria-roledescription={multi ? 'carousel' : undefined}
       onMouseEnter={() => setPaused(true)}
@@ -184,9 +178,9 @@ export function HeroSection({ variant = 'primary' }: HeroSectionProps) {
               }`}
               width={imageManifest.home.heroWidth}
               height={imageManifest.home.heroHeight}
-              sizes={compact ? '(max-width: 768px) 100vw, 1200px' : '100vw'}
-              fetchPriority={compact ? 'low' : slideIndex === 0 ? 'high' : 'low'}
-              loading={compact ? 'lazy' : slideIndex === 0 ? 'eager' : 'lazy'}
+              sizes="100vw"
+              fetchPriority={slideIndex === 0 ? 'high' : 'low'}
+              loading={slideIndex === 0 ? 'eager' : 'lazy'}
               decoding="async"
             />
           )
@@ -197,15 +191,9 @@ export function HeroSection({ variant = 'primary' }: HeroSectionProps) {
       <div className={styles.inner}>
         <div className={`${styles.main} ${animationClass}`} key={current.id}>
           <p className={styles.eyebrow}>{current.eyebrow}</p>
-          {compact ? (
-            <h2 id={headingId} className={styles.title}>
-              {current.title}
-            </h2>
-          ) : (
-            <h1 id={headingId} className={styles.title}>
-              {current.title}
-            </h1>
-          )}
+          <h1 id={headingId} className={styles.title}>
+            {current.title}
+          </h1>
           {current.titleAmharic ? (
             <p className={styles.titleAm} lang={preferAmharic ? 'en' : 'am'}>
               {current.titleAmharic}

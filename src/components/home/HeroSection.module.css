@@ -16,13 +16,6 @@
     inset 0 -1px 0 color-mix(in srgb, var(--color-gold-line) 45%, transparent);
 }
 
-.heroSecondary {
-  min-height: 11rem;
-  height: clamp(11rem, 28vw, 16rem);
-  max-height: 16rem;
-  padding-block: var(--space-4) var(--space-5);
-}
-
 .backdrop {
   position: absolute;
   inset: 0;
