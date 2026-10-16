@@ -4,11 +4,23 @@ import type { SearchBuddyApiResponse } from '../searchBuddy/apiTypes.ts'
  * Short conversational lead-in for structured results.
  * English copy only — never invents Amharic religious content.
  */
+function aiAnswerText(response: SearchBuddyApiResponse): string {
+  if (response.type !== 'ai') return ''
+  const answer = (response.answer || response.message || '').trim()
+  return answer
+}
+
 export function assistantLeadForResponse(
   response: SearchBuddyApiResponse | null | undefined,
   empty?: boolean,
 ): string {
   if (!response) return ''
+
+  // Never replace a nonempty AI answer with the no-match fallback.
+  if (response.type === 'ai') {
+    return aiAnswerText(response) ? '' : empty ? "I couldn't find a matching result yet." : ''
+  }
+
   if (empty) return "I couldn't find a matching result yet."
 
   switch (response.type) {
@@ -48,8 +60,6 @@ export function assistantLeadForResponse(
     case 'prayer_collection':
     case 'prayer_section':
       return 'Here are the prayers I found.'
-    case 'ai':
-      return ''
     case 'unknown':
       return typeof response.message === 'string' && response.message.trim()
         ? response.message.trim()

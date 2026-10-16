@@ -684,6 +684,9 @@
     "source": "Source",
     "clearSession": "New chat",
     "clearInput": "Clear message",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyAria": "Copy assistant text",
     "starters": {
       "meskel": "Find Meskel hymns",
       "learnPray": "Learn how to pray",

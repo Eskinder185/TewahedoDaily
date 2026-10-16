@@ -50,6 +50,11 @@ type Props = {
 export function SearchBuddyResults({ response, empty }: Props) {
   if (!response) return null
 
+  // Never hide a nonempty AI answer behind the empty-result banner.
+  if (response.type === 'ai') {
+    return <AiResponseCard data={response as AiAssistantResponse} />
+  }
+
   if (empty) {
     return (
       <p className={styles.emptyNote} role="status">
@@ -118,9 +123,6 @@ export function SearchBuddyResults({ response, empty }: Props) {
           data={response as SynaxariumTodayResponse}
         />
       )
-
-    case 'ai':
-      return <AiResponseCard data={response as AiAssistantResponse} />
 
     default:
       return <GenericTypedResult data={response as GenericTypedResponse} />

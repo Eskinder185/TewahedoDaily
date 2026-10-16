@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useId,
   useRef,
@@ -31,7 +32,10 @@ import {
   searchBuddyApiReady,
   sendSearchBuddyMessage,
 } from '../../lib/searchBuddy'
-import { searchBuddyErrorMessage } from '../../lib/searchBuddy/errorMessages.ts'
+import {
+  logSearchBuddyDiagnostic,
+  searchBuddyErrorMessage,
+} from '../../lib/searchBuddy/errorMessages.ts'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
 import { ChatComposer } from './ChatComposer'
 import { ChatStarterPrompts, CHAT_STARTER_PROMPTS } from './ChatStarterPrompts'
@@ -140,6 +144,8 @@ export function SearchBuddy() {
   } = useSearchBuddy()
 
   const [busy, setBusy] = useState(false)
+  const [draft, setDraft] = useState('')
+  const draftRef = useRef(draft)
   const [voiceRemountKey, setVoiceRemountKey] = useState(0)
   const requestIdRef = useRef(0)
   const aiAbortRef = useRef<AbortController | null>(null)
@@ -158,9 +164,28 @@ export function SearchBuddy() {
   const apiReady = searchBuddyApiReady()
   const devApiNotice = missingApiUrlDevMessage()
 
-  const { query, messages, showAll, preview, resultsScrollTop } = snapshot
+  const { messages, showAll, preview, resultsScrollTop } = snapshot
 
   const showWelcome = !messages.length && !busy && !preview
+
+  useEffect(() => {
+    draftRef.current = draft
+  }, [draft])
+
+  const closePanel = useCallback(() => {
+    const nextDraft = draftRef.current
+    setSnapshot((prev) =>
+      prev.query === nextDraft ? prev : { ...prev, query: nextDraft },
+    )
+    setOpen(false)
+  }, [setOpen, setSnapshot])
+
+  // Hydrate composer from stored draft only when the panel opens.
+  const wasOpenRef = useRef(open)
+  useEffect(() => {
+    if (open && !wasOpenRef.current) setDraft(snapshot.query)
+    wasOpenRef.current = open
+  }, [open, snapshot.query])
 
   function cancelAiRequest() {
     if (aiAbortRef.current) {
@@ -197,7 +222,7 @@ export function SearchBuddy() {
           restoreScrollPending.current = true
           return
         }
-        setOpen(false)
+        closePanel()
         return
       }
       if (e.key !== 'Tab' || !panelRef.current) return
@@ -240,7 +265,7 @@ export function SearchBuddy() {
       for (const el of inertTargets) el.removeAttribute('inert')
       fab?.focus()
     }
-  }, [open, preview, resultsScrollTop, setOpen, setSnapshot])
+  }, [open, preview, resultsScrollTop, closePanel, setSnapshot])
 
   useEffect(() => {
     if (open) restoreScrollPending.current = true
@@ -360,10 +385,12 @@ export function SearchBuddy() {
 
   async function runSearch(raw: string) {
     const q = raw.trim()
-    if (!q || busy) return
+    if (!q) return
+    // Allow a newer query to supersede an in-flight one (stale responses are dropped).
     const requestId = ++requestIdRef.current
     cancelAiRequest()
     setBusy(true)
+    setDraft('')
     stickToBottomRef.current = true
 
     const userMsg: ChatMessage = {
@@ -396,6 +423,7 @@ export function SearchBuddy() {
       remoteError: null,
       messages: [...prev.messages, userMsg, assistantMsg],
     }))
+    // Keep stick-to-bottom for the new reply without smooth-scroll thrash.
 
     window.setTimeout(() => inputRef.current?.focus(), 0)
 
@@ -441,6 +469,7 @@ export function SearchBuddy() {
           return
         } catch (apiErr) {
           if (requestId !== requestIdRef.current) return
+          logSearchBuddyDiagnostic(apiErr, 'api')
           const notice =
             searchBuddyErrorMessage(apiErr) || t('searchBuddy.reachError')
           try {
@@ -492,6 +521,7 @@ export function SearchBuddy() {
     cancelAiRequest()
     requestIdRef.current += 1
     setBusy(false)
+    setDraft('')
     setVoiceRemountKey((k) => k + 1)
     stickToBottomRef.current = true
     clearSession()
@@ -518,7 +548,7 @@ export function SearchBuddy() {
   function openFullPage(result: SiteSearchResult) {
     if (bodyRef.current && !preview) persistScroll(bodyRef.current.scrollTop)
     setSnapshot({ preview: null })
-    setOpen(false)
+    closePanel()
     navigate(result.route, { state: { fromSearchBuddy: true } })
   }
 
@@ -528,7 +558,7 @@ export function SearchBuddy() {
       return
     }
     if (bodyRef.current) persistScroll(bodyRef.current.scrollTop)
-    setOpen(false)
+    closePanel()
   }
 
   const liveStatus = busy ? t('searchBuddy.lookingUp') : ''
@@ -540,7 +570,7 @@ export function SearchBuddy() {
         <div
           className={styles.backdrop}
           aria-hidden="true"
-          onClick={() => setOpen(false)}
+          onClick={closePanel}
         />
         <section
           ref={panelRef}
@@ -581,7 +611,7 @@ export function SearchBuddy() {
                 type="button"
                 className={styles.close}
                 aria-label={t('searchBuddy.close')}
-                onClick={() => setOpen(false)}
+                onClick={closePanel}
               >
                 ×
               </button>
@@ -613,7 +643,7 @@ export function SearchBuddy() {
                     copy={t('searchBuddy.welcomeCopy')}
                     groupAria={t('searchBuddy.suggestionsAria')}
                     prompts={CHAT_STARTER_PROMPTS}
-                    disabled={busy}
+                    disabled={false}
                     onSelect={(prompt) => void runSearch(prompt)}
                   />
                 </div>
@@ -636,9 +666,9 @@ export function SearchBuddy() {
               )}
 
               <ChatComposer
-                value={query}
-                onChange={(next) => setSnapshot({ query: next })}
-                onSubmit={() => void runSearch(query)}
+                value={draft}
+                onChange={setDraft}
+                onSubmit={() => void runSearch(draft)}
                 busy={busy}
                 voiceActive={open && !preview}
                 voiceRemountKey={voiceRemountKey}

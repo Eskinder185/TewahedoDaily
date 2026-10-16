@@ -44,20 +44,25 @@ export function ChatComposer({
   useEffect(() => {
     const el = inputRef.current
     if (!el) return
-    el.style.height = 'auto'
-    el.style.height = `${Math.min(el.scrollHeight, MAX_TEXTAREA_PX)}px`
+    let frame = 0
+    frame = window.requestAnimationFrame(() => {
+      el.style.height = 'auto'
+      el.style.height = `${Math.min(el.scrollHeight, MAX_TEXTAREA_PX)}px`
+    })
+    return () => window.cancelAnimationFrame(frame)
   }, [value, inputRef])
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    if (!value.trim() || busy) return
+    // Allow submit while busy so a newer query can supersede an in-flight request.
+    if (!value.trim()) return
     onSubmit()
   }
 
   function onKeyDown(e: KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      if (!value.trim() || busy) return
+      if (!value.trim()) return
       onSubmit()
     }
   }
@@ -122,7 +127,7 @@ export function ChatComposer({
           <button
             type="submit"
             className={styles.submitBtn}
-            disabled={busy || !value.trim()}
+            disabled={!value.trim()}
             aria-label={busy ? sendBusyLabel : sendLabel}
           >
             {busy ? sendBusyLabel : sendLabel}

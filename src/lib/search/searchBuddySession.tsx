@@ -2,6 +2,7 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useRef,
   useState,
@@ -16,6 +17,9 @@ import { createChatMessageId } from './chatTypes'
 
 const STORAGE_KEY = 'td:searchBuddy:v2'
 const LEGACY_STORAGE_KEY = 'td:searchBuddy:v1'
+/** Avoid JSON.stringify(session) on every keystroke / scroll frame (mobile jank). */
+const PERSIST_DEBOUNCE_MS = 320
+const SCROLL_STATE_DEBOUNCE_MS = 200
 
 /** Locale-independent reply payload — localize at render time (audit L10). */
 export type SearchBuddyReply =
@@ -72,6 +76,8 @@ type SearchBuddyApi = {
     patch: Partial<SearchBuddySnapshot> | ((prev: SearchBuddySnapshot) => SearchBuddySnapshot),
   ) => void
   persistScroll: (scrollTop: number) => void
+  /** Flush debounced sessionStorage + scroll state (e.g. before close). */
+  flushPersist: () => void
   clearSession: () => void
   reopenWithSession: () => void
   followUpRef: React.MutableRefObject<SearchSessionContext | null>
@@ -177,7 +183,7 @@ function readStored(): SearchBuddySnapshot {
   }
 }
 
-function writeStored(snapshot: SearchBuddySnapshot) {
+function writeStoredImmediate(snapshot: SearchBuddySnapshot) {
   try {
     if (!snapshot.hasSearched && !snapshot.query && !snapshot.messages.length) {
       sessionStorage.removeItem(STORAGE_KEY)
@@ -195,6 +201,44 @@ export function SearchBuddyProvider({ children }: { children: ReactNode }) {
   const [open, setOpenState] = useState(false)
   const [snapshot, setSnapshotState] = useState<SearchBuddySnapshot>(() => readStored())
   const followUpRef = useRef<SearchSessionContext | null>(snapshot.followUp)
+  const snapshotRef = useRef(snapshot)
+  const persistTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const pendingScrollTopRef = useRef<number | null>(null)
+
+  useEffect(() => {
+    snapshotRef.current = snapshot
+  }, [snapshot])
+
+  const schedulePersist = useCallback((next: SearchBuddySnapshot) => {
+    if (persistTimerRef.current) clearTimeout(persistTimerRef.current)
+    persistTimerRef.current = setTimeout(() => {
+      persistTimerRef.current = null
+      writeStoredImmediate(next)
+    }, PERSIST_DEBOUNCE_MS)
+  }, [])
+
+  const flushPersist = useCallback(() => {
+    if (persistTimerRef.current) {
+      clearTimeout(persistTimerRef.current)
+      persistTimerRef.current = null
+    }
+    if (scrollTimerRef.current) {
+      clearTimeout(scrollTimerRef.current)
+      scrollTimerRef.current = null
+    }
+    const pendingTop = pendingScrollTopRef.current
+    pendingScrollTopRef.current = null
+    if (pendingTop != null && snapshotRef.current.resultsScrollTop !== pendingTop) {
+      const next = { ...snapshotRef.current, resultsScrollTop: pendingTop }
+      snapshotRef.current = next
+      followUpRef.current = next.followUp
+      setSnapshotState(next)
+      writeStoredImmediate(next)
+      return
+    }
+    writeStoredImmediate(snapshotRef.current)
+  }, [])
 
   const setSnapshot = useCallback(
     (
@@ -203,27 +247,56 @@ export function SearchBuddyProvider({ children }: { children: ReactNode }) {
       setSnapshotState((prev) => {
         const next = typeof patch === 'function' ? patch(prev) : { ...prev, ...patch }
         followUpRef.current = next.followUp
-        writeStored(next)
+        snapshotRef.current = next
+        schedulePersist(next)
         return next
       })
     },
-    [],
+    [schedulePersist],
   )
 
-  const setOpen = useCallback((next: boolean) => {
-    setOpenState(next)
-  }, [])
+  const setOpen = useCallback(
+    (next: boolean) => {
+      if (!next) flushPersist()
+      setOpenState(next)
+    },
+    [flushPersist],
+  )
 
+  /** Debounced scrollTop — avoids re-render + sessionStorage on every touch scroll frame. */
   const persistScroll = useCallback(
     (scrollTop: number) => {
-      setSnapshot((prev) => ({ ...prev, resultsScrollTop: scrollTop }))
+      pendingScrollTopRef.current = scrollTop
+      if (scrollTimerRef.current) return
+      scrollTimerRef.current = setTimeout(() => {
+        scrollTimerRef.current = null
+        const top = pendingScrollTopRef.current
+        if (top == null) return
+        setSnapshotState((prev) => {
+          if (prev.resultsScrollTop === top) return prev
+          const next = { ...prev, resultsScrollTop: top }
+          snapshotRef.current = next
+          schedulePersist(next)
+          return next
+        })
+      }, SCROLL_STATE_DEBOUNCE_MS)
     },
-    [setSnapshot],
+    [schedulePersist],
   )
 
   const clearSession = useCallback(() => {
     followUpRef.current = null
+    pendingScrollTopRef.current = null
+    if (persistTimerRef.current) {
+      clearTimeout(persistTimerRef.current)
+      persistTimerRef.current = null
+    }
+    if (scrollTimerRef.current) {
+      clearTimeout(scrollTimerRef.current)
+      scrollTimerRef.current = null
+    }
     setSnapshotState(EMPTY)
+    snapshotRef.current = EMPTY
     try {
       sessionStorage.removeItem(STORAGE_KEY)
       sessionStorage.removeItem(LEGACY_STORAGE_KEY)
@@ -234,8 +307,9 @@ export function SearchBuddyProvider({ children }: { children: ReactNode }) {
 
   const reopenWithSession = useCallback(() => {
     const stored = { ...readStored(), preview: null }
-    writeStored(stored)
+    writeStoredImmediate(stored)
     setSnapshotState(stored)
+    snapshotRef.current = stored
     followUpRef.current = stored.followUp
     setOpenState(true)
   }, [])
@@ -247,11 +321,21 @@ export function SearchBuddyProvider({ children }: { children: ReactNode }) {
       snapshot,
       setSnapshot,
       persistScroll,
+      flushPersist,
       clearSession,
       reopenWithSession,
       followUpRef,
     }),
-    [open, setOpen, snapshot, setSnapshot, persistScroll, clearSession, reopenWithSession],
+    [
+      open,
+      setOpen,
+      snapshot,
+      setSnapshot,
+      persistScroll,
+      flushPersist,
+      clearSession,
+      reopenWithSession,
+    ],
   )
 
   return <SearchBuddyContext.Provider value={value}>{children}</SearchBuddyContext.Provider>

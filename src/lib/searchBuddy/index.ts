@@ -20,6 +20,11 @@ export {
   parseSearchBuddyResponse,
 } from './parseSearchBuddyResponse.ts'
 export {
+  copyTextToClipboard,
+  plainTextFromSearchBuddyMessage,
+  plainTextFromSearchBuddyResponse,
+} from './copySearchBuddyText.ts'
+export {
   isMezmurHymnContextPath,
   missingApiUrlDevMessage,
   searchBuddyApiReady,
@@ -44,7 +49,11 @@ export {
 } from '../search/resolveBibleQuery.ts'
 export { searchHymns, type SearchHymnsResult, type SearchHymnsOptions } from '../search/searchHymns.ts'
 export { transcribeAudio, canAttemptAmharicTranscription } from '../ai/transcribeAudio.ts'
-export { searchBuddyErrorMessage } from './errorMessages.ts'
+export {
+  searchBuddyErrorMessage,
+  logSearchBuddyDiagnostic,
+  isSearchBuddyRequestCurrent,
+} from './errorMessages.ts'
 export { containsEthiopic, normalizeAmharicSearchText } from './amharicText.ts'
 export {
   looksLikeAmharicBibleReference,
@@ -59,6 +68,7 @@ export {
 } from './amharicStructuredSearch.ts'
 export {
   resolveCalendarStructuredSearch,
+  isExplanatoryTheologyQuery,
   gregorianYmdInTimezone,
   userTimezone,
   type CalendarRoute,

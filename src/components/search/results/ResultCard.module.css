@@ -173,6 +173,8 @@
   line-height: 1.55;
   color: var(--color-text);
   overflow-wrap: anywhere;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .headingBlock {
@@ -202,6 +204,11 @@
   line-height: 1.5;
   color: var(--color-text);
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: text;
+  -webkit-user-select: text;
+  /* Long theology answers — keep layout cost bounded while scrolling. */
+  contain: layout;
 }
 
 .aiSources {

@@ -17,7 +17,8 @@ const ENV_KEY = 'VITE_TEWAHEDO_AI_API_URL'
 export const AI_TIMEOUTS_MS = {
   health: 5_000,
   capabilities: 8_000,
-  chat: 45_000,
+  // Cold-start Gemma via LiteLLM can exceed 45s; cap well below indefinite hang.
+  chat: 90_000,
   transcription: 45_000,
   ocr: 60_000,
 } as const

@@ -110,14 +110,23 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
   }
 
   const payload = isRecord(raw.data) && typeof raw.data.type === 'string' ? raw.data : raw
-  const type = typeof payload.type === 'string' ? payload.type.trim() : ''
+  const typeRaw = typeof payload.type === 'string' ? payload.type.trim() : ''
+  const type = typeRaw.toLowerCase()
+
+  const answerText =
+    (typeof payload.answer === 'string' && payload.answer.trim()) ||
+    (typeof payload.content === 'string' && payload.content.trim()) ||
+    (typeof payload.message === 'string' &&
+    type === 'ai' &&
+    payload.message.trim()) ||
+    ''
 
   if (!type) {
-    // Legacy { answer, sources } AI shape
-    if (typeof payload.answer === 'string' && payload.answer.trim()) {
+    // Legacy { answer|content, sources } AI shape
+    if (answerText) {
       return {
         type: 'ai',
-        answer: payload.answer,
+        answer: answerText,
         sources: Array.isArray(payload.sources) ? payload.sources : undefined,
       }
     }
@@ -136,8 +145,26 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
     return normalizeBibleChapterResponse(payload)
   }
 
+  if (type === 'ai') {
+    return {
+      type: 'ai',
+      answer: answerText || (typeof payload.answer === 'string' ? payload.answer : '') || undefined,
+      message: typeof payload.message === 'string' ? payload.message : undefined,
+      sources: Array.isArray(payload.sources) ? payload.sources : undefined,
+    }
+  }
+
   if (STRUCTURED_TYPES.has(type)) {
     return { ...payload, type } as SearchBuddyApiResponse
+  }
+
+  // Mis-typed payload that still carries an AI answer body.
+  if (answerText && (type === 'assistant' || type === 'chat' || type === 'llm')) {
+    return {
+      type: 'ai',
+      answer: answerText,
+      sources: Array.isArray(payload.sources) ? payload.sources : undefined,
+    }
   }
 
   // Brand-new backend type: keep payload fields for a safe generic renderer.

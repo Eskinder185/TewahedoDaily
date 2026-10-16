@@ -48,20 +48,6 @@ const TOMORROW_SIGNALS = [
   'tomorrow',
 ] as const
 
-const FEAST_SIGNALS = [
-  '\u1260\u12D3\u120D', // በዓል
-  '\u1260\u12D3\u1209', // በዓሉ
-  'feast',
-  'observance',
-] as const
-
-const FAST_SIGNALS = [
-  '\u133E\u121D', // ጾም
-  '\u1346\u121D', // ፆም
-  'fasting',
-  'fast',
-] as const
-
 const SEASON_SIGNALS = ['liturgical season', 'liturgical', 'season'] as const
 
 const WHAT_SIGNALS = [
@@ -82,6 +68,51 @@ const MONTH_NAME_PATTERN = ETHIOPIAN_MONTH_NAMES.join('|')
 function includesAny(hay: string, signals: readonly string[]): boolean {
   const lower = hay.toLowerCase()
   return signals.some((s) => lower.includes(s.toLowerCase()))
+}
+
+/** English whole-word match — avoids substring false positives (e.g. "fast" in compound tokens). */
+function includesEnglishWord(hay: string, word: string): boolean {
+  return new RegExp(`\\b${word}\\b`, 'i').test(hay)
+}
+
+/**
+ * Open-ended theology / "why / explain / meaning" questions must reach /api/chat,
+ * not calendar_search (which returns unknown when no feast record matches).
+ */
+export function isExplanatoryTheologyQuery(text: string): boolean {
+  const hay = normalizeCalendarIntentText(text)
+  if (!hay) return false
+  if (
+    /\b(explain|explanation|theolog(?:y|ical)|significance|meaning|doctrine|dogma|mystery|incarnation|trinity|theotokos|salvation|why)\b/i.test(
+      hay,
+    )
+  ) {
+    return true
+  }
+  // Amharic: mystery / why / meaning / significance
+  return (
+    hay.includes('\u121D\u1235\u1322\u122D') || // ምስጢር
+    hay.includes('\u1235\u1208\u121D\u1295') || // ስለምን
+    hay.includes('\u1275\u122D\u1309\u121D') || // ትርጉም
+    hay.includes('\u12A0\u1235\u1348\u120B\u130A') // አስፈላጊ (significance-ish)
+  )
+}
+
+function hasFeastSignal(hay: string): boolean {
+  return (
+    hay.includes('\u1260\u12D3\u120D') ||
+    hay.includes('\u1260\u12D3\u1209') ||
+    includesEnglishWord(hay, 'feast') ||
+    includesEnglishWord(hay, 'observance')
+  )
+}
+
+function hasFastSignal(hay: string): boolean {
+  return (
+    hay.includes('\u133E\u121D') ||
+    hay.includes('\u1346\u121D') ||
+    /\bfast(?:ing)?\b/i.test(hay)
+  )
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -120,7 +151,7 @@ function parseGregorianDateValue(hay: string): string | null {
     const d = String(Number(iso[3])).padStart(2, '0')
     return `${y}-${m}-${d}`
   }
-  const slash = hay.match(/\b(\d{1,2})[\/.](\d{1,2})[\/.](20\d{2}|19\d{2})\b/)
+  const slash = hay.match(/\b(\d{1,2})[/.](\d{1,2})[/.](20\d{2}|19\d{2})\b/)
   if (slash) {
     const m = String(Number(slash[1])).padStart(2, '0')
     const d = String(Number(slash[2])).padStart(2, '0')
@@ -140,18 +171,17 @@ function parseEthiopianMonthDay(hay: string): { month: number; day: number } | n
 }
 
 function detectFocus(hay: string): CalendarFocus {
-  if (includesAny(hay, FAST_SIGNALS) || /\bfast(?:ing)?\b/i.test(hay)) return 'fasting'
-  if (includesAny(hay, SEASON_SIGNALS) && !includesAny(hay, FEAST_SIGNALS)) return 'season'
+  if (hasFastSignal(hay)) return 'fasting'
+  if (includesAny(hay, SEASON_SIGNALS) && !hasFeastSignal(hay)) return 'season'
   return 'general'
 }
 
 function hasCalendarDomainSignal(hay: string): boolean {
   return (
-    includesAny(hay, FEAST_SIGNALS) ||
-    includesAny(hay, FAST_SIGNALS) ||
+    hasFeastSignal(hay) ||
+    hasFastSignal(hay) ||
     includesAny(hay, SEASON_SIGNALS) ||
     includesAny(hay, WHAT_SIGNALS) ||
-    /\bobservance\b/i.test(hay) ||
     /\bliturgical\b/i.test(hay)
   )
 }
@@ -166,11 +196,12 @@ export function detectCalendarRoute(text: string): CalendarRoute | null {
 
   const hasToday = includesAny(hay, TODAY_SIGNALS)
   const hasTomorrow = includesAny(hay, TOMORROW_SIGNALS)
-  const hasFeast = includesAny(hay, FEAST_SIGNALS)
-  const hasFast = includesAny(hay, FAST_SIGNALS)
+  const hasFeast = hasFeastSignal(hay)
+  const hasFast = hasFastSignal(hay)
   const hasSynax = includesAny(hay, SYNAXARIUM_SIGNALS)
   const hasWhat = includesAny(hay, WHAT_SIGNALS)
   const focus = detectFocus(hay)
+  const explanatory = isExplanatoryTheologyQuery(hay)
 
   // Synaxarium today — not calendar, not hymns
   if (
@@ -231,8 +262,13 @@ export function detectCalendarRoute(text: string): CalendarRoute | null {
     return { kind: 'calendar_today', focus: 'general' }
   }
 
-  // General calendar text search (feast/fast/observance names) — not hymn fallback
-  if ((hasFeast || hasFast || includesAny(hay, SEASON_SIGNALS) || /\bobservance\b/i.test(hay)) && !hasSynax) {
+  // General calendar text search (feast/fast/observance names) — not hymn fallback.
+  // Skip when the user is asking for theology/meaning; those go to /api/chat.
+  if (
+    !explanatory &&
+    (hasFeast || hasFast || includesAny(hay, SEASON_SIGNALS)) &&
+    !hasSynax
+  ) {
     const query = cleanCalendarSearchQuery(hay)
     if (query.length >= 2) {
       return { kind: 'calendar_search', query }
@@ -245,7 +281,10 @@ export function detectCalendarRoute(text: string): CalendarRoute | null {
 /** Strip intent filler words so /api/calendar/search matches feast names (e.g. Meskel). */
 function cleanCalendarSearchQuery(hay: string): string {
   return hay
-    .replace(/\b(what|is|the|a|an|about|tell|me|please|today|tomorrow|feast|fasting|fast|observance|liturgical|season)\b/gi, ' ')
+    .replace(
+      /\b(what|is|the|a|an|of|for|about|tell|me|please|find|show|search|look|up|today|tomorrow|feast|fasting|fast|observance|liturgical|season)\b/gi,
+      ' ',
+    )
     .replace(/\u12DB\u122C|\u12E8\u12DB\u122C|\u1290\u1308/g, ' ')
     .replace(/\u1260\u12D3\u120D|\u1260\u12D3\u1209/g, ' ')
     .replace(/\u133E\u121D|\u1346\u121D/g, ' ')
@@ -386,17 +425,18 @@ async function resolveSynaxariumToday(signal?: AbortSignal): Promise<SearchBuddy
   if (!isRecord(today)) return null
   const eth = isRecord(today.ethiopian_date) ? today.ethiopian_date : null
   const synaxariumDay = isRecord(today.synaxarium_day) ? today.synaxarium_day : null
+  // Prefer synaxarium_day month spelling (e.g. Tikimt) over calendar eth label (Tekemt).
   const monthName =
+    textOrNull(synaxariumDay?.ethiopian_month) ||
     textOrNull(eth?.month_name) ||
     (typeof eth?.month === 'number'
       ? ETHIOPIAN_MONTH_NAMES[eth.month - 1]
-      : null) ||
-    textOrNull(synaxariumDay?.ethiopian_month)
+      : null)
   const dayNum =
-    typeof eth?.day === 'number'
-      ? eth.day
-      : typeof synaxariumDay?.ethiopian_day === 'number'
-        ? synaxariumDay.ethiopian_day
+    typeof synaxariumDay?.ethiopian_day === 'number'
+      ? synaxariumDay.ethiopian_day
+      : typeof eth?.day === 'number'
+        ? eth.day
         : null
   if (!monthName || dayNum == null) return null
 
@@ -404,7 +444,19 @@ async function resolveSynaxariumToday(signal?: AbortSignal): Promise<SearchBuddy
     `/api/synaxarium/day?month=${encodeURIComponent(monthName)}&day=${dayNum}`,
     signal,
   )
-  return asSynaxariumToday(payload)
+  const fromDayApi = asSynaxariumToday(payload)
+  if (fromDayApi) return fromDayApi
+
+  // Fallback: calendar/today already embeds synaxarium rows for the day.
+  if (Array.isArray(today.synaxarium) && today.synaxarium.length > 0) {
+    return asSynaxariumToday({
+      day: synaxariumDay,
+      commemorations: today.synaxarium,
+      title: textOrNull(synaxariumDay?.display_date_english),
+      title_amharic: textOrNull(synaxariumDay?.display_date_amharic),
+    })
+  }
+  return null
 }
 
 function responseTypeForFocus(

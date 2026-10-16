@@ -12,6 +12,7 @@ import type {
 import { containsEthiopic, normalizeAmharicSearchText } from './amharicText.ts'
 import {
   detectCalendarRoute,
+  isExplanatoryTheologyQuery,
   resolveCalendarStructuredSearch,
 } from './calendarStructuredSearch.ts'
 
@@ -194,6 +195,39 @@ const UNKNOWN_AMHARIC: SearchBuddyApiResponse = {
   message: "I couldn't find a matching result yet.",
 }
 
+/** Short Amharic greetings should reach /api/chat (same as English "Hello"). */
+function isAmharicGreetingQuery(hay: string): boolean {
+  const t = hay.replace(/\s+/g, ' ').trim()
+  if (!t || t.length > 40) return false
+  return (
+    t === '\u1230\u120B\u121D' || // ሰላም
+    t.startsWith('\u1230\u120B\u121D ') ||
+    t.startsWith('\u1218\u120D\u12AB\u121D ') || // መልካም …
+    t === '\u1273\u12F2\u12EB\u1235' // ታዲያስ
+  )
+}
+
+/**
+ * Open Amharic Q&A / theology may reach /api/chat after structured misses.
+ * Lyric fragments and bare titles stay unknown (no fabricated AI fill-in).
+ */
+function shouldFallThroughAmharicToChat(raw: string): boolean {
+  if (isExplanatoryTheologyQuery(raw)) return true
+  const hay = normalizeAmharicSearchText(raw)
+  if (!hay) return false
+  if (isAmharicGreetingQuery(hay)) return true
+  // Latin ?, fullwidth？, Ethiopic ፧
+  if (/[?？\u1367]/.test(raw)) return true
+  return (
+    hay.includes('\u121D\u1295\u12F5\u1290\u12CD') || // ምንድነው
+    hay.includes('\u121D\u1295\u12F5\u1295') || // ምንድን
+    hay.includes('\u121D\u1295\u12F5\u12F3\u12CD') || // ምንድዳው
+    hay.includes('\u1235\u1208\u121D\u1295') || // ስለምን
+    hay.includes('\u1218\u127D') || // መቼ
+    hay.includes('\u12A5\u1295\u12F0\u1275') // እንዴት
+  )
+}
+
 /**
  * Amharic / Ethiopic structured Search Buddy path.
  *
@@ -269,6 +303,11 @@ export async function resolveAmharicStructuredSearch(
     return UNKNOWN_AMHARIC
   }
 
+  // Short greetings → /api/chat (skip prayer/synax keyword hits on ሰላም, etc.).
+  if (isAmharicGreetingQuery(queryKey)) {
+    return null
+  }
+
   // Bible-like that also looked calendar-ish is rare; if bibleLike remains, try bible.
   if (bibleLike) {
     try {
@@ -308,25 +347,28 @@ export async function resolveAmharicStructuredSearch(
     try {
       const hymn = await searchHymnsFullQuery(queryKey, signal)
       if (hymn) return hymn
+      // Explicit hymn ask with no library hit stays unknown (do not invent lyrics via AI).
+      return UNKNOWN_AMHARIC
     } catch {
-      /* continue */
-    }
-  } else {
-    try {
-      const hymn = await searchHymnsFullQuery(queryKey, signal)
-      const top =
-        hymn && hymn.type === 'hymn_search' && Array.isArray(hymn.results)
-          ? hymn.results[0]
-          : undefined
-      if (hymn && top && isConfidentHymnTitleMatch(queryKey, top)) {
-        return hymn
-      }
-    } catch {
-      /* continue */
+      return UNKNOWN_AMHARIC
     }
   }
 
-  return UNKNOWN_AMHARIC
+  try {
+    const hymn = await searchHymnsFullQuery(queryKey, signal)
+    const top =
+      hymn && hymn.type === 'hymn_search' && Array.isArray(hymn.results)
+        ? hymn.results[0]
+        : undefined
+    if (hymn && top && isConfidentHymnTitleMatch(queryKey, top)) {
+      return hymn
+    }
+  } catch {
+    /* continue */
+  }
+
+  // Open theology / interrogatives → /api/chat; otherwise keep unknown.
+  return shouldFallThroughAmharicToChat(rawForChat) ? null : UNKNOWN_AMHARIC
 }
 
 export function shouldUseAmharicStructuredPath(message: string): boolean {
