@@ -1,3 +1,4 @@
+import { normalizeAiSources } from './aiSources.ts'
 import {
   KNOWN_SEARCH_BUDDY_TYPES,
   type BibleBookRef,
@@ -127,7 +128,7 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
       return {
         type: 'ai',
         answer: answerText,
-        sources: Array.isArray(payload.sources) ? payload.sources : undefined,
+        sources: normalizeAiSources(payload.sources),
       }
     }
     return {
@@ -150,7 +151,7 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
       type: 'ai',
       answer: answerText || (typeof payload.answer === 'string' ? payload.answer : '') || undefined,
       message: typeof payload.message === 'string' ? payload.message : undefined,
-      sources: Array.isArray(payload.sources) ? payload.sources : undefined,
+      sources: normalizeAiSources(payload.sources),
     }
   }
 
@@ -163,7 +164,7 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
     return {
       type: 'ai',
       answer: answerText,
-      sources: Array.isArray(payload.sources) ? payload.sources : undefined,
+      sources: normalizeAiSources(payload.sources),
     }
   }
 

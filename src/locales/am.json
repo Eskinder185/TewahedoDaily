@@ -815,7 +815,14 @@
     "sourcesHeading": "ምንጮች",
     "noSources": "ምንጮች አልተሰጡም።",
     "aiEmpty": "ረዳቱ ምላሽ አልሰጠም።",
-    "sourceN": "ምንጭ {n}"
+    "sourceN": "ምንጭ {n}",
+    "verifiedPassagesHeading": "የተረጋገጡ የመጽሐፍ ቅዱስ ጥቅሶች",
+    "verifiedPassagesNote": "ትክክለኛ የመጽሐፍ ቅዱስ ጽሑፍ ከቤተ ክርስቲያን አገልግሎት — በረዳቱ አልተፈጠረም።",
+    "scriptureLangEn": "እንግሊዝኛ",
+    "scriptureLangAm": "አማርኛ",
+    "scriptureLangOther": "የምንጭ ቋንቋ",
+    "scriptureMystery": "ምሥጢር፦ {mystery}",
+    "scriptureCovers": "የሚሸፍናቸው ቁጥሮች {range}"
   },
   "account": {
     "signIn": "ግባ",

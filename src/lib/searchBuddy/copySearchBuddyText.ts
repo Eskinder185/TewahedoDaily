@@ -1,5 +1,12 @@
 import type { ChatMessage } from '../search/chatTypes.ts'
+import {
+  partitionAiSources,
+  scriptureLanguageKey,
+  scriptureVerseText,
+} from './aiSources.ts'
 import type {
+  AiGenericSource,
+  AiScriptureSource,
   BibleChapterResponse,
   BibleReferenceResponse,
   BibleSearchHit,
@@ -148,6 +155,55 @@ function bibleChapterText(response: BibleChapterResponse): string {
   return joinParts([ref, trimText(response.message)])
 }
 
+function scriptureLanguageCopyLabel(language: string | null | undefined): string {
+  const key = scriptureLanguageKey(language)
+  if (key === 'en') return 'English'
+  if (key === 'am') return 'Amharic'
+  return trimText(language) || 'Source'
+}
+
+function scriptureSourceCopyBlock(source: AiScriptureSource): string {
+  const body = scriptureVerseText(source)
+  if (!body) return ''
+  const reference = trimText(source.reference) || 'Scripture'
+  const meta = [
+    scriptureLanguageCopyLabel(source.language),
+    trimText(source.edition),
+    trimText(source.mystery) ? `Mystery: ${trimText(source.mystery)}` : '',
+  ]
+    .filter(Boolean)
+    .join(' · ')
+  return joinParts([meta ? `${reference} (${meta})` : reference, body])
+}
+
+function genericSourceCopyLine(source: AiGenericSource, index: number): string {
+  const title = trimText(source.title) || `Source ${index + 1}`
+  const excerpt = trimText(source.excerpt)
+  const url = trimText(source.url)
+  if (excerpt && url) return `${title}\n${excerpt}\n${url}`
+  if (excerpt) return `${title}\n${excerpt}`
+  if (url) return `${title}\n${url}`
+  return title
+}
+
+function aiResponseCopyText(answer: string, sources: ReturnType<typeof partitionAiSources>): string {
+  const parts: string[] = []
+  if (answer) parts.push(answer)
+  if (sources.scripture.length) {
+    const blocks = sources.scripture.map(scriptureSourceCopyBlock).filter(Boolean)
+    if (blocks.length) {
+      parts.push(['Verified Bible Passages', ...blocks].join('\n\n'))
+    }
+  }
+  if (sources.generic.length) {
+    const lines = sources.generic
+      .map((source, index) => genericSourceCopyLine(source, index))
+      .filter(Boolean)
+    if (lines.length) parts.push(['Sources', ...lines].join('\n\n'))
+  }
+  return joinParts(parts)
+}
+
 /** Plain text suitable for clipboard from a Search Buddy API payload. */
 export function plainTextFromSearchBuddyResponse(
   response: SearchBuddyApiResponse | null | undefined,
@@ -155,8 +211,10 @@ export function plainTextFromSearchBuddyResponse(
   if (!response) return ''
 
   switch (response.type) {
-    case 'ai':
-      return trimText(response.answer) || trimText(response.message)
+    case 'ai': {
+      const answer = trimText(response.answer) || trimText(response.message)
+      return aiResponseCopyText(answer, partitionAiSources(response.sources))
+    }
 
     case 'bible_reference':
       return bibleReferenceText(response)

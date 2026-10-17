@@ -46,6 +46,8 @@
     "test:calendar-intent-routing": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-calendar-intent-routing.mjs",
     "test:search-buddy-theology-routing": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-search-buddy-theology-routing.mjs",
     "test:search-buddy-theology-chat": "npx --yes tsx scripts/test-search-buddy-theology-chat.mjs",
+    "test:search-buddy-ai-sources": "npx --yes tsx scripts/test-search-buddy-ai-sources.mjs",
+    "test:search-buddy-scripture-ui": "npx --yes tsx scripts/test-search-buddy-scripture-ui.mjs",
     "test:search-buddy-fallback": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-search-buddy-fallback.mjs",
     "test:search-regression": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-search-regression.mjs",
     "test:bible-search": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-bible-search.mjs",

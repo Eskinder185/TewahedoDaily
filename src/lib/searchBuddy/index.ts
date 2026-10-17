@@ -1,5 +1,9 @@
 export type {
   AiAssistantResponse,
+  AiGenericSource,
+  AiScriptureSource,
+  AiScriptureVerse,
+  AiSource,
   BibleChapterResponse,
   BibleReferenceResponse,
   BibleSearchResponse,
@@ -14,6 +18,15 @@ export type {
   SynaxariumSearchResponse,
 } from './apiTypes.ts'
 export { KNOWN_SEARCH_BUDDY_TYPES } from './apiTypes.ts'
+export {
+  coversRangeLabel,
+  isAiGenericSource,
+  isAiScriptureSource,
+  normalizeAiSources,
+  partitionAiSources,
+  scriptureLanguageKey,
+  scriptureVerseText,
+} from './aiSources.ts'
 export {
   isEmptySearchBuddyResponse,
   normalizeBibleReferenceResponse,

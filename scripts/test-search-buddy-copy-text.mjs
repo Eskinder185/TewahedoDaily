@@ -22,6 +22,43 @@ assert.equal(
   'Fallback note.',
 )
 
+const scriptureEnVerse =
+  'Go, and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,'
+const scriptureAmVerse =
+  '\u12A5\u1295\u130D\u12F2\u1205 \u1202\u12F1\u1293 \u12A0\u1215\u12DB\u1265\u1295 \u1201\u1201 \u1260\u12A0\u1265 \u1260\u12C8\u120D\u12F5\u1293 \u1260\u1218\u1295\u1348\u1235 \u1245\u12F1\u1235 \u1235\u121D'
+const aiWithScripture = plainTextFromSearchBuddyResponse({
+  type: 'ai',
+  answer: 'An explanation of the Holy Trinity...',
+  sources: [
+    {
+      reference: 'Matthew 28:19',
+      edition: 'web',
+      language: 'en',
+      mystery: 'Trinity',
+      verses: [{ verse_number: 19, text: scriptureEnVerse, covers_verse_range: null }],
+    },
+    {
+      reference: 'Matthew 28:19-20',
+      edition: 'am',
+      language: 'am',
+      mystery: 'Trinity',
+      verses: [{ verse_number: 19, text: scriptureAmVerse, covers_verse_range: [19, 20] }],
+    },
+    {
+      title: 'Church teaching',
+      url: 'https://example.org/teaching',
+      excerpt: 'Short excerpt',
+    },
+  ],
+})
+assert.match(aiWithScripture, /An explanation of the Holy Trinity/)
+assert.match(aiWithScripture, /Verified Bible Passages/)
+assert.ok(aiWithScripture.includes(scriptureEnVerse))
+assert.ok(aiWithScripture.includes(scriptureAmVerse))
+assert.match(aiWithScripture, /Matthew 28:19-20/)
+assert.match(aiWithScripture, /Church teaching/)
+assert.match(aiWithScripture, /https:\/\/example\.org\/teaching/)
+
 const bibleRef = plainTextFromSearchBuddyResponse({
   type: 'bible_reference',
   reference: 'John 3:16',

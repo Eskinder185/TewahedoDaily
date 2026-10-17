@@ -15,4 +15,5 @@ dist/
 *.log
 playwright-report/
 test-results/
+tmp/
 The_Ethiopian_Synaxarium.pdf

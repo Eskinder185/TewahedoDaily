@@ -204,11 +204,41 @@ export type SynaxariumDayResponse = {
   message?: string
 }
 
+/** Exact verse row from FastAPI AI Scripture sources — never invent text. */
+export type AiScriptureVerse = {
+  verse_number?: number | null
+  text?: string | null
+  /** Inclusive range when one stored row covers multiple verses (e.g. [19, 20]). */
+  covers_verse_range?: number[] | null
+}
+
+/**
+ * Verified Bible passage from FastAPI `sources[]`.
+ * Quotation text must come from `verses[].text` only.
+ */
+export type AiScriptureSource = {
+  reference?: string | null
+  edition?: string | null
+  language?: string | null
+  mystery?: string | null
+  verses?: AiScriptureVerse[] | null
+}
+
+/** Legacy / generic citation link (title + url + excerpt). */
+export type AiGenericSource = {
+  title?: string | null
+  url?: string | null
+  excerpt?: string | null
+}
+
+/** Union of Scripture passages and generic citation links. */
+export type AiSource = AiScriptureSource | AiGenericSource
+
 export type AiAssistantResponse = {
   type: 'ai'
   answer?: string | null
   message?: string | null
-  sources?: Array<{ title?: string; url?: string; excerpt?: string }>
+  sources?: AiSource[]
 }
 
 /** Shared optional calendar/today fields — render only what the API returns. */
