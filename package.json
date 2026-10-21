@@ -20,6 +20,7 @@
     "test:cms:admin": "node scripts/cms-admin-smoke.mjs",
     "preview": "vite preview",
     "smoke:mobile": "node scripts/mobile-smoke.mjs",
+    "test:journeys": "node scripts/playwright-journeys.mjs",
     "test:editorial-books-access": "node scripts/test-editorial-books-access.mjs",
     "test:editorial-books-mobile": "node scripts/test-editorial-books-mobile.mjs",
     "test:mobile-calendar-language": "node scripts/test-mobile-calendar-language.mjs",
