@@ -1,0 +1,28 @@
+# Cloudflare Pages must never publish the Python backend or private data.
+# Prefer deploying only the Vite `dist/` output directory.
+backend/
+server/
+content-review/
+content-review.zip
+node_modules/
+.tmp/
+tmp/
+.git/
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.venv/
+backend/content-review/
+backend/data/
+*.sqlite3
+*.db
+*.npy
+.rag-eval/
+.pytest_cache/
+__pycache__/
+*.pyc
+migration-reports/
+research/
+archive/
+artifacts/

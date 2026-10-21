@@ -65,6 +65,7 @@ export type HymnBrowseCard = {
   name: string
   nameAmharic: string
   description: string
+  descriptionAmharic?: string
   imagePath: string | null
   imageUrl: string
   imageAlt: string
@@ -278,6 +279,7 @@ function sectionToCard(section: HymnSection): HymnBrowseCard {
     name: section.title,
     nameAmharic: section.titleAmharic,
     description: section.description,
+    descriptionAmharic: section.descriptionAmharic,
     imagePath: section.imagePath,
     imageUrl: section.imageUrl,
     imageAlt: section.imageAlt,

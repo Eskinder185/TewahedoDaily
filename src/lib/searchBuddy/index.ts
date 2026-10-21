@@ -28,6 +28,11 @@ export {
   scriptureVerseText,
 } from './aiSources.ts'
 export {
+  parseAiAnswerBlocks,
+  plainTextFromAiAnswer,
+  stripDecorativeMarkdown,
+} from './formatAiAnswer.ts'
+export {
   isEmptySearchBuddyResponse,
   normalizeBibleReferenceResponse,
   parseSearchBuddyResponse,

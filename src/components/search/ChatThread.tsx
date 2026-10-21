@@ -1,4 +1,5 @@
-import { memo, useEffect, useRef, type RefObject } from 'react'
+import { memo, useEffect, useRef, useState, type RefObject } from 'react'
+import { useTranslation } from '../../i18n'
 import type { ChatMessage } from '../../lib/search/chatTypes'
 import type { SiteSearchResult } from '../../lib/search/types'
 import { plainTextFromSearchBuddyMessage } from '../../lib/searchBuddy/copySearchBuddyText.ts'
@@ -21,6 +22,8 @@ type Props = {
   seeMoreLabel?: (count: number) => string
   initialLocalCount?: number
   liveStatus?: string
+  busy?: boolean
+  onRetry?: (query: string, messageId: string) => void
 }
 
 type MessageRowProps = {
@@ -33,6 +36,33 @@ type MessageRowProps = {
   onShowAllLocal?: () => void
   seeMoreLabel?: (count: number) => string
   initialLocalCount: number
+  busy?: boolean
+  onRetry?: (query: string, messageId: string) => void
+}
+
+function RetryButton({
+  availableAt,
+  busy,
+  onRetry,
+}: {
+  availableAt?: number
+  busy?: boolean
+  onRetry: () => void
+}) {
+  const t = useTranslation()
+  const [now, setNow] = useState(() => Date.now())
+  const waiting = availableAt != null && availableAt > now
+  useEffect(() => {
+    if (!waiting) return
+    const id = window.setInterval(() => setNow(Date.now()), 1000)
+    return () => window.clearInterval(id)
+  }, [waiting, availableAt])
+  const seconds = waiting && availableAt != null ? Math.max(1, Math.ceil((availableAt - now) / 1000)) : 0
+  return (
+    <button type="button" className={styles.retryBtn} onClick={onRetry} disabled={busy || waiting}>
+      {waiting ? t('searchBuddy.retryWait', { seconds }) : t('searchBuddy.retry')}
+    </button>
+  )
 }
 
 const ChatMessageRow = memo(function ChatMessageRow({
@@ -45,12 +75,15 @@ const ChatMessageRow = memo(function ChatMessageRow({
   onShowAllLocal,
   seeMoreLabel,
   initialLocalCount,
+  busy,
+  onRetry,
 }: MessageRowProps) {
+  const t = useTranslation()
   if (msg.role === 'user') {
     return (
       <article
         className={`${styles.chatMsg} ${styles.chatMsgUser}`}
-        aria-label="You"
+        aria-label={t('searchBuddy.roleYou')}
       >
         <div className={styles.userBubble}>
           <p className={styles.userBubbleText}>{msg.text}</p>
@@ -66,7 +99,7 @@ const ChatMessageRow = memo(function ChatMessageRow({
   return (
     <article
       className={`${styles.chatMsg} ${styles.chatMsgAssistant}`}
-      aria-label="Assistant"
+      aria-label={t('searchBuddy.roleAssistant')}
     >
       <div className={styles.assistantBlock}>
         {msg.status === 'sending' ? (
@@ -81,9 +114,19 @@ const ChatMessageRow = memo(function ChatMessageRow({
         ) : null}
 
         {msg.status === 'error' && msg.errorText ? (
-          <p className={styles.message} role="alert">
-            {msg.errorText}
-          </p>
+          <div className={styles.errorBlock} role="alert">
+            <p className={styles.message}>{msg.errorText}</p>
+            {msg.localResults?.length ? (
+              <p className={styles.message}>{t('searchBuddy.localWhileDown')}</p>
+            ) : null}
+            {msg.failedQuery && onRetry ? (
+              <RetryButton
+                availableAt={msg.retryAvailableAt}
+                busy={busy}
+                onRetry={() => onRetry(msg.failedQuery || '', msg.id)}
+              />
+            ) : null}
+          </div>
         ) : null}
 
         {showCopy ? (
@@ -163,6 +206,8 @@ export function ChatThread({
   seeMoreLabel,
   initialLocalCount = 6,
   liveStatus,
+  busy,
+  onRetry,
 }: Props) {
   const endRef = useRef<HTMLDivElement>(null)
   const lastAnchorRef = useRef('')
@@ -205,6 +250,8 @@ export function ChatThread({
             onShowAllLocal={onShowAllLocal}
             seeMoreLabel={seeMoreLabel}
             initialLocalCount={initialLocalCount}
+            busy={busy}
+            onRetry={onRetry}
           />
         ))}
         <div ref={endRef} className={styles.threadEnd} aria-hidden />

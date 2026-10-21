@@ -1,9 +1,11 @@
 import { CalendarEventImage } from './CalendarEventImage'
 import {
   displaySummary,
+  localizeCalendarEventType,
   type PresentableCalendarEvent,
 } from '../../lib/calendar/calendarPresentation'
 import type { CalendarLocaleMode } from '../../lib/calendar/calendarEnrichedContent'
+import { useTranslation } from '../../i18n'
 import styles from './CalendarEventCard.module.css'
 
 export type CalendarEventCardProps = {
@@ -32,10 +34,12 @@ export function CalendarEventCard({
   variant = 'strip',
   selected = false,
 }: CalendarEventCardProps) {
+  const t = useTranslation()
   const summary = displaySummary(event, lang)
   const shortSummary =
     summary.length > 110 ? `${summary.slice(0, 107).trimEnd()}…` : summary
   const label = dateLabel || event.ethiopianDateLabel || event.movableLabel || ''
+  const typeLabel = localizeCalendarEventType(event.categoryLabel, t)
 
   return (
     <button
@@ -44,7 +48,7 @@ export function CalendarEventCard({
         selected ? styles.selected : ''
       } ${className}`.trim()}
       onClick={() => onOpen(event)}
-      aria-label={`${event.categoryLabel}: ${event.title}${label ? `, ${label}` : ''}. Open details.`}
+      aria-label={`${typeLabel}: ${event.title}${label ? `, ${label}` : ''}. ${t('calendar.timeline.openDetails')}`}
     >
       <CalendarEventImage
         src={event.imageUrl}
@@ -60,7 +64,7 @@ export function CalendarEventCard({
         }
       />
       <span className={styles.body}>
-        <span className={styles.type}>{event.categoryLabel}</span>
+        <span className={styles.type}>{typeLabel}</span>
         <span className={styles.title}>{event.title}</span>
         {event.titleAmharic ? (
           <span className={styles.titleAm} lang="am">

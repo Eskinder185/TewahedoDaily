@@ -1,3 +1,4 @@
+import { buildChatRequestBody } from '../searchBuddy/chatContract.ts'
 import { AI_TIMEOUTS_MS, getAiFeatureFlags, isAiApiConfigured } from './aiConfig.ts'
 import { aiFetch } from './aiClient.ts'
 import type {
@@ -39,13 +40,17 @@ export async function postAiChat(
   return aiFetch<AiChatResponse>({
     path: '/api/chat',
     method: 'POST',
-    json: {
-      ...request,
+    json: buildChatRequestBody({
+      message: request.message,
       timezone:
-        typeof Intl !== 'undefined'
+        request.timezone ||
+        (typeof Intl !== 'undefined'
           ? Intl.DateTimeFormat().resolvedOptions().timeZone
-          : 'UTC',
-    },
+          : 'UTC'),
+      uiLanguage: request.ui_language,
+      answerLanguage: request.answer_language,
+      history: request.history,
+    }),
     timeoutMs: AI_TIMEOUTS_MS.chat,
     signal,
     withAuth: true,

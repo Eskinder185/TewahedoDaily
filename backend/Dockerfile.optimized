@@ -1,0 +1,28 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    HF_HOME=/root/.cache/huggingface
+
+# Build context must be backend/ (see docker-compose.yml).
+RUN python -m pip install --no-cache-dir --upgrade pip \
+    && python -m pip install --no-cache-dir \
+       torch==2.9.1 \
+       --index-url https://download.pytorch.org/whl/cpu \
+    && python -m pip install --no-cache-dir \
+       fastapi==0.143.2 \
+       uvicorn==0.54.0 \
+       httpx==0.28.1 \
+       python-multipart==0.0.32 \
+       av==16.0.1 \
+       transformers==5.20.0 \
+       sentencepiece
+
+# Application code (compose may still bind-mount ./app for local iteration).
+COPY app/ /app/
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -114,6 +114,23 @@ export {
 
 export { findNextCivilDayForEntry } from './eotcFindEntryOccurrence'
 
+export type {
+  DatedOccurrence,
+  NextCommemorationAbstention,
+  NextCommemorationAnswer,
+  NextCommemorationResult,
+  OccurrenceKind,
+} from './nextCommemoration'
+
+export {
+  detectCommemorationSubject,
+  ethiopianMonthLength,
+  isNextOccurrenceQuery,
+  nextFixedEthDateOnOrAfter,
+  nextMonthlyDayOnOrAfter,
+  resolveNextCommemoration,
+} from './nextCommemoration'
+
 export type { EotcCalendarSearchOptions, EotcContentCategoryFilter } from './eotcCalendarSearch'
 
 export {

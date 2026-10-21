@@ -356,6 +356,47 @@ export const UI_LABELS = {
   prayerMezmurIndex: { en: 'Psalms in this volume', am: 'በዚህ ክፍል ያሉ መዝሙራት' },
   prayerMezmurPrev: { en: 'Previous', am: 'ቀዳሚ' },
   prayerMezmurNext: { en: 'Next', am: 'ቀጣይ' },
+  prayerMezmurPsalmLabel: { en: 'Psalm {number}', am: 'መዝሙር {number}' },
+  prayerMezmurUnavailable: {
+    en: 'Psalm {number} is not available.',
+    am: 'መዝሙር {number} አልተገኘም።',
+  },
+  prayerMezmurPreviousReading: { en: 'Previous reading', am: 'የቀድሞው ንባብ' },
+  prayerMezmurNoMatch: {
+    en: 'No psalm matches this search.',
+    am: 'ከዚህ ፍለጋ ጋር የሚገጥም መዝሙር የለም።',
+  },
+  prayerMezmurBack: { en: 'Back to psalm index', am: 'ወደ መዝሙር ዝርዝር ተመለስ' },
+  prayerMezmurRangeEmpty: {
+    en: 'No psalms found for this range.',
+    am: 'በዚህ ክልል መዝሙር አልተገኘም።',
+  },
+  prayerMezmurTodayRange: {
+    en: "Today's reading: Psalms {from}–{to}",
+    am: 'የዛሬ ንባብ፦ መዝሙር {from}–{to}',
+  },
+  prayerMezmurRangeLabel: { en: 'Psalms {from}–{to}', am: 'መዝሙር {from}–{to}' },
+  prayerMezmurViewFull: { en: 'View full Mezmure Dawit', am: 'ሙሉ መዝሙረ ዳዊት ይመልከቱ' },
+  prayerMezmurOpenCollection: { en: 'Open collection', am: 'ስብስቡን ክፈት' },
+  prayerMezmurLoadError: {
+    en: "We couldn't load Mezmure Dawit.",
+    am: 'መዝሙረ ዳዊት መጫን አልተቻለም።',
+  },
+  prayerMezmurTryAgain: { en: 'Try again', am: 'እንደገና ይሞክሩ' },
+  prayerMezmurBreadcrumb: { en: 'Breadcrumb', am: 'የገጽ መንገድ' },
+  prayerTranslationUnavailable: {
+    en: 'This translation is not available.',
+    am: 'ይህ ትርጉም አልተገኘም።',
+  },
+  prayerGeezUnavailable: {
+    en: "Ge'ez text is not available for this passage.",
+    am: 'ለዚህ ክፍል የግዕዝ ጽሑፍ አልተገኘም።',
+  },
+  prayerLangUnavailableShort: { en: 'not available', am: 'አልተገኘም' },
+  prayerDocumentEyebrow: { en: 'Prayer text', am: 'የጸሎት ጽሑፍ' },
+  prayerDocumentSection: { en: 'Section {number}', am: 'ክፍል {number}' },
+  prayerDocumentPdf: { en: 'View source PDF', am: 'የምንጭ ፒዲኤፍ ይመልከቱ' },
+  prayerDocumentTabsAria: { en: '{title} languages', am: 'የ{title} ቋንቋዎች' },
 
   prayerDayMon: { en: 'Mon', am: 'ሰኞ' },
   prayerDayTue: { en: 'Tue', am: 'ማክሰኞ' },

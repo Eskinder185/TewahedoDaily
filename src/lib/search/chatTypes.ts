@@ -16,9 +16,13 @@ export type ChatMessage = {
   status?: 'sending' | 'complete' | 'error'
   empty?: boolean
   errorText?: string
+  /** Question to resubmit. Kept after a failure so retry does not invent a new prompt. */
+  failedQuery?: string
+  /** Epoch ms before a manual retry is allowed (Retry-After). */
+  retryAvailableAt?: number
 }
 
-/** Display history only — never send this object as the /api/chat body yet. */
+/** Display thread. The chat request copies only successful conversational turns. */
 export type ChatDisplayHistory = ChatMessage[]
 
 export function createChatMessageId(): string {

@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { HymnBrowseCard, HymnMajorBrowseGroup } from '../../lib/publicContent/hymnBrowse'
+import { hymnMezmurCountLabel, hymnSourceHeading } from '../../lib/publicContent/hymnBrowseLabels'
 import { hymnSectionArtFallback } from '../../lib/publicContent/hymnSectionArtFallbacks'
 import { responsiveImageAttrs } from '../../lib/media/responsiveImage'
+import { useTranslation } from '../../i18n'
+import { useLocale } from '../../lib/i18n/locale'
 import styles from './HymnBrowseCard.module.css'
 
 const BROWSE_SIZES = '(max-width: 430px) 92vw, (max-width: 768px) 44vw, 280px'
@@ -73,13 +76,15 @@ function BrowseCardMedia({
  * Shared Category / Occasion / Singer browse card for Hymns Practice.
  */
 export function HymnBrowseCardView({ card, priority = false }: HymnBrowseCardProps) {
-  const countLabel = `${card.mezmurCount} Mezmur${card.mezmurCount === 1 ? '' : 's'}`
+  const { locale } = useLocale()
+  const heading = hymnSourceHeading(card.name, card.nameAmharic, locale)
+  const countLabel = hymnMezmurCountLabel(card.mezmurCount, locale)
   const showMedia = Boolean(card.imageUrl) || Boolean(hymnSectionArtFallback(card.slug))
   return (
     <Link
       to={card.href}
       className={styles.card}
-      aria-label={`${card.nameAmharic ? `${card.nameAmharic}, ` : ''}${card.name}, ${countLabel}`}
+      aria-label={`${heading.primary}, ${countLabel}`}
     >
       <div className={styles.media} data-empty={!showMedia || undefined}>
         <BrowseCardMedia
@@ -90,12 +95,14 @@ export function HymnBrowseCardView({ card, priority = false }: HymnBrowseCardPro
         />
       </div>
       <div className={styles.body}>
-        {card.nameAmharic ? (
-          <p className={styles.amharic} lang="am">
-            {card.nameAmharic}
+        {heading.secondary ? (
+          <p className={styles.amharic} lang={heading.secondaryLang || undefined}>
+            {heading.secondary}
           </p>
         ) : null}
-        <h3 className={styles.title}>{card.name}</h3>
+        <h3 className={styles.title} lang={heading.primaryLang}>
+          {heading.primary}
+        </h3>
         <div className={styles.meta}>
           <span className={styles.count}>{countLabel}</span>
           <span className={styles.arrow} aria-hidden>
@@ -115,16 +122,18 @@ export function HymnMajorBrowseCardView({
   group: HymnMajorBrowseGroup
   priority?: boolean
 }) {
+  const t = useTranslation()
+  const { locale } = useLocale()
+  const heading = hymnSourceHeading(group.title, group.titleAmharic, locale)
+  const description = hymnSourceHeading(group.description, group.descriptionAmharic, locale)
   const countLabel =
-    group.mezmurCount > 0
-      ? `${group.mezmurCount} Mezmur${group.mezmurCount === 1 ? '' : 's'}`
-      : 'Browse'
+    group.mezmurCount > 0 ? hymnMezmurCountLabel(group.mezmurCount, locale) : t('practice.browse')
   const showMedia = Boolean(group.imageUrl)
   return (
     <Link
       to={group.href}
       className={styles.card}
-      aria-label={`${group.titleAmharic ? `${group.titleAmharic}, ` : ''}${group.title}`}
+      aria-label={`${heading.primary}${description.primary ? `, ${description.primary}` : ''}, ${countLabel}`}
     >
       <div className={styles.media} data-empty={!showMedia || undefined}>
         <BrowseCardMedia
@@ -135,13 +144,19 @@ export function HymnMajorBrowseCardView({
         />
       </div>
       <div className={styles.body}>
-        {group.titleAmharic ? (
-          <p className={styles.amharic} lang="am">
-            {group.titleAmharic}
+        {heading.secondary ? (
+          <p className={styles.amharic} lang={heading.secondaryLang || undefined}>
+            {heading.secondary}
           </p>
         ) : null}
-        <h3 className={styles.title}>{group.title}</h3>
-        {group.description ? <p className={styles.description}>{group.description}</p> : null}
+        <h3 className={styles.title} lang={heading.primaryLang}>
+          {heading.primary}
+        </h3>
+        {description.primary ? (
+          <p className={styles.description} lang={description.primaryLang}>
+            {description.primary}
+          </p>
+        ) : null}
         <div className={styles.meta}>
           <span className={styles.count}>{countLabel}</span>
           <span className={styles.arrow} aria-hidden>

@@ -112,12 +112,31 @@ assert.match(speechTypes, /BROWSER_WHISPER_ENABLED = false/)
 assert.match(speechTypes, /VOICE_RECOGNITION_LANG/)
 
 const hymns = readFileSync(new URL('../src/pages/PublicMezmurLibrary.tsx', import.meta.url), 'utf8')
-assert.match(hymns, /Say the letters separately, not the whole word/)
+const enLocale = readFileSync(new URL('../src/locales/en.json', import.meta.url), 'utf8')
+const amLocale = readFileSync(new URL('../src/locales/am.json', import.meta.url), 'utf8')
+const player = readFileSync(
+  new URL('../src/components/practice/ChantPracticePlayer.tsx', import.meta.url),
+  'utf8',
+)
+// Hymn search records Amharic and reviews the whole transcript. The old
+// English "spell the letters" line would contradict that, so it must stay off
+// this page. Users see the localized heard line instead.
+assert.match(hymns, /amharicOnly/)
+assert.match(hymns, /t\('practice\.heard'\)/)
+assert.doesNotMatch(hymns, /Say the letters separately/)
+assert.match(enLocale, /"heard": "Heard:/)
+assert.match(amLocale, /"heard": "/)
+assert.doesNotMatch(player, /Say the letters separately/)
+assert.match(player, /mezmurPractice\.recording\.phraseHint/)
+assert.match(enLocale, /Record the words of the hymn, then play them back\./)
+assert.match(amLocale, /"phraseHint":/)
 
 const homeToday = readFileSync(
   new URL('../src/components/home/HomeTodayInChurchPreview.tsx', import.meta.url),
   'utf8',
 )
-assert.doesNotMatch(homeToday, /Explore Today|home\.today\.cta|to=\"\/today\"/)
+assert.doesNotMatch(homeToday, /Explore Today|home\.today\.cta/)
+assert.match(homeToday, /to="\/today"/)
+assert.match(homeToday, /t\('home\.today\.seeAll'\)/)
 
 console.log('test-voice-search-support: ok')

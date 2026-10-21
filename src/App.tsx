@@ -120,6 +120,11 @@ const AboutAdminPage = lazy(() => import('./pages/admin/CmsPageHubs').then(m => 
 const ContentHealthAdmin = lazy(() =>
   import('./pages/admin/ContentHealthAdmin').then((m) => ({ default: m.ContentHealthAdmin })),
 )
+const EditorialBooksPreview = lazy(() =>
+  import('./pages/admin/EditorialBooksPreview').then((m) => ({
+    default: m.EditorialBooksPreview,
+  })),
+)
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const TodayPage = lazy(() => import('./pages/TodayPage').then(m => ({ default: m.TodayPage })))
 const BibleCatalogPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleCatalogPage })))
@@ -217,6 +222,7 @@ export default function App() {
 
             <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
               <Route path="content-health" element={<ContentHealthAdmin />} />
+              <Route path="editorial-books" element={<EditorialBooksPreview />} />
               <Route path="submissions" element={<SubmissionQueue />} />
               <Route path="submissions/:id" element={<SubmissionReview />} />
             </Route>

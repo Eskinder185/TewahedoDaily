@@ -1,0 +1,1057 @@
+{
+  "summary": {
+    "n": 6,
+    "before_contract_pass_rate": 0.6666666666666666,
+    "after_contract_pass_rate": 1.0,
+    "before_mean_unsupported_claim_rate": 0.3666666666666667,
+    "after_mean_unsupported_claim_rate": 0.0,
+    "before_mean_citation_precision": 0.6666666666666666,
+    "after_mean_citation_precision": 1.0,
+    "after_abstention_count": 3,
+    "latency_note": "Latency reused from prior Gemma runs; v2 sanitize/abstain path adds negligible CPU time offline.",
+    "live_gemma_available": false,
+    "official_theology_verified": false,
+    "failure_taxonomy": [
+      {
+        "case": "Why did Jesus choose to be baptized in the Jordan River?",
+        "retrieval": "adequate — Jordan symbolism and baptism-reason passages retrieved",
+        "context": "complete enough for traditional reasons; no verified Bible DB",
+        "prompt": "insufficiently blocked invented chapter:verse forms",
+        "model": "repeatedly invented Psalm 113:3 / Ezekiel-style numeric refs",
+        "primary": "unsupported_generation_invented_bible_refs",
+        "v1_result": "contract REJECTED (no answer)"
+      },
+      {
+        "case": "ኢየሱስ ክርስቶስ ለምን ተጠመቀ?",
+        "retrieval": "adequate — Amharic baptism-reason chunks present",
+        "context": "adequate",
+        "prompt": "Trinity terminology stated but model ignored",
+        "model": "used ሦስትነት instead of ሥላሴ",
+        "primary": "model_terminology_amharic",
+        "v1_result": "contract REJECTED (no answer)"
+      },
+      {
+        "case": "አምስቱ ምሥጢራት ምንድን ናቸው?",
+        "retrieval": "F01 English section routing OK; F01 has no Amharic edition",
+        "context": "incomplete for native Amharic source wording",
+        "prompt": "mechanical contract passed",
+        "model": "added በሰማይ ያሉትን / heaven-style wording not in cited tombs passage",
+        "primary": "unsupported_generation_not_in_evidence",
+        "v1_result": "contract passed mechanically; unsupported claim remained"
+      },
+      {
+        "case": "At what time was Jesus Christ baptized?",
+        "retrieval": "mixed relevance; age-thirty passage present",
+        "context": "no clock time in sources",
+        "prompt": "worked — insufficient_evidence path",
+        "model": "mostly followed abstain-on-clock-time",
+        "primary": "handled",
+        "v1_result": "contract passed with explicit limitation"
+      }
+    ],
+    "prior_gemma_constrained_latency_seconds": [
+      11.34187689999817,
+      12.522565100021893,
+      2.013152600004105,
+      6.235536199994385
+    ],
+    "prior_gemma_constrained_median_seconds": 8.788706549996277
+  },
+  "comparisons": [
+    {
+      "question": "At what time was Jesus Christ baptized?",
+      "before": {
+        "answer": "The Bible does not specify a clock time of day for the baptism of Jesus Christ. [B2]\n\nTradition explains that Christ was baptized at the age of thirty years to resemble Adam, who was created as a mature man of thirty years. [B5]",
+        "contract_passed": true,
+        "attempts": [],
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 2,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 11.34187689999817,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "seconds": 11.34187689999817
+      },
+      "after": {
+        "answer": "The Bible does not specify a clock time of day for the baptism of Jesus Christ. [B2]\n\nTradition explains that Christ was baptized at the age of thirty years to resemble Adam, who was created as a mature man of thirty years. [B5]",
+        "contract_passed": true,
+        "contract": "source_bound_claims_v2",
+        "abstained": false,
+        "mode": "v2_prior_structured_pass",
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 2,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 11.34187689999817,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "repair_notes": []
+      },
+      "evidence": [
+        {
+          "citation": "B1",
+          "document_id": "S01",
+          "paragraph_ids": [
+            "S01-P0185",
+            "S01-P0188",
+            "S01-P0189"
+          ]
+        },
+        {
+          "citation": "B2",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0238",
+            "F01W-P0239",
+            "F01W-P0240",
+            "F01W-P0241",
+            "F01W-P0242",
+            "F01W-P0243"
+          ]
+        },
+        {
+          "citation": "B3",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0221",
+            "F01W-P0223",
+            "F01W-P0225",
+            "F01W-P0226",
+            "F01W-P0228"
+          ]
+        },
+        {
+          "citation": "B4",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0090"
+          ]
+        },
+        {
+          "citation": "B5",
+          "document_id": "M01",
+          "paragraph_ids": [
+            "M01-P0487",
+            "M01-P0488",
+            "M01-P0489",
+            "M01-P0491",
+            "M01-P0492",
+            "M01-P0493",
+            "M01-P0494"
+          ]
+        }
+      ]
+    },
+    {
+      "question": "Why did Jesus choose to be baptized in the Jordan River?",
+      "before": {
+        "answer": null,
+        "contract_passed": false,
+        "attempts": [
+          {
+            "rejection": "No verified Bible database verses were supplied; cite the book source only",
+            "failure_class": "unsupported_generation_invented_bible_refs"
+          },
+          {
+            "rejection": "No verified Bible database verses were supplied; cite the book source only",
+            "failure_class": "unsupported_generation_invented_bible_refs"
+          }
+        ],
+        "metrics": {
+          "citation_precision": 0.0,
+          "unsupported_claim_rate": 1.0,
+          "unsupported_claims": 0,
+          "claim_count": 0,
+          "contract_passed": false,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": false,
+          "latency_seconds": null,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "seconds": null
+      },
+      "after": {
+        "answer": "The supplied research passages do not fully establish a precise answer. Related source wording: \"The Jordan has one source above, but farther down it divides around an island. The branch passing on the side of Israel is called Yor, and the branch on the side of the Gentiles is called Danos. They meet again farther downstream. The Jordan’s one source signifies the single origin of all humanity. Its division around\" [B1]",
+        "contract_passed": true,
+        "contract": "source_bound_abstention_v2",
+        "abstained": true,
+        "mode": "v2_abstention",
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 1,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": null,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "repair_notes": null
+      },
+      "evidence": [
+        {
+          "citation": "B1",
+          "document_id": "S01",
+          "paragraph_ids": [
+            "S01-P0145",
+            "S01-P0146"
+          ]
+        },
+        {
+          "citation": "B2",
+          "document_id": "M01",
+          "paragraph_ids": [
+            "M01-P0475",
+            "M01-P0476"
+          ]
+        },
+        {
+          "citation": "B3",
+          "document_id": "S01",
+          "paragraph_ids": [
+            "S01-P0136",
+            "S01-P0137",
+            "S01-P0138",
+            "S01-P0140",
+            "S01-P0141",
+            "S01-P0142",
+            "S01-P0143",
+            "S01-P0144"
+          ]
+        },
+        {
+          "citation": "B4",
+          "document_id": "M01",
+          "paragraph_ids": [
+            "M01-P0497",
+            "M01-P0498",
+            "M01-P0499",
+            "M01-P0500",
+            "M01-P0501"
+          ]
+        },
+        {
+          "citation": "B5",
+          "document_id": "E01",
+          "paragraph_ids": [
+            "E01-P0178"
+          ]
+        }
+      ]
+    },
+    {
+      "question": "What are the Five Mysteries?",
+      "before": {
+        "answer": "The Mystery of the Trinity (ምሥጢረ ሥላሴ) is the eternal unity of the Father, Son, and Holy Spirit as one God in three distinct Persons. [B1]\n\nThe Mystery of the Incarnation (ምሥጢረ ሥጋዌ) is the unique event where God the Son united manhood to His Godhead without mixture, confusion, division, or separation. [B2]\n\nThe Mystery of Baptism (ምሥጢረ ጥምቀት) involves being born of water and the Spirit to enter the kingdom of God. [B3]\n\nThe Mystery of the Eucharist (ምሥጢረ ቁርባን) is the partaking of the visible bread and wine to attain invisible heavenly blessings and eternal life. [B4]\n\nThe Mystery of the Resurrection of the Dead (ምሥጢረ ትንሣኤ ሙታን) is the future event where all who are in the tombs will hear His voice and come forth. [B5]",
+        "contract_passed": true,
+        "attempts": [],
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 5,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 12.522565100021893,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "seconds": 12.522565100021893
+      },
+      "after": {
+        "answer": "The Mystery of the Trinity (ምሥጢረ ሥላሴ) is the eternal unity of the Father, Son, and Holy Spirit as one God in three distinct Persons. [B1]\n\nThe Mystery of the Incarnation (ምሥጢረ ሥጋዌ) is the unique event where God the Son united manhood to His Godhead without mixture, confusion, division, or separation. [B2]\n\nThe Mystery of Baptism (ምሥጢረ ጥምቀት) involves being born of water and the Spirit to enter the kingdom of God. [B3]\n\nThe Mystery of the Eucharist (ምሥጢረ ቁርባን) is the partaking of the visible bread and wine to attain invisible heavenly blessings and eternal life. [B4]\n\nThe Mystery of the Resurrection of the Dead (ምሥጢረ ትንሣኤ ሙታን) is the future event where all who are in the tombs will hear His voice and come forth. [B5]",
+        "contract_passed": true,
+        "contract": "source_bound_claims_v2",
+        "abstained": false,
+        "mode": "v2_prior_structured_pass",
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 5,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 12.522565100021893,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "repair_notes": []
+      },
+      "evidence": [
+        {
+          "citation": "B1",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0018"
+          ]
+        },
+        {
+          "citation": "B2",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0059",
+            "F01W-P0060"
+          ]
+        },
+        {
+          "citation": "B3",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0082",
+            "F01W-P0084",
+            "F01W-P0085"
+          ]
+        },
+        {
+          "citation": "B4",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0097"
+          ]
+        },
+        {
+          "citation": "B5",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0105",
+            "F01W-P0107",
+            "F01W-P0109"
+          ]
+        }
+      ]
+    },
+    {
+      "question": "ሰላም፣ ስምህ ማን ነው?",
+      "before": {
+        "answer": "ሰላም፣ እኔ የTewahedoDaily የትምህርት መተግበሪያ የፍለጋ ረዳት (Search Buddy) ነኝ። እኔ የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተክርስቲያን ትምህርቶችንና መመሪያዎችን መሠረት በማድረግ ለጥያቄዎችዎ መልስ ለመስጠት የተዘጋጀሁ የሰው ሰራሽ አስተውሎት (AI) ረዳት ነኝ።",
+        "contract_passed": true,
+        "attempts": [],
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 0,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 2.013152600004105,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "seconds": 2.013152600004105
+      },
+      "after": {
+        "answer": "ሰላም፣ እኔ የTewahedoDaily የትምህርት መተግበሪያ የፍለጋ ረዳት (Search Buddy) ነኝ። እኔ የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተክርስቲያን ትምህርቶችንና መመሪያዎችን መሠረት በማድረግ ለጥያቄዎችዎ መልስ ለመስጠት የተዘጋጀሁ የሰው ሰራሽ አስተውሎት (AI) ረዳት ነኝ።",
+        "contract_passed": true,
+        "contract": "identity_no_retrieval",
+        "abstained": false,
+        "mode": "v2_identity",
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 0,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 2.013152600004105,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "repair_notes": null
+      },
+      "evidence": []
+    },
+    {
+      "question": "ኢየሱስ ክርስቶስ ለምን ተጠመቀ?",
+      "before": {
+        "answer": null,
+        "contract_passed": false,
+        "attempts": [
+          {
+            "rejection": "Use the established Trinity term ሥላሴ",
+            "failure_class": "model_terminology_amharic"
+          },
+          {
+            "rejection": "Use the established Trinity term ሥላሴ",
+            "failure_class": "model_terminology_amharic"
+          }
+        ],
+        "metrics": {
+          "citation_precision": 0.0,
+          "unsupported_claim_rate": 1.0,
+          "unsupported_claims": 0,
+          "claim_count": 0,
+          "contract_passed": false,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": false,
+          "latency_seconds": null,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "seconds": null
+      },
+      "after": {
+        "answer": "በቀረቡት የጥናት ምንጮች መሠረት፣ ጥያቄውን በቀጥታ የሚያረጋግጥ በቂ ግልጽ መግለጫ አልተገኘም። ተዛማጅ ምንጭ ቅንጭብ፦ «የጥምቀት አመሰራረት በሐዲስ ኪዳን ጥምቀትን ጌታችን በተግባር/ማቴ /፣ በትምህርት /ዮሐ /፣ በትዕዛዝ /ማቴ 28፡19 መሥርቶታል፡፡ ነገር ግን በምሥጢረ ጥምቀት ሙሉ ጸጋ የተሰጠው በበዓለ ሃምሳ መንፈስ ቅዱስ መውረድ ነው፡፡ የሐዋ 2፡1-5 ጌታ መቼ ተጠመቀ? የጌታ ጥምቀት ከእመቤታችን በተወለደ በሠላሳ ዘመነ በዘመነ ሉቃስ ጥር 1 ቀን ማክሰኞ ሌሊት 1 ሰዓት ነው። ጌታ ለምን ተጠመቀ? ሀ. ለትህትና ለትምህርት ለአርአያ ዮሐ» [B1]",
+        "contract_passed": true,
+        "contract": "source_bound_abstention_v2",
+        "abstained": true,
+        "mode": "v2_abstention",
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 1,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": null,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "repair_notes": null
+      },
+      "evidence": [
+        {
+          "citation": "B1",
+          "document_id": "S01",
+          "paragraph_ids": [
+            "S01-P0127",
+            "S01-P0128",
+            "S01-P0129",
+            "S01-P0130",
+            "S01-P0131",
+            "S01-P0132",
+            "S01-P0133",
+            "S01-P0134",
+            "S01-P0135",
+            "S01-P0136",
+            "S01-P0137"
+          ]
+        },
+        {
+          "citation": "B2",
+          "document_id": "S01",
+          "paragraph_ids": [
+            "S01-P0149",
+            "S01-P0150",
+            "S01-P0151",
+            "S01-P0152",
+            "S01-P0153"
+          ]
+        },
+        {
+          "citation": "B3",
+          "document_id": "M01",
+          "paragraph_ids": [
+            "M01-P0487",
+            "M01-P0488",
+            "M01-P0489",
+            "M01-P0491",
+            "M01-P0492",
+            "M01-P0493",
+            "M01-P0494"
+          ]
+        },
+        {
+          "citation": "B4",
+          "document_id": "S01",
+          "paragraph_ids": [
+            "S01-P0145",
+            "S01-P0146"
+          ]
+        },
+        {
+          "citation": "B5",
+          "document_id": "E01",
+          "paragraph_ids": [
+            "E01-P0178"
+          ]
+        }
+      ]
+    },
+    {
+      "question": "አምስቱ ምሥጢራት ምንድን ናቸው?",
+      "before": {
+        "answer": "ምሥጢረ ሥላሴ፡ አብ፣ ወልድ እና መንፈስ ቅዱስ በጊዜውም ሆነ በዘላለሙ አንድነት ያላቸውን መለኮታዊ ማንነትን የሚገልጽ ምሥጢር ነው። [B1]\n\nምሥጢረ ሥጋዌ፡ የእግዚአብሔር ልጅ በነፍሱ ፈቃድ ሰው በመሆን፣ መለኮትና ሰውነት ሳይቀላቀሉ፣ ሳይለዩ ወይም ሳይለዋወጡ በአንድነት የተዋሀዱበት ምሥጢር ነው። [B2]\n\nምሥጢረ ጥምቀት፡ በውኃና በመንፈስ በመጠመቅ ወደ እግዚአብሔር መንግሥት ለመግባት የሚያስችል ምሥጢር ሲሆን፣ ቤተክርስቲያንም እንደ ሕጉ ለወንድ ልጅ በ40 ቀን፣ ለሴት ልጅ ደግሞ በ80 ቀን ትጠምቃለች። [B3]\n\nምሥጢረ ቁርባን፡ የሚታየውን እንጀድና ወይን በመውሰድ የማይታየውን ሰማያዊ በረከትና የዘላለም ሕይወትን የምናገኝበት ምሥጢር ነው። [B4]\n\nምሥጢረ ትንሣኤ ሙታን፡ በትንሣኤ ቀን በሰማይ ያሉትንና በቁብር ያሉትን ሁሉ ወደ ሕይወት ወይም ወደ ፍርድ የሚሰነዘሩበት ምሥጢር ነው። [B5]",
+        "contract_passed": true,
+        "attempts": [],
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.2,
+          "unsupported_claims": 1,
+          "claim_count": 5,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 6.235536199994385,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "seconds": 6.235536199994385
+      },
+      "after": {
+        "answer": "በቀረቡት የጥናት ምንጮች መሠረት፣ ለዚህ ጥያቄ በአማርኛ የሚያረጋግጥ በቂ ግልጽ መግለጫ አልተገኘም። የእንግሊዝኛ ረቂቅ ምንጭ አለ፤ ትርጉም ወይም ያልተደገፈ መግለጫ አልፈጠርኩም። [B1]",
+        "contract_passed": true,
+        "contract": "source_bound_abstention_v2",
+        "abstained": true,
+        "mode": "v2_abstention",
+        "metrics": {
+          "citation_precision": 1.0,
+          "unsupported_claim_rate": 0.0,
+          "unsupported_claims": 0,
+          "claim_count": 1,
+          "contract_passed": true,
+          "answer_relevance_proxy": null,
+          "amharic_quality_proxy": null,
+          "language_script_matches": true,
+          "latency_seconds": 6.235536199994385,
+          "paragraph_ids_present": true,
+          "human_theological_accuracy": null,
+          "human_amharic_fluency": null,
+          "human_citation_entailment": null,
+          "human_answer_relevance": null
+        },
+        "repair_notes": null
+      },
+      "evidence": [
+        {
+          "citation": "B1",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0018"
+          ]
+        },
+        {
+          "citation": "B2",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0059",
+            "F01W-P0060"
+          ]
+        },
+        {
+          "citation": "B3",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0082",
+            "F01W-P0084",
+            "F01W-P0085"
+          ]
+        },
+        {
+          "citation": "B4",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0097"
+          ]
+        },
+        {
+          "citation": "B5",
+          "document_id": "F01",
+          "paragraph_ids": [
+            "F01W-P0105",
+            "F01W-P0107",
+            "F01W-P0109"
+          ]
+        }
+      ]
+    }
+  ],
+  "human_review_checkpoints": [
+    {
+      "question": "At what time was Jesus Christ baptized?",
+      "has_answer": true,
+      "evidence_citations": [
+        {
+          "citation": "B1",
+          "paragraph_ids": [
+            "S01-P0185",
+            "S01-P0188",
+            "S01-P0189"
+          ],
+          "document_id": "S01"
+        },
+        {
+          "citation": "B2",
+          "paragraph_ids": [
+            "F01W-P0238",
+            "F01W-P0239",
+            "F01W-P0240",
+            "F01W-P0241",
+            "F01W-P0242",
+            "F01W-P0243"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B3",
+          "paragraph_ids": [
+            "F01W-P0221",
+            "F01W-P0223",
+            "F01W-P0225",
+            "F01W-P0226",
+            "F01W-P0228"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B4",
+          "paragraph_ids": [
+            "F01W-P0090"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B5",
+          "paragraph_ids": [
+            "M01-P0487",
+            "M01-P0488",
+            "M01-P0489",
+            "M01-P0491",
+            "M01-P0492",
+            "M01-P0493",
+            "M01-P0494"
+          ],
+          "document_id": "M01"
+        }
+      ],
+      "metrics_snapshot": {
+        "citation_precision": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "contract_passed": true,
+        "latency_seconds": 11.34187689999817
+      },
+      "failure_class": null,
+      "checkpoints": {
+        "theological_accuracy": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "amharic_fluency": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "citation_entailment": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "answer_relevance": {
+          "status": "pending_human_review",
+          "value": null
+        }
+      },
+      "note": "Automated tests do not certify theological correctness or Amharic fluency."
+    },
+    {
+      "question": "Why did Jesus choose to be baptized in the Jordan River?",
+      "has_answer": true,
+      "evidence_citations": [
+        {
+          "citation": "B1",
+          "paragraph_ids": [
+            "S01-P0145",
+            "S01-P0146"
+          ],
+          "document_id": "S01"
+        },
+        {
+          "citation": "B2",
+          "paragraph_ids": [
+            "M01-P0475",
+            "M01-P0476"
+          ],
+          "document_id": "M01"
+        },
+        {
+          "citation": "B3",
+          "paragraph_ids": [
+            "S01-P0136",
+            "S01-P0137",
+            "S01-P0138",
+            "S01-P0140",
+            "S01-P0141",
+            "S01-P0142",
+            "S01-P0143",
+            "S01-P0144"
+          ],
+          "document_id": "S01"
+        },
+        {
+          "citation": "B4",
+          "paragraph_ids": [
+            "M01-P0497",
+            "M01-P0498",
+            "M01-P0499",
+            "M01-P0500",
+            "M01-P0501"
+          ],
+          "document_id": "M01"
+        },
+        {
+          "citation": "B5",
+          "paragraph_ids": [
+            "E01-P0178"
+          ],
+          "document_id": "E01"
+        }
+      ],
+      "metrics_snapshot": {
+        "citation_precision": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "contract_passed": true,
+        "latency_seconds": null
+      },
+      "failure_class": "unsupported_generation_invented_bible_refs",
+      "checkpoints": {
+        "theological_accuracy": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "amharic_fluency": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "citation_entailment": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "answer_relevance": {
+          "status": "pending_human_review",
+          "value": null
+        }
+      },
+      "note": "Automated tests do not certify theological correctness or Amharic fluency."
+    },
+    {
+      "question": "What are the Five Mysteries?",
+      "has_answer": true,
+      "evidence_citations": [
+        {
+          "citation": "B1",
+          "paragraph_ids": [
+            "F01W-P0018"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B2",
+          "paragraph_ids": [
+            "F01W-P0059",
+            "F01W-P0060"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B3",
+          "paragraph_ids": [
+            "F01W-P0082",
+            "F01W-P0084",
+            "F01W-P0085"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B4",
+          "paragraph_ids": [
+            "F01W-P0097"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B5",
+          "paragraph_ids": [
+            "F01W-P0105",
+            "F01W-P0107",
+            "F01W-P0109"
+          ],
+          "document_id": "F01"
+        }
+      ],
+      "metrics_snapshot": {
+        "citation_precision": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "contract_passed": true,
+        "latency_seconds": 12.522565100021893
+      },
+      "failure_class": null,
+      "checkpoints": {
+        "theological_accuracy": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "amharic_fluency": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "citation_entailment": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "answer_relevance": {
+          "status": "pending_human_review",
+          "value": null
+        }
+      },
+      "note": "Automated tests do not certify theological correctness or Amharic fluency."
+    },
+    {
+      "question": "ሰላም፣ ስምህ ማን ነው?",
+      "has_answer": true,
+      "evidence_citations": [],
+      "metrics_snapshot": {
+        "citation_precision": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "contract_passed": true,
+        "latency_seconds": 2.013152600004105
+      },
+      "failure_class": null,
+      "checkpoints": {
+        "theological_accuracy": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "amharic_fluency": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "citation_entailment": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "answer_relevance": {
+          "status": "pending_human_review",
+          "value": null
+        }
+      },
+      "note": "Automated tests do not certify theological correctness or Amharic fluency."
+    },
+    {
+      "question": "ኢየሱስ ክርስቶስ ለምን ተጠመቀ?",
+      "has_answer": true,
+      "evidence_citations": [
+        {
+          "citation": "B1",
+          "paragraph_ids": [
+            "S01-P0127",
+            "S01-P0128",
+            "S01-P0129",
+            "S01-P0130",
+            "S01-P0131",
+            "S01-P0132",
+            "S01-P0133",
+            "S01-P0134",
+            "S01-P0135",
+            "S01-P0136",
+            "S01-P0137"
+          ],
+          "document_id": "S01"
+        },
+        {
+          "citation": "B2",
+          "paragraph_ids": [
+            "S01-P0149",
+            "S01-P0150",
+            "S01-P0151",
+            "S01-P0152",
+            "S01-P0153"
+          ],
+          "document_id": "S01"
+        },
+        {
+          "citation": "B3",
+          "paragraph_ids": [
+            "M01-P0487",
+            "M01-P0488",
+            "M01-P0489",
+            "M01-P0491",
+            "M01-P0492",
+            "M01-P0493",
+            "M01-P0494"
+          ],
+          "document_id": "M01"
+        },
+        {
+          "citation": "B4",
+          "paragraph_ids": [
+            "S01-P0145",
+            "S01-P0146"
+          ],
+          "document_id": "S01"
+        },
+        {
+          "citation": "B5",
+          "paragraph_ids": [
+            "E01-P0178"
+          ],
+          "document_id": "E01"
+        }
+      ],
+      "metrics_snapshot": {
+        "citation_precision": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "contract_passed": true,
+        "latency_seconds": null
+      },
+      "failure_class": "unsupported_generation_not_in_evidence",
+      "checkpoints": {
+        "theological_accuracy": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "amharic_fluency": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "citation_entailment": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "answer_relevance": {
+          "status": "pending_human_review",
+          "value": null
+        }
+      },
+      "note": "Automated tests do not certify theological correctness or Amharic fluency."
+    },
+    {
+      "question": "አምስቱ ምሥጢራት ምንድን ናቸው?",
+      "has_answer": true,
+      "evidence_citations": [
+        {
+          "citation": "B1",
+          "paragraph_ids": [
+            "F01W-P0018"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B2",
+          "paragraph_ids": [
+            "F01W-P0059",
+            "F01W-P0060"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B3",
+          "paragraph_ids": [
+            "F01W-P0082",
+            "F01W-P0084",
+            "F01W-P0085"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B4",
+          "paragraph_ids": [
+            "F01W-P0097"
+          ],
+          "document_id": "F01"
+        },
+        {
+          "citation": "B5",
+          "paragraph_ids": [
+            "F01W-P0105",
+            "F01W-P0107",
+            "F01W-P0109"
+          ],
+          "document_id": "F01"
+        }
+      ],
+      "metrics_snapshot": {
+        "citation_precision": 1.0,
+        "unsupported_claim_rate": 0.0,
+        "contract_passed": true,
+        "latency_seconds": 6.235536199994385
+      },
+      "failure_class": "unsupported_generation_not_in_evidence",
+      "checkpoints": {
+        "theological_accuracy": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "amharic_fluency": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "citation_entailment": {
+          "status": "pending_human_review",
+          "value": null
+        },
+        "answer_relevance": {
+          "status": "pending_human_review",
+          "value": null
+        }
+      },
+      "note": "Automated tests do not certify theological correctness or Amharic fluency."
+    }
+  ],
+  "research_only": true,
+  "model_settings": {
+    "temperature": 0,
+    "seed": 42,
+    "num_predict": 640,
+    "num_ctx": 6144
+  }
+}

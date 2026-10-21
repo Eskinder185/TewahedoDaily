@@ -152,7 +152,7 @@ export function MezmurVoiceSearch({
     const tickStatus = () => {
       if (voiceSessionRef.current !== sessionId) return
       if (countdownLabel === 'amharic') {
-        setStatusSafe(`Recording Amharic… ${secondsLeft}s`)
+        setStatusSafe(voiceMessage(ui, 'recordingCountdown', { seconds: String(secondsLeft) }))
         return
       }
       if (phaseRef.current === 'listening-native') {
@@ -411,10 +411,10 @@ export function MezmurVoiceSearch({
       if (error.code === 'not_configured') {
         return import.meta.env.DEV
           ? error.message
-          : 'Amharic voice transcription is temporarily unavailable.'
+          : voiceMessage(ui, 'amharicUnavailable')
       }
     }
-    return 'Amharic voice transcription is temporarily unavailable.'
+    return voiceMessage(ui, 'amharicUnavailable')
   }
 
   async function finishAmharicRecording(sessionId: number, session: AudioBlobSession) {
@@ -494,7 +494,7 @@ export function MezmurVoiceSearch({
       setStatusSafe(
         import.meta.env.DEV
           ? 'Developer: set VITE_TEWAHEDO_AI_API_URL to enable Amharic transcription.'
-          : 'Amharic voice is temporarily unavailable. You can still type your search.',
+          : voiceMessage(ui, 'amharicVoiceUnavailable'),
       )
       return
     }
@@ -528,7 +528,7 @@ export function MezmurVoiceSearch({
       startVoiceTimeout(sessionId, () => {
         /* capture max timer handles stop */
       }, 'amharic')
-      setStatusSafe(`Recording Amharic… ${VOICE_MAX_SECONDS}s`)
+      setStatusSafe(voiceMessage(ui, 'recordingCountdown', { seconds: String(VOICE_MAX_SECONDS) }))
     } catch (error) {
       if (voiceSessionRef.current !== sessionId || !mountedRef.current) return
       const name = error instanceof DOMException ? error.name : ''
@@ -614,13 +614,13 @@ export function MezmurVoiceSearch({
 
   const idleAria =
     startAriaLabel ||
-    (effectiveLang === 'am' ? 'Start Amharic voice search' : labels.startAria)
+    (effectiveLang === 'am' ? voiceMessage(ui, 'startAmharic') : labels.startAria)
 
   const ariaLabel =
     phase === 'recording'
-      ? 'Stop Amharic recording'
+      ? voiceMessage(ui, 'stopAmharicRecording')
       : phase === 'processing' && effectiveLang === 'am'
-        ? 'Transcribing Amharic recording'
+        ? voiceMessage(ui, 'transcribingAmharic')
         : busy
           ? labels.stopAria
           : idleAria
@@ -631,7 +631,7 @@ export function MezmurVoiceSearch({
       : phase === 'requesting-mic'
         ? voiceMessage(ui, 'requestingMic')
         : phase === 'recording'
-          ? 'Recording…'
+          ? voiceMessage(ui, 'recording')
           : phase === 'listening-native' || phase === 'starting-native'
             ? voiceMessage(ui, 'listening')
             : ''
@@ -668,7 +668,7 @@ export function MezmurVoiceSearch({
       <div className={`${styles.root} ${styles.compact}`}>
         <div className={styles.composerBar}>
           {amharicOnly ? (
-            <span className={styles.langChip} aria-label="Voice language Amharic">
+            <span className={styles.langChip} aria-label={voiceMessage(ui, 'voiceLanguageAmharic')}>
               አማ
             </span>
           ) : showLangPicker ? (
@@ -690,7 +690,7 @@ export function MezmurVoiceSearch({
                   id={langGroupId}
                   className={styles.langMenu}
                   role="listbox"
-                  aria-label="Voice language"
+                  aria-label={voiceMessage(ui, 'voiceLanguage')}
                 >
                   <button
                     type="button"
@@ -699,7 +699,7 @@ export function MezmurVoiceSearch({
                     className={`${styles.langOption} ${effectiveLang === 'en' ? styles.langOptionActive : ''}`}
                     onClick={() => selectLang('en')}
                   >
-                    English
+                    {voiceMessage(ui, 'languageEnglish')}
                   </button>
                   <button
                     type="button"
@@ -708,13 +708,13 @@ export function MezmurVoiceSearch({
                     className={`${styles.langOption} ${effectiveLang === 'am' ? styles.langOptionActive : ''}`}
                     onClick={() => selectLang('am')}
                   >
-                    አማርኛ
+                    {voiceMessage(ui, 'languageAmharic')}
                   </button>
                 </div>
               ) : null}
             </>
           ) : (
-            <span className={styles.srOnly}>English voice</span>
+            <span className={styles.srOnly}>{voiceMessage(ui, 'englishVoice')}</span>
           )}
 
           <button
@@ -744,7 +744,9 @@ export function MezmurVoiceSearch({
                 <p className={styles.voiceSessionTitle}>{sessionTitle}</p>
                 {status ? <p className={styles.voiceSessionStatus}>{status}</p> : null}
                 <p className={styles.voiceSessionStatus}>
-                  {effectiveLang === 'am' ? 'አማርኛ · up to 15s' : 'English · up to 15s'}
+                  {voiceMessage(ui, effectiveLang === 'am' ? 'limitAmharic' : 'limitEnglish', {
+                    seconds: String(VOICE_MAX_SECONDS),
+                  })}
                 </p>
               </div>
             </div>
@@ -757,7 +759,7 @@ export function MezmurVoiceSearch({
                   className={`${styles.voiceAction} ${styles.voiceActionPrimary}`}
                   onClick={stopOrFinish}
                 >
-                  {phase === 'recording' ? 'Stop & use' : 'Stop'}
+                  {phase === 'recording' ? voiceMessage(ui, 'stopAndUse') : voiceMessage(ui, 'stop')}
                 </button>
               ) : null}
               {phase !== 'processing' ? (
@@ -766,7 +768,7 @@ export function MezmurVoiceSearch({
                   className={`${styles.voiceAction} ${styles.voiceActionSecondary}`}
                   onClick={cancelSession}
                 >
-                  Cancel
+                  {voiceMessage(ui, 'cancel')}
                 </button>
               ) : (
                 <button
@@ -804,7 +806,7 @@ export function MezmurVoiceSearch({
         <div
           className={styles.langToggle}
           role="radiogroup"
-          aria-label="Voice search language"
+          aria-label={voiceMessage(ui, 'voiceLanguage')}
           id={langGroupId}
         >
           <button
@@ -815,7 +817,7 @@ export function MezmurVoiceSearch({
             disabled={busy}
             onClick={() => setVoiceLang('en')}
           >
-            English
+            {voiceMessage(ui, 'languageEnglish')}
           </button>
           <button
             type="button"
@@ -825,7 +827,7 @@ export function MezmurVoiceSearch({
             disabled={busy}
             onClick={() => setVoiceLang('am')}
           >
-            አማርኛ
+            {voiceMessage(ui, 'languageAmharic')}
           </button>
         </div>
       ) : null}

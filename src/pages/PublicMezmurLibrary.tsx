@@ -15,6 +15,9 @@ import {
   searchMezmursUnified,
   type UnifiedMezmurSearchItem,
 } from '../lib/search/unifiedHymnSearch'
+import { hymnCardMeta } from '../lib/publicContent/labels'
+import { hymnSourceHeading } from '../lib/publicContent/hymnBrowseLabels'
+import { useLocale } from '../lib/i18n/locale'
 import { useTranslation } from '../i18n'
 import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
@@ -161,44 +164,54 @@ function MezmurResultGrid({
   onRetry: () => void
   emptyMessage: string
 }) {
+  const t = useTranslation()
+  const { locale } = useLocale()
   if (loading) return <MezmurSkeletonGrid />
   if (error) {
     return (
       <div className={s.status} role="alert">
         <p>{error}</p>
-        <button type="button" className={s.textBtn} onClick={onRetry}>
-          Retry
+          <button type="button" className={s.textBtn} onClick={onRetry}>
+          {t('practice.retry')}
         </button>
       </div>
     )
   }
   if (!items.length) {
     return (
-      <p className={s.status} lang="am">
-        {emptyMessage}
-      </p>
+      <p className={s.status}>{emptyMessage}</p>
     )
   }
   return (
     <div className={s.grid}>
       {items.map((item) => {
-        const english = item.title_english || item.title
-        const meta = [item.zemari || item.singer_name, item.form || item.primary_language]
+        const heading = hymnSourceHeading(
+          item.title_english || item.title,
+          item.title_amharic,
+          locale,
+        )
+        const meta = [
+          item.zemari || item.singer_name,
+          hymnCardMeta(
+            { language: item.primary_language, form: item.form },
+            locale,
+          ),
+        ]
           .filter(Boolean)
           .join(' · ')
         return (
           <Link key={item.id || item.slug} to={`/practice/mezmur/${item.slug}`} className={s.card}>
             <CardArt item={item} />
             <div className={s.cardBody}>
-              {item.title_amharic ? (
-                <p className={s.cardAm} lang="am">
-                  {item.title_amharic}
+              {heading.secondary ? (
+                <p className={s.cardAm} lang={heading.secondaryLang || undefined}>
+                  {heading.secondary}
                 </p>
               ) : null}
-              {english && english !== item.title_amharic ? (
-                <h3 className={s.cardTitle}>{english}</h3>
-              ) : !item.title_amharic ? (
-                <h3 className={s.cardTitle}>{item.title}</h3>
+              {heading.primary ? (
+                <h3 className={s.cardTitle} lang={heading.primaryLang}>
+                  {heading.primary}
+                </h3>
               ) : null}
               {meta ? <p className={s.cardMeta}>{meta}</p> : null}
               {item.preview ? (
@@ -219,6 +232,7 @@ function MezmurResultGrid({
  */
 export function PublicMezmurLibrary() {
   const t = useTranslation()
+  const { locale } = useLocale()
   const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
   const [draftQ, setDraftQ] = useState(params.get('q') || '')
@@ -273,13 +287,13 @@ export function PublicMezmurLibrary() {
       .catch((cause) => {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] browse', cause)
-        setBrowseError('Unable to load Hymns.')
+        setBrowseError(t('practice.loadError'))
         setBrowse([])
       })
     return () => {
       active = false
     }
-  }, [showResults, reloadTick])
+  }, [showResults, reloadTick, t])
 
   useEffect(() => {
     const needle = draftQ.trim()
@@ -389,7 +403,7 @@ export function PublicMezmurLibrary() {
   })()
 
   // Always the Amharic empty copy when the backend returns no hymns.
-  const emptyMessage = '\u121D\u1295\u121D \u1218\u12DD\u1219\u122D \u12A0\u120D\u1270\u1308\u1298\u121D\u1362'
+  const emptyMessage = t('practice.emptyHymns')
 
   return (
     <section className={s.page}>
@@ -428,23 +442,24 @@ export function PublicMezmurLibrary() {
             />
             {suggestOpen && discoveryHits.length > 0 && !showResults ? (
               <ul id={listboxId} className={s.suggestList} role="listbox">
-                {discoveryHits.map((hit) => (
+                {discoveryHits.map((hit) => {
+                  const heading = hymnSourceHeading(hit.title, hit.titleAmharic, locale)
+                  return (
                   <li key={`${hit.type}-${hit.id}`} role="option" aria-selected="false">
                     <button
                       type="button"
                       className={s.suggestItem}
                       onClick={() => applyDiscoveryHit(hit)}
                     >
-                      {hit.titleAmharic ? (
-                        <strong lang="am">{hit.titleAmharic}</strong>
-                      ) : (
-                        <strong>{hit.title}</strong>
-                      )}
-                      {hit.titleAmharic ? <span>{hit.title}</span> : null}
+                      <strong lang={heading.primaryLang}>{heading.primary}</strong>
+                      {heading.secondary ? (
+                        <span lang={heading.secondaryLang || undefined}>{heading.secondary}</span>
+                      ) : null}
                       <small>{hit.meta}</small>
                     </button>
                   </li>
-                ))}
+                  )
+                })}
               </ul>
             ) : null}
           </div>
@@ -455,7 +470,7 @@ export function PublicMezmurLibrary() {
           ) : null}
         </div>
         <VoiceTranscriptionControl
-          ariaLabel="Search hymns by voice"
+          ariaLabel={t('practice.voiceSearchAria')}
           defaultLanguage="am"
           amharicOnly
           onTranscript={(text) => {
@@ -470,9 +485,8 @@ export function PublicMezmurLibrary() {
       </div>
 
       {heardTranscript ? (
-        <p className={s.browseEmpty} lang="am" role="status">
-          {'\u12E8\u1270\u1230\u121B\u12CD\u1356 '}
-          {heardTranscript}
+        <p className={s.browseEmpty} role="status">
+          {t('practice.heard')} {heardTranscript}
         </p>
       ) : null}
 
@@ -489,19 +503,24 @@ export function PublicMezmurLibrary() {
               {discoveryHits
                 .filter((hit) => hit.type === 'section' || hit.type === 'singer' || hit.type === 'collection')
                 .slice(0, 6)
-                .map((hit) => (
+                .map((hit) => {
+                  const heading = hymnSourceHeading(hit.title, hit.titleAmharic, locale)
+                  return (
                   <li key={`${hit.type}-${hit.id}`}>
                     <button
                       type="button"
                       className={s.suggestItem}
                       onClick={() => applyDiscoveryHit(hit)}
                     >
-                      <strong>{hit.title}</strong>
-                      {hit.titleAmharic ? <span lang="am">{hit.titleAmharic}</span> : null}
+                      <strong lang={heading.primaryLang}>{heading.primary}</strong>
+                      {heading.secondary ? (
+                        <span lang={heading.secondaryLang || undefined}>{heading.secondary}</span>
+                      ) : null}
                       <small>{hit.meta}</small>
                     </button>
                   </li>
-                ))}
+                  )
+                })}
             </ul>
           ) : null}
           <MezmurResultGrid
@@ -518,7 +537,7 @@ export function PublicMezmurLibrary() {
             <div className={s.status} role="alert">
               <p>{browseError}</p>
               <button type="button" className={s.textBtn} onClick={() => setReloadTick((n) => n + 1)}>
-                Retry
+                {t('practice.retry')}
               </button>
             </div>
           ) : null}
@@ -534,9 +553,9 @@ export function PublicMezmurLibrary() {
 
           {browse && !browseError ? (
             <BrowseSection
-              title="Browse"
+              title={t('practice.browse')}
               groups={browse}
-              emptyHint="No collections are visible yet. If data exists in Supabase Table Editor, apply supabase/mezmur-import/FIX_MEZMUR_IMPORT_ANON_READ.sql so anon can read the import tables."
+              emptyHint={t('practice.browseCollectionsEmpty')}
             />
           ) : null}
         </>

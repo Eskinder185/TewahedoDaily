@@ -7,6 +7,7 @@ import {
   type EnrichedContentFields,
 } from '../../lib/calendar/calendarEnrichedContent'
 import { BilingualText } from '../i18n/BilingualText'
+import { ScriptureCitationList } from './ScriptureCitationList'
 import styles from './CalendarEventDetails.module.css'
 
 const SECTION_TITLE_KEYS: Record<string, string> = {
@@ -33,6 +34,9 @@ function SectionBody({
   section: DetailSection
   lang?: CalendarLocaleMode
 }) {
+  if (section.id === 'scripture') {
+    return <ScriptureCitationList raw={section.english || section.amharic} />
+  }
   return (
     <BilingualText
       english={section.english}

@@ -1,0 +1,26 @@
+# Run from this directory: backend/
+# Secrets stay on the host mount; never bake .env into images.
+services:
+  api:
+    image: tewahedo-api:cpu-v1
+    container_name: tewahedo-api
+    build:
+      context: .
+      dockerfile: Dockerfile.optimized
+    working_dir: /app
+    volumes:
+      - ./app:/app
+      - whisper_cache:/root/.cache/huggingface
+      - /etc/tewahedo-ai:/run/secrets/tewahedo-ai:ro
+    env_file:
+      - .env
+    environment:
+      - WHISPER_MODEL=medium
+      # Optional: point at a private five-book package outside the monorepo
+      # - CONTENT_REVIEW_ROOT=/path/to/content-review
+    ports:
+      - "127.0.0.1:8000:8000"
+    restart: unless-stopped
+
+volumes:
+  whisper_cache:

@@ -13,6 +13,14 @@ import {
   searchBuddyErrorMessage,
 } from '../src/lib/searchBuddy/errorMessages.ts'
 import {
+  buildChatRequestBody,
+  isChatQuestionTooLong,
+  selectChatHistory,
+  CHAT_HISTORY_ITEM_MAX,
+  CHAT_HISTORY_TOTAL_MAX,
+  CHAT_MESSAGE_MAX,
+} from '../src/lib/searchBuddy/chatContract.ts'
+import {
   isEmptySearchBuddyResponse,
   parseSearchBuddyResponse,
 } from '../src/lib/searchBuddy/parseSearchBuddyResponse.ts'
@@ -115,5 +123,92 @@ assert.match(searchBuddyErrorMessage(network), /reach|network|offline/i)
 assert.equal(isSearchBuddyRequestCurrent(1, 1), true)
 assert.equal(isSearchBuddyRequestCurrent(1, 2), false)
 assert.equal(isSearchBuddyRequestCurrent(3, 3), true)
+
+function turn(id, role, content, extra = {}) {
+  return {
+    id,
+    role,
+    text: content,
+    ...(role === 'assistant' && extra.responseType === 'ai'
+      ? { response: { type: 'ai', answer: content } }
+      : {}),
+    ...extra,
+  }
+}
+
+const prior = [
+  turn('u1', 'user', 'What is fasting?'),
+  turn('a1', 'assistant', 'Fasting is a church practice.', { responseType: 'ai' }),
+  turn('u2', 'user', 'x'.repeat(CHAT_HISTORY_ITEM_MAX + 1)),
+  turn('a2', 'assistant', 'This turn is dropped with the overlong question.', { responseType: 'ai' }),
+  turn('u3', 'user', 'Open the calendar'),
+  turn('a3', 'assistant', 'Calendar', { responseType: 'navigation', response: { type: 'navigation' } }),
+  turn('u4', 'user', 'Failed question', { status: 'error' }),
+  turn('a4', 'assistant', 'Could not answer.', { status: 'error', failedQuery: 'Failed question' }),
+]
+const history = selectChatHistory(prior, { omitQuestion: 'What is the Trinity?' })
+assert.deepEqual(history, [
+  { role: 'user', content: 'What is fasting?' },
+  { role: 'assistant', content: 'Fasting is a church practice.' },
+  { role: 'user', content: 'Open the calendar' },
+])
+assert.ok(isChatQuestionTooLong('x'.repeat(CHAT_MESSAGE_MAX + 1)))
+assert.equal(isChatQuestionTooLong('x'.repeat(CHAT_MESSAGE_MAX)), false)
+
+const recent = []
+for (let i = 0; i < 8; i += 1) {
+  recent.push(turn(`user-${i}`, 'user', `${i}${'q'.repeat(1999)}`))
+  recent.push(turn(`assistant-${i}`, 'assistant', `${i}${'a'.repeat(1999)}`, { responseType: 'ai' }))
+}
+const capped = selectChatHistory(recent)
+assert.equal(capped.length, 8)
+assert.ok(capped.reduce((sum, item) => sum + item.content.length, 0) <= CHAT_HISTORY_TOTAL_MAX)
+assert.equal(capped[0].content.startsWith('4'), true)
+assert.equal(capped.at(-1)?.content.startsWith('7'), true)
+
+const many = []
+for (let i = 0; i < 20; i += 1) {
+  many.push(turn(`u${i}`, 'user', `q${i}`))
+  many.push(turn(`a${i}`, 'assistant', `a${i}`, { responseType: 'ai' }))
+}
+const newest = selectChatHistory(many)
+assert.equal(newest.length, 12)
+assert.equal(newest[0].content, 'q14')
+assert.equal(newest.at(-1)?.content, 'a19')
+
+const pending = [
+  turn('u', 'user', 'kept'),
+  turn('a', 'assistant', 'kept answer', { responseType: 'ai' }),
+  turn('u2', 'user', 'pending question', { status: 'sending' }),
+  turn('a2', 'assistant', 'Looking up', { status: 'sending' }),
+]
+assert.deepEqual(selectChatHistory(pending), [
+  { role: 'user', content: 'kept' },
+  { role: 'assistant', content: 'kept answer' },
+])
+
+const autoBody = buildChatRequestBody({
+  message: '  Hello  ',
+  timezone: 'America/New_York',
+  uiLanguage: 'en',
+  answerLanguage: 'auto',
+  history,
+})
+assert.equal(autoBody.message, 'Hello')
+assert.equal(autoBody.ui_language, 'en')
+assert.equal('answer_language' in autoBody, false)
+assert.equal('context' in autoBody, false)
+assert.deepEqual(autoBody.history, history)
+
+for (const answerLanguage of ['en', 'am', 'bilingual']) {
+  const body = buildChatRequestBody({
+    message: 'Question',
+    uiLanguage: 'am',
+    answerLanguage,
+  })
+  assert.equal(body.ui_language, 'am')
+  assert.equal(body.answer_language, answerLanguage)
+  assert.equal('history' in body, false)
+}
 
 console.log('test-search-buddy-fallback: ok')

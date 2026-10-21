@@ -139,10 +139,40 @@ assert.deepEqual(parsed.sources?.[1].verses?.[0].covers_verse_range, [19, 20])
 const noSources = parseSearchBuddyResponse({ type: 'ai', answer: 'Hello' })
 assert.equal(noSources.sources, undefined)
 
+const grounded = parseSearchBuddyResponse({
+  type: 'ai',
+  answer: 'A general explanation.',
+  answer_language: 'bilingual',
+  grounding: 'unavailable_document',
+  sources: [],
+})
+assert.equal(grounded.type, 'ai')
+assert.equal(grounded.answer_language, 'bilingual')
+assert.equal(grounded.grounding, 'unavailable_document')
+assert.equal(grounded.sources, undefined)
+
+const scriptureGrounded = parseSearchBuddyResponse({
+  type: 'ai',
+  answer: 'From the supplied verse.',
+  grounding: 'scripture',
+  sources: [enSource],
+})
+assert.equal(scriptureGrounded.grounding, 'scripture')
+assert.equal(scriptureGrounded.sources?.[0].verses?.[0].text, EN_MATT)
+
+const ignoredGrounding = parseSearchBuddyResponse({
+  type: 'ai',
+  answer: 'Kept.',
+  grounding: 'made_up',
+  answer_language: 'fr',
+})
+assert.equal(ignoredGrounding.grounding, undefined)
+assert.equal(ignoredGrounding.answer_language, undefined)
+
 // --- copy: explanation + exact Scripture + generic ---
 const copied = plainTextFromSearchBuddyResponse(parsed)
 assert.match(copied, /An explanation of the Holy Trinity/)
-assert.match(copied, /Verified Bible Passages/)
+assert.match(copied, /Supplied Scripture/)
 assert.match(copied, /Matthew 28:19/)
 assert.match(copied, /English/)
 assert.ok(copied.includes(EN_MATT))

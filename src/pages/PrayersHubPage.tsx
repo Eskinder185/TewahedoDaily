@@ -1,5 +1,6 @@
 import { useCallback, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { ChurchDayBand } from '../components/calendar/ChurchDayBand'
 import { PageSection } from '../components/ui/PageSection'
 import { usePrayerHubSnapshot } from '../hooks/usePrayerHubSnapshot'
 import type { UiLabelKey } from '../lib/i18n/uiLabels'
@@ -52,6 +53,8 @@ export function PrayersHubPage() {
             <p className={styles.heroDeck}>{t('prayerHubHeroDeck')}</p>
           </div>
         </header>
+
+        <ChurchDayBand />
 
         <div className={`${styles.entryBand} td-fade-in`}>
           <div className={styles.entryInner}>

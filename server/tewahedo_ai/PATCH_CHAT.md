@@ -3,6 +3,8 @@
 Copy `server/tewahedo_ai/` into the FastAPI service package (or add this repo path
 to `PYTHONPATH`) and call it at the top of `POST /api/chat` **before** Ollama/Qwen.
 
+For theology system-prompt + quality helpers, see **PATCH_THEOLOGY.md**.
+
 ```python
 from tewahedo_ai.amharic_text import contains_ethiopic
 from tewahedo_ai.amharic_routing import AmharicSearchDeps, resolve_amharic_structured

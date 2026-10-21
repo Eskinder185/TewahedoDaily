@@ -1,0 +1,32 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Editorial package + private approval overlay (do not publish / push blindly)
+content-review/
+content-review.zip
+data/editorial_approvals.json
+data/*.tmp
+data/rag_eval_reports/
+
+# Private book release grants and ingestion journals
+data/book_release*.json
+data/*.sqlite3
+data/*.sqlite3-*
+data/*.db
+data/*.db-*
+
+# Private real-book RAG research artifacts
+.rag-eval-venv/
+.rag-eval/
+data/rag-eval/
+evaluation/rag/runs/

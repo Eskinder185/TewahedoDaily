@@ -955,9 +955,7 @@ export function ChantPracticePlayer({
                 <p className={styles.privacyNote}>
                   Your recording stays on this device unless you choose otherwise.
                 </p>
-                <p className={styles.voiceHint}>
-                  Say the letters separately, not the whole word.
-                </p>
+                <p className={styles.voiceHint}>{tt('mezmurPractice.recording.phraseHint')}</p>
                 <VoiceRecorder
                   mode={recordingMode}
                   onModeChange={setRecordingMode}
@@ -1046,9 +1044,7 @@ export function ChantPracticePlayer({
               <p className={styles.privacyNote}>
                 Your recording stays on this device unless you choose otherwise.
               </p>
-              <p className={styles.voiceHint}>
-                Say the letters separately, not the whole word.
-              </p>
+              <p className={styles.voiceHint}>{tt('mezmurPractice.recording.phraseHint')}</p>
               <VoiceRecorder
                 mode={recordingMode}
                 onModeChange={setRecordingMode}

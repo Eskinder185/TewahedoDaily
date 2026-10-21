@@ -9,7 +9,10 @@ import {
   type HymnBrowseKind,
 } from '../lib/publicContent/hymnBrowse'
 import { hymnCardMeta } from '../lib/publicContent/labels'
+import { hymnMezmurCountLabel, hymnSourceHeading } from '../lib/publicContent/hymnBrowseLabels'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
+import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
@@ -91,16 +94,20 @@ export function PublicHymnCollectionPage({
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
   const [withinQ, setWithinQ] = useState(params.get('q') || '')
+  const t = useTranslation()
+  const { locale } = useLocale()
+  const detailHeading = hymnSourceHeading(group?.name, group?.nameAmharic, locale)
+  const detailDescription = hymnSourceHeading(group?.description, group?.descriptionAmharic, locale)
 
   const title = isIndex
     ? kind === 'occasions'
-      ? 'All Occasions'
+      ? t('practice.allOccasions')
       : kind === 'categories'
-        ? 'All Categories'
-        : 'All Zemari'
-    : group?.name || 'Hymns'
+        ? t('practice.allCategories')
+        : t('practice.allZemari')
+    : detailHeading.primary || t('practice.title')
 
-  usePageMeta(title, group?.description || 'Browse Ethiopian Orthodox Mezmur by collection.')
+  usePageMeta(title, detailDescription.primary || t('practice.metaCollection'))
 
   useEffect(() => {
     let active = true
@@ -134,7 +141,7 @@ export function PublicHymnCollectionPage({
         }
       } catch (cause) {
         if (!active) return
-        setError(cause instanceof Error ? cause.message : 'Unable to load collection.')
+        setError(t('practice.loadError'))
         setLoading(false)
       }
     })()
@@ -256,7 +263,7 @@ export function PublicHymnCollectionPage({
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] collection hymns', cause)
-        setError('Unable to load Hymns.')
+        setError(t('practice.loadError'))
         setLoading(false)
       }
     })()
@@ -270,13 +277,16 @@ export function PublicHymnCollectionPage({
       <section className={s.page}>
         <p className={s.backRow}>
           <Link to="/practice" className={s.viewAll}>
-            ← Back to Hymns
+            ← {t('practice.backToHymns')}
           </Link>
         </p>
         <header className={s.intro}>
+          <p className={s.eyebrow}>
+            {kind === 'categories' ? t('practice.category') : kind === 'singers' ? t('practice.allZemari') : t('practice.collection')}
+          </p>
           <h1 className={s.title}>{title}</h1>
         </header>
-        {loading ? <p className={s.status}>Loading…</p> : null}
+        {loading ? <p className={s.status}>{t('practice.loadingHymns')}</p> : null}
         {error ? (
           <p className={s.status} role="alert">
             {error}
@@ -284,10 +294,8 @@ export function PublicHymnCollectionPage({
         ) : null}
         {!loading && !error && allCards.length === 0 ? (
           <p className={s.browseEmpty}>
-            {kind === 'singers'
-              ? 'No published Zemari profiles with linked Mezmurs are available yet. Browse Hymns for feast and saint collections, or open Search Buddy to find a singer by name.'
-              : 'No published items are available in this browse list yet.'}{' '}
-            <Link to="/practice">Back to Hymns</Link>
+            {kind === 'singers' ? t('practice.zemariEmpty') : t('practice.browseListEmpty')}{' '}
+            <Link to="/practice">{t('practice.backToHymns')}</Link>
           </p>
         ) : null}
         <div className={s.browseGrid}>
@@ -296,9 +304,7 @@ export function PublicHymnCollectionPage({
           ))}
         </div>
         {!loading && !error && kind === 'singers' && allCards.length > 0 && allCards.length < 4 ? (
-          <p className={s.browseEmpty}>
-            A growing library — only published Zemari profiles with linked Mezmurs appear here.
-          </p>
+          <p className={s.browseEmpty}>{t('practice.zemariGrowing')}</p>
         ) : null}
       </section>
     )
@@ -307,13 +313,13 @@ export function PublicHymnCollectionPage({
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-        <Link to="/practice" className={s.viewAll}>
-          ← Back to Hymns
+          <Link to="/practice" className={s.viewAll}>
+          ← {t('practice.backToHymns')}
         </Link>
       </p>
 
       {!group && !loading ? (
-        <p className={s.status}>Collection not found.</p>
+        <p className={s.status}>{t('practice.collectionNotFound')}</p>
       ) : (
         <>
           <header className={s.collectionHero}>
@@ -331,28 +337,29 @@ export function PublicHymnCollectionPage({
               </div>
             )}
             <div>
-              {group?.nameAmharic ? (
-                <p className={s.collectionAm} lang="am">
-                  {group.nameAmharic}
+              {detailHeading.secondary ? (
+                <p className={s.collectionAm} lang={detailHeading.secondaryLang || undefined}>
+                  {detailHeading.secondary}
                 </p>
               ) : null}
-              <h1 className={s.title}>{group?.name || '…'}</h1>
-              {group?.description?.trim() ? (
-                <p className={s.subtitle}>{group.description}</p>
-              ) : detailKind === 'singer' ? (
-                <p className={s.subtitle}>
-                  Published Mezmurs linked to this Zemari. Biographical notes will appear when
-                  editors add them.
+              <h1 className={s.title} lang={detailHeading.primary ? detailHeading.primaryLang : undefined}>
+                {detailHeading.primary || '…'}
+              </h1>
+              {detailDescription.primary ? (
+                <p className={s.subtitle} lang={detailDescription.primaryLang}>
+                  {detailDescription.primary}
                 </p>
+              ) : detailKind === 'singer' ? (
+                <p className={s.subtitle}>{t('practice.singerNotesPending')}</p>
               ) : null}
               <p className={s.collectionCount}>
-                {group ? `${group.mezmurCount} Mezmur${group.mezmurCount === 1 ? '' : 's'}` : ''}
+                {group ? hymnMezmurCountLabel(group.mezmurCount, locale) : ''}
               </p>
             </div>
           </header>
 
           <label className={s.withinSearch}>
-            <span className={s.srOnly}>Search within this collection</span>
+            <span className={s.srOnly}>{t('practice.searchWithin')}</span>
             <input
               className={s.searchInput}
               value={withinQ}
@@ -364,40 +371,47 @@ export function PublicHymnCollectionPage({
                 next.delete('page')
                 setParams(next, { replace: true })
               }}
-              placeholder={`Search within ${group?.name || 'collection'}…`}
+              placeholder={t('practice.searchWithinNamed', {
+                name: detailHeading.primary || t('practice.collection'),
+              })}
             />
           </label>
 
-          {loading ? <p className={s.status}>Loading hymns…</p> : null}
+          {loading ? <p className={s.status}>{t('practice.loadingHymns')}</p> : null}
           {error ? (
             <p className={s.status} role="alert">
               {error}
             </p>
           ) : null}
           {!loading && !items.length ? (
-            <p className={s.status}>No published hymns in this collection yet.</p>
+            <p className={s.status}>{t('practice.noHymnsInCollection')}</p>
           ) : null}
 
           <div className={s.grid}>
-            {items.map((item) => (
-              <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
-                <CardArt item={item} />
-                <div className={s.cardBody}>
-                  {item.title_amharic ? (
-                    <p className={s.cardAm} lang="am">
-                      {item.title_amharic}
-                    </p>
-                  ) : null}
-                  <h2 className={s.cardTitle}>{item.title}</h2>
-                  <p className={s.cardMeta}>{hymnCardMeta(item)}</p>
-                </div>
-              </Link>
-            ))}
+            {items.map((item) => {
+              const itemHeading = hymnSourceHeading(item.title, item.title_amharic, locale)
+              return (
+                <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
+                  <CardArt item={item} />
+                  <div className={s.cardBody}>
+                    {itemHeading.secondary ? (
+                      <p className={s.cardAm} lang={itemHeading.secondaryLang || undefined}>
+                        {itemHeading.secondary}
+                      </p>
+                    ) : null}
+                    <h2 className={s.cardTitle} lang={itemHeading.primaryLang}>
+                      {itemHeading.primary}
+                    </h2>
+                    <p className={s.cardMeta}>{hymnCardMeta(item, locale)}</p>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
 
           {total > PAGE_SIZE ? (
             <p className={s.hint}>
-              Showing page {page}. Use search within this collection to narrow results.
+              {t('practice.pageHint', { page })}
             </p>
           ) : null}
         </>

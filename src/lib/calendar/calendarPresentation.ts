@@ -88,6 +88,31 @@ export type PresentableCalendarEvent = {
 
 const PLACEHOLDER = calendarImageManifest.anchors.todayInChurch
 
+/** Application-defined event-type badges. Unknown labels stay as stored. */
+const CALENDAR_EVENT_TYPE_KEYS: Record<string, string> = {
+  FAST: 'calendar.page.eventType.fast',
+  'FAST-FREE': 'calendar.page.eventType.fastFree',
+  SEASON: 'calendar.page.eventType.season',
+  'MONTHLY COMMEMORATION': 'calendar.page.eventType.monthlyCommemoration',
+  OBSERVANCE: 'calendar.page.eventType.observance',
+  'GREAT FEAST': 'calendar.page.eventType.greatFeast',
+  FEAST: 'calendar.page.eventType.feast',
+  COMMEMORATION: 'calendar.page.eventType.commemoration',
+  EVE: 'calendar.page.eventType.eve',
+  VIGIL: 'calendar.page.eventType.vigil',
+  PREPARATION: 'calendar.page.eventType.preparation',
+}
+
+export function localizeCalendarEventType(
+  label: string | null | undefined,
+  translate: (key: string) => string,
+): string {
+  const raw = (label || '').trim()
+  if (!raw) return ''
+  const key = CALENDAR_EVENT_TYPE_KEYS[raw.toUpperCase()]
+  return key ? translate(key) : raw
+}
+
 export function categoryToneFromText(...parts: Array<string | null | undefined>): CalendarCategoryTone {
   const blob = parts.filter(Boolean).join(' ').toLowerCase()
   if (/eve|vigil|preparation|demera|ketera|gahad|gena eve/.test(blob)) return 'eve'

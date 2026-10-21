@@ -13,11 +13,23 @@ import {
   parseSearchBuddyResponse,
 } from './parseSearchBuddyResponse.ts'
 import type { SearchBuddyApiResponse } from './apiTypes.ts'
+import {
+  buildChatRequestBody,
+  type AnswerLanguagePreference,
+  type ChatHistoryMessage,
+  type ChatUiLanguage,
+} from './chatContract.ts'
 
 export type SendSearchBuddyOptions = {
   signal?: AbortSignal
   /** When true, Amharic routing may use hymn search for non-Bible queries. */
   hymnContext?: boolean
+  /** Interface language. Ambiguous-input fallback only — not the answer override. */
+  uiLanguage?: ChatUiLanguage
+  /** Explicit answer override. Omit or pass auto to leave answer language unset. */
+  answerLanguage?: AnswerLanguagePreference | null
+  /** Preceding successful turns. The current question is not included. */
+  history?: ChatHistoryMessage[]
 }
 
 export type SendSearchBuddyResult = {
@@ -91,13 +103,16 @@ export async function sendSearchBuddyMessage(
   const raw = await aiFetch<unknown>({
     path: '/api/chat',
     method: 'POST',
-    json: {
+    json: buildChatRequestBody({
       message: prepared || forRouting,
       timezone:
         typeof Intl !== 'undefined'
           ? Intl.DateTimeFormat().resolvedOptions().timeZone
           : 'UTC',
-    },
+      uiLanguage: options.uiLanguage,
+      answerLanguage: options.answerLanguage,
+      history: options.history,
+    }),
     timeoutMs: AI_TIMEOUTS_MS.chat,
     signal,
     withAuth: true,

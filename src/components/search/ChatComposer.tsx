@@ -3,6 +3,7 @@ import {
   useId,
   type FormEvent,
   type KeyboardEvent,
+  type ReactNode,
   type RefObject,
 } from 'react'
 import { MezmurVoiceSearch } from './MezmurVoiceSearch'
@@ -21,6 +22,14 @@ type Props = {
   sendLabel: string
   sendBusyLabel: string
   clearLabel?: string
+  dictateAria?: string
+  onCancel?: () => void
+  cancelLabel?: string
+  cancelAria?: string
+  leading?: ReactNode
+  describedBy?: string
+  invalid?: boolean
+  submitDisabled?: boolean
 }
 
 const MAX_TEXTAREA_PX = 120
@@ -38,6 +47,14 @@ export function ChatComposer({
   sendLabel,
   sendBusyLabel,
   clearLabel = 'Clear message',
+  dictateAria,
+  onCancel,
+  cancelLabel,
+  cancelAria,
+  leading,
+  describedBy,
+  invalid = false,
+  submitDisabled = false,
 }: Props) {
   const inputId = useId()
 
@@ -54,21 +71,21 @@ export function ChatComposer({
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
-    // Allow submit while busy so a newer query can supersede an in-flight request.
-    if (!value.trim()) return
+    if (busy || submitDisabled || !value.trim()) return
     onSubmit()
   }
 
   function onKeyDown(e: KeyboardEvent<HTMLTextAreaElement>) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()
-      if (!value.trim()) return
+      if (busy || submitDisabled || !value.trim()) return
       onSubmit()
     }
   }
 
   return (
     <div className={styles.composer}>
+      {leading}
       <form className={styles.form} onSubmit={handleSubmit}>
         <label className={styles.srOnly} htmlFor={inputId}>
           {inputAria}
@@ -85,9 +102,11 @@ export function ChatComposer({
             placeholder={placeholder}
             autoComplete="off"
             rows={1}
-            enterKeyHint="send"
+            enterKeyHint="search"
             spellCheck={false}
             aria-label={inputAria}
+            aria-invalid={invalid || undefined}
+            aria-describedby={describedBy}
           />
           {value.trim() ? (
             <button
@@ -111,7 +130,7 @@ export function ChatComposer({
               key={voiceRemountKey}
               compact
               active={voiceActive}
-              startAriaLabel="Dictate a message"
+              startAriaLabel={dictateAria}
               onTranscript={(text) => {
                 // Fill the composer only — do not auto-submit or navigate.
                 // User reviews/corrects, then Send runs the same path as typed text.
@@ -124,10 +143,20 @@ export function ChatComposer({
               }}
             />
           </div>
+          {busy && onCancel ? (
+            <button
+              type="button"
+              className={styles.cancelBtn}
+              onClick={onCancel}
+              aria-label={cancelAria || cancelLabel}
+            >
+              {cancelLabel}
+            </button>
+          ) : null}
           <button
             type="submit"
             className={styles.submitBtn}
-            disabled={!value.trim()}
+            disabled={busy || submitDisabled || !value.trim()}
             aria-label={busy ? sendBusyLabel : sendLabel}
           >
             {busy ? sendBusyLabel : sendLabel}

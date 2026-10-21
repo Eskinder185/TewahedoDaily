@@ -1,52 +1,36 @@
-import {
-  useCallback,
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  type RefObject,
-} from 'react'
+import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { useLocation, useNavigate } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { useLocale } from '../../lib/i18n/locale'
-import { useAuth } from '../../lib/auth/useAuth'
-import { canAttemptAiChat, friendlyAiError, postAiChat } from '../../lib/ai'
-import { shouldAttemptAiAnswer } from '../../lib/search/aiRouting'
-import { assistantLeadForResponse } from '../../lib/search/assistantLead'
-import { createChatMessageId, type ChatMessage } from '../../lib/search/chatTypes'
+import { useSearchBuddy } from '../../lib/search/searchBuddySession'
 import {
-  buildSessionContext,
-  searchSite,
-  zeroResultSuggestions,
-} from '../../lib/search/searchSite'
-import { INITIAL_RESULT_COUNT } from '../../lib/search/searchCore'
-import type { SiteSearchResult } from '../../lib/search/types'
+  FAITH_AND_ORDER_QUERY_MAX,
+  FaithAndOrderQueryError,
+  fetchFaithAndOrderManifest,
+  searchFaithAndOrder,
+  type FaithAndOrderManifest,
+} from '../../lib/searchBuddy/faithAndOrderSearch.ts'
 import {
-  useSearchBuddy,
-  type SearchBuddyReply,
-} from '../../lib/search/searchBuddySession'
-import {
-  isExplanatoryTheologyQuery,
-  isMezmurHymnContextPath,
-  missingApiUrlDevMessage,
-  searchBuddyApiReady,
-  sendSearchBuddyMessage,
-} from '../../lib/searchBuddy'
-import {
+  isSearchBuddyAbort,
   logSearchBuddyDiagnostic,
-  searchBuddyErrorMessage,
+  searchBuddyRetryAfterSeconds,
+  searchBuddyUserNotice,
 } from '../../lib/searchBuddy/errorMessages.ts'
-import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
+import { isAiApiConfigured } from '../../lib/ai/aiConfig.ts'
 import { ChatComposer } from './ChatComposer'
-import { ChatStarterPrompts, CHAT_STARTER_PROMPTS } from './ChatStarterPrompts'
-import { ChatThread } from './ChatThread'
+import {
+  FaithAndOrderSearchPane,
+  FaithAndOrderSectionReader,
+  FaithAndOrderToc,
+  type FaithAndOrderOutcome,
+  type SectionTarget,
+} from './FaithAndOrderViews'
 import styles from './SearchBuddy.module.css'
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
-const NEAR_BOTTOM_PX = 96
+type View = { kind: 'search' } | { kind: 'toc' } | ({ kind: 'section' } & SectionTarget)
 
 function getFocusableIn(container: HTMLElement | null): HTMLElement[] {
   if (!container) return []
@@ -55,144 +39,141 @@ function getFocusableIn(container: HTMLElement | null): HTMLElement[] {
   )
 }
 
-function isSynaxariumResult(result: SiteSearchResult): boolean {
-  if (result.sourceType === 'synaxarium_commemoration') return true
-  if (result.sourceType !== 'synaxarium') return false
-  return /^\/pray\/synaxarium\/[^/]+\/?$/.test(result.route)
-}
-
-function localizeResult(
-  result: SiteSearchResult,
-  t: (key: string) => string,
-  signedIn: boolean,
-): SiteSearchResult {
-  if (result.sourceId === 'personal:favorites') {
-    return {
-      ...result,
-      title: t('searchBuddy.favoritesTitle'),
-      description: signedIn
-        ? t('searchBuddy.favoritesDescSignedIn')
-        : t('searchBuddy.favoritesDescGuest'),
-    }
-  }
-  return result
-}
-
-function replyFromResponse(response: {
-  zeroResults: boolean
-  results: SiteSearchResult[]
-  partial: boolean
-}): SearchBuddyReply {
-  if (response.zeroResults) return { kind: 'zero' }
-  const first = response.results[0]
-  if (!first) return { kind: 'generic', partial: response.partial }
-  if (first.matchKind === 'personal' && first.route === '/saved') {
-    return { kind: 'favorites' }
-  }
-  if (first.matchKind === 'intent' && response.results.length === 1) {
-    return { kind: 'opening', title: first.title }
-  }
-  if (response.results.length === 1) {
-    return { kind: 'foundOne', title: first.title, partial: response.partial }
-  }
-  return { kind: 'foundMany', count: response.results.length, partial: response.partial }
-}
-
-function formatLocalLead(
-  reply: SearchBuddyReply | null,
-  t: (key: string, params?: Record<string, string | number>) => string,
-): string {
-  if (!reply) return t('searchBuddy.foundGeneric')
-  switch (reply.kind) {
-    case 'zero':
-      return t('searchBuddy.zero')
-    case 'favorites':
-      return t('searchBuddy.favoritesMessage')
-    case 'opening':
-      return t('searchBuddy.opening', { title: reply.title })
-    case 'foundOne':
-      return t('searchBuddy.foundOne', { title: reply.title })
-    case 'foundMany':
-      return t('searchBuddy.foundMany', { count: reply.count })
-    default:
-      return t('searchBuddy.foundGeneric')
-  }
-}
-
-function patchMessage(
-  messages: ChatMessage[],
-  id: string,
-  patch: Partial<ChatMessage>,
-): ChatMessage[] {
-  return messages.map((m) => (m.id === id ? { ...m, ...patch } : m))
+function isQueryTooLong(error: unknown): error is FaithAndOrderQueryError {
+  return (
+    error instanceof FaithAndOrderQueryError ||
+    (typeof error === 'object' &&
+      error !== null &&
+      (error as { name?: string }).name === 'FaithAndOrderQueryError' &&
+      (error as { code?: string }).code === 'too_long')
+  )
 }
 
 export function SearchBuddy() {
   const t = useTranslation()
   const { uiLocale } = useLocale()
-  const { user } = useAuth()
-  const location = useLocation()
-  const navigate = useNavigate()
-  const hymnContext = isMezmurHymnContextPath(location.pathname)
-  const {
-    open,
-    setOpen,
-    snapshot,
-    setSnapshot,
-    persistScroll,
-    clearSession,
-    followUpRef,
-  } = useSearchBuddy()
+  const { open, setOpen, snapshot, setSnapshot, clearSession } = useSearchBuddy()
 
   const [busy, setBusy] = useState(false)
   const [draft, setDraft] = useState('')
+  const [manifest, setManifest] = useState<FaithAndOrderManifest | null>(null)
+  const [manifestState, setManifestState] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
+  const [manifestError, setManifestError] = useState<unknown>(null)
+  const [outcome, setOutcome] = useState<FaithAndOrderOutcome>({ kind: 'idle' })
+  const [view, setView] = useState<View>({ kind: 'search' })
   const draftRef = useRef(draft)
-  const [voiceRemountKey, setVoiceRemountKey] = useState(0)
   const requestIdRef = useRef(0)
-  const aiAbortRef = useRef<AbortController | null>(null)
-  const stickToBottomRef = useRef(true)
+  const searchAbortRef = useRef<AbortController | null>(null)
+  const manifestRef = useRef<FaithAndOrderManifest | null>(null)
+  const manifestFlightRef = useRef<Promise<FaithAndOrderManifest> | null>(null)
+  const [voiceRemountKey, setVoiceRemountKey] = useState(0)
   const titleId = useId()
-  const previewTitleId = useId()
+  const limitId = useId()
   const welcomeId = useId()
   const inputRef = useRef<HTMLTextAreaElement>(null)
-  const closeRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLElement>(null)
   const bodyRef = useRef<HTMLDivElement>(null)
   const fabRef = useRef<HTMLButtonElement>(null)
-  const backToResultsRef = useRef<HTMLButtonElement>(null)
-  const restoreScrollPending = useRef(false)
+  const backRef = useRef<HTMLButtonElement>(null)
+  const openRef = useRef(open)
+  openRef.current = open
 
-  const apiReady = searchBuddyApiReady()
-  const devApiNotice = missingApiUrlDevMessage()
-
-  const { messages, showAll, preview, resultsScrollTop } = snapshot
-
-  const showWelcome = !messages.length && !busy && !preview
+  const apiReady = isAiApiConfigured()
+  const devApiNotice =
+    import.meta.env.DEV && !apiReady
+      ? 'Developer: VITE_TEWAHEDO_AI_API_URL is not set. Add it to .env.local and restart Vite to search Faith and Order.'
+      : null
+  const overLimit = draft.trim().length > FAITH_AND_ORDER_QUERY_MAX
+  const manifestNotice = manifestError ? searchBuddyUserNotice(manifestError, uiLocale) : null
+  const showWelcome = view.kind === 'search' && outcome.kind === 'idle'
 
   useEffect(() => {
     draftRef.current = draft
   }, [draft])
 
+  useEffect(() => {
+    setSnapshot((prev) => {
+      if (
+        !prev.messages.length &&
+        !prev.aiAnswer &&
+        !prev.apiResponse &&
+        !prev.results.length &&
+        !prev.suggestions.length &&
+        !prev.preview &&
+        !prev.followUp
+      ) {
+        return prev
+      }
+      return {
+        ...prev,
+        messages: [],
+        aiAnswer: null,
+        apiResponse: null,
+        results: [],
+        suggestions: [],
+        preview: null,
+        followUp: null,
+        reply: null,
+        remoteError: null,
+        message: '',
+        error: false,
+      }
+    })
+  }, [setSnapshot])
+
+  const loadManifest = useCallback(() => {
+    if (manifestRef.current) return Promise.resolve(manifestRef.current)
+    if (manifestFlightRef.current) return manifestFlightRef.current
+    setManifestState('loading')
+    setManifestError(null)
+    const flight = fetchFaithAndOrderManifest()
+      .then((doc) => {
+        manifestRef.current = doc
+        manifestFlightRef.current = null
+        setManifest(doc)
+        setManifestState('ready')
+        return doc
+      })
+      .catch((error) => {
+        manifestFlightRef.current = null
+        setManifestState('error')
+        setManifestError(error)
+        throw error
+      })
+    manifestFlightRef.current = flight
+    return flight
+  }, [])
+
+  useEffect(() => {
+    if (!open || !apiReady) return
+    let cancelled = false
+    loadManifest().catch((error) => {
+      if (cancelled || isSearchBuddyAbort(error)) return
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [open, apiReady, loadManifest])
+
   const closePanel = useCallback(() => {
     const nextDraft = draftRef.current
-    setSnapshot((prev) =>
-      prev.query === nextDraft ? prev : { ...prev, query: nextDraft },
-    )
+    setSnapshot((prev) => (prev.query === nextDraft ? prev : { ...prev, query: nextDraft }))
     setOpen(false)
   }, [setOpen, setSnapshot])
 
-  // Hydrate composer from stored draft only when the panel opens.
   const wasOpenRef = useRef(open)
   useEffect(() => {
     if (open && !wasOpenRef.current) setDraft(snapshot.query)
     wasOpenRef.current = open
   }, [open, snapshot.query])
 
-  function cancelAiRequest() {
-    if (aiAbortRef.current) {
-      aiAbortRef.current.abort()
-      aiAbortRef.current = null
-    }
+  function cancelSearch() {
+    requestIdRef.current += 1
+    searchAbortRef.current?.abort()
+    searchAbortRef.current = null
+    setBusy(false)
+    setOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
+    window.setTimeout(() => inputRef.current?.focus(), 0)
   }
 
   useEffect(() => {
@@ -204,51 +185,39 @@ export function SearchBuddy() {
     for (const el of inertTargets) el.setAttribute('inert', '')
 
     const timer = window.setTimeout(() => {
-      if (preview) {
-        backToResultsRef.current?.focus()
-      } else {
-        inputRef.current?.focus()
-      }
-      if (restoreScrollPending.current && bodyRef.current && !preview) {
-        bodyRef.current.scrollTop = resultsScrollTop
-        restoreScrollPending.current = false
-      }
+      if (view.kind === 'search') inputRef.current?.focus()
+      else if (view.kind === 'toc') backRef.current?.focus()
     }, 40)
 
-    const trapTab = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        e.preventDefault()
-        if (preview) {
-          setSnapshot({ preview: null })
-          restoreScrollPending.current = true
-          return
-        }
+    const trapTab = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
         closePanel()
         return
       }
-      if (e.key !== 'Tab' || !panelRef.current) return
+      if (event.key !== 'Tab' || !panelRef.current) return
       const nodes = getFocusableIn(panelRef.current)
       if (nodes.length === 0) return
       const first = nodes[0]
       const last = nodes[nodes.length - 1]
       const active = document.activeElement as HTMLElement | null
-      if (e.shiftKey) {
+      if (event.shiftKey) {
         if (!active || active === first || !panelRef.current.contains(active)) {
-          e.preventDefault()
+          event.preventDefault()
           last.focus()
         }
       } else if (!active || active === last || !panelRef.current.contains(active)) {
-        e.preventDefault()
+        event.preventDefault()
         first.focus()
       }
     }
 
-    const onFocusIn = (e: FocusEvent) => {
+    const onFocusIn = (event: FocusEvent) => {
       if (!panelRef.current) return
-      const target = e.target as Node | null
+      const target = event.target as Node | null
       if (target && panelRef.current.contains(target)) return
       if (target === fabRef.current) {
-        e.preventDefault()
+        event.preventDefault()
         const nodes = getFocusableIn(panelRef.current)
         nodes[0]?.focus()
       }
@@ -264,442 +233,218 @@ export function SearchBuddy() {
       document.removeEventListener('focusin', onFocusIn)
       document.body.style.overflow = prev
       for (const el of inertTargets) el.removeAttribute('inert')
-      fab?.focus()
+      if (!openRef.current) fab?.focus()
     }
-  }, [open, preview, resultsScrollTop, closePanel, setSnapshot])
+  }, [open, view.kind, closePanel])
 
   useEffect(() => {
-    if (open) restoreScrollPending.current = true
-  }, [open])
-
-  useEffect(() => {
-    if (!open) cancelAiRequest()
-    return () => cancelAiRequest()
-  }, [open])
-
-  function onBodyScroll() {
-    if (!bodyRef.current || preview) return
-    const el = bodyRef.current
-    const distance = el.scrollHeight - el.scrollTop - el.clientHeight
-    stickToBottomRef.current = distance < NEAR_BOTTOM_PX
-    persistScroll(el.scrollTop)
-  }
-
-  async function runLocalSearch(
-    q: string,
-    requestId: number,
-    assistantId: string,
-    options?: { keepRemoteError?: string },
-  ) {
-    const response = await searchSite(q, {
-      limit: 12,
-      includePersonal: true,
-      userId: user?.id ?? null,
-      session: followUpRef.current,
-      language: uiLocale === 'am' ? 'am' : 'en',
-    })
-    if (requestId !== requestIdRef.current) return
-
-    const localized = response.results.map((result) =>
-      localizeResult(result, t, Boolean(user?.id)),
-    )
-    const followUp = buildSessionContext(response.resolvedQuery || q, localized)
-    followUpRef.current = followUp
-    const reply = replyFromResponse({ ...response, results: localized })
-    const suggestions = response.zeroResults
-      ? zeroResultSuggestions().map((result) => localizeResult(result, t, Boolean(user?.id)))
-      : []
-
-    setSnapshot((prev) => ({
-      ...prev,
-      query: '',
-      results: localized,
-      reply,
-      message: '',
-      followUp,
-      suggestions,
-      error: false,
-      hasSearched: true,
-      preview: null,
-      aiAnswer: null,
-      apiResponse: null,
-      apiEmpty: false,
-      lastSuccessfulQuery: q,
-      remoteError: options?.keepRemoteError ?? null,
-      messages: patchMessage(prev.messages, assistantId, {
-        status: options?.keepRemoteError ? 'complete' : 'complete',
-        text: options?.keepRemoteError
-          ? `${options.keepRemoteError} ${formatLocalLead(reply, t)}`.trim()
-          : formatLocalLead(reply, t),
-        localResults: localized.length ? localized : undefined,
-        suggestions: suggestions.length ? suggestions : undefined,
-        response: undefined,
-        empty: response.zeroResults,
-        errorText: undefined,
-      }),
-    }))
-
-    if (canAttemptAiChat() && !apiReady && shouldAttemptAiAnswer(q, localized)) {
-      const controller = new AbortController()
-      aiAbortRef.current = controller
-      setSnapshot({ aiAnswer: { status: 'thinking' } })
-      try {
-        const chat = await postAiChat(
-          {
-            message: q,
-            language: uiLocale === 'am' ? 'am' : 'en',
-            context: { page: typeof window !== 'undefined' ? window.location.pathname : '/' },
-          },
-          controller.signal,
-        )
-        if (requestId !== requestIdRef.current) return
-        const answer = (chat.answer || '').trim()
-        if (!answer) {
-          setSnapshot({ aiAnswer: null })
-          return
-        }
-        setSnapshot({
-          aiAnswer: {
-            status: 'success',
-            answer,
-            sources: Array.isArray(chat.sources) ? chat.sources : undefined,
-          },
-        })
-        setSnapshot((prev) => ({
-          ...prev,
-          messages: patchMessage(prev.messages, assistantId, {
-            text: answer,
-          }),
-        }))
-      } catch (aiErr) {
-        if (requestId !== requestIdRef.current) return
-        const notice = friendlyAiError(aiErr)
-        setSnapshot({
-          aiAnswer: notice ? { status: 'unavailable', notice } : null,
-          remoteError: notice || null,
-        })
-      } finally {
-        if (aiAbortRef.current === controller) aiAbortRef.current = null
-      }
+    if (!open) {
+      searchAbortRef.current?.abort()
+      searchAbortRef.current = null
     }
-  }
+    return () => {
+      searchAbortRef.current?.abort()
+    }
+  }, [open])
 
   async function runSearch(raw: string) {
-    const q = raw.trim()
-    if (!q) return
-    // Allow a newer query to supersede an in-flight one (stale responses are dropped).
+    const query = raw.trim()
+    if (!query || query.length > FAITH_AND_ORDER_QUERY_MAX) return
     const requestId = ++requestIdRef.current
-    cancelAiRequest()
+    searchAbortRef.current?.abort()
+    const controller = new AbortController()
+    searchAbortRef.current = controller
     setBusy(true)
+    setView({ kind: 'search' })
+    setOutcome({ kind: 'loading', query })
     setDraft('')
-    stickToBottomRef.current = true
 
-    const userMsg: ChatMessage = {
-      id: createChatMessageId(),
-      role: 'user',
-      createdAt: Date.now(),
-      text: q,
-      status: 'complete',
+    if (!apiReady) {
+      setOutcome({
+        kind: 'error',
+        query,
+        notice: t('searchBuddy.errors.notConfigured'),
+      })
+      setBusy(false)
+      return
     }
-    const assistantId = createChatMessageId()
-    const assistantMsg: ChatMessage = {
-      id: assistantId,
-      role: 'assistant',
-      createdAt: Date.now(),
-      status: 'sending',
-      text: t('searchBuddy.lookingUp'),
-    }
-
-    setSnapshot((prev) => ({
-      ...prev,
-      query: '',
-      error: false,
-      hasSearched: true,
-      showAll: false,
-      preview: null,
-      reply: { kind: 'searching' },
-      message: '',
-      resultsScrollTop: 0,
-      aiAnswer: null,
-      remoteError: null,
-      messages: [...prev.messages, userMsg, assistantMsg],
-    }))
-    // Keep stick-to-bottom for the new reply without smooth-scroll thrash.
-
-    window.setTimeout(() => inputRef.current?.focus(), 0)
 
     try {
-      if (apiReady) {
-        const controller = new AbortController()
-        aiAbortRef.current = controller
-        try {
-          // Display history stays local; API payload remains { message } only.
-          // Voice and typed share this path. hymnContext enables lyric/title hymns on /practice.
-          const { response, empty } = await sendSearchBuddyMessage(q, {
-            signal: controller.signal,
-            hymnContext,
-          })
-          if (requestId !== requestIdRef.current) return
-          const lead = assistantLeadForResponse(response, empty)
-          setSnapshot((prev) => ({
-            ...prev,
-            query: '',
-            results: [],
-            suggestions: [],
-            reply: empty ? { kind: 'zero' } : { kind: 'generic' },
-            message: '',
-            followUp: null,
-            error: false,
-            hasSearched: true,
-            preview: null,
-            aiAnswer: null,
-            apiResponse: response,
-            apiEmpty: empty,
-            lastSuccessfulQuery: q,
-            remoteError: null,
-            messages: patchMessage(prev.messages, assistantId, {
-              status: 'complete',
-              text: lead,
-              response,
-              empty,
-              localResults: undefined,
-              suggestions: undefined,
-              errorText: undefined,
-            }),
-          }))
-          return
-        } catch (apiErr) {
-          if (requestId !== requestIdRef.current) return
-          logSearchBuddyDiagnostic(apiErr, 'api')
-          const notice =
-            searchBuddyErrorMessage(apiErr) || t('searchBuddy.reachError')
-          // Theology / doctrine Q&A must not degrade into Synaxarium keyword noise
-          // when POST /api/chat fails — surface retry instead.
-          if (isExplanatoryTheologyQuery(q)) {
-            setSnapshot((prev) => ({
-              ...prev,
-              error: false,
-              reply: { kind: 'unavailable' },
-              message: notice,
-              remoteError: notice,
-              aiAnswer: null,
-              messages: patchMessage(prev.messages, assistantId, {
-                status: 'error',
-                text: undefined,
-                errorText: notice,
-              }),
-            }))
-            return
-          }
-          try {
-            await runLocalSearch(q, requestId, assistantId, { keepRemoteError: notice })
-            return
-          } catch {
-            setSnapshot((prev) => ({
-              ...prev,
-              error: false,
-              reply: { kind: 'unavailable' },
-              message: notice,
-              remoteError: notice,
-              aiAnswer: null,
-              messages: patchMessage(prev.messages, assistantId, {
-                status: 'error',
-                text: undefined,
-                errorText: notice,
-              }),
-            }))
-            return
-          }
-        } finally {
-          if (aiAbortRef.current === controller) aiAbortRef.current = null
-        }
-      }
-
-      await runLocalSearch(q, requestId, assistantId)
-    } catch {
+      await loadManifest()
       if (requestId !== requestIdRef.current) return
-      const notice = t('searchBuddy.reachError')
-      setSnapshot((prev) => ({
-        ...prev,
-        error: true,
-        reply: { kind: 'unavailable' },
-        message: notice,
-        remoteError: notice,
-        aiAnswer: null,
-        messages: patchMessage(prev.messages, assistantId, {
-          status: 'error',
-          errorText: notice,
-        }),
-      }))
+      const response = await searchFaithAndOrder(query, { signal: controller.signal, limit: 5 })
+      if (requestId !== requestIdRef.current) return
+      if (response.generated !== false || response.mode !== 'exact_document_search') {
+        throw new Error('unexpected document mode')
+      }
+      setOutcome(
+        response.status === 'no_matching_passage' || response.results.length === 0
+          ? { kind: 'empty', query, response }
+          : { kind: 'matches', query, response },
+      )
+    } catch (error) {
+      if (requestId !== requestIdRef.current || isSearchBuddyAbort(error)) {
+        if (requestId === requestIdRef.current) setOutcome({ kind: 'idle' })
+        return
+      }
+      if (isQueryTooLong(error)) return
+      logSearchBuddyDiagnostic(error, 'faith-and-order')
+      const retrySeconds = searchBuddyRetryAfterSeconds(error)
+      setOutcome({
+        kind: 'error',
+        query,
+        notice: searchBuddyUserNotice(error, uiLocale) || t('searchBuddy.errors.unknown'),
+        retryAvailableAt:
+          retrySeconds != null && retrySeconds > 0 ? Date.now() + retrySeconds * 1000 : undefined,
+      })
     } finally {
-      if (requestId === requestIdRef.current) setBusy(false)
+      if (requestId === requestIdRef.current) {
+        setBusy(false)
+        if (searchAbortRef.current === controller) searchAbortRef.current = null
+      }
     }
   }
 
-  function resetSession() {
-    cancelAiRequest()
-    requestIdRef.current += 1
-    setBusy(false)
+  function resetSearch() {
+    cancelSearch()
     setDraft('')
-    setVoiceRemountKey((k) => k + 1)
-    stickToBottomRef.current = true
+    setOutcome({ kind: 'idle' })
+    setView({ kind: 'search' })
+    setVoiceRemountKey((key) => key + 1)
     clearSession()
     window.setTimeout(() => inputRef.current?.focus(), 0)
   }
 
-  function openPreview(result: SiteSearchResult) {
-    if (bodyRef.current) persistScroll(bodyRef.current.scrollTop)
-    setSnapshot({ preview: result })
+  function openSection(target: SectionTarget) {
+    setView({ kind: 'section', ...target })
   }
 
-  function backToResults() {
-    setSnapshot({ preview: null })
-    restoreScrollPending.current = true
-    window.setTimeout(() => {
-      if (bodyRef.current) {
-        bodyRef.current.scrollTop = resultsScrollTop
-        restoreScrollPending.current = false
-      }
-      inputRef.current?.focus()
-    }, 40)
-  }
-
-  function openFullPage(result: SiteSearchResult) {
-    if (bodyRef.current && !preview) persistScroll(bodyRef.current.scrollTop)
-    setSnapshot({ preview: null })
-    closePanel()
-    navigate(result.route, { state: { fromSearchBuddy: true } })
-  }
-
-  function handleResultOpen(result: SiteSearchResult) {
-    if (isSynaxariumResult(result)) {
-      openPreview(result)
-      return
-    }
-    if (bodyRef.current) persistScroll(bodyRef.current.scrollTop)
-    closePanel()
-  }
-
-  const liveStatus = busy ? t('searchBuddy.lookingUp') : ''
+  const liveStatus = busy ? t('searchBuddy.faith.searching') : ''
 
   const panel =
     open &&
     createPortal(
       <div className={styles.root}>
-        <div
-          className={styles.backdrop}
-          aria-hidden="true"
-          onClick={closePanel}
-        />
+        <div className={styles.backdrop} aria-hidden="true" onClick={closePanel} />
         <section
           ref={panelRef}
           className={styles.panel}
           role="dialog"
           aria-modal="true"
-          aria-labelledby={preview ? previewTitleId : titleId}
+          aria-labelledby={titleId}
           aria-describedby={showWelcome ? welcomeId : undefined}
           aria-busy={busy || undefined}
         >
           <header className={styles.header}>
             <div className={styles.headerCopy}>
-              {preview ? (
-                <>
-                  <h2 id={previewTitleId}>{t('searchBuddy.previewTitle')}</h2>
-                  <p>{t('searchBuddy.previewSubtitle')}</p>
-                </>
-              ) : (
-                <>
-                  <h2 id={titleId}>{t('searchBuddy.title')}</h2>
-                  <p>{t('searchBuddy.subtitle')}</p>
-                </>
-              )}
+              <h2 id={titleId}>{t('searchBuddy.title')}</h2>
+              <p>{t('searchBuddy.subtitle')}</p>
             </div>
             <div className={styles.headerActions}>
-              {!preview && messages.length > 0 ? (
+              {view.kind !== 'search' ? (
+                <button
+                  ref={backRef}
+                  type="button"
+                  className={styles.newChat}
+                  onClick={() => setView({ kind: 'search' })}
+                >
+                  {t('searchBuddy.faith.backToSearch')}
+                </button>
+              ) : outcome.kind !== 'idle' ? (
                 <button
                   type="button"
                   className={styles.newChat}
-                  onClick={resetSession}
-                  aria-label={t('searchBuddy.newChatAria')}
+                  onClick={resetSearch}
+                  aria-label={t('searchBuddy.faith.newSearchAria')}
                 >
-                  {t('searchBuddy.newChat')}
+                  {t('searchBuddy.faith.newSearch')}
                 </button>
               ) : null}
-              <button
-                ref={closeRef}
-                type="button"
-                className={styles.close}
-                aria-label={t('searchBuddy.close')}
-                onClick={closePanel}
-              >
+              <button type="button" className={styles.close} aria-label={t('searchBuddy.close')} onClick={closePanel}>
                 ×
               </button>
             </div>
           </header>
 
-          {preview ? (
-            <div ref={bodyRef} className={styles.body}>
-              <SynaxariumPreview
-                result={preview}
-                backRef={backToResultsRef}
-                onBack={backToResults}
-                onOpenFull={() => openFullPage(preview)}
+          <div ref={bodyRef} className={styles.body}>
+            <p className={styles.srOnly} aria-live="polite">
+              {liveStatus}
+            </p>
+            {devApiNotice && !apiReady ? (
+              <p className={styles.devNotice} role="status">
+                {devApiNotice}
+              </p>
+            ) : null}
+            {view.kind === 'toc' && manifest ? (
+              <FaithAndOrderToc manifest={manifest} onOpenSection={openSection} />
+            ) : null}
+            {view.kind === 'section' ? (
+              <FaithAndOrderSectionReader
+                key={`${view.version}:${view.sectionId}:${view.paragraphId ?? ''}:${view.highlightNumber ?? ''}`}
+                target={view}
               />
-            </div>
-          ) : (
-            <>
-              {devApiNotice && !apiReady ? (
-                <p className={styles.devNotice} role="status">
-                  {devApiNotice}
-                </p>
-              ) : null}
-
-              {showWelcome ? (
-                <div className={styles.body}>
-                  <ChatStarterPrompts
-                    welcomeId={welcomeId}
-                    title={t('searchBuddy.welcomeTitle')}
-                    copy={t('searchBuddy.welcomeCopy')}
-                    groupAria={t('searchBuddy.suggestionsAria')}
-                    prompts={CHAT_STARTER_PROMPTS}
-                    disabled={false}
-                    onSelect={(prompt) => void runSearch(prompt)}
-                  />
-                </div>
-              ) : (
-                <ChatThread
-                  messages={messages}
-                  bodyRef={bodyRef}
-                  onBodyScroll={onBodyScroll}
-                  stickToBottomRef={stickToBottomRef}
-                  lookingUpLabel={t('searchBuddy.lookingUp')}
-                  onOpenResult={handleResultOpen}
-                  onPreviewResult={openPreview}
-                  isSynaxariumResult={isSynaxariumResult}
-                  showAllLocal={showAll}
-                  onShowAllLocal={() => setSnapshot({ showAll: true })}
-                  seeMoreLabel={(count) => t('searchBuddy.seeMore', { count })}
-                  initialLocalCount={INITIAL_RESULT_COUNT}
-                  liveStatus={liveStatus}
+            ) : null}
+            {view.kind === 'search' ? (
+              <div id={welcomeId}>
+                <FaithAndOrderSearchPane
+                  manifest={manifest}
+                  manifestState={manifestState}
+                  manifestNotice={manifestNotice}
+                  outcome={outcome}
+                  busy={busy}
+                  onSearchTitle={(title) => void runSearch(title)}
+                  onOpenToc={() => setView({ kind: 'toc' })}
+                  onOpenSection={openSection}
+                  onKeywordSearch={() => inputRef.current?.focus()}
+                  onRetryManifest={() => {
+                    manifestRef.current = null
+                    manifestFlightRef.current = null
+                    void loadManifest()
+                  }}
+                  onRetrySearch={(query) => void runSearch(query)}
                 />
-              )}
+              </div>
+            ) : null}
+          </div>
 
-              <ChatComposer
-                value={draft}
-                onChange={setDraft}
-                onSubmit={() => void runSearch(draft)}
-                busy={busy}
-                voiceActive={open && !preview}
-                voiceRemountKey={voiceRemountKey}
-                inputRef={inputRef}
-                placeholder={t('searchBuddy.placeholder')}
-                inputAria={t('searchBuddy.inputAria')}
-                sendLabel={t('searchBuddy.send')}
-                sendBusyLabel={t('searchBuddy.sendBusy')}
-                clearLabel={t('searchBuddy.clearInput')}
-              />
-            </>
-          )}
+          {view.kind === 'search' ? (
+            <ChatComposer
+              leading={
+                <>
+                  <p id={limitId} className={styles.queryMeter} aria-live="polite">
+                    {t('searchBuddy.faith.overLimit', {
+                      count: draft.trim().length,
+                      max: FAITH_AND_ORDER_QUERY_MAX,
+                    })}
+                  </p>
+                  {overLimit ? (
+                    <p className={styles.limitNotice} role="alert">
+                      {t('searchBuddy.questionTooLong', { max: FAITH_AND_ORDER_QUERY_MAX })}
+                    </p>
+                  ) : null}
+                </>
+              }
+              value={draft}
+              onChange={setDraft}
+              onSubmit={() => void runSearch(draft)}
+              busy={busy}
+              voiceActive={open}
+              voiceRemountKey={voiceRemountKey}
+              inputRef={inputRef}
+              placeholder={t('searchBuddy.placeholder')}
+              inputAria={t('searchBuddy.inputAria')}
+              sendLabel={t('searchBuddy.send')}
+              sendBusyLabel={t('searchBuddy.sendBusy')}
+              clearLabel={t('searchBuddy.clearInput')}
+              dictateAria={t('searchBuddy.dictateAria')}
+              onCancel={busy ? cancelSearch : undefined}
+              cancelLabel={t('searchBuddy.cancel')}
+              cancelAria={t('searchBuddy.cancelAria')}
+              describedBy={limitId}
+              invalid={overLimit}
+              submitDisabled={overLimit}
+            />
+          ) : null}
         </section>
       </div>,
       document.body,
@@ -724,59 +469,5 @@ export function SearchBuddy() {
       </button>
       {panel}
     </>
-  )
-}
-
-function SynaxariumPreview({
-  result,
-  backRef,
-  onBack,
-  onOpenFull,
-}: {
-  result: SiteSearchResult
-  backRef: RefObject<HTMLButtonElement | null>
-  onBack: () => void
-  onOpenFull: () => void
-}) {
-  const t = useTranslation()
-  const image = result.imagePath ? resolveContentMediaUrl(result.imagePath) : ''
-  const dateLine = result.dateLabel || result.description
-  const excerpt = result.excerpt?.trim() || ''
-  const source = result.sourceLabel || 'Synaxarium'
-
-  return (
-    <div className={styles.preview}>
-      <button
-        ref={backRef}
-        type="button"
-        className={styles.backToResults}
-        onClick={onBack}
-      >
-        {t('searchBuddy.backToResults')}
-      </button>
-
-      {image ? (
-        <img className={styles.previewArt} src={image} alt="" loading="lazy" />
-      ) : null}
-
-      <p className={styles.cardType}>{t('searchBuddy.types.synaxarium')}</p>
-      {result.titleAmharic ? (
-        <p className={styles.cardAm} lang="am">
-          {result.titleAmharic}
-        </p>
-      ) : null}
-      <h3 className={styles.previewTitleText}>{result.title}</h3>
-      {dateLine ? <p className={styles.previewDate}>{dateLine}</p> : null}
-      {excerpt ? <p className={styles.previewExcerpt}>{excerpt}</p> : null}
-      <p className={styles.previewSource}>
-        {t('searchBuddy.source')}: {source}
-      </p>
-
-      <div className={styles.previewActions}>
-        <button type="button" className={styles.primaryAction} onClick={onOpenFull}>
-          {t('searchBuddy.openFullPage')}
-        </button>
-      </div>
-    </div>
   )
 }

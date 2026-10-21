@@ -1,12 +1,13 @@
+import { useTranslation } from '../../i18n'
 import styles from './SearchBuddy.module.css'
 
-export const CHAT_STARTER_PROMPTS = [
-  "What's on the church calendar today?",
-  'Am I fasting today?',
-  'Open John 3:16',
-  'Find a prayer',
-  'Show me a Gena hymn',
-  'Who is commemorated today?',
+const STARTER_KEYS = [
+  'searchBuddy.prompts.calendar',
+  'searchBuddy.prompts.fasting',
+  'searchBuddy.prompts.john',
+  'searchBuddy.prompts.prayer',
+  'searchBuddy.prompts.gena',
+  'searchBuddy.prompts.commemorated',
 ] as const
 
 type Props = {
@@ -20,7 +21,7 @@ type Props = {
 }
 
 export function ChatStarterPrompts({
-  prompts = CHAT_STARTER_PROMPTS,
+  prompts,
   disabled,
   onSelect,
   title,
@@ -28,12 +29,14 @@ export function ChatStarterPrompts({
   groupAria,
   welcomeId,
 }: Props) {
+  const t = useTranslation()
+  const items = prompts ?? STARTER_KEYS.map((key) => t(key))
   return (
     <div className={styles.welcome} id={welcomeId}>
       <p className={styles.welcomeTitle}>{title}</p>
       <p className={styles.welcomeCopy}>{copy}</p>
       <div className={styles.suggestions} role="group" aria-label={groupAria}>
-        {prompts.map((prompt) => (
+        {items.map((prompt) => (
           <button
             key={prompt}
             type="button"

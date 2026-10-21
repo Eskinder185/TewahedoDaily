@@ -23,7 +23,31 @@ const CMS_TYPES = new Set<string>(['mezmur', 'saints', 'feasts', 'prayers', 'art
 const ALL_TYPES = new Set<string>([...CMS_TYPES, 'bible'])
 
 const BIBLE_ROUTE =
-  /^\/bible\/([a-z0-9]+(?:-[a-z0-9]+)*)\/(\d+)(?:#verse-\d+)?$/i
+  /^\/bible\/([a-z0-9]+(?:-[a-z0-9]+)*)\/(\d+)(?:#verse-(\d+))?$/i
+
+/** Published Bible targets used to accept or reject a stored relation route. */
+export type BibleCatalogCheck = {
+  slugs: ReadonlySet<string>
+  /** Reader ordinals that exist for the slug. */
+  chaptersBySlug: ReadonlyMap<string, ReadonlySet<number>>
+  /** Verse numbers keyed by `slug:ordinal`. Required when the route has #verse-N. */
+  versesByChapter?: ReadonlyMap<string, ReadonlySet<number>>
+}
+
+/** True only when the slug, chapter ordinal, and verse (if any) are in the catalog. */
+export function bibleRouteMatchesCatalog(route: string, catalog: BibleCatalogCheck): boolean {
+  const match = (route || '').trim().match(BIBLE_ROUTE)
+  if (!match) return false
+  const slug = match[1].toLowerCase()
+  const ordinal = Number(match[2])
+  const verse = match[3] ? Number(match[3]) : null
+  if (!catalog.slugs.has(slug)) return false
+  const chapters = catalog.chaptersBySlug.get(slug)
+  if (!chapters || !chapters.has(ordinal)) return false
+  if (verse == null) return true
+  const verses = catalog.versesByChapter?.get(`${slug}:${ordinal}`)
+  return Boolean(verses && verses.has(verse))
+}
 
 export function isRelatedContentType(value: string): value is RelatedContentType {
   return ALL_TYPES.has(value)
@@ -108,6 +132,7 @@ export function mergeResolvedRelations(
     title: string
     slug: string
   }>,
+  bibleCatalog?: BibleCatalogCheck,
 ): ResolvedRelated[] {
   const map = new Map(
     hydrated.map((row) => [`${row.type}:${row.id}`, row] as const),
@@ -117,6 +142,7 @@ export function mergeResolvedRelations(
     if (req.type === 'bible') {
       const route = req.route || bibleRouteFromId(req.id)
       if (!route || !BIBLE_ROUTE.test(route)) continue
+      if (bibleCatalog && !bibleRouteMatchesCatalog(route, bibleCatalog)) continue
       out.push({
         type: 'bible',
         id: req.id,
@@ -156,6 +182,21 @@ export function relationTypeLabel(type: RelatedContentType): string {
     default:
       return 'Related'
   }
+}
+
+/** Requested relation ids that did not resolve to a published target. */
+export function unresolvedRelationIds(
+  requested: Related[],
+  resolved: ResolvedRelated[],
+): string[] {
+  const found = new Set(resolved.map((row) => `${row.type}:${row.id}`))
+  const missing: string[] = []
+  for (const row of requested) {
+    const key = `${row.type}:${row.id}`
+    if (found.has(key)) continue
+    missing.push(key)
+  }
+  return missing
 }
 
 /** Encyclopedia / teaching topic categories (must match DB check constraint). */

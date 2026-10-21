@@ -1,9 +1,11 @@
 import type { ChatMessage } from '../search/chatTypes.ts'
 import {
   partitionAiSources,
+  safeCitationUrl,
   scriptureLanguageKey,
   scriptureVerseText,
 } from './aiSources.ts'
+import { plainTextFromAiAnswer } from './formatAiAnswer.ts'
 import type {
   AiGenericSource,
   AiScriptureSource,
@@ -179,7 +181,7 @@ function scriptureSourceCopyBlock(source: AiScriptureSource): string {
 function genericSourceCopyLine(source: AiGenericSource, index: number): string {
   const title = trimText(source.title) || `Source ${index + 1}`
   const excerpt = trimText(source.excerpt)
-  const url = trimText(source.url)
+  const url = safeCitationUrl(source.url)
   if (excerpt && url) return `${title}\n${excerpt}\n${url}`
   if (excerpt) return `${title}\n${excerpt}`
   if (url) return `${title}\n${url}`
@@ -188,11 +190,12 @@ function genericSourceCopyLine(source: AiGenericSource, index: number): string {
 
 function aiResponseCopyText(answer: string, sources: ReturnType<typeof partitionAiSources>): string {
   const parts: string[] = []
-  if (answer) parts.push(answer)
+  const cleanAnswer = plainTextFromAiAnswer(answer)
+  if (cleanAnswer) parts.push(cleanAnswer)
   if (sources.scripture.length) {
     const blocks = sources.scripture.map(scriptureSourceCopyBlock).filter(Boolean)
     if (blocks.length) {
-      parts.push(['Verified Bible Passages', ...blocks].join('\n\n'))
+      parts.push(['Supplied Scripture', ...blocks].join('\n\n'))
     }
   }
   if (sources.generic.length) {

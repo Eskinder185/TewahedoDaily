@@ -37,16 +37,17 @@ export type AiCapabilities = {
 
 export type AiChatRequest = {
   message: string
-  language?: AiLanguage
-  context?: {
-    page?: string
-    [key: string]: unknown
-  }
+  timezone?: string
+  ui_language?: AiLanguage
+  answer_language?: AiLanguage | 'bilingual'
+  history?: Array<{ role: 'user' | 'assistant'; content: string }>
 }
 
 export type AiChatResponse = {
   answer: string
   sources?: AiSource[]
+  answer_language?: AiLanguage | 'bilingual'
+  grounding?: 'scripture' | 'general_knowledge' | 'unavailable_document'
 }
 
 export type AiTranscribeResponse = {
@@ -79,12 +80,22 @@ export type AiErrorCode =
 export class AiClientError extends Error {
   readonly code: AiErrorCode
   readonly status?: number
+  /** Seconds from a Retry-After header, when the response included one. */
+  readonly retryAfterSeconds?: number
 
-  constructor(code: AiErrorCode, message: string, status?: number) {
+  constructor(
+    code: AiErrorCode,
+    message: string,
+    status?: number,
+    retryAfterSeconds?: number,
+  ) {
     super(message)
     this.name = 'AiClientError'
     this.code = code
     this.status = status
+    if (retryAfterSeconds != null && Number.isFinite(retryAfterSeconds)) {
+      this.retryAfterSeconds = retryAfterSeconds
+    }
   }
 }
 

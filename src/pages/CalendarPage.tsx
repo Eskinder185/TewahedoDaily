@@ -22,6 +22,7 @@ import type { PresentableCalendarEvent } from '../lib/calendar/calendarPresentat
 import { addDays, toIsoLocalDate } from '../lib/churchCalendar/pascha'
 import { useLocale } from '../lib/i18n/locale'
 import { useTranslation } from '../i18n'
+import { formatEthiopianDay, formatGregorianMonth } from '../lib/calendar/calendarDateLabels'
 import { CalendarReminderToggle } from '../components/calendar/CalendarReminderToggle'
 import styles from './CalendarPage.module.css'
 
@@ -37,20 +38,12 @@ const PAST_DAYS = 7
 const FUTURE_DAYS = 14
 const EXTEND_DAYS = 10
 
-function formatLongDate(d: Date): string {
-  return d.toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
-}
-
 function stripLocal(d: Date): Date {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate())
 }
 
 export function CalendarPage() {
-  const { now, snapshot } = useHomeToday()
+  const { now } = useHomeToday()
   const { contentLocale } = useLocale()
   const t = useTranslation()
   const [searchParams] = useSearchParams()
@@ -221,11 +214,7 @@ export function CalendarPage() {
       .catch((cause) => {
         if (!active || requestId !== dayRequestIdRef.current) return
         if (import.meta.env.DEV) console.error('[CalendarPage] day context', cause)
-        setDayError(
-          cause && typeof cause === 'object' && 'message' in cause
-            ? String((cause as { message?: unknown }).message)
-            : 'Unable to load this day.',
-        )
+        setDayError(t('calendar.timeline.loadError'))
       })
       .finally(() => {
         if (active && requestId === dayRequestIdRef.current) setDayLoading(false)
@@ -233,17 +222,10 @@ export function CalendarPage() {
     return () => {
       active = false
     }
-  }, [selectedDate, dayReloadTick, isSelectedToday, todayContext])
+  }, [selectedDate, dayReloadTick, isSelectedToday, todayContext, t])
 
-  const gregorianLabel = formatLongDate(selectedDate)
-  const ethiopianLabel =
-    dayContext?.ethiopianLabel ||
-    (isSelectedToday ? snapshot.ethiopian?.labelLong || '' : '') ||
-    (dayContext
-      ? `${dayContext.ethiopianDate.monthName} ${dayContext.ethiopianDate.day}, ${dayContext.ethiopianDate.year}`
-      : '') ||
-    timelineGroups.find((g) => g.iso === toIsoLocalDate(selectedDate))?.ethiopianLabel ||
-    ''
+  const gregorianLabel = formatGregorianMonth(selectedDate, contentLocale)
+  const ethiopianLabel = formatEthiopianDay(selectedDate, contentLocale, true)
 
   const setSelectedCivilDate = useCallback((d: Date) => {
     const civil = stripLocal(d)
@@ -387,7 +369,9 @@ export function CalendarPage() {
                 {gregorianLabel}
               </h2>
               {ethiopianLabel ? (
-                <p className={styles.selectedEthiopian}>{ethiopianLabel}</p>
+                <p className={styles.selectedEthiopian} lang={contentLocale === 'am' ? 'am' : 'en'}>
+                  {ethiopianLabel}
+                </p>
               ) : null}
             </div>
             <button
@@ -412,7 +396,7 @@ export function CalendarPage() {
                 setDayReloadTick((n) => n + 1)
               }}
             >
-              Try again
+              {t('calendar.timeline.tryAgain')}
             </button>
           </div>
         ) : (
@@ -431,7 +415,7 @@ export function CalendarPage() {
       </section>
 
       <div className={styles.mainSplit}>
-        <section ref={monthRef} className={styles.monthPane} aria-label="Month calendar">
+        <section ref={monthRef} className={styles.monthPane} aria-label={t('calendar.timeline.month')}>
           <MiniMonthCalendar
             anchor={now}
             displayYear={viewYear}

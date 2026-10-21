@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import type { DayChurchContext } from '../../services/dayChurchContext'
 import type { ResolvedCalendarCard } from '../../lib/calendar/resolveCalendarCard'
 import type { CalendarLocaleMode } from '../../lib/calendar/calendarEnrichedContent'
 import {
   displaySummary,
+  localizeCalendarEventType,
   presentFast,
   presentMonthly,
   presentObservance,
@@ -74,7 +76,7 @@ function EventMedia({
 function ExpandableEvent({
   event,
   lang,
-  learnLabel = 'Learn more',
+  learnLabel,
   defaultOpen = false,
 }: {
   event: PresentableCalendarEvent
@@ -82,13 +84,14 @@ function ExpandableEvent({
   learnLabel?: string
   defaultOpen?: boolean
 }) {
+  const t = useTranslation()
   const [open, setOpen] = useState(defaultOpen)
   const panelId = `cal-event-${event.kind}-${event.id}`
   const summary = displaySummary(event, lang)
   return (
     <article className={`${styles.expandRow} ${toneClass(event.tone)}`}>
       <div className={styles.expandMain}>
-        <p className={styles.catLabel}>{event.categoryLabel}</p>
+        <p className={styles.catLabel}>{localizeCalendarEventType(event.categoryLabel, t)}</p>
         <h3 className={styles.expandTitle}>{event.title}</h3>
         {event.titleAmharic ? (
           <p className={styles.amharic} lang="am">
@@ -98,7 +101,7 @@ function ExpandableEvent({
         {event.ethiopianDateLabel ? (
           <p className={styles.metaLine}>
             {event.kind === 'monthly'
-              ? `Monthly commemoration · ${event.ethiopianDateLabel}`
+              ? `${t('calendar.page.monthlyLabel')} · ${event.ethiopianDateLabel}`
               : event.ethiopianDateLabel}
             {event.movableLabel ? ` · ${event.movableLabel}` : ''}
             {event.fastTypeLabel ? ` · ${event.fastTypeLabel}` : ''}
@@ -120,7 +123,7 @@ function ExpandableEvent({
           aria-controls={panelId}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? 'Hide details' : learnLabel}
+          {open ? t('calendar.page.hideDetails') : learnLabel || t('calendar.page.learnMore')}
         </button>
       </div>
       {open ? (
@@ -140,6 +143,7 @@ export function TodayInChurchPanel({
   cards = [],
   compact = false,
 }: Props) {
+  const t = useTranslation()
   const { contentLocale: lang } = useLocale()
 
   const presented = useMemo(() => {
@@ -162,7 +166,7 @@ export function TodayInChurchPanel({
   if (loading && !context) {
     return (
       <div className={styles.panel} role="status">
-        <p className={styles.status}>Loading today’s church calendar…</p>
+        <p className={styles.status}>{t('calendar.page.loadingDay')}</p>
       </div>
     )
   }
@@ -173,7 +177,7 @@ export function TodayInChurchPanel({
         <p className={styles.status}>{error}</p>
         {onRetry ? (
           <button type="button" className={styles.learnBtn} onClick={onRetry}>
-            Try again
+            {t('calendar.detail.tryAgain')}
           </button>
         ) : null}
       </div>
@@ -183,7 +187,7 @@ export function TodayInChurchPanel({
   if (!context || !presented) {
     return (
       <div className={styles.panel}>
-        <p className={styles.status}>Select a day to see observances, fasts, and seasons.</p>
+        <p className={styles.status}>{t('calendar.page.selectDay')}</p>
       </div>
     )
   }
@@ -197,7 +201,9 @@ export function TodayInChurchPanel({
     <div className={`${styles.panel} ${compact ? styles.compact : ''}`}>
       <header className={styles.dayHero}>
         <div className={styles.dayHeroText}>
-          <p className={styles.eyebrow}>{compact ? 'Today in Church' : 'Selected day'}</p>
+          <p className={styles.eyebrow}>
+            {compact ? t('today.section.eyebrow') : t('calendar.page.selectedDay')}
+          </p>
           <h2 className={styles.gregorian}>{context.gregorianLabel}</h2>
           <p className={styles.ethiopian}>{context.ethiopianLabel}</p>
         </div>
@@ -206,7 +212,7 @@ export function TodayInChurchPanel({
             <EventMedia event={primary} major={primary.isMajor} />
             <div className={styles.featuredBody}>
               <p className={styles.catLabel}>
-                {primary.isEveOrPreparation ? primary.categoryLabel : primary.categoryLabel}
+                {localizeCalendarEventType(primary.categoryLabel, t)}
               </p>
               <h3 className={styles.featuredTitle}>{primary.title}</h3>
               {primary.titleAmharic ? (
@@ -238,26 +244,26 @@ export function TodayInChurchPanel({
       </header>
 
       {!compact ? (
-        <section className={styles.strip} aria-label="Today at a glance">
+        <section className={styles.strip} aria-label={t('calendar.page.glanceLabel')}>
           <div className={styles.stripRow}>
-            <span className={styles.stripKey}>Fast</span>
+            <span className={styles.stripKey}>{t('calendar.page.fastHeading')}</span>
             <span className={styles.stripVal}>
               {context.fastingStatus.isFastDay
-                ? context.fastingStatus.label || 'Fasting today'
+                ? context.fastingStatus.label || t('calendar.page.fastingToday')
                 : context.fastingStatus.isFastFree
-                  ? 'No regular Wednesday/Friday fast today'
-                  : 'No period fast today'}
+                  ? t('calendar.page.noWeeklyFast')
+                  : t('calendar.page.noPeriodFast')}
             </span>
           </div>
           {season ? (
             <div className={styles.stripRow}>
-              <span className={styles.stripKey}>Season</span>
+              <span className={styles.stripKey}>{t('calendar.page.seasonLabel')}</span>
               <span className={styles.stripVal}>{season.title}</span>
             </div>
           ) : null}
           {monthly.length > 0 ? (
             <div className={styles.stripRow}>
-              <span className={styles.stripKey}>Monthly</span>
+              <span className={styles.stripKey}>{t('calendar.page.monthlyLabel')}</span>
               <span className={styles.stripVal}>
                 {monthly.map((m) => m.title).join(' · ')}
               </span>
@@ -269,16 +275,14 @@ export function TodayInChurchPanel({
       {fast ? (
         <section className={styles.block} aria-labelledby="cal-fast-heading">
           <h3 id="cal-fast-heading" className={styles.blockTitle}>
-            Fasting today
+            {t('calendar.page.fastingHeading')}
           </h3>
-          <ExpandableEvent event={fast} lang={lang} learnLabel="About this fast" />
+          <ExpandableEvent event={fast} lang={lang} learnLabel={t('calendar.page.aboutFast')} />
           {related.length > 0 ? (
             <div className={styles.relatedNote}>
-              <p className={styles.metaLine}>
-                Related fast components (same fasting observance, not additional days):
-              </p>
+              <p className={styles.metaLine}>{t('calendar.page.relatedFastNote')}</p>
               {related.map((r) => (
-                <ExpandableEvent key={r.id} event={r} lang={lang} learnLabel="Details" />
+                <ExpandableEvent key={r.id} event={r} lang={lang} learnLabel={t('calendar.page.fastDetails')} />
               ))}
             </div>
           ) : null}
@@ -288,12 +292,12 @@ export function TodayInChurchPanel({
       {!fast && (fastFree || context.fastingStatus.isFastFree) ? (
         <section className={styles.block} aria-labelledby="cal-fastfree-heading">
           <h3 id="cal-fastfree-heading" className={styles.blockTitle}>
-            Fasting
+            {t('calendar.page.fastingHeading')}
           </h3>
           <article className={`${styles.expandRow} ${styles.toneFast}`}>
-            <p className={styles.catLabel}>FAST-FREE</p>
+            <p className={styles.catLabel}>{t('calendar.page.fastFreeBadge')}</p>
             <h3 className={styles.expandTitle}>
-              {fastFree?.title || context.fastingStatus.label || 'Fast-free day'}
+              {fastFree?.title || context.fastingStatus.label || t('calendar.page.fastFreeDay')}
             </h3>
             {fastFree?.titleAmharic ? (
               <p className={styles.amharic} lang="am">
@@ -303,7 +307,7 @@ export function TodayInChurchPanel({
             <p className={styles.summary}>
               {context.fastingStatus.exceptionNote ||
                 fastFree?.summary ||
-                'No regular Wednesday/Friday fast today.'}
+                t('calendar.page.noWeeklyFast')}
             </p>
             {fastFree ? (
               <CalendarEventDetails fields={fastFree.fields} lang={lang} />
@@ -315,19 +319,17 @@ export function TodayInChurchPanel({
       {season ? (
         <section className={styles.block} aria-labelledby="cal-season-heading">
           <h3 id="cal-season-heading" className={styles.blockTitle}>
-            Current season
+            {t('calendar.page.seasonHeading')}
           </h3>
-          <p className={styles.seasonHint}>
-            A liturgical season describes the church year. It does not automatically impose fasting.
-          </p>
-          <ExpandableEvent event={season} lang={lang} learnLabel="Learn more" />
+          <p className={styles.seasonHint}>{t('calendar.page.seasonHint')}</p>
+          <ExpandableEvent event={season} lang={lang} learnLabel={t('calendar.page.learnMore')} />
         </section>
       ) : null}
 
       {monthly.length > 0 ? (
         <section className={styles.block} aria-labelledby="cal-monthly-heading">
           <h3 id="cal-monthly-heading" className={styles.blockTitle}>
-            Monthly commemorations
+            {t('calendar.page.monthlyLabel')}
           </h3>
           <div className={styles.stack}>
             {monthly.map((m) => (
@@ -340,7 +342,7 @@ export function TodayInChurchPanel({
       {others.length > 0 ? (
         <section className={styles.block} aria-labelledby="cal-other-heading">
           <h3 id="cal-other-heading" className={styles.blockTitle}>
-            Also today
+            {t('calendar.page.observancesLabel')}
           </h3>
           <div className={styles.stack}>
             {others.map((o) => (
@@ -350,34 +352,53 @@ export function TodayInChurchPanel({
         </section>
       ) : null}
 
-      {!compact && (context.mezmurRecommendations.length > 0 || context.practiceLinks.length > 0) ? (
+      <section className={styles.block} aria-labelledby="cal-synaxarium-heading">
+        <h3 id="cal-synaxarium-heading" className={styles.blockTitle}>
+          {t('calendar.page.synaxariumHeading')}
+        </h3>
+        {context.synaxarium.length ? (
+          <ul className={styles.stack}>
+            {context.synaxarium.map((item) => (
+              <li key={item.id}>
+                {context.synaxariumDaySlug ? (
+                  <Link className={styles.dayLink} to={`/pray/synaxarium/${context.synaxariumDaySlug}`}>
+                    {item.title}
+                  </Link>
+                ) : (
+                  item.title
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className={styles.summary}>{t('calendar.page.synaxariumMissing')}</p>
+        )}
+      </section>
+
+      {!compact ? (
         <section className={styles.block} aria-labelledby="cal-related-heading">
           <h3 id="cal-related-heading" className={styles.blockTitle}>
-            Related resources
+            {t('calendar.page.hymnsHeading')}
           </h3>
-          {context.mezmurRecommendations.slice(0, 3).map((item) => (
-            <article key={item.id} className={styles.resourceRow}>
-              <div>
-                <p className={styles.expandTitle}>{item.title}</p>
-                {item.titleAmharic ? (
-                  <p className={styles.amharic} lang="am">
-                    {item.titleAmharic}
-                  </p>
-                ) : null}
-                {item.matchReason ? <p className={styles.metaLine}>{item.matchReason}</p> : null}
-              </div>
-              <Link className={styles.learnBtn} to={item.practiceHref}>
-                Open hymn
-              </Link>
-            </article>
-          ))}
-          <div className={styles.linkRow}>
-            {context.practiceLinks.map((link) => (
-              <Link key={link.href + link.label} className={styles.textLink} to={link.href}>
-                {link.label}
-              </Link>
-            ))}
-          </div>
+          {context.mezmurRecommendations.length ? (
+            context.mezmurRecommendations.map((item) => (
+              <article key={item.id} className={styles.resourceRow}>
+                <div>
+                  <p className={styles.expandTitle}>{item.title}</p>
+                  {item.titleAmharic ? (
+                    <p className={styles.amharic} lang="am">
+                      {item.titleAmharic}
+                    </p>
+                  ) : null}
+                </div>
+                <Link className={styles.learnBtn} to={item.practiceHref}>
+                  {item.title}
+                </Link>
+              </article>
+            ))
+          ) : (
+            <p className={styles.summary}>{t('calendar.page.relatedMissing')}</p>
+          )}
         </section>
       ) : null}
     </div>

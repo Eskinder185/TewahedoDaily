@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { PageSection } from '../ui/PageSection'
 import { useHomeToday } from '../../hooks/useHomeToday'
@@ -102,6 +103,10 @@ export function HomeTodayInChurchPreview() {
           <p className={styles.eyebrow}>{t('home.today.eyebrow')}</p>
           <h2 className={styles.title}>{t('home.today.title')}</h2>
           {dateLine ? <p className={styles.dateLine}>{dateLine}</p> : null}
+          <p className={styles.selectionNote}>{t('home.today.selectionNote')}</p>
+          <Link className={styles.seeAll} to="/today">
+            {t('home.today.seeAll')}
+          </Link>
         </div>
 
         <div
@@ -118,10 +123,10 @@ export function HomeTodayInChurchPreview() {
         >
           {error && !loading && events.length === 0 ? (
             <p className={styles.status} role="alert">
-              {import.meta.env.DEV ? error : 'Unable to load Today in Church right now.'}
+              {import.meta.env.DEV ? error : t('home.today.unableLoad')}
             </p>
           ) : loading ? (
-            <div className={styles.skeletonCard} role="status" aria-label="Loading today’s observances">
+            <div className={styles.skeletonCard} role="status" aria-label={t('home.today.loadingObservances')}>
               <div className={styles.skeletonMedia} />
               <div className={styles.skeletonLines}>
                 <span className={styles.skeletonLine} />
@@ -130,14 +135,14 @@ export function HomeTodayInChurchPreview() {
             </div>
           ) : events.length === 0 ? (
             <p className={styles.status} role="status">
-              No special observances listed for today.
+              {t('home.today.noObservances')}
             </p>
           ) : (
             <div
               className={styles.carousel}
               role="region"
               aria-roledescription="carousel"
-              aria-label="Today in Church"
+              aria-label={t('today.section.eyebrow')}
             >
               <div className={styles.slideStage}>
                 {activeEvent ? (
@@ -154,14 +159,14 @@ export function HomeTodayInChurchPreview() {
                   <div className={styles.controls}>
                     <button
                       type="button"
-                      aria-label="Previous today's card"
+                      aria-label={t('home.today.previousCard')}
                       onClick={() => goSlide(-1)}
                     >
                       ‹
                     </button>
                     <button
                       type="button"
-                      aria-label="Next today's card"
+                      aria-label={t('home.today.nextCard')}
                       onClick={() => goSlide(1)}
                     >
                       ›
@@ -171,13 +176,17 @@ export function HomeTodayInChurchPreview() {
               </div>
 
               {multi ? (
-                <div className={styles.dots} role="group" aria-label="Today's observances">
+                <div className={styles.dots} role="group" aria-label={t('home.today.selectionNote')}>
                   {events.map((event, index) => (
                     <button
                       key={`${event.kind}-${event.id}`}
                       type="button"
                       aria-pressed={index === slide}
-                      aria-label={`Show card ${index + 1} of ${count}: ${event.title}`}
+                      aria-label={t('home.today.showCard', {
+                        index: index + 1,
+                        count,
+                        title: event.title,
+                      })}
                       className={index === slide ? styles.dotActive : undefined}
                       onClick={() => setSlide(index)}
                     />

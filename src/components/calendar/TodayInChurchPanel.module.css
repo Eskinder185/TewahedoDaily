@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 1.5rem;
   min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   color: var(--color-text);
 }
 
@@ -97,6 +99,8 @@
 .featuredTitle,
 .expandTitle {
   margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-family: var(--font-serif, Georgia, 'Times New Roman', serif);
   font-size: 1.35rem;
   font-weight: 600;
@@ -120,6 +124,8 @@
 .summary,
 .summaryAm {
   margin: 0.25rem 0 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-size: 1.0625rem;
   line-height: 1.65;
 }
@@ -217,9 +223,15 @@
   margin-top: 0.35rem;
 }
 
-.learnBtn {
+.learnBtn,
+.dayLink {
   align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
   margin-top: 0.35rem;
+  overflow-wrap: anywhere;
   border: 1px solid var(--color-border);
   background: color-mix(in srgb, var(--color-bg-elevated, #fff) 88%, #f7f1e6);
   color: var(--color-navy, #1e2a44);
@@ -230,7 +242,12 @@
   text-decoration: none;
 }
 
-.learnBtn:focus-visible {
+.dayLink {
+  background: transparent;
+}
+
+.learnBtn:focus-visible,
+.dayLink:focus-visible {
   outline: 2px solid var(--color-gold);
   outline-offset: 2px;
 }

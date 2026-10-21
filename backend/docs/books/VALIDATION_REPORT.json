@@ -1,0 +1,166 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "package_hashes_and_zip_bytes",
+      "passed": true,
+      "evidence": {
+        "manifest_files": 70,
+        "zip_crc_ok": true
+      }
+    },
+    {
+      "check": "read_all_package_files",
+      "passed": true,
+      "evidence": {
+        ".jsonl": 21,
+        ".json": 22,
+        ".md": 12,
+        ".txt": 8,
+        ".csv": 7,
+        ".py": 1
+      }
+    },
+    {
+      "check": "all_five_books_order_source_reference_alignment_and_exports",
+      "passed": true,
+      "evidence": [
+        {
+          "document_id": "F01",
+          "title": "The Faith and Order of the Church",
+          "paragraphs": 482,
+          "sections": 17,
+          "languages": [
+            "en"
+          ],
+          "approved_for_ingestion": false,
+          "final_human_approval": false
+        },
+        {
+          "document_id": "S01",
+          "title": "The Seven Sacraments of the Church",
+          "paragraphs": 589,
+          "sections": 9,
+          "languages": [
+            "en",
+            "am-source"
+          ],
+          "approved_for_ingestion": false,
+          "final_human_approval": false
+        },
+        {
+          "document_id": "E01",
+          "title": "Church History in Ethiopia",
+          "paragraphs": 669,
+          "sections": 11,
+          "languages": [
+            "en",
+            "am-source"
+          ],
+          "approved_for_ingestion": false,
+          "final_human_approval": false
+        },
+        {
+          "document_id": "M01",
+          "title": "The Gospel of Matthew — Andemta Commentary",
+          "paragraphs": 740,
+          "sections": 8,
+          "languages": [
+            "en",
+            "am-source"
+          ],
+          "approved_for_ingestion": false,
+          "final_human_approval": false
+        },
+        {
+          "document_id": "W01",
+          "title": "Church History on the World Stage",
+          "paragraphs": 523,
+          "sections": 10,
+          "languages": [
+            "en",
+            "am-source"
+          ],
+          "approved_for_ingestion": false,
+          "final_human_approval": false
+        }
+      ]
+    },
+    {
+      "check": "original_docx_hashes_xml_and_immutable_reference_files",
+      "passed": true,
+      "evidence": [
+        {
+          "document_id": "S01",
+          "paragraphs": 621,
+          "sha256": "1bb4bf2ecd07d53784ec7358a386db77bccb05fc8af8626fab3ae14e4baf54da"
+        },
+        {
+          "document_id": "E01",
+          "paragraphs": 673,
+          "sha256": "67597d478d451de5cee111ce79c5c4b9ffcf29b5bc911e9713254b0dae601cdd"
+        },
+        {
+          "document_id": "M01",
+          "paragraphs": 741,
+          "sha256": "61c12a39001830a2937a6eb2a2b46a110344b5fa9e71ace4fc824976403bf568"
+        },
+        {
+          "document_id": "W01",
+          "paragraphs": 529,
+          "sha256": "44f7d9ee48db026cd2535486588ca1abcf7912ba48fd3077456ded376ad84b9d"
+        },
+        {
+          "document_id": "F01",
+          "paragraphs": 834,
+          "sha256": "de37d35b30a339cf7e7a43f4d82e9542d8011d20f279d512487a3d8c9e0665f3"
+        }
+      ]
+    },
+    {
+      "check": "source_coverage_and_matthew_table_coordinates",
+      "passed": true,
+      "evidence": {
+        "source_records": 3398,
+        "nonblank": 3048,
+        "table_positions": 52,
+        "blank_table_positions": 5
+      }
+    },
+    {
+      "check": "unresolved_queues_and_no_approval",
+      "passed": true,
+      "evidence": {
+        "unresolved_issue_records": 828,
+        "whole_book_signoffs": 5,
+        "human_queue_entries": 833,
+        "statuses": {
+          "awaiting_theological_review": 191,
+          "awaiting_language_review": 352,
+          "unsupported_available_source": 285
+        },
+        "inherited_flags": 940,
+        "human_queue_keys": [
+          "unresolved_issue_count",
+          "unresolved_issues",
+          "whole_book_final_signoffs",
+          "approved_for_ingestion"
+        ],
+        "theological_approval": false
+      }
+    },
+    {
+      "check": "revision_lineage_and_separate_explanation_labels",
+      "passed": true,
+      "evidence": {
+        "changes": 335,
+        "supplements": 33,
+        "explanation_segments": 36
+      }
+    }
+  ],
+  "limits": [
+    "Structural/source fidelity checks do not grant theological or linguistic approval.",
+    "Application pagination is not original PDF/printed page mapping."
+  ]
+}

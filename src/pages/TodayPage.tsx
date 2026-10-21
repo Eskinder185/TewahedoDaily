@@ -6,7 +6,9 @@ import { PageSection } from '../components/ui/PageSection'
 import { CalendarEventImage } from '../components/calendar/CalendarEventImage'
 import { LiturgyContextCard } from '../components/calendar/LiturgyContextCard'
 import { Artwork, Notice } from '../components/publicContent/PublicUi'
+import { TodayInChurchPanel } from '../components/calendar/TodayInChurchPanel'
 import { useHomeToday } from '../hooks/useHomeToday'
+import type { DayChurchContext } from '../services/dayChurchContext'
 import { publicDaily, todayInAddis } from '../lib/cms/dailyService'
 import { useAsync } from '../lib/cms/useAsync'
 import { resolveCalendarDayDetail } from '../lib/calendarDayDetails'
@@ -23,11 +25,6 @@ import {
 import publicStyles from '../components/publicContent/PublicContent.module.css'
 import styles from './TodayPage.module.css'
 
-function fastLine(weekly: string | null, seasonal: string | null) {
-  const parts = [weekly, seasonal].filter(Boolean)
-  return parts.length ? parts.join(' · ') : null
-}
-
 function publicCopy(text: string | null | undefined): string {
   const raw = (text || '').trim()
   if (!raw || isInternalPlaceholderCopy(raw)) return ''
@@ -42,6 +39,8 @@ export function TodayPage() {
   const { contentLocale } = useLocale()
   const preferAmharic = contentLocale === 'am'
   const { now, snapshot } = useHomeToday()
+  const [dayContext, setDayContext] = useState<DayChurchContext | null>(null)
+  const [dayError, setDayError] = useState<string | null>(null)
   const day = todayInAddis()
   const editorial = useAsync(
     useCallback(
@@ -68,6 +67,24 @@ export function TodayPage() {
     }
   }, [now])
 
+  useEffect(() => {
+    let active = true
+    setDayContext(null)
+    setDayError(null)
+    void import('../services/dayChurchContext')
+      .then((mod) => mod.loadDayChurchContext(now))
+      .then((context) => {
+        if (active) setDayContext(context)
+      })
+      .catch((cause) => {
+        if (import.meta.env.DEV) console.error('[today] day context', cause)
+        if (active) setDayError(t('calendar.page.dayLoadError'))
+      })
+    return () => {
+      active = false
+    }
+  }, [now, t])
+
   const entries = useMemo(() => collectEotcMatchesForLocalDay(now), [now])
   const detail = useMemo(() => {
     if (synaxariumBundle === undefined) return null
@@ -85,10 +102,8 @@ export function TodayPage() {
     detail?.imageUrl ||
     (primary ? resolveEventImageById(primary.entry.id) : null) ||
     null
-  const fast = fastLine(
-    snapshot.fasting.weeklyFast,
-    snapshot.fasting.seasonalFast,
-  )
+  const observanceTitle =
+    detail?.title || dayContext?.primaryObservance?.title || ''
   const commemorations = detail?.commemorations
     .map((item) => item.title.trim())
     .filter(Boolean)
@@ -104,18 +119,27 @@ export function TodayPage() {
           <span aria-hidden> · </span>
           <span lang="am">{snapshot.ethiopian.labelLong}</span>
         </p>
-        <p className={styles.season}>
-          {snapshot.season.title}
-          {fast ? ` · ${fast}` : ''}
-        </p>
-        <p className={styles.seasonSummary}>{snapshot.season.summary}</p>
+        {dayContext ? (
+          <p className={styles.season}>
+            {[
+              dayContext.season ? `${t('calendar.page.seasonLabel')}: ${dayContext.season.title}` : '',
+              dayContext.activeFast
+                ? `${t('calendar.page.fastHeading')}: ${dayContext.activeFast.name}`
+                : '',
+            ]
+              .filter(Boolean)
+              .join(' · ')}
+          </p>
+        ) : null}
       </header>
+
+      <TodayInChurchPanel context={dayContext} loading={!dayContext && !dayError} error={dayError} />
 
       <figure className={styles.hero}>
         <CalendarEventImage
           src={heroImage}
           alt={t('calendar.page.observanceImage', {
-            title: detail?.title || snapshot.commemoration.title,
+            title: observanceTitle,
           })}
           position={imagePresentation.objectPosition}
           className={styles.heroFrame}
@@ -124,14 +148,12 @@ export function TodayPage() {
         />
         <figcaption className={styles.heroCaption}>
           <span>{t('calendar.today.title')}</span>
-          <strong>{detail?.title || snapshot.commemoration.title}</strong>
+          <strong>{observanceTitle}</strong>
         </figcaption>
       </figure>
 
       {detail?.shortDescription ? (
         <p className={styles.summary}>{detail.shortDescription}</p>
-      ) : snapshot.commemoration.shortDescription ? (
-        <p className={styles.summary}>{snapshot.commemoration.shortDescription}</p>
       ) : null}
 
       {commemorations && commemorations.length > 0 ? (

@@ -52,7 +52,7 @@ const aiWithScripture = plainTextFromSearchBuddyResponse({
   ],
 })
 assert.match(aiWithScripture, /An explanation of the Holy Trinity/)
-assert.match(aiWithScripture, /Verified Bible Passages/)
+assert.match(aiWithScripture, /Supplied Scripture/)
 assert.ok(aiWithScripture.includes(scriptureEnVerse))
 assert.ok(aiWithScripture.includes(scriptureAmVerse))
 assert.match(aiWithScripture, /Matthew 28:19-20/)

@@ -113,6 +113,25 @@
   font-weight: 700;
 }
 
+.missingNotice {
+  margin: 0 0 var(--space-4);
+}
+
+.previousReading {
+  margin: 0;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.indexEmpty {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
 .rangeActions {
   display: flex;
   flex-wrap: wrap;

@@ -47,13 +47,43 @@ export function friendlyAiError(error: unknown): string {
   return FRIENDLY.unknown
 }
 
-export function mapHttpStatusToAiError(status: number, fallbackMessage?: string): AiClientError {
-  if (status === 400) return new AiClientError('bad_request', fallbackMessage || FRIENDLY.bad_request, status)
-  if (status === 401 || status === 403) {
-    return new AiClientError('unauthorized', FRIENDLY.unauthorized, status)
+/**
+ * Retry-After as whole seconds. Accepts a delay-seconds value or an HTTP date.
+ * Returns undefined when the header is missing or not understandable.
+ */
+export function parseRetryAfterHeader(
+  value: string | null | undefined,
+  nowMs = Date.now(),
+): number | undefined {
+  if (!value) return undefined
+  const trimmed = value.trim()
+  if (!trimmed) return undefined
+  if (/^\d+(\.\d+)?$/.test(trimmed)) {
+    const seconds = Number(trimmed)
+    if (!Number.isFinite(seconds) || seconds < 0) return undefined
+    return Math.min(Math.ceil(seconds), 3600)
   }
-  if (status === 408) return new AiClientError('timeout', FRIENDLY.timeout, status)
-  if (status === 429) return new AiClientError('rate_limited', FRIENDLY.rate_limited, status)
-  if (status >= 500) return new AiClientError('unavailable', FRIENDLY.unavailable, status)
-  return new AiClientError('unknown', fallbackMessage || FRIENDLY.unknown, status)
+  const when = Date.parse(trimmed)
+  if (!Number.isFinite(when)) return undefined
+  const seconds = Math.ceil((when - nowMs) / 1000)
+  if (seconds <= 0) return 0
+  return Math.min(seconds, 3600)
+}
+
+export function mapHttpStatusToAiError(
+  status: number,
+  fallbackMessage?: string,
+  retryAfterSeconds?: number,
+): AiClientError {
+  const wait = retryAfterSeconds
+  if (status === 400) {
+    return new AiClientError('bad_request', fallbackMessage || FRIENDLY.bad_request, status, wait)
+  }
+  if (status === 401 || status === 403) {
+    return new AiClientError('unauthorized', FRIENDLY.unauthorized, status, wait)
+  }
+  if (status === 408) return new AiClientError('timeout', FRIENDLY.timeout, status, wait)
+  if (status === 429) return new AiClientError('rate_limited', FRIENDLY.rate_limited, status, wait)
+  if (status >= 500) return new AiClientError('unavailable', FRIENDLY.unavailable, status, wait)
+  return new AiClientError('unknown', fallbackMessage || FRIENDLY.unknown, status, wait)
 }

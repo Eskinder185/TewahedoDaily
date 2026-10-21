@@ -5,6 +5,12 @@ import { filterRepeatedSeasonsForTimeline } from '../../lib/calendar/getCalendar
 import type { PresentableCalendarEvent } from '../../lib/calendar/calendarPresentation'
 import type { CalendarLocaleMode } from '../../lib/calendar/calendarEnrichedContent'
 import { sameLocalCalendarDay, toIsoLocalDate } from '../../lib/churchCalendar/pascha'
+import { useTranslation } from '../../i18n'
+import {
+  formatEthiopianDay,
+  formatGregorianLong,
+  formatGregorianShort,
+} from '../../lib/calendar/calendarDateLabels'
 import styles from './CalendarDateTimeline.module.css'
 
 export type CalendarDateTimelineProps = {
@@ -34,6 +40,8 @@ export function CalendarDateTimeline({
   canLoadEarlier = true,
   canLoadLater = true,
 }: CalendarDateTimelineProps) {
+  const t = useTranslation()
+  const locale = lang === 'am' ? 'am' : 'en'
   const scrollerRef = useRef<HTMLDivElement>(null)
   const edgeLockRef = useRef(false)
   const selectedIso = toIsoLocalDate(selectedDate)
@@ -165,7 +173,7 @@ export function CalendarDateTimeline({
     return (
       <div className={styles.root} aria-busy="true">
         <div className={styles.skeletonRow} role="status">
-          Loading calendar days…
+          {t('calendar.timeline.loading')}
         </div>
       </div>
     )
@@ -174,7 +182,7 @@ export function CalendarDateTimeline({
   if (!loading && visibleGroups.length === 0) {
     return (
       <div className={styles.root}>
-        <p className={styles.emptyTimeline}>No calendar observances in this date window.</p>
+        <p className={styles.emptyTimeline}>{t('calendar.timeline.empty')}</p>
       </div>
     )
   }
@@ -184,7 +192,7 @@ export function CalendarDateTimeline({
       <button
         type="button"
         className={styles.arrow}
-        aria-label="Show earlier calendar events"
+        aria-label={t('calendar.timeline.earlier')}
         disabled={!canScrollEarlier}
         onClick={() => scrollByPage(-1)}
       >
@@ -205,11 +213,22 @@ export function CalendarDateTimeline({
           className={styles.scroller}
           onScroll={maybeLoadAtEdge}
           role="list"
-          aria-label="Calendar events timeline"
+          aria-label={t('calendar.timeline.region')}
         >
           {visibleGroups.map((group) => {
             const isSelected = group.iso === selectedIso
             const isToday = group.iso === todayIso
+            const gregorianShort = formatGregorianShort(group.date, locale)
+            const gregorianAria = formatGregorianLong(group.date, locale)
+            const ethiopianLabel = formatEthiopianDay(group.date, locale)
+            const dateAria = [
+              isToday ? t('calendar.timeline.today') : '',
+              gregorianAria,
+              ethiopianLabel,
+              isSelected ? t('calendar.timeline.selected') : '',
+            ]
+              .filter(Boolean)
+              .join(', ')
             return (
               <div
                 key={group.iso}
@@ -228,16 +247,16 @@ export function CalendarDateTimeline({
                   className={styles.dayHeader}
                   onClick={() => onSelectDate(group.date)}
                   aria-current={isSelected ? 'date' : undefined}
-                  aria-label={`${isToday ? 'Today, ' : ''}${group.gregorianAria}, ${group.ethiopianLabel}${
-                    isSelected ? ', selected' : ''
-                  }. Select this date.`}
+                  aria-label={`${dateAria}. ${t('calendar.timeline.selectDate')}`}
                 >
-                  {isToday ? <span className={styles.todayBadge}>Today</span> : null}
+                  {isToday ? <span className={styles.todayBadge}>{t('calendar.timeline.today')}</span> : null}
                   {isSelected && !isToday ? (
-                    <span className={styles.selectedBadge}>Selected</span>
+                    <span className={styles.selectedBadge}>{t('calendar.timeline.selected')}</span>
                   ) : null}
-                  <span className={styles.dayGregorian}>{group.gregorianShort}</span>
-                  <span className={styles.dayEthiopian}>{group.ethiopianLabel}</span>
+                  <span className={styles.dayGregorian}>{gregorianShort}</span>
+                  <span className={styles.dayEthiopian} lang={locale === 'am' ? 'am' : 'en'}>
+                    {ethiopianLabel}
+                  </span>
                 </button>
 
                 <div className={styles.dayCards}>
@@ -248,7 +267,7 @@ export function CalendarDateTimeline({
                         `${group.iso}-${event.kind}-${event.sourceId || event.id}-${event.cardId || 'nocard'}`
                       }
                       event={event}
-                      dateLabel={`${group.gregorianShort} · ${group.ethiopianLabel}`}
+                      dateLabel={`${gregorianShort} · ${ethiopianLabel}`}
                       lang={lang}
                       variant="timeline"
                       selected={isSelected}
@@ -270,7 +289,7 @@ export function CalendarDateTimeline({
       <button
         type="button"
         className={styles.arrow}
-        aria-label="Show later calendar events"
+        aria-label={t('calendar.timeline.later')}
         disabled={!canScrollLater}
         onClick={() => scrollByPage(1)}
       >

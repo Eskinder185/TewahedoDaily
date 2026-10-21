@@ -6,6 +6,10 @@ import { AI_TIMEOUTS_MS } from '../ai/aiConfig.ts'
 import { aiFetch } from '../ai/aiClient.ts'
 import { ETHIOPIAN_MONTH_NAMES } from '../ethiopianDate.ts'
 import { ethMonthFromEnglishName } from '../eotcCalendar/eotcEthiopianMonthNames.ts'
+import {
+  isNextOccurrenceQuery,
+  resolveNextCommemoration,
+} from '../eotcCalendar/nextCommemoration.ts'
 import { normalizeAmharicSearchText } from './amharicText.ts'
 import { parseSearchBuddyResponse } from './parseSearchBuddyResponse.ts'
 import type { SearchBuddyApiResponse } from './apiTypes.ts'
@@ -18,6 +22,7 @@ export type CalendarRoute =
   | { kind: 'calendar_date'; dateValue: string; focus: CalendarFocus }
   | { kind: 'calendar_day'; month: number; day: number }
   | { kind: 'calendar_search'; query: string }
+  | { kind: 'calendar_next_occurrence'; query: string }
 
 /** Normalize common ASR / spelling variants for feast·fast·today intents. */
 export function normalizeCalendarIntentText(text: string): string {
@@ -119,7 +124,9 @@ function hasFeastSignal(hay: string): boolean {
     hay.includes('\u1260\u12D3\u120D') ||
     hay.includes('\u1260\u12D3\u1209') ||
     includesEnglishWord(hay, 'feast') ||
-    includesEnglishWord(hay, 'observance')
+    includesEnglishWord(hay, 'observance') ||
+    includesEnglishWord(hay, 'commemoration') ||
+    includesEnglishWord(hay, 'memorial')
   )
 }
 
@@ -135,10 +142,13 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === 'object' && !Array.isArray(value)
 }
 
+/** Prefer the browser timezone; fall back to Ethiopia (EOTC civil day). */
 export function userTimezone(): string {
-  return typeof Intl !== 'undefined'
-    ? Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'
-    : 'UTC'
+  if (typeof Intl !== 'undefined') {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone
+    if (tz) return tz
+  }
+  return 'Africa/Addis_Ababa'
 }
 
 /** Today's calendar date (YYYY-MM-DD) in the given IANA timezone. */
@@ -219,6 +229,12 @@ export function detectCalendarRoute(text: string): CalendarRoute | null {
   const focus = detectFocus(hay)
   const explanatory = isExplanatoryTheologyQuery(hay)
 
+  // Deterministic “next / upcoming” feast·fast·commemoration — before /api/chat.
+  // Always intercept so Gemma cannot invent dates; unresolved → honest abstention.
+  if (!explanatory && isNextOccurrenceQuery(hay)) {
+    return { kind: 'calendar_next_occurrence', query: text.trim() || hay }
+  }
+
   // Synaxarium today — not calendar, not hymns
   if (
     (hasToday && hasSynax) ||
@@ -298,7 +314,7 @@ export function detectCalendarRoute(text: string): CalendarRoute | null {
 function cleanCalendarSearchQuery(hay: string): string {
   return hay
     .replace(
-      /\b(what|is|the|a|an|of|for|about|tell|me|please|find|show|search|look|up|today|tomorrow|feast|fasting|fast|observance|liturgical|season)\b/gi,
+      /\b(what|is|the|a|an|of|for|about|tell|me|please|find|show|search|look|up|today|tomorrow|next|when|feast|fasting|fast|observance|commemoration|memorial|liturgical|season)\b/gi,
       ' ',
     )
     .replace(/\u12DB\u122C|\u12E8\u12DB\u122C|\u1290\u1308/g, ' ')
@@ -498,6 +514,57 @@ export async function resolveCalendarStructuredSearch(
   if (!route) return null
 
   try {
+    if (route.kind === 'calendar_next_occurrence') {
+      const tz = userTimezone()
+      const ymd = gregorianYmdInTimezone(tz, 0)
+      const [y, m, d] = ymd.split('-').map(Number)
+      const reference = new Date(y, m - 1, d)
+      const resolved = resolveNextCommemoration(route.query, reference)
+      if (!resolved) return UNKNOWN_CALENDAR
+      const preferAmharic = /[\u1200-\u137f]/.test(route.query)
+      const answer = preferAmharic ? resolved.answerAmharic : resolved.answerEnglish
+      const found = resolved.found
+      // Answer-first verified payload — dates never invented; abstain when unknown.
+      return parseSearchBuddyResponse({
+        type: 'ai',
+        answer,
+        message: answer,
+        calendar_verified: true,
+        calendar_found: found,
+        verified_calendar: found
+          ? {
+              subject: resolved.querySubject,
+              reference_gregorian: resolved.referenceGregorianIso,
+              reference_ethiopian: resolved.referenceEthiopianLabel,
+              monthly:
+                'monthly' in resolved && resolved.monthly
+                  ? {
+                      ethiopian: resolved.monthly.ethiopianLabel,
+                      gregorian: resolved.monthly.gregorianIso,
+                      entry_id: resolved.monthly.entryId,
+                    }
+                  : null,
+              next_annual:
+                'nextAnnual' in resolved && resolved.nextAnnual
+                  ? {
+                      ethiopian: resolved.nextAnnual.ethiopianLabel,
+                      gregorian: resolved.nextAnnual.gregorianIso,
+                      entry_id: resolved.nextAnnual.entryId,
+                    }
+                  : null,
+            }
+          : {
+              subject: resolved.querySubject,
+              reference_gregorian: resolved.referenceGregorianIso,
+              reference_ethiopian: resolved.referenceEthiopianLabel,
+              monthly: null,
+              next_annual: null,
+              abstained: true,
+            },
+        sources: [],
+      })
+    }
+
     if (route.kind === 'synaxarium_today') {
       return (await resolveSynaxariumToday(signal)) || UNKNOWN_CALENDAR
     }
@@ -548,6 +615,12 @@ export function isCalendarStructuredResponse(
   response: SearchBuddyApiResponse | null | undefined,
 ): boolean {
   if (!response) return false
+  if (
+    response.type === 'ai' &&
+    Boolean((response as { calendar_verified?: boolean }).calendar_verified)
+  ) {
+    return true
+  }
   return [
     'calendar_today',
     'calendar_day',

@@ -19,8 +19,12 @@
 
 .panel {
   width: 100%;
+  max-width: 100%;
   max-height: min(94vh, 860px);
+  max-height: min(94dvh, 860px);
   overflow: auto;
+  overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
   border: 1px solid var(--color-border-card);
   background: var(--color-bg-elevated);
@@ -240,6 +244,12 @@
 .secondaryBtn:focus-visible {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    animation: none;
+  }
 }
 
 @media (max-width: 639px) {

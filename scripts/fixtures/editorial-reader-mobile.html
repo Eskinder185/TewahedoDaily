@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Editorial reader mobile fixture</title>
+    <style>
+      :root {
+        --color-bg: #f7f4ef;
+        --color-bg-elevated: #fffdf9;
+        --color-text: #1c1917;
+        --color-border-strong: #c9c0b4;
+        --color-accent: #8a6a3a;
+        --color-text-muted: #6b6560;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, 'Times New Roman', serif;
+        background: var(--color-bg);
+        color: var(--color-text);
+      }
+      .wrap { display: grid; gap: 16px; max-width: 920px; margin: 0 auto; padding: 12px; }
+      .banner {
+        border: 1px solid var(--color-border-strong);
+        border-radius: 8px;
+        padding: 12px 14px;
+        font-size: 0.92rem;
+        line-height: 1.45;
+      }
+      .layout { display: grid; gap: 14px; }
+      @media (min-width: 900px) {
+        .layout { grid-template-columns: minmax(200px, 260px) minmax(0, 1fr); }
+      }
+      .toc {
+        border: 1px solid var(--color-border-strong);
+        border-radius: 8px;
+        padding: 12px;
+        background: var(--color-bg-elevated);
+        max-height: 40vh;
+        overflow: auto;
+      }
+      .toc button {
+        width: 100%;
+        text-align: left;
+        min-height: 44px;
+        white-space: normal;
+        margin-bottom: 4px;
+      }
+      .reader {
+        border: 1px solid var(--color-border-strong);
+        border-radius: 8px;
+        padding: 12px 10px 18px;
+        background: var(--color-bg-elevated);
+        min-width: 0;
+      }
+      .para {
+        padding: 14px 0;
+        border-top: 1px solid var(--color-border-strong);
+        min-width: 0;
+      }
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        margin-bottom: 8px;
+        font-size: 0.78rem;
+        overflow-wrap: anywhere;
+      }
+      .badge {
+        border: 1px solid var(--color-border-strong);
+        border-radius: 4px;
+        padding: 2px 7px;
+      }
+      .body {
+        font-size: 1rem;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+      .amharic {
+        margin-top: 10px;
+        padding: 10px 12px;
+        border-left: 3px solid var(--color-accent);
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+      .navRow { display: flex; flex-wrap: wrap; gap: 8px; }
+      .navRow button { min-height: 44px; flex: 1 1 auto; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" id="root">
+      <div class="banner">
+        <strong>Private editorial fixture</strong>
+        Unapproved draft layout check — not a public book page.
+      </div>
+      <div class="layout">
+        <nav class="toc" aria-label="Chapters">
+          <button type="button">INTRODUCTION — long chapter title that should wrap safely on narrow phones without horizontal scroll</button>
+          <button type="button">THE MYSTERY OF THE HOLY TRINITY</button>
+          <button type="button">THE MYSTERY OF INCARNATION</button>
+        </nav>
+        <article class="reader">
+          <div class="navRow">
+            <button type="button">Previous page</button>
+            <button type="button">Next page</button>
+          </div>
+          <section class="para">
+            <div class="meta">
+              <span class="badge">F01W-P0008</span>
+              <span class="badge">English reading</span>
+              <span class="badge">sources: F01W-P0008</span>
+            </div>
+            <div class="body">
+              The Faith And Order Of The Church explains the Holy Trinity without inventing
+              an Amharic translation when source text is absent.
+              Supercalifragilisticexpialidocious-unbroken-token-should-still-wrap-or-break.
+            </div>
+            <div class="amharic">
+              <strong>Ethiopic source (attribution)</strong>
+              <div>ምሥጢረ ሥላሴ አንድ አምላክ በሦስት አካላት ነው። ረዥም የአማርኛ ምንጭ ጽሑፍ ለሞባይል ማጠቃለያ።</div>
+            </div>
+          </section>
+          <section class="para">
+            <div class="meta">
+              <span class="badge">F01-F01SUP-001</span>
+              <span class="badge">Added explanation (supplement)</span>
+            </div>
+            <div class="body">
+              Reference supplement — Scope of this volume. This is labeled editorial material,
+              not original source teaching.
+            </div>
+          </section>
+        </article>
+      </div>
+    </div>
+  </body>
+</html>

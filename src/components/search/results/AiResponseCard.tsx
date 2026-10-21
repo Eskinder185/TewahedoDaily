@@ -4,9 +4,11 @@ import type { AiAssistantResponse, AiScriptureSource } from '../../../lib/search
 import {
   coversRangeLabel,
   partitionAiSources,
+  safeCitationUrl,
   scriptureLanguageKey,
   scriptureVerseText,
 } from '../../../lib/searchBuddy/aiSources.ts'
+import { AiAnswerBody } from './AiAnswerBody.tsx'
 import { textOrNull } from './resultHelpers.ts'
 import styles from './ResultCard.module.css'
 
@@ -95,6 +97,10 @@ export function AiResponseCard({ data }: { data: AiAssistantResponse }) {
   const { scripture, generic } = partitionAiSources(data.sources)
   const hasScripture = scripture.length > 0
   const hasGeneric = generic.length > 0
+  const unavailableDocument = data.grounding === 'unavailable_document'
+  const generalKnowledge = data.grounding === 'general_knowledge' && !hasScripture
+  const answerLang =
+    data.answer_language === 'am' ? 'am' : data.answer_language === 'en' ? 'en' : undefined
 
   if (!answer) {
     return (
@@ -107,15 +113,27 @@ export function AiResponseCard({ data }: { data: AiAssistantResponse }) {
   return (
     <article className={`${styles.card} ${styles.aiCard}`} aria-label={t('searchBuddy.aiAnswerLabel')}>
       <p className={styles.aiLabel}>{t('searchBuddy.aiAnswerLabel')}</p>
-      <p className={styles.aiBody}>{answer}</p>
+      {unavailableDocument ? (
+        <p className={styles.groundingNote} role="note">
+          {t('searchBuddy.unavailableDocument')}
+        </p>
+      ) : null}
+      {generalKnowledge ? (
+        <p className={styles.groundingNote} role="note">
+          {t('searchBuddy.generalKnowledge')}
+        </p>
+      ) : null}
+      <div lang={answerLang}>
+        <AiAnswerBody answer={answer} />
+      </div>
 
       {hasScripture ? (
         <section
           className={styles.scriptureBlock}
-          aria-label={t('searchBuddy.verifiedPassagesHeading')}
+          aria-label={t('searchBuddy.suppliedPassagesHeading')}
         >
-          <h3 className={styles.aiSourcesHeading}>{t('searchBuddy.verifiedPassagesHeading')}</h3>
-          <p className={styles.scriptureNote}>{t('searchBuddy.verifiedPassagesNote')}</p>
+          <h3 className={styles.aiSourcesHeading}>{t('searchBuddy.suppliedPassagesHeading')}</h3>
+          <p className={styles.scriptureNote}>{t('searchBuddy.suppliedPassagesNote')}</p>
           <div className={styles.scriptureList}>
             {scripture.map((source, index) => (
               <ScripturePassage
@@ -135,12 +153,17 @@ export function AiResponseCard({ data }: { data: AiAssistantResponse }) {
             {generic.map((source, index) => {
               const title =
                 textOrNull(source.title) || t('searchBuddy.sourceN', { n: String(index + 1) })
-              const url = textOrNull(source.url)
+              const url = safeCitationUrl(source.url)
               const excerpt = textOrNull(source.excerpt)
               return (
                 <li key={`${title}-${index}`}>
                   {url ? (
-                    <a href={url} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${title}. ${t('searchBuddy.sourceOpensNew')}`}
+                    >
                       {title}
                     </a>
                   ) : (
@@ -156,7 +179,7 @@ export function AiResponseCard({ data }: { data: AiAssistantResponse }) {
         </div>
       ) : null}
 
-      {!hasScripture && !hasGeneric ? (
+      {!hasScripture && !hasGeneric && !unavailableDocument && !generalKnowledge ? (
         <p className={styles.aiNoSources}>{t('searchBuddy.noSources')}</p>
       ) : null}
     </article>

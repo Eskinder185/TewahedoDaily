@@ -42,7 +42,7 @@ assert.deepEqual(getAiFeatureFlags(), {
 })
 
 assert.equal(AI_TIMEOUTS_MS.health, 5_000)
-assert.ok(AI_TIMEOUTS_MS.chat >= 30_000 && AI_TIMEOUTS_MS.chat <= 60_000)
+assert.ok(AI_TIMEOUTS_MS.chat >= 90_000 && AI_TIMEOUTS_MS.chat <= 180_000)
 assert.ok(AI_TIMEOUTS_MS.transcription >= 30_000 && AI_TIMEOUTS_MS.transcription <= 60_000)
 
 assert.equal(VOICE_MAX_DURATION_MS, 15_000)

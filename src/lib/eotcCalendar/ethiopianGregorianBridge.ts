@@ -15,8 +15,10 @@ export function ethiopianPartsToGregorian(
   ethMonth: number,
   ethDay: number,
 ): Date {
+  // Eth year N runs ~Sep (N+7) through Pagumen (~Sep N+8). 450 days from
+  // Aug 1 of N+7 reaches Pagumen 6; 400 was one week short for leap Pagumen.
   const start = new Date(ethYear + 7, 7, 1)
-  for (let i = 0; i < 400; i++) {
+  for (let i = 0; i < 450; i++) {
     const g = new Date(
       start.getFullYear(),
       start.getMonth(),

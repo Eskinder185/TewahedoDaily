@@ -6,7 +6,10 @@ import {
   type HymnBrowseCard,
   type HymnCollection,
 } from '../lib/publicContent/hymnBrowse'
+import { hymnSourceHeading } from '../lib/publicContent/hymnBrowseLabels'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
+import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
 import s from './HymnPractice.module.css'
 
@@ -21,10 +24,14 @@ export function PublicHymnBrowseGroupPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
+  const t = useTranslation()
+  const { locale } = useLocale()
+  const heading = hymnSourceHeading(group?.title, group?.titleAmharic, locale)
+  const description = hymnSourceHeading(group?.description, group?.descriptionAmharic, locale)
 
   usePageMeta(
-    group?.title || 'Browse hymns',
-    group?.description || 'Browse Ethiopian Orthodox Mezmur collections.',
+    heading.primary || t('practice.browse'),
+    description.primary || t('practice.metaBrowse'),
   )
 
   useEffect(() => {
@@ -46,7 +53,7 @@ export function PublicHymnBrowseGroupPage() {
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] collection', cause)
-        setError('Unable to load Hymns.')
+        setError(t('practice.loadError'))
       } finally {
         if (active) setLoading(false)
       }
@@ -60,19 +67,25 @@ export function PublicHymnBrowseGroupPage() {
     <section className={s.page}>
       <p className={s.backRow}>
         <Link to="/practice" className={s.viewAll}>
-          ← Hymns
+          ← {t('practice.title')}
         </Link>
       </p>
 
       <header className={s.intro}>
-        <p className={s.eyebrow}>Collection</p>
-        {group?.titleAmharic ? (
-          <p className={s.subtitle} lang="am">
-            {group.titleAmharic}
+        <p className={s.eyebrow}>{t('practice.collection')}</p>
+        {heading.secondary ? (
+          <p className={s.subtitle} lang={heading.secondaryLang || undefined}>
+            {heading.secondary}
           </p>
         ) : null}
-        <h1 className={s.title}>{group?.title || (loading ? '…' : 'Not found')}</h1>
-        {group?.description ? <p className={s.subtitle}>{group.description}</p> : null}
+        <h1 className={s.title} lang={heading.primary ? heading.primaryLang : undefined}>
+          {heading.primary || (loading ? '…' : t('practice.notFound'))}
+        </h1>
+        {description.primary ? (
+          <p className={s.subtitle} lang={description.primaryLang}>
+            {description.primary}
+          </p>
+        ) : null}
       </header>
 
       {loading ? (
@@ -93,20 +106,19 @@ export function PublicHymnBrowseGroupPage() {
         <div className={s.status} role="alert">
           <p>{error}</p>
           <button type="button" className={s.textBtn} onClick={() => setReloadTick((n) => n + 1)}>
-            Retry
+            {t('practice.retry')}
           </button>
         </div>
       ) : null}
 
       {!loading && !error && group && !children.length ? (
         <p className={s.browseEmpty}>
-          No published sections in this collection yet. Try search from{' '}
-          <Link to="/practice">Hymns</Link>.
+          {t('practice.noSections')} <Link to="/practice">{t('practice.title')}</Link>
         </p>
       ) : null}
 
       {!loading && !error && !group ? (
-        <p className={s.status}>Collection not found.</p>
+        <p className={s.status}>{t('practice.collectionNotFound')}</p>
       ) : null}
 
       {!loading && children.length > 0 ? (

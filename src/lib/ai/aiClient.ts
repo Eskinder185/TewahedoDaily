@@ -1,5 +1,5 @@
 import { getAiApiBaseUrl } from './aiConfig.ts'
-import { mapHttpStatusToAiError } from './aiErrors.ts'
+import { mapHttpStatusToAiError, parseRetryAfterHeader } from './aiErrors.ts'
 import { AiClientError } from './aiTypes.ts'
 import { supabase } from '../supabase/client.ts'
 
@@ -89,7 +89,11 @@ export async function aiFetch<T>(options: AiRequestOptions): Promise<T> {
       } catch {
         /* ignore */
       }
-      throw mapHttpStatusToAiError(response.status, detail || undefined)
+      throw mapHttpStatusToAiError(
+        response.status,
+        detail || undefined,
+        parseRetryAfterHeader(response.headers.get('Retry-After')),
+      )
     }
 
     if (response.status === 204) return undefined as T

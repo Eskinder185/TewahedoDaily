@@ -213,7 +213,7 @@ export type AiScriptureVerse = {
 }
 
 /**
- * Verified Bible passage from FastAPI `sources[]`.
+ * Scripture passage supplied on FastAPI `sources[]`. Verse text is copied, not invented.
  * Quotation text must come from `verses[].text` only.
  */
 export type AiScriptureSource = {
@@ -234,11 +234,19 @@ export type AiGenericSource = {
 /** Union of Scripture passages and generic citation links. */
 export type AiSource = AiScriptureSource | AiGenericSource
 
+export type AiGrounding = 'scripture' | 'general_knowledge' | 'unavailable_document'
+
+export type AiAnswerLanguage = 'en' | 'am' | 'bilingual'
+
 export type AiAssistantResponse = {
   type: 'ai'
   answer?: string | null
   message?: string | null
   sources?: AiSource[]
+  /** Reported by the model. Absent on older payloads. */
+  answer_language?: AiAnswerLanguage | null
+  /** How the explanation was grounded. Absent on older payloads. */
+  grounding?: AiGrounding | null
 }
 
 /** Shared optional calendar/today fields — render only what the API returns. */

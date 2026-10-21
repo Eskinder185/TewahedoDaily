@@ -52,7 +52,8 @@
         "extended": "This commemoration honors Archangel Michael as protector, defender, and mighty servant of God.",
         "notes": [],
         "relatedEntries": [
-          "saint-michael-monthly-12"
+          "saint-michael-monthly-12",
+          "saint-michael-sene-12"
         ],
         "expandedContent": {
           "whyCelebrated": "This commemoration honors Archangel Michael as protector, defender, and mighty servant of God.",
@@ -72,6 +73,87 @@
       "searchKeywords": [
         "Michael",
         "Archangel Michael"
+      ],
+      "sources": [
+        {
+          "title": "EOTC calendar research note",
+          "type": "research-note"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "type": "calendar_entry",
+      "id": "saint-michael-sene-12",
+      "title": "ቅዱስ ሚካኤል",
+      "transliterationTitle": "Kidus Mikael",
+      "englishTitle": "Archangel Michael (Sene 12)",
+      "date": {
+        "kind": "fixed",
+        "ethiopianMonth": "Sene",
+        "ethiopianDay": 12,
+        "gregorianHint": "Usually mid-June",
+        "movableAnchor": null,
+        "offsetFromAnchor": null,
+        "monthlyRecurringDay": null,
+        "weeklyRecurringDay": null,
+        "seasonRange": null
+      },
+      "category": {
+        "primary": "angel",
+        "secondary": [
+          "archangel"
+        ],
+        "majorHoliday": true
+      },
+      "summary": {
+        "short": "Major annual feast of Archangel Michael kept on Sene 12.",
+        "panel": "Alongside Hidar 12, Sene 12 is a principal annual feast of Archangel Michael in the Ethiopian Orthodox calendar.",
+        "whyItMatters": "It marks a major yearly remembrance of Michael’s protection and intercession.",
+        "connection": "It connects the faithful to angelic intercession and the Church’s annual cycle of angel commemorations."
+      },
+      "observance": {
+        "fastStatus": "feast",
+        "liturgicalTone": "reverent",
+        "commonPractices": [
+          "Liturgy",
+          "Prayer for protection",
+          "Thanksgiving"
+        ]
+      },
+      "display": {
+        "featured": false,
+        "priority": 2,
+        "calendarBadge": "Angel Commemoration",
+        "calendarColor": "blue",
+        "showOnHomepage": false
+      },
+      "content": {
+        "extended": "Sene 12 is kept as a major annual feast of Archangel Michael.",
+        "notes": [],
+        "relatedEntries": [
+          "saint-michael-monthly-12",
+          "saint-michael-major"
+        ],
+        "expandedContent": {
+          "whyCelebrated": "Sene 12 is a principal annual feast of Archangel Michael.",
+          "whatHappened": [
+            "The Church keeps Sene 12 in honor of Archangel Michael.",
+            "Together with Hidar 12 and the monthly 12th-day remembrance, it structures Michael’s commemorations across the year."
+          ],
+          "significance": "It strengthens trust in God’s protection and the ministry of the holy angels.",
+          "observanceType": "Angel Commemoration",
+          "source": {
+            "title": "EOTC calendar research note",
+            "type": "research-note",
+            "status": "needs_synaxarium_review"
+          }
+        }
+      },
+      "searchKeywords": [
+        "Michael",
+        "Archangel Michael",
+        "Sene 12"
       ],
       "sources": [
         {

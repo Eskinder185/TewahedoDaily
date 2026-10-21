@@ -20,6 +20,8 @@
   SynaxariumTodayResponse,
 } from '../../../lib/searchBuddy/apiTypes.ts'
 
+import { isSearchBuddyNoMatchLead } from '../../../lib/search/assistantLead.ts'
+import { useTranslation } from '../../../i18n'
 import { AiResponseCard } from './AiResponseCard.tsx'
 import { BibleChapterResult } from './BibleChapterResult.tsx'
 import { BibleReferenceResult } from './BibleReferenceResult.tsx'
@@ -48,6 +50,7 @@ type Props = {
 }
 
 export function SearchBuddyResults({ response, empty }: Props) {
+  const t = useTranslation()
   if (!response) return null
 
   // Never hide a nonempty AI answer behind the empty-result banner.
@@ -55,10 +58,15 @@ export function SearchBuddyResults({ response, empty }: Props) {
     return <AiResponseCard data={response as AiAssistantResponse} />
   }
 
-  if (empty) {
+  const noMatch =
+    empty ||
+    (response.type === 'unknown' &&
+      isSearchBuddyNoMatchLead(typeof response.message === 'string' ? response.message : ''))
+
+  if (noMatch) {
     return (
       <p className={styles.emptyNote} role="status">
-        No results matched that question. Try a verse reference, feast name, hymn, or prayer.
+        {t('searchBuddy.noResults')}
       </p>
     )
   }

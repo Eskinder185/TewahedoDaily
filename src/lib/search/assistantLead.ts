@@ -1,5 +1,12 @@
 import type { SearchBuddyApiResponse } from '../searchBuddy/apiTypes.ts'
 
+/** English sentinel used when a lookup has no rows. UI localizes this at render time. */
+export const SEARCH_BUDDY_NO_MATCH_LEAD = "I couldn't find a matching result yet."
+
+export function isSearchBuddyNoMatchLead(text: string | null | undefined): boolean {
+  return (text || '').trim() === SEARCH_BUDDY_NO_MATCH_LEAD
+}
+
 /**
  * Short conversational lead-in for structured results.
  * English copy only — never invents Amharic religious content.
@@ -17,11 +24,12 @@ export function assistantLeadForResponse(
   if (!response) return ''
 
   // Never replace a nonempty AI answer with the no-match fallback.
+  // Verified calendar next-occurrence answers already lead with the date — no greeting.
   if (response.type === 'ai') {
-    return aiAnswerText(response) ? '' : empty ? "I couldn't find a matching result yet." : ''
+    return aiAnswerText(response) ? '' : empty ? SEARCH_BUDDY_NO_MATCH_LEAD : ''
   }
 
-  if (empty) return "I couldn't find a matching result yet."
+  if (empty) return SEARCH_BUDDY_NO_MATCH_LEAD
 
   switch (response.type) {
     case 'fasting_today':
@@ -63,7 +71,7 @@ export function assistantLeadForResponse(
     case 'unknown':
       return typeof response.message === 'string' && response.message.trim()
         ? response.message.trim()
-        : "I couldn't find a matching result yet."
+        : SEARCH_BUDDY_NO_MATCH_LEAD
     default:
       return 'Here is what I found.'
   }

@@ -1,11 +1,15 @@
 import { db, errorMessage } from './mezmurService'
 import type { ContentStatus, ContentType } from '../supabase/cms.types'
 import type { Json } from '../supabase/database.types'
+import { loadBibleBook } from '../bible/bibleQueries.ts'
+import { supabase } from '../supabase/client.ts'
 import {
   ENCYCLOPEDIA_CATEGORIES,
   isCmsRelationType,
   mergeResolvedRelations,
   normalizeRelatedList,
+  unresolvedRelationIds,
+  type BibleCatalogCheck,
   type Related,
   type ResolvedRelated,
 } from './contentRelations.ts'
@@ -26,6 +30,7 @@ export {
   isEncyclopediaCategory,
   normalizeRelatedList,
   relationTypeLabel,
+  unresolvedRelationIds,
 } from './contentRelations.ts'
 
 /**
@@ -446,6 +451,59 @@ export async function lookupContent(kind: ContentType, q = '') {
  * - Bible entries with a valid route are kept without inventing verse text
  * - Editor order is preserved
  */
+const BIBLE_PARTS =
+  /^\/bible\/([a-z0-9]+(?:-[a-z0-9]+)*)\/(\d+)(?:#verse-(\d+))?$/i
+
+/** Confirm stored Bible routes against published books, chapter ordinals, and verses. */
+async function bibleCatalogForRoutes(routes: string[]): Promise<BibleCatalogCheck> {
+  const slugs = new Set<string>()
+  const chaptersBySlug = new Map<string, Set<number>>()
+  const versesByChapter = new Map<string, Set<number>>()
+  const wanted = new Map<string, Array<{ ordinal: number; verse: number | null }>>()
+  for (const route of routes) {
+    const match = route.match(BIBLE_PARTS)
+    if (!match) continue
+    const slug = match[1].toLowerCase()
+    const list = wanted.get(slug) || []
+    list.push({ ordinal: Number(match[2]), verse: match[3] ? Number(match[3]) : null })
+    wanted.set(slug, list)
+  }
+  if (!supabase) return { slugs, chaptersBySlug, versesByChapter }
+
+  for (const [slug, refs] of wanted) {
+    try {
+      const detail = await loadBibleBook(slug)
+      if (!detail) continue
+      const chapters = [...detail.chapters.am, ...detail.chapters.web]
+      if (!chapters.length) continue
+      slugs.add(detail.book.slug.toLowerCase())
+      chaptersBySlug.set(
+        detail.book.slug.toLowerCase(),
+        new Set(chapters.map((chapter) => chapter.ordinal)),
+      )
+      for (const ref of refs) {
+        if (ref.verse == null) continue
+        const chapter = chapters.find((row) => row.ordinal === ref.ordinal)
+        if (!chapter) continue
+        const { data, error } = await supabase
+          .from('bible_verses')
+          .select('verse_number')
+          .eq('chapter_id', chapter.id)
+          .eq('verse_number', ref.verse)
+          .limit(1)
+        if (error || !data?.length) continue
+        const key = `${detail.book.slug.toLowerCase()}:${ref.ordinal}`
+        const verses = versesByChapter.get(key) || new Set<number>()
+        verses.add(ref.verse)
+        versesByChapter.set(key, verses)
+      }
+    } catch (cause) {
+      if (import.meta.env.DEV) console.info('[publicRelations] bible catalog', slug, cause)
+    }
+  }
+  return { slugs, chaptersBySlug, versesByChapter }
+}
+
 export async function publicRelations(relations: Related[]): Promise<ResolvedRelated[]> {
   const requested = normalizeRelatedList(relations)
   if (!requested.length) return []
@@ -493,5 +551,15 @@ export async function publicRelations(relations: Related[]): Promise<ResolvedRel
     )
   ).flat()
 
-  return mergeResolvedRelations(requested, hydrated)
+  const bibleRoutes = requested
+    .filter((row) => row.type === 'bible')
+    .map((row) => row.route || '')
+    .filter(Boolean)
+  const bibleCatalog = bibleRoutes.length ? await bibleCatalogForRoutes(bibleRoutes) : undefined
+  const resolved = mergeResolvedRelations(requested, hydrated, bibleCatalog)
+  const missing = unresolvedRelationIds(requested, resolved)
+  if (missing.length && import.meta.env.DEV) {
+    console.info('[publicRelations] unresolved relation ids', missing)
+  }
+  return resolved
 }

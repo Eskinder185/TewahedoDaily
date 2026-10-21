@@ -41,6 +41,7 @@ export type RepairKind =
   | 'normalize_source_type'
   | 'repair_source_id'
   | 'repair_source_slug'
+  | 'fill_missing_title'
   | 'clear_placeholder_field'
   | 'create_missing_card'
   | 'merge_duplicate'
@@ -104,6 +105,12 @@ export type ReconciliationPlan = {
   }
 }
 
+export type ReconciliationRecordError = {
+  op: string
+  target: string
+  message: string
+}
+
 export type ReconciliationApplyResult = {
   appliedAt: string
   linksRepaired: number
@@ -111,10 +118,20 @@ export type ReconciliationApplyResult = {
   duplicatesMerged: number
   placeholdersCleared: number
   imagesPreserved: number
+  /** Planned clears skipped because the column is NOT NULL / must keep a value (e.g. title). */
+  operationsSkipped: number
+  operationsFailed: number
+  /** True only when every planned write succeeded or was an explicit safe no-op. */
+  completeSuccess: boolean
+  recordErrors: ReconciliationRecordError[]
   errors: string[]
   plan: ReconciliationPlan
 }
 
+/**
+ * Text columns that may safely be set to null so the UI inherits from the linked source.
+ * `title` is intentionally excluded — Postgres enforces NOT NULL on calendar_cards.title.
+ */
 const TEXT_FIELDS = [
   'title',
   'title_amharic',
@@ -135,6 +152,120 @@ const TEXT_FIELDS = [
 ] as const
 
 type TextField = (typeof TEXT_FIELDS)[number]
+
+/** Must never be patched to null (schema NOT NULL / identity / presentation defaults). */
+export const NEVER_NULL_CARD_FIELDS = new Set<string>([
+  'title',
+  'slug',
+  'status',
+  'source_type',
+  'card_type',
+  'image_position',
+  'featured',
+  'show_on_home',
+  'home_featured',
+  'is_monthly',
+])
+
+/** Placeholder clears allowed in sync patches. */
+export const CLEARABLE_PLACEHOLDER_FIELDS: readonly TextField[] = TEXT_FIELDS.filter(
+  (field) => !NEVER_NULL_CARD_FIELDS.has(field),
+)
+
+export type CardRepairPatchBuild = {
+  patch: Record<string, unknown>
+  linkFieldUpdates: number
+  placeholderClears: number
+  skippedUnsafe: RepairAction[]
+}
+
+/**
+ * Build a safe partial update from planned repairs.
+ * Link repairs never wipe images/homepage/manual titles.
+ * Placeholder clears never touch NOT NULL columns (especially title).
+ */
+export function buildCardRepairPatch(repairs: RepairAction[]): CardRepairPatchBuild {
+  const patch: Record<string, unknown> = {}
+  const skippedUnsafe: RepairAction[] = []
+  let linkFieldUpdates = 0
+  let placeholderClears = 0
+
+  for (const repair of repairs) {
+    if (repair.kind === 'normalize_source_type' && repair.to) {
+      patch.source_type = repair.to
+      linkFieldUpdates += 1
+      continue
+    }
+    if (repair.kind === 'repair_source_id' && repair.to) {
+      patch.source_id = repair.to
+      linkFieldUpdates += 1
+      continue
+    }
+    if (repair.kind === 'repair_source_slug' && repair.to) {
+      patch.source_slug = repair.to
+      linkFieldUpdates += 1
+      continue
+    }
+    if (repair.kind === 'fill_missing_title' && repair.to) {
+      const title = trim(repair.to)
+      if (title) {
+        patch.title = title
+        linkFieldUpdates += 1
+      } else {
+        skippedUnsafe.push({
+          ...repair,
+          note: 'Skipped fill_missing_title: verified source title is empty',
+        })
+      }
+      continue
+    }
+    if (repair.kind === 'clear_placeholder_field' && repair.field) {
+      if (NEVER_NULL_CARD_FIELDS.has(repair.field)) {
+        skippedUnsafe.push({
+          ...repair,
+          note:
+            repair.note ||
+            `Skipped clearing ${repair.field}: column must not be null`,
+        })
+        continue
+      }
+      patch[repair.field] = null
+      placeholderClears += 1
+    }
+  }
+
+  // Never touch presentation ownership fields in link/placeholder patches.
+  delete patch.image_path
+  delete patch.image_alt
+  delete patch.image_position
+  delete patch.show_on_home
+  delete patch.home_featured
+  delete patch.home_sort_order
+  delete patch.featured
+
+  return { patch, linkFieldUpdates, placeholderClears, skippedUnsafe }
+}
+
+/** Require a verified non-empty title before insert. */
+export function resolveCreateCardTitle(linked: {
+  title?: string | null
+  sourceSlug?: string | null
+}): string | null {
+  const fromTitle = trim(linked.title)
+  if (fromTitle) return fromTitle
+  const fromSlug = trim(linked.sourceSlug)
+  if (fromSlug) return fromSlug
+  return null
+}
+
+export function validateCreateCardPayload(payload: Record<string, unknown>): string | null {
+  const title = trim(payload.title as string | null | undefined)
+  if (!title) return 'title is required (NOT NULL)'
+  const slug = trim(payload.slug as string | null | undefined)
+  if (!slug) return 'slug is required'
+  if (payload.title == null) return 'title must not be null'
+  return null
+}
 
 function trim(value?: string | null): string {
   return (value || '').trim()
@@ -362,6 +493,10 @@ export async function auditCard(
       const cardValue = cardFieldValue(card, field)
       const sourceValue = trim(sourceFieldValue(linked, field))
       if (cardValue && sourceValue && cardValue === sourceValue) {
+        // title (and other NOT NULL cols) must keep a value — identical copy is fine; do not null it.
+        if (NEVER_NULL_CARD_FIELDS.has(field)) {
+          continue
+        }
         repairs.push({
           kind: 'clear_placeholder_field',
           cardId: card.id,
@@ -369,6 +504,16 @@ export async function auditCard(
           from: cardValue,
           to: null,
           note: 'Identical to source — treat as inheritance, not override',
+        })
+      } else if (field === 'title' && !cardValue && sourceValue) {
+        // Fill missing/blank title from verified source only (never invent).
+        repairs.push({
+          kind: 'fill_missing_title',
+          cardId: card.id,
+          field: 'title',
+          from: card.title,
+          to: sourceValue,
+          note: 'Set missing title from linked source',
         })
       } else if (cardValue && sourceValue && cardValue !== sourceValue) {
         // Diverged from current source — may be intentional override OR stale placeholder.
@@ -501,16 +646,16 @@ export async function buildCalendarCardReconciliationPlan(): Promise<Reconciliat
   }
 
   for (const row of sources.observances) {
-    pushMissing('observance', row.id, row.slug, row.title)
+    pushMissing('observance', row.id, row.slug, trim(row.title) || row.slug)
   }
   for (const row of sources.monthlies) {
-    pushMissing('monthly_commemoration', row.id, row.slug, row.title)
+    pushMissing('monthly_commemoration', row.id, row.slug, trim(row.title) || row.slug)
   }
   for (const row of sources.fasts) {
-    pushMissing('fast', row.id, row.slug, row.name)
+    pushMissing('fast', row.id, row.slug, trim(row.name) || row.slug)
   }
   for (const row of sources.seasons) {
-    pushMissing('season', row.id, row.slug, row.title)
+    pushMissing('season', row.id, row.slug, trim(row.title) || row.slug)
   }
 
   const coverage: SourceCoverage[] = [
@@ -564,7 +709,8 @@ export async function buildCalendarCardReconciliationPlan(): Promise<Reconciliat
         (r) =>
           r.kind === 'repair_source_id' ||
           r.kind === 'repair_source_slug' ||
-          r.kind === 'normalize_source_type',
+          r.kind === 'normalize_source_type' ||
+          r.kind === 'fill_missing_title',
       ).length,
       missingCardsToCreate: missingSources.length,
       duplicatesFound: duplicates.length,
@@ -576,7 +722,7 @@ export async function buildCalendarCardReconciliationPlan(): Promise<Reconciliat
   }
 }
 
-function placeholderCardPayload(linked: LinkedCalendarSource) {
+export function placeholderCardPayload(linked: LinkedCalendarSource) {
   const isMonthly = Boolean(linked.isMonthly || linked.sourceType === 'monthly_commemoration')
   const isMovable = Boolean(linked.isMovable)
   let month: number | null = null
@@ -599,9 +745,10 @@ function placeholderCardPayload(linked: LinkedCalendarSource) {
     day = linked.ethiopianDay
   }
 
+  const title = resolveCreateCardTitle(linked)
   return {
-    slug: slugify(linked.sourceSlug || linked.title || 'calendar-card'),
-    title: linked.title || linked.sourceSlug || 'Calendar card',
+    slug: slugify(linked.sourceSlug || title || 'calendar-card'),
+    title,
     title_amharic: null,
     category: linked.category || null,
     card_type: linked.cardType || 'other',
@@ -639,6 +786,18 @@ function placeholderCardPayload(linked: LinkedCalendarSource) {
   }
 }
 
+function pushError(
+  errors: string[],
+  recordErrors: ReconciliationRecordError[],
+  op: string,
+  target: string,
+  message: string,
+) {
+  const line = `${op} ${target}: ${message}`
+  errors.push(line)
+  recordErrors.push({ op, target, message })
+}
+
 /** Apply a previously built plan. Images and homepage settings are preserved. */
 export async function applyCalendarCardReconciliation(
   plan?: ReconciliationPlan,
@@ -648,61 +807,70 @@ export async function applyCalendarCardReconciliation(
   }
   const activePlan = plan || (await buildCalendarCardReconciliationPlan())
   const errors: string[] = []
+  const recordErrors: ReconciliationRecordError[] = []
   let linksRepaired = 0
   let missingCardsCreated = 0
   let duplicatesMerged = 0
   let placeholdersCleared = 0
+  let operationsSkipped = 0
+  let operationsFailed = 0
   const imagesPreserved = activePlan.summary.cardsWithImages
 
   const cards = await loadAllCards()
   const byId = new Map(cards.map((c) => [c.id, c]))
 
-  // 1) Link repairs + placeholder clears (per card)
+  // 1) Link repairs + safe placeholder clears (per card). Counts only after successful write.
   for (const audit of activePlan.cards) {
     const card = byId.get(audit.cardId)
     if (!card) continue
-    const patch: Record<string, unknown> = {}
-    let touched = false
 
-    for (const repair of audit.repairs) {
-      if (repair.kind === 'normalize_source_type' && repair.to) {
-        patch.source_type = repair.to
-        touched = true
-      }
-      if (repair.kind === 'repair_source_id' && repair.to) {
-        patch.source_id = repair.to
-        touched = true
-      }
-      if (repair.kind === 'repair_source_slug' && repair.to) {
-        patch.source_slug = repair.to
-        touched = true
-      }
-      if (repair.kind === 'clear_placeholder_field' && repair.field) {
-        patch[repair.field] = null
-        placeholdersCleared += 1
-        touched = true
+    const built = buildCardRepairPatch(audit.repairs)
+    operationsSkipped += built.skippedUnsafe.length
+
+    const keys = Object.keys(built.patch)
+    if (!keys.length) continue
+
+    // Preserve existing title unless explicitly filling a missing one.
+    if (
+      built.patch.title != null &&
+      trim(card.title) &&
+      !audit.repairs.some((r) => r.kind === 'fill_missing_title')
+    ) {
+      delete built.patch.title
+    }
+
+    const patch = {
+      ...built.patch,
+      updated_at: new Date().toISOString(),
+    }
+
+    // Final safety: never send null for NOT NULL columns.
+    for (const field of NEVER_NULL_CARD_FIELDS) {
+      if (field in patch && (patch as Record<string, unknown>)[field] == null) {
+        delete (patch as Record<string, unknown>)[field]
+        operationsSkipped += 1
       }
     }
 
-    // Never touch image fields
-    delete patch.image_path
-    delete patch.image_alt
-    delete patch.image_position
+    if (Object.keys(patch).length <= 1) {
+      // only updated_at
+      continue
+    }
 
-    if (!touched) continue
-    patch.updated_at = new Date().toISOString()
     const { error } = await supabase
       .from('calendar_cards' as never)
       .update(patch as never)
       .eq('id', audit.cardId)
     if (error) {
-      errors.push(`Repair ${audit.cardSlug}: ${error.message}`)
+      operationsFailed += 1
+      pushError(errors, recordErrors, 'Repair', audit.cardSlug, error.message)
     } else {
-      linksRepaired += 1
+      if (built.linkFieldUpdates > 0) linksRepaired += 1
+      placeholdersCleared += built.placeholderClears
     }
   }
 
-  // 2) Duplicate merges — copy presentation into survivor, archive loser
+  // 2) Duplicate merges — copy presentation into survivor, archive loser (never delete).
   for (const dup of activePlan.duplicates) {
     const survivor = byId.get(dup.survivorId)
     if (!survivor) continue
@@ -710,11 +878,13 @@ export async function applyCalendarCardReconciliation(
       const loser = byId.get(loserId)
       if (!loser) continue
       const mergePatch: Record<string, unknown> = { updated_at: new Date().toISOString() }
+      // Only copy image onto survivor when survivor has none — never clear survivor image.
       if (!trim(survivor.image_path) && trim(loser.image_path)) {
         mergePatch.image_path = loser.image_path
         mergePatch.image_alt = loser.image_alt || survivor.image_alt
         mergePatch.image_position = loser.image_position || survivor.image_position
       }
+      // Only promote homepage flags; never reset survivor homepage settings to false here.
       if (!survivor.show_on_home && loser.show_on_home) {
         mergePatch.show_on_home = true
         mergePatch.home_featured = loser.home_featured || survivor.home_featured
@@ -725,7 +895,10 @@ export async function applyCalendarCardReconciliation(
           .from('calendar_cards' as never)
           .update(mergePatch as never)
           .eq('id', survivor.id)
-        if (error) errors.push(`Merge into ${survivor.slug}: ${error.message}`)
+        if (error) {
+          operationsFailed += 1
+          pushError(errors, recordErrors, 'Merge', survivor.slug, error.message)
+        }
       }
       const { error: archiveError } = await supabase
         .from('calendar_cards' as never)
@@ -737,12 +910,16 @@ export async function applyCalendarCardReconciliation(
           updated_at: new Date().toISOString(),
         } as never)
         .eq('id', loser.id)
-      if (archiveError) errors.push(`Archive ${loser.slug}: ${archiveError.message}`)
-      else duplicatesMerged += 1
+      if (archiveError) {
+        operationsFailed += 1
+        pushError(errors, recordErrors, 'Archive', loser.slug, archiveError.message)
+      } else {
+        duplicatesMerged += 1
+      }
     }
   }
 
-  // 3) Create missing cards
+  // 3) Create missing cards (validated title required).
   const sources = await loadPublishedSources()
   const sourceIndex = new Map<string, LinkedCalendarSource>()
   for (const row of sources.observances) {
@@ -764,35 +941,56 @@ export async function applyCalendarCardReconciliation(
 
   for (const missing of activePlan.missingSources) {
     const linked = sourceIndex.get(`${missing.sourceType}:${missing.sourceId}`)
-    if (!linked) continue
+    if (!linked) {
+      operationsFailed += 1
+      pushError(
+        errors,
+        recordErrors,
+        'Create',
+        missing.sourceSlug,
+        'linked source not found at apply time',
+      )
+      continue
+    }
+
     let payload = placeholderCardPayload(linked)
-    // Ensure unique slug
+    const validationError = validateCreateCardPayload(payload as Record<string, unknown>)
+    if (validationError) {
+      operationsFailed += 1
+      pushError(errors, recordErrors, 'Create', missing.sourceSlug, validationError)
+      continue
+    }
+
     let attempt = 0
+    let created = false
     while (attempt < 5) {
       const { error } = await supabase.from('calendar_cards' as never).insert(payload as never)
       if (!error) {
         missingCardsCreated += 1
+        created = true
         break
       }
       if (/duplicate|unique/i.test(error.message)) {
         attempt += 1
         payload = {
           ...payload,
-          slug: `${slugify(linked.sourceSlug)}-${attempt + 1}`,
+          slug: `${slugify(linked.sourceSlug || String(payload.title))}-${attempt + 1}`,
         }
         continue
       }
-      // Title null may fail if migration not applied — fallback to source title once
-      if (/title/i.test(error.message) && payload.title == null) {
-        payload = { ...payload, title: linked.title }
-        continue
-      }
-      errors.push(`Create ${missing.sourceSlug}: ${error.message}`)
+      operationsFailed += 1
+      pushError(errors, recordErrors, 'Create', missing.sourceSlug, error.message)
       break
+    }
+    if (!created && attempt >= 5) {
+      operationsFailed += 1
+      pushError(errors, recordErrors, 'Create', missing.sourceSlug, 'slug collision after retries')
     }
   }
 
   invalidateCalendarCardsCache()
+
+  const completeSuccess = operationsFailed === 0
 
   return {
     appliedAt: new Date().toISOString(),
@@ -801,6 +999,10 @@ export async function applyCalendarCardReconciliation(
     duplicatesMerged,
     placeholdersCleared,
     imagesPreserved,
+    operationsSkipped,
+    operationsFailed,
+    completeSuccess,
+    recordErrors,
     errors,
     plan: activePlan,
   }

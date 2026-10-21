@@ -20,6 +20,24 @@ function asTrimmedString(value: unknown): string | null {
   return trimmed || null
 }
 
+function aiLanguageFields(payload: Record<string, unknown>): {
+  answer_language?: 'en' | 'am' | 'bilingual'
+  grounding?: 'scripture' | 'general_knowledge' | 'unavailable_document'
+} {
+  const answer = asTrimmedString(payload.answer_language)
+  const grounding = asTrimmedString(payload.grounding)
+  return {
+    ...(answer === 'en' || answer === 'am' || answer === 'bilingual'
+      ? { answer_language: answer }
+      : {}),
+    ...(grounding === 'scripture' ||
+    grounding === 'general_knowledge' ||
+    grounding === 'unavailable_document'
+      ? { grounding }
+      : {}),
+  }
+}
+
 function asChapterOrVerse(value: unknown): number | string | null {
   if (typeof value === 'number' && Number.isFinite(value)) return value
   if (typeof value === 'string' && value.trim()) return value.trim()
@@ -129,6 +147,7 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
         type: 'ai',
         answer: answerText,
         sources: normalizeAiSources(payload.sources),
+        ...aiLanguageFields(payload),
       }
     }
     return {
@@ -152,6 +171,7 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
       answer: answerText || (typeof payload.answer === 'string' ? payload.answer : '') || undefined,
       message: typeof payload.message === 'string' ? payload.message : undefined,
       sources: normalizeAiSources(payload.sources),
+      ...aiLanguageFields(payload),
     }
   }
 
@@ -165,6 +185,7 @@ export function parseSearchBuddyResponse(raw: unknown): SearchBuddyApiResponse {
       type: 'ai',
       answer: answerText,
       sources: normalizeAiSources(payload.sources),
+      ...aiLanguageFields(payload),
     }
   }
 

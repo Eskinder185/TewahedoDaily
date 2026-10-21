@@ -130,7 +130,12 @@ export function ContentBody({
       {!preview && (
         <>
           <Notice {...relations} retry={relations.reload} />
-          <RelatedContentList items={relations.data || []} />
+          <RelatedContentList
+            items={relations.data || []}
+            requestedCount={
+              !relations.loading && !relations.error ? related.length : 0
+            }
+          />
         </>
       )}
     </>

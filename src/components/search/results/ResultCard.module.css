@@ -211,6 +211,75 @@
   contain: layout;
 }
 
+.aiBodyStructured {
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  user-select: text;
+  -webkit-user-select: text;
+  contain: layout;
+}
+
+.aiHeading {
+  margin: 0.35rem 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.aiHeading:first-child {
+  margin-top: 0;
+}
+
+.aiList {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.aiList li {
+  margin: 0.12rem 0;
+  overflow-wrap: anywhere;
+}
+
+.aiBodyStructured a {
+  color: var(--color-link, var(--color-accent));
+}
+
+.aiParagraph,
+.aiLabelLine {
+  margin: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.aiParagraph[lang='am'],
+.aiLabelAm {
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.aiLabelLine {
+  color: var(--color-text);
+}
+
+.aiLabelEn,
+.aiLabelAm {
+  padding-left: 0.55rem;
+  border-left: 2px solid color-mix(in srgb, var(--color-gold-line) 70%, var(--color-border));
+}
+
+.aiLabelBible {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+}
+
 .aiSourcesBlock {
   margin-top: 0.55rem;
   padding-top: 0.45rem;
@@ -242,10 +311,16 @@
   color: var(--color-text-muted);
 }
 
-.aiNoSources {
+.aiNoSources,
+.groundingNote {
   margin: 0.45rem 0 0;
   font-size: 0.78rem;
   color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.groundingNote {
+  margin-bottom: 0.45rem;
 }
 
 .scriptureBlock {

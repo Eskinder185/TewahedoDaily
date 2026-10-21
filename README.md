@@ -3,6 +3,18 @@
 A React and TypeScript companion for Ethiopian Orthodox prayer, chant practice,
 and the Church calendar.
 
+This repository is a monorepo:
+
+| Path | Role |
+| --- | --- |
+| `src/`, `public/`, `functions/` | Frontend + Cloudflare Pages Functions |
+| `backend/` | FastAPI Search Buddy / CMS / RAG service (maintained AI backend) |
+
+Pages/static hosting must build **only** the frontend (`npm run build` → `dist/`).
+Never publish `backend/`, secrets, or the private five-book `content-review`
+package. See [backend/README.md](backend/README.md) and
+[migration-reports/MONOREPO_MIGRATION.md](migration-reports/MONOREPO_MIGRATION.md).
+
 ## Local development
 
 Requirements: Node.js 22 or newer.
@@ -10,6 +22,13 @@ Requirements: Node.js 22 or newer.
 ```bash
 npm install
 npm run dev
+```
+
+Backend (optional, separate process):
+
+```bash
+npm run test:backend
+npm run dev:backend
 ```
 
 The app works with its bundled JSON data by default. No cloud account is needed

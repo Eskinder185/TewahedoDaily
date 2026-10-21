@@ -6,6 +6,7 @@ import {
   type KeyboardEvent,
 } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { ChurchDayBand } from '../components/calendar/ChurchDayBand'
 import { PageSection } from '../components/ui/PageSection'
 import {
   libraryCollectionPath,
@@ -425,6 +426,8 @@ export function PrayerListPage() {
           <h1 className={styles.title}>{tr('prayers.hero.title')}</h1>
           <p className={styles.deck}>{tr('prayers.hero.description')}</p>
         </header>
+
+        <ChurchDayBand />
 
         {isSearching ? (
           <section className={styles.searchResults} aria-label={tr('prayers.search.resultsAria')}>

@@ -2,7 +2,6 @@
  * Selected-day "Day Experience" context for the Calendar right panel.
  * Sources stay separated: observances / fasts / seasons / monthly / synaxarium / mezmur / liturgy.
  */
-import { supabase } from '../lib/supabase/client'
 import { gregorianToEthiopian, formatEthiopianLong, ETHIOPIAN_MONTH_NAMES } from '../lib/ethiopianDate'
 import { getSynaxariumDayWithCommemorations } from '../lib/synaxarium/synaxariumService'
 import { presentSynaxariumForDay } from '../lib/synaxarium/synaxariumPresentation'
@@ -16,8 +15,7 @@ import {
   getLiturgyEntriesForSection,
   getLiturgySections,
 } from '../lib/prayers/liturgySupabase'
-import { resolveContentMediaUrl, resolveImagePriority } from '../lib/cms/contentMedia'
-import { normalizeStringList } from '../lib/normalize/stringList'
+import { resolveContentMediaUrl } from '../lib/cms/contentMedia'
 import {
   loadOrthodoxCalendarCatalog,
   resolveOrthodoxDay,
@@ -127,36 +125,6 @@ export type DayChurchContext = {
   practiceLinks: Array<{ label: string; href: string }>
 }
 
-type MezmurCandidate = {
-  id: string
-  slug: string
-  title: string
-  title_amharic: string | null
-  language: string | null
-  thumbnail_url: string | null
-  thumbnail_path: string | null
-  image_alt: string | null
-  youtube_url: string | null
-  audio_url: string | null
-  featured: boolean | null
-  occasion: string | null
-  occasion_tags: unknown
-  saint_or_angel: string | null
-  saint_tags: unknown
-  themes: unknown
-  search_keywords: unknown
-  category: string | null
-  tags?: { name: string; slug: string }[]
-}
-
-type MezmurScoreContext = {
-  occasionTokens: string[]
-  feastTokens: string[]
-  personTokens: string[]
-  fastTokens: string[]
-  seasonTokens: string[]
-  generalTokens: string[]
-}
 
 const WEEKDAY_LONG = [
   'Sunday',
@@ -222,236 +190,6 @@ export function isGenericWeeklyFastCommemoration(item: {
   return false
 }
 
-function tokenize(...parts: Array<string | null | undefined>): string[] {
-  const out = new Set<string>()
-  for (const part of parts) {
-    const raw = (part || '').toLowerCase()
-    if (!raw) continue
-    for (const token of raw
-      .replace(/[^\p{L}\p{N}\s-]+/gu, ' ')
-      .split(/[\s/-]+/)
-      .map((t) => t.trim())
-      .filter((t) => t.length >= 3)) {
-      out.add(token)
-    }
-    const phrase = raw.replace(/\s+/g, ' ').trim()
-    if (phrase.length >= 4) out.add(phrase)
-  }
-  return [...out]
-}
-
-function includesAny(haystack: string, needles: string[]): boolean {
-  const h = haystack.toLowerCase()
-  return needles.some((n) => n.length >= 3 && h.includes(n))
-}
-
-function listIncludesAny(values: string[], needles: string[]): boolean {
-  if (!values.length || !needles.length) return false
-  return values.some((v) => includesAny(v, needles))
-}
-
-function scoreMezmur(
-  row: MezmurCandidate,
-  ctx: MezmurScoreContext,
-): { score: number; reason: string } {
-  try {
-    const occasionTags = normalizeStringList(row.occasion_tags)
-    const saintTags = normalizeStringList(row.saint_tags)
-    const themes = normalizeStringList(row.themes)
-    const keywords = normalizeStringList(row.search_keywords)
-    const tagLabels = (row.tags || []).flatMap((t) => [t.name, t.slug]).filter(Boolean)
-
-    const occasionBlob = `${row.occasion || ''} ${occasionTags.join(' ')}`
-    const saintBlob = `${row.saint_or_angel || ''} ${saintTags.join(' ')}`
-    const themesBlob = themes.join(' ')
-    const keywordsBlob = keywords.join(' ')
-    const tagsBlob = tagLabels.join(' ')
-    const category = row.category || ''
-    const titleBlob = `${row.title} ${row.title_amharic || ''}`
-
-    let score = 0
-    let reason = ''
-
-    if (
-      includesAny(occasionBlob, ctx.occasionTokens) ||
-      listIncludesAny(occasionTags, ctx.occasionTokens)
-    ) {
-      score += 120
-      reason = reason || 'Matched today’s observance'
-    }
-    if (
-      includesAny(occasionBlob, ctx.feastTokens) ||
-      includesAny(category, ctx.feastTokens) ||
-      listIncludesAny(occasionTags, ctx.feastTokens)
-    ) {
-      score += 100
-      reason = reason || 'Matched feast'
-    }
-    if (
-      includesAny(saintBlob, ctx.personTokens) ||
-      listIncludesAny(saintTags, ctx.personTokens) ||
-      includesAny(titleBlob, ctx.personTokens)
-    ) {
-      score += 90
-      reason = reason || 'Matched saint or angel'
-    }
-    if (includesAny(keywordsBlob, ctx.occasionTokens) || includesAny(keywordsBlob, ctx.feastTokens)) {
-      score += 55
-      reason = reason || 'Matched keywords'
-    }
-    if (includesAny(tagsBlob, ctx.occasionTokens) || includesAny(tagsBlob, ctx.personTokens)) {
-      score += 50
-      reason = reason || 'Matched tags'
-    }
-    if (
-      includesAny(occasionBlob, ctx.fastTokens) ||
-      includesAny(themesBlob, ctx.fastTokens) ||
-      includesAny(keywordsBlob, ctx.fastTokens)
-    ) {
-      score += 40
-      reason = reason || 'Matched fast'
-    }
-    if (
-      includesAny(occasionBlob, ctx.seasonTokens) ||
-      includesAny(themesBlob, ctx.seasonTokens) ||
-      includesAny(keywordsBlob, ctx.seasonTokens)
-    ) {
-      score += 35
-      reason = reason || 'Matched season'
-    }
-    if (includesAny(category, ctx.generalTokens) || includesAny(themesBlob, ctx.generalTokens)) {
-      score += 18
-      reason = reason || 'General worship match'
-    }
-    if (row.youtube_url || row.audio_url) score += 8
-    if (row.featured) score += 4
-    return { score, reason: reason || 'Related worship' }
-  } catch (cause) {
-    if (import.meta.env.DEV) console.error('[dayChurchContext] scoreMezmur', cause)
-    return { score: 0, reason: '' }
-  }
-}
-
-function toMezmurRec(row: MezmurCandidate, reason: string): DayMezmurRecommendation {
-  return {
-    id: row.id,
-    slug: row.slug,
-    title: row.title,
-    titleAmharic: row.title_amharic || '',
-    language: row.language,
-    category: row.category,
-    occasion: row.occasion,
-    thumbnailUrl: resolveImagePriority(row.thumbnail_path, row.thumbnail_url) || null,
-    imageAlt: row.image_alt || row.title,
-    youtubeUrl: row.youtube_url,
-    audioUrl: row.audio_url,
-    practiceHref: `/practice/mezmur/${row.slug}`,
-    playHref: row.youtube_url?.trim() || row.audio_url?.trim() || null,
-    matchReason: reason,
-  }
-}
-
-async function loadMezmurCandidates(): Promise<MezmurCandidate[]> {
-  if (!supabase) return []
-  // Use mezmur_data_import only — public.mezmur does not exist.
-  try {
-    const { data, error } = await supabase
-      .from('mezmur_data_import' as never)
-      .select(
-        'mezmur_id, slug, title, title_amharic, primary_language, image_path, image_alt, legacy_thumbnail_url, youtube_url, audio_url, search_keywords, status, form, singer_name',
-      )
-      .eq('status', 'published')
-      .limit(120)
-    if (error) {
-      if (import.meta.env.DEV) {
-        console.error('[dayChurchContext] mezmur_data_import', {
-          code: error.code,
-          message: error.message,
-          details: error.details,
-          hint: error.hint,
-        })
-      }
-      return []
-    }
-    return ((data || []) as Array<Record<string, unknown>>).map((raw) => {
-      const image =
-        String(raw.image_path || '').trim() ||
-        String(raw.legacy_thumbnail_url || '').trim() ||
-        null
-      return {
-        id: String(raw.mezmur_id || raw.slug || ''),
-        slug: String(raw.slug || ''),
-        title: String(raw.title || ''),
-        title_amharic: (raw.title_amharic as string | null) || null,
-        language: (raw.primary_language as string | null) || null,
-        thumbnail_url: image,
-        thumbnail_path: (raw.image_path as string | null) || null,
-        image_alt: (raw.image_alt as string | null) || null,
-        youtube_url: (raw.youtube_url as string | null) || null,
-        audio_url: (raw.audio_url as string | null) || null,
-        featured: false,
-        occasion: null,
-        occasion_tags: [],
-        saint_or_angel: null,
-        saint_tags: [],
-        themes: [],
-        search_keywords: raw.search_keywords ?? [],
-        category: null,
-        tags: [],
-      } satisfies MezmurCandidate
-    })
-  } catch (cause) {
-    if (import.meta.env.DEV) console.error('[dayChurchContext] mezmur load', cause)
-    return []
-  }
-}
-
-function buildMezmurRecommendations(
-  orthodox: ReturnType<typeof resolveOrthodoxDay>,
-  synaxarium: DayCommemorationItem[],
-  rows: MezmurCandidate[],
-): DayMezmurRecommendation[] {
-  const primary = orthodox.primaryObservance
-  const occasionTokens = tokenize(
-    primary?.occasionTag,
-    primary?.title,
-    primary?.category,
-    ...orthodox.observances.flatMap((o) => [o.occasionTag, o.title, o.category]),
-  )
-  const feastTokens = tokenize(
-    ...orthodox.observances
-      .filter((o) => /feast|gena|timket|meskel|tinsae|hosanna|filseta/i.test(`${o.observanceType} ${o.slug} ${o.title}`))
-      .flatMap((o) => [o.title, o.occasionTag, o.category]),
-  )
-  const personTokens = tokenize(
-    ...orthodox.monthlyCommemorations.flatMap((m) => [m.title, m.occasionTag, m.category]),
-    ...synaxarium.flatMap((c) => [c.title, c.titleAmharic]),
-  )
-  const fastTokens = tokenize(orthodox.activeFast?.name, orthodox.activeFast?.occasionTag)
-  const seasonTokens = tokenize(
-    orthodox.season?.title,
-    ...(orthodox.season?.occasionTags || []),
-  )
-  const generalTokens = tokenize('worship', 'praise', 'mezmur', 'liturgy')
-
-  const scored = rows
-    .map((row) => {
-      const { score, reason } = scoreMezmur(row, {
-        occasionTokens,
-        feastTokens,
-        personTokens,
-        fastTokens,
-        seasonTokens,
-        generalTokens,
-      })
-      return { row, score, reason }
-    })
-    .filter((item) => item.score >= 45)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3)
-
-  return scored.map((item) => toMezmurRec(item.row, item.reason))
-}
 
 function readingLabelFromEntry(entry: LiturgyEntry, index: number): string {
   const blob = `${entry.contentType || ''} ${entry.title || ''} ${entry.slug || ''}`.toLowerCase()
@@ -663,18 +401,10 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
     if (import.meta.env.DEV) console.error('[dayChurchContext] synaxarium', cause)
   }
 
-  const [liturgySummary, mezmurRows] = await Promise.all([
-    buildLiturgySummary(orthodox.primaryObservance).catch(() => null),
-    loadMezmurCandidates().catch(() => [] as MezmurCandidate[]),
-  ])
-
-  let mezmurRecommendations: DayMezmurRecommendation[] = []
-  try {
-    mezmurRecommendations = buildMezmurRecommendations(orthodox, synaxarium, mezmurRows)
-  } catch (cause) {
-    if (import.meta.env.DEV) console.error('[dayChurchContext] mezmur score', cause)
-    mezmurRecommendations = []
-  }
+  const liturgySummary = await buildLiturgySummary(orthodox.primaryObservance).catch(() => null)
+  // Hymns and prayers appear only from published relationship records.
+  // Title or token similarity is not a relationship.
+  const mezmurRecommendations: DayMezmurRecommendation[] = []
 
   const badges = buildBadges({
     primary: orthodox.primaryObservance,
@@ -712,14 +442,7 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
       href: liturgySummary?.openHref || '/pray/divine-liturgy',
     },
   ]
-  if (mezmurRecommendations[0]) {
-    practiceLinks.push({
-      label: 'Open related mezmur',
-      href: mezmurRecommendations[0].practiceHref,
-    })
-  } else {
-    practiceLinks.push({ label: 'Explore Mezmur Library', href: '/practice' })
-  }
+  practiceLinks.push({ label: 'Explore Mezmur Library', href: '/practice' })
   practiceLinks.push({
     label: synaxariumDaySlug ? 'View full Synaxarium' : 'Browse Synaxarium',
     href: synaxariumDaySlug ? `/pray/synaxarium/${synaxariumDaySlug}` : '/pray/synaxarium',

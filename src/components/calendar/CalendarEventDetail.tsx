@@ -2,6 +2,7 @@ import { useEffect, useId, useLayoutEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 import {
   displaySummary,
+  localizeCalendarEventType,
   type PresentableCalendarEvent,
 } from '../../lib/calendar/calendarPresentation'
 import { useTranslation } from '../../i18n'
@@ -192,7 +193,7 @@ export function CalendarEventDetail({
         <div className={styles.dragHandle} aria-hidden />
         <header className={styles.head}>
           <div className={styles.headCopy}>
-            <p className={styles.badge}>{event.categoryLabel}</p>
+            <p className={styles.badge}>{localizeCalendarEventType(event.categoryLabel, t)}</p>
             <h2 id={titleId} className={styles.title}>
               {event.title}
             </h2>

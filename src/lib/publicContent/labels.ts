@@ -52,12 +52,23 @@ export function languageCodeFromNormalized(value: string | null | undefined): st
   return null
 }
 
+const AMHARIC_INTERFACE_LABELS: Record<string, string> = {
+  Amharic: 'አማርኛ',
+  English: 'እንግሊዝኛ',
+  Oromo: 'ኦሮምኛ',
+  Mezmur: 'መዝሙር',
+  Werb: 'ወርብ',
+}
+
 /** Card metadata: Language · Form only (never NA / category / occasion). */
-export function hymnCardMeta(item: {
-  language?: string | null
-  languages?: string[]
-  form?: string | null
-}): string {
+export function hymnCardMeta(
+  item: {
+    language?: string | null
+    languages?: string[]
+    form?: string | null
+  },
+  locale: 'en' | 'am' = 'en',
+): string {
   const language = item.language
     ? classificationLabel(item.language)
     : item.languages?.includes('am')
@@ -69,5 +80,10 @@ export function hymnCardMeta(item: {
           : ''
   const form =
     item.form === 'werb' ? 'Werb' : item.form === 'mezmur' || !item.form ? 'Mezmur' : classificationLabel(item.form)
-  return [language, form].filter(Boolean).join(' · ')
+  const line = [language, form].filter(Boolean).join(' · ')
+  if (locale !== 'am') return line
+  return line
+    .split(' · ')
+    .map((part) => AMHARIC_INTERFACE_LABELS[part] || part)
+    .join(' · ')
 }

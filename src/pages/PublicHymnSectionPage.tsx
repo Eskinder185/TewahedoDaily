@@ -9,7 +9,10 @@ import {
   type HymnSectionMezmur,
 } from '../lib/publicContent/hymnBrowse'
 import { hymnSectionArtFallback } from '../lib/publicContent/hymnSectionArtFallbacks'
+import { hymnMezmurCountLabel, hymnSourceHeading } from '../lib/publicContent/hymnBrowseLabels'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
+import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
@@ -101,11 +104,13 @@ export function PublicHymnSectionPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
   const [withinQ, setWithinQ] = useState(params.get('q') || '')
+  const t = useTranslation()
+  const { locale } = useLocale()
+  const heading = hymnSourceHeading(section?.title, section?.titleAmharic, locale)
+  const description = hymnSourceHeading(section?.description, section?.descriptionAmharic, locale)
+  const collectionHeading = hymnSourceHeading(collection?.title, collection?.titleAmharic, locale)
 
-  usePageMeta(
-    section?.title || 'Section',
-    section?.description || 'Browse Ethiopian Orthodox Mezmur in this section.',
-  )
+  usePageMeta(heading.primary || t('practice.section'), description.primary || t('practice.metaSection'))
 
   useEffect(() => {
     let active = true
@@ -142,7 +147,7 @@ export function PublicHymnSectionPage() {
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] section', cause)
-        setError('Unable to load Hymns.')
+        setError(t('practice.loadError'))
       } finally {
         if (active) setLoading(false)
       }
@@ -156,12 +161,12 @@ export function PublicHymnSectionPage() {
     <section className={s.page}>
       <p className={s.backRow}>
         <Link to={`/practice/browse/${collectionSlug}`} className={s.viewAll}>
-          ← {collection?.title || 'Collection'}
+          ← {collectionHeading.primary || t('practice.collection')}
         </Link>
       </p>
 
       {!section && !loading ? (
-        <p className={s.status}>Section not found.</p>
+        <p className={s.status}>{t('practice.sectionNotFound')}</p>
       ) : (
         <>
           <header className={s.collectionHero}>
@@ -172,23 +177,27 @@ export function PublicHymnSectionPage() {
               title={section?.title}
             />
             <div>
-              {section?.titleAmharic ? (
-                <p className={s.collectionAm} lang="am">
-                  {section.titleAmharic}
+              {heading.secondary ? (
+                <p className={s.collectionAm} lang={heading.secondaryLang || undefined}>
+                  {heading.secondary}
                 </p>
               ) : null}
-              <h1 className={s.title}>{section?.title || '…'}</h1>
-              {section?.description ? <p className={s.subtitle}>{section.description}</p> : null}
+              <h1 className={s.title} lang={heading.primary ? heading.primaryLang : undefined}>
+                {heading.primary || '…'}
+              </h1>
+              {description.primary ? (
+                <p className={s.subtitle} lang={description.primaryLang}>
+                  {description.primary}
+                </p>
+              ) : null}
               <p className={s.collectionCount}>
-                {section
-                  ? `${section.mezmurCount || total} Mezmur${(section.mezmurCount || total) === 1 ? '' : 's'}`
-                  : ''}
+                {section ? hymnMezmurCountLabel(section.mezmurCount || total, locale) : ''}
               </p>
             </div>
           </header>
 
           <label className={s.withinSearch}>
-            <span className={s.srOnly}>Search within this section</span>
+            <span className={s.srOnly}>{t('practice.searchWithinSection')}</span>
             <input
               className={s.searchInput}
               value={withinQ}
@@ -200,7 +209,9 @@ export function PublicHymnSectionPage() {
                 next.delete('page')
                 setParams(next, { replace: true })
               }}
-              placeholder={`Search within ${section?.title || 'section'}…`}
+              placeholder={t('practice.searchWithinNamed', {
+                name: heading.primary || t('practice.section'),
+              })}
             />
           </label>
 
@@ -223,24 +234,29 @@ export function PublicHymnSectionPage() {
             </div>
           ) : null}
           {!loading && !error && !items.length ? (
-            <p className={s.status}>No published hymns in this section yet.</p>
+            <p className={s.status}>{t('practice.noHymnsInSection')}</p>
           ) : null}
 
           <div className={s.grid}>
-            {items.map((item) => (
-              <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
-                <CardArt item={item} />
-                <div className={s.cardBody}>
-                  {item.titleAmharic ? (
-                    <p className={s.cardAm} lang="am">
-                      {item.titleAmharic}
-                    </p>
-                  ) : null}
-                  <h2 className={s.cardTitle}>{item.title}</h2>
-                  <p className={s.cardMeta}>{item.singerName || 'Mezmur'}</p>
-                </div>
-              </Link>
-            ))}
+            {items.map((item) => {
+              const itemHeading = hymnSourceHeading(item.title, item.titleAmharic, locale)
+              return (
+                <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
+                  <CardArt item={item} />
+                  <div className={s.cardBody}>
+                    {itemHeading.secondary ? (
+                      <p className={s.cardAm} lang={itemHeading.secondaryLang || undefined}>
+                        {itemHeading.secondary}
+                      </p>
+                    ) : null}
+                    <h2 className={s.cardTitle} lang={itemHeading.primaryLang}>
+                      {itemHeading.primary}
+                    </h2>
+                    <p className={s.cardMeta}>{item.singerName || t('mezmurPractice.library.mezmur')}</p>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </>
       )}

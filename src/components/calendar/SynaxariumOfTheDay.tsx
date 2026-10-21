@@ -2,6 +2,7 @@ import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { DayCommemorationItem } from '../../services/dayChurchContext'
 import { useLocale } from '../../lib/i18n/locale'
+import { useTranslation } from '../../i18n'
 import styles from './SynaxariumOfTheDay.module.css'
 
 export type SynaxariumOfTheDayProps = {
@@ -15,6 +16,7 @@ export type SynaxariumOfTheDayProps = {
 function CommemorationRow({ item }: { item: DayCommemorationItem }) {
   const panelId = useId()
   const [open, setOpen] = useState(false)
+  const t = useTranslation()
   const { contentLocale } = useLocale()
   const preview = (item.summary || '').trim()
   const fullBody = (item.longerSummary || '').trim()
@@ -46,7 +48,7 @@ function CommemorationRow({ item }: { item: DayCommemorationItem }) {
       >
         <span className={styles.itemTitles}>
           <span className={styles.itemTitle} lang={primaryTitle === titleAm ? 'am' : undefined}>
-            {primaryTitle || 'Commemoration'}
+            {primaryTitle || t('calendar.synaxariumDay.commemoration')}
           </span>
           {item.typeLabel ? <span className={styles.itemType}>{item.typeLabel}</span> : null}
           {!open && preview ? <span className={styles.itemPreview}>{preview}</span> : null}
@@ -70,7 +72,7 @@ function CommemorationRow({ item }: { item: DayCommemorationItem }) {
           {preview ? <p className={styles.summary}>{preview}</p> : null}
           {showFullDistinct ? <div className={styles.story}>{fullBody}</div> : null}
           {!preview && !fullBody ? (
-            <p className={styles.muted}>No additional Synaxarium text is available for this entry.</p>
+            <p className={styles.muted}>{t('calendar.synaxariumDay.noText')}</p>
           ) : null}
         </div>
       ) : null}
@@ -86,23 +88,24 @@ export function SynaxariumOfTheDay({
   loading = false,
   daySlug,
 }: SynaxariumOfTheDayProps) {
+  const t = useTranslation()
   return (
     <aside className={styles.root} aria-labelledby="synaxarium-day-heading">
       <header className={styles.head}>
-        <p className={styles.eyebrow}>Synaxarium of the Day</p>
+        <p className={styles.eyebrow}>{t('calendar.synaxariumDay.eyebrow')}</p>
         <h2 id="synaxarium-day-heading" className={styles.title}>
-          {ethiopianLabel || 'Selected day'}
+          {ethiopianLabel || t('calendar.synaxariumDay.selected')}
         </h2>
         {gregorianLabel ? <p className={styles.gregorian}>{gregorianLabel}</p> : null}
       </header>
 
       {loading ? (
         <p className={styles.status} role="status">
-          Loading Synaxarium…
+          {t('calendar.synaxariumDay.loading')}
         </p>
       ) : items.length === 0 ? (
         <p className={styles.status} role="status">
-          No Synaxarium entry is currently available for this date.
+          {t('calendar.synaxariumDay.empty')}
         </p>
       ) : (
         <div className={styles.list}>
@@ -114,7 +117,7 @@ export function SynaxariumOfTheDay({
 
       {daySlug ? (
         <Link className={styles.fullLink} to={`/pray/synaxarium/${daySlug}`}>
-          Open full Synaxarium day
+          {t('calendar.synaxariumDay.openFull')}
         </Link>
       ) : null}
     </aside>

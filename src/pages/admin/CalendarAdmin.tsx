@@ -154,17 +154,26 @@ function SyncCalendarCardsPanel({ onDone }: { onDone: () => void }) {
 
       {result ? (
         <div style={{ marginTop: '0.85rem' }}>
-          <strong>Calendar Card Sync Complete</strong>
+          <strong>
+            {result.completeSuccess
+              ? 'Calendar Card Sync Complete'
+              : 'Calendar Card Sync Finished With Errors'}
+          </strong>
           <div className={s.muted} style={{ display: 'grid', gap: '0.2rem', marginTop: '0.35rem' }}>
             <span>Links repaired: {result.linksRepaired}</span>
             <span>Missing cards created: {result.missingCardsCreated}</span>
             <span>Duplicates merged: {result.duplicatesMerged}</span>
             <span>Placeholder fields cleared: {result.placeholdersCleared}</span>
+            <span>Safe no-ops skipped: {result.operationsSkipped}</span>
+            <span>Failed operations: {result.operationsFailed}</span>
             <span>Images preserved: {result.imagesPreserved}</span>
             {result.errors.length ? (
-              <span className={s.error}>Errors: {result.errors.slice(0, 5).join(' · ')}</span>
+              <span className={s.error}>
+                Errors ({result.errors.length}): {result.errors.slice(0, 8).join(' · ')}
+                {result.errors.length > 8 ? ' …' : ''}
+              </span>
             ) : (
-              <span>No apply errors.</span>
+              <span>No apply errors — every planned write succeeded or was a safe no-op.</span>
             )}
           </div>
         </div>

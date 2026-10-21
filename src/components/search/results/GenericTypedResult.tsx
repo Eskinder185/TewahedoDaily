@@ -1,14 +1,19 @@
 import type { GenericTypedResponse } from '../../../lib/searchBuddy/apiTypes.ts'
+import { useTranslation } from '../../../i18n'
 import { textOrNull } from './resultHelpers.ts'
 import styles from './ResultCard.module.css'
 
-const LABELS: Record<string, string> = {
-  liturgy_search: 'Liturgy',
-  teaching_search: 'Teaching',
-  unknown: 'Result',
+const LABEL_KEYS: Record<string, string> = {
+  liturgy_search: 'searchBuddy.fallback.liturgy',
+  teaching_search: 'searchBuddy.fallback.teaching',
+  unknown: 'searchBuddy.fallback.result',
 }
 
-function collectSafeFields(data: GenericTypedResponse): Array<{ label: string; value: string }> {
+function collectSafeFields(
+  data: GenericTypedResponse,
+  yes: string,
+  no: string,
+): Array<{ label: string; value: string }> {
   const skip = new Set(['type', 'originalType', 'raw', 'results', 'message'])
   const rows: Array<{ label: string; value: string }> = []
   for (const [key, value] of Object.entries(data)) {
@@ -18,7 +23,7 @@ function collectSafeFields(data: GenericTypedResponse): Array<{ label: string; v
     } else if (typeof value === 'number' && Number.isFinite(value)) {
       rows.push({ label: key.replace(/_/g, ' '), value: String(value) })
     } else if (typeof value === 'boolean') {
-      rows.push({ label: key.replace(/_/g, ' '), value: value ? 'Yes' : 'No' })
+      rows.push({ label: key.replace(/_/g, ' '), value: value ? yes : no })
     }
     if (rows.length >= 8) break
   }
@@ -26,11 +31,12 @@ function collectSafeFields(data: GenericTypedResponse): Array<{ label: string; v
 }
 
 export function GenericTypedResult({ data }: { data: GenericTypedResponse }) {
+  const t = useTranslation()
   const type = String(data.originalType || data.type || 'unknown')
-  const label = LABELS[type] || type.replace(/_/g, ' ')
+  const label = LABEL_KEYS[type] ? t(LABEL_KEYS[type]) : type.replace(/_/g, ' ')
   const message = textOrNull(data.message)
   const resultsCount = Array.isArray(data.results) ? data.results.length : null
-  const fields = collectSafeFields(data)
+  const fields = collectSafeFields(data, t('searchBuddy.fallback.yes'), t('searchBuddy.fallback.no'))
   const isDev = Boolean(import.meta.env.DEV)
 
   return (
@@ -50,13 +56,18 @@ export function GenericTypedResult({ data }: { data: GenericTypedResponse }) {
       {resultsCount !== null ? (
         <p className={styles.meta}>
           {resultsCount === 0
-            ? 'No items were returned.'
-            : `${resultsCount} item${resultsCount === 1 ? '' : 's'} returned.`}
+            ? t('searchBuddy.fallback.noItems')
+            : t(
+                resultsCount === 1
+                  ? 'searchBuddy.fallback.itemsOne'
+                  : 'searchBuddy.fallback.itemsOther',
+                { count: resultsCount },
+              )}
         </p>
       ) : null}
       {!message && !fields.length && resultsCount === null ? (
         <p className={styles.preview}>
-          A structured response was received and displayed safely.
+          {t('searchBuddy.fallback.safeStructured')}
         </p>
       ) : null}
       {isDev ? (

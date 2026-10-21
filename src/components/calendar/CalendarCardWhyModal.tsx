@@ -15,6 +15,7 @@ import {
   type CalendarCard,
 } from '../../lib/synaxarium/calendarCards'
 import { CalendarEventImage } from './CalendarEventImage'
+import { ScriptureCitationList } from './ScriptureCitationList'
 import styles from './CalendarCardWhyModal.module.css'
 
 type Props = {
@@ -171,11 +172,7 @@ export function CalendarCardWhyModal({ open, card, onClose, onOpenDate }: Props)
           {scriptures.length ? (
             <section className={styles.block}>
               <h3 className={styles.blockTitle}>{t('calendar.page.scriptureHeading')}</h3>
-              <ul className={styles.scriptureList}>
-                {scriptures.map((ref) => (
-                  <li key={ref}>{ref}</li>
-                ))}
-              </ul>
+              <ScriptureCitationList raw={scriptures.join('\n')} />
             </section>
           ) : null}
 

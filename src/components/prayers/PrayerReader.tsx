@@ -1,19 +1,17 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { TabPanel } from '../ui/TabPanel'
 import { PrayerReadingText } from './PrayerReadingText'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
-import { useLocale } from '../../lib/i18n/locale'
 import type { PrayerLang } from './prayerLang'
+import { PRAYER_LANGS } from './prayerLang'
 import {
-  availablePrayerLangs,
+  hasPrayerText,
   htmlLangForPrayerLang,
-  preferredPrayerLangFromLocale,
   prayerBodyForLang,
-  prayerTitleForLang,
-  resolvePrayerLang,
   type PrayerTriText,
   type PrayerTriTitle,
 } from '../../lib/prayers/prayerLanguage'
+import { useReaderLanguage } from '../../lib/prayers/useReaderLanguage'
 import styles from './PrayerReader.module.css'
 
 export type PrayerReaderProps = {
@@ -49,37 +47,30 @@ export function PrayerReader({
   ariaIdPrefix,
 }: PrayerReaderProps) {
   const t = useUiLabel()
-  const { locale } = useLocale()
-  const available = useMemo(() => availablePrayerLangs(text), [text])
-  const preferred = preferredPrayerLangFromLocale(locale)
-  const defaultLang = resolvePrayerLang(text, preferred) || available[0] || 'amharic'
-
+  const managed = useReaderLanguage(text)
   const controlled = selectedId !== undefined
-  const [internalLang, setInternalLang] = useState<string>(defaultLang)
-
-  useEffect(() => {
-    if (controlled) return
-    setInternalLang(defaultLang)
-  }, [controlled, defaultLang, text.amharic, text.geez, text.english])
-
-  const activeId = controlled ? selectedId! : internalLang
-  const activeLang = (available.includes(activeId as PrayerLang)
-    ? activeId
-    : defaultLang) as PrayerLang
+  const activeId = controlled ? selectedId : managed.readerLanguage
 
   const setActive = (id: string) => {
+    if (!isPrayerLang(id)) return
     if (controlled) onTabChange?.(id)
-    else setInternalLang(id)
+    else managed.setReaderLanguage(id)
   }
 
   const tabs = useMemo(() => {
-    return available.map((lang) => {
+    return PRAYER_LANGS.map((lang) => {
       const body = prayerBodyForLang(text, lang)
-      const title =
-        showTitle && titles ? prayerTitleForLang(titles, lang) : ''
+      const available = hasPrayerText(body)
+      const ownTitle = titles
+        ? (lang === 'amharic' ? titles.amharic : lang === 'geez' ? titles.geez : titles.english).trim()
+        : ''
+      const title = showTitle && available ? ownTitle : ''
+      const label = available
+        ? t(LANG_LABEL_KEYS[lang])
+        : `${t(LANG_LABEL_KEYS[lang])} — ${t('prayerLangUnavailableShort')}`
       return {
         id: lang,
-        label: t(LANG_LABEL_KEYS[lang]),
+        label,
         content: (
           <div className={styles.panel}>
             {title ? (
@@ -87,12 +78,18 @@ export function PrayerReader({
                 {title}
               </h2>
             ) : null}
-            <PrayerReadingText text={body} lang={lang} />
+            {available ? (
+              <PrayerReadingText text={body} lang={lang} />
+            ) : (
+              <p className={styles.muted} role="status">
+                {lang === 'geez' ? t('prayerGeezUnavailable') : t('prayerTranslationUnavailable')}
+              </p>
+            )}
           </div>
         ),
       }
     })
-  }, [available, text, titles, showTitle, t])
+  }, [text, titles, showTitle, t])
 
   if (!tabs.length) {
     return (
@@ -111,7 +108,7 @@ export function PrayerReader({
         compactWrap
         tablistAriaLabel={t('prayerReaderTabsAria')}
         tabs={tabs}
-        initialId={activeLang}
+        initialId={activeId}
         selectedId={activeId}
         onSelectedIdChange={setActive}
         renderMode={renderMode}
@@ -119,6 +116,10 @@ export function PrayerReader({
       />
     </div>
   )
+}
+
+function isPrayerLang(value: string): value is PrayerLang {
+  return value === 'amharic' || value === 'geez' || value === 'english'
 }
 
 /** Back-compat wrapper used by existing call sites. */

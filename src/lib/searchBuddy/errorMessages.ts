@@ -1,15 +1,20 @@
+import { translate } from '../../i18n/index.ts'
+import type { UiLocale } from '../i18n/localeHelpers.ts'
+import { parseRetryAfterHeader } from '../ai/aiErrors.ts'
 import { AiClientError, type AiErrorCode } from '../ai/aiTypes.ts'
 
-const MESSAGES: Record<string, string> = {
-  not_configured: 'Extended search is not configured on this device.',
-  network: 'Could not reach the assistant service right now.',
-  timeout: 'That request took too long. You can try again.',
-  unavailable: 'The assistant is briefly unavailable. Please try again.',
-  rate_limited: 'Please wait a moment, then try again.',
-  bad_request: 'That question could not be processed. Try a shorter phrase.',
-  unauthorized: 'The assistant could not authorize this request.',
-  aborted: '',
-  unknown: 'Something went wrong while searching.',
+export { parseRetryAfterHeader }
+
+const ERROR_KEYS: Record<string, string> = {
+  not_configured: 'searchBuddy.errors.notConfigured',
+  network: 'searchBuddy.errors.network',
+  timeout: 'searchBuddy.errors.timeout',
+  unavailable: 'searchBuddy.errors.unavailable',
+  rate_limited: 'searchBuddy.errors.rateLimited',
+  bad_request: 'searchBuddy.errors.badRequest',
+  unauthorized: 'searchBuddy.errors.unauthorized',
+  unknown: 'searchBuddy.errors.unknown',
+  offline: 'searchBuddy.errors.offline',
 }
 
 function asAiClientError(error: unknown): AiClientError | null {
@@ -25,20 +30,43 @@ function asAiClientError(error: unknown): AiClientError | null {
   return null
 }
 
+export function isSearchBuddyAbort(error: unknown): boolean {
+  const aiErr = asAiClientError(error)
+  if (aiErr?.code === 'aborted') return true
+  return error instanceof DOMException && error.name === 'AbortError'
+}
+
+/** Seconds to wait before another try, only when the error carries Retry-After. */
+export function searchBuddyRetryAfterSeconds(error: unknown): number | undefined {
+  const aiErr = asAiClientError(error)
+  const seconds = aiErr?.retryAfterSeconds
+  if (seconds == null || !Number.isFinite(seconds) || seconds < 0) return undefined
+  return seconds
+}
+
 /** User-facing copy only — never includes tokens, URLs with secrets, or raw payloads. */
-export function searchBuddyErrorMessage(error: unknown): string {
+export function searchBuddyErrorMessage(error: unknown, locale: UiLocale = 'en'): string {
+  if (isSearchBuddyAbort(error)) return ''
   const aiErr = asAiClientError(error)
   if (aiErr) {
     if (aiErr.code === 'not_configured' && import.meta.env.DEV && aiErr.message) {
       return aiErr.message
     }
     if (aiErr.code === 'network' && typeof navigator !== 'undefined' && navigator.onLine === false) {
-      return 'You appear to be offline. Reconnect and try again.'
+      return translate(locale, ERROR_KEYS.offline)
     }
-    return MESSAGES[aiErr.code] || MESSAGES.unknown
+    return translate(locale, ERROR_KEYS[aiErr.code] || ERROR_KEYS.unknown)
   }
-  if (error instanceof DOMException && error.name === 'AbortError') return ''
-  return MESSAGES.unknown
+  return translate(locale, ERROR_KEYS.unknown)
+}
+
+/**
+ * Notice for a failed request. Null means cancellation — not an error and not
+ * a no-results answer.
+ */
+export function searchBuddyUserNotice(error: unknown, locale: UiLocale = 'en'): string | null {
+  if (isSearchBuddyAbort(error)) return null
+  return searchBuddyErrorMessage(error, locale) || null
 }
 
 /**

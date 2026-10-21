@@ -50,3 +50,16 @@
 .link:hover .title {
   text-decoration: underline;
 }
+
+.missing {
+  margin: 1rem 0 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+
+.link {
+  min-height: 44px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}

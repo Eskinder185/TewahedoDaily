@@ -19,6 +19,25 @@ function asTrimmedString(value: unknown): string | null {
   return trimmed || null
 }
 
+/**
+ * Allow http(s) and same-site path citations only.
+ * javascript:, data:, and protocol-relative URLs are not links.
+ */
+export function safeCitationUrl(value: string | null | undefined): string | null {
+  const raw = asTrimmedString(value)
+  if (!raw || /[\u0000-\u001F\u007F\s]/.test(raw)) return null
+  if (raw.startsWith('/') && !raw.startsWith('//') && !raw.startsWith('/\\')) {
+    return raw
+  }
+  try {
+    const url = new URL(raw)
+    if (url.protocol === 'http:' || url.protocol === 'https:') return url.toString()
+  } catch {
+    return null
+  }
+  return null
+}
+
 function asFiniteNumber(value: unknown): number | null {
   if (typeof value === 'number' && Number.isFinite(value)) return value
   if (typeof value === 'string' && value.trim() && Number.isFinite(Number(value))) {

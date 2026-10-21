@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import {
   relationTypeLabel,
   type ResolvedRelated,
@@ -8,6 +9,8 @@ import s from './RelatedContentList.module.css'
 type Props = {
   items: ResolvedRelated[]
   heading?: string
+  /** Count of stored relations that were requested. Used only for the empty state. */
+  requestedCount?: number
 }
 
 /**
@@ -16,13 +19,19 @@ type Props = {
  */
 export function RelatedContentList({
   items,
-  heading = 'Related reading and hymns',
+  heading,
+  requestedCount = 0,
 }: Props) {
-  if (!items.length) return null
+  const t = useTranslation()
+  const title = heading || t('calendar.page.hymnsHeading')
+  if (!items.length) {
+    if (requestedCount < 1) return null
+    return <p className={s.missing}>{t('calendar.page.relationsMissing')}</p>
+  }
   return (
     <section className={s.root} aria-labelledby="related-content-heading">
       <h2 id="related-content-heading" className={s.heading}>
-        {heading}
+        {title}
       </h2>
       <ul className={s.list}>
         {items.map((item) => (

@@ -1,0 +1,8 @@
+# Optional private research environment. Do not add to the production image.
+qdrant-client==1.19.1
+onnxruntime==1.31.0
+tokenizers==0.23.3
+numpy==2.2.6
+httpx==0.28.1
+psutil>=6,<8
+huggingface-hub==1.33.0

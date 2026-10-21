@@ -132,8 +132,10 @@
 
 .controls button {
   pointer-events: auto;
-  width: 2.15rem;
-  height: 2.15rem;
+  width: var(--tap-min);
+  height: var(--tap-min);
+  min-width: 44px;
+  min-height: 44px;
   padding: 0;
   border-radius: var(--radius-pill);
   border: 1px solid color-mix(in srgb, var(--color-border-gold) 42%, transparent);
@@ -276,6 +278,30 @@
   .title {
     font-size: clamp(2.75rem, 3.6vw, 3.85rem);
   }
+}
+
+.selectionNote {
+  margin: 0.85rem 0 0;
+  max-width: 36rem;
+  overflow-wrap: anywhere;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.seeAll {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 0.35rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.seeAll:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

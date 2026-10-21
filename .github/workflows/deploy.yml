@@ -35,6 +35,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Guard — never publish backend or private packages
+        run: |
+          if [ -d dist/backend ] || [ -d dist/content-review ] || [ -f dist/content-review.zip ]; then
+            echo "Refusing to publish backend or private editorial package via Pages"
+            exit 1
+          fi
+          if find dist -name 'main.py' -o -name 'Dockerfile.optimized' | grep -q .; then
+            echo "Refusing to publish Python backend artifacts via Pages"
+            exit 1
+          fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
