@@ -271,7 +271,7 @@
 }
 
 .rateBtn {
-  min-height: 36px;
+  min-height: 44px;
   padding: 4px 12px;
   border-radius: 999px;
   background: var(--color-bg-elevated);
@@ -304,7 +304,7 @@
 
 .volLabel input {
   width: 100%;
-  min-height: 32px;
+  min-height: 44px;
 }
 
 .srOnly {
