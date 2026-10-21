@@ -14,6 +14,7 @@ import type {
   MonthlyCommemorationRow,
   OrthodoxObservanceRow,
 } from './orthodoxCalendarTypes'
+import { loadOrthodoxCalendarCatalog } from './orthodoxCalendarData'
 
 export type CalendarSourceSearchHit = {
   sourceType: CalendarCardSourceType
@@ -425,12 +426,45 @@ export async function loadLinkedSourcesForCards(
     byType.set(type, bucket)
   }
 
+  const catalogTypes = new Set<CalendarCardSourceType>([
+    'observance',
+    'fast',
+    'season',
+    'monthly_commemoration',
+  ])
+  const needsCatalog = [...byType.keys()].some((type) => catalogTypes.has(type))
+  const catalog = needsCatalog ? await loadOrthodoxCalendarCatalog() : null
+
   await Promise.all(
     [...byType.entries()].map(async ([type, { ids, slugs }]) => {
+      const uniqueIds = new Set(ids)
+      const uniqueSlugs = new Set(slugs)
+
+      const remember = async (row: Record<string, unknown>) => {
+        const linked = await mapRowToLinked(type, row)
+        if (!linked) return
+        map.set(`${type}:id:${linked.sourceId}`, linked)
+        if (linked.sourceSlug) map.set(`${type}:slug:${linked.sourceSlug}`, linked)
+      }
+
+      if (catalog && catalogTypes.has(type)) {
+        const list =
+          type === 'observance'
+            ? catalog.observances
+            : type === 'fast'
+              ? catalog.fasts
+              : type === 'season'
+                ? catalog.seasons
+                : catalog.monthly
+        for (const row of list) {
+          if (!uniqueIds.has(row.id) && !uniqueSlugs.has(row.slug)) continue
+          await remember(row as unknown as Record<string, unknown>)
+        }
+        return
+      }
+
       const table = tableForType(type)
       if (!table) return
-      const uniqueIds = [...new Set(ids)]
-      const uniqueSlugs = [...new Set(slugs)]
 
       const fetchBy = async (column: 'id' | 'slug', values: string[]) => {
         if (!values.length) return []
@@ -446,15 +480,12 @@ export async function loadLinkedSourcesForCards(
       }
 
       const [byId, bySlug] = await Promise.all([
-        fetchBy('id', uniqueIds),
-        fetchBy('slug', uniqueSlugs),
+        fetchBy('id', [...uniqueIds]),
+        fetchBy('slug', [...uniqueSlugs]),
       ])
 
       for (const row of [...byId, ...bySlug]) {
-        const linked = await mapRowToLinked(type, row)
-        if (!linked) continue
-        map.set(`${type}:id:${linked.sourceId}`, linked)
-        if (linked.sourceSlug) map.set(`${type}:slug:${linked.sourceSlug}`, linked)
+        await remember(row)
       }
     }),
   )

@@ -53,7 +53,6 @@ const pages = [
   { source_type: 'page', source_id: 'pray', title: 'Pray', route: '/pray', search_priority: 100, summary: 'Prayer collections', search_keywords: 'pray prayer tselot ጸሎት' },
   { source_type: 'guide', source_id: 'learn-how-to-pray', title: 'Learn How to Pray', route: '/pray/learn-how-to-pray', search_priority: 95, summary: 'Guided prayer learning', search_keywords: 'learn how to pray prayer guide' },
   { source_type: 'calendar', source_id: 'calendar', title: 'Calendar', route: '/calendar', search_priority: 100, summary: 'Feasts, fasts, observances', search_keywords: 'calendar fasting feast orthodox' },
-  { source_type: 'page', source_id: 'today', title: 'Today in the Church', route: '/today', search_priority: 70, summary: 'Daily Church remembrance' },
   { source_type: 'page', source_id: 'about', title: 'About', route: '/about', search_priority: 40, summary: 'About Tewahedo Daily' },
   { source_type: 'account', source_id: 'saved', title: 'Saved / Favorites', route: '/saved', search_priority: 60, summary: 'Saved hymns and prayers' },
 ]

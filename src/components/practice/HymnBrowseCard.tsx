@@ -6,6 +6,7 @@ import { hymnSectionArtFallback } from '../../lib/publicContent/hymnSectionArtFa
 import { responsiveImageAttrs } from '../../lib/media/responsiveImage'
 import { useTranslation } from '../../i18n'
 import { useLocale } from '../../lib/i18n/locale'
+import { prefetchRoute } from '../../lib/routePrefetch'
 import styles from './HymnBrowseCard.module.css'
 
 const BROWSE_SIZES = '(max-width: 430px) 92vw, (max-width: 768px) 44vw, 280px'
@@ -85,6 +86,8 @@ export function HymnBrowseCardView({ card, priority = false }: HymnBrowseCardPro
       to={card.href}
       className={styles.card}
       aria-label={`${heading.primary}, ${countLabel}`}
+      onPointerEnter={() => prefetchRoute(card.href)}
+      onPointerDown={() => prefetchRoute(card.href)}
     >
       <div className={styles.media} data-empty={!showMedia || undefined}>
         <BrowseCardMedia
@@ -134,6 +137,8 @@ export function HymnMajorBrowseCardView({
       to={group.href}
       className={styles.card}
       aria-label={`${heading.primary}${description.primary ? `, ${description.primary}` : ''}, ${countLabel}`}
+      onPointerEnter={() => prefetchRoute(group.href)}
+      onPointerDown={() => prefetchRoute(group.href)}
     >
       <div className={styles.media} data-empty={!showMedia || undefined}>
         <BrowseCardMedia

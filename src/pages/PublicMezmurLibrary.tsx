@@ -19,6 +19,7 @@ import { hymnCardMeta } from '../lib/publicContent/labels'
 import { hymnSourceHeading } from '../lib/publicContent/hymnBrowseLabels'
 import { useLocale } from '../lib/i18n/locale'
 import { useTranslation } from '../i18n'
+import { prefetchRoute } from '../lib/routePrefetch'
 import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
 import s from './HymnPractice.module.css'
@@ -282,6 +283,9 @@ export function PublicMezmurLibrary() {
         if (active) {
           setBrowse(data)
           setBrowseError(undefined)
+          for (const group of data.slice(0, 3)) {
+            if (group.href) prefetchRoute(group.href)
+          }
         }
       })
       .catch((cause) => {

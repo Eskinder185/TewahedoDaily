@@ -1,0 +1,747 @@
+.page {
+  position: relative;
+  isolation: isolate;
+  padding: 0.15rem 2.4vw 6.5rem;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.landscape {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% 58%;
+  display: block;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(247, 240, 226, 0.62) 0%,
+      rgba(247, 240, 226, 0.28) 24%,
+      rgba(247, 232, 205, 0.08) 52%,
+      rgba(40, 24, 10, 0.18) 100%
+    );
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 0.45rem;
+  max-width: 70rem;
+  margin-inline: auto;
+}
+
+.intro {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--color-gold);
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.22rem auto 0.18rem;
+  color: var(--color-gold);
+}
+
+.ornament span {
+  display: block;
+  width: min(6.5rem, 20vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.ornament i {
+  width: 0.34rem;
+  height: 0.34rem;
+  border: 1px solid currentColor;
+  transform: rotate(45deg);
+  display: block;
+}
+
+.title {
+  margin: 0 0 0.22rem;
+  color: var(--color-burgundy-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.4vw + 0.6vh, 2.45rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.12;
+}
+
+.lede {
+  margin: 0 auto;
+  max-width: 36rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: clamp(0.84rem, 1vw, 0.98rem);
+  line-height: 1.35;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.colLeft,
+.colRight,
+.center {
+  display: grid;
+  gap: 0.85rem;
+  justify-items: center;
+}
+
+.center {
+  width: min(100%, 27rem);
+  margin: 0 auto;
+  gap: 0.45rem;
+}
+
+.calendar {
+  position: relative;
+  width: min(100%, 27rem);
+  padding-top: 0.75rem;
+}
+
+.calendarTurn .flipStage {
+  animation: dateTurn 460ms var(--ease-out);
+}
+
+.sheetStack {
+  position: absolute;
+  inset: 0.75rem 0.3rem 0.3rem;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sheetBack,
+.sheetMid {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.55rem;
+  background: #efe3c8;
+  box-shadow: 0 10px 18px rgba(40, 24, 8, 0.14);
+}
+
+.sheetBack {
+  transform: translate(6px, 7px);
+  background: #e4d4b0;
+}
+
+.sheetMid {
+  transform: translate(3px, 4px);
+  background: #f0e4c9;
+}
+
+.binding {
+  position: absolute;
+  top: 0.06rem;
+  left: 10%;
+  right: 10%;
+  height: 0.9rem;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f0d58a 0%, #b48a3b 48%, #7a5a1e 100%);
+  box-shadow:
+    0 2px 0 #ead9a4,
+    0 8px 16px rgba(70, 42, 8, 0.28);
+}
+
+.fastener {
+  position: absolute;
+  top: 50%;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff6d4, #c9a24a 46%, #6d5018 78%);
+  box-shadow: inset 0 -1px 0 rgba(80, 50, 10, 0.45);
+  transform: translateY(-50%);
+}
+
+.fastener:first-child {
+  left: 12%;
+}
+
+.fastener:last-child {
+  right: 12%;
+}
+
+.flipStage {
+  position: relative;
+  z-index: 2;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.sheet {
+  display: grid;
+  justify-items: center;
+  padding: 0.32rem 0.75rem 0.28rem;
+  border-radius: 0.4rem 0.4rem 0.55rem 0.55rem;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.55), transparent 36%),
+    linear-gradient(180deg, #fbf6ea 0%, #f3e7cf 78%, #ead8b4 100%);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 55%, #d9c394);
+  text-align: center;
+}
+
+.sheetUnder {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.sheetFront {
+  position: relative;
+  z-index: 2;
+  transform-origin: 50% 0;
+  transform: rotateX(0deg);
+  backface-visibility: hidden;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 14px 24px rgba(40, 22, 6, 0.2);
+}
+
+.sheetFlip {
+  animation: sheetFlip 650ms cubic-bezier(0.4, 0.05, 0.2, 1) forwards;
+}
+
+.weekday {
+  margin: 0;
+  color: var(--color-burgundy-ink);
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.ethDay {
+  margin: 0;
+  color: var(--color-burgundy-ink);
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 3.1vh, 1.85rem);
+  font-weight: 500;
+  line-height: 0.92;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.ethMonth,
+.gregorian {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  line-height: 1.15;
+}
+
+.gregorian {
+  margin-top: 0;
+  color: var(--color-text-muted);
+  font-size: 0.62rem;
+}
+
+.goldLine {
+  width: min(10rem, 68%);
+  height: 1px;
+  margin: 0.1rem 0 0.14rem;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+.eventArea {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 0.06rem;
+}
+
+.eventFrame,
+.eventFallback {
+  width: 92%;
+  max-width: none;
+  max-height: none;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.32rem;
+  overflow: hidden;
+}
+
+.eventFrame {
+  background: color-mix(in srgb, var(--color-parchment, #f4ead4) 82%, #d9c8a0);
+}
+
+.eventPhoto,
+.eventFrame :global(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  filter: none;
+}
+
+.eventFallback {
+  background:
+    repeating-linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--color-gold-soft) 35%, transparent) 0 8px,
+      transparent 8px 16px
+    ),
+    linear-gradient(160deg, #efe4cc, #d9c49a);
+  border: 1px solid color-mix(in srgb, var(--color-gold) 40%, transparent);
+}
+
+.eventKind {
+  margin: 0.06rem 0 0;
+  color: var(--color-gold);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eventTitle {
+  margin: 0;
+  max-width: 100%;
+  color: var(--color-burgundy-ink);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.18;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.eventEmpty {
+  margin: 0.3rem 0 0;
+  max-width: 16rem;
+  color: var(--color-text);
+  font-size: 0.84rem;
+}
+
+.eventAction {
+  min-height: var(--tap-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.35rem;
+  color: var(--color-burgundy-ink);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.meter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.1rem;
+  margin-top: 0;
+}
+
+.eventPosition {
+  margin: 0;
+  min-width: 2.2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.pauseIcon,
+.quietNav {
+  min-height: var(--tap-min);
+  min-width: var(--tap-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-burgundy-ink);
+  cursor: pointer;
+}
+
+.pauseIcon svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.quietNav {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.curl {
+  position: absolute;
+  right: 0.1rem;
+  bottom: 0.1rem;
+  width: 1.05rem;
+  height: 1.05rem;
+  background: linear-gradient(135deg, transparent 48%, #d7c197 49%, #f7f1e2 80%);
+  border-radius: 0 0 0.5rem 0;
+  box-shadow: -2px -2px 4px rgba(80, 50, 10, 0.12);
+  pointer-events: none;
+}
+
+.dayNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.dayNav button {
+  min-height: var(--tap-min);
+  min-width: var(--tap-min);
+  padding: 0 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 55%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, #fff8ea 80%, var(--color-gold-soft));
+  color: var(--color-burgundy-ink);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.todayBtn {
+  background: linear-gradient(180deg, #f3e0a8, #c9a24a);
+}
+
+.resource {
+  width: min(100%, 20rem);
+  min-height: var(--tap-min);
+  touch-action: manipulation;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.7rem 0.85rem;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid color-mix(in srgb, var(--color-gold) 70%, #d9c394);
+  border-radius: 0.5rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 42%),
+    linear-gradient(165deg, #fbf4e4, #ead9b6);
+  box-shadow: 0 10px 20px rgba(40, 22, 6, 0.16);
+}
+
+.resource:active {
+  opacity: 0.88;
+}
+
+.resource:focus-visible,
+.pauseIcon:focus-visible,
+.quietNav:focus-visible,
+.dayNav button:focus-visible,
+.eventAction:focus-visible {
+  outline: 2px solid var(--color-focus-ring, var(--color-gold));
+  outline-offset: 3px;
+}
+
+.resourceIcon {
+  width: 2.1rem;
+  height: 2.1rem;
+  color: var(--color-burgundy-ink);
+}
+
+.resourceIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.resourceCopy {
+  display: grid;
+  gap: 0.06rem;
+  min-width: 0;
+}
+
+.resourceTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-burgundy-ink);
+  line-height: 1.1;
+}
+
+.resourceDeck {
+  font-size: 0.76rem;
+  color: var(--color-text);
+}
+
+.resourceChevron {
+  font-size: 1.25rem;
+  color: var(--color-gold);
+  line-height: 1;
+}
+
+.resourceHymns {
+  background: linear-gradient(165deg, #7d3538 0%, #5a2226 100%);
+  color: var(--color-ivory, #f7f1e2);
+  transform: rotate(-1.8deg);
+}
+
+.resourceHymns .resourceIcon,
+.resourceHymns .resourceTitle,
+.resourceHymns .resourceChevron {
+  color: var(--color-ivory, #f7f1e2);
+}
+
+.resourceHymns .resourceDeck {
+  color: color-mix(in srgb, var(--color-ivory, #f7f1e2) 82%, var(--color-gold));
+}
+
+.resourceBible {
+  transform: rotate(-2.4deg);
+}
+
+.resourcePray {
+  transform: rotate(2.4deg);
+}
+
+.resourceCalendar {
+  transform: rotate(1.8deg);
+}
+
+@keyframes sheetFlip {
+  from {
+    transform: rotateX(0deg);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.7) inset,
+      0 14px 24px rgba(40, 22, 6, 0.2);
+  }
+  to {
+    transform: rotateX(-96deg);
+    box-shadow: 0 18px 28px rgba(40, 22, 6, 0.28);
+  }
+}
+
+@keyframes dateTurn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 900px) {
+  .page {
+    padding: 0.05rem 2.2vw 1rem;
+  }
+
+  .stage {
+    grid-template-columns: minmax(12rem, 15.25rem) minmax(24.5rem, 27rem) minmax(12rem, 15.25rem);
+    grid-template-areas:
+      'left center right'
+      '. nav .';
+    justify-content: center;
+    align-items: center;
+    column-gap: clamp(0.75rem, 1.6vw, 1.4rem);
+    row-gap: 0.45rem;
+    padding-top: clamp(0.35rem, 5.2vh, 2.6rem);
+  }
+
+  .dayNav {
+    grid-area: nav;
+  }
+
+  .colLeft,
+  .colRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .colLeft {
+    grid-area: left;
+  }
+
+  .center {
+    grid-area: center;
+    width: 100%;
+  }
+
+  .colRight {
+    grid-area: right;
+  }
+
+  .resource {
+    width: 100%;
+  }
+}
+
+@media (max-width: 899.98px) {
+  .page {
+    padding-inline: 1rem;
+    padding-bottom: 7.25rem;
+  }
+
+  .sheet {
+    padding: 0.32rem 0.85rem 0.3rem;
+  }
+
+  .eventFrame,
+  .eventFallback {
+    width: 100%;
+  }
+
+  .ethDay {
+    font-size: 1.7rem;
+  }
+
+  .title {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+  }
+
+  .stage {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'calendar calendar'
+      'nav nav'
+      'bible pray'
+      'hymns cal';
+  }
+
+  .center {
+    grid-area: calendar;
+    width: min(100%, 26.5rem);
+  }
+
+  .dayNav {
+    grid-area: nav;
+  }
+
+  .colLeft,
+  .colRight {
+    display: contents;
+  }
+
+  .resourceBible {
+    grid-area: bible;
+  }
+
+  .resourceHymns {
+    grid-area: hymns;
+  }
+
+  .resourcePray {
+    grid-area: pray;
+  }
+
+  .resourceCalendar {
+    grid-area: cal;
+  }
+
+  .resourceBible,
+  .resourceHymns,
+  .resourcePray,
+  .resourceCalendar {
+    transform: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 419.98px) {
+  .stage {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'calendar'
+      'nav'
+      'bible'
+      'hymns'
+      'pray'
+      'cal';
+  }
+}
+
+:global(html[lang='am']) .eyebrow,
+:global(html[lang='am']) .eventKind {
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+:global(html[lang='am']) .title,
+:global(html[lang='am']) .resourceTitle,
+:global(html[lang='am']) .eventTitle,
+:global(html[lang='am']) .weekday,
+:global(html[lang='am']) .ethDay,
+:global(html[lang='am']) .ethMonth {
+  font-family: 'Noto Sans Ethiopic', 'Nyala', 'Abyssinica SIL', var(--font-body);
+  letter-spacing: 0;
+}
+
+:global([data-theme='night']) .scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18, 14, 10, 0.5) 0%,
+      rgba(18, 14, 10, 0.22) 32%,
+      rgba(8, 6, 4, 0.38) 100%
+    );
+}
+
+:global([data-theme='night']) .title,
+:global([data-theme='night']) .ethDay,
+:global([data-theme='night']) .weekday,
+:global([data-theme='night']) .eventTitle,
+:global([data-theme='night']) .resourceTitle {
+  color: #f3e6c8;
+}
+
+:global([data-theme='night']) .lede,
+:global([data-theme='night']) .ethMonth,
+:global([data-theme='night']) .resourceDeck {
+  color: #ead9b6;
+}
+
+:global([data-theme='night']) .sheet {
+  background: linear-gradient(180deg, #3a2d20, #2a2118);
+  border-color: color-mix(in srgb, var(--color-gold) 50%, #2a2118);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resourceBible,
+  .resourceHymns,
+  .resourcePray,
+  .resourceCalendar {
+    transform: none;
+  }
+
+  .sheetFlip,
+  .calendarTurn .flipStage {
+    animation: none;
+  }
+}

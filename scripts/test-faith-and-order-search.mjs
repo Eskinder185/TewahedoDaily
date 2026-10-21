@@ -224,9 +224,22 @@ assert.equal(searchPath.includes('/api/chat'), false)
 assert.equal(new URL(`http://faith-order.test${searchPath}`).searchParams.get('q'), 'function of the sick')
 
 const buddy = fs.readFileSync(new URL('../src/components/search/SearchBuddy.tsx', import.meta.url), 'utf8')
-const views = fs.readFileSync(new URL('../src/components/search/FaithAndOrderViews.tsx', import.meta.url), 'utf8')
+const passageUi = fs.readFileSync(
+  new URL('../src/components/search/SourcePassageCard.tsx', import.meta.url),
+  'utf8',
+)
 const client = fs.readFileSync(new URL('../src/lib/searchBuddy/faithAndOrderSearch.ts', import.meta.url), 'utf8')
-for (const file of [buddy, views]) {
+assert.equal(
+  fs.existsSync(new URL('../src/components/search/FaithAndOrderViews.tsx', import.meta.url)),
+  false,
+)
+assert.equal(buddy.includes('FaithAndOrderToc'), false)
+assert.equal(buddy.includes('FaithAndOrderSectionReader'), false)
+assert.equal(buddy.includes('FaithAndOrderSearchPane'), false)
+assert.equal(buddy.includes('sourceFilters'), false)
+assert.equal(buddy.includes('shouldSearchFaithAndOrder'), true)
+assert.equal(buddy.includes('searchFaithAndOrder('), true)
+for (const file of [buddy, passageUi]) {
   assert.equal(file.includes('/api/chat'), false)
   assert.equal(file.includes('postAiChat'), false)
   assert.equal(file.includes('sendSearchBuddyMessage'), false)

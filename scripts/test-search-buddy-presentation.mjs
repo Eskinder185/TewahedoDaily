@@ -88,6 +88,14 @@ assert.ok(!/verified/i.test(noSources))
 
 const NO_PASSAGE = translate('en', 'searchBuddy.faith.noPassage')
 assert.equal(NO_PASSAGE, 'No matching passage found in Faith and Order')
+assert.equal(translate('en', 'searchBuddy.faith.noSupportingPassage'), 'No supporting passage was found.')
+assert.match(
+  translate('en', 'searchBuddy.faith.attribution', {
+    section: 'Introduction to Church Sacraments',
+    number: 165,
+  }),
+  /Source: Faith and Order/,
+)
 const NO_PASSAGE_AM = translate('am', 'searchBuddy.faith.noPassage')
 assert.ok(/[\u1200-\u137F]/.test(NO_PASSAGE_AM))
 assert.notEqual(NO_PASSAGE, NO_PASSAGE_AM)

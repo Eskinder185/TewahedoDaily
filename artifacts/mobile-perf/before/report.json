@@ -1,0 +1,1739 @@
+{
+  "label": "before",
+  "base": "http://127.0.0.1:4173",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "samples": 5,
+  "throttle": {
+    "note": "Unthrottled desktop Chromium. Not a physical-device test."
+  },
+  "startedAt": "2026-10-21T20:18:58.066Z",
+  "coldHome": [
+    {
+      "dclMs": 181,
+      "readyMs": 812,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 26,
+      "jsTransferKb": 398,
+      "jsDecodedKb": 1370,
+      "cssTransferKb": 47,
+      "imgTransferKb": 71,
+      "apiCount": 15,
+      "apiNames": [
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500",
+        "/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29",
+        "/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29",
+        "/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29",
+        "/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29",
+        "/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29",
+        "/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29",
+        "/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29",
+        "/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29",
+        "/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+        "/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "img",
+          "transferSize": 72372,
+          "encoded": 72072,
+          "decoded": 72072,
+          "duration": 2,
+          "start": 295
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "calendar-CDYIXLo5.js",
+          "transferKb": 208,
+          "decodedKb": 776,
+          "duration": 33
+        },
+        {
+          "file": "react-vendor-D4NDXHlZ.js",
+          "transferKb": 55,
+          "decodedKb": 174,
+          "duration": 19
+        },
+        {
+          "file": "prayers-CC9jGbim.js",
+          "transferKb": 44,
+          "decodedKb": 144,
+          "duration": 16
+        },
+        {
+          "file": "practice-B4e79Jxa.js",
+          "transferKb": 19,
+          "decodedKb": 64,
+          "duration": 13
+        },
+        {
+          "file": "index-N1k09384.js",
+          "transferKb": 12,
+          "decodedKb": 52,
+          "duration": 8
+        },
+        {
+          "file": "SearchBuddy-BAYbk-IM.js",
+          "transferKb": 14,
+          "decodedKb": 46,
+          "duration": 5
+        },
+        {
+          "file": "MezmurVoiceSearch-BaW5L5Lk.js",
+          "transferKb": 9,
+          "decodedKb": 26,
+          "duration": 5
+        },
+        {
+          "file": "hymnBrowse-DQX3UnKQ.js",
+          "transferKb": 6,
+          "decodedKb": 20,
+          "duration": 7
+        },
+        {
+          "file": "HomePage-OwjZhFM-.js",
+          "transferKb": 5,
+          "decodedKb": 15,
+          "duration": 4
+        },
+        {
+          "file": "routeCatalog-Z9Z_ORlR.js",
+          "transferKb": 4,
+          "decodedKb": 14,
+          "duration": 7
+        },
+        {
+          "file": "contentService-FkdaYG4c.js",
+          "transferKb": 4,
+          "decodedKb": 10,
+          "duration": 5
+        },
+        {
+          "file": "vendor-D0-pFplF.js",
+          "transferKb": 2,
+          "decodedKb": 6,
+          "duration": 2
+        },
+        {
+          "file": "AuthProvider-BL9o8g6a.js",
+          "transferKb": 2,
+          "decodedKb": 5,
+          "duration": 25
+        },
+        {
+          "file": "service-TNhPrbnn.js",
+          "transferKb": 2,
+          "decodedKb": 4,
+          "duration": 22
+        },
+        {
+          "file": "searchBuddySession-H7WTlps8.js",
+          "transferKb": 2,
+          "decodedKb": 4,
+          "duration": 25
+        },
+        {
+          "file": "PublicUi-ErjwgDG-.js",
+          "transferKb": 2,
+          "decodedKb": 3,
+          "duration": 24
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 126,
+          "duration": 62,
+          "name": "self"
+        }
+      ],
+      "longTaskMs": 62,
+      "cls": 0.4639,
+      "lcp": {
+        "start": 555,
+        "size": 282360,
+        "url": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp"
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x1076",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "natural": "1024x765",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "natural": "2400x1792",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [],
+      "throttle": {
+        "enabled": false
+      }
+    },
+    {
+      "dclMs": 97,
+      "readyMs": 654,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 26,
+      "jsTransferKb": 398,
+      "jsDecodedKb": 1370,
+      "cssTransferKb": 47,
+      "imgTransferKb": 71,
+      "apiCount": 15,
+      "apiNames": [
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500",
+        "/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29",
+        "/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29",
+        "/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29",
+        "/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29",
+        "/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29",
+        "/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29",
+        "/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29",
+        "/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29",
+        "/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+        "/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "img",
+          "transferSize": 72372,
+          "encoded": 72072,
+          "decoded": 72072,
+          "duration": 7,
+          "start": 152
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "calendar-CDYIXLo5.js",
+          "transferKb": 208,
+          "decodedKb": 776,
+          "duration": 23
+        },
+        {
+          "file": "react-vendor-D4NDXHlZ.js",
+          "transferKb": 55,
+          "decodedKb": 174,
+          "duration": 10
+        },
+        {
+          "file": "prayers-CC9jGbim.js",
+          "transferKb": 44,
+          "decodedKb": 144,
+          "duration": 10
+        },
+        {
+          "file": "practice-B4e79Jxa.js",
+          "transferKb": 19,
+          "decodedKb": 64,
+          "duration": 8
+        },
+        {
+          "file": "index-N1k09384.js",
+          "transferKb": 12,
+          "decodedKb": 52,
+          "duration": 5
+        },
+        {
+          "file": "SearchBuddy-BAYbk-IM.js",
+          "transferKb": 14,
+          "decodedKb": 46,
+          "duration": 5
+        },
+        {
+          "file": "MezmurVoiceSearch-BaW5L5Lk.js",
+          "transferKb": 9,
+          "decodedKb": 26,
+          "duration": 5
+        },
+        {
+          "file": "hymnBrowse-DQX3UnKQ.js",
+          "transferKb": 6,
+          "decodedKb": 20,
+          "duration": 6
+        },
+        {
+          "file": "HomePage-OwjZhFM-.js",
+          "transferKb": 5,
+          "decodedKb": 15,
+          "duration": 3
+        },
+        {
+          "file": "routeCatalog-Z9Z_ORlR.js",
+          "transferKb": 4,
+          "decodedKb": 14,
+          "duration": 7
+        },
+        {
+          "file": "contentService-FkdaYG4c.js",
+          "transferKb": 4,
+          "decodedKb": 10,
+          "duration": 5
+        },
+        {
+          "file": "vendor-D0-pFplF.js",
+          "transferKb": 2,
+          "decodedKb": 6,
+          "duration": 2
+        },
+        {
+          "file": "AuthProvider-BL9o8g6a.js",
+          "transferKb": 2,
+          "decodedKb": 5,
+          "duration": 16
+        },
+        {
+          "file": "service-TNhPrbnn.js",
+          "transferKb": 2,
+          "decodedKb": 4,
+          "duration": 13
+        },
+        {
+          "file": "searchBuddySession-H7WTlps8.js",
+          "transferKb": 2,
+          "decodedKb": 4,
+          "duration": 16
+        },
+        {
+          "file": "PublicUi-ErjwgDG-.js",
+          "transferKb": 2,
+          "decodedKb": 3,
+          "duration": 14
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.4639,
+      "lcp": {
+        "start": 446,
+        "size": 282360,
+        "url": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp"
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x1076",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "natural": "1024x765",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "natural": "2400x1792",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [],
+      "throttle": {
+        "enabled": false
+      }
+    },
+    {
+      "dclMs": 99,
+      "readyMs": 661,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 26,
+      "jsTransferKb": 398,
+      "jsDecodedKb": 1370,
+      "cssTransferKb": 47,
+      "imgTransferKb": 71,
+      "apiCount": 15,
+      "apiNames": [
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500",
+        "/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29",
+        "/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29",
+        "/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29",
+        "/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29",
+        "/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29",
+        "/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29",
+        "/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29",
+        "/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29",
+        "/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+        "/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "img",
+          "transferSize": 72372,
+          "encoded": 72072,
+          "decoded": 72072,
+          "duration": 6,
+          "start": 148
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "calendar-CDYIXLo5.js",
+          "transferKb": 208,
+          "decodedKb": 776,
+          "duration": 23
+        },
+        {
+          "file": "react-vendor-D4NDXHlZ.js",
+          "transferKb": 55,
+          "decodedKb": 174,
+          "duration": 12
+        },
+        {
+          "file": "prayers-CC9jGbim.js",
+          "transferKb": 44,
+          "decodedKb": 144,
+          "duration": 10
+        },
+        {
+          "file": "practice-B4e79Jxa.js",
+          "transferKb": 19,
+          "decodedKb": 64,
+          "duration": 7
+        },
+        {
+          "file": "index-N1k09384.js",
+          "transferKb": 12,
+          "decodedKb": 52,
+          "duration": 3
+        },
+        {
+          "file": "SearchBuddy-BAYbk-IM.js",
+          "transferKb": 14,
+          "decodedKb": 46,
+          "duration": 4
+        },
+        {
+          "file": "MezmurVoiceSearch-BaW5L5Lk.js",
+          "transferKb": 9,
+          "decodedKb": 26,
+          "duration": 4
+        },
+        {
+          "file": "hymnBrowse-DQX3UnKQ.js",
+          "transferKb": 6,
+          "decodedKb": 20,
+          "duration": 6
+        },
+        {
+          "file": "HomePage-OwjZhFM-.js",
+          "transferKb": 5,
+          "decodedKb": 15,
+          "duration": 3
+        },
+        {
+          "file": "routeCatalog-Z9Z_ORlR.js",
+          "transferKb": 4,
+          "decodedKb": 14,
+          "duration": 6
+        },
+        {
+          "file": "contentService-FkdaYG4c.js",
+          "transferKb": 4,
+          "decodedKb": 10,
+          "duration": 4
+        },
+        {
+          "file": "vendor-D0-pFplF.js",
+          "transferKb": 2,
+          "decodedKb": 6,
+          "duration": 2
+        },
+        {
+          "file": "AuthProvider-BL9o8g6a.js",
+          "transferKb": 2,
+          "decodedKb": 5,
+          "duration": 17
+        },
+        {
+          "file": "service-TNhPrbnn.js",
+          "transferKb": 2,
+          "decodedKb": 4,
+          "duration": 13
+        },
+        {
+          "file": "searchBuddySession-H7WTlps8.js",
+          "transferKb": 2,
+          "decodedKb": 4,
+          "duration": 17
+        },
+        {
+          "file": "PublicUi-ErjwgDG-.js",
+          "transferKb": 2,
+          "decodedKb": 3,
+          "duration": 15
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.4639,
+      "lcp": {
+        "start": 441,
+        "size": 282360,
+        "url": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp"
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x1076",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "natural": "1024x765",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "natural": "2400x1792",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [],
+      "throttle": {
+        "enabled": false
+      }
+    }
+  ],
+  "warmHome": [
+    {
+      "readyMs": 563,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 26,
+      "jsTransferKb": 8,
+      "jsDecodedKb": 0,
+      "cssTransferKb": 3,
+      "imgTransferKb": 0,
+      "apiCount": 15,
+      "apiNames": [
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29",
+        "/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29",
+        "/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29",
+        "/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29",
+        "/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29",
+        "/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29",
+        "/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29",
+        "/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29",
+        "/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+        "/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "img",
+          "transferSize": 300,
+          "encoded": 0,
+          "decoded": 0,
+          "duration": 1,
+          "start": 38
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "index-N1k09384.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        },
+        {
+          "file": "rolldown-runtime-Dw2cE7zH.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "calendar-CDYIXLo5.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "prayers-CC9jGbim.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "react-vendor-D4NDXHlZ.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "practice-B4e79Jxa.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "useAsync-DWwlu-HS.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "service-TNhPrbnn.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 4
+        },
+        {
+          "file": "PublicUi-ErjwgDG-.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 4
+        },
+        {
+          "file": "PageLoadingFallback-BEjsPoAT.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 7
+        },
+        {
+          "file": "authErrors-OC_BzASK.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 7
+        },
+        {
+          "file": "useAuth-C2F_4to6.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 7
+        },
+        {
+          "file": "favoritesService-Djzc1b5m.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 8
+        },
+        {
+          "file": "AuthProvider-BL9o8g6a.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 8
+        },
+        {
+          "file": "searchBuddySession-H7WTlps8.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 8
+        },
+        {
+          "file": "vendor-D0-pFplF.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.4234,
+      "lcp": {
+        "start": 354,
+        "size": 282360,
+        "url": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp"
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x1076",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "natural": "1024x765",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "natural": "2400x1792",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500 net::ERR_ABORTED"
+      ],
+      "throttle": {
+        "enabled": false
+      }
+    },
+    {
+      "readyMs": 558,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 26,
+      "jsTransferKb": 8,
+      "jsDecodedKb": 0,
+      "cssTransferKb": 3,
+      "imgTransferKb": 0,
+      "apiCount": 15,
+      "apiNames": [
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500",
+        "/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29",
+        "/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29",
+        "/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29",
+        "/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29",
+        "/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29",
+        "/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29",
+        "/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29",
+        "/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29",
+        "/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+        "/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "img",
+          "transferSize": 300,
+          "encoded": 0,
+          "decoded": 0,
+          "duration": 1,
+          "start": 36
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "index-N1k09384.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        },
+        {
+          "file": "rolldown-runtime-Dw2cE7zH.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        },
+        {
+          "file": "calendar-CDYIXLo5.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "prayers-CC9jGbim.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "react-vendor-D4NDXHlZ.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "practice-B4e79Jxa.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "useAsync-DWwlu-HS.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "service-TNhPrbnn.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "PublicUi-ErjwgDG-.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "PageLoadingFallback-BEjsPoAT.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 5
+        },
+        {
+          "file": "authErrors-OC_BzASK.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 6
+        },
+        {
+          "file": "useAuth-C2F_4to6.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 6
+        },
+        {
+          "file": "favoritesService-Djzc1b5m.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 6
+        },
+        {
+          "file": "AuthProvider-BL9o8g6a.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 6
+        },
+        {
+          "file": "searchBuddySession-H7WTlps8.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 7
+        },
+        {
+          "file": "vendor-D0-pFplF.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.4234,
+      "lcp": {
+        "start": 343,
+        "size": 282360,
+        "url": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp"
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x1076",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "natural": "1024x765",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "natural": "2400x1792",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29 net::ERR_ABORTED"
+      ],
+      "throttle": {
+        "enabled": false
+      }
+    },
+    {
+      "readyMs": 565,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 26,
+      "jsTransferKb": 8,
+      "jsDecodedKb": 0,
+      "cssTransferKb": 3,
+      "imgTransferKb": 0,
+      "apiCount": 15,
+      "apiNames": [
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29",
+        "/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29",
+        "/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29",
+        "/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29",
+        "/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29",
+        "/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29",
+        "/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29",
+        "/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29",
+        "/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+        "/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "img",
+          "transferSize": 300,
+          "encoded": 0,
+          "decoded": 0,
+          "duration": 1,
+          "start": 35
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "index-N1k09384.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        },
+        {
+          "file": "rolldown-runtime-Dw2cE7zH.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        },
+        {
+          "file": "calendar-CDYIXLo5.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "prayers-CC9jGbim.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "react-vendor-D4NDXHlZ.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 2
+        },
+        {
+          "file": "practice-B4e79Jxa.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "useAsync-DWwlu-HS.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "service-TNhPrbnn.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "PublicUi-ErjwgDG-.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 3
+        },
+        {
+          "file": "PageLoadingFallback-BEjsPoAT.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 6
+        },
+        {
+          "file": "authErrors-OC_BzASK.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 7
+        },
+        {
+          "file": "useAuth-C2F_4to6.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 7
+        },
+        {
+          "file": "favoritesService-Djzc1b5m.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 7
+        },
+        {
+          "file": "AuthProvider-BL9o8g6a.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 8
+        },
+        {
+          "file": "searchBuddySession-H7WTlps8.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 8
+        },
+        {
+          "file": "vendor-D0-pFplF.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 1
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.4234,
+      "lcp": {
+        "start": 356,
+        "size": 282360,
+        "url": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp"
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x1076",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/general/yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "natural": "1024x765",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/fasts/tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "natural": "2400x1792",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&slug=in.%28advent-sibket%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cnolawi-period%2Ctsige-season%2Cpaschal-season%2Cresurrection-period%2Csibket-period%2Capostles-fast-period%2Cgreat-lent%2Castereyo%2Cbright-week%2Choly-week%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&id=in.%28e7d21866-7409-4ab4-80c4-9784bc856dac%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2C321528dc-80e6-4cd7-a868-c0a954118903%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C279f6c98-0edb-4deb-b527-2fae07eafe20%2C32fa8936-926e-4858-81b7-046203898367%2C2960bd5e-de65-4327-99de-da046cf4785e%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2C68804077-95ef-47bc-be5e-6f6926a41608%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29 net::ERR_ABORTED"
+      ],
+      "throttle": {
+        "enabled": false
+      }
+    }
+  ],
+  "nav": {
+    "homeToPrayCold": {
+      "label": "Home → Pray cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 31,
+        "min": 25,
+        "max": 47,
+        "samples": [
+          47,
+          29,
+          32,
+          25,
+          31
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 45,
+        "min": 32,
+        "max": 55,
+        "samples": [
+          55,
+          32,
+          45,
+          52,
+          43
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 31,
+        "min": 25,
+        "max": 47,
+        "samples": [
+          47,
+          29,
+          32,
+          25,
+          31
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 47,
+          "tapToRouteMs": 47,
+          "tapToContentMs": 55,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 29,
+          "tapToRouteMs": 29,
+          "tapToContentMs": 32,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 32,
+          "tapToRouteMs": 32,
+          "tapToContentMs": 45,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 25,
+          "tapToRouteMs": 25,
+          "tapToContentMs": 52,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 31,
+          "tapToRouteMs": 31,
+          "tapToContentMs": 43,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        }
+      ]
+    },
+    "homeToHymnsCold": {
+      "label": "Home → Hymns cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 34,
+        "min": 28,
+        "max": 46,
+        "samples": [
+          34,
+          46,
+          30,
+          35,
+          28
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 84,
+        "min": 46,
+        "max": 103,
+        "samples": [
+          91,
+          103,
+          84,
+          46,
+          81
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 34,
+        "min": 28,
+        "max": 46,
+        "samples": [
+          34,
+          46,
+          30,
+          35,
+          28
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 34,
+          "tapToRouteMs": 34,
+          "tapToContentMs": 91,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 46,
+          "tapToRouteMs": 46,
+          "tapToContentMs": 103,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 30,
+          "tapToRouteMs": 30,
+          "tapToContentMs": 84,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 35,
+          "tapToRouteMs": 35,
+          "tapToContentMs": 46,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 28,
+          "tapToRouteMs": 28,
+          "tapToContentMs": 81,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        }
+      ]
+    },
+    "homeToCalendarCold": {
+      "label": "Home → Calendar cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 42,
+        "min": 24,
+        "max": 46,
+        "samples": [
+          46,
+          36,
+          46,
+          42,
+          24
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 148,
+        "min": 124,
+        "max": 158,
+        "samples": [
+          158,
+          137,
+          151,
+          148,
+          124
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 42,
+        "min": 24,
+        "max": 46,
+        "samples": [
+          46,
+          36,
+          46,
+          42,
+          24
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 46,
+          "tapToRouteMs": 46,
+          "tapToContentMs": 158,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 36,
+          "tapToRouteMs": 36,
+          "tapToContentMs": 137,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 46,
+          "tapToRouteMs": 46,
+          "tapToContentMs": 151,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 42,
+          "tapToRouteMs": 42,
+          "tapToContentMs": 148,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 24,
+          "tapToRouteMs": 24,
+          "tapToContentMs": 124,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        }
+      ]
+    },
+    "homeToBibleCold": {
+      "label": "Home → Bible cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 28,
+        "min": 18,
+        "max": 38,
+        "samples": [
+          24,
+          34,
+          28,
+          18,
+          38
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 31,
+        "min": 21,
+        "max": 41,
+        "samples": [
+          27,
+          36,
+          31,
+          21,
+          41
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 28,
+        "min": 18,
+        "max": 38,
+        "samples": [
+          24,
+          34,
+          28,
+          18,
+          38
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 24,
+          "tapToRouteMs": 24,
+          "tapToContentMs": 27,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 34,
+          "tapToRouteMs": 34,
+          "tapToContentMs": 36,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 28,
+          "tapToRouteMs": 28,
+          "tapToContentMs": 31,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 18,
+          "tapToRouteMs": 18,
+          "tapToContentMs": 21,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 38,
+          "tapToRouteMs": 38,
+          "tapToContentMs": 41,
+          "longTaskMsDuringNav": 0,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": false
+          }
+        }
+      ]
+    },
+    "homeToPrayWarm": {
+      "label": "Home → Pray warm",
+      "tapToRoute": {
+        "n": 5,
+        "median": 36,
+        "min": 29,
+        "max": 37,
+        "samples": [
+          36,
+          29,
+          33,
+          36,
+          37
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 42,
+        "min": 35,
+        "max": 46,
+        "samples": [
+          46,
+          35,
+          38,
+          42,
+          43
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 36,
+        "min": 29,
+        "max": 37,
+        "samples": [
+          36,
+          29,
+          33,
+          36,
+          37
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 0,
+        "min": 0,
+        "max": 0,
+        "samples": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 36,
+          "tapToRouteMs": 36,
+          "tapToContentMs": 46,
+          "longTaskMsDuringNav": 0
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 29,
+          "tapToRouteMs": 29,
+          "tapToContentMs": 35,
+          "longTaskMsDuringNav": 0
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 33,
+          "tapToRouteMs": 33,
+          "tapToContentMs": 38,
+          "longTaskMsDuringNav": 0
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 36,
+          "tapToRouteMs": 36,
+          "tapToContentMs": 42,
+          "longTaskMsDuringNav": 0
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 37,
+          "tapToRouteMs": 37,
+          "tapToContentMs": 43,
+          "longTaskMsDuringNav": 0
+        }
+      ]
+    }
+  },
+  "extra": {
+    "calendarNextDayMs": [
+      122,
+      135,
+      129
+    ],
+    "bibleBook": {
+      "href": "/bible/genesis",
+      "tapToRouteMs": 34,
+      "url": "http://127.0.0.1:4173/bible/genesis"
+    },
+    "hymnFirstLink": "/practice/browse/holidays-feasts",
+    "hymnCategory": {
+      "tapToRouteMs": 726,
+      "url": "http://127.0.0.1:4173/practice/browse/holidays-feasts"
+    },
+    "searchBuddyVisible": false,
+    "errors": [],
+    "failed": [
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&id=in.%282124999f-bbb7-4691-b818-efee91ea9552%2C8a485cf3-084f-4bb9-9ba6-50e0a7a339f8%2C4aa5a38a-f8a6-4ba9-a69f-c79c12a457c8%2Cce25190c-45f5-4010-949a-0e9f8cf20e9d%2C51236fa5-d76f-4ab2-9366-448abf64b10d%2C4fca3589-3def-4c1a-9ccf-a0585621b4c0%2C67bf34a9-2c70-4113-959e-606e042c3905%2Cc76469c1-1347-4101-b072-c90845d30755%2Cd6228bb9-8be6-4eff-9106-24aecf60adcb%2C44954de3-0ecf-4e0c-a47d-ee6d7530b3c9%2C5b91a536-096b-4623-b54b-20397b028bc4%2C28c74a1e-e022-4d64-b2a2-019c86e8d36e%2C4c29e38d-bea7-4eb2-a2f7-01a584a6f8c9%2C67d8645a-7d37-42d2-9b88-3b4eb7e30d7a%2C120d3de9-a39b-41e6-864d-7cb720c3e62b%2C4482537a-015d-439d-98b0-5fc6accf9051%2Cb3abe062-1d50-4879-aba0-8db95d188816%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&id=in.%2868804077-95ef-47bc-be5e-6f6926a41608%2C6211e137-ece2-47e9-993d-bbb27afd692c%2Ca534db64-fd10-4d4d-8afa-1762d845020e%2C5fcc2f63-eacc-4c07-8f71-bba9b961bbf1%2Ce7d21866-7409-4ab4-80c4-9784bc856dac%2C0fb75c88-49d8-4f37-aaf8-b983395db8f4%2C58004c84-38f5-4a60-af79-89a7f3bc54de%2C321528dc-80e6-4cd7-a868-c0a954118903%2Ce9cc66bd-398d-4624-a794-2705ddbf3794%2Caa3b1845-5880-4358-8e29-3e7411d7fedc%2Cea9bbb6f-0ff8-4b4b-bc0e-78de493500a0%2C2960bd5e-de65-4327-99de-da046cf4785e%2C32fa8936-926e-4858-81b7-046203898367%2C279f6c98-0edb-4deb-b527-2fae07eafe20%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&slug=in.%28enkutatash%2Cdemera%2Cmeskel%2Cmegabit-meskel%2Cgena%2Cgizret%2Ctimket%2Cketera%2Ckana-ze-galila%2Cdebre-tabor%2Ckidane-mihret%2Clideta-maryam%2Cfilseta%2Cmaryam-dormition%2Curiel-hamle%2Curiel-tir%2Cbisrate-gabriel%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&id=in.%28c1919cab-7b9e-40c5-bae0-b9bf0539567b%2C9e840540-538f-4953-9897-8266ea32a54b%2C8ba570b8-e4f1-48bf-bc54-635eb4636420%2C14aec867-1566-49ae-b0e9-5b031f8a4214%2Cf1f8dee1-156c-4b40-bcc2-b353a10201ad%2C23aa8602-5227-4880-ac6a-84be5322d365%2Ce49866bb-7a56-46e0-a32e-78cc0504b45a%2C9a992ea6-21c9-4d09-9b7a-156616a5786e%2C1a58e720-db4a-4bdb-a681-490e98e4354e%2C2d342f1d-504f-4689-8672-32a9da53437d%2Cd6ae7247-3e9a-49c5-a0a8-bec18cbc6390%2C951ffbe4-3ffc-4877-bc13-a065906d6c59%2Cee826d9f-6444-416f-ba48-997324bfb381%2C04cd4ac4-0fae-4ae9-a0ae-a5307e02a7c6%2Cc7aa7b90-69d2-4200-933b-1dabed4fa2ca%2Cddbc7a1a-e7a5-44cc-9358-5ac200d2142a%2C23bf9a43-db7b-4df4-afb3-832b49acafc6%2Ceba745d8-dcab-421c-82bc-392d3060bec9%2Cf788dbdb-7da6-4844-9022-aecef1c40b95%2C41b9a25c-5604-46b3-a903-baf75adf9ae1%2Ca53196d3-670c-4148-9dff-93fa059a03c7%2C22ab0429-8bfc-4f0f-91f8-fdaa2a2c1a94%2C86034110-c725-4f06-947e-279b16b1b05e%2C24db84fc-ff2e-490d-a56d-00f6769218a1%2Cff1d3ec9-38b3-41d6-9a8b-1663a536f249%2Cb72a6d91-d445-4b31-a750-0c5790ee8fe6%2C81e4e2fe-84df-47e2-9833-5a600226d6c3%2Ce5150d8a-a272-4cbf-a7c7-d5c08c22e606%2Cce71da98-4b62-4838-ad64-00a9d7c72087%2C858df536-4a57-42ca-9c00-47c817d4b78c%2C367d2ef7-d2a1-4ff1-abdd-2f3078932eaf%2C3433071c-3883-44da-a63d-f37f25749e47%2C079e2c3b-ebb5-40fc-8d72-12ab0b9bde86%2C5646dc47-d5c9-4dc6-8f04-53c40bad2d12%2C2ee07a69-12a2-4024-b9b9-2a2683961a15%2Cae6f5668-6625-47f1-9c95-d0d483e1384c%2C30040a72-1cc4-41aa-9f05-0e6e054404d7%2C69d5a809-c5c2-4ae2-9096-5cc0198704ac%2Ca5e3368c-5d87-4310-8ccc-d1d6218ca75f%2Ca44e761a-e40c-4ea4-9a4d-7dddf5acfa44%2Ca1a1d292-ffde-4bff-86c1-1ae52c9e90dc%2Cfed37d18-11c5-4635-b336-67b5240a8707%2C12dd24df-6612-446b-92f5-c3eff1fe88ba%2C17a752df-e4a9-44e2-89ae-23a312fd57f0%2C8f655c01-5934-40db-83ea-783caaf2f8e6%2Ce4d2ac87-0589-4ce6-bc27-0a659180ed4a%2Ce54b3a4a-e298-48fc-8572-a6db921ef9ff%2Cccee5625-396f-4eb8-a209-1306b41d0642%2C3b66d118-23de-4adf-899a-ac2fb39ef408%2C83bdeafc-e435-4e00-a93b-f91c80fe5ddf%2Cb0d99b8c-082b-4014-87c4-785db24f574d%2Cc7f94222-f549-46c3-8a77-85b4fbad349b%2C3ad4ee54-6863-4b59-9804-dc878b3e7105%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&slug=in.%28holy-week%2Cfilseta-period%2Cberhan-period%2Cheraclius-week%2Cadvent-sibket%2Cpaschal-season%2Ctsige-season%2Cnolawi-period%2Cbright-week%2Castereyo%2Cgreat-lent%2Capostles-fast-period%2Csibket-period%2Cresurrection-period%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&id=in.%2826f05b41-0408-4ea4-8476-b4874d105906%2C8a3ce00d-ec76-43e1-a153-d35a08d45dc2%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&slug=in.%28lideta-maryam-monthly%2Craguel-monthly%2Celijah-monthly%2Cthaddeus-monthly%2Cbeata-maryam-monthly%2Cphanuel-monthly%2Cjohn-evangelist-monthly%2Candrew-monthly%2Cgebre-menfes-kidus-monthly%2Cpeter-paul-monthly%2Cjesus-monthly%2Cqusquam-maryam-monthly%2Carsema-monthly%2Ctrinity-monthly%2Ccherubim-monthly%2Cmatthias-monthly%2Cthomas-monthly%2Cnicaea-fathers-monthly%2Ccross-monthly%2Ctsedenya-maryam-monthly%2Csimon-zealot-monthly%2Channa-joachim-monthly%2Cyared-monthly%2Cmichael-monthly%2Cmatthew-monthly%2Cgod-father-monthly%2Craphael-monthly%2Caregawi-monthly%2Cgebre-kristos-monthly%2Ccyriacus-julitta-monthly%2Ckidane-mihret-monthly%2Cstephen-monthly%2Cjames-zebedee-monthly%2Cphilip-monthly%2Cewostatewos-monthly%2Cgabriel-monthly%2Cmaryam-church-monthly%2Cmaryam-monthly%2Curiel-monthly%2Cannunciation-monthly%2Cluke-monthly%2Cgiorgis-monthly%2Ctekle-haymanot-monthly%2Cheavenly-priests-monthly%2Cmercurius-monthly%2Cjoseph-monthly%2Cabba-salama-monthly%2Cpassion-monthly%2Cemmanuel-monthly%2Cnativity-monthly%2Clalibela-monthly%2Cjohn-baptist-monthly%2Cmark-monthly%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&slug=in.%28weekly-wednesday-friday%2Ctsige-fast%29 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/trinity/god-father-da174dac-1792450520577.webp?v=2026-10-19T22%3A55%3A25.980365%2B00%3A00 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/synaxarium_days?select=id%2Cslug%2Cethiopian_month%2Cethiopian_month_number%2Cethiopian_day%2Cdisplay_date_english%2Cdisplay_date_amharic%2Csummary%2Cstatus%2Cimage_path%2Cimage_alt&status=eq.published&ethiopian_month_number=eq.2&ethiopian_day=eq.14 net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/synaxarium_commemorations?select=id%2Cday_id%2Cday_slug%2Cslug%2Ctitle%2Ctitle_amharic%2Ccommemoration_type%2Csummary%2Cbody_amharic%2Cbody_english%2Cscripture_references%2Ckeywords%2Csort_order%2Cstatus%2Cimage_path%2Cimage_alt%2Cfeatured%2Cday%3Asynaxarium_days%28ethiopian_day%29&status=eq.published&title=ilike.%25monthly%25&order=sort_order.asc net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/storage/v1/object/public/content-media/calendar/saints/aregawi-390c2ba2-1792450704073.webp?v=2026-10-19T22%3A58%3A27.781186%2B00%3A00 net::ERR_ABORTED"
+    ],
+    "throttle": {
+      "enabled": false
+    }
+  },
+  "shots": [
+    {
+      "name": "390x844-en-day",
+      "overflowX": 0
+    },
+    {
+      "name": "360x800-en-day",
+      "overflowX": 0
+    },
+    {
+      "name": "412x915-en-day",
+      "overflowX": 0
+    },
+    {
+      "name": "390x844-en-night",
+      "overflowX": 0
+    },
+    {
+      "name": "844x390-landscape",
+      "overflowX": 0
+    },
+    {
+      "name": "390x844-reduced",
+      "overflowX": 0
+    }
+  ],
+  "finishedAt": "2026-10-21T20:19:50.322Z"
+}

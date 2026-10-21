@@ -17,6 +17,7 @@ import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
+import { ZemariSupportLinks } from '../components/practice/ZemariSupportLinks'
 
 function CardArt({ item }: { item: MezmurCard }) {
   const [src, setSrc] = useState('')
@@ -139,7 +140,7 @@ export function PublicHymnCollectionPage({
         } else {
           setLoading(false)
         }
-      } catch (cause) {
+      } catch {
         if (!active) return
         setError(t('practice.loadError'))
         setLoading(false)
@@ -148,7 +149,7 @@ export function PublicHymnCollectionPage({
     return () => {
       active = false
     }
-  }, [detailKind, isIndex, slug])
+  }, [detailKind, isIndex, slug, t])
 
   const page = pageNumber(params)
   const filterKey = useMemo(() => {
@@ -270,7 +271,7 @@ export function PublicHymnCollectionPage({
     return () => {
       active = false
     }
-  }, [detailKind, filterKey, group, isIndex, withinQ])
+  }, [detailKind, filterKey, group, isIndex, page, t, withinQ])
 
   if (isIndex) {
     return (
@@ -357,6 +358,10 @@ export function PublicHymnCollectionPage({
               </p>
             </div>
           </header>
+
+          {detailKind === 'singer' && group ? (
+            <ZemariSupportLinks singerName={group.name} links={group.socialLinks || {}} />
+          ) : null}
 
           <label className={s.withinSearch}>
             <span className={s.srOnly}>{t('practice.searchWithin')}</span>

@@ -14,7 +14,6 @@ export function NotFoundPage() {
 
   const destinations = [
     { to: '/', label: t('notFound.home'), desc: t('notFound.homeDesc') },
-    { to: '/today', label: t('notFound.today'), desc: t('notFound.todayDesc') },
     { to: '/practice', label: t('notFound.practice'), desc: t('notFound.practiceDesc') },
     { to: '/pray', label: t('notFound.pray'), desc: t('notFound.prayDesc') },
     { to: '/calendar', label: t('notFound.calendar'), desc: t('notFound.calendarDesc') },

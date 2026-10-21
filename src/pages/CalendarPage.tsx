@@ -340,22 +340,12 @@ export function CalendarPage() {
     <PageSection id="calendar" variant="tint" className={styles.page}>
       <header className={styles.header}>
         <div className={styles.headerTop}>
-          <div>
-            <p className={styles.eyebrow}>{t('nav.calendar')}</p>
-            <h1 className={styles.title}>{t('nav.calendar')}</h1>
-          </div>
-          <div className={styles.headerActions}>
-            <CalendarReminderToggle />
-            <button type="button" className={styles.btnPrimary} onClick={jumpToday}>
-              {t('calendar.page.jumpToday')}
-            </button>
-          </div>
+          <h1 className={styles.title}>{t('nav.calendar')}</h1>
+          <CalendarReminderToggle />
         </div>
-      </header>
 
-      <section className={styles.selectedBlock} aria-labelledby="timeline-heading">
-        <header className={styles.selectedHead}>
-          <div className={styles.dayNav}>
+        <div className={styles.dateRow}>
+          <div className={styles.dayNav} aria-label={t('calendar.page.dayNavAria')}>
             <button
               type="button"
               className={styles.dayNavBtn}
@@ -383,8 +373,13 @@ export function CalendarPage() {
               →
             </button>
           </div>
-        </header>
+          <button type="button" className={styles.todayBtn} onClick={jumpToday}>
+            {t('calendar.page.today')}
+          </button>
+        </div>
+      </header>
 
+      <section className={styles.selectedBlock} aria-labelledby="timeline-heading">
         {dayError && !dayContext && timelineGroups.length === 0 ? (
           <div className={styles.errorBox} role="alert">
             <p>{dayError}</p>

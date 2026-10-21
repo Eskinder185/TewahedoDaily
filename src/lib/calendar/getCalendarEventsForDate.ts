@@ -38,8 +38,8 @@ export type CalendarDayGroup = {
 }
 
 let cardsCache: { at: number; cards: CalendarCard[] } | null = null
-/** Short TTL so Admin presentation edits reach Calendar/Homepage without a long wait. */
-const CARDS_TTL_MS = 30 * 1000
+/** Public pages reuse published cards; Admin mutations call invalidateCalendarCardsCache(). */
+const CARDS_TTL_MS = 5 * 60 * 1000
 
 /** Clear in-memory calendar_cards cache (call after Admin mutations). */
 export function invalidateCalendarCardsCache() {

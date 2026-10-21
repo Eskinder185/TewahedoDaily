@@ -23,7 +23,7 @@
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.6rem);
   line-height: var(--leading-tight);
-  color: var(--color-heading);
+  color: var(--color-burgundy-ink, var(--color-heading));
 }
 
 .deck {

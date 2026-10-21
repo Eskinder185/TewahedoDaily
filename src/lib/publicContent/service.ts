@@ -10,10 +10,6 @@ import {
   displayClassification,
   occasionOptions,
 } from './taxonomy'
-import {
-  loadMezmurSearchCatalog,
-  searchMezmurCatalog,
-} from './mezmurSearch'
 
 /** Public mezmur library uses Supabase only when the browser client is configured. */
 export const useLegacyMezmur = !supabase
@@ -146,6 +142,7 @@ async function discoverViaTable(params: URLSearchParams): Promise<Discovery> {
   // Always load lightweight published metadata once, then filter/fuzzy in the browser.
   // Live `search_keywords` / tag columns are TEXT (not text[]) — never use PostgREST cs/@>.
   try {
+    const { loadMezmurSearchCatalog, searchMezmurCatalog } = await import('./mezmurSearch')
     const catalog = await loadMezmurSearchCatalog()
     const result = searchMezmurCatalog(catalog, q, {
       language,

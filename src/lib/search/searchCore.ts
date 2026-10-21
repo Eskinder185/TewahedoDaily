@@ -2,6 +2,7 @@
  * Pure Search Buddy helpers — ranking, aliases, follow-ups, titles.
  * Kept free of network I/O so Node tests can cover retrieval behavior.
  */
+import { aliasExpansionTokens } from './entityAliases.ts'
 import type { SiteSearchResult, SiteSearchSourceType } from './types'
 
 export type SearchSessionContext = {
@@ -48,14 +49,17 @@ export const QUERY_ALIASES: Record<string, string[]> = {
   meskel: ['meskel', 'meskal', 'meskle', 'መስቀል', 'holidays-meskel', 'true cross'],
   meskal: ['meskel', 'meskal', 'meskle', 'መስቀል', 'holidays-meskel'],
   meskle: ['meskel', 'meskal', 'meskle', 'መስቀል', 'holidays-meskel'],
-  michael: ['michael', 'mikael', 'st michael', 'saint michael', 'ሚካኤል'],
-  mikael: ['michael', 'mikael', 'st michael', 'saint michael', 'ሚካኤል'],
-  'st michael': ['michael', 'mikael', 'st michael', 'saint michael', 'ሚካኤል'],
-  'saint michael': ['michael', 'mikael', 'st michael', 'saint michael', 'ሚካኤል'],
+  michael: ['michael', 'micheal', 'mikael', 'mikail', 'st michael', 'saint michael', 'ሚካኤል'],
+  micheal: ['michael', 'micheal', 'mikael', 'mikail', 'ሚካኤል'],
+  mikael: ['michael', 'micheal', 'mikael', 'mikail', 'st michael', 'saint michael', 'ሚካኤል'],
+  mikail: ['michael', 'micheal', 'mikael', 'mikail', 'ሚካኤል'],
+  'st michael': ['michael', 'micheal', 'mikael', 'mikail', 'st michael', 'saint michael', 'ሚካኤል'],
+  'saint michael': ['michael', 'micheal', 'mikael', 'mikail', 'st michael', 'saint michael', 'ሚካኤል'],
   uriel: ['uriel', 'st uriel', 'saint uriel'],
   'st uriel': ['uriel', 'st uriel', 'saint uriel'],
   'saint uriel': ['uriel', 'st uriel', 'saint uriel'],
-  gabriel: ['gabriel', 'st gabriel', 'saint gabriel', 'ገብርኤል'],
+  gabriel: ['gabriel', 'gebriel', 'st gabriel', 'saint gabriel', 'ገብርኤል'],
+  gebriel: ['gabriel', 'gebriel', 'st gabriel', 'saint gabriel', 'ገብርኤል'],
   zemary: ['zemari', 'singer'],
   zemari: ['zemari', 'singer', 'ዘማሪ'],
   synaxarium: ['synaxarium', 'senkesar', 'senkessar', 'ስንክሳር', 'synaxaria'],
@@ -74,6 +78,11 @@ export function normalizeSearchText(value: string): string {
   return value
     .normalize('NFKC')
     .toLowerCase()
+    .replace(/what's/g, 'what is')
+    .replace(/when's/g, 'when is')
+    .replace(/how's/g, 'how is')
+    .replace(/we're/g, 'we are')
+    .replace(/['’ʼ]s\b/g, '')
     .replace(/['’ʼ]/g, '')
     .replace(/[^\p{L}\p{N}\s/-]+/gu, ' ')
     .replace(/\s+/g, ' ')
@@ -87,6 +96,7 @@ export function expandSearchAliases(query: string): string {
   for (const [key, vals] of Object.entries(QUERY_ALIASES)) {
     if (norm.includes(normalizeSearchText(key))) extras.push(...vals)
   }
+  extras.push(...aliasExpansionTokens(norm))
   return extras.length ? `${query} ${[...new Set(extras)].join(' ')}` : query
 }
 
@@ -219,6 +229,9 @@ export function specificityRank(
     case 'guide':
     case 'synaxarium':
     case 'synaxarium_commemoration':
+    case 'saint':
+    case 'feast':
+    case 'learn':
       return 0
     case 'bible-text':
     case 'hymn_collection':

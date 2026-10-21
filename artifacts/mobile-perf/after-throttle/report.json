@@ -1,0 +1,1903 @@
+{
+  "label": "after-throttle",
+  "base": "http://127.0.0.1:4173",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "samples": 5,
+  "throttle": {
+    "note": "Throttled desktop Chromium, not a physical iPhone or Android device.",
+    "cpuRate": 4,
+    "network": {
+      "offline": false,
+      "latency": 150,
+      "downloadThroughput": 209715,
+      "uploadThroughput": 96000,
+      "connectionType": "cellular3g"
+    }
+  },
+  "startedAt": "2026-10-21T20:28:54.297Z",
+  "coldHome": [
+    {
+      "dclMs": 2131,
+      "readyMs": 3453,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 53,
+      "jsTransferKb": 314,
+      "jsDecodedKb": 967,
+      "cssTransferKb": 91,
+      "imgTransferKb": 71,
+      "apiCount": 6,
+      "apiNames": [
+        "http://127.0.0.1:4173/assets/synaxariumSupabase-BCiwyHSG.js",
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "link",
+          "transferSize": 72372,
+          "encoded": 72072,
+          "decoded": 72072,
+          "duration": 1462,
+          "start": 190
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "react-vendor-CjjOpffD.js",
+          "transferKb": 88,
+          "decodedKb": 279,
+          "duration": 1710
+        },
+        {
+          "file": "vendor-h__2-Ud2.js",
+          "transferKb": 55,
+          "decodedKb": 210,
+          "duration": 1538
+        },
+        {
+          "file": "i18n-DjLcfzIo.js",
+          "transferKb": 33,
+          "decodedKb": 105,
+          "duration": 1737
+        },
+        {
+          "file": "index-B-8YRbo7.js",
+          "transferKb": 14,
+          "decodedKb": 57,
+          "duration": 459
+        },
+        {
+          "file": "SearchBuddy-D7V-ehBs.js",
+          "transferKb": 15,
+          "decodedKb": 47,
+          "duration": 675
+        },
+        {
+          "file": "uiLabels-BgeCDdIs.js",
+          "transferKb": 11,
+          "decodedKb": 33,
+          "duration": 1781
+        },
+        {
+          "file": "search-vendor-EHZaxLxg.js",
+          "transferKb": 8,
+          "decodedKb": 23,
+          "duration": 764
+        },
+        {
+          "file": "mezmurService-DJyRgdyx.js",
+          "transferKb": 8,
+          "decodedKb": 21,
+          "duration": 881
+        },
+        {
+          "file": "hymnBrowse-CC2rb6Y2.js",
+          "transferKb": 6,
+          "decodedKb": 21,
+          "duration": 703
+        },
+        {
+          "file": "HomePage-CmTo0bqy.js",
+          "transferKb": 5,
+          "decodedKb": 17,
+          "duration": 231
+        },
+        {
+          "file": "calendarPresentation-DLR94DuG.js",
+          "transferKb": 5,
+          "decodedKb": 17,
+          "duration": 433
+        },
+        {
+          "file": "bibleSearch-U4p3f4RH.js",
+          "transferKb": 6,
+          "decodedKb": 17,
+          "duration": 500
+        },
+        {
+          "file": "routeCatalog-CrZekjid.js",
+          "transferKb": 4,
+          "decodedKb": 14,
+          "duration": 780
+        },
+        {
+          "file": "synaxariumService-DdJbZ80C.js",
+          "transferKb": 3,
+          "decodedKb": 12,
+          "duration": 578
+        },
+        {
+          "file": "contentService-D4fNwVwK.js",
+          "transferKb": 4,
+          "decodedKb": 10,
+          "duration": 530
+        },
+        {
+          "file": "resolveCalendarCard-CpR7lsqn.js",
+          "transferKb": 3,
+          "decodedKb": 7,
+          "duration": 222
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 2015,
+          "duration": 115,
+          "name": "self"
+        },
+        {
+          "start": 2133,
+          "duration": 86,
+          "name": "self"
+        },
+        {
+          "start": 2246,
+          "duration": 110,
+          "name": "unknown"
+        },
+        {
+          "start": 2739,
+          "duration": 108,
+          "name": "unknown"
+        },
+        {
+          "start": 3173,
+          "duration": 53,
+          "name": "unknown"
+        },
+        {
+          "start": 3250,
+          "duration": 51,
+          "name": "unknown"
+        },
+        {
+          "start": 4303,
+          "duration": 51,
+          "name": "self"
+        }
+      ],
+      "longTaskMs": 574,
+      "cls": 0.5437,
+      "lcp": {
+        "start": 2857,
+        "size": 13140,
+        "url": ""
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x844",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "",
+          "natural": "0x0",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": false
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "",
+          "natural": "0x0",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": false
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [],
+      "throttle": {
+        "enabled": true,
+        "cpuRate": 4,
+        "network": {
+          "offline": false,
+          "latency": 150,
+          "downloadThroughput": 209715,
+          "uploadThroughput": 96000,
+          "connectionType": "cellular3g"
+        }
+      }
+    },
+    {
+      "dclMs": 2093,
+      "readyMs": 3392,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 53,
+      "jsTransferKb": 314,
+      "jsDecodedKb": 967,
+      "cssTransferKb": 91,
+      "imgTransferKb": 71,
+      "apiCount": 6,
+      "apiNames": [
+        "http://127.0.0.1:4173/assets/synaxariumSupabase-BCiwyHSG.js",
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "link",
+          "transferSize": 72372,
+          "encoded": 72072,
+          "decoded": 72072,
+          "duration": 1508,
+          "start": 180
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "react-vendor-CjjOpffD.js",
+          "transferKb": 88,
+          "decodedKb": 279,
+          "duration": 1710
+        },
+        {
+          "file": "vendor-h__2-Ud2.js",
+          "transferKb": 55,
+          "decodedKb": 210,
+          "duration": 1553
+        },
+        {
+          "file": "i18n-DjLcfzIo.js",
+          "transferKb": 33,
+          "decodedKb": 105,
+          "duration": 1738
+        },
+        {
+          "file": "index-B-8YRbo7.js",
+          "transferKb": 14,
+          "decodedKb": 57,
+          "duration": 445
+        },
+        {
+          "file": "SearchBuddy-D7V-ehBs.js",
+          "transferKb": 15,
+          "decodedKb": 47,
+          "duration": 737
+        },
+        {
+          "file": "uiLabels-BgeCDdIs.js",
+          "transferKb": 11,
+          "decodedKb": 33,
+          "duration": 1783
+        },
+        {
+          "file": "search-vendor-EHZaxLxg.js",
+          "transferKb": 8,
+          "decodedKb": 23,
+          "duration": 844
+        },
+        {
+          "file": "mezmurService-DJyRgdyx.js",
+          "transferKb": 8,
+          "decodedKb": 21,
+          "duration": 910
+        },
+        {
+          "file": "hymnBrowse-CC2rb6Y2.js",
+          "transferKb": 6,
+          "decodedKb": 21,
+          "duration": 751
+        },
+        {
+          "file": "HomePage-CmTo0bqy.js",
+          "transferKb": 5,
+          "decodedKb": 17,
+          "duration": 232
+        },
+        {
+          "file": "calendarPresentation-DLR94DuG.js",
+          "transferKb": 5,
+          "decodedKb": 17,
+          "duration": 492
+        },
+        {
+          "file": "bibleSearch-U4p3f4RH.js",
+          "transferKb": 6,
+          "decodedKb": 17,
+          "duration": 579
+        },
+        {
+          "file": "routeCatalog-CrZekjid.js",
+          "transferKb": 4,
+          "decodedKb": 14,
+          "duration": 828
+        },
+        {
+          "file": "synaxariumService-DdJbZ80C.js",
+          "transferKb": 3,
+          "decodedKb": 12,
+          "duration": 606
+        },
+        {
+          "file": "contentService-D4fNwVwK.js",
+          "transferKb": 4,
+          "decodedKb": 10,
+          "duration": 594
+        },
+        {
+          "file": "resolveCalendarCard-CpR7lsqn.js",
+          "transferKb": 3,
+          "decodedKb": 7,
+          "duration": 229
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 2035,
+          "duration": 58,
+          "name": "self"
+        },
+        {
+          "start": 2095,
+          "duration": 63,
+          "name": "self"
+        },
+        {
+          "start": 2182,
+          "duration": 89,
+          "name": "unknown"
+        },
+        {
+          "start": 2665,
+          "duration": 65,
+          "name": "unknown"
+        },
+        {
+          "start": 3115,
+          "duration": 53,
+          "name": "unknown"
+        }
+      ],
+      "longTaskMs": 328,
+      "cls": 0.2767,
+      "lcp": {
+        "start": 2738,
+        "size": 13140,
+        "url": ""
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x844",
+          "loading": "auto",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [],
+      "throttle": {
+        "enabled": true,
+        "cpuRate": 4,
+        "network": {
+          "offline": false,
+          "latency": 150,
+          "downloadThroughput": 209715,
+          "uploadThroughput": 96000,
+          "connectionType": "cellular3g"
+        }
+      }
+    },
+    {
+      "dclMs": 2077,
+      "readyMs": 3368,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 53,
+      "jsTransferKb": 314,
+      "jsDecodedKb": 967,
+      "cssTransferKb": 91,
+      "imgTransferKb": 71,
+      "apiCount": 6,
+      "apiNames": [
+        "http://127.0.0.1:4173/assets/synaxariumSupabase-BCiwyHSG.js",
+        "/rest/v1/orthodox_observances?select=*&status=eq.published",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/monthly_commemorations?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "link",
+          "transferSize": 72372,
+          "encoded": 72072,
+          "decoded": 72072,
+          "duration": 1477,
+          "start": 188
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "react-vendor-CjjOpffD.js",
+          "transferKb": 88,
+          "decodedKb": 279,
+          "duration": 1708
+        },
+        {
+          "file": "vendor-h__2-Ud2.js",
+          "transferKb": 55,
+          "decodedKb": 210,
+          "duration": 1552
+        },
+        {
+          "file": "i18n-DjLcfzIo.js",
+          "transferKb": 33,
+          "decodedKb": 105,
+          "duration": 1736
+        },
+        {
+          "file": "index-B-8YRbo7.js",
+          "transferKb": 14,
+          "decodedKb": 57,
+          "duration": 461
+        },
+        {
+          "file": "SearchBuddy-D7V-ehBs.js",
+          "transferKb": 15,
+          "decodedKb": 47,
+          "duration": 625
+        },
+        {
+          "file": "uiLabels-BgeCDdIs.js",
+          "transferKb": 11,
+          "decodedKb": 33,
+          "duration": 1779
+        },
+        {
+          "file": "search-vendor-EHZaxLxg.js",
+          "transferKb": 8,
+          "decodedKb": 23,
+          "duration": 811
+        },
+        {
+          "file": "mezmurService-DJyRgdyx.js",
+          "transferKb": 8,
+          "decodedKb": 21,
+          "duration": 882
+        },
+        {
+          "file": "hymnBrowse-CC2rb6Y2.js",
+          "transferKb": 6,
+          "decodedKb": 21,
+          "duration": 732
+        },
+        {
+          "file": "HomePage-CmTo0bqy.js",
+          "transferKb": 5,
+          "decodedKb": 17,
+          "duration": 229
+        },
+        {
+          "file": "calendarPresentation-DLR94DuG.js",
+          "transferKb": 5,
+          "decodedKb": 17,
+          "duration": 450
+        },
+        {
+          "file": "bibleSearch-U4p3f4RH.js",
+          "transferKb": 6,
+          "decodedKb": 17,
+          "duration": 546
+        },
+        {
+          "file": "routeCatalog-CrZekjid.js",
+          "transferKb": 4,
+          "decodedKb": 14,
+          "duration": 811
+        },
+        {
+          "file": "synaxariumService-DdJbZ80C.js",
+          "transferKb": 3,
+          "decodedKb": 12,
+          "duration": 612
+        },
+        {
+          "file": "contentService-D4fNwVwK.js",
+          "transferKb": 4,
+          "decodedKb": 10,
+          "duration": 561
+        },
+        {
+          "file": "resolveCalendarCard-CpR7lsqn.js",
+          "transferKb": 3,
+          "decodedKb": 7,
+          "duration": 221
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 2024,
+          "duration": 53,
+          "name": "self"
+        },
+        {
+          "start": 2079,
+          "duration": 69,
+          "name": "self"
+        },
+        {
+          "start": 2172,
+          "duration": 95,
+          "name": "unknown"
+        },
+        {
+          "start": 2619,
+          "duration": 61,
+          "name": "unknown"
+        }
+      ],
+      "longTaskMs": 278,
+      "cls": 0.2767,
+      "lcp": {
+        "start": 2687,
+        "size": 13140,
+        "url": ""
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x844",
+          "loading": "auto",
+          "complete": true
+        },
+        {
+          "src": "yared-96548f68-1792449396141.webp?v=2026-10-19T22%3A37%3A16.378577%2B00%3A00",
+          "currentSrc": "",
+          "natural": "0x0",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": false
+        },
+        {
+          "src": "tsige-fast-5782786f-1792447869512.webp?v=2026-10-19T22%3A11%3A16.687238%2B00%3A00",
+          "currentSrc": "",
+          "natural": "0x0",
+          "display": "329x247",
+          "loading": "lazy",
+          "complete": false
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [],
+      "throttle": {
+        "enabled": true,
+        "cpuRate": 4,
+        "network": {
+          "offline": false,
+          "latency": 150,
+          "downloadThroughput": 209715,
+          "uploadThroughput": 96000,
+          "connectionType": "cellular3g"
+        }
+      }
+    }
+  ],
+  "warmHome": [
+    {
+      "readyMs": 2376,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 53,
+      "jsTransferKb": 16,
+      "jsDecodedKb": 0,
+      "cssTransferKb": 2,
+      "imgTransferKb": 0,
+      "apiCount": 4,
+      "apiNames": [
+        "http://127.0.0.1:4173/assets/synaxariumSupabase-BCiwyHSG.js",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "link",
+          "transferSize": 300,
+          "encoded": 0,
+          "decoded": 0,
+          "duration": 177,
+          "start": 167
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "index-B-8YRbo7.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 177
+        },
+        {
+          "file": "rolldown-runtime-Dw2cE7zH.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 178
+        },
+        {
+          "file": "react-vendor-CjjOpffD.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 191
+        },
+        {
+          "file": "taxonomy-D3AIAEIj.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 191
+        },
+        {
+          "file": "labels-j2zpzGS_.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 206
+        },
+        {
+          "file": "vendor-h__2-Ud2.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 362
+        },
+        {
+          "file": "client-Bf3iKZu1.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 362
+        },
+        {
+          "file": "service-BbJO3vLl.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 377
+        },
+        {
+          "file": "cmsStaffAuth-JlwTLHVh.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 517
+        },
+        {
+          "file": "mezmurService-DJyRgdyx.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 517
+        },
+        {
+          "file": "useAsync-CwPZu7wv.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 518
+        },
+        {
+          "file": "audio-C7v6sE44.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 532
+        },
+        {
+          "file": "PublicUi-CQOHsXqa.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 532
+        },
+        {
+          "file": "scrollUtils-D6Vj0I7B.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 548
+        },
+        {
+          "file": "locale-DWRJ31Bl.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 687
+        },
+        {
+          "file": "i18n-DjLcfzIo.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 686
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.2282,
+      "lcp": {
+        "start": 1687,
+        "size": 11507,
+        "url": ""
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x844",
+          "loading": "auto",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500 net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&status=eq.published net::ERR_ABORTED"
+      ],
+      "throttle": {
+        "enabled": true,
+        "cpuRate": 4,
+        "network": {
+          "offline": false,
+          "latency": 150,
+          "downloadThroughput": 209715,
+          "uploadThroughput": 96000,
+          "connectionType": "cellular3g"
+        }
+      }
+    },
+    {
+      "readyMs": 2354,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 53,
+      "jsTransferKb": 16,
+      "jsDecodedKb": 0,
+      "cssTransferKb": 2,
+      "imgTransferKb": 0,
+      "apiCount": 4,
+      "apiNames": [
+        "http://127.0.0.1:4173/assets/synaxariumSupabase-BCiwyHSG.js",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published",
+        "/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "link",
+          "transferSize": 300,
+          "encoded": 0,
+          "decoded": 0,
+          "duration": 181,
+          "start": 177
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "index-B-8YRbo7.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 181
+        },
+        {
+          "file": "rolldown-runtime-Dw2cE7zH.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 195
+        },
+        {
+          "file": "react-vendor-CjjOpffD.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 195
+        },
+        {
+          "file": "taxonomy-D3AIAEIj.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 196
+        },
+        {
+          "file": "labels-j2zpzGS_.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 210
+        },
+        {
+          "file": "vendor-h__2-Ud2.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 365
+        },
+        {
+          "file": "client-Bf3iKZu1.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 367
+        },
+        {
+          "file": "service-BbJO3vLl.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 380
+        },
+        {
+          "file": "cmsStaffAuth-JlwTLHVh.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 520
+        },
+        {
+          "file": "mezmurService-DJyRgdyx.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 520
+        },
+        {
+          "file": "useAsync-CwPZu7wv.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 535
+        },
+        {
+          "file": "audio-C7v6sE44.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 535
+        },
+        {
+          "file": "PublicUi-CQOHsXqa.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 550
+        },
+        {
+          "file": "scrollUtils-D6Vj0I7B.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 550
+        },
+        {
+          "file": "locale-DWRJ31Bl.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 690
+        },
+        {
+          "file": "i18n-DjLcfzIo.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 690
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.2282,
+      "lcp": {
+        "start": 1676,
+        "size": 11507,
+        "url": ""
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x844",
+          "loading": "auto",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500 net::ERR_ABORTED"
+      ],
+      "throttle": {
+        "enabled": true,
+        "cpuRate": 4,
+        "network": {
+          "offline": false,
+          "latency": 150,
+          "downloadThroughput": 209715,
+          "uploadThroughput": 96000,
+          "connectionType": "cellular3g"
+        }
+      }
+    },
+    {
+      "readyMs": 2365,
+      "href": "http://127.0.0.1:4173/",
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "jsCount": 53,
+      "jsTransferKb": 16,
+      "jsDecodedKb": 0,
+      "cssTransferKb": 2,
+      "imgTransferKb": 0,
+      "apiCount": 3,
+      "apiNames": [
+        "http://127.0.0.1:4173/assets/synaxariumSupabase-BCiwyHSG.js",
+        "/rest/v1/liturgical_fasts?select=*&status=eq.published",
+        "/rest/v1/liturgical_seasons?select=*&status=eq.published"
+      ],
+      "hero": [
+        {
+          "name": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "type": "link",
+          "transferSize": 300,
+          "encoded": 0,
+          "decoded": 0,
+          "duration": 179,
+          "start": 180
+        }
+      ],
+      "jsFiles": [
+        {
+          "file": "index-B-8YRbo7.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 179
+        },
+        {
+          "file": "rolldown-runtime-Dw2cE7zH.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 194
+        },
+        {
+          "file": "react-vendor-CjjOpffD.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 194
+        },
+        {
+          "file": "taxonomy-D3AIAEIj.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 209
+        },
+        {
+          "file": "labels-j2zpzGS_.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 209
+        },
+        {
+          "file": "vendor-h__2-Ud2.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 366
+        },
+        {
+          "file": "client-Bf3iKZu1.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 382
+        },
+        {
+          "file": "service-BbJO3vLl.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 382
+        },
+        {
+          "file": "cmsStaffAuth-JlwTLHVh.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 520
+        },
+        {
+          "file": "mezmurService-DJyRgdyx.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 520
+        },
+        {
+          "file": "useAsync-CwPZu7wv.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 535
+        },
+        {
+          "file": "audio-C7v6sE44.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 535
+        },
+        {
+          "file": "PublicUi-CQOHsXqa.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 550
+        },
+        {
+          "file": "scrollUtils-D6Vj0I7B.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 550
+        },
+        {
+          "file": "locale-DWRJ31Bl.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 690
+        },
+        {
+          "file": "i18n-DjLcfzIo.js",
+          "transferKb": 0,
+          "decodedKb": 0,
+          "duration": 690
+        }
+      ],
+      "longTasks": [],
+      "longTaskMs": 0,
+      "cls": 0.2282,
+      "lcp": {
+        "start": 1676,
+        "size": 11507,
+        "url": ""
+      },
+      "images": [
+        {
+          "src": "home-hero-lalibela-640.webp",
+          "currentSrc": "http://127.0.0.1:4173/images/home/home-hero-lalibela-640.webp",
+          "natural": "390x480",
+          "display": "390x844",
+          "loading": "auto",
+          "complete": true
+        }
+      ],
+      "overflowX": 0,
+      "consoleReady": true,
+      "errors": [],
+      "failed": [
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&status=eq.published net::ERR_ABORTED",
+        "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500 net::ERR_ABORTED"
+      ],
+      "throttle": {
+        "enabled": true,
+        "cpuRate": 4,
+        "network": {
+          "offline": false,
+          "latency": 150,
+          "downloadThroughput": 209715,
+          "uploadThroughput": 96000,
+          "connectionType": "cellular3g"
+        }
+      }
+    }
+  ],
+  "nav": {
+    "homeToPrayCold": {
+      "label": "Home → Pray cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 62,
+        "min": 55,
+        "max": 77,
+        "samples": [
+          62,
+          58,
+          74,
+          77,
+          55
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 68,
+        "min": 62,
+        "max": 84,
+        "samples": [
+          68,
+          65,
+          82,
+          84,
+          62
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 62,
+        "min": 55,
+        "max": 77,
+        "samples": [
+          62,
+          58,
+          74,
+          77,
+          55
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 265,
+        "min": 258,
+        "max": 324,
+        "samples": [
+          258,
+          262,
+          324,
+          294,
+          265
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 62,
+          "tapToRouteMs": 62,
+          "tapToContentMs": 68,
+          "longTaskMsDuringNav": 258,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 58,
+          "tapToRouteMs": 58,
+          "tapToContentMs": 65,
+          "longTaskMsDuringNav": 262,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 74,
+          "tapToRouteMs": 74,
+          "tapToContentMs": 82,
+          "longTaskMsDuringNav": 324,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 77,
+          "tapToRouteMs": 77,
+          "tapToContentMs": 84,
+          "longTaskMsDuringNav": 294,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 55,
+          "tapToRouteMs": 55,
+          "tapToContentMs": 62,
+          "longTaskMsDuringNav": 265,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        }
+      ]
+    },
+    "homeToHymnsCold": {
+      "label": "Home → Hymns cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 68,
+        "min": 63,
+        "max": 73,
+        "samples": [
+          68,
+          73,
+          63,
+          68,
+          72
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 577,
+        "min": 552,
+        "max": 583,
+        "samples": [
+          581,
+          577,
+          568,
+          583,
+          552
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 68,
+        "min": 63,
+        "max": 73,
+        "samples": [
+          68,
+          73,
+          63,
+          68,
+          72
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 264,
+        "min": 252,
+        "max": 291,
+        "samples": [
+          284,
+          264,
+          291,
+          256,
+          252
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 68,
+          "tapToRouteMs": 68,
+          "tapToContentMs": 581,
+          "longTaskMsDuringNav": 284,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 73,
+          "tapToRouteMs": 73,
+          "tapToContentMs": 577,
+          "longTaskMsDuringNav": 264,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 63,
+          "tapToRouteMs": 63,
+          "tapToContentMs": 568,
+          "longTaskMsDuringNav": 291,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 68,
+          "tapToRouteMs": 68,
+          "tapToContentMs": 583,
+          "longTaskMsDuringNav": 256,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/practice",
+          "tapToClickResolvedMs": 72,
+          "tapToRouteMs": 72,
+          "tapToContentMs": 552,
+          "longTaskMsDuringNav": 252,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        }
+      ]
+    },
+    "homeToCalendarCold": {
+      "label": "Home → Calendar cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 68,
+        "min": 61,
+        "max": 80,
+        "samples": [
+          68,
+          69,
+          61,
+          80,
+          62
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 1109,
+        "min": 1020,
+        "max": 1134,
+        "samples": [
+          1088,
+          1119,
+          1109,
+          1134,
+          1020
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 68,
+        "min": 61,
+        "max": 80,
+        "samples": [
+          68,
+          69,
+          61,
+          80,
+          62
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 519,
+        "min": 480,
+        "max": 617,
+        "samples": [
+          520,
+          480,
+          480,
+          617,
+          519
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 68,
+          "tapToRouteMs": 68,
+          "tapToContentMs": 1088,
+          "longTaskMsDuringNav": 520,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 69,
+          "tapToRouteMs": 69,
+          "tapToContentMs": 1119,
+          "longTaskMsDuringNav": 480,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 61,
+          "tapToRouteMs": 61,
+          "tapToContentMs": 1109,
+          "longTaskMsDuringNav": 480,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 80,
+          "tapToRouteMs": 80,
+          "tapToContentMs": 1134,
+          "longTaskMsDuringNav": 617,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/calendar",
+          "tapToClickResolvedMs": 62,
+          "tapToRouteMs": 62,
+          "tapToContentMs": 1020,
+          "longTaskMsDuringNav": 519,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        }
+      ]
+    },
+    "homeToBibleCold": {
+      "label": "Home → Bible cold",
+      "tapToRoute": {
+        "n": 5,
+        "median": 65,
+        "min": 65,
+        "max": 85,
+        "samples": [
+          65,
+          65,
+          65,
+          85,
+          71
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 76,
+        "min": 72,
+        "max": 94,
+        "samples": [
+          72,
+          74,
+          76,
+          94,
+          78
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 65,
+        "min": 65,
+        "max": 85,
+        "samples": [
+          65,
+          65,
+          65,
+          85,
+          71
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 307,
+        "min": 273,
+        "max": 346,
+        "samples": [
+          307,
+          273,
+          310,
+          346,
+          281
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 65,
+          "tapToRouteMs": 65,
+          "tapToContentMs": 72,
+          "longTaskMsDuringNav": 307,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 65,
+          "tapToRouteMs": 65,
+          "tapToContentMs": 74,
+          "longTaskMsDuringNav": 273,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 65,
+          "tapToRouteMs": 65,
+          "tapToContentMs": 76,
+          "longTaskMsDuringNav": 310,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 85,
+          "tapToRouteMs": 85,
+          "tapToContentMs": 94,
+          "longTaskMsDuringNav": 346,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        },
+        {
+          "destPath": "/bible",
+          "tapToClickResolvedMs": 71,
+          "tapToRouteMs": 71,
+          "tapToContentMs": 78,
+          "longTaskMsDuringNav": 281,
+          "errors": [],
+          "failed": [],
+          "throttle": {
+            "enabled": true,
+            "cpuRate": 4,
+            "network": {
+              "offline": false,
+              "latency": 150,
+              "downloadThroughput": 209715,
+              "uploadThroughput": 96000,
+              "connectionType": "cellular3g"
+            }
+          }
+        }
+      ]
+    },
+    "homeToPrayWarm": {
+      "label": "Home → Pray warm",
+      "tapToRoute": {
+        "n": 5,
+        "median": 103,
+        "min": 75,
+        "max": 133,
+        "samples": [
+          75,
+          133,
+          103,
+          76,
+          108
+        ]
+      },
+      "tapToContent": {
+        "n": 5,
+        "median": 110,
+        "min": 85,
+        "max": 141,
+        "samples": [
+          92,
+          141,
+          110,
+          85,
+          116
+        ]
+      },
+      "tapToClickResolved": {
+        "n": 5,
+        "median": 103,
+        "min": 75,
+        "max": 133,
+        "samples": [
+          75,
+          133,
+          103,
+          76,
+          108
+        ]
+      },
+      "longTaskMsDuringNav": {
+        "n": 5,
+        "median": 0,
+        "min": 0,
+        "max": 75,
+        "samples": [
+          75,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "samples": [
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 75,
+          "tapToRouteMs": 75,
+          "tapToContentMs": 92,
+          "longTaskMsDuringNav": 75
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 133,
+          "tapToRouteMs": 133,
+          "tapToContentMs": 141,
+          "longTaskMsDuringNav": 0
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 103,
+          "tapToRouteMs": 103,
+          "tapToContentMs": 110,
+          "longTaskMsDuringNav": 0
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 76,
+          "tapToRouteMs": 76,
+          "tapToContentMs": 85,
+          "longTaskMsDuringNav": 0
+        },
+        {
+          "destPath": "/pray",
+          "tapToClickResolvedMs": 108,
+          "tapToRouteMs": 108,
+          "tapToContentMs": 116,
+          "longTaskMsDuringNav": 0
+        }
+      ]
+    }
+  },
+  "extra": {
+    "hymnFirstLink": "/practice/browse/holidays-feasts",
+    "hymnCategory": {
+      "tapToRouteMs": 746,
+      "url": "http://127.0.0.1:4173/practice/browse/holidays-feasts"
+    },
+    "searchBuddyVisible": false,
+    "errors": [],
+    "failed": [
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_fasts?select=*&status=eq.published net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/orthodox_observances?select=*&status=eq.published net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/monthly_commemorations?select=*&status=eq.published net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgical_seasons?select=*&status=eq.published net::ERR_ABORTED",
+      "GET https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/calendar_cards?select=id%2Cslug%2Ctitle%2Ctitle_amharic%2Ccategory%2Ccard_type%2Cdescription%2Csummary%2Csummary_amharic%2Cwhat_is_it%2Cwhat_is_it_amharic%2Cwhy_celebrated%2Cwhy_celebrated_amharic%2Cimportant_information%2Cimportant_information_amharic%2Cscripture_references%2Cfasting_notes%2Cfasting_notes_amharic%2Cseason_notes%2Cseason_notes_amharic%2Cshort_label%2Clearn_more_label%2Cimage_path%2Cimage_alt%2Cimage_position%2Cimage_caption%2Cimage_caption_amharic%2Cethiopian_month_number%2Cethiopian_day%2Cis_monthly%2Csynaxarium_day_id%2Csynaxarium_day_slug%2Cfeatured%2Cshow_on_home%2Chome_featured%2Chome_sort_order%2Chome_start_date%2Chome_end_date%2Csource_type%2Csource_id%2Csource_slug%2Csort_order%2Cstatus%2Cupdated_at&status=eq.published&order=sort_order.asc&limit=500 net::ERR_ABORTED",
+      "GET http://127.0.0.1:4173/assets/contentService-D4fNwVwK.js net::ERR_ABORTED",
+      "GET http://127.0.0.1:4173/assets/search-vendor-EHZaxLxg.js net::ERR_ABORTED",
+      "GET http://127.0.0.1:4173/assets/SearchBuddy-D7V-ehBs.js net::ERR_ABORTED",
+      "GET http://127.0.0.1:4173/assets/routeCatalog-CrZekjid.js net::ERR_ABORTED",
+      "GET http://127.0.0.1:4173/assets/aiClient-Bzdxdz4z.js net::ERR_ABORTED",
+      "GET http://127.0.0.1:4173/assets/mezmurSearch-CS0LZAgt.js net::ERR_ABORTED",
+      "GET http://127.0.0.1:4173/assets/aiConfig-DTYRtz1B.js net::ERR_ABORTED"
+    ],
+    "throttle": {
+      "enabled": true,
+      "cpuRate": 4,
+      "network": {
+        "offline": false,
+        "latency": 150,
+        "downloadThroughput": 209715,
+        "uploadThroughput": 96000,
+        "connectionType": "cellular3g"
+      }
+    }
+  },
+  "shots": [
+    {
+      "name": "390x844-en-day",
+      "overflowX": 0
+    },
+    {
+      "name": "360x800-en-day",
+      "overflowX": 0
+    },
+    {
+      "name": "412x915-en-day",
+      "overflowX": 0
+    },
+    {
+      "name": "390x844-en-night",
+      "overflowX": 0
+    },
+    {
+      "name": "844x390-landscape",
+      "overflowX": 0
+    },
+    {
+      "name": "390x844-reduced",
+      "overflowX": 0
+    }
+  ],
+  "finishedAt": "2026-10-21T20:31:33.015Z"
+}

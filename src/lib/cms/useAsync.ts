@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from 'react'
-import { errorMessage } from './mezmurService'
+import { errorMessage } from './errorMessage'
 
 export function useAsync<T>(load: () => Promise<T>) {
   const [revision, setRevision] = useState(0)

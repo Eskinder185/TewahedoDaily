@@ -18,6 +18,7 @@ import { MediaPicker } from '../../components/admin/MediaPicker'
 import { useAsync } from '../../lib/cms/useAsync'
 import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice } from './AdminUi'
+import { validateZemariSocialUrl } from '../../lib/publicContent/zemariSocialLinks'
 import s from './Admin.module.css'
 
 const thumbStyle: CSSProperties = {
@@ -210,6 +211,7 @@ function ZemariEditorForm({
   const [mezmurs, setMezmurs] = useState(initialMezmurs)
   const [linkQuery, setLinkQuery] = useState('')
   const [linkResults, setLinkResults] = useState<ZemariMezmurLink[]>([])
+  const [youtubeTouched, setYoutubeTouched] = useState(false)
   const [form, setForm] = useState({
     name: existing?.name || '',
     name_amharic: existing?.name_amharic || '',
@@ -233,6 +235,11 @@ function ZemariEditorForm({
       const slug = form.slug.trim() || slugifyZemari(form.name)
       if (!form.name.trim()) throw new Error('Name is required.')
       if (!slug) throw new Error('Slug is required.')
+      const youtube = validateZemariSocialUrl('youtube', form.youtube_url)
+      if (youtube.error) {
+        setYoutubeTouched(true)
+        throw new Error(`YouTube URL: ${youtube.error}`)
+      }
       const saved = await saveZemari(
         {
           ...form,
@@ -242,7 +249,7 @@ function ZemariEditorForm({
           name_amharic: form.name_amharic || null,
           bio: form.bio || null,
           bio_amharic: form.bio_amharic || null,
-          youtube_url: form.youtube_url || null,
+          youtube_url: youtube.url,
           website_url: form.website_url || null,
         },
         existing?.id,
@@ -396,12 +403,33 @@ function ZemariEditorForm({
                 onChange={(e) => setForm((prev) => ({ ...prev, bio_amharic: e.target.value }))}
               />
             </label>
-            <label>
-              YouTube URL
+            <label htmlFor="zemari-youtube-url">
+              Official YouTube channel or profile
               <input
+                id="zemari-youtube-url"
+                type="url"
+                inputMode="url"
+                autoComplete="url"
                 value={form.youtube_url}
                 onChange={(e) => setForm((prev) => ({ ...prev, youtube_url: e.target.value }))}
+                onBlur={() => setYoutubeTouched(true)}
+                placeholder="https://www.youtube.com/@channelname"
+                aria-describedby="zemari-youtube-help zemari-youtube-error"
+                aria-invalid={
+                  youtubeTouched && Boolean(validateZemariSocialUrl('youtube', form.youtube_url).error)
+                }
               />
+              <span id="zemari-youtube-help" className={s.muted}>
+                Example: https://www.youtube.com/@channelname. Use the singer&rsquo;s official channel,
+                not an individual video. Clear this field to remove the link.
+              </span>
+              {youtubeTouched && validateZemariSocialUrl('youtube', form.youtube_url).error ? (
+                <span id="zemari-youtube-error" className={s.error} role="alert">
+                  {validateZemariSocialUrl('youtube', form.youtube_url).error}
+                </span>
+              ) : (
+                <span id="zemari-youtube-error" />
+              )}
             </label>
             <label>
               Website URL

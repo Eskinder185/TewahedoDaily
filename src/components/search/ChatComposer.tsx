@@ -1,4 +1,6 @@
 import {
+  lazy,
+  Suspense,
   useEffect,
   useId,
   type FormEvent,
@@ -6,8 +8,11 @@ import {
   type ReactNode,
   type RefObject,
 } from 'react'
-import { MezmurVoiceSearch } from './MezmurVoiceSearch'
 import styles from './SearchBuddy.module.css'
+
+const MezmurVoiceSearch = lazy(() =>
+  import('./MezmurVoiceSearch').then((m) => ({ default: m.MezmurVoiceSearch })),
+)
 
 type Props = {
   value: string
@@ -126,22 +131,24 @@ export function ChatComposer({
 
         <div className={styles.composerActions}>
           <div className={styles.composerTools}>
-            <MezmurVoiceSearch
-              key={voiceRemountKey}
-              compact
-              active={voiceActive}
-              startAriaLabel={dictateAria}
-              onTranscript={(text) => {
-                // Fill the composer only — do not auto-submit or navigate.
-                // User reviews/corrects, then Send runs the same path as typed text.
-                const transcript = text.trim()
-                if (!transcript) return
-                onChange(transcript)
-                window.setTimeout(() => {
-                  inputRef.current?.focus()
-                }, 0)
-              }}
-            />
+            <Suspense fallback={null}>
+              <MezmurVoiceSearch
+                key={voiceRemountKey}
+                compact
+                active={voiceActive}
+                startAriaLabel={dictateAria}
+                onTranscript={(text) => {
+                  // Fill the composer only — do not auto-submit or navigate.
+                  // User reviews/corrects, then Send runs the same path as typed text.
+                  const transcript = text.trim()
+                  if (!transcript) return
+                  onChange(transcript)
+                  window.setTimeout(() => {
+                    inputRef.current?.focus()
+                  }, 0)
+                }}
+              />
+            </Suspense>
           </div>
           {busy && onCancel ? (
             <button

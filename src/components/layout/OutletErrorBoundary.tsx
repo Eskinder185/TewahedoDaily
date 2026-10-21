@@ -13,7 +13,7 @@ function isChunkLoadError(error: Error): boolean {
 }
 
 /**
- * Keeps AppShell chrome (header/footer/Search Buddy) when a lazy route or
+ * Keeps AppShell chrome (header/Search Buddy) when a lazy route or
  * offline chunk load fails. Full-router errorElement would replace the shell.
  */
 export class OutletErrorBoundary extends Component<Props, State> {

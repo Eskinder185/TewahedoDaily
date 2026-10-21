@@ -1,6 +1,6 @@
 /**
- * Calendar and theology detectors used by independent pages.
- * Search Buddy itself is exact Faith and Order search (see test-faith-and-order-search.mjs).
+ * Calendar detectors, plus Search Buddy's explicit teaching-topic map.
+ * Document search runs only for mapped church-teaching questions.
  * Run: npm run test:search-buddy-theology-routing
  */
 import assert from 'node:assert/strict'
@@ -14,6 +14,14 @@ import {
   parseSearchBuddyResponse,
 } from '../src/lib/searchBuddy/parseSearchBuddyResponse.ts'
 import { assistantLeadForResponse } from '../src/lib/search/assistantLead.ts'
+import {
+  SEVEN_SACRAMENTS_PARAGRAPH_ID,
+  SEVEN_SACRAMENTS_TEXT,
+  matchTeachingTopic,
+  selectFaithAndOrderPassage,
+  shouldSearchFaithAndOrder,
+} from '../src/lib/searchBuddy/teachingTopics.ts'
+import { parseQuestion } from '../src/lib/searchBuddy/questionParse.ts'
 import fs from 'node:fs'
 
 const INCARNATION =
@@ -113,8 +121,103 @@ const searchBuddySource = fs.readFileSync(
 assert.equal(searchBuddySource.includes('/api/chat'), false)
 assert.equal(searchBuddySource.includes('postAiChat'), false)
 assert.equal(searchBuddySource.includes('sendSearchBuddyMessage'), false)
-assert.equal(searchBuddySource.includes('searchSite('), false)
+assert.equal(searchBuddySource.includes('resolveBibleQuery'), false)
+assert.equal(searchBuddySource.includes('searchSite('), true)
 assert.equal(searchBuddySource.includes('answerLanguage'), false)
+assert.equal(searchBuddySource.includes('searchFaithAndOrder('), true)
+assert.equal(searchBuddySource.includes('shouldSearchFaithAndOrder'), true)
+assert.equal(searchBuddySource.includes('FaithAndOrderToc'), false)
+assert.equal(searchBuddySource.includes('FaithAndOrderSectionReader'), false)
+assert.equal(searchBuddySource.includes('FaithAndOrderSearchPane'), false)
+assert.equal(searchBuddySource.includes('sourceFilters'), false)
+assert.equal(searchBuddySource.includes('ChatStarterPrompts'), true)
+
+assert.equal(shouldSearchFaithAndOrder('How many sacraments are there?')?.id, 'seven-sacraments')
+assert.equal(shouldSearchFaithAndOrder('seven sacraments')?.id, 'seven-sacraments')
+assert.equal(shouldSearchFaithAndOrder('ሰባቱ ምሥጢራት ስንት ናቸው?')?.id, 'seven-sacraments')
+assert.equal(matchTeachingTopic('infant baptism')?.id, 'infant-baptism')
+const mysteryTopicCases = [
+  ['sacrament.baptism', 'sacrament of baptism', 'ምሥጢረ ጥምቀት'],
+  ['sacrament.myron', 'Holy Myron', 'ምሥጢረ ሜሮን'],
+  ['sacrament.communion', 'Eucharist', 'ምሥጢረ ቁርባን'],
+  ['sacrament.penance', 'Confession', 'ምሥጢረ ንስሓ'],
+  ['sacrament.anointing', 'Holy Unction', 'ምሥጢረ ቀንዲል'],
+  ['sacrament.matrimony', 'Marriage', 'ምሥጢረ ተክሊል'],
+  ['sacrament.orders', 'Priesthood', 'ምሥጢረ ክህነት'],
+  ['pillar.trinity', 'Mystery of the Trinity', 'ምሥጢረ ሥላሴ'],
+  ['pillar.incarnation', 'Mystery of the Incarnation', 'ምሥጢረ ሥጋዌ'],
+  ['pillar.baptism', 'five pillars mystery of baptism', 'አምስቱ አዕማደ ምሥጢር ምሥጢረ ጥምቀት'],
+  ['pillar.communion', 'five pillars mystery of the Holy Communion', 'አምስቱ አዕማደ ምሥጢር ምሥጢረ ቁርባን'],
+  ['pillar.resurrection', 'Mystery of the Resurrection of the Dead', 'ምሥጢረ ትንሣኤ ሙታን'],
+]
+for (const [id, english, amharic] of mysteryTopicCases) {
+  assert.equal(matchTeachingTopic(english)?.id, id, english)
+  assert.equal(matchTeachingTopic(amharic)?.id, id, amharic)
+}
+assert.equal(matchTeachingTopic('five mysteries')?.id, 'five-pillars')
+assert.equal(matchTeachingTopic('አምስቱ አእማደ ምስጢር')?.id, 'five-pillars')
+assert.equal(matchTeachingTopic('seven sacraments baptism')?.id, 'sacrament.baptism')
+assert.equal(matchTeachingTopic('five pillars baptism')?.id, 'pillar.baptism')
+assert.equal(matchTeachingTopic('ጥምቃት')?.id, 'baptism')
+assert.equal(matchTeachingTopic('ምስጢረ ቃንዴል')?.id, 'sacrament.anointing')
+assert.equal(matchTeachingTopic('ሚስትራ ቁርባን')?.id, 'sacrament.communion')
+assert.equal(matchTeachingTopic('ምሥጢረ ንስሐ')?.id, 'sacrament.penance')
+assert.equal(shouldSearchFaithAndOrder('Open Calendar'), null)
+assert.equal(parseQuestion("When is Saint Michael's feast?").domain, 'calendar')
+assert.equal(parseQuestion('Find hymns about Saint Michael').domain, 'hymn')
+assert.equal(parseQuestion('Who is Saint Michael?').domain, 'website')
+assert.equal(parseQuestion('Open Calendar').domain, 'navigation')
+assert.equal(parseQuestion('What are the Five Mysteries?').domain, 'teaching')
+assert.equal(shouldSearchFaithAndOrder("When is Saint Michael's feast?"), null)
+assert.equal(shouldSearchFaithAndOrder('Show me a Gena hymn'), null)
+assert.equal(shouldSearchFaithAndOrder('Find a Zemari'), null)
+assert.equal(shouldSearchFaithAndOrder('John 3:16'), null)
+assert.equal(shouldSearchFaithAndOrder('quantum blockchain pizza'), null)
+assert.equal(shouldSearchFaithAndOrder('zzzz-unrelated-topic'), null)
+
+const sacramentHit = {
+  id: SEVEN_SACRAMENTS_PARAGRAPH_ID,
+  paragraph_number: 165,
+  section_id: 's000152',
+  section_title: 'Introduction to Church Sacraments',
+  is_heading: false,
+  text: SEVEN_SACRAMENTS_TEXT,
+  source_id: 'faith-and-order',
+  version: 'a'.repeat(64),
+  language: 'en',
+  citation: 'paragraph 165',
+  paragraph_path: '/p',
+  section_path: '/s',
+  context_before: [],
+  context_after: [],
+}
+const otherHit = { ...sacramentHit, id: 'p000001', paragraph_number: 1, text: 'An unrelated heading.' }
+const topic = shouldSearchFaithAndOrder('seven sacraments')
+const validated = selectFaithAndOrderPassage(topic, {
+  type: 'document_search',
+  mode: 'exact_document_search',
+  generated: false,
+  query: 'seven sacraments',
+  source: { title: 'The Faith And Order Of The Church' },
+  status: 'matches',
+  count: 2,
+  results: [otherHit, sacramentHit],
+})
+assert.equal(validated.kind, 'validated')
+assert.equal(validated.kind === 'validated' ? validated.hit.text : '', SEVEN_SACRAMENTS_TEXT)
+assert.equal(validated.kind === 'validated' ? validated.hit.text.includes('Burial') : true, false)
+
+const rejectedTopHit = selectFaithAndOrderPassage(topic, {
+  type: 'document_search',
+  mode: 'exact_document_search',
+  generated: false,
+  query: 'seven sacraments',
+  source: { title: 'The Faith And Order Of The Church' },
+  status: 'matches',
+  count: 1,
+  results: [otherHit],
+})
+assert.equal(rejectedTopHit.kind, 'none')
 
 console.log('theology routing heuristics: ok')
 console.log('test-search-buddy-theology-routing: document search coverage continues in test-faith-and-order-search')

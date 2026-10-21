@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { PageSection } from '../ui/PageSection'
 import { useHomeToday } from '../../hooks/useHomeToday'
@@ -104,9 +103,6 @@ export function HomeTodayInChurchPreview() {
           <h2 className={styles.title}>{t('home.today.title')}</h2>
           {dateLine ? <p className={styles.dateLine}>{dateLine}</p> : null}
           <p className={styles.selectionNote}>{t('home.today.selectionNote')}</p>
-          <Link className={styles.seeAll} to="/today">
-            {t('home.today.seeAll')}
-          </Link>
         </div>
 
         <div

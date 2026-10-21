@@ -36,8 +36,17 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: '/index.html',
-        globPatterns: ['**/*.{js,css,html,ico,svg,webp,woff2,json}'],
+        globPatterns: ['index.html', 'manifest.webmanifest', 'favicon.svg', 'icons.svg'],
+        globIgnores: ['**/*.wasm', '**/whisper*', '**/ort-wasm*', 'docs/**'],
         runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.startsWith('/assets/'),
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'td-assets',
+              expiration: { maxEntries: 80, maxAgeSeconds: 60 * 60 * 24 * 7 },
+            },
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',
@@ -76,62 +85,33 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Vendor chunk for React and React Router
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+          const norm = id.replace(/\\/g, '/')
+          if (norm.includes('node_modules')) {
+            if (norm.includes('react') || norm.includes('react-dom') || norm.includes('react-router')) {
               return 'react-vendor'
             }
-            // Separate chunk for other vendor dependencies
-            if (id.includes('fuse.js')) {
+            if (norm.includes('fuse.js')) {
               return 'search-vendor'
             }
-            // Keep Whisper / ONNX runtime out of the main vendor + Search Buddy chunks.
-            if (id.includes('@huggingface/transformers') || id.includes('onnxruntime')) {
+            if (norm.includes('@huggingface/transformers') || norm.includes('onnxruntime')) {
               return 'whisper-vendor'
             }
             return 'vendor'
           }
 
-          if (id.includes('src/lib/speech/whisper')) {
+          if (norm.includes('/src/lib/speech/whisper')) {
             return 'whisper-speech'
           }
-          
-          // EOTC rule-engine datasets (date resolution / movable feasts) — not CMS copy
-          if (id.includes('src/data/eotc_calendar_json/') || id.includes('src/data/calendar/')) {
-            return 'eotc-dataset'
-          }
 
-          // Calendar page + shared calendar libs (keep Homepage out via dynamic imports)
+          // Keep the large static EOTC JSON off the AppShell / Home graph.
+          // Do not bucket shared calendar/practice/prayer modules here: that
+          // magnetized 795KB+ of page UI into every public route.
           if (
-            id.includes('src/pages/CalendarPage') ||
-            id.includes('src/lib/calendar/') ||
-            id.includes('src/lib/eotcCalendar/') ||
-            id.includes('src/lib/churchCalendar/') ||
-            id.includes('src/components/calendar/') ||
-            id.includes('src/components/todayInChurch/')
+            norm.includes('/src/data/eotc_calendar_json/') ||
+            norm.includes('/src/lib/eotcCalendar/eotcCalendarDataset') ||
+            norm.includes('/src/data/calendar/')
           ) {
-            return 'calendar'
-          }
-          
-          // Practice-related components + chant workshop (not homepage)
-          if (
-            id.includes('src/components/practice/') ||
-            id.includes('src/lib/practice/') ||
-            id.includes('src/pages/PracticePage') ||
-            id.includes('src/pages/MezmurDetailPage') ||
-            id.includes('src/pages/HymnPractice')
-          ) {
-            return 'practice'
-          }
-          
-          // Prayer-related components
-          if (id.includes('src/components/prayers/') || id.includes('src/lib/prayers/')) {
-            return 'prayers'
-          }
-          
-          // i18n and localization
-          if (id.includes('src/lib/i18n/')) {
-            return 'i18n'
+            return 'eotc-dataset'
           }
         },
       },

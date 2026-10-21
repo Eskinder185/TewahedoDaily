@@ -16,6 +16,7 @@
 import { supabase } from '../supabase/client'
 import { resolveContentMediaUrl } from '../cms/contentMedia'
 import { resolveHymnSectionImageUrl } from './hymnSectionArtFallbacks'
+import type { ZemariSocialLinks } from './zemariSocialLinks'
 
 export type HymnCollection = {
   id: string
@@ -73,6 +74,7 @@ export type HymnBrowseCard = {
   featured: boolean
   sortOrder: number
   href: string
+  socialLinks?: ZemariSocialLinks
 }
 
 export type HymnSectionMezmur = {
@@ -361,8 +363,28 @@ function isPublishedStatus(status: unknown): boolean {
 const COLLECTION_SELECT =
   'collection_id, collection_slug, title, title_amharic, description, description_amharic, image_path, image_alt, collection_type, sort_order, is_featured, status'
 
+let collectionsCache: { at: number; data: HymnCollection[] } | null = null
+let collectionsPromise: Promise<HymnCollection[]> | null = null
+const COLLECTIONS_TTL_MS = 5 * 60 * 1000
+
 /** Level 1 — collections from mezmur_collections_import. */
 export async function getHymnCollections(): Promise<HymnCollection[]> {
+  if (collectionsCache && Date.now() - collectionsCache.at < COLLECTIONS_TTL_MS) {
+    return collectionsCache.data
+  }
+  if (collectionsPromise) return collectionsPromise
+  collectionsPromise = loadHymnCollectionsFresh()
+    .then((data) => {
+      collectionsCache = { at: Date.now(), data }
+      return data
+    })
+    .finally(() => {
+      collectionsPromise = null
+    })
+  return collectionsPromise
+}
+
+async function loadHymnCollectionsFresh(): Promise<HymnCollection[]> {
   if (!supabase) {
     throw new Error('Supabase is not configured.')
   }
@@ -810,7 +832,7 @@ export async function getHymnSingers(): Promise<HymnBrowseCard[]> {
   const viewRes = await supabase
     .from('zemaris_with_counts' as never)
     .select(
-      'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, published_mezmur_count, mezmur_count, updated_at',
+      'id, slug, name, name_amharic, bio, image_path, image_alt, youtube_url, sort_order, is_featured, status, published_mezmur_count, mezmur_count, updated_at',
     )
     .eq('status', 'published')
     .order('is_featured', { ascending: false })
@@ -827,7 +849,7 @@ export async function getHymnSingers(): Promise<HymnBrowseCard[]> {
     const plain = await supabase
       .from('zemaris' as never)
       .select(
-        'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, updated_at',
+        'id, slug, name, name_amharic, bio, image_path, image_alt, youtube_url, sort_order, is_featured, status, updated_at',
       )
       .eq('status', 'published')
       .order('is_featured', { ascending: false })
@@ -887,6 +909,7 @@ export async function getHymnSingers(): Promise<HymnBrowseCard[]> {
           featured: truthy(row.is_featured),
           sortOrder: num(row.sort_order),
           href: `/practice/zemari/${slug}`,
+          socialLinks: { youtube: txt(row.youtube_url) || null },
         }
       })
       .filter((card) => card.mezmurCount > 0),
@@ -901,7 +924,7 @@ export async function getZemariPublicBySlug(slug: string): Promise<HymnBrowseCar
   const viewRes = await supabase
     .from('zemaris_with_counts' as never)
     .select(
-      'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, published_mezmur_count, updated_at',
+      'id, slug, name, name_amharic, bio, image_path, image_alt, youtube_url, sort_order, is_featured, status, published_mezmur_count, updated_at',
     )
     .eq('slug', needle)
     .eq('status', 'published')
@@ -914,7 +937,7 @@ export async function getZemariPublicBySlug(slug: string): Promise<HymnBrowseCar
     const plain = await supabase
       .from('zemaris' as never)
       .select(
-        'id, slug, name, name_amharic, bio, image_path, image_alt, sort_order, is_featured, status, updated_at',
+        'id, slug, name, name_amharic, bio, image_path, image_alt, youtube_url, sort_order, is_featured, status, updated_at',
       )
       .eq('slug', needle)
       .eq('status', 'published')
@@ -963,6 +986,7 @@ export async function getZemariPublicBySlug(slug: string): Promise<HymnBrowseCar
     featured: truthy(row.is_featured),
     sortOrder: num(row.sort_order),
     href: `/practice/zemari/${txt(row.slug)}`,
+    socialLinks: { youtube: txt(row.youtube_url) || null },
   }
 }
 

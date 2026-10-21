@@ -378,14 +378,10 @@ try {
   await page.getByRole('button', { name: 'Save schedule', exact: true }).click()
   await page.getByText('Schedule saved.', { exact: false }).waitFor()
   assert.equal(tables.daily_content[0].published, true)
-  await page.goto(base + '/today')
-  await page.getByText('Welcome to today’s readings', { exact: true }).waitFor()
-  await page.getByText('John 1:1–14', { exact: true }).waitFor()
   for (const path of [
     '/saints',
     '/feasts',
     '/prayer-library',
-    '/today',
     '/admin/media',
     '/admin/saints',
     '/admin/feasts/' + tables.feasts[0].id + '/edit',

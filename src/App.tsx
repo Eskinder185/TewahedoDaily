@@ -126,7 +126,6 @@ const EditorialBooksPreview = lazy(() =>
   })),
 )
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
-const TodayPage = lazy(() => import('./pages/TodayPage').then(m => ({ default: m.TodayPage })))
 const BibleCatalogPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleCatalogPage })))
 const BibleBookPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleBookPage })))
 const BibleChapterPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleChapterPage })))
@@ -292,7 +291,6 @@ export default function App() {
         </Route>
         <Route path="/saved" element={<Suspense fallback={<PageLoadingFallback />}><Favorites /></Suspense>} />
         <Route path="/favorites" element={<Navigate to="/saved" replace />} />
-        <Route path="/today" element={<Suspense fallback={<PageLoadingFallback />}><TodayPage /></Suspense>} />
         <Route path="/practice/werb" element={<Navigate to="/practice?form=werb" replace />} />
         <Route path="/submit-mezmur" element={<Suspense fallback={<PageLoadingFallback />}><CommunityForm /></Suspense>} />
         <Route path="/suggest-correction" element={<Suspense fallback={<PageLoadingFallback />}><CommunityForm /></Suspense>} />

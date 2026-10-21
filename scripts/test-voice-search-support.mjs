@@ -131,12 +131,19 @@ assert.match(player, /mezmurPractice\.recording\.phraseHint/)
 assert.match(enLocale, /Record the words of the hymn, then play them back\./)
 assert.match(amLocale, /"phraseHint":/)
 
+const homePage = readFileSync(new URL('../src/pages/HomePage.tsx', import.meta.url), 'utf8')
 const homeToday = readFileSync(
   new URL('../src/components/home/HomeTodayInChurchPreview.tsx', import.meta.url),
   'utf8',
 )
-assert.doesNotMatch(homeToday, /Explore Today|home\.today\.cta/)
-assert.match(homeToday, /to="\/today"/)
-assert.match(homeToday, /t\('home\.today\.seeAll'\)/)
+const appRoutes = readFileSync(new URL('../src/App.tsx', import.meta.url), 'utf8')
+assert.match(homePage, /HomeCompanionBoard/)
+assert.doesNotMatch(homePage, /HomeTodayInChurchPreview/)
+assert.match(homeToday, /getHomepageTodayEvents/)
+assert.match(homeToday, /CalendarEventDetail/)
+assert.doesNotMatch(homeToday, /to="\/today"|home\.today\.seeAll|See all of today’s observances/)
+assert.doesNotMatch(appRoutes, /path="\/today"|TodayPage/)
+assert.doesNotMatch(enLocale, /See all of today’s observances/)
+assert.doesNotMatch(amLocale, /ሁሉንም የዛሬ መታሰቢያዎች ይመልከቱ/)
 
 console.log('test-voice-search-support: ok')

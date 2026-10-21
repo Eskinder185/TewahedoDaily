@@ -6,9 +6,7 @@ import { useSearchBuddy } from '../../lib/search/searchBuddySession'
 import {
   FAITH_AND_ORDER_QUERY_MAX,
   FaithAndOrderQueryError,
-  fetchFaithAndOrderManifest,
   searchFaithAndOrder,
-  type FaithAndOrderManifest,
 } from '../../lib/searchBuddy/faithAndOrderSearch.ts'
 import {
   isSearchBuddyAbort,
@@ -17,20 +15,33 @@ import {
   searchBuddyUserNotice,
 } from '../../lib/searchBuddy/errorMessages.ts'
 import { isAiApiConfigured } from '../../lib/ai/aiConfig.ts'
-import { ChatComposer } from './ChatComposer'
+import { searchSite } from '../../lib/search/searchSite'
+import { shouldSearchFaithAndOrder, type TeachingTopic } from '../../lib/searchBuddy/teachingTopics.ts'
 import {
-  FaithAndOrderSearchPane,
-  FaithAndOrderSectionReader,
-  FaithAndOrderToc,
-  type FaithAndOrderOutcome,
-  type SectionTarget,
-} from './FaithAndOrderViews'
+  pendingFromResult,
+  resolveCalendarQuestion,
+} from '../../lib/searchBuddy/calendarQuestion.ts'
+import {
+  parseQuestion,
+  type PendingClarification,
+} from '../../lib/searchBuddy/questionParse.ts'
+import { ChatComposer } from './ChatComposer'
+import { ChatStarterPrompts } from './ChatStarterPrompts'
+import { CalendarAnswerPane, type CalendarOutcome } from './CalendarAnswerPane'
+import { SourcePassagePane, type DocumentOutcome } from './SourcePassageCard'
+import { WebsiteSearchPane, type WebsiteOutcome } from './WebsiteSearchResults'
 import styles from './SearchBuddy.module.css'
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
-type View = { kind: 'search' } | { kind: 'toc' } | ({ kind: 'section' } & SectionTarget)
+const EXAMPLE_KEYS = [
+  'searchBuddy.prompts.gena',
+  'searchBuddy.prompts.prayer',
+  'searchBuddy.prompts.john',
+  'searchBuddy.starters.calendar',
+  'searchBuddy.prompts.sacraments',
+] as const
 
 function getFocusableIn(container: HTMLElement | null): HTMLElement[] {
   if (!container) return []
@@ -54,18 +65,16 @@ export function SearchBuddy() {
   const { uiLocale } = useLocale()
   const { open, setOpen, snapshot, setSnapshot, clearSession } = useSearchBuddy()
 
-  const [busy, setBusy] = useState(false)
   const [draft, setDraft] = useState('')
-  const [manifest, setManifest] = useState<FaithAndOrderManifest | null>(null)
-  const [manifestState, setManifestState] = useState<'idle' | 'loading' | 'ready' | 'error'>('idle')
-  const [manifestError, setManifestError] = useState<unknown>(null)
-  const [outcome, setOutcome] = useState<FaithAndOrderOutcome>({ kind: 'idle' })
-  const [view, setView] = useState<View>({ kind: 'search' })
+  const [documentOutcome, setDocumentOutcome] = useState<DocumentOutcome>({ kind: 'idle' })
+  const [websiteOutcome, setWebsiteOutcome] = useState<WebsiteOutcome>({ kind: 'idle' })
+  const [calendarOutcome, setCalendarOutcome] = useState<CalendarOutcome>({ kind: 'idle' })
+  const [pendingClarification, setPendingClarification] = useState<PendingClarification | null>(null)
   const draftRef = useRef(draft)
-  const requestIdRef = useRef(0)
-  const searchAbortRef = useRef<AbortController | null>(null)
-  const manifestRef = useRef<FaithAndOrderManifest | null>(null)
-  const manifestFlightRef = useRef<Promise<FaithAndOrderManifest> | null>(null)
+  const websiteRequestRef = useRef(0)
+  const documentRequestRef = useRef(0)
+  const websiteAbortRef = useRef<AbortController | null>(null)
+  const documentAbortRef = useRef<AbortController | null>(null)
   const [voiceRemountKey, setVoiceRemountKey] = useState(0)
   const titleId = useId()
   const limitId = useId()
@@ -74,18 +83,18 @@ export function SearchBuddy() {
   const panelRef = useRef<HTMLElement>(null)
   const bodyRef = useRef<HTMLDivElement>(null)
   const fabRef = useRef<HTMLButtonElement>(null)
-  const backRef = useRef<HTMLButtonElement>(null)
   const openRef = useRef(open)
   openRef.current = open
 
   const apiReady = isAiApiConfigured()
-  const devApiNotice =
-    import.meta.env.DEV && !apiReady
-      ? 'Developer: VITE_TEWAHEDO_AI_API_URL is not set. Add it to .env.local and restart Vite to search Faith and Order.'
-      : null
   const overLimit = draft.trim().length > FAITH_AND_ORDER_QUERY_MAX
-  const manifestNotice = manifestError ? searchBuddyUserNotice(manifestError, uiLocale) : null
-  const showWelcome = view.kind === 'search' && outcome.kind === 'idle'
+  const busy = websiteOutcome.kind === 'loading' || documentOutcome.kind === 'loading'
+  const showWelcome =
+    websiteOutcome.kind === 'idle' && documentOutcome.kind === 'idle' && calendarOutcome.kind === 'idle'
+  const activeQuery =
+    (calendarOutcome.kind !== 'idle' ? calendarOutcome.query : null) ||
+    (websiteOutcome.kind !== 'idle' ? websiteOutcome.query : null) ||
+    (documentOutcome.kind !== 'idle' ? documentOutcome.query : null)
 
   useEffect(() => {
     draftRef.current = draft
@@ -121,40 +130,6 @@ export function SearchBuddy() {
     })
   }, [setSnapshot])
 
-  const loadManifest = useCallback(() => {
-    if (manifestRef.current) return Promise.resolve(manifestRef.current)
-    if (manifestFlightRef.current) return manifestFlightRef.current
-    setManifestState('loading')
-    setManifestError(null)
-    const flight = fetchFaithAndOrderManifest()
-      .then((doc) => {
-        manifestRef.current = doc
-        manifestFlightRef.current = null
-        setManifest(doc)
-        setManifestState('ready')
-        return doc
-      })
-      .catch((error) => {
-        manifestFlightRef.current = null
-        setManifestState('error')
-        setManifestError(error)
-        throw error
-      })
-    manifestFlightRef.current = flight
-    return flight
-  }, [])
-
-  useEffect(() => {
-    if (!open || !apiReady) return
-    let cancelled = false
-    loadManifest().catch((error) => {
-      if (cancelled || isSearchBuddyAbort(error)) return
-    })
-    return () => {
-      cancelled = true
-    }
-  }, [open, apiReady, loadManifest])
-
   const closePanel = useCallback(() => {
     const nextDraft = draftRef.current
     setSnapshot((prev) => (prev.query === nextDraft ? prev : { ...prev, query: nextDraft }))
@@ -168,11 +143,17 @@ export function SearchBuddy() {
   }, [open, snapshot.query])
 
   function cancelSearch() {
-    requestIdRef.current += 1
-    searchAbortRef.current?.abort()
-    searchAbortRef.current = null
-    setBusy(false)
-    setOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
+    websiteRequestRef.current += 1
+    documentRequestRef.current += 1
+    websiteAbortRef.current?.abort()
+    documentAbortRef.current?.abort()
+    websiteAbortRef.current = null
+    documentAbortRef.current = null
+    setWebsiteOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
+    setDocumentOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
+    if (calendarOutcome.kind !== 'idle' && calendarOutcome.result.kind !== 'clarify' && calendarOutcome.result.kind !== 'suggest') {
+      setCalendarOutcome({ kind: 'idle' })
+    }
     window.setTimeout(() => inputRef.current?.focus(), 0)
   }
 
@@ -180,13 +161,11 @@ export function SearchBuddy() {
     if (!open) return
     const fab = fabRef.current
     const mainEl = document.getElementById('main')
-    const footerEl = document.querySelector('footer')
-    const inertTargets = [mainEl, footerEl].filter(Boolean) as HTMLElement[]
+    const inertTargets = [mainEl].filter(Boolean) as HTMLElement[]
     for (const el of inertTargets) el.setAttribute('inert', '')
 
     const timer = window.setTimeout(() => {
-      if (view.kind === 'search') inputRef.current?.focus()
-      else if (view.kind === 'toc') backRef.current?.focus()
+      inputRef.current?.focus()
     }, 40)
 
     const trapTab = (event: KeyboardEvent) => {
@@ -235,91 +214,160 @@ export function SearchBuddy() {
       for (const el of inertTargets) el.removeAttribute('inert')
       if (!openRef.current) fab?.focus()
     }
-  }, [open, view.kind, closePanel])
+  }, [open, closePanel])
 
   useEffect(() => {
     if (!open) {
-      searchAbortRef.current?.abort()
-      searchAbortRef.current = null
+      websiteAbortRef.current?.abort()
+      documentAbortRef.current?.abort()
+      websiteAbortRef.current = null
+      documentAbortRef.current = null
     }
     return () => {
-      searchAbortRef.current?.abort()
+      websiteAbortRef.current?.abort()
+      documentAbortRef.current?.abort()
     }
   }, [open])
 
-  async function runSearch(raw: string) {
-    const query = raw.trim()
-    if (!query || query.length > FAITH_AND_ORDER_QUERY_MAX) return
-    const requestId = ++requestIdRef.current
-    searchAbortRef.current?.abort()
+  function startWebsiteSearch(query: string) {
+    const requestId = ++websiteRequestRef.current
+    websiteAbortRef.current?.abort()
     const controller = new AbortController()
-    searchAbortRef.current = controller
-    setBusy(true)
-    setView({ kind: 'search' })
-    setOutcome({ kind: 'loading', query })
-    setDraft('')
+    websiteAbortRef.current = controller
+    setWebsiteOutcome({ kind: 'loading', query })
+    void searchSite(query, {
+      limit: 8,
+      language: uiLocale === 'am' ? 'am' : 'en',
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (requestId !== websiteRequestRef.current) return
+        if (response.failed) {
+          setWebsiteOutcome({
+            kind: 'error',
+            query,
+            notice: t('searchBuddy.website.catalogFailed'),
+            response,
+          })
+          return
+        }
+        setWebsiteOutcome(
+          response.results.length === 0
+            ? { kind: 'empty', query, response }
+            : { kind: 'results', query, response },
+        )
+      })
+      .catch((error) => {
+        if (requestId !== websiteRequestRef.current) return
+        if (isSearchBuddyAbort(error)) {
+          setWebsiteOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
+          return
+        }
+        logSearchBuddyDiagnostic(error, 'website')
+        const retrySeconds = searchBuddyRetryAfterSeconds(error)
+        setWebsiteOutcome({
+          kind: 'error',
+          query,
+          notice: searchBuddyUserNotice(error, uiLocale) || t('searchBuddy.errors.unknown'),
+          retryAvailableAt:
+            retrySeconds != null && retrySeconds > 0 ? Date.now() + retrySeconds * 1000 : undefined,
+        })
+      })
+  }
 
+  function startDocumentSearch(userQuery: string, topic: TeachingTopic) {
+    const requestId = ++documentRequestRef.current
+    documentAbortRef.current?.abort()
+    const controller = new AbortController()
+    documentAbortRef.current = controller
     if (!apiReady) {
-      setOutcome({
+      setDocumentOutcome({
         kind: 'error',
-        query,
+        query: userQuery,
+        topic,
         notice: t('searchBuddy.errors.notConfigured'),
       })
-      setBusy(false)
       return
     }
-
-    try {
-      await loadManifest()
-      if (requestId !== requestIdRef.current) return
-      const response = await searchFaithAndOrder(query, { signal: controller.signal, limit: 5 })
-      if (requestId !== requestIdRef.current) return
-      if (response.generated !== false || response.mode !== 'exact_document_search') {
-        throw new Error('unexpected document mode')
-      }
-      setOutcome(
-        response.status === 'no_matching_passage' || response.results.length === 0
-          ? { kind: 'empty', query, response }
-          : { kind: 'matches', query, response },
-      )
-    } catch (error) {
-      if (requestId !== requestIdRef.current || isSearchBuddyAbort(error)) {
-        if (requestId === requestIdRef.current) setOutcome({ kind: 'idle' })
-        return
-      }
-      if (isQueryTooLong(error)) return
-      logSearchBuddyDiagnostic(error, 'faith-and-order')
-      const retrySeconds = searchBuddyRetryAfterSeconds(error)
-      setOutcome({
-        kind: 'error',
-        query,
-        notice: searchBuddyUserNotice(error, uiLocale) || t('searchBuddy.errors.unknown'),
-        retryAvailableAt:
-          retrySeconds != null && retrySeconds > 0 ? Date.now() + retrySeconds * 1000 : undefined,
+    setDocumentOutcome({ kind: 'loading', query: userQuery, topic })
+    void searchFaithAndOrder(topic.documentQuery, { signal: controller.signal, limit: 5 })
+      .then((response) => {
+        if (requestId !== documentRequestRef.current) return
+        if (response.generated !== false || response.mode !== 'exact_document_search') {
+          throw new Error('unexpected document mode')
+        }
+        setDocumentOutcome(
+          response.status === 'no_matching_passage' || response.results.length === 0
+            ? { kind: 'empty', query: userQuery, topic, response }
+            : { kind: 'matches', query: userQuery, topic, response },
+        )
       })
-    } finally {
-      if (requestId === requestIdRef.current) {
-        setBusy(false)
-        if (searchAbortRef.current === controller) searchAbortRef.current = null
-      }
+      .catch((error) => {
+        if (requestId !== documentRequestRef.current) return
+        if (isSearchBuddyAbort(error)) {
+          setDocumentOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
+          return
+        }
+        if (isQueryTooLong(error)) return
+        logSearchBuddyDiagnostic(error, 'faith-and-order')
+        const retrySeconds = searchBuddyRetryAfterSeconds(error)
+        setDocumentOutcome({
+          kind: 'error',
+          query: userQuery,
+          topic,
+          notice: searchBuddyUserNotice(error, uiLocale) || t('searchBuddy.errors.unknown'),
+          retryAvailableAt:
+            retrySeconds != null && retrySeconds > 0 ? Date.now() + retrySeconds * 1000 : undefined,
+        })
+      })
+  }
+
+  function runSearch(raw: string) {
+    const query = raw.trim()
+    if (!query || query.length > FAITH_AND_ORDER_QUERY_MAX) return
+    setDraft('')
+    const parsed = parseQuestion(query, { pending: pendingClarification })
+    const followUpOnly = parsed.isFollowUp
+    if (!followUpOnly) setPendingClarification(null)
+
+    if (parsed.domain === 'calendar' && parsed.calendar) {
+      const result = resolveCalendarQuestion(parsed)
+      setCalendarOutcome({ kind: 'result', query: parsed.originalQuery, result })
+      setPendingClarification(pendingFromResult(result))
+    } else {
+      setCalendarOutcome({ kind: 'idle' })
+      setPendingClarification(null)
+    }
+
+    if (!followUpOnly) startWebsiteSearch(parsed.originalQuery)
+    const topic = shouldSearchFaithAndOrder(parsed.originalQuery)
+    if (topic) startDocumentSearch(parsed.originalQuery, topic)
+    else {
+      documentAbortRef.current?.abort()
+      documentAbortRef.current = null
+      documentRequestRef.current += 1
+      setDocumentOutcome({ kind: 'idle' })
     }
   }
 
   function resetSearch() {
     cancelSearch()
     setDraft('')
-    setOutcome({ kind: 'idle' })
-    setView({ kind: 'search' })
+    setWebsiteOutcome({ kind: 'idle' })
+    setDocumentOutcome({ kind: 'idle' })
+    setCalendarOutcome({ kind: 'idle' })
+    setPendingClarification(null)
     setVoiceRemountKey((key) => key + 1)
     clearSession()
     window.setTimeout(() => inputRef.current?.focus(), 0)
   }
 
-  function openSection(target: SectionTarget) {
-    setView({ kind: 'section', ...target })
-  }
-
-  const liveStatus = busy ? t('searchBuddy.faith.searching') : ''
+  const liveStatus = [
+    websiteOutcome.kind === 'loading' ? t('searchBuddy.website.searching') : '',
+    documentOutcome.kind === 'loading' ? t('searchBuddy.faith.searchingPassage') : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
 
   const panel =
     open &&
@@ -341,16 +389,7 @@ export function SearchBuddy() {
               <p>{t('searchBuddy.subtitle')}</p>
             </div>
             <div className={styles.headerActions}>
-              {view.kind !== 'search' ? (
-                <button
-                  ref={backRef}
-                  type="button"
-                  className={styles.newChat}
-                  onClick={() => setView({ kind: 'search' })}
-                >
-                  {t('searchBuddy.faith.backToSearch')}
-                </button>
-              ) : outcome.kind !== 'idle' ? (
+              {websiteOutcome.kind !== 'idle' || documentOutcome.kind !== 'idle' || calendarOutcome.kind !== 'idle' ? (
                 <button
                   type="button"
                   className={styles.newChat}
@@ -370,81 +409,91 @@ export function SearchBuddy() {
             <p className={styles.srOnly} aria-live="polite">
               {liveStatus}
             </p>
-            {devApiNotice && !apiReady ? (
-              <p className={styles.devNotice} role="status">
-                {devApiNotice}
-              </p>
-            ) : null}
-            {view.kind === 'toc' && manifest ? (
-              <FaithAndOrderToc manifest={manifest} onOpenSection={openSection} />
-            ) : null}
-            {view.kind === 'section' ? (
-              <FaithAndOrderSectionReader
-                key={`${view.version}:${view.sectionId}:${view.paragraphId ?? ''}:${view.highlightNumber ?? ''}`}
-                target={view}
+            {showWelcome ? (
+              <ChatStarterPrompts
+                welcomeId={welcomeId}
+                title={t('searchBuddy.welcomeTitle')}
+                copy={t('searchBuddy.welcomeCopy')}
+                groupAria={t('searchBuddy.suggestionsAria')}
+                prompts={EXAMPLE_KEYS.map((key) => t(key))}
+                onSelect={(prompt) => void runSearch(prompt)}
               />
-            ) : null}
-            {view.kind === 'search' ? (
-              <div id={welcomeId}>
-                <FaithAndOrderSearchPane
-                  manifest={manifest}
-                  manifestState={manifestState}
-                  manifestNotice={manifestNotice}
-                  outcome={outcome}
-                  busy={busy}
-                  onSearchTitle={(title) => void runSearch(title)}
-                  onOpenToc={() => setView({ kind: 'toc' })}
-                  onOpenSection={openSection}
-                  onKeywordSearch={() => inputRef.current?.focus()}
-                  onRetryManifest={() => {
-                    manifestRef.current = null
-                    manifestFlightRef.current = null
-                    void loadManifest()
+            ) : (
+              <div>
+                {activeQuery ? (
+                  <p className={styles.queryEcho}>
+                    <span className={styles.queryLabelPrefix}>{t('searchBuddy.faith.queryLabel')}</span>{' '}
+                    <span>{activeQuery}</span>
+                  </p>
+                ) : null}
+                <CalendarAnswerPane
+                  outcome={calendarOutcome}
+                  onChoose={(optionId) => {
+                    if (calendarOutcome.kind === 'result' && calendarOutcome.result.kind === 'suggest') {
+                      const option = calendarOutcome.result.options.find((row) => row.id === optionId)
+                      const label = option?.labelEn || optionId
+                      void runSearch(
+                        calendarOutcome.result.language === 'am'
+                          ? `የ${option?.labelAm || label} በዓል መቼ ነው?`
+                          : `When is ${label} feast?`,
+                      )
+                      return
+                    }
+                    void runSearch(optionId)
                   }}
-                  onRetrySearch={(query) => void runSearch(query)}
+                  onOpen={closePanel}
+                />
+                <WebsiteSearchPane
+                  outcome={websiteOutcome}
+                  onRetry={(query) => startWebsiteSearch(query)}
+                  onOpen={closePanel}
+                  hideQueryEcho
+                />
+                <SourcePassagePane
+                  outcome={documentOutcome}
+                  busy={documentOutcome.kind === 'loading'}
+                  onRetry={(query, topic) => startDocumentSearch(query, topic)}
                 />
               </div>
-            ) : null}
+            )}
           </div>
 
-          {view.kind === 'search' ? (
-            <ChatComposer
-              leading={
-                <>
-                  <p id={limitId} className={styles.queryMeter} aria-live="polite">
-                    {t('searchBuddy.faith.overLimit', {
-                      count: draft.trim().length,
-                      max: FAITH_AND_ORDER_QUERY_MAX,
-                    })}
+          <ChatComposer
+            leading={
+              <>
+                <p id={limitId} className={styles.queryMeter} aria-live="polite">
+                  {t('searchBuddy.faith.overLimit', {
+                    count: draft.trim().length,
+                    max: FAITH_AND_ORDER_QUERY_MAX,
+                  })}
+                </p>
+                {overLimit ? (
+                  <p className={styles.limitNotice} role="alert">
+                    {t('searchBuddy.questionTooLong', { max: FAITH_AND_ORDER_QUERY_MAX })}
                   </p>
-                  {overLimit ? (
-                    <p className={styles.limitNotice} role="alert">
-                      {t('searchBuddy.questionTooLong', { max: FAITH_AND_ORDER_QUERY_MAX })}
-                    </p>
-                  ) : null}
-                </>
-              }
-              value={draft}
-              onChange={setDraft}
-              onSubmit={() => void runSearch(draft)}
-              busy={busy}
-              voiceActive={open}
-              voiceRemountKey={voiceRemountKey}
-              inputRef={inputRef}
-              placeholder={t('searchBuddy.placeholder')}
-              inputAria={t('searchBuddy.inputAria')}
-              sendLabel={t('searchBuddy.send')}
-              sendBusyLabel={t('searchBuddy.sendBusy')}
-              clearLabel={t('searchBuddy.clearInput')}
-              dictateAria={t('searchBuddy.dictateAria')}
-              onCancel={busy ? cancelSearch : undefined}
-              cancelLabel={t('searchBuddy.cancel')}
-              cancelAria={t('searchBuddy.cancelAria')}
-              describedBy={limitId}
-              invalid={overLimit}
-              submitDisabled={overLimit}
-            />
-          ) : null}
+                ) : null}
+              </>
+            }
+            value={draft}
+            onChange={setDraft}
+            onSubmit={() => void runSearch(draft)}
+            busy={busy}
+            voiceActive={open}
+            voiceRemountKey={voiceRemountKey}
+            inputRef={inputRef}
+            placeholder={t('searchBuddy.placeholder')}
+            inputAria={t('searchBuddy.inputAria')}
+            sendLabel={t('searchBuddy.send')}
+            sendBusyLabel={t('searchBuddy.sendBusy')}
+            clearLabel={t('searchBuddy.clearInput')}
+            dictateAria={t('searchBuddy.dictateAria')}
+            onCancel={busy ? cancelSearch : undefined}
+            cancelLabel={t('searchBuddy.cancel')}
+            cancelAria={t('searchBuddy.cancelAria')}
+            describedBy={limitId}
+            invalid={overLimit}
+            submitDisabled={overLimit}
+          />
         </section>
       </div>,
       document.body,

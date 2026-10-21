@@ -3,18 +3,9 @@
  * Aggregates routes, mezmurs, prayers, zemaris, hymn browse, and EOTC calendar.
  * Never invents routes.
  */
-import {
-  loadMezmurSearchCatalog,
-  normalizeLatinSearchText,
-  searchMezmurCatalog,
-} from '../publicContent/mezmurSearch'
-import { searchPrayCatalog } from '../prayers/prayerSearch'
-import {
-  getHymnCollections,
-  getHymnSingers,
-  searchHymns,
-} from '../publicContent/hymnBrowse'
-import { getAllCalendarEntries } from '../eotcCalendar/eotcCalendarDataset'
+import { findNextCivilDayForEntry } from '../eotcCalendar/eotcFindEntryOccurrence'
+import { toIsoLocalDate } from '../churchCalendar/pascha'
+import { matchCalendarEntities } from './entityAliases'
 import { matchNavigationIntent, searchRouteCatalog } from './routeSearch'
 import {
   displayTitle,
@@ -27,8 +18,13 @@ import {
   searchTokens,
   type SearchSessionContext,
 } from './searchCore'
-import { loadSynaxariumSearchCatalog, searchSynaxariumCatalog } from './synaxariumSearch'
-import { searchBible } from '../bible/bibleSearch'
+import {
+  editorialSearchResults,
+  reportSiteSources,
+  siteSearchFlags,
+  type EditorialSearchKind,
+  type SiteSourceAttempt,
+} from './siteSearchStatus'
 import type { SiteSearchResponse, SiteSearchResult } from './types'
 
 export type { SearchSessionContext }
@@ -40,6 +36,8 @@ type SearchOptions = {
   session?: SearchSessionContext | null
   /** UI locale preference for Bible edition ordering */
   language?: 'am' | 'en'
+  /** Ignored after completion when the caller has already moved on. */
+  signal?: AbortSignal
 }
 
 type SettledSource = {
@@ -48,15 +46,45 @@ type SettledSource = {
   failed: boolean
 }
 
-type CalendarIndexRow = SiteSearchResult & { blob: string }
+type CalendarIndexRow = SiteSearchResult & { blob: string; entryId: string }
 
 let calendarCache: CalendarIndexRow[] | null = null
 let calendarCacheAt = 0
 const CALENDAR_TTL_MS = 10 * 60 * 1000
 
-function searchStaticCalendar(query: string, limit = 6): SiteSearchResult[] {
+function throwIfAborted(signal?: AbortSignal) {
+  if (signal?.aborted) {
+    throw new DOMException('The operation was aborted.', 'AbortError')
+  }
+}
+
+function finishResponse(
+  response: Omit<SiteSearchResponse, 'sources' | 'failed' | 'partial' | 'zeroResults' | 'totalCount'> & {
+    results: SiteSearchResult[]
+    attempted: SiteSourceAttempt[]
+  },
+): SiteSearchResponse {
+  const { attempted, ...rest } = response
+  const sources = reportSiteSources(attempted)
+  const flags = siteSearchFlags(sources, rest.results.length)
+  return {
+    ...rest,
+    ...flags,
+    sources,
+    totalCount: rest.results.length,
+  }
+}
+
+async function publishedEditorial(kind: EditorialSearchKind, query: string) {
+  const { listContent } = await import('../cms/contentService')
+  const page = await listContent(kind, query, 'published', 1)
+  return editorialSearchResults(kind, page.items)
+}
+
+async function searchStaticCalendar(query: string, limit = 6): Promise<SiteSearchResult[]> {
   const now = Date.now()
   if (!calendarCache || now - calendarCacheAt > CALENDAR_TTL_MS) {
+    const { getAllCalendarEntries } = await import('../eotcCalendar/eotcCalendarDataset')
     calendarCache = getAllCalendarEntries().map((row) => {
       const entry = row.entry
       const title =
@@ -78,6 +106,7 @@ function searchStaticCalendar(query: string, limit = 6): SiteSearchResult[] {
         score: 0.08,
         matchKind: 'keyword' as const,
         typeLabel: 'Calendar',
+        entryId: entry.id,
         blob: normalizeSearchText(
           `${title} ${titleAmharic} ${entry.id} ${summary} ${keywords} ${(entry.category?.secondary || []).join(' ')}`,
         ),
@@ -88,28 +117,33 @@ function searchStaticCalendar(query: string, limit = 6): SiteSearchResult[] {
 
   const tokens = searchTokens(expandSearchAliases(query)).filter((t) => t.length >= 4)
   if (!tokens.length) return []
+  const entityHits = matchCalendarEntities(normalizeSearchText(query)).filter((m) => m.kind !== 'fuzzy')
+  const entityIds = new Set(entityHits.flatMap((m) => [m.entity.monthlyIds, m.entity.annualIds, m.entity.feastIds, m.entity.fastIds, m.entity.seasonIds].flat()))
 
   const hits: SiteSearchResult[] = []
   for (const row of calendarCache) {
     const words = new Set(row.blob.split(' ').filter(Boolean))
     const matched = tokens.filter((t) => words.has(t) || row.blob.includes(` ${t} `) || row.blob.startsWith(`${t} `))
-    if (!matched.length) continue
+    const entityExact = entityIds.has(row.entryId)
+    if (!matched.length && !entityExact) continue
     const titleNorm = normalizeSearchText(row.title)
     const titleWords = new Set(titleNorm.split(' ').filter(Boolean))
-    const exact = matched.some((t) => titleWords.has(t) || titleNorm === t)
+    const exact = entityExact || matched.some((t) => titleWords.has(t) || titleNorm === t)
     // Require a strong title hit or two solid keyword hits (blocks garbage queries)
     if (!exact && matched.length < 2) continue
     if (!exact && !matched.some((t) => t.length >= 5)) continue
+    const nextDay = exact ? findNextCivilDayForEntry(row.entryId, new Date(), { maxDays: 400 }) : null
+    const route = nextDay ? `/calendar?date=${toIsoLocalDate(nextDay)}` : row.route
     hits.push({
       sourceType: row.sourceType,
       sourceId: row.sourceId,
       title: row.title,
       titleAmharic: row.titleAmharic,
       description: row.description,
-      route: row.route,
+      route,
       imagePath: row.imagePath,
       score: exact ? 0.04 : 0.11,
-      matchKind: exact ? 'alias' : 'keyword',
+      matchKind: entityExact ? 'exact' : exact ? 'alias' : 'keyword',
       typeLabel: row.typeLabel,
     })
     if (hits.length >= limit) break
@@ -125,7 +159,8 @@ async function settled<T>(
   try {
     const value = await work()
     return { name, results: map(value), failed: false }
-  } catch {
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') throw error
     return { name, results: [], failed: true }
   }
 }
@@ -135,37 +170,35 @@ export async function searchSite(
   options: SearchOptions = {},
 ): Promise<SiteSearchResponse> {
   const limit = options.limit ?? EXTENDED_RESULT_COUNT
+  throwIfAborted(options.signal)
   const follow = resolveFollowUpQuery(queryRaw, options.session)
   const query = follow.query.trim()
 
   if (!query) {
-    return {
+    return finishResponse({
       query: queryRaw,
       resolvedQuery: '',
       results: [],
       intentMessage: null,
-      zeroResults: true,
-      partial: false,
-      totalCount: 0,
       isFollowUp: false,
-    }
+      attempted: [],
+    })
   }
 
   const intent = matchNavigationIntent(query)
   if (intent && /^(go to|open|take me to|navigate to)\b/i.test(query)) {
-    return {
+    const results = [{ ...intent, title: displayTitle(intent.title, intent.route) }]
+    return finishResponse({
       query: queryRaw,
       resolvedQuery: query,
-      results: [{ ...intent, title: displayTitle(intent.title, intent.route) }],
-      intentMessage: `Opening ${displayTitle(intent.title, intent.route)}.`,
-      zeroResults: false,
-      partial: false,
-      totalCount: 1,
+      results,
+      intentMessage: null,
       isFollowUp: follow.isFollowUp,
-    }
+      attempted: [{ name: 'routes', failed: false, count: results.length }],
+    })
   }
 
-  const personalQ = normalizeLatinSearchText(query)
+  const personalQ = normalizeSearchText(query)
   if (
     options.includePersonal &&
     (personalQ.includes('my favorite') ||
@@ -174,7 +207,7 @@ export async function searchSite(
       personalQ === 'saved' ||
       personalQ.includes('show my favorites'))
   ) {
-    return {
+    return finishResponse({
       query: queryRaw,
       resolvedQuery: query,
       results: [
@@ -193,34 +226,45 @@ export async function searchSite(
           typeLabel: 'Account',
         },
       ],
-      intentMessage: 'Here is your favorites page.',
-      zeroResults: false,
-      partial: false,
-      totalCount: 1,
+      intentMessage: null,
       isFollowUp: follow.isFollowUp,
-    }
+      attempted: [{ name: 'account', failed: false, count: 1 }],
+    })
   }
 
   const expanded = expandSearchAliases(query)
   const bibleLanguage = options.language === 'am' ? 'am' : 'en'
 
-  // Bible first: direct references bypass other catalogs for verse/chapter hits.
-  let bibleIntent: string | null = null
+  const [
+    { searchBible },
+    { searchHymns, getHymnSingers, getHymnCollections },
+    { loadMezmurSearchCatalog, searchMezmurCatalog, normalizeLatinSearchText },
+    { loadSynaxariumSearchCatalog, searchSynaxariumCatalog },
+  ] = await Promise.all([
+    import('../bible/bibleSearch'),
+    import('../publicContent/hymnBrowse'),
+    import('../publicContent/mezmurSearch'),
+    import('./synaxariumSearch'),
+  ])
+
+  // Direct chapter and verse references resolve through the Bible catalog.
   let bibleDirect = false
   let bibleResults: SiteSearchResult[] = []
   let bibleFailed = false
   try {
+    throwIfAborted(options.signal)
     const bible = await searchBible(query, { language: bibleLanguage, textLimit: 12 })
     bibleResults = bible.results
-    bibleIntent = bible.intentMessage
     bibleDirect = bible.directReference
-  } catch {
+  } catch (error) {
+    if (options.signal?.aborted || (error instanceof DOMException && error.name === 'AbortError')) {
+      throw new DOMException('The operation was aborted.', 'AbortError')
+    }
     bibleFailed = true
   }
+  throwIfAborted(options.signal)
 
   if (bibleDirect && bibleResults.some((r) => r.sourceType !== 'bible-book')) {
-    // Exact chapter / verse / range (or calm missing notice): return Bible-primary results.
-    // Still allow a light site pass for book-adjacent navigation when the hit is a real verse.
     const hasScripture = bibleResults.some(
       (r) =>
         r.sourceType === 'bible-verse' ||
@@ -230,24 +274,33 @@ export async function searchSite(
     )
     if (hasScripture || bibleResults.length) {
       const ranked = rankSearchResults(bibleResults, query, limit)
-      return {
+      return finishResponse({
         query: queryRaw,
         resolvedQuery: query,
         results: ranked,
-        intentMessage: bibleIntent,
-        zeroResults: ranked.length === 0,
-        partial: bibleFailed,
-        totalCount: ranked.length,
+        intentMessage: null,
         isFollowUp: follow.isFollowUp,
-      }
+        attempted: [{ name: 'bible', failed: false, count: ranked.length }],
+      })
     }
   }
 
   const sources: SettledSource[] = [
     { name: 'bible', results: bibleResults, failed: bibleFailed },
     { name: 'routes', results: searchRouteCatalog(expanded, 8), failed: false },
-    { name: 'calendar', results: searchStaticCalendar(expanded, 6), failed: false },
   ]
+  try {
+    sources.push({
+      name: 'calendar',
+      results: await searchStaticCalendar(expanded, 6),
+      failed: false,
+    })
+  } catch (error) {
+    if (options.signal?.aborted || (error instanceof DOMException && error.name === 'AbortError')) {
+      throw new DOMException('The operation was aborted.', 'AbortError')
+    }
+    sources.push({ name: 'calendar', results: [], failed: true })
+  }
   if (intent) sources.push({ name: 'intent', results: [intent], failed: false })
 
   const remote = await Promise.all([
@@ -332,7 +385,13 @@ export async function searchSite(
           typeLabel: 'Mezmur',
         })),
     ),
-    settled('prayers', () => searchPrayCatalog(expanded, { limit: 10 }), (pray) =>
+    settled(
+      'prayers',
+      async () => {
+        const { searchPrayCatalog } = await import('../prayers/prayerSearch')
+        return searchPrayCatalog(expanded, { limit: 10 })
+      },
+      (pray) =>
       pray.results.map((hit) => {
         const typeLabel =
           hit.resultType === 'guide' || hit.resultType === 'guide_section'
@@ -361,7 +420,7 @@ export async function searchSite(
         return {
           sourceType,
           sourceId: hit.id,
-          title: displayTitle(hit.title, hit.route),
+          title: displayTitle(hit.title, hit.route.split('#')[0]),
           titleAmharic: hit.titleAmharic || '',
           description: hit.excerpt || hit.metadata || '',
           route: hit.route,
@@ -435,36 +494,28 @@ export async function searchSite(
       () => loadSynaxariumSearchCatalog(),
       (docs) => searchSynaxariumCatalog(docs, expanded, 10),
     ),
+    settled('saints', () => publishedEditorial('saints', query), (rows) => rows),
+    settled('feasts', () => publishedEditorial('feasts', query), (rows) => rows),
+    settled('learn', () => publishedEditorial('articles', query), (rows) => rows),
   ])
 
+  throwIfAborted(options.signal)
   sources.push(...remote)
 
   const merged = sources.flatMap((s) => s.results)
   const ranked = rankSearchResults(merged, query, limit)
-  const anyFailed = sources.some((s) => s.failed)
-  const partial = anyFailed && ranked.length > 0
-
-  let intentMessage: string | null = bibleIntent
-  if (!intentMessage && ranked.length) {
-    intentMessage =
-      ranked.length === 1
-        ? `I found ${ranked[0].title}.`
-        : `I found ${ranked.length} places related to your search.`
-  }
-  if (intentMessage && partial) {
-    intentMessage += ' Some catalogs were slow; showing what is ready.'
-  }
-
-  return {
+  return finishResponse({
     query: queryRaw,
     resolvedQuery: query,
     results: ranked,
-    intentMessage,
-    zeroResults: ranked.length === 0,
-    partial,
-    totalCount: ranked.length,
+    intentMessage: null,
     isFollowUp: follow.isFollowUp,
-  }
+    attempted: sources.map((source) => ({
+      name: source.name,
+      failed: source.failed,
+      count: source.results.length,
+    })),
+  })
 }
 
 export function buildSessionContext(
@@ -479,11 +530,14 @@ export function buildSessionContext(
 }
 
 export function buildAssistantReply(response: SiteSearchResponse): string {
+  if (response.failed || (response.partial && response.results.length === 0)) {
+    return 'A catalog did not respond. This is not an empty search.'
+  }
   if (response.intentMessage) return response.intentMessage
   if (response.zeroResults) {
-    return "I couldn't find that in Tewahedo Daily. Try a feast name, Zemari, prayer, or page like Calendar."
+    return 'No matching website records.'
   }
-  return 'Here is what I found.'
+  return 'Matching records are listed.'
 }
 
 /** Nearby suggestions when zero results — only real catalog routes. */

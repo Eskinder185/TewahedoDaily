@@ -127,9 +127,8 @@ export function CalendarEventDetail({
     const prev = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     const mainEl = document.getElementById('main')
-    const footerEl = document.querySelector('footer')
     const headerEl = document.querySelector('[data-header]')
-    const inertTargets = [mainEl, footerEl, headerEl].filter(Boolean) as HTMLElement[]
+    const inertTargets = [mainEl, headerEl].filter(Boolean) as HTMLElement[]
     for (const el of inertTargets) el.setAttribute('inert', '')
     return () => {
       document.body.style.overflow = prev

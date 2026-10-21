@@ -15,6 +15,7 @@ import {
   sendSearchBuddyMessage,
 } from '../src/lib/searchBuddy/sendSearchBuddyMessage.ts'
 import { assistantLeadForResponse } from '../src/lib/search/assistantLead.ts'
+import { parseQuestion } from '../src/lib/searchBuddy/questionParse.ts'
 
 const FEAST_ASR = '\u12DB\u122C \u1260\u12A0\u1209 \u121D\u1295\u12F5\u12F3\u12CD'
 const FEAST_CANON = '\u12DB\u122C \u1260\u12D3\u1209 \u121D\u1295\u12F5\u1290\u12CD'
@@ -57,6 +58,17 @@ assert.equal(searchRoute?.kind === 'calendar_search' ? searchRoute.query : null,
 
 assert.equal(detectCalendarRoute(HYMN_TITLE), null)
 console.log('calendar intent heuristics: ok')
+
+assert.equal(parseQuestion("What's the next fast?").domain, 'calendar')
+assert.equal(parseQuestion("When's Saint Michael's monthly commemoration?").calendar?.category, 'monthly_commemoration')
+assert.equal(parseQuestion('ቀጣዩ ጾም መቼ ነው?').domain, 'calendar')
+assert.equal(parseQuestion('ዛሬ ጾም ነው?').calendar?.action, 'is_observing')
+assert.equal(parseQuestion('ነገ ጾም ነው?').calendar?.temporal, 'tomorrow')
+assert.equal(parseQuestion('የአሁኑ ጾም መቼ ያበቃል?').calendar?.action, 'end')
+assert.equal(parseQuestion('ነገ የማን መታሰቢያ ነው?').domain, 'calendar')
+assert.equal(parseQuestion('ዛሬ በኢትዮጵያ አቆጣጠር ስንት ነው?').calendar?.category, 'ethiopian_date')
+assert.equal(parseQuestion('Find hymns about Saint Michael').domain, 'hymn')
+assert.equal(parseQuestion('Who is Saint Michael?').domain, 'website')
 
 if (!searchBuddyApiReady()) {
   console.log('test-calendar-intent-routing: skipped live API')

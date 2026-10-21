@@ -39,6 +39,11 @@
   --color-bg-hero-wash: color-mix(in srgb, #faf7f0 86%, var(--color-sky-faint) 14%);
   /* Editorial accent used by Legal nav active state */
   --color-accent-editorial: #7a3f3f;
+  /* Home parchment / burgundy — aliases, not a second palette */
+  --color-burgundy: var(--color-accent-editorial);
+  --color-burgundy-ink: #5e3030;
+  --color-parchment: var(--color-bg);
+  --color-parchment-raised: var(--color-bg-elevated);
 
   /* Stronger body / secondary contrast (esp. phones in sunlight) */
   --color-heading: var(--color-midnight);
@@ -182,6 +187,10 @@
   --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 82%, #263647 18%);
   --color-bg-hero-wash: color-mix(in srgb, var(--color-bg-elevated) 88%, #263647 12%);
   --color-accent-editorial: #d4a07a;
+  --color-burgundy: var(--color-accent-editorial);
+  --color-burgundy-ink: #e4b896;
+  --color-parchment: var(--color-bg);
+  --color-parchment-raised: var(--color-bg-elevated);
 
   --color-heading: #f5efe6;
   --color-text: #f0e9de;
@@ -239,6 +248,10 @@
   --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 78%, var(--color-sky-faint) 22%);
   --color-bg-hero-wash: color-mix(in srgb, #faf7f0 86%, var(--color-sky-faint) 14%);
   --color-accent-editorial: #7a3f3f;
+  --color-burgundy: var(--color-accent-editorial);
+  --color-burgundy-ink: #5e3030;
+  --color-parchment: var(--color-bg);
+  --color-parchment-raised: var(--color-bg-elevated);
 
   --color-heading: var(--color-midnight);
   --color-text: #1e252d;

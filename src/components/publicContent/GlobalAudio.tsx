@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { AudioContext } from '../../lib/publicContent/audio'
-import { publicMedia, type MezmurCard } from '../../lib/publicContent/service'
-import { Artwork } from './PublicUi'
+import type { MezmurCard } from '../../lib/publicContent/service'
 import s from './PublicContent.module.css'
+
+const Artwork = lazy(() => import('./PublicUi').then((m) => ({ default: m.Artwork })))
 export function GlobalAudio({ children }: { children: ReactNode }) {
   const [track, setTrack] = useState<MezmurCard | null>(null)
   const [playlist, setPlaylist] = useState<MezmurCard[]>([])
@@ -26,7 +27,8 @@ export function GlobalAudio({ children }: { children: ReactNode }) {
     setTrack(next)
     setPlaylist(queue.filter((item) => item.audio_url))
     setError('')
-    void publicMedia(next.audio_url)
+    void import('../../lib/publicContent/service')
+      .then(({ publicMedia }) => publicMedia(next.audio_url))
       .then((url) => {
         if (request === generation.current) setSource(url)
       })
@@ -51,7 +53,9 @@ export function GlobalAudio({ children }: { children: ReactNode }) {
       {children}
       {track && (
         <aside className={s.player} aria-label="Persistent audio player">
-          <Artwork reference={track.thumbnail_url} />
+          <Suspense fallback={<div className={s.artwork} aria-hidden>✣</div>}>
+            <Artwork reference={track.thumbnail_url} />
+          </Suspense>
           <Link to={`/practice/mezmur/${track.slug}`}>
             <strong>{track.title}</strong>
             <br />

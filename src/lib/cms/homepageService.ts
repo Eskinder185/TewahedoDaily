@@ -40,7 +40,7 @@ export function emptyHomepageSlide(sortOrder = 0): HomepageSlideInput {
     primary_button_label: 'Explore hymns',
     primary_button_url: '/practice',
     secondary_button_label: 'Today in Church',
-    secondary_button_url: '/today',
+    secondary_button_url: '/calendar',
     sort_order: sortOrder,
     animation_style: 'fade',
     display_duration: 7000,

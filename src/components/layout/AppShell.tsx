@@ -1,15 +1,14 @@
-import { Suspense, lazy, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Suspense, lazy, useEffect, useState } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { SiteHeader } from './SiteHeader'
-import { SiteFooter } from './SiteFooter'
 import { OutletErrorBoundary } from './OutletErrorBoundary'
 import styles from './AppShell.module.css'
 import { AuthProvider } from '../../lib/auth/AuthProvider'
-import { SearchBuddyProvider } from '../../lib/search/searchBuddySession'
+import { SearchBuddyProvider, useSearchBuddy } from '../../lib/search/searchBuddySession'
 import { GlobalAudio } from '../publicContent/GlobalAudio'
 import { getHomeDayLabels } from '../../lib/home/homeDayLabels'
-import { maybeFireDailyCalendarReminder } from '../../lib/calendar/calendarReminders'
+import { getPracticeContinue } from '../../lib/practice/practiceContinueSession'
 
 const SearchBuddy = lazy(() =>
   import('../search/SearchBuddy').then((m) => ({ default: m.SearchBuddy })),
@@ -18,11 +17,71 @@ const PracticeContinueDock = lazy(() =>
   import('../practice/PracticeContinueDock').then((m) => ({ default: m.PracticeContinueDock })),
 )
 
+function SearchBuddyFabStub({ onOpen }: { onOpen: () => void }) {
+  const t = useTranslation()
+  return (
+    <button
+      type="button"
+      className={styles.searchFab}
+      aria-label={t('searchBuddy.fabAria')}
+      aria-haspopup="dialog"
+      aria-expanded={false}
+      onClick={onOpen}
+    >
+      <span className={styles.searchFabIcon} aria-hidden>
+        ⌕
+      </span>
+      <span className={styles.searchFabLabel}>{t('searchBuddy.fab')}</span>
+    </button>
+  )
+}
+
+function SearchBuddySuspenseFallback() {
+  const { setOpen } = useSearchBuddy()
+  return <SearchBuddyFabStub onOpen={() => setOpen(true)} />
+}
+
+function DeferredSearchBuddy() {
+  const { setOpen } = useSearchBuddy()
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setReady(true), 4000)
+    return () => window.clearTimeout(timeout)
+  }, [])
+
+  const openNow = () => {
+    setReady(true)
+    setOpen(true)
+  }
+
+  if (!ready) return <SearchBuddyFabStub onOpen={openNow} />
+  return <SearchBuddy />
+}
+
+function DeferredPracticeContinueDock() {
+  const location = useLocation()
+  const [show, setShow] = useState(false)
+
+  useEffect(() => {
+    const update = () => setShow(Boolean(getPracticeContinue()))
+    update()
+    window.addEventListener('td-practice-continue', update)
+    return () => window.removeEventListener('td-practice-continue', update)
+  }, [location.pathname])
+
+  if (!show) return null
+  return <PracticeContinueDock />
+}
+
 function AppShellFrame() {
   const t = useTranslation()
 
   useEffect(() => {
-    const tick = () => {
+    let cancelled = false
+    const tick = async () => {
+      const { maybeFireDailyCalendarReminder } = await import('../../lib/calendar/calendarReminders')
+      if (cancelled) return
       const labels = getHomeDayLabels()
       const body = t('calendar.reminders.notificationBody', {
         ethiopian: labels.ethiopianLabel,
@@ -30,9 +89,14 @@ function AppShellFrame() {
       })
       maybeFireDailyCalendarReminder(body, t('calendar.reminders.notificationTitle'))
     }
-    tick()
-    const id = window.setInterval(tick, 60_000)
-    return () => window.clearInterval(id)
+    void tick()
+    const id = window.setInterval(() => {
+      void tick()
+    }, 60_000)
+    return () => {
+      cancelled = true
+      window.clearInterval(id)
+    }
   }, [t])
 
   return (
@@ -47,10 +111,11 @@ function AppShellFrame() {
             <Outlet />
           </OutletErrorBoundary>
         </main>
-        <SiteFooter />
         <Suspense fallback={null}>
-          <PracticeContinueDock />
-          <SearchBuddy />
+          <DeferredPracticeContinueDock />
+        </Suspense>
+        <Suspense fallback={<SearchBuddySuspenseFallback />}>
+          <DeferredSearchBuddy />
         </Suspense>
       </div>
     </GlobalAudio>

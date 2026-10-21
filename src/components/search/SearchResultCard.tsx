@@ -23,6 +23,9 @@ const TYPE_KEY: Record<SiteSearchSourceType, string> = {
   'bible-verse': 'searchBuddy.types.bibleVerse',
   'bible-range': 'searchBuddy.types.bibleRange',
   'bible-text': 'searchBuddy.types.bibleText',
+  saint: 'searchBuddy.types.saint',
+  feast: 'searchBuddy.types.feast',
+  learn: 'searchBuddy.types.learn',
   account: 'searchBuddy.types.account',
   other: 'searchBuddy.types.page',
 }

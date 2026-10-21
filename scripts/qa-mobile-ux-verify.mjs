@@ -84,17 +84,9 @@ const saved = await page.evaluate(() => ({
 note('saved page reachable', /Saved|favorite/i.test(saved.text), saved)
 await shot('saved', 390)
 
-// 404 / home / today / about
+// 404 / home / about
 await page.goto(`${BASE}/`, { waitUntil: 'networkidle' })
 await shot('home', 390)
-await page.goto(`${BASE}/today`, { waitUntil: 'networkidle' })
-await page.waitForTimeout(1200)
-const today = await page.evaluate(() => {
-  const t = document.body.innerText
-  return { hasPdf: /PDF/i.test(t), hasConfidence: /Confidence:/i.test(t) }
-})
-note('today clean copy', !today.hasPdf && !today.hasConfidence, today)
-await shot('today', 390)
 await page.goto(`${BASE}/about`, { waitUntil: 'networkidle' })
 await shot('about', 390)
 

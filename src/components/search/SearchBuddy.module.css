@@ -183,7 +183,7 @@
   margin: 0;
   font-family: var(--font-display);
   font-size: 1.15rem;
-  color: var(--color-heading);
+  color: var(--color-burgundy-ink, var(--color-heading));
   line-height: 1.25;
 }
 
@@ -329,6 +329,8 @@
   resize: none;
   box-sizing: border-box;
   overflow-y: auto;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .composerField:focus-within {
@@ -484,6 +486,7 @@
   padding: 1rem 1rem 1.25rem;
   -webkit-overflow-scrolling: touch;
   min-width: 0;
+  overflow-wrap: anywhere;
   /* Keep a usable conversation region when viewport height is short (TD-05). */
   min-height: min(40vh, 12rem);
   /* Isolate scroll painting from the rest of the page (phones). */
@@ -1126,6 +1129,90 @@
   margin-bottom: 0.65rem;
   color: var(--color-text-muted);
   font-size: 0.82rem;
+}
+
+.sourceFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 0.85rem;
+  padding: 0;
+  border: 0;
+}
+
+.sourceFilter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  color: var(--color-heading);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.sourceFilter:has(input:checked) {
+  border-color: var(--color-gold-line);
+  font-weight: 650;
+}
+
+.sourceFilter:focus-within {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.websiteLink {
+  color: inherit;
+  overflow-wrap: anywhere;
+}
+
+.openResult {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-heading);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.openResult:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.sourceQuote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.attribution,
+.relatedNote {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.relatedNote {
+  margin-bottom: 0.2rem;
+}
+
+.websiteExcerpt {
+  margin: 0.25rem 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.failureList {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
 }
 
 .exampleList,

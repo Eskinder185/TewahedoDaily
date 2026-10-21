@@ -192,7 +192,7 @@ export function CalendarDateTimeline({
       <button
         type="button"
         className={styles.arrow}
-        aria-label={t('calendar.timeline.earlier')}
+        aria-label={t('calendar.timeline.previousEvent')}
         disabled={!canScrollEarlier}
         onClick={() => scrollByPage(-1)}
       >
@@ -289,7 +289,7 @@ export function CalendarDateTimeline({
       <button
         type="button"
         className={styles.arrow}
-        aria-label={t('calendar.timeline.later')}
+        aria-label={t('calendar.timeline.nextEvent')}
         disabled={!canScrollLater}
         onClick={() => scrollByPage(1)}
       >

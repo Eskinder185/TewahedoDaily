@@ -5,15 +5,24 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import {
+  dedupeResults,
   displayTitle,
   expandSearchAliases,
   extractTopics,
   isPublicContentRoute,
   looksLikeSlug,
+  normalizeSearchText,
   rankSearchResults,
   resolveFollowUpQuery,
   searchTokens,
 } from '../src/lib/search/searchCore.ts'
+import {
+  editorialSearchResults,
+  isNavigationResult,
+  reportSiteSources,
+  siteSearchFlags,
+} from '../src/lib/search/siteSearchStatus.ts'
+import { matchNavigationIntent } from '../src/lib/search/routeSearch.ts'
 
 // Minimal catalog mirror of curated feast routes (keeps this script extension-safe).
 const CURATED = [
@@ -32,7 +41,7 @@ const CURATED = [
   {
     title: 'Calendar',
     route: '/calendar',
-    aliases: ['calendar', 'take me to the calendar'],
+    aliases: ['calendar', 'take me to the calendar', 'open calendar'],
     sourceType: 'calendar',
   },
   {
@@ -64,6 +73,13 @@ assert.ok(meskle.includes('meskel'))
 
 const michael = expandSearchAliases('Find St Michael hymns').toLowerCase()
 assert.ok(michael.includes('mikael'))
+const micheal = expandSearchAliases('Micheal').toLowerCase()
+assert.ok(micheal.includes('michael'))
+assert.ok(micheal.includes('ሚካኤል'))
+const gebriel = expandSearchAliases('Gebriel').toLowerCase()
+assert.ok(gebriel.includes('gabriel'))
+assert.ok(normalizeSearchText("When's Saint Michael's feast?").includes('michael'))
+assert.ok(normalizeSearchText("What's the next fast?").includes('next'))
 
 // --- tokens keep feast words ---
 const tokens = searchTokens('Find Meskel hymns')
@@ -139,6 +155,11 @@ assert.ok(!ranked.some((r) => r.route === '/practice'), 'generic practice hub de
 
 // --- navigation intent (deterministic calendar target) ---
 assert.ok(catalogHit('Take me to the calendar').some((h) => h.route === '/calendar'))
+assert.ok(catalogHit('Open Calendar').some((h) => h.route === '/calendar'))
+
+const openCalendar = matchNavigationIntent('Open Calendar')
+assert.equal(openCalendar?.route, '/calendar')
+assert.equal(openCalendar?.title, 'Calendar')
 
 // --- follow-ups ---
 const session = {
@@ -183,5 +204,117 @@ const zeroSrc = readFileSync(new URL('../src/lib/search/searchSite.ts', import.m
 assert.match(zeroSrc, /bible hub/)
 assert.match(zeroSrc, /searchRouteCatalog\('saints'/)
 assert.match(zeroSrc, /searchRouteCatalog\('feasts'/)
+assert.match(zeroSrc, /listContent\(kind, query, 'published'/)
+assert.equal(zeroSrc.includes('/api/chat'), false)
+assert.equal(zeroSrc.includes('resolveBibleQuery'), false)
+assert.equal(zeroSrc.includes('anyFailed && ranked.length'), false)
+assert.match(zeroSrc, /searchBible\(/)
+
+const verses = dedupeResults([
+  {
+    sourceType: 'bible-verse',
+    sourceId: 'bible-verse:jn-3-16-en',
+    title: 'John 3:16',
+    titleAmharic: '',
+    description: 'English',
+    route: '/bible/john/3',
+    imagePath: null,
+    score: 0.01,
+    matchKind: 'exact',
+    typeLabel: 'Bible verse',
+  },
+  {
+    sourceType: 'bible-verse',
+    sourceId: 'bible-verse:jn-3-16-am',
+    title: 'John 3:16',
+    titleAmharic: 'ዮሐንስ 3:16',
+    description: 'Amharic',
+    route: '/bible/john/3',
+    imagePath: null,
+    score: 0.01,
+    matchKind: 'exact',
+    typeLabel: 'Bible verse',
+  },
+])
+assert.equal(verses.length, 2)
+
+const repeated = dedupeResults([
+  {
+    sourceType: 'mezmur',
+    sourceId: 'm1',
+    title: 'Meskel Abeba',
+    titleAmharic: '',
+    description: 'Mezmur',
+    route: '/practice/mezmur/meskel-abeba',
+    imagePath: null,
+    score: 0.05,
+    matchKind: 'fuzzy',
+    typeLabel: 'Mezmur',
+  },
+  {
+    sourceType: 'mezmur',
+    sourceId: 'm1-copy',
+    title: 'Meskel Abeba',
+    titleAmharic: '',
+    description: 'Mezmur',
+    route: '/practice/mezmur/meskel-abeba',
+    imagePath: null,
+    score: 0.05,
+    matchKind: 'fuzzy',
+    typeLabel: 'Mezmur',
+  },
+])
+assert.equal(repeated.length, 1)
+
+const hiddenFailure = siteSearchFlags(
+  reportSiteSources([
+    { name: 'hymns', failed: true, count: 3 },
+    { name: 'prayers', failed: false, count: 0 },
+  ]),
+  0,
+)
+assert.equal(hiddenFailure.partial, true)
+assert.equal(hiddenFailure.failed, false)
+assert.equal(hiddenFailure.zeroResults, true)
+
+const totalFailure = siteSearchFlags(
+  reportSiteSources([
+    { name: 'hymns', failed: true, count: 4 },
+    { name: 'bible', failed: true, count: 2 },
+  ]),
+  0,
+)
+assert.equal(totalFailure.partial, true)
+assert.equal(totalFailure.failed, true)
+assert.equal(totalFailure.zeroResults, false)
+assert.equal(reportSiteSources([{ name: 'hymns', failed: true, count: 4 }])[0].count, 0)
+
+const editorial = editorialSearchResults('saints', [
+  {
+    id: 'draft-1',
+    slug: 'secret-draft',
+    title: 'Draft saint',
+    status: 'draft',
+  },
+  {
+    id: 'pub-1',
+    slug: 'st-michael',
+    title: 'Saint Michael',
+    title_amharic: 'ቅዱስ ሚካኤል',
+    description: 'Published commemoration',
+    status: 'published',
+  },
+  {
+    id: 'bad',
+    slug: '../admin',
+    title: 'Bad slug',
+    status: 'published',
+  },
+])
+assert.equal(editorial.length, 1)
+assert.equal(editorial[0].route, '/content/saints/st-michael')
+assert.equal(editorial[0].sourceType, 'saint')
+assert.equal(isNavigationResult(editorial[0]), false)
+assert.equal(isNavigationResult({ sourceType: 'page', matchKind: 'alias' }), true)
 
 console.log('search-site pure checks: ok')

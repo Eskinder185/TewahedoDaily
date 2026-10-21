@@ -18,6 +18,16 @@ import {
 } from '../src/lib/searchBuddy/calendarStructuredSearch.ts'
 import { assistantLeadForResponse } from '../src/lib/search/assistantLead.ts'
 import { toIsoLocalDate } from '../src/lib/churchCalendar/pascha.ts'
+import { CALENDAR_ENTITIES, matchCalendarEntities } from '../src/lib/search/entityAliases.ts'
+import { getEntryById } from '../src/lib/eotcCalendar/eotcCalendarDataset.ts'
+import { findNextCivilDayForEntry } from '../src/lib/eotcCalendar/eotcFindEntryOccurrence.ts'
+import { parseQuestion } from '../src/lib/searchBuddy/questionParse.ts'
+import {
+  pendingFromResult,
+  resolveCalendarQuestion,
+} from '../src/lib/searchBuddy/calendarQuestion.ts'
+import { normalizeSearchText } from '../src/lib/search/searchCore.ts'
+import { shouldSearchFaithAndOrder } from '../src/lib/searchBuddy/teachingTopics.ts'
 
 function d(y, m, day) {
   return new Date(y, m - 1, day)
@@ -132,3 +142,228 @@ console.log(
   '  Michael Sene:',
   michael.otherAnnual.find((x) => /Sene/.test(x.ethiopianLabel))?.ethiopianLabel,
 )
+
+// --- Search Buddy question matrix (fixed clock, Africa/Addis_Ababa) ---
+const TZ = 'Africa/Addis_Ababa'
+const clock = { now: ref, timeZone: TZ }
+
+function ask(query, pending) {
+  const parsed = parseQuestion(query, { pending })
+  const result =
+    parsed.domain === 'calendar' ? resolveCalendarQuestion(parsed, clock) : null
+  return { parsed, result }
+}
+
+function askAt(query, now, pending) {
+  const parsed = parseQuestion(query, { pending })
+  const result =
+    parsed.domain === 'calendar'
+      ? resolveCalendarQuestion(parsed, { now, timeZone: TZ })
+      : null
+  return { parsed, result }
+}
+
+assert.equal(normalizeSearchText("When's Saint Michael's feast?"), 'when is saint michael feast')
+assert.equal(normalizeSearchText("What's the NEXT fast?"), 'what is the next fast')
+assert.ok(normalizeSearchText("What's the NEXT fast?").includes('next'))
+assert.ok(normalizeSearchText('Are we not fasting today?').includes('not'))
+
+const michaelHits = matchCalendarEntities(normalizeSearchText("When's Saint Micheal feast?"))
+assert.equal(michaelHits[0]?.entity.key, 'michael')
+assert.equal(matchCalendarEntities(normalizeSearchText('Mikail'))[0]?.entity.key, 'michael')
+assert.equal(matchCalendarEntities(normalizeSearchText('ሚካኤል'))[0]?.entity.key, 'michael')
+assert.equal(matchCalendarEntities(normalizeSearchText('Gebriel'))[0]?.entity.key, 'gabriel')
+assert.equal(matchCalendarEntities(normalizeSearchText('ገብርኤል'))[0]?.entity.key, 'gabriel')
+
+for (const entity of CALENDAR_ENTITIES) {
+  for (const id of [
+    ...entity.monthlyIds,
+    ...entity.annualIds,
+    ...entity.feastIds,
+    ...entity.fastIds,
+    ...entity.seasonIds,
+  ]) {
+    assert.ok(getEntryById(id), `catalog id missing: ${id} (${entity.key})`)
+  }
+}
+
+assert.equal(parseQuestion('Find hymns about Saint Michael').domain, 'hymn')
+assert.equal(parseQuestion('Who is Saint Michael?').domain, 'website')
+assert.equal(parseQuestion('Open Calendar').domain, 'navigation')
+assert.equal(parseQuestion('What are the Five Mysteries?').domain, 'teaching')
+assert.equal(parseQuestion('Explain the theological significance of Timkat').domain, 'teaching')
+assert.equal(shouldSearchFaithAndOrder("When is Saint Michael's feast?"), null)
+assert.equal(shouldSearchFaithAndOrder('Find hymns about Saint Michael'), null)
+assert.equal(shouldSearchFaithAndOrder('What are the Five Mysteries?')?.id ?? null, null)
+
+const feastQ = ask("When is Saint Michael's feast?")
+assert.equal(feastQ.parsed.domain, 'calendar')
+assert.equal(feastQ.result?.kind, 'clarify')
+assert.equal(feastQ.result?.kind === 'clarify' ? feastQ.result.pending.ambiguity : '', 'monthly_vs_annual')
+
+const annualFollow = ask('annual', pendingFromResult(feastQ.result))
+assert.equal(annualFollow.parsed.isFollowUp, true)
+assert.equal(annualFollow.result?.kind, 'answer')
+const annualIds =
+  annualFollow.result?.kind === 'answer'
+    ? annualFollow.result.occurrences.map((row) => row.entryId)
+    : []
+assert.ok(annualIds.includes('saint-michael-major'))
+assert.ok(annualIds.includes('saint-michael-sene-12'))
+assert.equal(
+  annualFollow.result?.kind === 'answer' ? annualFollow.result.occurrences[0].gregorianIso : '',
+  '2026-11-21',
+)
+assert.match(
+  annualFollow.result?.kind === 'answer' ? annualFollow.result.occurrences[0].href : '',
+  /\/calendar\?date=2026-11-21/,
+)
+
+const monthlyFollow = ask('monthly', pendingFromResult(feastQ.result))
+assert.equal(monthlyFollow.result?.kind, 'answer')
+assert.equal(
+  monthlyFollow.result?.kind === 'answer' ? monthlyFollow.result.occurrences[0].gregorianIso : '',
+  '2026-10-22',
+)
+assert.equal(
+  monthlyFollow.result?.kind === 'answer' ? monthlyFollow.result.occurrences[0].relative : '',
+  'in_days',
+)
+
+const todayMichael = askAt('Is Saint Michael commemorated today?', d(2026, 10, 22))
+assert.equal(todayMichael.result?.kind, 'answer')
+assert.equal(
+  todayMichael.result?.kind === 'answer' ? todayMichael.result.occurrences[0].relative : '',
+  'today',
+)
+assert.equal(
+  todayMichael.result?.kind === 'answer' ? todayMichael.result.occurrences[0].gregorianIso : '',
+  '2026-10-22',
+)
+
+const amFeast = ask('የቅዱስ ሚካኤል በዓል መቼ ነው?')
+assert.equal(amFeast.parsed.language, 'am')
+assert.equal(amFeast.result?.kind, 'clarify')
+const amMonthly = ask('ወርሃዊ', pendingFromResult(amFeast.result))
+assert.equal(amMonthly.parsed.isFollowUp, true)
+assert.equal(
+  amMonthly.result?.kind === 'answer' ? amMonthly.result.occurrences[0].gregorianIso : '',
+  '2026-10-22',
+)
+
+const nextFast = ask('What is the next fast?')
+assert.equal(nextFast.result?.kind, 'clarify')
+assert.equal(
+  nextFast.result?.kind === 'clarify' ? nextFast.result.pending.ambiguity : '',
+  'weekly_vs_named_fast',
+)
+const weeklyFollow = ask('weekly', pendingFromResult(nextFast.result))
+assert.equal(weeklyFollow.result?.kind, 'answer')
+assert.equal(
+  weeklyFollow.result?.kind === 'answer' ? weeklyFollow.result.occurrences[0].category : '',
+  'weekly_fast',
+)
+assert.equal(
+  weeklyFollow.result?.kind === 'answer' ? weeklyFollow.result.occurrences[0].gregorianIso : '',
+  '2026-10-21',
+)
+const namedFollow = ask('named', pendingFromResult(nextFast.result))
+assert.equal(namedFollow.result?.kind, 'answer')
+assert.equal(
+  namedFollow.result?.kind === 'answer' ? namedFollow.result.occurrences[0].entryId : '',
+  'tsome-nebiyat',
+)
+
+const fastingToday = ask('Are we fasting today?')
+assert.equal(fastingToday.result?.kind, 'answer')
+assert.match(
+  fastingToday.result?.kind === 'answer' ? fastingToday.result.headlineEn : '',
+  /not a fasting day/i,
+)
+
+const prophetsStart = nextFixedEthDateOnOrAfter(ref, 3, 15)
+assert.ok(prophetsStart)
+const activeFast = askAt('Are we fasting today?', prophetsStart.gregorian)
+assert.equal(activeFast.result?.kind, 'answer')
+assert.ok(
+  activeFast.result?.kind === 'answer' &&
+    activeFast.result.occurrences.some((row) => row.entryId === 'tsome-nebiyat'),
+)
+const currentEnd = askAt('When does the current fast end?', prophetsStart.gregorian)
+assert.equal(currentEnd.result?.kind, 'answer')
+assert.ok(
+  currentEnd.result?.kind === 'answer' &&
+    currentEnd.result.occurrences.some((row) => row.endGregorianIso || row.endUnsupported),
+)
+
+const abiy = ask('When does Great Lent start?')
+assert.equal(abiy.parsed.domain, 'calendar')
+if (abiy.result?.kind === 'answer') {
+  const computed = findNextCivilDayForEntry('abiy-tsom', ref, { maxDays: 420 })
+  assert.ok(computed)
+  assert.equal(abiy.result.occurrences[0].gregorianIso, toIsoLocalDate(computed))
+  assert.equal(abiy.result.occurrences[0].href, `/calendar?date=${toIsoLocalDate(computed)}`)
+} else {
+  assert.equal(abiy.result?.kind, 'unsupported')
+}
+
+const meskel = ask('When is Meskel?')
+assert.equal(meskel.result?.kind, 'answer')
+const meskelIds =
+  meskel.result?.kind === 'answer' ? meskel.result.occurrences.map((row) => row.entryId) : []
+assert.ok(meskelIds.includes('meskel-finding-of-the-true-cross'))
+assert.ok(meskelIds.includes('megabit-meskel'))
+
+const timket = ask('When is Timket this year?')
+assert.equal(timket.result?.kind, 'answer')
+const timketDate = nextFixedEthDateOnOrAfter(ref, 5, 11)
+assert.ok(timketDate)
+assert.equal(
+  timket.result?.kind === 'answer' ? timket.result.occurrences[0].gregorianIso : '',
+  toIsoLocalDate(timketDate.gregorian),
+)
+
+const ethToday = ask('What is today in the Ethiopian calendar?')
+assert.equal(ethToday.result?.kind, 'answer')
+assert.equal(
+  ethToday.result?.kind === 'answer' ? ethToday.result.occurrences[0].gregorianIso : '',
+  '2026-10-19',
+)
+
+const nextAnnual = ask('What is the next annual feast?')
+assert.equal(nextAnnual.result?.kind, 'answer')
+assert.ok(nextAnnual.result?.kind === 'answer' && nextAnnual.result.occurrences[0].gregorianIso >= '2026-10-19')
+
+const afterHedar = askAt("When is Saint Michael's annual feast?", d(2026, 12, 1))
+assert.equal(afterHedar.result?.kind, 'answer')
+assert.ok(
+  afterHedar.result?.kind === 'answer' &&
+    afterHedar.result.occurrences.some((row) => row.entryId === 'saint-michael-sene-12'),
+)
+
+const pagumenStart = d(2027, 9, 6)
+assert.equal(gregorianToEthiopian(pagumenStart).month, 13)
+const pagumenMonthly = askAt("When is Saint Michael's monthly commemoration?", pagumenStart)
+assert.equal(pagumenMonthly.result?.kind, 'answer')
+assert.equal(
+  pagumenMonthly.result?.kind === 'answer' ? pagumenMonthly.result.occurrences[0].gregorianIso : '',
+  toIsoLocalDate(next12.gregorian),
+)
+assert.notEqual(
+  pagumenMonthly.result?.kind === 'answer' ? pagumenMonthly.result.occurrences[0].ethiopianLabel : '',
+  '',
+)
+
+const unknownSaint = ask('When is Saint XYZZY feast?')
+assert.equal(unknownSaint.parsed.domain, 'calendar')
+assert.equal(unknownSaint.result?.kind, 'unsupported')
+
+const stale = ask('Find hymns about Saint Michael', pendingFromResult(feastQ.result))
+assert.equal(stale.parsed.domain, 'hymn')
+assert.equal(stale.parsed.isFollowUp, false)
+
+const gehad = ask('When is Tsome Gehad?')
+assert.equal(gehad.parsed.domain, 'calendar')
+assert.equal(gehad.result?.kind, 'unsupported')
+
+console.log('search-buddy calendar question matrix: ok')

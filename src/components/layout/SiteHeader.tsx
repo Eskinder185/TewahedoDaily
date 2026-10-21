@@ -11,9 +11,11 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { useAuth, hasCmsRole } from '../../lib/auth/useAuth'
+import { EthiopianCross } from './EthiopianCross'
 import { LanguageMenuButton } from './LanguageMenuButton'
 import { LanguageToggle } from './LanguageToggle'
 import { ThemeToggle } from './ThemeToggle'
+import { prefetchPrimaryNav, prefetchRoute } from '../../lib/routePrefetch'
 import styles from './SiteHeader.module.css'
 
 const DRAWER_FOCUSABLE =
@@ -45,11 +47,12 @@ export function SiteHeader() {
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
 
+  const isHome = location.pathname === '/'
   const modes = [
     {
-      to: '/practice',
-      label: t('navPractice'),
-      desc: t('navModeLearnDesc'),
+      to: '/bible',
+      label: t('navBible'),
+      desc: t('navModeBibleDesc'),
     },
     {
       to: '/pray',
@@ -57,9 +60,9 @@ export function SiteHeader() {
       desc: t('navModePrayDesc'),
     },
     {
-      to: '/bible',
-      label: t('navBible'),
-      desc: t('navModeBibleDesc'),
+      to: '/practice',
+      label: t('navPractice'),
+      desc: t('navModeLearnDesc'),
     },
     {
       to: '/calendar',
@@ -74,6 +77,11 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!menuOpen) return
+    prefetchPrimaryNav()
+  }, [menuOpen])
+
+  useEffect(() => {
+    if (!menuOpen) return
 
     drawerCloseRef.current?.focus()
 
@@ -85,8 +93,7 @@ export function SiteHeader() {
     }
 
     const mainEl = document.getElementById('main')
-    const footerEl = document.querySelector('footer')
-    const inertTargets = [mainEl, footerEl].filter(Boolean) as HTMLElement[]
+    const inertTargets = [mainEl].filter(Boolean) as HTMLElement[]
     for (const el of inertTargets) el.setAttribute('inert', '')
 
     const prevOverflow = document.body.style.overflow
@@ -173,6 +180,7 @@ export function SiteHeader() {
                 to={item.to}
                 title={`${item.label} - ${item.desc}`}
                 onClick={closeMenu}
+                onPointerDown={() => prefetchRoute(item.to)}
                 className={({ isActive }) =>
                   `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
                 }
@@ -188,6 +196,15 @@ export function SiteHeader() {
               }
             >
               {t('navAbout')}
+            </NavLink>
+            <NavLink
+              to="/legal"
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+              }
+            >
+              {tt('legal.title')}
             </NavLink>
             {showAccount ? (
               <>
@@ -236,10 +253,10 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className={styles.header} data-header>
+      <header className={`${styles.header} ${isHome ? styles.headerHome : ''}`.trim()} data-header>
         <div className={styles.bar}>
           <Link to="/" className={styles.brand}>
-            <span className={styles.mark} aria-hidden />
+            <EthiopianCross className={styles.mark} />
             <span className={styles.brandText}>
               <span className={styles.wordmark}>{tt('brand.name')}</span>
               <span className={styles.brandSub}>{tt('brand.subtitle')}</span>
@@ -250,6 +267,8 @@ export function SiteHeader() {
             <NavLink
               to="/"
               end
+              onPointerEnter={() => prefetchRoute('/')}
+              onFocus={() => prefetchRoute('/')}
               className={({ isActive }) =>
                 `${styles.homeLink} ${isActive ? styles.homeLinkOn : ''}`.trim()
               }
@@ -262,6 +281,9 @@ export function SiteHeader() {
                 to={item.to}
                 title={item.desc}
                 aria-label={item.label}
+                onPointerEnter={() => prefetchRoute(item.to)}
+                onFocus={() => prefetchRoute(item.to)}
+                onPointerDown={() => prefetchRoute(item.to)}
                 className={({ isActive }) =>
                   `${styles.modeLink} ${isActive ? styles.modeLinkOn : ''}`.trim()
                 }
@@ -272,18 +294,26 @@ export function SiteHeader() {
                 </span>
               </NavLink>
             ))}
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                `${styles.homeLink} ${isActive ? styles.homeLinkOn : ''}`.trim()
-              }
-            >
-              {t('navAbout')}
-            </NavLink>
           </nav>
 
           <div className={styles.headerTools}>
             <div className={styles.toggleGroup}>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `${styles.utilityLink} ${styles.desktopOnlyAbout} ${isActive ? styles.utilityLinkOn : ''}`.trim()
+                }
+              >
+                {t('navAbout')}
+              </NavLink>
+              <NavLink
+                to="/legal"
+                className={({ isActive }) =>
+                  `${styles.utilityLink} ${styles.desktopOnlyAbout} ${isActive ? styles.utilityLinkOn : ''}`.trim()
+                }
+              >
+                {tt('legal.title')}
+              </NavLink>
               {showAccount ? (
                 <Link
                   to="/account"

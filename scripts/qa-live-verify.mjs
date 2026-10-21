@@ -67,18 +67,6 @@ const hymns = await page.evaluate(() => {
   }
 })
 
-await page.goto('http://127.0.0.1:4174/today', { waitUntil: 'networkidle', timeout: 60000 })
-await page.waitForTimeout(1200)
-const today = await page.evaluate(() => {
-  const t = document.body.innerText
-  return {
-    hasConfidence: /Confidence:\s*High/i.test(t),
-    hasPdf: /PDF/i.test(t),
-    hasMezmurPlaceholder: /No specific mezmur linked/i.test(t),
-    hasEditorialPlaceholder: /will appear here when published/i.test(t),
-  }
-})
-
 await page.goto('http://127.0.0.1:4174/nope-route-xyz', { waitUntil: 'networkidle' })
 const notFound = await page.evaluate(() => /Page not found/i.test(document.body.innerText))
 
@@ -95,7 +83,7 @@ const imports = reqs.filter((u) => /_import/i.test(u))
 
 console.log(
   JSON.stringify(
-    { calendar: out, hymns, today, notFound, network: { legacy, importTables: [...new Set(imports.map((u) => u.split('?')[0].split('/').pop()))] } },
+    { calendar: out, hymns, notFound, network: { legacy, importTables: [...new Set(imports.map((u) => u.split('?')[0].split('/').pop()))] } },
     null,
     2,
   ),

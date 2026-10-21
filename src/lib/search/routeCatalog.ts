@@ -221,6 +221,7 @@ export const ROUTE_CATALOG: RouteCatalogEntry[] = [
   {
     id: 'page:calendar',
     title: 'Calendar',
+    titleAmharic: 'ቀን መቁጠሪያ',
     description: 'Ethiopian Orthodox feasts, fasts, and daily observances.',
     route: '/calendar',
     aliases: [
@@ -231,21 +232,15 @@ export const ROUTE_CATALOG: RouteCatalogEntry[] = [
       'feast calendar',
       'ethiopian calendar',
       'take me to the calendar',
+      'open calendar',
+      'open the calendar',
       'ቅዱስ ቀን',
+      'ቀን መቁጠሪያ',
+      'ቀን መቁጠሪያ ክፈት',
     ],
     sourceType: 'calendar',
     typeLabel: 'Calendar',
     priority: 100,
-  },
-  {
-    id: 'page:today',
-    title: 'Today in the Church',
-    description: 'See what the Church remembers today.',
-    route: '/today',
-    aliases: ['today', 'today in church', 'daily'],
-    sourceType: 'page',
-    typeLabel: 'Page',
-    priority: 70,
   },
   {
     id: 'page:about',

@@ -8,12 +8,18 @@
     color-mix(in srgb, var(--color-bg-elevated) 94%, var(--color-bg)) 0%,
     color-mix(in srgb, var(--color-bg-elevated) 88%, transparent) 100%
   );
-  backdrop-filter: blur(20px) saturate(1.12);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid color-mix(in srgb, var(--color-border-strong) 88%, var(--color-gold-line));
   box-shadow:
     0 1px 0 var(--color-gold-faint),
     0 8px 32px -16px var(--color-sky-glow);
-  will-change: transform;
+}
+
+@media (max-width: 767.98px) {
+  .header {
+    backdrop-filter: none;
+    background: color-mix(in srgb, var(--color-bg-elevated) 96%, var(--color-bg));
+  }
 }
 
 .bar {
@@ -297,6 +303,7 @@
 .drawerLink {
   display: flex;
   align-items: center;
+  touch-action: manipulation;
   min-height: var(--tap-min);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-lg);
@@ -358,18 +365,10 @@
 }
 
 .mark {
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
+  width: 1.35rem;
+  height: 1.55rem;
   flex-shrink: 0;
-  background: linear-gradient(
-    135deg,
-    var(--color-navy-deep) 0%,
-    var(--color-gold) 100%
-  );
-  box-shadow:
-    0 0 0 2px var(--color-gold-soft),
-    0 2px 14px rgba(7, 14, 26, 0.2);
+  color: var(--color-gold);
 }
 
 .brandText {
@@ -381,9 +380,10 @@
   white-space: nowrap;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+  font-size: clamp(0.95rem, 2.8vw, 1.2rem);
   letter-spacing: var(--letter-display);
   line-height: 1.15;
+  color: var(--color-burgundy-ink);
 }
 
 .brandSub {
@@ -469,8 +469,10 @@
 }
 
 .homeLink:active,
-.modeLink:active {
+.modeLink:active,
+.drawerLink:active {
   transform: translateY(0);
+  opacity: 0.82;
 }
 
 .homeLinkOn,
@@ -702,4 +704,89 @@
 
 [data-theme='night'] .drawerLink:hover {
   color: var(--color-text);
+}
+
+.headerHome {
+  background: linear-gradient(180deg, rgba(247, 240, 226, 0.18), rgba(247, 240, 226, 0));
+  backdrop-filter: none;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.headerHome .utilityLink {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+}
+
+.headerHome .brandSub {
+  display: none;
+}
+
+.modeDesc {
+  display: none;
+}
+
+.homeLink,
+.modeLink {
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+  max-width: none;
+  min-width: var(--tap-min);
+  padding: 0.35rem 0.55rem;
+  touch-action: manipulation;
+}
+
+.modeLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeLinkOn,
+.modeLinkOn {
+  background: transparent;
+  box-shadow: none;
+  border-color: transparent;
+  color: var(--color-burgundy-ink);
+  box-shadow: inset 0 -1px 0 var(--color-gold);
+}
+
+@media (hover: hover) {
+  .homeLink:hover,
+  .modeLink:hover {
+    transform: none;
+    background: transparent;
+    box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--color-gold) 70%, transparent);
+  }
+}
+
+.utilityLinkOn {
+  border-color: var(--color-border-gold);
+  color: var(--color-burgundy-ink);
+}
+
+.desktopOnlyAbout {
+  display: inline-flex;
+}
+
+@media (max-width: 767.98px) {
+  .desktopOnlyAbout {
+    display: none;
+  }
+}
+
+[data-theme='night'] .wordmark {
+  color: #f3e6c8;
+}
+
+[data-theme='night'] .headerHome {
+  background: linear-gradient(180deg, rgba(16, 12, 8, 0.35), rgba(16, 12, 8, 0.04));
+}
+
+[data-theme='night'] .homeLinkOn,
+[data-theme='night'] .modeLinkOn {
+  color: #f3e6c8;
 }

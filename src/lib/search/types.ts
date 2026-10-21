@@ -22,6 +22,9 @@ export type SiteSearchSourceType =
   | 'bible-verse'
   | 'bible-range'
   | 'bible-text'
+  | 'saint'
+  | 'feast'
+  | 'learn'
   | 'account'
   | 'other'
 
@@ -51,8 +54,24 @@ export type SiteSearchResponse = {
   results: SiteSearchResult[]
   intentMessage: string | null
   zeroResults: boolean
-  /** True when at least one catalog source failed but others returned */
+  /**
+   * True when at least one queried catalog failed.
+   * Remains true when every result list is empty, so a failure is not
+   * reported as “no matching information.”
+   */
   partial: boolean
+  /** True when every catalog that was queried failed. */
+  failed: boolean
+  sources: SiteSourceReport[]
   totalCount: number
   isFollowUp: boolean
+}
+
+export type SiteSourceStatus = 'matches' | 'empty' | 'failed'
+
+/** Outcome of one website catalog. Present even when that catalog returned nothing. */
+export type SiteSourceReport = {
+  name: string
+  status: SiteSourceStatus
+  count: number
 }
