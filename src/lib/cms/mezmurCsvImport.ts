@@ -45,6 +45,7 @@ export const EOTCMEDIA_AUDIT_CSV_COLUMNS = [
   'source_url',
   'lyrics_source_url',
   'has_lyrics',
+  'lyrics_am',
   'language',
   'form',
   'theological_category',
@@ -428,7 +429,7 @@ export function buildStagedRowsFromCsvText(
     }
     allocatedSlugs.add(slug)
 
-    const amharic_lyrics = raw.amharic_lyrics ?? ''
+    const amharic_lyrics = raw.amharic_lyrics ?? raw.lyrics_am ?? raw.full_lyrics ?? ''
     const rawLyricsStatus = (raw.lyrics_status ?? '').trim() as LyricsStatus
     const hasLyricsFlag = String(raw.has_lyrics ?? '').trim().toLowerCase() === 'true'
     const lyrics_status: LyricsStatus =

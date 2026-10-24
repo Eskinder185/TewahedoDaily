@@ -67,7 +67,8 @@ class CheckpointDB:
                 lyrics_source_kind TEXT DEFAULT '',
                 lyrics_char_count INTEGER DEFAULT 0,
                 lyrics_line_count INTEGER DEFAULT 0,
-                detail_inspected_at TEXT DEFAULT ''
+                detail_inspected_at TEXT DEFAULT '',
+                full_lyrics TEXT DEFAULT ''
             );
 
             CREATE INDEX IF NOT EXISTS idx_raw_listings_video_id ON raw_listings(video_id);
@@ -117,6 +118,7 @@ class CheckpointDB:
             ("lyrics_char_count", "INTEGER DEFAULT 0"),
             ("lyrics_line_count", "INTEGER DEFAULT 0"),
             ("detail_inspected_at", "TEXT DEFAULT ''"),
+            ("full_lyrics", "TEXT DEFAULT ''"),
         ]
         for col_name, col_def in migrations:
             if col_name not in existing_cols:
@@ -137,12 +139,15 @@ class CheckpointDB:
         return {str(r["url"]) for r in cur.fetchall()}
 
     def get_strict_inspected_detail_urls(self) -> Set[str]:
-        """Return source_urls whose detail page has been inspected with the strict ግጥም detector."""
+        """Return source_urls whose detail page has been inspected with the strict ግጥም detector (and full_lyrics populated when verified_true)."""
         cur = self.conn.execute(
             """
             SELECT source_url FROM raw_listings
             WHERE is_detail_verified = 1
-              AND lyrics_verification IN ('verified_true', 'verified_false')
+              AND (
+                lyrics_verification = 'verified_false'
+                OR (lyrics_verification = 'verified_true' AND full_lyrics IS NOT NULL AND full_lyrics != '')
+              )
             """
         )
         return {str(r["source_url"]) for r in cur.fetchall()}
@@ -280,6 +285,7 @@ class CheckpointDB:
                     source_subcategories_json = ?,
                     has_source_lyrics = ?,
                     source_lyrics_snippet = COALESCE(NULLIF(?, ''), source_lyrics_snippet),
+                    full_lyrics = COALESCE(NULLIF(?, ''), full_lyrics),
                     is_detail_verified = MAX(is_detail_verified, ?),
                     is_compilation = ?,
                     compilation_reason = ?,
@@ -314,6 +320,7 @@ class CheckpointDB:
                     json.dumps(merged_subcats, ensure_ascii=False),
                     final_has_lyr,
                     str(item.get("source_lyrics_snippet") or ""),
+                    str(item.get("full_lyrics") or ""),
                     1 if is_detail else 0,
                     1 if is_comp else 0,
                     comp_reason,
@@ -346,8 +353,8 @@ class CheckpointDB:
                     is_compilation, compilation_reason, gemini_classification_json,
                     collected_at, updated_at,
                     lyrics_verification, lyrics_reason, lyrics_source_kind,
-                    lyrics_char_count, lyrics_line_count, detail_inspected_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?)
+                    lyrics_char_count, lyrics_line_count, detail_inspected_at, full_lyrics
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 (
                     src_url,
@@ -383,6 +390,7 @@ class CheckpointDB:
                     new_lyr_chars,
                     new_lyr_lines,
                     inspected_at,
+                    str(item.get("full_lyrics") or ""),
                 ),
             )
 
@@ -453,6 +461,7 @@ class CheckpointDB:
                 "source_subcategories": json.loads(r["source_subcategories_json"] or "[]"),
                 "has_source_lyrics": bool(r["has_source_lyrics"]),
                 "source_lyrics_snippet": r["source_lyrics_snippet"] or "",
+                "full_lyrics": r["full_lyrics"] or "",
                 "is_detail_verified": bool(r["is_detail_verified"]),
                 "is_compilation": bool(r["is_compilation"]),
                 "compilation_reason": r["compilation_reason"] or "",

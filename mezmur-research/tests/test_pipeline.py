@@ -529,10 +529,12 @@ class TestMezmurPipeline(unittest.TestCase):
         eotc_dir = ROOT_DIR.parent / "data" / "imports" / "eotcmedia"
         csv_specs = [
             ("eotcmedia_with_lyrics.csv", EOTCMEDIA_WITH_LYRICS_COLUMNS),
+            ("eotcmedia_with_full_lyrics.csv", EOTCMEDIA_WITH_LYRICS_COLUMNS),
             ("eotcmedia_without_lyrics.csv", EOTCMEDIA_WITHOUT_LYRICS_COLUMNS),
             ("eotcmedia_uncertain.csv", EOTCMEDIA_UNCERTAIN_COLUMNS),
             ("eotcmedia_duplicates.csv", EOTCMEDIA_DUPLICATES_COLUMNS),
             ("eotcmedia_import_ready.csv", EOTCMEDIA_WITH_LYRICS_COLUMNS),
+            ("eotcmedia_import_ready_with_full_lyrics.csv", EOTCMEDIA_WITH_LYRICS_COLUMNS),
         ]
         for fname, expected_cols in csv_specs:
             fpath = eotc_dir / fname
@@ -544,9 +546,10 @@ class TestMezmurPipeline(unittest.TestCase):
                 self.assertEqual(list(reader.fieldnames or []), expected_cols)
                 rows = list(reader)
 
-            if fname in ("eotcmedia_with_lyrics.csv", "eotcmedia_import_ready.csv"):
+            if "with_lyrics" in fname or "import_ready" in fname:
                 for r in rows:
                     self.assertEqual(r["has_lyrics"], "true")
+                    self.assertTrue(len(r["lyrics_am"].strip()) >= 15, f"Empty lyrics_am on {r['source_id']}")
                     self.assertIn(r["theological_category"], SUPPORTED_CATEGORIES)
                     self.assertIn(r["primary_occasion"], SUPPORTED_OCCASIONS)
                     for occ in [o.strip() for o in r["additional_occasions"].split("|") if o.strip()]:

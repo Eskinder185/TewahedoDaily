@@ -248,6 +248,7 @@
   .lyricsToolbar { align-items: flex-start; flex-direction: column; }
   .root textarea.lyricsTextarea { min-height: 18rem; }
   .modal { padding: 18px; }
+  .modal textarea.expandedLyrics { min-height: 48dvh; }
   .pageTabs { gap: 6px; }
   .pageTabs a { padding: 7px 12px; font-size: 0.82rem; }
 }

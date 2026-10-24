@@ -120,6 +120,7 @@ export async function setMezmurClassificationLinks(
   mezmurSlug: string,
   categorySlugs: string[],
   occasionSlugs: string[],
+  previousMezmurSlug?: string | null,
 ): Promise<void> {
   const { requireCmsStaffSession } = await import('./cmsStaffAuth')
   await requireCmsStaffSession('mezmur classification links')
@@ -131,6 +132,7 @@ export async function setMezmurClassificationLinks(
     p_mezmur_slug: slug,
     p_category_slugs: cleanCategories,
     p_occasion_slugs: cleanOccasions,
+    p_previous_mezmur_slug: previousMezmurSlug?.trim() || null,
   } as never)
   if (!error) return
 
@@ -142,7 +144,8 @@ export async function setMezmurClassificationLinks(
     [CATEGORY_LINKS, 'category_slug', cleanCategories],
     [OCCASION_LINKS, 'occasion_slug', cleanOccasions],
   ] as const) {
-    const removed = await db().from(table as never).delete().eq('mezmur_slug', slug)
+    const slugs = [...new Set([slug, previousMezmurSlug?.trim()].filter((value): value is string => Boolean(value)))]
+    const removed = await db().from(table as never).delete().in('mezmur_slug', slugs)
     if (removed.error) throw new Error(errorMessage(removed.error))
     if (values.length) {
       const inserted = await db().from(table as never).insert(

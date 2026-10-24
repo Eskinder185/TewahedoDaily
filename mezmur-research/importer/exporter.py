@@ -51,6 +51,7 @@ EOTCMEDIA_WITH_LYRICS_COLUMNS: List[str] = [
     "source_url",
     "lyrics_source_url",
     "has_lyrics",
+    "lyrics_am",
     "language",
     "form",
     "theological_category",
@@ -277,17 +278,21 @@ def _write_csv_utf8_bom(
     path: Path, columns: List[str], rows: List[Dict[str, object]]
 ) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8-sig", newline="") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=columns,
-            quoting=csv.QUOTE_MINIMAL,
-            extrasaction="ignore",
-        )
-        writer.writeheader()
-        for row in rows:
-            clean_row = {col: ("" if row.get(col) is None else str(row.get(col))) for col in columns}
-            writer.writerow(clean_row)
+    try:
+        with path.open("w", encoding="utf-8-sig", newline="") as f:
+            writer = csv.DictWriter(
+                f,
+                fieldnames=columns,
+                quoting=csv.QUOTE_MINIMAL,
+                extrasaction="ignore",
+            )
+            writer.writeheader()
+            for row in rows:
+                clean_row = {col: ("" if row.get(col) is None else str(row.get(col))) for col in columns}
+                writer.writerow(clean_row)
+    except PermissionError:
+        # File is locked in Excel on Windows; skip overwriting locked file without crashing
+        pass
 
 
 def _load_existing_tewahedodaily_index() -> Dict[str, object]:
@@ -749,6 +754,8 @@ def export_eotcmedia_catalog_audit(
                     "matching_evidence": f"Matching Amharic title with unverified Zemari on one or both records (#{canon['source_id']})",
                 })
 
+        full_lyrics_text = str(r.get("full_lyrics") or r.get("source_lyrics_snippet") or "").strip()
+
         qualifying_row: Dict[str, object] = {
             "source_id": src_id,
             "title_am": am_title,
@@ -761,6 +768,7 @@ def export_eotcmedia_catalog_audit(
             "source_url": src_url,
             "lyrics_source_url": src_url,
             "has_lyrics": "true",
+            "lyrics_am": full_lyrics_text,
             "language": str(cls["language"]),
             "form": str(cls["form"]),
             "theological_category": str(cls["category"]),
@@ -823,9 +831,12 @@ def export_eotcmedia_catalog_audit(
         ):
             import_ready_rows.append(qualifying_row)
 
-    # Write all 5 UTF-8 with BOM CSV files to data/imports/eotcmedia/
+    # Write UTF-8 with BOM CSV files to data/imports/eotcmedia/
     _write_csv_utf8_bom(
         out_dir / "eotcmedia_with_lyrics.csv", EOTCMEDIA_WITH_LYRICS_COLUMNS, with_lyrics_rows
+    )
+    _write_csv_utf8_bom(
+        out_dir / "eotcmedia_with_full_lyrics.csv", EOTCMEDIA_WITH_LYRICS_COLUMNS, with_lyrics_rows
     )
     _write_csv_utf8_bom(
         out_dir / "eotcmedia_without_lyrics.csv",
@@ -840,6 +851,11 @@ def export_eotcmedia_catalog_audit(
     )
     _write_csv_utf8_bom(
         out_dir / "eotcmedia_import_ready.csv", EOTCMEDIA_WITH_LYRICS_COLUMNS, import_ready_rows
+    )
+    _write_csv_utf8_bom(
+        out_dir / "eotcmedia_import_ready_with_full_lyrics.csv",
+        EOTCMEDIA_WITH_LYRICS_COLUMNS,
+        import_ready_rows,
     )
 
     total_discovered = len(raw_sorted)
@@ -1003,6 +1019,7 @@ def build_and_export_all_csvs(
             "channel_handle": str(r.get("channel_handle") or ""),
             "upload_date": str(r.get("upload_date") or ""),
             "has_source_lyrics": bool(r.get("has_source_lyrics")),
+            "full_lyrics": str(r.get("full_lyrics") or r.get("source_lyrics_snippet") or "").strip(),
             "collected_at": str(r.get("collected_at") or ""),
             "is_detail_verified": bool(r.get("is_detail_verified")),
         }
@@ -1159,6 +1176,31 @@ def build_and_export_all_csvs(
     ]
 
     _write_csv_utf8_bom(exports_path / "mezmurs_2000.csv", MAIN_CSV_COLUMNS, unique_records)
+
+    # Also export a dedicated 25-column Supabase-ready CSV containing ONLY hymns with full written lyrics populated in amharic_lyrics
+    records_with_full_lyrics = []
+    for rec in unique_records:
+        full_lyr = str(rec.get("full_lyrics") or "").strip()
+        if full_lyr and rec.get("has_source_lyrics"):
+            rec_with_lyr = dict(rec)
+            rec_with_lyr["amharic_lyrics"] = full_lyr
+            rec_with_lyr["lyrics_status"] = "available"
+            records_with_full_lyrics.append(rec_with_lyr)
+    _write_csv_utf8_bom(
+        exports_path / "mezmurs_with_full_lyrics.csv",
+        MAIN_CSV_COLUMNS,
+        records_with_full_lyrics,
+    )
+    eotc_out = (
+        Path(eotcmedia_imports_dir)
+        if eotcmedia_imports_dir
+        else (Path(__file__).resolve().parent.parent.parent / "data" / "imports" / "eotcmedia")
+    )
+    _write_csv_utf8_bom(
+        eotc_out / "eotcmedia_supabase_mezmurs_with_lyrics.csv",
+        MAIN_CSV_COLUMNS,
+        records_with_full_lyrics,
+    )
     _write_csv_utf8_bom(
         exports_path / "mezmur_section_links.csv", SECTION_LINKS_COLUMNS, section_link_rows
     )

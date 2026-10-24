@@ -274,11 +274,11 @@ function EditorForm({ initial }: { initial: EditorData }) {
       }
       const saved = await saveMezmur(payload, tags, row)
       try {
-        await setMezmurSectionLinks(saved.id, sectionIds)
+        await setMezmurSectionLinks(saved.id, sectionIds, row?.slug)
       } catch (sectionErr) {
         if (import.meta.env.DEV) console.warn('[MezmurEditor] section links', sectionErr)
       }
-      await setMezmurClassificationLinks(saved.slug, categorySlugs, occasionSlugs)
+      await setMezmurClassificationLinks(saved.slug, categorySlugs, occasionSlugs, row?.slug)
       setRow(saved)
       const savedInput = { ...editable(saved), category_id: primaryCategorySlug, category: payload.category, occasion: payload.occasion }
       setInput(savedInput)
@@ -759,6 +759,16 @@ function LyricsWorkspace({
             aria-controls="lyrics-editor-panel"
             className={active === tab.key ? s.lyricsTabActive : ''}
             onClick={() => setActive(tab.key)}
+            onKeyDown={(event) => {
+              if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+              event.preventDefault()
+              const index = LYRIC_TABS.findIndex((item) => item.key === active)
+              const direction = event.key === 'ArrowRight' ? 1 : -1
+              const next = LYRIC_TABS[(index + direction + LYRIC_TABS.length) % LYRIC_TABS.length]
+              setActive(next.key)
+              const tabs = event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="tab"]')
+              tabs?.[(index + direction + LYRIC_TABS.length) % LYRIC_TABS.length]?.focus()
+            }}
           >
             {tab.label}
             {input[tab.key]?.trim() ? <span aria-label="has content"> •</span> : null}

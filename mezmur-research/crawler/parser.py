@@ -331,6 +331,7 @@ def inspect_hymn_lyrics_section(
         "lyrics_line_count": line_count,
         "lyrics_reason": f"verified_written_lyrics ({lyrics_source_kind}, {line_count} lines, {char_count} chars)",
         "lyrics_snippet": snippet,
+        "full_lyrics": clean_text,
     }
 
 
@@ -620,6 +621,7 @@ def parse_hymn_detail_html(
             "source_subcategories": [],
             "has_source_lyrics": has_source_lyrics,
             "source_lyrics_snippet": lyrics_snippet,
+            "full_lyrics": str(lyrics_info.get("full_lyrics") or ""),
             "is_detail_verified": True,
             "lyrics_verification": str(lyrics_info["lyrics_verification"]),
             "lyrics_reason": str(lyrics_info["lyrics_reason"]),

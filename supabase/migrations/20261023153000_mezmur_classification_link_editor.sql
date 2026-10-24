@@ -29,7 +29,8 @@ create policy mezmur_occasion_links_import_staff_write
 create or replace function public.set_mezmur_classification_import(
   p_mezmur_slug text,
   p_category_slugs text[] default '{}',
-  p_occasion_slugs text[] default '{}'
+  p_occasion_slugs text[] default '{}',
+  p_previous_mezmur_slug text default null
 )
 returns void
 language plpgsql
@@ -47,7 +48,8 @@ begin
     raise exception 'staff access required' using errcode = '42501';
   end if;
 
-  delete from public.mezmur_category_links_import where trim(mezmur_slug) = v_slug;
+  delete from public.mezmur_category_links_import
+  where trim(mezmur_slug) in (v_slug, trim(coalesce(p_previous_mezmur_slug, v_slug)));
   insert into public.mezmur_category_links_import (mezmur_slug, category_slug, source_category, confidence)
   select v_slug, value, 'admin-editor', 'verified'
   from (
@@ -56,7 +58,8 @@ begin
   ) clean
   where value <> '';
 
-  delete from public.mezmur_occasion_links_import where trim(mezmur_slug) = v_slug;
+  delete from public.mezmur_occasion_links_import
+  where trim(mezmur_slug) in (v_slug, trim(coalesce(p_previous_mezmur_slug, v_slug)));
   insert into public.mezmur_occasion_links_import (mezmur_slug, occasion_slug)
   select v_slug, value
   from (
@@ -67,10 +70,10 @@ begin
 end;
 $$;
 
-revoke all on function public.set_mezmur_classification_import(text, text[], text[]) from public, anon;
-grant execute on function public.set_mezmur_classification_import(text, text[], text[]) to authenticated, service_role;
+revoke all on function public.set_mezmur_classification_import(text, text[], text[], text) from public, anon;
+grant execute on function public.set_mezmur_classification_import(text, text[], text[], text) to authenticated, service_role;
 
-comment on function public.set_mezmur_classification_import(text, text[], text[]) is
+comment on function public.set_mezmur_classification_import(text, text[], text[], text) is
   'Atomically replaces normalized category and occasion links for one Mezmur. Existing source rows are preserved until this function is explicitly called.';
 
 notify pgrst, 'reload schema';

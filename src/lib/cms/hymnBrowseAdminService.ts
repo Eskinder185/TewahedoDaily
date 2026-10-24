@@ -557,6 +557,7 @@ export async function listMezmurSectionLinks(mezmurId: string): Promise<MezmurSe
 export async function setMezmurSectionLinks(
   mezmurId: string,
   sectionIds: string[],
+  previousMezmurSlug?: string | null,
 ): Promise<void> {
   const mezmurSlug = await resolveMezmurSlug(mezmurId)
   const sections = await listAllHymnSections().catch(() => [] as HymnSectionRow[])
@@ -564,10 +565,11 @@ export async function setMezmurSectionLinks(
   const bySlug = new Map(sections.map((s) => [s.slug, s]))
 
   const unique = [...new Set(sectionIds.filter(Boolean))]
+  const slugs = [...new Set([mezmurSlug, previousMezmurSlug?.trim()].filter((value): value is string => Boolean(value)))]
   const { error: delErr } = await db()
     .from(T.links as never)
     .delete()
-    .eq('mezmur_slug', mezmurSlug)
+    .in('mezmur_slug', slugs)
   if (delErr) throw new Error(errorMessage(delErr))
   if (!unique.length) return
 
