@@ -21,7 +21,7 @@
   border-radius: 999px;
   border: 1px solid var(--color-border);
   background: color-mix(in srgb, var(--color-bg-elevated, #fff) 94%, #fff);
-  color: var(--color-navy, #1e2a44);
+  color: var(--color-heading);
   font-size: 1.05rem;
   cursor: pointer;
   box-shadow: var(--shadow-soft, 0 6px 14px rgba(0, 0, 0, 0.06));
@@ -164,7 +164,7 @@
 }
 
 .selectedBadge {
-  color: var(--color-navy, #1e2a44);
+  color: var(--color-heading);
 }
 
 .dayGregorian {
@@ -178,7 +178,7 @@
 }
 
 .dayGroupSelected .dayGregorian {
-  color: var(--color-navy, #1e2a44);
+  color: var(--color-heading);
 }
 
 .dayEthiopian {

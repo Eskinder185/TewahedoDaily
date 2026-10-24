@@ -43,6 +43,7 @@ const AdminLayout = lazy(() => import('./pages/admin/adminPages').then(m => ({ d
 const AdminDashboard = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminDashboard })))
 const MezmurList = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurList })))
 const MezmurEditor = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurEditor })))
+const MezmurCsvImportPreview = lazy(() => import('./pages/admin/MezmurCsvImportPreview').then(m => ({ default: m.MezmurCsvImportPreview })))
 const TaxonomyPage = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.TaxonomyPage })))
 const HymnBrowseGroupsList = lazy(() =>
   import('./pages/admin/HymnBrowseGroupsAdmin').then((m) => ({ default: m.HymnBrowseGroupsList })),
@@ -160,6 +161,7 @@ export default function App() {
               <Route path="mezmur" element={<MezmurList />} />
               <Route path="mezmur/new" element={<MezmurEditor />} />
               <Route path="mezmur/:id/edit" element={<MezmurEditor />} />
+              <Route path="import" element={<MezmurCsvImportPreview />} />
               <Route path="browse-groups" element={<HymnBrowseGroupsList />} />
               <Route path="browse-groups/new" element={<HymnBrowseGroupEditor />} />
               <Route path="browse-groups/:id/edit" element={<HymnBrowseGroupEditor />} />

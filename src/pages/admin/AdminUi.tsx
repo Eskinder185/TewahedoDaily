@@ -17,11 +17,11 @@ export function Media({ reference, audio = false, title = '' }: { reference: str
   if (!result.data) return <span aria-label="Loading media">…</span>
   return audio ? <audio controls src={result.data} aria-label={title || 'Mezmur audio'} /> : <img className={s.thumbnail} src={result.data} alt={title} />
 }
-export function Modal({ title, children, close }: { title: string; children: ReactNode; close: () => void }) {
+export function Modal({ title, children, close, wide = false }: { title: string; children: ReactNode; close: () => void; wide?: boolean }) {
   const ref = useRef<HTMLDialogElement>(null)
   const id = useId()
   useEffect(() => { ref.current?.showModal() }, [])
-  return <dialog ref={ref} className={s.modal} aria-labelledby={id} onCancel={event => { event.preventDefault(); close() }}>
+  return <dialog ref={ref} className={`${s.modal} ${wide ? s.modalWide : ''}`} aria-labelledby={id} onCancel={event => { event.preventDefault(); close() }}>
     <div className={s.heading}><h2 id={id}>{title}</h2><button type="button" onClick={close} aria-label="Close dialog">Close</button></div>{children}
   </dialog>
 }

@@ -42,6 +42,13 @@ export type PublicMezmur = CmsTables['mezmur']['Row'] &
     category_name: string | null
     languages: string[]
     tags: PublicTag[]
+    structured_lyrics?: unknown
+    lyrics_language?: string | null
+    source_info?: string | null
+    rights_status?: string | null
+    external_lyrics_url?: string | null
+    last_verified_at?: string | null
+    related_content?: unknown
   }
 
 export type MezmurCard = Pick<
@@ -247,6 +254,13 @@ export async function detail(slug: string): Promise<PublicMezmur | null> {
         category_name: null,
         languages: imported.language ? [imported.language] : [],
         tags: [],
+        structured_lyrics: imported.structured_lyrics,
+        lyrics_language: imported.lyrics_language,
+        source_info: imported.source_info || imported.source_notes,
+        rights_status: imported.rights_status,
+        external_lyrics_url: imported.external_lyrics_url,
+        last_verified_at: imported.last_verified_at,
+        related_content: imported.related_content,
       } as unknown as PublicMezmur
     }
   } catch (cause) {

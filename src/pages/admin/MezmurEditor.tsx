@@ -25,8 +25,16 @@ import {
 } from '../../lib/cms/hymnBrowseAdminService'
 import { uploadMezmurFile, validateFile } from '../../lib/cms/mediaService'
 import { MediaPicker } from '../../components/admin/MediaPicker'
+import { SearchableMultiSelect } from '../../components/admin/SearchableMultiSelect'
 import { useAsync } from '../../lib/cms/useAsync'
 import { CANONICAL_OCCASIONS } from '../../lib/publicContent/taxonomy'
+import {
+  humanizeTaxonomySlug,
+  listDerivedOccasions,
+  listMezmurCategoryLinks,
+  listMezmurOccasionLinks,
+  setMezmurClassificationLinks,
+} from '../../lib/cms/hymnTaxonomyImport'
 import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice, Media, MezmurPreview, Modal, Status } from './AdminUi'
 import s from './Admin.module.css'
@@ -39,6 +47,9 @@ type EditorData = {
   row?: Mezmur | null
   tags: string[]
   sectionIds: string[]
+  categorySlugs: string[]
+  occasionSlugs: string[]
+  occasions: Awaited<ReturnType<typeof listDerivedOccasions>>
   sections: Awaited<ReturnType<typeof listAllHymnSections>>
   taxonomy: Awaited<ReturnType<typeof getTaxonomy>>
 }
@@ -102,13 +113,22 @@ export function MezmurEditor() {
   const result = useAsync(
     useCallback(async (): Promise<EditorData> => {
       const taxonomy = await getTaxonomy()
-      const sections = await listAllHymnSections().catch(() => [])
-      if (!id) return { taxonomy, row: undefined, tags: [], sectionIds: [], sections }
+      const [sections, occasions] = await Promise.all([
+        listAllHymnSections().catch(() => []),
+        listDerivedOccasions().catch(() => []),
+      ])
+      if (!id) return { taxonomy, row: undefined, tags: [], sectionIds: [], categorySlugs: [], occasionSlugs: [], sections, occasions }
       const row = await getMezmur(id)
       const tags = row ? await getTagIds(row.id) : []
       const sectionIds = row
         ? (await listMezmurSectionLinks(row.id).catch(() => [])).map((l) => l.section_id)
         : []
+      const [categorySlugs, occasionSlugs] = row
+        ? await Promise.all([
+            listMezmurCategoryLinks(row.slug).catch(() => []),
+            listMezmurOccasionLinks(row.slug).catch(() => []),
+          ])
+        : [[], []]
       if (import.meta.env.DEV) {
         console.debug('[MezmurEditor] load', {
           routeId: id,
@@ -116,7 +136,7 @@ export function MezmurEditor() {
           updated_at: row?.updated_at ?? null,
         })
       }
-      return { taxonomy, row, tags, sectionIds, sections }
+      return { taxonomy, row, tags, sectionIds, categorySlugs, occasionSlugs, sections, occasions }
     }, [id]),
   )
 
@@ -155,11 +175,15 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const [input, setInput] = useState<MezmurInput>(() => (initial.row ? editable(initial.row) : emptyMezmur()))
   const [tags, setTags] = useState(initial.tags)
   const [sectionIds, setSectionIds] = useState(initial.sectionIds)
+  const [categorySlugs, setCategorySlugs] = useState(initial.categorySlugs)
+  const [occasionSlugs, setOccasionSlugs] = useState(initial.occasionSlugs)
   const [baseline, setBaseline] = useState(() =>
     JSON.stringify({
       input: initial.row ? editable(initial.row) : emptyMezmur(),
       tags: initial.tags,
       sectionIds: initial.sectionIds,
+      categorySlugs: initial.categorySlugs,
+      occasionSlugs: initial.occasionSlugs,
     }),
   )
   const [busy, setBusy] = useState(false)
@@ -172,7 +196,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const [historyRevision, setHistoryRevision] = useState(0)
   const navigate = useNavigate()
   const bypass = useRef(false)
-  const dirty = JSON.stringify({ input, tags, sectionIds }) !== baseline
+  const dirty = JSON.stringify({ input, tags, sectionIds, categorySlugs, occasionSlugs }) !== baseline
   const canEdit = staff || !row || (row.created_by === profile?.id && row.status === 'draft')
   const blocker = useBlocker(() => !bypass.current && (dirty || busy))
 
@@ -237,12 +261,16 @@ function EditorForm({ initial }: { initial: EditorData }) {
     setError('')
     setSuccess('')
     try {
-      const selectedCategory = initial.taxonomy.categories.find((c) => c.id === input.category_id)
+      const primaryCategorySlug = categorySlugs[0] || null
+      const selectedCategory = initial.taxonomy.categories.find((c) => c.slug === primaryCategorySlug)
+      const primaryOccasionSlug = occasionSlugs[0] || null
       const payload: MezmurInput = {
         ...input,
         status,
-        // Keep public discovery text `category` in sync with the FK selection.
+        // Keep legacy primary fields in sync while normalized links remain authoritative.
+        category_id: primaryCategorySlug,
         category: selectedCategory?.name || input.category || null,
+        occasion: primaryOccasionSlug ? humanizeTaxonomySlug(primaryOccasionSlug) : null,
       }
       const saved = await saveMezmur(payload, tags, row)
       try {
@@ -250,19 +278,11 @@ function EditorForm({ initial }: { initial: EditorData }) {
       } catch (sectionErr) {
         if (import.meta.env.DEV) console.warn('[MezmurEditor] section links', sectionErr)
       }
-      // Best-effort occasion link via import table (no mezmur_occasions).
-      if (saved.slug && payload.occasion) {
-        try {
-          const { setMezmurOccasionLink } = await import('../../lib/cms/hymnTaxonomyImport')
-          const occasionSlug = slugify(payload.occasion)
-          await setMezmurOccasionLink(saved.slug, occasionSlug || null)
-        } catch (occErr) {
-          if (import.meta.env.DEV) console.warn('[MezmurEditor] occasion link', occErr)
-        }
-      }
+      await setMezmurClassificationLinks(saved.slug, categorySlugs, occasionSlugs)
       setRow(saved)
-      setInput(editable(saved))
-      setBaseline(JSON.stringify({ input: editable(saved), tags, sectionIds }))
+      const savedInput = { ...editable(saved), category_id: primaryCategorySlug, category: payload.category, occasion: payload.occasion }
+      setInput(savedInput)
+      setBaseline(JSON.stringify({ input: savedInput, tags, sectionIds, categorySlugs, occasionSlugs }))
       setHistoryRevision((n) => n + 1)
       setFieldErrors({})
       setSuccess(`Mezmur saved as ${label(saved.status)}.`)
@@ -397,7 +417,10 @@ function EditorForm({ initial }: { initial: EditorData }) {
           <div className={s.formGrid}>
             <div className={s.stack}>
               <section className={`${s.card} ${s.fields}`}>
-                <h2>Mezmur details</h2>
+                <div className={s.sectionHeading}>
+                  <div><span className={s.step}>1</span><h2>Basic information</h2></div>
+                  <p>Names and a short description used throughout the site.</p>
+                </div>
                 {textField('title', 'Transliteration title', false, undefined, true)}
                 {textField('title_amharic', 'Amharic title', false, 'am', true)}
                 <label>
@@ -423,14 +446,18 @@ function EditorForm({ initial }: { initial: EditorData }) {
               </section>
 
               <section className={`${s.card} ${s.fields}`}>
-                <h2>Lyrics</h2>
-                {textField('lyrics_amharic', 'Amharic lyrics', true, 'am', true)}
-                {textField('transliteration', 'Transliteration lyrics', true, undefined, true)}
-                {textField('lyrics_english', 'English lyrics', true, 'en')}
+                <div className={s.sectionHeading}>
+                  <div><span className={s.step}>2</span><h2>Lyrics</h2></div>
+                  <p>Write comfortably, switch languages, or open a distraction-free editor.</p>
+                </div>
+                <LyricsWorkspace input={input} fieldErrors={fieldErrors} onChange={set} />
               </section>
 
               <section className={`${s.card} ${s.fields}`}>
-                <h2>Media</h2>
+                <div className={s.sectionHeading}>
+                  <div><span className={s.step}>4</span><h2>Media</h2></div>
+                  <p>Optional audio, video, and artwork.</p>
+                </div>
                 {textField('youtube_url', 'YouTube URL')}
                 <MediaPicker
                   label="Thumbnail"
@@ -446,6 +473,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                 <label>
                   Legacy audio upload (MP3, M4A, Ogg, WAV · 50 MiB)
                   <input
+                    className={s.fileInput}
                     type="file"
                     accept="audio/mpeg,audio/mp4,audio/ogg,audio/wav"
                     disabled={!row}
@@ -475,7 +503,10 @@ function EditorForm({ initial }: { initial: EditorData }) {
 
             <aside className={s.stack}>
               <section className={`${s.card} ${s.fields}`}>
-                <h2>Classification</h2>
+                <div className={s.sectionHeading}>
+                  <div><span className={s.step}>3</span><h2>Classification</h2></div>
+                  <p>Choose every place this Mezmur belongs. The first selection stays primary for older views.</p>
+                </div>
                 <p className={s.muted} style={{ marginTop: 0, fontSize: '0.85rem' }}>
                   Browse groups are derived from these taxonomy fields — you do not assign browse
                   groups on each Mezmur.
@@ -505,48 +536,29 @@ function EditorForm({ initial }: { initial: EditorData }) {
                     <option value="werb">Wereb</option>
                   </select>
                 </label>
-                <label>
-                  Category
-                  <select
-                    aria-label="Category"
-                    value={input.category_id || ''}
-                    onChange={(event) => set('category_id', event.target.value || null)}
-                  >
-                    <option value="">No category</option>
-                    {initial.taxonomy.categories
-                      .filter((item) => (item.type === 'mezmur' && !item.is_archived) || item.id === input.category_id)
-                      .map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                          {item.is_archived ? ' (archived)' : ''}
-                        </option>
-                      ))}
-                  </select>
-                </label>
-                <label>
-                  Occasion (primary)
-                  <select
-                    aria-label="Occasion"
-                    value={input.occasion || ''}
-                    onChange={(event) => set('occasion', event.target.value || null)}
-                  >
-                    <option value="">No occasion</option>
-                    {CANONICAL_OCCASIONS.map((name) => (
-                      <option key={name} value={name}>
-                        {name}
-                      </option>
-                    ))}
-                    {input.occasion &&
-                    !(CANONICAL_OCCASIONS as readonly string[]).includes(input.occasion) ? (
-                      <option value={input.occasion}>{input.occasion} (current)</option>
-                    ) : null}
-                  </select>
-                </label>
-                <p className={s.muted} style={{ marginTop: -8, fontSize: '0.85rem' }}>
-                  Multi-occasion links use <code>mezmur_occasion_links_import</code>. Browse labels
-                  come from distinct <code>occasion_slug</code> values. Manage Zemaris under{' '}
-                  <Link to={ADMIN_PATHS.hymnsZemaris}>Hymns · Zemaris</Link>.
-                </p>
+                <SearchableMultiSelect
+                  label="Categories"
+                  selected={categorySlugs}
+                  onChange={setCategorySlugs}
+                  options={initial.taxonomy.categories
+                    .filter((item) => item.type === 'mezmur' && !item.is_archived)
+                    .map((item) => ({ id: item.slug, label: item.name }))}
+                  placeholder="Search categories…"
+                  helpText="Select one or more. The first selected category is primary."
+                />
+                <SearchableMultiSelect
+                  label="Occasions"
+                  selected={occasionSlugs}
+                  onChange={setOccasionSlugs}
+                  options={[
+                    ...new Map<string, { id: string; label: string; count?: number }>([
+                      ...CANONICAL_OCCASIONS.map((name): [string, { id: string; label: string }] => [slugify(name), { id: slugify(name), label: name }]),
+                      ...initial.occasions.map((item): [string, { id: string; label: string; count: number }] => [item.slug, { id: item.slug, label: item.name, count: item.mezmur_count }]),
+                    ]).values(),
+                  ]}
+                  placeholder="Search occasions…"
+                  helpText="Existing normalized links are preserved until you save."
+                />
                 <label>
                   Zemari
                   <select
@@ -574,34 +586,23 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   Manage profiles under{' '}
                   <Link to={ADMIN_PATHS.hymnsZemaris}>Hymns · Zemaris</Link>.
                 </p>
-                <fieldset>
-                  <legend>Hymn sections</legend>
-                  <p className={s.muted} style={{ fontSize: '0.85rem' }}>
-                    Assign this Mezmur to one or more <code>hymn_sections</code> via{' '}
-                    <code>mezmur_section_links</code>. Does not duplicate the Mezmur row.
-                  </p>
-                  {!initial.sections.length ? (
-                    <p className={s.muted}>No sections available yet.</p>
-                  ) : (
-                    initial.sections.map((section) => (
-                      <label className={s.check} key={section.id}>
-                        <input
-                          type="checkbox"
-                          checked={sectionIds.includes(section.id)}
-                          onChange={(event) =>
-                            setSectionIds((previous) =>
-                              event.target.checked
-                                ? [...previous, section.id]
-                                : previous.filter((id) => id !== section.id),
-                            )
-                          }
-                        />
-                        {section.title}
-                        <span className={s.muted}> ({section.slug})</span>
-                      </label>
-                    ))
-                  )}
-                </fieldset>
+                <details className={s.advanced}>
+                  <summary>Advanced: hymn sections <span>{sectionIds.length} selected</span></summary>
+                  <div className={s.advancedBody}>
+                    <SearchableMultiSelect
+                      label="Hymn sections"
+                      selected={sectionIds}
+                      onChange={setSectionIds}
+                      options={initial.sections.map((section) => ({
+                        id: section.id,
+                        label: section.title,
+                        detail: section.slug,
+                      }))}
+                      placeholder="Search sections…"
+                      helpText="Sections are independent from categories and occasions."
+                    />
+                  </div>
+                </details>
                 <fieldset>
                   <legend>Tags</legend>
                   {!initial.taxonomy.tags.length && <p className={s.muted}>No tags available.</p>}
@@ -624,7 +625,11 @@ function EditorForm({ initial }: { initial: EditorData }) {
               </section>
 
               <section className={`${s.card} ${s.fields}`}>
-                <h2>Publication</h2>
+                <div className={s.sectionHeading}>
+                  <div><span className={s.step}>5</span><h2>Preview & publication</h2></div>
+                  <p>Review the unsaved form exactly as it stands, then choose a workflow state.</p>
+                </div>
+                <button type="button" onClick={() => setPreview(true)}>Open live preview</button>
                 <label>
                   Status
                   <select
@@ -712,6 +717,99 @@ function EditorForm({ initial }: { initial: EditorData }) {
         </Modal>
       )}
     </>
+  )
+}
+
+type LyricsKey = 'lyrics_amharic' | 'transliteration' | 'lyrics_english'
+
+const LYRIC_TABS: { key: LyricsKey; label: string; lang: string }[] = [
+  { key: 'lyrics_amharic', label: 'Amharic', lang: 'am' },
+  { key: 'transliteration', label: 'Transliteration', lang: 'en' },
+  { key: 'lyrics_english', label: 'English', lang: 'en' },
+]
+
+function LyricsWorkspace({
+  input,
+  fieldErrors,
+  onChange,
+}: {
+  input: MezmurInput
+  fieldErrors: FieldErrors
+  onChange: <K extends keyof MezmurInput>(key: K, value: MezmurInput[K]) => void
+}) {
+  const [active, setActive] = useState<LyricsKey>('lyrics_amharic')
+  const [expanded, setExpanded] = useState(false)
+  const [draft, setDraft] = useState('')
+  const current = LYRIC_TABS.find((tab) => tab.key === active) || LYRIC_TABS[0]
+
+  function openExpanded() {
+    setDraft(String(input[active] || ''))
+    setExpanded(true)
+  }
+
+  return (
+    <div className={s.lyricsWorkspace}>
+      <div className={s.lyricsTabs} role="tablist" aria-label="Lyrics language">
+        {LYRIC_TABS.map((tab) => (
+          <button
+            key={tab.key}
+            type="button"
+            role="tab"
+            aria-selected={active === tab.key}
+            aria-controls="lyrics-editor-panel"
+            className={active === tab.key ? s.lyricsTabActive : ''}
+            onClick={() => setActive(tab.key)}
+          >
+            {tab.label}
+            {input[tab.key]?.trim() ? <span aria-label="has content"> •</span> : null}
+          </button>
+        ))}
+      </div>
+      <div id="lyrics-editor-panel" role="tabpanel" className={s.lyricsPanel}>
+        <div className={s.lyricsToolbar}>
+          <label htmlFor={`lyrics-${active}`}>{current.label} lyrics{active !== 'lyrics_english' ? ' *' : ''}</label>
+          <button type="button" onClick={openExpanded}>Expand editor</button>
+        </div>
+        <textarea
+          id={`lyrics-${active}`}
+          className={s.lyricsTextarea}
+          lang={current.lang}
+          value={String(input[active] || '')}
+          onChange={(event) => onChange(active, event.target.value)}
+          aria-invalid={Boolean(fieldErrors[active as keyof FieldErrors])}
+        />
+        {fieldErrors[active as keyof FieldErrors] && (
+          <small className={active === 'lyrics_amharic' ? s.error : s.muted} role="alert">
+            {fieldErrors[active as keyof FieldErrors]}
+          </small>
+        )}
+      </div>
+      {expanded && (
+        <Modal title={`Edit ${current.label} lyrics`} close={() => setExpanded(false)} wide>
+          <p className={s.muted}>Changes in this window are applied to the form only when you choose “Apply lyrics.”</p>
+          <textarea
+            className={s.expandedLyrics}
+            lang={current.lang}
+            value={draft}
+            autoFocus
+            onChange={(event) => setDraft(event.target.value)}
+          />
+          <div className={s.actions}>
+            <button type="button" onClick={() => setExpanded(false)}>Cancel</button>
+            <button
+              type="button"
+              className={s.primary}
+              onClick={() => {
+                onChange(active, draft)
+                setExpanded(false)
+              }}
+            >
+              Apply lyrics
+            </button>
+          </div>
+        </Modal>
+      )}
+    </div>
   )
 }
 

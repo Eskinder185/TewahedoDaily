@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+
+const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8')
+const editor = read('src/pages/admin/MezmurEditor.tsx')
+const picker = read('src/components/admin/SearchableMultiSelect.tsx')
+const taxonomy = read('src/lib/cms/hymnTaxonomyImport.ts')
+const migration = read('supabase/migrations/20261023153000_mezmur_classification_link_editor.sql')
+const tokens = read('src/styles/tokens.css')
+const home = read('src/components/home/HomeCompanionBoard.module.css')
+
+assert.match(editor, /label="Categories"[\s\S]*selected=\{categorySlugs\}/)
+assert.match(editor, /label="Occasions"[\s\S]*selected=\{occasionSlugs\}/)
+assert.match(editor, /Advanced: hymn sections/)
+assert.match(editor, /LyricsWorkspace/)
+assert.match(editor, /Open live preview/)
+assert.match(editor, /beforeunload/)
+assert.match(picker, /role="combobox"/)
+assert.match(picker, /aria-multiselectable="true"/)
+assert.match(picker, /ArrowDown/)
+assert.match(picker, /Backspace/)
+assert.match(taxonomy, /setMezmurClassificationLinks/)
+assert.match(migration, /delete from public\.mezmur_category_links_import/)
+assert.match(migration, /delete from public\.mezmur_occasion_links_import/)
+assert.match(migration, /coalesce\(public\.is_staff\(\), false\)/)
+assert.match(tokens, /--surface-parchment:/)
+assert.match(tokens, /--color-hero-scrim-top:/)
+assert.match(home, /var\(--surface-parchment\)/)
+assert.match(home, /var\(--color-paper-ink\)/)
+
+console.log('Mezmur admin redesign and Night Mode regression checks passed.')

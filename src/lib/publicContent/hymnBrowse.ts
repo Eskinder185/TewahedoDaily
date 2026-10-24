@@ -119,6 +119,13 @@ export type ImportMezmur = {
   review_notes: string | null
   source_url: string | null
   source_notes: string | null
+  structured_lyrics: unknown
+  lyrics_language: string | null
+  source_info: string | null
+  rights_status: string | null
+  external_lyrics_url: string | null
+  last_verified_at: string | null
+  related_content: unknown
 }
 
 export type HymnSinger = {
@@ -807,6 +814,13 @@ export async function getMezmurBySlug(slug: string): Promise<ImportMezmurDetail 
     review_notes: txt(row.review_notes) || null,
     source_url: txt(row.source_url) || null,
     source_notes: txt(row.source_notes) || null,
+    structured_lyrics: row.structured_lyrics ?? null,
+    lyrics_language: txt(row.lyrics_language) || txt(row.primary_language) || null,
+    source_info: txt(row.source_info) || null,
+    rights_status: txt(row.rights_status) || 'unknown',
+    external_lyrics_url: txt(row.external_lyrics_url) || null,
+    last_verified_at: txt(row.last_verified_at) || null,
+    related_content: row.related_content ?? [],
     occasion_slugs: occasions,
   }
 }

@@ -1,0 +1,6376 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "userId": 1,
+      "languageId": 1,
+      "name": "በመዝሙሩ አይነት",
+      "slug": "በመዝሙሩ-አይነት",
+      "createdAt": "2024-09-05T02:50:19.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "languageId": 1,
+      "name": "በመዝሙሩ ይዘት",
+      "slug": "በመዝሙሩ-ይዘት",
+      "createdAt": "2024-09-06T01:39:43.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "languageId": 1,
+      "name": "በቀረጻው ዓይነት",
+      "slug": "በቀረጻው-ዓይነት",
+      "createdAt": "2024-09-06T01:43:32.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "languageId": 1,
+      "name": "የበዓል መዝሙራት",
+      "slug": "የበዓል-መዝሙራት",
+      "createdAt": "2024-09-06T01:44:21.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "languageId": 2,
+      "name": "By hymn type",
+      "slug": "By-hymn-type",
+      "createdAt": "2024-09-07T01:16:14.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "languageId": 2,
+      "name": "By hymn content",
+      "slug": "By-hymn-content",
+      "createdAt": "2024-09-12T05:36:35.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "languageId": 2,
+      "name": "By recording type",
+      "slug": "By-recording-type",
+      "createdAt": "2024-09-12T05:37:06.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "languageId": 2,
+      "name": "Feast hymns",
+      "slug": "Feast-hymns",
+      "createdAt": "2024-09-12T05:37:47.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "languageId": 3,
+      "name": "በመዝሙሩ አይነት",
+      "slug": "በመዝሙሩ-አይነት-1",
+      "createdAt": "2024-09-12T05:39:41.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "languageId": 3,
+      "name": "በመዝሙሩ ይዘት",
+      "slug": "በመዝሙሩ-ይዘት-1",
+      "createdAt": "2024-09-12T05:39:52.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "languageId": 3,
+      "name": "በቀረጻው ዓይነት",
+      "slug": "በቀረጻው-ዓይነት-1",
+      "createdAt": "2024-09-12T05:40:03.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "languageId": 3,
+      "name": "የበዓል መዝሙራት",
+      "slug": "የበዓል-መዝሙራት-1",
+      "createdAt": "2024-09-12T05:40:17.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "languageId": 4,
+      "name": "ብዓይነት መዝሙር",
+      "slug": "ብዓይነት-መዝሙር",
+      "createdAt": "2024-09-12T05:48:35.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "languageId": 4,
+      "name": "ብትሕዝቶ መዝሙር",
+      "slug": "ብትሕዝቶ-መዝሙር",
+      "createdAt": "2024-09-12T05:48:56.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "languageId": 4,
+      "name": "ብዓይነት ምቕራጽ",
+      "slug": "ብዓይነት-ምቕራጽ",
+      "createdAt": "2024-09-12T05:49:16.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "languageId": 4,
+      "name": "ናይ በዓል መዝሙር",
+      "slug": "ናይ-በዓል-መዝሙር",
+      "createdAt": "2024-09-12T05:50:24.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "languageId": 5,
+      "name": "Gosa faarfannaatiin",
+      "slug": "Gosa-faarfannaatiin",
+      "createdAt": "2024-09-12T05:50:50.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "languageId": 5,
+      "name": "Qabiyyee faaraatiin",
+      "slug": "Qabiyyee-faaraatiin",
+      "createdAt": "2024-09-12T05:51:10.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "languageId": 5,
+      "name": "Gosa waraabuudhaan",
+      "slug": "Gosa-waraabuudhaan",
+      "createdAt": "2024-09-12T05:51:31.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "languageId": 5,
+      "name": "Faarfannaa ayyaanaa",
+      "slug": "Faarfannaa-ayyaanaa",
+      "createdAt": "2024-09-12T05:52:07.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "languageId": 1,
+      "name": "ስብስብ",
+      "slug": "ስብስብ",
+      "createdAt": "2024-09-24T01:19:06.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "languageId": 4,
+      "name": "እኩብ",
+      "slug": "እኩብ",
+      "createdAt": "2024-10-07T01:34:08.000Z",
+      "updatedAt": "2024-11-04T04:36:12.000Z"
+    },
+    {
+      "id": 23,
+      "userId": 1,
+      "languageId": 3,
+      "name": "ስብስብ",
+      "slug": "ስብስብ-1",
+      "createdAt": "2025-01-09T09:43:23.000Z",
+      "updatedAt": "2025-01-09T09:43:23.000Z"
+    },
+    {
+      "id": 24,
+      "userId": 1,
+      "languageId": 2,
+      "name": "Collection",
+      "slug": "Collection",
+      "createdAt": "2025-02-22T05:01:52.000Z",
+      "updatedAt": "2025-02-22T05:01:52.000Z"
+    },
+    {
+      "id": 25,
+      "userId": 1,
+      "languageId": 5,
+      "name": "Qabuu",
+      "slug": "Qabuu",
+      "createdAt": "2025-03-28T03:42:14.000Z",
+      "updatedAt": "2025-03-28T03:42:14.000Z"
+    },
+    {
+      "id": 26,
+      "userId": 1,
+      "languageId": 6,
+      "name": "በመዝሙሩ አይነት",
+      "slug": "በመዝሙሩ-አይነት-2",
+      "createdAt": "2026-03-11T03:09:41.000Z",
+      "updatedAt": "2026-03-11T03:09:41.000Z"
+    },
+    {
+      "id": 27,
+      "userId": 1,
+      "languageId": 6,
+      "name": "በመዝሙሩ ይዘት",
+      "slug": "በመዝሙሩ-ይዘት-2",
+      "createdAt": "2026-03-11T03:09:48.000Z",
+      "updatedAt": "2026-03-11T03:09:48.000Z"
+    },
+    {
+      "id": 28,
+      "userId": 1,
+      "languageId": 6,
+      "name": "በቀረጻው ዓይነት",
+      "slug": "በቀረጻው-ዓይነት-2",
+      "createdAt": "2026-03-11T03:09:56.000Z",
+      "updatedAt": "2026-03-11T03:09:56.000Z"
+    },
+    {
+      "id": 29,
+      "userId": 1,
+      "languageId": 6,
+      "name": "የበዓል መዝሙራት",
+      "slug": "የበዓል-መዝሙራት-2",
+      "createdAt": "2026-03-11T03:10:05.000Z",
+      "updatedAt": "2026-03-11T03:10:05.000Z"
+    },
+    {
+      "id": 30,
+      "userId": null,
+      "languageId": 7,
+      "name": "በመዝሙሩ አይነት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:09:08.461Z",
+      "updatedAt": "2026-06-11T03:09:08.461Z"
+    },
+    {
+      "id": 31,
+      "userId": null,
+      "languageId": 7,
+      "name": "በመዝሙሩ ይዘት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:09:16.798Z",
+      "updatedAt": "2026-06-11T03:09:16.798Z"
+    },
+    {
+      "id": 32,
+      "userId": null,
+      "languageId": 7,
+      "name": "በቀረጻው ዓይነት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:09:25.104Z",
+      "updatedAt": "2026-06-11T03:09:25.104Z"
+    },
+    {
+      "id": 33,
+      "userId": null,
+      "languageId": 7,
+      "name": "የበዓል መዝሙራት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:09:32.549Z",
+      "updatedAt": "2026-06-11T03:09:32.549Z"
+    }
+  ],
+  "subCategories": [
+    {
+      "id": 1,
+      "userId": 1,
+      "categoryId": 1,
+      "name": "የንስሃ",
+      "slug": "የንስሃ",
+      "createdAt": "2024-09-05T02:51:58.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "categoryId": 1,
+      "name": "የከበሮ / የጭብጨባ",
+      "slug": "የከበሮ-የጭብጨባ",
+      "createdAt": "2024-09-05T02:53:30.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "categoryId": 1,
+      "name": "የበገና",
+      "slug": "የበገና",
+      "createdAt": "2024-09-05T02:54:28.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "categoryId": 1,
+      "name": "ዘለሰኛ",
+      "slug": "ዘለሰኛ",
+      "createdAt": "2024-09-05T02:55:20.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "categoryId": 1,
+      "name": "ወረብ",
+      "slug": "ወረብ",
+      "createdAt": "2024-09-05T02:55:44.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "categoryId": 1,
+      "name": "ሌሎች",
+      "slug": "ሌሎች",
+      "createdAt": "2024-09-05T02:56:49.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 7,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "የእግዚአብሔር",
+      "slug": "የእግዚአብሔር",
+      "createdAt": "2024-09-05T02:57:05.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 8,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "የእመቤታችን",
+      "slug": "የእመቤታችን",
+      "createdAt": "2024-09-09T02:54:14.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 9,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "የሚካኤል",
+      "slug": "የሚካኤል",
+      "createdAt": "2024-09-09T02:54:43.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 10,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "የገብርኤል",
+      "slug": "የገብርኤል",
+      "createdAt": "2024-09-09T02:55:29.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 11,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "የጊዮርጊስ",
+      "slug": "የጊዮርጊስ",
+      "createdAt": "2024-09-09T02:56:08.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 12,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "የአርሴማ",
+      "slug": "የአርሴማ",
+      "createdAt": "2024-09-09T02:57:14.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 13,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-1",
+      "createdAt": "2024-09-09T02:57:56.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 14,
+      "userId": 1,
+      "categoryId": 3,
+      "name": "ድምጽ ብቻ",
+      "slug": "ድምጽ-ብቻ",
+      "createdAt": "2024-09-09T03:02:59.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 15,
+      "userId": 1,
+      "categoryId": 3,
+      "name": "ድምጽና ቪድዮ",
+      "slug": "ድምጽና-ቪድዮ",
+      "createdAt": "2024-09-09T03:03:11.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 16,
+      "userId": 1,
+      "categoryId": 3,
+      "name": "የጉባኤ",
+      "slug": "የአውደ-ምህረት",
+      "createdAt": "2024-09-09T03:03:24.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 17,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የአዲስ ዓመት",
+      "slug": "የአዲስ-ዓመት",
+      "createdAt": "2024-09-09T03:03:46.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 18,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የልደት",
+      "slug": "የልደት",
+      "createdAt": "2024-09-09T03:03:55.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 19,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የጥምቀት",
+      "slug": "የጥምቀት",
+      "createdAt": "2024-09-09T03:14:53.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 20,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የትንሳኤ",
+      "slug": "የትንሳኤ",
+      "createdAt": "2024-09-09T03:15:03.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 21,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የእርገት",
+      "slug": "የእርገት",
+      "createdAt": "2024-09-09T03:15:13.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 22,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የመስቀል",
+      "slug": "የመስቀል",
+      "createdAt": "2024-09-09T03:15:25.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 23,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የጰራቅሊጦስ",
+      "slug": "የጰራቅሊጦስ",
+      "createdAt": "2024-09-09T03:15:34.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 24,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "የስቅለት",
+      "slug": "የስቅለት",
+      "createdAt": "2024-09-11T02:14:17.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 25,
+      "userId": 1,
+      "categoryId": 5,
+      "name": "Repentance",
+      "slug": "Repentance",
+      "createdAt": "2024-09-12T05:58:33.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 26,
+      "userId": 1,
+      "categoryId": 5,
+      "name": "Drumming / clapping",
+      "slug": "Drumming-clapping",
+      "createdAt": "2024-09-12T05:59:35.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 27,
+      "userId": 1,
+      "categoryId": 5,
+      "name": "Harp",
+      "slug": "Harp",
+      "createdAt": "2024-09-12T06:00:02.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 28,
+      "userId": 1,
+      "categoryId": 5,
+      "name": "Zelesegna",
+      "slug": "Zelesegna",
+      "createdAt": "2024-09-12T06:00:45.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 29,
+      "userId": 1,
+      "categoryId": 5,
+      "name": "Wereb",
+      "slug": "Wereb",
+      "createdAt": "2024-09-12T06:01:38.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 30,
+      "userId": 1,
+      "categoryId": 5,
+      "name": "Other",
+      "slug": "Other",
+      "createdAt": "2024-09-12T06:02:30.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 31,
+      "userId": 1,
+      "categoryId": 6,
+      "name": "God",
+      "slug": "God",
+      "createdAt": "2024-09-12T06:09:20.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 32,
+      "userId": 1,
+      "categoryId": 6,
+      "name": "St. Mary",
+      "slug": "St-Mary",
+      "createdAt": "2024-09-12T06:09:37.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 33,
+      "userId": 1,
+      "categoryId": 6,
+      "name": "St. Michael",
+      "slug": "St-Michael",
+      "createdAt": "2024-09-12T06:09:54.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 34,
+      "userId": 1,
+      "categoryId": 6,
+      "name": "St. Gabriel",
+      "slug": "St-Gabriel",
+      "createdAt": "2024-09-12T06:10:41.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 35,
+      "userId": 1,
+      "categoryId": 6,
+      "name": "St. George",
+      "slug": "St-George",
+      "createdAt": "2024-09-12T06:13:38.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 36,
+      "userId": 1,
+      "categoryId": 6,
+      "name": "St. Arsema",
+      "slug": "St-Arsema",
+      "createdAt": "2024-09-12T06:13:51.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 37,
+      "userId": 1,
+      "categoryId": 6,
+      "name": "Other",
+      "slug": "Other-1",
+      "createdAt": "2024-09-12T06:14:28.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 38,
+      "userId": 1,
+      "categoryId": 7,
+      "name": "Audio only",
+      "slug": "Audio-only",
+      "createdAt": "2024-09-12T06:14:57.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 39,
+      "userId": 1,
+      "categoryId": 7,
+      "name": "Audio and video",
+      "slug": "Audio-and-video",
+      "createdAt": "2024-09-12T06:15:11.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 40,
+      "userId": 1,
+      "categoryId": 7,
+      "name": "In a church service",
+      "slug": "In-a-church-service",
+      "createdAt": "2024-09-12T06:20:10.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 41,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "New Year",
+      "slug": "New-Year",
+      "createdAt": "2024-09-12T06:20:57.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 42,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Nativity",
+      "slug": "Nativity",
+      "createdAt": "2024-09-12T06:21:14.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 43,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Baptism",
+      "slug": "Baptism",
+      "createdAt": "2024-09-12T06:21:32.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 44,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Resurrection",
+      "slug": "Resurrection",
+      "createdAt": "2024-09-12T06:22:11.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 45,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Ascension",
+      "slug": "Ascension",
+      "createdAt": "2024-09-12T06:22:37.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 46,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Finding of the true cross",
+      "slug": "Finding-of-the-true-cross",
+      "createdAt": "2024-09-12T06:23:24.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 47,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Paraclete",
+      "slug": "Paraclete",
+      "createdAt": "2024-09-12T06:24:00.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 48,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Crucifixion",
+      "slug": "Crucifixion",
+      "createdAt": "2024-09-12T06:25:03.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 49,
+      "userId": 1,
+      "categoryId": 9,
+      "name": "የንስሃ",
+      "slug": "የንስሃ-1",
+      "createdAt": "2024-09-13T01:38:54.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 50,
+      "userId": 1,
+      "categoryId": 9,
+      "name": "የከበሮ / የጭብጨባ",
+      "slug": "የከበሮ-የጭብጨባ-1",
+      "createdAt": "2024-09-13T01:39:04.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 51,
+      "userId": 1,
+      "categoryId": 9,
+      "name": "የበገና",
+      "slug": "የበገና-1",
+      "createdAt": "2024-09-13T01:39:13.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 52,
+      "userId": 1,
+      "categoryId": 9,
+      "name": "ዘለሰኛ",
+      "slug": "ዘለሰኛ-1",
+      "createdAt": "2024-09-13T01:39:34.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 53,
+      "userId": 1,
+      "categoryId": 9,
+      "name": "ወረብ",
+      "slug": "ወረብ-1",
+      "createdAt": "2024-09-13T01:39:47.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 54,
+      "userId": 1,
+      "categoryId": 9,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-2",
+      "createdAt": "2024-09-13T01:39:58.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 55,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "የእግዚአብሔር",
+      "slug": "የእግዚአብሔር-1",
+      "createdAt": "2024-09-13T01:40:12.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 56,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "የእመቤታችን",
+      "slug": "የእመቤታችን-1",
+      "createdAt": "2024-09-13T01:40:20.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 57,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "የሚካኤል",
+      "slug": "የሚካኤል-1",
+      "createdAt": "2024-09-13T01:40:28.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 58,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "የገብርኤል",
+      "slug": "የገብርኤል-1",
+      "createdAt": "2024-09-13T01:40:36.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 59,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "የጊዮርጊስ",
+      "slug": "የጊዮርጊስ-1",
+      "createdAt": "2024-09-13T01:40:53.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 60,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "የአርሴማ",
+      "slug": "የአርሴማ-1",
+      "createdAt": "2024-09-13T01:42:02.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 61,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-3",
+      "createdAt": "2024-09-13T01:42:21.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 62,
+      "userId": 1,
+      "categoryId": 11,
+      "name": "ድምጽ ብቻ",
+      "slug": "ድምጽ-ብቻ-1",
+      "createdAt": "2024-09-13T01:42:37.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 63,
+      "userId": 1,
+      "categoryId": 11,
+      "name": "ድምጽና ቪድዮ",
+      "slug": "ድምጽና-ቪድዮ-1",
+      "createdAt": "2024-09-13T01:42:47.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 64,
+      "userId": 1,
+      "categoryId": 11,
+      "name": "የጉባኤ",
+      "slug": "የአውደ-ምህረት-1",
+      "createdAt": "2024-09-13T01:42:59.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 65,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የአዲስ ዓመት",
+      "slug": "የአዲስ-ዓመት-1",
+      "createdAt": "2024-09-13T01:43:12.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 66,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የልደት",
+      "slug": "የልደት-1",
+      "createdAt": "2024-09-13T01:43:26.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 67,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የጥምቀት",
+      "slug": "የጥምቀት-1",
+      "createdAt": "2024-09-13T01:44:05.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 68,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የትንሳኤ",
+      "slug": "የትንሳኤ-1",
+      "createdAt": "2024-09-13T01:44:18.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 69,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የእርገት",
+      "slug": "የእርገት-1",
+      "createdAt": "2024-09-13T01:44:31.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 70,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የመስቀል",
+      "slug": "የመስቀል-1",
+      "createdAt": "2024-09-13T01:44:50.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 71,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የጰራቅሊጦስ",
+      "slug": "የጰራቅሊጦስ-1",
+      "createdAt": "2024-09-13T01:45:21.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 72,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "የስቅለት",
+      "slug": "የስቅለት-1",
+      "createdAt": "2024-09-13T01:45:39.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 73,
+      "userId": 1,
+      "categoryId": 13,
+      "name": "ናይ ንስሓ",
+      "slug": "ናይ-ንስሓ",
+      "createdAt": "2024-09-13T01:46:38.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 74,
+      "userId": 1,
+      "categoryId": 13,
+      "name": "ናይ ከበሮ / ናይ ጣቕዒት",
+      "slug": "ናይ-ከበሮ-ናይ-ጣቕዒት",
+      "createdAt": "2024-09-13T01:48:43.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 75,
+      "userId": 1,
+      "categoryId": 13,
+      "name": "ናይ በገና",
+      "slug": "ናይ-በገና",
+      "createdAt": "2024-09-13T01:49:45.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 76,
+      "userId": 1,
+      "categoryId": 13,
+      "name": "ዘለሰኛ",
+      "slug": "ዘለሰኛ-2",
+      "createdAt": "2024-09-13T01:49:57.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 77,
+      "userId": 1,
+      "categoryId": 13,
+      "name": "ወረብ",
+      "slug": "ወረብ-2",
+      "createdAt": "2024-09-13T01:50:22.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 78,
+      "userId": 1,
+      "categoryId": 13,
+      "name": "ካልኦት",
+      "slug": "ካልኦት",
+      "createdAt": "2024-09-13T01:50:55.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 79,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ናይ እግዚኣብሔር",
+      "slug": "ናይ-እግዚኣብሔር",
+      "createdAt": "2024-09-13T02:01:53.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 80,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ናይ እመቤትና",
+      "slug": "ናይ-እመቤትና",
+      "createdAt": "2024-09-13T02:05:42.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 81,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ናይ ሚካኤል",
+      "slug": "ናይ-ሚካኤል",
+      "createdAt": "2024-09-13T02:06:17.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 82,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ናይ ገብርኤል",
+      "slug": "ናይ-ገብርኤል",
+      "createdAt": "2024-09-13T02:07:06.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 83,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ናይ ጊዮርጊስ",
+      "slug": "ናይ-ጊዮርጊስ",
+      "createdAt": "2024-09-13T02:07:49.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 84,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ናይ አርሴማ",
+      "slug": "ናይ-አርሴማ",
+      "createdAt": "2024-09-13T02:08:33.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 85,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ካልኦት",
+      "slug": "ካልኦት-1",
+      "createdAt": "2024-09-13T02:09:17.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 86,
+      "userId": 1,
+      "categoryId": 15,
+      "name": "ድምጺ ጥራይ",
+      "slug": "ድምጺ-ጥራይ",
+      "createdAt": "2024-09-13T02:10:50.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 87,
+      "userId": 1,
+      "categoryId": 15,
+      "name": "ድምጽን ቪድዮን",
+      "slug": "ድምጽን-ቪድዮን",
+      "createdAt": "2024-09-13T02:12:46.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 88,
+      "userId": 1,
+      "categoryId": 15,
+      "name": "ናይ ጉባኤ",
+      "slug": "ናይ-ዓውዲ-ምሕረት",
+      "createdAt": "2024-09-13T02:17:50.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 89,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ ሓድሽ ዓመት",
+      "slug": "ናይ-ሓድሽ-ዓመት",
+      "createdAt": "2024-09-13T02:19:16.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 90,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ ልደት",
+      "slug": "ናይ-ልደት",
+      "createdAt": "2024-09-13T02:20:57.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 91,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ ጥምቀት",
+      "slug": "ናይ-ጥምቀት",
+      "createdAt": "2024-09-13T02:21:22.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 92,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ ትንሳኤ",
+      "slug": "ናይ-ትንሳኤ",
+      "createdAt": "2024-09-13T02:21:54.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 93,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ ዕርገት",
+      "slug": "ናይ-ዕርገት",
+      "createdAt": "2024-09-13T02:23:47.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 94,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ መስቀል",
+      "slug": "ናይ-መስቀል",
+      "createdAt": "2024-09-13T02:24:05.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 95,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ ጰራቅሊጦስ",
+      "slug": "ናይ-ጰራቅሊጦስ",
+      "createdAt": "2024-09-13T02:25:03.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 96,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ናይ ስቕለት",
+      "slug": "ናይ-ስቕለት",
+      "createdAt": "2024-09-13T02:27:05.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 97,
+      "userId": 1,
+      "categoryId": 17,
+      "name": "Kan Tawbaa",
+      "slug": "Kan-Tawbaa",
+      "createdAt": "2024-09-13T02:31:18.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 98,
+      "userId": 1,
+      "categoryId": 17,
+      "name": "Drumming / Harka Rukutuu",
+      "slug": "Drumming-Harka-Rukutuu",
+      "createdAt": "2024-09-14T01:42:43.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 99,
+      "userId": 1,
+      "categoryId": 17,
+      "name": "Harp",
+      "slug": "Harp-1",
+      "createdAt": "2024-09-14T01:43:15.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 100,
+      "userId": 1,
+      "categoryId": 17,
+      "name": "Zelesegna",
+      "slug": "Zelesegna-1",
+      "createdAt": "2024-09-14T01:43:42.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 101,
+      "userId": 1,
+      "categoryId": 17,
+      "name": "Wereb",
+      "slug": "Wereb-1",
+      "createdAt": "2024-09-14T01:43:58.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 102,
+      "userId": 1,
+      "categoryId": 17,
+      "name": "Kaan",
+      "slug": "Kaan",
+      "createdAt": "2024-09-14T01:44:20.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 103,
+      "userId": 1,
+      "categoryId": 18,
+      "name": "Kan Waaqayyoo",
+      "slug": "Kan-Waaqayyoo",
+      "createdAt": "2024-09-14T01:44:52.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 104,
+      "userId": 1,
+      "categoryId": 18,
+      "name": "Giiftii Keenya",
+      "slug": "Giiftii-Keenya",
+      "createdAt": "2024-09-14T01:45:16.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 105,
+      "userId": 1,
+      "categoryId": 18,
+      "name": "Kan Mikaa’el",
+      "slug": "Kan-Mikaa-el",
+      "createdAt": "2024-09-14T01:45:42.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 106,
+      "userId": 1,
+      "categoryId": 18,
+      "name": "Kan Gabri'eel",
+      "slug": "Kan-Gabri-eel",
+      "createdAt": "2024-09-14T01:46:08.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 107,
+      "userId": 1,
+      "categoryId": 18,
+      "name": "Kan Joorji",
+      "slug": "Kan-Joorji",
+      "createdAt": "2024-09-14T01:51:08.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 108,
+      "userId": 1,
+      "categoryId": 18,
+      "name": "Kan Arseemaa",
+      "slug": "Kan-Arseemaa",
+      "createdAt": "2024-09-14T01:51:59.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 109,
+      "userId": 1,
+      "categoryId": 18,
+      "name": "Kaan",
+      "slug": "Kaan-1",
+      "createdAt": "2024-09-14T01:52:30.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 110,
+      "userId": 1,
+      "categoryId": 19,
+      "name": "Sagalee Gofa",
+      "slug": "Sagalee-Gofa",
+      "createdAt": "2024-09-14T01:56:52.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 111,
+      "userId": 1,
+      "categoryId": 19,
+      "name": "Sagalee fi Viidiyoo",
+      "slug": "Sagalee-fi-Viidiyoo",
+      "createdAt": "2024-09-14T01:57:18.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 112,
+      "userId": 1,
+      "categoryId": 19,
+      "name": "Walga'ii idilee",
+      "slug": "Araarsummaa-Haala-Dubbii",
+      "createdAt": "2024-09-14T01:58:08.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 113,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Bara Haaraa",
+      "slug": "Bara-Haaraa",
+      "createdAt": "2024-09-14T01:58:43.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 114,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Guyyaa Dhalootaa",
+      "slug": "Guyyaa-Dhalootaa",
+      "createdAt": "2024-09-14T01:59:37.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 115,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Cuuphaa",
+      "slug": "Cuuphaa",
+      "createdAt": "2024-09-14T02:00:18.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 116,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Du'aa Ka'uu",
+      "slug": "Du-aa-Ka-uu",
+      "createdAt": "2024-09-14T02:00:59.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 117,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Ol Bahuu",
+      "slug": "Ol-Bahuu",
+      "createdAt": "2024-09-14T02:01:49.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 118,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Qaxxaamuruu",
+      "slug": "Qaxxaamuruu",
+      "createdAt": "2024-09-14T02:02:18.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 119,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Kan Paaraakiliit",
+      "slug": "Kan-Paaraakiliit",
+      "createdAt": "2024-09-14T02:03:25.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 120,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Fannifamuu",
+      "slug": "Fannifamuu",
+      "createdAt": "2024-09-14T02:04:41.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 121,
+      "userId": 1,
+      "categoryId": 2,
+      "name": "የቤተ ክርስቲያን",
+      "slug": "የቤተ-ክርስቲያን",
+      "createdAt": "2024-09-14T20:33:39.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 122,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የንስሃ",
+      "slug": "የንስሃ-2",
+      "createdAt": "2024-09-24T01:19:34.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 123,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "አልበም",
+      "slug": "አልበም",
+      "createdAt": "2024-09-24T01:19:44.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 124,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-4",
+      "createdAt": "2024-09-24T01:37:46.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 125,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "ጉባኤ",
+      "slug": "ጉባኤ",
+      "createdAt": "2024-09-24T02:11:54.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 126,
+      "userId": 1,
+      "categoryId": 4,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-5",
+      "createdAt": "2024-09-27T02:50:38.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 127,
+      "userId": 1,
+      "categoryId": 22,
+      "name": "ናይ ንስሓ",
+      "slug": "ናይ-ንስሓ-1",
+      "createdAt": "2024-10-07T01:35:46.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 128,
+      "userId": 1,
+      "categoryId": 22,
+      "name": "ኣልበም",
+      "slug": "ኣልበም",
+      "createdAt": "2024-10-07T01:36:07.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 129,
+      "userId": 1,
+      "categoryId": 22,
+      "name": "ጉባዔ",
+      "slug": "ጉባዔ",
+      "createdAt": "2024-10-07T01:36:24.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 130,
+      "userId": 1,
+      "categoryId": 22,
+      "name": "ካልኦት",
+      "slug": "ካልኦት-2",
+      "createdAt": "2024-10-07T01:36:40.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 131,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የእመቤታችን",
+      "slug": "የእመቤታችን-2",
+      "createdAt": "2024-10-10T01:07:06.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 132,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የልደት",
+      "slug": "የልደት-2",
+      "createdAt": "2024-10-10T01:07:25.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 133,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የጥምቀት",
+      "slug": "የጥምቀት-2",
+      "createdAt": "2024-10-10T01:07:38.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 134,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የአዲስ ዓመት",
+      "slug": "የአዲስ-ዓመት-2",
+      "createdAt": "2024-10-10T01:31:24.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 135,
+      "userId": 1,
+      "categoryId": 12,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-6",
+      "createdAt": "2024-10-13T02:21:20.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 136,
+      "userId": 1,
+      "categoryId": 22,
+      "name": "ናይ እመቤትና",
+      "slug": "ናይ-እመቤትና-1",
+      "createdAt": "2024-10-21T02:42:16.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 137,
+      "userId": 1,
+      "categoryId": 14,
+      "name": "ናይ ቤተክርስቲያን",
+      "slug": "ናይ-ቤተክርስቲያን",
+      "createdAt": "2024-10-22T01:48:51.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 138,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የሚካኤል",
+      "slug": "የሚካኤል-2",
+      "createdAt": "2024-10-24T01:57:29.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 139,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የገብርኤል",
+      "slug": "የገብርኤል-2",
+      "createdAt": "2024-10-31T03:28:45.000Z",
+      "updatedAt": "2024-11-04T04:43:17.000Z"
+    },
+    {
+      "id": 141,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የበገና",
+      "slug": "የበገና-2",
+      "createdAt": "2024-12-03T09:19:08.000Z",
+      "updatedAt": "2024-12-03T09:19:08.000Z"
+    },
+    {
+      "id": 142,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የትንሳኤ",
+      "slug": "የትንሳኤ-2",
+      "createdAt": "2024-12-12T09:42:05.000Z",
+      "updatedAt": "2024-12-12T09:42:05.000Z"
+    },
+    {
+      "id": 143,
+      "userId": 1,
+      "categoryId": 10,
+      "name": "የቤተ ክርስቲያን",
+      "slug": "የቤተ-ክርስቲያን-1",
+      "createdAt": "2025-01-02T10:05:20.000Z",
+      "updatedAt": "2025-01-02T10:05:51.000Z"
+    },
+    {
+      "id": 144,
+      "userId": 1,
+      "categoryId": 23,
+      "name": "የልደት",
+      "slug": "የልደት-3",
+      "createdAt": "2025-01-09T09:43:42.000Z",
+      "updatedAt": "2025-01-09T09:43:42.000Z"
+    },
+    {
+      "id": 145,
+      "userId": 1,
+      "categoryId": 22,
+      "name": "ናይ ልደት",
+      "slug": "ናይ-ልደት-1",
+      "createdAt": "2025-01-09T09:45:11.000Z",
+      "updatedAt": "2025-01-09T09:45:11.000Z"
+    },
+    {
+      "id": 146,
+      "userId": 1,
+      "categoryId": 23,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-7",
+      "createdAt": "2025-01-10T10:28:26.000Z",
+      "updatedAt": "2025-01-10T10:28:26.000Z"
+    },
+    {
+      "id": 147,
+      "userId": 1,
+      "categoryId": 24,
+      "name": "Repentance",
+      "slug": "Repentance-1",
+      "createdAt": "2025-02-22T05:03:20.000Z",
+      "updatedAt": "2025-02-22T05:03:20.000Z"
+    },
+    {
+      "id": 148,
+      "userId": 1,
+      "categoryId": 24,
+      "name": "Album",
+      "slug": "Album",
+      "createdAt": "2025-02-22T05:03:34.000Z",
+      "updatedAt": "2025-02-22T05:03:34.000Z"
+    },
+    {
+      "id": 149,
+      "userId": 1,
+      "categoryId": 24,
+      "name": "St. Mary",
+      "slug": "St-Mary-1",
+      "createdAt": "2025-02-22T05:04:05.000Z",
+      "updatedAt": "2025-02-22T05:04:05.000Z"
+    },
+    {
+      "id": 150,
+      "userId": 1,
+      "categoryId": 24,
+      "name": "St. Michael",
+      "slug": "St-Michael-1",
+      "createdAt": "2025-02-22T05:04:27.000Z",
+      "updatedAt": "2025-02-22T05:04:27.000Z"
+    },
+    {
+      "id": 151,
+      "userId": 1,
+      "categoryId": 24,
+      "name": "St. Gabriel",
+      "slug": "St-Gabriel-1",
+      "createdAt": "2025-02-22T05:04:41.000Z",
+      "updatedAt": "2025-02-22T05:04:41.000Z"
+    },
+    {
+      "id": 152,
+      "userId": 1,
+      "categoryId": 24,
+      "name": "Others",
+      "slug": "Others",
+      "createdAt": "2025-02-22T05:05:06.000Z",
+      "updatedAt": "2025-02-22T05:05:06.000Z"
+    },
+    {
+      "id": 153,
+      "userId": 1,
+      "categoryId": 23,
+      "name": "የጥምቀት",
+      "slug": "የጥምቀት-3",
+      "createdAt": "2025-03-07T04:58:00.000Z",
+      "updatedAt": "2025-03-07T04:58:00.000Z"
+    },
+    {
+      "id": 154,
+      "userId": 1,
+      "categoryId": 25,
+      "name": "Tawbaa",
+      "slug": "Tawbaa",
+      "createdAt": "2025-03-28T03:46:38.000Z",
+      "updatedAt": "2025-03-28T03:46:38.000Z"
+    },
+    {
+      "id": 155,
+      "userId": 1,
+      "categoryId": 25,
+      "name": "Albaama",
+      "slug": "Albaama",
+      "createdAt": "2025-03-28T03:46:54.000Z",
+      "updatedAt": "2025-03-28T03:46:54.000Z"
+    },
+    {
+      "id": 156,
+      "userId": 1,
+      "categoryId": 25,
+      "name": "Foon Maryaam",
+      "slug": "Foon-Maryaam",
+      "createdAt": "2025-03-28T03:47:09.000Z",
+      "updatedAt": "2025-03-28T03:47:09.000Z"
+    },
+    {
+      "id": 157,
+      "userId": 1,
+      "categoryId": 25,
+      "name": "Foon Miikaa’eel",
+      "slug": "Foon-Miikaa-eel",
+      "createdAt": "2025-03-28T03:47:30.000Z",
+      "updatedAt": "2025-03-28T03:47:30.000Z"
+    },
+    {
+      "id": 158,
+      "userId": 1,
+      "categoryId": 25,
+      "name": "Foon Gabireel",
+      "slug": "Foon-Gabireel",
+      "createdAt": "2025-03-28T03:47:47.000Z",
+      "updatedAt": "2025-03-28T03:47:47.000Z"
+    },
+    {
+      "id": 159,
+      "userId": 1,
+      "categoryId": 25,
+      "name": "Biroo",
+      "slug": "Biroo",
+      "createdAt": "2025-03-28T03:48:08.000Z",
+      "updatedAt": "2025-03-28T03:48:08.000Z"
+    },
+    {
+      "id": 160,
+      "userId": 1,
+      "categoryId": 16,
+      "name": "ካልኦት",
+      "slug": "ካልኦት-3",
+      "createdAt": "2025-04-14T03:21:31.000Z",
+      "updatedAt": "2025-04-14T03:21:31.000Z"
+    },
+    {
+      "id": 161,
+      "userId": 1,
+      "categoryId": 21,
+      "name": "የመስቀል",
+      "slug": "የመስቀል-2",
+      "createdAt": "2025-09-26T01:06:37.000Z",
+      "updatedAt": "2025-09-26T01:06:37.000Z"
+    },
+    {
+      "id": 162,
+      "userId": 1,
+      "categoryId": 25,
+      "name": "Du'aa Ka'uu",
+      "slug": "Du-aa-Ka-uu-1",
+      "createdAt": "2025-10-03T01:29:24.000Z",
+      "updatedAt": "2025-10-03T01:29:24.000Z"
+    },
+    {
+      "id": 163,
+      "userId": 1,
+      "categoryId": 23,
+      "name": "የእመቤታችን",
+      "slug": "የእመቤታችን-3",
+      "createdAt": "2025-10-04T01:14:33.000Z",
+      "updatedAt": "2025-10-04T01:14:33.000Z"
+    },
+    {
+      "id": 164,
+      "userId": 1,
+      "categoryId": 23,
+      "name": "የሚካኤል",
+      "slug": "የሚካኤል-3",
+      "createdAt": "2025-11-21T04:20:11.000Z",
+      "updatedAt": "2025-11-21T04:20:11.000Z"
+    },
+    {
+      "id": 165,
+      "userId": 1,
+      "categoryId": 23,
+      "name": "የገብርኤል",
+      "slug": "የገብርኤል-3",
+      "createdAt": "2025-12-27T04:14:49.000Z",
+      "updatedAt": "2025-12-27T04:14:49.000Z"
+    },
+    {
+      "id": 166,
+      "userId": 1,
+      "categoryId": 26,
+      "name": "የንስሃ",
+      "slug": "የንስሃ-3",
+      "createdAt": "2026-03-11T03:10:34.000Z",
+      "updatedAt": "2026-03-11T03:10:34.000Z"
+    },
+    {
+      "id": 167,
+      "userId": 1,
+      "categoryId": 26,
+      "name": "የከበሮ / የጭብጨባ",
+      "slug": "የከበሮ-የጭብጨባ-2",
+      "createdAt": "2026-03-11T03:10:43.000Z",
+      "updatedAt": "2026-03-11T03:10:43.000Z"
+    },
+    {
+      "id": 168,
+      "userId": 1,
+      "categoryId": 26,
+      "name": "የበገና",
+      "slug": "የበገና-3",
+      "createdAt": "2026-03-11T03:10:53.000Z",
+      "updatedAt": "2026-03-11T03:10:53.000Z"
+    },
+    {
+      "id": 169,
+      "userId": 1,
+      "categoryId": 26,
+      "name": "ዘለሰኛ",
+      "slug": "ዘለሰኛ-3",
+      "createdAt": "2026-03-11T03:11:01.000Z",
+      "updatedAt": "2026-03-11T03:11:01.000Z"
+    },
+    {
+      "id": 170,
+      "userId": 1,
+      "categoryId": 26,
+      "name": "ወረብ",
+      "slug": "ወረብ-3",
+      "createdAt": "2026-03-11T03:11:09.000Z",
+      "updatedAt": "2026-03-11T03:11:09.000Z"
+    },
+    {
+      "id": 171,
+      "userId": 1,
+      "categoryId": 26,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-8",
+      "createdAt": "2026-03-11T03:11:18.000Z",
+      "updatedAt": "2026-03-11T03:11:18.000Z"
+    },
+    {
+      "id": 172,
+      "userId": 1,
+      "categoryId": 27,
+      "name": "የእግዚአብሔር",
+      "slug": "የእግዚአብሔር-2",
+      "createdAt": "2026-03-11T03:11:32.000Z",
+      "updatedAt": "2026-03-11T03:11:32.000Z"
+    },
+    {
+      "id": 173,
+      "userId": 1,
+      "categoryId": 27,
+      "name": "የእመቤታችን",
+      "slug": "የእመቤታችን-4",
+      "createdAt": "2026-03-11T03:11:42.000Z",
+      "updatedAt": "2026-03-11T03:11:42.000Z"
+    },
+    {
+      "id": 174,
+      "userId": 1,
+      "categoryId": 27,
+      "name": "የሚካኤል",
+      "slug": "የሚካኤል-4",
+      "createdAt": "2026-03-11T03:11:50.000Z",
+      "updatedAt": "2026-03-11T03:11:50.000Z"
+    },
+    {
+      "id": 175,
+      "userId": 1,
+      "categoryId": 27,
+      "name": "የገብርኤል",
+      "slug": "የገብርኤል-4",
+      "createdAt": "2026-03-11T03:11:58.000Z",
+      "updatedAt": "2026-03-11T03:11:58.000Z"
+    },
+    {
+      "id": 176,
+      "userId": 1,
+      "categoryId": 27,
+      "name": "የጊዮርጊስ",
+      "slug": "የጊዮርጊስ-2",
+      "createdAt": "2026-03-11T03:12:07.000Z",
+      "updatedAt": "2026-03-11T03:12:07.000Z"
+    },
+    {
+      "id": 177,
+      "userId": 1,
+      "categoryId": 27,
+      "name": "የአርሴማ",
+      "slug": "የአርሴማ-2",
+      "createdAt": "2026-03-11T03:12:16.000Z",
+      "updatedAt": "2026-03-11T03:12:16.000Z"
+    },
+    {
+      "id": 178,
+      "userId": 1,
+      "categoryId": 27,
+      "name": "ሌሎች",
+      "slug": "ሌሎች-9",
+      "createdAt": "2026-03-11T03:12:24.000Z",
+      "updatedAt": "2026-03-11T03:12:24.000Z"
+    },
+    {
+      "id": 179,
+      "userId": 1,
+      "categoryId": 28,
+      "name": "ድምጽ ብቻ",
+      "slug": "ድምጽ-ብቻ-2",
+      "createdAt": "2026-03-11T03:12:34.000Z",
+      "updatedAt": "2026-03-11T03:12:34.000Z"
+    },
+    {
+      "id": 180,
+      "userId": 1,
+      "categoryId": 28,
+      "name": "ድምጽና ቪድዮ",
+      "slug": "ድምጽና-ቪድዮ-2",
+      "createdAt": "2026-03-11T03:12:43.000Z",
+      "updatedAt": "2026-03-11T03:12:43.000Z"
+    },
+    {
+      "id": 181,
+      "userId": 1,
+      "categoryId": 28,
+      "name": "የጉባኤ",
+      "slug": "የጉባኤ",
+      "createdAt": "2026-03-11T03:12:51.000Z",
+      "updatedAt": "2026-03-11T03:12:51.000Z"
+    },
+    {
+      "id": 182,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የአዲስ ዓመት",
+      "slug": "የአዲስ-ዓመት-3",
+      "createdAt": "2026-03-11T03:13:02.000Z",
+      "updatedAt": "2026-03-11T03:13:02.000Z"
+    },
+    {
+      "id": 183,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የልደት",
+      "slug": "የልደት-4",
+      "createdAt": "2026-03-11T03:13:10.000Z",
+      "updatedAt": "2026-03-11T03:13:10.000Z"
+    },
+    {
+      "id": 184,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የጥምቀት",
+      "slug": "የጥምቀት-4",
+      "createdAt": "2026-03-11T03:13:19.000Z",
+      "updatedAt": "2026-03-11T03:13:19.000Z"
+    },
+    {
+      "id": 185,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የትንሳኤ",
+      "slug": "የትንሳኤ-3",
+      "createdAt": "2026-03-11T03:13:27.000Z",
+      "updatedAt": "2026-03-11T03:13:27.000Z"
+    },
+    {
+      "id": 186,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የእርገት",
+      "slug": "የእርገት-2",
+      "createdAt": "2026-03-11T03:13:38.000Z",
+      "updatedAt": "2026-03-11T03:13:38.000Z"
+    },
+    {
+      "id": 187,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የመስቀል",
+      "slug": "የመስቀል-3",
+      "createdAt": "2026-03-11T03:13:47.000Z",
+      "updatedAt": "2026-03-11T03:13:47.000Z"
+    },
+    {
+      "id": 188,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የጰራቅሊጦስ",
+      "slug": "የጰራቅሊጦስ-2",
+      "createdAt": "2026-03-11T03:13:54.000Z",
+      "updatedAt": "2026-03-11T03:13:54.000Z"
+    },
+    {
+      "id": 189,
+      "userId": 1,
+      "categoryId": 29,
+      "name": "የስቅለት",
+      "slug": "የስቅለት-2",
+      "createdAt": "2026-03-11T03:14:02.000Z",
+      "updatedAt": "2026-03-11T03:14:02.000Z"
+    },
+    {
+      "id": 190,
+      "userId": 1,
+      "categoryId": 20,
+      "name": "Kaan",
+      "slug": "Kaan-2",
+      "createdAt": "2026-04-04T02:04:49.000Z",
+      "updatedAt": "2026-04-04T02:04:49.000Z"
+    },
+    {
+      "id": 191,
+      "userId": 1,
+      "categoryId": 8,
+      "name": "Others",
+      "slug": "Others-1",
+      "createdAt": "2026-04-04T02:11:58.000Z",
+      "updatedAt": "2026-04-04T02:11:58.000Z"
+    },
+    {
+      "id": 192,
+      "userId": 1,
+      "categoryId": 23,
+      "name": "የትንሳኤ",
+      "slug": "የትንሳኤ-4",
+      "createdAt": "2026-04-17T02:06:26.000Z",
+      "updatedAt": "2026-04-17T02:06:26.000Z"
+    },
+    {
+      "id": 193,
+      "userId": null,
+      "categoryId": 30,
+      "name": "የንስሃ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:10:37.885Z",
+      "updatedAt": "2026-06-11T03:10:37.885Z"
+    },
+    {
+      "id": 194,
+      "userId": null,
+      "categoryId": 30,
+      "name": "የከበሮ / የጭብጨባ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:10:47.730Z",
+      "updatedAt": "2026-06-11T03:10:47.730Z"
+    },
+    {
+      "id": 195,
+      "userId": null,
+      "categoryId": 30,
+      "name": "የበገና",
+      "slug": null,
+      "createdAt": "2026-06-11T03:10:55.432Z",
+      "updatedAt": "2026-06-11T03:10:55.432Z"
+    },
+    {
+      "id": 196,
+      "userId": null,
+      "categoryId": 30,
+      "name": "ዘለሰኛ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:11:01.520Z",
+      "updatedAt": "2026-06-11T03:11:01.520Z"
+    },
+    {
+      "id": 197,
+      "userId": null,
+      "categoryId": 30,
+      "name": "ወረብ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:11:08.965Z",
+      "updatedAt": "2026-06-11T03:11:08.965Z"
+    },
+    {
+      "id": 198,
+      "userId": null,
+      "categoryId": 30,
+      "name": "ሌሎች",
+      "slug": null,
+      "createdAt": "2026-06-11T03:11:16.438Z",
+      "updatedAt": "2026-06-11T03:11:16.438Z"
+    },
+    {
+      "id": 199,
+      "userId": null,
+      "categoryId": 31,
+      "name": "የእግዚአብሔር",
+      "slug": null,
+      "createdAt": "2026-06-11T03:11:30.310Z",
+      "updatedAt": "2026-06-11T03:11:30.310Z"
+    },
+    {
+      "id": 200,
+      "userId": null,
+      "categoryId": 31,
+      "name": "የእመቤታችን",
+      "slug": null,
+      "createdAt": "2026-06-11T03:11:39.464Z",
+      "updatedAt": "2026-06-11T03:11:39.464Z"
+    },
+    {
+      "id": 201,
+      "userId": null,
+      "categoryId": 31,
+      "name": "የሚካኤል",
+      "slug": null,
+      "createdAt": "2026-06-11T03:11:46.437Z",
+      "updatedAt": "2026-06-11T03:11:46.437Z"
+    },
+    {
+      "id": 202,
+      "userId": null,
+      "categoryId": 31,
+      "name": "የገብርኤል",
+      "slug": null,
+      "createdAt": "2026-06-11T03:12:24.087Z",
+      "updatedAt": "2026-06-11T03:12:24.087Z"
+    },
+    {
+      "id": 203,
+      "userId": null,
+      "categoryId": 31,
+      "name": "የጊዮርጊስ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:12:31.175Z",
+      "updatedAt": "2026-06-11T03:12:31.175Z"
+    },
+    {
+      "id": 204,
+      "userId": null,
+      "categoryId": 31,
+      "name": "የቤተ ክርስቲያን",
+      "slug": null,
+      "createdAt": "2026-06-11T03:12:45.796Z",
+      "updatedAt": "2026-06-11T03:12:45.796Z"
+    },
+    {
+      "id": 205,
+      "userId": null,
+      "categoryId": 31,
+      "name": "ሌሎች",
+      "slug": null,
+      "createdAt": "2026-06-11T03:12:56.358Z",
+      "updatedAt": "2026-06-11T03:12:56.358Z"
+    },
+    {
+      "id": 207,
+      "userId": null,
+      "categoryId": 32,
+      "name": "ድምጽና ቪድዮ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:13:29.146Z",
+      "updatedAt": "2026-06-11T03:13:29.146Z"
+    },
+    {
+      "id": 208,
+      "userId": null,
+      "categoryId": 32,
+      "name": "የጉባኤ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:13:51.425Z",
+      "updatedAt": "2026-06-11T03:13:51.425Z"
+    },
+    {
+      "id": 209,
+      "userId": null,
+      "categoryId": 32,
+      "name": "ድምጽ ብቻ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:28:22.658Z",
+      "updatedAt": "2026-06-11T03:28:22.658Z"
+    },
+    {
+      "id": 210,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የአዲስ ዓመት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:28:47.093Z",
+      "updatedAt": "2026-06-11T03:28:47.093Z"
+    },
+    {
+      "id": 211,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የልደት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:04.366Z",
+      "updatedAt": "2026-06-11T03:29:04.366Z"
+    },
+    {
+      "id": 212,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የጥምቀት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:11.742Z",
+      "updatedAt": "2026-06-11T03:29:11.742Z"
+    },
+    {
+      "id": 213,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የትንሳኤ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:20.203Z",
+      "updatedAt": "2026-06-11T03:29:20.203Z"
+    },
+    {
+      "id": 214,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የእርገት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:27.560Z",
+      "updatedAt": "2026-06-11T03:29:27.560Z"
+    },
+    {
+      "id": 215,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የመስቀል",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:35.322Z",
+      "updatedAt": "2026-06-11T03:29:35.322Z"
+    },
+    {
+      "id": 216,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የጰራቅሊጦስ",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:44.014Z",
+      "updatedAt": "2026-06-11T03:29:44.014Z"
+    },
+    {
+      "id": 217,
+      "userId": null,
+      "categoryId": 33,
+      "name": "የስቅለት",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:51.742Z",
+      "updatedAt": "2026-06-11T03:29:51.742Z"
+    },
+    {
+      "id": 218,
+      "userId": null,
+      "categoryId": 33,
+      "name": "ሌሎች",
+      "slug": null,
+      "createdAt": "2026-06-11T03:29:59.595Z",
+      "updatedAt": "2026-06-11T03:29:59.595Z"
+    }
+  ],
+  "languages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "አማርኛ",
+      "slug": "አማርኛ",
+      "createdAt": "2024-09-04T01:59:02.000Z",
+      "updatedAt": "2024-11-04T04:41:50.000Z"
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "name": "English",
+      "slug": "English",
+      "createdAt": "2024-09-04T01:59:15.000Z",
+      "updatedAt": "2024-11-04T04:41:50.000Z"
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "ግዕዝ",
+      "slug": "ግዕዝ",
+      "createdAt": "2024-09-04T01:59:31.000Z",
+      "updatedAt": "2024-11-04T04:41:50.000Z"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "name": "ትግርኛ",
+      "slug": "ትግርኛ",
+      "createdAt": "2024-09-04T01:59:45.000Z",
+      "updatedAt": "2024-11-04T04:41:50.000Z"
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "name": "Afaan Oromoo",
+      "slug": "Afaan-Oromoo",
+      "createdAt": "2024-09-04T02:00:48.000Z",
+      "updatedAt": "2024-11-04T04:41:50.000Z"
+    },
+    {
+      "id": 7,
+      "userId": null,
+      "name": "ሌሎች",
+      "slug": null,
+      "createdAt": "2026-06-11T03:08:24.435Z",
+      "updatedAt": "2026-06-11T03:08:57.796Z"
+    },
+    {
+      "id": 6,
+      "userId": 1,
+      "name": "ምልክት",
+      "slug": "ምልክት",
+      "createdAt": "2026-03-11T03:09:09.000Z",
+      "updatedAt": "2026-03-11T03:09:09.000Z"
+    }
+  ],
+  "singers": [
+    {
+      "id": 361,
+      "name": "Artist Amsale Tizazu",
+      "slug": "Artist-Amsale-Tizazu",
+      "createdAt": "2025-08-31T03:21:18.000Z",
+      "updatedAt": "2025-08-31T03:21:18.000Z"
+    },
+    {
+      "id": 409,
+      "name": "Deacon Gorgorios Dejene",
+      "slug": "Deacon-Gorgorios-Dejene",
+      "createdAt": "2025-11-20T04:25:14.000Z",
+      "updatedAt": "2025-11-20T04:25:14.000Z"
+    },
+    {
+      "id": 574,
+      "name": "Deacon Noah Abebe",
+      "slug": "Deacon-Noah-Abebe-muoyqxno",
+      "createdAt": "2026-10-01T03:17:12.037Z",
+      "updatedAt": "2026-10-01T03:17:12.037Z"
+    },
+    {
+      "id": 573,
+      "name": "Deacon Noah Fisseha",
+      "slug": "Deacon-Noah-Fisseha-munkwu0r",
+      "createdAt": "2026-09-30T04:02:06.460Z",
+      "updatedAt": "2026-09-30T04:02:06.460Z"
+    },
+    {
+      "id": 62,
+      "name": "F/taa Biqilaa Mitikkuu",
+      "slug": "Ftaa-Biqilaa-Mitikkuu",
+      "createdAt": "2024-09-27T03:28:50.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 61,
+      "name": "F/taa D/n Ayyanaa Fiqaaduu",
+      "slug": "Ftaa-Dn-Ayyanaa-Fiqaaduu",
+      "createdAt": "2024-09-27T03:27:58.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 511,
+      "name": "F/taa Dn Alamuu Tashoomaatiin",
+      "slug": "Ftaa-Dn-Alamuu-Tashoomaatiin",
+      "createdAt": "2026-05-10T03:36:00.132Z",
+      "updatedAt": "2026-05-10T03:36:00.132Z"
+    },
+    {
+      "id": 471,
+      "name": "F/taa Dn Daanyee",
+      "slug": "Ftaa-Dn-Daanyee",
+      "createdAt": "2026-03-08T10:14:10.000Z",
+      "updatedAt": "2026-03-08T10:14:10.000Z"
+    },
+    {
+      "id": 485,
+      "name": "F/taa Dn Kaaleb Geetaachootiin",
+      "slug": "Ftaa-Dn-Kaaleb-Geetaachootiin",
+      "createdAt": "2026-03-21T03:29:42.000Z",
+      "updatedAt": "2026-03-21T03:29:42.000Z"
+    },
+    {
+      "id": 487,
+      "name": "F/taa Dn Keebar Tasfaa",
+      "slug": "Ftaa-Dn-Keebar-Tasfaa",
+      "createdAt": "2026-03-23T03:27:07.000Z",
+      "updatedAt": "2026-03-23T03:27:07.000Z"
+    },
+    {
+      "id": 475,
+      "name": "F/taa Dn Seenaa Dabaree",
+      "slug": "Ftaa-Dn-Seenaa-Dabaree",
+      "createdAt": "2026-03-09T04:13:21.000Z",
+      "updatedAt": "2026-03-09T04:13:21.000Z"
+    },
+    {
+      "id": 63,
+      "name": "F/taa Tafarraa Baqqalaa",
+      "slug": "Ftaa-Tafarraa-Baqqalaa",
+      "createdAt": "2024-09-27T03:29:04.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 494,
+      "name": "F/taa Waldesanbat Baqqalaa",
+      "slug": "Ftaa-Waldesanbat-Baqqalaa",
+      "createdAt": "2026-04-01T01:16:39.000Z",
+      "updatedAt": "2026-04-01T01:16:39.000Z"
+    },
+    {
+      "id": 367,
+      "name": "F/ttuu Burtukaan Gosaa",
+      "slug": "Fttuu-Burtukaan-Gosaa",
+      "createdAt": "2025-09-07T02:38:51.000Z",
+      "updatedAt": "2025-09-07T02:38:51.000Z"
+    },
+    {
+      "id": 368,
+      "name": "F/ttuu Firehiwoot Dajanee",
+      "slug": "Fttuu-Firehiwoot-Dajanee",
+      "createdAt": "2025-09-07T02:38:58.000Z",
+      "updatedAt": "2025-09-07T02:38:58.000Z"
+    },
+    {
+      "id": 468,
+      "name": "F/ttuu Hawwii Abdiisaa",
+      "slug": "Fttuu-Hawwii-Abdiisaa",
+      "createdAt": "2026-03-06T04:48:24.000Z",
+      "updatedAt": "2026-03-06T04:48:24.000Z"
+    },
+    {
+      "id": 288,
+      "name": "F/ttuu Jiiituu Zawudee",
+      "slug": "Fttuu-Jiiituu-Zawudee",
+      "createdAt": "2025-03-28T03:59:24.000Z",
+      "updatedAt": "2025-03-28T03:59:24.000Z"
+    },
+    {
+      "id": 416,
+      "name": "F/ttuu Maqdas Xilaahuun",
+      "slug": "Fttuu-Maqdas-Xilaahuun",
+      "createdAt": "2025-11-26T04:18:00.000Z",
+      "updatedAt": "2025-11-26T04:18:00.000Z"
+    },
+    {
+      "id": 440,
+      "name": "F/ttuu Meskerem Xilaayee",
+      "slug": "Fttuu-Meskerem-Xilaayee",
+      "createdAt": "2026-01-08T04:56:22.000Z",
+      "updatedAt": "2026-01-08T04:56:22.000Z"
+    },
+    {
+      "id": 425,
+      "name": "F/ttuu Mihiret Baqqalee",
+      "slug": "Fttuu-Mihiret-Baqqalee",
+      "createdAt": "2025-12-14T04:22:07.000Z",
+      "updatedAt": "2025-12-14T04:22:07.000Z"
+    },
+    {
+      "id": 560,
+      "name": "F/ttuu Taarikee Lammaa",
+      "slug": "Fttuu-Taarikee-Lammaa",
+      "createdAt": "2026-09-08T03:30:22.234Z",
+      "updatedAt": "2026-09-08T03:30:22.234Z"
+    },
+    {
+      "id": 478,
+      "name": "F/ttuu Warqinash Mul'ataa",
+      "slug": "Fttuu-Warqinash-Mulataa",
+      "createdAt": "2026-03-12T03:37:37.000Z",
+      "updatedAt": "2026-03-12T03:37:37.000Z"
+    },
+    {
+      "id": 558,
+      "name": "F/ttuu Yaadaani Zarihuun",
+      "slug": "Fttuu-Yaadaani-Zarihuun",
+      "createdAt": "2026-09-07T04:06:30.111Z",
+      "updatedAt": "2026-09-07T04:06:30.111Z"
+    },
+    {
+      "id": 378,
+      "name": "Faarfataa Darajjee Jimaa",
+      "slug": "Faarfataa-Darajjee-Jimaa",
+      "createdAt": "2025-10-06T01:22:47.000Z",
+      "updatedAt": "2025-10-06T01:22:47.000Z"
+    },
+    {
+      "id": 375,
+      "name": "Faarfataa Deacon Yaared Takkaaliny",
+      "slug": "Faarfataa-Deacon-Yaared-Takkaaliny",
+      "createdAt": "2025-10-03T02:02:29.000Z",
+      "updatedAt": "2025-10-03T02:02:29.000Z"
+    },
+    {
+      "id": 263,
+      "name": "Zemari Adam Mulugeta",
+      "slug": "Zemari-Adam-Mulugeta",
+      "createdAt": "2025-03-16T04:25:37.000Z",
+      "updatedAt": "2025-03-16T04:25:37.000Z"
+    },
+    {
+      "id": 444,
+      "name": "Zemari Benyam Muluneh",
+      "slug": "Zemari-Benyam-Muluneh",
+      "createdAt": "2026-01-26T04:36:05.000Z",
+      "updatedAt": "2026-01-26T04:36:05.000Z"
+    },
+    {
+      "id": 441,
+      "name": "Zemari Deacon Abel Tedla",
+      "slug": "Zemari-Deacon-Abel-Tedla",
+      "createdAt": "2026-01-20T04:16:33.000Z",
+      "updatedAt": "2026-01-20T04:16:33.000Z"
+    },
+    {
+      "id": 267,
+      "name": "Zemari Deacon Biruk Jifar",
+      "slug": "Zemari-Deacon-Biruk-Jifar",
+      "createdAt": "2025-03-23T04:36:20.000Z",
+      "updatedAt": "2025-03-23T04:36:20.000Z"
+    },
+    {
+      "id": 437,
+      "name": "Zemari Deacon Brook Argaw",
+      "slug": "Zemari-Deacon-Brook-Argaw",
+      "createdAt": "2026-01-04T04:44:03.000Z",
+      "updatedAt": "2026-01-04T04:44:03.000Z"
+    },
+    {
+      "id": 365,
+      "name": "Zemari Deacon Mathias Adamu",
+      "slug": "Zemari-Deacon-Mathias-Adamu",
+      "createdAt": "2025-09-04T01:27:34.000Z",
+      "updatedAt": "2025-09-04T01:27:34.000Z"
+    },
+    {
+      "id": 133,
+      "name": "Zemari Deacon Samuel Teshome",
+      "slug": "Zemari-Deacon-Samuel-Teshome",
+      "createdAt": "2024-10-22T02:02:55.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 349,
+      "name": "Zemari Deacon Simon Yohannes",
+      "slug": "Zemari-Deacon-Simon-Yohannes",
+      "createdAt": "2025-08-25T01:42:05.000Z",
+      "updatedAt": "2025-08-25T01:42:05.000Z"
+    },
+    {
+      "id": 338,
+      "name": "Zemari Deacon Yohannes Alonzo",
+      "slug": "Zemari-Deacon-Yohannes-Alonzo",
+      "createdAt": "2025-07-29T01:59:27.000Z",
+      "updatedAt": "2025-07-29T01:59:27.000Z"
+    },
+    {
+      "id": 369,
+      "name": "Zemari Deacon Yonatan Dawit",
+      "slug": "Zemari-Deacon-Yonatan-Dawit",
+      "createdAt": "2025-09-09T01:27:05.000Z",
+      "updatedAt": "2025-09-09T01:27:05.000Z"
+    },
+    {
+      "id": 371,
+      "name": "Zemari Mikias Dagm",
+      "slug": "Zemari-Mikias-Dagm",
+      "createdAt": "2025-09-19T01:22:03.000Z",
+      "updatedAt": "2025-09-19T01:22:03.000Z"
+    },
+    {
+      "id": 490,
+      "name": "Zemarit Afomia Eyob",
+      "slug": "Zemarit-Afomia-Eyob",
+      "createdAt": "2026-03-25T03:43:28.000Z",
+      "updatedAt": "2026-03-25T03:43:28.000Z"
+    },
+    {
+      "id": 442,
+      "name": "Zemarit Ariam Asmerom",
+      "slug": "Zemarit-Ariam-Asmerom",
+      "createdAt": "2026-01-22T04:23:34.000Z",
+      "updatedAt": "2026-01-22T04:23:34.000Z"
+    },
+    {
+      "id": 411,
+      "name": "Zemarit Aster Tefera",
+      "slug": "Zemarit-Aster-Tefera",
+      "createdAt": "2025-11-21T04:33:40.000Z",
+      "updatedAt": "2025-11-21T04:33:40.000Z"
+    },
+    {
+      "id": 54,
+      "name": "Zemarit Betty Habtegiorgis",
+      "slug": "Zemarit-Betty-Habtegiorgis",
+      "createdAt": "2024-09-25T02:39:42.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 351,
+      "name": "Zemarit Betty Woldeyohanes",
+      "slug": "Zemarit-Betty-Woldeyohanes",
+      "createdAt": "2025-08-26T02:13:36.000Z",
+      "updatedAt": "2025-08-26T02:13:36.000Z"
+    },
+    {
+      "id": 431,
+      "name": "Zemarit Bezawit Mengstu",
+      "slug": "Zemarit-Bezawit-Mengstu",
+      "createdAt": "2025-12-24T04:40:06.000Z",
+      "updatedAt": "2025-12-24T04:40:06.000Z"
+    },
+    {
+      "id": 505,
+      "name": "Zemarit Divora Brhane",
+      "slug": "Zemarit-Divora-Brhane",
+      "createdAt": "2026-04-19T02:33:42.000Z",
+      "updatedAt": "2026-04-19T02:33:42.000Z"
+    },
+    {
+      "id": 57,
+      "name": "Zemarit Egeziharya Yilma",
+      "slug": "Zemarit-Egeziharya-Yilma",
+      "createdAt": "2024-09-25T02:41:24.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 384,
+      "name": "Zemarit Gellila Yohannes",
+      "slug": "Zemarit-Gellila-Yohannes",
+      "createdAt": "2025-10-17T01:53:25.000Z",
+      "updatedAt": "2025-10-17T01:53:25.000Z"
+    },
+    {
+      "id": 343,
+      "name": "Zemarit Hana Tefera",
+      "slug": "Zemarit-Hana-Tefera",
+      "createdAt": "2025-08-22T01:24:38.000Z",
+      "updatedAt": "2025-08-22T01:24:38.000Z"
+    },
+    {
+      "id": 443,
+      "name": "Zemarit Heaven Desalegn",
+      "slug": "Zemarit-Heaven-Desalegn",
+      "createdAt": "2026-01-24T04:59:45.000Z",
+      "updatedAt": "2026-01-24T04:59:45.000Z"
+    },
+    {
+      "id": 238,
+      "name": "Zemarit Helena Alemu",
+      "slug": "Zemarit-Helena-Alemu",
+      "createdAt": "2025-02-22T05:30:44.000Z",
+      "updatedAt": "2025-02-22T05:30:44.000Z"
+    },
+    {
+      "id": 292,
+      "name": "Zemarit Kidist Taye",
+      "slug": "Zemarit-Kidist-Taye",
+      "createdAt": "2025-03-30T01:36:12.000Z",
+      "updatedAt": "2025-03-30T01:36:12.000Z"
+    },
+    {
+      "id": 330,
+      "name": "Zemarit Lebeza Alemu",
+      "slug": "Zemarit-Lebeza-Alemu",
+      "createdAt": "2025-07-08T01:57:30.000Z",
+      "updatedAt": "2025-07-08T01:57:30.000Z"
+    },
+    {
+      "id": 53,
+      "name": "Zemarit Lidya Webetu",
+      "slug": "Zemarit-Lidya-Webetu",
+      "createdAt": "2024-09-25T02:39:01.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 464,
+      "name": "Zemarit Mahalet Zewdu",
+      "slug": "Zemarit-Mahalet-Zewdu",
+      "createdAt": "2026-03-05T04:44:01.000Z",
+      "updatedAt": "2026-03-05T04:44:01.000Z"
+    },
+    {
+      "id": 350,
+      "name": "Zemarit Mahelet Woldeyohanes",
+      "slug": "Zemarit-Mahelet-Woldeyohanes",
+      "createdAt": "2025-08-26T02:13:16.000Z",
+      "updatedAt": "2025-08-26T02:13:16.000Z"
+    },
+    {
+      "id": 336,
+      "name": "Zemarit Mekdelawit Ephrem",
+      "slug": "Zemarit-Mekdelawit-Ephrem",
+      "createdAt": "2025-07-29T01:57:24.000Z",
+      "updatedAt": "2025-07-29T01:57:24.000Z"
+    },
+    {
+      "id": 370,
+      "name": "Zemarit Meklit Dagm",
+      "slug": "Zemarit-Meklit-Dagm",
+      "createdAt": "2025-09-19T01:21:30.000Z",
+      "updatedAt": "2025-09-19T01:21:30.000Z"
+    },
+    {
+      "id": 467,
+      "name": "Zemarit Nuhamin",
+      "slug": "Zemarit-Nuhamin",
+      "createdAt": "2026-03-06T04:47:06.000Z",
+      "updatedAt": "2026-03-06T04:47:06.000Z"
+    },
+    {
+      "id": 334,
+      "name": "Zemarit Rebekah Gordon",
+      "slug": "Zemarit-Rebekah-Gordon",
+      "createdAt": "2025-07-23T01:48:23.000Z",
+      "updatedAt": "2025-07-23T01:48:23.000Z"
+    },
+    {
+      "id": 56,
+      "name": "Zemarit Sidona Samuel",
+      "slug": "Zemarit-Sidona-Samuel",
+      "createdAt": "2024-09-25T02:41:01.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 528,
+      "name": "Zemarit Solyana Tibebu",
+      "slug": "Zemarit-Solyana-Tibebu",
+      "createdAt": "2026-06-05T03:42:37.096Z",
+      "updatedAt": "2026-06-05T03:42:37.096Z"
+    },
+    {
+      "id": 466,
+      "name": "Zemarit Tsedenia",
+      "slug": "Zemarit-Tsedenia",
+      "createdAt": "2026-03-06T04:45:09.000Z",
+      "updatedAt": "2026-03-06T04:45:09.000Z"
+    },
+    {
+      "id": 55,
+      "name": "Zemarit Tsion Webetu",
+      "slug": "Zemarit-Tsion-Webetu",
+      "createdAt": "2024-09-25T02:40:01.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 355,
+      "name": "Zemarit Wongail Belete",
+      "slug": "Zemarit-Wongail-Belete",
+      "createdAt": "2025-08-27T01:28:54.000Z",
+      "updatedAt": "2025-08-27T01:28:54.000Z"
+    },
+    {
+      "id": 252,
+      "name": "ሀብተሚካኤል ደምሴ",
+      "slug": "ሀብተሚካኤል-ደምሴ",
+      "createdAt": "2025-03-12T05:20:37.000Z",
+      "updatedAt": "2025-03-12T05:20:37.000Z"
+    },
+    {
+      "id": 28,
+      "name": "ሊቀ ልሣናት ቀሲስ ብሩክ በየነ",
+      "slug": "ሊቀ-ልሣናት-ቀሲስ-ብሩክ-በየነ",
+      "createdAt": "2024-09-15T00:33:56.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 66,
+      "name": "ሊቀ ልሣናት ቸርነት ሰናይ",
+      "slug": "ሊቀ-ልሣናት-ቸርነት-ሰናይ",
+      "createdAt": "2024-09-28T04:11:26.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 454,
+      "name": "ሊቀ መዘምራን ቀሲስ ግርማ አዳነ",
+      "slug": "ሊቀ-መዘምራን-ቀሲስ-ግርማ-አዳነ",
+      "createdAt": "2026-02-12T04:17:58.000Z",
+      "updatedAt": "2026-02-12T04:17:58.000Z"
+    },
+    {
+      "id": 533,
+      "name": "ሊቀ መዘምራን ብዙአየሁ ተመስገን",
+      "slug": "ሊቀ-መዘምራን-ብዙአየሁ-ተመስገን",
+      "createdAt": "2026-06-22T03:16:30.522Z",
+      "updatedAt": "2026-06-22T03:16:30.522Z"
+    },
+    {
+      "id": 3,
+      "name": "ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ",
+      "slug": "ሊቀ-መዘምራን-ቴዎድሮስ-ዮሴፍ",
+      "createdAt": "2024-09-10T01:46:10.000Z",
+      "updatedAt": "2024-11-25T07:15:15.000Z"
+    },
+    {
+      "id": 242,
+      "name": "ሊቀ መዘምራን ኪነጥበብ ወልደቂርቆስ",
+      "slug": "ሊቀ-መዘምራን-ኪነጥበብ-ወልደቂርቆስ",
+      "createdAt": "2025-02-27T05:41:10.000Z",
+      "updatedAt": "2025-02-27T05:41:10.000Z"
+    },
+    {
+      "id": 7,
+      "name": "ሊቀ መዘምራን ይልማ ኃይሉ",
+      "slug": "ሊቀ-መዘምራን-ይልማ-ኃይሉ",
+      "createdAt": "2024-09-10T02:06:35.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 279,
+      "name": "ሊቀ መዘምራን ዲበኩሉ አሰፋ",
+      "slug": "ሊቀ-መዘምራን-ዲበኩሉ-አሰፋ",
+      "createdAt": "2025-03-26T03:58:10.000Z",
+      "updatedAt": "2025-03-26T03:58:10.000Z"
+    },
+    {
+      "id": 408,
+      "name": "ሊቀ መዘምራን ዲያቆን ፍራኖል ሞሲሳ",
+      "slug": "ሊቀ-መዘምራን-ዲያቆን-ፍራኖል-ሞሲሳ",
+      "createdAt": "2025-11-19T04:28:27.000Z",
+      "updatedAt": "2025-11-19T04:28:27.000Z"
+    },
+    {
+      "id": 220,
+      "name": "ሊቀ ስዩማን ፅጌ አስተራየ",
+      "slug": "ሊቀ-ስዩማን-ፅጌ-አስተራየ",
+      "createdAt": "2025-02-06T10:59:19.000Z",
+      "updatedAt": "2025-02-06T10:59:19.000Z"
+    },
+    {
+      "id": 463,
+      "name": "ሊቀ ዲያቆናት ሙሴ ንጋቱ",
+      "slug": "ሊቀ-ዲያቆናት-ሙሴ-ንጋቱ",
+      "createdAt": "2026-03-04T04:28:20.000Z",
+      "updatedAt": "2026-03-04T04:28:20.000Z"
+    },
+    {
+      "id": 225,
+      "name": "ሊቀ ዲያቆናት ነቢዩ ሳሙኤል",
+      "slug": "ሊቀ-ዲያቆናት-ነቢዩ-ሳሙኤል",
+      "createdAt": "2025-02-07T10:14:42.000Z",
+      "updatedAt": "2025-02-07T10:14:42.000Z"
+    },
+    {
+      "id": 278,
+      "name": "ሊቀ ጠበብት መንክር ሐዲስ",
+      "slug": "ሊቀ-ጠበብት-መንክር-ሐዲስ",
+      "createdAt": "2025-03-26T03:57:18.000Z",
+      "updatedAt": "2025-03-26T03:57:18.000Z"
+    },
+    {
+      "id": 200,
+      "name": "ሕጻን ዘማሪት ማሬ",
+      "slug": "ሕጻን-ዘማሪት-ማሬ",
+      "createdAt": "2025-01-02T10:38:28.000Z",
+      "updatedAt": "2025-01-02T10:38:28.000Z"
+    },
+    {
+      "id": 198,
+      "name": "መልአከ ሰላም ቀሲስ እንግዳወርቅ በቀለ",
+      "slug": "መልአከ-ሰላም-ቀሲስ-እንግዳወርቅ-በቀለ",
+      "createdAt": "2025-01-02T10:34:16.000Z",
+      "updatedAt": "2025-01-02T10:34:16.000Z"
+    },
+    {
+      "id": 372,
+      "name": "መልአከ ፀሐይ ቀሲስ መኮንን ፍስሐ",
+      "slug": "መልአከ-ፀሐይ-ቀሲስ-መኮንን-ፍስሐ",
+      "createdAt": "2025-09-20T02:02:54.000Z",
+      "updatedAt": "2025-09-20T02:02:54.000Z"
+    },
+    {
+      "id": 148,
+      "name": "መምህር ምሕረተአብ አሰፋ",
+      "slug": "መምህር-ምሕረተአብ-አሰፋ",
+      "createdAt": "2024-10-30T04:42:27.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 305,
+      "name": "መምህር ኤርምያስ ኃይላይ",
+      "slug": "መምህር-ኤርምያስ-ኃይላይ",
+      "createdAt": "2025-04-02T01:37:59.000Z",
+      "updatedAt": "2025-04-02T01:37:59.000Z"
+    },
+    {
+      "id": 59,
+      "name": "መምህር ወመዘምር ኅሩይ ዓለማየሁ",
+      "slug": "መምህር-ወመዘምር-ኅሩይ-ዓለማየሁ",
+      "createdAt": "2024-09-26T02:51:40.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 589,
+      "name": "መሪጌታ ሃኒባል ርእሶም",
+      "slug": "መሪጌታ-ሃኒባል-ርእሶም-mvhkharc",
+      "createdAt": "2026-10-21T03:43:06.937Z",
+      "updatedAt": "2026-10-21T03:43:06.937Z"
+    },
+    {
+      "id": 172,
+      "name": "መሪጌታ ፀሐይ ብርሃኑ",
+      "slug": "መሪጌታ-ፀሐይ-ብርሃኑ",
+      "createdAt": "2024-11-28T11:04:39.000Z",
+      "updatedAt": "2024-11-28T11:04:39.000Z"
+    },
+    {
+      "id": 251,
+      "name": "መሪጌታ ፍቅሩ ሳህሌ",
+      "slug": "መሪጌታ-ፍቅሩ-ሳህሌ",
+      "createdAt": "2025-03-12T05:16:44.000Z",
+      "updatedAt": "2025-03-12T05:16:44.000Z"
+    },
+    {
+      "id": 136,
+      "name": "መጋቤ ምሥጢር ሰሎሞን ተስፋዬ",
+      "slug": "መጋቤ-ምሥጢር-ሰሎሞን-ተስፋዬ",
+      "createdAt": "2024-10-25T02:43:33.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 199,
+      "name": "መጋቤ ስብሃት አለሙ አጋ",
+      "slug": "መጋቤ-ስብሃት-አለሙ-አጋ",
+      "createdAt": "2025-01-02T10:37:55.000Z",
+      "updatedAt": "2025-01-02T10:37:55.000Z"
+    },
+    {
+      "id": 176,
+      "name": "ሙሐዘ ስብሀት ዘማሪ ዳግማዊ ደርቤ",
+      "slug": "ሙሐዘ-ስብሀት-ዘማሪ-ዳግማዊ-ደርቤ",
+      "createdAt": "2024-12-03T10:18:54.000Z",
+      "updatedAt": "2024-12-03T10:18:54.000Z"
+    },
+    {
+      "id": 486,
+      "name": "ማኅሌተ ሰሎሞን",
+      "slug": "ማኅሌተ-ሰሎሞን",
+      "createdAt": "2026-03-22T03:51:25.000Z",
+      "updatedAt": "2026-03-22T03:51:25.000Z"
+    },
+    {
+      "id": 196,
+      "name": "ማኅበረ ቅዱሳን",
+      "slug": "ማኅበረ-ቅዱሳን",
+      "createdAt": "2024-12-31T11:20:05.000Z",
+      "updatedAt": "2024-12-31T11:20:05.000Z"
+    },
+    {
+      "id": 448,
+      "name": "ምኒበል ቢወጣ",
+      "slug": "ምኒበል-ቢወጣ",
+      "createdAt": "2026-01-29T04:23:45.000Z",
+      "updatedAt": "2026-01-29T04:23:45.000Z"
+    },
+    {
+      "id": 167,
+      "name": "ርዕሰ መዘምራን እስጢፋኖስ ሣህሌ",
+      "slug": "ርዕሰ-መዘምራን-እስጢፋኖስ-ሣህሌ",
+      "createdAt": "2024-11-22T10:07:11.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 173,
+      "name": "ስብስብ",
+      "slug": "ስብስብ",
+      "createdAt": "2024-11-29T10:11:15.000Z",
+      "updatedAt": "2024-11-29T10:11:15.000Z"
+    },
+    {
+      "id": 462,
+      "name": "ቀሲስ መልኣከ ብርሃን ጸጋዘኣብ",
+      "slug": "ቀሲስ-መልኣከ-ብርሃን-ጸጋዘኣብ",
+      "createdAt": "2026-03-04T04:27:54.000Z",
+      "updatedAt": "2026-03-04T04:27:54.000Z"
+    },
+    {
+      "id": 135,
+      "name": "ቀሲስ ሲሳይ መብራህቶም",
+      "slug": "ቀሲስ-ሲሳይ-መብራህቶም",
+      "createdAt": "2024-10-22T02:05:12.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 67,
+      "name": "ቀሲስ ዘማሪ አሸናፊ ገብረ ማርያም",
+      "slug": "ቀሲስ-ዘማሪ-አሸናፊ-ገብረ-ማርያም",
+      "createdAt": "2024-09-28T04:12:00.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 6,
+      "name": "ቀሲስ ዳዊት ፋንታዬ",
+      "slug": "ቀሲስ-ዳዊት-ፋንታዬ",
+      "createdAt": "2024-09-10T01:48:17.000Z",
+      "updatedAt": "2024-11-25T07:15:15.000Z"
+    },
+    {
+      "id": 183,
+      "name": "ቀሲስ ዶር ዘበነ ለማ",
+      "slug": "ቀሲስ-ዶር-ዘበነ-ለማ",
+      "createdAt": "2024-12-10T10:16:57.000Z",
+      "updatedAt": "2024-12-10T10:16:57.000Z"
+    },
+    {
+      "id": 5,
+      "name": "በህብረት",
+      "slug": "በህብረት",
+      "createdAt": "2024-09-10T01:48:02.000Z",
+      "updatedAt": "2024-11-25T07:15:15.000Z"
+    },
+    {
+      "id": 493,
+      "name": "በገነኛ ዳግም ብርሃኑ",
+      "slug": "በገነኛ-ዳግም-ብርሃኑ",
+      "createdAt": "2026-03-31T01:20:04.000Z",
+      "updatedAt": "2026-03-31T01:20:04.000Z"
+    },
+    {
+      "id": 141,
+      "name": "ብጹዕ አቡነ ናትናኤል",
+      "slug": "ብጹዕ-አቡነ-ናትናኤል",
+      "createdAt": "2024-10-28T05:46:39.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 154,
+      "name": "አባ ብርሃነ ኢየሱስ ሽመልስ",
+      "slug": "አባ-ብርሃነ-ኢየሱስ-ሽመልስ",
+      "createdAt": "2024-11-06T06:14:30.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 461,
+      "name": "አባ ዮስጦስ",
+      "slug": "አባ-ዮስጦስ",
+      "createdAt": "2026-03-03T05:20:52.000Z",
+      "updatedAt": "2026-03-03T05:20:52.000Z"
+    },
+    {
+      "id": 476,
+      "name": "አቤል በገና",
+      "slug": "አቤል-በገና",
+      "createdAt": "2026-03-11T03:36:49.000Z",
+      "updatedAt": "2026-03-11T03:36:49.000Z"
+    },
+    {
+      "id": 458,
+      "name": "እያቸው አቡዬ",
+      "slug": "እያቸው-አቡዬ",
+      "createdAt": "2026-02-19T04:30:06.000Z",
+      "updatedAt": "2026-02-19T04:30:06.000Z"
+    },
+    {
+      "id": 250,
+      "name": "እዮብ በላይነህ",
+      "slug": "እዮብ-በላይነህ",
+      "createdAt": "2025-03-12T05:16:00.000Z",
+      "updatedAt": "2025-03-12T05:16:00.000Z"
+    },
+    {
+      "id": 227,
+      "name": "ዘመሪት ስምረት ማሞ",
+      "slug": "ዘመሪት-ስምረት-ማሞ",
+      "createdAt": "2025-02-14T09:50:42.000Z",
+      "updatedAt": "2025-02-14T09:50:42.000Z"
+    },
+    {
+      "id": 210,
+      "name": "ዘማሪ ሄኖክ ፈቃዱ",
+      "slug": "ዘማሪ-ሄኖክ-ፈቃዱ",
+      "createdAt": "2025-01-11T10:02:11.000Z",
+      "updatedAt": "2025-01-11T10:02:11.000Z"
+    },
+    {
+      "id": 180,
+      "name": "ዘማሪ ህጻን ሚካኤል አሸናፊ",
+      "slug": "ዘማሪ-ህጻን-ሚካኤል-አሸናፊ",
+      "createdAt": "2024-12-07T10:21:19.000Z",
+      "updatedAt": "2024-12-07T10:21:19.000Z"
+    },
+    {
+      "id": 137,
+      "name": "ዘማሪ ህጻን እውነት አንድአምላክ",
+      "slug": "ዘማሪ-ህጻን-እውነት-አንድአምላክ",
+      "createdAt": "2024-10-25T02:46:29.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 551,
+      "name": "ዘማሪ ህፃን ቂርቆስ ነጋሲ",
+      "slug": "ዘማሪ-ህፃን-ቂርቆስ-ነጋሲ",
+      "createdAt": "2026-08-20T03:18:32.009Z",
+      "updatedAt": "2026-08-20T03:18:32.009Z"
+    },
+    {
+      "id": 386,
+      "name": "ዘማሪ ለጌታ ሲሳይ",
+      "slug": "ዘማሪ-ለጌታ-ሲሳይ",
+      "createdAt": "2025-10-18T01:21:17.000Z",
+      "updatedAt": "2025-10-18T01:21:17.000Z"
+    },
+    {
+      "id": 31,
+      "name": "ዘማሪ ሊቀ ዲያቆናት ስንታየሁ ጌታቸው",
+      "slug": "ዘማሪ-ሊቀ-ዲያቆናት-ስንታየሁ-ጌታቸው",
+      "createdAt": "2024-09-15T00:36:35.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 529,
+      "name": "ዘማሪ ሊቀ ዲያቆናት አረጋዊ በርሀ",
+      "slug": "ዘማሪ-ሊቀ-ዲያቆናት-አረጋዊ-በርሀ",
+      "createdAt": "2026-06-10T03:27:47.847Z",
+      "updatedAt": "2026-06-10T03:27:47.847Z"
+    },
+    {
+      "id": 306,
+      "name": "ዘማሪ ሊቀ ዲያቆናት ዳንኤል ኃይሉ",
+      "slug": "ዘማሪ-ሊቀ-ዲያቆናት-ዳንኤል-ኃይሉ",
+      "createdAt": "2025-04-03T01:10:01.000Z",
+      "updatedAt": "2025-04-03T01:10:01.000Z"
+    },
+    {
+      "id": 563,
+      "name": "ዘማሪ ሊቀ ዲያቆን መንበሩ",
+      "slug": "ዘማሪ-ሊቀ-ዲያቆን-መንበሩ",
+      "createdAt": "2026-09-09T03:58:06.428Z",
+      "updatedAt": "2026-09-09T03:58:06.428Z"
+    },
+    {
+      "id": 152,
+      "name": "ዘማሪ ሊቀ ዲያቆን ተመስገን ይባቤ",
+      "slug": "ዘማሪ-ሊቀ-ዲያቆን-ተመስገን-ይባቤ",
+      "createdAt": "2024-11-02T03:39:49.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 357,
+      "name": "ዘማሪ ልዑል ዓለሙ",
+      "slug": "ዘማሪ-ልዑል-ዓለሙ",
+      "createdAt": "2025-08-29T01:27:21.000Z",
+      "updatedAt": "2025-08-29T01:27:21.000Z"
+    },
+    {
+      "id": 446,
+      "name": "ዘማሪ ሐኖስ",
+      "slug": "ዘማሪ-ሐኖስ",
+      "createdAt": "2026-01-27T04:26:06.000Z",
+      "updatedAt": "2026-01-27T04:26:06.000Z"
+    },
+    {
+      "id": 125,
+      "name": "ዘማሪ ሓየሎም ቀሺ ኣርኣያ",
+      "slug": "ዘማሪ-ሓየሎም-ቀሺ-ኣርኣያ",
+      "createdAt": "2024-10-19T04:56:29.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 383,
+      "name": "ዘማሪ መምህር ኃይሌ ጌትነት",
+      "slug": "ዘማሪ-መምህር-ኃይሌ-ጌትነት",
+      "createdAt": "2025-10-16T01:23:13.000Z",
+      "updatedAt": "2025-10-16T01:23:13.000Z"
+    },
+    {
+      "id": 286,
+      "name": "ዘማሪ መሪጌታ ብሩክ ጌትነት",
+      "slug": "ዘማሪ-መሪጌታ-ብሩክ-ጌትነት",
+      "createdAt": "2025-03-28T03:57:58.000Z",
+      "updatedAt": "2025-03-28T03:57:58.000Z"
+    },
+    {
+      "id": 581,
+      "name": "ዘማሪ መሪጌታ ኣሮን ተስፋይ",
+      "slug": "ዘማሪ-መሪጌታ-ኣሮን-ተስፋይ-mv4oy7aj",
+      "createdAt": "2026-10-12T03:27:13.772Z",
+      "updatedAt": "2026-10-12T03:27:13.772Z"
+    },
+    {
+      "id": 96,
+      "name": "ዘማሪ መሳይ ዘጴጥሮስ",
+      "slug": "ዘማሪ-መሳይ-ዘጴጥሮስ",
+      "createdAt": "2024-10-15T01:45:48.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 19,
+      "name": "ዘማሪ መጋቤ ሃይማኖት ቀሲስ ስቡህ ታጋይ",
+      "slug": "ዘማሪ-መጋቤ-ሃይማኖት-ቀሲስ-ስቡህ-ታጋይ",
+      "createdAt": "2024-09-14T23:17:05.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 389,
+      "name": "ዘማሪ ሙሉቀን ሞላ",
+      "slug": "ዘማሪ-ሙሉቀን-ሞላ",
+      "createdAt": "2025-10-25T01:19:25.000Z",
+      "updatedAt": "2025-10-25T01:19:25.000Z"
+    },
+    {
+      "id": 401,
+      "name": "ዘማሪ ሚራዥ ጸገዬ",
+      "slug": "ዘማሪ-ሚራዥ-ጸገዬ",
+      "createdAt": "2025-11-07T04:43:39.000Z",
+      "updatedAt": "2025-11-07T04:43:39.000Z"
+    },
+    {
+      "id": 538,
+      "name": "ዘማሪ ሚኪያስ ተስፋ",
+      "slug": "ዘማሪ-ሚኪያስ-ተስፋ",
+      "createdAt": "2026-07-07T03:20:15.972Z",
+      "updatedAt": "2026-07-07T03:20:15.972Z"
+    },
+    {
+      "id": 309,
+      "name": "ዘማሪ ሚኪያስ ፀጋዬ",
+      "slug": "ዘማሪ-ሚኪያስ-ፀጋዬ",
+      "createdAt": "2025-04-04T01:23:59.000Z",
+      "updatedAt": "2025-04-04T01:23:59.000Z"
+    },
+    {
+      "id": 260,
+      "name": "ዘማሪ ሚካኤል ተክለሚካኤል",
+      "slug": "ዘማሪ-ሚካኤል-ተክለሚካኤል",
+      "createdAt": "2025-03-15T05:07:23.000Z",
+      "updatedAt": "2025-03-15T05:07:23.000Z"
+    },
+    {
+      "id": 94,
+      "name": "ዘማሪ ሚካኤል ዘብሬ",
+      "slug": "ዘማሪ-ሚካኤል-ዘብሬ",
+      "createdAt": "2024-10-15T01:44:02.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 567,
+      "name": "ዘማሪ ሚካኤል ፍሬው",
+      "slug": "ዘማሪ-ሚካኤል-ፍሬው",
+      "createdAt": "2026-09-15T03:38:20.221Z",
+      "updatedAt": "2026-09-15T03:38:20.221Z"
+    },
+    {
+      "id": 185,
+      "name": "ዘማሪ ሚክያስ አረጋዊ",
+      "slug": "ዘማሪ-ሚክያስ-አረጋዊ",
+      "createdAt": "2024-12-10T10:20:46.000Z",
+      "updatedAt": "2024-12-10T10:20:46.000Z"
+    },
+    {
+      "id": 47,
+      "name": "ዘማሪ ማኢል ተወልደ",
+      "slug": "ዘማሪ-ማኢል-ተወልደ",
+      "createdAt": "2024-09-22T21:00:16.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 320,
+      "name": "ዘማሪ ሜሮን ሰሎሞን",
+      "slug": "ዘማሪ-ሜሮን-ሰሎሞን",
+      "createdAt": "2025-04-17T01:54:11.000Z",
+      "updatedAt": "2025-04-17T01:54:11.000Z"
+    },
+    {
+      "id": 570,
+      "name": "ዘማሪ ምስጋናው ዘነበ",
+      "slug": "ዘማሪ-ምስጋናው-ዘነበ",
+      "createdAt": "2026-09-23T03:38:18.721Z",
+      "updatedAt": "2026-09-23T03:38:18.721Z"
+    },
+    {
+      "id": 572,
+      "name": "ዘማሪ ሮቤል ሓጎስ",
+      "slug": "ዘማሪ-ሮቤል-ሓጎስ",
+      "createdAt": "2026-09-26T03:17:12.151Z",
+      "updatedAt": "2026-09-26T03:17:12.151Z"
+    },
+    {
+      "id": 92,
+      "name": "ዘማሪ ሮቤል ሰይፉ",
+      "slug": "ዘማሪ-ሮቤል-ሰይፉ",
+      "createdAt": "2024-10-15T01:42:59.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 245,
+      "name": "ዘማሪ ሰሎሞን መንግስቱ",
+      "slug": "ዘማሪ-ሰሎሞን-መንግስቱ",
+      "createdAt": "2025-03-08T04:07:52.000Z",
+      "updatedAt": "2025-03-08T04:07:52.000Z"
+    },
+    {
+      "id": 79,
+      "name": "ዘማሪ ሰሎሞን አቡበከር",
+      "slug": "ዘማሪ-ሰሎሞን-አቡበከር",
+      "createdAt": "2024-10-10T01:46:18.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 207,
+      "name": "ዘማሪ ሳሙኤል ቴድሮስ",
+      "slug": "ዘማሪ-ሳሙኤል-ቴድሮስ",
+      "createdAt": "2025-01-09T10:18:36.000Z",
+      "updatedAt": "2025-01-09T10:18:36.000Z"
+    },
+    {
+      "id": 143,
+      "name": "ዘማሪ ሳሙኤል ካይሳይ",
+      "slug": "ዘማሪ-ሳሙኤል-ካይሳይ",
+      "createdAt": "2024-10-28T18:51:54.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 435,
+      "name": "ዘማሪ ሳሙኤል ጌቱ",
+      "slug": "ዘማሪ-ሳሙኤል-ጌቱ",
+      "createdAt": "2025-12-29T04:21:34.000Z",
+      "updatedAt": "2025-12-29T04:21:34.000Z"
+    },
+    {
+      "id": 36,
+      "name": "ዘማሪ ሳንድሮ ግርማይ",
+      "slug": "ዘማሪ-ሳንድሮ-ግርማይ",
+      "createdAt": "2024-09-22T20:47:42.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 2,
+      "name": "ዘማሪ ቀሲስ ምንዳዬ ብርሃኑ",
+      "slug": "ዘማሪ-ቀሲስ-ምንዳዬ-ብርሃኑ",
+      "createdAt": "2024-09-10T01:45:33.000Z",
+      "updatedAt": "2024-11-25T07:15:15.000Z"
+    },
+    {
+      "id": 502,
+      "name": "ዘማሪ ቀሲስ ብርሃን እሸቱ",
+      "slug": "ዘማሪ-ቀሲስ-ብርሃን-እሸቱ",
+      "createdAt": "2026-04-10T01:48:22.000Z",
+      "updatedAt": "2026-04-10T01:48:22.000Z"
+    },
+    {
+      "id": 26,
+      "name": "ዘማሪ ቀሲስ ናዖድ አዕምሮ",
+      "slug": "ዘማሪ-ቀሲስ-ናዖድ-አዕምሮ",
+      "createdAt": "2024-09-15T00:33:14.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 12,
+      "name": "ዘማሪ ቀሲስ አካሉ ዮሴፍ",
+      "slug": "ዘማሪ-ቀሲስ-አካሉ-ዮሴፍ",
+      "createdAt": "2024-09-11T02:58:00.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 13,
+      "name": "ዘማሪ ቀሲስ እስክንድር ወልደማርያም",
+      "slug": "ዘማሪ-ቀሲስ-እስክንድር-ወልደማርያም",
+      "createdAt": "2024-09-11T02:59:30.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 557,
+      "name": "ዘማሪ ቀሲስ እስጢፋኖስ ፀጋዬ",
+      "slug": "ዘማሪ-ቀሲስ-እስጢፋኖስ-ፀጋዬ",
+      "createdAt": "2026-09-07T04:03:50.878Z",
+      "updatedAt": "2026-09-07T04:03:50.878Z"
+    },
+    {
+      "id": 11,
+      "name": "ዘማሪ ቀሲስ ወንድወሰን በላይ",
+      "slug": "ዘማሪ-ቀሲስ-ወንድወሰን-በላይ",
+      "createdAt": "2024-09-11T02:31:14.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 14,
+      "name": "ዘማሪ ቀሲስ ወንድወሰን በቀለ",
+      "slug": "ዘማሪ-ቀሲስ-ወንድወሰን-በቀለ",
+      "createdAt": "2024-09-11T03:04:05.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 261,
+      "name": "ዘማሪ ቀሺ ጠዓመ ሰጊድ",
+      "slug": "ዘማሪ-ቀሺ-ጠዓመ-ሰጊድ",
+      "createdAt": "2025-03-15T05:08:39.000Z",
+      "updatedAt": "2025-03-15T05:08:39.000Z"
+    },
+    {
+      "id": 214,
+      "name": "ዘማሪ ቀነኒሳ ታቦር",
+      "slug": "ዘማሪ-ቀነኒሳ-ታቦር",
+      "createdAt": "2025-02-06T10:45:56.000Z",
+      "updatedAt": "2025-02-06T10:45:56.000Z"
+    },
+    {
+      "id": 85,
+      "name": "ዘማሪ በረከት ተስፋዬ",
+      "slug": "ዘማሪ-በረከት-ተስፋዬ",
+      "createdAt": "2024-10-12T02:09:30.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 39,
+      "name": "ዘማሪ በረኸት ትኩእ",
+      "slug": "ዘማሪ-በረኸት-ትኩእ",
+      "createdAt": "2024-09-22T20:50:05.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 81,
+      "name": "ዘማሪ በሱፍቃድ አንዳርጋቸው",
+      "slug": "ዘማሪ-በሱፍቃድ-አንዳርጋቸው",
+      "createdAt": "2024-10-12T01:11:29.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 555,
+      "name": "ዘማሪ በእምነት አሸናፊ",
+      "slug": "ዘማሪ-በእምነት-አሸናፊ",
+      "createdAt": "2026-09-03T03:34:51.486Z",
+      "updatedAt": "2026-09-03T03:34:51.486Z"
+    },
+    {
+      "id": 159,
+      "name": "ዘማሪ ብሩክ አማኑኤል",
+      "slug": "ዘማሪ-ብሩክ-አማኑኤል",
+      "createdAt": "2024-11-15T06:17:25.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 163,
+      "name": "ዘማሪ ብርሃኑ ተረፈ",
+      "slug": "ዘማሪ-ብርሃኑ-ተረፈ",
+      "createdAt": "2024-11-22T10:03:08.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 253,
+      "name": "ዘማሪ ብርሃን ሞላ",
+      "slug": "ዘማሪ-ብርሃን-ሞላ",
+      "createdAt": "2025-03-12T05:21:07.000Z",
+      "updatedAt": "2025-03-12T05:21:07.000Z"
+    },
+    {
+      "id": 51,
+      "name": "ዘማሪ ብንያም ስመኝህ",
+      "slug": "ዘማሪ-ብንያም-ስመኝህ",
+      "createdAt": "2024-09-24T02:18:12.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 531,
+      "name": "ዘማሪ ብንያም ካሳሁን",
+      "slug": "ዘማሪ-ብንያም-ካሳሁን",
+      "createdAt": "2026-06-19T04:58:21.936Z",
+      "updatedAt": "2026-06-19T04:58:21.936Z"
+    },
+    {
+      "id": 459,
+      "name": "ዘማሪ ተመስገን ዓለሙ",
+      "slug": "ዘማሪ-ተመስገን-ዓለሙ",
+      "createdAt": "2026-02-25T04:25:48.000Z",
+      "updatedAt": "2026-02-25T04:25:48.000Z"
+    },
+    {
+      "id": 410,
+      "name": "ዘማሪ ታደለ አስፋው",
+      "slug": "ዘማሪ-ታደለ-አስፋው",
+      "createdAt": "2025-11-20T04:34:18.000Z",
+      "updatedAt": "2025-11-20T04:34:18.000Z"
+    },
+    {
+      "id": 237,
+      "name": "ዘማሪ ናትናኤል ብሩክ",
+      "slug": "ዘማሪ-ናትናኤል-ብሩክ",
+      "createdAt": "2025-02-22T05:29:09.000Z",
+      "updatedAt": "2025-02-22T05:29:09.000Z"
+    },
+    {
+      "id": 484,
+      "name": "ዘማሪ ናትናኤል አምላክሲል",
+      "slug": "ዘማሪ-ናትናኤል-አምላክሲል",
+      "createdAt": "2026-03-20T05:38:25.000Z",
+      "updatedAt": "2026-03-20T05:38:25.000Z"
+    },
+    {
+      "id": 284,
+      "name": "ዘማሪ ናትናኤል ጌታቸው",
+      "slug": "ዘማሪ-ናትናኤል-ጌታቸው",
+      "createdAt": "2025-03-28T03:54:31.000Z",
+      "updatedAt": "2025-03-28T03:54:31.000Z"
+    },
+    {
+      "id": 97,
+      "name": "ዘማሪ ናትናኤል ግርማ",
+      "slug": "ዘማሪ-ናትናኤል-ግርማ",
+      "createdAt": "2024-10-15T01:46:28.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 388,
+      "name": "ዘማሪ አለማየሁ ኡርጌ",
+      "slug": "ዘማሪ-አለማየሁ-ኡርጌ",
+      "createdAt": "2025-10-23T01:42:44.000Z",
+      "updatedAt": "2025-10-23T01:42:44.000Z"
+    },
+    {
+      "id": 480,
+      "name": "ዘማሪ አለማየሁ ኮቱ",
+      "slug": "ዘማሪ-አለማየሁ-ኮቱ",
+      "createdAt": "2026-03-16T03:21:07.000Z",
+      "updatedAt": "2026-03-16T03:21:07.000Z"
+    },
+    {
+      "id": 385,
+      "name": "ዘማሪ አለማየሁ ፋንታ",
+      "slug": "ዘማሪ-አለማየሁ-ፋንታ",
+      "createdAt": "2025-10-17T02:06:39.000Z",
+      "updatedAt": "2025-10-17T02:06:39.000Z"
+    },
+    {
+      "id": 58,
+      "name": "ዘማሪ አርቲስት ይገረም ደጀኔ",
+      "slug": "ዘማሪ-አርቲስት-ይገረም-ደጀኔ",
+      "createdAt": "2024-09-26T02:50:14.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 219,
+      "name": "ዘማሪ አቤል ፀጋዬ",
+      "slug": "ዘማሪ-አቤል-ፀጋዬ",
+      "createdAt": "2025-02-06T10:56:12.000Z",
+      "updatedAt": "2025-02-06T10:56:12.000Z"
+    },
+    {
+      "id": 89,
+      "name": "ዘማሪ አቤኔዘር ተስፋዬ",
+      "slug": "ዘማሪ-አቤኔዘር-ተስፋዬ",
+      "createdAt": "2024-10-15T01:41:23.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 392,
+      "name": "ዘማሪ አብርሃም ድረስ",
+      "slug": "ዘማሪ-አብርሃም-ድረስ",
+      "createdAt": "2025-11-02T03:29:37.000Z",
+      "updatedAt": "2025-11-02T03:29:37.000Z"
+    },
+    {
+      "id": 65,
+      "name": "ዘማሪ አብዩ አማን",
+      "slug": "ዘማሪ-አብዩ-አማን",
+      "createdAt": "2024-09-28T04:10:39.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 121,
+      "name": "ዘማሪ አዱኛ ፍቃዱ",
+      "slug": "ዘማሪ-አዱኛ-ፍቃዱ",
+      "createdAt": "2024-10-19T04:06:26.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 433,
+      "name": "ዘማሪ አዲሱ ንጉሴ",
+      "slug": "ዘማሪ-አዲሱ-ንጉሴ",
+      "createdAt": "2025-12-28T04:33:06.000Z",
+      "updatedAt": "2025-12-28T04:33:06.000Z"
+    },
+    {
+      "id": 366,
+      "name": "ዘማሪ አዲስ መስፍን",
+      "slug": "ዘማሪ-አዲስ-መስፍን",
+      "createdAt": "2025-09-06T03:25:28.000Z",
+      "updatedAt": "2025-09-06T03:25:28.000Z"
+    },
+    {
+      "id": 232,
+      "name": "ዘማሪ አዲስ ንጉሤ",
+      "slug": "ዘማሪ-አዲስ-ንጉሤ",
+      "createdAt": "2025-02-18T10:15:35.000Z",
+      "updatedAt": "2025-02-18T10:15:35.000Z"
+    },
+    {
+      "id": 315,
+      "name": "ዘማሪ ኢዮብ አስቻለው",
+      "slug": "ዘማሪ-ኢዮብ-አስቻለው",
+      "createdAt": "2025-04-08T01:44:15.000Z",
+      "updatedAt": "2025-04-08T01:44:15.000Z"
+    },
+    {
+      "id": 130,
+      "name": "ዘማሪ ኣቤል ሰመርኣብ",
+      "slug": "ዘማሪ-ኣቤል-ሰመርኣብ",
+      "createdAt": "2024-10-21T03:09:36.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 44,
+      "name": "ዘማሪ ኣቤል ኪዳነ ገዳም",
+      "slug": "ዘማሪ-ኣቤል-ኪዳነ-ገዳም",
+      "createdAt": "2024-09-22T20:54:06.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 545,
+      "name": "ዘማሪ ኤርሚያስ አሰፋ",
+      "slug": "ዘማሪ-ኤርሚያስ-አሰፋ",
+      "createdAt": "2026-07-31T03:15:12.375Z",
+      "updatedAt": "2026-07-31T03:15:12.375Z"
+    },
+    {
+      "id": 482,
+      "name": "ዘማሪ ኤፍሬም አሰፋ",
+      "slug": "ዘማሪ-ኤፍሬም-አሰፋ",
+      "createdAt": "2026-03-19T03:28:50.000Z",
+      "updatedAt": "2026-03-19T03:28:50.000Z"
+    },
+    {
+      "id": 456,
+      "name": "ዘማሪ እንዳልካቸው አማኑኤል",
+      "slug": "ዘማሪ-እንዳልካቸው-አማኑኤል",
+      "createdAt": "2026-02-13T04:24:45.000Z",
+      "updatedAt": "2026-02-13T04:24:45.000Z"
+    },
+    {
+      "id": 379,
+      "name": "ዘማሪ እዮብ ሽፈራው",
+      "slug": "ዘማሪ-እዮብ-ሽፈራው",
+      "createdAt": "2025-10-06T01:24:11.000Z",
+      "updatedAt": "2025-10-06T01:24:11.000Z"
+    },
+    {
+      "id": 312,
+      "name": "ዘማሪ ኪሩቤል ስሜ",
+      "slug": "ዘማሪ-ኪሩቤል-ስሜ",
+      "createdAt": "2025-04-04T01:38:47.000Z",
+      "updatedAt": "2025-04-04T01:38:47.000Z"
+    },
+    {
+      "id": 316,
+      "name": "ዘማሪ ክርስቲያን አስቻለው",
+      "slug": "ዘማሪ-ክርስቲያን-አስቻለው",
+      "createdAt": "2025-04-08T01:45:12.000Z",
+      "updatedAt": "2025-04-08T01:45:12.000Z"
+    },
+    {
+      "id": 300,
+      "name": "ዘማሪ ክብሮም በርሀ",
+      "slug": "ዘማሪ-ክብሮም-በርሀ",
+      "createdAt": "2025-04-02T01:32:33.000Z",
+      "updatedAt": "2025-04-02T01:32:33.000Z"
+    },
+    {
+      "id": 168,
+      "name": "ዘማሪ ወመምህር ዘላለም መንግስቱ",
+      "slug": "ዘማሪ-ወመምህር-ዘላለም-መንግስቱ",
+      "createdAt": "2024-11-22T10:07:30.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 161,
+      "name": "ዘማሪ ዓባይነህ ጌታቸው",
+      "slug": "ዘማሪ-ዓባይነህ-ጌታቸው",
+      "createdAt": "2024-11-21T10:15:15.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 275,
+      "name": "ዘማሪ ዓወት መስፍን",
+      "slug": "ዘማሪ-ዓወት-መስፍን",
+      "createdAt": "2025-03-26T03:48:40.000Z",
+      "updatedAt": "2025-03-26T03:48:40.000Z"
+    },
+    {
+      "id": 205,
+      "name": "ዘማሪ ዘ-ፋኑኤል አለቃ",
+      "slug": "ዘማሪ-ዘ-ፋኑኤል-አለቃ",
+      "createdAt": "2025-01-09T10:17:38.000Z",
+      "updatedAt": "2025-01-09T10:17:38.000Z"
+    },
+    {
+      "id": 514,
+      "name": "ዘማሪ ዘሩባቤል ሀብታሙ",
+      "slug": "ዘማሪ-ዘሩባቤል-ሀብታሙ",
+      "createdAt": "2026-05-15T03:20:36.772Z",
+      "updatedAt": "2026-05-15T03:20:36.772Z"
+    },
+    {
+      "id": 166,
+      "name": "ዘማሪ ዘአማኑኤል ይነሱ",
+      "slug": "ዘማሪ-ዘአማኑኤል-ይነሱ",
+      "createdAt": "2024-11-22T10:06:08.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 4,
+      "name": "ዘማሪ ዘውዱ ጌታቸው",
+      "slug": "ዘማሪ-ዘውዱ-ጌታቸው",
+      "createdAt": "2024-09-10T01:46:27.000Z",
+      "updatedAt": "2024-11-25T07:15:15.000Z"
+    },
+    {
+      "id": 157,
+      "name": "ዘማሪ ዘውዱ ጥበቡ",
+      "slug": "ዘማሪ-ዘውዱ-ጥበቡ",
+      "createdAt": "2024-11-07T05:45:40.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 83,
+      "name": "ዘማሪ የአብቃል ደሳለኝ",
+      "slug": "ዘማሪ-የአብቃል-ደሳለኝ",
+      "createdAt": "2024-10-12T02:07:34.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 430,
+      "name": "ዘማሪ ያሬድ አስራት",
+      "slug": "ዘማሪ-ያሬድ-አስራት",
+      "createdAt": "2025-12-22T05:34:21.000Z",
+      "updatedAt": "2025-12-22T05:34:21.000Z"
+    },
+    {
+      "id": 204,
+      "name": "ዘማሪ ያብስራ ሲሳይ",
+      "slug": "ዘማሪ-ያብስራ-ሲሳይ",
+      "createdAt": "2025-01-09T10:15:24.000Z",
+      "updatedAt": "2025-01-09T10:15:24.000Z"
+    },
+    {
+      "id": 50,
+      "name": "ዘማሪ ያፌት ሰይፉ",
+      "slug": "ዘማሪ-ያፌት-ሰይፉ",
+      "createdAt": "2024-09-24T02:17:46.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 489,
+      "name": "ዘማሪ ይደነቅ ክፍሌ",
+      "slug": "ዘማሪ-ይደነቅ-ክፍሌ",
+      "createdAt": "2026-03-25T03:42:50.000Z",
+      "updatedAt": "2026-03-25T03:42:50.000Z"
+    },
+    {
+      "id": 588,
+      "name": "ዘማሪ ይገርማል ስለሽ",
+      "slug": "ዘማሪ-ይገርማል-ስለሽ-mvhkfyw5",
+      "createdAt": "2026-10-21T03:42:04.902Z",
+      "updatedAt": "2026-10-21T03:42:04.902Z"
+    },
+    {
+      "id": 438,
+      "name": "ዘማሪ ዮሃንስ ሞሃመድ",
+      "slug": "ዘማሪ-ዮሃንስ-ሞሃመድ",
+      "createdAt": "2026-01-06T04:56:58.000Z",
+      "updatedAt": "2026-01-06T04:56:58.000Z"
+    },
+    {
+      "id": 257,
+      "name": "ዘማሪ ዮሃንስ ሰሎሞን",
+      "slug": "ዘማሪ-ዮሃንስ-ሰሎሞን",
+      "createdAt": "2025-03-15T05:04:47.000Z",
+      "updatedAt": "2025-03-15T05:04:47.000Z"
+    },
+    {
+      "id": 559,
+      "name": "ዘማሪ ዮናስ መክብብ",
+      "slug": "ዘማሪ-ዮናስ-መክብብ",
+      "createdAt": "2026-09-08T03:28:07.859Z",
+      "updatedAt": "2026-09-08T03:28:07.859Z"
+    },
+    {
+      "id": 34,
+      "name": "ዘማሪ ዮናስ ታዬ",
+      "slug": "ዘማሪ-ዮናስ-ታዬ",
+      "createdAt": "2024-09-15T00:39:31.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 535,
+      "name": "ዘማሪ ዮናስ ገብረኪዳን",
+      "slug": "ዘማሪ-ዮናስ-ገብረኪዳን",
+      "createdAt": "2026-07-03T03:12:12.440Z",
+      "updatedAt": "2026-07-03T03:12:12.440Z"
+    },
+    {
+      "id": 73,
+      "name": "ዘማሪ ዲያቆን ሀብታሙ እሸቴ",
+      "slug": "ዘማሪ-ዲያቆን-ሀብታሙ-እሸቴ",
+      "createdAt": "2024-10-08T03:38:20.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 17,
+      "name": "ዘማሪ ዲያቆን ሀይሉ መንግስቴ",
+      "slug": "ዘማሪ-ዲያቆን-ሀይሉ-መንግስቴ",
+      "createdAt": "2024-09-14T23:12:39.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 283,
+      "name": "ዘማሪ ዲያቆን ሃይለመስቀል በጋሻው",
+      "slug": "ዘማሪ-ዲያቆን-ሃይለመስቀል-በጋሻው",
+      "createdAt": "2025-03-26T04:00:10.000Z",
+      "updatedAt": "2025-03-26T04:00:10.000Z"
+    },
+    {
+      "id": 208,
+      "name": "ዘማሪ ዲያቆን ሄርሞን ኣርኣያ",
+      "slug": "ዘማሪ-ዲያቆን-ሄርሞን-ኣርኣያ",
+      "createdAt": "2025-01-09T10:20:05.000Z",
+      "updatedAt": "2025-01-09T10:20:05.000Z"
+    },
+    {
+      "id": 98,
+      "name": "ዘማሪ ዲያቆን ሄኖክ መሳይ",
+      "slug": "ዘማሪ-ዲያቆን-ሄኖክ-መሳይ",
+      "createdAt": "2024-10-15T01:47:13.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 149,
+      "name": "ዘማሪ ዲያቆን ሄኖክ ሞገስ",
+      "slug": "ዘማሪ-ዲያቆን-ሄኖክ-ሞገስ",
+      "createdAt": "2024-10-30T04:42:50.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 495,
+      "name": "ዘማሪ ዲያቆን ሄኖክ እሸቱ",
+      "slug": "ዘማሪ-ዲያቆን-ሄኖክ-እሸቱ",
+      "createdAt": "2026-04-03T01:25:17.000Z",
+      "updatedAt": "2026-04-03T01:25:17.000Z"
+    },
+    {
+      "id": 508,
+      "name": "ዘማሪ ዲያቆን ህዝቅያስ ብርሀኑ",
+      "slug": "ዘማሪ-ዲያቆን-ህዝቅያስ-ብርሀኑ",
+      "createdAt": "2026-04-26T01:30:31.000Z",
+      "updatedAt": "2026-04-26T01:30:31.000Z"
+    },
+    {
+      "id": 21,
+      "name": "ዘማሪ ዲያቆን ልዑልሰገድ ጌታቸው",
+      "slug": "ዘማሪ-ዲያቆን-ልዑልሰገድ-ጌታቸው",
+      "createdAt": "2024-09-14T23:19:06.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 186,
+      "name": "ዘማሪ ዲያቆን ሐዋዝ ተገኝ",
+      "slug": "ዘማሪ-ዲያቆን-ሐዋዝ-ተገኝ",
+      "createdAt": "2024-12-10T10:21:24.000Z",
+      "updatedAt": "2024-12-10T10:21:24.000Z"
+    },
+    {
+      "id": 553,
+      "name": "ዘማሪ ዲያቆን ሓበን ገ/መስቀል",
+      "slug": "ዘማሪ-ዲያቆን-ሓበን-ገመስቀል",
+      "createdAt": "2026-08-20T03:24:56.974Z",
+      "updatedAt": "2026-08-20T03:24:56.974Z"
+    },
+    {
+      "id": 264,
+      "name": "ዘማሪ ዲያቆን መለሰ አዲሱ",
+      "slug": "ዘማሪ-ዲያቆን-መለሰ-አዲሱ",
+      "createdAt": "2025-03-23T04:27:33.000Z",
+      "updatedAt": "2025-03-23T04:27:33.000Z"
+    },
+    {
+      "id": 110,
+      "name": "ዘማሪ ዲያቆን ሙሉቀን ከበደ",
+      "slug": "ዘማሪ-ዲያቆን-ሙሉቀን-ከበደ",
+      "createdAt": "2024-10-18T01:07:57.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 190,
+      "name": "ዘማሪ ዲያቆን ማኅደረልዑል ፍሰሃ",
+      "slug": "ዘማሪ-ዲያቆን-ማኅደረልዑል-ፍሰሃ",
+      "createdAt": "2024-12-15T10:32:27.000Z",
+      "updatedAt": "2024-12-15T10:32:27.000Z"
+    },
+    {
+      "id": 524,
+      "name": "ዘማሪ ዲያቆን ማኅደረልዑል ፍስሃ",
+      "slug": "ዘማሪ-ዲያቆን-ማኅደረልዑል-ፍስሃ",
+      "createdAt": "2026-06-02T04:42:15.049Z",
+      "updatedAt": "2026-06-02T04:42:15.049Z"
+    },
+    {
+      "id": 580,
+      "name": "ዘማሪ ዲያቆን ማናየ አሌ",
+      "slug": "ዘማሪ-ዲያቆን-ማናየ-አሌ-mv1uwp4f",
+      "createdAt": "2026-10-10T03:50:42.735Z",
+      "updatedAt": "2026-10-10T03:50:42.735Z"
+    },
+    {
+      "id": 304,
+      "name": "ዘማሪ ዲያቆን ምስግና በየነ",
+      "slug": "ዘማሪ-ዲያቆን-ምስግና-በየነ",
+      "createdAt": "2025-04-02T01:35:57.000Z",
+      "updatedAt": "2025-04-02T01:35:57.000Z"
+    },
+    {
+      "id": 340,
+      "name": "ዘማሪ ዲያቆን ምትክ ሲሳይ",
+      "slug": "ዘማሪ-ዲያቆን-ምትክ-ሲሳይ",
+      "createdAt": "2025-08-08T02:07:58.000Z",
+      "updatedAt": "2025-08-08T02:07:58.000Z"
+    },
+    {
+      "id": 543,
+      "name": "ዘማሪ ዲያቆን ሮቢኤል ሽማይ",
+      "slug": "ዘማሪ-ዲያቆን-ሮቢኤል-ሽማይ",
+      "createdAt": "2026-07-28T03:20:53.418Z",
+      "updatedAt": "2026-07-28T03:20:53.418Z"
+    },
+    {
+      "id": 111,
+      "name": "ዘማሪ ዲያቆን ሮቤል ማትያስ",
+      "slug": "ዘማሪ-ዲያቆን-ሮቤል-ማትያስ",
+      "createdAt": "2024-10-18T01:11:40.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 72,
+      "name": "ዘማሪ ዲያቆን ሰመረ ገ/ጻድቅ",
+      "slug": "ዘማሪ-ዲያቆን-ሰመረ-ገጻድቅ",
+      "createdAt": "2024-10-07T02:20:42.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 298,
+      "name": "ዘማሪ ዲያቆን ሰማኸኝ አዳሙ",
+      "slug": "ዘማሪ-ዲያቆን-ሰማኸኝ-አዳሙ",
+      "createdAt": "2025-03-31T02:02:29.000Z",
+      "updatedAt": "2025-03-31T02:02:29.000Z"
+    },
+    {
+      "id": 99,
+      "name": "ዘማሪ ዲያቆን ሳሙኤል አለሙ",
+      "slug": "ዘማሪ-ዲያቆን-ሳሙኤል-አለሙ",
+      "createdAt": "2024-10-15T01:47:45.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 113,
+      "name": "ዘማሪ ዲያቆን ሳምሶን ነጋሽ",
+      "slug": "ዘማሪ-ዲያቆን-ሳምሶን-ነጋሽ",
+      "createdAt": "2024-10-19T03:52:34.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 155,
+      "name": "ዘማሪ ዲያቆን ሳይዛና ጌታቸው",
+      "slug": "ዘማሪ-ዲያቆን-ሳይዛና-ጌታቸው",
+      "createdAt": "2024-11-07T05:39:41.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 473,
+      "name": "ዘማሪ ዲያቆን ስቡሕ ፈለገ",
+      "slug": "ዘማሪ-ዲያቆን-ስቡሕ-ፈለገ",
+      "createdAt": "2026-03-08T10:18:03.000Z",
+      "updatedAt": "2026-03-08T10:18:03.000Z"
+    },
+    {
+      "id": 16,
+      "name": "ዘማሪ ዲያቆን ቀዳሜጸጋ ዮሐንስ",
+      "slug": "ዘማሪ-ዲያቆን-ቀዳሜጸጋ-ዮሐንስ",
+      "createdAt": "2024-09-11T03:13:14.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 477,
+      "name": "ዘማሪ ዲያቆን ቅዱስ አብርሃም",
+      "slug": "ዘማሪ-ዲያቆን-ቅዱስ-አብርሃም",
+      "createdAt": "2026-03-12T03:31:10.000Z",
+      "updatedAt": "2026-03-12T03:31:10.000Z"
+    },
+    {
+      "id": 216,
+      "name": "ዘማሪ ዲያቆን ቅዱስ ዮሴፍ",
+      "slug": "ዘማሪ-ዲያቆን-ቅዱስ-ዮሴፍ",
+      "createdAt": "2025-02-06T10:49:19.000Z",
+      "updatedAt": "2025-02-06T10:49:19.000Z"
+    },
+    {
+      "id": 86,
+      "name": "ዘማሪ ዲያቆን ቅዱስ ዳዊት",
+      "slug": "ዘማሪ-ዲያቆን-ቅዱስ-ዳዊት",
+      "createdAt": "2024-10-12T02:10:11.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 107,
+      "name": "ዘማሪ ዲያቆን በሀይሉ ተበጀ",
+      "slug": "ዘማሪ-ዲያቆን-በሀይሉ-ተበጀ",
+      "createdAt": "2024-10-15T02:06:03.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 178,
+      "name": "ዘማሪ ዲያቆን በላይ ዘሆሳዕና",
+      "slug": "ዘማሪ-ዲያቆን-በላይ-ዘሆሳዕና",
+      "createdAt": "2024-12-03T10:22:15.000Z",
+      "updatedAt": "2024-12-03T10:22:15.000Z"
+    },
+    {
+      "id": 324,
+      "name": "ዘማሪ ዲያቆን በእምነት",
+      "slug": "ዘማሪ-ዲያቆን-በእምነት",
+      "createdAt": "2025-05-03T01:20:51.000Z",
+      "updatedAt": "2025-05-03T01:20:51.000Z"
+    },
+    {
+      "id": 281,
+      "name": "ዘማሪ ዲያቆን በፍቃዱ ንጉሴ",
+      "slug": "ዘማሪ-ዲያቆን-በፍቃዱ-ንጉሴ",
+      "createdAt": "2025-03-26T03:58:57.000Z",
+      "updatedAt": "2025-03-26T03:58:57.000Z"
+    },
+    {
+      "id": 497,
+      "name": "ዘማሪ ዲያቆን ቢኒያም መኮንን",
+      "slug": "ዘማሪ-ዲያቆን-ቢኒያም-መኮንን",
+      "createdAt": "2026-04-03T01:26:51.000Z",
+      "updatedAt": "2026-04-03T01:26:51.000Z"
+    },
+    {
+      "id": 41,
+      "name": "ዘማሪ ዲያቆን ቢንያም ኪሮስ",
+      "slug": "ዘማሪ-ዲያቆን-ቢንያም-ኪሮስ",
+      "createdAt": "2024-09-22T20:51:07.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 211,
+      "name": "ዘማሪ ዲያቆን ቤኛ ግርማ",
+      "slug": "ዘማሪ-ዲያቆን-ቤኛ-ግርማ",
+      "createdAt": "2025-01-11T10:04:30.000Z",
+      "updatedAt": "2025-01-11T10:04:30.000Z"
+    },
+    {
+      "id": 296,
+      "name": "ዘማሪ ዲያቆን ብሩክ",
+      "slug": "ዘማሪ-ዲያቆን-ብሩክ",
+      "createdAt": "2025-03-30T01:41:25.000Z",
+      "updatedAt": "2025-03-30T01:41:25.000Z"
+    },
+    {
+      "id": 346,
+      "name": "ዘማሪ ዲያቆን ብሩክ ጅፋር",
+      "slug": "ዘማሪ-ዲያቆን-ብሩክ-ጅፋር",
+      "createdAt": "2025-08-23T01:19:57.000Z",
+      "updatedAt": "2025-08-23T01:19:57.000Z"
+    },
+    {
+      "id": 124,
+      "name": "ዘማሪ ዲያቆን ብርሃነ ኃይለሥላሴ",
+      "slug": "ዘማሪ-ዲያቆን-ብርሃነ-ኃይለሥላሴ",
+      "createdAt": "2024-10-19T04:56:03.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 347,
+      "name": "ዘማሪ ዲያቆን ብስራት ተሾመ",
+      "slug": "ዘማሪ-ዲያቆን-ብስራት-ተሾመ",
+      "createdAt": "2025-08-24T01:10:25.000Z",
+      "updatedAt": "2025-08-24T01:10:25.000Z"
+    },
+    {
+      "id": 78,
+      "name": "ዘማሪ ዲያቆን ብስራት ጨብሲ",
+      "slug": "ዘማሪ-ዲያቆን-ብስራት-ጨብሲ",
+      "createdAt": "2024-10-09T02:26:58.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 222,
+      "name": "ዘማሪ ዲያቆን ብንያም ስዩም",
+      "slug": "ዘማሪ-ዲያቆን-ብንያም-ስዩም",
+      "createdAt": "2025-02-06T11:01:42.000Z",
+      "updatedAt": "2025-02-06T11:01:42.000Z"
+    },
+    {
+      "id": 554,
+      "name": "ዘማሪ ዲያቆን ተመስገን ወልደትንሳኤ",
+      "slug": "ዘማሪ-ዲያቆን-ተመስገን-ወልደትንሳኤ",
+      "createdAt": "2026-08-24T04:44:41.793Z",
+      "updatedAt": "2026-08-24T04:44:41.793Z"
+    },
+    {
+      "id": 45,
+      "name": "ዘማሪ ዲያቆን ተስፋማርያም ዑቅባገብርኤል",
+      "slug": "ዘማሪ-ዲያቆን-ተስፋማርያም-ዑቅባገብርኤል",
+      "createdAt": "2024-09-22T20:55:09.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 303,
+      "name": "ዘማሪ ዲያቆን ታምሩ አበራ",
+      "slug": "ዘማሪ-ዲያቆን-ታምሩ-አበራ",
+      "createdAt": "2025-04-02T01:34:52.000Z",
+      "updatedAt": "2025-04-02T01:34:52.000Z"
+    },
+    {
+      "id": 352,
+      "name": "ዘማሪ ዲያቆን ታምራት ታዬ",
+      "slug": "ዘማሪ-ዲያቆን-ታምራት-ታዬ",
+      "createdAt": "2025-08-26T02:14:08.000Z",
+      "updatedAt": "2025-08-26T02:14:08.000Z"
+    },
+    {
+      "id": 510,
+      "name": "ዘማሪ ዲያቆን ታምራት ኃይሉ",
+      "slug": "ዘማሪ-ዲያቆን-ታምራት-ኃይሉ",
+      "createdAt": "2026-05-10T03:35:38.331Z",
+      "updatedAt": "2026-05-10T03:35:38.331Z"
+    },
+    {
+      "id": 432,
+      "name": "ዘማሪ ዲያቆን ታምራት ጥጋቡ",
+      "slug": "ዘማሪ-ዲያቆን-ታምራት-ጥጋቡ",
+      "createdAt": "2025-12-28T04:31:30.000Z",
+      "updatedAt": "2025-12-28T04:31:30.000Z"
+    },
+    {
+      "id": 30,
+      "name": "ዘማሪ ዲያቆን ታዬ ብርሃኑ",
+      "slug": "ዘማሪ-ዲያቆን-ታዬ-ብርሃኑ",
+      "createdAt": "2024-09-15T00:34:58.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 179,
+      "name": "ዘማሪ ዲያቆን ታደለ ደግፍ",
+      "slug": "ዘማሪ-ዲያቆን-ታደለ-ደግፍ",
+      "createdAt": "2024-12-03T10:23:32.000Z",
+      "updatedAt": "2024-12-03T10:23:32.000Z"
+    },
+    {
+      "id": 112,
+      "name": "ዘማሪ ዲያቆን ታዲዮስ አውግቸው",
+      "slug": "ዘማሪ-ዲያቆን-ታዲዮስ-አውግቸው",
+      "createdAt": "2024-10-19T03:51:54.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 417,
+      "name": "ዘማሪ ዲያቆን ታድዮስ ግርማ",
+      "slug": "ዘማሪ-ዲያቆን-ታድዮስ-ግርማ",
+      "createdAt": "2025-11-27T04:16:11.000Z",
+      "updatedAt": "2025-11-27T04:16:11.000Z"
+    },
+    {
+      "id": 427,
+      "name": "ዘማሪ ዲያቆን ቴድሮስ መኮነን",
+      "slug": "ዘማሪ-ዲያቆን-ቴድሮስ-መኮነን",
+      "createdAt": "2025-12-16T04:44:51.000Z",
+      "updatedAt": "2025-12-16T04:44:51.000Z"
+    },
+    {
+      "id": 269,
+      "name": "ዘማሪ ዲያቆን ኃይሉ አበበ",
+      "slug": "ዘማሪ-ዲያቆን-ኃይሉ-አበበ",
+      "createdAt": "2025-03-23T04:38:32.000Z",
+      "updatedAt": "2025-03-23T04:38:32.000Z"
+    },
+    {
+      "id": 18,
+      "name": "ዘማሪ ዲያቆን ነቢዩ ግርማ",
+      "slug": "ዘማሪ-ዲያቆን-ነቢዩ-ግርማ",
+      "createdAt": "2024-09-14T23:14:37.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 109,
+      "name": "ዘማሪ ዲያቆን ነብዩ ሳሙኤል",
+      "slug": "ዘማሪ-ዲያቆን-ነብዩ-ሳሙኤል",
+      "createdAt": "2024-10-15T02:07:33.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 43,
+      "name": "ዘማሪ ዲያቆን ናሆም ሚኪኤል",
+      "slug": "ዘማሪ-ዲያቆን-ናሆም-ሚኪኤል",
+      "createdAt": "2024-09-22T20:53:37.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 206,
+      "name": "ዘማሪ ዲያቆን ናትናኤል ሣሙኤል",
+      "slug": "ዘማሪ-ዲያቆን-ናትናኤል-ሣሙኤል",
+      "createdAt": "2025-01-09T10:18:04.000Z",
+      "updatedAt": "2025-01-09T10:18:04.000Z"
+    },
+    {
+      "id": 265,
+      "name": "ዘማሪ ዲያቆን ናትናኤል ስንታየሁ",
+      "slug": "ዘማሪ-ዲያቆን-ናትናኤል-ስንታየሁ",
+      "createdAt": "2025-03-23T04:31:29.000Z",
+      "updatedAt": "2025-03-23T04:31:29.000Z"
+    },
+    {
+      "id": 549,
+      "name": "ዘማሪ ዲያቆን ናትናኤል አበበ",
+      "slug": "ዘማሪ-ዲያቆን-ናትናኤል-አበበ",
+      "createdAt": "2026-08-10T03:13:50.783Z",
+      "updatedAt": "2026-08-10T03:13:50.783Z"
+    },
+    {
+      "id": 233,
+      "name": "ዘማሪ ዲያቆን አልዓዛር ጌታቸው",
+      "slug": "ዘማሪ-ዲያቆን-አልዓዛር-ጌታቸው",
+      "createdAt": "2025-02-18T10:17:40.000Z",
+      "updatedAt": "2025-02-18T10:17:40.000Z"
+    },
+    {
+      "id": 248,
+      "name": "ዘማሪ ዲያቆን አማኑኤል እስጢፋኖስ",
+      "slug": "ዘማሪ-ዲያቆን-አማኑኤል-እስጢፋኖስ",
+      "createdAt": "2025-03-08T04:09:19.000Z",
+      "updatedAt": "2025-03-08T04:09:19.000Z"
+    },
+    {
+      "id": 147,
+      "name": "ዘማሪ ዲያቆን አማን ኡርጌሳ",
+      "slug": "ዘማሪ-ዲያቆን-አማን-ኡርጌሳ",
+      "createdAt": "2024-10-30T04:41:43.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 569,
+      "name": "ዘማሪ ዲያቆን አስማማው",
+      "slug": "ዘማሪ-ዲያቆን-አስማማው",
+      "createdAt": "2026-09-17T03:24:16.321Z",
+      "updatedAt": "2026-09-17T03:24:16.321Z"
+    },
+    {
+      "id": 15,
+      "name": "ዘማሪ ዲያቆን አቤል መክብብ",
+      "slug": "ዘማሪ-ዲያቆን-አቤል-መክብብ",
+      "createdAt": "2024-09-11T03:04:28.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 243,
+      "name": "ዘማሪ ዲያቆን አቤል ተስፋዬ",
+      "slug": "ዘማሪ-ዲያቆን-አቤል-ተስፋዬ",
+      "createdAt": "2025-03-05T05:17:02.000Z",
+      "updatedAt": "2025-03-05T05:17:02.000Z"
+    },
+    {
+      "id": 579,
+      "name": "ዘማሪ ዲያቆን አቤል አየለ",
+      "slug": "ዘማሪ-ዲያቆን-አቤል-አየለ-muw50gc3",
+      "createdAt": "2026-10-06T03:46:57.076Z",
+      "updatedAt": "2026-10-06T03:46:57.076Z"
+    },
+    {
+      "id": 374,
+      "name": "ዘማሪ ዲያቆን አቤኔዘር ብርሃኑ",
+      "slug": "ዘማሪ-ዲያቆን-አቤኔዘር-ብርሃኑ",
+      "createdAt": "2025-09-25T01:23:51.000Z",
+      "updatedAt": "2025-09-25T01:23:51.000Z"
+    },
+    {
+      "id": 95,
+      "name": "ዘማሪ ዲያቆን አብርሀም ዮቶር",
+      "slug": "ዘማሪ-ዲያቆን-አብርሀም-ዮቶር",
+      "createdAt": "2024-10-15T01:44:40.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 235,
+      "name": "ዘማሪ ዲያቆን አብርሃም ገረመው",
+      "slug": "ዘማሪ-ዲያቆን-አብርሃም-ገረመው",
+      "createdAt": "2025-02-22T05:27:20.000Z",
+      "updatedAt": "2025-02-22T05:27:20.000Z"
+    },
+    {
+      "id": 280,
+      "name": "ዘማሪ ዲያቆን አኪያ ምናሴ",
+      "slug": "ዘማሪ-ዲያቆን-አኪያ-ምናሴ",
+      "createdAt": "2025-03-26T03:58:35.000Z",
+      "updatedAt": "2025-03-26T03:58:35.000Z"
+    },
+    {
+      "id": 236,
+      "name": "ዘማሪ ዲያቆን ኢዮብ ካሳ",
+      "slug": "ዘማሪ-ዲያቆን-ኢዮብ-ካሳ",
+      "createdAt": "2025-02-22T05:28:09.000Z",
+      "updatedAt": "2025-02-22T05:28:09.000Z"
+    },
+    {
+      "id": 447,
+      "name": "ዘማሪ ዲያቆን ኣቤል ካህሳይ",
+      "slug": "ዘማሪ-ዲያቆን-ኣቤል-ካህሳይ",
+      "createdAt": "2026-01-29T04:22:27.000Z",
+      "updatedAt": "2026-01-29T04:22:27.000Z"
+    },
+    {
+      "id": 127,
+      "name": "ዘማሪ ዲያቆን ኣቤል ይባቤ",
+      "slug": "ዘማሪ-ዲያቆን-ኣቤል-ይባቤ",
+      "createdAt": "2024-10-21T03:07:01.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 212,
+      "name": "ዘማሪ ዲያቆን ኣብርሃም መሃሪ",
+      "slug": "ዘማሪ-ዲያቆን-ኣብርሃም-መሃሪ",
+      "createdAt": "2025-01-11T10:07:26.000Z",
+      "updatedAt": "2025-01-11T10:07:26.000Z"
+    },
+    {
+      "id": 150,
+      "name": "ዘማሪ ዲያቆን ኤርሚያስ ግርማ",
+      "slug": "ዘማሪ-ዲያቆን-ኤርሚያስ-ግርማ",
+      "createdAt": "2024-10-31T03:50:45.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 308,
+      "name": "ዘማሪ ዲያቆን ኤፍሬም ደመቀ",
+      "slug": "ዘማሪ-ዲያቆን-ኤፍሬም-ደመቀ",
+      "createdAt": "2025-04-04T01:23:35.000Z",
+      "updatedAt": "2025-04-04T01:23:35.000Z"
+    },
+    {
+      "id": 294,
+      "name": "ዘማሪ ዲያቆን እሱባለዉ አለሙ",
+      "slug": "ዘማሪ-ዲያቆን-እሱባለዉ-አለሙ",
+      "createdAt": "2025-03-30T01:38:07.000Z",
+      "updatedAt": "2025-03-30T01:38:07.000Z"
+    },
+    {
+      "id": 241,
+      "name": "ዘማሪ ዲያቆን እስጢፋኖስ ቢሰጠኝ",
+      "slug": "ዘማሪ-ዲያቆን-እስጢፋኖስ-ቢሰጠኝ",
+      "createdAt": "2025-02-27T05:40:22.000Z",
+      "updatedAt": "2025-02-27T05:40:22.000Z"
+    },
+    {
+      "id": 139,
+      "name": "ዘማሪ ዲያቆን እንዳለ ደረጀ",
+      "slug": "ዘማሪ-ዲያቆን-እንዳለ-ደረጀ",
+      "createdAt": "2024-10-26T02:38:07.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 218,
+      "name": "ዘማሪ ዲያቆን እንዳለው አለሙ",
+      "slug": "ዘማሪ-ዲያቆን-እንዳለው-አለሙ",
+      "createdAt": "2025-02-06T10:53:08.000Z",
+      "updatedAt": "2025-02-06T10:53:08.000Z"
+    },
+    {
+      "id": 116,
+      "name": "ዘማሪ ዲያቆን እንዳልካቸው ዳኘው",
+      "slug": "ዘማሪ-ዲያቆን-እንዳልካቸው-ዳኘው",
+      "createdAt": "2024-10-19T03:57:39.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 268,
+      "name": "ዘማሪ ዲያቆን እንግዱ ወንድሙ",
+      "slug": "ዘማሪ-ዲያቆን-እንግዱ-ወንድሙ",
+      "createdAt": "2025-03-23T04:37:39.000Z",
+      "updatedAt": "2025-03-23T04:37:39.000Z"
+    },
+    {
+      "id": 48,
+      "name": "ዘማሪ ዲያቆን እዝራ ኃ/ሚካኤል",
+      "slug": "ዘማሪ-ዲያቆን-እዝራ-ኃሚካኤል",
+      "createdAt": "2024-09-24T02:15:20.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 293,
+      "name": "ዘማሪ ዲያቆን ኪሮስ ይኄይስ",
+      "slug": "ዘማሪ-ዲያቆን-ኪሮስ-ይኄይስ",
+      "createdAt": "2025-03-30T01:37:12.000Z",
+      "updatedAt": "2025-03-30T01:37:12.000Z"
+    },
+    {
+      "id": 400,
+      "name": "ዘማሪ ዲያቆን ኪያ አበበ",
+      "slug": "ዘማሪ-ዲያቆን-ኪያ-አበበ",
+      "createdAt": "2025-11-07T04:42:54.000Z",
+      "updatedAt": "2025-11-07T04:42:54.000Z"
+    },
+    {
+      "id": 307,
+      "name": "ዘማሪ ዲያቆን ካሳሁን ወልዴ",
+      "slug": "ዘማሪ-ዲያቆን-ካሳሁን-ወልዴ",
+      "createdAt": "2025-04-03T01:10:52.000Z",
+      "updatedAt": "2025-04-03T01:10:52.000Z"
+    },
+    {
+      "id": 564,
+      "name": "ዘማሪ ዲያቆን ክብሮም ሃየሎም",
+      "slug": "ዘማሪ-ዲያቆን-ክብሮም-ሃየሎም",
+      "createdAt": "2026-09-14T03:32:21.011Z",
+      "updatedAt": "2026-09-14T03:32:21.011Z"
+    },
+    {
+      "id": 373,
+      "name": "ዘማሪ ዲያቆን ክብሮም መሓሪ",
+      "slug": "ዘማሪ-ዲያቆን-ክብሮም-መሓሪ",
+      "createdAt": "2025-09-23T01:20:45.000Z",
+      "updatedAt": "2025-09-23T01:20:45.000Z"
+    },
+    {
+      "id": 259,
+      "name": "ዘማሪ ዲያቆን ክፍሎም መለስ",
+      "slug": "ዘማሪ-ዲያቆን-ክፍሎም-መለስ",
+      "createdAt": "2025-03-15T05:06:32.000Z",
+      "updatedAt": "2025-03-15T05:06:32.000Z"
+    },
+    {
+      "id": 42,
+      "name": "ዘማሪ ዲያቆን ኮኾብ ገብረሂወት",
+      "slug": "ዘማሪ-ዲያቆን-ኮኾብ-ገብረሂወት",
+      "createdAt": "2024-09-22T20:52:47.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 504,
+      "name": "ዘማሪ ዲያቆን ወንደሰን መካሻ",
+      "slug": "ዘማሪ-ዲያቆን-ወንደሰን-መካሻ",
+      "createdAt": "2026-04-18T01:30:51.000Z",
+      "updatedAt": "2026-04-18T01:30:51.000Z"
+    },
+    {
+      "id": 32,
+      "name": "ዘማሪ ዲያቆን ዘለዓለም ታከለ",
+      "slug": "ዘማሪ-ዲያቆን-ዘለዓለም-ታከለ",
+      "createdAt": "2024-09-15T00:38:19.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 160,
+      "name": "ዘማሪ ዲያቆን ዘላለም ታከለ",
+      "slug": "ዘማሪ-ዲያቆን-ዘላለም-ታከለ",
+      "createdAt": "2024-11-21T10:13:53.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 256,
+      "name": "ዘማሪ ዲያቆን ዘላለም ይንገስ",
+      "slug": "ዘማሪ-ዲያቆን-ዘላለም-ይንገስ",
+      "createdAt": "2025-03-15T05:03:55.000Z",
+      "updatedAt": "2025-03-15T05:03:55.000Z"
+    },
+    {
+      "id": 255,
+      "name": "ዘማሪ ዲያቆን ዘርዓዳዊት እንዳልካቸው",
+      "slug": "ዘማሪ-ዲያቆን-ዘርዓዳዊት-እንዳልካቸው",
+      "createdAt": "2025-03-12T05:22:29.000Z",
+      "updatedAt": "2025-03-12T05:22:29.000Z"
+    },
+    {
+      "id": 582,
+      "name": "ዘማሪ ዲያቆን ዘካርያስ ዋሴ",
+      "slug": "ዘማሪ-ዲያቆን-ዘካርያስ-ዋሴ-mv4ozuw8",
+      "createdAt": "2026-10-12T03:28:31.017Z",
+      "updatedAt": "2026-10-12T03:28:31.017Z"
+    },
+    {
+      "id": 247,
+      "name": "ዘማሪ ዲያቆን የአብጸጋ በለጠ",
+      "slug": "ዘማሪ-ዲያቆን-የአብጸጋ-በለጠ",
+      "createdAt": "2025-03-08T04:08:52.000Z",
+      "updatedAt": "2025-03-08T04:08:52.000Z"
+    },
+    {
+      "id": 285,
+      "name": "ዘማሪ ዲያቆን ያሬድ ንጉሤ",
+      "slug": "ዘማሪ-ዲያቆን-ያሬድ-ንጉሤ",
+      "createdAt": "2025-03-28T03:56:44.000Z",
+      "updatedAt": "2025-03-28T03:56:44.000Z"
+    },
+    {
+      "id": 339,
+      "name": "ዘማሪ ዲያቆን ያሬድ ፀጋዬ",
+      "slug": "ዘማሪ-ዲያቆን-ያሬድ-ፀጋዬ",
+      "createdAt": "2025-08-07T01:39:41.000Z",
+      "updatedAt": "2025-08-07T01:39:41.000Z"
+    },
+    {
+      "id": 516,
+      "name": "ዘማሪ ዲያቆን ይሁንሰላም አስራት",
+      "slug": "ዘማሪ-ዲያቆን-ይሁንሰላም-አስራት",
+      "createdAt": "2026-05-22T03:10:30.330Z",
+      "updatedAt": "2026-05-22T03:10:30.330Z"
+    },
+    {
+      "id": 550,
+      "name": "ዘማሪ ዲያቆን ይስሓቅ ነጋሲ",
+      "slug": "ዘማሪ-ዲያቆን-ይስሓቅ-ነጋሲ",
+      "createdAt": "2026-08-19T03:19:32.488Z",
+      "updatedAt": "2026-08-19T03:19:32.488Z"
+    },
+    {
+      "id": 138,
+      "name": "ዘማሪ ዲያቆን ይትባረክ ተገኝ",
+      "slug": "ዘማሪ-ዲያቆን-ይትባረክ-ተገኝ",
+      "createdAt": "2024-10-25T02:46:47.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 262,
+      "name": "ዘማሪ ዲያቆን ይከኣሎ ይብራህ",
+      "slug": "ዘማሪ-ዲያቆን-ይከኣሎ-ይብራህ",
+      "createdAt": "2025-03-15T05:09:13.000Z",
+      "updatedAt": "2025-03-15T05:09:13.000Z"
+    },
+    {
+      "id": 221,
+      "name": "ዘማሪ ዲያቆን ዮሐንስ መሀመድ",
+      "slug": "ዘማሪ-ዲያቆን-ዮሐንስ-መሀመድ",
+      "createdAt": "2025-02-06T10:59:44.000Z",
+      "updatedAt": "2025-02-06T10:59:44.000Z"
+    },
+    {
+      "id": 189,
+      "name": "ዘማሪ ዲያቆን ዮሐንስ አድማሱ",
+      "slug": "ዘማሪ-ዲያቆን-ዮሐንስ-አድማሱ",
+      "createdAt": "2024-12-15T10:31:39.000Z",
+      "updatedAt": "2024-12-15T10:31:39.000Z"
+    },
+    {
+      "id": 525,
+      "name": "ዘማሪ ዲያቆን ዮሴፍ ማዓሾ",
+      "slug": "ዘማሪ-ዲያቆን-ዮሴፍ-ማዓሾ",
+      "createdAt": "2026-06-02T04:43:42.350Z",
+      "updatedAt": "2026-06-02T04:43:42.350Z"
+    },
+    {
+      "id": 75,
+      "name": "ዘማሪ ዲያቆን ዮሴፍ ግርማ",
+      "slug": "ዘማሪ-ዲያቆን-ዮሴፍ-ግርማ",
+      "createdAt": "2024-10-09T02:25:36.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 526,
+      "name": "ዘማሪ ዲያቆን ዮናስ መንቾ",
+      "slug": "ዘማሪ-ዲያቆን-ዮናስ-መንቾ",
+      "createdAt": "2026-06-04T04:00:35.027Z",
+      "updatedAt": "2026-06-04T04:00:35.027Z"
+    },
+    {
+      "id": 240,
+      "name": "ዘማሪ ዲያቆን ደረጄ ከበደ",
+      "slug": "ዘማሪ-ዲያቆን-ደረጄ-ከበደ",
+      "createdAt": "2025-02-27T05:39:41.000Z",
+      "updatedAt": "2025-02-27T05:39:41.000Z"
+    },
+    {
+      "id": 428,
+      "name": "ዘማሪ ዲያቆን ደጀን ጉዕሽ",
+      "slug": "ዘማሪ-ዲያቆን-ደጀን-ጉዕሽ",
+      "createdAt": "2025-12-16T04:46:53.000Z",
+      "updatedAt": "2025-12-16T04:46:53.000Z"
+    },
+    {
+      "id": 177,
+      "name": "ዘማሪ ዲያቆን ዳዊት በቀለ",
+      "slug": "ዘማሪ-ዲያቆን-ዳዊት-በቀለ",
+      "createdAt": "2024-12-03T10:20:06.000Z",
+      "updatedAt": "2024-12-03T10:20:06.000Z"
+    },
+    {
+      "id": 82,
+      "name": "ዘማሪ ዲያቆን ዳዊት ጥላሁን",
+      "slug": "ዘማሪ-ዲያቆን-ዳዊት-ጥላሁን",
+      "createdAt": "2024-10-12T02:06:45.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 84,
+      "name": "ዘማሪ ዲያቆን ፅጌ አስተርዐየ",
+      "slug": "ዘማሪ-ዲያቆን-ፅጌ-አስተርዐየ",
+      "createdAt": "2024-10-12T02:08:41.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 170,
+      "name": "ዘማሪ ዲያቆን ፈቃደ ቤተማርያም",
+      "slug": "ዘማሪ-ዲያቆን-ፈቃደ-ቤተማርያም",
+      "createdAt": "2024-11-23T10:31:11.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 270,
+      "name": "ዘማሪ ዲያቆን ፊልሞና ገብሩ",
+      "slug": "ዘማሪ-ዲያቆን-ፊልሞና-ገብሩ",
+      "createdAt": "2025-03-23T04:39:16.000Z",
+      "updatedAt": "2025-03-23T04:39:16.000Z"
+    },
+    {
+      "id": 129,
+      "name": "ዘማሪ ዲያቆን ፊልሞን የዕብዮ",
+      "slug": "ዘማሪ-ዲያቆን-ፊልሞን-የዕብዮ",
+      "createdAt": "2024-10-21T03:08:48.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 509,
+      "name": "ዘማሪ ዲያቆን ፋሲል ተማሩ",
+      "slug": "ዘማሪ-ዲያቆን-ፋሲል-ተማሩ",
+      "createdAt": "2026-05-10T03:35:14.669Z",
+      "updatedAt": "2026-05-10T03:35:14.669Z"
+    },
+    {
+      "id": 587,
+      "name": "ዘማሪ ዲያቆን ፋሲል አለማየሁ",
+      "slug": "ዘማሪ-ዲያቆን-ፋሲል-አለማየሁ-mvep1hmr",
+      "createdAt": "2026-10-19T03:27:28.900Z",
+      "updatedAt": "2026-10-19T03:27:28.900Z"
+    },
+    {
+      "id": 342,
+      "name": "ዘማሪ ዲያቆን ፍራኦል ጨብሲ",
+      "slug": "ዘማሪ-ዲያቆን-ፍራኦል-ጨብሲ",
+      "createdAt": "2025-08-21T01:43:56.000Z",
+      "updatedAt": "2025-08-21T01:43:56.000Z"
+    },
+    {
+      "id": 9,
+      "name": "ዘማሪ ዲያቆን ፍሬዘር ደሳለኝ",
+      "slug": "ዘማሪ-ዲያቆን-ፍሬዘር-ደሳለኝ",
+      "createdAt": "2024-09-10T02:08:12.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 414,
+      "name": "ዘማሪ ዲያቆን ፍጹም ለገሠ",
+      "slug": "ዘማሪ-ዲያቆን-ፍጹም-ለገሠ",
+      "createdAt": "2025-11-22T05:58:06.000Z",
+      "updatedAt": "2025-11-22T05:58:06.000Z"
+    },
+    {
+      "id": 272,
+      "name": "ዘማሪ ዳንኤል ጥበበሥላሴ",
+      "slug": "ዘማሪ-ዳንኤል-ጥበበሥላሴ",
+      "createdAt": "2025-03-24T03:29:32.000Z",
+      "updatedAt": "2025-03-24T03:29:32.000Z"
+    },
+    {
+      "id": 412,
+      "name": "ዘማሪ ዳዊት ኃይሌ",
+      "slug": "ዘማሪ-ዳዊት-ኃይሌ",
+      "createdAt": "2025-11-22T05:56:40.000Z",
+      "updatedAt": "2025-11-22T05:56:40.000Z"
+    },
+    {
+      "id": 398,
+      "name": "ዘማሪ ዳዊት አስፋሃለ",
+      "slug": "ዘማሪ-ዳዊት-አስፋሃለ",
+      "createdAt": "2025-11-05T04:25:21.000Z",
+      "updatedAt": "2025-11-05T04:25:21.000Z"
+    },
+    {
+      "id": 390,
+      "name": "ዘማሪ ዳግማዊ አበባየሁ",
+      "slug": "ዘማሪ-ዳግማዊ-አበባየሁ",
+      "createdAt": "2025-10-26T03:19:09.000Z",
+      "updatedAt": "2025-10-26T03:19:09.000Z"
+    },
+    {
+      "id": 578,
+      "name": "ዘማሪ ዳግም አደፍርስ",
+      "slug": "ዘማሪ-ዳግም-አደፍርስ-muw4yl3l",
+      "createdAt": "2026-10-06T03:45:29.938Z",
+      "updatedAt": "2026-10-06T03:45:29.938Z"
+    },
+    {
+      "id": 104,
+      "name": "ዘማሪ ገብረአምላክ ደሳለኝ",
+      "slug": "ዘማሪ-ገብረአምላክ-ደሳለኝ",
+      "createdAt": "2024-10-15T02:01:13.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 103,
+      "name": "ዘማሪ ገብረዮሐንስ ገብረፃድቅ",
+      "slug": "ዘማሪ-ገብረዮሐንስ-ገብረፃድቅ",
+      "createdAt": "2024-10-15T01:54:05.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 231,
+      "name": "ዘማሪ ጋሻው ኑርልኝ",
+      "slug": "ዘማሪ-ጋሻው-ኑርልኝ",
+      "createdAt": "2025-02-18T10:15:08.000Z",
+      "updatedAt": "2025-02-18T10:15:08.000Z"
+    },
+    {
+      "id": 87,
+      "name": "ዘማሪ ጌድዮን ጫላ",
+      "slug": "ዘማሪ-ጌድዮን-ጫላ",
+      "createdAt": "2024-10-12T02:10:50.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 209,
+      "name": "ዘማሪ ጎሳዬ ገላና",
+      "slug": "ዘማሪ-ጎሳዬ-ገላና",
+      "createdAt": "2025-01-10T11:06:06.000Z",
+      "updatedAt": "2025-01-10T11:06:06.000Z"
+    },
+    {
+      "id": 470,
+      "name": "ዘማሪ ፀደቀ አረጋ",
+      "slug": "ዘማሪ-ፀደቀ-አረጋ",
+      "createdAt": "2026-03-07T04:18:15.000Z",
+      "updatedAt": "2026-03-07T04:18:15.000Z"
+    },
+    {
+      "id": 197,
+      "name": "ዘማሪ ፀጋሥላሴ",
+      "slug": "ዘማሪ-ፀጋሥላሴ",
+      "createdAt": "2025-01-02T10:32:34.000Z",
+      "updatedAt": "2025-01-02T10:32:34.000Z"
+    },
+    {
+      "id": 169,
+      "name": "ዘማሪ ፍሬዘር ተዘራ",
+      "slug": "ዘማሪ-ፍሬዘር-ተዘራ",
+      "createdAt": "2024-11-23T10:24:15.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 282,
+      "name": "ዘማሪ ፍስሃ ዘለቀ",
+      "slug": "ዘማሪ-ፍስሃ-ዘለቀ",
+      "createdAt": "2025-03-26T03:59:37.000Z",
+      "updatedAt": "2025-03-26T03:59:37.000Z"
+    },
+    {
+      "id": 106,
+      "name": "ዘማሪ ፍቃዱ አማረ",
+      "slug": "ዘማሪ-ፍቃዱ-አማረ",
+      "createdAt": "2024-10-15T02:03:11.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 329,
+      "name": "ዘማሪት ሀና አለሙ",
+      "slug": "ዘማሪት-ሀና-አለሙ",
+      "createdAt": "2025-07-08T01:55:51.000Z",
+      "updatedAt": "2025-07-08T01:55:51.000Z"
+    },
+    {
+      "id": 562,
+      "name": "ዘማሪት ሀይማኖት መ/ጤናዬ",
+      "slug": "ዘማሪት-ሀይማኖት-መጤናዬ",
+      "createdAt": "2026-09-09T03:56:26.385Z",
+      "updatedAt": "2026-09-09T03:56:26.385Z"
+    },
+    {
+      "id": 377,
+      "name": "ዘማሪት ሂላሪ ሳሙኤል",
+      "slug": "ዘማሪት-ሂላሪ-ሳሙኤል",
+      "createdAt": "2025-10-04T01:21:05.000Z",
+      "updatedAt": "2025-10-04T01:21:05.000Z"
+    },
+    {
+      "id": 123,
+      "name": "ዘማሪት ሃና ኣብርሃም",
+      "slug": "ዘማሪት-ሃና-ኣብርሃም",
+      "createdAt": "2024-10-19T04:55:20.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 325,
+      "name": "ዘማሪት ሃና ኣድሃኖም",
+      "slug": "ዘማሪት-ሃና-ኣድሃኖም",
+      "createdAt": "2025-05-03T01:21:46.000Z",
+      "updatedAt": "2025-05-03T01:21:46.000Z"
+    },
+    {
+      "id": 402,
+      "name": "ዘማሪት ሄለን ወልዱ",
+      "slug": "ዘማሪት-ሄለን-ወልዱ",
+      "createdAt": "2025-11-09T04:29:46.000Z",
+      "updatedAt": "2025-11-09T04:29:46.000Z"
+    },
+    {
+      "id": 363,
+      "name": "ዘማሪት ሄልዳና ደበበ",
+      "slug": "ዘማሪት-ሄልዳና-ደበበ",
+      "createdAt": "2025-09-03T01:28:23.000Z",
+      "updatedAt": "2025-09-03T01:28:23.000Z"
+    },
+    {
+      "id": 126,
+      "name": "ዘማሪት ሄርሜላ ይሕሾ",
+      "slug": "ዘማሪት-ሄርሜላ-ይሕሾ",
+      "createdAt": "2024-10-21T03:05:30.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 364,
+      "name": "ዘማሪት ሄዋን ገብረማርያም",
+      "slug": "ዘማሪት-ሄዋን-ገብረማርያም",
+      "createdAt": "2025-09-04T01:26:52.000Z",
+      "updatedAt": "2025-09-04T01:26:52.000Z"
+    },
+    {
+      "id": 376,
+      "name": "ዘማሪት ሄዝሮን ዳዊት",
+      "slug": "ዘማሪት-ሄዝሮን-ዳዊት",
+      "createdAt": "2025-10-04T01:19:54.000Z",
+      "updatedAt": "2025-10-04T01:19:54.000Z"
+    },
+    {
+      "id": 498,
+      "name": "ዘማሪት ህይወት ሰሎሞን",
+      "slug": "ዘማሪት-ህይወት-ሰሎሞን",
+      "createdAt": "2026-04-05T01:22:15.000Z",
+      "updatedAt": "2026-04-05T01:22:15.000Z"
+    },
+    {
+      "id": 499,
+      "name": "ዘማሪት ህጻን ሉልባሕሪ ፍሰሃየ",
+      "slug": "ዘማሪት-ህጻን-ሉልባሕሪ-ፍሰሃየ",
+      "createdAt": "2026-04-06T01:40:28.000Z",
+      "updatedAt": "2026-04-06T01:40:28.000Z"
+    },
+    {
+      "id": 156,
+      "name": "ዘማሪት ህጻን አድያም ኪሮስ",
+      "slug": "ዘማሪት-ህጻን-አድያም-ኪሮስ",
+      "createdAt": "2024-11-07T05:44:59.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 406,
+      "name": "ዘማሪት ህፃን ሄራን",
+      "slug": "ዘማሪት-ህፃን-ሄራን",
+      "createdAt": "2025-11-15T05:01:28.000Z",
+      "updatedAt": "2025-11-15T05:01:28.000Z"
+    },
+    {
+      "id": 158,
+      "name": "ዘማሪት ህፃን ማስተዋል መዝገቡ",
+      "slug": "ዘማሪት-ህፃን-ማስተዋል-መዝገቡ",
+      "createdAt": "2024-11-15T06:16:21.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 407,
+      "name": "ዘማሪት ህፃን ሶልያና",
+      "slug": "ዘማሪት-ህፃን-ሶልያና",
+      "createdAt": "2025-11-15T05:02:28.000Z",
+      "updatedAt": "2025-11-15T05:02:28.000Z"
+    },
+    {
+      "id": 145,
+      "name": "ዘማሪት ህፃን አሜን ቴዎድሮስ ዮሴፍ",
+      "slug": "ዘማሪት-ህፃን-አሜን-ቴዎድሮስ-ዮሴፍ",
+      "createdAt": "2024-10-29T05:09:11.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 426,
+      "name": "ዘማሪት ህፃን ዮርዳኖስ ጌታሁን",
+      "slug": "ዘማሪት-ህፃን-ዮርዳኖስ-ጌታሁን",
+      "createdAt": "2025-12-16T04:42:49.000Z",
+      "updatedAt": "2025-12-16T04:42:49.000Z"
+    },
+    {
+      "id": 561,
+      "name": "ዘማሪት ህፃን ገነት ከበደ",
+      "slug": "ዘማሪት-ህፃን-ገነት-ከበደ",
+      "createdAt": "2026-09-09T03:54:08.857Z",
+      "updatedAt": "2026-09-09T03:54:08.857Z"
+    },
+    {
+      "id": 118,
+      "name": "ዘማሪት ለምለም ከበደ",
+      "slug": "ዘማሪት-ለምለም-ከበደ",
+      "createdAt": "2024-10-19T04:00:59.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 575,
+      "name": "ዘማሪት ላምሮት መዝገበ",
+      "slug": "ዘማሪት-ላምሮት-መዝገበ-muoyt324",
+      "createdAt": "2026-10-01T03:18:52.349Z",
+      "updatedAt": "2026-10-01T03:18:52.349Z"
+    },
+    {
+      "id": 455,
+      "name": "ዘማሪት ላምሮት ታምራት",
+      "slug": "ዘማሪት-ላምሮት-ታምራት",
+      "createdAt": "2026-02-13T04:23:25.000Z",
+      "updatedAt": "2026-02-13T04:23:25.000Z"
+    },
+    {
+      "id": 362,
+      "name": "ዘማሪት ልእልቲ ካሕሱ",
+      "slug": "ዘማሪት-ልእልቲ-ካሕሱ",
+      "createdAt": "2025-09-02T01:49:59.000Z",
+      "updatedAt": "2025-09-02T01:49:59.000Z"
+    },
+    {
+      "id": 234,
+      "name": "ዘማሪት ልዋም ሃጎስ",
+      "slug": "ዘማሪት-ልዋም-ሃጎስ",
+      "createdAt": "2025-02-18T10:18:26.000Z",
+      "updatedAt": "2025-02-18T10:18:26.000Z"
+    },
+    {
+      "id": 344,
+      "name": "ዘማሪት ልዋም ዘርኡ",
+      "slug": "ዘማሪት-ልዋም-ዘርኡ",
+      "createdAt": "2025-08-23T01:17:42.000Z",
+      "updatedAt": "2025-08-23T01:17:42.000Z"
+    },
+    {
+      "id": 134,
+      "name": "ዘማሪት ልዋም ፈቃዱ",
+      "slug": "ዘማሪት-ልዋም-ፈቃዱ",
+      "createdAt": "2024-10-22T02:04:01.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 418,
+      "name": "ዘማሪት ልደት ብርሃኑ",
+      "slug": "ዘማሪት-ልደት-ብርሃኑ",
+      "createdAt": "2025-11-29T10:37:02.000Z",
+      "updatedAt": "2025-11-29T10:37:02.000Z"
+    },
+    {
+      "id": 585,
+      "name": "ዘማሪት ሔመን አሸናፊ",
+      "slug": "ዘማሪት-ሔመን-አሸናፊ-mvafzqio",
+      "createdAt": "2026-10-16T04:03:05.857Z",
+      "updatedAt": "2026-10-16T04:03:05.857Z"
+    },
+    {
+      "id": 297,
+      "name": "ዘማሪት ሔዋን ገብረ ኣነንያ",
+      "slug": "ዘማሪት-ሔዋን-ገብረ-ኣነንያ",
+      "createdAt": "2025-03-31T01:59:44.000Z",
+      "updatedAt": "2025-03-31T01:59:44.000Z"
+    },
+    {
+      "id": 23,
+      "name": "ዘማሪት ሕይወት ወልዴ",
+      "slug": "ዘማሪት-ሕይወት-ወልዴ",
+      "createdAt": "2024-09-14T23:20:48.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 542,
+      "name": "ዘማሪት መስከረም በዙ",
+      "slug": "ዘማሪት-መስከረም-በዙ",
+      "createdAt": "2026-07-27T03:12:32.388Z",
+      "updatedAt": "2026-07-27T03:12:32.388Z"
+    },
+    {
+      "id": 326,
+      "name": "ዘማሪት መስከረም ንጉሤ",
+      "slug": "ዘማሪት-መስከረም-ንጉሤ",
+      "createdAt": "2025-05-03T01:23:11.000Z",
+      "updatedAt": "2025-05-03T01:23:11.000Z"
+    },
+    {
+      "id": 60,
+      "name": "ዘማሪት መስከረም ወልዴ",
+      "slug": "ዘማሪት-መስከረም-ወልዴ",
+      "createdAt": "2024-09-26T03:13:09.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 215,
+      "name": "ዘማሪት መቅደላዊት ንጋቱ",
+      "slug": "ዘማሪት-መቅደላዊት-ንጋቱ",
+      "createdAt": "2025-02-06T10:47:02.000Z",
+      "updatedAt": "2025-02-06T10:47:02.000Z"
+    },
+    {
+      "id": 399,
+      "name": "ዘማሪት መቅደስ መኮንን",
+      "slug": "ዘማሪት-መቅደስ-መኮንን",
+      "createdAt": "2025-11-06T04:12:25.000Z",
+      "updatedAt": "2025-11-06T04:12:25.000Z"
+    },
+    {
+      "id": 153,
+      "name": "ዘማሪት መቅደስ ማርዬ",
+      "slug": "ዘማሪት-መቅደስ-ማርዬ",
+      "createdAt": "2024-11-02T03:41:21.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 228,
+      "name": "ዘማሪት መቅደስ ከበደ",
+      "slug": "ዘማሪት-መቅደስ-ከበደ",
+      "createdAt": "2025-02-18T10:12:12.000Z",
+      "updatedAt": "2025-02-18T10:12:12.000Z"
+    },
+    {
+      "id": 348,
+      "name": "ዘማሪት መቅደስ ዓለሙ",
+      "slug": "ዘማሪት-መቅደስ-ዓለሙ",
+      "createdAt": "2025-08-25T01:41:24.000Z",
+      "updatedAt": "2025-08-25T01:41:24.000Z"
+    },
+    {
+      "id": 71,
+      "name": "ዘማሪት መቕደስ ነጋሽ",
+      "slug": "ዘማሪት-መቕደስ-ነጋሽ",
+      "createdAt": "2024-10-07T02:19:47.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 584,
+      "name": "ዘማሪት መብራት ሞገስ",
+      "slug": "ዘማሪት-መብራት-ሞገስ-mvafzluz",
+      "createdAt": "2026-10-16T04:02:59.820Z",
+      "updatedAt": "2026-10-16T04:02:59.820Z"
+    },
+    {
+      "id": 541,
+      "name": "ዘማሪት መክሊት ኢዮብ",
+      "slug": "ዘማሪት-መክሊት-ኢዮብ",
+      "createdAt": "2026-07-25T03:19:40.729Z",
+      "updatedAt": "2026-07-25T03:19:40.729Z"
+    },
+    {
+      "id": 483,
+      "name": "ዘማሪት መክሊት ጥላሁን",
+      "slug": "ዘማሪት-መክሊት-ጥላሁን",
+      "createdAt": "2026-03-19T03:31:24.000Z",
+      "updatedAt": "2026-03-19T03:31:24.000Z"
+    },
+    {
+      "id": 500,
+      "name": "ዘማሪት መገርቱ ጉታ",
+      "slug": "ዘማሪት-መገርቱ-ጉታ",
+      "createdAt": "2026-04-07T01:58:52.000Z",
+      "updatedAt": "2026-04-07T01:58:52.000Z"
+    },
+    {
+      "id": 520,
+      "name": "ዘማሪት ሙሉነሽ ደምሴ",
+      "slug": "ዘማሪት-ሙሉነሽ-ደምሴ",
+      "createdAt": "2026-05-25T03:18:19.891Z",
+      "updatedAt": "2026-05-25T03:18:19.891Z"
+    },
+    {
+      "id": 290,
+      "name": "ዘማሪት ሚልኪ ሞሲሳ",
+      "slug": "ዘማሪት-ሚልኪ-ሞሲሳ",
+      "createdAt": "2025-03-28T04:00:50.000Z",
+      "updatedAt": "2025-03-28T04:00:50.000Z"
+    },
+    {
+      "id": 46,
+      "name": "ዘማሪት ሚልካ ቢተው",
+      "slug": "ዘማሪት-ሚልካ-ቢተው",
+      "createdAt": "2024-09-22T20:59:25.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 521,
+      "name": "ዘማሪት ማህሌት ሙሴ",
+      "slug": "ዘማሪት-ማህሌት-ሙሴ",
+      "createdAt": "2026-05-26T03:50:17.494Z",
+      "updatedAt": "2026-05-26T03:50:17.494Z"
+    },
+    {
+      "id": 321,
+      "name": "ዘማሪት ማህደር ገብረኢየሱስ",
+      "slug": "ዘማሪት-ማህደር-ገብረኢየሱስ",
+      "createdAt": "2025-04-21T21:50:03.000Z",
+      "updatedAt": "2025-04-21T21:50:03.000Z"
+    },
+    {
+      "id": 8,
+      "name": "ዘማሪት ማርታ ኃይለሥላሴ",
+      "slug": "ዘማሪት-ማርታ-ኃይለሥላሴ",
+      "createdAt": "2024-09-10T02:07:10.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 164,
+      "name": "ዘማሪት ማርታ አሻጋሪ",
+      "slug": "ዘማሪት-ማርታ-አሻጋሪ",
+      "createdAt": "2024-11-22T10:03:33.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 266,
+      "name": "ዘማሪት ማርያማዊት ሳምሶን",
+      "slug": "ዘማሪት-ማርያማዊት-ሳምሶን",
+      "createdAt": "2025-03-23T04:35:40.000Z",
+      "updatedAt": "2025-03-23T04:35:40.000Z"
+    },
+    {
+      "id": 337,
+      "name": "ዘማሪት ማርያማዊት ግምት",
+      "slug": "ዘማሪት-ማርያማዊት-ግምት",
+      "createdAt": "2025-07-29T01:58:04.000Z",
+      "updatedAt": "2025-07-29T01:58:04.000Z"
+    },
+    {
+      "id": 276,
+      "name": "ዘማሪት ሜላት ሲሳይ",
+      "slug": "ዘማሪት-ሜላት-ሲሳይ",
+      "createdAt": "2025-03-26T03:55:52.000Z",
+      "updatedAt": "2025-03-26T03:55:52.000Z"
+    },
+    {
+      "id": 258,
+      "name": "ዘማሪት ሜሪ ተመልሶ",
+      "slug": "ዘማሪት-ሜሪ-ተመልሶ",
+      "createdAt": "2025-03-15T05:05:22.000Z",
+      "updatedAt": "2025-03-15T05:05:22.000Z"
+    },
+    {
+      "id": 40,
+      "name": "ዘማሪት ሜሪ ኣለም",
+      "slug": "ዘማሪት-ሜሪ-ኣለም",
+      "createdAt": "2024-09-22T20:50:40.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 517,
+      "name": "ዘማሪት ሜሮን ለገሠ",
+      "slug": "ዘማሪት-ሜሮን-ለገሠ",
+      "createdAt": "2026-05-23T03:40:50.825Z",
+      "updatedAt": "2026-05-23T03:40:50.825Z"
+    },
+    {
+      "id": 449,
+      "name": "ዘማሪት ሜሮን ታደሰ",
+      "slug": "ዘማሪት-ሜሮን-ታደሰ",
+      "createdAt": "2026-01-31T04:19:23.000Z",
+      "updatedAt": "2026-01-31T04:19:23.000Z"
+    },
+    {
+      "id": 460,
+      "name": "ዘማሪት ሜሮን አብርሃም",
+      "slug": "ዘማሪት-ሜሮን-አብርሃም",
+      "createdAt": "2026-02-28T04:56:18.000Z",
+      "updatedAt": "2026-02-28T04:56:18.000Z"
+    },
+    {
+      "id": 503,
+      "name": "ዘማሪት ምህረት ደምስ",
+      "slug": "ዘማሪት-ምህረት-ደምስ",
+      "createdAt": "2026-04-13T01:25:27.000Z",
+      "updatedAt": "2026-04-13T01:25:27.000Z"
+    },
+    {
+      "id": 310,
+      "name": "ዘማሪት ምህረት ገብረኢየሱስ",
+      "slug": "ዘማሪት-ምህረት-ገብረኢየሱስ",
+      "createdAt": "2025-04-04T01:37:42.000Z",
+      "updatedAt": "2025-04-04T01:37:42.000Z"
+    },
+    {
+      "id": 64,
+      "name": "ዘማሪት ምርትነሽ ጥላሁን",
+      "slug": "ዘማሪት-ምርትነሽ-ጥላሁን",
+      "createdAt": "2024-09-28T03:43:09.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 532,
+      "name": "ዘማሪት ምንአሉ ጌታቸው",
+      "slug": "ዘማሪት-ምንአሉ-ጌታቸው",
+      "createdAt": "2026-06-20T03:22:34.311Z",
+      "updatedAt": "2026-06-20T03:22:34.311Z"
+    },
+    {
+      "id": 469,
+      "name": "ዘማሪት ሠናይት ክፍሌ",
+      "slug": "ዘማሪት-ሠናይት-ክፍሌ",
+      "createdAt": "2026-03-06T04:49:07.000Z",
+      "updatedAt": "2026-03-06T04:49:07.000Z"
+    },
+    {
+      "id": 93,
+      "name": "ዘማሪት ሩት ደመላሽ",
+      "slug": "ዘማሪት-ሩት-ደመላሽ",
+      "createdAt": "2024-10-15T01:43:15.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 317,
+      "name": "ዘማሪት ሩፍታሌም ጽጋብ",
+      "slug": "ዘማሪት-ሩፍታሌም-ጽጋብ",
+      "createdAt": "2025-04-10T02:05:29.000Z",
+      "updatedAt": "2025-04-10T02:05:29.000Z"
+    },
+    {
+      "id": 37,
+      "name": "ዘማሪት ራህዋ ተኸስተ",
+      "slug": "ዘማሪት-ራህዋ-ተኸስተ",
+      "createdAt": "2024-09-22T20:48:45.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 165,
+      "name": "ዘማሪት ራኬብ አሰፋ",
+      "slug": "ዘማሪት-ራኬብ-አሰፋ",
+      "createdAt": "2024-11-22T10:03:54.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 191,
+      "name": "ዘማሪት ሰላማዊት መላኩ",
+      "slug": "ዘማሪት-ሰላማዊት-መላኩ",
+      "createdAt": "2024-12-20T09:55:59.000Z",
+      "updatedAt": "2024-12-20T09:55:59.000Z"
+    },
+    {
+      "id": 193,
+      "name": "ዘማሪት ሰላማዊት ሶርሳ",
+      "slug": "ዘማሪት-ሰላማዊት-ሶርሳ",
+      "createdAt": "2024-12-24T09:58:58.000Z",
+      "updatedAt": "2024-12-24T09:58:58.000Z"
+    },
+    {
+      "id": 396,
+      "name": "ዘማሪት ሰላማዊት ተክሉ",
+      "slug": "ዘማሪት-ሰላማዊት-ተክሉ",
+      "createdAt": "2025-11-03T04:20:39.000Z",
+      "updatedAt": "2025-11-03T04:20:39.000Z"
+    },
+    {
+      "id": 556,
+      "name": "ዘማሪት ሰላማዊት አዲስ",
+      "slug": "ዘማሪት-ሰላማዊት-አዲስ",
+      "createdAt": "2026-09-05T03:22:56.379Z",
+      "updatedAt": "2026-09-05T03:22:56.379Z"
+    },
+    {
+      "id": 70,
+      "name": "ዘማሪት ሰላም ኣምባዬ",
+      "slug": "ዘማሪት-ሰላም-ኣምባዬ",
+      "createdAt": "2024-10-07T01:55:44.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 586,
+      "name": "ዘማሪት ሰላም ደመቀ",
+      "slug": "ዘማሪት-ሰላም-ደመቀ-mvbum1mk",
+      "createdAt": "2026-10-17T03:40:07.485Z",
+      "updatedAt": "2026-10-17T03:40:07.485Z"
+    },
+    {
+      "id": 74,
+      "name": "ዘማሪት ሰብለወንጌል እሸቴ",
+      "slug": "ዘማሪት-ሰብለወንጌል-እሸቴ",
+      "createdAt": "2024-10-08T03:38:33.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 229,
+      "name": "ዘማሪት ሰናይት ደምሴ",
+      "slug": "ዘማሪት-ሰናይት-ደምሴ",
+      "createdAt": "2025-02-18T10:14:15.000Z",
+      "updatedAt": "2025-02-18T10:14:15.000Z"
+    },
+    {
+      "id": 345,
+      "name": "ዘማሪት ሰፊአገር ገበያው",
+      "slug": "ዘማሪት-ሰፊአገር-ገበያው",
+      "createdAt": "2025-08-23T01:18:15.000Z",
+      "updatedAt": "2025-08-23T01:18:15.000Z"
+    },
+    {
+      "id": 52,
+      "name": "ዘማሪት ሲስተር ልድያ ታደሰ‪",
+      "slug": "ዘማሪት-ሲስተር-ልድያ-ታደሰ",
+      "createdAt": "2024-09-24T02:18:35.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 22,
+      "name": "ዘማሪት ሲስተር ሕይወት ተፈሪ",
+      "slug": "ዘማሪት-ሲስተር-ሕይወት-ተፈሪ",
+      "createdAt": "2024-09-14T23:19:45.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 10,
+      "name": "ዘማሪት ሲስተር ፋሲካ መኮንን",
+      "slug": "ዘማሪት-ሲስተር-ፋሲካ-መኮንን",
+      "createdAt": "2024-09-10T02:13:02.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 38,
+      "name": "ዘማሪት ሳሊና ገብረዝጋብሄር",
+      "slug": "ዘማሪት-ሳሊና-ገብረዝጋብሄር",
+      "createdAt": "2024-09-22T20:49:26.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 76,
+      "name": "ዘማሪት ሳራ መንግስቱ",
+      "slug": "ዘማሪት-ሳራ-መንግስቱ",
+      "createdAt": "2024-10-09T02:26:04.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 481,
+      "name": "ዘማሪት ሳራ ታደሰ",
+      "slug": "ዘማሪት-ሳራ-ታደሰ",
+      "createdAt": "2026-03-18T03:42:50.000Z",
+      "updatedAt": "2026-03-18T03:42:50.000Z"
+    },
+    {
+      "id": 273,
+      "name": "ዘማሪት ሳሮን ሽሻይ",
+      "slug": "ዘማሪት-ሳሮን-ሽሻይ",
+      "createdAt": "2025-03-24T03:29:53.000Z",
+      "updatedAt": "2025-03-24T03:29:53.000Z"
+    },
+    {
+      "id": 318,
+      "name": "ዘማሪት ሳሮን ዮሃንስ",
+      "slug": "ዘማሪት-ሳሮን-ዮሃንስ",
+      "createdAt": "2025-04-10T02:06:16.000Z",
+      "updatedAt": "2025-04-10T02:06:16.000Z"
+    },
+    {
+      "id": 496,
+      "name": "ዘማሪት ሳሮን ፍስሃ",
+      "slug": "ዘማሪት-ሳሮን-ፍስሃ",
+      "createdAt": "2026-04-03T01:25:58.000Z",
+      "updatedAt": "2026-04-03T01:25:58.000Z"
+    },
+    {
+      "id": 302,
+      "name": "ዘማሪት ሳቬላ ኢሳይያስ",
+      "slug": "ዘማሪት-ሳቬላ-ኢሳይያስ",
+      "createdAt": "2025-04-02T01:33:53.000Z",
+      "updatedAt": "2025-04-02T01:33:53.000Z"
+    },
+    {
+      "id": 49,
+      "name": "ዘማሪት ስምረት ግርማ",
+      "slug": "ዘማሪት-ስምረት-ግርማ",
+      "createdAt": "2024-09-24T02:17:07.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 353,
+      "name": "ዘማሪት ስንታየሁ በሱፍቃድ",
+      "slug": "ዘማሪት-ስንታየሁ-በሱፍቃድ",
+      "createdAt": "2025-08-27T01:26:57.000Z",
+      "updatedAt": "2025-08-27T01:26:57.000Z"
+    },
+    {
+      "id": 513,
+      "name": "ዘማሪት ሶልያና ፈቃዱ",
+      "slug": "ዘማሪት-ሶልያና-ፈቃዱ",
+      "createdAt": "2026-05-10T03:36:52.518Z",
+      "updatedAt": "2026-05-10T03:36:52.518Z"
+    },
+    {
+      "id": 120,
+      "name": "ዘማሪት ሶስና ማሙዬ",
+      "slug": "ዘማሪት-ሶስና-ማሙዬ",
+      "createdAt": "2024-10-19T04:02:31.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 244,
+      "name": "ዘማሪት ሸዋረግ ወንድማገኝ",
+      "slug": "ዘማሪት-ሸዋረግ-ወንድማገኝ",
+      "createdAt": "2025-03-05T05:18:51.000Z",
+      "updatedAt": "2025-03-05T05:18:51.000Z"
+    },
+    {
+      "id": 450,
+      "name": "ዘማሪት ቃልኪዳን",
+      "slug": "ዘማሪት-ቃልኪዳን",
+      "createdAt": "2026-02-04T04:34:35.000Z",
+      "updatedAt": "2026-02-04T04:34:35.000Z"
+    },
+    {
+      "id": 295,
+      "name": "ዘማሪት ቃልኪዳን ሊቃኖስ",
+      "slug": "ዘማሪት-ቃልኪዳን-ሊቃኖስ",
+      "createdAt": "2025-03-30T01:39:30.000Z",
+      "updatedAt": "2025-03-30T01:39:30.000Z"
+    },
+    {
+      "id": 114,
+      "name": "ዘማሪት ቃልኪዳን መኮነን",
+      "slug": "ዘማሪት-ቃልኪዳን-መኮነን",
+      "createdAt": "2024-10-19T03:53:21.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 239,
+      "name": "ዘማሪት ቃልኪዳን ብሩ",
+      "slug": "ዘማሪት-ቃልኪዳን-ብሩ",
+      "createdAt": "2025-02-27T05:36:06.000Z",
+      "updatedAt": "2025-02-27T05:36:06.000Z"
+    },
+    {
+      "id": 287,
+      "name": "ዘማሪት ቃልኪዳን አበበ",
+      "slug": "ዘማሪት-ቃልኪዳን-አበበ",
+      "createdAt": "2025-03-28T03:58:27.000Z",
+      "updatedAt": "2025-03-28T03:58:27.000Z"
+    },
+    {
+      "id": 415,
+      "name": "ዘማሪት ቃልኪዳን ፈለቀ",
+      "slug": "ዘማሪት-ቃልኪዳን-ፈለቀ",
+      "createdAt": "2025-11-24T04:10:13.000Z",
+      "updatedAt": "2025-11-24T04:10:13.000Z"
+    },
+    {
+      "id": 132,
+      "name": "ዘማሪት ቅሳነት ክብሮም",
+      "slug": "ዘማሪት-ቅሳነት-ክብሮም",
+      "createdAt": "2024-10-21T03:11:47.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 90,
+      "name": "ዘማሪት ቅድስት ሙሉነህ",
+      "slug": "ዘማሪት-ቅድስት-ሙሉነህ",
+      "createdAt": "2024-10-15T01:42:09.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 423,
+      "name": "ዘማሪት ቅድስት ምትኩ",
+      "slug": "ዘማሪት-ቅድስት-ምትኩ",
+      "createdAt": "2025-12-09T04:51:32.000Z",
+      "updatedAt": "2025-12-09T04:51:32.000Z"
+    },
+    {
+      "id": 226,
+      "name": "ዘማሪት ቅድስት ቀለሙ",
+      "slug": "ዘማሪት-ቅድስት-ቀለሙ",
+      "createdAt": "2025-02-14T09:47:06.000Z",
+      "updatedAt": "2025-02-14T09:47:06.000Z"
+    },
+    {
+      "id": 548,
+      "name": "ዘማሪት ቅድስት ተሰማ",
+      "slug": "ዘማሪት-ቅድስት-ተሰማ",
+      "createdAt": "2026-08-07T03:15:41.162Z",
+      "updatedAt": "2026-08-07T03:15:41.162Z"
+    },
+    {
+      "id": 335,
+      "name": "ዘማሪት ቅድስት ወርቁ",
+      "slug": "ዘማሪት-ቅድስት-ወርቁ",
+      "createdAt": "2025-07-29T01:56:20.000Z",
+      "updatedAt": "2025-07-29T01:56:20.000Z"
+    },
+    {
+      "id": 519,
+      "name": "ዘማሪት ቅድስት የምሩ",
+      "slug": "ዘማሪት-ቅድስት-የምሩ",
+      "createdAt": "2026-05-24T03:40:18.502Z",
+      "updatedAt": "2026-05-24T03:40:18.502Z"
+    },
+    {
+      "id": 439,
+      "name": "ዘማሪት በላይነሽ",
+      "slug": "ዘማሪት-በላይነሽ",
+      "createdAt": "2026-01-08T04:55:25.000Z",
+      "updatedAt": "2026-01-08T04:55:25.000Z"
+    },
+    {
+      "id": 1,
+      "name": "ዘማሪት በዛወርቅ አስፋው",
+      "slug": "ዘማሪት-በዛወርቅ-አስፋው",
+      "createdAt": "2024-09-07T02:26:48.000Z",
+      "updatedAt": "2024-11-25T07:15:15.000Z"
+    },
+    {
+      "id": 91,
+      "name": "ዘማሪት በፀሎት አስማረ",
+      "slug": "ዘማሪት-በፀሎት-አስማረ",
+      "createdAt": "2024-10-15T01:42:41.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 217,
+      "name": "ዘማሪት ባንቺአየሁ ሰይፉ",
+      "slug": "ዘማሪት-ባንቺአየሁ-ሰይፉ",
+      "createdAt": "2025-02-06T10:51:52.000Z",
+      "updatedAt": "2025-02-06T10:51:52.000Z"
+    },
+    {
+      "id": 540,
+      "name": "ዘማሪት ቤርሲ ሠላም",
+      "slug": "ዘማሪት-ቤርሲ-ሠላም",
+      "createdAt": "2026-07-24T03:18:03.436Z",
+      "updatedAt": "2026-07-24T03:18:03.436Z"
+    },
+    {
+      "id": 332,
+      "name": "ዘማሪት ቤተልሄም ብዙአየሁ",
+      "slug": "ዘማሪት-ቤተልሄም-ብዙአየሁ",
+      "createdAt": "2025-07-10T00:35:53.000Z",
+      "updatedAt": "2025-07-10T00:35:53.000Z"
+    },
+    {
+      "id": 182,
+      "name": "ዘማሪት ቤተልሔም በቀለ",
+      "slug": "ዘማሪት-ቤተልሔም-በቀለ",
+      "createdAt": "2024-12-07T10:29:05.000Z",
+      "updatedAt": "2024-12-07T10:29:05.000Z"
+    },
+    {
+      "id": 313,
+      "name": "ዘማሪት ቤተልሔም ብርሃነ",
+      "slug": "ዘማሪት-ቤተልሔም-ብርሃነ",
+      "createdAt": "2025-04-08T01:39:39.000Z",
+      "updatedAt": "2025-04-08T01:39:39.000Z"
+    },
+    {
+      "id": 223,
+      "name": "ዘማሪት ቤተልሔም አያሌው",
+      "slug": "ዘማሪት-ቤተልሔም-አያሌው",
+      "createdAt": "2025-02-06T11:02:13.000Z",
+      "updatedAt": "2025-02-06T11:02:13.000Z"
+    },
+    {
+      "id": 403,
+      "name": "ዘማሪት ቤተልሔም ኪሮስ",
+      "slug": "ዘማሪት-ቤተልሔም-ኪሮስ",
+      "createdAt": "2025-11-09T04:30:26.000Z",
+      "updatedAt": "2025-11-09T04:30:26.000Z"
+    },
+    {
+      "id": 277,
+      "name": "ዘማሪት ቤቴል ታሪኩ",
+      "slug": "ዘማሪት-ቤቴል-ታሪኩ",
+      "createdAt": "2025-03-26T03:56:32.000Z",
+      "updatedAt": "2025-03-26T03:56:32.000Z"
+    },
+    {
+      "id": 102,
+      "name": "ዘማሪት ቤቴል ይስሐቅ",
+      "slug": "ዘማሪት-ቤቴል-ይስሐቅ",
+      "createdAt": "2024-10-15T01:49:06.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 101,
+      "name": "ዘማሪት ቤዛ ይስሐቅ",
+      "slug": "ዘማሪት-ቤዛ-ይስሐቅ",
+      "createdAt": "2024-10-15T01:48:49.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 341,
+      "name": "ዘማሪት ብሌን ታምሩ",
+      "slug": "ዘማሪት-ብሌን-ታምሩ",
+      "createdAt": "2025-08-20T01:35:14.000Z",
+      "updatedAt": "2025-08-20T01:35:14.000Z"
+    },
+    {
+      "id": 358,
+      "name": "ዘማሪት ብሩክታዊት ሒቃ",
+      "slug": "ዘማሪት-ብሩክታዊት-ሒቃ",
+      "createdAt": "2025-08-30T03:09:14.000Z",
+      "updatedAt": "2025-08-30T03:09:14.000Z"
+    },
+    {
+      "id": 142,
+      "name": "ዘማሪት ብሩክታዊት ንጋቱ",
+      "slug": "ዘማሪት-ብሩክታዊት-ንጋቱ",
+      "createdAt": "2024-10-28T18:51:06.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 69,
+      "name": "ዘማሪት ብሩክታዊት ገ/መድህን",
+      "slug": "ዘማሪት-ብሩክታዊት-ገመድህን",
+      "createdAt": "2024-10-07T01:54:49.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 512,
+      "name": "ዘማሪት ብርቱካን መለሰ",
+      "slug": "ዘማሪት-ብርቱካን-መለሰ",
+      "createdAt": "2026-05-10T03:36:13.287Z",
+      "updatedAt": "2026-05-10T03:36:13.287Z"
+    },
+    {
+      "id": 360,
+      "name": "ዘማሪት ብርቱካን ተሰማ",
+      "slug": "ዘማሪት-ብርቱካን-ተሰማ",
+      "createdAt": "2025-08-31T03:19:32.000Z",
+      "updatedAt": "2025-08-31T03:19:32.000Z"
+    },
+    {
+      "id": 105,
+      "name": "ዘማሪት ብርቱካን ገዛኽኝ",
+      "slug": "ዘማሪት-ብርቱካን-ገዛኽኝ",
+      "createdAt": "2024-10-15T02:02:43.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 523,
+      "name": "ዘማሪት ታደሉ ደበበ",
+      "slug": "ዘማሪት-ታደሉ-ደበበ",
+      "createdAt": "2026-05-27T04:04:55.408Z",
+      "updatedAt": "2026-05-27T04:04:55.408Z"
+    },
+    {
+      "id": 68,
+      "name": "ዘማሪት ትርሃስ ገብረእግዚአብሔር",
+      "slug": "ዘማሪት-ትርሃስ-ገብረእግዚአብሔር",
+      "createdAt": "2024-10-07T01:54:01.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 537,
+      "name": "ዘማሪት ትንቢት ቦጋለ",
+      "slug": "ዘማሪት-ትንቢት-ቦጋለ",
+      "createdAt": "2026-07-06T03:31:19.079Z",
+      "updatedAt": "2026-07-06T03:31:19.079Z"
+    },
+    {
+      "id": 224,
+      "name": "ዘማሪት ትእግስት ጌታቸዉ",
+      "slug": "ዘማሪት-ትእግስት-ጌታቸዉ",
+      "createdAt": "2025-02-06T11:02:39.000Z",
+      "updatedAt": "2025-02-06T11:02:39.000Z"
+    },
+    {
+      "id": 131,
+      "name": "ዘማሪት ትዕግስቲ ፍስሃየ",
+      "slug": "ዘማሪት-ትዕግስቲ-ፍስሃየ",
+      "createdAt": "2024-10-21T03:10:14.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 453,
+      "name": "ዘማሪት ትዕግስት መብራቱ",
+      "slug": "ዘማሪት-ትዕግስት-መብራቱ",
+      "createdAt": "2026-02-09T04:20:39.000Z",
+      "updatedAt": "2026-02-09T04:20:39.000Z"
+    },
+    {
+      "id": 27,
+      "name": "ዘማሪት ትዕግስት ስለሺ",
+      "slug": "ዘማሪት-ትዕግስት-ስለሺ",
+      "createdAt": "2024-09-15T00:33:40.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 274,
+      "name": "ዘማሪት ትዕግስት ኃይሌ",
+      "slug": "ዘማሪት-ትዕግስት-ኃይሌ",
+      "createdAt": "2025-03-24T03:31:37.000Z",
+      "updatedAt": "2025-03-24T03:31:37.000Z"
+    },
+    {
+      "id": 354,
+      "name": "ዘማሪት ትዕግስት አሰፋ",
+      "slug": "ዘማሪት-ትዕግስት-አሰፋ",
+      "createdAt": "2025-08-27T01:27:45.000Z",
+      "updatedAt": "2025-08-27T01:27:45.000Z"
+    },
+    {
+      "id": 108,
+      "name": "ዘማሪት ነጻነት ቶሎሳ",
+      "slug": "ዘማሪት-ነጻነት-ቶሎሳ",
+      "createdAt": "2024-10-15T02:06:28.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 429,
+      "name": "ዘማሪት ነፃነት ጎይቶም",
+      "slug": "ዘማሪት-ነፃነት-ጎይቶም",
+      "createdAt": "2025-12-20T04:19:42.000Z",
+      "updatedAt": "2025-12-20T04:19:42.000Z"
+    },
+    {
+      "id": 492,
+      "name": "ዘማሪት ናርዶስ ንጉሤ",
+      "slug": "ዘማሪት-ናርዶስ-ንጉሤ",
+      "createdAt": "2026-03-27T03:34:27.000Z",
+      "updatedAt": "2026-03-27T03:34:27.000Z"
+    },
+    {
+      "id": 77,
+      "name": "ዘማሪት ናርዶስ ካሳሁን",
+      "slug": "ዘማሪት-ናርዶስ-ካሳሁን",
+      "createdAt": "2024-10-09T02:26:27.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 571,
+      "name": "ዘማሪት አሜን አንድአምላክ",
+      "slug": "ዘማሪት-አሜን-አንድአምላክ",
+      "createdAt": "2026-09-25T03:37:06.217Z",
+      "updatedAt": "2026-09-25T03:37:06.217Z"
+    },
+    {
+      "id": 88,
+      "name": "ዘማሪት አርሴማ ወልደአምላክ",
+      "slug": "ዘማሪት-አርሴማ-ወልደአምላክ",
+      "createdAt": "2024-10-15T01:39:05.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 457,
+      "name": "ዘማሪት አርሴማዊት አስቻለው",
+      "slug": "ዘማሪት-አርሴማዊት-አስቻለው",
+      "createdAt": "2026-02-19T04:27:07.000Z",
+      "updatedAt": "2026-02-19T04:27:07.000Z"
+    },
+    {
+      "id": 119,
+      "name": "ዘማሪት አርቲስት መሰረት መብራቴ",
+      "slug": "ዘማሪት-አርቲስት-መሰረት-መብራቴ",
+      "createdAt": "2024-10-19T04:02:04.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 387,
+      "name": "ዘማሪት አርቲስት ትግዕስት ግርማ",
+      "slug": "ዘማሪት-አርቲስት-ትግዕስት-ግርማ",
+      "createdAt": "2025-10-20T01:20:09.000Z",
+      "updatedAt": "2025-10-20T01:20:09.000Z"
+    },
+    {
+      "id": 311,
+      "name": "ዘማሪት አሰለፈች ግርማ",
+      "slug": "ዘማሪት-አሰለፈች-ግርማ",
+      "createdAt": "2025-04-04T01:38:15.000Z",
+      "updatedAt": "2025-04-04T01:38:15.000Z"
+    },
+    {
+      "id": 394,
+      "name": "ዘማሪት አስቴር በሪሁን",
+      "slug": "ዘማሪት-አስቴር-በሪሁን",
+      "createdAt": "2025-11-02T03:31:04.000Z",
+      "updatedAt": "2025-11-02T03:31:04.000Z"
+    },
+    {
+      "id": 162,
+      "name": "ዘማሪት አስናቀች ጸጋ",
+      "slug": "ዘማሪት-አስናቀች-ጸጋ",
+      "createdAt": "2024-11-21T10:16:29.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 547,
+      "name": "ዘማሪት አቢጋኤል ኤልያስ",
+      "slug": "ዘማሪት-አቢጋኤል-ኤልያስ",
+      "createdAt": "2026-08-06T03:17:44.100Z",
+      "updatedAt": "2026-08-06T03:17:44.100Z"
+    },
+    {
+      "id": 33,
+      "name": "ዘማሪት አቦነሽ አድነው",
+      "slug": "ዘማሪት-አቦነሽ-አድነው",
+      "createdAt": "2024-09-15T00:38:49.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 333,
+      "name": "ዘማሪት አትራን ሚካኤል",
+      "slug": "ዘማሪት-አትራን-ሚካኤል",
+      "createdAt": "2025-07-23T01:46:50.000Z",
+      "updatedAt": "2025-07-23T01:46:50.000Z"
+    },
+    {
+      "id": 393,
+      "name": "ዘማሪት አዜብ አበራ",
+      "slug": "ዘማሪት-አዜብ-አበራ",
+      "createdAt": "2025-11-02T03:30:21.000Z",
+      "updatedAt": "2025-11-02T03:30:21.000Z"
+    },
+    {
+      "id": 25,
+      "name": "ዘማሪት አዜብ ከበደ",
+      "slug": "ዘማሪት-አዜብ-ከበደ",
+      "createdAt": "2024-09-14T23:23:20.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 115,
+      "name": "ዘማሪት አይናለም ቸሩ",
+      "slug": "ዘማሪት-አይናለም-ቸሩ",
+      "createdAt": "2024-10-19T03:55:45.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 359,
+      "name": "ዘማሪት አይናለም አሰፋ",
+      "slug": "ዘማሪት-አይናለም-አሰፋ",
+      "createdAt": "2025-08-30T03:11:18.000Z",
+      "updatedAt": "2025-08-30T03:11:18.000Z"
+    },
+    {
+      "id": 452,
+      "name": "ዘማሪት አይኖም ሃ/ስላሴ",
+      "slug": "ዘማሪት-አይኖም-ሃስላሴ",
+      "createdAt": "2026-02-06T05:20:43.000Z",
+      "updatedAt": "2026-02-06T05:20:43.000Z"
+    },
+    {
+      "id": 539,
+      "name": "ዘማሪት አዲላ አብዱራህማን",
+      "slug": "ዘማሪት-አዲላ-አብዱራህማን",
+      "createdAt": "2026-07-22T13:56:49.436Z",
+      "updatedAt": "2026-07-22T13:56:49.436Z"
+    },
+    {
+      "id": 35,
+      "name": "ዘማሪት አዲስዓለም ተስፋዬ",
+      "slug": "ዘማሪት-አዲስዓለም-ተስፋዬ",
+      "createdAt": "2024-09-15T00:40:23.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 397,
+      "name": "ዘማሪት አዳምነሽ ብሩህ",
+      "slug": "ዘማሪት-አዳምነሽ-ብሩህ",
+      "createdAt": "2025-11-05T04:23:53.000Z",
+      "updatedAt": "2025-11-05T04:23:53.000Z"
+    },
+    {
+      "id": 195,
+      "name": "ዘማሪት አፀደ ጠና",
+      "slug": "ዘማሪት-አፀደ-ጠና",
+      "createdAt": "2024-12-28T10:15:08.000Z",
+      "updatedAt": "2024-12-28T10:15:08.000Z"
+    },
+    {
+      "id": 576,
+      "name": "ዘማሪት አፎምያ ግርማ",
+      "slug": "ዘማሪት-አፎምያ-ግርማ-muruadv5",
+      "createdAt": "2026-10-03T03:35:39.954Z",
+      "updatedAt": "2026-10-03T03:35:39.954Z"
+    },
+    {
+      "id": 451,
+      "name": "ዘማሪት ኢየሩሳሌም መኮንን",
+      "slug": "ዘማሪት-ኢየሩሳሌም-መኮንን",
+      "createdAt": "2026-02-06T05:20:17.000Z",
+      "updatedAt": "2026-02-06T05:20:17.000Z"
+    },
+    {
+      "id": 301,
+      "name": "ዘማሪት ኣርያም",
+      "slug": "ዘማሪት-ኣርያም",
+      "createdAt": "2025-04-02T01:33:38.000Z",
+      "updatedAt": "2025-04-02T01:33:38.000Z"
+    },
+    {
+      "id": 566,
+      "name": "ዘማሪት ኣርያም አስመሮም",
+      "slug": "ዘማሪት-ኣርያም-አስመሮም",
+      "createdAt": "2026-09-15T03:37:34.727Z",
+      "updatedAt": "2026-09-15T03:37:34.727Z"
+    },
+    {
+      "id": 501,
+      "name": "ዘማሪት ኣስቴር ወልደማርያም",
+      "slug": "ዘማሪት-ኣስቴር-ወልደማርያም",
+      "createdAt": "2026-04-07T02:00:05.000Z",
+      "updatedAt": "2026-04-07T02:00:05.000Z"
+    },
+    {
+      "id": 436,
+      "name": "ዘማሪት ኣድሓነት ወ/ሂወት",
+      "slug": "ዘማሪት-ኣድሓነት-ወሂወት",
+      "createdAt": "2026-01-03T04:20:35.000Z",
+      "updatedAt": "2026-01-03T04:20:35.000Z"
+    },
+    {
+      "id": 128,
+      "name": "ዘማሪት ኣድያም ሃብተሚካኤል",
+      "slug": "ዘማሪት-ኣድያም-ሃብተሚካኤል",
+      "createdAt": "2024-10-21T03:07:55.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 583,
+      "name": "ዘማሪት ኤደን ኃይሎም",
+      "slug": "ዘማሪት-ኤደን-ኃይሎም-mv7kky8m",
+      "createdAt": "2026-10-14T03:48:15.575Z",
+      "updatedAt": "2026-10-14T03:48:15.575Z"
+    },
+    {
+      "id": 213,
+      "name": "ዘማሪት ኤደን ነዋይ‪",
+      "slug": "ዘማሪት-ኤደን-ነዋይ",
+      "createdAt": "2025-01-24T10:04:04.000Z",
+      "updatedAt": "2025-01-24T10:04:04.000Z"
+    },
+    {
+      "id": 434,
+      "name": "ዘማሪት ኤደን አይዳኙህም",
+      "slug": "ዘማሪት-ኤደን-አይዳኙህም",
+      "createdAt": "2025-12-28T04:34:55.000Z",
+      "updatedAt": "2025-12-28T04:34:55.000Z"
+    },
+    {
+      "id": 29,
+      "name": "ዘማሪት እሌኒ ደስታ",
+      "slug": "ዘማሪት-እሌኒ-ደስታ",
+      "createdAt": "2024-09-15T00:34:24.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 552,
+      "name": "ዘማሪት እስከዳር ዐማረ",
+      "slug": "ዘማሪት-እስከዳር-ዐማረ",
+      "createdAt": "2026-08-20T03:19:29.022Z",
+      "updatedAt": "2026-08-20T03:19:29.022Z"
+    },
+    {
+      "id": 327,
+      "name": "ዘማሪት እድላዊት ፍሬው",
+      "slug": "ዘማሪት-እድላዊት-ፍሬው",
+      "createdAt": "2025-06-06T02:11:38.000Z",
+      "updatedAt": "2025-06-06T02:11:38.000Z"
+    },
+    {
+      "id": 382,
+      "name": "ዘማሪት እጹብ መስፍን",
+      "slug": "ዘማሪት-እጹብ-መስፍን",
+      "createdAt": "2025-10-14T01:16:47.000Z",
+      "updatedAt": "2025-10-14T01:16:47.000Z"
+    },
+    {
+      "id": 391,
+      "name": "ዘማሪት እጹብድንቅ ሲሳይ",
+      "slug": "ዘማሪት-እጹብድንቅ-ሲሳይ",
+      "createdAt": "2025-10-31T03:21:53.000Z",
+      "updatedAt": "2025-10-31T03:21:53.000Z"
+    },
+    {
+      "id": 201,
+      "name": "ዘማሪት እፀገነት ከበደ",
+      "slug": "ዘማሪት-እፀገነት-ከበደ",
+      "createdAt": "2025-01-09T09:20:53.000Z",
+      "updatedAt": "2025-01-09T09:20:53.000Z"
+    },
+    {
+      "id": 331,
+      "name": "ዘማሪት እፁብድንቅ አዲሱ",
+      "slug": "ዘማሪት-እፁብድንቅ-አዲሱ",
+      "createdAt": "2025-07-10T00:35:24.000Z",
+      "updatedAt": "2025-07-10T00:35:24.000Z"
+    },
+    {
+      "id": 271,
+      "name": "ዘማሪት እፁብድንቅ ጥላሁን",
+      "slug": "ዘማሪት-እፁብድንቅ-ጥላሁን",
+      "createdAt": "2025-03-24T03:28:57.000Z",
+      "updatedAt": "2025-03-24T03:28:57.000Z"
+    },
+    {
+      "id": 565,
+      "name": "ዘማሪት ኪረን ኃ/መስቀል",
+      "slug": "ዘማሪት-ኪረን-ኃመስቀል",
+      "createdAt": "2026-09-15T03:35:18.271Z",
+      "updatedAt": "2026-09-15T03:35:18.271Z"
+    },
+    {
+      "id": 420,
+      "name": "ዘማሪት ኪያኪ ሃ/ገብርኤል",
+      "slug": "ዘማሪት-ኪያኪ-ሃገብርኤል",
+      "createdAt": "2025-12-06T04:14:52.000Z",
+      "updatedAt": "2025-12-06T04:14:52.000Z"
+    },
+    {
+      "id": 536,
+      "name": "ዘማሪት ወርቅነሸ ተፈራ",
+      "slug": "ዘማሪት-ወርቅነሸ-ተፈራ",
+      "createdAt": "2026-07-06T03:31:04.518Z",
+      "updatedAt": "2026-07-06T03:31:04.518Z"
+    },
+    {
+      "id": 122,
+      "name": "ዘማሪት ወርቅነሽ ኃይሉ",
+      "slug": "ዘማሪት-ወርቅነሽ-ኃይሉ",
+      "createdAt": "2024-10-19T04:07:22.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 518,
+      "name": "ዘማሪት ዉቢቱ ሰሎሞን",
+      "slug": "ዘማሪት-ዉቢቱ-ሰሎሞን",
+      "createdAt": "2026-05-24T03:37:34.641Z",
+      "updatedAt": "2026-05-24T03:37:34.641Z"
+    },
+    {
+      "id": 474,
+      "name": "ዘማሪት ዊንታ አጽብሐ",
+      "slug": "ዘማሪት-ዊንታ-አጽብሐ",
+      "createdAt": "2026-03-09T04:13:01.000Z",
+      "updatedAt": "2026-03-09T04:13:01.000Z"
+    },
+    {
+      "id": 544,
+      "name": "ዘማሪት ውቢት ሸዴ",
+      "slug": "ዘማሪት-ውቢት-ሸዴ",
+      "createdAt": "2026-07-30T03:19:39.658Z",
+      "updatedAt": "2026-07-30T03:19:39.658Z"
+    },
+    {
+      "id": 491,
+      "name": "ዘማሪት ውዴ ታችበሌ",
+      "slug": "ዘማሪት-ውዴ-ታችበሌ",
+      "createdAt": "2026-03-25T03:44:03.000Z",
+      "updatedAt": "2026-03-25T03:44:03.000Z"
+    },
+    {
+      "id": 117,
+      "name": "ዘማሪት ዕንቁሥላሴ ጎሳ",
+      "slug": "ዘማሪት-ዕንቁሥላሴ-ጎሳ",
+      "createdAt": "2024-10-19T03:59:59.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 230,
+      "name": "ዘማሪት የሮም መኮንን",
+      "slug": "ዘማሪት-የሮም-መኮንን",
+      "createdAt": "2025-02-18T10:14:39.000Z",
+      "updatedAt": "2025-02-18T10:14:39.000Z"
+    },
+    {
+      "id": 181,
+      "name": "ዘማሪት የትምወርቅ ሙላት",
+      "slug": "ዘማሪት-የትምወርቅ-ሙላት",
+      "createdAt": "2024-12-07T10:28:30.000Z",
+      "updatedAt": "2024-12-07T10:28:30.000Z"
+    },
+    {
+      "id": 419,
+      "name": "ዘማሪት የአብስራ ደጀኔ",
+      "slug": "ዘማሪት-የአብስራ-ደጀኔ",
+      "createdAt": "2025-12-02T04:45:47.000Z",
+      "updatedAt": "2025-12-02T04:45:47.000Z"
+    },
+    {
+      "id": 507,
+      "name": "ዘማሪት የግሌነሽ ተስፋዬ",
+      "slug": "ዘማሪት-የግሌነሽ-ተስፋዬ",
+      "createdAt": "2026-04-22T01:54:01.000Z",
+      "updatedAt": "2026-04-22T01:54:01.000Z"
+    },
+    {
+      "id": 515,
+      "name": "ዘማሪት ያለምዘርፍ አለበል",
+      "slug": "ዘማሪት-ያለምዘርፍ-አለበል",
+      "createdAt": "2026-05-21T03:57:28.268Z",
+      "updatedAt": "2026-05-21T03:57:28.268Z"
+    },
+    {
+      "id": 100,
+      "name": "ዘማሪት ያኔት በሪሁን",
+      "slug": "ዘማሪት-ያኔት-በሪሁን",
+      "createdAt": "2024-10-15T01:48:27.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 522,
+      "name": "ዘማሪት ዮሃና ክፍለ",
+      "slug": "ዘማሪት-ዮሃና-ክፍለ",
+      "createdAt": "2026-05-26T03:51:45.615Z",
+      "updatedAt": "2026-05-26T03:51:45.615Z"
+    },
+    {
+      "id": 314,
+      "name": "ዘማሪት ዮረሳሌም ፋኑስ",
+      "slug": "ዘማሪት-ዮረሳሌም-ፋኑስ",
+      "createdAt": "2025-04-08T01:43:05.000Z",
+      "updatedAt": "2025-04-08T01:43:05.000Z"
+    },
+    {
+      "id": 413,
+      "name": "ዘማሪት ዮርዳኖስ ሞላ",
+      "slug": "ዘማሪት-ዮርዳኖስ-ሞላ",
+      "createdAt": "2025-11-22T05:57:08.000Z",
+      "updatedAt": "2025-11-22T05:57:08.000Z"
+    },
+    {
+      "id": 194,
+      "name": "ዘማሪት ዮርዳኖስ አለልኝ",
+      "slug": "ዘማሪት-ዮርዳኖስ-አለልኝ",
+      "createdAt": "2024-12-28T10:14:35.000Z",
+      "updatedAt": "2024-12-28T10:14:35.000Z"
+    },
+    {
+      "id": 184,
+      "name": "ዘማሪት ዮርዳኖስ ደረጄ",
+      "slug": "ዘማሪት-ዮርዳኖስ-ደረጄ",
+      "createdAt": "2024-12-10T10:18:54.000Z",
+      "updatedAt": "2024-12-10T10:18:54.000Z"
+    },
+    {
+      "id": 422,
+      "name": "ዘማሪት ዮዲት ታደሰ",
+      "slug": "ዘማሪት-ዮዲት-ታደሰ",
+      "createdAt": "2025-12-07T05:35:05.000Z",
+      "updatedAt": "2025-12-07T05:35:05.000Z"
+    },
+    {
+      "id": 530,
+      "name": "ዘማሪት ደሊና ሃይለ",
+      "slug": "ዘማሪት-ደሊና-ሃይለ",
+      "createdAt": "2026-06-11T03:41:19.737Z",
+      "updatedAt": "2026-06-11T03:41:19.737Z"
+    },
+    {
+      "id": 249,
+      "name": "ዘማሪት ደራርቱ አበራ",
+      "slug": "ዘማሪት-ደራርቱ-አበራ",
+      "createdAt": "2025-03-08T04:09:45.000Z",
+      "updatedAt": "2025-03-08T04:09:45.000Z"
+    },
+    {
+      "id": 424,
+      "name": "ዘማሪት ዲቮራ ብርሃነ",
+      "slug": "ዘማሪት-ዲቮራ-ብርሃነ",
+      "createdAt": "2025-12-10T04:25:56.000Z",
+      "updatedAt": "2025-12-10T04:25:56.000Z"
+    },
+    {
+      "id": 146,
+      "name": "ዘማሪት ዶክተር ሄለን ተስፋዬ",
+      "slug": "ዘማሪት-ዶክተር-ሄለን-ተስፋዬ",
+      "createdAt": "2024-10-30T04:38:51.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 395,
+      "name": "ዘማሪት ዶክተር ብሩክታዊት ተስፋይ",
+      "slug": "ዘማሪት-ዶክተር-ብሩክታዊት-ተስፋይ",
+      "createdAt": "2025-11-02T03:31:40.000Z",
+      "updatedAt": "2025-11-02T03:31:40.000Z"
+    },
+    {
+      "id": 246,
+      "name": "ዘማሪት ገነት ሽታ",
+      "slug": "ዘማሪት-ገነት-ሽታ",
+      "createdAt": "2025-03-08T04:08:17.000Z",
+      "updatedAt": "2025-03-08T04:08:17.000Z"
+    },
+    {
+      "id": 188,
+      "name": "ዘማሪት ጤናዬ አሰፋ",
+      "slug": "ዘማሪት-ጤናዬ-አሰፋ",
+      "createdAt": "2024-12-15T10:29:45.000Z",
+      "updatedAt": "2024-12-15T10:29:45.000Z"
+    },
+    {
+      "id": 577,
+      "name": "ዘማሪት ጽዮን ዓለምሰገድ",
+      "slug": "ዘማሪት-ጽዮን-ዓለምሰገድ-muuq11he",
+      "createdAt": "2026-10-05T03:59:44.067Z",
+      "updatedAt": "2026-10-05T03:59:44.067Z"
+    },
+    {
+      "id": 175,
+      "name": "ዘማሪት ጽጌረዳ ጥላሁን",
+      "slug": "ዘማሪት-ጽጌረዳ-ጥላሁን",
+      "createdAt": "2024-12-03T10:16:23.000Z",
+      "updatedAt": "2024-12-03T10:16:23.000Z"
+    },
+    {
+      "id": 506,
+      "name": "ዘማሪት ፀሐይ ጌታሰው",
+      "slug": "ዘማሪት-ፀሐይ-ጌታሰው",
+      "createdAt": "2026-04-20T01:28:41.000Z",
+      "updatedAt": "2026-04-20T01:28:41.000Z"
+    },
+    {
+      "id": 151,
+      "name": "ዘማሪት ፀዳለ ጎበዜ",
+      "slug": "ዘማሪት-ፀዳለ-ጎበዜ",
+      "createdAt": "2024-10-31T03:51:33.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 421,
+      "name": "ዘማሪት ፀጋዊት ክፍላይ",
+      "slug": "ዘማሪት-ፀጋዊት-ክፍላይ",
+      "createdAt": "2025-12-06T04:16:47.000Z",
+      "updatedAt": "2025-12-06T04:16:47.000Z"
+    },
+    {
+      "id": 568,
+      "name": "ዘማሪት ፋሲካ ድንቁ",
+      "slug": "ዘማሪት-ፋሲካ-ድንቁ",
+      "createdAt": "2026-09-15T03:41:41.186Z",
+      "updatedAt": "2026-09-15T03:41:41.186Z"
+    },
+    {
+      "id": 140,
+      "name": "ዘማሪት ፋሲካ ፍሥሐ",
+      "slug": "ዘማሪት-ፋሲካ-ፍሥሐ",
+      "createdAt": "2024-10-28T05:46:18.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 203,
+      "name": "ዘማሪት ፋና ተወልደ",
+      "slug": "ዘማሪት-ፋና-ተወልደ",
+      "createdAt": "2025-01-09T09:27:42.000Z",
+      "updatedAt": "2025-01-09T09:27:42.000Z"
+    },
+    {
+      "id": 20,
+      "name": "ዘማሪት ፋንቱ ወልዴ",
+      "slug": "ዘማሪት-ፋንቱ-ወልዴ",
+      "createdAt": "2024-09-14T23:18:21.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 546,
+      "name": "ዘማሪት ፌበን ግርማ",
+      "slug": "ዘማሪት-ፌበን-ግርማ",
+      "createdAt": "2026-08-02T03:46:38.059Z",
+      "updatedAt": "2026-08-02T03:46:38.059Z"
+    },
+    {
+      "id": 527,
+      "name": "ዘማሪት ፌቨን ተስፉ",
+      "slug": "ዘማሪት-ፌቨን-ተስፉ",
+      "createdAt": "2026-06-04T04:01:30.367Z",
+      "updatedAt": "2026-06-04T04:01:30.367Z"
+    },
+    {
+      "id": 534,
+      "name": "ዘማሪት ፌቨን አምደብርሃን",
+      "slug": "ዘማሪት-ፌቨን-አምደብርሃን",
+      "createdAt": "2026-06-30T03:29:16.787Z",
+      "updatedAt": "2026-06-30T03:29:16.787Z"
+    },
+    {
+      "id": 174,
+      "name": "ዘማሪት ፌቨን እዮብ",
+      "slug": "ዘማሪት-ፌቨን-እዮብ",
+      "createdAt": "2024-11-29T10:13:20.000Z",
+      "updatedAt": "2024-11-29T10:13:20.000Z"
+    },
+    {
+      "id": 381,
+      "name": "ዘማሪት ፍሬወይን በሪሁን",
+      "slug": "ዘማሪት-ፍሬወይን-በሪሁን",
+      "createdAt": "2025-10-10T01:22:05.000Z",
+      "updatedAt": "2025-10-10T01:22:05.000Z"
+    },
+    {
+      "id": 299,
+      "name": "ዘማሪት ፍቅርተ ታደሰ",
+      "slug": "ዘማሪት-ፍቅርተ-ታደሰ",
+      "createdAt": "2025-03-31T02:02:53.000Z",
+      "updatedAt": "2025-03-31T02:02:53.000Z"
+    },
+    {
+      "id": 488,
+      "name": "ዘርፉ ደምሴ",
+      "slug": "ዘርፉ-ደምሴ",
+      "createdAt": "2026-03-23T03:27:49.000Z",
+      "updatedAt": "2026-03-23T03:27:49.000Z"
+    },
+    {
+      "id": 202,
+      "name": "ያልተገለጸ (Anonymous)",
+      "slug": "ያልተገለጸ-Anonymous",
+      "createdAt": "2025-01-09T09:26:40.000Z",
+      "updatedAt": "2025-01-09T09:26:40.000Z"
+    },
+    {
+      "id": 254,
+      "name": "ያየለት አዱኛ",
+      "slug": "ያየለት-አዱኛ",
+      "createdAt": "2025-03-12T05:21:55.000Z",
+      "updatedAt": "2025-03-12T05:21:55.000Z"
+    },
+    {
+      "id": 465,
+      "name": "ደምሴ በገና",
+      "slug": "ደምሴ-በገና",
+      "createdAt": "2026-03-05T04:44:42.000Z",
+      "updatedAt": "2026-03-05T04:44:42.000Z"
+    },
+    {
+      "id": 328,
+      "name": "ዲያቆን ሰቦቃ ጉደታ",
+      "slug": "ዲያቆን-ሰቦቃ-ጉደታ",
+      "createdAt": "2025-07-04T04:06:12.000Z",
+      "updatedAt": "2025-07-04T04:06:12.000Z"
+    },
+    {
+      "id": 445,
+      "name": "ዲያቆን ተመስገን ሀብታሙ",
+      "slug": "ዲያቆን-ተመስገን-ሀብታሙ",
+      "createdAt": "2026-01-26T04:37:24.000Z",
+      "updatedAt": "2026-01-26T04:37:24.000Z"
+    },
+    {
+      "id": 187,
+      "name": "ዲያቆን አካል በለጠ",
+      "slug": "ዲያቆን-አካል-በለጠ",
+      "createdAt": "2024-12-13T13:19:47.000Z",
+      "updatedAt": "2024-12-13T13:19:47.000Z"
+    },
+    {
+      "id": 472,
+      "name": "ዲያቆን ከሣቴ ብርሃን ገ/ኢየሱስ",
+      "slug": "ዲያቆን-ከሣቴ-ብርሃን-ገኢየሱስ",
+      "createdAt": "2026-03-08T10:16:22.000Z",
+      "updatedAt": "2026-03-08T10:16:22.000Z"
+    },
+    {
+      "id": 291,
+      "name": "ዲያቆን ዘማሪ ኤስሮም ተሾመ",
+      "slug": "ዲያቆን-ዘማሪ-ኤስሮም-ተሾመ",
+      "createdAt": "2025-03-29T04:18:11.000Z",
+      "updatedAt": "2025-03-29T04:18:11.000Z"
+    },
+    {
+      "id": 405,
+      "name": "ዲያቆን ያሬድ ብርሃነ",
+      "slug": "ዲያቆን-ያሬድ-ብርሃነ",
+      "createdAt": "2025-11-14T04:19:34.000Z",
+      "updatedAt": "2025-11-14T04:19:34.000Z"
+    },
+    {
+      "id": 323,
+      "name": "ዲያቆን ያሬድ ተካልኝ",
+      "slug": "ዲያቆን-ያሬድ-ተካልኝ",
+      "createdAt": "2025-05-03T01:19:27.000Z",
+      "updatedAt": "2025-05-03T01:19:27.000Z"
+    },
+    {
+      "id": 144,
+      "name": "ዲያቆን ጌታ ሰጠኝ",
+      "slug": "ዲያቆን-ጌታ-ሰጠኝ",
+      "createdAt": "2024-10-29T04:47:22.000Z",
+      "updatedAt": "2024-11-25T07:15:16.000Z"
+    },
+    {
+      "id": 479,
+      "name": "ዳን በገና",
+      "slug": "ዳን-በገና",
+      "createdAt": "2026-03-15T04:09:22.000Z",
+      "updatedAt": "2026-03-15T04:09:22.000Z"
+    },
+    {
+      "id": 192,
+      "name": "ጃን ያሬድ",
+      "slug": "ጃን-ያሬድ",
+      "createdAt": "2024-12-20T09:56:08.000Z",
+      "updatedAt": "2024-12-20T09:56:08.000Z"
+    },
+    {
+      "id": 319,
+      "name": "ፍኖተ ጽድቅ",
+      "slug": "ፍኖተ-ጽድቅ",
+      "createdAt": "2025-04-17T01:52:07.000Z",
+      "updatedAt": "2025-04-17T01:52:07.000Z"
+    }
+  ],
+  "initial_total_reported": 4175,
+  "initial_total_pages_reported": 174
+}

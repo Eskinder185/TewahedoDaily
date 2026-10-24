@@ -16,6 +16,7 @@ import s from './Admin.module.css'
 const HYMNS_TABS = [
   { to: '/admin/hymns', label: 'Overview', end: true },
   { to: '/admin/hymns/mezmur', label: 'Mezmur' },
+  { to: '/admin/hymns/import', label: 'CSV Import' },
   { to: '/admin/hymns/browse-groups', label: 'Browse Groups' },
   { to: '/admin/hymns/occasions', label: 'Occasions' },
   { to: '/admin/hymns/categories', label: 'Categories' },
@@ -168,6 +169,8 @@ export function HymnsOverview() {
       />
       <p className={s.muted} style={{ marginTop: 16 }}>
         <Link to="/admin/hymns/mezmur/new">+ Add Mezmur</Link>
+        {' · '}
+        <Link to="/admin/hymns/import">Bulk CSV Import Preview</Link>
       </p>
     </>
   )

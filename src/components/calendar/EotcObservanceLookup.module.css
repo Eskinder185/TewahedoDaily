@@ -56,7 +56,7 @@
   line-height: 1.2;
   border: 1px solid rgba(180, 145, 60, 0.35);
   background: linear-gradient(180deg, rgba(214, 184, 96, 0.18), rgba(214, 184, 96, 0.1));
-  color: #5c4614;
+  color: var(--color-heading);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   transition: transform var(--duration-fast) var(--ease-out);
 }

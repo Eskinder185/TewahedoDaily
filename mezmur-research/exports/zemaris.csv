@@ -1,0 +1,569 @@
+﻿id,slug,name,name_amharic,bio,bio_amharic,image_path,image_alt,youtube_url,website_url,sort_order,is_featured,status,mezmur_count,source_url,review_required
+,like-mezemiran-tewodiros-yosef,Like Mezemiran Tewodiros Yosef,ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ,,,,Like Mezemiran Tewodiros Yosef,,,10,false,draft,211,https://eotcmedia.com/hymns/singer/ሊቀ-መዘምራን-ቴዎድሮስ-ዮሴፍ,false
+,like-mezemiran-yilima-hayilu,Like Mezemiran Yilima Hayilu,ሊቀ መዘምራን ይልማ ኃይሉ,,,,Like Mezemiran Yilima Hayilu,,,20,false,draft,123,https://eotcmedia.com/hymns/singer/ሊቀ-መዘምራን-ይልማ-ኃይሉ,false
+,zemari-diyakon-abel-mekibib,Zemari Diyakon Abel Mekibib,ዘማሪ ዲያቆን አቤል መክብብ,,,,Zemari Diyakon Abel Mekibib,,,30,false,draft,119,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አቤል-መክብብ,false
+,zemarit-miritinesh-tilahun,Zemarit Miritinesh Tilahun,ዘማሪት ምርትነሽ ጥላሁን,,,,Zemarit Miritinesh Tilahun,,,40,false,draft,119,https://eotcmedia.com/hymns/singer/ዘማሪት-ምርትነሽ-ጥላሁን,false
+,kesis-zemari-ashenafi-gebire-mariyam,Kesis Zemari Ashenafi Gebire Mariyam,ቀሲስ ዘማሪ አሸናፊ ገብረ ማርያም,,,,Kesis Zemari Ashenafi Gebire Mariyam,,,50,false,draft,91,https://eotcmedia.com/hymns/singer/ቀሲስ-ዘማሪ-አሸናፊ-ገብረ-ማርያም,false
+,zemarit-sisiter-hiyiwet-teferi,Zemarit Sisiter Hiyiwet Teferi,ዘማሪት ሲስተር ሕይወት ተፈሪ,,,,Zemarit Sisiter Hiyiwet Teferi,,,60,false,draft,89,https://eotcmedia.com/hymns/singer/ዘማሪት-ሲስተር-ሕይወት-ተፈሪ,false
+,jan-yared,Jan Yared,ጃን ያሬድ,,,,Jan Yared,,,70,false,draft,86,https://eotcmedia.com/hymns/singer/ጃን-ያሬድ,false
+,zemari-selomon-abubeker,Zemari Selomon Abubeker,ዘማሪ ሰሎሞን አቡበከር,,,,Zemari Selomon Abubeker,,,80,false,draft,71,https://eotcmedia.com/hymns/singer/ዘማሪ-ሰሎሞን-አቡበከር,false
+,zemari-gebireyohanis-gebiretsadik,Zemari Gebireyohanis Gebiretsadik,ዘማሪ ገብረዮሐንስ ገብረፃድቅ,,,,Zemari Gebireyohanis Gebiretsadik,,,90,false,draft,63,https://eotcmedia.com/hymns/singer/ዘማሪ-ገብረዮሐንስ-ገብረፃድቅ,false
+,zemari-diyakon-kedametsega-yohanis,Zemari Diyakon Kedametsega Yohanis,ዘማሪ ዲያቆን ቀዳሜጸጋ ዮሐንስ,,,,Zemari Diyakon Kedametsega Yohanis,,,100,false,draft,57,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቀዳሜጸጋ-ዮሐንስ,false
+,zemari-berehet-tikue,Zemari Berehet Tikue,ዘማሪ በረኸት ትኩእ,,,,Zemari Berehet Tikue,,,110,false,draft,51,https://eotcmedia.com/hymns/singer/ዘማሪ-በረኸት-ትኩእ,false
+,muhaze-sibihat-zemari-dagimawi-deribe,Muhaze Sibihat Zemari Dagimawi Deribe,ሙሐዘ ስብሀት ዘማሪ ዳግማዊ ደርቤ,,,,Muhaze Sibihat Zemari Dagimawi Deribe,,,120,false,draft,50,https://eotcmedia.com/hymns/singer/ሙሐዘ-ስብሀት-ዘማሪ-ዳግማዊ-ደርቤ,false
+,zemari-diyakon-bisirat-chebisi,Zemari Diyakon Bisirat Chebisi,ዘማሪ ዲያቆን ብስራት ጨብሲ,,,,Zemari Diyakon Bisirat Chebisi,,,130,false,draft,48,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ብስራት-ጨብሲ,false
+,zemari-kesis-minidaye-birihanu,Zemari Kesis Minidaye Birihanu,ዘማሪ ቀሲስ ምንዳዬ ብርሃኑ,,,,Zemari Kesis Minidaye Birihanu,,,140,false,draft,48,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-ምንዳዬ-ብርሃኑ,false
+,mahibere-kidusan,Mahibere Kidusan,ማኅበረ ቅዱሳን,,,,Mahibere Kidusan,,,150,false,draft,47,https://eotcmedia.com/hymns/singer/ማኅበረ-ቅዱሳን,false
+,like-lisanat-cherinet-senay,Like Lisanat Cherinet Senay,ሊቀ ልሣናት ቸርነት ሰናይ,,,,Like Lisanat Cherinet Senay,,,160,false,draft,46,https://eotcmedia.com/hymns/singer/ሊቀ-ልሣናት-ቸርነት-ሰናይ,false
+,zemari-diyakon-firezer-desalegn,Zemari Diyakon Firezer Desalegn,ዘማሪ ዲያቆን ፍሬዘር ደሳለኝ,,,,Zemari Diyakon Firezer Desalegn,,,170,false,draft,45,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፍሬዘር-ደሳለኝ,false
+,zemari-diyakon-ezira-ha-mikael,Zemari Diyakon Ezira Ha/mikael,ዘማሪ ዲያቆን እዝራ ኃ/ሚካኤል,,,,Zemari Diyakon Ezira Ha/mikael,,,180,false,draft,44,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እዝራ-ኃ/ሚካኤል,false
+,zemari-yeabikal-desalegn,Zemari Yeabikal Desalegn,ዘማሪ የአብቃል ደሳለኝ,,,,Zemari Yeabikal Desalegn,,,190,false,draft,42,https://eotcmedia.com/hymns/singer/ዘማሪ-የአብቃል-ደሳለኝ,false
+,zemari-diyakon-enidale-dereje,Zemari Diyakon Enidale Dereje,ዘማሪ ዲያቆን እንዳለ ደረጀ,,,,Zemari Diyakon Enidale Dereje,,,200,false,draft,40,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እንዳለ-ደረጀ,false
+,zemarit-sisiter-fasika-mekonin,Zemarit Sisiter Fasika Mekonin,ዘማሪት ሲስተር ፋሲካ መኮንን,,,,Zemarit Sisiter Fasika Mekonin,,,210,false,draft,38,https://eotcmedia.com/hymns/singer/ዘማሪት-ሲስተር-ፋሲካ-መኮንን,false
+,meliake-selam-kesis-enigidawerik-bekele,Meliake Selam Kesis Enigidawerik Bekele,መልአከ ሰላም ቀሲስ እንግዳወርቅ በቀለ,,,,Meliake Selam Kesis Enigidawerik Bekele,,,220,false,draft,34,https://eotcmedia.com/hymns/singer/መልአከ-ሰላም-ቀሲስ-እንግዳወርቅ-በቀለ,false
+,zemari-diyakon-hawaz-tegegn,Zemari Diyakon Hawaz Tegegn,ዘማሪ ዲያቆን ሐዋዝ ተገኝ,,,,Zemari Diyakon Hawaz Tegegn,,,230,false,draft,34,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሐዋዝ-ተገኝ,false
+,together,Together,,,,,Together,,,240,false,draft,30,https://eotcmedia.com/hymns/singer/Together,false
+,zemari-besufikad-anidarigachew,Zemari Besufikad Anidarigachew,ዘማሪ በሱፍቃድ አንዳርጋቸው,,,,Zemari Besufikad Anidarigachew,,,250,false,draft,29,https://eotcmedia.com/hymns/singer/ዘማሪ-በሱፍቃድ-አንዳርጋቸው,false
+,zemari-daniel-tibebesilase,Zemari Daniel Tibebesilase,ዘማሪ ዳንኤል ጥበበሥላሴ,,,,Zemari Daniel Tibebesilase,,,260,false,draft,28,https://eotcmedia.com/hymns/singer/ዘማሪ-ዳንኤል-ጥበበሥላሴ,false
+,zemarit-fanitu-welide,Zemarit Fanitu Welide,ዘማሪት ፋንቱ ወልዴ,,,,Zemarit Fanitu Welide,,,270,false,draft,26,https://eotcmedia.com/hymns/singer/ዘማሪት-ፋንቱ-ወልዴ,false
+,zemari-diyakon-yitibarek-tegegn,Zemari Diyakon Yitibarek Tegegn,ዘማሪ ዲያቆን ይትባረክ ተገኝ,,,,Zemari Diyakon Yitibarek Tegegn,,,280,false,draft,25,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ይትባረክ-ተገኝ,false
+,zemarit-betselot-asimare,Zemarit Betselot Asimare,ዘማሪት በፀሎት አስማረ,,,,Zemarit Betselot Asimare,,,290,false,draft,25,https://eotcmedia.com/hymns/singer/ዘማሪት-በፀሎት-አስማረ,false
+,like-mezemiran-kinetibeb-welidekirikos,Like Mezemiran Kinetibeb Welidekirikos,ሊቀ መዘምራን ኪነጥበብ ወልደቂርቆስ,,,,Like Mezemiran Kinetibeb Welidekirikos,,,300,false,draft,23,https://eotcmedia.com/hymns/singer/ሊቀ-መዘምራን-ኪነጥበብ-ወልደቂርቆስ,false
+,zemarit-betel-yisihak,Zemarit Betel Yisihak,ዘማሪት ቤቴል ይስሐቅ,,,,Zemarit Betel Yisihak,,,310,false,draft,22,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤቴል-ይስሐቅ,false
+,zemarit-tirihas-gebireegiziabiher,Zemarit Tirihas Gebireegiziabiher,ዘማሪት ትርሃስ ገብረእግዚአብሔር,,,,Zemarit Tirihas Gebireegiziabiher,,,320,false,draft,22,https://eotcmedia.com/hymns/singer/ዘማሪት-ትርሃስ-ገብረእግዚአብሔር,false
+,zemarit-tsigereda-tilahun,Zemarit Tsigereda Tilahun,ዘማሪት ጽጌረዳ ጥላሁን,,,,Zemarit Tsigereda Tilahun,,,330,false,draft,22,https://eotcmedia.com/hymns/singer/ዘማሪት-ጽጌረዳ-ጥላሁን,false
+,zemari-diyakon-behayilu-tebeje,Zemari Diyakon Behayilu Tebeje,ዘማሪ ዲያቆን በሀይሉ ተበጀ,,,,Zemari Diyakon Behayilu Tebeje,,,340,false,draft,21,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-በሀይሉ-ተበጀ,false
+,zemari-diyakon-zelealem-takele,Zemari Diyakon Zelealem Takele,ዘማሪ ዲያቆን ዘለዓለም ታከለ,,,,Zemari Diyakon Zelealem Takele,,,350,false,draft,21,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዘለዓለም-ታከለ,false
+,zemarit-lemilem-kebede,Zemarit Lemilem Kebede,ዘማሪት ለምለም ከበደ,,,,Zemarit Lemilem Kebede,,,360,false,draft,21,https://eotcmedia.com/hymns/singer/ዘማሪት-ለምለም-ከበደ,false
+,zemarit-rut-demelash,Zemarit Rut Demelash,ዘማሪት ሩት ደመላሽ,,,,Zemarit Rut Demelash,,,370,false,draft,21,https://eotcmedia.com/hymns/singer/ዘማሪት-ሩት-ደመላሽ,false
+,zemarit-sisiter-lidiya-tadese,Zemarit Sisiter Lidiya Tadese,ዘማሪት ሲስተር ልድያ ታደሰ,,,,Zemarit Sisiter Lidiya Tadese,,,380,false,draft,21,https://eotcmedia.com/hymns/singer/ዘማሪት-ሲስተር-ልድያ-ታደሰ,false
+,like-diyakonat-nebiyu-samuel,Like Diyakonat Nebiyu Samuel,ሊቀ ዲያቆናት ነቢዩ ሳሙኤል,,,,Like Diyakonat Nebiyu Samuel,,,390,false,draft,20,https://eotcmedia.com/hymns/singer/ሊቀ-ዲያቆናት-ነቢዩ-ሳሙኤል,false
+,zemari-adam-mulugeta,Zemari Adam Mulugeta,,,,,Zemari Adam Mulugeta,,,400,false,draft,20,https://eotcmedia.com/hymns/singer/Zemari-Adam-Mulugeta,false
+,zemari-diyakon-yosef-girima,Zemari Diyakon Yosef Girima,ዘማሪ ዲያቆን ዮሴፍ ግርማ,,,,Zemari Diyakon Yosef Girima,,,410,false,draft,20,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዮሴፍ-ግርማ,false
+,zemari-diyakon-liuliseged-getachew,Zemari Diyakon Liuliseged Getachew,ዘማሪ ዲያቆን ልዑልሰገድ ጌታቸው,,,,Zemari Diyakon Liuliseged Getachew,,,420,false,draft,19,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ልዑልሰገድ-ጌታቸው,false
+,like-mezemiran-diyakon-firanol-mosisa,Like Mezemiran Diyakon Firanol Mosisa,ሊቀ መዘምራን ዲያቆን ፍራኖል ሞሲሳ,,,,Like Mezemiran Diyakon Firanol Mosisa,,,430,false,draft,18,https://eotcmedia.com/hymns/singer/ሊቀ-መዘምራን-ዲያቆን-ፍራኖል-ሞሲሳ,false
+,riese-mezemiran-esitifanos-sahile,Riese Mezemiran Esitifanos Sahile,ርዕሰ መዘምራን እስጢፋኖስ ሣህሌ,,,,Riese Mezemiran Esitifanos Sahile,,,440,false,draft,18,https://eotcmedia.com/hymns/singer/ርዕሰ-መዘምራን-እስጢፋኖስ-ሣህሌ,false
+,zemarit-naridos-kasahun,Zemarit Naridos Kasahun,ዘማሪት ናርዶስ ካሳሁን,,,,Zemarit Naridos Kasahun,,,450,false,draft,18,https://eotcmedia.com/hymns/singer/ዘማሪት-ናርዶስ-ካሳሁን,false
+,zemarit-azeb-kebede,Zemarit Azeb Kebede,ዘማሪት አዜብ ከበደ,,,,Zemarit Azeb Kebede,,,460,false,draft,17,https://eotcmedia.com/hymns/singer/ዘማሪት-አዜብ-ከበደ,false
+,zemari-fikadu-amare,Zemari Fikadu Amare,ዘማሪ ፍቃዱ አማረ,,,,Zemari Fikadu Amare,,,470,false,draft,16,https://eotcmedia.com/hymns/singer/ዘማሪ-ፍቃዱ-አማረ,false
+,zemari-kesis-wenidiwesen-belay,Zemari Kesis Wenidiwesen Belay,ዘማሪ ቀሲስ ወንድወሰን በላይ,,,,Zemari Kesis Wenidiwesen Belay,,,480,false,draft,16,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-ወንድወሰን-በላይ,false
+,zemarit-sara-menigisitu,Zemarit Sara Menigisitu,ዘማሪት ሳራ መንግስቱ,,,,Zemarit Sara Menigisitu,,,490,false,draft,16,https://eotcmedia.com/hymns/singer/ዘማሪት-ሳራ-መንግስቱ,false
+,zemari-diyakon-begna-girima,Zemari Diyakon Begna Girima,ዘማሪ ዲያቆን ቤኛ ግርማ,,,,Zemari Diyakon Begna Girima,,,500,false,draft,15,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቤኛ-ግርማ,false
+,zemarit-winita-atsibiha,Zemarit Winita Atsibiha,ዘማሪት ዊንታ አጽብሐ,,,,Zemarit Winita Atsibiha,,,510,false,draft,15,https://eotcmedia.com/hymns/singer/ዘማሪት-ዊንታ-አጽብሐ,false
+,zemari-diyakon-tadiyos-girima,Zemari Diyakon Tadiyos Girima,ዘማሪ ዲያቆን ታድዮስ ግርማ,,,,Zemari Diyakon Tadiyos Girima,,,520,false,draft,14,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታድዮስ-ግርማ,false
+,zemari-mikiyas-aregawi,Zemari Mikiyas Aregawi,ዘማሪ ሚክያስ አረጋዊ,,,,Zemari Mikiyas Aregawi,,,530,false,draft,14,https://eotcmedia.com/hymns/singer/ዘማሪ-ሚክያስ-አረጋዊ,false
+,zemarit-mesikerem-welide,Zemarit Mesikerem Welide,ዘማሪት መስከረም ወልዴ,,,,Zemarit Mesikerem Welide,,,540,false,draft,14,https://eotcmedia.com/hymns/singer/ዘማሪት-መስከረም-ወልዴ,false
+,zemari-alemayehu-urige,Zemari Alemayehu Urige,ዘማሪ አለማየሁ ኡርጌ,,,,Zemari Alemayehu Urige,,,550,false,draft,13,https://eotcmedia.com/hymns/singer/ዘማሪ-አለማየሁ-ኡርጌ,false
+,zemari-diyakon-dawit-tilahun,Zemari Diyakon Dawit Tilahun,ዘማሪ ዲያቆን ዳዊት ጥላሁን,,,,Zemari Diyakon Dawit Tilahun,,,560,false,draft,13,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዳዊት-ጥላሁን,false
+,zemari-diyakon-habitamu-eshete,Zemari Diyakon Habitamu Eshete,ዘማሪ ዲያቆን ሀብታሙ እሸቴ,,,,Zemari Diyakon Habitamu Eshete,,,570,false,draft,13,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሀብታሙ-እሸቴ,false
+,zemari-gebireamilak-desalegn,Zemari Gebireamilak Desalegn,ዘማሪ ገብረአምላክ ደሳለኝ,,,,Zemari Gebireamilak Desalegn,,,580,false,draft,13,https://eotcmedia.com/hymns/singer/ዘማሪ-ገብረአምላክ-ደሳለኝ,false
+,zemarit-birukitawit-nigatu,Zemarit Birukitawit Nigatu,ዘማሪት ብሩክታዊት ንጋቱ,,,,Zemarit Birukitawit Nigatu,,,590,false,draft,13,https://eotcmedia.com/hymns/singer/ዘማሪት-ብሩክታዊት-ንጋቱ,false
+,zemari-diyakon-abiriham-mehari,Zemari Diyakon Abiriham Mehari,ዘማሪ ዲያቆን ኣብርሃም መሃሪ,,,,Zemari Diyakon Abiriham Mehari,,,600,false,draft,12,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኣብርሃም-መሃሪ,false
+,zemari-diyakon-kibirom-mehari,Zemari Diyakon Kibirom Mehari,ዘማሪ ዲያቆን ክብሮም መሓሪ,,,,Zemari Diyakon Kibirom Mehari,,,610,false,draft,12,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ክብሮም-መሓሪ,false
+,zemarit-tsedale-gobeze,Zemarit Tsedale Gobeze,ዘማሪት ፀዳለ ጎበዜ,,,,Zemarit Tsedale Gobeze,,,620,false,draft,12,https://eotcmedia.com/hymns/singer/ዘማሪት-ፀዳለ-ጎበዜ,false
+,zemari-diyakon-muluken-kebede,Zemari Diyakon Muluken Kebede,ዘማሪ ዲያቆን ሙሉቀን ከበደ,,,,Zemari Diyakon Muluken Kebede,,,630,false,draft,11,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሙሉቀን-ከበደ,false
+,zemari-merigeta-biruk-getinet,Zemari Merigeta Biruk Getinet,ዘማሪ መሪጌታ ብሩክ ጌትነት,,,,Zemari Merigeta Biruk Getinet,,,640,false,draft,11,https://eotcmedia.com/hymns/singer/ዘማሪ-መሪጌታ-ብሩክ-ጌትነት,false
+,zemarit-enikusilase-gosa,Zemarit Enikusilase Gosa,ዘማሪት ዕንቁሥላሴ ጎሳ,,,,Zemarit Enikusilase Gosa,,,650,false,draft,11,https://eotcmedia.com/hymns/singer/ዘማሪት-ዕንቁሥላሴ-ጎሳ,false
+,zemarit-etsegenet-kebede,Zemarit Etsegenet Kebede,ዘማሪት እፀገነት ከበደ,,,,Zemarit Etsegenet Kebede,,,660,false,draft,11,https://eotcmedia.com/hymns/singer/ዘማሪት-እፀገነት-ከበደ,false
+,zemarit-rahiwa-tehesite,Zemarit Rahiwa Tehesite,ዘማሪት ራህዋ ተኸስተ,,,,Zemarit Rahiwa Tehesite,,,670,false,draft,11,https://eotcmedia.com/hymns/singer/ዘማሪት-ራህዋ-ተኸስተ,false
+,zemarit-selamawit-melaku,Zemarit Selamawit Melaku,ዘማሪት ሰላማዊት መላኩ,,,,Zemarit Selamawit Melaku,,,680,false,draft,11,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰላማዊት-መላኩ,false
+,zemari-diyakon-samison-negash,Zemari Diyakon Samison Negash,ዘማሪ ዲያቆን ሳምሶን ነጋሽ,,,,Zemari Diyakon Samison Negash,,,690,false,draft,10,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሳምሶን-ነጋሽ,false
+,zemarit-lidya-webetu,Zemarit Lidya Webetu,,,,,Zemarit Lidya Webetu,,,700,false,draft,10,https://eotcmedia.com/hymns/singer/Zemarit-Lidya-Webetu,false
+,zemarit-mekides-kebede,Zemarit Mekides Kebede,ዘማሪት መቅደስ ከበደ,,,,Zemarit Mekides Kebede,,,710,false,draft,10,https://eotcmedia.com/hymns/singer/ዘማሪት-መቅደስ-ከበደ,false
+,bihabar,Bihabar,ብሓባር,,,,Bihabar,,,720,false,draft,9,https://eotcmedia.com/hymns/singer/ብሓባር,false
+,kesis-dawit-fanitaye,Kesis Dawit Fanitaye,ቀሲስ ዳዊት ፋንታዬ,,,,Kesis Dawit Fanitaye,,,730,false,draft,9,https://eotcmedia.com/hymns/singer/ቀሲስ-ዳዊት-ፋንታዬ,false
+,zemari-diyakon-natinael-abebe,Zemari Diyakon Natinael Abebe,ዘማሪ ዲያቆን ናትናኤል አበበ,,,,Zemari Diyakon Natinael Abebe,,,740,false,draft,9,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ናትናኤል-አበበ,false
+,zemarit-tenaye-asefa,Zemarit Tenaye Asefa,ዘማሪት ጤናዬ አሰፋ,,,,Zemarit Tenaye Asefa,,,750,false,draft,9,https://eotcmedia.com/hymns/singer/ዘማሪት-ጤናዬ-አሰፋ,false
+,meliake-tsehay-kesis-mekonin-fisiha,Meliake Tsehay Kesis Mekonin Fisiha,መልአከ ፀሐይ ቀሲስ መኮንን ፍስሐ,,,,Meliake Tsehay Kesis Mekonin Fisiha,,,760,false,draft,8,https://eotcmedia.com/hymns/singer/መልአከ-ፀሐይ-ቀሲስ-መኮንን-ፍስሐ,false
+,zemari-aritisit-yigerem-dejene,Zemari Aritisit Yigerem Dejene,ዘማሪ አርቲስት ይገረም ደጀኔ,,,,Zemari Aritisit Yigerem Dejene,,,770,false,draft,8,https://eotcmedia.com/hymns/singer/ዘማሪ-አርቲስት-ይገረም-ደጀኔ,false
+,zemari-deacon-yonatan-dawit,Zemari Deacon Yonatan Dawit,,,,,Zemari Deacon Yonatan Dawit,,,780,false,draft,8,https://eotcmedia.com/hymns/singer/Zemari-Deacon-Yonatan-Dawit,false
+,zemari-diyakon-firaol-chebisi,Zemari Diyakon Firaol Chebisi,ዘማሪ ዲያቆን ፍራኦል ጨብሲ,,,,Zemari Diyakon Firaol Chebisi,,,790,false,draft,8,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፍራኦል-ጨብሲ,false
+,zemari-diyakon-henok-moges,Zemari Diyakon Henok Moges,ዘማሪ ዲያቆን ሄኖክ ሞገስ,,,,Zemari Diyakon Henok Moges,,,800,false,draft,8,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሄኖክ-ሞገስ,false
+,zemari-kesis-wenidiwesen-bekele,Zemari Kesis Wenidiwesen Bekele,ዘማሪ ቀሲስ ወንድወሰን በቀለ,,,,Zemari Kesis Wenidiwesen Bekele,,,810,false,draft,8,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-ወንድወሰን-በቀለ,false
+,zemari-sanidiro-girimay,Zemari Sanidiro Girimay,ዘማሪ ሳንድሮ ግርማይ,,,,Zemari Sanidiro Girimay,,,820,false,draft,8,https://eotcmedia.com/hymns/singer/ዘማሪ-ሳንድሮ-ግርማይ,false
+,zemarit-betty-woldeyohanes,Zemarit Betty Woldeyohanes,,,,,Zemarit Betty Woldeyohanes,,,830,false,draft,8,https://eotcmedia.com/hymns/singer/Zemarit-Betty-Woldeyohanes,false
+,zemarit-egeziharya-yilma,Zemarit Egeziharya Yilma,,,,,Zemarit Egeziharya Yilma,,,840,false,draft,8,https://eotcmedia.com/hymns/singer/Zemarit-Egeziharya-Yilma,false
+,zemarit-tiegisit-sileshi,Zemarit Tiegisit Sileshi,ዘማሪት ትዕግስት ስለሺ,,,,Zemarit Tiegisit Sileshi,,,850,false,draft,8,https://eotcmedia.com/hymns/singer/ዘማሪት-ትዕግስት-ስለሺ,false
+,zemari-diyakon-abel-tesifaye,Zemari Diyakon Abel Tesifaye,ዘማሪ ዲያቆን አቤል ተስፋዬ,,,,Zemari Diyakon Abel Tesifaye,,,860,false,draft,7,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አቤል-ተስፋዬ,false
+,zemari-diyakon-enidalikachew-dagnew,Zemari Diyakon Enidalikachew Dagnew,ዘማሪ ዲያቆን እንዳልካቸው ዳኘው,,,,Zemari Diyakon Enidalikachew Dagnew,,,870,false,draft,7,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እንዳልካቸው-ዳኘው,false
+,zemari-diyakon-kiros-yiheyis,Zemari Diyakon Kiros Yiheyis,ዘማሪ ዲያቆን ኪሮስ ይኄይስ,,,,Zemari Diyakon Kiros Yiheyis,,,880,false,draft,7,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኪሮስ-ይኄይስ,false
+,zemari-keshi-teame-segid,Zemari Keshi Teame Segid,ዘማሪ ቀሺ ጠዓመ ሰጊድ,,,,Zemari Keshi Teame Segid,,,890,false,draft,7,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሺ-ጠዓመ-ሰጊድ,false
+,zemarit-birukitawit-ge-medihin,Zemarit Birukitawit Ge/medihin,ዘማሪት ብሩክታዊት ገ/መድህን,,,,Zemarit Birukitawit Ge/medihin,,,900,false,draft,7,https://eotcmedia.com/hymns/singer/ዘማሪት-ብሩክታዊት-ገ/መድህን,false
+,zemarit-sebilewenigel-eshete,Zemarit Sebilewenigel Eshete,ዘማሪት ሰብለወንጌል እሸቴ,,,,Zemarit Sebilewenigel Eshete,,,910,false,draft,7,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰብለወንጌል-እሸቴ,false
+,group,Group,,,,,Group,,,920,false,draft,6,https://eotcmedia.com/hymns/singer/Group,false
+,zemari-diyakon-hayilu-menigisite,Zemari Diyakon Hayilu Menigisite,ዘማሪ ዲያቆን ሀይሉ መንግስቴ,,,,Zemari Diyakon Hayilu Menigisite,,,930,false,draft,6,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሀይሉ-መንግስቴ,false
+,zemari-diyakon-natinael-samuel,Zemari Diyakon Natinael Samuel,ዘማሪ ዲያቆን ናትናኤል ሣሙኤል,,,,Zemari Diyakon Natinael Samuel,,,940,false,draft,6,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ናትናኤል-ሣሙኤል,false
+,zemarit-etsubidinik-adisu,Zemarit Etsubidinik Adisu,ዘማሪት እፁብድንቅ አዲሱ,,,,Zemarit Etsubidinik Adisu,,,950,false,draft,6,https://eotcmedia.com/hymns/singer/ዘማሪት-እፁብድንቅ-አዲሱ,false
+,zemarit-kidisit-mitiku,Zemarit Kidisit Mitiku,ዘማሪት ቅድስት ምትኩ,,,,Zemarit Kidisit Mitiku,,,960,false,draft,6,https://eotcmedia.com/hymns/singer/ዘማሪት-ቅድስት-ምትኩ,false
+,zemarit-mekides-mariye,Zemarit Mekides Mariye,ዘማሪት መቅደስ ማርዬ,,,,Zemarit Mekides Mariye,,,970,false,draft,6,https://eotcmedia.com/hymns/singer/ዘማሪት-መቅደስ-ማርዬ,false
+,zemarit-selamawit-sorisa,Zemarit Selamawit Sorisa,ዘማሪት ሰላማዊት ሶርሳ,,,,Zemarit Selamawit Sorisa,,,980,false,draft,6,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰላማዊት-ሶርሳ,false
+,zemarit-yoridanos-dereje,Zemarit Yoridanos Dereje,ዘማሪት ዮርዳኖስ ደረጄ,,,,Zemarit Yoridanos Dereje,,,990,false,draft,6,https://eotcmedia.com/hymns/singer/ዘማሪት-ዮርዳኖስ-ደረጄ,false
+,bitsue-abune-natinael,Bitsue Abune Natinael,ብጹዕ አቡነ ናትናኤል,,,,Bitsue Abune Natinael,,,1000,false,draft,5,https://eotcmedia.com/hymns/singer/ብጹዕ-አቡነ-ናትናኤል,false
+,zemari-abel-semeriab,Zemari Abel Semeriab,ዘማሪ ኣቤል ሰመርኣብ,,,,Zemari Abel Semeriab,,,1010,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪ-ኣቤል-ሰመርኣብ,false
+,zemari-deacon-samuel-teshome,Zemari Deacon Samuel Teshome,,,,,Zemari Deacon Samuel Teshome,,,1020,false,draft,5,https://eotcmedia.com/hymns/singer/Zemari-Deacon-Samuel-Teshome,false
+,zemari-diyakon-beeminet,Zemari Diyakon Beeminet,ዘማሪ ዲያቆን በእምነት,,,,Zemari Diyakon Beeminet,,,1030,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-በእምነት,false
+,zemari-diyakon-iyob-kasa,Zemari Diyakon Iyob Kasa,ዘማሪ ዲያቆን ኢዮብ ካሳ,,,,Zemari Diyakon Iyob Kasa,,,1040,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኢዮብ-ካሳ,false
+,zemari-diyakon-sayizana-getachew,Zemari Diyakon Sayizana Getachew,ዘማሪ ዲያቆን ሳይዛና ጌታቸው,,,,Zemari Diyakon Sayizana Getachew,,,1050,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሳይዛና-ጌታቸው,false
+,zemari-hanos,Zemari Hanos,ዘማሪ ሐኖስ,,,,Zemari Hanos,,,1060,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪ-ሐኖስ,false
+,zemari-hitsan-ewinet-anidiamilak,Zemari Hitsan Ewinet Anidiamilak,ዘማሪ ህጻን እውነት አንድአምላክ,,,,Zemari Hitsan Ewinet Anidiamilak,,,1070,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪ-ህጻን-እውነት-አንድአምላክ,false
+,zemari-kesis-esikinidir-welidemariyam,Zemari Kesis Esikinidir Welidemariyam,ዘማሪ ቀሲስ እስክንድር ወልደማርያም,,,,Zemari Kesis Esikinidir Welidemariyam,,,1080,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-እስክንድር-ወልደማርያም,false
+,zemarit-abonesh-adinew,Zemarit Abonesh Adinew,ዘማሪት አቦነሽ አድነው,,,,Zemarit Abonesh Adinew,,,1090,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪት-አቦነሽ-አድነው,false
+,zemarit-eden-neway,Zemarit Eden Neway,ዘማሪት ኤደን ነዋይ,,,,Zemarit Eden Neway,,,1100,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪት-ኤደን-ነዋይ,false
+,zemarit-fasika-fisiha,Zemarit Fasika Fisiha,ዘማሪት ፋሲካ ፍሥሐ,,,,Zemarit Fasika Fisiha,,,1110,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪት-ፋሲካ-ፍሥሐ,false
+,zemarit-hana-tefera,Zemarit Hana Tefera,,,,,Zemarit Hana Tefera,,,1120,false,draft,5,https://eotcmedia.com/hymns/singer/Zemarit-Hana-Tefera,false
+,zemarit-herimela-yihisho,Zemarit Herimela Yihisho,ዘማሪት ሄርሜላ ይሕሾ,,,,Zemarit Herimela Yihisho,,,1130,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪት-ሄርሜላ-ይሕሾ,false
+,zemarit-marita-hayilesilase,Zemarit Marita Hayilesilase,ዘማሪት ማርታ ኃይለሥላሴ,,,,Zemarit Marita Hayilesilase,,,1140,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪት-ማርታ-ኃይለሥላሴ,false
+,zemarit-werikinesh-hayilu,Zemarit Werikinesh Hayilu,ዘማሪት ወርቅነሽ ኃይሉ,,,,Zemarit Werikinesh Hayilu,,,1150,false,draft,5,https://eotcmedia.com/hymns/singer/ዘማሪት-ወርቅነሽ-ኃይሉ,false
+,megabe-sibihat-alemu-aga,Megabe Sibihat Alemu Aga,መጋቤ ስብሃት አለሙ አጋ,,,,Megabe Sibihat Alemu Aga,,,1160,false,draft,4,https://eotcmedia.com/hymns/singer/መጋቤ-ስብሃት-አለሙ-አጋ,false
+,nay-hibiret-2,Nay Hibiret,ናይ ሕብረት,,,,Nay Hibiret,,,1170,false,draft,4,https://eotcmedia.com/hymns/singer/ናይ-ሕብረት,false
+,zemari-deacon-brook-argaw,Zemari Deacon Brook Argaw,,,,,Zemari Deacon Brook Argaw,,,1180,false,draft,4,https://eotcmedia.com/hymns/singer/Zemari-Deacon-Brook-Argaw,false
+,zemari-deacon-simon-yohannes,Zemari Deacon Simon Yohannes,,,,,Zemari Deacon Simon Yohannes,,,1190,false,draft,4,https://eotcmedia.com/hymns/singer/Zemari-Deacon-Simon-Yohannes,false
+,zemari-diyakon-bisirat-teshome,Zemari Diyakon Bisirat Teshome,ዘማሪ ዲያቆን ብስራት ተሾመ,,,,Zemari Diyakon Bisirat Teshome,,,1200,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ብስራት-ተሾመ,false
+,zemari-diyakon-enidalew-alemu,Zemari Diyakon Enidalew Alemu,ዘማሪ ዲያቆን እንዳለው አለሙ,,,,Zemari Diyakon Enidalew Alemu,,,1210,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እንዳለው-አለሙ,false
+,zemari-diyakon-kidus-dawit,Zemari Diyakon Kidus Dawit,ዘማሪ ዲያቆን ቅዱስ ዳዊት,,,,Zemari Diyakon Kidus Dawit,,,1220,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቅዱስ-ዳዊት,false
+,zemari-diyakon-mitik-sisay,Zemari Diyakon Mitik Sisay,ዘማሪ ዲያቆን ምትክ ሲሳይ,,,,Zemari Diyakon Mitik Sisay,,,1230,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ምትክ-ሲሳይ,false
+,zemari-diyakon-nebiyu-samuel,Zemari Diyakon Nebiyu Samuel,ዘማሪ ዲያቆን ነብዩ ሳሙኤል,,,,Zemari Diyakon Nebiyu Samuel,,,1240,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ነብዩ-ሳሙኤል,false
+,zemari-diyakon-robel-matiyas,Zemari Diyakon Robel Matiyas,ዘማሪ ዲያቆን ሮቤል ማትያስ,,,,Zemari Diyakon Robel Matiyas,,,1250,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሮቤል-ማትያስ,false
+,zemari-diyakon-yared-tsegaye,Zemari Diyakon Yared Tsegaye,ዘማሪ ዲያቆን ያሬድ ፀጋዬ,,,,Zemari Diyakon Yared Tsegaye,,,1260,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ያሬድ-ፀጋዬ,false
+,zemari-diyakon-yohanis-adimasu,Zemari Diyakon Yohanis Adimasu,ዘማሪ ዲያቆን ዮሐንስ አድማሱ,,,,Zemari Diyakon Yohanis Adimasu,,,1270,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዮሐንስ-አድማሱ,false
+,zemari-diyakon-zelalem-takele,Zemari Diyakon Zelalem Takele,ዘማሪ ዲያቆን ዘላለም ታከለ,,,,Zemari Diyakon Zelalem Takele,,,1280,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዘላለም-ታከለ,false
+,zemari-fisiha-zeleke,Zemari Fisiha Zeleke,ዘማሪ ፍስሃ ዘለቀ,,,,Zemari Fisiha Zeleke,,,1290,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ፍስሃ-ዘለቀ,false
+,zemari-henok-fekadu,Zemari Henok Fekadu,ዘማሪ ሄኖክ ፈቃዱ,,,,Zemari Henok Fekadu,,,1300,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ሄኖክ-ፈቃዱ,false
+,zemari-kenenisa-tabor,Zemari Kenenisa Tabor,ዘማሪ ቀነኒሳ ታቦር,,,,Zemari Kenenisa Tabor,,,1310,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀነኒሳ-ታቦር,false
+,zemari-mikiyas-tsegaye,Zemari Mikiyas Tsegaye,ዘማሪ ሚኪያስ ፀጋዬ,,,,Zemari Mikiyas Tsegaye,,,1320,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪ-ሚኪያስ-ፀጋዬ,false
+,zemarit-edilawit-firew,Zemarit Edilawit Firew,ዘማሪት እድላዊት ፍሬው,,,,Zemarit Edilawit Firew,,,1330,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪት-እድላዊት-ፍሬው,false
+,zemarit-gellila-yohannes,Zemarit Gellila Yohannes,,,,,Zemarit Gellila Yohannes,,,1340,false,draft,4,https://eotcmedia.com/hymns/singer/Zemarit-Gellila-Yohannes,false
+,zemarit-kidisit-weriku,Zemarit Kidisit Weriku,ዘማሪት ቅድስት ወርቁ,,,,Zemarit Kidisit Weriku,,,1350,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪት-ቅድስት-ወርቁ,false
+,zemarit-kiyaki-ha-gebiriel,Zemarit Kiyaki Ha/gebiriel,ዘማሪት ኪያኪ ሃ/ገብርኤል,,,,Zemarit Kiyaki Ha/gebiriel,,,1360,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪት-ኪያኪ-ሃ/ገብርኤል,false
+,zemarit-lebeza-alemu,Zemarit Lebeza Alemu,,,,,Zemarit Lebeza Alemu,,,1370,false,draft,4,https://eotcmedia.com/hymns/singer/Zemarit-Lebeza-Alemu,false
+,zemarit-liwam-hagos,Zemarit Liwam Hagos,ዘማሪት ልዋም ሃጎስ,,,,Zemarit Liwam Hagos,,,1380,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪት-ልዋም-ሃጎስ,false
+,zemarit-simiret-girima,Zemarit Simiret Girima,ዘማሪት ስምረት ግርማ,,,,Zemarit Simiret Girima,,,1390,false,draft,4,https://eotcmedia.com/hymns/singer/ዘማሪት-ስምረት-ግርማ,false
+,begenegna-dagim-birihanu,Begenegna Dagim Birihanu,በገነኛ ዳግም ብርሃኑ,,,,Begenegna Dagim Birihanu,,,1400,false,draft,3,https://eotcmedia.com/hymns/singer/በገነኛ-ዳግም-ብርሃኑ,false
+,like-tebebit-menikir-hadis,Like Tebebit Menikir Hadis,ሊቀ ጠበብት መንክር ሐዲስ,,,,Like Tebebit Menikir Hadis,,,1410,false,draft,3,https://eotcmedia.com/hymns/singer/ሊቀ-ጠበብት-መንክር-ሐዲስ,false
+,memihir-wemezemir-hiruy-alemayehu,Memihir Wemezemir Hiruy Alemayehu,መምህር ወመዘምር ኅሩይ ዓለማየሁ,,,,Memihir Wemezemir Hiruy Alemayehu,,,1420,false,draft,3,https://eotcmedia.com/hymns/singer/መምህር-ወመዘምር-ኅሩይ-ዓለማየሁ,false
+,merigeta-tsehay-birihanu,Merigeta Tsehay Birihanu,መሪጌታ ፀሐይ ብርሃኑ,,,,Merigeta Tsehay Birihanu,,,1430,false,draft,3,https://eotcmedia.com/hymns/singer/መሪጌታ-ፀሐይ-ብርሃኑ,false
+,zemari-abiyu-aman,Zemari Abiyu Aman,ዘማሪ አብዩ አማን,,,,Zemari Abiyu Aman,,,1440,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-አብዩ-አማን,false
+,zemari-adis-mesifin,Zemari Adis Mesifin,ዘማሪ አዲስ መስፍን,,,,Zemari Adis Mesifin,,,1450,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-አዲስ-መስፍን,false
+,zemari-adisu-niguse,Zemari Adisu Niguse,ዘማሪ አዲሱ ንጉሴ,,,,Zemari Adisu Niguse,,,1460,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-አዲሱ-ንጉሴ,false
+,zemari-dagim-adefiris,Zemari Dagim Adefiris,ዘማሪ ዳግም አደፍርስ,,,,Zemari Dagim Adefiris,,,1470,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዳግም-አደፍርስ,false
+,zemari-diyakon-abenezer-birihanu,Zemari Diyakon Abenezer Birihanu,ዘማሪ ዲያቆን አቤኔዘር ብርሃኑ,,,,Zemari Diyakon Abenezer Birihanu,,,1480,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አቤኔዘር-ብርሃኑ,false
+,zemari-diyakon-abiriham-geremew,Zemari Diyakon Abiriham Geremew,ዘማሪ ዲያቆን አብርሃም ገረመው,,,,Zemari Diyakon Abiriham Geremew,,,1490,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አብርሃም-ገረመው,false
+,zemari-diyakon-akiya-minase,Zemari Diyakon Akiya Minase,ዘማሪ ዲያቆን አኪያ ምናሴ,,,,Zemari Diyakon Akiya Minase,,,1500,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አኪያ-ምናሴ,false
+,zemari-diyakon-aman-urigesa,Zemari Diyakon Aman Urigesa,ዘማሪ ዲያቆን አማን ኡርጌሳ,,,,Zemari Diyakon Aman Urigesa,,,1510,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አማን-ኡርጌሳ,false
+,zemari-diyakon-dawit-bekele,Zemari Diyakon Dawit Bekele,ዘማሪ ዲያቆን ዳዊት በቀለ,,,,Zemari Diyakon Dawit Bekele,,,1520,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዳዊት-በቀለ,false
+,zemari-diyakon-fekade-betemariyam,Zemari Diyakon Fekade Betemariyam,ዘማሪ ዲያቆን ፈቃደ ቤተማርያም,,,,Zemari Diyakon Fekade Betemariyam,,,1530,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፈቃደ-ቤተማርያም,false
+,zemari-diyakon-filimon-yeebiyo,Zemari Diyakon Filimon Yeebiyo,ዘማሪ ዲያቆን ፊልሞን የዕብዮ,,,,Zemari Diyakon Filimon Yeebiyo,,,1540,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፊልሞን-የዕብዮ,false
+,zemari-diyakon-sibuh-felege,Zemari Diyakon Sibuh Felege,ዘማሪ ዲያቆን ስቡሕ ፈለገ,,,,Zemari Diyakon Sibuh Felege,,,1550,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ስቡሕ-ፈለገ,false
+,zemari-diyakon-tadele-degif,Zemari Diyakon Tadele Degif,ዘማሪ ዲያቆን ታደለ ደግፍ,,,,Zemari Diyakon Tadele Degif,,,1560,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታደለ-ደግፍ,false
+,zemari-diyakon-tsige-asiteriaye,Zemari Diyakon Tsige Asiteriaye,ዘማሪ ዲያቆን ፅጌ አስተርዐየ,,,,Zemari Diyakon Tsige Asiteriaye,,,1570,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፅጌ-አስተርዐየ,false
+,zemari-yonas-gebirekidan,Zemari Yonas Gebirekidan,ዘማሪ ዮናስ ገብረኪዳን,,,,Zemari Yonas Gebirekidan,,,1580,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዮናስ-ገብረኪዳን,false
+,zemari-ze-fanuel-aleka,Zemari Ze-fanuel Aleka,ዘማሪ ዘ-ፋኑኤል አለቃ,,,,Zemari Ze-fanuel Aleka,,,1590,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪ-ዘ-ፋኑኤል-አለቃ,false
+,zemarit-aritisit-meseret-mebirate,Zemarit Aritisit Meseret Mebirate,ዘማሪት አርቲስት መሰረት መብራቴ,,,,Zemarit Aritisit Meseret Mebirate,,,1600,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-አርቲስት-መሰረት-መብራቴ,false
+,zemarit-banichiayehu-seyifu,Zemarit Banichiayehu Seyifu,ዘማሪት ባንቺአየሁ ሰይፉ,,,,Zemarit Banichiayehu Seyifu,,,1610,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ባንቺአየሁ-ሰይፉ,false
+,zemarit-betelihem-birihane,Zemarit Betelihem Birihane,ዘማሪት ቤተልሔም ብርሃነ,,,,Zemarit Betelihem Birihane,,,1620,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤተልሔም-ብርሃነ,false
+,zemarit-bezawerik-asifaw,Zemarit Bezawerik Asifaw,ዘማሪት በዛወርቅ አስፋው,,,,Zemarit Bezawerik Asifaw,,,1630,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-በዛወርቅ-አስፋው,false
+,zemarit-dokiter-helen-tesifaye,Zemarit Dokiter Helen Tesifaye,ዘማሪት ዶክተር ሄለን ተስፋዬ,,,,Zemarit Dokiter Helen Tesifaye,,,1640,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ዶክተር-ሄለን-ተስፋዬ,false
+,zemarit-etsubidinik-sisay,Zemarit Etsubidinik Sisay,ዘማሪት እጹብድንቅ ሲሳይ,,,,Zemarit Etsubidinik Sisay,,,1650,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-እጹብድንቅ-ሲሳይ,false
+,zemarit-kalikidan-mekonen,Zemarit Kalikidan Mekonen,ዘማሪት ቃልኪዳን መኮነን,,,,Zemarit Kalikidan Mekonen,,,1660,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ቃልኪዳን-መኮነን,false
+,zemarit-kidisit-muluneh,Zemarit Kidisit Muluneh,ዘማሪት ቅድስት ሙሉነህ,,,,Zemarit Kidisit Muluneh,,,1670,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ቅድስት-ሙሉነህ,false
+,zemarit-mahelet-woldeyohanes,Zemarit Mahelet Woldeyohanes,,,,,Zemarit Mahelet Woldeyohanes,,,1680,false,draft,3,https://eotcmedia.com/hymns/singer/Zemarit-Mahelet-Woldeyohanes,false
+,zemarit-meri-alem,Zemarit Meri Alem,ዘማሪት ሜሪ ኣለም,,,,Zemarit Meri Alem,,,1690,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ሜሪ-ኣለም,false
+,zemarit-senayit-kifile,Zemarit Senayit Kifile,ዘማሪት ሠናይት ክፍሌ,,,,Zemarit Senayit Kifile,,,1700,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ሠናይት-ክፍሌ,false
+,zemarit-tiegisit-asefa,Zemarit Tiegisit Asefa,ዘማሪት ትዕግስት አሰፋ,,,,Zemarit Tiegisit Asefa,,,1710,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ትዕግስት-አሰፋ,false
+,zemarit-yoridanos-mola,Zemarit Yoridanos Mola,ዘማሪት ዮርዳኖስ ሞላ,,,,Zemarit Yoridanos Mola,,,1720,false,draft,3,https://eotcmedia.com/hymns/singer/ዘማሪት-ዮርዳኖስ-ሞላ,false
+,aba-birihane-iyesus-shimelis,Aba Birihane Iyesus Shimelis,አባ ብርሃነ ኢየሱስ ሽመልስ,,,,Aba Birihane Iyesus Shimelis,,,1730,false,draft,2,https://eotcmedia.com/hymns/singer/አባ-ብርሃነ-ኢየሱስ-ሽመልስ,false
+,demise-begena,Demise Begena,ደምሴ በገና,,,,Demise Begena,,,1740,false,draft,2,https://eotcmedia.com/hymns/singer/ደምሴ-በገና,false
+,eyachew-abuye,Eyachew Abuye,እያቸው አቡዬ,,,,Eyachew Abuye,,,1750,false,draft,2,https://eotcmedia.com/hymns/singer/እያቸው-አቡዬ,false
+,f-taa-dn-alamuu-tashoomaatiin,F/taa Dn Alamuu Tashoomaatiin,,,,,F/taa Dn Alamuu Tashoomaatiin,,,1760,false,draft,2,https://eotcmedia.com/hymns/singer/F/taa-Dn-Alamuu-Tashoomaatiin,false
+,f-taa-dn-keebar-tasfaa,F/taa Dn Keebar Tasfaa,,,,,F/taa Dn Keebar Tasfaa,,,1770,false,draft,2,https://eotcmedia.com/hymns/singer/F/taa-Dn-Keebar-Tasfaa,false
+,habitemikael-demise,Habitemikael Demise,ሀብተሚካኤል ደምሴ,,,,Habitemikael Demise,,,1780,false,draft,2,https://eotcmedia.com/hymns/singer/ሀብተሚካኤል-ደምሴ,false
+,like-mezemiran-kesis-girima-adane,Like Mezemiran Kesis Girima Adane,ሊቀ መዘምራን ቀሲስ ግርማ አዳነ,,,,Like Mezemiran Kesis Girima Adane,,,1790,false,draft,2,https://eotcmedia.com/hymns/singer/ሊቀ-መዘምራን-ቀሲስ-ግርማ-አዳነ,false
+,nay-hibiret,Nay Hibiret,ናይ ህብረት,,,,Nay Hibiret,,,1800,false,draft,2,https://eotcmedia.com/hymns/singer/ናይ-ህብረት,false
+,zemari-abayineh-getachew,Zemari Abayineh Getachew,ዘማሪ ዓባይነህ ጌታቸው,,,,Zemari Abayineh Getachew,,,1810,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዓባይነህ-ጌታቸው,false
+,zemari-abel-kidane-gedam,Zemari Abel Kidane Gedam,ዘማሪ ኣቤል ኪዳነ ገዳም,,,,Zemari Abel Kidane Gedam,,,1820,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ኣቤል-ኪዳነ-ገዳም,false
+,zemari-adis-niguse,Zemari Adis Niguse,ዘማሪ አዲስ ንጉሤ,,,,Zemari Adis Niguse,,,1830,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-አዲስ-ንጉሤ,false
+,zemari-bereket-tesifaye,Zemari Bereket Tesifaye,ዘማሪ በረከት ተስፋዬ,,,,Zemari Bereket Tesifaye,,,1840,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-በረከት-ተስፋዬ,false
+,zemari-birihan-mola,Zemari Birihan Mola,ዘማሪ ብርሃን ሞላ,,,,Zemari Birihan Mola,,,1850,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ብርሃን-ሞላ,false
+,zemari-diyakon-abel-yibabe,Zemari Diyakon Abel Yibabe,ዘማሪ ዲያቆን ኣቤል ይባቤ,,,,Zemari Diyakon Abel Yibabe,,,1860,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኣቤል-ይባቤ,false
+,zemari-diyakon-abiriham-yotor,Zemari Diyakon Abiriham Yotor,ዘማሪ ዲያቆን አብርሀም ዮቶር,,,,Zemari Diyakon Abiriham Yotor,,,1870,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አብርሀም-ዮቶር,false
+,zemari-diyakon-dereje-kebede,Zemari Diyakon Dereje Kebede,ዘማሪ ዲያቆን ደረጄ ከበደ,,,,Zemari Diyakon Dereje Kebede,,,1880,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ደረጄ-ከበደ,false
+,zemari-diyakon-enigidu-wenidimu,Zemari Diyakon Enigidu Wenidimu,ዘማሪ ዲያቆን እንግዱ ወንድሙ,,,,Zemari Diyakon Enigidu Wenidimu,,,1890,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እንግዱ-ወንድሙ,false
+,zemari-diyakon-hayilemesikel-begashaw,Zemari Diyakon Hayilemesikel Begashaw,ዘማሪ ዲያቆን ሃይለመስቀል በጋሻው,,,,Zemari Diyakon Hayilemesikel Begashaw,,,1900,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሃይለመስቀል-በጋሻው,false
+,zemari-diyakon-henok-eshetu,Zemari Diyakon Henok Eshetu,ዘማሪ ዲያቆን ሄኖክ እሸቱ,,,,Zemari Diyakon Henok Eshetu,,,1910,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሄኖክ-እሸቱ,false
+,zemari-diyakon-henok-mesay,Zemari Diyakon Henok Mesay,ዘማሪ ዲያቆን ሄኖክ መሳይ,,,,Zemari Diyakon Henok Mesay,,,1920,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሄኖክ-መሳይ,false
+,zemari-diyakon-herimon-ariaya,Zemari Diyakon Herimon Ariaya,ዘማሪ ዲያቆን ሄርሞን ኣርኣያ,,,,Zemari Diyakon Herimon Ariaya,,,1930,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሄርሞን-ኣርኣያ,false
+,zemari-diyakon-hizikiyas-birihanu,Zemari Diyakon Hizikiyas Birihanu,ዘማሪ ዲያቆን ህዝቅያስ ብርሀኑ,,,,Zemari Diyakon Hizikiyas Birihanu,,,1940,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ህዝቅያስ-ብርሀኑ,false
+,zemari-diyakon-kidus-yosef,Zemari Diyakon Kidus Yosef,ዘማሪ ዲያቆን ቅዱስ ዮሴፍ,,,,Zemari Diyakon Kidus Yosef,,,1950,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቅዱስ-ዮሴፍ,false
+,zemari-diyakon-mahidereliul-fiseha,Zemari Diyakon Mahidereliul Fiseha,ዘማሪ ዲያቆን ማኅደረልዑል ፍሰሃ,,,,Zemari Diyakon Mahidereliul Fiseha,,,1960,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ማኅደረልዑል-ፍሰሃ,false
+,zemari-diyakon-mahidereliul-fisiha,Zemari Diyakon Mahidereliul Fisiha,ዘማሪ ዲያቆን ማኅደረልዑል ፍስሃ,,,,Zemari Diyakon Mahidereliul Fisiha,,,1970,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ማኅደረልዑል-ፍስሃ,false
+,zemari-diyakon-misigina-beyene,Zemari Diyakon Misigina Beyene,ዘማሪ ዲያቆን ምስግና በየነ,,,,Zemari Diyakon Misigina Beyene,,,1980,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ምስግና-በየነ,false
+,zemari-diyakon-tadiyos-awigichew,Zemari Diyakon Tadiyos Awigichew,ዘማሪ ዲያቆን ታዲዮስ አውግቸው,,,,Zemari Diyakon Tadiyos Awigichew,,,1990,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታዲዮስ-አውግቸው,false
+,zemari-diyakon-tamirat-taye,Zemari Diyakon Tamirat Taye,ዘማሪ ዲያቆን ታምራት ታዬ,,,,Zemari Diyakon Tamirat Taye,,,2000,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታምራት-ታዬ,false
+,zemari-diyakon-taye-birihanu,Zemari Diyakon Taye Birihanu,ዘማሪ ዲያቆን ታዬ ብርሃኑ,,,,Zemari Diyakon Taye Birihanu,,,2010,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታዬ-ብርሃኑ,false
+,zemari-diyakon-temesigen-welidetinisae,Zemari Diyakon Temesigen Welidetinisae,ዘማሪ ዲያቆን ተመስገን ወልደትንሳኤ,,,,Zemari Diyakon Temesigen Welidetinisae,,,2020,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ተመስገን-ወልደትንሳኤ,false
+,zemari-diyakon-yared-niguse,Zemari Diyakon Yared Niguse,ዘማሪ ዲያቆን ያሬድ ንጉሤ,,,,Zemari Diyakon Yared Niguse,,,2030,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ያሬድ-ንጉሤ,false
+,zemari-diyakon-yihuniselam-asirat,Zemari Diyakon Yihuniselam Asirat,ዘማሪ ዲያቆን ይሁንሰላም አስራት,,,,Zemari Diyakon Yihuniselam Asirat,,,2040,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ይሁንሰላም-አስራት,false
+,zemari-diyakon-zeriadawit-enidalikachew,Zemari Diyakon Zeriadawit Enidalikachew,ዘማሪ ዲያቆን ዘርዓዳዊት እንዳልካቸው,,,,Zemari Diyakon Zeriadawit Enidalikachew,,,2050,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዘርዓዳዊት-እንዳልካቸው,false
+,zemari-efirem-asefa,Zemari Efirem Asefa,ዘማሪ ኤፍሬም አሰፋ,,,,Zemari Efirem Asefa,,,2060,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ኤፍሬም-አሰፋ,false
+,zemari-eyob-shiferaw,Zemari Eyob Shiferaw,ዘማሪ እዮብ ሽፈራው,,,,Zemari Eyob Shiferaw,,,2070,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-እዮብ-ሽፈራው,false
+,zemari-gebireyohanis-gebiretsadik-2,Zemari Gebireyohanis Gebiretsadik,ዘማሪ ገብረዮሐንስ ገብረጻድቅ,,,,Zemari Gebireyohanis Gebiretsadik,,,2080,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ገብረዮሐንስ-ገብረጻድቅ,false
+,zemari-kesis-birihan-eshetu,Zemari Kesis Birihan Eshetu,ዘማሪ ቀሲስ ብርሃን እሸቱ,,,,Zemari Kesis Birihan Eshetu,,,2090,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-ብርሃን-እሸቱ,false
+,zemari-meron-selomon,Zemari Meron Selomon,ዘማሪ ሜሮን ሰሎሞን,,,,Zemari Meron Selomon,,,2100,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ሜሮን-ሰሎሞን,false
+,zemari-mesay-zepetiros,Zemari Mesay Zepetiros,ዘማሪ መሳይ ዘጴጥሮስ,,,,Zemari Mesay Zepetiros,,,2110,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-መሳይ-ዘጴጥሮስ,false
+,zemari-mikael-zebire,Zemari Mikael Zebire,ዘማሪ ሚካኤል ዘብሬ,,,,Zemari Mikael Zebire,,,2120,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ሚካኤል-ዘብሬ,false
+,zemari-samuel-tediros,Zemari Samuel Tediros,ዘማሪ ሳሙኤል ቴድሮስ,,,,Zemari Samuel Tediros,,,2130,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ሳሙኤል-ቴድሮስ,false
+,zemari-yafet-seyifu,Zemari Yafet Seyifu,ዘማሪ ያፌት ሰይፉ,,,,Zemari Yafet Seyifu,,,2140,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ያፌት-ሰይፉ,false
+,zemari-yohanis-mohamed,Zemari Yohanis Mohamed,ዘማሪ ዮሃንስ ሞሃመድ,,,,Zemari Yohanis Mohamed,,,2150,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዮሃንስ-ሞሃመድ,false
+,zemari-zewidu-getachew,Zemari Zewidu Getachew,ዘማሪ ዘውዱ ጌታቸው,,,,Zemari Zewidu Getachew,,,2160,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪ-ዘውዱ-ጌታቸው,false
+,zemarit-afomia-eyob,Zemarit Afomia Eyob,,,,,Zemarit Afomia Eyob,,,2170,false,draft,2,https://eotcmedia.com/hymns/singer/Zemarit-Afomia-Eyob,false
+,zemarit-atiran-mikael,Zemarit Atiran Mikael,ዘማሪት አትራን ሚካኤል,,,,Zemarit Atiran Mikael,,,2180,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-አትራን-ሚካኤል,false
+,zemarit-azeb-abera,Zemarit Azeb Abera,ዘማሪት አዜብ አበራ,,,,Zemarit Azeb Abera,,,2190,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-አዜብ-አበራ,false
+,zemarit-biritukan-melese,Zemarit Biritukan Melese,ዘማሪት ብርቱካን መለሰ,,,,Zemarit Biritukan Melese,,,2200,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ብርቱካን-መለሰ,false
+,zemarit-dokiter-birukitawit-tesifay,Zemarit Dokiter Birukitawit Tesifay,ዘማሪት ዶክተር ብሩክታዊት ተስፋይ,,,,Zemarit Dokiter Birukitawit Tesifay,,,2210,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ዶክተር-ብሩክታዊት-ተስፋይ,false
+,zemarit-eleni-desita,Zemarit Eleni Desita,ዘማሪት እሌኒ ደስታ,,,,Zemarit Eleni Desita,,,2220,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-እሌኒ-ደስታ,false
+,zemarit-etsub-mesifin,Zemarit Etsub Mesifin,ዘማሪት እጹብ መስፍን,,,,Zemarit Etsub Mesifin,,,2230,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-እጹብ-መስፍን,false
+,zemarit-feven-eyob,Zemarit Feven Eyob,ዘማሪት ፌቨን እዮብ,,,,Zemarit Feven Eyob,,,2240,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ፌቨን-እዮብ,false
+,zemarit-fikirite-tadese,Zemarit Fikirite Tadese,ዘማሪት ፍቅርተ ታደሰ,,,,Zemarit Fikirite Tadese,,,2250,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ፍቅርተ-ታደሰ,false
+,zemarit-heaven-desalegn,Zemarit Heaven Desalegn,,,,,Zemarit Heaven Desalegn,,,2260,false,draft,2,https://eotcmedia.com/hymns/singer/Zemarit-Heaven-Desalegn,false
+,zemarit-hewan-gebiremariyam,Zemarit Hewan Gebiremariyam,ዘማሪት ሄዋን ገብረማርያም,,,,Zemarit Hewan Gebiremariyam,,,2270,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ሄዋን-ገብረማርያም,false
+,zemarit-hilari-samuel,Zemarit Hilari Samuel,ዘማሪት ሂላሪ ሳሙኤል,,,,Zemarit Hilari Samuel,,,2280,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ሂላሪ-ሳሙኤል,false
+,zemarit-hitsan-adiyam-kiros,Zemarit Hitsan Adiyam Kiros,ዘማሪት ህጻን አድያም ኪሮስ,,,,Zemarit Hitsan Adiyam Kiros,,,2290,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ህጻን-አድያም-ኪሮስ,false
+,zemarit-hiyiwet-welide,Zemarit Hiyiwet Welide,ዘማሪት ሕይወት ወልዴ,,,,Zemarit Hiyiwet Welide,,,2300,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ሕይወት-ወልዴ,false
+,zemarit-kalikidan-biru,Zemarit Kalikidan Biru,ዘማሪት ቃልኪዳን ብሩ,,,,Zemarit Kalikidan Biru,,,2310,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ቃልኪዳን-ብሩ,false
+,zemarit-kisanet-kibirom,Zemarit Kisanet Kibirom,ዘማሪት ቅሳነት ክብሮም,,,,Zemarit Kisanet Kibirom,,,2320,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ቅሳነት-ክብሮም,false
+,zemarit-liwam-fekadu,Zemarit Liwam Fekadu,ዘማሪት ልዋም ፈቃዱ,,,,Zemarit Liwam Fekadu,,,2330,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ልዋም-ፈቃዱ,false
+,zemarit-mahider-gebireiyesus,Zemarit Mahider Gebireiyesus,ዘማሪት ማህደር ገብረኢየሱስ,,,,Zemarit Mahider Gebireiyesus,,,2340,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ማህደር-ገብረኢየሱስ,false
+,zemarit-mekidelawit-nigatu,Zemarit Mekidelawit Nigatu,ዘማሪት መቅደላዊት ንጋቱ,,,,Zemarit Mekidelawit Nigatu,,,2350,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-መቅደላዊት-ንጋቱ,false
+,zemarit-mekides-alemu,Zemarit Mekides Alemu,ዘማሪት መቅደስ ዓለሙ,,,,Zemarit Mekides Alemu,,,2360,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-መቅደስ-ዓለሙ,false
+,zemarit-mekides-mekonin,Zemarit Mekides Mekonin,ዘማሪት መቅደስ መኮንን,,,,Zemarit Mekides Mekonin,,,2370,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-መቅደስ-መኮንን,false
+,zemarit-meri-temeliso,Zemarit Meri Temeliso,ዘማሪት ሜሪ ተመልሶ,,,,Zemarit Meri Temeliso,,,2380,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ሜሪ-ተመልሶ,false
+,zemarit-milika-bitew,Zemarit Milika Bitew,ዘማሪት ሚልካ ቢተው,,,,Zemarit Milika Bitew,,,2390,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ሚልካ-ቢተው,false
+,zemarit-rebekah-gordon,Zemarit Rebekah Gordon,,,,,Zemarit Rebekah Gordon,,,2400,false,draft,2,https://eotcmedia.com/hymns/singer/Zemarit-Rebekah-Gordon,false
+,zemarit-selamawit-tekilu,Zemarit Selamawit Tekilu,ዘማሪት ሰላማዊት ተክሉ,,,,Zemarit Selamawit Tekilu,,,2410,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰላማዊት-ተክሉ,false
+,zemarit-sidona-samuel,Zemarit Sidona Samuel,,,,,Zemarit Sidona Samuel,,,2420,false,draft,2,https://eotcmedia.com/hymns/singer/Zemarit-Sidona-Samuel,false
+,zemarit-tsion-webetu,Zemarit Tsion Webetu,,,,,Zemarit Tsion Webetu,,,2430,false,draft,2,https://eotcmedia.com/hymns/singer/Zemarit-Tsion-Webetu,false
+,zemarit-wubitu-selomon,Zemarit Wubitu Selomon,ዘማሪት ዉቢቱ ሰሎሞን,,,,Zemarit Wubitu Selomon,,,2440,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-ዉቢቱ-ሰሎሞን,false
+,zemarit-yerom-mekonin,Zemarit Yerom Mekonin,ዘማሪት የሮም መኮንን,,,,Zemarit Yerom Mekonin,,,2450,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-የሮም-መኮንን,false
+,zemarit-yetimiwerik-mulat,Zemarit Yetimiwerik Mulat,ዘማሪት የትምወርቅ ሙላት,,,,Zemarit Yetimiwerik Mulat,,,2460,false,draft,2,https://eotcmedia.com/hymns/singer/ዘማሪት-የትምወርቅ-ሙላት,false
+,aba-yositos,Aba Yositos,አባ ዮስጦስ,,,,Aba Yositos,,,2470,false,draft,1,https://eotcmedia.com/hymns/singer/አባ-ዮስጦስ,false
+,abel-begena,Abel Begena,አቤል በገና,,,,Abel Begena,,,2480,false,draft,1,https://eotcmedia.com/hymns/singer/አቤል-በገና,false
+,aritisit-ehitochachin-lebetekirisitiyanachihu-dimits-silehonachihu-ename,Aritisit Ehitochachin Lebetekirisitiyanachihu Dimits Silehonachihu Enameseginalen,አርቲስት እህቶቻችን ለቤተክርስቲያናችሁ ድምፅ ስለሆናችሁ እናመሰግናለን,,,,Aritisit Ehitochachin Lebetekirisitiyanachihu Dimits Silehonachihu Enameseginalen,,,2490,false,draft,1,https://eotcmedia.com/hymns/singer/አርቲስት-እህቶቻችን-ለቤተክርስቲያናችሁ-ድምፅ-ስለሆናችሁ-እናመሰግናለን,false
+,artist-amsale-tizazu,Artist Amsale Tizazu,,,,,Artist Amsale Tizazu,,,2500,false,draft,1,https://eotcmedia.com/hymns/singer/Artist-Amsale-Tizazu,false
+,bisirigut-midiya-zemariyan,Bisirigut Midiya Zemariyan,ብሥርጉት ሚድያ ዘማርያን,,,,Bisirigut Midiya Zemariyan,,,2510,false,draft,1,https://eotcmedia.com/hymns/singer/ብሥርጉት-ሚድያ-ዘማርያን,false
+,dan-begena,Dan Begena,ዳን በገና,,,,Dan Begena,,,2520,false,draft,1,https://eotcmedia.com/hymns/singer/ዳን-በገና,false
+,deacon-noah-abebe,Deacon Noah Abebe,,,,,Deacon Noah Abebe,,,2530,false,draft,1,https://eotcmedia.com/hymns/singer/Deacon-Noah-Abebe,false
+,deacon-noah-fisseha,Deacon Noah Fisseha,,,,,Deacon Noah Fisseha,,,2540,false,draft,1,https://eotcmedia.com/hymns/singer/Deacon-Noah-Fisseha,false
+,diyakon-ewinet-anidiamilak,Diyakon Ewinet Anidiamilak,ዲያቆን እውነት አንድአምላክ,,,,Diyakon Ewinet Anidiamilak,,,2550,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-እውነት-አንድአምላክ,false
+,diyakon-firezer-desalegn-gar,Diyakon Firezer Desalegn Gar,ዲያቆን ፍሬዘር ደሳለኝ ጋር,,,,Diyakon Firezer Desalegn Gar,,,2560,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-ፍሬዘር-ደሳለኝ-ጋር,false
+,diyakon-kesate-birihan-ge-iyesus,Diyakon Kesate Birihan Ge/iyesus,ዲያቆን ከሣቴ ብርሃን ገ/ኢየሱስ,,,,Diyakon Kesate Birihan Ge/iyesus,,,2570,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-ከሣቴ-ብርሃን-ገ/ኢየሱስ,false
+,diyakon-seboka-gudeta,Diyakon Seboka Gudeta,ዲያቆን ሰቦቃ ጉደታ,,,,Diyakon Seboka Gudeta,,,2580,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-ሰቦቃ-ጉደታ,false
+,diyakon-temesigen-habitamu,Diyakon Temesigen Habitamu,ዲያቆን ተመስገን ሀብታሙ,,,,Diyakon Temesigen Habitamu,,,2590,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-ተመስገን-ሀብታሙ,false
+,diyakon-yared-birihane,Diyakon Yared Birihane,ዲያቆን ያሬድ ብርሃነ,,,,Diyakon Yared Birihane,,,2600,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-ያሬድ-ብርሃነ,false
+,diyakon-yared-tekalign,Diyakon Yared Tekalign,ዲያቆን ያሬድ ተካልኝ,,,,Diyakon Yared Tekalign,,,2610,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-ያሬድ-ተካልኝ,false
+,diyakon-zemari-esirom-teshome,Diyakon Zemari Esirom Teshome,ዲያቆን ዘማሪ ኤስሮም ተሾመ,,,,Diyakon Zemari Esirom Teshome,,,2620,false,draft,1,https://eotcmedia.com/hymns/singer/ዲያቆን-ዘማሪ-ኤስሮም-ተሾመ,false
+,eyob-belayineh,Eyob Belayineh,እዮብ በላይነህ,,,,Eyob Belayineh,,,2630,false,draft,1,https://eotcmedia.com/hymns/singer/እዮብ-በላይነህ,false
+,f-taa-biqilaa-mitikkuu,F/taa Biqilaa Mitikkuu,,,,,F/taa Biqilaa Mitikkuu,,,2640,false,draft,1,https://eotcmedia.com/hymns/singer/F/taa-Biqilaa-Mitikkuu,false
+,f-taa-d-n-ayyanaa-fiqaaduu,F/taa D/n Ayyanaa Fiqaaduu,,,,,F/taa D/n Ayyanaa Fiqaaduu,,,2650,false,draft,1,https://eotcmedia.com/hymns/singer/F/taa-D/n-Ayyanaa-Fiqaaduu,false
+,f-taa-dn-daanyee,F/taa Dn Daanyee,,,,,F/taa Dn Daanyee,,,2660,false,draft,1,https://eotcmedia.com/hymns/singer/F/taa-Dn-Daanyee,false
+,f-taa-dn-kaaleb-geetaachootiin,F/taa Dn Kaaleb Geetaachootiin,,,,,F/taa Dn Kaaleb Geetaachootiin,,,2670,false,draft,1,https://eotcmedia.com/hymns/singer/F/taa-Dn-Kaaleb-Geetaachootiin,false
+,f-taa-dn-seenaa-dabaree,F/taa Dn Seenaa Dabaree,,,,,F/taa Dn Seenaa Dabaree,,,2680,false,draft,1,https://eotcmedia.com/hymns/singer/F/taa-Dn-Seenaa-Dabaree,false
+,f-taa-tafarraa-baqqalaa,F/taa Tafarraa Baqqalaa,,,,,F/taa Tafarraa Baqqalaa,,,2690,false,draft,1,https://eotcmedia.com/hymns/singer/F/taa-Tafarraa-Baqqalaa,false
+,f-taa-waldesanbat-baqqalaa,F/taa Waldesanbat Baqqalaa,,,,,F/taa Waldesanbat Baqqalaa,,,2700,false,draft,1,https://eotcmedia.com/hymns/singer/F/taa-Waldesanbat-Baqqalaa,false
+,f-ttuu-burtukaan-gosaa,F/ttuu Burtukaan Gosaa,,,,,F/ttuu Burtukaan Gosaa,,,2710,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Burtukaan-Gosaa,false
+,f-ttuu-hawwii-abdiisaa,F/ttuu Hawwii Abdiisaa,,,,,F/ttuu Hawwii Abdiisaa,,,2720,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Hawwii-Abdiisaa,false
+,f-ttuu-maqdas-xilaahuun,F/ttuu Maqdas Xilaahuun,,,,,F/ttuu Maqdas Xilaahuun,,,2730,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Maqdas-Xilaahuun,false
+,f-ttuu-meskerem-xilaayee,F/ttuu Meskerem Xilaayee,,,,,F/ttuu Meskerem Xilaayee,,,2740,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Meskerem-Xilaayee,false
+,f-ttuu-mihiret-baqqalee,F/ttuu Mihiret Baqqalee,,,,,F/ttuu Mihiret Baqqalee,,,2750,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Mihiret-Baqqalee,false
+,f-ttuu-taarikee-lammaa,F/ttuu Taarikee Lammaa,,,,,F/ttuu Taarikee Lammaa,,,2760,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Taarikee-Lammaa,false
+,f-ttuu-warqinash-mul-ataa,F/ttuu Warqinash Mul'ataa,,,,,F/ttuu Warqinash Mul'ataa,,,2770,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Warqinash-Mul'ataa,false
+,f-ttuu-yaadaani-zarihuun,F/ttuu Yaadaani Zarihuun,,,,,F/ttuu Yaadaani Zarihuun,,,2780,false,draft,1,https://eotcmedia.com/hymns/singer/F/ttuu-Yaadaani-Zarihuun,false
+,faarfataa-darajjee-jimaa,Faarfataa Darajjee Jimaa,,,,,Faarfataa Darajjee Jimaa,,,2790,false,draft,1,https://eotcmedia.com/hymns/singer/Faarfataa-Darajjee-Jimaa,false
+,faarfataa-deacon-yaared-takkaaliny,Faarfataa Deacon Yaared Takkaaliny,,,,,Faarfataa Deacon Yaared Takkaaliny,,,2800,false,draft,1,https://eotcmedia.com/hymns/singer/Faarfataa-Deacon-Yaared-Takkaaliny,false
+,finote-tsidik,Finote Tsidik,ፍኖተ ጽድቅ,,,,Finote Tsidik,,,2810,false,draft,1,https://eotcmedia.com/hymns/singer/ፍኖተ-ጽድቅ,false
+,hibiret,Hibiret,ሕብረት,,,,Hibiret,,,2820,false,draft,1,https://eotcmedia.com/hymns/singer/ሕብረት,false
+,hitsan-zemarit-mare,Hitsan Zemarit Mare,ሕጻን ዘማሪት ማሬ,,,,Hitsan Zemarit Mare,,,2830,false,draft,1,https://eotcmedia.com/hymns/singer/ሕጻን-ዘማሪት-ማሬ,false
+,kesis-dor-zebene-lema,Kesis Dor Zebene Lema,ቀሲስ ዶር ዘበነ ለማ,,,,Kesis Dor Zebene Lema,,,2840,false,draft,1,https://eotcmedia.com/hymns/singer/ቀሲስ-ዶር-ዘበነ-ለማ,false
+,kesis-mekonin-fisiha,Kesis Mekonin Fisiha,ቀሲስ መኮንን ፍስሐ,,,,Kesis Mekonin Fisiha,,,2850,false,draft,1,https://eotcmedia.com/hymns/singer/ቀሲስ-መኮንን-ፍስሐ,false
+,kesis-meliake-birihan-tsegazeab,Kesis Meliake Birihan Tsegazeab,ቀሲስ መልኣከ ብርሃን ጸጋዘኣብ,,,,Kesis Meliake Birihan Tsegazeab,,,2860,false,draft,1,https://eotcmedia.com/hymns/singer/ቀሲስ-መልኣከ-ብርሃን-ጸጋዘኣብ,false
+,kesis-sisay-mebirahitom,Kesis Sisay Mebirahitom,ቀሲስ ሲሳይ መብራህቶም,,,,Kesis Sisay Mebirahitom,,,2870,false,draft,1,https://eotcmedia.com/hymns/singer/ቀሲስ-ሲሳይ-መብራህቶም,false
+,like-diyakonat-muse-nigatu,Like Diyakonat Muse Nigatu,ሊቀ ዲያቆናት ሙሴ ንጋቱ,,,,Like Diyakonat Muse Nigatu,,,2880,false,draft,1,https://eotcmedia.com/hymns/singer/ሊቀ-ዲያቆናት-ሙሴ-ንጋቱ,false
+,like-lisanat-kesis-biruk-beyene,Like Lisanat Kesis Biruk Beyene,ሊቀ ልሣናት ቀሲስ ብሩክ በየነ,,,,Like Lisanat Kesis Biruk Beyene,,,2890,false,draft,1,https://eotcmedia.com/hymns/singer/ሊቀ-ልሣናት-ቀሲስ-ብሩክ-በየነ,false
+,like-mezemiran-bizuayehu-temesigen,Like Mezemiran Bizuayehu Temesigen,ሊቀ መዘምራን ብዙአየሁ ተመስገን,,,,Like Mezemiran Bizuayehu Temesigen,,,2900,false,draft,1,https://eotcmedia.com/hymns/singer/ሊቀ-መዘምራን-ብዙአየሁ-ተመስገን,false
+,like-mezemiran-dibekulu-asefa,Like Mezemiran Dibekulu Asefa,ሊቀ መዘምራን ዲበኩሉ አሰፋ,,,,Like Mezemiran Dibekulu Asefa,,,2910,false,draft,1,https://eotcmedia.com/hymns/singer/ሊቀ-መዘምራን-ዲበኩሉ-አሰፋ,false
+,like-siyuman-tsige-asiteraye,Like Siyuman Tsige Asiteraye,ሊቀ ስዩማን ፅጌ አስተራየ,,,,Like Siyuman Tsige Asiteraye,,,2920,false,draft,1,https://eotcmedia.com/hymns/singer/ሊቀ-ስዩማን-ፅጌ-አስተራየ,false
+,mahilete-selomon,Mahilete Selomon,ማኅሌተ ሰሎሞን,,,,Mahilete Selomon,,,2930,false,draft,1,https://eotcmedia.com/hymns/singer/ማኅሌተ-ሰሎሞን,false
+,megabe-misitir-selomon-tesifaye,Megabe Misitir Selomon Tesifaye,መጋቤ ምሥጢር ሰሎሞን ተስፋዬ,,,,Megabe Misitir Selomon Tesifaye,,,2940,false,draft,1,https://eotcmedia.com/hymns/singer/መጋቤ-ምሥጢር-ሰሎሞን-ተስፋዬ,false
+,memihir-erimiyas-hayilay,Memihir Erimiyas Hayilay,መምህር ኤርምያስ ኃይላይ,,,,Memihir Erimiyas Hayilay,,,2950,false,draft,1,https://eotcmedia.com/hymns/singer/መምህር-ኤርምያስ-ኃይላይ,false
+,memihir-mihireteab-asefa,Memihir Mihireteab Asefa,መምህር ምሕረተአብ አሰፋ,,,,Memihir Mihireteab Asefa,,,2960,false,draft,1,https://eotcmedia.com/hymns/singer/መምህር-ምሕረተአብ-አሰፋ,false
+,merigeta-fikiru-sahile,Merigeta Fikiru Sahile,መሪጌታ ፍቅሩ ሳህሌ,,,,Merigeta Fikiru Sahile,,,2970,false,draft,1,https://eotcmedia.com/hymns/singer/መሪጌታ-ፍቅሩ-ሳህሌ,false
+,merigeta-hanibal-riesom,Merigeta Hanibal Riesom,መሪጌታ ሃኒባል ርእሶም,,,,Merigeta Hanibal Riesom,,,2980,false,draft,1,https://eotcmedia.com/hymns/singer/መሪጌታ-ሃኒባል-ርእሶም,false
+,minibel-biweta,Minibel Biweta,ምኒበል ቢወጣ,,,,Minibel Biweta,,,2990,false,draft,1,https://eotcmedia.com/hymns/singer/ምኒበል-ቢወጣ,false
+,yayelet-adugna,Yayelet Adugna,ያየለት አዱኛ,,,,Yayelet Adugna,,,3000,false,draft,1,https://eotcmedia.com/hymns/singer/ያየለት-አዱኛ,false
+,zemari-abel-tsegaye,Zemari Abel Tsegaye,ዘማሪ አቤል ፀጋዬ,,,,Zemari Abel Tsegaye,,,3010,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-አቤል-ፀጋዬ,false
+,zemari-abenezer-tesifaye,Zemari Abenezer Tesifaye,ዘማሪ አቤኔዘር ተስፋዬ,,,,Zemari Abenezer Tesifaye,,,3020,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-አቤኔዘር-ተስፋዬ,false
+,zemari-abiriham-dires,Zemari Abiriham Dires,ዘማሪ አብርሃም ድረስ,,,,Zemari Abiriham Dires,,,3030,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-አብርሃም-ድረስ,false
+,zemari-alemayehu-fanita,Zemari Alemayehu Fanita,ዘማሪ አለማየሁ ፋንታ,,,,Zemari Alemayehu Fanita,,,3040,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-አለማየሁ-ፋንታ,false
+,zemari-alemayehu-kotu,Zemari Alemayehu Kotu,ዘማሪ አለማየሁ ኮቱ,,,,Zemari Alemayehu Kotu,,,3050,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-አለማየሁ-ኮቱ,false
+,zemari-ashenafi-teshome,Zemari Ashenafi Teshome,ዘማሪ አሸናፊ ተሾመ,,,,Zemari Ashenafi Teshome,,,3060,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-አሸናፊ-ተሾመ,false
+,zemari-awet-mesifin,Zemari Awet Mesifin,ዘማሪ ዓወት መስፍን,,,,Zemari Awet Mesifin,,,3070,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዓወት-መስፍን,false
+,zemari-beeminet-ashenafi,Zemari Beeminet Ashenafi,ዘማሪ በእምነት አሸናፊ,,,,Zemari Beeminet Ashenafi,,,3080,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-በእምነት-አሸናፊ,false
+,zemari-benyam-muluneh,Zemari Benyam Muluneh,,,,,Zemari Benyam Muluneh,,,3090,false,draft,1,https://eotcmedia.com/hymns/singer/Zemari-Benyam-Muluneh,false
+,zemari-biniyam-kasahun,Zemari Biniyam Kasahun,ዘማሪ ብንያም ካሳሁን,,,,Zemari Biniyam Kasahun,,,3100,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ብንያም-ካሳሁን,false
+,zemari-biniyam-simegnih,Zemari Biniyam Simegnih,ዘማሪ ብንያም ስመኝህ,,,,Zemari Biniyam Simegnih,,,3110,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ብንያም-ስመኝህ,false
+,zemari-birihanu-terefe,Zemari Birihanu Terefe,ዘማሪ ብርሃኑ ተረፈ,,,,Zemari Birihanu Terefe,,,3120,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ብርሃኑ-ተረፈ,false
+,zemari-biruk-amanuel,Zemari Biruk Amanuel,ዘማሪ ብሩክ አማኑኤል,,,,Zemari Biruk Amanuel,,,3130,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ብሩክ-አማኑኤል,false
+,zemari-cherinet-senay-zimare,Zemari Cherinet Senay Zimare,ዘማሪ ቸርነት ሰናይ ዝማሬ,,,,Zemari Cherinet Senay Zimare,,,3140,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ቸርነት-ሰናይ-ዝማሬ,false
+,zemari-dagimawi-abebayehu,Zemari Dagimawi Abebayehu,ዘማሪ ዳግማዊ አበባየሁ,,,,Zemari Dagimawi Abebayehu,,,3150,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዳግማዊ-አበባየሁ,false
+,zemari-dagimawi-deribe,Zemari Dagimawi Deribe,ዘማሪ ዳግማዊ ደርቤ,,,,Zemari Dagimawi Deribe,,,3160,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዳግማዊ-ደርቤ,false
+,zemari-dawit-asifahale,Zemari Dawit Asifahale,ዘማሪ ዳዊት አስፋሃለ,,,,Zemari Dawit Asifahale,,,3170,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዳዊት-አስፋሃለ,false
+,zemari-dawit-hayile,Zemari Dawit Hayile,ዘማሪ ዳዊት ኃይሌ,,,,Zemari Dawit Hayile,,,3180,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዳዊት-ኃይሌ,false
+,zemari-deacon-abel-tedla,Zemari Deacon Abel Tedla,,,,,Zemari Deacon Abel Tedla,,,3190,false,draft,1,https://eotcmedia.com/hymns/singer/Zemari-Deacon-Abel-Tedla,false
+,zemari-deacon-mathias-adamu,Zemari Deacon Mathias Adamu,,,,,Zemari Deacon Mathias Adamu,,,3200,false,draft,1,https://eotcmedia.com/hymns/singer/Zemari-Deacon-Mathias-Adamu,false
+,zemari-deacon-yohannes-alonzo,Zemari Deacon Yohannes Alonzo,,,,,Zemari Deacon Yohannes Alonzo,,,3210,false,draft,1,https://eotcmedia.com/hymns/singer/Zemari-Deacon-Yohannes-Alonzo,false
+,zemari-di-n-bisirat,Zemari Di/n Bisirat,ዘማሪ ዲ/ን ብስራት,,,,Zemari Di/n Bisirat,,,3220,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲ/ን-ብስራት,false
+,zemari-di-n-enidalikachew-dagnew,Zemari Di/n Enidalikachew Dagnew,ዘማሪ ዲ/ን እንዳልካቸው ዳኘው,,,,Zemari Di/n Enidalikachew Dagnew,,,3230,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲ/ን-እንዳልካቸው-ዳኘው,false
+,zemari-di-n-yemane-birihan,Zemari Di/n Yemane Birihan,ዘማሪ ዲ/ን የማነ ብርሃን,,,,Zemari Di/n Yemane Birihan,,,3240,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲ/ን-የማነ-ብርሃን,false
+,zemari-diyakon-abel-ayele,Zemari Diyakon Abel Ayele,ዘማሪ ዲያቆን አቤል አየለ,,,,Zemari Diyakon Abel Ayele,,,3250,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አቤል-አየለ,false
+,zemari-diyakon-abel-kahisay,Zemari Diyakon Abel Kahisay,ዘማሪ ዲያቆን ኣቤል ካህሳይ,,,,Zemari Diyakon Abel Kahisay,,,3260,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኣቤል-ካህሳይ,false
+,zemari-diyakon-aliazar-getachew,Zemari Diyakon Aliazar Getachew,ዘማሪ ዲያቆን አልዓዛር ጌታቸው,,,,Zemari Diyakon Aliazar Getachew,,,3270,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አልዓዛር-ጌታቸው,false
+,zemari-diyakon-asimamaw,Zemari Diyakon Asimamaw,ዘማሪ ዲያቆን አስማማው,,,,Zemari Diyakon Asimamaw,,,3280,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-አስማማው,false
+,zemari-diyakon-befikadu-niguse,Zemari Diyakon Befikadu Niguse,ዘማሪ ዲያቆን በፍቃዱ ንጉሴ,,,,Zemari Diyakon Befikadu Niguse,,,3290,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-በፍቃዱ-ንጉሴ,false
+,zemari-diyakon-belay-zehosaena,Zemari Diyakon Belay Zehosaena,ዘማሪ ዲያቆን በላይ ዘሆሳዕና,,,,Zemari Diyakon Belay Zehosaena,,,3300,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-በላይ-ዘሆሳዕና,false
+,zemari-diyakon-biniyam-kiros,Zemari Diyakon Biniyam Kiros,ዘማሪ ዲያቆን ቢንያም ኪሮስ,,,,Zemari Diyakon Biniyam Kiros,,,3310,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቢንያም-ኪሮስ,false
+,zemari-diyakon-biniyam-mekonin,Zemari Diyakon Biniyam Mekonin,ዘማሪ ዲያቆን ቢኒያም መኮንን,,,,Zemari Diyakon Biniyam Mekonin,,,3320,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቢኒያም-መኮንን,false
+,zemari-diyakon-biniyam-siyum,Zemari Diyakon Biniyam Siyum,ዘማሪ ዲያቆን ብንያም ስዩም,,,,Zemari Diyakon Biniyam Siyum,,,3330,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ብንያም-ስዩም,false
+,zemari-diyakon-birihane-hayilesilase,Zemari Diyakon Birihane Hayilesilase,ዘማሪ ዲያቆን ብርሃነ ኃይለሥላሴ,,,,Zemari Diyakon Birihane Hayilesilase,,,3340,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ብርሃነ-ኃይለሥላሴ,false
+,zemari-diyakon-biruk-jifar,Zemari Diyakon Biruk Jifar,ዘማሪ ዲያቆን ብሩክ ጅፋር,,,,Zemari Diyakon Biruk Jifar,,,3350,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ብሩክ-ጅፋር,false
+,zemari-diyakon-dejen-guesh,Zemari Diyakon Dejen Guesh,ዘማሪ ዲያቆን ደጀን ጉዕሽ,,,,Zemari Diyakon Dejen Guesh,,,3360,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ደጀን-ጉዕሽ,false
+,zemari-diyakon-efirem-demeke,Zemari Diyakon Efirem Demeke,ዘማሪ ዲያቆን ኤፍሬም ደመቀ,,,,Zemari Diyakon Efirem Demeke,,,3370,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኤፍሬም-ደመቀ,false
+,zemari-diyakon-enidale-dereje-2,Zemari Diyakon Enidale Dereje,ዘማሪ ዲያቆን እንዳለ ደረጄ,,,,Zemari Diyakon Enidale Dereje,,,3380,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እንዳለ-ደረጄ,false
+,zemari-diyakon-erimiyas-girima,Zemari Diyakon Erimiyas Girima,ዘማሪ ዲያቆን ኤርሚያስ ግርማ,,,,Zemari Diyakon Erimiyas Girima,,,3390,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኤርሚያስ-ግርማ,false
+,zemari-diyakon-esitifanos-bisetegn,Zemari Diyakon Esitifanos Bisetegn,ዘማሪ ዲያቆን እስጢፋኖስ ቢሰጠኝ,,,,Zemari Diyakon Esitifanos Bisetegn,,,3400,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እስጢፋኖስ-ቢሰጠኝ,false
+,zemari-diyakon-esubalewu-alemu,Zemari Diyakon Esubalewu Alemu,ዘማሪ ዲያቆን እሱባለዉ አለሙ,,,,Zemari Diyakon Esubalewu Alemu,,,3410,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-እሱባለዉ-አለሙ,false
+,zemari-diyakon-fasil-temaru,Zemari Diyakon Fasil Temaru,ዘማሪ ዲያቆን ፋሲል ተማሩ,,,,Zemari Diyakon Fasil Temaru,,,3420,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፋሲል-ተማሩ,false
+,zemari-diyakon-filimona-gebiru,Zemari Diyakon Filimona Gebiru,ዘማሪ ዲያቆን ፊልሞና ገብሩ,,,,Zemari Diyakon Filimona Gebiru,,,3430,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፊልሞና-ገብሩ,false
+,zemari-diyakon-fitsum-legese,Zemari Diyakon Fitsum Legese,ዘማሪ ዲያቆን ፍጹም ለገሠ,,,,Zemari Diyakon Fitsum Legese,,,3440,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ፍጹም-ለገሠ,false
+,zemari-diyakon-haben-ge-mesikel,Zemari Diyakon Haben Ge/mesikel,ዘማሪ ዲያቆን ሓበን ገ/መስቀል,,,,Zemari Diyakon Haben Ge/mesikel,,,3450,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሓበን-ገ/መስቀል,false
+,zemari-diyakon-hayilu-abebe,Zemari Diyakon Hayilu Abebe,ዘማሪ ዲያቆን ኃይሉ አበበ,,,,Zemari Diyakon Hayilu Abebe,,,3460,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኃይሉ-አበበ,false
+,zemari-diyakon-kasahun-welide,Zemari Diyakon Kasahun Welide,ዘማሪ ዲያቆን ካሳሁን ወልዴ,,,,Zemari Diyakon Kasahun Welide,,,3470,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ካሳሁን-ወልዴ,false
+,zemari-diyakon-kibirom-hayelom,Zemari Diyakon Kibirom Hayelom,ዘማሪ ዲያቆን ክብሮም ሃየሎም,,,,Zemari Diyakon Kibirom Hayelom,,,3480,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ክብሮም-ሃየሎም,false
+,zemari-diyakon-kidus-abiriham,Zemari Diyakon Kidus Abiriham,ዘማሪ ዲያቆን ቅዱስ አብርሃም,,,,Zemari Diyakon Kidus Abiriham,,,3490,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቅዱስ-አብርሃም,false
+,zemari-diyakon-kifilom-meles,Zemari Diyakon Kifilom Meles,ዘማሪ ዲያቆን ክፍሎም መለስ,,,,Zemari Diyakon Kifilom Meles,,,3500,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ክፍሎም-መለስ,false
+,zemari-diyakon-kiya-abebe,Zemari Diyakon Kiya Abebe,ዘማሪ ዲያቆን ኪያ አበበ,,,,Zemari Diyakon Kiya Abebe,,,3510,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኪያ-አበበ,false
+,zemari-diyakon-kohob-gebirehiwet,Zemari Diyakon Kohob Gebirehiwet,ዘማሪ ዲያቆን ኮኾብ ገብረሂወት,,,,Zemari Diyakon Kohob Gebirehiwet,,,3520,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ኮኾብ-ገብረሂወት,false
+,zemari-diyakon-manaye-ale,Zemari Diyakon Manaye Ale,ዘማሪ ዲያቆን ማናየ አሌ,,,,Zemari Diyakon Manaye Ale,,,3530,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ማናየ-አሌ,false
+,zemari-diyakon-melese-adisu,Zemari Diyakon Melese Adisu,ዘማሪ ዲያቆን መለሰ አዲሱ,,,,Zemari Diyakon Melese Adisu,,,3540,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-መለሰ-አዲሱ,false
+,zemari-diyakon-mihiretiabi-zemarit-maeli-zemarit-meri,"Zemari Diyakon Mihiretiabi, Zemarit Maeli, Zemarit Meri",ዘማሪ ዲያቆን ምሕረትኣብ፣ ዘማሪት ማኤል፣ ዘማሪት ሜሪ,,,,"Zemari Diyakon Mihiretiabi, Zemarit Maeli, Zemarit Meri",,,3550,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ምሕረትኣብ፣-ዘማሪት-ማኤል፣-ዘማሪት-ሜሪ,false
+,zemari-diyakon-nahom-mikiel,Zemari Diyakon Nahom Mikiel,ዘማሪ ዲያቆን ናሆም ሚኪኤል,,,,Zemari Diyakon Nahom Mikiel,,,3560,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ናሆም-ሚኪኤል,false
+,zemari-diyakon-natinael-sinitayehu,Zemari Diyakon Natinael Sinitayehu,ዘማሪ ዲያቆን ናትናኤል ስንታየሁ,,,,Zemari Diyakon Natinael Sinitayehu,,,3570,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ናትናኤል-ስንታየሁ,false
+,zemari-diyakon-robiel-shimay,Zemari Diyakon Robiel Shimay,ዘማሪ ዲያቆን ሮቢኤል ሽማይ,,,,Zemari Diyakon Robiel Shimay,,,3580,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሮቢኤል-ሽማይ,false
+,zemari-diyakon-samuel-alemu,Zemari Diyakon Samuel Alemu,ዘማሪ ዲያቆን ሳሙኤል አለሙ,,,,Zemari Diyakon Samuel Alemu,,,3590,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሳሙኤል-አለሙ,false
+,zemari-diyakon-semahegn-adamu,Zemari Diyakon Semahegn Adamu,ዘማሪ ዲያቆን ሰማኸኝ አዳሙ,,,,Zemari Diyakon Semahegn Adamu,,,3600,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሰማኸኝ-አዳሙ,false
+,zemari-diyakon-semere-ge-tsadik,Zemari Diyakon Semere Ge/tsadik,ዘማሪ ዲያቆን ሰመረ ገ/ጻድቅ,,,,Zemari Diyakon Semere Ge/tsadik,,,3610,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ሰመረ-ገ/ጻድቅ,false
+,zemari-diyakon-tamirat-hayilu,Zemari Diyakon Tamirat Hayilu,ዘማሪ ዲያቆን ታምራት ኃይሉ,,,,Zemari Diyakon Tamirat Hayilu,,,3620,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታምራት-ኃይሉ,false
+,zemari-diyakon-tamirat-tigabu,Zemari Diyakon Tamirat Tigabu,ዘማሪ ዲያቆን ታምራት ጥጋቡ,,,,Zemari Diyakon Tamirat Tigabu,,,3630,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታምራት-ጥጋቡ,false
+,zemari-diyakon-tamiru-abera,Zemari Diyakon Tamiru Abera,ዘማሪ ዲያቆን ታምሩ አበራ,,,,Zemari Diyakon Tamiru Abera,,,3640,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ታምሩ-አበራ,false
+,zemari-diyakon-tediros-mekonen,Zemari Diyakon Tediros Mekonen,ዘማሪ ዲያቆን ቴድሮስ መኮነን,,,,Zemari Diyakon Tediros Mekonen,,,3650,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ቴድሮስ-መኮነን,false
+,zemari-diyakon-tesifamariyam-ukibagebiriel,Zemari Diyakon Tesifamariyam Ukibagebiriel,ዘማሪ ዲያቆን ተስፋማርያም ዑቅባገብርኤል,,,,Zemari Diyakon Tesifamariyam Ukibagebiriel,,,3660,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ተስፋማርያም-ዑቅባገብርኤል,false
+,zemari-diyakon-wenidesen-mekasha,Zemari Diyakon Wenidesen Mekasha,ዘማሪ ዲያቆን ወንደሰን መካሻ,,,,Zemari Diyakon Wenidesen Mekasha,,,3670,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ወንደሰን-መካሻ,false
+,zemari-diyakon-yeabitsega-belete,Zemari Diyakon Yeabitsega Belete,ዘማሪ ዲያቆን የአብጸጋ በለጠ,,,,Zemari Diyakon Yeabitsega Belete,,,3680,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-የአብጸጋ-በለጠ,false
+,zemari-diyakon-yikealo-yibirah,Zemari Diyakon Yikealo Yibirah,ዘማሪ ዲያቆን ይከኣሎ ይብራህ,,,,Zemari Diyakon Yikealo Yibirah,,,3690,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ይከኣሎ-ይብራህ,false
+,zemari-diyakon-yisihak-negasi,Zemari Diyakon Yisihak Negasi,ዘማሪ ዲያቆን ይስሓቅ ነጋሲ,,,,Zemari Diyakon Yisihak Negasi,,,3700,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ይስሓቅ-ነጋሲ,false
+,zemari-diyakon-yohanis-mehamed,Zemari Diyakon Yohanis Mehamed,ዘማሪ ዲያቆን ዮሐንስ መሀመድ,,,,Zemari Diyakon Yohanis Mehamed,,,3710,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዮሐንስ-መሀመድ,false
+,zemari-diyakon-yonas-menicho,Zemari Diyakon Yonas Menicho,ዘማሪ ዲያቆን ዮናስ መንቾ,,,,Zemari Diyakon Yonas Menicho,,,3720,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዮናስ-መንቾ,false
+,zemari-diyakon-yosef-maasho,Zemari Diyakon Yosef Maasho,ዘማሪ ዲያቆን ዮሴፍ ማዓሾ,,,,Zemari Diyakon Yosef Maasho,,,3730,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዮሴፍ-ማዓሾ,false
+,zemari-diyakon-zekariyas-wase,Zemari Diyakon Zekariyas Wase,ዘማሪ ዲያቆን ዘካርያስ ዋሴ,,,,Zemari Diyakon Zekariyas Wase,,,3740,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዘካርያስ-ዋሴ,false
+,zemari-diyakon-zelalem-yiniges,Zemari Diyakon Zelalem Yiniges,ዘማሪ ዲያቆን ዘላለም ይንገስ,,,,Zemari Diyakon Zelalem Yiniges,,,3750,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዲያቆን-ዘላለም-ይንገስ,false
+,zemari-enidalikachew-amanuel,Zemari Enidalikachew Amanuel,ዘማሪ እንዳልካቸው አማኑኤል,,,,Zemari Enidalikachew Amanuel,,,3760,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-እንዳልካቸው-አማኑኤል,false
+,zemari-erimiyas-asefa,Zemari Erimiyas Asefa,ዘማሪ ኤርሚያስ አሰፋ,,,,Zemari Erimiyas Asefa,,,3770,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ኤርሚያስ-አሰፋ,false
+,zemari-fekadu-amare,Zemari Fekadu Amare,ዘማሪ ፈቃዱ አማረ,,,,Zemari Fekadu Amare,,,3780,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ፈቃዱ-አማረ,false
+,zemari-firezer-tezera,Zemari Firezer Tezera,ዘማሪ ፍሬዘር ተዘራ,,,,Zemari Firezer Tezera,,,3790,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ፍሬዘር-ተዘራ,false
+,zemari-gashaw-nurilign,Zemari Gashaw Nurilign,ዘማሪ ጋሻው ኑርልኝ,,,,Zemari Gashaw Nurilign,,,3800,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ጋሻው-ኑርልኝ,false
+,zemari-gediyon-chala,Zemari Gediyon Chala,ዘማሪ ጌድዮን ጫላ,,,,Zemari Gediyon Chala,,,3810,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ጌድዮን-ጫላ,false
+,zemari-genet-kebede,Zemari Genet Kebede,ዘማሪ ገነት ከበደ,,,,Zemari Genet Kebede,,,3820,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ገነት-ከበደ,false
+,zemari-gosaye-gelana,Zemari Gosaye Gelana,ዘማሪ ጎሳዬ ገላና,,,,Zemari Gosaye Gelana,,,3830,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ጎሳዬ-ገላና,false
+,zemari-hayelom-keshi-ariaya,Zemari Hayelom Keshi Ariaya,ዘማሪ ሓየሎም ቀሺ ኣርኣያ,,,,Zemari Hayelom Keshi Ariaya,,,3840,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሓየሎም-ቀሺ-ኣርኣያ,false
+,zemari-hitsan-kirikos-negasi,Zemari Hitsan Kirikos Negasi,ዘማሪ ህፃን ቂርቆስ ነጋሲ,,,,Zemari Hitsan Kirikos Negasi,,,3850,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ህፃን-ቂርቆስ-ነጋሲ,false
+,zemari-iyob-asichalew,Zemari Iyob Asichalew,ዘማሪ ኢዮብ አስቻለው,,,,Zemari Iyob Asichalew,,,3860,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ኢዮብ-አስቻለው,false
+,zemari-kesis-akalu-yosef,Zemari Kesis Akalu Yosef,ዘማሪ ቀሲስ አካሉ ዮሴፍ,,,,Zemari Kesis Akalu Yosef,,,3870,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-አካሉ-ዮሴፍ,false
+,zemari-kesis-esitifanos-tsegaye,Zemari Kesis Esitifanos Tsegaye,ዘማሪ ቀሲስ እስጢፋኖስ ፀጋዬ,,,,Zemari Kesis Esitifanos Tsegaye,,,3880,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-እስጢፋኖስ-ፀጋዬ,false
+,zemari-kesis-minidaye-birihanu-yeaelafat-zimare,Zemari Kesis Minidaye Birihanu Yeaelafat Zimare,ዘማሪ ቀሲስ ምንዳዬ ብርሃኑ የአእላፋት ዝማሬ,,,,Zemari Kesis Minidaye Birihanu Yeaelafat Zimare,,,3890,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-ምንዳዬ-ብርሃኑ-የአእላፋት-ዝማሬ,false
+,zemari-kesis-naod-aemiro,Zemari Kesis Naod Aemiro,ዘማሪ ቀሲስ ናዖድ አዕምሮ,,,,Zemari Kesis Naod Aemiro,,,3900,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ቀሲስ-ናዖድ-አዕምሮ,false
+,zemari-kibirom-beriha,Zemari Kibirom Beriha,ዘማሪ ክብሮም በርሀ,,,,Zemari Kibirom Beriha,,,3910,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ክብሮም-በርሀ,false
+,zemari-kirubel-sime,Zemari Kirubel Sime,ዘማሪ ኪሩቤል ስሜ,,,,Zemari Kirubel Sime,,,3920,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ኪሩቤል-ስሜ,false
+,zemari-legeta-sisay,Zemari Legeta Sisay,ዘማሪ ለጌታ ሲሳይ,,,,Zemari Legeta Sisay,,,3930,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ለጌታ-ሲሳይ,false
+,zemari-like-diyakon-meniberu,Zemari Like Diyakon Meniberu,ዘማሪ ሊቀ ዲያቆን መንበሩ,,,,Zemari Like Diyakon Meniberu,,,3940,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሊቀ-ዲያቆን-መንበሩ,false
+,zemari-like-diyakonat-aregawi-beriha,Zemari Like Diyakonat Aregawi Beriha,ዘማሪ ሊቀ ዲያቆናት አረጋዊ በርሀ,,,,Zemari Like Diyakonat Aregawi Beriha,,,3950,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሊቀ-ዲያቆናት-አረጋዊ-በርሀ,false
+,zemari-like-diyakonat-daniel-hayilu,Zemari Like Diyakonat Daniel Hayilu,ዘማሪ ሊቀ ዲያቆናት ዳንኤል ኃይሉ,,,,Zemari Like Diyakonat Daniel Hayilu,,,3960,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሊቀ-ዲያቆናት-ዳንኤል-ኃይሉ,false
+,zemari-like-diyakonat-sinitayehu-getachew,Zemari Like Diyakonat Sinitayehu Getachew,ዘማሪ ሊቀ ዲያቆናት ስንታየሁ ጌታቸው,,,,Zemari Like Diyakonat Sinitayehu Getachew,,,3970,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሊቀ-ዲያቆናት-ስንታየሁ-ጌታቸው,false
+,zemari-liul-alemu,Zemari Liul Alemu,ዘማሪ ልዑል ዓለሙ,,,,Zemari Liul Alemu,,,3980,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ልዑል-ዓለሙ,false
+,zemari-megabe-hayimanot-kesis-sibuh-tagay,Zemari Megabe Hayimanot Kesis Sibuh Tagay,ዘማሪ መጋቤ ሃይማኖት ቀሲስ ስቡህ ታጋይ,,,,Zemari Megabe Hayimanot Kesis Sibuh Tagay,,,3990,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-መጋቤ-ሃይማኖት-ቀሲስ-ስቡህ-ታጋይ,false
+,zemari-memihir-hayile-getinet,Zemari Memihir Hayile Getinet,ዘማሪ መምህር ኃይሌ ጌትነት,,,,Zemari Memihir Hayile Getinet,,,4000,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-መምህር-ኃይሌ-ጌትነት,false
+,zemari-merigeta-aron-tesifay,Zemari Merigeta Aron Tesifay,ዘማሪ መሪጌታ ኣሮን ተስፋይ,,,,Zemari Merigeta Aron Tesifay,,,4010,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-መሪጌታ-ኣሮን-ተስፋይ,false
+,zemari-mikael-tekilemikael,Zemari Mikael Tekilemikael,ዘማሪ ሚካኤል ተክለሚካኤል,,,,Zemari Mikael Tekilemikael,,,4020,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሚካኤል-ተክለሚካኤል,false
+,zemari-mikiyas,Zemari Mikiyas,ዘማሪ ሚኪያስ,,,,Zemari Mikiyas,,,4030,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሚኪያስ,false
+,zemari-mikiyas-tesifa,Zemari Mikiyas Tesifa,ዘማሪ ሚኪያስ ተስፋ,,,,Zemari Mikiyas Tesifa,,,4040,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሚኪያስ-ተስፋ,false
+,zemari-mirazh-tsegeye,Zemari Mirazh Tsegeye,ዘማሪ ሚራዥ ጸገዬ,,,,Zemari Mirazh Tsegeye,,,4050,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሚራዥ-ጸገዬ,false
+,zemari-misiganaw-zenebe,Zemari Misiganaw Zenebe,ዘማሪ ምስጋናው ዘነበ,,,,Zemari Misiganaw Zenebe,,,4060,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ምስጋናው-ዘነበ,false
+,zemari-natinael-amilakisil,Zemari Natinael Amilakisil,ዘማሪ ናትናኤል አምላክሲል,,,,Zemari Natinael Amilakisil,,,4070,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ናትናኤል-አምላክሲል,false
+,zemari-natinael-biruk,Zemari Natinael Biruk,ዘማሪ ናትናኤል ብሩክ,,,,Zemari Natinael Biruk,,,4080,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ናትናኤል-ብሩክ,false
+,zemari-natinael-getachew,Zemari Natinael Getachew,ዘማሪ ናትናኤል ጌታቸው,,,,Zemari Natinael Getachew,,,4090,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ናትናኤል-ጌታቸው,false
+,zemari-natinael-girima,Zemari Natinael Girima,ዘማሪ ናትናኤል ግርማ,,,,Zemari Natinael Girima,,,4100,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ናትናኤል-ግርማ,false
+,zemari-robel-hagos,Zemari Robel Hagos,ዘማሪ ሮቤል ሓጎስ,,,,Zemari Robel Hagos,,,4110,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሮቤል-ሓጎስ,false
+,zemari-robel-seyifu,Zemari Robel Seyifu,ዘማሪ ሮቤል ሰይፉ,,,,Zemari Robel Seyifu,,,4120,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሮቤል-ሰይፉ,false
+,zemari-samuel-getu,Zemari Samuel Getu,ዘማሪ ሳሙኤል ጌቱ,,,,Zemari Samuel Getu,,,4130,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሳሙኤል-ጌቱ,false
+,zemari-selomon-menigisitu,Zemari Selomon Menigisitu,ዘማሪ ሰሎሞን መንግስቱ,,,,Zemari Selomon Menigisitu,,,4140,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ሰሎሞን-መንግስቱ,false
+,zemari-tadele-asifaw,Zemari Tadele Asifaw,ዘማሪ ታደለ አስፋው,,,,Zemari Tadele Asifaw,,,4150,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ታደለ-አስፋው,false
+,zemari-temesigen-alemu,Zemari Temesigen Alemu,ዘማሪ ተመስገን ዓለሙ,,,,Zemari Temesigen Alemu,,,4160,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ተመስገን-ዓለሙ,false
+,zemari-tesifaye-ido,Zemari Tesifaye Ido,ዘማሪ ተስፋዬ ኢዶ,,,,Zemari Tesifaye Ido,,,4170,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ተስፋዬ-ኢዶ,false
+,zemari-tsedeke-arega,Zemari Tsedeke Arega,ዘማሪ ፀደቀ አረጋ,,,,Zemari Tsedeke Arega,,,4180,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ፀደቀ-አረጋ,false
+,zemari-tsegasilase,Zemari Tsegasilase,ዘማሪ ፀጋሥላሴ,,,,Zemari Tsegasilase,,,4190,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ፀጋሥላሴ,false
+,zemari-wememihir-zelalem-menigisitu,Zemari Wememihir Zelalem Menigisitu,ዘማሪ ወመምህር ዘላለም መንግስቱ,,,,Zemari Wememihir Zelalem Menigisitu,,,4200,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ወመምህር-ዘላለም-መንግስቱ,false
+,zemari-yabisira-sisay,Zemari Yabisira Sisay,ዘማሪ ያብስራ ሲሳይ,,,,Zemari Yabisira Sisay,,,4210,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ያብስራ-ሲሳይ,false
+,zemari-yared-asirat,Zemari Yared Asirat,ዘማሪ ያሬድ አስራት,,,,Zemari Yared Asirat,,,4220,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ያሬድ-አስራት,false
+,zemari-yekesis-ashenafi-mezimur,Zemari Yekesis Ashenafi Mezimur,ዘማሪ የቀሲስ አሸናፊ መዝሙር,,,,Zemari Yekesis Ashenafi Mezimur,,,4230,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-የቀሲስ-አሸናፊ-መዝሙር,false
+,zemari-yidenek-kifile,Zemari Yidenek Kifile,ዘማሪ ይደነቅ ክፍሌ,,,,Zemari Yidenek Kifile,,,4240,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ይደነቅ-ክፍሌ,false
+,zemari-yigerimal-silesh,Zemari Yigerimal Silesh,ዘማሪ ይገርማል ስለሽ,,,,Zemari Yigerimal Silesh,,,4250,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ይገርማል-ስለሽ,false
+,zemari-yitibarek-tegegn-recreated-by-ahadu-studios,Zemari Yitibarek Tegegn + Recreated By Ahadu Studios,ዘማሪ ይትባረክ ተገኝ + Recreated by Ahadu Studios,,,,Zemari Yitibarek Tegegn + Recreated By Ahadu Studios,,,4260,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ይትባረክ-ተገኝ-+-Recreated-by-Ahadu-Studios,false
+,zemari-yohanis-selomon,Zemari Yohanis Selomon,ዘማሪ ዮሃንስ ሰሎሞን,,,,Zemari Yohanis Selomon,,,4270,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዮሃንስ-ሰሎሞን,false
+,zemari-yonas-mekibib,Zemari Yonas Mekibib,ዘማሪ ዮናስ መክብብ,,,,Zemari Yonas Mekibib,,,4280,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዮናስ-መክብብ,false
+,zemari-yonas-taye,Zemari Yonas Taye,ዘማሪ ዮናስ ታዬ,,,,Zemari Yonas Taye,,,4290,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዮናስ-ታዬ,false
+,zemari-zeamanuel-yinesu,Zemari Zeamanuel Yinesu,ዘማሪ ዘአማኑኤል ይነሱ,,,,Zemari Zeamanuel Yinesu,,,4300,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዘአማኑኤል-ይነሱ,false
+,zemari-zerubabel-habitamu,Zemari Zerubabel Habitamu,ዘማሪ ዘሩባቤል ሀብታሙ,,,,Zemari Zerubabel Habitamu,,,4310,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዘሩባቤል-ሀብታሙ,false
+,zemari-zewidu-tibebu,Zemari Zewidu Tibebu,ዘማሪ ዘውዱ ጥበቡ,,,,Zemari Zewidu Tibebu,,,4320,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪ-ዘውዱ-ጥበቡ,false
+,zemarit-abigael-eliyas,Zemarit Abigael Eliyas,ዘማሪት አቢጋኤል ኤልያስ,,,,Zemarit Abigael Eliyas,,,4330,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አቢጋኤል-ኤልያስ,false
+,zemarit-adaminesh-biruh,Zemarit Adaminesh Biruh,ዘማሪት አዳምነሽ ብሩህ,,,,Zemarit Adaminesh Biruh,,,4340,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አዳምነሽ-ብሩህ,false
+,zemarit-adihanet-we-hiwet,Zemarit Adihanet We/hiwet,ዘማሪት ኣድሓነት ወ/ሂወት,,,,Zemarit Adihanet We/hiwet,,,4350,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኣድሓነት-ወ/ሂወት,false
+,zemarit-adisialem-tesifaye,Zemarit Adisialem Tesifaye,ዘማሪት አዲስዓለም ተስፋዬ,,,,Zemarit Adisialem Tesifaye,,,4360,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አዲስዓለም-ተስፋዬ,false
+,zemarit-adiyam-habitemikael,Zemarit Adiyam Habitemikael,ዘማሪት ኣድያም ሃብተሚካኤል,,,,Zemarit Adiyam Habitemikael,,,4370,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኣድያም-ሃብተሚካኤል,false
+,zemarit-afomiya-girima,Zemarit Afomiya Girima,ዘማሪት አፎምያ ግርማ,,,,Zemarit Afomiya Girima,,,4380,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አፎምያ-ግርማ,false
+,zemarit-amen-anidiamilak,Zemarit Amen Anidiamilak,ዘማሪት አሜን አንድአምላክ,,,,Zemarit Amen Anidiamilak,,,4390,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አሜን-አንድአምላክ,false
+,zemarit-ariam-asmerom,Zemarit Ariam Asmerom,,,,,Zemarit Ariam Asmerom,,,4400,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Ariam-Asmerom,false
+,zemarit-arisema-welideamilak,Zemarit Arisema Welideamilak,ዘማሪት አርሴማ ወልደአምላክ,,,,Zemarit Arisema Welideamilak,,,4410,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አርሴማ-ወልደአምላክ,false
+,zemarit-arisemawit-asichalew,Zemarit Arisemawit Asichalew,ዘማሪት አርሴማዊት አስቻለው,,,,Zemarit Arisemawit Asichalew,,,4420,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አርሴማዊት-አስቻለው,false
+,zemarit-aritisit-tigiesit-girima,Zemarit Aritisit Tigiesit Girima,ዘማሪት አርቲስት ትግዕስት ግርማ,,,,Zemarit Aritisit Tigiesit Girima,,,4430,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አርቲስት-ትግዕስት-ግርማ,false
+,zemarit-ariyam,Zemarit Ariyam,ዘማሪት ኣርያም,,,,Zemarit Ariyam,,,4440,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኣርያም,false
+,zemarit-ariyam-asimerom,Zemarit Ariyam Asimerom,ዘማሪት ኣርያም አስመሮም,,,,Zemarit Ariyam Asimerom,,,4450,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኣርያም-አስመሮም,false
+,zemarit-aselefech-girima,Zemarit Aselefech Girima,ዘማሪት አሰለፈች ግርማ,,,,Zemarit Aselefech Girima,,,4460,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አሰለፈች-ግርማ,false
+,zemarit-asinakech-tsega,Zemarit Asinakech Tsega,ዘማሪት አስናቀች ጸጋ,,,,Zemarit Asinakech Tsega,,,4470,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አስናቀች-ጸጋ,false
+,zemarit-asiter-berihun,Zemarit Asiter Berihun,ዘማሪት አስቴር በሪሁን,,,,Zemarit Asiter Berihun,,,4480,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አስቴር-በሪሁን,false
+,zemarit-asiter-welidemariyam,Zemarit Asiter Welidemariyam,ዘማሪት ኣስቴር ወልደማርያም,,,,Zemarit Asiter Welidemariyam,,,4490,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኣስቴር-ወልደማርያም,false
+,zemarit-atsede-tena,Zemarit Atsede Tena,ዘማሪት አፀደ ጠና,,,,Zemarit Atsede Tena,,,4500,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አፀደ-ጠና,false
+,zemarit-ayinalem-asefa,Zemarit Ayinalem Asefa,ዘማሪት አይናለም አሰፋ,,,,Zemarit Ayinalem Asefa,,,4510,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-አይናለም-አሰፋ,false
+,zemarit-belayinesh,Zemarit Belayinesh,ዘማሪት በላይነሽ,,,,Zemarit Belayinesh,,,4520,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-በላይነሽ,false
+,zemarit-berisi-selam,Zemarit Berisi Selam,ዘማሪት ቤርሲ ሠላም,,,,Zemarit Berisi Selam,,,4530,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤርሲ-ሠላም,false
+,zemarit-betel-tariku,Zemarit Betel Tariku,ዘማሪት ቤቴል ታሪኩ,,,,Zemarit Betel Tariku,,,4540,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤቴል-ታሪኩ,false
+,zemarit-betelihem-bekele,Zemarit Betelihem Bekele,ዘማሪት ቤተልሔም በቀለ,,,,Zemarit Betelihem Bekele,,,4550,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤተልሔም-በቀለ,false
+,zemarit-betelihem-bizuayehu,Zemarit Betelihem Bizuayehu,ዘማሪት ቤተልሄም ብዙአየሁ,,,,Zemarit Betelihem Bizuayehu,,,4560,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤተልሄም-ብዙአየሁ,false
+,zemarit-betelihem-kiros,Zemarit Betelihem Kiros,ዘማሪት ቤተልሔም ኪሮስ,,,,Zemarit Betelihem Kiros,,,4570,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤተልሔም-ኪሮስ,false
+,zemarit-betty-habtegiorgis,Zemarit Betty Habtegiorgis,,,,,Zemarit Betty Habtegiorgis,,,4580,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Betty-Habtegiorgis,false
+,zemarit-beza-yisihak,Zemarit Beza Yisihak,ዘማሪት ቤዛ ይስሐቅ,,,,Zemarit Beza Yisihak,,,4590,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቤዛ-ይስሐቅ,false
+,zemarit-bilen-tamiru,Zemarit Bilen Tamiru,ዘማሪት ብሌን ታምሩ,,,,Zemarit Bilen Tamiru,,,4600,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ብሌን-ታምሩ,false
+,zemarit-biritukan-gezahign,Zemarit Biritukan Gezahign,ዘማሪት ብርቱካን ገዛኽኝ,,,,Zemarit Biritukan Gezahign,,,4610,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ብርቱካን-ገዛኽኝ,false
+,zemarit-biritukan-tesema,Zemarit Biritukan Tesema,ዘማሪት ብርቱካን ተሰማ,,,,Zemarit Biritukan Tesema,,,4620,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ብርቱካን-ተሰማ,false
+,zemarit-birukitawit-hika,Zemarit Birukitawit Hika,ዘማሪት ብሩክታዊት ሒቃ,,,,Zemarit Birukitawit Hika,,,4630,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ብሩክታዊት-ሒቃ,false
+,zemarit-delina-hayile,Zemarit Delina Hayile,ዘማሪት ደሊና ሃይለ,,,,Zemarit Delina Hayile,,,4640,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ደሊና-ሃይለ,false
+,zemarit-deraritu-abera,Zemarit Deraritu Abera,ዘማሪት ደራርቱ አበራ,,,,Zemarit Deraritu Abera,,,4650,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ደራርቱ-አበራ,false
+,zemarit-divora-birihane,Zemarit Divora Birihane,ዘማሪት ዲቮራ ብርሃነ,,,,Zemarit Divora Birihane,,,4660,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ዲቮራ-ብርሃነ,false
+,zemarit-divora-brhane,Zemarit Divora Brhane,,,,,Zemarit Divora Brhane,,,4670,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Divora-Brhane,false
+,zemarit-eden-ayidagnuhim,Zemarit Eden Ayidagnuhim,ዘማሪት ኤደን አይዳኙህም,,,,Zemarit Eden Ayidagnuhim,,,4680,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኤደን-አይዳኙህም,false
+,zemarit-eden-hayilom,Zemarit Eden Hayilom,ዘማሪት ኤደን ኃይሎም,,,,Zemarit Eden Hayilom,,,4690,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኤደን-ኃይሎም,false
+,zemarit-esikedar-amare,Zemarit Esikedar Amare,ዘማሪት እስከዳር ዐማረ,,,,Zemarit Esikedar Amare,,,4700,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-እስከዳር-ዐማረ,false
+,zemarit-etsubidinik-tilahun,Zemarit Etsubidinik Tilahun,ዘማሪት እፁብድንቅ ጥላሁን,,,,Zemarit Etsubidinik Tilahun,,,4710,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-እፁብድንቅ-ጥላሁን,false
+,zemarit-fana-tewelide,Zemarit Fana Tewelide,ዘማሪት ፋና ተወልደ,,,,Zemarit Fana Tewelide,,,4720,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፋና-ተወልደ,false
+,zemarit-fasika-diniku,Zemarit Fasika Diniku,ዘማሪት ፋሲካ ድንቁ,,,,Zemarit Fasika Diniku,,,4730,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፋሲካ-ድንቁ,false
+,zemarit-feben-girima,Zemarit Feben Girima,ዘማሪት ፌበን ግርማ,,,,Zemarit Feben Girima,,,4740,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፌበን-ግርማ,false
+,zemarit-feven-amidebirihan,Zemarit Feven Amidebirihan,ዘማሪት ፌቨን አምደብርሃን,,,,Zemarit Feven Amidebirihan,,,4750,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፌቨን-አምደብርሃን,false
+,zemarit-feven-tesifu,Zemarit Feven Tesifu,ዘማሪት ፌቨን ተስፉ,,,,Zemarit Feven Tesifu,,,4760,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፌቨን-ተስፉ,false
+,zemarit-fireweyin-berihun,Zemarit Fireweyin Berihun,ዘማሪት ፍሬወይን በሪሁን,,,,Zemarit Fireweyin Berihun,,,4770,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፍሬወይን-በሪሁን,false
+,zemarit-genet-shita,Zemarit Genet Shita,ዘማሪት ገነት ሽታ,,,,Zemarit Genet Shita,,,4780,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ገነት-ሽታ,false
+,zemarit-hana-abiriham,Zemarit Hana Abiriham,ዘማሪት ሃና ኣብርሃም,,,,Zemarit Hana Abiriham,,,4790,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሃና-ኣብርሃም,false
+,zemarit-hana-adihanom,Zemarit Hana Adihanom,ዘማሪት ሃና ኣድሃኖም,,,,Zemarit Hana Adihanom,,,4800,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሃና-ኣድሃኖም,false
+,zemarit-hana-alemu,Zemarit Hana Alemu,ዘማሪት ሀና አለሙ,,,,Zemarit Hana Alemu,,,4810,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሀና-አለሙ,false
+,zemarit-hayimanot-me-tenaye,Zemarit Hayimanot Me/tenaye,ዘማሪት ሀይማኖት መ/ጤናዬ,,,,Zemarit Hayimanot Me/tenaye,,,4820,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሀይማኖት-መ/ጤናዬ,false
+,zemarit-helena-alemu,Zemarit Helena Alemu,,,,,Zemarit Helena Alemu,,,4830,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Helena-Alemu,false
+,zemarit-helidana-debebe,Zemarit Helidana Debebe,ዘማሪት ሄልዳና ደበበ,,,,Zemarit Helidana Debebe,,,4840,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሄልዳና-ደበበ,false
+,zemarit-hemen-ashenafi,Zemarit Hemen Ashenafi,ዘማሪት ሔመን አሸናፊ,,,,Zemarit Hemen Ashenafi,,,4850,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሔመን-አሸናፊ,false
+,zemarit-hewan-gebire-aneniya,Zemarit Hewan Gebire Aneniya,ዘማሪት ሔዋን ገብረ ኣነንያ,,,,Zemarit Hewan Gebire Aneniya,,,4860,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሔዋን-ገብረ-ኣነንያ,false
+,zemarit-hitsan-amen-tewodiros-yosef,Zemarit Hitsan Amen Tewodiros Yosef,ዘማሪት ህፃን አሜን ቴዎድሮስ ዮሴፍ,,,,Zemarit Hitsan Amen Tewodiros Yosef,,,4870,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ህፃን-አሜን-ቴዎድሮስ-ዮሴፍ,false
+,zemarit-hitsan-genet-kebede,Zemarit Hitsan Genet Kebede,ዘማሪት ህፃን ገነት ከበደ,,,,Zemarit Hitsan Genet Kebede,,,4880,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ህፃን-ገነት-ከበደ,false
+,zemarit-hitsan-heran,Zemarit Hitsan Heran,ዘማሪት ህፃን ሄራን,,,,Zemarit Hitsan Heran,,,4890,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ህፃን-ሄራን,false
+,zemarit-hitsan-lulibahiri-fisehaye,Zemarit Hitsan Lulibahiri Fisehaye,ዘማሪት ህጻን ሉልባሕሪ ፍሰሃየ,,,,Zemarit Hitsan Lulibahiri Fisehaye,,,4900,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ህጻን-ሉልባሕሪ-ፍሰሃየ,false
+,zemarit-hitsan-masitewal-mezigebu,Zemarit Hitsan Masitewal Mezigebu,ዘማሪት ህፃን ማስተዋል መዝገቡ,,,,Zemarit Hitsan Masitewal Mezigebu,,,4910,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ህፃን-ማስተዋል-መዝገቡ,false
+,zemarit-hitsan-yoridanos-getahun,Zemarit Hitsan Yoridanos Getahun,ዘማሪት ህፃን ዮርዳኖስ ጌታሁን,,,,Zemarit Hitsan Yoridanos Getahun,,,4920,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ህፃን-ዮርዳኖስ-ጌታሁን,false
+,zemarit-hiyiwet-selomon,Zemarit Hiyiwet Selomon,ዘማሪት ህይወት ሰሎሞን,,,,Zemarit Hiyiwet Selomon,,,4930,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ህይወት-ሰሎሞን,false
+,zemarit-iyerusalem-mekonin,Zemarit Iyerusalem Mekonin,ዘማሪት ኢየሩሳሌም መኮንን,,,,Zemarit Iyerusalem Mekonin,,,4940,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኢየሩሳሌም-መኮንን,false
+,zemarit-kalikidan-feleke,Zemarit Kalikidan Feleke,ዘማሪት ቃልኪዳን ፈለቀ,,,,Zemarit Kalikidan Feleke,,,4950,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቃልኪዳን-ፈለቀ,false
+,zemarit-kalikidan-likanos,Zemarit Kalikidan Likanos,ዘማሪት ቃልኪዳን ሊቃኖስ,,,,Zemarit Kalikidan Likanos,,,4960,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቃልኪዳን-ሊቃኖስ,false
+,zemarit-kidisit-kelemu,Zemarit Kidisit Kelemu,ዘማሪት ቅድስት ቀለሙ,,,,Zemarit Kidisit Kelemu,,,4970,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቅድስት-ቀለሙ,false
+,zemarit-kidisit-tesema,Zemarit Kidisit Tesema,ዘማሪት ቅድስት ተሰማ,,,,Zemarit Kidisit Tesema,,,4980,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቅድስት-ተሰማ,false
+,zemarit-kidisit-yemiru,Zemarit Kidisit Yemiru,ዘማሪት ቅድስት የምሩ,,,,Zemarit Kidisit Yemiru,,,4990,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ቅድስት-የምሩ,false
+,zemarit-kidist-taye,Zemarit Kidist Taye,,,,,Zemarit Kidist Taye,,,5000,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Kidist-Taye,false
+,zemarit-kiren-ha-mesikel,Zemarit Kiren Ha/mesikel,ዘማሪት ኪረን ኃ/መስቀል,,,,Zemarit Kiren Ha/mesikel,,,5010,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ኪረን-ኃ/መስቀል,false
+,zemarit-lamirot-mezigebe,Zemarit Lamirot Mezigebe,ዘማሪት ላምሮት መዝገበ,,,,Zemarit Lamirot Mezigebe,,,5020,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ላምሮት-መዝገበ,false
+,zemarit-lamirot-tamirat,Zemarit Lamirot Tamirat,ዘማሪት ላምሮት ታምራት,,,,Zemarit Lamirot Tamirat,,,5030,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ላምሮት-ታምራት,false
+,zemarit-lidet-birihanu,Zemarit Lidet Birihanu,ዘማሪት ልደት ብርሃኑ,,,,Zemarit Lidet Birihanu,,,5040,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ልደት-ብርሃኑ,false
+,zemarit-lieliti-kahisu,Zemarit Lieliti Kahisu,ዘማሪት ልእልቲ ካሕሱ,,,,Zemarit Lieliti Kahisu,,,5050,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ልእልቲ-ካሕሱ,false
+,zemarit-liwam-zeriu,Zemarit Liwam Zeriu,ዘማሪት ልዋም ዘርኡ,,,,Zemarit Liwam Zeriu,,,5060,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ልዋም-ዘርኡ,false
+,zemarit-mahalet-zewdu,Zemarit Mahalet Zewdu,,,,,Zemarit Mahalet Zewdu,,,5070,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Mahalet-Zewdu,false
+,zemarit-marita-ashagari,Zemarit Marita Ashagari,ዘማሪት ማርታ አሻጋሪ,,,,Zemarit Marita Ashagari,,,5080,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ማርታ-አሻጋሪ,false
+,zemarit-mariyamawit-gimit,Zemarit Mariyamawit Gimit,ዘማሪት ማርያማዊት ግምት,,,,Zemarit Mariyamawit Gimit,,,5090,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ማርያማዊት-ግምት,false
+,zemarit-mariyamawit-samison,Zemarit Mariyamawit Samison,ዘማሪት ማርያማዊት ሳምሶን,,,,Zemarit Mariyamawit Samison,,,5100,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ማርያማዊት-ሳምሶን,false
+,zemarit-megeritu-guta,Zemarit Megeritu Guta,ዘማሪት መገርቱ ጉታ,,,,Zemarit Megeritu Guta,,,5110,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-መገርቱ-ጉታ,false
+,zemarit-mekdelawit-ephrem,Zemarit Mekdelawit Ephrem,,,,,Zemarit Mekdelawit Ephrem,,,5120,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Mekdelawit-Ephrem,false
+,zemarit-mekides-negash,Zemarit Mekides Negash,ዘማሪት መቕደስ ነጋሽ,,,,Zemarit Mekides Negash,,,5130,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-መቕደስ-ነጋሽ,false
+,zemarit-mekilit-iyob,Zemarit Mekilit Iyob,ዘማሪት መክሊት ኢዮብ,,,,Zemarit Mekilit Iyob,,,5140,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-መክሊት-ኢዮብ,false
+,zemarit-mekilit-tilahun,Zemarit Mekilit Tilahun,ዘማሪት መክሊት ጥላሁን,,,,Zemarit Mekilit Tilahun,,,5150,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-መክሊት-ጥላሁን,false
+,zemarit-meklit-dagm,Zemarit Meklit Dagm,,,,,Zemarit Meklit Dagm,,,5160,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Meklit-Dagm,false
+,zemarit-melat-sisay,Zemarit Melat Sisay,ዘማሪት ሜላት ሲሳይ,,,,Zemarit Melat Sisay,,,5170,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሜላት-ሲሳይ,false
+,zemarit-meron-abiriham,Zemarit Meron Abiriham,ዘማሪት ሜሮን አብርሃም,,,,Zemarit Meron Abiriham,,,5180,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሜሮን-አብርሃም,false
+,zemarit-meron-legese,Zemarit Meron Legese,ዘማሪት ሜሮን ለገሠ,,,,Zemarit Meron Legese,,,5190,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሜሮን-ለገሠ,false
+,zemarit-meron-tadese,Zemarit Meron Tadese,ዘማሪት ሜሮን ታደሰ,,,,Zemarit Meron Tadese,,,5200,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሜሮን-ታደሰ,false
+,zemarit-mesikerem-niguse,Zemarit Mesikerem Niguse,ዘማሪት መስከረም ንጉሤ,,,,Zemarit Mesikerem Niguse,,,5210,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-መስከረም-ንጉሤ,false
+,zemarit-mihiret-demis,Zemarit Mihiret Demis,ዘማሪት ምህረት ደምስ,,,,Zemarit Mihiret Demis,,,5220,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ምህረት-ደምስ,false
+,zemarit-mihiret-gebireiyesus,Zemarit Mihiret Gebireiyesus,ዘማሪት ምህረት ገብረኢየሱስ,,,,Zemarit Mihiret Gebireiyesus,,,5230,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ምህረት-ገብረኢየሱስ,false
+,zemarit-minialu-getachew,Zemarit Minialu Getachew,ዘማሪት ምንአሉ ጌታቸው,,,,Zemarit Minialu Getachew,,,5240,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ምንአሉ-ጌታቸው,false
+,zemarit-miritinesh-tilahun-anurognal-chernth,Zemarit Miritinesh Tilahun ANUROGNAL CHERNTH,ዘማሪት ምርትነሽ ጥላሁን ANUROGNAL CHERNTH,,,,Zemarit Miritinesh Tilahun ANUROGNAL CHERNTH,,,5250,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ምርትነሽ-ጥላሁን-ANUROGNAL-CHERNTH,false
+,zemarit-mulunesh-demise,Zemarit Mulunesh Demise,ዘማሪት ሙሉነሽ ደምሴ,,,,Zemarit Mulunesh Demise,,,5260,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሙሉነሽ-ደምሴ,false
+,zemarit-naridos-niguse,Zemarit Naridos Niguse,ዘማሪት ናርዶስ ንጉሤ,,,,Zemarit Naridos Niguse,,,5270,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ናርዶስ-ንጉሤ,false
+,zemarit-netsanet-goyitom,Zemarit Netsanet Goyitom,ዘማሪት ነፃነት ጎይቶም,,,,Zemarit Netsanet Goyitom,,,5280,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ነፃነት-ጎይቶም,false
+,zemarit-netsanet-tolosa,Zemarit Netsanet Tolosa,ዘማሪት ነጻነት ቶሎሳ,,,,Zemarit Netsanet Tolosa,,,5290,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ነጻነት-ቶሎሳ,false
+,zemarit-nuhamin,Zemarit Nuhamin,,,,,Zemarit Nuhamin,,,5300,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Nuhamin,false
+,zemarit-rakeb-asefa,Zemarit Rakeb Asefa,ዘማሪት ራኬብ አሰፋ,,,,Zemarit Rakeb Asefa,,,5310,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ራኬብ-አሰፋ,false
+,zemarit-rufitalem-tsigab,Zemarit Rufitalem Tsigab,ዘማሪት ሩፍታሌም ጽጋብ,,,,Zemarit Rufitalem Tsigab,,,5320,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሩፍታሌም-ጽጋብ,false
+,zemarit-salina-gebirezigabiher,Zemarit Salina Gebirezigabiher,ዘማሪት ሳሊና ገብረዝጋብሄር,,,,Zemarit Salina Gebirezigabiher,,,5330,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሳሊና-ገብረዝጋብሄር,false
+,zemarit-sara-tadese,Zemarit Sara Tadese,ዘማሪት ሳራ ታደሰ,,,,Zemarit Sara Tadese,,,5340,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሳራ-ታደሰ,false
+,zemarit-saron-fisiha,Zemarit Saron Fisiha,ዘማሪት ሳሮን ፍስሃ,,,,Zemarit Saron Fisiha,,,5350,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሳሮን-ፍስሃ,false
+,zemarit-saron-shishay,Zemarit Saron Shishay,ዘማሪት ሳሮን ሽሻይ,,,,Zemarit Saron Shishay,,,5360,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሳሮን-ሽሻይ,false
+,zemarit-saron-yohanis,Zemarit Saron Yohanis,ዘማሪት ሳሮን ዮሃንስ,,,,Zemarit Saron Yohanis,,,5370,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሳሮን-ዮሃንስ,false
+,zemarit-sefiager-gebeyaw,Zemarit Sefiager Gebeyaw,ዘማሪት ሰፊአገር ገበያው,,,,Zemarit Sefiager Gebeyaw,,,5380,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰፊአገር-ገበያው,false
+,zemarit-selam-amibaye,Zemarit Selam Amibaye,ዘማሪት ሰላም ኣምባዬ,,,,Zemarit Selam Amibaye,,,5390,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰላም-ኣምባዬ,false
+,zemarit-selam-demeke,Zemarit Selam Demeke,ዘማሪት ሰላም ደመቀ,,,,Zemarit Selam Demeke,,,5400,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰላም-ደመቀ,false
+,zemarit-selamawit-adis,Zemarit Selamawit Adis,ዘማሪት ሰላማዊት አዲስ,,,,Zemarit Selamawit Adis,,,5410,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰላማዊት-አዲስ,false
+,zemarit-senayit-demise,Zemarit Senayit Demise,ዘማሪት ሰናይት ደምሴ,,,,Zemarit Senayit Demise,,,5420,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሰናይት-ደምሴ,false
+,zemarit-shewareg-wenidimagegn,Zemarit Shewareg Wenidimagegn,ዘማሪት ሸዋረግ ወንድማገኝ,,,,Zemarit Shewareg Wenidimagegn,,,5430,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሸዋረግ-ወንድማገኝ,false
+,zemarit-sinitayehu-besufikad,Zemarit Sinitayehu Besufikad,ዘማሪት ስንታየሁ በሱፍቃድ,,,,Zemarit Sinitayehu Besufikad,,,5440,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ስንታየሁ-በሱፍቃድ,false
+,zemarit-soliyana-fekadu,Zemarit Soliyana Fekadu,ዘማሪት ሶልያና ፈቃዱ,,,,Zemarit Soliyana Fekadu,,,5450,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ሶልያና-ፈቃዱ,false
+,zemarit-solyana-tibebu,Zemarit Solyana Tibebu,,,,,Zemarit Solyana Tibebu,,,5460,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Solyana-Tibebu,false
+,zemarit-tadelu-debebe,Zemarit Tadelu Debebe,ዘማሪት ታደሉ ደበበ,,,,Zemarit Tadelu Debebe,,,5470,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ታደሉ-ደበበ,false
+,zemarit-tiegisit-getachewu,Zemarit Tiegisit Getachewu,ዘማሪት ትእግስት ጌታቸዉ,,,,Zemarit Tiegisit Getachewu,,,5480,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ትእግስት-ጌታቸዉ,false
+,zemarit-tiegisit-hayile,Zemarit Tiegisit Hayile,ዘማሪት ትዕግስት ኃይሌ,,,,Zemarit Tiegisit Hayile,,,5490,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ትዕግስት-ኃይሌ,false
+,zemarit-tiegisit-mebiratu,Zemarit Tiegisit Mebiratu,ዘማሪት ትዕግስት መብራቱ,,,,Zemarit Tiegisit Mebiratu,,,5500,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ትዕግስት-መብራቱ,false
+,zemarit-tiegisiti-fisihaye,Zemarit Tiegisiti Fisihaye,ዘማሪት ትዕግስቲ ፍስሃየ,,,,Zemarit Tiegisiti Fisihaye,,,5510,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ትዕግስቲ-ፍስሃየ,false
+,zemarit-tinibit-bogale,Zemarit Tinibit Bogale,ዘማሪት ትንቢት ቦጋለ,,,,Zemarit Tinibit Bogale,,,5520,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ትንቢት-ቦጋለ,false
+,zemarit-tsegawit-kifilay,Zemarit Tsegawit Kifilay,ዘማሪት ፀጋዊት ክፍላይ,,,,Zemarit Tsegawit Kifilay,,,5530,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፀጋዊት-ክፍላይ,false
+,zemarit-tsehay-getasew,Zemarit Tsehay Getasew,ዘማሪት ፀሐይ ጌታሰው,,,,Zemarit Tsehay Getasew,,,5540,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ፀሐይ-ጌታሰው,false
+,zemarit-tsiyon-alemiseged,Zemarit Tsiyon Alemiseged,ዘማሪት ጽዮን ዓለምሰገድ,,,,Zemarit Tsiyon Alemiseged,,,5550,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ጽዮን-ዓለምሰገድ,false
+,zemarit-wibit-shede,Zemarit Wibit Shede,ዘማሪት ውቢት ሸዴ,,,,Zemarit Wibit Shede,,,5560,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ውቢት-ሸዴ,false
+,zemarit-wide-tachibele,Zemarit Wide Tachibele,ዘማሪት ውዴ ታችበሌ,,,,Zemarit Wide Tachibele,,,5570,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ውዴ-ታችበሌ,false
+,zemarit-wongail-belete,Zemarit Wongail Belete,,,,,Zemarit Wongail Belete,,,5580,false,draft,1,https://eotcmedia.com/hymns/singer/Zemarit-Wongail-Belete,false
+,zemarit-yalemizerif-alebel,Zemarit Yalemizerif Alebel,ዘማሪት ያለምዘርፍ አለበል,,,,Zemarit Yalemizerif Alebel,,,5590,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ያለምዘርፍ-አለበል,false
+,zemarit-yanet-berihun,Zemarit Yanet Berihun,ዘማሪት ያኔት በሪሁን,,,,Zemarit Yanet Berihun,,,5600,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ያኔት-በሪሁን,false
+,zemarit-yeabisira-dejene,Zemarit Yeabisira Dejene,ዘማሪት የአብስራ ደጀኔ,,,,Zemarit Yeabisira Dejene,,,5610,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-የአብስራ-ደጀኔ,false
+,zemarit-yegilenesh-tesifaye,Zemarit Yegilenesh Tesifaye,ዘማሪት የግሌነሽ ተስፋዬ,,,,Zemarit Yegilenesh Tesifaye,,,5620,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-የግሌነሽ-ተስፋዬ,false
+,zemarit-yodit-tadese,Zemarit Yodit Tadese,ዘማሪት ዮዲት ታደሰ,,,,Zemarit Yodit Tadese,,,5630,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ዮዲት-ታደሰ,false
+,zemarit-yohana-kifile,Zemarit Yohana Kifile,ዘማሪት ዮሃና ክፍለ,,,,Zemarit Yohana Kifile,,,5640,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ዮሃና-ክፍለ,false
+,zemarit-yoresalem-fanus,Zemarit Yoresalem Fanus,ዘማሪት ዮረሳሌም ፋኑስ,,,,Zemarit Yoresalem Fanus,,,5650,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ዮረሳሌም-ፋኑስ,false
+,zemarit-yoridanos-alelign,Zemarit Yoridanos Alelign,ዘማሪት ዮርዳኖስ አለልኝ,,,,Zemarit Yoridanos Alelign,,,5660,false,draft,1,https://eotcmedia.com/hymns/singer/ዘማሪት-ዮርዳኖስ-አለልኝ,false
+,zemerit-simiret-mamo,Zemerit Simiret Mamo,ዘመሪት ስምረት ማሞ,,,,Zemerit Simiret Mamo,,,5670,false,draft,1,https://eotcmedia.com/hymns/singer/ዘመሪት-ስምረት-ማሞ,false
+,zerifu-demise,Zerifu Demise,ዘርፉ ደምሴ,,,,Zerifu Demise,,,5680,false,draft,1,https://eotcmedia.com/hymns/singer/ዘርፉ-ደምሴ,false

@@ -1,0 +1,84 @@
+{
+  "advertised_catalog_size": 4175,
+  "sitemap_detail_urls_discovered": 4175,
+  "total_urls_discovered": 4175,
+  "unique_hymn_pages_inspected": 4175,
+  "total_with_actual_lyrics": 930,
+  "total_without_lyrics": 3243,
+  "total_uncertain_or_unreachable": 2,
+  "total_duplicates": 201,
+  "duplicates_breakdown": {
+    "eotcmedia_internal_duplicates_and_alternates": 83,
+    "tewahedodaily_existing_matches": 118,
+    "excluded_exact_duplicates": 99,
+    "kept_distinct_recordings": 41,
+    "flagged_for_human_duplicate_review": 61
+  },
+  "total_import_ready": 794,
+  "total_youtube_urls_verified": 930,
+  "total_youtube_urls_verified_across_all_inspected": 4175,
+  "total_singers_verified": 837,
+  "total_pending_review": 381,
+  "total_ready_without_extra_flags": 549,
+  "lyrics_source_kind_breakdown": {
+    "human_verified": 872,
+    "ai_transcribed": 47,
+    "community_suggestion": 11
+  },
+  "theological_category_breakdown": {
+    "Abune Tekle Haymanot": 3,
+    "Angels": 11,
+    "Apostles": 5,
+    "Cross": 21,
+    "Holy Spirit": 13,
+    "Holy Trinity": 18,
+    "Jesus Christ": 209,
+    "Kidus Estifanos Saint Stephen": 1,
+    "Kidus Gabriel": 24,
+    "Kidus Michael": 29,
+    "Kidus Yared": 2,
+    "Praise Worship": 359,
+    "Prayer": 9,
+    "Repentance": 69,
+    "Saints": 22,
+    "Virgin Mary": 135
+  },
+  "primary_occasion_breakdown": {
+    "Abiy Tsom": 74,
+    "Annual Saint Feast": 96,
+    "Communion": 1,
+    "Debre Tabor": 2,
+    "Filseta": 2,
+    "Gena": 76,
+    "General / Anytime": 563,
+    "Hosanna": 3,
+    "Kidane Mihret": 12,
+    "Lideta Maryam": 1,
+    "Meskel": 27,
+    "New Year / Enkutatash": 6,
+    "Pentecost": 14,
+    "Siklet": 7,
+    "Timket": 3,
+    "Tinsae": 35,
+    "Wedding": 8
+  },
+  "language_breakdown": {
+    "amharic": 832,
+    "english": 72,
+    "geez": 23,
+    "oromo": 3
+  },
+  "form_breakdown": {
+    "mezmur": 922,
+    "werb": 8
+  },
+  "pagination_and_discovery_gaps": {
+    "difference_between_advertised_and_discovered": 0,
+    "uninspected_pages_remaining": 0,
+    "notes": "All advertised hymns in https://eotcmedia.com/hymns and https://eotcmedia.com/sitemap.xml were enumerated and reconciled with zero discovery gaps."
+  },
+  "errors_encountered": 0,
+  "error_details": [],
+  "completion_percentage": 100.0,
+  "timestamp_of_execution": "2026-10-24T02:07:28.895555+00:00"
+}

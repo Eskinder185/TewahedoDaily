@@ -168,7 +168,7 @@
   margin-top: 0.15rem;
   font-size: 0.86rem;
   font-weight: 650;
-  color: var(--color-navy, #1e2a44);
+  color: var(--color-heading);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

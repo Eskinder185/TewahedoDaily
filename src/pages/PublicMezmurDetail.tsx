@@ -20,6 +20,7 @@ import {
 } from '../lib/publicContent/customVideo'
 import { parseYoutubeVideoId } from '../data/utils/youtube'
 import s from './HymnPractice.module.css'
+import { HymnLyricsExperience } from '../components/hymns/HymnLyricsExperience'
 
 export function PublicMezmurDetail() {
   const { slug } = useParams()
@@ -163,6 +164,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
             ) : null}
           </div>
         }
+        lyricsContent={<HymnLyricsExperience item={item} canonical={canonical} />}
       />
 
       {classificationLines.length > 0 ? (

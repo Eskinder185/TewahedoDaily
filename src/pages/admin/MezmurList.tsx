@@ -1,4 +1,4 @@
-﻿import { useCallback, useState, type FormEvent } from 'react'
+import { useCallback, useState, type FormEvent } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
 import { deleteMezmur, duplicateMezmur, editable, errorMessage, getTagIds, getTaxonomy, label, listMezmur, PAGE_SIZE, saveMezmur, statuses, type Mezmur } from '../../lib/cms/mezmurService'
@@ -42,7 +42,7 @@ export function MezmurList() {
     finally { setBusy(false) }
   }
   return <>
-    <div className={s.heading}><div><p className={s.eyebrow}>CONTENT LIBRARY</p><h1>Mezmur</h1><p className={s.muted}>Organize, review, and publish hymns.</p></div><Link className={s.primary} to="/admin/hymns/mezmur/new">+ Add Mezmur</Link></div>
+    <div className={s.heading}><div><p className={s.eyebrow}>CONTENT LIBRARY</p><h1>Mezmur</h1><p className={s.muted}>Organize, review, and publish hymns.</p></div><div className={s.actions}><Link to="/admin/hymns/import">Bulk CSV Import Preview</Link><Link className={s.primary} to="/admin/hymns/mezmur/new">+ Add Mezmur</Link></div></div>
     <form key={key} onSubmit={filters}>
       <div className={s.filters}>
         <label>Search<input name="search" defaultValue={params.get('search') || ''} placeholder="Title or Amharic title" /></label>

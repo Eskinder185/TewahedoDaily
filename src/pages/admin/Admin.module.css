@@ -5,7 +5,8 @@
 .root a { text-decoration: none; }
 .root button, .modal button { border: 1px solid var(--color-border-strong); border-radius: 7px; padding: 8px 13px; background: var(--color-bg-elevated); color: var(--color-text); min-height: 40px; }
 .root button:hover, .modal button:hover { border-color: var(--color-accent); }
-.root input:not([type=checkbox]), .root textarea, .root select { width: 100%; border: 1px solid var(--color-border-strong); border-radius: 7px; padding: 10px 12px; font: inherit; color: var(--color-text); background: var(--color-bg-elevated); min-height: 42px; }
+.root input:not([type=checkbox]):not([type=file]), .root textarea, .root select { box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%; border: 1px solid var(--color-border-strong); border-radius: 7px; padding: 10px 12px; font: inherit; color: var(--color-text); background: var(--color-bg-elevated); min-height: 42px; }
+.root input.fileInput { box-sizing: border-box; inline-size: 100%; min-width: 0; max-inline-size: 100%; padding: 9px; border: 1px solid var(--color-border-strong); border-radius: 7px; background: var(--color-bg-elevated); color: var(--color-text); }
 .root input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--color-accent); }
 .root textarea { resize: vertical; min-height: 110px; }
 .root label { display: grid; gap: 6px; font-size: .9rem; font-weight: 600; }
@@ -94,6 +95,7 @@
 .inlineFields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; }
 .secondary, .root button.secondary { background: var(--color-bg-elevated); }
 .modal { max-width: 780px; width: calc(100% - 32px); max-height: 85dvh; overflow: auto; padding: 28px; border: 1px solid var(--color-border); border-radius: 12px; background: var(--color-bg-elevated); color: var(--color-text); }
+.modalWide { max-width: 1120px; width: calc(100% - 32px); }
 .modal::backdrop { background: #07101fb3; }
 .preview .thumbnail { width: 180px; height: 180px; }
 .preview audio { max-width: 100%; }
@@ -202,6 +204,24 @@
   color: var(--color-heading);
 }
 .capitalize { text-transform: capitalize; }
+.sectionHeading { display: grid; gap: 5px; padding-bottom: 4px; border-bottom: 1px solid var(--color-border); }
+.sectionHeading > div { display: flex; align-items: center; gap: 10px; }
+.sectionHeading h2 { margin: 0; }
+.sectionHeading p { margin: 0; color: var(--color-text-muted); font-size: .86rem; line-height: 1.45; }
+.step { display: inline-grid; place-items: center; width: 26px; height: 26px; flex: 0 0 auto; border-radius: 50%; background: var(--color-navy); color: #fff8f0; font-size: .76rem; font-weight: 800; }
+.lyricsWorkspace { display: grid; gap: 12px; }
+.lyricsTabs { display: flex; gap: 7px; overflow-x: auto; padding: 2px 2px 5px; }
+.lyricsTabs button { white-space: nowrap; }
+.lyricsTabs .lyricsTabActive { color: #fff8f0; background: var(--color-navy); border-color: var(--color-navy); }
+.lyricsPanel { display: grid; gap: 8px; }
+.lyricsToolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lyricsToolbar label { font-weight: 650; }
+.root textarea.lyricsTextarea { min-height: clamp(20rem, 48vh, 34rem); line-height: 1.75; padding: 18px; }
+.modal textarea.expandedLyrics { width: 100%; min-height: min(64dvh, 46rem); resize: vertical; padding: 20px; border: 1px solid var(--color-border-strong); border-radius: 9px; background: var(--color-bg); color: var(--color-text); font: 1.1rem/1.8 var(--font-body); }
+.advanced { border: 1px solid var(--color-border); border-radius: 8px; background: color-mix(in srgb, var(--color-bg-muted) 45%, transparent); }
+.advanced summary { min-height: 44px; padding: 11px 13px; cursor: pointer; font-weight: 700; }
+.advanced summary span { float: right; color: var(--color-text-muted); font-size: .78rem; font-weight: 500; }
+.advancedBody { padding: 4px 13px 15px; }
 .menu { display: none; }
 @media(min-width:1400px) { .stats { grid-template-columns: repeat(6,minmax(0,1fr)); } }
 @media(max-width:1150px) { .filters { grid-template-columns: repeat(3,minmax(0,1fr)); } .activity { grid-template-columns: 1fr; } }
@@ -225,6 +245,9 @@
   .twoColumns { grid-template-columns: 1fr; }
   .filters { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .card { padding: 16px; }
+  .lyricsToolbar { align-items: flex-start; flex-direction: column; }
+  .root textarea.lyricsTextarea { min-height: 18rem; }
+  .modal { padding: 18px; }
   .pageTabs { gap: 6px; }
   .pageTabs a { padding: 7px 12px; font-size: 0.82rem; }
 }

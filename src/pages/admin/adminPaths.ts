@@ -2,6 +2,7 @@
 
 export const ADMIN_PATHS = {
   hymnsMezmur: '/admin/hymns/mezmur',
+  hymnsImport: '/admin/hymns/import',
   hymnsBrowseGroups: '/admin/hymns/browse-groups',
   hymnsZemaris: '/admin/hymns/zemaris',
   /** @deprecated Prefer hymnsZemaris */

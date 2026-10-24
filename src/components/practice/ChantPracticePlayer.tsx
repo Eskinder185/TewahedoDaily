@@ -63,6 +63,8 @@ type ChantPracticePlayerProps = {
   badges?: string[]
   /** Secondary actions rendered in the bottom “More Actions” section (favorites, copy link, etc.). */
   footerActions?: ReactNode
+  /** Replaces the default lyrics reader while preserving the player layout. */
+  lyricsContent?: ReactNode
   /** @deprecated Prefer `footerActions` — kept for callers mid-migration. */
   headerActions?: ReactNode
   learnTabLabel?: string
@@ -77,6 +79,7 @@ export function ChantPracticePlayer({
   badges = [],
   footerActions,
   headerActions,
+  lyricsContent,
 }: ChantPracticePlayerProps) {
   const moreActions = footerActions ?? headerActions
   const t = useUiLabel()
@@ -927,13 +930,15 @@ export function ChantPracticePlayer({
               <p className={styles.practiceNotesText}>{payload.learning.meaning}</p>
             </div>
           ) : null}
-          <ChantLyricsLearningPanel
-            entryId={payload.entryId}
-            lyricsGez={payload.lyricsGez}
-            transliterationLyrics={payload.transliterationLyrics}
-            lyricsEnglish={payload.lyricsEnglish}
-            showMemorizationTipsCallout={false}
-          />
+          {lyricsContent ?? (
+            <ChantLyricsLearningPanel
+              entryId={payload.entryId}
+              lyricsGez={payload.lyricsGez}
+              transliterationLyrics={payload.transliterationLyrics}
+              lyricsEnglish={payload.lyricsEnglish}
+              showMemorizationTipsCallout={false}
+            />
+          )}
         </div>
 
         <div className={styles.secondaryStack}>

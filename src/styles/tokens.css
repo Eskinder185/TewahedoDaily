@@ -44,6 +44,15 @@
   --color-burgundy-ink: #5e3030;
   --color-parchment: var(--color-bg);
   --color-parchment-raised: var(--color-bg-elevated);
+  --surface-parchment: #fbf6ea;
+  --surface-parchment-muted: #ead8b4;
+  --surface-paper-card: #fbf4e4;
+  --surface-paper-card-muted: #ead9b6;
+  --color-paper-ink: #5e3030;
+  --color-paper-text: #1e252d;
+  --color-hero-scrim-top: rgba(247, 240, 226, 0.62);
+  --color-hero-scrim-mid: rgba(247, 232, 205, 0.08);
+  --color-hero-scrim-bottom: rgba(40, 24, 10, 0.28);
 
   /* Stronger body / secondary contrast (esp. phones in sunlight) */
   --color-heading: var(--color-midnight);
@@ -191,6 +200,15 @@
   --color-burgundy-ink: #e4b896;
   --color-parchment: var(--color-bg);
   --color-parchment-raised: var(--color-bg-elevated);
+  --surface-parchment: #30271d;
+  --surface-parchment-muted: #201a15;
+  --surface-paper-card: #272019;
+  --surface-paper-card-muted: #17130f;
+  --color-paper-ink: #f4e4c4;
+  --color-paper-text: #eee3d2;
+  --color-hero-scrim-top: rgba(7, 10, 15, 0.78);
+  --color-hero-scrim-mid: rgba(7, 10, 15, 0.38);
+  --color-hero-scrim-bottom: rgba(3, 5, 8, 0.72);
 
   --color-heading: #f5efe6;
   --color-text: #f0e9de;
@@ -252,6 +270,15 @@
   --color-burgundy-ink: #5e3030;
   --color-parchment: var(--color-bg);
   --color-parchment-raised: var(--color-bg-elevated);
+  --surface-parchment: #fbf6ea;
+  --surface-parchment-muted: #ead8b4;
+  --surface-paper-card: #fbf4e4;
+  --surface-paper-card-muted: #ead9b6;
+  --color-paper-ink: #5e3030;
+  --color-paper-text: #1e252d;
+  --color-hero-scrim-top: rgba(247, 240, 226, 0.62);
+  --color-hero-scrim-mid: rgba(247, 232, 205, 0.08);
+  --color-hero-scrim-bottom: rgba(40, 24, 10, 0.28);
 
   --color-heading: var(--color-midnight);
   --color-text: #1e252d;

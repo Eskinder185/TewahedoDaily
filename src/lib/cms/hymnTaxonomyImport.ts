@@ -84,6 +84,75 @@ export async function listDerivedCategories(): Promise<DerivedTaxonomyItem[]> {
   return listDistinctSlugs(CATEGORY_LINKS, 'category_slug')
 }
 
+async function listMezmurLinks(
+  table: typeof OCCASION_LINKS | typeof CATEGORY_LINKS,
+  column: 'occasion_slug' | 'category_slug',
+  mezmurSlug: string,
+): Promise<string[]> {
+  const slug = mezmurSlug.trim()
+  if (!slug || missing.has(table)) return []
+  const { data, error } = await db().from(table as never).select(column).eq('mezmur_slug', slug)
+  if (error) {
+    logOnce(`${table}.list`, error)
+    if (isPermanentMissing(error)) {
+      missing.add(table)
+      return []
+    }
+    throw new Error(errorMessage(error))
+  }
+  return [...new Set(
+    ((data || []) as Record<string, unknown>[])
+      .map((row) => String(row[column] ?? '').trim().toLowerCase())
+      .filter(Boolean),
+  )]
+}
+
+export function listMezmurOccasionLinks(mezmurSlug: string): Promise<string[]> {
+  return listMezmurLinks(OCCASION_LINKS, 'occasion_slug', mezmurSlug)
+}
+
+export function listMezmurCategoryLinks(mezmurSlug: string): Promise<string[]> {
+  return listMezmurLinks(CATEGORY_LINKS, 'category_slug', mezmurSlug)
+}
+
+/** Replace category and occasion relationships together. The database RPC is transactional. */
+export async function setMezmurClassificationLinks(
+  mezmurSlug: string,
+  categorySlugs: string[],
+  occasionSlugs: string[],
+): Promise<void> {
+  const { requireCmsStaffSession } = await import('./cmsStaffAuth')
+  await requireCmsStaffSession('mezmur classification links')
+  const slug = mezmurSlug.trim()
+  if (!slug) return
+  const cleanCategories = [...new Set(categorySlugs.map((value) => value.trim().toLowerCase()).filter(Boolean))]
+  const cleanOccasions = [...new Set(occasionSlugs.map((value) => value.trim().toLowerCase()).filter(Boolean))]
+  const { error } = await db().rpc('set_mezmur_classification_import' as never, {
+    p_mezmur_slug: slug,
+    p_category_slugs: cleanCategories,
+    p_occasion_slugs: cleanOccasions,
+  } as never)
+  if (!error) return
+
+  // Compatibility fallback for local schemas where the migration has not been applied yet.
+  if (!/function .*set_mezmur_classification_import|PGRST202/i.test(error.message || '')) {
+    throw new Error(errorMessage(error))
+  }
+  for (const [table, column, values] of [
+    [CATEGORY_LINKS, 'category_slug', cleanCategories],
+    [OCCASION_LINKS, 'occasion_slug', cleanOccasions],
+  ] as const) {
+    const removed = await db().from(table as never).delete().eq('mezmur_slug', slug)
+    if (removed.error) throw new Error(errorMessage(removed.error))
+    if (values.length) {
+      const inserted = await db().from(table as never).insert(
+        values.map((value) => ({ mezmur_slug: slug, [column]: value })) as never,
+      )
+      if (inserted.error) throw new Error(errorMessage(inserted.error))
+    }
+  }
+}
+
 /** Upsert a single occasion link for a mezmur slug (import table). */
 export async function setMezmurOccasionLink(
   mezmurSlug: string,

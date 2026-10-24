@@ -1,0 +1,136 @@
+.root {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.labelRow,
+.selectionSummary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.count {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.45rem 0.25rem 0.65rem;
+  border: 1px solid var(--color-border-gold);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-gold-faint) 72%, var(--color-bg-elevated));
+  color: var(--color-heading);
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.chip button {
+  display: inline-grid;
+  place-items: center;
+  width: 1.45rem;
+  min-height: 1.45rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.inputWrap input {
+  padding-right: 3rem;
+}
+
+.toggle {
+  position: absolute;
+  inset-block: 1px;
+  right: 1px;
+  width: 2.75rem;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.listbox {
+  position: absolute;
+  z-index: 12;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  right: 0;
+  max-height: 17rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 9px;
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-lift);
+}
+
+.option {
+  display: grid;
+  grid-template-columns: 1.1rem 1fr auto;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.62rem 0.7rem;
+  border-radius: 6px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.optionActive {
+  background: var(--color-bg-muted);
+}
+
+.optionSelected {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+.checkmark {
+  color: var(--color-accent);
+  font-weight: 800;
+}
+
+.empty {
+  padding: 0.8rem;
+  color: var(--color-text-muted);
+  font-size: 0.86rem;
+}
+
+.primaryNote {
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+}
+
+@media (max-width: 480px) {
+  .labelRow,
+  .selectionSummary {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .listbox {
+    max-height: min(18rem, 48dvh);
+  }
+}

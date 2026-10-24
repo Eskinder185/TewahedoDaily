@@ -1,0 +1,21 @@
+{
+  "source_listings_collected": 4175,
+  "verified_unique_mezmurs": 3719,
+  "detail_page_verified_mezmurs": 3719,
+  "strict_inspected_pages": 4175,
+  "total_with_actual_lyrics": 930,
+  "total_without_lyrics": 3243,
+  "total_uncertain_or_unreachable": 2,
+  "total_import_ready_with_lyrics": 794,
+  "duplicate_count": 556,
+  "excluded_duplicate_count": 173,
+  "compilation_count": 283,
+  "classified_records": 3719,
+  "missing_lyrics_count": 3719,
+  "review_required_count": 2573,
+  "import_ready_draft_count": 3719,
+  "zemaris_count": 568,
+  "section_links_count": 7126,
+  "occasion_links_count": 3934,
+  "crawl_errors_count": 3
+}

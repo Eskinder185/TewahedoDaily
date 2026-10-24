@@ -1,0 +1,3720 @@
+{
+  "batch_index": 7,
+  "record_count": 250,
+  "records": [
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%B0%E1%8C%86%E1%89%BD-%E1%89%B0%E1%8B%98%E1%8C%8D%E1%89%B0%E1%8B%8D-%E1%88%B3%E1%88%89-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%B0%E1%88%8E%E1%88%9E%E1%8A%95-%E1%8A%A0%E1%89%A1%E1%89%A0%E1%8A%A8%E1%88%AD-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%89%B5%E1%8A%95%E1%88%B3%E1%8A%A4-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-Easter-Orthodox-Mezmur-by-Zemari-Solomon-Abubeker",
+      "amharic_title": "ደጆች ተዘግተው ሳሉ",
+      "transliteration_title": "Dejoch Tezegitew Salu",
+      "category": "Jesus Christ",
+      "primary_occasion": "Tinsae",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "tinsae"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Abbaa-Pheexiroos-A-F-Dn-Firaanol-Moosisaa-Faarfannaa-Haaraa-firanolmosisa1240",
+      "amharic_title": "",
+      "transliteration_title": "Abbaa Pheexiroos",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/An-everlasting-Kingdom",
+      "amharic_title": "",
+      "transliteration_title": "An everlasting Kingdom",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Illuminating-Are-the-Works-of-Emmanuel-%E1%8B%B0%E1%88%98%E1%89%80-%E1%8A%A0%E1%89%A0%E1%88%AB%E1%88%8D%E1%8A%95",
+      "amharic_title": "ደመቀ አበራልን",
+      "transliteration_title": "Illuminating Are the Works of Emmanuel",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Kant-Wedeman-Enhedalen",
+      "amharic_title": "",
+      "transliteration_title": "Kant Wedeman Enhedalen",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Like-the-fig-tree--%E1%8A%A0%E1%8C%A5%E1%89%B7%E1%88%8D-%E1%8C%8E%E1%88%8E%E1%89%A0%E1%89%B3%E1%88%8D-muuofcbm",
+      "amharic_title": "አጥቷል ጎሎበታል",
+      "transliteration_title": "Like the fig tree",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "christ-general",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/NEW-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%9D%E1%88%B0%E1%88%AB%E1%89%85-%E1%88%86%E1%8B%AD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8D%80%E1%8B%B3%E1%88%88-%E1%8C%8E%E1%89%A0%E1%8B%9C-mahtot",
+      "amharic_title": "ምሰራቅ ሆይ",
+      "transliteration_title": "Miserak Hoy",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/New-%E1%8B%A8%E1%89%85%E1%8B%B1%E1%88%B5-%E1%8C%88%E1%89%A5%E1%88%AD%E1%8A%A4%E1%88%8D-%E1%88%8D%E1%8B%A9-%E1%88%85%E1%89%A5%E1%88%A8-%E1%8B%9D%E1%88%9B%E1%88%AC-Gabriel-%E1%8C%88%E1%89%A5%E1%88%AD%E1%8A%A4%E1%88%8D-Ethiopan-orthodox-2025-newmezmur-Betehage-Media",
+      "amharic_title": "የቅዱስ ገብርኤል ልዩ ህብረ ዝማሬ",
+      "transliteration_title": "Gabriel",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/new-%E1%89%A0%E1%89%A5%E1%88%AD%E1%88%83%E1%8A%95-%E1%8C%B8%E1%8B%B3%E1%88%8D-%E1%89%B0%E1%8A%A8%E1%89%A3-%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B4-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8C%B8%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8-%E1%8A%A5%E1%8A%95%E1%8B%98-%E1%89%B0%E1%88%90%E1%89%85%E1%8D%8A%E1%8B%AE-%E1%89%A0%E1%8C%BD%E1%8C%8C-%E1%8B%88%E1%88%AB%E1%89%B5-%E1%8B%A8%E1%88%9A%E1%8B%B0%E1%88%98%E1%8C%A5",
+      "amharic_title": "በብርሃን ጸዳል ተከባ እመቤቴ",
+      "transliteration_title": "Bebirihan Tsedal Tekeba Emebete",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "church-worship",
+        "general-worship"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/yeneseha-orthodox-mezmur-by-tsehay-berehane-memekiaye-ante-neh-%E1%88%98%E1%88%98%E1%8A%AA%E1%8B%AB%E1%8B%AC-%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%8A%90%E1%88%85",
+      "amharic_title": "መመኪያዬ አንተ ነህ",
+      "transliteration_title": "memekiaye ante neh",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%85%E1%8B%9D%E1%89%A1%E1%8A%95-%E1%88%88%E1%88%81%E1%88%88%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%88%E1%89%80%E1%88%B1%E1%89%B5-%E1%8B%A8%E1%88%9A%E1%8C%A0%E1%89%A5%E1%89%80%E1%8A%9D-%E1%8A%A0%E1%8B%AD%E1%89%B0%E1%8A%9B%E1%88%9D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%AE%E1%88%B4%E1%8D%8D-%E1%8C%8D%E1%88%AD%E1%88%9B-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%89%A5%E1%88%B5%E1%88%AB%E1%89%B5-%E1%8C%A8%E1%89%A5%E1%88%B2-akufada-media",
+      "amharic_title": "ህዝቡን ለሁለት አስለቀሱት የሚጠብቀኝ አይተኛም ዘማሪ ዮሴፍ ግርማ እና ዘማሪ ብስራት ጨብሲ",
+      "transliteration_title": "media",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%8A%E1%89%80-%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%8A%AA%E1%8A%90-%E1%8C%A5%E1%89%A0%E1%89%A5-%E1%8B%88-%E1%89%82%E1%88%AD%E1%89%86%E1%88%B5-%E1%8A%A5%E1%88%98-%E1%8A%A0%E1%88%9D%E1%88%8B%E1%8A%AD",
+      "amharic_title": "እመ አምላክ",
+      "transliteration_title": "Eme Amilak",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%8D%E1%88%98%E1%8A%93%E1%8B%AC%E1%8A%95-%E1%88%B0%E1%88%9B-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%B3%E1%8B%B0%E1%88%89-%E1%8B%B0%E1%89%A0%E1%89%A0-mpnj5jpe",
+      "amharic_title": "ልመናዬን ሰማ",
+      "transliteration_title": "Limenayen Sema",
+      "category": "Kidus Michael",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-michael",
+        "holy-angels",
+        "church-worship",
+        "general-worship"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%98%E1%8D%83%E1%8C%89%E1%8B%95-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%89%80%E1%8A%90%E1%8A%92%E1%88%B3-%E1%89%B3%E1%89%A6%E1%88%AD-Zemari-Kenenisa-Tabor",
+      "amharic_title": "መፃጉዕ",
+      "transliteration_title": "Metsague",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%9B%E1%88%A8%E1%8A%9D-%E1%88%8D%E1%89%A5-%E1%8B%A8%E1%88%9A%E1%8A%90%E1%8A%AB-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%90-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-Ethiopian-Orthodox-Mezmur",
+      "amharic_title": "ማረኝ",
+      "transliteration_title": "Maregn",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B5%E1%88%8B%E1%88%B4-%E1%88%99%E1%88%B4-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8D%8B%E1%8A%95%E1%89%B1-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%90%E1%8B%8B%E1%8B%9D-%E1%8B%A8%E1%89%B0%E1%8C%A3%E1%88%98%E1%88%A9%E1%89%A0%E1%89%B5-%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%A8-%E1%88%98%E1%89%84%E1%8B%B6%E1%8A%95%E1%8B%AB-%E1%8C%88%E1%89%A2-%E1%88%9B%E1%88%B0%E1%89%A3%E1%88%B0%E1%89%A5%E1%8B%AB-%E1%8B%AB%E1%88%8D%E1%89%B3%E1%88%B0%E1%89%A0-%E1%8A%AD%E1%88%B5%E1%89%B0%E1%89%B5-seifu-ON-EBS",
+      "amharic_title": "ስላሴ ሙሴ ዘማሪት ፋንቱ እና ዘማሪ ሐዋዝ የተጣመሩበት የ መቄዶንያ ገቢ ማሰባሰብያ ያልታሰበ ክስተት",
+      "transliteration_title": "seifu ON EBS",
+      "category": "Holy Trinity",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "church-worship"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%88%98%E1%89%83%E1%89%A5%E1%88%AD-%E1%8B%A8%E1%88%88%E1%88%9D-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%A0%E1%88%9D%E1%88%B5%E1%88%8D-DeaconSamsonNegash-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8A%95%E1%8A%B3%E1%8A%95-%E1%8A%A0%E1%8B%B0%E1%88%A8%E1%88%B3%E1%89%BD%E1%88%81-mahtot-newsong-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC",
+      "amharic_title": "በመቃብር የለም በምስል አደረሳችሁ",
+      "transliteration_title": "Bemekabir Yelem Bemisil Aderesachihu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8A%93%E1%88%AD%E1%8B%B6%E1%88%B5-%E1%8A%AB%E1%88%B3%E1%88%81%E1%8A%95-%E1%8B%A8%E1%8B%AB%E1%88%AC%E1%8B%B5-%E1%8B%89%E1%89%A5-%E1%8B%9C%E1%88%9B-by-Zemarit-Nardos-ye-yared-Web-zema",
+      "amharic_title": "የያሬድ ዉብ ዜማ",
+      "transliteration_title": "ye yared Web zema",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A3%E1%88%AD%E1%8A%A8%E1%8A%92-%E1%8A%A0%E1%89%A3%E1%89%A3%E1%88%AD%E1%8A%A8%E1%8A%95-%E1%8A%A0%E1%89%A3%E1%89%B3%E1%89%BD%E1%8A%95-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A5%E1%8A%90%E1%88%86-%E1%89%A5%E1%8B%AB%E1%88%88%E1%88%81-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8A%95-%E1%8D%8D%E1%88%AC%E1%8B%98%E1%88%AD-%E1%8B%B0%E1%88%B3%E1%88%88%E1%8A%9D-mstu617x",
+      "amharic_title": "ባርከኒ አባ/ባርከን አባታችን/ እነሆ ብያለሁ",
+      "transliteration_title": "Barikeni Aba/bariken Abatachin Eneho Biyalehu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%93%E1%8A%93-%E1%8B%A8%E1%88%9D%E1%88%B5%E1%8C%8B%E1%8A%93-%E1%8C%8C%E1%89%B3-Nana-Yemisgana-Geta-%E1%88%86%E1%88%B3%E1%8B%95%E1%8A%93-hosanna-21media27",
+      "amharic_title": "ናና የምስጋና ጌታ",
+      "transliteration_title": "Nana Yemisgana Geta hosanna",
+      "category": "Jesus Christ",
+      "primary_occasion": "Hosanna",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "hosanna"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%93%E1%8B%AD-%E1%88%98%E1%8B%B5%E1%88%83%E1%8A%94%E1%8B%93%E1%88%88%E1%88%9D-%E1%8A%A5%E1%8A%A9%E1%89%A3%E1%89%B5-%E1%88%98%E1%8B%9B%E1%88%99%E1%88%AD-New-Eritrean-Orthodox-Collection-Mezmurs-Z-Hermon-Araya-%E1%8A%93%E1%8B%AD-%E1%8C%8E%E1%8B%AD%E1%89%B3-%E1%8A%A5%E1%8A%A9%E1%89%A3%E1%89%B5-%E1%88%98%E1%8B%9B%E1%88%99%E1%88%AD",
+      "amharic_title": "ናይ መድሃኔዓለም እኩባት መዛሙር",
+      "transliteration_title": "Eritrean Orthodox Collection Mezmurs",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%95%E1%88%B4%E1%89%A5%E1%88%96-%E1%88%88%E1%8A%A5%E1%8C%8D%E1%8B%9A%E1%8A%A0%E1%89%A5%E1%88%94%E1%88%AD-Zemari-Besufekad",
+      "amharic_title": "ንሴብሖ ለእግዚአብሔር",
+      "transliteration_title": "Nisebiho Leegiziabiher",
+      "category": "Jesus Christ",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%95%E1%8A%A1-%E1%8A%95%E1%88%B5%E1%8C%8D%E1%8B%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8C%A2%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%88%B3%E1%88%85%E1%88%8C-%E1%89%84%E1%88%B4",
+      "amharic_title": "ንኡ ንስግድ",
+      "transliteration_title": "Niu Nisigid",
+      "category": "Kidus Estifanos Saint Stephen",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "martyrs",
+        "general-saints"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%8D%E1%88%A8%E1%88%B3%E1%8B%8D%E1%88%9D-%E1%8B%AB%E1%8A%95%E1%8A%95-%E1%8B%95%E1%88%88%E1%89%B5-%E1%8B%B2-%E1%8A%95-%E1%88%99%E1%88%89%E1%89%80%E1%8A%95-%E1%8A%A8%E1%89%A0%E1%8B%B0-Muluken-Kebede",
+      "amharic_title": "አልረሳውም ያንን ዕለት",
+      "transliteration_title": "Muluken Kebede",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%9B%E1%8A%95-%E1%89%A0%E1%8A%A0%E1%88%9B%E1%8A%95-%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8B%A8%E1%89%B5%E1%8A%95%E1%88%A3%E1%8A%A4-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%AD%E1%88%AD%E1%88%B5%E1%89%B6%E1%88%B5-%E1%89%A0%E1%8A%A5%E1%8B%8D%E1%8A%90%E1%89%B5-%E1%89%B0%E1%8A%90%E1%88%B5%E1%89%B7%E1%88%8D",
+      "amharic_title": "አማን በአማን",
+      "transliteration_title": "Aman Beaman",
+      "category": "Jesus Christ",
+      "primary_occasion": "Tinsae",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "christ-general",
+        "wereb",
+        "tinsae"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%89%B4%E1%88%AD%E1%88%B3%E1%89%B3-Nan-yaadadha-Faarfannaa-addaa-Afaan-Lachuun-%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%A0%E1%88%81%E1%88%88%E1%89%B1%E1%88%9D-%E1%89%81%E1%8A%95%E1%89%8B-firanolmosisa1240",
+      "amharic_title": "አቴርሳታ | Nan yaadadha",
+      "transliteration_title": "Nan yaadadha",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "oromo",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8A%95%E1%89%BA%E1%8A%95-%E1%8B%A8%E1%8B%AB%E1%8B%98-%E1%88%B0%E1%8B%8D-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8D%80%E1%8B%B3%E1%88%88-%E1%8C%8E%E1%89%A0%E1%8B%9C",
+      "amharic_title": "አንቺን የያዘ ሰው",
+      "transliteration_title": "Anichin Yeyaze Sew",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%98%E1%8B%9D%E1%8C%88%E1%89%A0-%E1%88%AD%E1%88%AB%E1%88%84-%E1%88%9A%E1%8A%AB%E1%8A%A4%E1%88%8D-%E1%8A%A8%E1%89%B0%E1%88%98%E1%88%A8%E1%89%80%E1%8B%8D-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%9A%E1%8A%AB%E1%8A%A4%E1%88%8D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%AD%E1%89%B5%E1%89%A3%E1%88%A8%E1%8A%AD-%E1%89%B0%E1%8C%88%E1%8A%9D-office-channle-yitbareke-tegegn-mikale",
+      "amharic_title": "ሚካኤል ከተመረቀው ዝማሬ ሚካኤል ዘማሪ ይትባረክ ተገኝ",
+      "transliteration_title": "office channle yitbareke tegegn mikale",
+      "category": "Kidus Michael",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-michael",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%88%88%E1%8A%A8-%E1%8C%88%E1%89%A5%E1%88%AD%E1%8A%A4%E1%88%8D-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A0%E1%8A%95%E1%8C%8D%E1%8B%B3%E1%8B%88%E1%88%AD%E1%89%85-%E1%89%A0%E1%89%80%E1%88%88-Kesis-Zemari-Engdawork-Bekele-dejtenahu",
+      "amharic_title": "ሰላም ለከ ገብርኤል",
+      "transliteration_title": "Selam Leke Gebiriel",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%B5%E1%8A%A5%E1%88%88%E1%89%B4%E1%8A%95-%E1%88%B5%E1%88%9B-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A0%E1%8B%B2%E1%88%B1-%E1%8A%95%E1%8C%89%E1%88%B4-mahtot",
+      "amharic_title": "ስእለቴን ስማ",
+      "transliteration_title": "Sieleten Sima",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%B0%E1%8C%A0%E1%88%98%E1%89%80-%E1%8A%A2%E1%8B%A8%E1%88%B1%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%88%84%E1%8A%96%E1%8A%AD-%E1%88%9E%E1%8C%88%E1%88%B5-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A0%E1%88%AD%E1%89%B2%E1%88%B5%E1%89%B5-%E1%8B%AD%E1%8C%88%E1%88%A8%E1%88%9D-%E1%8B%B0%E1%8C%80%E1%8A%94",
+      "amharic_title": "ተጠመቀ ኢየሱስ",
+      "transliteration_title": "Tetemeke Iyesus",
+      "category": "Jesus Christ",
+      "primary_occasion": "Timket",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "timkat"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A0%E1%88%B3%E1%88%B5%E1%89%A2%E1%88%8D%E1%8A%9D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8A%95%E1%8C%89%E1%88%A4-mahtot",
+      "amharic_title": "አሳስቢልኝ",
+      "transliteration_title": "Asasibilign",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%A8%E1%8A%A4%E1%88%8D%E1%88%B3%E1%89%A4%E1%8C%A5-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8A%A2%E1%8A%95%E1%8C%82%E1%8A%90%E1%88%AD-%E1%8D%8B%E1%88%B2%E1%8A%AB-%E1%8D%8D%E1%88%A5%E1%88%90-Zemarit-Fasika-fisseha-mahtot-tube",
+      "amharic_title": "የኤልሳቤጥ ሰላም",
+      "transliteration_title": "Yeelisabet Selam",
+      "category": "Praise Worship",
+      "primary_occasion": "Tinsae",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "tinsae",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8D%88%E1%8B%8D%E1%88%B0%E1%8A%9D-%E1%8C%8C%E1%89%B3-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A0%E1%8A%95%E1%8C%8D%E1%8B%B3%E1%8B%88%E1%88%AD%E1%89%85-%E1%89%A0%E1%89%80%E1%88%88-Kesis-Zemari-Engdawork-Bekele-dejtenahu",
+      "amharic_title": "ፈውሰኝ ጌታ",
+      "transliteration_title": "Fewisegn Geta",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%88%8D%E1%8B%B0%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%B0%E1%8B%88%E1%88%8D%E1%8B%B0-%E1%8A%A2%E1%8B%A8%E1%88%B1%E1%88%B5-%E1%88%8A%E1%89%80-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%93%E1%89%B5-%E1%8A%90%E1%89%A2%E1%8B%A9-%E1%88%B3%E1%88%99%E1%8A%A4%E1%88%8D-DeaconNebiyuSamuel",
+      "amharic_title": "ተወልደ ኢየሱስ",
+      "transliteration_title": "Tewelide Iyesus",
+      "category": "Jesus Christ",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "gena"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%89%A0%E1%8C%88%E1%8A%93-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%A0%E1%89%A3%E1%88%95%E1%88%AD%E1%8B%AD-%E1%88%9D%E1%88%B5%E1%8C%89%E1%8A%95-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%95%E1%8C%BB%E1%8A%95-%E1%8A%A0%E1%8B%B5%E1%8B%AB%E1%88%9D-%E1%8A%AA%E1%88%AE%E1%88%B5",
+      "amharic_title": "በባሕርይ ምስጉን",
+      "transliteration_title": "Bebahiriy Misigun",
+      "category": "Praise Worship",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "gena",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%83-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%8B%E1%8B%A8-%E1%8A%A0%E1%88%88%E1%8D%88%E1%8A%9D-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-mahtot",
+      "amharic_title": "እንዳላየ አለፈኝ",
+      "transliteration_title": "Enidalaye Alefegn",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B5%E1%8A%85%E1%8A%90%E1%8A%92-%E1%8B%98%E1%8A%A0%E1%8B%B5%E1%8A%80%E1%8A%95%E1%8A%AE%E1%88%99-%E1%89%B3%E1%8A%85%E1%88%A3%E1%88%A5-19-2018-%E1%8B%93%E1%88%9D-December-26-2025-%E1%89%A0%E1%8B%B0%E1%89%A5%E1%88%A8-%E1%89%A5%E1%88%A5%E1%88%AB%E1%89%B5-%E1%89%85-%E1%8C%88%E1%89%A5%E1%88%AD%E1%8A%A4%E1%88%8D-%E1%8A%AB%E1%89%B4%E1%8B%B5%E1%88%AB%E1%88%8D-%E1%88%8B%E1%88%B5-%E1%89%AC%E1%8C%8B%E1%88%B5",
+      "amharic_title": "አድኅነኒ ዘአድኀንኮሙ",
+      "transliteration_title": "December 26",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels",
+        "wereb"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A3%E1%89%A5-%E1%88%98%E1%88%B5%E1%89%80%E1%88%8D-%E1%8B%9D%E1%88%AB%E1%8A%A5%E1%8A%BD%E1%8B%8E-%E1%8D%8D%E1%89%95%E1%88%AA-Orthodox-Tewahedo-Cover-Mezmur-%E1%8B%8B%E1%8B%AD%E1%8B%9C%E1%88%9B",
+      "amharic_title": "ኣብ መስቀል ዝራእኽዎ ፍቕሪ",
+      "transliteration_title": "Ab Mesikel Ziraehiwo Fikiri",
+      "category": "Cross",
+      "primary_occasion": "Meskel",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "meskel"
+      ],
+      "confidence": 0.92,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%88%B5%E1%88%98-%E1%8A%83%E1%8B%AB%E1%88%8D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8C%A2%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%88%B3%E1%88%85%E1%88%8C-%E1%89%84%E1%88%B4",
+      "amharic_title": "እስመ ኃያል",
+      "transliteration_title": "Esime Hayal",
+      "category": "Kidus Estifanos Saint Stephen",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "martyrs",
+        "general-saints"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%88%B5%E1%8A%A8-%E1%8C%8E%E1%88%8E%E1%8C%8E%E1%89%B3-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8B%A8%E1%8A%95%E1%88%B0%E1%88%83-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8C%BD%E1%8C%8C%E1%88%AC%E1%8B%B3-%E1%8C%A5%E1%88%8B%E1%88%81%E1%8A%95-Zemarit-Tsigereda-Tilahun-Orthodox-Mezmur-2026",
+      "amharic_title": "እስከ ጎሎጎታ ማርያም",
+      "transliteration_title": "Esike Gologota Mariyam",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%8A%95%E1%89%B0-%E1%89%A0%E1%88%85%E1%88%8A%E1%8A%93-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%88%84%E1%8A%96%E1%8A%AD-%E1%88%98%E1%88%B3%E1%8B%AD-ente-behelina-zemari-deyakon-henok-messay",
+      "amharic_title": "እንተ በህሊና በዘማሪ ዲ ን ሄኖክ መሳይ",
+      "transliteration_title": "ente behelina zemari deyakon henok messay",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%8A%95%E1%8B%98-%E1%89%B0%E1%88%90%E1%89%85%E1%8D%8A%E1%8B%AE-Enze-Tehaqfiyo-Tehakfiyo-%E1%8B%A8%E1%8C%BD%E1%8C%8C-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD",
+      "amharic_title": "እንዘ ተሐቅፊዮ የጽጌ መዝሙር መዝሙር",
+      "transliteration_title": "Enze Tehaqfiyo/Tehakfiyo",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%8A%9B-%E1%8C%8D%E1%8A%95-%E1%8B%A8%E1%89%B0%E1%88%B0%E1%89%80%E1%88%88%E1%8B%8D%E1%8A%95-%E1%8A%AD%E1%88%AD%E1%88%B5%E1%89%B6%E1%88%B5%E1%8A%95-%E1%8A%A5%E1%8A%95%E1%88%B0%E1%89%A5%E1%8A%AB%E1%88%88%E1%8A%95-%E1%89%A0%E1%89%B8%E1%88%AD%E1%8A%90%E1%89%B5-%E1%8B%A8%E1%8B%88%E1%8B%AD%E1%8A%95-%E1%88%90%E1%88%A8%E1%8C%8D-%E1%8A%90%E1%88%BD-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%90%E1%8B%8B%E1%8B%9D-%E1%89%B0%E1%8C%88%E1%8A%9D-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8B%9D%E1%88%AB-%E1%8A%83-%E1%88%9A%E1%8A%AB%E1%8A%A4%E1%88%8D-21media27",
+      "amharic_title": "በቸርነት",
+      "transliteration_title": "Becherinet",
+      "category": "Kidus Michael",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-michael",
+        "holy-angels",
+        "christ-general"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%8B%8D%E1%8A%90%E1%89%B0%E1%8A%9B-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%8B%AB%E1%88%88%E1%8B%8D-%E1%8A%A8%E1%89%A4%E1%89%B5%E1%88%85-%E1%8A%90%E1%8B%8D-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%88%E1%88%9D%E1%88%88%E1%88%9D-%E1%8A%A8%E1%89%A0%E1%8B%B0",
+      "amharic_title": "እውነተኛ ሰላም ያለው ከቤትህ ነው",
+      "transliteration_title": "Ewinetegna Selam Yalew Kebetih New",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A8%E1%8B%B3%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8A%A8-%E1%89%A4%E1%88%AD%E1%88%B3%E1%89%A4%E1%88%85-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A0%E1%88%B8%E1%8A%93%E1%8D%8A-%E1%8C%88%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-Eliyab_mezmur-ms9tkgoc",
+      "amharic_title": "ከዳን እስከ ቤርሳቤህ",
+      "transliteration_title": "Kedan Esike Berisabeh",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%98%E1%8B%B5%E1%8A%95%E1%8C%8D%E1%88%8D-%E1%88%98%E1%8A%93%E1%88%A5%E1%8C%8D%E1%89%B0-%E1%8B%9C%E1%8A%93%E1%8B%8A-%E1%88%B5%E1%89%A1%E1%88%95-%E1%8B%98%E1%88%88%E1%8B%93%E1%88%88%E1%88%9D-%E1%8A%A0%E1%88%B5%E1%89%B0%E1%88%AD%E1%8A%A5%E1%8B%AE-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8B%88%E1%88%A8%E1%89%A5-%E1%8A%A8%E1%88%B2%E1%8B%AB%E1%89%B5%E1%88%8D-%E1%8B%B0%E1%89%A5%E1%88%A8-%E1%88%B0%E1%88%8B%E1%88%9D",
+      "amharic_title": "ዘድንግል መናሥግተ/ ዜናዊ ስቡሕ ዘለዓለም / አስተርእዮ ማርያም ወረብ ከሲያትል ደብረ ሰላም",
+      "transliteration_title": "Zedinigil Menasigite Zenawi Sibuh Zelealem Asiterieyo Mariyam Wereb Kesiyatil Debire Selam",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "mary-general",
+        "wereb"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%89%85%E1%8B%B5%E1%88%B5%E1%89%B5-%E1%8B%B5%E1%8A%95%E1%8C%8D%E1%88%8D-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AB%E1%89%B5-%E1%88%B5%E1%89%A5%E1%88%B5%E1%89%A5-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8A%A5%E1%8D%80%E1%8C%88%E1%8A%90%E1%89%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-ye-Mariam-Mezmur-collection-Estegente-Kebede",
+      "amharic_title": "የቅድስት ድንግል ማርያም መዝሙራት ስብስብ በዘማሪት እፀገነት ከበደ",
+      "transliteration_title": "ye Mariam Mezmur collection Estegente Kebede",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%B0%E1%89%A5%E1%88%A8-%E1%89%A5%E1%88%AD%E1%88%83%E1%8A%95-%E1%89%85%E1%8B%B1%E1%88%B5-%E1%8A%A0%E1%88%9B%E1%8A%91%E1%8A%A4%E1%88%8D-%E1%8B%88%E1%89%A0%E1%8B%93%E1%89%B3-%E1%88%88%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%89%A4-%E1%8A%AD-%E1%88%B6%E1%88%8D%E1%89%B5-%E1%88%8C%E1%8A%AD-%E1%8B%A9%E1%89%B3",
+      "amharic_title": "ደብረ ብርሃን ቅዱስ አማኑኤል ወበዓታ ለማርያም ቤ/ክ ሶልት ሌክ ዩታ",
+      "transliteration_title": "Debire Birihan Kidus Amanuel Webeata Lemariyam Be/k Solit Lek Yuta",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "mary-general",
+        "wereb",
+        "christ-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8C%B8%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8-%E1%89%A0%E1%8B%98%E1%88%98%E1%8A%93%E1%89%B5-Zemarte-Beselote-Asmare-Bezmanate",
+      "amharic_title": "በዘመናት",
+      "transliteration_title": "Bezemenat",
+      "category": "Prayer",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "church-worship",
+        "general-worship"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8B%A8%E1%88%8D%E1%8B%B0%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%A0%E1%8A%90%E1%89%A2%E1%8B%AB%E1%89%B5-washintmedia-%E1%89%A0%E1%8A%90%E1%89%A2%E1%8B%AB%E1%89%B5",
+      "amharic_title": "ድንቅ የልደት ዝማሬ በነቢያት",
+      "transliteration_title": "Dinik Yelidet Zimare Benebiyat",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "gena"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8C%88%E1%88%8A%E1%88%8B-%E1%8A%A5%E1%89%B5%E1%8B%8A-%E1%8C%88%E1%88%8A%E1%88%8B-%E1%8C%8D%E1%89%A2-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8A%A5%E1%8A%95%E1%8C%8D%E1%8B%B3%E1%8B%88%E1%88%AD%E1%89%85-dejtenahu",
+      "amharic_title": "ገሊላ እትዊ",
+      "transliteration_title": "Gelila Etiwi",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8C%B8%E1%8C%8B%E1%8A%95-%E1%8B%A8%E1%88%98%E1%88%8B%E1%88%BD-%E1%88%86%E1%8B%AD-zemari-yeabkal-desalegn-%E1%88%8A%E1%88%B0%E1%88%99%E1%89%B5-%E1%8B%A8%E1%88%9A%E1%8C%88%E1%89%A3-%E1%8B%A8%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B3%E1%89%BD%E1%8A%95-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-Ethiopian-Orthodox-Mezmur",
+      "amharic_title": "ጸጋን የመላሽ ሆይ",
+      "transliteration_title": "Tsegan Yemelash Hoy",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8D%88%E1%88%AB%E1%88%81-Ferahu-%E1%8B%A8%E1%88%9A%E1%8B%AB%E1%88%B5%E1%88%88%E1%89%85%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%AD%E1%89%B5%E1%89%A3%E1%88%A8%E1%8A%AD-%E1%89%B0%E1%8C%88%E1%8A%9D",
+      "amharic_title": "ፈራሁ",
+      "transliteration_title": "Ferahu",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8D%8D%E1%89%85%E1%88%AD%E1%88%85-%E1%88%9B%E1%88%A8%E1%8A%A8%E1%8A%9D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%88%B3%E1%88%9D%E1%88%B6%E1%8A%95-%E1%8A%90%E1%8C%8B%E1%88%BD-Zemari-Deacon-Samson-Negash-fikrih-marekegn",
+      "amharic_title": "+ፍቅርህ ማረከኝ+ ዘማሪ ዲያቆን ሳምሶን ነጋሽ",
+      "transliteration_title": "+ + Zemari Deacon Samson Negash",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%8A%E1%89%80-%E1%88%98%E1%88%8B%E1%8A%A5%E1%8A%AD%E1%89%B5-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8C%B8%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8--NolawiRecords-mpnj6uh7",
+      "amharic_title": "ሊቀ መላእክት",
+      "transliteration_title": "Like Melaekit",
+      "category": "Angels",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "holy-angels",
+        "church-worship",
+        "general-worship"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Adamin-Lemadan-%E1%8A%A0%E1%8B%B3%E1%88%9D%E1%8A%95-%E1%88%88%E1%88%9B%E1%8B%B3%E1%8A%95---Z-Fantu-Welde-mpm3ibdy",
+      "amharic_title": "አዳምን ለማዳን",
+      "transliteration_title": "Adamin Lemadan",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Faarfannaa-Haaraa-Maariyaam-Qulqulleettiidha-A-F-Dn-Firaanol-Moosisaa-firanolmosisa1240",
+      "amharic_title": "",
+      "transliteration_title": "Faarfannaa Haaraa Maariyaam Qulqulleettiidha",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Kidaanemihiret-nan-dagatin-Faarfannaa-Ortodoksii-Faarfattoota-Sabaif-Media-tiin",
+      "amharic_title": "",
+      "transliteration_title": "Kidaanemihiret nan dagatin",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/New-%E1%8A%A0%E1%88%AD%E1%88%B4%E1%88%9B-%E1%8B%B5%E1%8A%90%E1%8A%93%E1%88%8D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B5%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8B%AB%E1%88%AC%E1%8B%B5-%E1%8D%80%E1%8C%8B%E1%8B%AC-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%A8-%E1%8B%AB%E1%88%AC%E1%8B%B5-MezmurYaredOfficialYouTubePage",
+      "amharic_title": "አርሴማ ድነናል",
+      "transliteration_title": "Arisema Dinenal",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "st-arsema",
+        "martyrs"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/New-Mezmur-%E1%89%B0%E1%8B%88%E1%88%88%E1%8B%B0-zemari-solomon-abubeker",
+      "amharic_title": "ተወለደ",
+      "transliteration_title": "Tewelede",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/O-the-Archangel-%E1%8A%A6-%E1%88%9A%E1%8A%AB%E1%8A%A4%E1%88%8D",
+      "amharic_title": "ኦ ሚካኤል",
+      "transliteration_title": "O the Archangel",
+      "category": "Kidus Michael",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-michael",
+        "holy-angels",
+        "english"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Our-Bride-and-Groom-%E1%88%99%E1%88%BD%E1%88%AB%E1%8B%AC",
+      "amharic_title": "ሙሽራዬ",
+      "transliteration_title": "Our Bride and Groom",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom",
+        "wedding",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/The-Childs-Heart--Marked-By-The-Cross-Album-mqg94lvv",
+      "amharic_title": "",
+      "transliteration_title": "The Child's Heart",
+      "category": "Cross",
+      "primary_occasion": "Meskel",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "meskel",
+        "english"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Tiwediso-Debre-Libanos",
+      "amharic_title": "",
+      "transliteration_title": "Tiwediso Debre Libanos",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Tsegereda-Besimeh-Tamegnalehu",
+      "amharic_title": "",
+      "transliteration_title": "Tsegereda, Besimeh Tamegnalehu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/ethiopian-orthodox-tewahdo-cherch-mezmur-kinetibeb-welde-kirkos-%E1%8B%AB%E1%89%BD%E1%8A%95-%E1%8B%A8%E1%88%9E%E1%89%B5-%E1%8C%A5%E1%88%AA-%E1%8A%A0%E1%89%A5%E1%88%A8%E1%8A%95-%E1%8A%A5%E1%8A%93%E1%88%B5%E1%89%A3%E1%89%B5",
+      "amharic_title": "ያችን የሞት ጥሪ አብረን እናስባት",
+      "transliteration_title": "ethiopian orthodox tewahdo cherch mezmur kinetibeb welde kirkos",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/new-Alfaaf-Omeega-Ftaa-Darajjee-Jimaa-Abbaa-Faaruu-F-taa-caaluma-Dandoo-ortodoks-bikiltumedia",
+      "amharic_title": "",
+      "transliteration_title": "Alfaaf Omeega Ftaa Darajjee Jimaa Abbaa Faaruu F/taa caaluma Dandoo",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%8A%E1%89%80-%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%8A%AA%E1%8A%90%E1%8C%A5%E1%89%A0%E1%89%A5-%E1%8B%88%E1%88%8D%E1%8B%B0-%E1%89%82%E1%88%AD%E1%89%86%E1%88%B5-%E1%8A%A0%E1%8B%B5%E1%8D%88%E1%8B%8B%E1%88%8D-%E1%8A%A5%E1%8C%86%E1%89%BC-mr7a9viz",
+      "amharic_title": "",
+      "transliteration_title": "Like Mezemiran Kinetibeb Welide Kirikos Adifewal Ejoche",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%95%E1%8B%AB%E1%8B%8D%E1%8A%95-%E1%8A%A8%E1%88%99%E1%89%B3%E1%8A%95-%E1%88%98%E1%88%83%E1%88%8D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%B0%E1%88%8E%E1%88%9E%E1%8A%95-%E1%8A%A0%E1%89%A1%E1%89%A0%E1%8A%A8%E1%88%AD-New-Ethiopian-Orthodox-Easter-Mezmur-Zemari-Solomon-Abubeker",
+      "amharic_title": "ሕያውን ከሙታን መሃል",
+      "transliteration_title": "Ethiopian Orthodox Easter Mezmur",
+      "category": "Praise Worship",
+      "primary_occasion": "Tinsae",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "tinsae",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%98%E1%88%88%E1%88%B5%E1%8A%AD%E1%88%8D%E1%8A%9D-%E1%8D%8A%E1%89%B5%E1%88%85%E1%8A%95-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%90%E1%8B%8B%E1%8B%9D-%E1%89%B0%E1%8C%88%E1%8A%9D-%E1%8B%A8%E1%8A%95%E1%88%A5%E1%88%83%E1%8B%9D%E1%88%9B%E1%88%AC-meleskilign-zemari-hawaz-tegegn-new-Ethiopian-orthodox-tewahido-song",
+      "amharic_title": "መለስክልኝ ፊትህን ዘማሪ ሐዋዝ ተገኝ የንሥሃዝማሬ",
+      "transliteration_title": "meleskilign zemari hawaz tegegn Ethiopian orthodox tewahido song",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%8B%98%E1%88%B5%E1%89%A5%E1%8A%A8%E1%89%B5-%E1%8B%88%E1%88%8D%E1%8B%B6-%E1%88%98%E1%8B%B5%E1%8A%85%E1%8A%90-%E1%8A%95%E1%88%B0%E1%89%A5%E1%8A%AD",
+      "amharic_title": "መዝሙር ዘስብከት፦ ወልዶ መድኅነ ንሰብክ",
+      "transliteration_title": "Mezimur Zesibiketi: Welido Medihine Nisebik",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "wereb",
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B0%E1%88%8B%E1%88%9C-%E1%89%A0%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%8A%90%E1%8B%8D-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%8D%E1%8A%AB%E1%89%B8%E1%8B%8D-%E1%8B%B3%E1%8A%98%E1%8B%8D-Selame-Beante-New-Zemari-Kesis-Endalkachew-Dagnew",
+      "amharic_title": "ሰላሜ በአንተ ነው",
+      "transliteration_title": "Selame Beante",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B0%E1%88%8B%E1%88%9D-%E1%8B%AD%E1%88%BB%E1%88%8B%E1%88%8D--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%B0%E1%88%88%E1%88%9E%E1%8A%95-%E1%8A%A0%E1%89%A1%E1%89%A0%E1%8A%A8%E1%88%AD--New-Ethiopian-Orthodox-Mezmur-2026-mr2xaifq",
+      "amharic_title": "ሰላም ይሻላል",
+      "transliteration_title": "Selam Yishalal",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B3%E1%88%88%E1%88%9D%E1%8A%95-%E1%8B%A8%E1%88%9A%E1%8B%AB%E1%88%B5%E1%8D%88%E1%88%8D%E1%8C%88%E1%8A%9D%E1%8A%95-%E1%89%B3%E1%8B%8D%E1%89%83%E1%88%88%E1%88%85--%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%A9%E1%89%B5-%E1%8B%B0%E1%88%98%E1%88%8B%E1%88%BD-muw3nhzb",
+      "amharic_title": "ሳለምን የሚያስፈልገኝን ታውቃለህ",
+      "transliteration_title": "Salemin Yemiyasifeligegnin Tawikaleh",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B5%E1%88%9D%E1%88%BD%E1%8A%95-%E1%88%B5%E1%8C%A0%E1%88%AB%E1%8B%8D-%E1%89%A0%E1%8A%A0%E1%8B%AD%E1%8A%96%E1%89%BC-%E1%8A%A5%E1%8D%88%E1%88%8D%E1%8C%8D%E1%88%BB%E1%88%88%E1%88%81-%E1%8A%90%E1%8A%AA%E1%88%AD-%E1%8A%90%E1%8C%88%E1%88%A9-%E1%8C%88%E1%89%A5%E1%88%AD%E1%8A%A4%E1%88%8D-%E1%89%A0%E1%88%B0%E1%88%9B%E1%8B%AD-%E1%89%A0%E1%88%98%E1%8A%91-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8D%85%E1%8C%8C-%E1%8A%A0%E1%88%B5%E1%89%B0%E1%88%AD%E1%8B%90%E1%8B%A8-mezmur-cover-by-Tsige",
+      "amharic_title": "ስምሽን ስጠራው",
+      "transliteration_title": "Simishin Siteraw",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B5%E1%88%9D%E1%88%BD%E1%8A%95-%E1%88%B5%E1%8C%A0%E1%88%AB%E1%8B%8D-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8B%AE%E1%88%B4%E1%8D%8D-%E1%8C%8D%E1%88%AD%E1%88%9B-21media27",
+      "amharic_title": "ስምሽን ስጠራው",
+      "transliteration_title": "Semeshn Seteraw",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8A%90%E1%8A%90%E1%8B%8C-%E1%8A%A5%E1%8A%93-%E1%89%A0%E1%8B%90%E1%89%A2%E1%8B%AD-%E1%8B%88%E1%89%85%E1%89%B5-%E1%8B%A8%E1%88%9A%E1%8B%B0%E1%88%98%E1%8C%A1-%E1%8B%A8%E1%89%A0%E1%8C%88%E1%8A%93-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AB%E1%89%B5-%E1%88%B5%E1%89%A5%E1%88%B5%E1%89%A5-Gedil-Studio",
+      "amharic_title": "በነነዌ እና በዐቢይ ወቅት የሚደመጡ የበገና መዝሙራት ስብስብ",
+      "transliteration_title": "Gedil_Studio",
+      "category": "Praise Worship",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "gena",
+        "nineveh",
+        "general-fasting",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8A%A0%E1%8B%AD%E1%8A%96%E1%89%BC-%E1%8A%A5%E1%8D%88%E1%88%8D%E1%8C%8D%E1%88%BB%E1%88%88%E1%88%81--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%88%E1%8A%95%E1%8B%B0%E1%88%B0%E1%8A%95-%E1%89%A0%E1%88%8B%E1%8B%AD-moz7bhff",
+      "amharic_title": "በአይኖቼ እፈልግሻለሁ",
+      "transliteration_title": "Beayinoche Efeligishalehu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8B%98%E1%88%98%E1%8A%93%E1%89%B5-%E1%8B%A8%E1%88%B8%E1%88%98%E1%8C%88%E1%88%88-%E1%88%8D%E1%8B%A9-%E1%8B%A8%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8C%8A%E1%8B%9C-%E1%89%A0%E1%88%9A%E1%88%8A%E1%8A%92%E1%8B%A8%E1%88%9D-%E1%8A%A0%E1%8B%B3%E1%88%AB%E1%88%BD-%E1%88%AD%E1%8B%95%E1%88%B0-%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8C%A2%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%88%B3%E1%88%85%E1%88%8C",
+      "amharic_title": "በዘመናት የሸመገለ",
+      "transliteration_title": "Bezemenat Yeshemegele",
+      "category": "Kidus Estifanos Saint Stephen",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "martyrs",
+        "general-saints"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A1%E1%88%84-%E1%89%A0%E1%88%89Buhe-Belu%E1%8A%A5%E1%8A%95%E1%8A%B3%E1%8A%95-%E1%88%88%E1%8B%B0%E1%89%A5%E1%88%A8-%E1%89%B3%E1%89%A6%E1%88%AD-%E1%89%A0%E1%88%B0%E1%88%8B%E1%88%9D-%E1%8A%A0%E1%8B%B0%E1%88%A8%E1%88%B3%E1%89%BD%E1%88%81%E1%89%A4%E1%89%B0%E1%88%90%E1%8C%8C-%E1%88%9A%E1%8B%B2%E1%8B%AB-2026mezmurBetehage_Media-msttzlec",
+      "amharic_title": "ቡሄ በሉ",
+      "transliteration_title": "Buhe Belu",
+      "category": "Praise Worship",
+      "primary_occasion": "Debre Tabor",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "debre-tabor",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%B3%E1%88%98%E1%88%98-%E1%88%85%E1%88%98%E1%88%9D%E1%88%9C%E1%8A%95-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%88%E1%8B%8D-%E1%8A%A0%E1%88%88%E1%88%99-TAMEME-HEMEMEGN-washintmedia",
+      "amharic_title": "ታመመ ህመምሜን",
+      "transliteration_title": "TAMEME HEMEMEGN",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%90%E1%8D%8D%E1%88%B4-%E1%8B%A8%E1%8B%88%E1%8B%B0%E1%8B%B0%E1%89%BD%E1%8B%8D%E1%8A%95-%E1%8A%A0%E1%8C%88%E1%8A%98%E1%88%81-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%89%A5%E1%88%B5%E1%88%AB%E1%89%B5-%E1%8C%A8%E1%89%A5%E1%88%B2-Nefese-Yewededechewen-Agegnehu-Deacon-Bisrat-Chebsi",
+      "amharic_title": "ነፍሴ የወደደችውን አገኘሁ",
+      "transliteration_title": "Nefese Yewededechewen Agegnehu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%95%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8B%98-%E1%88%AB%E1%88%85%E1%8B%8B-%E1%89%B0%E1%8A%B8%E1%88%B5%E1%89%B0-%E1%8B%98-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%88%88%E1%88%9B",
+      "amharic_title": "ንማርያም ዘ/ራህዋ ተኸስተ",
+      "transliteration_title": "Nimariyam Ze/rahiwa Tehesite",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%9B%E1%8A%93%E1%8B%8A%E1%89%B5-%E1%8C%BD%E1%8B%AE%E1%8A%95-%E1%8B%B2-%E1%8A%95-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%8D%E1%8A%AB%E1%89%B8%E1%8B%8D-%E1%8B%B3%E1%8A%98%E1%8B%8D-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD",
+      "amharic_title": "አማናዊት ጽዮን",
+      "transliteration_title": "Amanawit Tsiyon",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%9B%E1%8A%95-%E1%89%A0%E1%8A%A0%E1%88%9B%E1%8A%95-%E1%88%98%E1%88%B5%E1%89%80%E1%88%8D-%E1%8A%A0%E1%8B%B0%E1%89%A3%E1%89%A3%E1%8B%AD-%E1%8B%A8%E1%8C%83%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8C%A2%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%93%E1%89%B5-%E1%8A%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8C%8B%E1%88%AD-%E1%8A%A5%E1%8A%95%E1%8B%B0%E1%8B%98%E1%88%98%E1%88%A9%E1%89%B5-2018-%E1%8B%93-%E1%88%9D",
+      "amharic_title": "አማን በአማን",
+      "transliteration_title": "Aman Beaman",
+      "category": "Jesus Christ",
+      "primary_occasion": "Gena",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "martyrs",
+        "general-saints",
+        "wereb",
+        "gena",
+        "christ-general",
+        "meskel"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%9B%E1%8A%95-%E1%89%A0%E1%8A%A0%E1%88%9B%E1%8A%95-2018-%E1%8B%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%89%A0%E1%8C%83%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8C%A2%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%8B%A8%E1%89%80%E1%88%A8%E1%89%A0",
+      "amharic_title": "አማን በአማን",
+      "transliteration_title": "Aman Beaman",
+      "category": "Jesus Christ",
+      "primary_occasion": "Gena",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "martyrs",
+        "general-saints",
+        "wereb",
+        "gena",
+        "christ-general"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8A%AD%E1%88%8A%E1%88%88-%E1%8D%85%E1%8C%8C-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-aklile-tsegie-Mareyame-Zemari-yilma-Hailu",
+      "amharic_title": "አክሊለ ፅጌ ማርያም",
+      "transliteration_title": "Akilile Tsige Mariyam",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%88%E1%89%85%E1%8B%B5%E1%88%B5%E1%89%B5-%E1%88%A5%E1%88%8B%E1%88%B4-%E1%8D%8D%E1%8C%A5%E1%88%A8%E1%89%B3%E1%89%B5-%E1%8B%98%E1%88%9D%E1%88%A9-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-mahtot",
+      "amharic_title": "ለቅድስት ሥላሴ ፍጥረታት ዘምሩ",
+      "transliteration_title": "Lekidisit Silase Fitiretat Zemiru",
+      "category": "Holy Trinity",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "church-worship"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%B5%E1%88%9B%E1%8A%95-%E1%8A%A5%E1%8C%8D%E1%8B%9A%E1%8A%A0%E1%89%A5%E1%88%94%E1%88%AD-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A0%E1%8A%95%E1%8C%8D%E1%8B%B3%E1%8B%88%E1%88%AD%E1%89%85-%E1%89%A0%E1%89%80%E1%88%88-Kesis-Zemari-Engdawork-Bekele-dejtenahu",
+      "amharic_title": "ስማን እግዚአብሔር",
+      "transliteration_title": "Siman Egiziabiher",
+      "category": "Jesus Christ",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%B0%E1%8B%8D%E1%88%8D%E1%8A%9D-%E1%89%A0%E1%8B%B0%E1%88%8C%E1%8A%95-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%B2%E1%88%B5%E1%89%B0%E1%88%AD-%E1%88%95%E1%8B%AD%E1%8B%88%E1%89%B5-%E1%89%B0%E1%8D%88%E1%88%AA-New-Orthodox-Mezmure-Sister-Hiwot-teferi-Tewlne-Bedalne",
+      "amharic_title": "ተውልኝ በደሌን",
+      "transliteration_title": "Orthodox Mezmure Sister Hiwot teferi Tewlne Bedalne",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A0%E1%88%8D%E1%89%BD%E1%88%8D%E1%88%9D-%E1%8B%9D%E1%88%9D-%E1%88%9B%E1%88%88%E1%89%B5-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8A%93%E1%88%AD%E1%8B%B6%E1%88%B5-%E1%8A%AB%E1%88%B3%E1%88%81%E1%8A%95-mahtot",
+      "amharic_title": "አልችልም ዝም ማለት",
+      "transliteration_title": "Alichilim Zim Malet",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A5%E1%88%A9%E1%88%85%E1%88%A9%E1%88%85-%E1%88%98%E1%88%8D%E1%8B%93%E1%8A%AD-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%88%9D%E1%89%B5%E1%8A%AD-%E1%88%B2%E1%88%B3%E1%8B%AD-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%8B%AE%E1%88%90%E1%8A%95%E1%88%B5-%E1%8A%A0%E1%8B%B5%E1%88%9B%E1%88%B1",
+      "amharic_title": "እሩህሩህ መልዓክ",
+      "transliteration_title": "Eruhiruh Meliak",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A5%E1%8A%93%E1%89%B4%E1%8B%A8%E1%8A%94%E1%8B%A8%E1%8A%94-Neworthodoxmezmur-Mariyamyene-yene-mahitot-%E1%88%98%E1%88%B8%E1%88%B8%E1%8C%8A%E1%8B%AB%E1%8B%AC%E1%8A%A5%E1%8A%93%E1%89%B5%E1%8B%93%E1%88%88%E1%88%9C-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D%E1%8B%A8%E1%8A%94-mahitot-new",
+      "amharic_title": "",
+      "transliteration_title": "‘Mariyamyene yene",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A6-%E1%8A%A0%E1%88%9B%E1%88%8B%E1%8C%82%E1%89%B1-O-Amalajetu-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%B2%E1%88%B5%E1%89%B0%E1%88%AD-%E1%88%8D%E1%8B%B5%E1%8B%AB-%E1%89%B3%E1%8B%B0%E1%88%A0-Official-Video-mahtot",
+      "amharic_title": "ኦ አማላጂቱ",
+      "transliteration_title": "O Amalajetu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%A8%E1%89%B5%E1%8A%95%E1%88%B3%E1%8A%A4%E1%8B%AB%E1%89%BD%E1%8A%95-%E1%89%A0%E1%8A%B2%E1%88%AD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8A%A2%E1%8A%95%E1%8C%82%E1%8A%90%E1%88%AD-%E1%8D%8B%E1%88%B2%E1%8A%AB-%E1%8D%8D%E1%88%A5%E1%88%90-Official-Video-Zemarit-Fasika-fisseha",
+      "amharic_title": "የትንሳኤያችን በኲር",
+      "transliteration_title": "Yetinisaeyachin Bekwir",
+      "category": "Jesus Christ",
+      "primary_occasion": "Tinsae",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "tinsae"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%89%A0%E1%8C%88%E1%8A%93-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%98%E1%8D%85%E1%8A%93%E1%8A%9B%E1%8B%AC-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8B%A8%E1%89%B5%E1%88%9D%E1%8B%88%E1%88%AD%E1%89%85-%E1%88%99%E1%88%8B%E1%89%B5-mahtot",
+      "amharic_title": "መፅናኛዬ",
+      "transliteration_title": "Metsinagnaye",
+      "category": "Praise Worship",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "gena",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%83-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%9E%E1%89%B0%E1%88%83%E1%88%8D-%E1%88%B5%E1%88%88%E1%8A%94-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%88-%E1%8B%B0%E1%88%A8%E1%8C%80-mahtot",
+      "amharic_title": "ሞተሃል ስለኔ",
+      "transliteration_title": "Motehal Silene",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%83-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%AB%E1%8A%96%E1%88%A8%E1%8A%9D-%E1%8A%A5%E1%88%B5%E1%8A%AB%E1%88%81%E1%8A%95-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8A%93%E1%89%B5%E1%8A%93%E1%8A%A4%E1%88%8D-%E1%88%B3%E1%88%99%E1%8A%A4%E1%88%8D-samuelkahen",
+      "amharic_title": "ያኖረኝ እስካሁን",
+      "transliteration_title": "Yanoregn Esikahun",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%90-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%80%E1%8A%93-%E1%8A%A0%E1%8B%B0%E1%88%A8%E1%8A%A8%E1%8A%9D-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%88-%E1%8B%B0%E1%88%A8%E1%8C%84-New-Mezmur-Kena-Arekegn-Deacon-Endale-Dereje",
+      "amharic_title": "አዲስ የንስሐ ዝማሬ ቀና አደረከኝ ዲያቆን እንዳለ ደረጄ",
+      "transliteration_title": "Kena Arekegn Deacon Endale Dereje",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B5%E1%88%AD%E1%8C%88%E1%8A%85%E1%88%8D%E1%8A%9B%E1%88%8D%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8D%80%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8-%E1%8B%A8%E1%88%8D%E1%8C%83%E1%89%BD%E1%8A%95-%E1%8A%AD%E1%88%AD%E1%88%B5%E1%89%B5%E1%8A%93-%E1%8A%A5%E1%8A%93%E1%89%B5-Singer-Betselot-Asmare",
+      "amharic_title": "‛አድርገኅልኛልና፤ሚካኤል’",
+      "transliteration_title": "Singer Betselot Asmare",
+      "category": "Kidus Michael",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-michael",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A2%E1%8B%A8%E1%88%B1%E1%88%B5-%E1%89%B0%E1%8B%88%E1%88%8A%E1%8B%B1%E1%88%8D%E1%8A%93-%E1%8A%93%E1%8B%AD-%E1%88%8D%E1%8B%B0%E1%89%B5-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A5%E1%88%A9%E1%8A%AD%E1%89%B3%E1%8B%8A%E1%89%B5-%E1%8C%88%E1%89%A5%E1%88%A8%E1%88%98%E1%8B%B5%E1%88%85%E1%8A%95-Eyesus-Tewelidulna-by-Zemarit-Biruktawit-New-Mezmur",
+      "amharic_title": "ኢየሱስ ተወሊዱልና ናይ ልደት መዝሙር",
+      "transliteration_title": "Iyesus Tewelidulina Nay Lidet Mezimur",
+      "category": "Jesus Christ",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "gena"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%89%B4-%E1%88%99%E1%88%BD%E1%88%AB%E1%8B%AC-%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8A%90%E1%8B%8D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%88",
+      "amharic_title": "እቴ ሙሽራዬ ድንቅ ነው",
+      "transliteration_title": "Ete Mushiraye Dinik New",
+      "category": "Praise Worship",
+      "primary_occasion": "Wedding",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "wedding",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%8A%9B-%E1%8C%8D%E1%8A%95---EGNA-GINE-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8B%9D%E1%88%AB-%E1%8A%83%E1%88%9A%E1%8A%AB%E1%8A%A4%E1%88%8D-EziraHailemichel-ETHIOPIAN-ORTHODOX-MEZMURE-OLD-mpgcbey9",
+      "amharic_title": "እኛ ግን",
+      "transliteration_title": "EGNA GINE / ETHIOPIAN ORTHODOX MEZMURE OLD",
+      "category": "Kidus Michael",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-michael",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%95%E1%8D%80%E1%88%B3%E1%89%A4%E1%89%95-TV-DES-YBELKI-MARIAMEY-Orthodox-Tewahdo-Mezmur-2019",
+      "amharic_title": "ዕፀሳቤቕ",
+      "transliteration_title": "TV: DES YBELKI MARIAMEY : Orthodox Tewahdo Mezmur",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%95%E1%8D%80%E1%88%B3%E1%89%A4%E1%89%95-TV-MHRETKA-%E1%88%9D%E1%88%95%E1%88%A8%E1%89%B5%E1%8A%AB-Orthodox-Tewahdo-Mezmur",
+      "amharic_title": "ዕፀሳቤቕ",
+      "transliteration_title": "TV: MHRETKA",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8C%88-%E1%8B%AE%E1%88%90%E1%8A%95%E1%88%B5-%E1%8C%88-%E1%8C%BB%E1%8B%B5%E1%89%95-%E1%89%A0%E1%88%98%E1%89%90%E1%88%88",
+      "amharic_title": "",
+      "transliteration_title": "Zemari Ge/yohanis Ge/tsadik Bemekele",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%88%9B%E1%8B%AD%E1%88%9E%E1%89%B0%E1%8B%8D-%E1%88%9E%E1%89%B0-%E1%89%A0%E1%8A%A9%E1%88%A8-%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%8A%AA%E1%8A%90-%E1%8C%A5%E1%89%A0%E1%89%A5-%E1%8B%A8%E1%8C%83%E1%8A%95-%E1%8B%AB%E1%88%AC%E1%8B%B5-%E1%8A%85%E1%89%A5%E1%88%A8-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%8A%A5%E1%8A%95%E1%8B%B0%E1%8B%98%E1%88%98%E1%88%A9%E1%89%B5",
+      "amharic_title": "የማይሞተው ሞተ",
+      "transliteration_title": "Yemayimotew Mote",
+      "category": "Jesus Christ",
+      "primary_occasion": "Siklet",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "good-friday",
+        "passion",
+        "holy-week"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%88%9B%E1%8B%AD%E1%8C%A0%E1%8D%8B-%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%8D%E1%8A%AB%E1%89%B8%E1%8B%8D-%E1%8B%B3%E1%8A%98%E1%8B%8D-Yelbe-Desta-Zemari-Kesis-Endalkachew-Dagnew",
+      "amharic_title": "የማይጠፋ ፋኖስ",
+      "transliteration_title": "Yelbe Desta",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%88%B0%E1%8B%8D-%E1%88%8D%E1%8C%85-%E1%89%A0%E1%88%80%E1%8B%AD%E1%88%8D%E1%88%85-%E1%8D%88%E1%8C%BD%E1%88%9E-%E1%8A%A0%E1%89%B5%E1%88%98%E1%8A%AB-Yesew-lij-behaileh-fetsemo-atemeka-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%9B%E1%88%AD%E1%89%B3-%E1%8A%83%E1%8B%AD%E1%88%88%E1%88%A5%E1%88%8B%E1%88%B4",
+      "amharic_title": "የሰው ልጅ በሀይልህ ፈጽሞ አትመካ",
+      "transliteration_title": "Yesew lij behaileh fetsemo atemeka",
+      "category": "Holy Trinity",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "church-worship"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%89%A0%E1%8C%88%E1%8A%93-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%8A%A0%E1%89%A1%E1%8A%90-%E1%8B%98%E1%89%A0%E1%88%B0%E1%88%9B%E1%8B%AB%E1%89%B5-%E1%88%98%E1%88%9D%E1%88%85%E1%88%AD-%E1%8A%A0%E1%89%A4%E1%88%8D-%E1%89%B0%E1%88%B5%E1%8D%8B%E1%8B%AC",
+      "amharic_title": "የበገና መዝሙር አቡነ ዘበሰማያት መምህር አቤል ተስፋዬ",
+      "transliteration_title": "Yebegena Mezimur Abune Zebesemayat Memihir Abel Tesifaye",
+      "category": "Praise Worship",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "gena",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-2018-%E1%89%A0%E1%88%B2%E1%8B%AB%E1%89%B5-%E1%8A%A5%E1%8B%8D%E1%8A%90%E1%89%B0%E1%8A%9B-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%88%E1%88%9D%E1%88%88%E1%88%9D-%E1%8A%A8%E1%89%A0%E1%8B%B0",
+      "amharic_title": "የአእላፋት ዝማሬ በሲያት እውነተኛ ሰላም",
+      "transliteration_title": "Yeaelafat Zimare Besiyat Ewinetegna Selam",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%AB%E1%88%8B%E1%8A%95%E1%89%B0-%E1%8B%95%E1%8A%95%E1%89%81%E1%88%A5%E1%88%8B%E1%88%B4-%E1%8C%8E%E1%88%B3-YALANTE-Enkuselassie-Gossa-New-Ethiopian-Orthodox-Christian-Gospel-Song",
+      "amharic_title": "ያላንተ",
+      "transliteration_title": "YALANTE",
+      "category": "Holy Trinity",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "church-worship",
+        "christ-general"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%AB%E1%8B%B0%E1%88%A8%E1%8C%88%E1%88%8D%E1%8A%9D%E1%8A%95-%E1%89%B0%E1%88%98%E1%88%8D%E1%8A%A8%E1%89%B1-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%90%E1%8B%8B%E1%8B%9D-%E1%89%B0%E1%8C%88%E1%8A%9D",
+      "amharic_title": "ያደረገልኝን ተመልከቱ",
+      "transliteration_title": "Yaderegelignin Temeliketu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%AB-%E1%88%9E%E1%89%B5-%E1%8C%8D%E1%8A%95-%E1%88%98%E1%88%A8%E1%88%A8-%E1%88%98%E1%8B%B2%E1%8A%93-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%88%E1%88%B0%E1%8A%9B-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%A9%E1%89%B5-%E1%8B%B0%E1%88%98%E1%88%8B%E1%88%BD-Medina-and-Zelesegna-Mezmur-by-Ruth-Demelash",
+      "amharic_title": "ያ' ሞት ግን መረረ መዲና እና ዘለሰኛ ዝማሬ ዘማሪት ሩት ደመላሽ",
+      "transliteration_title": "Medina and Zelesegna Mezmur by Ruth Demelash",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%B2-%E1%8A%95-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%89%A0%E1%8A%83%E1%8B%AD%E1%88%89-%E1%89%B0%E1%89%A0%E1%8C%80-%E1%89%A0%E1%8B%B0%E1%88%98%E1%8A%93-%E1%89%B0%E1%8B%88%E1%88%B5%E1%8B%B0%E1%8A%95-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-Diacon-Zemari-Behailu-Tebeje-bedemenatewesden",
+      "amharic_title": "ዲ]ን ዘማሪ በኃይሉ ተበጀ በደመና ተወስደን",
+      "transliteration_title": "] Diacon Zemari Behailu Tebeje bedemenatewesden",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%B5%E1%88%8D-%E1%8A%A0%E1%88%88-%E1%89%A0%E1%88%B5%E1%88%9D%E1%88%85-%E1%8D%A3-%E1%8B%A8%E1%8A%A5%E1%8C%8D%E1%8B%9A%E1%8A%A0%E1%89%A5%E1%88%94%E1%88%AD-%E1%88%98%E1%88%8D%E1%8A%A0%E1%8A%AD--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8C%88%E1%89%A5%E1%88%A8%E1%8B%AE%E1%88%90%E1%8A%95%E1%88%B5-l-live-performance-zemare_yared_records-ms6y21dl",
+      "amharic_title": "ድል አለ በስምህ ፣ የእግዚአብሔር መልአክ",
+      "transliteration_title": "Dil Ale Besimih , Yeegiziabiher Meliak",
+      "category": "Angels",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "holy-angels"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8C%A0%E1%88%8B%E1%89%B5-%E1%89%A2%E1%8B%AB%E1%88%B5%E1%8D%88%E1%88%AB%E1%88%AB-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8C%A2%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%88%B3%E1%88%85%E1%88%8C-%E1%89%84%E1%88%B4",
+      "amharic_title": "ጠላት ቢያስፈራራ",
+      "transliteration_title": "Telat Biyasiferara",
+      "category": "Kidus Estifanos Saint Stephen",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "martyrs",
+        "general-saints"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8C%BD%E1%8B%B5%E1%89%85%E1%8A%95-%E1%89%B5%E1%88%88%E1%88%9B%E1%88%98%E1%8B%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8C%A2%E1%8D%8B%E1%8A%96%E1%88%B5-%E1%88%B3%E1%88%85%E1%88%8C-%E1%89%84%E1%88%B4",
+      "amharic_title": "ጽድቅን ትለማመድ",
+      "transliteration_title": "Tsidikin Tilemamed",
+      "category": "Kidus Estifanos Saint Stephen",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "martyrs",
+        "general-saints"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8D%88%E1%89%B0%E1%8A%93%E1%8B%8D-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%99%E1%88%89%E1%89%80%E1%8A%95-%E1%8A%A8%E1%89%A0%E1%8B%B0",
+      "amharic_title": "ፈተናው",
+      "transliteration_title": "Fetenaw",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8D%8D%E1%89%85%E1%88%AD%E1%88%85-%E1%88%9B%E1%88%A8%E1%8A%A8%E1%8A%9D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%89%A5%E1%88%B5%E1%88%AB%E1%89%B5-%E1%8C%A8%E1%89%A5%E1%88%B2-mrvi6xes",
+      "amharic_title": "ፍቅርህ ማረከኝ",
+      "transliteration_title": "Fikirih Marekegn",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/-%E1%8A%A0%E1%8A%AD%E1%88%9A%E1%88%8D%E1%8A%9D-%E1%8B%A8%E1%88%8D%E1%89%A4%E1%8A%95-%E1%88%90%E1%8B%98%E1%8A%95--%E1%88%98%E1%88%8D%E1%8A%A0%E1%8A%A8-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8A%A5%E1%8A%95%E1%8C%8D%E1%8B%B3%E1%8B%88%E1%88%AD%E1%89%85--dejtenahu-mpkmx5zz",
+      "amharic_title": "አክሚልኝ የልቤን ሐዘን",
+      "transliteration_title": "Akimilign Yeliben Hazen",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC--%E1%8C%88%E1%89%A5%E1%88%AD%E1%8A%A4%E1%88%8D-%E1%8A%90%E1%8B%8D--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8A%A0%E1%89%A4%E1%88%8D-%E1%88%98%E1%8A%AD%E1%89%A5%E1%89%A5--mahtot-ms199wyb",
+      "amharic_title": "ገብርኤል ነው",
+      "transliteration_title": "Gebiriel New",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/EOTC-mezmur-%E1%89%B0%E1%88%AB%E1%88%AE%E1%89%BD%E1%8A%95-%E1%88%81%E1%88%89-Irra-keessa-miti-%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8B%A8%E1%8A%A0%E1%8B%89%E1%8B%B0-%E1%88%9D%E1%88%85%E1%88%A8%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%A0%E1%88%81%E1%88%88%E1%89%B1%E1%88%9D-%E1%89%8B%E1%8A%95%E1%89%8B-firanolmosisa1240",
+      "amharic_title": "ተራሮችን ሁሉ",
+      "transliteration_title": "Irra keessa miti",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "oromo",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/JIREENYADHA-M-K-O-T-Itoophiyaatti-Faarfannaa-Afaan-Oromoo-Hangafa-Far-D-N-Firaanol-Moosisaatiin",
+      "amharic_title": "",
+      "transliteration_title": "JIREENYADHA. M/K/O/T/ Itoophiyaatti Faarfannaa Afaan Oromoo Hangafa Far.D/N Firaanol Moosisaatiin",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/NEW-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A5%E1%8A%95%E1%8B%B0-%E1%88%99%E1%88%B8%E1%88%AB%E1%8B%8B-Ende-Musherawa-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-mahtot",
+      "amharic_title": "እንደ ሙሸራዋ",
+      "transliteration_title": "Ende Musherawa",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "church-worship",
+        "general-worship"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/O-Virgin-Mary-%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B4-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8A%A5%E1%88%88%E1%88%9D%E1%8A%95%E1%88%BB%E1%88%88%E1%88%81",
+      "amharic_title": "እመቤቴ ማርያም እለምንሻለሁ",
+      "transliteration_title": "O' Virgin Mary",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/The-Cross-Has-Shined-%E1%88%98%E1%88%B5%E1%89%80%E1%88%8D-%E1%8A%A0%E1%89%A5%E1%88%AD%E1%88%83",
+      "amharic_title": "መስቀል አብርሃ",
+      "transliteration_title": "The Cross Has Shined",
+      "category": "Cross",
+      "primary_occasion": "Meskel",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "meskel",
+        "english"
+      ],
+      "confidence": 0.92,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/You-triumph-the-works-of-evil-%E1%8A%83%E1%8B%AB%E1%88%8D-%E1%8A%90%E1%88%85-%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%89%A0%E1%88%8A%E1%89%80-%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%89%B4%E1%8B%8E%E1%8B%B5%E1%88%AE%E1%88%B5-%E1%8B%AE%E1%88%B4%E1%8D%8D-Recreated-Ahadu-Studios",
+      "amharic_title": "ኃያል ነህ አንተ",
+      "transliteration_title": "You triumph the works of evil",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%88%E1%89%A0%E1%8C%8E-%E1%8A%90%E1%8B%8D--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%B0%E1%88%88%E1%88%9E%E1%8A%95-%E1%8A%A0%E1%89%A1%E1%89%A0%E1%8A%A8%E1%88%AD--Orthodox-Mezmur--Zemari-Solomon-Abubeker-mpm2vgzt",
+      "amharic_title": "ለበጎ ነው",
+      "transliteration_title": "Lebego New",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%98%E1%88%B5%E1%88%9B%E1%89%B5-%E1%8A%A0%E1%88%8B%E1%89%86%E1%88%9D%E1%8A%A9%E1%88%9D-%E1%88%8D%E1%89%A5-%E1%8B%A8%E1%88%9A%E1%8A%90%E1%8A%AB-%E1%8A%A0%E1%88%B3%E1%8B%9B%E1%8A%9D-%E1%8B%98%E1%88%88%E1%88%B0%E1%8A%9B-Ethiopian-orthodox-zelsgn-begna-mezmure-%E1%8B%98%E1%88%88%E1%88%B0%E1%8A%9B-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD",
+      "amharic_title": "መስማት አላቆምኩም ልብ የሚነካ አሳዛኝ ዘለሰኛ",
+      "transliteration_title": "Ethiopian orthodox zelsgn begna mezmure",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%98-%E1%88%AD-%E1%8B%98%E1%88%8B%E1%88%88%E1%88%9D-%E1%8A%A0%E1%89%A5%E1%8B%9D%E1%89%B6-%E1%8B%A8%E1%88%9A%E1%8B%88%E1%8B%B0%E1%8B%8D-%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%90-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%8B%B2-%E1%8A%95-%E1%88%8D%E1%8B%91%E1%88%8D%E1%88%B0%E1%8C%88%E1%8B%B5-%E1%8C%8C%E1%89%B3%E1%89%B8%E1%8B%8D-NisehaMezmur-%E1%8A%A6%E1%88%AD%E1%89%B6%E1%8B%B6%E1%8A%AD%E1%88%B5-OrthodoxMezmur",
+      "amharic_title": "መ/ር ዘላለም አብዝቶ የሚወደው ድንቅ የንስሐ መዝሙር",
+      "transliteration_title": "Me/r Zelalem Abizito Yemiwedew Dinik Yenisiha Mezimur",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%9D%E1%89%B4%E1%8A%95-%E1%8A%A0%E1%8B%AD%E1%88%81%E1%89%B5-%E1%8A%A6%E1%88%AD%E1%89%B6%E1%8B%B6%E1%8A%AD%E1%88%B5-%E1%89%B0%E1%8B%8B%E1%88%85%E1%8B%B6-%E1%8B%A8%E1%89%A5%E1%8C%88%E1%8A%93-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD",
+      "amharic_title": "",
+      "transliteration_title": "#miten #ayihut #oritodokis#tewahido#yebigena #mezimur",
+      "category": "Praise Worship",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "gena",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%9D%E1%8A%95-%E1%89%A5%E1%8B%AC-Zemari-Deacon-Frezer-Desalegn-Live-mttjfasm",
+      "amharic_title": "ምን ብዬ",
+      "transliteration_title": "Min Biye",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B5%E1%8A%95%E1%88%B0%E1%88%9B-%E1%8B%B0%E1%8A%90%E1%8C%88%E1%8C%A5%E1%8A%95-%E1%89%A5%E1%8D%81%E1%8B%95-%E1%8A%A0%E1%89%A1%E1%8A%90-%E1%8A%93%E1%89%B5%E1%8A%93%E1%8A%A4%E1%88%8D-%E1%8A%A0%E1%88%8B%E1%88%85-%E1%8B%8B%E1%88%85%E1%8B%B5-%E1%8B%A8%E1%8C%A8%E1%88%A8%E1%89%83%E1%8B%8D-%E1%8C%B3%E1%8C%B3%E1%88%B5-%E1%8B%AB%E1%88%8B%E1%89%B5%E1%8A%95-MenkerMezmur21",
+      "amharic_title": "አላህ ዋህድ",
+      "transliteration_title": "Alah Wahid",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%B5%E1%8B%B5%E1%89%A4%E1%8A%95-%E1%8A%A0%E1%88%AD%E1%89%80%E1%88%BD--%E1%8A%A0%E1%89%A3-%E1%8A%A0%E1%89%A3-%E1%89%B0%E1%8A%AD%E1%88%88%E1%88%83%E1%8B%AD%E1%88%9B%E1%8A%96%E1%89%B5--%E1%89%80%E1%88%B2%E1%88%B5-%E1%8A%A5%E1%8A%95%E1%8C%8D%E1%8B%B3%E1%8B%88%E1%88%AD%E1%89%85-%E1%89%A0%E1%89%80%E1%88%88--%E1%8C%8E%E1%88%8D%E1%8C%8E%E1%89%B3-%E1%88%9A%E1%8B%B2%E1%8B%AB-golgota27media-mpkmna6c",
+      "amharic_title": "ስድቤን አርቀሽ",
+      "transliteration_title": "Sidiben Arikesh",
+      "category": "Abune Tekle Haymanot",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "meskel",
+        "good-friday",
+        "passion",
+        "holy-week"
+      ],
+      "confidence": 0.94,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%88%9B%E1%8B%AD%E1%8A%90%E1%8C%88%E1%88%AD-%E1%88%B5%E1%8C%A6%E1%89%B3-%E1%89%A0%E1%88%9B%E1%8B%AD%E1%8A%A8%E1%8D%88%E1%88%8D-%E1%8B%8D%E1%88%88%E1%89%B3%E1%8B%8D%E1%8A%A6%E1%88%AD%E1%89%B6%E1%8B%B6%E1%8A%AD%E1%88%B5_%E1%89%B0%E1%8B%8B%E1%88%85%E1%8B%B6_%E1%8D%80%E1%8A%95%E1%89%B3_%E1%88%88%E1%8B%98%E1%88%88%E1%8B%93%E1%88%88%E1%88%9D_%E1%89%B5%E1%8A%91%E1%88%AD-mqrhwoii",
+      "amharic_title": "በማይነገር ስጦታ በማይከፈል ውለታው",
+      "transliteration_title": "Bemayineger Sitota Bemayikefel Wiletaw",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%89%83%E1%88%8D%E1%8A%93-%E1%89%A0%E1%8A%91%E1%88%AE-%E1%89%A0%E1%8B%9A%E1%8C%8A%E1%89%B2-%E1%8A%A0%E1%89%A1%E1%8A%90-%E1%8C%88%E1%89%A5%E1%88%A8%E1%88%98%E1%8A%95%E1%8D%88%E1%88%B5%E1%89%85%E1%8B%B1%E1%88%B5-%E1%89%A4%E1%89%B0%E1%8A%AD%E1%88%AD%E1%88%B5%E1%89%B2%E1%8B%AB%E1%8A%95-%E1%8D%86%E1%88%98-%E1%8D%8D%E1%88%8D%E1%88%B0%E1%89%B3-2018-%E1%8B%93%E1%88%9D-msqy4alc",
+      "amharic_title": "በቃልና በኑሮ",
+      "transliteration_title": "Bekalina Benuro",
+      "category": "Virgin Mary",
+      "primary_occasion": "Pentecost",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "pentecost",
+        "general-saints",
+        "filseta"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8A%A5%E1%8A%93%E1%89%B4-%E1%8A%A5%E1%89%85%E1%8D%8D-%E1%88%8D%E1%8C%85-%E1%88%86%E1%8A%9C-%E1%8C%88%E1%8A%93-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8C%B8%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8-%E1%88%8D%E1%8C%85-21media27",
+      "amharic_title": "በእናቴ እቅፍ ልጅ ሆኜ ገና",
+      "transliteration_title": "Beenate Ekif Lij Hogne Gena",
+      "category": "Prayer",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "church-worship",
+        "general-worship",
+        "gena"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8D%86%E1%88%99-%E1%88%98%E1%8B%B0%E1%88%98%E1%8C%A5-%E1%8B%AB%E1%88%88%E1%89%A0%E1%89%B5-%E1%88%8D%E1%89%A5%E1%8A%95-%E1%8B%A8%E1%88%9A%E1%8B%AB%E1%8B%B5%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-mulukenkebede",
+      "amharic_title": "በፆሙ መደመጥ ያለበት ልብን የሚያድስ ዝማሬ",
+      "transliteration_title": "Betsomu Medemet Yalebet Libin Yemiyadis Zimare",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A4%E1%89%B0%E1%8A%AD%E1%88%AD%E1%88%B5%E1%89%B2%E1%8B%AB%E1%8A%95%E1%8A%95-%E1%8A%A0%E1%8A%95%E1%89%B0%E1%8B%8D%E1%88%9D-%E1%8A%A8%E1%89%B6-%E1%88%95%E1%89%A5%E1%88%A8-%E1%8B%9D%E1%88%9B%E1%88%AC-2025-%E1%8B%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%A0%E1%88%B2%E1%8B%AB%E1%89%B5%E1%88%8D",
+      "amharic_title": "ቤተክርስቲያንን አንተውም ከቶ",
+      "transliteration_title": "Betekirisitiyanin Anitewim Keto",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "church-worship",
+        "general-worship"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A5%E1%8C%BD%E1%8A%A5%E1%8B%AD%E1%89%B5-%E1%8B%AD%E1%88%8D%E1%88%BB%E1%88%8D-%E1%8A%A5%E1%88%8D%E1%88%8D%E1%88%8D%E1%88%8D%E1%88%8D%E1%88%8D-%E1%8B%A8%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B3%E1%89%BD%E1%8A%95-%E1%8B%9D%E1%88%9B%E1%88%AC-new-orthodox-mezmur-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8B%AE%E1%88%AD%E1%8B%B2%E1%8B%AB%E1%8A%96%E1%88%B5-%E1%8B%B0%E1%88%A8%E1%8C%80",
+      "amharic_title": "ብጽእይት ይልሻል",
+      "transliteration_title": "Bitsieyit Yilishal",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%90%E1%8D%8D%E1%88%B4-%E1%8C%8C%E1%89%B3%E1%8B%8B%E1%8A%95-%E1%89%B3%E1%8A%A8%E1%89%A5%E1%88%A8%E1%8B%8B%E1%88%88%E1%89%BD-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%90%E1%8B%8B%E1%8B%9D-%E1%89%B0%E1%8C%88%E1%8A%9D-%E1%8B%A8%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B3%E1%89%BD%E1%8A%95-%E1%88%9D%E1%88%A5%E1%8C%8B%E1%8A%93-Nefse-getawan-zemari-hawaz-tegegn-Ethiopian-orthodox-song",
+      "amharic_title": "ነፍሴ ጌታዋን ታከብረዋለች ዘማሪ ሐዋዝ ተገኝ የእመቤታችን ምሥጋና",
+      "transliteration_title": "Nefse getawan zemari hawaz tegegn Ethiopian orthodox song",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%8D%E1%89%B0%E1%8B%8D%E1%8A%A8%E1%8A%9D%E1%88%9D-%E1%8A%A0%E1%88%8D%E1%88%B0%E1%88%88%E1%89%B8%E1%8A%B8%E1%8A%9D%E1%88%9D-Altewkegnem-Alselechehegnem-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%83%E1%8B%AD%E1%88%89-%E1%88%98%E1%8A%95%E1%8C%8D%E1%88%B5%E1%89%B4",
+      "amharic_title": "አልተውከኝም አልሰለቸኸኝም",
+      "transliteration_title": "Altewkegnem Alselechehegnem",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%9C%E1%8A%95--%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%93%E1%88%98%E1%89%B5-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD--%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%85%E1%8D%83%E1%8A%95-%E1%8C%88%E1%8A%90%E1%89%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%80%E1%8B%AD%E1%88%9B%E1%8A%96%E1%89%B5-%E1%88%98%E1%8C%A4%E1%8A%93%E1%8B%AC-%E1%8B%9C%E1%88%9B-%E1%8B%B3%E1%8B%8A%E1%89%B5-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD--EOTC-SONG-mttjh4ql",
+      "amharic_title": "አሜን",
+      "transliteration_title": "EOTC SONG",
+      "category": "Praise Worship",
+      "primary_occasion": "New Year / Enkutatash",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "enkutatash"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%89%B5%E1%88%9D%E1%8A%AD%E1%88%85%E1%89%B4-Zemari-Dn-Muluken-Kebede-New-Ortbodox-Mezmur-Ethiopia",
+      "amharic_title": "አንተ ትምክህቴ",
+      "transliteration_title": "Anite Timikihite",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%98%E1%8A%90%E1%89%BD-%E1%8B%B5%E1%8A%95%E1%8C%8D%E1%88%8D-%E1%8A%A0%E1%88%88%E1%89%80%E1%88%B0%E1%89%BD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8D%80%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8",
+      "amharic_title": "አዘነች ድንግል አለቀሰች",
+      "transliteration_title": "Azenech Dinigil Alekesech",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A0%E1%89%A1%E1%8A%90-%E1%8A%A0%E1%88%A8%E1%8C%8B%E1%8B%8A-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-mahtot",
+      "amharic_title": "አቡነ አረጋዊ",
+      "transliteration_title": "Abune Aregawi",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A0%E1%8C%A5%E1%88%98%E1%89%86-%E1%8B%AE%E1%88%90%E1%8A%95%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%98%E1%88%9D%E1%88%85%E1%88%AD-%E1%8A%83%E1%8B%AD%E1%88%8C-%E1%8C%8C%E1%89%B5%E1%8A%90%E1%89%B5-mahtot",
+      "amharic_title": "አጥመቆ ዮሐንስ",
+      "transliteration_title": "Atimeko Yohanis",
+      "category": "Jesus Christ",
+      "primary_occasion": "Timket",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "timkat",
+        "christ-general"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%8D%E1%89%A0%E1%89%B4-%E1%88%86%E1%8B%AD-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%88-%E1%8B%B0%E1%88%A8%E1%8C%84New-Mezmur-Webete-hoy-Deacon-Zemari-Endale-Dereje-moz6ujmy",
+      "amharic_title": "ውበቴ ሆይ ዲያቆን ዘማሪ እንዳለ ደረጄ",
+      "transliteration_title": "Webete hoy Deacon Zemari Endale Dereje",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%A8%E1%88%88%E1%88%9D-%E1%8A%A8%E1%88%98%E1%89%83%E1%89%A5%E1%88%AD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8C%B8%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8-%E1%89%A0%E1%8B%B5%E1%88%AD%E1%8B%B5%E1%88%AD-%E1%88%AA%E1%8A%A8%E1%88%AD%E1%8B%B5%E1%88%B5-%E1%89%B0%E1%8B%98%E1%8C%8B%E1%89%B6-%E1%8B%A8%E1%89%80%E1%88%A8%E1%89%A0-mahtot",
+      "amharic_title": "የለም ከመቃብር ዘማሪት በጸሎት አስማረ",
+      "transliteration_title": "Yelem Kemekabir Zemarit Betselot Asimare",
+      "category": "Prayer",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "church-worship",
+        "general-worship"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%B0%E1%89%A5%E1%89%B0%E1%88%AB-%E1%8D%8D%E1%8C%BD%E1%88%9D%E1%89%B5-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-mahtot",
+      "amharic_title": "ደብተራ ፍጽምት",
+      "transliteration_title": "Debitera Fitsimit",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%B5%E1%8A%95%E1%8C%8D%E1%88%8D-%E1%88%86%E1%8B%AD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%85%E1%8C%BB%E1%8A%95-%E1%8A%A0%E1%8B%B5%E1%8B%AB%E1%88%9D-%E1%8A%AA%E1%88%AE%E1%88%B5-mahtot",
+      "amharic_title": "ድንግል ሆይ",
+      "transliteration_title": "Dinigil Hoy",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8C%8A%E1%8B%AE%E1%88%AD%E1%8C%8A%E1%88%B5-%E1%8D%88%E1%8C%A5%E1%8A%96-%E1%8B%B0%E1%88%AB%E1%88%BD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5-%E1%8A%A8%E1%89%A0%E1%8B%B0-mahtot",
+      "amharic_title": "ጊዮርጊስ ፈጥኖ ደራሽ",
+      "transliteration_title": "Giyorigis Fetino Derash",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "st-george",
+        "martyrs"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%83-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%B5%E1%88%9B%E1%8A%9D-%E1%8A%A0%E1%88%9D%E1%88%8B%E1%8A%AC-%E1%88%9D%E1%8A%90%E1%8B%8D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8A%A5%E1%8A%95%E1%8C%8D%E1%8B%B1-%E1%8B%88%E1%8A%95%E1%8B%B5%E1%88%99-mahtot",
+      "amharic_title": "ስማኝ አምላኬ ምነው",
+      "transliteration_title": "Simagn Amilake Minew",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom",
+        "church-worship",
+        "general-worship",
+        "christ-general"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A6-%E1%8D%8D%E1%8C%A1%E1%8A%90-%E1%88%A8%E1%8B%B5%E1%8A%A4%E1%89%B5-%E1%88%88%E1%89%A4%E1%88%A9%E1%89%B3%E1%8B%8A%E1%89%B5-%E1%8B%A8%E1%8B%B0%E1%88%A8%E1%88%B0-%E1%88%B0%E1%88%9B%E1%8A%A5%E1%89%B1-%E1%89%85%E1%8B%B1%E1%88%B5-%E1%8C%8A%E1%8B%AE%E1%88%AD%E1%8C%8A%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5-%E1%88%9B%E1%88%AD%E1%8B%AC",
+      "amharic_title": "ኦ ፍጡነ ረድኤት ለቤሩታዊት የደረሰ",
+      "transliteration_title": "O Fitune Rediet Leberutawit Yederese",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "st-george",
+        "martyrs"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%88%E1%88%9D%E1%8B%B5%E1%88%AD%E1%8A%92-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8C%BD%E1%8C%8C%E1%88%AC%E1%8B%B3-%E1%8C%A5%E1%88%8B%E1%88%81%E1%8A%95-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-Zemarit-Tsigereda-Tilahun-Orthodox-Mezmur-2026",
+      "amharic_title": "ወምድርኒ",
+      "transliteration_title": "Wemidirini",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%95%E1%8D%80%E1%88%B3%E1%89%A4%E1%89%95-TV-ALBAS-TEROS-%E1%8A%A3%E1%88%8D%E1%89%A3%E1%88%B5-%E1%8C%A0%E1%88%AE%E1%88%B5-Orthodox-Tewahdo-Mezmur-2020-eritrea-orthodox",
+      "amharic_title": "ዕፀሳቤቕ",
+      "transliteration_title": "TV: ALBAS TEROS",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%95%E1%8D%80%E1%88%B3%E1%89%A4%E1%89%95-TV-DES-YEBELENA-Eritrean-Orthodox-Mezmur-2019",
+      "amharic_title": "ዕፀሳቤቕ",
+      "transliteration_title": "TV: DES YEBELENA: Eritrean Orthodox Mezmur",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%95%E1%8D%80%E1%88%B3%E1%89%A4%E1%89%95-TV-SELAM-LECHI-%E1%88%B0%E1%88%8B%E1%88%98-%E1%88%88%E1%89%BA-Orthodox-Tewahdo-Mezmur-2019",
+      "amharic_title": "ዕፀሳቤቕ",
+      "transliteration_title": "TV: SELAM LECHI",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%89%A5%E1%88%B5%E1%88%AB%E1%89%B5-%E1%8C%A8%E1%89%A5%E1%88%B2-%E1%8A%A5%E1%88%A8%E1%8D%8D%E1%89%B4-%E1%8A%A5%E1%88%8D%E1%88%BB%E1%88%88%E1%88%81-%E1%89%A0%E1%8B%9A%E1%8C%8A%E1%89%B2-%E1%8A%A0%E1%89%A1%E1%8A%90-%E1%8C%88%E1%89%A5%E1%88%A8%E1%88%98%E1%8A%95%E1%8D%88%E1%88%B5%E1%89%85%E1%8B%B1%E1%88%B5-%E1%89%A4%E1%89%B0%E1%8A%AD%E1%88%AD%E1%88%B5%E1%89%B2%E1%8B%AB%E1%8A%95-%E1%8D%86%E1%88%98-%E1%8D%8D%E1%88%8D%E1%88%B0%E1%89%B3-2018-%E1%8B%93%E1%88%9D-mtweuzkq",
+      "amharic_title": "እረፍቴ እልሻለሁ",
+      "transliteration_title": "Erefite Elishalehu",
+      "category": "Holy Spirit",
+      "primary_occasion": "Pentecost",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "pentecost",
+        "general-saints",
+        "filseta"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8C%88%E1%89%A5%E1%88%A8%E1%8B%AE%E1%88%90%E1%8A%95%E1%88%B5-%E1%8C%88-%E1%8C%BB%E1%8B%B2%E1%89%85-%E1%8A%A5%E1%8B%8D%E1%8A%90%E1%89%B5-%E1%8A%90%E1%8B%8D-%E1%8C%A0%E1%89%A5%E1%89%86-%E1%8A%A0%E1%88%B3%E1%8B%B5%E1%8C%8E-EziraHailemichel-Orthodox-mezmure-live",
+      "amharic_title": "",
+      "transliteration_title": "Zemari Gebireyohanis Ge/tsadik \" Ewinet New Tebiko Asadigo @EziraHailemichel Orthodox Mezmure Live",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%88%B0%E1%88%AB%E1%88%81%E1%89%B5-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8B%B3%E1%8B%8A%E1%89%B5-%E1%8C%A5%E1%88%8B%E1%88%81%E1%8A%95-Yeserahut-by-Zemari-Deacon-Dawit-Tilahun",
+      "amharic_title": "የሰራሁት በዘማሪ ዲያቆን ዳዊት ጥላሁን",
+      "transliteration_title": "Yeserahut by Zemari Deacon Dawit Tilahun",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8A%95%E1%88%B0%E1%88%83-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AE%E1%89%BD-%E1%88%B5%E1%89%A5%E1%88%B5%E1%89%A5-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8D%8B%E1%88%B2%E1%8A%AB-%E1%88%98%E1%8A%AE%E1%8A%95%E1%8A%95-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-Mezmur-orthodox",
+      "amharic_title": "የንሰሃ መዝሙሮች ስብስብ",
+      "transliteration_title": "Yeniseha Mezimuroch Sibisib",
+      "category": "Praise Worship",
+      "primary_occasion": "Tinsae",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "tinsae",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8A%A0%E1%88%B5%E1%89%B0%E1%88%AD%E1%8A%A5%E1%8B%AE-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8B%8B%E1%8B%9C%E1%88%9B-%E1%89%A0%E1%8A%86%E1%8A%85%E1%89%B0-%E1%88%B0%E1%88%9B%E1%8B%AD-%E1%89%85%E1%8B%B5%E1%88%B5%E1%89%B5-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%89%A4%E1%89%B0%E1%8A%AD%E1%88%AD%E1%88%B5%E1%89%B2%E1%8B%AB%E1%8A%95-%E1%89%AB%E1%8A%95%E1%8A%AE%E1%89%A8%E1%88%AD-%E1%8A%AB%E1%8A%93%E1%8B%B3",
+      "amharic_title": "የአስተርእዮ ማርያም ዋዜማ በኆኅተ ሰማይ ቅድስት ማርያም ቤተክርስቲያን ቫንኮቨር ካናዳ",
+      "transliteration_title": "Yeasiterieyo Mariyam Wazema Behohite Semay Kidisit Mariyam Betekirisitiyan Vanikover Kanada",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "werb",
+      "hymn_sections": [
+        "mary-general",
+        "wereb"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8C%8C%E1%89%B3%E1%8B%AC%E1%8A%95-%E1%8A%A5%E1%8A%93%E1%89%B5-%E1%8A%A5%E1%8B%AB%E1%88%98%E1%88%B0%E1%8C%88%E1%8A%95%E1%8A%B3%E1%89%B5-%E1%8B%A8%E1%89%A0%E1%8C%88%E1%8A%93-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-ZwT-%E1%8B%9C%E1%88%9B-%E1%8B%88%E1%8C%A5%E1%89%A0%E1%89%A5-%E1%8B%98%E1%88%9B%E1%8A%85%E1%89%A0%E1%88%A8-%E1%89%85%E1%8B%B1%E1%88%B3%E1%8A%95-Official-Video",
+      "amharic_title": "የጌታዬን እናት እያመሰገንኳት የበገና መዝሙር",
+      "transliteration_title": "Yegetayen Enat Eyamesegenikwat Yebegena Mezimur",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "general-saints",
+        "gena"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%AD%E1%8B%8C%E1%8B%B5%E1%88%B5%E1%8B%8B-%E1%88%98%E1%88%8B%E1%8A%A5%E1%8A%AD%E1%89%B5-%E1%8B%A8%E1%8C%83%E1%8A%95-%E1%8B%AB%E1%88%AC%E1%8B%B5-%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%8A%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8C%8B%E1%88%AD-%E1%8A%A5%E1%8A%95%E1%8B%B0%E1%8B%98%E1%88%98%E1%88%A9%E1%89%B5",
+      "amharic_title": "ይዌድስዋ መላእክት",
+      "transliteration_title": "Yiwedisiwa Melaekit",
+      "category": "Virgin Mary",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "geez",
+      "form": "mezmur",
+      "hymn_sections": [
+        "holy-angels",
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8D%88%E1%88%8D%E1%8C%8C-%E1%8A%A0%E1%8C%88%E1%8A%98%E1%88%81%E1%88%85-%E1%8B%A8%E1%88%9D%E1%8A%A9%E1%88%AB%E1%89%A5-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%8B%90%E1%8B%B2%E1%88%B5-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%89%A0%E1%8B%B2-%E1%88%89%E1%88%8D%E1%88%B0%E1%8C%88%E1%8B%B5-%E1%8C%8C%E1%89%B3%E1%89%B8%E1%8B%8D",
+      "amharic_title": "ፈልጌ አገኘሁህ",
+      "transliteration_title": "Felige Agegnehuh",
+      "category": "Virgin Mary",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "abiy-tsom",
+        "church-worship",
+        "mary-general"
+      ],
+      "confidence": 0.9,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8D%8D%E1%89%85%E1%88%AD%E1%88%85-%E1%88%9B%E1%88%A8%E1%8A%A8%E1%8A%9D-%E1%8D%A5-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%88%88%E1%8A%AA-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%89%A5%E1%88%B5%E1%88%AB%E1%89%B5-%E1%8C%A8%E1%89%A5%E1%88%B2-mpj85oei",
+      "amharic_title": "ፍቅርህ ማረከኝ ፥ ሰላም ለኪ",
+      "transliteration_title": "Fikirih Marekegn : Selam Leki",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/-%E1%88%8B%E1%88%98%E1%88%B5%E1%8C%8D%E1%8A%95%E1%88%85-%E1%8B%A8%E1%8A%94-%E1%8C%8C%E1%89%B3-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%B0%E1%88%8B%E1%88%9B%E1%8B%8A%E1%89%B5-%E1%88%98%E1%88%8B%E1%8A%A9-lamsgnhe-yena-geta-zemarit-selamwit-melaku-mryd4flk",
+      "amharic_title": "ላመስግንህ የኔ ጌታ በዘማሪት ሰላማዊት መላኩ",
+      "transliteration_title": "lamsgnhe yena geta zemarit selamwit melaku",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/-%E1%89%A0%E1%8B%B5%E1%88%8D-%E1%89%86%E1%88%98%E1%8A%93%E1%88%8D-%E1%89%A0%E1%88%99%E1%8A%83%E1%8B%98-%E1%88%B5%E1%89%A5%E1%88%90%E1%89%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B3%E1%8C%8D%E1%88%9B%E1%8B%8A-%E1%8B%B0%E1%88%AD%E1%89%A4-%E1%8C%8D%E1%88%A9%E1%88%9D-%E1%8B%9D%E1%88%9C%E1%88%AC-mrsn8cp2",
+      "amharic_title": "በድል ቆመናል*** በሙኃዘ ስብሐት",
+      "transliteration_title": "Bedil Komenal*** Bemuhaze Sibihat",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Almighty-is-Our-God--%E1%8A%83%E1%8B%AB%E1%88%8D-%E1%8A%90%E1%8B%8D-%E1%8A%A5%E1%8C%8D%E1%8B%9A%E1%8A%A0%E1%89%A5%E1%88%94%E1%88%AD--Praise-Night-moth9jfz",
+      "amharic_title": "ኃያል ነው እግዚአብሔር",
+      "transliteration_title": "Almighty is Our God",
+      "category": "Jesus Christ",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Be-Filled-With-Glee-%E1%89%B0%E1%8D%88%E1%88%B5%E1%88%92",
+      "amharic_title": "ተፈስሒ",
+      "transliteration_title": "Be Filled With Glee",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Believe-in-Him-EOTC-Mezmur",
+      "amharic_title": "",
+      "transliteration_title": "Believe in Him",
+      "category": "Jesus Christ",
+      "primary_occasion": "Tinsae",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "tinsae",
+        "christ-general",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Cana-of-Galilee-%E1%89%83%E1%8A%93-%E1%8B%98%E1%8C%88%E1%88%8A%E1%88%8B",
+      "amharic_title": "ቃና ዘገሊላ",
+      "transliteration_title": "Cana of Galilee",
+      "category": "Praise Worship",
+      "primary_occasion": "Wedding",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "wedding",
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Ethiopian-Orthodox-Tewahedo-church-spiritual-song-by-Fantu-mos1p2k3",
+      "amharic_title": "",
+      "transliteration_title": "Ethiopian Orthodox Tewahedo Church Spiritual Song By Fantu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Faaruu-haaraa-ortodoksi-Tawaahidoo-F-ttuu-Warqinash-Mul-ataa-Wangeela-Baracha-maariyaam-hin-shakku",
+      "amharic_title": "",
+      "transliteration_title": "Faaruu haaraa ortodoksi Tawaahidoo",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/From-Dan-Up-Until-Beersheba--%E1%8A%A8%E1%8B%B3%E1%8A%95-%E1%8A%A5%E1%88%B5%E1%8A%A8-%E1%89%A4%E1%88%AD%E1%88%B3%E1%89%A4%E1%88%85-mudjjogh",
+      "amharic_title": "ከዳን እስከ ቤርሳቤህ",
+      "transliteration_title": "From Dan Up Until Beersheba",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "christ-general",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Gita-hin-qabdu-A-F-Dn-Firaanol-Moosisaa-Faarfannaa-Ortodoksi-Tewaahidoo",
+      "amharic_title": "",
+      "transliteration_title": "Gita hin qabdu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/He-Left-the-Ninety-Nine--Marked-By-The-Cross-Album-mqg9hlga",
+      "amharic_title": "",
+      "transliteration_title": "He Left the Ninety Nine",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom",
+        "meskel",
+        "english"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Holy-Virgin-Mary-%E1%8B%B5%E1%8A%95%E1%8C%8D%E1%88%8D-%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B4",
+      "amharic_title": "ድንግል እመቤቴ",
+      "transliteration_title": "Holy Virgin Mary",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "repentance",
+        "abiy-tsom",
+        "english"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/I-Have-A-Reason-Maryam-Ade-Goyta--%E1%88%9D%E1%8A%BD%E1%8A%95%E1%8B%AB%E1%89%B5-%E1%8A%A3%E1%88%8E%E1%8A%92-Eritrean-Orthodox-Tewahdo-English-Mezmur-muqdta48",
+      "amharic_title": "ምኽንያት ኣሎኒ",
+      "transliteration_title": "I Have A Reason",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "mary-general",
+        "english"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/I-call-out-Your-name-%E1%88%B5%E1%88%9D%E1%88%BD%E1%8A%95-%E1%8C%A0%E1%88%AD%E1%89%BC-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%89%80%E1%88%B2%E1%88%B5-%E1%88%9D%E1%8A%95%E1%8B%B3%E1%8B%AC-%E1%89%A5%E1%88%AD%E1%88%83%E1%8A%91-Recreated-by-Ahadu-Studios",
+      "amharic_title": "ስምሽን ጠርቼ",
+      "transliteration_title": "I call out Your name",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/March-17-2021",
+      "amharic_title": "",
+      "transliteration_title": "March 17",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/NEW-ERITREAN-ORTHODOX-ASCENSION-MEZMUR-%E1%8B%90%E1%88%AD%E1%8C%88-%E1%8A%A5%E1%88%9D%E1%8A%80%E1%89%A4%E1%88%86%E1%88%99-By-Kesis-Melake-Brhan-Tsegazeab-Negash",
+      "amharic_title": "ዐርገ እምኀቤሆሙ",
+      "transliteration_title": "ERITREAN ORTHODOX ASCENSION MEZMUR",
+      "category": "Jesus Christ",
+      "primary_occasion": "Erget",
+      "language": "geez",
+      "form": "mezmur",
+      "hymn_sections": [
+        "ascension",
+        "christ-general"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/NEW-MEZMUR---%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC--%E1%8C%88%E1%89%A5%E1%88%AD%E1%8A%A4%E1%88%8D-%E1%88%B5%E1%88%99---GEBRIEL-SIMU--%E1%89%A4%E1%88%AD%E1%88%B2-%E1%88%B0%E1%88%8B%E1%88%9D---BERSY-SELAM-mryd729u",
+      "amharic_title": "ገብርኤል ስሙ",
+      "transliteration_title": "GEBRIEL SIMU",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Na-keessaa-haa-maddu-F-taa-Dn-Keebar-Tasfaa-Faarfannaan-Ortodoksi-Tewaahidoo-SabaifMedia",
+      "amharic_title": "",
+      "transliteration_title": "Na keessaa haa maddu",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/New-%E1%89%A5%E1%88%AD%E1%88%83%E1%8A%95-%E1%8B%AD%E1%88%81%E1%8A%95-%E1%8B%9B%E1%88%AC-Berhan-Yihun-Zare-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%98%E1%8B%8D%E1%8B%B1-%E1%8C%8C%E1%89%B3%E1%89%B8%E1%8B%8D",
+      "amharic_title": "ብርሃን ይሁን ዛሬ",
+      "transliteration_title": "Berhan Yihun Zare",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Seven-Curtains-of-Fire--%E1%88%B0%E1%89%A3%E1%89%B1-%E1%88%98%E1%8A%95%E1%8C%A6%E1%88%8B%E1%8B%AD%E1%89%B5-munklxnp",
+      "amharic_title": "ሰባቱ መንጦላይት",
+      "transliteration_title": "Seven Curtains of Fire",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "mary-general",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/St-Michael-He-is-Set-Apart-%E1%8B%AD%E1%88%88%E1%8B%AD%E1%89%A5%E1%8A%9B%E1%88%8D-%E1%88%9A%E1%8A%AB%E1%8A%A4%E1%88%8D",
+      "amharic_title": "ይለይብኛል ሚካኤል",
+      "transliteration_title": "St. Michael He is Set Apart",
+      "category": "Kidus Michael",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-michael",
+        "holy-angels",
+        "english"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/The-Ascetic--Marked-By-The-Cross-Album-mqg9cauj",
+      "amharic_title": "",
+      "transliteration_title": "The Ascetic",
+      "category": "Cross",
+      "primary_occasion": "Meskel",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "meskel",
+        "english"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/The-Good-Samaritan-%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%8B%B0%E1%8C%89-%E1%88%B3%E1%88%9D%E1%88%AB%E1%8B%8A",
+      "amharic_title": "አንተ ደጉ ሳምራዊ",
+      "transliteration_title": "The Good Samaritan",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/To-Mother-Mary-%E1%88%88%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D",
+      "amharic_title": "ለማርያም",
+      "transliteration_title": "To Mother Mary",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Truth-Orthodox-Tewahedo-English-Hymn",
+      "amharic_title": "",
+      "transliteration_title": "Truth: Orthodox Tewahedo English Hymn",
+      "category": "Jesus Christ",
+      "primary_occasion": "Siklet",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "good-friday",
+        "passion",
+        "holy-week",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Your-Name-Gives-Me-the-Strength-%E1%88%B5%E1%88%9D%E1%88%BD-%E1%8C%89%E1%88%8D%E1%89%A0%E1%89%B5-%E1%88%86%E1%8A%96%E1%8A%9D",
+      "amharic_title": "ስምሽ ጉልበት ሆኖኝ",
+      "transliteration_title": "Your Name Gives Me the Strength",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%86%E1%88%A3%E1%8B%95%E1%8A%93-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%88%95%E1%89%A5%E1%88%A8%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-New-EOTC-Mezmur-Hosaa-inaa-Faarfannaa-tokkummaa-Ortodoksi-Tewaahidoo",
+      "amharic_title": "ሆሣዕና",
+      "transliteration_title": "Hosaa'inaa",
+      "category": "Jesus Christ",
+      "primary_occasion": "Hosanna",
+      "language": "oromo",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "hosanna"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%86%E1%88%B3%E1%8A%A5%E1%8A%93-%E1%89%A0%E1%8A%A0%E1%88%AD%E1%8B%AB%E1%88%9D-Zemari-yeabkal-desalegn-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%88%86%E1%88%B3%E1%8A%A5%E1%8A%93-%E1%8B%9D%E1%88%9B%E1%88%AC",
+      "amharic_title": "ሆሳእና በአርያም",
+      "transliteration_title": "Hosaena Beariyam",
+      "category": "Praise Worship",
+      "primary_occasion": "Hosanna",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "hosanna",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%8A%E1%89%80%E1%88%98%E1%8B%98%E1%88%9D%E1%88%AB%E1%8A%95-%E1%8A%AA%E1%8A%90%E1%8C%A5%E1%89%A0%E1%89%A5-%E1%8B%88%E1%88%8D%E1%8B%B0-%E1%89%82%E1%88%AD%E1%89%86%E1%88%B5-kinetibebe-woldekirkos-mothaymi",
+      "amharic_title": "",
+      "transliteration_title": "Likemezemiran Kinetibeb Welide Kirikos Kinetibebe Woldekirkos",
+      "category": "Kidus Gabriel",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "st-gabriel",
+        "holy-angels"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%8D%E1%8B%A9-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%83-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%89%A0%E1%8A%A8%E1%8D%8B%E1%8A%9D-%E1%8C%8A%E1%8B%9C-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%AD%E1%89%B5%E1%89%A3%E1%88%A8%E1%8A%AD-%E1%89%B0%E1%8C%88%E1%8A%9D",
+      "amharic_title": "በከፋኝ ጊዜ",
+      "transliteration_title": "Bekefagn Gize",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8A%95%E1%8C%B9%E1%88%95-%E1%8B%B0%E1%88%99-%E1%8A%A0%E1%8B%B3%E1%8A%90%E1%8A%95-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8C%88%E1%89%A5%E1%88%A8%E1%8A%A0%E1%88%9D%E1%88%8B%E1%8A%AD-%E1%8B%B0%E1%88%B3%E1%88%88%E1%8A%9D-%E1%89%A4%E1%89%B0-%E1%89%85%E1%8A%94-Beta-Qene",
+      "amharic_title": "በንጹሕ ደሙ አዳነን",
+      "transliteration_title": "Beta Qene",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8A%A0%E1%89%A3%E1%89%B4-%E1%89%A4%E1%89%B5-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%A3%E1%88%AB-%E1%88%98%E1%8A%95%E1%8C%8D%E1%88%B5%E1%89%B1-Zemarit-Sara-Mengistu-Babate-bet-21media27",
+      "amharic_title": "በአባቴ ቤት",
+      "transliteration_title": "Beabate Bet",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8A%A5%E1%8A%95%E1%89%A3-%E1%8B%A8%E1%88%9A%E1%8B%B0%E1%88%98%E1%8C%A5-%E1%88%AB%E1%88%B3%E1%89%BD%E1%8A%95%E1%8A%95-%E1%8B%A8%E1%88%9D%E1%8A%93%E1%8B%AD%E1%89%A0%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8B%A8%E1%8A%90%E1%8A%90%E1%8B%8C-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2-%E1%8A%95-%E1%89%A5%E1%88%B5%E1%88%AB%E1%89%B5-%E1%8C%A8%E1%89%A5%E1%88%B2-%E1%8A%A5%E1%8A%93-%E1%88%B2%E1%88%B5%E1%89%B0%E1%88%AD-%E1%88%8A%E1%8B%B2%E1%8B%AB-AklilMedia2",
+      "amharic_title": "በእንባ የሚደመጥ ራሳችንን የምናይበት ዝማሬ የነነዌ",
+      "transliteration_title": "Beeniba Yemidemet Rasachinin Yeminayibet Zimare Yenenewe",
+      "category": "Praise Worship",
+      "primary_occasion": "Tsome Nineveh",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "nineveh",
+        "general-fasting",
+        "general-praise"
+      ],
+      "confidence": 0.6,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%89%A0%E1%88%B5%E1%8D%8D%E1%89%83%E1%8B%B5-%E1%8A%A0%E1%8B%B3%E1%88%AD%E1%8C%8B%E1%89%B8%E1%8B%8D-%E1%89%A0%E1%8A%A5%E1%8A%95%E1%89%A3-%E1%8B%A8%E1%89%B3%E1%8C%80%E1%89%A0-%E1%8B%9D%E1%88%9B%E1%88%AC",
+      "amharic_title": "",
+      "transliteration_title": "Bezemari Besifikad Adarigachew Beeniba Yetajebe Zimare",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%89%A5%E1%8B%99-%E1%8A%90%E1%8B%8D-%E1%89%BD%E1%8C%8D%E1%88%AC-Zemari-Dn-Luelseged-Getachew-Ethiopian-Orthodox-Tewahedo-Mezmur",
+      "amharic_title": "ብዙ ነው ችግሬ",
+      "transliteration_title": "Bizu New Chigire",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%91-%E1%89%A0%E1%8A%A5%E1%8C%8D%E1%8B%9A%E1%8A%A0%E1%89%A5%E1%88%94%E1%88%AD-%E1%8B%B0%E1%88%B5-%E1%8B%AD%E1%89%A0%E1%88%88%E1%8A%95%E1%8D%A3-%E1%8B%B5%E1%8A%95%E1%89%85-%E1%8A%A0%E1%8B%B5%E1%8C%8E%E1%88%8D%E1%8A%9B%E1%88%8D-%E1%8D%A3-%E1%8C%8A%E1%8B%AE%E1%88%AD%E1%8C%8A%E1%88%B5-%E1%88%83%E1%8B%AB%E1%88%8D--%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%8A%A0%E1%8B%9C%E1%89%A5-%E1%8A%A8%E1%89%A0%E1%8B%B0-mssd5tzl",
+      "amharic_title": "ኑ በእግዚአብሔር ደስ ይበለን፣ ድንቅ አድጎልኛል ፣ ጊዮርጊስ ሃያል",
+      "transliteration_title": "Nu Beegiziabiher Des Yibeleni, Dinik Adigolignal , Giyorigis Hayal",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "st-george",
+        "martyrs",
+        "christ-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%88%9B%E1%8A%91%E1%8A%A4%E1%88%8D-%E1%88%86%E1%8B%AD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%B0%E1%88%8B%E1%88%9B%E1%8B%8A%E1%89%B5-%E1%88%98%E1%88%8B%E1%8A%A9-%E1%8D%8D%E1%8A%96%E1%89%B0-%E1%88%8E%E1%8B%9B-%E1%88%B0%E1%8A%95%E1%89%A0%E1%89%B5-%E1%89%B5-%E1%89%A4%E1%89%B5-mezmur-orthodox",
+      "amharic_title": "አማኑኤል ሆይ",
+      "transliteration_title": "Amanuel Hoy",
+      "category": "Jesus Christ",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%88%B0%E1%8B%8D-%E1%8A%90%E1%8A%9D--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%B0%E1%88%88%E1%88%9E%E1%8A%95-%E1%8A%A0%E1%89%A1%E1%89%A0%E1%8A%A8%E1%88%AD--New-Ethiopian-Orthodox-Mezmur-2026-mvhj9eru",
+      "amharic_title": "አዲስ ሰው ነኝ",
+      "transliteration_title": "Adis Sew Negn",
+      "category": "Jesus Christ",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general",
+        "general-praise"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%88%98%E1%88%AD%E1%89%86%E1%88%AC%E1%8B%8E%E1%88%B5-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%B2%E1%88%B5%E1%89%B0%E1%88%AD-%E1%88%95%E1%8B%AD%E1%8B%88%E1%89%B5-%E1%89%B0%E1%8D%88%E1%88%AA-merqorewos",
+      "amharic_title": "መርቆሬዎስ",
+      "transliteration_title": "merqorewos",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%89%B5%E1%88%8B%E1%8A%95%E1%89%B5-%E1%8B%AB%E1%88%B3%E1%88%88%E1%8D%8D%E1%8A%A8%E1%8A%9D-%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%8A%90%E1%88%85-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%B0%E1%88%8B%E1%88%9B%E1%8B%8A%E1%89%B5-%E1%88%B6%E1%88%AD%E1%88%B3-%E1%8A%90%E1%8B%AD-%E1%88%B6%E1%88%8D%E1%8B%AB%E1%8A%93-New-orthodox-mezmur-Tilant-yasalefkegn-mahitot",
+      "amharic_title": "ትላንት ያሳለፍከኝ አንተ ነህ",
+      "transliteration_title": "Tilant yasalefkegn",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B4-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8A%A0%E1%88%9B%E1%8A%95-%E1%8A%A1%E1%88%AD%E1%8C%8C%E1%88%B3",
+      "amharic_title": "እመቤቴ ማርያም",
+      "transliteration_title": "Emebete Mariyam",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC---%E1%88%88%E1%8A%A5%E1%8A%94-%E1%8B%AB%E1%88%8B%E1%8B%B0%E1%88%A8%E1%8A%A8%E1%8B%8D-%E1%88%9D%E1%8A%95-%E1%8A%A0%E1%88%88--Zemari-GebreYohannes-Gebretsadik-Zemari-Gebreyohans-msb95rjt",
+      "amharic_title": "ለእኔ ያላደረከው ምን አለ",
+      "transliteration_title": "Leene Yaladerekew Min Ale",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%9D%E1%88%9B%E1%88%AC---%E1%89%A0%E1%88%98%E1%88%8D%E1%8A%A0%E1%8A%A8-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8A%A5%E1%8A%95%E1%8C%8D%E1%8B%B3%E1%8B%88%E1%88%AD%E1%89%85-%E1%89%A0%E1%89%80%E1%88%88-dejtenahu-new-viral-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-%E1%8A%A6%E1%88%AD%E1%89%B6%E1%8B%B6%E1%8A%AD%E1%88%B5-mowc7p87",
+      "amharic_title": "በመልአከ ሰላም",
+      "transliteration_title": "Bemeliake Selam",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%83-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A5%E1%88%AD%E1%8B%B3%E1%8A%9D-%E1%8C%8C%E1%89%B3%E1%8B%AC-%E1%8B%B2-%E1%8B%98%E1%88%88%E1%8B%93%E1%88%88%E1%88%9D-%E1%89%B3%E1%8A%A8%E1%88%88-%E1%8B%98%E1%8C%8E%E1%88%8B-New-mezmur-Erdagn-Getaye-D-Zelalem-Takele",
+      "amharic_title": "እርዳኝ ጌታዬ",
+      "transliteration_title": "Erdagn Getaye' D Zelalem Takele",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom",
+        "christ-general"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A0%E1%8B%B3%E1%8A%90%E1%8A%9D-%E1%8C%8C%E1%89%B3-%E1%8A%A5%E1%8A%93-%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B4-%E1%8B%A8%E1%8A%A0%E1%88%9D%E1%88%8B%E1%8A%AD-%E1%8A%A5%E1%8A%93%E1%89%B5-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A5%E1%88%A9%E1%8A%AD%E1%89%B3%E1%8B%8A%E1%89%B5-%E1%8A%95%E1%8C%8B%E1%89%B1-Eliyab_mezmur-mp3iqfct",
+      "amharic_title": "አዳነኝ ጌታ እና እመቤቴ የአምላክ እናት",
+      "transliteration_title": "Adanegn Geta Ena Emebete Yeamilak Enat",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "christ-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8A%A5%E1%8B%A8%E1%89%A3%E1%88%A8%E1%8A%AB%E1%89%B8%E1%8B%8D-%E1%8B%88%E1%8B%B0-%E1%88%8B%E1%8B%AD-%E1%8A%A0%E1%89%80%E1%8A%93--EYEBAREKACHEW-WEDE-LAY-AQENA-mpj7redx",
+      "amharic_title": "እየባረካቸው ወደ ላይ አቀና",
+      "transliteration_title": "EYEBAREKACHEW WEDE LAY AQENA",
+      "category": "Jesus Christ",
+      "primary_occasion": "Erget",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "ascension",
+        "christ-general"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%95%E1%88%A8%E1%8D%8D%E1%89%B5%E1%88%BD--%E1%89%A0%E1%8D%86%E1%88%98-%E1%8D%8D%E1%88%8D%E1%88%B0%E1%89%B3-%E1%8B%A8%E1%88%9A%E1%8B%B0%E1%88%98%E1%8C%A5-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A8-%E1%8A%A5%E1%8A%93%E1%89%B4-%E1%8C%8B%E1%88%AD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%85%E1%8B%B5%E1%88%B5%E1%89%B5-%E1%89%B0%E1%88%B0%E1%88%9B-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A0%E1%8C%B8%E1%88%8E%E1%89%B5-%E1%8A%A0%E1%88%B5%E1%88%9B%E1%88%A8-%E1%8A%A5%E1%8A%93%E1%89%B5-%E1%8A%A5%E1%8A%93-%E1%88%8D%E1%8C%85-msid93ns",
+      "amharic_title": "ዕረፍትሽ",
+      "transliteration_title": "Erefitish",
+      "category": "Virgin Mary",
+      "primary_occasion": "Filseta",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "church-worship",
+        "general-worship",
+        "filseta"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%95%E1%8D%80%E1%88%B3%E1%89%A4%E1%89%95-TV-Mariam-FLUYU-XEGAKI-Orthodox-Mezmur-2019",
+      "amharic_title": "ዕፀሳቤቕ",
+      "transliteration_title": "TV: Mariam FLUYU XEGAKI: Orthodox Mezmur",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%88%8D%E1%88%81%E1%8A%95-%E1%89%A5%E1%89%BB-%E1%88%B5%E1%88%9D%E1%88%BD%E1%8A%95-%E1%88%B5%E1%8C%A0%E1%88%AB-%E1%88%9D%E1%88%B5%E1%8C%8B%E1%8A%93-%E1%89%A0%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5%E1%88%85-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%95-%E1%8B%AE%E1%88%B4%E1%8D%8D-%E1%8C%8D%E1%88%AD%E1%88%9B",
+      "amharic_title": "የአንተ ልሁን ብቻ ስምሽን ስጠራ",
+      "transliteration_title": "Yeanite Lihun Bicha Simishin Sitera",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-2018-%E1%89%A0%E1%88%B2%E1%8B%AB%E1%89%B5%E1%88%8D-%E1%88%98%E1%88%B0%E1%88%A8%E1%89%B0-%E1%8B%9C%E1%88%9B-%E1%8B%88%E1%8C%A0%E1%8A%90-%E1%88%95%E1%89%A5%E1%88%A8-%E1%8B%9D%E1%88%9B%E1%88%AC",
+      "amharic_title": "የአእላፋት ዝማሬ በሲያትል መሰረተ ዜማ ወጠነ ሕብረ ዝማሬ",
+      "transliteration_title": "Yeaelafat Zimare Besiyatil Meserete Zema Wetene Hibire Zimare",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "geez",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-2018-%E1%89%A0%E1%88%B2%E1%8B%AB%E1%89%B5-%E1%8B%B5%E1%8A%95%E1%8C%8D%E1%88%8D-%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8A%A5%E1%8C%8D%E1%8B%9A%E1%8A%A0%E1%89%A5%E1%88%94%E1%88%AD-%E1%8A%A0%E1%89%A5%E1%8A%95-%E1%88%98%E1%88%B5%E1%88%8B%E1%88%88%E1%89%BD-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%B5%E1%8B%95%E1%8C%8D%E1%88%B5%E1%89%B5-%E1%88%B5%E1%88%88%E1%88%BA",
+      "amharic_title": "የአእላፋት ዝማሬ በሲያት ድንግል ማርያም እግዚአብሔር አብን መስላለች",
+      "transliteration_title": "Yeaelafat Zimare Besiyat Dinigil Mariyam Egiziabiher Abin Mesilalech",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "christ-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8A%A0%E1%8A%A5%E1%88%8B%E1%8D%8B%E1%89%B5-%E1%8B%9D%E1%88%9B%E1%88%AC-2018-2025-%E1%89%A0%E1%88%B2%E1%8B%AB%E1%89%B5%E1%88%8D-%E1%88%8D%E1%89%A4-%E1%89%A0%E1%8A%A5%E1%8C%8D%E1%8B%9A%E1%8A%A0%E1%89%A5%E1%88%94%E1%88%AD-%E1%8C%B8%E1%8A%93-%E1%88%98%E1%88%8D%E1%8A%A0%E1%8A%A8-%E1%88%B0%E1%88%8B%E1%88%9D-%E1%89%80%E1%88%B2%E1%88%B5-%E1%8B%88%E1%8A%95%E1%8B%B5%E1%8B%88%E1%88%B0%E1%8A%95-%E1%89%A0%E1%89%80%E1%88%88",
+      "amharic_title": "የአእላፋት ዝማሬ በሲያትል",
+      "transliteration_title": "Yeaelafat Zimare Besiyatil",
+      "category": "Jesus Christ",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "christ-general"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8B%A8%E1%8B%88%E1%8B%B0%E1%8B%B0%E1%8A%9D-%E1%8C%8C%E1%89%B3-%E1%88%9D%E1%8A%95-%E1%8A%A0%E1%8B%B5%E1%88%AD%E1%8C%8C%E1%88%88%E1%89%B5-%E1%8A%90%E1%8B%8D-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%89%A3%E1%8A%95%E1%89%BA%E1%8A%A0%E1%8B%A8%E1%88%81-%E1%88%B0%E1%8B%AD%E1%8D%89-Zemarit-Banchiayehu-Seyifu-Yewodedegn-Geta-21media27",
+      "amharic_title": "የወደደኝ ጌታ ምን አድርጌለት ነው",
+      "transliteration_title": "Yewodedegn Geta",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%8C%8A%E1%8B%AE%E1%88%AD%E1%8C%8A%E1%88%B5-%E1%8A%83%E1%8B%AB%E1%88%8D--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%B0%E1%88%88%E1%88%9E%E1%8A%95-%E1%8A%A0%E1%89%A1%E1%89%A0%E1%8A%A8%E1%88%AD--New-Ethiopian-Orthodox-Mezmur-2026-mut8pl2e",
+      "amharic_title": "ጊዮርጊስ ኃያል",
+      "transliteration_title": "Giyorigis Hayal",
+      "category": "Saints",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "st-george",
+        "martyrs"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/-%E1%88%8D%E1%89%A6%E1%8A%93%E1%8B%AC-%E1%8B%AB%E1%8B%8D%E1%8C%A3-%E1%8B%8D%E1%8B%B3%E1%88%B4-%E1%88%88%E1%8A%AD%E1%89%A5%E1%88%AD%E1%88%BD--%E1%8B%B2%E1%8A%95-%E1%89%A5%E1%88%B5%E1%88%AB%E1%89%B5-%E1%8C%A8%E1%89%A5%E1%88%B2--Live-performance--%E1%8C%8E%E1%88%8D%E1%8C%8E%E1%89%B3-%E1%88%9A%E1%8B%B2%E1%8B%AB-golgota27media-msb8v9rx",
+      "amharic_title": "ልቦናዬ ያውጣ ውዳሴ ለክብርሽ",
+      "transliteration_title": "Live performance",
+      "category": "Cross",
+      "primary_occasion": "Meskel",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "meskel",
+        "good-friday",
+        "passion",
+        "holy-week"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Before-the-Most-High-%E1%8B%88%E1%8B%B0-%E1%88%9B%E1%8B%B0%E1%88%AD%E1%8B%AB%E1%8B%8D-%E1%8C%88%E1%89%A5%E1%89%BC",
+      "amharic_title": "ወደ ማደርያው ገብቼ",
+      "transliteration_title": "Before the Most High",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/English-Wereb-St-Teklehaymanot",
+      "amharic_title": "",
+      "transliteration_title": "English Wereb",
+      "category": "Abune Tekle Haymanot",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "english",
+      "form": "werb",
+      "hymn_sections": [
+        "wereb",
+        "general-saints",
+        "english"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Fayyistu-Hewwan",
+      "amharic_title": "",
+      "transliteration_title": "Fayyistu Hewwan",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Gaachana-kooti-Faarfannaa-Haaraa-Ortodoksii-F-taa-Dn-Keebar-Tasfaatiin",
+      "amharic_title": "",
+      "transliteration_title": "Gaachana kooti",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Gebreheir-Talent-Showcase-2021-English-Begena-Mezmur",
+      "amharic_title": "",
+      "transliteration_title": "Gebreheir Talent Showcase : English Begena Mezmur",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/I-am-Vain-%E1%8A%A8%E1%8A%95%E1%89%B1-%E1%8A%90%E1%8A%9D-Egeziharya-Yilma",
+      "amharic_title": "ከንቱ ነኝ",
+      "transliteration_title": "I am Vain",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Isa-Sodaatamun-Waaqessa-Faarfannaa-Ortodoksi-Tewaahidoo-A-F-Dn-Firaanol-Moosisaatiin",
+      "amharic_title": "",
+      "transliteration_title": "Isa Sodaatamun Waaqessa",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Mother-of-God-Virgin-Mary-%E1%8A%A5%E1%88%98%E1%89%A4%E1%89%B4-%E1%8B%A8%E1%8A%A0%E1%88%9D%E1%88%8B%E1%8A%AD-%E1%8A%A5%E1%8A%93%E1%89%B5",
+      "amharic_title": "እመቤቴ የአምላክ እናት",
+      "transliteration_title": "Mother of God Virgin Mary",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/NEW-%E1%8A%A0%E1%8B%B2%E1%88%B5-%E1%8B%A8%E1%8A%95%E1%88%B5%E1%88%90-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8C%8D%E1%89%A3-%E1%89%A4%E1%89%B4-%E1%88%8A%E1%89%80-%E1%8B%B2%E1%8B%AB%E1%89%86%E1%8A%93%E1%89%B5-%E1%8A%90%E1%89%A2%E1%8B%A9-%E1%88%B3%E1%88%99%E1%8A%A4%E1%88%8D-DeaconNebiyuSamuel",
+      "amharic_title": "ግባ ቤቴ",
+      "transliteration_title": "Giba Bete",
+      "category": "Repentance",
+      "primary_occasion": "Abiy Tsom",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "repentance",
+        "abiy-tsom"
+      ],
+      "confidence": 0.87,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/New-%E1%88%90%E1%88%98%E1%88%A8-%E1%8A%96%E1%8A%85-Hamere-Noh-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%95%E1%8B%AD%E1%8B%88%E1%89%B5-%E1%8B%88%E1%88%8D%E1%8B%B4",
+      "amharic_title": "ሐመረ ኖኅ",
+      "transliteration_title": "Hamere Noh",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Praise-in-Your-Sanctuary--%E1%88%9D%E1%88%B5%E1%8C%8B%E1%8A%93-%E1%89%A0%E1%88%98%E1%89%85%E1%8B%B0%E1%88%B5%E1%88%85-mqd9hd7e",
+      "amharic_title": "ምስጋና በመቅደስህ",
+      "transliteration_title": "Praise in Your Sanctuary",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/TEKLEHAYMANOT-THE-MONASTIC--SOLIANA-FIKADU-moth7tyd",
+      "amharic_title": "",
+      "transliteration_title": "TEKLEHAYMANOT THE MONASTIC",
+      "category": "Abune Tekle Haymanot",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "english"
+      ],
+      "confidence": 0.86,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/TekleHaymanot-ms8d7pu0",
+      "amharic_title": "",
+      "transliteration_title": "TekleHaymanot",
+      "category": "Abune Tekle Haymanot",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-saints",
+        "english"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/The-Archangels-%E1%88%B6%E1%89%A0%E1%88%B0-%E1%8B%AD%E1%8B%8D%E1%88%A8%E1%8B%B1-%E1%88%98%E1%88%8B%E1%8A%A5%E1%8A%AD%E1%89%B5-%E1%89%A0%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%AD%E1%89%B5%E1%89%A3%E1%88%A8%E1%8A%AD-%E1%89%B0%E1%8C%88%E1%8A%9D-Recreated-by-Ahadu-Studios",
+      "amharic_title": "ሶበሰ ይውረዱ መላእክት",
+      "transliteration_title": "The Archangels",
+      "category": "Angels",
+      "primary_occasion": "Annual Saint Feast",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "holy-angels",
+        "english"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/The-Son-Has-Been-Born-%E1%8B%88%E1%88%8D%E1%8B%B5-%E1%89%B0%E1%8B%88%E1%88%88%E1%8B%B6-%E1%8A%90%E1%8C%BB-%E1%8B%88%E1%8C%A3%E1%8A%95",
+      "amharic_title": "ወልድ ተወለዶ ነጻ ወጣን",
+      "transliteration_title": "The Son Has Been Born",
+      "category": "Jesus Christ",
+      "primary_occasion": "Gena",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "gena",
+        "christ-general",
+        "english"
+      ],
+      "confidence": 0.88,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/The-Soul-That-Magnifies--Marked-By-The-Cross-Album-mqg8kmj9",
+      "amharic_title": "",
+      "transliteration_title": "The Soul That Magnifies",
+      "category": "Virgin Mary",
+      "primary_occasion": "Meskel",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "meskel",
+        "english"
+      ],
+      "confidence": 0.72,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/You-Are-My-Reliance-%E1%88%98%E1%88%98%E1%8A%AA%E1%8B%AB%E1%8B%AC-%E1%8A%A0%E1%8A%95%E1%89%B0-%E1%8A%90%E1%88%85-1",
+      "amharic_title": "መመኪያዬ አንተ ነህ",
+      "transliteration_title": "You Are My Reliance",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/ZEMARI-ENDALKACHEW-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8A%A5%E1%8A%95%E1%8B%B3%E1%88%8D%E1%8A%AB%E1%89%B8%E1%8B%8D",
+      "amharic_title": "",
+      "transliteration_title": "ZEMARI ENDALKACHEW/zemari Enidalikachew",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/Zemari-Tsegereda-Tilahun-TAMEGNALEW-mos2103z",
+      "amharic_title": "",
+      "transliteration_title": "Zemari Tsegereda Tilahun \"TAMEGNALEW",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "english",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "english"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/yante-sira-LM-Kinetibeb-mezmur-%E1%8B%AB%E1%8A%95%E1%89%B0-%E1%88%B5%E1%88%AB---%E1%88%8A%E1%88%98-%E1%8A%AA%E1%8A%90%E1%8C%A5%E1%89%A0%E1%89%A5-mouwv22s",
+      "amharic_title": "ያንተ ስራ",
+      "transliteration_title": "yante sira /M Kinetibeb mezmur",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%8D%E1%8B%B0%E1%89%B3-%E1%88%88%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D--%E1%8C%8D%E1%8A%95%E1%89%A6%E1%89%B5-%E1%88%8D%E1%8B%B0%E1%89%B3-%E1%8B%9D%E1%88%9B%E1%88%AC-%E1%8A%A2%E1%8B%AB%E1%89%84%E1%88%9D-%E1%8B%88%E1%88%88%E1%8B%B3--%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%A9%E1%89%B5-%E1%8B%B0%E1%88%98%E1%88%8B%E1%88%BD-Ginbot-Lideta-Zimare-by-Zemarit-Ruth-Demelash-moxujotv",
+      "amharic_title": "ልደታ ለማርያም ግንቦት ልደታ ዝማሬ ኢያቄም ወለዳ ዘማሪት ሩት ደመላሽ",
+      "transliteration_title": "Ginbot Lideta Zimare by Zemarit Ruth Demelash",
+      "category": "Virgin Mary",
+      "primary_occasion": "Lideta Maryam",
+      "language": "geez",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general",
+        "lideta-maryam"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%98%E1%88%8D%E1%8A%AB%E1%88%9D-%E1%88%8D%E1%8B%B0%E1%89%B5-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8B%B3%E1%8A%95%E1%8A%A4%E1%88%8D-%E1%8C%A5%E1%89%A0%E1%89%A0%E1%88%A5%E1%88%8B%E1%88%B4-%E1%8A%A5%E1%8A%93-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%B2-%E1%88%AD-%E1%88%8D%E1%8B%B5%E1%8B%AB-%E1%89%B3%E1%8B%B0%E1%88%B0-%E1%8A%A6%E1%88%AD%E1%89%B6%E1%8B%B6%E1%8A%AD%E1%88%B3%E1%8B%8A-%E1%8B%A8%E1%88%8D%E1%8B%B0%E1%89%B5-%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-Zemari-Daniel-Zemarit-Lidia",
+      "amharic_title": "መልካም ልደት",
+      "transliteration_title": "Melikam Lidet",
+      "category": "Holy Trinity",
+      "primary_occasion": "Gena",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise",
+        "church-worship",
+        "gena"
+      ],
+      "confidence": 0.93,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%98%E1%88%AA%E1%8C%8C%E1%89%B3-%E1%8D%80%E1%88%90%E1%8B%AD-%E1%89%A5%E1%88%AD%E1%88%83%E1%8A%91-%E1%8B%A8%E1%8A%A0%E1%89%A5%E1%88%AD%E1%88%83%E1%88%9D-%E1%8A%A0%E1%88%9D%E1%88%8B%E1%8A%AD",
+      "amharic_title": "የአብርሃም አምላክ",
+      "transliteration_title": "Yeabiriham Amilak",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%9B%E1%88%AA%E1%8A%9D-%E1%8A%A5%E1%8A%93-%E1%88%8D%E1%88%82%E1%8B%B5-%E1%8B%98%E1%88%9B%E1%88%AA%E1%89%B5-%E1%88%88%E1%88%9D%E1%88%88%E1%88%9D-%E1%8A%A8%E1%89%A0%E1%8B%B0",
+      "amharic_title": "ማሪኝ እና ልሂድ",
+      "transliteration_title": "Marign Ena Lihid",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%9B%E1%88%AD%E1%8B%AB%E1%88%9D-%E1%8A%A5%E1%88%8B%E1%88%88%E1%88%81--%E1%8B%98%E1%88%9B%E1%88%AA-%E1%88%B0%E1%88%88%E1%88%9E%E1%8A%95-%E1%8A%A0%E1%89%A1%E1%89%A0%E1%8A%A8%E1%88%AD--New-Ethiopian-Orthodox-Mezmur-2026-mut8qmfl",
+      "amharic_title": "ማርያም እላለሁ",
+      "transliteration_title": "Mariyam Elalehu",
+      "category": "Virgin Mary",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "mary-general"
+      ],
+      "confidence": 0.91,
+      "classified_by": "antigravity-gemini-batch"
+    },
+    {
+      "source_url": "https://eotcmedia.com/hymns/%E1%88%9D%E1%8A%95-%E1%89%A5%E1%8B%AC-%E1%8B%A8%E1%8A%A5%E1%88%AD%E1%88%B1%E1%8A%95-%E1%8B%B0%E1%8C%8D%E1%8A%90%E1%89%B5-%E1%88%8D%E1%8A%93%E1%8C%88%E1%88%AD-%E1%8B%98%E1%88%9B%E1%88%AA-%E1%8D%8D%E1%88%AC%E1%8B%98%E1%88%AD-%E1%8B%B0%E1%88%B3%E1%88%88%E1%8A%9D%E1%89%A4%E1%89%B4%E1%88%8D%E1%88%98%E1%8B%9D%E1%88%99%E1%88%AD-msb9751e",
+      "amharic_title": "ምን ብዬ የእርሱን ደግነት ልናገር",
+      "transliteration_title": "Min Biye Yeerisun Deginet Linager",
+      "category": "Praise Worship",
+      "primary_occasion": "General / Anytime",
+      "language": "amharic",
+      "form": "mezmur",
+      "hymn_sections": [
+        "general-praise"
+      ],
+      "confidence": 0.55,
+      "classified_by": "antigravity-gemini-batch"
+    }
+  ]
+}
