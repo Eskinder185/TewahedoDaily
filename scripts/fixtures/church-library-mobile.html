@@ -1,0 +1,34 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Church Library workflow fixture</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f1e8;color:#172238;font:16px system-ui}main{max-width:1200px;margin:auto;padding:20px}.head,.actions{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}.workspace{display:grid;grid-template-columns:280px minmax(0,1fr);gap:18px}.catalog,.card{background:white;border:1px solid #d7d0c3;border-radius:10px;padding:16px}.catalog button{width:100%;text-align:left;padding:12px}.selected{border:2px solid #957126}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.wide{grid-column:1/-1}input,select,textarea,button{max-width:100%;font:inherit;padding:10px}label{display:grid;gap:5px}#passages{white-space:pre-wrap}.status{padding:10px;background:#e8f3e8}@media(max-width:760px){.workspace,.fields{grid-template-columns:1fr}.wide{grid-column:auto}.catalog{max-height:220px;overflow:auto}}
+</style>
+<main>
+  <div class="head"><div><small>PRIVATE DOCUMENT CMS</small><h1>Church Library</h1></div><button id="upload-book">Upload book</button></div>
+  <p id="status" class="status">Ready</p>
+  <section id="upload-panel" class="card" hidden>
+    <h2>Upload a book</h2>
+    <div class="fields"><label>Title<input id="new-title"></label><label>Author<input></label><label class="wide">Book file<input id="new-file" type="file" accept=".epub,.pdf,.docx,.txt"></label></div>
+    <p id="selected-file"></p><progress id="upload-progress" max="100" value="0"></progress>
+    <button id="upload-process">Upload and process</button>
+  </section>
+  <div class="workspace">
+    <aside class="catalog"><h2>Books</h2><button class="selected"><strong>Test Book</strong><br><small>Private · pending</small></button></aside>
+    <section class="card">
+      <h2>Book details</h2><div class="fields"><label>Title<input value="Test Book"></label><label>Author<input value="Trusted Author"></label><label class="wide">Description<textarea>Teaching resource</textarea></label></div>
+      <h2>Original document</h2><input id="file" type="file"><div class="actions"><button id="process">Reprocess book</button><button id="preview">Preview extracted content</button></div>
+      <h2>Search Buddy access</h2><div class="fields"><label>Rights basis<select id="rights"><option value="unknown">Unknown — keep private</option><option value="permission_granted">Permission granted</option></select></label><label><input id="ready" type="checkbox"> Ready for indexing</label><label><input id="quotes" type="checkbox"> Permit short grounded excerpts</label></div>
+      <button id="enable">Enable Search Buddy access</button><div id="passages"></div>
+    </section>
+  </div>
+</main>
+<script>
+let processed=false
+const status=document.querySelector('#status')
+document.querySelector('#upload-book').onclick=()=>{document.querySelector('#upload-panel').hidden=false}
+document.querySelector('#new-file').onchange=(event)=>{const file=event.target.files[0];document.querySelector('#selected-file').textContent=file?`${file.name} · ${file.size} bytes`:''}
+document.querySelector('#upload-process').onclick=()=>{const file=document.querySelector('#new-file').files[0];if(!file){status.textContent='Choose a book file.';return}document.querySelector('#upload-progress').value=100;status.textContent='Book uploaded and processed into 3 searchable passages.'}
+document.querySelector('#process').onclick=()=>{processed=true;status.textContent='Extraction complete: 3 searchable passages.'}
+document.querySelector('#preview').onclick=()=>{document.querySelector('#passages').textContent='Page 1 · Sample grounded passage'}
+document.querySelector('#enable').onclick=()=>{const ok=processed&&document.querySelector('#ready').checked&&document.querySelector('#quotes').checked&&document.querySelector('#rights').value!=='unknown';status.textContent=ok?'Search Buddy access enabled for eligible excerpts.':'Complete processing and rights checks first.'}
+</script>

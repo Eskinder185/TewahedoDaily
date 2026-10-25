@@ -1,21 +1,35 @@
-import { useCallback, useMemo, useState, type CSSProperties } from 'react'
+import { useCallback, useMemo, useRef, useState, type ChangeEvent, type CSSProperties } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   assignMezmurToZemari,
   getZemari,
   listMezmursForZemari,
   listZemaris,
+  moveZemariToTrash,
   removeMezmurFromZemari,
   saveZemari,
   searchMezmursToLink,
   slugifyZemari,
+  validateZemariImportAccess,
   zemariImagePreviewUrl,
+  type ZemariImportAccessCheck,
   type ZemariListFilters,
   type ZemariMezmurLink,
   type ZemariRow,
 } from '../../lib/cms/zemariAdminService'
+import {
+  buildPresetStagedZemarisWithLyrics,
+  buildStagedZemarisFromCsvText,
+  importSelectedStagedZemaris,
+  PRESET_ZEMARIS_WITH_LYRICS,
+  summarizeZemariImportDryRun,
+  validateStagedZemariRows,
+  type ZemariImportDryRunSummary,
+  type StagedZemariCsvRow,
+} from '../../lib/cms/zemariCsvImport'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { useAsync } from '../../lib/cms/useAsync'
+import { useAuth } from '../../lib/auth/useAuth'
 import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice } from './AdminUi'
 import { validateZemariSocialUrl } from '../../lib/publicContent/zemariSocialLinks'
@@ -38,10 +52,16 @@ function Thumb({ path, alt }: { path?: string | null; alt?: string | null }) {
 }
 
 export function ZemarisList() {
+  const { profile } = useAuth()
+  const canTrash = profile?.role === 'admin' || profile?.role === 'super_admin'
   const [search, setSearch] = useState('')
   const [status, setStatus] = useState<ZemariListFilters['status']>('all')
   const [featured, setFeatured] = useState(false)
   const [hasMezmurs, setHasMezmurs] = useState<ZemariListFilters['hasMezmurs']>('all')
+  const [showImportPanel, setShowImportPanel] = useState(false)
+  const [message, setMessage] = useState('')
+  const [error, setError] = useState('')
+  const [busyId, setBusyId] = useState('')
 
   const filters = useMemo(
     () => ({ search, status, featured: featured || undefined, hasMezmurs }),
@@ -49,6 +69,25 @@ export function ZemarisList() {
   )
 
   const result = useAsync(useCallback(() => listZemaris(filters), [filters]))
+  const allZemarisResult = useAsync(useCallback(() => listZemaris(), []))
+
+  async function moveToTrash(row: ZemariRow) {
+    const count = row.mezmur_count || 0
+    if (!window.confirm(`Move “${row.name}” to Trash? ${count} associated Mezmur${count === 1 ? '' : 's'} will remain intact.`)) return
+    setBusyId(row.id)
+    setMessage('')
+    setError('')
+    try {
+      await moveZemariToTrash(row)
+      setMessage(`${row.name} was moved to Trash. Its ${count} associated Mezmur${count === 1 ? '' : 's'} were not deleted.`)
+      result.reload()
+      allZemarisResult.reload()
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : 'Unable to move this Zemari to Trash.')
+    } finally {
+      setBusyId('')
+    }
+  }
 
   return (
     <>
@@ -58,10 +97,29 @@ export function ZemarisList() {
           <h1>Zemari Library</h1>
           <p className={s.muted}>Manage singers and the Mezmurs associated with them.</p>
         </div>
-        <Link className={s.primary} to={`${ADMIN_PATHS.hymnsZemaris}/new`}>
-          + Add Zemari
-        </Link>
+        <div className={s.actions}>
+          <button
+            type="button"
+            onClick={() => setShowImportPanel((prev) => !prev)}
+          >
+            {showImportPanel ? 'Close Bulk Import' : 'Bulk Import Zemaris CSV'}
+          </button>
+          <Link className={s.primary} to={`${ADMIN_PATHS.hymnsZemaris}/new`}>
+            + Add Zemari
+          </Link>
+          <Link to="/admin/hymns/trash">Trash</Link>
+        </div>
       </div>
+
+      {showImportPanel ? (
+        <ZemariCsvImportPanel
+          existingZemaris={allZemarisResult.data || result.data || []}
+          onImported={() => {
+            result.reload()
+            allZemarisResult.reload()
+          }}
+        />
+      ) : null}
 
       <div className={s.fields} style={{ marginBottom: '1rem' }}>
         <label>
@@ -106,6 +164,8 @@ export function ZemarisList() {
       </div>
 
       <AsyncNotice {...result} retry={result.reload} />
+      {message ? <p role="status" className={s.success}>{message}</p> : null}
+      {error ? <p role="alert" className={s.error}>{error}</p> : null}
 
       {result.data && !result.data.length ? (
         <div className={s.card}>
@@ -152,6 +212,16 @@ export function ZemarisList() {
                     <Link to={`/practice/zemari/${row.slug}`} target="_blank" rel="noreferrer">
                       Public
                     </Link>
+                    {canTrash ? (
+                      <button
+                        type="button"
+                        className={s.danger}
+                        disabled={Boolean(busyId)}
+                        onClick={() => void moveToTrash(row)}
+                      >
+                        {busyId === row.id ? 'Moving…' : 'Move to Trash'}
+                      </button>
+                    ) : null}
                   </div>
                 </div>
               </div>
@@ -160,6 +230,490 @@ export function ZemarisList() {
         </div>
       ) : null}
     </>
+  )
+}
+
+function ZemariCsvImportPanel({
+  existingZemaris,
+  onImported,
+}: {
+  existingZemaris: ZemariRow[]
+  onImported: () => void
+}) {
+  const [rows, setRows] = useState<StagedZemariCsvRow[]>(() =>
+    buildPresetStagedZemarisWithLyrics(existingZemaris),
+  )
+  const [sourceLabel, setSourceLabel] = useState(
+    `Preset: ${PRESET_ZEMARIS_WITH_LYRICS.length} source-derived Zemari candidates`,
+  )
+  const [filterSearch, setFilterSearch] = useState('')
+  const [onlyNew, setOnlyNew] = useState(false)
+  const [importStatus, setImportStatus] = useState<'published' | 'draft'>('draft')
+  const [busy, setBusy] = useState(false)
+  const [progressText, setProgressText] = useState('')
+  const [summaryMessage, setSummaryMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [dryRun, setDryRun] = useState<ZemariImportDryRunSummary | null>(null)
+  const [accessCheck, setAccessCheck] = useState<ZemariImportAccessCheck | null>(null)
+  const [importLog, setImportLog] = useState<string[]>([])
+  const cancelRef = useRef<AbortController | null>(null)
+
+  const validatedRows = useMemo(
+    () => validateStagedZemariRows(rows, existingZemaris),
+    [rows, existingZemaris],
+  )
+
+  const filteredRows = useMemo(() => {
+    const q = filterSearch.trim().toLowerCase()
+    return validatedRows.filter((r) => {
+      if (onlyNew && r.alreadyExists) return false
+      if (!q) return true
+      return (
+        r.name.toLowerCase().includes(q) ||
+        r.name_amharic.toLowerCase().includes(q) ||
+        r.slug.toLowerCase().includes(q)
+      )
+    })
+  }, [validatedRows, filterSearch, onlyNew])
+
+  const selectedReadyCount = useMemo(
+    () =>
+      validatedRows.filter(
+        (r) =>
+          r.selected &&
+          !r.alreadyExists &&
+          !r.potentialDuplicate &&
+          !r.validationError &&
+          r.reviewWarnings.length === 0,
+      ).length,
+    [validatedRows],
+  )
+
+  const alreadyExistingCount = useMemo(
+    () => validatedRows.filter((r) => r.alreadyExists).length,
+    [validatedRows],
+  )
+
+  async function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setErrorMessage('')
+    setSummaryMessage('')
+    try {
+      const text = await file.text()
+      const staged = buildStagedZemarisFromCsvText(text, existingZemaris)
+      if (!staged.length) {
+        setErrorMessage('No valid individual Zemari rows found in the uploaded CSV.')
+        return
+      }
+      setRows(staged)
+      setDryRun(null)
+      setAccessCheck(null)
+      setSourceLabel(`Uploaded CSV: ${file.name} (${staged.length} Zemaris)`)
+    } catch (err) {
+      setErrorMessage(err instanceof Error ? err.message : 'Failed to parse CSV file.')
+    }
+  }
+
+  function loadPresetWithLyrics() {
+    setErrorMessage('')
+    setSummaryMessage('')
+    const staged = buildPresetStagedZemarisWithLyrics(existingZemaris)
+    setRows(staged)
+    setSourceLabel(
+      `Preset: ${PRESET_ZEMARIS_WITH_LYRICS.length} source-derived Zemari candidates`,
+    )
+    setDryRun(null)
+    setAccessCheck(null)
+  }
+
+  function updateRow(rowNumber: number, patch: Partial<StagedZemariCsvRow>) {
+    setDryRun(null)
+    setRows((prev) =>
+      prev.map((row) => (row.rowNumber === rowNumber ? { ...row, ...patch } : row)),
+    )
+  }
+
+  function selectAllNew(selected: boolean) {
+    const existingSlugs = new Set(existingZemaris.map((z) => z.slug.toLowerCase()))
+    const existingAmharic = new Set(
+      existingZemaris.map((z) => (z.name_amharic || '').trim()).filter(Boolean),
+    )
+    setRows((prev) =>
+      prev.map((r) => {
+        const exists =
+          existingSlugs.has(r.slug.toLowerCase()) ||
+          Boolean(r.name_amharic && existingAmharic.has(r.name_amharic.trim()))
+        return {
+          ...r,
+          selected:
+            exists || r.potentialDuplicate || Boolean(r.validationError) || r.reviewWarnings.length > 0
+              ? false
+              : selected,
+        }
+      }),
+    )
+  }
+
+  async function runDryRunValidation() {
+    setBusy(true)
+    setErrorMessage('')
+    setSummaryMessage('')
+    setProgressText('Validating staff access and database readiness…')
+    try {
+      const access = await validateZemariImportAccess()
+      const checked = validateStagedZemariRows(rows, existingZemaris)
+      const summary = summarizeZemariImportDryRun(checked, importStatus)
+      setRows(checked)
+      setAccessCheck(access)
+      setDryRun(summary)
+      if (access.canInsertZemaris === false || !access.isStaff) {
+        setErrorMessage('Your account can review this import, but it cannot create Zemari profiles.')
+      } else {
+        setSummaryMessage(
+          `Validation complete: ${summary.ready} ready, ${summary.alreadyInDatabase} already present, ${summary.potentialDuplicates} possible duplicates, ${summary.invalid} invalid. No records were created.`,
+        )
+      }
+    } catch (err) {
+      setAccessCheck(null)
+      setDryRun(null)
+      setErrorMessage(err instanceof Error ? err.message : 'Import validation failed.')
+    } finally {
+      setProgressText('')
+      setBusy(false)
+    }
+  }
+
+  async function runBulkImport(retryFailedOnly = false) {
+    if (!dryRun || !accessCheck) {
+      setErrorMessage('Run Validate Import before creating any profiles.')
+      return
+    }
+    setBusy(true)
+    setErrorMessage('')
+    setSummaryMessage('')
+    setProgressText('Starting Zemari import…')
+    const controller = new AbortController()
+    cancelRef.current = controller
+    try {
+      const toImport = validatedRows.filter(
+        (r) =>
+          (retryFailedOnly ? r.importState === 'failed' : r.selected) &&
+          !r.alreadyExists &&
+          !r.potentialDuplicate &&
+          !r.validationError &&
+          r.reviewWarnings.length === 0,
+      )
+      const outcome = await importSelectedStagedZemaris(toImport, {
+        targetStatus: importStatus,
+        signal: controller.signal,
+        onProgress: (completed, total, currentName, state, progressRow) => {
+          setProgressText(
+            `Importing Zemaris (${completed} / ${total})${currentName ? ` · ${currentName}` : ''}…`,
+          )
+          setRows((current) =>
+            current.map((row) =>
+              row.stagingId === progressRow.stagingId
+                ? {
+                    ...row,
+                    importState: state,
+                    importError: state === 'failed' ? row.importError : null,
+                  }
+                : row,
+            ),
+          )
+        },
+      })
+      setProgressText('')
+      setRows((current) =>
+        current.map((row) => {
+          if (outcome.imported.includes(row.slug)) {
+            return {
+              ...row,
+              selected: false,
+              alreadyExists: true,
+              importState: 'imported',
+              importError: null,
+            }
+          }
+          const failure = outcome.failed.find((item) => item.slug === row.slug)
+          if (failure) return { ...row, importState: 'failed', importError: failure.error }
+          return row
+        }),
+      )
+      setImportLog((current) => [
+        `${new Date().toLocaleTimeString()}: ${outcome.imported.length} created, ${outcome.skipped.length} skipped, ${outcome.failed.length} failed${outcome.cancelled ? ', cancelled' : ''}.`,
+        ...outcome.failed.map((item) => `${item.name}: ${item.error}`),
+        ...current,
+      ].slice(0, 30))
+      if (outcome.failed.length > 0) {
+        setErrorMessage(
+          `Imported ${outcome.imported.length} Zemaris; ${outcome.failed.length} failed (${outcome.failed[0].name}: ${outcome.failed[0].error}).`,
+        )
+      } else if (outcome.cancelled) {
+        setSummaryMessage(`Import stopped safely after creating ${outcome.imported.length} profiles.`)
+      } else {
+        setSummaryMessage(`Successfully imported ${outcome.imported.length} Zemaris as ${importStatus}.`)
+      }
+      onImported()
+    } catch (err) {
+      setProgressText('')
+      setErrorMessage(err instanceof Error ? err.message : 'Bulk import failed.')
+    } finally {
+      cancelRef.current = null
+      setBusy(false)
+    }
+  }
+
+  return (
+    <section className={s.card} style={{ marginBottom: '1.5rem' }}>
+      <h2>Bulk Import Zemaris</h2>
+      <p className={s.muted}>
+        Review 185 source-derived Zemari candidates whose Mezmurs have lyrics, or upload{' '}
+        <code>zemaris_with_lyrics.csv</code> / <code>zemaris.csv</code>. The source proves that the
+        names occur in the imported catalog; it does not independently verify every identity.
+        Validate first, review possible duplicates, then import selected profiles.
+      </p>
+
+      <div className={s.fields} style={{ marginTop: '0.75rem', marginBottom: '0.75rem' }}>
+        <label>
+          Upload Zemaris CSV (optional)
+          <input
+            type="file"
+            accept=".csv,text/csv"
+            aria-label="Upload Zemaris CSV"
+            onChange={(e) => void handleFileChange(e)}
+          />
+        </label>
+        <label>
+          Filter list
+          <input
+            value={filterSearch}
+            onChange={(e) => setFilterSearch(e.target.value)}
+            placeholder="Filter by Amharic, English, or slug"
+          />
+        </label>
+        <label>
+          Import status
+          <select
+            value={importStatus}
+            onChange={(e) => {
+              setImportStatus(e.target.value as 'published' | 'draft')
+              setDryRun(null)
+            }}
+          >
+            <option value="draft">Draft — recommended</option>
+            <option value="published">Published — editorially confirmed profiles only</option>
+          </select>
+        </label>
+        <label className={s.check}>
+          <input
+            type="checkbox"
+            checked={onlyNew}
+            onChange={(e) => setOnlyNew(e.target.checked)}
+          />
+          Hide already-existing Zemaris ({alreadyExistingCount})
+        </label>
+      </div>
+
+      <div className={s.actions} style={{ marginBottom: '0.75rem', flexWrap: 'wrap' }}>
+        <button type="button" onClick={loadPresetWithLyrics} disabled={busy}>
+          Load 185 Zemaris (With Lyrics)
+        </button>
+        <button type="button" onClick={() => selectAllNew(true)} disabled={busy}>
+          Select All New
+        </button>
+        <button type="button" onClick={() => selectAllNew(false)} disabled={busy}>
+          Clear Selection
+        </button>
+        <button type="button" onClick={() => void runDryRunValidation()} disabled={busy}>
+          {busy && progressText.startsWith('Validating') ? 'Validating…' : 'Validate Import'}
+        </button>
+        <button
+          type="button"
+          className={s.primary}
+          disabled={
+            busy ||
+            selectedReadyCount === 0 ||
+            !dryRun ||
+            accessCheck?.canInsertZemaris === false
+          }
+          onClick={() => void runBulkImport(false)}
+        >
+          {busy
+            ? progressText || 'Importing…'
+            : `Import ${selectedReadyCount} Selected Zemaris`}
+        </button>
+        {busy && cancelRef.current ? (
+          <button type="button" onClick={() => cancelRef.current?.abort()}>
+            Stop safely
+          </button>
+        ) : null}
+        {!busy && validatedRows.some((row) => row.importState === 'failed') ? (
+          <button type="button" onClick={() => void runBulkImport(true)}>
+            Retry failed only
+          </button>
+        ) : null}
+      </div>
+
+      {dryRun ? (
+        <div
+          className={s.card}
+          aria-label="Import validation summary"
+          style={{ marginBottom: '0.75rem' }}
+        >
+          <strong>Validation summary — no database writes</strong>
+          <div className={s.actions} style={{ marginTop: '0.5rem', flexWrap: 'wrap' }}>
+            <span>Total: {dryRun.total}</span>
+            <span>Valid: {dryRun.valid}</span>
+            <span>Already present: {dryRun.alreadyInDatabase}</span>
+            <span>Possible duplicates: {dryRun.potentialDuplicates}</span>
+            <span>Needs review: {dryRun.manualReview}</span>
+            <span>Invalid: {dryRun.invalid}</span>
+            <strong>Ready: {dryRun.ready}</strong>
+          </div>
+          <p className={s.muted} style={{ marginBottom: 0 }}>
+            Signed in as {accessCheck?.profileRole || 'unknown role'}.
+            {accessCheck?.warning
+              ? ` ${accessCheck.warning}`
+              : ' Staff and INSERT capability checks passed.'}
+          </p>
+        </div>
+      ) : null}
+
+      <p className={s.muted} style={{ marginBottom: '0.75rem' }}>
+        Source: <strong>{sourceLabel}</strong> · Showing {filteredRows.length} of{' '}
+        {validatedRows.length} · <strong>{selectedReadyCount}</strong> selected &amp; ready to
+        import · {alreadyExistingCount} already in database
+      </p>
+
+      {errorMessage ? (
+        <p role="alert" className={s.error}>
+          {errorMessage}
+        </p>
+      ) : null}
+      {summaryMessage ? (
+        <p role="status" className={s.success}>
+          {summaryMessage}
+        </p>
+      ) : null}
+
+      <div
+        style={{
+          maxHeight: 420,
+          overflowY: 'auto',
+          border: '1px solid var(--color-border, #e2d9c8)',
+          borderRadius: 8,
+          padding: '0.5rem',
+        }}
+      >
+        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem' }}>
+          <thead>
+            <tr style={{ textAlign: 'left', borderBottom: '1px solid var(--color-border, #e2d9c8)' }}>
+              <th style={{ padding: '0.4rem' }}>Import</th>
+              <th style={{ padding: '0.4rem' }}>#</th>
+              <th style={{ padding: '0.4rem' }}>Amharic Name (name_amharic)</th>
+              <th style={{ padding: '0.4rem' }}>English / Transliterated Name (name)</th>
+              <th style={{ padding: '0.4rem' }}>Slug</th>
+              <th style={{ padding: '0.4rem' }}>Mezmurs w/ Lyrics</th>
+              <th style={{ padding: '0.4rem' }}>State</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredRows.map((row) => (
+              <tr
+                key={row.rowNumber}
+                style={{
+                  borderBottom: '1px solid var(--color-border, #eee6d8)',
+                  opacity: row.alreadyExists ? 0.65 : 1,
+                }}
+              >
+                <td style={{ padding: '0.4rem' }}>
+                  <input
+                    type="checkbox"
+                    checked={row.selected && !row.alreadyExists}
+                    disabled={
+                      busy ||
+                      row.alreadyExists ||
+                      row.potentialDuplicate ||
+                      Boolean(row.validationError) ||
+                      row.reviewWarnings.length > 0
+                    }
+                    aria-label={`Select Zemari row ${row.rowNumber}`}
+                    onChange={(e) => updateRow(row.rowNumber, { selected: e.target.checked })}
+                  />
+                </td>
+                <td style={{ padding: '0.4rem' }}>{row.rowNumber}</td>
+                <td style={{ padding: '0.4rem' }}>
+                  <input
+                    lang="am"
+                    value={row.name_amharic}
+                    disabled={busy || row.alreadyExists}
+                    aria-label={`Amharic name Zemari row ${row.rowNumber}`}
+                    onChange={(e) => updateRow(row.rowNumber, { name_amharic: e.target.value })}
+                    style={{ width: '100%' }}
+                  />
+                </td>
+                <td style={{ padding: '0.4rem' }}>
+                  <input
+                    value={row.name}
+                    disabled={busy || row.alreadyExists}
+                    aria-label={`English name Zemari row ${row.rowNumber}`}
+                    onChange={(e) => {
+                      const nextName = e.target.value
+                      updateRow(row.rowNumber, {
+                        name: nextName,
+                        slug: slugifyZemari(nextName) || row.slug,
+                      })
+                    }}
+                    style={{ width: '100%' }}
+                  />
+                </td>
+                <td style={{ padding: '0.4rem' }}>
+                  <input
+                    value={row.slug}
+                    disabled={busy || row.alreadyExists}
+                    aria-label={`Slug Zemari row ${row.rowNumber}`}
+                    onChange={(e) =>
+                      updateRow(row.rowNumber, { slug: slugifyZemari(e.target.value) })
+                    }
+                    style={{ width: '100%', fontFamily: 'monospace' }}
+                  />
+                </td>
+                <td style={{ padding: '0.4rem' }}>
+                  {row.mezmurs_with_lyrics_count} / {row.mezmur_count}
+                </td>
+                <td style={{ padding: '0.4rem' }}>
+                  {row.alreadyExists ? (
+                    <span className={s.muted}>Already in DB</span>
+                  ) : row.potentialDuplicate ? (
+                    <span className={s.error} title={row.duplicateMatches.join('\n')}>
+                      Possible duplicate — review
+                    </span>
+                  ) : row.validationError ? (
+                    <span className={s.error}>{row.validationError}</span>
+                  ) : row.reviewWarnings.length ? (
+                    <span className={s.error} title={row.reviewWarnings.join('\n')}>Needs review</span>
+                  ) : row.importState === 'imported' ? (
+                    <span>Imported</span>
+                  ) : row.importState === 'failed' ? (
+                    <span className={s.error} title={row.importError || ''}>Failed</span>
+                  ) : (
+                    <span>Ready</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {importLog.length ? (
+        <details style={{ marginTop: '0.75rem' }}>
+          <summary>Import activity ({importLog.length})</summary>
+          <ul>{importLog.map((entry, index) => <li key={`${entry}-${index}`}>{entry}</li>)}</ul>
+        </details>
+      ) : null}
+    </section>
   )
 }
 

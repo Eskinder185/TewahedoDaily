@@ -249,9 +249,9 @@ def test_search_buddy_retrieval_excludes_unapproved():
 
 def test_editorial_routes_disabled_by_default():
     client = TestClient(main.app)
-    # Router not mounted when ENABLE_EDITORIAL_PREVIEW is off (default).
+    # The route is mounted for useful diagnostics but still fails closed.
     response = client.get("/api/editorial/books")
-    assert response.status_code in {404, 405}
+    assert response.status_code == 401
 
 
 def test_editorial_routes_require_token(monkeypatch, tmp_path):

@@ -25,7 +25,11 @@ def test_research_has_no_public_route():
     import main
     client=TestClient(main.app)
     assert client.get("/api/rag-eval/search?q=baptism").status_code==404
-    assert all("book_rag_research" not in getattr(r.endpoint,"__module__","") for r in main.app.routes)
+    assert all(
+        "book_rag_research"
+        not in getattr(getattr(r, "endpoint", None), "__module__", "")
+        for r in main.app.routes
+    )
 
 
 def test_benchmark_does_not_fabricate_human_review():

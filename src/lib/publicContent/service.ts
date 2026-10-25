@@ -42,13 +42,12 @@ export type PublicMezmur = CmsTables['mezmur']['Row'] &
     category_name: string | null
     languages: string[]
     tags: PublicTag[]
-    structured_lyrics?: unknown
-    lyrics_language?: string | null
-    source_info?: string | null
     rights_status?: string | null
-    external_lyrics_url?: string | null
-    last_verified_at?: string | null
-    related_content?: unknown
+    lyrics_geez?: string | null
+    lyrics_transliteration?: string | null
+    lyrics_tigrinya?: string | null
+    primary_language?: string | null
+    has_stored_lyrics?: boolean | null
   }
 
 export type MezmurCard = Pick<
@@ -223,6 +222,7 @@ export async function detail(slug: string): Promise<PublicMezmur | null> {
         description: imported.description,
         lyrics_amharic: imported.lyrics_amharic,
         transliteration: imported.lyrics_transliteration,
+        lyrics_transliteration: imported.lyrics_transliteration,
         lyrics_english: imported.lyrics_english,
         lyrics_geez: imported.lyrics_geez,
         lyrics_oromo: imported.lyrics_oromo,
@@ -249,18 +249,14 @@ export async function detail(slug: string): Promise<PublicMezmur | null> {
         saint_tags: [],
         themes: [],
         search_keywords: imported.search_keywords,
-        source: null,
+        source: imported.source_url,
         singer_name: imported.singer_name,
         category_name: null,
         languages: imported.language ? [imported.language] : [],
         tags: [],
-        structured_lyrics: imported.structured_lyrics,
-        lyrics_language: imported.lyrics_language,
-        source_info: imported.source_info || imported.source_notes,
-        rights_status: imported.rights_status,
-        external_lyrics_url: imported.external_lyrics_url,
-        last_verified_at: imported.last_verified_at,
-        related_content: imported.related_content,
+        primary_language: imported.primary_language || imported.language || null,
+        rights_status: imported.rights_status || 'owned',
+        has_stored_lyrics: imported.has_stored_lyrics,
       } as unknown as PublicMezmur
     }
   } catch (cause) {

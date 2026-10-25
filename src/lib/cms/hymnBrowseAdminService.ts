@@ -5,8 +5,10 @@
 import { db, errorMessage } from './mezmurService'
 import { resolveContentMediaUrl } from './contentMedia'
 import { requireCmsStaffSession } from './cmsStaffAuth'
+import { moveHymnContentToTrash } from './contentTrashService'
 
 export type HymnCollectionRow = {
+  import_id: string
   id: string
   slug: string
   title: string
@@ -29,6 +31,7 @@ export type HymnCollectionRow = {
 }
 
 export type HymnSectionRow = {
+  import_id: string
   id: string
   collection_id: string
   collection_slug?: string
@@ -75,10 +78,10 @@ const T = {
 } as const
 
 const COLLECTION_SELECT =
-  'collection_id, collection_slug, title, title_amharic, description, description_amharic, image_path, image_alt, collection_type, sort_order, is_featured, status'
+  'import_id, collection_id, collection_slug, title, title_amharic, description, description_amharic, image_path, image_alt, collection_type, sort_order, is_featured, status'
 
 const SECTION_SELECT =
-  'section_id, section_slug, collection_slug, parent_section_slug, title, title_amharic, description, description_amharic, image_path, image_alt, section_type, source_entity_type, source_entity_slug, sort_order, is_featured, status'
+  'import_id, section_id, section_slug, collection_slug, parent_section_slug, title, title_amharic, description, description_amharic, image_path, image_alt, section_type, source_entity_type, source_entity_slug, sort_order, is_featured, status'
 
 function txt(value: unknown): string {
   return String(value ?? '').trim()
@@ -139,6 +142,7 @@ async function requireStaffSession(): Promise<void> {
 function mapCollection(row: Record<string, unknown>): HymnCollectionRow {
   const slug = txt(row.collection_slug)
   return {
+    import_id: txt(row.import_id),
     id: txt(row.collection_id) || slug,
     slug,
     title: txt(row.title) || slug,
@@ -158,6 +162,7 @@ function mapSection(row: Record<string, unknown>): HymnSectionRow {
   const collectionSlug = txt(row.collection_slug)
   const slug = txt(row.section_slug)
   return {
+    import_id: txt(row.import_id),
     id: txt(row.section_id) || `${collectionSlug}:${slug}`,
     collection_id: collectionSlug,
     collection_slug: collectionSlug,
@@ -176,7 +181,7 @@ function mapSection(row: Record<string, unknown>): HymnSectionRow {
 }
 
 export async function listHymnCollections(includeArchived = true): Promise<HymnCollectionRow[]> {
-  let query = db().from(T.collections as never).select(COLLECTION_SELECT).order('sort_order')
+  let query = db().from(T.collections as never).select(COLLECTION_SELECT).is('deleted_at', null).order('sort_order')
   if (!includeArchived) query = query.neq('status', 'archived')
   const { data, error } = await query
   if (error) throw new Error(errorMessage(error))
@@ -320,6 +325,7 @@ export async function listHymnSectionsForCollection(collectionId: string): Promi
     .from(T.sections as never)
     .select(SECTION_SELECT)
     .eq('collection_slug', slug)
+    .is('deleted_at', null)
     .order('sort_order')
   if (error) throw new Error(errorMessage(error))
   return ((data || []) as Record<string, unknown>[]).map(mapSection)
@@ -474,33 +480,29 @@ export async function saveHymnBrowseGroupItem(
   )
 }
 
-export async function removeHymnSection(id: string): Promise<void> {
-  const { error } = await db().from(T.sections as never).delete().eq('section_id', id)
-  if (error) {
-    // Fallback composite id "collection:section"
-    if (id.includes(':')) {
-      const [collectionSlug, sectionSlug] = id.split(':')
-      const retry = await db()
-        .from(T.sections as never)
-        .delete()
-        .eq('collection_slug', collectionSlug)
-        .eq('section_slug', sectionSlug)
-      if (retry.error) throw new Error(errorMessage(retry.error))
-      return
-    }
-    throw new Error(errorMessage(error))
-  }
+export async function removeHymnSection(section: Pick<HymnSectionRow, 'import_id'>): Promise<void> {
+  if (!section.import_id) throw new Error('This section has no stable import identifier. Reload before moving it to Trash.')
+  await moveHymnContentToTrash('section', section.import_id)
+}
+
+export async function moveHymnCollectionToTrash(collection: Pick<HymnCollectionRow, 'import_id'>): Promise<void> {
+  if (!collection.import_id) throw new Error('This collection has no stable import identifier. Reload before moving it to Trash.')
+  await moveHymnContentToTrash('collection', collection.import_id)
 }
 
 /** @deprecated Prefer removeHymnSection */
 export async function removeHymnBrowseGroupItem(id: string): Promise<void> {
-  return removeHymnSection(id)
+  const rows = await listAllHymnSections()
+  const section = rows.find((row) => row.id === id)
+  if (!section) throw new Error('Section not found.')
+  return removeHymnSection(section)
 }
 
 export async function listAllHymnSections(): Promise<HymnSectionRow[]> {
   const { data, error } = await db()
     .from(T.sections as never)
     .select(SECTION_SELECT)
+    .is('deleted_at', null)
     .neq('status', 'archived')
     .order('title')
   if (error) throw new Error(errorMessage(error))

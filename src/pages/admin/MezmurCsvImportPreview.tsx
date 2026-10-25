@@ -730,7 +730,7 @@ export function MezmurCsvImportPreview() {
                     <span
                       className={s.badge}
                       data-status={
-                        row.lyrics_status === 'available' ? 'published' : 'pending_review'
+                        row.lyrics_status === 'available' ? 'published' : 'draft'
                       }
                     >
                       Lyrics: {row.lyrics_status.replace(/_/g, ' ')}
@@ -757,15 +757,6 @@ export function MezmurCsvImportPreview() {
                     ) : (
                       <span className={s.badge} data-status="rejected">
                         Blocked
-                      </span>
-                    )}
-                    {row.review_required && (
-                      <span
-                        className={s.badge}
-                        data-status="pending_review"
-                        style={{ marginLeft: 4 }}
-                      >
-                        Needs Review
                       </span>
                     )}
                     {row.duplicateOfStagingId && (

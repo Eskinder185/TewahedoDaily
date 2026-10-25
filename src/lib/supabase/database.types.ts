@@ -153,6 +153,20 @@ export type Database = {
       save_mezmur: { Args: { payload: Json; tag_ids: string[]; expected_updated_at?: string | null }; Returns: CmsTables['mezmur']['Row'][] }
       cms_version_authors: { Args: Record<string, never>; Returns: { id: string; display_name: string }[] }
       set_cms_member: { Args: { target_user_id: string; new_role: CmsRole | null }; Returns: undefined }
+      activate_church_library_version: { Args: { target_book_id: string; target_version_id: string }; Returns: CmsTables['church_library_books']['Row'] }
+      search_church_library: { Args: { search_query: string; result_limit?: number; search_language?: string | null; query_embedding?: string | null }; Returns: Json }
+      update_church_library_passage: { Args: { p_passage_id: string; p_new_content: string; p_review_status?: string | null; p_reviewer_notes?: string | null; p_expected_revision?: number | null }; Returns: CmsTables['church_library_passages']['Row'] }
+      rollback_church_library_passage: { Args: { p_passage_id: string; p_target_revision: number }; Returns: CmsTables['church_library_passages']['Row'] }
+      save_bible_chapter_draft: { Args: { p_chapter_id: string; p_verses: Json; p_expected_updated_at?: string | null }; Returns: BibleTables['bible_chapter_drafts']['Row'] }
+      publish_bible_chapter_draft: { Args: { p_chapter_id: string; p_note?: string | null }; Returns: BibleTables['bible_chapter_revisions']['Row'] }
+      restore_bible_chapter_revision: { Args: { p_revision_id: string }; Returns: BibleTables['bible_chapter_drafts']['Row'] }
+      apply_mezmur_enrichment_suggestion: { Args: { p_suggestion_id: string }; Returns: Json }
+      bulk_publish_mezmur_imports: { Args: { p_import_ids: string[] }; Returns: Json }
+      update_bible_edition_metadata: { Args: { p_edition_id: string; p_name: string; p_language_code: string; p_source_edition: string; p_attribution: string; p_rights_status: string; p_canon_code: string; p_numbering_scheme: string }; Returns: BibleTables['bible_editions']['Row'] }
+      create_bible_edition: { Args: { p_code: string; p_name: string; p_language_code: string; p_source_edition: string; p_attribution: string; p_rights_status: string; p_canon_code: string; p_numbering_scheme: string }; Returns: BibleTables['bible_editions']['Row'] }
+      start_bible_import: { Args: { p_file_name: string; p_format: string; p_mode: string; p_total_chapters: number }; Returns: string }
+      finish_bible_import: { Args: { p_job_id: string; p_processed: number; p_created: number; p_updated: number; p_skipped: number; p_errors: Json }; Returns: BibleTables['bible_import_jobs']['Row'] }
+      stage_bible_import_chapter: { Args: { p_job_id: string; p_edition_code: string; p_book_slug: string; p_chapter_number: number; p_verses: Json; p_source_name?: string | null }; Returns: Json }
     }
     Enums: {
       cms_role: CmsRole

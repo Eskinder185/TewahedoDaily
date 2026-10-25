@@ -10,7 +10,7 @@ import { adminEditPath } from './adminPaths'
 export function AdminDashboard() {
   const result = useAsync(useCallback(() => getDashboard(), []))
   const { profile } = useAuth()
-  const names = ['Total Mezmur', 'Published', 'Drafts', 'Pending Review', 'Saints', 'Articles']
+  const names = ['Total Mezmur', 'Published', 'Drafts', 'Saints', 'Articles']
   return <>
     <div className={s.heading}><div><p className={s.eyebrow}>TEWAHEDO DAILY CMS</p><h1>Dashboard</h1><p className={s.muted}>Your content and editorial activity at a glance.</p></div><Link className={s.primary} to="/admin/hymns/mezmur/new">+ Add Mezmur</Link></div>
     {profile?.role === 'contributor' && <p className={s.notice}>Counts include published content and your own submissions. Drafts by other contributors are private.</p>}

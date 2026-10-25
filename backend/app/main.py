@@ -20,16 +20,18 @@ import security as sec
 import chat_intelligence as intel
 import ethiopian_calendar as ethcal
 import doctrinal_categories as doctrine
-from editorial.router import editorial_preview_enabled, router as editorial_router
+from editorial.router import router as editorial_router
+from editorial.church_library_router import router as church_library_router
+from editorial.mezmur_bulk_router import router as mezmur_bulk_router
 
 
 app = FastAPI(title="Tewahedo AI")
 
-# Private editorial book preview/approval API. Disabled unless
-# ENABLE_EDITORIAL_PREVIEW=1 and EDITORIAL_PREVIEW_TOKEN is set.
-# Does not publish books or ingest into production Qdrant.
-if editorial_preview_enabled():
-    app.include_router(editorial_router)
+# Keep routers mounted in every environment. Legacy preview handlers still
+# fail closed when ENABLE_EDITORIAL_PREVIEW is off, but the route is diagnosable.
+app.include_router(editorial_router)
+app.include_router(church_library_router)
+app.include_router(mezmur_bulk_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -1577,7 +1579,7 @@ async def search_hymns(
         "lyrics_amharic,lyrics_transliteration,"
         "lyrics_english,lyrics_geez,lyrics_oromo,"
         "search_keywords,youtube_url,audio_url,"
-        "zemari_id,status,review_status"
+        "zemari_id,status,rights_status"
     )
 
     collected = {}
@@ -1588,6 +1590,12 @@ async def search_hymns(
             slug = row.get("slug")
 
             if not slug:
+                continue
+
+            if str(row.get("status") or "").strip().lower() != "published":
+                continue
+
+            if str(row.get("rights_status") or "").strip().lower() == "external_only":
                 continue
 
             score = max(
@@ -1716,7 +1724,7 @@ async def search_hymns(
                         "description,description_amharic,"
                         "primary_language,form,"
                         "search_keywords,youtube_url,audio_url,"
-                        "zemari_id,status,review_status"
+                        "zemari_id,status,rights_status"
                     ),
                     "status": "eq.published",
                     "limit": "500",
@@ -1724,6 +1732,10 @@ async def search_hymns(
             )
 
             for row in metadata_rows:
+                if str(row.get("status") or "").strip().lower() != "published":
+                    continue
+                if str(row.get("rights_status") or "").strip().lower() == "external_only":
+                    continue
                 score = score_hymn_candidate(
                     normalized_query,
                     row,
@@ -1830,6 +1842,12 @@ async def search_hymns(
                 slug = row.get("slug")
 
                 if not slug:
+                    continue
+
+                if str(row.get("status") or "").strip().lower() != "published":
+                    continue
+
+                if str(row.get("rights_status") or "").strip().lower() == "external_only":
                     continue
 
                 singer_result_score = max(
@@ -2078,7 +2096,7 @@ async def hymns_by_occasion(
                 "lyrics_amharic,lyrics_transliteration,"
                 "lyrics_english,"
                 "youtube_url,audio_url,zemari_id,"
-                "status,review_status"
+                "status,rights_status"
             ),
             "slug": f"in.({','.join(mezmur_slugs)})",
             "status": "eq.published",
@@ -2088,6 +2106,8 @@ async def hymns_by_occasion(
     row_map = {
         row["slug"]: row
         for row in rows
+        if str(row.get("status") or "").strip().lower() == "published"
+        and str(row.get("rights_status") or "").strip().lower() != "external_only"
     }
 
     results = []

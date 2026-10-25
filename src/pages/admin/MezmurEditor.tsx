@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useBlocker, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
-import type { ContentStatus } from '../../lib/supabase/cms.types'
 import {
   editable,
   emptyMezmur,
@@ -10,20 +9,26 @@ import {
   getTagIds,
   getTaxonomy,
   getVersions,
-  label,
+  mezmurStatusLabel,
   parseVersion,
   saveMezmur,
   slugify,
   type Mezmur,
   type MezmurInput,
+  type MezmurStatus,
   type Version,
 } from '../../lib/cms/mezmurService'
+import {
+  canPublishMezmur,
+  publicationBlockReason,
+} from '../../lib/cms/mezmurPublicationRules'
 import {
   listAllHymnSections,
   listMezmurSectionLinks,
   setMezmurSectionLinks,
 } from '../../lib/cms/hymnBrowseAdminService'
 import { uploadMezmurFile, validateFile } from '../../lib/cms/mediaService'
+import { normalizeMezmurLanguage } from '../../lib/mezmur/mezmurLanguage'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { SearchableMultiSelect } from '../../components/admin/SearchableMultiSelect'
 import { useAsync } from '../../lib/cms/useAsync'
@@ -108,6 +113,11 @@ function validateMedia(input: MezmurInput, row?: Mezmur): string {
   return ''
 }
 
+function sameSelection(left: string[], right: string[]) {
+  const normalize = (values: string[]) => [...new Set(values.map((value) => value.trim()).filter(Boolean))].sort()
+  return JSON.stringify(normalize(left)) === JSON.stringify(normalize(right))
+}
+
 export function MezmurEditor() {
   const { id } = useParams()
   const result = useAsync(
@@ -125,8 +135,8 @@ export function MezmurEditor() {
         : []
       const [categorySlugs, occasionSlugs] = row
         ? await Promise.all([
-            listMezmurCategoryLinks(row.slug).catch(() => []),
-            listMezmurOccasionLinks(row.slug).catch(() => []),
+            listMezmurCategoryLinks(row.import_id).catch(() => []),
+            listMezmurOccasionLinks(row.import_id).catch(() => []),
           ])
         : [[], []]
       if (import.meta.env.DEV) {
@@ -170,7 +180,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const location = useLocation()
   const { profile } = useAuth()
   const admin = profile?.role === 'admin' || profile?.role === 'super_admin'
-  const staff = admin || profile?.role === 'editor'
+  const staff = canPublishMezmur(profile?.role)
   const [row, setRow] = useState<Mezmur | undefined>(initial.row ?? undefined)
   const [input, setInput] = useState<MezmurInput>(() => (initial.row ? editable(initial.row) : emptyMezmur()))
   const [tags, setTags] = useState(initial.tags)
@@ -190,7 +200,11 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const [error, setError] = useState('')
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const [success, setSuccess] = useState(
-    location.state?.saved && initial.row ? `Mezmur saved as ${label(initial.row.status)}.` : '',
+    location.state?.saved && initial.row
+      ? initial.row.status === 'published'
+        ? 'Mezmur published successfully.'
+        : 'Mezmur saved as draft.'
+      : '',
   )
   const [preview, setPreview] = useState(false)
   const [historyRevision, setHistoryRevision] = useState(0)
@@ -199,6 +213,18 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const dirty = JSON.stringify({ input, tags, sectionIds, categorySlugs, occasionSlugs }) !== baseline
   const canEdit = staff || !row || (row.created_by === profile?.id && row.status === 'draft')
   const blocker = useBlocker(() => !bypass.current && (dirty || busy))
+  const currentStatus: MezmurStatus = (row?.status || input.status) === 'published' ? 'published' : 'draft'
+  const publishBlocked = publicationBlockReason({
+    role: profile?.role,
+    rightsStatus: input.rights_status || row?.rights_status,
+    rightsConfirmedAt: row?.publication_approved_at,
+    rightsConfirmedBy: row?.publication_approved_by,
+    youtubeUrl: input.youtube_url,
+    sourceUrl: row?.source_url,
+    title: input.title,
+    slug: input.slug,
+    lyricsAmharic: input.lyrics_amharic,
+  })
 
   useEffect(() => {
     const prevent = (event: BeforeUnloadEvent) => {
@@ -223,7 +249,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
     }
   }
 
-  async function save(status: ContentStatus) {
+  async function save(status: MezmurStatus) {
     const mediaError = validateMedia(input, row)
     if (mediaError) {
       setError(mediaError)
@@ -231,10 +257,18 @@ function EditorForm({ initial }: { initial: EditorData }) {
     }
 
     if (status === 'published') {
+      if (!staff) {
+        setError('An editor, admin, or super admin role is required to publish.')
+        return
+      }
       const { blocking, errors } = validatePublishFields(input)
       setFieldErrors(errors)
       if (blocking) {
         setError(blocking)
+        return
+      }
+      if (publishBlocked) {
+        setError(publishBlocked)
         return
       }
     } else if (!input.title.trim()) {
@@ -247,13 +281,6 @@ function EditorForm({ initial }: { initial: EditorData }) {
       return
     } else {
       setFieldErrors({})
-    }
-
-    if (row?.status === 'published' && status !== 'published' && !window.confirm(`Change published content to ${label(status)}? It will no longer be public.`)) {
-      return
-    }
-    if (['archived', 'rejected'].includes(status) && row?.status !== status && !window.confirm(`${label(status)} this mezmur?`)) {
-      return
     }
 
     const wasCreate = !row
@@ -273,19 +300,44 @@ function EditorForm({ initial }: { initial: EditorData }) {
         occasion: primaryOccasionSlug ? humanizeTaxonomySlug(primaryOccasionSlug) : null,
       }
       const saved = await saveMezmur(payload, tags, row)
-      try {
-        await setMezmurSectionLinks(saved.id, sectionIds, row?.slug)
-      } catch (sectionErr) {
-        if (import.meta.env.DEV) console.warn('[MezmurEditor] section links', sectionErr)
+      const secondaryWarnings: string[] = []
+      const slugChanged = Boolean(row && row.slug !== saved.slug)
+      if (wasCreate || slugChanged || !sameSelection(sectionIds, initial.sectionIds)) {
+        try {
+          await setMezmurSectionLinks(saved.id, sectionIds, row?.slug)
+        } catch (sectionErr) {
+          if (import.meta.env.DEV) console.warn('[MezmurEditor] section links', sectionErr)
+          secondaryWarnings.push('hymn-section links were not updated')
+        }
       }
-      await setMezmurClassificationLinks(saved.slug, categorySlugs, occasionSlugs, row?.slug)
+      if (
+        wasCreate ||
+        slugChanged ||
+        !sameSelection(categorySlugs, initial.categorySlugs) ||
+        !sameSelection(occasionSlugs, initial.occasionSlugs)
+      ) {
+        try {
+          await setMezmurClassificationLinks(saved.import_id, categorySlugs, occasionSlugs)
+        } catch (classificationErr) {
+          if (import.meta.env.DEV) console.warn('[MezmurEditor] classification links', classificationErr)
+          secondaryWarnings.push('category/occasion links were not updated')
+        }
+      }
       setRow(saved)
       const savedInput = { ...editable(saved), category_id: primaryCategorySlug, category: payload.category, occasion: payload.occasion }
       setInput(savedInput)
       setBaseline(JSON.stringify({ input: savedInput, tags, sectionIds, categorySlugs, occasionSlugs }))
       setHistoryRevision((n) => n + 1)
       setFieldErrors({})
-      setSuccess(`Mezmur saved as ${label(saved.status)}.`)
+      const baseSuccess =
+        saved.status === 'published'
+          ? 'Mezmur published successfully.'
+          : 'Mezmur saved as draft.'
+      setSuccess(
+        secondaryWarnings.length
+          ? `${baseSuccess} However, ${secondaryWarnings.join(' and ')}; please retry saving the category, occasion, or section selections.`
+          : baseSuccess,
+      )
       if (wasCreate) {
         bypass.current = true
         navigate(`${ADMIN_PATHS.hymnsMezmur}/${saved.id}/edit`, { replace: true, state: { saved: true } })
@@ -331,18 +383,6 @@ function EditorForm({ initial }: { initial: EditorData }) {
     if (previous.tags) setTags(previous.tags)
     setSuccess('Previous version loaded as a draft. Review the fields and save to apply.')
   }
-
-  const allowedStatuses: ContentStatus[] = staff
-    ? [
-        'draft',
-        'pending_review',
-        'rejected',
-        'archived',
-        ...((admin && !row?.source_submission_id) || row?.status === 'pending_review' || row?.status === 'published'
-          ? (['published'] as const)
-          : []),
-      ]
-    : ['draft', 'pending_review']
 
   const textField = (
     key: Exclude<keyof MezmurInput, 'featured' | 'status' | 'form'>,
@@ -410,7 +450,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
       <form
         onSubmit={(event) => {
           event.preventDefault()
-          void save(input.status)
+          void save('draft')
         }}
       >
         <fieldset disabled={busy || !canEdit}>
@@ -459,6 +499,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   <p>Optional audio, video, and artwork.</p>
                 </div>
                 {textField('youtube_url', 'YouTube URL')}
+                {textField('source_url', 'Source / external link')}
                 <MediaPicker
                   label="Thumbnail"
                   folder="mezmur"
@@ -515,14 +556,15 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   Language
                   <select
                     aria-label="Language"
-                    value={input.language || 'amharic'}
+                    value={normalizeMezmurLanguage(input.language) || ''}
                     onChange={(event) => set('language', event.target.value)}
                   >
-                    <option value="amharic">Amharic</option>
-                    <option value="geez">Ge&apos;ez</option>
-                    <option value="english">English</option>
-                    <option value="oromo">Oromo</option>
-                    <option value="bilingual">Bilingual</option>
+                    <option value="">Unknown / not recorded</option>
+                    <option value="am">Amharic / አማርኛ</option>
+                    <option value="ti">Tigrinya / ትግርኛ</option>
+                    <option value="om">Oromo / Afaan Oromoo</option>
+                    <option value="gez">Geʽez / ግዕዝ</option>
+                    <option value="en">English</option>
                   </select>
                 </label>
                 <label>
@@ -626,42 +668,15 @@ function EditorForm({ initial }: { initial: EditorData }) {
 
               <section className={`${s.card} ${s.fields}`}>
                 <div className={s.sectionHeading}>
-                  <div><span className={s.step}>5</span><h2>Preview & publication</h2></div>
-                  <p>Review the unsaved form exactly as it stands, then choose a workflow state.</p>
+                  <div><span className={s.step}>5</span><h2>Preview &amp; publication</h2></div>
+                  <p>Review the unsaved form exactly as it stands, then save a draft or publish.</p>
                 </div>
                 <button type="button" onClick={() => setPreview(true)}>Open live preview</button>
-                <label>
-                  Status
-                  <select
-                    aria-label="Status"
-                    value={input.status}
-                    onChange={(event) => set('status', event.target.value as ContentStatus)}
-                  >
-                    {!allowedStatuses.includes(input.status) && (
-                      <option value={input.status}>{label(input.status)}</option>
-                    )}
-                    {allowedStatuses.map((status) => (
-                      <option key={status} value={status}>
-                        {label(status)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                {staff && (
-                  <label className={s.check}>
-                    <input
-                      type="checkbox"
-                      checked={input.featured}
-                      onChange={(event) => set('featured', event.target.checked)}
-                    />
-                    Featured
-                  </label>
-                )}
-                {profile?.role === 'editor' && row?.status !== 'pending_review' && row?.status !== 'published' && (
-                  <p className={s.muted}>Submit for review before publishing.</p>
-                )}
                 <p className={s.muted}>
-                  Drafts may be incomplete. Publishing requires transliteration title, slug, and Amharic lyrics.
+                  CMS role: {profile?.role || 'none'} · Status: {mezmurStatusLabel(currentStatus)}
+                </p>
+                <p className={s.muted}>
+                  Drafts are private. Publishing requires a title, slug, and Amharic lyrics.
                 </p>
               </section>
             </aside>
@@ -669,23 +684,16 @@ function EditorForm({ initial }: { initial: EditorData }) {
           {canEdit && (
             <div className={s.footer}>
               <button type="button" onClick={() => void save('draft')}>
-                Save Draft
+                {currentStatus === 'published' ? 'Return to Draft' : 'Save Draft'}
               </button>
-              <button type="button" onClick={() => void save('pending_review')}>
-                Submit for Review
-              </button>
-              <button type="submit">Save changes</button>
-              {staff &&
-                ((admin && !row?.source_submission_id) ||
-                  row?.status === 'pending_review' ||
-                  row?.status === 'published') && (
-                  <button className={s.primary} type="button" onClick={() => void save('published')}>
-                    Publish
-                  </button>
-                )}
-              {staff && row?.status === 'pending_review' && (
-                <button type="button" onClick={() => void save('rejected')}>
-                  Reject
+              {staff && (
+                <button
+                  className={s.primary}
+                  type="button"
+                  onClick={() => void save('published')}
+                  disabled={busy}
+                >
+                  Publish
                 </button>
               )}
               {busy && <span role="status">Saving or uploading…</span>}
@@ -720,12 +728,14 @@ function EditorForm({ initial }: { initial: EditorData }) {
   )
 }
 
-type LyricsKey = 'lyrics_amharic' | 'transliteration' | 'lyrics_english'
+type LyricsKey = 'lyrics_amharic' | 'lyrics_geez' | 'lyrics_english' | 'lyrics_oromo' | 'transliteration'
 
 const LYRIC_TABS: { key: LyricsKey; label: string; lang: string }[] = [
-  { key: 'lyrics_amharic', label: 'Amharic', lang: 'am' },
-  { key: 'transliteration', label: 'Transliteration', lang: 'en' },
+  { key: 'lyrics_amharic', label: 'Amharic (አማርኛ)', lang: 'am' },
+  { key: 'lyrics_geez', label: 'Geʽez (ግዕዝ)', lang: 'gez' },
   { key: 'lyrics_english', label: 'English', lang: 'en' },
+  { key: 'lyrics_oromo', label: 'Oromo (Afaan Oromoo)', lang: 'om' },
+  { key: 'transliteration', label: 'Transliteration (በላቲን ፊደል)', lang: 'en' },
 ]
 
 function LyricsWorkspace({
@@ -839,9 +849,15 @@ function VersionHistory({ id, restore }: { id: string; restore?: (version: Versi
               {result.data?.authors.find((author) => author.id === version.changed_by)?.display_name ||
                 version.changed_by ||
                 'System'}{' '}
-              · {previous?.input.status ? label(previous.input.status) : 'Saved state'}
+              · {previous?.input.status ? mezmurStatusLabel(previous.input.status) : 'Saved state'}
             </summary>
-            <pre>{JSON.stringify(version.snapshot, null, 2)}</pre>
+            {previous && (
+              <div className={s.stack} style={{ marginTop: 8 }}>
+                <p><strong>Title:</strong> {previous.input.title || '—'}</p>
+                {previous.input.title_amharic && <p lang="am"><strong>Amharic title:</strong> {previous.input.title_amharic}</p>}
+                <p><strong>Status:</strong> {mezmurStatusLabel(previous.input.status)}</p>
+              </div>
+            )}
             {restore && previous && (
               <button type="button" onClick={() => restore(version)}>
                 Restore as draft

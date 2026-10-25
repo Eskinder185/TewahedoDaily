@@ -17,10 +17,12 @@ const HYMNS_TABS = [
   { to: '/admin/hymns', label: 'Overview', end: true },
   { to: '/admin/hymns/mezmur', label: 'Mezmur' },
   { to: '/admin/hymns/import', label: 'CSV Import' },
+  { to: '/admin/hymns/bulk', label: 'Bulk Management' },
   { to: '/admin/hymns/browse-groups', label: 'Browse Groups' },
   { to: '/admin/hymns/occasions', label: 'Occasions' },
   { to: '/admin/hymns/categories', label: 'Categories' },
   { to: '/admin/hymns/zemaris', label: 'Zemaris' },
+  { to: '/admin/hymns/trash', label: 'Trash' },
   { to: '/admin/hymns/tags', label: 'Tags' },
 ]
 
@@ -136,6 +138,11 @@ export function HymnsOverview() {
             to: '/admin/hymns/browse-groups',
             label: 'Browse Groups',
             detail: 'Level-1 Hymns Practice discovery cards',
+          },
+          {
+            to: '/admin/hymns/bulk',
+            label: 'Bulk Management',
+            detail: 'Match Zemaris, classify lyrics, review, and safely publish',
           },
           {
             to: '/admin/hymns/occasions',

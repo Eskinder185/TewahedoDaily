@@ -29,6 +29,8 @@ import { ChatComposer } from './ChatComposer'
 import { ChatStarterPrompts } from './ChatStarterPrompts'
 import { CalendarAnswerPane, type CalendarOutcome } from './CalendarAnswerPane'
 import { SourcePassagePane, type DocumentOutcome } from './SourcePassageCard'
+import { ChurchLibrarySources, type ChurchLibraryOutcome } from './ChurchLibrarySources'
+import { searchChurchLibrary } from '../../lib/searchBuddy/churchLibrarySearch'
 import { WebsiteSearchPane, type WebsiteOutcome } from './WebsiteSearchResults'
 import styles from './SearchBuddy.module.css'
 
@@ -65,16 +67,19 @@ export function SearchBuddy() {
   const { uiLocale } = useLocale()
   const { open, setOpen, snapshot, setSnapshot, clearSession } = useSearchBuddy()
 
-  const [draft, setDraft] = useState('')
+  const [draft, setDraft] = useState(() => snapshot.query)
   const [documentOutcome, setDocumentOutcome] = useState<DocumentOutcome>({ kind: 'idle' })
+  const [libraryOutcome, setLibraryOutcome] = useState<ChurchLibraryOutcome>({ kind: 'idle' })
   const [websiteOutcome, setWebsiteOutcome] = useState<WebsiteOutcome>({ kind: 'idle' })
   const [calendarOutcome, setCalendarOutcome] = useState<CalendarOutcome>({ kind: 'idle' })
   const [pendingClarification, setPendingClarification] = useState<PendingClarification | null>(null)
   const draftRef = useRef(draft)
   const websiteRequestRef = useRef(0)
   const documentRequestRef = useRef(0)
+  const libraryRequestRef = useRef(0)
   const websiteAbortRef = useRef<AbortController | null>(null)
   const documentAbortRef = useRef<AbortController | null>(null)
+  const libraryAbortRef = useRef<AbortController | null>(null)
   const [voiceRemountKey, setVoiceRemountKey] = useState(0)
   const titleId = useId()
   const limitId = useId()
@@ -84,17 +89,21 @@ export function SearchBuddy() {
   const bodyRef = useRef<HTMLDivElement>(null)
   const fabRef = useRef<HTMLButtonElement>(null)
   const openRef = useRef(open)
-  openRef.current = open
+
+  useEffect(() => {
+    openRef.current = open
+  }, [open])
 
   const apiReady = isAiApiConfigured()
   const overLimit = draft.trim().length > FAITH_AND_ORDER_QUERY_MAX
-  const busy = websiteOutcome.kind === 'loading' || documentOutcome.kind === 'loading'
+  const busy = websiteOutcome.kind === 'loading' || documentOutcome.kind === 'loading' || libraryOutcome.kind === 'loading'
   const showWelcome =
-    websiteOutcome.kind === 'idle' && documentOutcome.kind === 'idle' && calendarOutcome.kind === 'idle'
+    websiteOutcome.kind === 'idle' && documentOutcome.kind === 'idle' && libraryOutcome.kind === 'idle' && calendarOutcome.kind === 'idle'
   const activeQuery =
     (calendarOutcome.kind !== 'idle' ? calendarOutcome.query : null) ||
     (websiteOutcome.kind !== 'idle' ? websiteOutcome.query : null) ||
-    (documentOutcome.kind !== 'idle' ? documentOutcome.query : null)
+    (documentOutcome.kind !== 'idle' ? documentOutcome.query : null) ||
+    (libraryOutcome.kind !== 'idle' ? libraryOutcome.query : null)
 
   useEffect(() => {
     draftRef.current = draft
@@ -136,21 +145,19 @@ export function SearchBuddy() {
     setOpen(false)
   }, [setOpen, setSnapshot])
 
-  const wasOpenRef = useRef(open)
-  useEffect(() => {
-    if (open && !wasOpenRef.current) setDraft(snapshot.query)
-    wasOpenRef.current = open
-  }, [open, snapshot.query])
-
   function cancelSearch() {
     websiteRequestRef.current += 1
     documentRequestRef.current += 1
+    libraryRequestRef.current += 1
     websiteAbortRef.current?.abort()
     documentAbortRef.current?.abort()
+    libraryAbortRef.current?.abort()
     websiteAbortRef.current = null
     documentAbortRef.current = null
+    libraryAbortRef.current = null
     setWebsiteOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
     setDocumentOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
+    setLibraryOutcome((prev) => (prev.kind === 'loading' ? { kind: 'idle' } : prev))
     if (calendarOutcome.kind !== 'idle' && calendarOutcome.result.kind !== 'clarify' && calendarOutcome.result.kind !== 'suggest') {
       setCalendarOutcome({ kind: 'idle' })
     }
@@ -220,12 +227,15 @@ export function SearchBuddy() {
     if (!open) {
       websiteAbortRef.current?.abort()
       documentAbortRef.current?.abort()
+      libraryAbortRef.current?.abort()
       websiteAbortRef.current = null
       documentAbortRef.current = null
+      libraryAbortRef.current = null
     }
     return () => {
       websiteAbortRef.current?.abort()
       documentAbortRef.current?.abort()
+      libraryAbortRef.current?.abort()
     }
   }, [open])
 
@@ -322,6 +332,29 @@ export function SearchBuddy() {
       })
   }
 
+  function startLibrarySearch(query: string) {
+    const requestId = ++libraryRequestRef.current
+    libraryAbortRef.current?.abort()
+    const controller = new AbortController()
+    libraryAbortRef.current = controller
+    if (!apiReady) return
+    setLibraryOutcome({ kind: 'loading', query })
+    void searchChurchLibrary(query, controller.signal)
+      .then((response) => {
+        if (requestId !== libraryRequestRef.current) return
+        setLibraryOutcome(response.results.length ? { kind: 'results', query, response } : { kind: 'empty', query })
+      })
+      .catch((cause) => {
+        if (requestId !== libraryRequestRef.current) return
+        if (isSearchBuddyAbort(cause)) {
+          setLibraryOutcome({ kind: 'idle' })
+          return
+        }
+        logSearchBuddyDiagnostic(cause, 'church-library')
+        setLibraryOutcome({ kind: 'error', query, notice: 'Church Library sources are temporarily unavailable.' })
+      })
+  }
+
   function runSearch(raw: string) {
     const query = raw.trim()
     if (!query || query.length > FAITH_AND_ORDER_QUERY_MAX) return
@@ -340,6 +373,7 @@ export function SearchBuddy() {
     }
 
     if (!followUpOnly) startWebsiteSearch(parsed.originalQuery)
+    if (!followUpOnly) startLibrarySearch(parsed.originalQuery)
     const topic = shouldSearchFaithAndOrder(parsed.originalQuery)
     if (topic) startDocumentSearch(parsed.originalQuery, topic)
     else {
@@ -355,6 +389,7 @@ export function SearchBuddy() {
     setDraft('')
     setWebsiteOutcome({ kind: 'idle' })
     setDocumentOutcome({ kind: 'idle' })
+    setLibraryOutcome({ kind: 'idle' })
     setCalendarOutcome({ kind: 'idle' })
     setPendingClarification(null)
     setVoiceRemountKey((key) => key + 1)
@@ -365,6 +400,7 @@ export function SearchBuddy() {
   const liveStatus = [
     websiteOutcome.kind === 'loading' ? t('searchBuddy.website.searching') : '',
     documentOutcome.kind === 'loading' ? t('searchBuddy.faith.searchingPassage') : '',
+    libraryOutcome.kind === 'loading' ? 'Searching the Church Library…' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -389,7 +425,7 @@ export function SearchBuddy() {
               <p>{t('searchBuddy.subtitle')}</p>
             </div>
             <div className={styles.headerActions}>
-              {websiteOutcome.kind !== 'idle' || documentOutcome.kind !== 'idle' || calendarOutcome.kind !== 'idle' ? (
+              {websiteOutcome.kind !== 'idle' || documentOutcome.kind !== 'idle' || libraryOutcome.kind !== 'idle' || calendarOutcome.kind !== 'idle' ? (
                 <button
                   type="button"
                   className={styles.newChat}
@@ -454,6 +490,7 @@ export function SearchBuddy() {
                   busy={documentOutcome.kind === 'loading'}
                   onRetry={(query, topic) => startDocumentSearch(query, topic)}
                 />
+                <ChurchLibrarySources outcome={libraryOutcome} />
               </div>
             )}
           </div>
@@ -509,7 +546,10 @@ export function SearchBuddy() {
         aria-haspopup="dialog"
         aria-expanded={open}
         tabIndex={open ? -1 : 0}
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setDraft(snapshot.query)
+          setOpen(true)
+        }}
       >
         <span className={styles.fabIcon} aria-hidden>
           ⌕

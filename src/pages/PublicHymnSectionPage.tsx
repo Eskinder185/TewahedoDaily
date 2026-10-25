@@ -16,6 +16,7 @@ import { useLocale } from '../lib/i18n/locale'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
+import { isMezmurLanguageFilter, mezmurLanguageLabel, type MezmurLanguageCode, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
 
 function SectionHeroArt({
   imageUrl,
@@ -33,7 +34,7 @@ function SectionHeroArt({
     imageUrl ? 'primary' : localFallback ? 'fallback' : 'empty',
   )
   useEffect(() => {
-    setPhase(imageUrl ? 'primary' : localFallback ? 'fallback' : 'empty')
+    queueMicrotask(() => setPhase(imageUrl ? 'primary' : localFallback ? 'fallback' : 'empty'))
   }, [imageUrl, localFallback])
   const src = phase === 'primary' ? imageUrl : phase === 'fallback' ? localFallback : ''
   if (!src || phase === 'empty') {
@@ -106,6 +107,8 @@ export function PublicHymnSectionPage() {
   const [withinQ, setWithinQ] = useState(params.get('q') || '')
   const t = useTranslation()
   const { locale } = useLocale()
+  const page = Math.max(1, Number(params.get('page') || '1') || 1)
+  const pageSize = 12
   const heading = hymnSourceHeading(section?.title, section?.titleAmharic, locale)
   const description = hymnSourceHeading(section?.description, section?.descriptionAmharic, locale)
   const collectionHeading = hymnSourceHeading(collection?.title, collection?.titleAmharic, locale)
@@ -118,7 +121,9 @@ export function PublicHymnSectionPage() {
     setError(undefined)
     void (async () => {
       try {
-        const col = await getHymnCollectionBySlug(collectionSlug)
+        const langParam = params.get('language')
+        const langFilter: MezmurLanguageFilter | undefined = isMezmurLanguageFilter(langParam) ? langParam : undefined
+        const col = await getHymnCollectionBySlug(collectionSlug, langFilter)
         if (!active) return
         setCollection(col)
         if (!col) {
@@ -127,7 +132,7 @@ export function PublicHymnSectionPage() {
           setTotal(0)
           return
         }
-        const sec = await getHymnSection(collectionSlug, sectionSlug)
+        const sec = await getHymnSection(collectionSlug, sectionSlug, langFilter)
         if (!active) return
         setSection(sec)
         if (!sec) {
@@ -135,11 +140,11 @@ export function PublicHymnSectionPage() {
           setTotal(0)
           return
         }
-        const page = Math.max(1, Number(params.get('page') || '1') || 1)
         const result = await getMezmursForSection(collectionSlug, sectionSlug, {
           q: withinQ,
           page,
-          pageSize: 48,
+          pageSize,
+          language: langFilter,
         })
         if (!active) return
         setItems(result.items)
@@ -155,12 +160,12 @@ export function PublicHymnSectionPage() {
     return () => {
       active = false
     }
-  }, [collectionSlug, sectionSlug, withinQ, params])
+  }, [collectionSlug, sectionSlug, withinQ, params, t, page])
 
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-        <Link to={`/practice/browse/${collectionSlug}`} className={s.viewAll}>
+        <Link to={params.get('language') ? `/practice/browse/${collectionSlug}?language=${encodeURIComponent(params.get('language')!)}` : `/practice/browse/${collectionSlug}`} className={s.viewAll}>
           ← {collectionHeading.primary || t('practice.collection')}
         </Link>
       </p>
@@ -191,7 +196,7 @@ export function PublicHymnSectionPage() {
                 </p>
               ) : null}
               <p className={s.collectionCount}>
-                {section ? hymnMezmurCountLabel(section.mezmurCount || total, locale) : ''}
+                {section ? hymnMezmurCountLabel(withinQ.trim() ? total : (section.mezmurCount || total), locale) : ''}
               </p>
             </div>
           </header>
@@ -215,6 +220,12 @@ export function PublicHymnSectionPage() {
             />
           </label>
 
+          {total > 0 ? (
+            <p className={s.hint}>
+              Showing {Math.min((page - 1) * pageSize + 1, total)}–{Math.min(page * pageSize, total)} of {total} Mezmurs
+            </p>
+          ) : null}
+
           {loading ? (
             <div className={s.grid} aria-hidden>
               {Array.from({ length: 6 }).map((_, i) => (
@@ -234,14 +245,30 @@ export function PublicHymnSectionPage() {
             </div>
           ) : null}
           {!loading && !error && !items.length ? (
-            <p className={s.status}>{t('practice.noHymnsInSection')}</p>
+            <div className={s.status} role="status">
+              <p>{params.get('language') ? `No ${mezmurLanguageLabel(params.get('language') as MezmurLanguageCode)} Mezmurs found in this section.` : t('practice.noHymnsInSection')}</p>
+              {params.get('language') ? (
+                <button
+                  type="button"
+                  className={s.textBtn}
+                  onClick={() => {
+                    const next = new URLSearchParams(params)
+                    next.delete('language')
+                    next.delete('page')
+                    setParams(next)
+                  }}
+                >
+                  View in All languages
+                </button>
+              ) : null}
+            </div>
           ) : null}
 
           <div className={s.grid}>
             {items.map((item) => {
               const itemHeading = hymnSourceHeading(item.title, item.titleAmharic, locale)
               return (
-                <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
+                <Link key={item.id} to={params.get('language') ? `/practice/mezmur/${item.slug}?language=${encodeURIComponent(params.get('language')!)}` : `/practice/mezmur/${item.slug}`} className={s.card}>
                   <CardArt item={item} />
                   <div className={s.cardBody}>
                     {itemHeading.secondary ? (
@@ -258,6 +285,34 @@ export function PublicHymnSectionPage() {
               )
             })}
           </div>
+
+          {total > pageSize ? (
+            <nav className={s.pager} aria-label={t('practice.pagination')}>
+              <button
+                type="button"
+                disabled={page <= 1}
+                onClick={() => {
+                  const next = new URLSearchParams(params)
+                  next.set('page', String(page - 1))
+                  setParams(next)
+                }}
+              >
+                {t('practice.previous')}
+              </button>
+              <span>{t('practice.page', { page })}</span>
+              <button
+                type="button"
+                disabled={page * pageSize >= total}
+                onClick={() => {
+                  const next = new URLSearchParams(params)
+                  next.set('page', String(page + 1))
+                  setParams(next)
+                }}
+              >
+                {t('practice.next')}
+              </button>
+            </nav>
+          ) : null}
         </>
       )}
     </section>

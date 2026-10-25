@@ -20,7 +20,7 @@ import s from './Admin.module.css'
 import e from './EditorialBooksPreview.module.css'
 
 /**
- * Private editorial five-book preview.
+ * Legacy private five-book package preview within Church Library.
  * Auth: CMS session JWT → backend verifies profiles.role (editor/admin/super_admin).
  * Not a public library page — unapproved content stays behind API gates.
  */
@@ -194,8 +194,8 @@ export function EditorialBooksPreview() {
     <div className={e.wrap}>
       <div className={s.heading}>
         <div>
-          <p className={s.eyebrow}>PRIVATE EDITORIAL</p>
-          <h1>Five-book library preview</h1>
+          <p className={s.eyebrow}>CHURCH LIBRARY · LEGACY PACKAGE</p>
+          <h1>Legacy five-book package preview</h1>
           <p className={s.muted}>
             Authenticated via your CMS Supabase session. Backend checks{' '}
             <code>profiles.role</code> (editor / admin / super_admin) — not a

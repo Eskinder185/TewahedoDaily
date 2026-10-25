@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Lyrics Presentation Mode Fixture</title>
+  <style>
+    :root {
+      --color-bg: #f8f6f0;
+      --color-text: #1d2228;
+      --font-body: system-ui, -apple-system, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      overflow-x: hidden;
+    }
+
+    /* Presentation dialog matching HymnLyricsExperience.module.css */
+    .presentation {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: clamp(14px, 3vw, 32px);
+      box-sizing: border-box;
+    }
+
+    .presentationParchment {
+      background: #f4e7cb;
+      color: #211913;
+    }
+
+    .presentationDark {
+      background: #06111d;
+      color: #fff;
+    }
+
+    .presentationTop {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      opacity: 0.72;
+    }
+
+    .liveSlideContainer {
+      align-self: center;
+      justify-self: center;
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      max-height: 100%;
+      padding: 12px 16px;
+      margin: auto;
+      box-sizing: border-box;
+    }
+
+    .liveBothContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(12px, 2vh, 24px);
+      text-align: center;
+    }
+
+    .liveOrigText {
+      margin: 0;
+      text-align: center;
+      white-space: pre-wrap;
+      line-height: 1.75;
+      font-weight: 650;
+      color: inherit;
+      width: 100%;
+    }
+
+    .liveTranslitText {
+      margin: 0;
+      text-align: center;
+      white-space: pre-wrap;
+      line-height: 1.6;
+      font-weight: 550;
+      font-style: italic;
+      color: color-mix(in srgb, currentColor 86%, transparent);
+      letter-spacing: 0.02em;
+      width: 100%;
+    }
+
+    .liveBothDivider {
+      width: clamp(36px, 8vw, 60px);
+      height: 2px;
+      background: color-mix(in srgb, currentColor 28%, transparent);
+      border-radius: 2px;
+      margin: 4px auto;
+      flex-shrink: 0;
+    }
+
+    .slideText {
+      align-self: center;
+      justify-self: center;
+      max-width: 1200px;
+      text-align: center;
+      white-space: pre-wrap;
+      line-height: 1.6;
+      font-weight: 650;
+      margin: 0;
+    }
+
+    .ethiopicTypography {
+      font-family: 'Noto Sans Ethiopic', 'Abyssinica SIL', 'Nyala', sans-serif;
+    }
+
+    .latinTypography {
+      font-family: var(--font-body), sans-serif;
+    }
+
+    .presentationControls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .presentationControls button {
+      color: inherit;
+      background: color-mix(in srgb, currentColor 10%, transparent);
+      border: none;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .presentationControls button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .liveModeToggle {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      background: color-mix(in srgb, currentColor 12%, transparent);
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .liveModeButton {
+      background: transparent !important;
+      border: none !important;
+      border-radius: 999px !important;
+      padding: 5px 12px !important;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+      color: inherit !important;
+      cursor: pointer;
+      opacity: 0.75;
+      transition: background 0.15s ease, opacity 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .liveModeButton:hover:not(:disabled) {
+      opacity: 1;
+    }
+
+    .liveModeButtonActive {
+      background: color-mix(in srgb, currentColor 22%, transparent) !important;
+      opacity: 1 !important;
+      font-weight: 750 !important;
+    }
+
+    .liveModeButton:disabled {
+      opacity: 0.28 !important;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 760px) {
+      .liveOrigText {
+        font-size: min(var(--live-orig-size, 34px), 7.5vw) !important;
+        line-height: 1.6 !important;
+      }
+      .liveTranslitText {
+        font-size: min(calc(var(--live-font-size, 42px) * 0.68), 5.8vw) !important;
+        line-height: 1.5 !important;
+      }
+      .liveBothContainer {
+        gap: 10px;
+      }
+      .liveModeToggle {
+        order: 10;
+        width: 100%;
+        justify-content: center;
+        margin-top: 4px;
+      }
+      .liveModeButton {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 6px 8px !important;
+        font-size: 0.78rem !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="presentation-root" class="presentation presentationParchment" role="dialog" aria-modal="true" data-testid="presentation-dialog">
+    <div class="presentationTop">
+      <span id="slide-label">CHORUS</span>
+      <span id="slide-counter" data-testid="live-slide-counter">1 / 5</span>
+    </div>
+
+    <div class="liveSlideContainer" data-testid="live-slide-container">
+      <!-- Both mode container -->
+      <div id="both-container" class="liveBothContainer">
+        <p id="live-orig" class="liveOrigText ethiopicTypography" lang="am" style="font-size: 42px;" data-testid="live-orig-text">
+          ሰላም ለኪ ማርያም ድንግል
+        </p>
+        <div id="both-divider" class="liveBothDivider" aria-hidden="true"></div>
+        <p id="live-translit" class="liveTranslitText latinTypography" lang="en" style="font-size: 35px;" data-testid="live-translit-text">
+          Selam Leki Maryam Dingil
+        </p>
+      </div>
+
+      <!-- Single text fallback for original or transliteration -->
+      <p id="single-text" class="slideText ethiopicTypography" style="font-size: 48px; display: none;"></p>
+    </div>
+
+    <div class="presentationControls">
+      <button type="button" id="btn-prev" aria-label="Previous" disabled>←</button>
+      <button type="button" id="btn-font-dec" aria-label="Decrease text size">A−</button>
+      <button type="button" id="btn-font-inc" aria-label="Increase text size">A+</button>
+      <button type="button" id="btn-theme" aria-label="Toggle reader theme">☾</button>
+
+      <div class="liveModeToggle" role="group" aria-label="Language display mode" data-testid="live-language-controls">
+        <button type="button" id="live-mode-original" class="liveModeButton">Original</button>
+        <button type="button" id="live-mode-transliteration" class="liveModeButton">Transliteration</button>
+        <button type="button" id="live-mode-both" class="liveModeButton liveModeButtonActive" aria-pressed="true">Both</button>
+      </div>
+
+      <button type="button" id="btn-fullscreen" aria-label="Fullscreen">⛶</button>
+      <button type="button" id="btn-next" aria-label="Next">→</button>
+      <button type="button" id="btn-close">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = [
+      { label: 'CHORUS', orig: 'ሰላም ለኪ ማርያም ድንግል', translit: 'Selam Leki Maryam Dingil' },
+      { label: 'VERSE 1', orig: 'በስመ አብ ወወልድ ወመንፈስ ቅዱስ', translit: 'Besme Ab weweld wemenfes qidus' },
+      { label: 'CHORUS', orig: 'ሰላም ለኪ ማርያም ድንግል', translit: 'Selam Leki Maryam Dingil' },
+      { label: 'VERSE 2', orig: 'ጸጋን የተመላሽ ሆይ ደስ ይበልሽ', translit: 'Tsegan Yetemelash Hoy Des Yibelish' },
+      { label: 'CHORUS', orig: 'ሰላም ለኪ ማርያም ድንግል', translit: 'Selam Leki Maryam Dingil' },
+    ];
+
+    let currentIndex = 0;
+    let currentMode = 'both';
+    let isDark = false;
+
+    const root = document.getElementById('presentation-root');
+    const labelEl = document.getElementById('slide-label');
+    const counterEl = document.getElementById('slide-counter');
+    const bothContainer = document.getElementById('both-container');
+    const liveOrig = document.getElementById('live-orig');
+    const liveTranslit = document.getElementById('live-translit');
+    const singleText = document.getElementById('single-text');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const btnTheme = document.getElementById('btn-theme');
+
+    const btnModeOrig = document.getElementById('live-mode-original');
+    const btnModeTrans = document.getElementById('live-mode-transliteration');
+    const btnModeBoth = document.getElementById('live-mode-both');
+
+    function updateView() {
+      const s = slides[currentIndex];
+      labelEl.textContent = s.label;
+      counterEl.textContent = `${currentIndex + 1} / ${slides.length}`;
+
+      btnPrev.disabled = currentIndex === 0;
+      btnNext.disabled = currentIndex === slides.length - 1;
+
+      btnModeOrig.classList.toggle('liveModeButtonActive', currentMode === 'original');
+      btnModeTrans.classList.toggle('liveModeButtonActive', currentMode === 'transliteration');
+      btnModeBoth.classList.toggle('liveModeButtonActive', currentMode === 'both');
+
+      btnModeOrig.setAttribute('aria-pressed', currentMode === 'original');
+      btnModeTrans.setAttribute('aria-pressed', currentMode === 'transliteration');
+      btnModeBoth.setAttribute('aria-pressed', currentMode === 'both');
+
+      if (currentMode === 'both') {
+        bothContainer.style.display = 'flex';
+        singleText.style.display = 'none';
+        liveOrig.textContent = s.orig;
+        liveTranslit.textContent = s.translit;
+      } else if (currentMode === 'original') {
+        bothContainer.style.display = 'none';
+        singleText.style.display = 'block';
+        singleText.className = 'slideText ethiopicTypography';
+        singleText.textContent = s.orig;
+      } else {
+        bothContainer.style.display = 'none';
+        singleText.style.display = 'block';
+        singleText.className = 'slideText latinTypography';
+        singleText.textContent = s.translit;
+      }
+    }
+
+    btnModeOrig.addEventListener('click', () => { currentMode = 'original'; updateView(); });
+    btnModeTrans.addEventListener('click', () => { currentMode = 'transliteration'; updateView(); });
+    btnModeBoth.addEventListener('click', () => { currentMode = 'both'; updateView(); });
+
+    btnPrev.addEventListener('click', () => {
+      if (currentIndex > 0) { currentIndex--; updateView(); }
+    });
+    btnNext.addEventListener('click', () => {
+      if (currentIndex < slides.length - 1) { currentIndex++; updateView(); }
+    });
+
+    btnTheme.addEventListener('click', () => {
+      isDark = !isDark;
+      root.className = `presentation ${isDark ? 'presentationDark' : 'presentationParchment'}`;
+      btnTheme.textContent = isDark ? '☀' : '☾';
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') btnNext.click();
+      if (e.key === 'ArrowLeft') btnPrev.click();
+    });
+
+    updateView();
+  </script>
+</body>
+</html>

@@ -60,9 +60,11 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
   const [customUrl, setCustomUrl] = useState<string | null>(() => readCustomHymnVideo(item.slug))
 
   useEffect(() => {
-    setCustomUrl(readCustomHymnVideo(item.slug))
-    setCustomDraft('')
-    setCustomError('')
+    queueMicrotask(() => {
+      setCustomUrl(readCustomHymnVideo(item.slug))
+      setCustomDraft('')
+      setCustomError('')
+    })
     recordGuestRecentMezmur(item.slug, item.title)
   }, [item.slug, item.title])
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Admin Mezmur data access — ACTIVE SOURCE: mezmur_data_import
  * (public.mezmur and public.singers do not exist.)
  */
@@ -6,10 +6,25 @@ import { supabase } from '../supabase/client'
 import type { ContentStatus } from '../supabase/cms.types'
 import { resolveContentMediaUrl } from './contentMedia'
 import { mapStaffWriteError, requireCmsStaffSession } from './cmsStaffAuth'
+import { assertOrdinaryMezmurPayloadSafe } from './mezmurSavePayloadSafety'
+import { moveHymnContentToTrash } from './contentTrashService'
+import { validRecordedTimestamp } from './recordedTimestamp'
+import { mezmurLanguageAliases, normalizeMezmurLanguage } from '../mezmur/mezmurLanguage'
+import {
+  canPublishMezmur,
+  mezmurStatuses,
+  mezmurStatusLabel,
+  normalizeMezmurStatus,
+  publicationBlockReason,
+  type MezmurStatus,
+} from './mezmurPublicationRules'
+
+export { mezmurStatuses, mezmurStatusLabel, normalizeMezmurStatus, type MezmurStatus }
 
 const DATA = 'mezmur_data_import' as const
 
 export type ImportMezmurRow = {
+  import_id: string
   mezmur_id: string
   slug: string
   title: string
@@ -39,12 +54,19 @@ export type ImportMezmurRow = {
   review_notes: string | null
   source_url: string | null
   source_notes: string | null
+  rights_status: string | null
+  publication_approved_at: string | null
+  publication_approved_by: string | null
   created_at: string | null
   updated_at: string | null
+  deleted_at: string | null
+  deleted_by: string | null
+  deleted_from_status: string | null
 }
 
 /** Normalized Mezmur shape for admin UI (id = mezmur_id). */
 export type Mezmur = {
+  import_id: string
   id: string
   mezmur_id: string
   slug: string
@@ -79,7 +101,14 @@ export type Mezmur = {
   themes: string[]
   search_keywords: string[]
   source: string | null
+  source_url: string | null
+  source_notes: string | null
   status: ContentStatus
+  review_status: string | null
+  review_notes: string | null
+  rights_status: string | null
+  publication_approved_at: string | null
+  publication_approved_by: string | null
   featured: boolean
   published_at: string | null
   created_at: string
@@ -88,6 +117,9 @@ export type Mezmur = {
   updated_by: string | null
   source_submission_id: string | null
   contributor_credit: string | null
+  deleted_at: string | null
+  deleted_by: string | null
+  deleted_from_status: string | null
 }
 
 export type Version = {
@@ -174,20 +206,18 @@ function normalizeForm(value: unknown): 'mezmur' | 'werb' | null {
   return null
 }
 
-function normalizeStatus(value: unknown): ContentStatus {
-  const v = txt(value).toLowerCase()
-  if (statuses.includes(v as ContentStatus)) return v as ContentStatus
-  if (v === 'active' || v === 'true' || v === '1') return 'published'
-  return (v || 'draft') as ContentStatus
+function normalizeStatus(value: unknown): MezmurStatus {
+  return normalizeMezmurStatus(value)
 }
 
 export function mapImportMezmur(row: ImportMezmurRow | Record<string, unknown>): Mezmur {
   const r = row as ImportMezmurRow
   const mezmurId = txt(r.mezmur_id) || txt((row as { id?: unknown }).id) || txt(r.slug)
   const image = txt(r.image_path) || txt(r.legacy_thumbnail_url) || null
-  const updated = txt(r.updated_at) || txt(r.created_at) || new Date(0).toISOString()
+  const updated = validRecordedTimestamp(r.updated_at) || validRecordedTimestamp(r.created_at) || ''
   const created = txt(r.created_at) || updated
   return {
+    import_id: txt(r.import_id),
     id: mezmurId,
     mezmur_id: mezmurId,
     slug: txt(r.slug),
@@ -222,7 +252,14 @@ export function mapImportMezmur(row: ImportMezmurRow | Record<string, unknown>):
     themes: [],
     search_keywords: parseKeywords(r.search_keywords),
     source: txt(r.source_url) || txt(r.source_notes) || null,
+    source_url: txt(r.source_url) || null,
+    source_notes: txt(r.source_notes) || null,
     status: normalizeStatus(r.status),
+    review_status: txt(r.review_status) || null,
+    review_notes: txt(r.review_notes) || null,
+    rights_status: txt(r.rights_status) || null,
+    publication_approved_at: txt(r.publication_approved_at) || null,
+    publication_approved_by: txt(r.publication_approved_by) || null,
     featured: false,
     published_at: null,
     created_at: created,
@@ -231,6 +268,9 @@ export function mapImportMezmur(row: ImportMezmurRow | Record<string, unknown>):
     updated_by: null,
     source_submission_id: null,
     contributor_credit: null,
+    deleted_at: txt(r.deleted_at) || null,
+    deleted_by: txt(r.deleted_by) || null,
+    deleted_from_status: txt(r.deleted_from_status) || null,
   }
 }
 
@@ -243,8 +283,14 @@ export const editableKeys = [
   'zemari_id',
   'category_id',
   'lyrics_amharic',
+  'lyrics_geez',
   'lyrics_english',
+  'lyrics_oromo',
   'transliteration',
+  'rights_status',
+  'source_url',
+  'source_notes',
+  'contributor_credit',
   'youtube_url',
   'audio_url',
   'thumbnail_url',
@@ -276,14 +322,20 @@ export function emptyMezmur(): MezmurInput {
     zemari_id: null,
     category_id: null,
     lyrics_amharic: '',
+    lyrics_geez: '',
     lyrics_english: '',
+    lyrics_oromo: '',
     transliteration: '',
+    rights_status: 'owned',
+    source_url: '',
+    source_notes: '',
+    contributor_credit: '',
     youtube_url: '',
     audio_url: '',
     thumbnail_url: '',
     thumbnail_path: '',
     image_alt: '',
-    language: 'amharic',
+    language: null,
     form: 'mezmur',
     category: null,
     occasion: null,
@@ -302,13 +354,14 @@ export type Filters = {
   featured?: string
   sort?: string
   page?: number
+  language?: string
 }
 
 const LIST_SELECT =
-  'mezmur_id, slug, title, title_amharic, title_english, description, description_amharic, lyrics_amharic, lyrics_transliteration, lyrics_english, lyrics_geez, lyrics_oromo, primary_language, form, singer_id, singer_slug, singer_name, zemari_id, youtube_url, audio_url, image_path, image_alt, legacy_thumbnail_url, search_keywords, status, review_status, review_notes, source_url, source_notes, created_at, updated_at'
+  'import_id, mezmur_id, slug, title, title_amharic, title_english, description, description_amharic, lyrics_amharic, lyrics_transliteration, lyrics_english, lyrics_geez, lyrics_oromo, primary_language, form, singer_id, singer_slug, singer_name, zemari_id, youtube_url, audio_url, image_path, image_alt, legacy_thumbnail_url, search_keywords, status, review_status, review_notes, source_url, source_notes, rights_status, publication_approved_at, publication_approved_by, created_at, updated_at, deleted_at, deleted_by, deleted_from_status'
 
 export async function listMezmur(filters: Filters = {}) {
-  let query = db().from(DATA as never).select(LIST_SELECT, { count: 'exact' })
+  let query = db().from(DATA as never).select(LIST_SELECT, { count: 'exact' }).is('deleted_at', null)
   const search = filters.search?.replace(/[,().%_*\\]/g, ' ').trim()
   if (search) {
     query = query.or(
@@ -332,7 +385,19 @@ export async function listMezmur(filters: Filters = {}) {
   if (filters.singer) {
     query = query.or(`singer_id.eq.${filters.singer},zemari_id.eq.${filters.singer}`)
   }
-  // featured / category_id do not exist on import — ignore filters that cannot apply
+  if (filters.category) {
+    const links = await allRows<Record<string, unknown>>((offset) =>
+      db().from('mezmur_category_links_import' as never).select('mezmur_import_id').eq('category_slug', filters.category as string).not('mezmur_import_id', 'is', null).range(offset, offset + 499),
+    )
+    const importIds = [...new Set(links.map((row) => txt(row.mezmur_import_id)).filter(Boolean))]
+    if (!importIds.length) return { rows: [] as Mezmur[], count: 0 }
+    query = query.in('import_id', importIds)
+  }
+  if (filters.language) {
+    const language = normalizeMezmurLanguage(filters.language)
+    if (language) query = query.in('primary_language', mezmurLanguageAliases(language))
+  }
+  // featured does not exist on the import source.
 
   const sorts = {
     updated: ['updated_at', false],
@@ -347,8 +412,23 @@ export async function listMezmur(filters: Filters = {}) {
     .order('mezmur_id')
     .range((page - 1) * PAGE_SIZE, page * PAGE_SIZE - 1)
   if (error) throw error
+  const rows = ((data || []) as ImportMezmurRow[]).map(mapImportMezmur)
+  const importIds = rows.map((row) => row.import_id).filter(Boolean)
+  if (importIds.length) {
+    const links = await db().from('mezmur_category_links_import' as never).select('mezmur_import_id,category_slug').in('mezmur_import_id', importIds)
+    if (links.error) throw links.error
+    const byImportId = new Map<string, string[]>()
+    for (const link of (links.data || []) as Record<string, unknown>[]) {
+      const importId = txt(link.mezmur_import_id); const category = txt(link.category_slug)
+      if (importId && category) byImportId.set(importId, [...new Set([...(byImportId.get(importId) || []), category])])
+    }
+    for (const row of rows) {
+      row.category_id = byImportId.get(row.import_id)?.[0] || null
+      row.category = row.category_id
+    }
+  }
   return {
-    rows: ((data || []) as ImportMezmurRow[]).map(mapImportMezmur),
+    rows,
     count: count || 0,
   }
 }
@@ -476,6 +556,7 @@ export async function getTagIds(_id: string) {
 function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, unknown> {
   const mezmurId = existing?.mezmur_id || existing?.id || crypto.randomUUID()
   const zemariId = input.zemari_id || input.singer_id || null
+  const targetStatus: MezmurStatus = input.status === 'published' ? 'published' : 'draft'
   return {
     mezmur_id: mezmurId,
     slug: input.slug.trim(),
@@ -485,6 +566,12 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
     lyrics_amharic: input.lyrics_amharic?.trim() || null,
     lyrics_transliteration: input.transliteration?.trim() || null,
     lyrics_english: input.lyrics_english?.trim() || null,
+    lyrics_geez: input.lyrics_geez?.trim() || null,
+    lyrics_oromo: input.lyrics_oromo?.trim() || null,
+    rights_status: input.rights_status?.trim() || existing?.rights_status || 'owned',
+    source_url: input.source_url?.trim() || existing?.source_url || null,
+    source_notes: input.source_notes?.trim() || existing?.source_notes || null,
+    contributor_credit: input.contributor_credit?.trim() || existing?.contributor_credit || null,
     primary_language: input.language?.trim() || null,
     form: input.form || null,
     zemari_id: zemariId,
@@ -493,14 +580,56 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
     audio_url: input.audio_url?.trim() || null,
     image_path: input.thumbnail_path?.trim() || input.thumbnail_url?.trim() || null,
     image_alt: input.image_alt?.trim() || null,
-    status: input.status,
+    status: targetStatus,
     updated_at: new Date().toISOString(),
   }
 }
 
-export async function saveMezmur(input: MezmurInput, _tags: string[], existing?: Mezmur) {
-  await requireCmsStaffSession('mezmur save')
-  const payload = toImportPayload(input, existing)
+export async function saveMezmur(
+  input: MezmurInput,
+  _tags: string[],
+  existing?: Mezmur,
+) {
+  const actor = await requireCmsStaffSession('Mezmur save preflight')
+  const requestedStatus: MezmurStatus = input.status === 'published' ? 'published' : 'draft'
+  if (requestedStatus === 'published') {
+    if (!canPublishMezmur(actor.profileRole)) {
+      throw new Error('An editor, admin, or super admin role is required to publish.')
+    }
+    const blockReason = publicationBlockReason({
+      role: actor.profileRole,
+      rightsStatus: input.rights_status || existing?.rights_status,
+      rightsConfirmedAt: existing?.publication_approved_at,
+      rightsConfirmedBy: existing?.publication_approved_by,
+      youtubeUrl: input.youtube_url,
+      sourceUrl: existing?.source_url,
+      title: input.title,
+      slug: input.slug,
+      lyricsAmharic: input.lyrics_amharic,
+    })
+    if (blockReason) {
+      throw new Error(blockReason)
+    }
+  }
+  const payload = toImportPayload({ ...input, status: requestedStatus }, existing)
+  const isPublicationRequest = requestedStatus === 'published'
+  // A publication transition must go through publish_mezmur_import. Saving the
+  // ordinary update as 'draft' first ensures content is persisted before the RPC transitions status.
+  if (isPublicationRequest) payload.status = 'draft'
+  assertOrdinaryMezmurPayloadSafe(payload)
+  if (import.meta.env.DEV) {
+    console.info('[mezmurService] save operation', {
+      actorUserId: actor.userId,
+      actorRole: actor.profileRole,
+      target: 'public.mezmur_data_import',
+      match: existing?.mezmur_id || existing?.id ? 'mezmur_id (slug fallback)' : 'insert',
+      priorStatus: existing?.status || null,
+      requestedStatus: input.status,
+      ordinarySaveStatus: payload.status,
+      payloadKeys: Object.keys(payload).sort(),
+      publicationRpcRequired: isPublicationRequest,
+    })
+  }
   const zemariId = String(payload.zemari_id || '').trim()
   if (zemariId) {
     try {
@@ -538,7 +667,7 @@ export async function saveMezmur(input: MezmurInput, _tags: string[], existing?:
       error = retry.error
       data = retry.data
     }
-    if (error) throw mapStaffWriteError('mezmur update', error)
+    if (error) throw mapStaffWriteError('PATCH public.mezmur_data_import by mezmur_id', error)
     let row = (data || [])[0] as ImportMezmurRow | undefined
     if (!row && existing.slug) {
       const bySlug = await db()
@@ -547,11 +676,12 @@ export async function saveMezmur(input: MezmurInput, _tags: string[], existing?:
         .eq('slug', existing.slug)
         .select(LIST_SELECT)
         .limit(1)
-      if (bySlug.error) throw mapStaffWriteError('mezmur update by slug', bySlug.error)
+      if (bySlug.error) throw mapStaffWriteError('PATCH public.mezmur_data_import by slug', bySlug.error)
       row = (bySlug.data || [])[0] as ImportMezmurRow | undefined
     }
     if (!row) throw new Error('No saved record was returned.')
-    return mapImportMezmur(row)
+    const saved = mapImportMezmur(row)
+    return isPublicationRequest ? publishImportedMezmur(saved) : saved
   }
   if (!payload.created_at) payload.created_at = new Date().toISOString()
   const { data, error } = await db()
@@ -559,10 +689,57 @@ export async function saveMezmur(input: MezmurInput, _tags: string[], existing?:
     .insert(payload as never)
     .select(LIST_SELECT)
     .limit(1)
-  if (error) throw mapStaffWriteError('mezmur insert', error)
+  if (error) throw mapStaffWriteError('POST public.mezmur_data_import', error)
   const row = (data || [])[0] as ImportMezmurRow | undefined
   if (!row) throw new Error('No saved record was returned.')
-  return mapImportMezmur(row)
+  const saved = mapImportMezmur(row)
+  return isPublicationRequest ? publishImportedMezmur(saved) : saved
+}
+
+export async function publishImportedMezmur(row: Mezmur): Promise<Mezmur> {
+  const actor = await requireCmsStaffSession('Mezmur publication preflight')
+  const blockReason = publicationBlockReason({
+    role: actor.profileRole,
+    rightsStatus: row.rights_status,
+    rightsConfirmedAt: row.publication_approved_at,
+    rightsConfirmedBy: row.publication_approved_by,
+    youtubeUrl: row.youtube_url,
+    sourceUrl: row.source_url,
+    title: row.title,
+    slug: row.slug,
+    lyricsAmharic: row.lyrics_amharic,
+  })
+  if (blockReason) {
+    throw new Error(blockReason)
+  }
+  const { error } = await db().rpc('publish_mezmur_import' as never, {
+    p_slug: row.slug,
+    p_expected_updated_at: row.updated_at,
+  } as never)
+  if (error) {
+    if (
+      error.code === 'PGRST202' ||
+      /Could not find (?:the )?function.*publish_mezmur_import|schema cache/i.test(error.message || '')
+    ) {
+      throw new Error(
+        'Your changes were saved as a draft without publishing. The Mezmur publication database function is not available yet.',
+      )
+    }
+    if (/rights_status|rights basis|publication rights|media-only|external_only/i.test(error.message || '')) {
+      throw new Error(`Your changes were saved as a draft without publishing. ${error.message}`)
+    }
+    if (/Editorial approval is required|review_status must be approved/i.test(error.message || '')) {
+      throw new Error(
+        'Your changes were saved as a draft without publishing. This Supabase project is still using the obsolete approval-gated publication function. Apply migration 20261024180000_mezmur_two_state_publication_final.sql, then retry.',
+      )
+    }
+    throw mapStaffWriteError('RPC public.publish_mezmur_import', error)
+  }
+  const published = await getMezmur(row.mezmur_id || row.slug)
+  if (!published || published.status !== 'published') {
+    throw new Error('Publication completed without returning a published record. Refresh before retrying.')
+  }
+  return published
 }
 
 export async function duplicateMezmur(row: Mezmur) {
@@ -582,16 +759,8 @@ export async function duplicateMezmur(row: Mezmur) {
 }
 
 export async function deleteMezmur(row: Mezmur) {
-  const id = row.mezmur_id || row.id
-  const { data, error } = await db()
-    .from(DATA as never)
-    .delete()
-    .eq('mezmur_id', id)
-    .select('mezmur_id')
-  if (error) throw error
-  if (!data?.length) {
-    throw new Error('Content changed or you no longer have permission. Refresh the list.')
-  }
+  if (!row.import_id) throw new Error('This Mezmur has no stable import identifier. Reload before moving it to Trash.')
+  await moveHymnContentToTrash('mezmur', row.import_id)
 }
 
 export async function getVersions(_id: string) {
@@ -645,11 +814,7 @@ export async function getDashboard() {
   const countDraft = await db()
     .from(DATA as never)
     .select('mezmur_id', { count: 'exact', head: true })
-    .eq('status', 'draft')
-  const countPending = await db()
-    .from(DATA as never)
-    .select('mezmur_id', { count: 'exact', head: true })
-    .eq('status', 'pending_review')
+    .neq('status', 'published')
   const countSaints = await db().from('saints').select('id', { count: 'exact', head: true })
   const countArticles = await db().from('articles').select('id', { count: 'exact', head: true })
 
@@ -657,7 +822,6 @@ export async function getDashboard() {
     countTotal,
     countPublished,
     countDraft,
-    countPending,
     countSaints,
     countArticles,
   ]
@@ -667,20 +831,21 @@ export async function getDashboard() {
       const isMezmur =
         result === countTotal ||
         result === countPublished ||
-        result === countDraft ||
-        result === countPending
+        result === countDraft
       if (isMezmur) throw result.error
       if (import.meta.env.DEV) console.error('[getDashboard] count', result.error)
     }
   }
 
   async function recentMezmur(mode: 'edited' | 'published' | 'review') {
+    // Mezmur has only Draft and Published in the normal CMS. Preserve review
+    // queues for other content types without surfacing legacy Mezmur statuses.
+    if (mode === 'review') return []
     let query = db()
       .from(DATA as never)
       .select('mezmur_id, slug, title, title_amharic, status, updated_at, created_at')
     if (mode === 'published') query = query.eq('status', 'published')
-    if (mode === 'review') query = query.eq('status', 'pending_review')
-    const { data, error } = await query.order('updated_at', { ascending: mode === 'review' }).limit(5)
+    const { data, error } = await query.order('updated_at', { ascending: false }).limit(5)
     if (error) throw error
     return ((data || []) as Array<Record<string, unknown>>).map((row) => ({
       id: String(row.mezmur_id || ''),

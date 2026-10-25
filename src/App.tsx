@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Navigate, Routes, Route, useParams } from 'react-router-dom'
+import { Navigate, Routes, Route, useParams, useLocation } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
 import { PageLoadingFallback } from './components/ui/PageLoadingFallback'
 import { useScrollToTopOnRouteChange } from './hooks/useScroll'
@@ -12,8 +12,9 @@ function LegacyMezmurEditRedirect() {
 
 function LegacyPathRedirect({ to }: { to: string }) {
   const params = useParams()
+  const location = useLocation()
   const resolved = to.replace(/:([A-Za-z_]+)/g, (_, key: string) => params[key] || '')
-  return <Navigate to={resolved} replace />
+  return <Navigate to={`${resolved}${location.search}`} replace />
 }
 
 function LegacyHomeSlideRedirect() {
@@ -56,6 +57,12 @@ const ZemarisList = lazy(() =>
 )
 const ZemariEditor = lazy(() =>
   import('./pages/admin/ZemarisAdmin').then((m) => ({ default: m.ZemariEditor })),
+)
+const HymnTrashAdmin = lazy(() =>
+  import('./pages/admin/HymnTrashAdmin').then((m) => ({ default: m.HymnTrashAdmin })),
+)
+const MezmurBulkManagement = lazy(() =>
+  import('./pages/admin/MezmurBulkManagement').then((m) => ({ default: m.MezmurBulkManagement })),
 )
 const AdminPlaceholder = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminPlaceholder })))
 const RequireCmsRole = lazy(() => import('./lib/auth/RequireCmsRole').then(m => ({ default: m.RequireCmsRole })))
@@ -126,6 +133,12 @@ const EditorialBooksPreview = lazy(() =>
     default: m.EditorialBooksPreview,
   })),
 )
+const ChurchLibrary = lazy(() =>
+  import('./pages/admin/ChurchLibrary').then((m) => ({ default: m.ChurchLibrary })),
+)
+const BibleManager = lazy(() =>
+  import('./pages/admin/BibleManager').then((m) => ({ default: m.BibleManager })),
+)
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const BibleCatalogPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleCatalogPage })))
 const BibleBookPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleBookPage })))
@@ -168,6 +181,10 @@ export default function App() {
               <Route path="zemaris" element={<ZemarisList />} />
               <Route path="zemaris/new" element={<ZemariEditor />} />
               <Route path="zemaris/:id/edit" element={<ZemariEditor />} />
+              <Route path="trash" element={<HymnTrashAdmin />} />
+              <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
+                <Route path="bulk" element={<MezmurBulkManagement />} />
+              </Route>
               <Route path="singers" element={<Navigate to="/admin/hymns/zemaris" replace />} />
               <Route path="categories" element={<TaxonomyPage kind="categories" />} />
               <Route path="occasions" element={<TaxonomyPage kind="occasions" />} />
@@ -223,7 +240,11 @@ export default function App() {
 
             <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
               <Route path="content-health" element={<ContentHealthAdmin />} />
-              <Route path="editorial-books" element={<EditorialBooksPreview />} />
+              <Route path="church-library" element={<ChurchLibrary />} />
+              <Route path="bible" element={<BibleManager />} />
+              <Route path="church-library/legacy-preview" element={<EditorialBooksPreview />} />
+              <Route path="editorial-books" element={<Navigate to="/admin/church-library" replace />} />
+              <Route path="editorial-books/*" element={<Navigate to="/admin/church-library" replace />} />
               <Route path="submissions" element={<SubmissionQueue />} />
               <Route path="submissions/:id" element={<SubmissionReview />} />
             </Route>
@@ -306,7 +327,11 @@ export default function App() {
             <PublicMezmurLibrary />
           </Suspense>
         } />
-        <Route path="/hymns" element={<Navigate to="/practice" replace />} />
+        <Route path="/hymns" element={
+          <Suspense fallback={<PageLoadingFallback />}>
+            <PublicMezmurLibrary />
+          </Suspense>
+        } />
         <Route path="/hymns/browse/:collectionSlug/:sectionSlug" element={
           <LegacyPathRedirect to="/practice/browse/:collectionSlug/:sectionSlug" />
         } />

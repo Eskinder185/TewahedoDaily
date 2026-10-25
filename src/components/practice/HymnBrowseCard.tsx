@@ -130,7 +130,7 @@ export function HymnMajorBrowseCardView({
   const heading = hymnSourceHeading(group.title, group.titleAmharic, locale)
   const description = hymnSourceHeading(group.description, group.descriptionAmharic, locale)
   const countLabel =
-    group.mezmurCount > 0 ? hymnMezmurCountLabel(group.mezmurCount, locale) : t('practice.browse')
+    typeof group.mezmurCount === 'number' ? hymnMezmurCountLabel(group.mezmurCount, locale) : t('practice.browse')
   const showMedia = Boolean(group.imageUrl)
   return (
     <Link

@@ -16,6 +16,7 @@ import { useLocale } from '../lib/i18n/locale'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
+import { isMezmurLanguageFilter, normalizeMezmurLanguage, mezmurLanguageLabel, type MezmurLanguageCode, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { ZemariSupportLinks } from '../components/practice/ZemariSupportLinks'
 
@@ -108,6 +109,10 @@ export function PublicHymnCollectionPage({
         : t('practice.allZemari')
     : detailHeading.primary || t('practice.title')
 
+  const page = pageNumber(params)
+  const langParam = params.get('language')
+  const language: MezmurLanguageFilter | null = isMezmurLanguageFilter(langParam) ? langParam : null
+
   usePageMeta(title, detailDescription.primary || t('practice.metaCollection'))
 
   useEffect(() => {
@@ -125,7 +130,7 @@ export function PublicHymnCollectionPage({
           return
         }
 
-        const index = await loadHymnBrowseIndex()
+        const index = await loadHymnBrowseIndex(language || undefined)
         if (!active) return
         const list =
           detailKind === 'occasion'
@@ -149,19 +154,19 @@ export function PublicHymnCollectionPage({
     return () => {
       active = false
     }
-  }, [detailKind, isIndex, slug, t])
+  }, [detailKind, isIndex, slug, t, language])
 
-  const page = pageNumber(params)
   const filterKey = useMemo(() => {
     if (isIndex || !group) return ''
     const next = new URLSearchParams()
     if (withinQ.trim()) next.set('q', withinQ.trim())
+    if (language) next.set('language', language)
     if (detailKind === 'occasion') next.set('occasion', group.name)
     if (detailKind === 'category') next.set('category', group.name)
     if (detailKind === 'singer') next.set('singer', group.id)
     next.set('page', String(page))
     return next.toString()
-  }, [detailKind, group, isIndex, page, withinQ])
+  }, [detailKind, group, isIndex, page, withinQ, language])
 
   useEffect(() => {
     if (isIndex || !group) return
@@ -199,7 +204,7 @@ export function PublicHymnCollectionPage({
         } else {
           const { listImportMezmurCards } = await import('../lib/publicContent/hymnBrowse')
           const { supabase } = await import('../lib/supabase/client')
-          const cards = await listImportMezmurCards(1000)
+          const cards = await listImportMezmurCards()
           rows = cards.map((row) => ({
             id: row.id,
             slug: row.slug,
@@ -224,27 +229,49 @@ export function PublicHymnCollectionPage({
           })) as (MezmurCard & { zemari_id?: string | null })[]
 
           if (detailKind === 'occasion' && supabase) {
-            const { data } = await supabase
-              .from('mezmur_occasion_links_import' as never)
-              .select('mezmur_slug')
-              .eq('occasion_slug', group.slug)
-            const slugs = new Set(
-              ((data || []) as Array<{ mezmur_slug?: string }>).map((r) =>
-                String(r.mezmur_slug || ''),
-              ),
+            // supabase.from('mezmur_category_links_public' as never).select('mezmur_id')
+            const { fetchAllOccasionLinks, COLLECTION_TAXONOMY_MAP } = await import('../lib/publicContent/hymnBrowse')
+            const allLinks = await fetchAllOccasionLinks()
+            const targetSlugs = new Set<string>([group.slug])
+            const mappedOccasions = COLLECTION_TAXONOMY_MAP[group.slug]?.occasions
+            if (mappedOccasions) {
+              for (const occ of mappedOccasions) targetSlugs.add(occ)
+            }
+            const matchingLinks = allLinks.filter((l) => targetSlugs.has(l.occasion_slug))
+            const allowedImportIds = new Set<string>()
+            const allowedSlugs = new Set<string>()
+            const allowedMezmurIds = new Set<string>()
+            for (const l of matchingLinks) {
+              if (l.mezmur_import_id) allowedImportIds.add(l.mezmur_import_id)
+              if (l.mezmur_slug) allowedSlugs.add(l.mezmur_slug)
+              if (l.mezmur_id) allowedMezmurIds.add(l.mezmur_id)
+            }
+            rows = rows.filter((item) =>
+              (item.id && (allowedImportIds.has(item.id) || allowedMezmurIds.has(item.id))) ||
+              (item.slug && allowedSlugs.has(item.slug))
             )
-            rows = rows.filter((item) => slugs.has(item.slug))
           } else if (detailKind === 'category' && supabase) {
-            const { data } = await supabase
-              .from('mezmur_category_links_import' as never)
-              .select('mezmur_slug')
-              .eq('category_slug', group.slug)
-            const slugs = new Set(
-              ((data || []) as Array<{ mezmur_slug?: string }>).map((r) =>
-                String(r.mezmur_slug || ''),
-              ),
+            // supabase.from('mezmur_category_links_public' as never).select('mezmur_id')
+            const { fetchAllCategoryLinks, COLLECTION_TAXONOMY_MAP } = await import('../lib/publicContent/hymnBrowse')
+            const allLinks = await fetchAllCategoryLinks()
+            const targetSlugs = new Set<string>([group.slug])
+            const mappedCategories = COLLECTION_TAXONOMY_MAP[group.slug]?.categories
+            if (mappedCategories) {
+              for (const cat of mappedCategories) targetSlugs.add(cat)
+            }
+            const matchingLinks = allLinks.filter((l) => targetSlugs.has(l.category_slug))
+            const allowedImportIds = new Set<string>()
+            const allowedSlugs = new Set<string>()
+            const allowedMezmurIds = new Set<string>()
+            for (const l of matchingLinks) {
+              if (l.mezmur_import_id) allowedImportIds.add(l.mezmur_import_id)
+              if (l.mezmur_slug) allowedSlugs.add(l.mezmur_slug)
+              if (l.mezmur_id) allowedMezmurIds.add(l.mezmur_id)
+            }
+            rows = rows.filter((item) =>
+              (item.id && (allowedImportIds.has(item.id) || allowedMezmurIds.has(item.id))) ||
+              (item.slug && allowedSlugs.has(item.slug))
             )
-            rows = rows.filter((item) => slugs.has(item.slug))
           }
         }
 
@@ -256,6 +283,7 @@ export function PublicHymnCollectionPage({
               .includes(q),
           )
         }
+        if (language) rows = rows.filter((item) => normalizeMezmurLanguage(item.language) === language)
         if (!active) return
         const from = (page - 1) * PAGE_SIZE
         setItems(rows.slice(from, from + PAGE_SIZE))
@@ -271,13 +299,13 @@ export function PublicHymnCollectionPage({
     return () => {
       active = false
     }
-  }, [detailKind, filterKey, group, isIndex, page, t, withinQ])
+  }, [detailKind, filterKey, group, isIndex, page, t, withinQ, language])
 
   if (isIndex) {
     return (
       <section className={s.page}>
         <p className={s.backRow}>
-          <Link to="/practice" className={s.viewAll}>
+          <Link to={language ? `/practice?language=${encodeURIComponent(language)}` : '/practice'} className={s.viewAll}>
             ← {t('practice.backToHymns')}
           </Link>
         </p>
@@ -301,7 +329,7 @@ export function PublicHymnCollectionPage({
         ) : null}
         <div className={s.browseGrid}>
           {allCards.map((card) => (
-            <HymnBrowseCardView key={card.id} card={card} />
+            <HymnBrowseCardView key={card.id} card={{ ...card, href: language ? `${card.href}${card.href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}` : card.href }} />
           ))}
         </div>
         {!loading && !error && kind === 'singers' && allCards.length > 0 && allCards.length < 4 ? (
@@ -314,7 +342,7 @@ export function PublicHymnCollectionPage({
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-          <Link to="/practice" className={s.viewAll}>
+          <Link to={language ? `/practice?language=${encodeURIComponent(language)}` : '/practice'} className={s.viewAll}>
           ← {t('practice.backToHymns')}
         </Link>
       </p>
@@ -389,14 +417,36 @@ export function PublicHymnCollectionPage({
             </p>
           ) : null}
           {!loading && !items.length ? (
-            <p className={s.status}>{t('practice.noHymnsInCollection')}</p>
+            <div className={s.status} role="status">
+              <p>{language ? `No ${mezmurLanguageLabel(language as MezmurLanguageCode)} Mezmurs found in this collection.` : t('practice.noHymnsInCollection')}</p>
+              {language ? (
+                <button
+                  type="button"
+                  className={s.textBtn}
+                  onClick={() => {
+                    const next = new URLSearchParams(params)
+                    next.delete('language')
+                    next.delete('page')
+                    setParams(next)
+                  }}
+                >
+                  View in All languages
+                </button>
+              ) : null}
+            </div>
+          ) : null}
+
+          {total > 0 ? (
+            <p className={s.hint}>
+              Showing {Math.min((page - 1) * PAGE_SIZE + 1, total)}–{Math.min(page * PAGE_SIZE, total)} of {total} Mezmurs
+            </p>
           ) : null}
 
           <div className={s.grid}>
             {items.map((item) => {
               const itemHeading = hymnSourceHeading(item.title, item.title_amharic, locale)
               return (
-                <Link key={item.id} to={`/practice/mezmur/${item.slug}`} className={s.card}>
+                <Link key={item.id} to={language ? `/practice/mezmur/${item.slug}?language=${encodeURIComponent(language)}` : `/practice/mezmur/${item.slug}`} className={s.card}>
                   <CardArt item={item} />
                   <div className={s.cardBody}>
                     {itemHeading.secondary ? (
@@ -415,9 +465,31 @@ export function PublicHymnCollectionPage({
           </div>
 
           {total > PAGE_SIZE ? (
-            <p className={s.hint}>
-              {t('practice.pageHint', { page })}
-            </p>
+            <nav className={s.pager} aria-label={t('practice.pagination')}>
+              <button
+                type="button"
+                disabled={page <= 1}
+                onClick={() => {
+                  const next = new URLSearchParams(params)
+                  next.set('page', String(page - 1))
+                  setParams(next)
+                }}
+              >
+                {t('practice.previous')}
+              </button>
+              <span>{t('practice.page', { page })}</span>
+              <button
+                type="button"
+                disabled={page * PAGE_SIZE >= total}
+                onClick={() => {
+                  const next = new URLSearchParams(params)
+                  next.set('page', String(page + 1))
+                  setParams(next)
+                }}
+              >
+                {t('practice.next')}
+              </button>
+            </nav>
           ) : null}
         </>
       )}

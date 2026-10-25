@@ -50,26 +50,47 @@ async function listDistinctSlugs(
   column: 'occasion_slug' | 'category_slug',
 ): Promise<DerivedTaxonomyItem[]> {
   if (missing.has(table)) return []
-  const { data, error } = await db().from(table as never).select(column)
-  if (error) {
-    logOnce(table, error)
-    if (isPermanentMissing(error)) missing.add(table)
-    return []
+  const pageSize = 1000
+  let from = 0
+  const allRows: Record<string, unknown>[] = []
+
+  while (true) {
+    const to = from + pageSize - 1
+    const { data, error } = await db()
+      .from(table as never)
+      .select(`mezmur_import_id, mezmur_slug, ${column}`)
+      .range(from, to)
+    if (error) {
+      logOnce(table, error)
+      if (isPermanentMissing(error)) missing.add(table)
+      return []
+    }
+    const batch = (data || []) as Record<string, unknown>[]
+    allRows.push(...batch)
+    if (batch.length < pageSize) break
+    from += pageSize
   }
-  const tally = new Map<string, number>()
-  for (const row of (data || []) as Record<string, unknown>[]) {
+
+  const distinctBySlug = new Map<string, Set<string>>()
+  for (const row of allRows) {
     const slug = String(row[column] ?? '')
       .trim()
       .toLowerCase()
     if (!slug) continue
-    tally.set(slug, (tally.get(slug) || 0) + 1)
+    const mezmurId = String(row.mezmur_import_id ?? row.mezmur_slug ?? '').trim()
+    if (!distinctBySlug.has(slug)) {
+      distinctBySlug.set(slug, new Set())
+    }
+    if (mezmurId) {
+      distinctBySlug.get(slug)!.add(mezmurId)
+    }
   }
-  return [...tally.entries()]
-    .map(([slug, mezmur_count]) => ({
+  return [...distinctBySlug.entries()]
+    .map(([slug, idSet]) => ({
       id: slug,
       slug,
       name: humanizeTaxonomySlug(slug),
-      mezmur_count,
+      mezmur_count: idSet.size,
     }))
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
 }
@@ -87,11 +108,11 @@ export async function listDerivedCategories(): Promise<DerivedTaxonomyItem[]> {
 async function listMezmurLinks(
   table: typeof OCCASION_LINKS | typeof CATEGORY_LINKS,
   column: 'occasion_slug' | 'category_slug',
-  mezmurSlug: string,
+  mezmurImportId: string,
 ): Promise<string[]> {
-  const slug = mezmurSlug.trim()
-  if (!slug || missing.has(table)) return []
-  const { data, error } = await db().from(table as never).select(column).eq('mezmur_slug', slug)
+  const importId = mezmurImportId.trim()
+  if (!importId || missing.has(table)) return []
+  const { data, error } = await db().from(table as never).select(column).eq('mezmur_import_id', importId)
   if (error) {
     logOnce(`${table}.list`, error)
     if (isPermanentMissing(error)) {
@@ -107,91 +128,35 @@ async function listMezmurLinks(
   )]
 }
 
-export function listMezmurOccasionLinks(mezmurSlug: string): Promise<string[]> {
-  return listMezmurLinks(OCCASION_LINKS, 'occasion_slug', mezmurSlug)
+export function listMezmurOccasionLinks(mezmurImportId: string): Promise<string[]> {
+  return listMezmurLinks(OCCASION_LINKS, 'occasion_slug', mezmurImportId)
 }
 
-export function listMezmurCategoryLinks(mezmurSlug: string): Promise<string[]> {
-  return listMezmurLinks(CATEGORY_LINKS, 'category_slug', mezmurSlug)
+export function listMezmurCategoryLinks(mezmurImportId: string): Promise<string[]> {
+  return listMezmurLinks(CATEGORY_LINKS, 'category_slug', mezmurImportId)
 }
 
 /** Replace category and occasion relationships together. The database RPC is transactional. */
 export async function setMezmurClassificationLinks(
-  mezmurSlug: string,
+  mezmurImportId: string,
   categorySlugs: string[],
   occasionSlugs: string[],
-  previousMezmurSlug?: string | null,
 ): Promise<void> {
   const { requireCmsStaffSession } = await import('./cmsStaffAuth')
   await requireCmsStaffSession('mezmur classification links')
-  const slug = mezmurSlug.trim()
-  if (!slug) return
+  const importId = mezmurImportId.trim()
+  if (!importId) throw new Error('A stable Mezmur import ID is required to update classifications safely.')
   const cleanCategories = [...new Set(categorySlugs.map((value) => value.trim().toLowerCase()).filter(Boolean))]
   const cleanOccasions = [...new Set(occasionSlugs.map((value) => value.trim().toLowerCase()).filter(Boolean))]
   const { error } = await db().rpc('set_mezmur_classification_import' as never, {
-    p_mezmur_slug: slug,
+    p_mezmur_import_id: importId,
     p_category_slugs: cleanCategories,
     p_occasion_slugs: cleanOccasions,
-    p_previous_mezmur_slug: previousMezmurSlug?.trim() || null,
   } as never)
   if (!error) return
-
-  // Compatibility fallback for local schemas where the migration has not been applied yet.
-  if (!/function .*set_mezmur_classification_import|PGRST202/i.test(error.message || '')) {
-    throw new Error(errorMessage(error))
+  const rendered = errorMessage(error)
+  if (/function .*set_mezmur_classification_import|PGRST202/i.test(error.message || '')) {
+    throw new Error('The UUID-safe Mezmur classification RPC is not installed. Apply migration 20261025020000_mezmur_bulk_classification.sql before editing classifications.')
   }
-  for (const [table, column, values] of [
-    [CATEGORY_LINKS, 'category_slug', cleanCategories],
-    [OCCASION_LINKS, 'occasion_slug', cleanOccasions],
-  ] as const) {
-    const slugs = [...new Set([slug, previousMezmurSlug?.trim()].filter((value): value is string => Boolean(value)))]
-    const removed = await db().from(table as never).delete().in('mezmur_slug', slugs)
-    if (removed.error) throw new Error(errorMessage(removed.error))
-    if (values.length) {
-      const inserted = await db().from(table as never).insert(
-        values.map((value) => ({ mezmur_slug: slug, [column]: value })) as never,
-      )
-      if (inserted.error) throw new Error(errorMessage(inserted.error))
-    }
-  }
-}
-
-/** Upsert a single occasion link for a mezmur slug (import table). */
-export async function setMezmurOccasionLink(
-  mezmurSlug: string,
-  occasionSlug: string | null,
-): Promise<void> {
-  const { requireCmsStaffSession } = await import('./cmsStaffAuth')
-  await requireCmsStaffSession('mezmur occasion link')
-  const slug = mezmurSlug.trim()
-  if (!slug) return
-  if (missing.has(OCCASION_LINKS)) return
-
-  const { error: delError } = await db()
-    .from(OCCASION_LINKS as never)
-    .delete()
-    .eq('mezmur_slug', slug)
-  if (delError) {
-    logOnce(`${OCCASION_LINKS}.delete`, delError)
-    if (isPermanentMissing(delError)) {
-      missing.add(OCCASION_LINKS)
-      return
-    }
-    throw new Error(errorMessage(delError))
-  }
-
-  const occasion = occasionSlug?.trim()
-  if (!occasion) return
-
-  const { error: insError } = await db()
-    .from(OCCASION_LINKS as never)
-    .insert({ mezmur_slug: slug, occasion_slug: occasion } as never)
-  if (insError) {
-    logOnce(`${OCCASION_LINKS}.insert`, insError)
-    if (isPermanentMissing(insError)) {
-      missing.add(OCCASION_LINKS)
-      return
-    }
-    throw new Error(errorMessage(insError))
-  }
+  throw new Error(rendered)
 }

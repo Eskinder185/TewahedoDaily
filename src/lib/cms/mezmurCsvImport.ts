@@ -1,7 +1,7 @@
 import { CANONICAL_CATEGORIES, CANONICAL_OCCASIONS } from '../publicContent/taxonomy'
-import { db, emptyMezmur, errorMessage, getTaxonomy, saveMezmur, slugify, type MezmurInput } from './mezmurService'
+import { emptyMezmur, errorMessage, getTaxonomy, saveMezmur, slugify, type MezmurInput } from './mezmurService'
 import { setMezmurSectionLinks, type HymnSectionRow } from './hymnBrowseAdminService'
-import { setMezmurOccasionLink } from './hymnTaxonomyImport'
+import { setMezmurClassificationLinks } from './hymnTaxonomyImport'
 
 export type Taxonomy = Awaited<ReturnType<typeof getTaxonomy>>
 
@@ -624,40 +624,14 @@ export async function importSelectedStagedRowsAsDrafts(
         }
       }
 
-      // Link category via mezmur_category_links_import
-      if (saved.slug && row.category.trim()) {
-        const catSlug = slugify(row.category)
-        if (catSlug) {
-          try {
-            await db()
-              .from('mezmur_category_links_import' as never)
-              .delete()
-              .eq('mezmur_slug', saved.slug)
-            await db()
-              .from('mezmur_category_links_import' as never)
-              .insert({ mezmur_slug: saved.slug, category_slug: catSlug } as never)
-          } catch {
-            // non-fatal
-          }
-        }
-      }
-
-      // Link primary and additional occasions via mezmur_occasion_links_import
+      const categorySlugs = row.category.trim() ? [slugify(row.category)].filter(Boolean) : []
       const allOccasions = [row.primary_occasion, ...row.additional_occasions]
         .map((o) => slugify(o))
         .filter(Boolean)
       const uniqueOccasions = [...new Set(allOccasions)]
-
-      if (saved.slug && uniqueOccasions.length > 0) {
+      if (categorySlugs.length > 0 || uniqueOccasions.length > 0) {
         try {
-          await setMezmurOccasionLink(saved.slug, uniqueOccasions[0])
-          if (uniqueOccasions.length > 1) {
-            for (let occIdx = 1; occIdx < uniqueOccasions.length; occIdx += 1) {
-              await db()
-                .from('mezmur_occasion_links_import' as never)
-                .insert({ mezmur_slug: saved.slug, occasion_slug: uniqueOccasions[occIdx] } as never)
-            }
-          }
+          await setMezmurClassificationLinks(saved.import_id, categorySlugs, uniqueOccasions)
         } catch {
           // non-fatal
         }

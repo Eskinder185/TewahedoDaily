@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hymn Lyrics Experience Fixture</title>
+  <style>
+    :root {
+      --color-bg: #f8f6f0;
+      --color-bg-elevated: #ffffff;
+      --color-text: #1d2228;
+      --color-text-muted: #5e6b7c;
+      --color-heading: #132238;
+      --color-border: #e3ded5;
+      --color-border-strong: #c9c2b4;
+      --color-border-card: #ded8cb;
+      --color-gold: #c69224;
+      --color-gold-soft: #e5b95f;
+      --color-wine: #132238;
+      --color-wine-deep: #0a1524;
+      --radius-lg: 16px;
+      --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
+      --font-display: Georgia, serif;
+      --font-body: system-ui, -apple-system, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 24px 16px;
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .state-selector {
+      margin-bottom: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .state-selector button {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--color-border-strong);
+      background: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .state-selector button.active {
+      background: var(--color-wine);
+      color: #fff;
+    }
+
+    /* Styles matching HymnLyricsExperience.module.css */
+    .experience {
+      margin: 0;
+      max-width: 100%;
+      border: 1px solid var(--color-border-card);
+      border-radius: var(--radius-lg);
+      background: var(--color-bg-elevated);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .toolsHeader {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-end;
+      padding: clamp(20px, 4vw, 36px);
+      background: linear-gradient(135deg, color-mix(in srgb, var(--color-wine) 94%, #211), var(--color-wine-deep));
+      color: #fff;
+    }
+    .toolsHeader h2 {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.25;
+      color: #fff;
+    }
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--color-gold-soft);
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+    .actions button,
+    .segmented button {
+      min-height: 44px;
+      border: 1px solid color-mix(in srgb, var(--color-gold) 62%, transparent);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      color: inherit;
+      padding: 8px 14px;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+    }
+    .actions button:hover {
+      background: var(--color-gold);
+      color: #101d2b;
+    }
+    .languageTabsBar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 14px clamp(20px, 4vw, 36px);
+      background: color-mix(in srgb, var(--color-bg) 80%, var(--color-bg-elevated));
+      border-bottom: 1px solid var(--color-border);
+    }
+    .languageTab {
+      min-height: 40px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--color-border-strong);
+      background: var(--color-bg-elevated);
+      color: var(--color-text);
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .languageTabActive {
+      background: var(--color-wine) !important;
+      color: #fff !important;
+      border-color: var(--color-wine) !important;
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 22px;
+      align-items: center;
+      padding: 16px clamp(20px, 4vw, 36px);
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.9rem;
+      background: var(--color-bg);
+    }
+    .controlGroup {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .segmented {
+      display: inline-flex;
+      padding: 3px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: var(--color-bg-elevated);
+    }
+    .segmented button {
+      color: var(--color-text);
+      border: 0;
+      min-height: 36px;
+      padding: 6px 12px;
+      font-size: 0.84rem;
+      background: transparent;
+    }
+    .segmentedActive {
+      background: var(--color-wine) !important;
+      color: #fff !important;
+      border-radius: 999px;
+    }
+    .reader {
+      padding: clamp(24px, 5vw, 52px);
+      transition: background 0.2s, color 0.2s;
+      min-height: 320px;
+    }
+    .themeParchment { background: #fbf3df; color: #2b211b; }
+    .themeIvory { background: #fdfbf7; color: #1a1e24; }
+    .themeGold { background: #251c0e; color: #fdedc7; }
+    .themeGold .sectionLabel { color: #e5b95f !important; }
+    .themeNavy { background: #0d1b2a; color: #e3edf7; }
+    .themeNavy .sectionLabel { color: #64b5f6 !important; }
+    .themeDark { background: #071523; color: #f7f3e9; }
+    .themeDark .sectionLabel { color: #e8c37d !important; }
+
+    .section {
+      max-width: 760px;
+      margin: 0 auto 34px;
+    }
+    .sectionLabel {
+      margin: 0 0 8px;
+      color: #956f26 !important;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.74rem !important;
+      font-weight: 800;
+    }
+    .stanzaText {
+      margin: 0;
+      white-space: pre-wrap;
+      font-size: var(--reader-size, 22px);
+    }
+    .ethiopicTypography {
+      font-family: 'Noto Sans Ethiopic', 'Abyssinica SIL', 'Nyala', sans-serif;
+      line-height: 1.9;
+    }
+    .latinTypography {
+      font-family: var(--font-body);
+      line-height: 1.65;
+    }
+
+    /* Missing notice */
+    .missingLyricsNotice {
+      padding: clamp(36px, 6vw, 60px) 24px;
+      border: 1px dashed var(--color-border-strong);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      background: var(--color-bg-elevated);
+      max-width: 680px;
+      margin: 24px auto;
+    }
+    .missingActions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+    }
+    .contributeButton {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 10px 22px;
+      background: var(--color-wine);
+      color: #fff;
+      border-radius: 999px;
+      font-weight: 750;
+      text-decoration: none;
+    }
+
+    /* Restricted notice */
+    .unavailable {
+      padding: clamp(36px, 6vw, 60px) 24px;
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      color: var(--color-text-muted);
+      background: var(--color-bg-elevated);
+      max-width: 680px;
+      margin: 24px auto;
+    }
+    .sourceLink {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 8px 18px;
+      border: 1px solid var(--color-border-strong);
+      border-radius: 999px;
+      color: var(--color-text);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 760px) {
+      .toolsHeader { align-items: flex-start; flex-direction: column; }
+      .actions { justify-content: flex-start; width: 100%; }
+      .options { align-items: flex-start; flex-direction: column; gap: 12px; }
+      .reader { padding-inline: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="state-selector" role="group" aria-label="Fixture State Controls">
+      <button id="btn-show-reading" class="active">Reading State</button>
+      <button id="btn-show-missing">Missing Lyrics State</button>
+      <button id="btn-show-restricted">Restricted State</button>
+      <button id="btn-show-loading">Loading State</button>
+      <button id="btn-show-error">Error State</button>
+    </div>
+
+    <!-- 1. Full Reading Experience View -->
+    <div id="view-reading">
+      <section class="experience" aria-labelledby="lyrics-tools-title" data-testid="lyrics-reading-experience">
+        <div class="toolsHeader">
+          <div>
+            <p class="eyebrow">Lyrics tools</p>
+            <h2 id="lyrics-tools-title">ሰማየ ሰማያት አይችለውም</h2>
+          </div>
+          <div class="actions" role="toolbar" aria-label="Lyrics tools">
+            <button type="button" id="copy-btn">Copy</button>
+            <button type="button" id="share-btn">Share</button>
+            <button type="button" id="pdf-btn">PDF</button>
+            <button type="button" id="slides-btn">Slides</button>
+          </div>
+        </div>
+
+        <!-- Language Selector Tabs -->
+        <div class="languageTabsBar" role="tablist" aria-label="Lyric languages">
+          <button id="tab-am" role="tab" class="languageTab languageTabActive" aria-selected="true" aria-controls="panel-lyrics">Amharic</button>
+          <button id="tab-gez" role="tab" class="languageTab" aria-selected="false" aria-controls="panel-lyrics">Geʽez</button>
+          <button id="tab-en" role="tab" class="languageTab" aria-selected="false" aria-controls="panel-lyrics">English</button>
+          <button id="tab-om" role="tab" class="languageTab" aria-selected="false" aria-controls="panel-lyrics">Afaan Oromoo</button>
+        </div>
+
+        <!-- Options Controls -->
+        <div class="options">
+          <div class="controlGroup">
+            <span>Size:</span>
+            <div class="segmented" role="group" aria-label="Size">
+              <button id="size-18" aria-pressed="false">S</button>
+              <button id="size-22" class="segmentedActive" aria-pressed="true">M</button>
+              <button id="size-26" aria-pressed="false">L</button>
+              <button id="size-32" aria-pressed="false">XL</button>
+            </div>
+          </div>
+
+          <div class="controlGroup">
+            <span>Theme:</span>
+            <div class="segmented" role="group" aria-label="Theme">
+              <button id="theme-parchment" class="segmentedActive" aria-pressed="true">Parchment</button>
+              <button id="theme-ivory" aria-pressed="false">Ivory</button>
+              <button id="theme-gold" aria-pressed="false">Gold</button>
+              <button id="theme-navy" aria-pressed="false">Navy</button>
+              <button id="theme-dark" aria-pressed="false">Dark</button>
+            </div>
+          </div>
+
+          <label><input type="checkbox" id="verse-toggle" checked /> Verse numbers</label>
+        </div>
+
+        <!-- Reader Panel -->
+        <div id="panel-lyrics" role="tabpanel" class="reader themeParchment" style="--reader-size: 22px;">
+          <article class="section">
+            <p class="sectionLabel" id="label-verse-1">ቁጥር 1</p>
+            <p id="stanza-text-1" class="stanzaText ethiopicTypography" lang="am">ሰማየ ሰማያት አይችለውም፡ ክብሩን አይወስነውም&#10;ለእኛ ሲል ተወለደ፡ በከብቶች በረት ታየ።</p>
+          </article>
+          <article class="section">
+            <p class="sectionLabel" id="label-chorus">አዝማች</p>
+            <p id="stanza-text-chorus" class="stanzaText ethiopicTypography" lang="am">ሃሌ ሉያ ለእርሱ ይሁን፡ ክብርና ምስጋና&#10;ከድንግል ማርያም ተወለደልንና።</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- 2. Missing Lyrics State -->
+    <div id="view-missing" style="display: none;">
+      <section class="missingLyricsNotice" data-testid="lyrics-missing-state">
+        <div style="font-size: 2.4rem; margin-bottom: 12px;">✍️</div>
+        <h2>Lyrics transcription pending</h2>
+        <p>Lyrics have not been transcribed for this hymn yet. You can still listen to the recording or contribute the lyrics.</p>
+        <div class="missingActions">
+          <a href="/suggest-correction?type=lyrics" class="contributeButton" id="contribute-link">Contribute lyrics</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- 3. Restricted Rights State -->
+    <div id="view-restricted" style="display: none;">
+      <section class="unavailable" data-testid="lyrics-restricted-state">
+        <div style="font-size: 2.4rem; margin-bottom: 12px;">🔒</div>
+        <h2>Hymn lyrics</h2>
+        <p>The lyrics are not republished on TewahedoDaily. Listen with the video or open the authorized source.</p>
+        <p style="margin-top: 16px;"><a href="https://example.com/source" target="_blank" class="sourceLink" id="source-link">Open authorized source ↗</a></p>
+      </section>
+    </div>
+
+    <!-- 4. Loading State -->
+    <div id="view-loading" style="display: none;">
+      <section class="loadingState" aria-busy="true" role="status" data-testid="lyrics-loading-state">
+        <div class="loadingSpinner" aria-hidden="true"></div>
+        <p>Loading lyrics...</p>
+      </section>
+    </div>
+
+    <!-- 5. Error State -->
+    <div id="view-error" style="display: none;">
+      <section class="unavailable" data-testid="lyrics-error-state" role="alert">
+        <div style="font-size: 2.4rem; margin-bottom: 12px;">⚠️</div>
+        <h2>Unable to load lyrics</h2>
+        <p>Could not load lyrics for this hymn. Please check your connection and try again.</p>
+        <p style="margin-top: 16px;"><button type="button" class="contributeButton" id="retry-btn">Try again</button></p>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const sampleLyrics = {
+      am: {
+        v1: 'ሰማየ ሰማያት አይችለውም፡ ክብሩን አይወስነውም\\nለእኛ ሲል ተወለደ፡ በከብቶች በረት ታየ።',
+        chorus: 'ሃሌ ሉያ ለእርሱ ይሁን፡ ክብርና ምስጋና\\nከድንግል ማርያም ተወለደልንና።',
+        v1Label: 'ቁጥር 1',
+        chorusLabel: 'አዝማች',
+        isEthiopic: true,
+        lang: 'am'
+      },
+      gez: {
+        v1: 'ሰማየ ሰማያት ኢያግምሮ፡ ወምድርኒ ኢትፀውሮ\\nተወልደ በቤተልሔም፡ ኀደረ ውስተ ጎል።',
+        chorus: 'ሃሌ ሉያ ስብሐት ሎቱ፡ ለዘተወልደ እማርያም።',
+        v1Label: 'ክፍል ፩',
+        chorusLabel: 'ተቀባይ',
+        isEthiopic: true,
+        lang: 'gez'
+      },
+      en: {
+        v1: 'The highest heavens cannot contain Him, nor can their glory bound Him,\\nFor our sake He was born, revealed in a humble manger.',
+        chorus: 'Hallelujah be to Him, all honor and thanksgiving,\\nFor He was born unto us from the Holy Virgin Mary.',
+        v1Label: 'Verse 1',
+        chorusLabel: 'Chorus',
+        isEthiopic: false,
+        lang: 'en'
+      },
+      om: {
+        v1: 'Waaqni samii samii hin danda\'amu, ulfinni isaas hin daanga\'u,\\nNuuf jedhee dhalate, iddoo horii keessatti mul\'ate.',
+        chorus: 'Haalleeluuyaan isaaf haata\'u, galanni fi ulfinni isaaf,\\nDurboo Maariyaam irraa nuuf dhalateeraati.',
+        v1Label: 'Lakk. 1',
+        chorusLabel: 'Fayyaa',
+        isEthiopic: false,
+        lang: 'om'
+      }
+    };
+
+    // State switching
+    const views = {
+      reading: document.getElementById('view-reading'),
+      missing: document.getElementById('view-missing'),
+      restricted: document.getElementById('view-restricted'),
+      loading: document.getElementById('view-loading'),
+      error: document.getElementById('view-error')
+    };
+    const buttons = {
+      reading: document.getElementById('btn-show-reading'),
+      missing: document.getElementById('btn-show-missing'),
+      restricted: document.getElementById('btn-show-restricted'),
+      loading: document.getElementById('btn-show-loading'),
+      error: document.getElementById('btn-show-error')
+    };
+
+    function setActiveState(stateKey) {
+      Object.keys(views).forEach((key) => {
+        if (views[key]) {
+          views[key].style.display = key === stateKey ? 'block' : 'none';
+        }
+        if (buttons[key]) {
+          if (key === stateKey) {
+            buttons[key].classList.add('active');
+          } else {
+            buttons[key].classList.remove('active');
+          }
+        }
+      });
+    }
+
+    buttons.reading.addEventListener('click', () => setActiveState('reading'));
+    buttons.missing.addEventListener('click', () => setActiveState('missing'));
+    buttons.restricted.addEventListener('click', () => setActiveState('restricted'));
+    buttons.loading.addEventListener('click', () => setActiveState('loading'));
+    buttons.error.addEventListener('click', () => setActiveState('error'));
+
+    // Language tabs
+    const tabs = ['am', 'gez', 'en', 'om'];
+    tabs.forEach((id) => {
+      const btn = document.getElementById('tab-' + id);
+      btn.addEventListener('click', () => {
+        tabs.forEach((other) => {
+          const ob = document.getElementById('tab-' + other);
+          ob.classList.remove('languageTabActive');
+          ob.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('languageTabActive');
+        btn.setAttribute('aria-selected', 'true');
+
+        const data = sampleLyrics[id];
+        document.getElementById('label-verse-1').textContent = data.v1Label;
+        document.getElementById('label-chorus').textContent = data.chorusLabel;
+        const s1 = document.getElementById('stanza-text-1');
+        const sc = document.getElementById('stanza-text-chorus');
+        s1.textContent = data.v1.replace(/\\n/g, '\n');
+        sc.textContent = data.chorus.replace(/\\n/g, '\n');
+        s1.setAttribute('lang', data.lang);
+        sc.setAttribute('lang', data.lang);
+
+        if (data.isEthiopic) {
+          s1.className = 'stanzaText ethiopicTypography';
+          sc.className = 'stanzaText ethiopicTypography';
+        } else {
+          s1.className = 'stanzaText latinTypography';
+          sc.className = 'stanzaText latinTypography';
+        }
+      });
+    });
+
+    // Font size scaling
+    const sizes = [18, 22, 26, 32];
+    const reader = document.getElementById('panel-lyrics');
+    sizes.forEach((sz) => {
+      const btn = document.getElementById('size-' + sz);
+      btn.addEventListener('click', () => {
+        sizes.forEach((s) => {
+          const ob = document.getElementById('size-' + s);
+          ob.classList.remove('segmentedActive');
+          ob.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('segmentedActive');
+        btn.setAttribute('aria-pressed', 'true');
+        reader.style.setProperty('--reader-size', sz + 'px');
+      });
+    });
+
+    // Theme switching
+    const themes = ['parchment', 'ivory', 'gold', 'navy', 'dark'];
+    themes.forEach((th) => {
+      const btn = document.getElementById('theme-' + th);
+      btn.addEventListener('click', () => {
+        themes.forEach((t) => {
+          const ob = document.getElementById('theme-' + t);
+          ob.classList.remove('segmentedActive');
+          ob.setAttribute('aria-pressed', 'false');
+          reader.classList.remove('theme' + t.charAt(0).toUpperCase() + t.slice(1));
+        });
+        btn.classList.add('segmentedActive');
+        btn.setAttribute('aria-pressed', 'true');
+        reader.classList.add('theme' + th.charAt(0).toUpperCase() + th.slice(1));
+      });
+    });
+
+    // Verse toggle
+    const verseToggle = document.getElementById('verse-toggle');
+    verseToggle.addEventListener('change', (e) => {
+      const v1Label = document.getElementById('label-verse-1');
+      v1Label.style.display = e.target.checked ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

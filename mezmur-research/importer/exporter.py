@@ -985,16 +985,22 @@ def build_and_export_all_csvs(
         alt_text = am_title or tr_title or "Ethiopian Orthodox Tewahedo Mezmur"
         desc_raw = str(r.get("description") or "").strip()
 
+        full_lyr_val = (
+            str(r.get("full_lyrics") or r.get("source_lyrics_snippet") or "").strip()
+            if r.get("has_source_lyrics")
+            else ""
+        )
+
         candidate: Dict[str, object] = {
             "id": "",
             "amharic_title": am_title,
             "transliteration_title": tr_title,
             "slug": slug,
             "description": desc_raw,
-            "amharic_lyrics": "",
+            "amharic_lyrics": full_lyr_val,
             "transliteration_lyrics": "",
             "english_lyrics": "",
-            "lyrics_status": cls["lyrics_status"],
+            "lyrics_status": "available" if full_lyr_val else cls["lyrics_status"],
             "youtube_url": yt_url,
             "thumbnail_url": thumb,
             "image_alt_text": alt_text,

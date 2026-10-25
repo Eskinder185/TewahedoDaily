@@ -5,6 +5,7 @@ import { responsiveImageAttrs } from '../lib/media/responsiveImage'
 import { publicMedia } from '../lib/publicContent/service'
 import {
   getHymnCollections,
+  searchImportMezmurs,
   searchHymns,
   type HymnCollection,
   type HymnDiscoveryHit,
@@ -23,6 +24,7 @@ import { prefetchRoute } from '../lib/routePrefetch'
 import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
 import s from './HymnPractice.module.css'
+import { MEZMUR_LANGUAGES, isMezmurLanguageFilter, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
 
 type SearchItem = UnifiedMezmurSearchItem
 
@@ -40,7 +42,7 @@ function CardArt({ item }: { item: SearchItem }) {
   const [failed, setFailed] = useState(false)
   useEffect(() => {
     let active = true
-    setFailed(false)
+    queueMicrotask(() => { if (active) setFailed(false) })
     const videoId = parseYoutubeVideoId(item.youtube_url || '')
     const yt = videoId ? youtubeThumbnailUrl(videoId) || '' : ''
     void publicMedia(item.thumbnail_url)
@@ -122,10 +124,12 @@ function BrowseSection({
   title,
   groups,
   emptyHint,
+  language,
 }: {
   title: string
   groups: HymnCollection[]
   emptyHint?: string
+  language?: MezmurLanguageFilter
 }) {
   if (!groups.length) {
     return emptyHint ? (
@@ -144,9 +148,15 @@ function BrowseSection({
         <h2 className={s.browseTitle}>{title}</h2>
       </header>
       <div className={s.browseGrid}>
-        {groups.map((group, index) => (
-          <HymnMajorBrowseCardView key={group.id} group={group} priority={index < 3} />
-        ))}
+        {groups.map((group, index) => {
+          const englishCard = group.slug.toLocaleLowerCase() === 'english' || group.title.toLocaleLowerCase() === 'english'
+          const href = englishCard
+            ? '/practice?language=en'
+            : language && language !== 'all'
+              ? `${group.href}${group.href.includes('?') ? '&' : '?'}language=${language}`
+              : group.href
+          return <HymnMajorBrowseCardView key={group.id} group={{ ...group, href }} priority={index < 3} />
+        })}
       </div>
     </section>
   )
@@ -236,9 +246,12 @@ export function PublicMezmurLibrary() {
   const { locale } = useLocale()
   const navigate = useNavigate()
   const [params, setParams] = useSearchParams()
+  const languageParam = params.get('language')
+  const language: MezmurLanguageFilter = isMezmurLanguageFilter(languageParam) ? languageParam : 'all'
   const [draftQ, setDraftQ] = useState(params.get('q') || '')
   const debouncedQ = useDebounced(draftQ, 280)
   const [browse, setBrowse] = useState<HymnCollection[] | null>(null)
+  const browseLoadedRef = useRef(false)
   const [browseError, setBrowseError] = useState<string>()
   const [discoveryHits, setDiscoveryHits] = useState<HymnDiscoveryHit[]>([])
   const [result, setResult] = useState<{
@@ -257,6 +270,7 @@ export function PublicMezmurLibrary() {
 
   const hasQuery = Boolean((params.get('q') || '').trim())
   const showResults = hasQuery
+  const page = Math.max(1, Number(params.get('page')) || 1)
 
   usePageMeta(
     t('practice.metaTitle'),
@@ -276,11 +290,15 @@ export function PublicMezmurLibrary() {
   useEffect(() => {
     if (showResults) return
     let active = true
-    setBrowse(null)
-    setBrowseError(undefined)
-    void getHymnCollections()
+    if (!browseLoadedRef.current) {
+      queueMicrotask(() => {
+        if (active) { setBrowse(null); setBrowseError(undefined) }
+      })
+    }
+    void getHymnCollections(language)
       .then((data) => {
         if (active) {
+          browseLoadedRef.current = true
           setBrowse(data)
           setBrowseError(undefined)
           for (const group of data.slice(0, 3)) {
@@ -297,7 +315,7 @@ export function PublicMezmurLibrary() {
     return () => {
       active = false
     }
-  }, [showResults, reloadTick, t])
+  }, [showResults, reloadTick, t, language])
 
   useEffect(() => {
     const needle = draftQ.trim()
@@ -339,22 +357,25 @@ export function PublicMezmurLibrary() {
 
   useEffect(() => {
     if (!showResults) {
-      setResult(null)
-      setLoading(false)
+      queueMicrotask(() => { setResult(null); setLoading(false) })
       return
     }
     let active = true
-    setLoading(true)
-    setError(undefined)
-    setResult(null)
+    queueMicrotask(() => {
+      if (active) { setLoading(true); setError(undefined); setResult(null) }
+    })
     // Raw query → GET /api/hymns/search (same path for typed and voice).
     // Do not expand aliases or run local exact-match before the backend.
     const q = (params.get('q') || '').replace(/\s+/g, ' ').trim()
     const controller = new AbortController()
     void (async () => {
       try {
+        const localLanguageData = language === 'all' ? null : await searchImportMezmurs(q, { page, pageSize: 24, language })
         const [data, hits] = await Promise.all([
-          searchMezmursUnified(q, { limit: 20, signal: controller.signal }),
+          localLanguageData ? Promise.resolve({
+            items: localLanguageData.items.map((item) => ({ ...item, primary_language: item.language, preview: null, audio_url: null, zemari: item.singer_name })),
+            total: localLanguageData.total, page: localLanguageData.page,
+          }) : searchMezmursUnified(q, { limit: 20, signal: controller.signal }),
           // Browse discovery only (sections/singers) — does not drive hymn ranking.
           searchHymns(expandSearchAliases(q), 8).catch(() => [] as HymnDiscoveryHit[]),
         ])
@@ -362,8 +383,8 @@ export function PublicMezmurLibrary() {
         setDiscoveryHits(hits)
         setResult({
           items: data.items,
-          total: data.items.length,
-          page: 1,
+          total: data.total,
+          page: data.page,
         })
         setLoading(false)
       } catch (cause) {
@@ -378,24 +399,35 @@ export function PublicMezmurLibrary() {
       active = false
       controller.abort()
     }
-  }, [params, reloadTick, showResults, t])
+  }, [params, reloadTick, showResults, t, language, page])
 
   const applyDiscoveryHit = (hit: HymnDiscoveryHit) => {
     setSuggestOpen(false)
+    const targetHref = language !== 'all' ? `${hit.href}${hit.href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}` : hit.href
     if (hit.type === 'mezmur') {
-      navigate(hit.href)
+      navigate(targetHref)
       return
     }
     setDraftQ('')
-    navigate(hit.href)
+    navigate(targetHref)
   }
 
   const clearSearch = useCallback(() => {
     setDraftQ('')
     setDiscoveryHits([])
     setHeardTranscript(null)
-    setParams(new URLSearchParams())
-  }, [setParams])
+    const next = new URLSearchParams(params)
+    next.delete('q'); next.delete('page')
+    setParams(next)
+  }, [params, setParams])
+
+  const selectLanguage = (nextLanguage: MezmurLanguageFilter) => {
+    const next = new URLSearchParams(params)
+    if (nextLanguage === 'all') next.delete('language')
+    else next.set('language', nextLanguage)
+    next.delete('page')
+    setParams(next)
+  }
 
   const sectionMatchCount = discoveryHits.filter(
     (hit) => hit.type === 'section' || hit.type === 'singer' || hit.type === 'collection',
@@ -467,7 +499,7 @@ export function PublicMezmurLibrary() {
               </ul>
             ) : null}
           </div>
-          {showResults ? (
+          {draftQ || hasQuery ? (
             <button type="button" className={s.clearBtn} onClick={clearSearch}>
               {t('practice.clear')}
             </button>
@@ -494,11 +526,16 @@ export function PublicMezmurLibrary() {
         </p>
       ) : null}
 
+      <div className={s.languageChips} role="group" aria-label={t('practice.languageFilter')}>
+        <button type="button" className={language === 'all' ? s.languageChipActive : s.languageChip} aria-pressed={language === 'all'} onClick={() => selectLanguage('all')}>{t('practice.languages.all')}</button>
+        {MEZMUR_LANGUAGES.map((item) => <button type="button" key={item.code} className={language === item.code ? s.languageChipActive : s.languageChip} aria-pressed={language === item.code} onClick={() => selectLanguage(item.code)}>{t(`practice.languages.${item.code}`)}</button>)}
+      </div>
+
       {showResults ? (
         <>
           <div className={s.resultsHead}>
             <h2 className={s.browseTitle}>{resultsHeading}</h2>
-            <Link to="/practice" className={s.viewAll}>
+            <Link to={language !== 'all' ? `/practice?language=${encodeURIComponent(language)}` : '/practice'} className={s.viewAll}>
               {t('practice.backToBrowse')}
             </Link>
           </div>
@@ -534,6 +571,11 @@ export function PublicMezmurLibrary() {
             onRetry={() => setReloadTick((n) => n + 1)}
             emptyMessage={emptyMessage}
           />
+          {language !== 'all' && result && result.total > 24 ? <nav className={s.pager} aria-label={t('practice.pagination')}>
+            <button type="button" disabled={page <= 1} onClick={() => { const next = new URLSearchParams(params); next.set('page', String(page - 1)); setParams(next) }}>{t('practice.previous')}</button>
+            <span>{t('practice.page', { page })}</span>
+            <button type="button" disabled={page * 24 >= result.total} onClick={() => { const next = new URLSearchParams(params); next.set('page', String(page + 1)); setParams(next) }}>{t('practice.next')}</button>
+          </nav> : null}
         </>
       ) : (
         <>
@@ -559,6 +601,7 @@ export function PublicMezmurLibrary() {
             <BrowseSection
               title={t('practice.browse')}
               groups={browse}
+              language={language}
               emptyHint={t('practice.browseCollectionsEmpty')}
             />
           ) : null}

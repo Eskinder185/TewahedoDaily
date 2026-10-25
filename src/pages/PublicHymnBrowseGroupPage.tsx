@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import {
   getHymnCollectionBySlug,
   loadBrowseGroupChildren,
@@ -12,6 +12,7 @@ import { useTranslation } from '../i18n'
 import { useLocale } from '../lib/i18n/locale'
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
 import s from './HymnPractice.module.css'
+import { isMezmurLanguageFilter, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
 
 /**
  * Level 2 — sections under a hymn collection.
@@ -19,6 +20,8 @@ import s from './HymnPractice.module.css'
  */
 export function PublicHymnBrowseGroupPage() {
   const { slug = '' } = useParams()
+  const [params] = useSearchParams()
+  const language = params.get('language')
   const [group, setGroup] = useState<HymnCollection | null>(null)
   const [children, setChildren] = useState<HymnBrowseCard[]>([])
   const [loading, setLoading] = useState(true)
@@ -40,14 +43,15 @@ export function PublicHymnBrowseGroupPage() {
     setError(undefined)
     void (async () => {
       try {
-        const collection = await getHymnCollectionBySlug(slug)
+        const langFilter: MezmurLanguageFilter | undefined = isMezmurLanguageFilter(language) ? language : undefined
+        const collection = await getHymnCollectionBySlug(slug, langFilter)
         if (!active) return
         setGroup(collection)
         if (!collection) {
           setChildren([])
           return
         }
-        const { children: next } = await loadBrowseGroupChildren(collection.slug)
+        const { children: next } = await loadBrowseGroupChildren(collection.slug, langFilter)
         if (!active) return
         setChildren(next)
       } catch (cause) {
@@ -61,12 +65,12 @@ export function PublicHymnBrowseGroupPage() {
     return () => {
       active = false
     }
-  }, [slug, reloadTick])
+  }, [slug, reloadTick, t, language])
 
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-        <Link to="/practice" className={s.viewAll}>
+        <Link to={language && language !== 'all' ? `/practice?language=${encodeURIComponent(language)}` : '/practice'} className={s.viewAll}>
           ← {t('practice.title')}
         </Link>
       </p>
@@ -124,7 +128,7 @@ export function PublicHymnBrowseGroupPage() {
       {!loading && children.length > 0 ? (
         <div className={s.browseGrid}>
           {children.map((card, index) => (
-            <HymnBrowseCardView key={card.id} card={card} priority={index < 3} />
+            <HymnBrowseCardView key={card.id} card={{ ...card, href: language ? `${card.href}${card.href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}` : card.href }} priority={index < 3} />
           ))}
         </div>
       ) : null}

@@ -143,10 +143,10 @@ function toCard(doc: MezmurSearchDoc): MezmurCard {
 async function fetchAllPublishedSearchRows(): Promise<RawRow[]> {
   if (!supabase) return []
 
-  // Hymns Practice catalog: mezmur_data_import only (never public.mezmur).
+  // Hymns Practice catalog: the approved mezmur_public projection (never legacy public.mezmur).
   try {
     const { listImportMezmurCards } = await import('./hymnBrowse')
-    const imported = await listImportMezmurCards(1000)
+    const imported = await listImportMezmurCards()
     return imported.map((row) => ({
       id: row.id,
       slug: row.slug,

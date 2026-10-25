@@ -5,6 +5,7 @@ import {
   hymnImagePreviewUrl,
   listHymnCollections,
   listHymnSectionsForCollection,
+  moveHymnCollectionToTrash,
   removeHymnSection,
   saveHymnCollection,
   saveHymnSection,
@@ -16,6 +17,7 @@ import {
 import { useAsync } from '../../lib/cms/useAsync'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { AsyncNotice } from './AdminUi'
+import { useAuth } from '../../lib/auth/useAuth'
 import s from './Admin.module.css'
 
 function slugify(value: string) {
@@ -71,6 +73,8 @@ function Thumb({
 }
 
 export function HymnBrowseGroupsList() {
+  const { profile } = useAuth()
+  const canTrash = profile?.role === 'admin' || profile?.role === 'super_admin'
   const result = useAsync(useCallback(() => listHymnCollections(true), []))
   const [busyId, setBusyId] = useState<string | null>(null)
   const [message, setMessage] = useState('')
@@ -92,6 +96,22 @@ export function HymnBrowseGroupsList() {
       result.reload()
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Image update failed.')
+    } finally {
+      setBusyId(null)
+    }
+  }
+
+  async function moveCollectionToTrash(row: HymnCollectionRow) {
+    if (!window.confirm(`Move “${row.title}” to Trash? Its sections will be preserved.`)) return
+    setBusyId(row.id)
+    setError('')
+    setMessage('')
+    try {
+      await moveHymnCollectionToTrash(row)
+      setMessage(`“${row.title}” was moved to Trash.`)
+      result.reload()
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : 'Unable to move this collection to Trash.')
     } finally {
       setBusyId(null)
     }
@@ -152,6 +172,11 @@ export function HymnBrowseGroupsList() {
                     <Link to={`/practice/browse/${row.slug}`} target="_blank" rel="noreferrer">
                       Public preview
                     </Link>
+                    {canTrash ? (
+                      <button type="button" className={s.danger} disabled={Boolean(busyId)} onClick={() => void moveCollectionToTrash(row)}>
+                        Move to Trash
+                      </button>
+                    ) : null}
                   </div>
                   <div style={{ marginTop: '0.75rem' }}>
                     <MediaPicker
@@ -232,6 +257,8 @@ function CollectionForm({
   initialSections: HymnSectionRow[]
   onSaved: (id: string) => void
 }) {
+  const { profile } = useAuth()
+  const canTrash = profile?.role === 'admin' || profile?.role === 'super_admin'
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
@@ -351,12 +378,13 @@ function CollectionForm({
     }
   }
 
-  async function removeSection(sectionId: string) {
-    if (!window.confirm('Delete this section? Linked mezmur section links may remain.')) return
+  async function removeSection(section: HymnSectionRow) {
+    if (!window.confirm('Move this section to Trash? Its Mezmur links will be preserved for restoration.')) return
     setBusy(true)
     try {
-      await removeHymnSection(sectionId)
-      setSections((prev) => prev.filter((i) => i.id !== sectionId))
+      await removeHymnSection(section)
+      setSections((prev) => prev.filter((i) => i.id !== section.id))
+      setSuccess('Section moved to Trash.')
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : 'Remove failed.')
     } finally {
@@ -793,9 +821,11 @@ function CollectionForm({
                     <button type="button" disabled={busy} onClick={() => void saveSection(section)}>
                       Save section
                     </button>
-                    <button type="button" disabled={busy} onClick={() => void removeSection(section.id)}>
-                      Delete
-                    </button>
+                    {canTrash ? (
+                      <button type="button" className={s.danger} disabled={busy} onClick={() => void removeSection(section)}>
+                        Move to Trash
+                      </button>
+                    ) : null}
                   </div>
                 </article>
               ))}

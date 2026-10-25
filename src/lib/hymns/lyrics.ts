@@ -19,7 +19,7 @@ export type VerifiedHymnRelation = {
   href: string
 }
 
-const SECTION_HEADING = /^(verse|chorus|refrain|bridge|ቁጥር|አዝማች|መልስ)(?:\s*\d+)?\s*[:.-]?$/i
+const SECTION_HEADING = /^(verse|chorus|refrain|bridge|ቁጥር|አዝማች|አዝ|መልስ)(?:\s*\d+)?[_\s:.-]*$/i
 
 export function normalizeVerifiedRelations(value: unknown): VerifiedHymnRelation[] {
   if (!Array.isArray(value)) return []
@@ -54,7 +54,7 @@ export async function shareHymnLink(
 
 function sectionKind(label: string): HymnSectionKind {
   const value = label.toLowerCase()
-  if (/chorus|refrain|አዝማች|መልስ/.test(value)) return 'chorus'
+  if (/chorus|refrain|አዝማች|አዝ|መልስ/.test(value)) return 'chorus'
   if (/verse|ቁጥር/.test(value)) return 'verse'
   if (/bridge/.test(value)) return 'bridge'
   return 'other'

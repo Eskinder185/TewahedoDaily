@@ -1,10 +1,13 @@
-﻿import { useCallback, useEffect, useId, useRef, type ReactNode } from 'react'
+import { useCallback, useEffect, useId, useRef, type ReactNode } from 'react'
 import { useAsync } from '../../lib/cms/useAsync'
 import { resolveMedia } from '../../lib/cms/mediaService'
 import { label, type MezmurInput } from '../../lib/cms/mezmurService'
 import s from './Admin.module.css'
 
-export function Status({ value }: { value: string }) { return <span className={s.badge} data-status={value}>{label(value)}</span> }
+export function Status({ value }: { value: string }) {
+  const display = value === 'published' ? 'Published' : value === 'draft' ? 'Draft' : label(value)
+  return <span className={s.badge} data-status={value}>{display}</span>
+}
 export function AsyncNotice({ loading, error, retry }: { loading: boolean; error?: string; retry: () => void }) {
   if (loading) return <p role="status">Loading…</p>
   if (error) return <div className={s.error} role="alert">{error} <button type="button" onClick={retry}>Try again</button></div>

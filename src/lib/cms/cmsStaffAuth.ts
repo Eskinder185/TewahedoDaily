@@ -3,11 +3,14 @@
  * Always uses the browser Supabase client (session JWT), never a public-only fetch.
  */
 import { supabase } from '../supabase/client'
+import { evaluateCmsStaffIdentity, type CmsStaffRole } from './cmsStaffIdentity'
+import { staffWriteError, type SupabaseWriteError } from './cmsWriteError'
 
 export type CmsStaffSession = {
   userId: string
   email: string | null
-  isStaff: boolean
+  profileRole: CmsStaffRole
+  isStaff: true
 }
 
 let lastStaffProbe: { at: number; value: CmsStaffSession | null; error: string | null } | null =
@@ -48,6 +51,24 @@ export async function requireCmsStaffSession(scope = 'cms write'): Promise<CmsSt
     console.warn('[cmsStaff] setSession', setError)
   }
 
+  const { data: verifiedData, error: verifiedError } = await supabase.auth.getUser()
+  if (verifiedError || !verifiedData.user?.id) {
+    logOnceDev(`${scope} validated user`, verifiedError)
+    throw new Error(
+      `Could not validate the current JWT${verifiedError?.message ? `: ${verifiedError.message}` : '.'} Sign out and sign in again.`,
+    )
+  }
+
+  const { data: profileRaw, error: profileError } = await supabase
+    .from('profiles')
+    .select('id, role')
+    .eq('id', verifiedData.user.id)
+    .maybeSingle()
+  if (profileError) {
+    logOnceDev(`${scope} profile`, profileError)
+    throw staffWriteError('SELECT public.profiles for authenticated user', profileError)
+  }
+
   const { data: isStaffRaw, error: staffError } = await supabase.rpc('is_staff' as never)
   if (staffError) {
     logOnceDev(`${scope} is_staff`, staffError)
@@ -57,18 +78,24 @@ export async function requireCmsStaffSession(scope = 'cms write'): Promise<CmsSt
       staffError.code === 'PGRST205' ||
       /permission denied|Could not find/i.test(staffError.message || '')
     ) {
-      throw new Error(
-        `Could not verify staff access (${staffError.code || 'error'}). Confirm public.is_staff() exists and your role is editor/admin.`,
-      )
+      throw staffWriteError('RPC public.is_staff()', staffError)
     }
     throw new Error(staffError.message || 'Could not verify staff access.')
   }
 
-  const isStaff = Boolean(isStaffRaw)
+  const profile = profileRaw as { id?: string; role?: string | null } | null
+  const identity = evaluateCmsStaffIdentity({
+    sessionUserId: user.id,
+    verifiedUserId: verifiedData.user.id,
+    profileId: profile?.id || null,
+    profileRole: profile?.role || null,
+    isStaff: Boolean(isStaffRaw),
+  })
   const result: CmsStaffSession = {
-    userId: user.id,
-    email: user.email ?? null,
-    isStaff,
+    userId: identity.userId,
+    email: verifiedData.user.email ?? user.email ?? null,
+    profileRole: identity.profileRole,
+    isStaff: true,
   }
   lastStaffProbe = { at: Date.now(), value: result, error: null }
 
@@ -77,14 +104,9 @@ export async function requireCmsStaffSession(scope = 'cms write'): Promise<CmsSt
       scope,
       userId: result.userId,
       email: result.email,
+      profileRole: result.profileRole,
       isStaff: result.isStaff,
     })
-  }
-
-  if (!isStaff) {
-    throw new Error(
-      'Signed in, but public.is_staff() is false. Your profiles.role must be editor, admin, or super_admin. Then apply supabase/mezmur-import/FIX_ZEMARI_STAFF_WRITE.sql if writes still return 403.',
-    )
   }
 
   return result
@@ -96,20 +118,8 @@ export function getLastCmsStaffProbe() {
 
 export function mapStaffWriteError(
   scope: string,
-  error: { code?: string; message?: string; details?: string; hint?: string } | null,
+  error: SupabaseWriteError | null,
 ): Error {
   if (import.meta.env.DEV) console.error(`[cmsStaff] ${scope}`, error)
-  if (!error) return new Error('Save failed.')
-  const code = error.code || ''
-  const message = error.message || ''
-  if (code === '42501' || /permission denied|row-level security|rls/i.test(message)) {
-    return new Error(
-      `Permission denied (${code || 'RLS'}). Confirm you are signed in as staff (is_staff() = true), then apply supabase/mezmur-import/FIX_ZEMARI_STAFF_WRITE.sql.`,
-    )
-  }
-  if (code === 'PGRST116' || /0 rows|cannot coerce/i.test(message)) {
-    return new Error(`No matching row was updated (${scope}). Refresh and try again.`)
-  }
-  if (code === '23505') return new Error('This slug already exists. Choose a unique slug.')
-  return new Error(message || 'Save failed.')
+  return staffWriteError(scope, error)
 }

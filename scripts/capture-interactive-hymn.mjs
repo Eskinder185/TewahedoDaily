@@ -21,9 +21,7 @@ try {
     singer_id: null, singer_slug: null, singer_name: 'Tewahedo Daily Choir', zemari_id: null,
     youtube_url: null, audio_url: null, image_path: null, image_alt: null, legacy_thumbnail_url: null,
     search_keywords: ['ሰላም', 'Selam'], status: 'published', review_status: 'verified', review_notes: null,
-    source_url: null, source_notes: null, structured_lyrics: null, lyrics_language: 'am',
-    source_info: 'Tewahedo Daily QA test text', rights_status: 'unknown', external_lyrics_url: null,
-    last_verified_at: '2026-10-23T00:00:00Z', related_content: [],
+    source_url: null, source_notes: null, rights_status: 'unknown',
   }
 
   for (const target of [

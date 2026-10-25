@@ -300,7 +300,9 @@ class TestMezmurPipeline(unittest.TestCase):
                 "singers": [{"id": 1, "name": "ዘማሪት ሲስተር ሕይወት ተፈሪ", "slug": "hiwot"}],
                 "channel_title": "Janderebaw Media",
                 "has_source_lyrics": True,
+                "full_lyrics": "ናና አማኑኤል ና መድኃኒቴ\nጽድቅህን አልብሠኝ ይቅር መራቆቴ",
                 "is_detail_verified": True,
+                "lyrics_verification": "verified_true",
             })
             exports_dir = Path(tmpdir) / "exports"
             eotc_tmp_dir = Path(tmpdir) / "eotcmedia"
@@ -323,8 +325,8 @@ class TestMezmurPipeline(unittest.TestCase):
             self.assertEqual(row["amharic_title"], "ናና አማኑኤል")
             self.assertEqual(row["status"], "draft")
             self.assertEqual(row["featured"], "false")
-            self.assertEqual(row["amharic_lyrics"], "")  # Unlicensed lyrics never reproduced
-            self.assertEqual(row["lyrics_status"], "rights_review_required")
+            self.assertIn("ናና አማኑኤል ና መድኃኒቴ", row["amharic_lyrics"])
+            self.assertEqual(row["lyrics_status"], "available")
             self.assertIn("\n", row["description"])
 
     def test_09_classification_and_channel_separation(self) -> None:

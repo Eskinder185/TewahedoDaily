@@ -58,7 +58,7 @@ const ALLOWED_IMAGE_MIME: Record<string, string> = {
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024
 
 function supabaseUrl() {
-  const url = import.meta.env.VITE_SUPABASE_URL?.trim()
+  const url = (typeof import.meta !== 'undefined' && import.meta.env ? (import.meta.env.VITE_SUPABASE_URL as string | undefined) : undefined) || (typeof process !== 'undefined' && process.env ? process.env.VITE_SUPABASE_URL : undefined)
   if (!url) throw new Error('Supabase is not configured.')
   return url.replace(/\/$/, '')
 }

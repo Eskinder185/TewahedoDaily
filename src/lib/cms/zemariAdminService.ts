@@ -5,6 +5,7 @@
 import { db, errorMessage } from './mezmurService'
 import { resolveContentMediaUrl } from './contentMedia'
 import { mapStaffWriteError, requireCmsStaffSession } from './cmsStaffAuth'
+import { moveHymnContentToTrash } from './contentTrashService'
 
 export type ZemariRow = {
   id: string
@@ -24,6 +25,9 @@ export type ZemariRow = {
   updated_at: string | null
   mezmur_count?: number
   published_mezmur_count?: number
+  deleted_at: string | null
+  deleted_by: string | null
+  deleted_from_status: string | null
 }
 
 export type ZemariMezmurLink = {
@@ -40,11 +44,25 @@ const VIEW = 'zemaris_with_counts' as const
 const DATA = 'mezmur_data_import' as const
 
 let viewMissing = false
+let viewLacksTrashColumns = false
 
 const ZEMARI_SELECT =
-  'id, slug, name, name_amharic, bio, bio_amharic, image_path, image_alt, youtube_url, website_url, sort_order, is_featured, status, created_at, updated_at'
+  'id, slug, name, name_amharic, bio, bio_amharic, image_path, image_alt, youtube_url, website_url, sort_order, is_featured, status, created_at, updated_at, deleted_at, deleted_by, deleted_from_status'
 
 const VIEW_SELECT = `${ZEMARI_SELECT}, mezmur_count, published_mezmur_count`
+const LEGACY_VIEW_SELECT =
+  'id, slug, name, name_amharic, bio, bio_amharic, image_path, image_alt, youtube_url, website_url, sort_order, is_featured, status, created_at, updated_at, mezmur_count, published_mezmur_count'
+
+function countsViewMissing(error: { code?: string; message?: string }): boolean {
+  return error.code === 'PGRST205' || /zemaris_with_counts.*(?:not find|does not exist)/i.test(error.message || '')
+}
+
+function countsViewLacksTrashMetadata(error: { code?: string; message?: string }): boolean {
+  return (
+    (error.code === '42703' || error.code === 'PGRST204') &&
+    /(?:zemaris_with_counts\.)?(deleted_at|deleted_by|deleted_from_status).*does not exist/i.test(error.message || '')
+  )
+}
 
 function txt(value: unknown) {
   return String(value ?? '').trim()
@@ -69,6 +87,9 @@ function mapZemari(row: Record<string, unknown>): ZemariRow {
     updated_at: txt(row.updated_at) || null,
     mezmur_count: Number(row.mezmur_count) || 0,
     published_mezmur_count: Number(row.published_mezmur_count) || 0,
+    deleted_at: txt(row.deleted_at) || null,
+    deleted_by: txt(row.deleted_by) || null,
+    deleted_from_status: txt(row.deleted_from_status) || null,
   }
 }
 
@@ -78,6 +99,56 @@ function adminWriteError(scope: string, error: { code?: string; message?: string
 
 async function requireStaffSession(): Promise<void> {
   await requireCmsStaffSession('zemari')
+}
+
+export type ZemariImportAccessCheck = {
+  userId: string
+  profileRole: string
+  isStaff: boolean
+  canReadZemaris: boolean
+  canInsertZemaris: boolean | null
+  capabilityCheckInstalled: boolean
+  warning: string | null
+}
+
+/** Read-only preflight. The optional RPC reports grants without attempting an insert. */
+export async function validateZemariImportAccess(): Promise<ZemariImportAccessCheck> {
+  const actor = await requireCmsStaffSession('Zemari import validation')
+  const readProbe = await db().from(TABLE as never).select('id').limit(1)
+  if (readProbe.error) throw adminWriteError('SELECT public.zemaris validation probe', readProbe.error)
+
+  const capability = await db().rpc('validate_zemari_import_access' as never)
+  if (capability.error) {
+    if (
+      capability.error.code === 'PGRST202' ||
+      /Could not find (?:the )?function.*validate_zemari_import_access|schema cache/i.test(
+        capability.error.message || '',
+      )
+    ) {
+      return {
+        userId: actor.userId,
+        profileRole: actor.profileRole,
+        isStaff: true,
+        canReadZemaris: true,
+        canInsertZemaris: null,
+        capabilityCheckInstalled: false,
+        warning:
+          'Staff identity and read access are verified. Install the read-only import capability check to verify INSERT grants before importing.',
+      }
+    }
+    throw adminWriteError('RPC public.validate_zemari_import_access', capability.error)
+  }
+
+  const value = (capability.data || {}) as Record<string, unknown>
+  return {
+    userId: actor.userId,
+    profileRole: actor.profileRole,
+    isStaff: Boolean(value.is_staff),
+    canReadZemaris: Boolean(value.can_select_zemaris),
+    canInsertZemaris: Boolean(value.can_insert_zemaris),
+    capabilityCheckInstalled: true,
+    warning: null,
+  }
 }
 
 export function zemariImagePreviewUrl(path: string | null | undefined): string {
@@ -101,8 +172,8 @@ export type ZemariListFilters = {
 }
 
 export async function listZemaris(filters: ZemariListFilters = {}): Promise<ZemariRow[]> {
-  if (!viewMissing) {
-    let query = db().from(VIEW as never).select(VIEW_SELECT).order('sort_order').order('name')
+  if (!viewMissing && !viewLacksTrashColumns) {
+    let query = db().from(VIEW as never).select(VIEW_SELECT).is('deleted_at', null).order('sort_order').order('name')
     const status = filters.status || 'all'
     if (status !== 'all') query = query.eq('status', status)
     if (filters.featured) query = query.eq('is_featured', true)
@@ -122,14 +193,16 @@ export async function listZemaris(filters: ZemariListFilters = {}): Promise<Zema
       }
       return rows
     }
-    if (/zemaris_with_counts|PGRST205|Could not find/i.test(error.message || '')) {
+    if (countsViewLacksTrashMetadata(error)) {
+      viewLacksTrashColumns = true
+    } else if (countsViewMissing(error)) {
       viewMissing = true
     } else {
       throw new Error(errorMessage(error))
     }
   }
 
-  let plain = db().from(TABLE as never).select(ZEMARI_SELECT).order('sort_order').order('name')
+  let plain = db().from(TABLE as never).select(ZEMARI_SELECT).is('deleted_at', null).order('sort_order').order('name')
   const status = filters.status || 'all'
   if (status !== 'all') plain = plain.eq('status', status)
   if (filters.featured) plain = plain.eq('is_featured', true)
@@ -146,16 +219,21 @@ export async function listZemaris(filters: ZemariListFilters = {}): Promise<Zema
 
 export async function listPublishedZemarisWithMezmurs(): Promise<ZemariRow[]> {
   if (viewMissing) return []
+  const select = viewLacksTrashColumns ? LEGACY_VIEW_SELECT : VIEW_SELECT
   const { data, error } = await db()
     .from(VIEW as never)
-    .select(VIEW_SELECT)
+    .select(select)
     .eq('status', 'published')
     .gt('published_mezmur_count', 0)
     .order('is_featured', { ascending: false })
     .order('sort_order')
     .order('name')
   if (error) {
-    if (/zemaris_with_counts|PGRST205|Could not find/i.test(error.message || '')) {
+    if (countsViewLacksTrashMetadata(error) && !viewLacksTrashColumns) {
+      viewLacksTrashColumns = true
+      return listPublishedZemarisWithMezmurs()
+    }
+    if (countsViewMissing(error)) {
       viewMissing = true
       return []
     }
@@ -166,14 +244,16 @@ export async function listPublishedZemarisWithMezmurs(): Promise<ZemariRow[]> {
 
 export async function getZemari(idOrSlug: string): Promise<ZemariRow> {
   const needle = idOrSlug.trim()
-  if (!viewMissing) {
+  if (!viewMissing && !viewLacksTrashColumns) {
     const first = await db()
       .from(VIEW as never)
       .select(VIEW_SELECT)
       .eq('id', needle)
       .limit(1)
     const { data, error } = first
-    if (error && /zemaris_with_counts|PGRST205/i.test(error.message || '')) {
+    if (error && countsViewLacksTrashMetadata(error)) {
+      viewLacksTrashColumns = true
+    } else if (error && countsViewMissing(error)) {
       viewMissing = true
     } else if (error) {
       throw new Error(errorMessage(error))
@@ -185,7 +265,9 @@ export async function getZemari(idOrSlug: string): Promise<ZemariRow> {
           .select(VIEW_SELECT)
           .eq('slug', needle)
           .limit(1)
-        if (bySlug.error && /zemaris_with_counts|PGRST205/i.test(bySlug.error.message || '')) {
+        if (bySlug.error && countsViewLacksTrashMetadata(bySlug.error)) {
+          viewLacksTrashColumns = true
+        } else if (bySlug.error && countsViewMissing(bySlug.error)) {
           viewMissing = true
         } else if (bySlug.error) {
           throw new Error(errorMessage(bySlug.error))
@@ -234,7 +316,7 @@ export async function saveZemari(
       .eq('id', existingId)
       .select('id')
       .limit(1)
-    if (error) throw adminWriteError('zemari update', error)
+    if (error) throw adminWriteError('PATCH public.zemaris by id', error)
     const row = (data || [])[0] as { id?: string } | undefined
     if (!row?.id) throw new Error('Zemari update returned no row.')
     savedId = row.id
@@ -244,7 +326,7 @@ export async function saveZemari(
       .insert(payload as never)
       .select('id')
       .limit(1)
-    if (error) throw adminWriteError('zemari insert', error)
+    if (error) throw adminWriteError('POST public.zemaris', error)
     const row = (data || [])[0] as { id?: string } | undefined
     if (!row?.id) throw new Error('Zemari create returned no row.')
     savedId = row.id
@@ -253,11 +335,37 @@ export async function saveZemari(
   return getZemari(savedId)
 }
 
+export async function findZemariBySlug(slug: string): Promise<ZemariRow | null> {
+  const clean = slug.trim().toLowerCase()
+  if (!clean) return null
+  const { data, error } = await db()
+    .from(TABLE as never)
+    .select(ZEMARI_SELECT)
+    .eq('slug', clean)
+    .limit(1)
+  if (error) throw new Error(errorMessage(error))
+  const row = (data || [])[0] as Record<string, unknown> | undefined
+  return row ? mapZemari(row) : null
+}
+
+export function assertZemariAssignmentSafe(
+  existingZemariId: string | null | undefined,
+  targetZemariId: string,
+): void {
+  const existing = existingZemariId?.trim()
+  if (existing && existing !== targetZemariId) {
+    throw new Error(
+      'This Mezmur is already assigned to a different Zemari. Remove that relationship explicitly before assigning a new one.',
+    )
+  }
+}
+
 export async function listMezmursForZemari(zemariId: string): Promise<ZemariMezmurLink[]> {
   const { data, error } = await db()
     .from(DATA as never)
     .select('mezmur_id, slug, title, title_amharic, status, zemari_id')
     .eq('zemari_id', zemariId)
+    .is('deleted_at', null)
     .order('title')
   if (error) throw new Error(errorMessage(error))
   return ((data || []) as Record<string, unknown>[]).map((row) => ({
@@ -317,7 +425,7 @@ export async function setMezmurZemari(
       .eq('mezmur_id', id)
       .select(selectCols)
       .limit(1)
-    if (error) throw adminWriteError('mezmur zemari link by id', error)
+    if (error) throw adminWriteError('PATCH public.mezmur_data_import Zemari link by mezmur_id', error)
     row = (data || [])[0] as Record<string, unknown> | undefined
   }
   if (!row) {
@@ -329,7 +437,7 @@ export async function setMezmurZemari(
       .eq('slug', slug)
       .select(selectCols)
       .limit(1)
-    if (error) throw adminWriteError('mezmur zemari link by slug', error)
+    if (error) throw adminWriteError('PATCH public.mezmur_data_import Zemari link by slug', error)
     row = (data || [])[0] as Record<string, unknown> | undefined
   }
   if (!row) throw new Error('Mezmur link update returned no row.')
@@ -345,8 +453,9 @@ export async function setMezmurZemari(
 
 export async function assignMezmurToZemari(
   zemari: Pick<ZemariRow, 'id' | 'slug' | 'name'>,
-  mezmur: { mezmur_id?: string | null; slug: string },
+  mezmur: { mezmur_id?: string | null; slug: string; zemari_id?: string | null },
 ): Promise<ZemariMezmurLink> {
+  assertZemariAssignmentSafe(mezmur.zemari_id, zemari.id)
   return setMezmurZemari(mezmur, zemari)
 }
 
@@ -355,4 +464,8 @@ export async function removeMezmurFromZemari(mezmur: {
   slug: string
 }): Promise<ZemariMezmurLink> {
   return setMezmurZemari(mezmur, null)
+}
+
+export async function moveZemariToTrash(row: Pick<ZemariRow, 'id'>): Promise<void> {
+  await moveHymnContentToTrash('zemari', row.id)
 }

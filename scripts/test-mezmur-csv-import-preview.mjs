@@ -3,7 +3,7 @@
  * Uses mocked Supabase HTTP (never touches production database).
  */
 import assert from 'node:assert/strict'
-import { readFile } from 'node:fs/promises'
+import { mkdir, readFile } from 'node:fs/promises'
 import { chromium } from 'playwright'
 import { createServer } from 'vite'
 
@@ -45,7 +45,9 @@ try {
 
   const savedDrafts = []
   const savedSectionLinks = []
+  const savedCategoryLinks = []
   const savedOccasionLinks = []
+  let importCapabilityAllowed = true
 
   const zemaris = [
     {
@@ -119,8 +121,54 @@ try {
         display_name: 'Test Admin',
         role: 'admin',
       }
+    } else if (url.pathname === '/rest/v1/rpc/is_staff') {
+      body = true
+    } else if (url.pathname === '/rest/v1/rpc/set_mezmur_classification_import') {
+      const posted = request.postDataJSON()
+      const savedMezmur = savedDrafts.find(
+        (row) => row.import_id === posted.p_mezmur_import_id,
+      )
+      assert.ok(savedMezmur, 'classification RPC must target the saved Mezmur UUID')
+      savedCategoryLinks.push(
+        ...(posted.p_category_slugs || []).map((categorySlug) => ({
+          mezmur_import_id: posted.p_mezmur_import_id,
+          category_slug: categorySlug,
+        })),
+      )
+      savedOccasionLinks.push(
+        ...(posted.p_occasion_slugs || []).map((occasionSlug) => ({
+          mezmur_import_id: posted.p_mezmur_import_id,
+          occasion_slug: occasionSlug,
+        })),
+      )
+      body = null
+    } else if (url.pathname === '/rest/v1/rpc/validate_zemari_import_access') {
+      body = {
+        user_id: user.id,
+        is_staff: true,
+        can_select_zemaris: true,
+        can_insert_zemaris: importCapabilityAllowed,
+        can_update_zemaris: true,
+        can_update_mezmur_links: true,
+      }
     } else if (url.pathname === '/rest/v1/zemaris' || url.pathname === '/rest/v1/zemaris_with_counts') {
-      body = zemaris
+      if (request.method() === 'POST' || request.method() === 'PATCH') {
+        const posted = request.postDataJSON()
+        const rec = {
+          ...posted,
+          id: posted.id || crypto.randomUUID(),
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        }
+        zemaris.push(rec)
+        body = [rec]
+      } else {
+        const slugFilter = url.searchParams.get('slug')?.replace(/^eq\./, '')
+        const idFilter = url.searchParams.get('id')?.replace(/^eq\./, '')
+        body = zemaris.filter(
+          (row) => (!slugFilter || row.slug === slugFilter) && (!idFilter || row.id === idFilter),
+        )
+      }
     } else if (url.pathname === '/rest/v1/mezmur_sections_import') {
       body = sections
     } else if (url.pathname === '/rest/v1/mezmur_category_links_import') {
@@ -146,6 +194,7 @@ try {
         const posted = request.postDataJSON()
         const rec = {
           ...posted,
+          import_id: posted.import_id || crypto.randomUUID(),
           mezmur_id: posted.mezmur_id || crypto.randomUUID(),
           id: posted.id || posted.mezmur_id || crypto.randomUUID(),
           created_at: new Date().toISOString(),
@@ -268,12 +317,65 @@ try {
   assert.equal(savedDrafts[0].title_amharic, 'ናና አማኑኤል የተስተካከለ')
   assert.equal(savedDrafts[0].status, 'draft')
   assert.equal(savedDrafts[0].zemari_id, 'aaaaaaaa-0000-0000-0000-000000000010')
-  assert.ok(savedOccasionLinks.some((l) => l.occasion_slug === 'kidane-mihret'))
+  assert.ok(
+    savedCategoryLinks.some(
+      (link) =>
+        link.mezmur_import_id === savedDrafts[0].import_id &&
+        link.category_slug === 'virgin-mary',
+    ),
+  )
+  assert.ok(
+    savedOccasionLinks.some(
+      (link) =>
+        link.mezmur_import_id === savedDrafts[0].import_id &&
+        link.occasion_slug === 'kidane-mihret',
+    ),
+  )
   assert.ok(savedSectionLinks.length >= 1)
+
+  // 7. Navigate to /admin/hymns/zemaris and test Bulk Import Zemaris CSV panel
+  await page.goto(`${base}/admin/hymns/zemaris`)
+  await page.getByRole('heading', { name: 'Zemari Library' }).waitFor()
+  await page.getByRole('button', { name: 'Bulk Import Zemaris CSV' }).click()
+  await page.getByRole('heading', { name: 'Bulk Import Zemaris' }).waitFor()
+  // Clear selection, select row 2, run the no-write validation, and import one draft.
+  await page.getByRole('button', { name: 'Clear Selection' }).click()
+  await page.getByLabel('Select Zemari row 2', { exact: true }).check()
+  await page.getByRole('button', { name: 'Validate Import' }).click()
+  await page.getByLabel('Import validation summary').waitFor()
+  await page.getByText(/Validation summary — no database writes/).waitFor()
+  await mkdir(new URL('../artifacts/', import.meta.url), { recursive: true })
+  await page.screenshot({
+    path: new URL('../artifacts/zemari-import-validation.png', import.meta.url).pathname.slice(1),
+    fullPage: true,
+  })
+  await page.getByRole('button', { name: 'Import 1 Selected Zemaris' }).click()
+  await page
+    .getByRole('status')
+    .filter({ hasText: 'Successfully imported 1 Zemaris as draft.' })
+    .waitFor()
+  assert.equal(zemaris.length, 3)
+  assert.equal(zemaris.at(-1).slug, 'jan-yared')
+  assert.equal(zemaris.at(-1).name_amharic, 'ጃን ያሬድ')
+  assert.equal(zemaris.at(-1).status, 'draft')
+
+  // Reload and validate again: the same source row is now a duplicate and cannot be inserted twice.
+  await page.getByRole('button', { name: 'Load 185 Zemaris (With Lyrics)' }).click()
+  await page.getByRole('button', { name: 'Validate Import' }).click()
+  await page.getByLabel('Import validation summary').waitFor()
+  assert.equal(await page.getByLabel('Select Zemari row 2', { exact: true }).isDisabled(), true)
+  assert.equal(zemaris.length, 3)
+
+  // Capability denial is shown clearly and leaves the import action disabled.
+  importCapabilityAllowed = false
+  await page.getByRole('button', { name: 'Validate Import' }).click()
+  await page.getByRole('alert').filter({ hasText: /cannot create Zemari profiles/i }).waitFor()
+  assert.equal(await page.getByRole('button', { name: /Import .* Selected Zemaris/ }).isDisabled(), true)
+
   assert.deepEqual(errors, [])
 
   console.log(
-    'Playwright Mezmur CSV Import Preview test passed: CSV upload, duplicate detection, inline editing, section & Zemari linking, and staging draft import.',
+    'Playwright Mezmur & Zemari CSV Import Preview tests passed: CSV upload, duplicate detection, inline editing, section & Zemari linking, no-write validation, one-record draft import, read-back, and repeat-import prevention.',
   )
 } finally {
   await browser?.close()

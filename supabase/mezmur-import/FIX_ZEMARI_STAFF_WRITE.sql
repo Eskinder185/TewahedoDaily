@@ -1,4 +1,6 @@
--- Staff write access for Zemari CMS + mezmur_data_import.zemari_id
+-- Staff write access for Zemari CMS + mezmur_data_import.zemari_id.
+-- NOTE: This legacy repair is superseded by the guarded publication and
+-- mezmur_public view migrations. It must never expose draft import rows.
 -- Run in Supabase SQL Editor as postgres / service role.
 -- Fixes 42501 / 403 when authenticated staff try to update hymns or zemaris.
 
@@ -81,7 +83,7 @@ create policy mezmur_data_import_public_read
   on public.mezmur_data_import
   for select
   to anon, authenticated
-  using (true);
+  using (status = 'published' or coalesce(public.is_staff(), false));
 
 drop policy if exists mezmur_data_import_staff_update on public.mezmur_data_import;
 create policy mezmur_data_import_staff_update

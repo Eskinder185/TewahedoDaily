@@ -1,6 +1,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { MediaPicker } from '../../components/admin/MediaPicker'
+import { BibleReferencePicker } from '../../components/admin/BibleReferencePicker'
 import {
   archiveCalendarCard,
   cardImagePreview,
@@ -1548,6 +1549,10 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
                   placeholder="Matthew 3:13–17&#10;John 1:29–34"
                 />
               </label>
+              <BibleReferencePicker
+                value={input.scripture_references || ''}
+                onChange={(next) => set('scripture_references', next)}
+              />
               <label>
                 Fasting notes
                 <textarea

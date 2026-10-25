@@ -59,28 +59,30 @@ export async function loadBibleBook(slug: string): Promise<BibleBookDetail | nul
   const editionById = new Map(editions.map((edition) => [edition.id, edition.code]))
   const sourceById = new Map(sources.map((source) => [source.id, source]))
   const chapters: BibleBookDetail['chapters'] = { am: [], web: [] }
+  const byEdition: Record<string, ReaderChapter[]> = {}
   if (sources.length) {
     const rows = checked(await client.from('bible_chapters').select('*').in('source_book_id', sources.map((source) => source.id)).order('source_order'))
-    const byEdition: Record<BibleEditionCode, Array<{ chapter: BibleChapter; source: SourceBook }>> = { am: [], web: [] }
+    const grouped: Record<BibleEditionCode, Array<{ chapter: BibleChapter; source: SourceBook }>> = {}
     for (const chapter of rows) {
       const source = sourceById.get(chapter.source_book_id)
       const code = source && editionById.get(source.edition_id)
-      if (source && (code === 'am' || code === 'web')) byEdition[code].push({ chapter, source })
+      if (source && code) (grouped[code] ||= []).push({ chapter, source })
     }
-    for (const code of ['am', 'web'] as const) {
-      byEdition[code].sort((a, b) => a.source.source_order - b.source.source_order || a.chapter.source_order - b.chapter.source_order)
-      chapters[code] = byEdition[code].map(({ chapter, source }, index): ReaderChapter => ({
+    for (const code of Object.keys(grouped)) {
+      grouped[code].sort((a, b) => a.source.source_order - b.source.source_order || a.chapter.source_order - b.chapter.source_order)
+      byEdition[code] = grouped[code].map(({ chapter, source }, index): ReaderChapter => ({
         ...chapter, source, edition: code, ordinal: index + 1,
       }))
+      if (code === 'am' || code === 'web') chapters[code] = byEdition[code]
     }
   }
-  return { book, sources, chapters }
+  return { book, sources, chapters, byEdition, editions }
 }
 
 /** A chapter-sized read; repeated verse labels stay distinct and source_order controls display. */
 export async function loadChapterText(chapter: ReaderChapter): Promise<ChapterText> {
   const client = db()
-  const sectionsPromise = chapter.edition === 'am'
+  const sectionsPromise = chapter.edition !== 'web'
     ? client.from('bible_sections').select('*').eq('chapter_id', chapter.id).order('source_order')
     : Promise.resolve({ data: [] as BibleSection[], error: null })
   const [sectionsResult, versesResult] = await Promise.all([

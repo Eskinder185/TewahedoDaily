@@ -13,10 +13,12 @@ const books = Array.from({ length: 81 }, (_, i) => ({
 const editions = [
   { id: 'edition-am', code: 'am', name: 'Amharic', language_code: 'am' },
   { id: 'edition-web', code: 'web', name: 'World English Bible', language_code: 'en' },
+  { id: 'edition-gez', code: 'gez-liturgical', name: 'Liturgical Geʽez', language_code: 'gez' },
 ]
 const sources = [
   { id: 'source-gen-am', canonical_book_id: 'book-1', edition_id: 'edition-am', source_order: 1, source_book_number: 1, source_name_en: 'Genesis', source_name_am: 'ኦሪት ዘፍጥረት' },
   { id: 'source-gen-web', canonical_book_id: 'book-1', edition_id: 'edition-web', source_order: 1, source_book_number: 1, source_name_en: 'Genesis' },
+  { id: 'source-gen-gez', canonical_book_id: 'book-1', edition_id: 'edition-gez', source_order: 1, source_book_number: 1, source_name_en: 'Genesis', source_name_am: 'ኦሪት ዘፍጥረት' },
   { id: 'source-enoch', canonical_book_id: 'book-16', edition_id: 'edition-am', source_order: 16, source_book_number: 16, source_name_en: 'Enoch', source_name_am: 'መጽሐፈ ሄኖክ' },
   { id: 'source-prov-am', canonical_book_id: 'book-23', edition_id: 'edition-am', source_order: 29, source_book_number: 29, source_name_en: 'Proverbs' },
   { id: 'source-prov-web', canonical_book_id: 'book-23', edition_id: 'edition-web', source_order: 20, source_book_number: 20, source_name_en: 'Proverbs' },
@@ -32,6 +34,7 @@ const verses = [
   { id: 'verse-a', chapter_id: 'source-gen-am-1', section_id: 'section-a', source_order: 1, verse_number: 1, text: 'በመጀመሪያ እግዚአብሔር ፈጠረ።' },
   { id: 'verse-b', chapter_id: 'source-gen-am-1', section_id: 'section-b', source_order: 1, verse_number: 1, text: 'የተደጋገመ የቁጥር ምልክት።' },
   { id: 'verse-c', chapter_id: 'source-gen-web-1', section_id: null, source_order: 1, verse_number: 1, text: 'In the beginning God created.' },
+  { id: 'verse-gez', chapter_id: 'source-gen-gez-1', section_id: null, source_order: 1, verse_number: 1, text: 'በቀዳሚ ገብረ እግዚአብሔር።' },
 ]
 
 function filter(rows, params, column) {
@@ -76,31 +79,37 @@ try {
   assert.equal(await page.locator('ol[class*=bookList] > li').count(), 35)
   await page.goto(`${base}/bible/enoch`)
   await page.getByRole('heading', { name: /Enoch/ }).waitFor()
-  assert.equal(await page.getByRole('button', { name: 'English' }).count(), 0)
+  assert.equal(await page.getByRole('group', { name: 'Reading translation' }).count(), 0)
   await page.goto(`${base}/bible/genesis/1`)
   await page.getByText('In the beginning God created.').waitFor()
-  await page.getByRole('button', { name: 'Amharic' }).click()
+  await page.getByRole('button', { name: 'Geʽez' }).click()
+  await page.getByText('በቀዳሚ ገብረ እግዚአብሔር።').waitFor()
+  assert.match(page.url(), /edition=gez-liturgical/)
+  await page.getByRole('button', { name: 'English', exact: true }).click()
+  await page.getByRole('button', { name: 'Amharic', exact: true }).click()
   await page.getByText('የተደጋገመ የቁጥር ምልክት።').waitFor()
   assert.equal(await page.locator('ol[class*=verses] li').count(), 2)
   await page.getByRole('button', { name: 'ሁለቱም' }).click()
   await page.getByText('In the beginning God created.').waitFor()
-  await page.getByRole('link', { name: /Next chapter/ }).click()
-  await page.getByText('This chapter has no published verses yet.').first().waitFor()
-  await page.goBack()
+  await page.locator('a[href^="/bible/genesis/2"]').last().click()
+  await page.locator('p[class*=notice]').filter({ hasText: /no published verses|የታተሙ ቁጥሮች/ }).first().waitFor()
+  await page.goto(`${base}/bible/genesis/1?edition=both`)
   await page.getByText('In the beginning God created.').waitFor()
-  await page.getByLabel('Choose a chapter').selectOption('2')
-  await page.getByText('This chapter has no published verses yet.').first().waitFor()
+  await page.locator('label[class*=chapterPicker] select').selectOption('2')
+  await page.locator('p[class*=notice]').filter({ hasText: /no published verses|የታተሙ ቁጥሮች/ }).first().waitFor()
+  const languageTrigger = page.getByLabel(/Language: Amharic\. Switch to English/)
+  if (await languageTrigger.count()) await languageTrigger.click()
   await page.goto(`${base}/bible/proverbs/1`)
-  await page.getByText('Bilingual alignment for this book is under review.').waitFor()
-  assert.equal(await page.getByRole('button', { name: 'Both' }).count(), 0)
+  await page.locator('p[class*=notice]').filter({ hasText: /alignment|ማዛመድ/ }).waitFor()
+  assert.equal(await page.getByRole('button', { name: /^(Both|ሁለቱም)$/ }).count(), 0)
   await page.goto(`${base}/bible/genesis/99`)
-  await page.getByText('This chapter was not found.').waitFor()
+  await page.getByText(/This chapter was not found|ይህ ምዕራፍ አልተገኘም/).waitFor()
   await page.goto(`${base}/bible/no-such-book`)
-  await page.getByText('This Bible book was not found.').waitFor()
+  await page.getByText(/This Bible book was not found|ይህ መጽሐፍ አልተገኘም/).waitFor()
   for (const [width, height] of [[320, 844], [360, 844], [375, 844], [390, 844], [393, 844], [412, 844], [430, 844], [667, 375], [768, 1024], [1280, 800], [1440, 900]]) {
     await page.setViewportSize({ width, height })
-    await page.goto(`${base}/bible/genesis/1`)
-    await page.getByRole('heading', { name: /Genesis Chapter/ }).waitFor()
+    await page.goto(`${base}/bible/genesis/1?edition=web`)
+    await page.getByRole('heading', { level: 1, name: /Genesis|ኦሪት ዘፍጥረት/ }).waitFor()
     await page.getByText('In the beginning God created.').waitFor()
     assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `horizontal overflow at ${width}px`)
     if (width === 390 && process.env.BIBLE_SCREENSHOT_PATH) await page.screenshot({ path: process.env.BIBLE_SCREENSHOT_PATH, fullPage: true })

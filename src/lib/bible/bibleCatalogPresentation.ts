@@ -1,6 +1,6 @@
 import type { BibleEdition, CanonicalBook, SourceBook } from './bibleTypes'
 
-export type BookAvailability = { am: boolean; en: boolean }
+export type BookAvailability = { am: boolean; en: boolean; editionCodes: string[] }
 
 export type CatalogBookMeta = {
   book: CanonicalBook
@@ -130,13 +130,15 @@ export function availabilityForBook(
   const codes = editionCodeMap(editions)
   let am = false
   let en = false
+  const editionCodes = new Set<string>()
   for (const source of sources) {
     if (source.canonical_book_id !== bookId) continue
     const code = codes.get(source.edition_id)
     if (code === 'am') am = true
     if (code === 'web') en = true
+    if (code) editionCodes.add(code)
   }
-  return { am, en }
+  return { am, en, editionCodes: [...editionCodes] }
 }
 
 export function buildCatalogMeta(
