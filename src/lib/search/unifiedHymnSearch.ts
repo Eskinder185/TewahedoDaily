@@ -5,8 +5,9 @@
  * Typed and voice both pass the same raw query — no /api/chat, no frontend
  * re-rank, no exact-match prefilter before the backend.
  *
- * Local Supabase is used only when VITE_TEWAHEDO_AI_API_URL is not configured.
- * When the API is configured, empty/error yields empty results (not a local re-rank).
+ * The API is preferred when configured. If it is unavailable, the local public
+ * mezmur_public projection remains a safe read-only fallback so a backend outage
+ * cannot make published hymns disappear from search.
  */
 import { AiClientError } from '../ai/aiTypes.ts'
 import { searchImportMezmurs } from '../publicContent/hymnBrowse.ts'
@@ -125,8 +126,25 @@ export async function searchMezmursUnified(
       }
     } catch (error) {
       if (error instanceof AiClientError && error.code === 'aborted') throw error
-      // Do not substitute local exact-match ranking when the API is the source of truth.
-      return { items: [], total: 0, page: 1, source: 'api', query: q }
+      // Fall back to the same published Supabase projection used by the browse
+      // catalog. This is not a private-table or draft fallback.
+      const local = await searchImportMezmurs(q, { page: 1, pageSize: limit })
+      const items = local.items.map((item) => ({
+        id: item.id,
+        slug: item.slug,
+        title: item.title,
+        title_amharic: item.title_amharic,
+        title_english: item.title_english,
+        primary_language: item.language,
+        form: item.form,
+        preview: null,
+        youtube_url: item.youtube_url,
+        audio_url: null,
+        zemari: item.singer_name,
+        singer_name: item.singer_name,
+        thumbnail_url: item.thumbnail_url,
+      }))
+      return { items, total: local.total, page: 1, source: 'local-fallback', query: q }
     }
   }
 

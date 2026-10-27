@@ -57,11 +57,17 @@ function db() {
   return supabase
 }
 
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+export function isValidUserId(userId: string | null | undefined): userId is string {
+  return typeof userId === 'string' && UUID_REGEX.test(userId.trim())
+}
+
 export async function isFavorited(
   userId: string | null | undefined,
   identity: FavoriteIdentity,
 ): Promise<{ favorited: boolean; source: 'local' | 'remote' | 'none'; error?: string }> {
-  if (!userId) {
+  if (!isValidUserId(userId)) {
     return { favorited: isGuestFavorite(identity), source: 'local' }
   }
   try {
@@ -102,7 +108,7 @@ export async function toggleFavorite(
   identity: FavoriteIdentity,
   currentlyFavorited: boolean,
 ): Promise<{ favorited: boolean; error?: string }> {
-  if (!userId) {
+  if (!isValidUserId(userId)) {
     const favorited = toggleGuestFavorite(identity)
     return { favorited }
   }
@@ -148,7 +154,7 @@ export async function toggleFavorite(
 export async function listFavorites(
   userId: string | null | undefined,
 ): Promise<{ items: FavoriteRecord[]; error?: string }> {
-  if (!userId) {
+  if (!isValidUserId(userId)) {
     return {
       items: getGuestFavorites().map((g) => ({
         id: favoriteKey(g),
@@ -186,6 +192,7 @@ export async function listFavorites(
 
 /** Merge device-only favorites into user_favorites after sign-in. */
 export async function importGuestFavorites(userId: string): Promise<{ imported: number }> {
+  if (!isValidUserId(userId)) return { imported: 0 }
   const guests = getGuestFavorites()
   let imported = 0
   for (const item of guests) {

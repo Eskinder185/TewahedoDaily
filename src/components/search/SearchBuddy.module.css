@@ -26,6 +26,12 @@
   white-space: nowrap;
 }
 
+.fabHidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
 @media (min-width: 768px) {
   .fab {
     backdrop-filter: blur(6px);

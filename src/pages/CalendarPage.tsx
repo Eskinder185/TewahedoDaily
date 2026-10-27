@@ -1,15 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { PageSection } from '../components/ui/PageSection'
-import { MiniMonthCalendar } from '../components/todayInChurch/MiniMonthCalendar'
+import { OrthodoxInteractiveCalendar } from '../components/calendar/OrthodoxInteractiveCalendar'
 import { CalendarDateTimeline } from '../components/calendar/CalendarDateTimeline'
 import { CalendarEventDetail } from '../components/calendar/CalendarEventDetail'
-import { SynaxariumOfTheDay } from '../components/calendar/SynaxariumOfTheDay'
+import { DailyFaithDashboard } from '../components/dailyFaith/DailyFaithDashboard'
 import { useHomeToday } from '../hooks/useHomeToday'
 import {
-  computeCalendarDayMarksAsync,
-  type CalendarDayCellMark,
-} from '../lib/churchCalendar'
+  } from '../lib/churchCalendar'
 import { getPublishedCalendarCardsForLinking, type CalendarCard } from '../lib/synaxarium/synaxariumService'
 import { parseGregorianAnchorIso } from '../lib/churchCalendar/upcomingObservanceDisplay'
 import {
@@ -46,12 +44,11 @@ export function CalendarPage() {
   const { now } = useHomeToday()
   const { contentLocale } = useLocale()
   const t = useTranslation()
-  const [searchParams] = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams()
   const [viewYear, setViewYear] = useState(now.getFullYear())
   const [viewMonth, setViewMonth] = useState(now.getMonth())
   const [selectedDay, setSelectedDay] = useState<number>(now.getDate())
-  const [marks, setMarks] = useState<ReadonlyMap<number, CalendarDayCellMark>>(new Map())
-  const [dayContext, setDayContext] = useState<DayChurchContext | null>(null)
+    const [dayContext, setDayContext] = useState<DayChurchContext | null>(null)
   const [todayContext, setTodayContext] = useState<DayChurchContext | null>(null)
   const [dayLoading, setDayLoading] = useState(false)
   const [dayError, setDayError] = useState<string | null>(null)
@@ -62,6 +59,7 @@ export function CalendarPage() {
   const [timelineLoading, setTimelineLoading] = useState(true)
   const [rangeStart, setRangeStart] = useState(() => addDays(stripLocal(now), -PAST_DAYS))
   const [rangeEnd, setRangeEnd] = useState(() => addDays(stripLocal(now), FUTURE_DAYS))
+  const [monthGridOpen, setMonthGridOpen] = useState(false)
   const monthRef = useRef<HTMLElement | null>(null)
   const dayContextCacheRef = useRef<Map<string, DayChurchContext>>(new Map())
   const dayRequestIdRef = useRef(0)
@@ -128,19 +126,6 @@ export function CalendarPage() {
     }
   }, [now])
 
-  useEffect(() => {
-    let active = true
-    void computeCalendarDayMarksAsync(viewYear, viewMonth)
-      .then((next) => {
-        if (active) setMarks(next)
-      })
-      .catch(() => {
-        if (active) setMarks(new Map())
-      })
-    return () => {
-      active = false
-    }
-  }, [viewYear, viewMonth])
 
   const selectedDate = useMemo(
     () => new Date(viewYear, viewMonth, selectedDay),
@@ -227,13 +212,20 @@ export function CalendarPage() {
   const gregorianLabel = formatGregorianMonth(selectedDate, contentLocale)
   const ethiopianLabel = formatEthiopianDay(selectedDate, contentLocale, true)
 
-  const setSelectedCivilDate = useCallback((d: Date) => {
+  const setSelectedCivilDate = useCallback((d: Date, pushHistory = true) => {
     const civil = stripLocal(d)
     setViewYear(civil.getFullYear())
     setViewMonth(civil.getMonth())
     setSelectedDay(civil.getDate())
     setDetailEvent(null)
-  }, [])
+    const iso = toIsoLocalDate(civil)
+    setSearchParams((prev) => {
+      const next = new URLSearchParams(prev)
+      if (next.get("date") === iso) return prev
+      next.set("date", iso)
+      return next
+    }, { replace: !pushHistory })
+  }, [setSearchParams])
 
   const jumpToday = () => {
     const civil = stripLocal(now)
@@ -244,10 +236,7 @@ export function CalendarPage() {
 
   const shiftSelectedDay = useCallback((delta: number) => {
     const next = addDays(new Date(viewYear, viewMonth, selectedDay), delta)
-    setViewYear(next.getFullYear())
-    setViewMonth(next.getMonth())
-    setSelectedDay(next.getDate())
-    setDetailEvent(null)
+    setSelectedCivilDate(next)
     setRangeStart((start) => {
       const civil = stripLocal(next)
       if (civil < start) return addDays(civil, -PAST_DAYS)
@@ -258,7 +247,7 @@ export function CalendarPage() {
       if (civil > end) return addDays(civil, FUTURE_DAYS)
       return end
     })
-  }, [viewYear, viewMonth, selectedDay])
+  }, [viewYear, viewMonth, selectedDay, setSelectedCivilDate])
 
   const goPrevMonth = () => {
     const d = new Date(viewYear, viewMonth - 1, 1)
@@ -278,10 +267,6 @@ export function CalendarPage() {
     setDetailEvent(null)
   }
 
-  const selectCalendarDay = (day: number) => {
-    setSelectedDay(day)
-    setDetailEvent(null)
-  }
 
   const openEvent = useCallback((event: PresentableCalendarEvent, date: Date) => {
     savedScrollY.current = window.scrollY
@@ -333,8 +318,45 @@ export function CalendarPage() {
   const loadLater = useCallback(() => {
     setRangeEnd((prev) => addDays(prev, EXTEND_DAYS))
   }, [])
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
 
-  const synaxariumItems = dayContext?.synaxarium || []
+  const onMonthTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const onMonthTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current == null || touchStartY.current == null) return
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+    touchStartX.current = null
+    touchStartY.current = null
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      if (deltaX < 0) goNextMonth()
+      else goPrevMonth()
+    }
+  }
+
+  const dayTouchStartX = useRef<number | null>(null)
+  const dayTouchStartY = useRef<number | null>(null)
+
+  const onDayTouchStart = (e: React.TouchEvent) => {
+    dayTouchStartX.current = e.touches[0].clientX
+    dayTouchStartY.current = e.touches[0].clientY
+  }
+
+  const onDayTouchEnd = (e: React.TouchEvent) => {
+    if (dayTouchStartX.current == null || dayTouchStartY.current == null) return
+    const deltaX = e.changedTouches[0].clientX - dayTouchStartX.current
+    const deltaY = e.changedTouches[0].clientY - dayTouchStartY.current
+    dayTouchStartX.current = null
+    dayTouchStartY.current = null
+    if (Math.abs(deltaX) > 40 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      if (deltaX < 0) shiftSelectedDay(1)
+      else shiftSelectedDay(-1)
+    }
+  }
 
   return (
     <PageSection id="calendar" variant="tint" className={styles.page}>
@@ -345,7 +367,7 @@ export function CalendarPage() {
         </div>
 
         <div className={styles.dateRow}>
-          <div className={styles.dayNav} aria-label={t('calendar.page.dayNavAria')}>
+          <div className={styles.dayNav} aria-label={t('calendar.page.dayNavAria')} onTouchStart={onDayTouchStart} onTouchEnd={onDayTouchEnd}>
             <button
               type="button"
               className={styles.dayNavBtn}
@@ -375,6 +397,16 @@ export function CalendarPage() {
           </div>
           <button type="button" className={styles.todayBtn} onClick={jumpToday}>
             {t('calendar.page.today')}
+          </button>
+          <button
+            type="button"
+            className={styles.monthToggleBtn}
+            onClick={() => setMonthGridOpen((prev) => !prev)}
+            aria-expanded={monthGridOpen}
+          >
+            {monthGridOpen
+              ? (contentLocale === 'am' ? '▲ የቀን መቁጠሪያ ዝጋ' : '▲ Hide Month Grid')
+              : (contentLocale === 'am' ? '📅 ወርሃዊ የቀን መቁጠሪያ' : '📅 Month Grid')}
           </button>
         </div>
       </header>
@@ -409,26 +441,29 @@ export function CalendarPage() {
         )}
       </section>
 
-      <div className={styles.mainSplit}>
-        <section ref={monthRef} className={styles.monthPane} aria-label={t('calendar.timeline.month')}>
-          <MiniMonthCalendar
-            anchor={now}
-            displayYear={viewYear}
-            displayMonthIndex={viewMonth}
-            dayMarks={marks}
-            selectedDay={selectedDay}
-            onSelectDay={selectCalendarDay}
-            onPrevMonth={goPrevMonth}
-            onNextMonth={goNextMonth}
-          />
+      {monthGridOpen ? (
+        <section
+          ref={monthRef}
+          className={styles.monthAccordionPane}
+          aria-label={t('calendar.timeline.month')}
+          onTouchStart={onMonthTouchStart}
+          onTouchEnd={onMonthTouchEnd}
+        >
+          <div className={styles.monthCardWrapper}>
+            <OrthodoxInteractiveCalendar
+              selectedDate={selectedDate}
+              today={now}
+              locale={contentLocale}
+              onSelectDate={setSelectedCivilDate}
+            />
+          </div>
         </section>
+      ) : null}
 
-        <SynaxariumOfTheDay
-          ethiopianLabel={ethiopianLabel}
-          gregorianLabel={gregorianLabel}
-          items={synaxariumItems}
+      <div className={styles.dashboardContainer}>
+        <DailyFaithDashboard
+          context={dayContext}
           loading={dayLoading && !dayContext}
-          daySlug={dayContext?.synaxariumDaySlug}
         />
       </div>
 

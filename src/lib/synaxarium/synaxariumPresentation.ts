@@ -138,6 +138,31 @@ export function cleanSynaxariumTitle(rawTitle?: string | null, body?: string | n
   let title = collapseLines(rawTitle)
   const source = collapseLines(body)
 
+  const hangingEnd = /(?:,?\s+(?:and|the|of|with|in|at|to|a|an|saint|abba|five\s+and))+$/i
+  const brokenNarrativeStart = /^(?:on this day(?: also)?\s+)?(?:died|reposed|became|is commemorated|are commemorated)\b/i
+  const isFragment = hangingEnd.test(title) || brokenNarrativeStart.test(title) || title.length < 5
+
+  if (isFragment && source) {
+    const firstSentence = source.split(/[.\n]/)[0].trim()
+    const diedMatch = firstSentence.match(/(?:died|reposed)\s+(?:the\s+holy\s+father,?\s+)?(.+)/i)
+    if (diedMatch) {
+      title = diedMatch[1].trim()
+    } else {
+      const commMatch = firstSentence.match(/(?:is|are)\s+commemorated\s+(.+)/i)
+      if (commMatch) {
+        let subj = commMatch[1].trim()
+        subj = subj.replace(/the\s+five\s+and\s+forty\s+righteous\s+men/i, 'the forty-five righteous men')
+        subj = subj.replace(/of the city of/i, 'of')
+        title = subj
+      } else {
+        const genMatch = firstSentence.match(/^On this day(?: also)?\s+(?:the\s+)?(.+)/i)
+        if (genMatch) {
+          title = genMatch[1].trim()
+        }
+      }
+    }
+  }
+
   if (!title) {
     title = extractNameFromNarrative(source) || ''
   }
@@ -158,6 +183,7 @@ export function cleanSynaxariumTitle(rawTitle?: string | null, body?: string | n
   }
 
   title = title
+    .replace(hangingEnd, '')
     .replace(/^(?:on this day(?: also)?\s+)/i, '')
     .replace(/^the repose of\s+/i, '')
     .replace(/^the martyrdom of\s+/i, '')
@@ -168,12 +194,7 @@ export function cleanSynaxariumTitle(rawTitle?: string | null, body?: string | n
   title = title.replace(/\s+became\s+(?:a\s+)?martyrs?\.?$/i, '').trim()
   title = title.replace(/\.$/, '').trim()
 
-  // Parenthetical transliterations: keep primary form short
-  // "Kotolos (Cotylus)" stays; strip noisy multi-clause tails
-  if (title.length > 72 && /,/.test(title)) {
-    const first = title.split(',')[0]?.trim()
-    if (first && first.length >= 8) title = first
-  }
+  // Preserve full commemoration title; let layout handle wrapping cleanly.
 
   if (!title && source) {
     title = extractNameFromNarrative(source) || ''

@@ -57,7 +57,7 @@ async function loadCardsCached(options?: { force?: boolean }): Promise<CalendarC
     cardsCache = { at: now, cards }
     return cards
   } catch (cause) {
-    if (import.meta.env.DEV) console.error('[getCalendarEventsForDate] cards', cause)
+    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getCalendarEventsForDate] cards', cause)
     return cardsCache?.cards || []
   }
 }
@@ -115,7 +115,7 @@ export async function getCalendarEventsForDate(
       surface: 'calendar',
     })
   } catch (cause) {
-    if (import.meta.env.DEV) console.error('[getCalendarEventsForDate] present', cause)
+    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getCalendarEventsForDate] present', cause)
     events = []
   }
 
@@ -152,7 +152,7 @@ export async function getHomepageTodayEvents(
       { occurrenceDate: start, surface: 'homepage' },
     )
   } catch (cause) {
-    if (import.meta.env.DEV) console.error('[getHomepageTodayEvents] present', cause)
+    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getHomepageTodayEvents] present', cause)
     return []
   }
 }
@@ -164,7 +164,7 @@ export function eventsFromDayContext(
   try {
     return presentEventsForDayContext(context, asResolvedCards(cards))
   } catch (cause) {
-    if (import.meta.env.DEV) console.error('[eventsFromDayContext]', cause)
+    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[eventsFromDayContext]', cause)
     return []
   }
 }
@@ -210,7 +210,7 @@ export async function getCalendarEventsForRange(
         { occurrenceDate: day, surface: 'calendar' },
       )
     } catch (cause) {
-      if (import.meta.env.DEV) console.error('[getCalendarEventsForRange] present', cause)
+      if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getCalendarEventsForRange] present', cause)
       events = []
     }
 

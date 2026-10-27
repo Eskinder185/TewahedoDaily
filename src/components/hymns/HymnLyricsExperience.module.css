@@ -238,6 +238,41 @@
   align-items: start;
 }
 
+.bothPairedSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.linePair {
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.lineOriginal {
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.lineTranslit {
+  font-style: italic;
+  opacity: 0.85;
+  font-size: 0.94em;
+  line-height: 1.5;
+  margin-top: 0.15rem;
+  color: color-mix(in srgb, currentColor 85%, transparent);
+}
+
+@media (min-width: 900px) {
+  .sideBySideRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .bothColOriginal {
   border-right: 1px solid color-mix(in srgb, currentColor 18%, transparent);
   padding-right: 24px;

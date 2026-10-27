@@ -37,6 +37,20 @@
   --color-bg-muted: #efe5d4;
   --color-bg-band: color-mix(in srgb, var(--color-bg-muted) 78%, var(--color-sky-faint) 22%);
   --color-bg-hero-wash: color-mix(in srgb, #faf7f0 86%, var(--color-sky-faint) 14%);
+  /* Compatibility aliases used by older CSS modules. Keep these semantic so
+     component fallbacks never pin a surface to white in night mode. */
+  --color-surface: var(--color-bg-elevated);
+  --color-surface-elevated: var(--color-bg-elevated);
+  --color-surface-muted: var(--color-bg-muted);
+  --color-border-subtle: var(--color-border);
+  --color-input-bg: var(--color-bg-elevated);
+  --color-input-text: var(--color-text);
+  --color-placeholder: var(--color-text-subtle);
+  --color-on-accent: #ffffff;
+  --color-danger: #a23828;
+  --color-success: #166534;
+  --color-warning: #92400e;
+  --color-info: #0369a1;
   /* Editorial accent used by Legal nav active state */
   --color-accent-editorial: #7a3f3f;
   /* Home parchment / burgundy — aliases, not a second palette */
@@ -186,6 +200,7 @@
 
   --color-gold: #d6b45d;
   --color-gold-bright: #f0d47a;
+  --color-gold-ink: #f0d47a;
   --color-gold-soft: rgba(214, 180, 93, 0.18);
   --color-gold-faint: rgba(214, 180, 93, 0.09);
   --color-gold-line: rgba(214, 180, 93, 0.38);
@@ -225,7 +240,12 @@
 
   --color-accent: #f0d47a;
   --color-accent-hover: #ffe59b;
+  --color-on-accent: #132238;
   --color-focus-ring: rgba(240, 212, 122, 0.58);
+  --color-danger: #ff9f8f;
+  --color-success: #9be7b1;
+  --color-warning: #ffd27d;
+  --color-info: #8fd3ff;
 
   --shadow-soft: 0 16px 48px rgba(0, 0, 0, 0.44);
   --shadow-card: 0 6px 26px rgba(0, 0, 0, 0.4);

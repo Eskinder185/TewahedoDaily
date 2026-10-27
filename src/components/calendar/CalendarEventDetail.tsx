@@ -238,7 +238,12 @@ export function CalendarEventDetail({
 
           {summary ? <p className={styles.summary}>{summary}</p> : null}
 
-          <CalendarEventDetails fields={event.fields} lang={lang} defaultOpenFirst />
+          <CalendarEventDetails
+            fields={event.fields}
+            lang={lang}
+            cardSlug={event.slug}
+            defaultOpenFirst
+          />
         </div>
       </div>
     </div>,

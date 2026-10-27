@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-10-25T21:36:13.393Z",
+  "total_discovered": 1152,
+  "total_with_lyrics": 1121,
+  "already_correct": 246,
+  "structure_improved": 2,
+  "new_transliterations_generated": 873,
+  "successfully_prepared": 1121,
+  "missing_lyrics_count": 31,
+  "human_review_count": 33,
+  "failed_write_count": 1121,
+  "artifacts": [
+    "audit/mezmur-complete-repair/ORIGINAL_BACKUP.jsonl",
+    "audit/mezmur-complete-repair/COMPLETE_INVENTORY.csv",
+    "audit/mezmur-complete-repair/PROCESSING_RESULTS.csv",
+    "audit/mezmur-complete-repair/TRANSLITERATION_RESULTS.jsonl",
+    "audit/mezmur-complete-repair/FORMATTING_CHANGES.csv",
+    "audit/mezmur-complete-repair/HUMAN_REVIEW_REQUIRED.csv",
+    "audit/mezmur-complete-repair/FAILED_RECORDS.csv",
+    "audit/mezmur-complete-repair/CHECKPOINT.json",
+    "audit/mezmur-complete-repair/FINAL_REPORT.md",
+    "supabase/mezmur-import/APPLY_ALL_MEZMUR_LYRICS_AND_TRANSLITERATIONS.sql"
+  ],
+  "completion_status": "SUCCESS"
+}

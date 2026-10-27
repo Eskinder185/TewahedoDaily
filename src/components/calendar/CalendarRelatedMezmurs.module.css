@@ -1,0 +1,141 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin: 0.5rem 0 0;
+}
+
+.empty {
+  font-size: 0.9375rem;
+  color: var(--color-text-muted, #666);
+  font-style: italic;
+  margin: 0.25rem 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.875rem;
+  background: color-mix(in srgb, var(--color-surface, #ffffff) 90%, var(--color-gold, #c49a45) 10%);
+  border: 1px solid color-mix(in srgb, var(--color-border, #e5e5e5) 80%, transparent);
+  border-radius: 8px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.row:hover {
+  border-color: var(--color-gold, #c49a45);
+  background: color-mix(in srgb, var(--color-surface, #ffffff) 85%, var(--color-gold, #c49a45) 15%);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.titleRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-heading, #1c1c1c);
+  margin: 0;
+  word-break: break-word;
+}
+
+.titleAm {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-gold-dark, #8a6414);
+  margin: 0;
+  word-break: break-word;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-muted, #666);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  background: color-mix(in srgb, var(--color-gold, #c49a45) 20%, transparent);
+  color: var(--color-gold-dark, #8a6414);
+  border-radius: 4px;
+}
+
+.reason {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted, #666);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 320px;
+}
+
+.viewBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: var(--color-navy, #1e293b);
+  border: 1px solid var(--color-navy, #1e293b);
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.viewBtn:hover {
+  background: var(--color-gold, #c49a45);
+  border-color: var(--color-gold, #c49a45);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.viewBtn:focus-visible {
+  outline: 2px solid var(--color-gold, #c49a45);
+  outline-offset: 2px;
+}
+
+@media (max-width: 540px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+
+  .viewBtn {
+    align-self: flex-end;
+    width: 100%;
+    text-align: center;
+  }
+
+  .reason {
+    white-space: normal;
+    max-width: 100%;
+  }
+}

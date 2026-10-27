@@ -27,10 +27,10 @@ export function canPublishMezmur(role: string | null | undefined): boolean {
   return MEZMUR_PUBLICATION_ROLES.includes(role as (typeof MEZMUR_PUBLICATION_ROLES)[number])
 }
 
+/** Legacy display helper retained for lyrics readers. Explicit restrictions only. */
 export function isVerifiedMezmurRights(value: string | null | undefined): boolean {
   const v = String(value ?? '').trim().toLowerCase()
-  if (v === 'external_only' || v === 'restricted') return false
-  return true
+  return v !== 'external_only' && v !== 'restricted'
 }
 
 export type MezmurPublicationCheck = {
@@ -46,21 +46,13 @@ export type MezmurPublicationCheck = {
   lyricsAmharic?: string | null | undefined
 }
 
-/** Publication checks for staff Mezmur publication. */
+/** Publication checks for the simple owner-authorized staff workflow. */
 export function publicationBlockReason(input: MezmurPublicationCheck): string | null {
   if (!canPublishMezmur(input.role)) {
     return 'An editor, admin, or super admin role is required to publish.'
   }
-  if (!input.title?.trim() || !input.slug?.trim()) {
-    return 'Title and slug are required to publish.'
-  }
-  const isRestricted =
-    input.rightsStatus === 'restricted' || input.rightsStatus === 'external_only'
-  const hasExternalDestination = Boolean(
-    input.youtubeUrl?.trim() || input.sourceUrl?.trim(),
-  )
-  if (isRestricted && !hasExternalDestination) {
-    return 'Add a YouTube or authorized source link before publishing a restricted-lyrics Mezmur.'
+  if (!input.title?.trim() || !input.slug?.trim() || !input.lyricsAmharic?.trim()) {
+    return 'Title, slug, and Amharic lyrics are required to publish.'
   }
   return null
 }

@@ -1,0 +1,354 @@
+<USER_REQUEST>
+# TEWAHEDODAILY — INTERACTIVE CALENDAR REDESIGN & YOUTUBE MEZMUR CLEANUP
+
+Repository:
+C:\Users\eskew\github\TewahedoDaily
+
+Target:
+Existing `/calendar` page and Daily Faith Dashboard.
+
+## OBJECTIVE
+
+Transform the calendar from a basic numbered grid into an elegant, highly interactive Ethiopian Orthodox calendar.
+
+Use the current React, TypeScript, CSS Modules, existing design tokens, Supabase data, and Ethiopian calendar engine.
+
+Preserve the month-grid dropdown, Daily Faith Dashboard, Bible recommendations, Synaxarium, and all educational articles.
+
+Do not replace the website or introduce an unrelated design system.
+
+## PHASE 1 — REMOVE NONFUNCTIONAL MEZMUR PLAYBACK
+
+The existing calendar recommendation cards show circular Play buttons, but the catalog uses YouTube media that does not work correctly through the current global player.
+
+Remove Play and Pause controls from ALL calendar-specific Mezmur recommendation components.
+
+Replace them with:
+
+- "Watch on YouTube" when a valid YouTube video URL exists.
+- "Lyrics & Transliteration" linking to the correct Mezmur detail page.
+- "View Mezmur" when no YouTube URL is available.
+
+Use normal links for YouTube playback, opening the original video through the supported YouTube website or app.
+
+Never extract YouTube audio, create fake playback sessions, or show buttons that cannot perform their intended action.
+
+Do not delete YouTube URLs, audio data, or lyrics from Supabase.
+
+Do not globally remove working native-audio playback elsewhere in the application. Scope this cleanup to calendar recommendation cards and other specifically verified broken YouTube-only playback controls.
+
+Remove unused playback imports from affected components.
+
+Test every displayed action.
+
+## PHASE 2 — REDESIGN THE MONTH GRID
+
+The current month grid looks like a group of generic dark boxes with tiny, unclear indicators.
+
+Replace it with a polished interactive calendar.
+
+Design direction:
+
+Modern Ethiopian Orthodox illuminated manuscript meets a premium calendar application.
+
+Use:
+
+- Deep navy backgrounds
+- Warm parchment surfaces in Day mode
+- Refined Orthodox gold accents
+- Subtle burgundy details
+- Readable Ethiopic typography
+- Gentle borders
+- Clean spacing
+- Restrained decorative motifs
+
+Avoid excessive gradients, glowing effects, animations, or decorative clutter.
+
+### Month navigation
+
+Display:
+
+- Current month name
+- Corresponding Ethiopian month/year
+- Previous month
+- Next month
+- Today shortcut
+- Gregorian/Ethiopian view toggle
+
+Allow jumping directly to a specific year and month.
+
+Support both English and Amharic.
+
+### Calendar grid
+
+Every valid day cell should include:
+
+- Primary calendar day number
+- Secondary Ethiopian or Gregorian day number
+- Current-day indicator
+- Selected-day indicator
+- Clear feast/observance indicators
+- Fast status when applicable
+
+Use the existing date conversion and liturgical engines.
+
+Do not hard-code event dates.
+
+Distinguish today's date from the user-selected date.
+
+Avoid tiny unreadable bars and unexplained symbols.
+
+Use accessible icons or markers with a visible legend.
+
+### Semantic categories
+
+Where supported by actual calendar data, show meaningful visual indicators for:
+
+- Great feasts
+- Feasts of Christ
+- Marian commemorations
+- Angels and saints
+- Fasting days
+- Liturgical seasons
+- Movable feasts
+
+A date with multiple events should display multiple indicators without becoming visually crowded.
+
+Never imply an event occurs merely because of a design marker.
+
+## PHASE 3 — INTERACTIVE DAY PREVIEW
+
+Desktop:
+
+On hover or keyboard focus, show a lightweight preview containing:
+
+- Ethiopian date
+- Gregorian date
+- Principal observance
+- Feast or fasting information
+- Number of commemorations
+
+Mobile:
+
+On tap, select the day and reveal its information in a compact panel.
+
+Do not rely on hover for essential functionality.
+
+The preview should use actual calendar data and contain no invented descriptions.
+
+## PHASE 4 — SELECTED DAY EXPERIENCE
+
+Selecting a date should immediately update:
+
+1. Date summary
+2. Observances
+3. Fasting classification
+4. Bible recommendations
+5. Mezmur recommendations
+6. Synaxarium entries
+7. Related prayers
+
+Use shared state and the existing Daily Faith services.
+
+Do not reload the entire browser page unnecessarily.
+
+Keep the selected date reflected in the URL so visitors can share or bookmark it.
+
+Support browser Back and Forward navigation.
+
+Preserve language and theme preferences during date changes.
+
+Show loading and error states when content must be fetched.
+
+## PHASE 5 — MAKE THE GRID MORE ENGAGING
+
+Add subtle, meaningful interaction:
+
+- Smooth selected-day highlight
+- Accessible month transitions
+- Today jump animation
+- Small event previews
+- Expand/collapse month grid
+- Optional mobile swipe navigation
+- Selected-day details panel
+- Clear focus indicators
+
+Respect `prefers-reduced-motion`.
+
+Ensure that gestures never interfere with normal vertical scrolling.
+
+Animations should communicate state, not exist purely for decoration.
+
+## PHASE 6 — DUAL CALENDAR VIEW
+
+Support two month-grid modes.
+
+Gregorian View:
+Show the selected Gregorian month as the primary date, with Ethiopian dates as secondary labels.
+
+Ethiopian View:
+Show the selected Ethiopian month, with corresponding Gregorian dates as secondary labels.
+
+The grid must handle:
+
+- Ethiopian 30-day months
+- Pagume 5
+- Pagume 6 in leap years
+- Gregorian February 29
+- Gregorian/Ethiopian year boundaries
+- Correct weekdays
+- Timezone-sensitive Today selection
+
+Both modes must use the existing calendar engine.
+
+Do not approximate dates using a fixed offset.
+
+## PHASE 7 — RESPONSIVE DESKTOP DESIGN
+
+On desktop, the current calendar appears too narrow and isolated.
+
+Integrate it with the Daily Faith page layout.
+
+Recommended behavior:
+
+- Centered maximum-width container
+- Calendar grid wide enough for readable day cells
+- Compact calendar toolbar
+- Optional selected-day summary beside the month grid on sufficiently wide screens
+- Bible and Mezmur cards in the existing two-column dashboard
+- No unnecessary giant empty margins
+
+Do not undo the existing responsive layout improvements.
+
+## PHASE 8 — MOBILE DESIGN
+
+At 320px–430px widths:
+
+- Full-width usable grid
+- Seven equal-width columns
+- Minimum spacing without overcrowding
+- Legible primary day numbers
+- Compact secondary dates
+- Accessible touch targets
+- No horizontal scrolling
+- No overflowing legends
+- No overlapping floating Search Buddy or navigation controls
+
+Use a bottom or inline selected-day preview rather than a desktop-style tooltip.
+
+The month grid must remain usable with one hand.
+
+## PHASE 9 — CALENDAR LEGEND AND FILTERS
+
+Provide a clean, collapsible legend.
+
+Allow visitors to filter visual event indicators by category without removing events from the underlying calendar.
+
+Suggested filters:
+
+- All
+- Feasts
+- Marian
+- Saints
+- Fasting
+
+Preserve filter choices where appropriate.
+
+Do not hide important day information silently.
+
+## PHASE 10 — ACCESSIBILITY AND CONTENT ACCURACY
+
+Require:
+
+- WCAG AA contrast
+- Visible keyboard focus
+- Proper accessible day labels
+- Correct disabled-date behavior
+- Screen-reader announcement of selected dates
+- Amharic and English labels
+- No color-only communication
+- Full keyboard date navigation
+- Reduced-motion support
+
+Do not rewrite religious content as part of a visual redesign.
+
+Verify that selected-day markers correspond to real Church observances.
+
+## PHASE 11 — AUTOMATED TESTING
+
+Use Playwright with real rendered pages.
+
+Test:
+
+- Gregorian and Ethiopian month modes
+- Previous/next navigation
+- Jump to Today
+- Selecting a date
+- URL synchronization
+- Browser history
+- Hover and keyboard previews
+- Mobile day selection
+- Leap years
+- Pagume 6
+- Multi-event dates
+- Dark and light themes
+- English and Amharic
+- Empty and error states
+- YouTube links
+- Lyrics navigation
+- No broken playback buttons
+- No horizontal overflow
+
+Viewports:
+
+320×700
+360×800
+390×844
+430×932
+768×1024
+1024×768
+1440×900
+
+Capture before/after screenshots.
+
+Run the production build.
+
+## PHASE 12 — FINAL DELIVERABLES
+
+Implement the redesigned components directly in the existing repository.
+
+Provide:
+
+1. Modified React components.
+2. Updated CSS modules.
+3. Interactive month-view behavior.
+4. Calendar state and URL integration.
+5. YouTube Mezmur playback cleanup.
+6. Working YouTube and lyrics links.
+7. Responsive screenshots.
+8. Accessibility verification.
+9. Calendar accuracy tests.
+10. Playwright results.
+11. Production build result.
+12. Summary of changes.
+
+Do not push, merge, or deploy without explicit authorization.
+
+Do not modify production database records.
+
+## FINAL INSTRUCTION
+
+Make the TewahedoDaily calendar beautiful, interactive, clean, and genuinely useful.
+
+The experience should make visitors want to explore different dates, feast days, saints, Mezmurs, and Scripture.
+
+Keep all the Church content accurate and connected.
+
+The calendar should feel like a living Ethiopian Orthodox liturgical calendar, not a spreadsheet of dates.
+
+Begin by inspecting the existing CalendarPage, month grid component, and DailyFaithDashboard. Implement the redesign, run Playwright, and fix all discovered issues.
+
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-10-26T12:46:52-04:00.
+</ADDITIONAL_METADATA>

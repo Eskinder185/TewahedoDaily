@@ -790,3 +790,31 @@
 [data-theme='night'] .modeLinkOn {
   color: #f3e6c8;
 }
+
+.drawerDivider {
+  height: 1px;
+  background: color-mix(in srgb, var(--color-border) 80%, transparent);
+  margin: var(--space-2) 0;
+}
+
+.drawerSecondary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.drawerSecondaryLink {
+  min-height: 42px !important;
+  padding: var(--space-2) var(--space-3) !important;
+  font-size: 0.88rem !important;
+  font-weight: 550 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  opacity: 0.85;
+}
+
+.drawerSecondaryLink:hover {
+  background: var(--color-bg-muted) !important;
+  opacity: 1;
+}

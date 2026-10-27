@@ -1,0 +1,1059 @@
+[
+  {
+    "type": "observance",
+    "slug": "enkutatash",
+    "title": "Enkutatash / Ethiopian New Year",
+    "am": "እንቁጣጣሽ",
+    "m": 1,
+    "d": 1,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "demera",
+    "title": "Demera / Eve of Meskel",
+    "am": "ደመራ",
+    "m": 1,
+    "d": 16,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "meskel",
+    "title": "Meskel / Finding of the True Cross",
+    "am": "መስቀል",
+    "m": 1,
+    "d": 17,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "megabit-meskel",
+    "title": "Megabit Meskel",
+    "am": null,
+    "m": 7,
+    "d": 10,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gena",
+    "title": "Gena / Nativity of Christ",
+    "am": "ገና",
+    "m": 4,
+    "d": 29,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gizret",
+    "title": "Gizret / Circumcision of Christ",
+    "am": null,
+    "m": 5,
+    "d": 6,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "timket",
+    "title": "Timket / Baptism of Christ",
+    "am": "ጥምቀት",
+    "m": 5,
+    "d": 11,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "ketera",
+    "title": "Ketera / Eve of Timket",
+    "am": "ከተራ",
+    "m": 5,
+    "d": 10,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "kana-ze-galila",
+    "title": "Kana Ze Galila / Wedding at Cana",
+    "am": null,
+    "m": 5,
+    "d": 12,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "debre-tabor",
+    "title": "Debre Tabor / Transfiguration",
+    "am": "ደብረ ታቦር",
+    "m": 12,
+    "d": 13,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "kidane-mihret",
+    "title": "Kidane Mihret / Covenant of Mercy",
+    "am": "ኪዳነ ምሕረት",
+    "m": 6,
+    "d": 16,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "lideta-maryam",
+    "title": "Lideta Maryam / Nativity of Mary",
+    "am": "ልደታ ማርያም",
+    "m": 9,
+    "d": 1,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "filseta",
+    "title": "Filseta / Assumption of Mary",
+    "am": "ፍልሰታ",
+    "m": 12,
+    "d": 16,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "maryam-dormition",
+    "title": "Dormition of Mary",
+    "am": "አስተርዮ ማርያም",
+    "m": 5,
+    "d": 21,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "maryam-presentation",
+    "title": "Presentation of Mary in the Temple",
+    "am": "በአታ ለማርያም",
+    "m": 4,
+    "d": 3,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "maryam-conception",
+    "title": "Conception of Mary",
+    "am": "ፅንሰታ ለማርያም",
+    "m": 12,
+    "d": 7,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "maryam-flight-egypt",
+    "title": "Flight into Egypt",
+    "am": null,
+    "m": 9,
+    "d": 24,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "debre-mitmaq",
+    "title": "Debre Mitmaq",
+    "am": "ደብረ ምጥማቅ",
+    "m": 9,
+    "d": 21,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "michael-hidar",
+    "title": "Saint Michael — Hidar",
+    "am": "ቅዱስ ሚካኤል",
+    "m": 3,
+    "d": 12,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "michael-sene",
+    "title": "Saint Michael — Sene",
+    "am": "ቅዱስ ሚካኤል",
+    "m": 10,
+    "d": 12,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gabriel-tahsas",
+    "title": "Saint Gabriel — Tahsas",
+    "am": "ቅዱስ ገብርኤል",
+    "m": 4,
+    "d": 19,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gabriel-hamle",
+    "title": "Saint Gabriel — Hamle",
+    "am": "ቅዱስ ገብርኤል",
+    "m": 11,
+    "d": 19,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "raphael-pagumen",
+    "title": "Saint Raphael — Pagumen",
+    "am": "ቅዱስ ሩፋኤል",
+    "m": 13,
+    "d": 3,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "uriel-hamle",
+    "title": "Saint Uriel — Hamle",
+    "am": "ቅዱስ ኡራኤል",
+    "m": 11,
+    "d": 22,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "tekle-haymanot-birth",
+    "title": "Abune Tekle Haymanot — Birth",
+    "am": "አቡነ ተክለ ሃይማኖት",
+    "m": 4,
+    "d": 24,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "tekle-haymanot-departure",
+    "title": "Abune Tekle Haymanot — Departure",
+    "am": "አቡነ ተክለ ሃይማኖት",
+    "m": 12,
+    "d": 24,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gebre-menfes-kidus-tikimt",
+    "title": "Abune Gebre Menfes Kidus — Great Feast",
+    "am": "አቡነ ገብረ መንፈስ ቅዱስ",
+    "m": 2,
+    "d": 5,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gebre-menfes-kidus-megabit",
+    "title": "Abune Gebre Menfes Kidus — Departure",
+    "am": "አቡነ ገብረ መንፈስ ቅዱስ",
+    "m": 7,
+    "d": 5,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "yared-ginbot",
+    "title": "Saint Yared",
+    "am": "ቅዱስ ያሬድ",
+    "m": 9,
+    "d": 11,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "george-tir",
+    "title": "Saint George — Tir",
+    "am": "ቅዱስ ጊዮርጊስ",
+    "m": 5,
+    "d": 18,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "john-baptist-meskerem",
+    "title": "John the Baptist — Martyrdom",
+    "am": "ዮሐንስ መጥምቅ",
+    "m": 1,
+    "d": 2,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "stephen-tir",
+    "title": "Saint Stephen the Protomartyr",
+    "am": "ቅዱስ እስጢፋኖስ",
+    "m": 5,
+    "d": 1,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "trinity-tir",
+    "title": "Holy Trinity — Tir",
+    "am": "ቅድስት ሥላሴ",
+    "m": 5,
+    "d": 7,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "uriel-tir",
+    "title": "Saint Uriel — Tir",
+    "am": "ቅዱስ ኡራኤል",
+    "m": 5,
+    "d": 22,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "john-evangelist-tir",
+    "title": "Saint John the Evangelist — Tir",
+    "am": null,
+    "m": 5,
+    "d": 4,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "elijah-tir",
+    "title": "Prophet Elijah — Tir",
+    "am": null,
+    "m": 5,
+    "d": 6,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "peter-paul-hamle",
+    "title": "Saints Peter and Paul — Martyrdom",
+    "am": null,
+    "m": 11,
+    "d": 5,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "thomas-ginbot",
+    "title": "Apostle Thomas — Ginbot",
+    "am": null,
+    "m": 9,
+    "d": 26,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "tsome-nineveh-begins",
+    "title": "Fast of Nineveh begins",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -69
+  },
+  {
+    "type": "observance",
+    "slug": "abiy-tsom-begins",
+    "title": "Abiy Tsom begins",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -55
+  },
+  {
+    "type": "observance",
+    "slug": "debre-zeit",
+    "title": "Debre Zeit / Mount of Olives",
+    "am": "ደብረ ዘይት",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -28
+  },
+  {
+    "type": "observance",
+    "slug": "hosanna",
+    "title": "Hosanna / Palm Sunday",
+    "am": "ሆሳዕና",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -7
+  },
+  {
+    "type": "observance",
+    "slug": "holy-week-monday",
+    "title": "Holy Monday",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -6
+  },
+  {
+    "type": "observance",
+    "slug": "holy-week-tuesday",
+    "title": "Holy Tuesday",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -5
+  },
+  {
+    "type": "observance",
+    "slug": "holy-week-wednesday",
+    "title": "Holy Wednesday",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -4
+  },
+  {
+    "type": "observance",
+    "slug": "maundy-thursday",
+    "title": "Maundy Thursday",
+    "am": "ፀሎተ ሀሙስ",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -3
+  },
+  {
+    "type": "observance",
+    "slug": "siklet",
+    "title": "Siklet / Good Friday",
+    "am": "ስቅለት",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -2
+  },
+  {
+    "type": "observance",
+    "slug": "holy-saturday",
+    "title": "Holy Saturday",
+    "am": "ቀዳሚት ስዑር",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -1
+  },
+  {
+    "type": "observance",
+    "slug": "tinsae",
+    "title": "Tinsae / Fasika / Pascha",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": 0
+  },
+  {
+    "type": "observance",
+    "slug": "erget",
+    "title": "Erget / Ascension",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": 39
+  },
+  {
+    "type": "observance",
+    "slug": "pentecost",
+    "title": "Pentecost / Descent of the Holy Spirit",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": 49
+  },
+  {
+    "type": "observance",
+    "slug": "tsinset",
+    "title": "Tsinset / Annunciation and Incarnation",
+    "am": "ፅንሰት",
+    "m": 7,
+    "d": 29,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "lidete-simeon",
+    "title": "Lidete Simeon / Presentation of Christ",
+    "am": null,
+    "m": 6,
+    "d": 8,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "tsedenya-maryam",
+    "title": "Tsedenya Maryam",
+    "am": "ፀደኒያ ማርያም",
+    "m": 1,
+    "d": 10,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gishen-maryam",
+    "title": "Gishen Maryam",
+    "am": "ግሼን ማርያም",
+    "m": 1,
+    "d": 21,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "qusquam-maryam",
+    "title": "Qusquam Maryam",
+    "am": "ቁስቋም ማርያም",
+    "m": 3,
+    "d": 6,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "hidar-tsion",
+    "title": "Hidar Tsion / Tsion Maryam",
+    "am": "ፅዮን ማርያም",
+    "m": 3,
+    "d": 21,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "bisrate-gabriel",
+    "title": "Bisrate Gabriel",
+    "am": "ብስራተ ገብርኤል",
+    "m": 4,
+    "d": 22,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "maryam-water-rock",
+    "title": "Maryam / Water from the Rock",
+    "am": null,
+    "m": 10,
+    "d": 8,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "maryam-church-dedication",
+    "title": "First Church Dedicated to Mary",
+    "am": "ሕንፀተ ቤተ ክርስቲያን",
+    "m": 10,
+    "d": 20,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "sene-golgotha",
+    "title": "Sene Golgotha",
+    "am": "ሰኔ ጎልጎታ",
+    "m": 10,
+    "d": 21,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "george-hidar",
+    "title": "Saint George / Consecration of His Church",
+    "am": "ቅዱስ ጊዮርጊስ",
+    "m": 3,
+    "d": 7,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "george-miyazia",
+    "title": "Saint George / Martyrdom",
+    "am": "ቅዱስ ጊዮርጊስ",
+    "m": 8,
+    "d": 23,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "raphael-tahsas",
+    "title": "Saint Raphael / Tahsas",
+    "am": "ቅዱስ ሩፋኤል",
+    "m": 4,
+    "d": 13,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "cherubim-hidar",
+    "title": "Four Living Creatures / Cherubim",
+    "am": "ኪሩቤል አርባእቱ እንስሳ",
+    "m": 3,
+    "d": 8,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "trinity-hamle",
+    "title": "Holy Trinity / Visit to Abraham",
+    "am": "ቅድስት ሥላሴ",
+    "m": 11,
+    "d": 7,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "stephen-relics",
+    "title": "Saint Stephen / Translation of Relics",
+    "am": "ቅዱስ እስጢፋኖስ",
+    "m": 1,
+    "d": 15,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "arsema-meskerem",
+    "title": "Saint Arsema / Martyrdom",
+    "am": "አርሴማ",
+    "m": 1,
+    "d": 29,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "heavenly-priests-hidar",
+    "title": "Twenty-four Heavenly Priests",
+    "am": "24ቱ ካህናተ ሰማይ",
+    "m": 3,
+    "d": 24,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "john-baptist-birth",
+    "title": "John the Baptist / Birth",
+    "am": "ዮሐንስ መጥምቅ",
+    "m": 10,
+    "d": 30,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "abba-salama-hamle",
+    "title": "Abba Salama / Frumentius",
+    "am": "አባ ሰላማ ከሳቴ ብርሀን",
+    "m": 11,
+    "d": 26,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "lalibela-birth",
+    "title": "Saint Lalibela / Birth",
+    "am": "ቅዱስ ላሊበላ",
+    "m": 4,
+    "d": 29,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "lalibela-departure",
+    "title": "Saint Lalibela / Departure",
+    "am": "ቅዱስ ላሊበላ",
+    "m": 10,
+    "d": 12,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "zewerede",
+    "title": "Zewerede / He Who Comes Down",
+    "am": "ዘወረደ",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -56
+  },
+  {
+    "type": "observance",
+    "slug": "kidist",
+    "title": "Kidist / Holy",
+    "am": "ቅድስት",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -49
+  },
+  {
+    "type": "observance",
+    "slug": "mikurab",
+    "title": "Mikurab / Synagogue",
+    "am": "ምኩራብ",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -42
+  },
+  {
+    "type": "observance",
+    "slug": "metsagu",
+    "title": "Metsagu / The Paralytic",
+    "am": "መጻጉእ",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -35
+  },
+  {
+    "type": "observance",
+    "slug": "gebr-her",
+    "title": "Gebr Her / Faithful Servant",
+    "am": "ገብር ሔር",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -21
+  },
+  {
+    "type": "observance",
+    "slug": "nikodimos",
+    "title": "Nikodimos / Nicodemus",
+    "am": "ኒቆዲሞስ",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": -14
+  },
+  {
+    "type": "observance",
+    "slug": "dagma-tinsae",
+    "title": "Dagma Tinsae / Sunday of Thomas",
+    "am": "ዳግማ ትንሳኤ",
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": 7
+  },
+  {
+    "type": "observance",
+    "slug": "sibket",
+    "title": "Sibket / Proclamation",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "berhan",
+    "title": "Berhan / Light",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "nolawi",
+    "title": "Nolawi / Good Shepherd",
+    "am": null,
+    "m": null,
+    "d": null,
+    "movable": true,
+    "offset": null
+  },
+  {
+    "type": "observance",
+    "slug": "gena-eve",
+    "title": "Genna / Nativity Eve",
+    "am": null,
+    "m": 4,
+    "d": 28,
+    "movable": false,
+    "offset": null
+  },
+  {
+    "type": "fast",
+    "slug": "weekly-wednesday-friday",
+    "title": "Tsome Dihinet / Wednesday and Friday Fast",
+    "am": "ጾመ ድህነት",
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "tsome-nineveh",
+    "title": "Fast of Nineveh",
+    "am": "ጾመ ነነዌ",
+    "movable": true
+  },
+  {
+    "type": "fast",
+    "slug": "abiy-tsom",
+    "title": "Abiy Tsom / Great Lent",
+    "am": "አብይ ጾም",
+    "movable": true
+  },
+  {
+    "type": "fast",
+    "slug": "judith-fast",
+    "title": "Judith Fast",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "tsome-nebiyat",
+    "title": "Tsome Nebiyat / Fast of the Prophets",
+    "am": "ጾመ ነቢያት",
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "tsome-hawariat",
+    "title": "Tsome Hawariat / Apostles Fast",
+    "am": "ጾመ ሐዋርያት",
+    "movable": true
+  },
+  {
+    "type": "fast",
+    "slug": "filseta-fast",
+    "title": "Filseta Fast",
+    "am": "ጾመ ፍልሰታ",
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "gena-gahad",
+    "title": "Gahad of Nativity",
+    "am": "ጾመ ገሃድ",
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "timket-gahad",
+    "title": "Gahad of Timket",
+    "am": "ጾመ ገሃድ",
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "paschal-fifty-days",
+    "title": "Paschal fifty days",
+    "am": null,
+    "movable": true
+  },
+  {
+    "type": "fast",
+    "slug": "gena-fast-free",
+    "title": "Gena fast exception",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "timket-fast-free",
+    "title": "Timket fast exception",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "tsige-fast",
+    "title": "Tsige Fast / Fast of the Holy Family",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "fast",
+    "slug": "heraclius-fast",
+    "title": "Fast of Heraclius",
+    "am": "ጾመ ህርቃል",
+    "movable": true
+  },
+  {
+    "type": "fast",
+    "slug": "holy-week-fast",
+    "title": "Passion Week Fast",
+    "am": "ሰሞነ ህማማት",
+    "movable": true
+  },
+  {
+    "type": "fast",
+    "slug": "holy-saturday-fast",
+    "title": "Holy Saturday / Unobserved Sabbath",
+    "am": "ቀዳሚት ስዑር",
+    "movable": true
+  },
+  {
+    "type": "fast",
+    "slug": "akfelot",
+    "title": "Akfelot / Good Friday–Holy Saturday Abstinence",
+    "am": "አክፍሎት",
+    "movable": true
+  },
+  {
+    "type": "season",
+    "slug": "advent-sibket",
+    "title": "Advent / Sibket",
+    "am": "ስብከት",
+    "movable": false
+  },
+  {
+    "type": "season",
+    "slug": "astereyo",
+    "title": "Age of Aster’eyo / Revelation",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "season",
+    "slug": "great-lent",
+    "title": "Great Lent",
+    "am": "አብይ ጾም",
+    "movable": true
+  },
+  {
+    "type": "season",
+    "slug": "holy-week",
+    "title": "Holy Week / Himamat",
+    "am": "ሰሞነ ህማማት",
+    "movable": true
+  },
+  {
+    "type": "season",
+    "slug": "paschal-season",
+    "title": "Paschal fifty days",
+    "am": null,
+    "movable": true
+  },
+  {
+    "type": "season",
+    "slug": "apostles-fast-period",
+    "title": "Apostles Fast period",
+    "am": null,
+    "movable": true
+  },
+  {
+    "type": "season",
+    "slug": "filseta-period",
+    "title": "Filseta period",
+    "am": "ፍልሰታ",
+    "movable": false
+  },
+  {
+    "type": "season",
+    "slug": "tsige-season",
+    "title": "Zemene Tsige / Season of Flower",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "season",
+    "slug": "sibket-period",
+    "title": "Zemene Sibket / Proclamation",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "season",
+    "slug": "berhan-period",
+    "title": "Zemene Berhan / Light",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "season",
+    "slug": "nolawi-period",
+    "title": "Zemene Nolawi / Good Shepherd",
+    "am": null,
+    "movable": false
+  },
+  {
+    "type": "season",
+    "slug": "bright-week",
+    "title": "Resurrection Week",
+    "am": null,
+    "movable": true
+  },
+  {
+    "type": "season",
+    "slug": "resurrection-period",
+    "title": "Zemene Tinsae / Resurrection to Ascension",
+    "am": null,
+    "movable": true
+  },
+  {
+    "type": "season",
+    "slug": "heraclius-week",
+    "title": "Heraclius Week",
+    "am": "ጾመ ህርቃል",
+    "movable": true
+  }
+]

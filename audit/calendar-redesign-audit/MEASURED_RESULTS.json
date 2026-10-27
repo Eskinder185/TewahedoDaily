@@ -1,0 +1,31 @@
+{
+  "passed": [
+    "mobile-compact-320 (320x700): Zero horizontal overflow",
+    "mobile-standard-360 (360x800): Zero horizontal overflow",
+    "mobile-iphone-390 (390x844): Zero horizontal overflow",
+    "mobile-large-430 (430x932): Zero horizontal overflow",
+    "tablet-portrait-768 (768x1024): Zero horizontal overflow",
+    "tablet-landscape-1024 (1024x768): Zero horizontal overflow",
+    "desktop-wide-1440 (1440x900): Zero horizontal overflow",
+    "Desktop: Month grid expands on toggle",
+    "Desktop: Month grid collapses on toggle",
+    "Desktop: About today observance panel expands",
+    "Desktop: About today observance panel collapses",
+    "Desktop Bible: Passage expands to show all real verses",
+    "Desktop Bible: Switched reading mode to Amharic",
+    "Desktop Mezmur: Play button clicked without error",
+    "Mobile 390 Night Amharic: Zero horizontal overflow",
+    "Mobile 390 Night Amharic: Screenshot captured"
+  ],
+  "failed": [],
+  "measuredHeights": {
+    "mobile-compact-320": 3724,
+    "mobile-standard-360": 3455,
+    "mobile-iphone-390": 3292,
+    "mobile-large-430": 3031,
+    "tablet-portrait-768": 2289,
+    "tablet-landscape-1024": 1969,
+    "desktop-wide-1440": 1875
+  },
+  "interactions": {}
+}

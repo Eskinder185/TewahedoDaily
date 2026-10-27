@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { useTranslation } from '../../i18n'
 import type { ChurchLibrarySearchResponse } from '../../lib/searchBuddy/churchLibrarySearch'
 import styles from './SearchBuddy.module.css'
 
@@ -26,23 +28,35 @@ function safeSourceUrl(value: string | null) {
 }
 
 export function ChurchLibrarySources({ outcome }: { outcome: ChurchLibraryOutcome }) {
+  const t = useTranslation()
   if (outcome.kind === 'idle' || outcome.kind === 'loading' || outcome.kind === 'empty') return null
   if (outcome.kind === 'error') return <p className={styles.message} role="status">{outcome.notice}</p>
   return (
     <section aria-labelledby="church-library-sources">
-      <h3 id="church-library-sources">Church Library sources</h3>
-      <p className={styles.relatedNote}>These are short, permission-checked excerpts from indexed books. Verify teaching in context.</p>
+      <h3 id="church-library-sources">{t('searchBuddy.churchLibrarySources')}</h3>
+      <p className={styles.relatedNote}>{t('searchBuddy.churchLibraryNote')}</p>
       {outcome.response.results.map((hit) => {
         const sourceUrl = safeSourceUrl(hit.source_url)
-        return <article className={styles.passageCard} key={hit.passage_id}>
-          <blockquote className={styles.sourceQuote} lang={hit.language === 'am' || hit.language === 'gez' ? 'am' : 'en'}>
-            <p className={styles.passageText}>{hit.excerpt}</p>
-          </blockquote>
-          <p className={styles.attribution}>
-            <strong>{hit.title}</strong>{hit.author ? ` — ${hit.author}` : ''} · {locator(hit)}
-          </p>
-          {sourceUrl ? <p><a href={sourceUrl} target="_blank" rel="noreferrer">Open permitted source</a></p> : null}
-        </article>
+        return (
+          <article className={styles.passageCard} key={hit.passage_id}>
+            <blockquote className={styles.sourceQuote} lang={hit.language === 'am' || hit.language === 'gez' ? 'am' : 'en'}>
+              <p className={styles.passageText}>{hit.excerpt}</p>
+            </blockquote>
+            <p className={styles.attribution}>
+              <strong>{hit.title}</strong>{hit.author ? ` — ${hit.author}` : ''} · {locator(hit)}
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', fontSize: '0.875rem' }}>
+              <Link to={`/library/${hit.book_id}`} className={styles.websiteLink}>
+                📖 {t('library.readBook')} →
+              </Link>
+              {sourceUrl ? (
+                <a href={sourceUrl} target="_blank" rel="noreferrer">
+                  {t('searchBuddy.churchLibraryOpenSource')}
+                </a>
+              ) : null}
+            </div>
+          </article>
+        )
       })}
     </section>
   )

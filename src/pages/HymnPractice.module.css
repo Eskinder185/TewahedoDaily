@@ -914,3 +914,59 @@
     background-position: -100% 0;
   }
 }
+
+
+.liturgicalContext {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--surface-paper-card, #fbf4e4);
+  border: 1px solid var(--color-gold-line, rgba(180, 138, 59, 0.42));
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.liturgicalContextHead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.liturgicalIcon {
+  font-size: 1.5rem;
+}
+
+.liturgicalTitle {
+  margin: 0;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--color-midnight-deep, #0e1b2d);
+}
+
+.liturgicalSub {
+  margin: 0.2rem 0 0;
+  font-size: 0.84rem;
+  color: var(--color-text-muted, #454038);
+}
+
+.calendarJumpBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  background: var(--color-gold, #b48a3b);
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.calendarJumpBtn:hover {
+  background: var(--color-gold-bright, #c9a14a);
+  color: #fff;
+}

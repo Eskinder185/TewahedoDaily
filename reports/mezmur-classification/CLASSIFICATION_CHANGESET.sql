@@ -1,0 +1,4 @@
+-- Review-only classification changeset. No executable changes are generated because import_id is not exposed by the public snapshot.
+-- The owner-supplied index is supporting evidence only; raw/corrupted titles are not identity matches.
+-- Obtain authorized import_id values, review every proposal, then use the existing UUID-safe classification RPC with exact current-value preconditions.
+-- This file intentionally contains no INSERT, UPDATE, DELETE, publication, or status changes.

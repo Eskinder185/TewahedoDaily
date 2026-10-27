@@ -1,0 +1,172 @@
+-- Forward-only repair: make publication identity-safe when legacy slugs collide.
+-- Apply manually after reviewing the read-only audit in
+-- supabase/mezmur-import/MEZMUR_DUPLICATE_SLUG_AUDIT_READ_ONLY.sql.
+begin;
+
+-- Preserve the legacy text API, but fail closed when a slug is ambiguous.
+create or replace function public.publish_mezmur_import(
+  p_slug text,
+  p_expected_updated_at text default null
+)
+returns jsonb language plpgsql security definer set search_path = ''
+as $$
+declare
+  v_actor uuid := auth.uid();
+  v_role text;
+  v_row public.mezmur_data_import%rowtype;
+  v_row_tid tid;
+  v_slug_count integer;
+  v_is_restricted boolean;
+begin
+  if v_actor is null then
+    if current_user not in ('postgres', 'supabase_admin', 'service_role') then
+      raise exception 'Authentication required' using errcode = '42501';
+    end if;
+    v_role := 'super_admin';
+  else
+    select role into v_role from public.profiles where id = v_actor;
+    if v_role not in ('editor', 'admin', 'super_admin') then
+      raise exception 'Staff permissions required' using errcode = '42501';
+    end if;
+  end if;
+  if nullif(trim(coalesce(p_slug, '')), '') is null then
+    raise exception 'Slug required' using errcode = '23514';
+  end if;
+  select count(*) into v_slug_count
+  from public.mezmur_data_import
+  where slug = trim(p_slug) and deleted_at is null;
+  if v_slug_count <> 1 then
+    raise exception 'Expected one Mezmur for slug %, found %', p_slug, v_slug_count using errcode = 'P0002';
+  end if;
+  select ctid, * into v_row_tid, v_row
+  from public.mezmur_data_import
+  where slug = trim(p_slug) and deleted_at is null for update;
+  if p_expected_updated_at is not null and nullif(trim(v_row.updated_at), '') is not null
+     and v_row.updated_at is distinct from p_expected_updated_at then
+    raise exception 'Conflict: this mezmur was modified by another editor' using errcode = '40001';
+  end if;
+  if nullif(trim(coalesce(v_row.title, '')), '') is null or nullif(trim(coalesce(v_row.slug, '')), '') is null then
+    raise exception 'Title and slug are required to publish' using errcode = '23514';
+  end if;
+  v_is_restricted := lower(trim(coalesce(v_row.rights_status, ''))) not in ('owned', 'licensed', 'authorized_contributor', 'public_domain', 'display_only')
+    or v_row.publication_approved_at is null or v_row.publication_approved_by is null;
+  if v_is_restricted and nullif(trim(coalesce(v_row.youtube_url, '')), '') is null
+     and nullif(trim(coalesce(v_row.source_url, '')), '') is null then
+    raise exception 'Add a YouTube or authorized source link before publishing a restricted-lyrics Mezmur' using errcode = '23514';
+  end if;
+  perform set_config('tewahedo.publication_via_rpc', 'on', true);
+  update public.mezmur_data_import
+  set status = 'published', rights_status = coalesce(nullif(trim(rights_status), ''), 'owned'), updated_at = clock_timestamp()::text
+  where ctid = v_row_tid;
+  perform set_config('tewahedo.publication_via_rpc', 'off', true);
+  insert into public.mezmur_publication_events
+    (mezmur_slug, event_type, previous_status, next_status, review_status, rights_status, actor_id, actor_role)
+  values (v_row.slug, 'published', v_row.status, 'published', v_row.review_status, coalesce(v_row.rights_status, 'owned'), v_actor, v_role);
+  return jsonb_build_object('slug', v_row.slug, 'status', 'published', 'lyrics_display', not v_is_restricted, 'media_only', v_is_restricted);
+end;
+$$;
+
+create or replace function public.publish_mezmur_import(
+  p_import_id uuid,
+  p_expected_updated_at text default null
+)
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_slug text;
+  v_updated_at text;
+  v_count integer;
+begin
+  if p_import_id is null then
+    raise exception 'Stable Mezmur import_id is required' using errcode = '22023';
+  end if;
+
+  select slug, updated_at
+    into v_slug, v_updated_at
+  from public.mezmur_data_import
+  where import_id = p_import_id and deleted_at is null;
+
+  if not found then
+    raise exception 'Mezmur import_id % not found or deleted', p_import_id using errcode = 'P0002';
+  end if;
+
+  select count(*) into v_count
+  from public.mezmur_data_import
+  where slug = v_slug and deleted_at is null;
+
+  if v_count <> 1 then
+    raise exception 'Cannot publish import_id %: slug % belongs to % active Mezmurs', p_import_id, v_slug, v_count
+      using errcode = 'P0002';
+  end if;
+
+  -- The existing text overload retains all staff, rights, content, and guard checks.
+  return public.publish_mezmur_import(v_slug, coalesce(p_expected_updated_at, v_updated_at));
+end;
+$$;
+
+revoke all on function public.publish_mezmur_import(uuid, text) from public, anon;
+grant execute on function public.publish_mezmur_import(uuid, text) to authenticated;
+
+create or replace function public.bulk_publish_mezmur_imports(p_import_ids uuid[])
+returns jsonb
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  v_actor uuid := auth.uid();
+  v_role text;
+  v_id uuid;
+  v_m public.mezmur_data_import%rowtype;
+  v_result jsonb;
+  v_published integer := 0;
+  v_skipped integer := 0;
+  v_failed integer := 0;
+  v_results jsonb := '[]'::jsonb;
+begin
+  select role into v_role from public.profiles where id = v_actor;
+  if v_actor is null or v_role <> 'super_admin' then
+    raise exception 'Super Admin is required for bulk publication' using errcode = '42501';
+  end if;
+  if cardinality(coalesce(p_import_ids, '{}'::uuid[])) > 100 then
+    raise exception 'Bulk publication is limited to 100 records per batch' using errcode = '22023';
+  end if;
+
+  foreach v_id in array coalesce(p_import_ids, '{}'::uuid[]) loop
+    begin
+      perform pg_advisory_xact_lock(hashtextextended('mezmur-bulk-publish:' || v_id::text, 0));
+      select * into strict v_m
+      from public.mezmur_data_import
+      where import_id = v_id and deleted_at is null
+      for update;
+
+      if lower(trim(coalesce(v_m.status, ''))) = 'published' then
+        if exists (select 1 from public.mezmur_public p where p.mezmur_id = v_m.mezmur_id) then
+          v_skipped := v_skipped + 1;
+          v_results := v_results || jsonb_build_object('import_id', v_id, 'outcome', 'already_published_public');
+        else
+          v_failed := v_failed + 1;
+          v_results := v_results || jsonb_build_object('import_id', v_id, 'outcome', 'published_excluded', 'reason', 'status is published but the row is absent from mezmur_public');
+        end if;
+      else
+        v_result := public.publish_mezmur_import(v_id, v_m.updated_at);
+        v_published := v_published + 1;
+        v_results := v_results || jsonb_build_object('import_id', v_id, 'outcome', 'published', 'result', v_result);
+      end if;
+    exception when others then
+      v_failed := v_failed + 1;
+      v_results := v_results || jsonb_build_object('import_id', v_id, 'outcome', 'failed', 'sqlstate', sqlstate, 'reason', sqlerrm);
+    end;
+  end loop;
+
+  return jsonb_build_object('published', v_published, 'skipped', v_skipped, 'failed', v_failed, 'results', v_results);
+end;
+$$;
+
+revoke all on function public.bulk_publish_mezmur_imports(uuid[]) from public, anon;
+grant execute on function public.bulk_publish_mezmur_imports(uuid[]) to authenticated;
+notify pgrst, 'reload schema';
+commit;

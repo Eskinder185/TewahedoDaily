@@ -26,6 +26,7 @@ const TYPE_KEY: Record<SiteSearchSourceType, string> = {
   saint: 'searchBuddy.types.saint',
   feast: 'searchBuddy.types.feast',
   learn: 'searchBuddy.types.learn',
+  church_library: 'searchBuddy.types.churchLibrary',
   account: 'searchBuddy.types.account',
   other: 'searchBuddy.types.page',
 }

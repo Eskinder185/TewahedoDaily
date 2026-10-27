@@ -12,11 +12,11 @@ import {
   exportFailedLyricsFormatCsv, exportLyricsFormatResultsCsv,
   exportPublicationResultsCsv, exportSuggestionsCsv,
   formatRecordedDate, getMezmurEnrichmentJob, getSupabaseMezmurBulkSnapshot,
-  listMezmurSuggestions, publishEligibleMezmurs, resumeMezmurEnrichmentJob,
+  listMezmurSuggestions, publishEligibleMezmurs, resumeMezmurEnrichmentJob, auditPublishedMezmurVisibility,
   type AutoCategorizeMode, type AutoCategorizeResult, type AutoFormatLyricsMode,
   type AutoFormatLyricsProgress, type AutoFormatLyricsResult,
   type BulkDashboard, type BulkJobMode,
-  type BulkMezmurRecord, type BulkPublishResult, type ClassificationRunProgress,
+  type BulkMezmurRecord, type BulkPublishResult, type ClassificationRunProgress, type PublicVisibilityAudit,
   type EnrichmentJob, type EnrichmentSuggestion,
 } from '../../lib/cms/mezmurBulkService'
 import s from './Admin.module.css'
@@ -52,7 +52,7 @@ export function MezmurBulkManagement() {
   const [selectedSuggestions, setSelectedSuggestions] = useState<Set<string>>(new Set())
   const [selectedRecords, setSelectedRecords] = useState<Set<string>>(new Set())
   const [search, setSearch] = useState('')
-  const [statusFilter, setStatusFilter] = useState('')
+  const [statusFilter, setStatusFilter] = useState('draft')
   const [categoryFilter, setCategoryFilter] = useState('')
   const [singerFilter, setSingerFilter] = useState('')
   const [lyricsFilter, setLyricsFilter] = useState('')
@@ -67,6 +67,7 @@ export function MezmurBulkManagement() {
   const [aiError, setAiError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [publicationResult, setPublicationResult] = useState<BulkPublishResult | null>(null)
+  const [visibilityAudit, setVisibilityAudit] = useState<PublicVisibilityAudit | null>(null)
   const [showAutoLinkModal, setShowAutoLinkModal] = useState(false)
   const [categorizeModalMode, setCategorizeModalMode] = useState<AutoCategorizeMode | null>(null)
   const [categorizeOverwrite, setCategorizeOverwrite] = useState(false)
@@ -129,7 +130,7 @@ export function MezmurBulkManagement() {
       if (eligibilityFilter === 'blocked' && row.publication_eligible) return false
       if (languageFilter === '__missing__' && row.language) return false
       if (languageFilter && languageFilter !== '__missing__' && row.language !== languageFilter) return false
-      return !needle || `${row.title} ${row.slug} ${row.singer_name || ''} ${row.zemari_name || ''}`.toLocaleLowerCase().includes(needle)
+      return !needle || `${row.title} ${row.title_amharic || ''} ${row.slug} ${row.import_id} ${row.singer_name || ''} ${row.zemari_name || ''}`.toLocaleLowerCase().includes(needle)
     })
   }, [records, search, statusFilter, categoryFilter, singerFilter, lyricsFilter, eligibilityFilter, languageFilter])
   const pages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE))
@@ -335,9 +336,32 @@ export function MezmurBulkManagement() {
     try {
       const result = await publishEligibleMezmurs(eligible.map((row) => row.import_id))
       setPublicationResult(result)
-      setNotice(`Published ${result.published}; skipped ${result.skipped}; failed ${result.failed}.`)
-      if (result.failed) setError(result.results.filter((item) => item.outcome === 'failed').map((item) => item.reason).filter(Boolean).join(' · '))
-      setSelectedRecords(new Set()); await refresh(job?.id)
+      setNotice(`Published ${result.published}; ${result.published_missing_public} published but missing from mezmur_public; skipped ${result.skipped}; failed ${result.failed}.`)
+      if (result.failed || result.published_missing_public) setError(result.results.filter((item) => item.outcome === 'failed' || item.outcome === 'published_missing_public').map((item) => item.reason).filter(Boolean).join(' · '))
+      const retryIds = new Set(result.results.filter((item) => item.outcome === 'failed' || item.outcome === 'published_missing_public').map((item) => item.import_id))
+      setSelectedRecords(retryIds); await refresh(job?.id)
+    } catch (cause) { setError(causeText(cause)) } finally { setBusy(null) }
+  }
+
+  function selectDraftsOnCurrentPage() {
+    setSelectedRecords((current) => new Set([...current, ...visible.filter((row) => row.status === 'draft').map((row) => row.import_id)]))
+  }
+
+  function selectAllMatchingDrafts() {
+    const matchingDrafts = filtered.filter((row) => row.status === 'draft')
+    if (!matchingDrafts.length) return
+    if (!window.confirm(`Select all ${matchingDrafts.length} matching Draft Mezmurs across every page?`)) return
+    setSelectedRecords((current) => new Set([...current, ...matchingDrafts.map((row) => row.import_id)]))
+  }
+
+  async function repairMissingPublicMezmurs() {
+    if (!superAdmin) return
+    setBusy('visibility-audit'); setError(null); setVisibilityAudit(null)
+    try {
+      const result = await auditPublishedMezmurVisibility(records)
+      setVisibilityAudit(result)
+      setNotice(`Public visibility audit: ${result.visible} visible, ${result.missing} missing from mezmur_public. No unsafe status toggles were performed.`)
+      if (result.missing) setError(result.missingRecords.map((row) => `${row.title || row.slug}: ${row.reason}`).join(' · '))
     } catch (cause) { setError(causeText(cause)) } finally { setBusy(null) }
   }
 
@@ -463,10 +487,10 @@ export function MezmurBulkManagement() {
     <section className={b.metrics} aria-label="Mezmur bulk status">{METRICS.map(([key, en, am]) => <article className={s.card} key={key}><strong>{dashboard[key]}</strong><span>{en}</span><small lang="am">{am}</small></article>)}</section>
 
     <section className={`${s.card} ${b.inventory}`}>
-      <div className={b.sectionHead}><div><h2>1. Existing Supabase Mezmurs</h2><p>{filtered.length} matching records · page {Math.min(page, pages)} of {pages}</p></div>
-        <div className={s.actions}><button type="button" onClick={() => setSelectedRecords((current) => new Set([...current, ...visible.map((row) => row.import_id)]))}>Select current page</button><button type="button" onClick={() => setSelectedRecords(new Set(filtered.map((row) => row.import_id)))}>Select all matching ({filtered.length})</button><button type="button" onClick={() => setSelectedRecords(new Set())}>Clear</button></div></div>
+      <div className={b.sectionHead}><div><h2>1. Imported Supabase Mezmurs</h2><p>{filtered.length} matching records · page {Math.min(page, pages)} of {pages} · source: mezmur_data_import</p></div>
+        <div className={s.actions}><button type="button" onClick={selectDraftsOnCurrentPage}>Select Drafts on page</button><button type="button" onClick={selectAllMatchingDrafts}>Select all matching Drafts ({filteredDrafts.length})</button><button type="button" onClick={() => setSelectedRecords(new Set())}>Clear selection</button></div></div>
       <div className={s.filters}>
-        <label>Search<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Title, slug, or singer" /></label>
+        <label>Search<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Title, Amharic title, slug, or import ID" /></label>
         <label>Status<select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}><option value="">All</option><option value="draft">Draft</option><option value="published">Published</option></select></label>
         <label>Category<select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}><option value="">All</option><option value="__missing__">Missing category</option>{categories.map((value) => <option key={value}>{value}</option>)}</select></label>
         <label>Zemari relationship<select value={singerFilter} onChange={(event) => setSingerFilter(event.target.value)}><option value="">All</option><option value="__linked__">Linked</option><option value="__matchable__">Ready to auto-link</option><option value="__unlinked__">Not linked</option><option value="__ambiguous__">Needs review</option><option value="__missing__">Singer name missing</option>{singers.map((value) => <option key={value.id} value={value.id}>{value.name || value.nameAmharic || value.slug}</option>)}</select></label>
@@ -518,14 +542,16 @@ export function MezmurBulkManagement() {
         <button type="button" disabled={!canApply || autoLinkBreakdown.totalAffected === 0 || Boolean(busy)} title="Bulk Match Exact Names and Normalized Titles" onClick={() => setShowAutoLinkModal(true)}>Auto-Link Existing Zemaris ({autoLinkBreakdown.totalAffected})</button>
         <button type="button" disabled={!superAdmin || !selectedEligible.length || Boolean(busy)} onClick={() => void publishRows(selectedRows, 'Publish Selected')}>Publish Selected ({selectedEligible.length})</button>
         <button type="button" className={s.primary} disabled={!superAdmin || !allEligible.length || Boolean(busy)} onClick={() => void publishRows(filteredDrafts, 'Publish All Eligible')}>Publish All Eligible ({allEligible.length})</button>
+        <button type="button" disabled={!superAdmin || Boolean(busy)} onClick={() => void repairMissingPublicMezmurs()}>Repair Missing Public Mezmurs</button>
         {publicationResult?.results.length ? <button type="button" onClick={() => exportPublicationResultsCsv(publicationResult.results)}>Download publication report</button> : null}
       </div>
-      <div className={s.tableWrap}><table><thead><tr><th>Select</th><th>Mezmur</th><th>Language</th><th>Zemari / Singer</th><th>Category</th><th>Occasion</th><th>Lyrics</th><th>Status</th><th>Eligibility</th><th>Updated</th></tr></thead><tbody>
+      {visibilityAudit ? <p className={s.notice} role="status">Published: {visibilityAudit.published} · Publicly visible: {visibilityAudit.visible} · Missing: {visibilityAudit.missing}. Diagnostic-only; no content or status changes were made.</p> : null}
+      <div className={s.tableWrap}><table><thead><tr><th>Select</th><th>Mezmur</th><th>Import ID</th><th>Language</th><th>Zemari / Singer</th><th>Category</th><th>Occasion</th><th>Lyrics</th><th>Status</th><th>Review</th><th>Eligibility</th><th>Updated</th></tr></thead><tbody>
         {visible.map((row) => <tr key={row.import_id}><td><input type="checkbox" aria-label={`Select ${row.title}`} checked={selectedRecords.has(row.import_id)} disabled={Boolean(busy)} onChange={(event) => setSelectedRecords((current) => { const next = new Set(current); if (event.target.checked) next.add(row.import_id); else next.delete(row.import_id); return next })} /></td>
-          <td><strong>{row.title}</strong><small className={b.block}><Link to={`/admin/hymns/mezmur/${row.slug}/edit`}>{row.slug}</Link></small></td><td>{mezmurLanguageLabel(row.language)}</td><td><span>{row.singer_name || '—'}</span>{row.zemari_name && row.zemari_name !== row.singer_name ? <small className={b.block}>Zemari: {row.zemari_name}</small> : null}<small className={b.block}>{relationshipLabel(row)}</small>{row.zemari_match.state === 'ambiguous' ? <small className={b.block}>{row.zemari_match.candidates.map((value) => value.name).join(', ')}</small> : null}{canApply && row.status === 'draft' ? <select aria-label={`Link Zemari for ${row.title}`} value="" disabled={Boolean(busy)} onChange={(event) => void manualLink(row, event.target.value)}><option value="">Manual Link…</option>{singers.map((value) => <option key={value.id} value={value.id}>{value.name || value.nameAmharic || value.slug}</option>)}</select> : null}</td>
-          <td>{row.category_slugs.join(', ') || '—'}</td><td>{row.occasion_slugs.join(', ') || '—'}</td><td>{row.has_lyrics ? 'Available' : 'Missing'}</td><td>{row.status === 'published' ? 'Published' : 'Draft'}</td>
+          <td><strong>{row.title}</strong>{row.title_amharic ? <small className={b.block}>{row.title_amharic}</small> : null}<small className={b.block}><Link to={`/admin/hymns/mezmur/${row.slug}/edit`}>{row.slug}</Link></small></td><td><code>{row.import_id}</code></td><td>{mezmurLanguageLabel(row.language)}</td><td><span>{row.singer_name || '—'}</span>{row.zemari_name && row.zemari_name !== row.singer_name ? <small className={b.block}>Zemari: {row.zemari_name}</small> : null}<small className={b.block}>{relationshipLabel(row)}</small>{row.zemari_match.state === 'ambiguous' ? <small className={b.block}>{row.zemari_match.candidates.map((value) => value.name).join(', ')}</small> : null}{canApply && row.status === 'draft' ? <select aria-label={`Link Zemari for ${row.title}`} value="" disabled={Boolean(busy)} onChange={(event) => void manualLink(row, event.target.value)}><option value="">Manual Link…</option>{singers.map((value) => <option key={value.id} value={value.id}>{value.name || value.nameAmharic || value.slug}</option>)}</select> : null}</td>
+          <td>{row.category_slugs.join(', ') || '—'}</td><td>{row.occasion_slugs.join(', ') || '—'}</td><td>{row.has_lyrics ? 'Available' : 'Missing'}</td><td>{row.status === 'published' ? 'Published' : 'Draft'}</td><td>{row.review_status || '—'}</td>
           <td>{row.status === 'published' ? 'Already published' : row.publication_eligible ? 'Eligible' : row.publication_block_reason}</td><td>{formatRecordedDate(row.updated_at)}</td></tr>)}
-        {!visible.length ? <tr><td colSpan={10}>No Mezmurs match these filters.</td></tr> : null}
+        {!visible.length ? <tr><td colSpan={12}>No Mezmurs match these filters.</td></tr> : null}
       </tbody></table></div>
       <div className={s.pagination}><button type="button" disabled={page <= 1} onClick={() => setPage((value) => value - 1)}>Previous</button><span>Page {Math.min(page, pages)} of {pages}</span><button type="button" disabled={page >= pages} onClick={() => setPage((value) => value + 1)}>Next</button></div>
     </section>

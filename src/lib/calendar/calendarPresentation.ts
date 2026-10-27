@@ -20,6 +20,7 @@ import {
   type CalendarLocaleMode,
   type EnrichedContentFields,
 } from './calendarEnrichedContent'
+import { getKnowledgeArticle } from './calendarKnowledgeRegistry'
 import type { ResolvedCalendarCard } from './resolveCalendarCard'
 import {
   resolveCalendarEventPresentation,
@@ -133,23 +134,38 @@ function ethDateLabel(month?: number | null, day?: number | null, monthName?: st
   return `Day ${day}`
 }
 
-function fieldsFromDay(row: DayEnrichedFields & { description?: string }): EnrichedContentFields {
+function fieldsFromDay(
+  row: DayEnrichedFields & { description?: string },
+  lookupKey?: string | number | null,
+): EnrichedContentFields {
+  const article = lookupKey ? getKnowledgeArticle(lookupKey) : null
+
   return {
-    summary: row.summary,
-    summaryAmharic: row.summaryAmharic,
-    whatIsIt: row.whatIsIt,
-    whatIsItAmharic: row.whatIsItAmharic,
-    whyCelebrated: row.whyCelebrated,
-    whyCelebratedAmharic: row.whyCelebratedAmharic,
-    importantInformation: row.importantInformation,
-    importantInformationAmharic: row.importantInformationAmharic,
-    scriptureReferences: row.scriptureReferences,
-    fastingNotes: row.fastingNotes,
-    fastingNotesAmharic: row.fastingNotesAmharic,
-    seasonNotes: row.seasonNotes,
-    seasonNotesAmharic: row.seasonNotesAmharic,
-    description: row.description,
-    contentReviewStatus: row.contentReviewStatus,
+    summary: row.summary || article?.summary || null,
+    summaryAmharic: row.summaryAmharic || article?.summaryAmharic || null,
+    whatIsIt: row.whatIsIt || article?.whatIsIt || null,
+    whatIsItAmharic: row.whatIsItAmharic || article?.whatIsItAmharic || null,
+    historicalBackground: article?.historicalBackground || null,
+    historicalBackgroundAmharic: article?.historicalBackgroundAmharic || null,
+    whyCelebrated: row.whyCelebrated || article?.whyCelebrated || null,
+    whyCelebratedAmharic: row.whyCelebratedAmharic || article?.whyCelebratedAmharic || null,
+    theologicalMeaning: article?.theologicalMeaning || null,
+    theologicalMeaningAmharic: article?.theologicalMeaningAmharic || null,
+    traditionsPractices: article?.traditionsPractices || null,
+    traditionsPracticesAmharic: article?.traditionsPracticesAmharic || null,
+    importantInformation: row.importantInformation || article?.importantInformation || null,
+    importantInformationAmharic: row.importantInformationAmharic || article?.importantInformationAmharic || null,
+    scriptureReferences: row.scriptureReferences || article?.scriptureReferences || null,
+    fastingNotes: row.fastingNotes || article?.fastingNotes || null,
+    fastingNotesAmharic: row.fastingNotesAmharic || article?.fastingNotesAmharic || null,
+    seasonNotes: row.seasonNotes || null,
+    seasonNotesAmharic: row.seasonNotesAmharic || null,
+    relatedMezmurs: article?.relatedMezmurs || null,
+    relatedPrayers: article?.relatedPrayers || null,
+    sources: article?.sources || null,
+    sourcesAmharic: article?.sourcesAmharic || null,
+    description: row.description || article?.summary || null,
+    contentReviewStatus: row.contentReviewStatus || article?.researchStatus || null,
   }
 }
 
@@ -198,7 +214,7 @@ export function presentObservance(
   ethMonthName?: string,
   options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent {
-  const fields = fieldsFromDay(row)
+  const fields = fieldsFromDay(row, row.slug || row.title)
   const summary = enrichedSummary(fields)
   const kindLabel = observanceKindLabel(row.observanceType, row.isMajor)
   const tone = categoryToneFromText(row.category, row.observanceType, row.title, kindLabel)
@@ -250,7 +266,7 @@ export function presentFast(
   cards: ResolvedCalendarCard[] = [],
   options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent {
-  const fields = fieldsFromDay(row)
+  const fields = fieldsFromDay(row, row.slug || row.name)
   const summary = enrichedSummary(fields)
   const presentation = resolveCalendarEventPresentation({
     sourceType: 'fast',
@@ -296,7 +312,7 @@ export function presentSeason(
   cards: ResolvedCalendarCard[] = [],
   options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent {
-  const fields = fieldsFromDay(row)
+  const fields = fieldsFromDay(row, row.slug || row.title)
   const summary = enrichedSummary(fields)
   const presentation = resolveCalendarEventPresentation({
     sourceType: 'season',
@@ -341,7 +357,7 @@ export function presentMonthly(
   cards: ResolvedCalendarCard[] = [],
   options?: { occurrenceDate?: Date | string | null; surface?: 'calendar' | 'homepage' },
 ): PresentableCalendarEvent {
-  const fields = fieldsFromDay(row)
+  const fields = fieldsFromDay(row, row.ethiopianDay || row.slug || row.title)
   const summary = enrichedSummary(fields)
   const presentation = resolveCalendarEventPresentation({
     sourceType: 'monthly_commemoration',

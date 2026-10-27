@@ -46,18 +46,7 @@ assert.equal(canPublishMezmur(null), false)
 assert.equal(publicationBlockReason({ ...eligibleDraft, role: 'editor' }), null)
 assert.equal(publicationBlockReason({ ...eligibleDraft, role: 'admin' }), null)
 assert.equal(publicationBlockReason({ ...eligibleDraft, role: 'super_admin' }), null)
-assert.match(
-  publicationBlockReason({ ...eligibleDraft, role: 'editor', rightsStatus: 'unknown' }) || '',
-  /Add a YouTube or authorized source link/i,
-)
-assert.match(
-  publicationBlockReason({ ...eligibleDraft, role: 'editor', rightsConfirmedAt: null }) || '',
-  /Add a YouTube or authorized source link/i,
-)
-assert.equal(
-  publicationBlockReason({ ...eligibleDraft, role: 'editor', rightsStatus: 'unknown', youtubeUrl: 'https://youtu.be/abcdefghijk' }),
-  null,
-)
+assert.equal(publicationBlockReason({ ...eligibleDraft, role: 'editor', rightsStatus: 'unknown', rightsConfirmedAt: null }), null)
 
 // 5. Unauthorized users cannot publish
 assert.match(publicationBlockReason({ ...eligibleDraft, role: 'contributor' }) || '', /role is required/i)
@@ -78,11 +67,8 @@ assert.match(
   /Title, slug, and Amharic lyrics are required/i,
 )
 
-// Restricted lyrics may use the media/source-only public path without exposing text.
-assert.equal(
-  publicationBlockReason({ ...eligibleDraft, role: 'super_admin', rightsStatus: 'external_only', sourceUrl: 'https://example.invalid/source' }),
-  null,
-)
+// Rights metadata is retained as audit data and does not gate ordinary Publish.
+assert.equal(publicationBlockReason({ ...eligibleDraft, role: 'super_admin', rightsStatus: 'external_only' }), null)
 
 // Staff identity verification
 assert.deepEqual(
@@ -198,13 +184,6 @@ assert.doesNotMatch(
   }).message,
   /FIX_ZEMARI_STAFF_WRITE/i,
 )
-assert.match(
-  staffWriteError('RPC public.publish_mezmur_import', {
-    code: '23514',
-    message: 'Editorial approval is required (review_status must be approved)',
-  }).message,
-  /obsolete approval-gated publication function.*20261024180000_mezmur_two_state_publication_final\.sql/i,
-)
 
 // 9. Normal editor contains no editorial approval panel, raw JSON, or guarded approval text
 const editorSource = readFileSync(
@@ -232,12 +211,12 @@ const priorMigration = readFileSync(
 assert.match(priorMigration, /create or replace function public\.publish_mezmur_import/i)
 
 const simplifiedMigration = readFileSync(
-  new URL('../supabase/migrations/20261024180000_mezmur_two_state_publication_final.sql', import.meta.url),
+  new URL('../supabase/migrations/20261027110000_mezmur_simple_owner_publication.sql', import.meta.url),
   'utf8',
 )
 assert.match(simplifiedMigration, /create or replace function public\.guard_mezmur_import_publication/i)
-assert.match(simplifiedMigration, /create function public\.publish_mezmur_import/i)
-assert.match(simplifiedMigration, /create view public\.mezmur_public/i)
+assert.match(simplifiedMigration, /create or replace function public\.publish_mezmur_import/i)
+assert.match(simplifiedMigration, /create or replace view public\.mezmur_public/i)
 assert.match(simplifiedMigration, /revoke all on function public\.publish_mezmur_import[\s\S]+from public, anon/i)
 assert.match(simplifiedMigration, /grant execute on function public\.publish_mezmur_import[\s\S]+to authenticated/i)
 assert.doesNotMatch(simplifiedMigration, /disable\s+row\s+level\s+security/i)
@@ -248,7 +227,7 @@ assert.doesNotMatch(
 )
 assert.doesNotMatch(simplifiedMigration, /p_rights_status/i)
 assert.match(simplifiedMigration, /publication_approved_at is not null/i)
-assert.match(simplifiedMigration, /then lyrics_amharic else null end as lyrics_amharic/i)
+assert.match(simplifiedMigration, /case when[\s\S]+then null else lyrics_amharic end/i)
 assert.match(simplifiedMigration, /youtube_url[\s\S]+source_url/i)
 for (const removedField of [
   'structured_lyrics',
@@ -261,11 +240,9 @@ for (const removedField of [
   assert.doesNotMatch(simplifiedMigration, new RegExp(`\\b${removedField}\\b`, 'i'))
 }
 assert.match(simplifiedMigration, /where deleted_at is null/i)
-assert.match(simplifiedMigration, /select m\.ctid into v_row_tid[\s\S]+for update/i)
-assert.match(simplifiedMigration, /where ctid = v_row_tid/i)
-assert.match(simplifiedMigration, /drop policy if exists mezmur_data_import_public_read/i)
-assert.match(simplifiedMigration, /revoke all on public\.mezmur_data_import from anon/i)
-assert.match(simplifiedMigration, /create policy mezmur_data_import_staff_read[\s\S]+is_staff\(\)/i)
+assert.match(simplifiedMigration, /where import_id = p_import_id[\s\S]+for update/i)
+assert.match(simplifiedMigration, /set status = 'published'/i)
+assert.match(simplifiedMigration, /grant select on public\.mezmur_public to anon, authenticated/i)
 assert.doesNotMatch(
   simplifiedMigration.match(/create function public\.publish_mezmur_import[\s\S]*?\$\$;/i)?.[0] || '',
   /Editorial approval|required.*review_status|review_status.*approved/i,

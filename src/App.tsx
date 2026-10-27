@@ -36,6 +36,8 @@ const CalendarPage = lazy(() => import('./pages/CalendarPage').then(m => ({ defa
 const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })))
 const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })))
 const PrayerListPage = lazy(() => import('./pages/PrayerListPage').then(m => ({ default: m.PrayerListPage })))
+const PublicChurchLibrary = lazy(() => import('./pages/PublicChurchLibrary').then(m => ({ default: m.PublicChurchLibrary })))
+const ChurchLibraryReader = lazy(() => import('./pages/ChurchLibraryReader').then(m => ({ default: m.ChurchLibraryReader })))
 const LibraryCollectionRoute = lazy(() => import('./pages/LibraryCollectionRoute').then(m => ({ default: m.LibraryCollectionRoute })))
 const LibraryItemRoute = lazy(() => import('./pages/LibraryItemRoute').then(m => ({ default: m.LibraryItemRoute })))
 const AdminAuthLayout = lazy(() => import('./pages/admin/AdminAuth').then(m => ({ default: m.AdminAuthLayout })))
@@ -123,6 +125,9 @@ const OrthodoxySeasonsAdmin = lazy(() =>
 )
 const OrthodoxyMonthlyAdmin = lazy(() =>
   import('./pages/admin/OrthodoxyRulesAdmin').then((m) => ({ default: m.OrthodoxyMonthlyAdmin })),
+)
+const CalendarMezmurAdmin = lazy(() =>
+  import('./pages/admin/CalendarMezmurAdmin').then((m) => ({ default: m.CalendarMezmurAdmin })),
 )
 const AboutAdminPage = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.AboutAdminPage })))
 const ContentHealthAdmin = lazy(() =>
@@ -215,6 +220,7 @@ export default function App() {
               <Route path="cards" element={<CalendarAdmin />} />
               <Route path="cards/new" element={<CalendarCardEditor />} />
               <Route path="cards/:id/edit" element={<CalendarCardEditor />} />
+              <Route path="mezmurs" element={<CalendarMezmurAdmin />} />
               <Route path="observances" element={<OrthodoxyObservancesAdmin />} />
               <Route path="fasts" element={<OrthodoxyFastsAdmin />} />
               <Route path="seasons" element={<OrthodoxySeasonsAdmin />} />
@@ -297,6 +303,10 @@ export default function App() {
         <Route path="/saints" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="saints"/></Suspense>}/>
         <Route path="/feasts" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="feasts"/></Suspense>}/>
         <Route path="/learn" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="articles"/></Suspense>}/>
+        <Route path="/library" element={<Suspense fallback={<PageLoadingFallback/>}><PublicChurchLibrary /></Suspense>}/>
+        <Route path="/library/:bookId" element={<Suspense fallback={<PageLoadingFallback/>}><ChurchLibraryReader /></Suspense>}/>
+        <Route path="/church-library" element={<Navigate to="/library" replace />} />
+        <Route path="/church-library/:bookId" element={<Navigate to="/library/:bookId" replace />} />
         <Route path="/prayer-library" element={<Navigate to="/prayers" replace />} />
         <Route path="/search" element={<Navigate to="/" replace />} />
         <Route path="/teachings" element={<Navigate to="/learn" replace />} />

@@ -2,7 +2,7 @@
  * Selected-day "Day Experience" context for the Calendar right panel.
  * Sources stay separated: observances / fasts / seasons / monthly / synaxarium / mezmur / liturgy.
  */
-import { gregorianToEthiopian, formatEthiopianLong, ETHIOPIAN_MONTH_NAMES } from '../lib/ethiopianDate'
+import { gregorianToEthiopian, formatEthiopianLong, formatEthiopianDate, ETHIOPIAN_MONTH_NAMES } from '../lib/ethiopianDate'
 import { getSynaxariumDayWithCommemorations } from '../lib/synaxarium/synaxariumService'
 import { presentSynaxariumForDay } from '../lib/synaxarium/synaxariumPresentation'
 import type {
@@ -16,6 +16,7 @@ import {
   getLiturgySections,
 } from '../lib/prayers/liturgySupabase'
 import { resolveContentMediaUrl } from '../lib/cms/contentMedia'
+import { buildDailyFaithContext, recommendDailyMezmurs, recommendDailyScripture, type RecommendedScripture } from '../lib/recommendations/dailyFaithRecommendationEngine'
 import {
   loadOrthodoxCalendarCatalog,
   resolveOrthodoxDay,
@@ -77,6 +78,8 @@ export type DayMezmurRecommendation = {
   slug: string
   title: string
   titleAmharic: string
+  singerName?: string | null
+  hasPlayableMedia?: boolean
   language: string | null
   category: string | null
   occasion: string | null
@@ -100,6 +103,7 @@ export type DayChurchContext = {
     day: number
   }
   ethiopianLabel: string
+  ethiopianLabelAmharic?: string
   dayTitle: string
   dayOneLiner: string
   badges: DayBadge[]
@@ -116,11 +120,13 @@ export type DayChurchContext = {
   fastingStatus: {
     isFastDay: boolean
     isFastFree: boolean
+    isOptionalFast?: boolean
     label: string | null
     exceptionNote: string | null
   }
   liturgySummary: DayLiturgySummary | null
   mezmurRecommendations: DayMezmurRecommendation[]
+  dailyScriptures?: RecommendedScripture[]
   whyThisDay: string
   practiceLinks: Array<{ label: string; href: string }>
 }
@@ -351,7 +357,8 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
   const monthName = ETHIOPIAN_MONTH_NAMES[eth.month - 1] || `Month ${eth.month}`
   const weekdayLabel = WEEKDAY_LONG[day.getDay()]
   const gregorianLabel = formatGregorianLong(day)
-  const ethiopianLabel = `${formatEthiopianLong(eth)} E.C.`
+  const ethiopianLabel = formatEthiopianLong(eth)
+  const ethiopianLabelAmharic = formatEthiopianDate(eth, 'am', { includeYear: true })
 
   const catalog = await loadOrthodoxCalendarCatalog().catch(() => ({
     observances: [],
@@ -402,9 +409,28 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
   }
 
   const liturgySummary = await buildLiturgySummary(orthodox.primaryObservance).catch(() => null)
-  // Hymns and prayers appear only from published relationship records.
-  // Title or token similarity is not a relationship.
-  const mezmurRecommendations: DayMezmurRecommendation[] = []
+  const dailyFaith = await buildDailyFaithContext(day).catch(() => null)
+  const recommendedMezmurs = dailyFaith ? await recommendDailyMezmurs(dailyFaith, 4) : []
+  const recommendedScriptures = dailyFaith ? await recommendDailyScripture(dailyFaith) : []
+
+  const mezmurRecommendations: DayMezmurRecommendation[] = recommendedMezmurs.map((m) => ({
+    id: m.id,
+    slug: m.slug,
+    title: m.title,
+    titleAmharic: m.titleAmharic || m.title,
+    singerName: (m as any).singerName ?? null,
+    hasPlayableMedia: !!((m as any).hasPlayableMedia || m.audioUrl || m.youtubeUrl),
+    language: null,
+    category: m.category ?? null,
+    occasion: m.occasion ?? null,
+    thumbnailUrl: m.thumbnailUrl ?? null,
+    imageAlt: m.title,
+    youtubeUrl: m.youtubeUrl ?? null,
+    audioUrl: m.audioUrl ?? null,
+    practiceHref: m.lyricsHref,
+    playHref: m.playHref,
+    matchReason: m.matchReasonEn,
+  }))
 
   const badges = buildBadges({
     primary: orthodox.primaryObservance,
@@ -459,6 +485,7 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
       day: eth.day,
     },
     ethiopianLabel,
+    ethiopianLabelAmharic,
     dayTitle,
     dayOneLiner,
     badges,
@@ -475,6 +502,7 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
     fastingStatus: orthodox.fastingStatus,
     liturgySummary,
     mezmurRecommendations,
+    dailyScriptures: recommendedScriptures,
     whyThisDay: buildWhyThisDay({
       primary: orthodox.primaryObservance,
       season: orthodox.season,

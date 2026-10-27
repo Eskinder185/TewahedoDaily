@@ -6,6 +6,8 @@ import { OutletErrorBoundary } from './OutletErrorBoundary'
 import styles from './AppShell.module.css'
 import { AuthProvider } from '../../lib/auth/AuthProvider'
 import { SearchBuddyProvider, useSearchBuddy } from '../../lib/search/searchBuddySession'
+import { PlayerProvider } from '../../lib/mezmur/playerContext'
+import { PersistentMiniPlayer } from '../mezmur/PersistentMiniPlayer'
 import { GlobalAudio } from '../publicContent/GlobalAudio'
 import { getHomeDayLabels } from '../../lib/home/homeDayLabels'
 import { getPracticeContinue } from '../../lib/practice/practiceContinueSession'
@@ -114,6 +116,7 @@ function AppShellFrame() {
         <Suspense fallback={null}>
           <DeferredPracticeContinueDock />
         </Suspense>
+        <PersistentMiniPlayer />
         <Suspense fallback={<SearchBuddySuspenseFallback />}>
           <DeferredSearchBuddy />
         </Suspense>
@@ -126,7 +129,9 @@ export function AppShell() {
   return (
     <AuthProvider>
       <SearchBuddyProvider>
-        <AppShellFrame />
+        <PlayerProvider>
+          <AppShellFrame />
+        </PlayerProvider>
       </SearchBuddyProvider>
     </AuthProvider>
   )

@@ -40,6 +40,9 @@ export type CmsTables = {
     current_version_id: string | null
     created_by: string | null
     updated_by: string | null
+    ingestion_status?: string | null
+    search_enabled?: boolean
+    storage_path?: string | null
   }, 'title'>
   church_library_versions: Table<{
     id: string

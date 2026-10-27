@@ -497,6 +497,28 @@ export async function searchSite(
     settled('saints', () => publishedEditorial('saints', query), (rows) => rows),
     settled('feasts', () => publishedEditorial('feasts', query), (rows) => rows),
     settled('learn', () => publishedEditorial('articles', query), (rows) => rows),
+    settled(
+      'churchLibrary',
+      async () => {
+        const { searchChurchLibrary } = await import('../searchBuddy/churchLibrarySearch')
+        return searchChurchLibrary(expanded, options.signal)
+      },
+      (library) =>
+        library.results.map((hit) => ({
+          sourceType: 'church_library' as const,
+          sourceId: hit.passage_id,
+          title: hit.title,
+          titleAmharic: '',
+          description: hit.excerpt
+            ? `${hit.chapter_reference ? hit.chapter_reference + ' · ' : ''}${hit.locator_label ? hit.locator_label + ' · ' : ''}${hit.excerpt.slice(0, 160)}…`
+            : hit.author || 'Church Library book',
+          route: `/library/${hit.book_id}`,
+          imagePath: null,
+          score: 0.05,
+          matchKind: 'keyword' as const,
+          typeLabel: 'Church Library',
+        })),
+    ),
   ])
 
   throwIfAborted(options.signal)

@@ -72,13 +72,13 @@ assert.equal(isVerifiedMezmurRights('restricted'), false)
 assert.equal(isVerifiedMezmurRights(null), true)
 assert.equal(isVerifiedMezmurRights(undefined), true)
 
-// Verification that rights_status is NOT in PROTECTED_MEZMUR_APPROVAL_FIELDS
-assert.deepEqual(protectedMezmurSaveFields({ rights_status: 'display_only' }), [])
-assert.ok(!PROTECTED_MEZMUR_APPROVAL_FIELDS.includes('rights_status' as any))
+// Rights metadata is preserved for audit, but ordinary Save cannot mutate it.
+assert.deepEqual(protectedMezmurSaveFields({ rights_status: 'display_only' }), ['rights_status'])
+assert.ok(PROTECTED_MEZMUR_APPROVAL_FIELDS.includes('rights_status' as any))
 
-// Verification that rights evidence fields are editable by staff in CMS
+// Historical rights fields remain readable for audit, not editable in the CMS.
 const serviceSource = readFileSync(new URL('../src/lib/cms/mezmurService.ts', import.meta.url), 'utf8')
-assert.match(serviceSource, /'rights_status'/)
+assert.match(serviceSource, /rights_status/)
 assert.match(serviceSource, /'source_url'/)
 assert.match(serviceSource, /'source_notes'/)
 assert.match(serviceSource, /'contributor_credit'/)
@@ -105,7 +105,7 @@ const validMediaOnly = publicationBlockReason({
 })
 assert.equal(validMediaOnly, null, 'Media destination allows unverified lyrics publication')
 
-// Missing all destination and unverified rights must block publication
+// Owner-authorized publication does not require rights metadata or a destination.
 const blockedUnknownNoMedia = publicationBlockReason({
   role: 'editor',
   title: 'Blocked Hymn',
@@ -113,7 +113,7 @@ const blockedUnknownNoMedia = publicationBlockReason({
   lyricsAmharic: 'የማይታይ ግጥም',
   rightsStatus: 'restricted',
 })
-assert.notEqual(blockedUnknownNoMedia, null, 'Must block publication if neither rights nor destination exist')
+assert.equal(blockedUnknownNoMedia, null, 'Owner-authorized publication must not require rights metadata')
 
 // ---------------------------------------------------------------------------
 // 3. SQL Migration File Verification

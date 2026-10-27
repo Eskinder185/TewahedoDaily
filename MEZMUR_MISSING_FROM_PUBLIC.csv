@@ -1,0 +1,2 @@
+import_id,slug,status,title,missing_reason,verification_status
+LIVE_QUERY_REQUIRED,,,,not_queried_locally

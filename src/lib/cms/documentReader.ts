@@ -339,3 +339,256 @@ export function parseTxt(buffer: ArrayBuffer): { lines: string[]; text: string }
   const lines = text.split(/\r?\n/)
   return { lines, text }
 }
+
+// ---------------------------------------------------------------------------
+// PDF Text Parser (Client-side extraction without external backend)
+// ---------------------------------------------------------------------------
+
+async function decompressFlateStream(bytes: Uint8Array): Promise<Uint8Array | null> {
+  try {
+    const blob = new Blob([bytes as unknown as BlobPart])
+    const stream = blob.stream().pipeThrough(new DecompressionStream('deflate'))
+    const ab = await new Response(stream).arrayBuffer()
+    return new Uint8Array(ab)
+  } catch {
+    try {
+      const slice = bytes.length > 2 && bytes[0] === 0x78 && (bytes[1] === 0x9c || bytes[1] === 0x01 || bytes[1] === 0xda)
+        ? bytes.subarray(2, bytes.length - 4)
+        : bytes
+      const blob = new Blob([slice as unknown as BlobPart])
+      const stream = blob.stream().pipeThrough(new DecompressionStream('deflate-raw'))
+      const ab = await new Response(stream).arrayBuffer()
+      return new Uint8Array(ab)
+    } catch {
+      return null
+    }
+  }
+}
+
+function cleanPdfString(raw: string): string {
+  return raw
+    .replace(/\\([0-7]{1,3})/g, (_, oct) => String.fromCharCode(parseInt(oct, 8)))
+    .replace(/\\n/g, '\n')
+    .replace(/\\r/g, '\r')
+    .replace(/\\t/g, '\t')
+    .replace(/\\\(/g, '(')
+    .replace(/\\\)/g, ')')
+    .replace(/\\\\/g, '\\')
+}
+
+function decodePdfHex(hex: string): string {
+  const clean = hex.replace(/\s+/g, '')
+  let res = ''
+  if (clean.toLowerCase().startsWith('feff')) {
+    for (let i = 4; i < clean.length; i += 4) {
+      const code = parseInt(clean.substring(i, i + 4), 16)
+      if (!isNaN(code)) res += String.fromCharCode(code)
+    }
+  } else {
+    for (let i = 0; i < clean.length; i += 2) {
+      const code = parseInt(clean.substring(i, i + 2), 16)
+      if (!isNaN(code)) res += String.fromCharCode(code)
+    }
+  }
+  return res
+}
+
+export function extractPdfTextFromStream(streamText: string): string {
+  const textPieces: string[] = []
+  const btRegex = /BT[\s\S]*?ET/g
+  let btMatch: RegExpExecArray | null
+
+  while ((btMatch = btRegex.exec(streamText)) !== null) {
+    const block = btMatch[0]
+    const tokenRegex = /(?:\((?:\\.|[^()\\])*\)|<[0-9a-fA-F\s]+>)\s*(?:Tj|'|")|\[((?:\\.|[^\]])*)\]\s*TJ/g
+    let tokenMatch: RegExpExecArray | null
+    let lineText = ''
+
+    while ((tokenMatch = tokenRegex.exec(block)) !== null) {
+      if (tokenMatch[1] !== undefined) {
+        const arrayContent = tokenMatch[1]
+        const strRegex = /\(((?:\\.|[^()\\])*)\)|<([0-9a-fA-F\s]+)>/g
+        let strMatch: RegExpExecArray | null
+        while ((strMatch = strRegex.exec(arrayContent)) !== null) {
+          if (strMatch[1] !== undefined) {
+            lineText += cleanPdfString(strMatch[1])
+          } else if (strMatch[2] !== undefined) {
+            lineText += decodePdfHex(strMatch[2])
+          }
+        }
+      } else {
+        const full = tokenMatch[0]
+        if (full.startsWith('(')) {
+          const str = full.slice(1, full.lastIndexOf(')'))
+          lineText += cleanPdfString(str)
+        } else if (full.startsWith('<')) {
+          const hex = full.slice(1, full.lastIndexOf('>'))
+          lineText += decodePdfHex(hex)
+        }
+      }
+    }
+
+    if (lineText.trim()) {
+      textPieces.push(lineText.trim())
+    }
+  }
+
+  return textPieces.join('\n')
+}
+
+export async function parsePdf(buffer: ArrayBuffer): Promise<{ text: string; pages: string[] }> {
+  const bytes = new Uint8Array(buffer)
+  const latin1Decoder = new TextDecoder('latin1')
+  const utf8Decoder = new TextDecoder('utf-8')
+  const rawString = latin1Decoder.decode(bytes)
+
+  const pages: string[] = []
+  const streamRegex = /stream\r?\n([\s\S]*?)\r?\nendstream/g
+  let match: RegExpExecArray | null
+
+  while ((match = streamRegex.exec(rawString)) !== null) {
+    const streamStart = match.index + (match[0].indexOf('\n') + 1)
+    const streamLength = match[1].length
+    const streamBytes = bytes.subarray(streamStart, streamStart + streamLength)
+
+    let streamText = ''
+    const decompressed = await decompressFlateStream(streamBytes)
+    if (decompressed) {
+      try {
+        streamText = utf8Decoder.decode(decompressed)
+      } catch {
+        streamText = latin1Decoder.decode(decompressed)
+      }
+    } else {
+      streamText = match[1]
+    }
+
+    if (streamText.includes('BT') && streamText.includes('ET')) {
+      const pageText = extractPdfTextFromStream(streamText)
+      if (pageText.trim()) {
+        pages.push(pageText.trim())
+      }
+    }
+  }
+
+  const fullText = pages.join('\n\n')
+  return {
+    text: fullText,
+    pages,
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Document Chunking into Sections & Passages
+// ---------------------------------------------------------------------------
+
+export type DocumentSectionChunk = {
+  section_order: number
+  title: string
+  chapter_reference: string
+  passages: {
+    passage_order: number
+    content: string
+    locator_label: string
+  }[]
+}
+
+export function chunkDocumentText(
+  fullText: string,
+  options: {
+    targetPassageSize?: number
+    defaultSectionTitle?: string
+  } = {},
+): DocumentSectionChunk[] {
+  const targetSize = options.targetPassageSize || 750
+  const defaultTitle = options.defaultSectionTitle || 'General'
+
+  const normalized = fullText.replace(/\r\n/g, '\n').trim()
+  if (!normalized) return []
+
+  // Check if text has chapter / section markers
+  const sectionSplitRegex = /(?:^|\n)(?=(?:(?:Chapter|Section|Part|Book|Volume)\s+[0-9IVXLCDMivxlcdm]+|(?:ምዕራፍ|ክፍል)\s+[0-9፩-፱]+|#{1,3}\s+))/i
+  const rawSections = normalized.split(sectionSplitRegex).map((s) => s.trim()).filter(Boolean)
+
+  const sectionChunks: DocumentSectionChunk[] = []
+  let globalPassageOrder = 0
+
+  for (let sIdx = 0; sIdx < rawSections.length; sIdx++) {
+    const rawSection = rawSections[sIdx]
+    const lines = rawSection.split('\n')
+    let sectionTitle = `${defaultTitle} ${sIdx + 1}`
+    let contentStartLine = 0
+
+    const firstLine = lines[0]?.trim() || ''
+    if (
+      firstLine.length < 120 &&
+      (firstLine.startsWith('#') ||
+        /^(?:Chapter|Section|Part|Book|Volume|ምዕራፍ|ክፍል)\b/i.test(firstLine) ||
+        lines.length > 1)
+    ) {
+      sectionTitle = firstLine.replace(/^#+\s*/, '')
+      contentStartLine = 1
+    }
+
+    const sectionBody = lines.slice(contentStartLine).join('\n').trim()
+    if (!sectionBody && firstLine) {
+      // Single line section
+      continue
+    }
+
+    // Paragraph chunking within section
+    const paragraphs = (sectionBody || rawSection).split(/\n\n+/).map((p) => p.trim()).filter(Boolean)
+    const sectionPassages: { passage_order: number; content: string; locator_label: string }[] = []
+
+    let currentChunk = ''
+    let passageInSec = 1
+
+    for (const para of paragraphs) {
+      if (currentChunk && (currentChunk.length + para.length > targetSize)) {
+        sectionPassages.push({
+          passage_order: globalPassageOrder++,
+          content: currentChunk.trim(),
+          locator_label: `${sectionTitle}, §${passageInSec++}`,
+        })
+        currentChunk = ''
+      }
+
+      if (para.length > targetSize * 1.5) {
+        // Sentence split large paragraph
+        const sentences = para.split(/(?<=[.?!።])\s+/)
+        for (const sent of sentences) {
+          if (currentChunk && (currentChunk.length + sent.length > targetSize)) {
+            sectionPassages.push({
+              passage_order: globalPassageOrder++,
+              content: currentChunk.trim(),
+              locator_label: `${sectionTitle}, §${passageInSec++}`,
+            })
+            currentChunk = ''
+          }
+          currentChunk += (currentChunk ? ' ' : '') + sent
+        }
+      } else {
+        currentChunk += (currentChunk ? '\n\n' : '') + para
+      }
+    }
+
+    if (currentChunk.trim()) {
+      sectionPassages.push({
+        passage_order: globalPassageOrder++,
+        content: currentChunk.trim(),
+        locator_label: `${sectionTitle}, §${passageInSec++}`,
+      })
+    }
+
+    if (sectionPassages.length > 0) {
+      sectionChunks.push({
+        section_order: sIdx,
+        title: sectionTitle,
+        chapter_reference: sectionTitle,
+        passages: sectionPassages,
+      })
+    }
+  }
+
+  return sectionChunks
+}

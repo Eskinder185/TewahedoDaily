@@ -38,6 +38,7 @@ export type ResolvedOrthodoxDay = {
   fastingStatus: {
     isFastDay: boolean
     isFastFree: boolean
+    isOptionalFast?: boolean
     label: string | null
     exceptionNote: string | null
   }
@@ -380,6 +381,7 @@ export function resolveOrthodoxDay(
   let relatedFasts: DayFast[] = []
   let isFastDay = false
   let isFastFree = false
+  let isOptionalFast = false
   let fastLabel: string | null = null
   let exceptionNote: string | null = null
 
@@ -395,6 +397,20 @@ export function resolveOrthodoxDay(
         fastFreeRule.summary ||
         fastFreeRule.description ||
         null
+    } else if (type === 'optional_fast') {
+      const isWedOrFri = civil.getDay() === 3 || civil.getDay() === 5
+      activeFast = mapFast(topFast)
+      isOptionalFast = true
+      if (isWedOrFri) {
+        isFastDay = true
+        fastLabel = `${civil.getDay() === 3 ? 'Wednesday Fast (ጾመ ድህነት)' : 'Friday Fast (ጾመ ድህነት)'} · ${activeFast.name}`
+        exceptionNote = 'Wednesday/Friday canonical fast during the voluntary season of Tsige.'
+      } else {
+        isFastDay = false
+        fastLabel = `${activeFast.name} (Customary Devotion)`
+        exceptionNote = 'Observed voluntarily in devotion to the Holy Family; not a canonical mandatory fast day.'
+      }
+      relatedFasts = matchingFasts.slice(1).map(mapFast)
     } else {
       activeFast = mapFast(topFast)
       isFastDay = true
@@ -426,6 +442,7 @@ export function resolveOrthodoxDay(
     fastingStatus: {
       isFastDay,
       isFastFree,
+      isOptionalFast,
       label: fastLabel,
       exceptionNote,
     },

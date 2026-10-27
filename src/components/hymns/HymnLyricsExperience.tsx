@@ -7,6 +7,7 @@ import {
   parseLyricSections,
   shareHymnLink,
 } from '../../lib/hymns/lyrics'
+import { parseStructuredLyrics } from '../../lib/mezmur/structuredLyricsParser'
 import {
   buildLiveLyricsInfo,
   type LiveLyricsSlide,
@@ -295,8 +296,10 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
     ((item as { lyrics_tigrinya?: string | null }).lyrics_tigrinya) ||
     ''
   const translitTextForBoth = item.lyrics_transliteration || item.transliteration || ''
-  const origSections = useMemo(() => parseLyricSections(origTextForBoth), [origTextForBoth])
-  const transSections = useMemo(() => parseLyricSections(translitTextForBoth), [translitTextForBoth])
+  const structuredBoth = useMemo(
+    () => parseStructuredLyrics(origTextForBoth, translitTextForBoth, item.lyrics_english || undefined),
+    [origTextForBoth, translitTextForBoth, item.lyrics_english]
+  )
 
   const [message, setMessage] = useState('')
   const [includeAttribution, setIncludeAttribution] = useState(true)
@@ -714,48 +717,54 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
         <h3 className={styles.readerHeading}>{t.reader}</h3>
         {isBothMode ? (
           <div className={styles.bothContainer} data-testid="lyrics-both-container">
-            {origSections.map((sec, idx) => {
-              const transSec = transSections[idx]
+            {structuredBoth.sections.map((sec, idx) => {
+              const displayLabel = numbered
+                ? uiLocale === 'am'
+                  ? sec.labelAmharic
+                  : sec.label
+                : sec.kind === 'chorus'
+                  ? uiLocale === 'am'
+                    ? sec.labelAmharic
+                    : sec.label
+                  : ''
               return (
                 <article key={sec.id || idx} className={styles.section}>
-                  <p className={styles.sectionLabel}>
-                    {numbered ? sec.label : sec.kind === 'chorus' ? sec.label : ''}
-                  </p>
-                  <div className={styles.bothColumns}>
-                    <div className={styles.bothColOriginal}>
-                      <span className={styles.columnLanguageHeader}>{uiLocale === 'am' ? 'ኦሪጅናል' : 'Original'}</span>
-                      <p
-                        lang={item.language || 'am'}
-                        className={`${styles.stanzaText} ${styles.ethiopicTypography}`}
-                      >
-                        {sec.lines.join('\n')}
-                      </p>
-                    </div>
-                    <div className={styles.bothColTranslit}>
-                      <span className={styles.columnLanguageHeader}>{uiLocale === 'am' ? 'ላቲን (ድምጽ)' : 'Transliteration'}</span>
-                      <p lang="en" className={`${styles.stanzaText} ${styles.latinTypography}`}>
-                        {transSec ? transSec.lines.join('\n') : ''}
-                      </p>
-                    </div>
+                  {displayLabel ? <p className={styles.sectionLabel}>{displayLabel}</p> : null}
+                  <div className={styles.bothPairedSection}>
+                    {sec.lines.map((line) => (
+                      <div key={line.id} className={styles.linePair}>
+                        <span className={`${styles.lineOriginal} ${styles.ethiopicTypography}`}>
+                          {line.cleanOriginal}
+                          {line.repetitionCount > 1 ? ` (${line.repetitionCount}×)` : ''}
+                        </span>
+                        {line.cleanTransliteration ? (
+                          <span className={`${styles.lineTranslit} ${styles.latinTypography}`}>
+                            {line.cleanTransliteration}
+                            {line.repetitionCount > 1 ? ` (${line.repetitionCount}×)` : ''}
+                          </span>
+                        ) : null}
+                      </div>
+                    ))}
                   </div>
                 </article>
               )
             })}
           </div>
         ) : (
-          sections.map((section) => (
-            <article key={section.id} className={styles.section}>
-              <p className={styles.sectionLabel}>
-                {numbered ? section.label : section.kind === 'chorus' ? section.label : ''}
-              </p>
-              <p
-                lang={currentLyric.langCode}
-                className={`${styles.stanzaText} ${typographyClass}`}
-              >
-                {section.lines.join('\n')}
-              </p>
-            </article>
-          ))
+          sections.map((section) => {
+            const displayLabel = numbered ? section.label : section.kind === 'chorus' ? section.label : ''
+            return (
+              <article key={section.id} className={styles.section}>
+                {displayLabel ? <p className={styles.sectionLabel}>{displayLabel}</p> : null}
+                <p
+                  lang={currentLyric.langCode}
+                  className={`${styles.stanzaText} ${typographyClass}`}
+                >
+                  {section.lines.join('\n')}
+                </p>
+              </article>
+            )
+          })
         )}
 
         {/* Inline transliteration view if enabled and not already on transliteration tab */}

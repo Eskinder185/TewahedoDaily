@@ -1,0 +1,368 @@
+{
+  "targetUrl": "https://tewahedodaily.pages.dev",
+  "localUrl": "http://127.0.0.1:5173",
+  "totalRoutesTested": 21,
+  "totalInteractionsAudited": 276,
+  "totalJourneysTested": 6,
+  "consoleErrorsCount": 4,
+  "networkFailuresCount": 12,
+  "layoutDefectsCount": 0,
+  "routes": [
+    {
+      "path": "/",
+      "name": "Home",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 2360,
+      "title": "One day. A deeper connection. | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/bible",
+      "name": "Bible Catalog",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1405,
+      "title": "Bible | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/bible/genesis",
+      "name": "Bible Book Genesis",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1644,
+      "title": "Genesis | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/bible/genesis/1",
+      "name": "Bible Genesis Chapter 1",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 2727,
+      "title": "Genesis 1 | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/prayers",
+      "name": "Prayers Overview",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1562,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/pray/learn-how-to-pray",
+      "name": "Prayer Guide",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1507,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/practice",
+      "name": "Hymns & Mezmur Library",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 2215,
+      "title": "Hymns | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/practice/categories",
+      "name": "Hymn Categories",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1467,
+      "title": "All Categories | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/practice/occasions",
+      "name": "Hymn Occasions",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1459,
+      "title": "All Occasions | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/calendar",
+      "name": "Calendar",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 2033,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/saints",
+      "name": "Saints Library",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1286,
+      "title": "Saints | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/feasts",
+      "name": "Feasts Library",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1202,
+      "title": "Feasts | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/learn",
+      "name": "Learn Articles",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1490,
+      "title": "Learn | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/about",
+      "name": "About",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 868,
+      "title": "About | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/legal",
+      "name": "Legal",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 891,
+      "title": "Legal | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/saved",
+      "name": "Saved Favorites",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 1009,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/submit-mezmur",
+      "name": "Submit Mezmur Community",
+      "access": "public",
+      "status": 200,
+      "loadTimeMs": 937,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 2,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/admin/login",
+      "name": "Admin Login",
+      "access": "public-auth",
+      "status": 200,
+      "loadTimeMs": 900,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/admin/dashboard",
+      "name": "Admin Dashboard",
+      "access": "admin-protected",
+      "status": 200,
+      "loadTimeMs": 1083,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/admin/church-library",
+      "name": "Admin Church Library",
+      "access": "admin-protected",
+      "status": 200,
+      "loadTimeMs": 890,
+      "title": "Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    },
+    {
+      "path": "/non-existent-page-test-404",
+      "name": "404 Fallback",
+      "access": "error",
+      "status": 200,
+      "loadTimeMs": 912,
+      "title": "Page not found | Tewahedo Daily",
+      "overflow": "NO",
+      "smallTargetsCount": 0,
+      "notes": "Loaded successfully"
+    }
+  ],
+  "journeys": [
+    {
+      "id": "JOURNEY A",
+      "name": "First-time mobile visitor",
+      "steps": 1,
+      "success": false,
+      "note": ""
+    },
+    {
+      "id": "JOURNEY B",
+      "name": "Hymn Discovery",
+      "steps": 1,
+      "success": false,
+      "note": "No category cards visible on /practice/categories"
+    },
+    {
+      "id": "JOURNEY C",
+      "name": "Daily Worship",
+      "steps": 1,
+      "success": false,
+      "note": ""
+    },
+    {
+      "id": "JOURNEY D",
+      "name": "Calendar Exploration",
+      "steps": 2,
+      "success": true,
+      "note": "Calendar rendered and day/month navigation functional"
+    },
+    {
+      "id": "JOURNEY E",
+      "name": "Bilingual Switching",
+      "steps": 3,
+      "success": true,
+      "note": "Successfully toggled English <-> Amharic with script persistence"
+    },
+    {
+      "id": "JOURNEY F",
+      "name": "Search Buddy Interface",
+      "steps": 1,
+      "success": false,
+      "note": "Search Buddy trigger button not visible on home"
+    }
+  ],
+  "errors": [
+    {
+      "route": "/practice/categories",
+      "text": "Failed to load resource: the server responded with a status of 401 ()"
+    },
+    {
+      "route": "/practice/occasions",
+      "text": "Failed to load resource: the server responded with a status of 401 ()"
+    },
+    {
+      "route": "/learn",
+      "text": "Failed to load resource: the server responded with a status of 400 ()"
+    },
+    {
+      "route": "/learn",
+      "text": "Failed to load resource: the server responded with a status of 400 ()"
+    }
+  ],
+  "networkFailures": [
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/synaxarium_days?select=id&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayers?select=id&collection_id=eq.04e025d0-1864-4515-93e3-c19a588611a3&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayer_sections?select=id&collection_id=eq.063cc560-ff24-48af-b42a-2e421bc44415&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayer_sections?select=id&collection_id=eq.7f349408-c441-42b1-a254-33a8e7d927a5&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayer_sections?select=id&collection_id=eq.73769ee2-6a34-4138-84e1-5f2430d3b61c&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayers?select=id&collection_id=eq.063cc560-ff24-48af-b42a-2e421bc44415&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayer_sections?select=id&collection_id=eq.04e025d0-1864-4515-93e3-c19a588611a3&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayers?select=id&collection_id=eq.7f349408-c441-42b1-a254-33a8e7d927a5&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayers?select=id&collection_id=eq.e9a84ec6-b70f-4dac-982f-afa07956199f&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayer_sections?select=id&collection_id=eq.e9a84ec6-b70f-4dac-982f-afa07956199f&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/prayers?select=id&collection_id=eq.73769ee2-6a34-4138-84e1-5f2430d3b61c&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "route": "/prayers",
+      "url": "https://tgvhpibzzkqxkcumrivh.supabase.co/rest/v1/liturgy_sections?select=id&collection_id=eq.a1b33b10-165e-402f-b214-28ad9d9c99ae&status=eq.published",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "defects": []
+}

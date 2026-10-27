@@ -605,6 +605,7 @@ export async function importSelectedStagedRowsAsDrafts(
         occasion: row.primary_occasion.trim() || null,
         singer_id: row.matched_zemari_id || null,
         zemari_id: row.matched_zemari_id || null,
+        contributor_credit: null,
         status: 'draft',
         featured: false,
       }

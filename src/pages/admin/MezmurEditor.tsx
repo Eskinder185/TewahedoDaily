@@ -20,7 +20,6 @@ import {
 } from '../../lib/cms/mezmurService'
 import {
   canPublishMezmur,
-  publicationBlockReason,
 } from '../../lib/cms/mezmurPublicationRules'
 import {
   listAllHymnSections,
@@ -214,17 +213,6 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const canEdit = staff || !row || (row.created_by === profile?.id && row.status === 'draft')
   const blocker = useBlocker(() => !bypass.current && (dirty || busy))
   const currentStatus: MezmurStatus = (row?.status || input.status) === 'published' ? 'published' : 'draft'
-  const publishBlocked = publicationBlockReason({
-    role: profile?.role,
-    rightsStatus: input.rights_status || row?.rights_status,
-    rightsConfirmedAt: row?.publication_approved_at,
-    rightsConfirmedBy: row?.publication_approved_by,
-    youtubeUrl: input.youtube_url,
-    sourceUrl: row?.source_url,
-    title: input.title,
-    slug: input.slug,
-    lyricsAmharic: input.lyrics_amharic,
-  })
 
   useEffect(() => {
     const prevent = (event: BeforeUnloadEvent) => {
@@ -265,10 +253,6 @@ function EditorForm({ initial }: { initial: EditorData }) {
       setFieldErrors(errors)
       if (blocking) {
         setError(blocking)
-        return
-      }
-      if (publishBlocked) {
-        setError(publishBlocked)
         return
       }
     } else if (!input.title.trim()) {

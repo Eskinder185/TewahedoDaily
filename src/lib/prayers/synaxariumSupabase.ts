@@ -7,6 +7,7 @@ import type {
   SynaxariumMonthDayPreview,
 } from './prayerLibraryTypes'
 import { parseKeywordsFromDb } from '../synaxarium/keywords'
+import { TAHISAS_SYNAXARIUM_DAYS } from '../synaxarium/tahsasFallbackData'
 
 type Status = 'draft' | 'pending_review' | 'published' | 'rejected' | 'archived'
 
@@ -185,7 +186,17 @@ export async function getSynaxariumDays(): Promise<SynaxariumDay[]> {
       .order('ethiopian_month_number')
       .order('ethiopian_day')
     if (error) throw error
-    return (data ?? []).map(mapDay)
+    const mapped = (data ?? []).map(mapDay)
+    if (!mapped.some((d) => d.ethiopianMonthNumber === 4)) {
+      const tahsasDays = Object.values(TAHISAS_SYNAXARIUM_DAYS).map((b) => b.day)
+      return mapped.concat(tahsasDays).sort((a, b) => {
+        if (a.ethiopianMonthNumber !== b.ethiopianMonthNumber) {
+          return a.ethiopianMonthNumber - b.ethiopianMonthNumber
+        }
+        return a.ethiopianDay - b.ethiopianDay
+      })
+    }
+    return mapped
   } catch (error) {
     logError('getSynaxariumDays', error)
     throw error
@@ -274,7 +285,14 @@ export async function getSynaxariumDayBySlug(slugInput?: string | null) {
       .eq('status', 'published')
       .maybeSingle()
     if (error) throw error
-    return data ? mapDay(data) : null
+    if (data) return mapDay(data)
+    if (slug.startsWith('tahsas-')) {
+      const dNum = parseInt(slug.replace('tahsas-', ''), 10)
+      if (TAHISAS_SYNAXARIUM_DAYS[dNum]) {
+        return TAHISAS_SYNAXARIUM_DAYS[dNum].day
+      }
+    }
+    return null
   } catch (error) {
     logError(`getSynaxariumDayBySlug(${slug})`, error)
     throw error
@@ -297,7 +315,11 @@ export async function getSynaxariumDay(
       .eq('ethiopian_day', day)
       .maybeSingle()
     if (error) throw error
-    return data ? mapDay(data) : null
+    if (data) return mapDay(data)
+    if (monthNumber === 4 && TAHISAS_SYNAXARIUM_DAYS[day]) {
+      return TAHISAS_SYNAXARIUM_DAYS[day].day
+    }
+    return null
   } catch (error) {
     logError(`getSynaxariumDay(${monthNumber},${day})`, error)
     throw error
@@ -386,6 +408,10 @@ export async function getSynaxariumDayWithCommemorations(
     synDay?.id ?? null,
     day,
   )
+  if (synDay && commemorations.length > 0) return { day: synDay, commemorations }
+  if (monthNumber === 4 && TAHISAS_SYNAXARIUM_DAYS[day]) {
+    return TAHISAS_SYNAXARIUM_DAYS[day]
+  }
   if (synDay) return { day: synDay, commemorations }
   if (commemorations.length === 0) return null
 

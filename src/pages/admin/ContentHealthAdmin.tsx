@@ -52,6 +52,37 @@ export function ContentHealthAdmin() {
   const [query, setQuery] = useState('')
   const [selected, setSelected] = useState<ContentHealthIssue | null>(null)
 
+    function exportIssuesCsv() {
+    if (!report || !report.issues.length) return
+    const headers = ['Severity', 'Domain', 'Issue Type', 'Table', 'Record ID', 'Record Slug', 'Title', 'Description', 'Detected At']
+    const escapeCsv = (val: string | null | undefined) => {
+      if (val == null) return '""'
+      const str = String(val).replace(/"/g, '""')
+      return `"${str}"`
+    }
+    const rows = filtered.map((i) => [
+      escapeCsv(i.severity),
+      escapeCsv(i.domain),
+      escapeCsv(i.issueType),
+      escapeCsv(i.table),
+      escapeCsv(i.recordId),
+      escapeCsv(i.recordSlug),
+      escapeCsv(i.title),
+      escapeCsv(i.description),
+      escapeCsv(i.detectedAt),
+    ].join(','))
+    const csvContent = '\uFEFF' + [headers.join(','), ...rows].join('\r\n')
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `content-health-audit-${new Date().toISOString().slice(0, 10)}.csv`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
   async function runCheck() {
     setRunning(true)
     setError('')
@@ -112,6 +143,13 @@ export function ContentHealthAdmin() {
             onClick={() => void runCheck()}
           >
             Refresh
+          </button>
+          <button
+            type="button"
+            disabled={running || !report || !filtered.length}
+            onClick={exportIssuesCsv}
+          >
+            Export to CSV
           </button>
         </div>
       </div>

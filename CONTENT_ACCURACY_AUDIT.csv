@@ -1,0 +1,145 @@
+slug,title,title_amharic,category,liturgical_date,complete_11_sections,missing_sections,en_words,am_words,am_en_ratio,has_citations,has_scripture,has_fasting_rules,research_status,semantic_parity_pct,depth_classification
+"monthly-day-01-lideta-raguel-elias","Lideta Maryam, Archangel Raguel & Prophet Elijah","ልደታ ለማርያም፣ ቅዱስ ራጉኤል እና ነቢዩ ኤልያስ","marian","Day 1 (Monthly)",YES,"",309,190,0.61,YES,YES,YES,"published",100,verified_research
+"monthly-day-02-thaddeus-apostle","Apostle Thaddeus (Addai)","ቅዱስ ታዴዎስ ሐዋርያ","apostle","Day 2 (Monthly)",YES,"",149,102,0.68,YES,YES,NO,"published",100,verified_research
+"monthly-day-03-baata-maryam-phanuel","Ba’ata Maryam (Presentation) & Archangel Phanuel","በዓታ ለማርያም እና ቅዱስ ፋኑኤል","marian","Day 3 (Monthly)",YES,"",198,123,0.62,YES,YES,NO,"published",100,verified_research
+"monthly-day-04-john-son-of-thunder-andrew","Saint John the Evangelist & Apostle Andrew","ቅዱስ ዮሐንስ ወልደ ነጎድጓድ እና ቅዱስ እንድርያስ","apostle","Day 4 (Monthly)",YES,"",175,112,0.64,YES,YES,NO,"published",100,verified_research
+"monthly-day-05-gebre-menfes-kidus-peter-paul","Abune Gebre Menfes Kidus, Peter & Paul","አቡነ ገብረ መንፈስ ቅዱስ፣ ቅዱስ ጴጥሮስ እና ቅዱስ ጳውሎስ","saint","Day 5 (Monthly)",YES,"",205,113,0.55,YES,YES,NO,"published",100,verified_research
+"monthly-day-06-qusquam-eyesus-arsema","Debre Qusquam, Eyesus & Saint Arsema","ደብረ ቍስቋም፣ ኢየሱስ እና ቅድስት አርሴማ","christ","Day 6 (Monthly)",YES,"",205,111,0.54,YES,YES,NO,"published",100,verified_research
+"monthly-day-07-holy-trinity-selassie","Holy Trinity (Selassie)","ቅድስት ሥላሴ","christ","Day 7 (Monthly)",YES,"",192,107,0.56,YES,YES,NO,"published",100,verified_research
+"monthly-day-08-four-living-creatures-matthias","Four Incorporeal Creatures (Arba’etu Ensisa) & Matthias","አርባዕቱ እንስሳ እና ቅዱስ ማትያስ ሐዋርያ","angel","Day 8 (Monthly)",YES,"",176,115,0.65,YES,YES,NO,"published",100,verified_research
+"monthly-day-09-thomas-apostle-318-fathers","Apostle Thomas & 318 Fathers of Nicaea","ቅዱስ ቶማስ ሐዋርያ እና ፫፻፲፰ቱ የኒቂያ ሊቃውንት","apostle","Day 9 (Monthly)",YES,"",155,98,0.63,YES,YES,NO,"published",100,verified_research
+"monthly-day-10-meskel-cross-tsedenya","Feast of the Holy Cross (Meskel) & Tsedenya Maryam","በዓለ መስቀል እና ጼዴንያ ማርያም","cross","Day 10 (Monthly)",YES,"",178,109,0.61,YES,YES,NO,"published",100,verified_research
+"monthly-day-11-hanna-joachim-yared","Saints Hanna & Joachim, Saint Yared","ቅድስት ሐና፣ ጻድቁ ኢያቄም እና ቅዱስ ያሬድ","saint","Day 11 (Monthly)",YES,"",189,116,0.61,YES,YES,NO,"published",100,verified_research
+"monthly-day-12-archangel-michael-matthew","Archangel Michael (Kidus Mikael) & Apostle Matthew","ቅዱስ ሚካኤል ሊቀ መላእክት እና ቅዱስ ማቴዎስ ወንጌላዊ","angel","Day 12 (Monthly)",YES,"",185,114,0.62,YES,YES,NO,"published",100,verified_research
+"monthly-day-13-egziabher-ab-raphael","Egziabher Ab (God the Father) & Archangel Raphael","እግዚአብሔር አብ እና ቅዱስ ሩፋኤል ሊቀ መላእክት","angel","Day 13 (Monthly)",YES,"",161,100,0.62,YES,YES,NO,"published",100,verified_research
+"monthly-day-14-abune-aregawi-gebre-kristos","Abune Aregawi & Saint Gebre Kristos","አቡነ አረጋዊ (ዘደብረ ዳሞ) እና ቅዱስ ገብረ ክርስቶስ","saint","Day 14 (Monthly)",YES,"",165,110,0.67,YES,YES,NO,"published",100,verified_research
+"monthly-day-15-cyriacus-julitta-qirqos","Saints Cyriacus & Julitta (Qirqos we-Iyeluta)","ቅዱስ ቂርቆስ እና እናቱ ቅድስት ኢየሉጣ","saint","Day 15 (Monthly)",YES,"",172,94,0.55,YES,YES,NO,"published",100,verified_research
+"monthly-day-16-kidane-mihret","Kidane Mihret (Covenant of Mercy)","ኪዳነ ምሕረት (የምሕረት ቃልኪዳን)","marian","Day 16 (Monthly)",YES,"",188,107,0.57,YES,YES,NO,"published",100,verified_research
+"monthly-day-17-stephen-protomartyr-james","Saint Stephen the Protomartyr & Apostle James","ቅዱስ እስጢፋኖስ ቀዳሜ ሰማዕታት እና ያዕቆብ ሐዋርያ","saint","Day 17 (Monthly)",YES,"",164,110,0.67,YES,YES,NO,"published",100,verified_research
+"monthly-day-18-philip-apostle-ewostatewos","Apostle Philip & Abune Ewostatewos","ቅዱስ ፊልጶስ ሐዋርያ እና አቡነ ኤዎስጣቴዎስ","apostle","Day 18 (Monthly)",YES,"",139,95,0.68,YES,YES,NO,"published",100,verified_research
+"monthly-day-19-archangel-gabriel","Archangel Gabriel (Kidus Gebriel)","ቅዱስ ገብርኤል ሊቀ መላእክት","angel","Day 19 (Monthly)",YES,"",174,106,0.61,YES,YES,NO,"published",100,verified_research
+"monthly-day-20-hentsata-maryam","Hentsata le-Maryam (Building of the First Church)","ሕንፀተ ቤተክርስቲያን ለማርያም","marian","Day 20 (Monthly)",YES,"",163,90,0.55,YES,YES,NO,"published",100,verified_research
+"monthly-day-21-virgin-mary-astereyo","Virgin Mary (Qiddist Maryam / Aster’eyo)","ቅድስት ድንግል ማርያም (ዕረፍተ ድንግል / አስተርእዮ)","marian","Day 21 (Monthly)",YES,"",179,118,0.66,YES,YES,NO,"published",100,verified_research
+"monthly-day-22-archangel-uriel-annunciation-luke","Archangel Uriel, Annunciation & Saint Luke","ቅዱስ ዑራኤል ሊቀ መላእክት፣ ብሥራተ ገብርኤል እና ቅዱስ ሉቃስ","angel","Day 22 (Monthly)",YES,"",176,106,0.6,YES,YES,NO,"published",100,verified_research
+"monthly-day-23-saint-george-giorgis","Saint George the Great Martyr (Kidus Giorgis)","ቅዱስ ጊዮርጊስ ሊቀ ሰማዕታት","saint","Day 23 (Monthly)",YES,"",171,117,0.68,YES,YES,NO,"published",100,verified_research
+"monthly-day-24-tekle-haymanot-24-heavenly-priests","Abune Tekle Haymanot & Twenty-Four Heavenly Priests","አቡነ ተክለ ሃይማኖት እና ፳፬ቱ ካህናተ ሰማይ","saint","Day 24 (Monthly)",YES,"",189,122,0.65,YES,YES,NO,"published",100,verified_research
+"monthly-day-25-mercurius-merqorewos","Saint Mercurius the Great Martyr (Merqorewos)","ቅዱስ መርቆሬዎስ ሰማዕት","saint","Day 25 (Monthly)",YES,"",165,95,0.58,YES,YES,NO,"published",100,verified_research
+"monthly-day-26-saint-joseph-abba-salama","Saint Joseph the Betrothed & Abba Salama Kesate Birhan","ጻድቁ ዮሴፍ እና አባ ሰላማ ከሣቴ ብርሃን","saint","Day 26 (Monthly)",YES,"",174,104,0.6,YES,YES,NO,"published",100,verified_research
+"monthly-day-27-medhane-alem","Medhane Alem (Saviour of the World)","መድኃኔ ዓለም (የዓለም አዳኝ)","christ","Day 27 (Monthly)",YES,"",178,114,0.64,YES,YES,NO,"published",100,verified_research
+"monthly-day-28-emmanuel","Emmanuel (God With Us)","አማኑኤል (እግዚአብሔር ከእኛ ጋር)","christ","Day 28 (Monthly)",YES,"",152,97,0.64,YES,YES,NO,"published",100,verified_research
+"monthly-day-29-baale-wold-lalibela","Ba’ale Wold (Feast of God the Son) & Saint Lalibela","በዓለ ወልድ እና ጻድቁ ንጉሥ ቅዱስ ላሊበላ","christ","Day 29 (Monthly)",YES,"",167,116,0.69,YES,YES,NO,"published",100,verified_research
+"monthly-day-30-john-baptist-mark-evangelist","Saint John the Baptist & Saint Mark the Evangelist","ቅዱስ ዮሐንስ መጥምቅ እና ቅዱስ ማርቆስ ወንጌላዊ","saint","Day 30 (Monthly)",YES,"",178,110,0.62,YES,YES,NO,"published",100,verified_research
+"enkutatash","Enkutatash / Ethiopian New Year (Qeddus Yohannes)","እንቁጣጣሽ (ቅዱስ ዮሐንስ / ርእሰ ዐውደ ዓመት)","christ","M1 D1",YES,"",191,129,0.68,YES,YES,NO,"published",100,verified_research
+"meskel","Meskel / Finding of the True Cross","መስቀል / በዓለ መስቀል (ዕፀ መስቀል የተገኘበት)","cross","M1 D17",YES,"",204,131,0.64,YES,YES,NO,"published",100,verified_research
+"demera","Demera / Eve of Meskel","ደመራ / ዋዜማ መስቀል","cross","M1 D16",YES,"",177,102,0.58,YES,YES,NO,"published",100,verified_research
+"megabit-meskel","Megabit Meskel / Spring Finding of the Cross","መጋቢት መስቀል (መስቀሉ የተቆፈረበት ዕለት)","cross","M7 D10",YES,"",151,96,0.64,YES,YES,NO,"published",100,verified_research
+"gena","Gena / Nativity of Christ (Lidet)","ገና / በዓለ ልደት (የጌታችን የልደት በዓል)","christ","M4 D29",YES,"",172,113,0.66,YES,YES,NO,"published",100,verified_research
+"gena-eve","Gena Eve / Gahad of Nativity","ዋዜማ ልደት / ገሃድ (የገና ዋዜማ)","christ","M4 D28",YES,"",121,76,0.63,YES,YES,NO,"published",100,verified_research
+"gizret","Gizret / Circumcision of Christ","ግዝረት / በዓለ ግዝረት (የጌታችን የግዝረት በዓል)","christ","M5 D6",YES,"",140,94,0.67,YES,YES,NO,"published",100,verified_research
+"timket","Timket / Epiphany (Baptism of Christ)","ጥምቀት / በዓለ ኤጲፋንያ (የጌታችን የጥምቀት በዓል)","christ","M5 D11",YES,"",180,121,0.67,YES,YES,NO,"published",100,verified_research
+"ketera","Ketera / Eve of Timket","ከተራ / ዋዜማ ጥምቀት (የታቦታት ጉዞ ወደ ባሕረ ጥምቀት)","christ","M5 D10",YES,"",142,90,0.63,YES,YES,NO,"published",100,verified_research
+"kana-ze-galila","Kana Ze Galila / Miracle at the Wedding in Cana","ቃና ዘገሊላ (በቃና የተደረገው የመጀመሪያው ተአምር)","christ","M5 D12",YES,"",157,101,0.64,YES,YES,NO,"published",100,verified_research
+"lidete-simeon","Lidete Simeon / Presentation of the Lord (Meeting of Saint Simeon)","ልደተ ስምዖን / በዓለ ማዕረግ (ጌታ ወደ ቤተ መቅደስ የገባበት)","christ","M6 D8",YES,"",149,93,0.62,YES,YES,NO,"published",100,verified_research
+"tsinset","Tsinset / The Annunciation and Incarnation","ጽንሰት / ብሥራተ ገብርኤል (የጌታችን የጽንሰቱ በዓል)","christ","M7 D29",YES,"",164,102,0.62,YES,YES,NO,"published",100,verified_research
+"debre-tabor","Debre Tabor / Transfiguration of Christ (Buhe)","ደብረ ታቦር / ቡሄ (የጌታችን የመለወጥ በዓል)","christ","M12 D13",YES,"",176,112,0.64,YES,YES,NO,"published",100,verified_research
+"hosanna","Hosanna / Palm Sunday (Triumphal Entry)","ሆሣዕና / በዓለ ሆሣዕና (የጌታችን በክብር ወደ ኢየሩሳሌም መግባት)","christ","Movable",YES,"",164,107,0.65,YES,YES,NO,"published",100,verified_research
+"siklet","Siklet / Good Friday (Crucifixion of Christ)","ስቅለት / ዓርበ ስቅለት (የጌታችን የመስቀል መከራ)","christ","Movable",YES,"",167,116,0.69,YES,YES,NO,"published",100,verified_research
+"tinsae","Tinsae / Fasika (Holy Resurrection of Christ)","ትንሣኤ / ፋሲካ (የጌታችን የትንሣኤ በዓል)","christ","Movable",YES,"",167,115,0.69,YES,YES,NO,"published",100,verified_research
+"dagma-tinsae","Dagma Tinsae / Second Sunday of Pascha (Saint Thomas Sunday)","ዳግም ትንሣኤ (የቶማስ እሑድ / ሁለተኛው የትንሣኤ እሑድ)","christ","Movable",YES,"",144,95,0.66,YES,YES,NO,"published",100,verified_research
+"erget","Erget / The Ascension of our Lord Jesus Christ","ዕርገት / በዓለ ዕርገት (የጌታችን የዕርገት በዓል)","christ","Movable",YES,"",154,102,0.66,YES,YES,NO,"published",100,verified_research
+"pentecost","Pentecost / Paraclete (Descent of the Holy Spirit)","ጰራቅሊጦስ / በዓለ ሃምሳ (የመንፈስ ቅዱስ መውረድ)","christ","Movable",YES,"",180,103,0.57,YES,YES,NO,"published",100,verified_research
+"filseta","Filseta / Assumption of the Virgin Mary (Gisitua)","ፍልሰታ / ዕርገተ ማርያም (የእመቤታችን የዕርገት በዓል)","marian","M12 D16",YES,"",199,112,0.56,YES,YES,NO,"published",100,verified_research
+"lideta-maryam","Lideta Maryam / Nativity of the Blessed Virgin Mary","ልደታ ማርያም (የእመቤታችን የልደት በዓል)","marian","M9 D1",YES,"",146,94,0.64,YES,YES,NO,"published",100,verified_research
+"kidane-mihret","Kidane Mihret / Covenant of Mercy","ኪዳነ ምሕረት (የምሕረት ቃልኪዳን የተሰጠበት)","marian","M6 D16",YES,"",170,96,0.56,YES,YES,NO,"published",100,verified_research
+"maryam-dormition","Maryam Aster’eyo / Dormition of the Virgin Mary","አስተርእዮ ማርያም (የእመቤታችን የዕረፍት በዓል)","marian","M5 D21",YES,"",152,84,0.55,YES,YES,NO,"published",100,verified_research
+"maryam-presentation","Presentation of Mary in the Temple (Be’ata Maryam)","በዓታ ማርያም (እመቤታችን ወደ ቤተ መቅደስ የገባችበት)","marian","M4 D3",YES,"",149,88,0.59,YES,YES,NO,"published",100,verified_research
+"maryam-conception","Conception of the Blessed Virgin Mary","ጽንሰታ ለማርያም (እመቤታችን የተፀነሰችበት ዕለት)","marian","M12 D7",YES,"",146,82,0.56,YES,YES,NO,"published",100,verified_research
+"maryam-flight-egypt","Flight of the Holy Family into Egypt","ስደተ ማርያም (የእመቤታችንና የጌታችን ስደት ወደ ግብፅ)","marian","M9 D24",YES,"",137,82,0.6,YES,YES,NO,"published",100,verified_research
+"debre-mitmaq","Apparition of Mary at Debre Mitmaq","ደብረ ምጥማቅ (የእመቤታችን በደብረ ምጥማቅ መገለጥ)","marian","M9 D21",YES,"",154,85,0.55,YES,YES,NO,"published",100,verified_research
+"hidar-tsion","Hidar Tsion / Feast of Saint Mary of Zion","ኅዳር ጽዮን (የጽዮን ማርያም ታላቅ በዓል በአክሱም)","marian","M3 D21",YES,"",163,90,0.55,YES,YES,NO,"published",100,verified_research
+"qusquam-maryam","Qusquam Maryam / Saint Mary of Mount Qusquam","ቊስቋም ማርያም (የእመቤታችን በቊስቋም ገዳም ማረፍ)","marian","M3 D6",YES,"",166,100,0.6,YES,YES,NO,"published",100,verified_research
+"gishen-maryam","Gishen Maryam / Sanctuary of the True Cross at Gishen","ግሸን ማርያም (ግማደ መስቀሉ በግሸን ደብረ ከርቤ የገባበት)","marian","M1 D21",YES,"",174,107,0.61,YES,YES,NO,"published",100,verified_research
+"tsedenya-maryam","Tsedenya Maryam / Miracle of the Myrrh-Streaming Icon","ጼዴንያ ማርያም (የእመቤታችን የጼዴንያ ሥዕል ተአምር)","marian","M1 D10",YES,"",143,85,0.59,YES,YES,NO,"published",100,verified_research
+"bisrate-gabriel","Bisrate Gabriel / The Annunciation of Gabriel to Mary","ብሥራተ ገብርኤል (መልአኩ ገብርኤል ለእመቤታችን ያበሰረበት)","marian","M4 D22",YES,"",130,77,0.59,YES,YES,NO,"published",100,verified_research
+"maryam-water-rock","Saint Mary Bringing Water from the Rock","ማርያም ማይ ዘ-ውሕዘ (እመቤታችን ከዓለት ውኃ ያፈለቀችበት)","marian","M10 D8",YES,"",132,82,0.62,YES,YES,NO,"published",100,verified_research
+"maryam-church-dedication","Dedication of the First Church of the Virgin Mary in Philippi","ሕንጸተ ቤተክርስቲያን (የመጀመሪያዋ የእመቤታችን ቤተክርስቲያን በፊልጵስዩስ)","marian","M10 D20",YES,"",138,72,0.52,YES,YES,NO,"published",100,verified_research
+"sene-golgotha","Sene Golgotha / Saint Mary’s Prayer at Golgotha","ሰኔ ጎልጎታ (እመቤታችን በጎልጎታ ያደረገችው ጸሎት)","marian","M10 D21",YES,"",153,92,0.6,YES,YES,NO,"published",100,verified_research
+"michael-hidar","Hidar Michael / Archangel Michael’s Solemnity","ኅዳር ሚካኤል (የሊቀ መላእክት ቅዱስ ሚካኤል ዓመታዊ በዓል)","angel","M3 D12",YES,"",128,84,0.66,YES,YES,NO,"published",100,verified_research
+"michael-sene","Sene Michael / Delivery of Saint Bahran","ሰኔ ሚካኤል (ቅዱስ ሚካኤል ባሕራንን ያዳነበት ዕለት)","angel","M10 D12",YES,"",115,73,0.63,YES,YES,NO,"published",100,verified_research
+"gabriel-tahsas","Tahsas Gabriel / Delivery of the Three Holy Children","ታኅሣሥ ገብርኤል (ሠለስቱ ደቂቅ ከእቶነ እሳት የዳኑበት)","angel","M4 D19",YES,"",138,87,0.63,YES,YES,NO,"published",100,verified_research
+"gabriel-hamle","Hamle Gabriel / Saint Qirqos and Julitta","ሐምሌ ገብርኤል (ቅዱስ ቂርቆስና ኢየሉጣ የዳኑበት)","angel","M11 D19",YES,"",130,78,0.6,YES,YES,NO,"published",100,verified_research
+"raphael-pagumen","Raphael Pagumen / Dedication of Raphael’s Church on the Island","ጳጉሜን ሩፋኤል (የቅዱስ ሩፋኤል ታላቅ ዓመታዊ በዓል)","angel","M13 D3",YES,"",135,76,0.56,YES,YES,NO,"published",100,verified_research
+"raphael-tahsas","Tahsas Raphael / Archangel Raphael’s Winter Feast","ታኅሣሥ ሩፋኤል (ቅዱስ ሩፋኤል ጦቢያን የመራበት)","angel","M4 D13",YES,"",132,81,0.61,YES,YES,NO,"published",100,verified_research
+"uriel-hamle","Hamle Uriel / Gathering the Holy Blood of Christ","ሐምሌ ዑራኤል (ቅዱስ ዑራኤል የጌታችንን ክቡር ደም በጽዋ ያቀረበበት)","angel","M11 D22",YES,"",143,96,0.67,YES,YES,NO,"published",100,verified_research
+"uriel-tir","Tir Uriel / Archangel Uriel’s Winter Commemoration","ጥር ዑራኤል (ቅዱስ ዑራኤል ለዕዝራ ሱቱኤል ጥበብን የገለጠበት)","angel","M5 D22",YES,"",126,70,0.56,YES,YES,NO,"published",100,verified_research
+"cherubim-hidar","Feast of the Four Incorporeal Living Creatures (Arba’etu Ensisa)","አርባዕቱ እንስሳ (የአራቱ ኪሩቤል ታላቅ በዓል)","angel","M3 D8",YES,"",145,89,0.61,YES,YES,NO,"published",100,verified_research
+"heavenly-priests-hidar","Feast of the Twenty-Four Heavenly Priests (Haya Arba’etu Kahnat)","ሃያ አራቱ ካህናተ ሰማይ (የሰማያውያን ካህናት ታላቅ በዓል)","angel","M3 D24",YES,"",141,87,0.62,YES,YES,NO,"published",100,verified_research
+"tekle-haymanot-birth","Nativity of Abune Tekle Haymanot","ልደተ አቡነ ተክለ ሃይማኖት (የኢትዮጵያው ፀሐይ ልደት)","saint","M4 D24",YES,"",141,96,0.68,YES,YES,NO,"published",100,verified_research
+"tekle-haymanot-departure","Departure of Abune Tekle Haymanot","ዕረፍተ አቡነ ተክለ ሃይማኖት (የቅዱሱ አባት የዕረፍት በዓል)","saint","M12 D24",YES,"",158,90,0.57,YES,YES,NO,"published",100,verified_research
+"gebre-menfes-kidus-tikimt","Tikimt Abo / Departure of Abune Gebre Menfes Kidus","ጥቅምት አቦ (የአቡነ ገብረ መንፈስ ቅዱስ ታላቅ ዓመታዊ በዓል)","saint","M2 D5",YES,"",155,92,0.59,YES,YES,NO,"published",100,verified_research
+"gebre-menfes-kidus-megabit","Megabit Abo / Commemoration of Abune Gebre Menfes Kidus","መጋቢት አቦ (የአቡነ ገብረ መንፈስ ቅዱስ የዕረፍት መታሰቢያ)","saint","M7 D5",YES,"",116,74,0.64,YES,YES,NO,"published",100,verified_research
+"george-hidar","Hidar Giorgis / Dedication of Saint George’s Church in Lydda","ኅዳር ጊዮርጊስ (በልዳ የተሠራው የቅዱስ ጊዮርጊስ ቤተክርስቲያን ቅዳሴ)","saint","M3 D7",YES,"",140,78,0.56,YES,YES,NO,"published",100,verified_research
+"george-tir","Tir Giorgis / Martyrdom of Saint George’s Father Anastasius","ጥር ጊዮርጊስ (የቅዱስ ጊዮርጊስ አባት የአንስጣስዮስ መታሰቢያ)","saint","M5 D18",YES,"",107,66,0.62,YES,YES,NO,"published",100,verified_research
+"george-miyazia","Miyazya Giorgis / Martyrdom of Saint George the Triumphant","ሚያዝያ ጊዮርጊስ (የቅዱስ ጊዮርጊስ ታላቅ የሰማዕትነት በዓል)","saint","M8 D23",YES,"",152,95,0.63,YES,YES,NO,"published",100,verified_research
+"yared-ginbot","Saint Yared / Ascent of the Father of Ethiopian Sacred Music","ቅዱስ ያሬድ (የኢትዮጵያ ዜማ አባት የቅዱስ ያሬድ በዓል)","saint","M9 D11",YES,"",169,90,0.53,YES,YES,NO,"published",100,verified_research
+"stephen-tir","Tir Stephen / Martyrdom of Saint Stephen the Protomartyr","ጥር እስጢፋኖስ (የቀዳሜ ሰማዕት የቅዱስ እስጢፋኖስ በዓል)","saint","M5 D1",YES,"",145,90,0.62,YES,YES,NO,"published",100,verified_research
+"stephen-relics","Meskerem Stephen / Discovery of the Relics of Saint Stephen","መስከረም እስጢፋኖስ (የቅዱስ እስጢፋኖስ አፅም የተገኘበት)","saint","M1 D15",YES,"",132,77,0.58,YES,YES,NO,"published",100,verified_research
+"trinity-tir","Tir Selassie / The Holy Trinity Revealing Christ’s Baptism","ጥር ሥላሴ (የቅድስት ሥላሴ ታላቅ ዓመታዊ በዓል)","christ","M5 D7",YES,"",145,78,0.54,YES,YES,NO,"published",100,verified_research
+"trinity-hamle","Hamle Selassie / The Holy Trinity Visiting Abraham at Mamre","ሐምሌ ሥላሴ (ሥላሴ በአብርሃም ቤት የተስተናገዱበት)","christ","M11 D7",YES,"",150,89,0.59,YES,YES,NO,"published",100,verified_research
+"john-baptist-meskerem","Meskerem Yohannes / Beheading of Saint John the Baptist","መስከረም ዮሐንስ (የመጥምቁ ዮሐንስ አንገት የተቆረጠበት)","prophet","M1 D2",YES,"",140,73,0.52,YES,YES,NO,"published",100,verified_research
+"john-baptist-birth","Sene Yohannes / Nativity of Saint John the Baptist","ሰኔ ዮሐንስ (የመጥምቁ ዮሐንስ የልደት በዓል)","prophet","M10 D30",YES,"",141,78,0.55,YES,YES,NO,"published",100,verified_research
+"john-evangelist-tir","Tir Yohannes Wolde Negedgwad / Departure of Saint John the Evangelist","ጥር ዮሐንስ ወልደ ነጐድጓድ (የወንጌላዊው ቅዱስ ዮሐንስ ዕረፍት)","apostle","M5 D4",YES,"",164,80,0.49,YES,YES,NO,"published",100,verified_research
+"elijah-tir","Tir Eliyas / Ascent of the Prophet Elijah into Heaven","ጥር ኤልያስ (ነቢዩ ኤልያስ በእሳት ሰረገላ ወደ ሰማይ ያረገበት)","prophet","M5 D6",YES,"",141,81,0.57,YES,YES,NO,"published",100,verified_research
+"peter-paul-hamle","Hamle Petros We-Phaulos / Martyrdom of Saints Peter and Paul","ሐምሌ ጴጥሮስ ወጳውሎስ (የቅዱሳን ሐዋርያት ጴጥሮስና ጳውሎስ የሰማዕትነት በዓል)","apostle","M11 D5",YES,"",169,85,0.5,YES,YES,NO,"published",100,verified_research
+"thomas-ginbot","Ginbot Tomas / Departure of Saint Thomas the Apostle in India","ግንቦት ቶማስ (የሐዋርያው ቅዱስ ቶማስ የሰማዕትነት በዓል በሕንድ)","apostle","M9 D26",YES,"",133,80,0.6,YES,YES,NO,"published",100,verified_research
+"arsema-meskerem","Meskerem Arsema / Martyrdom of Saint Hripsime (Arsema)","መስከረም አርሴማ (የቅድስት አርሴማ ታላቅ የሰማዕትነት በዓል)","saint","M1 D29",YES,"",159,84,0.53,YES,YES,NO,"published",100,verified_research
+"abba-salama-hamle","Abba Salama Kesate Berhan / Departure of the Apostle of Ethiopia","አባ ሰላማ ከሣቴ ብርሃን (የኢትዮጵያ የመጀመሪያው ጳጳስ ዕረፍት)","patriarch","M11 D26",YES,"",162,87,0.54,YES,YES,NO,"published",100,verified_research
+"lalibela-birth","Nativity of Saint King Lalibela","ልደተ ቅዱስ ላሊበላ (የሮሐው ንጉሥ የቅዱስ ላሊበላ ልደት)","saint","M4 D29",YES,"",159,91,0.57,YES,YES,NO,"published",100,verified_research
+"lalibela-departure","Departure of Saint King Lalibela","ዕረፍተ ቅዱስ ላሊበላ (የጻድቁ ንጉሥ የላሊበላ የዕረፍት በዓል)","saint","M10 D12",YES,"",134,73,0.54,YES,YES,NO,"published",100,verified_research
+"zewerede","Zewerede / First Sunday of Great Lent","ዘወረደ (የዐቢይ ጾም የመጀመሪያው እሑድ)","christ","Movable",YES,"",150,86,0.57,YES,YES,NO,"published",100,verified_research
+"kidist","Kidist / Second Sunday of Great Lent","ቅድስት (የዐቢይ ጾም ሁለተኛው እሑድ)","christ","Movable",YES,"",125,76,0.61,YES,YES,NO,"published",100,verified_research
+"mikurab","Mikurab / Third Sunday of Great Lent","ምኩራብ (የዐቢይ ጾም ሦስተኛው እሑድ)","christ","Movable",YES,"",136,83,0.61,YES,YES,NO,"published",100,verified_research
+"metsagu","Metsagu / Fourth Sunday of Great Lent (Healing of the Paralytic)","መጻጉዕ (የዐቢይ ጾም አራተኛው እሑድ)","christ","Movable",YES,"",145,89,0.61,YES,YES,NO,"published",100,verified_research
+"debre-zeit","Debre Zeit / Mid-Lent Sunday (Mount of Olives & Second Coming)","ደብረ ዘይት (የዐቢይ ጾም እኩሌታ / ዳግም ምጽአት)","christ","Movable",YES,"",149,98,0.66,YES,YES,NO,"published",100,verified_research
+"gebr-her","Gebr-Her / Sixth Sunday of Great Lent (The Good and Faithful Servant)","ገብር ኄር (የዐቢይ ጾም ስድስተኛው እሑድ / ታማኙ ባሪያ)","christ","Movable",YES,"",135,87,0.64,YES,YES,NO,"published",100,verified_research
+"nikodimos","Nikodimos / Seventh Sunday of Great Lent (Nicodemus and Spiritual Rebirth)","ኒቆዲሞስ (የዐቢይ ጾም ሰባተኛው እሑድ / ዳግም ልደት)","christ","Movable",YES,"",151,92,0.61,YES,YES,NO,"published",100,verified_research
+"holy-week-monday","Holy Week Monday / Cursing of the Barren Fig Tree","ሰኑይ ሕማማት (የለመለመችው በለስ የደረቀችበት ዕለት)","christ","Movable",YES,"",139,91,0.65,YES,YES,NO,"published",100,verified_research
+"holy-week-tuesday","Holy Week Tuesday / The Day of Questioning and Parables","ሠሉስ ሕማማት (የጥያቄና የምሳሌዎች ዕለት)","christ","Movable",YES,"",144,82,0.57,YES,YES,NO,"published",100,verified_research
+"holy-week-wednesday","Holy Week Wednesday / Plot of Betrayal and Anointing at Bethany","ረቡዕ ሕማማት (የምክር ረቡዕ / ማርያም ሽቶ ያፈሰሰችበት)","christ","Movable",YES,"",169,96,0.57,YES,YES,NO,"published",100,verified_research
+"maundy-thursday","Maundy Thursday / Tselote Hamus (The Mystical Supper & Footwashing)","ጸሎተ ሐሙስ (ሕጽበተ እግር / የጌታችን የቅዱስ ቁርባን ምሥጢር መሠረት)","christ","Movable",YES,"",185,102,0.55,YES,YES,NO,"published",100,verified_research
+"holy-saturday","Holy Saturday / Qedametsur (Rest in the Tomb & Hallowing of Hades)","ቀዳም ስዑር / ቅድስት ቀዳም (ጌታ በመቃብር ያደረበት ዕለት)","christ","Movable",YES,"",194,99,0.51,YES,YES,NO,"published",100,verified_research
+"akfelot","Akfelot / The Paschal Vigil Fast","አክፍሎት (ከስቅለት እስከ ትንሣኤ የሚቆይ የ፪ ቀናት ጽኑ ጾም)","fast","Movable",YES,"",178,91,0.51,YES,YES,NO,"published",100,verified_research
+"weekly-wednesday-friday","Wednesday and Friday Weekly Fast (Tsome Dihnet)","ጾመ ድኅነት (የረቡዕና የዓርብ ሳምንታዊ ጾም)","fast","Movable",YES,"",157,83,0.53,YES,YES,NO,"published",100,verified_research
+"tsome-nineveh","Fast of Nineveh (Tsome Nenewe)","ጾመ ነነዌ (የነነዌ ሦስት ቀናት ጾም)","fast","Movable",YES,"",164,99,0.6,YES,YES,NO,"published",100,verified_research
+"tsome-nineveh-begins","Beginning of the Fast of Nineveh","መግቢያ ጾመ ነነዌ (የነነዌ ጾም መጀመሪያ ዕለት)","fast","Movable",YES,"",84,60,0.71,YES,YES,NO,"published",100,verified_research
+"abiy-tsom","Great Lent / Hudadi (Abiy Tsom)","ዐቢይ ጾም / ሁዳዴ (የ፶፭ ቀናት የጌታችን ጾም)","fast","Movable",YES,"",162,97,0.6,YES,YES,NO,"published",100,verified_research
+"abiy-tsom-begins","Beginning of Great Lent (Mesqeye Abiy Tsom)","መግቢያ ዐቢይ ጾም (የዐቢይ ጾም የመጀመሪያው ሰኞ)","fast","Movable",YES,"",92,58,0.63,YES,YES,NO,"published",100,verified_research
+"judith-fast","Fast of Judith (Tsome Yodit)","ጾመ ዮዲት (የጻድቋ ዮዲት ጾም)","fast","Movable",YES,"",118,67,0.57,YES,YES,NO,"published",100,verified_research
+"tsome-nebiyat","Fast of the Prophets / Advent (Tsome Nebiyat)","ጾመ ነቢያት / የገና ጾም (የ፵፫ ቀናት የልደት ዝግጅት ጾም)","fast","M3 D15",YES,"",148,88,0.59,YES,YES,NO,"published",100,verified_research
+"tsome-hawariat","Fast of the Apostles (Tsome Hawaryat)","ጾመ ሐዋርያት (የቅዱሳን ሐዋርያት ጾም)","fast","Movable",YES,"",139,81,0.58,YES,YES,NO,"published",100,verified_research
+"filseta-fast","Fast of the Assumption of the Virgin Mary (Tsome Filseta)","ጾመ ፍልሰታ (የእመቤታችን የ፲፮ ቀናት የፍልሰታ ጾም)","fast","M12 D1",YES,"",156,88,0.56,YES,YES,NO,"published",100,verified_research
+"gena-gahad","Gahad of Gena / Christmas Eve Fast","ገሃደ ልደት (የገና የገሃድ ጾም)","fast","M4 D28",YES,"",90,55,0.61,YES,YES,NO,"published",100,verified_research
+"timket-gahad","Gahad of Timket / Epiphany Eve Fast","ገሃደ ጥምቀት (የጥምቀት የገሃድ ጾም)","fast","M5 D10",YES,"",87,53,0.61,YES,YES,NO,"published",100,verified_research
+"paschal-fifty-days","Paschal Fifty Days / Fast-Free Season (Beale Hamsa / Felsata)","በዓለ ሃምሳ (የ፶ው ቀናት የፍስክ ወቅት)","season","Movable",YES,"",110,71,0.65,YES,YES,NO,"published",100,verified_research
+"gena-fast-free","Gena Fast-Free Days","የገና የፍስክ ቀናት","season","Movable",YES,"",70,53,0.76,YES,YES,NO,"published",100,summary_only
+"timket-fast-free","Timket Fast-Free Days","የጥምቀት የፍስክ ቀናት","season","Movable",YES,"",69,51,0.74,YES,YES,NO,"published",100,summary_only
+"tsige-fast","Fast of the Flowers (Tsome Tsige)","ጾመ ጽጌ (የ፵ ቀናት የማኅሌተ ጽጌ ፍቃደኛ ጾም)","fast","M1 D26",YES,"",146,89,0.61,YES,YES,NO,"published",100,verified_research
+"heraclius-fast","Fast of Heraclius (Tsome Herqal)","ጾመ ሕርቃል (የዐቢይ ጾም የመጀመሪያው ሳምንት)","fast","Movable",YES,"",111,70,0.63,YES,YES,NO,"published",100,verified_research
+"holy-week-fast","Holy Week Fast (Tsome Himamat)","ጾመ ሕማማት (የሰሙነ ሕማማት ጥብቅ ጾም)","fast","Movable",YES,"",100,69,0.69,YES,YES,NO,"published",100,verified_research
+"advent-sibket","Season of Sibket (First Season of Advent)","ዘመነ ስብከት (የነቢያት የስብከት ወቅት)","season","Movable",YES,"",66,48,0.73,YES,YES,NO,"published",100,summary_only
+"astereyo","Season of Astereyo (Theophany / Epiphany Season)","ዘመነ አስተርእዮ (የመገለጥ ወቅት)","season","M5 D11",YES,"",94,57,0.61,YES,YES,NO,"published",100,verified_research
+"great-lent","Season of Great Lent (Zemene Tsom)","ዘመነ ዐቢይ ጾም (የጾም ወቅት)","season","Movable",YES,"",75,51,0.68,YES,YES,NO,"published",100,summary_only
+"holy-week","Season of Holy Week (Semune Himamat)","ዘመነ ሰሙነ ሕማማት (የሕማማት ሳምንት)","season","Movable",YES,"",56,47,0.84,YES,YES,NO,"published",100,summary_only
+"paschal-season","Paschal Season / Season of the Resurrection","ዘመነ ትንሣኤ (የትንሣኤ ወቅት)","season","Movable",YES,"",56,46,0.82,YES,YES,NO,"published",100,summary_only
+"apostles-fast-period","Season of the Apostles’ Fast","ዘመነ ጾመ ሐዋርያት (የሐዋርያት ወቅት)","season","Movable",YES,"",54,42,0.78,YES,YES,NO,"published",100,summary_only
+"filseta-period","Season of Filseta (Assumption Period)","ዘመነ ፍልሰታ (የፍልሰታ ወቅት)","season","M12 D1",YES,"",68,42,0.62,YES,YES,NO,"published",100,summary_only
+"tsige-season","Season of the Flowers (Zemene Tsige)","ዘመነ ጽጌ (የጽጌ ወቅት / የመኸር ወቅት)","season","M1 D26",YES,"",84,52,0.62,YES,YES,NO,"published",100,verified_research
+"sibket-period","Advent Period of Sibket (Proclamation)","የስብከት ወቅት (የነቢያት የስብከት ሳምንት)","season","Movable",YES,"",46,35,0.76,YES,YES,NO,"published",100,summary_only
+"berhan-period","Advent Period of Berhan (The Light)","የብርሃን ወቅት (የልደት ሁለተኛው ሳምንት)","season","Movable",YES,"",64,46,0.72,YES,YES,NO,"published",100,summary_only
+"nolawi-period","Advent Period of Nolawi (The Good Shepherd)","የኖላዊ ወቅት (የመልካሙ እረኛ ሳምንት)","season","Movable",YES,"",74,54,0.73,YES,YES,NO,"published",100,summary_only
+"bright-week","Bright Week (Sanbata Tensae / Easter Octave)","ሰንበተ ትንሣኤ (የትንሣኤ ሳምንት / ብሩህ ሳምንት)","season","Movable",YES,"",74,50,0.68,YES,YES,NO,"published",100,summary_only
+"resurrection-period","Resurrection Period / Paschal Season","ዘመነ ትንሣኤ (የትንሣኤ የፍስክ ወቅት)","season","Movable",YES,"",63,42,0.67,YES,YES,NO,"published",100,summary_only
+"heraclius-week","Week of Heraclius (First Week of Great Lent)","ሳምንተ ሕርቃል (የዐቢይ ጾም የመጀመሪያው ሳምንት)","season","Movable",YES,"",53,38,0.72,YES,YES,NO,"published",100,summary_only
+"sibket","Sibket / First Sunday of Advent","ስብከት (የነቢያት የመጀመሪያው የልደት እሑድ)","season","Movable",YES,"",47,36,0.77,YES,YES,NO,"published",100,summary_only
+"berhan","Berhan / Second Sunday of Advent","ብርሃን (የልደት ሁለተኛው እሑድ)","season","Movable",YES,"",46,40,0.87,YES,YES,NO,"published",100,summary_only
+"nolawi","Nolawi / Third Sunday of Advent","ኖላዊ (የልደት ሦስተኛው እሑድ / መልካሙ እረኛ)","season","Movable",YES,"",58,45,0.78,YES,YES,NO,"published",100,summary_only

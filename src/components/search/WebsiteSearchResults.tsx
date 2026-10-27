@@ -109,16 +109,51 @@ function ResultList({
   )
 }
 
+export type DomainFilterKind = 'all' | 'bible' | 'mezmur' | 'prayer' | 'calendar' | 'library'
+
+function matchesDomain(result: SiteSearchResult, domain?: DomainFilterKind): boolean {
+  if (!domain || domain === 'all') return true
+  if (domain === 'bible') return result.sourceType.startsWith('bible')
+  if (domain === 'mezmur') {
+    return (
+      result.sourceType === 'mezmur' ||
+      result.sourceType === 'zemari' ||
+      result.sourceType.startsWith('hymn')
+    )
+  }
+  if (domain === 'prayer') {
+    return (
+      result.sourceType.startsWith('prayer') ||
+      result.sourceType === 'liturgy' ||
+      result.sourceType === 'guide'
+    )
+  }
+  if (domain === 'calendar') {
+    return (
+      result.sourceType === 'calendar' ||
+      result.sourceType.startsWith('synaxarium') ||
+      result.sourceType === 'feast' ||
+      result.sourceType === 'saint'
+    )
+  }
+  if (domain === 'library') {
+    return result.sourceType === 'church_library' || result.sourceType === 'learn'
+  }
+  return true
+}
+
 export function WebsiteSearchPane({
   outcome,
   onRetry,
   onOpen,
   hideQueryEcho = false,
+  domainFilter = 'all',
 }: {
   outcome: WebsiteOutcome
   onRetry: (query: string) => void
   onOpen: () => void
   hideQueryEcho?: boolean
+  domainFilter?: DomainFilterKind
 }) {
   const t = useTranslation()
   if (outcome.kind === 'idle') return null
@@ -183,7 +218,7 @@ export function WebsiteSearchPane({
           </p>
           <FailedCatalogs sources={response.sources} />
           <ResultList
-            results={response.results.filter((result) => !isNavigationResult(result))}
+            results={response.results.filter((result) => !isNavigationResult(result) && matchesDomain(result, domainFilter))}
             label={t('searchBuddy.website.records')}
             onOpen={onOpen}
           />

@@ -2,7 +2,8 @@ import { buildChurchDaySnapshot } from './buildChurchDaySnapshot'
 import type { ChurchDaySnapshot, ObservanceType } from './types'
 import { getEntriesForDate, sortEotcEntriesForCalendarPanel } from '../eotcCalendar'
 import type { EotcCalendarDatasetRow } from '../eotcCalendar/eotcTypes'
-import { gregorianToEthiopian } from '../ethiopianDate'
+import { gregorianToEthiopian, formatEthiopianDate } from '../ethiopianDate'
+import { daysInEthiopianMonth, ethiopianToGregorian } from '../calendar/ethiopianCalendarEngine'
 import type { SynaxariumMonthDayPreview } from '../prayers/prayerLibraryTypes'
 import { getSynaxariumMonthDayPreviews } from '../synaxarium/synaxariumService'
 
@@ -228,4 +229,94 @@ export async function computeCalendarDayMarksAsync(
     if (mark) map.set(day, mark)
   }
   return map
+}
+
+/**
+ * Month marks for an entire Ethiopian month (1-13) with Pagume 5/6 support.
+ */
+export async function computeEthiopianMonthMarksAsync(
+  ethiopianYear: number,
+  ethiopianMonth: number,
+): Promise<ReadonlyMap<number, CalendarDayCellMark>> {
+  const dim = daysInEthiopianMonth(ethiopianYear, ethiopianMonth);
+  let synaxariumByEthDay = new Map<string, SynaxariumMonthDayPreview>();
+  try {
+    const previews = await getSynaxariumMonthDayPreviews(ethiopianMonth);
+    synaxariumByEthDay = buildSynaxariumPreviewIndex(previews);
+  } catch (error) {
+    if (import.meta.env.DEV) console.error('[calendar] synaxarium eth month previews', error);
+  }
+
+  const map = new Map<number, CalendarDayCellMark>();
+  for (let ethDay = 1; ethDay <= dim; ethDay++) {
+    const civil = ethiopianToGregorian({ year: ethiopianYear, month: ethiopianMonth, day: ethDay });
+    const mark = classifyDay(civil.year, civil.month - 1, civil.day, synaxariumByEthDay);
+    if (mark) map.set(ethDay, mark);
+  }
+  return map;
+}
+
+export type DayPreviewInfo = {
+  gregorianLabel: string;
+  ethiopianLabel: string;
+  principalObservance: string;
+  fastStatus: string;
+  commemorationsCount: number;
+  primaryKind?: CalendarCellMarkKind;
+  alsoFast?: boolean;
+};
+
+/**
+ * Generates an accurate preview for a day cell hover/focus popover.
+ */
+export function getDayPreviewInfo(
+  date: Date,
+  mark?: CalendarDayCellMark,
+  locale: string = 'en',
+): DayPreviewInfo {
+  const isAmharic = locale === 'am';
+  const eth = gregorianToEthiopian(date);
+  const ethFormatted = isAmharic
+    ? formatEthiopianDate(eth, 'am')
+    : formatEthiopianDate(eth, 'en');
+
+  const gregFormatted = new Intl.DateTimeFormat(isAmharic ? 'am-ET' : 'en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(date);
+
+  const snap = buildChurchDaySnapshot(date);
+  const rows = getEntriesForDate(date);
+
+  const principalObservance =
+    mark?.label ||
+    (rows.length > 0
+      ? rows[0].entry.title
+      : (snap.commemoration?.title ?? (isAmharic ? 'መደበኛ ቀን' : 'Daily Church Rhythm')));
+
+  const isFast = Boolean(mark?.alsoFast || mark?.primary === 'fast' || snap.fasting.weeklyFast || snap.fasting.seasonalFast);
+  const fastSeasonName = snap.fasting.seasonalFast || snap.fasting.weeklyFast;
+
+  const fastStatus = isFast
+    ? (fastSeasonName
+        ? (isAmharic ? 'የጾም ወቅት: ' : 'Fast: ') + fastSeasonName
+        : (isAmharic ? 'የጾም ቀን' : 'Fasting Day'))
+    : (isAmharic ? 'የፈሰክ ቀን (አይጾምም)' : 'Fast-Free Day');
+
+  const commemorationsCount =
+    (snap.commemoration ? 1 : 0) +
+    (snap.movableOnDay?.length || 0) +
+    (rows.length > 1 ? rows.length - 1 : 0);
+
+  return {
+    gregorianLabel: gregFormatted,
+    ethiopianLabel: ethFormatted,
+    principalObservance,
+    fastStatus,
+    commemorationsCount: Math.max(commemorationsCount, 1),
+    primaryKind: mark?.primary,
+    alsoFast: mark?.alsoFast,
+  };
 }

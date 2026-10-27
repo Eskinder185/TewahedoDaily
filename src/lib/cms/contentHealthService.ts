@@ -1,3 +1,4 @@
+import { parseStructuredLyrics } from '../mezmur/structuredLyricsParser'
 /**
  * Content Health — read-only Supabase audits for the CMS admin dashboard.
  * Derives issues client-side from batched fetches (no auto-rewrites of religious content).
@@ -434,7 +435,35 @@ async function checkMezmur(now: string): Promise<{
       withAmharic += 1
     }
 
-    if (hasText(row.transliteration)) withTranslit += 1
+    if (hasText(row.transliteration)) {
+      withTranslit += 1
+      if (hasText(row.lyrics_amharic)) {
+        try {
+          const parsedAm = parseStructuredLyrics(row.lyrics_amharic!)
+          const parsedTr = parseStructuredLyrics(row.transliteration!)
+          if (parsedAm.sections.length !== parsedTr.sections.length && published) {
+            issues.push(
+              issue(
+                {
+                  ...base,
+                  severity: 'review',
+                  issueType: 'lyrics_section_count_mismatch',
+                  title: 'Lyrics section count mismatch',
+                  description: `“${row.title || row.slug}” has ${parsedAm.sections.length} Amharic sections vs ${parsedTr.sections.length} transliteration sections.`,
+                  metadata: {
+                    amharicSections: parsedAm.sections.length,
+                    transliterationSections: parsedTr.sections.length,
+                  },
+                },
+                now,
+              ),
+            )
+          }
+        } catch {
+          // ignore parsing error in health check
+        }
+      }
+    }
     else if (published) {
       issues.push(
         issue(
@@ -2843,8 +2872,11 @@ async function checkUserPersistence(now: string): Promise<{ issues: ContentHealt
 
   const client = db()
 
-  const favProbe = await client.from('user_favorites').select('id', { count: 'exact', head: true }).limit(1)
-  if (favProbe.error) {
+  const { data: authSession } = await client.auth.getSession().catch(() => ({ data: { session: null } }))
+  const favProbe = authSession?.session
+    ? await client.from('user_favorites').select('id', { count: 'exact', head: true }).limit(1)
+    : { error: null }
+  if (favProbe.error && favProbe.error.code !== '42501') {
     logErr('user_favorites probe', favProbe.error)
     issues.push(
       issue(

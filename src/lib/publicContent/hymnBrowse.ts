@@ -21,6 +21,7 @@ import { collectPagedRows, isEligiblePublicMezmurRow, isPublicMezmurStatus } fro
 import { mezmurLanguageAliases, normalizeMezmurLanguage, type MezmurLanguageCode, type MezmurLanguageFilter } from '../mezmur/mezmurLanguage'
 
 let zemariCountsViewLacksTrashMetadata = false
+let zemariCountsViewPermissionDenied = false
 
 function isZemariCountsTrashColumnError(error: { code?: string; message?: string } | null): boolean {
   return Boolean(
@@ -545,6 +546,12 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
 const collectionsCache = new Map<string, { at: number; data: HymnCollection[] }>()
 const collectionsPromises = new Map<string, Promise<HymnCollection[]>>()
 const COLLECTIONS_TTL_MS = 5 * 60 * 1000
+
+/** Clear browse metadata after a publication or unpublish operation. */
+export function invalidateHymnBrowseCaches(): void {
+  collectionsCache.clear()
+  collectionsPromises.clear()
+}
 
 /** Level 1 — collections from mezmur_collections_import, filtered by language if specified. */
 export async function getHymnCollections(language?: MezmurLanguageFilter): Promise<HymnCollection[]> {
@@ -1361,21 +1368,35 @@ export async function getMezmurBySlug(slug: string): Promise<ImportMezmurDetail 
     .from(T.data as never)
     .select('*')
     .eq('slug', trimmed)
-    .limit(1)
+    // A public slug is a route key, not an identity key. Fetch one extra row so
+    // a legacy collision cannot silently open whichever row PostgREST returns.
+    .limit(2)
 
   if (error) {
     logSchemaError('getMezmurBySlug', error)
     throw permissionError(T.data, error)
   }
-  row = (data || [])[0] as DataImportRow | undefined
+  const matchingSlugRows = (data || []) as DataImportRow[]
+  if (matchingSlugRows.length > 1) {
+    throw new Error(
+      'This hymn route is ambiguous because multiple published records share this slug. It cannot be selected safely until the slug collision is resolved.',
+    )
+  }
+  row = matchingSlugRows[0]
 
   if (!row && isUuid) {
     const { data: idData } = await supabase
       .from(T.data as never)
       .select('*')
       .eq('mezmur_id', trimmed)
-      .limit(1)
-    row = (idData || [])[0] as DataImportRow | undefined
+      .limit(2)
+    const matchingLegacyIdRows = (idData || []) as DataImportRow[]
+    if (matchingLegacyIdRows.length > 1) {
+      throw new Error(
+        'This hymn route is ambiguous because its legacy identifier matches multiple published records. It cannot be selected safely until the collision is resolved.',
+      )
+    }
+    row = matchingLegacyIdRows[0]
 
     if (!row) {
       const [catMatch, occMatch] = await Promise.all([
@@ -1390,8 +1411,14 @@ export async function getMezmurBySlug(slug: string): Promise<ImportMezmurDetail 
           .from(T.data as never)
           .select('*')
           .eq('slug', matchedSlug)
-          .limit(1)
-        row = (slugData || [])[0] as DataImportRow | undefined
+          .limit(2)
+        const matchingLinkedSlugRows = (slugData || []) as DataImportRow[]
+        if (matchingLinkedSlugRows.length > 1) {
+          throw new Error(
+            'This hymn route is ambiguous because a linked legacy slug matches multiple published records. It cannot be selected safely until the slug collision is resolved.',
+          )
+        }
+        row = matchingLinkedSlugRows[0]
       }
     }
   }
@@ -1486,7 +1513,7 @@ export async function getHymnSingers(language?: MezmurLanguageFilter): Promise<H
   if (!supabase) return []
 
   // Canonical profile source: public.zemaris (+ counts view). Never derive profile from singer_*.
-  const viewRes = zemariCountsViewLacksTrashMetadata
+  const viewRes = (zemariCountsViewLacksTrashMetadata || zemariCountsViewPermissionDenied)
     ? { data: null, error: null }
     : await supabase
         .from('zemaris_with_counts' as never)
@@ -1504,7 +1531,9 @@ export async function getHymnSingers(language?: MezmurLanguageFilter): Promise<H
     rows = (viewRes.data || []) as Record<string, unknown>[]
   } else {
     if (isZemariCountsTrashColumnError(viewRes.error)) zemariCountsViewLacksTrashMetadata = true
-    if (viewRes.error && !/zemaris_with_counts|PGRST205|Could not find/i.test(viewRes.error.message || '')) {
+    if (viewRes.error?.code === '42501' || /permission denied/i.test(viewRes.error?.message || '')) {
+      zemariCountsViewPermissionDenied = true
+    } else if (viewRes.error && !/zemaris_with_counts|PGRST205|Could not find/i.test(viewRes.error.message || '')) {
       logSchemaError('getHymnSingers zemaris_with_counts', viewRes.error)
     }
     const plain = await supabase
@@ -2184,3 +2213,4 @@ export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): P
       }
     })
 }
+

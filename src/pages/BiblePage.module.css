@@ -127,8 +127,8 @@ a.bookCard:hover { border-color: var(--color-gold); }
 .verses { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
 .verses li { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: .5rem; align-items: start; min-width: 0; }
 .verseNumber { color: var(--color-accent); font-size: .78rem; font-weight: 750; line-height: 1.9; font-variant-numeric: tabular-nums; }
-.amharicVerse { font-size: clamp(1.35rem, 4.3vw, 1.5rem); line-height: 1.8; overflow-wrap: anywhere; }
-.englishVerse { font-size: clamp(1.09rem, 3.5vw, 1.2rem); line-height: 1.75; overflow-wrap: anywhere; }
+.amharicVerse { font-size: calc(clamp(1.35rem, 4.3vw, 1.5rem) * var(--bible-scale, 1)); line-height: 1.8; overflow-wrap: anywhere; }
+.englishVerse { font-size: calc(clamp(1.09rem, 3.5vw, 1.2rem) * var(--bible-scale, 1)); line-height: 1.75; overflow-wrap: anywhere; }
 .chapterNav {
   display: flex;
   justify-content: space-between;
@@ -191,4 +191,247 @@ a.bookCard:hover { border-color: var(--color-gold); }
   .chapterNav span {
     flex: 1 1 100%;
   }
+}
+
+.readerTools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0.85rem 0 1.2rem;
+}
+
+.fontControls {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.fontControls button {
+  min-width: 38px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.5rem;
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--color-heading);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 140ms ease, color 140ms ease;
+}
+
+.fontControls button:hover {
+  background: var(--color-bg-muted);
+}
+
+.fontControls button[aria-pressed="true"] {
+  background: var(--color-burgundy-ink, #4a1525);
+  color: #fff8f0;
+}
+
+@media (max-width: 768px) {
+  .readerTools {
+    position: sticky;
+    top: calc(var(--header-height, 3.35rem) + env(safe-area-inset-top, 0px));
+    z-index: 4;
+    padding: 0.45rem 0.25rem;
+    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: var(--radius-sm);
+  }
+}
+
+/* --- BIBLE STUDY READER ENHANCEMENTS --- */
+.readingProgressBar {
+  position: sticky;
+  top: var(--header-height, 3.35rem);
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--color-border-subtle, #e6ded0);
+  z-index: 10;
+}
+
+.readingProgressFill {
+  height: 100%;
+  background: var(--color-burgundy, #6a1a24);
+  transition: width 0.15s ease-out;
+}
+
+.alignedVerseRow {
+  position: relative;
+  padding: 0.5rem 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  transition: background 0.15s ease;
+}
+
+.alignedVerseRow:hover {
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.highlightGold {
+  background: rgba(255, 223, 100, 0.35) !important;
+}
+
+.highlightEmerald {
+  background: rgba(120, 230, 160, 0.3) !important;
+}
+
+.highlightSapphire {
+  background: rgba(130, 200, 255, 0.3) !important;
+}
+
+.highlightRose {
+  background: rgba(255, 160, 190, 0.3) !important;
+}
+
+.parallelGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .parallelGrid {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
+
+.verseNumberTag {
+  font-weight: 700;
+  color: var(--color-burgundy, #6a1a24);
+  font-size: 0.8em;
+  margin-right: 0.35rem;
+  user-select: none;
+}
+
+.verseToolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0.3;
+  transition: opacity 0.15s ease;
+  margin-top: 0.25rem;
+}
+
+.alignedVerseRow:hover .verseToolbar,
+.alignedVerseRow:focus-within .verseToolbar {
+  opacity: 1;
+}
+
+.verseActionBtn {
+  background: none;
+  border: 1px solid var(--color-border-subtle, #e6ded0);
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.verseActionBtn:hover {
+  border-color: var(--color-burgundy, #6a1a24);
+  color: var(--color-burgundy, #6a1a24);
+}
+
+.verseNoteBox {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(212, 175, 55, 0.1);
+  border-left: 3px solid #d4af37;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.85rem;
+}
+
+.verseNoteInput {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--color-border-subtle, #e6ded0);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  box-sizing: border-box;
+}
+
+.relatedOrthodoxBox {
+  margin-top: 3rem;
+  padding: 1.5rem;
+  background: var(--color-parchment-1, #fcf9f2);
+  border: 1px solid var(--color-border-gold, #d4af37);
+  border-radius: 8px;
+}
+
+.relatedOrthodoxBox h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--color-burgundy, #6a1a24);
+  font-size: 1.15rem;
+}
+
+.relatedOrthodoxLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.relatedLinkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border-subtle, #e6ded0);
+  border-radius: 6px;
+  color: var(--color-ink, #231b15);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.relatedLinkBtn:hover {
+  border-color: var(--color-burgundy, #6a1a24);
+  color: var(--color-burgundy, #6a1a24);
+}
+
+
+.liturgicalBanner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  background: var(--surface-paper-card, #fbf4e4);
+  border: 1px solid var(--color-gold-line, rgba(180, 138, 59, 0.42));
+  border-radius: var(--radius-md, 8px);
+  font-size: 0.88rem;
+}
+
+.liturgicalBannerLink {
+  color: var(--color-gold-ink, #6f531f);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.liturgicalBannerLink:hover {
+  text-decoration: underline;
 }

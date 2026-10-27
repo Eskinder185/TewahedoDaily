@@ -14,6 +14,7 @@ import {
 import type { BibleBookDetail, BibleEdition, CanonicalBook, ChapterText, ReaderChapter, SourceBook } from '../lib/bible/bibleTypes'
 import { recordGuestRecentViewed } from '../lib/userContent/guestStorage'
 import { BibleSearchBar } from '../components/bible/BibleSearchBar'
+import { ParallelVerseView } from '../components/bible/ParallelVerseView'
 import s from './BiblePage.module.css'
 
 const WORDS = {
@@ -37,6 +38,10 @@ const WORDS = {
     volumes: '{count} volumes',
     volumesOne: '1 volume',
     volumesHeading: 'Volumes in this book',
+    textSmaller: 'Smaller text',
+    textReset: 'Default text size',
+    textLarger: 'Larger text',
+    textSize: 'Text size',
   },
   am: {
     bible: 'መጽሐፍ ቅዱስ', subtitle: 'ቅዱሳት መጻሕፍትን በአማርኛ እና በእንግሊዝኛ ያንብቡ።',
@@ -58,6 +63,10 @@ const WORDS = {
     volumes: '{count} ክፍሎች',
     volumesOne: '1 ክፍል',
     volumesHeading: 'በዚህ መጽሐፍ ውስጥ ያሉ ክፍሎች',
+    textSmaller: 'አነስ ያለ ፊደል',
+    textReset: 'መደበኛ የፊደል መጠን',
+    textLarger: 'ትልቅ ፊደል',
+    textSize: 'የፊደል መጠን',
   },
 } as const
 
@@ -442,12 +451,50 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     params.set('edition', next)
     navigate({ pathname: location.pathname, search: params.toString(), hash: location.hash }, { replace: true })
   }
+  const [fontScale, setFontScale] = useState<number>(() => {
+    try {
+      const stored = localStorage.getItem('tewahedo_bible_font_scale')
+      const val = stored ? parseFloat(stored) : 1
+      return Number.isFinite(val) && val >= 0.8 && val <= 1.5 ? val : 1
+    } catch {
+      return 1
+    }
+  })
+
+  const updateScale = (scale: number) => {
+    setFontScale(scale)
+    try {
+      localStorage.setItem('tewahedo_bible_font_scale', String(scale))
+    } catch {}
+  }
+
   return <>
     <header className={`${s.hero} ${chromeHidden ? s.chromeHidden : ''}`.trim()}><p className={s.eyebrow}>{detail.book.collection === 'old' ? w.old : w.newer}</p><h1>{bookName(detail.book, uiLocale)} <span>{w.chapter} {primary?.chapter_number}</span></h1>{primary && (detail.sources.length > 1) && <p>{sourceName(primary.source, uiLocale)}</p>}</header>
-    {availableCodes.length > 1 && <div className={`${s.language} ${chromeHidden ? s.chromeHidden : ''}`.trim()} role="group" aria-label={w.choose}>
-      {availableCodes.map((code) => <button key={code} type="button" aria-pressed={choice === code} onClick={() => setReading(code)}>{editionLabel(detail.editions.find((row) => row.code === code), w) || code}</button>)}
-      {!review && am && en && <button type="button" aria-pressed={choice === 'both'} onClick={() => setReading('both')}>{w.both}</button>}
-    </div>}
+    <aside className={s.liturgicalBanner} aria-label="Liturgical usage">
+      <span>
+        <strong>{uiLocale === 'am' ? 'የቀኖና ንባብ' : 'Orthodox Lectionary'}</strong>
+        {': '}
+        {uiLocale === 'am'
+          ? 'በኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ስርዓተ አምልኮ የሚነበብ'
+          : 'Appointed for divine worship and liturgical reading in the Ethiopian Orthodox tradition.'}
+      </span>
+      <Link to="/calendar" className={s.liturgicalBannerLink}>
+        {uiLocale === 'am' ? 'የቤተ ክርስቲያን ቀን መቁጠሪያ' : 'View Church Calendar'} →
+      </Link>
+    </aside>
+    <div className={`${s.readerTools} ${chromeHidden ? s.chromeHidden : ''}`.trim()}>
+      {availableCodes.length > 1 ? (
+        <div className={s.language} role="group" aria-label={w.choose}>
+          {availableCodes.map((code) => <button key={code} type="button" aria-pressed={choice === code} onClick={() => setReading(code)}>{editionLabel(detail.editions.find((row) => row.code === code), w) || code}</button>)}
+          {!review && am && en && <button type="button" aria-pressed={choice === 'both'} onClick={() => setReading('both')}>{w.both}</button>}
+        </div>
+      ) : <div />}
+      <div className={s.fontControls} role="group" aria-label={w.textSize}>
+        <button type="button" aria-label={w.textSmaller} aria-pressed={fontScale < 0.95} onClick={() => updateScale(Math.max(0.85, Math.round((fontScale - 0.15) * 100) / 100))}>A−</button>
+        <button type="button" aria-label={w.textReset} aria-pressed={fontScale >= 0.95 && fontScale <= 1.05} onClick={() => updateScale(1.0)}>A</button>
+        <button type="button" aria-label={w.textLarger} aria-pressed={fontScale > 1.05} onClick={() => updateScale(Math.min(1.45, Math.round((fontScale + 0.15) * 100) / 100))}>A+</button>
+      </div>
+    </div>
     {review && am && en && <p className={s.notice}>{w.review}</p>}
     {choice === 'both' && <p className={s.notice}>{w.independent}</p>}
     {detail.sources.length > 2 && am && en && <p className={s.notice}>{w.sequences}</p>}
@@ -463,7 +510,25 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
       </select>
     </label>
     <Status loading={result.loading} error={result.error} onRetry={result.reload} />
-    {result.data?.map((text) => <VerseBlock key={text.chapter.id} text={text} edition={detail.editions.find((row) => row.code === text.chapter.edition)} />)}
+    <div style={{ '--bible-scale': fontScale } as React.CSSProperties}>
+      {choice === 'both' && result.data && result.data.length >= 2 ? (
+        <ParallelVerseView
+          amharicText={result.data[0]}
+          englishText={result.data[1]}
+          bookSlug={detail.book.slug}
+          chapterOrdinal={ordinal}
+          bookTitle={bookName(detail.book, uiLocale)}
+        />
+      ) : (
+        result.data?.map((text) => (
+          <VerseBlock
+            key={text.chapter.id}
+            text={text}
+            edition={detail.editions.find((row) => row.code === text.chapter.edition)}
+          />
+        ))
+      )}
+    </div>
     <nav className={s.chapterNav} aria-label={w.chapters}>
       {ordinal > 1 ? (
         <Link to={`/bible/${detail.book.slug}/${ordinal - 1}${choice && choice !== 'both' ? `?edition=${encodeURIComponent(choice)}` : ''}`}>← {w.previous}</Link>

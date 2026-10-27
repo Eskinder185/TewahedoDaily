@@ -1,0 +1,22 @@
+{
+  "passed": [
+    "Desktop Home renders cleanly",
+    "Desktop Home: Zero horizontal overflow",
+    "Desktop Calendar: Page loads",
+    "Desktop Calendar: Grid rendered",
+    "Desktop Bible: Chapter reading interface loads",
+    "Desktop Mezmur: Catalog loads",
+    "Desktop Mezmur: Hymn detail page opens with lyrics",
+    "Desktop Prayers: Catalog loads",
+    "Mobile Home: Amharic interface loads",
+    "Mobile Home: Zero horizontal overflow",
+    "Mobile Home: Interactive buttons satisfy touch target sizing",
+    "Mobile Calendar: Amharic calendar month view loads",
+    "Mobile Calendar: Zero horizontal overflow",
+    "Mobile Bible: Amharic text reader loads",
+    "Mobile Prayers: Amharic prayer library loads"
+  ],
+  "failed": [],
+  "consoleErrors": [],
+  "pagesAudited": []
+}

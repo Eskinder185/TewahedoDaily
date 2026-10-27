@@ -13,6 +13,9 @@ export { buildChurchDaySnapshot } from './buildChurchDaySnapshot'
 export {
   computeCalendarDayMarks,
   computeCalendarDayMarksAsync,
+  computeEthiopianMonthMarksAsync,
+  getDayPreviewInfo,
+  type DayPreviewInfo,
   eotcRowToCellMarkKind,
   type CalendarCellMarkKind,
   type CalendarDayCellMark,

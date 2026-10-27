@@ -1,5 +1,6 @@
 export const PROTECTED_MEZMUR_APPROVAL_FIELDS = [
   'review_status',
+  'rights_status',
   'publication_approved_at',
   'publication_approved_by',
 ] as const

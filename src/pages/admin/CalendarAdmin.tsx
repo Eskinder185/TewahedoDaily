@@ -55,6 +55,14 @@ import {
 } from '../../lib/calendar/calendarImagePaths'
 import { useAsync } from '../../lib/cms/useAsync'
 import { AsyncNotice, Status } from './AdminUi'
+import {
+  fetchReviewsForContent,
+  resolveReviewStatus,
+  getReviewNote,
+  type AdminContentReviewRecord,
+} from '../../lib/cms/adminContentReviewService'
+import { AdminContentReviewTag } from '../../components/admin/AdminContentReviewTag'
+import { CalendarCardReviewPanel } from '../../components/admin/CalendarCardReviewPanel'
 import s from './Admin.module.css'
 
 const CalendarCardQuickImageModal = lazy(() =>
@@ -196,6 +204,8 @@ export function CalendarAdmin() {
   const page = Math.max(1, Number(params.get('page')) || 1)
   const [quickImageId, setQuickImageId] = useState<string | null>(null)
   const [listPatch, setListPatch] = useState<Record<string, CalendarCardRow>>({})
+  const reviewFilter = params.get('review') || ''
+  const [reviewsMap, setReviewsMap] = useState<Map<string, AdminContentReviewRecord>>(new Map())
 
   const result = useAsync(
     useCallback(
@@ -223,10 +233,34 @@ export function CalendarAdmin() {
     ),
   )
 
+  useEffect(() => {
+    if (result.data?.items && result.data.items.length > 0) {
+      const ids = result.data.items.map((i) => i.id)
+      fetchReviewsForContent('calendar_card', ids).then(setReviewsMap)
+    }
+  }, [result.data?.items])
+
+  useEffect(() => {
+    const handleReviewUpdate = (e: Event) => {
+      const custom = e as CustomEvent<AdminContentReviewRecord>
+      if (custom.detail && custom.detail.content_type === 'calendar_card') {
+        setReviewsMap((prev) => {
+          const next = new Map(prev)
+          next.set(custom.detail.content_id, custom.detail)
+          return next
+        })
+      }
+    }
+    window.addEventListener('td:admin-review-updated', handleReviewUpdate)
+    return () => window.removeEventListener('td:admin-review-updated', handleReviewUpdate)
+  }, [])
+
   const filteredItems = useMemo(() => {
     const items = (result.data?.items || []).map((row) => listPatch[row.id] || row)
     const needle = q.trim().toLowerCase()
     return items.filter((row) => {
+      if (reviewFilter === 'needs_review' && resolveReviewStatus(row.id, reviewsMap) !== 'needs_review') return false
+      if (reviewFilter === 'reviewed' && resolveReviewStatus(row.id, reviewsMap) !== 'reviewed') return false
       if (source === 'orphaned') {
         const normalized = normalizeSourceType(row.source_type)
         return isLinkedSourceType(normalized) && !row.source_id && !row.source_slug
@@ -297,6 +331,7 @@ export function CalendarAdmin() {
       homepage,
       image,
       source,
+      review: params.get('review') || '',
       page: '1',
       ...next,
     })
@@ -320,10 +355,23 @@ export function CalendarAdmin() {
 
       <SyncCalendarCardsPanel onDone={() => result.reload()} />
 
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem', padding: '0.75rem 1rem', background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '6px', margin: '0.75rem 0 1rem', fontSize: '0.875rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+          <span><strong>Card Review Status:</strong></span>
+          <span style={{ color: '#166534', fontWeight: 600 }}>✓ {(result.data?.items || []).filter(r => resolveReviewStatus(r.id, reviewsMap) === 'reviewed').length} Reviewed</span>
+          <span style={{ color: '#92400e', fontWeight: 600 }}>⚠️ {(result.data?.items || []).filter(r => resolveReviewStatus(r.id, reviewsMap) === 'needs_review').length} Needs Review</span>
+        </div>
+        <div style={{ fontSize: '0.8125rem', color: '#64748b' }}>
+          Every calendar card defaults to <em>Needs Review</em> until explicitly confirmed by staff.
+        </div>
+      </div>
+
       <div className={s.actions} style={{ flexWrap: 'wrap', gap: '0.4rem', marginBottom: '0.75rem' }}>
         {(
           [
-            { label: 'All', next: { image: '', source: '', homepage: '', status: '' } },
+            { label: 'All', next: { image: '', source: '', homepage: '', status: '', review: '' } },
+            { label: '⚠️ Needs Review', next: { review: 'needs_review' } },
+            { label: '✓ Reviewed', next: { review: 'reviewed' } },
             { label: 'Needs Image', next: { image: 'needs' } },
             { label: 'Has Image', next: { image: 'has' } },
             { label: 'Observances', next: { source: 'observance' } },
@@ -339,6 +387,8 @@ export function CalendarAdmin() {
             key={chip.label}
             type="button"
             className={
+              (chip.label === '⚠️ Needs Review' && reviewFilter === 'needs_review') ||
+              (chip.label === '✓ Reviewed' && reviewFilter === 'reviewed') ||
               (chip.label === 'Needs Image' && image === 'needs') ||
               (chip.label === 'Has Image' && image === 'has') ||
               (chip.label === 'Homepage' && homepage === 'home') ||
@@ -542,6 +592,28 @@ export function CalendarAdmin() {
                     </span>
                     <span className={s.muted}>Date rule: {dateRule}</span>
                     <Status value={row.status} />
+                    <div style={{ margin: '0.4rem 0' }}>
+                      <AdminContentReviewTag
+                        contentType="calendar_card"
+                        contentId={row.id}
+                        currentStatus={resolveReviewStatus(row.id, reviewsMap)}
+                        currentNote={getReviewNote(row.id, reviewsMap)}
+                        onStatusChange={(newStatus, newNote) => {
+                          setReviewsMap((prev) => {
+                            const next = new Map(prev)
+                            next.set(row.id, {
+                              content_type: 'calendar_card',
+                              content_id: row.id,
+                              review_status: newStatus,
+                              review_note: newNote,
+                              created_at: '',
+                              updated_at: '',
+                            })
+                            return next
+                          })
+                        }}
+                      />
+                    </div>
                     <div className={s.actions} style={{ flexWrap: 'wrap' }}>
                       <button
                         type="button"
@@ -1033,6 +1105,10 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
             <div>Date rule: {dateRule}</div>
           </div>
         </section>
+      ) : null}
+
+      {existing ? (
+        <CalendarCardReviewPanel card={existing} linkedSource={linkedPreview} />
       ) : null}
 
       {error ? (

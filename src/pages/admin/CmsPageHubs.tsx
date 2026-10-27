@@ -38,6 +38,7 @@ const PRAY_TABS = [
 const CALENDAR_TABS = [
   { to: '/admin/calendar', label: 'Overview', end: true },
   { to: '/admin/calendar/cards', label: 'Calendar Cards' },
+  { to: '/admin/calendar/mezmurs', label: 'Hymn Links' },
   { to: '/admin/calendar/observances', label: 'Observances' },
   { to: '/admin/calendar/fasts', label: 'Fasts' },
   { to: '/admin/calendar/seasons', label: 'Seasons' },

@@ -206,7 +206,13 @@
       "previousDay": "ያለፈው ቀን",
       "nextDay": "ቀጣዩ ቀን",
       "selectDay": "የመታሰቢያ ዝርዝር ለማየት ቀን ይምረጡ።",
-      "observanceImage": "የ{title} መታሰቢያ ምስል"
+      "observanceImage": "የ{title} መታሰቢያ ምስል",
+      "historyHeading": "ታሪካዊ ዳራና ታሪኩ",
+      "theologyHeading": "ነገረ መለኮታዊ ትርጉም",
+      "traditionsHeading": "ባህሎችና ሥርዓታት",
+      "mezmursHeading": "ተዛማጅ መዝሙራት",
+      "prayersHeading": "ተዛማጅ ጸሎታትና ምንጮች",
+      "sourcesHeading": "ዋቢ መጻሕፍትና ማጣቀሻዎች"
     },
     "title": "ቀን መቁጠሪያ",
     "upcoming": {
@@ -951,7 +957,8 @@
       "bibleText": "የመጽሐፍ ቅዱስ ጽሑፍ",
       "saint": "ቅዱስ",
       "feast": "በዓል",
-      "learn": "ተማር"
+      "learn": "ተማር",
+      "churchLibrary": "የቤተ ክርስቲያን መጻሕፍት"
     },
     "seeMore": "ተጨማሪ አሳይ ({count})",
     "partial": "አንዳንድ መረጃዎች ቀስ ብለዋል፤ የተዘጋጀውን እያሳየን ነው።",
@@ -1050,7 +1057,8 @@
         "feast": "በዓል",
         "learn": "ተማር",
         "account": "መለያ",
-        "other": "መዝገብ"
+        "other": "መዝገብ",
+        "church_library": "የቤተ ክርስቲያን መጻሕፍት"
       }
     },
     "calendar": {
@@ -1119,7 +1127,11 @@
     "scriptureLangAm": "አማርኛ",
     "scriptureLangOther": "የምንጭ ቋንቋ",
     "scriptureMystery": "ምሥጢር፦ {mystery}",
-    "scriptureCovers": "የሚሸፍናቸው ቁጥሮች {range}"
+    "scriptureCovers": "የሚሸፍናቸው ቁጥሮች {range}",
+    "churchLibraryUnavailable": "የቤተ መጻሕፍት ምንጮች ለጊዜው አይገኙም።",
+    "churchLibrarySources": "የቤተ መጻሕፍት ምንጮች",
+    "churchLibraryNote": "እነዚህ ከተመዘገቡ መጻሕፍት የተወሰዱ አጫጭር ጥቅሶች ናቸው። ትምህርቱን በሙሉ ይዘት ያረጋግጡ።",
+    "churchLibraryOpenSource": "የተፈቀደውን ምንጭ ክፈት"
   },
   "account": {
     "signIn": "ግባ",
@@ -1234,5 +1246,21 @@
   },
   "a11y": {
     "skipToMain": "ወደ ዋና ይዘት ዝለል"
+  },
+  "library": {
+    "title": "የቤተ ክርስቲያን መጻሕፍት",
+    "subtitle": "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ቀኖናውያን መጻሕፍት፣ የሊቃውንት ትርጓሜዎችና ሃይማኖታዊ ጽሑፎች።",
+    "searchPlaceholder": "መጻሕፍትን በስም፣ በደራሲ ወይም በርእሰ ጉዳይ ይፈልጉ…",
+    "loading": "የመጻሕፍት ዝርዝር በመጫን ላይ…",
+    "noBooks": "ምንም የተገኘ መጽሐፍ የለም።",
+    "read": "መጽሐፉን ያንብቡ",
+    "readBook": "በቤተ መጻሕፍት ያንብቡ",
+    "loadingBook": "መጽሐፉ በመከፈት ላይ ነው…",
+    "errorOpening": "መጽሐፉን መክፈት አልተቻለም",
+    "backToList": "ወደ ቤተ መጻሕፍት ይመለሱ",
+    "back": "ቤተ መጻሕፍት",
+    "findInBook": "በመጽሐፉ ውስጥ ይፈልጉ…",
+    "tableOfContents": "ማውጫ",
+    "sectionEmpty": "በዚህ ክፍል ውስጥ ምንም ጽሑፍ የለም።"
   }
 }

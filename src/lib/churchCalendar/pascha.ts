@@ -1,4 +1,5 @@
 import { PASCHA_GREGORIAN_ISO } from '../../data/paschaGregorianTable'
+import { computeBahireHasab } from './bahireHasabEngine'
 
 /** Local calendar date (no time-of-day semantics). */
 export function parseIsoLocalDate(iso: string): Date | null {
@@ -39,8 +40,15 @@ export function sameLocalCalendarDay(a: Date, b: Date): boolean {
  */
 export function resolvePaschaGregorianDate(gregorianYear: number): Date | null {
   const iso = PASCHA_GREGORIAN_ISO[gregorianYear]
-  if (!iso) return null
-  return parseIsoLocalDate(iso)
+  if (iso) return parseIsoLocalDate(iso)
+  try {
+    const ey = gregorianYear - 8
+    const bh = computeBahireHasab(ey)
+    const g = bh.fasika.gregorianDate
+    return new Date(g.year, g.month - 1, g.day)
+  } catch {
+    return null
+  }
 }
 
 /** First Sunday strictly after Fasika (ዳግም ትንሣኤ / Thomas Sunday / “New Sunday”). */

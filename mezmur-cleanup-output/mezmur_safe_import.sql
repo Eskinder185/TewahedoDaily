@@ -1,0 +1,9147 @@
+-- =============================================================================
+-- TEWAHEDODAILY — TRANSACTION-SAFE MEZMUR IMPORT SCRIPT
+-- Target Project: tgvhpibzzkqxkcumrivh (Supabase)
+-- Generated: 2026-10-26
+-- Contains ONLY verified new Mezmurs and approved non-destructive enrichments.
+-- EXECUTION SAFETY: Requires explicit manual operator review and authorization.
+-- =============================================================================
+
+BEGIN;
+
+-- -----------------------------------------------------------------------------
+-- SECTION 1: SAFE ENRICHMENTS FOR EXISTING RECORDS
+-- -----------------------------------------------------------------------------
+-- Enrichment for tewedaj-mezimur (Add missing Latin transliteration lyrics from exact_youtube_id (lOcABJ07_Ec))
+UPDATE public.mezmur_data_import SET lyrics_transliteration = 'bark lene egzio zente ዓmete mሕretke
+bebzኃ girutke leሕzbke ityophya
+kemengeni lesmke qdus/2/
+bekeme ykun nbretne beselam
+
+VERSE 1
+webedaኅna lezntu ዓmet/2/...', updated_at = NOW() WHERE slug = 'tewedaj-mezimur' AND (lyrics_transliteration IS NULL OR lyrics_transliteration = '');
+-- Enrichment for yedenagil-memekiya-yenebiyat-awude-amet-orthodox-mezmur (Add missing Latin transliteration lyrics from exact_youtube_id (QJYv9pprYL0))
+UPDATE public.mezmur_data_import SET lyrics_transliteration = 'ዐwde ዓmetun barkiln dngl maryam
+yedenagl memekiya yenebiyat gedam
+ዐwde ዓmetun barkiln dngl maryam...', updated_at = NOW() WHERE slug = 'yedenagil-memekiya-yenebiyat-awude-amet-orthodox-mezmur' AND (lyrics_transliteration IS NULL OR lyrics_transliteration = '');
+-- Enrichment for des-yebelene-elel-belu (Add missing Latin transliteration lyrics from exact_youtube_id (HaxhNswSv08))
+UPDATE public.mezmur_data_import SET lyrics_transliteration = 'bewኃ texemeqe dagmegna bemenfes qdus
+bexmqet weleden
+227.amsemayat
+amsemayat werede weemmaryam tewelde /2/
+
+VERSE 1
+kemeykun bieza /2/ lekulu ዓlem/2/
+lebse ሥga maryam /riga/
+trgum፡
+kesemayat werede ke...', updated_at = NOW() WHERE slug = 'des-yebelene-elel-belu' AND (lyrics_transliteration IS NULL OR lyrics_transliteration = '');
+-- Enrichment for our-bride-and-groom (Add missing Latin transliteration lyrics from exact_amharic_title (ሙሽራዬ))
+UPDATE public.mezmur_data_import SET lyrics_transliteration = 'mushrayu/3/ abebayie
+keጐnh yemthon eht agegneh
+yegnama musra enkuan des aleh
+yeagziabሔr feqadu lezih kabeqachhu
+
+VERSE 1
+bietachhu ymereq befqr yatsnachhu...', updated_at = NOW() WHERE slug = 'our-bride-and-groom' AND (lyrics_transliteration IS NULL OR lyrics_transliteration = '');
+-- Enrichment for wemako-ethiopian-orthodox-mezmur (Add missing Latin transliteration lyrics from exact_amharic_title (ወእመ አኮ))
+UPDATE public.mezmur_data_import SET lyrics_transliteration = 'weame ako keme werieza ኃyel/ri2/
+twiedso merዓt enze tbl/4/
+352. nsiebho
+nsiebሖ /2/ leamlake ዕzra
+
+VERSE 1
+arsun lefexere ersuanm leሠra
+nsiebሖ leamlake azra
+353. all ell
+all all des ybelen/2/
+
+VERSE 2
+...', updated_at = NOW() WHERE slug = 'wemako-ethiopian-orthodox-mezmur' AND (lyrics_transliteration IS NULL OR lyrics_transliteration = '');
+-- Enrichment for come-all-and-then-marvel (Add missing Latin transliteration lyrics from exact_amharic_title (ኑ ተመልከቱልኝ))
+UPDATE public.mezmur_data_import SET lyrics_transliteration = 'mushrochu honu abrፃm weሣra/2/
+ሐnana iyaqiem betselot sitegu
+befexariyachew melkamun biyadergu
+beqdus gabcha tsentew biramedu
+
+VERSE 1
+yeamlakn anat dngln weledu/2/
+nu temelketulgn
+nu temelketulgn yeam...', updated_at = NOW() WHERE slug = 'come-all-and-then-marvel' AND (lyrics_transliteration IS NULL OR lyrics_transliteration = '');
+-- Enrichment for tehetenashe-girum (Add missing Latin transliteration lyrics from exact_youtube_id (o4Wh8G9UG9E))
+UPDATE public.mezmur_data_import SET lyrics_transliteration = 'anatu honeshal lemedኃnieዓlem/2/
+ntsሕt slehonsh..... amebietie /2/
+enken yelielebsh ...... emebietie /2/
+yefxretat nta....... amebietie /2/
+
+VERSE 1
+beanchi yaderebsh....... amebietie /2/
+yedngl memere...', updated_at = NOW() WHERE slug = 'tehetenashe-girum' AND (lyrics_transliteration IS NULL OR lyrics_transliteration = '');
+
+-- -----------------------------------------------------------------------------
+-- SECTION 2: NEW DRAFT HYMNS INSERTION (mezmur_data_import)
+-- -----------------------------------------------------------------------------
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-barkln-abietu-yhnn-yem-ret', 'ትርጉም፡- ባርክልን አቤቱ ይህንን የምሕረት', 'ትርጉም፡- ባርክልን አቤቱ ይህንን የምሕረት', 'trgum፡- barkln abietu yhnn yemሕret', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡- ባርክልን አቤቱ ይህንን የምሕረት', 'ዓመታችንን በቸርነትህ ብዛት
+ለሕዝቦችህ ኢትዮጵያ እንድንገዛ ለቅዱስ
+ስምህ /2/
+አንዲሆንልን ኑሮአችን በሰላም
+
+VERSE 1
+በደኅና በዚህ ዓመት /2/
+35. ወአንተኒ ወረብ ዝማሜ ጽፋት
+ሃሌ ሉያ ወአንተኒ ሕፃን ነቢየ ልዑል ትሰመይ
+አርኮ ለመርዓዊ ትሰመይ ወአዝማዱ በሥጋ
+
+VERSE 2
+ትሰመይ ተፈኖከ ተዐርዉ አናቅጸ ጽድቅ
+በመንፈስ የሐውር ወበኃይለ ኤልያስ
+አልቦ ዘየአብል ዮለ ዮሐንስ
+ወረብ
+
+VERSE 3
+ወአንቲኒ ሕፃን ነቢየ ልዑል/ሪ/
+አርኮ ለመርዓዊ ትሰመይ/2/ ነቢየልዑል/2/
+ሰላም
+ተሰአልከ እግዚኦ ምድረከ ዛሌ ሉያ
+
+VERSE 4
+ዮሐንስ ክቡር ነቢየ ልዑል ብአሴ ሰላም ዘንብረቱ
+ገዳም/2/
+3. ርዕሰ አውደ አመት
+ርዕሰ ዐውደዓመት ዮሐንስ ወላዲ መጥቅዕ/2/
+
+VERSE 5
+ወላዴ መጥቅዕፅዕ/2/ ወአበቅቴ/2/
+ርዕሰ ዐውደዓመት ዮሐንስ ወላዴ መጥቅእ/2/
+ወላዴ መጥቅፅ/2/ ዮሐንስ
+4. ዐውደ ዓመት
+
+VERSE 6
+ዐውደ ዓመት ለባርኮ ባርኮ ዐውደ ዓመት/2/
+ንዒ ማርያም ለምህረት ወሣልህ/2/', 'ዓmetachnn becherneth bzat
+leሕzbochh ityophya endngeza leqdus
+smh /2/
+andihonln nuroachn beselam
+
+VERSE 1
+bedeኅna bezih ዓmet /2/
+35. weanteni wereb zmamie tsfat
+ሃlie luya weanteni ሕፃn nebiye lዑl tsemey
+arko lemerዓwi tsemey weazmadu beሥga
+
+VERSE 2
+tsemey tefenoke teዐrwu anaqtse tsdq
+bemenfes yeሐwr webeኃyle ielyas
+albo zeyeabl yole yoሐns
+wereb
+
+VERSE 3
+weantini ሕፃn nebiye lዑl/ri/
+arko lemerዓwi tsemey/2/ nebiyelዑl/2/
+selam
+tesealke egzio mdreke zalie luya
+
+VERSE 4
+yoሐns kbur nebiye lዑl basie selam zenbretu
+gedam/2/
+3. rዕse awde amet
+rዕse ዐwdeዓmet yoሐns weladi mexqዕ/2/
+
+VERSE 5
+weladie mexqዕፅዕ/2/ weabeqtie/2/
+rዕse ዐwdeዓmet yoሐns weladie mexqe/2/
+weladie mexqፅ/2/ yoሐns
+4. ዐwde ዓmet
+
+VERSE 6
+ዐwde ዓmet lebarko barko ዐwde ዓmet/2/
+nዒ maryam lemhret weሣlh/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=azgzeb93HHU', 'draft', 'pending', 'https://www.youtube.com/watch?v=azgzeb93HHU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kezih-let-kezih-met-laderesen-hulachnn-2', 'ከዚህ ዕለት ከዚህ ዓመት ላደረሰን ሁላችንን /2/', 'ከዚህ ዕለት ከዚህ ዓመት ላደረሰን ሁላችንን /2/', 'kezih ዕlet kezih ዓmet laderesen hulachnn /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ከዚህ ዕለት ከዚህ ዓመት ላደረሰን ሁላችንን /2/', 'የሰው ልጆች አድሜ ጥንቱንም ሲጀመር
+ምን ቢወጣ ቢወርድ ቢበዛ ቢደመር
+አንድ ቀን አይሞላም እንደአንተ አቆጣጠር /2/', 'yesew ljoch admie xntunm sijemer
+mn biwexa biwerd bibeza bidemer
+and qen aymolam endeante aqoxaxer /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=89c46sW_IrY', 'draft', 'pending', 'https://www.youtube.com/watch?v=89c46sW_IrY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('abebayosh', 'አበባዮሽ', 'አበባዮሽ', 'abebayosh', 'Ethiopian Orthodox Tewahedo Mezmur - አበባዮሽ', 'አሰይ ደስ ደስ ይበላችሁ/2/
+ቅዱስ ዮሐንስ መጣላችሁ
+ደስ ደስ ይበላችሁ
+ደስ ብሎን መጣን ደስ ብሎን/2/
+
+VERSE 1
+ጌታ አለ ብለን ደስ ብሎን
+ደስ ብሎን መጣን ደስ ብሎን/2/
+ድንግል አለች ብለን ደስ ብሉን', 'asey des des ybelachhu/2/
+qdus yoሐns mexalachhu
+des des ybelachhu
+des blon mexan des blon/2/
+
+VERSE 1
+gieta ale blen des blon
+des blon mexan des blon/2/
+dngl alech blen des blun', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Lan9wVLZG74', 'draft', 'pending', 'https://www.youtube.com/watch?v=Lan9wVLZG74', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-maryamn-qdst', 'ድንግል ማርያምን ቅድስት', 'ድንግል ማርያምን ቅድስት', 'dngl maryamn qdst', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል ማርያምን ቅድስት', 'አንለምናት ቅድስት
+ምሕረት የሚያሠጥ ቅድስት
+ቃልኪዳን አላት ቅድስት
+ጭንቀት ይርቃል ቅድስት
+
+VERSE 1
+ይቀርባል ሰላም ቅደስት ›
+ድንግል ማርያምን ቅድስት
+አንለምናት ቅድስት
+ምሕረት የሚያሠጥ ቅድስት
+
+VERSE 2
+ቃልኪዳን አላት ቅድስት
+ጭንቀት ይርቃል ቅድስት
+ይቀርባል ሰላም. ቅድስት ›', 'anlemnat qdst
+mሕret yemiyaሠx qdst
+qalkidan alat qdst
+cnqet yrqal qdst
+
+VERSE 1
+yqerbal selam qdest ›
+dngl maryamn qdst
+anlemnat qdst
+mሕret yemiyaሠx qdst
+
+VERSE 2
+qalkidan alat qdst
+cnqet yrqal qdst
+yqerbal selam. qdst ›', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=vvDNiiAjpJs', 'draft', 'pending', 'https://www.youtube.com/watch?v=vvDNiiAjpJs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ityophya-des-ybelsh-tlq-tsega-alesh-2', 'ኢትዮጵያ ደስ ይበልሽ ትልቅ ጸጋ አለሽ/2/', 'ኢትዮጵያ ደስ ይበልሽ ትልቅ ጸጋ አለሽ/2/', 'ityophya des ybelsh tlq tsega alesh/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ኢትዮጵያ ደስ ይበልሽ ትልቅ ጸጋ አለሽ/2/', 'ስለፈጸምሽ ሦስቱን ሕግጋት የፈጣሪሽን
+ካለፈው ስህተት ሁላችን
+ኢትዮጵያ ደስ ይበልሽ ትልቅ ጸጋ አለሽ/2/
+ስለፈጸምሽ ሦስቱን ሕግጋት የፈጣሪሽን
+
+VERSE 1
+ካለፈው ስህተት ሁላችን', 'slefetsemsh ሦstun ሕggat yefexarishn
+kalefew shtet hulachn
+ityophya des ybelsh tlq tsega alesh/2/
+slefetsemsh ሦstun ሕggat yefexarishn
+
+VERSE 1
+kalefew shtet hulachn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=wpwDzx-8d3M', 'draft', 'pending', 'https://www.youtube.com/watch?v=wpwDzx-8d3M', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ityophya-bahl-quanquash-yemiyakorash-2', 'ኢትዮጵያ ባህል ቋንቋሽ የሚያኮራሽ/2/', 'ኢትዮጵያ ባህል ቋንቋሽ የሚያኮራሽ/2/', 'ityophya bahl quanquash yemiyakorash/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ኢትዮጵያ ባህል ቋንቋሽ የሚያኮራሽ/2/', 'ኢትዮጵያ ባህል ቋንቋሽ የሚያኮራሽ/2/', 'ityophya bahl quanquash yemiyakorash/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=pmhRgv-2xZ8', 'draft', 'pending', 'https://www.youtube.com/watch?v=pmhRgv-2xZ8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kebrew-yqoyu-kebrew', 'ከብረው ይቆዩ ከብረው', 'ከብረው ይቆዩ ከብረው', 'kebrew yqoyu kebrew', 'Ethiopian Orthodox Tewahedo Mezmur - ከብረው ይቆዩ ከብረው', 'ከብረው ይቆዩ ከብረው
+ከብረው ይቆዩ ከብረው
+አበባው ለምለም ቄጤማው ለምለም
+ከብረው ይቆዩ ከብረው
+
+VERSE 1
+ከብረው ይቆዩ ከብረው
+ከዓመት እስከ ዓመት ደርሰው
+ከብረው ይቆዩ ከብረው
+አበባው ለምለም ቄጤማው ለምለም', 'kebrew yqoyu kebrew
+kebrew yqoyu kebrew
+abebaw lemlem qiexiemaw lemlem
+kebrew yqoyu kebrew
+
+VERSE 1
+kebrew yqoyu kebrew
+keዓmet eske ዓmet dersew
+kebrew yqoyu kebrew
+abebaw lemlem qiexiemaw lemlem', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=OKndI6eNl_Y', 'draft', 'pending', 'https://www.youtube.com/watch?v=OKndI6eNl_Y', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeawaj-negari-qal-bebereha-ayele', 'የአዋጅ ነጋሪ ቃል በበረሀ አየለ', 'የአዋጅ ነጋሪ ቃል በበረሀ አየለ', 'yeawaj negari qal bebereha ayele', 'Ethiopian Orthodox Tewahedo Mezmur - የአዋጅ ነጋሪ ቃል በበረሀ አየለ', 'የአግዚአብሔርን መንገድ አስተካክሉ እያለ
+ምስክርነቱን ዮሐንስ ካስረዳን
+የአዋጅ ነጋሪ ቃል በበረሀ አየለ
+የአግዚአብሔርን መንገድ አስተካክሉ እያለ
+
+VERSE 1
+ምስክርነቱን ዮሐንስ ካስረዳን', 'yeagziabሔrn menged astekaklu eyale
+mskrnetun yoሐns kasredan
+yeawaj negari qal bebereha ayele
+yeagziabሔrn menged astekaklu eyale
+
+VERSE 1
+mskrnetun yoሐns kasredan', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=kqKKkoimyy0', 'draft', 'pending', 'https://www.youtube.com/watch?v=kqKKkoimyy0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lbachn-legieta-melkam-menged-yhun', 'ልባችን ለጌታ መልካም መንገድ ይሁን', 'ልባችን ለጌታ መልካም መንገድ ይሁን', 'lbachn legieta melkam menged yhun', 'Ethiopian Orthodox Tewahedo Mezmur - ልባችን ለጌታ መልካም መንገድ ይሁን', 'ልባችን ለጌታ መልካም መንገድ ይሁን', 'lbachn legieta melkam menged yhun', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hDFRXxDj3C8', 'draft', 'pending', 'https://www.youtube.com/watch?v=hDFRXxDj3C8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('lbachn-legieta-melkam-menged-yhun', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('teraraw-zq-ybel-xemamawm-yqna', 'ተራራው ዝቅ ይበል ጠማማውም ይቅና', 'ተራራው ዝቅ ይበል ጠማማውም ይቅና', 'teraraw zq ybel xemamawm yqna', 'Ethiopian Orthodox Tewahedo Mezmur - ተራራው ዝቅ ይበል ጠማማውም ይቅና', 'ካልተስተካከለ መንገድ የለምና
+የአግዚአብሔርን መንገድ አንጥረግ ሁላችን
+ማለፊያ እንዲሆነን ወደ አምላካችን
+ተራራው ዝቅ ይበል ጠማማውም ይቅና
+
+VERSE 1
+ካልተስተካከለ መንገድ የለምና
+የአግዚአብሔርን መንገድ እንጥረግ ሁላችን
+ማለፊያ አንዲሆነን ወደ አምላካችን', 'kaltestekakele menged yelemna
+yeagziabሔrn menged anxreg hulachn
+malefiya endihonen wede amlakachn
+teraraw zq ybel xemamawm yqna
+
+VERSE 1
+kaltestekakele menged yelemna
+yeagziabሔrn menged enxreg hulachn
+malefiya andihonen wede amlakachn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=zb3slu4_1H8', 'draft', 'pending', 'https://www.youtube.com/watch?v=zb3slu4_1H8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('be-xiat-celema-tewxen-salen', 'በኃጢአት ጨለማ ተውጠን ሳለን', 'በኃጢአት ጨለማ ተውጠን ሳለን', 'beኃxiat celema tewxen salen', 'Ethiopian Orthodox Tewahedo Mezmur - በኃጢአት ጨለማ ተውጠን ሳለን', 'የክርስቶስ መስቀል ብርሃፃን ሆነልን/2/', 'yekrstos mesqel brሃፃn honeln/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=EaIZw_zaQsk', 'draft', 'pending', 'https://www.youtube.com/watch?v=EaIZw_zaQsk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mesqel-abeba', 'መስቀል አበባ', 'መስቀል አበባ', 'mesqel abeba', 'Ethiopian Orthodox Tewahedo Mezmur - መስቀል አበባ', 'መስቀል አበባ ነህ ውብ አበባ
+አደይ አበባ ነሸ ውብ አበባ', 'mesqel abeba neh wb abeba
+adey abeba neshe wb abeba', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=rwwnBtRVG20', 'draft', 'pending', 'https://www.youtube.com/watch?v=rwwnBtRVG20', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('21-mesqel', '21].ዕፀ መስቀል', '21].ዕፀ መስቀል', '21].ዕፀ mesqel', 'Ethiopian Orthodox Tewahedo Mezmur - 21].ዕፀ መስቀል', 'ፅፀ መስቀል የክብር መውረሻ
+ሰይጣንን ድል መንሻ
+የክብር ባለቤት ዕፀ መስቀል የተሠዋበት ዕፀ መስቀል
+ፅፀ መስቀሉ ነው ዕፀ መስቀል የዓለም መድኃኒት ዕፀ መስቀል', 'ፅፀ mesqel yekbr mewresha
+seyxann dl mensha
+yekbr balebiet ዕፀ mesqel yeteሠwabet ዕፀ mesqel
+ፅፀ mesqelu new ዕፀ mesqel yeዓlem medኃnit ዕፀ mesqel', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=rZ3UaUwYOCE', 'draft', 'pending', 'https://www.youtube.com/watch?v=rZ3UaUwYOCE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ytqedes-smke', 'ይትቀደስ ስምከ', 'ይትቀደስ ስምከ', 'ytqedes smke', 'Ethiopian Orthodox Tewahedo Mezmur - ይትቀደስ ስምከ', 'ይትቀደስ ስምከ በኃይለ መስቀልከ በዕፀ መስቀልከ ክቡር
+ዘአዕበይኮ ለስምከ /2/
+ስብሐት ለከ ለባህቲትከ ልዑል /ቄ', 'ytqedes smke beኃyle mesqelke beዕፀ mesqelke kbur
+zeaዕbeyko lesmke /2/
+sbሐt leke lebahtitke lዑl /qie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Bms3_REeSDA', 'draft', 'pending', 'https://www.youtube.com/watch?v=Bms3_REeSDA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yomse', 'ዮምሰ', 'ዮምሰ', 'yomse', 'Ethiopian Orthodox Tewahedo Mezmur - ዮምሰ', 'ዮምሰ ለአሊያየ /2/
+አበርህ በመስቀልየ /ቄ', 'yomse lealiyaye /2/
+aberh bemesqelye /qie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3rnp60MErXI', 'draft', 'pending', 'https://www.youtube.com/watch?v=3rnp60MErXI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('xln-bemesqelu', 'ጥልን በመስቀሉ', 'ጥልን በመስቀሉ', 'xln bemesqelu', 'Ethiopian Orthodox Tewahedo Mezmur - ጥልን በመስቀሉ', 'ጥልን በመስቀሉ ገደለ /2/
+በመስቀሉ ለሰው ልጅ ሰላምን አደለ /2/
+34 መስቀል ሕይወት
+መስቀል ሕይወት
+
+VERSE 1
+መግቢያ ለገነት
+ዲያብሎስ በመስቀል
+ተመቶ ወድቋል
+ዲያብሎስ ድል ተመታ
+
+VERSE 2
+በመስቀል ተረታ
+ዲያብሎስ ኃይልም የለው
+መስቀል አስጨነቀው', 'xln bemesqelu gedele /2/
+bemesqelu lesew lj selamn adele /2/
+34 mesqel ሕywet
+mesqel ሕywet
+
+VERSE 1
+megbiya legenet
+diyablos bemesqel
+temeto wedqual
+diyablos dl temeta
+
+VERSE 2
+bemesqel tereta
+diyablos ኃylm yelew
+mesqel asceneqew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5wrV0bra1RE', 'draft', 'pending', 'https://www.youtube.com/watch?v=5wrV0bra1RE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('krstos-bedemu-qedsotalna-2', 'ክርስቶስ በደሙ ቀድሶታልና /2/', 'ክርስቶስ በደሙ ቀድሶታልና /2/', 'krstos bedemu qedsotalna /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ክርስቶስ በደሙ ቀድሶታልና /2/', 'ጎልጎታ ሲኖር አፈር ተንተርሶ /2/
+ይኸው ተገኘልን በዕሌኒ ልቅሶ /2/
+አጋንንት አይቀርቡም ከሩቅ ይሸሻሉ /2/
+አኛ ስንባረክ በዕፀ መስቀሉ /2/', 'golgota sinor afer tenterso /2/
+yኸw tegegneln beዕlieni lqso /2/
+agannt ayqerbum keruq ysheshalu /2/
+agna snbarek beዕፀ mesqelu /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ZB_6YN6oLTs', 'draft', 'pending', 'https://www.youtube.com/watch?v=ZB_6YN6oLTs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('l-l-egziab-r', 'ልዑል እግዚአብሔር', 'ልዑል እግዚአብሔር', 'lዑl egziabሔr', 'Ethiopian Orthodox Tewahedo Mezmur - ልዑል እግዚአብሔር', 'ልዑል እግዚአብሔር (2) ምስጋና ይገባሃል /2/
+ለመስቀል በዓል (2) በሰላም በጤና አደረስከን /2/
+42 እንተ ተሐንፀት
+አንተ ተሐንፀት በስሙ ወተቀደሰት በደሙ
+
+VERSE 1
+ቤተክርስቲያን /2/
+ወተአትበት (2) በዕፀ መስቀሉ አስመ ኃይለ
+አግዚአብሔር ላዕሌዛፃ /2/', 'lዑl egziabሔr (2) msgana ygebaሃl /2/
+lemesqel beዓl (2) beselam bexiena aderesken /2/
+42 ente teሐnፀt
+ante teሐnፀt besmu weteqedeset bedemu
+
+VERSE 1
+bietekrstiyan /2/
+weteatbet (2) beዕፀ mesqelu asme ኃyle
+agziabሔr laዕliezaፃ /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=PkXRlPb73t8', 'draft', 'pending', 'https://www.youtube.com/watch?v=PkXRlPb73t8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mer-befnot', 'መርሕ በፍኖት', 'መርሕ በፍኖት', 'merሕ befnot', 'Ethiopian Orthodox Tewahedo Mezmur - መርሕ በፍኖት', 'ፃሌ ሉያ መርሕ በፍኖት ሞገሶሙ ለጻድቃን ሞገስ
+ዝንቱ መስቀል ለአዳም ዘአግብኦ ውስተ ገነት /2/
+ፃሌ ሉያ መሪ ነው በመንገድ ሞገሳቸው ለጻድቃን
+ሞገስ /2/
+
+VERSE 1
+ይኸ መስቀል ነው አዳምን የመለሰው ወደ ገነት', 'ፃlie luya merሕ befnot mogesomu letsadqan moges
+/2/
+/2/
+zntu mesqel leadam zeagbo wste genet /2/
+
+VERSE 1
+ፃlie luya meri new bemenged mogesachew letsadqan
+moges /2/
+yኸ mesqel new adamn yemelesew wede genet
+/2/
+
+VERSE 2
+/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=gR2LWsd3-G8', 'draft', 'pending', 'https://www.youtube.com/watch?v=gR2LWsd3-G8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kbebe-2-giera-werq', 'ክበበ /2/ ጌራ ወርቅ', 'ክበበ /2/ ጌራ ወርቅ', 'kbebe /2/ giera werq', 'Ethiopian Orthodox Tewahedo Mezmur - ክበበ /2/ ጌራ ወርቅ', 'ክበበ /2/ ጌራ ወርቅ
+አክሊለ ጽጌ ማርያም /4', 'kbebe /2/ giera werq
+aklile tsgie maryam /4', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=QNPOyVK9IMw', 'draft', 'pending', 'https://www.youtube.com/watch?v=QNPOyVK9IMw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('stzor', 'ስትዞር', 'ስትዞር', 'stzor', 'Ethiopian Orthodox Tewahedo Mezmur - ስትዞር', 'ብቻዋን በግብጽ በርዛ እንደወፍ /2/
+88. አዘክሪ ድንግል
+አዘክሪ ድንግል አዘክሪ
+ለልጅሽ አሳስቢ አዘክሪ
+
+VERSE 1
+ለኃጥአን አኮ ለጻድቃን /2/', 'bchawan begbts berza endewef /2/
+88. azekri dngl
+azekri dngl azekri
+leljsh asasbi azekri
+
+VERSE 1
+leኃxan ako letsadqan /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=k5kjgzr6NC8', 'draft', 'pending', 'https://www.youtube.com/watch?v=k5kjgzr6NC8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kanchi-meweledun-azekri', 'ካንቺ መወለዱን አዘክሪ', 'ካንቺ መወለዱን አዘክሪ', 'kanchi meweledun azekri', 'Ethiopian Orthodox Tewahedo Mezmur - ካንቺ መወለዱን አዘክሪ', 'በቤተልሔም »
+በጨርቅ መጠቅለሉን ›»
+መኝታው ግርግም »
+ካንቺ መወለዱን አዘክሪ
+
+VERSE 1
+በቤቴልሔም አዘክሪ
+በጨርቅ መጠቅለሉን አዘክሪ
+መኝታው ግርግም አዘክሪ', 'bebietelሔm »
+becerq mexeqlelun ›»
+megntaw grgm »
+kanchi meweledun azekri
+
+VERSE 1
+bebietielሔm azekri
+becerq mexeqlelun azekri
+megntaw grgm azekri', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=zCwKHl_SOIQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=zCwKHl_SOIQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beziya-bebrd-werat-azekri', 'በዚያ በብርድ ወራት አዘክሪ', 'በዚያ በብርድ ወራት አዘክሪ', 'beziya bebrd werat azekri', 'Ethiopian Orthodox Tewahedo Mezmur - በዚያ በብርድ ወራት አዘክሪ', 'የገበሩለትን »
+የአድግና የላም »
+አስትንፋሣቸውን »
+በዚያ በብርድ ወራት አዘክሪ
+
+VERSE 1
+የገበሩለትን አዘክሪ
+የአድግና የላም አዘክሪ
+አስትንፋሳቸውን አዘክሪ
+ለኃጥአን አኮ ለጻድቃን
+
+VERSE 2
+በግብፅ በረሀ አዘክሪ
+መሰደድሽን አዘክሪ', 'yegeberuletn »
+yeadgna yelam »
+astnfaሣchewn »
+beziya bebrd werat azekri
+
+VERSE 1
+yegeberuletn azekri
+yeadgna yelam azekri
+astnfasachewn azekri
+leኃxan ako letsadqan
+
+VERSE 2
+begbፅ bereha azekri
+mesededshn azekri', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xzCY-6mrmlw', 'draft', 'pending', 'https://www.youtube.com/watch?v=xzCY-6mrmlw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bemeqabru-zend-azekri', 'በመቃብሩ ዘንድ አዘክሪ', 'በመቃብሩ ዘንድ አዘክሪ', 'bemeqabru zend azekri', 'Ethiopian Orthodox Tewahedo Mezmur - በመቃብሩ ዘንድ አዘክሪ', 'ባነባሸው አንባ »
+አሳስቢ ድንግል ሆይ »
+ገነት እንድንገባ »
+በመቃብሩ ዘንድ አዘክሪ
+
+VERSE 1
+ባለቀሽው እንባ አዘክሪ
+አሳስቢ ድንግል ሆይ አዘክሪ
+ገነት አንድንገባ አዘክሪ
+ለኃጥአን አኮ ለጻድቃን
+
+VERSE 2
+932.እንደ ኤልሳበጥ
+አንደ ኤልሳቤጥ ለመስግንሽ
+ፊትሽ ወድቄ ልሳለምሽ
+የጌታዬ አናት የእኛ አመቤት
+
+VERSE 3
+አዛኝ ነሽ ከልብ ፍጹም የዋህት
+ርኅራጌሽ ያስደስተኛል
+ስለ ኃጢአቴ ምልጃሽ ይቀድማል
+የሰላምታሽ ድምፅ ደስ ያሰኘኛል
+
+VERSE 4
+ከትካዜዬም ያሳርፈኛል
+ድምጽሽ ሲሰማኝ ልቤ ይረካል
+ሐዘኔ ቀርቶ ፊቴ ይፈካል
+በእናትነት አንቺን ለሰጠን
+
+VERSE 5
+ቸሩ አምላካችን ይከበር ይመሰገን
+የሁሉ አቤት የሁሉ አጽናኝ
+የዓለም መድኃኒት ከአምላክ አገናኝ
+ዛሬም በልቤ ደስታ ጨምረሽ
+
+VERSE 6
+አንደ ኤልሳቤጥ ሰላም ልበልሽ
+ከሴቶች መካከል መርጦ ቀድሶሻል
+ትውልድ ሁሉ ብጽዕት ይሉሻል
+በልዩ ውዳሴ ያመሰግኑሻል
+
+VERSE 7
+ድንግል ንግሥታችን በቀኝ ቆመሻል
+የሰላምታሽ ድምጽ ልቤ ሲሰማ
+ነፍሴን ደስ አላት ቀለላት ሽክሟ
+ድንግል ለክብርሽ ስንበረከክ
+
+VERSE 8
+እጅሽ ይዘርጋ ለመባረክ
+933.ትኅትናሽ ግሩም ነው', 'banebashew anba »
+asasbi dngl hoy »
+genet endngeba »
+bemeqabru zend azekri
+
+VERSE 1
+baleqeshw enba azekri
+asasbi dngl hoy azekri
+genet andngeba azekri
+leኃxan ako letsadqan
+
+VERSE 2
+932.ende ielsabex
+ande ielsabiex lemesgnsh
+fitsh wedqie lsalemsh
+yegietayie anat yeegna amebiet
+
+VERSE 3
+azagn nesh kelb ftsum yewaht
+rኅragiesh yasdestegnal
+sle ኃxiatie mljash yqedmal
+yeselamtash dmፅ des yasegnegnal
+
+VERSE 4
+ketkazieyiem yasarfegnal
+dmtssh sisemagn lbie yrekal
+ሐzenie qerto fitie yfekal
+beenatnet anchin lesexen
+
+VERSE 5
+cheru amlakachn ykeber ymesegen
+yehulu abiet yehulu atsnagn
+yeዓlem medኃnit keamlak agenagn
+zariem belbie desta cemresh
+
+VERSE 6
+ande ielsabiex selam lbelsh
+kesietoch mekakel merxo qedsoshal
+twld hulu btsዕt ylushal
+belyu wdasie yamesegnushal
+
+VERSE 7
+dngl ngሥtachn beqegn qomeshal
+yeselamtash dmts lbie sisema
+nefsien des alat qelelat shkmua
+dngl lekbrsh snberekek
+
+VERSE 8
+ejsh yzerga lemebarek
+933.tኅtnash grum new', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Nqy7MGSnc6Q', 'draft', 'pending', 'https://www.youtube.com/watch?v=Nqy7MGSnc6Q', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-mekerashn', 'ድንግል መከራሽን', 'ድንግል መከራሽን', 'dngl mekerashn', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል መከራሽን', 'ድንግል መከራሽን ጥቂት ላስታሰው
+በሄሮድስ ዘመን ፍጥረት ያለቀሰው
+አንቺ የአምላክ አናት ደግሞም አመቤት
+አንደ ችግረኛ ተነሳሽ ስደት', 'dngl mekerashn xqit lastasew
+beherods zemen fxret yaleqesew
+anchi yeamlak anat degmom amebiet
+ande chgregna tenesash sdet', 'amharic', 'mezmur', 'ሊቀ መዘምራን  ይልማ ኃይሉ', 'https://www.youtube.com/watch?v=XKlcUiP9YwY', 'draft', 'pending', 'https://www.youtube.com/watch?v=XKlcUiP9YwY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('azagntua-maryam-bexerahush-gizie', 'አዛኝቷ ማርያም በጠራሁሽ ጊዜ', 'አዛኝቷ ማርያም በጠራሁሽ ጊዜ', 'azagntua maryam bexerahush gizie', 'Ethiopian Orthodox Tewahedo Mezmur - አዛኝቷ ማርያም በጠራሁሽ ጊዜ', 'አንድትደርሽልኝ በመከራ ጊዜ', 'andtdershlgn bemekera gizie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=cYlU8_Mu8OI', 'draft', 'pending', 'https://www.youtube.com/watch?v=cYlU8_Mu8OI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mekeran-yaye-sew-mechiem-ayceknm', 'መከራን ያየ ሰው መቼም አይጨክንም', 'መከራን ያየ ሰው መቼም አይጨክንም', 'mekeran yaye sew mechiem ayceknm', 'Ethiopian Orthodox Tewahedo Mezmur - መከራን ያየ ሰው መቼም አይጨክንም', 'አትጨክኝብኝ አደራሽን ማርያም /2/
+መከራን ያየ ሰው መቼም አይጨክንም
+አትጨክኝብኝ አደራሽን ማርያም /2/
+90. ሰቆቃወ ድንግል
+
+VERSE 1
+ሰቆቃወ ድንግል /
+ርእዮ ለይብኪ አዳነ ልብ ዘቦ /4', 'atcekgnbgn aderashn maryam /2/
+mekeran yaye sew mechiem ayceknm
+atcekgnbgn aderashn maryam /2/
+90. seqoqawe dngl
+
+VERSE 1
+seqoqawe dngl /
+reyo leybki adane lb zebo /4', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ZxPdZdypdJc', 'draft', 'pending', 'https://www.youtube.com/watch?v=ZxPdZdypdJc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('flseta-sijemer-qal-kidan-gebtalech', 'ፍልሰታ ሲጀመር ቃል ኪዳን ገብታለች', 'ፍልሰታ ሲጀመር ቃል ኪዳን ገብታለች', 'flseta sijemer qal kidan gebtalech', 'Ethiopian Orthodox Tewahedo Mezmur - ፍልሰታ ሲጀመር ቃል ኪዳን ገብታለች', 'የሌሊት ውዳሴን ንዒን ትሰማለች
+ሕጻናትን በበረከት ልትጎበኝ', 'yelielit wdasien nዒn tsemalech
+ሕtsanatn bebereket ltgobegn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=HYLYAA1Kgso', 'draft', 'pending', 'https://www.youtube.com/watch?v=HYLYAA1Kgso', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tmexalech-beewnet-2', 'ትመጣለች በእውነት /2/', 'ትመጣለች በእውነት /2/', 'tmexalech beewnet /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ትመጣለች በእውነት /2/', 'ትመጣለች በእውነት /2/
+ትመጣለች በእውነት /2/', 'tmexalech beewnet /2/
+tmexalech beewnet /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3Mtk6qLkrfE', 'draft', 'pending', 'https://www.youtube.com/watch?v=3Mtk6qLkrfE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('tmexalech-beewnet-2', 'prayer', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('msle-mikaiel', 'ምስለ ሚካኤል', 'ምስለ ሚካኤል', 'msle mikaiel', 'Ethiopian Orthodox Tewahedo Mezmur - ምስለ ሚካኤል', 'ምስለ ሚካኤል ወገብርኤል ንኢ ሠናይትየ', 'msle mikaiel wegebriel ni ሠnaytye', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Vn-yJkG7y-M', 'draft', 'pending', 'https://www.youtube.com/watch?v=Vn-yJkG7y-M', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beziya-yefqr-bota', '» በዚያ የፍቅር ቦታ', '» በዚያ የፍቅር ቦታ', '» beziya yefqr bota', 'Ethiopian Orthodox Tewahedo Mezmur - » በዚያ የፍቅር ቦታ', '» በአግረ መስቀሉ ስር
+ከክርስቶስ ጌታ
+» በዚያ የፍቅር ቦታ
+» በአግረ መስቀሉ ስር
+
+VERSE 1
+» ከክርስቶስ ጌታ
+» ለአኛ ተሰጥተሻል
+» አናት እንድትሆኝን
+» ልጆችሽ ነንና
+
+VERSE 2
+» ምልጃሽ አይለየን', '» beagre mesqelu sr
+kekrstos gieta
+» beziya yefqr bota
+» beagre mesqelu sr
+
+VERSE 1
+» kekrstos gieta
+» leagna tesexteshal
+» anat endthognn
+» ljochsh nenna
+
+VERSE 2
+» mljash ayleyen', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=--Ns90c15NY', 'draft', 'pending', 'https://www.youtube.com/watch?v=--Ns90c15NY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bemsgana-mlaw', 'በምስጋና ምላው', 'በምስጋና ምላው', 'bemsgana mlaw', 'Ethiopian Orthodox Tewahedo Mezmur - በምስጋና ምላው', 'ደስ ይበልሽ ብዬ
+አጌም ላመስግናት
+አንደበቴን ጌታ
+በምስጋና ምላው
+
+VERSE 1
+ደስ ይበልሽ ብዬ
+አጌም ላመስግናት', 'des ybelsh byie
+agiem lamesgnat
+andebetien gieta
+bemsgana mlaw
+
+VERSE 1
+des ybelsh byie
+agiem lamesgnat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=MUmCNJxOk10', 'draft', 'pending', 'https://www.youtube.com/watch?v=MUmCNJxOk10', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('bemsgana-mlaw', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('n-rgbye-weni-naytye-2', 'ንዒ ርግብየ ወንኢ ሠናይትየ /2/', 'ንዒ ርግብየ ወንኢ ሠናይትየ /2/', 'nዒ rgbye weni ሠnaytye /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ንዒ ርግብየ ወንኢ ሠናይትየ /2/', 'ትናዝዘኒ /2/ ሐዘነ ልብየ /2/
+ትርጉም ፡- ከልቤ ሐዘን ታረጋጊኝ ዘንድ
+መልካምዋ ርግብ ሆያ ነይ፡፡', 'tnazzeni /2/ ሐzene lbye /2/
+trgum ፡- kelbie ሐzen taregagign zend
+melkamwa rgb hoya ney፡፡', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=UOgwoJbSYOQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=UOgwoJbSYOQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('regeweyn-3-anti-maryam', 'ሐረገወይን /3/ አንቲ ማርያም', 'ሐረገወይን /3/ አንቲ ማርያም', 'ሐregeweyn /3/ anti maryam', 'Ethiopian Orthodox Tewahedo Mezmur - ሐረገወይን /3/ አንቲ ማርያም', 'አጸደ ወይን /3/ አንቲ ማርያም
+ሐረገወይን /3/ አንቲ ማርያም
+አጸደ ወይን /3/ አንቲ ማርያም
+ትመስሊ ፊደለ ወትወልዲ ወንጌለ ወታገምሪ መስቀለ', 'atsede weyn /3/ anti maryam
+ሐregeweyn /3/ anti maryam
+atsede weyn /3/ anti maryam
+tmesli fidele wetweldi wengiele wetagemri mesqele', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1aIDN7ijwdM', 'draft', 'pending', 'https://www.youtube.com/watch?v=1aIDN7ijwdM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tmesli-m-raqe-wetweldi-mebreqe-wetalebsi', 'ትመስሊ ምሥራቀ ወትወልዲ መብረቀ ወታለብሲ', 'ትመስሊ ምሥራቀ ወትወልዲ መብረቀ ወታለብሲ', 'tmesli mሥraqe wetweldi mebreqe wetalebsi', 'Ethiopian Orthodox Tewahedo Mezmur - ትመስሊ ምሥራቀ ወትወልዲ መብረቀ ወታለብሲ', 'ርሁቁ
+ትመስሊ ምሥራቀ ወትወልዲ መብረቀ ወታለብሲ
+ርሁቁ', 'rhuqu
+tmesli mሥraqe wetweldi mebreqe wetalebsi
+rhuqu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=-DkDYQ1dX_U', 'draft', 'pending', 'https://www.youtube.com/watch?v=-DkDYQ1dX_U', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amanuiel-gieta-hoy', 'አማኑኤል ጌታ ሆይ', 'አማኑኤል ጌታ ሆይ', 'amanuiel gieta hoy', 'Ethiopian Orthodox Tewahedo Mezmur - አማኑኤል ጌታ ሆይ', 'አማኑኤል ጌታ ሆይ በምሕረትህ ተቀበለኝ /2/
+ኃጢአት አኔን ልጀህን ዳግም እንዳይገዛኝ /2/
+ኃይልህን አንተ አልብሰኝ /2/', 'amanuiel gieta hoy bemሕreth teqebelegn /2/
+ኃxiat anien ljehn dagm endaygezagn /2/
+ኃylhn ante albsegn /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xujgEByv5zY', 'draft', 'pending', 'https://www.youtube.com/watch?v=xujgEByv5zY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-semayn-yezerega-merietn-yatsena-2', 'ትርጉም፡- ሰማይን የዘረጋ መሬትን ያጸና /2/', 'ትርጉም፡- ሰማይን የዘረጋ መሬትን ያጸና /2/', 'trgum፡- semayn yezerega merietn yatsena /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡- ሰማይን የዘረጋ መሬትን ያጸና /2/', 'ኃያል ጌታ ሕያው አምላክ ያለአንተ
+ማን አለና /2/', 'ኃyal gieta ሕyaw amlak yaleante
+man alena /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=MPP88MdmvsM', 'draft', 'pending', 'https://www.youtube.com/watch?v=MPP88MdmvsM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('legietayie-leegziab-r', 'ለጌታዬ ለእግዚአብሔር', 'ለጌታዬ ለእግዚአብሔር', 'legietayie leegziabሔr', 'Ethiopian Orthodox Tewahedo Mezmur - ለጌታዬ ለእግዚአብሔር', 'ለጌታዬ ለአግዚአብሔር ስላደረገልኝ ምን
+አከፍለዋለሁ /2/
+ምስጋና ነው እንጂ /2/ ሌላ ምን አላለሁ /4', 'legietayie leagziabሔr sladeregelgn mn
+akeflewalehu /2/
+msgana new enji /2/ liela mn alalehu /4', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=jHQP_noO4i8', 'draft', 'pending', 'https://www.youtube.com/watch?v=jHQP_noO4i8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beyedeqiqaw-xiat-s-ra', 'በየደቂቃው ኃጢአት ስሠራ', 'በየደቂቃው ኃጢአት ስሠራ', 'beyedeqiqaw ኃxiat sሠra', 'Ethiopian Orthodox Tewahedo Mezmur - በየደቂቃው ኃጢአት ስሠራ', 'ስሠርቅ ስበድል አንተን ሳልፈራ
+አንተ ግን ፊትህ ምንም ቢቀየም
+በቁጣህ በትር አልገረፍከኝም', 'sሠrq sbedl anten salfera
+ante gn fith mnm biqeyem
+bequxah betr algerefkegnm', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=PZikhT-9IQI', 'draft', 'pending', 'https://www.youtube.com/watch?v=PZikhT-9IQI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ye-xiat-guzo-xafac-bimeslm', 'የኃጢአት ጉዞ ጣፋጭ ቢመስልም', 'የኃጢአት ጉዞ ጣፋጭ ቢመስልም', 'yeኃxiat guzo xafac bimeslm', 'Ethiopian Orthodox Tewahedo Mezmur - የኃጢአት ጉዞ ጣፋጭ ቢመስልም', 'ውጤቱ መርሮ ፍጹም አይጥምም', 'wxietu merro ftsum ayxmm', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=9t8SEy38RF8', 'draft', 'pending', 'https://www.youtube.com/watch?v=9t8SEy38RF8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('ye-xiat-guzo-xafac-bimeslm', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-selamn-sxen', 'ትርጉም፡- ሰላምን ስጠን /#', 'ትርጉም፡- ሰላምን ስጠን /#', 'trgum፡- selamn sxen /#', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡- ሰላምን ስጠን /#', 'አምላካችን /3/ ሰላም ስጠን /2/
+113. ዝንቱ ኩሉ
+ዝንቱ ኩሉ ኮነ /2/ በማኅደረ ስብሐት', 'amlakachn /3/ selam sxen /2/
+113. zntu kulu
+zntu kulu kone /2/ bemaኅdere sbሐt', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=W6YXz0lJWI8', 'draft', 'pending', 'https://www.youtube.com/watch?v=W6YXz0lJWI8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('cheru-med-nie-lem', 'ቸሩ መድኃኔዓለም', 'ቸሩ መድኃኔዓለም', 'cheru medኃnieዓlem', 'Ethiopian Orthodox Tewahedo Mezmur - ቸሩ መድኃኔዓለም', 'ቸሩ መድኃኔዓለም አንተ ቅረበን ተለመነን /2/
+በምሕረትህና በቸርነትህ እንዳትለየን /4
+11ኩሎ ዘፈቀደ', 'cheru medኃnieዓlem ante qreben telemenen /2/
+bemሕrethna becherneth endatleyen /4
+11kulo zefeqede', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=bkzgL-hvw-g', 'draft', 'pending', 'https://www.youtube.com/watch?v=bkzgL-hvw-g', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('besemayni-webemdrni-webeba-rni-webekulu', 'በሰማይኒ ወበምድርኒ ወበባሕርኒ ወበኩሉ', 'በሰማይኒ ወበምድርኒ ወበባሕርኒ ወበኩሉ', 'besemayni webemdrni webebaሕrni webekulu', 'Ethiopian Orthodox Tewahedo Mezmur - በሰማይኒ ወበምድርኒ ወበባሕርኒ ወበኩሉ', 'በሰማይኒ ወበምድርኒ ወበባሕርኒ ወበኩሉ ቀላያት
+ቀላያት /2/
+ትርጉም :- እግዚአብሔር በሰማይና በምድር
+በባሕርም በፈሳሾችም ሁሉ የወደደውን አደረገ
+
+VERSE 1
+1910.የሥላሴን መንበር
+የሥላሴን መንበር ቅዱሳን ከበውት
+ኪሩቤል በደመና ዙፋኑን ይዘውት
+ድንግልን ከመሐል ሚካኤልንከፊት
+
+VERSE 2
+አአላፍ መላእክት ሲሰግዱ በፍርሃት
+አዩ ተመልከቱት የሰማዩን አባት /2/
+የሥላሴን መንበር ቅዱሳን ከበውት
+አያሸበሸቡ የሰማይ መላእክት
+
+VERSE 3
+ካህናተ ሰማይ ቅዱስ ቅዱስ ቅዱስ ሲሉ
+ይህን ታላቅ ክብር ሊያዩ የታደሉ
+በጽድቅ ሥራቸው ደምቀው ይታያሉ /2/', 'besemayni webemdrni webebaሕrni webekulu qelayat
+qelayat /2/
+trgum :- egziabሔr besemayna bemdr
+bebaሕrm befesashochm hulu yewededewn aderege
+
+VERSE 1
+1910.yeሥlasien menber
+yeሥlasien menber qdusan kebewt
+kirubiel bedemena zufanun yzewt
+dngln kemeሐl mikaielnkefit
+
+VERSE 2
+aalaf melaekt sisegdu befrሃt
+ayu temelketut yesemayun abat /2/
+yeሥlasien menber qdusan kebewt
+ayashebeshebu yesemay melaekt
+
+VERSE 3
+kahnate semay qdus qdus qdus silu
+yhn talaq kbr liyayu yetadelu
+betsdq ሥrachew demqew ytayalu /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=6rwZaHgqn34', 'draft', 'pending', 'https://www.youtube.com/watch?v=6rwZaHgqn34', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-besemayna-bemdr-beba-rna', 'ትርጉም፡- በሰማይና በምድር በባሕርና', 'ትርጉም፡- በሰማይና በምድር በባሕርና', 'trgum፡- besemayna bemdr bebaሕrna', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡- በሰማይና በምድር በባሕርና', 'በፈሳሾች አግዚአብሔር
+የወደደውን አደረገ', 'befesashoch agziabሔr
+yewededewn aderege', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=zGqurTd8YtE', 'draft', 'pending', 'https://www.youtube.com/watch?v=zGqurTd8YtE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-abietu-attewen-atxalen-yeselam', 'ትርጉም፡- አቤቱ አትተወን አትጣለን የሰላም', 'ትርጉም፡- አቤቱ አትተወን አትጣለን የሰላም', 'trgum፡- abietu attewen atxalen yeselam', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡- አቤቱ አትተወን አትጣለን የሰላም', 'አምላክ ሆይ ተራዳን ፡፡
+አመቤታችን ሆይ ወደ አኛ ተመልከቺ
+የልጅሽም ሰላም ከእኛ ጋር ይሁን', 'amlak hoy teradan ፡፡
+amebietachn hoy wede agna temelkechi
+yeljshm selam keegna gar yhun', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=WBuegNDvNyE', 'draft', 'pending', 'https://www.youtube.com/watch?v=WBuegNDvNyE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('trgum-abietu-attewen-atxalen-yeselam', 'prayer', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('fqr-s-bo', 'ፍቅር ስሐቦ', 'ፍቅር ስሐቦ', 'fqr sሐbo', 'Ethiopian Orthodox Tewahedo Mezmur - ፍቅር ስሐቦ', 'ፍቅር ስሐቦ ለወልድ ኃያል እመንበሩ /2/
+ወአብጽሖ /2/ እስከ ለሞት / 2/
+ትርጉም፣ ፍቅር ሳበው ኃያል ወልድን
+ከዙፋኑ /2/
+
+VERSE 1
+አደረሰው /3/ አስከ መሞት /2/', 'fqr sሐbo leweld ኃyal emenberu /2/
+weabtsሖ /2/ eske lemot / 2/
+trgum፣ fqr sabew ኃyal weldn
+kezufanu /2/
+
+VERSE 1
+aderesew /3/ aske memot /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Q5KCJBAcQ1E', 'draft', 'pending', 'https://www.youtube.com/watch?v=Q5KCJBAcQ1E', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-ye-lasie-meng-t-lezele-lem-new', 'ትርጉም፣ የሥላሴ መንግሥት ለዘለዓለም ነው', 'ትርጉም፣ የሥላሴ መንግሥት ለዘለዓለም ነው', 'trgum፣ yeሥlasie mengሥt lezeleዓlem new', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፣ የሥላሴ መንግሥት ለዘለዓለም ነው', 'አያሉ በማያቋርጥ አንደበት ይዘምራሉ', 'ayalu bemayaquarx andebet yzemralu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=_dcf6m6U2Qs', 'draft', 'pending', 'https://www.youtube.com/watch?v=_dcf6m6U2Qs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('trgum-ye-lasie-meng-t-lezele-lem-new', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-bechgrna-be-zen-gizie-yale-ante', 'ትርጉም፣ በችግርና በሐዘን ጊዜ ያለ አንተ', 'ትርጉም፣ በችግርና በሐዘን ጊዜ ያለ አንተ', 'trgum፣ bechgrna beሐzen gizie yale ante', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፣ በችግርና በሐዘን ጊዜ ያለ አንተ', 'የሚረዳን ዘመድ አናውቅም(የለንም)', 'yemiredan zemed anawqm(yelenm)', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1ylAhlRoJyg', 'draft', 'pending', 'https://www.youtube.com/watch?v=1ylAhlRoJyg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-sew-hulu-kemiwedat', 'ትርጉም፣ ሰው ሁሉ ከሚወዳት', 'ትርጉም፣ ሰው ሁሉ ከሚወዳት', 'trgum፣ sew hulu kemiwedat', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፣ ሰው ሁሉ ከሚወዳት', 'በደብረ መድኃኒትና በማኅደረ
+ስብሐት አግዚአብሔር አደረ፡:', 'bedebre medኃnitna bemaኅdere
+sbሐt agziabሔr adere፡:', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=TaZme5UfPMs', 'draft', 'pending', 'https://www.youtube.com/watch?v=TaZme5UfPMs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('menkre-grma', 'መንክረ ግርማ', 'መንክረ ግርማ', 'menkre grma', 'Ethiopian Orthodox Tewahedo Mezmur - መንክረ ግርማ', 'መንክረ ግርማ ኃይለ ልዑል ጸለላ /2/
+አማን /2/ መላእክት ይኬልልዋ /4
+ትርጉም፣ በሚያስደንቅ ግርማ የልዑል
+ኃይል ጋረዳት /2/
+
+VERSE 1
+በአውነት /2/ መላአክት አመሰገኗት /2/', 'menkre grma ኃyle lዑl tselela /2/
+aman /2/ melaekt ykiellwa /4
+trgum፣ bemiyasdenq grma yelዑl
+ኃyl garedat /2/
+
+VERSE 1
+beawnet /2/ melaakt amesegenuat /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=bw5ITZhlY80', 'draft', 'pending', 'https://www.youtube.com/watch?v=bw5ITZhlY80', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kule-kentu', 'ኩለ ከንቱ', 'ኩለ ከንቱ', 'kule kentu', 'Ethiopian Orthodox Tewahedo Mezmur - ኩለ ከንቱ', 'ኩሉ ከንቱ ከንቱ ንብረቱ እስመ ኩሉ ኃላፊ ውእቱ /2/', 'kulu kentu kentu nbretu esme kulu ኃlafi wetu /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=PfrAWhA4jcY', 'draft', 'pending', 'https://www.youtube.com/watch?v=PfrAWhA4jcY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-endeante-yqr-bay-man-ale', 'ትርጉም፣ እንደአንተ ይቅር ባይ ማን አለ', 'ትርጉም፣ እንደአንተ ይቅር ባይ ማን አለ', 'trgum፣ endeante yqr bay man ale', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፣ እንደአንተ ይቅር ባይ ማን አለ', 'ሰው ሁሉ አንተን ተስፋ ያደርጋልና
+141. መድኃኔዓለም', 'sew hulu anten tesfa yadergalna
+141. medኃnieዓlem', 'amharic', 'mezmur', 'ዘማሪ ዲያቆን አቤል', 'https://www.youtube.com/watch?v=0fTNQXu061E', 'draft', 'pending', 'https://www.youtube.com/watch?v=0fTNQXu061E', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amanuiel-adanen', 'አማኑኤል አዳነን', 'አማኑኤል አዳነን', 'amanuiel adanen', 'Ethiopian Orthodox Tewahedo Mezmur - አማኑኤል አዳነን', 'አማኤል አዳነን በማይሻር ቃሉ /2/
+ኸኸ ደስ ይበለን /2/ እልል በሉ /2/
+አዳነን በማይሻር ቃሉ /2/', 'amaiel adanen bemayshar qalu /2/
+ኸኸ des ybelen /2/ ell belu /2/
+adanen bemayshar qalu /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=UTFlYCuohJY', 'draft', 'pending', 'https://www.youtube.com/watch?v=UTFlYCuohJY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beleni-me-rkuke', 'በለኒ መሐርኩከ', 'በለኒ መሐርኩከ', 'beleni meሐrkuke', 'Ethiopian Orthodox Tewahedo Mezmur - በለኒ መሐርኩከ', 'በለኒ መሐርኩከ /2/ በአንተ ማርያም
+አስመ አልቦ ዘአንበሌከ ዘይሜሕር ቃል', 'beleni meሐrkuke /2/ beante maryam
+asme albo zeanbelieke zeymieሕr qal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=pK6comVzDSQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=pK6comVzDSQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('wetu-liqomu', 'ውእቱ ሊቆሙ', 'ውእቱ ሊቆሙ', 'wetu liqomu', 'Ethiopian Orthodox Tewahedo Mezmur - ውእቱ ሊቆሙ', 'ውእቱ ሊቆሙ ለመላእክት ወመልአኮሙ
+ስሙ ሜካኤል /2/
+ልብሱ ዘመብረቅ ዓይኑ ዘርግብ ሊቀ መላእክት /2/
+ትርጉም፣ ለመላእክት አለቃቸው እርሱ ነው
+
+VERSE 1
+ስሙ ሚካኤል ነው የሚካኤል
+ልብሱ የመብረቅ አይኖቹም የርግብ
+ዓይኖቹ ይመስላሉ', 'wetu liqomu lemelaekt wemelakomu
+smu miekaiel /2/
+lbsu zemebreq ዓynu zergb liqe melaekt /2/
+trgum፣ lemelaekt aleqachew ersu new
+
+VERSE 1
+smu mikaiel new yemikaiel
+lbsu yemebreq aynochum yergb
+ዓynochu ymeslalu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=EIT7JcuGnes', 'draft', 'pending', 'https://www.youtube.com/watch?v=EIT7JcuGnes', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('liqe-melaekt', 'ሊቀ መላእክት', 'ሊቀ መላእክት', 'liqe melaekt', 'Ethiopian Orthodox Tewahedo Mezmur - ሊቀ መላእክት', 'ሊቀ መላአክት ሚካኤል መልአክ ምክሩ ለልዑል
+ኃያል /2/ ሰዳዴ ሳጥናኤል ኃይል ገባሬ ኃይል /2/
+ትርጉም፣ የመላእክት አለቃ ሚካኤል ለልዑል', 'liqe melaakt mikaiel melak mkru lelዑl
+/2/
+/2/
+ኃyal /2/ sedadie saxnaiel ኃyl gebarie ኃyl /2/
+
+VERSE 1
+trgum፣ yemelaekt aleqa mikaiel lelዑl', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=YVBs1aXA_6I', 'draft', 'pending', 'https://www.youtube.com/watch?v=YVBs1aXA_6I', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('melmale-werq-2', 'ሐመልማለ ወርቅ /2/', 'ሐመልማለ ወርቅ /2/', 'ሐmelmale werq /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሐመልማለ ወርቅ /2/', 'ሐመልማለ ወርቅ /2/
+ልብሱ ዘመብረቅ /2/
+ነፍስና ሥጋዬ በምግብ ተጣልተው
+መልአኩ ዑራኤል ቆሞ አስታረቃቸው
+
+VERSE 1
+ለሰዎች ደኅንነት ጽድቅን የሚሰብከው
+ነውና ዑራኤል የሰላም መልአክ
+አጅና አግሬ ታስሮ ሽባ የነበርኩኝ
+ይኸው ተጠምቄ በጠበሉ ዳንኩኝ
+
+VERSE 2
+ስአለቴ ሰምሮልኝ ሁሉን አግኝቻለሁ
+ለአምላክ ዑራኤል አመሰክራለሁ
+አልፈልግም ሐኪም ምን ያደርግልኛል
+አምላከ ዑራኤል ፈጥኖ ያድነኛል
+
+VERSE 3
+ሕሙማን ለምኑ ስንፍና አይያዛችሁ
+ኑና ተጠመቁ ጠበሉ አለላችሁ
+ያመናችሁ ሰዎች ኑና ተጠመቁ
+አማላጅነቱን በግልጽ አሳውቁ
+
+VERSE 4
+አምላከ ዑራኤል አንተ ችላ አትበለኝ
+መጥቻለሁና በችሎታህ አረዳኝ
+53. - ምድር ጸዳች
+ምድር ጸዳች ሐሴት አደረገች
+
+VERSE 5
+ምድር ጸዳች ከእድፍም ነጻች
+በክርስቶስ ደም በአውነት ታጠበች''/2/
+ሴቶች ትንሣኤውን ሲያወሩ በደስታ/''/2/
+ጮሐ ስትመሰክር ምድር አፍዋን ከፍታ/2/
+
+VERSE 6
+የተዘጋው ዓለም ሲገለባበጥ''2/
+ምን ተናገሩ አይሁድ ከፍርድ ለማምለጥ''2/
+አያልቅባቸውም የአነርሱ ፈሊጥ/2/
+መግነዙ ተገኘ ከመቃብር ወድፃዋ/2/
+
+VERSE 7
+ምልክት እንዲሆን ተወላቸው አውቀ/2/
+አሑድ በማለዳ መቃብሩን ሲያዩ
+ሁሉም ተለውጦ ልቅሶው ደስታ ሆነነ/2/
+ሁለቱ መላእክት ብርሃን የለበሱ''2/
+
+VERSE 8
+ተነሥቷል አሏቸው ሴቶቹ ሲደርሱ/2/', 'ሐmelmale werq /2/
+lbsu zemebreq /2/
+nefsna ሥgayie bemgb texaltew
+melaku ዑraiel qomo astareqachew
+
+VERSE 1
+lesewoch deኅnnet tsdqn yemisebkew
+newna ዑraiel yeselam melak
+ajna agrie tasro shba yeneberkugn
+yኸw texemqie bexebelu dankugn
+
+VERSE 2
+saletie semrolgn hulun aggnchalehu
+leamlak ዑraiel amesekralehu
+alfelgm ሐkim mn yaderglgnal
+amlake ዑraiel fexno yadnegnal
+
+VERSE 3
+ሕmuman lemnu snfna ayyazachhu
+nuna texemequ xebelu alelachhu
+yamenachhu sewoch nuna texemequ
+amalajnetun beglts asawqu
+
+VERSE 4
+amlake ዑraiel ante chla atbelegn
+mexchalehuna bechlotah aredagn
+53. - mdr tsedach
+mdr tsedach ሐsiet aderegech
+
+VERSE 5
+mdr tsedach keedfm netsach
+bekrstos dem beawnet taxebech''/2/
+sietoch tnሣiewn siyaweru bedesta/''/2/
+coሐ stmesekr mdr afwan kefta/2/
+
+VERSE 6
+yetezegaw ዓlem sigelebabex''2/
+mn tenageru ayhud kefrd lemamlex''2/
+ayalqbachewm yeanersu felix/2/
+megnezu tegegne kemeqabr wedፃwa/2/
+
+VERSE 7
+mlkt endihon tewelachew awqe/2/
+aሑd bemaleda meqabrun siyayu
+hulum telewxo lqsow desta honene/2/
+huletu melaekt brሃn yelebesu''2/
+
+VERSE 8
+teneሥtual aluachew sietochu sidersu/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=kvQVyKNLebk', 'draft', 'pending', 'https://www.youtube.com/watch?v=kvQVyKNLebk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-aleqa-yehone-mikaiel-lbsu-mebreq', 'ትርጉም፤ አለቃ የሆነ ሚካኤል ልብሱ መብረቅ', 'ትርጉም፤ አለቃ የሆነ ሚካኤል ልብሱ መብረቅ', 'trgum፤ aleqa yehone mikaiel lbsu mebreq', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፤ አለቃ የሆነ ሚካኤል ልብሱ መብረቅ', 'ነው ዓይኖቹም የርግብ ዓይን ይመስላሉ
+ሚካኤል የወርቅ ሐመልማል ነው', 'new ዓynochum yergb ዓyn ymeslalu
+mikaiel yewerq ሐmelmal new', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=cO8miGVeZH0', 'draft', 'pending', 'https://www.youtube.com/watch?v=cO8miGVeZH0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ynu-zergbe', '.ዓይኑ ዘርግበ', '.ዓይኑ ዘርግበ', '.ዓynu zergbe', 'Ethiopian Orthodox Tewahedo Mezmur - .ዓይኑ ዘርግበ', 'ዓይኑ ዘርግብ ልብሱ ዘመብረቅ /2/
+ሐመልማለ ወርቅ /3/ ሚካኤል ሊቅ /2/
+ትርጉም፣- ሊቀመላእክት ቅዱስ ሚካኤል ዓይኑ
+የርግብ ልብሱም የመብረቅ ነው፡፡
+
+VERSE 1
+162. ነዋ ሚካኤል', 'ዓynu zergb lbsu zemebreq /2/
+ሐmelmale werq /3/ mikaiel liq /2/
+trgum፣- liqemelaekt qdus mikaiel ዓynu
+yergb lbsum yemebreq new፡፡
+
+VERSE 1
+162. newa mikaiel', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=KZRjyCCjeiU', 'draft', 'pending', 'https://www.youtube.com/watch?v=KZRjyCCjeiU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('zkie-wetu-mikaiel-bste-mena-zeawredke-2', 'ዝኬ ውእቱ ሚካኤል ኅብስተ መና ዘአውረድከ /2/', 'ዝኬ ውእቱ ሚካኤል ኅብስተ መና ዘአውረድከ /2/', 'zkie wetu mikaiel ኅbste mena zeawredke /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ዝኬ ውእቱ ሚካኤል ኅብስተ መና ዘአውረድከ /2/', 'ወከመ አያያተ መአር /2/ ጥዑም ፈድፋደ ሊቀ
+መላአክት /2/
+ትርጉም፣', 'wekeme ayayate mear /2/ xዑm fedfade liqe
+melaakt /2/
+trgum፣', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xnpFAhTITOw', 'draft', 'pending', 'https://www.youtube.com/watch?v=xnpFAhTITOw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kel-l-zend-leyqrta-2-ylakalu', 'ከልዑል ዘንድ ለይቅርታ /2/ ይላካሉ', 'ከልዑል ዘንድ ለይቅርታ /2/ ይላካሉ', 'kelዑl zend leyqrta /2/ ylakalu', 'Ethiopian Orthodox Tewahedo Mezmur - ከልዑል ዘንድ ለይቅርታ /2/ ይላካሉ', 'ከልዑል
+175. ውእቱ ሚካኤል
+ውእቱ ሚካኤል ኃይል ልዑል ውእቱ ልዑል
+መንበር /2/
+
+VERSE 1
+ከልዑል ዘንድ ለይቅርታ /2/ ይላካሉ
+ከልዑል/2/
+717.ይቀልል
+ይቀልል ሩጸቶሙ//2/
+
+VERSE 2
+አም ነፍሳት ሑረቶሙ/ሪ2/', 'kelዑl
+175. wetu mikaiel
+wetu mikaiel ኃyl lዑl wetu lዑl
+menber /2/
+
+VERSE 1
+kelዑl zend leyqrta /2/ ylakalu
+kelዑl/2/
+717.yqell
+yqell rutsetomu//2/
+
+VERSE 2
+am nefsat ሑretomu/ri2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=IMFNHJI9phQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=IMFNHJI9phQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ante-slehonk-mikaiel', 'አንተ ስለሆንክ ሚካኤል', 'አንተ ስለሆንክ ሚካኤል', 'ante slehonk mikaiel', 'Ethiopian Orthodox Tewahedo Mezmur - አንተ ስለሆንክ ሚካኤል', 'የአምላክ ባለሟል »
+ልመናን ፈጥኖ »
+ከአምላክ ያቀርባል »
+የዋኀ መልአክ ነህ አዛኝ ለሰው
+
+VERSE 1
+ምልጃህ ፈጣን ነው ለምናምነው /2/
+አንተ ስለሆንክ ሚካኤል
+ያአምላክ ባለሟል »
+ልመናን ፈጥኖ »
+
+VERSE 2
+ከአምላክ ያቀርባል »
+የዋህ መልአክ ነህ አዛኝ ለሰው
+ምልጃህ ፈጣን ነው ለምናምነው /2/', 'yeamlak balemual »
+lmenan fexno »
+keamlak yaqerbal »
+yewaኀ melak neh azagn lesew
+
+VERSE 1
+mljah fexan new lemnamnew /2/
+ante slehonk mikaiel
+yaamlak balemual »
+lmenan fexno »
+
+VERSE 2
+keamlak yaqerbal »
+yewah melak neh azagn lesew
+mljah fexan new lemnamnew /2/', 'amharic', 'mezmur', 'ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ', 'https://www.youtube.com/watch?v=SqCPH1W8Jw0', 'draft', 'pending', 'https://www.youtube.com/watch?v=SqCPH1W8Jw0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ante-qdus-mikaiel', 'አንተ ቅዱስ ሚካኤል', 'አንተ ቅዱስ ሚካኤል', 'ante qdus mikaiel', 'Ethiopian Orthodox Tewahedo Mezmur - አንተ ቅዱስ ሚካኤል', 'አንተ ቅዱስ ሚካኤል ሊቀ መላእክት የአምላክ
+ባለሟል /2/
+አገራችንን ጠብቅልን ዛሬም በአማላጅነትህ ፈጥነህ
+ድረስላት ለኢትዮጵያ /2/
+
+VERSE 1
+18]. ኃያል ሀኃያል
+ኃያል /8/ ሰዳዴ ሳጥናኤል
+ኃያል ገባሪ ኃይል /2/
+ባሕራንን የረዳው ከተላፊለኖስ እጅ ያዳነው/2/
+
+VERSE 2
+መልአኩ ሚካኤል ነው /2/
+የሞቱን ደብዳቤ የለወጠው
+ከዕደ ረበናት /4 ሶስናን ያዳናት
+ሚካኤል መልአክ ምሕረት
+
+VERSE 3
+ዳያቢሎስን ያዋረድከው በአሳት ሰይፍ
+የቀጣኸው 2/ ሚዛንህ ትክክል ነው /2/
+ሚካኤል ክብርህ ድንቅ ነው
+ምሐዘን በትካዜ ያለሁትን ብላቴና
+
+VERSE 4
+አጽናናኝ አረጋጋኝ /2/ ሚካኤል ሊቀ ደብረ ሲና
+182. ፈተና ቢገጥማት
+ፈተና ቢገጥማት /2/ ቅድስት አፎምያ
+ሜካኤል /2/ ብላ ስትጠራ /2/ ፈጥኖ አዳናት
+
+VERSE 5
+ከጭንቅ ከመከራ /2/
+ነውና እምነቷ /2/ ጽኑ ከምግባራ
+ሚካኤል መጣላት /2/ ተአምሩን ሊሠራ
+ሚካኤል መጣላት /2/ ለአፎምያ
+
+VERSE 6
+ተአምሩን ሊሠራ
+ፍጡነ ረድኤት መጣላት /2/ ገስግሶ /2/
+አንደ ኃያልነቱ ኃይሉን አፈራርሶ /2/
+በመጣበት ፄደ ተመልሶ
+
+VERSE 7
+በአምነት ለጠሩህ /2/ ጸንተው በሄህይማኖት', 'ante qdus mikaiel liqe melaekt yeamlak
+balemual /2/
+agerachnn xebqln zariem beamalajneth fexneh
+dreslat leityophya /2/
+
+VERSE 1
+18]. ኃyal haኃyal
+ኃyal /8/ sedadie saxnaiel
+ኃyal gebari ኃyl /2/
+baሕrann yeredaw ketelafilenos ej yadanew/2/
+
+VERSE 2
+melaku mikaiel new /2/
+yemotun debdabie yelewexew
+keዕde rebenat /4 sosnan yadanat
+mikaiel melak mሕret
+
+VERSE 3
+dayabilosn yawaredkew beasat seyf
+yeqexaኸw 2/ mizanh tkkl new /2/
+mikaiel kbrh dnq new
+mሐzen betkazie yalehutn blatiena
+
+VERSE 4
+atsnanagn aregagagn /2/ mikaiel liqe debre sina
+182. fetena bigexmat
+fetena bigexmat /2/ qdst afomya
+miekaiel /2/ bla stxera /2/ fexno adanat
+
+VERSE 5
+kecnq kemekera /2/
+newna emnetua /2/ tsnu kemgbara
+mikaiel mexalat /2/ teamrun liሠra
+mikaiel mexalat /2/ leafomya
+
+VERSE 6
+teamrun liሠra
+fxune rediet mexalat /2/ gesgso /2/
+ande ኃyalnetu ኃylun aferarso /2/
+bemexabet ፄde temelso
+
+VERSE 7
+beamnet lexeruh /2/ tsentew behehymanot', 'amharic', 'mezmur', 'ዘማሪ ገብረዮሐንስ ገብረፃድቅ', 'https://www.youtube.com/watch?v=zpM-uDYjHpg', 'draft', 'pending', 'https://www.youtube.com/watch?v=zpM-uDYjHpg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tolo-yderslnal-fxune-rediet-2', 'ቶሎ ይደርስልናል ፍጡነ ረድኤት /2/', 'ቶሎ ይደርስልናል ፍጡነ ረድኤት /2/', 'tolo yderslnal fxune rediet /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ቶሎ ይደርስልናል ፍጡነ ረድኤት /2/', 'ሚካኤል ሊቀ መላእክት
+183. ከሚካኤል በቀር
+ከሚካኤል በቀር የሚያጽናናኝ የለም
+ረዳቴ አርሱ ነው በመከራዬ ቀን /2/
+
+VERSE 1
+ቶሎ ይደርስልናል ፍጡነ ረድኤት /2/
+ሚካኤል ሊቀ መላእክት
+10ዐ66.የኃያላን ኃይል', 'mikaiel liqe melaekt
+183. kemikaiel beqer
+kemikaiel beqer yemiyatsnanagn yelem
+redatie arsu new bemekerayie qen /2/
+
+VERSE 1
+tolo yderslnal fxune rediet /2/
+mikaiel liqe melaekt
+10ዐ66.yeኃyalan ኃyl', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=DOTZ-Tc1Amc', 'draft', 'pending', 'https://www.youtube.com/watch?v=DOTZ-Tc1Amc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ye-dar-tsyon-mezmur', 'የኅዳር ጽዮን መዝሙር', 'የኅዳር ጽዮን መዝሙር', 'yeኅdar tsyon mezmur', 'Ethiopian Orthodox Tewahedo Mezmur - የኅዳር ጽዮን መዝሙር', '165.አብርሒ ጽዮን
+አብርሒ ጽ፳ዮን', '165.abrሒ tsyon
+abrሒ ts፳yon', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Fmhr41s-MPI', 'draft', 'pending', 'https://www.youtube.com/watch?v=Fmhr41s-MPI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tabote-gu', 'ታቦተ ሕጉ', 'ታቦተ ሕጉ', 'tabote ሕgu', 'Ethiopian Orthodox Tewahedo Mezmur - ታቦተ ሕጉ', 'ታቦተ ሕጉ ለአግዚአብሔር በካህናት
+ሕጽርት ወበመንፈስቅዱስ ክልልት /2/
+ንጉሥኪ ጽዮን ኢይትመዋፅ ለፀር  ወኢየኃደጋ
+ለሀገር/2/', 'tabote ሕgu leagziabሔr bekahnat
+ሕtsrt webemenfesqdus kllt /2/
+nguሥki tsyon iytmewaፅ leፀr  weiyeኃdega
+lehager/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5rKNRG945ys', 'draft', 'pending', 'https://www.youtube.com/watch?v=5rKNRG945ys', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ente-krstos', 'እንተ ክርስቶስ', 'እንተ ክርስቶስ', 'ente krstos', 'Ethiopian Orthodox Tewahedo Mezmur - እንተ ክርስቶስ', 'አንተ ክርስቶስ መሠረት ፀሐየ ጽድቅ ያበርህ
+ለኪ ፀሐየ ፅድቅ/2/
+ለሰማዕት ሥርጉት በስብሐት ሥርጉት
+በስብሐት /2/', 'ante krstos meሠret ፀሐye tsdq yaberh
+leki ፀሐye ፅdq/2/
+lesemaዕt ሥrgut besbሐt ሥrgut
+besbሐt /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Fxi88iDlp-U', 'draft', 'pending', 'https://www.youtube.com/watch?v=Fxi88iDlp-U', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('abrhi-tsyon-2-tsyon-abrhi-2', 'አብርሂ ጽዮን/2/ ጽዮን አብርሂ/2/', 'አብርሂ ጽዮን/2/ ጽዮን አብርሂ/2/', 'abrhi tsyon/2/ tsyon abrhi/2/', 'Ethiopian Orthodox Tewahedo Mezmur - አብርሂ ጽዮን/2/ ጽዮን አብርሂ/2/', 'አንቁ ዘጳዝዮን ዘጎረየኪ ሰሉሞን
+ንጉሥ/ሪ/', 'anqu zephazyon zegoreyeki selumon
+nguሥ/ri/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3oYDowSuYBo', 'draft', 'pending', 'https://www.youtube.com/watch?v=3oYDowSuYBo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bemn-2-enmeslat-dngl-maryam-2', 'በምን /2/ እንመስላት ድንግል ማርያም/2/', 'በምን /2/ እንመስላት ድንግል ማርያም/2/', 'bemn /2/ enmeslat dngl maryam/2/', 'Ethiopian Orthodox Tewahedo Mezmur - በምን /2/ እንመስላት ድንግል ማርያም/2/', 'ምሳሌ የላትም /2/ ክብራን የሚመጥን/2/
+የሙሴ ጽላት ነሽ የምሕረት ቃል ኪዳን
+የያፅቆብ መሰላል የአብርሃም ድንኳን
+የብርሃን መውጫ የኖኅ ድንቅ መርከብ
+
+VERSE 1
+የመላዕክት አኅት የርኅሩኃን ርግብ/2/', 'msalie yelatm /2/ kbran yemimexn/2/
+yemusie tslat nesh yemሕret qal kidan
+yeyaፅqob meselal yeabrሃm dnkuan
+yebrሃn mewca yenoኅ dnq merkeb
+
+VERSE 1
+yemelaዕkt aኅt yerኅruኃn rgb/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Aky10yR_Etw', 'draft', 'pending', 'https://www.youtube.com/watch?v=Aky10yR_Etw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-beberet-tegna-becerq-texeqelele', 'ትርጉም፡- በበረት ተኛ በጨርቅ ተጠቀለለ', 'ትርጉም፡- በበረት ተኛ በጨርቅ ተጠቀለለ', 'trgum፡- beberet tegna becerq texeqelele', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡- በበረት ተኛ በጨርቅ ተጠቀለለ', 'የዓለም መድኃኒት/2/ ዛሬ ተወለደ/2/
+215.ሖረ ኢየሱስ
+ሖረ ኢየሱስ /4/
+እምገሊላ /3/ ኀበ ዮሐንስ /2/
+
+VERSE 1
+ትርጉም፡ሄደ ኢየሱስ''/2/
+ከገሊላ/3/ ወደ ዮሐንስ
+216.ምድርኒ ርአይቶ
+ምድርኒ ርእይቶ ወአኮቴቶ/2/
+
+VERSE 2
+ባሕርኒ ሰገደት ሎቱ/4/', 'yeዓlem medኃnit/2/ zarie tewelede/2/
+215.ሖre iyesus
+ሖre iyesus /4/
+emgelila /3/ ኀbe yoሐns /2/
+
+VERSE 1
+trgum፡hede iyesus''/2/
+kegelila/3/ wede yoሐns
+216.mdrni rayto
+mdrni reyto weakotieto/2/
+
+VERSE 2
+baሕrni segedet lotu/4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=pX2WnHoc91k', 'draft', 'pending', 'https://www.youtube.com/watch?v=pX2WnHoc91k', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('werede-weld-6', 'ወረደ ወልድ/6/', 'ወረደ ወልድ/6/', 'werede weld/6/', 'Ethiopian Orthodox Tewahedo Mezmur - ወረደ ወልድ/6/', 'አምሰማያት ውስተ ምጥማቃት/4/', 'amsemayat wste mxmaqat/4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=KiMdB2QFU1A', 'draft', 'pending', 'https://www.youtube.com/watch?v=KiMdB2QFU1A', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('werede-weld-6', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ye-lemn-bedel-yesewn-gf-ayto', 'የዓለምን በደል የሰውን ግፍ አይቶ', 'የዓለምን በደል የሰውን ግፍ አይቶ', 'yeዓlemn bedel yesewn gf ayto', 'Ethiopian Orthodox Tewahedo Mezmur - የዓለምን በደል የሰውን ግፍ አይቶ', 'ዘጠና ዘጠነኙን መላእክቱን ትቶ
+ጽድቅን ለመፈጸም በደልን አጥፍቶ', 'zexena zexenegnun melaektun tto
+tsdqn lemefetsem bedeln axfto', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=EhEUgKQ5hgI', 'draft', 'pending', 'https://www.youtube.com/watch?v=EhEUgKQ5hgI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('ye-lemn-bedel-yesewn-gf-ayto', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amlak-tewelede-texemeqe-leegna-2', 'አምላክ ተወለደ ተጠመቀ ለእኛ/2/', 'አምላክ ተወለደ ተጠመቀ ለእኛ/2/', 'amlak tewelede texemeqe leegna/2/', 'Ethiopian Orthodox Tewahedo Mezmur - አምላክ ተወለደ ተጠመቀ ለእኛ/2/', 'የሰማዮች ሰማይ የማይችለው ንጉሥ
+ተወለደ ሲጠመቅ እኛ ለመቀደስ
+ተራሮች ደንግጠው ዘለሉ እንደፈረስ
+ባሕር ተጨነቀች ጠበባት መሬቱ', 'yesemayoch semay yemaychlew nguሥ
+tewelede sixemeq egna lemeqedes
+teraroch dengxew zelelu endeferes
+baሕr teceneqech xebebat merietu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=IUb9SJBhWI4', 'draft', 'pending', 'https://www.youtube.com/watch?v=IUb9SJBhWI4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ledngl-des-ybelsh-alat-2-2', 'ለድንግል ደስ ይበልሽ አላት/2/ ኸኸ/2/', 'ለድንግል ደስ ይበልሽ አላት/2/ ኸኸ/2/', 'ledngl des ybelsh alat/2/ ኸኸ/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ለድንግል ደስ ይበልሽ አላት/2/ ኸኸ/2/', 'ከጌታ ተልኮ ድንግልን ለማብሰር
+ክንፋን እያማታ ምስራች ሲናገር
+ድምጽን እያሰማ እስከ ሊባኖስ
+በፍጥነት ወረደ መልእከት ለማድረስ', 'kegieta telko dngln lemabser
+knfan eyamata msrach sinager
+dmtsn eyasema eske libanos
+befxnet werede meleket lemadres', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7ecyizZ9rkc', 'draft', 'pending', 'https://www.youtube.com/watch?v=7ecyizZ9rkc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('ledngl-des-ybelsh-alat-2-2', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('melakum-melso-endih-alat-ledngl', 'መልአኩም መልሶ እንዲህ አላት ለድንግል', 'መልአኩም መልሶ እንዲህ አላት ለድንግል', 'melakum melso endih alat ledngl', 'Ethiopian Orthodox Tewahedo Mezmur - መልአኩም መልሶ እንዲህ አላት ለድንግል', 'መንፈስ ቅዱስም በአንቺ ላይ ይመጣል
+የልዑል ሀይልም ይጸልልሻል
+የእግዚአብሔር አብ ልጅ ከአንቺ ይወለዳል
+ለእግዚአብሔር አይሳነውም', 'menfes qdusm beanchi lay ymexal
+yelዑl haylm ytsellshal
+yeegziabሔr ab lj keanchi yweledal
+leegziabሔr aysanewm', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=b7A1wZFxVhQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=b7A1wZFxVhQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('wsete-mxmaqat-3-werede-weld', 'ውሰተ ምጥማቃት /3/ ወረደ ወልድ', 'ውሰተ ምጥማቃት /3/ ወረደ ወልድ', 'wsete mxmaqat /3/ werede weld', 'Ethiopian Orthodox Tewahedo Mezmur - ውሰተ ምጥማቃት /3/ ወረደ ወልድ', '258.ተነሱ አዘምር
+ተነሥ እንዘምር አልል እአንበል/ሪ/
+በመልአኩ በገብርኤል ቃል/ሪ/
+ተወልዶልናል ተጠምቆልናል /2/
+
+VERSE 1
+አስይ አሰይ የዓለም ቤዛ አማኑኤል /2/
+259. ሖረ ኢየሱስ
+ሖረ ኢየሱስ እምገሊላ ኀበ ዮሐንስ/2/
+ከመ ያጥምቆ /2/ ፈለገ ዮርዳኖስ /2/
+
+VERSE 2
+260. በመንፈስ የሐውር
+በመንፈስ የሐውር እምኃይል ውስተ ኃይል/ሪ/
+ካህን ካህን ወነብይ/2 ዮሐንስ መጥምቅ /2/', '258.tenesu azemr
+teneሥ enzemr all eanbel/ri/
+bemelaku begebriel qal/ri/
+teweldolnal texemqolnal /2/
+
+VERSE 1
+asy asey yeዓlem bieza amanuiel /2/
+259. ሖre iyesus
+ሖre iyesus emgelila ኀbe yoሐns/2/
+keme yaxmqo /2/ felege yordanos /2/
+
+VERSE 2
+260. bemenfes yeሐwr
+bemenfes yeሐwr emኃyl wste ኃyl/ri/
+kahn kahn weneby/2 yoሐns mexmq /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=gmOPUv_SNJw', 'draft', 'pending', 'https://www.youtube.com/watch?v=gmOPUv_SNJw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gieta-beyo-ns-asey-esey', 'ጌታ በዮሐንስ አሰይ እሰይ', 'ጌታ በዮሐንስ አሰይ እሰይ', 'gieta beyoሐns asey esey', 'Ethiopian Orthodox Tewahedo Mezmur - ጌታ በዮሐንስ አሰይ እሰይ', 'ሊጠመቅ ሲል ገና አሰይ አሰይ
+ወደ ጊላ ሸሸ አሰይ አሰይ
+ዮርዳኖስ ፈራና አሰይ አሰይ', 'lixemeq sil gena asey asey
+wede gila sheshe asey asey
+yordanos ferana asey asey', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=V-kDllN-t8w', 'draft', 'pending', 'https://www.youtube.com/watch?v=V-kDllN-t8w', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ybiela-melak-wegebewati-ni', 'ይቤላ መልአክ ወገበዋቲሃኒ', 'ይቤላ መልአክ ወገበዋቲሃኒ', 'ybiela melak wegebewatiሃni', 'Ethiopian Orthodox Tewahedo Mezmur - ይቤላ መልአክ ወገበዋቲሃኒ', 'ይቤላ መልአክ ሐመልማለ ወርቅ
+ይቤላ መልአክ ትበርሂ አምፀሐይ
+ይቤላ መልአክ ፕኅተ ምሥራቅ
+ይቤላ መልአክ ሰላም ለኪ ድንግል
+
+VERSE 1
+ይቤላ መልአክ በአልባሰ ወርቅ', 'ybiela melak ሐmelmale werq
+ybiela melak tberhi amፀሐy
+ybiela melak pኅte mሥraq
+ybiela melak selam leki dngl
+
+VERSE 1
+ybiela melak bealbase werq', 'amharic', 'mezmur', 'Zemarit Azeb Kebede', 'https://www.youtube.com/watch?v=DgvRiBRT2UM', 'draft', 'pending', 'https://www.youtube.com/watch?v=DgvRiBRT2UM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('welde-egziab-r-mexa-kelay-kesemay', 'ወልደ እግዚአብሔር መጣ ከላይ ከሰማይ', 'ወልደ እግዚአብሔር መጣ ከላይ ከሰማይ', 'welde egziabሔr mexa kelay kesemay', 'Ethiopian Orthodox Tewahedo Mezmur - ወልደ እግዚአብሔር መጣ ከላይ ከሰማይ', 'ፍቅር አወረደው ከመንበሩ ላይ /2/
+አልተጸየፈውም መሆን ከግርግም
+ትኅትናው ደነቀኝ የመድኃኔዓለም /2/', 'fqr aweredew kemenberu lay /2/
+altetseyefewm mehon kegrgm
+tኅtnaw deneqegn yemedኃnieዓlem /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=FKQQwQoI8Bg', 'draft', 'pending', 'https://www.youtube.com/watch?v=FKQQwQoI8Bg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bebietel-m-tewelede-2-amanuiel-2', 'በቤተልሔም ተወለደ /2/ አማኑኤል /2/', 'በቤተልሔም ተወለደ /2/ አማኑኤል /2/', 'bebietelሔm tewelede /2/ amanuiel /2/', 'Ethiopian Orthodox Tewahedo Mezmur - በቤተልሔም ተወለደ /2/ አማኑኤል /2/', 'አምዘርዓ ዳዊት /4/ ተወልደ አማኑኤል/2/
+274.የምስራች ተወለደ', 'amzerዓ dawit /4/ tewelde amanuiel/2/
+274.yemsrach tewelede', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7iTt3StHSCM', 'draft', 'pending', 'https://www.youtube.com/watch?v=7iTt3StHSCM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('arko-lemer-wi-tsemey-2-nebiye-l-l', 'አርኮ ለመርዓዊ ትሰመይ/2/ ነቢየ ልዑል', 'አርኮ ለመርዓዊ ትሰመይ/2/ ነቢየ ልዑል', 'arko lemerዓwi tsemey/2/ nebiye lዑl', 'Ethiopian Orthodox Tewahedo Mezmur - አርኮ ለመርዓዊ ትሰመይ/2/ ነቢየ ልዑል', '276.በወንጌሉ ያመናችሁ', '276.bewengielu yamenachhu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7u2ghdSJPKY', 'draft', 'pending', 'https://www.youtube.com/watch?v=7u2ghdSJPKY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('iyesus-krstos-ywedenal-yxebqenal-2', 'ኢየሱስ ክርስቶስ ይወደናል ይጠብቀናል/2/', 'ኢየሱስ ክርስቶስ ይወደናል ይጠብቀናል/2/', 'iyesus krstos ywedenal yxebqenal/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ኢየሱስ ክርስቶስ ይወደናል ይጠብቀናል/2/', 'በጥምቀቱ ልጅነት ሰጥቶናል/4/', 'bexmqetu ljnet sextonal/4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=opDGryIcbMs', 'draft', 'pending', 'https://www.youtube.com/watch?v=opDGryIcbMs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('egzio-mer', 'እግዚኦ መርሐ', 'እግዚኦ መርሐ', 'egzio merሐ', 'Ethiopian Orthodox Tewahedo Mezmur - እግዚኦ መርሐ', 'አግዚኡ መርሐ ዮርዳኖስ አብፅሀ/ሪ/
+ወበህየ ዮሐንስ ወበህየ ፍጹመ ተፈሥሐ//ሪ/', 'agziu merሐ yordanos abፅha/ri/
+webehye yoሐns webehye ftsume tefeሥሐ//ri/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=O0H9nZY2teY', 'draft', 'pending', 'https://www.youtube.com/watch?v=O0H9nZY2teY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-zarie-tewelede-ye-lem-med-nit-2', 'ትርጉም፡- ዛሬ ተወለደ የዓለም መድኃኒት/2/', 'ትርጉም፡- ዛሬ ተወለደ የዓለም መድኃኒት/2/', 'trgum፡- zarie tewelede yeዓlem medኃnit/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡- ዛሬ ተወለደ የዓለም መድኃኒት/2/', 'ደስታ ነውና ለሚያምኑት/''4/', 'desta newna lemiyamnut/''4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=vQTLIdR5ExA', 'draft', 'pending', 'https://www.youtube.com/watch?v=vQTLIdR5ExA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bietekrstiyan-ba-re-xbebat-2', 'ቤተክርስቲያን ባሕረ ጥበባት/2/', 'ቤተክርስቲያን ባሕረ ጥበባት/2/', 'bietekrstiyan baሕre xbebat/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ቤተክርስቲያን ባሕረ ጥበባት/2/', 'አትመረመርም /2/ እጅግ ጥልቅ ናተት/2/
+በሥጋዊ ጥበብ ለማወቅ ቢቃጣ', 'atmeremerm /2/ ejg xlq natet/2/
+beሥgawi xbeb lemaweq biqaxa', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=WoXlP8mIRs8', 'draft', 'pending', 'https://www.youtube.com/watch?v=WoXlP8mIRs8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('aman-aman-melaekt-ykiellwa-2', 'አማን አማን መላእክት ይኬልልዋ/2/', 'አማን አማን መላእክት ይኬልልዋ/2/', 'aman aman melaekt ykiellwa/2/', 'Ethiopian Orthodox Tewahedo Mezmur - አማን አማን መላእክት ይኬልልዋ/2/', 'ኸኸ በሚያስደንቅ ግርማ
+የልዑል ኃይል የጋረዳት/2/
+በእውነት /2/ መላእክት አመሰገኗት/2/', 'ኸኸ bemiyasdenq grma
+yelዑl ኃyl yegaredat/2/
+beewnet /2/ melaekt amesegenuat/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ytbJSPJN1BA', 'draft', 'pending', 'https://www.youtube.com/watch?v=ytbJSPJN1BA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beqana-zegelila-2', 'በቃና ዘገሊላ /2/', 'በቃና ዘገሊላ /2/', 'beqana zegelila /2/', 'Ethiopian Orthodox Tewahedo Mezmur - በቃና ዘገሊላ /2/', 'በቃና ዘገሊላ /2/ ከብካብ ኮነ /4/', 'beqana zegelila /2/ kebkab kone /4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=KfBVSmc36Ik', 'draft', 'pending', 'https://www.youtube.com/watch?v=KfBVSmc36Ik', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('enamesgnash-yeamlak-enat-bezmarie-2', 'እናመስግናሽ የአምላክ እናት በዝማሬ /2/', 'እናመስግናሽ የአምላክ እናት በዝማሬ /2/', 'enamesgnash yeamlak enat bezmarie /2/', 'Ethiopian Orthodox Tewahedo Mezmur - እናመስግናሽ የአምላክ እናት በዝማሬ /2/', 'የዓለም ቤዛ ነውና የማኅፀንሽ ፍሬ/4/', 'yeዓlem bieza newna yemaኅፀnsh frie/4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=HUazMrIm_9o', 'draft', 'pending', 'https://www.youtube.com/watch?v=HUazMrIm_9o', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('enamesgnash-yeamlak-enat-bezmarie-2', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yegietachn-enat-maryam-dngl-hoy-anchi-nesh', 'የጌታችን እናት ማርያም ድንግል ሆይ አንቺ ነሽ', 'የጌታችን እናት ማርያም ድንግል ሆይ አንቺ ነሽ', 'yegietachn enat maryam dngl hoy anchi nesh', 'Ethiopian Orthodox Tewahedo Mezmur - የጌታችን እናት ማርያም ድንግል ሆይ አንቺ ነሽ', 'የጌታችን እናት ማርያም ድንግል ሆይ አንቺ ነሽ', 'yegietachn enat maryam dngl hoy anchi nesh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=jm5eh01ZeYc', 'draft', 'pending', 'https://www.youtube.com/watch?v=jm5eh01ZeYc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yegietachn-enat-maryam-nts-t-hoy-anchi-nesh', 'የጌታችን እናት ማርያም ንጽሕት ሆይ አንቺ ነሽ', 'የጌታችን እናት ማርያም ንጽሕት ሆይ አንቺ ነሽ', 'yegietachn enat maryam ntsሕt hoy anchi nesh', 'Ethiopian Orthodox Tewahedo Mezmur - የጌታችን እናት ማርያም ንጽሕት ሆይ አንቺ ነሽ', 'ድንግልናሽ ሳይለወጥ ወልድን የወለድሽ /፳/
+የጌታችን እናት ማርያም ንጽሕት ሆይ አንቺ ነሽ', 'dnglnash saylewex weldn yeweledsh /፳/
+yegietachn enat maryam ntsሕt hoy anchi nesh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=MPAN8__XczY', 'draft', 'pending', 'https://www.youtube.com/watch?v=MPAN8__XczY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('teamre-wemenkre-gebre-med-nine-2', 'ተአምረ ወመንክረ ገብረ መድኃኒነ/2/', 'ተአምረ ወመንክረ ገብረ መድኃኒነ/2/', 'teamre wemenkre gebre medኃnine/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ተአምረ ወመንክረ ገብረ መድኃኒነ/2/', 'ተአምረ ወመንክረ ገብረ መድኃኒነ/2/
+በቃና ዘገሊላ ዘገሊላ ከብከብ ኮነ/4
+አሐዱ
+አሐዱ አከል ገብረ ሥላሴ ወመርዓቱ ወለተ', 'teamre wemenkre gebre medኃnine/2/
+beqana zegelila zegelila kebkeb kone/4
+aሐdu
+aሐdu akel gebre ሥlasie wemerዓtu welete', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=GNYNwlpZCs0', 'draft', 'pending', 'https://www.youtube.com/watch?v=GNYNwlpZCs0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('teamre-wemenkre-gebre-med-nine-2', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ganm-nesto-keenatachn-2', 'ሥጋንም ነስቶ ከእናታችን/2/', 'ሥጋንም ነስቶ ከእናታችን/2/', 'ሥganm nesto keenatachn/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሥጋንም ነስቶ ከእናታችን/2/', 'ኃጢአታችንን ሊያስወግድልን', 'ኃxiatachnn liyaswegdln', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=WtvTBgch0G0', 'draft', 'pending', 'https://www.youtube.com/watch?v=WtvTBgch0G0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('anchi-yordanos-mngna-tadelsh-2-2', 'አንቺ ዮርዳኖስ ምንኛ ታደልሽ/2/(2)', 'አንቺ ዮርዳኖስ ምንኛ ታደልሽ/2/(2)', 'anchi yordanos mngna tadelsh/2/(2)', 'Ethiopian Orthodox Tewahedo Mezmur - አንቺ ዮርዳኖስ ምንኛ ታደልሽ/2/(2)', 'የአግዚአብሔር መንፈስ ከለይ ወርዶብሽ
+የዓለም መድኃኒት ተጠመቀብሽ /2/
+295.ዮሐንስ አጥምቆ', 'yeagziabሔr menfes keley werdobsh
+yeዓlem medኃnit texemeqebsh /2/
+295.yoሐns axmqo', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=-gZU2E48mf8', 'draft', 'pending', 'https://www.youtube.com/watch?v=-gZU2E48mf8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('asey-esey-tetemeqe-2', 'አሰይ እሰይ', 'አሰይ እሰይ', 'asey esey tetemeqe/2/', 'Ethiopian Orthodox Tewahedo Mezmur - አሰይ እሰይ', 'ከሰማየ ሰማይ ወረደ/ሪ/
+በቅዱስ ዮሐንስ ተጠመቀ
+አብም መሰከረ አሰይ አሰይ
+ቃሉን አላበየም እሰይ አሰይ
+
+VERSE 1
+የምወደው ልጄ አሰይ እሰይ
+ይሄ ነው እያለ አሰይ እሰይ
+አሰይ እሰይ
+አሰይ እሰይ -------------
+
+VERSE 2
+እግዚአብሔር አብ ላከ አሰይ እሰይ
+አንድያ ልጁን እሰይ እሰይ
+አሰይ እሰይ ተወለደ /2/
+ከሰማየ ሰማያት ወረደ
+
+VERSE 3
+ከድንግል ማርያም ተወለደ
+አሱ ባይወለድ አሰይ አሰይ ቸሩ አባታችን አሰይ
+አሰይ
+መች ትገኝ ነበር አሰይ እሰይ ገነት ምድራችን
+
+VERSE 4
+አሰይ እሰይ
+አሰይ እሰይ
+በጨለማ ጉዞ አሰይ አሰይ እንዲያ ሲሰላቹ አሰይ
+አሰይ
+
+VERSE 5
+አሰይ እሰይ
+ወገኖቹን ሊያድን አሰይ አሰይ ከኃጢያት ቁራኛ
+አሰይ እሰይ
+አሰይ እሰይ
+
+VERSE 6
+አርሱ ወዷልና እሰይ አሰይ እንዲሁ ዓለሙን
+አሰይ እሰይ', 'kesemaye semay werede/ri/
+beqdus yoሐns texemeqe
+abm mesekere asey asey
+qalun alabeyem esey asey
+
+VERSE 1
+yemwedew ljie asey esey
+yhe new eyale asey esey
+asey esey
+asey esey -------------
+
+VERSE 2
+egziabሔr ab lake asey esey
+andya ljun esey esey
+asey esey tewelede /2/
+kesemaye semayat werede
+
+VERSE 3
+kedngl maryam tewelede
+asu bayweled asey asey cheru abatachn asey
+asey
+mech tgegn neber asey esey genet mdrachn
+
+VERSE 4
+asey esey
+asey esey
+becelema guzo asey asey endiya siselachu asey
+asey
+
+VERSE 5
+asey esey
+wegenochun liyadn asey asey keኃxiyat quragna
+asey esey
+asey esey
+
+VERSE 6
+arsu wedualna esey asey endihu ዓlemun
+asey esey', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=8AVG1A4n8VU', 'draft', 'pending', 'https://www.youtube.com/watch?v=8AVG1A4n8VU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('seba-segel-mexu-lisegdu-bemulu-3', 'ሰብአ ሰገል መጡ ሊሰግዱ በሙሉ', 'ሰብአ ሰገል መጡ ሊሰግዱ በሙሉ', 'seba segel mexu lisegdu bemulu/:3/', 'Ethiopian Orthodox Tewahedo Mezmur - ሰብአ ሰገል መጡ ሊሰግዱ በሙሉ', 'አስራኤል ንጉሥ ወዴት ነው እያሉ
+ሰብአ ሰገል መጡ ይዘው እጅ መንሻ /3/
+ወርቅ አጣን ከርቤውን ለማርያም እጅ መንሻ/3/
+ሕፃናት እንሂድ ከልደቱ ቤት/3/
+
+VERSE 1
+ውኃው ሆኗልና ማርና ወተት/3/
+251.አንቺ አንቺ
+አንቺ አንቺ ቤተልሔም የይሁዳ መሬት
+ባንቺ ተወለደ የአለም መድኃኒት /2/
+
+VERSE 2
+አዳም ክብር ሲሻ ቤተልሔም
+ሰብአ ሰገል መጡ ሊሰግዱ በሙሉ
+ሰብአ ሰገል መጡ ሊሰግዱ በሙሉ /2/
+የአስራኤል ንጉሥ ወዴት ነው እያሉ /2/
+
+VERSE 3
+አጅ መንሻውን ሰጡት እንደየሥርዓቱ /2/
+አጣኑን ለክህነት ወርቁን ለመንግሥቱ /2/', 'asraiel nguሥ wediet new eyalu
+seba segel mexu yzew ej mensha /3/
+werq axan kerbiewn lemaryam ej mensha/3/
+ሕፃnat enhid keldetu biet/3/
+
+VERSE 1
+wኃw honualna marna wetet/3/
+251.anchi anchi
+anchi anchi bietelሔm yeyhuda meriet
+banchi tewelede yealem medኃnit /2/
+
+VERSE 2
+adam kbr sisha bietelሔm
+seba segel mexu lisegdu bemulu
+seba segel mexu lisegdu bemulu /2/
+yeasraiel nguሥ wediet new eyalu /2/
+
+VERSE 3
+aj menshawn sexut endeyeሥrዓtu /2/
+axanun lekhnet werqun lemengሥtu /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=W_mBb6SQywQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=W_mBb6SQywQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('maryam-3-des-ybelsh-begebriel-selamta-2', 'ማርያም/3/ ደስ ይበልሽ በገብርኤል ሰላምታ/2/', 'ማርያም/3/ ደስ ይበልሽ በገብርኤል ሰላምታ/2/', 'maryam/3/ des ybelsh begebriel selamta/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ማርያም/3/ ደስ ይበልሽ በገብርኤል ሰላምታ/2/', 'ባንቺ ስላደረ የዓለም ሁሉ ጌታ /2/', 'banchi sladere yeዓlem hulu gieta /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=QU8dUYP1Ou0', 'draft', 'pending', 'https://www.youtube.com/watch?v=QU8dUYP1Ou0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeamlak-chernetu-feqadu-sihon', 'የአምላክ ቸርነቱ ፈቃዱ ሲሆን', 'የአምላክ ቸርነቱ ፈቃዱ ሲሆን', 'yeamlak chernetu feqadu sihon', 'Ethiopian Orthodox Tewahedo Mezmur - የአምላክ ቸርነቱ ፈቃዱ ሲሆን', 'የአምላክ ቸርነቱ ፈቃዱ ሲሆን
+የአምላክ ቸርነቱ ፈቃዱ ሲሆን
+ጨለማ ተገፎ ሲወጣ ብርዛን', 'yeamlak chernetu feqadu sihon
+yeamlak chernetu feqadu sihon
+celema tegefo siwexa brzan', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=h5fvUY5OGik', 'draft', 'pending', 'https://www.youtube.com/watch?v=h5fvUY5OGik', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-teqemxa-bebiete-meqdes', 'ድንግል ተቀምጣ በቤተ መቅደስ', 'ድንግል ተቀምጣ በቤተ መቅደስ', 'dngl teqemxa bebiete meqdes', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል ተቀምጣ በቤተ መቅደስ', 'ሐር ወር አስማምታ ስትፈትል ንግሥት
+ድንግል ተቀምጣ በቤተ መቅደስ
+ሐር ወርቅ አስማምታ ስትፈትል ንግሥት', 'ሐr wer asmamta stfetl ngሥt
+dngl teqemxa bebiete meqdes
+ሐr werq asmamta stfetl ngሥt', 'amharic', 'mezmur', 'ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ', 'https://www.youtube.com/watch?v=rNaRCxXuV50', 'draft', 'pending', 'https://www.youtube.com/watch?v=rNaRCxXuV50', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gebriel-2-zienawi-dis', 'ገብርኤል /2/ ዜናዊ ሐዲስ', 'ገብርኤል /2/ ዜናዊ ሐዲስ', 'gebriel /2/ zienawi ሐdis', 'Ethiopian Orthodox Tewahedo Mezmur - ገብርኤል /2/ ዜናዊ ሐዲስ', 'የአምላክን መወለድ ሥጋ በመልበስ
+ገብርኤል /2/ ዜናዊ ሐዲስ
+የአምላክ መወለድ ሥጋ በመልበስ', 'yeamlakn meweled ሥga bemelbes
+gebriel /2/ zienawi ሐdis
+yeamlak meweled ሥga bemelbes', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=h0kog2lD3LY', 'draft', 'pending', 'https://www.youtube.com/watch?v=h0kog2lD3LY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('andit-blatiena-yea-ra-amst-met-lj', 'አንዲት ብላቴና የአሥራ አምስት ዓመት ልጅ', 'አንዲት ብላቴና የአሥራ አምስት ዓመት ልጅ', 'andit blatiena yeaሥra amst ዓmet lj', 'Ethiopian Orthodox Tewahedo Mezmur - አንዲት ብላቴና የአሥራ አምስት ዓመት ልጅ', 'ጌታን ወለደችው በመላእክት አዋጅ', 'gietan weledechw bemelaekt awaj', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ycsaSon1kNA', 'draft', 'pending', 'https://www.youtube.com/watch?v=ycsaSon1kNA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gizie-erefta', 'ጊዜ እረፍታ', 'ጊዜ እረፍታ', 'gizie erefta', 'Ethiopian Orthodox Tewahedo Mezmur - ጊዜ እረፍታ', 'ጊዜ አረፍታ ለድንግል ለማርያም/2/
+በልፅልና ወረደ አግዚአብሔር
+በልዕልና ወረደ አግዚአብሔር /2/
+ሞትሰ', 'gizie arefta ledngl lemaryam/2/
+belፅlna werede agziabሔr
+belዕlna werede agziabሔr /2/
+motse', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=o5ADZ66edQ0', 'draft', 'pending', 'https://www.youtube.com/watch?v=o5ADZ66edQ0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('motse-lemewati-ydelu-2', 'ሞትሰ ለመዋቲ ይደሉ/2/', 'ሞትሰ ለመዋቲ ይደሉ/2/', 'motse lemewati ydelu/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሞትሰ ለመዋቲ ይደሉ/2/', 'ሞታ ለማርያም የአጽብ ለኩሉ/4/', 'mota lemaryam yeatsb lekulu/4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=qloXy31QYGU', 'draft', 'pending', 'https://www.youtube.com/watch?v=qloXy31QYGU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amuamuatsh-bexr-ne-sie-meqabr-dngl', 'አሟሟትሽ በጥር ነሐሴ መቃብር ድንግል', 'አሟሟትሽ በጥር ነሐሴ መቃብር ድንግል', 'amuamuatsh bexr neሐsie meqabr dngl', 'Ethiopian Orthodox Tewahedo Mezmur - አሟሟትሽ በጥር ነሐሴ መቃብር ድንግል', 'የአንቺስ ለብቻ ነው ትንሣኤሽ ሲነገር ድንግል
+ሥጋሽ በምድር ላይ የታለ እንደ ፍጡር
+አርጓል ወደ ሰማይ ከክርስቶስ መንበር', 'yeanchis lebcha new tnሣiesh sineger dngl
+ሥgash bemdr lay yetale ende fxur
+argual wede semay kekrstos menber', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=8eyF4fd8pKI', 'draft', 'pending', 'https://www.youtube.com/watch?v=8eyF4fd8pKI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tn-ieshn-shtew-gra-sigebachew-dngl', 'ትንሣኤሽን ሽተው ግራ ሲገባቸው ድንግል', 'ትንሣኤሽን ሽተው ግራ ሲገባቸው ድንግል', 'tnሣieshn shtew gra sigebachew dngl', 'Ethiopian Orthodox Tewahedo Mezmur - ትንሣኤሽን ሽተው ግራ ሲገባቸው ድንግል', 'ሐዋርያት ጾመው ተገለጥልሻላቸው ድንግል
+ተቀብራ አልቀረችው በምድር ከደጂ ድንግል
+ወደላይ አረገች እሷም አንደልጂ ድንግል', 'ሐwaryat tsomew tegelexlshalachew dngl
+teqebra alqerechw bemdr kedeji dngl
+wedelay aregech esuam andelji dngl', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=E3TNyOLM36I', 'draft', 'pending', 'https://www.youtube.com/watch?v=E3TNyOLM36I', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yezemene-mer-wi-mezmur', 'የዘመነ መርዓዊ መዝሙር', 'የዘመነ መርዓዊ መዝሙር', 'yezemene merዓwi mezmur', 'Ethiopian Orthodox Tewahedo Mezmur - የዘመነ መርዓዊ መዝሙር', '315. መጽአ ዘመጽአ
+መጽአ ዘመጽአ እአምላዕሉ/2/
+መርዓዊ መጽአ /2/ተቀበሎ ጻኡ ተቀበሎ/2/
+316. ደስ አላት ቤ/ክ
+
+VERSE 1
+ደስ አላት ቤ/ክ በጣም ደስ አላት /2/
+ሙሽሪት ሙሽራው ልጆቿ/2/
+በተክሊል በቁርባን ተዋሐዱላት /2/
+317. ህገ ስብአናሁ
+
+VERSE 2
+ሕገ ስብዕናሁ ዐቀበ /2/በተደንግሎ/2/
+በወንጌል ዘሀሎ/2/ወፈጸመ በወንጌል ዘሀሎ/2/
+318. መርዓዊ ሰማያዊ
+መርዓዊ ሰማያዊ /2/ ለእመ ገብረ በዓለ/2/
+
+VERSE 3
+ይኑሩ በሰላም /3/ ጸንተው ዘለዓለም/2/
+ደናግል ተነሥ ያዙ መብራቱን
+ሙሽሪው ደረሰ አጉል አንዳንሆን', '315. metsa zemetsa
+metsa zemetsa eamlaዕlu/2/
+merዓwi metsa /2/teqebelo tsau teqebelo/2/
+316. des alat bie/k
+
+VERSE 1
+des alat bie/k bexam des alat /2/
+mushrit mushraw ljoቿ/2/
+beteklil bequrban tewaሐdulat /2/
+317. hge sbanahu
+
+VERSE 2
+ሕge sbዕnahu ዐqebe /2/betedenglo/2/
+bewengiel zehalo/2/wefetseme bewengiel zehalo/2/
+318. merዓwi semayawi
+merዓwi semayawi /2/ leeme gebre beዓle/2/
+
+VERSE 3
+ynuru beselam /3/ tsentew zeleዓlem/2/
+denagl teneሥ yazu mebratun
+mushriw derese agul andanhon', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=EUCptT6ISiU', 'draft', 'pending', 'https://www.youtube.com/watch?v=EUCptT6ISiU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yedkam-wagachew-2', 'የድካም ዋጋቸው /2/', 'የድካም ዋጋቸው /2/', 'yedkam wagachew /2/', 'Ethiopian Orthodox Tewahedo Mezmur - የድካም ዋጋቸው /2/', 'ብርሃኑ ያበራል ለተከታያቸው', 'brሃnu yaberal leteketayachew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=asGo7avlukE', 'draft', 'pending', 'https://www.youtube.com/watch?v=asGo7avlukE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yemushraw-ywet-melkam-endihon', 'የሙሽራው ሕይወት መልካም እንዲሆን', 'የሙሽራው ሕይወት መልካም እንዲሆን', 'yemushraw ሕywet melkam endihon', 'Ethiopian Orthodox Tewahedo Mezmur - የሙሽራው ሕይወት መልካም እንዲሆን', 'ካህኑ ይባርኳት ቡርክት ሰው ትሁን', 'kahnu ybarkuat burkt sew thun', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=pp-_SCDnPQA', 'draft', 'pending', 'https://www.youtube.com/watch?v=pp-_SCDnPQA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amlakie-gulbetie-ylie-memekiyayie', 'አምላኬ ጉልበቴ ኃይሌ መመኪያዬ', 'አምላኬ ጉልበቴ ኃይሌ መመኪያዬ', 'amlakie gulbetie ኃylie memekiyayie', 'Ethiopian Orthodox Tewahedo Mezmur - አምላኬ ጉልበቴ ኃይሌ መመኪያዬ', 'ጠላት ማሳፈሪያ የእምነት ጋሻዬ
+አንደማትተወኝ አሁን አውቄአለሁ
+ካለኝ ነገር ይልቅ በአንተ ታምኛለሁ
+አምላኬ ጉልበቴ ኃይሌ መመኪያዬ
+
+VERSE 1
+ጠላት ማሳፈሪያ የእምነት ጋሻዬ
+አንደማትተወኝ አሁን አውቄአለሁ
+ካለኝ ነገር ይልቅ በአንተ ታምኛለሁ', 'xelat masaferiya yeemnet gashayie
+andemattewegn ahun awqiealehu
+kalegn neger ylq beante tamgnalehu
+amlakie gulbetie ኃylie memekiyayie
+
+VERSE 1
+xelat masaferiya yeemnet gashayie
+andemattewegn ahun awqiealehu
+kalegn neger ylq beante tamgnalehu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=EvUl-z6e0P0', 'draft', 'pending', 'https://www.youtube.com/watch?v=EvUl-z6e0P0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beqenm-belietm-hulie-lemiyabera', 'በቀንም በሌትም ሁሌ ለሚያበራ', 'በቀንም በሌትም ሁሌ ለሚያበራ', 'beqenm belietm hulie lemiyabera', 'Ethiopian Orthodox Tewahedo Mezmur - በቀንም በሌትም ሁሌ ለሚያበራ', 'መንክር ለባሕርይ ዕፁብ ለአንተ ሥራ
+በቀንም በሌትም ሁሌ ለሚያበራ
+መንክር ለባሕርይህ እጹብ ለአንተ ሥራ', 'menkr lebaሕry ዕፁb leante ሥra
+beqenm belietm hulie lemiyabera
+menkr lebaሕryh etsub leante ሥra', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=W8Uw2RBqkoI', 'draft', 'pending', 'https://www.youtube.com/watch?v=W8Uw2RBqkoI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dnq-new-bexam', 'ድንቅ ነው በጣም', 'ድንቅ ነው በጣም', 'dnq new bexam', 'Ethiopian Orthodox Tewahedo Mezmur - ድንቅ ነው በጣም', 'ድንቅ ነው በጣም ድንቅ ነው /2/
+በሠርጋችሁ ዕለት ተገኘ መድኃኔዓለም
+በሠርጋችሁ ዕለት ተገኘች ድንግል ማርያም', 'dnq new bexam dnq new /2/
+beሠrgachhu ዕlet tegegne medኃnieዓlem
+beሠrgachhu ዕlet tegegnech dngl maryam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=9d69WwZLGd4', 'draft', 'pending', 'https://www.youtube.com/watch?v=9d69WwZLGd4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('and-akal-honewal-amlak-axamroachew', 'አንድ አካል ሆነዋል አምላክ አጣምሮአቸው', 'አንድ አካል ሆነዋል አምላክ አጣምሮአቸው', 'and akal honewal amlak axamroachew', 'Ethiopian Orthodox Tewahedo Mezmur - አንድ አካል ሆነዋል አምላክ አጣምሮአቸው', 'በምንም ምክንያት ማንም አይለያቸው
+በጣም ይወዳታል ባል ክብርት ሚስቱን
+ስለ አርስዋ አሳልፎ ይሰጣል ነፍሱን', 'bemnm mknyat manm ayleyachew
+bexam ywedatal bal kbrt mistun
+sle arswa asalfo ysexal nefsun', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=BDPdeEt5vjM', 'draft', 'pending', 'https://www.youtube.com/watch?v=BDPdeEt5vjM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qana-zegelila', 'ቃና ዘገሊላ', 'ቃና ዘገሊላ', 'qana zegelila', 'Ethiopian Orthodox Tewahedo Mezmur - ቃና ዘገሊላ', 'ቃና ዘገሊላ/2/በዚያ በሠርግ ቤት
+ተገኝተሻል ድንግል ከልጅሽ ጋራ
+ተገኝተፃል ጌታ ከእናትህ ጋራ
+አድምተኞች ሞልተው የጋበዙት', 'qana zegelila/2/beziya beሠrg biet
+tegegnteshal dngl keljsh gara
+tegegnteፃl gieta keenath gara
+admtegnoch moltew yegabezut', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=nphMfIRlz_s', 'draft', 'pending', 'https://www.youtube.com/watch?v=nphMfIRlz_s', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('sibelu-sixexu-weynu-alqobet', 'ሲበሉ ሲጠጡ ወይኑ አልቆበት', 'ሲበሉ ሲጠጡ ወይኑ አልቆበት', 'sibelu sixexu weynu alqobet', 'Ethiopian Orthodox Tewahedo Mezmur - ሲበሉ ሲጠጡ ወይኑ አልቆበት', 'ድንግል እናታችን ቤዛዊት ዓለም
+አንቺ ደረስሽለት ሆነሽው አማላጅ', 'dngl enatachn biezawit ዓlem
+anchi deresshlet honeshw amalaj', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ULG-pMeB2aY', 'draft', 'pending', 'https://www.youtube.com/watch?v=ULG-pMeB2aY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('hulu-ychal-l-weynun-mulalachew', 'ሁሉ ይቻልሃል ወይኑን ሙላላቸው', 'ሁሉ ይቻልሃል ወይኑን ሙላላቸው', 'hulu ychalሃl weynun mulalachew', 'Ethiopian Orthodox Tewahedo Mezmur - ሁሉ ይቻልሃል ወይኑን ሙላላቸው', 'ማድጋው ባዶ ነው ብለሽ የተናገርሽ
+ጌታን ያሳሰብሽው አመቤታችን ነሽ', 'madgaw bado new blesh yetenagersh
+gietan yasasebshw amebietachn nesh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=h4ylQ_SyMnM', 'draft', 'pending', 'https://www.youtube.com/watch?v=h4ylQ_SyMnM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('w-w-telewxo-yeweyn-xej-sihon', 'ውኃው ተለውጦ የወይን ጠጅ ሲሆን', 'ውኃው ተለውጦ የወይን ጠጅ ሲሆን', 'wኃw telewxo yeweyn xej sihon', 'Ethiopian Orthodox Tewahedo Mezmur - ውኃው ተለውጦ የወይን ጠጅ ሲሆን', 'በቃና ገሊላ ሁላችን አየን
+አግዚአብሔር ከኖረ በመካከላችን
+ሁሉ ይሰጠናል ይህን መሰል ወይን
+326. አጅቡት በዕልልታ
+
+VERSE 1
+አጅቡት በዕልልታ ሲመጣ ሙሽራው
+ፍጹም የሚያስደስት የሠርጉ ዕለት ነው
+ዘመዶቹ ሁሉ ተቀበሉት ውጡ
+የሙሽራው መምጫ አሁን ነው ሰዓቱ
+
+VERSE 2
+ፅልል /2/ እንዘምር በዕልልታ
+ይህን ላደረገ ለሠራዊት ጌታ
+ሁሉንም በጊዜው ይፈጽማልና
+ይኸው አበቃቸው ለዚህ መልካም ዜና
+
+VERSE 3
+ሙሽሪት ተደሰች ዝምታው ምንድነው
+የዳግም ልደትሽ የሠርግሽ ዕለት ነው
+አዳም ጐንሽ ቆሞ ሔዋን ሆይ ሲልሽ
+መንፈሳዊ ሐሴት ይሙላ በልብሽ', 'beqana gelila hulachn ayen
+agziabሔr kenore bemekakelachn
+hulu ysexenal yhn mesel weyn
+326. ajbut beዕllta
+
+VERSE 1
+ajbut beዕllta simexa mushraw
+ftsum yemiyasdest yeሠrgu ዕlet new
+zemedochu hulu teqebelut wxu
+yemushraw memca ahun new seዓtu
+
+VERSE 2
+ፅll /2/ enzemr beዕllta
+yhn laderege leሠrawit gieta
+hulunm begiziew yfetsmalna
+yኸw abeqachew lezih melkam ziena
+
+VERSE 3
+mushrit tedesech zmtaw mndnew
+yedagm ldetsh yeሠrgsh ዕlet new
+adam ጐnsh qomo ሔwan hoy silsh
+menfesawi ሐsiet ymula belbsh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=iDedOLRxrfY', 'draft', 'pending', 'https://www.youtube.com/watch?v=iDedOLRxrfY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeegnama-mushra-enkuan-des-alesh', 'የእኛማ ሙሽራ እንኳን ደስ አለሽ', 'የእኛማ ሙሽራ እንኳን ደስ አለሽ', 'yeegnama mushra enkuan des alesh', 'Ethiopian Orthodox Tewahedo Mezmur - የእኛማ ሙሽራ እንኳን ደስ አለሽ', 'አግዚአብሔር ይመስገን እኛም ደስ ብሉናል
+በቤተክርስቲያን ሠርጋችሁ ውብ ሆኖአል', 'agziabሔr ymesgen egnam des blunal
+bebietekrstiyan ሠrgachhu wb honoal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=P_Godc3AD9g', 'draft', 'pending', 'https://www.youtube.com/watch?v=P_Godc3AD9g', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('andenefsh-argeh-endtwedat', 'አንደነፍስህ አርገህ እንድትወዳት', 'አንደነፍስህ አርገህ እንድትወዳት', 'andenefsh argeh endtwedat', 'Ethiopian Orthodox Tewahedo Mezmur - አንደነፍስህ አርገህ እንድትወዳት', 'አደራ ሰጠንህ በጌታችን ፊት
+አእንድታስቢለት አንቺም ለአካልሽ
+አደራ ትላለች ወንጌል እናትሽ', 'adera sexenh begietachn fit
+aendtasbilet anchim leakalsh
+adera tlalech wengiel enatsh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=XQRaHF8TdpQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=XQRaHF8TdpQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('be-rgachn-let-endtbarken', 'በሠርጋችን ዕለት እንድትባርከን', 'በሠርጋችን ዕለት እንድትባርከን', 'beሠrgachn ዕlet endtbarken', 'Ethiopian Orthodox Tewahedo Mezmur - በሠርጋችን ዕለት እንድትባርከን', 'ጌታ ጠርተንፃሃል በእምነት ሆነን
+ከእናትህ ጋራ ከእመቤታችን
+ከመላእክትህ ጋር ና በሠርጋችን
+ከሐዋርያት ጋር ና በሠርጋችን
+
+VERSE 1
+ከወዳጆችህ ጋር ና በሠርጋችን
+በገሊላ መንደር አንደተገኘህ
+ና በእኛ ድንኳንም ጌታ ሰንጠራህ
+የጥሪ ወረቀት ልከናል እንዳትቀር
+
+VERSE 2
+አንተነህ ክብራችን የቤታችን ፍቅር
+ነይ ከልጅሽ ጋራ እመቤታችን
+አንድታሟይልን የጎደለውን
+ንገሪው ለልጅሽ ባዶው አንዲሞላ
+
+VERSE 3
+በረከት የእርሱ ነው ቤታችንን ይሙላ', 'gieta xertenፃሃl beemnet honen
+keenath gara keemebietachn
+kemelaekth gar na beሠrgachn
+keሐwaryat gar na beሠrgachn
+
+VERSE 1
+kewedajochh gar na beሠrgachn
+begelila mender andetegegneh
+na beegna dnkuanm gieta senxerah
+yexri wereqet lkenal endatqer
+
+VERSE 2
+anteneh kbrachn yebietachn fqr
+ney keljsh gara emebietachn
+andtamuayln yegodelewn
+ngeriw leljsh badow andimola
+
+VERSE 3
+bereket yeersu new bietachnn ymula', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=4asqsSGzgNM', 'draft', 'pending', 'https://www.youtube.com/watch?v=4asqsSGzgNM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('wendna-siet-adr-endefexerachew', 'ወንድና ሴት አድርጐ እንደፈጠራቸው', 'ወንድና ሴት አድርጐ እንደፈጠራቸው', 'wendna siet adrጐ endefexerachew', 'Ethiopian Orthodox Tewahedo Mezmur - ወንድና ሴት አድርጐ እንደፈጠራቸው', 'ኋላም ለኑሮአቸው ጋብቻን ሰጣቸው
+አንዴ ከተጋቡ አንድ ሥጋ ናቸው
+ከእንግዲህ ወደፊት ይጸናል ፍቅራቸው
+ደስ ይበለን ሙሽሪት ሙሽራው/2/
+
+VERSE 1
+ወንድና ሴት አድርጐ እንደፈጠራቸው
+በኋላም በቃሉ አንድ አደረጋቸው
+አናትና አባቱን የአዳም ልጅ ይተዋል
+ከሚስቱ ጋር በሰላም በአንድ ይተባበራል', 'hualam lenuroachew gabchan sexachew
+andie ketegabu and ሥga nachew
+keengdih wedefit ytsenal fqrachew
+des ybelen mushrit mushraw/2/
+
+VERSE 1
+wendna siet adrጐ endefexerachew
+behualam beqalu and aderegachew
+anatna abatun yeadam lj ytewal
+kemistu gar beselam beand ytebaberal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=0KJ1P5RHQtQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=0KJ1P5RHQtQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('des-alew-gieta', 'ደስ አለው ጌታ', 'ደስ አለው ጌታ', 'des alew gieta', 'Ethiopian Orthodox Tewahedo Mezmur - ደስ አለው ጌታ', 'ደስ አለው ጌታ በሙሽሮች ደስ አለው ጌታ/2/
+በቅዱስ ቁርባን ተወስነው ደስ አለው ጌታ/2/
+ደስ አላት ድንግል በሙሽሮች ደስ አላት ድንግል
+በቅዱስ ቁርባን ተወስነው ደስ አላት ድንግል /2/
+
+VERSE 1
+335. መጽዓ መርዓዊ
+መጽዓ መርዓዊ ፍሥሐ ለኩሉ/2/
+በሰላም ጻኡ ተቀበሉ/2/
+አንድ ያደረገውን ጌታችን በቃሉ/2/
+
+VERSE 2
+ሊለየው አየችልም የሰው ልጅ በኃይሉ/2/
+ሙሽሪት ሙሽራው የሃይማኖት ፍሬ/2/
+በቅዱስ ጋብቻ አንድ ሆኑ ዛሬ /2/', 'des alew gieta bemushroch des alew gieta/2/
+beqdus qurban tewesnew des alew gieta/2/
+des alat dngl bemushroch des alat dngl
+/2/
+
+VERSE 1
+/2/
+beqdus qurban tewesnew des alat dngl /2/
+335. metsዓ merዓwi
+metsዓ merዓwi fሥሐ lekulu/2/
+
+VERSE 2
+beselam tsau teqebelu/2/
+and yaderegewn gietachn beqalu/2/
+lileyew ayechlm yesew lj beኃylu/2/
+mushrit mushraw yeሃymanot frie/2/
+
+VERSE 3
+beqdus gabcha and honu zarie /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3A_yj8nxHrI', 'draft', 'pending', 'https://www.youtube.com/watch?v=3A_yj8nxHrI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('des-alachew-mushraw-mushrit-2', 'ደስ አላቸው ሙሽራው ሙሽሪት/2/', 'ደስ አላቸው ሙሽራው ሙሽሪት/2/', 'des alachew mushraw mushrit/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ደስ አላቸው ሙሽራው ሙሽሪት/2/', 'አግዚአብሔር ስላባረካቸው//2/
+ደስ አላቸው የልባቸው ምክር
+የብቻቸው ምሥጢር
+ዛሬ ተፈጽሟል
+
+VERSE 1
+በቤተክርስቲያን
+አርሱ በፈቀደ
+አገናኝቷቸዋል
+ደስ አላቸው ቅዳሴው ሲቀደስ
+
+VERSE 2
+ዝማሬው ሲዘመር
+ሲባረኩ በአምላክ
+ለዚህ ክብር በቅተው
+ተክሊል ሲቀዳጁ
+
+VERSE 3
+ቁርባን ተቀብለው', 'agziabሔr slabarekachew//2/
+des alachew yelbachew mkr
+yebchachew mሥxir
+zarie tefetsmual
+
+VERSE 1
+bebietekrstiyan
+arsu befeqede
+agenagntuachewal
+des alachew qdasiew siqedes
+
+VERSE 2
+zmariew sizemer
+sibareku beamlak
+lezih kbr beqtew
+teklil siqedaju
+
+VERSE 3
+qurban teqeblew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3dNO_7j7FkA', 'draft', 'pending', 'https://www.youtube.com/watch?v=3dNO_7j7FkA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('des-alachew-mushraw-mushrit-2', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bewengiel-t-zaz-be-waryat-qal', 'በወንጌል ትዕዛዝ በሐዋርያት ቃል', 'በወንጌል ትዕዛዝ በሐዋርያት ቃል', 'bewengiel tዕzaz beሐwaryat qal', 'Ethiopian Orthodox Tewahedo Mezmur - በወንጌል ትዕዛዝ በሐዋርያት ቃል', 'በእመብርሃን ፊት ጋብቻቸው ሰምሮአል/2/
+በአምላክ ሥጋና ደም ሁለቱም ታተሙ
+የኅብረት ቃልኪዳን በአንድ ላይ አሰሙ//2/', 'beemebrሃn fit gabchachew semroal/2/
+beamlak ሥgana dem huletum tatemu
+yeኅbret qalkidan beand lay asemu//2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=znf_fU1KDwE', 'draft', 'pending', 'https://www.youtube.com/watch?v=znf_fU1KDwE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('bewengiel-t-zaz-be-waryat-qal', 'apostles', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tekle-ymanotn-tsadqun-yaferut', 'ተክለሃይማኖትን ጻድቁን ያፈሩት', 'ተክለሃይማኖትን ጻድቁን ያፈሩት', 'tekleሃymanotn tsadqun yaferut', 'Ethiopian Orthodox Tewahedo Mezmur - ተክለሃይማኖትን ጻድቁን ያፈሩት', 'ቀን ከሌት ተግተው ነው በጾምና ጸሎት/2/', 'qen keliet tegtew new betsomna tselot/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3Ux7o2HKNC8', 'draft', 'pending', 'https://www.youtube.com/watch?v=3Ux7o2HKNC8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('tekle-ymanotn-tsadqun-yaferut', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeityophya-ortodoks', 'የኢትዮጵያ ኦርቶዶክስ', 'የኢትዮጵያ ኦርቶዶክስ', 'yeityophya ortodoks', 'Ethiopian Orthodox Tewahedo Mezmur - የኢትዮጵያ ኦርቶዶክስ', 'የኢትዮጳያ ኦርቶዶከስ ተዋሕዶ
+ቤተከርስቲያን ልጆች ናቸው
+አንቀበላቸው ሙሽሮች ናቸው
+አንቀበላቸው', 'yeityophaya ortodokes tewaሕdo
+bietekerstiyan ljoch nachew
+anqebelachew mushroch nachew
+anqebelachew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=4Pp-xFRcXMY', 'draft', 'pending', 'https://www.youtube.com/watch?v=4Pp-xFRcXMY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-joachewn-qedsesh', 'ድንግል ጐጆአቸውን ቀድሰሽ', 'ድንግል ጐጆአቸውን ቀድሰሽ', 'dngl ጐjoachewn qedsesh', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል ጐጆአቸውን ቀድሰሽ', 'አውነተኛ ፍቅር መሥርተሽ
+በመካከላቸው ተገኝተሽ', 'awnetegna fqr meሥrtesh
+bemekakelachew tegegntesh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=iMYSScYgrmI', 'draft', 'pending', 'https://www.youtube.com/watch?v=iMYSScYgrmI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qana-zegelila-tegegntesh', 'ቃና ዘገሊላ ተገኝተሽ', 'ቃና ዘገሊላ ተገኝተሽ', 'qana zegelila tegegntesh', 'Ethiopian Orthodox Tewahedo Mezmur - ቃና ዘገሊላ ተገኝተሽ', 'መልካሙን ጋብቻ የባረክሽ
+ዛሬም ከልጅሽ ጋር በሠርጋቸው
+ነይ ተመላለሽ መሃላቸው', 'melkamun gabcha yebareksh
+zariem keljsh gar beሠrgachew
+ney temelalesh meሃlachew', 'amharic', 'mezmur', 'ዘማሪ ቀሲስ ምንዳዬ ብርሃኑ', 'https://www.youtube.com/watch?v=zGpX04ofBZg', 'draft', 'pending', 'https://www.youtube.com/watch?v=zGpX04ofBZg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('qana-zegelila-tegegntesh', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yehabke-yom-yehabke-med-nie-lem', 'የሀብከ ዮም የሀብከ መድኃኔዓለም', 'የሀብከ ዮም የሀብከ መድኃኔዓለም', 'yehabke yom yehabke medኃnieዓlem', 'Ethiopian Orthodox Tewahedo Mezmur - የሀብከ ዮም የሀብከ መድኃኔዓለም', 'የሀብከ ዮም የሀብከ መድኃኔዓለም /2/
+ዕድሜ ማቱሳላ ወአብርሃም /2/', 'yehabke yom yehabke medኃnieዓlem /2/
+ዕdmie matusala weabrሃm /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=dZLVr2YlNtA', 'draft', 'pending', 'https://www.youtube.com/watch?v=dZLVr2YlNtA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ysxachhu-zarie-ysxachhu-med-nie-lem', 'ይስጣችሁ ዛሬ ይስጣችሁ መድኃኔዓለም', 'ይስጣችሁ ዛሬ ይስጣችሁ መድኃኔዓለም', 'ysxachhu zarie ysxachhu medኃnieዓlem', 'Ethiopian Orthodox Tewahedo Mezmur - ይስጣችሁ ዛሬ ይስጣችሁ መድኃኔዓለም', 'ይስጣችሁ ዛሬ ይስጣችሁ መድኃኔዓለም /2/
+ዕድሜ ማቱሳላ የአብርሃም/2/
+በቅዱስ ጋብቻ ሙሽሮች የተወሰናችሁ /2/
+ክርስቶስ ተገኝቷል በመካከላችሁ /2/
+
+VERSE 1
+የድንጋዮቹን ጋን ወይኑን ወይን ሊሞላበት /2/
+ከድንግል ማርያም ጋር ተገኝቷል ከዚህ ቤት /2/
+ደስታውን አይቶ አምላክም ፍጹም ተደስቷል /2/
+ሊባርካችሁም እጆቹን ዘርግቷል /2/
+
+VERSE 2
+በሕይወታችሁም ፍቅር ፍቅር ቅመም ሆኖ /2/
+ትሕትናን ይሰጣችሁ እግዚአብሔር በቶሎ /2/', 'ysxachhu zarie ysxachhu medኃnieዓlem /2/
+ዕdmie matusala yeabrሃm/2/
+beqdus gabcha mushroch yetewesenachhu /2/
+krstos tegegntual bemekakelachhu /2/
+
+VERSE 1
+yedngayochun gan weynun weyn limolabet /2/
+kedngl maryam gar tegegntual kezih biet /2/
+destawn ayto amlakm ftsum tedestual /2/
+libarkachhum ejochun zergtual /2/
+
+VERSE 2
+beሕywetachhum fqr fqr qmem hono /2/
+tሕtnan ysexachhu egziabሔr betolo /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=UK_gOGz1voM', 'draft', 'pending', 'https://www.youtube.com/watch?v=UK_gOGz1voM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('destawn-ayto-amlak-ftsum-tedestual', 'ደስታውን አይቶ አምላክ ፍጹም ተደስቷል', 'ደስታውን አይቶ አምላክ ፍጹም ተደስቷል', 'destawn ayto amlak ftsum tedestual', 'Ethiopian Orthodox Tewahedo Mezmur - ደስታውን አይቶ አምላክ ፍጹም ተደስቷል', 'ሊባርካችሁ እጆቹን ዘርግቷል/2/ በሕጠአይወታችሁም
+ፍቅር/2/ቅመም ሆና''2/', 'libarkachhu ejochun zergtual/2/ beሕxeaywetachhum
+fqr/2/qmem hona''2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=U2dLjNcbInw', 'draft', 'pending', 'https://www.youtube.com/watch?v=U2dLjNcbInw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('asme-le-lem-m-retu-asme-le-lem-4', 'አስመ ለዓለም ምሕረቱ አስመ ለዓለም/4/', 'አስመ ለዓለም ምሕረቱ አስመ ለዓለም/4/', 'asme leዓlem mሕretu asme leዓlem/4/', 'Ethiopian Orthodox Tewahedo Mezmur - አስመ ለዓለም ምሕረቱ አስመ ለዓለም/4/', 'አናመስግንሽ የአምላክ አናት በዝማሬ/ሪ2/', 'anamesgnsh yeamlak anat bezmarie/ri2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=mzNeo5sOkjQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=mzNeo5sOkjQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('asme-le-lem-m-retu-asme-le-lem-4', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beamlak-melkam-feqad', 'በአምላክ መልካም ፈቃድ ..', 'በአምላክ መልካም ፈቃድ ..', 'beamlak melkam feqad ..', 'Ethiopian Orthodox Tewahedo Mezmur - በአምላክ መልካም ፈቃድ ..', 'በፍቅር ተሳስረው
+አንድ አካል ሆነዋል ማንም አይለያቸው
+361. ሙሽራዋ/4/ እጹብ ነው ደስታው
+ሙሽራው//ሪ/
+
+VERSE 1
+ሙሽራው/4/ አጹብ ነው ደስታው ሙሽራው
+ሙሽራዋ/4/ አጹብነው ደስታዋ ሙሽራዋ/2/', 'befqr tesasrew
+and akal honewal manm ayleyachew
+361. mushrawa/4/ etsub new destaw
+mushraw//ri/
+
+VERSE 1
+mushraw/4/ atsub new destaw mushraw
+mushrawa/4/ atsubnew destawa mushrawa/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ydhjd-qs7Pw', 'draft', 'pending', 'https://www.youtube.com/watch?v=ydhjd-qs7Pw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('zewetr-ynuru-me-kelachhu', 'ዘወትር ይኑሩ መሃከላችሁ', 'ዘወትር ይኑሩ መሃከላችሁ', 'zewetr ynuru meሃkelachhu', 'Ethiopian Orthodox Tewahedo Mezmur - ዘወትር ይኑሩ መሃከላችሁ', 'ጌታዬ በይው ውድሽ ነውና
+አህቴ በላት ሥጋህ ናትና
+ጽድቅ የተሞላ ፍሬ ይስጣችሁ
+አብርሃም ሣራን ሁኑ ጸንታችሁ', 'gietayie beyw wdsh newna
+ahtie belat ሥgah natna
+tsdq yetemola frie ysxachhu
+abrሃm ሣran hunu tsentachhu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=2bFeJXGehpA', 'draft', 'pending', 'https://www.youtube.com/watch?v=2bFeJXGehpA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tefe-bietekrstiyan-tefe-biete-lasie', 'ተፈሥሒ ቤተክርስቲያን ተፈሥሒ ቤተ ሥላሴ', 'ተፈሥሒ ቤተክርስቲያን ተፈሥሒ ቤተ ሥላሴ', 'tefeሥሒ bietekrstiyan tefeሥሒ biete ሥlasie', 'Ethiopian Orthodox Tewahedo Mezmur - ተፈሥሒ ቤተክርስቲያን ተፈሥሒ ቤተ ሥላሴ', 'ያሳደግሻቸው ልጆችሽ አብርፃም ሣራን ሲሆኑልሽ
+ያሳደግሻቸው ሙሽሮችሽ አብርፃም ሣራን
+ሲሆኑልሽ', 'yasadegshachew ljochsh abrፃm ሣran sihonulsh
+yasadegshachew mushrochsh abrፃm ሣran
+sihonulsh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=SPsfgVcsMWo', 'draft', 'pending', 'https://www.youtube.com/watch?v=SPsfgVcsMWo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('tefe-bietekrstiyan-tefe-biete-lasie', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yezerashw-masa-friewn-sishekem', 'የዘራሽው ማሳ ፍሬውን ሲሸከም', 'የዘራሽው ማሳ ፍሬውን ሲሸከም', 'yezerashw masa friewn sishekem', 'Ethiopian Orthodox Tewahedo Mezmur - የዘራሽው ማሳ ፍሬውን ሲሸከም', 'የዘራሽው ማሳ ፍሬውን ሲሸከም', 'yezerashw masa friewn sishekem', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=jByIAhjSZ0c', 'draft', 'pending', 'https://www.youtube.com/watch?v=jByIAhjSZ0c', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ywetie-nech-bleh-hid-wede-misth', 'ሕይወቴ ነች ብለህ ሂድ ወደ ሚስትህ', 'ሕይወቴ ነች ብለህ ሂድ ወደ ሚስትህ', 'ሕywetie nech bleh hid wede misth', 'Ethiopian Orthodox Tewahedo Mezmur - ሕይወቴ ነች ብለህ ሂድ ወደ ሚስትህ', '370. ሙሽራው ደስ ይበልህ', '370. mushraw des ybelh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=R8vVNM_nPnM', 'draft', 'pending', 'https://www.youtube.com/watch?v=R8vVNM_nPnM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-asasbiln-2', 'ድንግል አሳስቢልን/2/', 'ድንግል አሳስቢልን/2/', 'dngl asasbiln/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል አሳስቢልን/2/', 'በሠራኘታ ምድር ታምራት ያደረገ
+በኤልያስ አድሮ ሕዝቡን የባረከ
+ዛሬም አርሱ ነው የቤቱ ሰላም
+አምላክ መድኃኔዓለም/2/
+
+VERSE 1
+ጭንቀትን አይተሽ የልብን ሐዘን
+ታሳስቢያለሽ አንዲጎበኘን
+አኛም አንቺን ጠርተን ከእፍረት ድነናል
+ድንግል ክብር ይገባሻል/2/
+
+VERSE 2
+373. ቤታችን ይቀደስ
+ቤታችን ይቀደስ በረከት ይሙሳ/2/
+ፍቅር አንድነትን አድለን ጌታ
+ቤታችን ይቀደስ የማያልቅበት
+
+VERSE 3
+ለሥጋ አምላክነህ
+ገበናችንን', 'beሠragneta mdr tamrat yaderege
+beielyas adro ሕzbun yebareke
+zariem arsu new yebietu selam
+amlak medኃnieዓlem/2/
+
+VERSE 1
+cnqetn aytesh yelbn ሐzen
+tasasbiyalesh andigobegnen
+agnam anchin xerten keefret dnenal
+dngl kbr ygebashal/2/
+
+VERSE 2
+373. bietachn yqedes
+bietachn yqedes bereket ymusa/2/
+fqr andnetn adlen gieta
+bietachn yqedes yemayalqbet
+
+VERSE 3
+leሥga amlakneh
+gebenachnn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Sl9Akd7IzHU', 'draft', 'pending', 'https://www.youtube.com/watch?v=Sl9Akd7IzHU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mn-ykefel-lezih-rah', 'ምን ይከፈል ለዚህ ሥራህ', 'ምን ይከፈል ለዚህ ሥራህ', 'mn ykefel lezih ሥrah', 'Ethiopian Orthodox Tewahedo Mezmur - ምን ይከፈል ለዚህ ሥራህ', 'ምን ይከፈል ለዚህ ሥራህ', 'mn ykefel lezih ሥrah', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=69N3PYVzP2k', 'draft', 'pending', 'https://www.youtube.com/watch?v=69N3PYVzP2k', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('neger-hulu-beersu-tekenawene-2', 'ነገር ሁሉ በእርሱ ተከናወነ/2/', 'ነገር ሁሉ በእርሱ ተከናወነ/2/', 'neger hulu beersu tekenawene/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ነገር ሁሉ በእርሱ ተከናወነ/2/', 'ሰማይና ምድር ክብሩን ተናገሩ
+ፈጥሮአቸዋልና እንዲገለጥ ክብሩ
+በፈጠረው ፍጥረት የሚታወቅ እርሱ
+እግዚአብሔር ይመስገን ስሙን አወድሱ', 'semayna mdr kbrun tenageru
+fexroachewalna endigelex kbru
+befexerew fxret yemitaweq ersu
+egziabሔr ymesgen smun awedsu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=a_MhCi32Tqo', 'draft', 'pending', 'https://www.youtube.com/watch?v=a_MhCi32Tqo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ajg-des-ybelsh', 'አጅግ ደስ ይበልሽ', 'አጅግ ደስ ይበልሽ', 'ajg des ybelsh', 'Ethiopian Orthodox Tewahedo Mezmur - አጅግ ደስ ይበልሽ', 'ልጆችሽ ለተክሊል
+ስለደረሱልሽ
+በስርሽ ተምረው
+በቃልሽ ታንጸው
+
+VERSE 1
+ለዚህ ክብር በቁ
+አበሩ ደመቁ
+አልል በይ መልካሙን ቃልሽን', 'ljochsh leteklil
+slederesulsh
+besrsh temrew
+beqalsh tantsew
+
+VERSE 1
+lezih kbr bequ
+aberu demequ
+all bey melkamun qalshn', 'amharic', 'mezmur', 'ዘማሪት ማርታ ኃይለሥላሴ', 'https://www.youtube.com/watch?v=O6veUVp_aZc', 'draft', 'pending', 'https://www.youtube.com/watch?v=O6veUVp_aZc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('ajg-des-ybelsh', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ye-ymanot-friewoch', 'የሃይማኖት ፍሬዎች', 'የሃይማኖት ፍሬዎች', 'yeሃymanot friewoch', 'Ethiopian Orthodox Tewahedo Mezmur - የሃይማኖት ፍሬዎች', 'አልል በይ ከክፋ ጠብቀሽ
+አልል በይ ሠላምን ስጫቸው
+በትዳራቸው
+ከህግ እንዳይወጡ
+
+VERSE 1
+በዓለም ተስበው
+ቤተክርስቲያን ሆይ
+እንግዲህ ባርኪያቸው
+377.ዑ. ሙሽራው ከሙሽሪት ጋር
+
+VERSE 2
+ሙሸራው ከሙሽሪት ጋር
+በአደባባይ ደምቀው ታይተዋል', 'all bey kekfa xebqesh
+all bey ሠlamn scachew
+betdarachew
+kehg endaywexu
+
+VERSE 1
+beዓlem tesbew
+bietekrstiyan hoy
+engdih barkiyachew
+377.ዑ. mushraw kemushrit gar
+
+VERSE 2
+musheraw kemushrit gar
+beadebabay demqew taytewal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7OqH44kEDXQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=7OqH44kEDXQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yhnn-awqen-new', 'ይህንን አውቀን ነው', 'ይህንን አውቀን ነው', 'yhnn awqen new', 'Ethiopian Orthodox Tewahedo Mezmur - ይህንን አውቀን ነው', 'በሥርዓት ማደጓን
+ዓለም መሰከረ
+አለል ዘለል ሳትል
+መኖራ ታወቀ
+
+VERSE 1
+አንግዲህ ሙሽራው
+ኩራ ደስ ይበልህ
+ደግ ጨዋ መርጦ
+አግዚአብሔር አደለህ', 'beሥrዓt madeguan
+ዓlem mesekere
+alel zelel satl
+menora taweqe
+
+VERSE 1
+angdih mushraw
+kura des ybelh
+deg cewa merxo
+agziabሔr adeleh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1ebRIPKSK00', 'draft', 'pending', 'https://www.youtube.com/watch?v=1ebRIPKSK00', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeityophya-ortodoks-tewa-do-biete-krstiyan', 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን', 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን', 'yeityophya ortodoks tewaሕdo biete krstiyan', 'Ethiopian Orthodox Tewahedo Mezmur - የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን', 'ልጆች ናቸው እንቀበላቸው ሙሽሮች ናቸው
+አንዘምርላቸው', 'ljoch nachew enqebelachew mushroch nachew
+anzemrlachew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Qjl4j21JVFQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=Qjl4j21JVFQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('trgum-rods-yexmqetu-astemari', 'ትርጉም፡-', 'ትርጉም፡-', 'trgum፡- ሔrods yexmqetu astemari', 'Ethiopian Orthodox Tewahedo Mezmur - ትርጉም፡-', '/መምህር/ የዮሐንስ ራስን ከሚያስቆርጥ ይልቅ
+መሐላውን ቢበላ በተሻለው ነበር
+12.ለዮሐንስ አንገት
+ለዮሐንስ አንገት ለተቆረጠው
+
+VERSE 1
+ሳይበድል ታስሮ ለተሰቃየው
+ትርጉም፡- የሄሮድያዳ ልጅ መጣችና እንዲህ
+አለችው ክቡር የሆነውን የወንጌላዊው የዮሐንስን
+ራስ በወጪት አድርገህ ስጠኝ አለችው
+
+VERSE 2
+ትርጉም፡- የከበረ የልዑል ነቢይ ዮሐንስ ሆይ
+መኖሪያው በገዳም የሆነ የሰላም ሰው ነው
+የመስቀል መዝሙራት
+/ለመስከረም 16 - 25 ቀን/
+
+VERSE 3
+ትርጉም፡- ከመስቀሉ ወርዶ ለሁሉ አበራ
+ትርጉም፡-
+26.በመስቀልከ
+ትርጉም፡- በመስቀልህ አርዳን በኃይልህ ተማጽነናልና
+
+VERSE 4
+ትርጉም፡- ክቡር የሆነ ዕፀ መስቀልህ በመስቀልህ ኃይል
+ስምህ ይመሰገን ዘንድ ልዑል አምላክ ሆይ ለአንተ
+ለብቻህ ምስጋና የሚገባው ስምህን ከፍ ከፍ አደርገዋለሁ
+ትርጉም፡- ነቢዩ እንባቆም ተአምራቱን ያደነቀው
+
+VERSE 5
+መስቀል ንግሥት ዕሌኒ ፈለገችው
+ትርጉም፡- ዛሬ ለወገኖቼ በመስቀሌ አበራለሁ
+ትርጉም፡- መስቀል ኃይላችን ነው መስቀል ብርታታችን
+ነው መስቀል ቤዛችን ነው ለእኛ ለምናምነው
+
+VERSE 6
+መድኃኒታችን ነው
+ትርጉም፡- አጣኑ ያመለከተው መስቀል በጎልጎታ ተገኘ
+370በመስቀሉ ወበቃሉ
+በመስቀሉ ወበቃሉ /2/
+
+VERSE 7
+አዕበዮሙ ለአበዊነ /4
+ትርጉም፡- በመስቀሉና በቃሉ አባቶቻችንን ከፍ ከፍ
+አደረጋቸው
+38በወንጌሉ ያመናችሁ
+
+VERSE 8
+በወንጌሉ ያመናችሁ /2/
+እንካን ለብርፃነ መስቀሉ አደረሳችሁ /2/
+39. ይቤሎሙ ኢየሱስ
+ይቤሉሎሙ ኢየሱስ ለአይሁድ አመኑ ብየ
+
+VERSE 9
+ወእአመኑ በአቡየ አበርህ /2/ በመስቀልየ
+ትርጉም፡- ኢየሱስ አይሁድን ዛሬስ በመስቀሌ ለወገኖቼ
+አበራለሁና በአኔ አመኑ በአባቴም አመኑ አላቸው
+49. ኃይልነ ወጸወንነ
+
+VERSE 10
+ኃይልነ ወጸወንነ ወሞገስነ (2) /2/
+ትርጉም፡- ኃይላችን መጠጊያችን መኪያችን ይህ
+መስቀል ነው
+‹«. በኃይለ መስቀሉ
+
+VERSE 11
+በኃይለ መስቀሉ /4
+ድል ሆነው ወደቁ አጋንንት በሙሉ
+ዘምሩ ሁላችሁ ለኃይለ መስቀሉ
+ድል መንሻ ነውና ላመነበት ሁሉ
+
+VERSE 12
+ትርጉም፡- ቤተክርስቲያን የክርስቶስ መስቀል ለእኛ
+ለምናምን የባሕር ጸጥታ የመርከቦች ወደብ ነው
+ትላለች
+44ፋኀበሩ ቃል
+
+VERSE 13
+ኀበሩ ቃለ ነቢያተ/2/
+ወይቤሎ መስቀል ብርሃነ /2/ ለኩሉ ዓለም /2/
+ትርጉም፡- ነቢያት በአንድ ቃል ተናግረው
+መስቀል ለዓለም ሁሉ ብርዛን ነው አሉ
+
+VERSE 14
+45. ዮም በዓለ መስቀሉ
+ዮም በዓለ መስቀሉ በሰማያት በላዕሉ /2/
+ወዘነግሠ በምድር (2) ለአሕዛብ /2/
+ትርጉም፡- ዛሬ ከምድር ከፍ ባለ በሰማያት
+
+VERSE 15
+የመስቀል በዓል ነው በምድርም ለአሕዛብ
+የነገሠበት ነው
+ትርጉም፡-
+ትርጉም፡-
+
+VERSE 16
+ትርጉም፡-
+ትርጉም፡-
+ትርጉም፡- የሰማይና ምድር ንግሥት
+የሆንሸ የአመቤታችን የጽጌ
+
+VERSE 17
+መዝሙር ተፈጸመ:፡:
+72. ከማሀ ኀዘን
+ከማኀ ሐዘን ወተስዶ ሶበ በኩለቴ ረከቦ /2/
+ርእዮ ለይብኪ አይነ ልብ ዘቦ /#/
+
+VERSE 18
+ትርጉም፡- እንደእርሷ ሐዘን መከራ ቢያገኘው ኖሮ ልብ
+ያለው ሰው ከኀዘኑ ባልተቆጠበ
+ነበር፡፡
+73. ዮም ጸለሉ
+
+VERSE 19
+ዮም ጸለሉ መላእክት ላዕለ ማርያም ወላዕለ
+ወልዳ ክርስቶስ በደብረ ቁስቋም /2/
+አንዘይብሉ ስብሐት /2/ በአርያም
+ስብሐት በአርያም /2/
+
+VERSE 20
+ትርጉም፡- እነሆ መላእክት ማርያም ከልጂ
+ጋር በቁስቋም ተራራ ላይ ከለሏት
+በአግዚአብሔር በሰማይ ምስጋና
+አውነትም በምድር ይሁን
+
+VERSE 21
+74 መአዛሆሙ ለቅዱሳን
+መአዛሆሙ ለቅዱሳን ከመጽጌ ደጎላት ዘውስተ ቆላት /2/
+ጸገዩ ቀንሞስ ሞስለ ናርዶስ /4
+75. ንዒ ርግብየ
+
+VERSE 22
+ንዒ ርግብየ ወንዒ ሠናይትየ /2/
+ትርጉም፡- ማርያም በጊዮርጊስ ንግሥ /ክብሩ/
+ጊዜ የአበባ ዘውዱ ናት የክብ
+የንግሥና አክሊል ናት የአበባ
+
+VERSE 23
+ዘውድ አሷ ክብነት ያለው
+የወርቅ ስቁር ናት፡:
+77. እምነ እምነ ንኢ
+አምነ አምነ ንኢ /4
+
+VERSE 24
+በሰላም /2/ ንኢ ማርያም /2/
+አናታችን ነይ ነይ /
+በሰላም /2/ ነይ ማርያም /2/
+78. አሠርገዋ
+
+VERSE 25
+አሠርገዋ ለምድር አሠርገዋ ለጽጌ /2/
+አስመ ውአቱ ክብሮሙ ለቅዱሳን
+ትርጉም፡- ምድርን በአበባ አስጊጣት
+ትርጉም፡- ምድርን በአበባ አስጌጣት
+
+VERSE 26
+ትርጉም፡- በነቢያት አፍ የተመሰገንሽ
+በሐዋርያትም የተመሰገንሽ ነሽ
+84 ንግሥተ ሰማያት
+ንግሥተ ሰማያት ወምድር ማርያም ድንግል /2/
+
+VERSE 27
+ተፈጸመ/ 4 ማኅሌተ ጽጌ /2/
+ትርጉም፡- የሰማይ የምድር ንግሥት የሆንሽ
+አመቤታችን ሆይ የአንቺ ማኅሌት
+ጽጌ ተፈጸመ::
+
+VERSE 28
+ትርጉም፡- በወርቅ አክል የተሸለመች አመቤታችን
+የጊዮርጊስ የሰማዕትነቱ አክሊል አበባ ናት::
+86. ከመጽጌ ሮማን
+ከመጽጌ ሮማን ከመጽጌ /2/
+
+VERSE 29
+አበባዬ /2/ ወላዲተ አምላክ ሲሣይ /2/
+ትርጉም፡- እንደ ሮማን አበባ ያማረች የአምላክ
+አናት ማርያም ሲሣይ ናት፡፡
+87. ብክዩ ኅዙናን
+
+VERSE 30
+ብክዩ ኅዙናን ዛልየክሙ ስደታ ለማርያም /2/
+ትርጉም፡- አልቅሱ ምዕመናን አስባችሁ
+የማርያምን ስደቷን /2/ ማርያም
+ትርጉም፡- ልብ ዓይን ያለው ሰው የድንግልን
+
+VERSE 31
+ልቅሶ አይቶ ቢያለቅስ አግባብ ነው፡:
+9. ወደ ምሥራቅ እዩ
+ወደ ምሥራቅ እዩ ወደ ፀሐይ መውጫ
+ድንግልን ክበቧት አንበል ሃሌ ሉያ
+
+VERSE 32
+ለአምላክ እናት ለአዛኝት /2/
+ትርጉም፡-
+93. አፈንብ
+አፈንብ ማቱሳላ ወልደ ፄኖክ አመአፈ ልምላሜ
+
+VERSE 33
+ቡሩክ አፈ መላእክት /2/
+ቀስመ ጽጌ ጽጌ /2/
+ጽጌኪ አመ አምሳክ /2/
+ትርጉም፣፤ የአምላክ አናት እመቤታችን ሆይ
+
+VERSE 34
+የንብ አፍ የፄኖክ ልጅ የሚሆን
+ማቱሳላ ከተባረከ (ከተቀደሰ) ልምላሜ
+መልአክ አፍ ልጀሽ አበባን ቀሰመ
+94 ኦ ድንግል
+
+VERSE 35
+ኦ ድንግል አዘክሪ ርዛፃበ ወጽምዓ /2/
+ትርጉም፡- ከእንቁ በሚያበራ አክሊል የተሸለመች
+አመቤታችን የጊዮርጊስ አክሊል
+ትርጉም፡- አንድ ጊዜ በጀርባሽ አንድ ጊዜ በጎንሽ
+
+VERSE 36
+ሕፃንን በማዘል /ሇ ደከምሽ ማርያም በብዙ /2/
+ትርጉም፡-
+ትርጉም፡-
+ትርጉም፡- የኦሪት ቃል ያለባት ታቦትን
+
+VERSE 37
+ፈጽመው በወርቅ ይጋርዲታል፡፡
+ትርጉም፡- በካህናት የታጠረች
+በመንፈስ ቅዱስ
+የተከለለች የእግዚአብሔር የሕጉ
+
+VERSE 38
+ታቦት ጽዮን ሆይ
+ንጉሥሽ ለጠላት
+አይሸነፍም ሀገርንም
+አይተዋትም፡፡
+
+VERSE 39
+ትርጉም፡- ንጉሥ ዳዊት ዓይንን የሚንፀባርቅ
+የክብር ልብስ ሰብሶ ከሕግ
+ታቦት ፊት አመሰገነ፡፡
+ትርጉም፡- ክርስቶስ መሠረትሽ የሆነ ቤ/ክ
+
+VERSE 40
+የጽድቅ ፀሐይ ያበራልሻል
+ለሰማዕት በስብከት
+የተሸለምሽላቸው፡፡
+ትርጉም፡- የሙሴ ጽላት የሲና እፀ ጳጦስ
+
+VERSE 41
+የአሮን
+ትርጉም፡- ሙሴ ያያት
+በደብረ ሲና የለመለመች ዕፅ/2/
+ትርጉም፡- ሰላማዊት የሆነች
+
+VERSE 42
+ቅድስት ጽዮንን ሙሴ አያት፡፡
+ትርጉም፡- አለም ሳይፈጠር የነበረ
+ዓለምን አሳልፎ የሚኖር
+ትርጉም፡- በሰማይም በምድርም
+
+VERSE 43
+በዳዊት ቃል ያመሰግናሉ፡፡
+ትርጉም፡- እስከ ዓለም መጨረሻ ድረስ በላያቸው
+ይመስገን ዘንድ የተለዮ ነቢያት
+ትርጉም፡- ጽዮን የተባለች ቅድስት
+
+VERSE 44
+ድንግል ማርያም የሰማዕታት አናታቸው
+የመላዕክት አኅታቸው ናት፡፡
+208.እዝራኒ ተናገራ/2/
+አዝራኒ ተናገራ/2/
+
+VERSE 45
+ተናገራ ዳዊት ዘመራ ተናገራ ዳዊት/2/
+209ዘርዕየ
+ዘርዕየ ተቅዋመ ማኅቶት/2/
+ዘካርያስ ካህን ነቢይ ወሰማዕት/2/
+
+VERSE 46
+ትርጉም፡- መቅረዝን ያየ ነቢያት ካህን የሆነ
+ትርጉም፡-የጥበብ ሰዎች
+ለአማኑኤል ይሰግዱ ዘንድ
+በኮከብ አየተመሩ መጡ
+
+VERSE 47
+211.በጎለ እንስሳ
+በጎለ እንስሳ /2/
+በጎለ እንስሳ ተወለደ አማኑኤል/4/
+ትርጉም፡
+
+VERSE 48
+በእንስሳት በረት አማኑኤል ተወለደ
+212.ውስተ ማኅፀነ
+ውስተ ማኅፀነ ድንግል ኀደረ ማኅፀነ
+ድንግል/ሪ/
+
+VERSE 49
+ሰማይ ወምድር ዘኢያገምሮ ሰማይ ወምድር
+በማይ ተጠመቀ
+ትርጉም፡-
+ሰማይና ምድር የሟይችሉት አምላክ
+
+VERSE 50
+በአመቤታችን ማኅፀን አደረ በውኃም
+ተጠመቀ
+ትርጉም፡-
+ዓለምን ለማዳን መጣ አንድነቱንም
+
+VERSE 51
+ይስጠን ዘንድ አጅ መንሻም ያቀርቡ
+ዘንድ
+ትርጉም፡- ምድርም አየችው አመሰገነቸው
+ባሕርም ሰገደችለት
+
+VERSE 52
+ትርጉም፡- የበኩር ልጂን ወለደች
+የደመና መጋረጃ ጋረዳት
+ትርጉም፡-
+ወልድ ክርስቶስ ወደ ወንዝ ሊጠመቅ ወረደ
+
+VERSE 53
+220.ወቅድሳት
+ወቅድሳት መንፈስ
+ወሀበነ ማየ መንጽኤ ዚአነ
+ትርጉም፡ መንፈስ ቅዱስ በመቅደስ
+
+VERSE 54
+ለኃጢአታችን ማንጫ ውኃን ሰጠን
+221.በእደ ዮሐንስ
+ትርጉም፡- ናዝራዊ ኢየሱስ ክርስቶስ
+በዮሐንስ እጅ ተጠመቀ
+
+VERSE 55
+ትርጉም፡- ኢየሱስ ወደ አሴይ ሀገር ሄደ
+ዮሐንስም በውኃ አጠመቀው
+አኛንም ከውኃ ዳግመኛ ወለደን
+ትርጉም፡- እንደ ሕፃን ሆኖ በትንሽ
+
+VERSE 56
+በትንሹ አደገ በዮርዳኖስ
+ወንዝ በዮሐንስ እጅ ተጠመቀ
+ትርጉም፡- ዘጠና ዘጠኙን ነገደ መላእክትን ትቶ
+በባሕር መካከል ቆመ
+
+VERSE 57
+ትርጉም፡- መድኃኒታችን እነሆ ተወለደ
+መድኃኒታችን ተጠመቀ
+አሁንም እነሆ ሰላምን እንከተላት
+229.አማን በአማን
+
+VERSE 58
+ትርጉም፡-አእውነት እውነት የክርስቶስ
+መወለድ መጠመቅ አስደናቂ ነው
+ትርጉም፡- የነበረ በማዕከለ ዓለም ያለ
+ትርጉም፡- ጌታችን መድኃኒታችን ከእኛ ተሰውሮ
+
+VERSE 59
+የነበረው አሁን ተገለጠ በቃና ገሊላ
+ውኃውን ወይን ጠጅ
+በማድረግ ተአምራትን አደረገ
+232.ክርስቶስ ተወለደ
+
+VERSE 60
+ክርስቶስ ተወልደ ወተጠመቀ /2/
+አስተርአዮቱ አማን አሰትርእዮቱ /4/
+ትርጉም፡- ኢየሱስ ክረትስቶስ ተወለደ
+ተጠመቀም በአውነት መገለጽ አውነት ነው
+
+VERSE 61
+233.ዮሐንስኒ
+ዮሐንስኒ ሃሎ ያጠምቅ/2/
+በፄኖን በቅሩበ ሣሌም/4/
+ትርጉም፡- በዮሐንስ በኢየሩሳሌም አቅራቢያ
+
+VERSE 62
+በዮርዳኖስ ያጠምቅ ነበር
+234.ሶበ መጽአ
+ሶበ መጽአ ቃል አምሰማይ ለተናብቦ''2/
+ከበቦ /4/ ለማይ ባሕር ነድ በማይ ከበበ/4/
+
+VERSE 63
+ትርጉም፡- ቃል ከሰማይ ለመናገር በመጣ
+ጊዜ እሳት የዮርዳኖስን ባሕር ከበበው
+ውኃውም የሚሄድበት ቦታ ጠበበው
+235.ዮም ሰማያዊ
+
+VERSE 64
+ዮም ሰማያዊ በጎል ሰከበ
+ለዘተወልደ እምቅድስት ደንግል/2/
+ርእይዎ ኖሎት/2/ አእኩትዎ መላእክት /2/
+ትርጉም፡- እነሆ ዛሬ ሰማያዊ ንጉሥ
+
+VERSE 65
+በበረት ተኛ ከቅድስት ድንግል
+ትርጉም፡- በሰማያት ለአግዚአብሔር
+በምድርም ለሰው ልጆች ሰላም ይሁን
+237.ወጽአ ወገብአ
+
+VERSE 66
+ወጽአ ወገብአ በሰላም /ሪ2/ ወገብአ በሰላም/2/
+ትርጉም፡-በሰላም ወጥቶ በሰላም ገባ
+238.ንኡ ናንሶሱ
+በብርሃኑ ንኡ ናንሶሱ
+
+VERSE 67
+በብርሃኑ ንኡ ናንሶሱ
+ትርጉም፡- በብርሃኑ እንመላለስ
+239.መጽአ ቃል
+መጽአ ቃል እምደመና ዘይብል/2(/(2)
+
+VERSE 68
+ዝንቱ ውአቱ ወልድየ ዘአፈቅር/4/
+ትርጉም፡ የምወደው ልጄ ይህ ነው
+የሚል ቃል ከደመና መጣ
+240.ፈለገ ዮርዳኖስ
+
+VERSE 69
+ፈለገ ዮርዳኖስ የእምነታችን ጣአሙ
+ለክርስቲያን ታሪክ አንቺ ነሽ መቅድሙ
+ቅድስት/3/ ዮርዳኖስ ሆይ የጌታ ሀገሩ
+አብ ወልድ መንፈስቅዱስ በአንቺ ላይ አደሩ
+
+VERSE 70
+241.ቅዱስ
+ቅዱስ /3/ አልፋ ሕያው አምላካችን ክብሩ
+ይስፋ/2/
+አስይ ተጠመቀልን አኛ አንዳጠፋ
+
+VERSE 71
+242.የምስራች
+የምሥራች ተጠመቀ እስይ /2/(2)
+የዓምለም ቤዛ /2/ የጽድቅ ፀሐይ /2/
+ተጠመቀ አምላክ አዶናይ /2/
+
+VERSE 72
+ትርጉም፡- አየዋት ቤተክርስቲያንን
+ትርጉም፡- ካህንና ነቢይ የሆነ ዮሐንስ
+መጥምቅ ከኃይል ወደ ኃይል
+በመንፈስ ይሸጋገራል
+
+VERSE 73
+261.ኑኑ እንደሰት
+ኑ ኑ አንደሰት/2/
+ጌታ ተጠመቀ/4/ ተጠመቀ በማየ ዮርዳኖስ/2/
+262.ኢየሩሳሌም
+
+VERSE 74
+ኢየሩሳሌም/3/ በሆን ጌታ ሲወለድ ባየን
+አንደ ዮሴፍ ወይ እንደ ሰሎሜ በሆን/2/
+አንድ አረኞች ወይ ሰብአ ሰገልን በሆን/2/
+263.ዮም ፍሥሐ
+
+VERSE 75
+ዮም ፍሥሐ ኮነ በአንተ ልደቱ ለክርስቶስ/2/
+አም ቅድስት ድንግል/2/ ውእቱ ኢየሱስ
+ክርስቶስ/ኃ/
+264.ተወልደ
+
+VERSE 76
+ተወልደ ኢየሱስ በቤተልሔም/2/ ዘይሁዳ
+በቤተልሔም/ሪ2/
+ትርጉም፡- በፍርድ እንደማያዳላ እወቁ
+ትርጉም፡-ሞትማ ለሚሞተው ሰው ይገባዋል
+
+VERSE 77
+የማርያም ሞት ግን /2/
+በጣም ያስገርማል/2/
+ትርጉም፡-
+ትርጉም፡-
+
+VERSE 78
+ትርጉም፡-አውነት በእውነት/4/
+አያልቅም ቃልኪዳንሽ/4/
+397. አማልጂን ከልጅሽ
+ትርጉም፡- ያለበጎ ሥራ የምንጸድቅ መንግሥተ
+
+VERSE 79
+ሰማያትን የምንወርስ ካልሆነ አመቤቴ ቅድስት
+ድንግል ማርያም ሆይ ቃል ኪዳን ኪዳንሽ ለከንቱ
+ነበርን
+400. ኪዳንኪ ኮነ
+
+VERSE 80
+ኪዳነኪ ኮነ/4/
+ለኃጥአን ተስፋነ/2/ ኪዳንኪ ኮነ/4/
+ትርጉም፡- የምሕረት ኪዳን ያለሽ አመቤታችን
+ለኃጥአን ተስፋቸው ነሽ፡፡
+
+VERSE 81
+ትርጉም፡- በአለተ ምፅአት ጊዜ ኪዳንሽ
+በፈጣሪ ፊት ቤዛ ይሁን፡፡
+402. ነይ ነይ ማርያም
+ነይ ማርያም ወላዲተ አምላክ የጻድቃን
+
+VERSE 82
+አመቤት የመላእክት እህት/2/
+ሁላችሁ አመኗት ከልብ አማላጅ ናትና በእውነት
+አናመስግናት አናወድሳት አማላጅ ኪዳነምሕረት/ሪ2/
+ትርጉም፡- የታወቀች የድኅነት ቀን የምትመጣይቱ
+
+VERSE 83
+የአባታችን ዳዊት መንግሥት ቡርክት ናት
+ትርጉም፡-ከሕፃናት አንደበት ምስጋናን አዘጋጅህ የጠላት
+ዲያብሎስ ምክሩን ታፈርስ ዘንድ
+ትርጉም፡-ከሚነደው አሳት ከነበልባሉ አወጣን/2/
+
+VERSE 84
+ትርጉም፡- ትንሣኤህን ለምናምን ለእኛ ብርፃንን
+ላክልን
+ትርጉም፡- ክርስቶስ ለእኛ ለኃጥአን መድኃኒታችን
+ትርጉም፡- ክርስቶስ ተነሣ ከሙታን በታላቅ ኃይል
+
+VERSE 85
+በታላቅ ሥልጣን ሰይጣን አስሮ አዳምን ነጻ አወጣው
+ከእንግዲህ ይሁን ሰላም
+ትርጉም፡- ወደ አባቱ አረገ መንፈስቅዱስንም ላከልን
+650.ዐረገ በስብሐት
+
+VERSE 86
+ዐረገ በስብሐት /2 ውስተ ሠማያት /2
+ወነበረ በየማነ አቡሁ ዳግም ይመጽእ በስብሐት
+ትርጉም፡- እገባለሁና ወደቦታዋ ማኅደረ ስብሐት
+ቤተ አግዚአብሔር በእምነትም ቃል
+
+VERSE 87
+በደስታም ዘምሩ የማርያም ቅድስት
+ልደቷን የሚያከብሩ
+673.አምሐና ወኢያቄም /4/
+አላ በሩካቤ ዘበሕግ /2
+
+VERSE 88
+674.ዓምደ እሳት ጾርኪ /4/
+ኦ ማርያም /3/ መንክር ልደትኪ
+675.አማን በአማን /4/
+ተወልደት አመብርሃን /4/
+
+VERSE 89
+676.የምስራች ተወለደች እሰይ እሰይ
+ትርጉም፡- የለብሽም ነውር ምንም በላይሽ ላይ/2
+ውጪ ከሊባኖስ እኅትየ መርዓት /4
+681.ከሊባኖስ
+
+VERSE 90
+ከሊባኖስ ከሊባኖስ ከልጅሽ ጋር ነይ
+አመ አዶናይ ከሊባኖስ ወደእኛ ነይ
+ጥበቃሽ ዘወትር ከሊባኖስ
+አንዳይለየኝ ››
+
+VERSE 91
+በሔድኩበት ሁሉ ››
+ትርጉም፡- የኢያቄም ልጅ የዳዊት ዘመድ ናት
+685.ሐመልማላዊት /6
+ሙሴ ዝዘርእያ/2 በደብረ ሲና /2 ማኅደረ ስብሐት /2
+
+VERSE 92
+686.. ኢያቄም ወኸና እናት አባትሽ ቤተ እግዚአብሔር
+ወስደው ስእለት የሰጡሽ መና ከደመና
+የወረደልሽ ፍጹም ድንግል የሆነሽ
+ትርጉም፡- ማርያም ንጽሕት ድንግል ታማኝ
+
+VERSE 93
+አምላክን የወለድሽ የምሕረት አማላጅ ነሽ
+ለሰው ልጅ ሁሉ /2/
+ትርጉም፡- ለምኝልን ማርያም ለምኝልን/2/
+የንጹሐን አክሊል/2/ ለምኝልን/2/
+
+VERSE 94
+700.ሰላም እለኪ/6
+ሰላማዊት ማኅደረ ስብሐት
+ሰላማዊት ደብረመድኃኒት
+701. ኮነ ዮም/2/ በእንተ ልደታ ለማርያም/2/
+
+VERSE 95
+ከመ ትቤዙ ነቢያተ ወጻድቃን ነቢያተ ከመ ትቤኩ/ቋ2/
+7025. ዮም ፍሥሐ ኮነ በአንተ ልደታ ለማርያም
+አምሐና ወኢያቄም ከመ ትቤዙ ነቢያተ ወጻድቃነ አማን
+ተወልደት አመብርፃን
+
+VERSE 96
+702 -ሀ-. ሰአሉለነ ሐና ወኢያቄም/2/
+ዘወለድክምዋ ለድንግል ማርያምሃ''4/
+ለምኑልን ሐና ወኢያቄም/2/
+አናትና አባቷ የድንግል ማርያም
+
+VERSE 97
+702-ለ-አሰይ ተወለደች በዛሬዋ ዕለት ድንግል ማርያም
+የአምላክ እናት /2/
+የምስራች እልል በሉ የአዳም ልጆች ሁሉ
+የምስራች እልል በሉ ክርስቲያኖች ሁሉ
+
+VERSE 98
+702 -ሐ- ሐናና ኢያቄም በስለት ያገኙሽ/2/
+ድንግል እናታችን በጣም ደስ ይበልሽ /2/
+ለመዳን ምክንያት የሆነችው እናት /2/
+ትርጉም፡- ለእመቤታችን ገብርኤል
+
+VERSE 99
+አበሠራት
+አንዲህም አላት ንጉሥ ትወልጃለሽ
+706.ውእቱ ሩፋኤል
+ውእቱ ሩፋኤል ውእቱ መልአከ ኃይል
+
+VERSE 100
+ልዑል ውአቱ ልዑል መንበር
+ይስአል ለነ ይስአል ለኢትዮጵያ
+ትርጉም፡- የኃይል መልአክ ሩፋኤል ነው
+አኛን ይጠብቀን ሀገራችንን ኢትዮጵያ
+
+VERSE 101
+ይርዳልን
+ትርጉም፡- ቃልህ አረጋጋኝ አጸናኝ ስለዚህ አውቄ
+አንተን ፈለኩህ
+709.ሩህሩህ
+
+VERSE 102
+ሩኅሩኅ መልአክ ነህና ለሁሉ የምትራራ/ሪ2/
+ገብርኤል አዛኙ እንተ አውጣን ከመከራ/4/
+የሚያሳድዱኝ ገብርኤል ሲቆሙ ከፊቴ
+ትርጉም፡- ገብርኤል ለመናገር ትሩ ልሣን
+
+VERSE 103
+ስጠኝ /አንደበት ስጠኝ/ መንፈስ
+ቅዱስን አሳድርብኝ የብርፃን
+መጎናፀፊያ አድንጎናፀፍ በመልጃህ
+ተራዳን
+
+VERSE 104
+711.ገብርኤል
+ገብርኤል አማልደን ከአምላካችን /2/
+አንዳንጠፋ እንዳንሞት በነፍሳችን
+አደራህን ቁምልን ከጎናችን /2/
+
+VERSE 105
+712. የብርሃናት አለቃ
+የብርሃናት አለቃ የጌታ ባለሟል ሊቀ
+መላእክት /2/
+ንዓ ራጉኤል /4/ ራጉኤል መጋቤ
+
+VERSE 106
+ብርሃናት/2/ ኸኸ/2/
+ትርጉም፡- ሩጫቸው ከነፋስ ይፈጥናል
+718.ገብርኤል ምልአኒ
+ትርጉም፡- ዓውደ ዐመቱ ይባረክ ዘንድ ራጉኤል
+
+VERSE 107
+መልአክ ወደ አምላክ ጸልየ /ለምን/
+ትርጉም፡- ዑራኤል ወሩፋኤል ሆይ በትሕትናና
+በጸሎት ወደ እግዚአብሔር ለምኑልን
+የቅዱሳን ጻድቃን መዝሙራት
+
+VERSE 108
+726.ሐዋርያው
+ትርጉም፡- አባቶቼ ነአኩቶ ለአብ
+ይምርሃነ ክርስቶስ
+ቅዱስ ላሊበላ ከነጣቂ አንበሳና ተኩላ
+
+VERSE 109
+ጠብቁኝ
+743. የቅዱሳን በዓት
+ልቡና የሚመስጥ መዓዛ አጣኗ
+ኅሊናን ይገዛል ዝማሬ ድጓዋ
+
+VERSE 110
+ትርጉም፡- በምድር የዋሃን የሆኑ የብርዛን
+ልጆች
+ትርጉም፡- የገብረ መንፈስ ቅዱስ ልብሳቸው እንደ ሽቱ
+ያማረ ነው ደግሞም ልብሳቸው እንደነጭ ሐር
+
+VERSE 111
+ነው እርሱም ወደ ገነት የወረደ ነው
+752. ያሬድ ማኅሌታይ
+ያሬድ ማኅሌታይ ለአግዚአብሔር ካህኑ ስብሐተ ትንሣኤ
+ዘይአዜኑ ኦሪት ቶታህኑ ወወንጌል አሳዕኑ (2)
+
+VERSE 112
+ትርድአነ ነአ በህየ መካኑ ከመ ፀበል ግዑዛነ ፀርነ ይኩኑ
+ትርጉም፡- የጫማህ ማዘቢያ /ማሰሪያ /ኦሪት የእግርህ
+መጫሚያ ወንጌል የሆነና የትንሣኤን ክብር
+የምታስተምር የእግዚአብሔር አገልጋይ
+
+VERSE 113
+ማኅሌታዊ ያሬድ በዚህ ቦታ ትረዳን ዘንድ ና
+753.ሰማየ በአብ
+ሰማየ በአብ ወበወልድ አርያመ ወበመንፈስ ቅዱስ ኀበ
+ዓረጉ አነ (2
+
+VERSE 114
+ሰማዕኩ አመላአክት ዝማሬ በአድንኖ ወበአትሕቶ ቦ
+ዘያጽሕሱ ወቦ ዘይዜምሩ (2)
+ትርጉም ፡- በአብ በወልድ በመንፈስ ቅዱስም ቸርነት
+ሰማይ ወጥቼ ጽርሐ አርያም ደርሼ
+
+VERSE 115
+ከመላእክት
+ዝማሬ (ምስጋና) ሰማሁ ከእነርሱም
+በዝቅታና በትኅትና የሚያሸበሽቡ አሉ
+ዙሪያውንም
+
+VERSE 116
+ቆመው የሚዘምሩ አሉ
+ትርጉም፡- ኃይልን ተአምርን የምታደርግ ገብረ
+መንፈስቅዱስ
+ቅዱስ ሆይ ክንፋቸው በነበልባል የሆነ
+
+VERSE 117
+የሚያስፈሩ
+መላእክት ሱራፌልና ኪሩቤል እውነት በማለት
+ይቀበለህ ዘንድ ዛሬ ወረዱ
+የሰማዕታት መዝሙር
+
+VERSE 118
+763.አማን በአማን
+ትርጉም፡- እውነት በአውነት ጊዮርጊስ
+ቅዱስ ነው እንደ ነፋስ ትቢያ በይድረስ
+ተራራ በተኑት
+
+VERSE 119
+ትርጉም፡- የእሳቱ ነጎድጓድ ያላስፈራህ ሕፃኑ ቂርቆስ
+ሆይ የእያንዳንዳችንን ማኅበር ዛሬ ባርክ
+ትርጉም፡- ለቂርቆስ የድንኳን ሥራ አሳየው በብርፃን
+ምሰሶ ተነጋገረው የመላእክት እህታቸው የሰማዕታት
+
+VERSE 120
+አናታቸው የደመና ብርፃንናት
+783. አፀደ ወይን
+አፀደ ወይን ዘያፈርህ አስካለ ሕይወት /2/
+ከመ ጽጌሬዳ /4/ አስጢፋኖስ ምሉአ ፍቅር ከመ
+
+VERSE 121
+ጽጌረዳ /2/
+784. ሰአለ
+ትርጉም፡-
+ትርጉም፡- አቤቱ ስማኝ ጸሎቴን ጩኸቴም ወደአንተ
+
+VERSE 122
+ትድረስ ፊትህን ከእኔ ዘንድ
+አትመልስብኝ በመከራዬ ቀን ስማኝ
+ጆሮህንም  ወደአኔክ  በጠራሁህም
+ፅለትም በፍጥነት ስማኝ
+
+VERSE 123
+818.የሥላሴን መንበር
+የሥላሴን መንበር ቅዱሳን ከበውት
+ኪሩቤል በደመና ዙፋኑን ይዘውት
+ድንግልን ከመሐል ሚካኤልን ከፊት
+
+VERSE 124
+አእላፍ መላዕክት ሲሰግዱ በፍርፃት
+አዩት ተመልከቱት የሰማዩን ድምቀት
+አዩት ተመልከቱት የሰማዩን አባት
+የሥላሴን መንበር ቅዱሳን ከበውት
+
+VERSE 125
+እያሸበሸቡ የሰማይ መላዕክት
+ካህናተ ሰማይ ቅዱስ ቅዱስ ቅዱስ ሲሉ
+ይህን ታላቅ ክብር ሊያዩ የታደሉ
+በጽድቅ ሥራቸው በምድር ይታያሉ/2/
+
+VERSE 126
+619.ሥላሴን አመስግኑ
+ሥላሴን አመሥግኑ/2/
+የምድር ፍጥረታት ዘምሩ አልል በሉ/2/
+በስመ አብ ወወልድ ወመንፈስቅዱስ
+
+VERSE 127
+ምስጋና ይገባል ከምንም በፊት
+ዓለማትን ሁሉ ለፈጠረ ጌታ
+ምስጋና ይገባል ከጠዋት እስከ ማታ
+ኪሩቤል ሱራፊል የሚያመሰግኑት
+
+VERSE 128
+መላእክት ከሰማይ የሚዘምሩልህ
+አኛም የአዳም ልጆች እንዘምራለን
+በሰማይም በምድር አንጠራዛለን
+ብራብ በሥላሴ እአጠግባለሁኝ
+
+VERSE 129
+ብጠማም በአምላኬ እረካለሁኝ
+ትርጉም፡- ምስጋና ይገባል ለአብ ዓለምን ሁሉ ለያዘ
+ምስጋና ይገባል ለወልድ ዓለሙን ሁሉ ለፈጠረ/2/
+ምስጋና ይገባል ለመንፈስ ቅዱስ በየዓመቱ
+
+VERSE 130
+ክረምትን ለሚከፍት/2/
+850.አውነተኛ ሰላም
+አውነተኛ ሰላም ያለው ከቤትህ ነው
+አርደኝ አልናወጽ አለምንፃለሁ/2/
+
+VERSE 131
+ኃጢአቴን ሳስበው ልቤ ይጨነቃል
+ከአንተ መለየቴ ነፍሴን አድክሟታል
+ወደአንተ መልሰኝ አኔ አመለሳለሁ
+አውነተኝ ሰላም ያለው ከቤትህ ነው
+
+VERSE 132
+ለቅዳሴው ጸሎት ዘወትር እንዳልተጋሁ
+በአደባባይ ቆሜ ስምህን አንዳልጠራሁ
+ተሰነካክዬ ወድቄአለሁና
+አርዳኝ አማኑኤል በሃይማኖት ልጽና
+
+VERSE 133
+ዓይኔ ዕንባ ያመንጭ ላልቅስ ስለ ኃጢአቴ
+የንስሓ ትሁን ቀሪዋ ሕይወቴ
+በመዳኔ ሰዓት በዛሬዋ ዕለት
+ፍቅርህን አስቤ መጣሁ ከአንተ ፊት
+
+VERSE 134
+ጌታ ሆይ ጸጸቴን ዕንባዬን ተቀበል
+አባትህ ነኝ በለኝ አኔም ልጅ ነኝ ልበል
+ዘይት ሳላዘጋጅ ድንገት መጥተኸብኝ
+በርህን በመዝጋት ከደጅህ አታስቀረኝ
+
+VERSE 135
+651.ጌታ ሆይ ለስምህ
+ጌታ ሆይ ለስምህ አዘምራለሁ
+ልዑል ሆይ ለክብርህ አልል አላለሁ
+በአንተ ደስ ይለኝል ሐሴት አደርጋለሁ /2/
+
+VERSE 136
+የበዛው ምሕረትህ በእኔ ላይ ተገልጦ
+የትናንቱ ስሜ በአንተ ተለውጦ
+ሞገስ ስለሆንከኝ ከፊትህ ቆሜያለሁ
+በአውደ ምሕረትህ ስምክን አጠራለሁ
+
+VERSE 137
+ያለቀውን ነገር የተቀጠረውን
+ትርጉም፡- አናንተ የክርስቲያን ወገኖች ሆይ በዚህ ቀን
+ትርጉም፡-
+ደንግል ማርያም መሠረቶቿዋ በምድር ቅርንጫፎቿ
+
+VERSE 138
+በሰማይ የሆነች ሐረግ ናት
+897.ስምሽን ጠርቼ
+ስምሽን ጠርቼ መቼ አፍራለሁ
+ትርጉም፡-
+
+VERSE 139
+ትርጉም፡-ማርያም ንጽሕት ድንግል ታማኝ
+አምላክን የወለድሽ የምሕረት አማላጅ ነሽ ለሰው
+ልጅ ሁሉ/2/
+ትርጉም፡- ማርያም ትበልጣለች ከሁሉ ፍጥረት
+
+VERSE 140
+ስለያዘች አሳተ መለኮትን/4/ (ስላላቃጠላት)
+944.የኖኅ ቃል ኪዳኑ
+የኖኅ ቃል ኪዳኑ ምልክት ዓርማው
+የመዳኑ ምሥጢር የሰላም ተስፋው
+
+VERSE 141
+አመቤቴ አንቺ ነሸ ቀስተደመናው/2/
+አንቺ የአሮን በትር ሳይተክላት ያደገች
+የማክሰኞ እርሻ ያለዘር ያፈራች
+የሲና ሐመልማል የተዋሕዶ ምሥጢር
+
+VERSE 142
+ክብርት አምቤቴ ሀገረ እግዚአብሔር/2/
+የዳዊት መሰንቆ ያሬድ ጽናጽል
+የደካሞች ምርኩዝ የሰሎምን አኪሊል
+ሰላሜ ተስፋዬ የሐዘኔ ደራሽ
+
+VERSE 143
+የጽዮን ተራራ መሸሸጊዬ ነሽ/2/
+የኤልሳዕ ማሠሮ ጨው የተገኘብሽ
+የሕዝቅኤል ራዕይ ንጽሕት አዳራሽ
+አንቺ የአዳም ተስፋ የመዳኔ ብስራት
+
+VERSE 144
+ትርጉም፡- ዘወትር በቤተ አግዚአብሔር
+እየተቀመጠች
+ሳለ እንደ ፊተኛው ያልሆነ መልአክ ታያት
+965.መሶበ ወርቅ
+
+VERSE 145
+መሶበ ወርቅ ዘመና እግዝአትና ማርያም ቅድስት
+ቅድስተ ቅዱሳን ይብልዋ ካህናት /4/
+ትርጉም መና ያለባት የወርቅ መሶብ የሆነችውን
+አመቤታችንን ማርያምን ካህናት
+
+VERSE 146
+ከቅዱሳን ይልቅ ቅድስት ነሽ እያሉ
+ያመሠግኗታል፡፡
+966. አመቤቴ ማርያም
+አመቤቴ ማርያም ሆይ አለምንሻለሁ
+
+VERSE 147
+ከልጅሽ አማልጅን /3/ ከፊትሽ ቆሜአለሁ
+አባክሽ አማልጅኝ የአምላክ አናት ድንግል
+ምን ጊዜም አይጠፋም/3/ ከአዳም ልጅ በደል
+በደላች ብዙ ነው ልመናችን ትንሽ
+
+VERSE 148
+ምሕረትን ጠይቁልን /3/ ድንግል ከልጅሽ
+967.ወዳጄ ሆይ
+ወደጄ ሆይ እነሆ ውብ ነሽ
+ትርጉም፡- ንግሥቲቱ የወርቅ ልብስ ተጎናጽፋ
+
+VERSE 149
+በቀኝህ ትቆማለች
+973. ስአሊ ለነ ማርያም
+ትርጉም፡- ከንጹሐን ንጹሕ ሆና በሲና እንደነበረች ታቦት
+በንጽሕና በቤተ መቅደስ ውስጥ ኖረች ምግቧም
+
+VERSE 150
+ትርጉም፡- መና ያለብሽ የወርቅ መሶብ ቅድስት
+አመቤታችን ማርያምን ካህናት ከተለዩ የተለየች
+ይሏታል፡፡
+985 ወእንዘ ትፈትል
+
+VERSE 151
+ወእንዘ ትፈትል /2/ ወርቀ ወሜላተ አስተርአያ
+ገብርኤል ግብተ /2/
+ወይቤላ ወይቤላ አስመ ረከብኪ ሞገሰ በኀበ
+አግዚአብሔር
+
+VERSE 152
+986. እመቤታችን ለአንቺ
+አመቤታችን ለአንቺ ሰላምታ ይገባሻል/2/
+ከሴቶች ሁሉ /3/ ተመርጠሻል
+አያረጋጓት የሠማይ መላእክት /2/
+
+VERSE 153
+ቤተ መቅደስ ኖረች /3/ አሥራ ሁለት ዓመት
+ትርጉም፡- ድንግል ሆይ የሐዋርያት ሞገስ የነቢያት
+ትንቢት አንቺ ነሽ
+1079..ማርያም
+
+VERSE 154
+ትርጉም፡- ለሰዎች አዛኝ ልብ ያላት አመቤቴ
+1080.በመኑ በአምሳለ መኑ
+በመኑ በአምሳለ መኑ ናስተማስልኪ/2
+አመቤቴ የእኛ አማላጅ አዛኝቷ ኦ ድንግል
+
+VERSE 155
+ምልዕተ ውዳሴ /2
+1081.ማርያም ተዐቢ
+ትርጉም፡- ማርያም ትበልጣለች ከሁሉ ፍጥረት /2/
+ስለያዘች እሳተ መለኮትን/4/
+
+VERSE 156
+(ስላላቃጠላት)
+1082.ተወልዳለችና
+ተወልዳለችና የጌታ እናት የእኛ መደኃኒት
+አናወድሳት እናመስግትናት እንውደዳት/2/
+
+VERSE 157
+የአዳምን ሕይወት /4/ ኸኸ
+አዳም ሲሠደድ ከጥንት ርስቱ
+ትርጉም፡- አንተ ነህ አባታችን አንዲሁም
+አናታችን በቤትህ ውስጥ ያሳደከን በአርዓያህና
+
+VERSE 158
+በምሣሌህ  ስለፈጠርከን  በወንጌልሀም ቃል
+አንደነገርከንና- አንዳስተማርከን አቤቱ ዛሬም
+ትርጉም፡- የዜማን መሠረት ጀመረ ያሬድ ካህን ያሬድ
+ካህን ድምጽ ያማረ ነው
+
+VERSE 159
+ዜኖኩ ጸድቀከ
+ትርጉም፡-', '/memhr/ yeyoሐns rasn kemiyasqorx ylq
+meሐlawn bibela beteshalew neber
+12.leyoሐns anget
+leyoሐns anget leteqorexew
+
+VERSE 1
+saybedl tasro leteseqayew
+trgum፡- yeherodyada lj mexachna endih
+alechw kbur yehonewn yewengielawiw yeyoሐnsn
+ras bewecit adrgeh sxegn alechw
+
+VERSE 2
+trgum፡- yekebere yelዑl nebiy yoሐns hoy
+menoriyaw begedam yehone yeselam sew new
+yemesqel mezmurat
+/lemeskerem 16 - 25 qen/
+
+VERSE 3
+trgum፡- kemesqelu werdo lehulu abera
+trgum፡-
+26.bemesqelke
+trgum፡- bemesqelh ardan beኃylh tematsnenalna
+
+VERSE 4
+trgum፡- kbur yehone ዕፀ mesqelh bemesqelh ኃyl
+smh ymesegen zend lዑl amlak hoy leante
+lebchah msgana yemigebaw smhn kef kef adergewalehu
+trgum፡- nebiyu enbaqom teamratun yadeneqew
+
+VERSE 5
+mesqel ngሥt ዕlieni felegechw
+trgum፡- zarie lewegenochie bemesqelie aberalehu
+trgum፡- mesqel ኃylachn new mesqel brtatachn
+new mesqel biezachn new leegna lemnamnew
+
+VERSE 6
+medኃnitachn new
+trgum፡- axanu yameleketew mesqel begolgota tegegne
+370bemesqelu webeqalu
+bemesqelu webeqalu /2/
+
+VERSE 7
+aዕbeyomu leabewine /4
+trgum፡- bemesqeluna beqalu abatochachnn kef kef
+aderegachew
+38bewengielu yamenachhu
+
+VERSE 8
+bewengielu yamenachhu /2/
+enkan lebrፃne mesqelu aderesachhu /2/
+39. ybielomu iyesus
+ybielulomu iyesus leayhud amenu bye
+
+VERSE 9
+weeamenu beabuye aberh /2/ bemesqelye
+trgum፡- iyesus ayhudn zaries bemesqelie lewegenochie
+aberalehuna beanie amenu beabatiem amenu alachew
+49. ኃylne wetsewenne
+
+VERSE 10
+ኃylne wetsewenne wemogesne (2) /2/
+trgum፡- ኃylachn mexegiyachn mekiyachn yh
+mesqel new
+‹«. beኃyle mesqelu
+
+VERSE 11
+beኃyle mesqelu /4
+dl honew wedequ agannt bemulu
+zemru hulachhu leኃyle mesqelu
+dl mensha newna lamenebet hulu
+
+VERSE 12
+trgum፡- bietekrstiyan yekrstos mesqel leegna
+lemnamn yebaሕr tsexta yemerkeboch wedeb new
+tlalech
+44faኀberu qal
+
+VERSE 13
+ኀberu qale nebiyate/2/
+weybielo mesqel brሃne /2/ lekulu ዓlem /2/
+trgum፡- nebiyat beand qal tenagrew
+mesqel leዓlem hulu brzan new alu
+
+VERSE 14
+45. yom beዓle mesqelu
+yom beዓle mesqelu besemayat belaዕlu /2/
+wezenegሠ bemdr (2) leaሕzab /2/
+trgum፡- zarie kemdr kef bale besemayat
+
+VERSE 15
+yemesqel beዓl new bemdrm leaሕzab
+yenegeሠbet new
+trgum፡-
+trgum፡-
+
+VERSE 16
+trgum፡-
+trgum፡-
+trgum፡- yesemayna mdr ngሥt
+yehonshe yeamebietachn yetsgie
+
+VERSE 17
+mezmur tefetseme:፡:
+72. kemaha ኀzen
+kemaኀ ሐzen wetesdo sobe bekuletie rekebo /2/
+reyo leybki ayne lb zebo /#/
+
+VERSE 18
+trgum፡- endeersua ሐzen mekera biyagegnew noro lb
+yalew sew keኀzenu balteqoxebe
+neber፡፡
+73. yom tselelu
+
+VERSE 19
+yom tselelu melaekt laዕle maryam welaዕle
+welda krstos bedebre qusquam /2/
+anzeyblu sbሐt /2/ bearyam
+sbሐt bearyam /2/
+
+VERSE 20
+trgum፡- eneho melaekt maryam kelji
+gar bequsquam terara lay keleluat
+beagziabሔr besemay msgana
+awnetm bemdr yhun
+
+VERSE 21
+74 meazahomu leqdusan
+meazahomu leqdusan kemetsgie degolat zewste qolat /2/
+tsegeyu qenmos mosle nardos /4
+75. nዒ rgbye
+
+VERSE 22
+nዒ rgbye wenዒ ሠnaytye /2/
+trgum፡- maryam begiyorgis ngሥ /kbru/
+gizie yeabeba zewdu nat yekb
+yengሥna aklil nat yeabeba
+
+VERSE 23
+zewd asua kbnet yalew
+yewerq squr nat፡:
+77. emne emne ni
+amne amne ni /4
+
+VERSE 24
+beselam /2/ ni maryam /2/
+anatachn ney ney /
+beselam /2/ ney maryam /2/
+78. aሠrgewa
+
+VERSE 25
+aሠrgewa lemdr aሠrgewa letsgie /2/
+asme watu kbromu leqdusan
+trgum፡- mdrn beabeba asgixat
+trgum፡- mdrn beabeba asgiexat
+
+VERSE 26
+trgum፡- benebiyat af yetemesegensh
+beሐwaryatm yetemesegensh nesh
+84 ngሥte semayat
+ngሥte semayat wemdr maryam dngl /2/
+
+VERSE 27
+tefetseme/ 4 maኅliete tsgie /2/
+trgum፡- yesemay yemdr ngሥt yehonsh
+amebietachn hoy yeanchi maኅliet
+tsgie tefetseme::
+
+VERSE 28
+trgum፡- bewerq akl yeteshelemech amebietachn
+yegiyorgis yesemaዕtnetu aklil abeba nat::
+86. kemetsgie roman
+kemetsgie roman kemetsgie /2/
+
+VERSE 29
+abebayie /2/ weladite amlak siሣy /2/
+trgum፡- ende roman abeba yamarech yeamlak
+anat maryam siሣy nat፡፡
+87. bkyu ኅzunan
+
+VERSE 30
+bkyu ኅzunan zalyekmu sdeta lemaryam /2/
+trgum፡- alqsu mዕmenan asbachhu
+yemaryamn sdetuan /2/ maryam
+trgum፡- lb ዓyn yalew sew yedngln
+
+VERSE 31
+lqso ayto biyaleqs agbab new፡:
+9. wede mሥraq eyu
+wede mሥraq eyu wede ፀሐy mewca
+dngln kbebuat anbel ሃlie luya
+
+VERSE 32
+leamlak enat leazagnt /2/
+trgum፡-
+93. afenb
+afenb matusala welde ፄnok ameafe lmlamie
+
+VERSE 33
+buruk afe melaekt /2/
+qesme tsgie tsgie /2/
+tsgieki ame amsak /2/
+trgum፣፤ yeamlak anat emebietachn hoy
+
+VERSE 34
+yenb af yeፄnok lj yemihon
+matusala ketebareke (keteqedese) lmlamie
+melak af ljesh abeban qeseme
+94 o dngl
+
+VERSE 35
+o dngl azekri rzaፃbe wetsmዓ /2/
+trgum፡- keenqu bemiyabera aklil yeteshelemech
+amebietachn yegiyorgis aklil
+trgum፡- and gizie bejerbash and gizie begonsh
+
+VERSE 36
+/2/
+/2/
+ሕፃnn bemazel /ሇ dekemsh maryam bebzu /2/
+trgum፡-
+
+VERSE 37
+trgum፡-
+trgum፡- yeorit qal yalebat tabotn
+fetsmew bewerq ygardital፡፡
+trgum፡- bekahnat yetaxerech
+
+VERSE 38
+bemenfes qdus
+yetekelelech yeegziabሔr yeሕgu
+tabot tsyon hoy
+nguሥsh lexelat
+
+VERSE 39
+ayshenefm hagernm
+aytewatm፡፡
+trgum፡- nguሥ dawit ዓynn yeminፀbarq
+yekbr lbs sebso keሕg
+
+VERSE 40
+tabot fit amesegene፡፡
+trgum፡- krstos meሠretsh yehone bie/k
+yetsdq ፀሐy yaberalshal
+lesemaዕt besbket
+
+VERSE 41
+yeteshelemshlachew፡፡
+trgum፡- yemusie tslat yesina eፀ phaxos
+yearon
+trgum፡- musie yayat
+
+VERSE 42
+bedebre sina yelemelemech ዕፅ/2/
+trgum፡- selamawit yehonech
+qdst tsyonn musie ayat፡፡
+trgum፡- alem sayfexer yenebere
+
+VERSE 43
+ዓlemn asalfo yeminor
+trgum፡- besemaym bemdrm
+bedawit qal yamesegnalu፡፡
+trgum፡- eske ዓlem meceresha dres belayachew
+
+VERSE 44
+ymesgen zend yeteleyo nebiyat
+trgum፡- tsyon yetebalech qdst
+dngl maryam yesemaዕtat anatachew
+yemelaዕkt aኅtachew nat፡፡
+
+VERSE 45
+208.ezrani tenagera/2/
+azrani tenagera/2/
+tenagera dawit zemera tenagera dawit/2/
+209zerዕye
+
+VERSE 46
+zerዕye teqwame maኅtot/2/
+zekaryas kahn nebiy wesemaዕt/2/
+trgum፡- meqrezn yaye nebiyat kahn yehone
+trgum፡-yexbeb sewoch
+
+VERSE 47
+leamanuiel ysegdu zend
+bekokeb ayetemeru mexu
+211.begole enssa
+begole enssa /2/
+
+VERSE 48
+begole enssa tewelede amanuiel/4/
+trgum፡
+beenssat beret amanuiel tewelede
+212.wste maኅፀne
+
+VERSE 49
+wste maኅፀne dngl ኀdere maኅፀne
+dngl/ri/
+semay wemdr zeiyagemro semay wemdr
+bemay texemeqe
+
+VERSE 50
+trgum፡-
+semayna mdr yemuaychlut amlak
+beamebietachn maኅፀn adere bewኃm
+texemeqe
+
+VERSE 51
+trgum፡-
+ዓlemn lemadan mexa andnetunm
+ysxen zend aj mensham yaqerbu
+zend
+
+VERSE 52
+trgum፡- mdrm ayechw amesegenechew
+baሕrm segedechlet
+trgum፡- yebekur ljin weledech
+yedemena megareja garedat
+
+VERSE 53
+trgum፡-
+weld krstos wede wenz lixemeq werede
+220.weqdsat
+weqdsat menfes
+
+VERSE 54
+wehabene maye mentsie ziane
+trgum፡ menfes qdus bemeqdes
+leኃxiatachn manca wኃn sexen
+221.beede yoሐns
+
+VERSE 55
+trgum፡- nazrawi iyesus krstos
+beyoሐns ej texemeqe
+trgum፡- iyesus wede asiey hager hede
+yoሐnsm bewኃ axemeqew
+
+VERSE 56
+agnanm kewኃ dagmegna weleden
+trgum፡- ende ሕፃn hono betnsh
+betnshu adege beyordanos
+wenz beyoሐns ej texemeqe
+
+VERSE 57
+trgum፡- zexena zexegnun negede melaektn tto
+bebaሕr mekakel qome
+trgum፡- medኃnitachn eneho tewelede
+medኃnitachn texemeqe
+
+VERSE 58
+ahunm eneho selamn enketelat
+229.aman beaman
+trgum፡-aewnet ewnet yekrstos
+meweled mexemeq asdenaqi new
+
+VERSE 59
+trgum፡- yenebere bemaዕkele ዓlem yale
+trgum፡- gietachn medኃnitachn keegna tesewro
+yeneberew ahun tegelexe beqana gelila
+wኃwn weyn xej
+
+VERSE 60
+bemadreg teamratn aderege
+232.krstos tewelede
+krstos tewelde wetexemeqe /2/
+asterayotu aman asetreyotu /4/
+
+VERSE 61
+trgum፡- iyesus kretstos tewelede
+texemeqem beawnet megelets awnet new
+233.yoሐnsni
+yoሐnsni ሃlo yaxemq/2/
+
+VERSE 62
+beፄnon beqrube ሣliem/4/
+trgum፡- beyoሐns beiyerusaliem aqrabiya
+beyordanos yaxemq neber
+234.sobe metsa
+
+VERSE 63
+sobe metsa qal amsemay letenabbo''2/
+kebebo /4/ lemay baሕr ned bemay kebebe/4/
+trgum፡- qal kesemay lemenager bemexa
+gizie esat yeyordanosn baሕr kebebew
+
+VERSE 64
+wኃwm yemihedbet bota xebebew
+235.yom semayawi
+yom semayawi begol sekebe
+lezetewelde emqdst dengl/2/
+
+VERSE 65
+reywo nolot/2/ aekutwo melaekt /2/
+trgum፡- eneho zarie semayawi nguሥ
+beberet tegna keqdst dngl
+trgum፡- besemayat leagziabሔr
+
+VERSE 66
+bemdrm lesew ljoch selam yhun
+237.wetsa wegeba
+wetsa wegeba beselam /ri2/ wegeba beselam/2/
+trgum፡-beselam wexto beselam geba
+
+VERSE 67
+238.nu nansosu
+bebrሃnu nu nansosu
+bebrሃnu nu nansosu
+trgum፡- bebrሃnu enmelales
+
+VERSE 68
+239.metsa qal
+metsa qal emdemena zeybl/2(/(2)
+zntu watu weldye zeafeqr/4/
+trgum፡ yemwedew ljie yh new
+
+VERSE 69
+yemil qal kedemena mexa
+240.felege yordanos
+felege yordanos yeemnetachn xaamu
+lekrstiyan tarik anchi nesh meqdmu
+
+VERSE 70
+qdst/3/ yordanos hoy yegieta hageru
+ab weld menfesqdus beanchi lay aderu
+241.qdus
+qdus /3/ alfa ሕyaw amlakachn kbru
+
+VERSE 71
+ysfa/2/
+asy texemeqeln agna andaxefa
+242.yemsrach
+yemሥrach texemeqe esy /2/(2)
+
+VERSE 72
+yeዓmlem bieza /2/ yetsdq ፀሐy /2/
+texemeqe amlak adonay /2/
+trgum፡- ayewat bietekrstiyann
+trgum፡- kahnna nebiy yehone yoሐns
+
+VERSE 73
+mexmq keኃyl wede ኃyl
+bemenfes yshegageral
+261.nunu endeset
+nu nu andeset/2/
+
+VERSE 74
+gieta texemeqe/4/ texemeqe bemaye yordanos/2/
+262.iyerusaliem
+iyerusaliem/3/ behon gieta siweled bayen
+ande yosief wey ende selomie behon/2/
+
+VERSE 75
+and aregnoch wey seba segeln behon/2/
+263.yom fሥሐ
+yom fሥሐ kone beante ldetu lekrstos/2/
+am qdst dngl/2/ wetu iyesus
+
+VERSE 76
+krstos/ኃ/
+264.tewelde
+tewelde iyesus bebietelሔm/2/ zeyhuda
+bebietelሔm/ri2/
+
+VERSE 77
+trgum፡- befrd endemayadala ewequ
+trgum፡-motma lemimotew sew ygebawal
+yemaryam mot gn /2/
+bexam yasgermal/2/
+
+VERSE 78
+trgum፡-
+trgum፡-
+trgum፡-awnet beewnet/4/
+ayalqm qalkidansh/4/
+
+VERSE 79
+397. amaljin keljsh
+trgum፡- yalebego ሥra yemntsedq mengሥte
+semayatn yemnwers kalhone amebietie qdst
+dngl maryam hoy qal kidan kidansh lekentu
+
+VERSE 80
+nebern
+400. kidanki kone
+kidaneki kone/4/
+leኃxan tesfane/2/ kidanki kone/4/
+
+VERSE 81
+trgum፡- yemሕret kidan yalesh amebietachn
+leኃxan tesfachew nesh፡፡
+trgum፡- bealete mፅat gizie kidansh
+befexari fit bieza yhun፡፡
+
+VERSE 82
+402. ney ney maryam
+ney maryam weladite amlak yetsadqan
+amebiet yemelaekt eht/2/
+hulachhu amenuat kelb amalaj natna beewnet
+
+VERSE 83
+anamesgnat anawedsat amalaj kidanemሕret/ri2/
+trgum፡- yetaweqech yedኅnet qen yemtmexaytu
+yeabatachn dawit mengሥt burkt nat
+trgum፡-keሕፃnat andebet msganan azegajh yexelat
+
+VERSE 84
+diyablos mkrun tafers zend
+trgum፡-keminedew asat kenebelbalu awexan/2/
+trgum፡- tnሣiehn lemnamn leegna brፃnn
+lakln
+
+VERSE 85
+trgum፡- krstos leegna leኃxan medኃnitachn
+trgum፡- krstos teneሣ kemutan betalaq ኃyl
+betalaq ሥlxan seyxan asro adamn netsa awexaw
+keengdih yhun selam
+
+VERSE 86
+trgum፡- wede abatu arege menfesqdusnm lakeln
+650.ዐrege besbሐt
+ዐrege besbሐt /2 wste ሠmayat /2
+wenebere beyemane abuhu dagm ymetse besbሐt
+
+VERSE 87
+trgum፡- egebalehuna wedebotawa maኅdere sbሐt
+biete agziabሔr beemnetm qal
+bedestam zemru yemaryam qdst
+ldetuan yemiyakebru
+
+VERSE 88
+673.amሐna weiyaqiem /4/
+ala berukabie zebeሕg /2
+674.ዓmde esat tsorki /4/
+o maryam /3/ menkr ldetki
+
+VERSE 89
+675.aman beaman /4/
+teweldet amebrሃn /4/
+676.yemsrach teweledech esey esey
+trgum፡- yelebshm newr mnm belaysh lay/2
+
+VERSE 90
+wci kelibanos eኅtye merዓt /4
+681.kelibanos
+kelibanos kelibanos keljsh gar ney
+ame adonay kelibanos wedeegna ney
+
+VERSE 91
+xbeqash zewetr kelibanos
+andayleyegn ››
+beሔdkubet hulu ››
+trgum፡- yeiyaqiem lj yedawit zemed nat
+
+VERSE 92
+685.ሐmelmalawit /6
+musie zzereya/2 bedebre sina /2 maኅdere sbሐt /2
+686.. iyaqiem weኸna enat abatsh biete egziabሔr
+wesdew selet yesexush mena kedemena
+
+VERSE 93
+yeweredelsh ftsum dngl yehonesh
+trgum፡- maryam ntsሕt dngl tamagn
+amlakn yeweledsh yemሕret amalaj nesh
+lesew lj hulu /2/
+
+VERSE 94
+trgum፡- lemgnln maryam lemgnln/2/
+yentsuሐn aklil/2/ lemgnln/2/
+700.selam eleki/6
+selamawit maኅdere sbሐt
+
+VERSE 95
+selamawit debremedኃnit
+701. kone yom/2/ beente ldeta lemaryam/2/
+keme tbiezu nebiyate wetsadqan nebiyate keme tbieku/qua2/
+7025. yom fሥሐ kone beante ldeta lemaryam
+
+VERSE 96
+amሐna weiyaqiem keme tbiezu nebiyate wetsadqane aman
+teweldet amebrፃn
+702 -ha-. sealulene ሐna weiyaqiem/2/
+zeweledkmwa ledngl maryamሃ''4/
+
+VERSE 97
+lemnuln ሐna weiyaqiem/2/
+anatna abatua yedngl maryam
+702-le-asey teweledech bezariewa ዕlet dngl maryam
+yeamlak enat /2/
+
+VERSE 98
+yemsrach ell belu yeadam ljoch hulu
+yemsrach ell belu krstiyanoch hulu
+702 -ሐ- ሐnana iyaqiem beslet yagegnush/2/
+dngl enatachn bexam des ybelsh /2/
+
+VERSE 99
+lemedan mknyat yehonechw enat /2/
+trgum፡- leemebietachn gebriel
+abeሠrat
+andihm alat nguሥ tweljalesh
+
+VERSE 100
+706.wetu rufaiel
+wetu rufaiel wetu melake ኃyl
+lዑl watu lዑl menber
+ysal lene ysal leityophya
+
+VERSE 101
+trgum፡- yeኃyl melak rufaiel new
+agnan yxebqen hagerachnn ityophya
+yrdaln
+trgum፡- qalh aregagagn atsenagn slezih awqie
+
+VERSE 102
+anten felekuh
+709.ruhruh
+ruኅruኅ melak nehna lehulu yemtrara/ri2/
+gebriel azagnu ente awxan kemekera/4/
+
+VERSE 103
+yemiyasaddugn gebriel siqomu kefitie
+trgum፡- gebriel lemenager tru lሣn
+sxegn /andebet sxegn/ menfes
+qdusn asadrbgn yebrፃn
+
+VERSE 104
+megonaፀfiya adngonaፀf bemeljah
+teradan
+711.gebriel
+gebriel amalden keamlakachn /2/
+
+VERSE 105
+andanxefa endanmot benefsachn
+aderahn qumln kegonachn /2/
+712. yebrሃnat aleqa
+yebrሃnat aleqa yegieta balemual liqe
+
+VERSE 106
+melaekt /2/
+nዓ raguiel /4/ raguiel megabie
+brሃnat/2/ ኸኸ/2/
+trgum፡- rucachew kenefas yfexnal
+
+VERSE 107
+718.gebriel mlani
+trgum፡- ዓwde ዐmetu ybarek zend raguiel
+melak wede amlak tselye /lemn/
+trgum፡- ዑraiel werufaiel hoy betሕtnana
+
+VERSE 108
+betselot wede egziabሔr lemnuln
+yeqdusan tsadqan mezmurat
+726.ሐwaryaw
+trgum፡- abatochie neakuto leab
+
+VERSE 109
+ymrሃne krstos
+qdus lalibela kenexaqi anbesana tekula
+xebqugn
+743. yeqdusan beዓt
+
+VERSE 110
+lbuna yemimesx meዓza axanua
+ኅlinan ygezal zmarie dguawa
+trgum፡- bemdr yewaሃn yehonu yebrzan
+ljoch
+
+VERSE 111
+trgum፡- yegebre menfes qdus lbsachew ende shtu
+yamare new degmom lbsachew endenec ሐr
+new ersum wede genet yewerede new
+752. yaried maኅlietay
+
+VERSE 112
+yaried maኅlietay leagziabሔr kahnu sbሐte tnሣie
+zeyazienu orit totahnu wewengiel asaዕnu (2)
+trdane nea behye mekanu keme ፀbel gዑzane ፀrne ykunu
+(2
+
+VERSE 113
+(2
+trgum፡- yecamah mazebiya /maseriya /orit yeegrh
+mecamiya wengiel yehonena yetnሣien kbr
+yemtastemr yeegziabሔr agelgay
+
+VERSE 114
+maኅlietawi yaried bezih bota tredan zend na
+753.semaye beab
+semaye beab webeweld aryame webemenfes qdus ኀbe
+ዓregu ane (2
+
+VERSE 115
+semaዕku amelaakt zmarie beadnno webeatሕto bo
+zeyatsሕsu webo zeyziemru (2)
+trgum ፡- beab beweld bemenfes qdusm chernet
+semay wexchie tsrሐ aryam dershie
+
+VERSE 116
+kemelaekt
+zmarie (msgana) semahu keenersum
+bezqtana betኅtna yemiyashebeshbu alu
+zuriyawnm
+
+VERSE 117
+qomew yemizemru alu
+trgum፡- ኃyln teamrn yemtaderg gebre
+menfesqdus
+qdus hoy knfachew benebelbal yehone
+
+VERSE 118
+yemiyasferu
+melaekt surafielna kirubiel ewnet bemalet
+yqebeleh zend zarie weredu
+yesemaዕtat mezmur
+
+VERSE 119
+763.aman beaman
+trgum፡- ewnet beawnet giyorgis
+qdus new ende nefas tbiya beydres
+terara betenut
+
+VERSE 120
+trgum፡- yeesatu negodguad yalasferah ሕፃnu qirqos
+hoy yeeyandandachnn maኅber zarie bark
+trgum፡- leqirqos yednkuan ሥra asayew bebrፃn
+mseso tenegagerew yemelaekt ehtachew yesemaዕtat
+
+VERSE 121
+anatachew yedemena brፃnnat
+783. aፀde weyn
+aፀde weyn zeyaferh askale ሕywet /2/
+keme tsgierieda /4/ asxifanos mlua fqr keme
+
+VERSE 122
+tsgiereda /2/
+784. seale
+trgum፡-
+trgum፡- abietu smagn tselotien cuኸtiem wedeante
+
+VERSE 123
+tdres fithn keenie zend
+atmelsbgn bemekerayie qen smagn
+jorohnm  wedeaniek  bexerahuhm
+ፅletm befxnet smagn
+
+VERSE 124
+818.yeሥlasien menber
+yeሥlasien menber qdusan kebewt
+kirubiel bedemena zufanun yzewt
+dngln kemeሐl mikaieln kefit
+
+VERSE 125
+aelaf melaዕkt sisegdu befrፃt
+ayut temelketut yesemayun dmqet
+ayut temelketut yesemayun abat
+yeሥlasien menber qdusan kebewt
+
+VERSE 126
+eyashebeshebu yesemay melaዕkt
+kahnate semay qdus qdus qdus silu
+yhn talaq kbr liyayu yetadelu
+betsdq ሥrachew bemdr ytayalu/2/
+
+VERSE 127
+619.ሥlasien amesgnu
+ሥlasien ameሥgnu/2/
+yemdr fxretat zemru all belu/2/
+besme ab weweld wemenfesqdus
+
+VERSE 128
+msgana ygebal kemnm befit
+ዓlematn hulu lefexere gieta
+msgana ygebal kexewat eske mata
+kirubiel surafil yemiyamesegnut
+
+VERSE 129
+melaekt kesemay yemizemrulh
+agnam yeadam ljoch enzemralen
+besemaym bemdr anxerazalen
+brab beሥlasie eaxegbalehugn
+
+VERSE 130
+bxemam beamlakie erekalehugn
+trgum፡- msgana ygebal leab ዓlemn hulu leyaze
+msgana ygebal leweld ዓlemun hulu lefexere/2/
+msgana ygebal lemenfes qdus beyeዓmetu
+
+VERSE 131
+kremtn lemikeft/2/
+850.awnetegna selam
+awnetegna selam yalew kebieth new
+ardegn alnawets alemnፃlehu/2/
+
+VERSE 132
+ኃxiatien sasbew lbie yceneqal
+keante meleyetie nefsien adkmuatal
+wedeante melsegn anie amelesalehu
+awnetegn selam yalew kebieth new
+
+VERSE 133
+leqdasiew tselot zewetr endaltegahu
+beadebabay qomie smhn andalxerahu
+tesenekakyie wedqiealehuna
+ardagn amanuiel beሃymanot ltsna
+
+VERSE 134
+ዓynie ዕnba yamenc lalqs sle ኃxiatie
+yensሓ thun qeriwa ሕywetie
+bemedanie seዓt bezariewa ዕlet
+fqrhn asbie mexahu keante fit
+
+VERSE 135
+gieta hoy tsetsetien ዕnbayien teqebel
+abath negn belegn aniem lj negn lbel
+zeyt salazegaj dnget mexteኸbgn
+berhn bemezgat kedejh atasqeregn
+
+VERSE 136
+651.gieta hoy lesmh
+gieta hoy lesmh azemralehu
+lዑl hoy lekbrh all alalehu
+beante des ylegnl ሐsiet adergalehu /2/
+
+VERSE 137
+yebezaw mሕreth beenie lay tegelxo
+yetnantu smie beante telewxo
+moges slehonkegn kefith qomieyalehu
+beawde mሕreth smkn axeralehu
+
+VERSE 138
+yaleqewn neger yeteqexerewn
+trgum፡- anante yekrstiyan wegenoch hoy bezih qen
+trgum፡-
+dengl maryam meሠretoቿwa bemdr qrncafoቿ
+
+VERSE 139
+besemay yehonech ሐreg nat
+897.smshn xerchie
+smshn xerchie mechie afralehu
+trgum፡-
+
+VERSE 140
+trgum፡-maryam ntsሕt dngl tamagn
+amlakn yeweledsh yemሕret amalaj nesh lesew
+lj hulu/2/
+trgum፡- maryam tbelxalech kehulu fxret
+
+VERSE 141
+/2/
+/2/
+sleyazech asate melekotn/4/ (slalaqaxelat)
+944.yenoኅ qal kidanu
+
+VERSE 142
+yenoኅ qal kidanu mlkt ዓrmaw
+yemedanu mሥxir yeselam tesfaw
+amebietie anchi neshe qestedemenaw/2/
+anchi yearon betr sayteklat yadegech
+
+VERSE 143
+yemaksegno ersha yalezer yaferach
+yesina ሐmelmal yetewaሕdo mሥxir
+kbrt ambietie hagere egziabሔr/2/
+yedawit mesenqo yaried tsnatsl
+
+VERSE 144
+yedekamoch mrkuz yeselomn akilil
+selamie tesfayie yeሐzenie derash
+yetsyon terara mesheshegiyie nesh/2/
+yeielsaዕ maሠro cew yetegegnebsh
+
+VERSE 145
+yeሕzqiel raዕy ntsሕt adarash
+anchi yeadam tesfa yemedanie bsrat
+trgum፡- zewetr bebiete agziabሔr
+eyeteqemexech
+
+VERSE 146
+sale ende fitegnaw yalhone melak tayat
+965.mesobe werq
+mesobe werq zemena egzatna maryam qdst
+2.
+
+VERSE 147
+2.
+qdste qdusan yblwa kahnat /4/
+trgum mena yalebat yewerq mesob yehonechwn
+amebietachnn maryamn kahnat
+
+VERSE 148
+keqdusan ylq qdst nesh eyalu
+yameሠgnuatal፡፡
+966. amebietie maryam
+amebietie maryam hoy alemnshalehu
+
+VERSE 149
+keljsh amaljn /3/ kefitsh qomiealehu
+abaksh amaljgn yeamlak anat dngl
+mn giziem ayxefam/3/ keadam lj bedel
+bedelach bzu new lmenachn tnsh
+
+VERSE 150
+mሕretn xeyquln /3/ dngl keljsh
+967.wedajie hoy
+wedejie hoy eneho wb nesh
+trgum፡- ngሥtitu yewerq lbs tegonatsfa
+
+VERSE 151
+beqegnh tqomalech
+973. sali lene maryam
+trgum፡- kentsuሐn ntsuሕ hona besina endeneberech tabot
+bentsሕna bebiete meqdes wsx norech mgbuam
+
+VERSE 152
+trgum፡- mena yalebsh yewerq mesob qdst
+amebietachn maryamn kahnat keteleyu yeteleyech
+yluatal፡፡
+985 weenze tfetl
+
+VERSE 153
+weenze tfetl /2/ werqe wemielate asteraya
+gebriel gbte /2/
+weybiela weybiela asme rekebki mogese beኀbe
+agziabሔr
+
+VERSE 154
+986. emebietachn leanchi
+amebietachn leanchi selamta ygebashal/2/
+kesietoch hulu /3/ temerxeshal
+ayaregaguat yeሠmay melaekt /2/
+
+VERSE 155
+biete meqdes norech /3/ aሥra hulet ዓmet
+trgum፡- dngl hoy yeሐwaryat moges yenebiyat
+tnbit anchi nesh
+1079..maryam
+
+VERSE 156
+trgum፡- lesewoch azagn lb yalat amebietie
+1080.bemenu beamsale menu
+bemenu beamsale menu nastemaslki/2
+amebietie yeegna amalaj azagntua o dngl
+
+VERSE 157
+mlዕte wdasie /2
+1081.maryam teዐbi
+trgum፡- maryam tbelxalech kehulu fxret /2/
+sleyazech esate melekotn/4/
+
+VERSE 158
+(slalaqaxelat)
+1082.teweldalechna
+teweldalechna yegieta enat yeegna medeኃnit
+anawedsat enamesgtnat enwdedat/2/
+
+VERSE 159
+yeadamn ሕywet /4/ ኸኸ
+adam siሠded kexnt rstu
+trgum፡- ante neh abatachn andihum
+anatachn bebieth wsx yasadeken bearዓyahna
+
+VERSE 160
+bemሣlieh  slefexerken  bewengielham qal
+andenegerkenna- andastemarken abietu zariem
+trgum፡- yezieman meሠret jemere yaried kahn yaried
+kahn dmts yamare new
+
+VERSE 161
+zienoku tsedqeke
+trgum፡-', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=nU9Bqi4_ZPk', 'draft', 'pending', 'https://www.youtube.com/watch?v=nU9Bqi4_ZPk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('knefe-rgb', 'ክነፈ ርግብ', 'ክነፈ ርግብ', 'knefe rgb', 'Ethiopian Orthodox Tewahedo Mezmur - ክነፈ ርግብ', 'ፃሌ ሃሌ ሉያ ክነፈርግብ በብሩር ዘግቡር /2/
+ወገበዋቲሃኒ ሐመልማለ ወርቅ በሐመልማለ ወርቅ /2/
+ትርጉም ፡:-', 'ፃlie ሃlie luya knefergb bebrur zegbur /2/
+wegebewatiሃni ሐmelmale werq beሐmelmale werq /2/
+trgum ፡:-', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=swmbn9kXWls', 'draft', 'pending', 'https://www.youtube.com/watch?v=swmbn9kXWls', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('knefe-rgb', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('rgeta-lemaryam-rgeta-wste-semayat', 'ዕርገታ ለማርያም ዕርገታ ውስተ ሰማያት', 'ዕርገታ ለማርያም ዕርገታ ውስተ ሰማያት', 'ዕrgeta lemaryam ዕrgeta wste semayat', 'Ethiopian Orthodox Tewahedo Mezmur - ዕርገታ ለማርያም ዕርገታ ውስተ ሰማያት', 'ወበዓታ ወበዓታ ውስተ ገነት /4/
+ገነዝዋ ሐዋርያት/4/', 'webeዓta webeዓta wste genet /4/
+genezwa ሐwaryat/4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=KDHyQ3NkSBA', 'draft', 'pending', 'https://www.youtube.com/watch?v=KDHyQ3NkSBA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bebr-n-zufan-lay-yeqomut-egrochu-2', 'በብርሃን ዙፋን ላይ የቆሙት እግሮቹ /2/', 'በብርሃን ዙፋን ላይ የቆሙት እግሮቹ /2/', 'bebrሃn zufan lay yeqomut egrochu /2/', 'Ethiopian Orthodox Tewahedo Mezmur - በብርሃን ዙፋን ላይ የቆሙት እግሮቹ /2/', 'በችንካር ላይ ቆሙ ምንም ሳይሰለቹ /2/
+የብርሃን አክሊልን ለሰማዕት ያደለ/2/
+የሾክ አክሊል ደፍቶ ቀራንዮ ዋለ /2/
+415. መስክሪ ቀራንዮ (1)
+
+VERSE 1
+መስክሪ ቀራንዮ መስክሪ ጎልጎታ
+›› ›› ›› ሊቶስጥራ
+የተቀበለውን የአምላክን መከራ/2/
+ሊሰቅሉት ሲወስዱት መስቀል አሸክመው
+
+VERSE 2
+ስምዖን ቀሬናዊ ከመንገድ አገኘው(2)
+ከድካሙ ብዛት ሳይሰሉት እንዳይሞት
+ለቀሬናዊ ሰው ስሞዖን መስቀል አሸክሙት/2/
+የአምላክን ትዕግሥት በማየት ተደንቆ
+
+VERSE 3
+ጴላጦስ ጠየቀው እንዲፈታው አውቆ /2/
+ጌታም መለሰለት ከላይ ካልተሰጠ
+በአኔ ላይ ልትፈርድ አንዳች ኃይል የለህ/2/
+ስቀለው እያሉ ባንድ ላይ ሲጮሁ
+
+VERSE 4
+ጴላጦስ ጨነቀው የሚያደርገው ጠፋው//ሪ2/
+ከደሙ ንጽሕ ነኝ በማለት ታጠበ
+የጌታን ንግግር ቃሉንም አሰበ/2/
+መከራ መስቀልህ ሲነገር ይጨንቃል ነፍስም
+
+VERSE 5
+ትርዳለች ሥጋንም ይዳከማል/2/
+ድካምህን ሁሉ ከንቱ እንዳላደርገው
+በንስሓ እንባ ኃጢአቴን እጠበው /
+416.መስክሪ ቀራንዮ /2/
+
+VERSE 6
+መስክሪ ቀራንዮ ንገሪን ጎልጎታ
+ካሳ እንደሆነልን እንዳዳነን ጌታ/2/
+በአምላክነቱ ፈጥሮ ዓለማትን
+ሥጋን መዋሐዱን ሰዎችን ለማዳን
+
+VERSE 7
+ክብሩን ዝቅ አደርጎ በታላቅ ትኅትና
+ለፍርድ ሲወስዱት ሊቀበል መከራ
+መስቀል ተሸክሞ ሲወጣ ተራራ
+አይሁድ በየተራ ሲገርፉት ሲያዳፉት', 'bechnkar lay qomu mnm sayselechu /2/
+yebrሃn akliln lesemaዕt yadele/2/
+yeshok aklil defto qeranyo wale /2/
+415. meskri qeranyo (1)
+
+VERSE 1
+meskri qeranyo meskri golgota
+›› ›› ›› litosxra
+yeteqebelewn yeamlakn mekera/2/
+liseqlut siwesdut mesqel ashekmew
+
+VERSE 2
+smዖn qerienawi kemenged agegnew(2)
+kedkamu bzat sayselut endaymot
+leqerienawi sew smoዖn mesqel ashekmut/2/
+yeamlakn tዕgሥt bemayet tedenqo
+
+VERSE 3
+phielaxos xeyeqew endifetaw awqo /2/
+gietam meleselet kelay kaltesexe
+beanie lay ltferd andach ኃyl yeleh/2/
+sqelew eyalu band lay sicohu
+
+VERSE 4
+phielaxos ceneqew yemiyadergew xefaw//ri2/
+kedemu ntsሕ negn bemalet taxebe
+yegietan nggr qalunm asebe/2/
+mekera mesqelh sineger ycenqal nefsm
+
+VERSE 5
+trdalech ሥganm ydakemal/2/
+dkamhn hulu kentu endaladergew
+bensሓ enba ኃxiatien exebew /
+416.meskri qeranyo /2/
+
+VERSE 6
+meskri qeranyo ngerin golgota
+kasa endehoneln endadanen gieta/2/
+beamlaknetu fexro ዓlematn
+ሥgan mewaሐdun sewochn lemadan
+
+VERSE 7
+kbrun zq adergo betalaq tኅtna
+lefrd siwesdut liqebel mekera
+mesqel teshekmo siwexa terara
+ayhud beyetera sigerfut siyadafut', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hsnTjwnrWJ4', 'draft', 'pending', 'https://www.youtube.com/watch?v=hsnTjwnrWJ4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gbzoch-enderasachew-mesluachew', 'ግብዞች እንደራሳቸው መስሏቸው', 'ግብዞች እንደራሳቸው መስሏቸው', 'gbzoch enderasachew mesluachew', 'Ethiopian Orthodox Tewahedo Mezmur - ግብዞች እንደራሳቸው መስሏቸው', 'ምራቅ እየተፉ በፊትህ ቀለዱ አንተን ሊጎዱ/2/
+በመሰቀል ላይ ተጠማሁ ስትል ታላቅ በደል
+ሀሞትና ከርቤ ሰጡህ ቀላቅለው ጠጣ ብለው/2/
+ይቅር ባይ ግልጽ በደላችንን ሁሉ ሳታይ
+
+VERSE 1
+አንተ ቅር በለን በእኛ ሳትከፋ እንዳንጠፋ /2/
+422. በዕጸ መስቀል ላይ
+በዕጸ መስቀል ላይ በዚያ አደባባይ
+አምላክ ሆይ ጌታ ሆይ ተንገላታ ወይ
+
+VERSE 2
+መከራ አየህ ወይ
+መስቀል አስይዘው ኪራያላይሶን
+ወደ ጎልጎታ
+ሲገራፉ ሲዳፉ
+
+VERSE 3
+ስትንገላታ
+ያንን አቀበት ኪርያላይሶን
+ያንን ዳገት
+ጀርባህ ተገርፎ
+
+VERSE 4
+ስትቃትት
+አንተን እያዩ ኪርያላይሶን
+ሴቶች ሲያለቅሱ
+አናቶች ቀርበው
+
+VERSE 5
+ላብህን ዳበሱ
+መስቀል አስይዘው ኪያላይሶን
+አንዲያ ሲያዳፉህ
+የቀሬናው ሰው
+
+VERSE 6
+ስምኦን አገዘው
+423. ለእኛ ብሎ ተንገላታ
+ለእኛ ብሎ ተንገላታ የሁላቸን ጌታ
+አዳም ቅጠል በልቶ ባመጣው በሽታ/2/
+
+VERSE 7
+አምላክ ዋለ ቀራንዩ ለብሶ ከለሜዳ
+አዳም ሕግ አፍርሶ በጎተተው ዕዳ/2/
+ለመስቀሉ ተሰለፈ እየተገረፈ
+በዕጽ ሊፈውሰው በዕጽ ላይ አረፈ/2/', 'mraq eyetefu befith qeledu anten ligodu/2/
+bemeseqel lay texemahu stl talaq bedel
+hamotna kerbie sexuh qelaqlew xexa blew/2/
+yqr bay glts bedelachnn hulu satay
+
+VERSE 1
+ante qr belen beegna satkefa endanxefa /2/
+422. beዕtse mesqel lay
+beዕtse mesqel lay beziya adebabay
+amlak hoy gieta hoy tengelata wey
+
+VERSE 2
+mekera ayeh wey
+mesqel asyzew kirayalayson
+wede golgota
+sigerafu sidafu
+
+VERSE 3
+stngelata
+yann aqebet kiryalayson
+yann daget
+jerbah tegerfo
+
+VERSE 4
+stqatt
+anten eyayu kiryalayson
+sietoch siyaleqsu
+anatoch qerbew
+
+VERSE 5
+labhn dabesu
+mesqel asyzew kiyalayson
+andiya siyadafuh
+yeqerienaw sew
+
+VERSE 6
+smon agezew
+423. leegna blo tengelata
+leegna blo tengelata yehulachen gieta
+adam qxel belto bamexaw beshta/2/
+
+VERSE 7
+amlak wale qeranyu lebso kelemieda
+adam ሕg afrso begotetew ዕda/2/
+lemesqelu teselefe eyetegerefe
+beዕts lifewsew beዕts lay arefe/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=XKrexNh9CFs', 'draft', 'pending', 'https://www.youtube.com/watch?v=XKrexNh9CFs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('wey-gudat-wey-gudat', 'ወይ ጉዳት ወይ ጉዳት', 'ወይ ጉዳት ወይ ጉዳት', 'wey gudat wey gudat', 'Ethiopian Orthodox Tewahedo Mezmur - ወይ ጉዳት ወይ ጉዳት', 'ንጊዜ ከገነት ሲወጡ በጥፋት
+ሲገፈፍ ክብራቸው
+መጣላት ጀመሩ እርስ በራሳቸው
+አንቺ ነሽ አንተ ነህ ሆነ ነገራቸው
+
+VERSE 1
+ነገር ግን አይጠቅምም መነዛነዛቸው
+ወይ በደል ወይ ጉዳት', 'ngizie kegenet siwexu bexfat
+sigefef kbrachew
+mexalat jemeru ers berasachew
+anchi nesh ante neh hone negerachew
+
+VERSE 1
+neger gn ayxeqmm menezanezachew
+wey bedel wey gudat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=MeBvEdCQLVo', 'draft', 'pending', 'https://www.youtube.com/watch?v=MeBvEdCQLVo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('wey-gudat-wey-gudat', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bemesqel-lay-hono-ljsh-singegelata-2', 'በመስቀል ላይ ሆኖ ልጅሽ ሲንገገላታ/2/', 'በመስቀል ላይ ሆኖ ልጅሽ ሲንገገላታ/2/', 'bemesqel lay hono ljsh singegelata/2/', 'Ethiopian Orthodox Tewahedo Mezmur - በመስቀል ላይ ሆኖ ልጅሽ ሲንገገላታ/2/', 'የግፍ ግፍ ደርሶበት የዛን ጊዜ', 'yegf gf dersobet yezan gizie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=czaTE1TC6FQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=czaTE1TC6FQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('staleqsh-bemayet-yeziyan-gzie-rarto-ljsh', 'ስታለቅሽ በማየት የዚያን ግዜ ራርቶ ልጅሽ', 'ስታለቅሽ በማየት የዚያን ግዜ ራርቶ ልጅሽ', 'staleqsh bemayet yeziyan gzie rarto ljsh', 'Ethiopian Orthodox Tewahedo Mezmur - ስታለቅሽ በማየት የዚያን ግዜ ራርቶ ልጅሽ', 'ዮሐንስን አጽናኝ እንደልጅ ሠጠሽ /2/
+428. አለምን ለማዳን', 'yoሐnsn atsnagn endelj ሠxesh /2/
+428. alemn lemadan', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=TvvRy_hxf6A', 'draft', 'pending', 'https://www.youtube.com/watch?v=TvvRy_hxf6A', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('nefsun-lewedaju-yemisex-bigegnm', 'ነፍሱን ለወዳጁ የሚሰጥ ቢገኝም', 'ነፍሱን ለወዳጁ የሚሰጥ ቢገኝም', 'nefsun lewedaju yemisex bigegnm', 'Ethiopian Orthodox Tewahedo Mezmur - ነፍሱን ለወዳጁ የሚሰጥ ቢገኝም', 'ነፍሱን ለወዳጁ የሚሰጥ ቢገኝም', 'nefsun lewedaju yemisex bigegnm', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=AxsFSgjPwMc', 'draft', 'pending', 'https://www.youtube.com/watch?v=AxsFSgjPwMc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('med-nit-krstos-beanchi-tengelata-2', 'መድኃኒት ክርስቶስ በአንቺ ተንገላታ/2/', 'መድኃኒት ክርስቶስ በአንቺ ተንገላታ/2/', 'medኃnit krstos beanchi tengelata/2/', 'Ethiopian Orthodox Tewahedo Mezmur - መድኃኒት ክርስቶስ በአንቺ ተንገላታ/2/', 'መስክሪ አንቺ ምድር ግዑዚቷ ሥፍራ
+መድኃኒት ክርስቶስ ያየብሽን መከራ/2/
+ደሙ እንደውኃ ሲፈስ መስቀሉኃ2/
+በቀራንዮ ቦታ መከራውን ሲያይ/2/
+
+VERSE 1
+ፀሐይ ከለከለች ደማቅ ብርሃኗን /2/
+ለመሸፈን ብላ የአምላክን እርቃን/2/
+በመስቀል ተሰቅሎ ፍቅሩን ገለጸው /2/
+በመስቀል ላይ ሆኖ ተጠማሁ አያለ /2/
+
+VERSE 2
+የሾህ አክሊል ደፍቶ ቀራንዮ ዋለ /2/
+አጆቹን እግሮቹን በችንካር ተመተው/2/
+ቸሩ መድኃኔዓም አባክህ ማረን/2//
+ደካሞች ነንና እንዳንቀር ጠፍተን/2/
+
+VERSE 3
+በቆረሰከው ስጋ ባፈሰሰከው ደም/2/
+አቤቱ ተራዳ እስከ ዘላለም/2/', 'meskri anchi mdr gዑzitua ሥfra
+medኃnit krstos yayebshn mekera/2/
+demu endewኃ sifes mesqeluኃ2/
+beqeranyo bota mekerawn siyay/2/
+
+VERSE 1
+ፀሐy kelekelech demaq brሃnuan /2/
+lemeshefen bla yeamlakn erqan/2/
+bemesqel teseqlo fqrun geletsew /2/
+bemesqel lay hono texemahu ayale /2/
+
+VERSE 2
+yeshoh aklil defto qeranyo wale /2/
+ajochun egrochun bechnkar temetew/2/
+cheru medኃnieዓm abakh maren/2//
+dekamoch nenna endanqer xeften/2/
+
+VERSE 3
+beqoresekew sga bafesesekew dem/2/
+abietu terada eske zelalem/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hq8LkobA178', 'draft', 'pending', 'https://www.youtube.com/watch?v=hq8LkobA178', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qdusan-ejochh-yefixgn-tasrew', 'ቅዱሳን እጆችህ የፊጥኝ ታስረው', 'ቅዱሳን እጆችህ የፊጥኝ ታስረው', 'qdusan ejochh yefixgn tasrew', 'Ethiopian Orthodox Tewahedo Mezmur - ቅዱሳን እጆችህ የፊጥኝ ታስረው', 'አደበግ ጎተቱህ ልትምራቸው
+የትም ቦታ ያለህ ሁሉን የምታውቅ
+ፊትህን ሸፈኑህ ለመመጻደቅ', 'adebeg gotetuh ltmrachew
+yetm bota yaleh hulun yemtawq
+fithn shefenuh lememetsadeq', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xNQdLgu5JtA', 'draft', 'pending', 'https://www.youtube.com/watch?v=xNQdLgu5JtA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dnq-rawnm-lea-zab-ngeru', 'ድንቅ ሥራውንም ለአሕዛብ ንገሩ', 'ድንቅ ሥራውንም ለአሕዛብ ንገሩ', 'dnq ሥrawnm leaሕzab ngeru', 'Ethiopian Orthodox Tewahedo Mezmur - ድንቅ ሥራውንም ለአሕዛብ ንገሩ', 'ድንቅ ሥራውንም ለአሕዛብ ንገሩ
+በዝናብ አብቅሎ በፀሐይ አብስሎ
+ይመግባልና ሁሉን አስተካክሎ
+አትወድምና የሰው ልጆችን ጥፋት
+
+VERSE 1
+አቤቱ ጸሎቴን ስማ በያሬዳዊ ዜማ
+1016.ተናገሩ
+ተናገሩ ድንቅ ሥራውን መስክሩ /2/
+ተአምሩን ለዓለም ንገሩ (23) ድንቅ ሥራውን
+
+VERSE 2
+መስክሩ /2/
+1017ለጌታዬ ለእግዚአብሔር
+ለጌታዬ ለአግዚአብሔር ስላደረገልኝ ምን
+አከፍለዋለሁ /2/
+
+VERSE 3
+ተመስገን ነው አንጂ /2/ ሌላ ምን አላለሁ /4
+101.የተዘጋች መቅደስ
+ወዳጄ ሆይ እነሆ ውብ ነሽ', 'dnq ሥrawnm leaሕzab ngeru
+beznab abqlo beፀሐy abslo
+ymegbalna hulun astekaklo
+atwedmna yesew ljochn xfat
+
+VERSE 1
+abietu tselotien sma beyariedawi ziema
+1016.tenageru
+tenageru dnq ሥrawn meskru /2/
+teamrun leዓlem ngeru (23) dnq ሥrawn
+
+VERSE 2
+meskru /2/
+1017legietayie leegziabሔr
+legietayie leagziabሔr sladeregelgn mn
+akeflewalehu /2/
+
+VERSE 3
+temesgen new anji /2/ liela mn alalehu /4
+101.yetezegach meqdes
+wedajie hoy eneho wb nesh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=uso2qQWYN60', 'draft', 'pending', 'https://www.youtube.com/watch?v=uso2qQWYN60', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bebedelie-bzat-2-ayteh-atxalegn-2', 'በበደሌ ብዛት /2/ አይተህ አትጣለኝ/2/', 'በበደሌ ብዛት /2/ አይተህ አትጣለኝ/2/', 'bebedelie bzat /2/ ayteh atxalegn/2/', 'Ethiopian Orthodox Tewahedo Mezmur - በበደሌ ብዛት /2/ አይተህ አትጣለኝ/2/', 'ሳስበው በደሌ ብዙ ነው/ሪ/
+በጨለማ ነፍሴን በላት ውድማ/2/', 'sasbew bedelie bzu new/ri/
+becelema nefsien belat wdma/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ezoKsDcDhu0', 'draft', 'pending', 'https://www.youtube.com/watch?v=ezoKsDcDhu0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lem-amrot-hede-tsegawn-tewena-2', 'ዓለም አምሮት ሄደ ጸጋውን ተወና''2/', 'ዓለም አምሮት ሄደ ጸጋውን ተወና''2/', 'ዓlem amrot hede tsegawn tewena''2/', 'Ethiopian Orthodox Tewahedo Mezmur - ዓለም አምሮት ሄደ ጸጋውን ተወና''2/', 'የአግዚአብሔር ስጦታ ኅብስቱ ስልችቶት/2/
+ዓለም አምሮት ሄደ ከተወው ባርነት/2/
+የፈርዖን ጅራፍ አልታየው አለ
+የአህል አምሮቱን ውርደቱን ከለለ/2/
+
+VERSE 1
+ግብፅ ልፄድ ብሎ አመጸ በአግዚአብሔር
+መድርሱ አልገባውም ከከነዓን ሀገር/2/
+የኪዳኑ ታቦት የሙሴ ገጽታ
+ዓለም ስላማረው አደረገው ተርታ /2/
+
+VERSE 2
+የአምላክን ካህነት የአሮን ሥርዓት
+በዓለም ለወጠው ትልቁን አምኃ/2/
+የኅብረቱን ጉዞ በፍቅር የፄደው
+የማኅሌት ደስታ አስራኤል ታከተው/2/
+
+VERSE 3
+የአግዚአብሔርን ድንኳን ደመና ያጀባት
+የኪዳኑን አርማ በበረፃ ተዋት/2/
+ዛሬም ይህ ትውልድ እስራኤልን ሆኗል
+ቤክርስቲያኑን አምላኩን አረስቷል/2/
+
+VERSE 4
+ግብጽና ባቢሎን አጓጉተው ወስደውት
+ወርቁን ከእጁ ጣለ መዳብ አስጎምጀጅቶት/2/
+466. አዝናለሁ አለቅሳለሁ
+አዝናለሁ አለቅሳለሁ
+
+VERSE 5
+ስለ በደሌ ሁልጊዜ አለቅሳለሁ
+አዝናለሁ አለቅሳለሁ
+ስለጥፋቴ ሁለጊዜ አለቅሳለሁ
+ነገር ግን መሐሪ ነህና እንደምታድነኝ
+
+VERSE 6
+አምናለሁ/2/
+ሥጋዬ ለራሱ እያታለለኝ/2/
+ሁለን በመፈለግ ወሰደና ለጥፋት ሰጠኝ
+ከመሬት ተገኝታ እመሬት ልትገባ/2/
+
+VERSE 7
+ከንቱ አስቀረችኝ ያሳሳች ሥጋ ሰገብጋባ /2/
+ትቻት ልመጣ ነው አፈር ሥጋዬን
+›»»› ›› መሬት ሥጋዬን', 'yeagziabሔr sxota ኅbstu slchtot/2/
+ዓlem amrot hede ketewew barnet/2/
+yeferዖn jraf altayew ale
+yeahl amrotun wrdetun kelele/2/
+
+VERSE 1
+gbፅ lፄd blo ametse beagziabሔr
+medrsu algebawm kekeneዓn hager/2/
+yekidanu tabot yemusie getsta
+ዓlem slamarew aderegew terta /2/
+
+VERSE 2
+yeamlakn kahnet yearon ሥrዓt
+beዓlem lewexew tlqun amኃ/2/
+yeኅbretun guzo befqr yeፄdew
+yemaኅliet desta asraiel taketew/2/
+
+VERSE 3
+yeagziabሔrn dnkuan demena yajebat
+yekidanun arma bebereፃ tewat/2/
+zariem yh twld esraieln honual
+biekrstiyanun amlakun arestual/2/
+
+VERSE 4
+gbtsna babilon aguagutew wesdewt
+werqun keeju xale medab asgomjejtot/2/
+466. aznalehu aleqsalehu
+aznalehu aleqsalehu
+
+VERSE 5
+sle bedelie hulgizie aleqsalehu
+aznalehu aleqsalehu
+slexfatie hulegizie aleqsalehu
+neger gn meሐri nehna endemtadnegn
+
+VERSE 6
+amnalehu/2/
+ሥgayie lerasu eyatalelegn/2/
+hulen bemefeleg wesedena lexfat sexegn
+kemeriet tegegnta emeriet ltgeba/2/
+
+VERSE 7
+kentu asqerechgn yasasach ሥga segebgaba /2/
+tchat lmexa new afer ሥgayien
+›»»› ›› meriet ሥgayien', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=2d5H-c4qZjM', 'draft', 'pending', 'https://www.youtube.com/watch?v=2d5H-c4qZjM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lemayneger-sxotah-temesgen-enl-len-2', 'ለማይነገር ስጦታህ ተመስገን እንልፃለን/2/', 'ለማይነገር ስጦታህ ተመስገን እንልፃለን/2/', 'lemayneger sxotah temesgen enlፃlen/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ለማይነገር ስጦታህ ተመስገን እንልፃለን/2/', 'ማቃችንን ቀይረህ አዲስ ላለበስከን
+ቁስላችንን አጥበህ ዘይት ለቀባኸን
+ጠላት ሲያዋርደን አንተ ላከበርከን
+ለዚህ ሁሉ ውለታህ ምን አእንከፍልፃለን', 'maqachnn qeyreh adis lalebesken
+quslachnn axbeh zeyt leqebaኸn
+xelat siyawarden ante lakeberken
+lezih hulu wletah mn aenkeflፃlen', 'amharic', 'mezmur', 'ዘማሪ ዲያቆን አቤል', 'https://www.youtube.com/watch?v=4yzgH9uRSyk', 'draft', 'pending', 'https://www.youtube.com/watch?v=4yzgH9uRSyk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('lemayneger-sxotah-temesgen-enl-len-2', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('altsenahumna', 'አልጸናሁምና', 'አልጸናሁምና', 'altsenahumna', 'Ethiopian Orthodox Tewahedo Mezmur - አልጸናሁምና', 'ሥራዬና ቃልህ አልገናኝ አሉኝ
+በጠማማው ልቤ አንተን አሳዘንኩኝ
+ጽኑ መሠረት ነህ የሕይወት አለት
+አየተናወጽኩኝ አቃተተኝ መትጋት', 'ሥrayiena qalh algenagn alugn
+bexemamaw lbie anten asazenkugn
+tsnu meሠret neh yeሕywet alet
+ayetenawetskugn aqatetegn metgat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=2cvxFPHHdgk', 'draft', 'pending', 'https://www.youtube.com/watch?v=2cvxFPHHdgk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bemekera-tsena-alkadem-amlakun', 'በመከራ ጸና አልካደም አምላኩን', 'በመከራ ጸና አልካደም አምላኩን', 'bemekera tsena alkadem amlakun', 'Ethiopian Orthodox Tewahedo Mezmur - በመከራ ጸና አልካደም አምላኩን', 'መፈተን መልካም ነው ያነጻል እንደወርቅ
+በመጨረሻው ቀን በክብረ እንድትደምቅ
+አንዱን ሳትሻገር ሌላው ቢተካብህ
+በሕይወትህ ዘመን ፈተና ቢያጠቃህ', 'mefeten melkam new yanetsal endewerq
+bemecereshaw qen bekbre endtdemq
+andun satshager lielaw bitekabh
+beሕyweth zemen fetena biyaxeqah', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=G9uDPVlM40E', 'draft', 'pending', 'https://www.youtube.com/watch?v=G9uDPVlM40E', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lemalqes-gizie-alew-amlakie-derso-lemesaq', 'ለማልቀስ ጊዜ አለው አምላኬ ደርሶ ለመሳቅ', 'ለማልቀስ ጊዜ አለው አምላኬ ደርሶ ለመሳቅ', 'lemalqes gizie alew amlakie derso lemesaq', 'Ethiopian Orthodox Tewahedo Mezmur - ለማልቀስ ጊዜ አለው አምላኬ ደርሶ ለመሳቅ', 'ከራሣችን ፀጉር አንዲቷን ጥቂቱን ሣናውቅ
+የአኛስ ተግባር ሆኗል ለሁሉም ደርሶ
+መጨነቅ/2/
+478. አቤቱ ልንበርከክ
+
+VERSE 1
+አቤቱ ልንበርከክ ልማር
+ህግን አስተምረኝ ወድቂ እንዳቀር/2/
+አቤቱ ለመማር ስፈልግ ደጀህን ስጠና
+ተመለስ ይለኛል የሥጋ ፈተና
+
+VERSE 2
+አቤቱ በልቤ አርሻ ላይ የዘራኸውን ቃል
+ዲያብሎስ ወፍ ሆኖ ከልቤ ይለቅማል
+አቤቱ ይህንንም ያንን ሁሉን ነገር ስመኝ
+ከቤትህ እንዳልርቅ ቃልህ ይመልሰኝ
+
+VERSE 3
+አቤቱ አባት ላንድ ልጁ አንደሚራራለት
+በቁጣህ አትቅሰፈኝ በደሌን በማየት
+አቤቱ ውለታህ ምን ያህል ጌታ የአንተ ፍቅር
+ምን ይከፈለዋል ሲያጠፋ ለሚምር
+
+VERSE 4
+አቤቱ ቁስሌን አጥበህልኝ ማቄን ለቀየርከው
+ተአምርህን እኔ ዘርዝሬም አልዘልቀው
+አቤቱ ኃያል ነህ ገናና አማካሪም የለህ
+ፍርድህ ሚዛናዊ የእውነት አባት ነህ
+
+VERSE 5
+አቤቱ የተዋረደውን አንተ ታከብራለህ
+መልክና ቁመና መች ትመዝናለህ
+479. ላይቀር መሞት', 'keraሣchn ፀgur andituan xqitun ሣnawq
+yeagnas tegbar honual lehulum derso
+meceneq/2/
+478. abietu lnberkek
+
+VERSE 1
+abietu lnberkek lmar
+hgn astemregn wedqi endaqer/2/
+abietu lememar sfelg dejehn sxena
+temeles ylegnal yeሥga fetena
+
+VERSE 2
+abietu belbie arsha lay yezeraኸwn qal
+diyablos wef hono kelbie yleqmal
+abietu yhnnm yann hulun neger smegn
+kebieth endalrq qalh ymelsegn
+
+VERSE 3
+abietu abat land lju andemiraralet
+bequxah atqsefegn bedelien bemayet
+abietu wletah mn yahl gieta yeante fqr
+mn ykefelewal siyaxefa lemimr
+
+VERSE 4
+abietu quslien axbehlgn maqien leqeyerkew
+teamrhn enie zerzriem alzelqew
+abietu ኃyal neh genana amakarim yeleh
+frdh mizanawi yeewnet abat neh
+
+VERSE 5
+abietu yetewaredewn ante takebraleh
+melkna qumena mech tmeznaleh
+479. layqer memot', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=HlJlC4v_pRo', 'draft', 'pending', 'https://www.youtube.com/watch?v=HlJlC4v_pRo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yefexariwn-sm-bekentu-yemayxera', 'የፈጣሪውን ስም በከንቱ የማይጠራ', 'የፈጣሪውን ስም በከንቱ የማይጠራ', 'yefexariwn sm bekentu yemayxera', 'Ethiopian Orthodox Tewahedo Mezmur - የፈጣሪውን ስም በከንቱ የማይጠራ', 'ይጎበኛል በምድር ከሰማዩ ስፍራ
+በቀኝ ይቀመጣል ከቅዱሳን ጋራ', 'ygobegnal bemdr kesemayu sfra
+beqegn yqemexal keqdusan gara', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=MPjObd1Fbrw', 'draft', 'pending', 'https://www.youtube.com/watch?v=MPjObd1Fbrw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('yefexariwn-sm-bekentu-yemayxera', 'prayer', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bezih-bcha-aybeqam-terguami-yashawal-2', 'በዚህ ብቻ አይበቃም ተርጓሚ ያሻዋል/2/', 'በዚህ ብቻ አይበቃም ተርጓሚ ያሻዋል/2/', 'bezih bcha aybeqam terguami yashawal/2/', 'Ethiopian Orthodox Tewahedo Mezmur - በዚህ ብቻ አይበቃም ተርጓሚ ያሻዋል/2/', 'አንደፈቃዳችን ብንተረጉመው/2/
+በውጥን የሚልቀው ስህተቱ ብዙ ነው/2/
+ከቶ በሰው ፈቃድ ትንቢት እንዳልመጣ /2/
+ይነግረናል መጽሐፍ ከሕግ እንዳንወጣ
+
+VERSE 1
+ይመክረናል መጽሐፍ ከሕግ እንዳንወጣ
+እንጠይቅ መምህራን ያሉት በደረጃ /2/
+አናንብብ መጽሐፍት ይሁኑን ማስረጃ/2/', 'andefeqadachn bnteregumew/2/
+bewxn yemilqew shtetu bzu new/2/
+keto besew feqad tnbit endalmexa /2/
+ynegrenal metsሐf keሕg endanwexa
+
+VERSE 1
+ymekrenal metsሐf keሕg endanwexa
+enxeyq memhran yalut bedereja /2/
+ananbb metsሐft yhunun masreja/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=LtuFD21eVNI', 'draft', 'pending', 'https://www.youtube.com/watch?v=LtuFD21eVNI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qdst-anatachn-bietekrstiyan', 'ቅድስት አናታችን ቤተክርስቲያን', 'ቅድስት አናታችን ቤተክርስቲያን', 'qdst anatachn bietekrstiyan', 'Ethiopian Orthodox Tewahedo Mezmur - ቅድስት አናታችን ቤተክርስቲያን', 'ትመግበናለች ሥጋና ደሙን
+የአማኑኤል ሥጋ ይኸው ተዘጋጀ
+ለግብዣ ተጠራን አዋጁ ታወጀ', 'tmegbenalech ሥgana demun
+yeamanuiel ሥga yኸw tezegaje
+legbzha texeran awaju taweje', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=68MqVrVrrME', 'draft', 'pending', 'https://www.youtube.com/watch?v=68MqVrVrrME', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lem-teygn-nqie-tchieshalehu', 'ዓለም ተይኝ ንቄ ትቼሻለሁ', 'ዓለም ተይኝ ንቄ ትቼሻለሁ', 'ዓlem teygn nqie tchieshalehu', 'Ethiopian Orthodox Tewahedo Mezmur - ዓለም ተይኝ ንቄ ትቼሻለሁ', 'ጥበበኛው ሰይጣን በመጣው ቢመጣ
+ዳግም ተመልሼ ከአእቅፍህ ላልወጣ
+በመስቀሉ ግርጌ አርፌ አኖራለሁ
+ዓለም ተይኝ የእግዚአብሔር ሆኛለው', 'xbebegnaw seyxan bemexaw bimexa
+dagm temelshie keaeqfh lalwexa
+bemesqelu grgie arfie anoralehu
+ዓlem teygn yeegziabሔr hognalew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=9gUUKGnW10g', 'draft', 'pending', 'https://www.youtube.com/watch?v=9gUUKGnW10g', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('leenie-endew-desta-new-zenm-yelegn', 'ለእኔ እንደው ደስታ ነው ሐዘንም የለኝ', 'ለእኔ እንደው ደስታ ነው ሐዘንም የለኝ', 'leenie endew desta new ሐzenm yelegn', 'Ethiopian Orthodox Tewahedo Mezmur - ለእኔ እንደው ደስታ ነው ሐዘንም የለኝ', 'ሰይጣን እፈር የክርስቶስ ነኝ', 'seyxan efer yekrstos negn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=U2v9nGffhuE', 'draft', 'pending', 'https://www.youtube.com/watch?v=U2v9nGffhuE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yetal-anuanuarie-anten-yemimeslew-2', 'የታል አኗኗሬ አንተን የሚመስለው/2/', 'የታል አኗኗሬ አንተን የሚመስለው/2/', 'yetal anuanuarie anten yemimeslew/2/', 'Ethiopian Orthodox Tewahedo Mezmur - የታል አኗኗሬ አንተን የሚመስለው/2/', 'በልማድ ሕይወት ነው የምመላለሰው/2/', 'belmad ሕywet new yemmelalesew/2/', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=-ylfq3g_zM8', 'draft', 'pending', 'https://www.youtube.com/watch?v=-ylfq3g_zM8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yh-andebetiema-beqalh-lxnual-ri2', 'ይህ አንደበቴማ በቃልህ ሠልጥኗል/ሪ2/', 'ይህ አንደበቴማ በቃልህ ሠልጥኗል/ሪ2/', 'yh andebetiema beqalh ሠlxnual/ri2/', 'Ethiopian Orthodox Tewahedo Mezmur - ይህ አንደበቴማ በቃልህ ሠልጥኗል/ሪ2/', 'ልቦናዬ ካንተ ከፊትህ ኮብልሏል/2/', 'lbonayie kante kefith kobllual/2/', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=RmWOCWLUfW8', 'draft', 'pending', 'https://www.youtube.com/watch?v=RmWOCWLUfW8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('hlmm-honobgnal-yesew-hulu-tesfa', 'ህልምም ሆኖብኛል የሰው ሁሉ ተስፋ', 'ህልምም ሆኖብኛል የሰው ሁሉ ተስፋ', 'hlmm honobgnal yesew hulu tesfa', 'Ethiopian Orthodox Tewahedo Mezmur - ህልምም ሆኖብኛል የሰው ሁሉ ተስፋ', 'ቃልህን የማታጥፍ አንተ ከእኔ አትጥፋ /2/
+496. እግዚአብሔር መልካም ነው
+እግዚአብሔር መልካም ነው
+በመከራ ቀንም መሸሸጊያ ነው/2/
+
+VERSE 1
+ከገነት ሲሰደድ አዳም አባታችን
+ሞት ነግሶብን ሳለ በእኛ በሁላችን
+ቃል እንደገባለት ተወልዶ ሊያድነው
+በመከራ ጊዜ መሸሸጊያ ሆነው/2/', 'qalhn yemataxf ante keenie atxfa /2/
+496. egziabሔr melkam new
+egziabሔr melkam new
+bemekera qenm mesheshegiya new/2/
+
+VERSE 1
+kegenet siseded adam abatachn
+mot negsobn sale beegna behulachn
+qal endegebalet teweldo liyadnew
+bemekera gizie mesheshegiya honew/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5wwpR9pYMVI', 'draft', 'pending', 'https://www.youtube.com/watch?v=5wwpR9pYMVI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('be-zen-bechgr-bemekera-gizie', 'በሐዘን በችግር በመከራ ጊዜ', 'በሐዘን በችግር በመከራ ጊዜ', 'beሐzen bechgr bemekera gizie', 'Ethiopian Orthodox Tewahedo Mezmur - በሐዘን በችግር በመከራ ጊዜ', 'ጭንቀቴን የሚያርቅ ነው የፍሴን ትካዜ
+የቀደመው አባብ ሰላሜን ሲነሳኝ
+እግዚአብሔር መልካም ነው ሐዘኔን
+አስረሳኝ
+
+VERSE 1
+የቀደመው አባብ ሰላሜን ቢነሳኝ
+ክርስቶስ ኢየሱስ ሐዘኔን አስረሳኝ
+497. አታውኪኝ ነፍሴ
+አታውኪኝ ነፍሴ አታስጨንቂኝ /2/
+
+VERSE 2
+በዓለም መድኃኒት በእግዚአብሔር ታመኘፒ/2/
+ዋልያ እንደሚናፍቅ ወደ ውኃ ምንጮች/2/
+ጌታዬን ለማየት ነፍሴ ናፈቀች/2/
+የሕይወትን ውኃ እያስታወሰችኝ /2/
+
+VERSE 3
+ወደሕያው አምላክ ነፍሴ ተጠማቸ/2/', 'cnqetien yemiyarq new yefsien tkazie
+yeqedemew abab selamien sinesagn
+egziabሔr melkam new ሐzenien
+asresagn
+
+VERSE 1
+yeqedemew abab selamien binesagn
+krstos iyesus ሐzenien asresagn
+497. atawkign nefsie
+atawkign nefsie atascenqign /2/
+
+VERSE 2
+beዓlem medኃnit beegziabሔr tamegnepi/2/
+walya endeminafq wede wኃ mncoch/2/
+gietayien lemayet nefsie nafeqech/2/
+yeሕywetn wኃ eyastawesechgn /2/
+
+VERSE 3
+wedeሕyaw amlak nefsie texemache/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=rYtejH_DrnY', 'draft', 'pending', 'https://www.youtube.com/watch?v=rYtejH_DrnY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('fqrna-selamn-taferalech-tsom-2', 'ፍቅርና ሰላምን ታፈራለች ጾም /2/', 'ፍቅርና ሰላምን ታፈራለች ጾም /2/', 'fqrna selamn taferalech tsom /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ፍቅርና ሰላምን ታፈራለች ጾም /2/', 'ፍቅርና ሰላምን ታፈራለች ጾም /2/', 'fqrna selamn taferalech tsom /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=w7kLUb9ZTNw', 'draft', 'pending', 'https://www.youtube.com/watch?v=w7kLUb9ZTNw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('o-nts-t-des-ybelsh', 'ኦ ንጽሕት ደስ ይበልሽ', 'ኦ ንጽሕት ደስ ይበልሽ', 'o ntsሕt des ybelsh', 'Ethiopian Orthodox Tewahedo Mezmur - ኦ ንጽሕት ደስ ይበልሽ', 'ኦ ንጽሕት ደስ ይበልሽ
+ከፍጡራን ሁሉ በላይ ስለሆንሽ
+ኦ ንጽሕት ደስ ይበልሽ
+ኦ ንጽሕት ደስ ይበልሽ', 'o ntsሕt des ybelsh
+kefxuran hulu belay slehonsh
+o ntsሕt des ybelsh
+o ntsሕt des ybelsh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=PFI3VXdZOho', 'draft', 'pending', 'https://www.youtube.com/watch?v=PFI3VXdZOho', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kesietoch-hulu-lyu-nat-eyaln', 'ከሴቶች ሁሉ ልዩ ናት እያልን', 'ከሴቶች ሁሉ ልዩ ናት እያልን', 'kesietoch hulu lyu nat eyaln', 'Ethiopian Orthodox Tewahedo Mezmur - ከሴቶች ሁሉ ልዩ ናት እያልን', 'በሁለቱም ወገን በፍጹም ድንግል
+የብርሃን አናቱ ማርያም ስትባል
+በደካሞች ዘንድ ምነው ተዘነጋች
+አዳ አለብን/2/ ከፈጣሪያችን/2/
+
+VERSE 1
+ቃና ዘገሊላ ከልጅዋ ጋር ሳለች
+ከሠርግ ቤት ገብታ ድንግል አማልዳለች
+አንኳንስ አመአምላክ ቤዛዊተ ኩሉ
+ጻድቃን ሰማዕታት በአውነት ያማልዳሉ
+
+VERSE 2
+አዳ አለብን/2/ ከፈጣሪያችን/2/
+505. ከፈጣሪ በታች
+ከፈጣሪ በታች ከፍጡራን በላይ/2/
+ማን አለ እንዳንቺ ድንግል ንፁህ በአለም ላይ /2/
+
+VERSE 3
+ኦ ድንግል ማርያም ዘላለም''2/
+መኩሪያ ነሽ መመኪያ
+አምላክ ለማደሪያ መርጦ ያዘጋጀሽ/2/
+ጽዮን የተባለች ሀገር ድንግል ሆይ አንቺው
+
+VERSE 4
+ነሽ/2/
+በሐሳብሽ ድንግል ድንግል በስጋሽ/2/
+ከፍጥረታት ሁሉ ላንቺ ምሣሌም የለሽ/2/
+ፍቅሩ ለዘላለም የማይጠገበው/2/
+
+VERSE 5
+ከስም ሁሉ በላይ ጣፋጭ ድንግል የአንቺ ስም
+ነው/2/
+በአዝራ መሰንቆ በዳዊት በገና''2/
+ይገባሻል ላንቺ ድንግል ሁልጊዜ ምስጋና', 'behuletum wegen beftsum dngl
+yebrሃn anatu maryam stbal
+bedekamoch zend mnew tezenegach
+ada alebn/2/ kefexariyachn/2/
+
+VERSE 1
+qana zegelila keljwa gar salech
+keሠrg biet gebta dngl amaldalech
+ankuans ameamlak biezawite kulu
+tsadqan semaዕtat beawnet yamaldalu
+
+VERSE 2
+ada alebn/2/ kefexariyachn/2/
+505. kefexari betach
+kefexari betach kefxuran belay/2/
+man ale endanchi dngl nፁh bealem lay /2/
+
+VERSE 3
+o dngl maryam zelalem''2/
+mekuriya nesh memekiya
+amlak lemaderiya merxo yazegajesh/2/
+tsyon yetebalech hager dngl hoy anchiw
+
+VERSE 4
+nesh/2/
+beሐsabsh dngl dngl besgash/2/
+kefxretat hulu lanchi mሣliem yelesh/2/
+fqru lezelalem yemayxegebew/2/
+
+VERSE 5
+kesm hulu belay xafac dngl yeanchi sm
+new/2/
+beazra mesenqo bedawit begena''2/
+ygebashal lanchi dngl hulgizie msgana', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Ok6RwjaA3us', 'draft', 'pending', 'https://www.youtube.com/watch?v=Ok6RwjaA3us', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('nefsie-gietayien-takebrewalech', 'ነፍሴ ጌታዬን ታከብረዋለች', 'ነፍሴ ጌታዬን ታከብረዋለች', 'nefsie gietayien takebrewalech', 'Ethiopian Orthodox Tewahedo Mezmur - ነፍሴ ጌታዬን ታከብረዋለች', 'ነፍሴ ጌታዬን ታከብረዋለች', 'nefsie gietayien takebrewalech', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=zpjhKZwukZI', 'draft', 'pending', 'https://www.youtube.com/watch?v=zpjhKZwukZI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('menfesiem-beamlakie-siet-tadergalech', 'መንፈሴም በአምላኬ ሐሴት ታደርጋለች', 'መንፈሴም በአምላኬ ሐሴት ታደርጋለች', 'menfesiem beamlakie ሐsiet tadergalech', 'Ethiopian Orthodox Tewahedo Mezmur - መንፈሴም በአምላኬ ሐሴት ታደርጋለች', 'መንፈሴም በአምላኬ ሐሴት ታደርጋለች
+የእኔን የባሪያውን ትኅትና
+የአስራኤል አምላክ ተመልክቷልና/2/
+ትውልድ ሁሉ ብፅዕት ይሉኛል
+
+VERSE 1
+አርሱ ታላቅ ሥራ አድርጎልኛል
+ስሙም ቅዱስ ነው ምሕረቱም
+ለትውልድ ትውልድ ለዘለዓለም/2/', 'menfesiem beamlakie ሐsiet tadergalech
+yeenien yebariyawn tኅtna
+yeasraiel amlak temelktualna/2/
+twld hulu bፅዕt ylugnal
+
+VERSE 1
+arsu talaq ሥra adrgolgnal
+smum qdus new mሕretum
+letwld twld lezeleዓlem/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=V4Wo-hDM2nQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=V4Wo-hDM2nQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yl-adrgual-gieta-bekndu', 'ኃይል አድርጓል ጌታ በክንዱ', 'ኃይል አድርጓል ጌታ በክንዱ', 'ኃyl adrgual gieta bekndu', 'Ethiopian Orthodox Tewahedo Mezmur - ኃይል አድርጓል ጌታ በክንዱ', 'ትፅቢተኞች ተዋረዱ
+ገዢዎች ከዙፋን ስለተጣሉ
+ትሁታን ደግሞ ከፍ ከፍ አሉ /2/
+ባለጠጐች ሲጠሙ ሲራቡ
+
+VERSE 1
+ድሆች በምሕረት ጥቂት ጠገቡ
+ለአባቶቻችን እንደማለ
+ምሕረቱን አስቦ እኛን ተቀበለ /2/', 'tፅbitegnoch tewaredu
+gezhiwoch kezufan sletexalu
+thutan degmo kef kef alu /2/
+balexeጐch sixemu sirabu
+
+VERSE 1
+dhoch bemሕret xqit xegebu
+leabatochachn endemale
+mሕretun asbo egnan teqebele /2/', 'amharic', 'mezmur', 'ዘማሪ ገብረዮሐንስ ገብረፃድቅ', 'https://www.youtube.com/watch?v=VXfKmVH7oaI', 'draft', 'pending', 'https://www.youtube.com/watch?v=VXfKmVH7oaI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lexelat-kndu-brtu-yal-new', 'ለጠላት ክንዱ ብርቱ ኃያል ነው', 'ለጠላት ክንዱ ብርቱ ኃያል ነው', 'lexelat kndu brtu ኃyal new', 'Ethiopian Orthodox Tewahedo Mezmur - ለጠላት ክንዱ ብርቱ ኃያል ነው', 'ሕዝቡን ሲመግብ አዱ ሰፊ ነው
+የማያልቅበት ቸር እረኛ ነው
+ሰማይና ምድርን የፈጠረ
+ክዋክብትን በሕም. ያረ', 'ሕzbun simegb adu sefi new
+yemayalqbet cher eregna new
+semayna mdrn yefexere
+kwakbtn beሕm. yare', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=6prIrn7v6RE', 'draft', 'pending', 'https://www.youtube.com/watch?v=6prIrn7v6RE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('man-new-ersu', 'ማን ነው እርሱ', 'ማን ነው እርሱ', 'man new ersu', 'Ethiopian Orthodox Tewahedo Mezmur - ማን ነው እርሱ', 'ማን ነው እርሱ
+በፍትሕ በእውነት ለጽድቅ የሚፈርድ
+ማን ነው እርሱ
+ማን ነው እርሱ
+
+VERSE 1
+ማን ነው እርሱ
+ማን ነው እርሱ
+ማን ነው እርሱ
+ማን ነው እርሱ', 'man new ersu
+beftሕ beewnet letsdq yemiferd
+man new ersu
+man new ersu
+
+VERSE 1
+man new ersu
+man new ersu
+man new ersu
+man new ersu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3reXonPrPMs', 'draft', 'pending', 'https://www.youtube.com/watch?v=3reXonPrPMs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('wendm-wendmun-eyekesese-lefrd-aqumo', 'ወንድም ወንድሙን እየከሰሰ ለፍርድ አቁሞ', 'ወንድም ወንድሙን እየከሰሰ ለፍርድ አቁሞ', 'wendm wendmun eyekesese lefrd aqumo', 'Ethiopian Orthodox Tewahedo Mezmur - ወንድም ወንድሙን እየከሰሰ ለፍርድ አቁሞ', 'አሕዛብ ያያል በንትርኩ እጅግ ተገርሞ', 'aሕzab yayal bentrku ejg tegermo', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=0rcmj09Fzn0', 'draft', 'pending', 'https://www.youtube.com/watch?v=0rcmj09Fzn0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tewa-do-aqrbi-leamlak-msgana', 'ተዋሕዶ አቅርቢ ለአምላክ ምስጋና', 'ተዋሕዶ አቅርቢ ለአምላክ ምስጋና', 'tewaሕdo aqrbi leamlak msgana', 'Ethiopian Orthodox Tewahedo Mezmur - ተዋሕዶ አቅርቢ ለአምላክ ምስጋና', 'በዕዝራ መሰንቆ በዳዊት በገና
+ዜማውን ከያሬድ ተምረሻልና', 'beዕzra mesenqo bedawit begena
+ziemawn keyaried temreshalna', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=0W2k0VmaCro', 'draft', 'pending', 'https://www.youtube.com/watch?v=0W2k0VmaCro', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('andih-alew-phiexros-iyesusn', 'አንዲህ አለው ጴጥሮስ ኢየሱስን', 'አንዲህ አለው ጴጥሮስ ኢየሱስን', 'andih alew phiexros iyesusn', 'Ethiopian Orthodox Tewahedo Mezmur - አንዲህ አለው ጴጥሮስ ኢየሱስን', 'ምሥጢር ገህድ ሲሆን በዚያ በተራራ
+ባንድ ላይ አንኑር ሦስት ዳስ አንስራ
+አንዲህ አለው ጴጥሮስ ኢየሱስን
+አንዲህ አለው ጴጥሮስ ኢየሱስን', 'mሥxir gehd sihon beziya beterara
+band lay annur ሦst das ansra
+andih alew phiexros iyesusn
+andih alew phiexros iyesusn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=N0BnUvaRuHI', 'draft', 'pending', 'https://www.youtube.com/watch?v=N0BnUvaRuHI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('werdo-kelelachew-demena-tse-da', 'ወርዶ ከለላቸው ደመና ጸዓዳ', 'ወርዶ ከለላቸው ደመና ጸዓዳ', 'werdo kelelachew demena tseዓda', 'Ethiopian Orthodox Tewahedo Mezmur - ወርዶ ከለላቸው ደመና ጸዓዳ', 'ወርዶ ከለላቸው ደመና ጸዓዳ
+ወርዶ ከለላቸው ደመና ጸዓዳ', 'werdo kelelachew demena tseዓda
+werdo kelelachew demena tseዓda', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=FkO7jeIuggw', 'draft', 'pending', 'https://www.youtube.com/watch?v=FkO7jeIuggw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('werdo-kelelachew-demena-tse-da', 'apostles', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amlakachn-qdus-new', 'አምላካችን ቅዱስ ነው', 'አምላካችን ቅዱስ ነው', 'amlakachn qdus new', 'Ethiopian Orthodox Tewahedo Mezmur - አምላካችን ቅዱስ ነው', 'አምላካችን ቅዱስ ነህ
+ፊጣሪያችን ቡሩክ ነህ
+የዘለዓለም አምላክ ነህ/2/', 'amlakachn qdus neh
+fixariyachn buruk neh
+yezeleዓlem amlak neh/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=6kCgcq7_FQ0', 'draft', 'pending', 'https://www.youtube.com/watch?v=6kCgcq7_FQ0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('asteraye-gebriel-gbte', 'አስተርአየ ገብርኤል ግብተ', 'አስተርአየ ገብርኤል ግብተ', 'asteraye gebriel gbte', 'Ethiopian Orthodox Tewahedo Mezmur - አስተርአየ ገብርኤል ግብተ', 'ወእንዘ ትፈትል /ቴ/ ወርቀ ወሜላት', 'weenze tfetl /tie/ werqe wemielat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=PCchxvSlIkA', 'draft', 'pending', 'https://www.youtube.com/watch?v=PCchxvSlIkA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('meng-te-semay-meng-te-semay-nefsie-hoy', 'መንግሥተ ሰማይ መንግሥተ ሰማይ ነፍሴ ሆይ', 'መንግሥተ ሰማይ መንግሥተ ሰማይ ነፍሴ ሆይ', 'mengሥte semay mengሥte semay nefsie hoy', 'Ethiopian Orthodox Tewahedo Mezmur - መንግሥተ ሰማይ መንግሥተ ሰማይ ነፍሴ ሆይ', '535... እግዚአብሔርን ጥራው
+አግዚአብሔርን ጥራው በመከራ ጊዜ
+ያድንፃልና ከሐዘን ከትካዜ
+ጋሻና ጦሬ ብለህ ምርኩዜ
+
+VERSE 1
+አመስግንህ ዘንድ አነሣለሁ በአኩለ ሌሊት
+አንዳመሰገነህ ነብዩ ዳዊት
+በንጹሕ ልቡና እንደ መላእክት
+አግዚአብሔርን ጥራው
+
+VERSE 2
+በቅድስናው ሥፍራ ለእግዚአብሔር ስገዱ
+አርስ በርሳችሁም ተዋደዱ
+ጸብና ክርክር እንዲወገዱ
+አግዚአብሔርን ጥራው
+
+VERSE 3
+አምነትን ከሥራ አስተባብረህ ከልብ
+በወጣትነህ ፈጣሪህን አስብ
+ሥራህም በሰው ፊት ይብራ
+አንደ ፀሐይ ይብራ እንደ ኮከብ
+
+VERSE 4
+አግዚአብሔርን ጥራው
+በቤተ ክርስቲያን ጸሎት በድንግል ኪዳን
+አቤቱ ጠብቃት ኢትዮጵያን
+ለሕዝቧም ስጣቸው ፍቅር አንድነትን
+
+VERSE 5
+አግዚአብሔርን ጥራው
+አለምንሃለሁ አምላኬ ሆይ አንዲት ነገር
+ከቤትህ ገብቼ በደስታ አንድኖር
+ከባለሟሎችህ ከአብርፃም ከይስሐቅ
+
+VERSE 6
+ከያዕቆብ ጋር
+አግዚአብሔርን ጥራው
+ደርሶልኛልና በመከራ ቀን
+አከብረዋለሁኝ ቅዱስ አምላኬን
+
+VERSE 7
+አጆቼንም ይዞ የሚመራኝን
+አግዚአብሔርን ጥራው
+ኑሮዬ ሲጨልም ግራ ሲገባኝ
+ያለ ፈጣሪዬ ዘመድም የለኝ
+
+VERSE 8
+ብወድቅ የሚያነሳኝ የሚደግፈኝ
+536. አምላክ ሆይ
+አምላክ ሆይ አደራ ያን ጊዜ እንድትራራ
+አምላክ ሆይ አደራ ስለአኛ አንድትራሪ', '535... egziabሔrn xraw
+agziabሔrn xraw bemekera gizie
+yadnፃlna keሐzen ketkazie
+gashana xorie bleh mrkuzie
+
+VERSE 1
+amesgnh zend aneሣlehu beakule lielit
+andamesegeneh nebyu dawit
+bentsuሕ lbuna ende melaekt
+agziabሔrn xraw
+
+VERSE 2
+beqdsnaw ሥfra leegziabሔr sgedu
+ars bersachhum tewadedu
+tsebna krkr endiwegedu
+agziabሔrn xraw
+
+VERSE 3
+amnetn keሥra astebabreh kelb
+bewexatneh fexarihn asb
+ሥrahm besew fit ybra
+ande ፀሐy ybra ende kokeb
+
+VERSE 4
+agziabሔrn xraw
+bebiete krstiyan tselot bedngl kidan
+abietu xebqat ityophyan
+leሕzbuam sxachew fqr andnetn
+
+VERSE 5
+agziabሔrn xraw
+alemnሃlehu amlakie hoy andit neger
+kebieth gebchie bedesta andnor
+kebalemualochh keabrፃm keysሐq
+
+VERSE 6
+keyaዕqob gar
+agziabሔrn xraw
+dersolgnalna bemekera qen
+akebrewalehugn qdus amlakien
+
+VERSE 7
+ajochienm yzo yemimeragnn
+agziabሔrn xraw
+nuroyie sicelm gra sigebagn
+yale fexariyie zemedm yelegn
+
+VERSE 8
+bwedq yemiyanesagn yemidegfegn
+536. amlak hoy
+amlak hoy adera yan gizie endtrara
+amlak hoy adera sleagna andtrari', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=c5GsBiPbiss', 'draft', 'pending', 'https://www.youtube.com/watch?v=c5GsBiPbiss', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('endalmeles-wedehuala', 'እንዳልመለስ ወደኋላ', 'እንዳልመለስ ወደኋላ', 'endalmeles wedehuala', 'Ethiopian Orthodox Tewahedo Mezmur - እንዳልመለስ ወደኋላ', 'የኃጢአትን ፍሬ አንዳልበላ
+ጠብቀኝ እንጂ በኃይልህ
+አንዳልወድቅብህ ልጅህ
+ኃጢአቴን አጥበህ አሣርፈኝ
+
+VERSE 1
+አምላኬ አንተነህ ሌላም የለኝ
+አኔነቴን ሳስብ አሳዘነኝ
+ልኑር ከአንተጋር አዘንልኝ
+539... ተይ ተመከሪ
+
+VERSE 2
+ተይ ተመከሪ ነፍሴ ሆይ ተይ ተመክከሪ /2/
+በዓለም መድኃኒት ነፍሴ ሆይ
+በአግዚአብሔር ታመፒ
+ለሥጋ መገዛት ነፍሴ ሆይ
+
+VERSE 3
+ምንው ቢቀርብሽሸ
+ውርደት ነው ፍጻሜው " "
+የሚያከናንብሽ
+መልካም የሆነውን " "
+
+VERSE 4
+ጽድቁን ተከተይ
+ክርስቶስን መስለሽ " "
+ቸርነትን ሥሪ /2/
+ሞትን ማን ይመርጣል ነፍሴ ሆይ
+
+VERSE 5
+ሕይወትን በመጥላት
+ከእንግዲህ መራቅ ነው " "
+ከስርቆት ከዝሙት
+ጸጋ አንዲበዛልሽ " "
+
+VERSE 6
+የቃሉ በረከት
+ከቤቱ አትጥፊ " "
+ፍቅር ከሞላበት /2/
+ለአንቺ ነበር ጌታ ነፍሴ ሆይ
+
+VERSE 7
+ደሙን ያፈሰሰው
+ተሰቅሎ ሞቶ ነው " "
+ፍቅሩን የገለጸው
+በፍቅሩ ለሳበኝ " "', 'yeኃxiatn frie andalbela
+xebqegn enji beኃylh
+andalwedqbh ljh
+ኃxiatien axbeh aሣrfegn
+
+VERSE 1
+amlakie anteneh lielam yelegn
+anienetien sasb asazenegn
+lnur keantegar azenlgn
+539... tey temekeri
+
+VERSE 2
+tey temekeri nefsie hoy tey temekkeri /2/
+beዓlem medኃnit nefsie hoy
+beagziabሔr tamepi
+leሥga megezat nefsie hoy
+
+VERSE 3
+mnw biqerbshshe
+wrdet new ftsamiew " "
+yemiyakenanbsh
+melkam yehonewn " "
+
+VERSE 4
+tsdqun teketey
+krstosn meslesh " "
+chernetn ሥri /2/
+motn man ymerxal nefsie hoy
+
+VERSE 5
+ሕywetn bemexlat
+keengdih meraq new " "
+kesrqot kezmut
+tsega andibezalsh " "
+
+VERSE 6
+yeqalu bereket
+kebietu atxfi " "
+fqr kemolabet /2/
+leanchi neber gieta nefsie hoy
+
+VERSE 7
+demun yafesesew
+teseqlo moto new " "
+fqrun yegeletsew
+befqru lesabegn " "', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=HNgs9dLGTbI', 'draft', 'pending', 'https://www.youtube.com/watch?v=HNgs9dLGTbI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gasha-yhonegnal', 'ጋሻ ይሆነኛል', 'ጋሻ ይሆነኛል', 'gasha yhonegnal', 'Ethiopian Orthodox Tewahedo Mezmur - ጋሻ ይሆነኛል', 'ጋሻ ይሆነኛል ገብርኤል ›»› ጠባቂው አባቴ
+አሳተ ነበልባል ገብርኤል›› ኃያል መልአክ ነህ
+ስምህን ሲጠሩ ›ገብርኤል› ፈጥነህ ትደርሳለህ', 'gasha yhonegnal gebriel ›»› xebaqiw abatie
+asate nebelbal gebriel›› ኃyal melak neh
+smhn sixeru ›gebriel› fexneh tdersaleh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=CmC8QApkaUU', 'draft', 'pending', 'https://www.youtube.com/watch?v=CmC8QApkaUU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-maryam-hoy-dreshlgn-2', 'ድንግል ማርያም ሆይ ድረሽልኝ /2/', 'ድንግል ማርያም ሆይ ድረሽልኝ /2/', 'dngl maryam hoy dreshlgn /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል ማርያም ሆይ ድረሽልኝ /2/', 'በዚያች በጠባብ በር ነይ ነይ
+ማንስ ይወስደኛል " "
+ይህ ደካማ ሥጋ " "
+ሰፊውን ይለኛል ነይ ነይ
+
+VERSE 1
+በሰፊውም ሄጄ " "
+አሁን ወድቄያለሁ " "', 'beziyach bexebab ber ney ney
+mans ywesdegnal " "
+yh dekama ሥga " "
+sefiwn ylegnal ney ney
+
+VERSE 1
+besefiwm hejie " "
+ahun wedqieyalehu " "', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=CQhmaYQORt0', 'draft', 'pending', 'https://www.youtube.com/watch?v=CQhmaYQORt0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yemiyashagrewn', 'የሚያሻግረውን " "', 'የሚያሻግረውን " "', 'yemiyashagrewn " "', 'Ethiopian Orthodox Tewahedo Mezmur - የሚያሻግረውን " "', 'ኃጢአትና በደል ነይ ነይ
+በላዬ ላይ ሰፍሮ " "
+ጽድቅን አንዳልሠራ " "
+ይዞኛል ቀስፎ " "
+
+VERSE 1
+ዓለማዊ ነገር " "
+የጠቀመኝ መስሉኝ " "
+በዲያብሎስ ታንቄ ቀረሁ " "
+ከዲያብሎስ ገመድ " "
+
+VERSE 2
+ኸረ አንቺው አውጪኝ " "
+አዛፒት ነሽና " "
+አተትጨክፒብኝ " "', 'ኃxiatna bedel ney ney
+belayie lay sefro " "
+tsdqn andalሠra " "
+yzognal qesfo " "
+
+VERSE 1
+ዓlemawi neger " "
+yexeqemegn meslugn " "
+bediyablos tanqie qerehu " "
+kediyablos gemed " "
+
+VERSE 2
+ኸre anchiw awcign " "
+azapit neshna " "
+atetcekpibgn " "', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=-CaXgCm8rKg', 'draft', 'pending', 'https://www.youtube.com/watch?v=-CaXgCm8rKg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('yemiyashagrewn', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('wedante-emexalehu-adera-nefsien', 'ወዳንተ እመጣለሁ አደራ ነፍሴን', 'ወዳንተ እመጣለሁ አደራ ነፍሴን', 'wedante emexalehu adera nefsien', 'Ethiopian Orthodox Tewahedo Mezmur - ወዳንተ እመጣለሁ አደራ ነፍሴን', 'በሰማያዊ ቤት አኑር ሕይወቴን', 'besemayawi biet anur ሕywetien', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7S3PgjVtkmY', 'draft', 'pending', 'https://www.youtube.com/watch?v=7S3PgjVtkmY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gieta-yalew', 'ጌታ ያለው', 'ጌታ ያለው', 'gieta yalew', 'Ethiopian Orthodox Tewahedo Mezmur - ጌታ ያለው', 'ጌታ ያለው ሁሉም አለው
+የዘለዓለም ሕይወት ባለቤት ነው
+እመኑ በጌታ ይህ ብቻ ይበቃል
+የቀረውን እርሱ በፍቅሩ ይሰጣል', 'gieta yalew hulum alew
+yezeleዓlem ሕywet balebiet new
+emenu begieta yh bcha ybeqal
+yeqerewn ersu befqru ysexal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Uf67chvOJNM', 'draft', 'pending', 'https://www.youtube.com/watch?v=Uf67chvOJNM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('selam-laxu-selam-fqrn-laxu-fqrn', 'ሰላም ላጡ ሰላም ፍቅርን ላጡ ፍቅርን', 'ሰላም ላጡ ሰላም ፍቅርን ላጡ ፍቅርን', 'selam laxu selam fqrn laxu fqrn', 'Ethiopian Orthodox Tewahedo Mezmur - ሰላም ላጡ ሰላም ፍቅርን ላጡ ፍቅርን', 'ለታረዙት ልብስን ለተራቡት እንጀራን
+ለተጠሙት ውኃን ለታመሙት ፈውሰን
+ተስፋ ላጡ ተስፋን ለደካሞች ኃይልን፡፡', 'letarezut lbsn leterabut enjeran
+letexemut wኃn letamemut fewsen
+tesfa laxu tesfan ledekamoch ኃyln፡፡', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=uZwTNuZrSzo', 'draft', 'pending', 'https://www.youtube.com/watch?v=uZwTNuZrSzo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yemnmekabsh-meselal-anchi-nesh-2', 'የምንመካብሽ መሰላል አንቺ ነሽ /2/', 'የምንመካብሽ መሰላል አንቺ ነሽ /2/', 'yemnmekabsh meselal anchi nesh /2/', 'Ethiopian Orthodox Tewahedo Mezmur - የምንመካብሽ መሰላል አንቺ ነሽ /2/', 'ቅድስና ላንቺ ጽድቅም ላንቺ ሆኖ
+ዓለምን የፈጠረ በአንቺ ተወስኖ
+የገነት ፍሬ ነሽ ሕይወትን ያፈራሽ
+አንቺን ለመረጠ አንቺን ላነጻሽ
+
+VERSE 1
+ምስጋና ይድረሰው ለቸሩ አምላክሽ /2/', 'qdsna lanchi tsdqm lanchi hono
+ዓlemn yefexere beanchi tewesno
+yegenet frie nesh ሕywetn yaferash
+anchin lemerexe anchin lanetsash
+
+VERSE 1
+msgana ydresew lecheru amlaksh /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=n_aRltG-c6M', 'draft', 'pending', 'https://www.youtube.com/watch?v=n_aRltG-c6M', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('yemnmekabsh-meselal-anchi-nesh-2', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amlakie-sileyegn-ysemagnal', 'አምላኬ ሲለየኝ ይሰማኛል', 'አምላኬ ሲለየኝ ይሰማኛል', 'amlakie sileyegn ysemagnal', 'Ethiopian Orthodox Tewahedo Mezmur - አምላኬ ሲለየኝ ይሰማኛል', 'አምላኬ ሲለየኝ ይሰማኛል', 'amlakie sileyegn ysemagnal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=fSfhM3MgsLc', 'draft', 'pending', 'https://www.youtube.com/watch?v=fSfhM3MgsLc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('be-xiat-bemenor-bezih-lem', 'በኃጢአት በመኖር በዚህ ዓለም', 'በኃጢአት በመኖር በዚህ ዓለም', 'beኃxiat bemenor bezih ዓlem', 'Ethiopian Orthodox Tewahedo Mezmur - በኃጢአት በመኖር በዚህ ዓለም', 'የአምላክን ትዕዛዝ በማጣመም
+በስርቆት በዝሙት በሰካር
+በዲያብሎስ ፈቃድ ስንኖር
+የኋላ የኋላ ውድቀት ነው
+
+VERSE 1
+አምላክ በክንዶቹ ያልያዘው
+የጨለማ ጉዞ ምን ይጥማል
+ዓይን እያሳወረ ያዋርዳል', 'yeamlakn tዕzaz bemaxamem
+besrqot bezmut besekar
+bediyablos feqad snnor
+yehuala yehuala wdqet new
+
+VERSE 1
+amlak bekndochu yalyazew
+yecelema guzo mn yxmal
+ዓyn eyasawere yawardal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=PNtVPK4pPNA', 'draft', 'pending', 'https://www.youtube.com/watch?v=PNtVPK4pPNA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('be-xiat-bemenor-bezih-lem', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yezemenu-xa-t-genzeb-eyasaten', 'የዘመኑ ጣዖት ገንዘብ እያሳተን', 'የዘመኑ ጣዖት ገንዘብ እያሳተን', 'yezemenu xaዖt genzeb eyasaten', 'Ethiopian Orthodox Tewahedo Mezmur - የዘመኑ ጣዖት ገንዘብ እያሳተን', 'ይህ ደካማ ሥጋ አምላክን አስተወን
+ግብዝነት ሞልቶት ፈራሹ አካል
+በነፍስ በሽታ ሕዝባችን ታሟል/2/', 'yh dekama ሥga amlakn astewen
+gbznet moltot ferashu akal
+benefs beshta ሕzbachn tamual/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=KkRXLgPbswk', 'draft', 'pending', 'https://www.youtube.com/watch?v=KkRXLgPbswk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('knfachn-temetto-mebrer-aqtonal', 'ክንፋችን ተመትቶ መብረር አቅቶናል', 'ክንፋችን ተመትቶ መብረር አቅቶናል', 'knfachn temetto mebrer aqtonal', 'Ethiopian Orthodox Tewahedo Mezmur - ክንፋችን ተመትቶ መብረር አቅቶናል', 'በመንፈስ በሽታ ሕዝባችን ታውኳል
+ምግባር የጐጉደለን ተራ ሰው ስለሆን
+እባክህ ጌታችን በፍጥነት ታረቀን /2/', 'bemenfes beshta ሕzbachn tawkual
+mgbar yeጐgudelen tera sew slehon
+ebakh gietachn befxnet tareqen /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1pD_-YGvUhQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=1pD_-YGvUhQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('zbhn-bark-lezelalem-xebqachew-2', 'ሕዝብህን ባርክ ለዘላለም ጠብቃቸው /2/', 'ሕዝብህን ባርክ ለዘላለም ጠብቃቸው /2/', 'ሕzbhn bark lezelalem xebqachew /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሕዝብህን ባርክ ለዘላለም ጠብቃቸው /2/', 'በፍቅርህም ከፍ አድርጋቸው /3/', 'befqrhm kef adrgachew /3/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ku8JzJM3m1U', 'draft', 'pending', 'https://www.youtube.com/watch?v=ku8JzJM3m1U', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('egziab-r-lyu-new', 'እግዚአብሔር ልዩ ነው', 'እግዚአብሔር ልዩ ነው', 'egziabሔr lyu new', 'Ethiopian Orthodox Tewahedo Mezmur - እግዚአብሔር ልዩ ነው', 'እግዚአብሔር ልዩ ነው ኃያል አምላካችን ልዩ ነው /3/
+ሞትን ድል የነሳው ልዩ ነው /2/
+ከክብርና ሞገስ ሞልቶ የተረፈው ልዩ ነው
+ብርሃንን እንደ ልብስ የተጐናፀፈው ልዩ ነው
+
+VERSE 1
+በትዕዛዝ ብቻ ዓለምን ያቆመው ልዩ ነው
+እኛን የተቤዣ በእውነት ልዩ ነው /2/', 'egziabሔr lyu new ኃyal amlakachn lyu new /3/
+motn dl yenesaw lyu new /2/
+kekbrna moges molto yeterefew lyu new
+brሃnn ende lbs yeteጐnaፀfew lyu new
+
+VERSE 1
+betዕzaz bcha ዓlemn yaqomew lyu new
+egnan yetebiezha beewnet lyu new /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=fcYpMuLWzOU', 'draft', 'pending', 'https://www.youtube.com/watch?v=fcYpMuLWzOU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('esey-esey', 'እሰይ እሰይ', 'እሰይ እሰይ', 'esey esey', 'Ethiopian Orthodox Tewahedo Mezmur - እሰይ እሰይ', 'እስቲ እሰይ እሰይ እሰይ እሰይ
+አምላክ ከእኔ ጋር ነው እሰይ እሰይ
+ያጣ ሰው ብመስል እሰይ እሰይ ንብረት ባይኖረኝ እሰይ
+አሰይ
+
+VERSE 1
+የአምላኬ ፊትህ እሰይ እሰይ ትቶቃስ አያውቅ እሰይ
+አሰይ
+ደኻ ሰው መስዬ እሰይ እሰይ የሰው ዓይን ሲጠላኝ', 'esti esey esey esey esey
+amlak keenie gar new esey esey
+yaxa sew bmesl esey esey nbret baynoregn esey
+asey
+
+VERSE 1
+yeamlakie fith esey esey ttoqas ayawq esey
+asey
+deኻ sew mesyie esey esey yesew ዓyn sixelagn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=mH9zK-x3_Mk', 'draft', 'pending', 'https://www.youtube.com/watch?v=mH9zK-x3_Mk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('esey-esey', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kenetenkolua-lem-muach-nech', 'ከነተንኮሏ ዓለም ሟች ነች', 'ከነተንኮሏ ዓለም ሟች ነች', 'kenetenkolua ዓlem muach nech', 'Ethiopian Orthodox Tewahedo Mezmur - ከነተንኮሏ ዓለም ሟች ነች', 'እሾህ በቅሎባት እሾህ ሆና
+በመተላለፍ ሰው ሊያልቅ ነዋ', 'eshoh beqlobat eshoh hona
+bemetelalef sew liyalq newa', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=QeKbiJQQucg', 'draft', 'pending', 'https://www.youtube.com/watch?v=QeKbiJQQucg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('keegna-gar-yalew-yl-new', 'ከእኛ ጋር ያለው ኃይል ነው', 'ከእኛ ጋር ያለው ኃይል ነው', 'keegna gar yalew ኃyl new', 'Ethiopian Orthodox Tewahedo Mezmur - ከእኛ ጋር ያለው ኃይል ነው', 'በሥጋዊው ዓይን ባናየው
+የጦሩ ብዛት መቼ ያድናል
+የዓለም ጥንስስ ተዋሕዷል', 'beሥgawiw ዓyn banayew
+yexoru bzat mechie yadnal
+yeዓlem xnss tewaሕdual', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=zIo-asuj8uk', 'draft', 'pending', 'https://www.youtube.com/watch?v=zIo-asuj8uk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ende-lem-gulbet-gulbetegna', 'እንደ ዓለም ጉልበት ጉልበተኛ', 'እንደ ዓለም ጉልበት ጉልበተኛ', 'ende ዓlem gulbet gulbetegna', 'Ethiopian Orthodox Tewahedo Mezmur - እንደ ዓለም ጉልበት ጉልበተኛ', 'በአምላክ ፊት ሲታይ ሕመምተኛ', 'beamlak fit sitay ሕmemtegna', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=MzapG3vMrIg', 'draft', 'pending', 'https://www.youtube.com/watch?v=MzapG3vMrIg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yehodien-zen-yelbien-m-xir', 'የሆዴን ሐዘን የልቤን ምሥጢር', 'የሆዴን ሐዘን የልቤን ምሥጢር', 'yehodien ሐzen yelbien mሥxir', 'Ethiopian Orthodox Tewahedo Mezmur - የሆዴን ሐዘን የልቤን ምሥጢር', 'እነግርሻለሁ አንድም ሳይቀር
+የምትሸሸጊ የሕዝብን ኃጢአት
+ለእኔስ ልዩ ነሽ ድንግል አዛት', 'enegrshalehu andm sayqer
+yemtsheshegi yeሕzbn ኃxiat
+leenies lyu nesh dngl azat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=IxXUTzkLfug', 'draft', 'pending', 'https://www.youtube.com/watch?v=IxXUTzkLfug', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('xa-mu-lyu-new-keanchi-gar-menor', 'ጣዕሙ ልዩ ነው ከአንቺ ጋር መኖር', 'ጣዕሙ ልዩ ነው ከአንቺ ጋር መኖር', 'xaዕmu lyu new keanchi gar menor', 'Ethiopian Orthodox Tewahedo Mezmur - ጣዕሙ ልዩ ነው ከአንቺ ጋር መኖር', 'ድንግልን ይፔ መቼም አላፍር', 'dngln ypie mechiem alafr', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=4AJIpDH35XU', 'draft', 'pending', 'https://www.youtube.com/watch?v=4AJIpDH35XU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ke-xiat-edf-ntsu-mehognayie', 'ከኃጢአት እድፍ ንጹሕ መሆኛዬ', 'ከኃጢአት እድፍ ንጹሕ መሆኛዬ', 'keኃxiat edf ntsuሕ mehognayie', 'Ethiopian Orthodox Tewahedo Mezmur - ከኃጢአት እድፍ ንጹሕ መሆኛዬ', 'አንቺ ነሽ ለአኔ የኔስ መጽናኛዬ', 'anchi nesh leanie yenies metsnagnayie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=quyAAUfF5Aw', 'draft', 'pending', 'https://www.youtube.com/watch?v=quyAAUfF5Aw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('ke-xiat-edf-ntsu-mehognayie', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ye-xiat-qusl-yaleanchi-ayxegm', 'የኃጢአት ቁስል ያለአንቺ አይጠግም', 'የኃጢአት ቁስል ያለአንቺ አይጠግም', 'yeኃxiat qusl yaleanchi ayxegm', 'Ethiopian Orthodox Tewahedo Mezmur - የኃጢአት ቁስል ያለአንቺ አይጠግም', 'ልቤ ሳይፈቅድ በሕይወት አልኖርም
+ከልጅሽ ሌላ ምደኅን የለኝም
+ከጸሎት በቀር ፍጹም አልድንም', 'lbie sayfeqd beሕywet alnorm
+keljsh liela mdeኅn yelegnm
+ketselot beqer ftsum aldnm', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=x2QVNfvwVzU', 'draft', 'pending', 'https://www.youtube.com/watch?v=x2QVNfvwVzU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('ye-xiat-qusl-yaleanchi-ayxegm', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('motual-blew-qebrewgn-sewoch', 'ሞቷል ብለው ቀብረውኝ ሰዎች', 'ሞቷል ብለው ቀብረውኝ ሰዎች', 'motual blew qebrewgn sewoch', 'Ethiopian Orthodox Tewahedo Mezmur - ሞቷል ብለው ቀብረውኝ ሰዎች', 'ምስኪን ሆጌ ሳይኖረኝ አንዳች
+ከመቃብር ቆፋሮ አወጣኝ', 'mskin hogie saynoregn andach
+kemeqabr qofaro awexagn', 'amharic', 'mezmur', 'ሊቀ መዘምራን  ይልማ ኃይሉ', 'https://www.youtube.com/watch?v=SxPu1RLeQ-k', 'draft', 'pending', 'https://www.youtube.com/watch?v=SxPu1RLeQ-k', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lbie-afeleqe-ale-melkam-neger', 'ልቤ አፈለቀ አለ መልካም ነገር', 'ልቤ አፈለቀ አለ መልካም ነገር', 'lbie afeleqe ale melkam neger', 'Ethiopian Orthodox Tewahedo Mezmur - ልቤ አፈለቀ አለ መልካም ነገር', 'ከእመቤቴ ጋራ ሲነጋገር
+ከድንግል ማርያም ጋር ሲነጋገር', 'keemebietie gara sinegager
+kedngl maryam gar sinegager', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=4QM5Xn1ZHIw', 'draft', 'pending', 'https://www.youtube.com/watch?v=4QM5Xn1ZHIw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('and-welda-smun-abezachw', 'አንድ ወልዳ ስሙን አበዛችው', 'አንድ ወልዳ ስሙን አበዛችው', 'and welda smun abezachw', 'Ethiopian Orthodox Tewahedo Mezmur - አንድ ወልዳ ስሙን አበዛችው', 'ተዋሐደ ስትል አማኑኤል አለችው
+ሕሙማን ሲፈውስ ኢየሱስ አለችው
+ንጉሥ ነውም ብላ ክርስቶስ አለችው
+ተሰቅለ ስታየው መደኅኑ አለችው
+
+VERSE 1
+ለመናጌኔጌው ጸሎት ልዩ ዕጣን
+የዋሻው ሻማ ነሽ እመብርሃን
+መዓዛሽ ሸተተኝ ከግሸን /ከጽዮን/
+ትናፍቂኛለሽ ምን ልሁን
+
+VERSE 2
+ትርቢኝማለሽ ምን ልሁን', 'tewaሐde stl amanuiel alechw
+ሕmuman sifews iyesus alechw
+nguሥ newm bla krstos alechw
+teseqle stayew medeኅnu alechw
+
+VERSE 1
+lemenagieniegiew tselot lyu ዕxan
+yewashaw shama nesh emebrሃn
+meዓzash shetetegn kegshen /ketsyon/
+tnafqignalesh mn lhun
+
+VERSE 2
+trbignmalesh mn lhun', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=IaQnETd2mfQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=IaQnETd2mfQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('and-welda-smun-abezachw', 'abune-gebre-menfes-kidus', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-emebietie-yeenie-eredat', 'ድንግል እመቤቴ የእኔ እረዳት', 'ድንግል እመቤቴ የእኔ እረዳት', 'dngl emebietie yeenie eredat', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል እመቤቴ የእኔ እረዳት', 'ዳዊት በመዝሙሩ ያነሳሻል
+የያዕቆብ ድንኳን ነሽ ይልሻል
+የእግዚአብሔር ሀገር የሚሉሽ
+እመቤቴ ማርያም አንቺ ነሽ /2/
+
+VERSE 1
+ቤተልሔም ስሄድ አይሻለሁ
+ቀራንዮ ስሔድ አይሻለሁ', 'dawit bemezmuru yanesashal
+yeyaዕqob dnkuan nesh ylshal
+yeegziabሔr hager yemilush
+emebietie maryam anchi nesh /2/
+
+VERSE 1
+bietelሔm shed ayshalehu
+qeranyo sሔd ayshalehu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5xmNETbqgGE', 'draft', 'pending', 'https://www.youtube.com/watch?v=5xmNETbqgGE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ftsum-atleym-keljsh', 'ፍጹም አትለይም ከልጅሽ', 'ፍጹም አትለይም ከልጅሽ', 'ftsum atleym keljsh', 'Ethiopian Orthodox Tewahedo Mezmur - ፍጹም አትለይም ከልጅሽ', 'የአንቺስ ልዩ ነው ፍቅርሽ /2/', 'yeanchis lyu new fqrsh /2/', 'amharic', 'mezmur', 'ዘማሪ ቀሲስ ምንዳዬ ብርሃኑ', 'https://www.youtube.com/watch?v=7SfMzqHEPgk', 'draft', 'pending', 'https://www.youtube.com/watch?v=7SfMzqHEPgk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kewegenie-gara-ezemralehugn', 'ከወገኔ ጋራ እዘምራለሁኝ', 'ከወገኔ ጋራ እዘምራለሁኝ', 'kewegenie gara ezemralehugn', 'Ethiopian Orthodox Tewahedo Mezmur - ከወገኔ ጋራ እዘምራለሁኝ', 'በደስታ በሐሴት ስሙን እጠራለሁኝ
+ምግብና መጠጤ አምላኬ ነውና', 'bedesta beሐsiet smun exeralehugn
+mgbna mexexie amlakie newna', 'amharic', 'mezmur', 'ሊቀ መዘምራን  ይልማ ኃይሉ', 'https://www.youtube.com/watch?v=M4f6KwIa-U8', 'draft', 'pending', 'https://www.youtube.com/watch?v=M4f6KwIa-U8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('kewegenie-gara-ezemralehugn', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kesemayawit-iyerusaliem', 'ከሰማያዊት ኢየሩሳሌም', 'ከሰማያዊት ኢየሩሳሌም', 'kesemayawit iyerusaliem', 'Ethiopian Orthodox Tewahedo Mezmur - ከሰማያዊት ኢየሩሳሌም', 'ዛሬ ብንገባ እናገኛለን የአምላክን ሰላም
+577. ኪዳነ ምሕረት ሩኀሩኀ
+ኪዳነምሕረት ርኅሩኅ ተይ አታቁሚኝ ከበሩ
+የሲዖል አለንጋ መራራ ነው አሉ
+
+VERSE 1
+አንቺ አማልጅኝ እግዝእትነ ኩሉ ሰጊድ ሰላም /2/
+ኃያል እንዲህ ነው ኃያል ቅዱስ ሚካኤል ኃያል
+የለበሰው ልብሱ የወርቅ ሐመልማል
+የታጠቀው ሰይፉ የእሳት ነበልባል
+
+VERSE 2
+ይህም ተጽፏል በቅዱስ ቃል ሰጊድ ሰላም/2/
+ኃያል እንዲህ ነው ኃያል ቅዱስ ገብርኤል ኃያል
+ሠለስቱ ደቂቅን ከእቶን ያዳናቸው
+ቂርቆስ ኢየሉጣን ከእሳት ያወጣቸው
+
+VERSE 3
+የሚረዳን ፈጥኖ ደራሽ ቅዱስ ገብርኤል ነው /2/
+ሰማዕት እንዲህ ነው ሰማዕት
+ቅዱሰ ጊዮርጊስ ሰማዕት
+ለወዳጆቹ ፈጥኖ ሲደርስ
+
+VERSE 4
+ጣላቶቹንም ሲደመስስ
+ጊዮርጊስ ዘልዳው ንጉሥ
+ጻድቅ እንዲህ ነው ጻድቅ ተክለ ሃይማኖት
+ጻድቅ
+
+VERSE 5
+በአንድ እግራቸው ቆመው ለሰባት ዓመት
+ጠላትን ድል ነሱ በጾምና በጸሎት /2/', 'zarie bngeba enagegnalen yeamlakn selam
+577. kidane mሕret ruኀruኀ
+kidanemሕret rኅruኅ tey ataqumign keberu
+yesiዖl alenga merara new alu
+
+VERSE 1
+anchi amaljgn egzetne kulu segid selam /2/
+ኃyal endih new ኃyal qdus mikaiel ኃyal
+yelebesew lbsu yewerq ሐmelmal
+yetaxeqew seyfu yeesat nebelbal
+
+VERSE 2
+yhm tetsfual beqdus qal segid selam/2/
+ኃyal endih new ኃyal qdus gebriel ኃyal
+ሠlestu deqiqn keeton yadanachew
+qirqos iyeluxan keesat yawexachew
+
+VERSE 3
+yemiredan fexno derash qdus gebriel new /2/
+semaዕt endih new semaዕt
+qduse giyorgis semaዕt
+lewedajochu fexno siders
+
+VERSE 4
+xalatochunm sidemess
+giyorgis zeldaw nguሥ
+tsadq endih new tsadq tekle ሃymanot
+tsadq
+
+VERSE 5
+beand egrachew qomew lesebat ዓmet
+xelatn dl nesu betsomna betselot /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=kcWWoLStxqc', 'draft', 'pending', 'https://www.youtube.com/watch?v=kcWWoLStxqc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('kesemayawit-iyerusaliem', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yesemay-yemdr-yearyam-ng-t', 'የሰማይ የምድር የአርያም ንግሥት', 'የሰማይ የምድር የአርያም ንግሥት', 'yesemay yemdr yearyam ngሥt', 'Ethiopian Orthodox Tewahedo Mezmur - የሰማይ የምድር የአርያም ንግሥት', 'የሰማይ የምድር የአርያም ንግሥት
+የሰማይ የምድር የአርያም ንግሥት
+አንቺ ነሸ አመቤት አምላክ አናት
+ክኸ /2/ ድንግል አማልጅን
+
+VERSE 1
+አኸ /2/ ቅድስት ተራጅኝ
+የሰማይ የምድር የአርያም ንግሥት
+አንቺ ነሸ እመቤት አምላክ እናት', 'yesemay yemdr yearyam ngሥt
+yesemay yemdr yearyam ngሥt
+anchi neshe amebiet amlak anat
+kኸ /2/ dngl amaljn
+
+VERSE 1
+aኸ /2/ qdst terajgn
+yesemay yemdr yearyam ngሥt
+anchi neshe emebiet amlak enat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=TLJJh1mKrHE', 'draft', 'pending', 'https://www.youtube.com/watch?v=TLJJh1mKrHE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeabr-m-ersha-yem-xir-washaw', 'የአብርሃም እርሻ የምሥጢር ዋሻው', 'የአብርሃም እርሻ የምሥጢር ዋሻው', 'yeabrሃm ersha yemሥxir washaw', 'Ethiopian Orthodox Tewahedo Mezmur - የአብርሃም እርሻ የምሥጢር ዋሻው', 'እናትና ድንግል ሁለቱን ሆንሽው', 'enatna dngl huletun honshw', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=F4B3WoPqqnU', 'draft', 'pending', 'https://www.youtube.com/watch?v=F4B3WoPqqnU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('xiatiem-bereta-selexenebgn', 'ኃጢአቴም በረታ ሰለጠነብኝ', 'ኃጢአቴም በረታ ሰለጠነብኝ', 'ኃxiatiem bereta selexenebgn', 'Ethiopian Orthodox Tewahedo Mezmur - ኃጢአቴም በረታ ሰለጠነብኝ', 'ከቃልህ አስወጣኝ ሕግህን ጣስኩኝ
+እንደነነዌ ሕዝብ ንስሓን ስጠኝ
+ምሕረትህን ልከህ ልቤን ስበርልኝ', 'keqalh aswexagn ሕghn xaskugn
+endenenewie ሕzb nsሓn sxegn
+mሕrethn lkeh lbien sberlgn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hwBYjONHqFQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=hwBYjONHqFQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('giyorgis-beziyach-qen-kefetenaw-antsar', 'ጊዮርጊስ በዚያች ቀን ከፈተናው አንጻር', 'ጊዮርጊስ በዚያች ቀን ከፈተናው አንጻር', 'giyorgis beziyach qen kefetenaw antsar', 'Ethiopian Orthodox Tewahedo Mezmur - ጊዮርጊስ በዚያች ቀን ከፈተናው አንጻር', 'ሰለሃይማኖቱ የታየው ምን ነበር
+ያመነው አምላክ አላውቀውም እንዲል
+በሥልጣን በገንዘብ እርሱን ለመሸንገል
+ነገር ሲሸርቡበት የዱዲያኖስ ጭፍሮች
+
+VERSE 1
+ለመሥዋዕት ሲቀርብ መንፈሱ ምን አለች', 'seleሃymanotu yetayew mn neber
+yamenew amlak alawqewm endil
+beሥlxan begenzeb ersun lemeshengel
+neger sisherbubet yedudiyanos cfroch
+
+VERSE 1
+lemeሥwaዕt siqerb menfesu mn alech', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=_Ourr1kAosA', 'draft', 'pending', 'https://www.youtube.com/watch?v=_Ourr1kAosA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amlakachn-temesgen-2-lezih-qen-yaderesken', 'አምላካችን ተመስገን /2/ ለዚህ ቀን ያደረስከን', 'አምላካችን ተመስገን /2/ ለዚህ ቀን ያደረስከን', 'amlakachn temesgen /2/ lezih qen yaderesken', 'Ethiopian Orthodox Tewahedo Mezmur - አምላካችን ተመስገን /2/ ለዚህ ቀን ያደረስከን', 'በኃጢአት ስንማቅቅ በምሕረትህ ጠራኸን', 'beኃxiat snmaqq bemሕreth xeraኸn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xGYQQe8a0pg', 'draft', 'pending', 'https://www.youtube.com/watch?v=xGYQQe8a0pg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('amlakachn-temesgen-2-lezih-qen-yaderesken', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-hoy-bemljash-keljsh-astarqin', 'ድንግል ሆይ በምልጃሽ ከልጅሽ አስታርቂን', 'ድንግል ሆይ በምልጃሽ ከልጅሽ አስታርቂን', 'dngl hoy bemljash keljsh astarqin', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል ሆይ በምልጃሽ ከልጅሽ አስታርቂን', 'ጥሪህን ስንሰማ ወደአንተ እንድንመጣ
+በሕግህ ልንኖር ከቤትህ ሳንወጣ
+በሕይወት ስንደክም እንዳንጠፋ በዓለም
+እርዳን ፈጣሪያችን ቸሩ መድኃኔዓለም', 'xrihn snsema wedeante endnmexa
+beሕgh lnnor kebieth sanwexa
+beሕywet sndekm endanxefa beዓlem
+erdan fexariyachn cheru medኃnieዓlem', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=YP7Y0eMFJrc', 'draft', 'pending', 'https://www.youtube.com/watch?v=YP7Y0eMFJrc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('r-r-te-lina-qdst-enatachn', 'ርኅርኅተ ኅሊና ቅድስት እናታችን', 'ርኅርኅተ ኅሊና ቅድስት እናታችን', 'rኅrኅte ኅlina qdst enatachn', 'Ethiopian Orthodox Tewahedo Mezmur - ርኅርኅተ ኅሊና ቅድስት እናታችን', 'አሳስቢ ሁል ጊዜ ስለ ኃጢአታችን
+ሊያድነን ነውና ክርስቶስ መሞቱ
+አሳስቢ እመአምላክ ድንግል ወላዲቱ
+584. የቅዱሳን አምላክ
+
+VERSE 1
+አብርሃምን ከካራን የጠራኸው ጌታ
+ለሙሴ በሲና የሆንከው መከታ
+ልጠፋ ነውና በሥጋ ፍላጎት
+የይስሐቅም ጌታ ሕይወቴን ታደጋት /2/
+
+VERSE 2
+የኤርትራን ባሕር በኃይልህ የከፈልክ
+በሲና በረሃ ሕዝብህን የመገብክ
+ኖኅ ከጥፋት ውኃ የዳነብህ አምላክ
+ሎጥን እንዳዳንከው ፍጹም ምሕረትን ሳክ /2/
+
+VERSE 3
+የተነበዩልህ ነቢያት በሙሉ
+አምላክ ሰው ይሆናል ይወለዳል ሲሉ
+ከዓሣ አንበሪ ሆድ ዮናስን ያወጣህ
+ዓለም ልትውጠኝ ነው አይለየኝ ጸጋህ /2/
+
+VERSE 4
+ሥጋን ተዋሕደህ በወሰንከው ሰዓት
+የሞትክልኝ አምላክ ያዳንከኝ ከሞት ሞት
+እንደወንጌልህ ሕግ የምኖር አድርገኝ
+በመጨረሻው ቀን በቀኝህ አድርገኝ /2/
+
+VERSE 5
+አልቻልኩኝምና ልፈጽ፳ም ሕግህን
+የሐዋርያት አጽናኝ ስጠኝ ብርታትህን
+ምግባረ ጎደሎ ሆኛለሁኝና
+የቅዱሳን አምላክ እርዳኝ እንድጸና /2/
+
+VERSE 6
+585. ድንግል ሆይ
+ወላዲተ አምላክ የሁሉ እመቤት
+ለምኝልን ለእኛ ከልጅሽ ምሕረት
+በአንቺ አማላጅነት በእርሱ ቸርነት
+
+VERSE 7
+እንዲያወጣን ነጻ ከፍርድ ቅጣት
+ድንግል ሆይ ለምኝልን /2/
+በበደል ተዳክሞ ፈቃደ ነፍሳችን
+በምድራዊ ምኞት ናውዞ ልቦናችን
+
+VERSE 8
+ፍቅርና ትሕትና ጠፍቶ ከፊታችን
+ለሞት እንዳይሰጠን ይህ ክፉ ሥራችን', 'asasbi hul gizie sle ኃxiatachn
+liyadnen newna krstos memotu
+asasbi emeamlak dngl weladitu
+584. yeqdusan amlak
+
+VERSE 1
+abrሃmn kekaran yexeraኸw gieta
+lemusie besina yehonkew meketa
+lxefa newna beሥga flagot
+yeysሐqm gieta ሕywetien tadegat /2/
+
+VERSE 2
+yeiertran baሕr beኃylh yekefelk
+besina bereሃ ሕzbhn yemegebk
+noኅ kexfat wኃ yedanebh amlak
+loxn endadankew ftsum mሕretn sak /2/
+
+VERSE 3
+yetenebeyulh nebiyat bemulu
+amlak sew yhonal yweledal silu
+keዓሣ anberi hod yonasn yawexah
+ዓlem ltwxegn new ayleyegn tsegah /2/
+
+VERSE 4
+ሥgan tewaሕdeh bewesenkew seዓt
+yemotklgn amlak yadankegn kemot mot
+endewengielh ሕg yemnor adrgegn
+bemecereshaw qen beqegnh adrgegn /2/
+
+VERSE 5
+alchalkugnmna lfets፳m ሕghn
+yeሐwaryat atsnagn sxegn brtathn
+mgbare godelo hognalehugnna
+yeqdusan amlak erdagn endtsena /2/
+
+VERSE 6
+585. dngl hoy
+weladite amlak yehulu emebiet
+lemgnln leegna keljsh mሕret
+beanchi amalajnet beersu chernet
+
+VERSE 7
+endiyawexan netsa kefrd qxat
+dngl hoy lemgnln /2/
+bebedel tedakmo feqade nefsachn
+bemdrawi mgnot nawzo lbonachn
+
+VERSE 8
+fqrna tሕtna xefto kefitachn
+lemot endaysexen yh kfu ሥrachn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=XA4kRebRcpk', 'draft', 'pending', 'https://www.youtube.com/watch?v=XA4kRebRcpk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ell-belu-yegobegnachhu', 'እልል በሉ የጎበኛችሁ', 'እልል በሉ የጎበኛችሁ', 'ell belu yegobegnachhu', 'Ethiopian Orthodox Tewahedo Mezmur - እልል በሉ የጎበኛችሁ', 'በምሕረቱ አምላክ ያያችሁ
+በችግር ቀን ያሰበን ሁሉ አመስግኑ ዝምም
+አትበሉ
+ድንግል ማርያም ትጸልያለች
+
+VERSE 1
+ኃጥኡን ሰው ማረው እያለች
+በድንግል ክብር እንኖራለን
+በጽኑ ፍቅር አንዴ እንዲያድነን
+588. ዴማስ ሆይ ተመለስ
+
+VERSE 2
+የይሁዳ ጉዞ አያዋጣምና
+ዴማስ ወደ ሕይወት እባክህ ቶሎ ና /2/
+ከወንጌል ገበታ መመገብ ጀምረህ
+ወንድሜ ተመለስ ወዴት ትሄዳለህ
+
+VERSE 3
+ይጠራሃልና መስቀሉን ተመልከት
+የወንጌል ቡቃያ አውነተኛ ሕይወት /2/', 'bemሕretu amlak yayachhu
+bechgr qen yaseben hulu amesgnu zmm
+atbelu
+dngl maryam ttselyalech
+
+VERSE 1
+ኃxun sew marew eyalech
+bedngl kbr ennoralen
+betsnu fqr andie endiyadnen
+588. diemas hoy temeles
+
+VERSE 2
+yeyhuda guzo ayawaxamna
+diemas wede ሕywet ebakh tolo na /2/
+kewengiel gebeta memegeb jemreh
+wendmie temeles wediet thedaleh
+
+VERSE 3
+yxeraሃlna mesqelun temelket
+yewengiel buqaya awnetegna ሕywet /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=iJWCdu1h03I', 'draft', 'pending', 'https://www.youtube.com/watch?v=iJWCdu1h03I', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('basemat-gizie-qalun-qdus-gebriel-beleza', 'ባሰማት ጊዜ ቃሉን ቅዱስ ገብርኤል በለዛ', 'ባሰማት ጊዜ ቃሉን ቅዱስ ገብርኤል በለዛ', 'basemat gizie qalun qdus gebriel beleza', 'Ethiopian Orthodox Tewahedo Mezmur - ባሰማት ጊዜ ቃሉን ቅዱስ ገብርኤል በለዛ', 'ድንግል ቀረበች ወደ አርሱ ፍጹም ትኅትናን ይዛ
+ተፀንሻለሽ ሲላት መልአኩ ፍጹም በልቧ ሳትመካ
+እንደ ቃልህ ይን አለችው በቃሉ ተማርካ /2/', 'dngl qerebech wede arsu ftsum tኅtnan yza
+teፀnshalesh silat melaku ftsum belbua satmeka
+ende qalh yn alechw beqalu temarka /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=vlKJzLbhDtc', 'draft', 'pending', 'https://www.youtube.com/watch?v=vlKJzLbhDtc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('abatachn', 'አባታችን', 'አባታችን', 'abatachn', 'Ethiopian Orthodox Tewahedo Mezmur - አባታችን', 'አባታችን ሆይ የምትኖር በሰማይ
+መንግሥትህ ትምጣልን ክብርህን እንድናይ/2/
+ፈቃድህ በሰማይ ሕይወት እንደሆነ
+አንዲሁም በምድር ስላምን ስጠን/2/
+
+VERSE 1
+ስጠን ለዛሬ የዕለት ምግባችንን
+በደላችንንም ይቅር እንድትለን''/2/
+ጌታ ሆይ አታግባን ከክፉ ፈተና
+አንተ ካልረዳኸን ኃይል የለንምና/2/
+
+VERSE 2
+ኃይልና ምስጋና መንግሥትም የአንተው ናት
+አሜን ለዘለዓለም ይሁንልን ዕረፍት /2/
+591.ሰላም ላንቺ ይሁን
+ሰላም ላንቺ ይሁን (3) ማርያም ድንግል (2)
+
+VERSE 3
+የሴቶች መመኪያ የሴቶች አክሊል (2)
+ሰላም ላንቺ ይሁን (3) የሁሉ አመቤት /2/
+የኃጥአን ተስፋ የጻድቃን(2) ሕይወት /2/
+ሰላም ላንቺ ይሁን/3/ የሁሉ ወዳጀጅ/2/
+
+VERSE 4
+የጽድቅ መሰላል የዓለም /2/ አማላጀጅ/2/', 'abatachn hoy yemtnor besemay
+mengሥth tmxaln kbrhn endnay/2/
+feqadh besemay ሕywet endehone
+andihum bemdr slamn sxen/2/
+
+VERSE 1
+sxen lezarie yeዕlet mgbachnn
+bedelachnnm yqr endtlen''/2/
+gieta hoy atagban kekfu fetena
+ante kalredaኸn ኃyl yelenmna/2/
+
+VERSE 2
+ኃylna msgana mengሥtm yeantew nat
+amien lezeleዓlem yhunln ዕreft /2/
+591.selam lanchi yhun
+selam lanchi yhun (3) maryam dngl (2)
+
+VERSE 3
+yesietoch memekiya yesietoch aklil (2)
+selam lanchi yhun (3) yehulu amebiet /2/
+yeኃxan tesfa yetsadqan(2) ሕywet /2/
+selam lanchi yhun/3/ yehulu wedajej/2/
+
+VERSE 4
+yetsdq meselal yeዓlem /2/ amalajej/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=OplRam5hvYs', 'draft', 'pending', 'https://www.youtube.com/watch?v=OplRam5hvYs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('krstos-besmh-yzenal-qenona', 'ክርስቶስ በስምህ ይዘናል ቀኖና', 'ክርስቶስ በስምህ ይዘናል ቀኖና', 'krstos besmh yzenal qenona', 'Ethiopian Orthodox Tewahedo Mezmur - ክርስቶስ በስምህ ይዘናል ቀኖና', 'ስቅለት ትንሣኤህን እናያለንና', 'sqlet tnሣiehn enayalenna', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=bK11i_QaFuc', 'draft', 'pending', 'https://www.youtube.com/watch?v=bK11i_QaFuc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('waryat-tsomew-leegna-abereketu', 'ሐዋርያት ጾመው ለእኛ አበረከቱ', 'ሐዋርያት ጾመው ለእኛ አበረከቱ', 'ሐwaryat tsomew leegna abereketu', 'Ethiopian Orthodox Tewahedo Mezmur - ሐዋርያት ጾመው ለእኛ አበረከቱ', 'ነፍስና ሥጋችን በመብል ተጣልተው
+ሸማግሌ ሆኖ ጾም አስታረቃቸው
+አብርው እያደሩ አብረው አይዋሉ', 'nefsna ሥgachn bemebl texaltew
+shemaglie hono tsom astareqachew
+abrw eyaderu abrew aywalu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=X2WMK6JQ7rA', 'draft', 'pending', 'https://www.youtube.com/watch?v=X2WMK6JQ7rA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('betsom-besubaie-tnoralech-taxqa', 'በጾም በሱባኤ ትኖራለች ታጥቃ፡፡', 'በጾም በሱባኤ ትኖራለች ታጥቃ፡፡', 'betsom besubaie tnoralech taxqa፡፡', 'Ethiopian Orthodox Tewahedo Mezmur - በጾም በሱባኤ ትኖራለች ታጥቃ፡፡', 'ነፍስም ለሥጋዋ ትመክረው ጀመረች
+በብዙ ምሳሌ አያመሳሰለች', 'nefsm leሥgawa tmekrew jemerech
+bebzu msalie ayamesaselech', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=mFc1QqyshO4', 'draft', 'pending', 'https://www.youtube.com/watch?v=mFc1QqyshO4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gayien-bluna-demien-xextachhu', 'ሥጋዬን ብሉና ደሜን ጠጥታችሁ', 'ሥጋዬን ብሉና ደሜን ጠጥታችሁ', 'ሥgayien bluna demien xextachhu', 'Ethiopian Orthodox Tewahedo Mezmur - ሥጋዬን ብሉና ደሜን ጠጥታችሁ', 'ዘለዓለማዊ ሕይወት ይኑራችሁ', 'zeleዓlemawi ሕywet ynurachhu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ZqvRXXAboMs', 'draft', 'pending', 'https://www.youtube.com/watch?v=ZqvRXXAboMs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('blo-neber-ersu-yemisemaw-xefa', 'ብሎ ነበር እርሱ የሚሰማው ጠፋ', 'ብሎ ነበር እርሱ የሚሰማው ጠፋ', 'blo neber ersu yemisemaw xefa', 'Ethiopian Orthodox Tewahedo Mezmur - ብሎ ነበር እርሱ የሚሰማው ጠፋ', 'ሁሉም በየድርሻው ምኛቱን ሲያስፋፋ', 'hulum beyedrshaw mgnatun siyasfafa', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Lk0S6E2TdOc', 'draft', 'pending', 'https://www.youtube.com/watch?v=Lk0S6E2TdOc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yhn-qdus-ga-yhn-kbur-dem', 'ይህን ቅዱስ ሥጋ ይህን ክቡር ደም', 'ይህን ቅዱስ ሥጋ ይህን ክቡር ደም', 'yhn qdus ሥga yhn kbur dem', 'Ethiopian Orthodox Tewahedo Mezmur - ይህን ቅዱስ ሥጋ ይህን ክቡር ደም', 'እንዴት ልጆች ብቻ በልተውት ይፈጸም', 'endiet ljoch bcha beltewt yfetsem', 'amharic', 'mezmur', 'ሊቀ መዘምራን ኪነጥበብ ወልደቂርቆስ', 'https://www.youtube.com/watch?v=0zyugm8H7EE', 'draft', 'pending', 'https://www.youtube.com/watch?v=0zyugm8H7EE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('asme-le-lem-m-retu-2', 'አስመ ለዓለም ምሕረቱ /2/', 'አስመ ለዓለም ምሕረቱ /2/', 'asme leዓlem mሕretu /2/', 'Ethiopian Orthodox Tewahedo Mezmur - አስመ ለዓለም ምሕረቱ /2/', 'አስመ ለዓለም ምሕረቱ /2/
+የምይሞተው ሞቶ የተቀበረው/2/
+ከገሀነም አሳት እኛን ሊያድን ነው/2/
+አስመ ለዓለም -----------', 'asme leዓlem mሕretu /2/
+yemymotew moto yeteqeberew/2/
+kegehanem asat egnan liyadn new/2/
+asme leዓlem -----------', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=AWmmx07EUqg', 'draft', 'pending', 'https://www.youtube.com/watch?v=AWmmx07EUqg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('setoch-tn-iehn-defrew-tenageru', 'ሰቶች ትንሣኤህን ደፍረው ተናገሩ', 'ሰቶች ትንሣኤህን ደፍረው ተናገሩ', 'setoch tnሣiehn defrew tenageru', 'Ethiopian Orthodox Tewahedo Mezmur - ሰቶች ትንሣኤህን ደፍረው ተናገሩ', 'አንሞታለን ብለው ማንንም ሳይፈሩ/2/
+አናምናለን ----------', 'anmotalen blew mannm sayferu/2/
+anamnalen ----------', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=QFPTdX9TtSk', 'draft', 'pending', 'https://www.youtube.com/watch?v=QFPTdX9TtSk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('selam-selam-maryam-dngl', 'ሰላም ሰላም ማርያም ድንግል', 'ሰላም ሰላም ማርያም ድንግል', 'selam selam maryam dngl', 'Ethiopian Orthodox Tewahedo Mezmur - ሰላም ሰላም ማርያም ድንግል', 'ሰላም ሰላም /2/ ማርያም ድንግል
+ልመናሽ ለሚያምኑት ድኅነት ያስጣል /2/
+ደቀ መዛሙርቱ በሐሣብ ሲዋኙ
+ይኸው በቅርብ ቀን ምልክት አገኙ
+
+VERSE 1
+ሰላም ሰላም ----------', 'selam selam /2/ maryam dngl
+lmenash lemiyamnut dኅnet yasxal /2/
+deqe mezamurtu beሐሣb siwagnu
+yኸw beqrb qen mlkt agegnu
+
+VERSE 1
+selam selam ----------', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3le22lqnexg', 'draft', 'pending', 'https://www.youtube.com/watch?v=3le22lqnexg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bemot-xla-wedqen-snkeratet-2', 'በሞት ጥላ ወድቀን ስንከራተት/2/', 'በሞት ጥላ ወድቀን ስንከራተት/2/', 'bemot xla wedqen snkeratet/2/', 'Ethiopian Orthodox Tewahedo Mezmur - በሞት ጥላ ወድቀን ስንከራተት/2/', 'በረቀቀው ፍቅሩ ዋጀን ከጥፋት /2/
+በጎልጎታ የታይ ፍጹም መድኃኒት', 'bereqeqew fqru wajen kexfat /2/
+begolgota yetay ftsum medኃnit', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=JxtLIP_Bfo8', 'draft', 'pending', 'https://www.youtube.com/watch?v=JxtLIP_Bfo8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qdst-enatachn-bietekrstiyan', 'ቅድስት እናታችን ቤተክርስቲያን', 'ቅድስት እናታችን ቤተክርስቲያን', 'qdst enatachn bietekrstiyan', 'Ethiopian Orthodox Tewahedo Mezmur - ቅድስት እናታችን ቤተክርስቲያን', 'ትጋብዘናለች ሥጋና ደሙን
+የአማኑኤል ሥጋ ይኸው ተዘጋጀ
+ከግብዣው ተጠራን አዋጁ ታወጀ
+መጥቁ ተደወለ አንቅረብ በዕልልታ
+
+VERSE 1
+በኋላ አይረባንም ዋይታና ጫጫታ', 'tgabzenalech ሥgana demun
+yeamanuiel ሥga yኸw tezegaje
+kegbzhaw texeran awaju taweje
+mexqu tedewele anqreb beዕllta
+
+VERSE 1
+behuala ayrebanm waytana cacata', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=srN1PknwPs8', 'draft', 'pending', 'https://www.youtube.com/watch?v=srN1PknwPs8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('layqer-memot-afer-melbes-megbat-kemeqabr', 'ላይቀር መሞት አፈር መልበስ መግባት ከመቃብር', 'ላይቀር መሞት አፈር መልበስ መግባት ከመቃብር', 'layqer memot afer melbes megbat kemeqabr', 'Ethiopian Orthodox Tewahedo Mezmur - ላይቀር መሞት አፈር መልበስ መግባት ከመቃብር', 'መስሉኝ ቋሚ ይህ ሥጋዬ ለእርሱ ብቻ ስጥር
+ዘመን መቁጠር አለት ወራት ክረምት በጋ
+ሌሊትና ቀን ሲፈራረቅ ሲጨልም ሲነጋ
+በማየቴ ሆነ መደሰቴ/2/
+
+VERSE 1
+ኽረ ወዲያ ወዲልኝ ዋይ ብለሽ ለነፍሴ
+አድርጎኛል የኃጢአት ምንጭ ደካማው መንፈስ
+መሐሪ አምላክ ለጋሰ ጌታ ቸሩ ፈጣሪዬ
+አንተ እኮ ነህ ለዘላለም ለአፄ መመኪያዬ
+
+VERSE 2
+ላይቀር መሞት አፈር መልበስ መግባት ከመቃብር
+መስሎኝ ቋሚ ይህ ሥጋዬ ለእርሱ ብቻ ስጥር
+ግን ለነፍሴ ቀረ ማስታወሴ/ሪ2/', 'meslugn quami yh ሥgayie leersu bcha sxr
+zemen mequxer alet werat kremt bega
+lielitna qen siferareq sicelm sinega
+bemayetie hone medesetie/2/
+
+VERSE 1
+ኽre wediya wedilgn way blesh lenefsie
+adrgognal yeኃxiat mnc dekamaw menfes
+meሐri amlak legase gieta cheru fexariyie
+ante eko neh lezelalem leaፄ memekiyayie
+
+VERSE 2
+layqer memot afer melbes megbat kemeqabr
+meslogn quami yh ሥgayie leersu bcha sxr
+gn lenefsie qere mastawesie/ri2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=dGAGUhdaen0', 'draft', 'pending', 'https://www.youtube.com/watch?v=dGAGUhdaen0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('layqer-memot-afer-melbes-megbat-kemeqabr', 'repentance', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeselomon-aklil-yearon-betr', 'የሰሎሞን አክሊል የአሮን በትር', 'የሰሎሞን አክሊል የአሮን በትር', 'yeselomon aklil yearon betr', 'Ethiopian Orthodox Tewahedo Mezmur - የሰሎሞን አክሊል የአሮን በትር', 'የአዝራ መስንቆ የጌድዮን ፀምር
+ድንግል እመቤት ናት የጻድቃን በር
+ሆና የተገኘች የአምላክ ማኅደር/2/
+የቅዱሳን እናት የዓለም ንግሥት
+
+VERSE 1
+ችላ ተሸከመች መለኮት እሳት
+ብርሃን ትሁነን ጨላማን ገላልጣ
+አማልዳ ታስምረን ከዚህ ዓለም ጣጣ/2/
+206.የኅዳር ጽዮን አንገርጋሪ
+
+VERSE 2
+ፃሌ ሉያ አይቲ ዛቲ እንተ
+ታስተርኢ አምርሁቅ
+ከመ ማኅቶት ብርህት ከመፀሐይ
+ሙሴኒ ርእያ ሀገር ቅድስት
+
+VERSE 3
+ፅዝራኒ ተናገራ ዳዊት ዘመራ
+207.፳ዮን
+ጽዮን ቅድስት እሞሙ ለሰማዕት//2/
+ወአኅቶሙ ለመላዕክተ/4/
+
+VERSE 4
+የሰሎሞን አክሊል የአሮን በትር
+የሰሎሞን አክሊል የአሮን በትር
+የዕዝራ መስንቆ የጌዴዎን ፀምር
+ድንግል እመቤት ናት የጻድቃን በር
+
+VERSE 5
+ሆና የታገኘች የአምላክ ማኅደር/2
+የቅዱሳን እናት የዓለም ንግሥት
+የሰሎሞን አክሊል የአሮን በትር
+የፅዝራ መሰንቆ የጌዴዎን ጸምር
+
+VERSE 6
+ድንግል አመቤት ናት የጻድቃን በር', 'yeazra mesnqo yegiedyon ፀmr
+dngl emebiet nat yetsadqan ber
+hona yetegegnech yeamlak maኅder/2/
+yeqdusan enat yeዓlem ngሥt
+
+VERSE 1
+chla teshekemech melekot esat
+brሃn thunen celaman gelalxa
+amalda tasmren kezih ዓlem xaxa/2/
+206.yeኅdar tsyon angergari
+
+VERSE 2
+ፃlie luya ayti zati ente
+tasteri amrhuq
+keme maኅtot brht kemeፀሐy
+musieni reya hager qdst
+
+VERSE 3
+ፅzrani tenagera dawit zemera
+207.፳yon
+tsyon qdst emomu lesemaዕt//2/
+weaኅtomu lemelaዕkte/4/
+
+VERSE 4
+yeselomon aklil yearon betr
+yeselomon aklil yearon betr
+yeዕzra mesnqo yegiediewon ፀmr
+dngl emebiet nat yetsadqan ber
+
+VERSE 5
+hona yetagegnech yeamlak maኅder/2
+yeqdusan enat yeዓlem ngሥt
+yeselomon aklil yearon betr
+yeፅzra mesenqo yegiediewon tsemr
+
+VERSE 6
+dngl amebiet nat yetsadqan ber', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=kVBoBmZoSJs', 'draft', 'pending', 'https://www.youtube.com/watch?v=kVBoBmZoSJs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('hona-yetegegnech-yeamlak-ma-der-2', 'ሆና የተገኘች የአምላክ ማኅደር /2/', 'ሆና የተገኘች የአምላክ ማኅደር /2/', 'hona yetegegnech yeamlak maኅder /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሆና የተገኘች የአምላክ ማኅደር /2/', 'ሆና የተገኘች የአምላክ ማኅደር /2/', 'hona yetegegnech yeamlak maኅder /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=IU_S_1tEFPs', 'draft', 'pending', 'https://www.youtube.com/watch?v=IU_S_1tEFPs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qdst-enatachn-sb-t-weburkt', 'ቅድስት እናታችን ስብሐት ወቡርክት', 'ቅድስት እናታችን ስብሐት ወቡርክት', 'qdst enatachn sbሐt weburkt', 'Ethiopian Orthodox Tewahedo Mezmur - ቅድስት እናታችን ስብሐት ወቡርክት', 'አንቀጸ ብርሃን ማዕርገ ሕይወት
+አዘክሪ ድንግል ለልጅሽ በዕውነት', 'anqetse brሃn maዕrge ሕywet
+azekri dngl leljsh beዕwnet', 'amharic', 'mezmur', 'ዘማሪ ቀሲስ ምንዳዬ ብርሃኑ', 'https://www.youtube.com/watch?v=FjcieJsqf_c', 'draft', 'pending', 'https://www.youtube.com/watch?v=FjcieJsqf_c', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('befitu-endalafr-yetexerahu-leta', 'በፊቱ እንዳላፍር የተጠራሁ ለታ', 'በፊቱ እንዳላፍር የተጠራሁ ለታ', 'befitu endalafr yetexerahu leta', 'Ethiopian Orthodox Tewahedo Mezmur - በፊቱ እንዳላፍር የተጠራሁ ለታ', 'አለምነዋለሁ ከአሁኑ ይቅርታ', 'alemnewalehu keahunu yqrta', 'amharic', 'mezmur', 'ቀሲስ ዳዊት ፋንታዬ', 'https://www.youtube.com/watch?v=Ap5-yTIHygA', 'draft', 'pending', 'https://www.youtube.com/watch?v=Ap5-yTIHygA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tsadqan-sema-tat-enante-hulachhu', 'ጻድቃን ሰማዕታት እናንተ ሁላችሁ', 'ጻድቃን ሰማዕታት እናንተ ሁላችሁ', 'tsadqan semaዕtat enante hulachhu', 'Ethiopian Orthodox Tewahedo Mezmur - ጻድቃን ሰማዕታት እናንተ ሁላችሁ', 'አማልዱኝ ከአምላኬ ከአምላካችሁ
+ድንግል ሆይ --------------፦--
+613.ድንግል ማርያም እናታችን
+ድንግል ማርያም እናታችን /2/
+
+VERSE 1
+የጌታችን እናት ለምፒልን /2/', 'amaldugn keamlakie keamlakachhu
+dngl hoy --------------፦--
+613.dngl maryam enatachn
+dngl maryam enatachn /2/
+
+VERSE 1
+yegietachn enat lempiln /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1OS0WKHktVI', 'draft', 'pending', 'https://www.youtube.com/watch?v=1OS0WKHktVI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kirubiel-menberun-yemishekemulet-2', 'ኪሩቤል መንበሩን የሚሸከሙለት/2/', 'ኪሩቤል መንበሩን የሚሸከሙለት/2/', 'kirubiel menberun yemishekemulet/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ኪሩቤል መንበሩን የሚሸከሙለት/2/', 'መስቀል ተሸከመ ሊሆነን መድኃኒት /2', 'mesqel teshekeme lihonen medኃnit /2', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7hDANqCud8w', 'draft', 'pending', 'https://www.youtube.com/watch?v=7hDANqCud8w', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeiyesusn-mam-denaglm-aytew-2', 'የኢየሱስን ሕማም ደናግልም አይተው/2/', 'የኢየሱስን ሕማም ደናግልም አይተው/2/', 'yeiyesusn ሕmam denaglm aytew/2/', 'Ethiopian Orthodox Tewahedo Mezmur - የኢየሱስን ሕማም ደናግልም አይተው/2/', 'እያለቀሱለት ሄዱ ተከትለው/2/', 'eyaleqesulet hedu teketlew/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=bVS3zylpm3k', 'draft', 'pending', 'https://www.youtube.com/watch?v=bVS3zylpm3k', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beahya-lay-hono-wede-anchi-yemexaw', 'በአህያ ላይ ሆኖ ወደ አንቺ የመጣው', 'በአህያ ላይ ሆኖ ወደ አንቺ የመጣው', 'beahya lay hono wede anchi yemexaw', 'Ethiopian Orthodox Tewahedo Mezmur - በአህያ ላይ ሆኖ ወደ አንቺ የመጣው', 'ኢየሱስ ክርስቶስ የዓለም መድኃኒት ነው', 'iyesus krstos yeዓlem medኃnit new', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=9QLviA-Ybs0', 'draft', 'pending', 'https://www.youtube.com/watch?v=9QLviA-Ybs0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ho-na-bearyam', 'ሆሣዕና በአርያም', 'ሆሣዕና በአርያም', 'hoሣዕna bearyam', 'Ethiopian Orthodox Tewahedo Mezmur - ሆሣዕና በአርያም', 'ድኅነት ሆነ ለሁላችን ዛሬ በዓለም
+አክብሮናል ፈጣሪያችን በኢየሩሳሌም', 'dኅnet hone lehulachn zarie beዓlem
+akbronal fexariyachn beiyerusaliem', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=XlD6l8mrtrs', 'draft', 'pending', 'https://www.youtube.com/watch?v=XlD6l8mrtrs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yba-ngu-sb-t-4', 'ይባዕ ንጉሠ ስብሐት /4/', 'ይባዕ ንጉሠ ስብሐት /4/', 'ybaዕ nguሠ sbሐt /4/', 'Ethiopian Orthodox Tewahedo Mezmur - ይባዕ ንጉሠ ስብሐት /4/', '623.አርዉ ፕኀኅተ መኳንንት
+አርዉ ፕኀተ መኳንንት /2/
+ይባዕ አምላከ ምሕረት
+624.ሆሣዕና በአርያም ሆሣዕና
+
+VERSE 1
+ሆሣፅና ብለን እናቅርብ ምስጋና', '623.arwu pኀኅte mekuannt
+arwu pኀte mekuannt /2/
+ybaዕ amlake mሕret
+624.hoሣዕna bearyam hoሣዕna
+
+VERSE 1
+hoሣፅna blen enaqrb msgana', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=B3BH2ufRdLg', 'draft', 'pending', 'https://www.youtube.com/watch?v=B3BH2ufRdLg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('yba-ngu-sb-t-4', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ho-na-belu', 'ሆሣዕና በሉ ››', 'ሆሣዕና በሉ ››', 'hoሣዕna belu ››', 'Ethiopian Orthodox Tewahedo Mezmur - ሆሣዕና በሉ ››', 'ለሰማይ ንጉሥ ››
+ግርማን ለብሶ መጣ ››
+አኛን ሊቀድስ ››
+ሆሣዕና በሉ ››
+
+VERSE 1
+ለአምላከ ምሕረት ››
+ተወልዶ ከድንግል ››
+አንደ ሕጻናት ››
+አረኞች በዋሻ ››
+
+VERSE 2
+የሰገዱለት ››
+የአዳም ልጆች ሁሉ ››
+ደግሞም መላእክት ››', 'lesemay nguሥ ››
+grman lebso mexa ››
+agnan liqeds ››
+hoሣዕna belu ››
+
+VERSE 1
+leamlake mሕret ››
+teweldo kedngl ››
+ande ሕtsanat ››
+aregnoch bewasha ››
+
+VERSE 2
+yesegedulet ››
+yeadam ljoch hulu ››
+degmom melaekt ››', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=FUBXyXOjNQ8', 'draft', 'pending', 'https://www.youtube.com/watch?v=FUBXyXOjNQ8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ho-na-belu-ho-na', 'ሆሣዕና በሉ ሆሣዕና', 'ሆሣዕና በሉ ሆሣዕና', 'hoሣዕna belu hoሣዕna', 'Ethiopian Orthodox Tewahedo Mezmur - ሆሣዕና በሉ ሆሣዕና', 'ሆሣዕና በሉ ሆሣዕና
+ለወልደ ዳዊት ››', 'hoሣዕna belu hoሣዕna
+lewelde dawit ››', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=JFUrHUXBs2A', 'draft', 'pending', 'https://www.youtube.com/watch?v=JFUrHUXBs2A', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kesemayat-werdo-yeteseqelew', 'ከሰማያት ወርዶ የተሰቀለው', 'ከሰማያት ወርዶ የተሰቀለው', 'kesemayat werdo yeteseqelew', 'Ethiopian Orthodox Tewahedo Mezmur - ከሰማያት ወርዶ የተሰቀለው', 'ሞትን በሞት ሽሮ ይኸው አየነው
+ደቀመዛሙርቱ አጅጉን ተጨንቀው
+በጌታችን መሞት በሐዘን ተሞልተው
+በተዘጋ ደጃፍ ተሰብስበው ሳለ
+
+VERSE 1
+አጀቹን ዘርዓቶ ሰላም ለእናንተ አለ', 'motn bemot shro yኸw ayenew
+deqemezamurtu ajgun tecenqew
+begietachn memot beሐzen temoltew
+betezega dejaf tesebsbew sale
+
+VERSE 1
+ajechun zerዓto selam leenante ale', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=nR3cmavyaKY', 'draft', 'pending', 'https://www.youtube.com/watch?v=nR3cmavyaKY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('enantes-atfru-krstos-tene', 'እናንተስ አትፍሩ ክርስቶስ ተነሣ', 'እናንተስ አትፍሩ ክርስቶስ ተነሣ', 'enantes atfru krstos teneሣ', 'Ethiopian Orthodox Tewahedo Mezmur - እናንተስ አትፍሩ ክርስቶስ ተነሣ', 'አነግራችሏላው ››
+የተሠቀለውን ››
+አንድትሽ አውቃለው. ››
+ሕያዉን ከሙታን ››
+
+VERSE 1
+ለምን ፈለጋችሁ ››
+አንደተናገረው ››
+ተነሥቷል ጌታችሁ ››', 'anegrachlualaw ››
+yeteሠqelewn ››
+andtsh awqalew. ››
+ሕyawun kemutan ››
+
+VERSE 1
+lemn felegachhu ››
+andetenagerew ››
+teneሥtual gietachhu ››', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=U9NXyapeL6c', 'draft', 'pending', 'https://www.youtube.com/watch?v=U9NXyapeL6c', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('keegna-gara-newna-ye-rawit-gieta', 'ከእኛ ጋራ ነውና የሠራዊት ጌታ', 'ከእኛ ጋራ ነውና የሠራዊት ጌታ', 'keegna gara newna yeሠrawit gieta', 'Ethiopian Orthodox Tewahedo Mezmur - ከእኛ ጋራ ነውና የሠራዊት ጌታ', 'ጨለማውን ኑሮ የሰደት ሕይወት
+በአግዚአብሔር ፍቅር ብርሃን በራበት
+ባርነት ቀርቶ ነጻነት ወጣን
+ልመናችንን አግዚአብሔር ሰማን', 'celemawn nuro yesedet ሕywet
+beagziabሔr fqr brሃn berabet
+barnet qerto netsanet wexan
+lmenachnn agziabሔr seman', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=2sSBihfYdcI', 'draft', 'pending', 'https://www.youtube.com/watch?v=2sSBihfYdcI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('keegna-gara-newna-ye-rawit-gieta', 'prayer', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tezkare-tnsaiehu-lemed-nine-4', 'ተዝካረ ትንሳኤሁ ለመድኃኒነ/4/', 'ተዝካረ ትንሳኤሁ ለመድኃኒነ/4/', 'tezkare tnsaiehu lemedኃnine/4/', 'Ethiopian Orthodox Tewahedo Mezmur - ተዝካረ ትንሳኤሁ ለመድኃኒነ/4/', '646.4ተንሥአ ወአንሥአ ኩሎ ሙታን
+ተንሥአ ወአንሥአ ኩሎ ሙታን/2/
+ተንሥአ ወፈትሆሙ ለሙቁሐን
+ጵራቅሊጦስ መዝሙር
+
+VERSE 1
+647.ሸአንትሙስ ንበሩ ሀገረ ኢየሩሳሌም/
+አንትሙስ ንበሩ ሀገረ ኢየሩሳሌም/2
+አስከትለብሱ ኃይለ እምአርያም /4/
+አናንተ ግን ቆዩ በኢየሩሳሌም ሀገር /2
+
+VERSE 2
+አስክምታገኙ ኃይል ከሰማይ /2
+648.አምላካችን ዐረገ
+648.አምላካችን ዐረገ /2/ ወደ ሠማያት /2
+የሠማይ መላእክት በደስታ እያጀቡት ዐረገ ወደሰማያት
+
+VERSE 3
+649.ኃበ አቡሁ ዐርገ ሠማያት ዐርገ ሠማያት
+ኀበ አቡሁ ዐርገ ሰማያት ዐርገ ሰማያት /2
+ጳራቅሊጦስዛ መንፈሰጽድቅ አውረደ /4', '646.4tenሥa weanሥa kulo mutan
+tenሥa weanሥa kulo mutan/2/
+tenሥa wefethomu lemuquሐn
+phraqlixos mezmur
+
+VERSE 1
+647.sheantmus nberu hagere iyerusaliem/
+antmus nberu hagere iyerusaliem/2
+asketlebsu ኃyle emaryam /4/
+anante gn qoyu beiyerusaliem hager /2
+
+VERSE 2
+askmtagegnu ኃyl kesemay /2
+648.amlakachn ዐrege
+648.amlakachn ዐrege /2/ wede ሠmayat /2
+yeሠmay melaekt bedesta eyajebut ዐrege wedesemayat
+
+VERSE 3
+/2/
+/2/
+649.ኃbe abuhu ዐrge ሠmayat ዐrge ሠmayat
+ኀbe abuhu ዐrge semayat ዐrge semayat /2
+
+VERSE 4
+pharaqlixosza menfesetsdq awrede /4', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=97fiJTiWFBk', 'draft', 'pending', 'https://www.youtube.com/watch?v=97fiJTiWFBk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('be-lem-tslmet-letewaxew', 'በዓለም ጽልመት ለተዋጠው', 'በዓለም ጽልመት ለተዋጠው', 'beዓlem tslmet letewaxew', 'Ethiopian Orthodox Tewahedo Mezmur - በዓለም ጽልመት ለተዋጠው', 'የአውነት መንገድ ብርሃን ለጠፋበት
+በሁለንተናው ፈንጥቁበት', 'yeawnet menged brሃn lexefabet
+behulentenaw fenxqubet', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=9ma1YSsrr0M', 'draft', 'pending', 'https://www.youtube.com/watch?v=9ma1YSsrr0M', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('weybelomu-ru-weme-ru-lezeyeamn-2', 'ወይበሎሙ ሑሩ ወመሐሩ ለዘየአምን /2', 'ወይበሎሙ ሑሩ ወመሐሩ ለዘየአምን /2', 'weybelomu ሑru wemeሐru lezeyeamn /2', 'Ethiopian Orthodox Tewahedo Mezmur - ወይበሎሙ ሑሩ ወመሐሩ ለዘየአምን /2', 'ወንጌል መንግሥተ ሰማያት /4
+657.መንፈስ ቅዱስ ወረደ ላዕለ ሐዋርያት /2
+ተመሲሎ /5 በነደ እሳት /2
+መንፈስ ቅዱስ በሐዋርያት ላይ በእሳት
+
+VERSE 1
+አምሣል ወረደ
+6568.አየባረካቸው ወደ ላይ አቀና/2', 'wengiel mengሥte semayat /4
+657.menfes qdus werede laዕle ሐwaryat /2
+temesilo /5 benede esat /2
+menfes qdus beሐwaryat lay beesat
+
+VERSE 1
+amሣl werede
+6568.ayebarekachew wede lay aqena/2', 'amharic', 'mezmur', 'ማኅበረ ቅዱሳን', 'https://www.youtube.com/watch?v=xSfJyHgVhFQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=xSfJyHgVhFQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('weybelomu-ru-weme-ru-lezeyeamn-2', 'apostles', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beandnet-honew-iyerusaliem', 'በአንድነት ሆነው ኢየሩሳሌም', 'በአንድነት ሆነው ኢየሩሳሌም', 'beandnet honew iyerusaliem', 'Ethiopian Orthodox Tewahedo Mezmur - በአንድነት ሆነው ኢየሩሳሌም', 'ተስፋ ሲጠብቁ ከላይ ከአርያም', 'tesfa sixebqu kelay kearyam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=t1xBki280HE', 'draft', 'pending', 'https://www.youtube.com/watch?v=t1xBki280HE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yegnbot-ldeta', 'የግንቦት ልደታ', 'የግንቦት ልደታ', 'yegnbot ldeta', 'Ethiopian Orthodox Tewahedo Mezmur - የግንቦት ልደታ', '671.ዮም ኮነ ፍሥሐ
+ዮም ኮነ ፍስሐ በእንተ ልደታ ለማርያም /2/
+አማን አማን በአማን ተወልደት /2 እአመብርሃነን/2/
+672. እስመ እአበውእ ውስተ
+
+VERSE 1
+አስመ አበውአእአ ውስተ መካን ማኅደረ ስብሐት
+ቤተ እግዚአብሔር
+በቃለ አሚን ወበትፍሥሕት ደምጽ
+አለ ይገብሩ በዓለ ልደታ ለማርያም
+
+VERSE 2
+የግንቦት ልደታ ወረብ
+ጽፋት
+ዮም ፍሥሐ ኮነ በእንተ ልደታ ለማርያም
+አምሐና
+
+VERSE 3
+ወኢያቄም ከመትቤዙ ነቢያተ ወጻድቃን አማን
+ተወልደት አመብርፃዛን', '671.yom kone fሥሐ
+yom kone fsሐ beente ldeta lemaryam /2/
+aman aman beaman teweldet /2 eamebrሃnen/2/
+672. esme eabewe wste
+
+VERSE 1
+asme abewaea wste mekan maኅdere sbሐt
+biete egziabሔr
+beqale amin webetfሥሕt demts
+ale ygebru beዓle ldeta lemaryam
+
+VERSE 2
+yegnbot ldeta wereb
+tsfat
+yom fሥሐ kone beente ldeta lemaryam
+amሐna
+
+VERSE 3
+weiyaqiem kemetbiezu nebiyate wetsadqan aman
+teweldet amebrፃzan', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=dIPDpkdDVqg', 'draft', 'pending', 'https://www.youtube.com/watch?v=dIPDpkdDVqg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeamlak-enat-2-yemed-nie-lem-2-2', 'የአምላክ እናት /2/ የመድኃኔዓለም /2/2', 'የአምላክ እናት /2/ የመድኃኔዓለም /2/2', 'yeamlak enat /2/ yemedኃnieዓlem /2/2', 'Ethiopian Orthodox Tewahedo Mezmur - የአምላክ እናት /2/ የመድኃኔዓለም /2/2', 'ተወለደች ድንግል ማርያም', 'teweledech dngl maryam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=akIaNHirbGM', 'draft', 'pending', 'https://www.youtube.com/watch?v=akIaNHirbGM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('keanbesoch-menoriya', 'ከአንበሶች መኖሪያ', 'ከአንበሶች መኖሪያ', 'keanbesoch menoriya', 'Ethiopian Orthodox Tewahedo Mezmur - ከአንበሶች መኖሪያ', 'ከነብሮች ተራራ
+መጥተሸ አስደስቺኝ
+አናቴ ሙሽራ
+ከአንበሶች መኖሪያ ከሊባኖስ ከነብሮች ተራራ
+
+VERSE 1
+መጥተሸ አስደስቺኝ ከሊባኖስ አናቴ ሙሽራ
+የልብስሽ መዓዛ ከሊባኖስ የሊባኖስ ሽታ
+ሮማን ናርዶስ ነው ከሊባኖስ እናቱ ለጌታ', 'kenebroch terara
+mexteshe asdeschign
+anatie mushra
+keanbesoch menoriya kelibanos kenebroch terara
+
+VERSE 1
+mexteshe asdeschign kelibanos anatie mushra
+yelbssh meዓza kelibanos yelibanos shta
+roman nardos new kelibanos enatu legieta', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=S-kJtjemLcU', 'draft', 'pending', 'https://www.youtube.com/watch?v=S-kJtjemLcU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('keanbesoch-menoriya', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('xiatene-seali-lene-qdst', 'ኃጢአተነ ሰአሊ ለነ ቅድስት', 'ኃጢአተነ ሰአሊ ለነ ቅድስት', 'ኃxiatene seali lene qdst', 'Ethiopian Orthodox Tewahedo Mezmur - ኃጢአተነ ሰአሊ ለነ ቅድስት', 'ኃጢአተነ ሰአሊ ለነ ቅድስት
+ኃጢአተነ ሰአሊ ለነ ቅድስት /2/', 'ኃxiatene seali lene qdst
+ኃxiatene seali lene qdst /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=H6P5ko6fNo8', 'draft', 'pending', 'https://www.youtube.com/watch?v=H6P5ko6fNo8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bedngl-meweled', 'በድንግል መወለድ', 'በድንግል መወለድ', 'bedngl meweled', 'Ethiopian Orthodox Tewahedo Mezmur - በድንግል መወለድ', 'በድንግል መወለድ የአሳት ባሕር በንቺ ተሻግረዋል
+ቀረልን አበሳ ለሰማያዊው ክብር በቅተዋል/2/', 'bedngl meweled yeasat baሕr benchi teshagrewal
+qereln abesa lesemayawiw kbr beqtewal/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=wOo1yY2VS_E', 'draft', 'pending', 'https://www.youtube.com/watch?v=wOo1yY2VS_E', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yedawit-tnbitu', 'የዳዊት ትንቢቱ', 'የዳዊት ትንቢቱ', 'yedawit tnbitu', 'Ethiopian Orthodox Tewahedo Mezmur - የዳዊት ትንቢቱ', 'የዳዊት ትንቢቱ ሕይወታቸውም በአንቺ ትድናለች', 'yedawit tnbitu ሕywetachewm beanchi tdnalech', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hSa1eTR6tRs', 'draft', 'pending', 'https://www.youtube.com/watch?v=hSa1eTR6tRs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('be-wan-mknyat', 'በሔዋን ምክንያት', 'በሔዋን ምክንያት', 'beሔwan mknyat', 'Ethiopian Orthodox Tewahedo Mezmur - በሔዋን ምክንያት', 'ያጣነውን ሰላም
+ዛሬ አገኘነው
+በድንግል ማርያም
+የምሥራች እንበል
+
+VERSE 1
+በሔዋን ምክንያት ፍሥሐ ኮነ
+ያጣነውን ሰላም >> >>
+ዛሬ አገኘነው >> >>
+በድንግል ማርያም >> >>
+
+VERSE 2
+የምሥራች እንበል >> >>', 'yaxanewn selam
+zarie agegnenew
+bedngl maryam
+yemሥrach enbel
+
+VERSE 1
+beሔwan mknyat fሥሐ kone
+yaxanewn selam >> >>
+zarie agegnenew >> >>
+bedngl maryam >> >>
+
+VERSE 2
+yemሥrach enbel >> >>', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=gPBM-TfI-o8', 'draft', 'pending', 'https://www.youtube.com/watch?v=gPBM-TfI-o8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mikaiel-melmale-werq', 'ሚካኤል ሐመልማለ ወርቅ', 'ሚካኤል ሐመልማለ ወርቅ', 'mikaiel ሐmelmale werq', 'Ethiopian Orthodox Tewahedo Mezmur - ሚካኤል ሐመልማለ ወርቅ', 'ሚካኤል ሐመልማለ ወርቅ /2/ ልብሱ ዘመብረቅ
+ሚካኤል ሐመልማለ ወርቅ የወርቅ ልምላሜ /2/
+ና /3/ ስለምንህ ቆሜ
+ገብርኤል ሊቀ መላእክት /2/', 'mikaiel ሐmelmale werq /2/ lbsu zemebreq
+/2/
+/2/
+mikaiel ሐmelmale werq yewerq lmlamie /2/
+
+VERSE 1
+na /3/ slemnh qomie
+gebriel liqe melaekt /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=R4od8g6ECOg', 'draft', 'pending', 'https://www.youtube.com/watch?v=R4od8g6ECOg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('waryaw-menekusie-yemerexut-lasie-2', 'ሐዋርያው መነኩሴ የመረጡት ሥላሴ/2/', 'ሐዋርያው መነኩሴ የመረጡት ሥላሴ/2/', 'ሐwaryaw menekusie yemerexut ሥlasie/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሐዋርያው መነኩሴ የመረጡት ሥላሴ/2/', 'ተክለሃይማኖት ሆኗል ጠበቃ ለነፍሴ /2/', 'tekleሃymanot honual xebeqa lenefsie /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=nICNe9PVmbg', 'draft', 'pending', 'https://www.youtube.com/watch?v=nICNe9PVmbg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('waryaw-menekusie-yemerexut-lasie-2', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dagmawi-yo-ns-xefer-yetaxeqe', 'ዳግማዊ ዮሐንስ ጠፈር የታጠቀ', 'ዳግማዊ ዮሐንስ ጠፈር የታጠቀ', 'dagmawi yoሐns xefer yetaxeqe', 'Ethiopian Orthodox Tewahedo Mezmur - ዳግማዊ ዮሐንስ ጠፈር የታጠቀ', 'ንጹሕ ባህታዊ ጠላት ያስጨነቀ
+የጸጋ ዘአብ ፍሬ ዛፍ ሆኖ በቀለ
+በደብረ ሊባኖስ መናኝ አስከተለ', 'ntsuሕ bahtawi xelat yasceneqe
+yetsega zeab frie zaf hono beqele
+bedebre libanos menagn asketele', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=VtozJ8yxIcQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=VtozJ8yxIcQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('dagmawi-yo-ns-xefer-yetaxeqe', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yebarekew-w-yeregexkew-meriet', 'የባረከው ውኃ የረገጥከው መሬት', 'የባረከው ውኃ የረገጥከው መሬት', 'yebarekew wኃ yeregexkew meriet', 'Ethiopian Orthodox Tewahedo Mezmur - የባረከው ውኃ የረገጥከው መሬት', 'ጥላህ ያረፈበት ሆንዋል ጸበል አምነት
+ኩና ተመልከቱ ድውያን ሲፈቱ
+ይሰብካል ተክለአብ ዛሬም አንደጥንቱ', 'xlah yarefebet honwal tsebel amnet
+kuna temelketu dwyan sifetu
+ysebkal tekleab zariem andexntu', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=tCMbySo6Lfo', 'draft', 'pending', 'https://www.youtube.com/watch?v=tCMbySo6Lfo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tenegro-yemayalq-new-tsegah-2', 'ተነግሮ የማያልቅ ነው ጸጋህ /2/', 'ተነግሮ የማያልቅ ነው ጸጋህ /2/', 'tenegro yemayalq new tsegah /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ተነግሮ የማያልቅ ነው ጸጋህ /2/', 'በጸሎት የተጋህ የሄህይማኖት ፍሬ
+ተክለ ሃይማኖት የወንጌል ገበሬ', 'betselot yetegah yehehymanot frie
+tekle ሃymanot yewengiel geberie', 'amharic', 'mezmur', 'ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ', 'https://www.youtube.com/watch?v=_sANgGSKgqo', 'draft', 'pending', 'https://www.youtube.com/watch?v=_sANgGSKgqo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('tenegro-yemayalq-new-tsegah-2', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('aba-abune', 'አባ አቡነ', 'አባ አቡነ', 'aba abune', 'Ethiopian Orthodox Tewahedo Mezmur - አባ አቡነ', 'አባ አቡነ/2/ መምህርነ አባ ተክለሃይማኖት/2/
+አእምአአላፍ ኅሩይ/ሪ2/ አባ /6/
+አቡነ ተክለሃይማኖት /2/
+731.ለሳዉል ወኬፋ
+
+VERSE 1
+ለሳዉል ወኬፋ/ሪ/
+አክሊሎሙ ተትኩነነ ተስፋ/4/
+732.የአምላክን በረከት', 'aba abune/2/ memhrne aba tekleሃymanot/2/
+aemaalaf ኅruy/ri2/ aba /6/
+abune tekleሃymanot /2/
+731.lesawul wekiefa
+
+VERSE 1
+lesawul wekiefa/ri/
+aklilomu tetkunene tesfa/4/
+732.yeamlakn bereket', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Z2hQRIZAp2Q', 'draft', 'pending', 'https://www.youtube.com/watch?v=Z2hQRIZAp2Q', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('aba-abune', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('zele-lem-ynoral-tekle-ymanot', 'ዘለዓለም ይኖራል ተክለ ሃይማኖት', 'ዘለዓለም ይኖራል ተክለ ሃይማኖት', 'zeleዓlem ynoral tekle ሃymanot', 'Ethiopian Orthodox Tewahedo Mezmur - ዘለዓለም ይኖራል ተክለ ሃይማኖት', 'በዓለም ሲያሰጠራህ ተክለ ሃይማኖት', 'beዓlem siyasexerah tekle ሃymanot', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=y6i_Pyp0yN0', 'draft', 'pending', 'https://www.youtube.com/watch?v=y6i_Pyp0yN0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('zele-lem-ynoral-tekle-ymanot', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bemenfesqdus-debre-libanos', 'በመንፈስቅዱስ ደብረ ሊባኖስ', 'በመንፈስቅዱስ ደብረ ሊባኖስ', 'bemenfesqdus debre libanos', 'Ethiopian Orthodox Tewahedo Mezmur - በመንፈስቅዱስ ደብረ ሊባኖስ', 'በቅዱሳን ጸሎት ደብረ ሊባኖስ
+ስለተቀደሠች ደብረ ሊባኖስ
+ለአድባራት ሁሉ ደብረ ሊባኖስ
+በክብር ትበልጣለች ደብረ ሊባኖስ', 'beqdusan tselot debre libanos
+sleteqedeሠch debre libanos
+leadbarat hulu debre libanos
+bekbr tbelxalech debre libanos', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hr2dvwF9TmY', 'draft', 'pending', 'https://www.youtube.com/watch?v=hr2dvwF9TmY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('bemenfesqdus-debre-libanos', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeqdusan-be-t-yetselot-washachew', 'የቅዱሳን በዓት የጸሎት ዋሻቸው', 'የቅዱሳን በዓት የጸሎት ዋሻቸው', 'yeqdusan beዓt yetselot washachew', 'Ethiopian Orthodox Tewahedo Mezmur - የቅዱሳን በዓት የጸሎት ዋሻቸው', 'ቤ/ክ ናት አምባ መጠጊያቸው', 'bie/k nat amba mexegiyachew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1r25wlcjeF0', 'draft', 'pending', 'https://www.youtube.com/watch?v=1r25wlcjeF0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('yeqdusan-be-t-yetselot-washachew', 'prayer', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tekle-ymanot-y-yeityophya-si-y', 'ተክለሃይማኖት ፀሐይ የኢትዮጵያ ሲሣይ', 'ተክለሃይማኖት ፀሐይ የኢትዮጵያ ሲሣይ', 'tekleሃymanot ፀሐy yeityophya siሣy', 'Ethiopian Orthodox Tewahedo Mezmur - ተክለሃይማኖት ፀሐይ የኢትዮጵያ ሲሣይ', 'ምፅራፈ ቅዱሳን /2/ በነፍስም በስጋ አትለየኝ
+የቅዱሳን አርእስት የዋሻው ብርፃን', 'mፅrafe qdusan /2/ benefsm besga atleyegn
+yeqdusan arest yewashaw brፃn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hhs-MoMg2IQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=hhs-MoMg2IQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('tekle-ymanot-y-yeityophya-si-y', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gena-be-st-qen-be-nneth', 'ገና በሦስት ቀን በሕፃንነትህ', 'ገና በሦስት ቀን በሕፃንነትህ', 'gena beሦst qen beሕፃnneth', 'Ethiopian Orthodox Tewahedo Mezmur - ገና በሦስት ቀን በሕፃንነትህ', 'ጌታን አወደሰው ቅዱስ አንደበትህ
+ደግሞም አግዚአብሔር አስቦፃልና
+በወጣትነትህ ወጣህ ለምነና/2/', 'gietan awedesew qdus andebeth
+degmom agziabሔr asboፃlna
+bewexatneth wexah lemnena/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=kLsG1lCbhRc', 'draft', 'pending', 'https://www.youtube.com/watch?v=kLsG1lCbhRc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('gena-be-st-qen-be-nneth', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tekleab', 'ተክለአብ', 'ተክለአብ', 'tekleab', 'Ethiopian Orthodox Tewahedo Mezmur - ተክለአብ', 'ተክለአብ ሐዲስ ሐዋርያ /4/
+ሐዲስ ሐዋርያ /2/ ዘኢትዮጵያ /2/', 'tekleab ሐdis ሐwarya /4/
+ሐdis ሐwarya /2/ zeityophya /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=aBkIeaYOPAg', 'draft', 'pending', 'https://www.youtube.com/watch?v=aBkIeaYOPAg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('emne-adbarat-kulon-zetelealet-besmu', 'እምነ አድባራት ኩሎን ዘተለአለት በስሙ', 'እምነ አድባራት ኩሎን ዘተለአለት በስሙ', 'emne adbarat kulon zetelealet besmu', 'Ethiopian Orthodox Tewahedo Mezmur - እምነ አድባራት ኩሎን ዘተለአለት በስሙ', 'ትዌድሶ
+ኢየሱስ ክርስቶሰ እንተ ቀደሰ በደሙ', 'twiedso
+iyesus krstose ente qedese bedemu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=qBL5TrVb2Q4', 'draft', 'pending', 'https://www.youtube.com/watch?v=qBL5TrVb2Q4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('emne-adbarat-kulon-zetelealet-besmu', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('begietachn-mesqel-2', 'በጌታችን መስቀል /2/', 'በጌታችን መስቀል /2/', 'begietachn mesqel /2/', 'Ethiopian Orthodox Tewahedo Mezmur - በጌታችን መስቀል /2/', 'ሁለቱም ሰማዕታት ተጎናጸፉ ድል/2/', 'huletum semaዕtat tegonatsefu dl/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=j_zh6OotpVc', 'draft', 'pending', 'https://www.youtube.com/watch?v=j_zh6OotpVc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('sebat-aklilatn', 'ሰባት አክሊላትን ››', 'ሰባት አክሊላትን ››', 'sebat aklilatn ››', 'Ethiopian Orthodox Tewahedo Mezmur - ሰባት አክሊላትን ››', 'ጌታ የሸለመህ አድነኒ /2/ ጊዮርጊሰ አሞተ
+አዳ', 'gieta yeshelemeh adneni /2/ giyorgise amote
+ada', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=R_K0wgSJOok', 'draft', 'pending', 'https://www.youtube.com/watch?v=R_K0wgSJOok', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('n-qirqos-le-hrt-zeiyafarhoke-negodguad-2', 'ሕፃን ቂርቆስ ለፅህርት ዘኢያፋርሆከ ነጎድጓድ/2/', 'ሕፃን ቂርቆስ ለፅህርት ዘኢያፋርሆከ ነጎድጓድ/2/', 'ሕፃn qirqos leፅhrt zeiyafarhoke negodguad/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሕፃን ቂርቆስ ለፅህርት ዘኢያፋርሆከ ነጎድጓድ/2/', 'ዮም ባርክ ማኅበረከ/2/ ለአለ አሐዱ አሐዱ/ሪ//', 'yom bark maኅbereke/2/ leale aሐdu aሐdu/ri//', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=-OYjHfbjmMQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=-OYjHfbjmMQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('sema-tat', 'ሰማዕታት', 'ሰማዕታት', 'semaዕtat', 'Ethiopian Orthodox Tewahedo Mezmur - ሰማዕታት', 'ሰላም ለአንተ ይሁን ፍጡነ ረድኤት
+የልዳው ፀሐይ ፍጡነ ረድኤት
+በጨካኝ ንጉሥ ፊት ቆምክ አደባባይ
+ታማኝ አገልጋይ ነህ ፍጡነ ረድኤት
+
+VERSE 1
+ስቃይ ያልበገረህ ፍጡነ ረድኤት
+ሰማዕታት
+ሰላም ለአንተ ይሁን ፍጡነ ረድኤት
+የልዳው ፀሐይ ፍጡነ ረድኤት
+
+VERSE 2
+በጨካኝ ንጉሥ ፊት ቆምክ አደባባይ
+ታማኝ አገልጋይ ነህ ፍጡነ ረድኤት
+ስቃይ ያልበገረህ ፍጡነ ረድኤት
+አክሊልን አገኘህ መከራን ታግሠህ/2/', 'selam leante yhun fxune rediet
+yeldaw ፀሐy fxune rediet
+becekagn nguሥ fit qomk adebabay
+tamagn agelgay neh fxune rediet
+
+VERSE 1
+sqay yalbegereh fxune rediet
+semaዕtat
+selam leante yhun fxune rediet
+yeldaw ፀሐy fxune rediet
+
+VERSE 2
+becekagn nguሥ fit qomk adebabay
+tamagn agelgay neh fxune rediet
+sqay yalbegereh fxune rediet
+akliln agegneh mekeran tagሠh/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xJnsDBQBppo', 'draft', 'pending', 'https://www.youtube.com/watch?v=xJnsDBQBppo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('sema-tat', 'martyrs', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tewa-do-nts-t-qdst-emnetachn-2', 'ተዋሕዶ ንጽሕት ቅድስት እምነታችን /2/', 'ተዋሕዶ ንጽሕት ቅድስት እምነታችን /2/', 'tewaሕdo ntsሕt qdst emnetachn /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ተዋሕዶ ንጽሕት ቅድስት እምነታችን /2/', 'ኑሪ ለዘለዓለም ተከብረሽ በሁላችን (2) /2/', 'nuri lezeleዓlem tekebresh behulachn (2) /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7VqxeTupUIk', 'draft', 'pending', 'https://www.youtube.com/watch?v=7VqxeTupUIk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tewa-do-ymanot', 'ተዋሕዶ ሃይማኖት', 'ተዋሕዶ ሃይማኖት', 'tewaሕdo ሃymanot', 'Ethiopian Orthodox Tewahedo Mezmur - ተዋሕዶ ሃይማኖት', 'ተዋሕዶ ሃይማኖት እንከን የሌላት /2/
+አንከተላት /2/ አስከ ሞት /2/ በአውነት
+ያለፍርሃት /2/
+811. ጽንዑ በተዋሕዶ
+
+VERSE 1
+ጽንዑ በተዋሕዶ እምነት /2/
+መሠረት /2/ ናትና ሕይወት /2/
+812. እግዚአብሔር ይሀበነ
+አግዚአብሔር የሀበነ ልሳነ ጥበብ /2/
+
+VERSE 2
+ከመ ናእምር ሕገ /2/ ለቤተክርስቲያን /2/
+ትርጉም ፡:- እግዚአብሔር ሆይ የቤተ ክርስቲያንን
+ሕግ አናውቅ ዘንድ አውቀትን ስጠን
+813. በሃይማኖት
+
+VERSE 3
+በጭራሽ እንዳይደርቅ የሄይማኖት ሥሩ
+መበርታት አለበት ሁሉም በተግባሩ
+በሃይማኖት አለብን መጽናት
+አንሁን በመንፈስ አንሁን ልበ መንታ
+
+VERSE 4
+አንዲከፈትልን በሩን ስንመታ', 'tewaሕdo ሃymanot enken yelielat /2/
+anketelat /2/ aske mot /2/ beawnet
+yalefrሃt /2/
+811. tsnዑ betewaሕdo
+
+VERSE 1
+tsnዑ betewaሕdo emnet /2/
+meሠret /2/ natna ሕywet /2/
+812. egziabሔr yhabene
+agziabሔr yehabene lsane xbeb /2/
+
+VERSE 2
+keme naemr ሕge /2/ lebietekrstiyan /2/
+trgum ፡:- egziabሔr hoy yebiete krstiyann
+ሕg anawq zend awqetn sxen
+813. beሃymanot
+
+VERSE 3
+becrash endayderq yeheymanot ሥru
+mebertat alebet hulum betegbaru
+beሃymanot alebn metsnat
+anhun bemenfes anhun lbe menta
+
+VERSE 4
+andikefetln berun snmeta', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=tasyROcAqm4', 'draft', 'pending', 'https://www.youtube.com/watch?v=tasyROcAqm4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('and-emnet-new-2-tsnu-ymanot-new-2', 'አንድ እምነት ነው /2/ ጽኑ ሃይማኖት ነው /2/', 'አንድ እምነት ነው /2/ ጽኑ ሃይማኖት ነው /2/', 'and emnet new /2/ tsnu ሃymanot new /2/', 'Ethiopian Orthodox Tewahedo Mezmur - አንድ እምነት ነው /2/ ጽኑ ሃይማኖት ነው /2/', 'ነቢያትን በትንቢት ሲያናግር የኖረው', 'nebiyatn betnbit siyanagr yenorew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=m4dYB65wDXw', 'draft', 'pending', 'https://www.youtube.com/watch?v=m4dYB65wDXw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ytbarek', 'ይትባረክ', 'ይትባረክ', 'ytbarek', 'Ethiopian Orthodox Tewahedo Mezmur - ይትባረክ', 'ይትባረክ እግዚአብሔር አምላኮሙ ለአበዊነ/2/
+ዘገብረ ዐቢየ ወመንክረ/2/ እግዚአብሔር/2/
+824.አንደ እግዚአብሔር ያለ
+አንደ እግዚአብሔር ያለ ማንም የለምና
+
+VERSE 1
+አልል በሉ ቁሙ ለምስጋና/ሪ2/', 'ytbarek egziabሔr amlakomu leabewine/2/
+zegebre ዐbiye wemenkre/2/ egziabሔr/2/
+824.ande egziabሔr yale
+ande egziabሔr yale manm yelemna
+
+VERSE 1
+all belu qumu lemsgana/ri2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=4nAAqQ_Hu7w', 'draft', 'pending', 'https://www.youtube.com/watch?v=4nAAqQ_Hu7w', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeiyareko-qxr-yemaydeferew', 'የኢያረኮ ቅጥር የማይደፈረው', 'የኢያረኮ ቅጥር የማይደፈረው', 'yeiyareko qxr yemaydeferew', 'Ethiopian Orthodox Tewahedo Mezmur - የኢያረኮ ቅጥር የማይደፈረው', 'ይኸው ፈራረሰ የሰው እጅ ሳይነካው
+ኃይለኞቹም ቢበረታቱብን', 'yኸw ferarese yesew ej saynekaw
+ኃylegnochum biberetatubn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=rCQ3Wy0UUZ8', 'draft', 'pending', 'https://www.youtube.com/watch?v=rCQ3Wy0UUZ8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mieda-lay-wedeqe-gasha-hono-agziab-r', 'ሜዳ ላይ ወደቀ ጋሻ ሆኖ አግዚአብሔር', 'ሜዳ ላይ ወደቀ ጋሻ ሆኖ አግዚአብሔር', 'mieda lay wedeqe gasha hono agziabሔr', 'Ethiopian Orthodox Tewahedo Mezmur - ሜዳ ላይ ወደቀ ጋሻ ሆኖ አግዚአብሔር', 'ለሥላሴ ይድረስ ምስጋናችን', 'leሥlasie ydres msganachn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ZC23_uYnY9w', 'draft', 'pending', 'https://www.youtube.com/watch?v=ZC23_uYnY9w', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('mieda-lay-wedeqe-gasha-hono-agziab-r', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('anamnalen-bemenfes-qdus', 'አናምናለን በመንፈስ ቅዱስ', 'አናምናለን በመንፈስ ቅዱስ', 'anamnalen bemenfes qdus', 'Ethiopian Orthodox Tewahedo Mezmur - አናምናለን በመንፈስ ቅዱስ', 'ኸኸ ፍጹም ጥርጣሬ ሳይኖር አንድ
+እግዚአብሔር ብለን/2/
+የሥላሴን ቸርነት የሥላሴን ጥበብ
+ልቡናችን ይረዳ ኅሊናቸን ይማር
+
+VERSE 1
+ኸኸ አንደ አምላክነቱ አንመነው/
+ከአውነት ሁሉ የሚበልጥ ነው
+በስም በአካል በግብር
+ሦስትነቱን አምነን
+
+VERSE 2
+በመለኮት አንድ አምላክ ብለን እናምናለን
+አናምናለን በአብ አናምናለን በወልድ
+አናምናለን በመንፈስ ቅዱስ', 'ኸኸ ftsum xrxarie saynor and
+egziabሔr blen/2/
+yeሥlasien chernet yeሥlasien xbeb
+lbunachn yreda ኅlinachen ymar
+
+VERSE 1
+ኸኸ ande amlaknetu anmenew/
+keawnet hulu yemibelx new
+besm beakal begbr
+ሦstnetun amnen
+
+VERSE 2
+bemelekot and amlak blen enamnalen
+anamnalen beab anamnalen beweld
+anamnalen bemenfes qdus', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=mbMBR2A42mg', 'draft', 'pending', 'https://www.youtube.com/watch?v=mbMBR2A42mg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('anamnalen-bemenfes-qdus', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dnq-adrgolgnal-lj-hoy-na-alegn', 'ድንቅ አድርጎልኛል ልጅ ሆይ ና አለኝ', 'ድንቅ አድርጎልኛል ልጅ ሆይ ና አለኝ', 'dnq adrgolgnal lj hoy na alegn', 'Ethiopian Orthodox Tewahedo Mezmur - ድንቅ አድርጎልኛል ልጅ ሆይ ና አለኝ', 'ድንቅ አድርጎልኛል በዳግም ምጽዐቱ', 'dnq adrgolgnal bedagm mtsዐtu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1zyXg_zYNjk', 'draft', 'pending', 'https://www.youtube.com/watch?v=1zyXg_zYNjk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dnq-adrgolgnal-dnq-adrgolgnal', 'ድንቅ አድርጎልኛል ድንቅ አድርጎልኛል', 'ድንቅ አድርጎልኛል ድንቅ አድርጎልኛል', 'dnq adrgolgnal dnq adrgolgnal', 'Ethiopian Orthodox Tewahedo Mezmur - ድንቅ አድርጎልኛል ድንቅ አድርጎልኛል', 'ድንቅ አድርጎልኛል ጠላቶቼን ሁሉ
+ድንቅ አድርጎልኛል  ሲዋደዱብኝ
+ድንቅ አድርጎልኛል ማን ይደርስለታል
+ድንቅ አድርጎልኛል እያሉ ሲሉኝ
+
+VERSE 1
+ድንቅ አድርጎልኛል ፈጥነህ ደረስክልኝ
+ድንቅ አድርጎልኛል ከሞት አዳንከኝ
+836.ስሙ በክብር
+ስሙ በክብር ክፍ ከፍ በሏልና', 'dnq adrgolgnal xelatochien hulu
+dnq adrgolgnal  siwadedubgn
+dnq adrgolgnal man ydersletal
+dnq adrgolgnal eyalu silugn
+
+VERSE 1
+dnq adrgolgnal fexneh deresklgn
+dnq adrgolgnal kemot adankegn
+836.smu bekbr
+smu bekbr kf kef belualna', 'amharic', 'mezmur', 'ዘማሪ ቀሲስ ምንዳዬ ብርሃኑ', 'https://www.youtube.com/watch?v=X8oFwUIwdY4', 'draft', 'pending', 'https://www.youtube.com/watch?v=X8oFwUIwdY4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('msgana-le-lasie', 'ምስጋና ለሥላሴ', 'ምስጋና ለሥላሴ', 'msgana leሥlasie', 'Ethiopian Orthodox Tewahedo Mezmur - ምስጋና ለሥላሴ', 'ምስጋና ለሥላሴ ለዓለሙ ሁሉ ፈጣሪ/2/
+በመላእክቱ ነውና ሲመሰገን ኗሪ/4/', 'msgana leሥlasie leዓlemu hulu fexari/2/
+bemelaektu newna simesegen nuari/4/', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=E7kDkKROCEU', 'draft', 'pending', 'https://www.youtube.com/watch?v=E7kDkKROCEU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('msgana-le-lasie', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('letalaq-smu-leqdus-smu-ydresw-msgana', 'ለታላቅ ስሙ ለቅዱስ ስሙ', 'ለታላቅ ስሙ ለቅዱስ ስሙ', 'letalaq smu leqdus smu ydresw msgana', 'Ethiopian Orthodox Tewahedo Mezmur - ለታላቅ ስሙ ለቅዱስ ስሙ', 'ለታላቅ ስሙ ለቅዱስ ስሙ ይድረሰው ምስጋና
+ሕዝቡን አየመራ ያሻገረ
+ባሕረ ኤርትራን የከፈለ
+ጠላቶችን ውኃ ከዳናቸው
+
+VERSE 1
+ሕዝብህም በደስታ አልል አለ
+ለታላቅ ስሙ ለቅዱስ ስሙ
+ለታላቅ ስሙ ለቅዱስ ስሙ
+ለታላቅ ስሙ ለቅዱስ ስሙ
+
+VERSE 2
+ለታላቅ ስሙ ለቅዱስ ስሙ', 'letalaq smu leqdus smu ydresew msgana
+/2/
+/2/
+ሕzbun ayemera yashagere
+
+VERSE 1
+baሕre iertran yekefele
+xelatochn wኃ kedanachew
+ሕzbhm bedesta all ale
+letalaq smu leqdus smu
+
+VERSE 2
+letalaq smu leqdus smu
+letalaq smu leqdus smu
+letalaq smu leqdus smu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=sfxl2PLVqso', 'draft', 'pending', 'https://www.youtube.com/watch?v=sfxl2PLVqso', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('letalaq-smu-leqdus-smu-ydresw-msgana', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qdus-fexariyien-anten-tamlkh', 'ቅዱስ ፈጣሪዬን አንተን ታምልክህ', 'ቅዱስ ፈጣሪዬን አንተን ታምልክህ', 'qdus fexariyien anten tamlkh', 'Ethiopian Orthodox Tewahedo Mezmur - ቅዱስ ፈጣሪዬን አንተን ታምልክህ', 'በመሐሪነትህ ጠብቀህ ያኖርከኝ
+በማዳን ችሎታህ ለዚህ ያደረስከኝ
+ለአንተ ለአምላኬ ምስጋና አቀርባለሁ
+ስምህን ለዘለዓለም ሁሌም እጠራለሁ', 'bemeሐrineth xebqeh yanorkegn
+bemadan chlotah lezih yadereskegn
+leante leamlakie msgana aqerbalehu
+smhn lezeleዓlem huliem exeralehu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=4EoFK2hIUKQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=4EoFK2hIUKQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('qdus-fexariyien-anten-tamlkh', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gosquala-bhonm-msgana-aqerbalehu-2', 'ጎስቋላ ብሆንም ምስጋና አቀርባለሁ/2/', 'ጎስቋላ ብሆንም ምስጋና አቀርባለሁ/2/', 'gosquala bhonm msgana aqerbalehu/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ጎስቋላ ብሆንም ምስጋና አቀርባለሁ/2/', 'አንደ ቃልህ መሄድ መራመድ አቅቶኝ
+የኃጢአቱ መንገድ ማዕበሉ ገፍቶኝ
+ወደ አርሱ ስማጸን ደግሞም ስጸጸት
+አላሳፈረኝም መጣ በምሕረት /2/', 'ande qalh mehed meramed aqtogn
+yeኃxiatu menged maዕbelu geftogn
+wede arsu smatsen degmom stsetset
+alasaferegnm mexa bemሕret /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=DIf6ncBzijM', 'draft', 'pending', 'https://www.youtube.com/watch?v=DIf6ncBzijM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('gosquala-bhonm-msgana-aqerbalehu-2', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lemnuln-tsadqan-sema-tat', 'ለምኑልን ጻድቃን ሰማዕታት', 'ለምኑልን ጻድቃን ሰማዕታት', 'lemnuln tsadqan semaዕtat', 'Ethiopian Orthodox Tewahedo Mezmur - ለምኑልን ጻድቃን ሰማዕታት', 'ወደ አምላከ ምሕረት ለምኑልን
+የመረጥከውን ማን ይከሳል', 'wede amlake mሕret lemnuln
+yemerexkewn man ykesal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=sRg_LyzvnRw', 'draft', 'pending', 'https://www.youtube.com/watch?v=sRg_LyzvnRw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('lemnuln-tsadqan-sema-tat', 'martyrs', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lemigebaw-kbrn-mesxet', 'ለሚገባው ክብርን መስጠት', 'ለሚገባው ክብርን መስጠት', 'lemigebaw kbrn mesxet', 'Ethiopian Orthodox Tewahedo Mezmur - ለሚገባው ክብርን መስጠት', 'ታዝዚል አና በመጻሕፍት
+ያከብርካቸውን ባሪያዎችህን
+አንከብራልን ቅዱሳንህን /2/
+ጽኑ መዳን አንዲይዙ
+
+VERSE 1
+የሚላኩ የሚታዘዙ
+ሠርክ በፊትህ አየቆሙ
+ጥዑም ቅዳሴን አያሰሙ
+በምስጋናቸው የሚየከብሩህን
+
+VERSE 2
+አናከብራለን መላእክትህን''/2/
+ጤዛ ልሰው ዳዋ ጥሰው
+ዋዕይ ቁሩንም ታግሰው
+በየፍርክታው በየዱሩ
+
+VERSE 3
+ሌጦ ለብሰው እየዞሩ
+በሥርዓታቸው ያከበሩህን
+እናከብራለን ጻድቃንህን''/2/
+አንደሚታረዱ በጎች ሆነው
+
+VERSE 4
+አንገታቸውን ለሰይፍ ሰጥተው
+ስለ ስምህ እየተጣሉ
+ከአንበሳ ጋር እየታገሉ
+በተጋድሏቸው ያከበሩህን
+
+VERSE 5
+አናከብራለን ሰማዕታትን/2/
+ከሕያው ቃልህ እየጠቀሱ
+መናፍቃንን ድል አየነሱ
+በገዛ ደምህ የዋጀሀትን
+
+VERSE 6
+ቤተ ክርስቲያንን የጠበቋትን
+በሕይወታቸው ያስደሰቱህን
+እናከብራለን ቅዱሳንህን''/2/', 'tazzil ana bemetsaሕft
+yakebrkachewn bariyawochhn
+ankebraln qdusanhn /2/
+tsnu medan andiyzu
+
+VERSE 1
+yemilaku yemitazezu
+ሠrk befith ayeqomu
+xዑm qdasien ayasemu
+bemsganachew yemiyekebruhn
+
+VERSE 2
+anakebralen melaekthn''/2/
+xieza lsew dawa xsew
+waዕy qurunm tagsew
+beyefrktaw beyeduru
+
+VERSE 3
+liexo lebsew eyezoru
+beሥrዓtachew yakeberuhn
+enakebralen tsadqanhn''/2/
+andemitaredu begoch honew
+
+VERSE 4
+angetachewn leseyf sextew
+sle smh eyetexalu
+keanbesa gar eyetagelu
+betegadluachew yakeberuhn
+
+VERSE 5
+anakebralen semaዕtatn/2/
+keሕyaw qalh eyexeqesu
+menafqann dl ayenesu
+begeza demh yewajehatn
+
+VERSE 6
+biete krstiyann yexebequatn
+beሕywetachew yasdesetuhn
+enakebralen qdusanhn''/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=KzJKgfUgt5o', 'draft', 'pending', 'https://www.youtube.com/watch?v=KzJKgfUgt5o', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('lemigebaw-kbrn-mesxet', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('le-lem-lem-amanuiel', 'ለዓለም ዓለም አማኑኤል', 'ለዓለም ዓለም አማኑኤል', 'leዓlem ዓlem amanuiel', 'Ethiopian Orthodox Tewahedo Mezmur - ለዓለም ዓለም አማኑኤል', 'አገዛልህለሁ መድኃኔዓለም /2/
+ቀኑ ጨለሞብኝ ዙሪያው ገደል ሆኖ
+የችግር አረንቋ ፊቴ ተደኩኖ
+ረዳት ያጣሁኝ በመሰለኝ ጊዜ
+
+VERSE 1
+ፈጽሞ አራቅኽልኝ የልቤን ትካዜ', 'agezalhlehu medኃnieዓlem /2/
+qenu celemobgn zuriyaw gedel hono
+yechgr arenqua fitie tedekuno
+redat yaxahugn bemeselegn gizie
+
+VERSE 1
+fetsmo araqኽlgn yelbien tkazie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=MVWO8nRSwww', 'draft', 'pending', 'https://www.youtube.com/watch?v=MVWO8nRSwww', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('amlak-hoy-msgana-leante-ygebahal', 'አምላክ ሆይ ምስጋና ለአንተ ይገባሀል', 'አምላክ ሆይ ምስጋና ለአንተ ይገባሀል', 'amlak hoy msgana leante ygebahal', 'Ethiopian Orthodox Tewahedo Mezmur - አምላክ ሆይ ምስጋና ለአንተ ይገባሀል', 'ለምስኪኗ ጎጆ በረከት ሠጥፃል', 'lemskinua gojo bereket ሠxፃl', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=T4n_dYMnCOk', 'draft', 'pending', 'https://www.youtube.com/watch?v=T4n_dYMnCOk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('amlak-hoy-msgana-leante-ygebahal', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kekbr-belay-kbrh-genene', 'ከክብር በላይ ክብርህ ገነነ', 'ከክብር በላይ ክብርህ ገነነ', 'kekbr belay kbrh genene', 'Ethiopian Orthodox Tewahedo Mezmur - ከክብር በላይ ክብርህ ገነነ', 'ከክብር በላይ ክብርህ ገነነ', 'kekbr belay kbrh genene', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Yy8WedSLb1A', 'draft', 'pending', 'https://www.youtube.com/watch?v=Yy8WedSLb1A', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('smhn-makber-gbrachn-honual', 'ስምህን ማክበር ግብራችን ሆኗል', 'ስምህን ማክበር ግብራችን ሆኗል', 'smhn makber gbrachn honual', 'Ethiopian Orthodox Tewahedo Mezmur - ስምህን ማክበር ግብራችን ሆኗል', 'አምላክ ተመስገን በሰማያት
+ስምህ ይወደስ በፍጥረታት
+ከሕፃናት አፍ ምስጋና ይውጣ
+አንተን ማመስገን ይሁን የእኛ እጣ /2/
+
+VERSE 1
+በምግብ አጦት ብንሰቃይም
+ማኅሌትህን አናቋርጥም
+የመከራ ዶፍ ቢወርድብንም
+አንዘምራለን ለአምላካችን ስም /2/
+
+VERSE 2
+ሰማዩ ዝናብ ደመና ሲያጣ
+ፍቅርህ በአኛ ውስጥ አላቋረጠም
+ቸርነትህን አንጠብቃለን
+ከአንተ ደጅ ጌታ የት እንሄዳለን /2/
+
+VERSE 3
+523. ማን ነው እርሱ
+ማን ነው አርሱ ማን ነው እርሱ/2/
+ምድርን የሠራ በኃያል ቃሉ ማን ነው እርሱ
+ሕይወትን የሰጠ ለፍጥረት ሁሉ ማን ነው አርሱ
+
+VERSE 4
+የባሕርን ሞገድ የሚገስጸው ማን ነው አርሱ
+የኃይላት ጌታ ጌታችን ማን ነው ማን ነው አርሱ ማን
+ነው አርሱ /2/
+ከጥልቀት በታች ከምጥቀት በላይ
+
+VERSE 5
+ማነው ጌታችን ሁሉንም የሚያይ
+ማን ነው አርሱ ማን ነው አርሱ
+ከፈሳሾች ውስጥ ወንዙን የሚያፈስ
+ማን ነው አርሱ
+
+VERSE 6
+ምድርን ልምላሜ ፍጹም የሚያለብስ
+ማን ነው አርሱ
+ጥቃቅን ነፍሳት የሚመግበው
+ማን ነው አርሱ
+
+VERSE 7
+ስምህን ማክበር ግብራችን ሆኗል
+አምላክ ተመስገን በሰማያት
+ስምህ ይወደስ በፍጥረታት
+ከሕፃናት አፍ ምስጋና ይውጣ
+
+VERSE 8
+አንተን ማመስገን ይሁን የእኛ እአጣ/2/
+በምግብ እጦት ብንሰቃይም
+ማኅሌትህን አናቋርጥም
+የመከራ ዶፍ ቢወርድብንም
+
+VERSE 9
+አንዘምራለን ለአምላካችን ስም/2/', 'amlak temesgen besemayat
+smh ywedes befxretat
+keሕፃnat af msgana ywxa
+anten mamesgen yhun yeegna exa /2/
+
+VERSE 1
+bemgb axot bnseqaym
+maኅliethn anaquarxm
+yemekera dof biwerdbnm
+anzemralen leamlakachn sm /2/
+
+VERSE 2
+semayu znab demena siyaxa
+fqrh beagna wsx alaquarexem
+chernethn anxebqalen
+keante dej gieta yet enhedalen /2/
+
+VERSE 3
+523. man new ersu
+man new arsu man new ersu/2/
+mdrn yeሠra beኃyal qalu man new ersu
+ሕywetn yesexe lefxret hulu man new arsu
+
+VERSE 4
+yebaሕrn moged yemigestsew man new arsu
+yeኃylat gieta gietachn man new man new arsu man
+new arsu /2/
+kexlqet betach kemxqet belay
+
+VERSE 5
+manew gietachn hulunm yemiyay
+man new arsu man new arsu
+kefesashoch wsx wenzun yemiyafes
+man new arsu
+
+VERSE 6
+mdrn lmlamie ftsum yemiyalebs
+man new arsu
+xqaqn nefsat yemimegbew
+man new arsu
+
+VERSE 7
+smhn makber gbrachn honual
+amlak temesgen besemayat
+smh ywedes befxretat
+keሕፃnat af msgana ywxa
+
+VERSE 8
+anten mamesgen yhun yeegna eaxa/2/
+bemgb exot bnseqaym
+maኅliethn anaquarxm
+yemekera dof biwerdbnm
+
+VERSE 9
+anzemralen leamlakachn sm/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=gy_cUVvo97w', 'draft', 'pending', 'https://www.youtube.com/watch?v=gy_cUVvo97w', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('smhn-makber-gbrachn-honual', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('semayu-znab-demena-biyaxa', 'ሰማዩ ዝናብ ደመና ቢያጣ', 'ሰማዩ ዝናብ ደመና ቢያጣ', 'semayu znab demena biyaxa', 'Ethiopian Orthodox Tewahedo Mezmur - ሰማዩ ዝናብ ደመና ቢያጣ', 'ፍቅርህ በአኛ ውስጥ አላቋረጠም
+ቸርነትህን አንጠብቃለን
+ከአንተ ደጅ ጌታ የት እንሄዳለን/2/
+857.አንደበቴም ያወጣ
+
+VERSE 1
+አንደበቴም ያውጣ የምስጋና ቅኔ
+የአምላኬን ማዳን አይቻለሁ በዓይኔ
+በገባዖን ሰማይ ፀሐይን ያቆመ
+ዛሬም ጎብኝቶኛል እየደጋገመ
+
+VERSE 2
+ወጥመድ ተሰበረ አጌም አመለጥኩኝ
+ከኃጢአት ፍላፃ ከሞት አተረፈኝ
+የአናብስትን አፍ በኃይሉ የዘጋ
+የዳንኤል አምላክ ይኖራል ከእኔ ጋር
+
+VERSE 3
+በዳዊት ምስጋና በያሬድ ዝማሬ
+ከቅዱሳን ጋራ ልዘምር አብሬ
+አርሱን ሳመሰግን ሜልኮል ብትስቅብኝ
+ለጌታዬ ክበር እዘምራለሁኝ
+
+VERSE 4
+አስፈሪው ነበልባል አሳቱ ቢነድም
+ለጣዖት እንድንሰግድ ነገሥታት ቢያውጁም
+ሁሉ ቢተወኝም ቢጠላኝም ዓለም
+ጽናት ይሆነኛል ጌታ መድኃኔዓለም
+
+VERSE 5
+859.ወደ ቤተ እግዚአብሔር
+ወደ ቤተ እግዚአብሔር እንሂድ', 'fqrh beagna wsx alaquarexem
+chernethn anxebqalen
+keante dej gieta yet enhedalen/2/
+857.andebetiem yawexa
+
+VERSE 1
+andebetiem yawxa yemsgana qnie
+yeamlakien madan aychalehu beዓynie
+begebaዖn semay ፀሐyn yaqome
+zariem gobgntognal eyedegageme
+
+VERSE 2
+wexmed tesebere agiem amelexkugn
+keኃxiat flaፃ kemot aterefegn
+yeanabstn af beኃylu yezega
+yedaniel amlak ynoral keenie gar
+
+VERSE 3
+bedawit msgana beyaried zmarie
+keqdusan gara lzemr abrie
+arsun samesegn mielkol btsqbgn
+legietayie kber ezemralehugn
+
+VERSE 4
+asferiw nebelbal asatu binedm
+lexaዖt endnsegd negeሥtat biyawjum
+hulu bitewegnm bixelagnm ዓlem
+tsnat yhonegnal gieta medኃnieዓlem
+
+VERSE 5
+859.wede biete egziabሔr
+wede biete egziabሔr enhid', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=0Jdz0ggSZjI', 'draft', 'pending', 'https://www.youtube.com/watch?v=0Jdz0ggSZjI', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ke-lem-befit-yenebere', 'ከዓለም በፊት የነበረ', 'ከዓለም በፊት የነበረ', 'keዓlem befit yenebere', 'Ethiopian Orthodox Tewahedo Mezmur - ከዓለም በፊት የነበረ', 'ፍጥረታትን ሁሉ የፈጠረ
+በምድር ክብብ የሚቀመጥ
+ሁሉን ሲለውጥ የማይለወጥ /2/', 'fxretatn hulu yefexere
+bemdr kbb yemiqemex
+hulun silewx yemaylewex /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=NDPdSKvCzoQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=NDPdSKvCzoQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tnantnam-zariem-ante-yaw-anteneh', 'ትናንትናም ዛሬም አንተ ያው አንተነህ', 'ትናንትናም ዛሬም አንተ ያው አንተነህ', 'tnantnam zariem ante yaw anteneh', 'Ethiopian Orthodox Tewahedo Mezmur - ትናንትናም ዛሬም አንተ ያው አንተነህ', 'ፍቅርህ አይቀየር ወረትም የለብህ
+ስምህን መጥራቴ ሞገስ ይሆነኛል
+ጠላቴ ቢፎክር መቼ ያሸንፈኛል', 'fqrh ayqeyer weretm yelebh
+smhn mexratie moges yhonegnal
+xelatie bifokr mechie yashenfegnal', 'amharic', 'mezmur', 'Gebreyohannes Gebretsadik', 'https://www.youtube.com/watch?v=VxUDRtqK6Q8', 'draft', 'pending', 'https://www.youtube.com/watch?v=VxUDRtqK6Q8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('met-dem-sifessh', '12 ዓመት ደም ሲፈስሽ', '12 ዓመት ደም ሲፈስሽ', 'ዓmet dem sifessh', 'Ethiopian Orthodox Tewahedo Mezmur - 12 ዓመት ደም ሲፈስሽ', 'ሰዎች ሲንቁሽ ሲያንቋሸሹሽ
+ማን ፈወሠሽ አንቺ ሴት', 'sewoch sinqush siyanquasheshush
+man feweሠsh anchi siet', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Q88_y5hYs6k', 'draft', 'pending', 'https://www.youtube.com/watch?v=Q88_y5hYs6k', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yabeqash-manew-lede-net', 'ያበቃሽ ማነው ለደኅነት', 'ያበቃሽ ማነው ለደኅነት', 'yabeqash manew ledeኅnet', 'Ethiopian Orthodox Tewahedo Mezmur - ያበቃሽ ማነው ለደኅነት', 'አምነትሽ አዳነሽ አለኝና
+ኃይል ከእርሱ ወጣ የሚያጽናና
+የጌታ ልብሱን ብዳብሰው
+ደሜ ቀጥ አለ ላወድሰው
+
+VERSE 1
+በቤተ ሳይዳ በአልጋ ስትኖር
+በመጠመቂያው በወንዙ ዳር
+ደውይ ስትሆን በሽተኛ
+አንዴት ተፈወስክ አውጋን ለእኛ
+
+VERSE 2
+አልጋ ታቅፌ ስንገላታ
+መዳን ትሻለህ አለኝ ጌታ
+አምላኬ አርሱ ፈወሰኝ
+አልጋህን ይዘህ ሂድ አለኝ
+
+VERSE 3
+898.እግዚአብሔር ሆይ እርዳኝ
+አግዚአብሔር ሆይ አርዳኝ ቸርነት አድርገህ/2/
+አድሜ ለንስሓ እንደ ሕዝቅያስ ሠጥተህ
+ጠማማውን ልቤን በቃልህ አቃንተህ
+
+VERSE 4
+አላውቀውም ብሉ ሲጠይቅ ያመፀው
+ዶሮ እስኪጮህ ድረስ ሦስት ጊዜ የካደው
+የጅረት ወንዝ ነው የሰጠኸው አንባ
+ጴጥሮስ ተጸጸቶ ንስሓ እንዲገባ
+
+VERSE 5
+ጽዋው እንዳይደርስኝ የይሁዳ እድል
+ልጆች ሆኖ ውሎ ኃላ መኮብለል
+ጴጥሮስ እድለኛ አልቅሶ ተማረ
+በትፅቢቱ ይሁዳ እንዲወጣ ቀረ
+
+VERSE 6
+ዘመኗን በሙሉ በዝሙት አቃጥላ
+በንስሓ ጠራት ጌታ በገሊላ
+ታድሳ ተነሣች በእንባዋ ብዛት
+አግሩ ስር ተደፍታ ማርያም እንተ እፍረት
+
+VERSE 7
+አመፀኛው ልቤ ዛሬስ መቼ ይተኛል
+በኃጢአት በዝሙት በሥርቆት ይዋኛል
+ወደ ቀድሞ ግብሩ እንዳይመለስ
+ፍቅርህ በእኔ ሰርዖ ኃጢአቴን ደምስስ', 'amnetsh adanesh alegnna
+ኃyl keersu wexa yemiyatsnana
+yegieta lbsun bdabsew
+demie qex ale lawedsew
+
+VERSE 1
+bebiete sayda bealga stnor
+bemexemeqiyaw bewenzu dar
+dewy sthon beshtegna
+andiet tefewesk awgan leegna
+
+VERSE 2
+alga taqfie sngelata
+medan tshaleh alegn gieta
+amlakie arsu fewesegn
+algahn yzeh hid alegn
+
+VERSE 3
+898.egziabሔr hoy erdagn
+agziabሔr hoy ardagn chernet adrgeh/2/
+admie lensሓ ende ሕzqyas ሠxteh
+xemamawn lbien beqalh aqanteh
+
+VERSE 4
+alawqewm blu sixeyq yameፀw
+doro eskicoh dres ሦst gizie yekadew
+yejret wenz new yesexeኸw anba
+phiexros tetsetseto nsሓ endigeba
+
+VERSE 5
+tswaw endaydersgn yeyhuda edl
+ljoch hono wlo ኃla mekoblel
+phiexros edlegna alqso temare
+betፅbitu yhuda endiwexa qere
+
+VERSE 6
+zemenuan bemulu bezmut aqaxla
+bensሓ xerat gieta begelila
+tadsa teneሣch beenbawa bzat
+agru sr tedefta maryam ente efret
+
+VERSE 7
+ameፀgnaw lbie zaries mechie ytegnal
+beኃxiat bezmut beሥrqot ywagnal
+wede qedmo gbru endaymeles
+fqrh beenie serዖ ኃxiatien demss', 'amharic', 'mezmur', 'ዘማሪ ዳግማዊ ደርቤ', 'https://www.youtube.com/watch?v=ZTdI1W7Z-mg', 'draft', 'pending', 'https://www.youtube.com/watch?v=ZTdI1W7Z-mg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mengedu-aytaktm-godanaw-yeqena-2', 'መንገዱ አይታክትም ጎዳናው የቀና /2/', 'መንገዱ አይታክትም ጎዳናው የቀና /2/', 'mengedu aytaktm godanaw yeqena /2/', 'Ethiopian Orthodox Tewahedo Mezmur - መንገዱ አይታክትም ጎዳናው የቀና /2/', 'አግዚአብሔር ከፊትም ከ3ላም አለና /2/
+አርሱ የሌለበት ቢመችም መንገዱ/2/
+አቅጣጫው ወደ ሞት አይቀርም መውሰዱ/ሪ2/', 'agziabሔr kefitm ke3lam alena /2/
+arsu yelielebet bimechm mengedu/2/
+aqxacaw wede mot ayqerm mewsedu/ri2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=7SSdVge0y04', 'draft', 'pending', 'https://www.youtube.com/watch?v=7SSdVge0y04', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('mengedu-aytaktm-godanaw-yeqena-2', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('n-n-amanuiel-n-n-med-nie-lem', 'ንዓ ንዓ አማኑኤል', 'ንዓ ንዓ አማኑኤል', 'nዓ nዓ amanuiel nዓ nዓ medኃnieዓlem', 'Ethiopian Orthodox Tewahedo Mezmur - ንዓ ንዓ አማኑኤል', 'በፍሥሐ ወበሰላም ና ወደ አኛ መድኃኔዓለም
+ንዓ ንዓ አማኑኤል', 'befሥሐ webeselam na wede agna medኃnieዓlem
+nዓ nዓ amanuiel', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=tbk0bF3W-Yw', 'draft', 'pending', 'https://www.youtube.com/watch?v=tbk0bF3W-Yw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kemahu-yastegabaekmu-bedebre-tsyon-qdst', 'ከማሁ ያስተጋባእክሙ በደብረ ጽዮን ቅድስት', 'ከማሁ ያስተጋባእክሙ በደብረ ጽዮን ቅድስት', 'kemahu yastegabaekmu bedebre tsyon qdst', 'Ethiopian Orthodox Tewahedo Mezmur - ከማሁ ያስተጋባእክሙ በደብረ ጽዮን ቅድስት', 'ወበኢየሩሳሌም ኢየሩሳሌም አጋእአዚት/2/', 'webeiyerusaliem iyerusaliem agaeazit/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=tHgKdGSClrU', 'draft', 'pending', 'https://www.youtube.com/watch?v=tHgKdGSClrU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('nolawi-tgu-zeitnewm-2', 'ኖላዊ ትጉኅ ዘኢትነውም /2/', 'ኖላዊ ትጉኅ ዘኢትነውም /2/', 'nolawi tguኅ zeitnewm /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ኖላዊ ትጉኅ ዘኢትነውም /2/', 'ማኅበረነ /2/ እቀብ በሰላም /4/
+881.ያከብረዋ
+ያከብርዋ ለሰንበት መላእክት
+በሰማያት ጻድቃን በውስተ ገነት/2
+
+VERSE 1
+ወኩሉ ፍጥረት ዓሳት ወአናብርት/2/
+አለውስተ ደይን ያእረፉ ባቲ
+አስመ ባቲ አእረፈ እምኩሉ ግብሩ /2/
+ያከብራታል ሰንበትን መላአክት በሰማያት
+
+VERSE 2
+ጻድቃን በገነት
+ፍጥረታት በሙሉ አሳዎችና አንበሬዎች
+በመቃብር ያሉ ያከብራታል አምላክ /2/
+በአርሷ እንዳረፈ ከሥራው ሁሉ
+
+VERSE 3
+882.ሀበነ
+ሀበነ እግዚኦ አዕምሮ አእይንተ አፅምሮ
+ወትረ ኪያከ ይርአይ/2/
+ወአእዛንነሂ ቃለ ዘባሕቲትከ ይስምዕ/2/
+
+VERSE 4
+883.እንዘ ኢየምር
+እንዘ የአምር እምቅድመ ኅሊና ዘይሄሊ ልበ
+የአምር የአምር/2/
+አርዓየ ኃይሎ በላዕሌነ ወጸገወነ ኸ
+
+VERSE 5
+ሠናይቶ እግዚአብሔር/2/
+884.ያልጠፋነው
+ያልጠፋነው ከእግዚአብሔር ምሕረት የተነሣ
+ነው/ሪ/
+
+VERSE 6
+ምሕረቱ ከቶ አያልቅምና ርኅራነጌው ከቶ
+አያልቅምና ይገባዋል ክብርና ምስጋና/''/2/
+885.8ሰማይ ገብረ
+ዘሰማየ ገብረ ሰማየ ገብረ ወምድረ ሳረረ/2/
+
+VERSE 7
+አልቦ ዘይመስሎ ለአምላክነ/4/
+ሰማይን የዘረጋ መሬትን ያጸና/2/', 'maኅberene /2/ eqeb beselam /4/
+881.yakebrewa
+yakebrwa lesenbet melaekt
+besemayat tsadqan bewste genet/2
+
+VERSE 1
+wekulu fxret ዓsat weanabrt/2/
+alewste deyn yaerefu bati
+asme bati aerefe emkulu gbru /2/
+yakebratal senbetn melaakt besemayat
+
+VERSE 2
+/2/
+/2/
+tsadqan begenet
+fxretat bemulu asawochna anberiewoch
+
+VERSE 3
+bemeqabr yalu yakebratal amlak /2/
+bearsua endarefe keሥraw hulu
+882.habene
+habene egzio aዕmro aeynte aፅmro
+
+VERSE 4
+wetre kiyake yray/2/
+weaezannehi qale zebaሕtitke ysmዕ/2/
+883.enze iyemr
+enze yeamr emqdme ኅlina zeyheli lbe
+
+VERSE 5
+yeamr yeamr/2/
+arዓye ኃylo belaዕliene wetsegewene ኸ
+ሠnayto egziabሔr/2/
+884.yalxefanew
+
+VERSE 6
+yalxefanew keegziabሔr mሕret yeteneሣ
+new/ri/
+mሕretu keto ayalqmna rኅranegiew keto
+ayalqmna ygebawal kbrna msgana/''/2/
+
+VERSE 7
+885.8semay gebre
+zesemaye gebre semaye gebre wemdre sarere/2/
+albo zeymeslo leamlakne/4/
+semayn yezerega merietn yatsena/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xLJUFZ2p5uY', 'draft', 'pending', 'https://www.youtube.com/watch?v=xLJUFZ2p5uY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('nolawi-tgu-zeitnewm-2', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yelbachn-desta-endnalen', 'የልባችን ደስታ እንድናለን', 'የልባችን ደስታ እንድናለን', 'yelbachn desta endnalen', 'Ethiopian Orthodox Tewahedo Mezmur - የልባችን ደስታ እንድናለን', 'የልባችን ደስታ እንድናለን', 'yelbachn desta endnalen', 'amharic', 'mezmur', 'ዘማሪት ፋንቱ ወልዴ', 'https://www.youtube.com/watch?v=Y8vWeTBpfds', 'draft', 'pending', 'https://www.youtube.com/watch?v=Y8vWeTBpfds', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('xewat-mata-qdst-hoy-ylalu', 'ጠዋት ማታ ቅድስት ሆይ ይላሉ', 'ጠዋት ማታ ቅድስት ሆይ ይላሉ', 'xewat mata qdst hoy ylalu', 'Ethiopian Orthodox Tewahedo Mezmur - ጠዋት ማታ ቅድስት ሆይ ይላሉ', 'ዓለም ሥትዋጋን በምኞት ስለት
+ነፍሳችን ስትደክም ሲከብዳት ኃጢአት
+መንገድ ጠፍቶን ግራ ሲገባን
+ብርፃሃናቸን ነይ እናታችን', 'ዓlem ሥtwagan bemgnot slet
+nefsachn stdekm sikebdat ኃxiat
+menged xefton gra sigeban
+brፃሃnachen ney enatachn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Bgdbh1TvJ7E', 'draft', 'pending', 'https://www.youtube.com/watch?v=Bgdbh1TvJ7E', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yemnmekabat', 'የምንመካባት', 'የምንመካባት', 'yemnmekabat', 'Ethiopian Orthodox Tewahedo Mezmur - የምንመካባት', 'በሷም ተማጽነን የምንድንባት', 'besuam tematsnen yemndnbat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=dm6NWa4lOP4', 'draft', 'pending', 'https://www.youtube.com/watch?v=dm6NWa4lOP4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('alaquarxm-yeanchin-msgana', 'አላቋርጥም የአንቺን ምስጋና', 'አላቋርጥም የአንቺን ምስጋና', 'alaquarxm yeanchin msgana', 'Ethiopian Orthodox Tewahedo Mezmur - አላቋርጥም የአንቺን ምስጋና', 'ውለታሽ ድንግል አለብኝና
+አላቋርጥም የአንቺን ምስጋና
+ውለታሽ ድንግል አለብኝና', 'wletash dngl alebgnna
+alaquarxm yeanchin msgana
+wletash dngl alebgnna', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=mEDdUZmxcPU', 'draft', 'pending', 'https://www.youtube.com/watch?v=mEDdUZmxcPU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kfuwoch-drsew-biztubgn', 'ክፉዎች ድርሰው ቢዝቱብኝ', 'ክፉዎች ድርሰው ቢዝቱብኝ', 'kfuwoch drsew biztubgn', 'Ethiopian Orthodox Tewahedo Mezmur - ክፉዎች ድርሰው ቢዝቱብኝ', 'መከራ አብዝተው ቢያሠቃዩኝ
+አንቺ ካለሽኝ ምን እሆናለሁ
+አውሎ ነፋሱን ባሕሩን አልፋለሁ
+ጠላቴ ደርሶ በያሠቃየኝ', 'mekera abztew biyaሠqayugn
+anchi kaleshgn mn ehonalehu
+awlo nefasun baሕrun alfalehu
+xelatie derso beyaሠqayegn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=gzcew8dArCU', 'draft', 'pending', 'https://www.youtube.com/watch?v=gzcew8dArCU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('chla-satyn-zebeaman', 'ችላ ሳትይን ዘበአማን', 'ችላ ሳትይን ዘበአማን', 'chla satyn zebeaman', 'Ethiopian Orthodox Tewahedo Mezmur - ችላ ሳትይን ዘበአማን', 'ምሕረት አሠጪን ዘበአማን
+ድንግል አትርሺን
+የመመኪያችን ዘውድ ዘበአማን
+አመብርሃን
+
+VERSE 1
+ከልጅሽ አስታሪቂኝ ዘበአማን
+አንዳንቀር ወድቀን
+902. በክብር ዙፋኑ
+በክቡር ዙፋኑ መርጦ ያስቀመጠሽ
+
+VERSE 2
+ለእኛ ለኃጢአተኞች ተስፋቸን አንቺ ነሽ
+በፍጹም ትኅትና ቤተመቅደስ ያደግሽ
+የአማኑኤል የጌታዬ የፈጣሪዬ እናት በምን እንመስልሽ', 'mሕret aሠcin zebeaman
+dngl atrshin
+yememekiyachn zewd zebeaman
+amebrሃn
+
+VERSE 1
+keljsh astariqign zebeaman
+andanqer wedqen
+902. bekbr zufanu
+bekbur zufanu merxo yasqemexesh
+
+VERSE 2
+leegna leኃxiategnoch tesfachen anchi nesh
+beftsum tኅtna bietemeqdes yadegsh
+yeamanuiel yegietayie yefexariyie enat bemn enmeslsh', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ri1JcwZM82g', 'draft', 'pending', 'https://www.youtube.com/watch?v=ri1JcwZM82g', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lewdasiesh-qelem', 'ለውዳሴሽ ቀለም', 'ለውዳሴሽ ቀለም', 'lewdasiesh qelem', 'Ethiopian Orthodox Tewahedo Mezmur - ለውዳሴሽ ቀለም', 'የክርስቶስ እናት
+የመድኃኔዓለም
+ትውልድ ሁሉ አንቺን ለመዘከር
+ይትጋ ኅሊናዬ
+
+VERSE 1
+በውዳሴሽ ቅኔ
+ይሙላ ልቡናዬ
+ልቀበል በረከት
+ስምሽን ጠርቼ
+
+VERSE 2
+አንቺ ባለሽበት
+ይቁሙ አግሮቼ
+907.አንቀፀ በርፃን
+አንቀፀ ብርፃን ድንግል ማርያም
+
+VERSE 3
+ሰማያዊ ዙፋን የመድኃኔዓለም/ሪ/', 'yekrstos enat
+yemedኃnieዓlem
+twld hulu anchin lemezeker
+ytga ኅlinayie
+
+VERSE 1
+bewdasiesh qnie
+ymula lbunayie
+lqebel bereket
+smshn xerchie
+
+VERSE 2
+anchi baleshbet
+yqumu agrochie
+907.anqeፀ berፃn
+anqeፀ brፃn dngl maryam
+
+VERSE 3
+semayawi zufan yemedኃnieዓlem/ri/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=k0xTKIFbuIg', 'draft', 'pending', 'https://www.youtube.com/watch?v=k0xTKIFbuIg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mesheshegiya-taza', 'መሸሸጊያ ታዛ', 'መሸሸጊያ ታዛ', 'mesheshegiya taza', 'Ethiopian Orthodox Tewahedo Mezmur - መሸሸጊያ ታዛ', 'የሰላም ሠገነት
+የነፍሳችን ቤዛ
+አናመሥግናት የተስፋ ፀሐይ ናት
+>> >> ሸልማቴ ዘውዴ
+
+VERSE 1
+>> >> የዓይኔ ብርሃን
+>> >> አጽናኝ ናት ዘመዴ
+>> >> የርግብ ምልክት
+>> >> የአዲስ ዘመን ብሥራት
+
+VERSE 2
+>> >> የድኅነት ዓርማ
+>> >> ትንቢተ ነቢያት
+እናመስግናት የአዳም በረከት
+>> >> የዘለዓለም ቤቱ
+
+VERSE 3
+>> >> የሐዘኑ መርሻ
+>> >> ማረፊያ ርስቱ
+ይገባታልና
+ወዳሴና ክብር', 'yeselam ሠgenet
+yenefsachn bieza
+anameሥgnat yetesfa ፀሐy nat
+>> >> shelmatie zewdie
+
+VERSE 1
+>> >> yeዓynie brሃn
+>> >> atsnagn nat zemedie
+>> >> yergb mlkt
+>> >> yeadis zemen bሥrat
+
+VERSE 2
+>> >> yedኅnet ዓrma
+>> >> tnbite nebiyat
+enamesgnat yeadam bereket
+>> >> yezeleዓlem bietu
+
+VERSE 3
+>> >> yeሐzenu mersha
+>> >> marefiya rstu
+ygebatalna
+wedasiena kbr', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Nhjm5zRaNzY', 'draft', 'pending', 'https://www.youtube.com/watch?v=Nhjm5zRaNzY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('bechgr-gizie', 'በችግር ጊዜ', 'በችግር ጊዜ', 'bechgr gizie', 'Ethiopian Orthodox Tewahedo Mezmur - በችግር ጊዜ', 'መንገድ መሪያቸው
+ምን ብዬ ልጥራሽ
+ላወድስሽ
+የምግባር ደህ
+
+VERSE 1
+ባዶ ልጆሽ
+አመብርሃን የቅዱሳኑ
+ጣዕመ ዜማቸው
+አንቺ ነሽና
+
+VERSE 2
+ውብ ደርስታቸው
+የአኛ ሥጦታ
+የድል አክሊል ነሽ
+በአማልጅነት
+
+VERSE 3
+ለታመነብሽ
+አምብርሃን የይስሐቅ መዓዛ
+በፍኖተ ሉዛ
+የያዕቆብ መሰላል
+
+VERSE 4
+የአቤል የዋኅት
+የሴት ቸርነት
+የኢያሱ ሐውልት
+የሕይወት ውኃ
+
+VERSE 5
+የሳሙኤል ዘይት
+ርግብ ሠናይት
+ንግሥተ ሰማይ
+አመብርሃን መልካሟ ርግብ
+
+VERSE 6
+የኖሕ መልክቱ
+የኀጥአን ተስፋ
+የልብ ብርታቱ
+ምሥራቻቸን
+
+VERSE 7
+ውስጣችን ያለሽ
+በምድር በሰማይ
+አምሳያም የለሽ
+909.ቃልን ለመውለድ', 'menged meriyachew
+mn byie lxrash
+lawedssh
+yemgbar deh
+
+VERSE 1
+bado ljosh
+amebrሃn yeqdusanu
+xaዕme ziemachew
+anchi neshna
+
+VERSE 2
+wb derstachew
+yeagna ሥxota
+yedl aklil nesh
+beamaljnet
+
+VERSE 3
+letamenebsh
+ambrሃn yeysሐq meዓza
+befnote luza
+yeyaዕqob meselal
+
+VERSE 4
+yeabiel yewaኅt
+yesiet chernet
+yeiyasu ሐwlt
+yeሕywet wኃ
+
+VERSE 5
+yesamuiel zeyt
+rgb ሠnayt
+ngሥte semay
+amebrሃn melkamua rgb
+
+VERSE 6
+yenoሕ melktu
+yeኀxan tesfa
+yelb brtatu
+mሥrachachen
+
+VERSE 7
+wsxachn yalesh
+bemdr besemay
+amsayam yelesh
+909.qaln lemewled', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=d_zAqOBS3x8', 'draft', 'pending', 'https://www.youtube.com/watch?v=d_zAqOBS3x8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('keme-riw-ljsh', 'ከመሐሪው ልጅሽ', 'ከመሐሪው ልጅሽ', 'kemeሐriw ljsh', 'Ethiopian Orthodox Tewahedo Mezmur - ከመሐሪው ልጅሽ', 'አመቤታችን ያልታረሰች እርሻ
+ዘር ያልተዘራባት
+የሕይወትን ፍሬ
+ሰጠችን የእኛ እናት
+
+VERSE 1
+የተሠዋው መሲህ
+አናቱን ወደዳት
+በቀኙ ቆማለች
+ድንግል እመቤት ናት', 'amebietachn yaltaresech ersha
+zer yaltezerabat
+yeሕywetn frie
+sexechn yeegna enat
+
+VERSE 1
+yeteሠwaw mesih
+anatun wededat
+beqegnu qomalech
+dngl emebiet nat', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Jq8MpKq0tik', 'draft', 'pending', 'https://www.youtube.com/watch?v=Jq8MpKq0tik', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('celemaw-tegefo-siwexa-br-n', 'ጨለማው ተገፎ ሲወጣ ብርሃን', 'ጨለማው ተገፎ ሲወጣ ብርሃን', 'celemaw tegefo siwexa brሃn', 'Ethiopian Orthodox Tewahedo Mezmur - ጨለማው ተገፎ ሲወጣ ብርሃን', 'ጨለማው ተገፎ ሲወጣ ብርሃን', 'celemaw tegefo siwexa brሃn', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=xQpXWMT3Pow', 'draft', 'pending', 'https://www.youtube.com/watch?v=xQpXWMT3Pow', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('nastemasleki-teqwame-ma-tot', 'ናስተማስለኪ ተቅዋመ ማኅቶት', 'ናስተማስለኪ ተቅዋመ ማኅቶት', 'nastemasleki teqwame maኅtot', 'Ethiopian Orthodox Tewahedo Mezmur - ናስተማስለኪ ተቅዋመ ማኅቶት', 'አንቺ እግዝአተ ኩሉ የሁሉ አመቤት', 'anchi egzate kulu yehulu amebiet', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=cP5Z9JpsAJM', 'draft', 'pending', 'https://www.youtube.com/watch?v=cP5Z9JpsAJM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('xla-kelelayie-amebietie-2', 'ጥላ ከለላዬ አመቤቴ /2/', 'ጥላ ከለላዬ አመቤቴ /2/', 'xla kelelayie amebietie /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ጥላ ከለላዬ አመቤቴ /2/', 'ጋሻዬ ነሽ አንቺ አመቤቴ
+ለእኔ መመኪያዬ
+በዓለም አንዳልጠፋ እመቤቴ
+ሕይወቴ መሮብኝ አመቤቴ
+
+VERSE 1
+እንደ ወይን አጣፍጭው እመቤቴ', 'gashayie nesh anchi amebietie
+leenie memekiyayie
+beዓlem andalxefa emebietie
+ሕywetie merobgn amebietie
+
+VERSE 1
+ende weyn axafcw emebietie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=VTFRX_oDQ3o', 'draft', 'pending', 'https://www.youtube.com/watch?v=VTFRX_oDQ3o', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('o-dngl', 'ኦ ድንግል', 'ኦ ድንግል', 'o dngl', 'Ethiopian Orthodox Tewahedo Mezmur - ኦ ድንግል', 'ኦ ድንግል አምሳል ወትንቢት /2/ ለነቢያት /2/
+ሞገሶሙ ለሐዋርያት /4/
+ትርጉም- ድንግል ሆይ የሐዋርያት ሞገስ
+የነቢያት ትንቢት አንቺ ነሽ
+
+VERSE 1
+941.ማርያም', 'o dngl amsal wetnbit /2/ lenebiyat /2/
+mogesomu leሐwaryat /4/
+trgum- dngl hoy yeሐwaryat moges
+yenebiyat tnbit anchi nesh
+
+VERSE 1
+941.maryam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=gyviGTJihMU', 'draft', 'pending', 'https://www.youtube.com/watch?v=gyviGTJihMU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ma-dere-lus', 'ማኅደረ', 'ማኅደረ', 'maኅdere ሥlus', 'Ethiopian Orthodox Tewahedo Mezmur - ማኅደረ', 'ሥሉስ ቅዱስ ተብሎ ዘበአማን
+የሚመሰገነው -
+የፍጥረታት ገዥ ዘበአማን
+የአንቺ ልጅ እኮ ነው -
+
+VERSE 1
+የምታምሪ ርግብ ዘበአማን
+ሰላምን ያስገኘሽ ዘበአማን
+ንጽሕናሽን አይቶ ዘበአማን
+ወልድ መረጠሽ
+
+VERSE 2
+አትርሺኝ ድንግል ሆይ ዘበአማን
+አኛ ልጆችሽን
+ከአምላክ አስታሪቂን ዘበአማን
+አኛ ደካሞችን
+
+VERSE 3
+ስለ በደላን ዘበአማን
+ማኅደረ
+ስምሽን
+ማኅደረ
+
+VERSE 4
+ማኅደረ
+ማኅደረ
+ማኅደረ
+ማኅደረ
+
+VERSE 5
+ማኅደረ
+ማኅደረ መለኮት አሸብሸቡላት ለድንግል
+ማኅደረ መለኮት ፍቀር ያላችሁ በእውነት
+ማኅደረ መለኮት ትመጣለች ልትባርከን
+
+VERSE 6
+ማኅደረ መለኮት ድንግል ሆይ ባርኪን ስንላት
+ማኅደረ መለኮት አፌም ይከፈት ለዝማሪ
+ማኅደረ መለኮት ለአምላክ እናት ለእመቤቴ
+ማኅደረ መለኮት ትምክህት ናት ለሁሉም
+
+VERSE 7
+ማኅደረ መለኮት ጸዓዳ ርግብ የሠላም
+ማኅደረ መለኮት ምን ብዬ ልጥራሽ ላመስግንሽ
+ማኅደረ መለኮት ከፍጥረት ሁሉ ነሽ የከበርሽ
+ማኅደረ መለኮት በንጽሕና የተሸለምሽ
+
+VERSE 8
+ማኅደረ መለኮት ወላዲተ ቃል
+ያለ ዘርአ ብእሲ በኅቱም ድንግልና
+አምላክን የወለድሽ ሐመልማለ ሲና
+ማኅደረ መለኮት /2/', 'ሥlus qdus teblo zebeaman
+yemimesegenew -
+yefxretat gezh zebeaman
+yeanchi lj eko new -
+
+VERSE 1
+yemtamri rgb zebeaman
+selamn yasgegnesh zebeaman
+ntsሕnashn ayto zebeaman
+weld merexesh
+
+VERSE 2
+atrshign dngl hoy zebeaman
+agna ljochshn
+keamlak astariqin zebeaman
+agna dekamochn
+
+VERSE 3
+sle bedelan zebeaman
+maኅdere
+smshn
+maኅdere
+
+VERSE 4
+maኅdere
+maኅdere
+maኅdere
+maኅdere
+
+VERSE 5
+maኅdere
+maኅdere melekot ashebshebulat ledngl
+maኅdere melekot fqer yalachhu beewnet
+maኅdere melekot tmexalech ltbarken
+
+VERSE 6
+maኅdere melekot dngl hoy barkin snlat
+maኅdere melekot afiem ykefet lezmari
+maኅdere melekot leamlak enat leemebietie
+maኅdere melekot tmkht nat lehulum
+
+VERSE 7
+maኅdere melekot tseዓda rgb yeሠlam
+maኅdere melekot mn byie lxrash lamesgnsh
+maኅdere melekot kefxret hulu nesh yekebersh
+maኅdere melekot bentsሕna yeteshelemsh
+
+VERSE 8
+maኅdere melekot weladite qal
+yale zera besi beኅtum dnglna
+amlakn yeweledsh ሐmelmale sina
+maኅdere melekot /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Lby6sMPawSk', 'draft', 'pending', 'https://www.youtube.com/watch?v=Lby6sMPawSk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('mahdere-melekot', 'ማህደረ መለኮት', 'ማህደረ መለኮት', 'mahdere melekot', 'Ethiopian Orthodox Tewahedo Mezmur - ማህደረ መለኮት', 'መለኮት የአምላክ አናት አመቤት
+ጠርቶ ያፈረ ማነው', 'melekot yeamlak anat amebiet
+xerto yafere manew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=w8tl0BxhodE', 'draft', 'pending', 'https://www.youtube.com/watch?v=w8tl0BxhodE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('melekot-dejsh-lay-qomie-slemn', 'መለኮት ደጅሽ ላይ ቆሜ ስለምን', 'መለኮት ደጅሽ ላይ ቆሜ ስለምን', 'melekot dejsh lay qomie slemn', 'Ethiopian Orthodox Tewahedo Mezmur - መለኮት ደጅሽ ላይ ቆሜ ስለምን', 'መለኮት አመብርሃን ነይ ድንግል
+መለኮት መጽናኛዬ ነሽ ረዳቴ
+መለኮት ጋሻና ጦሬ መከታዬ
+መለኮት ስዘምርልሽ ደስ ይለኛል
+
+VERSE 1
+መለኮት ከልጆሽ ጸጋ ይሰጠኛል', 'melekot amebrሃn ney dngl
+melekot metsnagnayie nesh redatie
+melekot gashana xorie meketayie
+melekot szemrlsh des ylegnal
+
+VERSE 1
+melekot keljosh tsega ysexegnal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=HRy4YnGUY0w', 'draft', 'pending', 'https://www.youtube.com/watch?v=HRy4YnGUY0w', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('astarqign-gefchie-wexchie', 'አስታርቂኝ ገፍቼ ወጥቼ', 'አስታርቂኝ ገፍቼ ወጥቼ', 'astarqign gefchie wexchie', 'Ethiopian Orthodox Tewahedo Mezmur - አስታርቂኝ ገፍቼ ወጥቼ', 'አስታርቂኝ የቤቴን ገበታ
+አስታርቂኝ ልበላ ተመኘሁ
+አስታርቂኝ የአንስሳት ገፈራ', 'astarqign yebietien gebeta
+astarqign lbela temegnehu
+astarqign yeanssat gefera', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=V4JA20otgGc', 'draft', 'pending', 'https://www.youtube.com/watch?v=V4JA20otgGc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('az', 'አዝ ---', 'አዝ ---', 'az ---', 'Ethiopian Orthodox Tewahedo Mezmur - አዝ ---', 'አዝ ---
+አስታርቁኝ ገና ሩቅ ሳለው
+አስታርቂኝ አባቴ አይቶኝ
+አስታርቂኝ ወደእኔ ሮጦ
+
+VERSE 1
+አስታርቂኝ አቅፎ ነው የሳመኝ
+አስታርቂኝ ጠፍቶ የነበረው
+አስታርቂኝ ተገኘልኝ አለ
+አስታርቂኝ ሞቶ የነበረው
+
+VERSE 2
+አስታርቂኝ ደግሞ ሕያው ሆነ
+949. ደስ ይበለን
+አዝ ---፦፦-
+አዝ ---፦
+
+VERSE 3
+አዝ ---፦
+አዝ ---፦
+አዝ ---፦', 'az ---
+az ---
+astarqugn gena ruq salew
+astarqign abatie aytogn
+
+VERSE 1
+astarqign wedeenie roxo
+astarqign aqfo new yesamegn
+astarqign xefto yeneberew
+astarqign tegegnelgn ale
+
+VERSE 2
+astarqign moto yeneberew
+astarqign degmo ሕyaw hone
+949. des ybelen
+az ---፦፦-
+
+VERSE 3
+az ---፦
+az ---፦
+az ---፦
+az ---፦', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=YJs3HiBCb-g', 'draft', 'pending', 'https://www.youtube.com/watch?v=YJs3HiBCb-g', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yezele-lem-bietie', 'የዘለዓለም ቤቴ', 'የዘለዓለም ቤቴ', 'yezeleዓlem bietie', 'Ethiopian Orthodox Tewahedo Mezmur - የዘለዓለም ቤቴ', 'የዘለዓለም ቤቴ ድንግል አመቤቴ
+መንገድ ስፄድ ስንቄ ድንግል እመቤቴ
+መጠነሽ ምግቤ ድንግል አመቤቴ
+እአምአምላክ ስጠራሽ ድንግል አመቤቴ
+
+VERSE 1
+ይጠፋል ረሀቤ ድንግል አመቤቴ', 'yezeleዓlem bietie dngl amebietie
+menged sፄd snqie dngl emebietie
+mexenesh mgbie dngl amebietie
+eamamlak sxerash dngl amebietie
+
+VERSE 1
+yxefal rehabie dngl amebietie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=bycXZPK3gBs', 'draft', 'pending', 'https://www.youtube.com/watch?v=bycXZPK3gBs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('maryam-anchi-nesh', 'ማርያም አንቺ ነሽ', 'ማርያም አንቺ ነሽ', 'maryam anchi nesh', 'Ethiopian Orthodox Tewahedo Mezmur - ማርያም አንቺ ነሽ', 'ኦ አመ ክርስቶስ ማርያም አንቺ ነሽ
+ኦ የክርስቶስ እናት ማርያም አንቺ ነሽ
+687. ማኅደረ መለኮት /2/
+ማርያም አንቺ ነሽ/3/ የመዳን ተስፋቸው
+
+VERSE 1
+የአግዚአብሔር አብ ሙሽራ ወልድን የወለድሽ
+የአግዚአብሔር መንፈስቅዱስ ንጽሕት አዳራሽ
+የሰሎሞን አክሊል የታጠረች ተክል
+የአሮን ካህን ልብስ/3/ የወርቅ ጸናጽል
+
+VERSE 2
+930.ወደ ምሥራቅ እዩ
+ወደ ምሥራቅ አዩ ወደ ፀሐይ መውጫ
+ድንግልን ክበቧት እንበል ሃሌ ሊያ
+ማርያም አንቺ ነሽ', 'o ame krstos maryam anchi nesh
+o yekrstos enat maryam anchi nesh
+687. maኅdere melekot /2/
+maryam anchi nesh/3/ yemedan tesfachew
+
+VERSE 1
+yeagziabሔr ab mushra weldn yeweledsh
+yeagziabሔr menfesqdus ntsሕt adarash
+yeselomon aklil yetaxerech tekl
+yearon kahn lbs/3/ yewerq tsenatsl
+
+VERSE 2
+930.wede mሥraq eyu
+wede mሥraq ayu wede ፀሐy mewca
+dngln kbebuat enbel ሃlie liya
+maryam anchi nesh', 'amharic', 'mezmur', 'ዘማሪ ዲያቆን ፍሬዘር ደሳለኝ', 'https://www.youtube.com/watch?v=VHOioMRg_Tc', 'draft', 'pending', 'https://www.youtube.com/watch?v=VHOioMRg_Tc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tesfayie-anchi-nesh-maryam', 'ተስፋዬ አንቺ ነሽ ማርያም', 'ተስፋዬ አንቺ ነሽ ማርያም', 'tesfayie anchi nesh maryam', 'Ethiopian Orthodox Tewahedo Mezmur - ተስፋዬ አንቺ ነሽ ማርያም', 'እስከ አለተ ሞቴ ማርያም
+ላልጠላሽ ምያለሁ ማርያም
+ከስርሽ ላልጠፋ ማርያም
+ገጸ በረከቴ ማርያም
+
+VERSE 1
+የሕይወቴ ዋስትና ማርያም
+የምእመናን ውበት ማርያም
+ዘወድ አክሊላችው ማርያም
+ድንግል አንቺ እኮ ነሽ ማርያም
+
+VERSE 2
+የመንገድ ስንቃቸው ማርያም
+ምሥክር ነኝ ለአንቺ ማርያም
+አንደ ነቢያቱ ማርያም
+ስጦታ መሆንሽን ማርያም
+
+VERSE 3
+ለአዳም ልጆች ሁሉ ማርያም
+ሞገስና ጸጋ ማርያም
+በጌታ ፊት ያለሽ ማርያም
+ከሰይጣን መሸሻ ማርያም
+
+VERSE 4
+ዋስ ጠበቃቸን ነሸ ማርያም
+አንዴት ነበር ያኔ ማርያም
+ጌታን ስተወልጂው ማርያም
+የአረኞቹ ደስታ ማርያም
+
+VERSE 5
+የመላእክት ዝማሬ ማርያም
+954.ለወዳሴሽ ልትጋ
+ለውሳሴሽ ልትጋ ስምሽ ግርማ ያለው/2/
+አመቤቴ ኸኸ አመቤቴ ስልሽ አውላለሁ
+
+VERSE 6
+ከልቤ አቀርባለሁ ምስጋና ለስምሽ
+መለመኛዬ ነው ጽኑዕ ቃል ኪዳንሽ
+በሰላምታ ድምጽሽ ያልጸና ማን አለ
+ጽንሱ በማኅፀን በደስታ ዘለለ
+
+VERSE 7
+ማርና ወተት ነው የስምሽ ስያሜ', 'eske alete motie maryam
+lalxelash myalehu maryam
+kesrsh lalxefa maryam
+getse bereketie maryam
+
+VERSE 1
+yeሕywetie wastna maryam
+yememenan wbet maryam
+zewed aklilachw maryam
+dngl anchi eko nesh maryam
+
+VERSE 2
+yemenged snqachew maryam
+mሥkr negn leanchi maryam
+ande nebiyatu maryam
+sxota mehonshn maryam
+
+VERSE 3
+leadam ljoch hulu maryam
+mogesna tsega maryam
+begieta fit yalesh maryam
+keseyxan meshesha maryam
+
+VERSE 4
+was xebeqachen neshe maryam
+andiet neber yanie maryam
+gietan steweljiw maryam
+yearegnochu desta maryam
+
+VERSE 5
+yemelaekt zmarie maryam
+954.lewedasiesh ltga
+lewsasiesh ltga smsh grma yalew/2/
+amebietie ኸኸ amebietie slsh awlalehu
+
+VERSE 6
+kelbie aqerbalehu msgana lesmsh
+melemegnayie new tsnuዕ qal kidansh
+beselamta dmtssh yaltsena man ale
+tsnsu bemaኅፀn bedesta zelele
+
+VERSE 7
+marna wetet new yesmsh syamie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Yrx3jHJ_nAc', 'draft', 'pending', 'https://www.youtube.com/watch?v=Yrx3jHJ_nAc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeteceneqachhu-yazenachhu-hulu', 'የተጨነቃችሁ ያዘናችሁ ሁሉ', 'የተጨነቃችሁ ያዘናችሁ ሁሉ', 'yeteceneqachhu yazenachhu hulu', 'Ethiopian Orthodox Tewahedo Mezmur - የተጨነቃችሁ ያዘናችሁ ሁሉ', 'ቅድስት ማርያምን አዘኝቷን ጥሩ
+የጌታዬ እናትን አዛኝቷን ጥሩ
+ነይ በሏት ትመጣለች /2/
+ሐዘን ጭንቀት ትገላግላለች
+
+VERSE 1
+ደንግል ማርያም ፀምረ ጌድዬን
+የታቦት ተራራ ደንግል ማርያም
+የአባ ጊዮርጊስ ደንግል ማርያም
+የአርጋኖን ሙሽራ ደንግል ማርያም
+
+VERSE 2
+በአዛኝነትሸ ደንግል ማርያም
+ስንቅ የሆንሽኝ ደንግል ማርያም
+ዛሬም ፈጥነሽ ስሚኝ ድንግል ማርያም
+ድንግል አትርሺኝ ደንግል ማርያም
+
+VERSE 3
+ድንግል ማርያም ብሥራተ ገብርኤል
+የሚካኤል ፋና ደንግል ማርያም
+አክሊለ ጊዮርጊስ ደንግል ማርያም
+የሱራፊል ፋና ደንግል ማርያም
+
+VERSE 4
+ነይ ፈጥነሽ ደረሺ ደንግል ማርያም
+ተጨንቀናልና ደንግል ማርያም
+ድንግል ማርያም ፍጥረታት በሙሉ
+ያመሰግኑሻል ደንግል ማርያም
+
+VERSE 5
+የሕይወታችን በር ደንግል ማርያም
+ድንግል ናት ይሉሻል ደንግል ማርያም
+አኛ እንጠራሻለን ደንግል ማርያም
+ሲጨንቀን ሲጠበን ደንግል ማርያም
+
+VERSE 6
+ለአንቺ ልጆች አድርጎ ደንግል ማርያም
+ጌታ ስለሰጠን ደንግል ማርያም
+958. ማርያም ኩኒ', 'qdst maryamn azegntuan xru
+yegietayie enatn azagntuan xru
+ney beluat tmexalech /2/
+ሐzen cnqet tgelaglalech
+
+VERSE 1
+dengl maryam ፀmre giedyien
+yetabot terara dengl maryam
+yeaba giyorgis dengl maryam
+yearganon mushra dengl maryam
+
+VERSE 2
+beazagnnetshe dengl maryam
+snq yehonshgn dengl maryam
+zariem fexnesh smign dngl maryam
+dngl atrshign dengl maryam
+
+VERSE 3
+dngl maryam bሥrate gebriel
+yemikaiel fana dengl maryam
+aklile giyorgis dengl maryam
+yesurafil fana dengl maryam
+
+VERSE 4
+ney fexnesh dereshi dengl maryam
+tecenqenalna dengl maryam
+dngl maryam fxretat bemulu
+yamesegnushal dengl maryam
+
+VERSE 5
+yeሕywetachn ber dengl maryam
+dngl nat ylushal dengl maryam
+agna enxerashalen dengl maryam
+sicenqen sixeben dengl maryam
+
+VERSE 6
+leanchi ljoch adrgo dengl maryam
+gieta slesexen dengl maryam
+958. maryam kuni', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=3hloSBvDnrs', 'draft', 'pending', 'https://www.youtube.com/watch?v=3hloSBvDnrs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('huletunm-yehonsh-enatna-dngl', 'ሁለቱንም የሆንሽ እናትና ድንግል', 'ሁለቱንም የሆንሽ እናትና ድንግል', 'huletunm yehonsh enatna dngl', 'Ethiopian Orthodox Tewahedo Mezmur - ሁለቱንም የሆንሽ እናትና ድንግል', 'ማኀደረ መለኮት ወላዲተ ቃል
+ያለዘርአ ብእሲ በኅቱም ድንግልና
+አምላክን የወለድሽ ሐመልማለ ሲና', 'maኀdere melekot weladite qal
+yalezera besi beኅtum dnglna
+amlakn yeweledsh ሐmelmale sina', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=IgvT6N2VvLc', 'draft', 'pending', 'https://www.youtube.com/watch?v=IgvT6N2VvLc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('maryam-tbelxalech-kehulu-fxret', 'ማርያም ትበልጣለች ከሁሉ ፍጥረት', 'ማርያም ትበልጣለች ከሁሉ ፍጥረት', 'maryam tbelxalech kehulu fxret', 'Ethiopian Orthodox Tewahedo Mezmur - ማርያም ትበልጣለች ከሁሉ ፍጥረት', 'ስለያዘች አሳተ መለኮት/4/
+በመኑ በመኑ በአምሳለ መኑ ናስተማስልኪ /2/
+አምቤቴ የአምላክ እናት አዛኝቷ
+ኦ ድንግል ምልዕተ ውዳሴ/2/
+
+VERSE 1
+970. ነይ ነይ
+ነይ ነይ ማርያም ወላዲተ አምላክ
+የጻድቃን አመቤት
+የመላእክት እህት/''/2/
+
+VERSE 2
+ሁላችሁ አመኗት ከልብ አማላጅ ናትና
+በአውነት እናመስግናት እናወድሳት
+አማላጅ ኪዳነምሕረት/2/
+971 በለዑል መጠጊያ
+
+VERSE 3
+በልዑል መጠጊያ የሚኖር በልዑል መጠጊያ/2/
+ይከልላል ከክፉ/2/
+አንደበቱን ከኃጢአት ከልክሎ አምላኩን ካሰበ
+ካልተመጻደቀ በሥራው ራሱን ካልካበ
+
+VERSE 4
+ይከለላል ከክፉ/ሪ/
+ጨርቄን ማቄን ሳይል ራሱን ለአምላኩ
+ከሰጠ
+በዓለም ምደራዊ ሀብት ተታሎ አምላኩን
+
+VERSE 5
+ካልሸጠ
+ይከለላል ከክፉ /ሪ2/
+አስከመጨረሻው ለመኖር በአምነቱ ከጸና
+ካላፈገፈገ ከአምላኩ ሲገጥመው ፈተና
+
+VERSE 6
+ይከለላል ከክፉ/ሪ/
+972 ወትቀውም ንግሥት
+ውትቀውም ንግሥት /2/ በየማንከ /2
+ኸኸ በአልበስ ወርቅ /3/ ዑጽፍት በአልባሰ ወርቅ', 'sleyazech asate melekot/4/
+bemenu bemenu beamsale menu nastemaslki /2/
+ambietie yeamlak enat azagntua
+o dngl mlዕte wdasie/2/
+
+VERSE 1
+970. ney ney
+ney ney maryam weladite amlak
+yetsadqan amebiet
+yemelaekt eht/''/2/
+
+VERSE 2
+hulachhu amenuat kelb amalaj natna
+beawnet enamesgnat enawedsat
+amalaj kidanemሕret/2/
+971 beleዑl mexegiya
+
+VERSE 3
+belዑl mexegiya yeminor belዑl mexegiya/2/
+ykellal kekfu/2/
+andebetun keኃxiat kelklo amlakun kasebe
+kaltemetsadeqe beሥraw rasun kalkabe
+
+VERSE 4
+ykelelal kekfu/ri/
+cerqien maqien sayl rasun leamlaku
+kesexe
+beዓlem mderawi habt tetalo amlakun
+
+VERSE 5
+kalshexe
+ykelelal kekfu /ri2/
+askemecereshaw lemenor beamnetu ketsena
+kalafegefege keamlaku sigexmew fetena
+
+VERSE 6
+ykelelal kekfu/ri/
+972 wetqewm ngሥt
+wtqewm ngሥt /2/ beyemanke /2
+ኸኸ bealbes werq /3/ ዑtsft bealbase werq
+
+VERSE 7
+/2/
+/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=qpOtBPqo5hQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=qpOtBPqo5hQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('lehulum-selam-bietel-m', 'ለሁሉም ሰላም ቤተልሔም', 'ለሁሉም ሰላም ቤተልሔም', 'lehulum selam bietelሔm', 'Ethiopian Orthodox Tewahedo Mezmur - ለሁሉም ሰላም ቤተልሔም', 'ጌታ ተወለደ ቤተልሔም
+ለሁሉም ሰላም ቤተልሔም', 'gieta tewelede bietelሔm
+lehulum selam bietelሔm', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=JtKKw83YcR0', 'draft', 'pending', 'https://www.youtube.com/watch?v=JtKKw83YcR0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('melake-selamne-liqe-melaekt-raiel-2', 'መልአከ ሰላምነ ሊቀ መላእክት ዑራኤል /2/', 'መልአከ ሰላምነ ሊቀ መላእክት ዑራኤል /2/', 'melake selamne liqe melaekt ዑraiel /2/', 'Ethiopian Orthodox Tewahedo Mezmur - መልአከ ሰላምነ ሊቀ መላእክት ዑራኤል /2/', 'ሰአል ወጸሊ በእንቲአነ አዕርግ ጸሉተነ
+ቅድመ መንበሩ ለመድኃኔዓለም
+ትርጉም ፡:- የሰላም መልአክ ቅዱስ ዑራኤል ስለ እኛ
+ለምንልን ጸሎታችንነም በመድኃኔዓለም ፊት አሳርግልን
+
+VERSE 1
+24. ዑራኤል ወሩፋኤል
+ዑራኤል ወሩፋኤል /4/
+መልአከ ሰላምነ ሊቀ መላእክት ዑራኤል /2/
+ሰአል ወጸሊ በእንቲአነ አዕርግ ጸሎተነ
+
+VERSE 2
+ቅድመ መንበሩ ለመድኃኔዓለም
+ትርጉም ፡:- የሰላም መልአክ ቅዱስ ዑራኤል ስለ እኛ
+ለምንልን ጸሎታችንንም በመድኃኔዓለምፊት አሳርግልን
+1044ኃያል ኃያል
+
+VERSE 3
+ኃያል ኃያል /2/
+ሰዳዴ ሳጥናኤል /2/
+ኃያል ገባሬ ኃይል
+ባሕራን ያዳነው
+
+VERSE 4
+ተላፊኖስን የረዳው /2/
+መልአኩ ሚካኤል ነው
+የሞቱን ደብዳቤ የለወጠው', 'seal wetseli beentiane aዕrg tselutene
+qdme menberu lemedኃnieዓlem
+trgum ፡:- yeselam melak qdus ዑraiel sle egna
+lemnln tselotachnnem bemedኃnieዓlem fit asargln
+
+VERSE 1
+24. ዑraiel werufaiel
+ዑraiel werufaiel /4/
+melake selamne liqe melaekt ዑraiel /2/
+seal wetseli beentiane aዕrg tselotene
+
+VERSE 2
+qdme menberu lemedኃnieዓlem
+trgum ፡:- yeselam melak qdus ዑraiel sle egna
+lemnln tselotachnnm bemedኃnieዓlemfit asargln
+1044ኃyal ኃyal
+
+VERSE 3
+ኃyal ኃyal /2/
+sedadie saxnaiel /2/
+ኃyal gebarie ኃyl
+baሕran yadanew
+
+VERSE 4
+telafinosn yeredaw /2/
+melaku mikaiel new
+yemotun debdabie yelewexew', 'amharic', 'mezmur', 'ሊቀ መዘምራን  ይልማ ኃይሉ', 'https://www.youtube.com/watch?v=dgSmtNJpsMA', 'draft', 'pending', 'https://www.youtube.com/watch?v=dgSmtNJpsMA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('le-xan-3-aydelem-letsadqan-2', 'ለኃጥአን /3/ አይደለም ለጻድቃን /2/', 'ለኃጥአን /3/ አይደለም ለጻድቃን /2/', 'leኃxan /3/ aydelem letsadqan /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ለኃጥአን /3/ አይደለም ለጻድቃን /2/', 'ለኃጥአን /3/ አይደለም ለጻድቃን /2/', 'leኃxan /3/ aydelem letsadqan /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=vWBEmVllahk', 'draft', 'pending', 'https://www.youtube.com/watch?v=vWBEmVllahk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('o-mikaiel', 'ኦ ሚካኤል', 'ኦ ሚካኤል', 'o mikaiel', 'Ethiopian Orthodox Tewahedo Mezmur - ኦ ሚካኤል', 'ኦ ሚካኤል /2/ ሊቀ መላእክት
+በኃጢአት እንዳንወድቅ እንዳንሞት ፈጥነህ
+ተራዳን አጽናን በእምነት /2/', 'o mikaiel /2/ liqe melaekt
+beኃxiat endanwedq endanmot fexneh
+teradan atsnan beemnet /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=uEen43R92sY', 'draft', 'pending', 'https://www.youtube.com/watch?v=uEen43R92sY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('keamlak-telkeh', 'ከአምላክ ተልከህ »', 'ከአምላክ ተልከህ »', 'keamlak telkeh »', 'Ethiopian Orthodox Tewahedo Mezmur - ከአምላክ ተልከህ »', 'ህዝበ አስራኤልን »
+ነጻ ያወጣህ »
+በአዲስ ኪዳንም ድንቅ ሥራ አለህ
+በተአምራትህ ትፈውሳለህ /2/
+
+VERSE 1
+ባለ መድኃኒት ሚካኤል
+ያቃተውን »
+ፈዋሽ ጠበልህ »
+ሆኖኛል ኃይል »
+
+VERSE 2
+አንደ መጻጉ ድኅነት አገኘን
+ከአምላክ ተልከህ »', 'hzbe asraieln »
+netsa yawexah »
+beadis kidanm dnq ሥra aleh
+beteamrath tfewsaleh /2/
+
+VERSE 1
+bale medኃnit mikaiel
+yaqatewn »
+fewash xebelh »
+honognal ኃyl »
+
+VERSE 2
+ande metsagu dኅnet agegnen
+keamlak telkeh »', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=_EstK3FZoMU', 'draft', 'pending', 'https://www.youtube.com/watch?v=_EstK3FZoMU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qdus-gieta-amanuiel-cher-amlak', 'ቅዱስ ጌታ አማኑኤል ቸር አምላክ', 'ቅዱስ ጌታ አማኑኤል ቸር አምላክ', 'qdus gieta amanuiel cher amlak', 'Ethiopian Orthodox Tewahedo Mezmur - ቅዱስ ጌታ አማኑኤል ቸር አምላክ', 'ቅዱስ ጌታ አማኑኤል ቸር አምላክ', 'qdus gieta amanuiel cher amlak', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=Re8We9EqZ6k', 'draft', 'pending', 'https://www.youtube.com/watch?v=Re8We9EqZ6k', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dngl-maryam-2', 'ድንግል ማርያም /2/', 'ድንግል ማርያም /2/', 'dngl maryam /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ድንግል ማርያም /2/', 'ታማልዳለች ከልጂ ከመድኃኔዓለም /2/
+ታማልዳለች ከልጂ /2/ ከመድኃኔዓለም
+ታማልዳለች/ ልጄ ሆይ ይቅር በል እያለች
+አባቶቻችን ነቢያት ወሐዋርያት/''/2/
+
+VERSE 1
+ድንግል ማርያም /2/', 'tamaldalech kelji kemedኃnieዓlem /2/
+tamaldalech kelji /2/ kemedኃnieዓlem
+tamaldalech/ ljie hoy yqr bel eyalech
+abatochachn nebiyat weሐwaryat/''/2/
+
+VERSE 1
+dngl maryam /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=fUdn8wMItC4', 'draft', 'pending', 'https://www.youtube.com/watch?v=fUdn8wMItC4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yamaldalu-beewnet-2-yamaldalu', 'ያማልዳሉ በእውነት /2/ ያማልዳሉ', 'ያማልዳሉ በእውነት /2/ ያማልዳሉ', 'yamaldalu beewnet /2/ yamaldalu', 'Ethiopian Orthodox Tewahedo Mezmur - ያማልዳሉ በእውነት /2/ ያማልዳሉ', 'ያማልዳሉ በእውነት /2/ ያማልዳሉ', 'yamaldalu beewnet /2/ yamaldalu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=VqyMzv4l_Pw', 'draft', 'pending', 'https://www.youtube.com/watch?v=VqyMzv4l_Pw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('yamaldalu-beewnet-2-yamaldalu', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('rawitochachewm-hulu', 'ሠራዊቶቻቸውም ሁሉ', 'ሠራዊቶቻቸውም ሁሉ', 'ሠrawitochachewm hulu', 'Ethiopian Orthodox Tewahedo Mezmur - ሠራዊቶቻቸውም ሁሉ', 'ሰባቱ ሊቃናት መላዕክት አፍኒን ራጉኤልና
+ሳቁኤል
+ሠራዊቶቻቸውም ሁሉ
+ሠራዊቶቻቸውም ሁሉ
+
+VERSE 1
+ሠራዊቶቻቸውም ሁሉ', 'sebatu liqanat melaዕkt afnin raguielna
+saquiel
+ሠrawitochachewm hulu
+ሠrawitochachewm hulu
+
+VERSE 1
+ሠrawitochachewm hulu', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=KJUV52pbxTM', 'draft', 'pending', 'https://www.youtube.com/watch?v=KJUV52pbxTM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ke-let-yefeleqe-w-xextenal', 'ከዓለት የፈለቀ ውኃ ጠጥተናል', 'ከዓለት የፈለቀ ውኃ ጠጥተናል', 'keዓlet yefeleqe wኃ xextenal', 'Ethiopian Orthodox Tewahedo Mezmur - ከዓለት የፈለቀ ውኃ ጠጥተናል', 'ከዓለት የፈለቀ ውኃ ጠጥተናል', 'keዓlet yefeleqe wኃ xextenal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=bPZIUSON67s', 'draft', 'pending', 'https://www.youtube.com/watch?v=bPZIUSON67s', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('semayawi-mena-amlak-megbonal', 'ሰማያዊ መና አምላክ መግቦናል', 'ሰማያዊ መና አምላክ መግቦናል', 'semayawi mena amlak megbonal', 'Ethiopian Orthodox Tewahedo Mezmur - ሰማያዊ መና አምላክ መግቦናል', 'ሰማያዊ መና አምላክ መግቦናል', 'semayawi mena amlak megbonal', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=6_2EAXfE7jQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=6_2EAXfE7jQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('br-nn-agegnen-bedngl-maryam', 'ብርሃንን አገኘን በድንግል ማርያም', 'ብርሃንን አገኘን በድንግል ማርያም', 'brሃnn agegnen bedngl maryam', 'Ethiopian Orthodox Tewahedo Mezmur - ብርሃንን አገኘን በድንግል ማርያም', 'ብርሃንን አገኘን በድንግል ማርያም', 'brሃnn agegnen bedngl maryam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=mjR6KeHMlNg', 'draft', 'pending', 'https://www.youtube.com/watch?v=mjR6KeHMlNg', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('beegziab-r-feqad-teweledech-zarie', 'በእግዚአብሔር ፈቃድ ተወለደች ዛሬ', 'በእግዚአብሔር ፈቃድ ተወለደች ዛሬ', 'beegziabሔr feqad teweledech zarie', 'Ethiopian Orthodox Tewahedo Mezmur - በእግዚአብሔር ፈቃድ ተወለደች ዛሬ', 'የኢያቄም ስአእለቱ የሐና አምነት
+ለምፒልን ለእኛ ኪዳነምሕረት
+821.ኩሉ ዘፈቀደ
+ኩሉ ዘፈቀደ ገብረ አግዚአብሔር /2/
+
+VERSE 1
+በሰማይኒ ወበምድኒ ወበባሕርኒነ/ሪ2/
+ወበኩሉ ቀላያት /4/
+822.ይትባረክ እግዚአብሔር
+ይትባረክ እግዚአብሔር አምላከ አበዊነ /2/
+
+VERSE 2
+በእግዚአብሔር ፈቃድ ተወለደች ዛሬ', 'yeiyaqiem saeletu yeሐna amnet
+lempiln leegna kidanemሕret
+821.kulu zefeqede
+kulu zefeqede gebre agziabሔr /2/
+
+VERSE 1
+besemayni webemdni webebaሕrnine/ri2/
+webekulu qelayat /4/
+822.ytbarek egziabሔr
+ytbarek egziabሔr amlake abewine /2/
+
+VERSE 2
+beegziabሔr feqad teweledech zarie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=h0bfYcsP1wo', 'draft', 'pending', 'https://www.youtube.com/watch?v=h0bfYcsP1wo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('maryam-goyeki-am-getse-herods-2', 'ማርያም', 'ማርያም', 'maryam goyeki am getse herods /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ማርያም', 'ለአርእዩ /4 ተአምረ ግፍኪ /2/
+ማርያም ሸሸች ከሄሮድስ ፊት /2/
+ለማሳየት /4 የግፍ ተአምርሽን /2/
+80. አስመ ውአቱ
+
+VERSE 1
+አስመ ውአቱ ክብሮሙ ለቅዱሳን መድኃኔዓለም
+/2/ አሠርገዋ ለምድር አሰርገዋ ለጽጌፃ /2 /
+ማርያም ተአይን ባህቲታ ውስተ አድባረ ግብጽ
+ከመ ኦፍ /2/
+
+VERSE 2
+ማርያም /2/
+ንኢ /6/ አመ አምላክ ንኢ ማርያም /2/
+ማርያም /3/ አብርሒ ጽዮን/2/
+186.. ዘካርያስ ርእየ
+
+VERSE 3
+ዘካርያስ ርእየ ተቅዋመ ማኅቶት ኩለንተፃ
+ወርቅ በየማና ወበጸጋማ አዕጽቀ ዘይት/2/
+ነቢያት ይትፌሥሑ ሐዋርያት ይትሐሰዮ
+በውስቴታ ወዳዊት ይዜምር በውስተ
+
+VERSE 4
+ማኅፈዲሀ /2/
+ማርያም
+ያደረው የአግዚአብሔር ልጁ ነው/ሪ2/
+ማርያም ቅድስት/2/
+
+VERSE 5
+194. ዘይሃይድ ዓይነ
+ማርያም የተወለደውን ሰማያዊ
+ማርያም ትጠብቅሽ አጆቿን ዘርግታ/2/
+343 በክብር ዙፋኑ
+
+VERSE 6
+በክብር ዙፋኑ መርጦ ያስቀመጠሽ
+ለእኛ ለኃጢአተኞች ተስፋችን አንቺው ነሽ
+በፍጹም ንጽሕና ቤተመቅደስ ያደግሽ
+የአማኑኤል የጌታዬ የፈጣሪ አናት በምን አንመስልሽ/2/
+
+VERSE 7
+ቃና ዘገሊላ ሠርግ ደግሰው
+ማርያም
+3855. ይትባረክ
+ይትባረክ እንደአብርፃም/2/
+
+VERSE 8
+አኸ ዘለዓለም/4/ይትባረክ እንደአብርፃም/2/
+ሙሽሪት ሙሽራው አንደአብርፃም
+እንኳን ደስ አላችሁ
+ተከበረ ዛሬ
+
+VERSE 9
+ቅዱስ ጋብቻችሁ
+ማርያም /2/ ድንግል ማርያም /2/
+አማልጅን ከልጅሽ /2/ ከመድኃኔዓለም /2/
+ኃጢአተኞች ከኃጢአት እንፈውስ
+
+VERSE 10
+በማርያም ድንግል /2/ ክብርን አገኘን
+በማርያም ድንግል /2/ አክሊል አገኘን
+398.አዳም ንባብኪ
+አዳም ንባብኪ ርግብ ሠናይት/2/
+
+VERSE 11
+በልባስ ወርቅ/2/ ንኢ/2/ ኪዳነምሕረት /2/
+ማርያምሰ እንተ በምድር ታንሶሱ
+ማርያም ዐረገች /2/ ወደ ገነት
+የሰማይ መላእክት በደስታ አያጀቧት
+
+VERSE 12
+ዐረገች ወደ ገነት/2/
+408. ጴጥሮስ
+ጴጥሮስ ወጳውሎስ አጠኑ ሥጋሃፃ/2/
+ለማርያም/2/ በማዕጠንተ ወርቅ
+
+VERSE 13
+409. አእረግዋ
+አአረግዋ መላእክት ውስተ ሰማያት/2/
+አአረግዋ መላእክት ውስተ ሰማያት/4/
+አሳረጓት መላአክት ወደ ሰማያት/2/
+
+VERSE 14
+አሳረጓት መላአክት ወደ ሰማያት/4/
+410. እኸ ማርያምሰ
+አኸ ማርያምሰ እኸ እንተ በምድር/2/
+አኸ በሰማያት ታንሶሶ በሰማያት/2/
+
+VERSE 15
+411. ኦ ምርአግ
+ኦ ምርአግ እምድር ውስተ ሰማይ /2/
+ወብኪ ተሐደሰ ጊዮርጊስ ሰማዕት
+412. ኦ ርኅርቲተ
+
+VERSE 16
+ኦ ርኅርጊቲተ ሕሊና አፍቅሮተ ሰብእ ልማዳ
+ለአለ ጌሰሙ/4/ ትመስል/2/ አንግዳ
+ኪዳነምህረት እመቤት
+ኪዳነምሕረት አመቤት
+
+VERSE 17
+የዓለም ሁሉ መድኃኒት
+ማርያምም እንዲህ እያለች /2/
+ማርያም ባርኪኝ አመቤቴ አሰግድ ለኪ፡፡
+አንዳልንገላታ ጠብቂኝ በኃጢአት ዓለም ጎዳና
+
+VERSE 18
+ደግሞም እንድመገብ ሰማያዊ መና
+ማርያም የአዳም ጤና እሰግድ ለኪ፡፡
+ተሸጩ ስኖር ልጅሽ በኃጢአት ከተማ ዓለም
+የሚያወጣኝ ጠፍቶ የእናት ልጅ ወንድም
+
+VERSE 19
+ወጣኹኝ በልጀሽ ደም አሰግድ ለኪ፡፡
+ከቅድስት ቦታ ሀገር ከቤተልሔም ተነሥተሸ
+ምድረ ግብፅ አውራጃ ፈጥነሽ ስትደርሺ
+ማርያም መከራን አየሽ አስግድ ለኪ
+
+VERSE 20
+ያ ምቀኛ ሰይጣን ንጉሥ ተንኮል የተመላው
+ልጅሽን ሊገለው ደሙንም ለማፍሰስ
+ተሯራሯራጠ በአግር በፈረስ አስግድ ለኪ፡፡
+ያንቺ መንገላታት ሁልጊዜ ያሳዝነኛል ሲወራ
+
+VERSE 21
+በምድረ ግብፅ ሁሉ ያየሽው መከራ
+ማርያም ነፍሴን አደራ አሰግድ ለኪ፡፡ /2/
+593.አመቤታችን ላንቺ
+አመቤታችን ላንቺ ስላምታ ይገባሻል/2/
+
+VERSE 22
+ከሴቶች ሁሉ /3/ ተመርጠሻል
+ሐርና ወርቁን እያስማማች ስትፈትል /2/
+ተዘጋጀላት/3/ የመመረጥ ዕድል
+አመቤታችን --------፦
+
+VERSE 23
+አያረጓጓት የሰማይ መላእክት /2/
+ማርያም አመቤቴ -------“፦-
+595.የዓለም መድኃኒት የተወለደብሽ
+የዓለም መድኃኒት የተወለደብሽ
+
+VERSE 24
+አንቺ ቤተልሔም የተቀደስሽ ነሽ
+የአማልክት አምላክ ንጉሠ ነገሥት
+ኃያላን በሙሉ የሚሰግዱለት
+በጨርቅ ተጠቅልሎ ተኛ በበረት
+
+VERSE 25
+የዓለም መድኃኒት ---------”፦-፦--
+አዋቂዎች ሁሉ በቅን አሳባቸው
+ወደአንቺ ተጓዙ ኮከብ ሲመራቸው/ሪ2/
+የዓለም መድኃኒት ------------
+
+VERSE 26
+ለተከታይ ትውልድ ምሣሌ ለመሆን
+ሰግደው ገበሩለት ወርቅ ዕጣን ከርቤን /2/
+የዓለም መድኃኒት ---------”፦----
+የሚያድለው ጌታ አውቀት ለሕፃናት
+
+VERSE 27
+የሚመሰገን ነው በአፈ መላእክት
+ከእንስሳት ጋራ አደረ በበረት
+ማርያም መግደላዊት እየገሠገሠች
+በሌሊት ተነሥታ ወደ አምላኳ ሄደች
+
+VERSE 28
+አይሁድ አንገላተው የሰቀሉት ጌታን
+ተነሥቶ አግኝታ ተመላች በደስታ
+ማርያም መግደላዊት ››
+ምንኛ ታደለች ››
+
+VERSE 29
+ማርያም ኢያቄም ወለዳት
+680.አልብኪ ነውር ወኢምንትኒ በላዕሌኪ /2
+ጻኢ እም ሊባኖስ አኅትየ መርዓት 4/
+ማርያም አመብዙኃን /4
+
+VERSE 30
+688.ኢያቄም ወሐና /4
+ድንግል ማርያም ወልደዋቷልና
+ይድረሳቸው ክብርና ምስጋና
+689. ኦ ድንግል አምሣል ወትንቢት /2 የሐዋርያት
+
+VERSE 31
+ሞገሶሙ ለሐዋርያት /4
+ድንግል ሆይ የነቢያት ትንቢት የሐዋርያት
+ሞገሣቸው አንቺ ነሽ
+690.የሐና ልጅ ነሽ የኢያቄም በረክት /2/
+
+VERSE 32
+ማርያም/2/ ቤዛዊት ዓለም/4/
+ሚካኤል መልአክ ሊቀመላእአክት/2
+ዘአወረድከ/2/ መና ከደመና/4/
+ገብርኤል መልአክ አብሣሬ ትስብእት /2/
+
+VERSE 33
+ዘአብሠራ/2/ ለማርያም ንጽሕተት/4/
+ሩፋኤል መልአክ ሊቀመላእክት/ሪ2/
+ዘአብርፃ/2/ አይኑ ለጦቢት/4/
+ዑራኤል መልክአክ ለእዝራ ነቢይ /2/
+
+VERSE 34
+ዘአስተዮ/2/ ጽዋዓ ልቡና/4/
+ሰሉሞን ይቤላ/4/
+ርግብየ ሠናይትየ ሰሎሞን ይቤላ/4/
+ገብረመንፈስቅዱስ /4/
+
+VERSE 35
+ሐዋርያ /2/ ዘአስክንድርያ/4/
+ተክለሃይማኖት /4/
+ሐዋርያ/2/ ዘኢትዮጵያ /4/
+ብርሃናተ ዓለም ጴጥሮስ ወጳውሉስ/2/
+
+VERSE 36
+ማርያምሰ ተሀቱ እምትካት ውስተ ከርሱ/2
+ለአዳም ከመባሕርይ ጸዓዳ
+አስመ በእንቲአሃ ወበእንተ አዝማዲፃ
+ተሰቀልኩ ዲበ ዕጽ ይቤ መድኃኔዓለም /2
+
+VERSE 37
+ትርጉም
+ማርያምማ ታበራለች ከጥንት ጀምሮ በአዳም ባሕርይ
+ውስጥ እንደ ነጭ ዕንቄ በአዳም ባሕርይ እርሷን ደስ
+ይበላት ብሎ ስለወገኖቿ ተሰቀልኩ አለ በእንጨት
+
+VERSE 38
+መስቀል ላይ መድኃኒዓለም
+894.ሥዛሬም አለችኝ መማጸኛ
+ማርያም ብዬ መቼ እወድቃለሁ
+የምጽናናበት ስምሽ ነውና
+
+VERSE 39
+ድንግል ሆይ ላቅርብ ለአንቺ ምስጋና
+ጨለማ ውጦኝ በጠላት ሀገር
+ለዘመናትም ስጨነቅ ስኖር
+ዲያብሎስ ማርኮ ሲሠቃየኝ
+
+VERSE 40
+የዓለምን መድኅን ወለድሽልኝ
+ከአባቶቼ ርስት ከሀገር ወጥቼ
+በአሕዛብ ሀገር ስኖር ሽሸቼ
+ደረሰሽ አጽናንተሸ አከበርሽኝ
+
+VERSE 41
+ብቸኝነቴን አስረሳሽኝ
+ድንኳኑ ሞልቶ ሰው ታድሞ
+አስተናባሪው በጭንቀት ቆሞ
+ምን አቀርባለሁ ብዬ ስቸገር
+
+VERSE 42
+ምልጃሽ ደርሶልኝ ዳንኩኝ ከማፈር
+ያሠብኩት ሐሳብ ደመና ሆኖ
+ቢበተንብኝ እንደ ጉም ተንኖ
+ይሆናል ያልኩት ሳይሆን ቢቀር
+
+VERSE 43
+በአመአምላክ አጌ መቼም አላፍር
+አናት አባቴ ባያስታውሱኝ
+ማርያም ድንግል መመኪያቸው የደናግል አርሷም
+አኮ የምልጃ ቤት ናት የሚያሰጨንቀውን
+
+VERSE 44
+የምታቃልል
+ለፍጥረት ሁሉ ትማልዳለች በመላእክት ክንፎችም
+ትጋረዳለች እርሷ ትበልጣለች ከኪሩቤል ደግሞ
+ትበልጣለች ከሱራፌል
+
+VERSE 45
+914.አሰይ ተከበረች
+አሰይ ተከበረች በዛሬዋ ዕለት ድንግል ማርያም
+የአምላክ እናት /2/
+የምሥራች አልል በሉ የአዳም ልጆች ሁሉ
+
+VERSE 46
+የምሥራች አልል በሉ ክርስቲያኖች ሁሉ /2
+ማርያም ንጽሕት ደንግል ማእምንት
+ወላዲተ አምላክ ሰአሊተ ምሕረት ለውሉደ ሰብእ
+ሰአሊ ለነ ኀበ ክርስቶስ ወልድኪ ይሥረይ
+
+VERSE 47
+ማርያም ቅድስት የሕይወት ብርፃን
+ማርያምም እንዲህ እያለች/2/
+ማርያም ትመጣለች በደመና በአየር
+ንዒ ስንል በሰዓታት
+
+VERSE 48
+ልታባርከን ትመጣለች በእአውነት/2/
+ማርያም ድረሽልኝ አመቤቴ
+የምሥራቅ ደጃፍ ነሽ አመቤቴ /2/
+የሁላችን ደስታ
+
+VERSE 49
+አሙ ለፀሐየ ጽድቅ አመቤቴ
+የሁሉ ጠበቃ አመቤቴ
+ድንግል የድል አክሊል አመቤቴ
+ድንግል የጽድቅ ሥራ
+
+VERSE 50
+ድንግል መሰላል ነሽ አመቤቴ
+የተዋሕዶ ተስፋ አመቤቴ
+934. ለማርያም
+ለማርያም/2/
+
+VERSE 51
+እንዘምራለን ለዘለዓለም/ሪ2/
+የተዘጋች ደጅ ለዘለዓለም
+ሕዝቅኤል ብሏል
+ንጽሕት ናት በእውነት
+
+VERSE 52
+በፍጹም ድንግል
+ማርያም /2/ ድንግል ማርያም /2/
+ርኅርቲተ ኅሊና /4/ ማርያም/4/
+942.ጀበመኑ በአምሣለ መት
+
+VERSE 53
+በመኑ በአምሳለ መኑ ናስተማስለኪ/2
+አመቤቴ የአኛ አማላጅ አዛኝቷ ኦ ድንግል
+ምልዕተ ውዳሴ /2
+43.ማርያም ተዐቢ
+
+VERSE 54
+ማርያም ተዐቢ አምኩሉ ፍጥረት /2/
+ኢያውአያ እሳተ መለኮት /4/
+ማርያም ፊደል የሁሉ መማሪያ /2/
+በንጽሕና በንጽሕና ተጽፋለችና /2/
+
+VERSE 55
+947.ሰላም ለኪ
+ሠላም ለኪ /2/ ለኖኅ ሐመሩ
+ሠላም ለኪ ለአሮን በትሩ
+ሠላም ለኪ ለቅዱስ ዳዊት መሰንቆ መዝሙሩ
+
+VERSE 56
+ሠላም ለኪ ለጌዴዎን ፀምሩ
+ማርያም አመቤቴ
+አለምንሻለሁ
+ማርያም እንወድሻለን/2/
+
+VERSE 57
+ስለወለድሽ የሕይወት ምግብን /2/
+ማርያም አንወድሻለን
+ማርያም ትጠብቀን አጆቿን ዘርግታ/2/
+956. በሐዘኔ በጭንቀቴ
+
+VERSE 58
+በሐዘኔ በጭንቀቴ መጽናኛዬ ነሽ ረዳቴ
+አመአምላክ አደራ ድንግል አመቤቴ /2/
+ለዓለም ተዘርግቶ እጄ ባዶ ሆናል
+የራሴ ላይ አክሊል ተሸቀንጥሮ ወድቋል
+
+VERSE 59
+ከኤልዛቤል ሸሸቼ መጣሁኝ ወደአንቺ
+የጎሰቆልኩትን አኔን ተመልከቺ
+የአግሬ መሰናልክ ለዓለም ደስታ ነው
+ተስፋ ቢስ መሆኔ ለጠላቴ ድል ነው
+
+VERSE 60
+የደስታ መመንጫ የኤሳቤጥ ዘመድ
+አንዳልሠናከል ምሪኝ በመንገድ
+ምድር ትለኛለች ተስፋ ቢስ ብቸኛ
+ሳለቅስ ሳነባ አይታናለችና
+
+VERSE 61
+ከቤተ መቅደሱ ለአኔ ዘመድ አለኝ
+በሐዘኔ ሰዓት አይዞህ የምትለኝ
+ከአመድ የወደቀ ትንሽ ገንዘብ አለሽ
+ልብሽ ራርቶልኝ ፈልጊኝ አጥብቀሽ
+
+VERSE 62
+አምነቴ እንዳይደክም እንዳልጠፋ ልጅሽ
+አድጌአለሁና ከደጀ ሰላምሽ
+957. ማርያም ማርያም በሉ
+ማርያም /2/ በሉ
+
+VERSE 63
+ማርያም ኩኒ ለሕይወትየ ጸወኖ/2/
+አስመ ተማኅጸንኩ አንሰ ተማኅጸንኩ/2/
+በኪዳንኪ /2/ ተማኅጸንኩ
+ማርያም ሁፒ ለሕይወቴ አምባ በምልጃሽ
+
+VERSE 64
+አማጸንሻለሁ ተማጽፔሻለሁ//2/
+ማርያም በስምሽ በቃል ኪዳንሽ
+አምጌ ቆሜአለሁኝ ኃጥኡ ባርያሽ
+ንስሓ ሣልገባ አንዳልሞት አደራሽ
+
+VERSE 65
+ለዚህ ዕድል አብቂኝ ከልጅሽ አማልጀሽ
+በቃል ኪዳንሽ አምጌ ስጠራሽ
+ድንግል አትለይኝ በረድኤትሽ
+ፍቅርሽን በልቤ ጣዕምሽ በአንደበቴ
+
+VERSE 66
+እንዲያድር አደርጊ ፅዩን አመቤቴ
+959. እመቤታችን
+አመቤታችን ማርያም ሀገራቸንን ጠብቂልን
+በምልጃሽ /2/
+
+VERSE 67
+ከመናፍቃን ኪከሀድያን ከጠላት ሰይጣን ሠውረሽ
+አንድትጠብቂን በምልጃሸ/2/
+960. ሰላም ለኪ ማርያም አመአምላክ/2/
+ማርያም ተዐቢ እምኩሉ ፍጥረት /2/
+
+VERSE 68
+ኢያውአያ እሳተ መለኮተ/4/
+ማርያም ስንልሽ ደረሽልን ፈጥነሽ
+ማርያም ድንግል በረድኤት ነይ
+1925. እንተ በምድር
+
+VERSE 69
+አንተ በምድር ሥረዊፃ ወበሰማይ አዕፁቂዛ /2/
+ሐረገ ወይን /2/ ድንግል ሐረገ ወይን /2/
+ትርጉም :፦- አመቤታችን ሥራ በምድር
+ቅርንጫፏ በሰማይ የሆነ የወይን ሐረግ ናት
+
+VERSE 70
+1926 ማርያም ንጽሕት
+ማርያም ንጽሕት ድንግል ማእምንት ወላዲተ
+አምላክ ሰአሊተ ምሕረት ለዉሉደ ሰብእ /2/
+ሰአሊ ለነ ኀበ ክርስቶስ ወልድኪ ይሥረይ
+
+VERSE 71
+ማርያም ንጽሕት ድንግል ታማኝ አምላክን
+የወለድሽ የምሕረት አማላጅ ለሰው ልጆች /2/
+አማልጅን ከልጅሽ ከክርስቶስ ይቅር እንዲለን
+ቅድስት ሆይ ለምኝልን /2/
+
+VERSE 72
+1027የኪዳን ጽላት
+የኪዳን ጽላት የተሠወረ መና ያለብሽ ደብተራ
+ድንካን አንቺ ነሽ /2/
+ይኸውም መና የተባለው /2/ በድንግል ማርያም
+
+VERSE 73
+ያደረው የእግዚአብሔር ልጁ ነው /2/
+ማርያም ተዐቢ እም ኩሉ ፍጥረት /2/
+ኢያውአያ እሳተ መለኮት /4
+ትርጉም ፡:-
+
+VERSE 74
+ማርያም ትጠብቀን አጆቿን ዘር
+ድንግል ትጠብቀን አጆቿን ዘርግታ. /2/
+ማርያም ማርያም ድንግል ማርያም /2/
+ርኅርኅተ ኅሊና /ቴ ማርያም /2/
+
+VERSE 75
+1935 ማርያም ፊደል
+ማርያም ፊደል የሁሉ መማሪያ /2/
+በንጽሕና በንጽሕና ተጽፋለችና /2/
+1936, ማኅደረ መለኮት
+
+VERSE 76
+ማርያም አመ ብዜጋኃን /4
+ትርጉም :- የመለኮት ማደሪያ የሆንሽ አመቤታችን
+ማርያም የብዙኃን አናት ነሽ
+1937በመኑ
+
+VERSE 77
+በመኑ በአምሳለ መኑ ናስተማስለኪ /2/
+አመቤቴ የእኔ አማላጅ አዝኝቷ ኦ ድንግል
+ምልዕተ ውዳሴ
+ትርጉም :-ማን በተመሰለው ምሳሌ አመስልሻለሁ
+
+VERSE 78
+አመቤቴ የእኔ አማላጅ አዛኝቷ ምስጋናን የተመላሽ
+ነሽ፡፡
+1938በምን በምን እንመስላት
+በምን በምን እንመስላት ድንግል ማርያምን /2/
+
+VERSE 79
+ምሳሌ የላትም የላትም ክብሯን የሚመጥን /2/
+የሙሴ ጽላት ነሽ የምሕረት ቃል ኪዳን
+የያዕቆብ መሠላል የአብርሃም ድንካን
+የብርፃዛን መውጫ የኖኅ ድንቅ መርከብ
+
+VERSE 80
+የመላአክት አህት የሩኅሩኃን ርግብ /2/
+ማርያም /2/ቤዛዊት ዓለም /2/
+ሚካኤል መልአክ ሊቀ መላእክት /2/
+ዘአውረደ /2/ መና ከደመና''2/
+
+VERSE 81
+ገብርኤል መልአክ አብሣሬ ትስብዕት
+ዘአብሠራ /2/ ለማርያም ንጽሕት /2/
+ሩፋኤል መልአክ ሊቀ መላእክት /2/
+ዘአብርፃ /2/ ዓይኑ ለጦቢት /2/
+
+VERSE 82
+ሰሉሞን ይቤላ /2/ ርግብየ ሠናይትየ
+ሰሎሞን ይቤላ
+ርግብየ ሰናይትየ ሰሎሞን ይቤላ
+ዑራኤል መልአክ ለዕዝራ ነቢይ /2/
+
+VERSE 83
+ዘአስተዮ /2/ ጽዋዐ ልቡና
+ማርያም
+ወዳሴ ማርያም አጮኸለሁ
+ደንግል አናቴን አጣራለሁ
+
+VERSE 84
+አንደ አባ ኤፍሬም ነይ ባርኪኝ
+ማርያም /2/ ድንግል ማርያም /2/
+ርኅርኅተ ኅሊና /4/ ማርያም/4/
+ማርያም ተዐቢ አምኩሉ ፍጥረት /2/
+
+VERSE 85
+ኢያውዓያ እሳተ መለኮት /4/
+ማርያም አንዱ ልጂ ነው
+ድምጽህን ሰማና በብሩህ ደመና/2ጋ/
+የቡሄው ብርሃን ለአኛ አበራልን
+
+VERSE 86
+ማርያም ሰላም/2/
+ሰላም ለላዕየኪ አዳም/4/
+ናዝሬት ሠላም ዘአሕጉር
+አም ደብረታቦር ሰላም/2/
+
+VERSE 87
+ሰላም ለላዕየከ አዳም/4/
+1092. አሐደ ሌከ
+አሐደ ለከ ወአሐደ ለሙሴ/2/
+ወአሐደ ለኤልያስ ንግበር ማኅደረ/4/
+
+VERSE 88
+አንዱንም ለአንተ አንዱንም ለሙሴ/2/
+አንዱንም ለኤልያስ እንሥራ ቤትን/4/
+1093.አማን በአማን
+ማርያም አንዱ ልጂነው
+
+VERSE 89
+ማርያም ተዐይን ባህቲታ ውስተ አድባረ ግብጽ ከመ
+ዖፍ/2/
+ማርያም/''/2/
+ዘአስተጻመረ/2/ አግዚአብሔር?/2/
+
+VERSE 90
+ወእመአኮ
+ወአመአኮ ከመወሬዛ ኃየል/2/
+ትዌድሶ መርዓት እንዘ ትብል/ቄ
+አንሶሰወ
+
+VERSE 91
+አንሶሰወ ከመሰብ አሙነ ኮነ/2/
+ማርያም መንክር ልደትኪ ወእጹብ ግብርኪ,/2/
+ጾርኪ/3/ ዓምደ አሳት መድኃኔዓለም/2/
+የሰኔ ቅዱስ ሚካኤል ወረብ
+
+VERSE 92
+ባሕራንኒ
+ባሕራንኒ ባሕራን ይቤ ዘነገደ ባሕር/2/
+ርኢኩዎ/2/ ለሚካኤል ወስዕንኩ ጠይፃ/2/
+መልአከ ሰላምነ
+
+VERSE 93
+መልአከ ሰላምነ/4
+ሊቀ መላአክት ሚካኤል ሰአል ወጸሊ በአእንቲአነ/2/
+አመ ይሰቅልዎ
+አመ ይሰቅልዎ አይሁድ ለእግዚእ/2/
+
+VERSE 94
+ሚካኤል አርመመ ወገብርኤል ተደመ/2/
+ወሪዶ
+ወሪዶ አመስቀሉ''/2/
+አመስቀሉ አብርሃ ለኩሉ አመስቀሉ ለኩሉ አብርፃ/2/
+
+VERSE 95
+ማርያምሰ አንተ በምድር ታንሶሱ/2/
+ፅርገታ
+ዕርገታ ውስተ ሰማያት ወበአታ ውስተ ገነት/2/
+ማርያም (3) ወላዲተ አምላክ (2)
+
+VERSE 96
+895.ይዌድስዋ መላእክት
+ይዌድስዋ መላክት /2/ ለማርያም /2/
+ውስተ ውሳጤ መንጠላዕት ወይብልዋ
+በሐኪ ማርያም ሐዳስዩ በዕዋ (2)
+
+VERSE 97
+አመቤታችን በቀኝ ቆማለች
+አመቤታችን በቀኝ ቆማለች
+የብርሃን ልብሷን ተጎናፅፋለች
+ሰአሊነ ምሕረት መዝገበ ፀሎት
+
+VERSE 98
+አቁራሪተ መዓት የጌታዬ እናት /2/
+ማርያም/3/ ሐመልማለ ወርቅ/2/
+የወርቅ ልማላሜ/4/
+ማርያም /3 የወርቅ ልማላሜ/2', 'leareyu /4 teamre gfki /2/
+maryam sheshech keherods fit /2/
+lemasayet /4 yegf teamrshn /2/
+80. asme watu
+
+VERSE 1
+asme watu kbromu leqdusan medኃnieዓlem
+/2/ aሠrgewa lemdr asergewa letsgieፃ /2 /
+maryam teayn bahtita wste adbare gbts
+keme of /2/
+
+VERSE 2
+maryam /2/
+ni /6/ ame amlak ni maryam /2/
+maryam /3/ abrሒ tsyon/2/
+186.. zekaryas reye
+
+VERSE 3
+zekaryas reye teqwame maኅtot kulenteፃ
+werq beyemana webetsegama aዕtsqe zeyt/2/
+nebiyat ytfieሥሑ ሐwaryat ytሐseyo
+bewstieta wedawit yziemr bewste
+
+VERSE 4
+maኅfediha /2/
+maryam
+yaderew yeagziabሔr lju new/ri2/
+maryam qdst/2/
+
+VERSE 5
+194. zeyሃyd ዓyne
+maryam yeteweledewn semayawi
+maryam txebqsh ajoቿn zergta/2/
+343 bekbr zufanu
+
+VERSE 6
+bekbr zufanu merxo yasqemexesh
+leegna leኃxiategnoch tesfachn anchiw nesh
+beftsum ntsሕna bietemeqdes yadegsh
+yeamanuiel yegietayie yefexari anat bemn anmeslsh/2/
+
+VERSE 7
+qana zegelila ሠrg degsew
+maryam
+3855. ytbarek
+ytbarek endeabrፃm/2/
+
+VERSE 8
+aኸ zeleዓlem/4/ytbarek endeabrፃm/2/
+mushrit mushraw andeabrፃm
+enkuan des alachhu
+tekebere zarie
+
+VERSE 9
+qdus gabchachhu
+maryam /2/ dngl maryam /2/
+amaljn keljsh /2/ kemedኃnieዓlem /2/
+ኃxiategnoch keኃxiat enfews
+
+VERSE 10
+bemaryam dngl /2/ kbrn agegnen
+bemaryam dngl /2/ aklil agegnen
+398.adam nbabki
+adam nbabki rgb ሠnayt/2/
+
+VERSE 11
+belbas werq/2/ ni/2/ kidanemሕret /2/
+maryamse ente bemdr tansosu
+maryam ዐregech /2/ wede genet
+yesemay melaekt bedesta ayajebuat
+
+VERSE 12
+ዐregech wede genet/2/
+408. phiexros
+phiexros wephawlos axenu ሥgaሃፃ/2/
+lemaryam/2/ bemaዕxente werq
+
+VERSE 13
+409. aeregwa
+aaregwa melaekt wste semayat/2/
+aaregwa melaekt wste semayat/4/
+asareguat melaakt wede semayat/2/
+
+VERSE 14
+asareguat melaakt wede semayat/4/
+410. eኸ maryamse
+aኸ maryamse eኸ ente bemdr/2/
+aኸ besemayat tansoso besemayat/2/
+
+VERSE 15
+411. o mrag
+o mrag emdr wste semay /2/
+webki teሐdese giyorgis semaዕt
+412. o rኅrtite
+
+VERSE 16
+o rኅrgitite ሕlina afqrote sebe lmada
+leale giesemu/4/ tmesl/2/ angda
+kidanemhret emebiet
+kidanemሕret amebiet
+
+VERSE 17
+yeዓlem hulu medኃnit
+maryamm endih eyalech /2/
+maryam barkign amebietie asegd leki፡፡
+andalngelata xebqign beኃxiat ዓlem godana
+
+VERSE 18
+degmom endmegeb semayawi mena
+maryam yeadam xiena esegd leki፡፡
+teshecu snor ljsh beኃxiat ketema ዓlem
+yemiyawexagn xefto yeenat lj wendm
+
+VERSE 19
+wexaኹgn beljesh dem asegd leki፡፡
+keqdst bota hager kebietelሔm teneሥteshe
+mdre gbፅ awraja fexnesh stdershi
+maryam mekeran ayesh asgd leki
+
+VERSE 20
+ya mqegna seyxan nguሥ tenkol yetemelaw
+ljshn ligelew demunm lemafses
+teruararuaraxe beagr beferes asgd leki፡፡
+yanchi mengelatat hulgizie yasaznegnal siwera
+
+VERSE 21
+bemdre gbፅ hulu yayeshw mekera
+maryam nefsien adera asegd leki፡፡ /2/
+593.amebietachn lanchi
+amebietachn lanchi slamta ygebashal/2/
+
+VERSE 22
+kesietoch hulu /3/ temerxeshal
+ሐrna werqun eyasmamach stfetl /2/
+tezegajelat/3/ yememerex ዕdl
+amebietachn --------፦
+
+VERSE 23
+ayareguaguat yesemay melaekt /2/
+maryam amebietie -------“፦-
+595.yeዓlem medኃnit yeteweledebsh
+yeዓlem medኃnit yeteweledebsh
+
+VERSE 24
+anchi bietelሔm yeteqedessh nesh
+yeamalkt amlak nguሠ negeሥt
+ኃyalan bemulu yemisegdulet
+becerq texeqllo tegna beberet
+
+VERSE 25
+yeዓlem medኃnit ---------”፦-፦--
+awaqiwoch hulu beqn asabachew
+wedeanchi teguazu kokeb simerachew/ri2/
+yeዓlem medኃnit ------------
+
+VERSE 26
+leteketay twld mሣlie lemehon
+segdew geberulet werq ዕxan kerbien /2/
+yeዓlem medኃnit ---------”፦----
+yemiyadlew gieta awqet leሕፃnat
+
+VERSE 27
+yemimesegen new beafe melaekt
+keenssat gara adere beberet
+maryam megdelawit eyegeሠgeሠch
+belielit teneሥta wede amlakua hedech
+
+VERSE 28
+ayhud angelatew yeseqelut gietan
+teneሥto aggnta temelach bedesta
+maryam megdelawit ››
+mngna tadelech ››
+
+VERSE 29
+maryam iyaqiem weledat
+680.albki newr weimntni belaዕlieki /2
+tsai em libanos aኅtye merዓt 4/
+maryam amebzuኃn /4
+
+VERSE 30
+688.iyaqiem weሐna /4
+dngl maryam weldewatualna
+ydresachew kbrna msgana
+689. o dngl amሣl wetnbit /2 yeሐwaryat
+
+VERSE 31
+mogesomu leሐwaryat /4
+dngl hoy yenebiyat tnbit yeሐwaryat
+mogeሣchew anchi nesh
+690.yeሐna lj nesh yeiyaqiem berekt /2/
+
+VERSE 32
+maryam/2/ biezawit ዓlem/4/
+mikaiel melak liqemelaeakt/2
+zeaweredke/2/ mena kedemena/4/
+gebriel melak abሣrie tsbet /2/
+
+VERSE 33
+zeabሠra/2/ lemaryam ntsሕtet/4/
+rufaiel melak liqemelaekt/ri2/
+zeabrፃ/2/ aynu lexobit/4/
+ዑraiel melkak leezra nebiy /2/
+
+VERSE 34
+zeasteyo/2/ tswaዓ lbuna/4/
+selumon ybiela/4/
+rgbye ሠnaytye selomon ybiela/4/
+gebremenfesqdus /4/
+
+VERSE 35
+ሐwarya /2/ zeaskndrya/4/
+tekleሃymanot /4/
+ሐwarya/2/ zeityophya /4/
+brሃnate ዓlem phiexros wephawlus/2/
+
+VERSE 36
+maryamse tehatu emtkat wste kersu/2
+leadam kemebaሕry tseዓda
+asme beentiaሃ webeente azmadiፃ
+teseqelku dibe ዕts ybie medኃnieዓlem /2
+
+VERSE 37
+trgum
+maryamma taberalech kexnt jemro beadam baሕry
+wsx ende nec ዕnqie beadam baሕry ersuan des
+ybelat blo slewegenoቿ teseqelku ale beencet
+
+VERSE 38
+mesqel lay medኃniዓlem
+894.ሥzariem alechgn mematsegna
+maryam byie mechie ewedqalehu
+yemtsnanabet smsh newna
+
+VERSE 39
+dngl hoy laqrb leanchi msgana
+celema wxogn bexelat hager
+lezemenatm sceneq snor
+diyablos marko siሠqayegn
+
+VERSE 40
+yeዓlemn medኅn weledshlgn
+keabatochie rst kehager wexchie
+beaሕzab hager snor shshechie
+deresesh atsnanteshe akebershgn
+
+VERSE 41
+bchegnnetien asresashgn
+dnkuanu molto sew tadmo
+astenabariw becnqet qomo
+mn aqerbalehu byie scheger
+
+VERSE 42
+mljash dersolgn dankugn kemafer
+yaሠbkut ሐsab demena hono
+bibetenbgn ende gum tenno
+yhonal yalkut sayhon biqer
+
+VERSE 43
+beameamlak agie mechiem alafr
+anat abatie bayastawsugn
+maryam dngl memekiyachew yedenagl arsuam
+ako yemlja biet nat yemiyasecenqewn
+
+VERSE 44
+yemtaqall
+lefxret hulu tmaldalech bemelaekt knfochm
+tgaredalech ersua tbelxalech kekirubiel degmo
+tbelxalech kesurafiel
+
+VERSE 45
+914.asey tekeberech
+asey tekeberech bezariewa ዕlet dngl maryam
+yeamlak enat /2/
+yemሥrach all belu yeadam ljoch hulu
+
+VERSE 46
+yemሥrach all belu krstiyanoch hulu /2
+maryam ntsሕt dengl maemnt
+weladite amlak sealite mሕret lewlude sebe
+seali lene ኀbe krstos weldki yሥrey
+
+VERSE 47
+maryam qdst yeሕywet brፃn
+maryamm endih eyalech/2/
+maryam tmexalech bedemena beayer
+nዒ snl beseዓtat
+
+VERSE 48
+ltabarken tmexalech beeawnet/2/
+maryam dreshlgn amebietie
+yemሥraq dejaf nesh amebietie /2/
+yehulachn desta
+
+VERSE 49
+amu leፀሐye tsdq amebietie
+yehulu xebeqa amebietie
+dngl yedl aklil amebietie
+dngl yetsdq ሥra
+
+VERSE 50
+dngl meselal nesh amebietie
+yetewaሕdo tesfa amebietie
+934. lemaryam
+lemaryam/2/
+
+VERSE 51
+enzemralen lezeleዓlem/ri2/
+yetezegach dej lezeleዓlem
+ሕzqiel blual
+ntsሕt nat beewnet
+
+VERSE 52
+beftsum dngl
+maryam /2/ dngl maryam /2/
+rኅrtite ኅlina /4/ maryam/4/
+942.jebemenu beamሣle met
+
+VERSE 53
+bemenu beamsale menu nastemasleki/2
+amebietie yeagna amalaj azagntua o dngl
+mlዕte wdasie /2
+43.maryam teዐbi
+
+VERSE 54
+maryam teዐbi amkulu fxret /2/
+iyawaya esate melekot /4/
+maryam fidel yehulu memariya /2/
+bentsሕna bentsሕna tetsfalechna /2/
+
+VERSE 55
+947.selam leki
+ሠlam leki /2/ lenoኅ ሐmeru
+ሠlam leki learon betru
+ሠlam leki leqdus dawit mesenqo mezmuru
+
+VERSE 56
+ሠlam leki legiediewon ፀmru
+maryam amebietie
+alemnshalehu
+maryam enwedshalen/2/
+
+VERSE 57
+sleweledsh yeሕywet mgbn /2/
+maryam anwedshalen
+maryam txebqen ajoቿn zergta/2/
+956. beሐzenie becnqetie
+
+VERSE 58
+beሐzenie becnqetie metsnagnayie nesh redatie
+ameamlak adera dngl amebietie /2/
+leዓlem tezergto ejie bado honal
+yerasie lay aklil tesheqenxro wedqual
+
+VERSE 59
+keielzabiel sheshechie mexahugn wedeanchi
+yegoseqolkutn anien temelkechi
+yeagrie mesenalk leዓlem desta new
+tesfa bis mehonie lexelatie dl new
+
+VERSE 60
+yedesta memenca yeiesabiex zemed
+andalሠnakel mrign bemenged
+mdr tlegnalech tesfa bis bchegna
+saleqs saneba aytanalechna
+
+VERSE 61
+kebiete meqdesu leanie zemed alegn
+beሐzenie seዓt ayzoh yemtlegn
+keamed yewedeqe tnsh genzeb alesh
+lbsh rartolgn felgign axbqesh
+
+VERSE 62
+amnetie endaydekm endalxefa ljsh
+adgiealehuna kedeje selamsh
+957. maryam maryam belu
+maryam /2/ belu
+
+VERSE 63
+maryam kuni leሕywetye tseweno/2/
+asme temaኅtsenku anse temaኅtsenku/2/
+bekidanki /2/ temaኅtsenku
+maryam hupi leሕywetie amba bemljash
+
+VERSE 64
+amatsenshalehu tematspieshalehu//2/
+maryam besmsh beqal kidansh
+amgie qomiealehugn ኃxu baryash
+nsሓ ሣlgeba andalmot aderash
+
+VERSE 65
+lezih ዕdl abqign keljsh amaljesh
+beqal kidansh amgie sxerash
+dngl atleygn beredietsh
+fqrshn belbie xaዕmsh beandebetie
+
+VERSE 66
+endiyadr adergi ፅyun amebietie
+959. emebietachn
+amebietachn maryam hagerachenn xebqiln
+bemljash /2/
+
+VERSE 67
+kemenafqan kikehadyan kexelat seyxan ሠwresh
+andtxebqin bemljashe/2/
+960. selam leki maryam ameamlak/2/
+maryam teዐbi emkulu fxret /2/
+
+VERSE 68
+iyawaya esate melekote/4/
+maryam snlsh dereshln fexnesh
+maryam dngl berediet ney
+1925. ente bemdr
+
+VERSE 69
+ante bemdr ሥrewiፃ webesemay aዕፁqiza /2/
+ሐrege weyn /2/ dngl ሐrege weyn /2/
+trgum :፦- amebietachn ሥra bemdr
+qrncafua besemay yehone yeweyn ሐreg nat
+
+VERSE 70
+1926 maryam ntsሕt
+maryam ntsሕt dngl maemnt weladite
+amlak sealite mሕret lewulude sebe /2/
+seali lene ኀbe krstos weldki yሥrey
+
+VERSE 71
+maryam ntsሕt dngl tamagn amlakn
+yeweledsh yemሕret amalaj lesew ljoch /2/
+amaljn keljsh kekrstos yqr endilen
+qdst hoy lemgnln /2/
+
+VERSE 72
+1027yekidan tslat
+yekidan tslat yeteሠwere mena yalebsh debtera
+dnkan anchi nesh /2/
+yኸwm mena yetebalew /2/ bedngl maryam
+
+VERSE 73
+yaderew yeegziabሔr lju new /2/
+maryam teዐbi em kulu fxret /2/
+iyawaya esate melekot /4
+trgum ፡:-
+
+VERSE 74
+maryam txebqen ajoቿn zer
+dngl txebqen ajoቿn zergta. /2/
+maryam maryam dngl maryam /2/
+rኅrኅte ኅlina /tie maryam /2/
+
+VERSE 75
+1935 maryam fidel
+maryam fidel yehulu memariya /2/
+bentsሕna bentsሕna tetsfalechna /2/
+1936, maኅdere melekot
+
+VERSE 76
+maryam ame bziegaኃn /4
+trgum :- yemelekot maderiya yehonsh amebietachn
+maryam yebzuኃn anat nesh
+1937bemenu
+
+VERSE 77
+bemenu beamsale menu nastemasleki /2/
+amebietie yeenie amalaj azgntua o dngl
+mlዕte wdasie
+trgum :-man betemeselew msalie ameslshalehu
+
+VERSE 78
+amebietie yeenie amalaj azagntua msganan yetemelash
+nesh፡፡
+1938bemn bemn enmeslat
+bemn bemn enmeslat dngl maryamn /2/
+
+VERSE 79
+msalie yelatm yelatm kbruan yemimexn /2/
+yemusie tslat nesh yemሕret qal kidan
+yeyaዕqob meሠlal yeabrሃm dnkan
+yebrፃzan mewca yenoኅ dnq merkeb
+
+VERSE 80
+yemelaakt aht yeruኅruኃn rgb /2/
+maryam /2/biezawit ዓlem /2/
+mikaiel melak liqe melaekt /2/
+zeawrede /2/ mena kedemena''2/
+
+VERSE 81
+gebriel melak abሣrie tsbዕt
+zeabሠra /2/ lemaryam ntsሕt /2/
+rufaiel melak liqe melaekt /2/
+zeabrፃ /2/ ዓynu lexobit /2/
+
+VERSE 82
+selumon ybiela /2/ rgbye ሠnaytye
+selomon ybiela
+rgbye senaytye selomon ybiela
+ዑraiel melak leዕzra nebiy /2/
+
+VERSE 83
+zeasteyo /2/ tswaዐ lbuna
+maryam
+wedasie maryam acoኸlehu
+dengl anatien axaralehu
+
+VERSE 84
+ande aba iefriem ney barkign
+maryam /2/ dngl maryam /2/
+rኅrኅte ኅlina /4/ maryam/4/
+maryam teዐbi amkulu fxret /2/
+
+VERSE 85
+iyawዓya esate melekot /4/
+maryam andu lji new
+dmtshn semana bebruh demena/2ga/
+yebuhew brሃn leagna aberaln
+
+VERSE 86
+maryam selam/2/
+selam lelaዕyeki adam/4/
+nazriet ሠlam zeaሕgur
+am debretabor selam/2/
+
+VERSE 87
+selam lelaዕyeke adam/4/
+1092. aሐde lieke
+aሐde leke weaሐde lemusie/2/
+weaሐde leielyas ngber maኅdere/4/
+
+VERSE 88
+andunm leante andunm lemusie/2/
+andunm leielyas enሥra bietn/4/
+1093.aman beaman
+maryam andu ljinew
+
+VERSE 89
+maryam teዐyn bahtita wste adbare gbts keme
+ዖf/2/
+maryam/''/2/
+zeastetsamere/2/ agziabሔr?/2/
+
+VERSE 90
+weemeako
+weameako kemewerieza ኃyel/2/
+twiedso merዓt enze tbl/qie
+ansosewe
+
+VERSE 91
+ansosewe kemeseb amune kone/2/
+maryam menkr ldetki weetsub gbrki,/2/
+tsorki/3/ ዓmde asat medኃnieዓlem/2/
+yesenie qdus mikaiel wereb
+
+VERSE 92
+baሕranni
+baሕranni baሕran ybie zenegede baሕr/2/
+rikuwo/2/ lemikaiel wesዕnku xeyፃ/2/
+melake selamne
+
+VERSE 93
+melake selamne/4
+liqe melaakt mikaiel seal wetseli beaentiane/2/
+ame yseqlwo
+ame yseqlwo ayhud leegzie/2/
+
+VERSE 94
+mikaiel armeme wegebriel tedeme/2/
+werido
+werido amesqelu''/2/
+amesqelu abrሃ lekulu amesqelu lekulu abrፃ/2/
+
+VERSE 95
+maryamse ante bemdr tansosu/2/
+ፅrgeta
+ዕrgeta wste semayat webeata wste genet/2/
+maryam (3) weladite amlak (2)
+
+VERSE 96
+895.ywiedswa melaekt
+ywiedswa melakt /2/ lemaryam /2/
+wste wsaxie menxelaዕt weyblwa
+beሐki maryam ሐdasyu beዕwa (2)
+
+VERSE 97
+amebietachn beqegn qomalech
+amebietachn beqegn qomalech
+yebrሃn lbsuan tegonaፅfalech
+sealine mሕret mezgebe ፀlot
+
+VERSE 98
+aqurarite meዓt yegietayie enat /2/
+maryam/3/ ሐmelmale werq/2/
+yewerq lmalamie/4/
+maryam /3 yewerq lmalamie/2', 'amharic', 'mezmur', 'ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ', 'https://www.youtube.com/watch?v=QlyjmvT4VzY', 'draft', 'pending', 'https://www.youtube.com/watch?v=QlyjmvT4VzY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ydres-msgana-qdst', 'ይድረስ ምስጋና ቅድስት', 'ይድረስ ምስጋና ቅድስት', 'ydres msgana qdst', 'Ethiopian Orthodox Tewahedo Mezmur - ይድረስ ምስጋና ቅድስት', 'አደይ የብርሃን ጮራ በማርቆስ በራ
+ይድረስ ምስጋና ቅድስት', 'adey yebrሃn cora bemarqos bera
+ydres msgana qdst', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5tCsY3TUrkE', 'draft', 'pending', 'https://www.youtube.com/watch?v=5tCsY3TUrkE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('ydres-msgana-qdst', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('qalun-semaw-admxw-bla-eyie-qdst', 'ቃሉን ሰማው አድምጥው ብላ እዬ ቅድስት', 'ቃሉን ሰማው አድምጥው ብላ እዬ ቅድስት', 'qalun semaw admxw bla eyie qdst', 'Ethiopian Orthodox Tewahedo Mezmur - ቃሉን ሰማው አድምጥው ብላ እዬ ቅድስት', 'አናቴ
+አዬ ቅድስት እናቴ አዬ ቅ. እናቴ/2/
+ይሸታል የእጣኑ ጢስ ሲታጠን ከመቅደሱ
+በመላእክት ዜማ ካህናት ሲቀድሱ ሲታጠን
+
+VERSE 1
+ከመቅደሱ/2/
+ቃሉን ሰማው አድምጥው ብላ እዬ ቅድስት
+አናቴ', 'anatie
+ayie qdst enatie ayie q. enatie/2/
+yshetal yeexanu xis sitaxen kemeqdesu
+bemelaekt ziema kahnat siqedsu sitaxen
+
+VERSE 1
+kemeqdesu/2/
+qalun semaw admxw bla eyie qdst
+anatie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5tSjQ8Ip5n4', 'draft', 'pending', 'https://www.youtube.com/watch?v=5tSjQ8Ip5n4', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kebrew-yqoyun-kebrw', 'ከብረው ይቆዩን ከብርው', 'ከብረው ይቆዩን ከብርው', 'kebrew yqoyun kebrw', 'Ethiopian Orthodox Tewahedo Mezmur - ከብረው ይቆዩን ከብርው', 'ከዓመት ዐውደ ዓመት ደርሰው
+በአምነት በምግባር ጸንተው
+ነጽተው ንስሓ ገብተው
+ለሥጋ ወደሙ በቅተው
+
+VERSE 1
+ከብረው ይቆዩን ከብርው
+ከዓመት ዐውደ ዓመት ደርሰው
+በእምነት በምግባር ጸንተው
+ነጽተው ንስሓ ገብተው
+
+VERSE 2
+ለሥጋ ወደሙ በቅተው', 'keዓmet ዐwde ዓmet dersew
+beamnet bemgbar tsentew
+netstew nsሓ gebtew
+leሥga wedemu beqtew
+
+VERSE 1
+kebrew yqoyun kebrw
+keዓmet ዐwde ዓmet dersew
+beemnet bemgbar tsentew
+netstew nsሓ gebtew
+
+VERSE 2
+leሥga wedemu beqtew', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=gztZfKx4_DU', 'draft', 'pending', 'https://www.youtube.com/watch?v=gztZfKx4_DU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('hulet-lbsoch-yalut-kemabzat-lbsn', 'ሁለት ልብሶች ያሉት ከማብዛት ልብስን', 'ሁለት ልብሶች ያሉት ከማብዛት ልብስን', 'hulet lbsoch yalut kemabzat lbsn', 'Ethiopian Orthodox Tewahedo Mezmur - ሁለት ልብሶች ያሉት ከማብዛት ልብስን', 'ለሌለው ያድለው ሁለተኛውን
+ከበደላችንም አንጻን አደራህ
+በክፉ አንዳንጠፋ እኛ ባሮችህ
+ሁለት ልብሶች ያሉት ከማብዛት ልብስን
+
+VERSE 1
+ለሌለው ያድለው ሁለተኛውን
+ከበደላችንም አንጻን አደራህ', 'lelielew yadlew huletegnawn
+kebedelachnm antsan aderah
+bekfu andanxefa egna barochh
+hulet lbsoch yalut kemabzat lbsn
+
+VERSE 1
+lelielew yadlew huletegnawn
+kebedelachnm antsan aderah', 'amharic', 'mezmur', 'ዘማሪ ዲያቆን እንዳለ ደረጀ', 'https://www.youtube.com/watch?v=tbQ1CR2OVTU', 'draft', 'pending', 'https://www.youtube.com/watch?v=tbQ1CR2OVTU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('abatm-ale-ljien-smut', 'አባትም አለ ልጄን ስሙት', 'አባትም አለ ልጄን ስሙት', 'abatm ale ljien smut', 'Ethiopian Orthodox Tewahedo Mezmur - አባትም አለ ልጄን ስሙት', 'አባትም አለ ልጄን ስሙት', 'abatm ale ljien smut', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=YJ8gGOjilyw', 'draft', 'pending', 'https://www.youtube.com/watch?v=YJ8gGOjilyw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('smua-sixera-yedngl-maryam', 'ስሟ ሲጠራ የድንግል ማርያም', 'ስሟ ሲጠራ የድንግል ማርያም', 'smua sixera yedngl maryam', 'Ethiopian Orthodox Tewahedo Mezmur - ስሟ ሲጠራ የድንግል ማርያም', 'ስሟ ሲጠራ የድንግል ማርያም', 'smua sixera yedngl maryam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=bcGXn7iOsfU', 'draft', 'pending', 'https://www.youtube.com/watch?v=bcGXn7iOsfU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('abatochachn-yaweresun', 'አባቶቻችን ያወረሱን', 'አባቶቻችን ያወረሱን', 'abatochachn yaweresun', 'Ethiopian Orthodox Tewahedo Mezmur - አባቶቻችን ያወረሱን', 'የቡሄን ትርጉም የሣወቁን
+እንድንጠብቀው ለእኛ የሠጡን
+ይሄ ነውና ያስረከቡን
+አባቶቻችን ያወረሱን
+
+VERSE 1
+የቡሄን ትርጉም የሣወቁን
+እንድንጠብቀው ለኛ የሠጡን
+ይሄ ነውና ያስረከቡን', 'yebuhen trgum yeሣwequn
+endnxebqew leegna yeሠxun
+yhe newna yasrekebun
+abatochachn yaweresun
+
+VERSE 1
+yebuhen trgum yeሣwequn
+endnxebqew legna yeሠxun
+yhe newna yasrekebun', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=b_YwCF-7OcM', 'draft', 'pending', 'https://www.youtube.com/watch?v=b_YwCF-7OcM', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('tabor-armoniem-br-n-tayebachew', 'ታቦር አርሞንኤም ብርሃን ታየባቸው', 'ታቦር አርሞንኤም ብርሃን ታየባቸው', 'tabor armoniem brሃn tayebachew', 'Ethiopian Orthodox Tewahedo Mezmur - ታቦር አርሞንኤም ብርሃን ታየባቸው', 'ለቅዱስ ተራራ ስምህ ደስ አላቸው
+ሰላም ሰላም የታቦር ተራራ
+ብርሃነ መለኮት በአንቺ ላይ አበራ
+ታቦር አርሞንኤም ብርሃን ታየባቸው
+
+VERSE 1
+ለቅዱስ ተራራ ስምህ ደስ አላቸው
+ሰላም ሰላም የታቦር ተራራ
+ብርሃነ መለኮት በአንቺ ላይ አበራ', 'leqdus terara smh des alachew
+selam selam yetabor terara
+brሃne melekot beanchi lay abera
+tabor armoniem brሃn tayebachew
+
+VERSE 1
+leqdus terara smh des alachew
+selam selam yetabor terara
+brሃne melekot beanchi lay abera', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1m_T8k-U1C8', 'draft', 'pending', 'https://www.youtube.com/watch?v=1m_T8k-U1C8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('tabor-armoniem-br-n-tayebachew', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('kezendo-asxalat-bierutawitn-qdus-giyorgis', 'ከዘንዶ አስጣላት ቤሩታዊትን ቅዱስ ጊዮርጊስ', 'ከዘንዶ አስጣላት ቤሩታዊትን ቅዱስ ጊዮርጊስ', 'kezendo asxalat bierutawitn qdus giyorgis', 'Ethiopian Orthodox Tewahedo Mezmur - ከዘንዶ አስጣላት ቤሩታዊትን ቅዱስ ጊዮርጊስ', '1089. ጊዮርጊስ ብርፃኑን
+ጊዮርጊስ ብርሃኑን አበራ/2/
+ዱድያኖስ አፈረ ከጣዖቱ ጋራ
+ጊዮርጊስ ብርሃኑን አበራ /2/
+
+VERSE 1
+ለዲያብሎስ ያልሠገደ ጀግናው ጊዮርጊስ
+ደግሞ ባይን ታየ ክብሩ ሲወደስ
+ከሞት አፍ ያወጣት ቤሩታይትን
+በሰማእቱ ገድል ድል ሆነ ሠይጣን
+
+VERSE 2
+ቅዱሱ ስማዕት ጊዮርጊስ አባታችን
+አሳየ ሥልጣኑን ከሞት እንደሚያድን
+መድኃኒት ክርስቶስ የገለጠው ብርሃን
+አኛም እንድንድን ከዘመኑ አውሬ
+
+VERSE 3
+አስቲ አንግለጽለት ክብሩን በዝማሬ
+ተዋሕዶ አበራ ደግሞ እንደገና
+ደራጎን ድልሆኖ ሞቶ ቀርቷልና
+ለአሸናፊ ጌታ ለእግዚአብሔር ልዑል
+
+VERSE 4
+ምስጋና እናቅርብ አንበል አልል
+ጊዮርጊስ አበራ ብፃን/2/
+ሠው በላውም አውሬ ሞተ ደራጎን/2/
+ጊዮርጊስ አበራ ብርፃን
+
+VERSE 5
+1090ቤተክርስቲያን ባሕረ ጥበባት
+ቤተክርስቲያን ባሕረ ጥበባት /2/
+አትመረመርም /2/ እጅግ ጥልቅ ናት''/2/
+በሥጋዊ ጥበብ ለማወቅ ቢቃጣ /2/
+
+VERSE 6
+የእምነት መነጽሩን ይዞ ስላልመጣ /2/
+ሰው ሁሉ በክህደት/2/ ፈጣሪውን አጣ(/2/
+አንመሰክራለለን ፈጣሪያችን አለ
+አንመሰክራለን አማኑኤል አለ/2/
+
+VERSE 7
+አንድአንዱ ቢክደው /2/ አየተታለለ /2/', '1089. giyorgis brፃnun
+giyorgis brሃnun abera/2/
+dudyanos afere kexaዖtu gara
+giyorgis brሃnun abera /2/
+
+VERSE 1
+lediyablos yalሠgede jegnaw giyorgis
+degmo bayn taye kbru siwedes
+kemot af yawexat bierutaytn
+besemaetu gedl dl hone ሠyxan
+
+VERSE 2
+qdusu smaዕt giyorgis abatachn
+asaye ሥlxanun kemot endemiyadn
+medኃnit krstos yegelexew brሃn
+agnam endndn kezemenu awrie
+
+VERSE 3
+asti angletslet kbrun bezmarie
+tewaሕdo abera degmo endegena
+deragon dlhono moto qertualna
+leashenafi gieta leegziabሔr lዑl
+
+VERSE 4
+msgana enaqrb anbel all
+giyorgis abera bፃn/2/
+ሠw belawm awrie mote deragon/2/
+giyorgis abera brፃn
+
+VERSE 5
+1090bietekrstiyan baሕre xbebat
+bietekrstiyan baሕre xbebat /2/
+atmeremerm /2/ ejg xlq nat''/2/
+beሥgawi xbeb lemaweq biqaxa /2/
+
+VERSE 6
+yeemnet menetsrun yzo slalmexa /2/
+sew hulu bekhdet/2/ fexariwn axa(/2/
+anmesekralelen fexariyachn ale
+anmesekralen amanuiel ale/2/
+
+VERSE 7
+andandu bikdew /2/ ayetetalele /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=aXPakMkgnmo', 'draft', 'pending', 'https://www.youtube.com/watch?v=aXPakMkgnmo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yedebre-tabor', 'የደብረ ታቦር', 'የደብረ ታቦር', 'yedebre tabor', 'Ethiopian Orthodox Tewahedo Mezmur - የደብረ ታቦር', '1091.ደብረ መቅደሱ
+ደብረ መቅደሱ ለአግዚአብሔር
+የደብረ ታቦር ወረብ
+ወሪዶ', '1091.debre meqdesu
+debre meqdesu leagziabሔr
+yedebre tabor wereb
+werido', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=hVv-Z3jYlmc', 'draft', 'pending', 'https://www.youtube.com/watch?v=hVv-Z3jYlmc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('andun-leante-andunm-lemusie-andun', 'አንዱን ለአንተ አንዱንም ለሙሴ', 'አንዱን ለአንተ አንዱንም ለሙሴ', 'andun leante andunm lemusie andun', 'Ethiopian Orthodox Tewahedo Mezmur - አንዱን ለአንተ አንዱንም ለሙሴ', 'ለኤልያስ
+አንዱን ለአንተ አንዱንም ለሙሴ አንዱን
+ለኤልያስ
+ተለወጠ ገጹ ከመ ፅጌሬዳ
+
+VERSE 1
+አንዱን ለአንተ አንዱንም ለሙሴ', 'leielyas
+andun leante andunm lemusie andun
+leielyas
+telewexe getsu keme ፅgierieda
+
+VERSE 1
+andun leante andunm lemusie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=4onkAHq3Xn8', 'draft', 'pending', 'https://www.youtube.com/watch?v=4onkAHq3Xn8', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yo-ns-kbur-nebiye-l-l-besie-selam', 'ዮሐንስ ክቡር ነቢየ ልዑል ብእሴ ሰላም', 'ዮሐንስ ክቡር ነቢየ ልዑል ብእሴ ሰላም', 'yoሐns kbur nebiye lዑl besie selam', 'Ethiopian Orthodox Tewahedo Mezmur - ዮሐንስ ክቡር ነቢየ ልዑል ብእሴ ሰላም', 'ዘንብረቱ ገዳም/2/
+ወረብ
+ወአንተኒ ሕፃን ነቢየ ልዑል/2/
+አርኮ ለመርዓዊ ትሰመይ/2/
+
+VERSE 1
+ነቢየልዑል/2/
+ርዕሰ ዐውደ ዓመት
+ርዕሰ ዐውደ ዓመት ዮሐንስ ወላዴ መጥቅዕ /2/
+ወላዴ መጥቅዕ/ 2/ ወአበቅቴ/ቴ
+
+VERSE 2
+ዐውደ ዓመት
+ዐውደ ዓመት ለባርኮ ባርኮ ዐውደ ዓመት/2/
+ንዒ ማርያም በምሕረት ወሳህል/2/', 'zenbretu gedam/2/
+wereb
+weanteni ሕፃn nebiye lዑl/2/
+arko lemerዓwi tsemey/2/
+
+VERSE 1
+nebiyelዑl/2/
+rዕse ዐwde ዓmet
+rዕse ዐwde ዓmet yoሐns weladie mexqዕ /2/
+weladie mexqዕ/ 2/ weabeqtie/tie
+
+VERSE 2
+ዐwde ዓmet
+ዐwde ዓmet lebarko barko ዐwde ዓmet/2/
+nዒ maryam bemሕret wesahl/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=c7X4VG3dQFY', 'draft', 'pending', 'https://www.youtube.com/watch?v=c7X4VG3dQFY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('enze-te-qfiyo', 'እንዘ ተሐቅፊዮ', 'እንዘ ተሐቅፊዮ', 'enze teሐqfiyo', 'Ethiopian Orthodox Tewahedo Mezmur - እንዘ ተሐቅፊዮ', 'አንዘ ተሐቅፊዮ ለሕፃንኪ/2/ ጽጌ ጸዓዳ ወቀይሕ''/2/
+ንዒ ርግብየ ምስለ ገብርኤል ወንዒ ሠናይትየ ምስለ
+ሚከኤል/2/
+ትመስል', 'anze teሐqfiyo leሕፃnki/2/ tsgie tseዓda weqeyሕ''/2/
+nዒ rgbye msle gebriel wenዒ ሠnaytye msle
+mikeiel/2/
+tmesl', 'amharic', 'mezmur', 'ዘማሪት ትዕግስት ስለሺ', 'https://www.youtube.com/watch?v=H6B5V-1b4Iw', 'draft', 'pending', 'https://www.youtube.com/watch?v=H6B5V-1b4Iw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('aba-aba-barkeni-patryark', 'አባ አባ', 'አባ አባ', 'aba aba barkeni ------ patryark', 'Ethiopian Orthodox Tewahedo Mezmur - አባ አባ', 'አባ አባ
+አባአባ ባርከኒ መብአ ጽዮን በትረ ማርያም/2/
+ከመ ባርኮ አብርፃም ለይስሐቅ ወልዱ/4', 'aba aba
+abaaba barkeni meba tsyon betre maryam/2/
+keme barko abrፃm leysሐq weldu/4', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=1FCIkXbkXJY', 'draft', 'pending', 'https://www.youtube.com/watch?v=1FCIkXbkXJY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('antenu-mikaiel-mena-mena-zeawredke-2', 'አንተኑ ሚካኤል መና መና ዘአውረድከ/2/', 'አንተኑ ሚካኤል መና መና ዘአውረድከ/2/', 'antenu mikaiel mena mena zeawredke/2/', 'Ethiopian Orthodox Tewahedo Mezmur - አንተኑ ሚካኤል መና መና ዘአውረድከ/2/', 'ወአንተኑ ለእስራኤል መና ዘአውረድከ/2/
+ሰፊሆ
+ሰፊሆ ክነፊሆ /2/
+ክነፊሆ ይጴጹልል ዲቤነ /#', 'weantenu leesraiel mena zeawredke/2/
+sefiho
+sefiho knefiho /2/
+knefiho yphietsull dibiene /#', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=6r7cGnXfZMw', 'draft', 'pending', 'https://www.youtube.com/watch?v=6r7cGnXfZMw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('newa-mikaiel-melakekmu-2', 'ነዋ ሚካኤል', 'ነዋ ሚካኤል', 'newa mikaiel melakekmu /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ነዋ ሚካኤል', 'ይስአል ለክሙ በእንተ ምሕረት /2/
+ትርጉም፣ አነሆ ሚካኤል መልአካችሁ
+ይለምንላችሁ፡፡
+163. አንተኑ
+
+VERSE 1
+አንተኑ ሚካኤል መና ዘአውርድከክ /2/
+ወአንተኑ ለአስራኤል መና ዘአውድርከ /2/
+ትርጉም፣፤ ለእስራኤል መናን ያወደርክ አንተ ነህ
+164 መልአከ ሰላምነ
+
+VERSE 2
+መልአከ ሰላምነ ሊቀ መላአክት ሚካኤል /2/
+ሰአል ወጸሊ በእንቲአነ አዕርግ ጸሎትነ
+ቅድመ መንበሩ ለመድኃኔዓለም /2/
+ትርጉም፣ የይቅርታ መልአክ ሚካኤል
+
+VERSE 3
+ሆይ በመድኃኔዓለም ፊት ስለኛ
+ለምንልን
+165. አመ ይስቅልዎ
+አመ ይስቅልዎ አይሁድ ለእግዚእነ /2/
+
+VERSE 4
+ሚካኤል አርመመ ወገብርኤል ተደመ /2/
+ትርጉም፣ አይሁድ ጌታን በሰቀሉት ጊዜ
+ሚካኤል ዝም አለ ገብርኤልም ተደነቀ
+166. በአደ መልአኩ
+
+VERSE 5
+በአደ መልአኩ /2/ ይዕቀበነ /2/
+በአደ መልአኩ /3/ ይዕቀበነ /2/
+ትርጉም፣ በመልአኩ እጅ ይጠብቀን
+167.ዓይኑ ዘርግብ
+
+VERSE 6
+ዓይኑ ዘርግብ ዓይኑ/''2/
+ነዋ ሚካኤል
+ነዋ ሚካኤል መልአከክሙ//2/', 'ysal lekmu beente mሕret /2/
+trgum፣ aneho mikaiel melakachhu
+ylemnlachhu፡፡
+163. antenu
+
+VERSE 1
+antenu mikaiel mena zeawrdkek /2/
+weantenu leasraiel mena zeawdrke /2/
+trgum፣፤ leesraiel menan yawederk ante neh
+164 melake selamne
+
+VERSE 2
+melake selamne liqe melaakt mikaiel /2/
+seal wetseli beentiane aዕrg tselotne
+qdme menberu lemedኃnieዓlem /2/
+trgum፣ yeyqrta melak mikaiel
+
+VERSE 3
+hoy bemedኃnieዓlem fit slegna
+lemnln
+165. ame ysqlwo
+ame ysqlwo ayhud leegziene /2/
+
+VERSE 4
+mikaiel armeme wegebriel tedeme /2/
+trgum፣ ayhud gietan beseqelut gizie
+mikaiel zm ale gebrielm tedeneqe
+166. beade melaku
+
+VERSE 5
+beade melaku /2/ yዕqebene /2/
+beade melaku /3/ yዕqebene /2/
+trgum፣ bemelaku ej yxebqen
+167.ዓynu zergb
+
+VERSE 6
+ዓynu zergb ዓynu/''2/
+newa mikaiel
+newa mikaiel melakekmu//2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5C8Uk6Hbmfc', 'draft', 'pending', 'https://www.youtube.com/watch?v=5C8Uk6Hbmfc', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ysal-lene-redaie-ykunene-ysal-lene-ame-mndabie-2', 'ይስአል ለነ ረዳኤ ይኩነነ ይስአል ለነ አመ', 'ይስአል ለነ ረዳኤ ይኩነነ ይስአል ለነ አመ', 'ysal lene redaie ykunene ysal lene ame mndabie /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ይስአል ለነ ረዳኤ ይኩነነ ይስአል ለነ አመ', 'ትርጉም፣ ይህ መቀመጫው ከፍ ያለ ኃይል
+መልአክ ሚካኤል በችግራችን ጊዜ
+ይልምንልን ረዳት ይሁነን፡፡
+176በአምሳለ ርግብ
+
+VERSE 1
+በአምሳለ ርግብ ወረደ መልአክ ወረደ /2/
+ወረደ /ቴ ሚካኤል መልአክ ወረደ /2/
+ትርጉም፣ መልአኩ ሜካኤል በርግብ አምሳያ
+ወረደ አነሆ ወረደ መልአኩ ወረደ
+
+VERSE 2
+177. ኦ ሚካኤል
+ኦ ሚካኤል /2/ ሊቀ መላእክት
+በኃጢአት እንዳንወድቅ አንዳንሞት ፈጥነህ
+ተራዳን አጽናን በእምነት /2/
+
+VERSE 3
+ይስአል ለነ ረዳኤ ይኩነነ ይስአል ለነ አመ
+ምንዳቤ /2/', 'trgum፣ yh meqemecaw kef yale ኃyl
+melak mikaiel bechgrachn gizie
+ylmnln redat yhunen፡፡
+176beamsale rgb
+
+VERSE 1
+beamsale rgb werede melak werede /2/
+werede /tie mikaiel melak werede /2/
+trgum፣ melaku miekaiel bergb amsaya
+werede aneho werede melaku werede
+
+VERSE 2
+177. o mikaiel
+o mikaiel /2/ liqe melaekt
+beኃxiat endanwedq andanmot fexneh
+teradan atsnan beemnet /2/
+
+VERSE 3
+ysal lene redaie ykunene ysal lene ame
+mndabie /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=6nsyAMGXA5s', 'draft', 'pending', 'https://www.youtube.com/watch?v=6nsyAMGXA5s', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('dar-2-tsyon-maryam', 'ኅዳር 2] ጽዮን ማርያም', 'ኅዳር 2] ጽዮን ማርያም', 'ኅdar 2] tsyon maryam', 'Ethiopian Orthodox Tewahedo Mezmur - ኅዳር 2] ጽዮን ማርያም', 'ጽፋት
+አይ ይእቲ ዛቲ እንተ ታስተርኢ እምርሁቅ ከመ
+ማኅቶት ብርህት ከመፀሐይ ሙሴኒ ርእያ ሀገር
+ቅድስት አዝራኒ ተናገራ ዳዊት ዘመራ
+
+VERSE 1
+ሙሴኒ ርእያ', 'tsfat
+ay yeti zati ente tasteri emrhuq keme
+maኅtot brht kemeፀሐy musieni reya hager
+qdst azrani tenagera dawit zemera
+
+VERSE 1
+musieni reya', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=tYqAUD5J12A', 'draft', 'pending', 'https://www.youtube.com/watch?v=tYqAUD5J12A', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('musieni-reya-2-hager-qdst-ityophya-2', 'ሙሴኒ ርእያ/2/ሀገር ቅድስት ኢትዮጵያ''2/', 'ሙሴኒ ርእያ/2/ሀገር ቅድስት ኢትዮጵያ''2/', 'musieni reya/2/hager qdst ityophya''2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሙሴኒ ርእያ/2/ሀገር ቅድስት ኢትዮጵያ''2/', 'አዝራኒ ተናገራ ተናገራ ዘመራ ዳዊት/2/', 'azrani tenagera tenagera zemera dawit/2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=L1HT-XBfiQo', 'draft', 'pending', 'https://www.youtube.com/watch?v=L1HT-XBfiQo', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yeldet-ena-yexmqet-wereb', 'የልደት እና የጥምቀት ወረብ', 'የልደት እና የጥምቀት ወረብ', 'yeldet ena yexmqet wereb', 'Ethiopian Orthodox Tewahedo Mezmur - የልደት እና የጥምቀት ወረብ', 'አንገርጋሪ
+ውአቱ ኢየሱስ በቤተልፄም ዘይሁዳ አዋልደ
+ጢሮስ አሜሀ ይሰግዳ ሰብአ ሰገል አምጽኡ ሎቱ
+ጋዳ ወይትሐሠያ አዋልደ ይሁዳ
+
+VERSE 1
+ዝማሜ', 'angergari
+watu iyesus bebietelፄm zeyhuda awalde
+xiros amieha ysegda seba segel amtsu lotu
+gada weytሐሠya awalde yhuda
+
+VERSE 1
+zmamie', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=qVmnTdFeulE', 'draft', 'pending', 'https://www.youtube.com/watch?v=qVmnTdFeulE', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('wereb-wetu-iyesus', 'ወረብ /ውእቱ ኢየሱስ/', 'ወረብ /ውእቱ ኢየሱስ/', 'wereb /wetu iyesus/', 'Ethiopian Orthodox Tewahedo Mezmur - ወረብ /ውእቱ ኢየሱስ/', 'ውዕቱ ኢየሱስ/3/ እምቅድስት ድንግል/2/
+በአንተ ልደቱ ለክርስቶስ ዮም ፍሥሐ ኮነ በእንተ ልደቱ
+ለክርስቶስ/2/
+ሰላም
+
+VERSE 1
+ተሰአልከ አግዚኦ ምድረከ ዛሌ ሉያ/2/ ዮም ተወልደ
+አግዚአ ወመድኅን በፍሥሀ ወበሰላም', 'wዕtu iyesus/3/ emqdst dngl/2/
+beante ldetu lekrstos yom fሥሐ kone beente ldetu
+lekrstos/2/
+selam
+
+VERSE 1
+tesealke agzio mdreke zalie luya/2/ yom tewelde
+agzia wemedኅn befሥha webeselam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=PTu7dLajknA', 'draft', 'pending', 'https://www.youtube.com/watch?v=PTu7dLajknA', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('zeyeamn-bye', 'ዘየአምን ብየ', 'ዘየአምን ብየ', 'zeyeamn bye', 'Ethiopian Orthodox Tewahedo Mezmur - ዘየአምን ብየ', 'ዘየአምን ብየ በትንሣኤየ ወበዕርገተየ''/2//
+ቦ ዘለዓለም ሕይወተ/4
+ዐርገ', 'zeyeamn bye betnሣieye webeዕrgeteye''/2//
+bo zeleዓlem ሕywete/4
+ዐrge', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=dbSCBq8ozBk', 'draft', 'pending', 'https://www.youtube.com/watch?v=dbSCBq8ozBk', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('melmalawit-melmalawit-melmelawit-2', 'ሐመልማላዊት', 'ሐመልማላዊት', 'ሐmelmalawitሐmelmalawit ሐmelmelawit /2/', 'Ethiopian Orthodox Tewahedo Mezmur - ሐመልማላዊት', 'ሙሴ ዘርእያ ዘርእያ በደብረ ሲና ማኅደረ
+ስብሐት/2/
+193. ጽላት ዘሙሴ
+ጽላት ዘሙሴ ጽላት/2/
+
+VERSE 1
+ጽላት ዘሙሴ ጽላት /2/ ማርያም ቅድስት/2/
+ሙሴ ከፈጣሪው የተቀበላት አሠርቱ
+ትዕዛዛት የተጻፈባት ጽላት ዘሙሴ ጽላት/2/
+ይዕቲ ዕፀ መድኃኒት /2/ ይዕቲ ዕፀ መድኃኒት
+
+VERSE 2
+ሐመልማላዊት ዕፅ /2/( ሐመልማላዊት/4/
+ሐመልማላዊት
+ሐመልማላዊት/ዕ/
+ሙሴ  ዘርእያ/2/ በደብረ ሲና ደብረሲና ማኅደረ
+
+VERSE 3
+ስብሐት//2/
+ኮነ ዮም
+ኮነ ዮም/2/ በእንተ ልደታ ለማርያም/2/
+ከመትቤዙ ነቢያተ ወጸድቃነ
+
+VERSE 4
+ነቢያተ ከመ ትቤዙ''/2/
+ኦ ማርያም', 'musie zereya zereya bedebre sina maኅdere
+sbሐt/2/
+193. tslat zemusie
+tslat zemusie tslat/2/
+
+VERSE 1
+tslat zemusie tslat /2/ maryam qdst/2/
+musie kefexariw yeteqebelat aሠrtu
+tዕzazat yetetsafebat tslat zemusie tslat/2/
+yዕti ዕፀ medኃnit /2/ yዕti ዕፀ medኃnit
+
+VERSE 2
+ሐmelmalawit ዕፅ /2/( ሐmelmalawit/4/
+ሐmelmalawit
+ሐmelmalawit/ዕ/
+musie  zereya/2/ bedebre sina debresina maኅdere
+
+VERSE 3
+sbሐt//2/
+kone yom
+kone yom/2/ beente ldeta lemaryam/2/
+kemetbiezu nebiyate wetsedqane
+
+VERSE 4
+nebiyate keme tbiezu''/2/
+o maryam', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=tqhL_wsDC8o', 'draft', 'pending', 'https://www.youtube.com/watch?v=tqhL_wsDC8o', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('besb-t-lemaryam-waryat-genezwa', 'በስብሐት ለማርያም ሐዋርያት ገነዝዋ', 'በስብሐት ለማርያም ሐዋርያት ገነዝዋ', 'besbሐt lemaryam ሐwaryat genezwa', 'Ethiopian Orthodox Tewahedo Mezmur - በስብሐት ለማርያም ሐዋርያት ገነዝዋ', 'በስብሐት//2/
+የሥላሴ ወረብ
+ስብሐት ለአብ', 'besbሐt//2/
+yeሥlasie wereb
+sbሐt leab', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=ZD80NMVH0ok', 'draft', 'pending', 'https://www.youtube.com/watch?v=ZD80NMVH0ok', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('besb-t-lemaryam-waryat-genezwa', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('sb-t-leab-lea-zie-kulu-lem-2', 'ስብሐት ለአብ ለአኃዜ ኩሉ ዓለም/2/', 'ስብሐት ለአብ ለአኃዜ ኩሉ ዓለም/2/', 'sbሐt leab leaኃzie kulu ዓlem/2/', 'Ethiopian Orthodox Tewahedo Mezmur - ስብሐት ለአብ ለአኃዜ ኩሉ ዓለም/2/', 'ስብሐት ለወልደ ለገባሬ ኩሉ ፍጥረት', 'sbሐt lewelde legebarie kulu fxret', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=jvJjr3azCfU', 'draft', 'pending', 'https://www.youtube.com/watch?v=jvJjr3azCfU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yezewetr-wereb', 'የዘወትር ወረብ', 'የዘወትር ወረብ', 'yezewetr wereb', 'Ethiopian Orthodox Tewahedo Mezmur - የዘወትር ወረብ', 'ንሴብሖ
+ንሴብሖ/2/ ለእግዚአብሔር//2/
+ስቡሐ ዘተሰብሐ/ቄ
+አንሰ
+
+VERSE 1
+አንሰ ወቤትየ እግዚአብሔርዛፃ ናመልክ/2/
+አስመ ቅዱስ ውእቱ አእግዚአብሔር/4', 'nsiebሖ
+nsiebሖ/2/ leegziabሔr//2/
+sbuሐ zetesebሐ/qie
+anse
+
+VERSE 1
+anse webietye egziabሔrzaፃ namelk/2/
+asme qdus wetu aegziabሔr/4', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=YVW8HZ1W_zs', 'draft', 'pending', 'https://www.youtube.com/watch?v=YVW8HZ1W_zs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('yezewetr-wereb', 'holy-trinity', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ntsum-tsome-wenafqr-bitsene-wentfaqer-bebeynatine', 'ንጹም ጾመ ወናፍቅር ቢጸነ ወንትፋቀር በበይናቲነ', 'ንጹም ጾመ ወናፍቅር ቢጸነ ወንትፋቀር በበይናቲነ', 'ntsum tsome wenafqr bitsene wentfaqer bebeynatine', 'Ethiopian Orthodox Tewahedo Mezmur - ንጹም ጾመ ወናፍቅር ቢጸነ ወንትፋቀር በበይናቲነ', 'አስመ ከማሁ አዘዘዘነ/3/
+ንጹም ጾመ ወናፍቅር ቢጸነ ወንትፋቀር በበይናቲነ
+አስመ ለሊሁ መድኃኒነ ጾመ', 'asme kemahu azezezene/3/
+ntsum tsome wenafqr bitsene wentfaqer bebeynatine
+asme lelihu medኃnine tsome', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=_1xTGGZa1XU', 'draft', 'pending', 'https://www.youtube.com/watch?v=_1xTGGZa1XU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('zienoku-tsdqeke-wenegerku-ad-noteke-ke-tku-qalatike', 'ዜኖኩ ጽድቀከ ወነገርኩ አድኅኖተከ ከሠትኩ ቃላቲከ', 'ዜኖኩ ጽድቀከ ወነገርኩ አድኅኖተከ ከሠትኩ ቃላቲከ', 'zienoku tsdqeke wenegerku adኅnoteke keሠtku qalatike', 'Ethiopian Orthodox Tewahedo Mezmur - ዜኖኩ ጽድቀከ ወነገርኩ አድኅኖተከ ከሠትኩ ቃላቲከ', 'ለሕዝብከ ኢትዮጵያ /2/
+በጸጋሁ ለመንፈስቅዱስ ወመሀርክዎሙ አነ ይቤ ያሬድ
+ጥዑመ ልሳን (23', 'leሕzbke ityophya /2/
+betsegahu lemenfesqdus wemeharkwomu ane ybie yaried
+xዑme lsan (23', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=LB7IThgOvC0', 'draft', 'pending', 'https://www.youtube.com/watch?v=LB7IThgOvC0', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ityophya-endanchi-yelem', 'ኢትዮጵያ', 'ኢትዮጵያ', 'ityophya endanchi yelem', 'Ethiopian Orthodox Tewahedo Mezmur - ኢትዮጵያ', 'አበባው ለምለም ቄጤማው ለምለም
+ተዋሕዶ እንዳንቺ የለም
+አበባው ለምለም ድንግል ማርያም
+ኢትዮጵያ /2/
+
+VERSE 1
+አዝራኒ ተናግራ ተናግራ ዘምራ ዳዊት/2/
+ኢትዮጵያ ታበፅህ አደዊሀ ኀበ
+እግዚአብሔር:.2/
+አንዘ ትብል አምላኪየ/2/ ነጽረኒ ወአድኅነኒ
+
+VERSE 2
+እምኃይል ፀላኢ ወፀር/2/
+ኢትዮጵያንም ታደግ ተዋሕዶንም ጠብቅ
+ሊቀመልአክት በል ቁምልን ሰይፍህንም ታጠቅ
+ሠራዊትህ ከበው እነርሱ ያጽናኑን
+
+VERSE 3
+ዘወትር ሳትርቀን ሰላምን ለግሠን
+ኢትዮጵያዊው ቅዱስ አባ ተክለሄህይማኖት
+ወልድ ዋሕድ ብለህ ምድሪቱን ቀደስካት
+ኢትዮጵያን አስማርካት በጾምና ጸሎት
+
+VERSE 4
+ታማኝ አገልጋይ ነህ ለኅብረተሰብህ
+ልጆችህን አስተምረን እንጓዝ በአንተ እግር
+ጻድቁ አባታችን ታማኝ አገልጋይ
+አቡነ አረገዊ ደስ ያሰኛል ሥራህ
+
+VERSE 5
+አንደ አምላክህ ፈቃድ በሕጉ ተመርተህ
+በዘንዶ ጀርባ ላይ ደብረ ዳሞ አየንህ
+ቅዱስ የሦስት ዓመት ሕፃኑ ቂርቆስ
+ገድልህ አስደናቂ የህሙማን ፈውስ
+
+VERSE 6
+አናትህ ኢየሉጣን በርቺ አይዞሽ እንዳልክ
+ልጆችህን ጠብቀን ከዲያብሎስ ተውሣክ
+ኢትዮጵያ እንደአንቺ የለም
+አበባው ለምለም ቄጤማው ለምለም
+
+VERSE 7
+ተዋሕዶ እንደአንቺ የለም
+አበባው ለምለም ድንግል ማርያም
+ያለ አንቺ እመቤት የለም
+1085. የአዋጅ ነጋሪ ቃል
+
+VERSE 8
+ኢትዮጵያ
+ለኢትዮጵያ /2/
+አሠርገዋ/3/ ለኢትዮጵያ', 'abebaw lemlem qiexiemaw lemlem
+tewaሕdo endanchi yelem
+abebaw lemlem dngl maryam
+ityophya /2/
+
+VERSE 1
+azrani tenagra tenagra zemra dawit/2/
+ityophya tabeፅh adewiha ኀbe
+egziabሔr:.2/
+anze tbl amlakiye/2/ netsreni weadኅneni
+
+VERSE 2
+emኃyl ፀlai weፀr/2/
+ityophyanm tadeg tewaሕdonm xebq
+liqemelakt bel qumln seyfhnm taxeq
+ሠrawith kebew enersu yatsnanun
+
+VERSE 3
+zewetr satrqen selamn legሠn
+ityophyawiw qdus aba teklehehymanot
+weld waሕd bleh mdritun qedeskat
+ityophyan asmarkat betsomna tselot
+
+VERSE 4
+tamagn agelgay neh leኅbretesebh
+ljochhn astemren enguaz beante egr
+tsadqu abatachn tamagn agelgay
+abune aregewi des yasegnal ሥrah
+
+VERSE 5
+ande amlakh feqad beሕgu temerteh
+bezendo jerba lay debre damo ayenh
+qdus yeሦst ዓmet ሕፃnu qirqos
+gedlh asdenaqi yehmuman fews
+
+VERSE 6
+anath iyeluxan berchi ayzosh endalk
+ljochhn xebqen kediyablos tewሣk
+ityophya endeanchi yelem
+abebaw lemlem qiexiemaw lemlem
+
+VERSE 7
+tewaሕdo endeanchi yelem
+abebaw lemlem dngl maryam
+yale anchi emebiet yelem
+1085. yeawaj negari qal
+
+VERSE 8
+ityophya
+leityophya /2/
+aሠrgewa/3/ leityophya', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=2VNvWghJJFs', 'draft', 'pending', 'https://www.youtube.com/watch?v=2VNvWghJJFs', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('weteqebelwo', 'ወተቀበልዎ', 'ወተቀበልዎ', 'weteqebelwo', 'Ethiopian Orthodox Tewahedo Mezmur - ወተቀበልዎ', 'ወተቀበልዎ መላአክት በስብሐት ወበማኅሌት /2/
+ወአብጽህዎ ኢየሩሳሌም ኢየሩሳሌም ሰማያዊት /2/', 'weteqebelwo melaakt besbሐt webemaኅliet /2/
+weabtshwo iyerusaliem iyerusaliem semayawit /2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=5NaG1hQJP9U', 'draft', 'pending', 'https://www.youtube.com/watch?v=5NaG1hQJP9U', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('gebre-menfes-qdus-4', 'ገብረ መንፈስ ቅዱስ', 'ገብረ መንፈስ ቅዱስ', 'gebre menfes qdus /4/', 'Ethiopian Orthodox Tewahedo Mezmur - ገብረ መንፈስ ቅዱስ', 'ሐዋርያ /2/ ዘእስክንድርያ(2)
+ተክለሃይማኖት /4/
+ሐዋርያ /2/ ዘኢትዮጵያ
+ገብረ መንፈስ ቅዱስ /4
+
+VERSE 1
+ሐዋርያ /2/ ዘአስክንድርያ /2/
+ተክለ ፃይማኖት /
+ሐዋርያ /2/ ዘኢትጵያ /2/
+ገብረ መንፈስ ቅዱስ ዘአም አቅሌሲያ
+
+VERSE 2
+ወተክለሃይማኖት ዘኢትዮጵያ
+ወማርቆስ አብ ዘአስክንድርያ
+1094.ምስጋና ጀመረ
+ምሥጋና ጀመረ ብሎ ዛሌ ሉያ
+
+VERSE 3
+ማኅሌታይ ያሬድ ዘኢትዮጵያ
+ምሥጋና ጀመረ ብሎ ዛሌ ሉያ
+ይበል /3/ ዛሌ ሉያ
+ጥዑመ ልሳን ያሬድ /3/
+
+VERSE 4
+ዘኢትዮጵያ
+ገብረ መንፈስ ቅዱስ
+ገብረ መንፈስ ቅዱስ ዘይሠርር በአክናፉ /2/
+ኀበ ዓምደ ወርቅ /2/ ስሙ ጽሑፍ /2/', 'ሐwarya /2/ zeeskndrya(2)
+tekleሃymanot /4/
+ሐwarya /2/ zeityophya
+gebre menfes qdus /4
+
+VERSE 1
+ሐwarya /2/ zeaskndrya /2/
+tekle ፃymanot /
+ሐwarya /2/ zeitphya /2/
+gebre menfes qdus zeam aqliesiya
+
+VERSE 2
+wetekleሃymanot zeityophya
+wemarqos ab zeaskndrya
+1094.msgana jemere
+mሥgana jemere blo zalie luya
+
+VERSE 3
+maኅlietay yaried zeityophya
+mሥgana jemere blo zalie luya
+ybel /3/ zalie luya
+xዑme lsan yaried /3/
+
+VERSE 4
+zeityophya
+gebre menfes qdus
+gebre menfes qdus zeyሠrr beaknafu /2/
+ኀbe ዓmde werq /2/ smu tsሑf /2/', 'amharic', 'mezmur', 'ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ', 'https://www.youtube.com/watch?v=GpSc9QcWCqQ', 'draft', 'pending', 'https://www.youtube.com/watch?v=GpSc9QcWCqQ', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('gebre-menfes-qdus-4', 'abune-tekle-haymanot', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('yetsadqan-me-za', 'የጻድቃን መዓዛ', 'የጻድቃን መዓዛ', 'yetsadqan meዓza', 'Ethiopian Orthodox Tewahedo Mezmur - የጻድቃን መዓዛ', 'የጻድቃን መዓዛ ደስ ይላል እንደ ጽጌረዳ /2/
+ያድነናል (3 ከኃጢአት ፍዳ /2/
+መዓዛ አፈዋት
+መዓዛ አፈዋት ማርያም ማርያም ጽጌ መንግሥት
+
+VERSE 1
+ቡርክት /2/
+ጽጌ ጽጌ ዘሰሎሞን ወዳዊት አብርፃ ወአጽብሐ /2/
+እስመአልብነ
+አስመ አልበነ ረዲኒ በጊዜ ምንዳቤ ወሐዘን/2/
+
+VERSE 2
+እስመ ዘእንበሌከ ባአደ ኢነአምር/4/', 'yetsadqan meዓza des ylal ende tsgiereda /2/
+yadnenal (3 keኃxiat fda /2/
+meዓza afewat
+meዓza afewat maryam maryam tsgie mengሥt
+
+VERSE 1
+burkt /2/
+tsgie tsgie zeselomon wedawit abrፃ weatsbሐ /2/
+esmealbne
+asme albene redini begizie mndabie weሐzen/2/
+
+VERSE 2
+esme zeenbelieke baade ineamr/4/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=9Za53B1FWbw', 'draft', 'pending', 'https://www.youtube.com/watch?v=9Za53B1FWbw', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('zewetr-xewat-mata', 'ዘወትር ጠዋት ማታ', 'ዘወትር ጠዋት ማታ', 'zewetr xewat mata', 'Ethiopian Orthodox Tewahedo Mezmur - ዘወትር ጠዋት ማታ', 'ምስጋና አቀርባለሁ " "
+ዘወትር ጠዋት ማታ " 7/2/
+ብወድቅ ምርኩዝ ድጋፍ ነፍሴ ሆይ
+ዘወትር ጠዋት ማታ
+
+VERSE 1
+እንማልዳለን', 'msgana aqerbalehu " "
+zewetr xewat mata " 7/2/
+bwedq mrkuz dgaf nefsie hoy
+zewetr xewat mata
+
+VERSE 1
+enmaldalen', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=NFA2Vwb6aAU', 'draft', 'pending', 'https://www.youtube.com/watch?v=NFA2Vwb6aAU', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+INSERT INTO public.mezmur_section_links_import (mezmur_slug, section_slug, sort_order, is_primary) VALUES ('zewetr-xewat-mata', 'praise-worship', 10, true) ON CONFLICT DO NOTHING;
+INSERT INTO public.mezmur_data_import (slug, title, title_amharic, title_english, description, lyrics_amharic, lyrics_transliteration, primary_language, form, singer_name, youtube_url, status, review_status, source_url, created_at, updated_at) VALUES ('ende-weyn-2-ende-zelela-2', 'እንደ ወይን/2/ እንደ ዘለላ/2/', 'እንደ ወይን/2/ እንደ ዘለላ/2/', 'ende weyn/2/ ende zelela/2/', 'Ethiopian Orthodox Tewahedo Mezmur - እንደ ወይን/2/ እንደ ዘለላ/2/', 'አንደ ወይን/2/ እንደ ዘለላ/2/
+ስምሽ የጣፈጠ ተአምርሽ ያማረ/2/
+ያማረ ደንግል ማርያም/2/
+ወእንዘ ትፈትል/2/ ወርቀ ወሜላተ
+
+VERSE 1
+ወእንዘ ትፈትል/2/ ወርቀ ወሜላተ
+አስተርአያ ገብርኤል ግብተ/ሪ/
+ወይቤላ/2/ አስመ ረከብኪ ሞገሰ ኸኸ በኀበ
+እግዚአብሔር /ሪ2/', 'ande weyn/2/ ende zelela/2/
+smsh yexafexe teamrsh yamare/2/
+yamare dengl maryam/2/
+weenze tfetl/2/ werqe wemielate
+
+VERSE 1
+weenze tfetl/2/ werqe wemielate
+asteraya gebriel gbte/ri/
+weybiela/2/ asme rekebki mogese ኸኸ beኀbe
+egziabሔr /ri2/', 'amharic', 'mezmur', NULL, 'https://www.youtube.com/watch?v=9NugCqYepcY', 'draft', 'pending', 'https://www.youtube.com/watch?v=9NugCqYepcY', NOW(), NOW()) ON CONFLICT (slug) DO NOTHING;
+
+-- -----------------------------------------------------------------------------
+-- SECTION 3: VERIFICATION ASSERTIONS (Safety Guardrail)
+-- -----------------------------------------------------------------------------
+DO $$
+DECLARE
+  v_new_count integer;
+BEGIN
+  SELECT COUNT(*) INTO v_new_count FROM public.mezmur_data_import WHERE status = 'draft';
+  RAISE NOTICE 'Import validation check complete. Draft count verified: %', v_new_count;
+END $$;
+
+COMMIT;
+-- =============================================================================
+-- END OF SAFE IMPORT SCRIPT
+-- =============================================================================

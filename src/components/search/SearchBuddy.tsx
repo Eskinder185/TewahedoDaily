@@ -73,6 +73,7 @@ export function SearchBuddy() {
   const [websiteOutcome, setWebsiteOutcome] = useState<WebsiteOutcome>({ kind: 'idle' })
   const [calendarOutcome, setCalendarOutcome] = useState<CalendarOutcome>({ kind: 'idle' })
   const [pendingClarification, setPendingClarification] = useState<PendingClarification | null>(null)
+  const [selectedDomain, setSelectedDomain] = useState<'all' | 'bible' | 'mezmur' | 'prayer' | 'calendar' | 'library'>('all')
   const draftRef = useRef(draft)
   const websiteRequestRef = useRef(0)
   const documentRequestRef = useRef(0)
@@ -88,10 +89,15 @@ export function SearchBuddy() {
   const panelRef = useRef<HTMLElement>(null)
   const bodyRef = useRef<HTMLDivElement>(null)
   const fabRef = useRef<HTMLButtonElement>(null)
-  const openRef = useRef(open)
+  const prevOpenRef = useRef(open)
 
   useEffect(() => {
-    openRef.current = open
+    if (prevOpenRef.current && !open) {
+      window.setTimeout(() => {
+        fabRef.current?.focus()
+      }, 0)
+    }
+    prevOpenRef.current = open
   }, [open])
 
   const apiReady = isAiApiConfigured()
@@ -166,9 +172,9 @@ export function SearchBuddy() {
 
   useEffect(() => {
     if (!open) return
-    const fab = fabRef.current
     const mainEl = document.getElementById('main')
-    const inertTargets = [mainEl].filter(Boolean) as HTMLElement[]
+    const headerEl = document.querySelector('header[data-header]') as HTMLElement | null
+    const inertTargets = [mainEl, headerEl].filter(Boolean) as HTMLElement[]
     for (const el of inertTargets) el.setAttribute('inert', '')
 
     const timer = window.setTimeout(() => {
@@ -219,7 +225,6 @@ export function SearchBuddy() {
       document.removeEventListener('focusin', onFocusIn)
       document.body.style.overflow = prev
       for (const el of inertTargets) el.removeAttribute('inert')
-      if (!openRef.current) fab?.focus()
     }
   }, [open, closePanel])
 
@@ -290,16 +295,20 @@ export function SearchBuddy() {
     documentAbortRef.current?.abort()
     const controller = new AbortController()
     documentAbortRef.current = controller
+    setDocumentOutcome({ kind: 'loading', query: userQuery, topic })
     if (!apiReady) {
-      setDocumentOutcome({
-        kind: 'error',
-        query: userQuery,
-        topic,
-        notice: t('searchBuddy.errors.notConfigured'),
-      })
+      // Direct Supabase Church Library search for topic query without remote AI
+      void searchChurchLibrary(topic.documentQuery, controller.signal)
+        .then(() => {
+          if (requestId !== documentRequestRef.current) return
+          setDocumentOutcome({ kind: 'idle' })
+        })
+        .catch(() => {
+          if (requestId !== documentRequestRef.current) return
+          setDocumentOutcome({ kind: 'idle' })
+        })
       return
     }
-    setDocumentOutcome({ kind: 'loading', query: userQuery, topic })
     void searchFaithAndOrder(topic.documentQuery, { signal: controller.signal, limit: 5 })
       .then((response) => {
         if (requestId !== documentRequestRef.current) return
@@ -333,11 +342,15 @@ export function SearchBuddy() {
   }
 
   function startLibrarySearch(query: string) {
+    const trimmed = query.trim()
+    if (!trimmed || trimmed.length < 2) {
+      setLibraryOutcome({ kind: 'idle' })
+      return
+    }
     const requestId = ++libraryRequestRef.current
     libraryAbortRef.current?.abort()
     const controller = new AbortController()
     libraryAbortRef.current = controller
-    if (!apiReady) return
     setLibraryOutcome({ kind: 'loading', query })
     void searchChurchLibrary(query, controller.signal)
       .then((response) => {
@@ -351,7 +364,7 @@ export function SearchBuddy() {
           return
         }
         logSearchBuddyDiagnostic(cause, 'church-library')
-        setLibraryOutcome({ kind: 'error', query, notice: 'Church Library sources are temporarily unavailable.' })
+        setLibraryOutcome({ kind: 'error', query, notice: t('searchBuddy.churchLibraryUnavailable') })
       })
   }
 
@@ -462,6 +475,36 @@ export function SearchBuddy() {
                     <span>{activeQuery}</span>
                   </p>
                 ) : null}
+                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', margin: '0.75rem 0 1rem' }} role="tablist" aria-label="Search domains">
+                  {[
+                    ['all', 'All'],
+                    ['bible', 'Bible'],
+                    ['mezmur', 'Mezmurs'],
+                    ['prayer', 'Prayers'],
+                    ['calendar', 'Calendar'],
+                    ['library', 'Church Library'],
+                  ].map(([dom, label]) => (
+                    <button
+                      key={dom}
+                      type="button"
+                      onClick={() => setSelectedDomain(dom as any)}
+                      style={{
+                        background: selectedDomain === dom ? 'var(--color-primary, #1e3a8a)' : 'rgba(255, 255, 255, 0.08)',
+                        color: selectedDomain === dom ? '#ffffff' : 'inherit',
+                        border: '1px solid ' + (selectedDomain === dom ? 'transparent' : 'rgba(255, 255, 255, 0.15)'),
+                        borderRadius: '9999px',
+                        padding: '0.25rem 0.75rem',
+                        fontSize: '0.825rem',
+                        fontWeight: 600,
+                        cursor: 'pointer',
+                      }}
+                      role="tab"
+                      aria-selected={selectedDomain === dom}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
                 <CalendarAnswerPane
                   outcome={calendarOutcome}
                   onChoose={(optionId) => {
@@ -484,13 +527,16 @@ export function SearchBuddy() {
                   onRetry={(query) => startWebsiteSearch(query)}
                   onOpen={closePanel}
                   hideQueryEcho
+                  domainFilter={selectedDomain}
                 />
                 <SourcePassagePane
                   outcome={documentOutcome}
                   busy={documentOutcome.kind === 'loading'}
                   onRetry={(query, topic) => startDocumentSearch(query, topic)}
                 />
-                <ChurchLibrarySources outcome={libraryOutcome} />
+                {(selectedDomain === 'all' || selectedDomain === 'library') && (
+                  <ChurchLibrarySources outcome={libraryOutcome} />
+                )}
               </div>
             )}
           </div>
@@ -541,7 +587,8 @@ export function SearchBuddy() {
       <button
         ref={fabRef}
         type="button"
-        className={styles.fab}
+        className={`${styles.fab} ${open ? styles.fabHidden : ''}`.trim()}
+        aria-hidden={open}
         aria-label={t('searchBuddy.fabAria')}
         aria-haspopup="dialog"
         aria-expanded={open}

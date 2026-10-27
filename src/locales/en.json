@@ -206,7 +206,13 @@
       "previousDay": "Previous day",
       "nextDay": "Next day",
       "selectDay": "Select a day to view observance details.",
-      "observanceImage": "{title} observance image"
+      "observanceImage": "{title} observance image",
+      "historyHeading": "Historical background & story",
+      "theologyHeading": "Theological meaning",
+      "traditionsHeading": "Traditions & practices",
+      "mezmursHeading": "Related Mezmurs",
+      "prayersHeading": "Related prayers & resources",
+      "sourcesHeading": "Authoritative sources & citations"
     },
     "reminders": {
       "on": "Reminder on",
@@ -972,7 +978,8 @@
       "bibleText": "Bible text",
       "saint": "Saint",
       "feast": "Feast",
-      "learn": "Learn"
+      "learn": "Learn",
+      "churchLibrary": "Church Library"
     },
     "seeMore": "See more ({count})",
     "partial": "Some catalogs were slow; showing what is ready.",
@@ -1047,7 +1054,8 @@
         "feast": "Feast",
         "learn": "Learn",
         "account": "Account",
-        "other": "Record"
+        "other": "Record",
+        "church_library": "Church Library"
       }
     },
     "calendar": {
@@ -1115,7 +1123,11 @@
     "scriptureLangAm": "Amharic",
     "scriptureLangOther": "Source language",
     "scriptureMystery": "Mystery: {mystery}",
-    "scriptureCovers": "Covers verses {range}"
+    "scriptureCovers": "Covers verses {range}",
+    "churchLibraryUnavailable": "Church Library sources are temporarily unavailable.",
+    "churchLibrarySources": "Church Library sources",
+    "churchLibraryNote": "These are short, permission-checked excerpts from indexed books. Verify teaching in context.",
+    "churchLibraryOpenSource": "Open permitted source"
   },
   "a11y": {
     "skipToMain": "Skip to main content"
@@ -1234,5 +1246,21 @@
     "tryAgain": "Try again",
     "commemorations": "Commemorations",
     "emptyDay": "No commemorations published for this day."
+  },
+  "library": {
+    "title": "Church Library",
+    "subtitle": "Authoritative books, patristic writings, scripture commentaries, and theological treatises of the Ethiopian Orthodox Tewahedo Church.",
+    "searchPlaceholder": "Search books by title, author, or topic…",
+    "loading": "Loading Church Library catalog…",
+    "noBooks": "No church library books match your filter.",
+    "read": "Read Book",
+    "readBook": "Read in Library",
+    "loadingBook": "Opening book reader…",
+    "errorOpening": "Could not open book",
+    "backToList": "Return to Library",
+    "back": "Library",
+    "findInBook": "Find in book…",
+    "tableOfContents": "Table of Contents",
+    "sectionEmpty": "No passages in this section."
   }
 }

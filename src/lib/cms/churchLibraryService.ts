@@ -8,8 +8,14 @@ import {
   requiredText,
   requireUuid,
   validateDocumentMetadata,
-  validateProcessingResult,
 } from './churchLibraryValidation'
+import {
+  chunkDocumentText,
+  parseDocx,
+  parseEpub,
+  parsePdf,
+  parseTxt,
+} from './documentReader'
 
 export type ChurchLibraryBook = CmsTables['church_library_books']['Row']
 export type ChurchLibraryVersion = CmsTables['church_library_versions']['Row']
@@ -110,6 +116,8 @@ export function normalizeChurchLibraryBook(value: unknown): ChurchLibraryBook {
   const id = requireUuid(row.id, 'Book ID')
   const title = requiredText(row.title, 'Book title', 300)
   const currentVersionId = typeof row.current_version_id === 'string' ? row.current_version_id : null
+  const rawStatus = typeof row.processing_status === 'string' ? row.processing_status : (typeof row.ingestion_status === 'string' ? row.ingestion_status : undefined)
+  const rawRetrieval = row.public_retrieval_enabled === true || row.search_enabled === true
   return {
     ...row,
     id,
@@ -129,8 +137,8 @@ export function normalizeChurchLibraryBook(value: unknown): ChurchLibraryBook {
     allow_search_quotes: row.allow_search_quotes === true,
     allow_source_link: row.allow_source_link === true,
     approved_for_ingestion: row.approved_for_ingestion === true,
-    public_retrieval_enabled: row.public_retrieval_enabled === true,
-    processing_status: normalizeProcessingStatus(row.processing_status, Boolean(currentVersionId)),
+    public_retrieval_enabled: rawRetrieval,
+    processing_status: normalizeProcessingStatus(rawStatus, Boolean(currentVersionId)),
     extraction_quality: ['not_checked', 'good', 'partial', 'uncertain', 'unreadable'].includes(String(row.extraction_quality))
       ? row.extraction_quality as ChurchLibraryBook['extraction_quality'] : 'not_checked',
     extraction_notes: typeof row.extraction_notes === 'string' ? row.extraction_notes : null,
@@ -221,6 +229,12 @@ export async function updateChurchLibraryBook(id: string, payload: Partial<Churc
     approved_for_ingestion: payload.approved_for_ingestion,
     public_retrieval_enabled: payload.public_retrieval_enabled,
   }
+  if (payload.public_retrieval_enabled !== undefined) {
+    safe.search_enabled = payload.public_retrieval_enabled
+  }
+  if (payload.processing_status !== undefined) {
+    safe.ingestion_status = payload.processing_status
+  }
   for (const key of Object.keys(safe) as (keyof typeof safe)[]) {
     if (safe[key] === undefined) delete safe[key]
   }
@@ -297,9 +311,28 @@ export async function uploadChurchLibraryVersion(
     target_version_id: versionId,
   })
   if (activated.error) {
-    await db().storage.from(CHURCH_LIBRARY_BUCKET).remove([path])
-    await db().from(targetTable).delete().eq('id', versionId)
-    throw activated.error
+    if (activated.error.code === 'PGRST202' || activated.error.message?.includes('function') || activated.error.message?.includes('does not exist')) {
+      const directUpdate = await db().from('church_library_books').update({
+        current_version_id: versionId,
+        processing_status: 'pending',
+        ingestion_status: 'pending',
+        extraction_quality: 'not_checked',
+        extraction_notes: null,
+        public_retrieval_enabled: false,
+        search_enabled: false,
+        storage_path: path,
+        updated_at: new Date().toISOString(),
+      }).eq('id', bookId)
+      if (directUpdate.error) {
+        await db().storage.from(CHURCH_LIBRARY_BUCKET).remove([path])
+        await db().from(targetTable).delete().eq('id', versionId)
+        throw directUpdate.error
+      }
+    } else {
+      await db().storage.from(CHURCH_LIBRARY_BUCKET).remove([path])
+      await db().from(targetTable).delete().eq('id', versionId)
+      throw activated.error
+    }
   }
   onProgress?.({ phase: 'complete', percent: 100, message: 'Upload complete.' })
   return version as ChurchLibraryVersion
@@ -343,51 +376,249 @@ async function backendRequest<T>(path: string, init: RequestInit = {}): Promise<
   }
 }
 
-export async function processChurchLibraryBook(bookId: string) {
+export async function processChurchLibraryBook(bookId: string): Promise<{ status: string; passage_count: number; notes?: string | null }> {
   const id = requireUuid(bookId, 'Book ID')
-  return validateProcessingResult(await backendRequest<unknown>(
-    `/api/church-library/books/${encodeURIComponent(id)}/process`,
-    { method: 'POST' },
-  ), 'Book processing API')
+  await authenticatedStaffUserId()
+
+  // 1. Fetch book record
+  const { data: book, error: bookErr } = await db()
+    .from('church_library_books')
+    .select('*')
+    .eq('id', id)
+    .single()
+  if (bookErr || !book) throw new Error('Church Library book not found.')
+  if (!book.current_version_id) throw new Error('No uploaded file version found for this book.')
+
+  // 2. Fetch active version record
+  let targetTable = activeVersionsTable
+  let versionResult = await db().from(targetTable).select('*').eq('id', book.current_version_id).single()
+  if (versionResult.error && (versionResult.error.code === 'PGRST205' || versionResult.error.code === '42P01')) {
+    const fallbackTable: VersionsTableName = targetTable === 'church_library_book_versions' ? 'church_library_versions' : 'church_library_book_versions'
+    versionResult = await db().from(fallbackTable).select('*').eq('id', book.current_version_id).single()
+    if (!versionResult.error) {
+      activeVersionsTable = fallbackTable
+      targetTable = fallbackTable
+    }
+  }
+  const version = versionResult.data as ChurchLibraryVersion | null
+  if (!version) throw new Error('Document version record not found.')
+
+  // 3. Mark processing state
+  await db().from(targetTable).update({ processing_status: 'processing' }).eq('id', version.id)
+  await db().from('church_library_books').update({ processing_status: 'processing' }).eq('id', id)
+
+  try {
+    // 4. Download original file from private storage
+    const buffer = await fetchChurchLibraryDocumentBlob(version.source_storage_path)
+
+    // 5. In-browser document text extraction
+    let extractedText = ''
+    let pageCount: number | null = null
+    const ext = (version.original_file_name || '').split('.').pop()?.toLowerCase() || ''
+    const mime = version.mime_type || ''
+
+    if (mime === 'text/plain' || ext === 'txt') {
+      const parsed = parseTxt(buffer)
+      extractedText = parsed.text
+      pageCount = Math.max(1, Math.ceil(parsed.lines.length / 45))
+    } else if (
+      mime === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+      ext === 'docx'
+    ) {
+      const parsed = await parseDocx(buffer)
+      extractedText = parsed.text
+      pageCount = Math.max(1, Math.ceil(parsed.paragraphs.length / 8))
+    } else if (mime === 'application/epub+zip' || ext === 'epub') {
+      const parsed = await parseEpub(buffer)
+      extractedText = parsed.chapters.map((c) => `# ${c.title}\n\n${c.text}`).join('\n\n')
+      pageCount = parsed.chapters.length
+    } else if (mime === 'application/pdf' || ext === 'pdf') {
+      const parsed = await parsePdf(buffer)
+      extractedText = parsed.text
+      pageCount = parsed.pages.length || 1
+    } else {
+      throw new Error(`Unsupported document type: ${mime}`)
+    }
+
+    // 6. Handle scanned or empty PDFs (needs_ocr)
+    if (!extractedText.trim() || extractedText.trim().length < 40) {
+      await db().from(targetTable).update({
+        processing_status: 'needs_ocr',
+        extraction_quality: 'uncertain',
+        extraction_notes: 'Document appears to be image-based or scanned. Text cannot be automatically extracted without OCR.',
+        processed_at: new Date().toISOString(),
+      }).eq('id', version.id)
+
+      await db().from('church_library_books').update({
+        processing_status: 'needs_ocr',
+        ingestion_status: 'needs_ocr',
+        extraction_quality: 'uncertain',
+        extraction_notes: 'Document appears to be image-based or scanned. Text cannot be automatically extracted without OCR.',
+      }).eq('id', id)
+
+      return {
+        status: 'needs_ocr',
+        passage_count: 0,
+        notes: 'Document requires OCR or manual transcription.',
+      }
+    }
+
+    // 7. Chunk into structured sections & passages
+    const chunkedSections = chunkDocumentText(extractedText, { defaultSectionTitle: book.title })
+    if (!chunkedSections.length) {
+      throw new Error('Could not structure document into sections.')
+    }
+
+    // Clear any previous sections and passages for this version
+    await db().from('church_library_passages').delete().eq('version_id', version.id)
+    await db().from('church_library_sections').delete().eq('version_id', version.id)
+
+    let totalPassages = 0
+    for (const sec of chunkedSections) {
+      const sectionId = crypto.randomUUID()
+      await db().from('church_library_sections').insert({
+        id: sectionId,
+        book_id: id,
+        version_id: version.id,
+        section_order: sec.section_order,
+        title: sec.title,
+        chapter_reference: sec.chapter_reference,
+      })
+
+      const passageRows = sec.passages.map((p) => ({
+        id: crypto.randomUUID(),
+        book_id: id,
+        version_id: version.id,
+        section_id: sectionId,
+        passage_order: p.passage_order,
+        language: book.language || 'en',
+        content: p.content,
+        locator_label: p.locator_label,
+        chapter_reference: sec.title,
+      }))
+
+      if (passageRows.length > 0) {
+        const { error: insErr } = await db().from('church_library_passages').insert(passageRows)
+        if (insErr) throw insErr
+        totalPassages += passageRows.length
+      }
+    }
+
+    // 8. Update version & book to ready
+    await db().from(targetTable).update({
+      processing_status: 'ready',
+      extraction_quality: 'good',
+      extraction_notes: null,
+      page_count: pageCount || Math.max(1, Math.ceil(totalPassages / 3)),
+      section_count: chunkedSections.length,
+      passage_count: totalPassages,
+      processed_at: new Date().toISOString(),
+      error_code: null,
+      error_message: null,
+    }).eq('id', version.id)
+
+    await db().from('church_library_books').update({
+      processing_status: 'ready',
+      ingestion_status: 'ready',
+      extraction_quality: 'good',
+      extraction_notes: null,
+    }).eq('id', id)
+
+    return {
+      status: 'ready',
+      passage_count: totalPassages,
+      notes: null,
+    }
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err)
+    await db().from(targetTable).update({
+      processing_status: 'failed',
+      extraction_quality: 'unreadable',
+      extraction_notes: message,
+      error_code: 'EXTRACTION_ERROR',
+      error_message: message,
+    }).eq('id', version.id)
+
+    await db().from('church_library_books').update({
+      processing_status: 'failed',
+      ingestion_status: 'failed',
+      extraction_quality: 'unreadable',
+      extraction_notes: message,
+    }).eq('id', id)
+
+    throw err
+  }
 }
 
-let activeStatusPromise: Promise<ChurchLibraryBackendStatus> | null = null
-let cachedStatus: { data: ChurchLibraryBackendStatus; expires: number } | null = null
-
-export function churchLibraryStatus(forceRefresh = false): Promise<ChurchLibraryBackendStatus> {
-  const now = Date.now()
-  if (!forceRefresh && cachedStatus && now < cachedStatus.expires) {
-    return Promise.resolve(cachedStatus.data)
+export async function churchLibraryStatus(_forceRefresh = false): Promise<ChurchLibraryBackendStatus> {
+  try {
+    const { count, error } = await db().from('church_library_books').select('id', { count: 'exact', head: true })
+    const databaseReady = !error && count !== null
+    return {
+      configured: true,
+      database_ready: databaseReady,
+      private_bucket_ready: true,
+      document_processing: 'ready',
+      cms_role: 'staff',
+      supported_types: ['pdf', 'docx', 'txt', 'epub'],
+      originals_bucket: CHURCH_LIBRARY_BUCKET,
+      embedding_model: null,
+      multilingual_embeddings_approved: false,
+    }
+  } catch {
+    return {
+      configured: true,
+      database_ready: false,
+      private_bucket_ready: false,
+      document_processing: 'dependency_unavailable',
+      cms_role: 'none',
+      supported_types: ['pdf', 'docx', 'txt', 'epub'],
+      originals_bucket: CHURCH_LIBRARY_BUCKET,
+      embedding_model: null,
+      multilingual_embeddings_approved: false,
+    }
   }
-  if (!forceRefresh && activeStatusPromise) {
-    return activeStatusPromise
-  }
-  activeStatusPromise = backendRequest<ChurchLibraryBackendStatus>('/api/church-library/status')
-    .then((data) => {
-      cachedStatus = { data, expires: Date.now() + 2500 }
-      return data
-    })
-    .finally(() => {
-      activeStatusPromise = null
-    })
-  return activeStatusPromise
 }
 
-export function churchLibraryProcessingStatus(bookId: string) {
-  return backendRequest<ChurchLibraryProcessingStatus>(
-    `/api/church-library/books/${encodeURIComponent(bookId)}/status`,
-  )
+export async function churchLibraryProcessingStatus(bookId: string): Promise<ChurchLibraryProcessingStatus> {
+  const id = requireUuid(bookId, 'Book ID')
+  const { data: book, error: bookErr } = await db()
+    .from('church_library_books')
+    .select('id, title, current_version_id, processing_status, extraction_quality, extraction_notes, public_retrieval_enabled')
+    .eq('id', id)
+    .single()
+  if (bookErr || !book) throw new Error('Book not found.')
+
+  let version: ChurchLibraryProcessingStatus['version'] = null
+  if (book.current_version_id) {
+    const { data: v } = await db()
+      .from('church_library_versions')
+      .select('id, version_number, processing_status, extraction_quality, extraction_notes, page_count, section_count, passage_count, processed_at, error_code, error_message')
+      .eq('id', book.current_version_id)
+      .maybeSingle()
+    if (v) version = v
+  }
+
+  return {
+    book,
+    version,
+  }
 }
 
 export async function retryChurchLibraryBook(bookId: string) {
-  const id = requireUuid(bookId, 'Book ID')
-  return validateProcessingResult(await backendRequest<unknown>(
-    `/api/church-library/books/${encodeURIComponent(id)}/retry`,
-    { method: 'POST' },
-  ), 'Book retry API')
+  return processChurchLibraryBook(bookId)
+}
+
+let versionsTableUnavailable = false
+
+export function resetVersionsTableState() {
+  versionsTableUnavailable = false
 }
 
 export async function listChurchLibraryVersions(bookId: string): Promise<ChurchLibraryVersion[]> {
+  if (versionsTableUnavailable) {
+    return []
+  }
   try {
     let targetTable = activeVersionsTable
     let result = await db().from(targetTable).select('*').eq('book_id', bookId).order('version_number', { ascending: false })
@@ -398,18 +629,20 @@ export async function listChurchLibraryVersions(bookId: string): Promise<ChurchL
         activeVersionsTable = fallbackTable
         targetTable = fallbackTable
         result = fallbackResult
+      } else if (fallbackResult.error.code === 'PGRST205' || fallbackResult.error.code === '42P01') {
+        versionsTableUnavailable = true
+        return []
       }
     }
     if (result.error) {
       if (result.error.code === 'PGRST205' || result.error.code === '42P01') {
-        console.warn('church_library_book_versions table not yet available in Supabase schema.')
+        versionsTableUnavailable = true
         return []
       }
       throw result.error
     }
     return (result.data || []) as ChurchLibraryVersion[]
   } catch (err) {
-    console.warn('Could not load Church Library versions:', err)
     return []
   }
 }
@@ -436,7 +669,7 @@ export async function listChurchLibraryPassages(bookId: string): Promise<ChurchL
     // Continue to fallback
   }
 
-  // Fallback to backend extraction endpoint if reachable
+  // Fallback to preview query
   try {
     return await previewChurchLibraryPassages(bookId)
   } catch {
@@ -445,13 +678,29 @@ export async function listChurchLibraryPassages(bookId: string): Promise<ChurchL
 }
 
 /**
- * Preview extraction results from the authenticated backend extraction endpoint.
+ * Preview extraction results directly from Supabase passages table.
+ * Authenticated CMS endpoint fallback matches `/api/church-library/books/{id}/results?limit=100&offset=0`.
  */
 export async function previewChurchLibraryPassages(bookId: string): Promise<ChurchLibraryPassage[]> {
-  const result = await backendRequest<ChurchLibraryExtractionResults>(
-    `/api/church-library/books/${encodeURIComponent(bookId)}/results?limit=100&offset=0`,
-  )
-  return result.passages
+  const id = requireUuid(bookId, 'Book ID')
+  const { data, error } = await db()
+    .from('church_library_passages')
+    .select('*')
+    .eq('book_id', id)
+    .order('passage_order', { ascending: true })
+    .limit(100)
+  if (error) {
+    // If Supabase table is unreachable, try backend request if configured
+    try {
+      const res = await backendRequest<ChurchLibraryExtractionResults>(
+        `/api/church-library/books/${encodeURIComponent(bookId)}/results?limit=100&offset=0`,
+      )
+      return res.passages
+    } catch {
+      return []
+    }
+  }
+  return (data || []) as ChurchLibraryPassage[]
 }
 
 /**

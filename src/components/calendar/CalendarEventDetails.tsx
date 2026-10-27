@@ -8,20 +8,30 @@ import {
 } from '../../lib/calendar/calendarEnrichedContent'
 import { BilingualText } from '../i18n/BilingualText'
 import { ScriptureCitationList } from './ScriptureCitationList'
+import { CalendarRelatedMezmurs } from './CalendarRelatedMezmurs'
+import { getMezmursForCalendarCardSlug } from '../../lib/recommendations/calendarMezmursData'
 import styles from './CalendarEventDetails.module.css'
 
 const SECTION_TITLE_KEYS: Record<string, string> = {
   what: 'calendar.page.whatIsThisHeading',
+  history: 'calendar.page.historyHeading',
   why: 'calendar.page.whyHeading',
+  theology: 'calendar.page.theologyHeading',
+  traditions: 'calendar.page.traditionsHeading',
   important: 'calendar.page.importantHeading',
-  scripture: 'calendar.page.scriptureHeading',
   fasting: 'calendar.page.fastingHeading',
   season: 'calendar.page.seasonHeading',
+  scripture: 'calendar.page.scriptureHeading',
+  mezmurs: 'calendar.page.mezmursHeading',
+  prayers: 'calendar.page.prayersHeading',
+  sources: 'calendar.page.sourcesHeading',
 }
 
 type Props = {
   fields: EnrichedContentFields
   lang?: CalendarLocaleMode
+  /** Card slug to look up verified related Mezmurs */
+  cardSlug?: string
   /** When true, open the first section by default. */
   defaultOpenFirst?: boolean
   className?: string
@@ -29,13 +39,24 @@ type Props = {
 
 function SectionBody({
   section,
+  cardSlug,
   lang,
 }: {
   section: DetailSection
+  cardSlug?: string
   lang?: CalendarLocaleMode
 }) {
   if (section.id === 'scripture') {
     return <ScriptureCitationList raw={section.english || section.amharic} />
+  }
+  if (section.id === 'mezmurs') {
+    return (
+      <CalendarRelatedMezmurs
+        cardSlug={cardSlug}
+        fallbackRaw={section.english || section.amharic}
+        lang={lang}
+      />
+    )
   }
   return (
     <BilingualText
@@ -51,12 +72,29 @@ function SectionBody({
 export function CalendarEventDetails({
   fields,
   lang,
+  cardSlug,
   defaultOpenFirst = false,
   className,
 }: Props) {
   const t = useTranslation()
   const baseId = useId()
-  const sections = buildDetailSections(fields)
+  const baseSections = buildDetailSections(fields)
+  const sections = [...baseSections]
+
+  // Add Mezmurs section if card has verified hymns but enriched content lacked explicit text
+  if (
+    cardSlug &&
+    !sections.some((s) => s.id === 'mezmurs') &&
+    getMezmursForCalendarCardSlug(cardSlug).length > 0
+  ) {
+    sections.push({
+      id: 'mezmurs',
+      title: 'Recommended Mezmurs',
+      english: '',
+      amharic: '',
+    })
+  }
+
   const [openId, setOpenId] = useState<string | null>(
     defaultOpenFirst && sections[0] ? sections[0].id : null,
   )
@@ -92,7 +130,7 @@ export function CalendarEventDetails({
                 aria-labelledby={`${panelId}-btn`}
                 className={styles.panel}
               >
-                <SectionBody section={section} lang={lang} />
+                <SectionBody section={section} cardSlug={cardSlug} lang={lang} />
               </div>
             ) : null}
           </div>

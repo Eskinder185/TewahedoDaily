@@ -30,6 +30,7 @@ import { formatProcessingStatus } from '../../lib/cms/churchLibraryValidation'
 import { parseDocx, parseEpub, parseTxt, type ParsedDocx, type ParsedEpub } from '../../lib/cms/documentReader'
 import s from './Admin.module.css'
 import c from './ChurchLibrary.module.css'
+import { BuiltInDocumentReader } from '../../components/library/BuiltInDocumentReader'
 
 const EMPTY_NEW = { title: '', author: '', language: 'en' as const, category: '', description: '' }
 const VERIFIED_RIGHTS = new Set(['owned', 'licensed', 'public_domain', 'permission_granted'])
@@ -41,6 +42,50 @@ export function ChurchLibrary() {
   const [versions, setVersions] = useState<ChurchLibraryVersion[]>([])
   const [passages, setPassages] = useState<ChurchLibraryPassage[]>([])
   const [activeTab, setActiveTab] = useState<'details' | 'reader' | 'editor'>('details')
+  type ActiveViewerState = {
+    fileBuffer?: ArrayBuffer | null
+    storagePath?: string | null
+    fileName: string
+    fileType?: string
+    bookTitle: string
+    bookAuthor?: string | null
+    isLocalPreview?: boolean
+  } | null
+  const [activeViewer, setActiveViewer] = useState<ActiveViewerState>(null)
+
+  const openBookFileViewer = useCallback((book: ChurchLibraryBook, version?: ChurchLibraryVersion | null) => {
+    const path = version?.source_storage_path || book.storage_path
+    if (!path) {
+      setErrorRaw('No uploaded document file found for this book.')
+      return
+    }
+    const name = version?.original_file_name || path.split('/').pop() || 'document'
+    const mime = version?.mime_type || ''
+    setActiveViewer({
+      storagePath: path,
+      fileName: name,
+      fileType: mime,
+      bookTitle: book.title,
+      bookAuthor: book.author,
+      isLocalPreview: false,
+    })
+  }, [])
+
+  const openLocalFilePreview = useCallback(async (file: File, title: string, author?: string | null) => {
+    try {
+      const buffer = await file.arrayBuffer()
+      setActiveViewer({
+        fileBuffer: buffer,
+        fileName: file.name,
+        fileType: file.type,
+        bookTitle: title.trim() || file.name,
+        bookAuthor: author,
+        isLocalPreview: true,
+      })
+    } catch (err) {
+      setErrorRaw(`Could not read local file: ${errorMessage(err)}`)
+    }
+  }, [])
 
   // Search & Catalog Filter state
   const [searchQuery, setSearchQuery] = useState('')
@@ -67,18 +112,17 @@ export function ChurchLibrary() {
   const [backend, setBackend] = useState<string>('Checking processing service…')
   const [backendConnected, setBackendConnected] = useState(false)
   const [uploadProgress, setUploadProgress] = useState<ChurchLibraryUploadProgress | null>(null)
+  const [pendingRetryBookId, setPendingRetryBookId] = useState<string | null>(null)
 
   // Document Reader State
   const [readerLoading, setReaderLoading] = useState(false)
   const [readerError, setReaderError] = useState('')
   const [pdfSignedUrl, setPdfSignedUrl] = useState<string | null>(null)
   const [pdfPage, setPdfPage] = useState(1)
-  const [pdfZoom, setPdfZoom] = useState(100)
   const [parsedEpub, setParsedEpub] = useState<ParsedEpub | null>(null)
   const [epubChapterIndex, setEpubChapterIndex] = useState(0)
   const [parsedDocx, setParsedDocx] = useState<ParsedDocx | null>(null)
   const [parsedTxt, setParsedTxt] = useState<{ lines: string[]; text: string } | null>(null)
-  const [fontSizePercent, setFontSizePercent] = useState(100)
 
   // Side-by-Side Passage Editor State
   const [selectedPassageId, setSelectedPassageId] = useState<string | null>(null)
@@ -227,6 +271,21 @@ export function ChurchLibrary() {
     }
   }, [selectedBookId, selected, setError])
 
+  // Unsaved changes protection
+  const isDirty = (showNew && (newBook.title.trim().length > 0 || Boolean(newFile))) ||
+    (Boolean(activePassage) && (editedContent !== (activePassage?.content || '') || reviewerNotes !== (activePassage?.reviewer_notes || '')))
+
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (isDirty || busy || savingPassage) {
+        e.preventDefault()
+        e.returnValue = ''
+      }
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload)
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload)
+  }, [isDirty, busy, savingPassage])
+
   // Synchronize passage editor fields when activePassage changes
   useEffect(() => {
     if (activePassage) {
@@ -347,37 +406,46 @@ export function ChurchLibrary() {
       return
     }
     await run(async () => {
-      const created = await createChurchLibraryBook({
-        title: newBook.title.trim(),
-        author: newBook.author.trim() || null,
-        language: newBook.language,
-        category: newBook.category.trim() || null,
-        description: newBook.description.trim() || null,
-      })
+      let bookRecord: ChurchLibraryBook | undefined
+      if (pendingRetryBookId) {
+        bookRecord = books.find((b) => b.id === pendingRetryBookId)
+      }
+      if (!bookRecord) {
+        bookRecord = await createChurchLibraryBook({
+          title: newBook.title.trim(),
+          author: newBook.author.trim() || null,
+          language: newBook.language,
+          category: newBook.category.trim() || null,
+          description: newBook.description.trim() || null,
+        })
+      }
       try {
-        await uploadChurchLibraryVersion(created, newFile, setUploadProgress)
+        await uploadChurchLibraryVersion(bookRecord, newFile, setUploadProgress)
+        setPendingRetryBookId(null)
       } catch (cause) {
+        setPendingRetryBookId(bookRecord.id)
         setShowNew(false)
         setNewBook(EMPTY_NEW)
         setNewFile(null)
         setUploadProgress(null)
-        await load(created.id)
-        setSelectedId(created.id)
+        await load(bookRecord.id)
+        setSelectedId(bookRecord.id)
         throw new Error(
-          `The book record was saved so your work is recoverable, but the private file upload failed: ${errorMessage(cause)}. You can retry uploading the file from the Original document section below without creating a duplicate book.`,
+          `The book record was saved (${bookRecord.title}) so your work is preserved, but the private file upload failed: ${errorMessage(cause)}. Retrying will reuse this existing book record without creating duplicates.`,
         )
       }
+      setPendingRetryBookId(null)
       setNewBook(EMPTY_NEW)
       setNewFile(null)
       setShowNew(false)
-      await load(created.id)
+      await load(bookRecord.id)
       if (!backendConnected) {
-        setNotice('Book and private file uploaded. Deploy or start the processing API, then select Process content.')
+        setNotice('Book and private file uploaded.')
         return
       }
       try {
-        const result = await processChurchLibraryBook(created.id)
-        await load(created.id)
+        const result = await processChurchLibraryBook(bookRecord.id)
+        await load(bookRecord.id)
         setNotice(`Book uploaded and processed into ${result.passage_count} searchable passages.`)
       } catch (cause) {
         setError(`Book and private file were saved, but automatic processing could not start: ${errorMessage(cause)}`)
@@ -393,7 +461,7 @@ export function ChurchLibrary() {
       await load(selected.id)
       setVersions(await listChurchLibraryVersions(selected.id))
       if (!backendConnected) {
-        setNotice('Private original uploaded. Start or deploy the processing API, then select Process content.')
+        setNotice('Private original uploaded.')
         return
       }
       try {
@@ -593,10 +661,19 @@ export function ChurchLibrary() {
             </label>
           </div>
           {newFile && (
-            <p className={c.selectedFile}>
-              <strong>{newFile.name}</strong>
-              <span>{(newFile.size / 1024 / 1024).toFixed(2)} MiB</span>
-            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+              <p className={c.selectedFile} style={{ margin: 0, flex: 1 }}>
+                <strong>{newFile.name}</strong>
+                <span>{(newFile.size / 1024 / 1024).toFixed(2)} MiB</span>
+              </p>
+              <button
+                type="button"
+                className={s.secondary}
+                onClick={() => void openLocalFilePreview(newFile, newBook.title || newFile.name, newBook.author)}
+              >
+                👁️ Preview (Not yet uploaded)
+              </button>
+            </div>
           )}
           {uploadProgress && (
             <div className={c.uploadProgress} role="status" aria-live="polite">
@@ -730,6 +807,18 @@ export function ChurchLibrary() {
                   </div>
                   {isSelected && (
                     <div className={c.cardActions}>
+                      {(book.current_version_id || book.storage_path || versions.length > 0) && (
+                        <button
+                          type="button"
+                          className={c.cardActionBtn}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            openBookFileViewer(book, currentVersion)
+                          }}
+                        >
+                          👁️ View File
+                        </button>
+                      )}
                       <button
                         type="button"
                         className={c.cardActionBtn}
@@ -886,6 +975,15 @@ export function ChurchLibrary() {
                     </div>
                   )}
                   <div className={s.actions}>
+                    {(currentVersion || draft.storage_path) && (
+                      <button
+                        type="button"
+                        className={s.secondary}
+                        onClick={() => openBookFileViewer(draft, currentVersion)}
+                      >
+                        👁️ View File
+                      </button>
+                    )}
                     <button
                       className={s.primary}
                       disabled={busy || !draft.current_version_id || !backendConnected}
@@ -1059,154 +1157,18 @@ export function ChurchLibrary() {
 
             {/* TAB 2: VISUAL BOOK READER */}
             {activeTab === 'reader' && (
-              <section className={c.readerContainer} aria-label="Visual Book Reader">
-                <div className={c.readerToolbar}>
-                  <div>
-                    <h2>{draft.title}</h2>
-                    <small className={s.muted}>
-                      {currentVersion?.original_file_name || 'Original Document'} ·{' '}
-                      <span className={c.formatBadge}>{currentVersion?.mime_type.split('/')[1] || 'DOC'}</span>
-                    </small>
-                  </div>
-
-                  {/* PDF Controls */}
-                  {pdfSignedUrl && (
-                    <div className={c.readerControls}>
-                      <button type="button" disabled={pdfPage <= 1} onClick={() => setPdfPage((p) => Math.max(1, p - 1))}>
-                        ◀ Prev Page
-                      </button>
-                      <span>
-                        Page{' '}
-                        <input
-                          type="number"
-                          min={1}
-                          max={currentVersion?.page_count || 9999}
-                          value={pdfPage}
-                          onChange={(e) => setPdfPage(Number(e.target.value) || 1)}
-                          className={c.pageJumpInput}
-                        />{' '}
-                        {currentVersion?.page_count ? `of ${currentVersion.page_count}` : ''}
-                      </span>
-                      <button
-                        type="button"
-                        disabled={Boolean(currentVersion?.page_count && pdfPage >= currentVersion.page_count)}
-                        onClick={() => setPdfPage((p) => p + 1)}
-                      >
-                        Next Page ▶
-                      </button>
-                      <button type="button" onClick={() => setPdfZoom((z) => Math.max(50, z - 15))}>
-                        Zoom -
-                      </button>
-                      <span>{pdfZoom}%</span>
-                      <button type="button" onClick={() => setPdfZoom((z) => Math.min(250, z + 15))}>
-                        Zoom +
-                      </button>
-                      <a href={pdfSignedUrl} target="_blank" rel="noopener noreferrer" className={s.actions}>
-                        Open In New Tab ↗
-                      </a>
-                    </div>
-                  )}
-
-                  {/* EPUB Controls */}
-                  {parsedEpub && (
-                    <div className={c.readerControls}>
-                      <select
-                        value={epubChapterIndex}
-                        onChange={(e) => setEpubChapterIndex(Number(e.target.value))}
-                        aria-label="Select EPUB Chapter"
-                      >
-                        {parsedEpub.chapters.map((ch, idx) => (
-                          <option key={ch.id} value={idx}>
-                            {idx + 1}. {ch.title}
-                          </option>
-                        ))}
-                      </select>
-                      <button
-                        type="button"
-                        disabled={epubChapterIndex <= 0}
-                        onClick={() => setEpubChapterIndex((i) => Math.max(0, i - 1))}
-                      >
-                        ◀ Prev Chapter
-                      </button>
-                      <button
-                        type="button"
-                        disabled={epubChapterIndex >= parsedEpub.chapters.length - 1}
-                        onClick={() => setEpubChapterIndex((i) => Math.min(parsedEpub.chapters.length - 1, i + 1))}
-                      >
-                        Next Chapter ▶
-                      </button>
-                      <button type="button" onClick={() => setFontSizePercent((f) => Math.max(70, f - 10))}>
-                        A-
-                      </button>
-                      <button type="button" onClick={() => setFontSizePercent(100)}>
-                        Reset
-                      </button>
-                      <button type="button" onClick={() => setFontSizePercent((f) => Math.min(180, f + 10))}>
-                        A+
-                      </button>
-                    </div>
-                  )}
-
-                  {/* DOCX Controls */}
-                  {parsedDocx && (
-                    <div className={c.readerControls}>
-                      <span>{parsedDocx.paragraphs.length} paragraphs</span>
-                      <button type="button" onClick={() => setFontSizePercent((f) => Math.max(70, f - 10))}>
-                        A-
-                      </button>
-                      <button type="button" onClick={() => setFontSizePercent(100)}>
-                        Reset
-                      </button>
-                      <button type="button" onClick={() => setFontSizePercent((f) => Math.min(180, f + 10))}>
-                        A+
-                      </button>
-                    </div>
-                  )}
-                </div>
-
-                {readerLoading && <p className={s.notice}>Loading document content securely…</p>}
-                {readerError && <p className={s.error}>{readerError}</p>}
-
-                {/* PDF Viewer */}
-                {pdfSignedUrl && (
-                  <iframe
-                    src={`${pdfSignedUrl}#page=${pdfPage}&zoom=${pdfZoom}`}
-                    className={c.docIframe}
-                    title={`PDF viewer - ${draft.title}`}
+              <section className={c.readerContainer} aria-label="Visual Book Reader" style={{ minHeight: '650px', padding: 0 }}>
+                {currentVersion || draft.storage_path ? (
+                  <BuiltInDocumentReader
+                    storagePath={currentVersion?.source_storage_path || draft.storage_path}
+                    fileName={currentVersion?.original_file_name || (draft.storage_path ? draft.storage_path.split('/').pop() || 'document' : 'document')}
+                    fileType={currentVersion?.mime_type}
+                    bookTitle={draft.title}
+                    bookAuthor={draft.author}
+                    mode="embedded"
                   />
-                )}
-
-                {/* EPUB Viewer */}
-                {parsedEpub && parsedEpub.chapters[epubChapterIndex] && (
-                  <article
-                    className={c.chapterContent}
-                    style={{ fontSize: `${fontSizePercent}%` }}
-                    dangerouslySetInnerHTML={{ __html: parsedEpub.chapters[epubChapterIndex].html }}
-                  />
-                )}
-
-                {/* DOCX Viewer */}
-                {parsedDocx && (
-                  <article className={c.chapterContent} style={{ fontSize: `${fontSizePercent}%` }}>
-                    {parsedDocx.paragraphs.map((p, idx) => {
-                      if (p.type === 'heading1') return <h1 key={idx} className={c.docxHeading1}>{p.text}</h1>
-                      if (p.type === 'heading2') return <h2 key={idx} className={c.docxHeading2}>{p.text}</h2>
-                      if (p.type === 'heading3') return <h3 key={idx} className={c.docxHeading3}>{p.text}</h3>
-                      if (p.type === 'bullet') return <p key={idx} className={c.docxBullet}>{p.text}</p>
-                      return <p key={idx} className={c.docxParagraph}>{p.text}</p>
-                    })}
-                  </article>
-                )}
-
-                {/* TXT Viewer */}
-                {parsedTxt && (
-                  <pre className={c.txtContent} style={{ fontSize: `${fontSizePercent}%` }}>
-                    {parsedTxt.text}
-                  </pre>
-                )}
-
-                {!currentVersion && (
-                  <div className={c.empty}>
+                ) : (
+                  <div className={c.empty} style={{ padding: '4rem 1rem' }}>
                     <p>No document uploaded yet for this book. Upload a PDF, EPUB, DOCX, or TXT file.</p>
                   </div>
                 )}
@@ -1480,6 +1442,13 @@ export function ChurchLibrary() {
           </main>
         )}
       </div>
+      {activeViewer && (
+        <BuiltInDocumentReader
+          {...activeViewer}
+          mode="modal"
+          onClose={() => setActiveViewer(null)}
+        />
+      )}
     </div>
   )
 }

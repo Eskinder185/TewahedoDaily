@@ -83,10 +83,26 @@ export function parseLyricSections(
   }
 
   const blocks = lyrics.trim().split(/\r?\n\s*\r?\n+/).map((block) => block.trim()).filter(Boolean)
+  const block0Lines = blocks[0]?.split(/\r?\n/).map((line) => line.trim()).filter(Boolean) || []
+  const block1Lines = blocks[1]?.split(/\r?\n/).map((line) => line.trim()).filter(Boolean) || []
+  const block0HasHeading = SECTION_HEADING.test(block0Lines[0] || '')
+  const block1HasVerseHeading = /^(?:verse|ቁጥር)/i.test(block1Lines[0] || '')
+  const isIntroChorusWithoutHeading = !block0HasHeading && block1HasVerseHeading && blocks.length > 1
+
   return blocks.map((block, index) => {
     const lines = block.split(/\r?\n/).map((line) => line.trim()).filter(Boolean)
     const first = lines[0] || ''
     const hasHeading = SECTION_HEADING.test(first)
+
+    if (index === 0 && isIntroChorusWithoutHeading) {
+      return {
+        id: `section-${index + 1}`,
+        kind: 'chorus' as HymnSectionKind,
+        label: '',
+        lines,
+      }
+    }
+
     const label = hasHeading ? first.replace(/\s*[:.-]\s*$/, '') : `Verse ${index + 1}`
     return {
       id: `section-${index + 1}`,

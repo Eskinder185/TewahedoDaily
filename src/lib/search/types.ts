@@ -25,6 +25,7 @@ export type SiteSearchSourceType =
   | 'saint'
   | 'feast'
   | 'learn'
+  | 'church_library'
   | 'account'
   | 'other'
 

@@ -42,6 +42,12 @@ const CATALOG_TTL_MS = 5 * 60 * 1000
 let catalogCache: { at: number; docs: MezmurSearchDoc[] } | null = null
 let catalogPromise: Promise<MezmurSearchDoc[]> | null = null
 
+/** Clear the public search snapshot after a publication or unpublish operation. */
+export function invalidateMezmurSearchCatalog(): void {
+  catalogCache = null
+  catalogPromise = null
+}
+
 /** Search-only Latin normalization — does not mutate stored titles. */
 export function normalizeLatinSearchText(value: string): string {
   return value

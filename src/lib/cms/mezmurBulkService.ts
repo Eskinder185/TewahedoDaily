@@ -3,6 +3,7 @@ import { db } from './mezmurService'
 import { publicationBlockReason } from './mezmurPublicationRules'
 import { formatRecordedDate, validRecordedTimestamp } from './recordedTimestamp'
 import { formatErrorMessage } from './errorMessage'
+import { resolveMezmurPublicVisibility, type VisibilityPublicRow } from './mezmurVisibility'
 import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezmurLanguage'
 import { matchZemari, type ZemariCandidate, type ZemariMatch } from '../mezmur/zemariMatching'
 import { classifyMezmur, type MezmurClassificationResult } from '../mezmur/mezmurClassification'
@@ -75,8 +76,11 @@ export type BulkDashboard = {
 
 export type BulkMezmurRecord = {
   import_id: string
+  mezmur_id: string
   slug: string
   title: string
+  title_amharic: string | null
+  review_status: string | null
   singer_name: string | null
   singer_slug: string | null
   zemari_id: string | null
@@ -109,9 +113,17 @@ export type BulkSnapshot = {
 
 export type BulkPublishResult = {
   published: number
+  published_missing_public: number
   skipped: number
   failed: number
-  results: Array<{ import_id: string; outcome: string; reason?: string; sqlstate?: string }>
+  results: Array<{ import_id: string; outcome: string; public_visible?: boolean; reason?: string; sqlstate?: string }>
+}
+
+export type PublicVisibilityAudit = {
+  published: number
+  visible: number
+  missing: number
+  missingRecords: Array<{ import_id: string; slug: string; title: string; reason: string }>
 }
 
 export function parseBulkPublishResult(value: unknown): BulkPublishResult {
@@ -129,6 +141,7 @@ export function parseBulkPublishResult(value: unknown): BulkPublishResult {
     return [{
       import_id: importId,
       outcome,
+      ...(typeof row.public_visible === 'boolean' ? { public_visible: row.public_visible } : {}),
       ...(text(row.reason) ? { reason: text(row.reason) } : {}),
       ...(text(row.sqlstate) ? { sqlstate: text(row.sqlstate) } : {}),
     }]
@@ -137,11 +150,11 @@ export function parseBulkPublishResult(value: unknown): BulkPublishResult {
     const parsed = Number(payload[key])
     return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0
   }
-  return { published: number('published'), skipped: number('skipped'), failed: number('failed'), results }
+  return { published: number('published'), published_missing_public: number('published_missing_public'), skipped: number('skipped'), failed: number('failed'), results }
 }
 
 const MEZMUR_SELECT = [
-  'import_id', 'slug', 'title', 'singer_name', 'singer_slug', 'zemari_id', 'status', 'updated_at',
+  'import_id', 'mezmur_id', 'slug', 'title', 'title_amharic', 'review_status', 'singer_name', 'singer_slug', 'zemari_id', 'status', 'updated_at',
   'lyrics_amharic', 'lyrics_geez', 'lyrics_english', 'lyrics_oromo', 'lyrics_transliteration',
   'rights_status', 'publication_approved_at', 'publication_approved_by', 'youtube_url', 'source_url', 'primary_language',
 ].join(',')
@@ -234,6 +247,28 @@ export async function getSupabaseMezmurBulkSnapshot(): Promise<BulkSnapshot> {
   return buildBulkSnapshot({ mezmurs, categoryLinks, occasionLinks, taxonomyCategories, zemaris, aliases, jobs, suggestions })
 }
 
+/** Read-only comparison of the staff inventory with the public projection. */
+export async function auditPublishedMezmurVisibility(
+  records: BulkMezmurRecord[],
+): Promise<PublicVisibilityAudit> {
+  const publicRows = await pagedRows('mezmur_public', (from, to) =>
+    db().from('mezmur_public' as never).select('mezmur_id,slug,title,status').range(from, to),
+  )
+  const published = records.filter((row) => row.status === 'published')
+  const missingRecords = published.flatMap((row) => {
+    const visibility = resolveMezmurPublicVisibility(row, published, publicRows as VisibilityPublicRow[])
+    return visibility.visible
+      ? []
+      : [{
+          import_id: row.import_id,
+          slug: row.slug,
+          title: row.title,
+          reason: visibility.reason || 'Published import row is absent from mezmur_public.',
+        }]
+  })
+  return { published: published.length, visible: published.length - missingRecords.length, missing: missingRecords.length, missingRecords }
+}
+
 export function buildBulkSnapshot(input: {
   mezmurs: Record<string, unknown>[]
   categoryLinks: Record<string, unknown>[]
@@ -287,14 +322,13 @@ export function buildBulkSnapshot(input: {
     const lyrics = ['lyrics_amharic', 'lyrics_geez', 'lyrics_english', 'lyrics_oromo', 'lyrics_transliteration']
       .some((key) => Boolean(text(row[key])))
     const block = publicationBlockReason({
-      role: 'super_admin', rightsStatus: text(row.rights_status),
-      rightsConfirmedAt: text(row.publication_approved_at), rightsConfirmedBy: text(row.publication_approved_by),
-      youtubeUrl: text(row.youtube_url), sourceUrl: text(row.source_url), title: text(row.title),
-      slug: text(row.slug), lyricsAmharic: text(row.lyrics_amharic),
+      role: 'super_admin', title: text(row.title), slug: text(row.slug),
+      lyricsAmharic: text(row.lyrics_amharic),
     })
     const zemariMatch = matchZemari({ singerName: text(row.singer_name) || null, singerSlug: text(row.singer_slug) || null, zemariId: text(row.zemari_id) || null }, candidates)
     return {
-      import_id: text(row.import_id), slug: text(row.slug), title: text(row.title) || '(Untitled Mezmur)',
+      import_id: text(row.import_id), mezmur_id: text(row.mezmur_id), slug: text(row.slug), title: text(row.title) || '(Untitled Mezmur)',
+      title_amharic: text(row.title_amharic) || null, review_status: text(row.review_status) || null,
       singer_name: text(row.singer_name) || null, singer_slug: text(row.singer_slug) || null, zemari_id: text(row.zemari_id) || null,
       zemari_verified: Boolean(text(row.zemari_id) && zemariIds.has(text(row.zemari_id))),
       zemari_name: zemariMatch.state === 'linked' || zemariMatch.state === 'available' ? zemariMatch.canonicalName : null,
@@ -483,13 +517,27 @@ export async function linkMezmursToZemaris(
 }
 
 export async function publishEligibleMezmurs(importIds: string[]): Promise<BulkPublishResult> {
-  const aggregate: BulkPublishResult = { published: 0, skipped: 0, failed: 0, results: [] }
+  const aggregate: BulkPublishResult = { published: 0, published_missing_public: 0, skipped: 0, failed: 0, results: [] }
   for (let offset = 0; offset < importIds.length; offset += 100) {
     const { data, error } = await db().rpc('bulk_publish_mezmur_imports' as never, { p_import_ids: importIds.slice(offset, offset + 100) } as never)
-    if (error) throw new Error(formatErrorMessage(error, { operation: 'RPC public.bulk_publish_mezmur_imports(uuid[])' }))
+    if (error) {
+      const code = text((error as { code?: unknown }).code)
+      const raw = formatErrorMessage(error, { operation: 'RPC public.bulk_publish_mezmur_imports(uuid[])' })
+      if (code === 'PGRST202' || /Could not find.*bulk_publish_mezmur_imports|schema cache/i.test(raw)) {
+        throw new Error('Bulk publishing is unavailable because public.bulk_publish_mezmur_imports(uuid[]) is not installed or PostgREST schema cache is stale. Apply the reviewed publication migration and run NOTIFY pgrst, \'reload schema\'.')
+      }
+      if (code === '42501' || /permission denied|Super Admin is required/i.test(raw)) throw new Error(`Bulk publishing permission denied: ${raw}`)
+      throw new Error(raw)
+    }
     const result = parseBulkPublishResult(data)
-    aggregate.published += Number(result?.published || 0); aggregate.skipped += Number(result?.skipped || 0); aggregate.failed += Number(result?.failed || 0)
+    aggregate.published += Number(result?.published || 0); aggregate.published_missing_public += Number(result?.published_missing_public || 0); aggregate.skipped += Number(result?.skipped || 0); aggregate.failed += Number(result?.failed || 0)
     aggregate.results.push(...(result?.results || []))
+  }
+  if (aggregate.published > 0) {
+    const { invalidateHymnBrowseCaches } = await import('../publicContent/hymnBrowse')
+    const { invalidateMezmurSearchCatalog } = await import('../publicContent/mezmurSearch')
+    invalidateHymnBrowseCaches()
+    invalidateMezmurSearchCatalog()
   }
   return aggregate
 }

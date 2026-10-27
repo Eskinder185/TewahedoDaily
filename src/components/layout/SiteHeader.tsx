@@ -28,6 +28,24 @@ function getFocusableIn(container: HTMLElement | null): HTMLElement[] {
   )
 }
 
+
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return true
+    return window.matchMedia('(min-width: 768px)').matches
+  })
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return
+    const mq = window.matchMedia('(min-width: 768px)')
+    const onChange = () => setIsDesktop(mq.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
+
+  return isDesktop
+}
+
 export function SiteHeader() {
   const t = useUiLabel()
   const tt = useTranslation()
@@ -39,6 +57,7 @@ export function SiteHeader() {
   const showSignIn = !signedIn
   const showAdmin = !authLoading && signedIn && (isStaff || hasCmsRole(profile))
   const [menuOpen, setMenuOpen] = useState(false)
+  const isDesktop = useIsDesktop()
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const drawerCloseRef = useRef<HTMLButtonElement>(null)
   const drawerPanelRef = useRef<HTMLDivElement>(null)
@@ -93,7 +112,8 @@ export function SiteHeader() {
     }
 
     const mainEl = document.getElementById('main')
-    const inertTargets = [mainEl].filter(Boolean) as HTMLElement[]
+    const headerEl = document.querySelector('header[data-header]') as HTMLElement | null
+    const inertTargets = [mainEl, headerEl].filter(Boolean) as HTMLElement[]
     for (const el of inertTargets) el.setAttribute('inert', '')
 
     const prevOverflow = document.body.style.overflow
@@ -188,24 +208,27 @@ export function SiteHeader() {
                 {item.label}
               </NavLink>
             ))}
-            <NavLink
-              to="/about"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-              }
-            >
-              {t('navAbout')}
-            </NavLink>
-            <NavLink
-              to="/legal"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-              }
-            >
-              {tt('legal.title')}
-            </NavLink>
+            <div className={styles.drawerDivider} role="separator" />
+            <div className={styles.drawerSecondary}>
+              <NavLink
+                to="/about"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `${styles.drawerLink} ${styles.drawerSecondaryLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                }
+              >
+                {t('navAbout')}
+              </NavLink>
+              <NavLink
+                to="/legal"
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `${styles.drawerLink} ${styles.drawerSecondaryLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                }
+              >
+                {tt('legal.title')}
+              </NavLink>
+            </div>
             {showAccount ? (
               <>
                 <NavLink
@@ -263,7 +286,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
-          <nav className={styles.nav} aria-label={primaryNavLabel}>
+          <nav className={styles.nav} aria-label={primaryNavLabel} aria-hidden={!isDesktop}>
             <NavLink
               to="/"
               end

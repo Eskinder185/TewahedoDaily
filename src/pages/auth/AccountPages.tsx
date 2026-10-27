@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useMemo, useState, type FormEvent } from 'react'
+import { useCallback, useMemo, useState, type FormEvent } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth, hasCmsRole } from '../../lib/auth/useAuth'
 import { useAsync } from '../../lib/cms/useAsync'
 import { listFavorites } from '../../lib/userContent/favoritesService'
 import { listReadingProgress } from '../../lib/userContent/readingProgressService'
-import { getGuestRecentViewed } from '../../lib/userContent/guestStorage'
+import { getGuestRecentMezmur } from '../../lib/userContent/guestStorage'
 import { supabase } from '../../lib/supabase/client'
-import { useLocale, type AppLocale } from '../../lib/i18n/locale'
+import { useLocale } from '../../lib/i18n/locale'
 import { normalizeAppLocale } from '../../lib/i18n/localeHelpers'
 import styles from './AuthPages.module.css'
 
@@ -14,20 +14,24 @@ const PREFS_KEY = 'tewahedo:prefs:v1'
 
 type Prefs = {
   textSize: 'regular' | 'large'
+  language: 'en' | 'am' | 'both'
 }
 
 function readPrefs(): Prefs {
   try {
     const raw = localStorage.getItem(PREFS_KEY)
-    if (!raw) return { textSize: 'regular' }
+    if (!raw) return { textSize: 'regular', language: 'both' }
     const parsed = JSON.parse(raw) as Prefs
-    return { textSize: parsed.textSize === 'large' ? 'large' : 'regular' }
+    return {
+      textSize: parsed.textSize === 'large' ? 'large' : 'regular',
+      language: parsed.language === 'en' || parsed.language === 'am' ? parsed.language : 'both',
+    }
   } catch {
-    return { textSize: 'regular' }
+    return { textSize: 'regular', language: 'both' }
   }
 }
 
-function writePrefs(prefs: Prefs & { language?: AppLocale }) {
+function writePrefs(prefs: Prefs) {
   try {
     const raw = localStorage.getItem(PREFS_KEY)
     const prev = raw ? (JSON.parse(raw) as Record<string, unknown>) : {}
@@ -39,7 +43,7 @@ function writePrefs(prefs: Prefs & { language?: AppLocale }) {
 
 export function AccountHomePage() {
   const { session, profile, role, loading, isStaff, signOut, refreshProfile } = useAuth()
-  const { locale, setLocale } = useLocale()
+  const { setLocale } = useLocale()
   const [error, setError] = useState('')
   const [prefs, setPrefs] = useState<Prefs>(() => readPrefs())
   const [nameBusy, setNameBusy] = useState(false)
@@ -167,7 +171,7 @@ export function AccountHomePage() {
             onChange={(e) => {
               const next = { ...prefs, textSize: e.target.value as Prefs['textSize'] }
               setPrefs(next)
-              writePrefs({ ...next, language: locale })
+              writePrefs(next)
             }}
           >
             <option value="regular">Regular</option>
@@ -175,18 +179,21 @@ export function AccountHomePage() {
           </select>
         </label>
         <label className={styles.field}>
-          <span>Language</span>
+          <span>Preferred language</span>
           <select
             className={styles.control}
-            value={locale}
+            value={prefs.language}
             onChange={(e) => {
-              const next = normalizeAppLocale(e.target.value)
-              setLocale(next)
-              writePrefs({ ...prefs, language: next })
+              const language = e.target.value as Prefs['language']
+              const next = { ...prefs, language }
+              setPrefs(next)
+              if (language !== 'both') setLocale(normalizeAppLocale(language))
+              writePrefs(next)
             }}
           >
+            <option value="both">Amharic &amp; English</option>
             <option value="en">English</option>
-            <option value="am">አማርኛ (Amharic)</option>
+            <option value="am">Amharic</option>
           </select>
         </label>
       </div>
@@ -304,12 +311,8 @@ export function AccountPrayerProgressPage() {
 export function AccountActivityPage() {
   const { session, loading } = useAuth()
   const userId = session?.user.id
-  const [recent, setRecent] = useState(() => getGuestRecentViewed())
   const progress = useAsync(useCallback(() => listReadingProgress(userId), [userId]))
-
-  useEffect(() => {
-    setRecent(getGuestRecentViewed())
-  }, [session?.user.id])
+  const recent = getGuestRecentMezmur()
 
   const recentReading = useMemo(
     () => (progress.data?.items || []).slice(0, 12),
@@ -324,20 +327,18 @@ export function AccountActivityPage() {
         <Link to="/account">← Account</Link>
       </p>
       <h1 className={styles.title}>Activity</h1>
-      <p className={styles.lead}>
-        Recently viewed hymns, Scripture, saints, feasts, and reading progress on this device.
-      </p>
+      <p className={styles.lead}>Recently played Mezmurs and opened prayers on this device.</p>
 
       <h2 className={styles.title} style={{ fontSize: '1.25rem', marginTop: '1.5rem' }}>
-        Recently viewed
+        Recently played
       </h2>
-      {recent.length === 0 ? <p className={styles.status}>No recently viewed content yet.</p> : null}
+      {recent.length === 0 ? <p className={styles.status}>No recent Mezmur yet.</p> : null}
       <ul className={styles.list}>
         {recent.map((item) => (
-          <li key={`${item.contentType}:${item.contentSlug}`}>
-            <Link to={item.route}>
-              <span>{item.title || item.contentSlug}</span>
-              <span className={styles.listMeta}>{item.contentType}</span>
+          <li key={item.slug}>
+            <Link to={`/practice/mezmur/${item.slug}`}>
+              <span>{item.title || item.slug}</span>
+              <span className={styles.listMeta}>Mezmur</span>
             </Link>
           </li>
         ))}

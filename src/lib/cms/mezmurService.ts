@@ -15,7 +15,6 @@ import {
   mezmurStatuses,
   mezmurStatusLabel,
   normalizeMezmurStatus,
-  publicationBlockReason,
   type MezmurStatus,
 } from './mezmurPublicationRules'
 
@@ -287,7 +286,6 @@ export const editableKeys = [
   'lyrics_english',
   'lyrics_oromo',
   'transliteration',
-  'rights_status',
   'source_url',
   'source_notes',
   'contributor_credit',
@@ -326,7 +324,6 @@ export function emptyMezmur(): MezmurInput {
     lyrics_english: '',
     lyrics_oromo: '',
     transliteration: '',
-    rights_status: 'owned',
     source_url: '',
     source_notes: '',
     contributor_credit: '',
@@ -452,14 +449,23 @@ export async function listPublishedMezmur(page = 1) {
 export async function getMezmur(id: string) {
   const needle = id.trim()
   if (!needle) return null
-  // Prefer mezmur_id; also allow slug for legacy edit URLs.
+  // Prefer immutable import_id, then legacy mezmur_id, then slug for edit URLs.
+  const byImportId = await db()
+    .from(DATA as never)
+    .select(LIST_SELECT)
+    .eq('import_id', needle)
+    .limit(1)
+  if (byImportId.error) throw byImportId.error
+  let row = (byImportId.data || [])[0] as ImportMezmurRow | undefined
+  if (row) return mapImportMezmur(row)
+
   const first = await db()
     .from(DATA as never)
     .select(LIST_SELECT)
     .eq('mezmur_id', needle)
     .limit(1)
   if (first.error) throw first.error
-  let row = (first.data || [])[0] as ImportMezmurRow | undefined
+  row = (first.data || [])[0] as ImportMezmurRow | undefined
   if (!row) {
     const bySlug = await db().from(DATA as never).select(LIST_SELECT).eq('slug', needle).limit(1)
     if (bySlug.error) throw bySlug.error
@@ -568,10 +574,8 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
     lyrics_english: input.lyrics_english?.trim() || null,
     lyrics_geez: input.lyrics_geez?.trim() || null,
     lyrics_oromo: input.lyrics_oromo?.trim() || null,
-    rights_status: input.rights_status?.trim() || existing?.rights_status || 'owned',
     source_url: input.source_url?.trim() || existing?.source_url || null,
     source_notes: input.source_notes?.trim() || existing?.source_notes || null,
-    contributor_credit: input.contributor_credit?.trim() || existing?.contributor_credit || null,
     primary_language: input.language?.trim() || null,
     form: input.form || null,
     zemari_id: zemariId,
@@ -585,6 +589,13 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
   }
 }
 
+async function invalidatePublicMezmurCaches(): Promise<void> {
+  const { invalidateHymnBrowseCaches } = await import('../publicContent/hymnBrowse')
+  const { invalidateMezmurSearchCatalog } = await import('../publicContent/mezmurSearch')
+  invalidateHymnBrowseCaches()
+  invalidateMezmurSearchCatalog()
+}
+
 export async function saveMezmur(
   input: MezmurInput,
   _tags: string[],
@@ -595,20 +606,6 @@ export async function saveMezmur(
   if (requestedStatus === 'published') {
     if (!canPublishMezmur(actor.profileRole)) {
       throw new Error('An editor, admin, or super admin role is required to publish.')
-    }
-    const blockReason = publicationBlockReason({
-      role: actor.profileRole,
-      rightsStatus: input.rights_status || existing?.rights_status,
-      rightsConfirmedAt: existing?.publication_approved_at,
-      rightsConfirmedBy: existing?.publication_approved_by,
-      youtubeUrl: input.youtube_url,
-      sourceUrl: existing?.source_url,
-      title: input.title,
-      slug: input.slug,
-      lyricsAmharic: input.lyrics_amharic,
-    })
-    if (blockReason) {
-      throw new Error(blockReason)
     }
   }
   const payload = toImportPayload({ ...input, status: requestedStatus }, existing)
@@ -649,11 +646,13 @@ export async function saveMezmur(
     payload.singer_name = null
   }
   if (existing?.mezmur_id || existing?.id) {
-    const id = existing.mezmur_id || existing.id
+    if (!existing.import_id) {
+      throw new Error('This Mezmur has no stable import identifier. Apply the UUID identity migration, reload, and retry.')
+    }
     let { data, error } = await db()
       .from(DATA as never)
       .update(payload as never)
-      .eq('mezmur_id', id)
+      .eq('import_id', existing.import_id)
       .select(LIST_SELECT)
       .limit(1)
     if (error && /zemari_id/i.test(error.message || '') && error.code !== '42501') {
@@ -661,26 +660,19 @@ export async function saveMezmur(
       const retry = await db()
         .from(DATA as never)
         .update(withoutZemari as never)
-        .eq('mezmur_id', id)
+        .eq('import_id', existing.import_id)
         .select(LIST_SELECT.replace(', zemari_id', ''))
         .limit(1)
       error = retry.error
       data = retry.data
     }
-    if (error) throw mapStaffWriteError('PATCH public.mezmur_data_import by mezmur_id', error)
-    let row = (data || [])[0] as ImportMezmurRow | undefined
-    if (!row && existing.slug) {
-      const bySlug = await db()
-        .from(DATA as never)
-        .update(payload as never)
-        .eq('slug', existing.slug)
-        .select(LIST_SELECT)
-        .limit(1)
-      if (bySlug.error) throw mapStaffWriteError('PATCH public.mezmur_data_import by slug', bySlug.error)
-      row = (bySlug.data || [])[0] as ImportMezmurRow | undefined
-    }
+    if (error) throw mapStaffWriteError('PATCH public.mezmur_data_import by import_id', error)
+    const row = (data || [])[0] as ImportMezmurRow | undefined
     if (!row) throw new Error('No saved record was returned.')
     const saved = mapImportMezmur(row)
+    if (existing?.status === 'published' && saved.status !== 'published') {
+      await invalidatePublicMezmurCaches()
+    }
     return isPublicationRequest ? publishImportedMezmur(saved) : saved
   }
   if (!payload.created_at) payload.created_at = new Date().toISOString()
@@ -697,48 +689,46 @@ export async function saveMezmur(
 }
 
 export async function publishImportedMezmur(row: Mezmur): Promise<Mezmur> {
-  const actor = await requireCmsStaffSession('Mezmur publication preflight')
-  const blockReason = publicationBlockReason({
-    role: actor.profileRole,
-    rightsStatus: row.rights_status,
-    rightsConfirmedAt: row.publication_approved_at,
-    rightsConfirmedBy: row.publication_approved_by,
-    youtubeUrl: row.youtube_url,
-    sourceUrl: row.source_url,
-    title: row.title,
-    slug: row.slug,
-    lyricsAmharic: row.lyrics_amharic,
-  })
-  if (blockReason) {
-    throw new Error(blockReason)
+  await requireCmsStaffSession('Mezmur publication preflight')
+  if (!row.import_id) {
+    throw new Error('This Mezmur has no stable import identifier. Apply the UUID identity migration, reload, and retry.')
   }
-  const { error } = await db().rpc('publish_mezmur_import' as never, {
-    p_slug: row.slug,
+  const publishParams = {
+    p_import_id: row.import_id,
     p_expected_updated_at: row.updated_at,
-  } as never)
+  } as never
+  const { data: publicationData, error } = await db().rpc('publish_mezmur_import' as never, publishParams)
   if (error) {
     if (
       error.code === 'PGRST202' ||
       /Could not find (?:the )?function.*publish_mezmur_import|schema cache/i.test(error.message || '')
     ) {
       throw new Error(
-        'Your changes were saved as a draft without publishing. The Mezmur publication database function is not available yet.',
+        'Your changes were saved as a draft without publishing. The UUID publication RPC public.publish_mezmur_import(uuid,text) is not installed or PostgREST has not reloaded its schema. Have an administrator apply the reviewed publication migration, then run NOTIFY pgrst, \'reload schema\'.',
       )
     }
-    if (/rights_status|rights basis|publication rights|media-only|external_only/i.test(error.message || '')) {
-      throw new Error(`Your changes were saved as a draft without publishing. ${error.message}`)
+    if (error.code === '42501' || /permission denied|role is required|authentication required/i.test(error.message || '')) {
+      throw new Error(`Your changes were saved as a draft without publishing. ${error.message || 'Your staff session is not authorized.'}`)
     }
-    if (/Editorial approval is required|review_status must be approved/i.test(error.message || '')) {
-      throw new Error(
-        'Your changes were saved as a draft without publishing. This Supabase project is still using the obsolete approval-gated publication function. Apply migration 20261024180000_mezmur_two_state_publication_final.sql, then retry.',
-      )
+    if (error.code === 'P0002' || /Expected one Mezmur|duplicate|ambiguous/i.test(error.message || '')) {
+      throw new Error(`Your changes were saved as a draft without publishing. ${error.message || 'The selected Mezmur identity is ambiguous.'}`)
+    }
+    if (error.code === '23514' || /required to publish|validation/i.test(error.message || '')) {
+      throw new Error(`Your changes were saved as a draft without publishing. ${error.message || 'The Mezmur does not meet publication requirements.'}`)
     }
     throw mapStaffWriteError('RPC public.publish_mezmur_import', error)
   }
-  const published = await getMezmur(row.mezmur_id || row.slug)
+  const publication = publicationData as Record<string, unknown> | null
+  if (publication?.public_visible === false) {
+    throw new Error(
+      `Publication succeeded, but public visibility could not be confirmed: ${String(publication.visibility_reason || 'the row is absent from mezmur_public')}`,
+    )
+  }
+  const published = await getMezmur(row.import_id)
   if (!published || published.status !== 'published') {
     throw new Error('Publication completed without returning a published record. Refresh before retrying.')
   }
+  await invalidatePublicMezmurCaches()
   return published
 }
 
