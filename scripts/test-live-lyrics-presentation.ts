@@ -199,8 +199,9 @@ const translitOnlyHymn = {
 
 // 11. Fullscreen behavior
 {
-  const tsx = readFileSync(resolve('src/components/hymns/HymnLyricsExperience.tsx'), 'utf8')
-  assert(tsx.includes('toggleFullscreen'), 'Missing toggleFullscreen handler')
+  // Presentation moved to the lazily loaded "Present Mezmur" view.
+  const tsx = readFileSync(resolve('src/components/hymns/presentation/MezmurPresentation.tsx'), 'utf8')
+  assert(tsx.includes('enterFullscreen'), 'Missing fullscreen handler')
   assert(tsx.includes('document.fullscreenElement'), 'Missing fullscreen state check')
   assert(tsx.includes('requestFullscreen'), 'Missing requestFullscreen call')
   console.log('✓ 11. Fullscreen behavior implemented')
@@ -257,22 +258,20 @@ const translitOnlyHymn = {
 
 // 16. Desktop and mobile typography
 {
-  const css = readFileSync(resolve('src/components/hymns/HymnLyricsExperience.module.css'), 'utf8')
-  assert(css.includes('.liveBothContainer'), 'Missing .liveBothContainer')
-  assert(css.includes('.liveOrigText'), 'Missing .liveOrigText')
-  assert(css.includes('.liveTranslitText'), 'Missing .liveTranslitText')
-  assert(css.includes('font-family: \'Noto Sans Ethiopic\''), 'Missing Ethiopic font family')
-  assert(css.includes('@media (max-width: 760px)'), 'Missing mobile breakpoint')
-  assert(css.includes('--live-font-size'), 'Missing live font size variable')
+  const css = readFileSync(resolve('src/components/hymns/presentation/MezmurPresentation.module.css'), 'utf8')
+  assert(css.includes('.primary'), 'Missing primary (original) line style')
+  assert(css.includes('.secondary'), 'Missing secondary (transliteration) line style')
+  assert(css.includes("font-family: 'Noto Sans Ethiopic'"), 'Missing Ethiopic font family')
+  assert(css.includes('@media (max-aspect-ratio: 4/3)'), 'Missing portrait/mobile layout')
+  assert(css.includes('--p-size'), 'Missing presentation font size variable')
   console.log('✓ 16. Desktop and mobile typography configured with responsive scales')
 }
 
 // 17. Dark-mode contrast
 {
-  const css = readFileSync(resolve('src/components/hymns/HymnLyricsExperience.module.css'), 'utf8')
-  assert(css.includes('.presentationDark'), 'Missing presentationDark')
-  assert(css.includes('background: #06111d'), 'Dark mode must use dark background')
-  assert(css.includes('color: #fff'), 'Dark mode must use high-contrast white text')
+  const themes = readFileSync(resolve('src/lib/mezmur/presentationThemes.ts'), 'utf8')
+  assert(themes.includes("background: '#06111D'"), 'Dark theme must use a dark background')
+  assert(themes.includes("text: '#FFFFFF'"), 'Dark theme must use high-contrast white text')
   console.log('✓ 17. Dark-mode contrast meets accessibility requirements')
 }
 

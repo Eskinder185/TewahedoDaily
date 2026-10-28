@@ -786,6 +786,25 @@ export async function getHymnSection(
   return { ...mapped, mezmurCount: counts.get(mapped.slug) || 0 }
 }
 
+/**
+ * Read every row of a query, 1,000 at a time. Supabase caps a single response
+ * at 1,000 rows regardless of `.limit()`, so a single large `.limit()` silently
+ * truncated counts and section lists once the catalog passed 1,000 Mezmurs.
+ */
+type RangeQuery<T> = { range: (from: number, to: number) => PromiseLike<{ data: unknown; error: unknown }> } & { __row?: T }
+async function selectAllRows<T>(build: () => RangeQuery<T>): Promise<{ data: T[]; error: unknown }> {
+  let firstError: unknown = null
+  const data = await collectPagedRows<T>(async (from, to) => {
+    const { data: page, error } = await build().range(from, to)
+    if (error) {
+      firstError = firstError || error
+      return []
+    }
+    return (page || []) as T[]
+  }, { pageSize: 1000 })
+  return { data, error: firstError }
+}
+
 async function fetchLinksForSection(
   _collectionSlug: string,
   sectionSlug: string,
@@ -795,31 +814,26 @@ async function fetchLinksForSection(
 
   const { cats, occs } = getCandidateTaxonomySlugs(sectionSlug, section)
 
+  const db = supabase
   const promises: PromiseLike<unknown>[] = [
-    supabase
-      .from(T.links as never)
-      .select('section_slug, mezmur_slug, sort_order')
-      .eq('section_slug', sectionSlug)
-      .limit(5000),
+    selectAllRows<LinkImportRow>(() =>
+      db.from(T.links as never).select('section_slug, mezmur_slug, sort_order').eq('section_slug', sectionSlug) as never,
+    ),
   ]
 
   if (occs.length > 0) {
     promises.push(
-      supabase
-        .from(T.occasions as never)
-        .select('occasion_slug, mezmur_import_id, mezmur_slug')
-        .in('occasion_slug', occs)
-        .limit(5000),
+      selectAllRows<LinkImportRow>(() =>
+        db.from(T.occasions as never).select('occasion_slug, mezmur_import_id, mezmur_slug').in('occasion_slug', occs) as never,
+      ),
     )
   }
 
   if (cats.length > 0) {
     promises.push(
-      supabase
-        .from(T.categories as never)
-        .select('category_slug, mezmur_import_id, mezmur_slug')
-        .in('category_slug', cats)
-        .limit(5000),
+      selectAllRows<LinkImportRow>(() =>
+        db.from(T.categories as never).select('category_slug, mezmur_import_id, mezmur_slug').in('category_slug', cats) as never,
+      ),
     )
   }
 
@@ -901,18 +915,13 @@ async function sectionCountsForCollection(
   if (!supabase || !sections.length) return map
 
   // Query published Mezmurs in active language (mezmur_public already filters deleted_at is null)
-  let pubQuery = supabase
-    .from(T.data as never)
-    .select('mezmur_id, slug, primary_language, status')
-    .eq('status', 'published')
-    .limit(50000)
-
+  const db = supabase
   const langFilter = language && language !== 'all' ? language : null
-  if (langFilter) {
-    pubQuery = pubQuery.in('primary_language', mezmurLanguageAliases(langFilter))
-  }
-
-  const { data: pubData, error: pubErr } = await pubQuery
+  const { data: pubData, error: pubErr } = await selectAllRows<DataImportRow>(() => {
+    let q = db.from(T.data as never).select('mezmur_id, slug, primary_language, status').eq('status', 'published')
+    if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
+    return q as never
+  })
   if (pubErr) {
     logSchemaError('sectionCountsForCollection published mezmurs', pubErr)
     return map
@@ -1004,18 +1013,16 @@ async function collectionCountsFromLinks(
     }
 
     // Query published Mezmurs in active language (mezmur_public already filters deleted_at is null)
-    let query = supabase
-      .from(T.data as never)
-      .select('mezmur_id, slug, primary_language, singer_name, zemari_id, singer_slug, status')
-      .eq('status', 'published')
-      .limit(50000)
-
+    const db = supabase
     const langFilter = language && language !== 'all' ? language : null
-    if (langFilter) {
-      query = query.in('primary_language', mezmurLanguageAliases(langFilter))
-    }
-
-    const { data: pubData, error: pubErr } = await query
+    const { data: pubData, error: pubErr } = await selectAllRows<DataImportRow>(() => {
+      let q = db
+        .from(T.data as never)
+        .select('mezmur_id, slug, primary_language, singer_name, zemari_id, singer_slug, status')
+        .eq('status', 'published')
+      if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
+      return q as never
+    })
     if (pubErr) {
       logSchemaError('collectionCountsFromLinks published mezmurs', pubErr)
       return map
@@ -1405,17 +1412,12 @@ export async function getHymnSingers(language?: MezmurLanguageFilter): Promise<H
 
   const countByZemari = new Map<string, number>()
   const langFilter = language && language !== 'all' ? language : null
-  let singerQuery = supabase
-    .from(T.data as never)
-    .select('zemari_id, singer_slug, status, primary_language')
-    .eq('status', 'published')
-    .limit(50000)
-
-  if (langFilter) {
-    singerQuery = singerQuery.in('primary_language', mezmurLanguageAliases(langFilter))
-  }
-
-  const linked = await singerQuery
+  const db = supabase
+  const linked = await selectAllRows<{ zemari_id?: string; singer_slug?: string; status?: string }>(() => {
+    let q = db.from(T.data as never).select('zemari_id, singer_slug, status, primary_language').eq('status', 'published')
+    if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
+    return q as never
+  })
   if (!linked.error) {
     for (const row of (linked.data || []) as Array<{ zemari_id?: string; singer_slug?: string; status?: string }>) {
       if (!isPublishedStatus(row.status)) continue
@@ -1505,11 +1507,10 @@ export async function getZemariPublicBySlug(slug: string): Promise<HymnBrowseCar
   const id = txt(row.id)
   let mezmurCount = num(row.published_mezmur_count)
   if (mezmurCount <= 0 && id) {
-    const linked = await supabase
-      .from(T.data as never)
-      .select('status')
-      .eq('zemari_id', id)
-      .limit(5000)
+    const db = supabase
+    const linked = await selectAllRows<{ status?: string }>(() =>
+      db.from(T.data as never).select('status').eq('zemari_id', id) as never,
+    )
     if (!linked.error) {
       mezmurCount = ((linked.data || []) as Array<{ status?: string }>).filter((r) =>
         isPublishedStatus(r.status),

@@ -40,6 +40,8 @@ const fake = (n: number, lang = 'amharic'): Row => ({
 })
 const mezmurs: Row[] = Array.from({ length: 14 }, (_, i) => fake(i + 1))
 mezmurs.push({ ...fake(99), status: 'draft' }) // must never be counted
+// 1,200 published English Mezmurs: more than one 1,000-row response.
+for (let n = 1000; n < 2200; n++) mezmurs.push(fake(n, 'english'))
 
 const catLinks: Row[] = []
 const occLinks: Row[] = []
@@ -83,8 +85,9 @@ function applyFilters(rows: Row[], params: URLSearchParams): Row[] {
     }
   }
   const offset = Number(params.get('offset') || 0)
-  const limit = params.get('limit') ? Number(params.get('limit')) : undefined
-  return out.slice(offset, limit != null ? offset + limit : undefined)
+  // Like Supabase, never return more than 1,000 rows per request.
+  const limit = Math.min(1000, params.get('limit') ? Number(params.get('limit')) : 1000)
+  return out.slice(offset, offset + limit)
 }
 
 const server = http.createServer((req, res) => {
@@ -99,7 +102,7 @@ const server = http.createServer((req, res) => {
   }
   let data = applyFilters(rows, url.searchParams)
   const range = /^(\d+)-(\d+)$/.exec(String(req.headers.range || ''))
-  if (range) data = data.slice(Number(range[1]), Number(range[2]) + 1)
+  if (range) data = data.slice(Number(range[1]), Math.min(Number(range[2]) + 1, Number(range[1]) + 1000))
   res.end(JSON.stringify(data))
 })
 
@@ -185,9 +188,14 @@ await test('unknown section slugs still return nothing (no catch-all fallback)',
   assert.equal(await browse.getHymnSection('jesus-christ', 'not-a-section'), null)
   assert.equal(await browse.getHymnSection('angels-saints', 'christ-salvation'), null)
 })
+await test('collection counts are not truncated at 1,000 rows (English Mezmur = 1,200)', async () => {
+  const english = (await browse.getHymnCollections()).find((c) => c.slug === 'english-mezmur')
+  assert.ok(english, 'english-mezmur collection missing')
+  assert.equal(english.mezmurCount, 1200)
+})
 await test('mock data was read, never written', async () => {
-  assert.equal(mezmurs.length, 15)
-  assert.equal(mezmurs.filter((m) => m.status === 'published').length, 14)
+  assert.equal(mezmurs.length, 1215)
+  assert.equal(mezmurs.filter((m) => m.status === 'published').length, 1214)
 })
 
 server.close()
