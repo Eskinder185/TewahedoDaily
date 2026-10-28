@@ -258,10 +258,14 @@ export function SearchBuddy() {
       .then((response) => {
         if (requestId !== websiteRequestRef.current) return
         if (response.failed) {
+          const failedNames = response.sources.filter((source) => source.status === 'failed').map((source) => source.name)
+          const notice = failedNames.length === 1 && failedNames[0] === 'bible'
+            ? 'Bible search is temporarily unavailable. Please try again.'
+            : 'Search is temporarily unavailable. Please try again.'
           setWebsiteOutcome({
             kind: 'error',
             query,
-            notice: t('searchBuddy.website.catalogFailed'),
+            notice,
             response,
           })
           return
@@ -476,18 +480,18 @@ export function SearchBuddy() {
                   </p>
                 ) : null}
                 <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', margin: '0.75rem 0 1rem' }} role="tablist" aria-label="Search domains">
-                  {[
+                  {([
                     ['all', 'All'],
                     ['bible', 'Bible'],
                     ['mezmur', 'Mezmurs'],
                     ['prayer', 'Prayers'],
                     ['calendar', 'Calendar'],
                     ['library', 'Church Library'],
-                  ].map(([dom, label]) => (
+                  ] as const).map(([dom, label]) => (
                     <button
                       key={dom}
                       type="button"
-                      onClick={() => setSelectedDomain(dom as any)}
+                      onClick={() => setSelectedDomain(dom)}
                       style={{
                         background: selectedDomain === dom ? 'var(--color-primary, #1e3a8a)' : 'rgba(255, 255, 255, 0.08)',
                         color: selectedDomain === dom ? '#ffffff' : 'inherit',

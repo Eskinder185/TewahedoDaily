@@ -20,6 +20,12 @@ import { isMezmurLanguageFilter, normalizeMezmurLanguage, mezmurLanguageLabel, t
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { ZemariSupportLinks } from '../components/practice/ZemariSupportLinks'
 
+const ZEMARIS_PER_PAGE = 8
+
+function normalizeZemariSearch(value: string): string {
+  return value.normalize('NFKC').toLocaleLowerCase().replace(/\s+/g, ' ').trim()
+}
+
 function CardArt({ item }: { item: MezmurCard }) {
   const [src, setSrc] = useState('')
   const [failed, setFailed] = useState(false)
@@ -96,6 +102,8 @@ export function PublicHymnCollectionPage({
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
   const [withinQ, setWithinQ] = useState(params.get('q') || '')
+  const [zemariQuery, setZemariQuery] = useState('')
+  const [visibleZemaris, setVisibleZemaris] = useState(ZEMARIS_PER_PAGE)
   const t = useTranslation()
   const { locale } = useLocale()
   const detailHeading = hymnSourceHeading(group?.name, group?.nameAmharic, locale)
@@ -167,6 +175,19 @@ export function PublicHymnCollectionPage({
     next.set('page', String(page))
     return next.toString()
   }, [detailKind, group, isIndex, page, withinQ, language])
+
+  const filteredZemariCards = useMemo(() => {
+    if (kind !== 'singers') return allCards
+    const query = normalizeZemariSearch(zemariQuery)
+    if (!query) return allCards
+    return allCards.filter((card) =>
+      normalizeZemariSearch(`${card.name} ${card.nameAmharic || ''} ${card.slug}`).includes(query),
+    )
+  }, [allCards, kind, zemariQuery])
+
+  useEffect(() => {
+    setVisibleZemaris(ZEMARIS_PER_PAGE)
+  }, [zemariQuery, allCards.length, kind])
 
   useEffect(() => {
     if (isIndex || !group) return
@@ -315,6 +336,18 @@ export function PublicHymnCollectionPage({
           </p>
           <h1 className={s.title}>{title}</h1>
         </header>
+        {kind === 'singers' ? (
+          <label className={s.browseSearch}>
+            <span className={s.srOnly}>Search Zemaris</span>
+            <input
+              type="search"
+              value={zemariQuery}
+              onChange={(event) => setZemariQuery(event.target.value)}
+              placeholder="Search Zemaris by name... / ዘማሪ ፈልግ..."
+              autoComplete="off"
+            />
+          </label>
+        ) : null}
         {loading ? <p className={s.status}>{t('practice.loadingHymns')}</p> : null}
         {error ? (
           <p className={s.status} role="alert">
@@ -327,11 +360,21 @@ export function PublicHymnCollectionPage({
             <Link to="/hymns">{t('practice.backToHymns')}</Link>
           </p>
         ) : null}
+        {!loading && !error && kind === 'singers' && filteredZemariCards.length === 0 ? (
+          <p className={s.browseEmpty}>No Zemaris match that search.</p>
+        ) : null}
         <div className={s.browseGrid}>
-          {allCards.map((card) => (
+          {(kind === 'singers' ? filteredZemariCards.slice(0, visibleZemaris) : allCards).map((card) => (
             <HymnBrowseCardView key={card.id} card={{ ...card, href: language ? `${card.href}${card.href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}` : card.href }} />
           ))}
         </div>
+        {kind === 'singers' && visibleZemaris < filteredZemariCards.length ? (
+          <div className={s.browseMore}>
+            <button type="button" onClick={() => setVisibleZemaris((count) => count + ZEMARIS_PER_PAGE)}>
+              Show More Zemaris
+            </button>
+          </div>
+        ) : null}
         {!loading && !error && kind === 'singers' && allCards.length > 0 && allCards.length < 4 ? (
           <p className={s.browseEmpty}>{t('practice.zemariGrowing')}</p>
         ) : null}

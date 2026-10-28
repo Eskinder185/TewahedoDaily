@@ -1,4 +1,4 @@
-import { useEffect, useId, useMemo, useRef, useState, type FormEvent } from 'react'
+import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import {
   displayBookName,
@@ -59,6 +59,25 @@ function shouldSearchImmediately(query: string): boolean {
 type Props = {
   /** Canonical catalog books for instant local book-name matches. */
   catalogBooks?: CanonicalBook[]
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+/**
+ * Search excerpts come directly from the Bible dataset. This only adds a
+ * visual marker around the literal query; it never rewrites verse text.
+ */
+function highlightExcerpt(text: string, query: string): ReactNode {
+  const term = query.trim()
+  if (!term || term.length < 2) return text
+  const matcher = new RegExp(`(${escapeRegExp(term)})`, 'giu')
+  const parts = text.split(matcher)
+  if (parts.length === 1) return text
+  return parts.map((part, index) =>
+    index % 2 === 1 ? <mark key={`${part}-${index}`} className={styles.match}>{part}</mark> : part,
+  )
 }
 
 export function BibleSearchBar({ catalogBooks = [] }: Props) {
@@ -307,7 +326,7 @@ export function BibleSearchBar({ catalogBooks = [] }: Props) {
                     ) : null}
                     {result.excerpt ? (
                       <p className={styles.resultExcerpt} lang={ethiopic ? 'am' : undefined}>
-                        {result.excerpt}
+                        {highlightExcerpt(result.excerpt, query)}
                       </p>
                     ) : null}
                   </div>

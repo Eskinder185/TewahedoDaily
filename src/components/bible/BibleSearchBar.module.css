@@ -187,6 +187,13 @@
   overflow: hidden;
 }
 
+.match {
+  padding: 0 0.08em;
+  border-radius: 0.15em;
+  background: color-mix(in srgb, var(--color-gold) 38%, transparent);
+  color: inherit;
+}
+
 .resultOpen {
   flex: 0 0 auto;
   margin-top: 0.15rem;

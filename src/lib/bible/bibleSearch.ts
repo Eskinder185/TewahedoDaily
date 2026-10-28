@@ -924,7 +924,10 @@ export async function searchBibleText(
       title: `${bookName} ${chapter.chapter_number}:${row.verse_number}`,
       titleAmharic: book.name_am || '',
       description: editionLabel,
-      route: `/bible/${book.slug}/${ordinal}`,
+      // Keep the exact verse identity in the URL. BiblePage already honours
+      // this hash after the chapter has loaded, so Back/Forward retain the
+      // reader position without adding another route shape.
+      route: `/bible/${book.slug}/${ordinal}?edition=${code}#verse-${row.verse_number}`,
       imagePath: null,
       score: 0.015,
       matchKind: 'keyword',

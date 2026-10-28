@@ -757,6 +757,39 @@
   gap: 1rem;
 }
 
+.browseSearch {
+  display: block;
+  max-width: 38rem;
+  margin: 0 0 1rem;
+}
+
+.browseSearch input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.65rem 0.8rem;
+  color: var(--color-text);
+  background: var(--color-bg-card, transparent);
+  border: 1px solid var(--color-border);
+  border-radius: 0.6rem;
+}
+
+.browseMore {
+  display: flex;
+  justify-content: center;
+  margin: 1.25rem 0 0;
+}
+
+.browseMore button {
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  color: var(--color-accent-strong, var(--color-accent));
+  background: transparent;
+  border: 1px solid currentColor;
+  border-radius: 0.55rem;
+  cursor: pointer;
+}
+
 .browseEmpty,
 .status,
 .hint {

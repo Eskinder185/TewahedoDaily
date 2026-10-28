@@ -49,9 +49,13 @@ function FailedCatalogs({ sources }: { sources: SiteSourceReport[] }) {
   const t = useTranslation()
   const failed = sources.filter((source) => source.status === 'failed')
   if (!failed.length) return null
+  const labels = failed.map((source) => sourceLabel(source.name, t))
+  const message = labels.length === 1
+    ? `${labels[0]} search is temporarily unavailable. Other available results are shown below.`
+    : 'Some search catalogs are temporarily unavailable. Other available results are shown below.'
   return (
     <div role="alert">
-      <p className={styles.message}>{t('searchBuddy.website.catalogFailed')}</p>
+      <p className={styles.message}>{message}</p>
       <ul className={styles.failureList}>
         {failed.map((source) => (
           <li key={source.name}>{sourceLabel(source.name, t)}</li>

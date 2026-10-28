@@ -51,10 +51,11 @@ export function SiteHeader() {
   const tt = useTranslation()
   const location = useLocation()
   const { session, loading: authLoading, isStaff, profile } = useAuth()
-  // Guest-first: show Sign in immediately; swap to Account once session is known.
+  // Account is the consistent entry point on every viewport. The Account page
+  // itself presents the existing sign-in experience to guests.
   const signedIn = Boolean(session)
-  const showAccount = signedIn
-  const showSignIn = !signedIn
+  const showAccount = true
+  const showSignIn = false
   const showAdmin = !authLoading && signedIn && (isStaff || hasCmsRole(profile))
   const [menuOpen, setMenuOpen] = useState(false)
   const isDesktop = useIsDesktop()
@@ -89,10 +90,6 @@ export function SiteHeader() {
       desc: t('navModeKeepDayDesc'),
     },
   ]
-
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [location.pathname])
 
   useEffect(() => {
     if (!menuOpen) return

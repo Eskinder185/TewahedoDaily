@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase/client'
 import { useTranslation } from '../i18n'
 import type { PublicBook } from './PublicChurchLibrary'
@@ -25,6 +25,8 @@ export type ReaderPassage = {
 
 export function ChurchLibraryReader() {
   const { bookId } = useParams<{ bookId: string }>()
+  const [searchParams] = useSearchParams()
+  const targetPassageId = searchParams.get('passage')
   const t = useTranslation()
 
   const [book, setBook] = useState<PublicBook | null>(null)
@@ -64,20 +66,21 @@ export function ChurchLibraryReader() {
 
       try {
         // 1. Fetch book metadata
-        let bookResult = await client
+        const bookResult = await client
           .from('church_library_books')
           .select('id, title, title_amharic, author, language, category, description, cover_storage_path, storage_path, current_version_id, processing_status, public_retrieval_enabled')
           .eq('id', bookId as string)
           .single()
 
-        if (bookResult.error?.code === '42703' || bookResult.error?.code === 'PGRST204') {
-          bookResult = await client
+        const fallbackBookResult = bookResult.error?.code === '42703' || bookResult.error?.code === 'PGRST204'
+          ? await client
             .from('church_library_books')
             .select('id, title, author, language, category, description, cover_storage_path, storage_path, current_version_id, processing_status, public_retrieval_enabled')
             .eq('id', bookId as string)
             .single()
-        }
-        const { data: bookData, error: bookErr } = bookResult
+          : null
+        const bookData = fallbackBookResult?.data || bookResult.data
+        const bookErr = fallbackBookResult?.error || bookResult.error
 
         if (bookErr || !bookData) {
           throw new Error('Book not found or not published for public reading.')
@@ -98,16 +101,16 @@ export function ChurchLibraryReader() {
           .order('passage_order', { ascending: true })
 
         // 4. Resolve original document path
-        let resolvedPath: string | null = (bookData as any).storage_path || null
+        let resolvedPath: string | null = bookData.storage_path || null
         let resolvedName = bookData.title || 'document'
         let resolvedType: string | undefined = undefined
 
-        if ((bookData as any).current_version_id) {
+        if (bookData.current_version_id) {
           try {
             const { data: versionData } = await client
               .from('church_library_book_versions')
               .select('source_storage_path, original_file_name, mime_type')
-              .eq('id', (bookData as any).current_version_id)
+              .eq('id', bookData.current_version_id)
               .maybeSingle()
 
             if (versionData?.source_storage_path) {
@@ -129,7 +132,9 @@ export function ChurchLibraryReader() {
           setDocType(resolvedType)
 
           // If original document exists, default to document mode, otherwise passages
-          if (resolvedPath) {
+          if (targetPassageId) {
+            setReaderMode('passages')
+          } else if (resolvedPath) {
             setReaderMode('document')
           } else {
             setReaderMode('passages')
@@ -152,7 +157,15 @@ export function ChurchLibraryReader() {
     return () => {
       cancelled = true
     }
-  }, [bookId])
+  }, [bookId, targetPassageId])
+
+  useEffect(() => {
+    if (!targetPassageId || !passages.some((passage) => passage.id === targetPassageId)) return
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(`passage-${targetPassageId}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [targetPassageId, passages])
 
   // Group passages by section
   const sectionPassageMap = useMemo(() => {
@@ -438,7 +451,7 @@ export function ChurchLibraryReader() {
                   {passages.map((p) => {
                     const isMatch = inBookSearch.trim() && matchPassageIds.has(p.id)
                     return (
-                      <article key={p.id} className={styles.passageBlock}>
+                      <article key={p.id} id={`passage-${p.id}`} className={styles.passageBlock}>
                         <p className={`${styles.passageText} ${isMatch ? styles.highlight : ''}`}>
                           {p.content}
                         </p>
@@ -470,7 +483,7 @@ export function ChurchLibraryReader() {
                           secPassages.map((p) => {
                             const isMatch = inBookSearch.trim() && matchPassageIds.has(p.id)
                             return (
-                              <article key={p.id} className={styles.passageBlock}>
+                              <article key={p.id} id={`passage-${p.id}`} className={styles.passageBlock}>
                                 <p className={`${styles.passageText} ${isMatch ? styles.highlight : ''}`}>
                                   {p.content}
                                 </p>

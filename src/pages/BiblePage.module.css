@@ -281,6 +281,25 @@ a.bookCard:hover { border-color: var(--color-gold); }
   background: rgba(0, 0, 0, 0.025);
 }
 
+/* A Bible search result links to #verse-N. Keep the destination obvious
+   without changing the saved personal highlight state. */
+.alignedVerseRow:target,
+.verses li:target {
+  background: color-mix(in srgb, var(--color-gold) 26%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-gold) 48%, transparent);
+  animation: verseSearchTarget 2.6s ease-out;
+}
+
+@keyframes verseSearchTarget {
+  0%, 65% { background: color-mix(in srgb, var(--color-gold) 42%, transparent); }
+  100% { background: color-mix(in srgb, var(--color-gold) 26%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alignedVerseRow:target,
+  .verses li:target { animation: none; }
+}
+
 .highlightGold {
   background: rgba(255, 223, 100, 0.35) !important;
 }
