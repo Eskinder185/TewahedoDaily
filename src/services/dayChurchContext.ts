@@ -468,7 +468,7 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
       href: liturgySummary?.openHref || '/pray/divine-liturgy',
     },
   ]
-  practiceLinks.push({ label: 'Explore Mezmur Library', href: '/practice' })
+  practiceLinks.push({ label: 'Explore Mezmur Library', href: '/hymns' })
   practiceLinks.push({
     label: synaxariumDaySlug ? 'View full Synaxarium' : 'Browse Synaxarium',
     href: synaxariumDaySlug ? `/pray/synaxarium/${synaxariumDaySlug}` : '/pray/synaxarium',

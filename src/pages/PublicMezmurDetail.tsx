@@ -42,7 +42,7 @@ export function PublicMezmurDetail() {
           <h1 className={s.title}>Hymn not found</h1>
           <p>This hymn is not currently published.</p>
           <div className={s.ctaRow}>
-            <Link to="/practice">Back to library</Link>
+            <Link to="/hymns">Back to library</Link>
             <Link to="/submit-mezmur">Contribute a Mezmur</Link>
           </div>
         </div>
@@ -71,7 +71,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
   const libraryUrl = item.youtube_url || ''
   const activeUrl = customUrl || libraryUrl
   const usingCustom = Boolean(customUrl)
-  const canonical = `${window.location.origin}/practice/mezmur/${item.slug}`
+  const canonical = `${window.location.origin}/hymns/mezmur/${item.slug}`
   const payload = useMemo(
     () => publicMezmurToPracticePayload(item, activeUrl),
     [item, activeUrl],
@@ -157,7 +157,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
               contentType="mezmur"
               contentSlug={item.slug}
               title={item.title}
-              route={`/practice/mezmur/${item.slug}`}
+              route={`/hymns/mezmur/${item.slug}`}
             />
             {activeUrl || payload.videoId ? (
               <button type="button" className={s.footerActionBtn} onClick={copyActive}>

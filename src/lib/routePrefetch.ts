@@ -33,10 +33,15 @@ const loaders: Array<{ match: (path: string) => boolean; load: () => Promise<unk
       ),
     load: () => import('../pages/PublicHymnCollectionPage'),
   },
-  { match: (path) => path.startsWith('/practice'), load: () => import('../pages/PublicMezmurLibrary') },
+  {
+    match: (path) => path === '/practice' || path === '/hymns',
+    load: () => import('../pages/PublicMezmurLibrary'),
+  },
   { match: (path) => path.startsWith('/calendar'), load: () => import('../pages/CalendarPage') },
   { match: (path) => path.startsWith('/bible'), load: () => import('../pages/BiblePage') },
   { match: (path) => path.startsWith('/about'), load: () => import('../pages/AboutPage') },
+  { match: (path) => path.startsWith('/account'), load: () => import('../pages/auth/AccountPages') },
+  { match: (path) => path.startsWith('/library'), load: () => import('../pages/PublicChurchLibrary') },
 ]
 
 export function prefetchRoute(to: string) {
@@ -50,7 +55,7 @@ export function prefetchRoute(to: string) {
 
 export function prefetchPrimaryNav() {
   prefetchRoute('/pray')
-  prefetchRoute('/practice')
+  prefetchRoute('/hymns')
   prefetchRoute('/calendar')
   prefetchRoute('/bible')
 }

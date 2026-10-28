@@ -20,9 +20,12 @@ export type CmsTables = {
   church_library_books: Table<Timestamps & {
     id: string
     title: string
+    title_amharic?: string | null
     author: string | null
     language: 'en' | 'am' | 'gez' | 'mixed' | 'other'
     category: string | null
+    document_type?: 'book' | 'article' | 'teaching' | 'liturgy' | 'reference' | 'other'
+    publication_date?: string | null
     description: string | null
     cover_storage_path: string | null
     original_publication_info: string | null

@@ -25,6 +25,12 @@ const BY_SLUG: Record<string, string> = {
   'holidays-filseta': `${CAL_WEB}/FilsetaFast.webp`,
   'holidays-good-friday': `${CAL_WEB}/Siqlet.webp`,
   'holidays-siklet': `${CAL_WEB}/Siqlet.webp`,
+  // Canonical fallback sections (src/lib/publicContent/browseTaxonomy.ts)
+  'christ-salvation': `${CAL_WEB}/MedhaneAlem.webp`,
+  'saint-john-the-baptist': `${CAL_WEB}/SaintJohntheBaptist.webp`,
+  'annual-saint-feasts': `${CAL_WEB}/EthiopianSaintsRemembrance.webp`,
+  'tsome-nebiyat': `${CAL_WEB}/TsomeNebiyat.webp`,
+  'tsome-hawariat': `${CAL_WEB}/TsomeHawaryat.webp`,
 }
 
 /** Site-relative fallback URL for a section slug, if known. */

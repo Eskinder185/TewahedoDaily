@@ -19,6 +19,17 @@ import { resolveHymnSectionImageUrl } from './hymnSectionArtFallbacks'
 import type { ZemariSocialLinks } from './zemariSocialLinks'
 import { collectPagedRows, isEligiblePublicMezmurRow, isPublicMezmurStatus } from './mezmurVisibility'
 import { mezmurLanguageAliases, normalizeMezmurLanguage, type MezmurLanguageCode, type MezmurLanguageFilter } from '../mezmur/mezmurLanguage'
+import {
+  COLLECTION_TAXONOMY_MAP,
+  expandLinkSlugs,
+  fallbackSectionRow,
+  fallbackSectionsForCollection,
+  findFallbackSection,
+  getCandidateTaxonomySlugs,
+} from './browseTaxonomy'
+
+// Moved to ./browseTaxonomy (pure, testable); re-exported to keep the public API unchanged.
+export { COLLECTION_TAXONOMY_MAP, getCandidateTaxonomySlugs }
 
 let zemariCountsViewLacksTrashMetadata = false
 let zemariCountsViewPermissionDenied = false
@@ -112,6 +123,7 @@ export type ImportMezmur = {
   slug: string
   title: string
   title_amharic: string | null
+  transliteration_title?: string | null
   title_english: string | null
   description: string | null
   description_amharic: string | null
@@ -266,7 +278,7 @@ function mapCollectionFromRow(row: Record<string, unknown>): HymnCollection {
     mezmurCount: num(row.mezmur_count),
     featured: truthy(row.is_featured),
     sortOrder: num(row.sort_order),
-    href: `/practice/browse/${slug}`,
+    href: `/hymns/browse/${slug}`,
   }
 }
 
@@ -293,7 +305,7 @@ function mapSectionFromRow(row: SectionImportRow): HymnSection {
     mezmurCount: 0,
     featured: truthy(row.is_featured),
     sortOrder: num(row.sort_order),
-    href: `/practice/browse/${collectionSlug}/${slug}`,
+    href: `/hymns/browse/${collectionSlug}/${slug}`,
   }
 }
 
@@ -411,7 +423,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: true,
     sortOrder: 10,
-    href: '/practice/browse/holidays-feasts',
+    href: '/hymns/browse/holidays-feasts',
   },
   {
     id: 'angels-saints',
@@ -427,7 +439,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: true,
     sortOrder: 20,
-    href: '/practice/browse/angels-saints',
+    href: '/hymns/browse/angels-saints',
   },
   {
     id: 'virgin-mary',
@@ -443,7 +455,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: true,
     sortOrder: 30,
-    href: '/practice/browse/virgin-mary',
+    href: '/hymns/browse/virgin-mary',
   },
   {
     id: 'jesus-christ',
@@ -459,7 +471,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: true,
     sortOrder: 40,
-    href: '/practice/browse/jesus-christ',
+    href: '/hymns/browse/jesus-christ',
   },
   {
     id: 'repentance-fasting',
@@ -475,7 +487,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: true,
     sortOrder: 50,
-    href: '/practice/browse/repentance-fasting',
+    href: '/hymns/browse/repentance-fasting',
   },
   {
     id: 'english-mezmur',
@@ -491,7 +503,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: false,
     sortOrder: 60,
-    href: '/practice/browse/english-mezmur',
+    href: '/hymns/browse/english-mezmur',
   },
   {
     id: 'sacraments-church-life',
@@ -507,7 +519,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: false,
     sortOrder: 70,
-    href: '/practice/browse/sacraments-church-life',
+    href: '/hymns/browse/sacraments-church-life',
   },
   {
     id: 'praise-general',
@@ -523,7 +535,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: false,
     sortOrder: 80,
-    href: '/practice/browse/praise-general',
+    href: '/hymns/browse/praise-general',
   },
   {
     id: 'zemari-singers',
@@ -539,7 +551,7 @@ export const CANONICAL_MAJOR_COLLECTIONS: HymnCollection[] = [
     mezmurCount: 0,
     featured: false,
     sortOrder: 90,
-    href: '/practice/browse/zemari-singers',
+    href: '/hymns/browse/zemari-singers',
   },
 ]
 
@@ -633,7 +645,7 @@ async function loadHymnCollectionsFresh(language?: MezmurLanguageFilter): Promis
         mezmurCount: counts.get(slug) ?? 0,
         featured: false,
         sortOrder: 0,
-        href: `/practice/browse/${slug}`,
+        href: `/hymns/browse/${slug}`,
       })
     }
     return sortCollections([...bySlug.values()])
@@ -718,14 +730,20 @@ export async function getSectionsForCollection(collectionSlug: string, language?
     throw permissionError(T.sections, error)
   }
 
-  const sections = sortSections(
-    ((data || []) as SectionImportRow[])
-      .filter((row) => isPublishedStatus(row.status))
-      .map(mapSectionFromRow),
+  const liveSections = ((data || []) as SectionImportRow[])
+    .filter((row) => isPublishedStatus(row.status))
+    .map(mapSectionFromRow)
+  // Canonical categories / occasions with no live section in this group (see browseTaxonomy.ts)
+  const fallbackSections = fallbackSectionsForCollection(collectionSlug.trim(), liveSections).map((f) =>
+    mapSectionFromRow(fallbackSectionRow(f)),
   )
+  const fallbackSlugs = new Set(fallbackSections.map((s) => s.slug))
+  const sections = sortSections([...liveSections, ...fallbackSections])
 
   const counts = await sectionCountsForCollection(collectionSlug.trim(), sections, language)
-  return sections.map((s) => ({ ...s, mezmurCount: counts.get(s.slug) || 0 }))
+  return sections
+    .map((s) => ({ ...s, mezmurCount: counts.get(s.slug) || 0 }))
+    .filter((s) => !fallbackSlugs.has(s.slug) || s.mezmurCount > 0)
 }
 
 /** @deprecated Prefer getSectionsForCollection */
@@ -734,108 +752,6 @@ export async function getHymnSectionsForCollection(
   collectionSlug: string,
 ): Promise<HymnSection[]> {
   return getSectionsForCollection(collectionSlug || collectionId)
-}
-
-export const COLLECTION_TAXONOMY_MAP: Record<
-  string,
-  {
-    categories?: string[]
-    occasions?: string[]
-  }
-> = {
-  'holidays-feasts': {
-    occasions: [
-      'gena',
-      'timket',
-      'meskel',
-      'hosanna',
-      'siklet',
-      'tinsae',
-      'erget',
-      'pentecost',
-      'debre-tabor',
-      'filseta',
-      'kidane-mihret',
-      'lideta-maryam',
-      'new-year',
-      'holy-week',
-      'annunciation',
-      'cross',
-      'fasting',
-      'abiy-tsom',
-      'tsome-nineveh',
-      'good-friday',
-      'palm-sunday',
-      'easter',
-      'epiphany',
-      'christmas',
-    ],
-    categories: ['cross', 'holidays-feasts'],
-  },
-  'angels-saints': {
-    categories: [
-      'angels-saints',
-      'angels',
-      'saints',
-      'apostles',
-      'martyrs',
-      'prophets',
-      'kidus-michael',
-      'kidus-gabriel',
-      'kidus-uriel',
-      'kidus-raphael',
-      'kidus-giorgis',
-      'kidist-arsema',
-      'abune-tekle-haymanot',
-      'abune-gebre-menfes-kidus',
-      'kidus-estifanos-saint-stephen',
-      'kidus-yared',
-      'saint-george',
-      'saint-stephen',
-      'saint-michael',
-      'saint-gabriel',
-      'saint-uriel',
-      'saint-raphael',
-      'saint-arsema',
-      'holy-angels',
-      'saints-general',
-      'qedus-giorgis',
-      'kirkos',
-      'yared',
-    ],
-  },
-  'virgin-mary': {
-    categories: ['virgin-mary', 'mariam'],
-    occasions: ['filseta', 'kidane-mihret', 'lideta-maryam', 'mariam', 'virgin-mary', 'annunciation'],
-  },
-  'jesus-christ': {
-    categories: ['jesus-christ', 'christ'],
-    occasions: ['hosanna', 'siklet', 'tinsae', 'gena', 'timket', 'debre-tabor', 'good-friday', 'holy-week'],
-  },
-  'repentance-fasting': {
-    categories: ['repentance-fasting', 'repentance'],
-    occasions: ['abiy-tsom', 'tsome-nineveh', 'fasting', 'holy-week'],
-  },
-  'sacraments-church-life': {
-    categories: ['sacraments-church-life', 'sacraments', 'church-life'],
-    occasions: ['wedding', 'communion', 'baptism', 'funeral'],
-  },
-  'praise-general': {
-    categories: [
-      'praise-general',
-      'praise-worship',
-      'general',
-      'wereb',
-      'holy-trinity',
-      'holy-spirit',
-      'prayer',
-      'holy-cross',
-    ],
-    occasions: ['general'],
-  },
-  'english-mezmur': {
-    categories: ['english-mezmur', 'english-language', 'bilingual-language'],
-  },
 }
 
 export async function getHymnSection(
@@ -859,89 +775,15 @@ export async function getHymnSection(
     logSchemaError('getHymnSection', error)
     throw permissionError(T.sections, error)
   }
-  const row = (data || [])[0] as SectionImportRow | undefined
+  let row = (data || [])[0] as SectionImportRow | undefined
+  if (!row) {
+    const fallback = findFallbackSection(collectionSlug, slug)
+    if (fallback) row = fallbackSectionRow(fallback)
+  }
   if (!row || !isPublishedStatus(row.status)) return null
   const mapped = mapSectionFromRow(row)
   const counts = await sectionCountsForCollection(collectionSlug, [mapped], language)
   return { ...mapped, mezmurCount: counts.get(mapped.slug) || 0 }
-}
-
-export function getCandidateTaxonomySlugs(
-  sectionSlug: string,
-  section?: HymnSection | null,
-): { cats: string[]; occs: string[] } {
-  const cats = new Set<string>()
-  const occs = new Set<string>()
-
-  if (section?.sourceEntityType === 'occasion' && section.sourceEntitySlug) {
-    occs.add(section.sourceEntitySlug)
-  }
-  if (section?.sourceEntityType === 'category' && section.sourceEntitySlug) {
-    cats.add(section.sourceEntitySlug)
-  }
-  if (sectionSlug) {
-    occs.add(sectionSlug)
-    cats.add(sectionSlug)
-    const stripped = sectionSlug.replace(/^(holidays|virgin-mary|christ|saint|abune)-/, '')
-    if (stripped !== sectionSlug) {
-      occs.add(stripped)
-      cats.add(stripped)
-    }
-
-    const aliasMap: Record<string, { cats?: string[]; occs?: string[] }> = {
-      'saint-michael': { cats: ['kidus-michael', 'saint-michael', 'st-michael', 'michael'] },
-      'kidus-michael': { cats: ['kidus-michael', 'saint-michael', 'st-michael', 'michael'] },
-      'saint-gabriel': { cats: ['kidus-gabriel', 'saint-gabriel', 'st-gabriel', 'gabriel'] },
-      'kidus-gabriel': { cats: ['kidus-gabriel', 'saint-gabriel', 'st-gabriel', 'gabriel'] },
-      'saint-uriel': { cats: ['kidus-uriel', 'qedus-urael', 'saint-uriel', 'uriel'] },
-      'kidus-uriel': { cats: ['kidus-uriel', 'qedus-urael', 'saint-uriel', 'uriel'] },
-      'saint-raphael': { cats: ['kidus-raphael', 'qedus-raphael', 'saint-raphael', 'raphael'] },
-      'kidus-raphael': { cats: ['kidus-raphael', 'qedus-raphael', 'saint-raphael', 'raphael'] },
-      'saint-george': { cats: ['kidus-giorgis', 'qedus-giorgis', 'saint-george', 'george'] },
-      'kidus-giorgis': { cats: ['kidus-giorgis', 'qedus-giorgis', 'saint-george', 'george'] },
-      'saint-arsema': { cats: ['kidist-arsema', 'qedist-arsema', 'saint-arsema', 'arsema'] },
-      'kidist-arsema': { cats: ['kidist-arsema', 'qedist-arsema', 'saint-arsema', 'arsema'] },
-      'saint-stephen': { cats: ['kidus-estifanos-saint-stephen', 'saint-stephen', 'stephen'] },
-      'saint-yared': { cats: ['kidus-yared', 'saint-yared', 'yared'] },
-      'holy-angels': { cats: ['angels', 'holy-angels'] },
-      'christ-hymns': { cats: ['jesus-christ', 'christ'] },
-      'christ-gena': { occs: ['gena'] },
-      'christ-timket': { occs: ['timket'] },
-      'christ-hosanna': { occs: ['hosanna'] },
-      'christ-tinsae': { occs: ['tinsae'] },
-      'christ-debre-tabor': { occs: ['debre-tabor'] },
-      'christ-passion-crucifixion': { occs: ['siklet', 'good-friday'] },
-      'holidays-gena': { occs: ['gena'] },
-      'holidays-timket': { occs: ['timket'] },
-      'holidays-meskel': { occs: ['meskel', 'cross'], cats: ['cross'] },
-      'holidays-hosanna': { occs: ['hosanna'] },
-      'holidays-tinsae': { occs: ['tinsae', 'easter'] },
-      'holidays-siklet': { occs: ['siklet', 'good-friday'] },
-      'holidays-good-friday': { occs: ['siklet', 'good-friday'] },
-      'holidays-filseta': { occs: ['filseta'] },
-      'holidays-kidane-mihret': { occs: ['kidane-mihret'] },
-      'holidays-lideta-maryam': { occs: ['lideta-maryam'] },
-      'holidays-annunciation': { occs: ['annunciation'] },
-      'holidays-pentecost': { occs: ['pentecost'] },
-      'virgin-mary-hymns': { cats: ['virgin-mary', 'mariam'] },
-      'virgin-mary-filseta': { occs: ['filseta'] },
-      'virgin-mary-kidane-mihret': { occs: ['kidane-mihret'] },
-      'virgin-mary-lideta': { occs: ['lideta-maryam'] },
-      'virgin-mary-annunciation': { occs: ['annunciation'] },
-      'general-fasting': { occs: ['abiy-tsom', 'tsome-nineveh', 'fasting'] },
-      'repentance': { cats: ['repentance-fasting', 'repentance'], occs: ['repentance'] },
-      'english-language': { cats: ['english-mezmur', 'english-language'] },
-      'bilingual-language': { cats: ['english-mezmur', 'bilingual-language'] },
-    }
-
-    const match = aliasMap[sectionSlug] || aliasMap[stripped]
-    if (match) {
-      if (match.cats) for (const c of match.cats) cats.add(c)
-      if (match.occs) for (const o of match.occs) occs.add(o)
-    }
-  }
-
-  return { cats: Array.from(cats), occs: Array.from(occs) }
 }
 
 async function fetchLinksForSection(
@@ -1231,6 +1073,13 @@ async function collectionCountsFromLinks(
       distinct.get(collectionSlug)!.add(mezmurSlug)
     }
 
+    // Accept legacy spellings of the same slug (e.g. "new-year-enkutatash" for "new-year")
+    const taxonomyMap = Object.entries(COLLECTION_TAXONOMY_MAP).map(([colSlug, tax]) => ({
+      colSlug,
+      categories: new Set(expandLinkSlugs(tax.categories || [])),
+      occasions: new Set(expandLinkSlugs(tax.occasions || [])),
+    }))
+
     // 2. Process Category Links using Taxonomy Map
     for (const row of catLinks) {
       const catSlug = txt(row.category_slug)
@@ -1238,9 +1087,9 @@ async function collectionCountsFromLinks(
       const mezmurUuid = txt(row.mezmur_import_id) || txt(row.mezmur_id) || mezmurSlug
       if (!catSlug || !mezmurSlug || !publishedSlugs.has(mezmurSlug)) continue
 
-      for (const [colSlug, tax] of Object.entries(COLLECTION_TAXONOMY_MAP)) {
-        if (tax.categories && tax.categories.includes(catSlug)) {
-          distinct.get(colSlug)!.add(mezmurUuid)
+      for (const tax of taxonomyMap) {
+        if (tax.categories.has(catSlug)) {
+          distinct.get(tax.colSlug)!.add(mezmurUuid)
         }
       }
     }
@@ -1252,9 +1101,9 @@ async function collectionCountsFromLinks(
       const mezmurUuid = txt(row.mezmur_import_id) || txt(row.mezmur_id) || mezmurSlug
       if (!occSlug || !mezmurSlug || !publishedSlugs.has(mezmurSlug)) continue
 
-      for (const [colSlug, tax] of Object.entries(COLLECTION_TAXONOMY_MAP)) {
-        if (tax.occasions && tax.occasions.includes(occSlug)) {
-          distinct.get(colSlug)!.add(mezmurUuid)
+      for (const tax of taxonomyMap) {
+        if (tax.occasions.has(occSlug)) {
+          distinct.get(tax.colSlug)!.add(mezmurUuid)
         }
       }
     }
@@ -1462,6 +1311,7 @@ export async function getMezmurBySlug(slug: string): Promise<ImportMezmurDetail 
     slug: txt(row.slug),
     title: txt(row.title),
     title_amharic: txt(row.title_amharic) || null,
+    transliteration_title: txt(row.transliteration_title) || txt(row.title) || null,
     title_english: txt(row.title_english) || null,
     description: txt(row.description) || null,
     description_amharic: txt(row.description_amharic) || null,
@@ -1604,7 +1454,7 @@ export async function getHymnSingers(language?: MezmurLanguageFilter): Promise<H
           mezmurCount,
           featured: truthy(row.is_featured),
           sortOrder: num(row.sort_order),
-          href: `/practice/zemari/${slug}`,
+          href: `/hymns/zemari/${slug}`,
           socialLinks: { youtube: txt(row.youtube_url) || null },
         }
       })
@@ -1687,7 +1537,7 @@ export async function getZemariPublicBySlug(slug: string): Promise<HymnBrowseCar
     mezmurCount,
     featured: truthy(row.is_featured),
     sortOrder: num(row.sort_order),
-    href: `/practice/zemari/${txt(row.slug)}`,
+    href: `/hymns/zemari/${txt(row.slug)}`,
     socialLinks: { youtube: txt(row.youtube_url) || null },
   }
 }
@@ -1781,7 +1631,7 @@ export async function getHymnOccasions(language?: MezmurLanguageFilter): Promise
         mezmurCount: set.size,
         featured: false,
         sortOrder: 0,
-        href: `/practice/occasion/${slug}`,
+        href: `/hymns/occasion/${slug}`,
       })),
   )
 }
@@ -1830,7 +1680,7 @@ export async function getHymnCategories(language?: MezmurLanguageFilter): Promis
         mezmurCount: set.size,
         featured: false,
         sortOrder: 0,
-        href: `/practice/category/${slug}`,
+        href: `/hymns/category/${slug}`,
       })),
   )
 }
@@ -1992,7 +1842,7 @@ export async function searchHymns(query: string, limit = 50): Promise<HymnDiscov
         id: txt(row.mezmur_id || slug),
         title: titleEnglish || title || humanizeSlug(slug),
         titleAmharic,
-        href: `/practice/mezmur/${slug}`,
+        href: `/hymns/mezmur/${slug}`,
         meta: singerName ? `Mezmur · ${singerName}` : 'Mezmur',
       })
       if (mezmurHits.length >= limit * 2) break

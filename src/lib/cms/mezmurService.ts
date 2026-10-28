@@ -17,6 +17,7 @@ import {
   normalizeMezmurStatus,
   type MezmurStatus,
 } from './mezmurPublicationRules'
+import { validateMezmurTitleLyrics } from '../mezmur/titleLyricsValidation'
 
 export { mezmurStatuses, mezmurStatusLabel, normalizeMezmurStatus, type MezmurStatus }
 
@@ -28,6 +29,7 @@ export type ImportMezmurRow = {
   slug: string
   title: string
   title_amharic: string | null
+  transliteration_title?: string | null
   title_english: string | null
   description: string | null
   description_amharic: string | null
@@ -71,6 +73,8 @@ export type Mezmur = {
   slug: string
   title: string
   title_amharic: string | null
+  /** Dedicated Latin-character title. `title` remains a legacy compatibility mirror. */
+  transliteration_title: string | null
   title_english: string | null
   title_oromo: string | null
   description: string | null
@@ -222,6 +226,7 @@ export function mapImportMezmur(row: ImportMezmurRow | Record<string, unknown>):
     slug: txt(r.slug),
     title: txt(r.title),
     title_amharic: txt(r.title_amharic) || null,
+    transliteration_title: txt(r.transliteration_title) || txt(r.title) || null,
     title_english: txt(r.title_english) || null,
     title_oromo: null,
     description: txt(r.description) || null,
@@ -276,6 +281,7 @@ export function mapImportMezmur(row: ImportMezmurRow | Record<string, unknown>):
 export const editableKeys = [
   'title',
   'title_amharic',
+  'transliteration_title',
   'slug',
   'description',
   'singer_id',
@@ -314,6 +320,7 @@ export function emptyMezmur(): MezmurInput {
   return {
     title: '',
     title_amharic: '',
+    transliteration_title: '',
     slug: '',
     description: '',
     singer_id: null,
@@ -354,6 +361,9 @@ export type Filters = {
   language?: string
 }
 
+// `transliteration_title` is optional until the forward-only migration is applied.
+// Keeping the base select free of it lets existing production schemas continue to
+// load; `title` is a legacy compatibility mirror, never lyric-derived.
 const LIST_SELECT =
   'import_id, mezmur_id, slug, title, title_amharic, title_english, description, description_amharic, lyrics_amharic, lyrics_transliteration, lyrics_english, lyrics_geez, lyrics_oromo, primary_language, form, singer_id, singer_slug, singer_name, zemari_id, youtube_url, audio_url, image_path, image_alt, legacy_thumbnail_url, search_keywords, status, review_status, review_notes, source_url, source_notes, rights_status, publication_approved_at, publication_approved_by, created_at, updated_at, deleted_at, deleted_by, deleted_from_status'
 
@@ -436,8 +446,11 @@ export async function getPublishedMezmur(slug: string) {
     .select(LIST_SELECT)
     .eq('slug', slug)
     .eq('status', 'published')
-    .limit(1)
+    .limit(2)
   if (error) throw error
+  if ((data || []).length > 1) {
+    throw new Error('This published Mezmur slug is ambiguous. Resolve the collision or use import_id in the CMS.')
+  }
   const row = (data || [])[0] as ImportMezmurRow | undefined
   return row ? mapImportMezmur(row) : null
 }
@@ -463,12 +476,18 @@ export async function getMezmur(id: string) {
     .from(DATA as never)
     .select(LIST_SELECT)
     .eq('mezmur_id', needle)
-    .limit(1)
+    .limit(2)
   if (first.error) throw first.error
+  if ((first.data || []).length > 1) {
+    throw new Error('This legacy Mezmur identifier is ambiguous. Open the record using its immutable import_id.')
+  }
   row = (first.data || [])[0] as ImportMezmurRow | undefined
   if (!row) {
-    const bySlug = await db().from(DATA as never).select(LIST_SELECT).eq('slug', needle).limit(1)
+    const bySlug = await db().from(DATA as never).select(LIST_SELECT).eq('slug', needle).limit(2)
     if (bySlug.error) throw bySlug.error
+    if ((bySlug.data || []).length > 1) {
+      throw new Error('This Mezmur slug is ambiguous. Open the record using its immutable import_id.')
+    }
     row = (bySlug.data || [])[0] as ImportMezmurRow | undefined
   }
   return row ? mapImportMezmur(row) : null
@@ -566,7 +585,10 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
   return {
     mezmur_id: mezmurId,
     slug: input.slug.trim(),
-    title: input.title.trim(),
+    // The legacy title column remains a compatibility mirror for routes and
+    // existing consumers. It is never populated from lyrics or keywords.
+    title: input.transliteration_title?.trim() || '',
+    transliteration_title: input.transliteration_title?.trim() || null,
     title_amharic: input.title_amharic?.trim() || null,
     description: input.description?.trim() || null,
     lyrics_amharic: input.lyrics_amharic?.trim() || null,
@@ -589,6 +611,19 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
   }
 }
 
+function isMissingTransliterationTitleColumn(error: { code?: string; message?: string } | null | undefined) {
+  return Boolean(
+    error &&
+      (error.code === '42703' || error.code === 'PGRST204') &&
+      /transliteration_title/i.test(error.message || ''),
+  )
+}
+
+function withoutTransliterationTitle(payload: Record<string, unknown>) {
+  const { transliteration_title: _unsupportedColumn, ...legacyPayload } = payload
+  return legacyPayload
+}
+
 async function invalidatePublicMezmurCaches(): Promise<void> {
   const { invalidateHymnBrowseCaches } = await import('../publicContent/hymnBrowse')
   const { invalidateMezmurSearchCatalog } = await import('../publicContent/mezmurSearch')
@@ -609,6 +644,17 @@ export async function saveMezmur(
     }
   }
   const payload = toImportPayload({ ...input, status: requestedStatus }, existing)
+  const titleIssues = validateMezmurTitleLyrics({
+    title_amharic: input.title_amharic,
+    transliteration_title: input.transliteration_title,
+    lyrics_amharic: input.lyrics_amharic,
+    lyrics_transliteration: input.transliteration,
+    import_id: existing ? existing.import_id : undefined,
+  })
+  if (requestedStatus === 'published') {
+    const blocking = titleIssues.filter((issue) => issue.severity === 'error')
+    if (blocking.length) throw new Error(blocking.map((issue) => issue.message).join(' '))
+  }
   const isPublicationRequest = requestedStatus === 'published'
   // A publication transition must go through publish_mezmur_import. Saving the
   // ordinary update as 'draft' first ensures content is persisted before the RPC transitions status.
@@ -619,7 +665,7 @@ export async function saveMezmur(
       actorUserId: actor.userId,
       actorRole: actor.profileRole,
       target: 'public.mezmur_data_import',
-      match: existing?.mezmur_id || existing?.id ? 'mezmur_id (slug fallback)' : 'insert',
+      match: existing?.import_id ? 'import_id' : 'insert',
       priorStatus: existing?.status || null,
       requestedStatus: input.status,
       ordinarySaveStatus: payload.status,
@@ -666,6 +712,16 @@ export async function saveMezmur(
       error = retry.error
       data = retry.data
     }
+    if (error && isMissingTransliterationTitleColumn(error)) {
+      const retry = await db()
+        .from(DATA as never)
+        .update(withoutTransliterationTitle(payload) as never)
+        .eq('import_id', existing.import_id)
+        .select(LIST_SELECT)
+        .limit(1)
+      error = retry.error
+      data = retry.data
+    }
     if (error) throw mapStaffWriteError('PATCH public.mezmur_data_import by import_id', error)
     const row = (data || [])[0] as ImportMezmurRow | undefined
     if (!row) throw new Error('No saved record was returned.')
@@ -676,11 +732,20 @@ export async function saveMezmur(
     return isPublicationRequest ? publishImportedMezmur(saved) : saved
   }
   if (!payload.created_at) payload.created_at = new Date().toISOString()
-  const { data, error } = await db()
+  let { data, error } = await db()
     .from(DATA as never)
     .insert(payload as never)
     .select(LIST_SELECT)
     .limit(1)
+  if (error && isMissingTransliterationTitleColumn(error)) {
+    const retry = await db()
+      .from(DATA as never)
+      .insert(withoutTransliterationTitle(payload) as never)
+      .select(LIST_SELECT)
+      .limit(1)
+    data = retry.data
+    error = retry.error
+  }
   if (error) throw mapStaffWriteError('POST public.mezmur_data_import', error)
   const row = (data || [])[0] as ImportMezmurRow | undefined
   if (!row) throw new Error('No saved record was returned.')

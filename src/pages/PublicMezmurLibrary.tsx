@@ -151,7 +151,7 @@ function BrowseSection({
         {groups.map((group, index) => {
           const englishCard = group.slug.toLocaleLowerCase() === 'english' || group.title.toLocaleLowerCase() === 'english'
           const href = englishCard
-            ? '/practice?language=en'
+            ? '/hymns?language=en'
             : language && language !== 'all'
               ? `${group.href}${group.href.includes('?') ? '&' : '?'}language=${language}`
               : group.href
@@ -211,7 +211,7 @@ function MezmurResultGrid({
           .filter(Boolean)
           .join(' · ')
         return (
-          <Link key={item.id || item.slug} to={`/practice/mezmur/${item.slug}`} className={s.card}>
+          <Link key={item.id || item.slug} to={`/hymns/mezmur/${item.slug}`} className={s.card}>
             <CardArt item={item} />
             <div className={s.cardBody}>
               {heading.secondary ? (
@@ -535,7 +535,7 @@ export function PublicMezmurLibrary() {
         <>
           <div className={s.resultsHead}>
             <h2 className={s.browseTitle}>{resultsHeading}</h2>
-            <Link to={language !== 'all' ? `/practice?language=${encodeURIComponent(language)}` : '/practice'} className={s.viewAll}>
+            <Link to={language !== 'all' ? `/hymns?language=${encodeURIComponent(language)}` : '/hymns'} className={s.viewAll}>
               {t('practice.backToBrowse')}
             </Link>
           </div>

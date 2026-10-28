@@ -2,6 +2,8 @@ import { CANONICAL_CATEGORIES, CANONICAL_OCCASIONS } from '../publicContent/taxo
 import { emptyMezmur, errorMessage, getTaxonomy, saveMezmur, slugify, type MezmurInput } from './mezmurService'
 import { setMezmurSectionLinks, type HymnSectionRow } from './hymnBrowseAdminService'
 import { setMezmurClassificationLinks } from './hymnTaxonomyImport'
+import { taxonomyLinkSlug } from '../publicContent/browseTaxonomy'
+import { validateMezmurTitleLyrics } from '../mezmur/titleLyricsValidation'
 
 export type Taxonomy = Awaited<ReturnType<typeof getTaxonomy>>
 
@@ -303,6 +305,19 @@ export function validateAndRefreshStagedRows(
     if (!translitTitle) {
       errors.push('Transliteration title is required for draft import.')
     }
+    for (const issue of validateMezmurTitleLyrics({
+      title_amharic: amharicTitle,
+      transliteration_title: translitTitle,
+      lyrics_amharic: row.amharic_lyrics,
+      lyrics_transliteration: row.transliteration_lyrics,
+    })) {
+      // A missing transliteration is already a CSV error above. Keep all other
+      // source-quality signals visible without rewriting the submitted text.
+      const draftOnlyMissingLyrics =
+        issue.field === 'lyrics_amharic' && issue.message === 'Amharic lyrics are missing.'
+      if (issue.severity === 'error' && !draftOnlyMissingLyrics && !errors.includes(issue.message)) errors.push(issue.message)
+      if ((issue.severity === 'warning' || draftOnlyMissingLyrics) && !warnings.includes(issue.message)) warnings.push(issue.message)
+    }
     if (!slug || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) {
       errors.push('Slug must contain lowercase English letters, numbers, and single hyphens.')
     }
@@ -587,8 +602,10 @@ export async function importSelectedStagedRowsAsDrafts(
       const base = emptyMezmur()
       const payload: MezmurInput = {
         ...base,
+        // `title` is maintained only as the legacy compatibility mirror.
         title: row.transliteration_title.trim(),
         title_amharic: row.amharic_title.trim() || null,
+        transliteration_title: row.transliteration_title.trim() || null,
         slug: row.slug.trim(),
         description: row.description.trim() || null,
         lyrics_amharic: row.amharic_lyrics.trim() || null,
@@ -625,9 +642,13 @@ export async function importSelectedStagedRowsAsDrafts(
         }
       }
 
-      const categorySlugs = row.category.trim() ? [slugify(row.category)].filter(Boolean) : []
+      // Use the identifiers that exist in the database (e.g. "New Year / Enkutatash" → "new-year",
+      // "Funeral / Memorial" → "funeral"); slugifying the label produced slugs the RPC rejects.
+      const categorySlugs = row.category.trim()
+        ? [taxonomyLinkSlug('category', row.category) || slugify(row.category)].filter(Boolean)
+        : []
       const allOccasions = [row.primary_occasion, ...row.additional_occasions]
-        .map((o) => slugify(o))
+        .map((o) => taxonomyLinkSlug('occasion', o) || slugify(o))
         .filter(Boolean)
       const uniqueOccasions = [...new Set(allOccasions)]
       if (categorySlugs.length > 0 || uniqueOccasions.length > 0) {

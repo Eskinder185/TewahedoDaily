@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { DayChurchContext, DayCommemorationItem } from '../../services/dayChurchContext'
 import { useLocale } from '../../lib/i18n/locale'
 import { useTranslation } from '../../i18n'
+import { calendarScriptureReaderHref } from '../../lib/recommendations/dailyScriptureSelection'
 import styles from './DailyFaithDashboard.module.css'
 
 export interface DailyFaithDashboardProps {
@@ -62,12 +63,21 @@ function SynaxariumRow({
   )
 }
 
-export function DailyFaithDashboard({
+export function DailyFaithDashboard(props: DailyFaithDashboardProps) {
+  return <DailyFaithDashboardContent key={props.context?.gregorianDate || 'loading'} {...props} />
+}
+
+function DailyFaithDashboardContent({
   context,
   loading = false,
 }: DailyFaithDashboardProps) {
   const { contentLocale } = useLocale()
   const t = useTranslation()
+  const panelId = useId()
+  const readingsId = panelId + '-readings'
+  const mezmursId = panelId + '-mezmurs'
+  const [showAllReadings, setShowAllReadings] = useState(false)
+  const [showAllMezmurs, setShowAllMezmurs] = useState(false)
 
   // About today's observances toggle
   const [aboutOpen, setAboutOpen] = useState(false)
@@ -324,8 +334,8 @@ export function DailyFaithDashboard({
                 : 'No specific readings designated for this day.'}
             </p>
           ) : (
-            <div className={styles.scriptureList}>
-              {dailyScriptures.map((s) => {
+            <div id={readingsId} className={styles.scriptureList}>
+              {dailyScriptures.slice(0, showAllReadings ? undefined : 1).map((s, index) => {
                 const hasEnVerses = Boolean(s.passageEnglish && s.passageEnglish.verses.length > 0)
                 const hasAmVerses = Boolean(s.passageAmharic && s.passageAmharic.verses.length > 0)
                 const isExpanded = expandedPassages.has(s.id)
@@ -334,12 +344,12 @@ export function DailyFaithDashboard({
                 const enVerses = s.passageEnglish?.verses || []
                 const totalVerseCount = Math.max(amVerses.length, enVerses.length)
 
-                // Preview 1-2 verses when collapsed
-                const previewAmVerses = isExpanded ? amVerses : amVerses.slice(0, 2)
-                const previewEnVerses = isExpanded ? enVerses : enVerses.slice(0, 2)
+                const passageId = panelId + '-passage-' + index
+                const previewAmVerses = isExpanded ? amVerses : amVerses.slice(0, 1)
+                const previewEnVerses = isExpanded ? enVerses : enVerses.slice(0, 1)
 
                 return (
-                  <article key={s.id} className={styles.scriptureItem}>
+                  <article key={s.id} className={`${styles.scriptureItem} ${index > 0 ? styles.revealedContent : ''}`}>
                     <div className={styles.scriptureMeta}>
                       <span className={styles.priorityBadge}>
                         {contentLocale === 'am' ? s.priorityLabelAm : s.priorityLabelEn}
@@ -355,7 +365,7 @@ export function DailyFaithDashboard({
                     </p>
 
                     {/* Verses Container */}
-                    <div className={styles.versesContainer}>
+                    <div id={passageId} className={`${styles.versesContainer} ${!isExpanded ? styles.passagePreview : ''}`}>
                       {readingMode === 'parallel' ? (
                         <div className={styles.verseParallelGrid}>
                           {/* Column 1: Amharic */}
@@ -374,8 +384,8 @@ export function DailyFaithDashboard({
                                 {isExpanded && s.passageAmharic?.missingVerses?.length ? (
                                   <p className={styles.verseNotes}>
                                     {contentLocale === 'am'
-                                      ? `* ማስታወሻ: ቁጥር ${s.passageAmharic.missingVerses.join(', ')} ከተቀደመው ቁጥር ጋር ተጠቃሏል።`
-                                      : `* Note: Verse(s) ${s.passageAmharic.missingVerses.join(', ')} combined in traditional Amharic text.`}
+                                      ? `* ያልተገኙ ቁጥሮች፦ ${s.passageAmharic.missingVerses.join(', ')}`
+                                      : `* Verse(s) ${s.passageAmharic.missingVerses.join(', ')} are unavailable in this edition.`}
                                   </p>
                                 ) : null}
                               </div>
@@ -385,7 +395,7 @@ export function DailyFaithDashboard({
                               </blockquote>
                             ) : (
                               <p className={styles.emptyNotice}>
-                                {contentLocale === 'am' ? 'ንባብ በመጫን ላይ...' : 'Loading translation...'}
+                                {contentLocale === 'am' ? 'ይህ ትርጉም ለጊዜው አይገኝም።' : 'This translation is currently unavailable.'}
                               </p>
                             )}
                           </div>
@@ -410,7 +420,7 @@ export function DailyFaithDashboard({
                               </blockquote>
                             ) : (
                               <p className={styles.emptyNotice}>
-                                {contentLocale === 'am' ? 'ንባብ በመጫን ላይ...' : 'Loading translation...'}
+                                {contentLocale === 'am' ? 'ይህ ትርጉም ለጊዜው አይገኝም።' : 'This translation is currently unavailable.'}
                               </p>
                             )}
                           </div>
@@ -431,7 +441,7 @@ export function DailyFaithDashboard({
                               ))}
                               {isExpanded && s.passageAmharic?.missingVerses?.length ? (
                                 <p className={styles.verseNotes}>
-                                  * ማስታወሻ: ቁጥር {s.passageAmharic.missingVerses.join(', ')} ከተቀደመው ቁጥር ጋር ተጠቃሏል።
+                                  * ያልተገኙ ቁጥሮች፦ {s.passageAmharic.missingVerses.join(', ')}
                                 </p>
                               ) : null}
                             </div>
@@ -440,7 +450,7 @@ export function DailyFaithDashboard({
                               {s.previewTextAmharic}
                             </blockquote>
                           ) : (
-                            <p className={styles.emptyNotice}>ንባብ በመጫን ላይ...</p>
+                            <p className={styles.emptyNotice}>ይህ ትርጉም ለጊዜው አይገኝም።</p>
                           )}
                         </div>
                       ) : (
@@ -463,7 +473,7 @@ export function DailyFaithDashboard({
                               {s.previewTextEnglish}
                             </blockquote>
                           ) : (
-                            <p className={styles.emptyNotice}>Loading translation...</p>
+                            <p className={styles.emptyNotice}>This translation is currently unavailable.</p>
                           )}
                         </div>
                       )}
@@ -471,12 +481,13 @@ export function DailyFaithDashboard({
 
                     {/* Actions Row */}
                     <div className={styles.scriptureActionsRow}>
-                      {totalVerseCount > 2 ? (
+                      {totalVerseCount > 0 ? (
                         <button
                           type="button"
                           className={styles.expandPassageBtn}
                           onClick={() => togglePassageExpand(s.id)}
                           aria-expanded={isExpanded}
+                          aria-controls={passageId}
                         >
                           {isExpanded
                             ? (contentLocale === 'am' ? '▲ ንባቡን አሳጥር' : '▲ Collapse passage')
@@ -484,7 +495,7 @@ export function DailyFaithDashboard({
                         </button>
                       ) : null}
 
-                      <Link to={s.readHref} className={styles.readScriptureBtn}>
+                      <Link to={calendarScriptureReaderHref(s.readHref, readingMode, context.gregorianDate)} className={styles.readScriptureBtn}>
                         {contentLocale === 'am' ? 'በመጽሐፍ ቅዱስ አንብብ' : 'Read in Bible Reader'} →
                       </Link>
                     </div>
@@ -493,6 +504,13 @@ export function DailyFaithDashboard({
               })}
             </div>
           )}
+          {dailyScriptures.length > 1 ? (
+            <button type="button" className={styles.showAllBtn} aria-expanded={showAllReadings} aria-controls={readingsId} onClick={() => setShowAllReadings((value) => !value)}>
+              {showAllReadings
+                ? (contentLocale === 'am' ? 'ንባቦችን አሳጥር' : 'Show fewer readings')
+                : (contentLocale === 'am' ? `ሁሉንም ንባቦች አሳይ (${dailyScriptures.length})` : `Show all readings (${dailyScriptures.length})`)}
+            </button>
+          ) : null}
         </section>
 
         {/* RIGHT COLUMN: TODAY'S RECOMMENDED MEZMURS (Compact Rows) */}
@@ -514,13 +532,13 @@ export function DailyFaithDashboard({
                 : 'No specific hymns matched for this day.'}
             </p>
           ) : (
-            <div className={styles.mezmurList}>
-              {mezmurRecommendations.slice(0, 4).map((m) => {
+            <div id={mezmursId} className={styles.mezmurList}>
+              {mezmurRecommendations.slice(0, showAllMezmurs ? undefined : 2).map((m, index) => {
                 const targetSlug = m.slug || m.id
                 const detailHref = m.practiceHref || `/practice/mezmur/${encodeURIComponent(targetSlug)}`
 
                 return (
-                  <div key={m.id} className={styles.mezmurRow}>
+                  <div key={m.id} className={`${styles.mezmurRow} ${index > 1 ? styles.revealedContent : ''}`}>
                     <div className={styles.mezmurContentCol}>
                       <p className={styles.mezmurTitle} title={m.title}>
                         {m.title}
@@ -554,6 +572,13 @@ export function DailyFaithDashboard({
               })}
             </div>
           )}
+          {mezmurRecommendations.length > 2 ? (
+            <button type="button" className={styles.showAllBtn} aria-expanded={showAllMezmurs} aria-controls={mezmursId} onClick={() => setShowAllMezmurs((value) => !value)}>
+              {showAllMezmurs
+                ? (contentLocale === 'am' ? 'መዝሙራትን አሳጥር' : 'Show fewer Mezmurs')
+                : (contentLocale === 'am' ? `ሁሉንም መዝሙራት አሳይ (${mezmurRecommendations.length})` : `Show all Mezmurs (${mezmurRecommendations.length})`)}
+            </button>
+          ) : null}
         </section>
       </div>
 

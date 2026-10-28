@@ -35,7 +35,7 @@ def library_status(principal: EditorialPrincipal = Depends(require_editorial_pri
         "cms_role": principal.cms_role,
         "user_id": principal.user_id,
         "max_upload_bytes": 100 * 1024 * 1024,
-        "supported_types": ["PDF", "DOCX", "UTF-8 TXT", "EPUB"],
+        "supported_types": ["PDF", "DOCX", "UTF-8 TXT", "Markdown", "EPUB"],
     }
 
 

@@ -1,0 +1,365 @@
+{
+  "document_id": "faith-and-order-of-the-church",
+  "title": "The Faith And Order Of The Church",
+  "language": "en",
+  "source": {
+    "filename": "The Faith And Order Of The Church (2)(4).docx",
+    "received_as": "The_Faith_And_Order_Of_The_Church_2.docx",
+    "sha256": "2e3bdda29772507a2ebbe21714a2170a7be9a7391b518cc5036a986aab36b37e",
+    "format": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "page_count": 51,
+    "paragraphs_total": 834,
+    "paragraphs_nonempty": 501,
+    "word_count": 19518,
+    "tables": 0,
+    "headers_footers": "none present (all 51 section headers/footers are empty)",
+    "author": null,
+    "rights_status": "unknown — must be set by an administrator before public retrieval"
+  },
+  "page_mapping": {
+    "basis": "docx_section_breaks",
+    "description": "The DOCX contains 51 sections; each begins with a rendered page break and no section contains a second one, so section N = page N of the source file's own layout. Page numbers refer to this file's layout (51 pages), not to any separately printed edition. No printed page numbers exist in the file.",
+    "reliable_for_this_file": true
+  },
+  "processing_summary": {
+    "generated_at": "2026-10-28T02:28:16+00:00",
+    "pipeline": "build_kb.py (python-docx) — deterministic; same input yields same IDs",
+    "chapters": 16,
+    "sections": 65,
+    "passages": 47,
+    "passage_words": {
+      "min": 134,
+      "max": 637,
+      "mean": 413.5,
+      "total": 19436
+    },
+    "target_words_per_passage": "300-600 (paragraphs never split; a short chapter or tail may fall below)",
+    "passages_per_chapter": {
+      "Introduction": 1,
+      "The Mystery of the Holy Trinity": 2,
+      "The Mystery of Incarnation": 3,
+      "The Mystery of Baptism": 1,
+      "The Mystery of the Holy Communion; what is Holy Communion?": 2,
+      "The Mystery of Resurrection": 1,
+      "Human Salvation": 2,
+      "A Word in Conclusion": 1,
+      "Introduction to Church Sacraments": 3,
+      "The Sacrament of Baptism": 5,
+      "The Sacrament of Confirmation": 2,
+      "The Sacrament of Penance": 4,
+      "The Sacrament of the Holy Communion": 10,
+      "The Sacrament of the Unction of the Sick": 2,
+      "The Sacrament of Matrimony": 3,
+      "The Sacrament of the Holy Orders": 5
+    },
+    "paragraph_merges_across_page_breaks": 15,
+    "quality_flags": 65,
+    "passages_with_quality_flags": 34,
+    "scripture_references_in_source": 215,
+    "scripture_references_in_passages": 215,
+    "search_aliases_defined": 110,
+    "extraction_quality": "good",
+    "extraction_notes": "Complete text extraction from DOCX (no OCR). 15 sentences split by page breaks were re-joined. One paragraph begins mid-sentence in the source (p. 2) and 65 likely source typos are flagged, not corrected. Passages with flags are marked needs_attention for reviewer confirmation.",
+    "repairs_applied": [
+      "Whitespace normalization (runs of spaces/tabs/non-breaking spaces collapsed)",
+      "Re-joined paragraphs split mid-sentence at page breaks (see merge_log)",
+      "Re-joined a sentence broken across five list items on p. 40 (Unction of the Sick definition)",
+      "ALL-CAPS chapter headings shown in title case in the 'chapter' field (original kept in chapter_source_heading)",
+      "Empty Heading-1 paragraphs (layout artifacts) ignored"
+    ],
+    "not_changed": [
+      "No word of source content was corrected, translated, reordered or removed",
+      "Likely typos and reference errors are flagged in quality_flags only"
+    ]
+  },
+  "chapters": [
+    {
+      "order": 1,
+      "title": "Introduction",
+      "source_heading": "INTRODUCTION",
+      "page": 1
+    },
+    {
+      "order": 2,
+      "title": "The Mystery of the Holy Trinity",
+      "source_heading": "THE MYSTERY OF THE HOLY TRINITY",
+      "page": 1
+    },
+    {
+      "order": 3,
+      "title": "The Mystery of Incarnation",
+      "source_heading": "THE MYSTERY OF INCARNATION",
+      "page": 3
+    },
+    {
+      "order": 4,
+      "title": "The Mystery of Baptism",
+      "source_heading": "THE MYSTERY OF BAPTISM",
+      "page": 7
+    },
+    {
+      "order": 5,
+      "title": "The Mystery of the Holy Communion; what is Holy Communion?",
+      "source_heading": "The Mystery of the Holy Communion; what is Holy Communion?",
+      "page": 8
+    },
+    {
+      "order": 6,
+      "title": "The Mystery of Resurrection",
+      "source_heading": "THE MYSTERY OF RESURRECTION",
+      "page": 9
+    },
+    {
+      "order": 7,
+      "title": "Human Salvation",
+      "source_heading": "HUMAN SALVATION",
+      "page": 10
+    },
+    {
+      "order": 8,
+      "title": "A Word in Conclusion",
+      "source_heading": "A WORD IN CONCLUSION",
+      "page": 13
+    },
+    {
+      "order": 9,
+      "title": "Introduction to Church Sacraments",
+      "source_heading": "Introduction to Church Sacraments",
+      "page": 13
+    },
+    {
+      "order": 10,
+      "title": "The Sacrament of Baptism",
+      "source_heading": "The Sacrament of Baptism",
+      "page": 16
+    },
+    {
+      "order": 11,
+      "title": "The Sacrament of Confirmation",
+      "source_heading": "THE SACRAMENT OF CONFIRMATION",
+      "page": 21
+    },
+    {
+      "order": 12,
+      "title": "The Sacrament of Penance",
+      "source_heading": "THE SACRAMENT OF PENANCE",
+      "page": 24
+    },
+    {
+      "order": 13,
+      "title": "The Sacrament of the Holy Communion",
+      "source_heading": "THE SACRAMENT OF THE HOLY COMMUNION",
+      "page": 28
+    },
+    {
+      "order": 14,
+      "title": "The Sacrament of the Unction of the Sick",
+      "source_heading": "THE SACRAMENT OF THE UNCTION OF THE SICK",
+      "page": 40
+    },
+    {
+      "order": 15,
+      "title": "The Sacrament of Matrimony",
+      "source_heading": "THE SACRAMENT OF MATRIMONY",
+      "page": 42
+    },
+    {
+      "order": 16,
+      "title": "The Sacrament of the Holy Orders",
+      "source_heading": "THE SACRAMENT OF THE HOLY ORDERS",
+      "page": 45
+    }
+  ],
+  "merge_log": [
+    {
+      "paragraph_indexes": [
+        23,
+        25
+      ],
+      "pages": [
+        2,
+        3
+      ],
+      "joined_text_preview": "The Father is different from the Son and the Holy Spirit only in that He alone is Father. The Son alone is Son, and the "
+    },
+    {
+      "paragraph_indexes": [
+        29,
+        30
+      ],
+      "pages": [
+        3
+      ],
+      "joined_text_preview": "If we may put the emphasis in our words, the term “Father” with reference to God signifies the divine reality which orig"
+    },
+    {
+      "paragraph_indexes": [
+        45,
+        46
+      ],
+      "pages": [
+        4
+      ],
+      "joined_text_preview": "God who created the world made man as the crown of creation. Made in God’s image and endowed with creaturely freedom and"
+    },
+    {
+      "paragraph_indexes": [
+        84,
+        86
+      ],
+      "pages": [
+        7,
+        8
+      ],
+      "joined_text_preview": "In accordance with such writings of the Holy Scriptures, the Ethiopian Orthodox Tewahedo Church baptizes male infants at"
+    },
+    {
+      "paragraph_indexes": [
+        96,
+        98
+      ],
+      "pages": [
+        8,
+        9
+      ],
+      "joined_text_preview": "The Preparation and Presentation of the Holy Communion is in the form of bread and wine; i.e. like that of Melchizedek, "
+    },
+    {
+      "paragraph_indexes": [
+        127,
+        129
+      ],
+      "pages": [
+        11,
+        12
+      ],
+      "joined_text_preview": "Salvation is a present experience consisting in man’s complete confidence and communion with God as well as his perfect "
+    },
+    {
+      "paragraph_indexes": [
+        170,
+        172
+      ],
+      "pages": [
+        14,
+        15
+      ],
+      "joined_text_preview": "The writings of the fathers in the early centuries make it clear that they are seven. Although they did not expressly de"
+    },
+    {
+      "paragraph_indexes": [
+        315,
+        316
+      ],
+      "pages": [
+        22
+      ],
+      "joined_text_preview": "The Bible declares that some babies were filled with the Holy Ghost even from their mothers’ womb, e.g. John the Baptist"
+    },
+    {
+      "paragraph_indexes": [
+        337,
+        339
+      ],
+      "pages": [
+        23,
+        24
+      ],
+      "joined_text_preview": "When anointing David as King of Israel he was said to have been given the gift of the Holy Ghost. “Then Samuel took the "
+    },
+    {
+      "paragraph_indexes": [
+        355,
+        357
+      ],
+      "pages": [
+        24,
+        25
+      ],
+      "joined_text_preview": "When, after resurrection, He showed them their great commission to the world. “As my Father hath sent me, even so send I"
+    },
+    {
+      "paragraph_indexes": [
+        459,
+        461
+      ],
+      "pages": [
+        30,
+        31
+      ],
+      "joined_text_preview": "This shows that on Thursday the feast has not yet begun; because one has to buy things for the feast before and not on t"
+    },
+    {
+      "paragraph_indexes": [
+        471,
+        473
+      ],
+      "pages": [
+        31,
+        32
+      ],
+      "joined_text_preview": "And Adam Clarke, in his commentary, states : “As the feast of unleavened bread did not begin till the day after the Pass"
+    },
+    {
+      "paragraph_indexes": [
+        521,
+        523
+      ],
+      "pages": [
+        34,
+        35
+      ],
+      "joined_text_preview": "Then He repeats the same words used by the Savior when He instituted the sacrament. “For I have received of the Lord whi"
+    },
+    {
+      "paragraph_indexes": [
+        614,
+        615,
+        616,
+        618,
+        619
+      ],
+      "pages": [
+        40
+      ],
+      "joined_text_preview": "The difference between this sacrament and that of penance is that the latter is administered for all Christians and for "
+    },
+    {
+      "paragraph_indexes": [
+        770,
+        772
+      ],
+      "pages": [
+        47,
+        48
+      ],
+      "joined_text_preview": "The ordained minister is given a divine gift appropriate to the service to which he is called. “Neglect not the gift tha"
+    }
+  ],
+  "outputs": {
+    "church_faith_and_order_search.jsonl": "one passage per line (search knowledge base)",
+    "church_faith_and_order_sections.json": "section rows for public.church_library_sections",
+    "church_faith_and_order_supabase_import.csv": "schema-compatible passage rows; book_id/version_id resolved at import",
+    "church_faith_and_order_aliases.json": "multilingual alias vocabulary (search metadata only)",
+    "church_faith_and_order_validation.md": "extraction quality and completeness checks",
+    "church_faith_and_order_search_tests.md": "retrieval test results"
+  },
+  "database_target": {
+    "tables": [
+      "public.church_library_books (existing row)",
+      "public.church_library_book_versions (existing active version)",
+      "public.church_library_sections",
+      "public.church_library_passages"
+    ],
+    "column_mapping": {
+      "chapter": "church_library_passages.chapter_reference",
+      "section": "church_library_passages.locator_label",
+      "page_start/page_end": "church_library_passages.page_start / page_end",
+      "passage_order": "church_library_passages.passage_order",
+      "content": "church_library_passages.content (search_document tsvector maintained by trigger)",
+      "search_keywords/search_aliases": "not stored per passage; aliases go to the proposed church_library_search_aliases table"
+    },
+    "import_tool": "scripts/import-church-library-passages.mjs (dry run by default; --apply needs service-role key)",
+    "public_retrieval_after_import": false
+  }
+}

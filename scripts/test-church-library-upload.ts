@@ -14,6 +14,7 @@ const MiB = 1024 * 1024
 const valid = [
   ['book.pdf', 'application/pdf'],
   ['book.epub', 'application/epub+zip'],
+  ['book.md', 'text/markdown'],
   ['book.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'],
   ['መጽሐፍ.txt', 'text/plain'],
 ] as const
@@ -22,7 +23,7 @@ for (const [name, type] of valid) {
   assert.equal(validateDocumentMetadata({ name, type, size: MiB }, 50 * MiB), type)
 }
 
-assert.throws(() => validateDocumentMetadata(undefined, 50 * MiB), /Choose an EPUB/)
+assert.throws(() => validateDocumentMetadata(undefined, 50 * MiB), /Choose a PDF/)
 assert.throws(() => validateDocumentMetadata({ name: undefined, type: 'application/pdf', size: 20 }, 50 * MiB), /Filename is required/)
 assert.throws(() => validateDocumentMetadata({ name: 'book.pdf', type: undefined, size: undefined }, 50 * MiB), /file size is unavailable/)
 assert.throws(() => validateDocumentMetadata({ name: 'book.pdf', type: 'text/plain', size: 20 }, 50 * MiB), /does not match/)

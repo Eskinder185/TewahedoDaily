@@ -165,7 +165,7 @@ export function PublicHymnSectionPage() {
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-        <Link to={params.get('language') ? `/practice/browse/${collectionSlug}?language=${encodeURIComponent(params.get('language')!)}` : `/practice/browse/${collectionSlug}`} className={s.viewAll}>
+        <Link to={params.get('language') ? `/hymns/browse/${collectionSlug}?language=${encodeURIComponent(params.get('language')!)}` : `/hymns/browse/${collectionSlug}`} className={s.viewAll}>
           ← {collectionHeading.primary || t('practice.collection')}
         </Link>
       </p>
@@ -268,7 +268,7 @@ export function PublicHymnSectionPage() {
             {items.map((item) => {
               const itemHeading = hymnSourceHeading(item.title, item.titleAmharic, locale)
               return (
-                <Link key={item.id} to={params.get('language') ? `/practice/mezmur/${item.slug}?language=${encodeURIComponent(params.get('language')!)}` : `/practice/mezmur/${item.slug}`} className={s.card}>
+                <Link key={item.id} to={params.get('language') ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(params.get('language')!)}` : `/hymns/mezmur/${item.slug}`} className={s.card}>
                   <CardArt item={item} />
                   <div className={s.cardBody}>
                     {itemHeading.secondary ? (

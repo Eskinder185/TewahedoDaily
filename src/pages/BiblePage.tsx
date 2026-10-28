@@ -438,12 +438,11 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     if (!el) return
     el.scrollIntoView({ block: 'center', behavior: 'smooth' })
   }, [result.loading, result.data, location.hash, ordinal, detail.book.slug])
-  if (!choice) return <p className={s.status}>{w.invalidChapter}</p>
   const primary = choice === 'both' ? am || en : selectedChapter
   const maxOrdinal = choice === 'both'
     ? Math.min(detail.chapters.am.length, detail.chapters.web.length)
-    : detail.byEdition[choice]?.length || 0
-  const pickerChapters = choice === 'both' ? detail.chapters.am.slice(0, maxOrdinal) : (detail.byEdition[choice] || []).slice(0, maxOrdinal)
+    : (choice ? detail.byEdition[choice]?.length : 0) || 0
+  const pickerChapters = choice === 'both' ? detail.chapters.am.slice(0, maxOrdinal) : (choice ? detail.byEdition[choice] || [] : []).slice(0, maxOrdinal)
   const setReading = (next: string) => {
     if (next === 'am') setLocale('am')
     if (next === 'web') setLocale('en')
@@ -465,20 +464,21 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     setFontScale(scale)
     try {
       localStorage.setItem('tewahedo_bible_font_scale', String(scale))
-    } catch {}
+    } catch { /* Text size remains available for this session. */ }
   }
 
+  if (!choice) return <p className={s.status}>{w.invalidChapter}</p>
   return <>
     <header className={`${s.hero} ${chromeHidden ? s.chromeHidden : ''}`.trim()}><p className={s.eyebrow}>{detail.book.collection === 'old' ? w.old : w.newer}</p><h1>{bookName(detail.book, uiLocale)} <span>{w.chapter} {primary?.chapter_number}</span></h1>{primary && (detail.sources.length > 1) && <p>{sourceName(primary.source, uiLocale)}</p>}</header>
     <aside className={s.liturgicalBanner} aria-label="Liturgical usage">
       <span>
-        <strong>{uiLocale === 'am' ? 'የቀኖና ንባብ' : 'Orthodox Lectionary'}</strong>
+        <strong>{uiLocale === 'am' ? 'የመጽሐፍ ቅዱስ ንባብ' : 'Scripture Reading'}</strong>
         {': '}
         {uiLocale === 'am'
-          ? 'በኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ስርዓተ አምልኮ የሚነበብ'
-          : 'Appointed for divine worship and liturgical reading in the Ethiopian Orthodox tradition.'}
+          ? 'ከቤተ ክርስቲያን ቀን መቁጠሪያ ጋር መጽሐፍ ቅዱስን ያንብቡ።'
+          : 'Read Scripture alongside the Church calendar. Calendar suggestions are provided for reflection.'}
       </span>
-      <Link to="/calendar" className={s.liturgicalBannerLink}>
+      <Link to={(() => { const target = new URLSearchParams(location.search).get('returnTo'); return target && /^\/calendar(?:\?|$)/.test(target) ? target : '/calendar' })()} className={s.liturgicalBannerLink}>
         {uiLocale === 'am' ? 'የቤተ ክርስቲያን ቀን መቁጠሪያ' : 'View Church Calendar'} →
       </Link>
     </aside>

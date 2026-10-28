@@ -535,7 +535,10 @@ export function SearchBuddy() {
                   onRetry={(query, topic) => startDocumentSearch(query, topic)}
                 />
                 {(selectedDomain === 'all' || selectedDomain === 'library') && (
-                  <ChurchLibrarySources outcome={libraryOutcome} />
+                  <ChurchLibrarySources
+                    outcome={libraryOutcome}
+                    showEmptyNotice={selectedDomain === 'library' || documentOutcome.kind !== 'idle'}
+                  />
                 )}
               </div>
             )}

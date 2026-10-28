@@ -343,16 +343,18 @@ export default function App() {
           </Suspense>
         } />
         <Route path="/hymns/browse/:collectionSlug/:sectionSlug" element={
-          <LegacyPathRedirect to="/practice/browse/:collectionSlug/:sectionSlug" />
+          <Suspense fallback={<PageLoadingFallback />}><PublicHymnSectionPage /></Suspense>
         } />
         <Route
           path="/hymns/browse/:slug"
-          element={<LegacyPathRedirect to="/practice/browse/:slug" />}
+          element={<Suspense fallback={<PageLoadingFallback />}><PublicHymnBrowseGroupPage /></Suspense>}
         />
-        <Route path="/hymns/occasion/:slug" element={<LegacyPathRedirect to="/practice/occasion/:slug" />} />
-        <Route path="/hymns/category/:slug" element={<LegacyPathRedirect to="/practice/category/:slug" />} />
-        <Route path="/hymns/singer/:slug" element={<LegacyPathRedirect to="/practice/zemari/:slug" />} />
-        <Route path="/hymns/zemari/:slug" element={<LegacyPathRedirect to="/practice/zemari/:slug" />} />
+        <Route path="/hymns/occasion/:slug" element={<Suspense fallback={<PageLoadingFallback />}><PublicHymnCollectionPage kind="occasion" /></Suspense>} />
+        <Route path="/hymns/category/:slug" element={<Suspense fallback={<PageLoadingFallback />}><PublicHymnCollectionPage kind="category" /></Suspense>} />
+        <Route path="/hymns/category/:collectionSlug/:sectionSlug" element={<Suspense fallback={<PageLoadingFallback />}><PublicHymnSectionPage /></Suspense>} />
+        <Route path="/hymns/singer/:slug" element={<Suspense fallback={<PageLoadingFallback />}><PublicHymnCollectionPage kind="singer" /></Suspense>} />
+        <Route path="/hymns/zemari/:slug" element={<Suspense fallback={<PageLoadingFallback />}><PublicHymnCollectionPage kind="singer" /></Suspense>} />
+        <Route path="/hymns/mezmur/:slug" element={<Suspense fallback={<PageLoadingFallback />}><PublicMezmurDetail /></Suspense>} />
         <Route path="/practice/browse/:collectionSlug/:sectionSlug" element={
           <Suspense fallback={<PageLoadingFallback />}>
             <PublicHymnSectionPage />

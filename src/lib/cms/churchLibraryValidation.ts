@@ -11,6 +11,8 @@ const DOCUMENT_MIME_BY_EXTENSION: Record<string, string> = {
   pdf: 'application/pdf',
   docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   txt: 'text/plain',
+  md: 'text/markdown',
+  markdown: 'text/markdown',
   epub: 'application/epub+zip',
 }
 
@@ -63,7 +65,7 @@ export function validateDocumentMetadata(
   maxBytes: number,
 ): string {
   if (!file || typeof file !== 'object') {
-    throw new Error('Choose an EPUB, PDF, DOCX, or UTF-8 TXT book file.')
+    throw new Error('Choose a PDF, DOCX, EPUB, UTF-8 TXT, or Markdown book file.')
   }
   const fileName = requiredText(file.name, 'Filename', 255)
   if (typeof file.size !== 'number' || !Number.isFinite(file.size)) {
@@ -76,12 +78,17 @@ export function validateDocumentMetadata(
   }
   const extension = fileName.split('.').pop()?.toLowerCase() || ''
   const expected = DOCUMENT_MIME_BY_EXTENSION[extension]
-  if (!expected) throw new Error('Only PDF, DOCX, UTF-8 TXT, and EPUB files are supported.')
+  if (!expected) throw new Error('Only PDF, DOCX, EPUB, UTF-8 TXT, and Markdown files are supported.')
   if (file.type !== undefined && typeof file.type !== 'string') {
     throw new Error('The selected file content type is invalid.')
   }
   const browserType = typeof file.type === 'string' ? file.type.trim().toLowerCase() : ''
-  if (browserType && browserType !== expected && !(extension === 'epub' && browserType === 'application/zip')) {
+  if (
+    browserType &&
+    browserType !== expected &&
+    !(extension === 'epub' && browserType === 'application/zip') &&
+    !(['md', 'markdown'].includes(extension) && browserType === 'text/plain')
+  ) {
     throw new Error(`The file content type does not match .${extension}.`)
   }
   return expected

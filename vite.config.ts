@@ -87,6 +87,14 @@ export default defineConfig({
         manualChunks(id) {
           const norm = id.replace(/\\/g, '/')
           if (norm.includes('node_modules')) {
+            // Parsers load only with document routes; never make initial public
+            // navigation download their implementation.
+            if (norm.includes('pdfjs-dist')) {
+              return 'pdf-vendor'
+            }
+            if (norm.includes('mammoth')) {
+              return 'document-vendor'
+            }
             if (norm.includes('react') || norm.includes('react-dom') || norm.includes('react-router')) {
               return 'react-vendor'
             }

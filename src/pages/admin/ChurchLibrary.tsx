@@ -32,7 +32,16 @@ import s from './Admin.module.css'
 import c from './ChurchLibrary.module.css'
 import { BuiltInDocumentReader } from '../../components/library/BuiltInDocumentReader'
 
-const EMPTY_NEW = { title: '', author: '', language: 'en' as const, category: '', description: '' }
+const EMPTY_NEW = {
+  title: '',
+  title_amharic: '',
+  author: '',
+  language: 'en' as const,
+  category: '',
+  document_type: 'book' as const,
+  publication_date: '',
+  description: '',
+}
 const VERIFIED_RIGHTS = new Set(['owned', 'licensed', 'public_domain', 'permission_granted'])
 
 export function ChurchLibrary() {
@@ -143,7 +152,7 @@ export function ChurchLibrary() {
       .filter((book) => {
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase()
-          const matchTitle = book.title.toLowerCase().includes(q)
+          const matchTitle = book.title.toLowerCase().includes(q) || (book.title_amharic || '').toLowerCase().includes(q)
           const matchAuthor = (book.author || '').toLowerCase().includes(q)
           const matchCategory = (book.category || '').toLowerCase().includes(q)
           const matchDesc = (book.description || '').toLowerCase().includes(q)
@@ -353,7 +362,7 @@ export function ChurchLibrary() {
             setReaderError(`Could not read DOCX: ${errorMessage(err)}`)
             setReaderLoading(false)
           })
-      } else if (mime.includes('plain') || fileName.endsWith('.txt')) {
+      } else if (mime.includes('plain') || mime.includes('markdown') || fileName.endsWith('.txt') || fileName.endsWith('.md') || fileName.endsWith('.markdown')) {
         setReaderLoading(true)
         setReaderError('')
         void fetchChurchLibraryDocumentBlob(storagePath)
@@ -413,9 +422,12 @@ export function ChurchLibrary() {
       if (!bookRecord) {
         bookRecord = await createChurchLibraryBook({
           title: newBook.title.trim(),
+          title_amharic: newBook.title_amharic.trim() || null,
           author: newBook.author.trim() || null,
           language: newBook.language,
           category: newBook.category.trim() || null,
+          document_type: newBook.document_type,
+          publication_date: newBook.publication_date || null,
           description: newBook.description.trim() || null,
         })
       }
@@ -618,8 +630,12 @@ export function ChurchLibrary() {
           <h2>Upload a book</h2>
           <div className={c.fieldGrid}>
             <label>
-              Title
+              Title (primary)
               <input value={newBook.title} onChange={(event) => setNewBook({ ...newBook, title: event.target.value })} />
+            </label>
+            <label>
+              Amharic title (optional)
+              <input value={newBook.title_amharic} onChange={(event) => setNewBook({ ...newBook, title_amharic: event.target.value })} />
             </label>
             <label>
               Author
@@ -641,6 +657,21 @@ export function ChurchLibrary() {
             <label>
               Category
               <input value={newBook.category} onChange={(event) => setNewBook({ ...newBook, category: event.target.value })} />
+            </label>
+            <label>
+              Resource type
+              <select value={newBook.document_type} onChange={(event) => setNewBook({ ...newBook, document_type: event.target.value as typeof newBook.document_type })}>
+                <option value="book">Book</option>
+                <option value="article">Article</option>
+                <option value="teaching">Teaching</option>
+                <option value="liturgy">Liturgy</option>
+                <option value="reference">Reference</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+            <label>
+              Original publication date (optional)
+              <input type="date" value={newBook.publication_date} onChange={(event) => setNewBook({ ...newBook, publication_date: event.target.value })} />
             </label>
             <label className={c.wide}>
               Description

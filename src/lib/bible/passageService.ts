@@ -7,7 +7,7 @@
  */
 
 import { supabase } from '../supabase/client'
-import type { BibleEdition, BibleChapter } from './bibleTypes'
+import type { BibleEdition, BibleChapter, SourceBook } from './bibleTypes'
 
 export interface BiblePassageVerse {
   id: string
@@ -88,13 +88,13 @@ export async function fetchBiblePassage(params: {
       return null
     }
 
-    // Match preferred edition or fallback to first available
-    let matchedSource = (sources as any[]).find((s: any) => s.bible_editions?.code === targetEditionCode)
+    // Never show an English edition under the Amharic label (or vice versa).
+    const matchedSource = (sources as unknown as (SourceBook & { bible_editions: BibleEdition | null })[]).find((s) => s.bible_editions?.code === targetEditionCode)
     if (!matchedSource) {
-      matchedSource = sources[0]
+      return null
     }
 
-    const edition = (matchedSource as any).bible_editions as BibleEdition
+    const edition = matchedSource.bible_editions
     if (!edition) {
       passageCache.set(cacheKey, null)
       return null

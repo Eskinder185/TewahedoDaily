@@ -305,7 +305,7 @@ export function PublicHymnCollectionPage({
     return (
       <section className={s.page}>
         <p className={s.backRow}>
-          <Link to={language ? `/practice?language=${encodeURIComponent(language)}` : '/practice'} className={s.viewAll}>
+          <Link to={language ? `/hymns?language=${encodeURIComponent(language)}` : '/hymns'} className={s.viewAll}>
             ← {t('practice.backToHymns')}
           </Link>
         </p>
@@ -324,7 +324,7 @@ export function PublicHymnCollectionPage({
         {!loading && !error && allCards.length === 0 ? (
           <p className={s.browseEmpty}>
             {kind === 'singers' ? t('practice.zemariEmpty') : t('practice.browseListEmpty')}{' '}
-            <Link to="/practice">{t('practice.backToHymns')}</Link>
+            <Link to="/hymns">{t('practice.backToHymns')}</Link>
           </p>
         ) : null}
         <div className={s.browseGrid}>
@@ -342,7 +342,7 @@ export function PublicHymnCollectionPage({
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-          <Link to={language ? `/practice?language=${encodeURIComponent(language)}` : '/practice'} className={s.viewAll}>
+          <Link to={language ? `/hymns?language=${encodeURIComponent(language)}` : '/hymns'} className={s.viewAll}>
           ← {t('practice.backToHymns')}
         </Link>
       </p>
@@ -446,7 +446,7 @@ export function PublicHymnCollectionPage({
             {items.map((item) => {
               const itemHeading = hymnSourceHeading(item.title, item.title_amharic, locale)
               return (
-                <Link key={item.id} to={language ? `/practice/mezmur/${item.slug}?language=${encodeURIComponent(language)}` : `/practice/mezmur/${item.slug}`} className={s.card}>
+                <Link key={item.id} to={language ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(language)}` : `/hymns/mezmur/${item.slug}`} className={s.card}>
                   <CardArt item={item} />
                   <div className={s.cardBody}>
                     {itemHeading.secondary ? (

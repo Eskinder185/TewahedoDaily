@@ -29,7 +29,7 @@ const configuredBucket =
 
 export const CHURCH_LIBRARY_BUCKET = configuredBucket?.trim() || 'church-library-originals'
 export const MAX_BOOK_BYTES = 100 * 1024 * 1024
-export const DOCUMENT_ACCEPT = '.pdf,.docx,.txt,.epub,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,application/epub+zip'
+export const DOCUMENT_ACCEPT = '.pdf,.docx,.txt,.md,.markdown,.epub,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,text/markdown,application/epub+zip'
 
 export type ChurchLibraryUploadPhase =
   | 'validating'
@@ -122,9 +122,13 @@ export function normalizeChurchLibraryBook(value: unknown): ChurchLibraryBook {
     ...row,
     id,
     title,
+    title_amharic: optionalText(row.title_amharic, 'Amharic title', 300),
     author: optionalText(row.author, 'Author', 300),
     language: normalizeLanguage(row.language),
     category: optionalText(row.category, 'Category', 160),
+    document_type: ['book', 'article', 'teaching', 'liturgy', 'reference', 'other'].includes(String(row.document_type))
+      ? row.document_type as ChurchLibraryBook['document_type'] : 'book',
+    publication_date: typeof row.publication_date === 'string' ? row.publication_date : null,
     description: optionalText(row.description, 'Description', 10_000),
     cover_storage_path: typeof row.cover_storage_path === 'string' ? row.cover_storage_path : null,
     original_publication_info: typeof row.original_publication_info === 'string' ? row.original_publication_info : null,
@@ -174,7 +178,7 @@ async function validateChurchLibraryFileContents(file: File, mimeType: string): 
   ) {
     throw new Error('The selected document is not a valid ZIP-based DOCX or EPUB file.')
   }
-  if (mimeType === 'text/plain') {
+  if (mimeType === 'text/plain' || mimeType === 'text/markdown') {
     if (bytes.includes(0)) throw new Error('TXT files must be plain UTF-8 text, not binary data.')
     try {
       new TextDecoder('utf-8', { fatal: true }).decode(bytes)
@@ -191,15 +195,20 @@ export async function listChurchLibraryBooks(): Promise<ChurchLibraryBook[]> {
 }
 
 export async function createChurchLibraryBook(
-  payload: Pick<ChurchLibraryBook, 'title' | 'author' | 'language' | 'category' | 'description'>,
+  payload: Pick<ChurchLibraryBook, 'title' | 'author' | 'language' | 'category' | 'description'> &
+    Partial<Pick<ChurchLibraryBook, 'title_amharic' | 'document_type' | 'publication_date'>>,
 ): Promise<ChurchLibraryBook> {
   const userId = await authenticatedStaffUserId()
   const validated = {
     title: requiredText(payload.title, 'Book title', 300),
+    title_amharic: optionalText(payload.title_amharic, 'Amharic title', 300),
     author: optionalText(payload.author, 'Author', 300),
     language: normalizeLanguage(payload.language),
     category: optionalText(payload.category, 'Category', 160),
     description: optionalText(payload.description, 'Description', 10_000),
+    document_type: ['book', 'article', 'teaching', 'liturgy', 'reference', 'other'].includes(String(payload.document_type))
+      ? payload.document_type : 'book',
+    publication_date: optionalText(payload.publication_date, 'Publication date', 10),
   }
   const { data, error } = await db().from('church_library_books').insert({
     ...validated,
@@ -214,9 +223,12 @@ export async function updateChurchLibraryBook(id: string, payload: Partial<Churc
   await authenticatedStaffUserId()
   const safe: CmsTables['church_library_books']['Update'] = {
     title: payload.title,
+    title_amharic: payload.title_amharic,
     author: payload.author,
     language: payload.language,
     category: payload.category,
+    document_type: payload.document_type,
+    publication_date: payload.publication_date,
     description: payload.description,
     cover_storage_path: payload.cover_storage_path,
     original_publication_info: payload.original_publication_info,
@@ -379,6 +391,32 @@ async function backendRequest<T>(path: string, init: RequestInit = {}): Promise<
 export async function processChurchLibraryBook(bookId: string): Promise<{ status: string; passage_count: number; notes?: string | null }> {
   const id = requireUuid(bookId, 'Book ID')
   await authenticatedStaffUserId()
+
+  // Extraction, OCR detection, chunking, and embedding generation are deliberately
+  // server-side work. The browser is allowed to upload a private original, but it
+  // must never claim that a large document was indexed when the worker is absent.
+  const workerBaseUrl = getAiApiBaseUrl()
+  if (workerBaseUrl) {
+    return backendRequest<{ status: string; passage_count: number; notes?: string | null }>(
+      `/api/church-library/books/${encodeURIComponent(id)}/process`,
+      { method: 'POST' },
+    )
+  }
+
+  // Keep this as a separate check so the legacy local parsing block below is
+  // unreachable at runtime while the transition remains source-compatible.
+  if (!getAiApiBaseUrl()) {
+    await db().from('church_library_books').update({
+      processing_status: 'pending',
+      ingestion_status: 'pending',
+      extraction_notes: 'Pending processing: the Church Library worker is not configured.',
+    }).eq('id', id)
+    return {
+      status: 'pending',
+      passage_count: 0,
+      notes: 'The private original was saved and is waiting for the Church Library processing worker.',
+    }
+  }
 
   // 1. Fetch book record
   const { data: book, error: bookErr } = await db()
@@ -642,7 +680,7 @@ export async function listChurchLibraryVersions(bookId: string): Promise<ChurchL
       throw result.error
     }
     return (result.data || []) as ChurchLibraryVersion[]
-  } catch (err) {
+  } catch (_err) {
     return []
   }
 }

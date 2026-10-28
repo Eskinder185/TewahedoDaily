@@ -41,10 +41,11 @@ import {
 } from '../../lib/cms/hymnTaxonomyImport'
 import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice, Media, MezmurPreview, Modal, Status } from './AdminUi'
+import { validateMezmurTitleLyrics } from '../../lib/mezmur/titleLyricsValidation'
 import s from './Admin.module.css'
 
 type FieldErrors = Partial<
-  Record<'title' | 'title_amharic' | 'slug' | 'lyrics_amharic' | 'transliteration', string>
+  Record<'transliteration_title' | 'title_amharic' | 'slug' | 'lyrics_amharic' | 'transliteration', string>
 >
 
 type EditorData = {
@@ -60,19 +61,19 @@ type EditorData = {
 
 function validatePublishFields(input: MezmurInput): { blocking: string; errors: FieldErrors } {
   const errors: FieldErrors = {}
-  if (!input.title.trim()) errors.title = 'Transliteration title is required to publish.'
+  if (!input.transliteration_title?.trim()) errors.transliteration_title = 'Transliterated title is required to publish.'
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(input.slug)) {
     errors.slug = 'Slug is required and must contain lowercase English letters, numbers, and single hyphens.'
   }
   if (!input.lyrics_amharic?.trim()) errors.lyrics_amharic = 'Amharic lyrics are required to publish.'
-  if (!input.title_amharic?.trim()) errors.title_amharic = 'Amharic title is strongly recommended before publishing.'
+  if (!input.title_amharic?.trim()) errors.title_amharic = 'Amharic title is required to publish.'
   if (!input.transliteration?.trim()) {
     errors.transliteration = 'Transliteration lyrics are strongly recommended before publishing.'
   }
 
   const blocking =
-    errors.title || errors.slug || errors.lyrics_amharic
-      ? [errors.title, errors.slug, errors.lyrics_amharic].filter(Boolean).join(' ')
+    errors.transliteration_title || errors.slug || errors.lyrics_amharic || errors.title_amharic
+      ? [errors.transliteration_title, errors.slug, errors.lyrics_amharic, errors.title_amharic].filter(Boolean).join(' ')
       : ''
   return { blocking, errors }
 }
@@ -250,14 +251,25 @@ function EditorForm({ initial }: { initial: EditorData }) {
         return
       }
       const { blocking, errors } = validatePublishFields(input)
+      for (const issue of validateMezmurTitleLyrics({
+        title_amharic: input.title_amharic,
+        transliteration_title: input.transliteration_title,
+        lyrics_amharic: input.lyrics_amharic,
+        lyrics_transliteration: input.transliteration,
+      })) {
+        if (issue.severity === 'error' && issue.field in errors) {
+          errors[issue.field as keyof FieldErrors] = issue.message
+        }
+      }
       setFieldErrors(errors)
-      if (blocking) {
-        setError(blocking)
+      const titleLyricsBlocking = Object.values(errors).filter(Boolean).join(' ')
+      if (blocking || titleLyricsBlocking) {
+        setError(titleLyricsBlocking || blocking)
         return
       }
-    } else if (!input.title.trim()) {
-      setFieldErrors({ title: 'Transliteration title is required.' })
-      setError('Transliteration title is required.')
+    } else if (!input.transliteration_title?.trim()) {
+      setFieldErrors({ transliteration_title: 'Transliterated title is required.' })
+      setError('Transliterated title is required.')
       return
     } else if (input.slug && !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(input.slug)) {
       setFieldErrors({ slug: 'Slug must contain lowercase English letters, numbers, and single hyphens.' })
@@ -445,7 +457,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   <div><span className={s.step}>1</span><h2>Basic information</h2></div>
                   <p>Names and a short description used throughout the site.</p>
                 </div>
-                {textField('title', 'Transliteration title', false, undefined, true)}
+                {textField('transliteration_title', 'Transliterated title', false, undefined, true)}
                 {textField('title_amharic', 'Amharic title', false, 'am', true)}
                 <label>
                   Slug *
@@ -457,7 +469,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                 </label>
                 <div className={s.actions}>
                   <small id="slug-help">Lowercase English letters, numbers, and hyphens.</small>
-                  <button type="button" onClick={() => set('slug', slugify(input.title))}>
+                  <button type="button" onClick={() => set('slug', slugify(input.transliteration_title || ''))}>
                     Generate from title
                   </button>
                 </div>
@@ -660,7 +672,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   CMS role: {profile?.role || 'none'} · Status: {mezmurStatusLabel(currentStatus)}
                 </p>
                 <p className={s.muted}>
-                  Drafts are private. Publishing requires a title, slug, and Amharic lyrics.
+                  Drafts are private. Publishing requires both titles, a slug, and hymn content.
                 </p>
               </section>
             </aside>
@@ -837,7 +849,7 @@ function VersionHistory({ id, restore }: { id: string; restore?: (version: Versi
             </summary>
             {previous && (
               <div className={s.stack} style={{ marginTop: 8 }}>
-                <p><strong>Title:</strong> {previous.input.title || '—'}</p>
+                <p><strong>Transliterated title:</strong> {previous.input.transliteration_title || '—'}</p>
                 {previous.input.title_amharic && <p lang="am"><strong>Amharic title:</strong> {previous.input.title_amharic}</p>}
                 <p><strong>Status:</strong> {mezmurStatusLabel(previous.input.status)}</p>
               </div>

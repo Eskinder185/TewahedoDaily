@@ -7,6 +7,7 @@ import styles from './PublicChurchLibrary.module.css'
 export type PublicBook = {
   id: string
   title: string
+  title_amharic?: string | null
   author: string | null
   language: string
   category: string | null
@@ -34,12 +35,25 @@ export function PublicChurchLibrary() {
       }
       setLoading(true)
       try {
-        const { data, error } = await supabase
+        const result = await supabase
           .from('church_library_books')
-          .select('id, title, author, language, category, description, cover_storage_path, storage_path, current_version_id')
+          .select('id, title, title_amharic, author, language, category, description, cover_storage_path, storage_path, current_version_id')
           .eq('public_retrieval_enabled', true)
           .eq('processing_status', 'ready')
           .order('title', { ascending: true })
+
+        // Keep the public catalog working while the additive metadata migration
+        // is waiting to be applied to an older linked project.
+        const fallback = result.error?.code === '42703' || result.error?.code === 'PGRST204'
+          ? await supabase
+            .from('church_library_books')
+            .select('id, title, author, language, category, description, cover_storage_path, storage_path, current_version_id')
+            .eq('public_retrieval_enabled', true)
+            .eq('processing_status', 'ready')
+            .order('title', { ascending: true })
+          : null
+        const data = fallback?.data || result.data
+        const error = fallback?.error || result.error
 
         if (!cancelled) {
           if (!error && data) {
@@ -71,6 +85,7 @@ export function PublicChurchLibrary() {
       const matchQuery =
         !query ||
         book.title.toLowerCase().includes(query) ||
+        (book.title_amharic && book.title_amharic.toLowerCase().includes(query)) ||
         (book.author && book.author.toLowerCase().includes(query)) ||
         (book.description && book.description.toLowerCase().includes(query))
 
@@ -133,6 +148,7 @@ export function PublicChurchLibrary() {
                   <h2 className={styles.cardTitle}>{book.title}</h2>
                   <span className={styles.badge}>{book.language.toUpperCase()}</span>
                 </div>
+                {book.title_amharic ? <p className={styles.cardAuthor}>{book.title_amharic}</p> : null}
                 {book.author ? <p className={styles.cardAuthor}>{book.author}</p> : null}
                 {book.description ? <p className={styles.description}>{book.description}</p> : null}
               </div>

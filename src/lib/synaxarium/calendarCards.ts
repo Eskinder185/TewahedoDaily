@@ -48,6 +48,9 @@ type SynaxDb = {
 }
 
 const db = supabase as unknown as SupabaseClient<SynaxDb> | null
+const LINKING_CARDS_TTL_MS = 5 * 60 * 1000
+const linkingCardsCache = new Map<string, { at: number; cards: CalendarCard[] }>()
+const linkingCardsInFlight = new Map<string, Promise<CalendarCard[]>>()
 
 function stripLocal(d: Date): Date {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate())
@@ -151,7 +154,48 @@ export async function getCalendarCards(options?: {
  * All published calendar_cards for public page image / override linking.
  * Does not require `featured` — used by the selected-date Calendar Card strip.
  */
+export function invalidatePublishedCalendarCardsCache() {
+  linkingCardsCache.clear()
+  linkingCardsInFlight.clear()
+}
+
+/**
+ * Reuse the same public-card response across the Calendar shell, timeline,
+ * and Homepage.  The card projection is sizeable and does not need a second
+ * REST request while the visitor remains on the same civil day.
+ */
 export async function getPublishedCalendarCardsForLinking(options?: {
+  from?: Date
+  limit?: number
+  force?: boolean
+}): Promise<CalendarCard[]> {
+  const from = stripLocal(options?.from ?? new Date())
+  const limit = Math.min(Math.max(options?.limit ?? 500, 100), 1000)
+  const key = `${from.toISOString().slice(0, 10)}:${limit}`
+  const cached = linkingCardsCache.get(key)
+
+  if (!options?.force && cached && Date.now() - cached.at < LINKING_CARDS_TTL_MS) {
+    return cached.cards
+  }
+
+  const existing = linkingCardsInFlight.get(key)
+  if (!options?.force && existing) return existing
+
+  const request = fetchPublishedCalendarCardsForLinking({ from, limit })
+    .then((cards) => {
+      linkingCardsCache.set(key, { at: Date.now(), cards })
+      return cards
+    })
+    .finally(() => {
+      // A forced refresh may have replaced this request while it was pending.
+      if (linkingCardsInFlight.get(key) === request) linkingCardsInFlight.delete(key)
+    })
+
+  linkingCardsInFlight.set(key, request)
+  return request
+}
+
+async function fetchPublishedCalendarCardsForLinking(options?: {
   from?: Date
   limit?: number
 }): Promise<CalendarCard[]> {

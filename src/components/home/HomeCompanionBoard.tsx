@@ -7,7 +7,7 @@ import {
   ETHIOPIAN_MONTH_NAMES_AM,
   formatGregorianMonth,
 } from '../../lib/calendar/calendarDateLabels'
-import { prefetchPrimaryNav, prefetchRoute } from '../../lib/routePrefetch'
+import { prefetchRoute } from '../../lib/routePrefetch'
 import { ETHIOPIAN_MONTH_NAMES, gregorianToEthiopian } from '../../lib/ethiopianDate'
 import { addDays, toIsoLocalDate } from '../../lib/churchCalendar/pascha'
 import { useTranslation } from '../../i18n'
@@ -224,7 +224,6 @@ export function HomeCompanionBoard() {
       setEventIndex(0)
       setIncomingIndex(next.length > 1 ? 1 : 0)
       setLoading(false)
-      prefetchPrimaryNav()
     } catch {
       if (token !== requestRef.current) return
       setEvents([])

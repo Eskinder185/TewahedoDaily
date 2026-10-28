@@ -3,7 +3,8 @@
  * Tests:
  * 1. Document Parsers: TXT, DOCX, EPUB, PDF extraction and chunking.
  * 2. Deterministic Bible & SearchSite routing across all 7 domains.
- * 3. SearchBuddy Church Library retrieval without remote AI server.
+ * 3. SearchBuddy Church Library retrieval through the optional server gateway
+ *    with a retrieval-gated Supabase fallback.
  * 4. Playwright E2E journeys on Desktop (1280px) and Mobile (390px).
  */
 
@@ -75,20 +76,21 @@ ET
   console.log('✓ PDF text stream parser passed.')
 }
 
-console.log('\n=== STEP 2: VERIFYING ZERO AI SERVER DEPENDENCY IN SEARCH ===')
+console.log('\n=== STEP 2: VERIFYING RETRIEVAL-GATED CHURCH LIBRARY SEARCH ===')
 
-// 4. Church Library Search operates via Supabase
+// 4. Church Library Search returns only the approved-excerpt response shape.
 {
   const res = await searchChurchLibrary('Faith')
   assert.equal(res.type, 'church_library_search')
   assert.equal(Array.isArray(res.results), true)
   assert.ok(
-    res.semantic_status === 'supabase_fts' ||
-      res.semantic_status === 'supabase_ilike' ||
+      res.semantic_status.startsWith('enabled:') ||
+      res.semantic_status === 'disabled_or_not_approved_for_this_language' ||
+      res.semantic_status === 'supabase_fts' ||
       res.semantic_status === 'no_matches' ||
       res.semantic_status === 'supabase_unavailable',
   )
-  console.log(`✓ Church Library search executed directly against Supabase (status: ${res.semantic_status}).`)
+  console.log(`✓ Church Library search used an approved retrieval path (status: ${res.semantic_status}).`)
 }
 
 // 5. Deterministic Bible reference parsing
@@ -103,12 +105,15 @@ console.log('\n=== STEP 2: VERIFYING ZERO AI SERVER DEPENDENCY IN SEARCH ===')
   console.log('✓ Deterministic Bible reference parsing passed.')
 }
 
-// 6. Inspect codebase to ensure no AI chat endpoints are called from SearchBuddy
+// 6. Search Buddy may use the Church Library's dedicated excerpt-only endpoint,
+// but must never invoke a generic chat endpoint for source retrieval.
 {
   const sbSrc = readFileSync(resolve('src/components/search/SearchBuddy.tsx'), 'utf8')
   assert.equal(sbSrc.includes('/api/chat'), false, 'SearchBuddy must NOT call /api/chat')
-  assert.equal(sbSrc.includes('/api/church-library/search'), false, 'SearchBuddy must NOT call remote AI /api/church-library/search')
-  console.log('✓ SearchBuddy source verified free of remote AI endpoints.')
+  const retrievalSrc = readFileSync(resolve('src/lib/searchBuddy/churchLibrarySearch.ts'), 'utf8')
+  assert.equal(retrievalSrc.includes('/api/church-library/search'), true, 'Church Library should use the dedicated retrieval gateway when configured')
+  assert.equal(retrievalSrc.includes('church_library_passages'), false, 'Browser fallback must not query raw passages directly')
+  console.log('✓ SearchBuddy source verified to use only the dedicated retrieval gateway or gated RPC.')
 }
 
 console.log('\n=== STEP 3: PLAYWRIGHT E2E BROWSER VERIFICATION ===')

@@ -142,7 +142,7 @@ export function ChurchDayDetailBody({
             <p className={styles.linkCardK}>{t('read')}</p>
             <p className={styles.linkCardT}>{tr('calendar.today.psalmsCard')}</p>
           </Link>
-          <Link className={styles.linkCard} to="/practice">
+          <Link className={styles.linkCard} to="/hymns">
             <figure className={styles.linkCardFigure}>
               <CalendarImage
                 src={calendarImageManifest.support.sacredCalendarContinuity}

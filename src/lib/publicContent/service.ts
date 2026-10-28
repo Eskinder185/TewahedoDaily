@@ -46,6 +46,7 @@ export type PublicMezmur = CmsTables['mezmur']['Row'] &
     lyrics_geez?: string | null
     lyrics_transliteration?: string | null
     lyrics_tigrinya?: string | null
+    transliteration_title?: string | null
     primary_language?: string | null
     has_stored_lyrics?: boolean | null
   }
@@ -218,6 +219,7 @@ export async function detail(slug: string): Promise<PublicMezmur | null> {
         slug: imported.slug,
         title: imported.title,
         title_amharic: imported.title_amharic,
+        transliteration_title: imported.transliteration_title || imported.title,
         title_oromo: null,
         description: imported.description,
         lyrics_amharic: imported.lyrics_amharic,
@@ -366,16 +368,15 @@ export function publicMezmurToPracticePayload(item: PublicMezmur, youtubeUrl?: s
   const activeUrl = youtubeUrl || item.youtube_url || ''
   const videoId = parseYoutubeVideoId(activeUrl)
   const lyricsGez = item.lyrics_amharic?.trim() || ''
-  const transliterationLyrics = item.transliteration?.trim() || ''
-  const lyricsEnglish =
-    item.lyrics_english?.trim() ||
-    // Some English mezmurs store readable English under transliteration only (TD-11).
-    (!lyricsGez && transliterationLyrics ? transliterationLyrics : undefined)
+  const transliterationLyrics = (item.lyrics_transliteration || item.transliteration)?.trim() || ''
+  // Never reinterpret transliteration as English lyrics. Each reading is
+  // displayed only from its dedicated stored field.
+  const lyricsEnglish = item.lyrics_english?.trim() || undefined
   return {
     form: item.form || 'mezmur',
     entryId: item.id,
-    title: item.title,
-    transliterationTitle: item.title,
+    title: item.title_amharic?.trim() || item.title,
+    transliterationTitle: item.transliteration_title?.trim() || item.title,
     titleAmharic: item.title_amharic?.trim() || undefined,
     lyricsGez,
     transliterationLyrics,

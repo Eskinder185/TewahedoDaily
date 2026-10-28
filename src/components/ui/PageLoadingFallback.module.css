@@ -1,30 +1,32 @@
 .container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  min-height: 0;
-  padding: 0.85rem 1rem 0.35rem;
+  justify-content: center;
+  /* Keep route changes calm on a phone while the lazy chunk is requested. */
+  min-height: min(18rem, 42dvh);
+  padding: 1.25rem;
 }
 
 .spinner {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  color: var(--color-text-muted);
 }
 
 .spinner::before {
   content: "";
   width: 0.85rem;
   height: 0.85rem;
-  border: 2px solid var(--color-surface-tint);
-  border-top-color: var(--color-primary);
+  border: 2px solid var(--color-border-strong);
+  border-top-color: var(--color-gold);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
 .text {
   font-size: 0.8rem;
-  color: var(--color-text-dim);
+  color: var(--color-text-muted);
   font-weight: 500;
 }
 
@@ -37,6 +39,6 @@
 @media (prefers-reduced-motion: reduce) {
   .spinner::before {
     animation: none;
-    border-top-color: var(--color-surface-tint);
+    border-top-color: var(--color-border-strong);
   }
 }

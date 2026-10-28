@@ -27,6 +27,7 @@ export {
   formatCommemorationTypeLabel,
   getCalendarCards,
   getPublishedCalendarCardsForLinking,
+  invalidatePublishedCalendarCardsCache,
   getHomepageCalendarCards,
   imagePositionToObjectPosition,
   localizedCardText,

@@ -1,7 +1,11 @@
 /**
  * Canonical mezmur classification taxonomy for public.mezmur
  * (language, form, category, occasion).
+ *
+ * Multilingual aliases (Amharic, Ge'ez, English, transliterations, titles)
+ * live in `src/lib/mezmur/taxonomyAliases.ts` and resolve to these labels.
  */
+import { resolveTaxonomyTerms, searchVariantsFor } from '../mezmur/aliasMatcher'
 
 export const CANONICAL_CATEGORIES = [
   'Jesus Christ',
@@ -207,14 +211,42 @@ function resolveFromList<T extends string>(
   return aliases[key] || null
 }
 
+/** Resolve any multilingual alias ("Mikael", "ቅዱስ ሚካኤል", "Nativity", "ገና") to a canonical label. */
+function resolveViaAliasDictionary<T extends string>(raw: string, kind: 'category' | 'occasion', canonical: readonly T[]): T | null {
+  const match = resolveTaxonomyTerms(raw, { exactOnly: true }).find((m) => m.kind === kind)
+  if (!match) return null
+  return canonical.find((item) => item === match.canonical) || null
+}
+
 export function canonicalizeCategory(raw: string | null | undefined): CanonicalCategory | null {
   if (!raw) return null
-  return resolveFromList(raw, CANONICAL_CATEGORIES, CATEGORY_ALIASES)
+  return (
+    resolveFromList(raw, CANONICAL_CATEGORIES, CATEGORY_ALIASES) ||
+    resolveViaAliasDictionary(raw, 'category', CANONICAL_CATEGORIES)
+  )
 }
 
 export function canonicalizeOccasion(raw: string | null | undefined): CanonicalOccasion | null {
   if (!raw) return null
-  return resolveFromList(raw, CANONICAL_OCCASIONS, OCCASION_ALIASES)
+  return (
+    resolveFromList(raw, CANONICAL_OCCASIONS, OCCASION_ALIASES) ||
+    resolveViaAliasDictionary(raw, 'occasion', CANONICAL_OCCASIONS)
+  )
+}
+
+/**
+ * Taxonomy entries a free-text search query refers to (by any alias).
+ * e.g. "Saint Michael" → [{ kind: 'category', canonical: 'Kidus Michael' }].
+ */
+export function resolveTaxonomyQuery(query: string): { kind: 'category' | 'occasion'; canonical: string }[] {
+  if (isNaClassification(query)) return []
+  // Exact names / titles / transliterations only — a contextual clue (e.g. ጽዮን) is not a category search
+  return resolveTaxonomyTerms(query, { exactOnly: true }).map((m) => ({ kind: m.kind, canonical: m.canonical }))
+}
+
+/** Normalized alias strings (Ethiopic + Latin) that identify a canonical entry in titles/keywords. */
+export function taxonomySearchVariants(kind: 'category' | 'occasion', canonical: string) {
+  return searchVariantsFor(kind, canonical)
 }
 
 /** Values to match in Supabase for a selected filter (canonical + known legacy forms). */

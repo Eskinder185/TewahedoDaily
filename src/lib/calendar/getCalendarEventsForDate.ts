@@ -4,6 +4,7 @@
  */
 import {
   getPublishedCalendarCardsForLinking,
+  invalidatePublishedCalendarCardsCache,
   type CalendarCard,
 } from '../synaxarium/synaxariumService'
 import type { DayChurchContext } from '../../services/dayChurchContext'
@@ -44,6 +45,7 @@ const CARDS_TTL_MS = 5 * 60 * 1000
 /** Clear in-memory calendar_cards cache (call after Admin mutations). */
 export function invalidateCalendarCardsCache() {
   cardsCache = null
+  invalidatePublishedCalendarCardsCache()
 }
 
 async function loadCardsCached(options?: { force?: boolean }): Promise<CalendarCard[]> {
@@ -57,7 +59,7 @@ async function loadCardsCached(options?: { force?: boolean }): Promise<CalendarC
     cardsCache = { at: now, cards }
     return cards
   } catch (cause) {
-    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getCalendarEventsForDate] cards', cause)
+    if (typeof import.meta !== 'undefined' && import.meta?.env?.DEV) console.error('[getCalendarEventsForDate] cards', cause)
     return cardsCache?.cards || []
   }
 }
@@ -65,7 +67,9 @@ async function loadCardsCached(options?: { force?: boolean }): Promise<CalendarC
 /** Force-refresh published cards for public Calendar / Homepage. */
 export async function refreshPublishedCalendarCards(): Promise<CalendarCard[]> {
   invalidateCalendarCardsCache()
-  return loadCardsCached({ force: true })
+  const cards = await getPublishedCalendarCardsForLinking({ limit: 500, force: true })
+  cardsCache = { at: Date.now(), cards }
+  return cards
 }
 
 function formatGregorianShort(d: Date): string {
@@ -115,7 +119,7 @@ export async function getCalendarEventsForDate(
       surface: 'calendar',
     })
   } catch (cause) {
-    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getCalendarEventsForDate] present', cause)
+    if (typeof import.meta !== 'undefined' && import.meta?.env?.DEV) console.error('[getCalendarEventsForDate] present', cause)
     events = []
   }
 
@@ -152,7 +156,7 @@ export async function getHomepageTodayEvents(
       { occurrenceDate: start, surface: 'homepage' },
     )
   } catch (cause) {
-    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getHomepageTodayEvents] present', cause)
+    if (typeof import.meta !== 'undefined' && import.meta?.env?.DEV) console.error('[getHomepageTodayEvents] present', cause)
     return []
   }
 }
@@ -164,7 +168,7 @@ export function eventsFromDayContext(
   try {
     return presentEventsForDayContext(context, asResolvedCards(cards))
   } catch (cause) {
-    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[eventsFromDayContext]', cause)
+    if (typeof import.meta !== 'undefined' && import.meta?.env?.DEV) console.error('[eventsFromDayContext]', cause)
     return []
   }
 }
@@ -210,7 +214,7 @@ export async function getCalendarEventsForRange(
         { occurrenceDate: day, surface: 'calendar' },
       )
     } catch (cause) {
-      if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) console.error('[getCalendarEventsForRange] present', cause)
+      if (typeof import.meta !== 'undefined' && import.meta?.env?.DEV) console.error('[getCalendarEventsForRange] present', cause)
       events = []
     }
 

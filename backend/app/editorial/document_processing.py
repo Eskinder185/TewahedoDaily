@@ -21,6 +21,7 @@ SUPPORTED_MIME_TYPES = {
     "application/pdf",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     "text/plain",
+    "text/markdown",
     "application/epub+zip",
 }
 MAX_DOCUMENT_BYTES = 50 * 1024 * 1024
@@ -211,7 +212,7 @@ def _extract_epub(data: bytes) -> tuple[list[ExtractedUnit], None]:
 
 def extract_document(data: bytes, mime_type: str) -> ExtractionResult:
     if mime_type not in SUPPORTED_MIME_TYPES:
-        raise ExtractionError("unsupported_type", "Only PDF, DOCX, UTF-8 TXT, and EPUB files are supported.")
+        raise ExtractionError("unsupported_type", "Only PDF, DOCX, EPUB, UTF-8 TXT, and Markdown files are supported.")
     if not data:
         raise ExtractionError("empty_file", "The uploaded document is empty.")
     if len(data) > MAX_DOCUMENT_BYTES:
@@ -225,7 +226,7 @@ def extract_document(data: bytes, mime_type: str) -> ExtractionResult:
         raise ExtractionError("archive_signature_mismatch", "The uploaded DOCX or EPUB is not a ZIP-based document.")
     if mime_type == "application/pdf":
         units, page_count = _extract_pdf(data)
-    elif mime_type == "text/plain":
+    elif mime_type in {"text/plain", "text/markdown"}:
         units, page_count = _extract_txt(data)
     elif mime_type == "application/epub+zip":
         units, page_count = _extract_epub(data)

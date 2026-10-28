@@ -60,6 +60,12 @@ def test_utf8_txt_preserves_ethiopic_and_page_locators():
     assert detect_language(result.units[0].text, "am") == "am"
 
 
+def test_markdown_is_extracted_as_utf8_text_without_losing_ethiopic_content():
+    result = extract_document("# መግቢያ\n\nይህ የሙከራ ማብራሪያ ነው።".encode(), "text/markdown")
+    assert result.quality == "good"
+    assert "መግቢያ" in result.units[0].text
+
+
 def test_txt_rejects_unknown_encoding_instead_of_corrupting_text():
     try:
         extract_document(b"\xff\xfe\xfa", "text/plain")

@@ -6,41 +6,41 @@
   },
   "checks": {
     "language": {
-      "menuButtonVisible": false,
-      "menuButtonCount": 0,
+      "menuButtonVisible": true,
+      "menuButtonCount": 1,
       "headerRadioVisible": false,
       "headerRadioCount": 0,
       "hamburgerVisible": true,
-      "triggerText": "",
+      "triggerText": "EN",
       "drawer": {
         "hasEnglish": true,
         "hasAmharic": true,
         "hasOromo": false,
-        "hasBoth": true
+        "hasBoth": false
       }
     },
     "calendar": {
-      "prevMonth": 1,
-      "nextMonth": 1,
-      "prevDay": 0,
-      "nextDay": 0,
-      "openDetailsButtons": 64,
+      "prevMonth": 0,
+      "nextMonth": 0,
+      "prevDay": 1,
+      "nextDay": 1,
+      "openDetailsButtons": 61,
       "detail": {
         "opened": true,
-        "height": 776,
-        "heightVh": 92,
-        "top": -234,
-        "closeVisible": false,
-        "closeMin": 36,
-        "overflowY": "visible",
-        "maxHeight": "776.48px"
+        "height": 608,
+        "heightVh": 72,
+        "top": 236,
+        "closeVisible": true,
+        "closeMin": 48,
+        "overflowY": "auto",
+        "maxHeight": "607.68px"
       },
       "backBehavior": {
-        "urlBefore": "https://tewahedodaily.pages.dev/calendar",
-        "urlAfter": "https://tewahedodaily.pages.dev/",
+        "urlBefore": "https://tewahedodaily.pages.dev/calendar?date=2026-10-20",
+        "urlAfter": "https://tewahedodaily.pages.dev/calendar?date=2026-10-20",
         "dialogStillOpen": false,
-        "stayedOnCalendar": false,
-        "closedDetail": false
+        "stayedOnCalendar": true,
+        "closedDetail": true
       }
     },
     "bible": {
@@ -51,82 +51,12 @@
       }
     },
     "touch": {
-      "sampled": 27,
+      "sampled": 14,
       "undersized": [
         {
           "text": "Tewahedo DailyQuiet liturgical studio",
-          "w": 256,
+          "w": 192,
           "h": 32
-        },
-        {
-          "text": "Portfolio - eskinder.dev",
-          "w": 188,
-          "h": 39
-        },
-        {
-          "text": "About",
-          "w": 43,
-          "h": 34
-        },
-        {
-          "text": "Saints",
-          "w": 43,
-          "h": 34
-        },
-        {
-          "text": "Feasts",
-          "w": 44,
-          "h": 34
-        },
-        {
-          "text": "Bible",
-          "w": 37,
-          "h": 34
-        },
-        {
-          "text": "Learn",
-          "w": 40,
-          "h": 34
-        },
-        {
-          "text": "Legal",
-          "w": 38,
-          "h": 34
-        },
-        {
-          "text": "Copyright",
-          "w": 66,
-          "h": 34
-        },
-        {
-          "text": "Privacy",
-          "w": 50,
-          "h": 34
-        },
-        {
-          "text": "Removal",
-          "w": 59,
-          "h": 34
-        },
-        {
-          "text": "Suggest a correction",
-          "w": 132,
-          "h": 34
-        },
-        {
-          "text": "Submit a Mezmur",
-          "w": 115,
-          "h": 34
-        },
-        {
-          "text": "Saved",
-          "w": 43,
-          "h": 34
-        },
-        {
-          "text": "Admin Login",
-          "w": 104,
-          "h": 34
         }
       ]
     }

@@ -12,7 +12,7 @@
     "pray": "Pray",
     "keepDay": "Calendar",
     "todayPath": "Today in the Church",
-    "modeLearnDesc": "Practice chants and movement",
+    "modeLearnDesc": "Browse and practice hymns",
     "modePrayDesc": "Read daily prayers and sacred texts",
     "modeKeepDayDesc": "Follow the season, feast, and observance",
     "primaryNav": "Primary navigation",
@@ -1127,7 +1127,8 @@
     "churchLibraryUnavailable": "Church Library sources are temporarily unavailable.",
     "churchLibrarySources": "Church Library sources",
     "churchLibraryNote": "These are short, permission-checked excerpts from indexed books. Verify teaching in context.",
-    "churchLibraryOpenSource": "Open permitted source"
+    "churchLibraryOpenSource": "Open permitted source",
+    "churchLibraryNoEvidence": "The Church Library has no indexed passage that answers this question, so Search Buddy cannot cite a Church document for it."
   },
   "a11y": {
     "skipToMain": "Skip to main content"

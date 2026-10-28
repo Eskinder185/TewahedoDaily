@@ -12,7 +12,7 @@
     "pray": "ይጸልዩ",
     "keepDay": "ቀን መቁጠሪያ",
     "todayPath": "ዛሬ በቤተክርስቲያን",
-    "modeLearnDesc": "መዝሙርንና እንቅስቃሴን ይለማመዱ",
+    "modeLearnDesc": "መዝሙራትን ይዳስሱ እና ይለማመዱ",
     "modePrayDesc": "የዕለት ጸሎቶችንና ቅዱስ ንባቦችን ያንብቡ",
     "modeKeepDayDesc": "ወቅቱን፣ በዓሉንና መታሰቢያውን ይከታተሉ",
     "primaryNav": "ዋና አሰሳ",
@@ -1131,7 +1131,8 @@
     "churchLibraryUnavailable": "የቤተ መጻሕፍት ምንጮች ለጊዜው አይገኙም።",
     "churchLibrarySources": "የቤተ መጻሕፍት ምንጮች",
     "churchLibraryNote": "እነዚህ ከተመዘገቡ መጻሕፍት የተወሰዱ አጫጭር ጥቅሶች ናቸው። ትምህርቱን በሙሉ ይዘት ያረጋግጡ።",
-    "churchLibraryOpenSource": "የተፈቀደውን ምንጭ ክፈት"
+    "churchLibraryOpenSource": "የተፈቀደውን ምንጭ ክፈት",
+    "churchLibraryNoEvidence": "በቤተ መጻሕፍቱ ውስጥ ይህንን ጥያቄ የሚመልስ የተመዘገበ ምንባብ ስላልተገኘ፣ ለዚህ መልስ የቤተ ክርስቲያን ሰነድ መጥቀስ አይቻልም።"
   },
   "account": {
     "signIn": "ግባ",

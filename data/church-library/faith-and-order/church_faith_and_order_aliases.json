@@ -1,0 +1,1228 @@
+[
+  {
+    "alias": "ቅድስት ሥላሴ",
+    "topic": "holy_trinity",
+    "script": "ethiopic",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "ሥላሴ",
+    "topic": "holy_trinity",
+    "script": "ethiopic",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "ምሥጢረ ሥላሴ",
+    "topic": "holy_trinity",
+    "script": "ethiopic",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "አንድነትና ሦስትነት",
+    "topic": "holy_trinity",
+    "script": "ethiopic",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "Kidist Selassie",
+    "topic": "holy_trinity",
+    "script": "latin",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "Selassie",
+    "topic": "holy_trinity",
+    "script": "latin",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "Sillase",
+    "topic": "holy_trinity",
+    "script": "latin",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "Mistire Sillase",
+    "topic": "holy_trinity",
+    "script": "latin",
+    "expansion": [
+      "trinity",
+      "godhead",
+      "three persons"
+    ],
+    "note": "ሥላሴ is the standard EOTC term for the Holy Trinity. 'Selassie' also appears in personal names; aliases are attached only to passages that discuss the Trinity."
+  },
+  {
+    "alias": "መለኮት",
+    "topic": "godhead_persons",
+    "script": "ethiopic",
+    "expansion": [
+      "godhead",
+      "persons"
+    ],
+    "note": "The source itself transliterates these as 'Melekote' and 'Akal'; the Ethiopic spellings are added as aliases only."
+  },
+  {
+    "alias": "አካል",
+    "topic": "godhead_persons",
+    "script": "ethiopic",
+    "expansion": [
+      "godhead",
+      "persons"
+    ],
+    "note": "The source itself transliterates these as 'Melekote' and 'Akal'; the Ethiopic spellings are added as aliases only."
+  },
+  {
+    "alias": "Melekot",
+    "topic": "godhead_persons",
+    "script": "latin",
+    "expansion": [
+      "godhead",
+      "persons"
+    ],
+    "note": "The source itself transliterates these as 'Melekote' and 'Akal'; the Ethiopic spellings are added as aliases only."
+  },
+  {
+    "alias": "Akal",
+    "topic": "godhead_persons",
+    "script": "latin",
+    "expansion": [
+      "godhead",
+      "persons"
+    ],
+    "note": "The source itself transliterates these as 'Melekote' and 'Akal'; the Ethiopic spellings are added as aliases only."
+  },
+  {
+    "alias": "ሥጋዌ",
+    "topic": "incarnation",
+    "script": "ethiopic",
+    "expansion": [
+      "incarnation",
+      "incarnate"
+    ],
+    "note": "Transliteration 'Sigawe' (ሥጋዌ, Incarnation) can be confused with ሥጋውና ደሙ ('His Body and Blood', Holy Communion). The communion alias set deliberately uses 'Sigawna Demu', not 'Sigawe'."
+  },
+  {
+    "alias": "ምሥጢረ ሥጋዌ",
+    "topic": "incarnation",
+    "script": "ethiopic",
+    "expansion": [
+      "incarnation",
+      "incarnate"
+    ],
+    "note": "Transliteration 'Sigawe' (ሥጋዌ, Incarnation) can be confused with ሥጋውና ደሙ ('His Body and Blood', Holy Communion). The communion alias set deliberately uses 'Sigawna Demu', not 'Sigawe'."
+  },
+  {
+    "alias": "Sigawe",
+    "topic": "incarnation",
+    "script": "latin",
+    "expansion": [
+      "incarnation",
+      "incarnate"
+    ],
+    "note": "Transliteration 'Sigawe' (ሥጋዌ, Incarnation) can be confused with ሥጋውና ደሙ ('His Body and Blood', Holy Communion). The communion alias set deliberately uses 'Sigawna Demu', not 'Sigawe'."
+  },
+  {
+    "alias": "Mistire Sigawe",
+    "topic": "incarnation",
+    "script": "latin",
+    "expansion": [
+      "incarnation",
+      "incarnate"
+    ],
+    "note": "Transliteration 'Sigawe' (ሥጋዌ, Incarnation) can be confused with ሥጋውና ደሙ ('His Body and Blood', Holy Communion). The communion alias set deliberately uses 'Sigawna Demu', not 'Sigawe'."
+  },
+  {
+    "alias": "ተዋሕዶ",
+    "topic": "tewahedo_christology",
+    "script": "ethiopic",
+    "expansion": [
+      "one incarnate nature",
+      "two natures",
+      "chalcedonian",
+      "union"
+    ],
+    "note": "Tewahedo ('made one, united') names the union of Godhead and manhood in the one Christ; attached only to passages on that union, not to every passage of the book."
+  },
+  {
+    "alias": "Tewahedo",
+    "topic": "tewahedo_christology",
+    "script": "latin",
+    "expansion": [
+      "one incarnate nature",
+      "two natures",
+      "chalcedonian",
+      "union"
+    ],
+    "note": "Tewahedo ('made one, united') names the union of Godhead and manhood in the one Christ; attached only to passages on that union, not to every passage of the book."
+  },
+  {
+    "alias": "Tewahido",
+    "topic": "tewahedo_christology",
+    "script": "latin",
+    "expansion": [
+      "one incarnate nature",
+      "two natures",
+      "chalcedonian",
+      "union"
+    ],
+    "note": "Tewahedo ('made one, united') names the union of Godhead and manhood in the one Christ; attached only to passages on that union, not to every passage of the book."
+  },
+  {
+    "alias": "ኬልቄዶን",
+    "topic": "tewahedo_christology",
+    "script": "ethiopic",
+    "expansion": [
+      "one incarnate nature",
+      "two natures",
+      "chalcedonian",
+      "union"
+    ],
+    "note": "Tewahedo ('made one, united') names the union of Godhead and manhood in the one Christ; attached only to passages on that union, not to every passage of the book."
+  },
+  {
+    "alias": "Kelkedon",
+    "topic": "tewahedo_christology",
+    "script": "latin",
+    "expansion": [
+      "one incarnate nature",
+      "two natures",
+      "chalcedonian",
+      "union"
+    ],
+    "note": "Tewahedo ('made one, united') names the union of Godhead and manhood in the one Christ; attached only to passages on that union, not to every passage of the book."
+  },
+  {
+    "alias": "ቅድስት ድንግል ማርያም",
+    "topic": "virgin_mary",
+    "script": "ethiopic",
+    "expansion": [
+      "virgin",
+      "mary"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ድንግል ማርያም",
+    "topic": "virgin_mary",
+    "script": "ethiopic",
+    "expansion": [
+      "virgin",
+      "mary"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "እመቤታችን",
+    "topic": "virgin_mary",
+    "script": "ethiopic",
+    "expansion": [
+      "virgin",
+      "mary"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Dingil Maryam",
+    "topic": "virgin_mary",
+    "script": "latin",
+    "expansion": [
+      "virgin",
+      "mary"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Emebetachin",
+    "topic": "virgin_mary",
+    "script": "latin",
+    "expansion": [
+      "virgin",
+      "mary"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ጥምቀት",
+    "topic": "baptism",
+    "script": "ethiopic",
+    "expansion": [
+      "baptism",
+      "baptize",
+      "baptized"
+    ],
+    "note": "ጥምቀት/Timket also names the Epiphany feast (Ṭərr 11). These aliases point to passages on the sacrament/mystery of Baptism; Epiphany questions should be answered from calendar content, not from these passages."
+  },
+  {
+    "alias": "ምሥጢረ ጥምቀት",
+    "topic": "baptism",
+    "script": "ethiopic",
+    "expansion": [
+      "baptism",
+      "baptize",
+      "baptized"
+    ],
+    "note": "ጥምቀት/Timket also names the Epiphany feast (Ṭərr 11). These aliases point to passages on the sacrament/mystery of Baptism; Epiphany questions should be answered from calendar content, not from these passages."
+  },
+  {
+    "alias": "Timket",
+    "topic": "baptism",
+    "script": "latin",
+    "expansion": [
+      "baptism",
+      "baptize",
+      "baptized"
+    ],
+    "note": "ጥምቀት/Timket also names the Epiphany feast (Ṭərr 11). These aliases point to passages on the sacrament/mystery of Baptism; Epiphany questions should be answered from calendar content, not from these passages."
+  },
+  {
+    "alias": "Timkat",
+    "topic": "baptism",
+    "script": "latin",
+    "expansion": [
+      "baptism",
+      "baptize",
+      "baptized"
+    ],
+    "note": "ጥምቀት/Timket also names the Epiphany feast (Ṭərr 11). These aliases point to passages on the sacrament/mystery of Baptism; Epiphany questions should be answered from calendar content, not from these passages."
+  },
+  {
+    "alias": "Temqet",
+    "topic": "baptism",
+    "script": "latin",
+    "expansion": [
+      "baptism",
+      "baptize",
+      "baptized"
+    ],
+    "note": "ጥምቀት/Timket also names the Epiphany feast (Ṭərr 11). These aliases point to passages on the sacrament/mystery of Baptism; Epiphany questions should be answered from calendar content, not from these passages."
+  },
+  {
+    "alias": "Mistire Timket",
+    "topic": "baptism",
+    "script": "latin",
+    "expansion": [
+      "baptism",
+      "baptize",
+      "baptized"
+    ],
+    "note": "ጥምቀት/Timket also names the Epiphany feast (Ṭərr 11). These aliases point to passages on the sacrament/mystery of Baptism; Epiphany questions should be answered from calendar content, not from these passages."
+  },
+  {
+    "alias": "የሕፃናት ጥምቀት",
+    "topic": "infant_baptism",
+    "script": "ethiopic",
+    "expansion": [
+      "infants",
+      "babies",
+      "baptism"
+    ],
+    "note": "ክርስትና (Kristinna) is the common Amharic word for christening/baptism of a child."
+  },
+  {
+    "alias": "ክርስትና",
+    "topic": "infant_baptism",
+    "script": "ethiopic",
+    "expansion": [
+      "infants",
+      "babies",
+      "baptism"
+    ],
+    "note": "ክርስትና (Kristinna) is the common Amharic word for christening/baptism of a child."
+  },
+  {
+    "alias": "Kristinna",
+    "topic": "infant_baptism",
+    "script": "latin",
+    "expansion": [
+      "infants",
+      "babies",
+      "baptism"
+    ],
+    "note": "ክርስትና (Kristinna) is the common Amharic word for christening/baptism of a child."
+  },
+  {
+    "alias": "Christening",
+    "topic": "infant_baptism",
+    "script": "latin",
+    "expansion": [
+      "infants",
+      "babies",
+      "baptism"
+    ],
+    "note": "ክርስትና (Kristinna) is the common Amharic word for christening/baptism of a child."
+  },
+  {
+    "alias": "ቁርባን",
+    "topic": "holy_communion",
+    "script": "ethiopic",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "ቅዱስ ቁርባን",
+    "topic": "holy_communion",
+    "script": "ethiopic",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "ምሥጢረ ቁርባን",
+    "topic": "holy_communion",
+    "script": "ethiopic",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "ሥጋውና ደሙ",
+    "topic": "holy_communion",
+    "script": "ethiopic",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "Qurban",
+    "topic": "holy_communion",
+    "script": "latin",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "Kurban",
+    "topic": "holy_communion",
+    "script": "latin",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "Kidus Qurban",
+    "topic": "holy_communion",
+    "script": "latin",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "Sigawna Demu",
+    "topic": "holy_communion",
+    "script": "latin",
+    "expansion": [
+      "holy communion",
+      "eucharist",
+      "body and blood",
+      "bread and wine"
+    ],
+    "note": "ቁርባን literally 'offering'; in EOTC usage it names Holy Communion. Kept distinct from ሥጋዌ (Incarnation)."
+  },
+  {
+    "alias": "ቅዳሴ",
+    "topic": "liturgy_anaphora",
+    "script": "ethiopic",
+    "expansion": [
+      "anaphora",
+      "liturgy"
+    ],
+    "note": "ቅዳሴ is the EOTC Divine Liturgy; the source's 'Anaphora of St. John' etc. are individual ቅዳሴ texts."
+  },
+  {
+    "alias": "Qidase",
+    "topic": "liturgy_anaphora",
+    "script": "latin",
+    "expansion": [
+      "anaphora",
+      "liturgy"
+    ],
+    "note": "ቅዳሴ is the EOTC Divine Liturgy; the source's 'Anaphora of St. John' etc. are individual ቅዳሴ texts."
+  },
+  {
+    "alias": "Kidase",
+    "topic": "liturgy_anaphora",
+    "script": "latin",
+    "expansion": [
+      "anaphora",
+      "liturgy"
+    ],
+    "note": "ቅዳሴ is the EOTC Divine Liturgy; the source's 'Anaphora of St. John' etc. are individual ቅዳሴ texts."
+  },
+  {
+    "alias": "ትንሣኤ",
+    "topic": "resurrection",
+    "script": "ethiopic",
+    "expansion": [
+      "resurrection",
+      "raised",
+      "risen"
+    ],
+    "note": "ትንሣኤ also names the Easter feast. The source chapter concerns the resurrection of the dead (ትንሣኤ ሙታን) and Christ's resurrection."
+  },
+  {
+    "alias": "ትንሣኤ ሙታን",
+    "topic": "resurrection",
+    "script": "ethiopic",
+    "expansion": [
+      "resurrection",
+      "raised",
+      "risen"
+    ],
+    "note": "ትንሣኤ also names the Easter feast. The source chapter concerns the resurrection of the dead (ትንሣኤ ሙታን) and Christ's resurrection."
+  },
+  {
+    "alias": "ምሥጢረ ትንሣኤ ሙታን",
+    "topic": "resurrection",
+    "script": "ethiopic",
+    "expansion": [
+      "resurrection",
+      "raised",
+      "risen"
+    ],
+    "note": "ትንሣኤ also names the Easter feast. The source chapter concerns the resurrection of the dead (ትንሣኤ ሙታን) and Christ's resurrection."
+  },
+  {
+    "alias": "Tinsae",
+    "topic": "resurrection",
+    "script": "latin",
+    "expansion": [
+      "resurrection",
+      "raised",
+      "risen"
+    ],
+    "note": "ትንሣኤ also names the Easter feast. The source chapter concerns the resurrection of the dead (ትንሣኤ ሙታን) and Christ's resurrection."
+  },
+  {
+    "alias": "Tensae",
+    "topic": "resurrection",
+    "script": "latin",
+    "expansion": [
+      "resurrection",
+      "raised",
+      "risen"
+    ],
+    "note": "ትንሣኤ also names the Easter feast. The source chapter concerns the resurrection of the dead (ትንሣኤ ሙታን) and Christ's resurrection."
+  },
+  {
+    "alias": "Tinsae Mutan",
+    "topic": "resurrection",
+    "script": "latin",
+    "expansion": [
+      "resurrection",
+      "raised",
+      "risen"
+    ],
+    "note": "ትንሣኤ also names the Easter feast. The source chapter concerns the resurrection of the dead (ትንሣኤ ሙታን) and Christ's resurrection."
+  },
+  {
+    "alias": "ድኅነት",
+    "topic": "salvation",
+    "script": "ethiopic",
+    "expansion": [
+      "salvation",
+      "redemption",
+      "saved"
+    ],
+    "note": "ድኅነት (salvation) and ቤዛነት (redemption/ransom) are close but not identical; both are attached only where the passage itself speaks of salvation or redemption."
+  },
+  {
+    "alias": "መዳን",
+    "topic": "salvation",
+    "script": "ethiopic",
+    "expansion": [
+      "salvation",
+      "redemption",
+      "saved"
+    ],
+    "note": "ድኅነት (salvation) and ቤዛነት (redemption/ransom) are close but not identical; both are attached only where the passage itself speaks of salvation or redemption."
+  },
+  {
+    "alias": "ቤዛነት",
+    "topic": "salvation",
+    "script": "ethiopic",
+    "expansion": [
+      "salvation",
+      "redemption",
+      "saved"
+    ],
+    "note": "ድኅነት (salvation) and ቤዛነት (redemption/ransom) are close but not identical; both are attached only where the passage itself speaks of salvation or redemption."
+  },
+  {
+    "alias": "Dihnet",
+    "topic": "salvation",
+    "script": "latin",
+    "expansion": [
+      "salvation",
+      "redemption",
+      "saved"
+    ],
+    "note": "ድኅነት (salvation) and ቤዛነት (redemption/ransom) are close but not identical; both are attached only where the passage itself speaks of salvation or redemption."
+  },
+  {
+    "alias": "Medan",
+    "topic": "salvation",
+    "script": "latin",
+    "expansion": [
+      "salvation",
+      "redemption",
+      "saved"
+    ],
+    "note": "ድኅነት (salvation) and ቤዛነት (redemption/ransom) are close but not identical; both are attached only where the passage itself speaks of salvation or redemption."
+  },
+  {
+    "alias": "Bezanet",
+    "topic": "salvation",
+    "script": "latin",
+    "expansion": [
+      "salvation",
+      "redemption",
+      "saved"
+    ],
+    "note": "ድኅነት (salvation) and ቤዛነት (redemption/ransom) are close but not identical; both are attached only where the passage itself speaks of salvation or redemption."
+  },
+  {
+    "alias": "ንስሐ",
+    "topic": "repentance_penance",
+    "script": "ethiopic",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "ምሥጢረ ንስሐ",
+    "topic": "repentance_penance",
+    "script": "ethiopic",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "ኑዛዜ",
+    "topic": "repentance_penance",
+    "script": "ethiopic",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "የንስሐ አባት",
+    "topic": "repentance_penance",
+    "script": "ethiopic",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "Nisiha",
+    "topic": "repentance_penance",
+    "script": "latin",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "Nissiha",
+    "topic": "repentance_penance",
+    "script": "latin",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "Niseha",
+    "topic": "repentance_penance",
+    "script": "latin",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "Nuzaze",
+    "topic": "repentance_penance",
+    "script": "latin",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "Yenisiha Abat",
+    "topic": "repentance_penance",
+    "script": "latin",
+    "expansion": [
+      "penance",
+      "repentance",
+      "confession",
+      "absolution"
+    ],
+    "note": "ንስሐ covers both repentance (the inner turning) and the sacrament of Penance; the English source uses both words. 'Confess' in the sense of confessing faith also triggers this topic, so reviewers should spot-check."
+  },
+  {
+    "alias": "ሜሮን",
+    "topic": "confirmation",
+    "script": "ethiopic",
+    "expansion": [
+      "confirmation",
+      "anointing",
+      "anoint"
+    ],
+    "note": "EOTC Confirmation is administered with holy Myron (ሜሮን) immediately after baptism; 'anoint' also matches the Unction and anointing-of-kings passages, which is acceptable for retrieval."
+  },
+  {
+    "alias": "ቅብዐ ሜሮን",
+    "topic": "confirmation",
+    "script": "ethiopic",
+    "expansion": [
+      "confirmation",
+      "anointing",
+      "anoint"
+    ],
+    "note": "EOTC Confirmation is administered with holy Myron (ሜሮን) immediately after baptism; 'anoint' also matches the Unction and anointing-of-kings passages, which is acceptable for retrieval."
+  },
+  {
+    "alias": "ምሥጢረ ሜሮን",
+    "topic": "confirmation",
+    "script": "ethiopic",
+    "expansion": [
+      "confirmation",
+      "anointing",
+      "anoint"
+    ],
+    "note": "EOTC Confirmation is administered with holy Myron (ሜሮን) immediately after baptism; 'anoint' also matches the Unction and anointing-of-kings passages, which is acceptable for retrieval."
+  },
+  {
+    "alias": "Meron",
+    "topic": "confirmation",
+    "script": "latin",
+    "expansion": [
+      "confirmation",
+      "anointing",
+      "anoint"
+    ],
+    "note": "EOTC Confirmation is administered with holy Myron (ሜሮን) immediately after baptism; 'anoint' also matches the Unction and anointing-of-kings passages, which is acceptable for retrieval."
+  },
+  {
+    "alias": "Qibe Meron",
+    "topic": "confirmation",
+    "script": "latin",
+    "expansion": [
+      "confirmation",
+      "anointing",
+      "anoint"
+    ],
+    "note": "EOTC Confirmation is administered with holy Myron (ሜሮን) immediately after baptism; 'anoint' also matches the Unction and anointing-of-kings passages, which is acceptable for retrieval."
+  },
+  {
+    "alias": "ቀንዲል",
+    "topic": "unction",
+    "script": "ethiopic",
+    "expansion": [
+      "unction",
+      "sick",
+      "anointing"
+    ],
+    "note": "The source text writes 'function of the sick' in two places (an evident typo for 'unction'); the trigger matches both spellings without altering the text."
+  },
+  {
+    "alias": "ምሥጢረ ቀንዲል",
+    "topic": "unction",
+    "script": "ethiopic",
+    "expansion": [
+      "unction",
+      "sick",
+      "anointing"
+    ],
+    "note": "The source text writes 'function of the sick' in two places (an evident typo for 'unction'); the trigger matches both spellings without altering the text."
+  },
+  {
+    "alias": "Qendil",
+    "topic": "unction",
+    "script": "latin",
+    "expansion": [
+      "unction",
+      "sick",
+      "anointing"
+    ],
+    "note": "The source text writes 'function of the sick' in two places (an evident typo for 'unction'); the trigger matches both spellings without altering the text."
+  },
+  {
+    "alias": "Kendil",
+    "topic": "unction",
+    "script": "latin",
+    "expansion": [
+      "unction",
+      "sick",
+      "anointing"
+    ],
+    "note": "The source text writes 'function of the sick' in two places (an evident typo for 'unction'); the trigger matches both spellings without altering the text."
+  },
+  {
+    "alias": "Kandil",
+    "topic": "unction",
+    "script": "latin",
+    "expansion": [
+      "unction",
+      "sick",
+      "anointing"
+    ],
+    "note": "The source text writes 'function of the sick' in two places (an evident typo for 'unction'); the trigger matches both spellings without altering the text."
+  },
+  {
+    "alias": "ተክሊል",
+    "topic": "matrimony",
+    "script": "ethiopic",
+    "expansion": [
+      "matrimony",
+      "marriage"
+    ],
+    "note": "ተክሊል is the church crowning rite of marriage; ጋብቻ is marriage in general."
+  },
+  {
+    "alias": "ምሥጢረ ተክሊል",
+    "topic": "matrimony",
+    "script": "ethiopic",
+    "expansion": [
+      "matrimony",
+      "marriage"
+    ],
+    "note": "ተክሊል is the church crowning rite of marriage; ጋብቻ is marriage in general."
+  },
+  {
+    "alias": "ጋብቻ",
+    "topic": "matrimony",
+    "script": "ethiopic",
+    "expansion": [
+      "matrimony",
+      "marriage"
+    ],
+    "note": "ተክሊል is the church crowning rite of marriage; ጋብቻ is marriage in general."
+  },
+  {
+    "alias": "Teklil",
+    "topic": "matrimony",
+    "script": "latin",
+    "expansion": [
+      "matrimony",
+      "marriage"
+    ],
+    "note": "ተክሊል is the church crowning rite of marriage; ጋብቻ is marriage in general."
+  },
+  {
+    "alias": "Gabicha",
+    "topic": "matrimony",
+    "script": "latin",
+    "expansion": [
+      "matrimony",
+      "marriage"
+    ],
+    "note": "ተክሊል is the church crowning rite of marriage; ጋብቻ is marriage in general."
+  },
+  {
+    "alias": "ክህነት",
+    "topic": "holy_orders",
+    "script": "ethiopic",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ምሥጢረ ክህነት",
+    "topic": "holy_orders",
+    "script": "ethiopic",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ጳጳስ",
+    "topic": "holy_orders",
+    "script": "ethiopic",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ኤጲስ ቆጶስ",
+    "topic": "holy_orders",
+    "script": "ethiopic",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ካህን",
+    "topic": "holy_orders",
+    "script": "ethiopic",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ቄስ",
+    "topic": "holy_orders",
+    "script": "ethiopic",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ዲያቆን",
+    "topic": "holy_orders",
+    "script": "ethiopic",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Kihnet",
+    "topic": "holy_orders",
+    "script": "latin",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Kehnet",
+    "topic": "holy_orders",
+    "script": "latin",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Papas",
+    "topic": "holy_orders",
+    "script": "latin",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Episkopos",
+    "topic": "holy_orders",
+    "script": "latin",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Kahin",
+    "topic": "holy_orders",
+    "script": "latin",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Qes",
+    "topic": "holy_orders",
+    "script": "latin",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Diyakon",
+    "topic": "holy_orders",
+    "script": "latin",
+    "expansion": [
+      "holy orders",
+      "priest",
+      "bishop",
+      "deacon",
+      "ordination"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ሰባቱ ምሥጢራት",
+    "topic": "seven_sacraments",
+    "script": "ethiopic",
+    "expansion": [
+      "sacraments",
+      "seven"
+    ],
+    "note": "Kept separate from the Five Pillars of Mystery (አምስቱ አዕማደ ምሥጢራት). Baptism and Communion appear in both lists, but the lists are distinct and aliases must not merge them."
+  },
+  {
+    "alias": "ምሥጢራተ ቤተ ክርስቲያን",
+    "topic": "seven_sacraments",
+    "script": "ethiopic",
+    "expansion": [
+      "sacraments",
+      "seven"
+    ],
+    "note": "Kept separate from the Five Pillars of Mystery (አምስቱ አዕማደ ምሥጢራት). Baptism and Communion appear in both lists, but the lists are distinct and aliases must not merge them."
+  },
+  {
+    "alias": "ሰባቱ ምሥጢራተ ቤተ ክርስቲያን",
+    "topic": "seven_sacraments",
+    "script": "ethiopic",
+    "expansion": [
+      "sacraments",
+      "seven"
+    ],
+    "note": "Kept separate from the Five Pillars of Mystery (አምስቱ አዕማደ ምሥጢራት). Baptism and Communion appear in both lists, but the lists are distinct and aliases must not merge them."
+  },
+  {
+    "alias": "Sebatu Mistirat",
+    "topic": "seven_sacraments",
+    "script": "latin",
+    "expansion": [
+      "sacraments",
+      "seven"
+    ],
+    "note": "Kept separate from the Five Pillars of Mystery (አምስቱ አዕማደ ምሥጢራት). Baptism and Communion appear in both lists, but the lists are distinct and aliases must not merge them."
+  },
+  {
+    "alias": "Mistirate Bete Kristiyan",
+    "topic": "seven_sacraments",
+    "script": "latin",
+    "expansion": [
+      "sacraments",
+      "seven"
+    ],
+    "note": "Kept separate from the Five Pillars of Mystery (አምስቱ አዕማደ ምሥጢራት). Baptism and Communion appear in both lists, but the lists are distinct and aliases must not merge them."
+  },
+  {
+    "alias": "አምስቱ አዕማደ ምሥጢራት",
+    "topic": "five_pillars_of_mystery",
+    "script": "ethiopic",
+    "expansion": [
+      "mystery"
+    ],
+    "note": "Derived: the book's five 'THE MYSTERY OF …' chapters (Trinity, Incarnation, Baptism, Holy Communion, Resurrection) correspond to the EOTC Five Pillars of Mystery. The source does not use that phrase; the alias is attached only to those five chapters, never to the seven-sacrament chapters."
+  },
+  {
+    "alias": "አዕማደ ምሥጢራት",
+    "topic": "five_pillars_of_mystery",
+    "script": "ethiopic",
+    "expansion": [
+      "mystery"
+    ],
+    "note": "Derived: the book's five 'THE MYSTERY OF …' chapters (Trinity, Incarnation, Baptism, Holy Communion, Resurrection) correspond to the EOTC Five Pillars of Mystery. The source does not use that phrase; the alias is attached only to those five chapters, never to the seven-sacrament chapters."
+  },
+  {
+    "alias": "Amistu Aimade Mistirat",
+    "topic": "five_pillars_of_mystery",
+    "script": "latin",
+    "expansion": [
+      "mystery"
+    ],
+    "note": "Derived: the book's five 'THE MYSTERY OF …' chapters (Trinity, Incarnation, Baptism, Holy Communion, Resurrection) correspond to the EOTC Five Pillars of Mystery. The source does not use that phrase; the alias is attached only to those five chapters, never to the seven-sacrament chapters."
+  },
+  {
+    "alias": "Aimade Mistirat",
+    "topic": "five_pillars_of_mystery",
+    "script": "latin",
+    "expansion": [
+      "mystery"
+    ],
+    "note": "Derived: the book's five 'THE MYSTERY OF …' chapters (Trinity, Incarnation, Baptism, Holy Communion, Resurrection) correspond to the EOTC Five Pillars of Mystery. The source does not use that phrase; the alias is attached only to those five chapters, never to the seven-sacrament chapters."
+  },
+  {
+    "alias": "ኃጢአት",
+    "topic": "sin",
+    "script": "ethiopic",
+    "expansion": [
+      "sin",
+      "sins",
+      "remission"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "ስርየተ ኃጢአት",
+    "topic": "sin",
+    "script": "ethiopic",
+    "expansion": [
+      "sin",
+      "sins",
+      "remission"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Hatiat",
+    "topic": "sin",
+    "script": "latin",
+    "expansion": [
+      "sin",
+      "sins",
+      "remission"
+    ],
+    "note": ""
+  },
+  {
+    "alias": "Siryete Hatiat",
+    "topic": "sin",
+    "script": "latin",
+    "expansion": [
+      "sin",
+      "sins",
+      "remission"
+    ],
+    "note": ""
+  }
+]

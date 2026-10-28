@@ -14,6 +14,8 @@ import {
 import { loadOrthodoxCalendarCatalog, resolveOrthodoxDay } from '../calendar/orthodoxCalendarData'
 import { getSynaxariumDayWithCommemorations } from '../synaxarium/synaxariumService'
 import { supabase } from '../supabase/client'
+import type { SupabaseClient } from '@supabase/supabase-js'
+import { selectDailyScriptureCandidates } from './dailyScriptureSelection'
 import {
   fetchBiblePassageBilingual,
   type BiblePassageResult,
@@ -163,7 +165,7 @@ export async function buildDailyFaithContext(
         if (c.title && !saints.includes(c.title)) saints.push(c.title)
       })
     }
-  } catch {}
+  } catch { /* Other calendar sources still supply the day context. */ }
 
   const themes: string[] = []
   if (fasts.length > 0) themes.push('repentance', 'fasting', 'prayer')
@@ -192,185 +194,38 @@ export async function buildDailyFaithContext(
 }
 
 /**
- * Recommends Scripture readings according to the 4-tier liturgical priority.
+ * Loads up to two distinct thematic suggestions from the existing Bible dataset.
+ * No source-verified daily EOTC lectionary mappings are currently installed.
  * Asynchronously loads full verses from passageService to guarantee complete,
  * verified textual content with verse numbers and edition metadata.
  */
 export async function recommendDailyScripture(
-  context: DailyFaithContext
+  context: DailyFaithContext,
+  loadPassage = fetchBiblePassageBilingual,
 ): Promise<RecommendedScripture[]> {
   const recommendations: RecommendedScripture[] = []
-
-  // Check if active day has an explicit feast or Saint/Mary commemoration
-  const isMaryOrKidaneMihret =
-    context.saints.some((s) =>
-      s.includes('ማርያም') ||
-      s.toLowerCase().includes('mary') ||
-      s.includes('ኪዳነ ምሕረት') ||
-      s.toLowerCase().includes('kidane mihret')
-    ) ||
-    context.feasts.some((f) =>
-      f.includes('ማርያም') ||
-      f.toLowerCase().includes('mary') ||
-      f.includes('ኪዳነ ምሕረት') ||
-      f.toLowerCase().includes('kidane mihret')
-    )
-
-  const isCrossDay = context.feasts.some(
-    (f) => f.includes('መስቀል') || f.toLowerCase().includes('cross')
-  )
-
-  const isTsigeSeason = context.seasons.some(
-    (s) => s.toLowerCase().includes('tsige') || s.includes('ጽጌ')
-  )
-
-  const isCanonicalFastDay = context.fasts.some((f) =>
-    f.toLowerCase().includes('wednesday') ||
-    f.toLowerCase().includes('friday') ||
-    f.toLowerCase().includes('lent') ||
-    f.toLowerCase().includes('nineveh') ||
-    f.toLowerCase().includes('ዐቢይ')
-  )
-
-  if (isCrossDay) {
-    const passage = await fetchBiblePassageBilingual({
-      bookSlug: '1-corinthians',
-      chapterNumber: 1,
-      verseStart: 18,
-      verseEnd: 25,
-    })
+  for (const candidate of selectDailyScriptureCandidates(context)) {
+    const passage = await loadPassage(candidate).catch(() => null)
+    if (!passage?.amharic?.verses.length && !passage?.english?.verses.length) continue
     recommendations.push({
-      id: 'sc-cross-1',
-      reference: '1 Corinthians 1:18–25',
-      bookSlug: '1-corinthians',
-      chapter: 1,
-      verseStart: 18,
-      verseEnd: 25,
-      previewTextAmharic: passage.amharic?.verses[0]?.text || 'የመስቀሉ ቃል ለሚጠፉት ሞኝነት፥ ለእኛ ለምንድን ግን የእግዚአብሔር ኃይል ነውና።',
-      previewTextEnglish: passage.english?.verses[0]?.text || 'For the word of the cross is foolishness to those who are dying, but to us who are being saved it is the power of God.',
-      priority: 'feast_saint_scripture',
-      priorityLabelEn: 'Feast-Related Scripture',
-      priorityLabelAm: 'የበዓሉ የመጽሐፍ ቅዱስ ንባብ',
-      sourceName: 'Feast of the Holy Cross',
-      reasonEn: 'Appointed Gospel and Epistle reading for the feast of the Holy Cross.',
-      reasonAm: 'ለተቀደሰው የመስቀል በዓል የተመደበ ንባብ።',
-      readHref: passage.english?.readerHref || '/bible/1-corinthians/1#verse-18',
-      passageAmharic: passage.amharic,
-      passageEnglish: passage.english,
-    })
-  } else if (isMaryOrKidaneMihret) {
-    const passage = await fetchBiblePassageBilingual({
-      bookSlug: 'luke',
-      chapterNumber: 1,
-      verseStart: 46,
-      verseEnd: 55,
-    })
-    const isKidane = context.saints.some((s) => s.includes('ኪዳነ ምሕረት') || s.toLowerCase().includes('kidane mihret'))
-    recommendations.push({
-      id: 'sc-mary-1',
-      reference: 'Luke 1:46–55',
-      bookSlug: 'luke',
-      chapter: 1,
-      verseStart: 46,
-      verseEnd: 55,
-      previewTextAmharic: passage.amharic?.verses[0]?.text || 'ማርያምም እንዲህ አለች፦ ነፍሴ ጌታን ታከብረዋለች፥ መንፈሴም በአምላኬ በመድኃኒቴ ሐሴት ታደርጋለች።',
-      previewTextEnglish: passage.english?.verses[0]?.text || 'Mary said, "My soul magnifies the Lord, and my spirit rejoices in God my Savior."',
-      priority: 'feast_saint_scripture',
-      priorityLabelEn: isKidane ? 'Commemoration-Related Scripture' : 'Feast-Related Scripture',
-      priorityLabelAm: isKidane ? 'የመታሰቢያው ንባብ' : 'የበዓሉ ንባብ',
-      sourceName: isKidane ? 'Monthly Commemoration of Kidane Mihret' : 'Commemoration of Saint Mary',
-      reasonEn: isKidane
-        ? 'Gospel reading of the Magnificat in honor of Our Lady Mary and the Covenant of Mercy.'
-        : 'Gospel reading commemorating Our Lady Mary, the Mother of God.',
-      reasonAm: isKidane
-        ? 'የእመቤታችን የኪዳነ ምሕረት መታሰቢያ የወንጌል ምስጋና ንባብ።'
-        : 'የእመቤታችን የቅድስት ድንግል ማርያም የምስጋና ንባብ።',
-      readHref: passage.english?.readerHref || '/bible/luke/1#verse-46',
-      passageAmharic: passage.amharic,
-      passageEnglish: passage.english,
-    })
-  } else if (isCanonicalFastDay) {
-    const passage = await fetchBiblePassageBilingual({
-      bookSlug: 'matthew',
-      chapterNumber: 6,
-      verseStart: 16,
-      verseEnd: 18,
-    })
-    recommendations.push({
-      id: 'sc-fast-1',
-      reference: 'Matthew 6:16–18',
-      bookSlug: 'matthew',
-      chapter: 6,
-      verseStart: 16,
-      verseEnd: 18,
-      previewTextAmharic: passage.amharic?.verses[0]?.text || 'ስትጦሙም፥ እንደ ግብዞች አትጠውልጉ፤ ለሰዎች እንደ ጦመኛ ሊታዩ ፊታቸውን ያጠፋሉና።',
-      previewTextEnglish: passage.english?.verses[0]?.text || "Moreover when you fast, don't be like the hypocrites, with sad faces...",
+      id: 'sc-' + candidate.bookSlug + '-' + candidate.chapterNumber + '-' + candidate.verseStart,
+      reference: candidate.reference,
+      bookSlug: candidate.bookSlug,
+      chapter: candidate.chapterNumber,
+      verseStart: candidate.verseStart,
+      verseEnd: candidate.verseEnd,
       priority: 'thematic_scripture',
-      priorityLabelEn: 'Thematic Scripture',
-      priorityLabelAm: 'ስለ ጾም የሚመከር ንባብ',
-      sourceName: 'Gospel on Fasting and Prayer',
-      reasonEn: 'Thematic Gospel reading on the spiritual discipline of authentic prayer and fasting.',
-      reasonAm: 'ስለ መንፈሳዊ ጾምና ጸሎት የሚያስተምር የወንጌል ንባብ።',
-      readHref: passage.english?.readerHref || '/bible/matthew/6#verse-16',
+      priorityLabelEn: 'Suggested Scripture',
+      priorityLabelAm: 'የተመከረ የመጽሐፍ ቅዱስ ንባብ',
+      sourceName: candidate.subjectEn,
+      reasonEn: candidate.subjectEn,
+      reasonAm: candidate.subjectAm,
+      readHref: passage.english?.readerHref || passage.amharic!.readerHref,
       passageAmharic: passage.amharic,
       passageEnglish: passage.english,
     })
-  } else if (isTsigeSeason) {
-    const passage = await fetchBiblePassageBilingual({
-      bookSlug: 'matthew',
-      chapterNumber: 2,
-      verseStart: 13,
-      verseEnd: 15,
-    })
-    recommendations.push({
-      id: 'sc-tsige-1',
-      reference: 'Matthew 2:13–15',
-      bookSlug: 'matthew',
-      chapter: 2,
-      verseStart: 13,
-      verseEnd: 15,
-      previewTextAmharic: passage.amharic?.verses[0]?.text || 'እነርሱም ከሄዱ በኋላ እነሆ፥ የጌታ መልአክ በሕልም ለዮሴፍ ታይቶ...',
-      previewTextEnglish: passage.english?.verses[0]?.text || 'Now when they had departed, behold, an angel of the Lord appeared to Joseph in a dream...',
-      priority: 'seasonal_scripture',
-      priorityLabelEn: 'Seasonal Scripture',
-      priorityLabelAm: 'የወቅቱ ንባብ (ዘመነ ጽጌ)',
-      sourceName: 'Flight of the Holy Family',
-      reasonEn: 'Seasonal reading commemorating the Flight of the Holy Family to Egypt during Zemene Tsige.',
-      reasonAm: 'በዘመነ ጽጌ ወቅት የእመቤታችንን እና የጌታን ወደ ግብጽ መሰደድ የሚያዘክር ንባብ።',
-      readHref: passage.english?.readerHref || '/bible/matthew/2#verse-13',
-      passageAmharic: passage.amharic,
-      passageEnglish: passage.english,
-    })
-  } else {
-    // Thematic reading from Psalms of David
-    const dayPsalm = ((context.ethiopianDate.day * 5) % 150) || 1
-    const passage = await fetchBiblePassageBilingual({
-      bookSlug: 'psalms',
-      chapterNumber: dayPsalm,
-      verseStart: 1,
-      verseEnd: 6,
-    })
-    recommendations.push({
-      id: `sc-psalm-${dayPsalm}`,
-      reference: `Psalms ${dayPsalm}:1–6`,
-      bookSlug: 'psalms',
-      chapter: dayPsalm,
-      verseStart: 1,
-      verseEnd: 6,
-      previewTextAmharic: passage.amharic?.verses[0]?.text || 'ምስጉን ነው በክፉዎች ምክር ያልሄደ...',
-      previewTextEnglish: passage.english?.verses[0]?.text || "Blessed is the man who doesn't walk in the counsel of the wicked...",
-      priority: 'thematic_scripture',
-      priorityLabelEn: 'Thematic Suggestion',
-      priorityLabelAm: 'የቀኑ የዳዊት መዝሙር',
-      sourceName: 'Mezmure Dawit (Psalms)',
-      reasonEn: `Daily prayer psalm suggested for day ${context.ethiopianDate.day} of the Ethiopian month.`,
-      reasonAm: `በወሩ ቀን ${context.ethiopianDate.day} የሚነበብ የዳዊት መዝሙር ምስጋና።`,
-      readHref: passage.english?.readerHref || `/bible/psalms/${dayPsalm}#verse-1`,
-      passageAmharic: passage.amharic,
-      passageEnglish: passage.english,
-    })
+    if (recommendations.length === 2) break
   }
-
   return recommendations
 }
 
@@ -409,6 +264,8 @@ export async function recommendDailyMezmurs(
     lyrics_amharic?: string | null
   }>
 ): Promise<RecommendedMezmur[]> {
+  type CatalogItem = NonNullable<typeof customCatalog>[number]
+  type CatalogClient = SupabaseClient<{ public: { Tables: Record<string, never>; Views: { mezmur_public: { Row: CatalogItem; Relationships: [] } }; Functions: Record<string, never> } }>
   try {
     const cardSlugs = new Set<string>(context.cardSlugs || [])
 
@@ -529,20 +386,20 @@ export async function recommendDailyMezmurs(
     const hydratedMezmurs: RecommendedMezmur[] = []
 
     if (chosenLinks.length > 0) {
-      let catalogItems: any[] = []
+      let catalogItems: CatalogItem[] = []
       if (customCatalog) {
         catalogItems = customCatalog
       } else if (supabase) {
-        const client = supabase as any
+        const client = supabase as unknown as CatalogClient
         const slugsToFetch = Array.from(chosenSlugs)
         const { data } = await client
           .from('mezmur_public')
           .select('mezmur_id, slug, title, title_amharic, singer_name, youtube_url, audio_url, lyrics_amharic')
           .in('slug', slugsToFetch)
-        catalogItems = data || []
+        catalogItems = (data || []) as unknown as CatalogItem[]
       }
 
-      const catalogMap = new Map<string, any>(catalogItems.map((c) => [c.slug, c]))
+      const catalogMap = new Map(catalogItems.map((c) => [c.slug, c]))
 
       for (const link of chosenLinks) {
         const cat = catalogMap.get(link.mezmur_slug)
@@ -565,8 +422,8 @@ export async function recommendDailyMezmurs(
           score: finalScore,
           matchReasonEn: link.reason_en,
           matchReasonAm: link.reason_am,
-          playHref: `/practice/mezmur/${link.mezmur_slug}`,
-          lyricsHref: `/practice/mezmur/${link.mezmur_slug}`,
+          playHref: `/hymns/mezmur/${link.mezmur_slug}`,
+          lyricsHref: `/hymns/mezmur/${link.mezmur_slug}`,
           hasPlayableMedia: hasMedia,
         })
       }
@@ -574,17 +431,17 @@ export async function recommendDailyMezmurs(
 
     // 4. Fill remaining slots if fewer than limit (curated fallback from mezmur_public)
     if (hydratedMezmurs.length < limit) {
-      let fallbackList: any[] = []
+      let fallbackList: CatalogItem[] = []
       if (customCatalog) {
         fallbackList = customCatalog.filter((m) => m.slug && !chosenSlugs.has(m.slug))
       } else if (supabase) {
-        const client = supabase as any
+        const client = supabase as unknown as CatalogClient
         const needed = limit - hydratedMezmurs.length
         const { data } = await client
           .from('mezmur_public')
           .select('mezmur_id, slug, title, title_amharic, singer_name, youtube_url, audio_url, lyrics_amharic')
           .limit(needed + 5)
-        fallbackList = (data || []).filter((m: any) => m.slug && !chosenSlugs.has(m.slug))
+        fallbackList = ((data || []) as unknown as CatalogItem[]).filter((m) => m.slug && !chosenSlugs.has(m.slug))
       }
 
       for (const fb of fallbackList) {
@@ -607,8 +464,8 @@ export async function recommendDailyMezmurs(
           score: 20 + (hasMedia ? 5 : 0),
           matchReasonEn: 'General worship suggestion',
           matchReasonAm: 'አጠቃላይ የምስጋና መዝሙር',
-          playHref: `/practice/mezmur/${fb.slug}`,
-          lyricsHref: `/practice/mezmur/${fb.slug}`,
+          playHref: `/hymns/mezmur/${fb.slug}`,
+          lyricsHref: `/hymns/mezmur/${fb.slug}`,
           hasPlayableMedia: hasMedia,
         })
       }
@@ -618,7 +475,7 @@ export async function recommendDailyMezmurs(
     hydratedMezmurs.sort((a, b) => b.score - a.score)
     return hydratedMezmurs.slice(0, limit)
   } catch (cause) {
-    if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) {
+    if (typeof import.meta !== 'undefined' && import.meta?.env?.DEV) {
       console.error('[dailyFaith] recommendDailyMezmurs error', cause)
     }
     return []

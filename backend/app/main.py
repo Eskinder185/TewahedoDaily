@@ -22,6 +22,8 @@ import ethiopian_calendar as ethcal
 import doctrinal_categories as doctrine
 from editorial.router import router as editorial_router
 from editorial.church_library_router import router as church_library_router
+from editorial.church_library_store import ChurchLibraryStore
+from editorial import church_library_grounding as library_grounding
 from editorial.mezmur_bulk_router import router as mezmur_bulk_router
 
 
@@ -4794,6 +4796,25 @@ async def chat(raw_request: Request, request: ChatRequest):
         doctrine_category
     )
 
+    # Church Library grounding (opt-in until reviewed books are published).
+    # Only passages from approved, public-retrieval books can be returned by
+    # the gated search_church_library RPC.
+    library_sources = []
+    library_context = None
+    if os.getenv("CHURCH_LIBRARY_GROUNDING", "").strip().lower() in {"1", "true", "yes", "on"}:
+        try:
+            library_sources = await asyncio.wait_for(
+                run_in_threadpool(
+                    library_grounding.retrieve,
+                    request.message,
+                    lambda q, lang, n: ChurchLibraryStore().search(q, lang, n),
+                ),
+                timeout=6.0,
+            )
+        except Exception:
+            library_sources = []
+        library_context = library_grounding.build_context_block(library_sources)
+
     # 8. AI fallback with Ethiopian Orthodox doctrinal guidance
     system_prompt = f"""
 You are the AI assistant for TewahedoDaily, an Ethiopian Orthodox
@@ -4916,6 +4937,11 @@ COMMUNICATION:
                             {"role": "system", "content": system_prompt},
                             {"role": "system", "content": scripture_context},
                             {"role": "system", "content": turn_instructions},
+                            *(
+                                [{"role": "system", "content": library_context}]
+                                if library_context
+                                else []
+                            ),
                             {"role": "user", "content": request.message}
                         ],
                         "max_tokens": 4096,
@@ -4971,6 +4997,7 @@ COMMUNICATION:
             "type": "ai",
             "answer": answer,
             "sources": scripture_sources,
+            "library_sources": library_sources,
         }
 
     except httpx.TimeoutException:

@@ -14,7 +14,7 @@ type NavItem = {
 const NAV: NavItem[] = [
   { label: 'Dashboard', to: '/admin', end: true },
   { label: 'Home', to: '/admin/home' },
-  { label: 'Hymns Practice', to: '/admin/hymns' },
+  { label: 'Hymns', to: '/admin/hymns' },
   { label: 'Pray', to: '/admin/pray' },
   { label: 'Calendar', to: '/admin/calendar' },
   { label: 'About', to: '/admin/about' },
@@ -40,7 +40,7 @@ function sectionLabel(pathname: string): string {
   const part = pathname.split('/')[2] || 'dashboard'
   const map: Record<string, string> = {
     home: 'Home',
-    hymns: 'Hymns Practice',
+    hymns: 'Hymns',
     pray: 'Pray',
     calendar: 'Calendar',
     about: 'About',
@@ -52,16 +52,16 @@ function sectionLabel(pathname: string): string {
     media: 'Media',
     users: 'Users',
     settings: 'Settings',
-    mezmur: 'Hymns Practice',
+    mezmur: 'Hymns',
     prayers: 'Pray',
     liturgy: 'Pray',
     synaxarium: 'Calendar',
     saints: 'Calendar',
     feasts: 'Calendar',
     daily: 'Calendar',
-    categories: 'Hymns Practice',
-    singers: 'Hymns Practice',
-    tags: 'Hymns Practice',
+    categories: 'Hymns',
+    singers: 'Hymns',
+    tags: 'Hymns',
   }
   return map[part] || part
 }
@@ -181,7 +181,7 @@ export function AdminPlaceholder() {
       <h1 className={s.capitalize}>{name}</h1>
       <div className={s.card}>
         <p>This section is reserved for a later phase.</p>
-        <Link to="/admin/hymns/mezmur">Manage Hymns Practice →</Link>
+        <Link to="/admin/hymns/mezmur">Manage Hymns →</Link>
       </div>
     </>
   )

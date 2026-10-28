@@ -64,11 +64,20 @@ export function ChurchLibraryReader() {
 
       try {
         // 1. Fetch book metadata
-        const { data: bookData, error: bookErr } = await client
+        let bookResult = await client
           .from('church_library_books')
-          .select('id, title, author, language, category, description, cover_storage_path, storage_path, current_version_id, processing_status, public_retrieval_enabled')
+          .select('id, title, title_amharic, author, language, category, description, cover_storage_path, storage_path, current_version_id, processing_status, public_retrieval_enabled')
           .eq('id', bookId as string)
           .single()
+
+        if (bookResult.error?.code === '42703' || bookResult.error?.code === 'PGRST204') {
+          bookResult = await client
+            .from('church_library_books')
+            .select('id, title, author, language, category, description, cover_storage_path, storage_path, current_version_id, processing_status, public_retrieval_enabled')
+            .eq('id', bookId as string)
+            .single()
+        }
+        const { data: bookData, error: bookErr } = bookResult
 
         if (bookErr || !bookData) {
           throw new Error('Book not found or not published for public reading.')
@@ -222,6 +231,7 @@ export function ChurchLibraryReader() {
           <h1 className={styles.bookHeaderTitle} title={book.title}>
             {book.title}
           </h1>
+          {book.title_amharic ? <span className={styles.bookHeaderTitle}>{book.title_amharic}</span> : null}
         </div>
 
         <div className={styles.controlsGroup}>

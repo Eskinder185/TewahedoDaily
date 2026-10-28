@@ -7,7 +7,10 @@ import {
   categoryMatchValues,
   displayClassification,
   occasionMatchValues,
+  resolveTaxonomyQuery,
+  taxonomySearchVariants,
 } from './taxonomy'
+import { textContainsVariant } from '../mezmur/aliasMatcher'
 import {
   classificationLabel,
   normalizeLanguageParam,
@@ -312,6 +315,33 @@ function rankHit(doc: MezmurSearchDoc, queryNorm: string, queryRaw: string, fuse
   return { item: toCard(doc), score, matchKind }
 }
 
+/**
+ * When the query is a taxonomy alias ("Saint Michael", "Mikael", "ቅዱስ ሚካኤል",
+ * "Nativity", "ገና"), find docs whose classification resolves to that entry or
+ * whose title / Amharic title / keywords contain one of its aliases.
+ */
+function taxonomyAliasHits(docs: MezmurSearchDoc[], query: string, already: Set<string>): MezmurSearchHit[] {
+  const targets = resolveTaxonomyQuery(query)
+  if (!targets.length) return []
+  const hits: MezmurSearchHit[] = []
+  for (const target of targets) {
+    const variants = taxonomySearchVariants(target.kind, target.canonical)
+    for (const doc of docs) {
+      if (already.has(doc.id)) continue
+      const classified =
+        target.kind === 'category'
+          ? canonicalizeCategory(doc.category || '') === target.canonical
+          : canonicalizeOccasion(doc.occasion || '') === target.canonical
+      const text = [doc.title, doc.title_amharic || '', doc.keywordsText].join('\n')
+      if (classified || textContainsVariant(text, variants)) {
+        already.add(doc.id)
+        hits.push({ item: toCard(doc), score: classified ? 0.15 : 0.2, matchKind: 'meta' })
+      }
+    }
+  }
+  return hits
+}
+
 const KIND_RANK: Record<MezmurSearchHit['matchKind'], number> = {
   exact: 0,
   prefix: 1,
@@ -384,8 +414,9 @@ export function searchMezmurCatalog(
   })
 
   const fuseHits = fuse.search(queryNorm || query)
-  const ranked = fuseHits
-    .map((hit) => rankHit(hit.item, queryNorm, query, hit.score ?? 1))
+  const fuseRanked = fuseHits.map((hit) => rankHit(hit.item, queryNorm, query, hit.score ?? 1))
+  const aliasHits = taxonomyAliasHits(filtered, query, new Set(fuseRanked.map((h) => h.item.id)))
+  const ranked = [...fuseRanked, ...aliasHits]
     .sort((a, b) => {
       const kindDiff = KIND_RANK[a.matchKind] - KIND_RANK[b.matchKind]
       if (kindDiff !== 0) return kindDiff

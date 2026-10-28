@@ -10,11 +10,20 @@ export type ChurchLibraryOutcome =
   | { kind: 'empty'; query: string }
   | { kind: 'error'; query: string; notice: string }
 
+/**
+ * Source reference: chapter › section · pages. Page numbers come only from the
+ * passage row (set at import when the source layout is known); never guessed.
+ */
 function locator(hit: ChurchLibrarySearchResponse['results'][number]) {
-  if (hit.locator_label) return hit.locator_label
-  if (hit.page_start && hit.page_end && hit.page_start !== hit.page_end) return `Pages ${hit.page_start}–${hit.page_end}`
-  if (hit.page_start) return `Page ${hit.page_start}`
-  return hit.chapter_reference || 'Passage reference unavailable'
+  const place = [hit.chapter_reference, hit.locator_label]
+    .filter((part): part is string => Boolean(part && part.trim()))
+    .filter((part, index, all) => all.indexOf(part) === index)
+    .join(' › ')
+  let pages = ''
+  if (hit.page_start && hit.page_end && hit.page_start !== hit.page_end) pages = `pp. ${hit.page_start}–${hit.page_end}`
+  else if (hit.page_start) pages = `p. ${hit.page_start}`
+  const label = [place, pages].filter(Boolean).join(' · ')
+  return label || 'Passage reference unavailable'
 }
 
 function safeSourceUrl(value: string | null) {
@@ -27,9 +36,22 @@ function safeSourceUrl(value: string | null) {
   }
 }
 
-export function ChurchLibrarySources({ outcome }: { outcome: ChurchLibraryOutcome }) {
+export function ChurchLibrarySources({
+  outcome,
+  showEmptyNotice = false,
+}: {
+  outcome: ChurchLibraryOutcome
+  /** Show the "no source evidence" notice for teaching questions or library-only searches. */
+  showEmptyNotice?: boolean
+}) {
   const t = useTranslation()
-  if (outcome.kind === 'idle' || outcome.kind === 'loading' || outcome.kind === 'empty') return null
+  if (outcome.kind === 'idle' || outcome.kind === 'loading') return null
+  if (outcome.kind === 'empty') {
+    if (!showEmptyNotice) return null
+    // No indexed passage cleared the relevance floor: say so instead of
+    // implying the Church Library supports an answer.
+    return <p className={styles.relatedNote} role="status">{t('searchBuddy.churchLibraryNoEvidence')}</p>
+  }
   if (outcome.kind === 'error') return <p className={styles.message} role="status">{outcome.notice}</p>
   return (
     <section aria-labelledby="church-library-sources">

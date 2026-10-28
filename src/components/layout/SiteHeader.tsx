@@ -79,7 +79,7 @@ export function SiteHeader() {
       desc: t('navModePrayDesc'),
     },
     {
-      to: '/practice',
+      to: '/hymns',
       label: t('navPractice'),
       desc: t('navModeLearnDesc'),
     },
@@ -229,40 +229,47 @@ export function SiteHeader() {
                 {tt('legal.title')}
               </NavLink>
             </div>
-            {showAccount ? (
-              <>
-                <NavLink
-                  to="/account"
-                  onClick={closeMenu}
-                  className={({ isActive }) =>
-                    `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-                  }
-                >
-                  {tt('account.account')}
-                </NavLink>
-                {showAdmin ? (
-                  <NavLink
-                    to="/admin"
-                    onClick={closeMenu}
-                    className={({ isActive }) =>
-                      `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-                    }
-                  >
-                    {tt('account.admin')}
-                  </NavLink>
-                ) : null}
-              </>
-            ) : null}
-            {showSignIn ? (
+            <NavLink
+              to="/account"
+              onClick={closeMenu}
+              className={({ isActive }) =>
+                `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+              }
+            >
+              {tt('account.account')}
+            </NavLink>
+            {showAdmin ? (
               <NavLink
-                to="/login"
+                to="/admin"
                 onClick={closeMenu}
                 className={({ isActive }) =>
                   `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
                 }
               >
-                {tt('account.signIn')}
+                {tt('account.admin')}
               </NavLink>
+            ) : null}
+            {showSignIn ? (
+              <>
+                <NavLink
+                  to="/login"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                  }
+                >
+                  {tt('account.signIn')}
+                </NavLink>
+                <NavLink
+                  to="/signup"
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                  }
+                >
+                  {tt('auth.createAccount')}
+                </NavLink>
+              </>
             ) : null}
           </nav>
           <div className={styles.drawerTools}>
