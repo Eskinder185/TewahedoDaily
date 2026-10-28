@@ -21,6 +21,7 @@
  * Nothing here creates or renames database records.
  */
 import { CATEGORY_ENTRIES, OCCASION_ENTRIES } from '../mezmur/taxonomyAliases'
+import { MEZMUR_CLASSIFICATION_BROWSE_GROUPS } from './mezmurBrowseGroups'
 import { canonicalizeCategory, canonicalizeOccasion } from './taxonomy'
 
 /** Minimal section shape needed to resolve taxonomy slugs. */
@@ -94,7 +95,7 @@ export function taxonomyLinkSlug(kind: 'category' | 'occasion', label: string | 
 // Group → taxonomy map (moved from hymnBrowse.ts)
 // ---------------------------------------------------------------------------
 
-export const COLLECTION_TAXONOMY_MAP: Record<
+const LEGACY_COLLECTION_TAXONOMY_MAP: Record<
   string,
   {
     categories?: string[]
@@ -197,6 +198,36 @@ export const COLLECTION_TAXONOMY_MAP: Record<
   'english-mezmur': {
     categories: ['english-mezmur', 'english-language', 'bilingual-language'],
   },
+}
+
+/**
+ * Canonical relationship-driven cards take precedence over legacy manual
+ * collection mappings. Legacy entries remain available for existing URLs, but
+ * the relationship-driven cards contain their declared primary taxonomy plus
+ * any explicitly listed cross-dimension shortcuts (for example Marian feasts
+ * under Virgin Mary). Occasions remain occasions; they are not duplicated as
+ * theological categories.
+ */
+export const COLLECTION_TAXONOMY_MAP: Record<
+  string,
+  { categories?: string[]; occasions?: string[] }
+> = {
+  ...LEGACY_COLLECTION_TAXONOMY_MAP,
+  ...Object.fromEntries(
+    MEZMUR_CLASSIFICATION_BROWSE_GROUPS.map((group) => [
+      group.slug,
+      {
+        categories: [
+          ...(group.kind === 'category' ? group.taxonomySlugs : []),
+          ...(group.shortcuts || []).filter((item) => item.kind === 'category').map((item) => item.slug),
+        ],
+        occasions: [
+          ...(group.kind === 'occasion' ? group.taxonomySlugs : []),
+          ...(group.shortcuts || []).filter((item) => item.kind === 'occasion').map((item) => item.slug),
+        ],
+      },
+    ]),
+  ),
 }
 
 // ---------------------------------------------------------------------------

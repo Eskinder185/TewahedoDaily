@@ -5,8 +5,10 @@ import { responsiveImageAttrs } from '../lib/media/responsiveImage'
 import { publicMedia } from '../lib/publicContent/service'
 import {
   getHymnCollections,
+  getHymnSingersPage,
   searchImportMezmurs,
   searchHymns,
+  type HymnBrowseCard,
   type HymnCollection,
   type HymnDiscoveryHit,
 } from '../lib/publicContent/hymnBrowse'
@@ -17,14 +19,18 @@ import {
   type UnifiedMezmurSearchItem,
 } from '../lib/search/unifiedHymnSearch'
 import { hymnCardMeta } from '../lib/publicContent/labels'
-import { hymnSourceHeading } from '../lib/publicContent/hymnBrowseLabels'
+import { hymnMezmurCountLabel, hymnSourceHeading } from '../lib/publicContent/hymnBrowseLabels'
 import { useLocale } from '../lib/i18n/locale'
 import { useTranslation } from '../i18n'
 import { prefetchRoute } from '../lib/routePrefetch'
-import { HymnMajorBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
 import s from './HymnPractice.module.css'
 import { MEZMUR_LANGUAGES, isMezmurLanguageFilter, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
+import {
+  MEZMUR_CATEGORY_BROWSE_GROUPS,
+  MEZMUR_OCCASION_BROWSE_GROUPS,
+  type MezmurBrowseGroup,
+} from '../lib/publicContent/mezmurBrowseGroups'
 
 type SearchItem = UnifiedMezmurSearchItem
 
@@ -88,10 +94,10 @@ function CardArt({ item }: { item: SearchItem }) {
   )
 }
 
-function CollectionSkeletonGrid() {
+function CollectionSkeletonGrid({ count = 6 }: { count?: number }) {
   return (
-    <div className={s.browseGrid} aria-hidden>
-      {Array.from({ length: 6 }).map((_, i) => (
+    <div className={s.libraryCardGrid} aria-hidden>
+      {Array.from({ length: count }).map((_, i) => (
         <div key={i} className={s.skeletonCard}>
           <div className={s.skeletonMedia} />
           <div className={s.skeletonLines}>
@@ -120,45 +126,244 @@ function MezmurSkeletonGrid() {
   )
 }
 
-function BrowseSection({
-  title,
-  groups,
-  emptyHint,
+type BrowseMode = 'categories' | 'occasions' | 'zemaris'
+
+const browseModeFromParam = (value: string | null): BrowseMode =>
+  value === 'occasions' || value === 'zemaris' ? value : 'categories'
+
+function libraryGroupHref(
+  definition: MezmurBrowseGroup,
+  collection: HymnCollection | undefined,
+  language: MezmurLanguageFilter,
+) {
+  const href = collection?.href || `/hymns/browse/${definition.slug}`
+  return language === 'all'
+    ? href
+    : `${href}${href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}`
+}
+
+function LibraryNavigationCard({
+  definition,
+  collection,
   language,
+  isAmharic,
 }: {
-  title: string
-  groups: HymnCollection[]
-  emptyHint?: string
-  language?: MezmurLanguageFilter
+  definition: MezmurBrowseGroup
+  collection: HymnCollection | undefined
+  language: MezmurLanguageFilter
+  isAmharic: boolean
 }) {
-  if (!groups.length) {
-    return emptyHint ? (
-      <section className={s.browseSection}>
-        <header className={s.browseHead}>
-          <h2 className={s.browseTitle}>{title}</h2>
-        </header>
-        <p className={s.browseEmpty}>{emptyHint}</p>
-      </section>
-    ) : null
-  }
+  const [imageFailed, setImageFailed] = useState(false)
+  const imageUrl = collection?.imageUrl || ''
+  const showImage = Boolean(imageUrl) && !imageFailed
+  const primaryHref = libraryGroupHref(definition, collection, language)
+
+  const imageAttrs = showImage
+    ? responsiveImageAttrs(imageUrl, {
+        sizes: '(max-width: 560px) 34vw, (max-width: 900px) 24vw, 190px',
+        width: 480,
+        height: 360,
+      })
+    : null
 
   return (
-    <section className={s.browseSection}>
-      <header className={s.browseHead}>
-        <h2 className={s.browseTitle}>{title}</h2>
-      </header>
-      <div className={s.browseGrid}>
-        {groups.map((group, index) => {
-          const englishCard = group.slug.toLocaleLowerCase() === 'english' || group.title.toLocaleLowerCase() === 'english'
-          const href = englishCard
-            ? '/hymns?language=en'
-            : language && language !== 'all'
-              ? `${group.href}${group.href.includes('?') ? '&' : '?'}language=${language}`
-              : group.href
-          return <HymnMajorBrowseCardView key={group.id} group={{ ...group, href }} priority={index < 3} />
-        })}
+    <article className={`${s.libraryNavCard} ${s.libraryNavCardComplex} ${showImage ? s.libraryNavCardWithImage : ''}`}>
+      <Link
+        className={s.libraryNavPrimary}
+        to={primaryHref}
+        onPointerEnter={() => prefetchRoute(collection?.href || `/hymns/browse/${definition.slug}`)}
+        onPointerDown={() => prefetchRoute(collection?.href || `/hymns/browse/${definition.slug}`)}
+      >
+        <span className={s.libraryNavMedia}>
+        {showImage ? (
+          <img
+            className={s.libraryNavImage}
+            src={imageAttrs?.src || imageUrl}
+            srcSet={imageAttrs?.srcSet}
+            sizes={imageAttrs?.sizes}
+            width={imageAttrs?.width || 480}
+            height={imageAttrs?.height || 360}
+            loading={imageAttrs?.loading || 'lazy'}
+            decoding="async"
+            alt={collection?.imageAlt || definition.title}
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <span className={s.libraryNavPlaceholder} aria-hidden>✣</span>
+        )}
+        </span>
+        <span className={s.libraryNavCardBody}>
+        <strong lang={isAmharic ? 'am' : 'en'}>
+          {isAmharic ? definition.titleAmharic : definition.title}
+        </strong>
+        <span className={s.libraryNavMeta}>
+          <span>{hymnMezmurCountLabel(collection?.mezmurCount || 0, isAmharic ? 'am' : 'en')}</span>
+          <span className={s.libraryNavArrow} aria-hidden>→</span>
+        </span>
+        </span>
+      </Link>
+    </article>
+  )
+}
+
+function ZemariNavigationCard({ card, isAmharic }: { card: HymnBrowseCard; isAmharic: boolean }) {
+  const [imageFailed, setImageFailed] = useState(false)
+  const showImage = Boolean(card.imageUrl) && !imageFailed
+  const imageAttrs = showImage
+    ? responsiveImageAttrs(card.imageUrl, {
+        sizes: '(max-width: 560px) 86vw, (max-width: 900px) 42vw, 320px',
+        width: 640,
+        height: 480,
+      })
+    : null
+
+  return (
+    <Link className={s.libraryNavCard} to={card.href}>
+      <span className={s.libraryNavMedia}>
+        {showImage ? (
+          <img
+            className={s.libraryNavImage}
+            src={imageAttrs?.src || card.imageUrl}
+            srcSet={imageAttrs?.srcSet}
+            sizes={imageAttrs?.sizes}
+            width={imageAttrs?.width || 640}
+            height={imageAttrs?.height || 480}
+            loading={imageAttrs?.loading || 'lazy'}
+            decoding="async"
+            alt={card.imageAlt || card.name}
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <span className={s.libraryNavPlaceholder} aria-hidden>✣</span>
+        )}
+      </span>
+      <span className={s.libraryNavCardBody}>
+        <strong lang={isAmharic && card.nameAmharic ? 'am' : 'en'}>
+          {isAmharic && card.nameAmharic ? card.nameAmharic : card.name}
+        </strong>
+        {card.nameAmharic && !isAmharic ? <span lang="am">{card.nameAmharic}</span> : null}
+        <span className={s.libraryNavMeta}>
+          <span>{hymnMezmurCountLabel(card.mezmurCount, isAmharic ? 'am' : 'en')}</span>
+          <span className={s.libraryNavArrow} aria-hidden>→</span>
+        </span>
+      </span>
+    </Link>
+  )
+}
+
+function LibraryNavigation({
+  mode,
+  groups,
+  language,
+  locale,
+  onModeChange,
+  onSearchZemaris,
+  zemaris,
+  zemariTotal,
+  zemariLoading,
+  zemariError,
+  zemariHasMore,
+  onShowMoreZemaris,
+}: {
+  mode: BrowseMode
+  groups: HymnCollection[]
+  language: MezmurLanguageFilter
+  locale: string
+  onModeChange: (mode: BrowseMode) => void
+  onSearchZemaris: () => void
+  zemaris: HymnBrowseCard[]
+  zemariTotal: number
+  zemariLoading: boolean
+  zemariError?: string
+  zemariHasMore: boolean
+  onShowMoreZemaris: () => void
+}) {
+  const isAmharic = locale === 'am'
+  const definitions = mode === 'occasions'
+    ? MEZMUR_OCCASION_BROWSE_GROUPS
+    : MEZMUR_CATEGORY_BROWSE_GROUPS
+  const collectionsBySlug = new Map(groups.map((group) => [group.slug, group]))
+  const panelId = `mezmur-library-${mode}`
+  const tabs: Array<{ id: BrowseMode; label: string; labelAmharic: string }> = [
+    { id: 'categories', label: 'Categories', labelAmharic: 'ምድቦች' },
+    { id: 'occasions', label: 'Occasions', labelAmharic: 'ወቅቶች' },
+    { id: 'zemaris', label: 'Zemaris', labelAmharic: 'ዘማሪዎች' },
+  ]
+
+  return (
+    <div className={s.libraryNavigation}>
+      <div className={s.libraryTabs} role="tablist" aria-label={isAmharic ? 'የመዝሙር ማሰሻ' : 'Browse Mezmurs'}>
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            id={`mezmur-library-tab-${tab.id}`}
+            type="button"
+            role="tab"
+            aria-selected={mode === tab.id}
+            aria-controls={`mezmur-library-${tab.id}`}
+            className={mode === tab.id ? s.libraryTabActive : s.libraryTab}
+            onClick={() => onModeChange(tab.id)}
+          >
+            {isAmharic ? tab.labelAmharic : tab.label}
+          </button>
+        ))}
       </div>
-    </section>
+
+      <div
+        id={panelId}
+        className={s.libraryTabPanel}
+        role="tabpanel"
+        aria-labelledby={`mezmur-library-tab-${mode}`}
+      >
+        {mode === 'zemaris' ? (
+          <div>
+            <div className={s.libraryPanelHead}>
+              <div>
+                <h2>{isAmharic ? 'በዘማሪ ይፈልጉ' : 'Browse by Zemari'}</h2>
+                <p>{isAmharic ? 'በአማርኛ ወይም በእንግሊዝኛ ስም ይፈልጉ።' : `${zemariTotal} Zemaris with published Mezmurs`}</p>
+              </div>
+              <button type="button" className={s.textBtn} onClick={onSearchZemaris}>
+                {isAmharic ? 'ዘማሪ ይፈልጉ' : 'Search Zemaris'}
+              </button>
+            </div>
+            {zemariError ? <p className={s.status} role="alert">{zemariError}</p> : null}
+            {zemariLoading && zemaris.length === 0 ? <CollectionSkeletonGrid count={8} /> : null}
+            {!zemariLoading && !zemariError && zemaris.length === 0 ? (
+              <p className={s.status}>{isAmharic ? 'ምንም ዘማሪ አልተገኘም።' : 'No Zemaris found.'}</p>
+            ) : null}
+            {zemaris.length > 0 ? (
+              <div className={s.libraryCardGrid}>
+                {zemaris.map((card) => <ZemariNavigationCard key={card.id} card={card} isAmharic={isAmharic} />)}
+              </div>
+            ) : null}
+            {zemariHasMore ? (
+              <div className={s.libraryShowMore}>
+                <button type="button" onClick={onShowMoreZemaris} disabled={zemariLoading}>
+                  {zemariLoading
+                    ? (isAmharic ? 'በመጫን ላይ…' : 'Loading…')
+                    : (isAmharic ? 'ተጨማሪ ዘማሪዎችን አሳይ' : 'Show More Zemaris')}
+                </button>
+              </div>
+            ) : null}
+          </div>
+        ) : (
+          <div className={s.libraryCardGrid}>
+            {definitions.map((definition) => {
+              const collection = collectionsBySlug.get(definition.slug)
+              return (
+                <LibraryNavigationCard
+                  key={`${definition.slug}:${collection?.imageUrl || ''}`}
+                  definition={definition}
+                  collection={collection}
+                  language={language}
+                  isAmharic={isAmharic}
+                />
+              )
+            })}
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
 
@@ -253,6 +458,11 @@ export function PublicMezmurLibrary() {
   const [browse, setBrowse] = useState<HymnCollection[] | null>(null)
   const browseLoadedRef = useRef(false)
   const [browseError, setBrowseError] = useState<string>()
+  const [zemaris, setZemaris] = useState<HymnBrowseCard[]>([])
+  const [zemariTotal, setZemariTotal] = useState(0)
+  const [zemariLoading, setZemariLoading] = useState(false)
+  const [zemariError, setZemariError] = useState<string>()
+  const [zemariHasMore, setZemariHasMore] = useState(false)
   const [discoveryHits, setDiscoveryHits] = useState<HymnDiscoveryHit[]>([])
   const [result, setResult] = useState<{
     items: SearchItem[]
@@ -266,10 +476,13 @@ export function PublicMezmurLibrary() {
   /** Last voice transcript shown as የተሰማው፦ … */
   const [heardTranscript, setHeardTranscript] = useState<string | null>(null)
   const searchWrapRef = useRef<HTMLDivElement>(null)
+  const searchInputRef = useRef<HTMLInputElement>(null)
   const listboxId = useId()
 
+  const browseMode = browseModeFromParam(params.get('browse'))
+  const zemariQuery = browseMode === 'zemaris' ? (params.get('q') || '').trim() : ''
   const hasQuery = Boolean((params.get('q') || '').trim())
-  const showResults = hasQuery
+  const showResults = hasQuery && browseMode !== 'zemaris'
   const page = Math.max(1, Number(params.get('page')) || 1)
 
   usePageMeta(
@@ -316,6 +529,34 @@ export function PublicMezmurLibrary() {
       active = false
     }
   }, [showResults, reloadTick, t, language])
+
+  useEffect(() => {
+    if (browseMode !== 'zemaris') return
+    let active = true
+    queueMicrotask(() => {
+      if (!active) return
+      setZemaris([])
+      setZemariLoading(true)
+      setZemariError(undefined)
+    })
+    void getHymnSingersPage({ offset: 0, limit: 8, query: zemariQuery, language })
+      .then((pageResult) => {
+        if (!active) return
+        setZemaris(pageResult.items)
+        setZemariTotal(pageResult.total)
+        setZemariHasMore(pageResult.hasMore)
+        setZemariLoading(false)
+      })
+      .catch((cause) => {
+        if (!active) return
+        if (import.meta.env.DEV) console.error('[hymn practice] zemaris', cause)
+        setZemariError(cause instanceof Error ? cause.message : t('practice.loadError'))
+        setZemariLoading(false)
+      })
+    return () => {
+      active = false
+    }
+  }, [browseMode, language, zemariQuery, reloadTick, t])
 
   useEffect(() => {
     const needle = draftQ.trim()
@@ -429,6 +670,38 @@ export function PublicMezmurLibrary() {
     setParams(next)
   }
 
+  const selectBrowseMode = (nextMode: BrowseMode) => {
+    const next = new URLSearchParams(params)
+    if (nextMode === 'categories') next.delete('browse')
+    else next.set('browse', nextMode)
+    next.delete('page')
+    setParams(next)
+    if (nextMode === 'zemaris') {
+      window.requestAnimationFrame(() => searchInputRef.current?.focus())
+    }
+  }
+
+  const showMoreZemaris = () => {
+    if (zemariLoading || !zemariHasMore) return
+    setZemariLoading(true)
+    setZemariError(undefined)
+    void getHymnSingersPage({ offset: zemaris.length, limit: 8, query: zemariQuery, language })
+      .then((pageResult) => {
+        setZemaris((current) => {
+          const seen = new Set(current.map((card) => card.id))
+          return [...current, ...pageResult.items.filter((card) => !seen.has(card.id))]
+        })
+        setZemariTotal(pageResult.total)
+        setZemariHasMore(pageResult.hasMore)
+        setZemariLoading(false)
+      })
+      .catch((cause) => {
+        if (import.meta.env.DEV) console.error('[hymn practice] more zemaris', cause)
+        setZemariError(cause instanceof Error ? cause.message : t('practice.loadError'))
+        setZemariLoading(false)
+      })
+  }
+
   const sectionMatchCount = discoveryHits.filter(
     (hit) => hit.type === 'section' || hit.type === 'singer' || hit.type === 'collection',
   ).length
@@ -443,10 +716,9 @@ export function PublicMezmurLibrary() {
 
   return (
     <section className={s.page}>
-      <header className={s.intro}>
-        <p className={s.eyebrow}>{t('practice.eyebrow')}</p>
-        <h1 className={s.title}>{t('practice.title')}</h1>
-        <p className={s.subtitle}>{t('practice.subtitle')}</p>
+      <div className={s.libraryPanel}>
+      <header className={s.libraryHeader}>
+        <h1 className={s.libraryHeading}>{locale === 'am' ? 'የመዝሙር ቤተ መጻሕፍት' : 'Mezmur Library'}</h1>
       </header>
 
       <div className={s.toolbar}>
@@ -456,6 +728,7 @@ export function PublicMezmurLibrary() {
           </label>
           <div className={s.searchField}>
             <input
+              ref={searchInputRef}
               id="hymn-search"
               className={s.searchInput}
               value={draftQ}
@@ -593,20 +866,29 @@ export function PublicMezmurLibrary() {
               <header className={s.browseHead}>
                 <h2 className={s.browseTitle}>{t('practice.browse')}</h2>
               </header>
-              <CollectionSkeletonGrid />
+              <CollectionSkeletonGrid count={browseMode === 'occasions' ? 4 : browseMode === 'zemaris' ? 8 : 6} />
             </>
           ) : null}
 
           {browse && !browseError ? (
-            <BrowseSection
-              title={t('practice.browse')}
+            <LibraryNavigation
+              mode={browseMode}
               groups={browse}
               language={language}
-              emptyHint={t('practice.browseCollectionsEmpty')}
+              locale={locale}
+              onModeChange={selectBrowseMode}
+              onSearchZemaris={() => searchInputRef.current?.focus()}
+              zemaris={zemaris}
+              zemariTotal={zemariTotal}
+              zemariLoading={zemariLoading}
+              zemariError={zemariError}
+              zemariHasMore={zemariHasMore}
+              onShowMoreZemaris={showMoreZemaris}
             />
           ) : null}
         </>
       )}
+      </div>
     </section>
   )
 }

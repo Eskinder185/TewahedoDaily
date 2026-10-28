@@ -272,6 +272,15 @@ export function PublicHymnCollectionPage({
               (item.slug && allowedSlugs.has(item.slug))
             )
           } else if (detailKind === 'category' && supabase) {
+            if (group.slug === 'fasting-suitable') {
+              const { fetchAllFastingSuitabilityLinks } = await import('../lib/publicContent/hymnBrowse')
+              const allLinks = await fetchAllFastingSuitabilityLinks()
+              const allowedImportIds = new Set(allLinks.map((link) => link.mezmur_import_id).filter(Boolean))
+              const allowedSlugs = new Set(allLinks.map((link) => link.mezmur_slug).filter(Boolean))
+              rows = rows.filter((item) =>
+                (item.id && allowedImportIds.has(item.id)) || (item.slug && allowedSlugs.has(item.slug)),
+              )
+            } else {
             // supabase.from('mezmur_category_links_public' as never).select('mezmur_id')
             const { fetchAllCategoryLinks, COLLECTION_TAXONOMY_MAP } = await import('../lib/publicContent/hymnBrowse')
             const allLinks = await fetchAllCategoryLinks()
@@ -293,6 +302,7 @@ export function PublicHymnCollectionPage({
               (item.id && (allowedImportIds.has(item.id) || allowedMezmurIds.has(item.id))) ||
               (item.slug && allowedSlugs.has(item.slug))
             )
+            }
           }
         }
 
