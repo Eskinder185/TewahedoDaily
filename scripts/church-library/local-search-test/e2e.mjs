@@ -104,9 +104,9 @@ async function main() {
   const counts = psql(`select count(*), count(distinct passage_order), count(section_id), sum(case when review_status='needs_attention' then 1 else 0 end) from church_library_passages where book_id='${bookId}'`)
   const sections = psql(`select count(*) from church_library_sections where book_id='${bookId}'`)
   const book = psql(`select processing_status, public_retrieval_enabled, search_enabled, extraction_quality from church_library_books where id='${bookId}'`)
-  report.steps.push({ step: 'import applied twice; replaced not duplicated', pass: first.ok && second.ok && counts.startsWith('47|47|47|'), counts, sections, book, out: second.out.trim() })
+  report.steps.push({ step: 'import applied twice; replaced not duplicated', pass: first.ok && second.ok && counts.startsWith('70|70|70|'), counts, sections, book, out: second.out.trim() })
   const tsv = psql(`select count(*) from church_library_passages where book_id='${bookId}' and search_document is not null`)
-  report.steps.push({ step: 'search_document populated by trigger', pass: tsv === '47', tsv })
+  report.steps.push({ step: 'search_document populated by trigger', pass: tsv === '70', tsv })
 
   // 4. before reviewer approval: invisible to the public
   const hidden = await search('Holy Trinity')
@@ -118,12 +118,10 @@ async function main() {
   report.bookId = bookId
   report.baseline = await runQueries('baseline (current production RPC)')
   
-  // 6. proposed migration + alias seed (pending), then approval
-  execFileSync('psql', ['-q', '-v', 'ON_ERROR_STOP=1', '-f', `${REPO}/supabase/church-library/PROPOSED_20261028_church_library_multilingual_search.sql`], { stdio: 'ignore' })
-  execFileSync('psql', ['-q', '-v', 'ON_ERROR_STOP=1', '-f', `${REPO}/supabase/church-library/PROPOSED_20261028_church_library_search_aliases_seed.sql`], { stdio: 'ignore' })
+  // 6. reviewed exact/FTS/vector RRF migration
+  execFileSync('psql', ['-q', '-v', 'ON_ERROR_STOP=1', '-f', `${REPO}/supabase/migrations/20261028130000_church_library_jsonl_hybrid_search.sql`], { stdio: 'ignore' })
   await new Promise((r) => setTimeout(r, 300))
-  report.pendingAliases = await runQueries('proposed RPC, aliases pending')
-  psql(`update church_library_search_aliases set review_status='approved', reviewed_at=now() where review_status='pending'`)
+  report.pendingAliases = await runQueries('hybrid RPC, reviewed aliases installed')
   report.approved = await runQueries('proposed RPC, aliases approved')
   const { error: aliasReadErr, data: aliasRows } = await anon.from('church_library_search_aliases').select('alias').limit(1)
   report.steps.push({ step: 'alias table not readable by anonymous visitors', pass: !!aliasReadErr || (aliasRows ?? []).length === 0, detail: aliasReadErr?.message ?? `${(aliasRows ?? []).length} rows` })

@@ -808,3 +808,43 @@
   cursor: pointer;
 }
 
+
+/* Mobile reader: compact identity block so the lyrics start in the first screen. */
+@media (max-width: 759.98px) {
+  .shellReading {
+    gap: var(--space-2);
+  }
+
+  .back {
+    margin-bottom: 8px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .metaPills {
+    margin-bottom: 4px;
+    font-size: 0.68rem;
+  }
+
+  .titleAmharic,
+  .title {
+    font-size: clamp(1.45rem, 6.4vw, 1.8rem);
+    line-height: 1.18;
+  }
+
+  .titleAmharic:last-child,
+  .title:last-child,
+  .sub {
+    margin-bottom: 4px;
+  }
+
+  .sub {
+    font-size: 1rem;
+  }
+
+  .singerLine {
+    margin-top: 2px;
+    font-size: 0.85rem;
+  }
+}

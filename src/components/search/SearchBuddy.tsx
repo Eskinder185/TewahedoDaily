@@ -30,7 +30,7 @@ import { ChatStarterPrompts } from './ChatStarterPrompts'
 import { CalendarAnswerPane, type CalendarOutcome } from './CalendarAnswerPane'
 import { SourcePassagePane, type DocumentOutcome } from './SourcePassageCard'
 import { ChurchLibrarySources, type ChurchLibraryOutcome } from './ChurchLibrarySources'
-import { searchChurchLibrary } from '../../lib/searchBuddy/churchLibrarySearch'
+import { ChurchLibrarySearchError, searchChurchLibrary } from '../../lib/searchBuddy/churchLibrarySearch'
 import { WebsiteSearchPane, type WebsiteOutcome } from './WebsiteSearchResults'
 import styles from './SearchBuddy.module.css'
 
@@ -359,7 +359,7 @@ export function SearchBuddy() {
     void searchChurchLibrary(query, controller.signal)
       .then((response) => {
         if (requestId !== libraryRequestRef.current) return
-        setLibraryOutcome(response.results.length ? { kind: 'results', query, response } : { kind: 'empty', query })
+        setLibraryOutcome(response.results.length ? { kind: 'results', query, response } : { kind: 'empty', query, response })
       })
       .catch((cause) => {
         if (requestId !== libraryRequestRef.current) return
@@ -368,7 +368,16 @@ export function SearchBuddy() {
           return
         }
         logSearchBuddyDiagnostic(cause, 'church-library')
-        setLibraryOutcome({ kind: 'error', query, notice: t('searchBuddy.churchLibraryUnavailable') })
+        const notice = cause instanceof ChurchLibrarySearchError
+          ? cause.code === 'permission'
+            ? 'Church Library search was denied by the database permissions.'
+            : cause.code === 'not_installed'
+              ? 'Church Library search is not installed or the database schema cache is stale.'
+              : cause.code === 'timeout'
+                ? 'Church Library search timed out. Other Search Buddy catalogs remain available.'
+                : cause.message
+          : t('searchBuddy.churchLibraryUnavailable')
+        setLibraryOutcome({ kind: 'error', query, notice })
       })
   }
 
@@ -541,6 +550,7 @@ export function SearchBuddy() {
                 {(selectedDomain === 'all' || selectedDomain === 'library') && (
                   <ChurchLibrarySources
                     outcome={libraryOutcome}
+                    onRetry={startLibrarySearch}
                     showEmptyNotice={selectedDomain === 'library' || documentOutcome.kind !== 'idle'}
                   />
                 )}

@@ -918,7 +918,9 @@ export function ChantPracticePlayer({
         id="chant-practice-scroll-target"
         tabIndex={-1}
         className={styles.scrollLandmark}
-        aria-label={t('practiceChantVideoLandmark')}
+        // Invisible scroll target only: a label on a role-less div is not
+        // exposed reliably (axe: aria-prohibited-attr), so it carries none.
+        aria-hidden="true"
       />
 
       <div className={styles.layoutReading}>
@@ -1019,46 +1021,49 @@ export function ChantPracticePlayer({
         </div>
       </div>
 
-      <PracticeMiniPlayer
-        title={miniTitle}
-        zemari={singerName || null}
-        isPlaying={isPlaying}
-        currentTimeSec={currentTimeSec}
-        durationSec={durationSec}
-        controlsDisabled={controlsDisabled}
-        expanded={playerExpanded}
-        onExpandedChange={setPlayerExpanded}
-        onTogglePlay={togglePlay}
-        onSeek={seekTo}
-        onSkipBy={skipBy}
-        collapsedExtras={!isNarrow ? playbackExtras : null}
-        sheetBody={
-          <>
-            {playbackExtras ? (
+      {/* The mini-player only appears when there is something to play. */}
+      {videoId ? (
+        <PracticeMiniPlayer
+          title={miniTitle}
+          zemari={singerName || null}
+          isPlaying={isPlaying}
+          currentTimeSec={currentTimeSec}
+          durationSec={durationSec}
+          controlsDisabled={controlsDisabled}
+          expanded={playerExpanded}
+          onExpandedChange={setPlayerExpanded}
+          onTogglePlay={togglePlay}
+          onSeek={seekTo}
+          onSkipBy={skipBy}
+          collapsedExtras={!isNarrow ? playbackExtras : null}
+          sheetBody={
+            <>
+              {playbackExtras ? (
+                <div className={miniStyles.sheetSection}>
+                  <h3 className={miniStyles.sheetSectionTitle}>Playback</h3>
+                  {playbackExtras}
+                </div>
+              ) : null}
               <div className={miniStyles.sheetSection}>
-                <h3 className={miniStyles.sheetSectionTitle}>Playback</h3>
-                {playbackExtras}
+                <h3 className={miniStyles.sheetSectionTitle}>Auto Loop</h3>
+                {loopControls}
               </div>
-            ) : null}
-            <div className={miniStyles.sheetSection}>
-              <h3 className={miniStyles.sheetSectionTitle}>Auto Loop</h3>
-              {loopControls}
-            </div>
-            <div className={miniStyles.sheetSection}>
-              <h3 className={miniStyles.sheetSectionTitle}>Record</h3>
-              <p className={styles.privacyNote}>
-                Your recording stays on this device unless you choose otherwise.
-              </p>
-              <p className={styles.voiceHint}>{tt('mezmurPractice.recording.phraseHint')}</p>
-              <VoiceRecorder
-                mode={recordingMode}
-                onModeChange={setRecordingMode}
-                disabled={false}
-              />
-            </div>
-          </>
-        }
-      />
+              <div className={miniStyles.sheetSection}>
+                <h3 className={miniStyles.sheetSectionTitle}>Record</h3>
+                <p className={styles.privacyNote}>
+                  Your recording stays on this device unless you choose otherwise.
+                </p>
+                <p className={styles.voiceHint}>{tt('mezmurPractice.recording.phraseHint')}</p>
+                <VoiceRecorder
+                  mode={recordingMode}
+                  onModeChange={setRecordingMode}
+                  disabled={false}
+                />
+              </div>
+            </>
+          }
+        />
+      ) : null}
     </div>
   )
 }

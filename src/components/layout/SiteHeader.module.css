@@ -818,3 +818,31 @@
   background: var(--color-bg-muted) !important;
   opacity: 1;
 }
+/* Account stays reachable at every width (icon + label; icon only on the narrowest phones). */
+.accountLink {
+  gap: 0.35rem;
+}
+
+.accountIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 359.98px) {
+  .utilityLink.accountLink {
+    display: inline-flex;
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+  }
+
+  .accountLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}

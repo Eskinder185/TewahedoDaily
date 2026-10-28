@@ -99,6 +99,11 @@ async def public_library_search(body: LibrarySearchRequest):
         ChurchLibraryStore().search, query, language, body.limit
     )
     hits = search_result["results"]
+    answer = None
+    if hits:
+        # An extractive answer cannot invent a claim: it is copied from the
+        # highest-ranked eligible passage and displayed with that citation.
+        answer = str(hits[0].get("excerpt") or "").strip() or None
     return {
         "type": "church_library_search",
         "query": query,
@@ -111,4 +116,7 @@ async def public_library_search(body: LibrarySearchRequest):
             if search_result["semantic_used"]
             else "disabled_or_not_approved_for_this_language"
         ),
+        "availability": search_result.get("availability", "ok" if hits else "no_relevant_passage"),
+        "answer": answer,
+        "answer_status": "source_excerpt" if answer else "insufficient_evidence",
     }

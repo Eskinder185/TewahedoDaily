@@ -1,20 +1,23 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 import type { PublicMezmur } from '../../lib/publicContent/service'
 import {
   buildPrintableLyricsHtml,
-  buildSlides,
   formatLyricsForCopy,
   parseLyricSections,
-  shareHymnLink,
 } from '../../lib/hymns/lyrics'
 import { parseStructuredLyrics } from '../../lib/mezmur/structuredLyricsParser'
 import {
-  buildLiveLyricsInfo,
-  type LiveLyricsSlide,
-  type LivePresentationMode,
-} from '../../lib/mezmur/liveLyrics'
+  buildPresentationSource,
+  isLanguageAvailable,
+  type PresentationLanguage,
+} from '../../lib/mezmur/presentationSlides'
 import { useLocale } from '../../lib/i18n/locale'
+import { currentMezmurUrl } from '../../lib/hymns/shareLink'
 import styles from './HymnLyricsExperience.module.css'
+
+// The presentation view and the PowerPoint generator are only downloaded when used.
+const loadPresentation = () => import('./presentation/MezmurPresentation')
+const MezmurPresentation = lazy(loadPresentation)
 
 export type LyricsTheme = 'parchment' | 'ivory' | 'gold' | 'navy' | 'dark'
 export type LyricsFontSize = 18 | 22 | 26 | 32
@@ -25,6 +28,8 @@ type Props = {
   isLoading?: boolean
   isError?: boolean
   onRetry?: () => void
+  /** Extra compact toolbar actions (e.g. the favourite button). */
+  toolbarExtras?: ReactNode
 }
 
 type LyricLanguageId = 'am' | 'gez' | 'en' | 'om' | 'ti' | 'transliteration' | 'both'
@@ -41,12 +46,22 @@ interface AvailableLyric {
 const labels = {
   en: {
     tools: 'Lyrics tools',
-    copy: 'Copy',
+    lyricsHeading: 'Lyrics',
+    present: 'Present Mezmur',
+    presentShort: 'Present',
+    presentHint: 'Open a full-screen lyric presentation',
+    share: 'Share link',
+    copyLink: 'Copy link',
+    linkCopied: 'Link copied',
+    more: 'More actions',
+    copy: 'Copy lyrics',
     copied: 'Lyrics copied',
-    share: 'Share',
-    pdf: 'PDF',
-    slides: 'Slides',
-    live: 'Live',
+    printLyrics: 'Print / save as PDF',
+    downloadPptx: 'Download PowerPoint (.pptx)',
+    preparingPptx: 'Preparing PowerPoint…',
+    pptxDone: (name: string) => `Downloaded ${name}`,
+    pptxFailed: 'The PowerPoint file could not be created. Please try again.',
+    readingSettings: 'Reading settings',
     unavailable: 'Lyrics are not available for this hymn.',
     fetchErrorTitle: 'Unable to load lyrics',
     fetchErrorText:
@@ -69,22 +84,26 @@ const labels = {
     transliteration: 'Transliteration',
     inlineTransliteration: 'Show transliteration below',
     attribution: 'Include source attribution',
-    close: 'Close',
-    previous: 'Previous slide',
-    next: 'Next slide',
-    fullscreen: 'Toggle fullscreen',
-    lines: 'Lines per slide',
-    printSlides: 'Print / save slides as PDF',
-    printLyrics: 'Print / save as PDF',
+    loadingPresentation: 'Opening presentation…',
   },
   am: {
     tools: 'የመዝሙር መሣሪያዎች',
-    copy: 'ቅዳ',
+    lyricsHeading: 'ግጥም',
+    present: 'መዝሙሩን አቅርብ',
+    presentShort: 'አቅርብ',
+    presentHint: 'ግጥሙን በሙሉ ማያ አቅርብ',
+    share: 'ማገናኛ አጋራ',
+    copyLink: 'ማገናኛ ቅዳ',
+    linkCopied: 'ማገናኛው ተቀድቷል',
+    more: 'ተጨማሪ',
+    copy: 'ግጥሙን ቅዳ',
     copied: 'ግጥሙ ተቀድቷል',
-    share: 'አጋራ',
-    pdf: 'PDF',
-    slides: 'ስላይዶች',
-    live: 'በቀጥታ',
+    printLyrics: 'አትም / PDF አስቀምጥ',
+    downloadPptx: 'PowerPoint (.pptx) አውርድ',
+    preparingPptx: 'PowerPoint በማዘጋጀት ላይ…',
+    pptxDone: (name: string) => `${name} ወርዷል`,
+    pptxFailed: 'የPowerPoint ፋይሉን መፍጠር አልተቻለም። እንደገና ይሞክሩ።',
+    readingSettings: 'የንባብ ቅንብሮች',
     unavailable: 'የዚህ መዝሙር ግጥም አልተገኘም።',
     fetchErrorTitle: 'ግጥሙን መጫን አልተቻለም',
     fetchErrorText:
@@ -107,15 +126,32 @@ const labels = {
     transliteration: 'በላቲን ፊደል',
     inlineTransliteration: 'የላቲን ንባብ ከሥር አሳይ',
     attribution: 'የምንጭ ማጣቀሻ አክል',
-    close: 'ዝጋ',
-    previous: 'የቀደመው',
-    next: 'ቀጣይ',
-    fullscreen: 'ሙሉ ማያ',
-    lines: 'በስላይድ ያሉ መስመሮች',
-    printSlides: 'ስላይዶችን አትም / PDF አስቀምጥ',
-    printLyrics: 'አትም / PDF አስቀምጥ',
+    loadingPresentation: 'ማቅረቢያውን በመክፈት ላይ…',
   },
 } as const
+
+const READER_PREFS_KEY = 'td.mezmurReader.v1'
+
+function readReaderPref<T>(key: string, fallback: T): T {
+  try {
+    const raw = window.localStorage.getItem(READER_PREFS_KEY)
+    const parsed = raw ? (JSON.parse(raw) as Record<string, unknown>) : {}
+    return key in parsed ? (parsed[key] as T) : fallback
+  } catch {
+    return fallback
+  }
+}
+
+function writeReaderPref(key: string, value: unknown) {
+  try {
+    const raw = window.localStorage.getItem(READER_PREFS_KEY)
+    const parsed = raw ? (JSON.parse(raw) as Record<string, unknown>) : {}
+    parsed[key] = value
+    window.localStorage.setItem(READER_PREFS_KEY, JSON.stringify(parsed))
+  } catch {
+    /* storage unavailable */
+  }
+}
 
 function openPrintDocument(html: string) {
   const target = window.open('', '_blank')
@@ -137,7 +173,25 @@ function safeExternalLink(value: string | null | undefined): string | null {
   }
 }
 
-export function HymnLyricsExperience({ item, canonical, isLoading = false, isError = false, onRetry }: Props) {
+async function copyText(text: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(text)
+    return true
+  } catch {
+    return false
+  }
+}
+
+function presentationLanguageFor(readerLang: LyricLanguageId, originalCode: string | undefined): PresentationLanguage {
+  if (readerLang === 'both') return 'both'
+  if (readerLang === 'transliteration') return 'transliteration'
+  if (readerLang === 'en') return originalCode === 'en' ? 'original' : 'english'
+  return 'original'
+}
+
+const isWide = () => typeof window !== 'undefined' && window.matchMedia?.('(min-width: 960px)').matches
+
+export function HymnLyricsExperience({ item, canonical, isLoading = false, isError = false, onRetry, toolbarExtras }: Props) {
   const { uiLocale } = useLocale()
   const t = labels[uiLocale]
   const lyricsTigrinya = (item as { lyrics_tigrinya?: string | null }).lyrics_tigrinya
@@ -277,7 +331,11 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
     return availableLangs[0].id
   }, [availableLangs, item.language, item.primary_language])
 
-  const [selectedLang, setSelectedLang] = useState<LyricLanguageId | null>(null)
+  const [selectedLang, setSelectedLangState] = useState<LyricLanguageId | null>(() => readReaderPref<LyricLanguageId | null>('lang', null))
+  const setSelectedLang = (id: LyricLanguageId) => {
+    setSelectedLangState(id)
+    writeReaderPref('lang', id)
+  }
 
   // Derived active language: if user selected a language that exists, use it; otherwise fallback to defaultLangId
   const activeLang =
@@ -303,35 +361,52 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
 
   const [message, setMessage] = useState('')
   const [includeAttribution, setIncludeAttribution] = useState(true)
-  const [fontSize, setFontSize] = useState<LyricsFontSize>(22)
-  const [readerTheme, setReaderTheme] = useState<LyricsTheme>('parchment')
+  const [fontSize, setFontSizeState] = useState<LyricsFontSize>(() => {
+    const v = readReaderPref<number>('fontSize', 22)
+    return ([18, 22, 26, 32] as const).includes(v as LyricsFontSize) ? (v as LyricsFontSize) : 22
+  })
+  const [readerTheme, setReaderThemeState] = useState<LyricsTheme>(() => {
+    const v = readReaderPref<string>('theme', 'parchment')
+    return (['parchment', 'ivory', 'gold', 'navy', 'dark'] as const).includes(v as LyricsTheme) ? (v as LyricsTheme) : 'parchment'
+  })
+  const setFontSize = (v: LyricsFontSize) => {
+    setFontSizeState(v)
+    writeReaderPref('fontSize', v)
+  }
+  const setReaderTheme = (v: LyricsTheme) => {
+    setReaderThemeState(v)
+    writeReaderPref('theme', v)
+  }
   const [numbered, setNumbered] = useState(true)
   const [showTransliteration, setShowTransliteration] = useState(true)
-  const [linesPerSlide, setLinesPerSlide] = useState(4)
-  const [presentation, setPresentation] = useState<'preview' | 'live' | null>(null)
-  const [slideIndex, setSlideIndex] = useState(0)
-  const [liveFontSize, setLiveFontSize] = useState(48)
-  const [userLiveMode, setUserLiveMode] = useState<LivePresentationMode | null>(null)
-  const liveRef = useRef<HTMLDivElement>(null)
+  const [settingsOpen, setSettingsOpen] = useState(() => Boolean(isWide()))
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [presenting, setPresenting] = useState(false)
+  const [exporting, setExporting] = useState(false)
+  const settingsId = useId()
+  const menuId = useId()
+  const menuRef = useRef<HTMLDivElement>(null)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const presentButtonRef = useRef<HTMLButtonElement>(null)
+  const tabsRef = useRef<HTMLDivElement>(null)
+  const [tabsOverflow, setTabsOverflow] = useState(false)
+  const updateTabsOverflow = () => {
+    const el = tabsRef.current
+    const more = Boolean(el && el.scrollLeft + el.clientWidth < el.scrollWidth - 4)
+    setTabsOverflow((prev) => (prev === more ? prev : more))
+  }
+  useEffect(() => {
+    const el = tabsRef.current
+    if (!el || typeof ResizeObserver === 'undefined') return
+    const ro = new ResizeObserver(() => {
+      const more = el.scrollLeft + el.clientWidth < el.scrollWidth - 4
+      setTabsOverflow((prev) => (prev === more ? prev : more))
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [availableLangs.length])
 
-  const isLive = presentation === 'live'
-  const liveInfo = useMemo(() => buildLiveLyricsInfo(item), [item])
-
-  const effectiveLiveMode = useMemo<LivePresentationMode>(() => {
-    if (userLiveMode === 'both' && liveInfo.hasOriginal && liveInfo.hasTransliteration) return 'both'
-    if (userLiveMode === 'transliteration' && liveInfo.hasTransliteration) return 'transliteration'
-    if (userLiveMode === 'original' && liveInfo.hasOriginal) return 'original'
-    return liveInfo.defaultMode
-  }, [userLiveMode, liveInfo.defaultMode, liveInfo.hasOriginal, liveInfo.hasTransliteration])
-
-  // In Live mode, slides are synchronized section-for-section across original and transliteration;
-  // in Preview mode, slides are chunked by linesPerSlide.
-  const previewSlides = useMemo(() => buildSlides(sections, linesPerSlide), [sections, linesPerSlide])
-  const activeSlideList = isLive ? liveInfo.slides : previewSlides
-  const totalSlideCount = activeSlideList.length
-
-  const activeSlide = activeSlideList[Math.min(slideIndex, Math.max(0, totalSlideCount - 1))]
-  const activeLiveSlide = isLive ? (activeSlide as LiveLyricsSlide | undefined) : undefined
+  const presentationSource = useMemo(() => buildPresentationSource(item), [item])
   const attribution = item.source || null
   const sourceUrl = safeExternalLink(item.source)
 
@@ -341,20 +416,44 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
       ? (item.lyrics_transliteration || item.transliteration)?.trim()
       : null
 
+  const flash = (text: string) => {
+    setMessage(text)
+    window.setTimeout(() => setMessage((current) => (current === text ? '' : current)), 2200)
+  }
+
+  // More menu: close on outside click / Escape, focus the first item when opened.
   useEffect(() => {
-    if (!presentation) return
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setPresentation(null)
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown')
-        setSlideIndex((value) => Math.min(totalSlideCount - 1, value + 1))
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp')
-        setSlideIndex((value) => Math.max(0, value - 1))
+    if (!menuOpen) return
+    const first = menuRef.current?.querySelector<HTMLElement>('[role="menuitem"]')
+    first?.focus()
+    const onDown = (event: PointerEvent) => {
+      if (!menuRef.current?.contains(event.target as Node) && !menuButtonRef.current?.contains(event.target as Node)) {
+        setMenuOpen(false)
+      }
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [presentation, totalSlideCount])
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+        menuButtonRef.current?.focus()
+      }
+      if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+        const items = Array.from(menuRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]') || [])
+        const i = items.indexOf(document.activeElement as HTMLElement)
+        const next = event.key === 'ArrowDown' ? (i + 1) % items.length : (i - 1 + items.length) % items.length
+        items[next]?.focus()
+        event.preventDefault()
+      }
+    }
+    document.addEventListener('pointerdown', onDown)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('pointerdown', onDown)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [menuOpen])
 
   const copyLyrics = async () => {
+    setMenuOpen(false)
     const text = formatLyricsForCopy({
       title: item.title_amharic || item.title,
       subtitle: item.title_amharic ? item.title : null,
@@ -363,28 +462,36 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
       attribution,
       includeAttribution,
     })
-    try {
-      await navigator.clipboard.writeText(text)
-    } catch {
-      window.prompt('Copy lyrics', text)
-    }
-    setMessage(t.copied)
-    window.setTimeout(() => setMessage(''), 1800)
+    if (!(await copyText(text))) window.prompt('Copy lyrics', text)
+    flash(t.copied)
   }
 
-  const share = async () => {
-    const data = { title: item.title_amharic || item.title, text: item.title, url: canonical }
-    try {
-      const result = await shareHymnLink(navigator, data)
-      if (result === 'copied') {
-        setMessage(uiLocale === 'am' ? 'ማገናኛው ተቀድቷል' : 'Link copied')
+  const copyLink = async () => {
+    setMenuOpen(false)
+    const url = currentMezmurUrl()
+    if (await copyText(url)) flash(t.linkCopied)
+    else window.prompt(t.copyLink, url)
+  }
+
+  const shareLink = async () => {
+    const url = currentMezmurUrl()
+    const nav = navigator as Navigator & { share?: (data: ShareData) => Promise<void>; canShare?: (data: ShareData) => boolean }
+    const data: ShareData = { title: item.title_amharic || item.title, url }
+    if (typeof nav.share === 'function' && (!nav.canShare || nav.canShare(data))) {
+      try {
+        await nav.share(data)
+        return
+      } catch (error) {
+        if ((error as DOMException)?.name === 'AbortError') return
+        // fall through to copying the link
       }
-    } catch (error) {
-      if ((error as DOMException)?.name !== 'AbortError') window.prompt('Copy link', canonical)
     }
+    if (await copyText(url)) flash(t.linkCopied)
+    else window.prompt(t.copyLink, url)
   }
 
   const printLyrics = () => {
+    setMenuOpen(false)
     try {
       openPrintDocument(
         buildPrintableLyricsHtml({
@@ -399,33 +506,57 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
         }),
       )
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Unable to open PDF view.')
+      flash(error instanceof Error ? error.message : 'Unable to open PDF view.')
     }
   }
 
-  const printSlides = () => {
-    try {
-      openPrintDocument(
-        buildPrintableLyricsHtml({
-          title: item.title_amharic || item.title,
-          sections: previewSlides.map((slide) => ({ ...slide, kind: 'other' as const })),
-          attribution,
-          slides: true,
-          theme: readerTheme === 'dark' ? 'dark' : 'parchment',
-        }),
-      )
-    } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Unable to open slide view.')
-    }
+  const initialPresentationLanguage = (): PresentationLanguage => {
+    const wanted = presentationLanguageFor(activeLang, presentationSource.original?.code)
+    return isLanguageAvailable(presentationSource, wanted) ? wanted : presentationSource.defaultLanguage || 'original'
   }
 
-  const toggleFullscreen = async () => {
+  const downloadPowerPoint = async () => {
+    setMenuOpen(false)
+    if (exporting) return
+    setExporting(true)
+    setMessage(t.preparingPptx)
     try {
-      if (document.fullscreenElement) await document.exitFullscreen()
-      else await liveRef.current?.requestFullscreen()
+      const [{ buildPresentationSlides, autoLinesCapacity }, { readPresentationPrefs }, { downloadPptx }] = await Promise.all([
+        import('../../lib/mezmur/presentationSlides'),
+        import('../../lib/mezmur/presentationPrefs'),
+        import('../../lib/mezmur/pptxExport'),
+      ])
+      const prefs = readPresentationPrefs()
+      const language = prefs.language && isLanguageAvailable(presentationSource, prefs.language) ? prefs.language : initialPresentationLanguage()
+      const slides = buildPresentationSlides(presentationSource, {
+        language,
+        linesPerSlide: prefs.linesPerSlide,
+        autoCapacity: autoLinesCapacity(prefs.fontSize, language === 'both' && prefs.showTransliteration),
+        includeTitleSlide: prefs.showTitle,
+        groupBySection: prefs.grouping,
+        showTransliteration: prefs.showTransliteration,
+      })
+      const { fileName } = await downloadPptx({
+        slides,
+        title: presentationSource.title,
+        fontSize: prefs.fontSize,
+        theme: prefs.theme,
+        highContrast: prefs.highContrast,
+        align: prefs.align,
+        attribution: presentationSource.attribution,
+        includeAttribution: prefs.includeAttribution,
+      })
+      flash(t.pptxDone(fileName))
     } catch {
-      setMessage('Fullscreen is not available in this browser.')
+      flash(t.pptxFailed)
+    } finally {
+      setExporting(false)
     }
+  }
+
+  const closePresentation = () => {
+    setPresenting(false)
+    window.setTimeout(() => presentButtonRef.current?.focus(), 0)
   }
 
   // State 1: Fetch Error State
@@ -565,73 +696,133 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
       aria-labelledby="lyrics-tools-title"
       data-testid="lyrics-reading-experience"
     >
-      {/* Header bar */}
-      <div className={styles.toolsHeader}>
-        <div>
-          <p className={styles.eyebrow}>{t.tools}</p>
-          <h2 id="lyrics-tools-title">{item.title_amharic || item.title}</h2>
-          {item.title_amharic && item.title ? (
-            <p className={styles.subtitle}>{item.title}</p>
-          ) : null}
+      <h2 id="lyrics-tools-title" className={styles.srOnly}>
+        {t.lyricsHeading}
+      </h2>
+
+      {/* Compact toolbar: language, Present, share, favourite, settings, more */}
+      <div className={styles.toolbar}>
+        <div className={styles.langRow}>
+          {availableLangs.length > 1 ? (
+            <div
+              ref={tabsRef}
+              className={styles.languageTabsBar}
+              data-overflow={tabsOverflow ? 'true' : undefined}
+              onScroll={updateTabsOverflow}
+              role="tablist"
+              aria-label={t.languageTabsLabel}
+            >
+              {availableLangs.map((tab) => (
+                <button
+                  key={tab.id}
+                  id={`lyrics-tab-${tab.id}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeLang === tab.id}
+                  aria-controls={`lyrics-tabpanel-${tab.id}`}
+                  tabIndex={activeLang === tab.id ? 0 : -1}
+                  className={`${styles.languageTab} ${activeLang === tab.id ? styles.languageTabActive : ''}`}
+                  onClick={() => setSelectedLang(tab.id)}
+                  onKeyDown={(event) => {
+                    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return
+                    const i = availableLangs.findIndex((l) => l.id === tab.id)
+                    const next = availableLangs[(i + (event.key === 'ArrowRight' ? 1 : availableLangs.length - 1)) % availableLangs.length]
+                    setSelectedLang(next.id)
+                    document.getElementById(`lyrics-tab-${next.id}`)?.focus()
+                  }}
+                >
+                  {uiLocale === 'am' ? tab.labelAm : tab.labelEn}
+                </button>
+              ))}
+            </div>
+          ) : (
+            <p className={styles.singleLanguage}>{uiLocale === 'am' ? currentLyric.labelAm : currentLyric.labelEn}</p>
+          )}
+          <button
+            type="button"
+            className={`${styles.iconButton} ${settingsOpen ? styles.iconButtonActive : ''}`}
+            onClick={() => setSettingsOpen((open) => !open)}
+            aria-expanded={settingsOpen}
+            aria-controls={settingsId}
+            aria-label={t.readingSettings}
+            title={t.readingSettings}
+            data-testid="reading-settings-toggle"
+          >
+            <span aria-hidden="true" className={styles.aaGlyph}>Aa</span>
+          </button>
         </div>
+
         <div className={styles.actions} role="toolbar" aria-label={t.tools}>
-          <button type="button" onClick={copyLyrics}>
-            {t.copy}
-          </button>
-          <button type="button" onClick={share}>
-            {t.share}
-          </button>
-          <button type="button" onClick={printLyrics}>
-            {t.pdf}
+          <button
+            ref={presentButtonRef}
+            type="button"
+            className={styles.presentButton}
+            onClick={() => {
+              setMenuOpen(false)
+              setPresenting(true)
+            }}
+            onPointerEnter={() => void loadPresentation()}
+            onFocus={() => void loadPresentation()}
+            title={t.presentHint}
+            aria-label={t.present}
+            data-testid="present-mezmur"
+          >
+            <span aria-hidden="true" className={styles.presentIcon}>▶</span>
+            <span className={styles.presentLong}>{t.present}</span>
+            <span className={styles.presentShort} aria-hidden="true">{t.presentShort}</span>
           </button>
           <button
             type="button"
-            onClick={() => {
-              setSlideIndex(0)
-              setPresentation('preview')
-            }}
+            className={styles.iconButton}
+            onClick={() => void shareLink()}
+            aria-label={t.share}
+            title={t.share}
+            data-testid="share-link"
           >
-            {t.slides}
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7" />
+              <path d="M12 3v12" />
+              <path d="m7 8 5-5 5 5" />
+            </svg>
           </button>
-          <button
-            type="button"
-            className={styles.liveButton}
-            onClick={() => {
-              setSlideIndex(0)
-              setPresentation('live')
-            }}
-          >
-            {t.live}
-          </button>
+          {toolbarExtras}
+          <div className={styles.menuWrap}>
+            <button
+              ref={menuButtonRef}
+              type="button"
+              className={styles.iconButton}
+              aria-haspopup="menu"
+              aria-expanded={menuOpen}
+              aria-controls={menuId}
+              aria-label={t.more}
+              title={t.more}
+              onClick={() => setMenuOpen((open) => !open)}
+              data-testid="more-actions"
+            >
+              <span aria-hidden="true">⋯</span>
+            </button>
+            {menuOpen ? (
+              <div ref={menuRef} id={menuId} role="menu" aria-label={t.more} className={styles.menu}>
+                <button type="button" role="menuitem" onClick={() => void copyLink()} data-testid="menu-copy-link">
+                  {t.copyLink}
+                </button>
+                <button type="button" role="menuitem" onClick={() => void copyLyrics()}>
+                  {t.copy}
+                </button>
+                <button type="button" role="menuitem" onClick={() => void downloadPowerPoint()} disabled={exporting} data-testid="menu-download-pptx">
+                  {t.downloadPptx}
+                </button>
+                <button type="button" role="menuitem" onClick={printLyrics}>
+                  {t.printLyrics}
+                </button>
+              </div>
+            ) : null}
+          </div>
         </div>
       </div>
 
-      {/* Language Tabs Selector (when multiple versions exist) */}
-      {availableLangs.length > 1 ? (
-        <div
-          className={styles.languageTabsBar}
-          role="tablist"
-          aria-label={t.languageTabsLabel}
-        >
-          {availableLangs.map((tab) => (
-            <button
-              key={tab.id}
-              id={`lyrics-tab-${tab.id}`}
-              type="button"
-              role="tab"
-              aria-selected={activeLang === tab.id}
-              aria-controls={`lyrics-tabpanel-${tab.id}`}
-              className={`${styles.languageTab} ${activeLang === tab.id ? styles.languageTabActive : ''}`}
-              onClick={() => setSelectedLang(tab.id)}
-            >
-              {uiLocale === 'am' ? tab.labelAm : tab.labelEn}
-            </button>
-          ))}
-        </div>
-      ) : null}
-
-      {/* Reading Options & Controls */}
-      <div className={styles.options}>
+      {/* Collapsible reading settings */}
+      <div id={settingsId} className={styles.options} hidden={!settingsOpen} data-testid="reading-settings">
         {/* Font size segmented buttons: S (18px), M (22px), L (26px), XL (32px) */}
         <div className={styles.controlGroup}>
           <span className={styles.controlLabel}>{t.textSize}:</span>
@@ -706,13 +897,18 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
         ) : null}
       </div>
 
+      <p className={styles.status} role="status" aria-live="polite">
+        {message}
+      </p>
+
       {/* Active Tab Panel with Lyrics */}
       <div
         id={`lyrics-tabpanel-${currentLyric.id}`}
         role="tabpanel"
-        aria-labelledby={`lyrics-tab-${currentLyric.id}`}
+        aria-labelledby={availableLangs.length > 1 ? `lyrics-tab-${currentLyric.id}` : 'lyrics-tools-title'}
         className={`${styles.reader} ${themeClass}`}
         style={{ '--reader-size': `${fontSize}px` } as React.CSSProperties}
+        data-testid="lyrics-reader"
       >
         <h3 className={styles.readerHeading}>{t.reader}</h3>
         {isBothMode ? (
@@ -776,220 +972,21 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
         ) : null}
       </div>
 
-      <p className={styles.status} role="status" aria-live="polite">
-        {message}
-      </p>
-
-      {/* Slide / Live Presentation Dialog */}
-      {presentation && activeSlide ? (
-        <div
-          ref={liveRef}
-          className={`${styles.presentation} ${
-            readerTheme === 'dark'
-              ? styles.presentationDark
-              : readerTheme === 'ivory'
-                ? styles.presentationIvory
-                : readerTheme === 'gold'
-                  ? styles.presentationGold
-                  : readerTheme === 'navy'
-                    ? styles.presentationNavy
-                    : styles.presentationParchment
-          }`}
-          role="dialog"
-          aria-modal="true"
-          aria-label={isLive ? t.live : t.slides}
-          data-testid="presentation-dialog"
+      {presenting ? (
+        <Suspense
+          fallback={
+            <p className={styles.presentLoading} role="status">
+              {t.loadingPresentation}
+            </p>
+          }
         >
-          <div className={styles.presentationTop}>
-            <span>{activeSlide.label}</span>
-            <span data-testid="live-slide-counter">
-              {slideIndex + 1} / {totalSlideCount}
-            </span>
-          </div>
-
-          {isLive && activeLiveSlide ? (
-            <div className={styles.liveSlideContainer} data-testid="live-slide-container">
-              {effectiveLiveMode === 'both' ? (
-                <div className={styles.liveBothContainer}>
-                  {activeLiveSlide.origLines.length ? (
-                    <p
-                      className={`${styles.liveOrigText} ${liveInfo.isEthiopic ? styles.ethiopicTypography : styles.latinTypography}`}
-                      lang={liveInfo.langCode}
-                      style={{ fontSize: `${Math.round(liveFontSize * 0.88)}px` }}
-                      data-testid="live-orig-text"
-                    >
-                      {activeLiveSlide.origLines.join('\n')}
-                    </p>
-                  ) : null}
-
-                  {activeLiveSlide.origLines.length && activeLiveSlide.translitLines.length ? (
-                    <div className={styles.liveBothDivider} aria-hidden="true" />
-                  ) : null}
-
-                  {activeLiveSlide.translitLines.length ? (
-                    <p
-                      className={`${styles.liveTranslitText} ${styles.latinTypography}`}
-                      lang="en"
-                      style={{ fontSize: `${Math.round(liveFontSize * 0.72)}px` }}
-                      data-testid="live-translit-text"
-                    >
-                      {activeLiveSlide.translitLines.join('\n')}
-                    </p>
-                  ) : null}
-                </div>
-              ) : effectiveLiveMode === 'transliteration' ? (
-                <p
-                  className={`${styles.slideText} ${styles.latinTypography}`}
-                  lang="en"
-                  style={{ fontSize: `${liveFontSize}px` }}
-                  data-testid="live-translit-text"
-                >
-                  {activeLiveSlide.translitLines.length
-                    ? activeLiveSlide.translitLines.join('\n')
-                    : activeLiveSlide.origLines.join('\n')}
-                </p>
-              ) : (
-                <p
-                  className={`${styles.slideText} ${liveInfo.isEthiopic ? styles.ethiopicTypography : styles.latinTypography}`}
-                  lang={liveInfo.langCode}
-                  style={{ fontSize: `${liveFontSize}px` }}
-                  data-testid="live-orig-text"
-                >
-                  {activeLiveSlide.origLines.length
-                    ? activeLiveSlide.origLines.join('\n')
-                    : activeLiveSlide.translitLines.join('\n')}
-                </p>
-              )}
-            </div>
-          ) : (
-            <div
-              className={`${styles.slideText} ${typographyClass}`}
-              lang={currentLyric.langCode}
-              style={{ fontSize: `${liveFontSize}px` }}
-            >
-              {activeSlide.lines.join('\n')}
-            </div>
-          )}
-
-          <div className={styles.presentationControls}>
-            <button
-              type="button"
-              aria-label={t.previous}
-              onClick={() => setSlideIndex((value) => Math.max(0, value - 1))}
-              disabled={slideIndex === 0}
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              aria-label="Decrease presentation text size"
-              onClick={() => setLiveFontSize((value) => Math.max(24, value - 4))}
-            >
-              A−
-            </button>
-            <button
-              type="button"
-              aria-label="Increase presentation text size"
-              onClick={() => setLiveFontSize((value) => Math.min(88, value + 4))}
-            >
-              A+
-            </button>
-            <button
-              type="button"
-              aria-label="Toggle reader theme"
-              onClick={() =>
-                setReaderTheme((value) => (value === 'dark' ? 'parchment' : 'dark'))
-              }
-            >
-              {readerTheme === 'dark' ? '☀' : '☾'}
-            </button>
-
-            {isLive ? (
-              <div
-                className={styles.liveModeToggle}
-                role="group"
-                aria-label={uiLocale === 'am' ? 'የቋንቋ ምርጫ' : 'Language display mode'}
-                data-testid="live-language-controls"
-              >
-                <button
-                  type="button"
-                  id="live-mode-original"
-                  className={`${styles.liveModeButton} ${effectiveLiveMode === 'original' ? styles.liveModeButtonActive : ''}`}
-                  onClick={() => setUserLiveMode('original')}
-                  disabled={!liveInfo.hasOriginal}
-                  title={uiLocale === 'am' ? 'ኦሪጅናል ግጥም' : 'Original language lyrics'}
-                  aria-pressed={effectiveLiveMode === 'original'}
-                >
-                  {uiLocale === 'am' ? 'ኦሪጅናል' : 'Original'}
-                </button>
-                <button
-                  type="button"
-                  id="live-mode-transliteration"
-                  className={`${styles.liveModeButton} ${effectiveLiveMode === 'transliteration' ? styles.liveModeButtonActive : ''}`}
-                  onClick={() => setUserLiveMode('transliteration')}
-                  disabled={!liveInfo.hasTransliteration}
-                  title={uiLocale === 'am' ? 'ላቲን (ድምጽ)' : 'Latin transliteration'}
-                  aria-pressed={effectiveLiveMode === 'transliteration'}
-                >
-                  {uiLocale === 'am' ? 'ላቲን' : 'Transliteration'}
-                </button>
-                <button
-                  type="button"
-                  id="live-mode-both"
-                  className={`${styles.liveModeButton} ${effectiveLiveMode === 'both' ? styles.liveModeButtonActive : ''}`}
-                  onClick={() => setUserLiveMode('both')}
-                  disabled={!liveInfo.hasOriginal || !liveInfo.hasTransliteration}
-                  title={uiLocale === 'am' ? 'ሁለቱም' : 'Both Original & Transliteration'}
-                  aria-pressed={effectiveLiveMode === 'both'}
-                >
-                  {uiLocale === 'am' ? 'ሁለቱም' : 'Both'}
-                </button>
-              </div>
-            ) : null}
-
-            {presentation === 'preview' ? (
-              <label>
-                {t.lines}
-                <select
-                  value={linesPerSlide}
-                  onChange={(event) => {
-                    setLinesPerSlide(Number(event.target.value))
-                    setSlideIndex(0)
-                  }}
-                >
-                  {[2, 3, 4, 5, 6, 7, 8].map((value) => (
-                    <option key={value}>{value}</option>
-                  ))}
-                </select>
-              </label>
-            ) : null}
-            {presentation === 'preview' ? (
-              <button type="button" onClick={printSlides}>
-                {t.printSlides}
-              </button>
-            ) : null}
-            <button
-              type="button"
-              aria-label={t.fullscreen}
-              onClick={toggleFullscreen}
-            >
-              ⛶
-            </button>
-            <button
-              type="button"
-              aria-label={t.next}
-              onClick={() =>
-                setSlideIndex((value) => Math.min(totalSlideCount - 1, value + 1))
-              }
-              disabled={slideIndex >= totalSlideCount - 1}
-            >
-              →
-            </button>
-            <button type="button" onClick={() => setPresentation(null)}>
-              {t.close}
-            </button>
-          </div>
-        </div>
+          <MezmurPresentation
+            source={presentationSource}
+            initialLanguage={initialPresentationLanguage()}
+            uiLocale={uiLocale}
+            onClose={closePresentation}
+          />
+        </Suspense>
       ) : null}
     </section>
   )

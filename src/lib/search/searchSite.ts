@@ -26,6 +26,7 @@ import {
   type SiteSourceAttempt,
 } from './siteSearchStatus'
 import type { SiteSearchResponse, SiteSearchResult } from './types'
+import { runCatalog, type CatalogRun } from './catalogRunner'
 
 export type { SearchSessionContext }
 
@@ -40,11 +41,7 @@ type SearchOptions = {
   signal?: AbortSignal
 }
 
-type SettledSource = {
-  name: string
-  results: SiteSearchResult[]
-  failed: boolean
-}
+type SettledSource = CatalogRun
 
 type CalendarIndexRow = SiteSearchResult & { blob: string; entryId: string }
 
@@ -151,19 +148,12 @@ async function searchStaticCalendar(query: string, limit = 6): Promise<SiteSearc
   return hits
 }
 
-async function settled<T>(
-  name: string,
-  work: () => Promise<T>,
-  map: (value: T) => SiteSearchResult[],
-): Promise<SettledSource> {
-  try {
-    const value = await work()
-    return { name, results: map(value), failed: false }
-  } catch (error) {
-    if (error instanceof DOMException && error.name === 'AbortError') throw error
-    return { name, results: [], failed: true }
-  }
+/** Per-catalog time budgets (ms). Bible text search scans the most rows. */
+const CATALOG_TIMEOUT_MS: Record<string, number> = {
+  bible: 6000,
+  churchLibrary: 6000,
 }
+const DEFAULT_CATALOG_TIMEOUT_MS = 5000
 
 export async function searchSite(
   queryRaw: string,
@@ -247,64 +237,29 @@ export async function searchSite(
     import('./synaxariumSearch'),
   ])
 
+  // Every catalog runs at the same time with its own time budget, so one slow
+  // or failing catalog (often Bible full-text search) never blocks the rest.
+  const internal = new AbortController()
+  const abortInternal = () => internal.abort()
+  options.signal?.addEventListener('abort', abortInternal, { once: true })
+  const run = <T,>(name: string, work: () => Promise<T>, map: (value: T) => SiteSearchResult[]) =>
+    runCatalog(name, () => work(), map, {
+      timeoutMs: CATALOG_TIMEOUT_MS[name] ?? DEFAULT_CATALOG_TIMEOUT_MS,
+      signal: internal.signal,
+    })
+
   // Direct chapter and verse references resolve through the Bible catalog.
   let bibleDirect = false
-  let bibleResults: SiteSearchResult[] = []
-  let bibleFailed = false
-  try {
-    throwIfAborted(options.signal)
-    const bible = await searchBible(query, { language: bibleLanguage, textLimit: 12 })
-    bibleResults = bible.results
-    bibleDirect = bible.directReference
-  } catch (error) {
-    if (options.signal?.aborted || (error instanceof DOMException && error.name === 'AbortError')) {
-      throw new DOMException('The operation was aborted.', 'AbortError')
-    }
-    bibleFailed = true
-  }
-  throwIfAborted(options.signal)
-
-  if (bibleDirect && bibleResults.some((r) => r.sourceType !== 'bible-book')) {
-    const hasScripture = bibleResults.some(
-      (r) =>
-        r.sourceType === 'bible-verse' ||
-        r.sourceType === 'bible-range' ||
-        r.sourceType === 'bible-chapter' ||
-        r.sourceType === 'bible-text',
-    )
-    if (hasScripture || bibleResults.length) {
-      const ranked = rankSearchResults(bibleResults, query, limit)
-      return finishResponse({
-        query: queryRaw,
-        resolvedQuery: query,
-        results: ranked,
-        intentMessage: null,
-        isFollowUp: follow.isFollowUp,
-        attempted: [{ name: 'bible', failed: false, count: ranked.length }],
-      })
-    }
-  }
-
-  const sources: SettledSource[] = [
-    { name: 'bible', results: bibleResults, failed: bibleFailed },
-    { name: 'routes', results: searchRouteCatalog(expanded, 8), failed: false },
-  ]
-  try {
-    sources.push({
-      name: 'calendar',
-      results: await searchStaticCalendar(expanded, 6),
-      failed: false,
-    })
-  } catch (error) {
-    if (options.signal?.aborted || (error instanceof DOMException && error.name === 'AbortError')) {
-      throw new DOMException('The operation was aborted.', 'AbortError')
-    }
-    sources.push({ name: 'calendar', results: [], failed: true })
-  }
-  if (intent) sources.push({ name: 'intent', results: [intent], failed: false })
-
-  const remote = await Promise.all([
-    settled('hymns', () => searchHymns(expanded, 14), (discovery) => {
+  const bibleRun = run(
+    'bible',
+    () => searchBible(query, { language: bibleLanguage, textLimit: 12 }),
+    (bible) => {
+      bibleDirect = bible.directReference
+      return bible.results
+    },
+  )
+  const remoteRun = Promise.all([
+    run('hymns', () => searchHymns(expanded, 14), (discovery) => {
       const out: SiteSearchResult[] = []
       for (const hit of discovery) {
         if (hit.type === 'section') {
@@ -363,7 +318,7 @@ export async function searchSite(
       }
       return out
     }),
-    settled(
+    run(
       'mezmurCatalog',
       async () => {
         const docs = await loadMezmurSearchCatalog()
@@ -385,7 +340,7 @@ export async function searchSite(
           typeLabel: 'Mezmur',
         })),
     ),
-    settled(
+    run(
       'prayers',
       async () => {
         const { searchPrayCatalog } = await import('../prayers/prayerSearch')
@@ -436,7 +391,7 @@ export async function searchSite(
         }
       }),
     ),
-    settled('zemaris', () => getHymnSingers(), (zemaris) => {
+    run('zemaris', () => getHymnSingers(), (zemaris) => {
       const q = normalizeLatinSearchText(expanded)
       const tokens = q.split(/\s+/).filter((t) => t.length >= 2)
       const out: SiteSearchResult[] = []
@@ -464,7 +419,7 @@ export async function searchSite(
       }
       return out
     }),
-    settled('collections', () => getHymnCollections(), (collections) => {
+    run('collections', () => getHymnCollections(), (collections) => {
       const q = normalizeLatinSearchText(expanded)
       const tokens = q.split(' ').filter((t) => t.length >= 3)
       const out: SiteSearchResult[] = []
@@ -489,19 +444,19 @@ export async function searchSite(
       }
       return out
     }),
-    settled(
+    run(
       'synaxarium',
       () => loadSynaxariumSearchCatalog(),
       (docs) => searchSynaxariumCatalog(docs, expanded, 10),
     ),
-    settled('saints', () => publishedEditorial('saints', query), (rows) => rows),
-    settled('feasts', () => publishedEditorial('feasts', query), (rows) => rows),
-    settled('learn', () => publishedEditorial('articles', query), (rows) => rows),
-    settled(
+    run('saints', () => publishedEditorial('saints', query), (rows) => rows),
+    run('feasts', () => publishedEditorial('feasts', query), (rows) => rows),
+    run('learn', () => publishedEditorial('articles', query), (rows) => rows),
+    run(
       'churchLibrary',
       async () => {
         const { searchChurchLibrary } = await import('../searchBuddy/churchLibrarySearch')
-        return searchChurchLibrary(expanded, options.signal)
+        return searchChurchLibrary(expanded, internal.signal)
       },
       (library) =>
         library.results.map((hit) => ({
@@ -512,7 +467,7 @@ export async function searchSite(
           description: hit.excerpt
             ? `${hit.chapter_reference ? hit.chapter_reference + ' · ' : ''}${hit.locator_label ? hit.locator_label + ' · ' : ''}${hit.excerpt.slice(0, 160)}…`
             : hit.author || 'Church Library book',
-          route: `/library/${hit.book_id}`,
+          route: `/library/${hit.book_id}?passage=${encodeURIComponent(hit.passage_id)}`,
           imagePath: null,
           score: 0.05,
           matchKind: 'keyword' as const,
@@ -520,6 +475,68 @@ export async function searchSite(
         })),
     ),
   ])
+  // Never leave a rejected promise unobserved if we return early.
+  remoteRun.catch(() => undefined)
+
+  let bibleSource: SettledSource
+  try {
+    bibleSource = await bibleRun
+  } catch (error) {
+    options.signal?.removeEventListener('abort', abortInternal)
+    internal.abort()
+    throw error
+  }
+  const bibleResults = bibleSource.results
+  throwIfAborted(options.signal)
+
+  if (bibleDirect && bibleResults.some((r) => r.sourceType !== 'bible-book')) {
+    const hasScripture = bibleResults.some(
+      (r) =>
+        r.sourceType === 'bible-verse' ||
+        r.sourceType === 'bible-range' ||
+        r.sourceType === 'bible-chapter' ||
+        r.sourceType === 'bible-text',
+    )
+    if (hasScripture || bibleResults.length) {
+      options.signal?.removeEventListener('abort', abortInternal)
+      internal.abort()
+      const ranked = rankSearchResults(bibleResults, query, limit)
+      return finishResponse({
+        query: queryRaw,
+        resolvedQuery: query,
+        results: ranked,
+        intentMessage: null,
+        isFollowUp: follow.isFollowUp,
+        attempted: [{ name: 'bible', failed: false, count: ranked.length, outcome: 'success_with_results' }],
+      })
+    }
+  }
+
+  const sources: SettledSource[] = [
+    bibleSource,
+    { name: 'routes', results: searchRouteCatalog(expanded, 8), failed: false, outcome: 'success_empty' },
+  ]
+  try {
+    sources.push({
+      name: 'calendar',
+      results: await searchStaticCalendar(expanded, 6),
+      failed: false,
+      outcome: 'success_empty',
+    })
+  } catch (error) {
+    if (options.signal?.aborted || (error instanceof DOMException && error.name === 'AbortError')) {
+      throw new DOMException('The operation was aborted.', 'AbortError')
+    }
+    sources.push({ name: 'calendar', results: [], failed: true, outcome: 'query_error' })
+  }
+  if (intent) sources.push({ name: 'intent', results: [intent], failed: false, outcome: 'success_with_results' })
+
+  let remote: SettledSource[]
+  try {
+    remote = await remoteRun
+  } finally {
+    options.signal?.removeEventListener('abort', abortInternal)
+  }
 
   throwIfAborted(options.signal)
   sources.push(...remote)
@@ -536,6 +553,7 @@ export async function searchSite(
       name: source.name,
       failed: source.failed,
       count: source.results.length,
+      outcome: source.failed ? source.outcome : source.results.length ? 'success_with_results' : 'success_empty',
     })),
   })
 }
@@ -552,8 +570,15 @@ export function buildSessionContext(
 }
 
 export function buildAssistantReply(response: SiteSearchResponse): string {
-  if (response.failed || (response.partial && response.results.length === 0)) {
-    return 'A catalog did not respond. This is not an empty search.'
+  if (response.failed) {
+    return 'Search is temporarily unavailable. Please try again.'
+  }
+  if (response.partial && response.results.length === 0) {
+    const failed = response.sources.filter((source) => source.status === 'failed').map((source) => source.name)
+    if (failed.length === 1 && failed[0] === 'bible') {
+      return 'Bible search is temporarily unavailable, and no other matching records were found. Please try again.'
+    }
+    return 'Some search catalogs are temporarily unavailable, and the others had no matches. Please try again.'
   }
   if (response.intentMessage) return response.intentMessage
   if (response.zeroResults) {

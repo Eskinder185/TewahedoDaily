@@ -1,0 +1,60 @@
+dimension,main_card,main_card_slug,subcategory,subcategory_slug,all_records,published_records
+category,Jesus Christ & Salvation,jesus-christ-salvation,(all),,466,416
+category,Jesus Christ & Salvation,jesus-christ-salvation,Jesus Christ,jesus-christ,279,255
+category,Jesus Christ & Salvation,jesus-christ-salvation,Cross,cross,99,80
+category,Jesus Christ & Salvation,jesus-christ-salvation,Salvation,salvation,130,118
+category,Virgin Mary,category-virgin-mary,(all),,517,431
+category,Virgin Mary,category-virgin-mary,Virgin Mary,virgin-mary,517,431
+category,Holy Trinity & Holy Spirit,holy-trinity-holy-spirit,(all),,67,59
+category,Holy Trinity & Holy Spirit,holy-trinity-holy-spirit,Holy Trinity,holy-trinity,56,49
+category,Holy Trinity & Holy Spirit,holy-trinity-holy-spirit,Holy Spirit,holy-spirit,12,11
+category,Angels & Saints,category-angels-saints,(all),,388,307
+category,Angels & Saints,category-angels-saints,Kidus Michael,kidus-michael,72,57
+category,Angels & Saints,category-angels-saints,Kidus Gabriel,kidus-gabriel,78,65
+category,Angels & Saints,category-angels-saints,Kidus Raphael,kidus-raphael,12,8
+category,Angels & Saints,category-angels-saints,Kidus Uriel,kidus-uriel,19,15
+category,Angels & Saints,category-angels-saints,Kidus Giorgis,kidus-giorgis,28,17
+category,Angels & Saints,category-angels-saints,Abune Tekle Haymanot,abune-tekle-haymanot,21,19
+category,Angels & Saints,category-angels-saints,Abune Gebre Menfes Kidus,abune-gebre-menfes-kidus,13,9
+category,Angels & Saints,category-angels-saints,Kidus Yared,kidus-yared,20,16
+category,Angels & Saints,category-angels-saints,Yohannes Metmek / John the Baptist,yohannes-metmek-john-the-baptist,9,5
+category,Angels & Saints,category-angels-saints,Kidus Estifanos / Saint Stephen,kidus-estifanos-saint-stephen,6,5
+category,Angels & Saints,category-angels-saints,Apostles,apostles,38,32
+category,Angels & Saints,category-angels-saints,Martyrs,martyrs,34,28
+category,Angels & Saints,category-angels-saints,Saints,saints,55,49
+category,Angels & Saints,category-angels-saints,Angels,angels,48,36
+category,Angels & Saints,category-angels-saints,Prophets,prophets,32,20
+category,Prayer & Worship,prayer-worship,(all),,450,405
+category,Prayer & Worship,prayer-worship,Prayer,prayer,84,76
+category,Prayer & Worship,prayer-worship,Praise / Worship,praise-worship,250,233
+category,Prayer & Worship,prayer-worship,General,general,119,99
+category,Repentance,repentance,(all),,166,154
+category,Repentance,repentance,Repentance,repentance,166,154
+occasion,Holidays & Feasts,occasion-holidays-feasts,(all),,214,176
+occasion,Holidays & Feasts,occasion-holidays-feasts,Gena,gena,50,44
+occasion,Holidays & Feasts,occasion-holidays-feasts,Timket,timket,12,6
+occasion,Holidays & Feasts,occasion-holidays-feasts,Meskel,meskel,7,6
+occasion,Holidays & Feasts,occasion-holidays-feasts,Hosanna,hosanna,12,12
+occasion,Holidays & Feasts,occasion-holidays-feasts,Siklet,siklet,30,27
+occasion,Holidays & Feasts,occasion-holidays-feasts,Tinsae,tinsae,21,18
+occasion,Holidays & Feasts,occasion-holidays-feasts,Erget,erget,5,5
+occasion,Holidays & Feasts,occasion-holidays-feasts,Pentecost,pentecost,3,3
+occasion,Holidays & Feasts,occasion-holidays-feasts,Debre Tabor,debre-tabor,12,11
+occasion,Holidays & Feasts,occasion-holidays-feasts,Filseta,filseta,5,5
+occasion,Holidays & Feasts,occasion-holidays-feasts,Kidane Mihret,kidane-mihret,43,32
+occasion,Holidays & Feasts,occasion-holidays-feasts,Lideta Maryam,lideta-maryam,23,16
+occasion,Holidays & Feasts,occasion-holidays-feasts,New Year / Enkutatash,new-year,5,5
+occasion,Holidays & Feasts,occasion-holidays-feasts,Annual Saint Feast,annual-saint-feast,4,3
+occasion,Fasting Seasons,fasting-seasons,(all),,14,13
+occasion,Fasting Seasons,fasting-seasons,Abiy Tsom,abiy-tsom,1,1
+occasion,Fasting Seasons,fasting-seasons,Tsome Nineveh,tsome-nineveh,5,4
+occasion,Fasting Seasons,fasting-seasons,Tsome Nebiyat,,0,0
+occasion,Fasting Seasons,fasting-seasons,Tsome Hawariat,,0,0
+occasion,Fasting Seasons,fasting-seasons,Holy Week,holy-week,8,8
+occasion,Church Life & Sacraments,church-life-sacraments,(all),,74,57
+occasion,Church Life & Sacraments,church-life-sacraments,Wedding,wedding,60,47
+occasion,Church Life & Sacraments,church-life-sacraments,Baptism,,0,0
+occasion,Church Life & Sacraments,church-life-sacraments,Funeral / Memorial,funeral,1,0
+occasion,Church Life & Sacraments,church-life-sacraments,Communion,communion,17,12
+occasion,Anytime Mezmurs,anytime-mezmurs,(all),,1672,1438
+occasion,Anytime Mezmurs,anytime-mezmurs,General / Anytime,general,1672,1438

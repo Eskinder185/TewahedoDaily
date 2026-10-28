@@ -101,3 +101,14 @@
     border: 0;
   }
 }
+
+/* Keep the search button above the Hymn Practice mini-player instead of on top of its controls. */
+:global(html[data-practice-mini-player='true']) .searchFab {
+  bottom: calc(var(--mini-player-height, 5.75rem) + 0.75rem + env(safe-area-inset-bottom, 0px));
+  z-index: 44;
+}
+
+:global(html[data-practice-mini-expanded='true']) .searchFab,
+:global(html[data-mezmur-presenting='true']) .searchFab {
+  display: none;
+}

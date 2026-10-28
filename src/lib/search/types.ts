@@ -70,9 +70,23 @@ export type SiteSearchResponse = {
 
 export type SiteSourceStatus = 'matches' | 'empty' | 'failed'
 
+/**
+ * Precise result of one catalog. `timeout` / `unavailable` are transient and
+ * retried once; `unauthorized` and `query_error` are not.
+ */
+export type CatalogOutcome =
+  | 'success_with_results'
+  | 'success_empty'
+  | 'timeout'
+  | 'unauthorized'
+  | 'unavailable'
+  | 'query_error'
+
 /** Outcome of one website catalog. Present even when that catalog returned nothing. */
 export type SiteSourceReport = {
   name: string
   status: SiteSourceStatus
   count: number
+  /** Detailed outcome (always set by searchSite). */
+  outcome?: CatalogOutcome
 }

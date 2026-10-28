@@ -6,6 +6,304 @@
   color: var(--color-text);
 }
 
+.libraryPanel {
+  padding: clamp(20px, 4vw, 34px);
+  border: 1px solid var(--color-border-card, var(--color-border));
+  border-radius: var(--radius-lg, 18px);
+  background: color-mix(in srgb, var(--color-bg-elevated) 96%, transparent);
+  box-shadow: var(--shadow-card);
+}
+
+.libraryHeader {
+  margin: 0 0 1.5rem;
+}
+
+.libraryHeading {
+  margin: 0;
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.15rem);
+  line-height: 1.2;
+}
+
+.libraryNavigation {
+  margin-top: 0.4rem;
+}
+
+.libraryTabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 3vw, 20px);
+  margin: 0 0 1.35rem;
+}
+
+.libraryTab,
+.libraryTabActive {
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.65rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill, 999px);
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.libraryTab:hover {
+  color: var(--color-heading);
+  background: color-mix(in srgb, var(--color-bg-muted) 72%, transparent);
+}
+
+.libraryTabActive {
+  color: var(--color-heading);
+  background: color-mix(in srgb, var(--color-bg-muted) 92%, var(--color-gold-soft));
+  border-color: color-mix(in srgb, var(--color-border) 80%, transparent);
+}
+
+.libraryTab:focus-visible,
+.libraryTabActive:focus-visible,
+.libraryNavCard:focus-visible,
+.zemariBrowsePrompt:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+.libraryTabPanel {
+  min-height: 12rem;
+}
+
+.libraryCardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.libraryNavCard {
+  display: flex;
+  min-width: 0;
+  min-height: 100%;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border-card, var(--color-border));
+  border-radius: var(--radius-lg, 16px);
+  background: color-mix(in srgb, var(--color-bg-elevated) 98%, transparent);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+}
+
+.libraryNavCardWithImage {
+  display: flex;
+}
+
+.libraryNavPrimary {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+}
+
+.libraryNavPrimary:focus-visible {
+  outline: 3px solid var(--color-focus-ring, var(--color-gold));
+  outline-offset: -3px;
+}
+
+.libraryNavMedia {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--color-navy) 12%, transparent), color-mix(in srgb, var(--color-gold-faint) 35%, transparent)),
+    var(--color-bg-muted);
+}
+
+.libraryNavImage,
+.libraryNavPlaceholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.libraryNavImage {
+  object-fit: cover;
+  background: var(--color-bg-muted);
+}
+
+.libraryNavPlaceholder {
+  display: grid;
+  place-items: center;
+  color: color-mix(in srgb, var(--color-gold) 72%, var(--color-heading));
+  font-size: 2rem;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--color-gold-faint) 75%, transparent), transparent 55%),
+    linear-gradient(145deg, color-mix(in srgb, var(--color-navy) 10%, var(--color-bg-muted)), var(--color-bg-elevated));
+}
+
+.libraryNavCardBody {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.95rem 1rem 1rem;
+}
+
+.libraryNavCardWithImage .libraryNavCardBody {
+  padding: 0.95rem 1rem 1rem;
+}
+
+.libraryNavCard:hover {
+  border-color: var(--color-border-strong);
+  background: color-mix(in srgb, var(--color-bg-elevated) 92%, var(--color-gold-faint));
+  transform: translateY(-1px);
+}
+
+.libraryNavCard strong {
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  line-height: 1.3;
+}
+
+.libraryNavCardBody > span {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+}
+
+.libraryNavMeta {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.15rem;
+}
+
+.libraryNavArrow {
+  color: var(--color-gold);
+  font-size: 1.15rem;
+}
+
+.libraryPanelHead {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1rem;
+}
+
+.libraryPanelHead h2,
+.libraryPanelHead p {
+  margin: 0;
+}
+
+.libraryPanelHead h2 {
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+}
+
+.libraryPanelHead p {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.libraryShowMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.libraryShowMore button {
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--color-border-gold, var(--color-gold));
+  border-radius: var(--radius-pill, 999px);
+  background: transparent;
+  color: var(--color-heading);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.libraryShowMore button:hover:not(:disabled) {
+  background: var(--color-gold-soft);
+}
+
+.libraryShowMore button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.zemariBrowsePrompt {
+  width: 100%;
+  min-height: 13rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  padding: 1.5rem;
+  border: 0;
+  border-radius: var(--radius-lg, 16px);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.zemariBrowsePrompt:hover {
+  background: color-mix(in srgb, var(--color-bg-muted) 48%, transparent);
+}
+
+.zemariBrowsePrompt strong {
+  color: var(--color-heading);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.7rem);
+}
+
+.zemariBrowsePrompt span {
+  color: var(--color-text-muted);
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+
+.zemariBrowseIcon {
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--color-heading);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .libraryNavCard {
+    transition: none;
+  }
+
+  .libraryNavCard:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .libraryCardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .srOnly {
   position: absolute;
   width: 1px;
@@ -688,6 +986,55 @@
 @media (max-width: 560px) {
   .page {
     padding: 20px 14px 48px;
+  }
+
+  .libraryPanel {
+    padding: 18px 14px;
+    border-radius: var(--radius-md, 14px);
+  }
+
+  .libraryHeader {
+    margin-bottom: 1.1rem;
+  }
+
+  .libraryTabs {
+    gap: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .libraryTab,
+  .libraryTabActive {
+    min-height: 44px;
+    padding: 0.55rem 0.35rem;
+    font-size: 0.84rem;
+  }
+
+  .libraryCardGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .libraryNavCard {
+    min-height: 100%;
+    padding: 0;
+  }
+
+  .libraryNavCardWithImage {
+    min-height: 100%;
+    padding: 0;
+  }
+
+  .libraryNavCardWithImage .libraryNavCardBody {
+    padding: 0.85rem 0.9rem;
+  }
+
+  .libraryPanelHead {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .libraryTabPanel {
+    min-height: 10rem;
   }
 
   .searchRow {

@@ -151,22 +151,30 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
         onBack={() => navigate('/practice')}
         backLabel="Back to library"
         footerActions={
-          <div className={s.customActions}>
-            <FavoriteButton
-              id={item.id}
-              contentType="mezmur"
-              contentSlug={item.slug}
-              title={item.title}
-              route={`/hymns/mezmur/${item.slug}`}
-            />
-            {activeUrl || payload.videoId ? (
+          activeUrl || payload.videoId ? (
+            <div className={s.customActions}>
               <button type="button" className={s.footerActionBtn} onClick={copyActive}>
                 {copied ? 'Copied' : '🔗 Copy video link'}
               </button>
-            ) : null}
-          </div>
+            </div>
+          ) : undefined
         }
-        lyricsContent={<HymnLyricsExperience item={item} canonical={canonical} />}
+        lyricsContent={
+          <HymnLyricsExperience
+            item={item}
+            canonical={canonical}
+            toolbarExtras={
+              <FavoriteButton
+                compact
+                id={item.id}
+                contentType="mezmur"
+                contentSlug={item.slug}
+                title={item.title}
+                route={`/hymns/mezmur/${item.slug}`}
+              />
+            }
+          />
+        }
       />
 
       {classificationLines.length > 0 ? (

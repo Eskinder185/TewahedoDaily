@@ -95,6 +95,10 @@ export default defineConfig({
             if (norm.includes('mammoth')) {
               return 'document-vendor'
             }
+            // PowerPoint export (Present Mezmur) loads only when a deck is downloaded.
+            if (norm.includes('/pptxgenjs/') || norm.includes('/jszip/')) {
+              return 'pptx-vendor'
+            }
             if (norm.includes('react') || norm.includes('react-dom') || norm.includes('react-router')) {
               return 'react-vendor'
             }

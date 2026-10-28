@@ -15,6 +15,9 @@ const bookColumns = [
   'allow_search_quotes', 'allow_source_link', 'approved_for_ingestion',
   'public_retrieval_enabled', 'processing_status', 'extraction_quality', 'extraction_notes',
   'current_version_id', 'created_by', 'updated_by', 'created_at', 'updated_at',
+  // Legacy production columns retained by the reconciled schema.
+  'storage_path', 'file_name', 'file_type', 'file_size', 'page_count',
+  'ingestion_status', 'search_enabled',
 ]
 
 let failed = false

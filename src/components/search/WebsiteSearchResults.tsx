@@ -45,22 +45,41 @@ function excerptLang(result: SiteSearchResult): 'en' | 'am' | undefined {
   return undefined
 }
 
-function FailedCatalogs({ sources }: { sources: SiteSourceReport[] }) {
+function catalogMessage(source: SiteSourceReport, t: (key: string, params?: Record<string, string>) => string): string {
+  const label = sourceLabel(source.name, t)
+  if (source.outcome === 'unauthorized') return t('searchBuddy.website.catalogUnauthorized', { label })
+  if (source.outcome === 'query_error') return t('searchBuddy.website.catalogQueryError', { label })
+  return t('searchBuddy.website.catalogTimeout', { label })
+}
+
+/**
+ * Per-catalog notice: names each unavailable catalog with a reason, keeps the
+ * other results on screen, and offers a retry. No technical details.
+ */
+function FailedCatalogs({ sources, onRetry }: { sources: SiteSourceReport[]; onRetry?: () => void }) {
   const t = useTranslation()
   const failed = sources.filter((source) => source.status === 'failed')
   if (!failed.length) return null
-  const labels = failed.map((source) => sourceLabel(source.name, t))
-  const message = labels.length === 1
-    ? `${labels[0]} search is temporarily unavailable. Other available results are shown below.`
-    : 'Some search catalogs are temporarily unavailable. Other available results are shown below.'
+  const transient = failed.some((source) => source.outcome !== 'unauthorized' && source.outcome !== 'query_error')
   return (
-    <div role="alert">
-      <p className={styles.message}>{message}</p>
-      <ul className={styles.failureList}>
-        {failed.map((source) => (
-          <li key={source.name}>{sourceLabel(source.name, t)}</li>
-        ))}
-      </ul>
+    <div role="alert" className={styles.catalogNotice} data-testid="catalog-notice">
+      {failed.length === 1 ? (
+        <p className={styles.message}>{catalogMessage(failed[0], t)}</p>
+      ) : (
+        <>
+          <p className={styles.message}>{t('searchBuddy.website.catalogFailed')}</p>
+          <ul className={styles.failureList}>
+            {failed.map((source) => (
+              <li key={source.name}>{catalogMessage(source, t)}</li>
+            ))}
+          </ul>
+        </>
+      )}
+      {onRetry && transient ? (
+        <button type="button" className={styles.retryBtn} onClick={onRetry} data-testid="catalog-retry">
+          {t('searchBuddy.website.retryCatalogs')}
+        </button>
+      ) : null}
     </div>
   )
 }
@@ -202,9 +221,12 @@ export function WebsiteSearchPane({
             </p>
           )}
           <p className={styles.emptyTitle} role="status">
-            {t('searchBuddy.website.noRecords')}
+            {domainFilter === 'bible' &&
+            outcome.response.sources.some((source) => source.name === 'bible' && source.status !== 'failed')
+              ? t('searchBuddy.website.noBibleVerses')
+              : t('searchBuddy.website.noRecords')}
           </p>
-          <FailedCatalogs sources={outcome.response.sources} />
+          <FailedCatalogs sources={outcome.response.sources} onRetry={() => onRetry(outcome.query)} />
         </div>
       ) : null}
       {outcome.kind === 'results' && response ? (
@@ -220,7 +242,14 @@ export function WebsiteSearchPane({
               ? t('searchBuddy.website.matchCountOne')
               : t('searchBuddy.website.matchCount', { count: response.results.length })}
           </p>
-          <FailedCatalogs sources={response.sources} />
+          <FailedCatalogs sources={response.sources} onRetry={() => onRetry(outcome.query)} />
+          {domainFilter === 'bible' &&
+          !response.results.some((result) => matchesDomain(result, 'bible')) &&
+          response.sources.some((source) => source.name === 'bible' && source.status !== 'failed') ? (
+            <p className={styles.emptyTitle} role="status">
+              {t('searchBuddy.website.noBibleVerses')}
+            </p>
+          ) : null}
           <ResultList
             results={response.results.filter((result) => !isNavigationResult(result) && matchesDomain(result, domainFilter))}
             label={t('searchBuddy.website.records')}

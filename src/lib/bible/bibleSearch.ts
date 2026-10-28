@@ -890,6 +890,26 @@ export async function searchBibleText(
     return ordinalCache.get(chapterId) ?? found
   }
 
+  // Resolve reader chapter ordinals for every (book, edition) in parallel —
+  // previously one request per book ran one after another before any result
+  // could be returned.
+  const firstRowPerBook = new Map<string, VerseTextEmbed>()
+  for (const row of ranked) {
+    const source = row.bible_chapters.bible_source_books
+    const key = `${source.bible_canonical_books.id}:${source.edition_id}`
+    if (!firstRowPerBook.has(key)) firstRowPerBook.set(key, row)
+  }
+  await Promise.all(
+    [...firstRowPerBook.values()].map((row) =>
+      ordinalFor(
+        row.bible_chapters.bible_source_books.bible_canonical_books.id,
+        row.bible_chapters.bible_source_books.edition_id,
+        row.bible_chapters.id,
+        row.bible_chapters.chapter_number,
+      ),
+    ),
+  )
+
   const results: SiteSearchResult[] = []
   const seen = new Set<string>()
 

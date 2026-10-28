@@ -12,6 +12,9 @@ type Props = {
   collectionSlug?: string
   title?: string
   route?: string
+  /** Icon-only button for compact toolbars (label kept for screen readers). */
+  compact?: boolean
+  className?: string
 }
 
 export function FavoriteButton({
@@ -21,6 +24,8 @@ export function FavoriteButton({
   collectionSlug,
   title,
   route,
+  compact = false,
+  className,
 }: Props) {
   const { session, loading } = useAuth()
   const [busy, setBusy] = useState(false)
@@ -73,6 +78,30 @@ export function FavoriteButton({
 
   const favorited = !!result.data?.favorited
   const loadError = result.error || result.data?.softError || error
+
+  if (compact) {
+    const label = favorited ? 'Remove from favorites' : 'Add to favorites'
+    const note = loadError || syncNote || (!session && favorited ? 'Saved on this device' : '')
+    return (
+      <>
+        <button
+          type="button"
+          className={className}
+          disabled={busy || result.loading}
+          aria-pressed={favorited}
+          aria-label={label}
+          title={!session ? `${label} · sign in to sync` : label}
+          onClick={() => void toggle()}
+          data-testid="favorite-compact"
+        >
+          <span aria-hidden="true">{favorited ? '♥' : '♡'}</span>
+        </button>
+        <span role="status" style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>
+          {note}
+        </span>
+      </>
+    )
+  }
 
   return (
     <div>

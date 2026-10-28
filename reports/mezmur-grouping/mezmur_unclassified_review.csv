@@ -1,0 +1,467 @@
+import_id,mezmur_id,slug,title,title_amharic,publication_status,classification_confidence,review_required,categories,occasions,review_reasons
+000b9c70-b705-4539-a6d1-85485a89987d,de535d1f-ca0d-4e61-9dc6-624ea63a836c,lemayneger-sitotah-temesgen-inlitsalen,Lemayneger Sitotah Temesgen Inlitsalen,ለማይነገር ስጦታህ ተመስገን እንልፃለን,published,LOW,true,,General / Anytime,no_canonical_category
+002ae5a4-92cb-4ae6-8539-ed6bdf934585,4ce81914-c3e9-4ff9-9d33-b949166a8ce2,hilmim-honobnyal-yesew-hulu-tesfa,Hilmim Honobnyal Yesew Hulu Tesfa,ህልምም ሆኖብኛል የሰው ሁሉ ተስፋ,published,LOW,true,,,no_canonical_category
+00dbae2f-32c7-415c-84af-14e855d10a94,jireenyadha-m-k-o-t-itoophiyaatti-faarfannaa-afaan-oromoo-hangafa-far-d,jireenyadha-m-k-o-t-itoophiyaatti-faarfannaa-afaan-oromoo-hangafa-far-d-n-firaan,JIREENYADHA. M/K/O/T/ Itoophiyaatti Faarfannaa Afaan Oromoo Hangafa Far.D/N Firaanol Moosisaatiin,,published,LOW,true,,General / Anytime,no_canonical_category
+011035fa-f0ef-4533-a4db-b2eea1f998fc,fc7506e7-9884-4bcf-8ac8-2df570f062a4,yeityopya-ortodokis,Yeityopya Ortodokis,የኢትዮጵያ ኦርቶዶክስ,published,LOW,true,,General / Anytime,no_canonical_category
+03a86164-3198-4738-b30c-dd30a72645d2,25989e54-f14d-486e-9c7b-aec58bfd4d84,yeabriham-irsha-yemsitir-washaw,Yeabriham Irsha Yemsitir Washaw,የአብርሃም እርሻ የምሥጢር ዋሻው,published,LOW,true,,,no_canonical_category
+054a78f4-2abf-425c-9d3b-f18029c236fb,e30e984a-bb61-434c-960e-88f9174f75f7,timqete-antsiha,Timqete Antsiha,ጥምቀተ አንጽሐ,published,LOW,true,,General / Anytime,no_canonical_category
+057ce923-2320-4c38-9cb9-950bca561293,00b74ce0-2fdf-46e7-9d5d-c254f02639cb,bemn-inmeslat-dingil-maryam,Bemn Inmeslat Dingil Maryam,በምን እንመስላት ድንግል ማርያም,published,LOW,true,,General / Anytime,no_canonical_category
+05805bca-2d95-4dc1-972e-bc565e2c20c1,bd8c56e5-7f08-460b-9024-b2b6bd96669d,anchi-yordanos-minnya-tadelsh,Anchi Yordanos Minnya Tadelsh,አንቺ ዮርዳኖስ ምንኛ ታደልሽ,published,LOW,true,,General / Anytime,no_canonical_category
+05c3340f-2ab1-427f-8315-01ca35bea9c1,25c2947f-d753-4769-970b-38205126540c,yegetachin-inat-maryam-dingil-hoy-anchi-nesh,Yegetachin Inat Maryam Dingil Hoy Anchi Nesh,የጌታችን እናት ማርያም ድንግል ሆይ አንቺ ነሽ,published,LOW,true,,,no_canonical_category
+063c5965-2fc0-4e5d-b668-0f16d778810c,cd802e85-1f73-4840-a3cc-58608ebe9f6e,kenetenkolwa-alem-mwach-nech,Kenetenkolwa Alem Mwach Nech,ከነተንኮሏ ዓለም ሟች ነች,published,LOW,true,,General / Anytime,no_canonical_category
+06be12a9-bc36-4695-8df1-4b7c117f139f,,weldin-fiqir-sabew,Weldin Fiqir Sabew,ወልድን ፍቅር ሳበው,published,LOW,true,,General / Anytime,no_canonical_category
+06cf8288-71ef-4278-a33d-bef09ccb49ec,b6cd92e3-9320-4d04-bc29-b82621a7ffdc,lib-yemiyasbewn-kemasebu-befit,Lib Yemiyasbewn Kemasebu Befit,ልብ የሚያስበውን ከማሰቡ በፊት,published,LOW,true,,General / Anytime,no_canonical_category
+06dbb68c-697c-48aa-87cb-2c27f1b43ec8,3ab942f1-6fb7-47a5-aa93-5862dd583db3,tewahdo-nitshit-qidsit-imnetachin,Tewahdo Nitshit Qidsit Imnetachin,ተዋሕዶ ንጽሕት ቅድስት እምነታችን,published,LOW,true,,,no_canonical_category
+075a4be1-2690-4780-8e9c-dc2044541ec6,dcd790d3-717c-4bbe-8bd3-809ee99a0921,ande-surafel-besemay-siyatin,Ande Surafel Besemay Siyatin,አንደ ሱራፌል በሰማይ ሲያጥን,published,LOW,true,,General / Anytime,no_canonical_category
+07d94ebf-ebe0-424a-bc26-f1aaa1dea93d,102d1cef-3f3c-4fd2-a282-3202a6d30b38,yemushraw-hiywet-melkam-indihon,Yemushraw Hiywet Melkam Indihon,የሙሽራው ሕይወት መልካም እንዲሆን,published,LOW,true,,,no_canonical_category
+07e54ff5-ad32-48ce-abfc-6579946a7afc,9c47e01f-7829-4930-af2d-e0d1392ca7c0,tolo-yidersilnal-fitune-redet,Tolo Yidersilnal Fitune Redet,ቶሎ ይደርስልናል ፍጡነ ረድኤት,published,LOW,true,,,no_canonical_category
+08e8432f-b0a6-441c-a7ed-a59decadd478,b6d81511-ce2a-4867-9809-c6f91b6b6082,iyemesekere-yeljun-getnet,Iyemesekere Yeljun Getnet,እየመሰከረ የልጁን ጌትነት,published,LOW,true,,General / Anytime,no_canonical_category
+08f82973-ed8d-4da9-9f48-2851af5b9984,d2ed8226-e2c4-48da-afb0-a8e732719538,igziabher-hoy-yibza-mihretih,Igziabher Hoy Yibza Mihretih,እግዚአብሔር ሆይ ይብዛ ምሕረትህ,published,LOW,true,,General / Anytime,no_canonical_category
+0973486d-c62c-440b-aac8-7102bb6398f1,be0ad3ae-dbdc-42b7-ad23-3c7d0230b47b,amlak-hoy-misgana-leante-yigebahal,Amlak Hoy Misgana Leante Yigebahal,አምላክ ሆይ ምስጋና ለአንተ ይገባሃል,published,LOW,true,,General / Anytime,no_canonical_category
+09c14161-d87d-4fa6-9c77-ebb23162ed0e,,yadanenyn-awqewalehu,Yadanenyn Awqewalehu,ያዳነኝን አውቀዋለሁ,published,LOW,true,,General / Anytime,no_canonical_category
+0a06de3b-b4d3-45ca-a2e7-df35af95d0ea,2c8f64ca-94a3-4f6f-9c07-3b7297080913,dingil-hoy-hul-gize-ayleyen-miljashe,Dingil Hoy Hul Gize Ayleyen Miljashe :,ድንግል ሆይ ሁል ጊዜ አይለየን ምልጃሸ፡:,published,LOW,true,,General / Anytime,no_canonical_category
+0a209f11-e10d-4c2c-9120-ccd6c6e86fc2,0ee17fa0-61ef-4aaf-92ca-58ab3b96471c,kehatiat-idif-nitsuh-mehonyaye,Kehatiat Idif Nitsuh Mehonyaye,ከኃጢአት እድፍ ንጹሕ መሆኛዬ,published,LOW,true,,,no_canonical_category
+0c4e4a2f-032f-42a0-b0a5-7c4ae5170d07,492fc73f-91ba-43e6-a98c-aa54711762b4,wisete-mitmaqat-werede-weld,Wisete Mitmaqat Werede Weld,ውሰተ ምጥማቃት ወረደ ወልድ,published,LOW,true,,,no_canonical_category
+0ca168fa-7447-402c-b049-e1955697ccc7,,wetbelo-yikweneni,Wetbelo Yikweneni,ወትቤሎ ይኵነኒ,published,LOW,true,,General / Anytime,no_canonical_category
+0ca5c34d-b772-4436-9e9b-3c363f830489,2fddccf8-d065-4af2-b2af-f4a28839fb07,amlake-sileyeny-yisemanyal,Amlake Sileyeny Yisemanyal,አምላኬ ሲለየኝ ይሰማኛል,published,LOW,true,,,no_canonical_category
+0d19fa9e-ba83-4e93-8385-de45d74e6c1e,c47f846f-0c2c-4d91-9fce-5994505dd77d,fetari-bicha-new-hiywetena-kibre,Fetari Bicha New Hiywetena Kibre,ፈጣሪ ብቻ ነው ሕይወቴና ክብሬ,published,LOW,true,,General / Anytime,no_canonical_category
+0d5335e2-cade-43c1-9df6-e10212c248e1,707e5657-404b-42d2-84c3-8a93366343c4,yeiyareko-qitir-yemaydeferew,Yeiyareko Qitir Yemaydeferew,የኢያረኮ ቅጥር የማይደፈረው,published,LOW,true,,General / Anytime,no_canonical_category
+0d825ee0-60dd-4e04-852c-6cb2475534a0,,wede-hiywet-menged,Wede Hiywet Menged,ወደ ሕይወት መንገድ,published,LOW,true,,General / Anytime,no_canonical_category
+0dd181cb-232e-4955-b73d-004df23ecabd,,mudaye-mena,Mudaye Mena,ሙዳዬ መና,published,LOW,true,,,no_canonical_category
+0e4cfff9-7902-46cd-96dc-ebb835c18158,a8a9b6c8-30e2-4b17-8863-f68c63268ef3,timetalech-beiwnet,Timetalech Beiwnet,ትመጣለች በእውነት,published,LOW,true,,General / Anytime,no_canonical_category
+0e85e47f-bec6-4f01-89d0-ea16435eff60,f00d554b-1ce4-4c2e-814d-fe557e155e92,nolawi-tiguh-zeitnewm,Nolawi Tiguh Zeitnewm,ኖላዊ ትጉኅ ዘኢትነውም,published,LOW,true,,,no_canonical_category
+2c61f555-39e5-4d7b-b228-1be595fffaf2,,inze-iyemr,Inze Iyemr,እንዘ ኢየምር,draft,LOW,true,,General / Anytime,no_canonical_category
+0f262a91-a728-4015-8e79-c0efa78e4c96,8bcde4e2-8681-42fe-8578-0defcf25867e,hiywet-mot-dihnet-menorachewn-bamnim,Hiywet Mot Dihnet Menorachewn Bamnim,ሕይወት ሞት ድኅነት መኖራቸውን ባምንም,published,LOW,true,,General / Anytime,no_canonical_category
+0f30d4dc-0fc9-4e51-b2ba-07efb1b2a602,5e62ca9d-53a1-4a6c-a09b-86f7a3e525ea,kirubel-menberun-yemishekemulet,Kirubel Menberun Yemishekemulet,ኪሩቤል መንበሩን የሚሸከሙለት,published,LOW,true,,,no_canonical_category
+0f9972b5-bfe5-42e0-82d3-84095c9ff78b,748b5b02-90a5-4dbe-8fd8-a4669e13cb0b,geta-beyohans-asey-isey,Geta Beyohans Asey Isey,ጌታ በዮሐንስ አሰይ እሰይ,published,LOW,true,,General / Anytime,no_canonical_category
+10581030-398b-4705-a6c9-f84f88527405,74f37d58-dd53-4745-bd24-a8ecda1d494f,yentsuhan-amlak-wenjelenya-teblo,Yentsuhan Amlak Wenjelenya Teblo,የንጹሐን አምላክ ወንጀለኛ ተብሎ,published,LOW,true,,General / Anytime,no_canonical_category
+10799504-53a5-41aa-af5e-88e44d2230a5,27b4c2b3-e6db-463b-b703-fea4f89b7d1d,fidan-teqebele-lesew-lijoch-dihnet,Fidan Teqebele Lesew Lijoch Dihnet,ፍዳን ተቀበለ ለሰው ልጆች ድኅነት,published,LOW,true,,General / Anytime,no_canonical_category
+10829852-f61c-4533-8f62-b7106cb34b7f,d56d8032-116f-4089-b567-d5bd9317e3d8,mehari-yiqir-bay-mihretih-yigobnyeny,Mehari Yiqir Bay Mihretih Yigobnyeny,መሐሪ ይቅር ባይ ምሕረትህ ይጎብኘኝ,published,LOW,true,,General / Anytime,no_canonical_category
+10c5ec52-c272-45a4-9b5e-173604f7efcd,,abel-semereab,Abel Semereab,ኣቤል ሰመረኣብ,published,LOW,true,,General / Anytime,no_canonical_category
+1139ed7f-9cf5-44fa-937d-9caf7a7e34b6,,litatbeny-demh-fesese,Litatbeny Demh Fesese,ልታጥበኝ ደምህ ፈሰሰ,published,LOW,true,,General / Anytime,no_canonical_category
+114a053c-14e8-46aa-bdc0-b14dfc7843f8,89536b0d-faae-4f13-a8fe-05f5d4861217,destawn-ayto-amlak-fitsum-tedestwal,Destawn Ayto Amlak Fitsum Tedestwal,ደስታውን አይቶ አምላክ ፍጹም ተደስቷል,published,LOW,true,,General / Anytime,no_canonical_category
+11f51db0-0640-47d3-966a-4aea7c5e5b29,0baabfb9-0804-43f2-8536-a52b7275174d,siganm-nesto-keinatachin,Siganm Nesto Keinatachin,ሥጋንም ነስቶ ከእናታችን,published,LOW,true,,,no_canonical_category
+124485ae-5184-411f-af9c-9b528de19d9c,d6175b9d-5697-4ef2-a28e-da24f20ff352,zemenatin-bezemenat-yaferarqal,Zemenatin Bezemenat Yaferarqal,ዘመናትን በዘመናት ያፈራርቃል,published,LOW,true,,General / Anytime,no_canonical_category
+12768990-c3ff-4b7d-828d-f457af83b72d,d8574b96-dc2f-4192-8583-c4bad58a45cb,yefetariwn-sim-bekentu-yemaytera,Yefetariwn Sim Bekentu Yemaytera,የፈጣሪውን ስም በከንቱ የማይጠራ,published,LOW,true,,General / Anytime,no_canonical_category
+12dc0366-cf24-45c5-af1e-77deea777230,8443b01e-0eb7-42fd-8e80-281ac846bb33,motin-bemotu-shareln-indanreta,Motin Bemotu Shareln Indanreta,ሞትን በሞቱ ሻረልን እንዳንረታ,published,LOW,true,,,no_canonical_category
+1339042c-1df0-4ac5-8184-0fd697ff6e5b,106d39ca-2ab9-4ff0-b974-6cde3861533e,dagmawi-yohans-tefer-yetateqe,Dagmawi Yohans Tefer Yetateqe,ዳግማዊ ዮሐንስ ጠፈር የታጠቀ,published,LOW,true,,General / Anytime,no_canonical_category
+13e3b0b2-be1e-47b3-887b-df00e51bf20b,d78d8ee0-44e9-4aeb-bc51-ed589dc6aff3,setoch-tinsaehin-defrew-tenageru,Setoch Tinsaehin Defrew Tenageru,ሰቶች ትንሣኤህን ደፍረው ተናገሩ,published,LOW,true,,General / Anytime,no_canonical_category
+1493ae32-65c3-464b-b3d1-49c1df336ba1,06dad289-463e-448c-8e3d-67506ea6cfb2,zintu-kulu,Zintu Kulu,ዝንቱ ኩሉ,published,LOW,true,,General / Anytime,no_canonical_category
+14f9dd52-0920-412a-803b-2b3710f28a0b,1e6fbecb-3fc2-4218-80f7-68cc5f11dcdf,kemikaelna-kegebriel-gar,Kemikaelna Kegebriel Gar,ከሚካኤልና ከገብርኤል ጋር,published,LOW,true,,,no_canonical_category
+2ebcbe7c-3387-4c97-961a-dab660f7b2c0,,minm-satbedil,Minm Satbedil,ምንም ሳትበድል,draft,LOW,true,,General / Anytime,no_canonical_category
+1517e962-ad1b-406b-82cd-111919116057,98deda53-a208-4027-a251-b69a6f6513c3,wendim-wendimun-iyekesese-lefrid-aqumo,Wendim Wendimun Iyekesese Lefrid Aqumo,ወንድም ወንድሙን እየከሰሰ ለፍርድ አቁሞ,published,LOW,true,,,no_canonical_category
+15bf1c7c-4e33-4551-b2d3-074b71cbceec,99adaa70-9ffe-4a1e-a845-478355c14157,keadam-and-atnit-kegwanu-wesdeh,Keadam And Atnit Kegwanu Wesdeh,ከአዳም አንድ አጥንት ከጐኑ ወስደህ,published,LOW,true,,General / Anytime,no_canonical_category
+166162f2-2878-44b6-81f6-cbff9578160d,,iske-meche-new,Iske Meche New,እስከ መቼ ነው,published,LOW,true,,General / Anytime,no_canonical_category
+182eacc2-335a-4b09-8127-bb204cb93444,,nolawi-tiguh-zeitnewm-2,Nolawi Tiguh Zeitnewm,ኖላዊ ትጉህ ዘኢትነውም,published,LOW,true,,General / Anytime,no_canonical_category
+185a4db1-d82e-4793-a217-af0deefce22a,2bb008b3-2eba-4637-83b0-5d9ecf98b652,zike-witu-mikael-hibsite-mena-zeawredke,Zike Witu Mikael Hibsite Mena Zeawredke,ዝኬ ውእቱ ሚካኤል ኅብስተ መና ዘአውረድከ,published,LOW,true,,General / Anytime,no_canonical_category
+185f2420-0ae3-4dda-863a-85bd692bf885,,itsesabeq-4,Itsesabeq,ዕፀሳቤቕ,published,LOW,true,,General / Anytime,no_canonical_category
+18fa82f8-43dc-4feb-87d4-8218b8a1768e,a7347cdc-015b-45f0-9ab9-b91b1f76e992,kibebe-gera-werq,Kibebe Gera Werq,ክበበ ጌራ ወርቅ,published,LOW,true,,,no_canonical_category
+f688e0cb-a37c-4286-b190-21a16b2df10b,,atsyinta-zergibiyaqem-weleda,Atsyinta Zergibiyaqem Weleda,አፅይንታ ዘርግብኢያቄም ወለዳ,draft,LOW,true,,General / Anytime,no_canonical_category
+198fcdcb-0d86-42c8-8a58-b49413d292c0,ff6e2033-1934-4253-b414-324a5fda347d,misle-mikael,Misle Mikael,ምስለ ሚካኤል,published,LOW,true,,,no_canonical_category
+19af43d4-1f4e-4734-add1-d8a5c24b78d2,12868c32-643e-4d33-8c1b-4c4a5813ac46,kewegene-gara-izemralehuny,Kewegene Gara Izemralehuny,ከወገኔ ጋራ እዘምራለሁኝ,published,LOW,true,,General / Anytime,no_canonical_category
+1a7fd09a-1a10-4870-9488-f4cb748c6d67,67e5187c-aec5-4d82-bba2-096090e8f21d,andenefsih-argeh-inditwedat,Andenefsih Argeh Inditwedat,አንደነፍስህ አርገህ እንድትወዳት,published,LOW,true,,General / Anytime,no_canonical_category
+1b762f56-4e0c-4cd7-ae9a-131c3c26096e,e1bc9771-ee8f-4db6-9131-36f6f374acc4,kinefe-rigib,Kinefe Rigib,ክነፈ ርግብ,published,LOW,true,,General / Anytime,no_canonical_category
+1c6fa25a-10f4-48c1-bd13-f26411d5073e,a90c5bec-6c75-4cf0-acc0-3c33be1fe673,yealem-medhanit,Yealem Medhanit -----------:,የዓለም መድኃኒት -----------፦,published,LOW,true,,General / Anytime,no_canonical_category
+1c8f5de5-6097-4524-952d-8e454b46cc35,debaf90b-16fe-44e4-b645-53b02f03245d,yesew-lij-defaru-amlak-yelem-ale,Yesew Lij Defaru Amlak Yelem Ale,የሰው ልጅ ደፋሩ አምላክ የለም አለ,published,LOW,true,,General / Anytime,no_canonical_category
+1c912264-51cc-432a-8efe-443af6ab7769,7968c59a-9554-43ea-845a-7ac5b420722b,sibhat-leab-leahaze-kulu-alem,Sibhat Leab Leahaze Kulu Alem,ስብሐት ለአብ ለአኃዜ ኩሉ ዓለም,published,LOW,true,,,no_canonical_category
+1cf7209a-a70a-432d-8394-c044e294ef62,087910dd-5d6a-4c52-aae0-07f78cec422e,yeadam-lij-ketbiya-wede-neberebet,Yeadam Lij Ketbiya Wede Neberebet,የአዳም ልጅ ከትቢያ ወደ ነበረበት,published,LOW,true,,General / Anytime,no_canonical_category
+1d7c6aec-e382-4b9a-be88-2c9001c8c799,7a8c82bc-195c-4ace-ad82-2dda86c71cb3,kemikaelna-kegebriel-gar-ney,Kemikaelna Kegebriel Gar Ney,ከሚካኤልና ከገብርኤል ጋር ነይ,published,LOW,true,,,no_canonical_category
+1e4ed45a-b435-408e-8bb7-b9a64a2e42d4,7c4aaeeb-baee-4539-a0c2-9742c6ef95d1,yom-fisha-kone-beinte-irgetu-lekristos,Yom Fisha Kone Beinte Irgetu Lekristos,ዮም ፍሥሐ ኮነ በእንተ ዕርገቱ ለክርስቶስ,published,LOW,true,,General / Anytime,no_canonical_category
+1f38f9a7-d88b-4f8e-8a08-ce3fe6b51c60,,yante-lihun,Yante Lihun,ያንተ ልሁን,published,LOW,true,,General / Anytime,no_canonical_category
+1fd7ebe5-7876-44bd-b655-bc6ee11681ee,5600c9c2-96fb-4f78-8324-55455665359d,and-imnet-new-tsinu-haymanot-new,And Imnet New Tsinu Haymanot New,አንድ እምነት ነው ጽኑ ሃይማኖት ነው,published,LOW,true,,,no_canonical_category
+204e46a6-c75d-4061-9234-30bb3ce1b87c,88000e5a-3955-489a-8714-92fd77d123d9,betsom-besubae-tinoralech-tatqa,Betsom Besubae Tinoralech Tatqa,በጾም በሱባኤ ትኖራለች ታጥቃ,published,LOW,true,,General / Anytime,no_canonical_category
+da17a636-9540-4147-99af-613921ddf636,,kahnat-tensiu,Kahnat Tensiu,ካህናት ተንሥኡ,draft,LOW,true,,General / Anytime,no_canonical_category
+21d2dc81-889d-4b26-b61c-73d536fa0aad,8df04ae9-ea02-4926-81a7-ed1a952e857e,yeqdusan-beat-yetselot-washachew,Yeqdusan Beat Yetselot Washachew,የቅዱሳን በዓት የጸሎት ዋሻቸው,published,LOW,true,,,no_canonical_category
+21dac194-cea5-4042-a619-5c973f9edf37,4de8a944-920c-4ead-be3d-7aedc574ce76,zelealem-yinoral-tekle-haymanot,Zelealem Yinoral Tekle Haymanot,ዘለዓለም ይኖራል ተክለ ሃይማኖት,published,LOW,true,,,no_canonical_category
+21dec133-d114-4edd-818b-9e66190c4c1c,,ayferdekniye-beleni,Ayferdekniye Beleni,ኣይፈርደክንየ በለኒ,published,LOW,true,,General / Anytime,no_canonical_category
+22edbd76-fc0e-4801-adad-9974854194c3,d7c5860e-60a3-421c-9f99-32a2f011ef48,kule-kentu,Kule Kentu,ኩለ ከንቱ,published,LOW,true,,General / Anytime,no_canonical_category
+25de90cd-5b28-459d-93dd-741ee981f74d,be12678a-f5aa-4ac4-b585-9e9080761607,libachin-legeta-melkam-menged-yihun,Libachin Legeta Melkam Menged Yihun,ልባችን ለጌታ መልካም መንገድ ይሁን,published,LOW,true,,,no_canonical_category
+2637c0c4-20ef-4178-bc68-0086ad4dc8ff,a42dcd15-cd5f-4ff1-8d5b-aa4de27250db,beandinet-honew-iyerusalem,Beandinet Honew Iyerusalem,በአንድነት ሆነው ኢየሩሳሌም,published,LOW,true,,,no_canonical_category
+271f5a99-51f0-454e-8b7c-82664406a679,,yalante-kibir-yelenym,Yalante Kibir Yelenym,ያላንተ ክብር የለኝም,published,LOW,true,,General / Anytime,no_canonical_category
+272a06cf-7587-4c5e-ae28-fb65fc0768bc,,itti-hin-leeyya-u-angafa-faarfattootaa-dn-firaanol-moosisaa-faarfannaa-durii,Itti hin leeyya'u Angafa Faarfattootaa Dn Firaanol Moosisaa Faarfannaa Durii,,published,LOW,true,,General / Anytime,no_canonical_category
+277de01e-321a-4c17-8d01-f1ba06254a40,5254580f-6f50-4a93-be17-90f91c2e5d4e,bearayaw-fetronal-hulu-beiju-new,Bearayaw Fetronal Hulu Beiju New::,በአርዓያው ፈጥሮናል ሁሉ በእጁ ነው::,published,LOW,true,,General / Anytime,no_canonical_category
+27944c44-6ca3-4e23-b961-9a6d14a2c2cf,ddd950b7-c292-49c1-86f7-4e04e786cda3,andetenagerew-dawit-betnibitu,Andetenagerew Dawit Betnibitu,አንደተናገረው ዳዊት በትንቢቱ,published,LOW,true,,General / Anytime,no_canonical_category
+279cb773-28b0-4a1f-90e8-552ebfbe65f6,bed66323-94c4-4eac-aa46-424fb2bcd2b9,bereketih-yider-benya-hiywet,Bereketih Yider Benya Hiywet,በረከትህ ይደር በኛ ሕይወት,published,LOW,true,,,no_canonical_category
+abee20cf-58e0-4c46-89a2-ca2a91f4ad82,,hitsan-meimu,Hitsan Meimu,ሕፃን መእሙ,draft,LOW,true,,General / Anytime,no_canonical_category
+280b4938-d2f6-4807-bf05-ed317b7f24a6,fab71463-a271-4862-b7a7-67210a084643,iyesus-kirsitos-yiwedenal-yitebqenal,Iyesus Kirsitos Yiwedenal Yitebqenal,ኢየሱስ ክርስቶስ ይወደናል ይጠብቀናል,published,LOW,true,,,no_canonical_category
+2828a01f-2b03-4e30-ae7e-a4f2bf2852ac,,misli-nay-hibret-mezmur,Misli : Nay Hibret Mezmur #,ምስሊ : ናይ ሕብረት መዝሙር #,published,LOW,true,,General / Anytime,no_canonical_category
+29db1efc-a3b8-4995-ab9e-5b404c49ef09,1f9a644d-f58c-472d-99de-2483e86ee46e,arko-lemerawi-tisemey-nebiye-liul,Arko Lemerawi Tisemey Nebiye Liul,አርኮ ለመርዓዊ ትሰመይ ነቢየ ልዑል,published,LOW,true,,,no_canonical_category
+29f68acf-e765-4fab-83b5-c1a12a4ba4b7,a49b1571-fd32-4b23-b79e-510706729923,besemayna-bemdir-bebahrina,Besemayna Bemdir Bebahrina,በሰማይና በምድር በባሕርና,published,LOW,true,,,no_canonical_category
+8efb717f-4714-4af6-b842-403c9789bbd7,,amebrihan-memekiyaachin,Amebrihan Memekiyaachin,አመብርሃን መመኪያአችን,draft,LOW,true,,General / Anytime,no_canonical_category
+2ae7ce3d-2358-4a73-9f69-76df47aa8524,421c7645-34cc-47f2-95a6-c23115848b3e,qidusan-ijochih-yefitiny-tasrew,Qidusan Ijochih Yefitiny Tasrew,ቅዱሳን እጆችህ የፊጥኝ ታስረው,published,LOW,true,,General / Anytime,no_canonical_category
+2ae9bdb4-bee6-4cf2-8909-3e683dd59709,a424326a-6659-48c5-a8bc-5e2cce6e508d,mengiste-semay-mengiste-semay-nefse-hoy,Mengiste Semay Mengiste Semay Nefse Hoy,መንግሥተ ሰማይ መንግሥተ ሰማይ ነፍሴ ሆይ,published,LOW,true,,,no_canonical_category
+2b6bfc72-1050-4429-a59b-c1e55d4ddac9,79eae55e-7398-4e99-aef2-afa0b63d5a05,asme-lealem-mihretu,Asme Lealem Mihretu,አስመ ለዓለም ምሕረቱ,published,LOW,true,,General / Anytime,no_canonical_category
+2bb1d389-b0e5-40c0-a43b-fb930bb759f9,2a1966c5-257f-4818-ae3b-2d1970b9a9a4,nitsum-tsome-wenafqir-bitsene-wentifaqer-bebeynatine,Nitsum Tsome Wenafqir Bitsene Wentifaqer Bebeynatine,ንጹም ጾመ ወናፍቅር ቢጸነ ወንትፋቀር በበይናቲነ,published,LOW,true,,General / Anytime,no_canonical_category
+2bc7782c-9b81-4ac8-84eb-6d8ec5f665e8,,imun-iha,Imun Iha,እሙን ኢኻ,published,LOW,true,,General / Anytime,no_canonical_category
+2c0aa1af-6a23-449d-af8e-884eb04c1e05,,menfes-qidus,Menfes Qidus,መንፈስ ቅዱስ,published,LOW,true,,General / Anytime,no_canonical_category
+2c5cadb7-146d-4a45-9ed9-533f5df0623e,080e7f46-8bcd-45c5-9edd-b88d690a43b2,leserahew-tayat-ansegdim-iyalu,Leserahew Tayat Ansegdim Iyalu,ለሠራኸው ጣያት አንሰግድም እያሉ,published,LOW,true,,General / Anytime,no_canonical_category
+2cd6f771-3d84-49cc-9867-31878fa38f59,f3ab75ef-f317-4ee9-a3a6-c1b7a09851e0,afer-birebereb-satin-bidereder,Afer Birebereb Satin Bidereder,አፈር ቢረበረብ ሣጥን ቢደረደር,published,LOW,true,,General / Anytime,no_canonical_category
+2d4b7b66-28a4-4971-a734-2f11b22054a6,fbe2d06d-067e-48e7-8af4-4e77bb1ae2ef,wihaw-telewto-yeweyn-tej-sihon,Wihaw Telewto Yeweyn Tej Sihon,ውኃው ተለውጦ የወይን ጠጅ ሲሆን,published,LOW,true,,General / Anytime,no_canonical_category
+2d6dc0fe-6630-4c07-93b4-89832f6231f7,4c81322c-a0c9-4f29-92aa-fcbc6f156511,behatiat-chelema-tewten-salen,Behatiat Chelema Tewten Salen,በኃጢአት ጨለማ ተውጠን ሳለን,published,LOW,true,,,no_canonical_category
+2e699554-dbbe-481f-9654-0442a06af49e,804e3570-4376-4a3a-bf3b-28f2a61a2c39,tegerfo-teseqlo-yemotew-anbesa,Tegerfo Teseqlo Yemotew Anbesa,ተገርፎ ተሰቅሎ የሞተው አንበሳ,published,LOW,true,,General / Anytime,no_canonical_category
+2eef7fb9-81d9-4731-9cb6-935333fe5b08,355181db-41cf-4e36-8d85-49a13b3af0c5,min-yebeza-neber-tihtina-tigsitih-yemaylewet,Min Yebeza Neber Tihtina Tigsitih Yemaylewet,ምን የበዛ ነበር ትኅትና ትዕግሥትህ የማይለወጥ,published,LOW,true,,General / Anytime,no_canonical_category
+2fa13cd3-0178-4d2e-ac5f-07409aa45d25,f1314f0f-2f3b-4b76-a24d-d8964be12cad,yomse,Yomse,ዮምሰ,published,LOW,true,,,no_canonical_category
+31b6c0de-894a-4862-ac2d-aea89268748b,d8b2199c-1886-4ce2-86f6-449542affb9b,itsub-bereket-setesh,Itsub Bereket Setesh,እጹብ በረከት ሰጠሽ,published,LOW,true,,General / Anytime,no_canonical_category
+328dccc9-10a4-4763-9321-cd89de78d75b,45d3c210-de2d-407f-80e2-13dc013de2e9,beyedeqiqaw-hatiat-sisera,Beyedeqiqaw Hatiat Sisera,በየደቂቃው ኃጢአት ስሠራ,published,LOW,true,,General / Anytime,no_canonical_category
+332f24de-6535-4ee1-8f4d-0825e645d833,46744cd1-1c1e-4290-8306-7a2507be01da,ainbey-nez-aimru,Ainbey Nez Aimru,አእንበይ ነዝ አእምሩ,published,LOW,true,,General / Anytime,no_canonical_category
+33c6e1d1-6cf2-4eb8-83bc-c630bd0ec40f,51fa1e19-4bca-428b-9e98-275a7a2b9522,yehatiat-guzo-tafach-bimeslim,Yehatiat Guzo Tafach Bimeslim,የኃጢአት ጉዞ ጣፋጭ ቢመስልም,published,LOW,true,,,no_canonical_category
+34c042ac-b2f5-4517-a5dc-2b148454ec94,6d78a51b-30fe-477d-8d25-d3989764ca67,besemayni-webemdirni-webebahrini-webekulu,Besemayni Webemdirni Webebahrini Webekulu,በሰማይኒ ወበምድርኒ ወበባሕርኒ ወበኩሉ,published,LOW,true,,General / Anytime,no_canonical_category
+353de3c4-3107-4ecd-9def-e7c897c9ef16,e0c0d58d-8716-4396-94ab-cb9a109420fd,sew-hulu-kemiwedat,Sew Hulu Kemiwedat,ሰው ሁሉ ከሚወዳት,published,LOW,true,,General / Anytime,no_canonical_category
+356ac3e4-2393-4b05-9d35-2d1241148d21,37b7c5a8-e2fa-4cf0-8567-264cb9061b2c,yelbachin-desta-indinalen,Yelbachin Desta Indinalen,የልባችን ደስታ እንድናለን,published,LOW,true,,,no_canonical_category
+36c12b24-e179-4de5-81f6-eb6ced5257c4,cc7a0b2b-b395-45a6-b6c3-7b689bb6995b,ketfat-tebqo-agannitnim-yiwagal,Ketfat Tebqo Agannitnim Yiwagal,ከጥፋት ጠብቆ አጋንንትንም ይዋጋል,published,LOW,true,,General / Anytime,no_canonical_category
+36cbdccc-38c1-4976-a236-a1bc03ae67e8,35510d22-45a6-45ba-b95b-c6c25e9e07d9,amlak-hoy-misgana-leante-yigebahal-2,Amlak Hoy Misgana Leante Yigebahal,አምላክ ሆይ ምስጋና ለአንተ ይገባሀል,published,LOW,true,,,no_canonical_category
+7f7cfc86-2826-428a-8548-24fa0eaf55d2,,tefetseme,Tefetseme,ተፈጸመ,draft,LOW,true,,General / Anytime,no_canonical_category
+39f9171e-7f70-4379-87dd-fabc982f4f07,8845b12d-b6b6-4a29-a548-cfb90da60cab,hizbu-tesbisbo-bebete-kirsitiyan,Hizbu Tesbisbo Bebete Kirsitiyan,ሕዝቡ ተስብስቦ በቤተ ክርስቲያን,published,LOW,true,,General / Anytime,no_canonical_category
+3a1def54-82c6-4036-85c7-6ce542ab8fd1,13c4d192-8c4e-4308-9dd1-7e83850330a2,beqana-zegelila-qu-1,Beqana Zegelila Qu.1,በቃና ዘገሊላ ቁ.1,published,LOW,true,,,no_canonical_category
+3aa79379-e4f2-485b-bd92-3c9433054416,,you-are-without-fault,You Are Without Fault,You Are Without Fault,published,LOW,true,,General / Anytime,no_canonical_category
+3bf00467-dfdb-4021-a902-228d8998643e,,nu-beigziabher-des-yibelen,Nu Beigziabher Des Yibelen,ኑ በእግዚአብሔር ደስ ይበለን,published,LOW,true,,,no_canonical_category
+3c6b8839-07e9-440f-9242-0483ccb1ac2d,1c38b61f-a462-4410-a515-25e24e810803,yeiyesusin-himam-denaglim-aytew,Yeiyesusin Himam Denaglim Aytew,የኢየሱስን ሕማም ደናግልም አይተው,published,LOW,true,,,no_canonical_category
+3cada034-d804-4502-a97a-444b6eb83943,73255728-8aad-4093-bb91-790af15358a7,bebereket-kindu-atbiqo-yeyazen-liyu-new,Bebereket Kindu Atbiqo Yeyazen Liyu New,በበረከት ክንዱ አጥብቆ የያዘን ልዩ ነው,published,LOW,true,,General / Anytime,no_canonical_category
+3d6ffb9a-55f7-45a0-883d-55b5ae4086dc,978cd38a-9dcd-4456-b114-1ee29f5f7b6d,teklehaymanotin-tsadqun-yaferut,Teklehaymanotin Tsadqun Yaferut,ተክለሃይማኖትን ጻድቁን ያፈሩት,published,LOW,true,,,no_canonical_category
+3dd0a803-874e-481f-8e67-afe978d6b639,,tiqit-neger-yizhe,Tiqit Neger Yizhe,ጥቂት ነገር ይዤ,published,LOW,true,,General / Anytime,no_canonical_category
+3e29b523-ac04-497b-aea4-0592ec246911,13fb62da-aa24-4180-a8a7-5a823f838533,hosaina-belu-hosaina,Hosaina Belu Hosaina,ሆሣዕና በሉ ሆሣዕና,published,LOW,true,,,no_canonical_category
+3e9543c6-1512-415f-96e2-0d32c5076ce2,204ae65c-587b-450d-a999-0cdd946d1186,filseta-sijemer-qal-kidan-gebtalech,Filseta Sijemer Qal Kidan Gebtalech,ፍልሰታ ሲጀመር ቃል ኪዳን ገብታለች,published,LOW,true,,General / Anytime,no_canonical_category
+3fb06423-d325-44f9-84da-0ef99d699543,1a2a6469-3b3d-41d6-b86c-efbd523cf6eb,zewetir-tewat-mata,Zewetir Tewat Mata,ዘወትር ጠዋት ማታ,published,LOW,true,,General / Anytime,no_canonical_category
+3fbb3167-f602-4f7d-a43a-afdc59628692,79d9ace3-4cc7-42ea-9847-49e894bf5cdb,igziabher-yimesgen,Igziabher Yimesgen,እግዚአብሔር ይመስገን,published,LOW,true,,General / Anytime,no_canonical_category
+40098eed-f414-49fe-95a2-7b1a1af809c0,,kem-fiqadu,[kem Fiqadu ],[ከም ፍቓዱ ],published,LOW,true,,General / Anytime,no_canonical_category
+40592327-ee52-4c3d-8b6b-66bbfbd8efee,46469950-5b18-4b19-b043-67fb02066ad3,hawaryaw-menekuse-yemeretut-silase,Hawaryaw Menekuse Yemeretut Silase,ሐዋርያው መነኩሴ የመረጡት ሥላሴ,published,LOW,true,,,no_canonical_category
+40cec4ab-de2c-4775-8142-f950e6d3e2f9,43d36474-4153-4b78-ad28-54d3cfbbadcc,keherodis-wede-pelatos,Keherodis Wede Pelatos,ከሄሮድስ ወደ ጴላጦስ,published,LOW,true,,General / Anytime,no_canonical_category
+41da10ce-19d9-48c2-a317-e6b757f7eb2b,ed921264-07e4-4c92-bf44-f7ecb1b9fe64,semaitat-yezihchin-alem-taim-beiwnet,Semaitat Yezihchin Alem Taim Beiwnet,ሰማዕታት የዚህችን ዓለም ጣዕም በእውነት,published,LOW,true,,General / Anytime,no_canonical_category
+42ce0eea-f884-483d-9bbf-1283b10a950b,907d61b2-c3ef-4ae6-9746-fba55939b47b,werede-weld,Werede Weld,ወረደ ወልድ,published,LOW,true,,,no_canonical_category
+43395089-7481-4b2c-8d35-1e7082d60fbe,2ff49511-5af6-4fb2-ac88-f536b85e6546,aytenal-inji-letelatochu-mihret-silemn,Aytenal Inji Letelatochu Mihret Silemn,አይተናል እንጂ ለጠላቶቹ ምሕረት ሲለምን,published,LOW,true,,General / Anytime,no_canonical_category
+438cc576-12d2-47db-b46c-6b1016c95a85,d5368f92-937d-4cf5-94bc-e5e05b6c4060,keinya-gar-yalew-hayl-new,Keinya Gar Yalew Hayl New,ከእኛ ጋር ያለው ኃይል ነው,published,LOW,true,,General / Anytime,no_canonical_category
+4415c89c-2f2b-487f-910c-4626ffea6f76,7144476d-f8e7-4700-b887-c7f4dffbbca9,besiol-bereha-indanqer-wedqen,Besiol Bereha Indanqer Wedqen,በሲዖል በረሀ እንዳንቀር ወድቀን,published,LOW,true,,General / Anytime,no_canonical_category
+517006e3-ef94-4b8d-b0fd-581abbb3f049,,libezarew-timqetu,Libezarew Timqetu,ልበዛሬው ጥምቀቱ,draft,LOW,true,,General / Anytime,no_canonical_category
+44fc2baf-1c89-421c-b2d4-45e69cc32bbe,4259bcf5-ee13-4d4e-ad66-971bbed74a16,anchin-keneljish-bekbir-tertew,Anchin Keneljish Bekbir Tertew,አንቺን ከነልጅሽ በክብር ጠርተው,published,LOW,true,,General / Anytime,no_canonical_category
+4658f6e0-3b86-4bba-8f3e-ed1e8dd2e250,614b7ba2-ba56-419d-b561-cab7ec4ed727,aynenm-feweskeny-zare-mayet-chalkuny,Aynenm Feweskeny Zare Mayet Chalkuny,ዓይኔንም ፈወስከኝ ዛሬ ማየት ቻልኩኝ,published,LOW,true,,General / Anytime,no_canonical_category
+47143518-5bdf-45ce-b1d6-d79aed04bd7c,5dd50c59-e2fd-4110-9044-f3f2ad5285c1,letelat-kindu-birtu-hayal-new,Letelat Kindu Birtu Hayal New,ለጠላት ክንዱ ብርቱ ኃያል ነው,published,LOW,true,,General / Anytime,no_canonical_category
+471c3dd1-9c11-4d8a-9136-d05150d4e269,f04b678c-1c64-4739-8eef-9558023d02c7,neger-hulu-beirsu-tekenawene,Neger Hulu Beirsu Tekenawene,ነገር ሁሉ በእርሱ ተከናወነ,published,LOW,true,,General / Anytime,no_canonical_category
+471d2e79-c967-430b-b57f-4f5dea750015,0d9241ff-95d1-4dbe-a2d7-02f3cd53611a,ityopya-bahil-qwanqwash-yemiyakorash,Ityopya Bahil Qwanqwash Yemiyakorash,ኢትዮጵያ ባህል ቋንቋሽ የሚያኮራሽ,published,LOW,true,,,no_canonical_category
+483f5842-a6bf-440a-ae8d-fc7a50c86ed0,6277ec9b-63e0-4d3c-9db4-811dbc7e5f21,lezih-idil-tezegaju,Lezih Idil Tezegaju,ለዚህ እድል ተዘጋጁ,published,LOW,true,,General / Anytime,no_canonical_category
+8bac054e-d952-4d29-a409-697c0e9a75aa,,indeabritsam-inhun,Indeabritsam Inhun,እንደአብርፃም እንሁን,draft,LOW,true,,General / Anytime,no_canonical_category
+4a4f68de-cbf0-4a7f-8818-86f95509f9af,fe649616-d1ea-4fd5-8057-0806c8f7c5fb,letalaq-simu-leqdus-simu,Letalaq Simu Leqdus Simu,ለታላቅ ስሙ ለቅዱስ ስሙ,published,LOW,true,,General / Anytime,no_canonical_category
+4b474c68-6394-4ddf-911c-abbc55f4c890,dbc7fd08-0306-41b6-b1b4-c30632461349,bezih-bicha-aybeqam-tergwami-yashawal,Bezih Bicha Aybeqam Tergwami Yashawal,በዚህ ብቻ አይበቃም ተርጓሚ ያሻዋል,published,LOW,true,,General / Anytime,no_canonical_category
+4b77b09b-b777-4570-b3e4-6dac082fb54f,c0c529bf-ecb6-4410-af6f-5024b7d92174,zarem-beinya-lay-tsegawn-yafsis,Zarem Beinya Lay Tsegawn Yafsis,ዛሬም በእኛ ላይ ጸጋውን ያፍስስ,published,LOW,true,,General / Anytime,no_canonical_category
+4c620e23-cc2a-49f1-81c2-78e30b65ca8d,a6fa16bb-1d4e-48f3-822f-843f67450cc6,beshbisheba-leamlakish-zemrilet,Beshbisheba Leamlakish Zemrilet,በሽብሸባ ለአምላክሽ ዘምሪለት,published,LOW,true,,General / Anytime,no_canonical_category
+4c6df5a1-42ed-4932-9324-f51f348811a6,52f96d72-0c92-4811-b5b4-b0f6c617727c,werdo-kelelachew-demena-tseada,Werdo Kelelachew Demena Tseada,ወርዶ ከለላቸው ደመና ጸዓዳ,published,LOW,true,,General / Anytime,no_canonical_category
+4cd5e5ff-db22-4ca5-ac5c-8fa2b3bac9f2,0ad8e5c6-40ef-4878-bace-973a1dbf8d5a,bahir-techeneqech-sheshechim-befrihat,Bahir Techeneqech Sheshechim Befrihat,ባሕር ተጨነቀች ሸሸችም በፍርሃት,published,LOW,true,,General / Anytime,no_canonical_category
+4d3164d2-1c81-4f58-9016-a3980e026172,20845acd-8714-43e3-86e4-f09554a20fad,lemnuln-tsadqan-semaitat,Lemnuln Tsadqan Semaitat,ለምኑልን ጻድቃን ሰማዕታት,published,LOW,true,,General / Anytime,no_canonical_category
+4d34ebec-576a-4821-9eda-40b0e8e3b9a6,45c363e7-b4df-48e7-b399-f5b4efc8c19c,azanytwa-maryam-beterahush-gize,Azanytwa Maryam Beterahush Gize,አዛኝቷ ማርያም በጠራሁሽ ጊዜ,published,LOW,true,,,no_canonical_category
+c44ea45d-2874-4ee5-a719-6c800f9c99aa,,bezer-and-yehonew,Bezer And Yehonew,በዘር አንድ የሆነው,draft,LOW,true,,General / Anytime,no_canonical_category
+4d9970a4-f301-48e2-8c2f-9b3790e3fb93,,kiristos-waaqako-zemarit-fasika-mekonnen,"KIRISTOS WAAQAKO"" Zemarit Fasika Mekonnen",,published,LOW,true,,General / Anytime,no_canonical_category
+4e669f15-5454-4d6e-8af8-251a061fdca5,,libe-tegeny-zimare,Libe Tegeny Zimare,ልቤ ተገኝ ዝማሬ,published,LOW,true,,General / Anytime,no_canonical_category
+4ece3d74-b6d6-4ef5-88c2-4399fffc0e65,,yesew-zemenu,Yesew Zemenu,የሰው ዘመኑ,published,LOW,true,,General / Anytime,no_canonical_category
+4f570c68-39da-47f8-97a7-44783fb93375,01824b58-9408-4acd-b8b0-feb7ab9471ad,getachin-siweled-bebetelhem,Getachin Siweled Bebetelhem,ጌታችን ሲወለድ በቤተልሔም,published,LOW,true,,General / Anytime,no_canonical_category
+4f9d9a93-50ed-44b5-82ae-81ffea429bfa,0658c756-49c8-4b03-b64d-01cb30e77437,inamesginash-yeamlak-inat-bezmare,Inamesginash Yeamlak Inat Bezmare,እናመስግናሽ የአምላክ እናት በዝማሬ,published,LOW,true,,,no_canonical_category
+504be6a3-04eb-4d44-b6a1-496327c56a27,4a0408b4-d994-4af7-99cc-184be656aa64,dingil-gwajoachewn-qedsesh,Dingil Gwajoachewn Qedsesh,ድንግል ጐጆአቸውን ቀድሰሽ,published,LOW,true,,General / Anytime,no_canonical_category
+513ad7e4-7a1d-4489-b6d0-f84dcbf5ba77,744c7249-1301-4e28-bba2-56b7f4cfd4ca,wesenper-webekerkedin-beinqu-wesenper,Wesenper Webekerkedin Beinqu Wesenper,ወሰንጴር ወበከርከዲን በዕንቁ ወሠንጴር,published,LOW,true,,General / Anytime,no_canonical_category
+ddd1ad96-7124-4271-96e6-bd8204e5bc87,,ha8le-hale-hale-luya,Ha8le Hale Hale Luya,ሃ8ሌ ሃሌ ሃሌ ሉያ,draft,LOW,true,,General / Anytime,no_canonical_category
+5148241f-bc96-46d0-a72c-8d4cf2072e7c,25a2f4f3-64b7-4830-8c92-9fa2951cad5a,tewahdo-haymanot,Tewahdo Haymanot,ተዋሕዶ ሃይማኖት,published,LOW,true,,General / Anytime,no_canonical_category
+b62fd649-f1d4-4b39-aeaa-c8f74b950ed4,,behaymanot,Behaymanot,በሃይማኖት,draft,LOW,true,,General / Anytime,no_canonical_category
+5233ba26-c349-4fb9-8ac3-c6b389795d56,4d92a375-ae11-4a6b-a93f-cdf6595ea45d,abet-mekerash-abet-sidetish,Abet Mekerash Abet Sidetish,አቤት መከራሽ አቤት ስደትሽ,published,LOW,true,,General / Anytime,no_canonical_category
+950b653b-8b06-4b9d-bccb-1df5e125fec8,,nu-wede-betel,Nu Wede Betel,ኑ ወደ ቤቴል,draft,LOW,true,,General / Anytime,no_canonical_category
+536a8be9-9be0-460e-9f77-da7caa18beec,e4596cd2-8f49-46ef-859c-fe92cdf9a1eb,kirsitos-liyo-new-wederm-yelew,Kirsitos Liyo New Wederm Yelew,ክርስቶስ ልዮ ነው ወደርም የለው,published,LOW,true,,General / Anytime,no_canonical_category
+fbd758f2-2cba-4404-b54d-6cd1cb86b38d,,all-bey,All Bey,አልል በይ,draft,LOW,true,,General / Anytime,no_canonical_category
+567c8cb5-aed9-4b22-aeb7-6a17700b4911,2fb695f7-09ca-4e37-b431-5d7531926111,bealem-tsilmet-letewatew,Bealem Tsilmet Letewatew,በዓለም ጽልመት ለተዋጠው,published,LOW,true,,General / Anytime,no_canonical_category
+56a049c2-b286-4fd0-81ef-3c2477a3d96f,,ahilifkayen,Ahilifkayen,አሒሊፍካየን,published,LOW,true,,General / Anytime,no_canonical_category
+8de0e56e-6c7a-4cfe-9f26-e7083e3d5268,,wetqewm-nigsit,Wetqewm Nigsit,ወትቀውም ንግሥት,draft,LOW,true,,General / Anytime,no_canonical_category
+56e3608d-d4db-47db-8f02-349437d20a40,f3d8c249-963d-4d39-8c03-ac7bc471e601,abrihi-tsiyon-tsiyon-abrihi,Abrihi Tsiyon Tsiyon Abrihi,አብርሂ ጽዮን ጽዮን አብርሂ,published,LOW,true,,,no_canonical_category
+5706dab4-5682-44d9-bb16-0eca6402e241,a9dc2f8c-e5a4-433f-b1fb-963f09457c6a,fiqir-sihabo,Fiqir Sihabo,ፍቅር ስሐቦ,published,LOW,true,,General / Anytime,no_canonical_category
+5739636a-42db-4103-ac69-7b1f7560ab9d,f61a4d00-90b8-4db4-9424-b978a872f5cb,yetaot-misil-kemishetbet,Yetaot Misil Kemishetbet,የጣዖት ምስል ከሚሸጥበት,published,LOW,true,,General / Anytime,no_canonical_category
+57f80fed-20e6-45c4-b348-e93e378cfc7f,2abbda92-a2ac-43ea-ad57-58892df02dfe,astarqiny-gefche-wetche,Astarqiny Gefche Wetche,አስታርቂኝ ገፍቼ ወጥቼ,published,LOW,true,,General / Anytime,no_canonical_category
+582296a4-bed1-4d19-bb64-7090549ea7ea,9a87a415-7597-43f7-aa90-82aee1694343,kekbir-belay-kibrih-genene,Kekbir Belay Kibrih Genene,ከክብር በላይ ክብርህ ገነነ,published,LOW,true,,,no_canonical_category
+584d1e92-d567-4590-8c96-a0efcfa43334,9e7d6b0e-6c5c-45e6-8bd1-5d8d2f9040de,hawaryat-semtew-zena-tinsaewn-alachew,Hawaryat Semtew Zena Tinsaewn Alachew,ሐዋርያት ሰምተው ዜና ትንሣኤውን አላቸው,published,LOW,true,,,no_canonical_category
+5897cc9f-4a14-4879-8fc0-ade50dbe4f0d,5ec13648-5442-4157-8c61-d6dbe68de606,kealem-hulu-setoch-nitshit-bemehonsh,Kealem Hulu Setoch Nitshit Bemehonsh,ከዓለም ሁሉ ሴቶች ንጽሕት በመሆንሽ,published,LOW,true,,General / Anytime,no_canonical_category
+d3ba313d-7dd1-4fa5-8731-940b5a40e832,,wede-hiywet-menged-2,Wede Hiywet Menged,ወደ ሕይወት መንገድ,draft,LOW,true,,General / Anytime,no_canonical_category
+59d38078-c437-4117-8f3e-009c2e25e3b2,385e2c26-d81a-47c4-b00d-b2a7baa1ed26,bilo-neber-irsu-yemisemaw-tefa,Bilo Neber Irsu Yemisemaw Tefa,ብሎ ነበር እርሱ የሚሰማው ጠፋ,published,LOW,true,,,no_canonical_category
+5a3275c6-c51d-46ee-adc2-2fc65c0dbb72,8b87404b-202d-495e-a116-20114d804d3d,irsu-gin-tadegeny-anetsany-befqir,Irsu Gin Tadegeny Anetsany Befqir,እርሱ ግን ታደገኝ አነጻኝ በፍቅር,published,LOW,true,,General / Anytime,no_canonical_category
+5a4d2059-03b1-422e-bdc5-85eb03898aac,da0f09ef-845c-46a1-80c6-585599108b60,qidus-fetariyen-anten-tamlikih,Qidus Fetariyen Anten Tamlikih,ቅዱስ ፈጣሪዬን አንተን ታምልክህ,published,LOW,true,,General / Anytime,no_canonical_category
+5a52d6d1-a836-4b96-bb4f-27dc204a3b2c,e49b6b54-e440-4530-ad6e-0ba23e499aa8,selam-latu-selam-fiqrin-latu-fiqrin,Selam Latu Selam Fiqrin Latu Fiqrin,ሰላም ላጡ ሰላም ፍቅርን ላጡ ፍቅርን,published,LOW,true,,General / Anytime,no_canonical_category
+5b5a6abd-c2ba-405b-a36f-a25141821f78,6b2bf382-cb66-4557-8433-583cee60f962,yehdar-tsiyon-mezmur,Yehdar Tsiyon Mezmur,የኅዳር ጽዮን መዝሙር,published,LOW,true,,,no_canonical_category
+5d14757d-a90a-4747-8da8-e9474f9d11a8,13c68822-d38f-47ff-a309-850e8b0145bb,hamelmalawit,Hamelmalawit,ሐመልማላዊት,published,LOW,true,,General / Anytime,no_canonical_category
+5d4320bc-db70-4e2c-abff-b9451fcba789,19165966-d217-4e57-9a73-c27e723c7695,birhan-yelebesew,Birhan Yelebesew,ብርሃን የለበሰው,published,LOW,true,,General / Anytime,no_canonical_category
+5e0e98a6-dd77-4287-82c5-b31272b4b1d0,d09c1a18-f607-4488-ab63-3514eaf635d2,keanchi-betegenyew-bemelkamu-fire,Keanchi Betegenyew Bemelkamu Fire,ከአንቺ በተገኘው በመልካሙ ፍሬ,published,LOW,true,,General / Anytime,no_canonical_category
+5e5829d5-6758-4000-b4d6-aea1166f560c,54e68239-30d2-41e8-84e2-a9b656529c40,lezih-hule-wiletah-min-yikefelzal,Lezih Hule Wiletah Min Yikefelzal,ለዚህ ሁሌ ውለታህ ምን ይከፈልዛል,published,LOW,true,,General / Anytime,no_canonical_category
+5e7c55cb-e21a-4b42-aece-9cb85524a837,e52b1854-45c0-4165-80a1-b995fdcc9049,ande-gebrehyiwet-letsdiq-innesa,Ande Gebrehyiwet Letsdiq Innesa,አንደ ገብረሕይወት ለጽድቅ እንነሣ,published,LOW,true,,General / Anytime,no_canonical_category
+5f1f746f-7373-4214-8ddd-4076c982f489,903ab845-eb4b-4924-a4e3-6c3764dc8241,lemalqes-gize-alew-amlake-derso-lemesaq,Lemalqes Gize Alew Amlake Derso Lemesaq,ለማልቀስ ጊዜ አለው አምላኬ ደርሶ ለመሳቅ,published,LOW,true,,General / Anytime,no_canonical_category
+5f61e9fd-a1dc-4555-8cec-4a75888b9614,0fe0e6eb-971e-4439-862f-02b6563184e7,kezendo-astalat-berutawitin-qidus-giyorgis,Kezendo Astalat Berutawitin Qidus Giyorgis,ከዘንዶ አስጣላት ቤሩታዊትን ቅዱስ ጊዮርጊስ,published,LOW,true,,,no_canonical_category
+5f6e4c9d-0a4c-4e4b-9eee-54fdc7ad61e3,61388359-d0f0-4f32-b242-83770576e334,bemesqel-lay-hono-lijish-singegelata,Bemesqel Lay Hono Lijish Singegelata,በመስቀል ላይ ሆኖ ልጅሽ ሲንገገላታ,published,LOW,true,,,no_canonical_category
+6027a603-972e-4d7a-823e-80f59e1f37f6,9dd3f0dc-76af-4f7a-9ccd-6b7056dde1dd,tabote-inte-wisteta,Tabote Inte Wisteta,ታቦተ እንተ ውስቴታ,published,LOW,true,,General / Anytime,no_canonical_category
+60289d86-d005-48db-b016-b9da52ec9986,b12e32ba-e979-40f5-9c83-83adc04dcf07,ityopya-des-yibelsh-tilq-tsega-alesh,Ityopya Des Yibelsh Tilq Tsega Alesh,ኢትዮጵያ ደስ ይበልሽ ትልቅ ጸጋ አለሽ,published,LOW,true,,General / Anytime,no_canonical_category
+6029643c-aba7-4194-b171-d960ef667158,64beda32-de72-4f9e-9bb9-c3f55f8f5c10,amlake-memekiyaye-new-ri,Amlake Memekiyaye New/ri,አምላኬ መመኪያዬ ነው/ሪ/,published,LOW,true,,,no_canonical_category
+60523f36-247a-432b-b10d-499639424d53,a74acc7e-270f-4f7e-9542-e69c0c2f4e2d,nefsina-sigaye,Nefsina Sigaye,ነፍስና ስጋዬ,published,LOW,true,,General / Anytime,no_canonical_category
+60fbaf22-5509-4dfb-a8ac-6deaa12c4f2c,9f5a5845-7f90-487f-8f2a-885de75bc47e,man-new-irsu,Man New Irsu,ማን ነው እርሱ,published,LOW,true,,General / Anytime,no_canonical_category
+616277d6-ba8b-4607-a25a-5469eaeca32f,c7d81bb6-a290-4f37-a4f1-25ca5113f189,kelul-zend-leyqirta-yilakalu,Kelul Zend Leyqirta Yilakalu,ከልዑል ዘንድ ለይቅርታ ይላካሉ,published,LOW,true,,,no_canonical_category
+61f0ff74-c8a6-4149-8989-9ecd274d1749,bc1fbdc0-9895-4631-8c5e-dfa1cfa38e68,yealemn-bedel-yesewn-gif-ayto,Yealemn Bedel Yesewn Gif Ayto,የዓለምን በደል የሰውን ግፍ አይቶ,published,LOW,true,,General / Anytime,no_canonical_category
+62f56b78-7e4b-45c7-9cd1-a91fc48b71d1,937b023e-0e4d-42bd-9294-f79e212353e2,zare-tewelede-yealem-medhanit,Zare Tewelede Yealem Medhanit,ዛሬ ተወለደ የዓለም መድኃኒት,published,LOW,true,,,no_canonical_category
+65a976b5-9fc2-4c86-9711-999ca92bd453,45343b7a-df34-4a09-80d7-42b43fad1468,sebat-aklilatin,Sebat Aklilatin,ሰባት አክሊላትን,published,LOW,true,,,no_canonical_category
+6607e066-ad6c-4443-8124-6ca534c33d8b,82157efc-9c79-412e-bb89-59208406c6a0,belalna-werede-belalna,Belalna Werede Belalna',በልአልና ወረደ በልአልና',published,LOW,true,,General / Anytime,no_canonical_category
+66c5425d-8a99-470e-86e1-afc7829e4297,2289d7e6-6852-4827-8208-a87db1db571b,yehaymanot-firewoch,Yehaymanot Firewoch,የሃይማኖት ፍሬዎች,published,LOW,true,,General / Anytime,no_canonical_category
+faf5761f-5740-49eb-bcfc-8f0bd780c04d,,u-mushraw-kemushrit-gar,U. Mushraw Kemushrit Gar,ዑ. ሙሽራው ከሙሽሪት ጋር,draft,LOW,true,,General / Anytime,no_canonical_category
+679661c0-b5e4-4a05-8894-d4de260500e2,6cc55a02-d2d6-43ce-b45e-0d916a68c936,simwa-sitera-yednigil-maryam,Simwa Sitera Yednigil Maryam,ስሟ ሲጠራ የድንግል ማርያም,published,LOW,true,,,no_canonical_category
+67ece858-b4df-4820-a04f-279ed764544b,,gelete-femada-ama-beraberate-di-n-zemari-qedametsega-yohans-m-yetesera,Gelete Femada Ama Beraberate Di N Zemari Qedametsega Yohans .m Yetesera,ገለቴ ፈማዳ አማ በራበራቴ ዲ ን ዘማሪ ቀዳሜጸጋ ዮሐንስ .ም የተሰራ,published,LOW,true,,General / Anytime,no_canonical_category
+68df335b-a751-491b-8294-44ee19ec96f4,dae35bdd-6ce3-435d-b676-9acf4d8ad113,alem-zelealem,Alem Zelealem,ዓለም ዘለዓለም,published,LOW,true,,General / Anytime,no_canonical_category
+69585d94-319c-4c13-bb79-e69b64c37621,42044b75-6320-44a1-9745-39eb7c27fcc8,kuni-fenoni-gadisada-qorchada,Kuni Fenoni Gadisada Qorchada,ኩኒ ፈኖኒ ጋዲሳዳ ቆርቻዳ,published,LOW,true,,,no_canonical_category
+9937794e-1813-4070-9370-2450426db7af,,arsatu-agersise,Arsatu Agersise,አርሳቱ አገርሲሴ,draft,LOW,true,,General / Anytime,no_canonical_category
+0bb2518b-44b8-4c96-b1e7-b6657d1dc49a,,kotalala,Kotalala,ኮታላላ,draft,LOW,true,,General / Anytime,no_canonical_category
+b5ef164f-8bdc-4596-ba60-d2b3e954f541,,feno-ifa-mesqel-abrihane,Feno Ifa Mesqel Abrihane ),ፈኖ ኢፋ መስቀል አብርሃነ ),draft,LOW,true,,General / Anytime,no_canonical_category
+be09aac5-707e-4879-9f4b-92ef0d2a9dd9,,eyo-fenodani,Eyo Fenodani,ኤዮ ፈኖዳኒ,draft,LOW,true,,General / Anytime,no_canonical_category
+69678d3f-20df-4398-a4b7-87f58bf4d9a3,5db92f34-9f2d-4b38-b462-b245fc91e6c5,hun-chay-nehna-fitrethin-yematniq,Hun Chay Nehna Fitrethin Yematniq,ሁን ቻይ ነህና ፍጥረትህን የማትንቅ,published,LOW,true,,General / Anytime,no_canonical_category
+69c75ece-16cd-4223-9406-7ee6f93bc932,fbc32041-3a1f-4a5e-902a-964508dc24ad,antenu-mikael-mena-mena-zeawredke,Antenu Mikael Mena Mena Zeawredke,አንተኑ ሚካኤል መና መና ዘአውረድከ,published,LOW,true,,General / Anytime,no_canonical_category
+6b57c2d0-c774-4af5-b2da-810e744dc067,fac23bc5-38a2-4931-bed2-d8d8f2aa8476,maryam-des-yibelsh-begebriel-selamta,Maryam Des Yibelsh Begebriel Selamta,ማርያም ደስ ይበልሽ በገብርኤል ሰላምታ,published,LOW,true,,,no_canonical_category
+536d7a0c-6a99-4c15-b8d0-68fea808e7d7,,o-aba-qidus,O Aba Qidus,ኦ አባ ቅዱስ,draft,LOW,true,,General / Anytime,no_canonical_category
+6c6fe730-bc8a-44d9-b0b0-b265b802cef2,,sebatu-mentolayt,Sebatu Mentolayt,ሰባቱ መንጦላይት,published,LOW,true,,General / Anytime,no_canonical_category
+6d6ef308-b2e5-4f0b-acd6-e5fc935e098d,375604c8-91d6-4cec-926b-a4997756eaee,seale-sirey-lehatiat-leale-wegerwo,Seale Sirey Lehatiat Leale Wegerwo,ሰአለ ሥረይ ለኃጢአት ለአለ ወገርዎ,published,LOW,true,,,no_canonical_category
+667e3bdf-0ac6-44d3-8425-275bc3db7d76,,yibela-hitsan-leimu,Yibela Hitsan Leimu,ይቤላ ሕፃን ለእሙ,draft,LOW,true,,General / Anytime,no_canonical_category
+6d8ad128-27b6-46b2-8451-57ca0e99d55f,39d061e9-2661-4787-8431-805540ea98d8,dingil-maryam-hoy-direshliny,Dingil Maryam Hoy Direshliny,ድንግል ማርያም ሆይ ድረሽልኝ,published,LOW,true,,General / Anytime,no_canonical_category
+6ddda18c-2db9-44b1-a4bb-afe9ae593a96,37d7bcb7-cfd3-413b-a753-72c50c6c8c31,timesli-demena-wetwelda-hibsete-mena,Timesli Demena Wetwelda Hibsete Mena,ትመስሊ ደመና ወትወልዳ ሕብሰተ መና,published,LOW,true,,General / Anytime,no_canonical_category
+6f8411b0-d0e7-49a4-8b28-4a14eba3dc30,83ffa794-4925-4e86-a047-be914d1e75d4,yedawit-tinbitu,Yedawit Tinbitu,የዳዊት ትንቢቱ,published,LOW,true,,,no_canonical_category
+7243dfee-450f-411b-936d-847fe19bc509,524dfcf2-6edd-4697-843e-14d02a18fb0b,motwal-bilew-qebrewny-sewoch,Motwal Bilew Qebrewny Sewoch,ሞቷል ብለው ቀብረውኝ ሰዎች,published,LOW,true,,General / Anytime,no_canonical_category
+72dbd123-a311-4630-bbdf-60b5ed0b05d0,37aa8d01-4a83-4b7a-8a2b-8ed528728507,begetachin-mesqel,Begetachin Mesqel,በጌታችን መስቀል,published,LOW,true,,,no_canonical_category
+72ffb6d5-e5ca-44e1-ab3d-38c0c8c3d185,,inkirdad-nufaqe-dinq-yebegena-zimare-diyaqon-qedametsega-yohans,Inkirdad Nufaqe Dinq Yebegena Zimare Diyaqon Qedametsega Yohans,እንክርዳድ ኑፋቄ ድንቅ የበገና ዝማሬ ዲያቆን ቀዳሜፀጋ ዮሐንስ,published,LOW,true,,General / Anytime,no_canonical_category
+733e9749-19e8-442f-ad4c-25ab79d99ef1,1858da07-3966-4624-a90c-437e0d4fbc85,sitaleqish-bemayet-yeziyan-gize-rarto-lijish,Sitaleqish Bemayet Yeziyan Gize Rarto Lijish,ስታለቅሽ በማየት የዚያን ግዜ ራርቶ ልጅሽ,published,LOW,true,,,no_canonical_category
+74d9aff6-f5b6-4e83-b8a2-c6b5223d3175,,diwy-nen,Diwy Nen,ድውይ ነን,published,LOW,true,,General / Anytime,no_canonical_category
+755e97a0-ec33-4f33-90cd-fb31c255f1b5,9b5569ad-0868-4987-8fba-2353ca46c5d0,yibai-niguse-sibhat,Yibai Niguse Sibhat,ይባዕ ንጉሠ ስብሐት,published,LOW,true,,,no_canonical_category
+757cbf23-160d-4298-a62e-9e2b8ba66554,78934189-c69e-4655-9e49-a6b886feb998,sefiho-kinefehu,Sefiho Kinefehu,ሰፊሆ ክነፈሁ,published,LOW,true,,General / Anytime,no_canonical_category
+759c0c37-d8f5-4c69-b303-af4e5cebd457,7c503f6d-07dd-4bff-9122-8d9cc375ff56,nastemasleki-teqwame-mahtot,Nastemasleki Teqwame Mahtot,ናስተማስለኪ ተቅዋመ ማኅቶት,published,LOW,true,,,no_canonical_category
+75c91bfd-9475-4c9b-9fd6-add8f2c5056e,248e34c3-3872-4a93-8515-dc7df599df1c,keto-indeante-manew-ruhruh-abat,Keto Indeante Manew Ruhruh Abat,ከቶ እንደአንተ ማነው ሩኅሩኅ አባት,published,LOW,true,,General / Anytime,no_canonical_category
+75f38a57-eee3-460c-b892-1b2e04dc5f19,fe6d98a7-3325-4b71-a2b1-bccf7250f9f2,kinfachin-temetto-mebrer-aqtonal,Kinfachin Temetto Mebrer Aqtonal,ክንፋችን ተመትቶ መብረር አቅቶናል,published,LOW,true,,General / Anytime,no_canonical_category
+7903ea1d-15e8-407a-8514-09e49e4462bf,03a193a4-380f-478a-a78e-94bd9e96046c,barko-yeseteshe-ityopyan-israt,Barko Yeseteshe Ityopyan Israt,ባርኮ የሠጠሸ ኢትዮጵያን እስራት,published,LOW,true,,General / Anytime,no_canonical_category
+79390ef8-9676-42c4-b0b0-f45adb0a79cf,cdca8868-727b-495d-abfd-eee82054a49e,yeslase-mengisit-lezelealem-new,Yeslase Mengisit Lezelealem New,የሥላሴ መንግሥት ለዘለዓለም ነው,published,LOW,true,,,no_canonical_category
+7961fd21-db30-4de2-ba3e-981d1241c384,c56182b3-5ae1-46f7-af2d-e5c7b0fc298f,tewat-mata-qidsit-hoy-yilalu,Tewat Mata Qidsit Hoy Yilalu,ጠዋት ማታ ቅድስት ሆይ ይላሉ,published,LOW,true,,General / Anytime,no_canonical_category
+7983e33b-de6e-41e1-931c-5fb133549e57,40178827-f8af-420e-9de3-4d15b4bf3692,beigziabher-bet-hone-sergachhu,Beigziabher Bet Hone Sergachhu,በእግዚአብሔር ቤት ሆነ ሠርጋችሁ,published,LOW,true,,General / Anytime,no_canonical_category
+7a8cc779-110a-4058-a914-49a9da101ef3,6d895c51-9c4d-42b8-ab26-2ec6af3eb2d3,fiqrun-chernetun-lealem-nigeru,Fiqrun Chernetun Lealem Nigeru,ፍቅሩን ቸርነቱን ለዓለም ንገሩ,published,LOW,true,,General / Anytime,no_canonical_category
+7ab9cdd8-5125-4662-be17-dcbf2364ca38,36183575-ebc2-4b20-b7c1-4e263da023bc,sibrathin-yemitegnew-man-new-irsu,Sibrathin Yemitegnew Man New Irsu,ስብራትህን የሚጠግነው ማን ነው እርሱ,published,LOW,true,,General / Anytime,no_canonical_category
+7bd3cc8f-46b7-4df9-af05-f8b1a4520ca3,1bac222f-feb6-4e8e-bfd7-bf175cb0a2e5,besterjina-aydelem-bewetatnet-new,Besterjina Aydelem Bewetatnet New,በስተርጅና አይደለም በወጣትነት ነው,published,LOW,true,,General / Anytime,no_canonical_category
+7cedfc2c-87d4-47b6-9afd-ee89687640ed,a8555842-52c9-4308-9a95-014d236d0542,kemetsge,Kemetsge,ከመፅጌ,published,LOW,true,,General / Anytime,no_canonical_category
+7d66a7e2-700b-497b-a800-e4ed28c33f24,561a4558-6de3-4cc8-b64a-6203239c7ad1,ande-abatochachin-andeabritsam,Ande Abatochachin Andeabritsam,አንደ አባቶቻችን አንደአብርፃም,published,LOW,true,,General / Anytime,no_canonical_category
+55223e68-eecb-4e91-8442-e32a5e721db0,,beiyerusalem,Beiyerusalem,በኢየሩሳሌም,draft,LOW,true,,General / Anytime,no_canonical_category
+7e145aef-8de5-4842-a869-a3adb7f7936b,1a446432-721d-4e28-be38-8b00318e479c,zewetir-yinuru-mehakelachhu,Zewetir Yinuru Mehakelachhu,ዘወትር ይኑሩ መሃከላችሁ,published,LOW,true,,General / Anytime,no_canonical_category
+7f1d6d8b-828d-471b-bc0a-582b49d0caea,,weybelomu-haru,Weybelomu Haru,ወይቤሎሙ ሐሩ,published,LOW,true,,General / Anytime,no_canonical_category
+7f38c2c6-c5ec-4c90-a840-d8acb7e79872,79fe773e-f91e-48b2-90c7-97718655b522,imne-adbarat-kulon-zetelealet-besmu,Imne Adbarat Kulon Zetelealet Besmu,እምነ አድባራት ኩሎን ዘተለአለት በስሙ,published,LOW,true,,,no_canonical_category
+7f9db038-0a9e-4430-962c-9a8d2cdf9bf0,2bcdde9c-594b-4b3a-8eb4-09afd10899cc,adfeni-kegehanem-isat-tefto-kemaytefaw,Adfeni Kegehanem Isat Tefto Kemaytefaw,አድፈኒ ከገሃነም እሳት ጠፍቶ ከማይጠፋው,published,LOW,true,,General / Anytime,no_canonical_category
+7fa84443-667d-4694-974a-75eacb855658,aeb22988-a3c6-43cb-abd1-ea9cbd2a4b45,liul-semra,Liul Semra,ልዑል ሠምራ,published,LOW,true,,General / Anytime,no_canonical_category
+9e815474-f4b8-4900-a8c5-58dfefdda890,,anze-zelfe,Anze Zelfe,አንዘ ዘልፈ,draft,LOW,true,,General / Anytime,no_canonical_category
+80f82297-d6db-4f22-ad95-4827ac64dbc4,9dcc0baa-f772-4d7b-846b-a7ccd0378b50,yesew-lijoch-hulachin-inmar,Yesew Lijoch Hulachin Inmar,የሰው ልጆች ሁላችን እንማር,published,LOW,true,,General / Anytime,no_canonical_category
+15f850dd-3155-4559-832b-6706717efcd3,,liyu-kibir,Liyu Kibir,ልዩ ክብር,draft,LOW,true,,General / Anytime,no_canonical_category
+832ee37d-0176-40dc-909b-47f528969965,2cf327a8-76b8-4b16-aaae-4daad9e40340,ante-bemesqel-lay-demh-feseseln,Ante Bemesqel Lay Demh Feseseln,አንተ በመስቀል ላይ ደምህ ፈሰሰልን,published,LOW,true,,General / Anytime,no_canonical_category
+83984b34-da15-4908-9e3d-a207366ef2a0,98cd3cbc-0282-4ebb-8960-e789acf92fff,yemnimekabat,Yemnimekabat,የምንመካባት,published,LOW,true,,,no_canonical_category
+8436f6f7-d331-43a2-98cb-789339654444,6c58443e-3304-47d7-863d-59313b80b04f,yidres-misgana-qidsit,Yidres Misgana Qidsit,ይድረስ ምስጋና ቅድስት,published,LOW,true,,General / Anytime,no_canonical_category
+844e6917-c679-40f7-8ad0-43dd3319d030,f394bb43-04ce-40b1-9d80-0a359a275c80,kealem-befit-yenebere,Kealem Befit Yenebere,ከዓለም በፊት የነበረ,published,LOW,true,,General / Anytime,no_canonical_category
+845c5942-a2a7-402b-af24-f43465f2dc59,ab9f12e1-de2c-43aa-a4ed-eb727668b8c4,newr-yalebachhu-tesebsebu-beirsu,Newr Yalebachhu Tesebsebu Beirsu,ነውር ያለባችሁ ተሰብሰቡ በእርሱ,published,LOW,true,,General / Anytime,no_canonical_category
+84635a3d-90be-45b9-87e9-2f408de36f24,4ef92614-99d0-4174-a764-aa00ca53b020,weybelomu-huru-wemeharu-lezeyeamn,Weybelomu Huru Wemeharu Lezeyeamn,ወይበሎሙ ሑሩ ወመሐሩ ለዘየአምን,published,LOW,true,,,no_canonical_category
+85ce60c0-3caf-4f4b-bb2b-2a1ab68a1530,,alemamenen-irdaw-getaye,Alemamenen Irdaw Getaye,አለማመኔን እርዳው ጌታዬ,published,LOW,true,,General / Anytime,no_canonical_category
+86002095-062f-46d6-9265-a6554834399a,98744300-efad-4053-98be-38be1b2d1710,ijig-des-yibelsh,Ijig Des Yibelsh,እጅግ ደስ ይበልሽ,published,LOW,true,,General / Anytime,no_canonical_category
+873958b0-4e1e-432e-95a0-1da5c75c7e76,43b30afd-d9a1-4d55-817d-a8a3fa1894f4,inkwan-yetamemew-yeqomew-sisega,Inkwan Yetamemew Yeqomew Sisega,እንኳን የታመመው የቆመው ሲሰጋ,published,LOW,true,,General / Anytime,no_canonical_category
+87e1f2d7-53fa-47b8-b871-fe9e8273c61f,e7e27e8d-1100-4a8e-a03e-b4df187d1222,mintafachhu-biruh-menytachhu-nitsih,Mintafachhu Biruh Menytachhu Nitsih,ምንጣፋችሁ ብሩህ መኝታችሁ ንጽህ,published,LOW,true,,General / Anytime,no_canonical_category
+892c33d2-eb96-44ff-acd2-6efaad1b4a1a,9dc37332-0373-4810-b71f-de66df5b1047,betsdiq-seleda,Betsdiq Seleda,በጽድቅ ሠሌዳ,published,LOW,true,,General / Anytime,no_canonical_category
+89756b88-828f-4dbb-a501-c8bc935d2a6f,50524950-368a-4055-a490-c1fd71560df2,amlake-gulbete-hayle-memekiyaye,Amlake Gulbete Hayle Memekiyaye,አምላኬ ጉልበቴ ኃይሌ መመኪያዬ,published,LOW,true,,General / Anytime,no_canonical_category
+898811b8-4462-4976-83db-d8382ca5bcc0,,bekidansh-tila,Bekidansh Tila,በኪዳንሽ ጥላ,published,LOW,true,,General / Anytime,no_canonical_category
+8a232315-4631-4a3e-b5a5-f346655e39f0,9f4c0abe-b24a-4a90-99cd-3da7ceb3ed55,ni-rigbiye-weni-senaytiye,Ni Rigbiye Weni Senaytiye,ንዒ ርግብየ ወንኢ ሠናይትየ,published,LOW,true,,General / Anytime,no_canonical_category
+8a2adef4-39d1-4c16-a734-c00fc095d2a8,0b4bd5c7-0151-4b86-9ef2-46f342c426e1,gwadenyoche-teluny-telewchubachew,Gwadenyoche Teluny Telewchubachew,ጓደኞቼ ጠሉኝ ተለውጩባቸው,published,LOW,true,,General / Anytime,no_canonical_category
+8ab809e2-8f2b-4158-8179-c5bc44711671,a90a3aef-6a77-41da-b388-fd91eee682c3,lehatan-aydelem-letsadqan,Lehatan Aydelem Letsadqan,ለኃጥአን አይደለም ለጻድቃን,published,LOW,true,,,no_canonical_category
+8baf5523-d33f-48f5-b2fe-5ca9c74d1154,816fa4ad-3d3a-4cb3-9298-20e7513939fa,hona-yetegenyech-yeamlak-mahder,Hona Yetegenyech Yeamlak Mahder,ሆና የተገኘች የአምላክ ማኅደር,published,LOW,true,,,no_canonical_category
+8d7db907-b2bc-49eb-b3c1-1cbccfec1f6a,,tamemu-hager-betekristiyan,Tamemu Hager Betekristiyan,ታመሙ ሀገር ቤተክርስቲያን,published,LOW,true,,Tsome Nineveh,no_canonical_category
+8dd6f529-9854-401d-ba97-5d8727996f2b,df1deea7-6cfa-4187-9db6-b8d250032789,hamelmale-sina-imebetachin,Hamelmale Sina Imebetachin,ሐመልማለ ሲና እመቤታችን,published,LOW,true,,General / Anytime,no_canonical_category
+8e32a7b6-d9b1-4494-acc7-bdb04e319829,bc02f363-1bda-4863-b723-4cfca22b6b42,sitzor,Sitzor,ስትዞር,published,LOW,true,,,no_canonical_category
+0f6c55f7-96db-4844-ab20-c1d3627a2cdf,,adebabay-qome,Adebabay Qome,አደባባይ ቆሜ,draft,LOW,true,,General / Anytime,no_canonical_category
+8e867f24-a85f-4612-a201-a4f475c95ab7,123844a0-123e-40f7-9f71-dcfe0f11a9a2,weteqebelwo,Weteqebelwo,ወተቀበልዎ,published,LOW,true,,General / Anytime,no_canonical_category
+8ea34047-b338-4238-ba86-3b04f4ce49f8,265f7d44-6264-47a6-9069-6a472f038ec9,dinq-adrigolnyal-lij-hoy-na-aleny,Dinq Adrigolnyal Lij Hoy Na Aleny,ድንቅ አድርጎልኛል ልጅ ሆይ ና አለኝ,published,LOW,true,,,no_canonical_category
+8f97d8eb-34cb-4933-86d2-58286f506665,6facefd2-4fb5-44d5-a4ec-c605b0001351,kemahu-yastegabaikmu-bedebre-tsiyon-qidsit,Kemahu Yastegabaikmu Bedebre Tsiyon Qidsit,ከማሁ ያስተጋባእክሙ በደብረ ጽዮን ቅድስት,published,LOW,true,,,no_canonical_category
+905d0f87-c136-4a1b-979b-131774fa40ad,4a04c682-cb2f-4521-855e-958800ec37ca,simhin-lamesgenew-ketewat-iske-mata,Simhin Lamesgenew Ketewat Iske Mata,ስምህን ላመስገነው ከጠዋት እስከ ማታ,published,LOW,true,,General / Anytime,no_canonical_category
+1f4bc974-3477-4f6e-81be-d1b7dd69c5c4,,tenageru,Tenageru,ተናገሩ,draft,LOW,true,,General / Anytime,no_canonical_category
+934ae6c2-81e9-4b68-966f-1bdb43a6551e,c144863e-42e4-4b8a-a154-43321d6b28e4,anti-misraq,Anti Misraq,አንቲ ምሥራቅ,published,LOW,true,,General / Anytime,no_canonical_category
+947cb5c8-5879-4b07-9a36-c1f2122b8561,,nahu-tefetseme,Nahu Tefetseme,ናሁ ተፈጸመ,published,LOW,true,,General / Anytime,no_canonical_category
+94a7c1ea-5249-4e05-aa35-2b7d727d68b3,e8c51288-a226-4a38-bcde-5c0a8a262e14,ityopyawiyan-tarik-yalachhu,Ityopyawiyan Tarik Yalachhu,ኢትዮጵያዊያን ታሪክ ያላችሁ,published,LOW,true,,General / Anytime,no_canonical_category
+94fdded2-675d-4614-97cb-e8e27c7732ab,e4964fb6-029d-479b-9793-4f89ef13d7e3,medhanealem,Medhanealem,መድኃኔዓለም,published,LOW,true,,,no_canonical_category
+951f3f15-24d0-4fc5-b293-244846628c78,,welela-yu-qalka,Welela'yu Qalka,ወለላ'ዩ ቃልካ,published,LOW,true,,General / Anytime,no_canonical_category
+95634880-7593-4066-9b25-543e93df08c6,12aa0bca-94fc-478e-a147-0ba933af3dba,here-lemehonu-indet-aleqelsh,Here Lemehonu Indet Aleqelsh,ኸረ ለመሆኑ እንዴት አለቀልሽ,published,LOW,true,,General / Anytime,no_canonical_category
+95b6188b-0882-4a28-a7c9-8e24d29fef2f,036dfe5b-44bb-4ae1-bf2d-baa075144079,andashnif-irdany-yealemn-fetena,Andashnif Irdany Yealemn Fetena,አንዳሽንፍ እርዳኝ የዓለምን ፈተና,published,LOW,true,,General / Anytime,no_canonical_category
+962c1ff3-af48-4ea7-9c1d-7528dc4b1a59,7bfffa42-abf1-4032-8838-c4c4c8131810,tefeshi-betekristiyan-tefeshi-bete-silase,Tefeshi Betekristiyan Tefeshi Bete Silase,ተፈሥሒ ቤተክርስቲያን ተፈሥሒ ቤተ ሥላሴ,published,LOW,true,,General / Anytime,no_canonical_category
+976a5b95-52d5-42c1-b289-b1715a8668f8,b0429f67-7c66-4738-bac4-442a631cadda,bemot-tila-wedqen-sinkeratet,Bemot Tila Wedqen Sinkeratet,በሞት ጥላ ወድቀን ስንከራተት,published,LOW,true,,General / Anytime,no_canonical_category
+a807eb9a-eb48-45d3-8e81-98e283e747fe,,sobese-kidanki,Sobese Kidanki,ሶበሰ ኪዳንኪ,draft,LOW,true,,General / Anytime,no_canonical_category
+991c8f72-48f4-4c63-9ea2-2a3f871e361c,b138badf-1034-459a-b9c3-72112f06cec8,serawitochachewm-hulu,Serawitochachewm Hulu,ሠራዊቶቻቸውም ሁሉ,published,LOW,true,,General / Anytime,no_canonical_category
+9991d122-faa7-440a-a55f-e64d0b598637,,yemsirach-tewelede,Yemsirach Tewelede,የምስራች ተወለደ,published,LOW,true,,General / Anytime,no_canonical_category
+99ec5083-751f-49bd-ae24-7f70cdb73b8f,912e7021-4435-4c0b-ae0f-8dd2f24a7e31,giyorgis-beziyach-qen-kefetenaw-antsar,Giyorgis Beziyach Qen Kefetenaw Antsar,ጊዮርጊስ በዚያች ቀን ከፈተናው አንጻር,published,LOW,true,,General / Anytime,no_canonical_category
+99faaa78-5a1b-45b7-85e9-66afd9dbb8c3,,yedokimas-gwada,Yedokimas Gwada,የዶኪማስ ጓዳ,published,LOW,true,,General / Anytime,no_canonical_category
+9a68bead-a112-470d-a5d5-82359b5203c2,,hagzeni-amlahey,Hagzeni Amlahey,ሓግዘኒ ኣምላኸይ,published,LOW,true,,General / Anytime,no_canonical_category
+9b909ead-2d8f-4287-95b0-a3276d665b73,f5b0d312-b7fb-4f11-b70c-4727e246857d,hitsan-qirqos-letshirt-zeiyafarhoke-negodgwad,Hitsan Qirqos Letshirt Zeiyafarhoke Negodgwad,ሕፃን ቂርቆስ ለፅህርት ዘኢያፋርሆከ ነጎድጓድ,published,LOW,true,,General / Anytime,no_canonical_category
+9c2c59a5-8f42-4fb6-86b9-7bd4f75281ac,35e9678f-c92c-46c3-ad44-0438f19173b4,yedkam-wagachew,Yedkam Wagachew,የድካም ዋጋቸው,published,LOW,true,,,no_canonical_category
+9c825b76-035b-43e2-ad24-8356b41a81d9,79ae4d82-d329-460c-85bd-3a17899fd5e8,tabote-higu,Tabote Higu,ታቦተ ሕጉ,published,LOW,true,,General / Anytime,no_canonical_category
+9cb84f41-48a5-412b-8fc2-41e115b38f55,5dbb4fab-8a4a-4793-a2a4-545d71034844,asme-lealem-mihretu-asme-lealem,Asme Lealem Mihretu Asme Lealem,አስመ ለዓለም ምሕረቱ አስመ ለዓለም,published,LOW,true,,,no_canonical_category
+9d299b16-94e2-432c-8db6-9381887c7974,673a15de-9c8d-489c-bcce-d404e2277d19,dekama-meslwachew-beand-igru-biyayut,Dekama Meslwachew Beand Igru Biyayut,ደካማ መስሏቸው በአንድ እግሩ ቢያዩት,published,LOW,true,,General / Anytime,no_canonical_category
+9d3fa71c-8a64-49da-bfc2-d3b036fddf29,,teqlilka-afriso,Teqlilka Afriso,ጠቕሊልካ ኣፍርሶ,published,LOW,true,,General / Anytime,no_canonical_category
+9e7b17cc-c179-4a04-9333-85c5cff33abc,8b219c6f-de78-490f-912a-3d8b5a9beb1d,semayawi-mena-amlak-megbonal,Semayawi Mena Amlak Megbonal,ሰማያዊ መና አምላክ መግቦናል,published,LOW,true,,,no_canonical_category
+9f4660fd-4e95-4064-8882-e571df958ed8,86eb3f90-f049-489d-91bd-09d5c6520837,kegonu-tefetresh-beslase-tibeb,Kegonu Tefetresh Beslase Tibeb,ከጎኑ ተፈጥረሽ በሥላሴ ጥበብ,published,LOW,true,,General / Anytime,no_canonical_category
+9f5a086a-b1ae-4534-bdc2-f6e59b45295f,2359b944-dcfd-4479-86a2-748f6553aa4b,amlak-tewelede-tetemeqe-leinya,Amlak Tewelede Tetemeqe Leinya,አምላክ ተወለደ ተጠመቀ ለእኛ,published,LOW,true,,General / Anytime,no_canonical_category
+9fc81bfc-4a65-4ec3-b480-e10a6cc2340b,,simalee-hin-jiraadhu,Simalee hin jiraadhu,,published,LOW,true,,General / Anytime,no_canonical_category
+a14540e9-4281-42be-bf0e-18fb7c9b63b7,bd072e63-486b-4adc-a93e-f592274201d5,wetemeslo,Wetemeslo,ወተመስሎ,published,LOW,true,,General / Anytime,no_canonical_category
+a4952ffb-544a-40ef-b2f3-8ca7a2c0fef5,65b53f90-1b82-4da6-817e-6cd929c500fc,yegnibot-lideta,Yegnibot Lideta,የግንቦት ልደታ,published,LOW,true,,,no_canonical_category
+a4c384ac-cf50-4965-b5e6-eb5ebe4d98d1,00847322-11a5-4f21-8982-a68c973a0a93,yesew-lij-hul-gize,Yesew Lij Hul Gize,የሰው ልጅ ሁል ጊዜ,published,LOW,true,,General / Anytime,no_canonical_category
+a5354209-315e-48ef-91f3-d1ef4ae4db35,cadcd795-c7eb-4ba4-8018-4b4ba3439b7f,betekristiyan-bahre-tibebat,Betekristiyan Bahre Tibebat,ቤተክርስቲያን ባሕረ ጥበባት,published,LOW,true,,General / Anytime,no_canonical_category
+a5a34cfe-0451-4871-9cb9-85c69c7e27e6,,yeselame-sew-yalkut,Yeselame Sew Yalkut,የሰላሜ ሰው ያልኩት,published,LOW,true,,General / Anytime,no_canonical_category
+a62c49a6-34b4-4dcd-bfd3-dc6179365f0b,c28b38ca-2b10-418d-a3c7-752b34e696c3,tsidmeyachin-seba-amet-bibeza-semanya,Tsidmeyachin Seba Amet Bibeza Semanya,ፅድሜያችን ሰባ ዓመት ቢበዛ ሰማንያ,published,LOW,true,,General / Anytime,no_canonical_category
+a6a0a595-ace6-4e64-873c-edefe05cb320,,abetu-ibakih-ahun-adin,Abetu Ibakih Ahun Adin,አቤቱ እባክህ አሁን አድን,published,LOW,true,,General / Anytime,no_canonical_category
+a787363e-6ac5-4985-ade5-e9e631c60a81,,ibakih-wedet-neh,Ibakih Wedet Neh,እባክህ ወዴት ነህ,published,LOW,true,,General / Anytime,no_canonical_category
+a788c789-e3cc-464b-a9c4-594beac98157,90f2efcb-a36e-4873-97e1-a942eb778b19,nefsun-lewedaju-yemiset-bigenym,Nefsun Lewedaju Yemiset Bigenym,ነፍሱን ለወዳጁ የሚሰጥ ቢገኝም,published,LOW,true,,,no_canonical_category
+a81b3ed5-ded6-4cb3-b50f-db797aedaeb6,085b4da4-4b27-4704-96a2-1a585e84dc93,yehdar-tsiyon-mezmur-2,Yehdar Tsiyon Mezmur,የኅዳር ጽዮን መዝሙር,published,LOW,true,,,no_canonical_category
+a8b88501-cfed-4947-8c32-5dbee24d5089,27706a7b-be45-472c-b91a-5b486f96d83a,kezih-ilet-kezih-amet-laderesen-hulachnin,Kezih Ilet Kezih Amet Laderesen Hulachnin,ከዚህ ዕለት ከዚህ ዓመት ላደረሰን ሁላችንን,published,LOW,true,,General / Anytime,no_canonical_category
+a97e5d8f-0cc6-42ea-b125-3db347e6754c,a3b37be6-6b00-4f89-a280-47ad67e966a3,timesli-misraqe-wetweldi-mebreqe-wetalebsi,Timesli Misraqe Wetweldi Mebreqe Wetalebsi,ትመስሊ ምሥራቀ ወትወልዲ መብረቀ ወታለብሲ,published,LOW,true,,General / Anytime,no_canonical_category
+a9f40fe0-3b98-4fd2-a17c-3a4c19da9556,6cd770ea-0147-4619-8d88-83a7a25533f7,hiywete-nech-bileh-hid-wede-mistih,Hiywete Nech Bileh Hid Wede Mistih,ሕይወቴ ነች ብለህ ሂድ ወደ ሚስትህ,published,LOW,true,,,no_canonical_category
+aa0b0e8d-637e-4712-9b70-ce4e7211d9a8,,do-alo,Do Alo,ዶ ኣሎ,published,LOW,true,,General / Anytime,no_canonical_category
+aa949287-bc83-4791-8248-8e2f656cddc2,761dbe96-5fe7-4709-acdf-eb864512c5ef,besbihat-lemaryam-hawaryat-genezwa,Besbihat Lemaryam Hawaryat Genezwa,በስብሐት ለማርያም ሐዋርያት ገነዝዋ,published,LOW,true,,,no_canonical_category
+ab8346b7-f4da-4b26-8bdd-e6de6f0967ab,5f014ef4-5d51-403c-900d-d75c2e849bfa,yih-andebetema-beqalh-seltinwal-ri2,Yih Andebetema Beqalh Seltinwal/ri2,ይህ አንደበቴማ በቃልህ ሠልጥኗል/ሪ2/,published,LOW,true,,,no_canonical_category
+ab856939-cdd2-4496-b5ed-9727ddda695c,e355ed74-77ed-462c-96c5-2dea91b63c87,o-nitshit-des-yibelsh,O Nitshit Des Yibelsh,ኦ ንጽሕት ደስ ይበልሽ,published,LOW,true,,General / Anytime,no_canonical_category
+abdd9dbe-389f-438d-beb1-bb78915c34c5,4f3c5a1b-6990-4d6b-bc2f-4e5ac88d9e98,yebarekew-wiha-yeregetkew-meret,Yebarekew Wiha Yeregetkew Meret,የባረከው ውኃ የረገጥከው መሬት,published,LOW,true,,General / Anytime,no_canonical_category
+ac9bd59b-fc59-4cc0-a708-04f9d43d67d5,e7868bf2-069f-4c02-9d7d-eb867b69be07,yihnin-awqen-new,Yihnin Awqen New,ይህንን አውቀን ነው,published,LOW,true,,General / Anytime,no_canonical_category
+ad6ebf13-c196-4b6b-ae28-23ff3585d4ff,,tinsaeke-leile-amene,Tinsaeke Leile Amene,ትንሣኤከ ለእለ አመነ,published,LOW,true,,General / Anytime,no_canonical_category
+adecdfb9-2197-4b04-8c64-52c5bfae159b,b708695c-eea7-45f5-90b5-fb82ac83ca1b,qesawsitu-lelit-mahlet-siyaqerbu,Qesawsitu Lelit Mahlet Siyaqerbu,ቀሳውስቱ ሌሊት ማኅሌት ሲያቀርቡ,published,LOW,true,,General / Anytime,no_canonical_category
+ae29c637-e38b-47b8-ae0e-66381b172260,63ba731b-20a9-4ae4-b106-4229b3e39ec9,yamaldalu-beiwnet-yamaldalu,Yamaldalu Beiwnet Yamaldalu,ያማልዳሉ በእውነት ያማልዳሉ,published,LOW,true,,,no_canonical_category
+ae33d89c-515b-4e57-8a54-738cf43d052b,a4915c38-e2b6-450c-a15b-b60bb98cc46b,leabriham-lesara-andesete-tidar,Leabriham Lesara Andesete Tidar,ለአብርሃም ለሣራ አንደሰጠ ትዳር,published,LOW,true,,General / Anytime,no_canonical_category
+ae33faa4-1231-425b-8180-7ea469c326a2,dc27337f-4f13-42fa-ac27-8995684fa731,kewakbitin-litmegib-tsehayn-litmera,Kewakbitin Litmegib Tsehayn Litmera,ከዋክብትን ልትመግብ ፀሐይን ልትመራ,published,LOW,true,,General / Anytime,no_canonical_category
+ae995e80-6b55-4ee2-89fa-547efdfe5b1d,27e12b28-b80a-412e-86c5-e960723b9daf,kebrew-yiqoyu-kebrew,Kebrew Yiqoyu Kebrew,ከብረው ይቆዩ ከብረው,published,LOW,true,,General / Anytime,no_canonical_category
+af772a79-b21c-48af-b507-5cb55debb744,29194c74-a73e-40df-95d6-99c32419d840,hizbihin-bark-lezelalem-tebqachew,Hizbihin Bark Lezelalem Tebqachew,ሕዝብህን ባርክ ለዘላለም ጠብቃቸው,published,LOW,true,,,no_canonical_category
+b06e4edb-4986-44b4-b8fd-88981e42b48b,,keiqfih,Keiqfih,ከእቅፍህ,published,LOW,true,,General / Anytime,no_canonical_category
+b127ad2b-a629-49d9-947e-211138a52033,da1322a2-d6e0-405f-9fa8-cf46f27e2fb5,qen-kelet-sitsely-zekaryas-kahin,Qen Kelet Sitsely Zekaryas Kahin,ቀን ከሌት ሲጸልይ ዘካርያስ ካህን,published,LOW,true,,General / Anytime,no_canonical_category
+b1c5b60a-48a0-4f2d-9c5c-7f2a568f464c,64176fd8-0bef-481c-9a93-cbc06b0b83c5,all-belu-mizewochu,All Belu Mizewochu,አልል በሉ ሚዜዎቹ,published,LOW,true,,General / Anytime,no_canonical_category
+b51d1863-7116-4390-8d12-99363c7c6d11,,faarsaa-cuuphaa-best-afaan-oromoo-orthodox-mezmur-gurguddootaa-dhiisee-isaa-bade,Faarsaa Cuuphaa best afaan oromoo orthodox mezmur gurguddootaa dhiisee isaa bade,,published,LOW,true,,General / Anytime,no_canonical_category
+b558bf43-bee6-4811-8e78-c91c64b6823b,8689e434-d3f2-4a11-9408-d4c1e5d8bdfb,wedante-imetalehu-adera-nefsen,Wedante Imetalehu Adera Nefsen,ወዳንተ እመጣለሁ አደራ ነፍሴን,published,LOW,true,,,no_canonical_category
+b56b4002-48ec-4194-a0dd-0fb5c477df4b,0f7364f7-84f1-43f2-9ecf-e366487cde2f,yehyiwete-birhan-metamenyaye-neh,Yehyiwete Birhan Metamenyaye Neh,የሕይወቴ ብርሃን መታመኛዬ ነህ,published,LOW,true,,General / Anytime,no_canonical_category
+b6132d72-afed-493e-bd62-21cce7d00c26,d7bd38fa-2aa5-43ef-8e0d-07ba5fa47ea7,semayu-zinab-demena-biyata,Semayu Zinab Demena Biyata,ሰማዩ ዝናብ ደመና ቢያጣ,published,LOW,true,,General / Anytime,no_canonical_category
+b625d802-079c-46eb-a711-123a3abbe5ed,,man-alen,Man Alen,ማን አለን,published,LOW,true,,General / Anytime,no_canonical_category
+b6b1c606-26b4-4a2c-a4aa-21c80a24910f,4c128e87-5aa6-4d26-96eb-9f4f3ff74a8f,kehali-kulu-hulunm-yemiyawq,Kehali Kulu Hulunm Yemiyawq,ከሀሊ ኩሉ ሁሉንም የሚያውቅ,published,LOW,true,,General / Anytime,no_canonical_category
+a3214e32-f931-4662-a15d-0e48292163e7,,indeananya,Indeananya,እንደአናንያ,draft,LOW,true,,General / Anytime,no_canonical_category
+b7ba01ec-92a9-41f7-b871-0618acbdaf62,cef28897-c4cf-4b14-aa1d-821ebc9534e8,yedebre-tabor,Yedebre Tabor,የደብረ ታቦር,published,LOW,true,,,no_canonical_category
+b7eba2d0-41f4-41bd-a0d4-e9ca42a4b3d5,6bcb06c6-37e5-41b9-871f-b449054ceac3,andit-bilatena-yeasra-amsit-amet-lij,Andit Bilatena Yeasra Amsit Amet Lij,አንዲት ብላቴና የአሥራ አምስት ዓመት ልጅ,published,LOW,true,,,no_canonical_category
+b81dc175-9ea2-44ed-abe5-8acae77bffa8,6aace462-030f-4cf2-a3dd-8c1835e1cbf9,hazenachin-yitfa,Hazenachin Yitfa,ሐዘናችን ይጥፋ,published,LOW,true,,General / Anytime,no_canonical_category
+b88d3296-1006-4e44-8347-a2771e7e88ad,dbd77a13-4be7-4862-a72e-91194b45e87a,tinantinam-zarem-ante-yaw-anteneh,Tinantinam Zarem Ante Yaw Anteneh,ትናንትናም ዛሬም አንተ ያው አንተነህ,published,LOW,true,,General / Anytime,no_canonical_category
+b8bcb224-2b89-45e2-aaf4-b2ff76dad03a,2e410d3b-1fe2-4852-99d2-939733ae92bd,yetedebedebew-akalen-silaye,Yetedebedebew Akalen Silaye,የተደበደበው አካሌን ስላየ,published,LOW,true,,General / Anytime,no_canonical_category
+b909e89c-06c2-4911-9fa0-429edf2bbc2e,18377186-7607-4228-8d4c-01c837ede902,min-yikefel-lezih-sirah,Min Yikefel Lezih Sirah,ምን ይከፈል ለዚህ ሥራህ,published,LOW,true,,,no_canonical_category
+b9d42e9c-9eaa-4459-b5c5-792f0956bec2,de876c14-a902-4d4b-85c4-3ff64e4fe1c5,wihan-weyn-arege-asey-asey,Wihan Weyn Arege Asey Asey,ውኃን ወይን አረገ አሰይ አሰይ,published,LOW,true,,General / Anytime,no_canonical_category
+bbf87820-f3e5-4cef-81b8-d17751906b5c,,and-adrigen,And Adrigen,አንድ አድርገን,published,LOW,true,,General / Anytime,no_canonical_category
+bc305161-cd91-4646-ad2c-b73beb7e3d3e,bfce1c43-9876-47fb-af24-1ebe571e6b7e,yetal-anwanware-anten-yemimeslew,Yetal Anwanware Anten Yemimeslew,የታል አኗኗሬ አንተን የሚመስለው,published,LOW,true,,,no_canonical_category
+bd269feb-b0d2-45ab-9567-59e79f7f9fdb,5cdb174f-8d08-41a9-a08d-1175f6815e2a,fiqrina-selamn-taferalech-tsom,Fiqrina Selamn Taferalech Tsom,ፍቅርና ሰላምን ታፈራለች ጾም,published,LOW,true,,,no_canonical_category
+bde0022f-2690-4a31-84d5-ab45f11f22ae,6000673a-2bc1-4e1d-b39c-1cf61f999a94,birhann-agenyen-bednigil-maryam,Birhann Agenyen Bednigil Maryam,ብርሃንን አገኘን በድንግል ማርያም,published,LOW,true,,,no_canonical_category
+be4ec9f1-09a1-4700-a0ca-d1e262f6012d,5f0ef9fe-d72e-496d-8eca-f09cf1592a02,hidar-2-tsiyon-maryam,Hidar 2] Tsiyon Maryam,ኅዳር 2] ጽዮን ማርያም,published,LOW,true,,General / Anytime,no_canonical_category
+bef2a617-f0cb-4b6a-a05e-a7b08d086001,baa1214f-544f-4c58-a984-2d2ecdc0bf28,wihawn-wedeweyn-atafto-qeyro,Wihawn Wedeweyn Atafto Qeyro,ውኃውን ወደወይን አጣፍጦ ቀይሮ,published,LOW,true,,General / Anytime,no_canonical_category
+c01dfea7-28f9-4f2a-94e6-be46847e48d8,acad91d5-907d-42ed-b7ce-a25afd3380f1,chelemaw-tegefo-siweta-birhan,Chelemaw Tegefo Siweta Birhan,ጨለማው ተገፎ ሲወጣ ብርሃን,published,LOW,true,,,no_canonical_category
+c10dc26d-2d58-49ac-bda2-454e68aa9798,6cc596e6-5b00-440e-ae02-23e4273869b9,barkiln-abetu-yihnin-yemhiret,Barkiln Abetu Yihnin Yemhiret,ባርክልን አቤቱ ይህንን የምሕረት,published,LOW,true,,General / Anytime,no_canonical_category
+88db901f-62eb-4eb0-bbc6-c57f3af110ac,,rise-awde-amet,Rise Awde Amet,ርዕሰ አውደ አመት,draft,LOW,true,,General / Anytime,no_canonical_category
+c1169df4-3092-4948-8d08-df981a77fc1d,78f8f8c6-079a-4486-b53b-911296d23e5b,bedniglina-getan-weledech,Bedniglina Getan Weledech,በድንግልና ጌታን ወለደች,published,LOW,true,,General / Anytime,no_canonical_category
+c1a120eb-8ab5-4315-a4bf-bc9cc7ed3b52,13fc263d-c20f-44f2-a5ed-5cdf0c113e56,beigziabher-tebarko-yemenor-mistir,Beigziabher Tebarko Yemenor Mistir,በእግዚአብሔር ተባርኮ የመኖር ምስጢር,published,LOW,true,,General / Anytime,no_canonical_category
+c204c99c-3ad1-43ee-84cf-625e4532cf72,c36fe05f-18af-4688-a391-d838fd531297,tseada-imebete-des-yibeln,Tseada Imebete Des Yibeln,ፀዓዳ እመቤቴ ደስ ይበልን,published,LOW,true,,General / Anytime,no_canonical_category
+c330dc49-37ef-44fa-90ea-15d48e4e386a,48732583-4a27-4e1a-9d37-5904320e046d,yemanu-tehaqefeni,Yemanu Tehaqefeni,የማኑ ተሐቀፈኒ,published,LOW,true,,General / Anytime,no_canonical_category
+c3315058-23ec-4ffc-936b-5f8d89e6e950,84dac671-d12a-45a5-b5f5-8ae763cae6bf,lematen-yebeqah-yeslasen-menber,Lematen Yebeqah Yeslasen Menber,ለማጠን የበቃህ የሥላሴን መንበር,published,LOW,true,,General / Anytime,no_canonical_category
+c3bf7159-167c-4a64-b448-cdce00697601,,tiwlid-hulu,Tiwlid Hulu,ትውልድ ሁሉ,published,LOW,true,,General / Anytime,no_canonical_category
+c4656eb9-d74c-41da-9e57-60fa08c47f2f,9d22dd70-4788-4c54-a9b0-8681b8f6a83d,bemsigana-milaw,Bemsigana Milaw,በምስጋና ምላው,published,LOW,true,,General / Anytime,no_canonical_category
+c4d17ce6-c07d-4dc8-a75e-354fb111fb36,f639f1c5-951c-417e-a538-4d57eeb5c263,kealet-yefeleqe-wiha-tettenal,Kealet Yefeleqe Wiha Tettenal,ከዓለት የፈለቀ ውኃ ጠጥተናል,published,LOW,true,,,no_canonical_category
+c5542e18-a127-470a-a7c8-352effa20c4a,8e733354-ff8d-477a-b79b-01442ae0e316,zeyeamn-biye,Zeyeamn Biye,ዘየአምን ብየ,published,LOW,true,,General / Anytime,no_canonical_category
+c5639eb9-1ada-47d7-937f-709d031fc8cf,ac8a5cbc-6612-4621-b68b-17031641d99c,inde-alem-gulbet-gulbetenya,Inde Alem Gulbet Gulbetenya,እንደ ዓለም ጉልበት ጉልበተኛ,published,LOW,true,,,no_canonical_category
+c61159bb-1253-4ddc-a990-da987b2b07a1,643bc205-cdb8-4a20-9aec-1437c199c1a1,weynu-bemehal-lay-malequn-semtesh,Weynu Bemehal Lay Malequn Semtesh,ወይኑ በመሃል ላይ ማለቁን ሰምተሽ,published,LOW,true,,General / Anytime,no_canonical_category
+c65bd1f4-3d57-4a87-828d-22ee1c5fe2a7,f8df55cd-a7f5-46e2-a616-194bef1e5f28,kifuwoch-dirsew-biztubiny,Kifuwoch Dirsew Biztubiny,ክፉዎች ድርሰው ቢዝቱብኝ,published,LOW,true,,General / Anytime,no_canonical_category
+c6a39cee-dbc3-4cc0-8fe6-06b5458b2ea1,,aboy-mezimur-nay-nisiha-b-zemari-berehet-tikue-new-eritrean-orthodox-mezmur-aboy,#aboy_mezimur_nay_nisiha_b_zemari_berehet_tikue#New_eritrean_orthodox_mezmur_aboy_2021_Bereket_Tikue,#aboy_mezimur_nay_nisiha_b_zemari_berehet_tikue#New_eritrean_orthodox_mezmur_aboy_2021_Bereket_Tikue,published,LOW,true,,General / Anytime,no_canonical_category
+c73b540f-6f88-4aa2-872c-28fa3a81ff50,0877b184-ee7a-4503-b870-24390343af60,befqiru-yayenyal,Befqiru Yayenyal,በፍቅሩ ያየኛል,published,LOW,true,,General / Anytime,no_canonical_category
+c89f2183-19f0-4915-b457-9a523a08af67,f20922da-4f03-4ae3-ae2f-8d9699b189f9,gosqwala-bihonm-misgana-aqerbalehu,Gosqwala Bihonm Misgana Aqerbalehu,ጎስቋላ ብሆንም ምስጋና አቀርባለሁ,published,LOW,true,,General / Anytime,no_canonical_category
+c8a2879c-b059-4f50-9e6e-50700375678e,61f45434-596e-4bfa-b999-2b7f127cc173,yeityopya-ortodokis-tewahdo-bete-kirsitiyan,Yeityopya Ortodokis Tewahdo Bete Kirsitiyan,የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን,published,LOW,true,,General / Anytime,no_canonical_category
+c92708c8-f516-4182-a623-717d2a83b093,,selam-selam,Selam Selam,ሰላም ሰላም,published,LOW,true,,General / Anytime,no_canonical_category
+c98655ad-537c-4eab-a39e-770ac2cb569b,a803e7f4-ad4f-49f5-99d1-e092277b7652,huletum-and-siga-honew-yinoralu,Huletum And Siga Honew Yinoralu,ሁለቱም አንድ ሥጋ ሆነው ይኖራሉ,published,LOW,true,,General / Anytime,no_canonical_category
+cad1759d-2d4e-4301-b191-9ebaf08e46cc,52662f69-d701-42c2-91e0-fcbedde8fb1c,nigus-irenyoch-ayut,Nigus Irenyoch Ayut,ንጉሥ እረኞች አዩት,published,LOW,true,,,no_canonical_category
+cbb3195f-04bc-4112-b8ec-afc373d5c759,47a18544-59e0-401d-8989-09fb8187f384,sigayen-biluna-demen-tettachhu,Sigayen Biluna Demen Tettachhu,ሥጋዬን ብሉና ደሜን ጠጥታችሁ,published,LOW,true,,,no_canonical_category
+cc6b43a0-6e7d-4d2d-8ed4-09d5ddfa2ff6,,ante-gin-ante-neh,Ante Gin Ante Neh,አንተ ግን አንተ ነህ,published,LOW,true,,General / Anytime,no_canonical_category
+cc78774c-49b0-49b8-acea-1cb39630f548,a1aaff52-c0e4-46cc-ae47-3a2d2b3e611a,ambana-metegiya-mesheshegiya-huneny,Ambana Metegiya Mesheshegiya Huneny,አምባና መጠጊያ መሸሸጊያ ሁነኝ,published,LOW,true,,General / Anytime,no_canonical_category
+cd0a2f7c-e6b2-48d6-aec8-7308074fa1c0,300e36ea-1600-4f51-8906-b4d58906b050,altsenahumna,Altsenahumna,አልጸናሁምና,published,LOW,true,,General / Anytime,no_canonical_category
+cdf79faa-c1af-4e86-b49e-88a85e1bb827,f3b94805-c020-44cc-b9e3-d1da57aa97e8,keigziabher-telkeh,Keigziabher Telkeh,ከእግዚአብሔር ተልከህ,published,LOW,true,,General / Anytime,no_canonical_category
+cebb8197-a97a-4c21-83c8-c15dd4cd72f3,2b5ab341-5ee0-4ba6-b9bb-daaddbe66b7d,beamlak-melkam-feqad,Beamlak Melkam Feqad,በአምላክ መልካም ፈቃድ,published,LOW,true,,General / Anytime,no_canonical_category
+cf22893f-dfbf-4940-bb6c-a41efd96a068,4fe8274e-2e91-4cfd-9495-972149027190,taimu-liyu-new-keanchi-gar-menor,Taimu Liyu New Keanchi Gar Menor,ጣዕሙ ልዩ ነው ከአንቺ ጋር መኖር,published,LOW,true,,,no_canonical_category
+d0b49a3f-09c3-40e0-95b1-dc01a88cacf0,ad1b4948-aa8e-45f7-bade-7671ae0b7303,befitu-indalafir-yeteterahu-leta,Befitu Indalafir Yeteterahu Leta,በፊቱ እንዳላፍር የተጠራሁ ለታ,published,LOW,true,,,no_canonical_category
+d115a105-4b7b-4724-9947-280369fcf0fb,44fdb2f7-e394-49c2-a1d0-a0f4bb0ea4e0,hayl-adrigwal-geta-beknidu,Hayl Adrigwal Geta Beknidu,ኃይል አድርጓል ጌታ በክንዱ,published,LOW,true,,General / Anytime,no_canonical_category
+d138b18c-fbde-4390-8bb6-6da4558e7216,35e51fbc-0de0-4b84-8e7b-f4bc7370e36a,kesemayat-werdo-yeteseqelew,Kesemayat Werdo Yeteseqelew,ከሰማያት ወርዶ የተሰቀለው,published,LOW,true,,General / Anytime,no_canonical_category
+d17078d1-f263-480e-9119-1ab5ea64c5fe,f1d79b82-efc6-42a9-b024-e7e58a04c6e3,kelul-zend-leyqirta-yilakalu-2,Kelul Zend Leyqirta Yilakalu,ከልዑል ዘንድ ለይቅርታ ይላካሉ,published,LOW,true,,,no_canonical_category
+d23965f8-e778-4995-a32d-0c8d8065e4bb,5e2a763a-4708-4830-a003-2a0707bd9b89,bechgirna-behazen-gize-yale-ante,Bechgirna Behazen Gize Yale Ante,በችግርና በሐዘን ጊዜ ያለ አንተ,published,LOW,true,,,no_canonical_category
+d3ec3482-8ada-4c52-a492-2178d2774a14,,amnen-tenestenal,Amnen Tenestenal,አምነን ተነስተናል,published,LOW,true,,General / Anytime,no_canonical_category
+d429f6b6-a202-4f4a-b088-bd98da8623f7,ffe26b2b-a37d-475e-883b-cf537b2cf89c,museni-riyahager-qidsit-ityopya-2,Museni Riyahager Qidsit Ityopya'2,ሙሴኒ ርእያሀገር ቅድስት ኢትዮጵያ'2/,published,LOW,true,,,no_canonical_category
+d4445cfd-b046-45f5-b729-cff478dad0f9,ff138ff0-2b1f-4ed5-a0b8-71f24c84f9ea,yezerashiw-masa-firewn-sishekem,Yezerashiw Masa Firewn Sishekem,የዘራሽው ማሳ ፍሬውን ሲሸከም,published,LOW,true,,,no_canonical_category
+d4a2ae92-9565-44ab-933c-46fe922be9fa,d8b040ba-9232-4582-93a2-5b78c7904394,selam-leki-yeselomon-menbere-kibru,Selam Leki Yeselomon Menbere Kibru,ሠላም ለኪ የሰሎሞን መንበረ ክብሩ,published,LOW,true,,General / Anytime,no_canonical_category
+d4f9b077-07a6-4207-9f62-e98f7305c0ca,1faf2fe2-e268-42bc-ad87-41124acdd746,yezemene-merawi-mezmur,Yezemene Merawi Mezmur,የዘመነ መርዓዊ መዝሙር,published,LOW,true,,,no_canonical_category
+9268e6fb-dbdc-4cf2-8f64-36ea873f9945,,metsa-zemetsa,Metsa Zemetsa,መጽአ ዘመጽአ,draft,LOW,true,,General / Anytime,no_canonical_category
+d8701ae8-07fc-4e44-b2e5-e7245117d6c2,,hige-sibanahu,Hige Sibanahu,ህገ ስብአናሁ,draft,LOW,true,,General / Anytime,no_canonical_category
+a0a21219-d14a-43db-9e2f-44fec581f039,,merawi-semayawi,Merawi Semayawi,መርዓዊ ሰማያዊ,draft,LOW,true,,General / Anytime,no_canonical_category
+d5a87509-2ae2-4009-aa39-135d7b3f8b48,5e78205b-359c-40cf-a34f-67088063d231,yegetayen-irqan-ine-alaym-alech,Yegetayen Irqan Ine Alaym Alech,የጌታዬን እርቃን እኔ አላይም አለች,published,LOW,true,,General / Anytime,no_canonical_category
+d5b9276a-df08-4c84-9576-7844409424d7,80d2f438-4a31-42e0-9b64-7cf776df1ae8,beahya-lay-hono-wede-anchi-yemetaw,Beahya Lay Hono Wede Anchi Yemetaw,በአህያ ላይ ሆኖ ወደ አንቺ የመጣው,published,LOW,true,,,no_canonical_category
+d75feb93-6433-4809-876c-185d53d2ed59,1bbbc034-a271-4d86-885a-bf715b71b29a,az,Az,አዝ,published,LOW,true,,General / Anytime,no_canonical_category
+d812608d-7c3b-4613-8bd5-d4d5bae20538,c314c107-b0fa-410a-9ae7-ccfbb4dc8db7,fitsum-atleym-keljish,Fitsum Atleym Keljish,ፍጹም አትለይም ከልጅሽ,published,LOW,true,,,no_canonical_category
+d91ab5c3-106e-4c13-b7dd-cfce5539b556,223edb51-509c-460c-9cbc-438f2cd5a63f,kirsitos-besmih-yizenal-qenona,Kirsitos Besmih Yizenal Qenona,ክርስቶስ በስምህ ይዘናል ቀኖና,published,LOW,true,,,no_canonical_category
+d94e5a24-92ea-42c4-a5c8-e70ff138ab34,b03e1084-9104-42c3-a97b-e0c448008987,leine-indew-desta-new-hazenm-yeleny,Leine Indew Desta New Hazenm Yeleny,ለእኔ እንደው ደስታ ነው ሐዘንም የለኝ,published,LOW,true,,,no_canonical_category
+d9bd51fe-aadb-4397-8ce1-4b60f9dc9beb,7a0a7f69-b3a8-4aa7-a06f-aef1b5a81dc3,and-akal-honewal-amlak-atamroachew,And Akal Honewal Amlak Atamroachew,አንድ አካል ሆነዋል አምላክ አጣምሮአቸው,published,LOW,true,,General / Anytime,no_canonical_category
+db0d58ad-7215-4021-9c69-36ed63ef4908,,adergilny-ina-amesegnalehu,Adergilny Ina Amesegnalehu,አደርግልኝ እና አመሰግናለሁ,published,LOW,true,,,no_canonical_category
+dba7e76c-9442-4217-8d3d-ad136027723b,1bedd017-7b01-4695-9124-89297aa58b08,geta-hoy-behgih-beqalh-meseret,Geta Hoy Behgih Beqalh Meseret,ጌታ ሆይ በሕግህ በቃልህ መሠረት,published,LOW,true,,General / Anytime,no_canonical_category
+dc6ec7bf-fedc-4f5f-9f58-7e32153ddc18,c5b7b5b6-abc6-42bc-9f7c-7e9dcadc3979,tikeshaw-sefi-new-inyan-teshekmwal-hoa,Tikeshaw Sefi New Inyan Teshekmwal /hoa,ትከሻው ሰፊ ነው እኛን ተሸክሟል /ሇ,published,LOW,true,,General / Anytime,no_canonical_category
+dc727f66-ee16-4ae0-b3f5-a231b2eee7f7,7504ec3d-243d-444c-9eb1-7fc52989bd3b,yehyawan-hiyaw-mearire-qal-yeqdusan,Yehyawan Hiyaw Mearire Qal Yeqdusan,የሕያዋን ሕያው መዓርዒረ ቃል የቅዱሳን,published,LOW,true,,General / Anytime,no_canonical_category
+5dacba86-e424-4ac2-adb6-b1775f051fc2,,sheantimus-niberu-hagere-iyerusalem,Sheantimus Niberu Hagere Iyerusalem,ሸአንትሙስ ንበሩ ሀገረ ኢየሩሳሌም/,draft,LOW,true,,General / Anytime,no_canonical_category
+31b857eb-c608-4e03-9a07-e1bab789c1b0,,habe-abuhu-arge-semayat-arge-semayat,Habe Abuhu Arge Semayat Arge Semayat,ኃበ አቡሁ ዐርገ ሠማያት ዐርገ ሠማያት,draft,LOW,true,,General / Anytime,no_canonical_category
+de11f364-8da9-4c3e-bbf4-95ae081bf7b0,27de7488-b5b4-4da4-8794-fe9c9efb2cdd,beante-tamnyalew-zelalem-alfer,Beante Tamnyalew Zelalem Alfer,በአንተ ታምኛለው ዘላለም አልፈር,published,LOW,true,,General / Anytime,no_canonical_category
+e00388be-dda6-4fe6-ae7d-79722cb39020,,sew-lesew,Sew Lesew,ሰው ለሰው,published,LOW,true,,General / Anytime,no_canonical_category
+e175cfab-49ad-4c09-85a1-a247b1eee381,fdd9ef0c-8522-4557-ae5b-f866dc73e857,mengedu-aytaktim-godanaw-yeqena,Mengedu Aytaktim Godanaw Yeqena,መንገዱ አይታክትም ጎዳናው የቀና,published,LOW,true,,General / Anytime,no_canonical_category
+e1bd805f-a22e-4bdd-9352-b4d6d3779392,f58164af-ae3d-417b-b83a-9643f0329a75,kirsitos-sinesa-kersitos-tenesa,Kirsitos Sinesa Kersitos Tenesa,ክርስቶስ ሲነሣ ከርስቶስ ተነሣ,published,LOW,true,,General / Anytime,no_canonical_category
+e2b43c7f-5944-4bab-8eea-cb172bb1cc7f,f00fcaf3-637d-4b98-92e2-0a36bf2e7e09,merto-ihit-setew-leadam-mushraw,Merto Ihit Setew Leadam Mushraw,መርጦ እህት ሰጠው ለአዳም ሙሽራው,published,LOW,true,,General / Anytime,no_canonical_category
+e4b3b4aa-9753-4ee7-9fc5-e9ad7a937f27,dcfd795f-cd6e-4ab6-8214-0ec2c5416a97,gineyu-leigziabher-asmeher,Gineyu Leigziabher Asmeher,ግነዩ ለእግዚአብሔር አስመሔር,published,LOW,true,,,no_canonical_category
+e559a612-1258-4a09-9af6-8fa8517f58c6,,zitsgio-imba-yelen-ortodokis-tigrinya-mezmur,Zitsgio Imba Yelen Ortodokis Tigrinya Mezmur,ዝጽግዖ እምባ የለን ኦርቶዶክስ ትግርኛ መዝሙር,published,LOW,true,,General / Anytime,no_canonical_category
+e67cb6f4-124e-4be8-a9c7-1b7db18644a1,80156d33-3fd1-44b3-b010-8596fc06d42e,wey-gudat-wey-gudat,Wey Gudat Wey Gudat,ወይ ጉዳት ወይ ጉዳት,published,LOW,true,,General / Anytime,no_canonical_category
+e6ba045e-fcfa-4ee9-8a98-5055cbe72a45,,bakkattan-deebisa,Bakkattan deebisa,,published,LOW,true,,General / Anytime,no_canonical_category
+e70ac174-71b9-418f-8bbd-8e0bd578ef05,,yebegena-mezmur-yante-yihun-mirchaye-memhir-abel-tesfaye,Yebegena Mezmur Yante Yihun Mirchaye Memhir Abel Tesfaye,የበገና መዝሙር ያንተ ይሁን ምርጫዬ መምህር አቤል ተስፋዬ,published,LOW,true,,General / Anytime,no_canonical_category
+e7220bb9-b16a-49fa-8d19-01526e360abe,b9a89d80-6b1a-440f-a044-64e1413c0573,yihin-qidus-siga-yihin-kibur-dem,Yihin Qidus Siga Yihin Kibur Dem,ይህን ቅዱስ ሥጋ ይህን ክቡር ደም,published,LOW,true,,,no_canonical_category
+e8804742-e7d2-4b7c-89a8-42691b13b61c,,beine-bitequr,Beine Bitequr,በእኔ ቢጠቁር,published,LOW,true,,General / Anytime,no_canonical_category
+e89bd7cb-079d-4c55-baea-abded9b5729e,,sera-lene,Sera Lene,ሠርዐ ለነ,published,LOW,true,,General / Anytime,no_canonical_category
+e8f4797e-a84e-4cde-9231-2e6b8b426059,,abel-mekbib-weret-yelelew,Abel Mekbib Weret Yelelew,አቤል መክብብ ወረት የሌለው,published,LOW,true,,General / Anytime,no_canonical_category
+e9c1f914-1344-4b39-9db9-67eadb76105e,c65605d3-a343-4ec8-ab1e-23ebe63f4126,keanbesoch-menoriya,Keanbesoch Menoriya,ከአንበሶች መኖሪያ,published,LOW,true,,General / Anytime,no_canonical_category
+ea5b059f-ed95-4655-8b34-21c9f01597b7,7c082c02-b7cb-4545-bea9-6ec0cf9cc050,abetu-amlak-hoy-inlemnitsalen,Abetu Amlak Hoy Inlemnitsalen,አቤቱ አምላክ ሆይ እንለምንፃለን,published,LOW,true,,General / Anytime,no_canonical_category
+eb8e2073-0108-48a3-af7b-97fcc1219068,1b506036-a72f-4bad-a6a8-cde4f810be8a,lehulum-selam-betelhem,Lehulum Selam Betelhem,ለሁሉም ሰላም ቤተልሔም,published,LOW,true,,,no_canonical_category
+eb990a76-ef22-458b-9cbb-17021938b8f9,91aab303-4359-4cbb-88ba-99ad81eed958,meda-lay-wedeqe-gasha-hono-igziabher,Meda Lay Wedeqe Gasha Hono Igziabher,ሜዳ ላይ ወደቀ ጋሻ ሆኖ እግዚአብሔር,published,LOW,true,,,no_canonical_category
+c27f46eb-7fa0-421a-ad2d-1ab49d6eeeea,,dawit-yisebih,Dawit Yisebih,ዳዊት ይሴብሕ,draft,LOW,true,,General / Anytime,no_canonical_category
+080ac6a6-c1a8-44e6-ac4b-b37faa70421d,,metsa-merawi-2,Metsa Merawi,መጽአ መርዓዊ,draft,LOW,true,,General / Anytime,no_canonical_category
+db885722-54e2-475b-8711-cb5fcac6c9b8,,huletum-and-honu-zare,Huletum And Honu Zare,ሁለቱም አንድ ሆኑ ዛሬ,draft,LOW,true,,General / Anytime,no_canonical_category
+ec0b8788-ab2c-4edb-a1e2-d41c002a8d8f,439e2fa2-d81b-4e00-8ae0-349dd73cadc9,bemekera-tsena-alkadem-amlakun,Bemekera Tsena Alkadem Amlakun,በመከራ ጸና አልካደም አምላኩን,published,LOW,true,,General / Anytime,no_canonical_category
+ec5ef2cc-642d-48c8-8f0c-1cbb735c431e,b2594c80-32e6-431c-8141-e9f22f9673a5,yemiyashagrewn,"Yemiyashagrewn "" ""","የሚያሻግረውን "" """,published,LOW,true,,General / Anytime,no_canonical_category
+ecc3f544-ea3e-4863-a2e7-1619746270ba,9417c32b-ed77-4a20-be6e-00d03ac8c16b,hawaryat-tsomew-leinya-abereketu,Hawaryat Tsomew Leinya Abereketu,ሐዋርያት ጾመው ለእኛ አበረከቱ,published,LOW,true,,General / Anytime,no_canonical_category
+ed709817-cbca-45f5-b931-2989d6cd1f10,e5cd784e-7c9c-4666-be6f-e715a96800f6,inantes-atfiru-kirsitos-tenesa,Inantes Atfiru Kirsitos Tenesa,እናንተስ አትፍሩ ክርስቶስ ተነሣ,published,LOW,true,,General / Anytime,no_canonical_category
+ee511382-448f-40e7-a8cd-813c63f083d1,a14ad58d-6c48-4dc4-8992-fe860c11396d,qidus-geta-amanuel-cher-amlak,Qidus Geta Amanuel Cher Amlak,ቅዱስ ጌታ አማኑኤል ቸር አምላክ,published,LOW,true,,,no_canonical_category
+ef0956bc-684c-4927-a567-c9a6f6c8fd12,5e7e3480-7392-481a-8781-9238a8d3b1f8,kesemayawit-iyerusalem,Kesemayawit Iyerusalem,ከሰማያዊት ኢየሩሳሌም,published,LOW,true,,,no_canonical_category
+ef3df589-6870-42f0-8d7f-a42c46e5f542,524ed2c2-bd83-48fe-ba1a-4703fff800a4,abatim-ale-lijen-simut,Abatim Ale Lijen Simut,አባትም አለ ልጄን ስሙት,published,LOW,true,,,no_canonical_category
+2e9c3002-4a49-4357-9fef-86bf67bf8d46,,moche-silemalqer,Moche Silemalqer,ሞቼ ስለማልቀር,draft,LOW,true,,Funeral / Memorial,no_canonical_category
+8faf3a56-0541-467a-aeb3-c137212b20d4,,kulu-zefeqede,Kulu Zefeqede,ኩሉ ዘፈቀደ,draft,LOW,true,,General / Anytime,no_canonical_category
+efbf78ee-c31e-4eaa-b934-b40a9d16889b,fe3fa491-2469-4ea0-a049-efc296f731bb,lemtiqer-alem,Lemtiqer Alem,ለምትቀር ዓለም,published,LOW,true,,General / Anytime,no_canonical_category
+f08cc584-7e9b-4059-8ced-46560a98c1ac,d9eba9c5-a70f-45ab-b3f4-41ed792e9f1e,amlakachin-temesgen-lezih-qen-yaderesken,Amlakachin Temesgen Lezih Qen Yaderesken,አምላካችን ተመስገን ለዚህ ቀን ያደረስከን,published,LOW,true,,,no_canonical_category
+f0c9a339-74ad-483f-90cc-5f52ee72e857,,kekaran-siweta,Kekaran Siweta,ከካራን ስወጣ,published,LOW,true,,General / Anytime,no_canonical_category
+f1e46b92-b413-4d94-9d5d-bd1f6ea32557,,tinsh-girum-new,Tinsh Girum New,ትንሽ ግሩም ነው,published,LOW,true,,,no_canonical_category
+9f41b24d-0100-49a9-bc77-64507a3579d4,,yitbarek-3,Yitbarek,ይትባረክ,draft,LOW,true,,General / Anytime,no_canonical_category
+f27aca9d-1fae-4c82-a244-daf29587d258,73c20673-552e-4ce3-92fd-d3e96d0df6d3,igzio-merha,Igzio Merha,እግዚኦ መርሐ,published,LOW,true,,General / Anytime,no_canonical_category
+f33df637-5ddb-40de-8416-5bc275c3584a,02165cc0-fd24-433d-ade9-c20543bdd0cf,yezemenu-taot-genzeb-iyasaten,Yezemenu Taot Genzeb Iyasaten,የዘመኑ ጣዖት ገንዘብ እያሳተን,published,LOW,true,,General / Anytime,no_canonical_category
+010c4040-e998-4c74-a138-638177c4ec0e,,yihnin-gubae,Yihnin Gubae,ይህንን ጉባኤ,draft,LOW,true,,General / Anytime,no_canonical_category
+f4d983cc-4187-499e-be75-154537e1fce6,bfaef692-cd1f-423c-8336-f815f21d9201,beqenm-beletim-hule-lemiyabera,Beqenm Beletim Hule Lemiyabera,በቀንም በሌትም ሁሌ ለሚያበራ,published,LOW,true,,General / Anytime,no_canonical_category
+f718c9c7-ea70-4f78-8c69-640df74060ec,,beberet-yetenyaw,Beberet Yetenyaw,በበረት የተኛው,published,LOW,true,,General / Anytime,no_canonical_category
+f728b85e-9a83-4f30-ae3f-2ad3a73fa0cc,,yeabin-bidrat-vidyo,Yeabin Bidrat Vidyo,የአብን ብድራት ቪድዮ,published,LOW,true,,General / Anytime,no_canonical_category
+f882ae1e-9af5-4735-9563-2fd53379e31b,977e4a8d-fed4-4116-bc92-ec357e648a1e,alemn-asalfo-yeminor-semayawi,Alemn Asalfo Yeminor Semayawi,ዓለምን አሳልፎ የሚኖር ሰማያዊ,published,LOW,true,,,no_canonical_category
+89704d1a-29a6-4fd8-ba16-03c5a2d11203,,inzeswir,Inzeswir,እንዘስውር,draft,LOW,true,,General / Anytime,no_canonical_category
+f8f5e9f7-42c0-49d5-8f69-451d030bf87c,f45993fa-1037-476c-976a-b939368c4681,asteraye-gebriel-gibte,Asteraye Gebriel Gibte,አስተርአየ ገብርኤል ግብተ,published,LOW,true,,,no_canonical_category
+fa023369-e56f-4634-82eb-c108f8e2c85e,,yedemasqo-mirkonya-neny,Yedemasqo Mirkonya Neny,የደማስቆ ምርኮኛ ነኝ,published,LOW,true,,General / Anytime,no_canonical_category
+fa6e52d8-92d3-47d3-ad43-9f31042f80bb,ef900836-9897-4e97-80a3-aef756bcd5a2,yeseytan-dil-mensha-yekbir-mewresha,Yeseytan Dil Mensha Yekbir Mewresha,የሰይጣን ድል መንሻ የክብር መውረሻ,published,LOW,true,,General / Anytime,no_canonical_category
+fa9652e6-1673-4c0e-b5ce-2377aad6c978,55cd0cb8-5c3b-485c-9575-bb41801b8170,mesqelun-teshekmen-beimnet-anramed,Mesqelun Teshekmen Beimnet Anramed,መስቀሉን ተሸክመን በእምነት አንራመድ,published,LOW,true,,General / Anytime,no_canonical_category
+fba2addc-693c-456a-8f5f-2a0424c5f2b9,d77c2a22-9780-410b-b1ef-ac9f6861d190,amet-dem-sifesish,Amet Dem Sifesish,ዓመት ደም ሲፈስሽ,published,LOW,true,,General / Anytime,no_canonical_category
+fbc59dc0-8f9a-456e-9bf0-5c04136d079b,2bc9f6af-eb1d-440f-909f-a826b30243b0,yehatiat-shekme-qeleleny,Yehatiat Shekme Qeleleny,የኃጢአት ሸክሜ ቀለለኝ,published,LOW,true,,General / Anytime,no_canonical_category
+fcf497ce-8edb-48df-a6f0-a03bff59b2c2,e4c24cee-283f-4156-a9e3-2ba3dc7136ed,nefse-getayen-takebrewalech,Nefse Getayen Takebrewalech,ነፍሴ ጌታዬን ታከብረዋለች,published,LOW,true,,,no_canonical_category
+fcf9f426-87ab-4303-9a03-26fede38a1fd,ac196047-4d73-4ecf-bbf6-930d967b21ef,motse-lemewati-yidelu,Motse Lemewati Yidelu,ሞትሰ ለመዋቲ ይደሉ,published,LOW,true,,,no_canonical_category
+fed38987-957d-4ce6-9860-549fe49445cc,67c3a093-7557-4e45-9b30-7d7dd5cfbd60,yeamlak-inat-yemedhanealem-2,Yeamlak Inat Yemedhanealem 2,የአምላክ እናት የመድኃኔዓለም 2,published,LOW,true,,,no_canonical_category
+f281f3d7-2583-4202-bc20-84b7988968a1,,kemaha-hazen,Kemaha Hazen,ከማሀ ኀዘን,draft,LOW,true,,General / Anytime,no_canonical_category
+75fdc2c8-b135-42d9-8f71-3c2de09a5fc4,,meazahomu-leqdusan,Meazahomu Leqdusan,መአዛሆሙ ለቅዱሳን,draft,LOW,true,,General / Anytime,no_canonical_category
+2b939440-491a-4220-b2b6-681e6315b3a3,,weqdisat,Weqdisat,ወቅድሳት,draft,LOW,true,,General / Anytime,no_canonical_category
+15e0223b-3673-4b5b-b1dd-2ec062465d41,,sobe-metsa,Sobe Metsa,ሶበ መጽአ,draft,LOW,true,,General / Anytime,no_canonical_category
+119cb758-721e-4c91-bff2-d6db28a06c22,,wetsa-wegeba,Wetsa Wegeba,ወጽአ ወገብአ,draft,LOW,true,,General / Anytime,no_canonical_category
+ed6597e4-c77d-4bac-8507-31bd95b115a5,,niu-nansosu,Niu Nansosu,ንኡ ናንሶሱ,draft,LOW,true,,General / Anytime,no_canonical_category
+16c7267a-2991-4e3e-af3a-2c812b8dc295,,metsa-qal,Metsa Qal,መጽአ ቃል,draft,LOW,true,,General / Anytime,no_canonical_category
+6e2b9e41-c601-477f-a299-80a863f1a7d3,,qidus-2,Qidus,ቅዱስ,draft,LOW,true,,General / Anytime,no_canonical_category
+04a71449-e3bc-4569-8365-543bb185934c,,yemsirach-teweledech-isey-isey,Yemsirach Teweledech Isey Isey,የምስራች ተወለደች እሰይ እሰይ,draft,LOW,true,,General / Anytime,no_canonical_category
+d474c274-a4e6-47cd-a057-cf3504bd7393,,kelibanos,Kelibanos,ከሊባኖስ,draft,LOW,true,,General / Anytime,no_canonical_category
+5143702b-97c4-414b-925d-c95580674a19,,selam-ileki,Selam Ileki,ሰላም እለኪ,draft,LOW,true,,General / Anytime,no_canonical_category
+328b431b-4036-4586-9053-e97be2153b49,,yebrihanat-aleqa,Yebrihanat Aleqa,የብርሃናት አለቃ,draft,LOW,true,,General / Anytime,no_canonical_category
+0c31829f-97eb-413b-9158-620960545de1,,wedaje-hoy,Wedaje Hoy,ወዳጄ ሆይ,draft,LOW,true,,General / Anytime,no_canonical_category
+ffc11e6d-4380-4287-9c81-16374fb47f68,,silasen-amesginu-3,Silasen Amesginu,ሥላሴን አመስግኑ,published,LOW,true,,,no_canonical_category

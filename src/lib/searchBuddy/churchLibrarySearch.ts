@@ -25,6 +25,9 @@ export type ChurchLibrarySearchResponse = {
   results: ChurchLibraryHit[]
   retrieval: 'keyword' | 'hybrid'
   semantic_status: string
+  availability: 'ok' | 'no_relevant_passage' | 'no_indexed_content' | 'no_public_books'
+  answer: string | null
+  answer_status: 'source_excerpt' | 'insufficient_evidence'
 }
 
 const MAX_RESULTS = 8
@@ -73,7 +76,29 @@ function emptyResult(query: string, semanticStatus: string): ChurchLibrarySearch
     results: [],
     retrieval: 'keyword',
     semantic_status: semanticStatus,
+    availability: 'no_relevant_passage',
+    answer: null,
+    answer_status: 'insufficient_evidence',
   }
+}
+
+export class ChurchLibrarySearchError extends Error {
+  readonly code: 'timeout' | 'permission' | 'embedding' | 'not_installed' | 'database' | 'network'
+
+  constructor(
+    message: string,
+    code: 'timeout' | 'permission' | 'embedding' | 'not_installed' | 'database' | 'network',
+  ) {
+    super(message)
+    this.name = 'ChurchLibrarySearchError'
+    this.code = code
+  }
+}
+
+function statusFromPayload(value: unknown): ChurchLibrarySearchResponse['availability'] {
+  return value === 'no_indexed_content' || value === 'no_public_books' || value === 'no_relevant_passage'
+    ? value
+    : 'ok'
 }
 
 /**
@@ -112,10 +137,20 @@ export async function searchChurchLibrary(
           results,
           retrieval: payload.retrieval === 'hybrid' ? 'hybrid' : 'keyword',
           semantic_status: typeof payload.semantic_status === 'string' ? payload.semantic_status : 'server_keyword',
+          availability: statusFromPayload(payload.availability),
+          answer: typeof payload.answer === 'string' && payload.answer.trim() ? payload.answer : null,
+          answer_status: payload.answer_status === 'source_excerpt' ? 'source_excerpt' : 'insufficient_evidence',
         }
       }
+      if (response.status === 401 || response.status === 403) {
+        throw new ChurchLibrarySearchError('Church Library search permission was denied.', 'permission')
+      }
+      // A deployed site can intentionally omit the optional FastAPI route. In
+      // that case (and for transient API failures), continue to the database
+      // RPC below instead of hiding a working Supabase search behind a 404.
     } catch (error) {
       if (signal?.aborted) throw error
+      if (error instanceof ChurchLibrarySearchError && error.code === 'permission') throw error
     }
   }
 
@@ -126,8 +161,24 @@ export async function searchChurchLibrary(
       result_limit: MAX_RESULTS,
       search_language: language,
     })
-    if (!error && Array.isArray(data)) {
+    if (error) {
+      if (error.code === '42501') throw new ChurchLibrarySearchError('Church Library search permission was denied.', 'permission')
+      if (error.code === 'PGRST202' || error.code === '42883') {
+        throw new ChurchLibrarySearchError('Church Library search function is missing from the database schema cache.', 'not_installed')
+      }
+      throw new ChurchLibrarySearchError(error.message || 'Church Library database search failed.', 'database')
+    }
+    if (Array.isArray(data)) {
       const results = normalizeHits(data)
+      let availability: ChurchLibrarySearchResponse['availability'] = results.length ? 'ok' : 'no_relevant_passage'
+      if (!results.length) {
+        const statusResult = await supabase.rpc('church_library_public_search_status')
+        const row = Array.isArray(statusResult.data) ? statusResult.data[0] as Record<string, unknown> | undefined : undefined
+        if (!statusResult.error && row) {
+          if (Number(row.eligible_books) === 0) availability = 'no_public_books'
+          else if (Number(row.indexed_passages) === 0) availability = 'no_indexed_content'
+        }
+      }
       return {
         type: 'church_library_search',
         query: trimmed,
@@ -136,10 +187,18 @@ export async function searchChurchLibrary(
         results,
         retrieval: 'keyword',
         semantic_status: 'supabase_fts',
+        availability,
+        answer: results[0]?.excerpt || null,
+        answer_status: results.length ? 'source_excerpt' : 'insufficient_evidence',
       }
     }
   } catch (error) {
     if (signal?.aborted) throw error
+    if (error instanceof ChurchLibrarySearchError) throw error
+    throw new ChurchLibrarySearchError(
+      error instanceof Error && error.message ? error.message : 'Church Library database search failed.',
+      'network',
+    )
   }
   return emptyResult(trimmed, 'no_matches')
 }

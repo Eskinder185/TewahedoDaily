@@ -1,0 +1,50 @@
+taxonomy_type,canonical_name,canonical_slug,main_card,main_card_slug,card_order,subcategory_order
+category,Jesus Christ,jesus-christ,Jesus Christ & Salvation,jesus-christ-salvation,1,1
+category,Cross,cross,Jesus Christ & Salvation,jesus-christ-salvation,1,2
+category,Salvation,salvation,Jesus Christ & Salvation,jesus-christ-salvation,1,3
+category,Virgin Mary,virgin-mary,Virgin Mary,category-virgin-mary,2,1
+category,Holy Trinity,holy-trinity,Holy Trinity & Holy Spirit,holy-trinity-holy-spirit,3,1
+category,Holy Spirit,holy-spirit,Holy Trinity & Holy Spirit,holy-trinity-holy-spirit,3,2
+category,Kidus Michael,kidus-michael,Angels & Saints,category-angels-saints,4,1
+category,Kidus Gabriel,kidus-gabriel,Angels & Saints,category-angels-saints,4,2
+category,Kidus Raphael,kidus-raphael,Angels & Saints,category-angels-saints,4,3
+category,Kidus Uriel,kidus-uriel,Angels & Saints,category-angels-saints,4,4
+category,Kidus Giorgis,kidus-giorgis,Angels & Saints,category-angels-saints,4,5
+category,Abune Tekle Haymanot,abune-tekle-haymanot,Angels & Saints,category-angels-saints,4,6
+category,Abune Gebre Menfes Kidus,abune-gebre-menfes-kidus,Angels & Saints,category-angels-saints,4,7
+category,Kidus Yared,kidus-yared,Angels & Saints,category-angels-saints,4,8
+category,Yohannes Metmek / John the Baptist,yohannes-metmek-john-the-baptist,Angels & Saints,category-angels-saints,4,9
+category,Kidus Estifanos / Saint Stephen,kidus-estifanos-saint-stephen,Angels & Saints,category-angels-saints,4,10
+category,Apostles,apostles,Angels & Saints,category-angels-saints,4,11
+category,Martyrs,martyrs,Angels & Saints,category-angels-saints,4,12
+category,Saints,saints,Angels & Saints,category-angels-saints,4,13
+category,Angels,angels,Angels & Saints,category-angels-saints,4,14
+category,Prophets,prophets,Angels & Saints,category-angels-saints,4,15
+category,Prayer,prayer,Prayer & Worship,prayer-worship,5,1
+category,Praise / Worship,praise-worship,Prayer & Worship,prayer-worship,5,2
+category,General,general,Prayer & Worship,prayer-worship,5,3
+category,Repentance,repentance,Repentance,repentance,6,1
+occasion,Gena,gena,Holidays & Feasts,occasion-holidays-feasts,1,1
+occasion,Timket,timket,Holidays & Feasts,occasion-holidays-feasts,1,2
+occasion,Meskel,meskel,Holidays & Feasts,occasion-holidays-feasts,1,3
+occasion,Hosanna,hosanna,Holidays & Feasts,occasion-holidays-feasts,1,4
+occasion,Siklet,siklet,Holidays & Feasts,occasion-holidays-feasts,1,5
+occasion,Tinsae,tinsae,Holidays & Feasts,occasion-holidays-feasts,1,6
+occasion,Erget,erget,Holidays & Feasts,occasion-holidays-feasts,1,7
+occasion,Pentecost,pentecost,Holidays & Feasts,occasion-holidays-feasts,1,8
+occasion,Debre Tabor,debre-tabor,Holidays & Feasts,occasion-holidays-feasts,1,9
+occasion,Filseta,filseta,Holidays & Feasts,occasion-holidays-feasts,1,10
+occasion,Kidane Mihret,kidane-mihret,Holidays & Feasts,occasion-holidays-feasts,1,11
+occasion,Lideta Maryam,lideta-maryam,Holidays & Feasts,occasion-holidays-feasts,1,12
+occasion,New Year / Enkutatash,new-year,Holidays & Feasts,occasion-holidays-feasts,1,13
+occasion,Annual Saint Feast,annual-saint-feast,Holidays & Feasts,occasion-holidays-feasts,1,14
+occasion,Abiy Tsom,abiy-tsom,Fasting Seasons,fasting-seasons,2,1
+occasion,Tsome Nineveh,tsome-nineveh,Fasting Seasons,fasting-seasons,2,2
+occasion,Tsome Nebiyat,tsome-nebiyat,Fasting Seasons,fasting-seasons,2,3
+occasion,Tsome Hawariat,tsome-hawariat,Fasting Seasons,fasting-seasons,2,4
+occasion,Holy Week,holy-week,Fasting Seasons,fasting-seasons,2,5
+occasion,Wedding,wedding,Church Life & Sacraments,church-life-sacraments,3,1
+occasion,Baptism,baptism,Church Life & Sacraments,church-life-sacraments,3,2
+occasion,Funeral / Memorial,funeral,Church Life & Sacraments,church-life-sacraments,3,3
+occasion,Communion,communion,Church Life & Sacraments,church-life-sacraments,3,4
+occasion,General / Anytime,general,Anytime Mezmurs,anytime-mezmurs,4,1

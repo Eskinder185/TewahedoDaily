@@ -379,3 +379,52 @@
       env(safe-area-inset-bottom, 0px) + 16px
   );
 }
+
+/* Phones: one compact row (play · title · expand) over a slim progress bar.
+   Skip ±10 s, the timestamps and the full seek bar stay in the expanded sheet. */
+@media (max-width: 559.98px) {
+  .dock {
+    gap: 2px;
+    padding: 6px 10px 4px;
+  }
+
+  .dockMain {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .dockMain > .iconBtn {
+    display: none;
+  }
+
+  .playBtn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .dock .progressRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dock .progressRow .time {
+    display: none;
+  }
+
+  .dock .seekLabel {
+    line-height: 0;
+  }
+
+  .dock .seek {
+    display: block;
+    height: 22px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .dock .expandBtn,
+  .dock .playBtn {
+    height: 44px;
+    min-height: 44px;
+  }
+}

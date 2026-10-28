@@ -37,6 +37,7 @@ import { createClient } from '@supabase/supabase-js'
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 const LANGS = new Set(['en', 'am', 'gez', 'mixed', 'other'])
 const BATCH = 50
+const DEFAULT_MAX_CHARS = 2400
 
 function parseArgs(argv) {
   const args = { apply: false, allowShaMismatch: false }
@@ -55,7 +56,31 @@ function parseArgs(argv) {
   return args
 }
 
-export function loadPassages(jsonlPath) {
+function splitAtNaturalBoundaries(record, maxChars = DEFAULT_MAX_CHARS) {
+  if (record.content.length <= maxChars) return [{ ...record, source_passage_id: record.passage_id }]
+  const blocks = record.content.split(/\n\s*\n/u)
+  const chunks = []
+  let current = ''
+  for (const block of blocks) {
+    const candidate = current ? `${current}\n\n${block}` : block
+    if (current && candidate.length > maxChars) {
+      chunks.push(current)
+      current = block
+    } else {
+      current = candidate
+    }
+  }
+  if (current) chunks.push(current)
+  return chunks.map((content, index) => ({
+    ...record,
+    passage_id: `${record.passage_id}#${String(index + 1).padStart(2, '0')}`,
+    source_passage_id: `${record.passage_id}#${String(index + 1).padStart(2, '0')}`,
+    parent_passage_id: record.passage_id,
+    content,
+  }))
+}
+
+export function loadPassages(jsonlPath, { maxChars = DEFAULT_MAX_CHARS } = {}) {
   const lines = readFileSync(jsonlPath, 'utf8').split('\n').filter((l) => l.trim())
   const records = lines.map((line, index) => {
     try {
@@ -64,9 +89,11 @@ export function loadPassages(jsonlPath) {
       throw new Error(`JSONL line ${index + 1} is not valid JSON`)
     }
   })
+  const refined = records.flatMap((record) => splitAtNaturalBoundaries(record, maxChars))
   const ids = new Set()
   const orders = new Set()
-  for (const r of records) {
+  for (const [index, r] of refined.entries()) {
+    r.passage_order = index
     if (!r.passage_id || ids.has(r.passage_id)) throw new Error(`Duplicate or missing passage_id: ${r.passage_id}`)
     if (!Number.isInteger(r.passage_order) || r.passage_order < 0 || orders.has(r.passage_order)) {
       throw new Error(`Invalid or duplicate passage_order for ${r.passage_id}`)
@@ -82,7 +109,25 @@ export function loadPassages(jsonlPath) {
     ids.add(r.passage_id)
     orders.add(r.passage_order)
   }
-  return records.sort((a, b) => a.passage_order - b.passage_order)
+  return refined.sort((a, b) => a.passage_order - b.passage_order)
+}
+
+export function attachEmbeddings(records, embeddingsPath) {
+  if (!embeddingsPath) return records
+  const rows = readFileSync(embeddingsPath, 'utf8').split(/\r?\n/u).filter(Boolean).map((line) => JSON.parse(line))
+  const byId = new Map(rows.map((row) => [row.passage_id, row]))
+  return records.map((record) => {
+    const embedded = byId.get(record.source_passage_id)
+    if (!embedded) throw new Error(`Missing embedding for ${record.source_passage_id}`)
+    if (!Array.isArray(embedded.embedding) || embedded.embedding.length !== 384 ||
+        embedded.embedding.some((value) => !Number.isFinite(value))) {
+      throw new Error(`Embedding for ${record.source_passage_id} must contain 384 finite numbers`)
+    }
+    if (!embedded.embedding_model || typeof embedded.embedding_model !== 'string') {
+      throw new Error(`Embedding model is missing for ${record.source_passage_id}`)
+    }
+    return { ...record, embedding: embedded.embedding, embedding_model: embedded.embedding_model }
+  })
 }
 
 /** Build rows for church_library_sections and church_library_passages. */
@@ -115,11 +160,13 @@ export function buildRows(records, sections, { bookId, versionId }) {
         page_end: r.page_end,
         chapter_reference: r.chapter,
         locator_label: r.section,
+        source_passage_id: r.source_passage_id || r.passage_id,
         extraction_confidence: flagged ? 0.9 : 1.0,
         review_status: flagged ? 'needs_attention' : 'pending',
         reviewer_notes: flagged
           ? `Conversion flagged likely source typos (not corrected): ${r.quality_flags.map((f) => f.note).join(' | ')}`.slice(0, 2000)
           : null,
+        ...(r.embedding ? { embedding: r.embedding, embedding_model: r.embedding_model } : {}),
       },
     }
   })
@@ -227,7 +274,9 @@ export async function runImport(client, { bookId, records, sections, manifest, a
 async function main() {
   const args = parseArgs(process.argv.slice(2))
   const base = 'data/church-library/faith-and-order/'
-  const records = loadPassages(args.jsonl || `${base}church_faith_and_order_search.jsonl`)
+  const jsonlPath = args.jsonl || `${base}church_faith_and_order_search.jsonl`
+  let records = loadPassages(jsonlPath, { maxChars: Number(args.maxChars) || DEFAULT_MAX_CHARS })
+  records = attachEmbeddings(records, args.embeddings)
   const sections = JSON.parse(readFileSync(args.sections || `${base}church_faith_and_order_sections.json`, 'utf8'))
   const manifest = JSON.parse(readFileSync(args.manifest || `${base}church_faith_and_order_manifest.json`, 'utf8'))
 
@@ -239,6 +288,7 @@ async function main() {
     const flagged = passageRows.filter((p) => p.row.review_status === 'needs_attention').length
     console.log(`DRY RUN — no database changes.`)
     console.log(`Passages: ${passageRows.length} (${words} words), sections: ${sectionRows.length}, flagged for review: ${flagged}`)
+    console.log(`Embeddings: ${records.every((row) => row.embedding) ? `ready (${records[0]?.embedding_model})` : 'not supplied; lexical search remains available'}`)
     console.log('Run again with --book-id <uuid> --apply (service-role credentials) to import.')
     return
   }

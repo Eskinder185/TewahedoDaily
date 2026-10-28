@@ -1,0 +1,839 @@
+{
+  "corpus_passages": 47,
+  "method": "offline exact + unicode-safe lexical; semantic intentionally not fabricated",
+  "metrics": {
+    "queries": 33,
+    "recall_at_5": 0.9090909090909091,
+    "mrr": 0.6196969696969696,
+    "citation_accuracy": 0.9090909090909091,
+    "unsupported_answer_rate": 0.0,
+    "median_latency_ms": 6.685
+  },
+  "details": [
+    {
+      "question": "How does the book describe one God in three Persons?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0002",
+      "keyword_results": [
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0006",
+        "faith-and-order-0002",
+        "faith-and-order-0003"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0006",
+        "faith-and-order-0002",
+        "faith-and-order-0003"
+      ],
+      "first_relevant_rank": 4,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.843
+    },
+    {
+      "question": "What does Melekote mean in the discussion of the Trinity?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0002",
+      "keyword_results": [
+        "faith-and-order-0002",
+        "faith-and-order-0003",
+        "faith-and-order-0006",
+        "faith-and-order-0004",
+        "faith-and-order-0005"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0002",
+        "faith-and-order-0003",
+        "faith-and-order-0006",
+        "faith-and-order-0004",
+        "faith-and-order-0005"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.697
+    },
+    {
+      "question": "Are the Father, Son, and Holy Spirit equal and co-eternal?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0003",
+      "keyword_results": [
+        "faith-and-order-0002",
+        "faith-and-order-0003",
+        "faith-and-order-0008",
+        "faith-and-order-0004",
+        "faith-and-order-0006"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0002",
+        "faith-and-order-0003",
+        "faith-and-order-0008",
+        "faith-and-order-0004",
+        "faith-and-order-0006"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.74
+    },
+    {
+      "question": "What does the Church teach about the Incarnation?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0004",
+      "keyword_results": [
+        "faith-and-order-0005",
+        "faith-and-order-0004",
+        "faith-and-order-0006",
+        "faith-and-order-0011",
+        "faith-and-order-0012"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0005",
+        "faith-and-order-0004",
+        "faith-and-order-0006",
+        "faith-and-order-0011",
+        "faith-and-order-0012"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.707
+    },
+    {
+      "question": "How are divinity and humanity united in Christ?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0004",
+      "keyword_results": [
+        "faith-and-order-0005",
+        "faith-and-order-0004",
+        "faith-and-order-0006",
+        "faith-and-order-0036",
+        "faith-and-order-0018"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0005",
+        "faith-and-order-0004",
+        "faith-and-order-0006",
+        "faith-and-order-0036",
+        "faith-and-order-0018"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.671
+    },
+    {
+      "question": "Why is the Virgin Mary called Mother of God?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0005",
+      "keyword_results": [
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0006",
+        "faith-and-order-0034",
+        "faith-and-order-0011"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0006",
+        "faith-and-order-0034",
+        "faith-and-order-0011"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.697
+    },
+    {
+      "question": "What is the Mystery of Baptism?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0007",
+      "keyword_results": [
+        "faith-and-order-0007",
+        "faith-and-order-0005",
+        "faith-and-order-0006",
+        "faith-and-order-0017",
+        "faith-and-order-0018"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0007",
+        "faith-and-order-0005",
+        "faith-and-order-0006",
+        "faith-and-order-0017",
+        "faith-and-order-0018"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.61
+    },
+    {
+      "question": "What does baptism give to the baptized?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0017",
+      "keyword_results": [
+        "faith-and-order-0021",
+        "faith-and-order-0005",
+        "faith-and-order-0033",
+        "faith-and-order-0007",
+        "faith-and-order-0017"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0021",
+        "faith-and-order-0005",
+        "faith-and-order-0033",
+        "faith-and-order-0007",
+        "faith-and-order-0017"
+      ],
+      "first_relevant_rank": 5,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.617
+    },
+    {
+      "question": "Why does the Church baptize infants?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0020",
+      "keyword_results": [
+        "faith-and-order-0020",
+        "faith-and-order-0007",
+        "faith-and-order-0021",
+        "faith-and-order-0005",
+        "faith-and-order-0014"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0020",
+        "faith-and-order-0007",
+        "faith-and-order-0021",
+        "faith-and-order-0005",
+        "faith-and-order-0014"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.64
+    },
+    {
+      "question": "Can a person be baptized again?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0021",
+      "keyword_results": [
+        "faith-and-order-0017",
+        "faith-and-order-0026",
+        "faith-and-order-0021",
+        "faith-and-order-0019",
+        "faith-and-order-0020"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0017",
+        "faith-and-order-0026",
+        "faith-and-order-0021",
+        "faith-and-order-0019",
+        "faith-and-order-0020"
+      ],
+      "first_relevant_rank": 3,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.666
+    },
+    {
+      "question": "What is Holy Communion?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0008",
+      "keyword_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0009",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0009",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.777
+    },
+    {
+      "question": "What are the Body and Blood in the Eucharist?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0028",
+      "keyword_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0009",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0009",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030"
+      ],
+      "first_relevant_rank": 3,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.605
+    },
+    {
+      "question": "How should a believer prepare for Holy Communion?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0035",
+      "keyword_results": [
+        "faith-and-order-0037",
+        "faith-and-order-0030",
+        "faith-and-order-0008",
+        "faith-and-order-0029",
+        "faith-and-order-0031"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0037",
+        "faith-and-order-0030",
+        "faith-and-order-0008",
+        "faith-and-order-0029",
+        "faith-and-order-0031"
+      ],
+      "first_relevant_rank": null,
+      "final_citation_correct": false,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.908
+    },
+    {
+      "question": "Why is the Eucharist called a sacrament?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0029",
+      "keyword_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030",
+        "faith-and-order-0034"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030",
+        "faith-and-order-0034"
+      ],
+      "first_relevant_rank": 3,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.676
+    },
+    {
+      "question": "What does the book teach about the resurrection of the dead?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0010",
+      "keyword_results": [
+        "faith-and-order-0033",
+        "faith-and-order-0010",
+        "faith-and-order-0004",
+        "faith-and-order-0006",
+        "faith-and-order-0011"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0033",
+        "faith-and-order-0010",
+        "faith-and-order-0004",
+        "faith-and-order-0006",
+        "faith-and-order-0011"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.63
+    },
+    {
+      "question": "How does the book explain human salvation?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0011",
+      "keyword_results": [
+        "faith-and-order-0011",
+        "faith-and-order-0012",
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0013"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0011",
+        "faith-and-order-0012",
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0013"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 7.08
+    },
+    {
+      "question": "What are the seven sacraments listed by the Church?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0015",
+      "keyword_results": [
+        "faith-and-order-0014",
+        "faith-and-order-0015",
+        "faith-and-order-0016",
+        "faith-and-order-0039",
+        "faith-and-order-0042"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0014",
+        "faith-and-order-0015",
+        "faith-and-order-0016",
+        "faith-and-order-0039",
+        "faith-and-order-0042"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.824
+    },
+    {
+      "question": "What is the sacrament of Confirmation?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0022",
+      "keyword_results": [
+        "faith-and-order-0022",
+        "faith-and-order-0023",
+        "faith-and-order-0015",
+        "faith-and-order-0024",
+        "faith-and-order-0038"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0022",
+        "faith-and-order-0023",
+        "faith-and-order-0015",
+        "faith-and-order-0024",
+        "faith-and-order-0038"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 10.192
+    },
+    {
+      "question": "How is Confirmation related to baptism?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0023",
+      "keyword_results": [
+        "faith-and-order-0022",
+        "faith-and-order-0023",
+        "faith-and-order-0015",
+        "faith-and-order-0024",
+        "faith-and-order-0007"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0022",
+        "faith-and-order-0023",
+        "faith-and-order-0015",
+        "faith-and-order-0024",
+        "faith-and-order-0007"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.617
+    },
+    {
+      "question": "What is the sacrament of Penance?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0024",
+      "keyword_results": [
+        "faith-and-order-0024",
+        "faith-and-order-0025",
+        "faith-and-order-0026",
+        "faith-and-order-0027",
+        "faith-and-order-0004"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0024",
+        "faith-and-order-0025",
+        "faith-and-order-0026",
+        "faith-and-order-0027",
+        "faith-and-order-0004"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.685
+    },
+    {
+      "question": "Why is confession necessary in repentance?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0025",
+      "keyword_results": [
+        "faith-and-order-0015",
+        "faith-and-order-0020",
+        "faith-and-order-0024",
+        "faith-and-order-0026",
+        "faith-and-order-0004"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0015",
+        "faith-and-order-0020",
+        "faith-and-order-0024",
+        "faith-and-order-0026",
+        "faith-and-order-0004"
+      ],
+      "first_relevant_rank": null,
+      "final_citation_correct": false,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.587
+    },
+    {
+      "question": "Who administers absolution in Penance?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0027",
+      "keyword_results": [
+        "faith-and-order-0024",
+        "faith-and-order-0025",
+        "faith-and-order-0026",
+        "faith-and-order-0027",
+        "faith-and-order-0004"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0024",
+        "faith-and-order-0025",
+        "faith-and-order-0026",
+        "faith-and-order-0027",
+        "faith-and-order-0004"
+      ],
+      "first_relevant_rank": 4,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 8.165
+    },
+    {
+      "question": "What is the Unction of the Sick?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0038",
+      "keyword_results": [
+        "faith-and-order-0038",
+        "faith-and-order-0039",
+        "faith-and-order-0015",
+        "faith-and-order-0027",
+        "faith-and-order-0007"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0038",
+        "faith-and-order-0039",
+        "faith-and-order-0015",
+        "faith-and-order-0027",
+        "faith-and-order-0007"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.706
+    },
+    {
+      "question": "Who may receive the anointing of the sick?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0039",
+      "keyword_results": [
+        "faith-and-order-0023",
+        "faith-and-order-0045",
+        "faith-and-order-0038",
+        "faith-and-order-0039",
+        "faith-and-order-0015"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0023",
+        "faith-and-order-0045",
+        "faith-and-order-0038",
+        "faith-and-order-0039",
+        "faith-and-order-0015"
+      ],
+      "first_relevant_rank": 4,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.832
+    },
+    {
+      "question": "What does the Church teach about Matrimony?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0040",
+      "keyword_results": [
+        "faith-and-order-0040",
+        "faith-and-order-0041",
+        "faith-and-order-0042",
+        "faith-and-order-0012",
+        "faith-and-order-0015"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0040",
+        "faith-and-order-0041",
+        "faith-and-order-0042",
+        "faith-and-order-0012",
+        "faith-and-order-0015"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.617
+    },
+    {
+      "question": "What are the purposes of Christian marriage?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0041",
+      "keyword_results": [
+        "faith-and-order-0012",
+        "faith-and-order-0041",
+        "faith-and-order-0015",
+        "faith-and-order-0040",
+        "faith-and-order-0042"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0012",
+        "faith-and-order-0041",
+        "faith-and-order-0015",
+        "faith-and-order-0040",
+        "faith-and-order-0042"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.593
+    },
+    {
+      "question": "What is the sacrament of Holy Orders?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0043",
+      "keyword_results": [
+        "faith-and-order-0043",
+        "faith-and-order-0044",
+        "faith-and-order-0045",
+        "faith-and-order-0046",
+        "faith-and-order-0047"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0043",
+        "faith-and-order-0044",
+        "faith-and-order-0045",
+        "faith-and-order-0046",
+        "faith-and-order-0047"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.628
+    },
+    {
+      "question": "What ministries are included in Holy Orders?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0044",
+      "keyword_results": [
+        "faith-and-order-0043",
+        "faith-and-order-0044",
+        "faith-and-order-0045",
+        "faith-and-order-0046",
+        "faith-and-order-0047"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0043",
+        "faith-and-order-0044",
+        "faith-and-order-0045",
+        "faith-and-order-0046",
+        "faith-and-order-0047"
+      ],
+      "first_relevant_rank": 2,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.609
+    },
+    {
+      "question": "What qualifications are required for ordination?",
+      "language": "en",
+      "expected_parent_passage_id": "faith-and-order-0045",
+      "keyword_results": [
+        "faith-and-order-0046",
+        "faith-and-order-0015",
+        "faith-and-order-0016",
+        "faith-and-order-0021",
+        "faith-and-order-0022"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0046",
+        "faith-and-order-0015",
+        "faith-and-order-0016",
+        "faith-and-order-0021",
+        "faith-and-order-0022"
+      ],
+      "first_relevant_rank": null,
+      "final_citation_correct": false,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.778
+    },
+    {
+      "question": "ምሥጢረ ሥላሴ ምንድን ነው?",
+      "language": "am",
+      "expected_parent_passage_id": "faith-and-order-0002",
+      "keyword_results": [
+        "faith-and-order-0002",
+        "faith-and-order-0003",
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0006"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0002",
+        "faith-and-order-0003",
+        "faith-and-order-0004",
+        "faith-and-order-0005",
+        "faith-and-order-0006"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.679
+    },
+    {
+      "question": "ጥምቀት ምንድን ነው?",
+      "language": "am",
+      "expected_parent_passage_id": "faith-and-order-0007",
+      "keyword_results": [
+        "faith-and-order-0007",
+        "faith-and-order-0017",
+        "faith-and-order-0018",
+        "faith-and-order-0019",
+        "faith-and-order-0020"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0007",
+        "faith-and-order-0017",
+        "faith-and-order-0018",
+        "faith-and-order-0019",
+        "faith-and-order-0020"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.697
+    },
+    {
+      "question": "ቅዱስ ቁርባን ምንድን ነው?",
+      "language": "am",
+      "expected_parent_passage_id": "faith-and-order-0008",
+      "keyword_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0009",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0008",
+        "faith-and-order-0009",
+        "faith-and-order-0028",
+        "faith-and-order-0029",
+        "faith-and-order-0030"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.581
+    },
+    {
+      "question": "ንስሐ ምንድን ነው?",
+      "language": "am",
+      "expected_parent_passage_id": "faith-and-order-0024",
+      "keyword_results": [
+        "faith-and-order-0024",
+        "faith-and-order-0025",
+        "faith-and-order-0026",
+        "faith-and-order-0027",
+        "faith-and-order-0004"
+      ],
+      "semantic_results": [],
+      "semantic_status": "not_measured_no_approved_embedding_model",
+      "hybrid_results": [
+        "faith-and-order-0024",
+        "faith-and-order-0025",
+        "faith-and-order-0026",
+        "faith-and-order-0027",
+        "faith-and-order-0004"
+      ],
+      "first_relevant_rank": 1,
+      "final_citation_correct": true,
+      "answer_faithfulness": "not_generated_offline",
+      "latency_ms": 6.685
+    }
+  ]
+}

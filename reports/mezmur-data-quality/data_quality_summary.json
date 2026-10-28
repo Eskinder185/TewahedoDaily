@@ -1,0 +1,65 @@
+{
+  "input": "C.csv",
+  "rows": 2316,
+  "rowsWithIssues": 2098,
+  "issues": {
+    "generated_section_labels": 1576,
+    "transliteration_unreadable": 757,
+    "insufficient_lyrics": 429,
+    "scan_ocr_errors": 420,
+    "language_mismatch": 177,
+    "transliteration_missing": 123,
+    "translation_mixed_into_lyrics": 44,
+    "corrupted_text": 11,
+    "missing_lyrics": 5
+  },
+  "bySeverity": {
+    "scan_ocr_errors": {
+      "low": 343,
+      "medium": 77
+    },
+    "generated_section_labels": {
+      "low": 1576
+    },
+    "insufficient_lyrics": {
+      "medium": 429
+    },
+    "transliteration_unreadable": {
+      "low": 735,
+      "medium": 22
+    },
+    "language_mismatch": {
+      "medium": 172,
+      "low": 5
+    },
+    "transliteration_missing": {
+      "low": 123
+    },
+    "missing_lyrics": {
+      "high": 5
+    },
+    "translation_mixed_into_lyrics": {
+      "low": 44
+    },
+    "corrupted_text": {
+      "medium": 10,
+      "high": 1
+    }
+  },
+  "languageVerdicts": {
+    "ok": 1444,
+    "undetermined": 672,
+    "mismatch_confirmed": 172,
+    "mixed": 23,
+    "mismatch_likely": 5
+  },
+  "mismatchPairs": {
+    "amharic → tigrinya": 129,
+    "amharic → english": 23,
+    "english → amharic": 15,
+    "english → oromo": 5,
+    "english → tigrinya": 3,
+    "geez → tigrinya": 1,
+    "amharic → oromo": 1
+  }
+}

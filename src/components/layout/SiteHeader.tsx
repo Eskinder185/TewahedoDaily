@@ -66,6 +66,12 @@ export function SiteHeader() {
   const drawerId = useId()
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
+  // Close the drawer after any navigation (including browser Back/Forward).
+  const [menuPath, setMenuPath] = useState(location.pathname)
+  if (menuPath !== location.pathname) {
+    setMenuPath(location.pathname)
+    setMenuOpen(false)
+  }
 
   const isHome = location.pathname === '/'
   const modes = [
@@ -344,11 +350,15 @@ export function SiteHeader() {
               {showAccount ? (
                 <Link
                   to="/account"
-                  className={styles.utilityLink}
+                  className={`${styles.utilityLink} ${styles.accountLink}`}
                   aria-label={tt('account.account')}
                   title={tt('account.account')}
                 >
-                  {tt('account.account')}
+                  <svg className={styles.accountIcon} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" strokeWidth="2" />
+                    <path d="M4 20c1.6-3.6 4.5-5.5 8-5.5s6.4 1.9 8 5.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <span className={styles.accountLabel}>{tt('account.account')}</span>
                 </Link>
               ) : null}
               {showSignIn ? (

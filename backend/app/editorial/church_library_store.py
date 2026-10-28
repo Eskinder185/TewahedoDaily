@@ -385,11 +385,41 @@ class ChurchLibraryStore:
                 "query_embedding": vectors[0] if vectors else None,
             },
         )
+        if response.status_code in {401, 403}:
+            raise HTTPException(status_code=403, detail={"code": "database_permission", "message": "Church Library search permission was denied."})
+        if response.status_code == 404:
+            raise HTTPException(status_code=503, detail={"code": "search_not_installed", "message": "The Church Library search function is not installed or is absent from the schema cache."})
         if response.status_code != 200:
-            raise HTTPException(status_code=502, detail="Church Library retrieval is temporarily unavailable.")
+            raise HTTPException(status_code=502, detail={"code": "database_search_failed", "message": "Church Library retrieval is temporarily unavailable."})
         rows = response.json()
+        results = rows if isinstance(rows, list) else []
+        availability = "ok"
+        if not results:
+            status_response = self._request("POST", "/rest/v1/rpc/church_library_public_search_status", json={})
+            if status_response.status_code == 200:
+                status_rows = status_response.json()
+                status = status_rows[0] if isinstance(status_rows, list) and status_rows else {}
+                if int(status.get("eligible_books") or 0) == 0:
+                    availability = "no_public_books"
+                elif int(status.get("indexed_passages") or 0) == 0:
+                    availability = "no_indexed_content"
+                else:
+                    availability = "no_relevant_passage"
+        # Adjacent rows are exact context, not independently ranked evidence.
+        for hit in results[: min(4, len(results))]:
+            passage_id = hit.get("passage_id") if isinstance(hit, dict) else None
+            if not passage_id:
+                continue
+            context_response = self._request(
+                "POST", "/rest/v1/rpc/church_library_passage_context",
+                json={"target_passage_id": passage_id, "context_radius": 1},
+            )
+            if context_response.status_code == 200:
+                context = context_response.json()
+                hit["adjacent_context"] = context if isinstance(context, list) else []
         return {
-            "results": rows if isinstance(rows, list) else [],
+            "results": results,
             "semantic_used": bool(vectors),
             "embedding_model": configured_model() if vectors else None,
+            "availability": availability,
         }

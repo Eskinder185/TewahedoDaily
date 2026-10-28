@@ -3,7 +3,7 @@
  * Pure: no network, no generated text.
  */
 import { isPublicContentRoute } from './searchCore'
-import type { SiteSearchResult, SiteSourceReport, SiteSourceStatus } from './types'
+import type { CatalogOutcome, SiteSearchResult, SiteSourceReport, SiteSourceStatus } from './types'
 
 export type EditorialSearchKind = 'saints' | 'feasts' | 'articles'
 
@@ -11,6 +11,7 @@ export type SiteSourceAttempt = {
   name: string
   failed: boolean
   count: number
+  outcome?: CatalogOutcome
 }
 
 export function reportSiteSources(sources: SiteSourceAttempt[]): SiteSourceReport[] {
@@ -20,10 +21,14 @@ export function reportSiteSources(sources: SiteSourceAttempt[]): SiteSourceRepor
       : source.count > 0
         ? 'matches'
         : 'empty'
+    const outcome: CatalogOutcome =
+      source.outcome ??
+      (source.failed ? 'unavailable' : source.count > 0 ? 'success_with_results' : 'success_empty')
     return {
       name: source.name,
       status,
       count: source.failed ? 0 : source.count,
+      outcome,
     }
   })
 }

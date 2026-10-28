@@ -112,6 +112,7 @@ export type CmsTables = {
     page_end: number | null
     chapter_reference: string | null
     locator_label: string | null
+    source_passage_id: string | null
     extraction_confidence: number | null
     search_document: unknown
     embedding: unknown
