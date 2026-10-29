@@ -1,0 +1,8 @@
+.page { display: grid; gap: 1rem; }
+.page > header { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
+.grid { display: grid; grid-template-columns: minmax(16rem, .75fr) minmax(20rem, 1.5fr); gap: 1rem; }
+.grid > div, .grid form { display: grid; align-content: start; gap: .75rem; }
+.grid > div > button { padding: .75rem; text-align: left; border: 1px solid var(--color-border); border-radius: .6rem; background: var(--color-bg-elevated); color: inherit; }
+.grid label { display: grid; gap: .3rem; }
+.grid input, .grid textarea, .grid select { width: 100%; padding: .6rem; border: 1px solid var(--color-border); border-radius: .45rem; background: var(--color-bg); color: var(--color-text); font: inherit; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } .page > header { flex-direction: column; } }

@@ -87,7 +87,7 @@ export function ChurchLibrarySources({
               <strong>{hit.title}</strong>{hit.author ? ` — ${hit.author}` : ''} · {locator(hit)}
             </p>
             <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', fontSize: '0.875rem' }}>
-              <Link to={`/library/${hit.book_id}?passage=${encodeURIComponent(hit.passage_id)}`} className={styles.websiteLink}>
+              <Link to={hit.reader_href || `/library/${hit.book_id}?passage=${encodeURIComponent(hit.passage_id)}`} className={styles.websiteLink}>
                 📖 {t('searchBuddy.churchLibraryOpenSource')} →
               </Link>
               {sourceUrl ? (

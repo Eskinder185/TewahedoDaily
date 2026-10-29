@@ -1737,6 +1737,7 @@ export async function listPublishedMezmursForZemari(zemariId: string): Promise<
     title: string
     title_amharic: string | null
     thumbnail_url: string | null
+    audio_url: string | null
     youtube_url: string | null
     singer_name: string | null
     language: string | null
@@ -1747,7 +1748,7 @@ export async function listPublishedMezmursForZemari(zemariId: string): Promise<
   const { data, error } = await supabase
     .from(T.data as never)
     .select(
-      'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, youtube_url, singer_name, primary_language, form, status',
+      'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, audio_url, youtube_url, singer_name, primary_language, form, status',
     )
     .eq('zemari_id', zemariId.trim())
     .order('title')
@@ -1766,6 +1767,7 @@ export async function listPublishedMezmursForZemari(zemariId: string): Promise<
         title: txt(row.title) || txt(row.slug),
         title_amharic: txt(row.title_amharic) || null,
         thumbnail_url: path,
+        audio_url: txt(row.audio_url) || null,
         youtube_url: txt(row.youtube_url) || null,
         singer_name: txt(row.singer_name) || null,
         language: txt(row.primary_language) || null,
@@ -2253,6 +2255,7 @@ export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): P
     title: string
     title_amharic: string | null
     thumbnail_url: string | null
+    audio_url: string | null
     youtube_url: string | null
     singer_name: string | null
     zemari_id: string | null
@@ -2267,7 +2270,7 @@ export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): P
   let primaryError: { message?: string; code?: string } | null = null
   const [dataResult, catLinks] = await Promise.all([
     selectAllImportRows(
-      'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, youtube_url, singer_name, zemari_id, primary_language, form, search_keywords, status',
+      'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, audio_url, youtube_url, singer_name, zemari_id, primary_language, form, search_keywords, status',
       { maxRows: limit },
     ).then((rows) => ({ rows, error: null })).catch((cause) => ({ rows: [] as DataImportRow[], error: cause as { message?: string; code?: string } })),
     fetchAllCategoryLinks().catch(() => []),
@@ -2294,7 +2297,7 @@ export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): P
           const legacy = await client
             .from(T.data as never)
             .select(
-              'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, youtube_url, singer_name, primary_language, form, search_keywords, status',
+              'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, audio_url, youtube_url, singer_name, primary_language, form, search_keywords, status',
             )
             .eq('status', 'published')
             .range(from, to)
@@ -2312,6 +2315,7 @@ export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): P
             title: txt(row.title),
             title_amharic: txt(row.title_amharic) || null,
             thumbnail_url: image,
+            audio_url: txt(row.audio_url) || null,
             youtube_url: txt(row.youtube_url) || null,
             singer_name: txt(row.singer_name) || null,
             zemari_id: null,
@@ -2340,6 +2344,7 @@ export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): P
         title: txt(row.title),
         title_amharic: txt(row.title_amharic) || null,
         thumbnail_url: image,
+        audio_url: txt(row.audio_url) || null,
         youtube_url: txt(row.youtube_url) || null,
         singer_name: txt(row.singer_name) || null,
         zemari_id: txt(row.zemari_id) || null,

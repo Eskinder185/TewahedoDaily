@@ -37,6 +37,7 @@ const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m
 const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })))
 const PrayerListPage = lazy(() => import('./pages/PrayerListPage').then(m => ({ default: m.PrayerListPage })))
 const PublicChurchLibrary = lazy(() => import('./pages/PublicChurchLibrary').then(m => ({ default: m.PublicChurchLibrary })))
+const ChurchLibraryStructuredReader = lazy(() => import('./pages/ChurchLibraryStructuredReader').then(m => ({ default: m.ChurchLibraryStructuredReader })))
 const ChurchLibraryReader = lazy(() => import('./pages/ChurchLibraryReader').then(m => ({ default: m.ChurchLibraryReader })))
 const LibraryCollectionRoute = lazy(() => import('./pages/LibraryCollectionRoute').then(m => ({ default: m.LibraryCollectionRoute })))
 const LibraryItemRoute = lazy(() => import('./pages/LibraryItemRoute').then(m => ({ default: m.LibraryItemRoute })))
@@ -140,6 +141,12 @@ const EditorialBooksPreview = lazy(() =>
 )
 const ChurchLibrary = lazy(() =>
   import('./pages/admin/ChurchLibrary').then((m) => ({ default: m.ChurchLibrary })),
+)
+const ChurchLibraryImport = lazy(() =>
+  import('./pages/admin/ChurchLibraryImport').then((m) => ({ default: m.ChurchLibraryImport })),
+)
+const ChurchLibraryFaqAdmin = lazy(() =>
+  import('./pages/admin/ChurchLibraryFaqAdmin').then((m) => ({ default: m.ChurchLibraryFaqAdmin })),
 )
 const BibleManager = lazy(() =>
   import('./pages/admin/BibleManager').then((m) => ({ default: m.BibleManager })),
@@ -247,6 +254,8 @@ export default function App() {
             <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
               <Route path="content-health" element={<ContentHealthAdmin />} />
               <Route path="church-library" element={<ChurchLibrary />} />
+              <Route path="church-library/import" element={<ChurchLibraryImport />} />
+              <Route path="church-library/faqs" element={<ChurchLibraryFaqAdmin />} />
               <Route path="bible" element={<BibleManager />} />
               <Route path="church-library/legacy-preview" element={<EditorialBooksPreview />} />
               <Route path="editorial-books" element={<Navigate to="/admin/church-library" replace />} />
@@ -304,6 +313,7 @@ export default function App() {
         <Route path="/feasts" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="feasts"/></Suspense>}/>
         <Route path="/learn" element={<Suspense fallback={<PageLoadingFallback/>}><PublicContentLibrary kind="articles"/></Suspense>}/>
         <Route path="/library" element={<Suspense fallback={<PageLoadingFallback/>}><PublicChurchLibrary /></Suspense>}/>
+        <Route path="/library/read/:bookSlug/:sectionKey?" element={<Suspense fallback={<PageLoadingFallback/>}><ChurchLibraryStructuredReader /></Suspense>}/>
         <Route path="/library/:bookId" element={<Suspense fallback={<PageLoadingFallback/>}><ChurchLibraryReader /></Suspense>}/>
         <Route path="/church-library" element={<Navigate to="/library" replace />} />
         <Route path="/church-library/:bookId" element={<Navigate to="/library/:bookId" replace />} />

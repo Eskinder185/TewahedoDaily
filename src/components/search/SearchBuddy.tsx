@@ -31,6 +31,8 @@ import { CalendarAnswerPane, type CalendarOutcome } from './CalendarAnswerPane'
 import { SourcePassagePane, type DocumentOutcome } from './SourcePassageCard'
 import { ChurchLibrarySources, type ChurchLibraryOutcome } from './ChurchLibrarySources'
 import { ChurchLibrarySearchError, searchChurchLibrary } from '../../lib/searchBuddy/churchLibrarySearch'
+import { listPopularChurchLibraryFaqs, searchChurchLibraryFaq, type ChurchLibraryFaqMatch } from '../../lib/searchBuddy/churchLibraryFaq'
+import { ChurchLibraryFaqAnswer } from './ChurchLibraryFaqAnswer'
 import { WebsiteSearchPane, type WebsiteOutcome } from './WebsiteSearchResults'
 import styles from './SearchBuddy.module.css'
 
@@ -70,6 +72,9 @@ export function SearchBuddy() {
   const [draft, setDraft] = useState(() => snapshot.query)
   const [documentOutcome, setDocumentOutcome] = useState<DocumentOutcome>({ kind: 'idle' })
   const [libraryOutcome, setLibraryOutcome] = useState<ChurchLibraryOutcome>({ kind: 'idle' })
+  const [faqMatch, setFaqMatch] = useState<ChurchLibraryFaqMatch | null>(null)
+  const [popularFaqs, setPopularFaqs] = useState<Array<{ stableId: string; question: string }>>([])
+  const faqContextRef = useRef<string | null>(null)
   const [websiteOutcome, setWebsiteOutcome] = useState<WebsiteOutcome>({ kind: 'idle' })
   const [calendarOutcome, setCalendarOutcome] = useState<CalendarOutcome>({ kind: 'idle' })
   const [pendingClarification, setPendingClarification] = useState<PendingClarification | null>(null)
@@ -114,6 +119,10 @@ export function SearchBuddy() {
   useEffect(() => {
     draftRef.current = draft
   }, [draft])
+
+  useEffect(() => {
+    void listPopularChurchLibraryFaqs(uiLocale === 'am' ? 'am' : 'en').then(setPopularFaqs)
+  }, [uiLocale])
 
   useEffect(() => {
     setSnapshot((prev) => {
@@ -385,6 +394,13 @@ export function SearchBuddy() {
     const query = raw.trim()
     if (!query || query.length > FAITH_AND_ORDER_QUERY_MAX) return
     setDraft('')
+    setFaqMatch(null)
+    void searchChurchLibraryFaq(query, uiLocale === 'am' ? 'am' : 'en', faqContextRef.current)
+      .then((match) => {
+        setFaqMatch(match)
+        if (match) faqContextRef.current = match.stableId
+      })
+      .catch(() => setFaqMatch(null))
     const parsed = parseQuestion(query, { pending: pendingClarification })
     const followUpOnly = parsed.isFollowUp
     if (!followUpOnly) setPendingClarification(null)
@@ -418,6 +434,8 @@ export function SearchBuddy() {
     setLibraryOutcome({ kind: 'idle' })
     setCalendarOutcome({ kind: 'idle' })
     setPendingClarification(null)
+    setFaqMatch(null)
+    faqContextRef.current = null
     setVoiceRemountKey((key) => key + 1)
     clearSession()
     window.setTimeout(() => inputRef.current?.focus(), 0)
@@ -472,14 +490,22 @@ export function SearchBuddy() {
               {liveStatus}
             </p>
             {showWelcome ? (
-              <ChatStarterPrompts
-                welcomeId={welcomeId}
-                title={t('searchBuddy.welcomeTitle')}
-                copy={t('searchBuddy.welcomeCopy')}
-                groupAria={t('searchBuddy.suggestionsAria')}
-                prompts={EXAMPLE_KEYS.map((key) => t(key))}
-                onSelect={(prompt) => void runSearch(prompt)}
-              />
+              <>
+                <ChatStarterPrompts
+                  welcomeId={welcomeId}
+                  title={t('searchBuddy.welcomeTitle')}
+                  copy={t('searchBuddy.welcomeCopy')}
+                  groupAria={t('searchBuddy.suggestionsAria')}
+                  prompts={EXAMPLE_KEYS.map((key) => t(key))}
+                  onSelect={(prompt) => void runSearch(prompt)}
+                />
+                {!!popularFaqs.length && (
+                  <section className={styles.popularQuestions} aria-labelledby="popular-church-questions">
+                    <h3 id="popular-church-questions">{uiLocale === 'am' ? 'ተወዳጅ ጥያቄዎች' : 'Popular Questions'}</h3>
+                    <div>{popularFaqs.map((faq) => <button type="button" key={faq.stableId} onClick={() => runSearch(faq.question)}>{faq.question}</button>)}</div>
+                  </section>
+                )}
+              </>
             ) : (
               <div>
                 {activeQuery ? (
@@ -547,6 +573,7 @@ export function SearchBuddy() {
                   busy={documentOutcome.kind === 'loading'}
                   onRetry={(query, topic) => startDocumentSearch(query, topic)}
                 />
+                {faqMatch && (selectedDomain === 'all' || selectedDomain === 'library') ? <ChurchLibraryFaqAnswer match={faqMatch} /> : null}
                 {(selectedDomain === 'all' || selectedDomain === 'library') && (
                   <ChurchLibrarySources
                     outcome={libraryOutcome}

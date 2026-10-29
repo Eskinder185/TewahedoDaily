@@ -137,6 +137,25 @@ export type CmsTables = {
     changed_by: string | null
     created_at: string
   }, 'passage_id' | 'revision_number' | 'content'>
+  church_library_faqs: Table<Timestamps & {
+    stable_id: string
+    question_en: string
+    question_am: string
+    answer_en: string
+    answer_am: string
+    alternative_phrasings: string[]
+    topic: string
+    related_section_ids: string[]
+    source_references: Json
+    review_status: 'pending' | 'approved' | 'needs_changes'
+    publication_status: 'draft' | 'published'
+    reviewed_by: string | null
+    reviewed_at: string | null
+    published_by: string | null
+    published_at: string | null
+    created_by: string | null
+    updated_by: string | null
+  }, 'stable_id' | 'question_en' | 'question_am' | 'answer_en' | 'answer_am' | 'topic'>
   daily_content: Table<{
     id: string
     content_date: string

@@ -1,5 +1,6 @@
 import { getAiApiBaseUrl } from '../ai/aiConfig'
 import { supabase } from '../supabase/client'
+import { sectionHref } from '../churchLibrary/libraryService'
 
 export type ChurchLibraryHit = {
   passage_id: string
@@ -13,6 +14,8 @@ export type ChurchLibraryHit = {
   chapter_reference: string | null
   locator_label: string | null
   source_url: string | null
+  /** Stable in-app reader link (structured books): /library/read/<book>/<section>#<paragraph> */
+  reader_href: string | null
   keyword_rank: number
   semantic_rank: number
 }
@@ -61,8 +64,57 @@ function normalizeHits(value: unknown): ChurchLibraryHit[] {
       chapter_reference: typeof row.chapter_reference === 'string' ? row.chapter_reference : null,
       locator_label: typeof row.locator_label === 'string' ? row.locator_label : null,
       source_url: typeof row.source_url === 'string' ? row.source_url : null,
+      reader_href: typeof row.reader_href === 'string' && row.reader_href.startsWith('/library/') ? row.reader_href : null,
       keyword_rank: Number(row.keyword_rank) || 0,
       semantic_rank: Number(row.semantic_rank) || 0,
+    }]
+  })
+}
+
+/**
+ * Structured (chapter/section) books: Amharic-folded search with section-level
+ * citations. Missing on databases without the structured-collections migration,
+ * in which case it quietly returns nothing and the legacy search is used alone.
+ */
+/** Adds ?q= so the reader highlights the matched words (folded, letter-variant aware). */
+function withQuery(href: string, query: string) {
+  const [path, hash] = href.split('#')
+  return `${path}?q=${encodeURIComponent(query)}${hash ? `#${hash}` : ''}`
+}
+
+async function searchStructuredSections(query: string, language: string | null): Promise<ChurchLibraryHit[]> {
+  if (!supabase) return []
+  const { data, error } = await supabase.rpc('search_church_library_sections' as never, {
+    search_query: query,
+    result_limit: MAX_RESULTS,
+    search_language: language,
+  } as never)
+  if (error || !Array.isArray(data)) return []
+  return (data as Record<string, unknown>[]).flatMap((row): ChurchLibraryHit[] => {
+    const passageId = typeof row.passage_id === 'string' ? row.passage_id : ''
+    const bookId = typeof row.book_id === 'string' ? row.book_id : ''
+    const excerpt = typeof row.excerpt === 'string' ? row.excerpt : ''
+    const slug = typeof row.book_slug === 'string' ? row.book_slug : ''
+    if (!passageId || !bookId || !excerpt) return []
+    const sectionTitle = typeof row.section_title === 'string' ? row.section_title : null
+    const chapterTitle = typeof row.chapter_title === 'string' ? row.chapter_title : null
+    return [{
+      passage_id: passageId,
+      book_id: bookId,
+      title: typeof row.book_title === 'string' && row.book_title.trim() ? row.book_title : 'Church Library Book',
+      author: null,
+      language: typeof row.book_language === 'string' ? row.book_language : 'other',
+      excerpt,
+      page_start: toNullableNumber(row.page_start),
+      page_end: toNullableNumber(row.page_end),
+      chapter_reference: chapterTitle,
+      locator_label: sectionTitle && sectionTitle !== chapterTitle ? sectionTitle : null,
+      source_url: null,
+      reader_href: slug
+        ? withQuery(sectionHref(slug, typeof row.section_key === 'string' ? row.section_key : null, typeof row.passage_key === 'string' ? row.passage_key : null), query)
+        : null,
+      keyword_rank: Number(row.keyword_rank) || 0,
+      semantic_rank: 0,
     }]
   })
 }
@@ -156,11 +208,28 @@ export async function searchChurchLibrary(
 
   if (!supabase) return emptyResult(trimmed, 'supabase_unavailable')
   try {
-    const { data, error } = await supabase.rpc('search_church_library', {
-      search_query: trimmed,
-      result_limit: MAX_RESULTS,
-      search_language: language,
-    })
+    const [structuredHits, { data, error }] = await Promise.all([
+      searchStructuredSections(trimmed, language).catch(() => [] as ChurchLibraryHit[]),
+      supabase.rpc('search_church_library', {
+        search_query: trimmed,
+        result_limit: MAX_RESULTS,
+        search_language: language,
+      }),
+    ])
+    if (error && structuredHits.length) {
+      return {
+        type: 'church_library_search',
+        query: trimmed,
+        language,
+        count: structuredHits.length,
+        results: structuredHits,
+        retrieval: 'keyword',
+        semantic_status: 'supabase_fts',
+        availability: 'ok',
+        answer: structuredHits[0].excerpt,
+        answer_status: 'source_excerpt',
+      }
+    }
     if (error) {
       if (error.code === '42501') throw new ChurchLibrarySearchError('Church Library search permission was denied.', 'permission')
       if (error.code === 'PGRST202' || error.code === '42883') {
@@ -169,7 +238,10 @@ export async function searchChurchLibrary(
       throw new ChurchLibrarySearchError(error.message || 'Church Library database search failed.', 'database')
     }
     if (Array.isArray(data)) {
-      const results = normalizeHits(data)
+      // Structured hits carry a stable section link; legacy rows for the same
+      // passage are dropped so each excerpt is cited once.
+      const seen = new Set(structuredHits.map((h) => h.passage_id))
+      const results = [...structuredHits, ...normalizeHits(data).filter((h) => !seen.has(h.passage_id))].slice(0, MAX_RESULTS)
       let availability: ChurchLibrarySearchResponse['availability'] = results.length ? 'ok' : 'no_relevant_passage'
       if (!results.length) {
         const statusResult = await supabase.rpc('church_library_public_search_status')

@@ -11,6 +11,72 @@
   transition: transform 0.25s ease-out;
 }
 
+.expandedPanel {
+  max-width: 1200px;
+  max-height: min(58vh, 560px);
+  margin: 0 auto 0.5rem;
+  padding: 0.75rem;
+  overflow: auto;
+  border: 1px solid var(--color-border-subtle, #e6ded0);
+  border-radius: 0.75rem;
+  background: var(--color-surface, #fbf9f4);
+}
+
+.queueHeader,
+.settingsRow,
+.queueTrack,
+.queueActions {
+  display: flex;
+  align-items: center;
+}
+
+.queueHeader { justify-content: space-between; gap: 1rem; }
+.queueHeader small,
+.queueTrack small { display: block; color: var(--color-ink-muted, #685b4d); }
+
+.settingsRow {
+  gap: 0.6rem;
+  margin: 0.75rem 0;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+}
+
+.textButton,
+.activeControl,
+.expandButton,
+.queueActions button {
+  min-height: 2rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--color-border-subtle, #e6ded0);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.activeControl {
+  background: var(--color-burgundy, #6a1a24);
+  color: white;
+}
+
+.checkLabel { display: flex; align-items: center; gap: 0.3rem; }
+.status, .error { margin: 0.35rem 0; font-size: 0.78rem; color: var(--color-ink-muted, #685b4d); }
+.error { color: var(--color-burgundy, #6a1a24); }
+
+.queueList { margin: 0; padding: 0; list-style: none; }
+.queueList li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-top: 1px solid var(--color-border-subtle, #e6ded0);
+}
+.currentQueueItem { background: rgba(212, 175, 55, 0.09); }
+.queueTrack { flex: 1; gap: 0.75rem; padding: 0.55rem; border: 0; background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.queueActions { gap: 0.25rem; padding-right: 0.4rem; }
+.queueActions button { min-width: 2rem; padding: 0.2rem; }
+.history a { display: block; margin: 0.35rem 0; color: inherit; }
+.expandButton { white-space: nowrap; }
+
 .inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -178,4 +244,12 @@
     bottom: 0;
     padding: 0.375rem 0.75rem;
   }
+  .trackInfo { max-width: 35%; }
+  .expandButton { padding-inline: 0.45rem; }
+  .expandedPanel { max-height: 52vh; padding: 0.55rem; }
+  .settingsRow { align-items: stretch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .miniPlayerDock { transition: none; }
 }

@@ -1,0 +1,4304 @@
+{
+  "subject": "seven-sacraments",
+  "title": {
+    "am": "ምሥጢራተ ቤተ ክርስቲያን",
+    "en": "The Seven Sacraments"
+  },
+  "source_documents": {
+    "am": {
+      "file": "sources/am-original.txt",
+      "sha256": "ad71f4d22cba226bab2ab0efdf29d5e1d1e8fe5ad7c1e3d8f157402ec170f01b",
+      "nonempty_lines": 739,
+      "page_numbers": null,
+      "page_numbers_note": "The source carries no page numbers; its annex states that its line numbers are not page numbers."
+    },
+    "en": {
+      "file": "sources/en-verified.md",
+      "sha256": "ad9befe1462e26b03b47fa2268f5645df59a8b8a3e5113b3a694d3e414ea2842",
+      "nonempty_lines": 78,
+      "page_numbers": null
+    }
+  },
+  "id_convention": "SS-NNN chapter · SS-NNN-SNNN section · SS-NNN-SNNN-PNNN paragraph. Section/paragraph IDs ending in X (e.g. SS-001-X001) are language-specific and have no counterpart.",
+  "publication_status": "draft",
+  "chapters": [
+    {
+      "id": "SS-000",
+      "chapter_number": 0,
+      "title": {
+        "am": "መግቢያ",
+        "en": "Introduction",
+        "en_reference": "Introduction"
+      },
+      "files": {
+        "am": "am/00-introduction.md",
+        "en": "en/00-introduction.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-000-S000",
+            "title": null,
+            "paragraphs": 4,
+            "paragraph_ids": [
+              "SS-000-S000-P001",
+              "SS-000-S000-P002",
+              "SS-000-S000-P003",
+              "SS-000-S000-P004"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              1,
+              2,
+              4,
+              87
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-000-S001",
+            "title": "መግቢያ",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-000-S001-P001",
+              "SS-000-S001-P002",
+              "SS-000-S001-P003"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              89,
+              90,
+              91
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-000-S001-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-02〕"
+                ]
+              },
+              {
+                "paragraph": "SS-000-S001-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-02〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-000-S002",
+            "title": "የምሥጢር አከፋፈል",
+            "paragraphs": 14,
+            "paragraph_ids": [
+              "SS-000-S002-P001",
+              "SS-000-S002-P002",
+              "SS-000-S002-P003",
+              "SS-000-S002-P004",
+              "SS-000-S002-P005",
+              "SS-000-S002-P006",
+              "SS-000-S002-P007",
+              "SS-000-S002-P008",
+              "SS-000-S002-P009",
+              "SS-000-S002-P010",
+              "SS-000-S002-P011",
+              "SS-000-S002-P012",
+              "SS-000-S002-P013",
+              "SS-000-S002-P014"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              93,
+              94,
+              95,
+              96,
+              97,
+              98,
+              99,
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-000-S002-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-03〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-000-S003",
+            "title": "ሰባቱ ምሥጢራተ ቤተ ክርስቲያን",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-000-S003-P001",
+              "SS-000-S003-P002",
+              "SS-000-S003-P003"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              108,
+              109,
+              110
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-000-S003-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-04〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-000-S004",
+            "title": "ሰባቱ ምሥጢራትና የሚያስገኙት ጸጋ",
+            "paragraphs": 7,
+            "paragraph_ids": [
+              "SS-000-S004-P001",
+              "SS-000-S004-P002",
+              "SS-000-S004-P003",
+              "SS-000-S004-P004",
+              "SS-000-S004-P005",
+              "SS-000-S004-P006",
+              "SS-000-S004-P007"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              112,
+              113,
+              114,
+              115,
+              116,
+              117,
+              118
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-000-S004-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-05〕"
+                ]
+              },
+              {
+                "paragraph": "SS-000-S004-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-05〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-000-S005",
+            "title": "የሰባቱ ምሥጢራት አከፋፈል",
+            "paragraphs": 23,
+            "paragraph_ids": [
+              "SS-000-S005-P001",
+              "SS-000-S005-P002",
+              "SS-000-S005-P003",
+              "SS-000-S005-P004",
+              "SS-000-S005-P005",
+              "SS-000-S005-P006",
+              "SS-000-S005-P007",
+              "SS-000-S005-P008",
+              "SS-000-S005-P009",
+              "SS-000-S005-P010",
+              "SS-000-S005-P011",
+              "SS-000-S005-P012",
+              "SS-000-S005-P013",
+              "SS-000-S005-P014",
+              "SS-000-S005-P015",
+              "SS-000-S005-P016",
+              "SS-000-S005-P017",
+              "SS-000-S005-P018",
+              "SS-000-S005-P019",
+              "SS-000-S005-P020",
+              "SS-000-S005-P021",
+              "SS-000-S005-P022",
+              "SS-000-S005-P023"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              120,
+              121,
+              122,
+              123,
+              124,
+              125,
+              126,
+              127,
+              128,
+              129,
+              130,
+              131,
+              132,
+              133,
+              134,
+              135,
+              136,
+              137,
+              138,
+              139,
+              140,
+              141,
+              142
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-000-S005-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-05〕"
+                ]
+              },
+              {
+                "paragraph": "SS-000-S005-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-04〕"
+                ]
+              },
+              {
+                "paragraph": "SS-000-S005-P010",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-06〕"
+                ]
+              },
+              {
+                "paragraph": "SS-000-S005-P018",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-06〕"
+                ]
+              },
+              {
+                "paragraph": "SS-000-S005-P023",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-06〕"
+                ]
+              }
+            ]
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-000-X000",
+            "title": null,
+            "paragraphs": 9,
+            "paragraph_ids": [
+              "SS-000-X000-P001",
+              "SS-000-X000-P002",
+              "SS-000-X000-P003",
+              "SS-000-X000-P004",
+              "SS-000-X000-P005",
+              "SS-000-X000-P006",
+              "SS-000-X000-P007",
+              "SS-000-X000-P008",
+              "SS-000-X000-P009"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              1,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              15
+            ],
+            "review_markers": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "SS-001",
+      "chapter_number": 1,
+      "title": {
+        "am": "ምሥጢረ ጥምቀት",
+        "en": "Baptism (ሚስጥረ ጥምቀት)",
+        "en_reference": "Sacrament of Baptism"
+      },
+      "files": {
+        "am": "am/01-baptism.md",
+        "en": "en/01-baptism.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-001-S001",
+            "title": "1.1 ጥምቀት በብሉይ ኪዳን",
+            "paragraphs": 7,
+            "paragraph_ids": [
+              "SS-001-S001-P001",
+              "SS-001-S001-P002",
+              "SS-001-S001-P003",
+              "SS-001-S001-P004",
+              "SS-001-S001-P005",
+              "SS-001-S001-P006",
+              "SS-001-S001-P007"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              145,
+              146,
+              147,
+              148,
+              149,
+              150,
+              151
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S001-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-07〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S001-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-07〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S001-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-07〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S002",
+            "title": "1.2 ጥምቀት በሐዲስ ኪዳን",
+            "paragraphs": 8,
+            "paragraph_ids": [
+              "SS-001-S002-P001",
+              "SS-001-S002-P002",
+              "SS-001-S002-P003",
+              "SS-001-S002-P004",
+              "SS-001-S002-P005",
+              "SS-001-S002-P006",
+              "SS-001-S002-P007",
+              "SS-001-S002-P008"
+            ],
+            "biblical_references": 11,
+            "source_lines": [
+              153,
+              154,
+              155,
+              156,
+              157,
+              158,
+              159,
+              160
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S002-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-08〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S003",
+            "title": "1.3 የጥምቀት ምሳሌዎችና ትንቢቶች",
+            "paragraphs": 15,
+            "paragraph_ids": [
+              "SS-001-S003-P001",
+              "SS-001-S003-P002",
+              "SS-001-S003-P003",
+              "SS-001-S003-P004",
+              "SS-001-S003-P005",
+              "SS-001-S003-P006",
+              "SS-001-S003-P007",
+              "SS-001-S003-P008",
+              "SS-001-S003-P009",
+              "SS-001-S003-P010",
+              "SS-001-S003-P011",
+              "SS-001-S003-P012",
+              "SS-001-S003-P013",
+              "SS-001-S003-P014",
+              "SS-001-S003-P015"
+            ],
+            "biblical_references": 14,
+            "source_lines": [
+              162,
+              163,
+              164,
+              165,
+              166,
+              167,
+              168,
+              169,
+              170,
+              171,
+              172,
+              173,
+              174,
+              175,
+              176
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S003-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-08〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S003-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-08〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S003-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-08〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S003-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-08〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S004",
+            "title": "1.4 የጥምቀት አመሠራረት በሐዲስ ኪዳን",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-001-S004-P001"
+            ],
+            "biblical_references": 4,
+            "source_lines": [
+              178
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S004-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-09〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S005",
+            "title": "1.5 የጌታ ጥምቀት",
+            "paragraphs": 33,
+            "paragraph_ids": [
+              "SS-001-S005-P001",
+              "SS-001-S005-P002",
+              "SS-001-S005-P003",
+              "SS-001-S005-P004",
+              "SS-001-S005-P005",
+              "SS-001-S005-P006",
+              "SS-001-S005-P007",
+              "SS-001-S005-P008",
+              "SS-001-S005-P009",
+              "SS-001-S005-P010",
+              "SS-001-S005-P011",
+              "SS-001-S005-P012",
+              "SS-001-S005-P013",
+              "SS-001-S005-P014",
+              "SS-001-S005-P015",
+              "SS-001-S005-P016",
+              "SS-001-S005-P017",
+              "SS-001-S005-P018",
+              "SS-001-S005-P019",
+              "SS-001-S005-P020",
+              "SS-001-S005-P021",
+              "SS-001-S005-P022",
+              "SS-001-S005-P023",
+              "SS-001-S005-P024",
+              "SS-001-S005-P025",
+              "SS-001-S005-P026",
+              "SS-001-S005-P027",
+              "SS-001-S005-P028",
+              "SS-001-S005-P029",
+              "SS-001-S005-P030",
+              "SS-001-S005-P031",
+              "SS-001-S005-P032",
+              "SS-001-S005-P033"
+            ],
+            "biblical_references": 6,
+            "source_lines": [
+              180,
+              181,
+              182,
+              183,
+              184,
+              185,
+              186,
+              187,
+              188,
+              189,
+              190,
+              191,
+              192,
+              193,
+              194,
+              195,
+              196,
+              197,
+              198,
+              199,
+              200,
+              201,
+              202,
+              203,
+              204,
+              205,
+              206,
+              207,
+              208,
+              209,
+              210,
+              211,
+              212
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S005-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-09〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S005-P015",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-10〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S005-P020",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-10〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S005-P023",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-10〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S005-P025",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-10〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S006",
+            "title": "1.6 የሰው ልጆች ጥምቀትና ቅድመ ዝግጅት",
+            "paragraphs": 15,
+            "paragraph_ids": [
+              "SS-001-S006-P001",
+              "SS-001-S006-P002",
+              "SS-001-S006-P003",
+              "SS-001-S006-P004",
+              "SS-001-S006-P005",
+              "SS-001-S006-P006",
+              "SS-001-S006-P007",
+              "SS-001-S006-P008",
+              "SS-001-S006-P009",
+              "SS-001-S006-P010",
+              "SS-001-S006-P011",
+              "SS-001-S006-P012",
+              "SS-001-S006-P013",
+              "SS-001-S006-P014",
+              "SS-001-S006-P015"
+            ],
+            "biblical_references": 18,
+            "source_lines": [
+              214,
+              215,
+              216,
+              217,
+              218,
+              219,
+              220,
+              221,
+              222,
+              223,
+              224,
+              225,
+              226,
+              227,
+              228
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S006-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-11〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S006-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-11〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S006-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-11〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S006-P013",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-11〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S007",
+            "title": "1.7 ጥምቀት የማይደገምበት ምክንያት",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-001-S007-P001",
+              "SS-001-S007-P002",
+              "SS-001-S007-P003",
+              "SS-001-S007-P004",
+              "SS-001-S007-P005"
+            ],
+            "biblical_references": 3,
+            "source_lines": [
+              230,
+              231,
+              232,
+              233,
+              234
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-001-S008",
+            "title": "1.8 የጥምቀት ዓይነቶች",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-001-S008-P001",
+              "SS-001-S008-P002",
+              "SS-001-S008-P003"
+            ],
+            "biblical_references": 4,
+            "source_lines": [
+              236,
+              237,
+              238
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S008-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-12〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S008-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-12〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S009",
+            "title": "1.9 የሐዋርያትና የነፍሳት ጥምቀት",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-001-S009-P001",
+              "SS-001-S009-P002",
+              "SS-001-S009-P003"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              240,
+              242,
+              243
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S009-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-12〕",
+                  "〔ያልተሟላው ሐረግ፦ አባሪ ቤ-ግ05።〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S009-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-12〕"
+                ]
+              },
+              {
+                "paragraph": "SS-001-S009-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-12〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S010",
+            "title": "1.10 ማዕተብ ወይም ክር",
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-001-S010-P001",
+              "SS-001-S010-P002"
+            ],
+            "biblical_references": 6,
+            "source_lines": [
+              245,
+              246
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-001-S010-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-13〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-001-S011",
+            "title": "1.11 የሚታይ አገልግሎትና የማይታይ ጸጋ",
+            "paragraphs": 9,
+            "paragraph_ids": [
+              "SS-001-S011-P001",
+              "SS-001-S011-P002",
+              "SS-001-S011-P003",
+              "SS-001-S011-P004",
+              "SS-001-S011-P005",
+              "SS-001-S011-P006",
+              "SS-001-S011-P007",
+              "SS-001-S011-P008",
+              "SS-001-S011-P009"
+            ],
+            "biblical_references": 4,
+            "source_lines": [
+              248,
+              249,
+              250,
+              251,
+              252,
+              253,
+              254,
+              255,
+              256
+            ],
+            "review_markers": []
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-001-X000",
+            "title": null,
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-001-X000-P001",
+              "SS-001-X000-P002"
+            ],
+            "biblical_references": 17,
+            "source_lines": [
+              25,
+              29
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-001-X001",
+            "title": "Order of Baptism",
+            "paragraphs": 15,
+            "paragraph_ids": [
+              "SS-001-X001-P001",
+              "SS-001-X001-P002",
+              "SS-001-X001-P003",
+              "SS-001-X001-P004",
+              "SS-001-X001-P005",
+              "SS-001-X001-P006",
+              "SS-001-X001-P007",
+              "SS-001-X001-P008",
+              "SS-001-X001-P009",
+              "SS-001-X001-P010",
+              "SS-001-X001-P011",
+              "SS-001-X001-P012",
+              "SS-001-X001-P013",
+              "SS-001-X001-P014",
+              "SS-001-X001-P015"
+            ],
+            "biblical_references": 6,
+            "source_lines": [
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48,
+              49,
+              50,
+              51
+            ],
+            "review_markers": []
+          }
+        ]
+      },
+      "en_source_order": 1
+    },
+    {
+      "id": "SS-002",
+      "chapter_number": 2,
+      "title": {
+        "am": "ምሥጢረ ሜሮን",
+        "en": "Confirmation (Myron) (ሚስጥረ ሜሮን)",
+        "en_reference": "Sacrament of Holy Chrismation"
+      },
+      "files": {
+        "am": "am/02-holy-chrismation.md",
+        "en": "en/02-holy-chrismation.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-002-S000",
+            "title": null,
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-002-S000-P001",
+              "SS-002-S000-P002"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              258,
+              259
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-002-S000-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-14〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-002-S001",
+            "title": "2.1 ሜሮን በብሉይ ኪዳን",
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-002-S001-P001",
+              "SS-002-S001-P002"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              261,
+              262
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-002-S001-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-14〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-002-S002",
+            "title": "2.2 ምሥጢረ ሜሮን በሐዲስ ኪዳን",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-002-S002-P001",
+              "SS-002-S002-P002",
+              "SS-002-S002-P003"
+            ],
+            "biblical_references": 8,
+            "source_lines": [
+              264,
+              265,
+              266
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-002-S002-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-14〕"
+                ]
+              },
+              {
+                "paragraph": "SS-002-S002-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-14〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-002-S003",
+            "title": "2.3 የሜሮን አመሠራረትና አፈላል",
+            "paragraphs": 6,
+            "paragraph_ids": [
+              "SS-002-S003-P001",
+              "SS-002-S003-P002",
+              "SS-002-S003-P003",
+              "SS-002-S003-P004",
+              "SS-002-S003-P005",
+              "SS-002-S003-P006"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              268,
+              269,
+              270,
+              271,
+              272,
+              273
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-002-S003-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-15〕"
+                ]
+              },
+              {
+                "paragraph": "SS-002-S003-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-15〕"
+                ]
+              },
+              {
+                "paragraph": "SS-002-S003-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-15〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-002-S004",
+            "title": "2.4 ሜሮን ከጥምቀት ጋር የሚፈጸምበት ምክንያት",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-002-S004-P001",
+              "SS-002-S004-P002",
+              "SS-002-S004-P003"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              275,
+              276,
+              277
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-002-S004-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-15〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-002-S005",
+            "title": "2.5 የምሥጢረ ሜሮን አፈጻጸምና አቀባብ",
+            "paragraphs": 9,
+            "paragraph_ids": [
+              "SS-002-S005-P001",
+              "SS-002-S005-P002",
+              "SS-002-S005-P003",
+              "SS-002-S005-P004",
+              "SS-002-S005-P005",
+              "SS-002-S005-P006",
+              "SS-002-S005-P007",
+              "SS-002-S005-P008",
+              "SS-002-S005-P009"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              279,
+              280,
+              281,
+              282,
+              283,
+              284,
+              285,
+              286,
+              287
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-002-S005-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-16〕"
+                ]
+              },
+              {
+                "paragraph": "SS-002-S005-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-16〕"
+                ]
+              },
+              {
+                "paragraph": "SS-002-S005-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-16〕"
+                ]
+              },
+              {
+                "paragraph": "SS-002-S005-P008",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-16〕"
+                ]
+              },
+              {
+                "paragraph": "SS-002-S005-P009",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-16〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-002-S006",
+            "title": "2.6 የሜሮን ምልክታዊ ትርጉም",
+            "paragraphs": 4,
+            "paragraph_ids": [
+              "SS-002-S006-P001",
+              "SS-002-S006-P002",
+              "SS-002-S006-P003",
+              "SS-002-S006-P004"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              289,
+              290,
+              291,
+              292
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-002-S007",
+            "title": "2.7 የሚታይ አገልግሎትና የማይታይ ጸጋ",
+            "paragraphs": 7,
+            "paragraph_ids": [
+              "SS-002-S007-P001",
+              "SS-002-S007-P002",
+              "SS-002-S007-P003",
+              "SS-002-S007-P004",
+              "SS-002-S007-P005",
+              "SS-002-S007-P006",
+              "SS-002-S007-P007"
+            ],
+            "biblical_references": 12,
+            "source_lines": [
+              294,
+              295,
+              296,
+              297,
+              298,
+              299,
+              300
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-002-S007-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-16〕"
+                ]
+              }
+            ]
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-002-X000",
+            "title": null,
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-002-X000-P001",
+              "SS-002-X000-P002"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              61,
+              65
+            ],
+            "review_markers": []
+          }
+        ]
+      },
+      "en_source_order": 2
+    },
+    {
+      "id": "SS-003",
+      "chapter_number": 3,
+      "title": {
+        "am": "ምሥጢረ ቁርባን",
+        "en": "Holy Communion (ሚስጥረ ቁርባን)",
+        "en_reference": "Sacrament of the Holy Eucharist"
+      },
+      "files": {
+        "am": "am/03-holy-eucharist.md",
+        "en": "en/03-holy-eucharist.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-003-S000",
+            "title": null,
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-003-S000-P001",
+              "SS-003-S000-P002"
+            ],
+            "biblical_references": 3,
+            "source_lines": [
+              302,
+              303
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S000-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-17〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S001",
+            "title": "3.1 ትንቢቶችና ምሳሌዎች በብሉይ ኪዳን",
+            "paragraphs": 16,
+            "paragraph_ids": [
+              "SS-003-S001-P001",
+              "SS-003-S001-P002",
+              "SS-003-S001-P003",
+              "SS-003-S001-P004",
+              "SS-003-S001-P005",
+              "SS-003-S001-P006",
+              "SS-003-S001-P007",
+              "SS-003-S001-P008",
+              "SS-003-S001-P009",
+              "SS-003-S001-P010",
+              "SS-003-S001-P011",
+              "SS-003-S001-P012",
+              "SS-003-S001-P013",
+              "SS-003-S001-P014",
+              "SS-003-S001-P015",
+              "SS-003-S001-P016"
+            ],
+            "biblical_references": 15,
+            "source_lines": [
+              305,
+              306,
+              307,
+              309,
+              310,
+              311,
+              312,
+              313,
+              314,
+              315,
+              316,
+              317,
+              318,
+              319,
+              320,
+              321
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S001-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-17〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S001-P003",
+                "markers": [
+                  "〔የግምገማ አባሪ፦ ቤ-ግ02፤ ያልተነበበው የምንጩ ክፍል በአባሪው ተቀምጧል።〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S001-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-18〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S001-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-17〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S001-P008",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-17፣ ቤ-18〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S001-P011",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-18〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S001-P015",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-18〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S001-P016",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-18〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S002",
+            "title": "3.2 መስዋዕት በብሉይ ኪዳን",
+            "paragraphs": 9,
+            "paragraph_ids": [
+              "SS-003-S002-P001",
+              "SS-003-S002-P002",
+              "SS-003-S002-P003",
+              "SS-003-S002-P004",
+              "SS-003-S002-P005",
+              "SS-003-S002-P006",
+              "SS-003-S002-P007",
+              "SS-003-S002-P008",
+              "SS-003-S002-P009"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              323,
+              324,
+              325,
+              326,
+              327,
+              328,
+              329,
+              330,
+              331
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S002-P008",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-19〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S002-P009",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-19〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S003",
+            "title": "3.3 ቅዱስ ቁርባን በሐዲስ ኪዳን",
+            "paragraphs": 11,
+            "paragraph_ids": [
+              "SS-003-S003-P001",
+              "SS-003-S003-P002",
+              "SS-003-S003-P003",
+              "SS-003-S003-P004",
+              "SS-003-S003-P005",
+              "SS-003-S003-P006",
+              "SS-003-S003-P007",
+              "SS-003-S003-P008",
+              "SS-003-S003-P009",
+              "SS-003-S003-P010",
+              "SS-003-S003-P011"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              333,
+              334,
+              335,
+              336,
+              337,
+              338,
+              339,
+              340,
+              341,
+              342,
+              345
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S003-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-20〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S003-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-20〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S003-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-20〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S003-P010",
+                "markers": [
+                  "〔ያልተነበበው መነሻ ሐረግ፦ አባሪ ቤ-ግ03።〕",
+                  "〔ለግምገማ፦ ቤ-20〕",
+                  "〔የግምገማ አባሪ፦ ቤ-ግ04፤ ያልተነበበው የምንጩ ክፍል በአባሪው ተቀምጧል።〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S004",
+            "title": "3.4 ቅዱስ ቁርባን በሕብስትና በወይን የሆነበት ምክንያት",
+            "paragraphs": 10,
+            "paragraph_ids": [
+              "SS-003-S004-P001",
+              "SS-003-S004-P002",
+              "SS-003-S004-P003",
+              "SS-003-S004-P004",
+              "SS-003-S004-P005",
+              "SS-003-S004-P006",
+              "SS-003-S004-P007",
+              "SS-003-S004-P008",
+              "SS-003-S004-P009",
+              "SS-003-S004-P010"
+            ],
+            "biblical_references": 7,
+            "source_lines": [
+              347,
+              348,
+              349,
+              350,
+              351,
+              352,
+              353,
+              354,
+              355,
+              356
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S004-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-21〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S004-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-21〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S005",
+            "title": "3.5 ከዕለተ ዓርብ አስቀድሞ ሥጋወደሙን የሰጠበት ምክንያት",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-003-S005-P001"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              358
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S005-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-21〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S006",
+            "title": "3.6 ሊቆርብ የሚገባው ሰውና ቅድመ ዝግጅት",
+            "paragraphs": 13,
+            "paragraph_ids": [
+              "SS-003-S006-P001",
+              "SS-003-S006-P002",
+              "SS-003-S006-P003",
+              "SS-003-S006-P004",
+              "SS-003-S006-P005",
+              "SS-003-S006-P006",
+              "SS-003-S006-P007",
+              "SS-003-S006-P008",
+              "SS-003-S006-P009",
+              "SS-003-S006-P010",
+              "SS-003-S006-P011",
+              "SS-003-S006-P012",
+              "SS-003-S006-P013"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              360,
+              361,
+              362,
+              363,
+              364,
+              365,
+              366,
+              367,
+              368,
+              369,
+              370,
+              371,
+              372
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S006-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-22〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S006-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-22〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S006-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-22〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S006-P009",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-22〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S006-P011",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-22〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S006-P013",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-22〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S007",
+            "title": "3.7 የቅዱስ ቁርባን አፈጻጸም",
+            "paragraphs": 11,
+            "paragraph_ids": [
+              "SS-003-S007-P001",
+              "SS-003-S007-P002",
+              "SS-003-S007-P003",
+              "SS-003-S007-P004",
+              "SS-003-S007-P005",
+              "SS-003-S007-P006",
+              "SS-003-S007-P007",
+              "SS-003-S007-P008",
+              "SS-003-S007-P009",
+              "SS-003-S007-P010",
+              "SS-003-S007-P011"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              374,
+              375,
+              376,
+              377,
+              378,
+              379,
+              380,
+              381,
+              382,
+              383,
+              384
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S007-P008",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-23〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S007-P011",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-23〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S008",
+            "title": "3.8 ቅዱስ ቁርባንና መታሰቢያ",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-003-S008-P001"
+            ],
+            "biblical_references": 3,
+            "source_lines": [
+              386
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S008-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-23〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S009",
+            "title": "3.9 ቅዱስ ቁርባን በአበው አንደበት",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-003-S009-P001",
+              "SS-003-S009-P002",
+              "SS-003-S009-P003"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              388,
+              389,
+              390
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S009-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-23〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S009-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-23〕"
+                ]
+              },
+              {
+                "paragraph": "SS-003-S009-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-23〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-003-S010",
+            "title": "3.10 የሚታይ አገልግሎትና የማይታይ ጸጋ",
+            "paragraphs": 8,
+            "paragraph_ids": [
+              "SS-003-S010-P001",
+              "SS-003-S010-P002",
+              "SS-003-S010-P003",
+              "SS-003-S010-P004",
+              "SS-003-S010-P005",
+              "SS-003-S010-P006",
+              "SS-003-S010-P007",
+              "SS-003-S010-P008"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              392,
+              393,
+              394,
+              395,
+              396,
+              397,
+              398,
+              399
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-003-S010-P008",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-23〕"
+                ]
+              }
+            ]
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-003-X000",
+            "title": null,
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-003-X000-P001",
+              "SS-003-X000-P002"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              75,
+              79
+            ],
+            "review_markers": []
+          }
+        ]
+      },
+      "en_source_order": 3
+    },
+    {
+      "id": "SS-004",
+      "chapter_number": 4,
+      "title": {
+        "am": "ምሥጢረ ንስሐ",
+        "en": "Mystery of Penance (ሚስጥረ ንስሀ)",
+        "en_reference": "Sacrament of Repentance"
+      },
+      "files": {
+        "am": "am/04-repentance.md",
+        "en": "en/04-repentance.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-004-S000",
+            "title": null,
+            "paragraphs": 4,
+            "paragraph_ids": [
+              "SS-004-S000-P001",
+              "SS-004-S000-P002",
+              "SS-004-S000-P003",
+              "SS-004-S000-P004"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              401,
+              402,
+              403,
+              404
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-004-S001",
+            "title": "4.1 ምሥጢረ ንስሐ በብሉይ ኪዳን",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-004-S001-P001",
+              "SS-004-S001-P002",
+              "SS-004-S001-P003",
+              "SS-004-S001-P004",
+              "SS-004-S001-P005"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              406,
+              407,
+              408,
+              409,
+              410
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-004-S001-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-24〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-004-S002",
+            "title": "4.2 የምሥጢረ ንስሐ አመሠራረት",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-004-S002-P001"
+            ],
+            "biblical_references": 3,
+            "source_lines": [
+              412
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-004-S003",
+            "title": "4.3 ለንስሐ የሚደረግ ዝግጅት",
+            "paragraphs": 6,
+            "paragraph_ids": [
+              "SS-004-S003-P001",
+              "SS-004-S003-P002",
+              "SS-004-S003-P003",
+              "SS-004-S003-P004",
+              "SS-004-S003-P005",
+              "SS-004-S003-P006"
+            ],
+            "biblical_references": 7,
+            "source_lines": [
+              414,
+              415,
+              416,
+              417,
+              418,
+              419
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-004-S003-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-24〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-004-S004",
+            "title": "4.4 የኃጢአት ትርጉምና ዓይነቶች",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-004-S004-P001",
+              "SS-004-S004-P002",
+              "SS-004-S004-P003",
+              "SS-004-S004-P004",
+              "SS-004-S004-P005"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              421,
+              422,
+              423,
+              424,
+              425
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-004-S005",
+            "title": "4.5 ወደ ኃጢአት የሚያደርሱ መንገዶች",
+            "paragraphs": 17,
+            "paragraph_ids": [
+              "SS-004-S005-P001",
+              "SS-004-S005-P002",
+              "SS-004-S005-P003",
+              "SS-004-S005-P004",
+              "SS-004-S005-P005",
+              "SS-004-S005-P006",
+              "SS-004-S005-P007",
+              "SS-004-S005-P008",
+              "SS-004-S005-P009",
+              "SS-004-S005-P010",
+              "SS-004-S005-P011",
+              "SS-004-S005-P012",
+              "SS-004-S005-P013",
+              "SS-004-S005-P014",
+              "SS-004-S005-P015",
+              "SS-004-S005-P016",
+              "SS-004-S005-P017"
+            ],
+            "biblical_references": 11,
+            "source_lines": [
+              427,
+              428,
+              429,
+              430,
+              431,
+              432,
+              433,
+              434,
+              435,
+              436,
+              437,
+              438,
+              439,
+              440,
+              441,
+              442,
+              443
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-004-S005-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-24〕"
+                ]
+              },
+              {
+                "paragraph": "SS-004-S005-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-24〕"
+                ]
+              },
+              {
+                "paragraph": "SS-004-S005-P009",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-24〕"
+                ]
+              },
+              {
+                "paragraph": "SS-004-S005-P017",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-24〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-004-S006",
+            "title": "4.6 ንስሐ የመግባት መርሖዎች",
+            "paragraphs": 7,
+            "paragraph_ids": [
+              "SS-004-S006-P001",
+              "SS-004-S006-P002",
+              "SS-004-S006-P003",
+              "SS-004-S006-P004",
+              "SS-004-S006-P005",
+              "SS-004-S006-P006",
+              "SS-004-S006-P007"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              445,
+              446,
+              447,
+              448,
+              449,
+              450,
+              451
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-004-S007",
+            "title": "4.7 የማይደመሰስ ኃጢአት",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-004-S007-P001"
+            ],
+            "biblical_references": 3,
+            "source_lines": [
+              453
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-004-S007-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-24〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-004-S008",
+            "title": "4.8 ኑዛዜና ቀኖና",
+            "paragraphs": 12,
+            "paragraph_ids": [
+              "SS-004-S008-P001",
+              "SS-004-S008-P002",
+              "SS-004-S008-P003",
+              "SS-004-S008-P004",
+              "SS-004-S008-P005",
+              "SS-004-S008-P006",
+              "SS-004-S008-P007",
+              "SS-004-S008-P008",
+              "SS-004-S008-P009",
+              "SS-004-S008-P010",
+              "SS-004-S008-P011",
+              "SS-004-S008-P012"
+            ],
+            "biblical_references": 19,
+            "source_lines": [
+              455,
+              456,
+              457,
+              458,
+              459,
+              460,
+              461,
+              462,
+              463,
+              464,
+              465,
+              466
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-004-S008-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-25〕"
+                ]
+              },
+              {
+                "paragraph": "SS-004-S008-P011",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-25〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-004-S009",
+            "title": "4.9 የሚታይ አገልግሎትና የማይታይ ጸጋ",
+            "paragraphs": 7,
+            "paragraph_ids": [
+              "SS-004-S009-P001",
+              "SS-004-S009-P002",
+              "SS-004-S009-P003",
+              "SS-004-S009-P004",
+              "SS-004-S009-P005",
+              "SS-004-S009-P006",
+              "SS-004-S009-P007"
+            ],
+            "biblical_references": 6,
+            "source_lines": [
+              468,
+              469,
+              470,
+              471,
+              472,
+              473,
+              474
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-004-S009-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-25〕"
+                ]
+              },
+              {
+                "paragraph": "SS-004-S009-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-25〕"
+                ]
+              }
+            ]
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-004-X000",
+            "title": null,
+            "paragraphs": 4,
+            "paragraph_ids": [
+              "SS-004-X000-P001",
+              "SS-004-X000-P002",
+              "SS-004-X000-P003",
+              "SS-004-X000-P004"
+            ],
+            "biblical_references": 8,
+            "source_lines": [
+              175,
+              179,
+              180,
+              181
+            ],
+            "review_markers": []
+          }
+        ]
+      },
+      "en_source_order": 6
+    },
+    {
+      "id": "SS-005",
+      "chapter_number": 5,
+      "title": {
+        "am": "ምሥጢረ ክህነት",
+        "en": "Ordination (ሚስጥረ ክህነት)",
+        "en_reference": "Sacrament of Holy Orders"
+      },
+      "files": {
+        "am": "am/05-holy-orders.md",
+        "en": "en/05-holy-orders.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-005-S000",
+            "title": null,
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-005-S000-P001",
+              "SS-005-S000-P002",
+              "SS-005-S000-P003"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              476,
+              477,
+              478
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-005-S001",
+            "title": "5.1 የክህነት ዓላማና ጥቅም",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-005-S001-P001",
+              "SS-005-S001-P002",
+              "SS-005-S001-P003"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              480,
+              481,
+              482
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-005-S001-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-26〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-005-S002",
+            "title": "5.2 የክህነት አመሠራረት",
+            "paragraphs": 9,
+            "paragraph_ids": [
+              "SS-005-S002-P001",
+              "SS-005-S002-P002",
+              "SS-005-S002-P003",
+              "SS-005-S002-P004",
+              "SS-005-S002-P005",
+              "SS-005-S002-P006",
+              "SS-005-S002-P007",
+              "SS-005-S002-P008",
+              "SS-005-S002-P009"
+            ],
+            "biblical_references": 10,
+            "source_lines": [
+              484,
+              485,
+              486,
+              487,
+              488,
+              489,
+              490,
+              491,
+              492
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-005-S002-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-26〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S002-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-26〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S002-P009",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-26〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-005-S003",
+            "title": "5.3 የካህናት ሥልጣን በሐዲስ ኪዳን",
+            "paragraphs": 9,
+            "paragraph_ids": [
+              "SS-005-S003-P001",
+              "SS-005-S003-P002",
+              "SS-005-S003-P003",
+              "SS-005-S003-P004",
+              "SS-005-S003-P005",
+              "SS-005-S003-P006",
+              "SS-005-S003-P007",
+              "SS-005-S003-P008",
+              "SS-005-S003-P009"
+            ],
+            "biblical_references": 15,
+            "source_lines": [
+              494,
+              495,
+              496,
+              497,
+              498,
+              499,
+              500,
+              501,
+              502
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-005-S003-P008",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-26〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S003-P009",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-26〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-005-S004",
+            "title": "5.4 ሢመተ ክህነትና የክህነት ደረጃዎች",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-005-S004-P001"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              504
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-005-S005",
+            "title": "5.5 የዲቁና ሢመትና ሥልጣን",
+            "paragraphs": 15,
+            "paragraph_ids": [
+              "SS-005-S005-P001",
+              "SS-005-S005-P002",
+              "SS-005-S005-P003",
+              "SS-005-S005-P004",
+              "SS-005-S005-P005",
+              "SS-005-S005-P006",
+              "SS-005-S005-P007",
+              "SS-005-S005-P008",
+              "SS-005-S005-P009",
+              "SS-005-S005-P010",
+              "SS-005-S005-P011",
+              "SS-005-S005-P012",
+              "SS-005-S005-P013",
+              "SS-005-S005-P014",
+              "SS-005-S005-P015"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              506,
+              507,
+              508,
+              509,
+              510,
+              511,
+              512,
+              513,
+              514,
+              515,
+              516,
+              517,
+              518,
+              519,
+              520
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-005-S005-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-27〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S005-P013",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-27〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S005-P015",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-27〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-005-S006",
+            "title": "5.6 የዲያቆናዊት ሴት ሹመትና ተግባር",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-005-S006-P001",
+              "SS-005-S006-P002",
+              "SS-005-S006-P003",
+              "SS-005-S006-P004",
+              "SS-005-S006-P005"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              522,
+              523,
+              524,
+              525,
+              526
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-005-S006-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-27〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S006-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-27〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-005-S007",
+            "title": "5.7 የቅስና ሢመትና ሥልጣን",
+            "paragraphs": 22,
+            "paragraph_ids": [
+              "SS-005-S007-P001",
+              "SS-005-S007-P002",
+              "SS-005-S007-P003",
+              "SS-005-S007-P004",
+              "SS-005-S007-P005",
+              "SS-005-S007-P006",
+              "SS-005-S007-P007",
+              "SS-005-S007-P008",
+              "SS-005-S007-P009",
+              "SS-005-S007-P010",
+              "SS-005-S007-P011",
+              "SS-005-S007-P012",
+              "SS-005-S007-P013",
+              "SS-005-S007-P014",
+              "SS-005-S007-P015",
+              "SS-005-S007-P016",
+              "SS-005-S007-P017",
+              "SS-005-S007-P018",
+              "SS-005-S007-P019",
+              "SS-005-S007-P020",
+              "SS-005-S007-P021",
+              "SS-005-S007-P022"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              528,
+              529,
+              530,
+              531,
+              532,
+              533,
+              534,
+              535,
+              536,
+              537,
+              538,
+              539,
+              540,
+              541,
+              542,
+              543,
+              544,
+              545,
+              546,
+              547,
+              548,
+              549
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-005-S007-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-28〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S007-P010",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-28〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S007-P016",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-28〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S007-P017",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-28〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S007-P019",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-28〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S007-P021",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-28〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S007-P022",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-28〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-005-S008",
+            "title": "5.8 የኤጲስ ቆጶስ ሢመትና ሥልጣን",
+            "paragraphs": 17,
+            "paragraph_ids": [
+              "SS-005-S008-P001",
+              "SS-005-S008-P002",
+              "SS-005-S008-P003",
+              "SS-005-S008-P004",
+              "SS-005-S008-P005",
+              "SS-005-S008-P006",
+              "SS-005-S008-P007",
+              "SS-005-S008-P008",
+              "SS-005-S008-P009",
+              "SS-005-S008-P010",
+              "SS-005-S008-P011",
+              "SS-005-S008-P012",
+              "SS-005-S008-P013",
+              "SS-005-S008-P014",
+              "SS-005-S008-P015",
+              "SS-005-S008-P016",
+              "SS-005-S008-P017"
+            ],
+            "biblical_references": 8,
+            "source_lines": [
+              551,
+              552,
+              553,
+              554,
+              555,
+              556,
+              557,
+              558,
+              559,
+              560,
+              561,
+              562,
+              563,
+              564,
+              565,
+              566,
+              567
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-005-S008-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P009",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P010",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P014",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P015",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              },
+              {
+                "paragraph": "SS-005-S008-P017",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-29〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-005-S009",
+            "title": "5.9 የሚታይ አገልግሎትና የማይታይ ጸጋ",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-005-S009-P001",
+              "SS-005-S009-P002",
+              "SS-005-S009-P003",
+              "SS-005-S009-P004",
+              "SS-005-S009-P005"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              569,
+              570,
+              571,
+              572,
+              573
+            ],
+            "review_markers": []
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-005-X000",
+            "title": null,
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-005-X000-P001",
+              "SS-005-X000-P002"
+            ],
+            "biblical_references": 3,
+            "source_lines": [
+              89,
+              93
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-005-X001",
+            "title": "1. Deacon (ዲያቆን)",
+            "paragraphs": 6,
+            "paragraph_ids": [
+              "SS-005-X001-P001",
+              "SS-005-X001-P002",
+              "SS-005-X001-P003",
+              "SS-005-X001-P004",
+              "SS-005-X001-P005",
+              "SS-005-X001-P006"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              101,
+              102,
+              103,
+              104,
+              105,
+              106
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-005-X002",
+            "title": "2. Priest (ካህን - Kahini)",
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-005-X002-P001",
+              "SS-005-X002-P002"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              114,
+              118
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-005-X003",
+            "title": "3. Bishop (ጳጳስ - Papasi)",
+            "paragraphs": 6,
+            "paragraph_ids": [
+              "SS-005-X003-P001",
+              "SS-005-X003-P002",
+              "SS-005-X003-P003",
+              "SS-005-X003-P004",
+              "SS-005-X003-P005",
+              "SS-005-X003-P006"
+            ],
+            "biblical_references": 6,
+            "source_lines": [
+              126,
+              130,
+              134,
+              135,
+              136,
+              137
+            ],
+            "review_markers": []
+          }
+        ]
+      },
+      "en_source_order": 4
+    },
+    {
+      "id": "SS-006",
+      "chapter_number": 6,
+      "title": {
+        "am": "ምሥጢረ ተክሊል",
+        "en": "Holy Matrimony (ሚስጥረተክሊል)",
+        "en_reference": "Sacrament of Holy Matrimony"
+      },
+      "files": {
+        "am": "am/06-holy-matrimony.md",
+        "en": "en/06-holy-matrimony.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-006-S000",
+            "title": null,
+            "paragraphs": 7,
+            "paragraph_ids": [
+              "SS-006-S000-P001",
+              "SS-006-S000-P002",
+              "SS-006-S000-P003",
+              "SS-006-S000-P004",
+              "SS-006-S000-P005",
+              "SS-006-S000-P006",
+              "SS-006-S000-P007"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              575,
+              576,
+              577,
+              578,
+              579,
+              580,
+              581
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S000-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-30〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S000-P006",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-30〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S001",
+            "title": "6.1 የምሥጢረ ተክሊል አመሠራረት",
+            "paragraphs": 6,
+            "paragraph_ids": [
+              "SS-006-S001-P001",
+              "SS-006-S001-P002",
+              "SS-006-S001-P003",
+              "SS-006-S001-P004",
+              "SS-006-S001-P005",
+              "SS-006-S001-P006"
+            ],
+            "biblical_references": 6,
+            "source_lines": [
+              583,
+              584,
+              585,
+              586,
+              587,
+              588
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S001-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-30〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S001-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-30〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S002",
+            "title": "6.2 የምሥጢረ ተክሊል ዓላማ",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-006-S002-P001",
+              "SS-006-S002-P002",
+              "SS-006-S002-P003",
+              "SS-006-S002-P004",
+              "SS-006-S002-P005"
+            ],
+            "biblical_references": 9,
+            "source_lines": [
+              590,
+              591,
+              592,
+              593,
+              594
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S002-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-31〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S003",
+            "title": "6.3 ከጋብቻ በፊት የሚደረግ ዝግጅት",
+            "paragraphs": 41,
+            "paragraph_ids": [
+              "SS-006-S003-P001",
+              "SS-006-S003-P002",
+              "SS-006-S003-P003",
+              "SS-006-S003-P004",
+              "SS-006-S003-P005",
+              "SS-006-S003-P006",
+              "SS-006-S003-P007",
+              "SS-006-S003-P008",
+              "SS-006-S003-P009",
+              "SS-006-S003-P010",
+              "SS-006-S003-P011",
+              "SS-006-S003-P012",
+              "SS-006-S003-P013",
+              "SS-006-S003-P014",
+              "SS-006-S003-P015",
+              "SS-006-S003-P016",
+              "SS-006-S003-P017",
+              "SS-006-S003-P018",
+              "SS-006-S003-P019",
+              "SS-006-S003-P020",
+              "SS-006-S003-P021",
+              "SS-006-S003-P022",
+              "SS-006-S003-P023",
+              "SS-006-S003-P024",
+              "SS-006-S003-P025",
+              "SS-006-S003-P026",
+              "SS-006-S003-P027",
+              "SS-006-S003-P028",
+              "SS-006-S003-P029",
+              "SS-006-S003-P030",
+              "SS-006-S003-P031",
+              "SS-006-S003-P032",
+              "SS-006-S003-P033",
+              "SS-006-S003-P034",
+              "SS-006-S003-P035",
+              "SS-006-S003-P036",
+              "SS-006-S003-P037",
+              "SS-006-S003-P038",
+              "SS-006-S003-P039",
+              "SS-006-S003-P040",
+              "SS-006-S003-P041"
+            ],
+            "biblical_references": 11,
+            "source_lines": [
+              596,
+              597,
+              598,
+              599,
+              600,
+              601,
+              602,
+              603,
+              604,
+              605,
+              606,
+              607,
+              608,
+              609,
+              610,
+              611,
+              612,
+              613,
+              614,
+              615,
+              616,
+              617,
+              618,
+              619,
+              620,
+              621,
+              622,
+              623,
+              624,
+              625,
+              626,
+              627,
+              628,
+              629,
+              630,
+              631,
+              632,
+              633,
+              634,
+              635,
+              636
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S003-P008",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-31〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S003-P011",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-31〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S003-P015",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-31〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S003-P019",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-31〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S003-P020",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-31〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S003-P031",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-32〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S003-P036",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-32〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S004",
+            "title": "6.4 በተክሊል ለመጋባት የተጋቢዎች መመዘኛ",
+            "paragraphs": 8,
+            "paragraph_ids": [
+              "SS-006-S004-P001",
+              "SS-006-S004-P002",
+              "SS-006-S004-P003",
+              "SS-006-S004-P004",
+              "SS-006-S004-P005",
+              "SS-006-S004-P006",
+              "SS-006-S004-P007",
+              "SS-006-S004-P008"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              638,
+              639,
+              640,
+              641,
+              642,
+              643,
+              644,
+              645
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S004-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-32〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S004-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-32〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S004-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-32〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S004-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-32〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S004-P007",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-32〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S005",
+            "title": "6.5 ጥሎሽ",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-006-S005-P001"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              647
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S005-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-33〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S006",
+            "title": "6.6 የቃል ኪዳን ቀለበት",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-006-S006-P001"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              649
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-006-S007",
+            "title": "6.7 የጋብቻ አንድነት",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-006-S007-P001"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              651
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-006-S008",
+            "title": "6.8 ከጋብቻ በኋላ የባልና የሚስት አኗኗር",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-006-S008-P001",
+              "SS-006-S008-P002",
+              "SS-006-S008-P003",
+              "SS-006-S008-P004",
+              "SS-006-S008-P005"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              653,
+              654,
+              655,
+              656,
+              657
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S008-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-33〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S008-P005",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-33〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S009",
+            "title": "6.9 ፍቺ",
+            "paragraphs": 10,
+            "paragraph_ids": [
+              "SS-006-S009-P001",
+              "SS-006-S009-P002",
+              "SS-006-S009-P003",
+              "SS-006-S009-P004",
+              "SS-006-S009-P005",
+              "SS-006-S009-P006",
+              "SS-006-S009-P007",
+              "SS-006-S009-P008",
+              "SS-006-S009-P009",
+              "SS-006-S009-P010"
+            ],
+            "biblical_references": 8,
+            "source_lines": [
+              659,
+              660,
+              661,
+              662,
+              663,
+              664,
+              665,
+              666,
+              667,
+              668
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S009-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-33〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S009-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-33፣ ቤ-34〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S010",
+            "title": "6.10 ሁለተኛ ጋብቻና መአስባን",
+            "paragraphs": 6,
+            "paragraph_ids": [
+              "SS-006-S010-P001",
+              "SS-006-S010-P002",
+              "SS-006-S010-P003",
+              "SS-006-S010-P004",
+              "SS-006-S010-P005",
+              "SS-006-S010-P006"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              670,
+              671,
+              672,
+              673,
+              674,
+              675
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S010-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-34〕"
+                ]
+              },
+              {
+                "paragraph": "SS-006-S010-P004",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-34〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S011",
+            "title": "6.11 የጋብቻ አፈጻጸም",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-006-S011-P001",
+              "SS-006-S011-P002",
+              "SS-006-S011-P003",
+              "SS-006-S011-P004",
+              "SS-006-S011-P005"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              677,
+              678,
+              679,
+              680,
+              681
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S011-P003",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-34〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-006-S012",
+            "title": "6.12 በምሥጢረ ተክሊል የሚገኝ የማይታይ ጸጋ",
+            "paragraphs": 5,
+            "paragraph_ids": [
+              "SS-006-S012-P001",
+              "SS-006-S012-P002",
+              "SS-006-S012-P003",
+              "SS-006-S012-P004",
+              "SS-006-S012-P005"
+            ],
+            "biblical_references": 4,
+            "source_lines": [
+              683,
+              684,
+              685,
+              686,
+              687
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-006-S013",
+            "title": "6.13 ጋብቻን ስለሚቃወሙ ሰዎች",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-006-S013-P001"
+            ],
+            "biblical_references": 5,
+            "source_lines": [
+              689
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-006-S013-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-35〕"
+                ]
+              }
+            ]
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-006-X000",
+            "title": null,
+            "paragraphs": 13,
+            "paragraph_ids": [
+              "SS-006-X000-P001",
+              "SS-006-X000-P002",
+              "SS-006-X000-P003",
+              "SS-006-X000-P004",
+              "SS-006-X000-P005",
+              "SS-006-X000-P006",
+              "SS-006-X000-P007",
+              "SS-006-X000-P008",
+              "SS-006-X000-P009",
+              "SS-006-X000-P010",
+              "SS-006-X000-P011",
+              "SS-006-X000-P012",
+              "SS-006-X000-P013"
+            ],
+            "biblical_references": 8,
+            "source_lines": [
+              147,
+              151,
+              155,
+              156,
+              157,
+              158,
+              159,
+              160,
+              161,
+              162,
+              163,
+              164,
+              165
+            ],
+            "review_markers": []
+          }
+        ]
+      },
+      "en_source_order": 5
+    },
+    {
+      "id": "SS-007",
+      "chapter_number": 7,
+      "title": {
+        "am": "ምሥጢረ ቀንዲል",
+        "en": "Unction of the Sick (ሚስጥረ ቀንዲል)",
+        "en_reference": "Sacrament of Unction of the Sick"
+      },
+      "files": {
+        "am": "am/07-unction-of-the-sick.md",
+        "en": "en/07-unction-of-the-sick.md"
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-007-S000",
+            "title": null,
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-007-S000-P001"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              691
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-007-S001",
+            "title": "7.1 የቀንዲል ትርጉም",
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-007-S001-P001",
+              "SS-007-S001-P002"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              693,
+              694
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-007-S002",
+            "title": "7.2 የምሥጢረ ቀንዲል አመሠራረት",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-007-S002-P001"
+            ],
+            "biblical_references": 4,
+            "source_lines": [
+              696
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-007-S003",
+            "title": "7.3 የምሥጢረ ቀንዲል አገልግሎትና ጥቅም",
+            "paragraphs": 1,
+            "paragraph_ids": [
+              "SS-007-S003-P001"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              698
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-007-S003-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-36〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-007-S004",
+            "title": "7.4 የምሥጢረ ቀንዲል አፈጻጸም",
+            "paragraphs": 4,
+            "paragraph_ids": [
+              "SS-007-S004-P001",
+              "SS-007-S004-P002",
+              "SS-007-S004-P003",
+              "SS-007-S004-P004"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              700,
+              701,
+              702,
+              703
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-007-S005",
+            "title": "7.5 የቀንዲልና የሜሮን ልዩነት",
+            "paragraphs": 8,
+            "paragraph_ids": [
+              "SS-007-S005-P001",
+              "SS-007-S005-P002",
+              "SS-007-S005-P003",
+              "SS-007-S005-P004",
+              "SS-007-S005-P005",
+              "SS-007-S005-P006",
+              "SS-007-S005-P007",
+              "SS-007-S005-P008"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              705,
+              706,
+              707,
+              708,
+              709,
+              710,
+              711,
+              712
+            ],
+            "review_markers": []
+          },
+          {
+            "id": "SS-007-S006",
+            "title": "7.6 የምሥጢረ ቀንዲልና የንስሐ ልዩነት",
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-007-S006-P001",
+              "SS-007-S006-P002"
+            ],
+            "biblical_references": 1,
+            "source_lines": [
+              714,
+              715
+            ],
+            "review_markers": [
+              {
+                "paragraph": "SS-007-S006-P001",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-36〕"
+                ]
+              },
+              {
+                "paragraph": "SS-007-S006-P002",
+                "markers": [
+                  "〔ለግምገማ፦ ቤ-36〕"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "SS-007-S007",
+            "title": "7.7 የሚታይ አገልግሎትና የማይታይ ጸጋ",
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-007-S007-P001",
+              "SS-007-S007-P002",
+              "SS-007-S007-P003"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              717,
+              718,
+              719
+            ],
+            "review_markers": []
+          }
+        ],
+        "en": [
+          {
+            "id": "SS-007-X000",
+            "title": null,
+            "paragraphs": 3,
+            "paragraph_ids": [
+              "SS-007-X000-P001",
+              "SS-007-X000-P002",
+              "SS-007-X000-P003"
+            ],
+            "biblical_references": 2,
+            "source_lines": [
+              191,
+              195,
+              199
+            ],
+            "review_markers": []
+          }
+        ]
+      },
+      "en_source_order": 7
+    },
+    {
+      "id": "SS-008",
+      "chapter_number": 8,
+      "title": {
+        "am": "ማጠቃለያ",
+        "en": null,
+        "en_reference": null
+      },
+      "files": {
+        "am": "am/08-closing.md",
+        "en": null
+      },
+      "sections": {
+        "am": [
+          {
+            "id": "SS-008-S000",
+            "title": null,
+            "paragraphs": 2,
+            "paragraph_ids": [
+              "SS-008-S000-P001",
+              "SS-008-S000-P002"
+            ],
+            "biblical_references": 0,
+            "source_lines": [
+              720,
+              721
+            ],
+            "review_markers": []
+          }
+        ],
+        "en": []
+      }
+    }
+  ],
+  "alignment_groups": [
+    {
+      "group": "SS-000-G",
+      "level": "chapter",
+      "chapter": "SS-000",
+      "am_paragraphs": [
+        "SS-000-S000-P001",
+        "SS-000-S000-P002",
+        "SS-000-S000-P003",
+        "SS-000-S000-P004",
+        "SS-000-S001-P001",
+        "SS-000-S001-P002",
+        "SS-000-S001-P003",
+        "SS-000-S002-P001",
+        "SS-000-S002-P002",
+        "SS-000-S002-P003",
+        "SS-000-S002-P004",
+        "SS-000-S002-P005",
+        "SS-000-S002-P006",
+        "SS-000-S002-P007",
+        "SS-000-S002-P008",
+        "SS-000-S002-P009",
+        "SS-000-S002-P010",
+        "SS-000-S002-P011",
+        "SS-000-S002-P012",
+        "SS-000-S002-P013",
+        "SS-000-S002-P014",
+        "SS-000-S003-P001",
+        "SS-000-S003-P002",
+        "SS-000-S003-P003",
+        "SS-000-S004-P001",
+        "SS-000-S004-P002",
+        "SS-000-S004-P003",
+        "SS-000-S004-P004",
+        "SS-000-S004-P005",
+        "SS-000-S004-P006",
+        "SS-000-S004-P007",
+        "SS-000-S005-P001",
+        "SS-000-S005-P002",
+        "SS-000-S005-P003",
+        "SS-000-S005-P004",
+        "SS-000-S005-P005",
+        "SS-000-S005-P006",
+        "SS-000-S005-P007",
+        "SS-000-S005-P008",
+        "SS-000-S005-P009",
+        "SS-000-S005-P010",
+        "SS-000-S005-P011",
+        "SS-000-S005-P012",
+        "SS-000-S005-P013",
+        "SS-000-S005-P014",
+        "SS-000-S005-P015",
+        "SS-000-S005-P016",
+        "SS-000-S005-P017",
+        "SS-000-S005-P018",
+        "SS-000-S005-P019",
+        "SS-000-S005-P020",
+        "SS-000-S005-P021",
+        "SS-000-S005-P022",
+        "SS-000-S005-P023"
+      ],
+      "en_paragraphs": [
+        "SS-000-X000-P001",
+        "SS-000-X000-P002",
+        "SS-000-X000-P003",
+        "SS-000-X000-P004",
+        "SS-000-X000-P005",
+        "SS-000-X000-P006",
+        "SS-000-X000-P007",
+        "SS-000-X000-P008",
+        "SS-000-X000-P009"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-001-G",
+      "level": "chapter",
+      "chapter": "SS-001",
+      "am_paragraphs": [
+        "SS-001-S001-P001",
+        "SS-001-S001-P002",
+        "SS-001-S001-P003",
+        "SS-001-S001-P004",
+        "SS-001-S001-P005",
+        "SS-001-S001-P006",
+        "SS-001-S001-P007",
+        "SS-001-S002-P001",
+        "SS-001-S002-P002",
+        "SS-001-S002-P003",
+        "SS-001-S002-P004",
+        "SS-001-S002-P005",
+        "SS-001-S002-P006",
+        "SS-001-S002-P007",
+        "SS-001-S002-P008",
+        "SS-001-S003-P001",
+        "SS-001-S003-P002",
+        "SS-001-S003-P003",
+        "SS-001-S003-P004",
+        "SS-001-S003-P005",
+        "SS-001-S003-P006",
+        "SS-001-S003-P007",
+        "SS-001-S003-P008",
+        "SS-001-S003-P009",
+        "SS-001-S003-P010",
+        "SS-001-S003-P011",
+        "SS-001-S003-P012",
+        "SS-001-S003-P013",
+        "SS-001-S003-P014",
+        "SS-001-S003-P015",
+        "SS-001-S004-P001",
+        "SS-001-S005-P001",
+        "SS-001-S005-P002",
+        "SS-001-S005-P003",
+        "SS-001-S005-P004",
+        "SS-001-S005-P005",
+        "SS-001-S005-P006",
+        "SS-001-S005-P007",
+        "SS-001-S005-P008",
+        "SS-001-S005-P009",
+        "SS-001-S005-P010",
+        "SS-001-S005-P011",
+        "SS-001-S005-P012",
+        "SS-001-S005-P013",
+        "SS-001-S005-P014",
+        "SS-001-S005-P015",
+        "SS-001-S005-P016",
+        "SS-001-S005-P017",
+        "SS-001-S005-P018",
+        "SS-001-S005-P019",
+        "SS-001-S005-P020",
+        "SS-001-S005-P021",
+        "SS-001-S005-P022",
+        "SS-001-S005-P023",
+        "SS-001-S005-P024",
+        "SS-001-S005-P025",
+        "SS-001-S005-P026",
+        "SS-001-S005-P027",
+        "SS-001-S005-P028",
+        "SS-001-S005-P029",
+        "SS-001-S005-P030",
+        "SS-001-S005-P031",
+        "SS-001-S005-P032",
+        "SS-001-S005-P033",
+        "SS-001-S006-P001",
+        "SS-001-S006-P002",
+        "SS-001-S006-P003",
+        "SS-001-S006-P004",
+        "SS-001-S006-P005",
+        "SS-001-S006-P006",
+        "SS-001-S006-P007",
+        "SS-001-S006-P008",
+        "SS-001-S006-P009",
+        "SS-001-S006-P010",
+        "SS-001-S006-P011",
+        "SS-001-S006-P012",
+        "SS-001-S006-P013",
+        "SS-001-S006-P014",
+        "SS-001-S006-P015",
+        "SS-001-S007-P001",
+        "SS-001-S007-P002",
+        "SS-001-S007-P003",
+        "SS-001-S007-P004",
+        "SS-001-S007-P005",
+        "SS-001-S008-P001",
+        "SS-001-S008-P002",
+        "SS-001-S008-P003",
+        "SS-001-S009-P001",
+        "SS-001-S009-P002",
+        "SS-001-S009-P003",
+        "SS-001-S010-P001",
+        "SS-001-S010-P002",
+        "SS-001-S011-P001",
+        "SS-001-S011-P002",
+        "SS-001-S011-P003",
+        "SS-001-S011-P004",
+        "SS-001-S011-P005",
+        "SS-001-S011-P006",
+        "SS-001-S011-P007",
+        "SS-001-S011-P008",
+        "SS-001-S011-P009"
+      ],
+      "en_paragraphs": [
+        "SS-001-X000-P001",
+        "SS-001-X000-P002",
+        "SS-001-X001-P001",
+        "SS-001-X001-P002",
+        "SS-001-X001-P003",
+        "SS-001-X001-P004",
+        "SS-001-X001-P005",
+        "SS-001-X001-P006",
+        "SS-001-X001-P007",
+        "SS-001-X001-P008",
+        "SS-001-X001-P009",
+        "SS-001-X001-P010",
+        "SS-001-X001-P011",
+        "SS-001-X001-P012",
+        "SS-001-X001-P013",
+        "SS-001-X001-P014",
+        "SS-001-X001-P015"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-002-G",
+      "level": "chapter",
+      "chapter": "SS-002",
+      "am_paragraphs": [
+        "SS-002-S000-P001",
+        "SS-002-S000-P002",
+        "SS-002-S001-P001",
+        "SS-002-S001-P002",
+        "SS-002-S002-P001",
+        "SS-002-S002-P002",
+        "SS-002-S002-P003",
+        "SS-002-S003-P001",
+        "SS-002-S003-P002",
+        "SS-002-S003-P003",
+        "SS-002-S003-P004",
+        "SS-002-S003-P005",
+        "SS-002-S003-P006",
+        "SS-002-S004-P001",
+        "SS-002-S004-P002",
+        "SS-002-S004-P003",
+        "SS-002-S005-P001",
+        "SS-002-S005-P002",
+        "SS-002-S005-P003",
+        "SS-002-S005-P004",
+        "SS-002-S005-P005",
+        "SS-002-S005-P006",
+        "SS-002-S005-P007",
+        "SS-002-S005-P008",
+        "SS-002-S005-P009",
+        "SS-002-S006-P001",
+        "SS-002-S006-P002",
+        "SS-002-S006-P003",
+        "SS-002-S006-P004",
+        "SS-002-S007-P001",
+        "SS-002-S007-P002",
+        "SS-002-S007-P003",
+        "SS-002-S007-P004",
+        "SS-002-S007-P005",
+        "SS-002-S007-P006",
+        "SS-002-S007-P007"
+      ],
+      "en_paragraphs": [
+        "SS-002-X000-P001",
+        "SS-002-X000-P002"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-003-G",
+      "level": "chapter",
+      "chapter": "SS-003",
+      "am_paragraphs": [
+        "SS-003-S000-P001",
+        "SS-003-S000-P002",
+        "SS-003-S001-P001",
+        "SS-003-S001-P002",
+        "SS-003-S001-P003",
+        "SS-003-S001-P004",
+        "SS-003-S001-P005",
+        "SS-003-S001-P006",
+        "SS-003-S001-P007",
+        "SS-003-S001-P008",
+        "SS-003-S001-P009",
+        "SS-003-S001-P010",
+        "SS-003-S001-P011",
+        "SS-003-S001-P012",
+        "SS-003-S001-P013",
+        "SS-003-S001-P014",
+        "SS-003-S001-P015",
+        "SS-003-S001-P016",
+        "SS-003-S002-P001",
+        "SS-003-S002-P002",
+        "SS-003-S002-P003",
+        "SS-003-S002-P004",
+        "SS-003-S002-P005",
+        "SS-003-S002-P006",
+        "SS-003-S002-P007",
+        "SS-003-S002-P008",
+        "SS-003-S002-P009",
+        "SS-003-S003-P001",
+        "SS-003-S003-P002",
+        "SS-003-S003-P003",
+        "SS-003-S003-P004",
+        "SS-003-S003-P005",
+        "SS-003-S003-P006",
+        "SS-003-S003-P007",
+        "SS-003-S003-P008",
+        "SS-003-S003-P009",
+        "SS-003-S003-P010",
+        "SS-003-S003-P011",
+        "SS-003-S004-P001",
+        "SS-003-S004-P002",
+        "SS-003-S004-P003",
+        "SS-003-S004-P004",
+        "SS-003-S004-P005",
+        "SS-003-S004-P006",
+        "SS-003-S004-P007",
+        "SS-003-S004-P008",
+        "SS-003-S004-P009",
+        "SS-003-S004-P010",
+        "SS-003-S005-P001",
+        "SS-003-S006-P001",
+        "SS-003-S006-P002",
+        "SS-003-S006-P003",
+        "SS-003-S006-P004",
+        "SS-003-S006-P005",
+        "SS-003-S006-P006",
+        "SS-003-S006-P007",
+        "SS-003-S006-P008",
+        "SS-003-S006-P009",
+        "SS-003-S006-P010",
+        "SS-003-S006-P011",
+        "SS-003-S006-P012",
+        "SS-003-S006-P013",
+        "SS-003-S007-P001",
+        "SS-003-S007-P002",
+        "SS-003-S007-P003",
+        "SS-003-S007-P004",
+        "SS-003-S007-P005",
+        "SS-003-S007-P006",
+        "SS-003-S007-P007",
+        "SS-003-S007-P008",
+        "SS-003-S007-P009",
+        "SS-003-S007-P010",
+        "SS-003-S007-P011",
+        "SS-003-S008-P001",
+        "SS-003-S009-P001",
+        "SS-003-S009-P002",
+        "SS-003-S009-P003",
+        "SS-003-S010-P001",
+        "SS-003-S010-P002",
+        "SS-003-S010-P003",
+        "SS-003-S010-P004",
+        "SS-003-S010-P005",
+        "SS-003-S010-P006",
+        "SS-003-S010-P007",
+        "SS-003-S010-P008"
+      ],
+      "en_paragraphs": [
+        "SS-003-X000-P001",
+        "SS-003-X000-P002"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-004-G",
+      "level": "chapter",
+      "chapter": "SS-004",
+      "am_paragraphs": [
+        "SS-004-S000-P001",
+        "SS-004-S000-P002",
+        "SS-004-S000-P003",
+        "SS-004-S000-P004",
+        "SS-004-S001-P001",
+        "SS-004-S001-P002",
+        "SS-004-S001-P003",
+        "SS-004-S001-P004",
+        "SS-004-S001-P005",
+        "SS-004-S002-P001",
+        "SS-004-S003-P001",
+        "SS-004-S003-P002",
+        "SS-004-S003-P003",
+        "SS-004-S003-P004",
+        "SS-004-S003-P005",
+        "SS-004-S003-P006",
+        "SS-004-S004-P001",
+        "SS-004-S004-P002",
+        "SS-004-S004-P003",
+        "SS-004-S004-P004",
+        "SS-004-S004-P005",
+        "SS-004-S005-P001",
+        "SS-004-S005-P002",
+        "SS-004-S005-P003",
+        "SS-004-S005-P004",
+        "SS-004-S005-P005",
+        "SS-004-S005-P006",
+        "SS-004-S005-P007",
+        "SS-004-S005-P008",
+        "SS-004-S005-P009",
+        "SS-004-S005-P010",
+        "SS-004-S005-P011",
+        "SS-004-S005-P012",
+        "SS-004-S005-P013",
+        "SS-004-S005-P014",
+        "SS-004-S005-P015",
+        "SS-004-S005-P016",
+        "SS-004-S005-P017",
+        "SS-004-S006-P001",
+        "SS-004-S006-P002",
+        "SS-004-S006-P003",
+        "SS-004-S006-P004",
+        "SS-004-S006-P005",
+        "SS-004-S006-P006",
+        "SS-004-S006-P007",
+        "SS-004-S007-P001",
+        "SS-004-S008-P001",
+        "SS-004-S008-P002",
+        "SS-004-S008-P003",
+        "SS-004-S008-P004",
+        "SS-004-S008-P005",
+        "SS-004-S008-P006",
+        "SS-004-S008-P007",
+        "SS-004-S008-P008",
+        "SS-004-S008-P009",
+        "SS-004-S008-P010",
+        "SS-004-S008-P011",
+        "SS-004-S008-P012",
+        "SS-004-S009-P001",
+        "SS-004-S009-P002",
+        "SS-004-S009-P003",
+        "SS-004-S009-P004",
+        "SS-004-S009-P005",
+        "SS-004-S009-P006",
+        "SS-004-S009-P007"
+      ],
+      "en_paragraphs": [
+        "SS-004-X000-P001",
+        "SS-004-X000-P002",
+        "SS-004-X000-P003",
+        "SS-004-X000-P004"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-005-G",
+      "level": "chapter",
+      "chapter": "SS-005",
+      "am_paragraphs": [
+        "SS-005-S000-P001",
+        "SS-005-S000-P002",
+        "SS-005-S000-P003",
+        "SS-005-S001-P001",
+        "SS-005-S001-P002",
+        "SS-005-S001-P003",
+        "SS-005-S002-P001",
+        "SS-005-S002-P002",
+        "SS-005-S002-P003",
+        "SS-005-S002-P004",
+        "SS-005-S002-P005",
+        "SS-005-S002-P006",
+        "SS-005-S002-P007",
+        "SS-005-S002-P008",
+        "SS-005-S002-P009",
+        "SS-005-S003-P001",
+        "SS-005-S003-P002",
+        "SS-005-S003-P003",
+        "SS-005-S003-P004",
+        "SS-005-S003-P005",
+        "SS-005-S003-P006",
+        "SS-005-S003-P007",
+        "SS-005-S003-P008",
+        "SS-005-S003-P009",
+        "SS-005-S004-P001",
+        "SS-005-S005-P001",
+        "SS-005-S005-P002",
+        "SS-005-S005-P003",
+        "SS-005-S005-P004",
+        "SS-005-S005-P005",
+        "SS-005-S005-P006",
+        "SS-005-S005-P007",
+        "SS-005-S005-P008",
+        "SS-005-S005-P009",
+        "SS-005-S005-P010",
+        "SS-005-S005-P011",
+        "SS-005-S005-P012",
+        "SS-005-S005-P013",
+        "SS-005-S005-P014",
+        "SS-005-S005-P015",
+        "SS-005-S006-P001",
+        "SS-005-S006-P002",
+        "SS-005-S006-P003",
+        "SS-005-S006-P004",
+        "SS-005-S006-P005",
+        "SS-005-S007-P001",
+        "SS-005-S007-P002",
+        "SS-005-S007-P003",
+        "SS-005-S007-P004",
+        "SS-005-S007-P005",
+        "SS-005-S007-P006",
+        "SS-005-S007-P007",
+        "SS-005-S007-P008",
+        "SS-005-S007-P009",
+        "SS-005-S007-P010",
+        "SS-005-S007-P011",
+        "SS-005-S007-P012",
+        "SS-005-S007-P013",
+        "SS-005-S007-P014",
+        "SS-005-S007-P015",
+        "SS-005-S007-P016",
+        "SS-005-S007-P017",
+        "SS-005-S007-P018",
+        "SS-005-S007-P019",
+        "SS-005-S007-P020",
+        "SS-005-S007-P021",
+        "SS-005-S007-P022",
+        "SS-005-S008-P001",
+        "SS-005-S008-P002",
+        "SS-005-S008-P003",
+        "SS-005-S008-P004",
+        "SS-005-S008-P005",
+        "SS-005-S008-P006",
+        "SS-005-S008-P007",
+        "SS-005-S008-P008",
+        "SS-005-S008-P009",
+        "SS-005-S008-P010",
+        "SS-005-S008-P011",
+        "SS-005-S008-P012",
+        "SS-005-S008-P013",
+        "SS-005-S008-P014",
+        "SS-005-S008-P015",
+        "SS-005-S008-P016",
+        "SS-005-S008-P017",
+        "SS-005-S009-P001",
+        "SS-005-S009-P002",
+        "SS-005-S009-P003",
+        "SS-005-S009-P004",
+        "SS-005-S009-P005"
+      ],
+      "en_paragraphs": [
+        "SS-005-X000-P001",
+        "SS-005-X000-P002",
+        "SS-005-X001-P001",
+        "SS-005-X001-P002",
+        "SS-005-X001-P003",
+        "SS-005-X001-P004",
+        "SS-005-X001-P005",
+        "SS-005-X001-P006",
+        "SS-005-X002-P001",
+        "SS-005-X002-P002",
+        "SS-005-X003-P001",
+        "SS-005-X003-P002",
+        "SS-005-X003-P003",
+        "SS-005-X003-P004",
+        "SS-005-X003-P005",
+        "SS-005-X003-P006"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-006-G",
+      "level": "chapter",
+      "chapter": "SS-006",
+      "am_paragraphs": [
+        "SS-006-S000-P001",
+        "SS-006-S000-P002",
+        "SS-006-S000-P003",
+        "SS-006-S000-P004",
+        "SS-006-S000-P005",
+        "SS-006-S000-P006",
+        "SS-006-S000-P007",
+        "SS-006-S001-P001",
+        "SS-006-S001-P002",
+        "SS-006-S001-P003",
+        "SS-006-S001-P004",
+        "SS-006-S001-P005",
+        "SS-006-S001-P006",
+        "SS-006-S002-P001",
+        "SS-006-S002-P002",
+        "SS-006-S002-P003",
+        "SS-006-S002-P004",
+        "SS-006-S002-P005",
+        "SS-006-S003-P001",
+        "SS-006-S003-P002",
+        "SS-006-S003-P003",
+        "SS-006-S003-P004",
+        "SS-006-S003-P005",
+        "SS-006-S003-P006",
+        "SS-006-S003-P007",
+        "SS-006-S003-P008",
+        "SS-006-S003-P009",
+        "SS-006-S003-P010",
+        "SS-006-S003-P011",
+        "SS-006-S003-P012",
+        "SS-006-S003-P013",
+        "SS-006-S003-P014",
+        "SS-006-S003-P015",
+        "SS-006-S003-P016",
+        "SS-006-S003-P017",
+        "SS-006-S003-P018",
+        "SS-006-S003-P019",
+        "SS-006-S003-P020",
+        "SS-006-S003-P021",
+        "SS-006-S003-P022",
+        "SS-006-S003-P023",
+        "SS-006-S003-P024",
+        "SS-006-S003-P025",
+        "SS-006-S003-P026",
+        "SS-006-S003-P027",
+        "SS-006-S003-P028",
+        "SS-006-S003-P029",
+        "SS-006-S003-P030",
+        "SS-006-S003-P031",
+        "SS-006-S003-P032",
+        "SS-006-S003-P033",
+        "SS-006-S003-P034",
+        "SS-006-S003-P035",
+        "SS-006-S003-P036",
+        "SS-006-S003-P037",
+        "SS-006-S003-P038",
+        "SS-006-S003-P039",
+        "SS-006-S003-P040",
+        "SS-006-S003-P041",
+        "SS-006-S004-P001",
+        "SS-006-S004-P002",
+        "SS-006-S004-P003",
+        "SS-006-S004-P004",
+        "SS-006-S004-P005",
+        "SS-006-S004-P006",
+        "SS-006-S004-P007",
+        "SS-006-S004-P008",
+        "SS-006-S005-P001",
+        "SS-006-S006-P001",
+        "SS-006-S007-P001",
+        "SS-006-S008-P001",
+        "SS-006-S008-P002",
+        "SS-006-S008-P003",
+        "SS-006-S008-P004",
+        "SS-006-S008-P005",
+        "SS-006-S009-P001",
+        "SS-006-S009-P002",
+        "SS-006-S009-P003",
+        "SS-006-S009-P004",
+        "SS-006-S009-P005",
+        "SS-006-S009-P006",
+        "SS-006-S009-P007",
+        "SS-006-S009-P008",
+        "SS-006-S009-P009",
+        "SS-006-S009-P010",
+        "SS-006-S010-P001",
+        "SS-006-S010-P002",
+        "SS-006-S010-P003",
+        "SS-006-S010-P004",
+        "SS-006-S010-P005",
+        "SS-006-S010-P006",
+        "SS-006-S011-P001",
+        "SS-006-S011-P002",
+        "SS-006-S011-P003",
+        "SS-006-S011-P004",
+        "SS-006-S011-P005",
+        "SS-006-S012-P001",
+        "SS-006-S012-P002",
+        "SS-006-S012-P003",
+        "SS-006-S012-P004",
+        "SS-006-S012-P005",
+        "SS-006-S013-P001"
+      ],
+      "en_paragraphs": [
+        "SS-006-X000-P001",
+        "SS-006-X000-P002",
+        "SS-006-X000-P003",
+        "SS-006-X000-P004",
+        "SS-006-X000-P005",
+        "SS-006-X000-P006",
+        "SS-006-X000-P007",
+        "SS-006-X000-P008",
+        "SS-006-X000-P009",
+        "SS-006-X000-P010",
+        "SS-006-X000-P011",
+        "SS-006-X000-P012",
+        "SS-006-X000-P013"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-007-G",
+      "level": "chapter",
+      "chapter": "SS-007",
+      "am_paragraphs": [
+        "SS-007-S000-P001",
+        "SS-007-S001-P001",
+        "SS-007-S001-P002",
+        "SS-007-S002-P001",
+        "SS-007-S003-P001",
+        "SS-007-S004-P001",
+        "SS-007-S004-P002",
+        "SS-007-S004-P003",
+        "SS-007-S004-P004",
+        "SS-007-S005-P001",
+        "SS-007-S005-P002",
+        "SS-007-S005-P003",
+        "SS-007-S005-P004",
+        "SS-007-S005-P005",
+        "SS-007-S005-P006",
+        "SS-007-S005-P007",
+        "SS-007-S005-P008",
+        "SS-007-S006-P001",
+        "SS-007-S006-P002",
+        "SS-007-S007-P001",
+        "SS-007-S007-P002",
+        "SS-007-S007-P003"
+      ],
+      "en_paragraphs": [
+        "SS-007-X000-P001",
+        "SS-007-X000-P002",
+        "SS-007-X000-P003"
+      ],
+      "alignment": "chapter",
+      "note": null
+    },
+    {
+      "group": "SS-008-G",
+      "level": "chapter",
+      "chapter": "SS-008",
+      "am_paragraphs": [
+        "SS-008-S000-P001",
+        "SS-008-S000-P002"
+      ],
+      "en_paragraphs": [],
+      "alignment": "amharic_only",
+      "note": "No English counterpart in the verified English source."
+    }
+  ],
+  "unresolved": [
+    {
+      "chapter": "SS-000",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 54 paragraphs in 6 sections; the verified English has 9 paragraphs in 1 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    },
+    {
+      "chapter": "SS-001",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 101 paragraphs in 12 sections; the verified English has 17 paragraphs in 2 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    },
+    {
+      "chapter": "SS-002",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 36 paragraphs in 8 sections; the verified English has 2 paragraphs in 1 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    },
+    {
+      "chapter": "SS-003",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 85 paragraphs in 11 sections; the verified English has 2 paragraphs in 1 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    },
+    {
+      "chapter": "SS-004",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 65 paragraphs in 10 sections; the verified English has 4 paragraphs in 1 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    },
+    {
+      "chapter": "SS-005",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 89 paragraphs in 10 sections; the verified English has 16 paragraphs in 4 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    },
+    {
+      "chapter": "SS-006",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 102 paragraphs in 14 sections; the verified English has 13 paragraphs in 1 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    },
+    {
+      "chapter": "SS-007",
+      "issue": "Paragraph- and section-level alignment not possible",
+      "detail": "Amharic has 22 paragraphs in 8 sections; the verified English has 3 paragraphs in 1 sections. The English is a separate, shorter text, not a paragraph-by-paragraph translation, so only chapter-level alignment is asserted."
+    }
+  ],
+  "validation": {
+    "status": "passed",
+    "checks": [
+      {
+        "check": "Amharic: every content line is present verbatim (review markers removed)",
+        "passed": true,
+        "detail": "556 content lines checked; missing: []"
+      },
+      {
+        "check": "Amharic: every non-empty source line is accounted for",
+        "passed": true,
+        "detail": "739 lines; dispositions: {'table_of_contents': 80, 'content': 556, 'review_marker_line': 6, 'heading': 78, 'unreadable_source_annex': 19}"
+      },
+      {
+        "check": "Amharic: no paragraph duplicated or dropped (multiset equality)",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "check": "Amharic: biblical reference locators unchanged",
+        "passed": true,
+        "detail": "314 in source, 314 in output"
+      },
+      {
+        "check": "Amharic: every contents heading is present as a heading",
+        "passed": true,
+        "detail": "78 headings (+ the annex entry, kept out of the publishable files)"
+      },
+      {
+        "check": "Amharic: every review marker is recorded in the manifest",
+        "passed": true,
+        "detail": "153 in source, 153 recorded"
+      },
+      {
+        "check": "Amharic: all seven sacrament chapters present",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "check": "Amharic: chapter order follows the source",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "check": "Publishable Amharic files contain no review markers",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "check": "English: every passage present verbatim (formatting artifacts only)",
+        "passed": true,
+        "detail": "missing lines: []"
+      },
+      {
+        "check": "English: biblical reference locators unchanged",
+        "passed": true,
+        "detail": "62 in source, 62 in output"
+      },
+      {
+        "check": "English: all seven sacrament headings present",
+        "passed": true,
+        "detail": "Baptism (ሚስጥረ ጥምቀት), Confirmation (Myron) (ሚስጥረ ሜሮን), Holy Communion (ሚስጥረ ቁርባን), Ordination (ሚስጥረ ክህነት), Holy Matrimony (ሚስጥረተክሊል), Mystery of Penance (ሚስጥረ ንስሀ), Unction of the Sick (ሚስጥረ ቀንዲል)"
+      },
+      {
+        "check": "IDs unique within each language",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "check": "No paragraph ID shared between languages (no unverified alignment)",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "check": "Publishable English files contain no HTML entities",
+        "passed": true,
+        "detail": ""
+      }
+    ]
+  },
+  "counts": {
+    "am": {
+      "chapters": 7,
+      "files": 9,
+      "sections": 80,
+      "paragraphs": 556,
+      "biblical_references": 314,
+      "review_markers_removed": 148,
+      "stand_alone_marker_lines": 6,
+      "annex_lines_withheld": 19,
+      "toc_lines_rebuilt": 80
+    },
+    "en": {
+      "chapters": 7,
+      "files": 8,
+      "sections": 12,
+      "paragraphs": 66,
+      "biblical_references": 62,
+      "formatting_artifacts_fixed": 1,
+      "trailing_headings_without_body": [
+        "BELIEFS AND TEACHINGS OF ETHIOPIAN ORTHODOX TEWAHEDO CHURCH"
+      ]
+    }
+  },
+  "english_formatting_fixes": [
+    {
+      "line": 159,
+      "before": "5. **No marriage is allowed within seven generation&#x20;**&#x73;o as not to break the rule of kinship that forbids marriage between close family relations. (Lev. 18:6-21; Deut. 7:3-4).",
+      "after": "5.** No marriage is allowed within seven generation** so as not to break the rule of kinship that forbids marriage between close family relations. (Lev. 18:6-21; Deut. 7:3-4)."
+    }
+  ],
+  "english_trailing_headings": [
+    {
+      "line": 202,
+      "text": "BELIEFS AND TEACHINGS OF ETHIOPIAN ORTHODOX TEWAHEDO CHURCH",
+      "note": "Final heading of the English source with no body text; it introduces a different subject and is not part of the Seven Sacraments chapters."
+    }
+  ],
+  "amharic_gaps": [
+    {
+      "paragraph": "SS-001-S009-P001",
+      "line": 240,
+      "markers": [
+        "〔ያልተሟላው ሐረግ፦ አባሪ ቤ-ግ05።〕"
+      ]
+    },
+    {
+      "paragraph": "SS-003-S001-P003",
+      "line": 307,
+      "markers": [
+        "〔የግምገማ አባሪ፦ ቤ-ግ02፤ ያልተነበበው የምንጩ ክፍል በአባሪው ተቀምጧል።〕"
+      ]
+    },
+    {
+      "paragraph": "SS-003-S003-P010",
+      "line": 342,
+      "markers": [
+        "〔ያልተነበበው መነሻ ሐረግ፦ አባሪ ቤ-ግ03።〕",
+        "〔ለግምገማ፦ ቤ-20〕",
+        "〔የግምገማ አባሪ፦ ቤ-ግ04፤ ያልተነበበው የምንጩ ክፍል በአባሪው ተቀምጧል።〕"
+      ]
+    }
+  ]
+}

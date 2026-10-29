@@ -14,6 +14,8 @@ export type PublicBook = {
   description: string | null
   cover_storage_path: string | null
   page_count?: number
+  /** Structured (chapter/section) books open in the section reader. */
+  slug?: string | null
 }
 
 const CATEGORIES = ['All', 'Theology', 'Church History', 'Prayers & Fasting', 'Scripture Commentaries', 'Patristics']
@@ -35,25 +37,26 @@ export function PublicChurchLibrary() {
       }
       setLoading(true)
       try {
-        const result = await supabase
-          .from('church_library_books')
-          .select('id, title, title_amharic, author, language, category, description, cover_storage_path, storage_path, current_version_id')
-          .eq('public_retrieval_enabled', true)
-          .eq('processing_status', 'ready')
-          .order('title', { ascending: true })
-
-        // Keep the public catalog working while the additive metadata migration
-        // is waiting to be applied to an older linked project.
-        const fallback = result.error?.code === '42703' || result.error?.code === 'PGRST204'
-          ? await supabase
+        // Newest columns first; each fallback keeps the public catalog working
+        // while an additive migration is waiting to be applied to an older project.
+        const columnSets = [
+          'id, slug, title, title_amharic, author, language, category, description, cover_storage_path, storage_path, current_version_id',
+          'id, title, title_amharic, author, language, category, description, cover_storage_path, storage_path, current_version_id',
+          'id, title, author, language, category, description, cover_storage_path, storage_path, current_version_id',
+        ]
+        let data: unknown[] | null = null
+        let error: { code?: string } | null = null
+        for (const columns of columnSets) {
+          const result = await supabase
             .from('church_library_books')
-            .select('id, title, author, language, category, description, cover_storage_path, storage_path, current_version_id')
+            .select(columns)
             .eq('public_retrieval_enabled', true)
             .eq('processing_status', 'ready')
             .order('title', { ascending: true })
-          : null
-        const data = fallback?.data || result.data
-        const error = fallback?.error || result.error
+          data = result.data
+          error = result.error
+          if (!(error?.code === '42703' || error?.code === 'PGRST204')) break
+        }
 
         if (!cancelled) {
           if (!error && data) {
@@ -155,7 +158,7 @@ export function PublicChurchLibrary() {
 
               <div className={styles.cardFooter}>
                 <span className={styles.cardAuthor}>{book.category || 'General'}</span>
-                <Link to={`/library/${book.id}`} className={styles.readButton}>
+                <Link to={book.slug ? `/library/read/${encodeURIComponent(book.slug)}` : `/library/${book.id}`} className={styles.readButton}>
                   {t('library.read')} →
                 </Link>
               </div>

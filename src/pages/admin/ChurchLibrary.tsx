@@ -612,6 +612,8 @@ export function ChurchLibrary() {
           </p>
         </div>
         <div className={s.actions}>
+          <Link to="/admin/church-library/faqs">Approved FAQ answers</Link>
+          <Link to="/admin/church-library/import">Structured import &amp; review</Link>
           <Link to="/admin/church-library/legacy-preview">Legacy five-book preview</Link>
           <button type="button" className={s.primary} onClick={() => setShowNew((value) => !value)}>
             Upload book

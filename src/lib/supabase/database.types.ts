@@ -155,6 +155,7 @@ export type Database = {
       set_cms_member: { Args: { target_user_id: string; new_role: CmsRole | null }; Returns: undefined }
       activate_church_library_version: { Args: { target_book_id: string; target_version_id: string }; Returns: CmsTables['church_library_books']['Row'] }
       search_church_library: { Args: { search_query: string; result_limit?: number; search_language?: string | null; query_embedding?: string | null }; Returns: Json }
+      search_church_library_faq: { Args: { search_query: string; search_language?: string | null; result_limit?: number; context_stable_id?: string | null }; Returns: Json }
       church_library_public_search_status: { Args: Record<string, never>; Returns: Json }
       church_library_passage_context: { Args: { target_passage_id: string; context_radius?: number }; Returns: Json }
       update_church_library_passage: { Args: { p_passage_id: string; p_new_content: string; p_review_status?: string | null; p_reviewer_notes?: string | null; p_expected_revision?: number | null }; Returns: CmsTables['church_library_passages']['Row'] }

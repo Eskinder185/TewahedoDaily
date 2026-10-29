@@ -41,6 +41,7 @@ export type SelectedPassage =
 export const TEACHING_TOPICS: readonly TeachingTopic[] = [
   {
     id: 'seven-sacraments',
+    group: 'sacrament',
     documentQuery: 'seven sacraments',
     aliases: [
       'seven sacraments',
