@@ -17,6 +17,7 @@ import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
 import { isMezmurLanguageFilter, mezmurLanguageLabel, type MezmurLanguageCode, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
+import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
 
 function SectionHeroArt({
   imageUrl,
@@ -101,6 +102,8 @@ export function PublicHymnSectionPage() {
   const [collection, setCollection] = useState<HymnCollection | null>(null)
   const [section, setSection] = useState<HymnSection | null>(null)
   const [items, setItems] = useState<HymnSectionMezmur[]>([])
+  /** All Mezmurs of this section (every page), in display order — the play queue. */
+  const [queueRows, setQueueRows] = useState<HymnSectionMezmur[]>([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
@@ -148,7 +151,24 @@ export function PublicHymnSectionPage() {
         })
         if (!active) return
         setItems(result.items)
+        setQueueRows(result.items)
         setTotal(result.total)
+        if (result.total > result.items.length && result.total <= 2500) {
+          // The section is paginated for display; the play queue covers every page (100 per request).
+          const all: HymnSectionMezmur[] = []
+          for (let p = 1; all.length < result.total && p <= 25; p++) {
+            const chunk = await getMezmursForSection(collectionSlug, sectionSlug, {
+              q: withinQ,
+              page: p,
+              pageSize: 100,
+              language: langFilter,
+            })
+            if (!active) return
+            if (!chunk.items.length) break
+            all.push(...chunk.items)
+          }
+          if (active && all.length) setQueueRows(all)
+        }
       } catch (cause) {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] section', cause)
@@ -268,7 +288,17 @@ export function PublicHymnSectionPage() {
             {items.map((item) => {
               const itemHeading = hymnSourceHeading(item.title, item.titleAmharic, locale)
               return (
-                <Link key={item.id} to={params.get('language') ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(params.get('language')!)}` : `/hymns/mezmur/${item.slug}`} className={s.card}>
+                <Link
+                  key={item.id}
+                  to={params.get('language') ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(params.get('language')!)}` : `/hymns/mezmur/${item.slug}`}
+                  className={s.card}
+                  onClick={() => rememberBrowseQueue(
+                    heading.primary || section?.title || 'This section',
+                    `${window.location.pathname}${window.location.search}`,
+                    queueRows.map((row) => queueItem(row.slug, row.title, row.youtubeUrl, null)),
+                    item.slug,
+                  )}
+                >
                   <CardArt item={item} />
                   <div className={s.cardBody}>
                     {itemHeading.secondary ? (

@@ -115,7 +115,8 @@
     "test:synaxarium-presentation": "node --experimental-strip-types scripts/test-synaxarium-presentation.mjs",
     "optimize:calendar-images": "node scripts/optimize-calendar-images.mjs",
     "test:church-library-structured": "tsx scripts/test-church-library-structured-import.ts",
-    "test:church-library-db": "bash scripts/church-library/db-test/run.sh"
+    "test:church-library-db": "bash scripts/church-library/db-test/run.sh",
+    "test:mezmur-browse-queue": "tsx scripts/test-mezmur-browse-queue.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.5.1",

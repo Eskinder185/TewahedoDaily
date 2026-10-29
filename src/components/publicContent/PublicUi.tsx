@@ -4,6 +4,7 @@ import { useAsync } from '../../lib/cms/useAsync'
 import { publicMedia, type MezmurCard } from '../../lib/publicContent/service'
 import { parseYoutubeVideoId } from '../../data/utils/youtube'
 import s from './PublicContent.module.css'
+import { queueItem, rememberBrowseQueue } from '../../lib/mezmur/browseQueue'
 import { useGlobalAudio } from '../../lib/publicContent/audio'
 
 const LANGUAGE_LABEL: Record<string, string> = {
@@ -81,7 +82,15 @@ export function MezmurCards({ items }: { items: MezmurCard[] }) {
 
         return (
           <article className={s.card} key={item.id}>
-            <Link to={`/practice/mezmur/${item.slug}`}>
+            <Link
+              to={`/practice/mezmur/${item.slug}`}
+              onClick={() => rememberBrowseQueue(
+                'This list',
+                `${window.location.pathname}${window.location.search}`,
+                items.map((row) => queueItem(row.slug, row.title, row.youtube_url, row.audio_url)),
+                item.slug,
+              )}
+            >
               <Artwork reference={item.thumbnail_url} title={item.title} />
               <h2>{item.title}</h2>
               {item.title_amharic ? <p lang="am">{item.title_amharic}</p> : null}

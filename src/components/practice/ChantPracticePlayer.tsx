@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect -- pre-existing per-hymn state resets (loops, API readiness); previously hidden because the component was skipped by the React Compiler lint */
 import {
   useCallback,
   useEffect,
@@ -43,7 +44,8 @@ import {
 } from './chantPracticeModel'
 import { useTranslation } from '../../i18n'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
-import { useGlobalAudio } from '../../lib/publicContent/audio'
+import { AUDIO_PLAY_EVENT, useOptionalPlayer } from '../../lib/mezmur/playerContext'
+import type { PracticeMiniPlayerProps } from './PracticeMiniPlayer'
 import { rememberPracticeContinue } from '../../lib/practice/practiceContinueSession'
 import styles from './ChantPracticePlayer.module.css'
 
@@ -56,6 +58,12 @@ function snapPlaybackRate(n: number): PracticeSpeed {
 }
 
 type ChantPracticePlayerProps = {
+  /** Previous / Next / Shuffle / Repeat for the list this Mezmur was opened from. */
+  queue?: PracticeMiniPlayerProps['queue']
+  /** Called when the video finishes; 'repeat-one' restarts it here. */
+  onEnded?: () => 'repeat-one' | 'advanced' | 'stopped'
+  /** Start playing as soon as the video is ready (automatic advance). */
+  autoplayOnLoad?: boolean
   payload: ChantPracticePayload
   formLabel: string
   onBack: () => void
@@ -80,11 +88,23 @@ export function ChantPracticePlayer({
   footerActions,
   headerActions,
   lyricsContent,
+  queue,
+  onEnded,
+  autoplayOnLoad = false,
 }: ChantPracticePlayerProps) {
   const moreActions = footerActions ?? headerActions
   const t = useUiLabel()
   const tt = useTranslation()
-  const globalAudio = useGlobalAudio()
+  const audioPlayer = useOptionalPlayer()
+  const audioPlayerRef = useRef(audioPlayer)
+  const onEndedRef = useRef(onEnded)
+  useEffect(() => {
+    audioPlayerRef.current = audioPlayer
+    onEndedRef.current = onEnded
+  })
+  // Read once: this player instance belongs to one Mezmur page visit.
+  const autoplayRef = useRef(autoplayOnLoad)
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false)
   const mountRef = useRef<HTMLDivElement>(null)
   const playerRef = useRef<YT.Player | null>(null)
   const shellRef = useRef<HTMLDivElement>(null)
@@ -246,11 +266,35 @@ export function ChantPracticePlayer({
               setDurationSec(Math.max(0, dur))
             }
             setPlayerReady(true)
+            if (autoplayRef.current) {
+              autoplayRef.current = false
+              p.playVideo()
+              // Browsers may refuse to start sound without a tap; offer one.
+              window.setTimeout(() => {
+                const PS = window.YT?.PlayerState
+                if (PS && playerRef.current === p && p.getPlayerState() !== PS.PLAYING && p.getPlayerState() !== PS.BUFFERING) {
+                  setAutoplayBlocked(true)
+                }
+              }, 2500)
+            }
           },
           onStateChange: (e) => {
             const PS = window.YT?.PlayerState
             if (!PS) return
             setIsPlaying(e.data === PS.PLAYING)
+            if (e.data === PS.PLAYING) {
+              setAutoplayBlocked(false)
+              // One sound at a time: pause the persistent audio player.
+              const audio = audioPlayerRef.current
+              if (audio?.isPlaying) audio.pause()
+            }
+            if (e.data === PS.ENDED && onEndedRef.current) {
+              const outcome = onEndedRef.current()
+              if (outcome === 'repeat-one') {
+                e.target.seekTo(0, true)
+                e.target.playVideo()
+              }
+            }
           },
           onError: () => {
             setLoopError('This video cannot be controlled in the embedded player. Try Open on YouTube.')
@@ -761,11 +805,22 @@ export function ChantPracticePlayer({
     return () => shell.removeEventListener('keydown', onKey)
   }, [togglePlay, skipBy])
 
+  // One sound at a time. Opening a different Mezmur pauses (not clears) the
+  // persistent audio player, so its queue survives; the same Mezmur keeps playing.
   useEffect(() => {
-    globalAudio.stop()
-    // Intentionally omit globalAudio from deps — stop once per hymn load.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [payload.entryId])
+    const audio = audioPlayerRef.current
+    if (audio?.isPlaying && audio.currentTrack?.slug !== payload.slug) audio.pause()
+  }, [payload.entryId, payload.slug])
+
+  useEffect(() => {
+    const onAudioPlay = () => {
+      const p = playerRef.current
+      const PS = window.YT?.PlayerState
+      if (p && PS && p.getPlayerState() === PS.PLAYING) p.pauseVideo()
+    }
+    window.addEventListener(AUDIO_PLAY_EVENT, onAudioPlay)
+    return () => window.removeEventListener(AUDIO_PLAY_EVENT, onAudioPlay)
+  }, [])
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 959.98px)')
@@ -1036,6 +1091,8 @@ export function ChantPracticePlayer({
           onSeek={seekTo}
           onSkipBy={skipBy}
           collapsedExtras={!isNarrow ? playbackExtras : null}
+          queue={queue}
+          autoplayBlocked={autoplayBlocked}
           sheetBody={
             <>
               {playbackExtras ? (

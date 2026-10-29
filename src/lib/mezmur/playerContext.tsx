@@ -151,7 +151,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     audioRef.current = audio
     const onTime = () => setCurrentTime(audio.currentTime)
     const onDuration = () => setDuration(Number.isFinite(audio.duration) ? audio.duration : 0)
-    const onPlay = () => { setIsPlaying(true); setError('') }
+    const onPlay = () => { setIsPlaying(true); setError(''); window.dispatchEvent(new Event(AUDIO_PLAY_EVENT)) }
     const onPause = () => setIsPlaying(false)
     const onEnded = () => advance(true)
     const onError = () => setError('This recording is unavailable. Try another Mezmur or retry later.')
@@ -227,6 +227,14 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setSleepTimer, setSpeed, setVolume, shuffle, sleepEndsAt, sleepTimer, toggleMute, togglePlay, toggleShuffle, volume])
   return <PlayerContext.Provider value={value}>{children}</PlayerContext.Provider>
 }
+
+/** The player when one is mounted (null outside PlayerProvider). */
+export function useOptionalPlayer(): PlayerContextValue | null {
+  return useContext(PlayerContext)
+}
+
+/** Fired when the persistent audio player starts, so an embedded video can pause. */
+export const AUDIO_PLAY_EVENT = 'tewahedo:mezmur-audio-play'
 
 export function usePlayer(): PlayerContextValue {
   const context = useContext(PlayerContext)

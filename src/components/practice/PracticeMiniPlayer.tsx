@@ -7,6 +7,7 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 import { formatChantTime } from './chantPracticeModel'
+import { QueueTransport, type QueueTransportProps } from '../mezmur/QueueTransport'
 import styles from './PracticeMiniPlayer.module.css'
 
 export type PracticeMiniPlayerProps = {
@@ -25,6 +26,21 @@ export type PracticeMiniPlayerProps = {
   sheetBody: ReactNode
   /** Optional extras row in collapsed (desktop) */
   collapsedExtras?: ReactNode
+  /**
+   * Shuffle | Previous | Play/Pause | Next | Repeat for the list this Mezmur was
+   * opened from. Shown in the expanded sheet only; the collapsed dock is unchanged.
+   */
+  /** The browser refused to start the next Mezmur automatically; ask for a tap. */
+  autoplayBlocked?: boolean
+  queue?: {
+    transport: Omit<QueueTransportProps, 'isPlaying' | 'onTogglePlay' | 'playDisabled'>
+    /** e.g. "Virgin Mary · 3 of 412" */
+    contextLine: string | null
+    /** What kind of recording plays here (YouTube video vs. audio). */
+    sourceNote: string
+    autoplay: boolean
+    onAutoplayChange: (on: boolean) => void
+  }
 }
 
 /**
@@ -45,6 +61,8 @@ export function PracticeMiniPlayer({
   onSkipBy,
   sheetBody,
   collapsedExtras,
+  queue,
+  autoplayBlocked = false,
 }: PracticeMiniPlayerProps) {
   const titleId = useId()
   const sheetRef = useRef<HTMLDivElement>(null)
@@ -138,7 +156,11 @@ export function PracticeMiniPlayer({
         </button>
         <div className={styles.meta} id={titleId}>
           <p className={styles.title}>{title || 'Mezmur'}</p>
-          {zemari ? <p className={styles.zemari}>{zemari}</p> : null}
+          {autoplayBlocked ? (
+            <p className={styles.zemari} role="status">Tap ▶ to play this Mezmur</p>
+          ) : zemari ? (
+            <p className={styles.zemari}>{zemari}</p>
+          ) : null}
         </div>
         <button
           type="button"
@@ -238,7 +260,29 @@ export function PracticeMiniPlayer({
             Done
           </button>
         </div>
-        <div className={styles.sheetTransport}>
+        {queue ? (
+          <div className={styles.queueBlock}>
+            <QueueTransport
+              {...queue.transport}
+              isPlaying={isPlaying}
+              playDisabled={controlsDisabled}
+              onTogglePlay={onTogglePlay}
+            />
+            {queue.contextLine ? <p className={styles.queueContext}>Playing from {queue.contextLine}</p> : null}
+            <div className={styles.queueOptions}>
+              <label className={styles.queueToggle}>
+                <input
+                  type="checkbox"
+                  checked={queue.autoplay}
+                  onChange={(e) => queue.onAutoplayChange(e.target.checked)}
+                />
+                Auto-play next
+              </label>
+              <span className={styles.queueSource}>{queue.sourceNote}</span>
+            </div>
+          </div>
+        ) : null}
+        <div className={`${styles.sheetTransport} ${queue ? styles.sheetTransportSecondary : ''}`.trim()}>
           <button
             type="button"
             className={styles.iconBtn}
@@ -248,15 +292,17 @@ export function PracticeMiniPlayer({
           >
             −10
           </button>
-          <button
-            type="button"
-            className={styles.playBtnLarge}
-            onClick={onTogglePlay}
-            disabled={controlsDisabled}
-            aria-label={isPlaying ? 'Pause' : 'Play'}
-          >
-            {isPlaying ? '❚❚' : '▶'}
-          </button>
+          {queue ? null : (
+            <button
+              type="button"
+              className={styles.playBtnLarge}
+              onClick={onTogglePlay}
+              disabled={controlsDisabled}
+              aria-label={isPlaying ? 'Pause' : 'Play'}
+            >
+              {isPlaying ? '❚❚' : '▶'}
+            </button>
+          )}
           <button
             type="button"
             className={styles.iconBtn}

@@ -19,6 +19,7 @@ import s from './HymnPractice.module.css'
 import { isMezmurLanguageFilter, normalizeMezmurLanguage, mezmurLanguageLabel, type MezmurLanguageCode, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { ZemariSupportLinks } from '../components/practice/ZemariSupportLinks'
+import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
 
 const ZEMARIS_PER_PAGE = 8
 
@@ -98,6 +99,8 @@ export function PublicHymnCollectionPage({
   const [group, setGroup] = useState<HymnBrowseCard | null>(null)
   const [allCards, setAllCards] = useState<HymnBrowseCard[]>([])
   const [items, setItems] = useState<MezmurCard[]>([])
+  /** The whole filtered collection (all pages), in display order — the play queue. */
+  const [queueRows, setQueueRows] = useState<MezmurCard[]>([])
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
@@ -318,6 +321,7 @@ export function PublicHymnCollectionPage({
         if (!active) return
         const from = (page - 1) * PAGE_SIZE
         setItems(rows.slice(from, from + PAGE_SIZE))
+        setQueueRows(rows)
         setTotal(rows.length)
         setLoading(false)
       } catch (cause) {
@@ -499,7 +503,17 @@ export function PublicHymnCollectionPage({
             {items.map((item) => {
               const itemHeading = hymnSourceHeading(item.title, item.title_amharic, locale)
               return (
-                <Link key={item.id} to={language ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(language)}` : `/hymns/mezmur/${item.slug}`} className={s.card}>
+                <Link
+                  key={item.id}
+                  to={language ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(language)}` : `/hymns/mezmur/${item.slug}`}
+                  className={s.card}
+                  onClick={() => rememberBrowseQueue(
+                    title,
+                    `${window.location.pathname}${window.location.search}`,
+                    queueRows.map((row) => queueItem(row.slug, row.title, row.youtube_url, row.audio_url)),
+                    item.slug,
+                  )}
+                >
                   <CardArt item={item} />
                   <div className={s.cardBody}>
                     {itemHeading.secondary ? (

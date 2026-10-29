@@ -6,6 +6,7 @@ import type { PlayableHymn } from '../../lib/mezmur/playlistService'
 import { detail } from '../../lib/publicContent/service'
 import { listFavorites } from '../../lib/userContent/favoritesService'
 import styles from './PersistentMiniPlayer.module.css'
+import { QueueTransport } from './QueueTransport'
 
 function formatSeconds(secs: number): string {
   if (!Number.isFinite(secs) || secs < 0) return '0:00'
@@ -54,9 +55,20 @@ export function PersistentMiniPlayer() {
             <button type="button" className={styles.textButton} onClick={() => void playFavorites()}>Play Favorites</button>
           </div>
           {favoritesMessage && <p className={styles.status} role="status">{favoritesMessage}</p>}
+          <QueueTransport
+            shuffle={player.shuffle}
+            repeat={player.repeatMode === 'none' ? 'off' : player.repeatMode}
+            isPlaying={isPlaying}
+            canPrevious={queueIndex > 0 || currentTime > 3}
+            canNext={queueIndex < queue.length - 1 || (player.repeatMode === 'all' && queue.length > 1) || Boolean(player.queueContext?.loadMore)}
+            onShuffle={player.toggleShuffle}
+            onPrevious={player.previous}
+            onTogglePlay={player.togglePlay}
+            onNext={player.next}
+            onRepeat={cycleRepeat}
+          />
+          <p className={styles.status}>Source: audio recording · {queueIndex + 1} of {queue.length}</p>
           <div className={styles.settingsRow}>
-            <button type="button" className={player.shuffle ? styles.activeControl : styles.textButton} onClick={player.toggleShuffle} aria-pressed={player.shuffle}>Shuffle</button>
-            <button type="button" className={styles.textButton} onClick={cycleRepeat}>Repeat: {player.repeatMode}</button>
             <label className={styles.checkLabel}><input type="checkbox" checked={player.autoplayNext} onChange={(event) => player.setAutoplayNext(event.target.checked)} /> Auto-play next</label>
             <label>Sleep <select value={player.sleepTimer ?? ''} onChange={(event) => player.setSleepTimer((event.target.value === 'end' ? 'end' : event.target.value ? Number(event.target.value) : null) as SleepTimerOption)}><option value="">Off</option><option value="15">15 min</option><option value="30">30 min</option><option value="45">45 min</option><option value="60">60 min</option><option value="end">End of track</option></select></label>
             <button type="button" className={styles.textButton} onClick={player.clearQueue}>Close player</button>

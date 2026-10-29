@@ -24,6 +24,7 @@ import { useLocale } from '../lib/i18n/locale'
 import { useTranslation } from '../i18n'
 import { prefetchRoute } from '../lib/routePrefetch'
 import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
+import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
 import s from './HymnPractice.module.css'
 import { MEZMUR_LANGUAGES, isMezmurLanguageFilter, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
 import {
@@ -416,7 +417,17 @@ function MezmurResultGrid({
           .filter(Boolean)
           .join(' · ')
         return (
-          <Link key={item.id || item.slug} to={`/hymns/mezmur/${item.slug}`} className={s.card}>
+          <Link
+            key={item.id || item.slug}
+            to={`/hymns/mezmur/${item.slug}`}
+            className={s.card}
+            onClick={() => rememberBrowseQueue(
+              new URLSearchParams(window.location.search).get('q') ? 'Search results' : 'Mezmur Library',
+              `${window.location.pathname}${window.location.search}`,
+              items.map((row) => queueItem(row.slug, row.title, row.youtube_url, row.audio_url)),
+              item.slug,
+            )}
+          >
             <CardArt item={item} />
             <div className={s.cardBody}>
               {heading.secondary ? (

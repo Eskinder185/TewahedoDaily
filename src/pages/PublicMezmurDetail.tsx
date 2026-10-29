@@ -21,6 +21,7 @@ import {
 import { parseYoutubeVideoId } from '../data/utils/youtube'
 import s from './HymnPractice.module.css'
 import { HymnLyricsExperience } from '../components/hymns/HymnLyricsExperience'
+import { useMezmurQueue } from '../lib/mezmur/useMezmurQueue'
 
 export function PublicMezmurDetail() {
   const { slug } = useParams()
@@ -76,6 +77,27 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
     () => publicMezmurToPracticePayload(item, activeUrl),
     [item, activeUrl],
   )
+
+  const queue = useMezmurQueue(item.slug)
+  const queueProps = {
+    transport: {
+      shuffle: queue.shuffle,
+      repeat: queue.repeat,
+      canPrevious: Boolean(queue.prevSlug),
+      canNext: Boolean(queue.nextSlug),
+      unavailableHint: queue.inQueue
+        ? undefined
+        : 'Open this Mezmur from a category, occasion or Zemari list to play that list in order',
+      onShuffle: queue.toggleShuffle,
+      onPrevious: queue.goPrevious,
+      onNext: () => queue.goNext(false),
+      onRepeat: queue.cycleRepeat,
+    },
+    contextLine: queue.inQueue ? `${queue.label} · ${queue.position} of ${queue.total}` : null,
+    sourceNote: 'YouTube video — plays on this page',
+    autoplay: queue.autoplay,
+    onAutoplayChange: queue.setAutoplay,
+  }
 
   const languageLabel = item.language ? classificationLabel(item.language) : null
   const categoryLabel = displayClassification(item.category_name || item.category)
@@ -146,6 +168,9 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
     <div>
       <ChantPracticePlayer
         payload={payload}
+        queue={queueProps}
+        onEnded={queue.onEnded}
+        autoplayOnLoad={queue.autoplayOnLoad}
         formLabel={item.form === 'werb' ? 'Werb' : 'Mezmur'}
         badges={badges}
         onBack={() => navigate('/practice')}

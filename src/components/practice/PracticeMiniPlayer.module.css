@@ -235,6 +235,52 @@
   color: var(--color-text, #1c283a);
 }
 
+.sheetTransportSecondary {
+  gap: 10px;
+  padding-top: 0;
+}
+
+.queueBlock {
+  padding: 2px 16px 6px;
+  text-align: center;
+}
+
+.queueContext {
+  margin: 0 0 4px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted, #5a6578);
+  overflow-wrap: anywhere;
+}
+
+.queueOptions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 14px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted, #5a6578);
+}
+
+.queueToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  color: var(--color-text, #1c283a);
+  cursor: pointer;
+}
+
+.queueToggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-burgundy, #6a1a24);
+}
+
+.queueSource {
+  font-style: italic;
+}
+
 .sheet .progressRow {
   padding: 0 16px 12px;
   color: var(--color-text-muted, #5a6578);
