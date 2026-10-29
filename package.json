@@ -117,7 +117,11 @@
     "test:church-library-structured": "tsx scripts/test-church-library-structured-import.ts",
     "test:church-library-db": "bash scripts/church-library/db-test/run.sh",
     "test:mezmur-browse-queue": "tsx scripts/test-mezmur-browse-queue.ts",
-    "test:play-foundation": "node scripts/test-play-foundation.mjs"
+    "test:play-foundation": "node scripts/test-play-foundation.mjs",
+    "test:play-milestones": "tsx scripts/test-play-milestones-2-4.ts",
+    "test:play-complete": "node scripts/test-play-complete.mjs"
+    ,"play:plan-drafts": "tsx scripts/import-play-content-drafts.ts"
+    ,"play:import-drafts": "tsx --env-file-if-exists=.env.local scripts/import-play-content-drafts.ts --apply"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.5.1",

@@ -139,7 +139,7 @@
   line-height: 1.65;
 }
 
-.comingSoon { margin-top: auto; }
+.comingSoon { margin-top: auto; text-decoration: none; }
 
 .progressPanel {
   padding: clamp(1.25rem, 2.5vw, 2rem);
@@ -173,7 +173,7 @@
   background: color-mix(in srgb, var(--color-border) 80%, transparent);
 }
 
-.progressTrack span { display: block; width: 0; height: 100%; background: var(--color-gold); }
+.progressTrack span { display: block; height: 100%; background: var(--color-gold); }
 
 .stats {
   display: grid;

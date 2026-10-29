@@ -26,11 +26,15 @@ for (const required of ['Guest play', 'እንግዳ ጨዋታ', 'Game Night', '�
 assert.match(hub, /aria-live="polite"/, 'Difficulty changes need an accessible announcement')
 assert.match(hub, /aria-pressed=\{filter === category\.id\}/, 'Category filters need selected state')
 assert.match(hubCss, /prefers-reduced-motion: no-preference/, 'Decorative animation must be opt-in when reduced motion is not requested')
-assert.doesNotMatch(hub, /to="\/play\/(trivia|emoji|who-am-i|history|match|game-night)"/, 'Unavailable game routes must not be presented as working links')
+for (const route of ['/play/trivia', '/play/who-am-i', '/play/emoji', '/play/finish-the-mezmur', '/play/finish-the-verse', '/play/history', '/play/match', '/play/adventures', '/play/game-night']) {
+  assert.ok(app.includes(`path="${route}"`), `Missing playable route: ${route}`)
+}
+assert.match(hub, /\/play\/trivia\?daily=1/, 'Daily challenge must link to its deterministic round')
+assert.match(app, /path="\/play\/game-night"/, 'Game Night must have a dedicated route')
 
 for (const existingTable of ['bible_editions', 'mezmur', 'church_library_passages', 'profiles']) {
   assert.ok(schema.includes(`\`${existingTable}\``), `Schema proposal must reference inspected table ${existingTable}`)
 }
-assert.match(schema, /No migration in this document has been applied/, 'Proposal must clearly state its unapplied status')
+assert.match(schema, /ha(?:s|ve) not been applied/, 'Proposal must clearly state its unapplied status')
 
 console.log('Tewahedo Play foundation checks passed.')

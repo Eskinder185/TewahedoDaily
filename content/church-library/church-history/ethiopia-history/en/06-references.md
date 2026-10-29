@@ -13,52 +13,52 @@ publication_status: draft
 <!-- section CHE-006-S000 -->
 
 <!-- CHE-006-S000-P001 -->
-1. History of the E/O/T/C/C/by Abune Gregorios/ 1976
+1. History of the E.O.T.C. /by Abune Gorgorios/ 1976 E.C.
 
 <!-- CHE-006-S000-P002 -->
-2. Ethiopia under the Three Laws (Chief Ayalew Tamru) 1953
+2. Ethiopia in Three Laws /Aleka Ayalew Tamru/ 1953 E.C.
 
 <!-- CHE-006-S000-P003 -->
-3. The Cross of the Cross (Gshen Debre Kyrbe Mary Committee 1990)
+3. Anbir Mesqelye be Dibe Mesqel /by Geshen Debre Kerbe Mariam Committee 1990/
 
 <!-- CHE-006-S000-P004 -->
-4. An Ethiopian in Search of His Identity (Nabured Jeremiah, 1991)
+4. Searching for Ethiopian Identity /Nubre'ed Ermias in 1991/
 
 <!-- CHE-006-S000-P005 -->
-5. The Search for the Ark of Zion (Translation by the Society of Saints, 1993)
+5. Searching for the Tabot of Zion /Translation by Mahabere Kidusan 1993/
 
 <!-- CHE-006-S000-P006 -->
-6. Magazine Amin Medlote Amin /Horizon Jenbre Teacher/
+6. Mezehete Amin Medlote Amin /by Admasu Jenbere Memhir/
 
 <!-- CHE-006-S000-P007 -->
-7. Paul's College Shooting (History)
+7. Paulos College Sheet /History/
 
 <!-- CHE-006-S000-P008 -->
-8. Eve (Brighton Lord's Choice)
+8. Wazema /Blaten Geta Haruy/
 
 <!-- CHE-006-S000-P009 -->
-9. Ancient Ethiopian Teachings / Officials Habtemariam Werkneh/
+9. Ancient Ethiopian Education /Liqesiltanat Habtemaryam Workneh/
 
 <!-- CHE-006-S000-P010 -->
-10. The Eighty-One Bible
+10. Semanya Ahadu Holy Bible
 
 <!-- CHE-006-S000-P011 -->
 11. Spiritual Magazines and Newspapers
 
 <!-- CHE-006-S000-P012 -->
-Devotion
+Wosbehat
 
 <!-- CHE-006-S000-P013 -->
 Church Development
 
 <!-- CHE-006-S000-P014 -->
-For God
+To God
 
 <!-- CHE-006-S000-P015 -->
-Sunday School at St. George's Church in Paradise
+In Menagesha Genete Tsegé Kidus Giorgis Church Sunday School
 
 <!-- CHE-006-S000-P016 -->
-A classroom has been set up.
+The lesson was prepared.
 
 <!-- CHE-006-S000-P017 -->
 ♥ 011 155 89 41
@@ -67,4 +67,4 @@ A classroom has been set up.
 < 27314
 
 <!-- CHE-006-S000-P019 -->
-200 A.D.
+2007 E.C.

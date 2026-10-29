@@ -13,44 +13,44 @@ publication_status: draft
 ## The Two Schools of Interpretation {#CHW-004-S001}
 
 <!-- CHW-004-S001-P001 -->
-The apostles spent three years and three months establishing spiritual schools that helped them to teach and pass on to the world what they had learned from the Lord. This is primarily due to the fact that 1. The Alexandrian Interpretation School 2. The Antioch School of Interpretation
+The Apostles, after receiving the teaching from the Lord for three years and three months, needed to establish spiritual schools to help them teach/transmit that teaching to the world. The primary ones mentioned for this are: 1. The School of Interpretation of Alexandria 2. The School of Interpretation of Antioch
 
 <!-- CHW-004-S001-P002 -->
 They are.
 
-### 1st Alexandria Interpretation School {#CHW-004-S002}
+### 1st. The School of Interpretation of Alexandria {#CHW-004-S002}
 
 <!-- CHW-004-S002-P001 -->
-The first Christian school known in the history of the Church was the Interpretive School of Alexandria, founded in 60 AD by the Evangelist Mark. The purpose of the school was to train new believers in the teachings of the Scriptures and to acquire them with spiritual knowledge that would enable them to teach their fellow believers when they left. In the second and third centuries, this school expanded, and Christians learned not only spiritual, but also universal knowledge and philosophy. Many philosophers came and studied it.
+The first school of Christians known in Church history is the School of Interpretation of Alexandria, which was founded in the 1st century A.D. by the Evangelist Mark. The goal of the school was to train new believers in the teaching of the Holy Scriptures and to equip them with spiritual knowledge so that they could teach their own people upon leaving. In the second and third centuries, this school was expanding, and Christians studied not only spiritual but also secular knowledge and philosophy there. Many philosophers entered and studied there.
 
 <!-- CHW-004-S002-P002 -->
-According to the Alexandrian School of Reading, Interpretation Kills: Interpretation saves, translating the Scriptures in the sense of none, following the mysterious, and not their reading.
+Based on the principle that 'the reading of the School of Alexandria kills, while interpretation saves,' it does not follow the literal readings of the Holy Scriptures but interprets them to reveal their mysteries.
 
 <!-- CHW-004-S002-P003 -->
-2nd - Antioch Interpretive School
+2nd. The School of Interpretation of Antioch
 
 <!-- CHW-004-S002-P004 -->
-The School of Interpretation of Antioch was founded in the middle of the 3rd century in Antioch, which was the capital of Syria at that time, by a man named Lucianus.
+The School of Interpretation of Antioch was founded in the middle of the 3rd century by a man named Lucianus in Antioch, which was the capital of Syria at that time.
 
 <!-- CHW-004-S002-P005 -->
-Many philosophers entered this school and studied Christianity. At this time, the philosophical thought overshadowed the beliefs and teachings of Christianity, and it was in this school that Aristotle's philosophy reigned.
+In this school, many philosophers entered and studied Christian teaching. At this time, the philosophical mindset of Christological faith and teaching, and even the philosophy of Aristotle, prevailed in this school.
 
 <!-- CHW-004-S002-P006 -->
-The Antioch school taught that the Scriptures were interpreted only in a single interpretation. In this method of interpretation, the two schools lived in a state of criticism of each other. As a result of this rebellion, the members of the Antioch school called the Alexandrians the Sebalios.
+The school of Antioch used to translate and teach the Holy Scriptures using only literal interpretation. In this method of interpretation, both schools used to insult one another. Due to this mutual insult, the members of the school of Antioch used to call the Alexandrians Sabellians.
 
 <!-- CHW-004-S002-P007 -->
-Learned in Alexandria 1. Clemente / Titus Flabianus / Alexandria 2. Argens
+Those who studied in the school of Alexandria: 1. Clementus /Titus Flavianus/ of Alexandria 2. Argenis
 
 <!-- CHW-004-S002-P008 -->
-What they learned at the Antioch School
+Those who studied in the school of Antioch
 
 <!-- CHW-004-S002-P009 -->
-Arius was born in Libya, North Africa, around 257 AD, and although his family genealogy is unknown, he was probably Greek. He received his education at the Antioch Interpretation School. He then became a disciple of St. Peter, the martyr of Meles in Alexandria.
+Among those who studied in the school of Antioch, one of those who were moved by the spirit of the school of Antioch and tried to return the teaching of the Church to philosophy was Arius. Arius was born around 257 AD in Libya in North Africa; although his family lineage is unknown, he was certainly not Greek. He found the teaching that he reconciled with the Church in the school of Antioch interpretation. Later, he became the deacon of Saint Peter in Teftsamete in Alexandria.
 
-## The End of the Martyrdom of St. Peter {#CHW-004-S003}
+## Teftsamete Saint Peter {#CHW-004-S003}
 
 <!-- CHW-004-S003-P001 -->
-His father, the High Priest, Theodore, and his mother's name was Sophia. He was the son of Blessed Samuel, and when he passed away, he was ordained as the 18th Archbishop of Mark. This father had three disciples, one of whom was Arius. Arius was an adult whose knowledge was certified by his teacher. But he was very wise. When Solomon left what was written and began to see what was not written, he began to turn to philosophy. Proverbs 8:22, 2Peter 1:20, 1 Timothy 6:20.
+His father was the priest Theodore and his mother was Sophia. Since he was a child of the righteous, they gave him to Abba Samuel, who taught him until he reached the rank of Deacon and then Priest. During a period of rest, he was appointed as the 18th Bishop Marcos. This father had three disciples, one of whom was Arius. Arius was a scholar whose knowledge was testified by his teacher. However, he reached extreme wisdom; at the beginning, he started to see what was not written, leaving what was written in Solomon, and began to move toward philosophy. Proverbs 8:22, 2 Peter 1:20, 1 Timothy 6:20
 
 <!-- CHW-004-S003-P002 -->
-The matter came to him and he summoned him and taught him advice. However, if he continued to betray the argument, he resigned from his position and condemned him. The martyr finally replaced Aquilas in the throne and was martyred on November 29. Aquilas, out of love of friendship, released Arius from the condemnation, and died of a plague, and Alexander was succeeded by Alexander. In the church of Alexandria, the poison of Arius was aroused, and many made a mockery of the truth. This situation worsened, and it was heard in the palace of Constantine. He sent messengers to investigate the matter, and according to his understanding, he proclaimed a conference of the world's churches He said.
+The matter reached him, and he called him and taught him. However, when he killed the argument and the denial, he was stripped of his appointment and demoted from his rank. Teftsamete finally, after rebuking Achillas in his seat, accepted martyrdom on the 29th day of Hadar. Achillas also, overcoming the love of friendship, released Arius from his demotion, but died by the death of punishment, and Athanasius replaced him in his seat. In the Church of Alexandria, many monks used the heresy of Arius as a means to defend the truth. As this situation continued to worsen, it was heard even in the Kingdom of Constantinople. He, in turn, sent messengers to clarify the matter and, based on what he understood, announced a decree for a council of the world's churches to be held.

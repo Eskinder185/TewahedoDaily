@@ -1,0 +1,6 @@
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .65rem; margin-top: 1rem; }
+.grid button { min-height: 7rem; padding: .65rem; border: 2px solid var(--color-border); border-radius: 1rem; background: linear-gradient(145deg, var(--color-burgundy-ink), color-mix(in srgb, var(--color-burgundy-ink) 72%, #b58a34)); color: white; font-weight: 800; transform-style: preserve-3d; }
+.grid button.open { border-color: var(--color-gold); background: var(--color-bg); color: var(--color-heading); }
+@media (max-width: 700px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.grid button { min-height: 6rem; } }
+@media (prefers-reduced-motion: no-preference) { .grid button { transition: transform 180ms ease, background 180ms ease; }.grid button.open { transform: rotateY(3deg) scale(.98); } }

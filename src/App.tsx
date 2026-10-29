@@ -151,12 +151,16 @@ const ChurchLibraryFaqAdmin = lazy(() =>
 const BibleManager = lazy(() =>
   import('./pages/admin/BibleManager').then((m) => ({ default: m.BibleManager })),
 )
+const PlayContentReview = lazy(() => import('./pages/admin/PlayContentReview').then((m) => ({ default: m.PlayContentReview })))
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const BibleCatalogPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleCatalogPage })))
 const BibleBookPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleBookPage })))
 const BibleChapterPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleChapterPage })))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })))
 const PlayHubPage = lazy(() => import('./pages/play/PlayHubPage').then(m => ({ default: m.PlayHubPage })))
+const PlayGamePage = lazy(() => import('./pages/play/PlayGamePage').then(m => ({ default: m.PlayGamePage })))
+const AdventurePage = lazy(() => import('./pages/play/AdventurePage').then(m => ({ default: m.AdventurePage })))
+const GameNightPage = lazy(() => import('./pages/play/GameNightPage').then(m => ({ default: m.GameNightPage })))
 
 export default function App() {
   // Automatically scroll to top when route changes
@@ -258,6 +262,7 @@ export default function App() {
               <Route path="church-library/import" element={<ChurchLibraryImport />} />
               <Route path="church-library/faqs" element={<ChurchLibraryFaqAdmin />} />
               <Route path="bible" element={<BibleManager />} />
+              <Route path="play" element={<PlayContentReview />} />
               <Route path="church-library/legacy-preview" element={<EditorialBooksPreview />} />
               <Route path="editorial-books" element={<Navigate to="/admin/church-library" replace />} />
               <Route path="editorial-books/*" element={<Navigate to="/admin/church-library" replace />} />
@@ -308,6 +313,15 @@ export default function App() {
       </Route>
       <Route element={<AppShell />}>
         <Route path="/play" element={<Suspense fallback={<PageLoadingFallback />}><PlayHubPage /></Suspense>} />
+        <Route path="/play/trivia" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="trivia" /></Suspense>} />
+        <Route path="/play/who-am-i" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="who-am-i" /></Suspense>} />
+        <Route path="/play/emoji" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="emoji" /></Suspense>} />
+        <Route path="/play/finish-the-mezmur" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="finish-the-mezmur" /></Suspense>} />
+        <Route path="/play/finish-the-verse" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="finish-the-verse" /></Suspense>} />
+        <Route path="/play/history" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="history" /></Suspense>} />
+        <Route path="/play/match" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="match" /></Suspense>} />
+        <Route path="/play/adventures" element={<Suspense fallback={<PageLoadingFallback />}><AdventurePage /></Suspense>} />
+        <Route path="/play/game-night" element={<Suspense fallback={<PageLoadingFallback />}><GameNightPage /></Suspense>} />
         <Route path="/bible" element={<Suspense fallback={<PageLoadingFallback />}><BibleCatalogPage /></Suspense>} />
         <Route path="/bible/:bookSlug" element={<Suspense fallback={<PageLoadingFallback />}><BibleBookPage /></Suspense>} />
         <Route path="/bible/:bookSlug/:chapter" element={<Suspense fallback={<PageLoadingFallback />}><BibleChapterPage /></Suspense>} />

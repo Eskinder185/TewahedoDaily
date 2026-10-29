@@ -10,6 +10,6 @@
 - Missing English counterparts: 0
 - Duplicate IDs: 0
 - Broken alignment links: 0
-- English passages flagged for expert review: 40
+- English passages flagged for expert review: 34
 
 The source paragraph sequence was preserved. Heading paragraphs are represented as chapter or section headings rather than counted again as reading paragraphs. No source paragraph was silently discarded.

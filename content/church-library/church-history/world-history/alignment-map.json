@@ -127,7 +127,9 @@
       "en": "CHW-000-S002-P004",
       "status": "aligned",
       "source_index": 12,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-000-S002-P005",
@@ -251,7 +253,9 @@
       "en": "CHW-000-S003-P001",
       "status": "aligned",
       "source_index": 26,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-000-S003-P002",
@@ -364,7 +368,9 @@
       "en": "CHW-000-S005-P003",
       "status": "aligned",
       "source_index": 39,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-000-S005-P004",
@@ -590,7 +596,9 @@
       "en": "CHW-001-S002-P012",
       "status": "aligned",
       "source_index": 65,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-001-S003",
@@ -681,7 +689,9 @@
       "en": "CHW-001-S006-P001",
       "status": "aligned",
       "source_index": 76,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-001-S006-P002",
@@ -934,7 +944,9 @@
       "en": "CHW-001-S010-P003",
       "status": "aligned",
       "source_index": 105,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-001-S010-P004",
@@ -1020,7 +1032,9 @@
       "en": "CHW-001-S012-P004",
       "status": "aligned",
       "source_index": 115,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-001-S012-P005",
@@ -1088,9 +1102,7 @@
       "en": "CHW-001-S014-P002",
       "status": "aligned",
       "source_index": 123,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHW-001-S014-P003",
@@ -1149,7 +1161,9 @@
       "en": "CHW-001-S016-P002",
       "status": "aligned",
       "source_index": 130,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-001-S016-P003",
@@ -1351,7 +1365,9 @@
       "en": "CHW-001-S023-P002",
       "status": "aligned",
       "source_index": 154,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-002",
@@ -1428,7 +1444,9 @@
       "en": "CHW-002-S001-P007",
       "status": "aligned",
       "source_index": 163,
-      "review_flags": []
+      "review_flags": [
+        "residual_ethiopic_in_english"
+      ]
     },
     {
       "id": "CHW-002-S001-P008",
@@ -1462,7 +1480,9 @@
       "en": "CHW-002-S002-P001",
       "status": "aligned",
       "source_index": 167,
-      "review_flags": []
+      "review_flags": [
+        "residual_ethiopic_in_english"
+      ]
     },
     {
       "id": "CHW-002-S002-P002",
@@ -1908,9 +1928,7 @@
       "en": "CHW-002-S004-P041",
       "status": "aligned",
       "source_index": 217,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHW-002-S004-P042",
@@ -2314,7 +2332,9 @@
       "en": "CHW-003-S003-P013",
       "status": "aligned",
       "source_index": 263,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-003-S003-P014",
@@ -2535,7 +2555,9 @@
       "en": "CHW-003-S005-P017",
       "status": "aligned",
       "source_index": 288,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-003-S005-P018",
@@ -2544,7 +2566,9 @@
       "en": "CHW-003-S005-P018",
       "status": "aligned",
       "source_index": 289,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-003-S005-P019",
@@ -2628,7 +2652,9 @@
       "en": "CHW-004-S002-P001",
       "status": "aligned",
       "source_index": 299,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-004-S002-P002",
@@ -3003,7 +3029,9 @@
       "en": "CHW-005-S003-P001",
       "status": "aligned",
       "source_index": 341,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-005-S003-P002",
@@ -3120,7 +3148,9 @@
       "en": "CHW-005-S003-P014",
       "status": "aligned",
       "source_index": 354,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-005-S003-P015",
@@ -3299,7 +3329,9 @@
       "en": "CHW-005-S008-P001",
       "status": "aligned",
       "source_index": 375,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHW-005-S008-P002",
@@ -3528,9 +3560,7 @@
       "en": "CHW-006-S004-P001",
       "status": "aligned",
       "source_index": 401,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHW-006-S005",

@@ -17,6 +17,7 @@ for (const collection of collections) {
         text: fs.readFileSync(path.join(base, language, name), 'utf8'),
       })),
   )
+  files.push({ name: 'manifest.json', text: fs.readFileSync(path.join(base, 'manifest.json'), 'utf8') })
   const preview = buildImportPreview(files)
   const errors = preview.issues.filter((issue) => issue.level === 'error')
   assert.equal(hasBlockingIssues(preview), false, JSON.stringify(errors, null, 2))
@@ -28,7 +29,9 @@ for (const collection of collections) {
   assert.deepEqual(am.passages.map((passage) => passage.key), en.passages.map((passage) => passage.key))
   assert.ok(am.passages.every((passage) => passage.content.trim()))
   assert.ok(en.passages.every((passage) => passage.content.trim()))
-  console.log(`✓ ${collection}: ${preview.stats.chapters} chapters, ${preview.stats.sections} sections, ${am.passages.length} aligned paragraphs`)
+  const chapterCount = am.sections.filter((section) => section.level === 1).length
+  const sectionCount = am.sections.filter((section) => section.level > 1).length
+  console.log(`✓ ${collection}: ${chapterCount} chapters, ${sectionCount} sections, ${am.passages.length} aligned paragraphs per language`)
 }
 
 console.log('✓ Church History collections pass production importer parsing and bilingual ID alignment')

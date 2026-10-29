@@ -54,7 +54,7 @@ COLLECTIONS = {
         "title_en": "Church History on the World Stage",
         "source": "2-Church_History_World_Clean.docx",
         "am_json": "2-Church_History_World_Clean.structure.json",
-        "en_json": "Church_History_World_English_Auto.structure.json",
+        "en_json": "Church_History_World_English_Local.structure.json",
         "merged_stem": "church_history_world",
         "zip": "church-history-world-bilingual-final.zip",
     },
@@ -66,7 +66,7 @@ COLLECTIONS = {
         "title_en": "History of the Ethiopian Orthodox Tewahedo Church",
         "source": "1-Church_History_Ethiopia_Clean.docx",
         "am_json": "1-Church_History_Ethiopia_Clean.structure.json",
-        "en_json": "Church_History_Ethiopia_English_Auto.structure.json",
+        "en_json": "Church_History_Ethiopia_English_Local.structure.json",
         "merged_stem": "church_history_ethiopia",
         "zip": "church-history-ethiopia-bilingual-final.zip",
     },
@@ -96,7 +96,7 @@ HEADING_OVERRIDES = {
 }
 
 SUSPICIOUS = re.compile(
-    r"\b(?:Allah|Goa|Swarovski|King of the Jungle|leftist|spam|click here|constitution)\b",
+    r"\b(?:Allah|Goa|Swarovski|King of the Jungle|leftist|spam|click here)\b",
     re.I,
 )
 ETHIOPIC = re.compile(r"[\u1200-\u137f]")
@@ -120,7 +120,7 @@ def slug(text: str, fallback: str) -> str:
 def heading_en(am: str, machine: str) -> str:
     if am in HEADING_OVERRIDES:
         return HEADING_OVERRIDES[am]
-    out = machine.strip()
+    out = " ".join(machine.split())
     replacements = {
         "Bishop Swarovski": "Saint Frumentius (Abba Salama)",
         "King of the Jungle": "Emperor Yekuno Amlak",
@@ -141,7 +141,9 @@ def clean_english(am: str, en: str, index: int, key: str) -> str:
             "and our righteous and martyr fathers who suffered for the honor of the Gospel, we may imitate "
             "their faith and conduct, follow their example, and serve our God well."
         )
-    return en.strip()
+    # A source DOCX paragraph is one stable reading block.  Model-inserted line
+    # breaks are prose formatting, not new blocks, so keep them inside the ID.
+    return " ".join(en.split())
 
 
 def classify_kind(am: str) -> str:
@@ -215,6 +217,9 @@ def build_structure(cfg: dict) -> tuple[list[Chapter], dict, dict]:
             if ETHIOPIC.search(text_en): flags.append("residual_ethiopic_in_english")
             if SUSPICIOUS.search(text_en): flags.append("suspicious_machine_translation")
             if abs(len(text_en) - len(text_am)) > max(450, len(text_am) * 2.4): flags.append("large_length_difference")
+            am_nums = Counter(re.findall(r"\d+", text_am))
+            en_nums = Counter(re.findall(r"\d+", text_en))
+            if am_nums != en_nums: flags.append("numeric_token_mismatch")
             sec.paragraphs.append({"id": pid, "am": text_am, "en": text_en, "block_type": block, "source_index": pa["index"], "review_flags": flags})
         chapters.append(ch)
     return chapters, am_doc, en_doc
@@ -294,23 +299,36 @@ def build_collection(name: str, cfg: dict) -> dict:
 
     manifest_chapters = []
     for ch in chapters:
+        section_manifest = {}
+        for lang in ("am", "en"):
+            section_manifest[lang] = [{
+                "id": s.id, "parent_id": s.parent_id, "level": s.level,
+                "title": s.title_am if lang == "am" else s.title_en,
+                "paragraphs": len(s.paragraphs),
+                "paragraph_ids": [p["id"] for p in s.paragraphs],
+                "source_paragraphs": [p["source_index"] for p in s.paragraphs],
+                "biblical_references": sorted(set(m.group(0) for p in s.paragraphs for m in VERSE.finditer(p[lang]))),
+                "review_markers": ([{"paragraph": p["id"], "markers": p["review_flags"]} for p in s.paragraphs if p["review_flags"]] if lang == "en" else []),
+            } for s in ch.sections]
         manifest_chapters.append({
-            "id": ch.id, "number": ch.number, "kind": ch.kind,
-            "titles": {"am": ch.title_am, "en": ch.title_en},
+            "id": ch.id, "chapter_number": ch.number, "kind": ch.kind,
+            "title": {"am": ch.title_am, "en": ch.title_en},
             "source_heading_am": ch.source_heading_am,
-            "sections": [{"id": s.id, "parent_id": s.parent_id, "level": s.level, "titles": {"am": s.title_am, "en": s.title_en}, "paragraph_ids": [p["id"] for p in s.paragraphs]} for s in ch.sections],
+            "sections": section_manifest,
             "files": {"am": next(f for f in files if f.startswith("am/") and f.startswith(f"am/{ch.number:02d}-")), "en": next(f for f in files if f.startswith("en/") and f.startswith(f"en/{ch.number:02d}-"))},
         })
     manifest = {
         "schema_version": 1, "collection_id": cfg["collection"], "subject": cfg["collection"],
+        "title": {"am": cfg["title_am"], "en": cfg["title_en"]},
         "titles": {"am": cfg["title_am"], "en": cfg["title_en"]},
-        "source_documents": {"am": {"file": cfg["source"], "sha256": am_doc["sha256"]}, "en_draft": {"file": cfg["en_json"], "generated_from": cfg["source"]}},
+        "source_documents": {"am": {"file": cfg["source"], "sha256": am_doc["sha256"], "nonempty_paragraphs": len(am_doc["paragraphs"])}, "en": {"file": cfg["en_json"], "generated_from": cfg["source"], "model": en_doc.get("model")}},
         "languages": {"am": {"status": "original"}, "en": {"status": "ai_translated_pending_review"}},
         "publication_status": "draft", "review_status": "expert_review_required",
         "chapter_count": len(chapters), "chapter_ids": [c.id for c in chapters],
         "section_ids": [s.id for s in all_secs], "paragraph_ids": [p["id"] for p in all_paras],
         "reading_order": [c.id for c in chapters], "chapters": manifest_chapters,
         "merged_files": {**merged, "bilingual": bilingual.name}, "biblical_references": refs,
+        "counts": {"am": {"chapters": len(chapters), "sections": len(all_secs), "paragraphs": len(all_paras)}, "en": {"chapters": len(chapters), "sections": len(all_secs), "paragraphs": len(all_paras)}},
         "content_completeness": {"source_nonempty_paragraphs": len(am_doc["paragraphs"]), "structural_headings": len(am_doc["paragraphs"]) - len(all_paras), "aligned_paragraphs": len(all_paras), "missing_translations": 0, "flagged_for_review": len(flagged)},
     }
     write_json(out / "manifest.json", manifest)
@@ -323,6 +341,22 @@ def build_collection(name: str, cfg: dict) -> dict:
             for p in sec.paragraphs:
                 alignments.append({"id": p["id"], "type": "paragraph", "am": p["id"], "en": p["id"], "status": "aligned", "source_index": p["source_index"], "review_flags": p["review_flags"]})
     write_json(out / "alignment-map.json", {"schema_version": 1, "collection": cfg["collection"], "alignments": alignments})
+
+    glossary = """# Glossary
+
+- **Abba** — an honorific meaning “father,” used for clergy and monastics.
+- **Bahre Hasab** — the traditional Ethiopian computus used to determine the liturgical calendar.
+- **Geʽez** — the classical liturgical and literary language of the Ethiopian Orthodox Tewahedo Church.
+- **Heg Libuna** — the “Law of Conscience” or “Law of the Heart.”
+- **Heg Orit** — the Law of the Torah or Old Testament law.
+- **Heg Wongel** — the Law of the Gospel.
+- **Mahlet** — the traditional chanted office of praise.
+- **Qidase** — the Divine Liturgy or Eucharistic service.
+- **Tewahedo** — “being made one,” the Church’s traditional Christological term for the unity of Christ’s divinity and humanity.
+
+These brief definitions support consistent reading; they do not add historical claims to the translated text.
+"""
+    (out / "glossary.md").write_text(glossary, encoding="utf-8")
 
     flag_counts = Counter(flag for p in flagged for flag in p["review_flags"])
     review_lines = ["# Translation Review", "", "Status: **Draft; expert Amharic/English theological review required before publication.**", "", f"All {len(all_paras)} paragraph blocks have English counterparts and stable matching IDs. The English edition was machine-translated and then structurally reconciled; this report does not claim that historical or theological verification is complete.", "", "## Automated review flags", ""]
@@ -364,7 +398,7 @@ Draft bilingual Church Library collection generated from `{cfg['source']}`.
 3. Use the existing structured Church Library importer with the files under `am/` and `en/`.
 4. Keep `publication_status: draft` until expert review is complete.
 
-`manifest.json` describes reading order and file paths; `alignment-map.json` maps every chapter, section, and paragraph. No database changes, migrations, imports, publication, or deployment are performed by this package.
+`manifest.json` describes reading order and file paths; `alignment-map.json` maps every chapter, section, and paragraph; `glossary.md` defines recurring Geʽez and Tewahedo terms. No database changes, migrations, imports, publication, or deployment are performed by this package.
 """
     (out / "README.md").write_text(readme, encoding="utf-8")
 

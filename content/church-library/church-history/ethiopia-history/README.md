@@ -9,4 +9,4 @@ Draft bilingual Church Library collection generated from `1-Church_History_Ethio
 3. Use the existing structured Church Library importer with the files under `am/` and `en/`.
 4. Keep `publication_status: draft` until expert review is complete.
 
-`manifest.json` describes reading order and file paths; `alignment-map.json` maps every chapter, section, and paragraph. No database changes, migrations, imports, publication, or deployment are performed by this package.
+`manifest.json` describes reading order and file paths; `alignment-map.json` maps every chapter, section, and paragraph; `glossary.md` defines recurring Geʽez and Tewahedo terms. No database changes, migrations, imports, publication, or deployment are performed by this package.

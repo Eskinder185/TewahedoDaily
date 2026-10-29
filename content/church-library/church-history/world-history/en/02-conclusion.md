@@ -10,234 +10,234 @@ publication_status: draft
 
 # Conclusion {#CHW-002}
 
-## The Glory of the Apostles in the Church {#CHW-002-S001}
+## The Honor of the Apostles in the Church {#CHW-002-S001}
 
 <!-- CHW-002-S001-P001 -->
-The Holy Apostles devoted their lives to the Holy Church, adorned the Church with their teachings, their life, their deeds, and suffered for the sake of the Church.
+The Holy Apostles gave their entire lives to the Holy Church; they adorned the Church through their teachings, their lives, and their actions. For the sake of the Church, they received various sufferings. To express the love and respect for these stars who were sacrificed, the Church preserves their martyrdom as a moral lesson for the coming generation, thinking that their names and stories should remain alive from age to age, and honors them in various ways. For example:
 
 <!-- CHW-002-S001-P002 -->
-1. Keeping their education undistorted
+1. By preserving their teachings without deviation
 
 <!-- CHW-002-S001-P003 -->
-But the Holy Church has preserved the true teachings and traditions of the apostles to this day, and will continue to do so until the coming of time, when many have deviated from the true doctrine of the apostles and are guided by their own philosophical desires. Galatians 1:8-9
+Many in various ages deviated from the true teaching of the Apostles and fell into error by being led by their own ways, their own philosophies, and their own desires. However, in our time, the Holy Church remains by preserving the true teaching and doctrine of the Apostles, and it will continue to remain until the coming of the future. Galatians 1:8-9
 
 <!-- CHW-002-S001-P004 -->
-2. Witnessing their murder
+2. By Witnessing their Martyrdom
 
 <!-- CHW-002-S001-P005 -->
-The Apostles were the beasts of the Christian life, and they fought against apostasants, heretics, pagans, arrogant princes and princes of this world, and they wrote Christianity with the pen of their bones in the color of their blood. They not only wrote it, but they lived and tasted it. The Church honors the apostles, who are the fragrance of the Church, the religion of eloquence, about the glory of the Gospel, and the religion of eloquence.
+Because the Apostolic Fathers were the pillars of Christian life, they struggled against heretics, schismatics, pagans, and the wicked leaders and officials of this world, and with the devil's tricks, they wrote Christianity with the color of their blood and the ink of their bones. They did not only write but also lived and demonstrated it. The Apostles, who are the fragrance of the Church, who suffered for the glory of the Gospel and the sanctity of the faith, are honored by the Church by witnessing their martyrdom.
 
 <!-- CHW-002-S001-P006 -->
-3. Celebrating their holiday
+3. By Celebrating their Feasts
 
 <!-- CHW-002-S001-P007 -->
-Psalm 83:3 says, "I have made a covenant with my chosen ones." The Holy Church, knowing this, commemorates and celebrates the martyrdom of the holy apostles (except for St. John, whose birthday is celebrated).
+«ኪዳነ ተካየድኩ ምስለ ኀሩያንየ» Psalm 83:3, saying 'I made a covenant with those I chose,' He entered into a covenant with the Saints. The Holy Church, knowing this, celebrates the day of their martyrdom /except for Saint John, whose day of birth is celebrated/ and honors their feasts in a magnificent manner through praise, Qidase, and Mahlet.
 
 <!-- CHW-002-S001-P008 -->
-4. Trusting in their intercession
+4. By Trusting in their Intercession
 
 <!-- CHW-002-S001-P009 -->
-The intercession of the saints is manifested in various places in the teaching of Scripture and in the history of the Church. Accordingly, she teaches that the parishioners prayed in their names for the salvation of their children, honoring their image by building a church in their name, honoring their image, and honoring their image by touching the strips of their garments.
+The intercession of the Saints is revealed in various places in the teachings of the Holy Scriptures and in the history of the Church. Accordingly, just as the faithful were healed in the past by touching the hem of their garments and lying on their beds, the Church teaches today that her children find salvation of the soul by praying in their names, building in their names, calling in their names, and honoring their icons.
 
-### The Age of the Apostle (71-160) {#CHW-002-S002}
+### 2nd Century of the Apostolic Fathers / 71-160 {#CHW-002-S002}
 
 <!-- CHW-002-S002-P001 -->
-The apostolic fathers of this day were learned from the apostles and replaced by the seat of the apostles. Many of the fathers also wrote books, and these fathers belonged to Jews and Gentiles. They were martyred among the Alastic kings, bearing witness to the teachings they heard from the apostles. Among these fathers were Barnabas, Clementus' descendants, Polycarpus, Erma, Popius and Ateius who died as martyrs during the reign of Trajan (98-117).
+The Apostolic Fathers who lived in this era were those who learned from the Apostles and were established on the throne of the Apostles. Many of these fathers wrote books, and these fathers were from both the Jewish and Gentile sides. They suffered martyrdom while witnessing the teachings they heard from the Apostles among the pagan kingdoms. Among these fathers, Barnabas, Clement of Rome, Polycarp, Erastus, Popius, and Ignatius suffered martyrdom during the reign of Trajan /98 - 117/ and are found in the 'Martyrs of the Lions' (ምጥው ለአንበሳ).
 
 <!-- CHW-002-S002-P002 -->
-Ignatius the Labor to the Lion (33 – 110 AD)
+Ignatius Martyrs of the Lions /33 – 110 AD/
 
 <!-- CHW-002-S002-P003 -->
-He was a disciple of St. John the Evangelist and was the third Archbishop of Antioch in the seat of St. Peter.
+He was the disciple and psalmist of Saint John the Evangelist and was the third Bishop of Antioch in the seat of Saint Peter.
 
 <!-- CHW-002-S002-P004 -->
-In the Gospel of Matthew 18:1, the Lord taught him as an example as a child. He was exiled to Rome in 110 A.D. during the persecution of Christians during the Trajan Dynasty, where he was martyred in the Roman Theater. Most of the Patriarchs who have been appointed regularly since 1293 have done so in his name in order to show their respect and love for him and his great deeds for the Church and his martyrdom have been shaped by the minds of future generations, and most of the patriarchs who have been appointed regularly since 1293 have done so in his name in order to keep his name and history alive from time to time.
+In Matthew's Gospel 18:1, the Lord taught him using a parable of a child. To ensure his firm belief in Christianity and the steadfastness of the faithful, he fled to Rome in 110 AD during the persecution against Christians that arose in the reign of Trajan. He was martyred by being thrown to the hungry beasts at the theater of Rome. To express the respect and love the Orthodox Tewahedo Church of Antioch had for him, and considering the great deeds he did for the Church and his martyrdom, in order that his name and history might remain alive and be remembered from age to age, from 1293 AD onwards, most of the elected Patriarchs have performed [liturgical acts] in his name.
 
-### Saint Clement of the Dead (91-100 A.D.) {#CHW-002-S003}
+### Saint Clement of Rome /91-100 AD./ {#CHW-002-S003}
 
 <!-- CHW-002-S003-P001 -->
-St. Peter's ship on which he was on his way to Rome was hit by a wave, and many of the passengers died, and some of them were scattered.
+While Saint Peter was traveling to Rome, the ship he was on was struck by a storm, causing many passengers to die where they were. The others were scattered, and among those scattered, a mother found an infant crying at a port in an unknown land, having lost his father. He began to follow her; this infant was Clement.
 
 <!-- CHW-002-S003-P002 -->
-St. Clementus is the number of the Fathers of the Church, who rose up after seventy years as the Apostle Phaetus. He was the fourth Archbishop of Rome and was given the priesthood by St. Peter.
+Saint Clement of Rome is one of the Apostolic Fathers who rose after the seven decades. He was the fourth Bishop of Rome, and the one who gave him the priesthood was Saint Peter. No one among the Apostolic Fathers is as well-known in the Church as Clement of Rome, for what reason? Because he performed and wrote many works.
 
 <!-- CHW-002-S003-P003 -->
-In the time of the apostles, the Eucharist did not have prayers. They sang a hymn and the parishioners received the sacrament by reciting only the sentences that our Lord had said on Thursday. But he wrote books to help with this. The ecclesiastical scholars took it out of this book and organized the Mass. He was the one who wrote the book of Clementus, which counts 81 books, and he wrote other books that are a guide for the Church to this day.
+In the Apostolic era, there was no Holy Communion. They would sing a psalm and the faithful would receive Holy Communion only by reciting the phrases the Lord spoke in the Passion of the Cross. He, however, wrote books to help with this. The scholars of the Church extracted the Qidase from this book. He is the one who wrote the Book of Clement, which is counted among the 81 books. He also wrote books that serve as guides for the Church until the present day.
 
 <!-- CHW-002-S003-P004 -->
-He spread the Gospel and wrote books, and on November 29, during the reign of Traja, he was tied to an anchor around his neck and was martyred in the Black Sea.
+In this manner, after clarifying the Gospel and writing books, he was martyred on the 29th of Hadar in the reign of Trajan, having his neck tied to a cross and being thrown into the Black Sea.
 
-### Saint Polycarpus 55-155 AD {#CHW-002-S004}
+### Saint Polycarp 55 - 155 AD {#CHW-002-S004}
 
 <!-- CHW-002-S004-P001 -->
-He was born in 55 A.D. in the city of Azmir / Sermnes Minor, he was a disciple of John and had already taught Christianity and was raised by a religious woman named Kalitos.
+He was born in 55 AD in the city of Smyrna / Seleucia in Asia Minor. He was a disciple of John, and he was taught the teachings of Christianity and raised in the faith by a pious and religious woman named Callisto. In 69 AD, he was appointed as the third Bishop of Smyrna by the hand of Saint John. Church scholars interpret that Polycarp, who is called the "Angel of Smyrna" in the Revelation of John chapter 2, was the one.
 
 <!-- CHW-002-S004-P002 -->
-When should the Feast of the Resurrection, which was his primary duty, be celebrated among Christians in the West and the East, as the Apostle Palicarpus sat on his throne? It was he who avoided the controversy of his time and decided not to abandon Easter Sunday, a decision that was the basis of the canon of the Resurrection decreed by the 318 scholars at the Council of Nicaea in 325 A.D. In fact, one of the founders of the Gnostics is said to have met him on the road from Merkian and began to confront him face to face without greeting him, and he was shocked and said, "Yes, I know you, you are the firstborn son of the devil."
+When Apostle Polycarp took his seat, his first act was to resolve the controversy that existed in his time regarding when the Feast of Resurrection should be celebrated among Christians living in the West and the East. He was the one who decided that the Feast of Resurrection should not depart from Sunday. This decision was based on the canon established by the 318 Church Fathers at the Council of Nicaea in 325 AD regarding the Feast of Resurrection. During the time he lived, while the Church was being attacked by Gnostics, he was a great Father of the Church who served as an apologist for the Church, mocking those who were mocking the Church in that era. It is even told that he met the founder of the Gnostics on the road to Merkyan, and instead of greeting him, he began to oppose him head-on. When the man was startled and asked, "Where do you know me from?", he replied, "Yes, I know you; you are the firstborn son of the Devil."
 
 <!-- CHW-002-S004-P003 -->
-At a time when our father Palicarpus was fighting against the heretics of his time for the true religion, the Alystic kings rose up and began to suffer Christians. The tribulation was spared to the city of Sermenes, and Palicarpus was taken to Rome, where he was asked three questions: 1. They said, "Speak evil against Christ," and he answered, "Let me blasphemy my God, who has served me for eighty-six years without reproach, and who has kept me until now."
+During the time our Father Polycarp was struggling against the heretics of that era regarding the true faith, pagan emperors arose and began to inflict persecution on Christians. The persecution, however, was not for the city of Smyrna; Polycarp was taken to Rome and was asked three questions. 1. They said, "Speak evil against Christ." He replied to them without hesitation, "I have served Him for eighty-six years, and I will not slander my God who has protected me until now."
 
 <!-- CHW-002-S004-P004 -->
-2. In the name of the Roman Caesars, he swore to them: "We do not change our good things for evil, but we change evil into good."
+2. They said, "Speak the name of the Roman Caesars." He replied to them, "We do not turn our good things into evil; rather, we turn the evil into good things."
 
 <!-- CHW-002-S004-P005 -->
-Finally, in the square of Rome, Polycarp's body was turned to ashes, as he had seen in a vision, and he expressed his love for the Church to his god. He was a hundred years old when he received martyrdom.
+Finally, in the public square of Rome, Polycarp's body turned into fire as he saw in his vision, expressing his love for his God and the Church. He was one hundred years old when he received martyrdom.
 
 <!-- CHW-002-S004-P006 -->
-Demetrius Caesar 81 - 96 AD
+Domitian Caesar 81 - 96 AD
 
 <!-- CHW-002-S004-P007 -->
-He was the brother of Caesar Nero, who was a cruel Caesar who reigned in Rome in 81 AD. He was the one who made the image worship in his form while he was alive in the history of the Church, and he was the one who sent the evangelist John to the island of Patmos because he opposed it. He was the one who inflicted the same suffering and suffering on Christians in the time of Nero Caesar, claiming that the atheists were enemies of the state. He killed Timothy and Lilas, disciples of St. Paul.
+He was the brother of Tiberius / Nero Caesar and was the cruel Caesar who reigned in Rome in 81 AD. In Church history, while he was alive, he made his image to be seen by carving it in form, shape, and likeness. It was he who drove the Gospel of John to the desert of Fitho by opposing him. He incited the destruction and persecution of Christians, saying, "They are enemies of the Kingdom who have no God." He is the Caesar who inflicted the type of persecution and suffering on Christians that was carried out during the reign of Nero Caesar. He killed Timothy and Silas, who were disciples of Saint Paul.
 
 <!-- CHW-002-S004-P008 -->
-Trajan (98-117)
+Trajan / 98-117 / AD.
 
 <!-- CHW-002-S004-P009 -->
-He was a king who tried to bring Christians back to the temple not only by force, but also by tactics and intimidation. Occasionally, he tried to travel legally. He did this in the form of spying on Liny, who sent him to Bethany. He wrote that he would be brought before the council of justice and punished by law like any citizen. During this time, Archbishop Ignatius of Antioch and Archbishop Simon of Jerusalem were martyred in a brutal manner.
+He is the king who tried to return Christians to the temple not only by force but also by deceit and intimidation. Occasionally, he tried to proceed through legal means. He is known for sending the famous one to Bitania as a governor, following the manner of Lini. In any case, he wrote, "Let them be judged by the law, standing before the court of judgment." During this time, Bishop Agnathios of Antioch and Bishop Simon of Jerusalem received martyrdom in a cruel manner.
 
 <!-- CHW-002-S004-P010 -->
-Mark Abrilius / 161-180 / AD
+Marcus Aurelius / 161-180 / AD.
 
 <!-- CHW-002-S004-P011 -->
-Caesar Commodus, who reigned from 180 to 192 A.D., had a plan to destroy the Church by gradually deceiving the Church. Others, such as Alexander (222, 235, Philip the Arab, 244, 249), despised Christians and did not consider Christians at all.
+He was a king who was a philosopher and used to say that Christians are rebels and cowards. From 180 - 192 AD, the Caesar Commodus had a plan to destroy the Church gradually by deceit. Other kings, such as Alexandrosoros / 222-235 and Philippos Arebawi 244-249, despised Christians and, being prejudiced, did not spare Christians from anything. - -
 
 <!-- CHW-002-S004-P012 -->
-Dakyos / 249-251/
+Decius / 249-251/
 
 <!-- CHW-002-S004-P013 -->
-In order to destroy the Christians in the unrelenting efforts of the kings who preceded him, he issued a decree that in the time of Dacius, all Christians of Roman nationality who did not worship the idolatry of the Caesars and the kings of Rome should be put to death. According to this law, men, women, infants, elders, and men were sentenced to a terrible death penalty. They slaughtered children in their mother's arms. They tied mothers with one leg on a stake, and the other body was hung downhill and received martyrdom.
+Without hindering the efforts made by the kings who preceded him, during the reign of Decius, he issued a decree to the Roman Caesars and kings that any citizen who lived, who did not worship idols, and was a Roman Christian, would be killed entirely. Based on this law, they executed men, women, children, and the elderly in a cruel death penalty. They threw children into their mothers' arms. Mothers also received martyrdom as one of their legs was tied to a stake while another person dragged their body along the ground.
 
 <!-- CHW-002-S004-P014 -->
-Diocletian / 284 305/
+Diocletian / 284-305/
 
 <!-- CHW-002-S004-P015 -->
-Diocletian was born into a poor family in a country called Dalmatia, and his first name was Agrippa. How could Diocletian be the king of Rome when he was born into a poor and ordinary family without the descendants of a king?
+He is an enemy of the Church whose presence and actions are unknown in Church history. Diocletian was born in a country called Delmatiya from a poor and humble family, and his first name is called Agrippa. It is asked how Diocletian, born from a humble family without royal lineage, could become the Emperor of the great land of Rome.
 
 <!-- CHW-002-S004-P016 -->
-1. In the royal family for the heroism of the country Rome in its war with Persia
+1. He gained fame and reigned among the royal family for the bravery he showed in the war Rome waged against the Persians.
 
 <!-- CHW-002-S004-P017 -->
-He gained fame and became king. 2. He stabbed the son of King Ulianus Hentarbia with fornication, kidnapped him with vain praise, and reigned in a demonic spirit
+2. Julian, the son of Emperor Julianus, reigned with a demonic spirit, committing base lust and performing vain incantations.
 
 <!-- CHW-002-S004-P018 -->
-286 Two years after his reign as emperor, he divided Rome into two parts: East Rome and West Rome, with Gallerius as his own emperor, and Maximian as king of the west, and Constantineus as his own.
+286. After reigning as Emperor for two years, under the pretext of maintaining the peace of the country and to facilitate administration, he divided Rome into two parts—East Rome and West Rome—to favor his friend. He appointed himself as Emperor of the East and appointed Maximianus as Emperor of the West, while appointing Constantius as his co-emperor in the East.
 
 <!-- CHW-002-S004-P019 -->
-Why Diocletian hated Christians
+Reasons why Diocletian persecuted Christians
 
 <!-- CHW-002-S004-P020 -->
-1. The Christians in Rome did not bow down to the idol that he had molded in his image, and the second proclamation changed the proclamation into a proclamation;
+1. Because they refused to worship the idols he had set up /did not bow down/ in the first edict, and because they defied the edict in the second edict,
 
 <!-- CHW-002-S004-P021 -->
-A. All churches should be destroyed, b. Christians should not be allowed to meet with each other, c. All books on the Christian religion should be burned, d. All that belonged to the church should be confiscated, e. Any Roman citizen should be banned from government work if he was a Christian, slaves would not have the right to be free if they converted to Christianity, and c. Christians would not have the right to sue if they had any legal grounds, and they could not argue about their rights.
+A. All Christian churches were to be demolished; B. Christians were not to associate with one another; C. All books speaking of the Christian religion were to be burned; D. All property belonging to the Church was to be confiscated; E. Any Roman citizen who was a Christian was to be excluded from government service; slaves who accepted Christianity were not to have the right to be freed; F. Even if Christians had any legal reason, they were not allowed to argue for their rights, and the right to appeal was not permitted.
 
 <!-- CHW-002-S004-P022 -->
-Since the founding of the Church in its history, there has been an unprecedented massacre and suffering, and the number of Christians has increased, as if a tree was cut down from its roots. God resurrected Constantine the Great when he gave rest to the Christians.
+From the time the Church was founded in history, it suffered poverty and suffering that were unseen by the eye and by its extent. The number of Christians increased as if it were a tree being cut that sprouts from its roots. And God, to give rest to the Christians /to the Church/, raised the Great Constantine.
 
 <!-- CHW-002-S004-P023 -->
-Constantine (283.337 A.D.)
+Constantine /283-337 AD/
 
 <!-- CHW-002-S004-P024 -->
-He was born in 283 A.D. in a place called Naysan, to his pagan father Constantius and his Christian mother, Eleni. His mother was a Jewish Christian and his father was a pagan.
+In 283 AD, in a place called /Nisan/, he was born to his pagan father Constantius and his Christian mother Helena. While his mother was a Jewish Christian, his father was a pagan /Azhab/. It is said that they met and gave birth to Constantine:
 
 <!-- CHW-002-S004-P025 -->
-1. Since Christianity was not yet widespread, some people in those days performed such marriages.
+1. Since Christianity had not yet spread, some people in that era would perform such marriages.
 
 <!-- CHW-002-S004-P026 -->
-2. She gave birth to Constantine while she was in exile, because she had quarreled with her husband Termenos. In 305 A.D., his father called him from the East and appointed him as his own, and his father died a short time later, when he was 18 years old. On October 28, 305, Maximian's son Mackendius became king in Rome. Constantine strengthened his relationship by marrying the daughter of Maximius. But the agreement between the two was short-lived, because Mackendius' father emigrated to Constantine and died while he was in prison.
+2. He was born to Constantine while his mother was in exile after being persecuted by her husband Thermenos. In 305 AD, his father called him from the East and appointed him as his co-emperor, and his father died shortly thereafter; at that time, he was 18 years old. On October 28, 305 AD, Maxentius, the son of Maximianus, reigned in Rome. Constantine strengthened the kinship by marrying Maxentius's daughter. However, the harmony between the two was briefly suppressed because Maximianus's father fled to Constantine and died in prison. /In 310 AD/, because of this, the two quarreled.
 
 <!-- CHW-002-S004-P027 -->
-And in the east, Gallius died in May 311, and he inherited the power from Licinius Augustus and Maximinus as Diaceaesar. Due to a dispute between the two, Maximinus became a favorite of Maximinus Duascmaxindius, and Licinius became a favorite of Constantine.
+In the East, however, Galerius died in the month of May in 311 AD, and his authority was inherited by Licinius Augustus and Maximinus as Caesar. Because of a disagreement between the two, Maximinus became Maximinus Diocles, and Licinius became a rival to Constantine.
 
 <!-- CHW-002-S004-P028 -->
-In 312 A.D., Constantine defeated Maximinus with the sign of the cross. In 313, Licinius expelled his opponent, Maximinus Dias, and took control of the eastern territory. Licinius married Constantine's sister and strengthened his adultery. He also approved the law of Milan.
+In 312 AD, Constantine won victory with the sign of the cross against Maxentius. In 313, Licinius seized the Eastern province by defeating his rival Maximinus. Licinius married Constantine's sister and strengthened the kinship. He also legalized Milan.
 
 <!-- CHW-002-S004-P029 -->
-They are,
+They [decreed] that,
 
 <!-- CHW-002-S004-P030 -->
-3. Christians in the Roman Empire, like adherents of any religion, are able to express their worship according to the canon and law of their religion.
+3. Christians residing in the Roman territory can express their religion according to the canon and law that governs their religion, like any other followers of religion.
 
 <!-- CHW-002-S004-P031 -->
-4. The law condemning Christians that was in force in the past has been repealed today.
+4. The law that was used in past eras to oppose and persecute Christians is abolished from today onwards.
 
 <!-- CHW-002-S004-P032 -->
-5. If Christians need a place of worship, it will be given to them free of charge.
+5. They say that if Christians need a place of worship, it will be given to them for free.
 
 <!-- CHW-002-S004-P033 -->
-6. They have the right to claim compensation for the property that has been wrongfully taken.
+6. They have the right to demand compensation for properties that were taken from them unjustly.
 
 <!-- CHW-002-S004-P034 -->
-However, the treaty between the two kings was soon violated and led them to war. Constantine won the battle and in 321 A.D. they signed a new treaty with Licinius. But Licinius again broke the Treaty of Milan, which he had signed in 312 A.D., and began to pursue the Christians. Constantine defeated Licinius, who broke the treaty, in 323 AD. However, because he was his sister's husband, he isolated him without killing him and put him in prosperity. However, he was found conspiring against Constantine, and he was sentenced to death in 324. The Roman Empire, which had been divided into four for forty centuries, was united. Christians have gained their freedom of faith.
+However, the treaty between the two emperors was violated in a short time, leading them to war. In the battle, Constantine defeated Licinius and signed a second treaty with him in 321 AD. Licinius, however, broke the treaty of Milan which he had destroyed in 312 AD and began to persecute Christians. Constantine also broke the treaty, defeated Licinius in 323 AD, and took victory. However, since he was his sister's husband, instead of killing him, he bound him and threw him into the sea. However, upon his capture by Constantine, he was sentenced to death in 324 AD. The Roman Empire, which had been divided into four parts for about forty years, became one. Christians within his territory found their freedom of faith.
 
 <!-- CHW-002-S004-P035 -->
-The rights granted by Constantine to the Church
+Rights Constantine gave to the Church
 
 <!-- CHW-002-S004-P036 -->
-1. According to the governmental declaration of 313 and 315, the Church was exempt from taxation.
+1. Based on the imperial proclamation issued in 313 and 315, the Church was exempted from taxes.
 
 <!-- CHW-002-S004-P037 -->
-2. The Church also has a share of all the revenues of the kingdoms (tithes)
+2. From all imperial revenues, a specific share is allocated to the Church / Tithe of the people/
 
 <!-- CHW-002-S004-P038 -->
-3. He proclaimed the Sabbath, which had been celebrated by Christians since the Resurrection of the Lord, as a holiday for Christians in 321 A.D. and that no work should be done within his kingdom
+3. He proclaimed that Sunday, which had been honored among Christians since the Resurrection of the Lord, should be a day of rest for Christians in 321 AD, and no work should be done within the empire on that day:
 
 <!-- CHW-002-S004-P039 -->
-4. The property of the deceased parishioners was given the right to bequeath to the church according to their will/will.
+4. Dying believers were given the right to bequeath their property to the Church according to their will / according to their desire.
 
 <!-- CHW-002-S004-P040 -->
-5. In 321 A.D., the bishops were granted jurisdiction over non-criminal matters or disputes arising among Christians.
+5. In 321 AD, judicial authority was given to the bishops of Ephesus for non-criminal matters or disputes arising among Christians.
 
 <!-- CHW-002-S004-P041 -->
-Constantine declared these laws to be enshrined in the state constitution and to make Christianity the state religion. When he was about to die, he was officially baptized by the hand of Sol Peter, Bishop of Nicomedia. He was baptized for two reasons.
+Constantine proclaimed that these laws be inscribed within the imperial constitution and that Christianity be the state religion. At a time close to his death, he was publicly baptized by Bishop Sol Petros of Nicomedia. Finally, the reason he was baptized late was for two reasons:
 
 <!-- CHW-002-S004-P042 -->
-1. For he who was born and brought up and reigned over the Gentiles, so that there should not be a rebellion;
+1. Because he was born, grew up, and reigned among the pagans, so that no opposition would arise,
 
 <!-- CHW-002-S004-P043 -->
-2. The early Christians, who lived until the 5th century, believed that baptism would be forgiven by baptism, and if they sinned again, it would not be forgiven by baptism.
+2. Because the early Christians, meaning those who lived until the 5th century, held the belief that baptism washes away sin, and if they sinned again, it would not be washed away by baptism; they delayed and postponed their baptism, performing it especially when they were on the verge of death, and he did it for that reason.
 
 <!-- CHW-002-S004-P044 -->
-Constantine did a great deal of favor to the Church. His mother, Eleni, took the Cross of the Lord from its place in 327 A.D., and died in 328 A.D. Constantine died on Sunday, May 22, 337, at the age of 31 and 54 years old.
+Constantine did much for the Church. His mother, Helena, took out the Cross of the Lord from where it was buried in 327 AD, and she passed away in 328 AD. Constantine, who took power at the age of 31, passed away on Sunday, May 22 / in 337 AD, at the age of 54 at the time of his birth, on the day of the feast of Heraclius.
 
 <!-- CHW-002-S004-P045 -->
 2. Internal enemies of the Church
 
 <!-- CHW-002-S004-P046 -->
-When the Church was at war with the Alyite kings, the internal enemies of the Church rose up against it as a side stab.
+During the time the Church was fighting face-to-face with pagan empires, internal enemies arose that were fought as a side battle,
 
 <!-- CHW-002-S004-P047 -->
-The internal enemies of the Church are called heretics in the words of the Lord, Evil in the words of the Apostles, Hypocrites in the words of the Apostles. These heretics are not people of the Church, but imitators of the people of the Church, or who do not possess half of the Church's faith and teachings. These people are deceivers who have grown up in the Church like weeds and wheat. Therefore, they are the internal enemies of the Church.
+Internal enemies of the Church are called heretics in the language of the Lord, schismatics in the language of the Apostles, and heretics in the language of the scholars. These heretics are not people of the Church, but they are defectors who pretend to be people of the Church or who hold half of the faith and doctrine of the Church and do not hold the other half. These people are deceivers who grow like weeds and thorns, and they are those who plot within the Church like the wine of Christ's purity. Therefore, they are the internal enemies of the Church.
 
 <!-- CHW-002-S004-P048 -->
-As we have seen so far, the Church has defended and conquered its foreign enemies. If you fight and fight a man, you will win him or he will defeat you. But you cannot defeat the Church. The Church always fights, but it has never been defeated. The devil has shook off the rain and has finished his bow, but he has not harmed the Church.
+Until now, the Church has defeated its external enemies. If a person struggles and fights, they will be defeated or they will win. But the Church cannot be defeated. The Church always fights, but you do not know it is defeated. Diabolos broke the lyre and shattered the bow. But he did not harm the Church. This was said by the Patriarch of Constantinople, John Chrysostom, regarding what is stated in Matthew 16:18, 'the gates of hell shall not prevail against it.'
 
 <!-- CHW-002-S004-P049 -->
-It is a reading that translates. However, the gates of hell do not strengthen the church, it is a reading that shows that the church has a bitter struggle in the world, even if it wins in the end.
+This means when the reading is interpreted. Nevertheless, the gates of hell shall not prevail against the Church; it is a reading that shows that although the Church will ultimately triumph, there is a bitter struggle in the world.
 
 <!-- CHW-002-S004-P050 -->
-S.S. S. S
+Gnostics
 
 <!-- CHW-002-S004-P051 -->
-The Gnostics are the people of knowledge. They took the name from the literal language of gnosticism. They themselves came up with the name to say that they are adults. Their doctrine is called Gnosticism. It means intellectualism, not by knowledge. These Gnostics do not argue based on books, but on the philosophy of fiction. This was done in places and cities where the early Christians were predominant. The Gnostics came from the Christians who returned from the Gentiles.
+Gnostics means 'the knowledgeable' or 'people of knowledge.' The 'gnosis' they took is 'knowledge' from the Greek language. To say they are knowledgeable, they extracted the symbol themselves. Their teaching is called Gnosticism. It means intellectual knowledge. They saw salvation not through faith, but through knowing. These Gnostics presented their arguments based on self-generated philosophy rather than using a book as a foundation. They began to teach their doctrine in places and cities where the first Christians were most numerous. The thoughts of the Gnostics were produced among the Christians who returned from the houses of the Gentiles.
 
-## The Teachings of the Gnostics {#CHW-002-S005}
+## The Teaching /Perspective/ of the Gnostics {#CHW-002-S005}
 
 <!-- CHW-002-S005-P001 -->
-1. In the mindset of Gnostics, they say that there are two gods: one is good and the other is evil.
+1. In the thought of the Gnostics, there are two gods; they say one is good and one is evil.
 
 <!-- CHW-002-S005-P002 -->
-2. They say that salvation is by knowing, not by faith.
+2. They say salvation is through knowing, not through faith.
 
 <!-- CHW-002-S005-P003 -->
-3. The Divine Word does not believe that the faithful flesh is assimilated.
+3. They do not believe that the Divine Word united with human flesh.
 
 <!-- CHW-002-S005-P004 -->
-4. They say that the soul, which is known as man and has human dignity, is not flesh, but flesh, but flesh by nature created for destruction.
+4. They say that what is known as a human being is the soul, which has human dignity, not the flesh; but the flesh, by its nature, is created for destruction.
 
 <!-- CHW-002-S005-P005 -->
-5. They are against sacred marriage
+5. They oppose holy marriage.
 
 <!-- CHW-002-S005-P006 -->
-Simon the Infidel began this philosophical education, and he was the first heretic in the history of the Church. He produced other Jels, namely: Mercia in Asia Minor, Essidros in Alexandria.
+Simon Magus started this philosophical teaching and is the first head of heretics in the history of the Church. He also produced other followers. They are: - Marcion in Asia Minor, and Esedros in Alexandria.

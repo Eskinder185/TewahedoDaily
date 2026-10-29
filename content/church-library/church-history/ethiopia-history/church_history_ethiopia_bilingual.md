@@ -12,7 +12,7 @@ Publication status: **Draft — English requires expert review.**
 
 **English**
 
-The History of the Church in Ethiopia
+Church History in Ethiopia
 
 ### CHE-000-S000-P002
 
@@ -22,7 +22,7 @@ The History of the Church in Ethiopia
 
 **English**
 
-Is it possible to change the appearance of the Ethiopian or the leopard?
+Can the true Ethiopian form change the serpent's coil?
 
 ### CHE-000-S000-P003
 
@@ -32,7 +32,7 @@ Is it possible to change the appearance of the Ethiopian or the leopard?
 
 **English**
 
-AIR 1
+Page 1
 
 ### CHE-000-S000-P004
 
@@ -42,7 +42,7 @@ AIR 1
 
 **English**
 
-A Sunday School Lecturer at St. George's Episcopal Church
+Prepared by the Sunday School of St. George Church, Menagesha Genet, Grade 1
 
 ### CHE-000-S000-P005
 
@@ -74,7 +74,7 @@ History of the Ethiopian Orthodox Tewahedo Church
 
 **English**
 
-The history of the Ethiopian Orthodox Tewahedo Church is a collection of holy scholars and kings who have carefully compiled and passed on the history of the Ethiopian Orthodox Tewahedo Church. One part of the history of the Church is the legacy of our holy fathers, who served the whole human race as examples and examples of spiritual work, and who through their work they will never forget their good example and found eternal righteousness for themselves. Especially since our country has never lived without religion, the history books and records in the palace and in the ecclesiastical office have been written and preserved by the holy kings and scholars who have risen up in our country from time to time.
+There are many holy scholars and kings who have carefully prepared and transmitted the history of the Ethiopian Orthodox Tewahedo Church. One part of the Church's history consists of examples and foundations of spiritual works that have served all of humanity; they are the rewards of our holy fathers, for whom they found eternal justice for themselves, and who left behind good examples in their work that will never be forgotten until eternity. Especially since our country, Ethiopia, never lived without faith, the history books and manuscripts found in the kingdom or in the priesthood that have reached our time were written and preserved by the successive holy kings and scholars of the Church who arose in our country in every era.
 
 ### CHE-000-S001-P002
 
@@ -84,7 +84,7 @@ The history of the Ethiopian Orthodox Tewahedo Church is a collection of holy sc
 
 **English**
 
-MAN CAME TO EXIST IN THIS WORLD BY GOD'S WILL SO THAT HE COULD SPEND HIS LIFE IN A SERIOUS WAY. MAN STRIVES TO IMPROVE OVER TIME. HE WORKS HARD TO FIND OUT HOW THE PAST GENERATION LIVED AND WHAT THE KNOWLEDGE OF THE TIMES WAS. HE SEARCHES THE ANCIENT CHURCHES AND CITIES THAT HAVE BEEN DESTROYED OR BURIED IN ARCHAEOLOGY, HE STRUGGLES TO FIND THE HISTORICAL ARTIFACTS THAT HAVE BEEN LOST OVER THE CENTURIES, AND HE TRIES TO PASS ON THE FINDS FROM GENERATION TO GENERATION.
+Man, by the will of God, came to live in this world from not living to living, and he is to spend the given age on serious matters. Man strives to improve from time to time. He labors to know how the past generation lived and what the knowledge of the era was; he strives to find the lost historical relics of ancient churches and cities that have collapsed or been buried by examining them through archaeological study /ARCHEOLOGY/, and he strives to pass what exists and what is found from generation to generation.
 
 ### CHE-000-S001-P003
 
@@ -94,7 +94,7 @@ MAN CAME TO EXIST IN THIS WORLD BY GOD'S WILL SO THAT HE COULD SPEND HIS LIFE IN
 
 **English**
 
-Even the human being has to do a job that will pass through his body and pass through his life. The generation of our holy fathers and holy mothers, whose names and fame are exaggerated, is also given a high place not only because of their presence in this world, but also because of the historical legacy they have preserved for generations.
+Even though man passes away leaving behind his honor and wealth, he must live by doing work that does not pass in the passing life. Our holy fathers and holy mothers, whose names and fame are growing and who are called with honor and given high status in good opinion by the generation, are a historical legacy left for the generation not only by their existence in this world but by what they left behind.
 
 ### CHE-000-S001-P004
 
@@ -104,7 +104,7 @@ Even the human being has to do a job that will pass through his body and pass th
 
 **English**
 
-There are many saints who are worshipped by the Ethiopian Church.
+For this, there are many saints honored by the Ethiopian Church.
 
 ### CHE-000-S001-P005
 
@@ -114,7 +114,7 @@ There are many saints who are worshipped by the Ethiopian Church.
 
 **English**
 
-It is important to remember that our lives are a time of joy and a time of joy for the people of the Church, and that we are the ones who will be remembered for the good deeds of the Church, and that we will be remembered for the good deeds of the Church.
+Since the age given to us by God makes us realize our status as strangers of a short time, we must understand that we are in an unknown time; therefore, our true thoughts and works must be a memorable and praiseworthy legacy for the succeeding generation. If asked what that legacy is, the legacy of our guest-like life, the time of our joy, and the purpose of our living by doing good works can be preserved without any difficulty; for it is the successive children who serve the people by doing good works and who pass on the Church to the Church who can preserve it.
 
 ### CHE-000-S001-P006
 
@@ -124,7 +124,7 @@ It is important to remember that our lives are a time of joy and a time of joy f
 
 **English**
 
-The tradition of the good deeds of the fathers is that the journey of the Church is known by its venerable and servant. The owner of history is when the human being uses or is found worthy of his wisdom, profession and knowledge.
+The reward of the good works of the fathers and the journey of the Church is known through its worshiper and its servant, the human being. It is when the human being, who is the owner of history, uses his wisdom, profession, and knowledge, or is found capable.
 
 ### CHE-000-S001-P007
 
@@ -134,7 +134,7 @@ The tradition of the good deeds of the fathers is that the journey of the Church
 
 **English**
 
-Therefore, it is our duty to make sure that all those who claim to be under the orthodox faith are aware of the faith, culture and history that are the hunger of their generation. A generation that does not know its history is like a child who does not recognize his mother's appearance.
+Therefore, everything we say under the Orthodox Tewahedo faith, it is our duty to know and to make known the faith, culture, and history which are the hunger of the generation. A generation that does not know history is like a child who does not recognize his mother's face, as the fathers said.
 
 ### CHE-000-S001-P008
 
@@ -144,7 +144,7 @@ Therefore, it is our duty to make sure that all those who claim to be under the 
 
 **English**
 
-Ethiopia has never worshipped God since the creation of the world, so the Church Fathers and the early kings did not do anything that they did not do. They not only prayed for the destruction of Ethiopia, but also passed on their trust to the generation. The memory of recent years and the great father of the Church, Father Gregory II
+Since there was never a time in Ethiopia since the creation of the world when God was not worshipped, it can be said that the fathers of the Church and the ancient kings did nothing they did not do or accomplish while remaining firm in their faith and being upright in their conduct. Beyond praying 'Do not show me the destruction of Ethiopia,' they passed their trust to the generation. In the memories of recent years, the great father of the Church, Abba Gorgorios Kal'e...
 
 ### CHE-000-S001-P009
 
@@ -154,7 +154,7 @@ Ethiopia has never worshipped God since the creation of the world, so the Church
 
 **English**
 
-"Ethiopia is the land of mystery to God, my children, entrust the things of Ethiopia, repent today and tomorrow, receive His holy body and precious blood.
+«Ethiopia is the land of mystery for God, my children, do not say 'today' or 'tomorrow' regarding the matters of Ethiopia, repent, receive the holy flesh and the glorious blood · · · »
 
 ### CHE-000-S001-P010
 
@@ -164,7 +164,7 @@ Ethiopia has never worshipped God since the creation of the world, so the Church
 
 **English**
 
-This is the purpose of our education, and it is our duty to teach them.
+We shall admonish our trustees by saying this; this is our purpose of learning as well.
 
 ### CHE-000-S001-P011
 
@@ -174,9 +174,9 @@ This is the purpose of our education, and it is our duty to teach them.
 
 **English**
 
-May the God of our holy fathers protect us from the blame of history.
+May the God of our Holy Fathers protect us from the contradictions of history.
 
-## መግቢያ፡- / Introduction: {#CHE-000-S002}
+## መግቢያ፡- / Introduction:- {#CHE-000-S002}
 
 ### CHE-000-S002-P001
 
@@ -186,7 +186,7 @@ May the God of our holy fathers protect us from the blame of history.
 
 **English**
 
-The history of the Ethiopian Church is the history of Ethiopia, and we cannot look at the two separately. The Church and Ethiopia are two sides of the same coin, and until 1966, the kings who reigned in Ethiopia were anointed by our Church, so they played a significant role in protecting and preserving their Holy Church, which was anointed by the Church.
+The history of the Ethiopian Church is the history of Ethiopia; we cannot view the two separately. The Church and Ethiopia are two sides of the same coin. Until 1966 A.D., the kings of the Solomonic dynasty of Ethiopia were buried in our Church, and they played a significant role in protecting and maintaining their holy churches, which they had consecrated.
 
 ### CHE-000-S002-P002
 
@@ -196,7 +196,7 @@ The history of the Ethiopian Church is the history of Ethiopia, and we cannot lo
 
 **English**
 
-Ethiopia is governed by the three religious laws, and it is the first country in the world to adopt the Constitution after the Holy Land, Jerusalem. It accepted Christianity through the eunuch in 34 A.D. and received the title of Bishop of Satibiren in 328 A.D. by Abba Salama from Satibiren. She has made a significant contribution to the field of culture, language, and history, and is known for her ownership, and this development has steadily progressed and has led to her becoming the first name she is known today.
+While Ethiopia was guided and is being guided by the three religious laws, and while it was guided by the Old Testament, it is also a country that received the Old Testament from the Holy Land of Jerusalem. When it received Christianity in 34 A.D. through the mediation of St. Janbadeva, it attained the rank of Bishop in 328 A.D. through Abba Selama Kessatibirhan. Through him, the preaching of the Gospel was established, and an unshakeable Church was founded. After this preaching of Christianity, the Ethiopian Church has served as the founder of communal life for the Ethiopian people, becoming a participant in both joy and sorrow, and providing its aid throughout its era. It has contributed greatly in the fields of education, work, wisdom, culture, language, and history. It is also known for its ownership; its growth has been continuously advancing, and it has earned its title of antiquity that it is known for today.
 
 ### CHE-000-S002-P003
 
@@ -206,7 +206,7 @@ Ethiopia is governed by the three religious laws, and it is the first country in
 
 **English**
 
-In the history of the Ethiopian Orthodox Tewahedo Church, we see that our country has been adopting the Old Faith and Tradition before the birth of Christ, and that it has been one of the first countries to receive the news of the Christian faith founded by our Lord and Savior Jesus Christ, and that it has been patiently caring for the faithful to teach our Orthodox Tewahedo faith diligently.
+In this history of the Ethiopian Orthodox Tewahedo Church, we see that our country, having accepted the Old faith and tradition of the Old Testament and performing the worship of God, remained as one of the first countries where the faith was preached after hearing and accepting the news of the Christian faith founded by our Lord and Savior Jesus Christ. We see that it has been patiently enduring the various ups and downs and sufferings that have occurred from time to time, and it continues to diligently nurture its flock to teach our Orthodox Tewahedo faith.
 
 ### CHE-000-S002-P004
 
@@ -216,9 +216,9 @@ In the history of the Ethiopian Orthodox Tewahedo Church, we see that our countr
 
 **English**
 
-The Ethiopian Orthodox Tewahedo Church has been witnessing its entire history in its own language, because it has lived and united with its own identity. We also need to know its history.
+It is because the Ethiopian Orthodox Tewahedo Church has lived and testified by speaking its full history in its own language, uniting it with its own identity. We, too, must travel by knowing its history.
 
-## ታሪክን እንዴት ማወቅ ይቻላል? ቢሉ፡- / How to know history? If they say: {#CHE-000-S003}
+## ታሪክን እንዴት ማወቅ ይቻላል? ቢሉ፡- / How can history be known? It is said:- {#CHE-000-S003}
 
 ### CHE-000-S003-P001
 
@@ -228,7 +228,7 @@ The Ethiopian Orthodox Tewahedo Church has been witnessing its entire history in
 
 **English**
 
-The prophet Moses said, "Ask your father, and he will tell you, and ask the elders, and they will tell you" (Deuteronomy 32:7).
+As Priest Prophet Moses admonished by saying, "Ask your father; he will tell you. Ask the elders; they will tell you" (Zechariah 32:7), by going to and asking the fathers who dwelt in the flesh.
 
 ### CHE-000-S003-P002
 
@@ -238,7 +238,7 @@ The prophet Moses said, "Ask your father, and he will tell you, and ask the elde
 
 **English**
 
-To read the Scriptures and to read the Scriptures and to read the Scriptures.
+By reading and receiving the spiritual historical books written and inherited by the Holy Fathers.
 
 ### CHE-000-S003-P003
 
@@ -248,7 +248,7 @@ To read the Scriptures and to read the Scriptures and to read the Scriptures.
 
 **English**
 
-Visiting Historical Sites and Monasteries
+By visiting historical sites and monasteries.
 
 ### CHE-000-S003-P004
 
@@ -258,7 +258,7 @@ Visiting Historical Sites and Monasteries
 
 **English**
 
-It is possible to learn about history by attending and attending spiritual gatherings.
+History can be known by attending spiritual assemblies, learning consecutively, and similar methods.
 
 ### CHE-000-S003-P005
 
@@ -268,7 +268,7 @@ It is possible to learn about history by attending and attending spiritual gathe
 
 **English**
 
-It is widely accepted by the international community that a nation and a state are economically and politically independent. However, because of their economic weaknesses, they are inevitably colonialized. However, religious freedom is more important than economic freedom. Countries that claim to be economically and politically trained are waging a broad campaign against developing countries by claiming that they preach and teach religion. Especially since Africa is one of the most backward continents, the reason for this economic dependence is that they have been subjected to religious and cultural confusion inherited from right-wing rulers that are incompatible with their Africanness. They are not aware of their own culture, culture, and history, and are subject to other nations.
+As it is widely observed in the global arena, a people and a kingdom are said to have succeeded when they have economic and political freedom. However, because developing countries are economically weak, they are not left without colonial rule. Nevertheless, religious freedom is more important than economic freedom. The countries that say they are economically and politically advanced carry out extensive campaigns on developing countries by saying, "We will preach and teach religion." Especially since Africa is one of the lagging continents, this economic dependency is a reason that is inconsistent with their Africanness; they have inherited the contradictions of faith and culture from the colonizers. They have suffered from this because they do not know their own faith, culture, and history, and because they are subjects to other countries.
 
 ### CHE-000-S003-P006
 
@@ -278,7 +278,7 @@ It is widely accepted by the international community that a nation and a state a
 
 **English**
 
-Ethiopia is one of the African countries, but it has not suffered the fate of others, and it is not the same as it is called the dark world in other worlds. Ethiopians know that we have not been invaded by faith or culture because we are known for our relationship with God through faith from the heart to the Gospel.
+Although Ethiopia is one of the African countries, it did not reach the fate of others, nor is it called the world of darkness as it is called in other worlds. This is because we know ourselves by firmly establishing our faith and culture, and by establishing our connection with God from the Old Testament to the Gospel.
 
 ### CHE-000-S003-P007
 
@@ -288,7 +288,7 @@ Ethiopia is one of the African countries, but it has not suffered the fate of ot
 
 **English**
 
-That is why the English historian Badge said: "There is not a single period of history in which Ethiopia has lived without knowing God.
+For this reason, the British historian Badge said, "Ethiopia has no historical era where it did not know God."
 
 ### CHE-000-S003-P008
 
@@ -298,7 +298,7 @@ That is why the English historian Badge said: "There is not a single period of h
 
 **English**
 
-The scholars said that Ethiopia is not tolerant of foreign invaders because it is defending itself with its religion and history. Ethiopia is a country known for its beliefs and the history of its people, and citizens feel superior and not inferior to any country they go to. On the other hand, Ethiopia preserves its history because there are books on faith-related history that are not available in other worlds. Among those mentioned are the books of Kufale, the Book of Enoch and Aximaros.
+The scholars state that Ethiopia is unsuitable for foreign invaders because it defends itself through its religion and its history. As Ethiopia is a country known and called by its own faith and its people's history, its citizens do not feel inferiority but superiority wherever they go. On the other hand, when we say Ethiopia protects its history, it is because of the protection of history linked with faith, as books not found in other worlds are found only in Ethiopia. Among those mentioned are the Book of Kufale, the Book of Enoch, and Aksumaros, among others.
 
 ### CHE-000-S003-P009
 
@@ -308,7 +308,7 @@ The scholars said that Ethiopia is not tolerant of foreign invaders because it i
 
 **English**
 
-Ethiopia, whose 3,000-year history is documented in writing, is comparable to ancient Egypt and Greece in terms of civilization and freedom, but also in terms of letters and literature. It had a strong relationship with the Egyptians through marriage and the reign of a merchant king. Because of their extensive relationships, there was an Ethiopian king named Zerhpianki, who was a trained king in Egypt. This strong relationship lasted for 160,000 years, when Ethiopia imported 111 bishops from Egypt and used it as the paternity of the Ethiopian Orthodox Tewahedo Church.
+Ethiopia, whose 3000-year history is recorded in writing, is comparable to ancient Egypt and Greece in terms of civilization, freedom, letters, and literature. It had a strengthened relationship with the Egyptians through marriage, trade, royal patronage, and similar means. From this extensive connection, a notable Ethiopian figure named Zerhipianki was a king who reigned over Egypt. This strengthened connection continued for about 160 years, during which time Ethiopia imported 111 bishops from Egypt to serve as fathers for the Ethiopian Orthodox Tewahedo Church.
 
 ### CHE-000-S003-P010
 
@@ -318,7 +318,7 @@ Ethiopia, whose 3,000-year history is documented in writing, is comparable to an
 
 **English**
 
-The relationship between Ethiopia and Egypt was very strong, according to the Western historian Herodotus of 490 BC, referring to the data.
+The Western historian Herodotus, citing information from 490 B.C., stated that the relationship between Ethiopia and Egypt was extremely strong.
 
 ### CHE-000-S003-P011
 
@@ -328,9 +328,9 @@ The relationship between Ethiopia and Egypt was very strong, according to the We
 
 **English**
 
-Ethiopia's national relations are not limited to Egypt and Greece, but also to the so-called powers of Syria, Persia and Constantinople, as well as Yemen and Nubia, as well as with Armenia, Syria and India, as well as with the Five Eastern Churches.
+Ethiopia's national relations were not limited only to Egypt and Greece; it also had relations with the so-called 'Hellenes'—from the territories of Syria, Persia, and Constantinople—as well as Yemen and Nubia regarding national affairs. Furthermore, regarding religion and religious order, its connection remains preserved to this day with Armenia, Syria, and India, along with Egypt, among the countries known as 'The Five oriental churches'.
 
-## የኢትዮጵያና የኢትዮጵያውያን መጠሪያ ስሞች / The names of Ethiopians and Ethiopians {#CHE-000-S004}
+## የኢትዮጵያና የኢትዮጵያውያን መጠሪያ ስሞች / The names of Ethiopia and Ethiopians {#CHE-000-S004}
 
 ### CHE-000-S004-P001
 
@@ -340,7 +340,7 @@ Ethiopia's national relations are not limited to Egypt and Greece, but also to t
 
 **English**
 
-Some historians have reported that the name Ethiopia has been used by many countries, but although the name Ethiopia has long been widely embraced by a large number of people, it remains a personal name for our country and our people, which is now bordered, without abandoning the names founded by the Greeks, Homer, Herodotus, the Israelites, Saint David and Isaiah.
+Some historians have reported that many nations have used the name Ethiopia. However, although the name Ethiopia has historically embraced a vast population, we observe that for our country and people, which are currently bounded by borders, 'Ethiopian' remains its personal designation, preserving the designations established by the Greeks, Homer, Herodotus, the Israelites, Saint David, and Isaiah.
 
 ### CHE-000-S004-P002
 
@@ -350,7 +350,7 @@ Some historians have reported that the name Ethiopia has been used by many count
 
 **English**
 
-In ancient times, Ethiopia was called Punt Tonetor in the Egyptian language. The word Punt is synonymous with the word Phath. Futh is one of the sons of Ham. Genesis 10:6 Tonetor means the land of God. Ethiopia has long been called the land of God.
+In ancient times, Ethiopia was called 'Puntonetor' in the Egyptian language. The word 'Punt' is similar to the word 'Put' in some contexts. Since 'Put' is one of the children of 'Cam', and according to Genesis 10:6, 'Tonetor' means the land of God, Ethiopia was called the land of God beforehand.
 
 ### CHE-000-S004-P003
 
@@ -360,7 +360,7 @@ In ancient times, Ethiopia was called Punt Tonetor in the Egyptian language. The
 
 **English**
 
-When the prophet Moses wrote the book of the Torah, he called Ethiopia "the land of Cush, because the firstborn of Ham had settled in Kushan and his sons."
+When the Prophet Moses wrote the Book of Deuteronomy, he referred to Ethiopia as the 'Land of Cush,' because Cush, the first son of Cam, and his children settled there (lived there).
 
 ### CHE-000-S004-P004
 
@@ -370,7 +370,7 @@ When the prophet Moses wrote the book of the Torah, he called Ethiopia "the land
 
 **English**
 
-And the land of Sheba was called Sheba, because the son of Cush lived in Sheba.
+It was also called the Land of Sheba because Sheba, the son of Cush, lived there.
 
 ### CHE-000-S004-P005
 
@@ -380,7 +380,7 @@ And the land of Sheba was called Sheba, because the son of Cush lived in Sheba.
 
 **English**
 
-It was called Abyssinia because the other son of Kush lived in Abyssinia. Nowadays some Western countries call it by this name. However, the Arabs took the word Abyssinia and called it Abyssinia, which means a mixed people.
+Because Abis (Sebta), the other son of Cush, lived there, it was called Abyssinia. Even today, some Western countries refer to it by this name. However, the Arabs took the word Abyssinia and called it Habesha, as they mean 'Habesha' to refer to a mixed, diverse people.
 
 ### CHE-000-S004-P006
 
@@ -390,7 +390,7 @@ It was called Abyssinia because the other son of Kush lived in Abyssinia. Nowada
 
 **English**
 
-In 360 B.C., the tribes of Shem who lived in Yemen called themselves the Yoktans, who entered Ethiopia through the Babylon Valley (the Gate of Trouble), were called liberators because they liberated Ethiopia from the invasion of the Indian king Rama. These tribes named our country Desert Aghazit, which means a free country, and named its people Desert Aghazi. He said, "Concerning the tribe of Joktan, see the eve of the Book of the Lord of Blaton."
+In 360 B.C., the tribe of Joktan, who lived in Yemen and were descended from Shem, entered Ethiopia through the Babylonian border (the Gate of Suffering). These Joktanites were called 'Liberators' because they were freed from the invasion of the King of India from Rama. These people gave our country the designation 'Pidir Agazit' (meaning 'the land that was freed') and designated its people as 'Pidir Agazyan' (meaning 'people who possess freedom'). As expressed in the Dirsane Urael, it says: 'Ethiopia is a land that was freed; it is blessed by walking on its mother's feet.' Regarding the tribe of Joktan, see the beginning of the Book of Haruy of the Daughter of the Lord.
 
 ### CHE-000-S004-P007
 
@@ -400,7 +400,7 @@ In 360 B.C., the tribes of Shem who lived in Yemen called themselves the Yoktans
 
 **English**
 
-Historically, Cush, the 27th king of the first kings of the Old Testament, was called by his second name Ethiopia.
+As revealed in history, among the first kings of the Old Testament, the 27th king, Cush, was called Ethiopis in his second name.
 
 ### CHE-000-S004-P008
 
@@ -410,7 +410,7 @@ Historically, Cush, the 27th king of the first kings of the Old Testament, was c
 
 **English**
 
-Therefore, based on his name, the name Ethiopia, which the country is called today, is retained, and other people say that the name Ethiopia was inherited from the Greeks, i.e., it is derived from the verbs ethos and ophesis.
+Therefore, derived from his name, the country retains the name it is called today, Ethiopia. Other parties say that the designation Ethiopia was inherited from the Greeks, as it comes from the word 'Etos' and 'Opsis'.
 
 ### CHE-000-S004-P009
 
@@ -420,7 +420,7 @@ Therefore, based on his name, the name Ethiopia, which the country is called tod
 
 **English**
 
-«Ethos' means Wu'i Desert Warm
+'Etos' means a desert, a wasteland, or a hot land.
 
 ### CHE-000-S004-P010
 
@@ -430,7 +430,7 @@ Therefore, based on his name, the name Ethiopia, which the country is called tod
 
 **English**
 
-"Opalis" means a people who have been questioned by the character. When the two words are combined, the word "ethopia" or "ethopis" comes out.
+'Opsis' means a people who are gathered or gathered together. When these two words are combined, the word Ethiopia or Ethiopis emerges.
 
 ### CHE-000-S004-P011
 
@@ -440,7 +440,7 @@ Therefore, based on his name, the name Ethiopia, which the country is called tod
 
 **English**
 
-The Ethiopian Bill symbolizes the country's lowlands, the lowlands of the desert, the land of fever.
+If one says Ethiopia, it refers to the wasteland of the country; wasteland, desert, wilderness, or a hot land.
 
 ### CHE-000-S004-P012
 
@@ -450,7 +450,7 @@ The Ethiopian Bill symbolizes the country's lowlands, the lowlands of the desert
 
 **English**
 
-The Ethiopian bill refers to the essence of the people: the desert of the lowlands, blackened by the sun. They gave this name because they had a misconception.
+If one says Ethiopis, it refers to the identity of the people; a person who is darkened by the sun, a desert, or a wasteland. This designation was given to it based on a mistaken perception.
 
 ### CHE-000-S004-P013
 
@@ -460,7 +460,7 @@ The Ethiopian bill refers to the essence of the people: the desert of the lowlan
 
 **English**
 
-In the New Hebrew Bible, they named Ethiopia the desert, which is the desert of Kadesh, Bernaeus, and Sinai. Herodotus, the father of Western history, said in his book about Ethiopia that Ethiopians are superior to all humans in beauty, height and strength.
+In the new Hebrew Bible, the desert of Ethiopia is named, and it is measured like the deserts of Kadesh, Beersheba, and Sinai. Herodotus, who is called the father of Western history, stated in his book about Ethiopia that Ethiopians surpass all people in beauty, stature, and strength.
 
 ### CHE-000-S004-P014
 
@@ -470,7 +470,7 @@ In the New Hebrew Bible, they named Ethiopia the desert, which is the desert of 
 
 **English**
 
-In the book of Homer, the name of the red wine is Ethiopia, which means an Ethiopian people with a red color.
+In the book of Homer, because of the red wine, an Ethiopian means a people of red, possessing a red complexion.
 
 ### CHE-000-S004-P015
 
@@ -480,7 +480,7 @@ In the book of Homer, the name of the red wine is Ethiopia, which means an Ethio
 
 **English**
 
-In the year 2450 (284 B.C.), after the death of the Ethiopian father Kush, the seventy scholars who changed the books of the Old Testament from Hebrew to Zer wrote "Ethiopia" written by Moses Kush.
+The father of the Ethiopians, Cush, died in the year 2450 /284 AD/. During the reign of Ptolemy, who was known in the world for his greatness and wisdom, the seven scholars who translated the books of the Old Testament from Hebrew into Syriac wrote "Ethiopia" while referring to Cush.
 
 ### CHE-000-S004-P016
 
@@ -490,7 +490,7 @@ In the year 2450 (284 B.C.), after the death of the Ethiopian father Kush, the s
 
 **English**
 
-In his 1953 book "Ethiopian Faith in the Three Laws", Scholar Ayalew Tamru described the name Ethiopia as a reminder of other Ethiopian names: Ethiopia, which means the house of God, just as Ethiopia means the house of God.
+In the book titled "The Faith of Ethiopia in Three Laws" published in 1953 by Liqe Tebebt Ayalew, on pages 54-58, while explaining the naming of Ethiopia, he stated that while other Ethiopian designations are hidden in memory, Ethiopia is called in view of Bethel; meaning that Bethel means the House of God, therefore Ethiopia also means the Land of God.
 
 ## ኢትዮጵያ በመጽሐፍ ቅዱስ / Ethiopia in the Bible {#CHE-000-S005}
 
@@ -502,7 +502,7 @@ In his 1953 book "Ethiopian Faith in the Three Laws", Scholar Ayalew Tamru descr
 
 **English**
 
-Ethiopia is a country known not only in history but also in the Bible, and it is mentioned more than 40 times in the Bible with a variety of ideas, some of which are:
+Ethiopia is a country known not only in history but also within the Bible. In the Bible, it is mentioned more than 40 times in various contexts, some of which are:
 
 ### CHE-000-S005-P002
 
@@ -512,7 +512,7 @@ Ethiopia is a country known not only in history but also in the Bible, and it is
 
 **English**
 
-❖ On the Position of Creation: In his book Moses describes the position of creation, he writes that Ethiopia was a country surrounded by the river Gion. Genesis 2:13 The river Giyon, as it is now called, is the Nile River, and the great prophets say that it flows into Egypt and Sudan. Isaiah 18:1 Ezekiel 29:9-11 The water to war of East Africa is called the water source of East Africa.
+❖ Regarding the arrangement of creation: In the book where Moses explained the arrangement of creation, he wrote that Ethiopia is a land surrounded by the River Gihon. The river called Gihon is the Nile River in modern terms, and the great prophets state that this river and its tributaries nourish Egypt and Sudan. The historical books of Isaiah 18:1 and Judges 29:9-11 call it "The Water source of East Africa".
 
 ### CHE-000-S005-P003
 
@@ -522,7 +522,7 @@ Ethiopia is a country known not only in history but also in the Bible, and it is
 
 **English**
 
-Blessed are those who have been blessed with minerals (Job 28:18-19).
+❖ Because it is rich in minerals: Ezekiel 28:18-19
 
 ### CHE-000-S005-P004
 
@@ -532,7 +532,7 @@ Blessed are those who have been blessed with minerals (Job 28:18-19).
 
 **English**
 
-Belief in one God: Ethiopia stretches out its hands to God when David expresses that Ethiopia is not subject to foreign worship and that there is constant love between God and the Ethiopians. Psalm 67:31 says.
+❖ Because it believes in one God: David, the heart of God, expressed that Ethiopia is not sold to foreign worship and that there is an unending love between God and the Ethiopians, stating that Ethiopia stretches out her hands toward God. Psalm 67:31.
 
 ### CHE-000-S005-P005
 
@@ -542,7 +542,7 @@ Belief in one God: Ethiopia stretches out its hands to God when David expresses 
 
 **English**
 
-For her people were zealous for the worship of God (Isaiah 45:14; Psalm 71:9-10; Daniel 11:43-45).
+❖ Because its people are zealous for the worship of God: Isaiah 45:14, Psalm 71:9-10, Daniel 11:43-45
 
 ### CHE-000-S005-P006
 
@@ -552,7 +552,7 @@ For her people were zealous for the worship of God (Isaiah 45:14; Psalm 71:9-10;
 
 **English**
 
-Amos 9:7
+❖ Because Ethiopia is used as an example for other countries: Amos 9:7
 
 ### CHE-000-S005-P007
 
@@ -562,7 +562,7 @@ Amos 9:7
 
 **English**
 
-2 Chronicles 14:9-13 Zephaniah 2:12 Ezekiel 30:5
+❖ The prophets prophesied about the strength of the Ethiopians: 2 Chronicles 14:9-13, Zephaniah 2:12, Judges 30:5
 
 ### CHE-000-S005-P008
 
@@ -572,7 +572,7 @@ Amos 9:7
 
 **English**
 
-The Appearance of the Ethiopians - Isaiah 13:23
+❖ Regarding the appearance of the Ethiopians: Isaiah 13:23
 
 ### CHE-000-S005-P009
 
@@ -582,7 +582,7 @@ The Appearance of the Ethiopians - Isaiah 13:23
 
 **English**
 
-Matthew 12:42
+❖ Because its people have a high status in the Bible: Matthew 12:42
 
 ### CHE-000-S005-P010
 
@@ -592,7 +592,7 @@ Matthew 12:42
 
 **English**
 
-❖ About Hospitality: It is known that the Ethiopians have a tradition of hospitality, and it is known that Christ came to Ethiopia during his time of exile with his mother, the Blessed Virgin Mary, and the prophet Habakkuk wrote in his book of prophecy that he saw the tents of Ethiopia in distress (3:7). Here are some of the places where Our Lady rested in our country during her time of exile:
+❖ Because of being hospitable: It is known that Ethiopians have a culture of welcoming guests; it is known that Christ came to Ethiopia during his time of exile with his mother, the Holy Virgin Mary. The Prophet God Injabokom also wrote in his prophetic book, "I saw the banners of Ethiopia being shaken" in Inj 3:7. Some of the places where our Mother rested in our country during her time of exile are:
 
 ### CHE-000-S005-P011
 
@@ -602,7 +602,7 @@ Matthew 12:42
 
 **English**
 
-Asmara Debre Bizen, Tigre Axum, Debre Damo, Gondar Waldba, Gojam, Debre Abyan and Tana Islands, as well as Harar Abba Samuel Zedebre Weg are the main ones.
+Asmara Debre Bizen: Tigray Aksum and Debre Damo: Gondar Waldba: Gojam Debre Abay and Tana Deses, as well as Harar Abba Samuel Zedebre Wogege are the main ones.
 
 ### CHE-000-S005-P012
 
@@ -612,7 +612,7 @@ Asmara Debre Bizen, Tigre Axum, Debre Damo, Gondar Waldba, Gojam, Debre Abyan an
 
 **English**
 
-❖ See other biblical words about Ethiopia and the Ethiopians: Psalm 86:4 Psalm 73:14 Uza 11:11 Zepha 3:10 Genesis 12:1-9, 2 Kings 19:9 2 Chronicles 16:8 2 Chronicles 21:16 Numbers 12:1 Isaiah 43:3 2 Chronicles 12:4 Esther 1 Esther 89 Jeremiah 39:16 Ezekiel 30:9 Ezekiel 38:5 Nahum 3:9 Acts 8:26-39
+❖ See other Bible verses regarding Ethiopia and Ethiopians:- Ps 86:4, Ps 73:14, Isa 11:11, Soph 3:10, Deut 12:1-9, 2 Kings 19:9, 2 Chron 16:8, 2 Chron 21:16, Zech 12:1, Isa 43:3, 2 Chron 12:4, Esther 1:1, Esther 8:9, Jer 39:16, Ezek 30:9, Ezek 38:5, Nahum 3:9, Acts 8:26-39
 
 ## የኢትዮጵያ ጥንታዊ ቋንቋ / The Ancient Language of Ethiopia {#CHE-000-S006}
 
@@ -624,7 +624,7 @@ Asmara Debre Bizen, Tigre Axum, Debre Damo, Gondar Waldba, Gojam, Debre Abyan an
 
 **English**
 
-Ethiopia is an ancient country that believes in the Constitution and later the Gospel. The heroism of its people, its beliefs and culture can be known all over the world through its artifacts, which have been passed down from generation to generation in stone and clay statues, pottery, pottery, parchment and drawings. Many poems and essays have been written in Geez, and the history of our country and our church has been passed down from generation to generation through the books written in the Geez language, parchment and paper.
+Ethiopia is an ancient country that has lived in faith since before the birth of Christ under the Law of Moses and after the birth of Christ under the Law of the Gospel. The civilization, heroism, faith, and culture of the people that existed previously and still exist today were able to be known throughout the world through the monuments of stone and sculpture, through sculptural objects, and through the manuscripts written and preserved in the Geʽez language, passed down from generation to generation. Many poems and compositions were written in Geʽez books; the history of our country and our Church was able to reach generations through the books found written in the Geʽez language on parchment and paper.
 
 ### CHE-000-S006-P002
 
@@ -634,7 +634,7 @@ Ethiopia is an ancient country that believes in the Constitution and later the G
 
 **English**
 
-There are many books of faith, morality, history, law, and order that have not yet been translated into the public and are preserved in the monasteries.
+There are very many books of faith, ethics, history, law, and liturgy that have not yet been translated for the people and are preserved in various monasteries.
 
 ### CHE-000-S006-P003
 
@@ -644,7 +644,7 @@ There are many books of faith, morality, history, law, and order that have not y
 
 **English**
 
-Therefore, it is very important to have a thorough knowledge of grammar in order to read, understand, and translate.
+Therefore, deep knowledge of Geʽez grammar is extremely important for reading, understanding, examining, and translating.
 
 ### CHE-000-S006-P004
 
@@ -654,7 +654,7 @@ Therefore, it is very important to have a thorough knowledge of grammar in order
 
 **English**
 
-Until the 12th century, when the Amharic language was replaced by Amharic, the opening of the mysteries of the native language, in which the society was governed by the constitution of the country, was the opening of the mysteries of the language, both in writing and in words, and in terms of grammar, the Amharic language followed the grammar system in its entirety.
+The Geʽez language served as the society's medium for expressing its thoughts—both in writing and in speech—as the kingdom's governing system until the 12th century, when Amharic replaced it in that position; it was the key to unlocking mysteries and the foundation of grammar. In terms of grammar, the Amharic language completely followed the Geʽez system.
 
 ### CHE-000-S006-P005
 
@@ -664,7 +664,7 @@ Until the 12th century, when the Amharic language was replaced by Amharic, the o
 
 **English**
 
-The Geez language has survived and will continue to exist through the Church. Until recently, it was taught only in the church and its surroundings in the great monasteries and monasteries. Geez is an ancient language that has been used in literature from the Stone Age to the Parchment Age, from the Parchy Age to the Paper Age, making Ethiopia the owner of history, literature and art.
+Geʽez language education has lived alive through the Church until now and will continue to live in the future. Until recently, education was provided only in the Church and its surroundings, in great monasteries and hermitages. Because Geʽez is an ancient language that has served in writing from the stone age to the parchment age, and from the parchment age to the paper age, it has made Ethiopia the owner of history, writing, and the art of literature.
 
 ### CHE-000-S006-P006
 
@@ -674,7 +674,7 @@ The Geez language has survived and will continue to exist through the Church. Un
 
 **English**
 
-Although it is not used as a mother tongue today, it is likely to serve as a language of prayer and literature in the church.
+Even though it is not used as a spoken language in our time, its service in the Church as a language of prayer and writing has not ceased.
 
 ### CHE-000-S006-P007
 
@@ -684,7 +684,7 @@ Although it is not used as a mother tongue today, it is likely to serve as a lan
 
 **English**
 
-Therefore, it is very important to read and understand the poetry, historical, religious and philosophical essays written in the Geez language, to compare the books written in Geez with those written in other languages, to study and research the terminological correspondence in Geez and Amharic, to translate modern scientific and philosophical concepts, and to carry out studies that will allow them to interpret and label modern scientific and philosophical concepts.
+Therefore, to read and understand the poems, historical, religious, and philosophical compositions written in Geʽez, to conduct studies and research by comparing books written in Geʽez with those written in other languages, to distinguish and understand the word associations in Geʽez and Amharic, and to conduct studies that enable the translation and notation of modern scientific and philosophical concepts, Geʽez grammar education is extremely important.
 
 ### CHE-000-S006-P008
 
@@ -694,7 +694,7 @@ Therefore, it is very important to read and understand the poetry, historical, r
 
 **English**
 
-Ethiopia is the country that has its own alphabet and script in the African continent, especially in sub-Saharan Africa, and the oldest national language is called Geez. All the languages of the world are called by the names of each tribe, but Geez is not called by anyone's name, but by its own money.
+In the African continent, especially among the countries south of the Sahara, Ethiopia is the country that has its own alphabet and writing; its ancient national language is called Geʽez. While every world language is called by its name, Geʽez is called by its own name, Geʽez; Geʽez, meaning the name of the language, is the Adamic language, the name of the alphabet, the name of the reading, and the name of the melody, and its form is to say Alpha.
 
 ### CHE-000-S006-P009
 
@@ -704,7 +704,7 @@ Ethiopia is the country that has its own alphabet and script in the African cont
 
 **English**
 
-The first is the ancient Adamic language, but the first one is the ancient Adamic language.
+One 'mejemeriya' (initial) 'kur' (first) 'qedamay' (ancient) 'res' (head) means 'ancient,' but its mystery means 'ancient Adamic tongue.'
 
 ### CHE-000-S006-P010
 
@@ -714,7 +714,7 @@ The first is the ancient Adamic language, but the first one is the ancient Adami
 
 **English**
 
-Some people have gone so far as to say that Geez is not the Ethiopian language, and this is related to the history of the South Arab people, the alphabet, the civilization and the customs, and that during the reign of Aksum, Sigen brought the alphabet from South Arabia and spread the Sabaean alphabet, which is the father of today's alphabet, in his empire, and later this alphabet and language were changed to Geez, and today all writing is in the same language of the newcomer.
+Some parties have gone as far as to say that Geʽez is not the language of Ethiopia; they claim that the Aksumite kingdom and people were linked with the people of Southern Arabia in their history, alphabet, civilization, and customs, and that during the time of the Almighty, Aksum conquered the alphabet from Southern Arabia and brought the alphabet of the Sabaeans, which became the father of our today's alphabet, and spread it in its territory; later, this alphabet and language changed into Geʽez, and today all writing is in that same language.
 
 ### CHE-000-S006-P011
 
@@ -724,7 +724,7 @@ Some people have gone so far as to say that Geez is not the Ethiopian language, 
 
 **English**
 
-In addition, the Aksumians regularly settled in the region, spreading more and more in the central south and western highlands of Ethiopia, and introduced their social structure, experiences, and the Geez language to the peoples living in the region at that time.
+Additionally, as the Aksumites were constantly expanding into the central, southern, and western highlands of Ethiopia, they introduced their social structure, experience, and the Geʽez language to the peoples living in the area at that time. They stated in their books and studies that while the Geʽez alphabet was obtained from the Sabaeans, it was continuously improved over the centuries, finally producing this current alphabet, Geʽez.
 
 ### CHE-000-S006-P012
 
@@ -734,9 +734,9 @@ In addition, the Aksumians regularly settled in the region, spreading more and m
 
 **English**
 
-However, in the historical collection of the Church, such distorted information has not been collected, and the Geez Adamian language has already been written and studied as the only language of the Church, but a broad commentary on the language is a point that advises not only researchers and researchers, but all Ethiopians to study it.
+However, the historical records of the Church did not record such distorted information; they previously and still wrote that Geʽez is the unique language of the Church/Ethiopia. Since a broad discussion about the language is a point that advises all Ethiopians, not only researchers and scholars, to study it, we ought to reflect on our ancient language.
 
-## የኢትዮጵያ ዘመን አቆጣጠር / Ethiopian Calendar {#CHE-000-S007}
+## የኢትዮጵያ ዘመን አቆጣጠር / The Ethiopian Calendar {#CHE-000-S007}
 
 ### CHE-000-S007-P001
 
@@ -746,7 +746,7 @@ However, in the historical collection of the Church, such distorted information 
 
 **English**
 
-Chronology is a set of rules in which the natural division of the seasons is based on a method of adapting the natural division of the seasons to each other in a way that is useful for the purpose of social life and religious activities. Chronology helps to determine the dates of public and religious holidays by dividing the year into smaller parts and how many days those smaller parts will have.
+A calendar is a set of rules based on the progression of eras, serving as a method of harmonizing natural divisions of time to perform social life, practicalities, and religious activities. The calendar defines the year and divides it into smaller parts, and those smaller parts serve as a rule to determine how many days they contain, helping to determine the dates of social and religious holidays. A calendar means preparing a rule and liturgy by dividing time durations such as days, months, and years.
 
 ### CHE-000-S007-P002
 
@@ -756,7 +756,7 @@ Chronology is a set of rules in which the natural division of the seasons is bas
 
 **English**
 
-In Ethiopia, the chronology begins with the word antiquity, which consists of the creation of the world, the sun, the moon and the stars. There are three types of solar ancients, which are ancient, ancient, ancient, and ancient. The ancients of the moon are said to be five.
+In the Ethiopian calendar, it begins with the word 'Tunt' (Antiquity). This antiquity is from the creation of the world, from the sun, the moon, and the stars. The antiquities of the sun are three: Tunt Yelet, Tunt Qemer, and Tunt On. The antiquities of the moon are said to be five.
 
 ### CHE-000-S007-P003
 
@@ -766,7 +766,7 @@ In Ethiopia, the chronology begins with the word antiquity, which consists of th
 
 **English**
 
-Sunday is the day when the world was created. Sunday and Monday are called the Days of the Wise Men because the Wise Men chose the Trinity and created the world.
+The Sunday on which the world was created is called Tunt Yelet. Sunday and Saturday are called Yelet Tebiban. The reason they are called Yelet Tebiban is because the Holy Trinity chose these days and created the world on them.
 
 ### CHE-000-S007-P004
 
@@ -776,9 +776,9 @@ Sunday is the day when the world was created. Sunday and Monday are called the D
 
 **English**
 
-The Ethiopian calendar is 550 years BC. This period is called the Old Age. The period from the birth of our Lord and Savior Jesus Christ is 1998, which is called the Age of Mercy, the Age of Mercy, the Age of the Messiah, and the Age of the Messiah. When the Old and New Hadiths are combined, the result of their beginning is called the Year of the World. In this current year, it is 550 + 1998 = 7498 years.
+In the Ethiopian calendar, the time counted before the birth of Christ is 5500 years. This is called Zemene Fida, Amete Kunene, and Zemene Buly (Old Testament Era). The time starting from the birth of our Lord, our Savior, Jesus Christ, is 1998 years, and it is called Amete Mihret, Zemene Segave, Zemene Hadis, and Zemene Mesih (New Testament Era). When Zemene Buly and Zemene Hadis are added together, the result is called Amete Alem (World Era). In the current Amete Alem we are in, it is 5500 + 1998 = 7498 years.
 
-# ምዕራፍ አንድ ኢትዮጵያ በሃይማኖት / Chapter 1: Ethiopia's Religion {#CHE-001}
+# ምዕራፍ አንድ ኢትዮጵያ በሃይማኖት / Chapter One: Ethiopia in Religion {#CHE-001}
 
 ### CHE-001-S000-P001
 
@@ -788,7 +788,7 @@ The Ethiopian calendar is 550 years BC. This period is called the Old Age. The p
 
 **English**
 
-In the history of the Bible, we see that when humans believed in the Most High God, who created the worlds and the creatures in them, and submitted to His laws, they received the salvation given to mankind by faith.
+As we see in the history of the Bible, man created the worlds and the creations within them. By believing in the Almighty God, they were governed by the laws, and they found the salvation given to human beings through faith.
 
 ### CHE-001-S000-P002
 
@@ -798,7 +798,7 @@ In the history of the Bible, we see that when humans believed in the Most High G
 
 **English**
 
-James 1:5, 6. When our Lord Jesus Christ explained to St. Peter the power of faith among the apostles
+For this, it is necessary to look at the word of the Bible. Gen 1:5-6. When our Lord, our Savior, Jesus Christ, explained the power of faith to Saint Peter among the Apostles,
 
 ### CHE-001-S000-P003
 
@@ -808,7 +808,7 @@ James 1:5, 6. When our Lord Jesus Christ explained to St. Peter the power of fai
 
 **English**
 
-«. .. Believe in God, verily I say unto you, If any man believe that he shall have anything to be done, it shall be done unto him, if he shall say unto him, Lift up this mountain, and throw it into the sea, it shall be done unto him."
+"...Believe in God, I tell you truly, if anyone believes in his heart without doubting, he can move this mountain and cast it into the sea."
 
 ### CHE-001-S000-P004
 
@@ -818,7 +818,7 @@ James 1:5, 6. When our Lord Jesus Christ explained to St. Peter the power of fai
 
 **English**
 
-Mark 11:2223 tells us the value of faith.
+In Mark 11:22-23, he expressed the value of faith.
 
 ### CHE-001-S000-P005
 
@@ -828,7 +828,7 @@ Mark 11:2223 tells us the value of faith.
 
 **English**
 
-It is through the descendants of Abraham that God gave the Law to mankind and freed all mankind from the death of sin for which it was condemned. The Law He gave to mankind is divided into three main parts: the Law, the Law, and the Gospel.
+In this long history of religion, the people of Israel are mentioned in the Old Testament. When God gave the law to people, He delivered all of humanity from the death of sin from which they were oppressed through the lineage of Abraham. The law He gave to people is divided into three main parts/laws. They are the Law of the Heart (Heg Libuna), the Law of the Torah (Heg Orit), and the Law of the Gospel (Heg Wongel).
 
 ### CHE-001-S000-P006
 
@@ -838,9 +838,9 @@ It is through the descendants of Abraham that God gave the Law to mankind and fr
 
 **English**
 
-There have been and will continue to be those who have not benefited from these laws, and our country will continue to be governed by these laws.
+There were people who used these laws and those who did not; there are still some now, and there will be in the future. Our country, Ethiopia, was also formed by these laws and is currently in the process of being guided by them.
 
-## 1ኛ. ሕገ ልቡና / 1st. Our Law of Conscience {#CHE-001-S001}
+## 1ኛ. ሕገ ልቡና / 1. The Law of the Heart (Heg Libuna) {#CHE-001-S001}
 
 ### CHE-001-S001-P001
 
@@ -850,7 +850,7 @@ There have been and will continue to be those who have not benefited from these 
 
 **English**
 
-Enoch 19:22 But if a man knew the destiny of nature, and was unable to keep his law in his heart and glory, and wandered on the road of death like a sheep without a protector, the Most High God gave him a law written in ink and paper.
+The Law of the Heart is the first law given to man by the Almighty God by his nature. This law—cutting a branch, sharpening a pen, listening to a scroll—is generally not the tools of writing; its law, because it was established by the angels, has not changed since their nature until now. Man was not created to be guided by a book or a pen, but rather to live by fearing the Creator, having understood and guarded his religion in the Law of the Heart like the angels. Gen 19:22 However, if man failed to live by guarding his honor in the Law of the Heart and by understanding the opportunity given to him by nature, and if he had no guardian and was wandering on the path of sin and death, when the Almighty God saw this, He gave him the law written in ink and on paper as a helper.
 
 ### CHE-001-S001-P002
 
@@ -860,7 +860,7 @@ Enoch 19:22 But if a man knew the destiny of nature, and was unable to keep his 
 
 **English**
 
-Isaiah 8:16 Psalm 49:14 The light of God was never lost among those who were found to keep the law, though he had ruled over the death of those who had sinned, and those who had not sinned, in the days of his heart and in the time of his law. Romans 5:14
+Isa 8:16, Ps 49:14. Even if they bought the dead and the living as one in the time of the Law of the Heart, the light and help of God did not disappear among those who were present guarding the Law of the Heart. Rom 5:14
 
 ### CHE-001-S001-P003
 
@@ -870,9 +870,9 @@ Isaiah 8:16 Psalm 49:14 The light of God was never lost among those who were fou
 
 **English**
 
-The period of this law covers the period from Adam to Moses 3.856 B.C., which is also known as the Abbot Era. Under the guidance of this law, man has violated God's law and has become more and more unaware of his lack of knowledge, and there are many ways of death that he wandered to find God. These are idols that were carved and made in the likeness of the heavenly armies, the sun, the moon, the stars, the earth, humans, birds, animals, and animals.
+The era in which this law existed totals 3,856 years from Adam until Moses. This era is called Zemene Abew in another terminology. In this leadership of the law, many of the paths of death were those where people, having violated the law given to them by God and being oppressed by the judgment they were subjected to, were wandering as their lack of knowledge increased. These were idols modeled and made in the image of the heavenly hosts, the sun, the moon, the stars, the earth, man, birds, and animals.
 
-## ሕገ ልቡና በኢትዮጵያ / The Law of Conscience and the Law of Conscience in Ethiopia {#CHE-001-S002}
+## ሕገ ልቡና በኢትዮጵያ / The Law of the Heart in Ethiopia {#CHE-001-S002}
 
 ### CHE-001-S002-P001
 
@@ -882,7 +882,7 @@ The period of this law covers the period from Adam to Moses 3.856 B.C., which is
 
 **English**
 
-It is said that the Constitution and the Constitution existed in Ethiopia from the time of Noah's children to the time of the Queen of Sheba.
+It is said that the Law of the Heart in our country, Ethiopia, existed from the time of the children of Noah until the era of the Kingdom of the Queen of Sheba.
 
 ### CHE-001-S002-P002
 
@@ -892,7 +892,7 @@ It is said that the Constitution and the Constitution existed in Ethiopia from t
 
 **English**
 
-It is difficult to say the exact date of the past, as the history of the past has not been extensively written. History testifies that Ethiopia followed God with all its heart, and it was sometimes written that there was a foreign faith.
+Because the previous era was a time when history was not extensively written, it is difficult to describe the situation. History testifies that during this era, Ethiopia was a nation that followed God with all its heart, and it is also written that occasionally there was foreign belief.
 
 ### CHE-001-S002-P003
 
@@ -902,7 +902,7 @@ It is difficult to say the exact date of the past, as the history of the past ha
 
 **English**
 
-This means that Ethiopia is not a country where idols are worshipped. If we look at the Israelites, the people of God were chosen for God, who saw His miracles and received His Law and ordinances through Moses, and there were kings who worshipped idols in different ages.
+This does not mean that Ethiopia was a country that worshipped idols. If we look at the people of God, the Israelites, they saw the miracles of God chosen by Him and received the law and the order through the mediation of Moses, yet in different eras, kings who worshipped idols arose. These kings worshipping idols and offering sacrifices to idols—Israel is/was a land of idols; it does not mean that. Similarly, history narrates that there was and remained foreign worship in Ethiopia.
 
 ### CHE-001-S002-P004
 
@@ -912,7 +912,7 @@ This means that Ethiopia is not a country where idols are worshipped. If we look
 
 **English**
 
-In short, it is not a time when Ethiopia was a teacher of intellectual behavior, a time when it knew its God and stretched out its hands to God through the testimony of nature, but not a time when it lived in foreign worship and distanced itself from the worship of God, as other people say. According to archaeologists and historians, in the 20th century AD, a number of idols and temple utensils were excavated in Behana, Adbera and other places in Ethiopia, and coins with the image of the sun and moon were found. But the coins were stamped in the shape of a cross.
+In short, this was an era when Ethiopia, as a teacher of the mind, as a leader of the heart, and as a witness of creation, knew God and stretched out its hands toward Him; it was not an era of living in foreign worship and being distant from the worship of God, as other sides claim. As described by ancient heritage researchers and history students, in the 20th century, during the study of ancient heritage in Ethiopia, it was recorded that idol images and temple worship objects were excavated and unearthed in Ye-Hanna Adbera and other places, and it was recorded that coins engraved with images of the sun and moon were found. However, the coins made during the first reign of King Ezana were engraved with the cross shape.
 
 ### CHE-001-S002-P005
 
@@ -922,7 +922,7 @@ In short, it is not a time when Ethiopia was a teacher of intellectual behavior,
 
 **English**
 
-Even Solomon, who built the first temple to praise the Most High God, built a temple for his Egyptian wife. (Kings p. 65) This kind of charity is mentioned many times in the Bible, but the belief of Israel is expressed by their belief in one God. This is their identity. In Ethiopia, too, different leaders rise up and change many things, saying that they are suitable for leadership, but they do not change the history of the country and its people.
+Even Solomon, who built the first temple for the Lord God, built an idol temple for his Egyptian wife. /Kibre Negest page 65/ Such acts are told many times in the Bible; however, the faith of Israel is told as their belief in one God. Their testimony is this: similarly in Ethiopia, even if various leaders arise and change or corrupt many things by saying 'it is convenient for leadership,' they do not change the history of the country and the people. Sophonias, who spoke of the honor of religion and morality for Ethiopia, stated that Ethiopia is a country that worships one God. Soph3:10
 
 ### CHE-001-S002-P006
 
@@ -932,7 +932,7 @@ Even Solomon, who built the first temple to praise the Most High God, built a te
 
 **English**
 
-The first Ethiopian pioneers, the sons of Cush, believed in one God in their grandfather, Noah, but their faith was not supported by education, so some foreign worship was involved, which dates back to the time of the king of Arwe. In this time of Arwe, there was a dragon worshipped by the gods of Arwe, who killed this dragon in 1000 B.C. in consultation with the people in consultation with the people about the cultivation of agriculture by Angabos, the father of the queen of Sheba. The story goes that she was kept on her knees.
+The faith of the first Ethiopians, the children of Cush, was in their grandfather Noah, in one God; however, because their faith was not supported by education, some foreign worship would mix in. The time of King Arewa is mentioned for this. In this Arewa era, Zendo was considered a rebel, and this Zendo was killed by King Angabos, the father of Queen Sheba, after observing the tribute he gave and the worship performed, in consultation with the people. At that time, when Zendo was killed and blood flowed, Queen Sheba, who was with her fathers in the place, if she were to strike Zendo from a distance and his blood touched her feet, the story narrates that something like a horn was attached to her foot.
 
 ### CHE-001-S002-P007
 
@@ -942,7 +942,7 @@ The first Ethiopian pioneers, the sons of Cush, believed in one God in their gra
 
 **English**
 
-After killing the dragon, Angabos reigned for 13 years from 1020 - 1013 BC.
+After Angabos killed Zendo, he reigned for about 13 years from 1020 - 1013 B.C.
 
 ### CHE-001-S002-P008
 
@@ -952,9 +952,9 @@ After killing the dragon, Angabos reigned for 13 years from 1020 - 1013 BC.
 
 **English**
 
-His daughter, who reigned after him, was the queen of Sheba.
+After him, his daughter reigned, who was Queen Sheba.
 
-## ንግሥት ሳባ / Queen of Sheba {#CHE-001-S003}
+## ንግሥት ሳባ / Queen Sheba {#CHE-001-S003}
 
 ### CHE-001-S003-P001
 
@@ -964,7 +964,7 @@ His daughter, who reigned after him, was the queen of Sheba.
 
 **English**
 
-The Queen of Sheba, who is said by many historians to be the most powerful of all the kings of Axum, is believed to have lived in the period of 1026975 B.C. This queen ruled Ethiopia and Yemen together for 30 years. She is the 52nd in the ancient dynasty of Ethiopia and is the reason for the advent of the Constitutional Faith. In the Bible, her story is widely recorded in 1 Kings10:1-End, 2 Chronicles 9:1, Matthew12:42.
+Queen Sheba, who is told by many historians to have been the most superior among all Aksumite kings, the era she lived in is not precisely known, but it can be estimated to be within the period of /1026-975 B.C./ based on information found from various historians. This queen ruled Ethiopia and Yemen together for 30 years. She is found in the 52nd rank of the ancient Ethiopian royal lineage and was the reason for the arrival of the Mosaic law and order. In the Bible, her story is found in 1 Kings 10:1-end, 2 Chronicles 9:1, Matthew 12:42; additionally, it is written extensively in the History of Kings.
 
 ### CHE-001-S003-P002
 
@@ -974,7 +974,7 @@ The Queen of Sheba, who is said by many historians to be the most powerful of al
 
 **English**
 
-And he gave her a great gift to her and her family.
+And she commanded the precious gifts to be placed in her baskets.
 
 ### CHE-001-S003-P003
 
@@ -984,7 +984,7 @@ And he gave her a great gift to her and her family.
 
 **English**
 
-There are 120 gold medals.
+120 /pieces/ of gold coins are found in them.
 
 ### CHE-001-S003-P004
 
@@ -994,7 +994,7 @@ There are 120 gold medals.
 
 **English**
 
-The queen of Sheba traveled to Solomon not only to see wisdom and to give glory to his kingdom, but also to the glory of his kingdom, and said, "If Solomon truly knew God, he would reveal secrets to his servants, and he would know what was hidden."
+Queen Sheba traveled to Solomon not only to see wisdom and to give honor to her kingdom, but also saying that if Solomon truly knows God, God will reveal the mystery to His servants, and he will know what is hidden.
 
 ### CHE-001-S003-P005
 
@@ -1004,7 +1004,7 @@ The queen of Sheba traveled to Solomon not only to see wisdom and to give glory 
 
 **English**
 
-1. You can ask him a riddle question and understand his religion
+1. To ask him riddle questions and to understand the religion.
 
 ### CHE-001-S003-P006
 
@@ -1014,7 +1014,7 @@ The queen of Sheba traveled to Solomon not only to see wisdom and to give glory 
 
 **English**
 
-2. To find out what God has done in Jerusalem and how many people it has, and to observe the worship that is being performed
+2. To know what God did in Jerusalem, how many people He had, and to observe the worship order to be performed.
 
 ### CHE-001-S003-P007
 
@@ -1024,7 +1024,7 @@ The queen of Sheba traveled to Solomon not only to see wisdom and to give glory 
 
 **English**
 
-3. At that time, Ethiopia was known in the world as God's country, and if she heard that there was another country that God worshipped, she should see with her own eyes what she heard with her own eyes and give testimony and multiply religious parties.
+3. In that era, Ethiopia was known in the world as the land of God, and if she heard that there was another land that God worshipped, she wanted to give testimony by seeing with her eyes what she heard with her ears and to increase the side of religion.
 
 ### CHE-001-S003-P008
 
@@ -1034,7 +1034,7 @@ The queen of Sheba traveled to Solomon not only to see wisdom and to give glory 
 
 **English**
 
-When the queen of Sheba arrived in Jerusalem and landed in the vicinity of Solomon's palace, she sent one of Solomon's servants so that she could enter it. And when King Solomon found that everything that was said about the queen was true, but he did not see anything at her feet. And he called his servant and said to him, "Get out of the palace, because what you have said to me is not right." But the queen told him about the miracle wood and the miracles that had been performed on her, and she showed him what had come out of her feet. And when the king saw that what the servant had told him was true, and he believed what had been done.
+When Queen Sheba reached Jerusalem and rested near Solomon's palace, she sent one of Solomon's servants to enter inside. The servant told King Solomon about Queen Sheba's many attendants, the size of their caravan, as well as the queen's beauty and magnificent stature, and that she had something like a horn on her foot. King Solomon, after warning that he would cast her out of his palace if anything she said was not true, ordered him to let her in. Queen Sheba, carrying gifts and carrying her baskets, before she entered, she struggled at the palace gate, and when the iron spike touched her foot, the horn-like thing on her foot fell off. She was amazed by the miraculous wood, and she commanded the fallen horn to be placed in her basket and entered. King Solomon, when he found everything said about the queen was true, but saw nothing on her foot, called the servant and told him to leave the palace because what he said was not true. However, the queen told him about the miraculous wood and the miracle that was performed, and showed him what fell from her foot. The king, seeing the miracle performed and the truth of what the servant told him, believed.
 
 ### CHE-001-S003-P009
 
@@ -1044,7 +1044,7 @@ When the queen of Sheba arrived in Jerusalem and landed in the vicinity of Solom
 
 **English**
 
-1 Kings 10:10 And he gave her many gifts, and when he had received her gloriously, she saw with her own eyes the wisdom which she had heard in her own land. And she asked him, and the wise answer answered her: and when she came to him, she told him all that was in her heart: and Solomon divorced all that she asked, and there was nothing hidden from the king, which he could not untie for her. And the queen of Sheba made all the wisdom of Solomon, and the house which he had made, and the table table, and the manner of the servants, and the manner of the servants, and their garments, and the cupbearers. When she saw the sacrifice that he was offering in the house of the LORD, she was astonished, and said to the king, "The fame that I heard in my own land is true, because of your words and your wisdom.
+After this, based on the principle of the exchange of gifts that was to be done in due time, she and the King exchanged their respective gifts. She gave the King many gifts, including precious items. 1 Kings 10:10: And he gave her many gifts, and after he had received her in honor, while she was in her own land, she saw with her eyes the wisdom of which she had heard. She asked him questions, and he answered her with wisdom. When she came to him, she showed him everything in her heart, and Solomon solved everything she asked; there was nothing hidden from the King that he could not solve. The Queen of Sheba also examined all of Solomon's wisdom and, when she saw the house, the table, the food, the arrangement of the servants, the work of the musicians, their clothing, the cupbearers, and the sacrifice that was to be offered in the house of God, she was amazed. She said to the King, 'The fame I heard about you and your wisdom while I was in my country is true.'
 
 ### CHE-001-S003-P010
 
@@ -1054,7 +1054,7 @@ When the queen of Sheba arrived in Jerusalem and landed in the vicinity of Solom
 
 **English**
 
-And I did not believe what they told me, until I came and saw it with my own eyes, and, behold, they did not tell me half of it. Blessed are thy men that stand before thee continually, and hear thy wisdom, and these thy servants, who stand before thee continually, and hear thy wisdom: blessed be the LORD thy God, who hath loved thee, who hath set thee on the throne of Israel: therefore hath raised up thy king to do righteousness and judgment.
+I also came and did not believe what I was told until I saw with my own eyes; behold, they did not tell me about his palace. Your wisdom and your works exceed the fame I heard. The people who always stand before you and hear your wisdom, and your people and these servants of yours, are excellent. May your God, who loved you and placed you on the throne of Israel, be blessed. God loved Israel forever, and therefore, so that you may do justice and judgment, He raised you up as King.' After she thanked him, she gave him the various gifts she had brought.
 
 ### CHE-001-S003-P011
 
@@ -1064,9 +1064,9 @@ And I did not believe what they told me, until I came and saw it with my own eye
 
 **English**
 
-The queen of Sheba was able to learn a great deal by observing the administration and judgment of King Solomon, and King Solomon was fascinated by her wisdom and beauty, and he wished that God would give me a seed of her, for she had risen from the ends of the earth and came to me.
+Queen Sheba, by observing the administration and the work of judgment of King Solomon, was able to learn much. King Solomon, because he was captivated by her wisdom and beauty, desired this beauty-striking Queen who rose from the ends of the earth and came to him, saying, 'May God give me offspring from her.'
 
-## የንግሥት ሳባ ወደ ኢትዮጵያ መመለስ / The Return of the Queen of Sheba to Ethiopia {#CHE-001-S004}
+## የንግሥት ሳባ ወደ ኢትዮጵያ መመለስ / The return of Queen Sheba to Ethiopia {#CHE-001-S004}
 
 ### CHE-001-S004-P001
 
@@ -1076,7 +1076,7 @@ The queen of Sheba was able to learn a great deal by observing the administratio
 
 **English**
 
-After the queen of Sheba had been in Jerusalem for six months, she wished to return to her country, and after the king had made her a banquet of a banquet, they slept together, and he did his will, and while they slept with her, he dreamed a dream, and gave the interpretation of the dream. And the dream was that the sun had risen out of the wilderness of Israel, and had made its light into the wilderness of Ethiopia, and that it had remained there, and that the interpretation of it was as if he had seen the daughter of the queen of Sheba.
+After Queen Sheba stayed in Jerusalem for about six months, she desired to return to her country. After the King gave her a farewell feast, they also lay together, and he fulfilled her request. While he was lying with her, he had an unintended dream, and he gave an interpretation for the dream. The dream was that the sun came out from the land of Israel and its light reached the land of Ethiopia and remained there; he interpreted it as saying that a son would come from Queen Sheba.
 
 ### CHE-001-S004-P002
 
@@ -1086,7 +1086,7 @@ After the queen of Sheba had been in Jerusalem for six months, she wished to ret
 
 **English**
 
-When the queen of Sheba was in Jerusalem, she was very glad, and she made preparations to go to her own land. King Solomon accompanied her with great splendor, and he withdrew by her, and said to her, "It will be a sign that you will not forget me. If you give birth to a son, let him come to me, and the peace of the Lord be with you." And the queen of Sheba said to Solomon, "Give me the ark of Zion, so that I may give thanks to the Lord, that I may remember you."
+Queen Sheba was very pleased during her stay in Jerusalem and made preparations to go to her country. King Solomon also saw her off with great majesty and, after letting her go alone, said, 'Do not leave me; if you find this seed, it will be a sign. Let a son come to me from your offspring. May the peace of God be with you.' Queen Sheba also said to Solomon, 'Give me the Ark of Zion, so that I may remember you and thank God.' After he knew that he would not give her the Ark of Zion, she came bringing the following items.
 
 ### CHE-001-S004-P003
 
@@ -1096,7 +1096,7 @@ When the queen of Sheba was in Jerusalem, she was very glad, and she made prepar
 
 **English**
 
-1. Pregnancy
+1. Pregnant
 
 ### CHE-001-S004-P004
 
@@ -1106,7 +1106,7 @@ When the queen of Sheba was in Jerusalem, she was very glad, and she made prepar
 
 **English**
 
-2. Ark of the Covenant of Zion's Inner Lining
+2. The inner cover of the Ark of Zion
 
 ### CHE-001-S004-P005
 
@@ -1116,7 +1116,7 @@ When the queen of Sheba was in Jerusalem, she was very glad, and she made prepar
 
 **English**
 
-3. If she was going to give birth to a man, she took the royal seal and went to her country with the royal seal as a sign.
+3. If she gives birth to a son, so that it may be a sign, she traveled to her country carrying the crown and the seal.
 
 ### CHE-001-S004-P006
 
@@ -1126,9 +1126,9 @@ When the queen of Sheba was in Jerusalem, she was very glad, and she made prepar
 
 **English**
 
-She gave birth to a son when she was nine months and five days old when she was traveling in a place called Maibel in the Hamas district of Asmara province. She gave birth to a son, and she named him Ibn Doktor, which means the son of a wise man.
+While on the journey, when she was nine months and five days, she gave birth to her son in the Asmara region, in the Hamasen district, in a place called Maybela. The son she gave birth to was a boy, and she named him Ibne Hakim, which means 'son of the wise.' It is said that after a long time, when he was replaced by the name Menelik, there was an additional name, Ibne Melek, meaning 'son of the King.'
 
-## ቀዳማዊ ምኒልክ / Menelik I {#CHE-001-S005}
+## ቀዳማዊ ምኒልክ / First Menelik {#CHE-001-S005}
 
 ### CHE-001-S005-P001
 
@@ -1138,7 +1138,7 @@ She gave birth to a son when she was nine months and five days old when she was 
 
 **English**
 
-At the age of 22, when Menelik I was born, he went down to Jerusalem to see his father Solomon, and because he did not know his country, he brought with him the merchant Tamri and many of his companions. When Menelik arrived in Jerusalem, his father gave him a warm welcome, accompanied by his princes and princes, and during his stay in Jerusalem, he learned the law of the Qur'an, learned the laws of the palace and the Hebrew language. Solomon announced to Israel that Menelik I was his son, and Israel accepted him.
+When First Menelik was born, at the age of 22, he descended to Jerusalem to see his father Solomon. Since he did not know his country, he brought a caravan of camels, Tamri, and many attendants. When Menelik reached Jerusalem, his father received him with a great welcome, bringing his nobles and officials. During his stay in Jerusalem, he learned the Law of Moses through the mediation of the High Priest Zadok. He learned the laws of the Kingdom and the Hebrew language. Solomon also made known to Israel that First Menelik was his son, and Israel accepted him.
 
 ### CHE-001-S005-P002
 
@@ -1148,7 +1148,7 @@ At the age of 22, when Menelik I was born, he went down to Jerusalem to see his 
 
 **English**
 
-Solomon gave his son Menelik the name David because he resembled his father and grandfather, and he shared his wisdom and knowledge to develop his mind. Menelik told his father that he wanted to return to his homeland of Ethiopia after 3 years in Jerusalem, and he also asked Moses to give him the tablets, and even though Solomon accepted the request, he felt that his son Menelik was separating him from him. The dream that he had left the desert of Israel and traveled to the Ethiopian desert and that its light was shining there until the end, was interpreted as the fact that his son Menelik was conceived in Jerusalem and when he was his son, he chose his mother's country, Ethiopia, and asked him to travel there.
+Solomon gave his son Menelik the name David, because he resembled his father and grandfather, and he shared his wisdom and knowledge with him so that he might grow in his command. In this manner, after staying in Jerusalem for 3 years, Menelik made a firm decision to return to his country, Ethiopia, and told his father. Additionally, he asked for the Tablets of Moses. Although Solomon accepted the request, he felt regret because his son Menelik was leaving him. At this time, Solomon gave a second interpretation to the unintended dream he had while lying with Queen Sheba. The first interpretation was that he would find a son from Queen Sheba, and the second was that the sun would come out from the land of Israel and travel to the land of Ethiopia, and its light would shine there until the end. He interpreted the dream he saw—that while his son Menelik was being consecrated in Jerusalem and was his son, he chose his mother's country, Ethiopia, and asked to travel there—as saying that he would remain there.
 
 ### CHE-001-S005-P003
 
@@ -1158,9 +1158,9 @@ Solomon gave his son Menelik the name David because he resembled his father and 
 
 **English**
 
-When Menelik I returned from Jerusalem, he asked for the Ark of Zion to go with him, but it was not his father's will, so he was allowed to take a replacement Ark, but God willingly brought the tablet of Moses, Azariah the son of Zadok the high priest, and the firstborn sons of the twelve tribes of Israel.
+When First Menelik returned from Jerusalem, he asked for the Ark of Zion to go with him, but since his father's permission was not granted, he was permitted to take an alternative Ark; however, by the will of God, he brought the Tablets of Moses. The son of the High Priest Zadok, Azarias, and the firstborn sons of the twelve tribes of Israel also came with him.
 
-## ቀዳማዊ ምኒልክ ወደ ኢትዮጵያ ይዟቸው የመጣው / Menelik was the first to bring them to Ethiopia. {#CHE-001-S006}
+## ቀዳማዊ ምኒልክ ወደ ኢትዮጵያ ይዟቸው የመጣው / What First Menelik brought to Ethiopia {#CHE-001-S006}
 
 ### CHE-001-S006-P001
 
@@ -1170,7 +1170,7 @@ When Menelik I returned from Jerusalem, he asked for the Ark of Zion to go with 
 
 **English**
 
-1. The Ark of Zion and the Temple Relics
+1. The Ark of Zion and the treasures of the Temple
 
 ### CHE-001-S006-P002
 
@@ -1180,7 +1180,7 @@ When Menelik I returned from Jerusalem, he asked for the Ark of Zion to go with 
 
 **English**
 
-2. 318 Levitical Priests and Teachers of the Scriptures
+2. 318 Levite Priests and Teachers of the Scriptures
 
 ### CHE-001-S006-P003
 
@@ -1190,7 +1190,7 @@ When Menelik I returned from Jerusalem, he asked for the Ark of Zion to go with 
 
 **English**
 
-3. 12. The first children of the Israelites
+3. 12.A.A. Israelites /Firstborns/
 
 ### CHE-001-S006-P004
 
@@ -1200,7 +1200,7 @@ When Menelik I returned from Jerusalem, he asked for the Ark of Zion to go with 
 
 **English**
 
-4. Books of the Old Testament, from Enoch to Solomon
+4. Old Testament books from Enoch to Solomon to Zephaniah
 
 ### CHE-001-S006-P005
 
@@ -1210,9 +1210,9 @@ When Menelik I returned from Jerusalem, he asked for the Ark of Zion to go with 
 
 **English**
 
-5. Proudly returned to the country with pets and various merchandise from the people.
+5. They returned to the country, having gathered the firstborn of the livestock and various trade goods from the people.
 
-## የታቦተ ጽዮን ወደ ኢትዮጵያ መምጣት / The Arrival of the Ark of Zion in Ethiopia {#CHE-001-S007}
+## የታቦተ ጽዮን ወደ ኢትዮጵያ መምጣት / The coming of the Tabot of Zion to Ethiopia {#CHE-001-S007}
 
 ### CHE-001-S007-P001
 
@@ -1222,7 +1222,7 @@ When Menelik I returned from Jerusalem, he asked for the Ark of Zion to go with 
 
 **English**
 
-When Azariah asked his father Zadok to give him an ark to travel with him to Ethiopia, King Solomon had already approved the size of the Ark of the Covenant for the Ark of Moses, and when he had finished his work, he secretly took the ark to the temple where the tablet was located.
+Even though Azarias asked his father Sadok to accompany him to Ethiopia to give the Tabot, based on what King Solomon had previously permitted, a chest intended to be a repository for alternative /permitted other tablets/ was adjusted to the size of the Tablet of Moses. Once the work was completed, the tablet went to its destination, and the chest carried it in secret. When it reached the gate of the sanctuary, the gate opened by miracle, and by the will and command of God, the tablet on which the Ten Commandments, written by Moses, the leader and great prophet of the people of Israel, were inscribed, was placed in a gold chest and the journey began by binding it with ropes.
 
 ### CHE-001-S007-P002
 
@@ -1232,9 +1232,9 @@ When Azariah asked his father Zadok to give him an ark to travel with him to Eth
 
 **English**
 
-On the seventh day of their journey, Azariah told Lenelik that Zion was with them, and Menelik I thanked God, saying, "This was done not of the will of men, but of God."
+During the journey, on the seventh day, Azarias told Melchizedek that Zion was with them. The first Melchizedek said, "This was not done by human will but by the will of God," and thanked God. The taking of the Tabot of Zion was also heard by King Solomon. King Solomon, with a large army, tried to reach them as far as Egypt but could not. King Solomon was also told by the Spirit that the taking of the tablet was the will of God. After they returned to their country, a warning was given to the soldiers who were with them at the time to keep this secret and not tell this story to the Israelites who had not heard it, under penalty of death.
 
-## 2. ሕገ ኦሪት /የሕግ ዘመን/ / 2. Law of Conscience (Age of Law) {#CHE-001-S008}
+## 2. ሕገ ኦሪት /የሕግ ዘመን/ / 2. Law of the Torah /Age of the Law/ {#CHE-001-S008}
 
 ### CHE-001-S008-P001
 
@@ -1244,7 +1244,7 @@ On the seventh day of their journey, Azariah told Lenelik that Zion was with the
 
 **English**
 
-After 3856 years of living in the Constitution, man could not use his natural knowledge in this age, so the Most High God appeared in Mount Sinai in the form of a king and gave him the law into the hands of Moses to be a helper of his knowledge. Exodus 19:15-16 And this age begins in the days of Moses.
+After man lived for 3856 years under the Law of his heart, because he could not utilize his natural knowledge during this time, the Almighty God revealed Himself at Mount Sinai in the form of a bull to be a helper and assistant for his knowledge, and gave the Law written on tablets in the hands of Moses. Exodus 19:15-16. This age begins from the time of Moses.
 
 ### CHE-001-S008-P002
 
@@ -1254,9 +1254,9 @@ After 3856 years of living in the Constitution, man could not use his natural kn
 
 **English**
 
-After that, the world began to follow God, guided by the law. Moses was sent by God to free Israel from the land of Egypt and from the rule of Pharaoh. With God's authority and power, the people of Israel were freed from Pharaoh's rule and crossed the Red Sea with miracles. And on Mount Sinai, the people of Israel received the Tablet of the Law from God, Moses, the Tablet of the Law. After the age of Noah, Israel remained in the Law, from Peleg to Abraham, from Abraham to Moses, in the law and in the worship of God, and from Moses to the Revelation of Christ, it received the help of the books of the Law from the Most High God, and was guided by the law.
+After this, the world began to be guided by the Law and started to follow God. Moses was sent by the command of God to free the Israelites from the land of Egypt and from the rule of Pharaoh. By the authority and power given by God, the people of Israel were freed from the rule of Pharaoh and crossed the Red Sea by miracles. On Mount Sinai, Moses received the tablet of the Law of God from his God. While Israel remained under the Law of Idolatry from the time of Noah until Abraham, and under the Law of the Heart and the worship of God from Abraham until Moses, from Moses until the revelation of Christ, it found help from the books of the Law of the Almighty God and was sanctified in the Law of the Torah.
 
-## ኢትዮጵያ በሕገ ኦሪት / Ethiopia's Law of Conscience {#CHE-001-S009}
+## ኢትዮጵያ በሕገ ኦሪት / Ethiopia in the Law of the Torah {#CHE-001-S009}
 
 ### CHE-001-S009-P001
 
@@ -1266,7 +1266,7 @@ After that, the world began to follow God, guided by the law. Moses was sent by 
 
 **English**
 
-In our country, this law comes from the Queen of Sheba. After the age of Noah, Ethiopia was guided by the law and worship of God through the kitchen and his children, and after Israel, it received the books of the law written by the Most High God because of Menelik I by the high priest Azariah I.
+In our country, this Law came from the time of Queen Sheba. After the time of Noah, while Ethiopia was being guided by the Law of the Heart and the worship of God through Cush and its children, it found the books of the Law written by the hand of the Almighty God through the High Priest Azarias because of the first Melchizedek. House of Israel precedes Ethiopia only in receiving the books, not in faith. Even if the House of Israel precedes Ethiopia in religion, they would have strayed if Moses had not joined an Ethiopian wife; however, when the Tablet of Moses left them, they did not stray. Zechariah 12:1
 
 ### CHE-001-S009-P002
 
@@ -1276,9 +1276,9 @@ In our country, this law comes from the Queen of Sheba. After the age of Noah, E
 
 **English**
 
-However, since Ethiopia is not a new religion, it is a lesson that will help the religion it has studied, and God who chose Israel to free Egypt from slavery in the Covenant of Abraham and gave it to his country, Ethiopia, which has been worshipped since ancient times, the book of the Law of Zion, which was established by the covenant of the high priest Azariah, the son of the high priest Azariah. Ethiopia has remained a family of God until the time of Menelik I, without changing any of the commandments it received.
+However, because Ethiopia was not seeking a new religion but rather a teaching to assist its established religion, it was chosen by God to be freed from Egyptian slavery and to be money for him, thinking of Kidane Aberha. The country of Ethiopia, which had been following him in worship from ancient times thinking of Kidane Melchizedek, was given the Book of the Torah, where the Law and its commands were written, by the son of High Priest Azarias, Kidane of the Covenant of Zion. Ethiopia, without changing any of the commands it received, lived as a family of God, keeping the Law and its commands from the time of the first Melchizedek until the time of the Covenant.
 
-## ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ ማስረጃ / Evidence of Ethiopia's acceptance of the Law of Conscience {#CHE-001-S010}
+## ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ ማስረጃ / Evidence of Ethiopia receiving the Law of the Torah {#CHE-001-S010}
 
 ### CHE-001-S010-P001
 
@@ -1288,9 +1288,9 @@ However, since Ethiopia is not a new religion, it is a lesson that will help the
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said:
+It is believed that the Law of the Torah entered Ethiopia through Queen Sheba and the first Melchizedek. Other foreign historians say that Jews who came to Ethiopia among those who fled to Egypt when Jerusalem was destroyed during the Babylonian captivity spread their faith and traditions. Ezra 44:1. In general, there are biblical and traditional pieces of information regarding Ethiopia receiving the Law of the Torah. They are:
 
-## ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ የመጽሐፍ ቅዱስ ማስረጃ / The Bible's Evidence for Ethiopia's Acceptance of the Law of Conscience {#CHE-001-S011}
+## ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ የመጽሐፍ ቅዱስ ማስረጃ / Biblical evidence of Ethiopia receiving the Law of the Torah {#CHE-001-S011}
 
 ### CHE-001-S011-P001
 
@@ -1300,7 +1300,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace
 
 **English**
 
-Although historians provide varying information, the Bible gives us conclusive evidence that Ethiopia accepted the Constitution of the Old Testament, for which it is necessary to look at the story of the Ethiopian eunuch in Acts 8:26.
+Although historians provide different information, the Bible gives us accurate evidence that Ethiopia accepted the Old Testament faith. For this, it is necessary to look at the history of the Ethiopian eunuch in Acts 8:26.
 
 ### CHE-001-S011-P002
 
@@ -1310,7 +1310,7 @@ Although historians provide varying information, the Bible gives us conclusive e
 
 **English**
 
-The Ethiopian eunuch went to Jerusalem to worship
+The Ethiopian eunuch's journey to Jerusalem to worship
 
 ### CHE-001-S011-P003
 
@@ -1320,7 +1320,7 @@ The Ethiopian eunuch went to Jerusalem to worship
 
 **English**
 
-It is written that the eunuch sits in a chariot and reads the book of the prophet Isaiah.
+It is written that the book the eunuch was reading while sitting on a chariot and traveling was the book of the Prophet Isaiah.
 
 ### CHE-001-S011-P004
 
@@ -1330,9 +1330,9 @@ It is written that the eunuch sits in a chariot and reads the book of the prophe
 
 **English**
 
-The fact that this eunuch went to worship in Solomon's Temple according to Judaism and ritual explains the existence of the Old Testament faith in his country, Ethiopia, and the fact that the book he reads is the prophet Isaiah, which explains that the Ethiopians accepted the prophecies and beliefs of the prophets before Christianity.
+This eunuch's journey to worship in Solomon's Temple according to Jewish faith and ritual explains the existence of the Old Testament faith in his country, Ethiopia. Furthermore, the fact that the book he was reading was the book of the Prophet Isaiah explains that Ethiopians accepted the prophecies and faith of the prophets before Christianity.
 
-## ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ የሕዝቡ ባህልና ልምድ ማስረጃ / Evidence of the culture and experience of the people of Ethiopia for the adoption of the Law of Conscience {#CHE-001-S012}
+## ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ የሕዝቡ ባህልና ልምድ ማስረጃ / Evidence of the people's culture and experience in Ethiopia's acceptance of the Old Testament {#CHE-001-S012}
 
 ### CHE-001-S012-P001
 
@@ -1342,7 +1342,7 @@ The fact that this eunuch went to worship in Solomon's Temple according to Judai
 
 **English**
 
-There are many customs and traditions practiced among the people in Ethiopia that further evidence of the existence of the Old Testament faith before Christianity.
+Additional evidence for the existence of the Old Testament faith in Ethiopia before Christianity is found in the various customs and cultures practiced among the people.
 
 ### CHE-001-S012-P002
 
@@ -1352,7 +1352,7 @@ There are many customs and traditions practiced among the people in Ethiopia tha
 
 **English**
 
-(a) The animals and birds that are forbidden to eat in the Old Testament book are still not eaten by Ethiopian Christians today. Leviticus 11:1 Deuteronomy 14:1
+A. The animals and birds forbidden from being eaten in the Old Testament books are still not eaten by Ethiopian Christians today. Leviticus 11:1, Deuteronomy 14:1
 
 ### CHE-001-S012-P003
 
@@ -1362,7 +1362,7 @@ There are many customs and traditions practiced among the people in Ethiopia tha
 
 **English**
 
-B. Circumcision, which was a sign of faith in the Torah, was performed in our country
+B. The practice of circumcision, which was a sign of believing in the Torah, being performed in our country
 
 ### CHE-001-S012-P004
 
@@ -1372,7 +1372,7 @@ B. Circumcision, which was a sign of faith in the Torah, was performed in our co
 
 **English**
 
-c) If we look at the social life of the people, it is similar to that of the people of Israel. For example, the religious attitude of the people, the state of mourning and joy, the celebration of holidays, the ritual of church ceremonies, the glory of the ark, the robes of the priests, the cloaks, the cymbals, the cymbos, and all the jewelry of children and women are indicative of the Old Testament system and the civilization of the Semites.
+C. If we look at the social life of the people, it has similarities with the lifestyle of the people of Israel from the Torah. For example, the people's religious feelings in times of sorrow and lamentation and in times of joy, the observance of holidays, the ritual of the church assembly, the honor of the Tabot, the vestments of the priests—the Lits'e-Tikhno, Kaba, Dirbu, Tsenats'elu, Kebero, Metem'meya—as well as the ornaments of children and women, all show the rituals of the Old Testament and the civilization of the Semites.
 
 ### CHE-001-S012-P005
 
@@ -1382,11 +1382,11 @@ c) If we look at the social life of the people, it is similar to that of the peo
 
 **English**
 
-This is not known to the Ethiopian Christians who have adopted Christianity in other countries, Greece and Latin. Ethiopian Christians perform circumcision, do not eat animals and birds, and perform other rituals not because they are from Christianity, but because they are attached to Torah customs. In the canon of the Church, circumcision is not a law, and it is up to the faithful to circumcise their children, whether they circumcise them or not.
+All of the items we examined in detail above are not known in other countries like Greece and Latin that accepted Christianity. Ethiopian Christians perform circumcision, do not eat forbidden animals and birds, and perform other rituals not because they brought them from Christianity, but because they maintained them by connecting them with Old Testament customs. In the church canon, circumcision is not a law; whether the faithful circumcise their children or not is their own choice.
 
-## የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን በነዚህ ዘመናት ለኢትዮጵያና ለሕዝቡ ያበረከተቻቸው ከፍተኛ አስተዋጽኦ / The Ethiopian Orthodox Tewahedo Church has made a significant contribution to Ethiopia and its people during these times {#CHE-001-S013}
+## የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን በነዚህ ዘመናት ለኢትዮጵያና ለሕዝቡ ያበረከተቻቸው ከፍተኛ አስተዋጽኦ / The significant contributions made by the Ethiopian Orthodox Tewahedo Church for Ethiopia and its people during these eras {#CHE-001-S013}
 
-## የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ለተከታዮቿ ብቻ ሳይሆን በአጠቃላይ ለኢትዮጵያ ሕዝብ ያበረከተቻቸው ስጦታዎች ብዙ ናቸው ከሚጠቀሱት ውስጥም ጥቂቶቹ፡- / The Ethiopian Orthodox Tewahedo Church has made many gifts not only to its followers, but also to the Ethiopian people as a whole, some of which are mentioned: {#CHE-001-S014}
+## የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ለተከታዮቿ ብቻ ሳይሆን በአጠቃላይ ለኢትዮጵያ ሕዝብ ያበረከተቻቸው ስጦታዎች ብዙ ናቸው ከሚጠቀሱት ውስጥም ጥቂቶቹ፡- / The gifts contributed by the Ethiopian Orthodox Tewahedo Church are many, not only for its followers but for the Ethiopian people as a whole. Among those mentioned, a few are: {#CHE-001-S014}
 
 ### CHE-001-S014-P001
 
@@ -1396,7 +1396,7 @@ This is not known to the Ethiopian Christians who have adopted Christianity in o
 
 **English**
 
-A. Full education
+A. Complete education
 
 ### CHE-001-S014-P002
 
@@ -1406,7 +1406,7 @@ A. Full education
 
 **English**
 
-Lee Lee Perfect Language
+B. Perfect language from the Nefidelu
 
 ### CHE-001-S014-P003
 
@@ -1416,7 +1416,7 @@ Lee Lee Perfect Language
 
 **English**
 
-(c) A Letter to the Editor of the Journal of Occupation
+C. Script from the Nemuya and Netebaya
 
 ### CHE-001-S014-P004
 
@@ -1426,7 +1426,7 @@ Lee Lee Perfect Language
 
 **English**
 
-d. Art of all kinds e. Art in all forms f. Historical and ancient heritage g. Faith and philosophy
+D. Kinetebeb of every type, E. Sinetebeb of every form, F. Historical and ancient heritage, G. Faith from the Nefilsfina
 
 ### CHE-001-S014-P005
 
@@ -1436,7 +1436,7 @@ d. Art of all kinds e. Art in all forms f. Historical and ancient heritage g. Fa
 
 **English**
 
-h. Freedom of Honor
+Freedom from honor
 
 ### CHE-001-S014-P006
 
@@ -1446,7 +1446,7 @@ h. Freedom of Honor
 
 **English**
 
-C. Unity from Heroism
+Unity from heroism
 
 ### CHE-001-S014-P007
 
@@ -1456,7 +1456,7 @@ C. Unity from Heroism
 
 **English**
 
-In the meantime, the family is in love with their loved ones.
+Homeland from hatred and rejection
 
 ### CHE-001-S014-P008
 
@@ -1466,7 +1466,7 @@ In the meantime, the family is in love with their loved ones.
 
 **English**
 
-T. Name and Meaning
+Name from its meaning and from the scriptures
 
 ### CHE-001-S014-P009
 
@@ -1476,9 +1476,9 @@ T. Name and Meaning
 
 **English**
 
-The Church still has a role to play in educating and encouraging the generation to grow up with a sense of patriotism, patriotism, concern for history, culture and religion.
+Even now, the Church has a role in teaching and encouraging the generation to grow with heroism, patriotism, a sense of history, culture, and religious devotion.
 
-## 3. ሕገ ወንጌል / 3. The Law of Conscience {#CHE-001-S015}
+## 3. ሕገ ወንጌል / 3. The Law of the Gospel {#CHE-001-S015}
 
 ### CHE-001-S015-P001
 
@@ -1488,9 +1488,9 @@ The Church still has a role to play in educating and encouraging the generation 
 
 **English**
 
-This period covers the period from the birth of Christ and is also known as the Age of Mercy. The Age of Mercy includes the journey of Christianity to the present day, believing in the divinity of Christ, the mystery of the Trinity, the unity and trinity of God.
+This era encompasses the period from the birth of Christ until the present time, and it is also called the Era of Transformation /Era of Newness/ or the Era of Grace. The Era of Transformation includes the entire journey of Christianity up to the present day, by believing in the divinity of Christ's nature, believing in the mystery of the Trinity, and believing in the unity and trinity of God. This is the section where we see the good works of the successive kings and the Church Fathers, and the journey of the Church.
 
-## ሕገ ወንጌል /የክርስትና ሃይማኖት/ በኢትዮጵያ / The Gospel of Jesus Christ in Ethiopia {#CHE-001-S016}
+## ሕገ ወንጌል /የክርስትና ሃይማኖት/ በኢትዮጵያ / The Law of the Gospel /The Religion of Christianity/ in Ethiopia {#CHE-001-S016}
 
 ### CHE-001-S016-P001
 
@@ -1500,7 +1500,7 @@ This period covers the period from the birth of Christ and is also known as the 
 
 **English**
 
-Ethiopia is a country that has embraced Christianity in the first place, just as it has been ruled by the Constitution and then by the Constitution. The Ethiopian kings, who have ruled since the Queen of Sheba, had a close relationship with Israel, so they regularly went to Jerusalem to worship God. King Bazim, who ruled Ethiopia eight years B.C., nine years A.D. (8 B.C.-9 A.D.), traveled to Jerusalem when Christ was born, and he saw the birth of Christ in a ritual of worship. According to our fathers, if they accepted Christianity as a testimony to history Ethiopia is one of the first countries to be mentioned in the list.
+Ethiopia is a country that received the Christian faith before all others, just as it lived being guided by the Law of its heart and then by the Law of the Torah. From the time of Queen Sheba, the Ethiopian kings who reigned in every era maintained a constant connection with Israel, and they would travel to Jerusalem periodically to perform the worship of God and then return. In the year 8 B.C. (8 A.K. – 9 A.M.), King Bazim, who ruled Ethiopia, traveled to Jerusalem at the time of Christ's birth, performed the rites of worship, saw the birth of Christ, and returned. According to the expression of our fathers and as historical testimony, Ethiopia was the first among the countries that received Christianity.
 
 ### CHE-001-S016-P002
 
@@ -1510,7 +1510,7 @@ Ethiopia is a country that has embraced Christianity in the first place, just as
 
 **English**
 
-After the Ascension of Christ, St. John Afwerk stated that Ethiopians were among the fathers who gathered at Mark's mother's house when the Holy Spirit descended on the apostles after the Ascension of Christ. Christianity was introduced to Ethiopia through the eunuch, who was a scholar and teacher of the law.
+Saint John of Ephesus stated in his treatise that Ethiopians were present among the fathers gathered in the house of Mark at the time the Holy Spirit descended upon the Apostles after the resurrection of Christ. Christianity entered Ethiopia through the mediation of the Ethiopian Eunuch, who was a scholar of the Law of the Torah.
 
 ### CHE-001-S016-P003
 
@@ -1530,7 +1530,7 @@ The Ethiopian Eunuch
 
 **English**
 
-Since ancient times, the Ethiopians had traveled to Jerusalem every year for the Passover, according to the custom of the Israelites. The eunuch Bacchus traveled in 32 A.D. to worship and pray to celebrate the Passover. At that time, the journey required a journey of 40,000 miles to reach Jerusalem. When he returned home on the occasion of Pentecost, he read the book of the prophet Isaiah.
+From ancient times, Ethiopians, following the custom of the Israelites, would go to Jerusalem every year for the Passover festival. The Eunuch, also named Bachos, traveled in 32 A.M. to observe, worship, and pray for the Passover. In that era, the journey to reach Jerusalem required traveling 400 miles. Upon returning to his country after observing the festival, he would read the Book of the Prophet Isaiah.
 
 ### CHE-001-S016-P005
 
@@ -1540,7 +1540,7 @@ Since ancient times, the Ethiopians had traveled to Jerusalem every year for the
 
 **English**
 
-The Ethiopians never liked to be separated from God, so he read the book of the prophet in his chariot without the heat of the desert, but he could not understand the prophecy he was reading. God, who was in the habit of revealing the hidden, sent Philip the evangelist to his eunuch. Acts 8:26
+Ethiopians never wished to be separated from God, and while the heat of the desert did not torment him, he read the Prophet's book while in chains; however, he could not understand the meaning of the prophetic word he was reading. Since it was his custom to reveal what was hidden, God sent the Evangelist Philip to the Eunuch. Acts 8:26
 
 ### CHE-001-S016-P006
 
@@ -1550,7 +1550,7 @@ The Ethiopians never liked to be separated from God, so he read the book of the 
 
 **English**
 
-The Ethiopian eunuch was found to be reading the book of Isaiah, which had no meaning at all, according to the teachings of the synagogue. The presence of the eunuch reading the book of the Prophet was evident from the fact that the Hebrews did not understand the meaning of it, but when they read one of the books of the prophets, they believed that the Spirit of the Prophet would reveal the mystery to them later.
+The Ethiopian Eunuch /Bachos/ was found reading the Book of Isaiah, which had no meaning to him, based on the traditional teaching of the Torah given from the pulpit. The fact that the Eunuch was found reading the Prophet's book, which he did not understand, was because they believed that when they read one of the books of the prophets, even if they did not understand the translation of the Hebrews, the Spirit of prophecy that was upon the prophet would descend upon them and reveal the mystery to them.
 
 ### CHE-001-S016-P007
 
@@ -1560,7 +1560,7 @@ The Ethiopian eunuch was found to be reading the book of Isaiah, which had no me
 
 **English**
 
-The eunuch Bacchus sat in his chariot and read aloud the powerful words of Isaiah 53:7. Philip approached him and asked him if he understood what you were reading. The eunuch Bacchus replied that this was possible without anyone to guide him with his usual Ethiopian humility, and invited Philip to climb into the chariot and sit with him, without despising Philip's weakness in the flesh.
+The Eunuch Bachos, while sitting in chains, was reading the powerful word written in the prophecy of Isaiah 53:7. Philip, being diligent, asked him, "If you believe in truth, will you read it?" The Eunuch Bachos, guided by his customary Ethiopian humility, replied, "How can I do this without the one who leads me?" Philip, without criticizing the physical weakness of the Eunuch, invited him to come out of the chains and sit with him.
 
 ### CHE-001-S016-P008
 
@@ -1570,7 +1570,7 @@ The eunuch Bacchus sat in his chariot and read aloud the powerful words of Isaia
 
 **English**
 
-The deacon Philip preached the Gospel from the beginning to the destination, and the eunuch believed, and when he reached the river, he said, "Behold, there is water, who can prevent me from being baptized?" He was baptized in a river that flows under the hill between Beth-Sharon and Hebron, about 20 miles from Jerusalem, and its place is called Gaza.
+Deacon Philip preached to him by narrating the Gospel from beginning to end, and the Eunuch believed. When they reached a river, he said, "Behold, water; who will prevent me from being baptized?" and asked Philip. Philip replied, "If you believe in your whole heart, you are permitted." He testified, "I believe that Jesus Christ is the Son of God," and was baptized in a river flowing from a hill located between Beth-saaron and Kebron, at a distance of 20 miles from Jerusalem, the place of which is called Gaza. Some ancient biblical manuscripts state that the Holy Spirit descended upon him after he was baptized. /Lives of the most Eminent Fathers of the church p.87/
 
 ### CHE-001-S016-P009
 
@@ -1580,7 +1580,7 @@ The deacon Philip preached the Gospel from the beginning to the destination, and
 
 **English**
 
-After the eunuch was baptized and returned to his country in 34 A.D., the Queen of India and later the people of the palace were baptized, and he preached Christianity in his country.
+After Janderbaw was baptized and returned to his country in 34 AD, first Queen Hindeke and then the people of the kingdom were baptized. He also preached Christianity /the Gospel/ in his country. As evidence for this, Awsabiyos, who is called the Father of Church History, has recorded in writing that Janderbaw taught the Gospel to his country.
 
 ### CHE-001-S016-P010
 
@@ -1590,7 +1590,7 @@ After the eunuch was baptized and returned to his country in 34 A.D., the Queen 
 
 **English**
 
-On the other hand, evidence of the eunuch's teachings is that the gold and silver coins engraved in her name by Queen Hindeke (Gersham) who ruled the Ethiopians between 34 and 42 AD have the inscription "Zemoth conquered in Christ", and he had a cross on her crown and money.
+On the other hand, as evidence for Janderbaw's teaching, from 34-42 AD, the Queen whom the Ethiopians purchased, named Queen Hindeke /Gershamot/, inscribed on the gold and silver coins she issued the inscription "Zemoat be Kristos /Victorious in Christ"" and there was a cross mark on her royal crown and on her coins.
 
 ### CHE-001-S016-P011
 
@@ -1600,9 +1600,9 @@ On the other hand, evidence of the eunuch's teachings is that the gold and silve
 
 **English**
 
-This eunuch testified that Jesus Christ is the God of nature and his testimony is the same as the testimony of St. Peter and Saint Nathaniel. He preached the gospel in various places, and in Axum he taught the Gospel to the princes and baptized them. After Axum, he traveled through Nubia, Yemen, Persia, India, and fulfilled his apostolic duties.
+This Janderbaw testified that Jesus Christ is the God of the nature (Bahrey), and his testimony is one with the testimony of Saint Peter and Saint Nathanael. He preached the Gospel in various places; he taught the Gospel and baptized the nobles and judges in Aksum. After Aksum, he traveled through Nubia, Men-Peryshia, and India, fulfilling his apostolic work. His final place of preaching was Punt, Taneyroba /Tanyerozna/, which is the island called Ceylon today. While he was teaching the Gospel there, the Aromans rose up against him in hostility and he rested in martyrdom. /Know your Church, see page 145, note 146/
 
-## ከጃንደረባው ባኮስ በኋላ ወንጌል በኢትዮጵያ ስለሰበኩ ሐዋርያትና / After the eunuch Bacchus, the apostles preached the gospel in Ethiopia. {#CHE-001-S017}
+## ከጃንደረባው ባኮስ በኋላ ወንጌል በኢትዮጵያ ስለሰበኩ ሐዋርያትና / After Janderbaw, the Apostles preached the Gospel in Ethiopia. {#CHE-001-S017}
 
 ### CHE-001-S017-P001
 
@@ -1612,7 +1612,7 @@ This eunuch testified that Jesus Christ is the God of nature and his testimony i
 
 **English**
 
-Historians of the Ethiopian Church
+Writers on the history of the Ethiopian Church
 
 ### CHE-001-S017-P002
 
@@ -1622,7 +1622,7 @@ Historians of the Ethiopian Church
 
 **English**
 
-Ruphanos Theodorus, Socrates, Sozominos, and many other writers who wrote about the history of the Ethiopian Church were the first to write about the history of the Ethiopian Church.
+The scholars who first wrote about the history of the Ethiopian Church include Rufanos, Theodore, Socrates, and Sozominus as the foremost mentioned, while many other writers have also recorded about Ethiopia in their various books. Among those who wrote about the Apostles who preached the Gospel in Ethiopia are:
 
 ### CHE-001-S017-P003
 
@@ -1632,7 +1632,7 @@ Ruphanos Theodorus, Socrates, Sozominos, and many other writers who wrote about 
 
 **English**
 
-Ruphanos Socrates said that it was St. Matthew who came to Ethiopia and preached the Gospel.
+Rufanos and Socrates stated that Saint Matthew came to Ethiopia and preached the Gospel.
 
 ### CHE-001-S017-P004
 
@@ -1642,7 +1642,7 @@ Ruphanos Socrates said that it was St. Matthew who came to Ethiopia and preached
 
 **English**
 
-Jerome, the father of the Latin Church, who lived between 317 and 419 AD, is said to be the Ethiopian apostle St. Andrew
+Jerome /Iaromyes/, a Father of the Latin Church who lived from 317-419 AD, says it is the Ethiopian Apostle Saint Andrew.
 
 ### CHE-001-S017-P005
 
@@ -1652,7 +1652,7 @@ Jerome, the father of the Latin Church, who lived between 317 and 419 AD, is sai
 
 **English**
 
-St. John the Baptist is said to have been the first Ethiopian apostle, St. Thomas.
+Saint John of Ephesus, on the other hand, says it is the first Ethiopian Apostle Saint Thomas.
 
 ### CHE-001-S017-P006
 
@@ -1662,7 +1662,7 @@ St. John the Baptist is said to have been the first Ethiopian apostle, St. Thoma
 
 **English**
 
-Argens of Alexandria, however, says that no apostles were sent to Ethiopia, but that the message of the Gospel reached only a small number of African people.
+Argens of Alexandria, however, says that no Apostle was sent to Ethiopia, but rather that the message of the Gospel reached only a few people in Africa.
 
 ### CHE-001-S017-P007
 
@@ -1672,7 +1672,7 @@ Argens of Alexandria, however, says that no apostles were sent to Ethiopia, but 
 
 **English**
 
-In his second book, St. Eusebius, a Philistine by birth, says that according to Acts 8:26, the eunuch became an apostle to his people.
+Saint Awsabiyos, who was Palestinian by birth, stated in his second book, based on the Acts of the Apostles 8:26, that Janderbaw became an Apostle to his people.
 
 ### CHE-001-S017-P008
 
@@ -1682,9 +1682,9 @@ In his second book, St. Eusebius, a Philistine by birth, says that according to 
 
 **English**
 
-Although many apostles came to Ethiopia and taught, their mission was to go around the world and teach, and since Ethiopia is part of the world and it is close to Jerusalem, the Christian village, the number of apostles who came to Ethiopia and taught, but it is important to note here that the first Ethiopian evangelist was the eunuch Bacchus. Ethiopia adopted Christianity through the eunuch in 34 AD, but it was granted the bishopric by the Synod law in 32 AD (in the fourth century AD) when Fremantos was given the bishopric's authority.
+Although many Apostles came to Ethiopia and taught, since their mission was to travel the world to teach, and since Ethiopia is one part of the world and was close to Jerusalem for the spread of Christianity, the number of Apostles who came and taught cannot be counted. However, what we must realize here is that the first preacher of the Gospel in Ethiopia was Janderbaw Bakos. Although Ethiopia received Christianity through Janderbaw in 34 AD, it was in 32 AD, when the authority of the Episkopos (Bishop) was granted to Phremanatos /in the fourth century/, that the seat of the bishops was established by Synodal law.
 
-## የፍሬምናጦስ አመጣጥ / Origin of Fremantos {#CHE-001-S018}
+## የፍሬምናጦስ አመጣጥ / The arrival of Phremanatos {#CHE-001-S018}
 
 ### CHE-001-S018-P001
 
@@ -1694,7 +1694,7 @@ Although many apostles came to Ethiopia and taught, their mission was to go arou
 
 **English**
 
-Around 300 A.D., a merchant named Meropisius, accompanied by a young man named Fremantle and Sidracus, sailed from Tyre to India. When they arrived in the Red Sea port of Africa, they took their boat from the port to Ethiopia to see the country to drink water. The local coast guards risked their goods and robbed them. When Meropius and the boat oarsmen were immediately killed, two young men who escaped from the danger were found praying under a tree, and after capturing the young men, they handed them over to King Izana, who was a prisoner of war.
+Around 300 AD, a merchant named Merophios led Phremanatos and youths named Edesios /Sidrakos/ from Tyre to India by ship. When they reached the African sea port in the Red Sea area, they took their ships out of the port to drink water and see the country, and the bandits in the area attacked and looted their goods. As soon as Merophios and the ship's sailors were killed, two youths who escaped the attack were found praying under a tree. After capturing the youths, they gave them to King Ezana of that time, saying they were captured by the army.
 
 ### CHE-001-S018-P002
 
@@ -1704,7 +1704,7 @@ Around 300 A.D., a merchant named Meropisius, accompanied by a young man named F
 
 **English**
 
-After seven years in the palace, the king gave the two captives a great position, which made Fremanto the scribe of Edessius the treasurer, and the young men gained popularity and loyalty in the palace of Axum.
+After the King spared the youths, he placed them in the palace with his children, Saizana and Izana, and made them learn the Ge'ez language and the culture of the country. After staying in the palace for seven years, he gave the two captives great appointments; he appointed Phremanatos as the commander of the scribes and Edesios as the commander of the palace guards. The youths found favor and loyalty in the Aksum palace.
 
 ### CHE-001-S018-P003
 
@@ -1714,7 +1714,7 @@ After seven years in the palace, the king gave the two captives a great position
 
 **English**
 
-When Izana died, the king of Axum, his children were only 12 years old to take power, so their mother, Queen Ohoi, (Sophia), took over as a guardian. Fremantos was in love with Queen Ahevi for 3 years, teaching the Gospel to the two king's sons and helping the mother with administration.
+When the King of the Aksum Kingdom, Izana, died, since his children were only 12 years old to receive the authority, their mother Queen Ohoy /Sophia/ took the authority as a regent. Phremanatos taught the two royal children the Gospel and helped their mother in administration, and for about 3 years, he lived with love with Queen Ahyewi. While honoring the Queen's word, he served her as an advisor in the palace. In addition to his royal work, Phremanatos also monitored the movement of the Christian faith around the palace.
 
 ### CHE-001-S018-P004
 
@@ -1724,7 +1724,7 @@ When Izana died, the king of Axum, his children were only 12 years old to take p
 
 **English**
 
-At that time, he realized that the Ethiopian Christians had only faith, but no priesthood or sacraments. When the king's sons came of age and took over the kingdom of their father, Edesius returned to his native Tyre and became a priest there. He told him about his time in Ethiopia when he met Ruphanos in Tyre, and Ruphanos wrote about it in the introduction to the book.
+During this time, it is understood that the Ethiopian Christians possessed faith alone and did not have the priesthood or the sacrament of the Eucharist. When the sons of the King reached the age of maturity and received their father's kingdom, Edessios returned to his home country of Tyre, where he became a priest. He spent this time in Ethiopia, and after meeting Rufanus in Tyre, he told him what he had experienced, and Rufanus also wrote it in the preface of his book.
 
 ### CHE-001-S018-P005
 
@@ -1734,9 +1734,9 @@ At that time, he realized that the Ethiopian Christians had only faith, but no p
 
 **English**
 
-After Aizana and Saizana took over the throne, they began to adjust the way in which Christianity, which had already been preached by the eunuch, could be strengthened. Accordingly, they sent Fremantle to Alexandria to bring a bishop to them.
+After Izana and Saizana received the authority of the kingdom, they began to correct the way to strengthen the Christianity that had been preached earlier in Janderba. Accordingly, they sent Frumentius to Alexandria to bring a Bishop for them.
 
-## የፍሬምናጦስ ጉዞ ወደ እስክንድርያ / Fremantle's Journey to Alexandria {#CHE-001-S019}
+## የፍሬምናጦስ ጉዞ ወደ እስክንድርያ / The journey of Frumentius to Alexandria {#CHE-001-S019}
 
 ### CHE-001-S019-P001
 
@@ -1746,7 +1746,7 @@ After Aizana and Saizana took over the throne, they began to adjust the way in w
 
 **English**
 
-Fremantus was sent from the Emperor of Axum to discuss the issue of the Papacy with the Church of Alexandria. When Fremantus arrived in Alexandria in 325 A.D., he did not meet the Fathers and officials of the Church of Alexandria. During the reign of Pope Arius, he was at a conference and council in Nicaea to condemn Arius, so the letter from the 19th Patriarch of Alexandria, St. Alexander, was fulfilled by the 20th Patriarch St. Athanasius after 3 years.
+Frumentius was sent by the King of Aksum to discuss the matter of the priesthood and to deliberate with the Church of Alexandria. When Frumentius arrived in Alexandria in 325 AD, he did not find the fathers and authorities of the Church of Alexandria. During the era of the Church Councils, because they were at the Council and Synod of Nicaea to condemn Arianism, the letter entered by the 19th Patriarch of Alexandria, Saint Alexandros, was executed by the 20th Patriarch, Saint Athanasius, after a stay of 3 years.
 
 ### CHE-001-S019-P002
 
@@ -1756,7 +1756,7 @@ Fremantus was sent from the Emperor of Axum to discuss the issue of the Papacy w
 
 **English**
 
-In 328 A.D., Fremantle was appointed first as a deacon, then a priest, and a bishop, and Bishop Zeaxum was appointed as Ethiopia.
+They said, 'There is no one better than you who knows the culture and language of the country,' and in 328 AD, they first appointed Frumentius as a Deacon, and then appointed him as a Priest and Bishop, naming him Bishop of Aksum, Zekulu Ethiopia.
 
 ### CHE-001-S019-P003
 
@@ -1766,9 +1766,9 @@ In 328 A.D., Fremantle was appointed first as a deacon, then a priest, and a bis
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger
+Due to his appointment, Frumentius did not distance himself from the common people but rather drew closer to them; staying among the people, he understood their spiritual and physical problems. Before his appointment as a Bishop, he converted those who had accepted the Christian faith. Among those who believed, he caused many to attain the sonship of God. Day and night, morning and evening, without separating from the people, he defended and preserved the Word of Faith sown in the hearts of the people. He was called the one who preaches the Gospel, which is the light that expresses the light of the 'Satan's light' (Satan's light/Light of the Light). Frumentius, in his bishopric, was called Abba Selama /Father of Peace/.
 
-## አባ ሰላማ /ፍሬምናጦስ/ ለኢትዮጵያ ቤተ ክርስቲያን የሠራቸው ሥራዎች / The Works of the Ethiopian Church / Father Salam / Fremantle {#CHE-001-S020}
+## አባ ሰላማ /ፍሬምናጦስ/ ለኢትዮጵያ ቤተ ክርስቲያን የሠራቸው ሥራዎች / The works performed by Abba Selama /Frumentius/ for the Ethiopian Church {#CHE-001-S020}
 
 ### CHE-001-S020-P001
 
@@ -1778,7 +1778,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-To fulfill his spiritual responsibilities correctly, not only in the parchment books of Ethiopia, but also by the churches all over the world have testified to him and placed him in the rank of saint. He has also done many spiritual works in Ethiopia. Among his works:
+To accurately fulfill the spiritual responsibility he carried, Frumentius was testified to not only by the written books of Ethiopia but also by the churches of the whole world, and he was placed at the level of holiness. He also performed many spiritual works in Ethiopia. Among the works he performed are:
 
 ### CHE-001-S020-P002
 
@@ -1788,7 +1788,7 @@ To fulfill his spiritual responsibilities correctly, not only in the parchment b
 
 **English**
 
-1. He spread and preach the Christian faith and order
+1. He spread and preached the Christian faith and sacraments.
 
 ### CHE-001-S020-P003
 
@@ -1798,7 +1798,7 @@ To fulfill his spiritual responsibilities correctly, not only in the parchment b
 
 **English**
 
-2. He initiated the ordinance of the priesthood and the sacraments
+2. He caused the priesthood and the sacrament of the Eucharist to begin.
 
 ### CHE-001-S020-P004
 
@@ -1808,7 +1808,7 @@ To fulfill his spiritual responsibilities correctly, not only in the parchment b
 
 **English**
 
-3. He appointed clergy and deacons to assist in the delivery of full evangelical education in the Ethiopian Empire.
+3. He appointed priests and deacons who would help deliver the Gospel teachings throughout the Ethiopian territory.
 
 ### CHE-001-S020-P005
 
@@ -1818,7 +1818,7 @@ To fulfill his spiritual responsibilities correctly, not only in the parchment b
 
 **English**
 
-4. He rewrote the Holy Scriptures from Syriac, Hebrew, and Zarqawi into Geez.
+4. He translated and wrote the Holy Scriptures from Syriac, Hebrew, and Coptic into the Geʽez language.
 
 ### CHE-001-S020-P006
 
@@ -1828,7 +1828,7 @@ To fulfill his spiritual responsibilities correctly, not only in the parchment b
 
 **English**
 
-5. He was the one who changed the alphabet of the Sabaeans and created the new way of writing and reading from left to right.
+5. He is the one who changed the Sabian script and created the new method of writing and reading from left to right.
 
 ### CHE-001-S020-P007
 
@@ -1848,7 +1848,7 @@ To fulfill his spiritual responsibilities correctly, not only in the parchment b
 
 **English**
 
-7. The Society of Zion established the first spiritual society, called the Heavenly Society.
+7. He established the first spiritual association called Mahaber Tsyon Semayawit.
 
 ### CHE-001-S020-P009
 
@@ -1858,9 +1858,9 @@ To fulfill his spiritual responsibilities correctly, not only in the parchment b
 
 **English**
 
-Fremantus contributed these and other spiritual legacies to the Church. Fremantus never gave up his apostolic struggle, and the Holy Church awarded Abba Salam the title of saint and celebrates his feast on July 26 every year.
+Frumentius dedicated these and other spiritual treasures to the Church. Frumentius completed this apostolic struggle and rested. The Holy Church also gave Abba Selama the rank of holiness and honors his day of rest on July 26 every year.
 
-## አብርሃ ወአጽብሃ / Abraham was a man of great courage and courage. {#CHE-001-S021}
+## አብርሃ ወአጽብሃ / Abraha and Ezana {#CHE-001-S021}
 
 ### CHE-001-S021-P001
 
@@ -1870,7 +1870,7 @@ Fremantus contributed these and other spiritual legacies to the Church. Fremantu
 
 **English**
 
-After Aizana and Sayzana were baptized in Fremantle in 330 A.D., two kings named Abraham and Atsbha took over the authority from their mothers, and they began to be called.
+After Ayzana and Saizana were baptized in Frumentius in 330 AD, Abraha and Ezana, who received the authority of the kingdom from their mother, performed spiritual works. They began to be called. In cooperation with these peaceful ones, they...
 
 ### CHE-001-S021-P002
 
@@ -1880,7 +1880,7 @@ After Aizana and Sayzana were baptized in Fremantle in 330 A.D., two kings named
 
 **English**
 
-He was a member of the Congregation for the Doctrine of the Faith, such as the Gospel of John the Baptist.
+...appointed fathers similar to those like Inberem /Hizbeqedis/ to be useful for the expansion of the Gospel.
 
 ### CHE-001-S021-P003
 
@@ -1890,7 +1890,7 @@ He was a member of the Congregation for the Doctrine of the Faith, such as the G
 
 **English**
 
-They turned their people from idolatry to worship God, from the Torah to Christianity.
+They returned the people from the worship of idols to the worship of God, and from the Torah to Christianity.
 
 ### CHE-001-S021-P004
 
@@ -1900,7 +1900,7 @@ They turned their people from idolatry to worship God, from the Torah to Christi
 
 **English**
 
-They built a church in many places. For the first time, they built a church in the name of Zion Mary with 12 temples with 5 rooms and 72 columns in the name of Zion Mary.
+They caused churches to be built in many places. In Aksum, they built a church for the first time, having 12 sanctuaries, 5 sections, and 72 columns, in the name of Zion Maryam. In Wollo Amara, they built Saint Tedbabbe Maryam; in Gojam, Merto Maryam; in Tana, Kirkos; and in Western Shewa, Goha Zion Kidist Maryam church.
 
 ### CHE-001-S021-P005
 
@@ -1910,9 +1910,9 @@ They built a church in many places. For the first time, they built a church in t
 
 **English**
 
-The two kings not only expanded their empire and ruled Kenya, Yemen, Somalia and Sudan, but also spread the gospel in all these countries. The two kings had difficulty in finding and governing their people because of the size of their empire, so they were drawn lots. Abraham ruled the north while Aksum ruled the north, while Atsbah built his palace on the Shwa Erer Mountains and ruled the southern part. After 26 years of ruling together, Abraham passed away, and Atsbah ruled alone for another 13 years.
+The two kings expanded their territories to include Kenya, and the Somali and Sudan regions, unifying them. In addition to their rule, they ensured the Gospel spread in all these countries. Because both kings were unable to closely reach and administer their people due to the vastness of their territories, they divided the land; Abraha became Aksum and administered the north, while Ezana established his kingdom in Shewa Erer Gara and administered the southern part. After both kings ruled together for 26 years, Abraha passed away, and Ezana ruled alone for an additional 13 years.
 
-## ንጉሥ አጽብሃ ለብቻው ካሠራቸው መልካም ሥራዎች / The Emperor Yekuno Amlak is the only one who has done the good deeds of the king. {#CHE-001-S022}
+## ንጉሥ አጽብሃ ለብቻው ካሠራቸው መልካም ሥራዎች / Good works performed by King Ezana alone {#CHE-001-S022}
 
 ### CHE-001-S022-P001
 
@@ -1922,7 +1922,7 @@ The two kings not only expanded their empire and ruled Kenya, Yemen, Somalia and
 
 **English**
 
-When King Atsbah came from Axum to Shoa Erer, he built a cave located 3 km from the Church of St. Michael in Debre Sahel. This holy place is one of the churches carved in stone structure and is said to have been built in 330 AD. Atsbha also made a request about the restoration of the Monastery of Deir Sultan in Jerusalem and made it applicable.
+When King Ezana was coming from Aksum to Shewa Erer, he built Washa Mikael Gara Teklehaymanot, located 3 km away from Debre Sahil Kidist Mikael church. This holy place is one of the churches built from hewn stones, and it is said to have been built in 330 AD. Additionally, Ezana, because he was in Jerusalem, submitted a request for the return of the site of the Holy Sepulchre and made it feasible.
 
 ### CHE-001-S022-P002
 
@@ -1932,7 +1932,7 @@ When King Atsbah came from Axum to Shoa Erer, he built a cave located 3 km from 
 
 **English**
 
-In 350 AD, it was decided that the king would be the supreme guardian of the Church, and that the national religion of Ethiopia would become the Orthodox of Christianity. Ethiopia is known to the world as a Christian island.
+In this period, it was decided that the King would be the supreme protector of the church, and it was decided in 350 AD that the national religion of Ethiopia would be the Orthodox Tewahedo faith of Christianity. Ethiopia became known in the world as a land of Christians.
 
 ### CHE-001-S022-P003
 
@@ -1942,7 +1942,7 @@ In 350 AD, it was decided that the king would be the supreme guardian of the Chu
 
 **English**
 
-In general, the Ethiopian Church of Abraham and Atsabha has been granted the status of sainthood. Like the other saints, the ancient church built in their name is located on the site where their skeletons rest, and a chronicle of their holiness is written. The feast of the two kings is commemorated together on October 4.
+In general, Abraha and Ezana were given the rank of holiness by the Ethiopian Church. Like other saints, ancient churches built in their names are found where their remains rest. Chronicles describing their holiness have been written. The feast of the two kings is celebrated together on October 4.
 
 ### CHE-001-S022-P004
 
@@ -1952,7 +1952,7 @@ In general, the Ethiopian Church of Abraham and Atsabha has been granted the sta
 
 **English**
 
-A Letter to Abraham
+The letter of Constantine written for Abraha and Ezana
 
 ### CHE-001-S022-P005
 
@@ -1962,7 +1962,7 @@ A Letter to Abraham
 
 **English**
 
-The contents of Constantine's letter to Abraham Atsbah are also exaggerated, exaggerating the Arian Bishop George, degrading Fremantle and Athanasius, and praising Abraham and Athanasius. There is also a warning.
+The content of the letter Constantine wrote to Abraha and Ezana is that it excessively exalts the Arian bishop Georgius, belittles Frumentius and Athenagis, and is intended for Abraha and Ezana to reach an understanding. It also contains a warning.
 
 ### CHE-001-S022-P006
 
@@ -1972,7 +1972,7 @@ The contents of Constantine's letter to Abraham Atsbah are also exaggerated, exa
 
 **English**
 
-"Gentlemen, Aizana and Saizana, first of all, we ought to be faithful to the Spirit and to our hearts touched by the Holy Spirit. We do not care about all mankind so that God may be known in us and in you. By knowing Him, we expect that God will not fall into error instead of seeking truth and faith, so that all mankind may have hope. And since you have the right to equality with us with the Romans, we should think more about you. It is necessary for the same religious education to be spread among your people and the Roman people. They sent Fremantius again to Alexandria, and when he finished teaching religion by the Roman people, he was again taught by the great Father. Fremantle was appointed by George, and Fremantle accepted the pope by the sinful Athanasius. Athanasius was persecuted because he could not answer any of the many accusations against him. That is, to escape the true judgment. If Fremantle realizes his mistake and is willing to return and repents, send him to Alexandria immediately and let him come to you with the right faith. But if he doubts, beware that he does not perish with you and your people. . . . »
+«Honorable Ayzana and Saizana, first of all, we and you must be trusted in the Spirit and our hearts must be touched by the Holy Spirit. We think of all mankind so that God may be known by us and by you. We guard against the truth and faith from falling into error so that all of humanity may live in hope by knowing God. Since you have the right of equality with us, the Romans, we must think further for you. It is necessary for the same religious teaching to spread among your people and the Roman people. They sent Frumentius back to Alexandria, and when he finished studying the religious teaching among the Roman people, he returned and was appointed as the great father Georgius. Because Frumentius accepted the priesthood of the sinful Athenagis, the priesthood has fallen into error. Since Athenagis cannot answer even one of the many accusations brought against him, he lives in persecution. This is also to escape from the true judgment. If Frumentius understands the error and is willing to return and repent, send him quickly back to Alexandria, and let him come with the correct faith. But beware, lest he, if he doubts, takes you and your people and is lost. . . »
 
 ### CHE-001-S022-P007
 
@@ -1982,9 +1982,9 @@ The contents of Constantine's letter to Abraham Atsbah are also exaggerated, exa
 
 **English**
 
-And that is to say.
+It is said.
 
-## የአርዮሳዊ ተዎፍሎስ ተልዕኮ ወደ ኢትዮጵያ / The Mission of the Aristotle to Ethiopia {#CHE-001-S023}
+## የአርዮሳዊ ተዎፍሎስ ተልዕኮ ወደ ኢትዮጵያ / The mission of the Arian Theophilos to Ethiopia {#CHE-001-S023}
 
 ### CHE-001-S023-P001
 
@@ -1994,7 +1994,7 @@ And that is to say.
 
 **English**
 
-Theophilus is a priest of Indian descent. He traveled from Constantinople to Persia and southern Arabia.
+Theophilos Maergu Khes Twuldo is an Indian. He set out from Constantinople and traveled to Persia and Southern Arabia.
 
 ### CHE-001-S023-P002
 
@@ -2004,7 +2004,7 @@ Theophilus is a priest of Indian descent. He traveled from Constantinople to Per
 
 **English**
 
-In this way, many people accepted Arius' teachings. He continued his stay in South Arabia and traveled to Ethiopia. His arrival in Ethiopia, while he was working day and night to destroy the Orthodox who had accepted the Council of Nicaea, he accepted Arius' teachings and expelled the 20th Patriarch of Alexandria, St. Athanasius, from his throne.
+In this way, he caused many people to accept the teaching of Arius. After his stay in Southern Arabia, he traveled to Ethiopia. Upon his arrival in Ethiopia, he, in the middle of the night, accepted the Arian teaching and deposed the 20th Patriarch of Alexandria, Saint Athanasius, in order to destroy the Orthodox who had accepted the Council of Nicaea.
 
 ### CHE-001-S023-P003
 
@@ -2014,7 +2014,7 @@ In this way, many people accepted Arius' teachings. He continued his stay in Sou
 
 **English**
 
-There was also an Archbishop of Arizona, named George. We have already seen that Constantine II wrote a letter to the kings of Axum on this subject.
+In his place, there was a bishop named Shomom, who was Arian. We have seen above that Emperor Constantine wrote a letter to the kings of Aksum regarding this.
 
 ### CHE-001-S023-P004
 
@@ -2024,7 +2024,7 @@ There was also an Archbishop of Arizona, named George. We have already seen that
 
 **English**
 
-Theophilus crossed the Red Sea from South Arabia and stayed on the Red Sea coast, but no record of his work was recorded during his stay in Adulis. He entered Axum from Axum in order to prevent Fremantos from being accepted by the Ethiopians. Because his letter to the kings of Axum by attending to Constantinople was ineffective, he was trying to persuade the kings of Axum again and if his intention was accepted, he would remain the Ethiopian bishop in Axum.
+Theophilus crossed the Red Sea from Southern Arabia and stayed on the coast of the Red Sea. However, he was not recorded as having stayed in Adulis. From Adulis, his purpose was to enter Aksum to ensure that Phrenatus would not find acceptance among the Ethiopians. This was because the letter Constantine wrote to the kings of Aksum while monitoring the situation had remained ineffective. Therefore, he intended to persuade the kings of Aksum again and, if Theophilus achieved his goal of gaining acceptance, he would remain there as the Bishop of Ethiopia in Aksum.
 
 ### CHE-001-S023-P005
 
@@ -2034,7 +2034,7 @@ Theophilus crossed the Red Sea from South Arabia and stayed on the Red Sea coast
 
 **English**
 
-However, it is not known when Theophilus came to Ethiopia, but it is believed that it was between 337 and 361 years when the Arians ruled the Byzantine Empire.
+However, Theophilus found no success in Aksum. In addition to his failure, he was ordered to leave the country due to the scandal in which he arrived. Although the time Theophilus came to Ethiopia is not known, it is believed to be between the years 337-361, when the Arians were leading the Byzantine politics with supremacy.
 
 ### CHE-001-S023-P006
 
@@ -2044,9 +2044,9 @@ However, it is not known when Theophilus came to Ethiopia, but it is believed th
 
 **English**
 
-The Byzantine leaders and their followers were tested by the Ethiopian Church in many ways, but the Arians did not succeed because Ethiopia had nothing to do with them politically, economically, or socially. The Byzantine leaders and their followers did not succeed because Ethiopia had nothing to do with them politically, economically, or socially.
+The Byzantine leaders and their followers tried to corrupt the Ethiopian Church in many ways; however, because Ethiopia had no connection with them in politics, economy, or social life, the plans of the Arians did not succeed. The message of Emperor Constantine, which supported Arian thought and insulted the Orthodox faith, did not find acceptance with Abraha Atsbeha. Abraha and Atsbeha expressed their support for Athanasius and the Council of Nicaea.
 
-## የዘጠኙ ቅዱሳን ወደ ኢትዮጵያ መምጣት / The Coming of the Nine Saints to Ethiopia {#CHE-001-S024}
+## የዘጠኙ ቅዱሳን ወደ ኢትዮጵያ መምጣት / The arrival of the Nine Saints to Ethiopia {#CHE-001-S024}
 
 ### CHE-001-S024-P001
 
@@ -2056,7 +2056,7 @@ The Byzantine leaders and their followers were tested by the Ethiopian Church in
 
 **English**
 
-The Holy Spirit is the Holy Spirit, and the Holy Spirit is the Holy Spirit.
+The word of the Saints is Geʽez, and it is a great number.
 
 ### CHE-001-S024-P002
 
@@ -2066,7 +2066,7 @@ The Holy Spirit is the Holy Spirit, and the Holy Spirit is the Holy Spirit.
 
 **English**
 
-This means praiseworthy, blessed, different. Many Christian teachers came to Ethiopia to seek refuge when they endured the suffering of the other world. A great example is the nine monks who endured the torments of the Byzantine kings from Syria and Asia Minor in 480/491 A.D. in the kingdom of Alameda, who were condemned by the Council of Ephesus and later accepted by the Congregation of Calcedon.
+This means they are praised, blessed, and distinguished. Many Christians and teachers who endured persecution in another world came to Ethiopia to seek refuge. The Nine Monks, who are mentioned as a great example, were exiled from Syria and Asia Minor in 480/491 AD. They were those who, after being rejected at the Council of Ephesus and later at the Council of Chalcedon—because they refused to accept the doctrine of the two natures whose nature was hidden in the scriptures by the Chalcedonians—endured persecution by the Byzantine emperors. They came to Ethiopia to the Kingdom of Al-Amida.
 
 ### CHE-001-S024-P003
 
@@ -2076,7 +2076,7 @@ This means praiseworthy, blessed, different. Many Christian teachers came to Eth
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+Abba Girgis Zegatcha describes the arrival of the Nine Saints. When the Saints came to Ethiopia, kings, nobles, and priests followed them, bringing books. Because the manner of their arrival was terrifying, the Ethiopians were startled, thinking they had come to invade the country. However, because they were able to see various miracles in their hands, they understood that they had come for a spiritual mission. The Nine Saints revealed the miracles they showed to them, describing:
 
 ### CHE-001-S024-P004
 
@@ -2086,7 +2086,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-And there are those who are in the midst of a fire.
+How they lived in the desert with fire and water.
 
 ### CHE-001-S024-P005
 
@@ -2096,7 +2096,7 @@ And there are those who are in the midst of a fire.
 
 **English**
 
-In the morning, they went to the Harvest
+How they sowed in the morning and reached the bread for the Holy Qidase.
 
 ### CHE-001-S024-P006
 
@@ -2106,7 +2106,7 @@ In the morning, they went to the Harvest
 
 **English**
 
-And they were carried away by the water.
+And how they carried water from the river,
 
 ### CHE-001-S024-P007
 
@@ -2116,9 +2116,9 @@ And they were carried away by the water.
 
 **English**
 
-The Ethiopian Embassy in Addis Ababa, Ethiopia, has announced that it has 10 fingers and toes, which are as bright as the sun.
+Abba Girgis Zegatcha described how their ten fingers and toes shone like the sun. Because they were received with love, they treated Ethiopia as a country they were born in, traveled the land, and spread Christianity. They established monasteries that are still called by their names to this day.
 
-## የዘጠኙ ቅዱሳን ስማቸው ገዳማቸውና የዕረፍታቸው ቀናት / The names of the Nine Saints, their monastery, and their days of rest {#CHE-001-S025}
+## የዘጠኙ ቅዱሳን ስማቸው ገዳማቸውና የዕረፍታቸው ቀናት / The names of the Nine Saints, their monasteries, and their feast days {#CHE-001-S025}
 
 ### CHE-001-S025-P001
 
@@ -2128,9 +2128,9 @@ The Ethiopian Embassy in Addis Ababa, Ethiopia, has announced that it has 10 fin
 
 **English**
 
-Names of the countries of origin Monastery Abba Aleph Abba the Elder Caesarea Rome of Sorrow Abba Afje Asia Minor Abba Lycanos Abba Gerima Abba Yamata Constantinople Rome Constantinople Italy Rome Constantinople Abba Pentecostal Abba Tsama Antioch Syria Abba Guba Cilicia (Greece) Debre Damo John / Debre Konazel Dedra Geralta near Aksum Date of Celebration of the Feast of the Assumption of the Blessed Virgin Mary 11 October 14 / Ascension May 12 November 21 June 17 October 23 October 6 January 16 May 29
+Name, Country of Arrival, Monastery Established: Abba Alef, Abba Aregawee, Qisariya, Rome, Behazen, Ahse, Abba Afse, Asia Minor, Abba Liqanos, Abba Gerima, Abba Yimata, Constantinople, Rome, Constantinople, Italy, Rome, Constantinople, Abba Hantelewon, Abba Tsehma, Antioch, Syria, Abba Guba, Kilqiya, Greece, Debre Damo Yoh, Debre Qonatsel, Medera Geralta, near Aksum, Zedenya, Geralta. Feast days: Megabit 11, Tikimt 14, Hadar 21, Sene 17, Tikimt 23, Tikimt 6, Tir 16, Megabit 29.
 
-## የተሰዓቱ ቅዱሳን ሐዋርያዊ ተግባር / The Apostolic Acts of the Holy Spirit {#CHE-001-S026}
+## የተሰዓቱ ቅዱሳን ሐዋርያዊ ተግባር / The Apostolic deeds of the Nine Saints {#CHE-001-S026}
 
 ### CHE-001-S026-P001
 
@@ -2140,7 +2140,7 @@ Names of the countries of origin Monastery Abba Aleph Abba the Elder Caesarea Ro
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+After the Nine Saints arrived from their countries, they learned the language that would suffice for preaching the Gospel and serve as a door for their work in Aksum, which was the capital of Ethiopia at that time, and they changed the lives of the Christian people. Abba Girgis Zegasham describes it by saying: the earth was sanctified by the movement of their feet; as they moved from place to place, various locations were renewed. The fragrance of their teaching spread throughout the area.
 
 ### CHE-001-S026-P002
 
@@ -2150,7 +2150,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-"The earth is sanctified, and the earth is sanctified, and the earth is restored
+«Teqedeset mird b-kidete igerihomu w-tehedasa ajzadatiha b-nesaswomu w-tekwo wiste kulu azmaha maza qalomu»
 
 ### CHE-001-S026-P003
 
@@ -2160,7 +2160,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-He said: "A lot of good deeds can be attributed to the good deeds of the saints.
+They have spoken thus. The good deeds of the Nine Saints can be listed in great abundance.
 
 ### CHE-001-S026-P004
 
@@ -2170,7 +2170,7 @@ He said: "A lot of good deeds can be attributed to the good deeds of the saints.
 
 **English**
 
-But since it is enough just to remember the main ones, we will consider the following points:
+However, since it is sufficient to remember only the main points, we shall look at the following points.
 
 ### CHE-001-S026-P005
 
@@ -2180,7 +2180,7 @@ But since it is enough just to remember the main ones, we will consider the foll
 
 **English**
 
-Many Ethiopians have been brought back from darkness to light
+They returned many Ethiopians from darkness to light.
 
 ### CHE-001-S026-P006
 
@@ -2190,7 +2190,7 @@ Many Ethiopians have been brought back from darkness to light
 
 **English**
 
-The Scriptures and the Scriptures have been translated from the Persian and Persian languages to the Persian language
+They translated the Old Testament and the Gospels, the books of the scholars, and the books of the monks from the Syriac language and the Coptic language into Geʽez.
 
 ### CHE-001-S026-P007
 
@@ -2200,7 +2200,7 @@ The Scriptures and the Scriptures have been translated from the Persian and Pers
 
 **English**
 
-There are two ways in which the Ethiopian monastic order is practiced: the order of Father Mekars and the order of Father Entons.
+They caused the monastic system to be practiced in Ethiopia in two ways; these are the systems of Abba Maqars and Abba Antonios.
 
 ### CHE-001-S026-P008
 
@@ -2210,9 +2210,9 @@ There are two ways in which the Ethiopian monastic order is practiced: the order
 
 **English**
 
-The Nine Saints finally made their apostolic struggle to live in seclusion in the monastery that they had sacrificed for themselves. All of these saints were monks. They also spread monasticism in Ethiopia.
+The Nine Saints finally performed their apostolic martyrdom by living in virginity within the monasteries they founded. These saints were all monks. They also spread the monastic system in Ethiopia.
 
-## የምንኩስና ሕይወት / Monastic life {#CHE-001-S027}
+## የምንኩስና ሕይወት / The Monastic Life {#CHE-001-S027}
 
 ### CHE-001-S027-P001
 
@@ -2222,7 +2222,7 @@ The Nine Saints finally made their apostolic struggle to live in seclusion in th
 
 **English**
 
-A monk is a monk,
+A monk means a monastic, a hermit, a person who is separated from the world, from relatives, and from the people, who has made a covenant with God, lives alone, is an ascetic, a virgin, and a spiritual person. Monastic life means leaving behind family, relatives, wealth, property, and anything else in this world to live confined in a monastery to serve God at all times and in life. Monks who live together in a monastery with the same purpose and life are called a monastic community.
 
 ### CHE-001-S027-P002
 
@@ -2232,7 +2232,7 @@ A monk is a monk,
 
 **English**
 
-Enoch 9:16-23 And Enoch, the seventh generation of the living nation, after he had children in this world, began to live in seclusion, because this way of life was not satisfactory to his spiritual needs, and then God hid him. Genesis 5:24
+In the time of the Old Covenant, those who began to live in virginity /purity/ were among the children of Adam, specifically the children of Seth. Genesis 9:16-23. Also, among those who live in the Garden of Eden, Enoch, who was the seventh generation from Adam, after he bore children in this world, did not find this lifestyle suitable for his spiritual desire and began a life of virginity. Then God took him. Genesis 5:24.
 
 ### CHE-001-S027-P003
 
@@ -2242,7 +2242,7 @@ Enoch 9:16-23 And Enoch, the seventh generation of the living nation, after he h
 
 **English**
 
-The prophet Elijah and the priest Melchizedek, the model of Christ, were the fathers who lived in chastity and holiness.
+Similarly, the Prophet Elias and Melchizedek, who was a type of Christ, are fathers who lived in purity and holiness.
 
 ### CHE-001-S027-P004
 
@@ -2252,7 +2252,7 @@ The prophet Elijah and the priest Melchizedek, the model of Christ, were the fat
 
 **English**
 
-It is also said that in the Old Testament, the Rahma, who lived in India, were known for their belief in the vanity of the world and abandoning the world, and that they belonged to the tribe of Israel who lived 170 years before Christ. At the end of the Old Testament and the beginning of the New Testament, St. John the Baptist and the prophet Hannah of the Virgin Mary passed away as a monk.
+Additionally, in the time of the Old Covenant, it is told that there were Rahmas who lived in India, known for their asceticism and leaving the world, and they were from the people of Israel 170 years before the birth of Christ. At the end of the Old Covenant and at the beginning of the New Covenant, the baptized Saint John and the prophetess Hannah from the lineage of Seth also lived in monastic life.
 
 ### CHE-001-S027-P005
 
@@ -2262,9 +2262,9 @@ It is also said that in the Old Testament, the Rahma, who lived in India, were k
 
 **English**
 
-In the New Testament, it is important to note that our Lord and Savior, Jesus Christ, the author of the Old and New Hadiths, performed the ritual of monasticism. He is also the initiator and leader of monastic life. Matthew 4:1-2 In the history of Christianity, St. Paul began monasticism in the time of the saints in the time of the saints lived between 250 and 314 A.D., but monastic life began in an orderly manner through St. Anthony from 251 to 356 A.D.
+In the New Covenant also, we must observe that our Lord and Savior Jesus Christ, the owner of the Old and the New, fulfilled the system of virginity. He is the founder and leader of the monastic life and virginity. Matthew 4:1-2. In the history of Christianity, Saint Paul, who lived from 250 - 314 AD, began monasticism among the saints in the era of the New Covenant, but the monastic life system was started in the form of a monastic system through Saint Antonios. Antonios lived from 251 - 356 AD.
 
-## ምንኩስና በኢትዮጵያ / Monasticism and Monasticism in Ethiopia {#CHE-001-S028}
+## ምንኩስና በኢትዮጵያ / Monasticism in Ethiopia {#CHE-001-S028}
 
 ### CHE-001-S028-P001
 
@@ -2274,7 +2274,7 @@ In the New Testament, it is important to note that our Lord and Savior, Jesus Ch
 
 **English**
 
-The Beginning and Growth of Monastic Life in Our Country
+In our country, Ethiopia, the beginning and growth of monastic /monastic life/
 
 ### CHE-001-S028-P002
 
@@ -2284,7 +2284,7 @@ The Beginning and Growth of Monastic Life in Our Country
 
 **English**
 
-Prior to the introduction of monasticism and monasticism in Ethiopia (before the arrival of the saints of the Hour), Ethiopians lived in the desert at the age of 30.
+Before the monastic system entered Ethiopia / before the Nine Saints arrived / the Ethiopians lived as fathers in the wilderness of Pynane. Following Abba Amniyos, in the 4th century, a father named Abba Yehani, who was born in the Kebele of Hagere Selam in the Awraja of Tigray Tenben, separated from Abba Amniyos and went into the wilderness. It is narrated that after living in asceticism, he was taken to Behere Hiwan at the age of 30 and was martyred.
 
 ### CHE-001-S028-P003
 
@@ -2294,7 +2294,7 @@ Prior to the introduction of monasticism and monasticism in Ethiopia (before the
 
 **English**
 
-In our country, the practice of monasticism and monasticism has spread in two ways.
+In our country, Ethiopia, the monastic system spread through two ways.
 
 ### CHE-001-S028-P004
 
@@ -2304,7 +2304,7 @@ In our country, the practice of monasticism and monasticism has spread in two wa
 
 **English**
 
-1. Saints who entered the country from abroad
+1. Saints who entered from outside to the country
 
 ### CHE-001-S028-P005
 
@@ -2314,9 +2314,9 @@ In our country, the practice of monasticism and monasticism has spread in two wa
 
 **English**
 
-2. The Saints of the Ethiopians
+2. By Ethiopian Saints
 
-## ምንኩስናን በኢትዮጵያ የመሠረቱና ያስፋፉ፡- / Establishing and Expanding Monasticism in Ethiopia: {#CHE-001-S029}
+## ምንኩስናን በኢትዮጵያ የመሠረቱና ያስፋፉ፡- / Those who founded and spread monasticism in Ethiopia:— {#CHE-001-S029}
 
 ### CHE-001-S029-P001
 
@@ -2326,7 +2326,7 @@ In our country, the practice of monasticism and monasticism has spread in two wa
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him)
+Monks who came from outside: Abba Selama Kesate Berhan / the Nine Saints / Abba Libanos in 486 A.D. / Abba Hara in the 9th century / Abba Yohannes / Zegund Tehaymanot A.D. / Abba Noba / Syriac Abune Gebre Menfes Kidus and other saints. Monks who arose from within the country: Abba Yesus Moa Tsadqu / Abune Teklehaymanot / Abba Beteselote Mikael / the Great Liqna Tsadq / Abagiyorgis Zegascha in the 10th century / Abune Habtemaryam / Abune Aron Zemeket Gebtsawi / and Kidist Kristos Semra Tsadqua Fiqret Kristos and other saints.
 
 ### CHE-001-S029-P002
 
@@ -2336,7 +2336,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-In general, Ethiopians have struggled hard in the monastic life at home and abroad. Among the monks who lived in the desert of Egypt are Moses, Ethiopian Moses, and Moses the Ethiopian. Monastic life through these and other saints was also a golden age for the Ethiopian Orthodox Tewahedo Church, where even the children of kings and princes were converted to monastic life.
+In general, Ethiopians have engaged in a high level of ascetic struggle in monastic life both in their country and outside. Among the monks who were in the desert of Egypt, Muse Ethiopian Muse Tselim is notable. Through the mediation of the above-mentioned saints and others, the monastic life from the 4th century was a "golden age" for the Ethiopian Orthodox Tewahedo Church; even the children of kings and monks were found living as monks in the monastery.
 
 ### CHE-001-S029-P003
 
@@ -2346,7 +2346,7 @@ In general, Ethiopians have struggled hard in the monastic life at home and abro
 
 **English**
 
-It is the prayer of the saints that has preserved the country and its religion from invading and foreign cultures through the saints and monasteries that Ethiopia founded. Ethiopia has become a museum for the world thanks to the struggles and good deeds of the saints.
+It is the prayer of the saints that preserved the country and its faith from invaders and foreign cultures in the monasteries they founded and in the saints they produced. Ethiopia has become a memorial to the world through the asceticism and good works of its saints.
 
 ### CHE-001-S029-P004
 
@@ -2356,9 +2356,9 @@ It is the prayer of the saints that has preserved the country and its religion f
 
 **English**
 
-However, now that many monks have entered the city and started a mixed life with the people, it is likely that if this situation continues, it will probably concern that the struggles and fame of the previous abbots and monks, as well as the respect and nostalgia of the people for monastic life and monasticism, will not be lost and will not reach a dangerous level that will not be restored.
+However, currently, as many monks are entering cities and beginning a life mixed with the people, if this situation continues, it is worrying that it might reach a dangerous stage where it becomes difficult to return, and where the asceticism and fame of the previous fathers and the respect and longing of the people for monastic life and monastery life might be lost.
 
-# ምዕራፍ ሁለት ከአፄ ካሌብ እስከ ድልነዓድ / Chapter 2: From Emperor Caleb to Dynead {#CHE-002}
+# ምዕራፍ ሁለት ከአፄ ካሌብ እስከ ድልነዓድ / Chapter Two: From Emperor Kaleb to Delnead {#CHE-002}
 
 ### CHE-002-S000-P001
 
@@ -2368,7 +2368,7 @@ However, now that many monks have entered the city and started a mixed life with
 
 **English**
 
-After the arrival of the Apostles, Fremantle and the Nine Saints, the preaching of Christianity was preached in all the provinces of Ethiopia. This Christian teaching was spread throughout the South Arab Empire of Yemen. As a result of the spread of Christianity, Ethiopia and Yemen developed a strong relationship.
+After coming from the Apostles, from Frumentus, and from the Nine Saints, the teachings of Christianity reached all the Awrajas of Ethiopia. This teaching of Christianity reached throughout the southern Arabian territory of Yemen. Due to this spread of Christianity, Ethiopia and Arabia /Yemen/ formed a strengthened connection.
 
 ### CHE-002-S000-P002
 
@@ -2378,7 +2378,7 @@ After the arrival of the Apostles, Fremantle and the Nine Saints, the preaching 
 
 **English**
 
-However, the Jews who lived in exile had a strong hatred for the Christians in the Arab countries. These Jews were scattered all over the world, from Babylon to the Roman Empire in 70 A.D., and they were also concentrated in large numbers in southern Arabia.
+However, the Jews who lived scattered lived in great hatred toward Christians in the Arabian country. Just as these Jews had been scattered throughout the world by the persecutions carried out periodically from Palestine Babylon until 70 A.D. Roman Titus, they were found gathered in large numbers in southern Arabia as well.
 
 ### CHE-002-S000-P003
 
@@ -2388,7 +2388,7 @@ However, the Jews who lived in exile had a strong hatred for the Christians in t
 
 **English**
 
-In addition, Jews who had migrated from Palestine in ancient times and lived in Asia Minor, Syria and other Byzantine provinces came to South Arabia and began to gather with their first Jewish people in South Arabia. Their numbers grew exponentially, and the Jews from South Arabia became more and more united through marriage and other social life. There were also a great number of pagans in South Arabia who joined the Jewish faith.
+Additionally, Jews who lived in ancient times in Palestine, in the Levant, in Syria, and in other Byzantine territories began to gather in southern Arabia with their initial Jewish kin. Their numbers increased greatly; it was said that natives of southern Arabia also joined the Jews through marriage and other communal life. Many who were idol worshippers in southern Arabia joined these Jewish faiths.
 
 ### CHE-002-S000-P004
 
@@ -2398,7 +2398,7 @@ In addition, Jews who had migrated from Palestine in ancient times and lived in 
 
 **English**
 
-The descendants of the Jews living in a part of Syria known as Nabbin, arrived in South Arabia late in groups from a tribe known as Seir, a tribe known for its slavery. These tribes began to engage in internal political activities in the midst of the dissolution of peace since their arrival in South Arabia. Their political activities were also a tribute to Christianity and Judaism.
+The followers of the Jewish faith living in the known part called Nitsibin in Syria, whose lineage is called Seir and who were known to be in slavery, entered southern Arabia in groups. From the moment these tribes entered southern Arabia, peace disappeared, and they began to conduct political activities within. Their political activities were to disrupt Christianity and promote the Jewish faith.
 
 ### CHE-002-S000-P005
 
@@ -2408,7 +2408,7 @@ The descendants of the Jews living in a part of Syria known as Nabbin, arrived i
 
 **English**
 
-The people of Seir hated the Christians more than anyone else. They established a king in Yemen named Phinehas and began to strengthen their culture and religion. Soon they began to inflict suffering and suffering on the Christians of Yemen.
+These Seir groups who came from Nitsibin hated Christians more than anyone else. These groups began to live in Yemen under a king called Finhas, strengthening their own culture and faith. Before long, they began to inflict suffering and torment on Christians in Yemen by increasing their hatred.
 
 ### CHE-002-S000-P006
 
@@ -2418,9 +2418,9 @@ The people of Seir hated the Christians more than anyone else. They established 
 
 **English**
 
-The persecuted Christians also informed the religious parties in Constantinople, Alexandria and Axum in Ethiopia, where Emperor Caleb was the king of Ethiopia at the time.
+The persecuted Christians informed the religious groups located in Constantinople, Alexandria, and Aksum, Ethiopia; at this time, Emperor Kaleb was the King of Ethiopia.
 
-## አፄ ካሌብ / Emperor Caleb {#CHE-002-S001}
+## አፄ ካሌብ / Emperor Kaleb {#CHE-002-S001}
 
 ### CHE-002-S001-P001
 
@@ -2430,9 +2430,9 @@ The persecuted Christians also informed the religious parties in Constantinople,
 
 **English**
 
-Emperor Caleb was given many overlapping names, including David II and Constantine II. Emperor Caleb was born in 467 AD.
+Many overlapping names were given to Emperor Kaleb. These include Dagmawi Dawit, Ile'atsibha, and Dagmawi Qosnt'intinos. Historical records state that Emperor Kaleb was born in 467 AD.
 
-## የአይሁዳውያኑ ግፍ በክርስቲያኖቹ ላይ /የየመን ክርስቲያኖች እልቂት/ / The Persecution of Christians by the Jews {#CHE-002-S002}
+## የአይሁዳውያኑ ግፍ በክርስቲያኖቹ ላይ /የየመን ክርስቲያኖች እልቂት/ / The Persecution of the Jews against the Christians / The Persecution of the Yemen Christians/ {#CHE-002-S002}
 
 ### CHE-002-S002-P001
 
@@ -2442,7 +2442,7 @@ Emperor Caleb was given many overlapping names, including David II and Constanti
 
 **English**
 
-The symbol of Judaism is known as Phinehas in Syrian historical sources, Masruk in Jewish historical books, Zenubas (Dunubas) and Joseph as Phinehas in Ethiopian parchment books. The act of killing Christians, looting their property, burning their homes, chasing and killing fugitives, looting and destroying their property. The tactic used to commit this act of violence is to close their business doors and prevent anyone from entering and outside the country.
+The distinguishing mark of Judaism, Finhas, is known as Zenubas / Dunubas / and Yosef in Ethiopian Brana books. When the Jews, led by this Jewish king, began their acts of persecution against the Christians living in Yemen, the Christians understood that the situation was extremely grave for their lives and tried to resist, but they gained little benefit. The leader of the country was known as Madikarpa, whom Finhas killed by subtle means. From this time onward, he spread his authority over the Yemenis and found a convenient time to carry out his Aramaic objective against the Christians. His main acts of persecution were: massacring Christians, looting their property, burning their houses, capturing and imprisoning those who fled, and killing them, as well as looting and destroying their property. The method he used to carry out these acts of persecution was to close the trade routes and prevent anyone from entering or leaving the country.
 
 ### CHE-002-S002-P002
 
@@ -2452,7 +2452,7 @@ The symbol of Judaism is known as Phinehas in Syrian historical sources, Masruk 
 
 **English**
 
-Phinehas was the first to conquer Zafar in Yemen and destroyed Christians and temples in the cities of Himyar Hadramut, Marikona and Higere.
+Finhas first destroyed the Christians and churches in the cities of Zafar, Himyar, Hadramaut, Marikona, and Higere in the territories of Yemen.
 
 ### CHE-002-S002-P003
 
@@ -2462,7 +2462,7 @@ Phinehas was the first to conquer Zafar in Yemen and destroyed Christians and te
 
 **English**
 
-Eventually, he went to the Christians who had gathered in Nagran to save their lives from the various provinces, and the Christians there hoped that they would receive foreign help, and then they would survive the massacre of Zenubas. But Phinehas found the Christians hiding in the caves and pits, and led the Christians gathered in Nagran to the public like a slaughtering sheep and holding a sword supper for them. Unlike Phinehas' atrocities, the Nagran massacre took more than 10 months to destroy the people in other cities, but Nagran was able to destroy it in one day and flood it with blood.
+Finally, to save their lives, people from various regions gathered in the land of Nagran and joined the existing Christians there. The Christians there had hope, saying, 'External help will reach us, and until then, we will survive the Zenubas persecution.' However, Finhas, by flushing out the Christians hidden in caves and pits, took the Christian people gathered in Nagran out into the open and slaughtered them with the sword. Of the acts of persecution committed by Finhas, the massacre of Nagran was unique; while he spent more than 10 months punishing those in other cities, he was able to devastate Nagran in a single day and release it in a flood of blood.
 
 ### CHE-002-S002-P004
 
@@ -2472,9 +2472,9 @@ Eventually, he went to the Christians who had gathered in Nagran to save their l
 
 **English**
 
-In this way, Nagra became known to the world for her great massacre.
+Because of this, Nagran became known to the world for the severe persecution it suffered.
 
-## የኣፄ ካሌብ ዘመቻ ወደ የመን / The Battle of Caleb in the Battle of the Bulge {#CHE-002-S003}
+## የኣፄ ካሌብ ዘመቻ ወደ የመን / The Expedition of Emperor Kaleb to Yemen {#CHE-002-S003}
 
 ### CHE-002-S003-P001
 
@@ -2484,7 +2484,7 @@ In this way, Nagra became known to the world for her great massacre.
 
 **English**
 
-Emperor Caleb marched to Yemen at the invitation of the Christians who had tasted the suffering when Emperor Caleb was advancing his campaign of destruction against the Christians in Yemen. But when Phinehas heard of the arrival of Emperor Caleb, he abandoned his atrocities and began to live peacefully. Emperor Caleb thought that Phinehas would be peaceful, so he deployed 500 of the troops he had taken with him to Yemen for the sake of peace for the time being.
+From the beginning, as Finhas was carrying out his campaign of destruction against the Christians in Yemen, Emperor Kaleb, based on the plea for help sent to him by the Christians who were half-persecuted, gathered his army and marched to Yemen. However, when Finhas heard of the arrival of Emperor Kaleb, he stopped his acts of persecution and began to live peacefully. Emperor Kaleb, perceiving Finhas's peaceful demeanor as a sign of weakness, left them for the sake of temporary peace, and the five hundred soldiers who had left returned to their country after staying in Yemen.
 
 ### CHE-002-S003-P002
 
@@ -2494,7 +2494,7 @@ Emperor Caleb marched to Yemen at the invitation of the Christians who had taste
 
 **English**
 
-Determined by this barbaric mission, Phinehas awaited the return of Emperor Caleb and continued his campaign of destruction and destroyed the cities mentioned above, including Nagran. Emperor Caleb also massacred the 500 soldiers deployed by Emperor Caleb. The Christians in Nagran also fought to escape this horrific act of atrocities. Emperor Caleb made a call to the leaders and Christians in Alexandria and Axum, Ethiopia, at the same time, when Emperor Caleb crossed the long ocean, sea and land voyage and arrived in his homeland, he was plowed and returned to Yemen to return to Yemen to King Justin of Constantinople and Archbishop Father Timothy of Alexandria And when they came to the land of Egypt, they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt, and they went to the land of Egypt.
+Finhas, who had risen with a mission for Aramaicism, took advantage of Emperor Kaleb's return and resumed his campaign of destruction, succeeding in destroying the cities they had listed, including Nagran. Emperor Kaleb also slaughtered the five hundred soldiers who had returned. The Christians in Nagran, in order to escape this cruel act of persecution, sent a plea for help to the leaders and Christians in Constantinople, Alexandria, and Aksum, Ethiopia. At this time, Emperor Kaleb, after crossing the long journey of the ocean / sea / and land, reached his country and heard this news. Again, to return to Yemen, they wrote letters to the King of Constantinople and to the Patriarch of Alexandria, Abba Timothewos, requesting support. After using the wisdom revealed by God, they prepared their military equipment, equipped their army, loaded their ships, approached Abba Hantlewos, and pleaded for him to pray for them. They crossed to Yemen through the sea port of Adolis.
 
 ### CHE-002-S003-P003
 
@@ -2504,7 +2504,7 @@ Determined by this barbaric mission, Phinehas awaited the return of Emperor Cale
 
 **English**
 
-When they arrived in Yemen, they destroyed the tyrannical king from his army, repaired the destroyed churches, built new churches, comforted the Christians who survived the sword, and chose a wise man named Abraham to lead the people, and they organized an army with him.
+In Yemen, at that time, the tyrannical king was killed by the army, and they rebuilt the destroyed churches of Christians and built new churches. They gathered the Christians who escaped the sword and chose a wise man named Abraha to lead the people. With him, they organized an army and returned to their country. Records state that this act was carried out during the period of 517-525 AD.
 
 ### CHE-002-S003-P004
 
@@ -2514,7 +2514,7 @@ When they arrived in Yemen, they destroyed the tyrannical king from his army, re
 
 **English**
 
-The Ethiopian Orthodox Tewahedo Church is among the righteous in the Ethiopian Orthodox Tewahedo Church, as he was a righteous king who liberated the Church against the massacre of our Church in Hager Nagran and fulfilled the righteous deeds of the Father in his monastic life.
+After this noble king returned to his country, without staying long, he gave his kingdom to his son, Emperor Ge/Meskel, and sent the crown of the next day to be placed in the Tomb of the Lord at Golgotha, and he entered the monastery of Abba Hantlewos wearing a monk's habit. After staying for 12 years in monastic life, he passed away on the 20th of Ginbot, 537 AD, at the age of 70. Because this Father was a righteous king who resisted and freed the persecution of our church in the land of Nagran and performed the hundredfold justice of the Father in monastic life, his number is among the righteous in the Ethiopian Orthodox Tewahedo Church.
 
 ### CHE-002-S003-P005
 
@@ -2524,9 +2524,9 @@ The Ethiopian Orthodox Tewahedo Church is among the righteous in the Ethiopian O
 
 **English**
 
-Memorial Day is celebrated annually on May 20 and October 24 in the West. Memorial Day of the Martyrs of Nagra is also on November 27.
+His memorial is observed every year on Ginbot 20, and by the Westerners on October 24. The memorial of the Martyrs of Nagran is on Hadar 27.
 
-## ኣፄ ገብረ መስቀል / The Cross of the Cross {#CHE-002-S004}
+## ኣፄ ገብረ መስቀል / Emperor Gebre Meskel {#CHE-002-S004}
 
 ### CHE-002-S004-P001
 
@@ -2536,7 +2536,7 @@ Memorial Day is celebrated annually on May 20 and October 24 in the West. Memori
 
 **English**
 
-Emperor Gebre Cross succeeded his father. During the reign of this king, the Ethiopian Orthodox Tewahedo Church had close ties with Alexandria and Constantinople, and they exchanged letters to fight their religious enemies together. It was during this time that many monasteries were established in Ethiopia and an inheritance was granted for subsistence.
+Emperor Gebre Meskel was the successor of his father. It was during the reign of this king that the Ethiopian Orthodox Tewahedo Church maintained a close connection with Alexandria and Constantinople, and they exchanged letters to jointly resist their religious enemies. It was also during this time that the heritage of Gult was given to be used as a settlement for the establishment of the Ayale monasteries in Ethiopia.
 
 ### CHE-002-S004-P002
 
@@ -2546,9 +2546,9 @@ Emperor Gebre Cross succeeded his father. During the reign of this king, the Eth
 
 **English**
 
-He was the son of Emperor Gebre Cross, one of the monks who lived in Jerusalem at the same time. The church of the Debreamo building was built in the same period. It was also the time of the rise of the great father of meme, Saint Jared.
+Similarly, they made a donation to be able to visit the holy sites in Jerusalem in moderation. At this time, Abba Muse, who was a monk in his youth, was the son of Emperor Gebre Meskel and lived among the monks in Jerusalem. The Debredamo building and church were also built during this time. It was also the time when the great Father of Zema, Saint Yared, arose.
 
-## ቅዱስ ያሬድ / Saint Jared {#CHE-002-S005}
+## ቅዱስ ያሬድ / Saint Yared {#CHE-002-S005}
 
 ### CHE-002-S005-P001
 
@@ -2558,7 +2558,7 @@ He was the son of Emperor Gebre Cross, one of the monks who lived in Jerusalem a
 
 **English**
 
-Jared's father is Obadiah (Isaac) and his mother's name is Christina (Tauklia). His parents' birthplace is in Axum, where the first churches were built in Ethiopia.
+Yared means one who has a beautiful voice in his praise and his psalm, resembling Seraphim. The father of Saint Yared is called Abdu /Ishak/ and his mother is called Kristina /Tawkliya/. The birthplace of his parents is in Aksum, Ethiopia, where the first churches were established.
 
 ### CHE-002-S005-P002
 
@@ -2568,7 +2568,7 @@ Jared's father is Obadiah (Isaac) and his mother's name is Christina (Tauklia). 
 
 **English**
 
-Saint Jared was born on April 5, 505 A.D. His mother Christina entrusted him with teaching and raising his uncle Father Gideon, who was the pastor of the Axum Zion Church, because his biological father died when he was seven years old.
+Saint Yared was born on Meskerem 5, 505 A.M. After he was born, when his foster father died when he was seven years old, his mother Kristina gave him to his uncle, Abba Gedion, who was a deacon of the Zion Church of Aksum, to raise him and teach him. He stayed for 25 years learning from Abba Gedion; however, although he had a desire for education, he was very saddened because his capacity to receive the Word of God was small.
 
 ### CHE-002-S005-P003
 
@@ -2578,7 +2578,7 @@ Saint Jared was born on April 5, 505 A.D. His mother Christina entrusted him wit
 
 **English**
 
-His uncle Father Gideon was also concerned about Saint Jared's weakness in his studies. One day, when he was beaten by telling him to study hard, Saint Jared got upset and decided to go to the monastery and live in Mana. After a long day's journey, he got tired and landed under a tree.
+Abba Gedion was concerned about Saint Yared's weakness in his studies. One day, when he was told to study diligently, Saint Yared became angry and left to go to a monastery, determined to live as a hermit, and continued his path. After a long journey during the day, he became tired and rested under a tree.
 
 ### CHE-002-S005-P004
 
@@ -2588,7 +2588,7 @@ His uncle Father Gideon was also concerned about Saint Jared's weakness in his s
 
 **English**
 
-There he saw a worm climb up from under Sapphire and climb up to the tree and try to eat the fruit of the tree, but six of them failed. In the seventh, he came out of the tree and ate from the fruit. He immediately interrupted the journey he had started, and returned to his uncle and explained to his uncle the patience and strength of the worm, and after explaining to his uncle the patience and strength, his uncle Abba Gideon apologized and continued his teaching. He knew the Scriptures and the Scriptures, their numbers, their readings, and their secrets.
+There, a worm came out from under a rock and climbed onto the tree to try to eat the fruit of the tree; it failed six times, and on the seventh time, it came out of the tree and ate the fruit, and he observed this. He immediately stopped the journey he had started, returned to his uncle, and explained the patience and strength he had learned to his uncle. After Abba Gedion asked for forgiveness, he continued his studies. Since Abba Gedion was also his spiritual father, Saint Yared was very happy upon his return and prayed to his Creator with tears so that he might light the Menelik.
 
 ### CHE-002-S005-P005
 
@@ -2598,7 +2598,7 @@ There he saw a worm climb up from under Sapphire and climb up to the tree and tr
 
 **English**
 
-And then, when he was done, he was struck by lightning and then struck by lightning.
+After that, he was baptized and received the tonsure.
 
 ### CHE-002-S005-P006
 
@@ -2608,7 +2608,7 @@ And then, when he was done, he was struck by lightning and then struck by lightn
 
 **English**
 
-The beginning of the song is "Hallelujah, Hallelujah, Hallelujah, Law
+Since it was God's will to praise Him with melody, Saint Yared, while being spiritually transported to the heavenly Jerusalem, saw the forty priests of heaven singing the Melket and returned to Aksum. In Aksum, he taught the psalmists. The beginning of the melody is: «Halleluia le'Ab Halleluia le'Wold Halleluia wele'Menfes Kudus Qedamiha le'Tsyon Semaye Sarere weledagim Arayo le'Muse zekeme yegber gibra le'Debtera». Its translation is: Praise belongs to the Father, the Son, and the Holy Spirit, who existed before the world was created and who will live forever after the world passes.
 
 ### CHE-002-S005-P007
 
@@ -2618,7 +2618,7 @@ The beginning of the song is "Hallelujah, Hallelujah, Hallelujah, Law
 
 **English**
 
-The Creator God of Zion first created the heavens, and secondly, He showed Moses how to make the Torah.
+The Creator of Zion, God, first created the heavens. Second, He showed Moses how He could create the scroll of the Torah. He named this first Melket 'Aryam'.
 
 ### CHE-002-S005-P008
 
@@ -2628,7 +2628,7 @@ The Creator God of Zion first created the heavens, and secondly, He showed Moses
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+When the melody of Saint Yared was heard by the King Emperor Gebre Meskel, the nobles, the officials, the scholars, the wise men, and the general public, they were not moved from their places. After a while, while he was spreading his composition and teaching, he was traveling while singing in the land called Wegera. Because the oxen, which were being mowed, were listening to Yared's psalm and were not moving, the farmer said, 'You have hindered my work,' and it is told that he struck Saint Yared with a whip. The place where he was struck is called 'Werqe Demo' to this day. It means the place where the golden blood of Saint Yared flowed.
 
 ### CHE-002-S005-P009
 
@@ -2638,7 +2638,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+Since there was no established system of poetry and melody before him in the Ethiopian Church, Saint Yared prepared a system of melody by extracting from the Old and New Testament and the books of the scholars. He divided the types of melody into three parts, naming them Ge'ez, Ezil, and Araray. The time he prepared the melody was within 20 years between 540-560 A.M., and during these times, he wrote five liturgical psalm compositions.
 
 ### CHE-002-S005-P010
 
@@ -2648,7 +2648,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-They are a chapter of the Gospel and the Gospel of Jesus Christ. The history of St. Jared and his works are not mentioned in this brief note, but in short, he is a father who laid the foundations of the fundamental religious heritage of the Church, such as the Divinity, the Cross, the Crucifixion, the instruments of the Church, poetry, and the centuries.
+These are Dugua, Tsome Dugua, Zimare, Mewasit, and Mi'raf. Although it is not possible to place the history of Saint Yared and the works he produced in this short note, in brief, he is a father who laid the foundation and passed the milestones of basic religious pillars such as those regarding the Divine, our Mother, the Cross, the Melket, weapons, poetry, and the divisions of time, among others, through his contributions.
 
 ### CHE-002-S005-P011
 
@@ -2658,9 +2658,9 @@ They are a chapter of the Gospel and the Gospel of Jesus Christ. The history of 
 
 **English**
 
-After the death of Emperor Gebre Cross, Yemen, which had been in Ethiopian control since Emperor Caleb, was born in Persia, and the churches in Yemen were destroyed. Christians were greatly abolished, and then in 570 AD, with the rise of Muhammad, Yemen was flooded with Islam.
+After the death of Emperor Gebre Meskel, Yemen, which was in the hands of Ethiopia starting from Emperor Kaleb, was born in Persia. The churches in Yemen were destroyed. Christians were greatly persecuted, and later, in 570 A.D., Muhammad took over Yemen and spread the religion of Islam.
 
-## የመሐመድ መነሳት / The Rise of Muhammad {#CHE-002-S006}
+## የመሐመድ መነሳት / The rise of Muhammad {#CHE-002-S006}
 
 ### CHE-002-S006-P001
 
@@ -2670,7 +2670,7 @@ After the death of Emperor Gebre Cross, Yemen, which had been in Ethiopian contr
 
 **English**
 
-Muhammad Muhammad Ahmed or Muhammad was born in 570 AD in Mecca in 562 AD in Ethiopian calendar. His father's name was Abdallah and his mother's name was Aminah. Muhammad lived with his mother until he was 6 years old when his father died in infancy. After 6 years of age, his uncle Abutalib took him and made him a sheep shepherd.
+Muhammad: Mohammed: Ahmed: or Mahamet/ was born in Mecca in 570 A.D., which is 562 in the Ethiopian calendar. His father is called Abdulla and his mother Aminah. Because his father died when Muhammad was an infant, he lived with his mother until he was 6 years old. After his mother also died, his uncle Abu Talib took him and made him a shepherd of goats.
 
 ### CHE-002-S006-P002
 
@@ -2680,7 +2680,7 @@ Muhammad Muhammad Ahmed or Muhammad was born in 570 AD in Mecca in 562 AD in Eth
 
 **English**
 
-The angel said to them, "Do not seek your own salvation, for the people are hurt by gossip because of you." The next day, after he had consecrated him, he showed them miracles.
+He began. The angels said to him, 'Do not desire your own salvation, for the people have been harmed by slander because of you; declare yourself.' The next day, after they were sanctified and separated, they showed him wonderful miracles.
 
 ### CHE-002-S006-P003
 
@@ -2690,9 +2690,9 @@ The angel said to them, "Do not seek your own salvation, for the people are hurt
 
 **English**
 
-And when the people saw him, they were amazed and said, "Forgive us, for
+The people were amazed by the miracles and fell from their feet saying, 'Save us, forgive us.' They were healed saying, 'May this judge you, purify you, and let you be released, O Lord.' The miracles began at this time.
 
-## ቅዱስ ዴሜጥሮስ ለቤተ ክርስቲያን ያበረከተው አስተዋጽኦ / St. Demetrius' Contribution to the Church {#CHE-002-S007}
+## ቅዱስ ዴሜጥሮስ ለቤተ ክርስቲያን ያበረከተው አስተዋጽኦ / The Contribution of Saint Demetrios to the Church {#CHE-002-S007}
 
 ### CHE-002-S007-P001
 
@@ -2702,7 +2702,7 @@ And when the people saw him, they were amazed and said, "Forgive us, for
 
 **English**
 
-1. He is the one who created the formula of the Church's tradition of traditions and festivals, which will be guided by the New Testament. This tradition will help us to know the past years, the present, and the festivals and festivals that will come in the future.
+1. It was he who compiled the Bahre Hasab (Chronological Calendar) of fasts and feasts that the Church follows in the modern era. This Bahre Hasab helps to know the fasts and feasts of past years, current years, and those that will come in the future.
 
 ### CHE-002-S007-P002
 
@@ -2712,9 +2712,9 @@ And when the people saw him, they were amazed and said, "Forgive us, for
 
 **English**
 
-2. He also wrote many essays and books in his time. When he was old, he used to carry him to church and teach them until the sun rises. But he died on October 13 at the age of 105, at the age of 105.
+2. Additionally, he wrote many treatises and books in his time. Even in his old age, he would be carried on a litter to the Church and would teach them until sunset. However, since flesh must eventually die regardless of how much it is justified or sanctified, he rested on October 13, in the year 105 of his birth.
 
-## ባሕረ ሓሳብ ምንድን ነው? ስሌቱስ እንዴት ነው? / What is the sea? How is the calculus? {#CHE-002-S008}
+## ባሕረ ሓሳብ ምንድን ነው? ስሌቱስ እንዴት ነው? / What is Bahre Hasab? How is the calculation? {#CHE-002-S008}
 
 ### CHE-002-S008-P001
 
@@ -2724,7 +2724,7 @@ And when the people saw him, they were amazed and said, "Forgive us, for
 
 **English**
 
-The sea is a word for the sea, and it is called the time of the sea in Arabic, and it is called the time of the sea.
+Bahre Hasab is a Geʽez term which is called Abujad in Arabic and Zemen Akotater (Era Calculation) in Amharic. In another expression, it means a year without a number. Not a single Bahre Hasab is left.
 
 ### CHE-002-S008-P002
 
@@ -2734,9 +2734,9 @@ The sea is a word for the sea, and it is called the time of the sea in Arabic, a
 
 **English**
 
-What is the meaning of the sea? If the sea is not flowing from the source, it will not cease to flow, for it will continue to pass through man until the coming of Christ.
+Why is there a year Bahre? If the sea flows from its source without stopping, the year also lives, flowing and passing people until the coming of Christ stops it.
 
-## ቅዱስ ዲሜጥሮስ ባህረ ሐሳብን ለምን ደረሰ? / Why did Saint Demetrius reach the sea? {#CHE-002-S009}
+## ቅዱስ ዲሜጥሮስ ባህረ ሐሳብን ለምን ደረሰ? / Why did Saint Demetrios compile the Bahre Hasab? {#CHE-002-S009}
 
 ### CHE-002-S009-P001
 
@@ -2746,7 +2746,7 @@ What is the meaning of the sea? If the sea is not flowing from the source, it wi
 
 **English**
 
-1. That the wish may be fulfilled
+1. So that the Bahre Hasab would be fulfilled.
 
 ### CHE-002-S009-P002
 
@@ -2756,9 +2756,9 @@ What is the meaning of the sea? If the sea is not flowing from the source, it wi
 
 **English**
 
-2. To bring the festivals and festivals closer together
+2. To harmonize the feasts and fasts that were scattered.
 
-## ባሕረ ሓሳብ ትምህርት መማር ጥቅም፦ / The Benefits of Learning: {#CHE-002-S010}
+## ባሕረ ሓሳብ ትምህርት መማር ጥቅም፦ / The benefit of learning Bahre Hasab: {#CHE-002-S010}
 
 ### CHE-002-S010-P001
 
@@ -2768,7 +2768,7 @@ What is the meaning of the sea? If the sea is not flowing from the source, it wi
 
 **English**
 
-1. To know the basic doctrine of the Church
+1. To know the fundamental teachings of the Church.
 
 ### CHE-002-S010-P002
 
@@ -2778,9 +2778,9 @@ What is the meaning of the sea? If the sea is not flowing from the source, it wi
 
 **English**
 
-2. If a person is exiled from the country and goes to the nations, he will not give up fasting, and he will not cancel the holidays, and it is beneficial to learn.
+2. If one leaves the country, is educated, and goes to a foreign land, if they have learned the Bahre Hasab, they will not neglect the fasts and will not miss the feasts; thus, there is a benefit to learning it.
 
-## በሐረ ሓሳብ ትምህርቱ ወይም ስሌቱ / In the meantime, however, the Scriptures or the Scriptures have been interpreted in the Scriptures. {#CHE-002-S011}
+## በሐረ ሓሳብ ትምህርቱ ወይም ስሌቱ / In the Bahre Hasab teaching or its calculation: {#CHE-002-S011}
 
 ### CHE-002-S011-P001
 
@@ -2790,7 +2790,7 @@ What is the meaning of the sea? If the sea is not flowing from the source, it wi
 
 **English**
 
-In the context of the Gospel of John the Baptist, we can see the past and the years to come, and the following years. The beginning of this chapter is written in the preceding chapter of this book.
+The basis of the Bahre Hasab teaching is that by working on the items listed below, we can know the calculation of the years—past years, current years, and future years until the coming [of Christ]—as well as the fasts that are required and the feasts that are observed. It begins with the sequence of this calculation written from the Year of the World (Amete Alem).
 
 ### CHE-002-S011-P002
 
@@ -2800,9 +2800,9 @@ In the context of the Gospel of John the Baptist, we can see the past and the ye
 
 **English**
 
-You can do whatever you want to do with your life.
+Therefore, you can work by adding the Year of Mercy (Amete Mihret) that you desire.
 
-## 1. ዓመተ ዓለም /ዓ.ዓ/ / 1. The year of the world (BC) {#CHE-002-S012}
+## 1. ዓመተ ዓለም /ዓ.ዓ/ / 1. Year of the World /A.D./ {#CHE-002-S012}
 
 ### CHE-002-S012-P001
 
@@ -2812,7 +2812,7 @@ You can do whatever you want to do with your life.
 
 **English**
 
-The year is the sum of the years of mercy and mercy.
+Amete Alem means the sum of Amete Mihret and Amete Kunene in its calculation.
 
 ### CHE-002-S012-P002
 
@@ -2822,7 +2822,7 @@ The year is the sum of the years of mercy and mercy.
 
 **English**
 
-Year of the World = Year of Mercy + Year of Condemnation
+Amete Alem = Amete Mihret + Amete Kunene
 
 ### CHE-002-S012-P003
 
@@ -2832,9 +2832,9 @@ Year of the World = Year of Mercy + Year of Condemnation
 
 **English**
 
-What is the year of the world according to this formula?
+Based on this formula, what is Amete Alem?
 
-## 2. ወንጌላዊ / 2. Evangelist {#CHE-002-S013}
+## 2. ወንጌላዊ / 2. Wongelawi {#CHE-002-S013}
 
 ### CHE-002-S013-P001
 
@@ -2844,7 +2844,7 @@ What is the year of the world according to this formula?
 
 **English**
 
-It is a formula that we use to find out who the evangelist is, and the calculation to find out who the evangelist is.
+It is the formula we use to determine which Gospel (era) it is; the calculation to find the Wongelawi is:
 
 ### CHE-002-S013-P002
 
@@ -2854,7 +2854,7 @@ It is a formula that we use to find out who the evangelist is, and the calculati
 
 **English**
 
-The Evangelist = Year of Mercy + Year of Condemnation
+Wongelawi = Amete Mihret + Amete Kunene
 
 ### CHE-002-S013-P003
 
@@ -2864,9 +2864,9 @@ The Evangelist = Year of Mercy + Year of Condemnation
 
 **English**
 
-According to this formula, if there is one remainder divided by this formula, then it is the time of Matthew. If there are two, it is the time of Mark, if there are three, it is the time of Luke, and if there are four, and if there is no remainder, it is the time of John.
+Based on this formula, if the remainder is one, the era is Matthew. If it is two, the era is Mark. If it is three, the era is Luke. If it is four and there is no remainder, the era is John.
 
-## 3. መባቻ (መስከረም 1 ቀን) / 3. Dawn (September 1st) {#CHE-002-S014}
+## 3. መባቻ (መስከረም 1 ቀን) / 3. Mebacha (Meskerem 1) {#CHE-002-S014}
 
 ### CHE-002-S014-P001
 
@@ -2876,7 +2876,7 @@ According to this formula, if there is one remainder divided by this formula, th
 
 **English**
 
-Early Dawn is used to determine the date of the evangelist's birth, and the calculation to find the dawn = year of global famine.
+Mebacha is used to determine what day of the week the Wongelawi falls on; the calculation to find Mebacha is Mebacha = Amete Alem modulo 7.
 
 ### CHE-002-S014-P002
 
@@ -2886,9 +2886,9 @@ Early Dawn is used to determine the date of the evangelist's birth, and the calc
 
 **English**
 
-7 Accordingly, if one of the balances to be paid, the dawn will be Tuesday, 2 if it will be Wednesday, if 3 if it is Thursday, if it is 4, if Friday 5, if it is Saturday 6, if it is Sunday 7, and if it is paid without a balance, then the dawn will be Monday.
+7 Based on this, if the remainder is one, Mebacha falls on Tuesday; 2 falls on Wednesday; 3 falls on Thursday; 4 falls on Friday; 5 falls on Saturday; 6 falls on Sunday; 7, or if it is divided without a remainder, Mebacha falls on Monday.
 
-## 4. ወንበር / 4. Chair {#CHE-002-S015}
+## 4. ወንበር / 4. Wonber {#CHE-002-S015}
 
 ### CHE-002-S015-P001
 
@@ -2898,7 +2898,7 @@ Early Dawn is used to determine the date of the evangelist's birth, and the calc
 
 **English**
 
-A chair is a sea lesson that can be used to create a chair and a chair. To get a chair
+Wonber is a maritime calculation used to determine the position of Abeqtena and Metqen. To find Wonber:
 
 ### CHE-002-S015-P002
 
@@ -2908,7 +2908,7 @@ A chair is a sea lesson that can be used to create a chair and a chair. To get a
 
 **English**
 
-Year 1 Subtract from the Rest of the World
+Subtract 1 from the remainder of Amete Alem.
 
 ### CHE-002-S015-P003
 
@@ -2920,7 +2920,7 @@ Year 1 Subtract from the Rest of the World
 
 19
 
-## 5. አበቅቴ ፡- / 5. My Pasture: {#CHE-002-S016}
+## 5. አበቅቴ ፡- / 5. Abeqte: - {#CHE-002-S016}
 
 ### CHE-002-S016-P001
 
@@ -2930,9 +2930,9 @@ Year 1 Subtract from the Rest of the World
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace
+Abeqte means Terefe Zemen. Its service, combined with the month of Hidet and the days, passes the night. The calculation to find Abeqte is Abeqte = Wonber X Tinte Abeqte /11/
 
-## 6. መጥቅዕ / 6. Attack {#CHE-002-S017}
+## 6. መጥቅዕ / 6. Meteq {#CHE-002-S017}
 
 ### CHE-002-S017-P001
 
@@ -2942,7 +2942,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-To be able to use it as a means to use it for holidays and holidays, depending on the date of the attack.
+Meteq means 'call' or 'summons'. The service uses the day on which the Meteq falls as a basis for the calculation of holidays and fasts. The calculation for Meteq is:
 
 ### CHE-002-S017-P002
 
@@ -2952,7 +2952,7 @@ To be able to use it as a means to use it for holidays and holidays, depending o
 
 **English**
 
-Attack = Chair × Ancient Attack (19)
+Meteq = Throne × Tente Meteq / 19
 
 ### CHE-002-S017-P003
 
@@ -2962,9 +2962,9 @@ Attack = Chair × Ancient Attack (19)
 
 **English**
 
-If you are over 14 years old, you will be less than 14 years old, but if you are less than 14 years old, you will be able to get more than 14 in October.
+If Meteq is greater than 14, it falls in the month of Meskerem; if it is less than 14, it falls in the month of Tikimt. However, 14 itself is not Meteq; Meteq falls only in these two months. At most, Meteq is Abeqte; at least, it is Abeqte. Meteq does not exceed 30, nor is it less than 30.
 
-## 7. ተውሳክ / 7. Adverb {#CHE-002-S018}
+## 7. ተውሳክ / 7. Tewsak {#CHE-002-S018}
 
 ### CHE-002-S018-P001
 
@@ -2994,9 +2994,9 @@ If you are over 14 years old, you will be less than 14 years old, but if you are
 
 **English**
 
-An adverb means an increase. The adverb means increase, and the service is considered to be accompanied by an attack to determine where the holidays will be used. There are two types of adverbs
+Tewsak means 'compensation' or 'restitution'. The service counts it together with Meteq to determine the day on which the holiday falls. There are two types of Tewsak calculation.
 
-## የአንበሳ ውድም የንግሥና ዘመንና የዮዲት መነሣት / The Lion's Den and the Rise of Judith {#CHE-002-S019}
+## የአንበሳ ውድም የንግሥና ዘመንና የዮዲት መነሣት / The Lion's Cub, the Era of the Kingdom, and the Uprising of Judith {#CHE-002-S019}
 
 ### CHE-002-S019-P001
 
@@ -3006,7 +3006,7 @@ An adverb means an increase. The adverb means increase, and the service is consi
 
 **English**
 
-The Ethiopian king Degnajan, who reigned for 19 years and two months on the throne of Axum from 822 to 841 AD.
+In the throne of Aksum, from 822–841 A.D., there reigned an Ethiopian King named Degnazhan for 19 years and two months.
 
 ### CHE-002-S019-P002
 
@@ -3016,9 +3016,9 @@ The Ethiopian king Degnajan, who reigned for 19 years and two months on the thro
 
 **English**
 
-However, when this king died, his son named Liona Wadm became king, and the child who reigned had not yet learned a system of government. When Judith learned that she could not govern the country and the people, she marched to Axum with her noble people who lived in the north and the province of Lasta.
+However, when this king died, his infant son, who was called the Lion's Cub, ascended the throne. Since the infant had not yet gained strength and had not studied the systems of government, he was unable to govern the country and the people. When Judith realized this, she gathered the Falashas living in the north and the Lasta region and marched them toward Aksum. The nobles of Aksum, seeing that their infant king had reigned for about 10 months from 841–842 A.D., fled with Judith and took the king to Shewa. After this, Judith reigned in 842 A.D. and carried out acts of injustice.
 
-## ዮዲት ጉዲት / Judith Goodit {#CHE-002-S020}
+## ዮዲት ጉዲት / Judith Gudit {#CHE-002-S020}
 
 ### CHE-002-S020-P001
 
@@ -3028,7 +3028,7 @@ However, when this king died, his son named Liona Wadm became king, and the chil
 
 **English**
 
-As we mentioned in the introduction to our history, some of the Israelites who migrated to Ethiopia from Menelik I and before him lived in the mountainous regions of the country because they did not accept Christianity. During the reign of Abraham and Father Salam, Christianity reached the entire Ethiopian Empire through the preaching of Abba Salamah, and these Jews remained faithful to the old system and insisted that they would not accept Christianity as the new religion.
+As we explained in the introduction of our history, from the first Menelik and before him, the Negade Yoktanos arrived in our country, Ethiopia, by migrating. Among the Israelites who entered, those who refused to accept Christianity lived in the remote areas and mountainous parts of the country. During the era of Abrahah Watsibha, when the preaching of Christianity reached the entire Ethiopian territory through Phremanatos (Abba Selama), these Jewish groups remained steadfast in their Torah faith and refused to accept the new religion of Christianity, adhering to the old tradition.
 
 ### CHE-002-S020-P002
 
@@ -3038,7 +3038,7 @@ As we mentioned in the introduction to our history, some of the Israelites who m
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be
+Due to this, because they were in disagreement with the Christians, they fled from Aksum and its surroundings and settled in the north, Wogera, Wolkayit, and Lasta; these are the ones called the Falashas. Since they migrated from Jerusalem to Aksum in ancient times and now from Aksum to various parts of the country, they are called Falashas (those who left the country). Because the northern part of our country where they fled is mountainous, they stayed in this area and used their natural defenses to protect themselves against anyone who came to attack them. As their numbers increased and their power grew, they crowned a man named Gideon as king.
 
 ### CHE-002-S020-P003
 
@@ -3048,7 +3048,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace
 
 **English**
 
-She had a beautiful daughter named Judith, who was born to Gideon, a Jew and king of the Philistines, sometimes called Esther, who was a prophet of the Philistines after her father, and in her time the daughter of Degnajan named Lion (in 842 B.C.). When he was king, he heard that he could not govern because he understood the king's childhood and the weaknesses of his administration, so he assembled her army and came to Axum. The king fled from the princes to Shoa, and Judith continued her invasion and slaughtered the Christians with the sword, destroyed the churches, and destroyed the Axum, Zion, Mary, the building, the church, and others, which was built for the first time by Abraham and the Prophet (peace be upon him). When the priests fled with the Ark of the Covenant, the priests and laity burned together with the Church, burned everything that belonged to Christians, and destroyed all the statues and historical witnesses made before and after Christianity.
+Judith, who was born to the Jewish and Falasha king called Gideon, was a beautiful daughter; sometimes she was called Aster. She ruled over the Falashas after killing her father. During her time, when the son of Degnazhan, called the Lion's Cub, reigned in 842 A.D., she examined and understood the infant king's childhood and the weakness of the administration. Hearing that he was unable to govern, she marched her army with spears toward Aksum. The king fled with the nobles to Shewa, and Judith, after killing her rival, oppressed the Christians with the sword and destroyed churches. She even destroyed the Aksum Tsion Maryam building church, which was first built during the time of Abrahah Watsibha, and others. At this time, the priests and fathers took the Tabot Tsion (the Tabot of the Covenant) and fled, and the priests and faithful were burned along with the building church. She burned everything that belonged to the Christians, all the monuments and historical witnesses built before and after Christianity.
 
 ### CHE-002-S020-P004
 
@@ -3058,9 +3058,9 @@ She had a beautiful daughter named Judith, who was born to Gideon, a Jew and kin
 
 **English**
 
-In order to avoid the outbreak of civil war, according to the custom of the time, she slaughtered all the princes born of kings who were guarded on Mount Debre Damo, and in this cruel way she changed her name to Judith, and even the name of Aster was called Fire. Judith ruled for 40 years from 842 to 882 A.D., and King Liona Wood, who was said to have died after 40 years of torture, returned to Axum and seized power.
+In the custom of the time, to prevent internal war from breaking out, the nobles born from the kings who were guarded in the Zebanya on the Debre Damo mountain were all slaughtered. With this cruelty, Judith's name was changed to Gudit (Gudegna), and the one called Aster was left behind and called Isat (Fire). Judith ruled in suffering for 40 years until 842–882 A.D., after which she died, and the king who was in exile, the Lion's Cub, returned to Aksum and took over the throne of the kingdom.
 
-## የአንበሳ ውድም የንግሥና ዘመን / The Lion's Den of the Lion's Den {#CHE-002-S021}
+## የአንበሳ ውድም የንግሥና ዘመን / The Reign of Anbessa Wedim {#CHE-002-S021}
 
 ### CHE-002-S021-P001
 
@@ -3070,7 +3070,7 @@ In order to avoid the outbreak of civil war, according to the custom of the time
 
 **English**
 
-When the lion heard of Judith's death, he marched from Shoa to Axum, and the people of Axum welcomed him and placed him on his father's bed. The king and the princes of the princes who had survived the sword worked together with the people to strengthen Christianity. A messenger was sent to Egypt with a large quantity of gold and precious gifts, so that a father could come to strengthen Christianity.
+Anbessa Wedim, upon hearing of Yodit's death, traveled from Shewa to Aksum via Gisgase. The people of Aksum received him with joy and seated him on the throne of his fathers. He, along with the nobles and officials spared from the sword, worked diligently in cooperation with the people to strengthen Christianity. By composing many letters, he sent messengers to Egypt with much gold and precious jewelry to request a father who would strengthen Christianity.
 
 ### CHE-002-S021-P002
 
@@ -3080,7 +3080,7 @@ When the lion heard of Judith's death, he marched from Shoa to Axum, and the peo
 
 **English**
 
-At the same time, the Bishop of Alexandria was moved from Alexandria to Cairo due to the spread of Islam in Egypt. His contemporaries were Father Kozmos. With his good will, a father named Abune Peter was appointed Bishop of Ethiopia.
+During this era, the See of the Bishops of Alexandria in Egypt had moved from Alexandria to Cairo due to the spread of Islam. The Patriarch of that time was Abba Kozmos. By his kind permission, a father named Abune Petros was appointed and came as the Bishop of Ethiopia.
 
 ### CHE-002-S021-P003
 
@@ -3090,7 +3090,7 @@ At the same time, the Bishop of Alexandria was moved from Alexandria to Cairo du
 
 **English**
 
-The people longed for the religious father and gave them a proper welcome. And while the pope was comforting the grieved and the bereaved and repairing the destroyed temple in coordination with the king, King Lion Wadd reigned for 20 years, so he summoned the pope and advised them which authority should be given to his first or second son. The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said, 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah ( Peter was sent to prison.
+The people longed for a father of the faith and gave him a proper reception. The Bishop, while comforting the reproached and repairing the ruined sanctuary in coordination with the King, was consulted by King Anbessa Wedim, who had reigned firmly for 20 years from 882-902 A.M., on whether to give the kingdom's authority to his first or second son. He advised that it should be given to his second son. When King Anbessa Wedim died, his younger son took the authority. At this time, the elder son rose in rebellion against his brother, and he also rose to take a treacherous action against the Bishop. While this was happening, two monk-priests named Abba Minas and Abba Fiqtor, who came from Abba Intonos Monastery in Egypt, incited him through cunning. They forged a letter from Abba Kozmos, stating that the appointment belonging to him was given to his younger brother. Abune Petros, who had not been appointed by the Patriarch of Alexandria as Abba Kozmos, told the elder son, "Abune Petros was not appointed by the Patriarch of Alexandria." A battle ensued with his brother, and in the war, he defeated his brother, removed him from the throne, and he reigned. Abune Petros was then ordered to go into exile.
 
 ### CHE-002-S021-P004
 
@@ -3100,7 +3100,7 @@ The people longed for the religious father and gave them a proper welcome. And w
 
 **English**
 
-Among the monks who conceived this trick, Father Minas was appointed bishop, and after a while, due to the nature of a dispute between Father Minas and Father Fiqtar, Father Fiqtar collected and stole the gold and silver in Father Minas' house and returned to his homeland.
+Among the monks who incited this cunning, Abba Minas was appointed as Bishop. After a short time, a disagreement arose between Abba Minas and Abba Fiqtor, and Abba Fiqtor gathered the gold and silver in Abba Minas's house and fled back to his country.
 
 ### CHE-002-S021-P005
 
@@ -3110,7 +3110,7 @@ Among the monks who conceived this trick, Father Minas was appointed bishop, and
 
 **English**
 
-Then he changed his religion and left his hat and monastic clothes and began to live. All this deception was felt in Alexandria too late. Father Kozmos heard about it, and he condemned Father Minas and wrote a letter confirming the legitimacy of St. Peter.
+Then, having changed his religion, he cast off his cap, monk's robe, and clothes and began to live in a state of abandonment. All of this act of betrayal was heard in Alexandria after a delay. When Abba Kozmos heard this, he condemned Abba Minas and wrote a letter confirming the legitimacy of Saint Petros.
 
 ### CHE-002-S021-P006
 
@@ -3120,9 +3120,9 @@ Then he changed his religion and left his hat and monastic clothes and began to 
 
 **English**
 
-As soon as the king heard of Father Minas's deception, he killed him immediately. But Abune Peter died while in prison, so the throne was left without a bishop. From that time onwards, Ethiopia lost a faithful and comforting father for 84 years, 911-995 A.D.
+When the King heard of Abba Minas's betrayal, he killed him immediately. However, since Abune Petros died while in prison, the see remained without a bishop. From this time forward, Ethiopia lacked a father to lead and comfort in the faith for about 84 years, from 911-995 A.M. The people grieved, saying, "Unless God abandons us, when would this happen to us?" and they offered their sorrow to God morning and evening. God did not forget the people.
 
-## ንጉሥ ድልነዓድ / The King of Kings {#CHE-002-S022}
+## ንጉሥ ድልነዓድ / King Dilnead {#CHE-002-S022}
 
 ### CHE-002-S022-P001
 
@@ -3132,7 +3132,7 @@ As soon as the king heard of Father Minas's deception, he killed him immediately
 
 **English**
 
-It is stated in the list of kings that King Dilnaad reigned for 10 years from 902 to 912 AD after Lion Wood. The historian and scholar of the Church, Blaton Lord Khrui Wolde Trinity Eve, stated on page 21 that Dilnaad reigned after his father, Lion Wad.
+King Dilnead is described in the list of kings as having reigned for about 10 years from 902-911 A.M. after killing Anbessa Wedim. As stated by the historian and scholar Blaten Geta Haruy Wolde Selassie in his book titled "Wazema" on page 21, he stated that Dilnead reigned after killing his father Anbessa Wedim. The point we understand here is that Dilnead reigned after killing his brother.
 
 ### CHE-002-S022-P002
 
@@ -3142,7 +3142,7 @@ It is stated in the list of kings that King Dilnaad reigned for 10 years from 90
 
 **English**
 
-In the 10 years of his reign, he was unable to govern his people calmly, which is why:
+Dilnead was unable to govern the people in a stable manner during his 10 years of reign. The reasons for this were:
 
 ### CHE-002-S022-P003
 
@@ -3152,7 +3152,7 @@ In the 10 years of his reign, he was unable to govern his people calmly, which i
 
 **English**
 
-1. The entry into the hands of the Arabs of the Dahlak Islands of Tzwa Dahlak in the east and on the coast of Eritrea, which were subordinate to the Kingdom of Axum when the Arabs (Muslims) in southern Egypt were under the control of Egypt by force, and the closure of the commercial interests due to the Kingdom of Axum in terms of taxes, invitations and taxes in these ports.
+1. While the Arabs/Muslims in southern Egypt were holding and governing Egypt by force, the coastal areas of the Red Sea and the Eritrean Sea, which were subjects of the Aksum Kingdom, fell into the hands of the Arabs, and this blocked the trade profits that were paid to the Aksum Kingdom in the form of tribute, gifts, and customs at these ports.
 
 ### CHE-002-S022-P004
 
@@ -3162,7 +3162,7 @@ In the 10 years of his reign, he was unable to govern his people calmly, which i
 
 **English**
 
-2. The kingdom of Axum plundered the port and plundered its wealth and territory
+2. The Aksum Kingdom was impoverished in both wealth and territory due to the closing of its ports.
 
 ### CHE-002-S022-P005
 
@@ -3172,7 +3172,7 @@ In the 10 years of his reign, he was unable to govern his people calmly, which i
 
 **English**
 
-3. The Northern and Agwu tribes, who saw the destruction of the Axum government in terms of power, wealth and territory, and who were being robbed and looted by the soldiers, rose up violently and said that they would not accept their subordination.
+3. The northern and Agaw Falashas and the Lasta tribes, who viewed the Aksum Kingdom as impoverished in force, wealth, and territory, refused to accept their subjectship, stating they would not submit. They avoided paying tribute and, as the kingdom weakened in territory and trade, they began to seize and loot it during times of peace. For these reasons, Dilnead, sitting in Aksum, was unable to conquer Ethiopia and live in peace. This is recorded as the reason for the fall of the Aksum Kingdom and the rise of the Zagwe Kingdom.
 
 ### CHE-002-S022-P006
 
@@ -3182,9 +3182,9 @@ In the 10 years of his reign, he was unable to govern his people calmly, which i
 
 **English**
 
-And when he had done so, he went to the city of Jerusalem, and he went to the city of Jerusalem, and he went to
+Although Dilnead tried to return the people to peace, the military commander, a woman named Mera Teklehaymanot Mesobeworq, married Dilnead and conspired to fight him. In the war, she triumphed and, like his father, Dilnead fled to Shewa. She took the Kingdom of Dilnead by force and reigned in Ethiopia, naming the kingdom Zagwe.
 
-# ምዕራፍ ሦስት ከመራ ተክለሃይማኖት እስከ ይትባረክ / Chapter 3: From Religion to Religion {#CHE-003}
+# ምዕራፍ ሦስት ከመራ ተክለሃይማኖት እስከ ይትባረክ / Chapter Three: From Mera Teklehaymanot to Yitbarek {#CHE-003}
 
 ### CHE-003-S000-P001
 
@@ -3194,7 +3194,7 @@ And when he had done so, he went to the city of Jerusalem, and he went to the ci
 
 **English**
 
-In this chapter, we will understand that the Ethiopian palace was a part of the history of the Ethiopian kingdom that was moved from Axum to Lasta, where the kingdom of Axum fell. When it comes to the establishment of the Zaguye Kingdom, it is mentioned that Mera Tekledin was mentioned. The Dalnead of the Axum kingdom was unable to govern the country properly (the seaports and trade center were occupied by the Arabs), and the tribes of Lasta (Agwu) refrained from paying taxes because they did not accept the government, and the kingdom became impoverished in terms of possession and trade and weakened in wealth.
+In this chapter, we understand the historical part of the Ethiopian Kingdom moving from Aksum to Lasta. This is where the Aksum Kingdom fell and the Zagwe Kingdom was established. When the establishment of the Zagwe Kingdom is mentioned, Mera Teklehaymanot is cited. Because Dilnead, who was in the Aksum Kingdom, was unable to govern the country properly (due to the Arabs seizing the sea ports and trade centers), the Lasta and Agaw tribes refused to accept the kingdom, avoided paying tribute, and caused the kingdom to weaken in territory and trade, and to diminish in wealth.
 
 ### CHE-003-S000-P002
 
@@ -3204,7 +3204,7 @@ In this chapter, we will understand that the Ethiopian palace was a part of the 
 
 **English**
 
-And when he saw this, he gathered his people and his army against Dilnaad, and made Dilnaad, like his father, flee to Showa, and then took control of the kingdom.
+Upon observing this situation, one of these Lasta factions, Mera Teklehaimanot, gathered his people and army, defeated Delnead, and drove Delnead away to Shewa like his father and like a lion. After this, he ruled the kingdom under his control.
 
 ### CHE-003-S000-P003
 
@@ -3214,7 +3214,7 @@ And when he saw this, he gathered his people and his army against Dilnaad, and m
 
 **English**
 
-After the Ethiopian kingdom was moved from Axum to Lasta, the work of the Zaguye kings before Lalibela has been documented, and their history has been erased because they have not been written down in our time.
+After the Kingdom of Ethiopia moved from Aksum to Lasta/Zaguye, the history of the Zaguye kings who preceded Lalibela is buried because, although they performed works, they were not written down in that era and have not been passed down to our time.
 
 ### CHE-003-S000-P004
 
@@ -3224,9 +3224,9 @@ After the Ethiopian kingdom was moved from Axum to Lasta, the work of the Zaguye
 
 **English**
 
-However, according to a small collection from the Book of Kings of History, after he founded and led the Zaguen kingdom for 13 years from 912 to 925 A.D., he ruled ten kings from his sons and grandsons in succession. They were Tawud Jan Seyoum, Girma Seyoum, Meirara, Haibi Ymirhane Yirhane Christ Harbe (Gebremariam, Lalibela, Akuto to the Father and Yitbarak). His son Tawud was also the next king of Mera Tekledin.
+However, as found briefly in the Book of Historical Kings, Mera Teklehaimanot founded and ruled the Kingdom of Zaguye for 13 years from 912-925 A.D., and subsequently, ten kings from his children and grandchildren ruled. They were: Wotewedim Jan Siyum, Girma Siyum, Meyrara, Haybi, Yimrahane Kristos, Harbe (Gebremaryam, Lalibela, Akuto, Leabna, and Yitbarek). Wotewedim was the son who reigned after Mera Teklehaimanot.
 
-## ጠጠውድም / And we will not be able to {#CHE-003-S001}
+## ጠጠውድም / Wotewedim {#CHE-003-S001}
 
 ### CHE-003-S001-P001
 
@@ -3236,11 +3236,11 @@ However, according to a small collection from the Book of Kings of History, afte
 
 **English**
 
-He ruled Ethiopia from 925 to 965 AD after his father, Meredith Edwardine. He has one son and one grandson, whose grandson is named Gebre Cross and his grandson Abune Aron. This king is motivated by the courage of the people to unite and motivate the people to work together by advising and motivating them to work together
+Wotewedim ruled Ethiopia from 925-965 A.D. after his father Mera Teklehaimanot. He had one son and one grandson; his son was Gebre Meskel and his grandson was Abune Aron. This king, 83 years before the invasion of Judith Gudit, mobilized the people, encouraged them, and motivated them to work together by stirring the people's feelings morally.
 
-## የተቃጠሉ መጻሕፍትን እንደገና እንዲጻፉ / To rewrite burnt books {#CHE-003-S002}
+## የተቃጠሉ መጻሕፍትን እንደገና እንዲጻፉ / To rewrite the burned books {#CHE-003-S002}
 
-## የፈረሱ አብያተ ክርስቲያናት ተመልሰው እንዲሠሩ እንዲጠገኑ / The Churches of the Horse to be restored {#CHE-003-S003}
+## የፈረሱ አብያተ ክርስቲያናት ተመልሰው እንዲሠሩ እንዲጠገኑ / To rebuild and repair the destroyed churches {#CHE-003-S003}
 
 ### CHE-003-S003-P001
 
@@ -3250,7 +3250,7 @@ He ruled Ethiopia from 925 to 965 AD after his father, Meredith Edwardine. He ha
 
 **English**
 
-- The children of the princes, the princes, in their youth, believed in the construction of ruined statues, and strengthened the life of monasticism.
+- To rebuild the destroyed monuments; he also encouraged the children of the nobility and the officials in their youth to enter monasteries and strengthen the monastic life.
 
 ### CHE-003-S003-P002
 
@@ -3260,9 +3260,9 @@ He ruled Ethiopia from 925 to 965 AD after his father, Meredith Edwardine. He ha
 
 **English**
 
-The success of all these works was greatly contributed by the love and cooperation of the king and the Christian people. It is also written that during the reign of the king, Egyptian Christians fled to Ethiopia before their Islamic leaders.
+The love and cooperation between the king and the Christian people contributed greatly to the success of all these works. Additionally, it is recorded that during this king's reign, Egyptian Christians fled from their Islamic leaders and came to Ethiopia.
 
-## ጃን ሥዩም / Jan Seyoum {#CHE-003-S004}
+## ጃን ሥዩም / Jan Siyum {#CHE-003-S004}
 
 ### CHE-003-S004-P001
 
@@ -3272,7 +3272,7 @@ The success of all these works was greatly contributed by the love and cooperati
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace and blessings of Allah be upon him) said: 'O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+As recorded in the Book of Synaxarium read on the 12th of Hidar, he reigned from 965-1005 A.D. The beginning of all this work was to send a messenger to Cairo to request a bishop for the country. The message was sent not through Ethiopian messengers as before, but through the Prophet King George. The message was written to Abba Philathawos, who was the Patriarch of Alexandria at that time. The message stated as follows:
 
 ### CHE-003-S004-P002
 
@@ -3282,7 +3282,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace
 
 **English**
 
-God is angry with us because of the wrongdoing committed by our fathers against Peter, our country has received a lot of pestilence, pestilence, and spears, and the faithful and priests have died, and the churches have been destroyed by wars and invaders, and those who survived the destruction have been closed by the priests' infidelity. Therefore, let us send us a bishop who will bless our country and reconcile us with God ..." He said.
+Our fathers, because of the evil committed against Abune Petros, have been angered by God the Almighty; our country has suffered greatly in many places; its churches and priests have been lost; the churches have collapsed due to war and invaders; and those that remained from the collapse have been closed due to the neglect of priests. Therefore, recognizing all these problems and our sufferings, send us a bishop who will bless our country and who will be sent by God...
 
 ### CHE-003-S004-P003
 
@@ -3292,7 +3292,7 @@ God is angry with us because of the wrongdoing committed by our fathers against 
 
 **English**
 
-As soon as Father Philatus received this message, the Holy Synod of the Church of Alexandria allowed it to be sent to the Bishop of Ethiopia, and immediately an election was held and Father Daniel, who had been elected from the monastery of Father Mekares from the monastery of Ascetus, was appointed Bishop of Ethiopia. When they entered Ethiopia, the Christian people, who had been grieving and grieving for a long time, received them with tears of longing and joy, and they lived their apostolic mission by building the destroyed churches and comforting the grieving and the grieving.
+When this message reached Abba Philathawos, the Holy Synod of the Church of Alexandria permitted the sending of a bishop to Ethiopia. Immediately, a selection was made, and an elder named Abba Daniel, chosen from the Monastery of Asqets from the Monastery of Abba Maqars, was appointed as the Bishop of Ethiopia. When he entered Ethiopia, the Christian people, who had been longing and suffering for many years, received him with tears mixed with feelings of longing and joy. He lived while performing his apostolic mission, mourning the destroyed churches, comforting the distressed, and stabilizing them.
 
 ### CHE-003-S004-P004
 
@@ -3302,7 +3302,7 @@ As soon as Father Philatus received this message, the Holy Synod of the Church o
 
 **English**
 
-The Archbishop of Alexandria, Abba Philataus, who sent Father Daniel to Ethiopia, died while he was doing good work in Ethiopia. The Archbishop of Alexandria, who was appointed to succeed Father Philatheus, was Abba Zechariah, and during his father's papacy, there was a great problem in Alexandria.
+Abba Philathawos, who sent Abba Daniel to Ethiopia, passed away while he was performing good works in Ethiopia. Abba Zakaryas was appointed as the Patriarch of Alexandria in place of Abba Philathawos. During this elder's time as well, there was great difficulty in Alexandria.
 
 ### CHE-003-S004-P005
 
@@ -3312,7 +3312,7 @@ The Archbishop of Alexandria, Abba Philataus, who sent Father Daniel to Ethiopia
 
 **English**
 
-This is due to the proclamation and regulations issued by the Islamic leaders of Egypt and the country's leader, Caliph al-Hakim. Among the instructions given are: . . .
+This was due to the decree and the rules and instructions issued by the Islamic leaders of Egypt and the leader of the country, Caliph Al-Hakim. Among the given instructions were:
 
 ### CHE-003-S004-P006
 
@@ -3322,7 +3322,7 @@ This is due to the proclamation and regulations issued by the Islamic leaders of
 
 **English**
 
-1. When you send a bishop to Ethiopia, you give us permission and pay taxes to us, and do not send any bishop to Ethiopia without paying taxes and without your permission
+1. When sending a bishop to Ethiopia, permit us and pay us a tax. If you do not pay the tax and do not permit us, do not send any bishop to Ethiopia.
 
 ### CHE-003-S004-P007
 
@@ -3332,7 +3332,7 @@ This is due to the proclamation and regulations issued by the Islamic leaders of
 
 **English**
 
-2. To transfer the seat of the Archbishop from Alexandria to Cairo under the influence of Islamic leaders to facilitate the control of the two religious groups of Alexandria and Ethiopia.
+3. To facilitate the control of the two religious factions of Alexandria and Ethiopia, they caused the seat of the Patriarch to be moved from Alexandria to Cairo to be influenced by Islamic leaders.
 
 ### CHE-003-S004-P008
 
@@ -3342,7 +3342,7 @@ This is due to the proclamation and regulations issued by the Islamic leaders of
 
 **English**
 
-3. The Apostolic Message of the Archbishop of Alexandria to the Prophet and the Kings of Ethiopia was interrupted.
+3. It was intended to interrupt the apostolic message that the Patriarch of Alexandria used to transmit to the prophets and the Ethiopian kings in their respective times.
 
 ### CHE-003-S004-P009
 
@@ -3352,7 +3352,7 @@ This is due to the proclamation and regulations issued by the Islamic leaders of
 
 **English**
 
-4. In order to control and curb all this activity, the Archbishop of Alexandria put pressure on him to go to prison.
+4. They transmitted pressures demanding that the Patriarch of Alexandria descend into slavery to control and suppress all these activities.
 
 ### CHE-003-S004-P010
 
@@ -3362,7 +3362,7 @@ This is due to the proclamation and regulations issued by the Islamic leaders of
 
 **English**
 
-Archbishop Abba Zecharias died in 996-1023 AD in torture and imprisonment. Although it is normal for Christians to endure suffering, it is for the good that we are able to live in praise of the Creator makes us victorious. This means that while all this suffering was being felt in our Christian compatriots in Alexandria, Father Daniel, who was appointed by Father Philateus, died at the same time.
+Due to these proclamations of restrictions, the Christians of Alexandria suffered greatly when they expressed their grievances, and they again fled to Ethiopia. The people and the kings received them with a good fraternal welcome. The Patriarch, Abba Zakarias, also passed away in 996-1023 A.D. after enduring his seat in exile, suffering, and imprisonment. Although suffering upon the Christians is common, recognizing its goodness and living while thanking the Creator makes us victorious; this is the point that can be made. While all this suffering was being seen upon our Christian factions in Alexandria, Abba Daniel, who came appointed as Abba Philathawos, also passed away at that same time.
 
 ### CHE-003-S004-P011
 
@@ -3372,9 +3372,9 @@ Archbishop Abba Zecharias died in 996-1023 AD in torture and imprisonment. Altho
 
 **English**
 
-As a result, the Ethiopian people and government were once again disturbed by their engagement with the Caliphs of Alexandria. Jansyum passed it on to his brother Majestic Seyoum because he had completed his reign.
+Because of this, the Ethiopian people and kingdom were again seen to be troubled by the practices they had with Alexandria and the letters. Since Jansyum had completed his reign, he passed it to his brother, Grima Seyum.
 
-## ግርማ ስዩም / Majesty Seyoum {#CHE-003-S005}
+## ግርማ ስዩም / Grima Seyum {#CHE-003-S005}
 
 ### CHE-003-S005-P001
 
@@ -3384,7 +3384,7 @@ As a result, the Ethiopian people and government were once again disturbed by th
 
 **English**
 
-Girma Seyoum ruled Ethiopia for 40 years from 1005 to 1045 AD. During this reign, there was no bishop to lead the Ethiopian religion, teach the people, and bless his kingdom, so he sent envoys to Cairo. When the envoys were sent, Father Christosdolos (Gebre Christos) was the Archbishop of Alexandria from 1039 to 1069. The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace be upon him).
+Grima Seyum ruled Ethiopia for 40 years from 1005-1045 A.D. During this king's reign, since there was no bishop to lead the religion of Ethiopia, teach the people, and bless the kingdom, he sent messengers to Cairo. When the messengers were sent, the Patriarch of Alexandria was Abba Christodolos /Gebre Kristos/ who reigned from 1039-1069 A.D. These fathers had previously been accused by the Egyptian leaders of destroying all the mosques found in Nubia and Ethiopia and were imprisoned in slavery; therefore, the Ethiopian messengers found no one to receive them.
 
 ### CHE-003-S005-P002
 
@@ -3394,9 +3394,9 @@ Girma Seyoum ruled Ethiopia for 40 years from 1005 to 1045 AD. During this reign
 
 **English**
 
-At the same time, an Egyptian Muslim named Abdum came to Ethiopia with a false letter and said that he was Abakerlos. The Ethiopian people, who had sent messengers, were welcomed by the Christians and the king. As soon as this man's lie was heard in Egypt, the Egyptian Church and the leader of Egypt, Bedr al-Jamal Algemal, was taken to Alexandria through Tsahlaq and punished with the sword. The Archbishop of Alexandria, Abba Christosdolos, who had been falsely accused, died at the same time and was appointed as his successor.
+At this time, an Egyptian Muslim named Abdum came to Ethiopia with a false letter and claimed to be Abakerlos. The Ethiopian people and the king, who sent the messengers, received him with a Christian and royal welcome. When the falsehood of this man was heard in Egypt, the Egyptian Church and the Egyptian leader, Badr Al-Jamal Al-Gamal /Tizaz Ba-Sahlaq/, took him to Alexandria and he was punished by the sword. Abba Christodolos /Gebre Kristos/, the Patriarch of Alexandria who was imprisoned by false accusation, passed away at this time, and Abakerlos was appointed in his place.
 
-## አባ ቄርሎስ / Father Cyril {#CHE-003-S006}
+## አባ ቄርሎስ / Abba Kerlos {#CHE-003-S006}
 
 ### CHE-003-S006-P001
 
@@ -3406,7 +3406,7 @@ At the same time, an Egyptian Muslim named Abdum came to Ethiopia with a false l
 
 **English**
 
-During his papal tenure, Abune Kyrlos ordered the Holy Synod of the Church of Egypt to organize a Holy Synod of the Church of Egypt to send a bishop to Ethiopia to solve the problems of Ethiopia.
+Abune Kerlos, in their own initiative to solve the problems of Ethiopia during their reign, ordered the Egyptian Church Holy Synod to make preparations to send a bishop to Ethiopia.
 
 ### CHE-003-S006-P002
 
@@ -3416,9 +3416,9 @@ During his papal tenure, Abune Kyrlos ordered the Holy Synod of the Church of Eg
 
 **English**
 
-However, it was not the Father who was sent at that time by the Holy Synod, but by the Prophet Muhammad (peace be upon him) who was a friend of the Muslims and who was devoted to the benefit of the Prophet Muhammad (peace be upon him).
+However, the father sent at that time was not the one chosen by the Holy Synod, but rather Abune Sawiros, who were friends of the Muslims and acted for their benefit, under the influence of the Egyptian leader Badr Al-Gamal.
 
-## ኣቡነ ሳዊሮስ / Saint Frumentius (Abba Salama) {#CHE-003-S007}
+## ኣቡነ ሳዊሮስ / Abune Sawiros {#CHE-003-S007}
 
 ### CHE-003-S007-P001
 
@@ -3428,7 +3428,7 @@ However, it was not the Father who was sent at that time by the Holy Synod, but 
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace and blessings of Allah be upon him) said: 'O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+Abba Sawiros, who was chosen by the Islamic leader Badr Al-Jamal Al-Gamal /Tizaz Ba-Sahlaq/ and received by the Patriarch Abba Kerlos, came with his brother and met the king, Grima Seyum. After securing their honor and rank, based on the agreement they made with their country's leader, Badr Al-Gamal, he began to support the Muslims found in Ethiopia, to strengthen them, to build mosques for them, and to help them worship their idols wholeheartedly. In a short time, they built seven mosques for them. At this time, as the Ethiopian king and people monitored the situation due to the construction of the mosques and the increase of Muslims, they reached that Abune Sawiros was providing support.
 
 ### CHE-003-S007-P002
 
@@ -3438,7 +3438,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said:
+Consequently, the people and the king expressed their anger toward this father who came as a messenger of the Muslims and drove them out; the mosques that were built were also destroyed. They themselves were ordered to remain in slavery /Marfiya Bet/ in prison. While this action was being taken, the brother who came with this deceitful false father saw the situation, escaped, went back to his country, and told Badr Al-Gamal about the situation as follows:
 
 ### CHE-003-S007-P003
 
@@ -3448,7 +3448,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace
 
 **English**
 
-« . . The Ethiopian government and people were angry and imprisoned and the mosques they built were demolished because of their efforts to increase and please our people (Muslims) by your orders.
+« . . . Abba Sawiros, who went to Ethiopia chosen by your command, in the work he did to increase and please our people /the Muslims/, the Ethiopian kingdom and people became angry and they were ordered to descend into slavery and the mosques they built were destroyed… »
 
 ### CHE-003-S007-P004
 
@@ -3458,7 +3458,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "The Prophet (peace
 
 **English**
 
-And he said to him, "Okay, I'm going to tell you."
+He told him quickly.
 
 ### CHE-003-S007-P005
 
@@ -3468,7 +3468,7 @@ And he said to him, "Okay, I'm going to tell you."
 
 **English**
 
-He did not say that he was a strong man, but he sent the following message to the Ethiopian king, His Majesty Seyou:
+Badr Al-Jamal /Al-Jamal/ was a powerful tyrant, and he sent the following message to the Ethiopian King, Garima Seyoum. His message was:
 
 ### CHE-003-S007-P006
 
@@ -3478,7 +3478,7 @@ He did not say that he was a strong man, but he sent the following message to th
 
 **English**
 
-«. . . If you did not fulfill what I commanded and wanted, and if the destroyed mosques in your country are not rebuilt, I will make all the churches of the Kabbalah in the territory of Egypt non-existent. They sent him a threatening message. . . . »
+«. . . If you do not fulfill what I command and desire, and if you do not rebuild the destroyed mosques in your country, I will make all the churches of the Copts /Qonyat/ found in the territory of Egypt cease to exist .. » He sent a message of threat. . . . »
 
 ### CHE-003-S007-P007
 
@@ -3488,7 +3488,7 @@ He did not say that he was a strong man, but he sent the following message to th
 
 **English**
 
-He said:
+Saying,
 
 ### CHE-003-S007-P008
 
@@ -3498,7 +3498,7 @@ He said:
 
 **English**
 
-The Ethiopian king, Majesty Seyoum, was provoked by the Ethiopian invasion and sent a retaliatory response to the threat.
+The Ethiopian King, Garima Seyoum, moved by his Ethiopian identity, sent back his response /reply/ without considering the threat.
 
 ### CHE-003-S007-P009
 
@@ -3508,7 +3508,7 @@ The Ethiopian king, Majesty Seyoum, was provoked by the Ethiopian invasion and s
 
 **English**
 
-«. .. If you pick up a stone from the church of Egypt / Alexandria, I will cross Mecca and send you the dust of Cairo as the ashes of the stone of Keban. »
+«. .. If you lift even a single stone from the church in Egypt /Alexandria/, I will cross Mecca, turn the stone of Kaaba into dust, and send the dust to Cairo ... »
 
 ### CHE-003-S007-P010
 
@@ -3518,7 +3518,7 @@ The Ethiopian king, Majesty Seyoum, was provoked by the Ethiopian invasion and s
 
 **English**
 
-And he said, "I am going to do the same thing, and I will do it."
+He said. Some writers also say that he replied saying he would bring the stone of the mosque from Mecca and work it.
 
 ### CHE-003-S007-P011
 
@@ -3528,9 +3528,9 @@ And he said, "I am going to do the same thing, and I will do it."
 
 **English**
 
-The Ethiopian king Girma Seyoum and his people probably took advantage of it. There is no information.
+During this time, the conflict that existed between Garima Seyoum and Badr Al-Jamal did not reach a conclusion. Because the Crusades, labeled as the wars of the Christian kingdoms of Europe, had begun in the Middle East to liberate Jerusalem from the Arabs between 1000-3000 A.D., the Ethiopian King Garima Seyoum and his people were not utilized. After this, Meirana and Harbeya, born from the first wife of Merateklehaymanot, Meratekristos, reigned in turn. These kings, Meirana, reigned from 1045-1060 A.D. for 15 years, and Harbeya reigned from 1060-1077 A.D. for about 17 years; there is no recorded information regarding their reigns outside of their names.
 
-## ቅዱስ ይምርሐነ ክርስቶስ / The Holy Spirit is led by Christ. {#CHE-003-S008}
+## ቅዱስ ይምርሐነ ክርስቶስ / Saint Yimrahane Kristos {#CHE-003-S008}
 
 ### CHE-003-S008-P001
 
@@ -3540,7 +3540,7 @@ The Ethiopian king Girma Seyoum and his people probably took advantage of it. Th
 
 **English**
 
-Imran Christ reigned in Ethiopia from 1077 to 1117. His wife was called the Holy People. This king was given the title of saint because he combined holiness with monarchy.
+Yimrahane Kristos reigned in Ethiopia from 1077-1117 A.D. His wife is called Qidistna. Because this king lived by combining holiness with kingship, he was given the rank of holiness.
 
 ### CHE-003-S008-P002
 
@@ -3550,7 +3550,7 @@ Imran Christ reigned in Ethiopia from 1077 to 1117. His wife was called the Holy
 
 **English**
 
-There are four kings in this list of kings, including him, who lived in holiness. The three holy kings are Saint Gebremariam, Harbe, Saint Lalibela, and Saint Neakuto to the Father.
+In this list of kings, he is one of the three kings who lived in holiness. The three holy kings are called Saint Gebremariam /Harbe/, Saint Lalibela, and Saint Neakuto Ab.
 
 ### CHE-003-S008-P003
 
@@ -3560,7 +3560,7 @@ There are four kings in this list of kings, including him, who lived in holiness
 
 **English**
 
-During the reign of Saint Ymirhane Christ, relations between Ethiopia and Egypt were strained due to the influence of Egyptian Muslim leaders.
+During the reign of Saint Yimrahane Kristos, the relationship between Ethiopia and Egypt was strained due to the influence of the Islamic leaders in Egypt.
 
 ### CHE-003-S008-P004
 
@@ -3570,7 +3570,7 @@ During the reign of Saint Ymirhane Christ, relations between Ethiopia and Egypt 
 
 **English**
 
-This has not been the case since the arrest of a fraudulent friend of Islam named Abune Sawiris during the reign of His Majesty the Pope. Ymirhane Christ sent envoys to the leader of Egypt, Vizer Afdal, to send a pope to him. The request was accepted and a bishop named Abba Giorgis was sent.
+This was because, during the reign of Garima Seyoum, a deceitful friend of the Muslims named Abune Sawiros was not sent as a bishop to our country from captivity. Yimrahane Kristos, enduring the situation, sent messengers to the Egyptian leader Vizier Afdal to request that a bishop be sent to him. The request was accepted, and a bishop named Abba Girgis was sent to him.
 
 ### CHE-003-S008-P005
 
@@ -3580,7 +3580,7 @@ This has not been the case since the arrest of a fraudulent friend of Islam name
 
 **English**
 
-However, this father was brought back to Egypt because it was evident and known that he was greedy for money and materialism, and that he was inclined to business for the sake of money rather than for his spiritual ministry.
+However, it was seen and known that these fathers were greedy for money and obsessed with the love of wealth, and instead of their spiritual service, they were diverted into trade; thus, they were ordered to return to Egypt.
 
 ### CHE-003-S008-P006
 
@@ -3590,9 +3590,9 @@ However, this father was brought back to Egypt because it was evident and known 
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him). The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) and I am the Messenger of Allah (peace be upon him) The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+During the reign of Yimrahane Kristos, the Muslims in Egypt were inflicting severe oppression on the Christians. This holy king sought to block the Nile River to prevent the atrocities and pressure inflicted by the Egyptian Islamic leaders on the appointment of bishops in Ethiopia and on the Christians in Alexandria. Because the water of the Nile was decreasing as it flowed into Egypt and the Egyptian people were suffering from water shortage /drought/, the leaders were alarmed. Vizier Afdal sent messengers to the Ethiopian leader, Saint Yimrahane Kristos, acting as an intermediary to release the water of the Nile. They came to Ethiopia and pleaded with the king and the people to release the water for them. In this situation, the Patriarchs were pleased. After Yimrahane Kristos, Saint Gebremariam /Harbe/ reigned.
 
-## ቅዱስ ገብረማርያም /ሀርቤ/ / St. Mary's Episcopal Church/Episcopal Church {#CHE-003-S009}
+## ቅዱስ ገብረማርያም /ሀርቤ/ / Saint Gebremariam /Harbe/ {#CHE-003-S009}
 
 ### CHE-003-S009-P001
 
@@ -3602,7 +3602,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-Saint Gebremariam (Harbe) served the Ethiopian country and its people from 1117 to 1157 AD. His wife's name was Merkeza. Saint Gebremariam (Harbe) is the national name of the Arabs and the Western Synod (Shenuda), but all those who write the history of Ethiopia refer to him as Harbe (Gebremariam).
+Saint Gebremariam /Harbe/ served the country of Ethiopia and its people in kingship and holiness from 1117-1157 A.D. His wife is called Merkeza. Saint Gebremariam /Harbe/ is the Ethiopian name; the Arabs call him Qanuda, and the Western Synod calls him /Shenuda/. However, all who have written the history of Ethiopia have cited his name by the Ethiopian name, Harbe /Gebremariam/.
 
 ### CHE-003-S009-P002
 
@@ -3612,7 +3612,7 @@ Saint Gebremariam (Harbe) served the Ethiopian country and its people from 1117 
 
 **English**
 
-This king was a brave and holy king who did many national and religious duties. The Ethiopian Bishop of Alexandria (1131-1145) wrote extensively about the dispute and quarrel between him and Father Gabriel II, the 70th Archbishop of Alexandria (1131-1145).
+This king was a pious and holy king who performed many national and religious works. As recorded in history, writers have extensively documented the misunderstanding and conflict that arose between him and the 70th Patriarch of Alexandria, Abba Gabriel II, who served from 1131-1145 AD. Among the mentioned writers, a writer named Radonot is cited. The Ethiopian Bishop during his era was Abune Mikael.
 
 ### CHE-003-S009-P003
 
@@ -3622,7 +3622,7 @@ This king was a brave and holy king who did many national and religious duties. 
 
 **English**
 
-1. Bishops who come from the vast expanse of Ethiopia due to the large population are unable to travel and teach.
+1. Because the bishops coming from the vastness of Ethiopia and the large population were unable to travel around to teach.
 
 ### CHE-003-S009-P004
 
@@ -3632,7 +3632,7 @@ This king was a brave and holy king who did many national and religious duties. 
 
 **English**
 
-2. Due to the increase in the power of Arab Muslims on the Ethiopian coast, the bishops appointed from Egypt could not cope with this alone, so they wanted more bishops from the Ethiopian priests.
+2. Because, due to the increasing power of the Arab Muslims on the borders of Ethiopia, the bishops coming from Egypt were unable to resist this alone, they requested that additional Episkopoi (Bishops) be appointed from among the Ethiopian priests.
 
 ### CHE-003-S009-P005
 
@@ -3642,7 +3642,7 @@ This king was a brave and holy king who did many national and religious duties. 
 
 **English**
 
-In addition, it is a matter of great sadness that the Fathers who are coming from Alexandria could not preach Christianity except to teach the nobles and princes in the vicinity of the palace and to give them the priesthood and the deacons. But the Egyptians did not respond positively to the question, and all their answers were full of refusal. The Habbes thought that if they were able to do so, they would be offered a blessing in gold, silver, pearls and diamonds, and their answer was that the fathers/bishops we send were enough.
+In addition to this, it was because it saddened them deeply that the fathers coming from Alexandria, by staying in the vicinity of the royal palace, were unable to travel around to preach Christianity to the nearby congregations, but instead were occupied with giving titles of priesthood and deaconhood to the nobles and officials. However, the Egyptians did not give a positive response to the request presented to them; all their responses were filled with refusals. The Habesha had the thought that if they could manage themselves, they would offer a variety of blessings, gold, silver, jewelry, and diamonds; thus, all their responses were that the fathers/bishops were sufficient.
 
 ### CHE-003-S009-P006
 
@@ -3652,7 +3652,7 @@ In addition, it is a matter of great sadness that the Fathers who are coming fro
 
 **English**
 
-St. Harbe then made the request to Father Michael, who was ordained in our country. That is, to appoint seven Ethiopians to the episcopal position, and the Pope replied that he would not do so without the permission of Archbishop Abba Gabriel of Alexandria. He consulted with the Ethiopian scholars and sent envoys from Father Gabriel to authorize the same appointment, and the envoys referred to the size of the country's Christian population, the breadth of the country's skin, and the fact that Father Michael, who was appointed in Ethiopia, was unable to teach due to old age and fatigue. Gabriel also insisted that the Ethiopians should not have their own father.
+Saint Harbe subsequently presented the request to the one who came to be appointed in our country, Abba Mikael. This was a request to appoint seven Ethiopians to the position of Episkopos; however, the Bishop gave the answer that he would not do so without the permission of the Patriarch of Alexandria, Abba Gabriel. Saint Harbe, losing hope, deliberated for a third time with Ethiopian scholars and sent messengers to seek permission for this appointment from Abba Gabriel. His messengers presented to the Patriarch, Abba Gabriel II, the large number of Christian people in the country, the vastness of the country's territory, and the fact that Abba Mikael, who was appointed in Ethiopia, was unable to travel around to teach due to old age and exhaustion. Abba Gabriel, however, held the firm opinion that the Ethiopians did not need to find their own father and remained firm in his negative decision.
 
 ### CHE-003-S009-P007
 
@@ -3662,7 +3662,7 @@ St. Harbe then made the request to Father Michael, who was ordained in our count
 
 **English**
 
-The Caliphs of Egypt also put pressure on the Pope on the grounds that the self-sufficiency of the Abbas would affect our interests. Of the seven scholars whom the envoys had proposed to be appointed, they asked for the appointment of one to assist Father Michael. The response was based on the issue of interest. As a result, there was a great disagreement and division between Abba Michael and Father Gabriel II in the Holy Harbour.
+The Egyptians, claiming that the self-sufficiency of the Habesha would affect their interests, exerted pressure on the Patriarch. When they were asked to appoint them, they even asked for one to be appointed to assist Abba Mikael among the seven scholars; the response given to this was based on the issue of interest. Because of this, a great misunderstanding and separation arose between Saint Harbe, Abba Mikael, and Abba Gabriel II.
 
 ### CHE-003-S009-P008
 
@@ -3672,7 +3672,7 @@ The Caliphs of Egypt also put pressure on the Pope on the grounds that the self-
 
 **English**
 
-On April 10, Niksar narrates that St. Harbe was angry with the Ethiopians for the appointment of bishops and that God was angry with him and brought plague on his country, Ethiopia.
+The Synaxarium read on April 10 states that when Saint Harbe requested that Ethiopians be appointed as Episkopoi, God was angry and sent a punishment upon the country of Ethiopia. The author sealed his writing by stating that Saint Harbe's request for this Episkopos appointment was not a sin, but rather a matter of justice.
 
 ### CHE-003-S009-P009
 
@@ -3682,7 +3682,7 @@ On April 10, Niksar narrates that St. Harbe was angry with the Ethiopians for th
 
 **English**
 
-But God is not angry about this, but blesses such a holy idea, because it is written that there was a drought and disease in the country at that time.
+However, God blesses such a holy thought; He is not angry by this. What was written as such was merely a coincidence because drought and disease had occurred in the country during that time.
 
 ### CHE-003-S009-P010
 
@@ -3692,11 +3692,11 @@ But God is not angry about this, but blesses such a holy idea, because it is wri
 
 **English**
 
-In any case, the question that was initiated by Saint Harbe was raised by the kings of the time, and today the Ethiopian Orthodox Tewahedo Church has been able to appoint its own scholars as patriarchs in its own land.
+In Alexandria, after Abba Gabriel Kal'ay, the Patriarch Abba Yohannes followed Abba Gabriel's example and refused to grant the appointment of Ethiopian Episkopoi. Thus, the question initiated by Saint Harbe's initiative was raised by successive kings in every era, and today the Ethiopian Orthodox Tewahedo Church has reached the point of appointing its own scholars to the rank of Patriarchate on its own land. When Saint Harbe presented the question of self-sufficiency in that time, the Ethiopian Church was beginning to remember.
 
-## ቅዱስ ላሊበላ /ገብረመስቀል / The Holy Spirit / The Cross of the Cross {#CHE-003-S010}
+## ቅዱስ ላሊበላ /ገብረመስቀል / Saint Lalibela / Gebremesqel {#CHE-003-S010}
 
-## የቅዱስ ላሊበላ ልደቱና ዕድገቱ / The Birth and Birth of the Holy Spirit {#CHE-003-S011}
+## የቅዱስ ላሊበላ ልደቱና ዕድገቱ / The birth and growth of Saint Lalibela {#CHE-003-S011}
 
 ### CHE-003-S011-P001
 
@@ -3706,7 +3706,7 @@ In any case, the question that was initiated by Saint Harbe was raised by the ki
 
 **English**
 
-His father, Jan Seyoum, and his mother's name were Kiorna and Kerewerna. Kerewerna means church in the Agua language. Saint Lalibela was born in 1101 AD.
+Saint Lalibela's father is named Jan Seyum and his mother is named Kiyorna Kerwerna. Kerwerna means 'Church' in the Agaw language. Saint Lalibela was born in 1101 AD.
 
 ### CHE-003-S011-P002
 
@@ -3716,7 +3716,7 @@ His father, Jan Seyoum, and his mother's name were Kiorna and Kerewerna. Kerewer
 
 **English**
 
-On Tuesday, December 29, Lasta Bugna district was one of the hatcheries that used to be used as a palace or a room.
+On the 29th day of Tahsas, on a Tuesday, in the Ruka district of Lasta Bugna, which was used as a royal palace or a fortress, he was born in a pepper mill.
 
 ### CHE-003-S011-P003
 
@@ -3726,7 +3726,7 @@ On Tuesday, December 29, Lasta Bugna district was one of the hatcheries that use
 
 **English**
 
-When Saint Lalibela was born, angels dressed in white robes surrounded him and protected his whole body from being touched. They tasted honey from the baby's lips. At that time, his mother was amazed when she saw that miracle, and when she saw them tasting honey, she called him Lal, which means bee or honey in English.
+When Saint Lalibela was born, angels appeared in white clothes, surrounding him and preventing anyone from touching his body. They would also feed him honey from his infant lips. At that time, his mother was amazed by that wonderful miracle, and upon seeing him being fed honey, she named him Lal, which means 'bee' or 'honey' in the Agaw language.
 
 ### CHE-003-S011-P004
 
@@ -3736,7 +3736,7 @@ When Saint Lalibela was born, angels dressed in white robes surrounded him and p
 
 **English**
 
-The name of the Prophet (peace and blessings of Allah be upon him) is the name of the Prophet (peace and blessings of Allah be upon him) and the Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace
+By adding the Amharic word 'yibelal' (eats) to the name Lal, they named him Lalibelel / Lalibela. Over time, the name Lalibelel was shortened to Lalibela. Some people say that Lalibela means Hamina. Hamina means 'singer,' not Lalibelel. Lalibela means 'the shield of repentance' and 'the father of justice' in the terminology of the scholars.
 
 ### CHE-003-S011-P005
 
@@ -3746,7 +3746,7 @@ The name of the Prophet (peace and blessings of Allah be upon him) is the name o
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+Saint Lalibela was a beautiful, handsome, and holy child of prophecy. His sister, Ribqa, became envious and said, 'Why should he be called King while I am called Queen? Why should he be called handsome while I am beautiful?' Out of jealousy, she poisoned and killed him. At the time of his death, Saint Gabriel descended and took his soul to heaven. He showed him thousands of angels singing 'Holy, Holy, Holy' around his throne. He presented him to the Creator, and God said to Lalibela...
 
 ### CHE-003-S011-P006
 
@@ -3756,7 +3756,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-"I am the one who called you, my friend Lalibela, you will reign over Ethiopia for 40 years, you will build 10 temples out of one stone, and your helpers will be angels, not humans..."
+«My friend Lalibela, I have called you. You shall reign over Ethiopia for 40 years. You shall be purified from a single block of stone into 10 churches. Your helpers shall not be men, but angels...»
 
 ### CHE-003-S011-P007
 
@@ -3766,7 +3766,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-And he said, "I am weak, how can this be, and where can I be able?" And he said to him, "My name is God, but I am their founder, and their doer."
+He said. Saint Lalibela said, 'I am weak, how can this happen to me? Where shall I find the strength?' God said, 'Let My name be in you, but the construction and the completion are Mine.'
 
 ### CHE-003-S011-P008
 
@@ -3776,7 +3776,7 @@ And he said, "I am weak, how can this be, and where can I be able?" And he said 
 
 **English**
 
-On the third day, he reunited his soul from his body, and the people around him were terrified.
+Saint Lalibela accepted the word, and Saint Gabriel, the messenger of the heavens, showing the mysteries, united his soul with his body on the 3rd day. Saint Lalibela rose quickly, and the people nearby were astonished.
 
 ### CHE-003-S011-P009
 
@@ -3786,7 +3786,7 @@ On the third day, he reunited his soul from his body, and the people around him 
 
 **English**
 
-From that time on, Saint Lalibela lived in the forest in the forest, saying that it is better to live with a caravan than to live with a man. While he was there, he was told by the great angel Gabriel that he should marry the cross with glory by the will of God, and according to the statute he married the cross of glory and gave birth to a son, whose name will be blessed.
+From that time, Saint Lalibela said it was better to live with wild animals than with humans, and he lived in the wilderness and forests. While there, by the will of God, he was told by the great angel, Saint Gabriel, to marry the Cross of Glory (Meskel Kibra) according to the Law, and they bore one child whose name is to be blessed.
 
 ### CHE-003-S011-P010
 
@@ -3796,7 +3796,7 @@ From that time on, Saint Lalibela lived in the forest in the forest, saying that
 
 **English**
 
-Before his family heard from him, his wife placed the Cross of the Cross and Aksum from the monastery of Father Pentecost, and he spent seven days in prayer at the Temple of Axum, and made his journey to Jerusalem, where he was born, baptized, raised, revealed his glory, revealed his divinity, was crucified, buried, and ascended for 13 years, and then returned to his homeland.
+Saint Lalibela, without his family hearing, placed his spouse, the Cross of Glory, in Aksum at the monastery of Abba Hantelayen. He himself stayed in the Aksum church in prayer for seven days and then made his journey to Jerusalem. In Jerusalem, he stayed for 13 years, wandering and observing the places where Christ was born, baptized, grew up, revealed His divine glory, was crucified, was buried, and was resurrected, before returning to his country.
 
 ### CHE-003-S011-P011
 
@@ -3806,7 +3806,7 @@ Before his family heard from him, his wife placed the Cross of the Cross and Aks
 
 **English**
 
-In some books, after praying to God, Saint Lalibela left the land of Sudan and went to Egypt. And Egypt found many Christians, and he understood that the Christians lived in great suffering and sin. And the angel of God came and told him that you were not allowed to go to Jerusalem. Instead, it is narrated that he returned to Ethiopia with 60,000 Christians from Egypt, because he told him to take his sheep scattered in the land of Egypt and return to Ethiopia, where you came.
+In some books, however, it is stated that after Saint Lalibela asked God in prayer, he crossed from the land of Sudan to the land of Egypt. In Egypt, he found many Christians and understood that the Christians lived in great suffering and persecution. The angel of God came and told him, 'You are not permitted to go to Jerusalem; instead, take these scattered sheep from the land of Egypt and return to the land you came from, Ethiopia.' It is recorded that he returned to Ethiopia with 60,000 Christians from Egypt. Although there is a difference in the accounts of both, we see that Saint Lalibela visited the life of Christians in a foreign land and returned.
 
 ### CHE-003-S011-P012
 
@@ -3816,7 +3816,7 @@ In some books, after praying to God, Saint Lalibela left the land of Sudan and w
 
 **English**
 
-After returning to his homeland, Saint Lalibela realized that God's will had come, and in 1157 A.D., he took over the throne from his brother. Since then, he has taken over the kingdom and began to lead the people peacefully through religion. During his reign, he was a king who did not collect wealth for himself, like other kings, and he seized power and suppressed the administration.
+After Saint Lalibela returned to his country, understanding that he had reached his destination by the will of God, he received the throne of the kingdom from his brother in 1157 A.M. From that time, having received the kingdom, he began to lead his people in peace and in faith. In his reign, unlike other kings, he did not collect luxury goods for himself, saying, 'I am a king,' and he seized his authority, organized the administration, and sat down. Without saying 'let me rest' or 'let me freeze,' he left his authority to the people and for about 10 years prepared the materials to build the churches of Christianity.
 
 ### CHE-003-S011-P013
 
@@ -3826,9 +3826,9 @@ After returning to his homeland, Saint Lalibela realized that God's will had com
 
 **English**
 
-He then built eleven temples in Debre Rohe. They are the Temple of the Virgins, the Temple of the Temple of the World, the Temple of Golgotha, the Temple of Michael, the Temple of Libanos, the Temple of Immanuel, and the Temple of George. It is said that he built 23 temples in the country.
+Then, at Debre Roha, he purified eleven churches. These are Bet Denagel, Bet Maryam, Bet Medhane Alem, Bet Meskel, Bet Golgotha, Bet Mikael, Bet Gebriel, Bet Aballibanos, Bet Merqorewos, Bet Emanuel, and Bet Giyorgis. It is said that he purified a total of 23 churches in the country.
 
-## በቅዱስ ላሊበላ ዘመነ መንግሥት የጵጵስና ጥያቄ / The Pope's Question in the Reign of the Holy Spirit {#CHE-003-S012}
+## በቅዱስ ላሊበላ ዘመነ መንግሥት የጵጵስና ጥያቄ / The request for the Bishop during the reign of Saint Lalibela {#CHE-003-S012}
 
 ### CHE-003-S012-P001
 
@@ -3838,7 +3838,7 @@ He then built eleven temples in Debre Rohe. They are the Temple of the Virgins, 
 
 **English**
 
-During the reign of Saint Lalibela, the Archbishop of Alexandria, Abba Mark IV, was the 4th. As soon as Saint Lalibela became king, he sent envoys to Egypt to import the Pope, but at that time, the leader of Egypt, Sultan Aladdin Abubakar Ikan, had a serious influence on the Christians and forced them to persecute the deity, so the envoys stayed in the envoy for three months because of the loss of a monk suitable for the papacy.
+During the reign of Saint Lalibela, the Patriarch of Alexandria was Abba Marcos IV. Saint Lalibela, upon reigning, sent messengers to Egypt with a letter of request to appoint a bishop. However, at that time, the leader of Egypt, Sultan Al-Din Abu Bakr, had exerted heavy influence over the Christians and persecuted them; therefore, because the monk who was to receive the request was missing, the messengers remained in distress for about three months.
 
 ### CHE-003-S012-P002
 
@@ -3848,7 +3848,7 @@ During the reign of Saint Lalibela, the Archbishop of Alexandria, Abba Mark IV, 
 
 **English**
 
-When they finally got tired, they went to the Sultan's house, and the Sultan immediately allowed an election to be held and a bishop to be appointed. At the election, Father Abune Michael was appointed and they were received with great honor upon their arrival in Debre Roha. The next day, when the Pope finished consecrating, they came with a blessing because it happened to rain.
+Finally, when they grew weary, they appealed to the Sultan, and the Sultan immediately permitted the selection and the sending of an appointed bishop. From the selection, a father named Abune Mikael was appointed, and when they arrived at Debre Roha, they were given a high and glorious reception. The next day, when the bishop, Kedasew, finished his prayers, they came with blessings as it rained like a sudden shower.
 
 ### CHE-003-S012-P003
 
@@ -3858,7 +3858,7 @@ When they finally got tired, they went to the Sultan's house, and the Sultan imm
 
 **English**
 
-The people were very happy that God had visited us with help. It is said that he had appointed a brother or relative of the Cross of Tegei as the bishop of Gebron. But later the people must have been jealous of him because he loved him.
+The people were very happy, saying, 'God has visited us with a blessing.' It is said that they appointed the brother/relative of the Cross of Glory, named Gebron, as the Episcopal Bishop. Later, however, because the people loved him, they did not stop without letting jealousy enter them.
 
 ### CHE-003-S012-P004
 
@@ -3868,7 +3868,7 @@ The people were very happy that God had visited us with help. It is said that he
 
 **English**
 
-In a daily clash between them, they killed a priest who was their bodyguard, who was considered by the people to be the Holy Father, for he had stolen gold, and the mortal people felt that they did not want the bishop who had unjustly killed our brother, so they returned to their country. When they got there, when the archbishop asked them why they had returned, they replied as follows: "They asked me to appoint their brother Gebron as a bishop, and after he was appointed, he was his country, and he was coordinating with the people, the clergy and the deacons, and he finished the work of the papacy, and it became a scourge and even a threat to my life And they answered.
+In the midst of a daily conflict, they forced him, saying that he had stolen gold from the personal belongings of their guardian and that the people considered him a holy father. The relatives of the deceased also felt that the bishop had unjustly killed our brother. For this reason, they returned to their country. When they arrived there, when the Patriarch asked them why they had returned, they gave the following answer: 'They asked me to appoint their brother Gebron as the Episcopal Bishop, and I appointed him. After he was appointed, since it was his country, he finished the work of the bishop by misleading the priests and deacons, and then he betrayed me. Furthermore, he became a threat to my life. For this reason, I fled and returned to my country.'
 
 ### CHE-003-S012-P005
 
@@ -3878,7 +3878,7 @@ In a daily clash between them, they killed a priest who was their bodyguard, who
 
 **English**
 
-The Archbishop sent a monk named Abba Moses to Ethiopia to investigate the matter. He presented the matter to the king and queen. They explained to him that he had not told Abune Michael why he had returned to his country.
+The Patriarch also sent a monk named Abba Muse to Ethiopia to investigate the matter. He presented the matter to which he was sent to the King and the Queen. They explained to them that the reason Abune Mikael returned to his country was not as he had spoken.
 
 ### CHE-003-S012-P006
 
@@ -3888,7 +3888,7 @@ The Archbishop sent a monk named Abba Moses to Ethiopia to investigate the matte
 
 **English**
 
-The Bishop told them that he did not interfere in the affairs of the palace, but rather the keeper of the palace, and that he did not interfere in the affairs of the Papacy. Father Moses stayed for about a year, and in the same year, Bishop Gebron died. Emperor Lalibela sent messengers to Egypt with Father Moses to bring a bishop with a special blessing from the kings before him.
+Adding that the Episcopal Bishop was merely the guardian of the kingdom's treasury and did not interfere in the work of the bishop, they told Abba Muse. Abba Muse stayed for about one year while investigating this. During this year, Episcopal Bishop Gebron passed away. Emperor Lalibela, in a manner different from the kings who came before him, sent messengers with a letter of request to Egypt with Abba Muse to appoint a bishop.
 
 ### CHE-003-S012-P007
 
@@ -3898,7 +3898,7 @@ The Bishop told them that he did not interfere in the affairs of the palace, but
 
 **English**
 
-This time from the gift of the Blessed Sacrament,
+At this time, from the letter of request sent,
 
 ### CHE-003-S012-P008
 
@@ -3908,7 +3908,7 @@ This time from the gift of the Blessed Sacrament,
 
 **English**
 
-1. The work dedicated to the Archbishop is a very impressive gold ascema
+1. The very amazing golden throne given to the Patriarch.
 
 ### CHE-003-S012-P009
 
@@ -3918,7 +3918,7 @@ This time from the gift of the Blessed Sacrament,
 
 **English**
 
-2. They include an elephant, a lion, a giraffe, a zebra, and a zebra dedicated to the Sultan.
+2. The rhinoceros, lion, and wild horses given to the Sultan are found in it.
 
 ### CHE-003-S012-P010
 
@@ -3928,7 +3928,7 @@ This time from the gift of the Blessed Sacrament,
 
 **English**
 
-All of these were displayed to the public as an exhibition in Cairo for many days. Abamose also saw Bishop Gefron honored as a bishop during his stay in Ethiopia, but Abune Michael wrote to the Archbishop that they had returned to their country because of the murder they had committed, and not because of Bishop Gebron. The Archbishop was stripped of his authority in the Malqa Dega so that the people would know the reason for his removal.
+All of these were exhibited to the public for many days in the city of Cairo. Although Abamuse saw the honor of Episkopos Gebron as a Bishop during their stay in Ethiopia, Abune Mikael presented to the Patriarch in writing that their return to their country was due to the crime of soul-murder they committed, and not because of the matter of Episkopos Gebron. The Patriarch, so that the people would know the sufficient reason for Abune Mikael's expulsion, stripped him of his episcopal authority in Ma'alqa Degam.
 
 ### CHE-003-S012-P011
 
@@ -3938,9 +3938,9 @@ All of these were displayed to the public as an exhibition in Cairo for many day
 
 **English**
 
-Two monks from Father Entons Monastery were elected in his place, and two monks from the Monastery of Father Entons were appointed as Bishops of Ethiopia, and the reception was as pleasant as usual.
+After his expulsion, two monks who came from Abantons Monastery, Aba Yishak and Aba Yosef, were appointed as the Bishop of Ethiopia and Episkopos, and came to Ethiopia. The reception was as joyful as was customary.
 
-## በቅዱስ ላሊበላ ዘመነ መንግሥት ሦስተኛው የመስቀል ጦርነት / The Third Crusade in the Reign of St. Lalibela {#CHE-003-S013}
+## በቅዱስ ላሊበላ ዘመነ መንግሥት ሦስተኛው የመስቀል ጦርነት / The Third Crusade during the reign of Saint Lalibela. {#CHE-003-S013}
 
 ### CHE-003-S013-P001
 
@@ -3950,7 +3950,7 @@ Two monks from Father Entons Monastery were elected in his place, and two monks 
 
 **English**
 
-During the reign of Lalibela, the Third Crusade in the Middle East was a war waged by the Catholics to liberate Jerusalem from the Arab Muslims. Although this was the purpose of the war, it did not include the entire Christian world. It was led only by Roman Catholics, so it did not involve the Eastern Churches. In this war, there was a fierce war between Nazareth and Tiberias. The fighters were on the side of the Catholics.
+During the reign of Lalibela, the Third Crusade in the Middle East was a war conducted by Catholics to liberate Jerusalem from the Arab Muslims. Although this was the goal of the war, it did not involve the entire Christian world. Because it was led only by the Catholics, it did not involve the Eastern Churches. In this war, a fierce battle was fought between Nazareth and Tiberias. The warriors were from the side of the Catholics:
 
 ### CHE-003-S013-P002
 
@@ -3960,7 +3960,7 @@ During the reign of Lalibela, the Third Crusade in the Middle East was a war wag
 
 **English**
 
-1. King Frederick Barbarus of Germany
+1. The German King Frederick Barbarossa.
 
 ### CHE-003-S013-P003
 
@@ -3970,7 +3970,7 @@ During the reign of Lalibela, the Third Crusade in the Middle East was a war wag
 
 **English**
 
-2. King Richard of England Lion
+2. The English King Richard the Lionheart.
 
 ### CHE-003-S013-P004
 
@@ -3980,7 +3980,7 @@ During the reign of Lalibela, the Third Crusade in the Middle East was a war wag
 
 **English**
 
-3. King Philip of France is Augustus.
+3. The French King Philip Augustus.
 
 ### CHE-003-S013-P005
 
@@ -3990,7 +3990,7 @@ During the reign of Lalibela, the Third Crusade in the Middle East was a war wag
 
 **English**
 
-On the side of the Muslims, Salah Adin defeated all these and recaptured Jerusalem. The Cypriot church historian Neofitos, when Saladin captured Jerusalem in the Third Crusade in 1189 A.D., listed the main Christian artifacts:
+On the side of the Muslims, however, the one called Saladin defeated all of these and took Jerusalem back under his control. The Copts historian of the Church history, named Neophytos, wrote that in 1189 A.D., when Saladin captured Jerusalem in the Third Crusade, from the Christian treasures, the main ones:
 
 ### CHE-003-S013-P006
 
@@ -4000,7 +4000,7 @@ On the side of the Muslims, Salah Adin defeated all these and recaptured Jerusal
 
 **English**
 
-1. The cave where Queen Eleni took out the Holy Cross near the Holy Sepulchre in Golgotha
+1. The cave near the Holy Sepulchre located at Golgotha, from which Queen Helena took out the Holy Cross.
 
 ### CHE-003-S013-P007
 
@@ -4010,7 +4010,7 @@ On the side of the Muslims, Salah Adin defeated all these and recaptured Jerusal
 
 **English**
 
-2. He wrote that the Lord of Bethlehem gave the cave of Gaul, where he was born, to Saint Lalibela.
+2. The cave of the Lord's birth in Bethlehem, which he gave to Saint Lalibela.
 
 ### CHE-003-S013-P008
 
@@ -4020,7 +4020,7 @@ On the side of the Muslims, Salah Adin defeated all these and recaptured Jerusal
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (
+In general, Saint Lalibela, while ruling all of Ethiopia, lived in a tent without a palace for his children, and is a father who rested as a pillar of justice, a gateway for his Christian children. Saint Lalibela passed through his era in peace and firm faith; after reigning, he died on June 12, 1198 A.D., at the age of 97, having been born at the age of 40. At the time of his rest, Abune Gebre Menfes, a Saint, was present and performed the funeral rites; he is buried in the place where he was, currently located within the Saint Michael pulpit.
 
 ### CHE-003-S013-P009
 
@@ -4030,9 +4030,9 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-He called God to inherit the kingdom of heaven which He had prepared before the creation of the world, as His joy and rest were permitted to those whom He had chosen. And the Holy One who reigned after him was the Father.
+He called his era the one where God chose them for eternal joy and rest, and they were permitted to inherit the Kingdom of Heaven, which He prepared before the world was created. The one who reigned after him is Saint Neakuto Le'ab.
 
-## የቅዱስ ነአኩቶ ለአብ ልደትና ዕድገት / The Birth and Birth of the Father {#CHE-003-S014}
+## የቅዱስ ነአኩቶ ለአብ ልደትና ዕድገት / The birth and upbringing of Saint Neakuto Le'ab. {#CHE-003-S014}
 
 ## ቅዱስ ነአኩቶ ለአብ / Saint Na’akueto La’ab {#CHE-003-S015}
 
@@ -4044,7 +4044,7 @@ He called God to inherit the kingdom of heaven which He had prepared before the 
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O Messenger of Allah (peace and blessings of Allaah be upon him), the Messenger of Allah (peace and blessings of Allah be upon him) said: 'O
+Saint Neakuto Le'ab was born of the news. Just as his angel, Saint Gabriel, was sent to our Lady, he also came to Saint Lalibela and said, 'He will be born from your brother, the son of Saint Gebremariam Harbe. This child will be your heir.'
 
 ### CHE-003-S015-P002
 
@@ -4054,7 +4054,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-When Lalibela heard this, and prayed, saying, "Praise be to the Lord, the God of Israel, and go to Merchezah, the wife of her brother, and say, 'Peace be upon you,' he preached the good news to her.
+Lalibela, upon hearing this, prayed saying, 'May the God of Israel, the Lord, be glorified.' After finishing his prayer, he went to his brother, the owner, to Merkeza and said, 'Peace be unto you.' After he announced the news, she, upon hearing this, was troubled and doubted, saying, 'Could it be that God will cause me to bear fruit in the womb?' Saint Gabriel himself confirmed it to Lalibela just as he had told him.
 
 ### CHE-003-S015-P003
 
@@ -4064,7 +4064,7 @@ When Lalibela heard this, and prayed, saying, "Praise be to the Lord, the God of
 
 **English**
 
-And Merchez conceived in April, and gave birth in January. And on the day of the birth of the father, the angel Michael was sent in the name of God, and came to Lalibela and said to him, "Go and take him, and circumcise him on the day I was circumcised, and baptize him on the day I was baptized, and call his name to Akuto to the father."
+Merkeza, in the month of Yazyas, gave birth in the month of Tir. On the day Neakuto Le'ab was born, the angel Saint Michael was sent in the name of God to Lalibela and said, 'A child is born; go and take him. Circumcise him on the day I was circumcised, baptize him on the day I was baptized, and name him Neakuto Le'ab.' To fulfill what was commanded, he proceeded to Merkeza.
 
 ### CHE-003-S015-P004
 
@@ -4074,7 +4074,7 @@ And Merchez conceived in April, and gave birth in January. And on the day of the
 
 **English**
 
-And when he was eating, he took him up to heaven and touched one of the three saints, and for 3 years he was with his mother, and in the middle of the night, St. Gabriel came and took him from his bed, and brought him to the Trinity, and showed him the place of condemnation and righteousness, and brought him back. Then he grew up with Lalibela and his wife in the house of glory of the cross. At the age of 4, a teacher named David revived him. He gave him Emperor Lalibela named Gebre Christ to teach him the rules of the palace and hunting as a nanny.
+While he was being fed in heaven, he was taken up to heaven at age 3. For 3 years, Saint Neakuto Le'ab stayed with his mother, and for 3 years, during the night of longing, Saint Gabriel came and took him from where he slept and joined him with the Trinity: the Father, the Son, and the Holy Spirit. He showed him the boundaries and the justice, and then he grew up in Lalibela and with his wife in the House of the Cross (Kebre Gebret). At age 4, Teacher David, who is called Isaac, circumcised him. He also gave him the title of Gebre Kristos, who was to be his companion and to teach him the order of the Kingdom and hunting.
 
 ### CHE-003-S015-P005
 
@@ -4084,9 +4084,9 @@ And when he was eating, he took him up to heaven and touched one of the three sa
 
 **English**
 
-When Saint Neacuto was 20 years old, he betrothed the Immaculate Mary, born of Stephen and Aclesias, as a wife, until he was 25 years old, so that he would not mourn the loss of his virginity after the wedding ceremony and the sacraments were performed.
+When Saint Neakuto Le'ab reached 20 years of age, he was joined in marriage to the pure Maryam, who is born from Stiffanos and Aklesiya. After the wedding ceremony and the Eucharist were performed, they remained together in consultation with his wife until he reached 25 years of age, so that he would not be saddened by the loss of his virginity.
 
-## የቅዱስ ነአኩቶ ለአብ የንግሥና ዘመን / The Reign of the Father of the Holy Spirit {#CHE-003-S016}
+## የቅዱስ ነአኩቶ ለአብ የንግሥና ዘመን / The Reign of Saint Neakuto Le'ab {#CHE-003-S016}
 
 ### CHE-003-S016-P001
 
@@ -4096,7 +4096,7 @@ When Saint Neacuto was 20 years old, he betrothed the Immaculate Mary, born of S
 
 **English**
 
-This is what happened to Akuto. The beginning of his work for the Father was that before his reign, he asked for permission from three of the wise men (Egyptians) who planned to build the temple of Our Lady: Kims, Andrew, and Saul.
+This is also Neakuto Le'ab. The first work he did before his reign was to ask the wise men /Egyptians/ for permission to build the Temple of our Lady. They are called: Kims, Andreas, and Saul.
 
 ### CHE-003-S016-P002
 
@@ -4106,7 +4106,7 @@ This is what happened to Akuto. The beginning of his work for the Father was tha
 
 **English**
 
-According to his request, all three of them were allowed to join him, and he took seven months to complete the work of the Church of Our Lady, which he had not done since the holy Lalibela, and entered the ark on November 21.
+Based on his request, all three were permitted, and together with him, he took 7 months to complete the work of our Lady's Church, which had not been completed starting from Saint Lalibela, and entered it on Hidar 21.
 
 ### CHE-003-S016-P003
 
@@ -4116,7 +4116,7 @@ According to his request, all three of them were allowed to join him, and he too
 
 **English**
 
-In the same way, in the reign of St. Lalibela, a man called Anti-Semites in Gojam rebelled against the Holy Lalibela, and Saul sent him to fight Goliath, just as Saul had sent him to fight Goliath.
+Similarly, in the reign of Saint Lalibela, a man called Tsere Qomos, saying that Saint Lalibela was not worthy, came. Just as Saul sent David to strike Goliath, Saint Lalibela sent Neakuto Le'ab, and he captured Tsere Qomos and made him submit.
 
 ### CHE-003-S016-P004
 
@@ -4126,7 +4126,7 @@ In the same way, in the reign of St. Lalibela, a man called Anti-Semites in Goja
 
 **English**
 
-Saint Neacuto was also the ruler of a province before he took over the throne to the Father. The province is called Koqna (Bhar Koqna).
+Before Saint Neakuto Le'ab fully assumed the reign, he was the ruler of one province. The province is called Qoqhna /Bihare Qoqhna/.
 
 ### CHE-003-S016-P005
 
@@ -4136,7 +4136,7 @@ Saint Neacuto was also the ruler of a province before he took over the throne to
 
 **English**
 
-And when the Father had given him the good news of the birth of the Father, he had told him that he would take over the kingdom to the Father, and that he would take over the kingdom to the Father.
+After this, when Saint Gabriel first announced the birth of Neakuto Le'ab, he had told him that Neakuto Le'ab would be the one to assume the reign; therefore, he summoned Neakuto Le'ab and handed over the reign to him.
 
 ### CHE-003-S016-P006
 
@@ -4146,7 +4146,7 @@ And when the Father had given him the good news of the birth of the Father, he h
 
 **English**
 
-Saint Neacuto used to ascend to heaven with the angels and talk to God all his days. He worshipped a thousand times every day, carrying iron and stones. Until this time, when he and his wife were living in virginity, Saint Raphael and Our Lady appeared to the Father one by one and announced to him that he would give birth to a son.
+Throughout his time, Saint Neakuto Le'ab would go up to heaven with the angels and converse with God. Every day, carrying iron and stone, he would prostrate himself a thousand times. Until this time, while he and his wife lived in virginity, Saint Raphael and our Lady appeared alternately to Neakuto Le'ab and announced to him, 'You will bear a son.' Then he brought out the pure Maryam and bore a son, whose name was called Haylemesqel.
 
 ### CHE-003-S016-P007
 
@@ -4156,7 +4156,7 @@ Saint Neacuto used to ascend to heaven with the angels and talk to God all his d
 
 **English**
 
-The leadership spirit that St. Neacuto followed was the leadership style of his father, Harbe. Abba Isaac, who came to Ethiopia from Egypt during the reign of Lalibela, died long after Lalibela. Patriarch John, who first appointed Ababmichael and then Abaishaq to Ethiopia, seems to have a better understanding of the Ethiopian Church than the Egyptian patriarchs of his time.
+The spirit of opposition that followed Saint Neakuto Le'ab was the opposition tactic of his father, Harbe. In the reign of Lalibela, Abba Isaac, who was appointed from Egypt and came to Ethiopia, stayed for a long time after Lalibela and died. Initially, Abba Mikael, and then Patriarch Yohannes, who sent Abba Isaac to Ethiopia, seemed to have a better understanding of the Ethiopian Church than the Egyptian Patriarchs who were present in his time.
 
 ### CHE-003-S016-P008
 
@@ -4166,7 +4166,7 @@ The leadership spirit that St. Neacuto followed was the leadership style of his 
 
 **English**
 
-As soon as Patriarch Yaba heard of Isaac's death, he had no hesitation in sending a successor bishop to Ethiopia, but under the influence of the caliphs, his wish was not fulfilled.
+When this Patriarch heard of Abba Isaac's death, he wanted to send a successor bishop to Ethiopia without any delay, but his desire was not fulfilled due to the influence of the Caliphs.
 
 ### CHE-003-S016-P009
 
@@ -4176,7 +4176,7 @@ As soon as Patriarch Yaba heard of Isaac's death, he had no hesitation in sendin
 
 **English**
 
-Neakuto saw his father's ups and downs to enable his father Harbe to become the head of the Ethiopian Church.
+Neakuto Le'ab viewed his father Harbe's actions in making the Ethiopian Church a head as a series of ups and downs as some measures.
 
 ### CHE-003-S016-P010
 
@@ -4186,7 +4186,7 @@ Neakuto saw his father's ups and downs to enable his father Harbe to become the 
 
 **English**
 
-However, the Egyptians, who ignored the Ethiopians' demand for self-sufficiency, were steadfast in their position. Some history books report that Neakuto was the last step for the Father and instructed the Ethiopian scholars to consult and appoint their own bishops. In any case, Neakuto was a holy king who fought for the Father as his father did for the result of today's self-sufficiency.
+However, the Egyptians, who were indifferent to the question of making the Ethiopians a head, remained firm in their position during this time. Some history books record that Neakuto Le'ab's final measure was to give instructions for the Ethiopian scholars to consult and elect their own bishop. Thus, this Neakuto Le'ab is the result of the struggle of his father, the Holy King.
 
 ### CHE-003-S016-P011
 
@@ -4196,11 +4196,11 @@ However, the Egyptians, who ignored the Ethiopians' demand for self-sufficiency,
 
 **English**
 
-Neakuto ruled Ethiopia for 40 years from 1197 to 1237 AD. He was succeeded by the son of Saint Lalibela, who reigned for 8 years from 1237 to 1245.
+Nekuto Le'ab ruled Ethiopia for about 40 years from 1197 - 1237 A.M. After him, the son of Saint Lalibela, Yitbarek, reigned, and for this king, no extensive history was recorded outside of the chronicles from 1237-1245 A.M.
 
-# ምዕራፍ አራት / CHAPTER FOUR {#CHE-004}
+# ምዕራፍ አራት / Chapter Four {#CHE-004}
 
-## ከአፄ ይኩኖ አምላክ እስከ ዘመነ መሳፍንት / From the time of God to the time of the judges. {#CHE-004-S001}
+## ከአፄ ይኩኖ አምላክ እስከ ዘመነ መሳፍንት / From Emperor Yekuno Amlak to the Era of the Ministers {#CHE-004-S001}
 
 ### CHE-004-S001-P001
 
@@ -4210,7 +4210,7 @@ Neakuto ruled Ethiopia for 40 years from 1197 to 1237 AD. He was succeeded by th
 
 **English**
 
-The Ethiopian Orthodox Tewahedo Church and the country have witnessed many spiritual developments since the Ethiopian government's forcible surrender to the Zagwe lineage after 333 years, from 1245 to 1845, when Emperor Tewodros reigned.
+After the Ethiopian Kingdom forcibly passed into the Zagwe dynasty, and after staying for another 333 years, it returned to the lineage of the first Menelik to Yekuno Amlak. From 1245 A.M. until Emperor Tewodros reigned in 1845 A.M., it was an era in which many spiritual conquests were carried out in the Ethiopian Orthodox Tewahedo Church and across the country; in that same extent, acts contrary to Christianity were also seen.
 
 ### CHE-004-S001-P002
 
@@ -4220,7 +4220,7 @@ The Ethiopian Orthodox Tewahedo Church and the country have witnessed many spiri
 
 **English**
 
-During the reign of the kings of Zagwe, there were nine tribes of Menelik I, who hid in the wild and in caves, fearing that they would be captured and imprisoned.
+The members of the first Menelik, who stayed without being captured, bound, or killed, hiding in the wilderness and caves out of fear during the reign of the Zagwe kings, are nine.
 
 ### CHE-004-S001-P003
 
@@ -4230,9 +4230,9 @@ During the reign of the kings of Zagwe, there were nine tribes of Menelik I, who
 
 **English**
 
-However, only Dilnead and Yakuno were eligible for the throne. That is, 10 years before Dynead was ousted from power by the kings of Zagwe, and 15 years after the reign of Yakuno God, the other seven ended their lives in exile and suffering.
+However, only Dilnead and Yekuno Amlak survived for the kingdom. This is because Dilnead passed through the Zagwe kingdom for 10 years before he seized his power, and Yekuno Amlak passed through for 15 years before he reigned; the other seven spent their lives in exile and suffering.
 
-## ይኩኖ አምላክ / Yakuno God {#CHE-004-S002}
+## ይኩኖ አምላክ / Yekuno Amlak {#CHE-004-S002}
 
 ### CHE-004-S002-P001
 
@@ -4242,7 +4242,7 @@ However, only Dilnead and Yakuno were eligible for the throne. That is, 10 years
 
 **English**
 
-The name of the god is Hope Jesus, and he was often called by his Christian name. But later it became his name because people who knew that he was the only survivor of Menelik I's descendants.
+Yekuno Amlak's Christian name is Tesfaeye Yesus. He was often called by his Christian name. Later, however, because he was the only one left from the lineage of the first Menelik, his name became known as Yekuno Amlak.
 
 ### CHE-004-S002-P002
 
@@ -4252,7 +4252,7 @@ The name of the god is Hope Jesus, and he was often called by his Christian name
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+The interpretation is that God is a protector and helper. Yekuno Amlak is the king who began the reign of the first Menelik after the Zagwe kingdom. His reign is described in the chronological order of kings as being from 1245-1260 A.M.
 
 ### CHE-004-S002-P003
 
@@ -4262,7 +4262,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-There was no pope who came to Ethiopia during the reign of the Emperor of Ethiopia.
+During the reign of Yekuno Amlak, there was no bishop who came to Ethiopia.
 
 ### CHE-004-S002-P004
 
@@ -4272,7 +4272,7 @@ There was no pope who came to Ethiopia during the reign of the Emperor of Ethiop
 
 **English**
 
-Thus the Sultan of Egypt was sent to the Sultan of Egypt by the Sultan of Yemen Dehradunid, in order to import a bishop.
+Therefore, Emperor Yekuno Amlak used to correspond with the Sultan of Egypt from afar with Adis Baybar, and through Sultan Dahamdanid in Yemen to secure a bishop.
 
 ### CHE-004-S002-P005
 
@@ -4282,7 +4282,7 @@ Thus the Sultan of Egypt was sent to the Sultan of Egypt by the Sultan of Yemen 
 
 **English**
 
-However, it has even led to the dissolution of relations with the Adal Islam movement through Yift.
+However, by supporting the movements of the Adal Muslims on the official side, he caused the connection to be interrupted.
 
 ### CHE-004-S002-P006
 
@@ -4292,7 +4292,7 @@ However, it has even led to the dissolution of relations with the Adal Islam mov
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+As the book Gedle Tekle Haymanot says, 'Abune Tekle Haymanot taught, baptized, and sanctified the Armenians. When they were troubled and prayed to God after having lost their prayers and myrrh, the Armenian King Metolome desecrated them. Because there was no bishop to bless the prayers, they were commanded by God to be blessed and sanctified by him, and they received the authority of the priesthood from God by miracles. He says, "As if they were appointed by the council of bishops, not by other bishops, but I appoint you."'
 
 ### CHE-004-S002-P007
 
@@ -4302,7 +4302,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-It is said that the Ethiopian Christian movement throughout the reign of Emperor Yekunogod was not a pope in his time. The entire Ethiopian Christian movement during the time of Yekunogod was limited to the apostolic work of Abune Tekledin.
+It is said that because there was no bishop during the reign of Emperor Yekuno Amlak, Abune Tekle Haymanot was buried and reigned. In general, the Ethiopian Christian movement during the reign of Yekuno Amlak is limited to the apostolic deeds of Abune Tekle Haymanot.
 
 ### CHE-004-S002-P008
 
@@ -4312,7 +4312,7 @@ It is said that the Ethiopian Christian movement throughout the reign of Emperor
 
 **English**
 
-In this way, they preached the gospel throughout Ethiopia, healed the sick, built churches, and illuminated the light of the Gospel through their prayers and legacy. They taught pagans and brought them back from idolatry to worship.
+Through this, the evangelists illuminated the light of the Gospel by preaching the Gospel in Ethiopia, healing the sick, building Christian houses, and through their prayers and sacrifices. By teaching the Armenians, they returned them from the worship of idols to the worship of God.
 
 ### CHE-004-S002-P009
 
@@ -4322,7 +4322,7 @@ In this way, they preached the gospel throughout Ethiopia, healed the sick, buil
 
 **English**
 
-Eventually, they were killed in Mount Lebanon and fought in fasting and prayers. Others say that God sent a message from Egypt to send him a message from Egypt, and he was angry that he had sent a message from Jerusalem to send a Jacobite bishop to him, Father David Ignatius, the Archbishop of Syria, Abune Job.
+Finally, they completed their martyrdom by reaching Debre Libanos and struggling through fasting and prayer. Other chroniclers say that since it was not successful to send a message for a bishop to come from Egypt, Yekuno Amlak sent bishops who were from the side of the Jacobites, named Abba Dawit Agnatyos, the Patriarch of Syria, and Abune Iyob, who traveled through Jerusalem.
 
 ### CHE-004-S002-P010
 
@@ -4332,9 +4332,9 @@ Eventually, they were killed in Mount Lebanon and fought in fasting and prayers.
 
 **English**
 
-Ethiopia's relations with Egypt improved during the reign of Yaga'a Zion (1268-1277 AD) and Archbishop Abune Salama appointed a bishop to Ethiopia.
+After the era of Kikuino Amalak, during the reign of Lij Yagbe'a Tsion /from 1268 – 1277 A.M./ because the relationship of Ethiopia with Egypt deteriorated, the Patriarch named Abba Yohannes sent the Bishop named Abune Selama to Ethiopia.
 
-## ኣፄ አምደ ጽዮን / The Emperor of Zion {#CHE-004-S003}
+## ኣፄ አምደ ጽዮን / Emperor Amde Tsion {#CHE-004-S003}
 
 ### CHE-004-S003-P001
 
@@ -4344,7 +4344,7 @@ Ethiopia's relations with Egypt improved during the reign of Yaga'a Zion (1268-1
 
 **English**
 
-- During the reign of Emperor Amdezion from 1297 to 1327, the Ethiopian Bishop was Abune Jacob. The Bishop of Ethiopia was the Bishop of Ethiopia, Abune Philip, who was a strong apostle.
+- During the reign of Emperor Amde Tsion from 1297-1327 A.M., the Bishop of Ethiopia was Abune Yacob. Because his Bishop was a spiritual man, he sat on the throne of Abune Tekle Haymanot; the third Eichage, Abune Filippos, gave him the rank of Bishop. Gedle Filippos records this. It narrates that because Abune Filippos was a strong apostle, he engaged in much struggle during his authority.
 
 ### CHE-004-S003-P002
 
@@ -4354,7 +4354,7 @@ Ethiopia's relations with Egypt improved during the reign of Yaga'a Zion (1268-1
 
 **English**
 
-And when he had done so, he went to the palace and rebuked him, saying, "You ought not to take your father's wife, and thou shalt not take thy father's wife."
+As Gedle Filippos and Kibre Negest state, because Emperor Amde Tsion had imprisoned his father's wife, Injera Enat, Abune Filippos, accompanied by Red'a Anorios Zetsigajan, entered the palace and rebuked him, saying, 'You must not take your father's wife.' The Emperor, being angry, struck him and threw him out, and by this
 
 ### CHE-004-S003-P003
 
@@ -4364,7 +4364,7 @@ And when he had done so, he went to the palace and rebuked him, saying, "You oug
 
 **English**
 
-It is widely recounted that the city where the blood of these saints was shed at night was destroyed by fire, and that Philip was exiled to northern Ethiopia.
+at night, the city where the blood of these saints flowed was burned by fire, and it is widely recorded that Eichage Filippos fled to Northern Ethiopia.
 
 ### CHE-004-S003-P004
 
@@ -4374,7 +4374,7 @@ It is widely recounted that the city where the blood of these saints was shed at
 
 **English**
 
-On the other hand, Amdezion brought together the historians of his country to write the spiritual history of the kings, without forgetting all the history that was destroyed by the Judith invasion.
+On the other hand, Amde Tsion, without forgetting the history of the invasion by Judith and the loss of those in captivity, gathered history experts in his country and ordered them to write the spiritual and the history of the kings. In this preparation, the books called Kibre Negest and Tarike Negest /Ze'Aksum/ were written during his era.
 
 ### CHE-004-S003-P005
 
@@ -4384,9 +4384,9 @@ On the other hand, Amdezion brought together the historians of his country to wr
 
 **English**
 
-As we have seen, there is no such thing as a bishopric or bishop of the Church.
+As we saw above /as we observed/, the authority of the Bishop of Abune Tekle Haymanot and Abune Filippos was not held consecutively.
 
-## አፄ ሠይፈ አርዕድ / In the meantime, I have been trying to get my head around the fact that I have been in a relationship with my ex-wife. {#CHE-004-S004}
+## አፄ ሠይፈ አርዕድ / Emperor Seyfe Ar'ed {#CHE-004-S004}
 
 ### CHE-004-S004-P001
 
@@ -4396,7 +4396,7 @@ As we have seen, there is no such thing as a bishopric or bishop of the Church.
 
 **English**
 
-During the reign of Emperor Seife Ar'ad from 1327 to 1355 A.D., there was a pagan king named Merwan Algadene, who forced the Fathers of the Church of Alexandria to give me the gold and silver in the Church. The bishops imprisoned Father Mark, who was the archbishop because of his refusal. This father was the 48th Bishop of Alexandria.
+Emperor Seyfe Ar'ed, during his reign from 1327-1355 A.M., was a Roman King named Marwan Algaden who was in Egypt. This king, during his era, forced the fathers of the Church of Alexandria to hand over the gold and silver in his church, saying, 'You must hand over the gold and silver to me,' and he tortured and oppressed the bishops. Because the bishops were willing, they bound Abba Marqos, who was a Patriarch. This father is the 48th Bishop of Alexandria.
 
 ### CHE-004-S004-P002
 
@@ -4406,7 +4406,7 @@ During the reign of Emperor Seife Ar'ad from 1327 to 1355 A.D., there was a paga
 
 **English**
 
-It is said that Emperor Seife Ar'adh sent the Archbishop to Egypt to defeat the army led by the Islamic leader Marwan Algade, and thus he received a pardon from the Sultan. Emperor Seife Ar'ad released the Archbishop and sent the gold and silver medals to be placed in the church in Jerusalem as a souvenir.
+Emperor Seyfe Ar'ed, to save this father who was a father of the faith, led an army called Mita Negarit Kitet Serawit to Egypt and defeated the army led by the Islamic leader Marwan Algaden, and it is narrated that by this, a ransom of Geze Bereket was given to him from the Sultan's forgiveness. Emperor Seyfe Ar'ed, after releasing the Patriarch, sent the ransom given to him /gold and silver/ to be placed as a memorial in the Jerusalem Church and returned to his country.
 
 ### CHE-004-S004-P003
 
@@ -4416,9 +4416,9 @@ It is said that Emperor Seife Ar'adh sent the Archbishop to Egypt to defeat the 
 
 **English**
 
-According to the book of Sinksar (October 19), the Sultan sent a threatening message to Emperor Seifer Ared after the archbishop's arrest and that Emperor Seifer Ared had gathered Egyptian Muslims who were engaged in business in Ethiopia and arrested him in order to release the archbishop.
+As explained in the Book of Synaxarium /read on Tikimt 19/, after this Sultan captured the Patriarch, he sent a threatening message to Emperor Seyfe Ar'ed. Emperor Seyfe Ar'ed, in order to release the Patriarch, gathered the Egyptians who were engaged in trade in Ethiopia and imprisoned them, and it is stated that he made them release the Patriarch; however, it does not state that Emperor Seyfe Ar'ed marched to Egypt.
 
-## አፄ ዳዊት / Emperor David {#CHE-004-S005}
+## አፄ ዳዊት / Emperor Dawit {#CHE-004-S005}
 
 ### CHE-004-S005-P001
 
@@ -4428,7 +4428,7 @@ According to the book of Sinksar (October 19), the Sultan sent a threatening mes
 
 **English**
 
-Emperor David reigned in Ethiopia for 30 years from 1365 to 1395, and during his time he was peacefully released in Egypt by the persecution of Christians. All Christians in Alexandria were declared to be converted to Islam, and the archbishops were imprisoned. Emperor David, like Emperor Seiferar, marched into Egypt with thousands of horses, mule, camels, and infantry.
+Emperor Dawit was the King of Ethiopia for 30 years from 1365-1395 A.M. During his era, the movement to comfort Christians who had been peacefully converted in Egypt was renewed. It was announced that all Christians in Alexandria should be converted to Islam, and the Patriarchs were also captured. Emperor Dawit, like Emperor Seyfe Ar'ed, marched to Egypt with a cavalry of thousands, camels, and infantry.
 
 ### CHE-004-S005-P002
 
@@ -4438,7 +4438,7 @@ Emperor David reigned in Ethiopia for 30 years from 1365 to 1395, and during his
 
 **English**
 
-When Emperor David arrived in Khartoum, they blocked the Nile water from Khartoum and caused it to flow into the Sudanese desert. The Egyptians were shocked by Emperor David's actions and sent Emperor David a gold gift of 120,000 (one hundred and twenty thousand). Emperor David did not count the gifts given to them, but asked them to be placed in the same church in Alexandria as a souvenir, and to give them the Lord's Cross in exchange for gold.
+When Emperor Dawit reached Khartoum, saying, 'What will they do to me in Egypt?', he dammed the Nile River and made it flow into the Sudanese desert. The Egyptians, shocked by the measure taken by Emperor Dawit, sent a hand-ransom of gold worth 120,000 /one hundred and twenty thousand/ units to Emperor Dawit. Emperor Dawit, without considering the hand-ransom given to him, gave it as a ransom to be placed as a memorial in the Alexandria Church and asked them to give the Cross of the Lord in exchange for the gold.
 
 ### CHE-004-S005-P003
 
@@ -4448,7 +4448,7 @@ When Emperor David arrived in Khartoum, they blocked the Nile water from Khartou
 
 **English**
 
-The Egyptians took the Holy Cross of Our Lord from the burial place of Queen Eleni, who died in the Nile River, and the Crown of the Lord was taken by the Pope and sent to Cairo, where Emperor David was. On September 21, 1395, while they were traveling with the cross, they had a vision that said, "May my cross live on the cross of the cross."
+The Egyptians, fearing their lives would be lost from the Nile water, dug up the Holy Cross of our Lord from the grave where Queen Eleni was buried, and the Gospel writer Luke's Pisme Fiqur Wolde Ye'ta Akli'le Sok, having bound it to his Patriarchs, sent it to Cairo where Emperor Dawit was. Emperor Dawit received the cross on Meskerem 10, 1395 A.M. While on the journey carrying the cross, on Meskerem 21, 1395 A.M., they saw a vision in their dream saying, 'Yenebir Mesqelye Be'Dibe Mesqel' (The cross is placed on the cross).
 
 ### CHE-004-S005-P004
 
@@ -4458,9 +4458,9 @@ The Egyptians took the Holy Cross of Our Lord from the burial place of Queen Ele
 
 **English**
 
-Emperor David took the Holy Cross and was on his journey to the Ethiopian wilderness, but he suddenly fell ill on October 2, 1395, on the 29th day of his arrival in Snar. Emperor David ruled Ethiopia for 30 years and 6 months. After Emperor David's death, the Holy Cross and its holy relics were entrusted to the Ethiopians in Sudan and remained under the protection of the Egyptian Archbishop for 47 years.
+While Emperor Dawit was traveling to the land of Ethiopia having bound the Holy Cross, suddenly on Tikimt 2, 1395 A.M., when they reached a place called Sinar on the 29th day since they received the cross, they rested. Emperor Dawit ruled Ethiopia for about 30 years for 6 months. After Emperor Dawit passed away, the ownership of the Holy Cross and holy treasures he carried on the journey remained with the Ethiopians, and for about 47 years, it stayed in the land of Sudan under the protection of the Egyptian Patriarchs.
 
-## አፄ ዘርዓያዕቆብ / The Emperor of Jacob {#CHE-004-S006}
+## አፄ ዘርዓያዕቆብ / Emperor Zeriyaiakob {#CHE-004-S006}
 
 ### CHE-004-S006-P001
 
@@ -4470,9 +4470,9 @@ Emperor David took the Holy Cross and was on his journey to the Ethiopian wilder
 
 **English**
 
-In the year 1437-1468, Emperor Zeraya Jacob reigned under his royal name Constantine, and his hometown was in a place called Saladin in the north of Shoa. It is recorded that this king reigned from 1426 to 1460 AD. In any case, it is recorded that Emperor Zeraya Jacob reigned for 34 years, despite the distance and proximity of his time. It is said that the Prophet (peace and blessings of Allah be upon him) did not rise up for the sake of the Prophet (peace be upon him).
+During his reign from 1437 - 1468 A.M., Emperor Zeriyaiakob was called Constantine by his regnal name, and his capital city was located in the area called Seladengay in Northern Shewa. This king is recorded as a 'Nigegena' (a historical chronicler). The book of Blaten Geharuy, titled Waze'ma, placed him between 1426-1460 A.M. Thus, although the distance and proximity of this era vary, Emperor Zeriyaiakob is recorded as having reigned for 34 years. History testifies regarding Emperor Zeriyaiakob that among the leaders who preceded him, such as Abraha and Azbeha, Emperor Kaleb, and Amdetsyon, and among those who followed him until the 18th century, no king of such stature as Zeriyaiakob has arisen for Ethiopia.
 
-## በአፄ ዘርዓያዕቆብ ዘመነ መንግሥት የተከናወኑ መንፈሳዊ ተግባራት / Spiritual Activities During the Reign of Emperor Jacob {#CHE-004-S007}
+## በአፄ ዘርዓያዕቆብ ዘመነ መንግሥት የተከናወኑ መንፈሳዊ ተግባራት / Spiritual activities carried out during the reign of Emperor Zeriyaiakob {#CHE-004-S007}
 
 ### CHE-004-S007-P001
 
@@ -4482,7 +4482,7 @@ In the year 1437-1468, Emperor Zeraya Jacob reigned under his royal name Constan
 
 **English**
 
-One of the most important sacred deeds of Emperor Zeraya Jacob during his reign is the delivery of the Holy Cross to Ethiopia, which was on its way from Alexandria to Ethiopia during the reign of his father Emperor David, and which was not until the sudden death of Emperor David.
+Among the holy deeds performed by Emperor Zeriyaiakob during his reign, the most prominent is the matter of bringing the Holy Cross to Ethiopia, which was in the process of being brought from Alexandria during the reign of his father, Emperor Dawit, and was left unfinished due to Emperor Dawit's sudden death; Emperor Zeriyaiakob gave primary importance to this task.
 
 ### CHE-004-S007-P002
 
@@ -4492,7 +4492,7 @@ One of the most important sacred deeds of Emperor Zeraya Jacob during his reign 
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+To ensure this thought was strengthened, they saw a vision in their dream saying, "Anbir Mesqel'ye beDibe Mesqel," meaning 'Place the Cross in the Cross-bearing place.' Therefore, to place the Holy Cross in the Cross-bearing place, they ordered it to be taken to Sudan, and the Holy Cross was received on Meskerem 21, 1443. Upon its arrival in Ethiopia, they proceeded to place it in many locations and to clear the area called Mesqelgna. By the will of God, they placed it in the mountainous/Cross-bearing area called Debre Kerbe in the Anbasel district, where it is located today.
 
 ### CHE-004-S007-P003
 
@@ -4502,7 +4502,7 @@ The Prophet (peace and blessings of Allah be upon him) said: "O Messenger of All
 
 **English**
 
-Among the further works of his time, Emperor Zeraya Jacob issued a decree declaring the abolition of foreign worship from the land of Ethiopia, and he abolished the teachings of love and teaching, which was the rise of the enemies of the church called Stephen during the reign of Emperor Zeraya Jacob. During this time, a priest named Stephen was born with a teaching of love and apostasy, and his teaching of apostasy was that it was not permissible to worship Our Lady and the Holy Cross. As a result, the king, in cooperation with the scholars and laity, organized a conference and had disciples present at the meeting.
+Among the additional works carried out during the reign of Emperor Zeriyaiakob, he issued a proclamation to prevent worship from being practiced outside the Ethiopian land and removed the teachings of heresy. During the reign of Emperor Zeriyaiakob, enemies of the Church called Deqe'Istifanos arose. During this time, a priest called Istifanos arose with the teaching of heresy, which claimed that worship was not due to our Lady and the Holy Cross. For this reason, the King, in cooperation with scholars and the faithful, organized a council and had Deqe'Istifanos appear before the council. After the deliberations were conducted extensively, Deqe'Istifanos was able to be executed.
 
 ### CHE-004-S007-P004
 
@@ -4512,7 +4512,7 @@ Among the further works of his time, Emperor Zeraya Jacob issued a decree declar
 
 **English**
 
-And when all those who were gathered in the congregation saw the deeds of Stephen, they were sentenced to death by their followers.
+After this, all those gathered at the council, upon seeing the execution of Deqe'Istifanos, decided that his followers should be put to death.
 
 ### CHE-004-S007-P005
 
@@ -4522,7 +4522,7 @@ And when all those who were gathered in the congregation saw the deeds of Stephe
 
 **English**
 
-Accordingly, on the 2nd of February, on the 38th day of March, the light of the day of the cross came down, and the place where the congregation gathered and where the light came down was called Debre Beren, and a temple was built in it.
+Accordingly, on the 2nd of Yekatit, their noses and tongues were cut off, and they were stoned to death. On the 38th day after they were stoned, on Megabit 10, the Day of the Cross, light descended, and the place where the council was gathered and where the light descended was called Debre Birhan. Inside it, they built a sanctuary, and again within eight days, a church was built with a sandalwood roof. After it was completed, a liturgy was performed, and while the sacrificial rite was being carried out, light descended on the place three times. /See the history note of St. Paul's Spiritual College/
 
 ### CHE-004-S007-P006
 
@@ -4532,7 +4532,7 @@ Accordingly, on the 2nd of February, on the 38th day of March, the light of the 
 
 **English**
 
-Emperor Jacob was also a great help to the Christians of Egypt, which led to the burning of the Church of St. Mary the Baptist on the Mount in Egypt by Muslims who had not violently worshipped it at the time.
+Emperor Zeriyaiakob also provided great assistance to the Christians in Egypt, as the Church of Holy Mary Debre Mitmaq located in Egypt was burned by Muslims who were forcefully ruling in Egypt during his era.
 
 ### CHE-004-S007-P007
 
@@ -4542,7 +4542,7 @@ Emperor Jacob was also a great help to the Christians of Egypt, which led to the
 
 **English**
 
-When Emperor Zeraya Jacob heard this, they went down to Egypt with an army, calmed the Muslims, comforted the Christians who had survived the sword, built a church in the destroyed building, and returned to their homeland.
+At this time, Christians sent a plea for help to countries and groups that they perceived as being on their side in faith. When Emperor Zeriyaiakob heard this, he took an army, descended to Egypt, silenced the Muslims, rescued the Christians from the sword, gathered them, rebuilt the destroyed church building, and returned to their country.
 
 ### CHE-004-S007-P008
 
@@ -4552,7 +4552,7 @@ When Emperor Zeraya Jacob heard this, they went down to Egypt with an army, calm
 
 **English**
 
-When the Egyptian Muslims confirmed the return of Emperor Zeraya Jacob, they made the church non-existent for the second time. When the king began to go to Egypt for the second time, Our Lady appeared and said to them, "My son Zeraya Jacob, do not come here again, for I am coming to you."
+After the Egyptian Muslims confirmed the return of Emperor Zeriyaiakob, they destroyed the church for the second time. When the King began his journey to Egypt for the second time, our Lady revealed herself and said to them: "O my son Zeriyaiakob, I will come to you, so do not come here a second time." They then returned to their kingdom to Seladengay.
 
 ### CHE-004-S007-P009
 
@@ -4562,7 +4562,7 @@ When the Egyptian Muslims confirmed the return of Emperor Zeraya Jacob, they mad
 
 **English**
 
-One day, when they searched the area, they saw a light in the open area around their palace, and they found Mary sitting in seven chariots, and the king gave Our Lady the honor she deserved, and the word of Our Lady was fulfilled, saying, "I will come to you." They are said to have been shut down.
+One day, in a desolate place near their kingdom, they saw light during the night. They searched the area saying, "I find a sign in the light," and found Holy Mary seated on a seven-horse chariot. The King gave our Lady the honor due to her, and the words "I will come to you" were fulfilled. Emperor Zeriyaiakob hid our Lady's prayer and holy treasures in a cave that is called Zeriyaiakob's Cave today, where it is expected that our Lady will reveal herself. At that time, a monk-priest who entered carrying the prayer to the cave was placed there; when asked to come out, our Lady's love overwhelmed them, and they did not come out. It is said that they were sealed in along with it.
 
 ### CHE-004-S007-P010
 
@@ -4572,7 +4572,7 @@ One day, when they searched the area, they saw a light in the open area around t
 
 **English**
 
-When it was asked why Emperor Zeraya Jacob hid Our Lady in a cave, it was the father who spoke to Emperor Zeraya Jacob verbally. That is, because of their personal purity, their holiness.
+If asked why Emperor Zeriyaiakob hid our Lady in the cave, our Lady was a father who spoke to Emperor Zeriyaiakob word for word. This was due to their personal purity and holiness.
 
 ### CHE-004-S007-P011
 
@@ -4582,7 +4582,7 @@ When it was asked why Emperor Zeraya Jacob hid Our Lady in a cave, it was the fa
 
 **English**
 
-This was the case 20 years before the rise of a pagan leftist named Muhammad.
+Therefore, 20 years before the uprising of the pagan called Mohammed, they said this:
 
 ### CHE-004-S007-P012
 
@@ -4592,7 +4592,7 @@ This was the case 20 years before the rise of a pagan leftist named Muhammad.
 
 **English**
 
-"Put away the relics of the Church, because there is a pagan who is the enemy of the Church who destroys priests, deacons and laity, and burns various relics of holiness."
+"Because a pagan who destroys priests, deacons, and the faithful of the Church and burns various holy treasures is about to rise, roam the mountain and place the holy treasures."
 
 ### CHE-004-S007-P013
 
@@ -4602,9 +4602,9 @@ This was the case 20 years before the rise of a pagan leftist named Muhammad.
 
 **English**
 
-And that's why they hid the tablet of Our Lady.
+They said this, and for this reason, he hid our Lady's prayer.
 
-## አፄ ዘርዓያዕቆብ የደረሳቸው ቅዱሳት መጻሕፍት / The Scriptures of Jacob {#CHE-004-S008}
+## አፄ ዘርዓያዕቆብ የደረሳቸው ቅዱሳት መጻሕፍት / Holy Scriptures received by Emperor Zeriyaiakob {#CHE-004-S008}
 
 ### CHE-004-S008-P001
 
@@ -4614,7 +4614,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-1. God Reigns (Written Greetings to the Saints and Martyrs)
+1. Egziabeher Negese /A greeting written for the saints and martyrs/
 
 ### CHE-004-S008-P002
 
@@ -4624,7 +4624,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-2. Blog Personality / Talking about Personality and Witches
+2. Tomar Tisbit /Speaking about the liturgy and about demons/
 
 ### CHE-004-S008-P003
 
@@ -4634,7 +4634,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-3. The Book of Character (which talks about confession)
+3. Metsehafe Bahrey /Speaking about the sea/
 
 ### CHE-004-S008-P004
 
@@ -4644,7 +4644,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-4. A book about the destruction of idolatry and the observance of the Sabbath on the weekend
+4. Metsehafe Berhan /Speaking about the removal of idol worship and the observance of Saturday and Sunday Sabbath/
 
 ### CHE-004-S008-P005
 
@@ -4654,7 +4654,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-5. The Mystery of the Eucharist
+5. Teakso Mistir /Speaking about the Holy Eucharist/
 
 ### CHE-004-S008-P006
 
@@ -4664,7 +4664,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-6. The Book of Genesis says that the birthday of our Lord should be celebrated on the 29th
+6. Metsehafe Milad /Speaking about the observance of the day of our Lord's birth on the 29th/
 
 ### CHE-004-S008-P007
 
@@ -4674,7 +4674,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-7. Apostasy of Satan
+7. Khedete Seytan
 
 ### CHE-004-S008-P008
 
@@ -4684,7 +4684,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-8. Church Rules and Regulations (Eucharistic Fasting and Celebration Ceremony)
+8. The rules and order of the Church /The order of the Eucharist, fasting, and feast observances/
 
 ### CHE-004-S008-P009
 
@@ -4694,7 +4694,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-9. The Book of Psalms and the Essay of the Highest
+9. The book of Psalms and Incense
 
 ### CHE-004-S008-P010
 
@@ -4704,7 +4704,7 @@ And that's why they hid the tablet of Our Lady.
 
 **English**
 
-They also wrote a book on the Temple and the Temple of the Sacred Heart. The Prayer of the Blessed Sacrament with the Blessed Sacrament of the Blessed Sacrament. .
+In addition to these, they had the order of the Kingdom and the order of signs /the book of the order of the priesthood/ revised and written. Along with the prayer part called Abune Zebesemayat, with the prayer called Selame Kidus Gebriel . . .
 
 ### CHE-004-S008-P011
 
@@ -4714,7 +4714,7 @@ They also wrote a book on the Temple and the Temple of the Sacred Heart. The Pra
 
 **English**
 
-. A Prayer for the Soul of the Prophet (peace and blessings of Allah be upon him)
+. they had it ordered to be prayed together /See the ancient Ethiopian educational book/ They built 675 church buildings /Melkot Metsehet, Year 9, Number 2
 
 ### CHE-004-S008-P012
 
@@ -4724,7 +4724,7 @@ They also wrote a book on the Temple and the Temple of the Sacred Heart. The Pra
 
 **English**
 
-The Prophet (peace and blessings of Allah be upon him) said, "O Messenger of Allah, I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him) and I am the Messenger of Allah (peace and blessings of Allah be upon him).
+While Emperor Zeriyaiakob performed these spiritual works, it is written in the Holy Scriptures that our Lady, out of her love for him, said to him as she did to the great fathers of Israel in the Old Testament: 'My son, be like David, be like Solomon, and praise me; you too, praise me for Jacob Moges.' /Taken from the small book called Merawi Hiwot Tsadqane Maryam/
 
 ### CHE-004-S008-P013
 
@@ -4734,9 +4734,9 @@ The Prophet (peace and blessings of Allah be upon him) said, "O Messenger of All
 
 **English**
 
-It is said that his son Edemariam (1460-1470 AD) was the successor to Emperor Zeraya Jacob. It is said that this king entered a monastery in his youth and passed away in a struggle. In the history of the kings of Ethiopia, Emperor Naud is known as the second Emperor in terms of spirituality after Emperor Zeraya Jacob. Emperor Naud (1487-150 A.D.) was the king of Ethiopia, and he learned melody, poetry, Old Testament and the New Testament.
+Following Emperor Zeriyaiakob, his son Negusat Lijawen Bederyam /from 1460-1470 A.M./ is said to have entered a monastery in his youth and spent his life in struggle without being distracted by his kingship. In the history of Ethiopian kings, Emperor Naod is known for his spirituality following Emperor Zeriyaiakob. Emperor Naod /from 1487-1500 A.M./ was the king, he studied Melkamaryam, and studied Zema Qene Bulin and Hadis Kidan.
 
-## ግራኝ መሐመድ / The Left Mohammad {#CHE-004-S009}
+## ግራኝ መሐመድ / Gragn Mohammed {#CHE-004-S009}
 
 ### CHE-004-S009-P001
 
@@ -4746,7 +4746,7 @@ It is said that his son Edemariam (1460-1470 AD) was the successor to Emperor Ze
 
 **English**
 
-The Leftist Muhammad is one of the enemies of the Ethiopian Orthodox Tewahedo Church. The Leftist Muhammad was born in the 15th year of the reign of the Virgin, and his reign was as the College of St. Paul, from 1527 to 1542. It originated in the eastern coast of Ethiopia, Somalia and the Adal region.
+Gragn Mohammed is one of the enemies of the Ethiopian Orthodox Tewahedo Church. Gragn Mohammed rose during the reign of Libne Dengil in 15 years, and his era is described as being from 1527-1542 A.M. /similar to St. Paul's College Shit/. He rose from the eastern border of Ethiopia from the Somalia and Adal areas.
 
 ### CHE-004-S009-P002
 
@@ -4756,7 +4756,7 @@ The Leftist Muhammad is one of the enemies of the Ethiopian Orthodox Tewahedo Ch
 
 **English**
 
-His ancestry is in Hobat in the Ogaden region of the Islamist side of his father's Somali origin and his mother's Hagerge. This pagan man committed great destruction against Ethiopia during the reign of Emperor Lebnedeng and his son Emperor Gallaudius for 15 years.
+The birthplace of the generation, located in the land of his mother, the Somali, is in a place called Hobat within Ogaden, where the Muslims settled. This infidel caused great destruction upon Ethiopia for 15 years during the reign of Emperor Libenedingil and his son Emperor Gelawdewos.
 
 ### CHE-004-S009-P003
 
@@ -4766,7 +4766,7 @@ His ancestry is in Hobat in the Ogaden region of the Islamist side of his father
 
 **English**
 
-The Leftist Muhammad caused great destruction to Ethiopia and the Church. If we look at the situation outside Ethiopia at this time, Constantinople was under the control of the Muslims of Magnolia and Turkey since 1453, and after the Christians of Asia Minor were under the control of the Muslims from 1453 AD, the Muslims of Magnolia and Turkey joined forces with the Arab Muslims and expanded their conquest activities.
+The infidel Mohammed caused great damage and destruction upon Ethiopia and the Church. If we look at the situation outside of Ethiopia during this era, from 1453 AD, after the Christians of the Levant and Asia Minor fell under the control of the Muslims, the Muslims of Hungary and Turkey began to expand their offensive actions by coordinating their strength with the Arab Muslims.
 
 ### CHE-004-S009-P004
 
@@ -4776,7 +4776,7 @@ The Leftist Muhammad caused great destruction to Ethiopia and the Church. If we 
 
 **English**
 
-As a result of this invasion, all of North Africa, Southern Europe, Greece, Spain, Albania, Bulgaria, Romania and Yugoslavia became Turkish states. In all this, Ethiopia, a Christian country, was not raped. This is because Ethiopia is a mountainous country and is not suitable for foreign invaders.
+Through this invasion, the Levant, North Africa, Southern Europe, Greece, Spain, Albania, Bulgaria, Romania, and Yugoslavia became Turkish territories. While all this was happening, Ethiopia, which was a Christian country, was not plundered. The reason for this was that Ethiopia, being a mountainous country, was not suitable for foreign invaders.
 
 ### CHE-004-S009-P005
 
@@ -4786,7 +4786,7 @@ As a result of this invasion, all of North Africa, Southern Europe, Greece, Spai
 
 **English**
 
-However, the leftist Muhammad secretly communicated with the Turkish authorities in the name of Islam and was motivated to destroy the Christian people and hand over the country to Turkey. The leftist Muhammad organized an army with the help of the Turks and Arabs, and the leader of the army was named Mafud.
+However, the infidel Mohammed, through secret correspondence with Turkish authorities under the name of Islam, was motivated to oppress the Christian people and hand over the country to the Turks. The infidel Mohammed had an army organized with soldiers supported by the Turks and Arabs, and the leader of the army was someone called Mahfud.
 
 ### CHE-004-S009-P006
 
@@ -4796,7 +4796,7 @@ However, the leftist Muhammad secretly communicated with the Turkish authorities
 
 **English**
 
-The Leftist Mohammad is known to have destroyed all the churches in the country, burned churches and massacred Christians, but the number of monasteries and monasteries is 38.
+Although the infidel Mohammed is known for destroying all the churches in the country, burning churches, and massacring Christians, the number of major monasteries and hermitages is 38. When this offensive was heard by the Ethiopian kings, the authorities did not hesitate to seek help from Christian countries.
 
 ### CHE-004-S009-P007
 
@@ -4806,7 +4806,7 @@ The Leftist Mohammad is known to have destroyed all the churches in the country,
 
 **English**
 
-However, the aid was delayed because the countries that asked for the aid were Catholics and Ethiopia was not Catholic. But the left began to invade Ethiopia with a soldier who had secretly trained with weapons imported from Turkey. For 15 years, Turkish bullets were fired on Ethiopia continuously.
+However, the help was delayed because the countries that were asked for help were followers of the Catholic faith, and Ethiopia was not a follower of the Catholic faith. The infidel, however, began to invade Ethiopia with soldiers he secretly trained with weapons brought from Turkey. For 15 years without interruption, Turkish bullets raged upon Ethiopia.
 
 ### CHE-004-S009-P008
 
@@ -4816,9 +4816,9 @@ However, the aid was delayed because the countries that asked for the aid were C
 
 **English**
 
-Among the churches that were burned were the Monastery of the Trinity, the Abune Tekledina Monastery in Mount Lebanon, the Monastery of the Holy Spirit of Zekla, the churches of Axum and Gondar, the monastery of Lake Tana and others. The priests and monks burned down the monasteries together, and religious books and historical documents were burned to the ground. The pilgrims who survived the sword were forced to convert to Islam.
+He finished and destroyed the remains of the churches that were burned after the Judith invasion and those burned after him. Among the churches burned by the infidel are: the Mekane Selassie monastery of Woreilu; the Debre Libanos monastery of Abune Teklehaimanot; the Zekuala Abune Gebremanfes Holy Monastery; the churches of Aksum and Gondar; the Tana Lake monastery and others, which were burned and looted. The priests and monks were burned along with the monasteries as they burned; religious books and historical documents became fuel for the fire. The faithful who survived the sword were killed and forced to accept the religion of Islam.
 
-## የግራኝ መሐመድ ወረራ በቤተ ክርስቲያንና በምዕመናን ላይ ያደረሰው ጉዳት / The Rise of the Leftist Mohammad on the Church and the Faithful {#CHE-004-S010}
+## የግራኝ መሐመድ ወረራ በቤተ ክርስቲያንና በምዕመናን ላይ ያደረሰው ጉዳት / The damage caused by the infidel Mohammed's invasion upon the Church and the faithful: {#CHE-004-S010}
 
 ### CHE-004-S010-P001
 
@@ -4828,7 +4828,7 @@ Among the churches that were burned were the Monastery of the Trinity, the Abune
 
 **English**
 
-A. Lowering the professional status of the clergy
+A. Lowering the professional status of the priesthood.
 
 ### CHE-004-S010-P002
 
@@ -4838,7 +4838,7 @@ A. Lowering the professional status of the clergy
 
 **English**
 
-(b) Marriage without the permission of a priest
+B. Obtaining priesthood without permission / imposing punishment / celebrating without chrism.
 
 ### CHE-004-S010-P003
 
@@ -4848,7 +4848,7 @@ A. Lowering the professional status of the clergy
 
 **English**
 
-c. Divorce from a husband, husband by wife who is not a wife
+C. Adultery of a wife from a husband, and a husband from a wife, whether legitimate or illegitimate.
 
 ### CHE-004-S010-P004
 
@@ -4858,7 +4858,7 @@ c. Divorce from a husband, husband by wife who is not a wife
 
 **English**
 
-d. Having multiple children from multiple women
+D. Giving birth to many children from many women.
 
 ### CHE-004-S010-P005
 
@@ -4868,7 +4868,7 @@ d. Having multiple children from multiple women
 
 **English**
 
-e. Lowering the sacraments of the rites performed by the parishioners in the Church, such as repentance, communion, and the Eucharist.
+E. Lowering the sacraments and rites that the faithful perform in the Church, for example, making them forget repentance, the Eucharist, and chrism.
 
 ### CHE-004-S010-P006
 
@@ -4878,7 +4878,7 @@ e. Lowering the sacraments of the rites performed by the parishioners in the Chu
 
 **English**
 
-f. Changing the name of the places to the name of the saint Nura Hussein, who was named after Abune Anoreus, a disciple of the righteous Tekle Religion in Bale province
+F. The corruption of place names, such as the change of the Holy Mekan Nura Husen, which was called by the name of Abune Anorewos, the deacon of the righteous Teklehaimanot in the Bale region, to its current name.
 
 ### CHE-004-S010-P007
 
@@ -4888,7 +4888,7 @@ f. Changing the name of the places to the name of the saint Nura Hussein, who wa
 
 **English**
 
-g. Eating raw meat began at that time and is still reflected today.
+G. The eating of moist / raw / meat began during that time and is still reflected today.
 
 ### CHE-004-S010-P008
 
@@ -4898,9 +4898,9 @@ g. Eating raw meat began at that time and is still reflected today.
 
 **English**
 
-The Queen's Majesty was buried in a place called Tsbaru, where her son Emperor Gallaudius reigned.
+Emperor Libenedingil passed away in a place called Tsibarue while in exile. After him, his son Emperor Gelawdewos reigned.
 
-## አፄ ገላውዴዎስ / Emperor Gallaudeus {#CHE-004-S011}
+## አፄ ገላውዴዎስ / Emperor Gelawdewos {#CHE-004-S011}
 
 ### CHE-004-S011-P001
 
@@ -4910,9 +4910,9 @@ The Queen's Majesty was buried in a place called Tsbaru, where her son Emperor G
 
 **English**
 
-Emperor Gallaudius reigned from 1530 to 1549, and during his reign he was executed on February 21, 1542. When the invading force was defeated and removed, the Church worked hard to find the lost believers, and its efforts were not in vain. Many of them returned from Islam to Christianity. Habakkuk of Mount Lebanon repeated the Book of Cedar and made him return to his religion. He was the one who wrote the Book of Cedar.
+Emperor Gelawdewos reigned from 1530-1549 A.M. During his reign, on the 21st day of the month of Yekatit, 1542 A.M., the Gragn was defeated. When the attacking force was defeated and dispersed, the Church worked hard to find and reclaim the missing faithful; however, their effort was in vain, as many returned from Islam to Christianity. Debre Libanos's Echege Inbaqom made every Christian who entered Islam repeat the Book of Qedar, sprinkle holy water, and return to his religion. He was also the one who wrote the Book of Qedar.
 
-## የካቶሊካውያን አመጣጥ / The Origin of the Catholics {#CHE-004-S012}
+## የካቶሊካውያን አመጣጥ / The Arrival of the Catholics {#CHE-004-S012}
 
 ### CHE-004-S012-P001
 
@@ -4922,7 +4922,7 @@ Emperor Gallaudius reigned from 1530 to 1549, and during his reign he was execut
 
 **English**
 
-The Catholics are among the enemies of the Church, and their origins are as follows: During the reign of the Leftist Muhammad, Emperor Lebne Virgin and his son Emperor Gallaudius, who were successive kings, could not resist the army of the Left Mohammed, and Emperor Gallaudius asked for 40 troops from Portugal.
+Among those we call the enemies of the Church are the Catholics, and their arrival is as follows. During the era when Gragn Mohammed rose, the successive kings Emperor Libne Dengel and his son Emperor Gelawdewos found it difficult to withstand Gragn Mohammed's army in battle; therefore, Emperor Gelawdewos requested that an army of 40,000 come from Portugal. Accordingly, the army was dispatched.
 
 ### CHE-004-S012-P002
 
@@ -4932,7 +4932,7 @@ The Catholics are among the enemies of the Church, and their origins are as foll
 
 **English**
 
-After this, Emperor Gallaudius became jealous of the fig tree in the war and defeated the leftist Muhammad. After the victory, many of the Portuguese army returned to their homeland, while a few remained here in Ethiopia. Among the rest, a heretic named Bermudez, asked Emperor Gallaudeus:
+After this, Emperor Gelawdewos defeated Gragn Mohammed in the battle of Lese. After the victory, most of the Portuguese army returned to their country, while a few remained here in Ethiopia. Among those who stayed, a heretic named Bermudez presented the following request to Emperor Gelawdewos.
 
 ### CHE-004-S012-P003
 
@@ -4942,7 +4942,7 @@ After this, Emperor Gallaudius became jealous of the fig tree in the war and def
 
 **English**
 
-He said to them, "I had a contract with your father, Emperor Lebnend, so that the Ethiopian half of Ethiopia would be for Portuguese, so that the Roman Catholic religion would become the national religion of Ethiopia, and that the Ethiopian Church would be under the Roman Catholic Church, and I would be the first Bishop of Rome in Ethiopia, so sign it."
+«I have a contract to be called the first Archbishop of Rome in Ethiopia, and I request that the Ethiopian Orthodox faith become the Roman Catholic faith, and that the Ethiopian Church be placed under the Roman Catholic Church. Sign it for me.»
 
 ### CHE-004-S012-P004
 
@@ -4952,7 +4952,7 @@ He said to them, "I had a contract with your father, Emperor Lebnend, so that th
 
 **English**
 
-Emperor Gallaudius said, "I don't understand what you're saying, I don't accept it, I will pay you for everything you have done for me, I will pay you in silver and gold. Anyone among you who loves Ethiopia can live like any Ethiopian. Those who don't want to live can still accept the price. I don't want to see the flag of another country hanging in my country anymore."
+Emperor Gelawdewos replied, "I do not understand what you are saying to me and I do not accept it. For everything you do for us, we will pay you in silver and gold. Among you, anyone who loves Ethiopia can live as any Ethiopian. Anyone who does not wish to stay can leave after receiving their payment." They responded, "From now on, I do not want to see the flag of another country flying in my country."
 
 ### CHE-004-S012-P005
 
@@ -4962,7 +4962,7 @@ Emperor Gallaudius said, "I don't understand what you're saying, I don't accept 
 
 **English**
 
-However, the Catholic Bermudez rejected the emperor's proposal and was found to be acting in his own time, so he was sent to an inn. While in prison, he sent an intermediary, released, and angrily returned home and presented everything that had happened to the Portuguese palace and the Vatican clergy. The Portuguese king and Pope Paul III discussed Bermudez's report and agreed to send more missionaries.
+However, because the Catholic Bermudez did not accept the Emperor's thought and acted on his own, he was ordered to be placed in a resting house (prison). While in prison, he was released after an intermediary was sent. In anger, he returned to his country and presented everything that happened to the Portuguese Kingdom and the Vatican priesthood. The Portuguese King and the Roman Pope Paul III discussed the report presented by Bermudez and agreed to send additional missionaries.
 
 ### CHE-004-S012-P006
 
@@ -4972,7 +4972,7 @@ However, the Catholic Bermudez rejected the emperor's proposal and was found to 
 
 **English**
 
-Ethiopians are hospitable and hospitable in their faith.
+Thus, Ethiopians are firm in faith and welcoming to strangers.
 
 ### CHE-004-S012-P007
 
@@ -4982,7 +4982,7 @@ Ethiopians are hospitable and hospitable in their faith.
 
 **English**
 
-Therefore, if we put on a robe and put on a cap and carry a Bible and a cross, they would welcome us, and then we would do what we wanted in the midst of war, and when the people ended in war and the government was weakened, we would do what we wanted in the middle. Their plan succeeded, and it is said that 100,000 people perished in the civil war as a result of a conspiracy by the Catholics. From that time until now, the Ethiopian people have been fighting each other.
+Therefore, they advised, "If we go dressed in clothes, wearing hats, carrying the Bible and the cross, they will accept us. Then, while we are dividing the kingdom and the people, and while the people are exhausted from war and the kingdom is weakened, we will do what we want among ourselves." Their plan succeeded; it is said that 100,000 people perished in the internal war caused by the Catholics. From that time until now, the Ethiopian people have been fighting one another.
 
 ### CHE-004-S012-P008
 
@@ -4992,7 +4992,7 @@ Therefore, if we put on a robe and put on a cap and carry a Bible and a cross, t
 
 **English**
 
-Since the Roman Catholics destroyed the government from the clergy, the kings, the princes, the nobles and the people, the country has found peace, and the experts have quarreled with the people and made the people hate it.
+The Roman Catholics said, "The country has found peace since we removed the kingdom from the priesthood, the kings from the nobility, and the skilled professionals from the people and the masses." They caused professionals to mingle with the people and to be hated among the people.
 
 ### CHE-004-S012-P009
 
@@ -5002,7 +5002,7 @@ Since the Roman Catholics destroyed the government from the clergy, the kings, t
 
 **English**
 
-The two characteristics of Catholic education are the doctrine of the Lyons, which have been spread and deepened in our country by the wisdom of the Romans. This doctrine of love and apostasy has been observed in our country after the reign of Emperor Gallaudius.
+The teaching of the Catholics is the two-nature teaching of the Lyonians, and this teaching has been spreading and spreading roots in our country through Roman wisdom. Even after the reign of Emperor Gelawdewos, the spread of this beloved /heretical/ teaching has been observed in our country during the reigns of successive kings.
 
 ### CHE-004-S012-P010
 
@@ -5012,7 +5012,7 @@ The two characteristics of Catholic education are the doctrine of the Lyons, whi
 
 **English**
 
-At this time, the Ethiopian scholars, together with their bishop, Abune Joseph, had a dispute with the missionaries. The missionaries seemed to have lost and withdrew from the dispute.
+At this time, the Ethiopian scholars, together with their Bishop Abune Yosef, engaged in a debate with the missionaries. The missionaries appeared to be defeated and fled from the debate.
 
 ### CHE-004-S012-P011
 
@@ -5022,9 +5022,9 @@ At this time, the Ethiopian scholars, together with their bishop, Abune Joseph, 
 
 **English**
 
-After this, Emperor Gallaudius died and his brother Minas became king.
+After this, Emperor Gelawdewos passed away and his brother Emperor Minas ascended the throne.
 
-## ኣፄ ሚናስ / Princess Minas {#CHE-004-S013}
+## ኣፄ ሚናስ / Emperor Minas {#CHE-004-S013}
 
 ### CHE-004-S013-P001
 
@@ -5034,7 +5034,7 @@ After this, Emperor Gallaudius died and his brother Minas became king.
 
 **English**
 
-During the reign of Emperor Minas from 1549 to 1553, the Catholic missionaries continued their fugitive arguments, and the Ethiopian people and the priests protested constantly. Emperor Minas summoned the Catholic Bishop Andrew Obedon and forbade him to preach Roman culture and religion.
+During the reign of Emperor Minas, from 1549-1553 A.M., the Catholic missionaries continued their debate which they had paused. The Ethiopian people and priests offered continuous opposition. Emperor Minas also summoned the Catholic Bishop Andreas Obedon and forbade him from preaching Roman culture and religion; Obedon, angered by the King's reprimand, began to destroy their names. When a conspiracy was hatched with the Muslims to assassinate the King and Emperor Minas, he was caught and ordered to stay in a prison house with the conspirators.
 
 ### CHE-004-S013-P002
 
@@ -5044,7 +5044,7 @@ During the reign of Emperor Minas from 1549 to 1553, the Catholic missionaries c
 
 **English**
 
-Then they escaped and joined the Turks, Ethiopia's enemies, who were stationed around Ethiopia. Emperor Minas was enraged by this conspiracy and was arranging methods to kill Andrew Abedon, but the queen and the king's courtiers prevented him from committing this unworthy evil deed, so he abandoned his murder and forced him to migrate to Mina.
+Then, they escaped and spread around Ethiopia, joining with the Turks, who were among the enemies of Ethiopia. While Emperor Minas was plotting to kill Andreas Abedon, the Empress and the King's associates forbade him from committing this unjust and evil act; they abandoned the plan to kill him and instead forced him into exile.
 
 # ምዕራፍ አምስት / Chapter Five {#CHE-005}
 
@@ -5056,7 +5056,7 @@ Then they escaped and joined the Turks, Ethiopia's enemies, who were stationed a
 
 **English**
 
-In the days leading up to the reign of the Emperor Constantine, the Emperor of the Empire
+From the reign of Emperor Menelik to our present time, Emperor Menelik/Dagamawe/
 
 ### CHE-005-S000-P002
 
@@ -5066,7 +5066,7 @@ In the days leading up to the reign of the Emperor Constantine, the Emperor of t
 
 **English**
 
-Emperor Tewodros became king in 1845 and after 15 years of trying to unite a divided Ethiopia and create a prosperous Ethiopia, he drank his guns and died in a dispute with the British. After Emperor Tewodros became the Emperor of Ethiopia, he died bravely in the battle of the Derbushes on Tema, but he did not unite Ethiopia.
+To mention the kings who fought to liberate Ethiopia from the rule of the Zemene Mesafint before our own era, it is necessary to mention Emperor Menelik's reign. Emperor Tewodros, after 15 years of fighting to unite a divided Ethiopia—where the King and the Zemine were separated—to create a strong central kingdom and a prosperous Ethiopia, laid down his arms following a disagreement with the British. After Emperor Tewodros, Emperor Yohannes became the Emperor of Ethiopia, but he died heroically fighting the Dervishes in the battle of Metema without unifying Ethiopia.
 
 ### CHE-005-S000-P003
 
@@ -5076,7 +5076,7 @@ Emperor Tewodros became king in 1845 and after 15 years of trying to unite a div
 
 **English**
 
-Menelik II was King of Showa for 23 years from 1858 to 1881 and became Emperor of all Ethiopia from 1882 to 1906 when Emperor John died.
+Dagamawe Menelik served as the King of Shewa for 23 years from 1858-1881 A.M., and after the death of Emperor Yohannes, he became the Emperor of all Ethiopia from 1882-1906 A.M.
 
 ### CHE-005-S000-P004
 
@@ -5086,7 +5086,7 @@ Menelik II was King of Showa for 23 years from 1858 to 1881 and became Emperor o
 
 **English**
 
-Emperor Menelik made a significant contribution to Ethiopia and the Ethiopian Orthodox Tewahedo Church during his time. He built a great bridge to make the country prosperous and prosperous through transportation, media, and heroism.
+Then, while leaving behind Eritrea and some former parts of Ethiopia, he secured the borders of today's Ethiopia. Emperor Menelik contributed significantly to Ethiopia and the Ethiopian Orthodox Tewahedo Church during his reign. He built great bridges so that the country could become known and prosperous through transport, mass media, and heroism.
 
 ### CHE-005-S000-P005
 
@@ -5096,7 +5096,7 @@ Emperor Menelik made a significant contribution to Ethiopia and the Ethiopian Or
 
 **English**
 
-I don't want to give up on my dreams and I don't want to give up on my dreams and I don't want to give up on my dreams. And they have made a great contribution to our church.
+He was a front-line figure in the victory of the Battle of Adwa, saying, "I will not hand over my country to the foreign invaders / Fascist Italy, and I will not let my country be humiliated." Among the significant contributions he made to our Holy Church,
 
 ### CHE-005-S000-P006
 
@@ -5106,7 +5106,7 @@ I don't want to give up on my dreams and I don't want to give up on my dreams an
 
 **English**
 
-A large number of churches have been built and have been widely used as a source of income for monasteries and monasteries
+he built many churches and generously granted land for monasteries and hermitages.
 
 ### CHE-005-S000-P007
 
@@ -5116,7 +5116,7 @@ A large number of churches have been built and have been widely used as a source
 
 **English**
 
-They gave a large amount of land to the priests and deacons
+He gave extensive land to priests and deacons.
 
 ### CHE-005-S000-P008
 
@@ -5126,7 +5126,7 @@ They gave a large amount of land to the priests and deacons
 
 **English**
 
-Churches in southern Ethiopia have been restored by the divisions between Catholics and the rulers of the leftist Muhammad and the ruling elites.
+He renovated the churches that had been destroyed by the division during the time of Gragn Mohammed, the Catholics, and the Zemene Mesafint, as well as those destroyed by the nomads in southern Ethiopia.
 
 ### CHE-005-S000-P009
 
@@ -5136,7 +5136,7 @@ Churches in southern Ethiopia have been restored by the divisions between Cathol
 
 **English**
 
-The Ethiopian monks were unable to enter the monasteries of Deir Sultan in Jerusalem during the negotiations with Egypt, so they sent an envoy to the Turkish government to open the gates of Deir Sultan.
+Because the Ethiopian monks were hindered and lost their exit to the Deir Sultan monastery in Jerusalem due to the agreement with Egypt, he sent a messenger to the Turkish Kingdom to have the gate of Deir Sultan opened.
 
 ### CHE-005-S000-P010
 
@@ -5146,9 +5146,9 @@ The Ethiopian monks were unable to enter the monasteries of Deir Sultan in Jerus
 
 **English**
 
-The Queen who reigned after Emperor Menelik was the Crown Prince, that is, from 1909 to 1920, and during the reign of this queen, the Ethiopian Church was transformed in a new way. On September 4, 1919, the Church Spiritual Assembly was established. The question of the appointment of the Ethiopian Fathers, which was initiated by King Harbe and King John, was again asked by the Queen's Fathers of Alexandria, which has received great attention in its contribution to self-sufficiency today.
+The Queen who reigned after Emperor Menelik was Zewditu, from 1909-1920 A.M. During this Queen's reign, the Ethiopian Church changed in a new way. On September 4, 1919 A.M., the Spiritual Council of the Church was established. The question of the ordination of Ethiopian Fathers, which had begun during the reign of King Harba and King Yohannes, was re-questioned by the Queen to the Fathers of Alexandria; this question has gained significant recognition today in the contribution to self-sufficiency.
 
-## ቀዳማዊ ኃይለ ሥላሴ / The First Trinity {#CHE-005-S001}
+## ቀዳማዊ ኃይለ ሥላሴ / First Emperor Haile Selassie {#CHE-005-S001}
 
 ### CHE-005-S001-P001
 
@@ -5158,7 +5158,7 @@ The Queen who reigned after Emperor Menelik was the Crown Prince, that is, from 
 
 **English**
 
-Haile Selassie I reigned from 1921 to 1966 and did a lot of good deeds for Ethiopia and the Ethiopians. During the reign of Emperor Menelik, he led to the annexation of Eritrea, which was outside the Ethiopian administration, first by a federation and then by the will of the people and by the full vote of the people.
+First Emperor Haile Selassie reigned from 1921-1966 A.M. and performed many good deeds for Ethiopia and Ethiopians. At the time he began to rule, he first brought the Eritrean territory, which was outside the Ethiopian administration, into the federation, and then, by the will and full voice of the people, integrated it with its motherland, Ethiopia.
 
 ### CHE-005-S001-P002
 
@@ -5168,7 +5168,7 @@ Haile Selassie I reigned from 1921 to 1966 and did a lot of good deeds for Ethio
 
 **English**
 
-The Ethiopian Orthodox Tewahedo Church has also made a great contribution to the spiritual journey of the Ethiopian Orthodox Tewahedo Church, building a number of churches. They have made efforts to expand monasteries and monasteries. They have also examined the centuries when the Church has been deprived of the right to be ordained by the papacy, and the Ethiopian Orthodox Tewahedo Church has established its own Fathers' Church.
+He also made a great contribution to the spiritual journey of the Ethiopian Orthodox Tewahedo Church. He built many churches and strived to expand monasteries and hermitages. In addition to this, by examining the periods during which the Church had been deprived of the right to ordain its own fathers for long periods, he established the level at which the Ethiopian Orthodox Tewahedo Church could ordain its own fathers within its own Church.
 
 ### CHE-005-S001-P003
 
@@ -5178,7 +5178,7 @@ The Ethiopian Orthodox Tewahedo Church has also made a great contribution to the
 
 **English**
 
-It was a direct question of our Church whether the title of papacy, which had previously been held by the Egyptian bishops, should be given to the Ethiopian scholars. But the Egyptians did not want to appoint Ethiopians in the spirit that if the Ethiopians became independent, they would be left behind. Ethiopia continued to import bishops from Egypt for the following reasons:
+This was the direct question of our Church that the rank of priesthood, which had been held by the Egyptian bishops, should be given to Ethiopian scholars. However, the Egyptians did not want to ordain the Ethiopians because they were in a spirit of thinking that if the Ethiopians could manage themselves, they would lose our [influence/benefit]. Ethiopia continued to receive bishops from Egypt for the following reason.
 
 ### CHE-005-S001-P004
 
@@ -5188,7 +5188,7 @@ It was a direct question of our Church whether the title of papacy, which had pr
 
 **English**
 
-In the name of the 318 scholars of the three centuries, Article 42 of the Canon of Nicaea stipulates that the Ethiopians should not appoint a bishop from among their scholars. This order was added in the book of canon in the 7th century. This law forbids the appointment of a bishop from the eightieth canon, which is found in the Book of Kings of Justice.
+This is because there was a command in the Council of Nicaea Canon, Article 42, in the *Siriats* (Canon), which states: "The Ethiopians shall not appoint bishops from among their scholars." This command was added to the Canon book in the 7th century. This law, which forbids Ethiopians from appointing bishops, is found in the *Fitha Negest* book in the 58th Canon.
 
 ### CHE-005-S001-P005
 
@@ -5198,7 +5198,7 @@ In the name of the 318 scholars of the three centuries, Article 42 of the Canon 
 
 **English**
 
-In the sixth article of the Nicene Canon, the Archbishop of Egypt, Libya and Pendapolis, in order to prevent this from happening in the interests of the Egyptians, made a law to obey the Archbishop of Alexandria because they had accepted Christianity from Alexandria. Ethiopia was also part of the Diocese of Alexandria because of this, it had to be obedient to the Church of Alexandria, but it was not sent by an apostle from Egypt. As it is known, Christianity entered Ethiopia in the time of the Apostles.
+The Council of 318, rather than for the benefit of the Egyptians, in order to prevent division within the Church, decreed in the 6th Article of the Nicaean Canon that the sees of Egypt, Libya, and Pendapolis should be submitted to the Patriarch of Alexandria. Ethiopia, also being part of the province of Alexandria in this context, was required to obey the Church of Alexandria; it did not receive what was sent from the Apostles of Egypt. As is known initially, Christianity entered Ethiopia during the time of the Apostles.
 
 ### CHE-005-S001-P006
 
@@ -5208,7 +5208,7 @@ In the sixth article of the Nicene Canon, the Archbishop of Egypt, Libya and Pen
 
 **English**
 
-However, Abba Salam, who was first appointed as a bishop to Ethiopia, was among the Egyptians, and bringing the pope from the Egyptians is not bringing Christianity. Even if it is said that Ethiopia received Christianity from Egypt, the canonical church will allow it to ordain its children if it has children worthy of the title of papacy.
+However, the first time the appointment of bishops for Ethiopia was sent by Abba Selama was among the Egyptians. Bringing the episcopacy from the Egyptians is not the same as bringing Christianity. Even if it is said that Ethiopia received Christianity from Egypt, if a congregation has children qualified for the rank of bishop, the Canon of the Church allows it to appoint its own children.
 
 ### CHE-005-S001-P007
 
@@ -5218,9 +5218,9 @@ However, Abba Salam, who was first appointed as a bishop to Ethiopia, was among 
 
 **English**
 
-For example, since Cyprus had converted to Christianity from Antioch / During the three-century order, when it produced many parishioners and children worthy of the papacy, it was ruled under the seat of Antioch until 431 A.D., when it was ruled under the seat of Antioch at the Third Council of the Churches in Ephesus in 431 A.D. It was decided that it would be able to govern itself and appoint its own children as bishops. (Synod - Ephesians Article 8) The Ethiopian Church has been patiently told for 1600 years that "Ethiopians should not appoint bishops from among their scholars."
+For example, Cyprus received Christianity: because it was under Antioch, while living under the command of the Council of 318 in the province of Antioch, when it produced many qualified and distinguished children for the episcopacy, it was decided in 431 AD that it could govern itself and appoint its own children as bishops. / Council of Ephesus, Article 8/ The Ethiopian Church endured the saying "The Ethiopians shall not appoint bishops from among their scholars" patiently for 1600 years. But
 
-## በመጀመሪያ ጵጵስናን የተቀበሉ የተሾሙ/ ኢትዮጵያውያን ሊቃውንት / Ethiopian scholars who were first ordained to the pope {#CHE-005-S002}
+## በመጀመሪያ ጵጵስናን የተቀበሉ የተሾሙ/ ኢትዮጵያውያን ሊቃውንት / initially, the bishops who received the episcopacy were the Ethiopian scholars. {#CHE-005-S002}
 
 ### CHE-005-S002-P001
 
@@ -5230,7 +5230,7 @@ For example, since Cyprus had converted to Christianity from Antioch / During th
 
 **English**
 
-The question of Ethiopia's need to appoint a bishop of its own children, which had begun with Saint Harbe and Emperor John, came to an end during the reign of the Queen. After the death of the Egyptian Abune Matthews, the question was presented to the Church of Ethiopia and the Church of Ethiopia, and after three years of pilgrimage in Ethiopia and the Church of Ethiopia, on May 5, 1921, four Ethiopian intellectuals were appointed Bishops in Cairo.
+The question of whether Ethiopia should appoint its own children as bishops, which began in the Holy *Harbena* at the Cathedral of St. John, found its conclusion during the reign of Empress Zewditu. After the death of the Egyptian Abune Matthew, the question was presented to the Coptic Church, and after about three years of debate between Ethiopia and the Coptic Church, on Ginbot 5, 1921 AD, four Ethiopian scholars were appointed as bishops in Cairo. They are:
 
 ### CHE-005-S002-P002
 
@@ -5240,7 +5240,7 @@ The question of Ethiopia's need to appoint a bishop of its own children, which h
 
 **English**
 
-1. Teacher Haile Mary in Blessed Abune Peter 2. Teacher Joy 3. Teacher Son of Covenant 4. Teacher H. Michael - Blessed Abune Abraham - Blessed Abune Isaac - Blessed Abune Michael.
+1. Memhir Haile Maryam, Abune Petros 2. Memhir Desta 3. Memhir Wolde Kidan 4. Memhir Ha/Mikael - - Abune Abraham - Abune Yishaq - Abune Mikael.
 
 ### CHE-005-S002-P003
 
@@ -5250,7 +5250,7 @@ The question of Ethiopia's need to appoint a bishop of its own children, which h
 
 **English**
 
-In 1922, the Patriarch of Alexandria, Abba John XIX, visited Ethiopia, and on January 1, Gebre Sairos, the archbishop of Mount Lebanon, appointed the Holy Spirit as Bishop of Mount Lebanon at the Church of the Father of the Kings of Mount Mary in Addis Ababa. For the first time in Ethiopia's 16-century history, five Ethiopian bishops were appointed. The archbishop is the archbishop of Egypt.
+Along with these, one Egyptian Patriarch named Abune Kerlos was also appointed and came. In 1922 AD, while the Patriarch of Alexandria, Abba Yohannes 19th, was visiting Ethiopia, the ones who were at Debre Libanos, Gebre Menfes Kidus, were appointed as Abune Sawiros on Tir 1 in Addis Ababa in the *Ta'e Negest* at Maryam Church. For the first time in 1600 years of Ethiopian history, five Ethiopian bishops were appointed. However, the one who leads as Patriarch is the Egyptian Patriarch.
 
 ### CHE-005-S002-P004
 
@@ -5260,7 +5260,7 @@ In 1922, the Patriarch of Alexandria, Abba John XIX, visited Ethiopia, and on Ja
 
 **English**
 
-In 1940, there was a lot of correspondence between the Church and the Patriarch of Alexandria, His Beatitude Abune Yosab, who demanded that five Ethiopian Abbots be elected as Bishops.
+Similarly, in 1940 AD, five Ethiopian elders were selected to be appointed as bishops, and much debate and ups and downs occurred between the Church and the Patriarch of Alexandria, Abune Kudus Abune Yosab. Finally, as the terms of the agreement became known, a great council was held in Addis Ababa on Hamle 13, 1940 AD. The council expressed the joy of the resolution of the disagreement that existed between the Ethiopian Orthodox Tewahedo Church and the Church of Alexandria.
 
 ### CHE-005-S002-P005
 
@@ -5270,7 +5270,7 @@ In 1940, there was a lot of correspondence between the Church and the Patriarch 
 
 **English**
 
-The five nominees were also appointed to the Patriarchate of Alexandria on July 18, 1940.
+The five selected were appointed as bishops to the Patriarch of Alexandria on Hamle 18, 1940 AD. The ancient episcopal names of the appointees are as follows:
 
 ### CHE-005-S002-P006
 
@@ -5280,7 +5280,7 @@ The five nominees were also appointed to the Patriarchate of Alexandria on July 
 
 **English**
 
-1. Eqege Gebre Giorgis /Blessed Abune Basilios/
+1. Echege Gebre Giorgis / Abune Basilios/
 
 ### CHE-005-S002-P007
 
@@ -5290,7 +5290,7 @@ The five nominees were also appointed to the Patriarchate of Alexandria on July 
 
 **English**
 
-2. Teacher Gerima / Blessed Abune Mikel/
+2. Memhir Gerima / Abune Mikael/
 
 ### CHE-005-S002-P008
 
@@ -5300,7 +5300,7 @@ The five nominees were also appointed to the Patriarchate of Alexandria on July 
 
 **English**
 
-3. The Message of the Supreme Authorities / Blessed Abune Tewoflos/
+3. Liqes Siltanat Meliktu / Abune Tewoflos/
 
 ### CHE-005-S002-P009
 
@@ -5310,7 +5310,7 @@ The five nominees were also appointed to the Patriarchate of Alexandria on July 
 
 **English**
 
-4. Teacher Zerfe Light / Blessed Abune Jacob/
+4. Memhir Zerfe Berhan / Abune Ya'eqob/
 
 ### CHE-005-S002-P010
 
@@ -5320,7 +5320,7 @@ The five nominees were also appointed to the Patriarchate of Alexandria on July 
 
 **English**
 
-5. Teacher Getahun / Blessed Abune Timothy/
+5. Memhir Getahun / Abune Timothewos/
 
 ### CHE-005-S002-P011
 
@@ -5330,7 +5330,7 @@ The five nominees were also appointed to the Patriarchate of Alexandria on July 
 
 **English**
 
-From this time onwards, the Egyptians' unjustified system of "Tawba a Ethiopiase Iimu Arch Mamranihomu" was abolished.
+From this time forward, the *Siriats* that the Egyptians had improperly recorded in the *Fitha Negest* saying "The Ethiopians shall not appoint bishops from among their scholars" was abolished.
 
 ### CHE-005-S002-P012
 
@@ -5340,7 +5340,7 @@ From this time onwards, the Egyptians' unjustified system of "Tawba a Ethiopiase
 
 **English**
 
-The Ethiopian Orthodox Tewahedo Church, patiently and humbly, patiently and humbly demanded that the Egyptians grant the rights of the Archbishop of Ethiopia. The request was difficult for the Egyptians, but they could not defend it, and on January 6, 1943, Archbishop Abune Basilios was appointed Archbishop of Ethiopia.
+After the Ethiopian Orthodox Tewahedo Church obtained the right of the priesthood with patience and humility, it requested step by step that the Egyptians grant the right of the Archbishop. Although the request was difficult for the Egyptians, because they could not refuse to grant it, it was granted by force and by favor, and on March 6, 1943 A.M., he was appointed as Archbishop, titled Abune Basilios, Archbishop of Ethiopia.
 
 ### CHE-005-S002-P013
 
@@ -5350,7 +5350,7 @@ The Ethiopian Orthodox Tewahedo Church, patiently and humbly, patiently and humb
 
 **English**
 
-After all this, it was the last authority of the Patriarchate. The Egyptians were asked to allow the authority of the Patriarchate at that time, as it was written for God, and there was still a written exchange between the Ethiopian Orthodox Tewahedo Church and the Church of Alexandria, as usual.
+After all this, the final authority of the Patriarchate remained. It was written that 'Time belongs to God,' and thus a request was submitted to the Egyptians to grant the authority of the Patriarchate: again, as is customary, a written correspondence was exchanged between the Ethiopian Orthodox Tewahedo Church and the Church of Alexandria.
 
 ### CHE-005-S002-P014
 
@@ -5360,7 +5360,7 @@ After all this, it was the last authority of the Patriarchate. The Egyptians wer
 
 **English**
 
-Eventually, however, Beatitude Abune Basil was elected Archbishop of Cairo and was ordained as the Ethiopian Patriarch on June 21, 1951 at the Church of St. Mark in Cairo by His Holiness Abune Cyril VI, Patriarch of Alexandria.
+Finally, Abune Basilios was chosen for the Patriarchate and went to Cairo; on June 21, 1951 A.M., in the Church of Saint Mark in Cairo, he was appointed as the Patriarch of Ethiopia by Abune Qerlos the Sixth, the Patriarch of Alexandria.
 
 ### CHE-005-S002-P015
 
@@ -5370,9 +5370,9 @@ Eventually, however, Beatitude Abune Basil was elected Archbishop of Cairo and w
 
 **English**
 
-Ethiopia's Patriarchate of the Ethiopian Orthodox Tewahedo Church, Patriarch of Ethiopia, has been appointed by the Patriarch of the Ethiopian Orthodox Tewahedo Church.
+After this, Abune Basilios completed the final rank of authority, titled Patriarch and Head of the Bishops of Ethiopia of the Ethiopian Orthodox Tewahedo Church. After Ethiopia obtained its own Patriarchal See, it has been expanding the Gospel service by appointing many bishops and spreading them across various regions through the Patriarchs appointed in every era.
 
-## የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን በፓትርያርክነት የመሩ አባቶች / The Ethiopian Orthodox Tewahedo Church under the Patriarchate {#CHE-005-S003}
+## የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን በፓትርያርክነት የመሩ አባቶች / Fathers who led the Ethiopian Orthodox Tewahedo Church in the Patriarchate {#CHE-005-S003}
 
 ### CHE-005-S003-P001
 
@@ -5382,7 +5382,7 @@ Ethiopia's Patriarchate of the Ethiopian Orthodox Tewahedo Church, Patriarch of 
 
 **English**
 
-1. His Holiness Abune Basilios, Pope of Ethiopia
+1. Abune Qerlos the Sixth, Patriarch and Head of the Bishops of Ethiopia
 
 ### CHE-005-S003-P002
 
@@ -5392,7 +5392,7 @@ Ethiopia's Patriarchate of the Ethiopian Orthodox Tewahedo Church, Patriarch of 
 
 **English**
 
-2. His Beatitude Abune Tewafflos, Patriarch of Ethiopia
+2. Abune Tewoflos, Patriarch of Ethiopia
 
 ### CHE-005-S003-P003
 
@@ -5402,7 +5402,7 @@ Ethiopia's Patriarchate of the Ethiopian Orthodox Tewahedo Church, Patriarch of 
 
 **English**
 
-3. His Beatitude Abune Tekledin, Patriarch of Ethiopia
+3. Abune Teklehaimanot, Patriarch of Ethiopia
 
 ### CHE-005-S003-P004
 
@@ -5412,7 +5412,7 @@ Ethiopia's Patriarchate of the Ethiopian Orthodox Tewahedo Church, Patriarch of 
 
 **English**
 
-4. His Beatitude Abune Merkorios, Patriarch of Ethiopia
+4. Abune Merqoryos, Patriarch of Ethiopia
 
 ### CHE-005-S003-P005
 
@@ -5422,7 +5422,7 @@ Ethiopia's Patriarchate of the Ethiopian Orthodox Tewahedo Church, Patriarch of 
 
 **English**
 
-5. His Beatitude Abune Paul, Patriarch of Ethiopia, Archbishop Zeaksum Woezege Zemnbere Tekledin.
+5. Abune Paulos, Patriarch and Head of the Bishops of Ethiopia, Archbishop of Aksum and Achage, of the era of Teklehaimanot.
 
 ### CHE-005-S003-P006
 
@@ -5432,7 +5432,7 @@ Ethiopia's Patriarchate of the Ethiopian Orthodox Tewahedo Church, Patriarch of 
 
 **English**
 
-In general, during the reign of Haile Selassie I, a number of spiritual activities were carried out, and in order to suppress these spiritual developments, fascist Italy carried out a brutal invasion of the country for five years in a row in 1928, and the leader of the invasion was known as Mussolini.
+In general, during the reign of Emperor Haile Selassie I, many spiritual activities were carried out, and to suppress these spiritual advancements, Fascist Italy launched an unjust invasion on the country in 1928 A.M. for five consecutive years. The leader of the invasion is known as Mussolini. This leader, who gave strong support to Muslims worldwide while seeking to destroy the Christians of Ethiopia and other countries and to demolish the Church, promoted himself through the Tripoli proclamation.
 
 ### CHE-005-S003-P007
 
@@ -5442,7 +5442,7 @@ In general, during the reign of Haile Selassie I, a number of spiritual activiti
 
 **English**
 
-Mussolini succeeded in his mission and launched a large-scale campaign against Ethiopia. He killed the people, caused extensive damage to Christian property and property. According to the United Nations Statistics Division, he burned 2,000 monasteries and monasteries.
+Mussolini, with his goal set, launched a vast campaign on Ethiopia. He destroyed the people and caused severe damage to the possessions and property of Christians. As the United States' historical section testifies, 2,000 monasteries and hermitages were burned.
 
 ### CHE-005-S003-P008
 
@@ -5452,7 +5452,7 @@ Mussolini succeeded in his mission and launched a large-scale campaign against E
 
 **English**
 
-In addition to the veterans who died fighting in front of the Italian invasion army, many monks and priests from Mount Lebanon, St. Lalibela, Axum, Gondar and Zekla were slain by Mussolini's sword.
+In addition to the soldiers who died fighting the Italian invasion frontally, many monks, monks, and priests who were in Debre Libanos, Saint Lalibela, Aksum, Gondar, and Ziquala were struck by Mussolini's sword. Abune Petros, Archbishop of Eastern Ethiopia, and Abune Mikael, Bishop of Shere, were struck by Mussolini's Fascist army in Gefanya.
 
 ### CHE-005-S003-P009
 
@@ -5462,7 +5462,7 @@ In addition to the veterans who died fighting in front of the Italian invasion a
 
 **English**
 
-The fascist chief Graziani summoned Abune Peter and threatened him to claim to be subject to the king of Italy, and he replied: "King Jesus Christ is the only earthly king, Haile Selassie I, only the Ethiopians." Graziani ordered that they be considered bandits and killed as bandits. When Abune Peter was taken to the place where they were to be killed, they blessed the area in all four corners and stood in front of the people and said:
+The Fascist leader Graziani captured Abune Petros and, by threatening him to say he was a servant of the Italian King, asked him; he replied to him saying, 'The heavenly King Jesus Christ and the earthly King Haile Selassie I are the only kings for Ethiopians only.' Graziani, considering this as an insult, ordered him to be killed. When Abune Petros was taken to the place where he was to be killed, after blessing the area in the four directions, he stood before the people and said:
 
 ### CHE-005-S003-P010
 
@@ -5472,7 +5472,7 @@ The fascist chief Graziani summoned Abune Peter and threatened him to claim to b
 
 **English**
 
-"If the fascists call you a bandit of our country, don't think it's true. A bandit is a bandit who comes without his country and snatches people's wealth and spills blood and burns churches. The Ethiopian people are condemned for not subjugating him. And the land of Ethiopia should be condemned so that you do not accept it."
+«If you Fascists say that you are insulting our country's people, you do not realize the truth. Insulting means coming to a country without a home, stealing people's inheritance and wealth, burning Christian churches, and shedding blood. The demon standing among you is the Italian Fascist. Let the people of Ethiopia be resistant so they are not conquered by him. Let the land of Ethiopia also be resistant so it is not accepted by him.»
 
 ### CHE-005-S003-P011
 
@@ -5482,7 +5482,7 @@ The fascist chief Graziani summoned Abune Peter and threatened him to claim to b
 
 **English**
 
-And after they had spoken, the enemy's army fired machine guns and killed them. May the grace of St. Peter bless us. Amen.
+He spoke. After his speech, they were shot and killed by the enemy's army. May the grace and blessing of Saint Petros reach us. Amen.
 
 # ዋቢ መጻሕፍት / References {#CHE-006}
 
@@ -5494,7 +5494,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-1. History of the E/O/T/C/C/by Abune Gregorios/ 1976
+1. History of the E.O.T.C. /by Abune Gorgorios/ 1976 E.C.
 
 ### CHE-006-S000-P002
 
@@ -5504,7 +5504,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-2. Ethiopia under the Three Laws (Chief Ayalew Tamru) 1953
+2. Ethiopia in Three Laws /Aleka Ayalew Tamru/ 1953 E.C.
 
 ### CHE-006-S000-P003
 
@@ -5514,7 +5514,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-3. The Cross of the Cross (Gshen Debre Kyrbe Mary Committee 1990)
+3. Anbir Mesqelye be Dibe Mesqel /by Geshen Debre Kerbe Mariam Committee 1990/
 
 ### CHE-006-S000-P004
 
@@ -5524,7 +5524,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-4. An Ethiopian in Search of His Identity (Nabured Jeremiah, 1991)
+4. Searching for Ethiopian Identity /Nubre'ed Ermias in 1991/
 
 ### CHE-006-S000-P005
 
@@ -5534,7 +5534,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-5. The Search for the Ark of Zion (Translation by the Society of Saints, 1993)
+5. Searching for the Tabot of Zion /Translation by Mahabere Kidusan 1993/
 
 ### CHE-006-S000-P006
 
@@ -5544,7 +5544,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-6. Magazine Amin Medlote Amin /Horizon Jenbre Teacher/
+6. Mezehete Amin Medlote Amin /by Admasu Jenbere Memhir/
 
 ### CHE-006-S000-P007
 
@@ -5554,7 +5554,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-7. Paul's College Shooting (History)
+7. Paulos College Sheet /History/
 
 ### CHE-006-S000-P008
 
@@ -5564,7 +5564,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-8. Eve (Brighton Lord's Choice)
+8. Wazema /Blaten Geta Haruy/
 
 ### CHE-006-S000-P009
 
@@ -5574,7 +5574,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-9. Ancient Ethiopian Teachings / Officials Habtemariam Werkneh/
+9. Ancient Ethiopian Education /Liqesiltanat Habtemaryam Workneh/
 
 ### CHE-006-S000-P010
 
@@ -5584,7 +5584,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-10. The Eighty-One Bible
+10. Semanya Ahadu Holy Bible
 
 ### CHE-006-S000-P011
 
@@ -5604,7 +5604,7 @@ And after they had spoken, the enemy's army fired machine guns and killed them. 
 
 **English**
 
-Devotion
+Wosbehat
 
 ### CHE-006-S000-P013
 
@@ -5624,7 +5624,7 @@ Church Development
 
 **English**
 
-For God
+To God
 
 ### CHE-006-S000-P015
 
@@ -5634,7 +5634,7 @@ For God
 
 **English**
 
-Sunday School at St. George's Church in Paradise
+In Menagesha Genete Tsegé Kidus Giorgis Church Sunday School
 
 ### CHE-006-S000-P016
 
@@ -5644,7 +5644,7 @@ Sunday School at St. George's Church in Paradise
 
 **English**
 
-A classroom has been set up.
+The lesson was prepared.
 
 ### CHE-006-S000-P017
 
@@ -5674,4 +5674,4 @@ A classroom has been set up.
 
 **English**
 
-200 A.D.
+2007 E.C.

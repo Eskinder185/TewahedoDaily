@@ -10,171 +10,171 @@ publication_status: draft
 
 # Chapter 4 {#CHW-003}
 
-### The Golden Age of the Church (312-434) {#CHW-003-S001}
+### The Golden Age of the Church /Age of the Saints/ 312 - 434 {#CHW-003-S001}
 
 <!-- CHW-003-S001-P001 -->
-Our Savior God Jesus Christ has been praying on the Mount of Olives for three years and three months at night, and day by day, imitating and interpreting the Gospel in parables and interpreting it, and revealing the mystery of the Kingdom of Heaven to the people. St. John the Baptist, St. Basil, St. Epiphanius, and St. Athanasius are among the foremost noted.
+Our Savior, our God, Jesus Christ, spent three years and three months praying night by night on the Mount of Olives, and day by day he taught the Gospel by using parables, interpreting them, and revealing the mystery of the Kingdom of Heavens to the people. The Holy Saints also spent their time teaching the Holy Scriptures, interpreting the symbolized as if they had emerged from their God, and translating the symbolized as if they had not been tired or weary. It is the era when the Fathers, who stood up to defend the faith and order so that it would not be violated by heretics who rose with false words and argued in councils, taught and instructed the faithful. For example, Saint John Chrysostom, Saint Basil, Saint Epiphanius, and Saint Athenagoras are prominent figures.
 
 <!-- CHW-003-S001-P002 -->
-1. Basleius of Caesarea 322 – 371 AD
+1. Basil of Caesarea 322 - 371 AD
 
 <!-- CHW-003-S001-P003 -->
-Basleius means the Sisters of the Church. His country is Antioch and his mother's name is Emilia and his father is Essidros. He was the fourth child in his family, and his number is three centuries. He was the Archbishop of Caesarea, and St. Basalius was a man of many miracles, as the heart of God is David, and God performed many wonderful miracles in him. For example: 1. He was three days old
+Basil means 'the pillar of the Church.' His homeland was Antioch, his mother was Emilia, and his father was Esedros. He was the fourth child of his family, and his age was around three hundred. He was the Patriarch of Caesarea; Saint Basil is a good man whose tongue never leaves prayer, and as God was with him like David the man of God, he performed many wonderful miracles. For example:- 1. He added three days to his life.
 
 <!-- CHW-003-S001-P004 -->
-2. He prayed for the opening of the church, which was closed during the Alayite era.
+2. He caused a church that had been closed during the era of the Arianists to be opened for prayer.
 
 <!-- CHW-003-S001-P005 -->
-3. He repented of the man who had married the king's son, led by the work of demons and had renounced his name. We have taken this as an example, but he performed holy miracles. When Saint Basalius rises, Saint Ephraim rises with him, for there are works that both of them have done.
+3. He returned a man who had been corrupted by the works of demons and had married the king's daughter to repentance. For this, he performed miracles beyond description. When Saint Basil was raised, Saint Ephrem was also raised; both of them performed great works.
 
-### Saint Ephraim from 306 -375 AD {#CHW-003-S002}
+### Saint Ephrem from 306 - 375 AD {#CHW-003-S002}
 
 <!-- CHW-003-S002-P001 -->
-His native country is Syria, and his mother and father were pagans. When they returned, a pillar of light was planted from the earth to the heavens for the night, and the light was full of all the world. When he said to his wife, "Explain it to me," an obedient angel came and said to him, "Basileus the Great, for he will make it shine in his teaching." He went to Caesarea to see if he should see such a thing, but he went and did not find it as he had thought or seen.
+Saint Ephrem's country is Syria, and both he and his father were Aramaic. While Jacob of Nisibis was a psalmodist, he went to Nicaea following the Arian controversy; upon their return, he saw a vision at night where a pillar of light was planted from the earth to the heavens, and its light spread throughout the world. When he asked, 'Explain to me who the owner is,' a commanded angel came and said, 'It is Basil of Caesarea, who will make the world bright with his teaching.' Thinking this was a worthy thing to see, he went to Caesarea, but he did not find him as he had expected and imagined.
 
 <!-- CHW-003-S002-P002 -->
-He found him sitting on a golden chair, spreading out the golden gospel with gold Atrons, wrapped in a cloak, and teaching in a cloak. When he doubted that it was him, he saw that it was him, and he understood it in four things.
+He found him sitting on a golden throne, spreading a golden Gospel on a golden throne, covered in filth, wearing a kaba lanqa (a type of cloak), and teaching. While he was doubting if it was him, he understood it was him by seeing four things.
 
 <!-- CHW-003-S002-P003 -->
-1. When a fire comes out of his mouth and unites the people
+1. Flames of fire coming out of his mouth as he was scattering the people.
 
 <!-- CHW-003-S002-P004 -->
-2. When the Buddha rests on his clothes and falls like corn
+2. Demons sitting on his clothes and cursing like potatoes.
 
 <!-- CHW-003-S002-P005 -->
-3. When a white pigeon comes and rests on its head
+3. A white dove coming and resting on his head.
 
 <!-- CHW-003-S002-P006 -->
-4. Let him know his name, and inquire of his country: Ephraim the Syrian: Call me to Behwi, and he will stand from the corner church and pray for you.
+4. He called out, 'He knows the name, he knows the country, Ephrem the Syrian, Ephrem the Labawi, tell me; they stand in the corner of the church and pray for you.'
 
 <!-- CHW-003-S002-P007 -->
-The language of Basleius was explained to Ephraim, the language of Ephraim was explained to Basleus, and when they spoke to him, they said that he was a deacon, and if they said that he was a deacon, he appointed him a priest. He made them two together, and they atonerated the sin of a woman who was one of the relatives of kings by writing down the sins she committed every day.
+When the language of Basil was revealed to Ephrem and the language of Ephrem was revealed to Basil, they reached a point where they were conversing; one said, 'Is it Diqona?' the other said, 'Is it Qisna?' Qisna was mocked. They united both of them and, while a woman from among the nobles wrote down the sin she committed daily and the sin of a woman she was enduring, they erased the sin of that woman through their prayer.
 
-### St. Basil's Contribution to the Church {#CHW-003-S003}
+### The contribution Saint Basil made to the Church {#CHW-003-S003}
 
 <!-- CHW-003-S003-P001 -->
-1. The Mass Has Arrived
+1. He composed the Me'tsahafe Qidase (Divine Liturgy).
 
 <!-- CHW-003-S003-P002 -->
-2. He set up an educational class in the liturgical system
+2. He prepared the teaching section within the Liturgy.
 
 <!-- CHW-003-S003-P003 -->
-3. Praise to God The Book of Lytho in general received many disciplines and essays as well, and finally Saint Basleus died on January 6, 371 A.D.
+3. He composed many hymns, including the Wudase Amlak (Praise of God) and the Me'tsahafe Lito. Finally, Saint Basil passed away on the 6th of Tir in 371 AD.
 
 <!-- CHW-003-S003-P004 -->
-2. St. John the Baptist from 307-407 AD
+2. Saint John Chrysostom from 307-407 AD
 
 <!-- CHW-003-S003-P005 -->
-John means joy and compassion. His father's name is Asfanidos and his mother's name is Athanasius. His country is Antioch and he came down to physical Athens and learned wisdom. He was appointed Archbishop of Constantinople by St. Basalius. If you ask how John got the nickname Afwer when it was his name:
+John means 'God is gracious' and Chrysostom means 'Golden-mouthed.' His father is called Asphanidos and his mother Atnasya. His country is Antioch, and he was educated in the wisdom of the flesh, Athena. He was appointed as the Patriarch of Constantinople by the hand of Saint Basil. When asked how the title Chrysostom could be given to him while his name was John, he said:
 
 <!-- CHW-003-S003-P006 -->
-1. The Lord God, who reproached and belittled the Mother of Our Lady, was called Legend of Gold, because he was taken from his mouth like gold, thinking of the holiness and chastity of Our Lady without disgusting or shame, thinking of the holiness and chastity of Our Lady, without disgusting or shame.
+1. To humiliate and mock Nestorius, who was slandering the divinity of the Lord God and the motherhood of our Mother, the Virgin, without defiling or offending the holiness and purity of our Mother, his body was divided from his head like gold, and he was called 'Afe Wark' (Gold-headed).
 
 <!-- CHW-003-S003-P007 -->
-2. Worshipping and translating the Virgin Mary as the Eternal Virgin of Our Lady, she came from where she was, turned on her head three times, and said, "You are the Blessed One, John Afwer Good, you are the Blessed One, John Afwer is the Golden Tongue."
+2. While he was teaching by interpreting and honoring the eternal virginity of our Mother, a 'Sile Maryam' (icon of Mary) that was on the wall came forth, circled around his head three times, and said: 'Senaye tenagereke Yohannes Afe-work, Senay tenagerek Yohannes Afe-work, Yohannes Lisane Wark' (John Gold-headed, you have spoken, John Gold-headed, John Tongue of Gold), and then it returned to its place. Seeing this, the King and the people gave him the title 'Afe-work' from that day forward.
 
 <!-- CHW-003-S003-P008 -->
-John Afwer performed many miracles, for example, when he explained that the priesthood was superior, he ruled the angel of darkness for 10 years. He rebuked Queen Eudoxia, who fearlessly inherited the inheritance of a poor woman. He condemned it.
+John Afe-work performed many miraculous wonders; for example, to explain his superior rank among the priests, he ruled over the Angel of Darkness for 10 years. Without fear, he rebuked and rebuked Queen Audoxian, who had inherited the property of a poor woman.
 
 <!-- CHW-003-S003-P009 -->
-John the Baptist's Contribution to the Church
+The contribution of John Afe-work to the Church
 
 <!-- CHW-003-S003-P010 -->
-1. He has attained discipline and composition
+1. He delivered the 'Tegesats' (Theological Treatises).
 
 <!-- CHW-003-S003-P011 -->
-2. A bone-crushing Mass has arrived
+2. He delivered the 'Atn' (Bone) liturgy.
 
 <!-- CHW-003-S003-P012 -->
-3. Religion wrote the abbot
+3. He wrote 'Haymanote Abew' (The Faith of the Fathers).
 
 <!-- CHW-003-S003-P013 -->
-4. He wrote the lost vision as if the mystery of John had been revealed to him. Finally, during his lifetime, he went up and down, did many works, put the heretics to shame, strengthened the faithful in their faith, made many disciples, and died on the 12th of May in the year of his birth.
+4. He wrote the Mystery of John, which had been lost, as if it had been revealed to him. Finally, in his lifetime, he performed many works, humiliated heretics, strengthened the faithful in their faith, and produced many disciples. He passed away on May 12, in the year 100 of his birth.
 
 <!-- CHW-003-S003-P014 -->
-3. Saint Demetrius
+3. Saint Demetrios
 
 <!-- CHW-003-S003-P015 -->
-His country is Alexandria. Demetrius means mirror. His father and mother were God-fearing good people. When he reached the age of majority, he married his cousin with a princess because he was a pagan man. His cousin was called Lucius. He was old and tired, so he said to them, "Choose someone who will appoint you next to me."
+His country is Alexandria. Demetrios means 'Glass' (or 'Crystal'). His father and mother were pious people who feared God. When he reached the age of maturity, in the era when the Arianis were numerous and the Amanians were few, he was raised with his younger brother with a jar of wine. The Patriarch of his time is called Lucian. He was pleading and exhausted, and they said to him, 'Choose the one who will succeed you.' They said, 'Our father, enter the gate, take the canon, and tell us.'
 
 <!-- CHW-003-S003-P016 -->
-And when the day of reckoning, the angel of the Lord said to him, "He will come to me with a bunch of grapes that bears fruit prematurely, and he will be the one who will be appointed next to me."
+On the appointed day, they gathered on the day of their counting. An angel commanded by the Subay (Holy Spirit) told them that at an unspecified time, a vine branch would come from him to be blessed, and he would be the one to succeed him. The one who said this arrived holding the branch, and they ordained him as the twelfth Patriarch of Alexandria.
 
 <!-- CHW-003-S003-P017 -->
-And the angel said to them, "Do not seek your own salvation, for the people have been hurt by gossip because of you." The next day, after he had consecrated him, he showed them miracles. The people were amazed at the miracles he saw, and they said, "Forgive us." And when they came to you, they said, "Come, let them come to you, and let them go, and let them go."
+From his perfection, he began to separate the pure from the impure, the saved from the unsaved, and as he saw them, he would say, 'You who are saved, receive; you who are not saved, repent.' Many were being separated while repenting, but others said, 'It is not right for a pure virgin to sit on the throne of Mark,' and the whole people were amazed and began to rise up in hostility. His angel said to him, 'Do not desire your own salvation; the people have been harmed by slander because of you, so declare yourself.' The next day, after the 'Kedso' (Holy) separation, he showed them wonderful miracles. Seeing the miracles, the people were amazed and fell at his feet, saying, 'Save us, please, save us.' They were healed. It was at this time that the 'Nuzaze' (Healing/Miracle) began.
 
-### St. Demetrius' contribution to the Church {#CHW-003-S004}
+### The contribution of Saint Demetrios to the Church {#CHW-003-S004}
 
 <!-- CHW-003-S004-P001 -->
-1. He is the one who created the formula of the Church's tradition of traditions and festivals, which will help us to know the past years, the present, and the festivals and festivals that will come in the future.
+1. He is the one who composed the 'Bahre Hasab' (Sea of Calculation), which is the formula for the fasts and feasts that the Church follows in the modern era. This 'Bahre Hasab' helps to know the fasts and feasts of past years, current years, and those that will come in the future.
 
 <!-- CHW-003-S004-P002 -->
-2. He also wrote many essays and books in his time. When he was old, he used to carry him to church and teach them until the sun rises. But he died on October 13 at the age of 105, at the age of 105.
+2. Additionally, he wrote many treatises and books. Many times, he would carry them on a litter to the Church and teach them until sunset. However, they said that if they were justified and saved, they would wear flesh, and death would not remain. He passed away on October 13, in the year 105 of his birth.
 
-## What is the sea? How is the calculus? {#CHW-003-S005}
+## What is Bahre Hasab? And how is the calculation? {#CHW-003-S005}
 
 <!-- CHW-003-S005-P001 -->
-The sea is a word for the Greek, and it is called the Amharic calendar in Arabic. In other words, it means an innumerable time. A thought is called the sea. What is the time of the sea? If the sea flows from its source, it will not end, because it will continue to pass through man until the coming of Christ.
+Bahre Hasab is the Geʽez word, which is called Abushahr in Arabic and the calendar in Amharic. In another expression, it means a year without a number. Not a single Hasab Bahir is left. Why does the sea have a year? They said, the sea, having sprung from its source, flows without ending; similarly, the year lives, passing through people and wandering, until the coming of Christ stops it.
 
 <!-- CHW-003-S005-P002 -->
-Why did Saint Demetrius arrive at the sea? 1. To fulfill his desire 2. The Benefits of Learning the Doctrine of the Sea to Bring the Holidays and Weapons Closer to the Distance: 1. To learn the basic teachings of the Church 2. If he is exiled from a country and goes to a nation, he will not be able to learn the sea, and he will not be able to cancel the festival. The Sea Lesson or the Calculation of the Sea does not stop fasting
+Why did Saint Demetrios reach Bahre Hasab? 1. So that his desire might be fulfilled. 2. To bring closer the festivals and fasts that were scattered. The benefit of learning Bahre Hasab: - 1. To know the fundamental teachings of the Church. 2. If one leaves their country, is educated, and goes to a foreign land, if they have learned Bahre Hasab, they will not be confused by the festivals; there is a benefit to learning it. The teaching of Bahre Hasab, or its calculation, does not shorten the fast.
 
 <!-- CHW-003-S005-P003 -->
-According to the doctrine of the sea, we can find out the past years, the present years, and the years to come in the future, and the years to come, according to the following things, and the festivals in which the calendar enters. The prefix of this calculation is written from the year of the world. So you can work by adding the year you want
+The foundation of the Bahre Hasab teaching is that by working with the items listed below, we can know the past years, the current year, and the years to come until the coming of Christ, as well as the calendar, the fasts that fall, and the festivals that occur. It begins with the Year of the World (Amete Alem); the sequence of this calculation is written. Therefore, you can work by adding the Year of Mercy (Amete Mihret) that you desire:
 
 <!-- CHW-003-S005-P004 -->
-1. The year of the world (BC)
+1. Year of the World /A.A./
 
 <!-- CHW-003-S005-P005 -->
-The year is the sum of the years of mercy and mercy.
+The Year of the World means the sum of the Year of Mercy and the Year of Kunene; its calculation is:
 
 <!-- CHW-003-S005-P006 -->
-Year of the World = Year of Mercy + Year of Condemnation
+Year of the World = Year of Mercy + Year of Kunene
 
 <!-- CHW-003-S005-P007 -->
-What is the year of the world according to this formula?
+Based on this formula, what is the Year of the World?
 
 <!-- CHW-003-S005-P008 -->
 2. Evangelist
 
 <!-- CHW-003-S005-P009 -->
-It is a form of evangelism that we use to find out who the evangelist is.
+It is the formula we use to know the Evangelist /the era/; the calculation to find the Evangelist is:
 
 <!-- CHW-003-S005-P010 -->
-According to this formula, if the remainder is one, then it is Matthew's day, if it is two, it is Mark's day, if it is three, it is Luke's day, and if there are four and there are no remainder, it is John's day.
+Based on this formula, if the remainder from what is divided is one, the era is Matthew. If two, the era is Mark. If three, the era is Luke. If four and there is no remainder, the era is John.
 
 <!-- CHW-003-S005-P011 -->
-Accordingly, if one of the balances to be paid, the dawn will be Tuesday, 2 if it will be Wednesday, if 3 if Thursday, 4, Friday 5, if Saturday 6, Sunday 7, and if it is paid without balance, the dawn will be Monday.
+Based on this, if the remainder from what is divided is one, the beginning is Tuesday; 2 is Wednesday; 3 is Thursday; 4 is Friday; 5 is Saturday; 6 is Sunday; 7 is Monday; and if it is divided without a remainder, the beginning is Monday.
 
 <!-- CHW-003-S005-P012 -->
-4. Chair
+4. Wanber
 
 <!-- CHW-003-S005-P013 -->
-A chair is a sea lesson that can be used to create a chair and a chair. To get a chair
+Wanber is the Bahre Hasab teaching useful for calculating Abeqte and Meteq. To find the Wanber:
 
 <!-- CHW-003-S005-P014 -->
-5. My Pasture:
+5. Abeqte: -
 
 <!-- CHW-003-S005-P015 -->
-It is the end of the world, and the end of the world is the end of the world. The end of the world is the end of the world. The end of the world is the end of the world and
+Abeqte means the remainder of the year. Its service, when added to the month and the days, determines the night. The calculation to find Abeqte is: Abeqte = Wanber X Tinte Abeqte /11/
 
 <!-- CHW-003-S005-P016 -->
-6. Attack
+6. Meteq
 
 <!-- CHW-003-S005-P017 -->
-To attack means to call. We use it as a reference for holidays and weapons, based on the date of the attack. The calculation of the attack is to attack = chair X Attack /19/
+Meteq' means 'to call' or 'to ring.' The service uses the day on which the Meteq' falls as a basis for calculating the dates of feasts and fasts.
 
 <!-- CHW-003-S005-P018 -->
-If the attack is more than 14, it will be used in September, but if it is less than 14, it will be used in October. 14 But it is not an attack itself, it is only used for two months. If the attack is more than 14, the attack is not more than 30 and not less than 30. Adverb
+If the Meteq' is greater than 14, it falls in Meskerem; if it is less than 14, it falls in Tikimt. However, 14 itself is not a Meteq'; the Meteq' falls only in these two months. If the Meteq' is at its maximum, it is Abeqte; if it is at its minimum, it is Abeqte. The Meteq' does not exceed 30, nor is it less than 30. 7. Tewsak
 
 <!-- CHW-003-S005-P019 -->
-An adverb means an increase. The adverb means increase, and the service is considered to be accompanied by an attack to determine where the holidays will be used. There are two types of adverbs
+Tewsak means 'reconciliation' or 'adjustment.' The service counts it together with the Meteq' to determine the day on which the feast falls. There are two types of Tewsak calculations.
 
 <!-- CHW-003-S005-P020 -->
-Adverb of the days
+The Tewsak of days
 
 <!-- CHW-003-S005-P021 -->
-Holidays and holidays are commonplace.
+These are the Tewsak of fasts and feasts.
 
 <!-- CHW-003-S005-P022 -->
-Finally, the Ethiopian Orthodox Church has embraced and taught this tradition. It will teach in the future, and according to it, if it is possible to teach the sea, all Orthodox should learn it. We must pass on what we have learned to future generations
+Finally, the Ethiopian Orthodox Tewahedo Church has been accepting and teaching this tradition of calculation. It will continue to teach it in the future; therefore, if it is possible to teach the lesson of calculation, all Orthodox people must learn it. We must also pass down the 'Qasemne' to the next generation.

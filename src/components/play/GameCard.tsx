@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import styles from './PlayComponents.module.css'
 
@@ -9,11 +10,12 @@ export type PlayGameCard = {
   description: Record<AppLocale, string>
   category: Record<AppLocale, string>
   milestone: number
+  route: string
   accent: 'gold' | 'blue' | 'green' | 'red' | 'purple' | 'teal'
 }
 
 export function GameCard({ game, locale }: { game: PlayGameCard; locale: AppLocale }) {
-  const status = locale === 'am' ? `በደረጃ ${game.milestone} ይመጣል` : `Coming in milestone ${game.milestone}`
+  const status = locale === 'am' ? 'አሁን ይጫወቱ' : 'Play now'
   const preview = locale === 'am' ? 'የጨዋታ ቅድመ እይታ' : 'Game preview'
 
   return (
@@ -27,7 +29,7 @@ export function GameCard({ game, locale }: { game: PlayGameCard; locale: AppLoca
         <h3>{game.title[locale]}</h3>
         <p>{game.description[locale]}</p>
       </div>
-      <span className={styles.comingSoon} aria-label={status}>{status}</span>
+      <Link className={styles.comingSoon} aria-label={`${status}: ${game.title[locale]}`} to={game.route}>{status} →</Link>
     </article>
   )
 }

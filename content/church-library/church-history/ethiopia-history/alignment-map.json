@@ -50,7 +50,9 @@
       "en": "CHE-000-S000-P004",
       "status": "aligned",
       "source_index": 3,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-000-S000-P005",
@@ -199,9 +201,7 @@
       "en": "CHE-000-S002-P002",
       "status": "aligned",
       "source_index": 21,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-000-S002-P003",
@@ -501,7 +501,9 @@
       "en": "CHE-000-S005-P002",
       "status": "aligned",
       "source_index": 55,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-000-S005-P003",
@@ -591,7 +593,9 @@
       "en": "CHE-000-S005-P012",
       "status": "aligned",
       "source_index": 65,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-000-S006",
@@ -607,9 +611,7 @@
       "en": "CHE-000-S006-P001",
       "status": "aligned",
       "source_index": 67,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-000-S006-P002",
@@ -636,9 +638,7 @@
       "en": "CHE-000-S006-P004",
       "status": "aligned",
       "source_index": 70,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-000-S006-P005",
@@ -753,7 +753,9 @@
       "en": "CHE-000-S007-P004",
       "status": "aligned",
       "source_index": 83,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-001",
@@ -803,7 +805,9 @@
       "en": "CHE-001-S000-P004",
       "status": "aligned",
       "source_index": 89,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-001-S000-P005",
@@ -871,9 +875,7 @@
       "en": "CHE-001-S002-P001",
       "status": "aligned",
       "source_index": 97,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S002-P002",
@@ -918,7 +920,9 @@
       "en": "CHE-001-S002-P006",
       "status": "aligned",
       "source_index": 102,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-001-S002-P007",
@@ -952,7 +956,9 @@
       "en": "CHE-001-S003-P001",
       "status": "aligned",
       "source_index": 106,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-001-S003-P002",
@@ -1230,9 +1236,7 @@
       "en": "CHE-001-S008-P001",
       "status": "aligned",
       "source_index": 138,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S008-P002",
@@ -1282,9 +1286,7 @@
       "en": "CHE-001-S010-P001",
       "status": "aligned",
       "source_index": 144,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S011",
@@ -1300,9 +1302,7 @@
       "en": "CHE-001-S011-P001",
       "status": "aligned",
       "source_index": 146,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S011-P002",
@@ -1509,7 +1509,7 @@
       "status": "aligned",
       "source_index": 170,
       "review_flags": [
-        "suspicious_machine_translation"
+        "numeric_token_mismatch"
       ]
     },
     {
@@ -1537,7 +1537,9 @@
       "en": "CHE-001-S016-P004",
       "status": "aligned",
       "source_index": 173,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-001-S016-P005",
@@ -1765,10 +1767,7 @@
       "en": "CHE-001-S019-P003",
       "status": "aligned",
       "source_index": 199,
-      "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S020",
@@ -2073,9 +2072,7 @@
       "en": "CHE-001-S024-P003",
       "status": "aligned",
       "source_index": 234,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S024-P004",
@@ -2127,7 +2124,9 @@
       "en": "CHE-001-S025-P001",
       "status": "aligned",
       "source_index": 240,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-001-S026",
@@ -2143,9 +2142,7 @@
       "en": "CHE-001-S026-P001",
       "status": "aligned",
       "source_index": 242,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S026-P002",
@@ -2328,10 +2325,7 @@
       "en": "CHE-001-S029-P001",
       "status": "aligned",
       "source_index": 263,
-      "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-001-S029-P002",
@@ -2641,9 +2635,7 @@
       "en": "CHE-002-S005-P008",
       "status": "aligned",
       "source_index": 299,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-002-S005-P009",
@@ -2652,9 +2644,7 @@
       "en": "CHE-002-S005-P009",
       "status": "aligned",
       "source_index": 300,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-002-S005-P010",
@@ -2688,7 +2678,9 @@
       "en": "CHE-002-S006-P001",
       "status": "aligned",
       "source_index": 304,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-002-S006-P002",
@@ -2915,7 +2907,9 @@
       "en": "CHE-002-S014-P001",
       "status": "aligned",
       "source_index": 331,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-002-S014-P002",
@@ -2974,10 +2968,7 @@
       "en": "CHE-002-S016-P001",
       "status": "aligned",
       "source_index": 338,
-      "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-002-S017",
@@ -3095,10 +3086,7 @@
       "en": "CHE-002-S020-P002",
       "status": "aligned",
       "source_index": 352,
-      "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-002-S020-P003",
@@ -3150,10 +3138,7 @@
       "en": "CHE-002-S021-P003",
       "status": "aligned",
       "source_index": 358,
-      "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-002-S021-P004",
@@ -3196,7 +3181,9 @@
       "en": "CHE-002-S022-P001",
       "status": "aligned",
       "source_index": 363,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-002-S022-P002",
@@ -3355,9 +3342,7 @@
       "en": "CHE-003-S004-P001",
       "status": "aligned",
       "source_index": 382,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-003-S004-P002",
@@ -3411,7 +3396,9 @@
       "en": "CHE-003-S004-P007",
       "status": "aligned",
       "source_index": 388,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S004-P008",
@@ -3463,9 +3450,7 @@
       "en": "CHE-003-S005-P001",
       "status": "aligned",
       "source_index": 394,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-003-S005-P002",
@@ -3515,9 +3500,7 @@
       "en": "CHE-003-S007-P001",
       "status": "aligned",
       "source_index": 400,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-003-S007-P002",
@@ -3526,9 +3509,7 @@
       "en": "CHE-003-S007-P002",
       "status": "aligned",
       "source_index": 401,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-003-S007-P003",
@@ -3671,7 +3652,7 @@
       "status": "aligned",
       "source_index": 417,
       "review_flags": [
-        "suspicious_machine_translation"
+        "numeric_token_mismatch"
       ]
     },
     {
@@ -3697,7 +3678,9 @@
       "en": "CHE-003-S009-P002",
       "status": "aligned",
       "source_index": 420,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S009-P003",
@@ -3733,7 +3716,9 @@
       "en": "CHE-003-S009-P006",
       "status": "aligned",
       "source_index": 424,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S009-P007",
@@ -3742,7 +3727,9 @@
       "en": "CHE-003-S009-P007",
       "status": "aligned",
       "source_index": 425,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S009-P008",
@@ -3819,10 +3806,7 @@
       "en": "CHE-003-S011-P004",
       "status": "aligned",
       "source_index": 434,
-      "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-003-S011-P005",
@@ -3831,9 +3815,7 @@
       "en": "CHE-003-S011-P005",
       "status": "aligned",
       "source_index": 435,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-003-S011-P006",
@@ -3921,7 +3903,9 @@
       "en": "CHE-003-S012-P001",
       "status": "aligned",
       "source_index": 445,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S012-P002",
@@ -4027,7 +4011,9 @@
       "en": "CHE-003-S013-P001",
       "status": "aligned",
       "source_index": 457,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S013-P002",
@@ -4063,7 +4049,9 @@
       "en": "CHE-003-S013-P005",
       "status": "aligned",
       "source_index": 461,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S013-P006",
@@ -4091,8 +4079,7 @@
       "status": "aligned",
       "source_index": 464,
       "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
+        "numeric_token_mismatch"
       ]
     },
     {
@@ -4125,10 +4112,7 @@
       "en": "CHE-003-S015-P001",
       "status": "aligned",
       "source_index": 468,
-      "review_flags": [
-        "suspicious_machine_translation",
-        "large_length_difference"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-003-S015-P002",
@@ -4155,7 +4139,9 @@
       "en": "CHE-003-S015-P004",
       "status": "aligned",
       "source_index": 471,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-003-S015-P005",
@@ -4270,7 +4256,9 @@
       "en": "CHE-003-S016-P011",
       "status": "aligned",
       "source_index": 484,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-004",
@@ -4336,9 +4324,7 @@
       "en": "CHE-004-S002-P002",
       "status": "aligned",
       "source_index": 493,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S002-P003",
@@ -4374,9 +4360,7 @@
       "en": "CHE-004-S002-P006",
       "status": "aligned",
       "source_index": 497,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S002-P007",
@@ -4557,9 +4541,7 @@
       "en": "CHE-004-S006-P001",
       "status": "aligned",
       "source_index": 518,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S007",
@@ -4584,9 +4566,7 @@
       "en": "CHE-004-S007-P002",
       "status": "aligned",
       "source_index": 521,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S007-P003",
@@ -4667,9 +4647,7 @@
       "en": "CHE-004-S007-P011",
       "status": "aligned",
       "source_index": 530,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S007-P012",
@@ -4794,7 +4772,7 @@
       "status": "aligned",
       "source_index": 544,
       "review_flags": [
-        "suspicious_machine_translation"
+        "numeric_token_mismatch"
       ]
     },
     {
@@ -4804,9 +4782,7 @@
       "en": "CHE-004-S008-P012",
       "status": "aligned",
       "source_index": 545,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S008-P013",
@@ -4815,7 +4791,9 @@
       "en": "CHE-004-S008-P013",
       "status": "aligned",
       "source_index": 546,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-004-S009",
@@ -4831,9 +4809,7 @@
       "en": "CHE-004-S009-P001",
       "status": "aligned",
       "source_index": 548,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S009-P002",
@@ -4851,9 +4827,7 @@
       "en": "CHE-004-S009-P003",
       "status": "aligned",
       "source_index": 550,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S009-P004",
@@ -4871,9 +4845,7 @@
       "en": "CHE-004-S009-P005",
       "status": "aligned",
       "source_index": 552,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S009-P006",
@@ -4882,9 +4854,7 @@
       "en": "CHE-004-S009-P006",
       "status": "aligned",
       "source_index": 553,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S009-P007",
@@ -5014,7 +4984,7 @@
       "status": "aligned",
       "source_index": 568,
       "review_flags": [
-        "suspicious_machine_translation"
+        "numeric_token_mismatch"
       ]
     },
     {
@@ -5024,9 +4994,7 @@
       "en": "CHE-004-S012-P002",
       "status": "aligned",
       "source_index": 569,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-004-S012-P003",
@@ -5053,7 +5021,9 @@
       "en": "CHE-004-S012-P005",
       "status": "aligned",
       "source_index": 572,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-004-S012-P006",
@@ -5164,7 +5134,9 @@
       "en": "CHE-005-S000-P002",
       "status": "aligned",
       "source_index": 585,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-005-S000-P003",
@@ -5218,9 +5190,7 @@
       "en": "CHE-005-S000-P008",
       "status": "aligned",
       "source_index": 591,
-      "review_flags": [
-        "suspicious_machine_translation"
-      ]
+      "review_flags": []
     },
     {
       "id": "CHE-005-S000-P009",
@@ -5281,7 +5251,9 @@
       "en": "CHE-005-S001-P004",
       "status": "aligned",
       "source_index": 598,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-005-S001-P005",
@@ -5290,7 +5262,9 @@
       "en": "CHE-005-S001-P005",
       "status": "aligned",
       "source_index": 599,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-005-S001-P006",
@@ -5308,7 +5282,9 @@
       "en": "CHE-005-S001-P007",
       "status": "aligned",
       "source_index": 601,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-005-S002",
@@ -5342,7 +5318,9 @@
       "en": "CHE-005-S002-P003",
       "status": "aligned",
       "source_index": 605,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     },
     {
       "id": "CHE-005-S002-P004",
@@ -5741,7 +5719,9 @@
       "en": "CHE-006-S000-P019",
       "status": "aligned",
       "source_index": 650,
-      "review_flags": []
+      "review_flags": [
+        "numeric_token_mismatch"
+      ]
     }
   ]
 }

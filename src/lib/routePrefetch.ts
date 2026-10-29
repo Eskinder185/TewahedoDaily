@@ -43,6 +43,9 @@ const loaders: Array<{ match: (path: string) => boolean; load: () => Promise<unk
   { match: (path) => path.startsWith('/account'), load: () => import('../pages/auth/AccountPages') },
   { match: (path) => path.startsWith('/library'), load: () => import('../pages/PublicChurchLibrary') },
   { match: (path) => path === '/play', load: () => import('../pages/play/PlayHubPage') },
+  { match: (path) => path === '/play/adventures', load: () => import('../pages/play/AdventurePage') },
+  { match: (path) => path === '/play/game-night', load: () => import('../pages/play/GameNightPage') },
+  { match: (path) => path.startsWith('/play/'), load: () => import('../pages/play/PlayGamePage') },
 ]
 
 export function prefetchRoute(to: string) {
