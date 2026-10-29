@@ -12,7 +12,7 @@ export type PlayHistoryEntry = {
   completedAt: string
 }
 
-export type PlayAchievement = 'first-steps' | 'perfect-round' | 'curious-explorer' | 'three-day-streak'
+export type PlayAchievement = 'first-steps' | 'perfect-round' | 'curious-explorer' | 'three-day-streak' | 'icon-reader' | 'feast-keeper'
 
 export type PlayProgress = {
   xp: number
@@ -68,7 +68,7 @@ export function savePlayProgress(progress: PlayProgress) {
 }
 
 export type PlayCompletionInput = {
-  game: PlayGameType | 'who-am-i' | 'match'
+  game: PlayGameType | 'who-am-i' | 'match' | 'feasts' | 'saints' | 'icon-memory'
   score: number
   maxScore: number
   category: string
@@ -89,6 +89,9 @@ export function applyPlayCompletion(current: PlayProgress, input: PlayCompletion
   if (input.maxScore > 0 && input.score === input.maxScore) achievements.add('perfect-round')
   if (gamesPlayed.size >= 3) achievements.add('curious-explorer')
   if (streak >= 3) achievements.add('three-day-streak')
+  // Picture games: recognising the Church's icons and feasts.
+  if ((input.game === 'saints' || input.game === 'icon-memory') && ratio >= 0.8) achievements.add('icon-reader')
+  if (input.game === 'feasts' && ratio >= 0.8) achievements.add('feast-keeper')
 
   const mastery = current.categoryMastery[input.category] || { correct: 0, total: 0 }
   const next: PlayProgress = {
@@ -124,6 +127,15 @@ export function recordPlayCompletion(input: PlayCompletionInput) {
   const result = applyPlayCompletion(readPlayProgress(), input)
   savePlayProgress(result.progress)
   return result
+}
+
+/** XP needed per level (unchanged from the original progress model). */
+export const XP_PER_LEVEL = 500
+
+export function levelFor(xp: number) {
+  const safe = Math.max(0, Math.floor(xp))
+  const into = safe % XP_PER_LEVEL
+  return { level: Math.floor(safe / XP_PER_LEVEL) + 1, into, toNext: XP_PER_LEVEL - into, pct: Math.round((into / XP_PER_LEVEL) * 100) }
 }
 
 export function getDailyChallenge() {

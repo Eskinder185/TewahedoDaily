@@ -61,9 +61,11 @@ type ChantPracticePlayerProps = {
   /** Previous / Next / Shuffle / Repeat for the list this Mezmur was opened from. */
   queue?: PracticeMiniPlayerProps['queue']
   /** Called when the video finishes; 'repeat-one' restarts it here. */
-  onEnded?: () => 'repeat-one' | 'advanced' | 'stopped'
+  onEnded?: (options?: { keepPlayerOpen?: boolean }) => 'repeat-one' | 'advanced' | 'stopped'
   /** Start playing as soon as the video is ready (automatic advance). */
   autoplayOnLoad?: boolean
+  /** Open the expanded player on load (reached from its Previous / Next). */
+  openPlayerOnLoad?: boolean
   payload: ChantPracticePayload
   formLabel: string
   onBack: () => void
@@ -91,6 +93,7 @@ export function ChantPracticePlayer({
   queue,
   onEnded,
   autoplayOnLoad = false,
+  openPlayerOnLoad = false,
 }: ChantPracticePlayerProps) {
   const moreActions = footerActions ?? headerActions
   const t = useUiLabel()
@@ -136,7 +139,11 @@ export function ChantPracticePlayer({
   const quickLoopsRef = useRef(quickLoops)
   const activeQuickLoopRef = useRef<QuickLoopId | null>(null)
   const [practiceOpen, setPracticeOpen] = useState(false)
-  const [playerExpanded, setPlayerExpanded] = useState(false)
+  const [playerExpanded, setPlayerExpanded] = useState(openPlayerOnLoad)
+  const playerExpandedRef = useRef(playerExpanded)
+  useEffect(() => {
+    playerExpandedRef.current = playerExpanded
+  }, [playerExpanded])
   const [isNarrow, setIsNarrow] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(max-width: 959.98px)').matches,
   )
@@ -289,7 +296,7 @@ export function ChantPracticePlayer({
               if (audio?.isPlaying) audio.pause()
             }
             if (e.data === PS.ENDED && onEndedRef.current) {
-              const outcome = onEndedRef.current()
+              const outcome = onEndedRef.current({ keepPlayerOpen: playerExpandedRef.current })
               if (outcome === 'repeat-one') {
                 e.target.seekTo(0, true)
                 e.target.playVideo()

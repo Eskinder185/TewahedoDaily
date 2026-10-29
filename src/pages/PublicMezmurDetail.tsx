@@ -22,6 +22,7 @@ import { parseYoutubeVideoId } from '../data/utils/youtube'
 import s from './HymnPractice.module.css'
 import { HymnLyricsExperience } from '../components/hymns/HymnLyricsExperience'
 import { useMezmurQueue } from '../lib/mezmur/useMezmurQueue'
+import { QueueTransport } from '../components/mezmur/QueueTransport'
 
 export function PublicMezmurDetail() {
   const { slug } = useParams()
@@ -89,7 +90,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
         ? undefined
         : 'Open this Mezmur from a category, occasion or Zemari list to play that list in order',
       onShuffle: queue.toggleShuffle,
-      onPrevious: queue.goPrevious,
+      onPrevious: () => queue.goPrevious(),
       onNext: () => queue.goNext(false),
       onRepeat: queue.cycleRepeat,
     },
@@ -166,11 +167,35 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
 
   return (
     <div>
+      {!payload.videoId && queue.inQueue ? (
+        // No recording for this Mezmur, so there is no player — keep the list
+        // moving instead of leaving the visitor at a dead end.
+        <aside className={s.queueNoRecording} aria-label="Mezmur list">
+          <p className={s.queueNoRecordingText}>
+            <strong>No recording yet for this Mezmur.</strong>{' '}
+            <span>Playing from {queue.label} · {queue.position} of {queue.total}</span>
+          </p>
+          <QueueTransport
+            {...queueProps.transport}
+            onPrevious={() => queue.goPrevious(false)}
+            onNext={() => queue.goNext(false, false)}
+            isPlaying={false}
+            playDisabled
+            onTogglePlay={() => {}}
+          />
+        </aside>
+      ) : null}
+      {import.meta.env.DEV ? (
+        <pre className={s.queueDiagnostics} data-testid="mezmur-queue-diagnostics">
+          {JSON.stringify({ ...queue.diagnostics, history: queue.diagnostics.history.length }, null, 1)}
+        </pre>
+      ) : null}
       <ChantPracticePlayer
         payload={payload}
         queue={queueProps}
         onEnded={queue.onEnded}
         autoplayOnLoad={queue.autoplayOnLoad}
+        openPlayerOnLoad={queue.openPlayerOnLoad}
         formLabel={item.form === 'werb' ? 'Werb' : 'Mezmur'}
         badges={badges}
         onBack={() => navigate('/practice')}

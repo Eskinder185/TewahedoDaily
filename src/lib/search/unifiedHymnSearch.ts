@@ -117,13 +117,18 @@ export async function searchMezmursUnified(
       const items = api.results
         .map((row) => hymnRowToItem(row))
         .filter((row): row is UnifiedMezmurSearchItem => Boolean(row))
-      return {
-        items,
-        total: typeof api.count === 'number' ? api.count : items.length,
-        page: 1,
-        source: 'api',
-        query: api.query || q,
+      if (items.length > 0) {
+        return {
+          items,
+          total: typeof api.count === 'number' ? api.count : items.length,
+          page: 1,
+          source: 'api',
+          query: api.query || q,
+        }
       }
+      // An empty answer from the search service (e.g. its index is not
+      // loaded) must not hide published Mezmurs that match by title.
+      throw new Error('search service returned no results')
     } catch (error) {
       if (error instanceof AiClientError && error.code === 'aborted') throw error
       // Fall back to the same published Supabase projection used by the browse

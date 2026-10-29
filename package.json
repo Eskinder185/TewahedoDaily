@@ -122,6 +122,7 @@
     "test:play-complete": "node scripts/test-play-complete.mjs"
     ,"play:plan-drafts": "tsx scripts/import-play-content-drafts.ts"
     ,"play:import-drafts": "tsx --env-file-if-exists=.env.local scripts/import-play-content-drafts.ts --apply"
+    ,"test:play-image-catalog": "tsx scripts/test-play-image-catalog.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.5.1",

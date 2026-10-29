@@ -6,15 +6,16 @@ import { recordPlayCompletion } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
 import { localized, type PlayDifficulty, type PlayGameType, type PlayQuestion } from '../../lib/play/types'
 import { VerifiedFallback } from './GameShell'
+import { Celebration } from './Celebration'
 import styles from './GameShell.module.css'
 
 type Answer = { question: PlayQuestion; selected: string; correct: boolean; points: number }
 
-export function QuizGame({ locale, game, questions, dailyQuestionIndex }: { locale: AppLocale; game: PlayGameType; questions: PlayQuestion[]; dailyQuestionIndex?: number }) {
+export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialDifficulty }: { locale: AppLocale; game: PlayGameType; questions: PlayQuestion[]; dailyQuestionIndex?: number; initialDifficulty?: PlayDifficulty }) {
   const { user } = useAuth()
   const categories = useMemo(() => [...new Set(questions.map((q) => q.category))], [questions])
   const [category, setCategory] = useState('all')
-  const [difficulty, setDifficulty] = useState<PlayDifficulty>('beginner')
+  const [difficulty, setDifficulty] = useState<PlayDifficulty>(initialDifficulty ?? 'beginner')
   const [count, setCount] = useState(5)
   const [timed, setTimed] = useState(false)
   const dailyQuestion = dailyQuestionIndex == null || !questions.length ? null : questions[dailyQuestionIndex % questions.length]
@@ -73,7 +74,8 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex }: { loca
   )
 
   if (result) return (
-    <section className={`${styles.panel} ${styles.results}`}>
+    <section className={`${styles.panel} ${styles.results}`} style={{ position: 'relative', overflow: 'hidden' }}>
+      {result.max > 0 && result.score / result.max >= 0.6 ? <Celebration /> : null}
       <p>{locale === 'am' ? 'ዙሩ ተጠናቋል' : 'Round complete'}</p><h2>{locale === 'am' ? 'ጥሩ ልምምድ!' : 'Well played!'}</h2>
       <p className={styles.score}>{result.score}/{result.max}</p><p>+{result.xp} XP</p>
       <div className={styles.actions}><button className={styles.action} type="button" onClick={start}>{locale === 'am' ? 'እንደገና' : 'Play again'}</button><Link className={styles.secondary} to="/play">{locale === 'am' ? 'ወደ ማዕከል' : 'Game center'}</Link></div>
@@ -82,6 +84,12 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex }: { loca
   )
 
   const question = round[index]
+  const streak = (() => {
+    if (selected && selected !== question.correctKey) return 0
+    let n = selected ? 1 : 0
+    for (let i = answers.length - 1; i >= 0 && answers[i].correct; i--) n++
+    return n
+  })()
   const answer = (key: string) => {
     if (selected) return
     setSelected(key)
@@ -103,7 +111,7 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex }: { loca
 
   return (
     <section aria-live="polite">
-      <div className={styles.progress}><span>{index + 1}/{round.length}{timed ? ` · ${seconds}s` : ''}</span><div className={styles.bar}><i style={{ width: `${((index + 1) / round.length) * 100}%` }} /></div></div>
+      <div className={styles.progress}><span>{index + 1}/{round.length}{timed ? ` · ${seconds}s` : ''}</span>{streak >= 2 ? <span className={styles.streak}>{locale === 'am' ? `${streak} ተከታታይ` : `${streak} in a row`}</span> : null}<div className={styles.bar}><i style={{ width: `${((index + 1) / round.length) * 100}%` }} /></div></div>
       <article className={styles.questionCard}>
         {question.emoji ? <div className={styles.emoji} aria-label="Emoji clues">{question.emoji}</div> : null}
         {question.excerpt ? <p className={styles.excerpt}>{localized(question.excerpt, locale).text}</p> : null}

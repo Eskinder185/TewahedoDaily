@@ -7,7 +7,7 @@ export type LocalizedText = Partial<Record<AppLocale, string>> & { en: string }
 export type SourceReference = {
   label: string
   route: string
-  kind: 'bible' | 'church-library' | 'mezmur'
+  kind: 'bible' | 'church-library' | 'mezmur' | 'calendar'
   sourceId?: string
 }
 

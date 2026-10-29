@@ -25,6 +25,12 @@ export type BrowseQueue = {
   items: BrowseQueueItem[]
   /** Play order as slugs (equals items order unless shuffled). */
   order: string[]
+  /**
+   * Listening history for this list: slugs in the order they were first
+   * opened. Shuffle keeps this prefix so Previous walks back through what was
+   * actually heard and Next never returns to an already-played Mezmur.
+   */
+  history?: string[]
 }
 
 export type QueuePrefs = { shuffle: boolean; repeat: RepeatSetting; autoplay: boolean }
@@ -70,11 +76,35 @@ export function writeQueuePrefs(prefs: QueuePrefs) {
 
 export const isPlayable = (item: BrowseQueueItem) => item.hasVideo || item.hasAudio
 
-/** Shuffled order with `firstSlug` (the Mezmur being opened) kept first. */
-export function shuffledOrder(items: BrowseQueueItem[], firstSlug?: string, random: () => number = Math.random): string[] {
-  const rest = items.map((i) => i.slug).filter((s) => s !== firstSlug)
-  const shuffled = fisherYates(rest, random)
-  return firstSlug && items.some((i) => i.slug === firstSlug) ? [firstSlug, ...shuffled] : shuffled
+/**
+ * Shuffled play order. `played` (the listening history, or just the Mezmur
+ * being opened) stays first in the order it was heard; only the Mezmurs not
+ * yet played are randomised after it.
+ */
+export function shuffledOrder(items: BrowseQueueItem[], played?: string | string[], random: () => number = Math.random): string[] {
+  const known = new Set(items.map((i) => i.slug))
+  const prefix: string[] = []
+  for (const slug of typeof played === 'string' ? [played] : played ?? []) {
+    if (known.has(slug) && !prefix.includes(slug)) prefix.push(slug)
+  }
+  const rest = items.map((i) => i.slug).filter((s) => !prefix.includes(s))
+  return [...prefix, ...fisherYates(rest, random)]
+}
+
+/** Natural (collection) order. */
+export const naturalOrder = (q: BrowseQueue) => q.items.map((i) => i.slug)
+
+/** Add `slug` to the listening history (no-op if already there or not in the list). */
+export function withPlayed(q: BrowseQueue, slug: string): BrowseQueue {
+  const history = q.history ?? []
+  if (history.includes(slug) || !q.items.some((i) => i.slug === slug)) return q
+  return { ...q, history: [...history, slug] }
+}
+
+/** Turn shuffle on (history kept, the rest randomised) or off (collection order). */
+export function reorder(q: BrowseQueue, shuffle: boolean, currentSlug: string, random: () => number = Math.random): BrowseQueue {
+  const played = withPlayed(q, currentSlug).history ?? [currentSlug]
+  return { ...q, history: played, order: shuffle ? shuffledOrder(q.items, played, random) : naturalOrder(q) }
 }
 
 /** Record the list a Mezmur was opened from. Call from the card's onClick. */
@@ -86,7 +116,8 @@ export function rememberBrowseQueue(label: string, href: string, items: BrowseQu
   if (!clean.length) return
   const prefs = readQueuePrefs()
   const order = prefs.shuffle ? shuffledOrder(clean, openedSlug) : clean.map((i) => i.slug)
-  write(session, QUEUE_KEY, { label, href, items: clean, order } satisfies BrowseQueue)
+  const history = openedSlug && clean.some((i) => i.slug === openedSlug) ? [openedSlug] : []
+  write(session, QUEUE_KEY, { label: label.replace(/\s+/g, ' ').trim(), href, items: clean, order, history } satisfies BrowseQueue)
 }
 
 export function readBrowseQueue(): BrowseQueue | null {
@@ -129,6 +160,20 @@ export function consumeAutoplay(slug: string): boolean {
   const v = read<{ slug: string; at: number }>(session, AUTOPLAY_KEY)
   if (!v) return false
   write(session, AUTOPLAY_KEY, null)
+  return v.slug === slug && Date.now() - v.at < 60_000
+}
+
+const SHEET_KEY = 'td.mezmurSheetOpen.v1'
+
+/** One-shot flag: keep the expanded player open on the next Mezmur page. */
+export function markSheetOpen(slug: string) {
+  write(session, SHEET_KEY, { slug, at: Date.now() })
+}
+
+export function consumeSheetOpen(slug: string): boolean {
+  const v = read<{ slug: string; at: number }>(session, SHEET_KEY)
+  if (!v) return false
+  write(session, SHEET_KEY, null)
   return v.slug === slug && Date.now() - v.at < 60_000
 }
 
