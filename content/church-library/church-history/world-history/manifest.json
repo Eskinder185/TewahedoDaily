@@ -1,0 +1,1855 @@
+{
+  "schema_version": 1,
+  "collection_id": "world-church-history",
+  "subject": "world-church-history",
+  "titles": {
+    "am": "የቤተ ክርስቲያን ታሪክ በዓለም መድረክ",
+    "en": "Church History on the World Stage"
+  },
+  "source_documents": {
+    "am": {
+      "file": "2-Church_History_World_Clean.docx",
+      "sha256": "30cbf30856b1a897afd8399536334da076d79864d82b514ae2333df8d066ec86"
+    },
+    "en_draft": {
+      "file": "Church_History_World_English_Auto.structure.json",
+      "generated_from": "2-Church_History_World_Clean.docx"
+    }
+  },
+  "languages": {
+    "am": {
+      "status": "original"
+    },
+    "en": {
+      "status": "ai_translated_pending_review"
+    }
+  },
+  "publication_status": "draft",
+  "review_status": "expert_review_required",
+  "chapter_count": 7,
+  "chapter_ids": [
+    "CHW-000",
+    "CHW-001",
+    "CHW-002",
+    "CHW-003",
+    "CHW-004",
+    "CHW-005",
+    "CHW-006"
+  ],
+  "section_ids": [
+    "CHW-000-S000",
+    "CHW-000-S001",
+    "CHW-000-S002",
+    "CHW-000-S003",
+    "CHW-000-S004",
+    "CHW-000-S005",
+    "CHW-000-S006",
+    "CHW-001-S001",
+    "CHW-001-S002",
+    "CHW-001-S003",
+    "CHW-001-S004",
+    "CHW-001-S005",
+    "CHW-001-S006",
+    "CHW-001-S007",
+    "CHW-001-S008",
+    "CHW-001-S009",
+    "CHW-001-S010",
+    "CHW-001-S011",
+    "CHW-001-S012",
+    "CHW-001-S013",
+    "CHW-001-S014",
+    "CHW-001-S015",
+    "CHW-001-S016",
+    "CHW-001-S017",
+    "CHW-001-S018",
+    "CHW-001-S019",
+    "CHW-001-S020",
+    "CHW-001-S021",
+    "CHW-001-S022",
+    "CHW-001-S023",
+    "CHW-002-S001",
+    "CHW-002-S002",
+    "CHW-002-S003",
+    "CHW-002-S004",
+    "CHW-002-S005",
+    "CHW-003-S001",
+    "CHW-003-S002",
+    "CHW-003-S003",
+    "CHW-003-S004",
+    "CHW-003-S005",
+    "CHW-004-S001",
+    "CHW-004-S002",
+    "CHW-004-S003",
+    "CHW-005-S000",
+    "CHW-005-S001",
+    "CHW-005-S002",
+    "CHW-005-S003",
+    "CHW-005-S004",
+    "CHW-005-S005",
+    "CHW-005-S006",
+    "CHW-005-S007",
+    "CHW-005-S008",
+    "CHW-005-S009",
+    "CHW-006-S000",
+    "CHW-006-S001",
+    "CHW-006-S002",
+    "CHW-006-S003",
+    "CHW-006-S004",
+    "CHW-006-S005",
+    "CHW-006-S006",
+    "CHW-006-S007",
+    "CHW-006-S008",
+    "CHW-006-S009",
+    "CHW-006-S010",
+    "CHW-006-S011"
+  ],
+  "paragraph_ids": [
+    "CHW-000-S000-P001",
+    "CHW-000-S000-P002",
+    "CHW-000-S000-P003",
+    "CHW-000-S000-P004",
+    "CHW-000-S001-P001",
+    "CHW-000-S001-P002",
+    "CHW-000-S001-P003",
+    "CHW-000-S002-P001",
+    "CHW-000-S002-P002",
+    "CHW-000-S002-P003",
+    "CHW-000-S002-P004",
+    "CHW-000-S002-P005",
+    "CHW-000-S002-P006",
+    "CHW-000-S002-P007",
+    "CHW-000-S002-P008",
+    "CHW-000-S002-P009",
+    "CHW-000-S002-P010",
+    "CHW-000-S002-P011",
+    "CHW-000-S002-P012",
+    "CHW-000-S002-P013",
+    "CHW-000-S002-P014",
+    "CHW-000-S002-P015",
+    "CHW-000-S002-P016",
+    "CHW-000-S003-P001",
+    "CHW-000-S003-P002",
+    "CHW-000-S003-P003",
+    "CHW-000-S003-P004",
+    "CHW-000-S003-P005",
+    "CHW-000-S003-P006",
+    "CHW-000-S003-P007",
+    "CHW-000-S003-P008",
+    "CHW-000-S004-P001",
+    "CHW-000-S005-P001",
+    "CHW-000-S005-P002",
+    "CHW-000-S005-P003",
+    "CHW-000-S005-P004",
+    "CHW-000-S005-P005",
+    "CHW-000-S006-P001",
+    "CHW-000-S006-P002",
+    "CHW-001-S001-P001",
+    "CHW-001-S001-P002",
+    "CHW-001-S001-P003",
+    "CHW-001-S001-P004",
+    "CHW-001-S001-P005",
+    "CHW-001-S001-P006",
+    "CHW-001-S002-P001",
+    "CHW-001-S002-P002",
+    "CHW-001-S002-P003",
+    "CHW-001-S002-P004",
+    "CHW-001-S002-P005",
+    "CHW-001-S002-P006",
+    "CHW-001-S002-P007",
+    "CHW-001-S002-P008",
+    "CHW-001-S002-P009",
+    "CHW-001-S002-P010",
+    "CHW-001-S002-P011",
+    "CHW-001-S002-P012",
+    "CHW-001-S003-P001",
+    "CHW-001-S004-P001",
+    "CHW-001-S004-P002",
+    "CHW-001-S005-P001",
+    "CHW-001-S005-P002",
+    "CHW-001-S005-P003",
+    "CHW-001-S006-P001",
+    "CHW-001-S006-P002",
+    "CHW-001-S006-P003",
+    "CHW-001-S006-P004",
+    "CHW-001-S006-P005",
+    "CHW-001-S006-P006",
+    "CHW-001-S006-P007",
+    "CHW-001-S006-P008",
+    "CHW-001-S006-P009",
+    "CHW-001-S006-P010",
+    "CHW-001-S007-P001",
+    "CHW-001-S008-P001",
+    "CHW-001-S008-P002",
+    "CHW-001-S008-P003",
+    "CHW-001-S008-P004",
+    "CHW-001-S008-P005",
+    "CHW-001-S008-P006",
+    "CHW-001-S008-P007",
+    "CHW-001-S009-P001",
+    "CHW-001-S009-P002",
+    "CHW-001-S009-P003",
+    "CHW-001-S009-P004",
+    "CHW-001-S009-P005",
+    "CHW-001-S010-P001",
+    "CHW-001-S010-P002",
+    "CHW-001-S010-P003",
+    "CHW-001-S010-P004",
+    "CHW-001-S010-P005",
+    "CHW-001-S010-P006",
+    "CHW-001-S011-P001",
+    "CHW-001-S012-P001",
+    "CHW-001-S012-P002",
+    "CHW-001-S012-P003",
+    "CHW-001-S012-P004",
+    "CHW-001-S012-P005",
+    "CHW-001-S012-P006",
+    "CHW-001-S013-P001",
+    "CHW-001-S013-P002",
+    "CHW-001-S014-P001",
+    "CHW-001-S014-P002",
+    "CHW-001-S014-P003",
+    "CHW-001-S015-P001",
+    "CHW-001-S015-P002",
+    "CHW-001-S016-P001",
+    "CHW-001-S016-P002",
+    "CHW-001-S016-P003",
+    "CHW-001-S017-P001",
+    "CHW-001-S017-P002",
+    "CHW-001-S018-P001",
+    "CHW-001-S019-P001",
+    "CHW-001-S019-P002",
+    "CHW-001-S019-P003",
+    "CHW-001-S019-P004",
+    "CHW-001-S020-P001",
+    "CHW-001-S020-P002",
+    "CHW-001-S021-P001",
+    "CHW-001-S021-P002",
+    "CHW-001-S021-P003",
+    "CHW-001-S022-P001",
+    "CHW-001-S022-P002",
+    "CHW-001-S023-P001",
+    "CHW-001-S023-P002",
+    "CHW-002-S001-P001",
+    "CHW-002-S001-P002",
+    "CHW-002-S001-P003",
+    "CHW-002-S001-P004",
+    "CHW-002-S001-P005",
+    "CHW-002-S001-P006",
+    "CHW-002-S001-P007",
+    "CHW-002-S001-P008",
+    "CHW-002-S001-P009",
+    "CHW-002-S002-P001",
+    "CHW-002-S002-P002",
+    "CHW-002-S002-P003",
+    "CHW-002-S002-P004",
+    "CHW-002-S003-P001",
+    "CHW-002-S003-P002",
+    "CHW-002-S003-P003",
+    "CHW-002-S003-P004",
+    "CHW-002-S004-P001",
+    "CHW-002-S004-P002",
+    "CHW-002-S004-P003",
+    "CHW-002-S004-P004",
+    "CHW-002-S004-P005",
+    "CHW-002-S004-P006",
+    "CHW-002-S004-P007",
+    "CHW-002-S004-P008",
+    "CHW-002-S004-P009",
+    "CHW-002-S004-P010",
+    "CHW-002-S004-P011",
+    "CHW-002-S004-P012",
+    "CHW-002-S004-P013",
+    "CHW-002-S004-P014",
+    "CHW-002-S004-P015",
+    "CHW-002-S004-P016",
+    "CHW-002-S004-P017",
+    "CHW-002-S004-P018",
+    "CHW-002-S004-P019",
+    "CHW-002-S004-P020",
+    "CHW-002-S004-P021",
+    "CHW-002-S004-P022",
+    "CHW-002-S004-P023",
+    "CHW-002-S004-P024",
+    "CHW-002-S004-P025",
+    "CHW-002-S004-P026",
+    "CHW-002-S004-P027",
+    "CHW-002-S004-P028",
+    "CHW-002-S004-P029",
+    "CHW-002-S004-P030",
+    "CHW-002-S004-P031",
+    "CHW-002-S004-P032",
+    "CHW-002-S004-P033",
+    "CHW-002-S004-P034",
+    "CHW-002-S004-P035",
+    "CHW-002-S004-P036",
+    "CHW-002-S004-P037",
+    "CHW-002-S004-P038",
+    "CHW-002-S004-P039",
+    "CHW-002-S004-P040",
+    "CHW-002-S004-P041",
+    "CHW-002-S004-P042",
+    "CHW-002-S004-P043",
+    "CHW-002-S004-P044",
+    "CHW-002-S004-P045",
+    "CHW-002-S004-P046",
+    "CHW-002-S004-P047",
+    "CHW-002-S004-P048",
+    "CHW-002-S004-P049",
+    "CHW-002-S004-P050",
+    "CHW-002-S004-P051",
+    "CHW-002-S005-P001",
+    "CHW-002-S005-P002",
+    "CHW-002-S005-P003",
+    "CHW-002-S005-P004",
+    "CHW-002-S005-P005",
+    "CHW-002-S005-P006",
+    "CHW-003-S001-P001",
+    "CHW-003-S001-P002",
+    "CHW-003-S001-P003",
+    "CHW-003-S001-P004",
+    "CHW-003-S001-P005",
+    "CHW-003-S002-P001",
+    "CHW-003-S002-P002",
+    "CHW-003-S002-P003",
+    "CHW-003-S002-P004",
+    "CHW-003-S002-P005",
+    "CHW-003-S002-P006",
+    "CHW-003-S002-P007",
+    "CHW-003-S003-P001",
+    "CHW-003-S003-P002",
+    "CHW-003-S003-P003",
+    "CHW-003-S003-P004",
+    "CHW-003-S003-P005",
+    "CHW-003-S003-P006",
+    "CHW-003-S003-P007",
+    "CHW-003-S003-P008",
+    "CHW-003-S003-P009",
+    "CHW-003-S003-P010",
+    "CHW-003-S003-P011",
+    "CHW-003-S003-P012",
+    "CHW-003-S003-P013",
+    "CHW-003-S003-P014",
+    "CHW-003-S003-P015",
+    "CHW-003-S003-P016",
+    "CHW-003-S003-P017",
+    "CHW-003-S004-P001",
+    "CHW-003-S004-P002",
+    "CHW-003-S005-P001",
+    "CHW-003-S005-P002",
+    "CHW-003-S005-P003",
+    "CHW-003-S005-P004",
+    "CHW-003-S005-P005",
+    "CHW-003-S005-P006",
+    "CHW-003-S005-P007",
+    "CHW-003-S005-P008",
+    "CHW-003-S005-P009",
+    "CHW-003-S005-P010",
+    "CHW-003-S005-P011",
+    "CHW-003-S005-P012",
+    "CHW-003-S005-P013",
+    "CHW-003-S005-P014",
+    "CHW-003-S005-P015",
+    "CHW-003-S005-P016",
+    "CHW-003-S005-P017",
+    "CHW-003-S005-P018",
+    "CHW-003-S005-P019",
+    "CHW-003-S005-P020",
+    "CHW-003-S005-P021",
+    "CHW-003-S005-P022",
+    "CHW-004-S001-P001",
+    "CHW-004-S001-P002",
+    "CHW-004-S002-P001",
+    "CHW-004-S002-P002",
+    "CHW-004-S002-P003",
+    "CHW-004-S002-P004",
+    "CHW-004-S002-P005",
+    "CHW-004-S002-P006",
+    "CHW-004-S002-P007",
+    "CHW-004-S002-P008",
+    "CHW-004-S002-P009",
+    "CHW-004-S003-P001",
+    "CHW-004-S003-P002",
+    "CHW-005-S000-P001",
+    "CHW-005-S000-P002",
+    "CHW-005-S000-P003",
+    "CHW-005-S001-P001",
+    "CHW-005-S001-P002",
+    "CHW-005-S001-P003",
+    "CHW-005-S001-P004",
+    "CHW-005-S001-P005",
+    "CHW-005-S001-P006",
+    "CHW-005-S001-P007",
+    "CHW-005-S001-P008",
+    "CHW-005-S001-P009",
+    "CHW-005-S001-P010",
+    "CHW-005-S001-P011",
+    "CHW-005-S001-P012",
+    "CHW-005-S001-P013",
+    "CHW-005-S001-P014",
+    "CHW-005-S001-P015",
+    "CHW-005-S001-P016",
+    "CHW-005-S001-P017",
+    "CHW-005-S002-P001",
+    "CHW-005-S002-P002",
+    "CHW-005-S002-P003",
+    "CHW-005-S002-P004",
+    "CHW-005-S002-P005",
+    "CHW-005-S002-P006",
+    "CHW-005-S003-P001",
+    "CHW-005-S003-P002",
+    "CHW-005-S003-P003",
+    "CHW-005-S003-P004",
+    "CHW-005-S003-P005",
+    "CHW-005-S003-P006",
+    "CHW-005-S003-P007",
+    "CHW-005-S003-P008",
+    "CHW-005-S003-P009",
+    "CHW-005-S003-P010",
+    "CHW-005-S003-P011",
+    "CHW-005-S003-P012",
+    "CHW-005-S003-P013",
+    "CHW-005-S003-P014",
+    "CHW-005-S003-P015",
+    "CHW-005-S003-P016",
+    "CHW-005-S003-P017",
+    "CHW-005-S004-P001",
+    "CHW-005-S004-P002",
+    "CHW-005-S004-P003",
+    "CHW-005-S004-P004",
+    "CHW-005-S004-P005",
+    "CHW-005-S004-P006",
+    "CHW-005-S005-P001",
+    "CHW-005-S005-P002",
+    "CHW-005-S005-P003",
+    "CHW-005-S005-P004",
+    "CHW-005-S005-P005",
+    "CHW-005-S006-P001",
+    "CHW-005-S008-P001",
+    "CHW-005-S008-P002",
+    "CHW-005-S008-P003",
+    "CHW-005-S008-P004",
+    "CHW-005-S008-P005",
+    "CHW-005-S008-P006",
+    "CHW-005-S009-P001",
+    "CHW-005-S009-P002",
+    "CHW-005-S009-P003",
+    "CHW-005-S009-P004",
+    "CHW-005-S009-P005",
+    "CHW-005-S009-P006",
+    "CHW-005-S009-P007",
+    "CHW-006-S000-P001",
+    "CHW-006-S000-P002",
+    "CHW-006-S001-P001",
+    "CHW-006-S002-P001",
+    "CHW-006-S003-P001",
+    "CHW-006-S003-P002",
+    "CHW-006-S003-P003",
+    "CHW-006-S004-P001",
+    "CHW-006-S005-P001",
+    "CHW-006-S005-P002",
+    "CHW-006-S005-P003",
+    "CHW-006-S005-P004",
+    "CHW-006-S005-P005",
+    "CHW-006-S007-P001",
+    "CHW-006-S007-P002",
+    "CHW-006-S007-P003",
+    "CHW-006-S008-P001",
+    "CHW-006-S008-P002",
+    "CHW-006-S008-P003",
+    "CHW-006-S008-P004",
+    "CHW-006-S008-P005",
+    "CHW-006-S008-P006",
+    "CHW-006-S008-P007",
+    "CHW-006-S008-P008",
+    "CHW-006-S008-P009",
+    "CHW-006-S008-P010",
+    "CHW-006-S008-P011",
+    "CHW-006-S008-P012",
+    "CHW-006-S008-P013",
+    "CHW-006-S008-P014",
+    "CHW-006-S008-P015",
+    "CHW-006-S008-P016",
+    "CHW-006-S008-P017",
+    "CHW-006-S008-P018",
+    "CHW-006-S009-P001",
+    "CHW-006-S010-P001",
+    "CHW-006-S010-P002",
+    "CHW-006-S010-P003",
+    "CHW-006-S010-P004",
+    "CHW-006-S010-P005",
+    "CHW-006-S010-P006",
+    "CHW-006-S010-P007",
+    "CHW-006-S011-P001",
+    "CHW-006-S011-P002"
+  ],
+  "reading_order": [
+    "CHW-000",
+    "CHW-001",
+    "CHW-002",
+    "CHW-003",
+    "CHW-004",
+    "CHW-005",
+    "CHW-006"
+  ],
+  "chapters": [
+    {
+      "id": "CHW-000",
+      "number": 0,
+      "kind": "front_matter",
+      "titles": {
+        "am": "የቤተ ክርስቲያን ታሪክ በዓለም መድረክ",
+        "en": "Church History on the World Stage"
+      },
+      "source_heading_am": "የቤተ ክርስቲያን ታሪክ በዓለም መድረክ",
+      "sections": [
+        {
+          "id": "CHW-000-S000",
+          "parent_id": "CHW-000",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHW-000-S000-P001",
+            "CHW-000-S000-P002",
+            "CHW-000-S000-P003",
+            "CHW-000-S000-P004"
+          ]
+        },
+        {
+          "id": "CHW-000-S001",
+          "parent_id": "CHW-000",
+          "level": 2,
+          "titles": {
+            "am": "መቅድም",
+            "en": "Foreword"
+          },
+          "paragraph_ids": [
+            "CHW-000-S001-P001",
+            "CHW-000-S001-P002",
+            "CHW-000-S001-P003"
+          ]
+        },
+        {
+          "id": "CHW-000-S002",
+          "parent_id": "CHW-000",
+          "level": 2,
+          "titles": {
+            "am": "መግቢያ",
+            "en": "Introduction"
+          },
+          "paragraph_ids": [
+            "CHW-000-S002-P001",
+            "CHW-000-S002-P002",
+            "CHW-000-S002-P003",
+            "CHW-000-S002-P004",
+            "CHW-000-S002-P005",
+            "CHW-000-S002-P006",
+            "CHW-000-S002-P007",
+            "CHW-000-S002-P008",
+            "CHW-000-S002-P009",
+            "CHW-000-S002-P010",
+            "CHW-000-S002-P011",
+            "CHW-000-S002-P012",
+            "CHW-000-S002-P013",
+            "CHW-000-S002-P014",
+            "CHW-000-S002-P015",
+            "CHW-000-S002-P016"
+          ]
+        },
+        {
+          "id": "CHW-000-S003",
+          "parent_id": "CHW-000",
+          "level": 2,
+          "titles": {
+            "am": "የመጀመሪያዎቹ ክርስቲያኖች ሕይወት",
+            "en": "The Lives of the First Christians"
+          },
+          "paragraph_ids": [
+            "CHW-000-S003-P001",
+            "CHW-000-S003-P002",
+            "CHW-000-S003-P003",
+            "CHW-000-S003-P004",
+            "CHW-000-S003-P005",
+            "CHW-000-S003-P006",
+            "CHW-000-S003-P007",
+            "CHW-000-S003-P008"
+          ]
+        },
+        {
+          "id": "CHW-000-S004",
+          "parent_id": "CHW-000",
+          "level": 2,
+          "titles": {
+            "am": "የ7ቱ የዲያቆናት ምርጫ",
+            "en": "The Choice of the 7 Deacons"
+          },
+          "paragraph_ids": [
+            "CHW-000-S004-P001"
+          ]
+        },
+        {
+          "id": "CHW-000-S005",
+          "parent_id": "CHW-000",
+          "level": 2,
+          "titles": {
+            "am": "ሊቀ ዲያቆናት ቅዱስ እስጢፋኖስ",
+            "en": "Archdeacon St. Stephen"
+          },
+          "paragraph_ids": [
+            "CHW-000-S005-P001",
+            "CHW-000-S005-P002",
+            "CHW-000-S005-P003",
+            "CHW-000-S005-P004",
+            "CHW-000-S005-P005"
+          ]
+        },
+        {
+          "id": "CHW-000-S006",
+          "parent_id": "CHW-000",
+          "level": 2,
+          "titles": {
+            "am": "ዲያቆኑ ፊልጶስ",
+            "en": "Deacon Philip"
+          },
+          "paragraph_ids": [
+            "CHW-000-S006-P001",
+            "CHW-000-S006-P002"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/00-introduction.md",
+        "en": "en/00-introduction.md"
+      }
+    },
+    {
+      "id": "CHW-001",
+      "number": 1,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ ሁለት",
+        "en": "CHAPTER TWO"
+      },
+      "source_heading_am": "ምዕራፍ ሁለት",
+      "sections": [
+        {
+          "id": "CHW-001-S001",
+          "parent_id": "CHW-001",
+          "level": 3,
+          "titles": {
+            "am": "ዘመነ ሐዋርያት እና ዘመነ ሐዋርያነ አበው",
+            "en": "The Days of the Apostles and the Days of the Apostles"
+          },
+          "paragraph_ids": [
+            "CHW-001-S001-P001",
+            "CHW-001-S001-P002",
+            "CHW-001-S001-P003",
+            "CHW-001-S001-P004",
+            "CHW-001-S001-P005",
+            "CHW-001-S001-P006"
+          ]
+        },
+        {
+          "id": "CHW-001-S002",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "የሐዋርያት አጠራር",
+            "en": "Pronunciation of the apostles"
+          },
+          "paragraph_ids": [
+            "CHW-001-S002-P001",
+            "CHW-001-S002-P002",
+            "CHW-001-S002-P003",
+            "CHW-001-S002-P004",
+            "CHW-001-S002-P005",
+            "CHW-001-S002-P006",
+            "CHW-001-S002-P007",
+            "CHW-001-S002-P008",
+            "CHW-001-S002-P009",
+            "CHW-001-S002-P010",
+            "CHW-001-S002-P011",
+            "CHW-001-S002-P012"
+          ]
+        },
+        {
+          "id": "CHW-001-S003",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "ጥምቀተ ሐዋርያት",
+            "en": "The Baptism of the Apostles"
+          },
+          "paragraph_ids": [
+            "CHW-001-S003-P001"
+          ]
+        },
+        {
+          "id": "CHW-001-S004",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "ሐዋርያት መቼ ቆረቡ",
+            "en": "When Did the Apostles Receive Holy Communion?"
+          },
+          "paragraph_ids": [
+            "CHW-001-S004-P001",
+            "CHW-001-S004-P002"
+          ]
+        },
+        {
+          "id": "CHW-001-S005",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "የሐዋርያት ትምህርት",
+            "en": "Teaching of the Apostles"
+          },
+          "paragraph_ids": [
+            "CHW-001-S005-P001",
+            "CHW-001-S005-P002",
+            "CHW-001-S005-P003"
+          ]
+        },
+        {
+          "id": "CHW-001-S006",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "1ኛ/ ሐዋርያው ቅዱስ ጴጥሮስ /ስምዖን፣ኪፋ/",
+            "en": "1 / The Apostle Peter (Simon, Cyphas)"
+          },
+          "paragraph_ids": [
+            "CHW-001-S006-P001",
+            "CHW-001-S006-P002",
+            "CHW-001-S006-P003",
+            "CHW-001-S006-P004",
+            "CHW-001-S006-P005",
+            "CHW-001-S006-P006",
+            "CHW-001-S006-P007",
+            "CHW-001-S006-P008",
+            "CHW-001-S006-P009",
+            "CHW-001-S006-P010"
+          ]
+        },
+        {
+          "id": "CHW-001-S007",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "2ኛ/ ሐዋርያው ቅዱስ ዮሐንስ",
+            "en": "2 - The Apostle John"
+          },
+          "paragraph_ids": [
+            "CHW-001-S007-P001"
+          ]
+        },
+        {
+          "id": "CHW-001-S008",
+          "parent_id": "CHW-001-S007",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ዮሐንስ የሚጠራባቸው ስሞች",
+            "en": "The names that St. John is called."
+          },
+          "paragraph_ids": [
+            "CHW-001-S008-P001",
+            "CHW-001-S008-P002",
+            "CHW-001-S008-P003",
+            "CHW-001-S008-P004",
+            "CHW-001-S008-P005",
+            "CHW-001-S008-P006",
+            "CHW-001-S008-P007"
+          ]
+        },
+        {
+          "id": "CHW-001-S009",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "የቅዱስ ዮሐንስ ሐዋርያዊ ጉዞ",
+            "en": "St. John's Apostolic Journey"
+          },
+          "paragraph_ids": [
+            "CHW-001-S009-P001",
+            "CHW-001-S009-P002",
+            "CHW-001-S009-P003",
+            "CHW-001-S009-P004",
+            "CHW-001-S009-P005"
+          ]
+        },
+        {
+          "id": "CHW-001-S010",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "3ኛ/ ሐዋርያው ቅዱስ ያዕቆብ ወልደ ዘብዴዎስ/",
+            "en": "3 - The Apostle James the Son of Zebedee"
+          },
+          "paragraph_ids": [
+            "CHW-001-S010-P001",
+            "CHW-001-S010-P002",
+            "CHW-001-S010-P003",
+            "CHW-001-S010-P004",
+            "CHW-001-S010-P005",
+            "CHW-001-S010-P006"
+          ]
+        },
+        {
+          "id": "CHW-001-S011",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "4ኛ/ ሐዋርያው ቅዱስ እንድርያስ",
+            "en": "4th - The Apostle Andrew"
+          },
+          "paragraph_ids": [
+            "CHW-001-S011-P001"
+          ]
+        },
+        {
+          "id": "CHW-001-S012",
+          "parent_id": "CHW-001-S011",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ እንድርያስ የሚጠራባቸው ቅጽል ስሞች",
+            "en": "Nicknames that Saint Andrew is called"
+          },
+          "paragraph_ids": [
+            "CHW-001-S012-P001",
+            "CHW-001-S012-P002",
+            "CHW-001-S012-P003",
+            "CHW-001-S012-P004",
+            "CHW-001-S012-P005",
+            "CHW-001-S012-P006"
+          ]
+        },
+        {
+          "id": "CHW-001-S013",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "5ኛ/ ሐዋርያው ቅዱስ ፊልጶስ",
+            "en": "5th - The Apostle Philip"
+          },
+          "paragraph_ids": [
+            "CHW-001-S013-P001",
+            "CHW-001-S013-P002"
+          ]
+        },
+        {
+          "id": "CHW-001-S014",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "6ኛ/ ሐዋርያው ቅዱስ ቶማስ /ዲዲሞስ/",
+            "en": "6th - The Apostle Thomas (Didymos)"
+          },
+          "paragraph_ids": [
+            "CHW-001-S014-P001",
+            "CHW-001-S014-P002",
+            "CHW-001-S014-P003"
+          ]
+        },
+        {
+          "id": "CHW-001-S015",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "7ኛ/ ሐዋርያው ቅዱስ በርተሎሜዎስ",
+            "en": "The Apostle Bartholomew"
+          },
+          "paragraph_ids": [
+            "CHW-001-S015-P001",
+            "CHW-001-S015-P002"
+          ]
+        },
+        {
+          "id": "CHW-001-S016",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "8ኛ/ ሐዋርያው ቅዱስ ማቴዎስ /ሌዊ/",
+            "en": "The Apostle Matthew (Leviticus)"
+          },
+          "paragraph_ids": [
+            "CHW-001-S016-P001",
+            "CHW-001-S016-P002",
+            "CHW-001-S016-P003"
+          ]
+        },
+        {
+          "id": "CHW-001-S017",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "9ኛ/ ሐዋርያው ቅዱስ ያዕቆብ /ወልደ እልፍዩስ/",
+            "en": "The Apostle James (son of the Apostle James)"
+          },
+          "paragraph_ids": [
+            "CHW-001-S017-P001",
+            "CHW-001-S017-P002"
+          ]
+        },
+        {
+          "id": "CHW-001-S018",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "10ኛ/ ሐዋርያው ናትናኤል",
+            "en": "10/10/2018 - The Apostle Nathanael"
+          },
+          "paragraph_ids": [
+            "CHW-001-S018-P001"
+          ]
+        },
+        {
+          "id": "CHW-001-S019",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "11ኛ/ ሐዋርያው ቅዱስ ታዴዎስ ልብድዮስ",
+            "en": "11th - The Apostle Thaddeus"
+          },
+          "paragraph_ids": [
+            "CHW-001-S019-P001",
+            "CHW-001-S019-P002",
+            "CHW-001-S019-P003",
+            "CHW-001-S019-P004"
+          ]
+        },
+        {
+          "id": "CHW-001-S020",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "12ኛ/ ሐዋርያው ቅዱስ ማትያስ",
+            "en": "12th - The Apostle Matthias"
+          },
+          "paragraph_ids": [
+            "CHW-001-S020-P001",
+            "CHW-001-S020-P002"
+          ]
+        },
+        {
+          "id": "CHW-001-S021",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "13ኛው/ ሐዋርያው ቅዱስ ጳውሎስ",
+            "en": "The 13th Apostle Paul"
+          },
+          "paragraph_ids": [
+            "CHW-001-S021-P001",
+            "CHW-001-S021-P002",
+            "CHW-001-S021-P003"
+          ]
+        },
+        {
+          "id": "CHW-001-S022",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "የሐዋርያው ቅዱስ ጳውሎስ ወደ ቤተ ክርስቲያን መጠራት",
+            "en": "The Calling of the Apostle St. Paul to the Church"
+          },
+          "paragraph_ids": [
+            "CHW-001-S022-P001",
+            "CHW-001-S022-P002"
+          ]
+        },
+        {
+          "id": "CHW-001-S023",
+          "parent_id": "CHW-001",
+          "level": 2,
+          "titles": {
+            "am": "የሐዋርያው ቅዱስ ጳውሎስ ሐዋርያዊ ጉዞ",
+            "en": "The Apostolic Journey of the Apostle St. Paul"
+          },
+          "paragraph_ids": [
+            "CHW-001-S023-P001",
+            "CHW-001-S023-P002"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/01-chapter-two.md",
+        "en": "en/01-chapter-two.md"
+      }
+    },
+    {
+      "id": "CHW-002",
+      "number": 2,
+      "kind": "conclusion",
+      "titles": {
+        "am": "ማጠቃለያ",
+        "en": "Conclusion"
+      },
+      "source_heading_am": "ማጠቃለያ",
+      "sections": [
+        {
+          "id": "CHW-002-S001",
+          "parent_id": "CHW-002",
+          "level": 2,
+          "titles": {
+            "am": "የሐዋርያት ክብር በቤተ ክርስቲያን",
+            "en": "The Glory of the Apostles in the Church"
+          },
+          "paragraph_ids": [
+            "CHW-002-S001-P001",
+            "CHW-002-S001-P002",
+            "CHW-002-S001-P003",
+            "CHW-002-S001-P004",
+            "CHW-002-S001-P005",
+            "CHW-002-S001-P006",
+            "CHW-002-S001-P007",
+            "CHW-002-S001-P008",
+            "CHW-002-S001-P009"
+          ]
+        },
+        {
+          "id": "CHW-002-S002",
+          "parent_id": "CHW-002-S001",
+          "level": 3,
+          "titles": {
+            "am": "2ኛ ዘመነ ሐዋርያውን አበው የመሸጋገሪያ ዘመን / 71-160",
+            "en": "The Age of the Apostle (71-160)"
+          },
+          "paragraph_ids": [
+            "CHW-002-S002-P001",
+            "CHW-002-S002-P002",
+            "CHW-002-S002-P003",
+            "CHW-002-S002-P004"
+          ]
+        },
+        {
+          "id": "CHW-002-S003",
+          "parent_id": "CHW-002-S001",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ቀሌምንጦስ ዘሮም /91-100 ዓ.ም./",
+            "en": "Saint Clement of the Dead (91-100 A.D.)"
+          },
+          "paragraph_ids": [
+            "CHW-002-S003-P001",
+            "CHW-002-S003-P002",
+            "CHW-002-S003-P003",
+            "CHW-002-S003-P004"
+          ]
+        },
+        {
+          "id": "CHW-002-S004",
+          "parent_id": "CHW-002-S001",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ፖሊካርፐስ ከ55 -155 ዓ.ም",
+            "en": "Saint Polycarpus 55-155 AD"
+          },
+          "paragraph_ids": [
+            "CHW-002-S004-P001",
+            "CHW-002-S004-P002",
+            "CHW-002-S004-P003",
+            "CHW-002-S004-P004",
+            "CHW-002-S004-P005",
+            "CHW-002-S004-P006",
+            "CHW-002-S004-P007",
+            "CHW-002-S004-P008",
+            "CHW-002-S004-P009",
+            "CHW-002-S004-P010",
+            "CHW-002-S004-P011",
+            "CHW-002-S004-P012",
+            "CHW-002-S004-P013",
+            "CHW-002-S004-P014",
+            "CHW-002-S004-P015",
+            "CHW-002-S004-P016",
+            "CHW-002-S004-P017",
+            "CHW-002-S004-P018",
+            "CHW-002-S004-P019",
+            "CHW-002-S004-P020",
+            "CHW-002-S004-P021",
+            "CHW-002-S004-P022",
+            "CHW-002-S004-P023",
+            "CHW-002-S004-P024",
+            "CHW-002-S004-P025",
+            "CHW-002-S004-P026",
+            "CHW-002-S004-P027",
+            "CHW-002-S004-P028",
+            "CHW-002-S004-P029",
+            "CHW-002-S004-P030",
+            "CHW-002-S004-P031",
+            "CHW-002-S004-P032",
+            "CHW-002-S004-P033",
+            "CHW-002-S004-P034",
+            "CHW-002-S004-P035",
+            "CHW-002-S004-P036",
+            "CHW-002-S004-P037",
+            "CHW-002-S004-P038",
+            "CHW-002-S004-P039",
+            "CHW-002-S004-P040",
+            "CHW-002-S004-P041",
+            "CHW-002-S004-P042",
+            "CHW-002-S004-P043",
+            "CHW-002-S004-P044",
+            "CHW-002-S004-P045",
+            "CHW-002-S004-P046",
+            "CHW-002-S004-P047",
+            "CHW-002-S004-P048",
+            "CHW-002-S004-P049",
+            "CHW-002-S004-P050",
+            "CHW-002-S004-P051"
+          ]
+        },
+        {
+          "id": "CHW-002-S005",
+          "parent_id": "CHW-002",
+          "level": 2,
+          "titles": {
+            "am": "የግኖስቲኮች ትምህርት /አመለካከት/",
+            "en": "The Teachings of the Gnostics"
+          },
+          "paragraph_ids": [
+            "CHW-002-S005-P001",
+            "CHW-002-S005-P002",
+            "CHW-002-S005-P003",
+            "CHW-002-S005-P004",
+            "CHW-002-S005-P005",
+            "CHW-002-S005-P006"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/02-conclusion.md",
+        "en": "en/02-conclusion.md"
+      }
+    },
+    {
+      "id": "CHW-003",
+      "number": 3,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ 4",
+        "en": "Chapter 4"
+      },
+      "source_heading_am": "ምዕራፍ 4",
+      "sections": [
+        {
+          "id": "CHW-003-S001",
+          "parent_id": "CHW-003",
+          "level": 3,
+          "titles": {
+            "am": "የቤተ ክርስቲያን ወርቃማ ዘመን /ዘመነ ሊቃውንት/ 312 - 434",
+            "en": "The Golden Age of the Church (312-434)"
+          },
+          "paragraph_ids": [
+            "CHW-003-S001-P001",
+            "CHW-003-S001-P002",
+            "CHW-003-S001-P003",
+            "CHW-003-S001-P004",
+            "CHW-003-S001-P005"
+          ]
+        },
+        {
+          "id": "CHW-003-S002",
+          "parent_id": "CHW-003",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ኤፍሬም ከ 306 -375 ዓ.ም",
+            "en": "Saint Ephraim from 306 -375 AD"
+          },
+          "paragraph_ids": [
+            "CHW-003-S002-P001",
+            "CHW-003-S002-P002",
+            "CHW-003-S002-P003",
+            "CHW-003-S002-P004",
+            "CHW-003-S002-P005",
+            "CHW-003-S002-P006",
+            "CHW-003-S002-P007"
+          ]
+        },
+        {
+          "id": "CHW-003-S003",
+          "parent_id": "CHW-003",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ባስሌዎስ ለቤተ ክርስቲያን ያበረከተው አስተዋጽኦ",
+            "en": "St. Basil's Contribution to the Church"
+          },
+          "paragraph_ids": [
+            "CHW-003-S003-P001",
+            "CHW-003-S003-P002",
+            "CHW-003-S003-P003",
+            "CHW-003-S003-P004",
+            "CHW-003-S003-P005",
+            "CHW-003-S003-P006",
+            "CHW-003-S003-P007",
+            "CHW-003-S003-P008",
+            "CHW-003-S003-P009",
+            "CHW-003-S003-P010",
+            "CHW-003-S003-P011",
+            "CHW-003-S003-P012",
+            "CHW-003-S003-P013",
+            "CHW-003-S003-P014",
+            "CHW-003-S003-P015",
+            "CHW-003-S003-P016",
+            "CHW-003-S003-P017"
+          ]
+        },
+        {
+          "id": "CHW-003-S004",
+          "parent_id": "CHW-003",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ዲሜጥሮስ ለቤተ ክርስቲያን ያበረከተው አስተዋጽኦ",
+            "en": "St. Demetrius' contribution to the Church"
+          },
+          "paragraph_ids": [
+            "CHW-003-S004-P001",
+            "CHW-003-S004-P002"
+          ]
+        },
+        {
+          "id": "CHW-003-S005",
+          "parent_id": "CHW-003",
+          "level": 2,
+          "titles": {
+            "am": "ባሕረ ሓሳብ ምንድን ነው? ስሌቱስ እንዴት ነው?",
+            "en": "What is the sea? How is the calculus?"
+          },
+          "paragraph_ids": [
+            "CHW-003-S005-P001",
+            "CHW-003-S005-P002",
+            "CHW-003-S005-P003",
+            "CHW-003-S005-P004",
+            "CHW-003-S005-P005",
+            "CHW-003-S005-P006",
+            "CHW-003-S005-P007",
+            "CHW-003-S005-P008",
+            "CHW-003-S005-P009",
+            "CHW-003-S005-P010",
+            "CHW-003-S005-P011",
+            "CHW-003-S005-P012",
+            "CHW-003-S005-P013",
+            "CHW-003-S005-P014",
+            "CHW-003-S005-P015",
+            "CHW-003-S005-P016",
+            "CHW-003-S005-P017",
+            "CHW-003-S005-P018",
+            "CHW-003-S005-P019",
+            "CHW-003-S005-P020",
+            "CHW-003-S005-P021",
+            "CHW-003-S005-P022"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/03-chapter-4.md",
+        "en": "en/03-chapter-4.md"
+      }
+    },
+    {
+      "id": "CHW-004",
+      "number": 4,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ አምስት",
+        "en": "Chapter Five"
+      },
+      "source_heading_am": "ምዕራፍ አምስት",
+      "sections": [
+        {
+          "id": "CHW-004-S001",
+          "parent_id": "CHW-004",
+          "level": 2,
+          "titles": {
+            "am": "ሁለቱ የትርጓሜ ትምህርት ቤቶች",
+            "en": "The Two Schools of Interpretation"
+          },
+          "paragraph_ids": [
+            "CHW-004-S001-P001",
+            "CHW-004-S001-P002"
+          ]
+        },
+        {
+          "id": "CHW-004-S002",
+          "parent_id": "CHW-004-S001",
+          "level": 3,
+          "titles": {
+            "am": "1ኛ የእስክንድርያ ትርጓሜ ትምህርት ቤት",
+            "en": "1st Alexandria Interpretation School"
+          },
+          "paragraph_ids": [
+            "CHW-004-S002-P001",
+            "CHW-004-S002-P002",
+            "CHW-004-S002-P003",
+            "CHW-004-S002-P004",
+            "CHW-004-S002-P005",
+            "CHW-004-S002-P006",
+            "CHW-004-S002-P007",
+            "CHW-004-S002-P008",
+            "CHW-004-S002-P009"
+          ]
+        },
+        {
+          "id": "CHW-004-S003",
+          "parent_id": "CHW-004",
+          "level": 2,
+          "titles": {
+            "am": "ተፍፃሜተ ሰማዕት ቅዱስ ጴጥሮስ",
+            "en": "The End of the Martyrdom of St. Peter"
+          },
+          "paragraph_ids": [
+            "CHW-004-S003-P001",
+            "CHW-004-S003-P002"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/04-chapter-five.md",
+        "en": "en/04-chapter-five.md"
+      }
+    },
+    {
+      "id": "CHW-005",
+      "number": 5,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ ስድስት",
+        "en": "CHAPTER SIX"
+      },
+      "source_heading_am": "ምዕራፍ ስድስት",
+      "sections": [
+        {
+          "id": "CHW-005-S000",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHW-005-S000-P001",
+            "CHW-005-S000-P002",
+            "CHW-005-S000-P003"
+          ]
+        },
+        {
+          "id": "CHW-005-S001",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "1. ጉባኤ ኒቂያ",
+            "en": "1. Conference of Nicaea"
+          },
+          "paragraph_ids": [
+            "CHW-005-S001-P001",
+            "CHW-005-S001-P002",
+            "CHW-005-S001-P003",
+            "CHW-005-S001-P004",
+            "CHW-005-S001-P005",
+            "CHW-005-S001-P006",
+            "CHW-005-S001-P007",
+            "CHW-005-S001-P008",
+            "CHW-005-S001-P009",
+            "CHW-005-S001-P010",
+            "CHW-005-S001-P011",
+            "CHW-005-S001-P012",
+            "CHW-005-S001-P013",
+            "CHW-005-S001-P014",
+            "CHW-005-S001-P015",
+            "CHW-005-S001-P016",
+            "CHW-005-S001-P017"
+          ]
+        },
+        {
+          "id": "CHW-005-S002",
+          "parent_id": "CHW-005-S001",
+          "level": 3,
+          "titles": {
+            "am": "የአርዮስ አሟሟትና መንፈቀ አርዮሳውያን",
+            "en": "The Death of Arius and the Death of the Aristocrats"
+          },
+          "paragraph_ids": [
+            "CHW-005-S002-P001",
+            "CHW-005-S002-P002",
+            "CHW-005-S002-P003",
+            "CHW-005-S002-P004",
+            "CHW-005-S002-P005",
+            "CHW-005-S002-P006"
+          ]
+        },
+        {
+          "id": "CHW-005-S003",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "ሐዋርያው አትናተዎስ",
+            "en": "The Apostle Athanasius"
+          },
+          "paragraph_ids": [
+            "CHW-005-S003-P001",
+            "CHW-005-S003-P002",
+            "CHW-005-S003-P003",
+            "CHW-005-S003-P004",
+            "CHW-005-S003-P005",
+            "CHW-005-S003-P006",
+            "CHW-005-S003-P007",
+            "CHW-005-S003-P008",
+            "CHW-005-S003-P009",
+            "CHW-005-S003-P010",
+            "CHW-005-S003-P011",
+            "CHW-005-S003-P012",
+            "CHW-005-S003-P013",
+            "CHW-005-S003-P014",
+            "CHW-005-S003-P015",
+            "CHW-005-S003-P016",
+            "CHW-005-S003-P017"
+          ]
+        },
+        {
+          "id": "CHW-005-S004",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "2. ጉባኤ ቁስጥንጥንያ /381 ዓ.ም./",
+            "en": "2. Council of Constantinople (381 A.D.)"
+          },
+          "paragraph_ids": [
+            "CHW-005-S004-P001",
+            "CHW-005-S004-P002",
+            "CHW-005-S004-P003",
+            "CHW-005-S004-P004",
+            "CHW-005-S004-P005",
+            "CHW-005-S004-P006"
+          ]
+        },
+        {
+          "id": "CHW-005-S005",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "3. ጉባኤ ኤፊሶን /431 ዓ.ም./",
+            "en": "3. Council of Ephesus (431 A.D.)"
+          },
+          "paragraph_ids": [
+            "CHW-005-S005-P001",
+            "CHW-005-S005-P002",
+            "CHW-005-S005-P003",
+            "CHW-005-S005-P004",
+            "CHW-005-S005-P005"
+          ]
+        },
+        {
+          "id": "CHW-005-S006",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "4. ጉባኤ ኬልቄዶን",
+            "en": "4. The Congregation of Chalcedon"
+          },
+          "paragraph_ids": [
+            "CHW-005-S006-P001"
+          ]
+        },
+        {
+          "id": "CHW-005-S007",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "ከኬልቄዶን ጉባኤ በኋላ",
+            "en": "After the Congregation of Chalcedon"
+          },
+          "paragraph_ids": []
+        },
+        {
+          "id": "CHW-005-S008",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "ከኬልቄዶን ጉባኤ በኋላ 150 ዓመታት የነገሡት የቁስጥንጥንያ ነገሥታት ቤተ ክርስቲያን ለማዋሐድ ብዙ ጥረዋል፡፡ በ474-491 የነገሠው ዘይኑን እና ከ491-518 የነገሠው አናስቲሲዮስ አንድ ባሕርይ የማለውን የተዋሕዶ እምነት እንዲቀበለ ፈልገው የነበረ ሲሆን የቄልቄዶን ጉባኤና የልዮን ደብዳቤ መሰናክል ሆኖባቸዋል፡፡",
+            "en": "The kings of Constantinople, who reigned 150 years after the Council of Chalcedon, worked hard to unite the Church. Zeinus, who reigned 474-491, and Anastasius, who reigned 491-518, sought to adopt a monotheistic faith, and the Council of Chalcedon and the Letter of Lyon were an obstacle to them."
+          },
+          "paragraph_ids": [
+            "CHW-005-S008-P001",
+            "CHW-005-S008-P002",
+            "CHW-005-S008-P003",
+            "CHW-005-S008-P004",
+            "CHW-005-S008-P005",
+            "CHW-005-S008-P006"
+          ]
+        },
+        {
+          "id": "CHW-005-S009",
+          "parent_id": "CHW-005",
+          "level": 2,
+          "titles": {
+            "am": "ከኬልቄዶን ጉባኤ በኋላ መስማማት ያቃታቸው ሮማውያንና ግሪኮች ሦስት ጉባኤ አድርገዋል፡፡ እነርሱም፦",
+            "en": "After the Council of Chalcedon, the Romans and the Greeks held three conferences:"
+          },
+          "paragraph_ids": [
+            "CHW-005-S009-P001",
+            "CHW-005-S009-P002",
+            "CHW-005-S009-P003",
+            "CHW-005-S009-P004",
+            "CHW-005-S009-P005",
+            "CHW-005-S009-P006",
+            "CHW-005-S009-P007"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/05-chapter-six.md",
+        "en": "en/05-chapter-six.md"
+      }
+    },
+    {
+      "id": "CHW-006",
+      "number": 6,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ ሰባት የምንኩስና ሕይወት አጀማመርና ዕድገት",
+        "en": "Chapter 7: The Beginning and Growth of Life"
+      },
+      "source_heading_am": "ምዕራፍ ሰባት የምንኩስና ሕይወት አጀማመርና ዕድገት",
+      "sections": [
+        {
+          "id": "CHW-006-S000",
+          "parent_id": "CHW-006",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHW-006-S000-P001",
+            "CHW-006-S000-P002"
+          ]
+        },
+        {
+          "id": "CHW-006-S001",
+          "parent_id": "CHW-006-S000",
+          "level": 3,
+          "titles": {
+            "am": "የምንኩስና ሕይወት አጀማመር ምሳሌ በሕገ ልቡናና በብሉይ ኪዳን ዘመን",
+            "en": "An example of the beginning of monastic life in the Old Testament and the Old Testament"
+          },
+          "paragraph_ids": [
+            "CHW-006-S001-P001"
+          ]
+        },
+        {
+          "id": "CHW-006-S002",
+          "parent_id": "CHW-006-S000",
+          "level": 3,
+          "titles": {
+            "am": "የምንኩስና ሕይወት አጀማመር በሐዲስ ኪዳን",
+            "en": "The Beginning of Life in the New Testament"
+          },
+          "paragraph_ids": [
+            "CHW-006-S002-P001"
+          ]
+        },
+        {
+          "id": "CHW-006-S003",
+          "parent_id": "CHW-006",
+          "level": 2,
+          "titles": {
+            "am": "የሥርዓተ ምንኩስና አጀማመር",
+            "en": "The Beginning of the Monastic Order"
+          },
+          "paragraph_ids": [
+            "CHW-006-S003-P001",
+            "CHW-006-S003-P002",
+            "CHW-006-S003-P003"
+          ]
+        },
+        {
+          "id": "CHW-006-S004",
+          "parent_id": "CHW-006",
+          "level": 2,
+          "titles": {
+            "am": "የገዳማዊ ሕይወት አጀማመር",
+            "en": "The Beginning of Monastic Life"
+          },
+          "paragraph_ids": [
+            "CHW-006-S004-P001"
+          ]
+        },
+        {
+          "id": "CHW-006-S005",
+          "parent_id": "CHW-006",
+          "level": 2,
+          "titles": {
+            "am": "የምንኩስና ሥርዓት",
+            "en": "Monastic order"
+          },
+          "paragraph_ids": [
+            "CHW-006-S005-P001",
+            "CHW-006-S005-P002",
+            "CHW-006-S005-P003",
+            "CHW-006-S005-P004",
+            "CHW-006-S005-P005"
+          ]
+        },
+        {
+          "id": "CHW-006-S006",
+          "parent_id": "CHW-006",
+          "level": 2,
+          "titles": {
+            "am": "ምንኩስና በቆብ ደረጃ ሦስት ማዕረጋት አሉት እነርሱም 1. ቆብ 2. ቅንዓት 3. አስኬማ",
+            "en": "There are three types of monasticism: 1. Cap 2. Zeal 3. Aschema"
+          },
+          "paragraph_ids": []
+        },
+        {
+          "id": "CHW-006-S007",
+          "parent_id": "CHW-006",
+          "level": 2,
+          "titles": {
+            "am": "ምንኩስና በቆብ ደረጃ",
+            "en": "In the meantime, however, there has been a time whilst human beings used to assume that the looking for Goa"
+          },
+          "paragraph_ids": [
+            "CHW-006-S007-P001",
+            "CHW-006-S007-P002",
+            "CHW-006-S007-P003"
+          ]
+        },
+        {
+          "id": "CHW-006-S008",
+          "parent_id": "CHW-006",
+          "level": 2,
+          "titles": {
+            "am": "የምንኩስና ማዕረጋት በብቃት ደረጃ",
+            "en": "In the meantime, we have been able to get our hands on some of the most important things we can do to make sure that we are doing the right thing."
+          },
+          "paragraph_ids": [
+            "CHW-006-S008-P001",
+            "CHW-006-S008-P002",
+            "CHW-006-S008-P003",
+            "CHW-006-S008-P004",
+            "CHW-006-S008-P005",
+            "CHW-006-S008-P006",
+            "CHW-006-S008-P007",
+            "CHW-006-S008-P008",
+            "CHW-006-S008-P009",
+            "CHW-006-S008-P010",
+            "CHW-006-S008-P011",
+            "CHW-006-S008-P012",
+            "CHW-006-S008-P013",
+            "CHW-006-S008-P014",
+            "CHW-006-S008-P015",
+            "CHW-006-S008-P016",
+            "CHW-006-S008-P017",
+            "CHW-006-S008-P018"
+          ]
+        },
+        {
+          "id": "CHW-006-S009",
+          "parent_id": "CHW-006-S008",
+          "level": 3,
+          "titles": {
+            "am": "ማጠቃለያ፡ -",
+            "en": "Summary:"
+          },
+          "paragraph_ids": [
+            "CHW-006-S009-P001"
+          ]
+        },
+        {
+          "id": "CHW-006-S010",
+          "parent_id": "CHW-006-S008",
+          "level": 3,
+          "titles": {
+            "am": "ለጽሑፉ ዋቢ መጻሕፍት የቀረቡ፡ -",
+            "en": "Reference books for the article:"
+          },
+          "paragraph_ids": [
+            "CHW-006-S010-P001",
+            "CHW-006-S010-P002",
+            "CHW-006-S010-P003",
+            "CHW-006-S010-P004",
+            "CHW-006-S010-P005",
+            "CHW-006-S010-P006",
+            "CHW-006-S010-P007"
+          ]
+        },
+        {
+          "id": "CHW-006-S011",
+          "parent_id": "CHW-006-S008",
+          "level": 3,
+          "titles": {
+            "am": "በመናገሻ ገነተ ጽጌ ቅዱስ ጊዮርጊስ ቤተ ክርስቲያን ሰንበት ት/ቤት",
+            "en": "Sunday School at St. George's Church in the Garden of Eden"
+          },
+          "paragraph_ids": [
+            "CHW-006-S011-P001",
+            "CHW-006-S011-P002"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/06-chapter-7-the-beginning-and-growth-of-life.md",
+        "en": "en/06-chapter-7-the-beginning-and-growth-of-life.md"
+      }
+    }
+  ],
+  "merged_files": {
+    "am": "church_history_world_amharic.md",
+    "en": "church_history_world_english.md",
+    "bilingual": "church_history_world_bilingual.md"
+  },
+  "biblical_references": [
+    "Acts 10÷48",
+    "Acts 12÷12",
+    "Acts 13÷1-3",
+    "Acts 16:3",
+    "Acts 1÷13",
+    "Acts 1÷15-26",
+    "Acts 21÷8-9",
+    "Acts 2÷41",
+    "Acts 6÷13-14",
+    "Acts 7÷50",
+    "Acts 8:27-40",
+    "Acts 8÷27-40",
+    "Acts 9÷11",
+    "Arabia. 1÷17",
+    "Corinthians 1:26",
+    "Enoch 9:16",
+    "Epistle 1:5-9",
+    "Eusebius 1÷13-31",
+    "Galatians 1:8-9",
+    "Genesis 5:24",
+    "Genesis. 10:5",
+    "Hebrews 13:7",
+    "Hebrews 2:16",
+    "Isa. 11:10",
+    "James 3:2-12",
+    "James. 1÷19-20",
+    "Jeremiah 11:52",
+    "John 11÷26",
+    "John 12:20",
+    "John 12:7",
+    "John 12÷20-22",
+    "John 14÷8-11",
+    "John 17:21",
+    "John 18÷10",
+    "John 1:14",
+    "John 1:34-35",
+    "John 1÷41",
+    "John 21÷15",
+    "John 21÷2",
+    "John 6:6-7",
+    "John. 1÷14",
+    "Lord. 1÷44-52",
+    "Lord. 1÷46-47",
+    "Luke 5÷27-32",
+    "Luke. 6÷16",
+    "Mark 3:1",
+    "Mark. 1÷16",
+    "Mark. 2÷14",
+    "Matt. 10÷4",
+    "Matt. 16÷17",
+    "Matt. 16÷18",
+    "Matt. 19:24",
+    "Matt. 26÷69-70",
+    "Matthew 10:25",
+    "Matthew 10:8-11",
+    "Matthew 17:9",
+    "Matthew 18:1",
+    "Matthew 26:26",
+    "Matthew 4:1",
+    "Matthew 4:21",
+    "Peter 1:20",
+    "Peter 5:11",
+    "Philippians 2÷5-6",
+    "Proverbs 8:22",
+    "Psalm 83:3",
+    "Timothy 6:20",
+    "Work. 7÷60",
+    "Work. 8÷13-24",
+    "collector. 9÷9",
+    "father. 1÷19",
+    "in 2:9",
+    "ሄኖክ 9፡ 16",
+    "ሉቃ 5÷27-32",
+    "ሉቃ. 6÷16",
+    "ሉቃስ 2፡ 36",
+    "ሐዋ. 16፡ 3",
+    "ሐዋ. 18:18",
+    "መልእክቱ 1፡ 5-9",
+    "መልእክቱ 2፡ 9",
+    "መዝ 83:3",
+    "ማር 3:1",
+    "ማር. 1÷16",
+    "ማር. 1÷19",
+    "ማር. 1÷19-20",
+    "ማር. 2÷14",
+    "ማቴ 10:25",
+    "ማቴ 10:8-11",
+    "ማቴ 17:9",
+    "ማቴ 26፡ 26",
+    "ማቴ 4:1",
+    "ማቴ 4፡ 21",
+    "ማቴ. 10÷4",
+    "ማቴ. 16÷17",
+    "ማቴ. 16÷18",
+    "ማቴ. 19:24",
+    "ማቴ. 26÷69-70",
+    "ማቴ. 9÷9",
+    "ምሳሌ 8፡ 22",
+    "ሥራ 1 ÷15",
+    "ሥራ 10÷48",
+    "ሥራ 12÷12",
+    "ሥራ 13÷1-3",
+    "ሥራ 1÷13",
+    "ሥራ 1÷15-26",
+    "ሥራ 21÷8-9",
+    "ሥራ 2÷41",
+    "ሥራ 6÷13-14",
+    "ሥራ 7÷50",
+    "ሥራ 8÷27-40",
+    "ሥራ 9÷11",
+    "ሥራ. 7÷60",
+    "ሥራ. 8÷13-24",
+    "ቆሮ 1፡ 26",
+    "አውሳብዮስ 1÷13-31",
+    "ኢሳ. 11:10",
+    "ኤር 11፡ 52",
+    "ወንጌል 17:21",
+    "ወንጌል 18፡ 1",
+    "ዕብ 13:7",
+    "ዕብ 2፡ 16",
+    "ዘፍጥ. 10:5",
+    "ዘፍጥ5፡ 24",
+    "ያዕ3፡ 2-12",
+    "ዮሐ 11÷26",
+    "ዮሐ 12፡ 20",
+    "ዮሐ 12፡ 7",
+    "ዮሐ 14÷8-11",
+    "ዮሐ 1÷41",
+    "ዮሐ 6፡ 6",
+    "ዮሐ. 12÷20-22",
+    "ዮሐ. 18÷10",
+    "ዮሐ. 1÷14",
+    "ዮሐ. 1÷44-52",
+    "ዮሐ. 1÷46-47",
+    "ዮሐ. 21÷15",
+    "ዮሐ. 21÷2",
+    "ገላ 1፡ 8-9",
+    "ገላ. 1÷17",
+    "ጢሞ 6፡ 20",
+    "ጴጥ 1፡ 20",
+    "ጴጥ 5:11",
+    "ፊሊጵ 4:9",
+    "ፊል.2÷5-6"
+  ],
+  "content_completeness": {
+    "source_nonempty_paragraphs": 445,
+    "structural_headings": 68,
+    "aligned_paragraphs": 377,
+    "missing_translations": 0,
+    "flagged_for_review": 3
+  }
+}

@@ -16,6 +16,8 @@ export const UI_LABELS = {
   navPrayers: { en: 'Prayers', am: 'ጸሎቶች' },
   navBible: { en: 'Bible', am: 'መጽሐፍ ቅዱስ' },
   navModeBibleDesc: { en: 'Read the Holy Scriptures', am: 'ቅዱሳት መጻሕፍትን ያንብቡ' },
+  navPlay: { en: 'Play', am: 'ጨዋታ' },
+  navModePlayDesc: { en: 'Learn through games', am: 'በጨዋታ ይማሩ' },
   navLearn: { en: 'Learn', am: 'ይማሩ' },
   navPray: { en: 'Pray', am: 'ይጸልዩ' },
   navKeepDay: { en: 'Calendar', am: 'ቀን መቁጠሪያ' },

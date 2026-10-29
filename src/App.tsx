@@ -156,6 +156,7 @@ const BibleCatalogPage = lazy(() => import('./pages/BiblePage').then(m => ({ def
 const BibleBookPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleBookPage })))
 const BibleChapterPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleChapterPage })))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })))
+const PlayHubPage = lazy(() => import('./pages/play/PlayHubPage').then(m => ({ default: m.PlayHubPage })))
 
 export default function App() {
   // Automatically scroll to top when route changes
@@ -306,6 +307,7 @@ export default function App() {
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Route>
       <Route element={<AppShell />}>
+        <Route path="/play" element={<Suspense fallback={<PageLoadingFallback />}><PlayHubPage /></Suspense>} />
         <Route path="/bible" element={<Suspense fallback={<PageLoadingFallback />}><BibleCatalogPage /></Suspense>} />
         <Route path="/bible/:bookSlug" element={<Suspense fallback={<PageLoadingFallback />}><BibleBookPage /></Suspense>} />
         <Route path="/bible/:bookSlug/:chapter" element={<Suspense fallback={<PageLoadingFallback />}><BibleChapterPage /></Suspense>} />

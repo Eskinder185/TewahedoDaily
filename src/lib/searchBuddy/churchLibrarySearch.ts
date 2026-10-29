@@ -89,7 +89,14 @@ async function searchStructuredSections(query: string, language: string | null):
     result_limit: MAX_RESULTS,
     search_language: language,
   } as never)
-  if (error || !Array.isArray(data)) return []
+  if (error) {
+    // This RPC is optional on older databases, but installed failures must not
+    // be silently presented as “no matching passage”.
+    if (error.code === 'PGRST202' || error.code === '42883') return []
+    if (error.code === '42501') throw new ChurchLibrarySearchError('Church Library search permission was denied.', 'permission')
+    throw new ChurchLibrarySearchError(error.message || 'Structured Church Library search failed.', 'database')
+  }
+  if (!Array.isArray(data)) return []
   return (data as Record<string, unknown>[]).flatMap((row): ChurchLibraryHit[] => {
     const passageId = typeof row.passage_id === 'string' ? row.passage_id : ''
     const bookId = typeof row.book_id === 'string' ? row.book_id : ''
@@ -208,14 +215,22 @@ export async function searchChurchLibrary(
 
   if (!supabase) return emptyResult(trimmed, 'supabase_unavailable')
   try {
-    const [structuredHits, { data, error }] = await Promise.all([
-      searchStructuredSections(trimmed, language).catch(() => [] as ChurchLibraryHit[]),
+    const [structuredResult, { data, error }] = await Promise.all([
+      searchStructuredSections(trimmed, language)
+        .then((hits) => ({ hits, error: null as ChurchLibrarySearchError | null }))
+        .catch((cause) => ({
+          hits: [] as ChurchLibraryHit[],
+          error: cause instanceof ChurchLibrarySearchError
+            ? cause
+            : new ChurchLibrarySearchError('Structured Church Library search failed.', 'database'),
+        })),
       supabase.rpc('search_church_library', {
         search_query: trimmed,
         result_limit: MAX_RESULTS,
         search_language: language,
       }),
     ])
+    const structuredHits = structuredResult.hits
     if (error && structuredHits.length) {
       return {
         type: 'church_library_search',
@@ -242,9 +257,13 @@ export async function searchChurchLibrary(
       // passage are dropped so each excerpt is cited once.
       const seen = new Set(structuredHits.map((h) => h.passage_id))
       const results = [...structuredHits, ...normalizeHits(data).filter((h) => !seen.has(h.passage_id))].slice(0, MAX_RESULTS)
+      if (!results.length && structuredResult.error) throw structuredResult.error
       let availability: ChurchLibrarySearchResponse['availability'] = results.length ? 'ok' : 'no_relevant_passage'
       if (!results.length) {
-        const statusResult = await supabase.rpc('church_library_public_search_status')
+        let statusResult = await supabase.rpc('church_library_search_status' as never)
+        if (statusResult.error?.code === 'PGRST202' || statusResult.error?.code === '42883') {
+          statusResult = await supabase.rpc('church_library_public_search_status') as typeof statusResult
+        }
         const row = Array.isArray(statusResult.data) ? statusResult.data[0] as Record<string, unknown> | undefined : undefined
         if (!statusResult.error && row) {
           if (Number(row.eligible_books) === 0) availability = 'no_public_books'

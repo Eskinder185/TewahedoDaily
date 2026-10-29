@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "supabase_changes": false,
+  "deployments": false,
+  "collections": [
+    {
+      "collection": "world-church-history",
+      "chapters": 7,
+      "sections": 65,
+      "paragraphs": 377,
+      "aligned": 377,
+      "untranslated": 0,
+      "flagged": 3,
+      "zip": "C:\\Users\\eskew\\github\\TewahedoDaily\\content\\church-library\\church-history\\church-history-world-bilingual-final.zip"
+    },
+    {
+      "collection": "ethiopian-church-history",
+      "chapters": 7,
+      "sections": 96,
+      "paragraphs": 548,
+      "aligned": 548,
+      "untranslated": 0,
+      "flagged": 40,
+      "zip": "C:\\Users\\eskew\\github\\TewahedoDaily\\content\\church-library\\church-history\\church-history-ethiopia-bilingual-final.zip"
+    }
+  ]
+}

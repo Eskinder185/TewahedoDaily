@@ -95,6 +95,11 @@ export function SiteHeader() {
       label: t('navKeepDay'),
       desc: t('navModeKeepDayDesc'),
     },
+    {
+      to: '/play',
+      label: t('navPlay'),
+      desc: t('navModePlayDesc'),
+    },
   ]
 
   useEffect(() => {

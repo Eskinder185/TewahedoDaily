@@ -74,17 +74,15 @@ export async function searchChurchLibraryFaq(
 
 export async function listPopularChurchLibraryFaqs(language: 'am' | 'en') {
   if (!supabase) return [] as Array<{ stableId: string; question: string }>
-  const { data, error } = await supabase
-    .from('church_library_faqs' as never)
-    .select('stable_id,question_en,question_am' as never)
-    .eq('publication_status' as never, 'published')
-    .eq('review_status' as never, 'approved')
-    .order('published_at' as never, { ascending: false })
-    .limit(5)
+  const { data, error } = await supabase.rpc('list_church_library_faq_suggestions' as never, {
+    search_language: language,
+    result_limit: 5,
+  } as never)
+  if (error?.code === 'PGRST202' || error?.code === '42883') return []
   if (error || !Array.isArray(data)) return []
   return (data as unknown as Record<string, unknown>[]).flatMap((row) => {
     const stableId = typeof row.stable_id === 'string' ? row.stable_id : ''
-    const question = language === 'am' ? row.question_am : row.question_en
+    const question = row.question
     return stableId && typeof question === 'string' ? [{ stableId, question }] : []
   })
 }

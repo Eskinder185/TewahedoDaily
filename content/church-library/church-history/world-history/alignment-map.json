@@ -1,0 +1,3909 @@
+{
+  "schema_version": 1,
+  "collection": "world-church-history",
+  "alignments": [
+    {
+      "id": "CHW-000",
+      "type": "chapter",
+      "am": "CHW-000",
+      "en": "CHW-000",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S000",
+      "type": "section",
+      "am": "CHW-000-S000",
+      "en": "CHW-000-S000",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S000-P001",
+      "type": "paragraph",
+      "am": "CHW-000-S000-P001",
+      "en": "CHW-000-S000-P001",
+      "status": "aligned",
+      "source_index": 0,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S000-P002",
+      "type": "paragraph",
+      "am": "CHW-000-S000-P002",
+      "en": "CHW-000-S000-P002",
+      "status": "aligned",
+      "source_index": 1,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S000-P003",
+      "type": "paragraph",
+      "am": "CHW-000-S000-P003",
+      "en": "CHW-000-S000-P003",
+      "status": "aligned",
+      "source_index": 2,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S000-P004",
+      "type": "paragraph",
+      "am": "CHW-000-S000-P004",
+      "en": "CHW-000-S000-P004",
+      "status": "aligned",
+      "source_index": 3,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S001",
+      "type": "section",
+      "am": "CHW-000-S001",
+      "en": "CHW-000-S001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S001-P001",
+      "type": "paragraph",
+      "am": "CHW-000-S001-P001",
+      "en": "CHW-000-S001-P001",
+      "status": "aligned",
+      "source_index": 5,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S001-P002",
+      "type": "paragraph",
+      "am": "CHW-000-S001-P002",
+      "en": "CHW-000-S001-P002",
+      "status": "aligned",
+      "source_index": 6,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S001-P003",
+      "type": "paragraph",
+      "am": "CHW-000-S001-P003",
+      "en": "CHW-000-S001-P003",
+      "status": "aligned",
+      "source_index": 7,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002",
+      "type": "section",
+      "am": "CHW-000-S002",
+      "en": "CHW-000-S002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S002-P001",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P001",
+      "en": "CHW-000-S002-P001",
+      "status": "aligned",
+      "source_index": 9,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P002",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P002",
+      "en": "CHW-000-S002-P002",
+      "status": "aligned",
+      "source_index": 10,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P003",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P003",
+      "en": "CHW-000-S002-P003",
+      "status": "aligned",
+      "source_index": 11,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P004",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P004",
+      "en": "CHW-000-S002-P004",
+      "status": "aligned",
+      "source_index": 12,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P005",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P005",
+      "en": "CHW-000-S002-P005",
+      "status": "aligned",
+      "source_index": 13,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P006",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P006",
+      "en": "CHW-000-S002-P006",
+      "status": "aligned",
+      "source_index": 14,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P007",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P007",
+      "en": "CHW-000-S002-P007",
+      "status": "aligned",
+      "source_index": 15,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P008",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P008",
+      "en": "CHW-000-S002-P008",
+      "status": "aligned",
+      "source_index": 16,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P009",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P009",
+      "en": "CHW-000-S002-P009",
+      "status": "aligned",
+      "source_index": 17,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P010",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P010",
+      "en": "CHW-000-S002-P010",
+      "status": "aligned",
+      "source_index": 18,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P011",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P011",
+      "en": "CHW-000-S002-P011",
+      "status": "aligned",
+      "source_index": 19,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P012",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P012",
+      "en": "CHW-000-S002-P012",
+      "status": "aligned",
+      "source_index": 20,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P013",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P013",
+      "en": "CHW-000-S002-P013",
+      "status": "aligned",
+      "source_index": 21,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P014",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P014",
+      "en": "CHW-000-S002-P014",
+      "status": "aligned",
+      "source_index": 22,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P015",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P015",
+      "en": "CHW-000-S002-P015",
+      "status": "aligned",
+      "source_index": 23,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S002-P016",
+      "type": "paragraph",
+      "am": "CHW-000-S002-P016",
+      "en": "CHW-000-S002-P016",
+      "status": "aligned",
+      "source_index": 24,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003",
+      "type": "section",
+      "am": "CHW-000-S003",
+      "en": "CHW-000-S003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S003-P001",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P001",
+      "en": "CHW-000-S003-P001",
+      "status": "aligned",
+      "source_index": 26,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003-P002",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P002",
+      "en": "CHW-000-S003-P002",
+      "status": "aligned",
+      "source_index": 27,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003-P003",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P003",
+      "en": "CHW-000-S003-P003",
+      "status": "aligned",
+      "source_index": 28,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003-P004",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P004",
+      "en": "CHW-000-S003-P004",
+      "status": "aligned",
+      "source_index": 29,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003-P005",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P005",
+      "en": "CHW-000-S003-P005",
+      "status": "aligned",
+      "source_index": 30,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003-P006",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P006",
+      "en": "CHW-000-S003-P006",
+      "status": "aligned",
+      "source_index": 31,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003-P007",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P007",
+      "en": "CHW-000-S003-P007",
+      "status": "aligned",
+      "source_index": 32,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S003-P008",
+      "type": "paragraph",
+      "am": "CHW-000-S003-P008",
+      "en": "CHW-000-S003-P008",
+      "status": "aligned",
+      "source_index": 33,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S004",
+      "type": "section",
+      "am": "CHW-000-S004",
+      "en": "CHW-000-S004",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S004-P001",
+      "type": "paragraph",
+      "am": "CHW-000-S004-P001",
+      "en": "CHW-000-S004-P001",
+      "status": "aligned",
+      "source_index": 35,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S005",
+      "type": "section",
+      "am": "CHW-000-S005",
+      "en": "CHW-000-S005",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S005-P001",
+      "type": "paragraph",
+      "am": "CHW-000-S005-P001",
+      "en": "CHW-000-S005-P001",
+      "status": "aligned",
+      "source_index": 37,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S005-P002",
+      "type": "paragraph",
+      "am": "CHW-000-S005-P002",
+      "en": "CHW-000-S005-P002",
+      "status": "aligned",
+      "source_index": 38,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S005-P003",
+      "type": "paragraph",
+      "am": "CHW-000-S005-P003",
+      "en": "CHW-000-S005-P003",
+      "status": "aligned",
+      "source_index": 39,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S005-P004",
+      "type": "paragraph",
+      "am": "CHW-000-S005-P004",
+      "en": "CHW-000-S005-P004",
+      "status": "aligned",
+      "source_index": 40,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S005-P005",
+      "type": "paragraph",
+      "am": "CHW-000-S005-P005",
+      "en": "CHW-000-S005-P005",
+      "status": "aligned",
+      "source_index": 41,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S006",
+      "type": "section",
+      "am": "CHW-000-S006",
+      "en": "CHW-000-S006",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-000-S006-P001",
+      "type": "paragraph",
+      "am": "CHW-000-S006-P001",
+      "en": "CHW-000-S006-P001",
+      "status": "aligned",
+      "source_index": 43,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-000-S006-P002",
+      "type": "paragraph",
+      "am": "CHW-000-S006-P002",
+      "en": "CHW-000-S006-P002",
+      "status": "aligned",
+      "source_index": 44,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001",
+      "type": "chapter",
+      "am": "CHW-001",
+      "en": "CHW-001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S001",
+      "type": "section",
+      "am": "CHW-001-S001",
+      "en": "CHW-001-S001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S001-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S001-P001",
+      "en": "CHW-001-S001-P001",
+      "status": "aligned",
+      "source_index": 47,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S001-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S001-P002",
+      "en": "CHW-001-S001-P002",
+      "status": "aligned",
+      "source_index": 48,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S001-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S001-P003",
+      "en": "CHW-001-S001-P003",
+      "status": "aligned",
+      "source_index": 49,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S001-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S001-P004",
+      "en": "CHW-001-S001-P004",
+      "status": "aligned",
+      "source_index": 50,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S001-P005",
+      "type": "paragraph",
+      "am": "CHW-001-S001-P005",
+      "en": "CHW-001-S001-P005",
+      "status": "aligned",
+      "source_index": 51,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S001-P006",
+      "type": "paragraph",
+      "am": "CHW-001-S001-P006",
+      "en": "CHW-001-S001-P006",
+      "status": "aligned",
+      "source_index": 52,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002",
+      "type": "section",
+      "am": "CHW-001-S002",
+      "en": "CHW-001-S002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S002-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P001",
+      "en": "CHW-001-S002-P001",
+      "status": "aligned",
+      "source_index": 54,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P002",
+      "en": "CHW-001-S002-P002",
+      "status": "aligned",
+      "source_index": 55,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P003",
+      "en": "CHW-001-S002-P003",
+      "status": "aligned",
+      "source_index": 56,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P004",
+      "en": "CHW-001-S002-P004",
+      "status": "aligned",
+      "source_index": 57,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P005",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P005",
+      "en": "CHW-001-S002-P005",
+      "status": "aligned",
+      "source_index": 58,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P006",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P006",
+      "en": "CHW-001-S002-P006",
+      "status": "aligned",
+      "source_index": 59,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P007",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P007",
+      "en": "CHW-001-S002-P007",
+      "status": "aligned",
+      "source_index": 60,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P008",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P008",
+      "en": "CHW-001-S002-P008",
+      "status": "aligned",
+      "source_index": 61,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P009",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P009",
+      "en": "CHW-001-S002-P009",
+      "status": "aligned",
+      "source_index": 62,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P010",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P010",
+      "en": "CHW-001-S002-P010",
+      "status": "aligned",
+      "source_index": 63,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P011",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P011",
+      "en": "CHW-001-S002-P011",
+      "status": "aligned",
+      "source_index": 64,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S002-P012",
+      "type": "paragraph",
+      "am": "CHW-001-S002-P012",
+      "en": "CHW-001-S002-P012",
+      "status": "aligned",
+      "source_index": 65,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S003",
+      "type": "section",
+      "am": "CHW-001-S003",
+      "en": "CHW-001-S003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S003-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S003-P001",
+      "en": "CHW-001-S003-P001",
+      "status": "aligned",
+      "source_index": 67,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S004",
+      "type": "section",
+      "am": "CHW-001-S004",
+      "en": "CHW-001-S004",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S004-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S004-P001",
+      "en": "CHW-001-S004-P001",
+      "status": "aligned",
+      "source_index": 69,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S004-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S004-P002",
+      "en": "CHW-001-S004-P002",
+      "status": "aligned",
+      "source_index": 70,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S005",
+      "type": "section",
+      "am": "CHW-001-S005",
+      "en": "CHW-001-S005",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S005-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S005-P001",
+      "en": "CHW-001-S005-P001",
+      "status": "aligned",
+      "source_index": 72,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S005-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S005-P002",
+      "en": "CHW-001-S005-P002",
+      "status": "aligned",
+      "source_index": 73,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S005-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S005-P003",
+      "en": "CHW-001-S005-P003",
+      "status": "aligned",
+      "source_index": 74,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006",
+      "type": "section",
+      "am": "CHW-001-S006",
+      "en": "CHW-001-S006",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S006-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P001",
+      "en": "CHW-001-S006-P001",
+      "status": "aligned",
+      "source_index": 76,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P002",
+      "en": "CHW-001-S006-P002",
+      "status": "aligned",
+      "source_index": 77,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P003",
+      "en": "CHW-001-S006-P003",
+      "status": "aligned",
+      "source_index": 78,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P004",
+      "en": "CHW-001-S006-P004",
+      "status": "aligned",
+      "source_index": 79,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P005",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P005",
+      "en": "CHW-001-S006-P005",
+      "status": "aligned",
+      "source_index": 80,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P006",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P006",
+      "en": "CHW-001-S006-P006",
+      "status": "aligned",
+      "source_index": 81,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P007",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P007",
+      "en": "CHW-001-S006-P007",
+      "status": "aligned",
+      "source_index": 82,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P008",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P008",
+      "en": "CHW-001-S006-P008",
+      "status": "aligned",
+      "source_index": 83,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P009",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P009",
+      "en": "CHW-001-S006-P009",
+      "status": "aligned",
+      "source_index": 84,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S006-P010",
+      "type": "paragraph",
+      "am": "CHW-001-S006-P010",
+      "en": "CHW-001-S006-P010",
+      "status": "aligned",
+      "source_index": 85,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S007",
+      "type": "section",
+      "am": "CHW-001-S007",
+      "en": "CHW-001-S007",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S007-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S007-P001",
+      "en": "CHW-001-S007-P001",
+      "status": "aligned",
+      "source_index": 87,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S008",
+      "type": "section",
+      "am": "CHW-001-S008",
+      "en": "CHW-001-S008",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S008-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S008-P001",
+      "en": "CHW-001-S008-P001",
+      "status": "aligned",
+      "source_index": 89,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S008-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S008-P002",
+      "en": "CHW-001-S008-P002",
+      "status": "aligned",
+      "source_index": 90,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S008-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S008-P003",
+      "en": "CHW-001-S008-P003",
+      "status": "aligned",
+      "source_index": 91,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S008-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S008-P004",
+      "en": "CHW-001-S008-P004",
+      "status": "aligned",
+      "source_index": 92,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S008-P005",
+      "type": "paragraph",
+      "am": "CHW-001-S008-P005",
+      "en": "CHW-001-S008-P005",
+      "status": "aligned",
+      "source_index": 93,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S008-P006",
+      "type": "paragraph",
+      "am": "CHW-001-S008-P006",
+      "en": "CHW-001-S008-P006",
+      "status": "aligned",
+      "source_index": 94,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S008-P007",
+      "type": "paragraph",
+      "am": "CHW-001-S008-P007",
+      "en": "CHW-001-S008-P007",
+      "status": "aligned",
+      "source_index": 95,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S009",
+      "type": "section",
+      "am": "CHW-001-S009",
+      "en": "CHW-001-S009",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S009-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S009-P001",
+      "en": "CHW-001-S009-P001",
+      "status": "aligned",
+      "source_index": 97,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S009-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S009-P002",
+      "en": "CHW-001-S009-P002",
+      "status": "aligned",
+      "source_index": 98,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S009-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S009-P003",
+      "en": "CHW-001-S009-P003",
+      "status": "aligned",
+      "source_index": 99,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S009-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S009-P004",
+      "en": "CHW-001-S009-P004",
+      "status": "aligned",
+      "source_index": 100,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S009-P005",
+      "type": "paragraph",
+      "am": "CHW-001-S009-P005",
+      "en": "CHW-001-S009-P005",
+      "status": "aligned",
+      "source_index": 101,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S010",
+      "type": "section",
+      "am": "CHW-001-S010",
+      "en": "CHW-001-S010",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S010-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S010-P001",
+      "en": "CHW-001-S010-P001",
+      "status": "aligned",
+      "source_index": 103,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S010-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S010-P002",
+      "en": "CHW-001-S010-P002",
+      "status": "aligned",
+      "source_index": 104,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S010-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S010-P003",
+      "en": "CHW-001-S010-P003",
+      "status": "aligned",
+      "source_index": 105,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S010-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S010-P004",
+      "en": "CHW-001-S010-P004",
+      "status": "aligned",
+      "source_index": 106,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S010-P005",
+      "type": "paragraph",
+      "am": "CHW-001-S010-P005",
+      "en": "CHW-001-S010-P005",
+      "status": "aligned",
+      "source_index": 107,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S010-P006",
+      "type": "paragraph",
+      "am": "CHW-001-S010-P006",
+      "en": "CHW-001-S010-P006",
+      "status": "aligned",
+      "source_index": 108,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S011",
+      "type": "section",
+      "am": "CHW-001-S011",
+      "en": "CHW-001-S011",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S011-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S011-P001",
+      "en": "CHW-001-S011-P001",
+      "status": "aligned",
+      "source_index": 110,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S012",
+      "type": "section",
+      "am": "CHW-001-S012",
+      "en": "CHW-001-S012",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S012-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S012-P001",
+      "en": "CHW-001-S012-P001",
+      "status": "aligned",
+      "source_index": 112,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S012-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S012-P002",
+      "en": "CHW-001-S012-P002",
+      "status": "aligned",
+      "source_index": 113,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S012-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S012-P003",
+      "en": "CHW-001-S012-P003",
+      "status": "aligned",
+      "source_index": 114,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S012-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S012-P004",
+      "en": "CHW-001-S012-P004",
+      "status": "aligned",
+      "source_index": 115,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S012-P005",
+      "type": "paragraph",
+      "am": "CHW-001-S012-P005",
+      "en": "CHW-001-S012-P005",
+      "status": "aligned",
+      "source_index": 116,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S012-P006",
+      "type": "paragraph",
+      "am": "CHW-001-S012-P006",
+      "en": "CHW-001-S012-P006",
+      "status": "aligned",
+      "source_index": 117,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S013",
+      "type": "section",
+      "am": "CHW-001-S013",
+      "en": "CHW-001-S013",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S013-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S013-P001",
+      "en": "CHW-001-S013-P001",
+      "status": "aligned",
+      "source_index": 119,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S013-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S013-P002",
+      "en": "CHW-001-S013-P002",
+      "status": "aligned",
+      "source_index": 120,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S014",
+      "type": "section",
+      "am": "CHW-001-S014",
+      "en": "CHW-001-S014",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S014-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S014-P001",
+      "en": "CHW-001-S014-P001",
+      "status": "aligned",
+      "source_index": 122,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S014-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S014-P002",
+      "en": "CHW-001-S014-P002",
+      "status": "aligned",
+      "source_index": 123,
+      "review_flags": [
+        "suspicious_machine_translation"
+      ]
+    },
+    {
+      "id": "CHW-001-S014-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S014-P003",
+      "en": "CHW-001-S014-P003",
+      "status": "aligned",
+      "source_index": 124,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S015",
+      "type": "section",
+      "am": "CHW-001-S015",
+      "en": "CHW-001-S015",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S015-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S015-P001",
+      "en": "CHW-001-S015-P001",
+      "status": "aligned",
+      "source_index": 126,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S015-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S015-P002",
+      "en": "CHW-001-S015-P002",
+      "status": "aligned",
+      "source_index": 127,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S016",
+      "type": "section",
+      "am": "CHW-001-S016",
+      "en": "CHW-001-S016",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S016-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S016-P001",
+      "en": "CHW-001-S016-P001",
+      "status": "aligned",
+      "source_index": 129,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S016-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S016-P002",
+      "en": "CHW-001-S016-P002",
+      "status": "aligned",
+      "source_index": 130,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S016-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S016-P003",
+      "en": "CHW-001-S016-P003",
+      "status": "aligned",
+      "source_index": 131,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S017",
+      "type": "section",
+      "am": "CHW-001-S017",
+      "en": "CHW-001-S017",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S017-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S017-P001",
+      "en": "CHW-001-S017-P001",
+      "status": "aligned",
+      "source_index": 133,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S017-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S017-P002",
+      "en": "CHW-001-S017-P002",
+      "status": "aligned",
+      "source_index": 134,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S018",
+      "type": "section",
+      "am": "CHW-001-S018",
+      "en": "CHW-001-S018",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S018-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S018-P001",
+      "en": "CHW-001-S018-P001",
+      "status": "aligned",
+      "source_index": 136,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S019",
+      "type": "section",
+      "am": "CHW-001-S019",
+      "en": "CHW-001-S019",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S019-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S019-P001",
+      "en": "CHW-001-S019-P001",
+      "status": "aligned",
+      "source_index": 138,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S019-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S019-P002",
+      "en": "CHW-001-S019-P002",
+      "status": "aligned",
+      "source_index": 139,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S019-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S019-P003",
+      "en": "CHW-001-S019-P003",
+      "status": "aligned",
+      "source_index": 140,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S019-P004",
+      "type": "paragraph",
+      "am": "CHW-001-S019-P004",
+      "en": "CHW-001-S019-P004",
+      "status": "aligned",
+      "source_index": 141,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S020",
+      "type": "section",
+      "am": "CHW-001-S020",
+      "en": "CHW-001-S020",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S020-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S020-P001",
+      "en": "CHW-001-S020-P001",
+      "status": "aligned",
+      "source_index": 143,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S020-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S020-P002",
+      "en": "CHW-001-S020-P002",
+      "status": "aligned",
+      "source_index": 144,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S021",
+      "type": "section",
+      "am": "CHW-001-S021",
+      "en": "CHW-001-S021",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S021-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S021-P001",
+      "en": "CHW-001-S021-P001",
+      "status": "aligned",
+      "source_index": 146,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S021-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S021-P002",
+      "en": "CHW-001-S021-P002",
+      "status": "aligned",
+      "source_index": 147,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S021-P003",
+      "type": "paragraph",
+      "am": "CHW-001-S021-P003",
+      "en": "CHW-001-S021-P003",
+      "status": "aligned",
+      "source_index": 148,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S022",
+      "type": "section",
+      "am": "CHW-001-S022",
+      "en": "CHW-001-S022",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S022-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S022-P001",
+      "en": "CHW-001-S022-P001",
+      "status": "aligned",
+      "source_index": 150,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S022-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S022-P002",
+      "en": "CHW-001-S022-P002",
+      "status": "aligned",
+      "source_index": 151,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S023",
+      "type": "section",
+      "am": "CHW-001-S023",
+      "en": "CHW-001-S023",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-001-S023-P001",
+      "type": "paragraph",
+      "am": "CHW-001-S023-P001",
+      "en": "CHW-001-S023-P001",
+      "status": "aligned",
+      "source_index": 153,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-001-S023-P002",
+      "type": "paragraph",
+      "am": "CHW-001-S023-P002",
+      "en": "CHW-001-S023-P002",
+      "status": "aligned",
+      "source_index": 154,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002",
+      "type": "chapter",
+      "am": "CHW-002",
+      "en": "CHW-002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-002-S001",
+      "type": "section",
+      "am": "CHW-002-S001",
+      "en": "CHW-002-S001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-002-S001-P001",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P001",
+      "en": "CHW-002-S001-P001",
+      "status": "aligned",
+      "source_index": 157,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P002",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P002",
+      "en": "CHW-002-S001-P002",
+      "status": "aligned",
+      "source_index": 158,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P003",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P003",
+      "en": "CHW-002-S001-P003",
+      "status": "aligned",
+      "source_index": 159,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P004",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P004",
+      "en": "CHW-002-S001-P004",
+      "status": "aligned",
+      "source_index": 160,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P005",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P005",
+      "en": "CHW-002-S001-P005",
+      "status": "aligned",
+      "source_index": 161,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P006",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P006",
+      "en": "CHW-002-S001-P006",
+      "status": "aligned",
+      "source_index": 162,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P007",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P007",
+      "en": "CHW-002-S001-P007",
+      "status": "aligned",
+      "source_index": 163,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P008",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P008",
+      "en": "CHW-002-S001-P008",
+      "status": "aligned",
+      "source_index": 164,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S001-P009",
+      "type": "paragraph",
+      "am": "CHW-002-S001-P009",
+      "en": "CHW-002-S001-P009",
+      "status": "aligned",
+      "source_index": 165,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S002",
+      "type": "section",
+      "am": "CHW-002-S002",
+      "en": "CHW-002-S002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-002-S002-P001",
+      "type": "paragraph",
+      "am": "CHW-002-S002-P001",
+      "en": "CHW-002-S002-P001",
+      "status": "aligned",
+      "source_index": 167,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S002-P002",
+      "type": "paragraph",
+      "am": "CHW-002-S002-P002",
+      "en": "CHW-002-S002-P002",
+      "status": "aligned",
+      "source_index": 168,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S002-P003",
+      "type": "paragraph",
+      "am": "CHW-002-S002-P003",
+      "en": "CHW-002-S002-P003",
+      "status": "aligned",
+      "source_index": 169,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S002-P004",
+      "type": "paragraph",
+      "am": "CHW-002-S002-P004",
+      "en": "CHW-002-S002-P004",
+      "status": "aligned",
+      "source_index": 170,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S003",
+      "type": "section",
+      "am": "CHW-002-S003",
+      "en": "CHW-002-S003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-002-S003-P001",
+      "type": "paragraph",
+      "am": "CHW-002-S003-P001",
+      "en": "CHW-002-S003-P001",
+      "status": "aligned",
+      "source_index": 172,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S003-P002",
+      "type": "paragraph",
+      "am": "CHW-002-S003-P002",
+      "en": "CHW-002-S003-P002",
+      "status": "aligned",
+      "source_index": 173,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S003-P003",
+      "type": "paragraph",
+      "am": "CHW-002-S003-P003",
+      "en": "CHW-002-S003-P003",
+      "status": "aligned",
+      "source_index": 174,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S003-P004",
+      "type": "paragraph",
+      "am": "CHW-002-S003-P004",
+      "en": "CHW-002-S003-P004",
+      "status": "aligned",
+      "source_index": 175,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004",
+      "type": "section",
+      "am": "CHW-002-S004",
+      "en": "CHW-002-S004",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-002-S004-P001",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P001",
+      "en": "CHW-002-S004-P001",
+      "status": "aligned",
+      "source_index": 177,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P002",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P002",
+      "en": "CHW-002-S004-P002",
+      "status": "aligned",
+      "source_index": 178,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P003",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P003",
+      "en": "CHW-002-S004-P003",
+      "status": "aligned",
+      "source_index": 179,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P004",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P004",
+      "en": "CHW-002-S004-P004",
+      "status": "aligned",
+      "source_index": 180,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P005",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P005",
+      "en": "CHW-002-S004-P005",
+      "status": "aligned",
+      "source_index": 181,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P006",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P006",
+      "en": "CHW-002-S004-P006",
+      "status": "aligned",
+      "source_index": 182,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P007",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P007",
+      "en": "CHW-002-S004-P007",
+      "status": "aligned",
+      "source_index": 183,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P008",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P008",
+      "en": "CHW-002-S004-P008",
+      "status": "aligned",
+      "source_index": 184,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P009",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P009",
+      "en": "CHW-002-S004-P009",
+      "status": "aligned",
+      "source_index": 185,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P010",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P010",
+      "en": "CHW-002-S004-P010",
+      "status": "aligned",
+      "source_index": 186,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P011",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P011",
+      "en": "CHW-002-S004-P011",
+      "status": "aligned",
+      "source_index": 187,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P012",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P012",
+      "en": "CHW-002-S004-P012",
+      "status": "aligned",
+      "source_index": 188,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P013",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P013",
+      "en": "CHW-002-S004-P013",
+      "status": "aligned",
+      "source_index": 189,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P014",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P014",
+      "en": "CHW-002-S004-P014",
+      "status": "aligned",
+      "source_index": 190,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P015",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P015",
+      "en": "CHW-002-S004-P015",
+      "status": "aligned",
+      "source_index": 191,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P016",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P016",
+      "en": "CHW-002-S004-P016",
+      "status": "aligned",
+      "source_index": 192,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P017",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P017",
+      "en": "CHW-002-S004-P017",
+      "status": "aligned",
+      "source_index": 193,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P018",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P018",
+      "en": "CHW-002-S004-P018",
+      "status": "aligned",
+      "source_index": 194,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P019",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P019",
+      "en": "CHW-002-S004-P019",
+      "status": "aligned",
+      "source_index": 195,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P020",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P020",
+      "en": "CHW-002-S004-P020",
+      "status": "aligned",
+      "source_index": 196,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P021",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P021",
+      "en": "CHW-002-S004-P021",
+      "status": "aligned",
+      "source_index": 197,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P022",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P022",
+      "en": "CHW-002-S004-P022",
+      "status": "aligned",
+      "source_index": 198,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P023",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P023",
+      "en": "CHW-002-S004-P023",
+      "status": "aligned",
+      "source_index": 199,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P024",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P024",
+      "en": "CHW-002-S004-P024",
+      "status": "aligned",
+      "source_index": 200,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P025",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P025",
+      "en": "CHW-002-S004-P025",
+      "status": "aligned",
+      "source_index": 201,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P026",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P026",
+      "en": "CHW-002-S004-P026",
+      "status": "aligned",
+      "source_index": 202,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P027",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P027",
+      "en": "CHW-002-S004-P027",
+      "status": "aligned",
+      "source_index": 203,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P028",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P028",
+      "en": "CHW-002-S004-P028",
+      "status": "aligned",
+      "source_index": 204,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P029",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P029",
+      "en": "CHW-002-S004-P029",
+      "status": "aligned",
+      "source_index": 205,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P030",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P030",
+      "en": "CHW-002-S004-P030",
+      "status": "aligned",
+      "source_index": 206,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P031",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P031",
+      "en": "CHW-002-S004-P031",
+      "status": "aligned",
+      "source_index": 207,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P032",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P032",
+      "en": "CHW-002-S004-P032",
+      "status": "aligned",
+      "source_index": 208,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P033",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P033",
+      "en": "CHW-002-S004-P033",
+      "status": "aligned",
+      "source_index": 209,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P034",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P034",
+      "en": "CHW-002-S004-P034",
+      "status": "aligned",
+      "source_index": 210,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P035",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P035",
+      "en": "CHW-002-S004-P035",
+      "status": "aligned",
+      "source_index": 211,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P036",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P036",
+      "en": "CHW-002-S004-P036",
+      "status": "aligned",
+      "source_index": 212,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P037",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P037",
+      "en": "CHW-002-S004-P037",
+      "status": "aligned",
+      "source_index": 213,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P038",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P038",
+      "en": "CHW-002-S004-P038",
+      "status": "aligned",
+      "source_index": 214,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P039",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P039",
+      "en": "CHW-002-S004-P039",
+      "status": "aligned",
+      "source_index": 215,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P040",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P040",
+      "en": "CHW-002-S004-P040",
+      "status": "aligned",
+      "source_index": 216,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P041",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P041",
+      "en": "CHW-002-S004-P041",
+      "status": "aligned",
+      "source_index": 217,
+      "review_flags": [
+        "suspicious_machine_translation"
+      ]
+    },
+    {
+      "id": "CHW-002-S004-P042",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P042",
+      "en": "CHW-002-S004-P042",
+      "status": "aligned",
+      "source_index": 218,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P043",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P043",
+      "en": "CHW-002-S004-P043",
+      "status": "aligned",
+      "source_index": 219,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P044",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P044",
+      "en": "CHW-002-S004-P044",
+      "status": "aligned",
+      "source_index": 220,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P045",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P045",
+      "en": "CHW-002-S004-P045",
+      "status": "aligned",
+      "source_index": 221,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P046",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P046",
+      "en": "CHW-002-S004-P046",
+      "status": "aligned",
+      "source_index": 222,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P047",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P047",
+      "en": "CHW-002-S004-P047",
+      "status": "aligned",
+      "source_index": 223,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P048",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P048",
+      "en": "CHW-002-S004-P048",
+      "status": "aligned",
+      "source_index": 224,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P049",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P049",
+      "en": "CHW-002-S004-P049",
+      "status": "aligned",
+      "source_index": 225,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P050",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P050",
+      "en": "CHW-002-S004-P050",
+      "status": "aligned",
+      "source_index": 226,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S004-P051",
+      "type": "paragraph",
+      "am": "CHW-002-S004-P051",
+      "en": "CHW-002-S004-P051",
+      "status": "aligned",
+      "source_index": 227,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S005",
+      "type": "section",
+      "am": "CHW-002-S005",
+      "en": "CHW-002-S005",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-002-S005-P001",
+      "type": "paragraph",
+      "am": "CHW-002-S005-P001",
+      "en": "CHW-002-S005-P001",
+      "status": "aligned",
+      "source_index": 229,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S005-P002",
+      "type": "paragraph",
+      "am": "CHW-002-S005-P002",
+      "en": "CHW-002-S005-P002",
+      "status": "aligned",
+      "source_index": 230,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S005-P003",
+      "type": "paragraph",
+      "am": "CHW-002-S005-P003",
+      "en": "CHW-002-S005-P003",
+      "status": "aligned",
+      "source_index": 231,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S005-P004",
+      "type": "paragraph",
+      "am": "CHW-002-S005-P004",
+      "en": "CHW-002-S005-P004",
+      "status": "aligned",
+      "source_index": 232,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S005-P005",
+      "type": "paragraph",
+      "am": "CHW-002-S005-P005",
+      "en": "CHW-002-S005-P005",
+      "status": "aligned",
+      "source_index": 233,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-002-S005-P006",
+      "type": "paragraph",
+      "am": "CHW-002-S005-P006",
+      "en": "CHW-002-S005-P006",
+      "status": "aligned",
+      "source_index": 234,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003",
+      "type": "chapter",
+      "am": "CHW-003",
+      "en": "CHW-003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-003-S001",
+      "type": "section",
+      "am": "CHW-003-S001",
+      "en": "CHW-003-S001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-003-S001-P001",
+      "type": "paragraph",
+      "am": "CHW-003-S001-P001",
+      "en": "CHW-003-S001-P001",
+      "status": "aligned",
+      "source_index": 237,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S001-P002",
+      "type": "paragraph",
+      "am": "CHW-003-S001-P002",
+      "en": "CHW-003-S001-P002",
+      "status": "aligned",
+      "source_index": 238,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S001-P003",
+      "type": "paragraph",
+      "am": "CHW-003-S001-P003",
+      "en": "CHW-003-S001-P003",
+      "status": "aligned",
+      "source_index": 239,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S001-P004",
+      "type": "paragraph",
+      "am": "CHW-003-S001-P004",
+      "en": "CHW-003-S001-P004",
+      "status": "aligned",
+      "source_index": 240,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S001-P005",
+      "type": "paragraph",
+      "am": "CHW-003-S001-P005",
+      "en": "CHW-003-S001-P005",
+      "status": "aligned",
+      "source_index": 241,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S002",
+      "type": "section",
+      "am": "CHW-003-S002",
+      "en": "CHW-003-S002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-003-S002-P001",
+      "type": "paragraph",
+      "am": "CHW-003-S002-P001",
+      "en": "CHW-003-S002-P001",
+      "status": "aligned",
+      "source_index": 243,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S002-P002",
+      "type": "paragraph",
+      "am": "CHW-003-S002-P002",
+      "en": "CHW-003-S002-P002",
+      "status": "aligned",
+      "source_index": 244,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S002-P003",
+      "type": "paragraph",
+      "am": "CHW-003-S002-P003",
+      "en": "CHW-003-S002-P003",
+      "status": "aligned",
+      "source_index": 245,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S002-P004",
+      "type": "paragraph",
+      "am": "CHW-003-S002-P004",
+      "en": "CHW-003-S002-P004",
+      "status": "aligned",
+      "source_index": 246,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S002-P005",
+      "type": "paragraph",
+      "am": "CHW-003-S002-P005",
+      "en": "CHW-003-S002-P005",
+      "status": "aligned",
+      "source_index": 247,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S002-P006",
+      "type": "paragraph",
+      "am": "CHW-003-S002-P006",
+      "en": "CHW-003-S002-P006",
+      "status": "aligned",
+      "source_index": 248,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S002-P007",
+      "type": "paragraph",
+      "am": "CHW-003-S002-P007",
+      "en": "CHW-003-S002-P007",
+      "status": "aligned",
+      "source_index": 249,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003",
+      "type": "section",
+      "am": "CHW-003-S003",
+      "en": "CHW-003-S003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-003-S003-P001",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P001",
+      "en": "CHW-003-S003-P001",
+      "status": "aligned",
+      "source_index": 251,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P002",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P002",
+      "en": "CHW-003-S003-P002",
+      "status": "aligned",
+      "source_index": 252,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P003",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P003",
+      "en": "CHW-003-S003-P003",
+      "status": "aligned",
+      "source_index": 253,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P004",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P004",
+      "en": "CHW-003-S003-P004",
+      "status": "aligned",
+      "source_index": 254,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P005",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P005",
+      "en": "CHW-003-S003-P005",
+      "status": "aligned",
+      "source_index": 255,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P006",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P006",
+      "en": "CHW-003-S003-P006",
+      "status": "aligned",
+      "source_index": 256,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P007",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P007",
+      "en": "CHW-003-S003-P007",
+      "status": "aligned",
+      "source_index": 257,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P008",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P008",
+      "en": "CHW-003-S003-P008",
+      "status": "aligned",
+      "source_index": 258,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P009",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P009",
+      "en": "CHW-003-S003-P009",
+      "status": "aligned",
+      "source_index": 259,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P010",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P010",
+      "en": "CHW-003-S003-P010",
+      "status": "aligned",
+      "source_index": 260,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P011",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P011",
+      "en": "CHW-003-S003-P011",
+      "status": "aligned",
+      "source_index": 261,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P012",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P012",
+      "en": "CHW-003-S003-P012",
+      "status": "aligned",
+      "source_index": 262,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P013",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P013",
+      "en": "CHW-003-S003-P013",
+      "status": "aligned",
+      "source_index": 263,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P014",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P014",
+      "en": "CHW-003-S003-P014",
+      "status": "aligned",
+      "source_index": 264,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P015",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P015",
+      "en": "CHW-003-S003-P015",
+      "status": "aligned",
+      "source_index": 265,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P016",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P016",
+      "en": "CHW-003-S003-P016",
+      "status": "aligned",
+      "source_index": 266,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S003-P017",
+      "type": "paragraph",
+      "am": "CHW-003-S003-P017",
+      "en": "CHW-003-S003-P017",
+      "status": "aligned",
+      "source_index": 267,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S004",
+      "type": "section",
+      "am": "CHW-003-S004",
+      "en": "CHW-003-S004",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-003-S004-P001",
+      "type": "paragraph",
+      "am": "CHW-003-S004-P001",
+      "en": "CHW-003-S004-P001",
+      "status": "aligned",
+      "source_index": 269,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S004-P002",
+      "type": "paragraph",
+      "am": "CHW-003-S004-P002",
+      "en": "CHW-003-S004-P002",
+      "status": "aligned",
+      "source_index": 270,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005",
+      "type": "section",
+      "am": "CHW-003-S005",
+      "en": "CHW-003-S005",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-003-S005-P001",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P001",
+      "en": "CHW-003-S005-P001",
+      "status": "aligned",
+      "source_index": 272,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P002",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P002",
+      "en": "CHW-003-S005-P002",
+      "status": "aligned",
+      "source_index": 273,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P003",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P003",
+      "en": "CHW-003-S005-P003",
+      "status": "aligned",
+      "source_index": 274,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P004",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P004",
+      "en": "CHW-003-S005-P004",
+      "status": "aligned",
+      "source_index": 275,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P005",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P005",
+      "en": "CHW-003-S005-P005",
+      "status": "aligned",
+      "source_index": 276,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P006",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P006",
+      "en": "CHW-003-S005-P006",
+      "status": "aligned",
+      "source_index": 277,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P007",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P007",
+      "en": "CHW-003-S005-P007",
+      "status": "aligned",
+      "source_index": 278,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P008",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P008",
+      "en": "CHW-003-S005-P008",
+      "status": "aligned",
+      "source_index": 279,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P009",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P009",
+      "en": "CHW-003-S005-P009",
+      "status": "aligned",
+      "source_index": 280,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P010",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P010",
+      "en": "CHW-003-S005-P010",
+      "status": "aligned",
+      "source_index": 281,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P011",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P011",
+      "en": "CHW-003-S005-P011",
+      "status": "aligned",
+      "source_index": 282,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P012",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P012",
+      "en": "CHW-003-S005-P012",
+      "status": "aligned",
+      "source_index": 283,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P013",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P013",
+      "en": "CHW-003-S005-P013",
+      "status": "aligned",
+      "source_index": 284,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P014",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P014",
+      "en": "CHW-003-S005-P014",
+      "status": "aligned",
+      "source_index": 285,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P015",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P015",
+      "en": "CHW-003-S005-P015",
+      "status": "aligned",
+      "source_index": 286,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P016",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P016",
+      "en": "CHW-003-S005-P016",
+      "status": "aligned",
+      "source_index": 287,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P017",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P017",
+      "en": "CHW-003-S005-P017",
+      "status": "aligned",
+      "source_index": 288,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P018",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P018",
+      "en": "CHW-003-S005-P018",
+      "status": "aligned",
+      "source_index": 289,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P019",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P019",
+      "en": "CHW-003-S005-P019",
+      "status": "aligned",
+      "source_index": 290,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P020",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P020",
+      "en": "CHW-003-S005-P020",
+      "status": "aligned",
+      "source_index": 291,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P021",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P021",
+      "en": "CHW-003-S005-P021",
+      "status": "aligned",
+      "source_index": 292,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-003-S005-P022",
+      "type": "paragraph",
+      "am": "CHW-003-S005-P022",
+      "en": "CHW-003-S005-P022",
+      "status": "aligned",
+      "source_index": 293,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004",
+      "type": "chapter",
+      "am": "CHW-004",
+      "en": "CHW-004",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-004-S001",
+      "type": "section",
+      "am": "CHW-004-S001",
+      "en": "CHW-004-S001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-004-S001-P001",
+      "type": "paragraph",
+      "am": "CHW-004-S001-P001",
+      "en": "CHW-004-S001-P001",
+      "status": "aligned",
+      "source_index": 296,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S001-P002",
+      "type": "paragraph",
+      "am": "CHW-004-S001-P002",
+      "en": "CHW-004-S001-P002",
+      "status": "aligned",
+      "source_index": 297,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002",
+      "type": "section",
+      "am": "CHW-004-S002",
+      "en": "CHW-004-S002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-004-S002-P001",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P001",
+      "en": "CHW-004-S002-P001",
+      "status": "aligned",
+      "source_index": 299,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P002",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P002",
+      "en": "CHW-004-S002-P002",
+      "status": "aligned",
+      "source_index": 300,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P003",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P003",
+      "en": "CHW-004-S002-P003",
+      "status": "aligned",
+      "source_index": 301,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P004",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P004",
+      "en": "CHW-004-S002-P004",
+      "status": "aligned",
+      "source_index": 302,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P005",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P005",
+      "en": "CHW-004-S002-P005",
+      "status": "aligned",
+      "source_index": 303,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P006",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P006",
+      "en": "CHW-004-S002-P006",
+      "status": "aligned",
+      "source_index": 304,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P007",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P007",
+      "en": "CHW-004-S002-P007",
+      "status": "aligned",
+      "source_index": 305,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P008",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P008",
+      "en": "CHW-004-S002-P008",
+      "status": "aligned",
+      "source_index": 306,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S002-P009",
+      "type": "paragraph",
+      "am": "CHW-004-S002-P009",
+      "en": "CHW-004-S002-P009",
+      "status": "aligned",
+      "source_index": 307,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S003",
+      "type": "section",
+      "am": "CHW-004-S003",
+      "en": "CHW-004-S003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-004-S003-P001",
+      "type": "paragraph",
+      "am": "CHW-004-S003-P001",
+      "en": "CHW-004-S003-P001",
+      "status": "aligned",
+      "source_index": 309,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-004-S003-P002",
+      "type": "paragraph",
+      "am": "CHW-004-S003-P002",
+      "en": "CHW-004-S003-P002",
+      "status": "aligned",
+      "source_index": 310,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005",
+      "type": "chapter",
+      "am": "CHW-005",
+      "en": "CHW-005",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S000",
+      "type": "section",
+      "am": "CHW-005-S000",
+      "en": "CHW-005-S000",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S000-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S000-P001",
+      "en": "CHW-005-S000-P001",
+      "status": "aligned",
+      "source_index": 312,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S000-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S000-P002",
+      "en": "CHW-005-S000-P002",
+      "status": "aligned",
+      "source_index": 313,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S000-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S000-P003",
+      "en": "CHW-005-S000-P003",
+      "status": "aligned",
+      "source_index": 314,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001",
+      "type": "section",
+      "am": "CHW-005-S001",
+      "en": "CHW-005-S001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S001-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P001",
+      "en": "CHW-005-S001-P001",
+      "status": "aligned",
+      "source_index": 316,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P002",
+      "en": "CHW-005-S001-P002",
+      "status": "aligned",
+      "source_index": 317,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P003",
+      "en": "CHW-005-S001-P003",
+      "status": "aligned",
+      "source_index": 318,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P004",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P004",
+      "en": "CHW-005-S001-P004",
+      "status": "aligned",
+      "source_index": 319,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P005",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P005",
+      "en": "CHW-005-S001-P005",
+      "status": "aligned",
+      "source_index": 320,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P006",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P006",
+      "en": "CHW-005-S001-P006",
+      "status": "aligned",
+      "source_index": 321,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P007",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P007",
+      "en": "CHW-005-S001-P007",
+      "status": "aligned",
+      "source_index": 322,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P008",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P008",
+      "en": "CHW-005-S001-P008",
+      "status": "aligned",
+      "source_index": 323,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P009",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P009",
+      "en": "CHW-005-S001-P009",
+      "status": "aligned",
+      "source_index": 324,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P010",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P010",
+      "en": "CHW-005-S001-P010",
+      "status": "aligned",
+      "source_index": 325,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P011",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P011",
+      "en": "CHW-005-S001-P011",
+      "status": "aligned",
+      "source_index": 326,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P012",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P012",
+      "en": "CHW-005-S001-P012",
+      "status": "aligned",
+      "source_index": 327,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P013",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P013",
+      "en": "CHW-005-S001-P013",
+      "status": "aligned",
+      "source_index": 328,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P014",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P014",
+      "en": "CHW-005-S001-P014",
+      "status": "aligned",
+      "source_index": 329,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P015",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P015",
+      "en": "CHW-005-S001-P015",
+      "status": "aligned",
+      "source_index": 330,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P016",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P016",
+      "en": "CHW-005-S001-P016",
+      "status": "aligned",
+      "source_index": 331,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S001-P017",
+      "type": "paragraph",
+      "am": "CHW-005-S001-P017",
+      "en": "CHW-005-S001-P017",
+      "status": "aligned",
+      "source_index": 332,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S002",
+      "type": "section",
+      "am": "CHW-005-S002",
+      "en": "CHW-005-S002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S002-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S002-P001",
+      "en": "CHW-005-S002-P001",
+      "status": "aligned",
+      "source_index": 334,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S002-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S002-P002",
+      "en": "CHW-005-S002-P002",
+      "status": "aligned",
+      "source_index": 335,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S002-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S002-P003",
+      "en": "CHW-005-S002-P003",
+      "status": "aligned",
+      "source_index": 336,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S002-P004",
+      "type": "paragraph",
+      "am": "CHW-005-S002-P004",
+      "en": "CHW-005-S002-P004",
+      "status": "aligned",
+      "source_index": 337,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S002-P005",
+      "type": "paragraph",
+      "am": "CHW-005-S002-P005",
+      "en": "CHW-005-S002-P005",
+      "status": "aligned",
+      "source_index": 338,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S002-P006",
+      "type": "paragraph",
+      "am": "CHW-005-S002-P006",
+      "en": "CHW-005-S002-P006",
+      "status": "aligned",
+      "source_index": 339,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003",
+      "type": "section",
+      "am": "CHW-005-S003",
+      "en": "CHW-005-S003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S003-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P001",
+      "en": "CHW-005-S003-P001",
+      "status": "aligned",
+      "source_index": 341,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P002",
+      "en": "CHW-005-S003-P002",
+      "status": "aligned",
+      "source_index": 342,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P003",
+      "en": "CHW-005-S003-P003",
+      "status": "aligned",
+      "source_index": 343,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P004",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P004",
+      "en": "CHW-005-S003-P004",
+      "status": "aligned",
+      "source_index": 344,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P005",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P005",
+      "en": "CHW-005-S003-P005",
+      "status": "aligned",
+      "source_index": 345,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P006",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P006",
+      "en": "CHW-005-S003-P006",
+      "status": "aligned",
+      "source_index": 346,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P007",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P007",
+      "en": "CHW-005-S003-P007",
+      "status": "aligned",
+      "source_index": 347,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P008",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P008",
+      "en": "CHW-005-S003-P008",
+      "status": "aligned",
+      "source_index": 348,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P009",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P009",
+      "en": "CHW-005-S003-P009",
+      "status": "aligned",
+      "source_index": 349,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P010",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P010",
+      "en": "CHW-005-S003-P010",
+      "status": "aligned",
+      "source_index": 350,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P011",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P011",
+      "en": "CHW-005-S003-P011",
+      "status": "aligned",
+      "source_index": 351,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P012",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P012",
+      "en": "CHW-005-S003-P012",
+      "status": "aligned",
+      "source_index": 352,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P013",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P013",
+      "en": "CHW-005-S003-P013",
+      "status": "aligned",
+      "source_index": 353,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P014",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P014",
+      "en": "CHW-005-S003-P014",
+      "status": "aligned",
+      "source_index": 354,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P015",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P015",
+      "en": "CHW-005-S003-P015",
+      "status": "aligned",
+      "source_index": 355,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P016",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P016",
+      "en": "CHW-005-S003-P016",
+      "status": "aligned",
+      "source_index": 356,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S003-P017",
+      "type": "paragraph",
+      "am": "CHW-005-S003-P017",
+      "en": "CHW-005-S003-P017",
+      "status": "aligned",
+      "source_index": 357,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S004",
+      "type": "section",
+      "am": "CHW-005-S004",
+      "en": "CHW-005-S004",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S004-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S004-P001",
+      "en": "CHW-005-S004-P001",
+      "status": "aligned",
+      "source_index": 359,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S004-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S004-P002",
+      "en": "CHW-005-S004-P002",
+      "status": "aligned",
+      "source_index": 360,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S004-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S004-P003",
+      "en": "CHW-005-S004-P003",
+      "status": "aligned",
+      "source_index": 361,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S004-P004",
+      "type": "paragraph",
+      "am": "CHW-005-S004-P004",
+      "en": "CHW-005-S004-P004",
+      "status": "aligned",
+      "source_index": 362,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S004-P005",
+      "type": "paragraph",
+      "am": "CHW-005-S004-P005",
+      "en": "CHW-005-S004-P005",
+      "status": "aligned",
+      "source_index": 363,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S004-P006",
+      "type": "paragraph",
+      "am": "CHW-005-S004-P006",
+      "en": "CHW-005-S004-P006",
+      "status": "aligned",
+      "source_index": 364,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S005",
+      "type": "section",
+      "am": "CHW-005-S005",
+      "en": "CHW-005-S005",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S005-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S005-P001",
+      "en": "CHW-005-S005-P001",
+      "status": "aligned",
+      "source_index": 366,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S005-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S005-P002",
+      "en": "CHW-005-S005-P002",
+      "status": "aligned",
+      "source_index": 367,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S005-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S005-P003",
+      "en": "CHW-005-S005-P003",
+      "status": "aligned",
+      "source_index": 368,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S005-P004",
+      "type": "paragraph",
+      "am": "CHW-005-S005-P004",
+      "en": "CHW-005-S005-P004",
+      "status": "aligned",
+      "source_index": 369,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S005-P005",
+      "type": "paragraph",
+      "am": "CHW-005-S005-P005",
+      "en": "CHW-005-S005-P005",
+      "status": "aligned",
+      "source_index": 370,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S006",
+      "type": "section",
+      "am": "CHW-005-S006",
+      "en": "CHW-005-S006",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S006-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S006-P001",
+      "en": "CHW-005-S006-P001",
+      "status": "aligned",
+      "source_index": 372,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S007",
+      "type": "section",
+      "am": "CHW-005-S007",
+      "en": "CHW-005-S007",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S008",
+      "type": "section",
+      "am": "CHW-005-S008",
+      "en": "CHW-005-S008",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S008-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S008-P001",
+      "en": "CHW-005-S008-P001",
+      "status": "aligned",
+      "source_index": 375,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S008-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S008-P002",
+      "en": "CHW-005-S008-P002",
+      "status": "aligned",
+      "source_index": 376,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S008-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S008-P003",
+      "en": "CHW-005-S008-P003",
+      "status": "aligned",
+      "source_index": 377,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S008-P004",
+      "type": "paragraph",
+      "am": "CHW-005-S008-P004",
+      "en": "CHW-005-S008-P004",
+      "status": "aligned",
+      "source_index": 378,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S008-P005",
+      "type": "paragraph",
+      "am": "CHW-005-S008-P005",
+      "en": "CHW-005-S008-P005",
+      "status": "aligned",
+      "source_index": 379,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S008-P006",
+      "type": "paragraph",
+      "am": "CHW-005-S008-P006",
+      "en": "CHW-005-S008-P006",
+      "status": "aligned",
+      "source_index": 380,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S009",
+      "type": "section",
+      "am": "CHW-005-S009",
+      "en": "CHW-005-S009",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-005-S009-P001",
+      "type": "paragraph",
+      "am": "CHW-005-S009-P001",
+      "en": "CHW-005-S009-P001",
+      "status": "aligned",
+      "source_index": 382,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S009-P002",
+      "type": "paragraph",
+      "am": "CHW-005-S009-P002",
+      "en": "CHW-005-S009-P002",
+      "status": "aligned",
+      "source_index": 383,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S009-P003",
+      "type": "paragraph",
+      "am": "CHW-005-S009-P003",
+      "en": "CHW-005-S009-P003",
+      "status": "aligned",
+      "source_index": 384,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S009-P004",
+      "type": "paragraph",
+      "am": "CHW-005-S009-P004",
+      "en": "CHW-005-S009-P004",
+      "status": "aligned",
+      "source_index": 385,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S009-P005",
+      "type": "paragraph",
+      "am": "CHW-005-S009-P005",
+      "en": "CHW-005-S009-P005",
+      "status": "aligned",
+      "source_index": 386,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S009-P006",
+      "type": "paragraph",
+      "am": "CHW-005-S009-P006",
+      "en": "CHW-005-S009-P006",
+      "status": "aligned",
+      "source_index": 387,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-005-S009-P007",
+      "type": "paragraph",
+      "am": "CHW-005-S009-P007",
+      "en": "CHW-005-S009-P007",
+      "status": "aligned",
+      "source_index": 388,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006",
+      "type": "chapter",
+      "am": "CHW-006",
+      "en": "CHW-006",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S000",
+      "type": "section",
+      "am": "CHW-006-S000",
+      "en": "CHW-006-S000",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S000-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S000-P001",
+      "en": "CHW-006-S000-P001",
+      "status": "aligned",
+      "source_index": 390,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S000-P002",
+      "type": "paragraph",
+      "am": "CHW-006-S000-P002",
+      "en": "CHW-006-S000-P002",
+      "status": "aligned",
+      "source_index": 391,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S001",
+      "type": "section",
+      "am": "CHW-006-S001",
+      "en": "CHW-006-S001",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S001-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S001-P001",
+      "en": "CHW-006-S001-P001",
+      "status": "aligned",
+      "source_index": 393,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S002",
+      "type": "section",
+      "am": "CHW-006-S002",
+      "en": "CHW-006-S002",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S002-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S002-P001",
+      "en": "CHW-006-S002-P001",
+      "status": "aligned",
+      "source_index": 395,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S003",
+      "type": "section",
+      "am": "CHW-006-S003",
+      "en": "CHW-006-S003",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S003-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S003-P001",
+      "en": "CHW-006-S003-P001",
+      "status": "aligned",
+      "source_index": 397,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S003-P002",
+      "type": "paragraph",
+      "am": "CHW-006-S003-P002",
+      "en": "CHW-006-S003-P002",
+      "status": "aligned",
+      "source_index": 398,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S003-P003",
+      "type": "paragraph",
+      "am": "CHW-006-S003-P003",
+      "en": "CHW-006-S003-P003",
+      "status": "aligned",
+      "source_index": 399,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S004",
+      "type": "section",
+      "am": "CHW-006-S004",
+      "en": "CHW-006-S004",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S004-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S004-P001",
+      "en": "CHW-006-S004-P001",
+      "status": "aligned",
+      "source_index": 401,
+      "review_flags": [
+        "suspicious_machine_translation"
+      ]
+    },
+    {
+      "id": "CHW-006-S005",
+      "type": "section",
+      "am": "CHW-006-S005",
+      "en": "CHW-006-S005",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S005-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S005-P001",
+      "en": "CHW-006-S005-P001",
+      "status": "aligned",
+      "source_index": 403,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S005-P002",
+      "type": "paragraph",
+      "am": "CHW-006-S005-P002",
+      "en": "CHW-006-S005-P002",
+      "status": "aligned",
+      "source_index": 404,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S005-P003",
+      "type": "paragraph",
+      "am": "CHW-006-S005-P003",
+      "en": "CHW-006-S005-P003",
+      "status": "aligned",
+      "source_index": 405,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S005-P004",
+      "type": "paragraph",
+      "am": "CHW-006-S005-P004",
+      "en": "CHW-006-S005-P004",
+      "status": "aligned",
+      "source_index": 406,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S005-P005",
+      "type": "paragraph",
+      "am": "CHW-006-S005-P005",
+      "en": "CHW-006-S005-P005",
+      "status": "aligned",
+      "source_index": 407,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S006",
+      "type": "section",
+      "am": "CHW-006-S006",
+      "en": "CHW-006-S006",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S007",
+      "type": "section",
+      "am": "CHW-006-S007",
+      "en": "CHW-006-S007",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S007-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S007-P001",
+      "en": "CHW-006-S007-P001",
+      "status": "aligned",
+      "source_index": 410,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S007-P002",
+      "type": "paragraph",
+      "am": "CHW-006-S007-P002",
+      "en": "CHW-006-S007-P002",
+      "status": "aligned",
+      "source_index": 411,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S007-P003",
+      "type": "paragraph",
+      "am": "CHW-006-S007-P003",
+      "en": "CHW-006-S007-P003",
+      "status": "aligned",
+      "source_index": 412,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008",
+      "type": "section",
+      "am": "CHW-006-S008",
+      "en": "CHW-006-S008",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S008-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P001",
+      "en": "CHW-006-S008-P001",
+      "status": "aligned",
+      "source_index": 414,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P002",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P002",
+      "en": "CHW-006-S008-P002",
+      "status": "aligned",
+      "source_index": 415,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P003",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P003",
+      "en": "CHW-006-S008-P003",
+      "status": "aligned",
+      "source_index": 416,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P004",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P004",
+      "en": "CHW-006-S008-P004",
+      "status": "aligned",
+      "source_index": 417,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P005",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P005",
+      "en": "CHW-006-S008-P005",
+      "status": "aligned",
+      "source_index": 418,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P006",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P006",
+      "en": "CHW-006-S008-P006",
+      "status": "aligned",
+      "source_index": 419,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P007",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P007",
+      "en": "CHW-006-S008-P007",
+      "status": "aligned",
+      "source_index": 420,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P008",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P008",
+      "en": "CHW-006-S008-P008",
+      "status": "aligned",
+      "source_index": 421,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P009",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P009",
+      "en": "CHW-006-S008-P009",
+      "status": "aligned",
+      "source_index": 422,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P010",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P010",
+      "en": "CHW-006-S008-P010",
+      "status": "aligned",
+      "source_index": 423,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P011",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P011",
+      "en": "CHW-006-S008-P011",
+      "status": "aligned",
+      "source_index": 424,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P012",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P012",
+      "en": "CHW-006-S008-P012",
+      "status": "aligned",
+      "source_index": 425,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P013",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P013",
+      "en": "CHW-006-S008-P013",
+      "status": "aligned",
+      "source_index": 426,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P014",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P014",
+      "en": "CHW-006-S008-P014",
+      "status": "aligned",
+      "source_index": 427,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P015",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P015",
+      "en": "CHW-006-S008-P015",
+      "status": "aligned",
+      "source_index": 428,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P016",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P016",
+      "en": "CHW-006-S008-P016",
+      "status": "aligned",
+      "source_index": 429,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P017",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P017",
+      "en": "CHW-006-S008-P017",
+      "status": "aligned",
+      "source_index": 430,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S008-P018",
+      "type": "paragraph",
+      "am": "CHW-006-S008-P018",
+      "en": "CHW-006-S008-P018",
+      "status": "aligned",
+      "source_index": 431,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S009",
+      "type": "section",
+      "am": "CHW-006-S009",
+      "en": "CHW-006-S009",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S009-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S009-P001",
+      "en": "CHW-006-S009-P001",
+      "status": "aligned",
+      "source_index": 433,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S010",
+      "type": "section",
+      "am": "CHW-006-S010",
+      "en": "CHW-006-S010",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S010-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S010-P001",
+      "en": "CHW-006-S010-P001",
+      "status": "aligned",
+      "source_index": 435,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S010-P002",
+      "type": "paragraph",
+      "am": "CHW-006-S010-P002",
+      "en": "CHW-006-S010-P002",
+      "status": "aligned",
+      "source_index": 436,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S010-P003",
+      "type": "paragraph",
+      "am": "CHW-006-S010-P003",
+      "en": "CHW-006-S010-P003",
+      "status": "aligned",
+      "source_index": 437,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S010-P004",
+      "type": "paragraph",
+      "am": "CHW-006-S010-P004",
+      "en": "CHW-006-S010-P004",
+      "status": "aligned",
+      "source_index": 438,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S010-P005",
+      "type": "paragraph",
+      "am": "CHW-006-S010-P005",
+      "en": "CHW-006-S010-P005",
+      "status": "aligned",
+      "source_index": 439,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S010-P006",
+      "type": "paragraph",
+      "am": "CHW-006-S010-P006",
+      "en": "CHW-006-S010-P006",
+      "status": "aligned",
+      "source_index": 440,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S010-P007",
+      "type": "paragraph",
+      "am": "CHW-006-S010-P007",
+      "en": "CHW-006-S010-P007",
+      "status": "aligned",
+      "source_index": 441,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S011",
+      "type": "section",
+      "am": "CHW-006-S011",
+      "en": "CHW-006-S011",
+      "status": "aligned"
+    },
+    {
+      "id": "CHW-006-S011-P001",
+      "type": "paragraph",
+      "am": "CHW-006-S011-P001",
+      "en": "CHW-006-S011-P001",
+      "status": "aligned",
+      "source_index": 443,
+      "review_flags": []
+    },
+    {
+      "id": "CHW-006-S011-P002",
+      "type": "paragraph",
+      "am": "CHW-006-S011-P002",
+      "en": "CHW-006-S011-P002",
+      "status": "aligned",
+      "source_index": 444,
+      "review_flags": []
+    }
+  ]
+}

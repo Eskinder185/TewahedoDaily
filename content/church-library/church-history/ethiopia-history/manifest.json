@@ -1,0 +1,2531 @@
+{
+  "schema_version": 1,
+  "collection_id": "ethiopian-church-history",
+  "subject": "ethiopian-church-history",
+  "titles": {
+    "am": "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ታሪክ",
+    "en": "History of the Ethiopian Orthodox Tewahedo Church"
+  },
+  "source_documents": {
+    "am": {
+      "file": "1-Church_History_Ethiopia_Clean.docx",
+      "sha256": "de3733e3b3237d6a2a3cbb6a91ea19e26aba89ca78839022dcde5afcb62dd35b"
+    },
+    "en_draft": {
+      "file": "Church_History_Ethiopia_English_Auto.structure.json",
+      "generated_from": "1-Church_History_Ethiopia_Clean.docx"
+    }
+  },
+  "languages": {
+    "am": {
+      "status": "original"
+    },
+    "en": {
+      "status": "ai_translated_pending_review"
+    }
+  },
+  "publication_status": "draft",
+  "review_status": "expert_review_required",
+  "chapter_count": 7,
+  "chapter_ids": [
+    "CHE-000",
+    "CHE-001",
+    "CHE-002",
+    "CHE-003",
+    "CHE-004",
+    "CHE-005",
+    "CHE-006"
+  ],
+  "section_ids": [
+    "CHE-000-S000",
+    "CHE-000-S001",
+    "CHE-000-S002",
+    "CHE-000-S003",
+    "CHE-000-S004",
+    "CHE-000-S005",
+    "CHE-000-S006",
+    "CHE-000-S007",
+    "CHE-001-S000",
+    "CHE-001-S001",
+    "CHE-001-S002",
+    "CHE-001-S003",
+    "CHE-001-S004",
+    "CHE-001-S005",
+    "CHE-001-S006",
+    "CHE-001-S007",
+    "CHE-001-S008",
+    "CHE-001-S009",
+    "CHE-001-S010",
+    "CHE-001-S011",
+    "CHE-001-S012",
+    "CHE-001-S013",
+    "CHE-001-S014",
+    "CHE-001-S015",
+    "CHE-001-S016",
+    "CHE-001-S017",
+    "CHE-001-S018",
+    "CHE-001-S019",
+    "CHE-001-S020",
+    "CHE-001-S021",
+    "CHE-001-S022",
+    "CHE-001-S023",
+    "CHE-001-S024",
+    "CHE-001-S025",
+    "CHE-001-S026",
+    "CHE-001-S027",
+    "CHE-001-S028",
+    "CHE-001-S029",
+    "CHE-002-S000",
+    "CHE-002-S001",
+    "CHE-002-S002",
+    "CHE-002-S003",
+    "CHE-002-S004",
+    "CHE-002-S005",
+    "CHE-002-S006",
+    "CHE-002-S007",
+    "CHE-002-S008",
+    "CHE-002-S009",
+    "CHE-002-S010",
+    "CHE-002-S011",
+    "CHE-002-S012",
+    "CHE-002-S013",
+    "CHE-002-S014",
+    "CHE-002-S015",
+    "CHE-002-S016",
+    "CHE-002-S017",
+    "CHE-002-S018",
+    "CHE-002-S019",
+    "CHE-002-S020",
+    "CHE-002-S021",
+    "CHE-002-S022",
+    "CHE-003-S000",
+    "CHE-003-S001",
+    "CHE-003-S002",
+    "CHE-003-S003",
+    "CHE-003-S004",
+    "CHE-003-S005",
+    "CHE-003-S006",
+    "CHE-003-S007",
+    "CHE-003-S008",
+    "CHE-003-S009",
+    "CHE-003-S010",
+    "CHE-003-S011",
+    "CHE-003-S012",
+    "CHE-003-S013",
+    "CHE-003-S014",
+    "CHE-003-S015",
+    "CHE-003-S016",
+    "CHE-004-S001",
+    "CHE-004-S002",
+    "CHE-004-S003",
+    "CHE-004-S004",
+    "CHE-004-S005",
+    "CHE-004-S006",
+    "CHE-004-S007",
+    "CHE-004-S008",
+    "CHE-004-S009",
+    "CHE-004-S010",
+    "CHE-004-S011",
+    "CHE-004-S012",
+    "CHE-004-S013",
+    "CHE-005-S000",
+    "CHE-005-S001",
+    "CHE-005-S002",
+    "CHE-005-S003",
+    "CHE-006-S000"
+  ],
+  "paragraph_ids": [
+    "CHE-000-S000-P001",
+    "CHE-000-S000-P002",
+    "CHE-000-S000-P003",
+    "CHE-000-S000-P004",
+    "CHE-000-S000-P005",
+    "CHE-000-S000-P006",
+    "CHE-000-S001-P001",
+    "CHE-000-S001-P002",
+    "CHE-000-S001-P003",
+    "CHE-000-S001-P004",
+    "CHE-000-S001-P005",
+    "CHE-000-S001-P006",
+    "CHE-000-S001-P007",
+    "CHE-000-S001-P008",
+    "CHE-000-S001-P009",
+    "CHE-000-S001-P010",
+    "CHE-000-S001-P011",
+    "CHE-000-S002-P001",
+    "CHE-000-S002-P002",
+    "CHE-000-S002-P003",
+    "CHE-000-S002-P004",
+    "CHE-000-S003-P001",
+    "CHE-000-S003-P002",
+    "CHE-000-S003-P003",
+    "CHE-000-S003-P004",
+    "CHE-000-S003-P005",
+    "CHE-000-S003-P006",
+    "CHE-000-S003-P007",
+    "CHE-000-S003-P008",
+    "CHE-000-S003-P009",
+    "CHE-000-S003-P010",
+    "CHE-000-S003-P011",
+    "CHE-000-S004-P001",
+    "CHE-000-S004-P002",
+    "CHE-000-S004-P003",
+    "CHE-000-S004-P004",
+    "CHE-000-S004-P005",
+    "CHE-000-S004-P006",
+    "CHE-000-S004-P007",
+    "CHE-000-S004-P008",
+    "CHE-000-S004-P009",
+    "CHE-000-S004-P010",
+    "CHE-000-S004-P011",
+    "CHE-000-S004-P012",
+    "CHE-000-S004-P013",
+    "CHE-000-S004-P014",
+    "CHE-000-S004-P015",
+    "CHE-000-S004-P016",
+    "CHE-000-S005-P001",
+    "CHE-000-S005-P002",
+    "CHE-000-S005-P003",
+    "CHE-000-S005-P004",
+    "CHE-000-S005-P005",
+    "CHE-000-S005-P006",
+    "CHE-000-S005-P007",
+    "CHE-000-S005-P008",
+    "CHE-000-S005-P009",
+    "CHE-000-S005-P010",
+    "CHE-000-S005-P011",
+    "CHE-000-S005-P012",
+    "CHE-000-S006-P001",
+    "CHE-000-S006-P002",
+    "CHE-000-S006-P003",
+    "CHE-000-S006-P004",
+    "CHE-000-S006-P005",
+    "CHE-000-S006-P006",
+    "CHE-000-S006-P007",
+    "CHE-000-S006-P008",
+    "CHE-000-S006-P009",
+    "CHE-000-S006-P010",
+    "CHE-000-S006-P011",
+    "CHE-000-S006-P012",
+    "CHE-000-S007-P001",
+    "CHE-000-S007-P002",
+    "CHE-000-S007-P003",
+    "CHE-000-S007-P004",
+    "CHE-001-S000-P001",
+    "CHE-001-S000-P002",
+    "CHE-001-S000-P003",
+    "CHE-001-S000-P004",
+    "CHE-001-S000-P005",
+    "CHE-001-S000-P006",
+    "CHE-001-S001-P001",
+    "CHE-001-S001-P002",
+    "CHE-001-S001-P003",
+    "CHE-001-S002-P001",
+    "CHE-001-S002-P002",
+    "CHE-001-S002-P003",
+    "CHE-001-S002-P004",
+    "CHE-001-S002-P005",
+    "CHE-001-S002-P006",
+    "CHE-001-S002-P007",
+    "CHE-001-S002-P008",
+    "CHE-001-S003-P001",
+    "CHE-001-S003-P002",
+    "CHE-001-S003-P003",
+    "CHE-001-S003-P004",
+    "CHE-001-S003-P005",
+    "CHE-001-S003-P006",
+    "CHE-001-S003-P007",
+    "CHE-001-S003-P008",
+    "CHE-001-S003-P009",
+    "CHE-001-S003-P010",
+    "CHE-001-S003-P011",
+    "CHE-001-S004-P001",
+    "CHE-001-S004-P002",
+    "CHE-001-S004-P003",
+    "CHE-001-S004-P004",
+    "CHE-001-S004-P005",
+    "CHE-001-S004-P006",
+    "CHE-001-S005-P001",
+    "CHE-001-S005-P002",
+    "CHE-001-S005-P003",
+    "CHE-001-S006-P001",
+    "CHE-001-S006-P002",
+    "CHE-001-S006-P003",
+    "CHE-001-S006-P004",
+    "CHE-001-S006-P005",
+    "CHE-001-S007-P001",
+    "CHE-001-S007-P002",
+    "CHE-001-S008-P001",
+    "CHE-001-S008-P002",
+    "CHE-001-S009-P001",
+    "CHE-001-S009-P002",
+    "CHE-001-S010-P001",
+    "CHE-001-S011-P001",
+    "CHE-001-S011-P002",
+    "CHE-001-S011-P003",
+    "CHE-001-S011-P004",
+    "CHE-001-S012-P001",
+    "CHE-001-S012-P002",
+    "CHE-001-S012-P003",
+    "CHE-001-S012-P004",
+    "CHE-001-S012-P005",
+    "CHE-001-S014-P001",
+    "CHE-001-S014-P002",
+    "CHE-001-S014-P003",
+    "CHE-001-S014-P004",
+    "CHE-001-S014-P005",
+    "CHE-001-S014-P006",
+    "CHE-001-S014-P007",
+    "CHE-001-S014-P008",
+    "CHE-001-S014-P009",
+    "CHE-001-S015-P001",
+    "CHE-001-S016-P001",
+    "CHE-001-S016-P002",
+    "CHE-001-S016-P003",
+    "CHE-001-S016-P004",
+    "CHE-001-S016-P005",
+    "CHE-001-S016-P006",
+    "CHE-001-S016-P007",
+    "CHE-001-S016-P008",
+    "CHE-001-S016-P009",
+    "CHE-001-S016-P010",
+    "CHE-001-S016-P011",
+    "CHE-001-S017-P001",
+    "CHE-001-S017-P002",
+    "CHE-001-S017-P003",
+    "CHE-001-S017-P004",
+    "CHE-001-S017-P005",
+    "CHE-001-S017-P006",
+    "CHE-001-S017-P007",
+    "CHE-001-S017-P008",
+    "CHE-001-S018-P001",
+    "CHE-001-S018-P002",
+    "CHE-001-S018-P003",
+    "CHE-001-S018-P004",
+    "CHE-001-S018-P005",
+    "CHE-001-S019-P001",
+    "CHE-001-S019-P002",
+    "CHE-001-S019-P003",
+    "CHE-001-S020-P001",
+    "CHE-001-S020-P002",
+    "CHE-001-S020-P003",
+    "CHE-001-S020-P004",
+    "CHE-001-S020-P005",
+    "CHE-001-S020-P006",
+    "CHE-001-S020-P007",
+    "CHE-001-S020-P008",
+    "CHE-001-S020-P009",
+    "CHE-001-S021-P001",
+    "CHE-001-S021-P002",
+    "CHE-001-S021-P003",
+    "CHE-001-S021-P004",
+    "CHE-001-S021-P005",
+    "CHE-001-S022-P001",
+    "CHE-001-S022-P002",
+    "CHE-001-S022-P003",
+    "CHE-001-S022-P004",
+    "CHE-001-S022-P005",
+    "CHE-001-S022-P006",
+    "CHE-001-S022-P007",
+    "CHE-001-S023-P001",
+    "CHE-001-S023-P002",
+    "CHE-001-S023-P003",
+    "CHE-001-S023-P004",
+    "CHE-001-S023-P005",
+    "CHE-001-S023-P006",
+    "CHE-001-S024-P001",
+    "CHE-001-S024-P002",
+    "CHE-001-S024-P003",
+    "CHE-001-S024-P004",
+    "CHE-001-S024-P005",
+    "CHE-001-S024-P006",
+    "CHE-001-S024-P007",
+    "CHE-001-S025-P001",
+    "CHE-001-S026-P001",
+    "CHE-001-S026-P002",
+    "CHE-001-S026-P003",
+    "CHE-001-S026-P004",
+    "CHE-001-S026-P005",
+    "CHE-001-S026-P006",
+    "CHE-001-S026-P007",
+    "CHE-001-S026-P008",
+    "CHE-001-S027-P001",
+    "CHE-001-S027-P002",
+    "CHE-001-S027-P003",
+    "CHE-001-S027-P004",
+    "CHE-001-S027-P005",
+    "CHE-001-S028-P001",
+    "CHE-001-S028-P002",
+    "CHE-001-S028-P003",
+    "CHE-001-S028-P004",
+    "CHE-001-S028-P005",
+    "CHE-001-S029-P001",
+    "CHE-001-S029-P002",
+    "CHE-001-S029-P003",
+    "CHE-001-S029-P004",
+    "CHE-002-S000-P001",
+    "CHE-002-S000-P002",
+    "CHE-002-S000-P003",
+    "CHE-002-S000-P004",
+    "CHE-002-S000-P005",
+    "CHE-002-S000-P006",
+    "CHE-002-S001-P001",
+    "CHE-002-S002-P001",
+    "CHE-002-S002-P002",
+    "CHE-002-S002-P003",
+    "CHE-002-S002-P004",
+    "CHE-002-S003-P001",
+    "CHE-002-S003-P002",
+    "CHE-002-S003-P003",
+    "CHE-002-S003-P004",
+    "CHE-002-S003-P005",
+    "CHE-002-S004-P001",
+    "CHE-002-S004-P002",
+    "CHE-002-S005-P001",
+    "CHE-002-S005-P002",
+    "CHE-002-S005-P003",
+    "CHE-002-S005-P004",
+    "CHE-002-S005-P005",
+    "CHE-002-S005-P006",
+    "CHE-002-S005-P007",
+    "CHE-002-S005-P008",
+    "CHE-002-S005-P009",
+    "CHE-002-S005-P010",
+    "CHE-002-S005-P011",
+    "CHE-002-S006-P001",
+    "CHE-002-S006-P002",
+    "CHE-002-S006-P003",
+    "CHE-002-S007-P001",
+    "CHE-002-S007-P002",
+    "CHE-002-S008-P001",
+    "CHE-002-S008-P002",
+    "CHE-002-S009-P001",
+    "CHE-002-S009-P002",
+    "CHE-002-S010-P001",
+    "CHE-002-S010-P002",
+    "CHE-002-S011-P001",
+    "CHE-002-S011-P002",
+    "CHE-002-S012-P001",
+    "CHE-002-S012-P002",
+    "CHE-002-S012-P003",
+    "CHE-002-S013-P001",
+    "CHE-002-S013-P002",
+    "CHE-002-S013-P003",
+    "CHE-002-S014-P001",
+    "CHE-002-S014-P002",
+    "CHE-002-S015-P001",
+    "CHE-002-S015-P002",
+    "CHE-002-S015-P003",
+    "CHE-002-S016-P001",
+    "CHE-002-S017-P001",
+    "CHE-002-S017-P002",
+    "CHE-002-S017-P003",
+    "CHE-002-S018-P001",
+    "CHE-002-S018-P002",
+    "CHE-002-S018-P003",
+    "CHE-002-S019-P001",
+    "CHE-002-S019-P002",
+    "CHE-002-S020-P001",
+    "CHE-002-S020-P002",
+    "CHE-002-S020-P003",
+    "CHE-002-S020-P004",
+    "CHE-002-S021-P001",
+    "CHE-002-S021-P002",
+    "CHE-002-S021-P003",
+    "CHE-002-S021-P004",
+    "CHE-002-S021-P005",
+    "CHE-002-S021-P006",
+    "CHE-002-S022-P001",
+    "CHE-002-S022-P002",
+    "CHE-002-S022-P003",
+    "CHE-002-S022-P004",
+    "CHE-002-S022-P005",
+    "CHE-002-S022-P006",
+    "CHE-003-S000-P001",
+    "CHE-003-S000-P002",
+    "CHE-003-S000-P003",
+    "CHE-003-S000-P004",
+    "CHE-003-S001-P001",
+    "CHE-003-S003-P001",
+    "CHE-003-S003-P002",
+    "CHE-003-S004-P001",
+    "CHE-003-S004-P002",
+    "CHE-003-S004-P003",
+    "CHE-003-S004-P004",
+    "CHE-003-S004-P005",
+    "CHE-003-S004-P006",
+    "CHE-003-S004-P007",
+    "CHE-003-S004-P008",
+    "CHE-003-S004-P009",
+    "CHE-003-S004-P010",
+    "CHE-003-S004-P011",
+    "CHE-003-S005-P001",
+    "CHE-003-S005-P002",
+    "CHE-003-S006-P001",
+    "CHE-003-S006-P002",
+    "CHE-003-S007-P001",
+    "CHE-003-S007-P002",
+    "CHE-003-S007-P003",
+    "CHE-003-S007-P004",
+    "CHE-003-S007-P005",
+    "CHE-003-S007-P006",
+    "CHE-003-S007-P007",
+    "CHE-003-S007-P008",
+    "CHE-003-S007-P009",
+    "CHE-003-S007-P010",
+    "CHE-003-S007-P011",
+    "CHE-003-S008-P001",
+    "CHE-003-S008-P002",
+    "CHE-003-S008-P003",
+    "CHE-003-S008-P004",
+    "CHE-003-S008-P005",
+    "CHE-003-S008-P006",
+    "CHE-003-S009-P001",
+    "CHE-003-S009-P002",
+    "CHE-003-S009-P003",
+    "CHE-003-S009-P004",
+    "CHE-003-S009-P005",
+    "CHE-003-S009-P006",
+    "CHE-003-S009-P007",
+    "CHE-003-S009-P008",
+    "CHE-003-S009-P009",
+    "CHE-003-S009-P010",
+    "CHE-003-S011-P001",
+    "CHE-003-S011-P002",
+    "CHE-003-S011-P003",
+    "CHE-003-S011-P004",
+    "CHE-003-S011-P005",
+    "CHE-003-S011-P006",
+    "CHE-003-S011-P007",
+    "CHE-003-S011-P008",
+    "CHE-003-S011-P009",
+    "CHE-003-S011-P010",
+    "CHE-003-S011-P011",
+    "CHE-003-S011-P012",
+    "CHE-003-S011-P013",
+    "CHE-003-S012-P001",
+    "CHE-003-S012-P002",
+    "CHE-003-S012-P003",
+    "CHE-003-S012-P004",
+    "CHE-003-S012-P005",
+    "CHE-003-S012-P006",
+    "CHE-003-S012-P007",
+    "CHE-003-S012-P008",
+    "CHE-003-S012-P009",
+    "CHE-003-S012-P010",
+    "CHE-003-S012-P011",
+    "CHE-003-S013-P001",
+    "CHE-003-S013-P002",
+    "CHE-003-S013-P003",
+    "CHE-003-S013-P004",
+    "CHE-003-S013-P005",
+    "CHE-003-S013-P006",
+    "CHE-003-S013-P007",
+    "CHE-003-S013-P008",
+    "CHE-003-S013-P009",
+    "CHE-003-S015-P001",
+    "CHE-003-S015-P002",
+    "CHE-003-S015-P003",
+    "CHE-003-S015-P004",
+    "CHE-003-S015-P005",
+    "CHE-003-S016-P001",
+    "CHE-003-S016-P002",
+    "CHE-003-S016-P003",
+    "CHE-003-S016-P004",
+    "CHE-003-S016-P005",
+    "CHE-003-S016-P006",
+    "CHE-003-S016-P007",
+    "CHE-003-S016-P008",
+    "CHE-003-S016-P009",
+    "CHE-003-S016-P010",
+    "CHE-003-S016-P011",
+    "CHE-004-S001-P001",
+    "CHE-004-S001-P002",
+    "CHE-004-S001-P003",
+    "CHE-004-S002-P001",
+    "CHE-004-S002-P002",
+    "CHE-004-S002-P003",
+    "CHE-004-S002-P004",
+    "CHE-004-S002-P005",
+    "CHE-004-S002-P006",
+    "CHE-004-S002-P007",
+    "CHE-004-S002-P008",
+    "CHE-004-S002-P009",
+    "CHE-004-S002-P010",
+    "CHE-004-S003-P001",
+    "CHE-004-S003-P002",
+    "CHE-004-S003-P003",
+    "CHE-004-S003-P004",
+    "CHE-004-S003-P005",
+    "CHE-004-S004-P001",
+    "CHE-004-S004-P002",
+    "CHE-004-S004-P003",
+    "CHE-004-S005-P001",
+    "CHE-004-S005-P002",
+    "CHE-004-S005-P003",
+    "CHE-004-S005-P004",
+    "CHE-004-S006-P001",
+    "CHE-004-S007-P001",
+    "CHE-004-S007-P002",
+    "CHE-004-S007-P003",
+    "CHE-004-S007-P004",
+    "CHE-004-S007-P005",
+    "CHE-004-S007-P006",
+    "CHE-004-S007-P007",
+    "CHE-004-S007-P008",
+    "CHE-004-S007-P009",
+    "CHE-004-S007-P010",
+    "CHE-004-S007-P011",
+    "CHE-004-S007-P012",
+    "CHE-004-S007-P013",
+    "CHE-004-S008-P001",
+    "CHE-004-S008-P002",
+    "CHE-004-S008-P003",
+    "CHE-004-S008-P004",
+    "CHE-004-S008-P005",
+    "CHE-004-S008-P006",
+    "CHE-004-S008-P007",
+    "CHE-004-S008-P008",
+    "CHE-004-S008-P009",
+    "CHE-004-S008-P010",
+    "CHE-004-S008-P011",
+    "CHE-004-S008-P012",
+    "CHE-004-S008-P013",
+    "CHE-004-S009-P001",
+    "CHE-004-S009-P002",
+    "CHE-004-S009-P003",
+    "CHE-004-S009-P004",
+    "CHE-004-S009-P005",
+    "CHE-004-S009-P006",
+    "CHE-004-S009-P007",
+    "CHE-004-S009-P008",
+    "CHE-004-S010-P001",
+    "CHE-004-S010-P002",
+    "CHE-004-S010-P003",
+    "CHE-004-S010-P004",
+    "CHE-004-S010-P005",
+    "CHE-004-S010-P006",
+    "CHE-004-S010-P007",
+    "CHE-004-S010-P008",
+    "CHE-004-S011-P001",
+    "CHE-004-S012-P001",
+    "CHE-004-S012-P002",
+    "CHE-004-S012-P003",
+    "CHE-004-S012-P004",
+    "CHE-004-S012-P005",
+    "CHE-004-S012-P006",
+    "CHE-004-S012-P007",
+    "CHE-004-S012-P008",
+    "CHE-004-S012-P009",
+    "CHE-004-S012-P010",
+    "CHE-004-S012-P011",
+    "CHE-004-S013-P001",
+    "CHE-004-S013-P002",
+    "CHE-005-S000-P001",
+    "CHE-005-S000-P002",
+    "CHE-005-S000-P003",
+    "CHE-005-S000-P004",
+    "CHE-005-S000-P005",
+    "CHE-005-S000-P006",
+    "CHE-005-S000-P007",
+    "CHE-005-S000-P008",
+    "CHE-005-S000-P009",
+    "CHE-005-S000-P010",
+    "CHE-005-S001-P001",
+    "CHE-005-S001-P002",
+    "CHE-005-S001-P003",
+    "CHE-005-S001-P004",
+    "CHE-005-S001-P005",
+    "CHE-005-S001-P006",
+    "CHE-005-S001-P007",
+    "CHE-005-S002-P001",
+    "CHE-005-S002-P002",
+    "CHE-005-S002-P003",
+    "CHE-005-S002-P004",
+    "CHE-005-S002-P005",
+    "CHE-005-S002-P006",
+    "CHE-005-S002-P007",
+    "CHE-005-S002-P008",
+    "CHE-005-S002-P009",
+    "CHE-005-S002-P010",
+    "CHE-005-S002-P011",
+    "CHE-005-S002-P012",
+    "CHE-005-S002-P013",
+    "CHE-005-S002-P014",
+    "CHE-005-S002-P015",
+    "CHE-005-S003-P001",
+    "CHE-005-S003-P002",
+    "CHE-005-S003-P003",
+    "CHE-005-S003-P004",
+    "CHE-005-S003-P005",
+    "CHE-005-S003-P006",
+    "CHE-005-S003-P007",
+    "CHE-005-S003-P008",
+    "CHE-005-S003-P009",
+    "CHE-005-S003-P010",
+    "CHE-005-S003-P011",
+    "CHE-006-S000-P001",
+    "CHE-006-S000-P002",
+    "CHE-006-S000-P003",
+    "CHE-006-S000-P004",
+    "CHE-006-S000-P005",
+    "CHE-006-S000-P006",
+    "CHE-006-S000-P007",
+    "CHE-006-S000-P008",
+    "CHE-006-S000-P009",
+    "CHE-006-S000-P010",
+    "CHE-006-S000-P011",
+    "CHE-006-S000-P012",
+    "CHE-006-S000-P013",
+    "CHE-006-S000-P014",
+    "CHE-006-S000-P015",
+    "CHE-006-S000-P016",
+    "CHE-006-S000-P017",
+    "CHE-006-S000-P018",
+    "CHE-006-S000-P019"
+  ],
+  "reading_order": [
+    "CHE-000",
+    "CHE-001",
+    "CHE-002",
+    "CHE-003",
+    "CHE-004",
+    "CHE-005",
+    "CHE-006"
+  ],
+  "chapters": [
+    {
+      "id": "CHE-000",
+      "number": 0,
+      "kind": "front_matter",
+      "titles": {
+        "am": "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ታሪክ",
+        "en": "History of the Ethiopian Orthodox Tewahedo Church"
+      },
+      "source_heading_am": "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ታሪክ",
+      "sections": [
+        {
+          "id": "CHE-000-S000",
+          "parent_id": "CHE-000",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHE-000-S000-P001",
+            "CHE-000-S000-P002",
+            "CHE-000-S000-P003",
+            "CHE-000-S000-P004",
+            "CHE-000-S000-P005",
+            "CHE-000-S000-P006"
+          ]
+        },
+        {
+          "id": "CHE-000-S001",
+          "parent_id": "CHE-000",
+          "level": 2,
+          "titles": {
+            "am": "መቅድም",
+            "en": "Foreword"
+          },
+          "paragraph_ids": [
+            "CHE-000-S001-P001",
+            "CHE-000-S001-P002",
+            "CHE-000-S001-P003",
+            "CHE-000-S001-P004",
+            "CHE-000-S001-P005",
+            "CHE-000-S001-P006",
+            "CHE-000-S001-P007",
+            "CHE-000-S001-P008",
+            "CHE-000-S001-P009",
+            "CHE-000-S001-P010",
+            "CHE-000-S001-P011"
+          ]
+        },
+        {
+          "id": "CHE-000-S002",
+          "parent_id": "CHE-000",
+          "level": 2,
+          "titles": {
+            "am": "መግቢያ፡-",
+            "en": "Introduction:"
+          },
+          "paragraph_ids": [
+            "CHE-000-S002-P001",
+            "CHE-000-S002-P002",
+            "CHE-000-S002-P003",
+            "CHE-000-S002-P004"
+          ]
+        },
+        {
+          "id": "CHE-000-S003",
+          "parent_id": "CHE-000-S002",
+          "level": 3,
+          "titles": {
+            "am": "ታሪክን እንዴት ማወቅ ይቻላል? ቢሉ፡-",
+            "en": "How to know history? If they say:"
+          },
+          "paragraph_ids": [
+            "CHE-000-S003-P001",
+            "CHE-000-S003-P002",
+            "CHE-000-S003-P003",
+            "CHE-000-S003-P004",
+            "CHE-000-S003-P005",
+            "CHE-000-S003-P006",
+            "CHE-000-S003-P007",
+            "CHE-000-S003-P008",
+            "CHE-000-S003-P009",
+            "CHE-000-S003-P010",
+            "CHE-000-S003-P011"
+          ]
+        },
+        {
+          "id": "CHE-000-S004",
+          "parent_id": "CHE-000",
+          "level": 2,
+          "titles": {
+            "am": "የኢትዮጵያና የኢትዮጵያውያን መጠሪያ ስሞች",
+            "en": "The names of Ethiopians and Ethiopians"
+          },
+          "paragraph_ids": [
+            "CHE-000-S004-P001",
+            "CHE-000-S004-P002",
+            "CHE-000-S004-P003",
+            "CHE-000-S004-P004",
+            "CHE-000-S004-P005",
+            "CHE-000-S004-P006",
+            "CHE-000-S004-P007",
+            "CHE-000-S004-P008",
+            "CHE-000-S004-P009",
+            "CHE-000-S004-P010",
+            "CHE-000-S004-P011",
+            "CHE-000-S004-P012",
+            "CHE-000-S004-P013",
+            "CHE-000-S004-P014",
+            "CHE-000-S004-P015",
+            "CHE-000-S004-P016"
+          ]
+        },
+        {
+          "id": "CHE-000-S005",
+          "parent_id": "CHE-000",
+          "level": 2,
+          "titles": {
+            "am": "ኢትዮጵያ በመጽሐፍ ቅዱስ",
+            "en": "Ethiopia in the Bible"
+          },
+          "paragraph_ids": [
+            "CHE-000-S005-P001",
+            "CHE-000-S005-P002",
+            "CHE-000-S005-P003",
+            "CHE-000-S005-P004",
+            "CHE-000-S005-P005",
+            "CHE-000-S005-P006",
+            "CHE-000-S005-P007",
+            "CHE-000-S005-P008",
+            "CHE-000-S005-P009",
+            "CHE-000-S005-P010",
+            "CHE-000-S005-P011",
+            "CHE-000-S005-P012"
+          ]
+        },
+        {
+          "id": "CHE-000-S006",
+          "parent_id": "CHE-000",
+          "level": 2,
+          "titles": {
+            "am": "የኢትዮጵያ ጥንታዊ ቋንቋ",
+            "en": "The Ancient Language of Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-000-S006-P001",
+            "CHE-000-S006-P002",
+            "CHE-000-S006-P003",
+            "CHE-000-S006-P004",
+            "CHE-000-S006-P005",
+            "CHE-000-S006-P006",
+            "CHE-000-S006-P007",
+            "CHE-000-S006-P008",
+            "CHE-000-S006-P009",
+            "CHE-000-S006-P010",
+            "CHE-000-S006-P011",
+            "CHE-000-S006-P012"
+          ]
+        },
+        {
+          "id": "CHE-000-S007",
+          "parent_id": "CHE-000",
+          "level": 2,
+          "titles": {
+            "am": "የኢትዮጵያ ዘመን አቆጣጠር",
+            "en": "Ethiopian Calendar"
+          },
+          "paragraph_ids": [
+            "CHE-000-S007-P001",
+            "CHE-000-S007-P002",
+            "CHE-000-S007-P003",
+            "CHE-000-S007-P004"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/00-introduction.md",
+        "en": "en/00-introduction.md"
+      }
+    },
+    {
+      "id": "CHE-001",
+      "number": 1,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ አንድ ኢትዮጵያ በሃይማኖት",
+        "en": "Chapter 1: Ethiopia's Religion"
+      },
+      "source_heading_am": "ምዕራፍ አንድ ኢትዮጵያ በሃይማኖት",
+      "sections": [
+        {
+          "id": "CHE-001-S000",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHE-001-S000-P001",
+            "CHE-001-S000-P002",
+            "CHE-001-S000-P003",
+            "CHE-001-S000-P004",
+            "CHE-001-S000-P005",
+            "CHE-001-S000-P006"
+          ]
+        },
+        {
+          "id": "CHE-001-S001",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "1ኛ. ሕገ ልቡና",
+            "en": "1st. Our Law of Conscience"
+          },
+          "paragraph_ids": [
+            "CHE-001-S001-P001",
+            "CHE-001-S001-P002",
+            "CHE-001-S001-P003"
+          ]
+        },
+        {
+          "id": "CHE-001-S002",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ሕገ ልቡና በኢትዮጵያ",
+            "en": "The Law of Conscience and the Law of Conscience in Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-001-S002-P001",
+            "CHE-001-S002-P002",
+            "CHE-001-S002-P003",
+            "CHE-001-S002-P004",
+            "CHE-001-S002-P005",
+            "CHE-001-S002-P006",
+            "CHE-001-S002-P007",
+            "CHE-001-S002-P008"
+          ]
+        },
+        {
+          "id": "CHE-001-S003",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ንግሥት ሳባ",
+            "en": "Queen of Sheba"
+          },
+          "paragraph_ids": [
+            "CHE-001-S003-P001",
+            "CHE-001-S003-P002",
+            "CHE-001-S003-P003",
+            "CHE-001-S003-P004",
+            "CHE-001-S003-P005",
+            "CHE-001-S003-P006",
+            "CHE-001-S003-P007",
+            "CHE-001-S003-P008",
+            "CHE-001-S003-P009",
+            "CHE-001-S003-P010",
+            "CHE-001-S003-P011"
+          ]
+        },
+        {
+          "id": "CHE-001-S004",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የንግሥት ሳባ ወደ ኢትዮጵያ መመለስ",
+            "en": "The Return of the Queen of Sheba to Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-001-S004-P001",
+            "CHE-001-S004-P002",
+            "CHE-001-S004-P003",
+            "CHE-001-S004-P004",
+            "CHE-001-S004-P005",
+            "CHE-001-S004-P006"
+          ]
+        },
+        {
+          "id": "CHE-001-S005",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ቀዳማዊ ምኒልክ",
+            "en": "Menelik I"
+          },
+          "paragraph_ids": [
+            "CHE-001-S005-P001",
+            "CHE-001-S005-P002",
+            "CHE-001-S005-P003"
+          ]
+        },
+        {
+          "id": "CHE-001-S006",
+          "parent_id": "CHE-001-S005",
+          "level": 3,
+          "titles": {
+            "am": "ቀዳማዊ ምኒልክ ወደ ኢትዮጵያ ይዟቸው የመጣው",
+            "en": "Menelik was the first to bring them to Ethiopia."
+          },
+          "paragraph_ids": [
+            "CHE-001-S006-P001",
+            "CHE-001-S006-P002",
+            "CHE-001-S006-P003",
+            "CHE-001-S006-P004",
+            "CHE-001-S006-P005"
+          ]
+        },
+        {
+          "id": "CHE-001-S007",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የታቦተ ጽዮን ወደ ኢትዮጵያ መምጣት",
+            "en": "The Arrival of the Ark of Zion in Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-001-S007-P001",
+            "CHE-001-S007-P002"
+          ]
+        },
+        {
+          "id": "CHE-001-S008",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "2. ሕገ ኦሪት /የሕግ ዘመን/",
+            "en": "2. Law of Conscience (Age of Law)"
+          },
+          "paragraph_ids": [
+            "CHE-001-S008-P001",
+            "CHE-001-S008-P002"
+          ]
+        },
+        {
+          "id": "CHE-001-S009",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ኢትዮጵያ በሕገ ኦሪት",
+            "en": "Ethiopia's Law of Conscience"
+          },
+          "paragraph_ids": [
+            "CHE-001-S009-P001",
+            "CHE-001-S009-P002"
+          ]
+        },
+        {
+          "id": "CHE-001-S010",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ ማስረጃ",
+            "en": "Evidence of Ethiopia's acceptance of the Law of Conscience"
+          },
+          "paragraph_ids": [
+            "CHE-001-S010-P001"
+          ]
+        },
+        {
+          "id": "CHE-001-S011",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ የመጽሐፍ ቅዱስ ማስረጃ",
+            "en": "The Bible's Evidence for Ethiopia's Acceptance of the Law of Conscience"
+          },
+          "paragraph_ids": [
+            "CHE-001-S011-P001",
+            "CHE-001-S011-P002",
+            "CHE-001-S011-P003",
+            "CHE-001-S011-P004"
+          ]
+        },
+        {
+          "id": "CHE-001-S012",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ኢትዮጵያ ሕገ ኦሪትን ለመቀበሏ የሕዝቡ ባህልና ልምድ ማስረጃ",
+            "en": "Evidence of the culture and experience of the people of Ethiopia for the adoption of the Law of Conscience"
+          },
+          "paragraph_ids": [
+            "CHE-001-S012-P001",
+            "CHE-001-S012-P002",
+            "CHE-001-S012-P003",
+            "CHE-001-S012-P004",
+            "CHE-001-S012-P005"
+          ]
+        },
+        {
+          "id": "CHE-001-S013",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን በነዚህ ዘመናት ለኢትዮጵያና ለሕዝቡ ያበረከተቻቸው ከፍተኛ አስተዋጽኦ",
+            "en": "The Ethiopian Orthodox Tewahedo Church has made a significant contribution to Ethiopia and its people during these times"
+          },
+          "paragraph_ids": []
+        },
+        {
+          "id": "CHE-001-S014",
+          "parent_id": "CHE-001-S013",
+          "level": 3,
+          "titles": {
+            "am": "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ለተከታዮቿ ብቻ ሳይሆን በአጠቃላይ ለኢትዮጵያ ሕዝብ ያበረከተቻቸው ስጦታዎች ብዙ ናቸው ከሚጠቀሱት ውስጥም ጥቂቶቹ፡-",
+            "en": "The Ethiopian Orthodox Tewahedo Church has made many gifts not only to its followers, but also to the Ethiopian people as a whole, some of which are mentioned:"
+          },
+          "paragraph_ids": [
+            "CHE-001-S014-P001",
+            "CHE-001-S014-P002",
+            "CHE-001-S014-P003",
+            "CHE-001-S014-P004",
+            "CHE-001-S014-P005",
+            "CHE-001-S014-P006",
+            "CHE-001-S014-P007",
+            "CHE-001-S014-P008",
+            "CHE-001-S014-P009"
+          ]
+        },
+        {
+          "id": "CHE-001-S015",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "3. ሕገ ወንጌል",
+            "en": "3. The Law of Conscience"
+          },
+          "paragraph_ids": [
+            "CHE-001-S015-P001"
+          ]
+        },
+        {
+          "id": "CHE-001-S016",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ሕገ ወንጌል /የክርስትና ሃይማኖት/ በኢትዮጵያ",
+            "en": "The Gospel of Jesus Christ in Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-001-S016-P001",
+            "CHE-001-S016-P002",
+            "CHE-001-S016-P003",
+            "CHE-001-S016-P004",
+            "CHE-001-S016-P005",
+            "CHE-001-S016-P006",
+            "CHE-001-S016-P007",
+            "CHE-001-S016-P008",
+            "CHE-001-S016-P009",
+            "CHE-001-S016-P010",
+            "CHE-001-S016-P011"
+          ]
+        },
+        {
+          "id": "CHE-001-S017",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ከጃንደረባው ባኮስ በኋላ ወንጌል በኢትዮጵያ ስለሰበኩ ሐዋርያትና",
+            "en": "After the eunuch Bacchus, the apostles preached the gospel in Ethiopia."
+          },
+          "paragraph_ids": [
+            "CHE-001-S017-P001",
+            "CHE-001-S017-P002",
+            "CHE-001-S017-P003",
+            "CHE-001-S017-P004",
+            "CHE-001-S017-P005",
+            "CHE-001-S017-P006",
+            "CHE-001-S017-P007",
+            "CHE-001-S017-P008"
+          ]
+        },
+        {
+          "id": "CHE-001-S018",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የፍሬምናጦስ አመጣጥ",
+            "en": "Origin of Fremantos"
+          },
+          "paragraph_ids": [
+            "CHE-001-S018-P001",
+            "CHE-001-S018-P002",
+            "CHE-001-S018-P003",
+            "CHE-001-S018-P004",
+            "CHE-001-S018-P005"
+          ]
+        },
+        {
+          "id": "CHE-001-S019",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የፍሬምናጦስ ጉዞ ወደ እስክንድርያ",
+            "en": "Fremantle's Journey to Alexandria"
+          },
+          "paragraph_ids": [
+            "CHE-001-S019-P001",
+            "CHE-001-S019-P002",
+            "CHE-001-S019-P003"
+          ]
+        },
+        {
+          "id": "CHE-001-S020",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "አባ ሰላማ /ፍሬምናጦስ/ ለኢትዮጵያ ቤተ ክርስቲያን የሠራቸው ሥራዎች",
+            "en": "The Works of the Ethiopian Church / Father Salam / Fremantle"
+          },
+          "paragraph_ids": [
+            "CHE-001-S020-P001",
+            "CHE-001-S020-P002",
+            "CHE-001-S020-P003",
+            "CHE-001-S020-P004",
+            "CHE-001-S020-P005",
+            "CHE-001-S020-P006",
+            "CHE-001-S020-P007",
+            "CHE-001-S020-P008",
+            "CHE-001-S020-P009"
+          ]
+        },
+        {
+          "id": "CHE-001-S021",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "አብርሃ ወአጽብሃ",
+            "en": "Abraham was a man of great courage and courage."
+          },
+          "paragraph_ids": [
+            "CHE-001-S021-P001",
+            "CHE-001-S021-P002",
+            "CHE-001-S021-P003",
+            "CHE-001-S021-P004",
+            "CHE-001-S021-P005"
+          ]
+        },
+        {
+          "id": "CHE-001-S022",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ንጉሥ አጽብሃ ለብቻው ካሠራቸው መልካም ሥራዎች",
+            "en": "The Emperor Yekuno Amlak is the only one who has done the good deeds of the king."
+          },
+          "paragraph_ids": [
+            "CHE-001-S022-P001",
+            "CHE-001-S022-P002",
+            "CHE-001-S022-P003",
+            "CHE-001-S022-P004",
+            "CHE-001-S022-P005",
+            "CHE-001-S022-P006",
+            "CHE-001-S022-P007"
+          ]
+        },
+        {
+          "id": "CHE-001-S023",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የአርዮሳዊ ተዎፍሎስ ተልዕኮ ወደ ኢትዮጵያ",
+            "en": "The Mission of the Aristotle to Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-001-S023-P001",
+            "CHE-001-S023-P002",
+            "CHE-001-S023-P003",
+            "CHE-001-S023-P004",
+            "CHE-001-S023-P005",
+            "CHE-001-S023-P006"
+          ]
+        },
+        {
+          "id": "CHE-001-S024",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የዘጠኙ ቅዱሳን ወደ ኢትዮጵያ መምጣት",
+            "en": "The Coming of the Nine Saints to Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-001-S024-P001",
+            "CHE-001-S024-P002",
+            "CHE-001-S024-P003",
+            "CHE-001-S024-P004",
+            "CHE-001-S024-P005",
+            "CHE-001-S024-P006",
+            "CHE-001-S024-P007"
+          ]
+        },
+        {
+          "id": "CHE-001-S025",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የዘጠኙ ቅዱሳን ስማቸው ገዳማቸውና የዕረፍታቸው ቀናት",
+            "en": "The names of the Nine Saints, their monastery, and their days of rest"
+          },
+          "paragraph_ids": [
+            "CHE-001-S025-P001"
+          ]
+        },
+        {
+          "id": "CHE-001-S026",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የተሰዓቱ ቅዱሳን ሐዋርያዊ ተግባር",
+            "en": "The Apostolic Acts of the Holy Spirit"
+          },
+          "paragraph_ids": [
+            "CHE-001-S026-P001",
+            "CHE-001-S026-P002",
+            "CHE-001-S026-P003",
+            "CHE-001-S026-P004",
+            "CHE-001-S026-P005",
+            "CHE-001-S026-P006",
+            "CHE-001-S026-P007",
+            "CHE-001-S026-P008"
+          ]
+        },
+        {
+          "id": "CHE-001-S027",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "የምንኩስና ሕይወት",
+            "en": "Monastic life"
+          },
+          "paragraph_ids": [
+            "CHE-001-S027-P001",
+            "CHE-001-S027-P002",
+            "CHE-001-S027-P003",
+            "CHE-001-S027-P004",
+            "CHE-001-S027-P005"
+          ]
+        },
+        {
+          "id": "CHE-001-S028",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ምንኩስና በኢትዮጵያ",
+            "en": "Monasticism and Monasticism in Ethiopia"
+          },
+          "paragraph_ids": [
+            "CHE-001-S028-P001",
+            "CHE-001-S028-P002",
+            "CHE-001-S028-P003",
+            "CHE-001-S028-P004",
+            "CHE-001-S028-P005"
+          ]
+        },
+        {
+          "id": "CHE-001-S029",
+          "parent_id": "CHE-001",
+          "level": 2,
+          "titles": {
+            "am": "ምንኩስናን በኢትዮጵያ የመሠረቱና ያስፋፉ፡-",
+            "en": "Establishing and Expanding Monasticism in Ethiopia:"
+          },
+          "paragraph_ids": [
+            "CHE-001-S029-P001",
+            "CHE-001-S029-P002",
+            "CHE-001-S029-P003",
+            "CHE-001-S029-P004"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/01-chapter-1-ethiopias-religion.md",
+        "en": "en/01-chapter-1-ethiopias-religion.md"
+      }
+    },
+    {
+      "id": "CHE-002",
+      "number": 2,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ ሁለት ከአፄ ካሌብ እስከ ድልነዓድ",
+        "en": "Chapter 2: From Emperor Caleb to Dynead"
+      },
+      "source_heading_am": "ምዕራፍ ሁለት ከአፄ ካሌብ እስከ ድልነዓድ",
+      "sections": [
+        {
+          "id": "CHE-002-S000",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHE-002-S000-P001",
+            "CHE-002-S000-P002",
+            "CHE-002-S000-P003",
+            "CHE-002-S000-P004",
+            "CHE-002-S000-P005",
+            "CHE-002-S000-P006"
+          ]
+        },
+        {
+          "id": "CHE-002-S001",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "አፄ ካሌብ",
+            "en": "Emperor Caleb"
+          },
+          "paragraph_ids": [
+            "CHE-002-S001-P001"
+          ]
+        },
+        {
+          "id": "CHE-002-S002",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "የአይሁዳውያኑ ግፍ በክርስቲያኖቹ ላይ /የየመን ክርስቲያኖች እልቂት/",
+            "en": "The Persecution of Christians by the Jews"
+          },
+          "paragraph_ids": [
+            "CHE-002-S002-P001",
+            "CHE-002-S002-P002",
+            "CHE-002-S002-P003",
+            "CHE-002-S002-P004"
+          ]
+        },
+        {
+          "id": "CHE-002-S003",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "የኣፄ ካሌብ ዘመቻ ወደ የመን",
+            "en": "The Battle of Caleb in the Battle of the Bulge"
+          },
+          "paragraph_ids": [
+            "CHE-002-S003-P001",
+            "CHE-002-S003-P002",
+            "CHE-002-S003-P003",
+            "CHE-002-S003-P004",
+            "CHE-002-S003-P005"
+          ]
+        },
+        {
+          "id": "CHE-002-S004",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "ኣፄ ገብረ መስቀል",
+            "en": "The Cross of the Cross"
+          },
+          "paragraph_ids": [
+            "CHE-002-S004-P001",
+            "CHE-002-S004-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S005",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "ቅዱስ ያሬድ",
+            "en": "Saint Jared"
+          },
+          "paragraph_ids": [
+            "CHE-002-S005-P001",
+            "CHE-002-S005-P002",
+            "CHE-002-S005-P003",
+            "CHE-002-S005-P004",
+            "CHE-002-S005-P005",
+            "CHE-002-S005-P006",
+            "CHE-002-S005-P007",
+            "CHE-002-S005-P008",
+            "CHE-002-S005-P009",
+            "CHE-002-S005-P010",
+            "CHE-002-S005-P011"
+          ]
+        },
+        {
+          "id": "CHE-002-S006",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "የመሐመድ መነሳት",
+            "en": "The Rise of Muhammad"
+          },
+          "paragraph_ids": [
+            "CHE-002-S006-P001",
+            "CHE-002-S006-P002",
+            "CHE-002-S006-P003"
+          ]
+        },
+        {
+          "id": "CHE-002-S007",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ዴሜጥሮስ ለቤተ ክርስቲያን ያበረከተው አስተዋጽኦ",
+            "en": "St. Demetrius' Contribution to the Church"
+          },
+          "paragraph_ids": [
+            "CHE-002-S007-P001",
+            "CHE-002-S007-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S008",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "ባሕረ ሓሳብ ምንድን ነው? ስሌቱስ እንዴት ነው?",
+            "en": "What is the sea? How is the calculus?"
+          },
+          "paragraph_ids": [
+            "CHE-002-S008-P001",
+            "CHE-002-S008-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S009",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "ቅዱስ ዲሜጥሮስ ባህረ ሐሳብን ለምን ደረሰ?",
+            "en": "Why did Saint Demetrius reach the sea?"
+          },
+          "paragraph_ids": [
+            "CHE-002-S009-P001",
+            "CHE-002-S009-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S010",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "ባሕረ ሓሳብ ትምህርት መማር ጥቅም፦",
+            "en": "The Benefits of Learning:"
+          },
+          "paragraph_ids": [
+            "CHE-002-S010-P001",
+            "CHE-002-S010-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S011",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "በሐረ ሓሳብ ትምህርቱ ወይም ስሌቱ",
+            "en": "In the meantime, however, the Scriptures or the Scriptures have been interpreted in the Scriptures."
+          },
+          "paragraph_ids": [
+            "CHE-002-S011-P001",
+            "CHE-002-S011-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S012",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "1. ዓመተ ዓለም /ዓ.ዓ/",
+            "en": "1. The year of the world (BC)"
+          },
+          "paragraph_ids": [
+            "CHE-002-S012-P001",
+            "CHE-002-S012-P002",
+            "CHE-002-S012-P003"
+          ]
+        },
+        {
+          "id": "CHE-002-S013",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "2. ወንጌላዊ",
+            "en": "2. Evangelist"
+          },
+          "paragraph_ids": [
+            "CHE-002-S013-P001",
+            "CHE-002-S013-P002",
+            "CHE-002-S013-P003"
+          ]
+        },
+        {
+          "id": "CHE-002-S014",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "3. መባቻ (መስከረም 1 ቀን)",
+            "en": "3. Dawn (September 1st)"
+          },
+          "paragraph_ids": [
+            "CHE-002-S014-P001",
+            "CHE-002-S014-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S015",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "4. ወንበር",
+            "en": "4. Chair"
+          },
+          "paragraph_ids": [
+            "CHE-002-S015-P001",
+            "CHE-002-S015-P002",
+            "CHE-002-S015-P003"
+          ]
+        },
+        {
+          "id": "CHE-002-S016",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "5. አበቅቴ ፡-",
+            "en": "5. My Pasture:"
+          },
+          "paragraph_ids": [
+            "CHE-002-S016-P001"
+          ]
+        },
+        {
+          "id": "CHE-002-S017",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "6. መጥቅዕ",
+            "en": "6. Attack"
+          },
+          "paragraph_ids": [
+            "CHE-002-S017-P001",
+            "CHE-002-S017-P002",
+            "CHE-002-S017-P003"
+          ]
+        },
+        {
+          "id": "CHE-002-S018",
+          "parent_id": "CHE-002-S006",
+          "level": 3,
+          "titles": {
+            "am": "7. ተውሳክ",
+            "en": "7. Adverb"
+          },
+          "paragraph_ids": [
+            "CHE-002-S018-P001",
+            "CHE-002-S018-P002",
+            "CHE-002-S018-P003"
+          ]
+        },
+        {
+          "id": "CHE-002-S019",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "የአንበሳ ውድም የንግሥና ዘመንና የዮዲት መነሣት",
+            "en": "The Lion's Den and the Rise of Judith"
+          },
+          "paragraph_ids": [
+            "CHE-002-S019-P001",
+            "CHE-002-S019-P002"
+          ]
+        },
+        {
+          "id": "CHE-002-S020",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "ዮዲት ጉዲት",
+            "en": "Judith Goodit"
+          },
+          "paragraph_ids": [
+            "CHE-002-S020-P001",
+            "CHE-002-S020-P002",
+            "CHE-002-S020-P003",
+            "CHE-002-S020-P004"
+          ]
+        },
+        {
+          "id": "CHE-002-S021",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "የአንበሳ ውድም የንግሥና ዘመን",
+            "en": "The Lion's Den of the Lion's Den"
+          },
+          "paragraph_ids": [
+            "CHE-002-S021-P001",
+            "CHE-002-S021-P002",
+            "CHE-002-S021-P003",
+            "CHE-002-S021-P004",
+            "CHE-002-S021-P005",
+            "CHE-002-S021-P006"
+          ]
+        },
+        {
+          "id": "CHE-002-S022",
+          "parent_id": "CHE-002",
+          "level": 2,
+          "titles": {
+            "am": "ንጉሥ ድልነዓድ",
+            "en": "The King of Kings"
+          },
+          "paragraph_ids": [
+            "CHE-002-S022-P001",
+            "CHE-002-S022-P002",
+            "CHE-002-S022-P003",
+            "CHE-002-S022-P004",
+            "CHE-002-S022-P005",
+            "CHE-002-S022-P006"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/02-chapter-2-from-emperor-caleb-to-dynead.md",
+        "en": "en/02-chapter-2-from-emperor-caleb-to-dynead.md"
+      }
+    },
+    {
+      "id": "CHE-003",
+      "number": 3,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ ሦስት ከመራ ተክለሃይማኖት እስከ ይትባረክ",
+        "en": "Chapter 3: From Religion to Religion"
+      },
+      "source_heading_am": "ምዕራፍ ሦስት ከመራ ተክለሃይማኖት እስከ ይትባረክ",
+      "sections": [
+        {
+          "id": "CHE-003-S000",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHE-003-S000-P001",
+            "CHE-003-S000-P002",
+            "CHE-003-S000-P003",
+            "CHE-003-S000-P004"
+          ]
+        },
+        {
+          "id": "CHE-003-S001",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ጠጠውድም",
+            "en": "And we will not be able to"
+          },
+          "paragraph_ids": [
+            "CHE-003-S001-P001"
+          ]
+        },
+        {
+          "id": "CHE-003-S002",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "የተቃጠሉ መጻሕፍትን እንደገና እንዲጻፉ",
+            "en": "To rewrite burnt books"
+          },
+          "paragraph_ids": []
+        },
+        {
+          "id": "CHE-003-S003",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "የፈረሱ አብያተ ክርስቲያናት ተመልሰው እንዲሠሩ እንዲጠገኑ",
+            "en": "The Churches of the Horse to be restored"
+          },
+          "paragraph_ids": [
+            "CHE-003-S003-P001",
+            "CHE-003-S003-P002"
+          ]
+        },
+        {
+          "id": "CHE-003-S004",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ጃን ሥዩም",
+            "en": "Jan Seyoum"
+          },
+          "paragraph_ids": [
+            "CHE-003-S004-P001",
+            "CHE-003-S004-P002",
+            "CHE-003-S004-P003",
+            "CHE-003-S004-P004",
+            "CHE-003-S004-P005",
+            "CHE-003-S004-P006",
+            "CHE-003-S004-P007",
+            "CHE-003-S004-P008",
+            "CHE-003-S004-P009",
+            "CHE-003-S004-P010",
+            "CHE-003-S004-P011"
+          ]
+        },
+        {
+          "id": "CHE-003-S005",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ግርማ ስዩም",
+            "en": "Majesty Seyoum"
+          },
+          "paragraph_ids": [
+            "CHE-003-S005-P001",
+            "CHE-003-S005-P002"
+          ]
+        },
+        {
+          "id": "CHE-003-S006",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "አባ ቄርሎስ",
+            "en": "Father Cyril"
+          },
+          "paragraph_ids": [
+            "CHE-003-S006-P001",
+            "CHE-003-S006-P002"
+          ]
+        },
+        {
+          "id": "CHE-003-S007",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ኣቡነ ሳዊሮስ",
+            "en": "Saint Frumentius (Abba Salama)"
+          },
+          "paragraph_ids": [
+            "CHE-003-S007-P001",
+            "CHE-003-S007-P002",
+            "CHE-003-S007-P003",
+            "CHE-003-S007-P004",
+            "CHE-003-S007-P005",
+            "CHE-003-S007-P006",
+            "CHE-003-S007-P007",
+            "CHE-003-S007-P008",
+            "CHE-003-S007-P009",
+            "CHE-003-S007-P010",
+            "CHE-003-S007-P011"
+          ]
+        },
+        {
+          "id": "CHE-003-S008",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ቅዱስ ይምርሐነ ክርስቶስ",
+            "en": "The Holy Spirit is led by Christ."
+          },
+          "paragraph_ids": [
+            "CHE-003-S008-P001",
+            "CHE-003-S008-P002",
+            "CHE-003-S008-P003",
+            "CHE-003-S008-P004",
+            "CHE-003-S008-P005",
+            "CHE-003-S008-P006"
+          ]
+        },
+        {
+          "id": "CHE-003-S009",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ቅዱስ ገብረማርያም /ሀርቤ/",
+            "en": "St. Mary's Episcopal Church/Episcopal Church"
+          },
+          "paragraph_ids": [
+            "CHE-003-S009-P001",
+            "CHE-003-S009-P002",
+            "CHE-003-S009-P003",
+            "CHE-003-S009-P004",
+            "CHE-003-S009-P005",
+            "CHE-003-S009-P006",
+            "CHE-003-S009-P007",
+            "CHE-003-S009-P008",
+            "CHE-003-S009-P009",
+            "CHE-003-S009-P010"
+          ]
+        },
+        {
+          "id": "CHE-003-S010",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ቅዱስ ላሊበላ /ገብረመስቀል",
+            "en": "The Holy Spirit / The Cross of the Cross"
+          },
+          "paragraph_ids": []
+        },
+        {
+          "id": "CHE-003-S011",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "የቅዱስ ላሊበላ ልደቱና ዕድገቱ",
+            "en": "The Birth and Birth of the Holy Spirit"
+          },
+          "paragraph_ids": [
+            "CHE-003-S011-P001",
+            "CHE-003-S011-P002",
+            "CHE-003-S011-P003",
+            "CHE-003-S011-P004",
+            "CHE-003-S011-P005",
+            "CHE-003-S011-P006",
+            "CHE-003-S011-P007",
+            "CHE-003-S011-P008",
+            "CHE-003-S011-P009",
+            "CHE-003-S011-P010",
+            "CHE-003-S011-P011",
+            "CHE-003-S011-P012",
+            "CHE-003-S011-P013"
+          ]
+        },
+        {
+          "id": "CHE-003-S012",
+          "parent_id": "CHE-003-S011",
+          "level": 3,
+          "titles": {
+            "am": "በቅዱስ ላሊበላ ዘመነ መንግሥት የጵጵስና ጥያቄ",
+            "en": "The Pope's Question in the Reign of the Holy Spirit"
+          },
+          "paragraph_ids": [
+            "CHE-003-S012-P001",
+            "CHE-003-S012-P002",
+            "CHE-003-S012-P003",
+            "CHE-003-S012-P004",
+            "CHE-003-S012-P005",
+            "CHE-003-S012-P006",
+            "CHE-003-S012-P007",
+            "CHE-003-S012-P008",
+            "CHE-003-S012-P009",
+            "CHE-003-S012-P010",
+            "CHE-003-S012-P011"
+          ]
+        },
+        {
+          "id": "CHE-003-S013",
+          "parent_id": "CHE-003-S011",
+          "level": 3,
+          "titles": {
+            "am": "በቅዱስ ላሊበላ ዘመነ መንግሥት ሦስተኛው የመስቀል ጦርነት",
+            "en": "The Third Crusade in the Reign of St. Lalibela"
+          },
+          "paragraph_ids": [
+            "CHE-003-S013-P001",
+            "CHE-003-S013-P002",
+            "CHE-003-S013-P003",
+            "CHE-003-S013-P004",
+            "CHE-003-S013-P005",
+            "CHE-003-S013-P006",
+            "CHE-003-S013-P007",
+            "CHE-003-S013-P008",
+            "CHE-003-S013-P009"
+          ]
+        },
+        {
+          "id": "CHE-003-S014",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "የቅዱስ ነአኩቶ ለአብ ልደትና ዕድገት",
+            "en": "The Birth and Birth of the Father"
+          },
+          "paragraph_ids": []
+        },
+        {
+          "id": "CHE-003-S015",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "ቅዱስ ነአኩቶ ለአብ",
+            "en": "Saint Na’akueto La’ab"
+          },
+          "paragraph_ids": [
+            "CHE-003-S015-P001",
+            "CHE-003-S015-P002",
+            "CHE-003-S015-P003",
+            "CHE-003-S015-P004",
+            "CHE-003-S015-P005"
+          ]
+        },
+        {
+          "id": "CHE-003-S016",
+          "parent_id": "CHE-003",
+          "level": 2,
+          "titles": {
+            "am": "የቅዱስ ነአኩቶ ለአብ የንግሥና ዘመን",
+            "en": "The Reign of the Father of the Holy Spirit"
+          },
+          "paragraph_ids": [
+            "CHE-003-S016-P001",
+            "CHE-003-S016-P002",
+            "CHE-003-S016-P003",
+            "CHE-003-S016-P004",
+            "CHE-003-S016-P005",
+            "CHE-003-S016-P006",
+            "CHE-003-S016-P007",
+            "CHE-003-S016-P008",
+            "CHE-003-S016-P009",
+            "CHE-003-S016-P010",
+            "CHE-003-S016-P011"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/03-chapter-3-from-religion-to-religion.md",
+        "en": "en/03-chapter-3-from-religion-to-religion.md"
+      }
+    },
+    {
+      "id": "CHE-004",
+      "number": 4,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ አራት",
+        "en": "CHAPTER FOUR"
+      },
+      "source_heading_am": "ምዕራፍ አራት",
+      "sections": [
+        {
+          "id": "CHE-004-S001",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "ከአፄ ይኩኖ አምላክ እስከ ዘመነ መሳፍንት",
+            "en": "From the time of God to the time of the judges."
+          },
+          "paragraph_ids": [
+            "CHE-004-S001-P001",
+            "CHE-004-S001-P002",
+            "CHE-004-S001-P003"
+          ]
+        },
+        {
+          "id": "CHE-004-S002",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "ይኩኖ አምላክ",
+            "en": "Yakuno God"
+          },
+          "paragraph_ids": [
+            "CHE-004-S002-P001",
+            "CHE-004-S002-P002",
+            "CHE-004-S002-P003",
+            "CHE-004-S002-P004",
+            "CHE-004-S002-P005",
+            "CHE-004-S002-P006",
+            "CHE-004-S002-P007",
+            "CHE-004-S002-P008",
+            "CHE-004-S002-P009",
+            "CHE-004-S002-P010"
+          ]
+        },
+        {
+          "id": "CHE-004-S003",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "ኣፄ አምደ ጽዮን",
+            "en": "The Emperor of Zion"
+          },
+          "paragraph_ids": [
+            "CHE-004-S003-P001",
+            "CHE-004-S003-P002",
+            "CHE-004-S003-P003",
+            "CHE-004-S003-P004",
+            "CHE-004-S003-P005"
+          ]
+        },
+        {
+          "id": "CHE-004-S004",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "አፄ ሠይፈ አርዕድ",
+            "en": "In the meantime, I have been trying to get my head around the fact that I have been in a relationship with my ex-wife."
+          },
+          "paragraph_ids": [
+            "CHE-004-S004-P001",
+            "CHE-004-S004-P002",
+            "CHE-004-S004-P003"
+          ]
+        },
+        {
+          "id": "CHE-004-S005",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "አፄ ዳዊት",
+            "en": "Emperor David"
+          },
+          "paragraph_ids": [
+            "CHE-004-S005-P001",
+            "CHE-004-S005-P002",
+            "CHE-004-S005-P003",
+            "CHE-004-S005-P004"
+          ]
+        },
+        {
+          "id": "CHE-004-S006",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "አፄ ዘርዓያዕቆብ",
+            "en": "The Emperor of Jacob"
+          },
+          "paragraph_ids": [
+            "CHE-004-S006-P001"
+          ]
+        },
+        {
+          "id": "CHE-004-S007",
+          "parent_id": "CHE-004-S006",
+          "level": 3,
+          "titles": {
+            "am": "በአፄ ዘርዓያዕቆብ ዘመነ መንግሥት የተከናወኑ መንፈሳዊ ተግባራት",
+            "en": "Spiritual Activities During the Reign of Emperor Jacob"
+          },
+          "paragraph_ids": [
+            "CHE-004-S007-P001",
+            "CHE-004-S007-P002",
+            "CHE-004-S007-P003",
+            "CHE-004-S007-P004",
+            "CHE-004-S007-P005",
+            "CHE-004-S007-P006",
+            "CHE-004-S007-P007",
+            "CHE-004-S007-P008",
+            "CHE-004-S007-P009",
+            "CHE-004-S007-P010",
+            "CHE-004-S007-P011",
+            "CHE-004-S007-P012",
+            "CHE-004-S007-P013"
+          ]
+        },
+        {
+          "id": "CHE-004-S008",
+          "parent_id": "CHE-004-S006",
+          "level": 3,
+          "titles": {
+            "am": "አፄ ዘርዓያዕቆብ የደረሳቸው ቅዱሳት መጻሕፍት",
+            "en": "The Scriptures of Jacob"
+          },
+          "paragraph_ids": [
+            "CHE-004-S008-P001",
+            "CHE-004-S008-P002",
+            "CHE-004-S008-P003",
+            "CHE-004-S008-P004",
+            "CHE-004-S008-P005",
+            "CHE-004-S008-P006",
+            "CHE-004-S008-P007",
+            "CHE-004-S008-P008",
+            "CHE-004-S008-P009",
+            "CHE-004-S008-P010",
+            "CHE-004-S008-P011",
+            "CHE-004-S008-P012",
+            "CHE-004-S008-P013"
+          ]
+        },
+        {
+          "id": "CHE-004-S009",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "ግራኝ መሐመድ",
+            "en": "The Left Mohammad"
+          },
+          "paragraph_ids": [
+            "CHE-004-S009-P001",
+            "CHE-004-S009-P002",
+            "CHE-004-S009-P003",
+            "CHE-004-S009-P004",
+            "CHE-004-S009-P005",
+            "CHE-004-S009-P006",
+            "CHE-004-S009-P007",
+            "CHE-004-S009-P008"
+          ]
+        },
+        {
+          "id": "CHE-004-S010",
+          "parent_id": "CHE-004-S009",
+          "level": 3,
+          "titles": {
+            "am": "የግራኝ መሐመድ ወረራ በቤተ ክርስቲያንና በምዕመናን ላይ ያደረሰው ጉዳት",
+            "en": "The Rise of the Leftist Mohammad on the Church and the Faithful"
+          },
+          "paragraph_ids": [
+            "CHE-004-S010-P001",
+            "CHE-004-S010-P002",
+            "CHE-004-S010-P003",
+            "CHE-004-S010-P004",
+            "CHE-004-S010-P005",
+            "CHE-004-S010-P006",
+            "CHE-004-S010-P007",
+            "CHE-004-S010-P008"
+          ]
+        },
+        {
+          "id": "CHE-004-S011",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "አፄ ገላውዴዎስ",
+            "en": "Emperor Gallaudeus"
+          },
+          "paragraph_ids": [
+            "CHE-004-S011-P001"
+          ]
+        },
+        {
+          "id": "CHE-004-S012",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "የካቶሊካውያን አመጣጥ",
+            "en": "The Origin of the Catholics"
+          },
+          "paragraph_ids": [
+            "CHE-004-S012-P001",
+            "CHE-004-S012-P002",
+            "CHE-004-S012-P003",
+            "CHE-004-S012-P004",
+            "CHE-004-S012-P005",
+            "CHE-004-S012-P006",
+            "CHE-004-S012-P007",
+            "CHE-004-S012-P008",
+            "CHE-004-S012-P009",
+            "CHE-004-S012-P010",
+            "CHE-004-S012-P011"
+          ]
+        },
+        {
+          "id": "CHE-004-S013",
+          "parent_id": "CHE-004",
+          "level": 2,
+          "titles": {
+            "am": "ኣፄ ሚናስ",
+            "en": "Princess Minas"
+          },
+          "paragraph_ids": [
+            "CHE-004-S013-P001",
+            "CHE-004-S013-P002"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/04-chapter-four.md",
+        "en": "en/04-chapter-four.md"
+      }
+    },
+    {
+      "id": "CHE-005",
+      "number": 5,
+      "kind": "chapter",
+      "titles": {
+        "am": "ምዕራፍ አምስት",
+        "en": "Chapter Five"
+      },
+      "source_heading_am": "ምዕራፍ አምስት",
+      "sections": [
+        {
+          "id": "CHE-005-S000",
+          "parent_id": "CHE-005",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHE-005-S000-P001",
+            "CHE-005-S000-P002",
+            "CHE-005-S000-P003",
+            "CHE-005-S000-P004",
+            "CHE-005-S000-P005",
+            "CHE-005-S000-P006",
+            "CHE-005-S000-P007",
+            "CHE-005-S000-P008",
+            "CHE-005-S000-P009",
+            "CHE-005-S000-P010"
+          ]
+        },
+        {
+          "id": "CHE-005-S001",
+          "parent_id": "CHE-005",
+          "level": 2,
+          "titles": {
+            "am": "ቀዳማዊ ኃይለ ሥላሴ",
+            "en": "The First Trinity"
+          },
+          "paragraph_ids": [
+            "CHE-005-S001-P001",
+            "CHE-005-S001-P002",
+            "CHE-005-S001-P003",
+            "CHE-005-S001-P004",
+            "CHE-005-S001-P005",
+            "CHE-005-S001-P006",
+            "CHE-005-S001-P007"
+          ]
+        },
+        {
+          "id": "CHE-005-S002",
+          "parent_id": "CHE-005-S001",
+          "level": 3,
+          "titles": {
+            "am": "በመጀመሪያ ጵጵስናን የተቀበሉ የተሾሙ/ ኢትዮጵያውያን ሊቃውንት",
+            "en": "Ethiopian scholars who were first ordained to the pope"
+          },
+          "paragraph_ids": [
+            "CHE-005-S002-P001",
+            "CHE-005-S002-P002",
+            "CHE-005-S002-P003",
+            "CHE-005-S002-P004",
+            "CHE-005-S002-P005",
+            "CHE-005-S002-P006",
+            "CHE-005-S002-P007",
+            "CHE-005-S002-P008",
+            "CHE-005-S002-P009",
+            "CHE-005-S002-P010",
+            "CHE-005-S002-P011",
+            "CHE-005-S002-P012",
+            "CHE-005-S002-P013",
+            "CHE-005-S002-P014",
+            "CHE-005-S002-P015"
+          ]
+        },
+        {
+          "id": "CHE-005-S003",
+          "parent_id": "CHE-005-S001",
+          "level": 3,
+          "titles": {
+            "am": "የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን በፓትርያርክነት የመሩ አባቶች",
+            "en": "The Ethiopian Orthodox Tewahedo Church under the Patriarchate"
+          },
+          "paragraph_ids": [
+            "CHE-005-S003-P001",
+            "CHE-005-S003-P002",
+            "CHE-005-S003-P003",
+            "CHE-005-S003-P004",
+            "CHE-005-S003-P005",
+            "CHE-005-S003-P006",
+            "CHE-005-S003-P007",
+            "CHE-005-S003-P008",
+            "CHE-005-S003-P009",
+            "CHE-005-S003-P010",
+            "CHE-005-S003-P011"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/05-chapter-five.md",
+        "en": "en/05-chapter-five.md"
+      }
+    },
+    {
+      "id": "CHE-006",
+      "number": 6,
+      "kind": "back_matter",
+      "titles": {
+        "am": "ዋቢ መጻሕፍት",
+        "en": "References"
+      },
+      "source_heading_am": "ዋቢ መጻሕፍት",
+      "sections": [
+        {
+          "id": "CHE-006-S000",
+          "parent_id": "CHE-006",
+          "level": 2,
+          "titles": {
+            "am": null,
+            "en": null
+          },
+          "paragraph_ids": [
+            "CHE-006-S000-P001",
+            "CHE-006-S000-P002",
+            "CHE-006-S000-P003",
+            "CHE-006-S000-P004",
+            "CHE-006-S000-P005",
+            "CHE-006-S000-P006",
+            "CHE-006-S000-P007",
+            "CHE-006-S000-P008",
+            "CHE-006-S000-P009",
+            "CHE-006-S000-P010",
+            "CHE-006-S000-P011",
+            "CHE-006-S000-P012",
+            "CHE-006-S000-P013",
+            "CHE-006-S000-P014",
+            "CHE-006-S000-P015",
+            "CHE-006-S000-P016",
+            "CHE-006-S000-P017",
+            "CHE-006-S000-P018",
+            "CHE-006-S000-P019"
+          ]
+        }
+      ],
+      "files": {
+        "am": "am/06-references.md",
+        "en": "en/06-references.md"
+      }
+    }
+  ],
+  "merged_files": {
+    "am": "church_history_ethiopia_amharic.md",
+    "en": "church_history_ethiopia_english.md",
+    "bilingual": "church_history_ethiopia_bilingual.md"
+  },
+  "biblical_references": [
+    "Acts 8:26",
+    "Acts 8:26-39",
+    "Amos 9:7",
+    "Chronicles 12:4",
+    "Chronicles 14:9-13",
+    "Chronicles 16:8",
+    "Chronicles 21:16",
+    "Chronicles 9:1",
+    "Daniel 11:43-45",
+    "Deuteronomy 14:1",
+    "Deuteronomy 32:7",
+    "Enoch 19:22",
+    "Enoch 9:16-23",
+    "Exodus 19:15-16",
+    "Ezekiel 29:9-11",
+    "Ezekiel 30:5",
+    "Ezekiel 30:9",
+    "Ezekiel 38:5",
+    "Genesis 10:6",
+    "Genesis 12:1-9",
+    "Genesis 2:13",
+    "Genesis 5:24",
+    "Isaiah 13:23",
+    "Isaiah 18:1",
+    "Isaiah 43:3",
+    "Isaiah 45:14",
+    "Isaiah 53:7",
+    "Isaiah 8:16",
+    "James 1:5",
+    "Jeremiah 39:16",
+    "Job 28:18-19",
+    "Kings 10:10",
+    "Kings 19:9",
+    "Kings10:1",
+    "Leviticus 11:1",
+    "Mark 11:2223",
+    "Matthew 12:42",
+    "Matthew 4:1-2",
+    "Matthew12:42",
+    "Nahum 3:9",
+    "Numbers 12:1",
+    "Psalm 49:14",
+    "Psalm 67:31",
+    "Psalm 71:9-10",
+    "Psalm 73:14",
+    "Psalm 86:4",
+    "Romans 5:14",
+    "Uza 11:11",
+    "Zepha 3:10",
+    "Zephaniah 2:12",
+    "ሄኖ 9:16-23",
+    "ሄኖ19:22",
+    "ሐዋ 8፡26",
+    "ሕዝ 29:9-11",
+    "ሕዝ 30:5",
+    "ሕዝ 30፡9",
+    "ሕዝ 38፡5",
+    "መዝ 49፡14",
+    "መዝ 67፡31",
+    "መዝ 71:9-10",
+    "መዝ 73፡14",
+    "መዝ 86፡4",
+    "ማር11፡2223",
+    "ማተ 12፡42",
+    "ማተ12:42",
+    "ማተ4፡1-2",
+    "ሥራ 8:26",
+    "ሥራ 8፡26",
+    "ሥራ 8፡26-39",
+    "ሮሜ 5፡14",
+    "ሶፎ 2:12",
+    "ሶፎ 3፡10",
+    "ሶፎ3፡10",
+    "ነገ10፡1",
+    "ነገ10፡10",
+    "ነገሥት 19:9",
+    "ናሆም3፡9",
+    "ኛዜና 12፡4",
+    "ኛዜና 16፡8",
+    "ኛዜና 21፡16",
+    "አሞጽ 9:7",
+    "አስተር 1፡1",
+    "ኡሳ 11፡11",
+    "ኢሣ 18፡1",
+    "ኢሳ 13:23",
+    "ኢሳ 43፡3",
+    "ኢሳ 45:14",
+    "ኢሳ 8፡16",
+    "ኢሳይያስ 53፡7",
+    "ኢዮ28፡18-19",
+    "ኤር 39:16",
+    "ኤር 44፡1",
+    "ዕን 3:7",
+    "ዘሌ 11፡1",
+    "ዘኍ12፡1",
+    "ዘኑ 12፡1",
+    "ዘዳ 14፡1",
+    "ዘዳ 32፡7",
+    "ዘጸ19:15-16",
+    "ዘፍጥ 10፡6",
+    "ዘፍጥ 12፡1-9",
+    "ዘፍጥ 5:24",
+    "ዘፍጥ2፡13",
+    "ዜና 14:9-13",
+    "ዜና 9:1",
+    "ያዕ 1፡5",
+    "ዳን 11:43-45"
+  ],
+  "content_completeness": {
+    "source_nonempty_paragraphs": 644,
+    "structural_headings": 96,
+    "aligned_paragraphs": 548,
+    "missing_translations": 0,
+    "flagged_for_review": 40
+  }
+}

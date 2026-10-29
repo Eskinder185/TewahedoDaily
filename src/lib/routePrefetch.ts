@@ -42,6 +42,7 @@ const loaders: Array<{ match: (path: string) => boolean; load: () => Promise<unk
   { match: (path) => path.startsWith('/about'), load: () => import('../pages/AboutPage') },
   { match: (path) => path.startsWith('/account'), load: () => import('../pages/auth/AccountPages') },
   { match: (path) => path.startsWith('/library'), load: () => import('../pages/PublicChurchLibrary') },
+  { match: (path) => path === '/play', load: () => import('../pages/play/PlayHubPage') },
 ]
 
 export function prefetchRoute(to: string) {
@@ -58,4 +59,5 @@ export function prefetchPrimaryNav() {
   prefetchRoute('/hymns')
   prefetchRoute('/calendar')
   prefetchRoute('/bible')
+  prefetchRoute('/play')
 }

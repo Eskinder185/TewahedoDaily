@@ -1,0 +1,2233 @@
+{
+  "source": "content\\church-library\\church-history\\_source_analysis\\2-Church_History_World_Clean.structure.json",
+  "model": "gemma4:12b",
+  "source_sha256": "30cbf30856b1a897afd8399536334da076d79864d82b514ae2333df8d066ec86",
+  "translation_status": "ai_translated_pending_review",
+  "paragraphs": [
+    {
+      "index": 0,
+      "style": "Title",
+      "text": "The History of the Church on the World Stage"
+    },
+    {
+      "index": 1,
+      "style": "normal",
+      "text": "In the name of the Father, the Son, and the Holy Spirit, one God, Amen."
+    },
+    {
+      "index": 2,
+      "style": "normal",
+      "text": "The History of the Church on the World Stage"
+    },
+    {
+      "index": 3,
+      "style": "normal",
+      "text": "«You are Peter, and on this rock I will build My church. And the gates of Hades shall not prevail against it.» Matt. 16:18"
+    },
+    {
+      "index": 4,
+      "style": "Heading 1",
+      "text": "Introduction"
+    },
+    {
+      "index": 5,
+      "style": "normal",
+      "text": "To know the history of the Church, which our Lord and God our Savior Jesus Christ established and strengthened with His blood, means to understand and comprehend the meaning of the key mysteries of the Church. To know the meaning of the Church means to know the relationship between God and man, the Fatherhood of God, the mystery of the Incarnation, the miraculous work of the Holy Spirit... and so on."
+    },
+    {
+      "index": 6,
+      "style": "normal",
+      "text": "The history of the Church means the history of the Christian faith. In the history of the Church, our lesson is the revelation of God in the Christian faith. However, because it happened in a specific time and place, it is the part where we know when? Where? And why? did it happen? Not only this, but it is where we learn about the difficulties and comforts encountered throughout the journey from the moment the Church was founded."
+    },
+    {
+      "index": 7,
+      "style": "normal",
+      "text": "A student who studies the history of the Church studies by comparing the situation from the manger of Bethlehem until the Church as it stands today. In that study, he knows the past, observes the current situation, and carries over the knowledge he has as teaching material for the coming generation like a bridge."
+    },
+    {
+      "index": 8,
+      "style": "Heading 1",
+      "text": "Preface"
+    },
+    {
+      "index": 9,
+      "style": "normal",
+      "text": "Remember your teachers who spoke the word of God, and see if they showed good conduct and followed them in faith. As the Apostle Saint Paul taught us in Hebrews 13:7, we learn this lesson to remember our fathers—the prophets who spoke prophecy, the Apostles who taught the Gospel, and the righteous martyrs who suffered for the glory of the Gospel—and to follow them in faith and conduct, that is, to serve our God in goodness."
+    },
+    {
+      "index": 10,
+      "style": "normal",
+      "text": "Since the history lesson is a foundation for preaching and for praise, it is given priority and holds significant importance in any forum. Especially in the poetry lesson at the church, it is told and remembered daily as a lesson or study. This lesson on the History of the Church on the World Stage is closely related/overlapping with the introduction to the history of the Church given first, which is the journey the Church took from the world of angels until the time of the end."
+    },
+    {
+      "index": 11,
+      "style": "normal",
+      "text": "The Jews alone used to hold a special opinion. They had their own places of prayer where the Gentiles were not allowed to enter."
+    },
+    {
+      "index": 12,
+      "style": "normal",
+      "text": "Gentiles means the people of the word. In the word of the Bible, it is specifically stated as those who are not from the side of Israel. Isa. 11:10"
+    },
+    {
+      "index": 13,
+      "style": "normal",
+      "text": "However, in terms of religion, Gentiles means peoples who were not told prophecy, were not counted as covenant, lived worshipping various gods, had no law of boundaries and directions, and had no organized hope."
+    },
+    {
+      "index": 14,
+      "style": "normal",
+      "text": "In general, Jews and Gentiles are different; Jews do not cooperate with Gentiles in any way. In fact, because they often persecuted them by going to war, they gave them the name 'Philistines'."
+    },
+    {
+      "index": 15,
+      "style": "normal",
+      "text": "Philistines means an unorganized, uneducated people who are not Israelite and have no system or law. Just as Greeks would call everything that is not Greek 'barbaros'."
+    },
+    {
+      "index": 16,
+      "style": "normal",
+      "text": "In this way, the Gentiles, who were despised and looked down upon, entered into their houses and ate and drank together with them, believing in the apostolic teaching. It is unknown whether the Gentiles cooperated with the Israelites. They began to build the New Church, saying that it was not permissible for the Christians who returned from the Jews to be separated from the Apostles and the other Christians who returned from the Jews. The Apostles and others would occasionally observe the Jewish laws and customs."
+    },
+    {
+      "index": 17,
+      "style": "normal",
+      "text": "For example: -"
+    },
+    {
+      "index": 18,
+      "style": "normal",
+      "text": "- Saint Paul instructed Timothy by ordaining him. Acts 16:3. Also, according to the Jewish custom, Saint Paul would fast to reach the Sabbath. Acts 18:18"
+    },
+    {
+      "index": 19,
+      "style": "normal",
+      "text": "The Synod of the Apostles: In the history of the Church, the first religious synod was held in the city of Jerusalem between 49-50 AD through the Apostles, presided over by James, the brother of the Lord. In this synod, after the Apostles explained all the problems they encountered, they passed the following decisions."
+    },
+    {
+      "index": 20,
+      "style": "normal",
+      "text": "1. That the Christians returning from the Gentiles should be protected from fornication."
+    },
+    {
+      "index": 21,
+      "style": "normal",
+      "text": "2. That the Gentiles should not eat meat sacrificed to idols."
+    },
+    {
+      "index": 22,
+      "style": "normal",
+      "text": "3. That they should not eat meat sacrificed to demons."
+    },
+    {
+      "index": 23,
+      "style": "normal",
+      "text": "4. They passed a decision stating that it is not permissible to discourage or despair by telling the Gentiles to observe the laws and customs of Moses, but rather to exhort and teach them."
+    },
+    {
+      "index": 24,
+      "style": "normal",
+      "text": "5. They decided to write books called *Apostolikos Didaskalia* regarding the doctrine of the Church, the liturgy of the Church, the service of the priests, and the share of the faithful. The Ethiopian Orthodox Tewahedo Church, which is founded on the apostolic basis, takes this as a foundation and, every two years, conducts a council of bishops to refine what is expanded and to fill what is lacking."
+    },
+    {
+      "index": 25,
+      "style": "Heading 2",
+      "text": "The Life of the First Christians"
+    },
+    {
+      "index": 26,
+      "style": "normal",
+      "text": "Christianity, which began with the 12 Apostles, started with 120 families and, through the preaching of Saint Peter, the community of Christians reached 300; later, through the miracles of Saint Peter and Saint John, five thousand faithful believed."
+    },
+    {
+      "index": 27,
+      "style": "normal",
+      "text": "The Church established in Jerusalem saw the number of Christian faithful increase. This, in turn, moved the unbelieving Gentiles living around them by the mutual love that existed among the Christians. They would say, \"Do you not see? Do you not notice? These Christians love one another.\" By their love, they testified to being the disciples of Christ."
+    },
+    {
+      "index": 28,
+      "style": "normal",
+      "text": "These were the first Christians,"
+    },
+    {
+      "index": 29,
+      "style": "normal",
+      "text": "1st. Christians would set aside time after the hour and gather in the house of Mary, the mother of Mark, and in other places in the Episkopos of Jerusalem under the leadership of James to hear the apostolic teaching. / Acts 12:12"
+    },
+    {
+      "index": 30,
+      "style": "normal",
+      "text": "For example: - Saint Basil used to perform healings for the sick in the Episkopos of Caesarea, which was named after him."
+    },
+    {
+      "index": 31,
+      "style": "normal",
+      "text": "5. The Jews used to call the Christians Galileans and Nazarenes. However, they were called brothers and disciples. Acts 1:15, 6:1. Being called a Christian, however, began later in Antioch. John 11:26 The humility and pride of the Gentiles"
+    },
+    {
+      "index": 32,
+      "style": "normal",
+      "text": "The power of the Christians was defeated. The holiness of the Christians overcame the power of the pagans' apostasy."
+    },
+    {
+      "index": 33,
+      "style": "normal",
+      "text": "They triumphed."
+    },
+    {
+      "index": 34,
+      "style": "Heading 2",
+      "text": "The Selection of the 7 Deacons"
+    },
+    {
+      "index": 35,
+      "style": "normal",
+      "text": "Among these, we shall look at the history of the two deacons whose stories are prominently found in books and various other things."
+    },
+    {
+      "index": 36,
+      "style": "Heading 2",
+      "text": "Protomartyr Deacon Saint Stephen"
+    },
+    {
+      "index": 37,
+      "style": "normal",
+      "text": "Stephen means in the Greek language 'crown,' 'the sun's radiance,' and 'the unchanging light of the night.' His father's name was Simon and his mother's name was Hannah; he was taken on Tir 1 in the land of Israel in Bethsaida (Sijlet). Stephen, from his infancy, went to the scholar Gamaliel to study the Old Testament, and later studied the New Testament from John the Baptist."
+    },
+    {
+      "index": 38,
+      "style": "normal",
+      "text": "Stephen was primarily appointed as Protomartyr on Tikimt 17. Stephen had perfect faith, intense spiritual zeal, and the gift of performing miracles. Because he was led by the Holy Spirit in what he spoke and taught, and because he left those who opposed him without an answer, false witnesses were raised against him, saying that this man, being led by a spirit of jealousy, blasphemes the Law of Moses and insults God. Acts"
+    },
+    {
+      "index": 39,
+      "style": "normal",
+      "text": "6:13-14. When all the gathered people looked at him, his face shone like an angel. When the chief of the priests asked him to give an answer, instead of answering for the accusations against him, he properly recounted the writings of the Holy Scriptures from Abraham until Christ. By this, he convinced 8,000 people in this assembly. These are called the Companions of Stephen. He also spoke the mystery revealed to him to the Jews, saying:"
+    },
+    {
+      "index": 40,
+      "style": "normal",
+      "text": "«Behold, the heavens are opened, and the Son of Man is seated at the right hand of God.» Acts 7:50. The Jews, counting these words as blasphemies against God, cast stones upon him like hailstones in the rainy season. He prayed for them, saying, «Lord, do not count this sin against them.» Acts 7:60. After this, he spoke and rested. His rest is on Tir 1 in 34 A.M."
+    },
+    {
+      "index": 41,
+      "style": "normal",
+      "text": "The rest of Stephen and his birth are on the same day. Because of the death of Stephen, the Christians who were persecuted in various countries scattered; this persecution, instead of destroying Christians, was very beneficial for the spread of Christianity."
+    },
+    {
+      "index": 42,
+      "style": "Heading 2",
+      "text": "Deacon Philip"
+    },
+    {
+      "index": 43,
+      "style": "normal",
+      "text": "Philip was born in the port city of Caesarea. As Christians were scattering to various countries because of the rest of Saint Stephen in the church in Jerusalem, Philip also came to the city of Samaria, where he taught many people, performed miracles, and baptized them. When Simon, who was performing magic, was leaving people and returning to the church alone, he was amazed by Philip's teaching and miracles and believed and was baptized along with the people. Acts 8:13-24"
+    },
+    {
+      "index": 44,
+      "style": "normal",
+      "text": "Because the Holy Spirit commanded Philip to go from Samaria to Gaza, he went there. On that way, he found an Ethiopian eunuch sitting in a chariot, taught him, and baptized him. Acts 8:27-40. Subsequently, while Philip was traveling around the surrounding countries teaching, he returned to his country. Acts 21:8-9 / After teaching in Caesarea for many years, he rested there. Many writers identify Philip with Deacon Philip, but they are not the same."
+    },
+    {
+      "index": 45,
+      "style": "Heading 1",
+      "text": "Chapter Two"
+    },
+    {
+      "index": 46,
+      "style": "Heading 3",
+      "text": "The Era of the Apostles and the Era of the Apostle-women"
+    },
+    {
+      "index": 47,
+      "style": "normal",
+      "text": "From 1-16 A.M."
+    },
+    {
+      "index": 48,
+      "style": "normal",
+      "text": "This chapter is divided into two main parts, which are"
+    },
+    {
+      "index": 49,
+      "style": "normal",
+      "text": "1. The Era of the Apostles, which refers to the period from 1-70 AD,"
+    },
+    {
+      "index": 50,
+      "style": "normal",
+      "text": "2. The Era of the Fathers of the Apostles, which refers to the period from 70-160."
+    },
+    {
+      "index": 51,
+      "style": "normal",
+      "text": "1. The Era of the Apostles 1-70 AD"
+    },
+    {
+      "index": 52,
+      "style": "normal",
+      "text": "The Savior of the World, Jesus Christ, in his 30th year, was baptized in the Jordan River. After standing for 40 days and 40 nights without sitting, without spreading out, and without fainting, and after fasting, before beginning his work of salvation, the first work he performed was choosing the disciples. These disciples are called the Apostles. Matt 10:25, Mark 3:1. In another sense, it means the 'Jandereba Afeklate' (the chosen ones) who are like the King's own guards."
+    },
+    {
+      "index": 53,
+      "style": "Heading 2",
+      "text": "The Calling of the Apostles"
+    },
+    {
+      "index": 54,
+      "style": "normal",
+      "text": "Our God Jesus Christ called the Apostles. Saint Paul says: «Brothers, consider your calling. Many who are wise in human wisdom, many who are powerful, many who are wealthy were not called. But God chose the foolish things of the world to shame the wise; God chose the weak things of the world to shame the strong. God chose the insignificant things of the world to shame the significant. 1 Cor 1:26». He called the Apostles from various places, from places where they were despised and rejected, and from five insignificant crafts/works."
+    },
+    {
+      "index": 55,
+      "style": "normal",
+      "text": "1. From Anamyan / from oil-pressing; among those who were engaged in this craft, for example, were Saint Paul, Saint Thaddeus, and Jacob of Elphias."
+    },
+    {
+      "index": 56,
+      "style": "normal",
+      "text": "2. From Hanatsyan / from pottery; among those called from this craft, for example, was the Apostle Thomas."
+    },
+    {
+      "index": 57,
+      "style": "normal",
+      "text": "3. From Metsebehan / from blacksmithing; blacksmiths were despised, rejected, and even considered as sinners among the Jews. The one called from this craft was the Apostle Matthew."
+    },
+    {
+      "index": 58,
+      "style": "normal",
+      "text": "4. From Mestegberan / from agriculture; among those called while living in agricultural work were Saint Bartholomew and Saint Nathanael."
+    },
+    {
+      "index": 59,
+      "style": "normal",
+      "text": "5. From Mesegran / from fishing; among those who were engaged in this craft but were called for the honor of apostleship were Saint Peter, Andrew, Saint John, his brother Jacob of Zebedee."
+    },
+    {
+      "index": 60,
+      "style": "normal",
+      "text": "Our Lord, our Savior Jesus Christ, chose them as twelve so that the prophecy and the parable might be fulfilled."
+    },
+    {
+      "index": 61,
+      "style": "normal",
+      "text": "The prophecy: - In Jeremiah 11:52, it says: «He shall come into this world as a man; I saw him as a man. He was sent from the sea to this world as a man. He shall be seen with them, and twelve apostles shall be chosen to be his servants.» This is to fulfill the prophecy."
+    },
+    {
+      "index": 62,
+      "style": "normal",
+      "text": "The parable: -"
+    },
+    {
+      "index": 63,
+      "style": "normal",
+      "text": "1. Jacob of Syria descended and bore twelve children; our Lord also descended from the heavens and bore the twelve apostles by the Spirit. Gen 2:16"
+    },
+    {
+      "index": 64,
+      "style": "normal",
+      "text": "2. Just as the twelve tribes of Israel entered the land of Arist under the leadership of Joshua, so also the faithful shall enter the kingdom of heaven under the leadership of the twelve Apostles."
+    },
+    {
+      "index": 65,
+      "style": "normal",
+      "text": "3. Just as there were twelve tribal fathers called the fathers of the twelve tribes divided from Jacob Abrak when the house of Israel was established, God permitted that when the assembly of the house of the Church of the Lord of Israel was established, it would be by the twelve Apostles."
+    },
+    {
+      "index": 66,
+      "style": "Heading 2",
+      "text": "Baptism of the Apostles"
+    },
+    {
+      "index": 67,
+      "style": "normal",
+      "text": "Although the baptism of the Apostles is a matter of contention among many scholars, we understand from the book that even though their baptism was performed at the time they followed Him leaving everything behind, it was performed secretly; however, in the public baptism of the Apostles, it was performed by washing the feet of the Apostles at the feast of Passover, and not a single act of humility was performed to perform their baptism. John 12"
+    },
+    {
+      "index": 68,
+      "style": "Heading 2",
+      "text": "When were the Apostles cut?"
+    },
+    {
+      "index": 69,
+      "style": "normal",
+      "text": "After the baptism, while showing us that the flesh is received into the body, He took the bread and broke it three times and said to the disciples, 'Take, eat; this is My body.' He also took the cup, gave thanks, and gave it to them, saying, 'Drink all of you; this is the blood of the New Covenant, which is shed for many for the forgiveness of sins.' And He broke the bread for them. Matthew 26:26"
+    },
+    {
+      "index": 70,
+      "style": "normal",
+      "text": "Just as a soldier carries the full equipment needed for battle when he goes to the battlefield, our Lord and Savior Jesus Christ gave them the authority/equipment to perform miracles, to cast out demons, to cleanse the unclean, and to raise the dead so that they might triumph over the enemy. When He taught them, He also taught them not to fear tribulation and death, and when they were accused, He protected them so they would not seek defense, and He spoke words of encouragement and comfort beforehand for things they would not speak themselves. Matthew 10:8-11 18:19 so that they would not think and not be anxious."
+    },
+    {
+      "index": 71,
+      "style": "Heading 2",
+      "text": "The Teaching of the Apostles"
+    },
+    {
+      "index": 72,
+      "style": "normal",
+      "text": "Because the Holy Church was preached by the Apostles, the teaching of the Apostles found in Christ is the foundation of the faith of the Church. The teaching of the Apostles was seen by the eyes, heard by the ears, touched by the hands, and later understood by the Holy Spirit, and its truth was confirmed by His presence. They are messengers who were sent and told, 'Go and teach'; therefore, their messengership is trusted. The teaching of these Apostles was found by the Holy Church in tradition and in the book."
+    },
+    {
+      "index": 73,
+      "style": "normal",
+      "text": "1. In tradition: - The Apostle Saint Paul, in his message, said as he stated in Philippians 4:9, 'Practice what you have learned and received and heard and seen from me.' The Apostles taught their teaching not only in the books but also from their lives, their actions, their sacrifices, and their legacies; therefore, the Holy Church benefits from the apostolic tradition."
+    },
+    {
+      "index": 74,
+      "style": "normal",
+      "text": "2. In the books - The Apostles taught not only by word but also by writing the books, and by preserving this true teaching, it was offered to the world. The Gospels and messages written by the Apostles were entrusted to the Church. They are found in the Church, and the Holy Church is the owner of the Holy Scripture; therefore, by receiving the books written by the Apostles, the Holy Church preserves them for all generations."
+    },
+    {
+      "index": 75,
+      "style": "Heading 2",
+      "text": "1st/ The Apostle Saint Peter /Simon, Cephas/"
+    },
+    {
+      "index": 76,
+      "style": "normal",
+      "text": "Saint Peter was born in Bethsaida, located on the Sea of Galilee. His father's name is said to be Jonah. Before following the Lord, he grew up in the city of Capernaum from the age of five, and in his youth, he was a fisherman on the Sea of Galilee with his brother Andrew. It is said that his age was 55 when he was chosen for discipleship. Acts page 3-15/ His first name was Simon, and our Lord called him Peter. In the Latin language, it means rock. In Aramaic, it is called Cephas. Matthew 16:17 In this word, he was given the key of the kingdom of heaven:"
+    },
+    {
+      "index": 77,
+      "style": "normal",
+      "text": "When the Romans were trying to seize the Lord, they cut off the ear of the high priest /Markus/ with a sword. John 18:10"
+    },
+    {
+      "index": 78,
+      "style": "normal",
+      "text": "While the Lord was held in the hands of the Jews, He denied the Lord three times, saying He did not know Him, despite the word He had spoken. Matthew 26:69-70"
+    },
+    {
+      "index": 79,
+      "style": "normal",
+      "text": "Later, however, when He returned in repentance, He entrusted Him by saying, 'Feed My sheep, guard My sheep, feed My sheep.' John 21:15"
+    },
+    {
+      "index": 80,
+      "style": "normal",
+      "text": "Saint Peter, having preached on the day of Pentecost, converted three thousand people at once. Acts 2:41"
+    },
+    {
+      "index": 81,
+      "style": "normal",
+      "text": "He baptized the centurion Cornelius, a Roman who was in Caesarea, and his household. Acts 10:48"
+    },
+    {
+      "index": 82,
+      "style": "normal",
+      "text": "Peter traveled and preached in countries called Palestine, Lydia, Ioppe, Caesarea, Syria, Pontus, Galatia, Cappadocia, Bitynia, and Rome. He performed many miracles."
+    },
+    {
+      "index": 83,
+      "style": "normal",
+      "text": "Church historians, when describing the appearance and stature of Saint Peter, say that his face was broad, his height was medium, and he was quick and agile in all things."
+    },
+    {
+      "index": 84,
+      "style": "normal",
+      "text": "Finally, this Apostle, Saint Peter, during the reign of the Roman Emperor Nero, was crucified on a cross of the underworld amidst the persecution and suffering inflicted upon Christians."
+    },
+    {
+      "index": 85,
+      "style": "normal",
+      "text": "Saint Paul was beheaded by the sword and rested in martyrdom on the 5th of Hamle, 67 A.D. Saint Peter, who lived in the 1st century, is buried on the Vatican Hill, and Paul is buried on the Via Ostia. Our Holy Church also honors the memorial of their rest on the feast of the 5th of Hamle."
+    },
+    {
+      "index": 86,
+      "style": "Heading 2",
+      "text": "2nd/ Apostle Saint John"
+    },
+    {
+      "index": 87,
+      "style": "normal",
+      "text": "Saint John's homeland was in the region of Galilee, and he used to fish with his brother, Saint James. Mark 1:19-20. When he was called to the honor of apostleship, he was 20 years old. His father is called Zebedee and his mother Mary/Salome. John means 'God is gracious' and 'Peace be with you.' Matthew 4:21"
+    },
+    {
+      "index": 88,
+      "style": "Heading 3",
+      "text": "Names by which Saint John is called"
+    },
+    {
+      "index": 89,
+      "style": "normal",
+      "text": "1. Fiqure Egzi'e /The one who loves the Lord/ - Because he strove to imitate the Lord in his life and lifestyle, the Lord also loved him. Indeed, when he wore the Lord's mantle, the spirit of zeal burned within him, and his entire life became like that of the angels. John 12:7"
+    },
+    {
+      "index": 90,
+      "style": "normal",
+      "text": "2. Wolde Negodguad /Boanerges/: -"
+    },
+    {
+      "index": 91,
+      "style": "normal",
+      "text": "3. Nebabi Melkot (Theologos) - He was called Nebabi Melkot because he surpassed the other apostles in worshipping and recording the revelation of the Word of God."
+    },
+    {
+      "index": 92,
+      "style": "normal",
+      "text": "4. Qutsure Gets /Whose face was contorted by sorrow/ - On Good Friday, he was present at the foot of the Cross and, upon seeing the cross of our Lord's suffering, his face remained contorted by sorrow for seven years from that day onward."
+    },
+    {
+      "index": 93,
+      "style": "normal",
+      "text": "5. Abuqelemsis /The visionary/ - This name was given to him because he revealed the leaders and judges in his vision."
+    },
+    {
+      "index": 94,
+      "style": "normal",
+      "text": "6. Wolde Zebedee"
+    },
+    {
+      "index": 95,
+      "style": "normal",
+      "text": "7. John the Evangelist"
+    },
+    {
+      "index": 96,
+      "style": "Heading 2",
+      "text": "The Journey of Saint John the Apostle"
+    },
+    {
+      "index": 97,
+      "style": "normal",
+      "text": "The first father to paint the icon of the Lord for Tiberius Caesar is the one who painted it; it is estimated that the icon was painted in 37 years."
+    },
+    {
+      "index": 98,
+      "style": "normal",
+      "text": "After our Mother [the Virgin Mary] passed away, he made Ephesus his main seat and taught in various countries. Together with Abrocoros, the disciple of the choir, he [preached] to the Romans, the house of the Romans, and the house of the [faithful]."
+    },
+    {
+      "index": 99,
+      "style": "normal",
+      "text": "He baptized."
+    },
+    {
+      "index": 100,
+      "style": "normal",
+      "text": "He destroyed the temple of Artemis / the idol."
+    },
+    {
+      "index": 101,
+      "style": "normal",
+      "text": "He wrote the Gospel and the three messages. Finally, during the reign of the cruel Domitianos Caesar, in the years 81-96 / 15, while he was in exile, he wrote his vision. Based on the covenant entered into by his God, he passed away without seeing death on the 4th of Tir in the year 99."
+    },
+    {
+      "index": 102,
+      "style": "Heading 2",
+      "text": "3rd/ The Apostle Saint James son of Zebedee/"
+    },
+    {
+      "index": 103,
+      "style": "normal",
+      "text": "Saint James was the brother of John, and his first work was fishing with his father. Mark 1:19, James means 'he who strikes' / 'the pillar'. On the other hand, he is called Great James. Like other apostles, he traveled to teach; some manuscripts state that the land he reached was Palestine, India, and he preached in Spain. In these countries, he destroyed idols and preached the Gospel / he baptized. Finally, by the order of King Herod, he was martyred by the sword on the 17th of Meskerem in 44 A.D."
+    },
+    {
+      "index": 104,
+      "style": "normal",
+      "text": "The Pillars and the Apostles of the Mystery"
+    },
+    {
+      "index": 105,
+      "style": "normal",
+      "text": "The three apostles we learned about consecutively above are Saint Peter, Saint John, and Saint James son of Zebedee; these are called the Pillar Apostles and the Apostles of the Mystery. There are two main reasons why they are called Pillars: 1st, the Apostle Saint Paul called them 'pillars' in his letter to the Galatians Christians in 2:9. 2nd, it was because they primarily supervised the Church of Jerusalem. In addition to this, these apostles are called the Apostles of the Mystery because:"
+    },
+    {
+      "index": 106,
+      "style": "normal",
+      "text": "2. When he healed his son in the house of Jairus"
+    },
+    {
+      "index": 107,
+      "style": "normal",
+      "text": "3. When he took them away separately from the others while praying in Gethsemane,"
+    },
+    {
+      "index": 108,
+      "style": "normal",
+      "text": "Additionally, they were called the Apostles of the Mystery because he told them, 'Do not tell anyone what you have seen or heard until the Son of Man is raised from the dead.' Matthew 17:9"
+    },
+    {
+      "index": 109,
+      "style": "Heading 2",
+      "text": "4th/ The Apostle Saint Andrew"
+    },
+    {
+      "index": 110,
+      "style": "normal",
+      "text": "Saint Andrew was the brother of Saint Peter, and his birth was in Bethsaida. While engaged in the work of fishing, he is the apostle who was first called by the word of the Lord. John 1:34-35. Before following the Lord, he was a disciple of the baptizer John. John 1:41"
+    },
+    {
+      "index": 111,
+      "style": "Heading 3",
+      "text": "The titles by which Saint Andrew is called"
+    },
+    {
+      "index": 112,
+      "style": "normal",
+      "text": "Nerocteleto—it means 'the called.' The early Christians used to call him by this name. It is surely because he was called to be an Apostle."
+    },
+    {
+      "index": 113,
+      "style": "normal",
+      "text": "The Mediator Apostle—because he had the ability to communicate with people, he was considered a mediating Apostle among the Apostles."
+    },
+    {
+      "index": 114,
+      "style": "normal",
+      "text": "The Apostle of the Youth—when Tiberias was by the sea, Saint Andrew presented a young man who held five loaves of bread and two fish to the people who had stayed there, and the Lord fed the five thousand people with blessing. John 6:6-7"
+    },
+    {
+      "index": 115,
+      "style": "normal",
+      "text": "The Apostle of the Gentiles—because he welcomed the Greeks from among the Gentiles who wanted to see the Lord and brought them close to the Lord."
+    },
+    {
+      "index": 116,
+      "style": "normal",
+      "text": "The Apostle of the Family—after seeing the dwelling place of our Lord, he returned and spoke to his brother, Saint Peter, and preached the Gospel message to his family; thus he is called the Apostle of the Family."
+    },
+    {
+      "index": 117,
+      "style": "normal",
+      "text": "Saint Andrew began his preaching work in Palestine first. As revealed by Eusebius, who was a writer of the Church, Andrew preached the Gospel in Russia. Next, he taught in Bithynia, Galatia, Romania, Macedonia, Asia Minor, and Greece. It is said that he founded the Church of Constantinople and was the first Patriarch of Constantinople. Finally, while teaching in a country called Mitra/Patris in Greece, he was crucified by idol worshippers on a cross with a shape resembling an 'x' and was pierced by stones, resting in martyrdom on December 4, 60 A.D."
+    },
+    {
+      "index": 118,
+      "style": "Heading 2",
+      "text": "5th/ Apostle Saint Philip"
+    },
+    {
+      "index": 119,
+      "style": "normal",
+      "text": "Saint Philip's homeland is Bethsaida. According to John 1:14, his tribe is Zebulon. When the Lord said, 'Follow Me,' he immediately accepted the call and, in addition to following the Lord, he presented Nathanael to the Lord; he is the one who 'called' him. John 1:46-47. The Greeks from among the Gentiles who wanted to see our Lord first approached and learned through the friendship of Philip and Andrew. John 12:20-22."
+    },
+    {
+      "index": 120,
+      "style": "normal",
+      "text": "By Philip asking our Lord Jesus Christ, 'Show us the Father, and it will be enough for us,' he explained the mystery of the Trinity by saying, 'He who has seen Me has seen the Father... Do not believe me because I am in the Father and the Father is in Me.' John 14:8-11. Apostle Philip preached the Gospel in Phrygia, located in Asia Minor. Finally, while teaching in Asia Minor, he was crucified and rested in martyrdom by enemies on July 18."
+    },
+    {
+      "index": 121,
+      "style": "Heading 2",
+      "text": "6th/ Apostle Saint Thomas /Didymos/"
+    },
+    {
+      "index": 122,
+      "style": "normal",
+      "text": "Apostle Saint Thomas's tribe was Asher, and he was among the Sadducees who believed that there is no resurrection of the dead. Thomas in Aramaic is Didymos, which in the Indian language means 'twin,' and its meaning is 'double.'"
+    },
+    {
+      "index": 123,
+      "style": "normal",
+      "text": "- He said, 'Unless I see the pierced side, the hands, and the feet of our Lord and Savior Jesus Christ, I will not believe.' On the eighth day, Thomas was told, 'Put your hand where you saw, and touch,' and when he touched, he entered into a state of ecstasy, and his fingers trembled. He is the Apostle who saw and proclaimed the resurrection and the glory of our Holy Virgin Mary. He worked not for the earthly but for the heavenly Kingdom."
+    },
+    {
+      "index": 124,
+      "style": "normal",
+      "text": "Apostle Saint Thomas reached the country of India, and in this country, he engaged in great struggle to convert the ancient Indians and their heathen beliefs to the Christian faith. Finally, in 66 A.D., idol worshippers flayed his skin and salted his body, and they brought him to death on May 26."
+    },
+    {
+      "index": 125,
+      "style": "Heading 2",
+      "text": "7th/ Apostle Saint Bartholomew"
+    },
+    {
+      "index": 126,
+      "style": "normal",
+      "text": "Apostle Saint Bartholomew's name is revealed in the New Testament only in the list of the Apostles, and his story is not written. After following the Lord, he taught the Gospel in the Arab land, India, Armenia, and the surrounding areas. It was Bartholomew who established the Armenian see. Saint Bartholomew, in a place called Elos in the vicinity of Armenia, saw a wealthy wine merchant who had been bitten by a snake and was dying; his friends and relatives gathered to mourn."
+    },
+    {
+      "index": 127,
+      "style": "normal",
+      "text": "Bartholomew, however, prayed to God and raised him from death. By this miracle, the people, the nobles, and the judges all returned from the worship of idols to the worship of God. Because he converted many Christians, jealous people seized him and threw him into the sea in a sack filled with sand on September 1. There he rested. The next day, the believers took him out of the sea and buried him."
+    },
+    {
+      "index": 128,
+      "style": "Heading 2",
+      "text": "8th/ Apostle Saint Matthew /Levi/"
+    },
+    {
+      "index": 129,
+      "style": "normal",
+      "text": "The first name of Saint Matthew is Levi. It is the Lord who gave him the name Matthew (Mar. 2:14). Matthew's former occupation was a tax collector. (Matt. 9:9) While Matthew was performing his tax collection work, the Lord said to him, \"Arise, follow Me.\" Immediately, he prepared a great feast for the Lord in his house, brought his friends who were tax collectors to the Lord, and introduced them; after that, he left everything and followed Him. (Luke 5:27-32) In this way, our Fathers call Matthew the Apostle who left his seat of importance and followed the Lord."
+    },
+    {
+      "index": 130,
+      "style": "normal",
+      "text": "It is told that Apostle Saint Matthew preached in the land of Palestine where he arrived by boat, and subsequently in Ethiopia, Persia, and the area of Babylon. /Gadle Hawaryat page 101+18/"
+    },
+    {
+      "index": 131,
+      "style": "normal",
+      "text": "Finally, as Saint Matthew was resisting the teachings of the Jews and the Romans, healing the sick, casting out demons, and performing various miracles, the news reached throughout the city. These enraged nobles passed a death sentence on Saint Matthew, and on October 12, his neck was struck by a sword and he rested."
+    },
+    {
+      "index": 132,
+      "style": "Heading 2",
+      "text": "9th/ Apostle Saint James /Wolde Ilyus/"
+    },
+    {
+      "index": 133,
+      "style": "normal",
+      "text": "James Wolde Ilyus was born in the tribe of Gad, and in another interpretation, he is called James the Less. The land he reached to teach the Gospel was Jerusalem, Palestine. In this land, he taught the mystery of Christ and turned the people from the worship of idols to the worship of God, from the state of sin to the state of righteousness, from the law of idols to the law of the Gospel, and from the corruption of the devil to the dwelling of the Holy Spirit. He stopped the false witnesses of the idol worshippers and threw them; he was pierced by a stone and rested in martyrdom on February 10, 62 A.D."
+    },
+    {
+      "index": 134,
+      "style": "normal",
+      "text": "However, some historians write James Wolde Ilyus together with the brother of the Lord /Iha Le'Igzi'ene/. This, however, is an error; according to the teaching of our Church, let us separate and place them in a table."
+    },
+    {
+      "index": 135,
+      "style": "Heading 2",
+      "text": "10th/ Apostle Nathanael"
+    },
+    {
+      "index": 136,
+      "style": "normal",
+      "text": "He was born in Cana of Galilee, located in Nazareth. (John 21:2) His first name was Simon, and it was the Lord who called him Nathanael. His birth era is around the time our Lord was born. This is because, while Herod was slaughtering the infants of Bethlehem, his mother hid him under a fig tree. The Lord also said, \"Before I called you, I knew you while you were under the fig tree.\" This is why. When Philip called him to the Lord, Nathanael, who was a scholar of the Torah, said, \"Can anything good come out of Nazareth?\" because he knew the words of the prophets and the scriptures. (John 1:44-52)"
+    },
+    {
+      "index": 137,
+      "style": "Heading 2",
+      "text": "11th/ Apostle Saint Thaddeus Libdios"
+    },
+    {
+      "index": 138,
+      "style": "normal",
+      "text": "He is known as the son of James, called Judas. (Acts 1:13, Luke 6:16) He is called Thaddeus Libdios. (Matt. 10:4)"
+    },
+    {
+      "index": 139,
+      "style": "normal",
+      "text": "The preaching land of Apostle Thaddeus is Syria. In a single day, he sowed the seed of bread and it reached the threshing floor."
+    },
+    {
+      "index": 140,
+      "style": "normal",
+      "text": "He made a contemporary woman play the lyre with a string of the soul."
+    },
+    {
+      "index": 141,
+      "style": "normal",
+      "text": "He is a Father who showed how to fulfill the word written in the Holy Scripture through action. (Matt. 19:24) Finally, after teaching the Gospel in various countries, he was pierced by a stone and rested in martyrdom on July 2."
+    },
+    {
+      "index": 142,
+      "style": "Heading 2",
+      "text": "12th/ Apostle Saint Matthias"
+    },
+    {
+      "index": 143,
+      "style": "normal",
+      "text": "Apostle Matthias is the Apostle chosen as a replacement for Judas who betrayed the Lord. (Acts 1:15-26). In the Church's writings, Awsabios wrote that Saint Matthias was one of the seventy disciples. /Awsabios 1:13-31/"
+    },
+    {
+      "index": 144,
+      "style": "normal",
+      "text": "In the History of Men"
+    },
+    {
+      "index": 145,
+      "style": "Heading 2",
+      "text": "13th/ Apostolic Saint Paul"
+    },
+    {
+      "index": 146,
+      "style": "normal",
+      "text": "Apostolic Saint Paul was born in the city of Tarsus. His lineage is from the tribe of Benjamin among the Hebrews. Upon returning to Jerusalem at the age of 15, he learned the Jewish law and customs from Gamaliel. At the age of 30, he was counted as a member of the Sanhedrin."
+    },
+    {
+      "index": 147,
+      "style": "normal",
+      "text": "During the two years Apostolic Saint Paul served as a member of the Sanhedrin, being a zealous Pharisee for the Law, he opposed Christians at every opportunity. It was he who argued against Saint Stephen when he presented Christianity before the Sanhedrin. Later, it was he who guarded the garments of the martyrs while they were being stoned."
+    },
+    {
+      "index": 148,
+      "style": "normal",
+      "text": "While Saint Paul was traveling to destroy the Christians in Damascus, having received a letter of permission from the high priests, before he entered the city, suddenly a great light came from heaven and illuminated the surroundings, and Paul fell to the ground. A voice came from heaven saying, «Saul, Saul, why do you persecute Me?» Apostolic Paul asked, «Lord, who are You?» The voice replied, «I am Jesus of Nazareth, whom you are persecuting.» The Lord said to him, «If you resist Me, it will be bound for you.» After Paul recounted everything he did, he was instructed to enter Damascus. Acts 9:11"
+    },
+    {
+      "index": 149,
+      "style": "Heading 2",
+      "text": "The Calling of Apostolic Saint Paul to the Church"
+    },
+    {
+      "index": 150,
+      "style": "normal",
+      "text": "The Lord told a man named Ananias about the election of Apostolic Paul in a vision. However, Ananias argued with the Lord, saying that Paul is a destroyer of Christians. The Lord said to him, «Go; for this man is a vessel chosen by Me to bear My name before the nations, before kings, and before the children of Israel; I have prayed for him that he may receive much suffering for My name,» and sent Ananianias to Paul."
+    },
+    {
+      "index": 151,
+      "style": "normal",
+      "text": "Then Ananias went, entered his house, and laid hands on him, saying, «Brother Saul, the Lord Jesus, whom you saw on the road, is He.» He also said, «Rise and be sighted, and the Holy Spirit will return to you; go to Me.» Immediately, like a scale, it fell from his eyes, and at that time he saw again, rose, and was baptized. He also ate and was restored. Apostolic Saint Paul himself recounted his journey to the Arab country after being baptized and taught by Ananias. Galatians 1:17. In Cyprus, his name, which was called Saul, was changed to Paul, which means light, hammer, or *hruy* /excellent vessel/."
+    },
+    {
+      "index": 152,
+      "style": "Heading 2",
+      "text": "The Apostolic Journey of Apostolic Saint Paul"
+    },
+    {
+      "index": 153,
+      "style": "normal",
+      "text": "The journeys made by Apostolic Saint Paul are three. The first journey, after returning from Jerusalem to Antioch, they went out with Barnabas to preach the Gospel in the land of the nations by the call of the Lord. Acts 13:1-3"
+    },
+    {
+      "index": 154,
+      "style": "normal",
+      "text": "After this, Apostolic Saint Paul made the journey that is not recorded in the Book of Acts. His journey was made to comfort the Christians who were suffering in prison and to see the completion of the works they had started. Finally, during the reign of Nero Caesar, because a death decree was issued against Christians as a reason for the burning of the city of Rome, Apostolic Saint Paul was captured in the city of Nicopolis in 65 A.D. He remained in a dungeon in prison for 2 years and 6 months, and in the year 74, at the age of 67, he was martyred on July 5, 67 A.D., by having his neck cut by a sword in the way of Ostia in the city of Rome."
+    },
+    {
+      "index": 155,
+      "style": "Heading 1",
+      "text": "Summary"
+    },
+    {
+      "index": 156,
+      "style": "Heading 2",
+      "text": "The Honor of the Apostles in the Church"
+    },
+    {
+      "index": 157,
+      "style": "normal",
+      "text": "The Holy Apostles gave their entire lives to the Holy Church; they adorned the Church through their teachings, their lives, and their actions. For the sake of the Church, they received various sufferings. To express the love and respect for these stars who were sacrificed, the Church preserves their martyrdom as a moral lesson for the coming generation, thinking that their names and stories should remain alive from age to age, and honors them in various ways. For example:"
+    },
+    {
+      "index": 158,
+      "style": "normal",
+      "text": "1. By preserving their teachings without deviation"
+    },
+    {
+      "index": 159,
+      "style": "normal",
+      "text": "Many in various ages deviated from the true teaching of the Apostles and fell into error by being led by their own ways, their own philosophies, and their own desires. However, in our time, the Holy Church remains by preserving the true teaching and doctrine of the Apostles, and it will continue to remain until the coming of the future. Galatians 1:8-9"
+    },
+    {
+      "index": 160,
+      "style": "normal",
+      "text": "2. By Witnessing their Martyrdom"
+    },
+    {
+      "index": 161,
+      "style": "normal",
+      "text": "Because the Apostolic Fathers were the pillars of Christian life, they struggled against heretics, schismatics, pagans, and the wicked leaders and officials of this world, and with the devil's tricks, they wrote Christianity with the color of their blood and the ink of their bones. They did not only write but also lived and demonstrated it. The Apostles, who are the fragrance of the Church, who suffered for the glory of the Gospel and the sanctity of the faith, are honored by the Church by witnessing their martyrdom."
+    },
+    {
+      "index": 162,
+      "style": "normal",
+      "text": "3. By Celebrating their Feasts"
+    },
+    {
+      "index": 163,
+      "style": "normal",
+      "text": "«ኪዳነ ተካየድኩ ምስለ ኀሩያንየ» Psalm 83:3, saying 'I made a covenant with those I chose,' He entered into a covenant with the Saints. The Holy Church, knowing this, celebrates the day of their martyrdom /except for Saint John, whose day of birth is celebrated/ and honors their feasts in a magnificent manner through praise, Qidase, and Mahlet."
+    },
+    {
+      "index": 164,
+      "style": "normal",
+      "text": "4. By Trusting in their Intercession"
+    },
+    {
+      "index": 165,
+      "style": "normal",
+      "text": "The intercession of the Saints is revealed in various places in the teachings of the Holy Scriptures and in the history of the Church. Accordingly, just as the faithful were healed in the past by touching the hem of their garments and lying on their beds, the Church teaches today that her children find salvation of the soul by praying in their names, building in their names, calling in their names, and honoring their icons."
+    },
+    {
+      "index": 166,
+      "style": "Heading 3",
+      "text": "2nd Century of the Apostolic Fathers / 71-160"
+    },
+    {
+      "index": 167,
+      "style": "normal",
+      "text": "The Apostolic Fathers who lived in this era were those who learned from the Apostles and were established on the throne of the Apostles. Many of these fathers wrote books, and these fathers were from both the Jewish and Gentile sides. They suffered martyrdom while witnessing the teachings they heard from the Apostles among the pagan kingdoms. Among these fathers, Barnabas, Clement of Rome, Polycarp, Erastus, Popius, and Ignatius suffered martyrdom during the reign of Trajan /98 - 117/ and are found in the 'Martyrs of the Lions' (ምጥው ለአንበሳ)."
+    },
+    {
+      "index": 168,
+      "style": "normal",
+      "text": "Ignatius Martyrs of the Lions /33 – 110 AD/"
+    },
+    {
+      "index": 169,
+      "style": "normal",
+      "text": "He was the disciple and psalmist of Saint John the Evangelist and was the third Bishop of Antioch in the seat of Saint Peter."
+    },
+    {
+      "index": 170,
+      "style": "normal",
+      "text": "In Matthew's Gospel 18:1, the Lord taught him using a parable of a child. To ensure his firm belief in Christianity and the steadfastness of the faithful, he fled to Rome in 110 AD during the persecution against Christians that arose in the reign of Trajan. He was martyred by being thrown to the hungry beasts at the theater of Rome. To express the respect and love the Orthodox Tewahedo Church of Antioch had for him, and considering the great deeds he did for the Church and his martyrdom, in order that his name and history might remain alive and be remembered from age to age, from 1293 AD onwards, most of the elected Patriarchs have performed [liturgical acts] in his name."
+    },
+    {
+      "index": 171,
+      "style": "Heading 3",
+      "text": "Saint Clement of Rome /91-100 AD./"
+    },
+    {
+      "index": 172,
+      "style": "normal",
+      "text": "While Saint Peter was traveling to Rome, the ship he was on was struck by a storm, causing many passengers to die where they were. The others were scattered, and among those scattered, a mother found an infant crying at a port in an unknown land, having lost his father. He began to follow her; this infant was Clement."
+    },
+    {
+      "index": 173,
+      "style": "normal",
+      "text": "Saint Clement of Rome is one of the Apostolic Fathers who rose after the seven decades. He was the fourth Bishop of Rome, and the one who gave him the priesthood was Saint Peter. No one among the Apostolic Fathers is as well-known in the Church as Clement of Rome, for what reason? Because he performed and wrote many works."
+    },
+    {
+      "index": 174,
+      "style": "normal",
+      "text": "In the Apostolic era, there was no Holy Communion. They would sing a psalm and the faithful would receive Holy Communion only by reciting the phrases the Lord spoke in the Passion of the Cross. He, however, wrote books to help with this. The scholars of the Church extracted the Qidase from this book. He is the one who wrote the Book of Clement, which is counted among the 81 books. He also wrote books that serve as guides for the Church until the present day."
+    },
+    {
+      "index": 175,
+      "style": "normal",
+      "text": "In this manner, after clarifying the Gospel and writing books, he was martyred on the 29th of Hadar in the reign of Trajan, having his neck tied to a cross and being thrown into the Black Sea."
+    },
+    {
+      "index": 176,
+      "style": "Heading 3",
+      "text": "Saint Polycarp 55 - 155 AD"
+    },
+    {
+      "index": 177,
+      "style": "normal",
+      "text": "He was born in 55 AD in the city of Smyrna / Seleucia in Asia Minor. He was a disciple of John, and he was taught the teachings of Christianity and raised in the faith by a pious and religious woman named Callisto. In 69 AD, he was appointed as the third Bishop of Smyrna by the hand of Saint John. Church scholars interpret that Polycarp, who is called the \"Angel of Smyrna\" in the Revelation of John chapter 2, was the one."
+    },
+    {
+      "index": 178,
+      "style": "normal",
+      "text": "When Apostle Polycarp took his seat, his first act was to resolve the controversy that existed in his time regarding when the Feast of Resurrection should be celebrated among Christians living in the West and the East. He was the one who decided that the Feast of Resurrection should not depart from Sunday. This decision was based on the canon established by the 318 Church Fathers at the Council of Nicaea in 325 AD regarding the Feast of Resurrection. During the time he lived, while the Church was being attacked by Gnostics, he was a great Father of the Church who served as an apologist for the Church, mocking those who were mocking the Church in that era. It is even told that he met the founder of the Gnostics on the road to Merkyan, and instead of greeting him, he began to oppose him head-on. When the man was startled and asked, \"Where do you know me from?\", he replied, \"Yes, I know you; you are the firstborn son of the Devil.\""
+    },
+    {
+      "index": 179,
+      "style": "normal",
+      "text": "During the time our Father Polycarp was struggling against the heretics of that era regarding the true faith, pagan emperors arose and began to inflict persecution on Christians. The persecution, however, was not for the city of Smyrna; Polycarp was taken to Rome and was asked three questions. 1. They said, \"Speak evil against Christ.\" He replied to them without hesitation, \"I have served Him for eighty-six years, and I will not slander my God who has protected me until now.\""
+    },
+    {
+      "index": 180,
+      "style": "normal",
+      "text": "2. They said, \"Speak the name of the Roman Caesars.\" He replied to them, \"We do not turn our good things into evil; rather, we turn the evil into good things.\""
+    },
+    {
+      "index": 181,
+      "style": "normal",
+      "text": "Finally, in the public square of Rome, Polycarp's body turned into fire as he saw in his vision, expressing his love for his God and the Church. He was one hundred years old when he received martyrdom."
+    },
+    {
+      "index": 182,
+      "style": "normal",
+      "text": "Domitian Caesar 81 - 96 AD"
+    },
+    {
+      "index": 183,
+      "style": "normal",
+      "text": "He was the brother of Tiberius / Nero Caesar and was the cruel Caesar who reigned in Rome in 81 AD. In Church history, while he was alive, he made his image to be seen by carving it in form, shape, and likeness. It was he who drove the Gospel of John to the desert of Fitho by opposing him. He incited the destruction and persecution of Christians, saying, \"They are enemies of the Kingdom who have no God.\" He is the Caesar who inflicted the type of persecution and suffering on Christians that was carried out during the reign of Nero Caesar. He killed Timothy and Silas, who were disciples of Saint Paul."
+    },
+    {
+      "index": 184,
+      "style": "normal",
+      "text": "Trajan / 98-117 / AD."
+    },
+    {
+      "index": 185,
+      "style": "normal",
+      "text": "He is the king who tried to return Christians to the temple not only by force but also by deceit and intimidation. Occasionally, he tried to proceed through legal means. He is known for sending the famous one to Bitania as a governor, following the manner of Lini. In any case, he wrote, \"Let them be judged by the law, standing before the court of judgment.\" During this time, Bishop Agnathios of Antioch and Bishop Simon of Jerusalem received martyrdom in a cruel manner."
+    },
+    {
+      "index": 186,
+      "style": "normal",
+      "text": "Marcus Aurelius / 161-180 / AD."
+    },
+    {
+      "index": 187,
+      "style": "normal",
+      "text": "He was a king who was a philosopher and used to say that Christians are rebels and cowards. From 180 - 192 AD, the Caesar Commodus had a plan to destroy the Church gradually by deceit. Other kings, such as Alexandrosoros / 222-235 and Philippos Arebawi 244-249, despised Christians and, being prejudiced, did not spare Christians from anything. - -"
+    },
+    {
+      "index": 188,
+      "style": "normal",
+      "text": "Decius / 249-251/"
+    },
+    {
+      "index": 189,
+      "style": "normal",
+      "text": "Without hindering the efforts made by the kings who preceded him, during the reign of Decius, he issued a decree to the Roman Caesars and kings that any citizen who lived, who did not worship idols, and was a Roman Christian, would be killed entirely. Based on this law, they executed men, women, children, and the elderly in a cruel death penalty. They threw children into their mothers' arms. Mothers also received martyrdom as one of their legs was tied to a stake while another person dragged their body along the ground."
+    },
+    {
+      "index": 190,
+      "style": "normal",
+      "text": "Diocletian / 284-305/"
+    },
+    {
+      "index": 191,
+      "style": "normal",
+      "text": "He is an enemy of the Church whose presence and actions are unknown in Church history. Diocletian was born in a country called Delmatiya from a poor and humble family, and his first name is called Agrippa. It is asked how Diocletian, born from a humble family without royal lineage, could become the Emperor of the great land of Rome."
+    },
+    {
+      "index": 192,
+      "style": "normal",
+      "text": "1. He gained fame and reigned among the royal family for the bravery he showed in the war Rome waged against the Persians."
+    },
+    {
+      "index": 193,
+      "style": "normal",
+      "text": "2. Julian, the son of Emperor Julianus, reigned with a demonic spirit, committing base lust and performing vain incantations."
+    },
+    {
+      "index": 194,
+      "style": "normal",
+      "text": "286. After reigning as Emperor for two years, under the pretext of maintaining the peace of the country and to facilitate administration, he divided Rome into two parts—East Rome and West Rome—to favor his friend. He appointed himself as Emperor of the East and appointed Maximianus as Emperor of the West, while appointing Constantius as his co-emperor in the East."
+    },
+    {
+      "index": 195,
+      "style": "normal",
+      "text": "Reasons why Diocletian persecuted Christians"
+    },
+    {
+      "index": 196,
+      "style": "normal",
+      "text": "1. Because they refused to worship the idols he had set up /did not bow down/ in the first edict, and because they defied the edict in the second edict,"
+    },
+    {
+      "index": 197,
+      "style": "normal",
+      "text": "A. All Christian churches were to be demolished; B. Christians were not to associate with one another; C. All books speaking of the Christian religion were to be burned; D. All property belonging to the Church was to be confiscated; E. Any Roman citizen who was a Christian was to be excluded from government service; slaves who accepted Christianity were not to have the right to be freed; F. Even if Christians had any legal reason, they were not allowed to argue for their rights, and the right to appeal was not permitted."
+    },
+    {
+      "index": 198,
+      "style": "normal",
+      "text": "From the time the Church was founded in history, it suffered poverty and suffering that were unseen by the eye and by its extent. The number of Christians increased as if it were a tree being cut that sprouts from its roots. And God, to give rest to the Christians /to the Church/, raised the Great Constantine."
+    },
+    {
+      "index": 199,
+      "style": "normal",
+      "text": "Constantine /283-337 AD/"
+    },
+    {
+      "index": 200,
+      "style": "normal",
+      "text": "In 283 AD, in a place called /Nisan/, he was born to his pagan father Constantius and his Christian mother Helena. While his mother was a Jewish Christian, his father was a pagan /Azhab/. It is said that they met and gave birth to Constantine:"
+    },
+    {
+      "index": 201,
+      "style": "normal",
+      "text": "1. Since Christianity had not yet spread, some people in that era would perform such marriages."
+    },
+    {
+      "index": 202,
+      "style": "normal",
+      "text": "2. He was born to Constantine while his mother was in exile after being persecuted by her husband Thermenos. In 305 AD, his father called him from the East and appointed him as his co-emperor, and his father died shortly thereafter; at that time, he was 18 years old. On October 28, 305 AD, Maxentius, the son of Maximianus, reigned in Rome. Constantine strengthened the kinship by marrying Maxentius's daughter. However, the harmony between the two was briefly suppressed because Maximianus's father fled to Constantine and died in prison. /In 310 AD/, because of this, the two quarreled."
+    },
+    {
+      "index": 203,
+      "style": "normal",
+      "text": "In the East, however, Galerius died in the month of May in 311 AD, and his authority was inherited by Licinius Augustus and Maximinus as Caesar. Because of a disagreement between the two, Maximinus became Maximinus Diocles, and Licinius became a rival to Constantine."
+    },
+    {
+      "index": 204,
+      "style": "normal",
+      "text": "In 312 AD, Constantine won victory with the sign of the cross against Maxentius. In 313, Licinius seized the Eastern province by defeating his rival Maximinus. Licinius married Constantine's sister and strengthened the kinship. He also legalized Milan."
+    },
+    {
+      "index": 205,
+      "style": "normal",
+      "text": "They [decreed] that,"
+    },
+    {
+      "index": 206,
+      "style": "normal",
+      "text": "3. Christians residing in the Roman territory can express their religion according to the canon and law that governs their religion, like any other followers of religion."
+    },
+    {
+      "index": 207,
+      "style": "normal",
+      "text": "4. The law that was used in past eras to oppose and persecute Christians is abolished from today onwards."
+    },
+    {
+      "index": 208,
+      "style": "normal",
+      "text": "5. They say that if Christians need a place of worship, it will be given to them for free."
+    },
+    {
+      "index": 209,
+      "style": "normal",
+      "text": "6. They have the right to demand compensation for properties that were taken from them unjustly."
+    },
+    {
+      "index": 210,
+      "style": "normal",
+      "text": "However, the treaty between the two emperors was violated in a short time, leading them to war. In the battle, Constantine defeated Licinius and signed a second treaty with him in 321 AD. Licinius, however, broke the treaty of Milan which he had destroyed in 312 AD and began to persecute Christians. Constantine also broke the treaty, defeated Licinius in 323 AD, and took victory. However, since he was his sister's husband, instead of killing him, he bound him and threw him into the sea. However, upon his capture by Constantine, he was sentenced to death in 324 AD. The Roman Empire, which had been divided into four parts for about forty years, became one. Christians within his territory found their freedom of faith."
+    },
+    {
+      "index": 211,
+      "style": "normal",
+      "text": "Rights Constantine gave to the Church"
+    },
+    {
+      "index": 212,
+      "style": "normal",
+      "text": "1. Based on the imperial proclamation issued in 313 and 315, the Church was exempted from taxes."
+    },
+    {
+      "index": 213,
+      "style": "normal",
+      "text": "2. From all imperial revenues, a specific share is allocated to the Church / Tithe of the people/"
+    },
+    {
+      "index": 214,
+      "style": "normal",
+      "text": "3. He proclaimed that Sunday, which had been honored among Christians since the Resurrection of the Lord, should be a day of rest for Christians in 321 AD, and no work should be done within the empire on that day:"
+    },
+    {
+      "index": 215,
+      "style": "normal",
+      "text": "4. Dying believers were given the right to bequeath their property to the Church according to their will / according to their desire."
+    },
+    {
+      "index": 216,
+      "style": "normal",
+      "text": "5. In 321 AD, judicial authority was given to the bishops of Ephesus for non-criminal matters or disputes arising among Christians."
+    },
+    {
+      "index": 217,
+      "style": "normal",
+      "text": "Constantine proclaimed that these laws be inscribed within the imperial constitution and that Christianity be the state religion. At a time close to his death, he was publicly baptized by Bishop Sol Petros of Nicomedia. Finally, the reason he was baptized late was for two reasons:"
+    },
+    {
+      "index": 218,
+      "style": "normal",
+      "text": "1. Because he was born, grew up, and reigned among the pagans, so that no opposition would arise,"
+    },
+    {
+      "index": 219,
+      "style": "normal",
+      "text": "2. Because the early Christians, meaning those who lived until the 5th century, held the belief that baptism washes away sin, and if they sinned again, it would not be washed away by baptism; they delayed and postponed their baptism, performing it especially when they were on the verge of death, and he did it for that reason."
+    },
+    {
+      "index": 220,
+      "style": "normal",
+      "text": "Constantine did much for the Church. His mother, Helena, took out the Cross of the Lord from where it was buried in 327 AD, and she passed away in 328 AD. Constantine, who took power at the age of 31, passed away on Sunday, May 22 / in 337 AD, at the age of 54 at the time of his birth, on the day of the feast of Heraclius."
+    },
+    {
+      "index": 221,
+      "style": "normal",
+      "text": "2. Internal enemies of the Church"
+    },
+    {
+      "index": 222,
+      "style": "normal",
+      "text": "During the time the Church was fighting face-to-face with pagan empires, internal enemies arose that were fought as a side battle,"
+    },
+    {
+      "index": 223,
+      "style": "normal",
+      "text": "Internal enemies of the Church are called heretics in the language of the Lord, schismatics in the language of the Apostles, and heretics in the language of the scholars. These heretics are not people of the Church, but they are defectors who pretend to be people of the Church or who hold half of the faith and doctrine of the Church and do not hold the other half. These people are deceivers who grow like weeds and thorns, and they are those who plot within the Church like the wine of Christ's purity. Therefore, they are the internal enemies of the Church."
+    },
+    {
+      "index": 224,
+      "style": "normal",
+      "text": "Until now, the Church has defeated its external enemies. If a person struggles and fights, they will be defeated or they will win. But the Church cannot be defeated. The Church always fights, but you do not know it is defeated. Diabolos broke the lyre and shattered the bow. But he did not harm the Church. This was said by the Patriarch of Constantinople, John Chrysostom, regarding what is stated in Matthew 16:18, 'the gates of hell shall not prevail against it.'"
+    },
+    {
+      "index": 225,
+      "style": "normal",
+      "text": "This means when the reading is interpreted. Nevertheless, the gates of hell shall not prevail against the Church; it is a reading that shows that although the Church will ultimately triumph, there is a bitter struggle in the world."
+    },
+    {
+      "index": 226,
+      "style": "normal",
+      "text": "Gnostics"
+    },
+    {
+      "index": 227,
+      "style": "normal",
+      "text": "Gnostics means 'the knowledgeable' or 'people of knowledge.' The 'gnosis' they took is 'knowledge' from the Greek language. To say they are knowledgeable, they extracted the symbol themselves. Their teaching is called Gnosticism. It means intellectual knowledge. They saw salvation not through faith, but through knowing. These Gnostics presented their arguments based on self-generated philosophy rather than using a book as a foundation. They began to teach their doctrine in places and cities where the first Christians were most numerous. The thoughts of the Gnostics were produced among the Christians who returned from the houses of the Gentiles."
+    },
+    {
+      "index": 228,
+      "style": "Heading 2",
+      "text": "The Teaching /Perspective/ of the Gnostics"
+    },
+    {
+      "index": 229,
+      "style": "normal",
+      "text": "1. In the thought of the Gnostics, there are two gods; they say one is good and one is evil."
+    },
+    {
+      "index": 230,
+      "style": "normal",
+      "text": "2. They say salvation is through knowing, not through faith."
+    },
+    {
+      "index": 231,
+      "style": "normal",
+      "text": "3. They do not believe that the Divine Word united with human flesh."
+    },
+    {
+      "index": 232,
+      "style": "normal",
+      "text": "4. They say that what is known as a human being is the soul, which has human dignity, not the flesh; but the flesh, by its nature, is created for destruction."
+    },
+    {
+      "index": 233,
+      "style": "normal",
+      "text": "5. They oppose holy marriage."
+    },
+    {
+      "index": 234,
+      "style": "normal",
+      "text": "Simon Magus started this philosophical teaching and is the first head of heretics in the history of the Church. He also produced other followers. They are: - Marcion in Asia Minor, and Esedros in Alexandria."
+    },
+    {
+      "index": 235,
+      "style": "Heading 1",
+      "text": "Chapter 4"
+    },
+    {
+      "index": 236,
+      "style": "Heading 3",
+      "text": "The Golden Age of the Church /Age of the Saints/ 312 - 434"
+    },
+    {
+      "index": 237,
+      "style": "normal",
+      "text": "Our Savior, our God, Jesus Christ, spent three years and three months praying night by night on the Mount of Olives, and day by day he taught the Gospel by using parables, interpreting them, and revealing the mystery of the Kingdom of Heavens to the people. The Holy Saints also spent their time teaching the Holy Scriptures, interpreting the symbolized as if they had emerged from their God, and translating the symbolized as if they had not been tired or weary. It is the era when the Fathers, who stood up to defend the faith and order so that it would not be violated by heretics who rose with false words and argued in councils, taught and instructed the faithful. For example, Saint John Chrysostom, Saint Basil, Saint Epiphanius, and Saint Athenagoras are prominent figures."
+    },
+    {
+      "index": 238,
+      "style": "normal",
+      "text": "1. Basil of Caesarea 322 - 371 AD"
+    },
+    {
+      "index": 239,
+      "style": "normal",
+      "text": "Basil means 'the pillar of the Church.' His homeland was Antioch, his mother was Emilia, and his father was Esedros. He was the fourth child of his family, and his age was around three hundred. He was the Patriarch of Caesarea; Saint Basil is a good man whose tongue never leaves prayer, and as God was with him like David the man of God, he performed many wonderful miracles. For example:- 1. He added three days to his life."
+    },
+    {
+      "index": 240,
+      "style": "normal",
+      "text": "2. He caused a church that had been closed during the era of the Arianists to be opened for prayer."
+    },
+    {
+      "index": 241,
+      "style": "normal",
+      "text": "3. He returned a man who had been corrupted by the works of demons and had married the king's daughter to repentance. For this, he performed miracles beyond description. When Saint Basil was raised, Saint Ephrem was also raised; both of them performed great works."
+    },
+    {
+      "index": 242,
+      "style": "Heading 3",
+      "text": "Saint Ephrem from 306 - 375 AD"
+    },
+    {
+      "index": 243,
+      "style": "normal",
+      "text": "Saint Ephrem's country is Syria, and both he and his father were Aramaic. While Jacob of Nisibis was a psalmodist, he went to Nicaea following the Arian controversy; upon their return, he saw a vision at night where a pillar of light was planted from the earth to the heavens, and its light spread throughout the world. When he asked, 'Explain to me who the owner is,' a commanded angel came and said, 'It is Basil of Caesarea, who will make the world bright with his teaching.' Thinking this was a worthy thing to see, he went to Caesarea, but he did not find him as he had expected and imagined."
+    },
+    {
+      "index": 244,
+      "style": "normal",
+      "text": "He found him sitting on a golden throne, spreading a golden Gospel on a golden throne, covered in filth, wearing a kaba lanqa (a type of cloak), and teaching. While he was doubting if it was him, he understood it was him by seeing four things."
+    },
+    {
+      "index": 245,
+      "style": "normal",
+      "text": "1. Flames of fire coming out of his mouth as he was scattering the people."
+    },
+    {
+      "index": 246,
+      "style": "normal",
+      "text": "2. Demons sitting on his clothes and cursing like potatoes."
+    },
+    {
+      "index": 247,
+      "style": "normal",
+      "text": "3. A white dove coming and resting on his head."
+    },
+    {
+      "index": 248,
+      "style": "normal",
+      "text": "4. He called out, 'He knows the name, he knows the country, Ephrem the Syrian, Ephrem the Labawi, tell me; they stand in the corner of the church and pray for you.'"
+    },
+    {
+      "index": 249,
+      "style": "normal",
+      "text": "When the language of Basil was revealed to Ephrem and the language of Ephrem was revealed to Basil, they reached a point where they were conversing; one said, 'Is it Diqona?' the other said, 'Is it Qisna?' Qisna was mocked. They united both of them and, while a woman from among the nobles wrote down the sin she committed daily and the sin of a woman she was enduring, they erased the sin of that woman through their prayer."
+    },
+    {
+      "index": 250,
+      "style": "Heading 3",
+      "text": "The contribution Saint Basil made to the Church"
+    },
+    {
+      "index": 251,
+      "style": "normal",
+      "text": "1. He composed the Me'tsahafe Qidase (Divine Liturgy)."
+    },
+    {
+      "index": 252,
+      "style": "normal",
+      "text": "2. He prepared the teaching section within the Liturgy."
+    },
+    {
+      "index": 253,
+      "style": "normal",
+      "text": "3. He composed many hymns, including the Wudase Amlak (Praise of God) and the Me'tsahafe Lito. Finally, Saint Basil passed away on the 6th of Tir in 371 AD."
+    },
+    {
+      "index": 254,
+      "style": "normal",
+      "text": "2. Saint John Chrysostom from 307-407 AD"
+    },
+    {
+      "index": 255,
+      "style": "normal",
+      "text": "John means 'God is gracious' and Chrysostom means 'Golden-mouthed.' His father is called Asphanidos and his mother Atnasya. His country is Antioch, and he was educated in the wisdom of the flesh, Athena. He was appointed as the Patriarch of Constantinople by the hand of Saint Basil. When asked how the title Chrysostom could be given to him while his name was John, he said:"
+    },
+    {
+      "index": 256,
+      "style": "normal",
+      "text": "1. To humiliate and mock Nestorius, who was slandering the divinity of the Lord God and the motherhood of our Mother, the Virgin, without defiling or offending the holiness and purity of our Mother, his body was divided from his head like gold, and he was called 'Afe Wark' (Gold-headed)."
+    },
+    {
+      "index": 257,
+      "style": "normal",
+      "text": "2. While he was teaching by interpreting and honoring the eternal virginity of our Mother, a 'Sile Maryam' (icon of Mary) that was on the wall came forth, circled around his head three times, and said: 'Senaye tenagereke Yohannes Afe-work, Senay tenagerek Yohannes Afe-work, Yohannes Lisane Wark' (John Gold-headed, you have spoken, John Gold-headed, John Tongue of Gold), and then it returned to its place. Seeing this, the King and the people gave him the title 'Afe-work' from that day forward."
+    },
+    {
+      "index": 258,
+      "style": "normal",
+      "text": "John Afe-work performed many miraculous wonders; for example, to explain his superior rank among the priests, he ruled over the Angel of Darkness for 10 years. Without fear, he rebuked and rebuked Queen Audoxian, who had inherited the property of a poor woman."
+    },
+    {
+      "index": 259,
+      "style": "normal",
+      "text": "The contribution of John Afe-work to the Church"
+    },
+    {
+      "index": 260,
+      "style": "normal",
+      "text": "1. He delivered the 'Tegesats' (Theological Treatises)."
+    },
+    {
+      "index": 261,
+      "style": "normal",
+      "text": "2. He delivered the 'Atn' (Bone) liturgy."
+    },
+    {
+      "index": 262,
+      "style": "normal",
+      "text": "3. He wrote 'Haymanote Abew' (The Faith of the Fathers)."
+    },
+    {
+      "index": 263,
+      "style": "normal",
+      "text": "4. He wrote the Mystery of John, which had been lost, as if it had been revealed to him. Finally, in his lifetime, he performed many works, humiliated heretics, strengthened the faithful in their faith, and produced many disciples. He passed away on May 12, in the year 100 of his birth."
+    },
+    {
+      "index": 264,
+      "style": "normal",
+      "text": "3. Saint Demetrios"
+    },
+    {
+      "index": 265,
+      "style": "normal",
+      "text": "His country is Alexandria. Demetrios means 'Glass' (or 'Crystal'). His father and mother were pious people who feared God. When he reached the age of maturity, in the era when the Arianis were numerous and the Amanians were few, he was raised with his younger brother with a jar of wine. The Patriarch of his time is called Lucian. He was pleading and exhausted, and they said to him, 'Choose the one who will succeed you.' They said, 'Our father, enter the gate, take the canon, and tell us.'"
+    },
+    {
+      "index": 266,
+      "style": "normal",
+      "text": "On the appointed day, they gathered on the day of their counting. An angel commanded by the Subay (Holy Spirit) told them that at an unspecified time, a vine branch would come from him to be blessed, and he would be the one to succeed him. The one who said this arrived holding the branch, and they ordained him as the twelfth Patriarch of Alexandria."
+    },
+    {
+      "index": 267,
+      "style": "normal",
+      "text": "From his perfection, he began to separate the pure from the impure, the saved from the unsaved, and as he saw them, he would say, 'You who are saved, receive; you who are not saved, repent.' Many were being separated while repenting, but others said, 'It is not right for a pure virgin to sit on the throne of Mark,' and the whole people were amazed and began to rise up in hostility. His angel said to him, 'Do not desire your own salvation; the people have been harmed by slander because of you, so declare yourself.' The next day, after the 'Kedso' (Holy) separation, he showed them wonderful miracles. Seeing the miracles, the people were amazed and fell at his feet, saying, 'Save us, please, save us.' They were healed. It was at this time that the 'Nuzaze' (Healing/Miracle) began."
+    },
+    {
+      "index": 268,
+      "style": "Heading 3",
+      "text": "The contribution of Saint Demetrios to the Church"
+    },
+    {
+      "index": 269,
+      "style": "normal",
+      "text": "1. He is the one who composed the 'Bahre Hasab' (Sea of Calculation), which is the formula for the fasts and feasts that the Church follows in the modern era. This 'Bahre Hasab' helps to know the fasts and feasts of past years, current years, and those that will come in the future."
+    },
+    {
+      "index": 270,
+      "style": "normal",
+      "text": "2. Additionally, he wrote many treatises and books. Many times, he would carry them on a litter to the Church and teach them until sunset. However, they said that if they were justified and saved, they would wear flesh, and death would not remain. He passed away on October 13, in the year 105 of his birth."
+    },
+    {
+      "index": 271,
+      "style": "Heading 2",
+      "text": "What is Bahre Hasab? And how is the calculation?"
+    },
+    {
+      "index": 272,
+      "style": "normal",
+      "text": "Bahre Hasab is the Geʽez word, which is called Abushahr in Arabic and the calendar in Amharic. In another expression, it means a year without a number. Not a single Hasab Bahir is left. Why does the sea have a year? They said, the sea, having sprung from its source, flows without ending; similarly, the year lives, passing through people and wandering, until the coming of Christ stops it."
+    },
+    {
+      "index": 273,
+      "style": "normal",
+      "text": "Why did Saint Demetrios reach Bahre Hasab? 1. So that his desire might be fulfilled. 2. To bring closer the festivals and fasts that were scattered. The benefit of learning Bahre Hasab: - 1. To know the fundamental teachings of the Church. 2. If one leaves their country, is educated, and goes to a foreign land, if they have learned Bahre Hasab, they will not be confused by the festivals; there is a benefit to learning it. The teaching of Bahre Hasab, or its calculation, does not shorten the fast."
+    },
+    {
+      "index": 274,
+      "style": "normal",
+      "text": "The foundation of the Bahre Hasab teaching is that by working with the items listed below, we can know the past years, the current year, and the years to come until the coming of Christ, as well as the calendar, the fasts that fall, and the festivals that occur. It begins with the Year of the World (Amete Alem); the sequence of this calculation is written. Therefore, you can work by adding the Year of Mercy (Amete Mihret) that you desire:"
+    },
+    {
+      "index": 275,
+      "style": "normal",
+      "text": "1. Year of the World /A.A./"
+    },
+    {
+      "index": 276,
+      "style": "normal",
+      "text": "The Year of the World means the sum of the Year of Mercy and the Year of Kunene; its calculation is:"
+    },
+    {
+      "index": 277,
+      "style": "normal",
+      "text": "Year of the World = Year of Mercy + Year of Kunene"
+    },
+    {
+      "index": 278,
+      "style": "normal",
+      "text": "Based on this formula, what is the Year of the World?"
+    },
+    {
+      "index": 279,
+      "style": "normal",
+      "text": "2. Evangelist"
+    },
+    {
+      "index": 280,
+      "style": "normal",
+      "text": "It is the formula we use to know the Evangelist /the era/; the calculation to find the Evangelist is:"
+    },
+    {
+      "index": 281,
+      "style": "normal",
+      "text": "Based on this formula, if the remainder from what is divided is one, the era is Matthew. If two, the era is Mark. If three, the era is Luke. If four and there is no remainder, the era is John."
+    },
+    {
+      "index": 282,
+      "style": "normal",
+      "text": "Based on this, if the remainder from what is divided is one, the beginning is Tuesday; 2 is Wednesday; 3 is Thursday; 4 is Friday; 5 is Saturday; 6 is Sunday; 7 is Monday; and if it is divided without a remainder, the beginning is Monday."
+    },
+    {
+      "index": 283,
+      "style": "normal",
+      "text": "4. Wanber"
+    },
+    {
+      "index": 284,
+      "style": "normal",
+      "text": "Wanber is the Bahre Hasab teaching useful for calculating Abeqte and Meteq. To find the Wanber:"
+    },
+    {
+      "index": 285,
+      "style": "normal",
+      "text": "5. Abeqte: -"
+    },
+    {
+      "index": 286,
+      "style": "normal",
+      "text": "Abeqte means the remainder of the year. Its service, when added to the month and the days, determines the night. The calculation to find Abeqte is: Abeqte = Wanber X Tinte Abeqte /11/"
+    },
+    {
+      "index": 287,
+      "style": "normal",
+      "text": "6. Meteq"
+    },
+    {
+      "index": 288,
+      "style": "normal",
+      "text": "Meteq' means 'to call' or 'to ring.' The service uses the day on which the Meteq' falls as a basis for calculating the dates of feasts and fasts."
+    },
+    {
+      "index": 289,
+      "style": "normal",
+      "text": "If the Meteq' is greater than 14, it falls in Meskerem; if it is less than 14, it falls in Tikimt. However, 14 itself is not a Meteq'; the Meteq' falls only in these two months. If the Meteq' is at its maximum, it is Abeqte; if it is at its minimum, it is Abeqte. The Meteq' does not exceed 30, nor is it less than 30. 7. Tewsak"
+    },
+    {
+      "index": 290,
+      "style": "normal",
+      "text": "Tewsak means 'reconciliation' or 'adjustment.' The service counts it together with the Meteq' to determine the day on which the feast falls. There are two types of Tewsak calculations."
+    },
+    {
+      "index": 291,
+      "style": "normal",
+      "text": "The Tewsak of days"
+    },
+    {
+      "index": 292,
+      "style": "normal",
+      "text": "These are the Tewsak of fasts and feasts."
+    },
+    {
+      "index": 293,
+      "style": "normal",
+      "text": "Finally, the Ethiopian Orthodox Tewahedo Church has been accepting and teaching this tradition of calculation. It will continue to teach it in the future; therefore, if it is possible to teach the lesson of calculation, all Orthodox people must learn it. We must also pass down the 'Qasemne' to the next generation."
+    },
+    {
+      "index": 294,
+      "style": "Heading 1",
+      "text": "Chapter Five"
+    },
+    {
+      "index": 295,
+      "style": "Heading 2",
+      "text": "The Two Schools of Interpretation"
+    },
+    {
+      "index": 296,
+      "style": "normal",
+      "text": "The Apostles, after receiving the teaching from the Lord for three years and three months, needed to establish spiritual schools to help them teach/transmit that teaching to the world. The primary ones mentioned for this are: 1. The School of Interpretation of Alexandria 2. The School of Interpretation of Antioch"
+    },
+    {
+      "index": 297,
+      "style": "normal",
+      "text": "They are."
+    },
+    {
+      "index": 298,
+      "style": "Heading 3",
+      "text": "1st. The School of Interpretation of Alexandria"
+    },
+    {
+      "index": 299,
+      "style": "normal",
+      "text": "The first school of Christians known in Church history is the School of Interpretation of Alexandria, which was founded in the 1st century A.D. by the Evangelist Mark. The goal of the school was to train new believers in the teaching of the Holy Scriptures and to equip them with spiritual knowledge so that they could teach their own people upon leaving. In the second and third centuries, this school was expanding, and Christians studied not only spiritual but also secular knowledge and philosophy there. Many philosophers entered and studied there."
+    },
+    {
+      "index": 300,
+      "style": "normal",
+      "text": "Based on the principle that 'the reading of the School of Alexandria kills, while interpretation saves,' it does not follow the literal readings of the Holy Scriptures but interprets them to reveal their mysteries."
+    },
+    {
+      "index": 301,
+      "style": "normal",
+      "text": "2nd. The School of Interpretation of Antioch"
+    },
+    {
+      "index": 302,
+      "style": "normal",
+      "text": "The School of Interpretation of Antioch was founded in the middle of the 3rd century by a man named Lucianus in Antioch, which was the capital of Syria at that time."
+    },
+    {
+      "index": 303,
+      "style": "normal",
+      "text": "In this school, many philosophers entered and studied Christian teaching. At this time, the philosophical mindset of Christological faith and teaching, and even the philosophy of Aristotle, prevailed in this school."
+    },
+    {
+      "index": 304,
+      "style": "normal",
+      "text": "The school of Antioch used to translate and teach the Holy Scriptures using only literal interpretation. In this method of interpretation, both schools used to insult one another. Due to this mutual insult, the members of the school of Antioch used to call the Alexandrians Sabellians."
+    },
+    {
+      "index": 305,
+      "style": "normal",
+      "text": "Those who studied in the school of Alexandria: 1. Clementus /Titus Flavianus/ of Alexandria 2. Argenis"
+    },
+    {
+      "index": 306,
+      "style": "normal",
+      "text": "Those who studied in the school of Antioch"
+    },
+    {
+      "index": 307,
+      "style": "normal",
+      "text": "Among those who studied in the school of Antioch, one of those who were moved by the spirit of the school of Antioch and tried to return the teaching of the Church to philosophy was Arius. Arius was born around 257 AD in Libya in North Africa; although his family lineage is unknown, he was certainly not Greek. He found the teaching that he reconciled with the Church in the school of Antioch interpretation. Later, he became the deacon of Saint Peter in Teftsamete in Alexandria."
+    },
+    {
+      "index": 308,
+      "style": "Heading 2",
+      "text": "Teftsamete Saint Peter"
+    },
+    {
+      "index": 309,
+      "style": "normal",
+      "text": "His father was the priest Theodore and his mother was Sophia. Since he was a child of the righteous, they gave him to Abba Samuel, who taught him until he reached the rank of Deacon and then Priest. During a period of rest, he was appointed as the 18th Bishop Marcos. This father had three disciples, one of whom was Arius. Arius was a scholar whose knowledge was testified by his teacher. However, he reached extreme wisdom; at the beginning, he started to see what was not written, leaving what was written in Solomon, and began to move toward philosophy. Proverbs 8:22, 2 Peter 1:20, 1 Timothy 6:20"
+    },
+    {
+      "index": 310,
+      "style": "normal",
+      "text": "The matter reached him, and he called him and taught him. However, when he killed the argument and the denial, he was stripped of his appointment and demoted from his rank. Teftsamete finally, after rebuking Achillas in his seat, accepted martyrdom on the 29th day of Hadar. Achillas also, overcoming the love of friendship, released Arius from his demotion, but died by the death of punishment, and Athanasius replaced him in his seat. In the Church of Alexandria, many monks used the heresy of Arius as a means to defend the truth. As this situation continued to worsen, it was heard even in the Kingdom of Constantinople. He, in turn, sent messengers to clarify the matter and, based on what he understood, announced a decree for a council of the world's churches to be held."
+    },
+    {
+      "index": 311,
+      "style": "Heading 1",
+      "text": "Chapter Six"
+    },
+    {
+      "index": 312,
+      "style": "normal",
+      "text": "The International Councils of the Church"
+    },
+    {
+      "index": 313,
+      "style": "normal",
+      "text": "When our Lord prayed in the Gospel of John 17:21, saying, 'Father, I pray that they may all be one,' and expressed His will as we understood it, from the time it was founded, a strife separated it, and the unknown Church of Celsae Sinai entered among the Christians, causing confusion and hatred, to the point that the Church of Christ was divided into two. Until 451 AD, the leaders of the world's churches gathered, speaking with one heart and speaking as one word, to pass decisions for solutions to problems; they did not simply see and hear the problems and pass them by."
+    },
+    {
+      "index": 314,
+      "style": "normal",
+      "text": "This procedure of seeking a common solution to remove the problems of the Church was from the time of the Ecumenical Councils, and is not a new procedure that began in later times. In the history of the Church, there are 4 councils held at the international level, and we will look at these councils based on their chronological order."
+    },
+    {
+      "index": 315,
+      "style": "Heading 2",
+      "text": "1. Council of Nicaea"
+    },
+    {
+      "index": 316,
+      "style": "normal",
+      "text": "Based on the decree of Constantine, the council was held on the 9th day of Hadar in 325 AD, where 2448 fathers came from the world's churches. The presiding officers of the council are: 1. Athanasius 2. Eustathius 3. Hosius."
+    },
+    {
+      "index": 317,
+      "style": "normal",
+      "text": "The agenda of the council"
+    },
+    {
+      "index": 318,
+      "style": "normal",
+      "text": "1. To examine the heresies presented by Arius"
+    },
+    {
+      "index": 319,
+      "style": "normal",
+      "text": "2. To examine the heresies presented by Arius regarding the danger he caused to the mystery of salvation if the Son were a creature in His nature"
+    },
+    {
+      "index": 320,
+      "style": "normal",
+      "text": "A. God the Father has no sonship, but only creatorhood;"
+    },
+    {
+      "index": 321,
+      "style": "normal",
+      "text": "B. For the mystery of the Trinity, the one called Father, known in his fatherhood from the ages"
+    },
+    {
+      "index": 322,
+      "style": "normal",
+      "text": "was later!"
+    },
+    {
+      "index": 323,
+      "style": "normal",
+      "text": "C. Birth and creation are only words of Mokshe; they have no different meanings."
+    },
+    {
+      "index": 324,
+      "style": "normal",
+      "text": "D. God, by His own will, in order to create the world, created another wisdom."
+    },
+    {
+      "index": 325,
+      "style": "normal",
+      "text": "E. As the Son is the first creation of the Father, the Holy Spirit is the first creation of the Son."
+    },
+    {
+      "index": 326,
+      "style": "normal",
+      "text": "F. So that the teaching might not be called mere philosophy, [they] based it on the Holy Scripture, quoting Proverbs 8:22"
+    },
+    {
+      "index": 327,
+      "style": "normal",
+      "text": "G. For the Father, the creation is also his son. However, he attains divinity by grace, by struggle, and by sacrifice"
+    },
+    {
+      "index": 328,
+      "style": "normal",
+      "text": "he rose saying."
+    },
+    {
+      "index": 329,
+      "style": "normal",
+      "text": "After much debate, they understood that the perspective presented by Arius was philosophy; and since he did not repent from his error, they passed a decision that his teaching has no place in the Apostolic Church. The decision decided by the Council"
+    },
+    {
+      "index": 330,
+      "style": "normal",
+      "text": "1. Article of Faith / Prayer of Faith/"
+    },
+    {
+      "index": 331,
+      "style": "normal",
+      "text": "2. Building for Monks / For Monks/"
+    },
+    {
+      "index": 332,
+      "style": "normal",
+      "text": "3. The word 'Orthodox' was decided /found/ by this Council decision."
+    },
+    {
+      "index": 333,
+      "style": "Heading 3",
+      "text": "The removal of Arius and the Arian heresy"
+    },
+    {
+      "index": 334,
+      "style": "normal",
+      "text": "The campaign they conducted against the Church"
+    },
+    {
+      "index": 335,
+      "style": "normal",
+      "text": "After the Council of Nicaea, Constantine supported Arius by appointing him to a position. Athanasius, the sister of Constantine, pleaded with Arius's supporters in Eusebius for Arius to return from his exile; her plea was accepted, and Constantine ordered that Arius be released from his exile. By Athanasius's command, Constantine, Arius and his supporters returned from exile. Although the Council of Nicaea could not openly oppose, they began to reconcile and persecute the fathers who were in the Council's hearing by erasing their names from the King. Although the Council of Nicaea could not openly oppose in book and word, they began to damage the Church by bringing another alternative."
+    },
+    {
+      "index": 336,
+      "style": "normal",
+      "text": "For example"
+    },
+    {
+      "index": 337,
+      "style": "normal",
+      "text": "1. Erasing the names of the Fathers who were present in the Council 1"
+    },
+    {
+      "index": 338,
+      "style": "normal",
+      "text": "2. Corrupting the Orthodox by bribing officials,"
+    },
+    {
+      "index": 339,
+      "style": "normal",
+      "text": "3. Their main methods were to gather their own supporters and pressure the kings to issue orders so they could proceed in the way they permitted, outside of the established order. In general, they began to corrupt the Church by using these and other alternatives. Among the Fathers who suffered persecution through these methods, the most prominent is Saint Athanasius, whom the faithful of the Church honor."
+    },
+    {
+      "index": 340,
+      "style": "Heading 2",
+      "text": "Saint Athanasius"
+    },
+    {
+      "index": 341,
+      "style": "normal",
+      "text": "Athanasius was born in 307 AD to an Arian family in a village called Menuf. Athanasius means life without death. How did Athanasius, born into an Arian family, become worthy of this honor?"
+    },
+    {
+      "index": 342,
+      "style": "normal",
+      "text": "1. His mother was poor, and she brought him to the Church so that he might help her."
+    },
+    {
+      "index": 343,
+      "style": "normal",
+      "text": "2. God, who called out mockery from ignorance and the Apostles from fish-catching, called Athanasius from the playground to this honor. At the age of 18, he arrived at the Council of Nicaea, argued against Arius, and was a Father who wrote the Creed, which became the guide of the Church, far from the [Arian] heresy. At the age of 23, he was appointed as the Patriarch of Alexandria. As his title suggested, the young Constantine sent a messenger to release Arius from his exile. Athanasius, however, refused to release him from exile, stating that the matter of the Church concerns the Church and not the Kingdom. The young Constantine was angry because his order was not obeyed. Abyssomius of Sebaste, who was close to the Kingdom, conspired against Athanasius with the King and accused him on four grounds."
+    },
+    {
+      "index": 344,
+      "style": "normal",
+      "text": "A/ For being a soul-killer,"
+    },
+    {
+      "index": 345,
+      "style": "normal",
+      "text": "B/ For the crime of beating,"
+    },
+    {
+      "index": 346,
+      "style": "normal",
+      "text": "C/ For claiming they found him in fornication,"
+    },
+    {
+      "index": 347,
+      "style": "normal",
+      "text": "D/ It is a political accusation, claiming that he provides food and weapons for the rebels who came against the King, and forbids the grain of Alexandria from being shipped to Constantinople."
+    },
+    {
+      "index": 348,
+      "style": "normal",
+      "text": "When the time was right, the young Constantine intended to go out and decided that the accusation should be seen in the Council. The Council was to be held in Caesarea in Palestine. However, Athanasius understood that the Council was being conducted with Arian aggression, and since Caesarea was the diocese of Abyssomius, an Arian supporter, he said he would not attend. He decided to travel to Finike instead. Upon arriving at the location, Athanasius, accompanied by 49 Orthodox Bishops, went to the Council site."
+    },
+    {
+      "index": 349,
+      "style": "normal",
+      "text": "The Council was held on July 11, 337 AD. They began to detail the matters against which Athanasius was accused in the Council. However, without providing any reason, the accusation was accepted, and the Council was gathered and dispersed without issuing a statement. The King, also being moved by the [Arian] sentiment, imprisoned Athanasius in Trevari. Since this was convenient for the Arians, they began to persuade him, claiming that Arius had returned in repentance. When the King forced the Church of Alexandria to accept him, the Pope of Alexandria, Alexander, said that Arius's return in repentance was a mere word of mouth; the King agreed, and Arius wrote, 'I have returned.'"
+    },
+    {
+      "index": 350,
+      "style": "normal",
+      "text": "However, this was not enough; they said, 'Since he has returned, let us perform the Eucharist,' and prepared a sacrifice like the sacrifice of Abel and entered the Liturgy. While the Eucharist was being performed, Arius, whose stomach was swollen, began to groan like a lamb and, as his stomach burst, he died from the suffocation. This was the end of Arius; however, the teaching of heresy continued to influence the Church through the mediation of Arians. They conspired with the kings to persecute Athanasius about 5 times."
+    },
+    {
+      "index": 351,
+      "style": "normal",
+      "text": "Saint Athanasius received all these persecutions for the sake of the honor of the Church, and he is a Father who has contributed much to the Church. The contribution Athanasius made to the Church is: 1. He delivered the Liturgy which is called in his name."
+    },
+    {
+      "index": 352,
+      "style": "normal",
+      "text": "2. He wrote the Creed of Faith clearly."
+    },
+    {
+      "index": 353,
+      "style": "normal",
+      "text": "3. He wrote a specific part of the Faith of the Fathers."
+    },
+    {
+      "index": 354,
+      "style": "normal",
+      "text": "In general, Saint Athanasius was given many titles of honor for his works; for example, he was called the Fountain of Life, Apostle and Apostolic, the Church's gift from God, and the healing physician of his wounds. Finally, he remained on his throne for 47 years, spent 15 years in exile, and passed away on May 7, 384 A.D., at the age of 75. In 340 A.D., the Arianos were condemned."
+    },
+    {
+      "index": 355,
+      "style": "normal",
+      "text": "They were condemned. In 355 A.D., they were condemned to three parts because they gathered in Milan and did not agree."
+    },
+    {
+      "index": 356,
+      "style": "normal",
+      "text": "A. The heretics who say, 'It does not seem like Him' or 'It seems like Him' and claim that the Son does not in any way resemble the Father, are called the Pneumatic Arianos. Athanasius taught extensively that resemblance is for form, not for essence (bahriy)."
+    },
+    {
+      "index": 357,
+      "style": "normal",
+      "text": "They are those who say the Son seems like Him, leaving out the controversial word 'essence' (bahriy)."
+    },
+    {
+      "index": 358,
+      "style": "Heading 2",
+      "text": "2. Council of Constantinople /381 A.D./"
+    },
+    {
+      "index": 359,
+      "style": "normal",
+      "text": "This council was convened based on a message sent by Theodosius I, who was the King of Constantinople, to resolve the problem of the Church caused by the uprising of Macedonius, a Pneumatic Arian, who taught that the Holy Spirit is unbegotten. 150 scholars gathered. Those who led the council changed from time to time. First was Gorgorios of Anzinazu,"
+    },
+    {
+      "index": 360,
+      "style": "normal",
+      "text": "When he left, a Metropolitan named Nectarius took over, and finally, Timothy of Alexandria led the council as the presiding bishop. The main issues raised in the council were,"
+    },
+    {
+      "index": 361,
+      "style": "normal",
+      "text": "A. The heresy of Macedonius, who taught that the Holy Spirit is unbegotten in the Mystery of the Trinity; B. The heresy of Apollinarius, who taught in the Mystery of Incarnation that when the Word of God became man, He did not unite with the soul but with the flesh,"
+    },
+    {
+      "index": 362,
+      "style": "normal",
+      "text": "C. The heresy of those who say that the flesh of Adam, which was united with the Son of God, is not the flesh of Adam but another pre-existing flesh,"
+    },
+    {
+      "index": 363,
+      "style": "normal",
+      "text": "D. The refinement of the five-article Creed added to the Creed refined at the Council of Nicaea. Along with this, it was not the refinement of the Nicaean mystery,"
+    },
+    {
+      "index": 364,
+      "style": "normal",
+      "text": "But there were some words included in this council to correct the text. However, in May 381 A.D., when Macedonius was asked for information regarding the Holy Spirit being unbegotten, he did not provide a Scriptural quote. After this, the council cited the words in Isaiah 6, \"Holy, Holy, Holy, the Lord of Hosts,\" and Matthew 28, \"Go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit.\" Since these quotes explain unity and trinity, and saying Macedonius did not return from his heresy, 150 scholars condemned his teaching and him."
+    },
+    {
+      "index": 365,
+      "style": "Heading 2",
+      "text": "3. Council of Ephesus /431 A.D./"
+    },
+    {
+      "index": 366,
+      "style": "normal",
+      "text": "Since its foundation, the theological dispute separated, and Constantinople, which I do not know, entered into another problem due to the heresy of Nestorius. Ephrerius, who lived in a Greek monastery, had received his teaching at the school in Antioch from Diadrus, the Metropolitan of Tarces. His teaching on the Mystery of Incarnation was as it was from his teacher, and he believed the Lord was the Word of God (Walde Igziabher). He began to teach the heretical teaching that the Word of God did not unite with the Word of David but was joined by it. He also taught publicly that our Mother did not give birth to God but to a man."
+    },
+    {
+      "index": 367,
+      "style": "normal",
+      "text": "The things raised in this council"
+    },
+    {
+      "index": 368,
+      "style": "normal",
+      "text": "d. Nestorius' teaching of heresy, Saint Cyril's teaching of the Mystery of Incarnation and his campaign against Nestorian heresy, e. the convening of the Council of Ephesus and the decision it passed."
+    },
+    {
+      "index": 369,
+      "style": "normal",
+      "text": "Nestorius used the word of John 1:14 to argue that becoming flesh results in change, and he used Philippians 2:5-6 as a leading quote, claiming that the word 'let him humble himself' was made into flesh to facilitate his [heretical] views."
+    },
+    {
+      "index": 370,
+      "style": "normal",
+      "text": "The one who defeated this heretical teaching is Saint Cyril, the Patriarch of Alexandria, who endured many persecutions for the sake of the Church. Born in Alexandria in 375 AD, he was a pure Egyptian and was the nephew of Patriarch Theophilus. It was Theophilus who appointed Daquana and Qisana. When Theophilus passed away in 412 AD, Cyril was appointed as the 24th Patriarch of Alexandria. He led the Church of Alexandria for 32 years. He passed away on July 3, 444 AD. The decision of the Council"
+    },
+    {
+      "index": 371,
+      "style": "Heading 2",
+      "text": "4. Council of Chalcedon"
+    },
+    {
+      "index": 372,
+      "style": "normal",
+      "text": "Like its sisters, the Eastern Churches. The Christians of the Ethiopian Church did not accept, and do not accept, the Council of Chalcedon, its decisions, and its canons. In the Church of Constantinople, the heretic who claimed that God the Son, when he took the body from our Mother Virgin Mary, became 'refined' because his divinity changed his body, taught heretical doctrine. In the era of the Kingdom of Merqiyan in 636, the bishops gathered in 451 AD in a city called Chalcedon, located near the city of Constantinople. The Patriarch of Alexandria, Dioscorus, and others attended representing the Church. The Council condemned the heretic and the letter of Leo in unity."
+    },
+    {
+      "index": 373,
+      "style": "Heading 2",
+      "text": "After the Council of Chalcedon"
+    },
+    {
+      "index": 374,
+      "style": "Heading 2",
+      "text": "After the Council of Chalcedon, for 150 years, the successive Emperors of Constantinople tried hard to unite the Church. The Emperor Zeno, who reigned from 474-491, and Emperor Anastasius, who reigned from 491-518, wanted the Tewahedo faith, which teaches 'one nature,' to be accepted, but the Council of Chalcedon and the Letter of Leo stood as obstacles."
+    },
+    {
+      "index": 375,
+      "style": "normal",
+      "text": "Therefore, the Emperor proposed a reconciliation, and the Patriarchs of Alexandria and Antioch agreed and signed. However, the Pope of Rome, refusing to agree, condemned Patriarch Dioscorus and Emperor Zeno. As a result, the Churches of Rome and Constantinople were in conflict for 30 years. Cyril's teaching spread in Syria and Antioch, and Philoxius of Syria stood firmly to testify for the Tewahedo faith."
+    },
+    {
+      "index": 376,
+      "style": "normal",
+      "text": "Through these and the efforts of similar Fathers, it was decided in 491 AD at the Council of Sebhapt that the Tewahedo faith would be the national religion of Armenia. From 522 AD onwards, the prayer we recite, 'Holy God, Holy Mighty, Holy Immortal, Who art over all...' became a distinguishing mark between the Tewahedos and the Melkavians."
+    },
+    {
+      "index": 377,
+      "style": "normal",
+      "text": "After this, during the 30 years of the reigns of Emperor Justin (518-527) and his nephew Justinian (527-565), they reconciled the Romans and Greeks Churches which had been in conflict. They tried hard to destroy those who accepted the Tewahedo teaching but died without succeeding. However, the Tewahedo faith did not die; it still exists, as it is said to be born a hero on the battlefield. It was during this era that Jacob of Edessa, who became a shining star in the Eastern Church, arose."
+    },
+    {
+      "index": 378,
+      "style": "normal",
+      "text": "Jacob of Edessa was born in a special village called Tell in Syria. He studied in Constantinople and accepted monasticism there. 'Al-Mabrad' means 'the weaver' in Arabic. Because he used to teach while wearing clothes that resembled a weaver's clothes, and because he was as skilled as a weaver, he was called Mabrad or Al-Mabrad. Patriarch Theodosius of Alexandria appointed him as a Bishop for Syria. After his appointment, he traveled and taught in his diocese and in Egypt, spreading the weakened Tewahedo faith."
+    },
+    {
+      "index": 379,
+      "style": "normal",
+      "text": "Monks Konob and Evgenios, who traveled with him to expand the service, were sent by Bishop Theodosius. They also returned after being appointed. With them, he appointed 26 Bishops and more than one thousand priests and deacons."
+    },
+    {
+      "index": 380,
+      "style": "normal",
+      "text": "While all this was happening, Jacob did not take the Syrian see; instead, he appointed a monk named Sergius as Patriarch with other bishops. Five years later, after Sergius died, he appointed Abba Paul, who was known for his monastic life. After Jacob of Edessa fought and died while defending the Apostolic message in 578 AD. Because of the work he did in Syria, the Church is called Jacobite, and its members are called Jacobians."
+    },
+    {
+      "index": 381,
+      "style": "Heading 2",
+      "text": "After the Council of Chalcedon, as reconciliation was difficult, the Romans and Greeks held three councils. They are:"
+    },
+    {
+      "index": 382,
+      "style": "normal",
+      "text": "1. The one held in 553 AD"
+    },
+    {
+      "index": 383,
+      "style": "normal",
+      "text": "2. The one held for Constantinople from 680-681 and"
+    },
+    {
+      "index": 384,
+      "style": "normal",
+      "text": "3. It is the Second Council held in Nicaea in 787 A.D."
+    },
+    {
+      "index": 385,
+      "style": "normal",
+      "text": "The Orthodox accept the seven councils that have been listed until now. However, we accept only the first three: Nicaea, Constantinople, and Ephesus."
+    },
+    {
+      "index": 386,
+      "style": "normal",
+      "text": "Although persecution began in the Roman territory from the 5th century, those who were not Latin or Greek, or those accepted by the authorities of the Roman government, were captured and brutally beaten. In particular, King Heraclius was persecuting and executing the Tewahedos found in Egypt, Syria, Palestine, and Constantinople. As the power of the Tewahedos grew, they were forced to pay taxes in Egypt and were forced to sell their holy belongings. To escape their troubles, Patriarch Abune Binyam hid in a cave and spent many years there."
+    },
+    {
+      "index": 387,
+      "style": "normal",
+      "text": "While the Tewahedos were enduring this suffering, the Persian army attacked and invaded Egypt. Later, in 639 A.D., when the Arabs came, the Roman emperors, who had previously persecuted the Tewahedos, accepted them after they had opened themselves up. Abune Binyam also emerged from the cave where he was hidden, and the Muslims issued a decree of mercy regarding the taxes. However, the faithful did not experience a reduction in suffering, but rather an increase. In their own country, they lived like refugees, carrying the cross of Christ."
+    },
+    {
+      "index": 388,
+      "style": "normal",
+      "text": "In 1015 A.D., the Pope of Rome promulgated the heretical teaching \"Azymos\" (unleavened bread), and although the Greeks remained silent for a time, this caused divisions and suspicions to begin in 1054 A.D. when they split into two, with one side calling the other heretics. The Roman Church registered 15 councils it held alone on a global level. The Ethiopian, Egyptian, Syrian, Armenian, and Indian Orthodox Churches separated from the Council of Chalcedon by stating that Christ is one body and one nature."
+    },
+    {
+      "index": 389,
+      "style": "Heading 1",
+      "text": "Chapter Seven: The Beginning and Growth of Monastic Life"
+    },
+    {
+      "index": 390,
+      "style": "normal",
+      "text": "Our Lord Jesus Christ said, \"If you want to be perfect, go and sell what you have and give to the poor, and follow Me.\" He also said, \"What does it profit a man to gain the whole world, yet forfeit his own soul?\" Those who arm themselves with these words like a spear, properly understand the responsibility and vanity of this world, and sharpen their minds with spiritual wisdom—that is, those who live by despising and overcoming this world. In general, monks are those who live in a state where faith and practice are united like soul and body; they love only what God loves, are guided in the path He prepared for them, are protected from the snares of the devil and the plots of enemies, overcome them, and fulfill the law and its commandments, living in a designated place."
+    },
+    {
+      "index": 391,
+      "style": "normal",
+      "text": "The beginning of monastic life did not come as a strange intruder or a bird's seed, but rather it came as a prophecy and as a parable."
+    },
+    {
+      "index": 392,
+      "style": "Heading 3",
+      "text": "The parable of the beginning of monastic life in the Law of the Heart and the era of the Old Testament"
+    },
+    {
+      "index": 393,
+      "style": "normal",
+      "text": "Even though it began in the era of the New Testament after the Law was removed and the order was broken, in the ancient times, in the era of the Law of the Heart and the Old Testament, there were those who served as a parable for monastic life: those who lived in holy places, kept pure away from women, and remained steadfast in praise. Enoch 9:16. Enoch, after fathering children in this world, found this lifestyle unsuitable for his spiritual needs and began a life of solitude. Additionally, Melchizedek, Elijah, and John the Baptist; and the prophetess Hannah, known for her monastic life from the side of women, Luke 2:36; in general, they are parables for monastic life in the era of the Torah, the Law of the Heart, and the Old Testament."
+    },
+    {
+      "index": 394,
+      "style": "Heading 3",
+      "text": "The beginning of monastic life in the New Testament"
+    },
+    {
+      "index": 395,
+      "style": "normal",
+      "text": "In the era of the New Testament, the pioneer and leader of monastic life, the life of solitude, and humility is Jesus Christ. Indeed, immediately after He was baptized, without delay or hesitation, He entered the wilderness of Choronthos and, without sitting down, without spreading out, stayed in solitude for forty days and forty nights without consuming anything. In this, He gave a blessing and holiness to monastic life and the life of solitude. Matthew 4:1. The one hundred and twenty families who lived by what He taught, who departed from where He sent them, and who did not leave Him, as well as the first Christians, are parables for monastic life in the era of the New Testament."
+    },
+    {
+      "index": 396,
+      "style": "Heading 2",
+      "text": "The beginning of the Order of Monasticism"
+    },
+    {
+      "index": 397,
+      "style": "normal",
+      "text": "Monasticism, the Geʽez word is 'Menkus', means leaving everything in the world, entering into a covenant of the cross, dying, separating, forgetting the world, and hating oneself. Those who live in unity of purpose and life are called a community of monks. Those who live alone, separated from people, in a designated place after staying in a community to study and serve are called anchorites (Bahtawiyan). There were also anchorites who lived in some forests and caves away from the community of unity, without interacting with people, with a distinct dress and a fearsome,"
+    },
+    {
+      "index": 398,
+      "style": "normal",
+      "text": "majesty. These types of anchorites are called \"Ghusan\" in the community's terminology. 'Ghus' means an anchorite who lives separated from people."
+    },
+    {
+      "index": 399,
+      "style": "normal",
+      "text": "In the New Testament, the first anchorite was Saint Paul, but those who took out the law and order and made it spread were Abba Antonios. They later, as it says in 1 Peter 5:11, Abba Pachomius and John of the Desert made a significant contribution to the expansion of monasticism."
+    },
+    {
+      "index": 400,
+      "style": "Heading 2",
+      "text": "The Beginning of Monastic Life"
+    },
+    {
+      "index": 401,
+      "style": "normal",
+      "text": "Monastic life means living to serve God at all times, leaving behind family, relatives, wealth, possessions, and everything else in this world, and remaining settled in a monastery. Monastic life began through Him, its Owner, our Lord Jesus Christ, in the wilderness of Corinth, where it was established in a place of forty days and forty nights of fasting and prayer, although it was in the fourth century in Egypt through Saint Anthony. During that same period, in various locations within the deserts of Egypt, monasteries were spreading and monks were increasing through various holy fathers. Early holy fathers like Saint Anthony, Pachomius, Saint Ephrem, Saint Barsoma in Lower Asia, Basil of Caesarea, John of Ephesus, Abune Aregawi, and Abune Teklehaymanot contributed significantly to the expansion of monastic life in the world."
+    },
+    {
+      "index": 402,
+      "style": "Heading 2",
+      "text": "The Order of Monasticism"
+    },
+    {
+      "index": 403,
+      "style": "normal",
+      "text": "Monasticism can be practiced in two ways: the first is practiced by those who are not married and remain virgins, and the second is by those who become monks after marriage; for this, righteous Enoch in Genesis 5:24 became an example for those who become monks after starting the life of this world. Until the ninth century, it was governed without law and without order, but in the ninth century, the fathers and monks established laws."
+    },
+    {
+      "index": 404,
+      "style": "normal",
+      "text": "1. Monks should pray together in the morning and evening"
+    },
+    {
+      "index": 405,
+      "style": "normal",
+      "text": "2. Their meals should be in one common table"
+    },
+    {
+      "index": 406,
+      "style": "normal",
+      "text": "3. Although monastic life has been established for a long time, it is said that the female order and the male order should be separated. The Rules of Monasticism"
+    },
+    {
+      "index": 407,
+      "style": "normal",
+      "text": "The Rules of Monasticism are of two types: the first is given by rank, and the second is given by level of competence."
+    },
+    {
+      "index": 408,
+      "style": "Heading 2",
+      "text": "There are three ranks in monasticism by rank: they are 1. Qob, 2. Qin'at, 3. Askema."
+    },
+    {
+      "index": 409,
+      "style": "Heading 2",
+      "text": "Monasticism by Rank"
+    },
+    {
+      "index": 410,
+      "style": "normal",
+      "text": "1. Qob: - It is the first rank in monastic life; new recruits are equipped with it. They can work in white, black, or yellow Qob."
+    },
+    {
+      "index": 411,
+      "style": "normal",
+      "text": "2. Qin'at: - It is the second rank in the rank order; it is usually what church administrators perform as Qomosos. It is worked in black only."
+    },
+    {
+      "index": 412,
+      "style": "normal",
+      "text": "3. Askema: Those who reach the final rank in the hierarchy of priesthood, the Patriarch, the bishops, and the Episkopos perform it; it is worked in black and white from the Lizb, and in black hair from the Red Sea. Thus, every Qob has its examples."
+    },
+    {
+      "index": 413,
+      "style": "Heading 2",
+      "text": "The Rules of Monasticism by Level of Competence"
+    },
+    {
+      "index": 414,
+      "style": "normal",
+      "text": "Saints who are friends of God do not reach the level of perfection and holiness at once; however, just as a born infant gradually moves from crawling to standing, from standing to walking, and then begins to run and leap, monastic rules, starting from asceticism, reach perfection by being graced by God. 'After you have received suffering for a short time, He will make you perfect, He will strengthen you, He will encourage you.' Starting from asceticism, as they go winning the temptation, they reach the middle level and finally reach perfect competence. Monasticism is ten, and this is divided into three spiritual levels."
+    },
+    {
+      "index": 415,
+      "style": "normal",
+      "text": "1. Purity of Flesh"
+    },
+    {
+      "index": 416,
+      "style": "normal",
+      "text": "2. Purity of Soul"
+    },
+    {
+      "index": 417,
+      "style": "normal",
+      "text": "3. Purity of Mind are [the goals]."
+    },
+    {
+      "index": 418,
+      "style": "normal",
+      "text": "These levels /ranks/ are attained by those who reach them in their respective order. The one who holds the higher rank continues to progress while also holding the lower rank. Following this, the analysis of the ten ranks is presented."
+    },
+    {
+      "index": 419,
+      "style": "normal",
+      "text": "1. Purity of Body: - Purity of body is the rank that the *watanyans* (monastics) strive for. At this time, the enemy Satan prepares various trials and hurdles to prevent them from reaching the rank, to cast out the *watanyans*, and to keep them from tasting the flavor of the Holy Spirit. Purity of body encompasses three ranks. They are the rank of *Tsimawé*, the rank of *Libawé*, and the rank of *T'amé Zimaré*."
+    },
+    {
+      "index": 420,
+      "style": "normal",
+      "text": "A. *Tsimawé*: - This means to be silent. \"Behold, a little part of the mouth is adorned with a great thing. Behold, how a little fire burns a great forest\" (James 3:2-12). Understanding this word, those who seem unable to speak, saying, \"O Lord, guard my lips, keep my mouth shut, and guard my way so that I do not err with my tongue,\" and who are forbidden from speaking evil or gossiping, consider themselves as having a tongue that can speak what is permitted, and they make silence their treasure."
+    },
+    {
+      "index": 421,
+      "style": "normal",
+      "text": "B. *Libawé*: - *Libawé* means discernment, heart-working, realization, knowing, understanding, examining. Those who reach this rank are called by grace \"God's people\" because they examine the inner disposition of people's hearts."
+    },
+    {
+      "index": 422,
+      "style": "normal",
+      "text": "C. *T'amé Zimaré*: - *T'amé Zimaré* means that when they give thanks, praise, sanctify, and pray, they gather the treasure of the mind and the clarity of the eyes to give thanks with harmony. Those who reach this rank are those who, when they pray the non-thankful praise, saying, \"For God is King over all the earth, sing with discernment,\" they do not tire of it and they persevere."
+    },
+    {
+      "index": 423,
+      "style": "normal",
+      "text": "2. Purity of Soul - Just as purity of body is found from the impurities of the body, purity of soul is also found from the impurities of the body. Just as the impurities of the soul precede the impurities of the body, they also precede purity of body. There are four ranks found in purity of soul; they are the rank of *Anb'é*, the rank of *Kunéné*, the rank of Love, and the rank of *Husét*."
+    },
+    {
+      "index": 424,
+      "style": "normal",
+      "text": "A. *Anb'é*: - *Anb'é* means that tears flow from their eyes like spring water without their faces being distorted or mocked. These are the blessed ones who grieve and weep. It is said that they find consolation, and in that other world to find consolation, today in this world, they live grieving and weeping while thinking of their own sins, the death of the Son of God, the persecutions of the martyrs, and the sins of the multitude."
+    },
+    {
+      "index": 425,
+      "style": "normal",
+      "text": "B. *Kunéné*: - *Kunéné* means to subject the body to the soul. Because the desires and actions of the body and soul do not always agree, one lives as if it were rising over the other. When the body loves eating, drinking, resting, and the like, the soul loves fasting, prayer, diligence, purity, and similar spiritual works. The body and soul struggle until a person becomes a tool for one of the two. When they reach these ranks, they completely subject their bodily desires to their souls."
+    },
+    {
+      "index": 426,
+      "style": "normal",
+      "text": "C. Love: - Love means that since every creature, which God did not create without purpose, was created in glory as an image and likeness of God, it means to love everyone with one heart without making distinctions such as righteous and sinner, believer and hypocrite, poor and rich, or friend and enemy."
+    },
+    {
+      "index": 427,
+      "style": "normal",
+      "text": "D. *Husét*: - \"*Husét*\" is to reach what they thought while sitting /being/ in this world. These are those who, while being in one place, reach like the sun's rays; they know what is being worked in another place. In general, it means their hearts are set toward heaven while they forget the earth."
+    },
+    {
+      "index": 428,
+      "style": "normal",
+      "text": "3. Purity of Mind: - Because those who reach the rank of purity of soul are sought by the enemy, Diabolos, who fights them with all his power to prevent them from reaching the level of perfection. He brings all kinds of trials, thinking that he will confuse and distress their minds and separate them from God. Whoever overcomes all this suffering by the power of God reaches perfection. There are three ranks in purity of mind: the rank of *Ntsaré Mel'akit*, the rank of *Tesetmo Berhan*, and *Kewine Isat*."
+    },
+    {
+      "index": 429,
+      "style": "normal",
+      "text": "A. *Ntsaré Mel'akit*: - While being in the body, they see the angels in their cities, their villages, and their places. Because of this, they forget their bodily lifestyle and, while being in this world, they become distracted by the actions and the ups and downs of what is done in this world. This is because their life is with the heavenly angels."
+    },
+    {
+      "index": 430,
+      "style": "normal",
+      "text": "B. *Tesetmo Berhan*: - *Tesetmo Berhan* means to be immersed in the sea of light. This is a light that, when seen, does not dazzle the eyes and does not burn the body. The fragrance and flavor of the light is delightful, separating the soul from the body bit by bit."
+    },
+    {
+      "index": 431,
+      "style": "normal",
+      "text": "C. *Kewine Isat* - *Kewine Isat* means to become like fire. This is the final rank, and the saints who reach it have bodies that burn demons and are inaccessible to them. The pure-hearted are blessed; they see God, and as it is said, those who reach this rank reach the level of seeing the *Netsrote Sulus Kidus* /Holy Trinity/."
+    },
+    {
+      "index": 432,
+      "style": "Heading 3",
+      "text": "Summary: -"
+    },
+    {
+      "index": 433,
+      "style": "normal",
+      "text": "Apostle Saint Peter stated these virtues in his second epistle 1: 5-9: <<Therefore, as you live in this world, keep on growing in your faith, having no fear of anyone. Continue to live such lives as marked by good conduct, kindness, humility, patience, faithfulness, and love. If these virtues increase in you, they will keep you from falling into sin and from becoming useless.>> He teaches that there are ten virtues which are the foundation of the word. These virtues are seen in the holy monks who have arisen in every age. Thus, the life of a monk has reached the current era as it is stated here."
+    },
+    {
+      "index": 434,
+      "style": "Heading 3",
+      "text": "Reference books provided for the writing: -"
+    },
+    {
+      "index": 435,
+      "style": "normal",
+      "text": "1. The History of the Church on the World Stage /by Abune Gorgorios of Shewa, Bishop, 1976 A.D./"
+    },
+    {
+      "index": 436,
+      "style": "normal",
+      "text": "2. The History of the Church /by Lule Melaku/"
+    },
+    {
+      "index": 437,
+      "style": "normal",
+      "text": "3. Acts of the Apostles"
+    },
+    {
+      "index": 438,
+      "style": "normal",
+      "text": "4. Know the Church /by Mahiber Kidusan/"
+    },
+    {
+      "index": 439,
+      "style": "normal",
+      "text": "5. Mechafé Menekosat"
+    },
+    {
+      "index": 440,
+      "style": "normal",
+      "text": "6. Qidase Tirguame"
+    },
+    {
+      "index": 441,
+      "style": "normal",
+      "text": "Glory be to God"
+    },
+    {
+      "index": 442,
+      "style": "Heading 3",
+      "text": "Menagesha Genete Tsige Saint George Church Sunday School"
+    },
+    {
+      "index": 443,
+      "style": "normal",
+      "text": "♥ 011 155 89 41"
+    },
+    {
+      "index": 444,
+      "style": "normal",
+      "text": "Lesson prepared."
+    }
+  ]
+}
