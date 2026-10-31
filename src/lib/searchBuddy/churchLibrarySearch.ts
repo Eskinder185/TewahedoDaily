@@ -1,6 +1,7 @@
 import { getAiApiBaseUrl } from '../ai/aiConfig'
 import { supabase } from '../supabase/client'
 import { sectionHref } from '../churchLibrary/libraryService'
+import { selectEnumerationAnswer } from './selectEnumerationAnswer'
 
 export type ChurchLibraryHit = {
   passage_id: string
@@ -30,10 +31,26 @@ export type ChurchLibrarySearchResponse = {
   semantic_status: string
   availability: 'ok' | 'no_relevant_passage' | 'no_indexed_content' | 'no_public_books'
   answer: string | null
+  /** passage_id of the hit whose excerpt is `answer`; absent means the first result. */
+  answer_passage_id?: string | null
   answer_status: 'source_excerpt' | 'insufficient_evidence'
 }
 
 const MAX_RESULTS = 8
+
+/**
+ * Picks the excerpt to quote as the answer. For list-style questions this may be
+ * a later hit that actually contains the enumeration; otherwise (and whenever the
+ * evidence is weak or ambiguous) it is the first result, as before. The excerpt
+ * is always copied unchanged from one of the returned hits.
+ */
+function pickAnswer(query: string, results: ChurchLibraryHit[]) {
+  const hit = selectEnumerationAnswer(query, results) ?? results[0]
+  return {
+    answer: hit?.excerpt || null,
+    answer_passage_id: hit?.excerpt ? hit.passage_id : null,
+  }
+}
 
 function languageForQuery(query: string): string | null {
   return /[\u1200-\u137f]/u.test(query) ? 'am' : null
@@ -160,17 +177,64 @@ function statusFromPayload(value: unknown): ChurchLibrarySearchResponse['availab
     : 'ok'
 }
 
+// Interrogative and imperative words only (no theological terms). The database
+// matches the whole question as one phrase and ANDs every word for full-text
+// search, so these words make an otherwise findable Amharic question match nothing.
+const AMHARIC_QUESTION_WORDS = new Set([
+  'ምንድን', 'ምንድነው', 'ምንድናቸው', 'ናቸው', 'ነው', 'እነማን', 'ማን', 'ዘርዝር', 'ዘርዝሩ', 'የትኞቹ',
+])
+const QUESTION_TRAILING_PUNCTUATION = /[?፧።፡፣፤፦]+$/u
+const ETHIOPIC_RUN = /[\u1200-\u137f]+/gu
+
+/**
+ * Removes the reviewed question words and trailing question punctuation at word
+ * boundaries. Spelling is left exactly as typed (the SQL functions fold Ethiopic
+ * variants). Returns null when nothing would change or the rest is too weak to
+ * search meaningfully.
+ */
+export function reduceAmharicQuestion(query: string): string | null {
+  const original = (query || '').trim()
+  if (!/[\u1200-\u137f]/u.test(original)) return null
+  const kept = original
+    .replace(/[?፧\s]+$/u, '')
+    .split(/\s+/u)
+    .filter((word) => word && !AMHARIC_QUESTION_WORDS.has(word.replace(QUESTION_TRAILING_PUNCTUATION, '')))
+  const reduced = kept.join(' ')
+  if (!reduced || reduced === original) return null
+  const runs = reduced.match(ETHIOPIC_RUN) ?? []
+  const letters = runs.join('').length
+  return runs.some((run) => run.length >= 3) && letters >= 6 ? reduced : null
+}
+
 /**
  * Searches only excerpts explicitly approved for public retrieval. The optional
  * server gateway performs multilingual semantic ranking without giving the
  * browser document originals, private storage paths, or embedding credentials.
  * The retrieval-gated PostgreSQL RPC is the safe keyword-only fallback.
+ *
+ * A full Amharic question that finds nothing is retried once, with question
+ * words removed. The original question stays the response query and drives
+ * answer selection; errors from either search propagate unchanged.
  */
 export async function searchChurchLibrary(
   query: string,
   signal?: AbortSignal,
 ): Promise<ChurchLibrarySearchResponse> {
+  const first = await runChurchLibrarySearch(query, query, signal)
+  if (first.results.length > 0 || first.availability !== 'no_relevant_passage') return first
+  const reduced = reduceAmharicQuestion(query)
+  if (!reduced) return first
+  const retry = await runChurchLibrarySearch(reduced, query, signal)
+  return retry.results.length > 0 ? retry : first
+}
+
+async function runChurchLibrarySearch(
+  query: string,
+  answerQuestion: string,
+  signal?: AbortSignal,
+): Promise<ChurchLibrarySearchResponse> {
   const trimmed = (query || '').trim()
+  const original = (answerQuestion || '').trim()
   if (!trimmed) return emptyResult('', 'empty_query')
   if (signal?.aborted) throw new DOMException('The operation was aborted.', 'AbortError')
 
@@ -190,7 +254,7 @@ export async function searchChurchLibrary(
         const results = normalizeHits(payload.results)
         return {
           type: 'church_library_search',
-          query: trimmed,
+          query: original,
           language: typeof payload.language === 'string' ? payload.language : language,
           count: results.length,
           results,
@@ -213,7 +277,7 @@ export async function searchChurchLibrary(
     }
   }
 
-  if (!supabase) return emptyResult(trimmed, 'supabase_unavailable')
+  if (!supabase) return emptyResult(original, 'supabase_unavailable')
   try {
     const [structuredResult, { data, error }] = await Promise.all([
       searchStructuredSections(trimmed, language)
@@ -234,14 +298,14 @@ export async function searchChurchLibrary(
     if (error && structuredHits.length) {
       return {
         type: 'church_library_search',
-        query: trimmed,
+        query: original,
         language,
         count: structuredHits.length,
         results: structuredHits,
         retrieval: 'keyword',
         semantic_status: 'supabase_fts',
         availability: 'ok',
-        answer: structuredHits[0].excerpt,
+        ...pickAnswer(original, structuredHits),
         answer_status: 'source_excerpt',
       }
     }
@@ -272,14 +336,14 @@ export async function searchChurchLibrary(
       }
       return {
         type: 'church_library_search',
-        query: trimmed,
+        query: original,
         language,
         count: results.length,
         results,
         retrieval: 'keyword',
         semantic_status: 'supabase_fts',
         availability,
-        answer: results[0]?.excerpt || null,
+        ...pickAnswer(original, results),
         answer_status: results.length ? 'source_excerpt' : 'insufficient_evidence',
       }
     }
@@ -291,5 +355,5 @@ export async function searchChurchLibrary(
       'network',
     )
   }
-  return emptyResult(trimmed, 'no_matches')
+  return emptyResult(original, 'no_matches')
 }
