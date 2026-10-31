@@ -5,6 +5,7 @@ import { formatErrorMessage } from '../../lib/cms/errorMessage'
 import { MEZMUR_LANGUAGES, mezmurLanguageLabel, type MezmurLanguageCode } from '../../lib/mezmur/mezmurLanguage'
 import { classifyZemariMatch, type ZemariCandidate } from '../../lib/mezmur/zemariMatching'
 import { Modal } from './AdminUi'
+import { isMezmeu1Published } from '../../lib/mezmur/mezmeu1BatchScope'
 import {
   applyMezmurSuggestions, assignCategoryToMezmurs, assignLanguageToMezmurs,
   autoCategorizeMezmurs, autoFormatMezmurLyrics, cancelMezmurEnrichmentJob, checkMezmurAiAvailability, linkMezmursToZemaris,
@@ -165,12 +166,13 @@ export function MezmurBulkManagement() {
 
   const categorizeTargets = useMemo(() => {
     if (!categorizeModalMode) return []
+    if (categorizeModalMode === 'mezmeu1_published') return records.filter(isMezmeu1Published)
     if (categorizeModalMode === 'all') return filtered
     if (categorizeModalMode === 'missing_categories') return filtered.filter((r) => r.category_slugs.length === 0)
     if (categorizeModalMode === 'missing_occasions') return filtered.filter((r) => r.occasion_slugs.length === 0)
     if (categorizeModalMode === 'selected') return selectedRows
     return []
-  }, [categorizeModalMode, filtered, selectedRows])
+  }, [categorizeModalMode, filtered, selectedRows, records])
 
   const totalMezmurs = records.length
   const totalDraftsCount = useMemo(() => records.filter((r) => r.status === 'draft').length, [records])
@@ -368,6 +370,10 @@ export function MezmurBulkManagement() {
   async function runCategorization() {
     if (!categorizeModalMode) return
     const mode = categorizeModalMode
+    if (mode === 'mezmeu1_published' && categorizeTargets.length !== 460) {
+      setError(`Expected 460 published Mezmeu1 records; found ${categorizeTargets.length}. No changes made.`)
+      return
+    }
     setCategorizeModalMode(null)
     setBusy('categorize')
     setError(null)
@@ -379,7 +385,7 @@ export function MezmurBulkManagement() {
       const result = await autoCategorizeMezmurs(categorizeTargets, {
         mode,
         selectedIds: selectedRecords,
-        overwrite: categorizeOverwrite,
+        overwrite: mode === 'mezmeu1_published' ? false : categorizeOverwrite,
         onProgress: (p) => setCategorizeProgress(p),
         signal: ac.signal,
       })
@@ -507,6 +513,14 @@ export function MezmurBulkManagement() {
           title="Auto-categorize all matching Mezmurs using authentic lyrics"
         >
           Auto-Categorize All ({filteredTotal})
+        </button>
+        <button
+          type="button"
+          disabled={!canApply || records.filter(isMezmeu1Published).length !== 460 || Boolean(busy)}
+          onClick={() => { setCategorizeModalMode('mezmeu1_published'); setCategorizeOverwrite(false) }}
+          title="Categorize only the 460 newly imported, already published Mezmeu1 hymns"
+        >
+          Classify Imported 460
         </button>
         <button
           type="button"
@@ -775,7 +789,9 @@ export function MezmurBulkManagement() {
     {categorizeModalMode ? (
       <Modal
         title={`Auto-Categorize Mezmurs: ${
-          categorizeModalMode === 'all'
+          categorizeModalMode === 'mezmeu1_published'
+            ? 'Imported Mezmeu1 Batch (460 Published)'
+            : categorizeModalMode === 'all'
             ? statusFilter === 'draft'
               ? 'All Draft Mezmurs'
               : statusFilter === 'published'
@@ -827,7 +843,8 @@ export function MezmurBulkManagement() {
           <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: '1rem 0', cursor: 'pointer' }}>
             <input
               type="checkbox"
-              checked={categorizeOverwrite}
+              checked={categorizeModalMode === 'mezmeu1_published' ? false : categorizeOverwrite}
+              disabled={categorizeModalMode === 'mezmeu1_published'}
               onChange={(e) => setCategorizeOverwrite(e.target.checked)}
             />
             <span><strong>Overwrite existing classifications</strong> (leave unchecked to preserve manually assigned categories and occasions)</span>

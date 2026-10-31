@@ -7,6 +7,7 @@ import { resolveMezmurPublicVisibility, type VisibilityPublicRow } from './mezmu
 import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezmurLanguage'
 import { matchZemari, type ZemariCandidate, type ZemariMatch } from '../mezmur/zemariMatching'
 import { classifyMezmur, type MezmurClassificationResult } from '../mezmur/mezmurClassification'
+import { isMezmeu1Published } from '../mezmur/mezmeu1BatchScope'
 import {
   formatMezmurRecordLyrics,
   isLyricsFormatted,
@@ -560,7 +561,7 @@ export function exportPublicationResultsCsv(rows: BulkPublishResult['results']) 
   ])
 }
 
-export type AutoCategorizeMode = 'all' | 'missing_categories' | 'missing_occasions' | 'selected'
+export type AutoCategorizeMode = 'all' | 'missing_categories' | 'missing_occasions' | 'selected' | 'mezmeu1_published'
 
 export type ClassificationRunProgress = {
   phase: 'classifying' | 'persisting' | 'completed' | 'failed'
@@ -637,6 +638,14 @@ export async function autoCategorizeMezmurs(
 
   if (options.mode === 'all') {
     targetRecords = [...records]
+  } else if (options.mode === 'mezmeu1_published') {
+    targetRecords = records.filter(isMezmeu1Published)
+    if (targetRecords.length !== 460) {
+      throw new Error(`Expected exactly 460 published Mezmeu1 records; found ${targetRecords.length}. No classifications were saved.`)
+    }
+    if (overwrite) {
+      throw new Error('Overwrite is disabled for the protected Mezmeu1 batch.')
+    }
   } else if (options.mode === 'missing_categories') {
     targetRecords = records.filter((r) => r.category_slugs.length === 0)
   } else if (options.mode === 'missing_occasions') {

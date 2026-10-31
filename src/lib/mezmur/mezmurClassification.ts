@@ -314,10 +314,11 @@ const OCCASION_RULES: OccasionRule[] = [
     slug: 'meskel',
     minimumThreshold: 3.0,
     amharicPatterns: [
-      ethPattern(['መስቀል', 'ደመራ', 'መስቀሉ', 'መስቀልህ', 'መስቀልሽ', 'መስቀል ኃይላችን'], 4.0, 'Meskel / Cross'),
+      // Mentioning the Cross alone is not evidence of the Meskel feast.
+      ethPattern(['ደመራ', 'በዓለ መስቀል', 'የመስቀል በዓል', 'መስቀል በዓል'], 4.5, 'Meskel celebration'),
     ],
     latinPatterns: [
-      latPattern(['meskel', 'demera', 'holy cross', 'the cross'], 4.0, 'Meskel'),
+      latPattern(['demera', 'meskel feast', 'finding of the true cross'], 4.5, 'Meskel celebration'),
     ],
   },
   {
@@ -493,13 +494,17 @@ const OCCASION_RULES: OccasionRule[] = [
  * Ignores singer name from lyric checks to prevent false subject matches.
  */
 export function classifyMezmur(input: MezmurClassificationInput): MezmurClassificationResult {
-  const lyricsList = [
+  // Transliterations mirror original-language lyrics. Analyze them ONLY
+  // when original-language text is absent, to prevent double-counting.
+  const originalLyrics = [
     input.lyrics_amharic || '',
     input.lyrics_geez || '',
     input.lyrics_english || '',
     input.lyrics_oromo || '',
-    input.lyrics_transliteration || '',
   ].filter((s) => s.trim().length > 0)
+  const lyricsList = originalLyrics.length > 0
+    ? originalLyrics
+    : [input.lyrics_transliteration || ''].filter((s) => s.trim().length > 0)
 
   // If no lyrics are present at all, return General fallback
   if (lyricsList.length === 0) {
@@ -527,7 +532,7 @@ export function classifyMezmur(input: MezmurClassificationInput): MezmurClassifi
   // Count line frequencies to identify refrains/choruses (repeat >= 2)
   const lineCounts = new Map<string, number>()
   for (const line of lines) {
-    const key = line.toLowerCase()
+    const key = normalizeEthiopic(line).toLowerCase()
     lineCounts.set(key, (lineCounts.get(key) || 0) + 1)
   }
 
@@ -551,11 +556,16 @@ export function classifyMezmur(input: MezmurClassificationInput): MezmurClassifi
     ? new RegExp(`\\b(?:${singerNamesToExclude.map(normalizeLatin).filter(Boolean).join('|')})\\b`, 'gi')
     : null
 
-  // Clean lines for analysis with weights (refrain lines get 2.5x weight)
+  // Count each distinct line once; repeated refrains receive only a small bonus.
+  // This avoids scoring identical chorus text dozens of times.
   const weightedSegments: Array<{ textAm: string; textLat: string; weight: number }> = []
+  const seenLines = new Set<string>()
   for (const line of lines) {
-    const count = lineCounts.get(line.toLowerCase()) || 1
-    const weight = count >= 2 ? 2.5 : 1.0
+    const lineKey = normalizeEthiopic(line).toLowerCase()
+    if (seenLines.has(lineKey)) continue
+    seenLines.add(lineKey)
+    const count = lineCounts.get(lineKey) || 1
+    const weight = count >= 2 ? 1.25 : 1.0
     let cleanAm = normalizeEthiopic(line)
     let cleanLat = normalizeLatin(line)
     if (excludedAmharicRegex) cleanAm = cleanAm.replace(excludedAmharicRegex, ' ')
@@ -726,6 +736,10 @@ export function classifyMezmur(input: MezmurClassificationInput): MezmurClassifi
   if (!primaryOccasionSlug && primaryCategorySlug === 'praise-general' && topCategory && topCategory.score >= 2.0) {
     primaryOccasionSlug = 'general'
   }
+
+  // A single unique lyric line is too little evidence for very high confidence.
+  if (seenLines.size < 2) confidence = Math.min(confidence, 0.75)
+  else if (seenLines.size < 3) confidence = Math.min(confidence, 0.88)
 
   const explanation = method === 'fallback_general'
     ? 'Assigned General category because lyrics contain general devotional text without a specific focal theological subject.'

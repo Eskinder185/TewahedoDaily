@@ -325,7 +325,7 @@ const fixture1152: BulkMezmurRecord[] = [
   assert.match(pageFile, /Auto-Categorize All \(\{filteredTotal\}\)/, 'Test 19: Dynamic filtered total displayed')
   assert.match(pageFile, /Categorize Missing Only \(\{filteredMissingCategories\}\)/, 'Test 19: Dynamic missing categories displayed')
   assert.match(pageFile, /Reanalyze Missing Occasions \(\{filteredMissingOccasions\}\)/, 'Test 19: Dynamic missing occasions displayed')
-  assert.match(pageFile, /Select all matching \(\{filtered\.length\}\)/, 'Test 19: Select all matching records supported')
+  assert.match(pageFile, /Select all matching Drafts \(\{filteredDrafts\.length\}\)/, 'Test 19: Draft-only selection button supported')
   console.log('✓ Test 19 passed: Mobile Bulk Management UI buttons and counts derived correctly')
 }
 
@@ -407,7 +407,7 @@ const fixture1152: BulkMezmurRecord[] = [
 
 // 25. Parent categories expand subcategories and count distinct Mezmurs without double-counting
 {
-  const { COLLECTION_TAXONOMY_MAP } = await import('../src/lib/publicContent/hymnBrowse.ts')
+  const { COLLECTION_TAXONOMY_MAP } = await import('../src/lib/publicContent/browseTaxonomy.ts')
   const angelsSaintsSubcategories = COLLECTION_TAXONOMY_MAP['angels-saints']?.categories || []
   assert.ok(angelsSaintsSubcategories.includes('kidus-michael'), 'Test 25: kidus-michael subcategory present')
   assert.ok(angelsSaintsSubcategories.includes('kidus-gabriel'), 'Test 25: kidus-gabriel subcategory present')
