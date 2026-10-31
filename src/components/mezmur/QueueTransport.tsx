@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { useTranslation } from '../../i18n'
 import styles from './QueueTransport.module.css'
 
 export type TransportRepeat = 'off' | 'all' | 'one'
@@ -17,12 +18,6 @@ export type QueueTransportProps = {
   onTogglePlay: () => void
   onNext: () => void
   onRepeat: () => void
-}
-
-const REPEAT_LABEL: Record<TransportRepeat, string> = {
-  off: 'Repeat: off',
-  all: 'Repeat: all',
-  one: 'Repeat: this Mezmur',
 }
 
 const icon = {
@@ -44,29 +39,31 @@ function Svg({ children }: { children: ReactNode }) {
 
 /** Shuffle | Previous | Play/Pause | Next | Repeat — shared by the Mezmur players. */
 export function QueueTransport(props: QueueTransportProps) {
+  const t = useTranslation()
   const { shuffle, repeat, isPlaying, canPrevious, canNext, playDisabled, unavailableHint } = props
-  const prevTip = canPrevious ? 'Previous Mezmur' : unavailableHint || 'No previous Mezmur in this list'
-  const nextTip = canNext ? 'Next Mezmur' : unavailableHint || 'No next Mezmur in this list'
+  const repeatLabel = repeat === 'off' ? t('mezmurPractice.player.repeatOff') : repeat === 'all' ? t('mezmurPractice.player.repeatAll') : t('mezmurPractice.player.repeatOne')
+  const prevTip = canPrevious ? t('mezmurPractice.player.previous') : unavailableHint || t('mezmurPractice.player.noPrevious')
+  const nextTip = canNext ? t('mezmurPractice.player.next') : unavailableHint || t('mezmurPractice.player.noNext')
   return (
-    <div className={styles.transport} role="group" aria-label="Mezmur playback controls">
+    <div className={styles.transport} role="group" aria-label={t('mezmurPractice.player.controls')}>
       <button type="button" className={`${styles.btn} ${shuffle ? styles.active : ''}`} onClick={props.onShuffle}
-        aria-pressed={shuffle} aria-label={shuffle ? 'Shuffle: on' : 'Shuffle: off'} title={shuffle ? 'Shuffle is on' : 'Shuffle'}>
+        aria-pressed={shuffle} aria-label={shuffle ? t('mezmurPractice.player.shuffleOn') : t('mezmurPractice.player.shuffleOff')} title={t('mezmurPractice.player.shuffle')}>
         <Svg>{icon.shuffle}</Svg>
       </button>
       <button type="button" className={styles.btn} onClick={props.onPrevious} disabled={!canPrevious}
-        aria-label="Previous Mezmur" title={prevTip}>
+        aria-label={t('mezmurPractice.player.previous')} title={prevTip}>
         <Svg>{icon.previous}</Svg>
       </button>
       <button type="button" className={`${styles.btn} ${styles.play}`} onClick={props.onTogglePlay} disabled={playDisabled}
-        aria-label={isPlaying ? 'Pause' : 'Play'} title={isPlaying ? 'Pause' : 'Play'}>
+        aria-label={isPlaying ? t('mezmurPractice.player.pause') : t('mezmurPractice.player.play')} title={isPlaying ? t('mezmurPractice.player.pause') : t('mezmurPractice.player.play')}>
         <Svg>{isPlaying ? icon.pause : icon.play}</Svg>
       </button>
       <button type="button" className={styles.btn} onClick={props.onNext} disabled={!canNext}
-        aria-label="Next Mezmur" title={nextTip}>
+        aria-label={t('mezmurPractice.player.next')} title={nextTip}>
         <Svg>{icon.next}</Svg>
       </button>
       <button type="button" className={`${styles.btn} ${repeat !== 'off' ? styles.active : ''}`} onClick={props.onRepeat}
-        aria-label={REPEAT_LABEL[repeat]} title={`${REPEAT_LABEL[repeat]} (tap to change)`}>
+        aria-label={repeatLabel} title={`${repeatLabel} (tap to change)`}>
         <Svg>{icon.repeat}</Svg>
         {repeat === 'one' ? <span className={styles.badge} aria-hidden="true">1</span> : null}
       </button>

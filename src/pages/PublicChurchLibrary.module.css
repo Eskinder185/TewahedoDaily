@@ -190,3 +190,33 @@
   font-size: 1.1rem;
   color: var(--color-text-muted);
 }
+
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 5rem 1rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.retryButton {
+  min-height: var(--tap-min);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-pill);
+  background: var(--color-midnight);
+  color: var(--color-text-inverse);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.retryButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

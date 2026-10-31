@@ -21,6 +21,7 @@
     "preview": "vite preview",
     "smoke:mobile": "node scripts/mobile-smoke.mjs",
     "test:mobile-shell": "node scripts/test-mobile-shell-regressions.mjs",
+    "test:mobile-phase1": "node scripts/test-mobile-phase1-regressions.mjs",
     "test:journeys": "node scripts/playwright-journeys.mjs",
     "test:editorial-books-access": "node scripts/test-editorial-books-access.mjs",
     "test:editorial-books-mobile": "node scripts/test-editorial-books-mobile.mjs",

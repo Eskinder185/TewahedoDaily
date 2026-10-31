@@ -183,39 +183,6 @@ video {
     cursor: pointer;
   }
 
-  /* Enhanced link touch targets */
-  a {
-    min-height: var(--space-6); /* 32px minimum */
-    display: inline-block;
-    /* Better tap feedback on mobile */
-    transition: 
-      color var(--duration-fast) var(--ease-out),
-      transform var(--duration-fast) var(--ease-out);
-  }
-
-  a:active {
-    transform: scale(0.98);
-  }
-
-  /* Card layouts optimized for mobile */
-  .card, 
-  [data-card] {
-    padding: var(--space-4);
-    margin-bottom: var(--space-3);
-    border-radius: var(--radius-md);
-    /* Enhanced shadows for mobile depth perception */
-    box-shadow: var(--shadow-card);
-    transition: 
-      box-shadow var(--duration-med) var(--ease-out),
-      transform var(--duration-fast) var(--ease-out);
-  }
-
-  .card:active,
-  [data-card]:active {
-    transform: scale(0.99);
-    box-shadow: var(--shadow-soft);
-  }
-
   /* Better form elements on mobile */
   input, 
   textarea, 
@@ -233,11 +200,6 @@ video {
     overflow-x: auto;
     display: block;
     white-space: nowrap;
-  }
-
-  /* Enhanced spacing for mobile sections */
-  section {
-    padding-inline: var(--space-4);
   }
 
   /* Better text contrast and readability on mobile */

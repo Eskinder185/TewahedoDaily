@@ -289,10 +289,10 @@ export function ChurchLibraryStructuredReader() {
               ))}
             </div>
           ) : null}
-          <button type="button" className={styles.toolBtn} onClick={() => setPanel(panel === 'toc' ? null : 'toc')} aria-expanded={panel === 'toc'} aria-controls="cl-panel">
+          <button type="button" className={`${styles.toolBtn} ${styles.contentsTool}`} onClick={() => setPanel(panel === 'toc' ? null : 'toc')} aria-expanded={panel === 'toc'} aria-controls="cl-contents-panel" aria-label={t.contents}>
             ☰ <span className={styles.toolLabel}>{t.contents}</span>
           </button>
-          <button type="button" className={styles.toolBtn} onClick={() => setPanel(panel === 'bookmarks' ? null : 'bookmarks')} aria-expanded={panel === 'bookmarks'} aria-controls="cl-panel">
+          <button type="button" className={styles.toolBtn} onClick={() => setPanel(panel === 'bookmarks' ? null : 'bookmarks')} aria-expanded={panel === 'bookmarks'} aria-controls="cl-bookmarks-panel" aria-label={t.bookmarks}>
             ★ <span className={styles.toolLabel}>{t.bookmarks}</span>
           </button>
           <button type="button" className={styles.toolBtn} onClick={() => updatePrefs({ size: Math.max(85, prefs.size - 10) })} aria-label={t.smaller} disabled={prefs.size <= 85}>A−</button>
@@ -323,7 +323,7 @@ export function ChurchLibraryStructuredReader() {
       ) : null}
 
       <div className={styles.layout}>
-        <nav className={`${styles.sidebar} ${panel === 'toc' ? styles.sidebarOpen : ''}`} aria-label={t.contents} id={panel === 'toc' ? 'cl-panel' : undefined}>
+        <nav className={`${styles.sidebar} ${panel === 'toc' ? styles.sidebarOpen : ''}`} aria-label={t.contents} id="cl-contents-panel">
           <div className={styles.panelHead}>
             <h2>{t.contents}</h2>
             <button type="button" className={styles.closeBtn} onClick={() => setPanel(null)} aria-label={t.close}>✕</button>
@@ -332,7 +332,7 @@ export function ChurchLibraryStructuredReader() {
         </nav>
 
         {panel === 'bookmarks' ? (
-          <aside className={`${styles.sidebar} ${styles.sidebarOpen} ${styles.bookmarkPanel}`} id="cl-panel" aria-label={t.bookmarks}>
+          <aside className={`${styles.sidebar} ${styles.sidebarOpen} ${styles.bookmarkPanel}`} id="cl-bookmarks-panel" aria-label={t.bookmarks}>
             <div className={styles.panelHead}>
               <h2>{t.bookmarks}</h2>
               <button type="button" className={styles.closeBtn} onClick={() => setPanel(null)} aria-label={t.close}>✕</button>

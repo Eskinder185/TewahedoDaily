@@ -102,6 +102,10 @@
   justify-content: center;
 }
 
+.contentsTool .toolLabel {
+  display: inline;
+}
+
 .toolBtn:disabled {
   opacity: 0.4;
   cursor: default;
@@ -421,6 +425,15 @@
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
+  }
+
+  .contentsTool .toolLabel {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 
   /* touch: tap a paragraph to show its bookmark / link actions */

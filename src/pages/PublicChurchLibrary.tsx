@@ -24,14 +24,18 @@ export function PublicChurchLibrary() {
   const t = useTranslation()
   const [books, setBooks] = useState<PublicBook[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(false)
+  const [retryTick, setRetryTick] = useState(0)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
 
   useEffect(() => {
     let cancelled = false
     async function loadBooks() {
+      setLoadError(false)
       if (!supabase) {
         setBooks([])
+        setLoadError(true)
         setLoading(false)
         return
       }
@@ -63,10 +67,14 @@ export function PublicChurchLibrary() {
             setBooks(data as PublicBook[])
           } else {
             setBooks([])
+            setLoadError(true)
           }
         }
       } catch {
-        if (!cancelled) setBooks([])
+        if (!cancelled) {
+          setBooks([])
+          setLoadError(true)
+        }
       } finally {
         if (!cancelled) setLoading(false)
       }
@@ -76,7 +84,7 @@ export function PublicChurchLibrary() {
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [retryTick])
 
   const filtered = useMemo(() => {
     return books.filter((book) => {
@@ -137,6 +145,14 @@ export function PublicChurchLibrary() {
       {loading ? (
         <div className={styles.loadingSpinner}>
           <p>{t('library.loading')}</p>
+        </div>
+      ) : loadError ? (
+        <div className={styles.errorState} role="alert">
+          <span className={styles.emptyIcon} aria-hidden="true">!</span>
+          <p>{t('library.loadError')}</p>
+          <button type="button" className={styles.retryButton} onClick={() => setRetryTick((value) => value + 1)}>
+            {t('library.retry')}
+          </button>
         </div>
       ) : filtered.length === 0 ? (
         <div className={styles.emptyState}>
