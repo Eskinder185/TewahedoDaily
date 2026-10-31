@@ -15,7 +15,7 @@ const [app, header, labels, prefetch, hub, hubCss, schema] = await Promise.all([
 
 assert.match(app, /lazy\(\(\) => import\('\.\/pages\/play\/PlayHubPage'\)/, 'Play route must be code-split')
 assert.match(app, /path="\/play"/, 'App must expose /play')
-assert.match(header, /to: '\/play'/, 'Primary navigation must include Play')
+assert.match(header, /<NavLink[\s\S]{0,200}\bto="\/play"/, 'Primary navigation must include Play')
 assert.match(labels, /navPlay: \{ en: 'Play', am: 'ጨዋታ' \}/, 'Navigation must be bilingual')
 assert.match(prefetch, /import\('\.\.\/pages\/play\/PlayHubPage'\)/, 'Play intent should prefetch its route chunk')
 
