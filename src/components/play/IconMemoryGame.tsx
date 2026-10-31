@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
-import { PLAY_IMAGES, type PlayImage } from '../../lib/play/imageCatalog'
+import { handlePlayImageError, PLAY_IMAGES, type PlayImage } from '../../lib/play/imageCatalog'
 import { recordPlayCompletion } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
 import { localized } from '../../lib/play/types'
@@ -79,7 +79,7 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
     return (
       <section className={g.setup} aria-labelledby="mem-setup">
         <div className={g.setupPreview} aria-hidden="true">
-          {PLAY_IMAGES.slice(12, 17).map((p, i) => <img key={p.id} src={p.src} alt="" loading="lazy" style={{ ['--i' as string]: i, objectPosition: p.focus }} />)}
+          {PLAY_IMAGES.slice(12, 17).map((p, i) => <img key={p.id} src={p.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, p.fallbackSrc)} style={{ ['--i' as string]: i, objectPosition: p.focus }} />)}
         </div>
         <div className={g.setupBody}>
           <h2 id="mem-setup">{am ? 'ሥዕልና ስም ያዛምዱ' : 'Match each picture to its name'}</h2>
@@ -124,7 +124,7 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
                 <span className={g.memoryBack} aria-hidden="true">✠</span>
                 <span className={g.memoryFront} aria-hidden="true">
                   {c.face === 'picture'
-                    ? <img src={c.item.src} alt="" loading="lazy" style={{ objectPosition: c.item.focus }} />
+                    ? <img src={c.item.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, c.item.fallbackSrc)} style={{ objectPosition: c.item.focus }} />
                     : <span className={g.memoryName}>{localized(c.item.answer, locale).text}{locale === 'en' && c.item.answer.am ? <small lang="am">{c.item.answer.am}</small> : null}</span>}
                 </span>
               </span>
@@ -142,7 +142,7 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
           <ol className={g.reviewGrid}>
             {cards.filter((c) => c.face === 'picture').map((c) => (
               <li key={c.key} className={g.reviewRight}>
-                <img src={c.item.src} alt="" loading="lazy" style={{ objectPosition: c.item.focus }} />
+                <img src={c.item.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, c.item.fallbackSrc)} style={{ objectPosition: c.item.focus }} />
                 <div><strong>{localized(c.item.answer, locale).text}</strong><span>{localized(c.item.explanation, locale).text}</span><Link to={c.item.source.route}>{c.item.source.label}</Link></div>
               </li>
             ))}

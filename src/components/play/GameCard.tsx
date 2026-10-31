@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
-import type { PlayArt } from '../../lib/play/imageCatalog'
+import { handlePlayImageError, type PlayArt } from '../../lib/play/imageCatalog'
 import styles from './PlayComponents.module.css'
 
 type Text = Record<AppLocale, string>
@@ -36,6 +36,7 @@ export function GameCard({ game, locale, level, size = 'regular' }: { game: Play
           decoding="async"
           width={800}
           height={600}
+          onError={(event) => handlePlayImageError(event, game.art.fallbackSrc)}
           style={game.art.focus ? { objectPosition: game.art.focus } : undefined}
         />
         <span className={styles.cardChip}>{game.category[locale]}</span>
