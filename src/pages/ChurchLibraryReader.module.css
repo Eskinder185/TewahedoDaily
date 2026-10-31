@@ -239,8 +239,8 @@
 
 .readingContent {
   width: 100%;
-  max-width: 720px;
-  line-height: 1.75;
+  max-width: 42rem;
+  line-height: 1.7;
 }
 
 .fontSerif {
@@ -251,6 +251,12 @@
   font-family: var(--font-body-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 }
 
+.readingContent[lang='am'],
+.readingContent[lang='gez'] {
+  font-family: 'Noto Sans Ethiopic', 'Abyssinica SIL', 'Nyala', var(--font-body, sans-serif);
+  line-height: 1.9;
+}
+
 .sectionHeader {
   margin: 2.5rem 0 1.5rem;
   padding-bottom: 0.5rem;
@@ -258,7 +264,8 @@
 }
 
 .sectionTitle {
-  font-size: 1.6rem;
+  font-size: clamp(1.45rem, 3vw, 1.75rem);
+  line-height: 1.3;
   font-weight: 700;
   margin: 0;
 }
@@ -269,7 +276,8 @@
 }
 
 .passageText {
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.08rem);
+  line-height: inherit;
   margin: 0 0 0.5rem;
   white-space: pre-wrap;
 }
@@ -357,5 +365,13 @@
 
   .inBookSearch input {
     width: 90px;
+  }
+
+  .readingPane {
+    padding: 2rem 1rem 4rem;
+  }
+
+  .readingContent {
+    max-width: 100%;
   }
 }

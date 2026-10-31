@@ -248,28 +248,28 @@
 }
 
 .article {
-  max-width: 44rem;
-  font-size: calc(1.08rem * var(--reader-scale, 1));
-  line-height: 1.75;
+  max-width: 42rem;
+  font-size: calc(clamp(1rem, 0.96rem + 0.25vw, 1.08rem) * var(--reader-scale, 1));
+  line-height: 1.7;
 }
 
 .ethiopic {
   font-family: 'Noto Sans Ethiopic', 'Abyssinica SIL', 'Nyala', var(--font-body, sans-serif);
-  line-height: 1.95;
+  line-height: 1.9;
 }
 
 .chapterTitle {
   margin: 0 0 1rem;
   font-family: var(--font-display, serif);
-  font-size: 1.9em;
-  line-height: 1.25;
+  font-size: clamp(1.7rem, 4vw, 2rem);
+  line-height: 1.2;
   scroll-margin-top: calc(var(--header-height, 0px) + 1rem);
 }
 
 .sectionTitle {
   margin: 2rem 0 0.75rem;
-  font-size: 1.3em;
-  line-height: 1.35;
+  font-size: clamp(1.25rem, 2.5vw, 1.4rem);
+  line-height: 1.3;
   scroll-margin-top: calc(var(--header-height, 0px) + 1rem);
 }
 
@@ -300,7 +300,7 @@
 .para,
 .listItem,
 .quote {
-  margin: 0 0 0.9em;
+  margin: 0 0 1.05em;
   white-space: pre-wrap;
 }
 
@@ -360,7 +360,7 @@
 }
 
 .chapterNav {
-  max-width: 44rem;
+  max-width: 42rem;
   display: flex;
   justify-content: space-between;
   gap: 1rem;

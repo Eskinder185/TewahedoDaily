@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict'
+import { mkdir } from 'node:fs/promises'
 import { chromium } from 'playwright'
 
 const baseUrl = process.env.PREVIEW_URL || 'http://127.0.0.1:4173'
+const screenshotDir = process.env.SCREENSHOT_DIR
 const legacyBookId = 'fixture-legacy-reader'
 const structuredSlug = 'fixture-structured-reader'
 const structuredBookId = 'fixture-structured-book'
@@ -102,6 +104,23 @@ const structuredPassages = [
   },
 ]
 
+const structuredLanguageFixtures = {
+  en: {
+    title: structuredBook.title,
+    content: structuredPassages[0].content,
+  },
+  am: {
+    title: 'ምናባዊ የተዋቀረ አንባቢ',
+    content: 'ይህ ለተወሰነ የአሳሽ ሙከራ የተዘጋጀ ምናባዊ ይዘት ነው።',
+  },
+  gez: {
+    title: 'ጽሑፈ ምናባዊ አንባቢ',
+    content: 'ዝንቱ ለምርመራ አሳሽ ዝግጁ ዝክረ ጽሑፍ እዩ።',
+  },
+}
+
+let structuredLanguage = 'en'
+
 function jsonResponse(route, body, status = 200) {
   return route.fulfill({
     status,
@@ -127,13 +146,20 @@ async function installSupabaseMocks(page) {
       return jsonResponse(route, legacyPassages)
     }
     if (table === 'church_library_books' && query.includes(`slug=eq.${structuredSlug}`)) {
-      return jsonResponse(route, structuredBook)
+      return jsonResponse(route, {
+        ...structuredBook,
+        title: structuredLanguageFixtures[structuredLanguage].title,
+        language: structuredLanguage,
+      })
     }
     if (table === 'church_library_sections' && query.includes(`book_id=eq.${structuredBookId}`)) {
       return jsonResponse(route, structuredSections)
     }
     if (table === 'church_library_passages' && query.includes(`book_id=eq.${structuredBookId}`)) {
-      return jsonResponse(route, structuredPassages)
+      return jsonResponse(route, [{
+        ...structuredPassages[0],
+        content: structuredLanguageFixtures[structuredLanguage].content,
+      }])
     }
 
     return jsonResponse(route, [])
@@ -148,6 +174,20 @@ async function assertNoOverflow(page) {
     true,
     `${page.url()} has horizontal overflow`,
   )
+}
+
+async function assertNoClipping(page) {
+  const clipped = await page.evaluate(() => {
+      const elements = [...document.querySelectorAll('h1, h2, h3, p, button, a')]
+      return elements.flatMap((element) => {
+        const rect = element.getBoundingClientRect()
+        if (rect.width === 0 || rect.height === 0) return []
+        return rect.left >= -1 && rect.right <= window.innerWidth + 1
+          ? []
+          : [{ tag: element.tagName, text: element.textContent?.trim().slice(0, 40), left: rect.left, right: rect.right }]
+      })
+    })
+  assert.deepEqual(clipped, [], `${page.url()} contains clipped text or controls: ${JSON.stringify(clipped)}`)
 }
 
 async function assertFocusInside(page, panel) {
@@ -166,15 +206,15 @@ async function testLegacy(page, width) {
   await assert(page.getByText(legacyPassages[0].content).isVisible(), 'legacy passage did not render')
 
   const contents = page.getByRole('button', { name: /table of contents/i })
-  if (width === 390 && await contents.count() === 0) {
+  if (width < 900 && await contents.count() === 0) {
     throw new Error(`legacy contents trigger missing; buttons=${JSON.stringify(await page.locator('button').allTextContents())}`)
   }
   await assert.equal(await page.getByText('library.toc', { exact: true }).count(), 0)
   await assert.equal(await page.getByText('library.tableOfContents', { exact: true }).count(), 0)
-  if (width === 390) await contents.click()
+  if (width < 900) await contents.click()
   const panel = page.locator('#legacy-library-contents')
-  await assert.equal(await panel.getAttribute('role'), width === 390 ? 'dialog' : null)
-  if (width === 390) {
+  await assert.equal(await panel.getAttribute('role'), width < 900 ? 'dialog' : null)
+  if (width < 900) {
     await assertFocusInside(page, panel)
     await page.keyboard.press('Tab')
     await assertFocusInside(page, panel)
@@ -184,27 +224,37 @@ async function testLegacy(page, width) {
     await assert.equal(await page.locator('#legacy-library-contents').getAttribute('class').then((value) => value?.includes('sidebarOpen')), false)
     await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), await contents.getAttribute('aria-label'))
     await contents.click()
-    await page.mouse.click(385, 450)
+    await page.mouse.click(width - 5, 450)
     await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), await contents.getAttribute('aria-label'))
     await contents.click()
-    await page.mouse.click(385, 450)
+    await page.mouse.click(width - 5, 450)
     await assert.equal(await panel.isVisible(), false)
   } else {
     await assert.equal(await page.getByRole('button', { name: 'Opening Chapter' }).isVisible(), true)
   }
 }
 
-async function testStructured(page, width) {
+async function testStructured(page, width, language) {
+  structuredLanguage = language
   const route = `${baseUrl}/library/read/${structuredSlug}/chapter-one`
   await page.goto(route, { waitUntil: 'networkidle' })
   await assertNoOverflow(page)
-  await assert(page.getByRole('heading', { name: structuredBook.title }).isVisible(), 'structured title did not render')
-  await assert(page.getByText(structuredPassages[0].content).isVisible(), 'structured passage did not render')
+  await assertNoClipping(page)
+  const fixture = structuredLanguageFixtures[language]
+  await assert(page.getByRole('heading', { name: fixture.title }).isVisible(), `${language} structured title did not render`)
+  await assert(page.getByText(fixture.content).isVisible(), `${language} structured passage did not render`)
+  await assert.equal(await page.locator('article[lang]').getAttribute('lang'), language)
+  if (language !== 'en') {
+    await assert.match(
+      await page.locator('article[lang]').evaluate((element) => getComputedStyle(element).fontFamily),
+      /Noto Sans Ethiopic|Abyssinica SIL|Nyala/,
+    )
+  }
 
-  const contents = page.getByRole('button', { name: 'Contents' })
+  const contents = page.locator('button[aria-controls="cl-contents-panel"]')
   await contents.click()
   const contentsPanel = page.locator('#cl-contents-panel')
-  if (width === 390) {
+  if (width < 900) {
     await assert.equal(await contentsPanel.getAttribute('role'), 'dialog')
     await assertFocusInside(page, contentsPanel)
     await page.keyboard.press('Tab')
@@ -212,37 +262,54 @@ async function testStructured(page, width) {
     await page.keyboard.press('Shift+Tab')
     await assertFocusInside(page, contentsPanel)
     await page.keyboard.press('Escape')
-    await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), 'Contents')
+    await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-controls')), 'cl-contents-panel')
   } else {
     await assert.equal(await page.getByRole('link', { name: 'Chapter One' }).isVisible(), true)
   }
 
-  const bookmarks = page.getByRole('button', { name: 'Bookmarks' })
+  const bookmarks = page.locator('button[aria-controls="cl-bookmarks-panel"]')
   await bookmarks.click()
   const bookmarkPanel = page.locator('#cl-bookmarks-panel')
   await assert.equal(await bookmarkPanel.getAttribute('role'), 'dialog')
-  if (width === 390) {
+  if (width < 900) {
     await assertFocusInside(page, bookmarkPanel)
     await page.keyboard.press('Tab')
     await assertFocusInside(page, bookmarkPanel)
     await page.keyboard.press('Shift+Tab')
     await assertFocusInside(page, bookmarkPanel)
-    await page.locator('#cl-bookmarks-panel button[aria-label="Close"]').first().click()
-    await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), 'Bookmarks')
+    await page.locator('#cl-bookmarks-panel > div:first-child > button').click()
+    await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-controls')), 'cl-bookmarks-panel')
     await bookmarks.click()
     await page.keyboard.press('Escape')
-    await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), 'Bookmarks')
+    await assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-controls')), 'cl-bookmarks-panel')
     await assert.equal(await page.locator('#cl-bookmarks-panel').count(), 0)
   } else {
-    await assert.equal(await page.getByText('No bookmarks yet.').isVisible(), true)
+    await assert.equal(await bookmarkPanel.isVisible(), true)
+    await assert.equal(await bookmarkPanel.locator('h2').isVisible(), true)
   }
+
+  if (width < 900 && await page.locator('#cl-bookmarks-panel').count()) {
+    await page.locator('#cl-bookmarks-panel > div:first-child > button').click()
+  }
+  const themeButton = page.getByRole('toolbar', { name: 'Reader tools' }).locator('button').filter({ has: page.locator('svg') })
+  const beforeTheme = await page.locator('article').evaluate((element) => {
+    let node = element.parentElement?.parentElement?.parentElement
+    return node?.className || ''
+  })
+  await themeButton.click()
+  const afterTheme = await page.locator('article').evaluate((element) => {
+    let node = element.parentElement?.parentElement?.parentElement
+    return node?.className || ''
+  })
+  await assert.notEqual(afterTheme, beforeTheme)
 }
 
 async function main() {
   const browser = await chromium.launch({ headless: true })
   const failures = []
 
-  for (const width of [390, 1440]) {
+  if (screenshotDir) await mkdir(screenshotDir, { recursive: true })
+  for (const width of [320, 390, 430, 1440]) {
     const page = await browser.newPage({ viewport: { width, height: 900 }, isMobile: width === 390 })
     const consoleErrors = []
     page.on('console', (message) => {
@@ -251,7 +318,12 @@ async function main() {
     await installSupabaseMocks(page)
     try {
       await testLegacy(page, width)
-      await testStructured(page, width)
+    for (const language of ['en', 'am', 'gez']) {
+      await testStructured(page, width, language)
+    }
+    if (screenshotDir) {
+      await page.screenshot({ path: `${screenshotDir}/reader-${width}.png`, fullPage: true })
+    }
       assert.deepEqual(consoleErrors, [], `unexpected console errors at ${width}px: ${consoleErrors.join(' | ')}`)
       console.log(`PASS ${width}px legacy and structured readers`)
     } catch (error) {

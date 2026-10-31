@@ -461,6 +461,7 @@ export function ChurchLibraryReader() {
             <div
               ref={contentRef}
               className={`${styles.readingContent} ${fontClass}`}
+              lang={book.language === 'am' || book.language === 'gez' ? book.language : 'en'}
               style={{ fontSize: `${fontSizePercent}%` }}
             >
               <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
