@@ -180,6 +180,14 @@
   overflow-y: auto;
 }
 
+.mobilePanelClose {
+  display: none;
+}
+
+.panelBackdrop {
+  display: none;
+}
+
 .sidebarTitle {
   font-size: 0.85rem;
   text-transform: uppercase;
@@ -307,6 +315,40 @@
     max-width: 300px;
     z-index: 50;
     box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .panelBackdrop {
+    display: block;
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 45;
+    border: 0;
+    background: color-mix(in srgb, #0b1220 42%, transparent);
+    cursor: pointer;
+  }
+
+  .sidebarOpen {
+    z-index: 50;
+  }
+
+  .mobilePanelClose {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    margin: -0.5rem 0 0.5rem auto;
+    border: 1px solid var(--reader-border);
+    border-radius: 999px;
+    background: var(--reader-surface);
+    color: var(--reader-text);
+    cursor: pointer;
+  }
+
+  .mobilePanelClose:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
   }
 
   .mobileTocToggle {

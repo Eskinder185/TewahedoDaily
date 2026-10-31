@@ -26,6 +26,7 @@ import styles from './ChurchLibraryStructuredReader.module.css'
 
 type Theme = 'light' | 'sepia' | 'dark'
 const PREFS_KEY = 'td.churchLibrary.readerPrefs.v1'
+const PANEL_FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
 const LANG_LABEL: Record<string, string> = { am: 'አማርኛ', en: 'English', gez: 'ግዕዝ', mixed: 'Mixed', other: 'Other' }
 
 const COPY = {
@@ -76,6 +77,10 @@ export function ChurchLibraryStructuredReader() {
   const [downloadUrl, setDownloadUrl] = useState<string | null>(null)
   const [resumeKey, setResumeKey] = useState<string | null>(null)
   const articleRef = useRef<HTMLElement>(null)
+  const contentsTriggerRef = useRef<HTMLButtonElement>(null)
+  const bookmarksTriggerRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLElement>(null)
+  const wasPanelOpen = useRef<'toc' | 'bookmarks' | false>(false)
 
   const highlight = new URLSearchParams(location.search).get('q')?.trim() || ''
   const t = COPY[book?.language === 'am' ? 'am' : 'en']
@@ -222,6 +227,44 @@ export function ChurchLibraryStructuredReader() {
     setBookmarks(await toggleBookmark(book.id, userId, { section_key: secKey ?? null, passage_key: p.stable_key, label }))
   }
 
+  useEffect(() => {
+    if (!panel) {
+      if (wasPanelOpen.current) {
+        const trigger = wasPanelOpen.current === 'toc' ? contentsTriggerRef.current : bookmarksTriggerRef.current
+        trigger?.focus()
+      }
+      wasPanelOpen.current = false
+      return
+    }
+
+    wasPanelOpen.current = panel
+    const panelElement = panelRef.current
+    panelElement?.querySelector<HTMLElement>(PANEL_FOCUSABLE)?.focus()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setPanel(null)
+        return
+      }
+      if (event.key !== 'Tab' || !panelElement) return
+      const focusable = Array.from(panelElement.querySelectorAll<HTMLElement>(PANEL_FOCUSABLE))
+      if (!focusable.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [panel])
+
   // ------------------------------------------------------------- render --
   if (state === 'loading') return <p className={styles.status} role="status">{COPY.en.loading}</p>
   if (state === 'missing' || state === 'error' || !book) {
@@ -289,10 +332,10 @@ export function ChurchLibraryStructuredReader() {
               ))}
             </div>
           ) : null}
-          <button type="button" className={`${styles.toolBtn} ${styles.contentsTool}`} onClick={() => setPanel(panel === 'toc' ? null : 'toc')} aria-expanded={panel === 'toc'} aria-controls="cl-contents-panel" aria-label={t.contents}>
+          <button type="button" ref={contentsTriggerRef} className={`${styles.toolBtn} ${styles.contentsTool}`} onClick={() => setPanel(panel === 'toc' ? null : 'toc')} aria-expanded={panel === 'toc'} aria-controls="cl-contents-panel" aria-label={t.contents}>
             ☰ <span className={styles.toolLabel}>{t.contents}</span>
           </button>
-          <button type="button" className={styles.toolBtn} onClick={() => setPanel(panel === 'bookmarks' ? null : 'bookmarks')} aria-expanded={panel === 'bookmarks'} aria-controls="cl-bookmarks-panel" aria-label={t.bookmarks}>
+          <button type="button" ref={bookmarksTriggerRef} className={styles.toolBtn} onClick={() => setPanel(panel === 'bookmarks' ? null : 'bookmarks')} aria-expanded={panel === 'bookmarks'} aria-controls="cl-bookmarks-panel" aria-label={t.bookmarks}>
             ★ <span className={styles.toolLabel}>{t.bookmarks}</span>
           </button>
           <button type="button" className={styles.toolBtn} onClick={() => updatePrefs({ size: Math.max(85, prefs.size - 10) })} aria-label={t.smaller} disabled={prefs.size <= 85}>A−</button>
@@ -323,7 +366,7 @@ export function ChurchLibraryStructuredReader() {
       ) : null}
 
       <div className={styles.layout}>
-        <nav className={`${styles.sidebar} ${panel === 'toc' ? styles.sidebarOpen : ''}`} aria-label={t.contents} id="cl-contents-panel">
+        <nav ref={panel === 'toc' ? panelRef : undefined} className={`${styles.sidebar} ${panel === 'toc' ? styles.sidebarOpen : ''}`} role={panel === 'toc' ? 'dialog' : undefined} aria-modal={panel === 'toc' ? 'true' : undefined} aria-label={t.contents} id="cl-contents-panel">
           <div className={styles.panelHead}>
             <h2>{t.contents}</h2>
             <button type="button" className={styles.closeBtn} onClick={() => setPanel(null)} aria-label={t.close}>✕</button>
@@ -332,11 +375,12 @@ export function ChurchLibraryStructuredReader() {
         </nav>
 
         {panel === 'bookmarks' ? (
-          <aside className={`${styles.sidebar} ${styles.sidebarOpen} ${styles.bookmarkPanel}`} id="cl-bookmarks-panel" aria-label={t.bookmarks}>
+          <aside ref={panelRef} className={`${styles.sidebar} ${styles.sidebarOpen} ${styles.bookmarkPanel}`} role="dialog" aria-modal="true" id="cl-bookmarks-panel" aria-label={t.bookmarks}>
             <div className={styles.panelHead}>
               <h2>{t.bookmarks}</h2>
               <button type="button" className={styles.closeBtn} onClick={() => setPanel(null)} aria-label={t.close}>✕</button>
             </div>
+            {panel ? <button type="button" className={styles.panelBackdrop} onClick={() => setPanel(null)} aria-label={t.close} /> : null}
             {bookmarks.length ? (
               <ul className={styles.tocList}>
                 {bookmarks.map((b) => (

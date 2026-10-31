@@ -23,6 +23,8 @@ export type ReaderPassage = {
   page_end: number | null
 }
 
+const PANEL_FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+
 export function ChurchLibraryReader() {
   const { bookId } = useParams<{ bookId: string }>()
   const [searchParams] = useSearchParams()
@@ -48,6 +50,9 @@ export function ChurchLibraryReader() {
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null)
 
   const contentRef = useRef<HTMLDivElement>(null)
+  const tocTriggerRef = useRef<HTMLButtonElement>(null)
+  const tocPanelRef = useRef<HTMLElement>(null)
+  const wasTocOpen = useRef(false)
 
   useEffect(() => {
     if (!bookId) return
@@ -209,6 +214,42 @@ export function ChurchLibraryReader() {
     }
   }
 
+  useEffect(() => {
+    if (!mobileTocOpen) {
+      if (wasTocOpen.current) tocTriggerRef.current?.focus()
+      wasTocOpen.current = false
+      return
+    }
+
+    wasTocOpen.current = true
+    const panel = tocPanelRef.current
+    const first = panel?.querySelector<HTMLElement>(PANEL_FOCUSABLE)
+    first?.focus()
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setMobileTocOpen(false)
+        return
+      }
+      if (event.key !== 'Tab' || !panel) return
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>(PANEL_FOCUSABLE))
+      if (!focusable.length) return
+      const firstFocusable = focusable[0]
+      const lastFocusable = focusable[focusable.length - 1]
+      if (event.shiftKey && document.activeElement === firstFocusable) {
+        event.preventDefault()
+        lastFocusable.focus()
+      } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+        event.preventDefault()
+        firstFocusable.focus()
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [mobileTocOpen])
+
   if (loading) {
     return (
       <div className={`${styles.readerLayout} ${themeClass}`}>
@@ -274,11 +315,14 @@ export function ChurchLibraryReader() {
               {/* Mobile TOC Button */}
               <button
                 type="button"
+                ref={tocTriggerRef}
                 className={styles.btnControl}
                 onClick={() => setMobileTocOpen(!mobileTocOpen)}
-                aria-label="Toggle Table of Contents"
+                aria-expanded={mobileTocOpen}
+                aria-controls="legacy-library-contents"
+                aria-label={t('library.tableOfContents')}
               >
-                {t('library.toc')} ({sections.length})
+                {t('library.tableOfContents')} ({sections.length})
               </button>
 
               {/* In-Book Search Input */}
@@ -382,10 +426,16 @@ export function ChurchLibraryReader() {
         /* Structured Passages Reader View */
         <div className={styles.mainSplit}>
           {/* Table of Contents Sidebar */}
+          {mobileTocOpen ? <button type="button" className={styles.panelBackdrop} onClick={() => setMobileTocOpen(false)} aria-label={t('dialogClose')} /> : null}
           <aside
+            ref={tocPanelRef}
             className={`${styles.sidebar} ${mobileTocOpen ? styles.sidebarOpen : ''}`}
-            aria-label="Table of Contents"
+            id="legacy-library-contents"
+            role={mobileTocOpen ? 'dialog' : undefined}
+            aria-modal={mobileTocOpen ? 'true' : undefined}
+            aria-label={t('library.tableOfContents')}
           >
+            {mobileTocOpen ? <button type="button" className={styles.mobilePanelClose} onClick={() => setMobileTocOpen(false)} aria-label={t('dialogClose')}>✕</button> : null}
             <h2 className={styles.sidebarTitle}>{t('library.tableOfContents')}</h2>
             <ul className={styles.tocList}>
               {sections.length === 0 ? (

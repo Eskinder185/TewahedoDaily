@@ -167,6 +167,10 @@
   font-size: 0.92rem;
 }
 
+.panelBackdrop {
+  display: none;
+}
+
 .bookmarkPanel {
   grid-column: 1;
   grid-row: 1;
@@ -178,6 +182,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  z-index: 70;
 }
 
 .panelHead h2 {
@@ -190,6 +196,8 @@
 
 .closeBtn {
   display: none;
+  position: relative;
+  z-index: 1;
   min-width: 44px;
   min-height: 44px;
   border: 0;
@@ -410,6 +418,20 @@
     z-index: 60;
     padding: 1rem;
     background: var(--cl-panel);
+  }
+
+  .panelBackdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    border: 0;
+    background: color-mix(in srgb, #0b1220 42%, transparent);
+    cursor: pointer;
+  }
+
+  .sidebarOpen {
+    z-index: 60;
   }
 
   .closeBtn {
