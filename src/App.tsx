@@ -318,6 +318,7 @@ export default function App() {
         <Route path="/play/emoji" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="emoji" /></Suspense>} />
         <Route path="/play/finish-the-mezmur" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="finish-the-mezmur" /></Suspense>} />
         <Route path="/play/finish-the-verse" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="finish-the-verse" /></Suspense>} />
+        <Route path="/play/bible-timeline" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="bible-timeline" /></Suspense>} />
         <Route path="/play/history" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="history" /></Suspense>} />
         <Route path="/play/match" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="match" /></Suspense>} />
         <Route path="/play/feasts" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="feasts" /></Suspense>} />

@@ -6,6 +6,7 @@ import { QuizGame } from '../../components/play/QuizGame'
 import { WhoAmIGame } from '../../components/play/WhoAmIGame'
 import { HistoryQuestGame } from '../../components/play/HistoryQuestGame'
 import { MezmurGame } from '../../components/play/MezmurGame'
+import { BibleTimelineGame } from '../../components/play/BibleTimelineGame'
 import { PictureQuizGame } from '../../components/play/PictureQuizGame'
 import { IconMemoryGame } from '../../components/play/IconMemoryGame'
 import { useLocale } from '../../lib/i18n/locale'
@@ -17,7 +18,7 @@ import { withoutLibrarySources, withPublicSources } from '../../lib/play/sourceA
 import type { PlayDifficulty, PlayGameType, PlayQuestion } from '../../lib/play/types'
 
 type QuizPageGame = Exclude<PlayGameType, 'adventure'>
-type PageGame = QuizPageGame | 'who-am-i' | 'match' | 'feasts' | 'saints' | 'icon-memory'
+type PageGame = QuizPageGame | 'who-am-i' | 'match' | 'feasts' | 'saints' | 'icon-memory' | 'bible-timeline'
 
 const META: Record<PageGame, { title: { en: string; am: string }; subtitle: { en: string; am: string } }> = {
   trivia: { title: { en: 'Bible & Tewahedo Trivia', am: 'የመጽሐፍ ቅዱስና ተዋሕዶ ጥያቄ' }, subtitle: { en: 'Choose a level, answer sourced questions, and learn from every explanation.', am: 'ደረጃ ይምረጡ፣ ምንጭ ያላቸውን ጥያቄዎች ይመልሱ፣ ከማብራሪያውም ይማሩ።' } },
@@ -29,6 +30,7 @@ const META: Record<PageGame, { title: { en: string; am: string }; subtitle: { en
   match: { title: { en: 'Match & Discover', am: 'ያዛምዱና ያግኙ' }, subtitle: { en: 'Find the relationships, then read why every pair belongs together.', am: 'ግንኙነቶቹን ያግኙ፣ ከዚያም እያንዳንዱ ጥንድ ለምን እንደሚዛመድ ያንብቡ።' } },
   feasts: { title: { en: 'Church Feast Challenge', am: 'የበዓላት ፈተና' }, subtitle: { en: 'Look at the icon or photograph and name the feast it shows.', am: 'ሥዕሉን ተመልክተው የትኛው በዓል እንደሆነ ይለዩ።' } },
   saints: { title: { en: 'Guess the Saint', am: 'ቅዱሱን ይለዩ' }, subtitle: { en: 'Recognise the angels and saints of the Church from their icons.', am: 'መላእክትንና ቅዱሳንን ከሥዕላቸው ይለዩ።' } },
+  'bible-timeline': { title: { en: 'Bible Timeline Challenge', am: 'የመጽሐፍ ቅዱስ የጊዜ ቅደም ተከተል' }, subtitle: { en: 'Arrange Bible events in the order they happened, then read the references.', am: 'የመጽሐፍ ቅዱስ ክስተቶችን በተፈጸሙበት ቅደም ተከተል ያስቀምጡ።' } },
   'icon-memory': { title: { en: 'Icon Memory', am: 'የሥዕል ትውስታ' }, subtitle: { en: 'Turn the cards and match each holy picture with its name.', am: 'ካርዶቹን ገልጠው እያንዳንዱን ቅዱስ ሥዕል ከስሙ ጋር ያዛምዱ።' } },
 }
 
@@ -38,7 +40,7 @@ export function PlayGamePage({ game }: { game: PageGame }) {
   const { locale } = useLocale()
   const [searchParams] = useSearchParams()
   const meta = META[game]
-  const isQuiz = !['who-am-i', 'match', 'feasts', 'saints', 'icon-memory'].includes(game)
+  const isQuiz = !['who-am-i', 'match', 'feasts', 'saints', 'icon-memory', 'bible-timeline'].includes(game)
   // Church Library questions only appear once their book is published.
   const staticQuestions = useMemo(() => isQuiz ? withoutLibrarySources(questionsFor(game as QuizPageGame)) : [], [game, isQuiz])
   const [questions, setQuestions] = useState<PlayQuestion[]>(staticQuestions)
@@ -64,6 +66,7 @@ export function PlayGamePage({ game }: { game: PageGame }) {
       case 'who-am-i': return <WhoAmIGame locale={locale} />
       case 'match': return <MatchGame locale={locale} />
       case 'history': return <HistoryQuestGame locale={locale} questions={questions} />
+      case 'bible-timeline': return <BibleTimelineGame locale={locale} />
       case 'finish-the-mezmur': return <MezmurGame locale={locale} questions={questions} />
       case 'feasts': return <PictureQuizGame locale={locale} config={{ game: 'feasts', pool: feastImages(), prompt: { en: 'Which feast does this picture show?', am: 'ይህ ሥዕል የትኛውን በዓል ያሳያል?' }, noun: { en: 'feast', am: 'በዓል' } }} />
       case 'saints': return <PictureQuizGame locale={locale} config={{ game: 'saints', pool: holyPersonImages(), prompt: { en: 'Who is shown in this icon?', am: 'በዚህ ሥዕል ያለው ማን ነው?' }, noun: { en: 'saint', am: 'ቅዱስ' } }} />

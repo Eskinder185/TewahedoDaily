@@ -68,7 +68,7 @@ export function savePlayProgress(progress: PlayProgress) {
 }
 
 export type PlayCompletionInput = {
-  game: PlayGameType | 'who-am-i' | 'match' | 'feasts' | 'saints' | 'icon-memory'
+  game: PlayGameType | 'who-am-i' | 'match' | 'feasts' | 'saints' | 'icon-memory' | 'bible-timeline'
   score: number
   maxScore: number
   category: string
