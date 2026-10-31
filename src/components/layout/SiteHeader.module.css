@@ -154,6 +154,69 @@
   display: none;
 }
 
+.navDisclosure {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.navDisclosureButton {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.navDisclosureButton .disclosureChevron {
+  margin-left: 0.4rem;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.navSubmenu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 50%;
+  z-index: 2;
+  min-width: 13rem;
+  padding: var(--space-2);
+  transform: translateX(-50%);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-soft);
+}
+
+.navSubmenuLink {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--color-heading);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.navSubmenuLink:hover,
+.navSubmenuLink:focus-visible,
+.navSubmenuLinkOn {
+  background: var(--color-bg-muted);
+  color: var(--color-heading);
+}
+
+.navSubmenuLink:focus-visible,
+.navDisclosureButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.disclosureChevron {
+  flex: 0 0 auto;
+}
+
 @media (max-width: 767.98px) {
   .nav {
     display: none;
@@ -318,6 +381,37 @@
     border-color var(--duration-fast) var(--ease-out),
     background var(--duration-fast) var(--ease-out),
     box-shadow var(--duration-med) var(--ease-out);
+}
+
+.drawerDisclosure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.drawerDisclosureButton {
+  width: 100%;
+  justify-content: space-between;
+  cursor: pointer;
+  font: inherit;
+  text-align: start;
+}
+
+.drawerDisclosureButton:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.drawerSubnav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-inline-start: var(--space-3);
+}
+
+.drawerSubLink {
+  min-height: var(--tap-min);
+  background: color-mix(in srgb, var(--color-bg-elevated) 88%, var(--color-bg-muted));
 }
 
 .drawerLinkOn {

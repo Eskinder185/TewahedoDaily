@@ -58,19 +58,24 @@ export function SiteHeader() {
   const showSignIn = false
   const showAdmin = !authLoading && signedIn && (isStaff || hasCmsRole(profile))
   const [menuOpen, setMenuOpen] = useState(false)
+  const [faithLearningOpen, setFaithLearningOpen] = useState(false)
   const isDesktop = useIsDesktop()
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const drawerCloseRef = useRef<HTMLButtonElement>(null)
   const drawerPanelRef = useRef<HTMLDivElement>(null)
   const drawerTitleId = useId()
   const drawerId = useId()
+  const faithLearningDesktopMenuId = useId()
+  const faithLearningMobileMenuId = useId()
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
+  const closeFaithLearning = useCallback(() => setFaithLearningOpen(false), [])
   // Close the drawer after any navigation (including browser Back/Forward).
   const [menuPath, setMenuPath] = useState(location.pathname)
   if (menuPath !== location.pathname) {
     setMenuPath(location.pathname)
     setMenuOpen(false)
+    setFaithLearningOpen(false)
   }
 
   const isHome = location.pathname === '/'
@@ -81,31 +86,54 @@ export function SiteHeader() {
       desc: t('navModeBibleDesc'),
     },
     {
-      to: '/pray',
-      label: t('navPray'),
-      desc: t('navModePrayDesc'),
-    },
-    {
-      to: '/hymns',
-      label: t('navPractice'),
-      desc: t('navModeLearnDesc'),
-    },
-    {
       to: '/calendar',
       label: t('navKeepDay'),
       desc: t('navModeKeepDayDesc'),
     },
     {
-      to: '/play',
-      label: t('navPlay'),
-      desc: t('navModePlayDesc'),
+      to: '/hymns',
+      label: t('navMezmur'),
+      desc: t('navModeLearnDesc'),
     },
   ]
+
+  const faithLearningActive =
+    location.pathname === '/library' ||
+    location.pathname.startsWith('/library/') ||
+    location.pathname === '/pray' ||
+    location.pathname.startsWith('/pray/') ||
+    location.pathname === '/prayers' ||
+    location.pathname.startsWith('/prayers/')
 
   useEffect(() => {
     if (!menuOpen) return
     prefetchPrimaryNav()
   }, [menuOpen])
+
+  useEffect(() => {
+    if (!faithLearningOpen) return
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target
+      if (target instanceof Element && !target.closest('[data-faith-learning]')) {
+        setFaithLearningOpen(false)
+      }
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        setFaithLearningOpen(false)
+      }
+    }
+
+    document.addEventListener('pointerdown', onPointerDown)
+    document.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.removeEventListener('pointerdown', onPointerDown)
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [faithLearningOpen])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -216,6 +244,52 @@ export function SiteHeader() {
                 {item.label}
               </NavLink>
             ))}
+            <div data-faith-learning className={styles.drawerDisclosure}>
+              <button
+                type="button"
+                className={`${styles.drawerLink} ${styles.drawerDisclosureButton} ${faithLearningActive ? styles.drawerLinkOn : ''}`.trim()}
+                aria-expanded={faithLearningOpen}
+                aria-controls={faithLearningMobileMenuId}
+                onClick={() => setFaithLearningOpen((open) => !open)}
+              >
+                <span>{t('navFaithLearning')}</span>
+                <span className={styles.disclosureChevron} aria-hidden="true">
+                  {faithLearningOpen ? '−' : '+'}
+                </span>
+              </button>
+              {faithLearningOpen ? (
+                <div id={faithLearningMobileMenuId} className={styles.drawerSubnav}>
+                  <NavLink
+                    to="/library"
+                    onClick={closeMenu}
+                    className={({ isActive }) =>
+                      `${styles.drawerLink} ${styles.drawerSubLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                    }
+                  >
+                    {t('navChurchLibrary')}
+                  </NavLink>
+                  <NavLink
+                    to="/pray"
+                    onClick={closeMenu}
+                    className={({ isActive }) =>
+                      `${styles.drawerLink} ${styles.drawerSubLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                    }
+                  >
+                    {t('navPrayers')}
+                  </NavLink>
+                </div>
+              ) : null}
+            </div>
+            <NavLink
+              to="/play"
+              onClick={closeMenu}
+              onPointerDown={() => prefetchRoute('/play')}
+              className={({ isActive }) =>
+                `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+              }
+            >
+              {t('navPlay')}
+            </NavLink>
             <div className={styles.drawerDivider} role="separator" />
             <div className={styles.drawerSecondary}>
               <NavLink
@@ -332,6 +406,59 @@ export function SiteHeader() {
                 </span>
               </NavLink>
             ))}
+            <div data-faith-learning className={styles.navDisclosure}>
+              <button
+                type="button"
+                className={`${styles.modeLink} ${styles.navDisclosureButton} ${faithLearningActive ? styles.modeLinkOn : ''}`.trim()}
+                aria-expanded={faithLearningOpen}
+                aria-controls={faithLearningDesktopMenuId}
+                aria-label={t(faithLearningOpen ? 'navFaithLearningClose' : 'navFaithLearningOpen')}
+                onClick={() => setFaithLearningOpen((open) => !open)}
+                onPointerDown={() => prefetchRoute('/library')}
+              >
+                <span className={styles.modeLabel}>{t('navFaithLearning')}</span>
+                <span className={styles.disclosureChevron} aria-hidden="true">
+                  {faithLearningOpen ? '−' : '+'}
+                </span>
+              </button>
+              {faithLearningOpen ? (
+                <div id={faithLearningDesktopMenuId} className={styles.navSubmenu}>
+                  <NavLink
+                    to="/library"
+                    onClick={closeFaithLearning}
+                    onPointerDown={() => prefetchRoute('/library')}
+                    className={({ isActive }) =>
+                      `${styles.navSubmenuLink} ${isActive ? styles.navSubmenuLinkOn : ''}`.trim()
+                    }
+                  >
+                    {t('navChurchLibrary')}
+                  </NavLink>
+                  <NavLink
+                    to="/pray"
+                    onClick={closeFaithLearning}
+                    onPointerDown={() => prefetchRoute('/pray')}
+                    className={({ isActive }) =>
+                      `${styles.navSubmenuLink} ${isActive ? styles.navSubmenuLinkOn : ''}`.trim()
+                    }
+                  >
+                    {t('navPrayers')}
+                  </NavLink>
+                </div>
+              ) : null}
+            </div>
+            <NavLink
+              to="/play"
+              title={t('navModePlayDesc')}
+              aria-label={t('navPlay')}
+              onPointerEnter={() => prefetchRoute('/play')}
+              onFocus={() => prefetchRoute('/play')}
+              onPointerDown={() => prefetchRoute('/play')}
+              className={({ isActive }) =>
+                `${styles.modeLink} ${isActive ? styles.modeLinkOn : ''}`.trim()
+              }
+            >
+              <span className={styles.modeLabel}>{t('navPlay')}</span>
+            </NavLink>
           </nav>
 
           <div className={styles.headerTools}>
