@@ -26,6 +26,7 @@ import {
   registerMediaAssets,
 } from '../src/lib/media/mediaResolver'
 import { resolveCalendarEventPresentation } from '../src/lib/calendar/resolveCalendarEventPresentation'
+import { isLocalAssetAvailable } from '../src/lib/media/localAssetAvailability'
 import { PLAY_IMAGES, GAME_ART } from '../src/lib/play/imageCatalog'
 import { hymnCollectionArtFallback } from '../src/lib/publicContent/hymnCollectionArtFallbacks'
 import { resolveHymnSectionImageUrl } from '../src/lib/publicContent/hymnSectionArtFallbacks'
@@ -216,19 +217,33 @@ async function main() {
     assert.equal(withNewMedia.hasImage, true)
     assert.notEqual(withNewMedia.matchSource, 'legacy-fallback')
     assert.ok(withNewMedia.imageUrl?.includes('content-media/calendar/christ/timket'))
-    assert.equal(withNewMedia.fallbackUrl, '/images/calendar-web/Timket.webp')
+    // The removed local file is not offered as a fallback either (remote media is kept as-is).
+    assert.equal(withNewMedia.fallbackUrl, null)
 
     // When no new media exists and allowLegacyFallback is true, legacy fallback IS used
     const onlyLegacy = resolveMedia({
       id: 'unmapped-atmosphere-card',
       title: 'Unmapped Atmosphere Card',
-      legacyFallbackUrl: '/images/calendar-web/TodayInChurch.webp',
+      legacyFallbackUrl: '/images/calendar-web/SaintYared.webp',
       allowLegacyFallback: true,
     })
     assert.equal(onlyLegacy.hasImage, true)
     assert.equal(onlyLegacy.matchSource, 'legacy-fallback')
-    assert.equal(onlyLegacy.imageUrl, '/images/calendar-web/TodayInChurch.webp')
-    console.log('✓ 7. Legacy fallback used only when no new media exists: PASS')
+    assert.equal(onlyLegacy.imageUrl, '/images/calendar-web/SaintYared.webp')
+
+    // A legacy local path whose file no longer ships is never selected: the result is "no image".
+    const removedLegacy = resolveMedia({
+      id: 'unmapped-atmosphere-card',
+      title: 'Unmapped Atmosphere Card',
+      legacyFallbackUrl: '/images/calendar-web/TodayInChurch.webp',
+      allowLegacyFallback: true,
+    })
+    assert.equal(removedLegacy.hasImage, false)
+    assert.equal(removedLegacy.imageUrl, null)
+    assert.equal(removedLegacy.fallbackUrl, null)
+    const removedExplicit = resolveMedia({ id: 'unmapped-atmosphere-card', explicitPath: '/images/calendar/Debre Zeit.png', allowLegacyFallback: true })
+    assert.equal(removedExplicit.hasImage, false)
+    console.log('✓ 7. Legacy fallback used only when no new media exists and its file ships: PASS')
   }
 
   // ── 8. Duplicate & Mislabeled Image Handling ───────────────────────
@@ -299,9 +314,10 @@ async function main() {
           `Expected PLAY_IMAGES[${playImg.id}].src to use content-media, got ${playImg.src}`,
         )
       }
+      // fallbackSrc is a shipped local file, or empty when that file was removed (never a missing path).
       assert.ok(
-        playImg.fallbackSrc.startsWith('/images/calendar-web/'),
-        `Expected PLAY_IMAGES[${playImg.id}].fallbackSrc to use /images/calendar-web/, got ${playImg.fallbackSrc}`,
+        playImg.fallbackSrc === '' || (playImg.fallbackSrc.startsWith('/images/calendar-web/') && isLocalAssetAvailable(playImg.fallbackSrc)),
+        `Expected PLAY_IMAGES[${playImg.id}].fallbackSrc to be empty or a shipped /images/calendar-web/ file, got ${playImg.fallbackSrc}`,
       )
     }
 
@@ -401,7 +417,8 @@ async function main() {
       }
       // GAME_ART must agree with the resolver (fallback subjects keep the local file)
       for (const key of gameKeys) {
-        const expected = result.imageUrl || legacyFallbackUrl
+        // A removed local file is never the expected source; remote media is kept as resolved.
+        const expected = result.imageUrl || (isLocalAssetAvailable(legacyFallbackUrl) ? legacyFallbackUrl : '')
         if (GAME_ART[key]?.src !== expected) {
           status = 'FAIL'
           detail += ` | GAME_ART[${key}].src mismatch (${GAME_ART[key]?.src})`

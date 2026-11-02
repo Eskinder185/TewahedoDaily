@@ -211,7 +211,7 @@ export function TodayInChurchSection({
           <div className={styles.expanded}>
             <figure className={styles.reflectionImageWrap}>
               <img
-                src={reflectionImage}
+                src={reflectionImage || undefined}
                 alt=""
                 className={styles.reflectionImage}
                 width={1600}
@@ -265,7 +265,7 @@ export function TodayInChurchSection({
           {!embeddedOnCalendarPage ? (
             <figure className={styles.introFigure}>
               <img
-                src={monthImage}
+                src={monthImage || undefined}
                 alt=""
                 className={styles.introFigureImg}
                 width={880}

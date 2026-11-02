@@ -1,4 +1,5 @@
 import type { ChurchDaySnapshot, UpcomingObservance } from '../lib/churchCalendar'
+import { availableLocalAsset } from '../lib/media/localAssetAvailability'
 
 const CALENDAR_IMAGE_ROOT = '/images/calendar'
 /** Optimized 4:3 WebP derivatives (see scripts/optimize-calendar-images.mjs). */
@@ -7,7 +8,8 @@ const CALENDAR_WEB_ROOT = '/images/calendar-web'
 /** Encode spaces and non-ASCII file names so `/images/calendar/Debre Zeit.png` resolves reliably. */
 const img = (name: string, ext: 'png' | 'jpg' | 'JPG' | 'webp' = 'webp') => {
   const root = ext === 'webp' ? CALENDAR_WEB_ROOT : CALENDAR_IMAGE_ROOT
-  return encodeURI(`${root}/${name}.${ext}`)
+  // '' when the local file no longer ships, so a removed image is never returned as a path.
+  return availableLocalAsset(encodeURI(`${root}/${name}.${ext}`))
 }
 
 export const calendarImageAssets = {
@@ -253,7 +255,7 @@ const titleKeywordMap: Array<{ pattern: RegExp; image: string }> = [
 export function resolveEventImageById(id?: string | null): string | undefined {
   if (!id) return undefined
   const normalized = id.trim().toLowerCase() as EventImageId
-  return calendarImageManifest.eventsById[normalized]
+  return calendarImageManifest.eventsById[normalized] || undefined
 }
 
 /**
@@ -393,7 +395,7 @@ export function resolveCommemorationImage(
   )
   if (direct) return direct
   for (const matcher of titleKeywordMap) {
-    if (matcher.pattern.test(combined)) return matcher.image
+    if (matcher.image && matcher.pattern.test(combined)) return matcher.image
   }
   return calendarImageManifest.remembrance.ethiopianSaints
 }

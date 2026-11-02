@@ -38,7 +38,7 @@ export function CalendarImage({
   height,
 }: Props) {
   const [useFallback, setUseFallback] = useState(false)
-  const active = useFallback ? fallbackSrc : src
+  const active = (useFallback ? fallbackSrc : src) || undefined
 
   const onError = useCallback(() => {
     setUseFallback((prev) => {

@@ -46,7 +46,7 @@ export function ChurchSeasonFastingPanel({ season, fasting }: Props) {
       <article className={styles.panel}>
         <figure className={styles.panelImageWrap}>
           <img
-            src={seasonImage}
+            src={seasonImage || undefined}
             alt=""
             className={styles.panelImage}
             loading="lazy"
@@ -74,7 +74,7 @@ export function ChurchSeasonFastingPanel({ season, fasting }: Props) {
       <article className={styles.panel}>
         <figure className={styles.panelImageWrap}>
           <img
-            src={calendarImageManifest.support.fastingSeasonAtmosphere}
+            src={calendarImageManifest.support.fastingSeasonAtmosphere || undefined}
             alt=""
             className={styles.panelImage}
             loading="lazy"

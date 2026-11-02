@@ -138,7 +138,7 @@ export function ChurchCommemorationCard({ commemoration }: Props) {
       
       <figure className={styles.heroWrap}>
         <img
-          src={imageSrc}
+          src={imageSrc || undefined}
           alt=""
           className={styles.hero}
           loading="lazy"

@@ -1,5 +1,6 @@
 import { resolveContentMediaUrl } from '../cms/contentMedia';
 import type { CalendarCard } from '../synaxarium/synaxariumService';
+import { isLocalAssetAvailable } from './localAssetAvailability';
 
 export type MediaDomain =
   | 'calendar'
@@ -1971,7 +1972,8 @@ function isDomainCompatible(entryDomain: MediaDomain, queryDomain?: MediaDomain 
  */
 export function resolveMedia(query: MediaResolutionQuery): MediaResolutionResult {
   const allowLegacy = query.allowLegacyFallback !== false;
-  const fallbackUrl = query.legacyFallbackUrl?.trim() || null;
+  const requestedFallback = query.legacyFallbackUrl?.trim() || null;
+  const fallbackUrl = requestedFallback && isLocalAssetAvailable(requestedFallback) ? requestedFallback : null;
   const preservedTitle = query.title?.trim() || null;
   const preservedTitleAmharic = query.titleAmharic?.trim() || null;
 
@@ -2158,9 +2160,11 @@ export function resolveMedia(query: MediaResolutionQuery): MediaResolutionResult
   }
 
   // ── Priority 5: Legacy fallback (`/images/calendar-web/*` or explicit fallback) ──
-  const legacyCandidate =
+  // A legacy local path whose file no longer ships is never selected (primary or fallback).
+  const legacyRaw =
     fallbackUrl ??
     (explicitPath && isLegacyLocalMediaPath(explicitPath) ? explicitPath : null);
+  const legacyCandidate = legacyRaw && isLocalAssetAvailable(legacyRaw) ? legacyRaw : null;
 
   if (allowLegacy && legacyCandidate) {
     return {

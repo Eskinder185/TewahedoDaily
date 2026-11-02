@@ -29,16 +29,18 @@ export function GameCard({ game, locale, level, size = 'regular' }: { game: Play
   const body = (
     <>
       <div className={styles.cardMedia}>
-        <img
-          src={game.art.src}
-          alt=""
-          loading={size === 'feature' ? 'eager' : 'lazy'}
-          decoding="async"
-          width={800}
-          height={600}
-          onError={(event) => handlePlayImageError(event, game.art.fallbackSrc)}
-          style={game.art.focus ? { objectPosition: game.art.focus } : undefined}
-        />
+        {game.art.src ? (
+          <img
+            src={game.art.src}
+            alt=""
+            loading={size === 'feature' ? 'eager' : 'lazy'}
+            decoding="async"
+            width={800}
+            height={600}
+            onError={(event) => handlePlayImageError(event, game.art.fallbackSrc)}
+            style={game.art.focus ? { objectPosition: game.art.focus } : undefined}
+          />
+        ) : null}
         <span className={styles.cardChip}>{game.category[locale]}</span>
         {game.badge ? <span className={styles.cardBadge}>{game.badge[locale]}</span> : null}
       </div>

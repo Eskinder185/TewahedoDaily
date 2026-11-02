@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
-import type { PlayImage } from '../../lib/play/imageCatalog'
+import { MIN_PICTURE_CHOICES, type PlayImage } from '../../lib/play/imageCatalog'
 import { recordPlayCompletion, type PlayAchievement } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
 import { localized } from '../../lib/play/types'
@@ -85,6 +85,21 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
   }
 
   const revealed = useMemo(() => new Set(current?.order.slice(0, picked ? TILES : opened) ?? []), [current, opened, picked])
+
+  // ---------- Not enough pictures ----------
+  // A round needs four choices of the same kind; never start one without enough usable, approved pictures.
+  // Declared after every hook, so hook order is unchanged.
+  if (config.pool.length < MIN_PICTURE_CHOICES) {
+    return (
+      <section className={g.setup} aria-labelledby="pq-setup">
+        <div className={g.setupBody}>
+          <h2 id="pq-setup">{am ? 'በቂ የተረጋገጡ ሥዕሎች ገና የሉም' : 'Not enough pictures yet'}</h2>
+          <p className={g.setupNote}>{am ? 'ይህ ጨዋታ ዙር ለመስራት ቢያንስ አራት የተረጋገጡ ሥዕሎች ያስፈልገዋል። እባክዎ ቆይተው ይመለሱ።' : 'This game needs at least four approved pictures to make a round. Please check back soon.'}</p>
+          <Link className={g.secondary} to="/play">{am ? 'ጨዋታዎችን ያስሱ' : 'Explore games'}</Link>
+        </div>
+      </section>
+    )
+  }
 
   // ---------- Setup ----------
   if (!round) {

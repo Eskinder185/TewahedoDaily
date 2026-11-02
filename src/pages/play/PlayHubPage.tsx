@@ -5,7 +5,7 @@ import { GameDifficultyPicker, type GameDifficulty } from '../../components/play
 import { PlayProgressPanel } from '../../components/play/PlayProgressPanel'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useLocale, type AppLocale } from '../../lib/i18n/locale'
-import { GAME_ART, PLAY_IMAGES, imageById } from '../../lib/play/imageCatalog'
+import { GAME_ART, handlePlayImageError, PLAY_IMAGES, imageById } from '../../lib/play/imageCatalog'
 import styles from './PlayHubPage.module.css'
 
 type Section = 'scripture' | 'pictures' | 'music' | 'history' | 'group'
@@ -115,7 +115,7 @@ export function PlayHubPage() {
           <div className={styles.heroArt} aria-hidden="true">
             {HERO_ICONS.map((img, i) => (
               <figure key={img.id} className={styles.heroIcon} style={{ ['--i' as string]: i }}>
-                <img src={img.src} alt="" style={{ objectPosition: img.focus }} fetchPriority={i === 1 ? 'high' : 'auto'} />
+                <img src={img.src} alt="" onError={(event) => handlePlayImageError(event, img.fallbackSrc)} style={{ objectPosition: img.focus }} fetchPriority={i === 1 ? 'high' : 'auto'} />
                 <figcaption>{img.answer[locale] ?? img.answer.en}</figcaption>
               </figure>
             ))}
@@ -128,7 +128,7 @@ export function PlayHubPage() {
         <section className={styles.dashboard} aria-label={am ? 'የተጫዋች ገጽ' : 'Your progress'}>
           <PlayProgressPanel locale={locale} signedIn={Boolean(session)} />
           <Link className={styles.dailyCard} to="/play/trivia?daily=1">
-            <img src={GAME_ART.trivia.src} alt="" loading="lazy" style={{ objectPosition: GAME_ART.trivia.focus }} />
+            {GAME_ART.trivia.src ? <img src={GAME_ART.trivia.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, GAME_ART.trivia.fallbackSrc)} style={{ objectPosition: GAME_ART.trivia.focus }} /> : null}
             <div>
               <p className={styles.eyebrowLight}>{am ? 'የዕለቱ ፈተና' : 'Daily challenge'}</p>
               <h2>{am ? 'አንድ ጥያቄ፣ አንድ ጥቅስ፣ አምስት ደቂቃ' : 'One question. One source. Five minutes.'}</h2>
@@ -176,7 +176,7 @@ export function PlayHubPage() {
 
         {/* ---------- Game Night ---------- */}
         <section className={styles.gameNight} aria-labelledby="gn-title">
-          <img src={GAME_ART['game-night'].src} alt="" loading="lazy" style={{ objectPosition: GAME_ART['game-night'].focus }} />
+          {GAME_ART['game-night'].src ? <img src={GAME_ART['game-night'].src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, GAME_ART['game-night'].fallbackSrc)} style={{ objectPosition: GAME_ART['game-night'].focus }} /> : null}
           <div className={styles.gameNightInner}>
             <p className={styles.eyebrowLight}>{am ? 'ለቤተሰብና ለሰበካ' : 'For families & parishes'}</p>
             <h2 id="gn-title">{am ? 'የጨዋታ ምሽት' : 'Game Night'}</h2>

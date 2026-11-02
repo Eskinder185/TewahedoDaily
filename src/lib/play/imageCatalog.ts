@@ -9,6 +9,7 @@
  * published summary. Where the scene is biblical, the source is the Bible
  * passage on this site; otherwise it is the TewahedoDaily calendar.
  */
+import { availableLocalAsset } from '../media/localAssetAvailability'
 import { resolveMedia } from '../media/mediaResolver'
 import type { LocalizedText, SourceReference } from './types'
 
@@ -19,7 +20,7 @@ export type PlayImage = {
   kind: PlayImageKind
   /** Resolved primary public URL (prioritizes new `content-media` upload). */
   src: string
-  /** Local `/images/calendar-web/*.webp` fallback URL if primary fails to load. */
+  /** Local `/images/calendar-web/*.webp` fallback URL if primary fails to load; empty when that file no longer ships. */
   fallbackSrc: string
   width: number
   height: number
@@ -38,7 +39,15 @@ export type PlayImage = {
   description: string
 }
 
-const legacyImg = (file: string) => encodeURI(`/images/calendar-web/${file}.webp`)
+// Empty when the local file no longer ships, so a removed image is never used as a primary or fallback source.
+const legacyImg = (file: string) => availableLocalAsset(encodeURI(`/images/calendar-web/${file}.webp`))
+
+// Used when the local picture is gone: the old description described that picture, which may differ from any remote image.
+const NEUTRAL_DESCRIPTION: Record<PlayImageKind, string> = {
+  feast: 'Artwork for a Church feast.',
+  saint: 'Icon or picture of a saint.',
+  angel: 'Icon or picture of an angel.',
+}
 const bible = (label: string, route: string): SourceReference => ({ label, route, kind: 'bible' })
 const calendar = (label: string): SourceReference => ({ label: `TewahedoDaily Calendar — ${label}`, route: '/calendar', kind: 'calendar' })
 
@@ -58,6 +67,7 @@ function buildPlayImage(raw: RawPlayImage): PlayImage {
   })
   return {
     ...raw,
+    description: fallbackSrc ? raw.description : NEUTRAL_DESCRIPTION[raw.kind],
     src: resolved.imageUrl || fallbackSrc,
     fallbackSrc,
   }
@@ -93,7 +103,11 @@ const RAW_PLAY_IMAGES: RawPlayImage[] = [
   { id: 'petros-pawlos', kind: 'saint', legacyFile: 'SaintsPeterandPaul', width: 702, height: 900, focus: 'center 30%', answer: { en: 'Saints Peter and Paul', am: 'ቅዱሳን ጴጥሮስ እና ጳውሎስ' }, alt: 'Petros ena Pawlos', explanation: { en: 'Commemorates Saints Peter and Paul, pillars of apostolic witness.' }, when: 'Hamle 5', source: calendar('Saints Peter and Paul'), description: 'Two haloed apostles stand side by side, one holding a large cross, the other a book and a sword.' }, // [saint-peter-and-paul]
 ]
 
-export const PLAY_IMAGES: PlayImage[] = RAW_PLAY_IMAGES.map(buildPlayImage)
+/** Only pictures with a usable source (remote match or a local file that ships) can appear in a game. */
+export const PLAY_IMAGES: PlayImage[] = RAW_PLAY_IMAGES.map(buildPlayImage).filter((image) => Boolean(image.src))
+
+/** Four choices need at least four pictures of a kind. */
+export const MIN_PICTURE_CHOICES = 4
 
 export const feastImages = () => PLAY_IMAGES.filter((i) => i.kind === 'feast')
 export const holyPersonImages = () => PLAY_IMAGES.filter((i) => i.kind !== 'feast')
@@ -104,6 +118,7 @@ export const imageById = (id: string) => PLAY_IMAGES.find((i) => i.id === id)
  * is about (e.g. Saint Yared — father of Ethiopian chant — for the Mezmur game),
  * prioritizing newly uploaded `content-media` artwork with local fallback.
  */
+/** `src` is empty when there is no usable artwork; callers then show a neutral CSS panel. */
 export type PlayArt = { src: string; fallbackSrc: string; focus?: string; alt: LocalizedText }
 
 const art = (file: string, en: string, am: string, focus?: string, subjectId?: string): PlayArt => {
@@ -121,7 +136,8 @@ const art = (file: string, en: string, am: string, focus?: string, subjectId?: s
     src: resolved?.imageUrl || fallbackSrc,
     fallbackSrc,
     focus,
-    alt: { en, am },
+    // The text described the removed local picture, so it is dropped when that file is gone.
+    alt: fallbackSrc ? { en, am } : { en: '', am: '' },
   }
 }
 

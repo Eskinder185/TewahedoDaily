@@ -1,6 +1,7 @@
 import type { UpcomingObservance } from '../lib/churchCalendar'
 import { resolveUpcomingImage } from './calendarImageManifest'
 import { COMPANION_IMAGE_FILE, isCompanionObservanceId } from './nextObservancesCompanions'
+import { isLocalAssetAvailable } from '../lib/media/localAssetAvailability'
 
 const CALENDAR_WEB_ROOT = '/images/calendar-web'
 
@@ -183,8 +184,9 @@ function buildPoolEntry(fileName: string): NextObservancesPoolArt {
   }
 }
 
+// Files that were removed from public/ are skipped, so the strip never assigns a missing picture.
 export const NEXT_OBSERVANCES_POOL: NextObservancesPoolArt[] =
-  NEXT_OBSERVANCES_POOL_FILES.map((fn) => buildPoolEntry(fn))
+  NEXT_OBSERVANCES_POOL_FILES.map((fn) => buildPoolEntry(fn)).filter((entry) => isLocalAssetAvailable(entry.src))
 
 export function fileNameFromImageUrl(imageUrl: string): string {
   const noQuery = imageUrl.split('?')[0] ?? ''

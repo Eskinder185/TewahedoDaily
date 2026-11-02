@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
-import type { PlayArt } from '../../lib/play/imageCatalog'
+import { handlePlayImageError, type PlayArt } from '../../lib/play/imageCatalog'
 import styles from './GameShell.module.css'
 
 export function GameShell({ locale, title, subtitle, art, kicker, children }: { locale: AppLocale; title: string; subtitle: string; art?: PlayArt; kicker?: string; children: ReactNode }) {
@@ -9,7 +9,7 @@ export function GameShell({ locale, title, subtitle, art, kicker, children }: { 
   return (
     <div className={styles.page} lang={locale}>
       <header className={styles.header}>
-        {art ? <img className={styles.headerArt} src={art.src} alt="" style={art.focus ? { objectPosition: art.focus } : undefined} /> : null}
+        {art?.src ? <img className={styles.headerArt} src={art.src} alt="" onError={(event) => handlePlayImageError(event, art.fallbackSrc)} style={art.focus ? { objectPosition: art.focus } : undefined} /> : null}
         <div className={styles.headerInner}>
           <Link to="/play" className={styles.back}>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
