@@ -3,9 +3,9 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import {
   getHymnCollection,
   hymnImagePreviewUrl,
+  listAllHymnSections,
   listHymnCollections,
   listHymnSectionsForCollection,
-  moveHymnCollectionToTrash,
   removeHymnSection,
   saveHymnCollection,
   saveHymnSection,
@@ -14,6 +14,16 @@ import {
   type HymnCollectionRow,
   type HymnSectionRow,
 } from '../../lib/cms/hymnBrowseAdminService'
+import {
+  CATEGORY_ENTRIES,
+  OCCASION_ENTRIES,
+} from '../../lib/mezmur/taxonomyAliases'
+import {
+  MEZMUR_CLASSIFICATION_BROWSE_GROUPS,
+  type MezmurBrowseGroup,
+  type MezmurBrowseShortcut,
+} from '../../lib/publicContent/mezmurBrowseGroups'
+import { sameLinkSlug } from '../../lib/publicContent/browseTaxonomy'
 import { useAsync } from '../../lib/cms/useAsync'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { AsyncNotice } from './AdminUi'
@@ -73,9 +83,13 @@ function Thumb({
 }
 
 export function HymnBrowseGroupsList() {
-  const { profile } = useAuth()
-  const canTrash = profile?.role === 'admin' || profile?.role === 'super_admin'
-  const result = useAsync(useCallback(() => listHymnCollections(true), []))
+  const result = useAsync(useCallback(async () => {
+    const [collections, sections] = await Promise.all([
+      listHymnCollections(true),
+      listAllHymnSections(),
+    ])
+    return { collections, sections }
+  }, []))
   const [busyId, setBusyId] = useState<string | null>(null)
   const [message, setMessage] = useState('')
   const [error, setError] = useState('')
@@ -90,7 +104,7 @@ export function HymnBrowseGroupsList() {
     try {
       await updateCollectionImage(row, {
         image_path: next.storagePath || null,
-        image_alt: next.altText || row.image_alt,
+        image_alt: next.altText || null,
       })
       setMessage(`Image updated for “${row.title}”.`)
       result.reload()
@@ -101,20 +115,40 @@ export function HymnBrowseGroupsList() {
     }
   }
 
-  async function moveCollectionToTrash(row: HymnCollectionRow) {
-    if (!window.confirm(`Move “${row.title}” to Trash? Its sections will be preserved.`)) return
+  async function quickSectionImage(
+    row: HymnSectionRow,
+    next: { storagePath: string; altText: string },
+  ) {
     setBusyId(row.id)
     setError('')
     setMessage('')
     try {
-      await moveHymnCollectionToTrash(row)
-      setMessage(`“${row.title}” was moved to Trash.`)
+      await updateSectionImage(row, {
+        image_path: next.storagePath || null,
+        image_alt: next.altText || null,
+      })
+      setMessage(`Image updated for “${row.title}”.`)
       result.reload()
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : 'Unable to move this collection to Trash.')
+      setError(cause instanceof Error ? cause.message : 'Image update failed.')
     } finally {
       setBusyId(null)
     }
+  }
+
+  function entriesForGroup(group: MezmurBrowseGroup): MezmurBrowseShortcut[] {
+    const entries = group.kind === 'category' ? CATEGORY_ENTRIES : OCCASION_ENTRIES
+    const primary = entries
+      .filter((entry) => group.taxonomySlugs.includes(entry.slug))
+      .map((entry) => ({
+        kind: group.kind,
+        slug: entry.slug,
+        title: entry.canonical,
+        titleAmharic: entry.amharic,
+      }))
+    return [...primary, ...(group.shortcuts || [])].filter((entry, index, all) =>
+      all.findIndex((candidate) => `${candidate.kind}:${candidate.slug}` === `${entry.kind}:${entry.slug}`) === index,
+    )
   }
 
   return (
@@ -122,15 +156,12 @@ export function HymnBrowseGroupsList() {
       <div className={s.heading}>
         <div>
           <p className={s.eyebrow}>HYMNS PRACTICE</p>
-          <h1>Collections</h1>
+          <h1>Public browse</h1>
           <p className={s.muted}>
-            Level-1 cards from <code>mezmur_collections_import</code>. Change images here; the
-            public /hymns page reads the same <code>image_path</code>.
+            Canonical categories, subcategories, and occasions from the public Mezmur browse
+            definitions. Artwork changes use the matching CMS collection or section record.
           </p>
         </div>
-        <Link className={s.primary} to="/admin/hymns/browse-groups/new">
-          + New collection
-        </Link>
       </div>
       {message ? (
         <p role="status" className={s.success}>
@@ -145,8 +176,11 @@ export function HymnBrowseGroupsList() {
       <AsyncNotice {...result} retry={result.reload} />
       {result.data ? (
         <div className={s.stack}>
-          {result.data.map((row) => (
-            <article key={row.id} className={s.card}>
+          {MEZMUR_CLASSIFICATION_BROWSE_GROUPS.map((group) => {
+            const collection = result.data!.collections.find((row) => row.slug === group.slug)
+            const entries = entriesForGroup(group)
+            return (
+            <article key={group.slug} className={s.card}>
               <div
                 style={{
                   display: 'grid',
@@ -155,52 +189,67 @@ export function HymnBrowseGroupsList() {
                   alignItems: 'start',
                 }}
               >
-                <Thumb path={row.image_path} alt={row.image_alt || row.title} />
+                <Thumb path={collection?.image_path} alt={collection?.image_alt || group.title} />
                 <div>
-                  <strong>{row.title}</strong>
-                  {row.title_amharic ? (
+                  <strong>{group.title}</strong>
+                  {group.titleAmharic ? (
                     <div lang="am" className={s.muted}>
-                      {row.title_amharic}
+                      {group.titleAmharic}
                     </div>
                   ) : null}
                   <div className={s.muted}>
-                    <code>{row.slug}</code> · {row.collection_type} · {row.status}
-                    {row.is_featured ? ' · Featured' : ''}
+                    <code>{group.slug}</code> · {group.kind} · public order {group.sortOrder}
                   </div>
                   <div className={s.actions} style={{ marginTop: '0.75rem' }}>
-                    <Link to={`/admin/hymns/browse-groups/${row.id}/edit`}>Edit</Link>
-                    <Link to={`/practice/browse/${row.slug}`} target="_blank" rel="noreferrer">
+                    {collection ? <Link to={`/admin/hymns/browse-groups/${collection.id}/edit`}>Edit</Link> : null}
+                    <Link to={`/practice/browse/${group.slug}`} target="_blank" rel="noreferrer">
                       Public preview
                     </Link>
-                    {canTrash ? (
-                      <button type="button" className={s.danger} disabled={Boolean(busyId)} onClick={() => void moveCollectionToTrash(row)}>
-                        Move to Trash
-                      </button>
-                    ) : null}
                   </div>
-                  <div style={{ marginTop: '0.75rem' }}>
+                  {collection ? <div style={{ marginTop: '0.75rem' }}>
                     <MediaPicker
-                      label={busyId === row.id ? 'Saving image…' : 'Change image'}
+                      label={busyId === collection.id ? 'Saving image…' : 'Edit group image'}
                       folder={`hymns/collections`}
-                      matchQuery={{ slug: row.slug, title: row.title, titleAmharic: row.title_amharic, domain: 'hymn-collection' }}
-                      value={row.image_path || ''}
-                      altText={row.image_alt}
+                      matchQuery={{ slug: group.slug, title: group.title, titleAmharic: group.titleAmharic, domain: 'hymn-collection' }}
+                      value={collection.image_path || ''}
+                      altText={collection.image_alt}
                       previewAspect="4/3"
-                      suggestedPath={
-                        row.slug ? `hymns/collections/${row.slug}.webp` : undefined
-                      }
-                      onChange={(next) => void quickImage(row, next)}
+                      suggestedPath={`hymns/collections/${group.slug}.webp`}
+                      onChange={(next) => void quickImage(collection, next)}
                     />
-                  </div>
+                  </div> : <p className={s.muted}>No stored CMS collection row; artwork uses the public fallback.</p>}
                 </div>
               </div>
+              <div className={s.stack} style={{ marginTop: '1rem' }}>
+                <strong>Public {group.kind === 'category' ? 'categories' : 'occasions'} and subcategories</strong>
+                {entries.map((entry) => {
+                  const section = result.data!.sections.find((row) => sameLinkSlug(row.slug, entry.slug))
+                  return (
+                    <div key={`${entry.kind}:${entry.slug}`} className={s.card}>
+                      <strong>{entry.title}</strong>
+                      <div lang="am" className={s.muted}>{entry.titleAmharic}</div>
+                      <div className={s.muted}><code>{entry.slug}</code></div>
+                      {section ? (
+                        <MediaPicker
+                          label={busyId === section.id ? 'Saving image…' : 'Edit artwork'}
+                          folder="hymns/sections"
+                          matchQuery={{ slug: section.slug, title: entry.title, titleAmharic: entry.titleAmharic, domain: 'hymn-section' }}
+                          value={section.image_path || ''}
+                          altText={section.image_alt}
+                          previewAspect="4/3"
+                          suggestedPath={`hymns/sections/${entry.slug}.webp`}
+                          onChange={(next) => void quickSectionImage(section, next)}
+                        />
+                      ) : (
+                        <p className={s.muted}>No persistent section row; artwork cannot be saved until this public card has a CMS section record.</p>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
             </article>
-          ))}
-          {!result.data.length ? (
-            <p className={s.muted}>
-              No collections yet. Import from the Mezmur CSV pipeline or create one here.
-            </p>
-          ) : null}
+            )
+          })}
         </div>
       ) : null}
     </>
@@ -315,7 +364,7 @@ function CollectionForm({
       setForm((prev) => ({
         ...prev,
         image_path: next.storagePath,
-        image_alt: next.altText || prev.image_alt,
+        image_alt: next.altText || '',
       }))
       return
     }
@@ -325,7 +374,7 @@ function CollectionForm({
     try {
       const saved = await updateCollectionImage(existing, {
         image_path: next.storagePath || null,
-        image_alt: next.altText || form.image_alt || null,
+        image_alt: next.altText || null,
       })
       setForm((prev) => ({
         ...prev,
@@ -444,7 +493,7 @@ function CollectionForm({
         },
         {
           image_path: next.storagePath || null,
-          image_alt: next.altText || section.image_alt,
+          image_alt: next.altText || null,
         },
       )
       setSections((prev) =>

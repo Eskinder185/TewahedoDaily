@@ -266,7 +266,7 @@ export function normalizeCompactCanonical(input: string | null | undefined): str
  * `Genna` = `Gena`). Returns '' for Ethiopic text and for keys shorter than 6 letters. It is only ever applied
  * against verified aliases, never against free text or filenames.
  */
-export function normalizeTransliterationKey(input: string | null | undefined): string {
+export function normalizeTransliterationKey(input: string | null | undefined, minLength = 6): string {
   const base = normalizeUnicodeText(input).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   if (!base || /[\u1200-\u137F]/.test(base)) return '';
   const key = base
@@ -276,7 +276,7 @@ export function normalizeTransliterationKey(input: string | null | undefined): s
     .replace(/iy/g, 'y')
     .replace(/i(?=[aeou])/g, 'y')
     .replace(/(.)\1+/g, '$1');
-  return key.length >= 6 ? key : '';
+  return key.length >= minLength ? key : '';
 }
 
 /**

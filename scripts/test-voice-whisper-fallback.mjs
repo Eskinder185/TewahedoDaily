@@ -10,6 +10,7 @@ import {
   VOICE_MAX_DURATION_MS,
   VOICE_MAX_LISTEN_MS,
   VOICE_RECOGNITION_LANG,
+  voiceRecognitionLanguage,
   WHISPER_MAX_RECORD_MS,
   WHISPER_MODEL_ID,
 } from '../src/lib/speech/speechTypes.ts'
@@ -35,6 +36,7 @@ assert.equal(VOICE_MAX_DURATION_MS, 15_000)
 assert.equal(VOICE_MAX_LISTEN_MS, VOICE_MAX_DURATION_MS)
 assert.equal(WHISPER_MAX_RECORD_MS, VOICE_MAX_DURATION_MS)
 assert.equal(VOICE_RECOGNITION_LANG, 'en-US')
+assert.equal(voiceRecognitionLanguage('am'), 'am-ET')
 assert.equal(BROWSER_WHISPER_ENABLED, false)
 assert.equal(isWhisperCapable(), false)
 
@@ -75,8 +77,8 @@ const voiceUi = readFileSync(new URL('../src/components/search/MezmurVoiceSearch
 assert.match(voiceUi, /interimResults = false/)
 assert.match(voiceUi, /decideNativeFallback/)
 assert.match(voiceUi, /SpeechRecognition error/)
-assert.match(voiceUi, /recognition\.lang = VOICE_RECOGNITION_LANG/)
-assert.doesNotMatch(voiceUi, /am-ET/)
+assert.match(voiceUi, /recognition\.lang = voiceRecognitionLanguage\(language\)/)
+assert.match(voiceUi, /voiceRecognitionLanguage\(language\)/)
 assert.doesNotMatch(voiceUi, /amharicTextOnly/)
 assert.doesNotMatch(voiceUi, /languageOverride/)
 assert.match(voiceUi, /disposeWhisperClient/)

@@ -86,6 +86,12 @@
   font-style: italic;
 }
 
+.error {
+  color: var(--color-danger, #b91c1c);
+  font-size: 0.75rem;
+  max-width: 240px;
+}
+
 .modalOverlay {
   position: fixed;
   inset: 0;

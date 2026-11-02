@@ -792,7 +792,6 @@ export function PublicMezmurLibrary() {
         <VoiceTranscriptionControl
           ariaLabel={t('practice.voiceSearchAria')}
           defaultLanguage="am"
-          amharicOnly
           onTranscript={(text) => {
             const transcript = text.trim()
             if (!transcript) return

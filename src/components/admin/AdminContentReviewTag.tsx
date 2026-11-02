@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   saveReviewStatus,
   type ReviewContentType,
@@ -30,8 +30,14 @@ export function AdminContentReviewTag({
   const [status, setStatus] = useState<ReviewStatus>(currentStatus)
   const [note, setNote] = useState<string | null>(currentNote || null)
   const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
   const [noteModalOpen, setNoteModalOpen] = useState(false)
   const [tempNote, setTempNote] = useState('')
+
+  useEffect(() => {
+    setStatus(currentStatus)
+    setNote(currentNote || null)
+  }, [currentNote, currentStatus])
 
   const handleToggleStatus = async (targetStatus: ReviewStatus) => {
     if (targetStatus === 'reviewed') {
@@ -43,6 +49,7 @@ export function AdminContentReviewTag({
 
     // Direct toggle to needs_review
     setBusy(true)
+    setError('')
     try {
       await saveReviewStatus(contentType, contentId, 'needs_review', {
         userId: profile?.id,
@@ -50,6 +57,8 @@ export function AdminContentReviewTag({
       })
       setStatus('needs_review')
       onStatusChange?.('needs_review', note || undefined)
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : 'Review update failed.')
     } finally {
       setBusy(false)
     }
@@ -57,6 +66,7 @@ export function AdminContentReviewTag({
 
   const handleSaveReviewed = async () => {
     setBusy(true)
+    setError('')
     try {
       const trimmedNote = tempNote.trim() || undefined
       await saveReviewStatus(contentType, contentId, 'reviewed', {
@@ -68,6 +78,8 @@ export function AdminContentReviewTag({
       setNote(trimmedNote || null)
       setNoteModalOpen(false)
       onStatusChange?.('reviewed', trimmedNote)
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : 'Review update failed.')
     } finally {
       setBusy(false)
     }
@@ -108,6 +120,7 @@ export function AdminContentReviewTag({
           Mark Reviewed
         </button>
       )}
+      {error ? <span className={styles.error} role="alert">{error}</span> : null}
 
       {showNoteSnippet && note && !compact && (
         <span className={styles.noteSnippet} title={`Private note: ${note}`}>

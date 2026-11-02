@@ -13,7 +13,7 @@ import {
 } from '../../lib/speech/recordAudioBlob'
 import {
   VOICE_MAX_DURATION_MS,
-  VOICE_RECOGNITION_LANG,
+  voiceRecognitionLanguage,
   type NativeSpeechErrorCode,
 } from '../../lib/speech/speechTypes'
 import {
@@ -84,7 +84,6 @@ export function MezmurVoiceSearch({
   const [voiceLang, setVoiceLang] = useState<VoiceInputLanguage>(
     amharicOnly ? 'am' : defaultLanguage,
   )
-  const [langMenuOpen, setLangMenuOpen] = useState(false)
   const [phase, setPhase] = useState<VoicePhase>('idle')
   const [status, setStatus] = useState('')
   const recognitionRef = useRef<BrowserSpeechRecognition | null>(null)
@@ -206,7 +205,7 @@ export function MezmurVoiceSearch({
   }
 
   function showUnavailableFallback(reason: string) {
-    voiceDebug('voice unavailable', { reason, lang: VOICE_RECOGNITION_LANG })
+    voiceDebug('voice unavailable', { reason, lang: voiceRecognitionLanguage(effectiveLang) })
     setPhaseSafe('error')
     setStatusSafe(voiceMessage(ui, 'textOnly'))
   }
@@ -265,19 +264,10 @@ export function MezmurVoiceSearch({
     }
   }, [voiceLang, showAmharicOption, lockAmharicDefault])
 
-  useEffect(() => {
-    if (!langMenuOpen) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setLangMenuOpen(false)
-    }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [langMenuOpen])
-
   function handleNativeFailure(code: NativeSpeechErrorCode) {
     hardStopNative(code)
     const decision = decideNativeFallback(code, whisperCapable)
-    voiceDebug('native failure decision', { code, lang: VOICE_RECOGNITION_LANG, decision, whisperCapable })
+    voiceDebug('native failure decision', { code, decision, whisperCapable })
 
     if (decision.action === 'whisper') {
       showUnavailableFallback(decision.reason)
@@ -306,7 +296,7 @@ export function MezmurVoiceSearch({
     showUnavailableFallback(decision.reason)
   }
 
-  function startNativeRecognition() {
+  function startNativeRecognition(language: VoiceInputLanguage) {
     if (!nativeSupport.ok) {
       showUnavailableFallback('unsupported')
       return
@@ -392,7 +382,7 @@ export function MezmurVoiceSearch({
     }, 4000)
 
     try {
-      recognition.lang = VOICE_RECOGNITION_LANG
+      recognition.lang = voiceRecognitionLanguage(language)
       voiceDebug('native start', { lang: recognition.lang, sessionId })
       recognition.start()
     } catch (error) {
@@ -573,8 +563,9 @@ export function MezmurVoiceSearch({
     }
 
     const lang = amharicOnly ? 'am' : (langOverride ?? voiceLang)
-    // Mezmur Amharic path: MediaRecorder → POST /api/transcribe only.
-    if (lang === 'am' || amharicOnly) {
+    // Prefer the existing server transcription path for Amharic, with native
+    // browser recognition as a fallback when that service is unavailable.
+    if ((lang === 'am' || amharicOnly) && amharicReady) {
       void startAmharicRecording()
       return
     }
@@ -584,7 +575,7 @@ export function MezmurVoiceSearch({
       return
     }
 
-    startNativeRecognition()
+    startNativeRecognition(lang)
   }
 
   const busy =
@@ -638,7 +629,6 @@ export function MezmurVoiceSearch({
 
   function selectLang(next: VoiceInputLanguage) {
     setVoiceLang(next)
-    setLangMenuOpen(false)
   }
 
   function cancelSession(event: MouseEvent<HTMLButtonElement>) {
@@ -672,47 +662,30 @@ export function MezmurVoiceSearch({
               አማ
             </span>
           ) : showLangPicker ? (
-            <>
+            <div className={styles.compactLangGroup} role="radiogroup" aria-label={voiceMessage(ui, 'voiceLanguage')}>
               <button
                 type="button"
-                className={`${styles.langChip} ${langMenuOpen ? styles.langChipOpen : ''}`}
-                aria-haspopup="listbox"
-                aria-expanded={langMenuOpen}
-                aria-controls={langGroupId}
+                className={`${styles.langChip} ${effectiveLang === 'en' ? styles.langChipActive : ''}`}
+                role="radio"
+                aria-checked={effectiveLang === 'en'}
                 disabled={busy}
-                onClick={() => setLangMenuOpen((open) => !open)}
+                onClick={() => selectLang('en')}
+                title={voiceMessage(ui, 'languageEnglish')}
               >
-                {effectiveLang === 'am' ? 'አማ' : 'EN'}
-                <span aria-hidden>▾</span>
+                EN
               </button>
-              {langMenuOpen ? (
-                <div
-                  id={langGroupId}
-                  className={styles.langMenu}
-                  role="listbox"
-                  aria-label={voiceMessage(ui, 'voiceLanguage')}
-                >
-                  <button
-                    type="button"
-                    role="option"
-                    aria-selected={effectiveLang === 'en'}
-                    className={`${styles.langOption} ${effectiveLang === 'en' ? styles.langOptionActive : ''}`}
-                    onClick={() => selectLang('en')}
-                  >
-                    {voiceMessage(ui, 'languageEnglish')}
-                  </button>
-                  <button
-                    type="button"
-                    role="option"
-                    aria-selected={effectiveLang === 'am'}
-                    className={`${styles.langOption} ${effectiveLang === 'am' ? styles.langOptionActive : ''}`}
-                    onClick={() => selectLang('am')}
-                  >
-                    {voiceMessage(ui, 'languageAmharic')}
-                  </button>
-                </div>
-              ) : null}
-            </>
+              <button
+                type="button"
+                role="radio"
+                className={`${styles.langChip} ${effectiveLang === 'am' ? styles.langChipActive : ''}`}
+                aria-checked={effectiveLang === 'am'}
+                disabled={busy}
+                onClick={() => selectLang('am')}
+                title={voiceMessage(ui, 'languageAmharic')}
+              >
+                አማ
+              </button>
+            </div>
           ) : (
             <span className={styles.srOnly}>{voiceMessage(ui, 'englishVoice')}</span>
           )}
@@ -721,7 +694,6 @@ export function MezmurVoiceSearch({
             type="button"
             className={`${styles.micBtn} ${sessionActive ? styles.micBtnListening : ''} ${phase === 'error' || phase === 'native-failed' ? styles.micBtnError : ''}`}
             onClick={(e) => {
-              setLangMenuOpen(false)
               if (voiceLang !== effectiveLang) setVoiceLang(effectiveLang)
               toggleListening(e, effectiveLang)
             }}

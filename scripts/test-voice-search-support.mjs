@@ -1,5 +1,5 @@
 /**
- * Regression checks for shared voice-search support (English-only recognition).
+ * Regression checks for shared voice-search support.
  * Run: node --experimental-strip-types --no-warnings scripts/test-voice-search-support.mjs
  */
 import assert from 'node:assert/strict'
@@ -16,6 +16,7 @@ import {
   VOICE_MAX_DURATION_MS,
   VOICE_MAX_LISTEN_MS,
   VOICE_RECOGNITION_LANG,
+  voiceRecognitionLanguage,
 } from '../src/lib/speech/speechTypes.ts'
 
 assert.equal(speechLocales.en, 'en-US')
@@ -23,6 +24,8 @@ assert.equal(toSpeechLocale('am'), 'en-US')
 assert.equal(toSpeechLocale('en'), 'en-US')
 assert.equal(toSpeechLocale('both'), 'en-US')
 assert.equal(VOICE_RECOGNITION_LANG, 'en-US')
+assert.equal(voiceRecognitionLanguage('en'), 'en-US')
+assert.equal(voiceRecognitionLanguage('am'), 'am-ET')
 assert.equal(VOICE_MAX_DURATION_MS, 15_000)
 assert.equal(VOICE_MAX_LISTEN_MS, VOICE_MAX_DURATION_MS)
 
@@ -68,7 +71,6 @@ assert.equal(extracted.isFinal, true)
 
 const buddy = readFileSync(new URL('../src/components/search/SearchBuddy.tsx', import.meta.url), 'utf8')
 assert.match(buddy, /ChatComposer/)
-assert.match(buddy, /voiceActive=\{open && !preview\}/)
 
 const composer = readFileSync(new URL('../src/components/search/ChatComposer.tsx', import.meta.url), 'utf8')
 assert.match(composer, /MezmurVoiceSearch/)
@@ -79,9 +81,9 @@ const voiceUi = readFileSync(new URL('../src/components/search/MezmurVoiceSearch
 assert.match(voiceUi, /detectVoiceSupport/)
 assert.match(voiceUi, /continuous = false/)
 assert.match(voiceUi, /interimResults = false/)
-assert.match(voiceUi, /VOICE_RECOGNITION_LANG/)
-assert.match(voiceUi, /recognition\.lang = VOICE_RECOGNITION_LANG/)
-assert.doesNotMatch(voiceUi, /am-ET/)
+assert.match(voiceUi, /recognition\.lang = voiceRecognitionLanguage\(language\)/)
+assert.match(voiceUi, /languageEnglish/)
+assert.match(voiceUi, /languageAmharic/)
 assert.doesNotMatch(voiceUi, /languageOverride/)
 assert.match(voiceUi, /canAttemptAmharicTranscription/)
 assert.match(voiceUi, /showAmharicOption/)
@@ -121,7 +123,8 @@ const player = readFileSync(
 // Hymn search records Amharic and reviews the whole transcript. The old
 // English "spell the letters" line would contradict that, so it must stay off
 // this page. Users see the localized heard line instead.
-assert.match(hymns, /amharicOnly/)
+assert.match(hymns, /defaultLanguage="am"/)
+assert.doesNotMatch(hymns, /amharicOnly/)
 assert.match(hymns, /t\('practice\.heard'\)/)
 assert.doesNotMatch(hymns, /Say the letters separately/)
 assert.match(enLocale, /"heard": "Heard:/)

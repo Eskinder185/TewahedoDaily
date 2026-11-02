@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useBlocker, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
 import {
@@ -29,11 +29,22 @@ import {
 import { uploadMezmurFile, validateFile } from '../../lib/cms/mediaService'
 import { normalizeMezmurLanguage } from '../../lib/mezmur/mezmurLanguage'
 import { MediaPicker } from '../../components/admin/MediaPicker'
+import { ZemariSelect } from '../../components/admin/ZemariSelect'
+import { listZemariAliases, type ZemariRow } from '../../lib/cms/zemariAdminService'
+import type { ZemariOption } from '../../lib/cms/zemariSelection'
 import { SearchableMultiSelect } from '../../components/admin/SearchableMultiSelect'
 import { useAsync } from '../../lib/cms/useAsync'
-import { CANONICAL_OCCASIONS } from '../../lib/publicContent/taxonomy'
+import {
+  CATEGORY_ENTRIES,
+  OCCASION_ENTRIES,
+} from '../../lib/mezmur/taxonomyAliases'
+import {
+  MEZMUR_CATEGORY_BROWSE_GROUPS,
+  MEZMUR_OCCASION_BROWSE_GROUPS,
+} from '../../lib/publicContent/mezmurBrowseGroups'
 import {
   humanizeTaxonomySlug,
+  listDerivedCategories,
   listDerivedOccasions,
   listMezmurCategoryLinks,
   listMezmurOccasionLinks,
@@ -56,6 +67,7 @@ type EditorData = {
   categorySlugs: string[]
   occasionSlugs: string[]
   occasions: Awaited<ReturnType<typeof listDerivedOccasions>>
+  categories: Awaited<ReturnType<typeof listDerivedCategories>>
   sections: Awaited<ReturnType<typeof listAllHymnSections>>
   taxonomy: Awaited<ReturnType<typeof getTaxonomy>>
 }
@@ -121,16 +133,64 @@ function sameSelection(left: string[], right: string[]) {
   return JSON.stringify(normalize(left)) === JSON.stringify(normalize(right))
 }
 
+function browseGroupFor(
+  kind: 'category' | 'occasion',
+  slug: string,
+): string {
+  const groups = kind === 'category' ? MEZMUR_CATEGORY_BROWSE_GROUPS : MEZMUR_OCCASION_BROWSE_GROUPS
+  return groups
+    .slice()
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .find((group) => group.taxonomySlugs.includes(slug))?.title || ''
+}
+
+function canonicalClassificationOptions(
+  kind: 'category' | 'occasion',
+  selected: string[],
+  derived: Array<{ slug: string; name: string; name_amharic?: string | null; mezmur_count: number }>,
+) {
+  const entries = kind === 'category' ? CATEGORY_ENTRIES : OCCASION_ENTRIES
+  const derivedBySlug = new Map(derived.map((item) => [item.slug, item]))
+  const canonical = entries.map((entry) => {
+    const stored = derivedBySlug.get(entry.slug)
+    return {
+      id: entry.slug,
+      label: `${entry.canonical} / ${entry.amharic}`,
+      detail: browseGroupFor(kind, entry.slug),
+      count: stored?.mezmur_count || 0,
+    }
+  })
+  const canonicalSlugs = new Set(entries.map((entry) => entry.slug))
+  const legacy = derived
+    .filter((item) => !canonicalSlugs.has(item.slug) && selected.includes(item.slug))
+    .map((item) => ({
+      id: item.slug,
+      label: item.name_amharic ? `${item.name} / ${item.name_amharic}` : item.name,
+      detail: 'Existing relationship',
+      count: item.mezmur_count,
+    }))
+  const known = new Set([...canonicalSlugs, ...legacy.map((item) => item.id)])
+  const selectedUnknown = selected
+    .filter((slug) => !known.has(slug))
+    .map((slug) => ({
+      id: slug,
+      label: humanizeTaxonomySlug(slug),
+      detail: 'Existing relationship',
+    }))
+  return [...canonical, ...legacy, ...selectedUnknown]
+}
+
 export function MezmurEditor() {
   const { id } = useParams()
   const result = useAsync(
     useCallback(async (): Promise<EditorData> => {
       const taxonomy = await getTaxonomy()
-      const [sections, occasions] = await Promise.all([
+      const [sections, categories, occasions] = await Promise.all([
         listAllHymnSections().catch(() => []),
+        listDerivedCategories().catch(() => []),
         listDerivedOccasions().catch(() => []),
       ])
-      if (!id) return { taxonomy, row: undefined, tags: [], sectionIds: [], categorySlugs: [], occasionSlugs: [], sections, occasions }
+      if (!id) return { taxonomy, row: undefined, tags: [], sectionIds: [], categorySlugs: [], occasionSlugs: [], sections, categories, occasions }
       const row = await getMezmur(id)
       const tags = row ? await getTagIds(row.id) : []
       const sectionIds = row
@@ -149,7 +209,7 @@ export function MezmurEditor() {
           updated_at: row?.updated_at ?? null,
         })
       }
-      return { taxonomy, row, tags, sectionIds, categorySlugs, occasionSlugs, sections, occasions }
+      return { taxonomy, row, tags, sectionIds, categorySlugs, occasionSlugs, sections, categories, occasions }
     }, [id]),
   )
 
@@ -187,6 +247,17 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const [row, setRow] = useState<Mezmur | undefined>(initial.row ?? undefined)
   const [input, setInput] = useState<MezmurInput>(() => (initial.row ? editable(initial.row) : emptyMezmur()))
   const [tags, setTags] = useState(initial.tags)
+  const [singers, setSingers] = useState(initial.taxonomy.singers)
+  const [zemariAliases, setZemariAliases] = useState<Record<string, string[]>>({})
+  useEffect(() => {
+    let cancelled = false
+    void listZemariAliases().then((aliases) => { if (!cancelled) setZemariAliases(aliases) })
+    return () => { cancelled = true }
+  }, [])
+  const zemariOptions = useMemo<ZemariOption[]>(
+    () => singers.map((item) => ({ id: item.id, name: item.name, name_amharic: item.name_amharic, slug: item.slug, is_archived: item.is_archived, aliases: zemariAliases[item.id] })),
+    [singers, zemariAliases],
+  )
   const [sectionIds, setSectionIds] = useState(initial.sectionIds)
   const [categorySlugs, setCategorySlugs] = useState(initial.categorySlugs)
   const [occasionSlugs, setOccasionSlugs] = useState(initial.occasionSlugs)
@@ -349,6 +420,17 @@ function EditorForm({ initial }: { initial: EditorData }) {
     } finally {
       setBusy(false)
     }
+  }
+
+  // A newly created Zemari is added to the local list and selected; no Mezmur field is reset or saved by this.
+  function zemariCreated(created: ZemariRow) {
+    setSingers((current) => [
+      ...current,
+      { id: created.id, name: created.name, name_amharic: created.name_amharic, description: created.bio, image_url: null, is_archived: false, slug: created.slug, mezmur_count: 0 },
+    ])
+    setInput((previous) => ({ ...previous, zemari_id: created.id, singer_id: created.id }))
+    setError('')
+    setSuccess(`Zemari "${created.name}" was created and selected. Save this Mezmur to keep the assignment.`)
   }
 
   async function upload(file: File | undefined, kind: 'image' | 'audio') {
@@ -586,48 +668,29 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   label="Categories"
                   selected={categorySlugs}
                   onChange={setCategorySlugs}
-                  options={initial.taxonomy.categories
-                    .filter((item) => item.type === 'mezmur' && !item.is_archived)
-                    .map((item) => ({ id: item.slug, label: item.name }))}
+                  options={canonicalClassificationOptions('category', categorySlugs, initial.categories)}
                   placeholder="Search categories…"
-                  helpText="Select one or more. The first selected category is primary."
+                  helpText="Canonical public categories, ordered by public browse group. The first selected category is primary."
                 />
                 <SearchableMultiSelect
                   label="Occasions"
                   selected={occasionSlugs}
                   onChange={setOccasionSlugs}
-                  options={[
-                    ...new Map<string, { id: string; label: string; count?: number }>([
-                      ...CANONICAL_OCCASIONS.map((name): [string, { id: string; label: string }] => [slugify(name), { id: slugify(name), label: name }]),
-                      ...initial.occasions.map((item): [string, { id: string; label: string; count: number }] => [item.slug, { id: item.slug, label: item.name, count: item.mezmur_count }]),
-                    ]).values(),
-                  ]}
+                  options={canonicalClassificationOptions('occasion', occasionSlugs, initial.occasions)}
                   placeholder="Search occasions…"
-                  helpText="Existing normalized links are preserved until you save."
+                  helpText="Canonical public occasions, ordered by public browse group. Existing legacy links remain selectable."
                 />
-                <label>
-                  Zemari
-                  <select
-                    aria-label="Zemari"
-                    value={input.zemari_id || input.singer_id || ''}
-                    onChange={(event) => {
-                      const next = event.target.value || null
-                      set('zemari_id', next)
-                      set('singer_id', next)
-                    }}
-                  >
-                    <option value="">No Zemari</option>
-                    {initial.taxonomy.singers
-                      .filter((item) => !item.is_archived || item.id === (input.zemari_id || input.singer_id))
-                      .map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                          {item.name_amharic ? ` · ${item.name_amharic}` : ''}
-                          {item.is_archived ? ' (archived)' : ''}
-                        </option>
-                      ))}
-                  </select>
-                </label>
+                <ZemariSelect
+                  options={zemariOptions}
+                  value={input.zemari_id || input.singer_id || null}
+                  onChange={(next) => {
+                    set('zemari_id', next)
+                    set('singer_id', next)
+                  }}
+                  onCreated={zemariCreated}
+                  canCreate={staff}
+                  disabled={busy || !canEdit}
+                />
                 <p className={s.muted} style={{ marginTop: -8, fontSize: '0.85rem' }}>
                   Manage profiles under{' '}
                   <Link to={ADMIN_PATHS.hymnsZemaris}>Hymns · Zemaris</Link>.

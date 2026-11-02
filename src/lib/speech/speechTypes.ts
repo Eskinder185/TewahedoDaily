@@ -1,9 +1,12 @@
-/** Voice recognition is English-only (`en-US`). */
-export type VoiceSearchLang = 'en-US'
+export type VoiceSearchLang = 'en-US' | 'am-ET'
 export type VoiceUiLang = 'en' | 'am'
 export type SpeechProvider = 'native' | 'whisper' | 'none'
 
 export const VOICE_RECOGNITION_LANG: VoiceSearchLang = 'en-US'
+
+export function voiceRecognitionLanguage(language: 'en' | 'am'): VoiceSearchLang {
+  return language === 'am' ? 'am-ET' : VOICE_RECOGNITION_LANG
+}
 
 export type VoicePhase =
   | 'idle'

@@ -335,6 +335,21 @@ export async function saveZemari(
   return getZemari(savedId)
 }
 
+/** Verified aliases per Zemari, used only to detect duplicates and to search. A missing/unreadable table yields none. */
+export async function listZemariAliases(): Promise<Record<string, string[]>> {
+  try {
+    const { data, error } = await db().from('zemari_aliases' as never).select('zemari_id,alias').limit(2000)
+    if (error) return {}
+    const byId: Record<string, string[]> = {}
+    for (const row of (data || []) as Array<{ zemari_id?: string | null; alias?: string | null }>) {
+      if (row.zemari_id && row.alias) (byId[row.zemari_id] ||= []).push(row.alias)
+    }
+    return byId
+  } catch {
+    return {}
+  }
+}
+
 export async function findZemariBySlug(slug: string): Promise<ZemariRow | null> {
   const clean = slug.trim().toLowerCase()
   if (!clean) return null

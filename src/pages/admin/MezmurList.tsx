@@ -45,8 +45,13 @@ export function MezmurList() {
   // Load reviews for current rows
   useEffect(() => {
     if (result.data?.rows && result.data.rows.length > 0) {
-      const ids = result.data.rows.map((r) => r.id)
-      fetchReviewsForContent('mezmur', ids).then(setReviewsMap)
+      const ids = result.data.rows.map((r) => r.import_id)
+      const aliases = new Map(
+        result.data.rows.map((row) => [row.import_id, [row.id, row.mezmur_id, row.slug]]),
+      )
+      fetchReviewsForContent('mezmur', ids, aliases)
+        .then(setReviewsMap)
+        .catch((cause) => setError(errorMessage(cause)))
     }
   }, [result.data?.rows])
 
@@ -94,13 +99,13 @@ export function MezmurList() {
   // Filter rows by review status if selected
   const displayedRows = (result.data?.rows || []).filter((row) => {
     if (!reviewFilter) return true
-    const st = resolveReviewStatus(row.id, reviewsMap)
+    const st = resolveReviewStatus(row.import_id, reviewsMap)
     return st === reviewFilter
   })
 
   // Review counts on the loaded page
   const pageReviewedCount = (result.data?.rows || []).filter(
-    (row) => resolveReviewStatus(row.id, reviewsMap) === 'reviewed'
+    (row) => resolveReviewStatus(row.import_id, reviewsMap) === 'reviewed'
   ).length
   const pageNeedsReviewCount = (result.data?.rows || []).length - pageReviewedCount
 
@@ -173,14 +178,14 @@ export function MezmurList() {
             <AdminContentReviewTag
               contentType="mezmur"
               contentId={row.id}
-              currentStatus={resolveReviewStatus(row.id, reviewsMap)}
-              currentNote={getReviewNote(row.id, reviewsMap)}
+              currentStatus={resolveReviewStatus(row.import_id, reviewsMap)}
+              currentNote={getReviewNote(row.import_id, reviewsMap)}
               onStatusChange={(newStatus, newNote) => {
                 setReviewsMap((prev) => {
                   const next = new Map(prev)
-                  next.set(row.id, {
+                  next.set(row.import_id, {
                     content_type: 'mezmur',
-                    content_id: row.id,
+                    content_id: row.import_id,
                     review_status: newStatus,
                     review_note: newNote,
                     created_at: '',

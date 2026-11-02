@@ -16,6 +16,12 @@
   min-width: 0;
 }
 
+.compactLangGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
 .micBtn {
   flex: 0 0 auto;
   display: inline-flex;
@@ -94,6 +100,12 @@
 .langChipOpen {
   border-color: color-mix(in srgb, var(--color-gold) 55%, var(--color-border));
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-gold) 22%, transparent);
+}
+
+.langChipActive {
+  border-color: var(--color-navy);
+  background: var(--color-navy);
+  color: #fff8f0;
 }
 
 .langMenu {

@@ -459,18 +459,27 @@ export async function listPublishedMezmur(page = 1) {
   return listMezmur({ status: 'published', sort: 'published', page })
 }
 
+const UUID_IDENTIFIER = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+
+export function isMezmurUuid(value: string): boolean {
+  return UUID_IDENTIFIER.test(value.trim())
+}
+
 export async function getMezmur(id: string) {
   const needle = id.trim()
   if (!needle) return null
-  // Prefer immutable import_id, then legacy mezmur_id, then slug for edit URLs.
-  const byImportId = await db()
-    .from(DATA as never)
-    .select(LIST_SELECT)
-    .eq('import_id', needle)
-    .limit(1)
-  if (byImportId.error) throw byImportId.error
-  let row = (byImportId.data || [])[0] as ImportMezmurRow | undefined
-  if (row) return mapImportMezmur(row)
+  let row: ImportMezmurRow | undefined
+  // import_id is UUID-typed; never send a slug to that column.
+  if (isMezmurUuid(needle)) {
+    const byImportId = await db()
+      .from(DATA as never)
+      .select(LIST_SELECT)
+      .eq('import_id', needle)
+      .limit(1)
+    if (byImportId.error) throw byImportId.error
+    row = (byImportId.data || [])[0] as ImportMezmurRow | undefined
+    if (row) return mapImportMezmur(row)
+  }
 
   const first = await db()
     .from(DATA as never)

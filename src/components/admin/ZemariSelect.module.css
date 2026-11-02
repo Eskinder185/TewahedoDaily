@@ -1,0 +1,48 @@
+.createOption {
+  border-top: 1px solid var(--color-border);
+  margin-top: 0.25rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+
+.form {
+  display: grid;
+  gap: 0.8rem;
+  min-width: min(28rem, 100%);
+}
+
+.form label {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.form .confirm {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.duplicates {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.actions button {
+  min-height: 44px;
+}
+
+.option {
+  min-height: 44px;
+}
+
+@media (max-width: 480px) {
+  .form {
+    min-width: 0;
+  }
+}

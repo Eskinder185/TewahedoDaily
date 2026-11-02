@@ -42,6 +42,8 @@ export interface ReviewSummary {
   overallProgressPct: number
 }
 
+export type ReviewContentAliases = ReadonlyMap<string, readonly string[]>
+
 const LOCAL_STORAGE_KEY = 'td_admin_content_review_cache_v1'
 let memoryStore: Record<string, AdminContentReviewRecord> = {}
 
@@ -66,7 +68,17 @@ function saveLocalStore(store: Record<string, AdminContentReviewRecord>) {
 }
 
 function makeKey(contentType: ReviewContentType, contentId: string): string {
-  return `${contentType}::${contentId}`
+  return `${contentType}::${contentId.trim()}`
+}
+
+function reviewError(cause: unknown, fallback: string): Error {
+  if (cause instanceof Error && cause.message) return cause
+  if (cause && typeof cause === 'object') {
+    const value = cause as { code?: string; message?: string; details?: string; hint?: string }
+    const detail = [value.message, value.details, value.hint].filter(Boolean).join(' ')
+    if (detail) return new Error(`${fallback} ${value.code ? `[${value.code}] ` : ''}${detail}`.trim())
+  }
+  return new Error(fallback)
 }
 
 /**
@@ -75,16 +87,26 @@ function makeKey(contentType: ReviewContentType, contentId: string): string {
  */
 export async function fetchReviewsForContent(
   contentType: ReviewContentType,
-  contentIds?: string[]
+  contentIds?: string[],
+  aliases?: ReviewContentAliases,
 ): Promise<Map<string, AdminContentReviewRecord>> {
+  const normalizedIds = contentIds?.map((contentId) => contentId.trim()).filter(Boolean)
+  const queryIds = [...new Set([
+    ...(normalizedIds || []),
+    ...(normalizedIds || []).flatMap((contentId) => aliases?.get(contentId) || []),
+  ].map((contentId) => contentId.trim()).filter(Boolean))]
   const result = new Map<string, AdminContentReviewRecord>()
   const local = getLocalStore()
 
   // First populate from local cache
   Object.values(local).forEach((rec) => {
     if (rec.content_type === contentType) {
-      if (!contentIds || contentIds.includes(rec.content_id)) {
-        result.set(rec.content_id, rec)
+      const canonicalId = normalizedIds?.find((contentId) =>
+        contentId === rec.content_id.trim() ||
+        (aliases?.get(contentId) || []).includes(rec.content_id.trim()),
+      )
+      if (!normalizedIds || canonicalId) {
+        result.set(canonicalId || rec.content_id, canonicalId ? { ...rec, content_id: canonicalId } : rec)
       }
     }
   })
@@ -98,22 +120,24 @@ export async function fetchReviewsForContent(
         .select('*')
         .eq('content_type', contentType)
 
-      if (contentIds && contentIds.length > 0) {
-        query = query.in('content_id', contentIds)
+      if (queryIds.length > 0) {
+        query = query.in('content_id', queryIds)
       }
 
       const { data, error } = await query
-      if (!error && data) {
-        data.forEach((row: AdminContentReviewRecord) => {
-          result.set(row.content_id, row)
-          local[makeKey(row.content_type, row.content_id)] = row
-        })
-        saveLocalStore(local)
-      }
+      if (error) throw error
+      if (!data) throw new Error('Review lookup returned no data.')
+      data.forEach((row: AdminContentReviewRecord) => {
+        const canonicalId = normalizedIds?.find((contentId) =>
+          contentId === row.content_id ||
+          (aliases?.get(contentId) || []).includes(row.content_id),
+        ) || row.content_id
+        result.set(canonicalId, { ...row, content_id: canonicalId })
+        local[makeKey(row.content_type, row.content_id)] = row
+      })
+      saveLocalStore(local)
     } catch (err) {
-      if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) {
-        console.warn('[adminContentReview] Working with local cache fallback', err)
-      }
+      throw reviewError(err, 'Review lookup failed.')
     }
   }
 
@@ -170,15 +194,17 @@ export async function saveReviewStatus(
     userEmail?: string | null
   }
 ): Promise<AdminContentReviewRecord> {
+  const normalizedContentId = contentId.trim()
+  if (!normalizedContentId) throw new Error('A content identifier is required to save review status.')
   const now = new Date().toISOString()
   const local = getLocalStore()
-  const key = makeKey(contentType, contentId)
+  const key = makeKey(contentType, normalizedContentId)
   const existing = local[key]
 
   const record: AdminContentReviewRecord = {
     id: existing?.id,
     content_type: contentType,
-    content_id: contentId,
+    content_id: normalizedContentId,
     review_status: status,
     reviewed_by: options?.userId ?? existing?.reviewed_by ?? null,
     reviewed_by_email: options?.userEmail ?? existing?.reviewed_by_email ?? null,
@@ -188,16 +214,8 @@ export async function saveReviewStatus(
     updated_at: now,
   }
 
-  // Update local cache
-  local[key] = record
-  saveLocalStore(local)
-
-  // Dispatch browser event for cross-component reactivity
-  if (typeof window !== 'undefined') {
-    window.dispatchEvent(new CustomEvent('td:admin-review-updated', { detail: record }))
-  }
-
-  // Upsert to Supabase if available
+  // Supabase is authoritative whenever it is configured. Do not report a
+  // successful review or cache an optimistic value before the server confirms.
   if (supabase) {
     try {
       const client = supabase as any
@@ -206,7 +224,7 @@ export async function saveReviewStatus(
         .upsert(
           {
             content_type: contentType,
-            content_id: contentId,
+            content_id: normalizedContentId,
             review_status: status,
             reviewed_by: record.reviewed_by,
             reviewed_by_email: record.reviewed_by_email,
@@ -219,18 +237,26 @@ export async function saveReviewStatus(
         .select()
         .single()
 
-      if (!error && data) {
-        local[key] = data
-        saveLocalStore(local)
-        return data
+      if (error) throw error
+      if (!data) throw new Error('Review update returned no record.')
+      local[key] = data
+      saveLocalStore(local)
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(new CustomEvent('td:admin-review-updated', { detail: data }))
       }
+      return data
     } catch (err) {
-      if (Boolean(typeof import.meta !== 'undefined' && import.meta?.env?.DEV)) {
-        console.warn('[adminContentReview] Saved locally; remote upsert deferred', err)
-      }
+      throw reviewError(err, 'Review update failed.')
     }
   }
 
+  // Local-only environments (for example isolated UI tests) retain the
+  // previous cache behavior because there is no server to confirm against.
+  local[key] = record
+  saveLocalStore(local)
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('td:admin-review-updated', { detail: record }))
+  }
   return record
 }
 
