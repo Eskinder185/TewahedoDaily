@@ -11,6 +11,8 @@
 
 import { supabase } from '../supabase/client'
 
+export const ADMIN_CONTENT_REVIEW_TABLE = 'admin_content_review' as const
+
 export type ReviewContentType =
   | 'mezmur'
   | 'calendar_card'
@@ -75,6 +77,18 @@ function reviewError(cause: unknown, fallback: string): Error {
   if (cause instanceof Error && cause.message) return cause
   if (cause && typeof cause === 'object') {
     const value = cause as { code?: string; message?: string; details?: string; hint?: string }
+    if (
+      value.code === 'PGRST205' ||
+      /Could not find (?:the )?public\.admin_content_review|relation .*admin_content_review.*does not exist/i.test(
+        value.message || '',
+      )
+    ) {
+      return new Error(
+        `${fallback} Review tracking is not installed or is not exposed by Supabase. Apply ` +
+        `supabase/migrations/20261026180000_admin_content_review.sql, then reload the API schema. ` +
+        `[${value.code || 'PGRST205'}] ${value.message || 'Could not find public.admin_content_review.'}`,
+      )
+    }
     const detail = [value.message, value.details, value.hint].filter(Boolean).join(' ')
     if (detail) return new Error(`${fallback} ${value.code ? `[${value.code}] ` : ''}${detail}`.trim())
   }
@@ -116,7 +130,7 @@ export async function fetchReviewsForContent(
     try {
       const client = supabase as any
       let query = client
-        .from('admin_content_review')
+        .from(ADMIN_CONTENT_REVIEW_TABLE)
         .select('*')
         .eq('content_type', contentType)
 
@@ -220,7 +234,7 @@ export async function saveReviewStatus(
     try {
       const client = supabase as any
       const { data, error } = await client
-        .from('admin_content_review')
+        .from(ADMIN_CONTENT_REVIEW_TABLE)
         .upsert(
           {
             content_type: contentType,
@@ -292,7 +306,7 @@ export async function getReviewSummary(): Promise<ReviewSummary> {
 
       // 2. Reviewed Mezmurs count
       const { count: mrCount } = await client
-        .from('admin_content_review')
+        .from(ADMIN_CONTENT_REVIEW_TABLE)
         .select('id', { count: 'exact', head: true })
         .eq('content_type', 'mezmur')
         .eq('review_status', 'reviewed')
@@ -306,7 +320,7 @@ export async function getReviewSummary(): Promise<ReviewSummary> {
 
       // 4. Reviewed Calendar cards count
       const { count: crCount } = await client
-        .from('admin_content_review')
+        .from(ADMIN_CONTENT_REVIEW_TABLE)
         .select('id', { count: 'exact', head: true })
         .eq('content_type', 'calendar_card')
         .eq('review_status', 'reviewed')

@@ -31,10 +31,10 @@ import {
   COLLECTION_TAXONOMY_MAP,
   fallbackSectionRow,
   fallbackSectionsForCollection,
+  findBrowseSectionMatch,
   findFallbackSection,
   getCandidateTaxonomySlugs,
   matchesBrowseLink,
-  sameLinkSlug,
 } from './browseTaxonomy'
 
 // Moved to ./browseTaxonomy (pure, testable); re-exported to keep the public API unchanged.
@@ -1993,9 +1993,12 @@ export async function loadBrowseGroupChildren(
         return true
       })
       .map((entry, index): HymnBrowseCard => {
-        const sectionMatch = allSections.find(
-          (s) => s.slug === entry.slug || sameLinkSlug(s.slug, entry.slug),
-        )
+        const sectionMatch = findBrowseSectionMatch(
+          group.slug,
+          entry.slug,
+          allSections,
+          entry.kind,
+        ) as HymnSection | undefined
         const imagePath = sectionMatch?.imagePath || null
         const imageUrl = resolveHymnSectionImageUrl(
           entry.slug,
@@ -2386,4 +2389,3 @@ export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): P
       }
     })
 }
-

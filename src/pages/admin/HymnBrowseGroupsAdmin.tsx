@@ -23,7 +23,7 @@ import {
   type MezmurBrowseGroup,
   type MezmurBrowseShortcut,
 } from '../../lib/publicContent/mezmurBrowseGroups'
-import { sameLinkSlug } from '../../lib/publicContent/browseTaxonomy'
+import { findBrowseSectionMatch } from '../../lib/publicContent/browseTaxonomy'
 import { useAsync } from '../../lib/cms/useAsync'
 import { MediaPicker } from '../../components/admin/MediaPicker'
 import { AsyncNotice } from './AdminUi'
@@ -223,7 +223,12 @@ export function HymnBrowseGroupsList() {
               <div className={s.stack} style={{ marginTop: '1rem' }}>
                 <strong>Public {group.kind === 'category' ? 'categories' : 'occasions'} and subcategories</strong>
                 {entries.map((entry) => {
-                  const section = result.data!.sections.find((row) => sameLinkSlug(row.slug, entry.slug))
+                  const section = findBrowseSectionMatch(
+                    group.slug,
+                    entry.slug,
+                    result.data!.sections,
+                    entry.kind,
+                  ) as HymnSectionRow | undefined
                   return (
                     <div key={`${entry.kind}:${entry.slug}`} className={s.card}>
                       <strong>{entry.title}</strong>
@@ -241,7 +246,19 @@ export function HymnBrowseGroupsList() {
                           onChange={(next) => void quickSectionImage(section, next)}
                         />
                       ) : (
-                        <p className={s.muted}>No persistent section row; artwork cannot be saved until this public card has a CMS section record.</p>
+                        <>
+                          <button
+                            type="button"
+                            disabled
+                            title="A CMS section row is required before artwork can be saved."
+                          >
+                            Edit Image
+                          </button>
+                          <p className={s.muted}>
+                            No persistent CMS section row. Apply the proposed canonical-section SQL
+                            before editing this card&apos;s artwork.
+                          </p>
+                        </>
                       )}
                     </div>
                   )

@@ -20,7 +20,7 @@
  *
  * Nothing here creates or renames database records.
  */
-import { CATEGORY_ENTRIES, OCCASION_ENTRIES } from '../mezmur/taxonomyAliases'
+import { CATEGORY_ENTRIES, OCCASION_ENTRIES, type TaxonomyKind } from '../mezmur/taxonomyAliases'
 import { MEZMUR_CLASSIFICATION_BROWSE_GROUPS } from './mezmurBrowseGroups'
 import { canonicalizeCategory, canonicalizeOccasion } from './taxonomy'
 
@@ -30,6 +30,30 @@ export type BrowseSectionSource = {
   collectionSlug?: string
   sourceEntityType?: string
   sourceEntitySlug?: string
+}
+
+/** Resolve the stable CMS section row that supplies a public browse card. */
+export function findBrowseSectionMatch(
+  collectionSlug: string,
+  entrySlug: string,
+  sections: readonly BrowseSectionSource[],
+  kind?: TaxonomyKind,
+): BrowseSectionSource | undefined {
+  const exactGroup = sections.find(
+    (section) =>
+      section.collectionSlug === collectionSlug &&
+      sameLinkSlug(section.slug || '', entrySlug),
+  )
+  if (exactGroup) return exactGroup
+
+  const byEntity = sections.find(
+    (section) =>
+      (!kind || section.sourceEntityType === kind) &&
+      sameLinkSlug(section.sourceEntitySlug || '', entrySlug),
+  )
+  if (byEntity) return byEntity
+
+  return sections.find((section) => sameLinkSlug(section.slug || '', entrySlug))
 }
 
 // ---------------------------------------------------------------------------
