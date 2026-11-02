@@ -8,9 +8,15 @@ const service = readFileSync(join(root, 'src/lib/cms/mezmurService.ts'), 'utf8')
 
 assert.match(service, /if \(isMezmurUuid\(needle\)\)/)
 assert.match(service, /\.eq\('import_id', needle\)/)
+assert.match(service, /const bySlug = await db\(\)\.from\(DATA as never\)\.select\(LIST_SELECT\)\.eq\('slug', needle\)/)
 assert.match(service, /\.eq\('mezmur_id', needle\)/)
-assert.match(service, /\.eq\('slug', needle\)/)
 assert.match(service, /This Mezmur slug is ambiguous/)
+
+const editor = readFileSync(join(root, 'src/pages/admin/MezmurEditor.tsx'), 'utf8')
+assert.match(editor, /listMezmurSectionLinks\(row\.slug\)/)
+assert.match(editor, /setMezmurSectionLinks\(saved\.slug, sectionIds, row\?\.slug\)/)
+assert.match(editor, /listMezmurCategoryLinks\(row\.import_id\)/)
+assert.match(editor, /listMezmurOccasionLinks\(row\.import_id\)/)
 
 const uuid = '11111111-1111-4111-8111-111111111111'
 const isUuid = (value) => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value.trim())
@@ -29,12 +35,12 @@ const lookup = (identifier, rows) => {
 }
 
 const rows = [
-  { import_id: uuid, mezmur_id: 'semaye-beab', slug: 'semaye-beab', title: 'First' },
-  { import_id: '22222222-2222-4222-8222-222222222222', mezmur_id: 'another-mezmur', slug: 'another-mezmur', title: 'Second' },
+  { import_id: uuid, mezmur_id: null, slug: 'semaye-beab', title: 'First' },
+  { import_id: '22222222-2222-4222-8222-222222222222', mezmur_id: null, slug: 'wa-lenefse', title: 'Second' },
 ]
 assert.equal(lookup(uuid, rows).title, 'First')
 assert.equal(lookup('semaye-beab', rows).title, 'First')
-assert.equal(lookup('another-mezmur', rows).title, 'Second')
+assert.equal(lookup('wa-lenefse', rows).title, 'Second')
 assert.equal(lookup('not-a-real-mezmur', rows), null)
 
 assert.throws(

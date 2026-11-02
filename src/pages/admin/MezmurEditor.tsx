@@ -194,7 +194,7 @@ export function MezmurEditor() {
       const row = await getMezmur(id)
       const tags = row ? await getTagIds(row.id) : []
       const sectionIds = row
-        ? (await listMezmurSectionLinks(row.id).catch(() => [])).map((l) => l.section_id)
+        ? (await listMezmurSectionLinks(row.slug).catch(() => [])).map((l) => l.section_id)
         : []
       const [categorySlugs, occasionSlugs] = row
         ? await Promise.all([
@@ -377,7 +377,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
       const slugChanged = Boolean(row && row.slug !== saved.slug)
       if (wasCreate || slugChanged || !sameSelection(sectionIds, initial.sectionIds)) {
         try {
-          await setMezmurSectionLinks(saved.id, sectionIds, row?.slug)
+          await setMezmurSectionLinks(saved.slug, sectionIds, row?.slug)
         } catch (sectionErr) {
           if (import.meta.env.DEV) console.warn('[MezmurEditor] section links', sectionErr)
           secondaryWarnings.push('hymn-section links were not updated')

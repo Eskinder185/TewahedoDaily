@@ -481,6 +481,17 @@ export async function getMezmur(id: string) {
     if (row) return mapImportMezmur(row)
   }
 
+  // Public/admin routes use the immutable slug. Resolve it before probing any
+  // legacy identifier so a slug can never be sent to a UUID relationship.
+  const bySlug = await db().from(DATA as never).select(LIST_SELECT).eq('slug', needle).limit(2)
+  if (bySlug.error) throw bySlug.error
+  if ((bySlug.data || []).length > 1) {
+    throw new Error('This Mezmur slug is ambiguous. Open the record using its immutable import_id.')
+  }
+  row = (bySlug.data || [])[0] as ImportMezmurRow | undefined
+  if (row) return mapImportMezmur(row)
+
+  // Legacy text IDs remain supported for older CMS links.
   const first = await db()
     .from(DATA as never)
     .select(LIST_SELECT)
@@ -491,14 +502,6 @@ export async function getMezmur(id: string) {
     throw new Error('This legacy Mezmur identifier is ambiguous. Open the record using its immutable import_id.')
   }
   row = (first.data || [])[0] as ImportMezmurRow | undefined
-  if (!row) {
-    const bySlug = await db().from(DATA as never).select(LIST_SELECT).eq('slug', needle).limit(2)
-    if (bySlug.error) throw bySlug.error
-    if ((bySlug.data || []).length > 1) {
-      throw new Error('This Mezmur slug is ambiguous. Open the record using its immutable import_id.')
-    }
-    row = (bySlug.data || [])[0] as ImportMezmurRow | undefined
-  }
   return row ? mapImportMezmur(row) : null
 }
 
