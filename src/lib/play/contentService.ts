@@ -18,6 +18,6 @@ export async function loadPublishedPlayQuestions(game: PlayQuestion['game']): Pr
   if (!supabase) return []
   const client = supabase as unknown as { from: (table: string) => PlayQuery }
   const { data, error } = await client.from('play_content_items').select('payload').eq('game_type', game).eq('status', 'published').order('published_at', { ascending: true })
-  if (error) return []
+  if (error) throw error
   return (data || []).map((row) => row.payload).filter(isQuestion)
 }

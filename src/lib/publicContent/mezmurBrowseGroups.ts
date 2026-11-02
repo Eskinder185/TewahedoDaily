@@ -174,7 +174,24 @@ export const MEZMUR_CLASSIFICATION_BROWSE_GROUPS: readonly MezmurBrowseGroup[] =
   ...MEZMUR_OCCASION_BROWSE_GROUPS,
 ]
 
+export const LEGACY_BROWSE_GROUP_ALIASES: Record<string, string> = {
+  'angels-saints': 'category-angels-saints',
+  'virgin-mary': 'category-virgin-mary',
+  'jesus-christ': 'jesus-christ-salvation',
+  'holidays-feasts': 'occasion-holidays-feasts',
+  'repentance-fasting': 'fasting-seasons',
+  'sacraments-church-life': 'church-life-sacraments',
+  'praise-general': 'prayer-worship',
+}
+
 export const MEZMUR_BROWSE_GROUP_BY_SLUG = new Map(
   MEZMUR_CLASSIFICATION_BROWSE_GROUPS.map((group) => [group.slug, group]),
 )
+
+for (const [legacy, target] of Object.entries(LEGACY_BROWSE_GROUP_ALIASES)) {
+  const targetGroup = MEZMUR_BROWSE_GROUP_BY_SLUG.get(target)
+  if (targetGroup && !MEZMUR_BROWSE_GROUP_BY_SLUG.has(legacy)) {
+    MEZMUR_BROWSE_GROUP_BY_SLUG.set(legacy, targetGroup)
+  }
+}
 

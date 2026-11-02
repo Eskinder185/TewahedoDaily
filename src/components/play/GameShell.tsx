@@ -29,3 +29,24 @@ export function VerifiedFallback({ locale }: { locale: AppLocale }) {
   if (locale !== 'am') return null
   return <p className={styles.fallback} role="note">English verified content shown where an approved Amharic version is not yet available.</p>
 }
+
+export function PublishedQuestionsStatus({
+  locale,
+  state,
+  onRetry,
+}: {
+  locale: AppLocale
+  state: 'loading' | 'error'
+  onRetry?: () => void
+}) {
+  const am = locale === 'am'
+  if (state === 'loading') {
+    return <p className={styles.contentStatus} role="status">{am ? 'የታተመ ይዘት በመፈለግ ላይ…' : 'Checking for published questions…'}</p>
+  }
+  return (
+    <div className={`${styles.contentStatus} ${styles.contentStatusError}`} role="alert">
+      <span>{am ? 'የታተመ ተጨማሪ ይዘት ሊጫን አልቻለም። ያለው የተረጋገጠ ይዘት እንደተጠበቀ ነው።' : 'Published questions could not be loaded. Available verified content is still ready to play.'}</span>
+      {onRetry ? <button type="button" onClick={onRetry}>{am ? 'እንደገና ይሞክሩ' : 'Try again'}</button> : null}
+    </div>
+  )
+}

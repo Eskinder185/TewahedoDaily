@@ -37,7 +37,8 @@ export function validateMezmurTitleLyrics(values: MezmurTitleLyricsValues): Mezm
 
   if (!titleAmharic) issues.push({ field: 'title_amharic', severity: 'error', message: 'Amharic title is missing.' })
   if (!transliterationTitle) issues.push({ field: 'transliteration_title', severity: 'error', message: 'Transliterated title is missing.' })
-  if (!lyricsAmharic) issues.push({ field: 'lyrics_amharic', severity: 'error', message: 'Amharic lyrics are missing.' })
+  // Amharic lyrics are optional: publication only needs lyrics in at least one supported language.
+  if (!lyricsAmharic) issues.push({ field: 'lyrics_amharic', severity: 'warning', message: 'Amharic lyrics are missing.' })
   if (!lyricsTransliteration) issues.push({ field: 'lyrics_transliteration', severity: 'warning', message: 'Transliterated lyrics are missing.' })
 
   if (titleAmharic && !ETHIOPIC.test(titleAmharic)) {

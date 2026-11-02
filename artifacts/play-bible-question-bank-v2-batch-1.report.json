@@ -1,0 +1,50 @@
+{
+  "status": "draft",
+  "generated": 10,
+  "accepted": 10,
+  "rejected": 0,
+  "books": {"genesis": 3, "exodus": 2, "matthew": 3, "john": 2},
+  "chapters": ["genesis:3", "genesis:9", "genesis:11", "exodus:3", "exodus:14", "matthew:5", "matthew:6", "matthew:11", "john:2", "john:6"],
+  "difficulties": {"beginner": 5, "growing": 4, "challenge": 1},
+  "questionTypes": {
+    "character reasoning": 1,
+    "covenant sign identification": 1,
+    "collective motive": 1,
+    "mission purpose": 1,
+    "response to danger": 1,
+    "instruction sequence": 1,
+    "teaching rationale": 1,
+    "evidence interpretation": 1,
+    "narrative interpretation": 1,
+    "event outcome": 1
+  },
+  "checks": {
+    "stableUniqueIds": "PASS",
+    "allChaptersInApprovedPlan": "PASS",
+    "pilotChaptersExcluded": "PASS",
+    "completeEnglishWebCitationRanges": "PASS",
+    "exactBibleRoutes": "PASS",
+    "fourDistinctOptionsAndValidKey": "PASS",
+    "duplicatePromptOrOptionFingerprints": "PASS",
+    "playQuestionRequiredFields": "PASS",
+    "answerPositionBalance": {"a": 2, "b": 3, "c": 3, "d": 2},
+    "correctAnswerLength": {"minCharacters": 27, "maxCharacters": 44, "meanCharacters": 35.2, "longestOrTied": 3, "interpretation": "Correct answers are not systematically the longest option."},
+    "john2QuestionUnchanged": "PASS",
+    "allQuestionsRemainDrafts": "PASS"
+  },
+  "editorialRevisions": [
+    "Replaced weak Genesis 3 and Genesis 9 distractors with alternatives tied to the surrounding narrative.",
+    "Reframed Genesis 11 distractors around plausible settlement motives.",
+    "Made Exodus 3 ask for the immediate outcome and replaced overlapping alternatives.",
+    "Replaced Exodus 14 distractors with plausible responses to the approaching army.",
+    "Clarified Matthew 5 that the brother has something against the worshipper.",
+    "Corrected Matthew 6 wording and removed a distractor that was true elsewhere in the cited range.",
+    "Changed Matthew 11 difficulty from Challenge to Growing.",
+    "Removed the unsupported boy-contribution assumption from John 6 distractors."
+  ],
+  "editorialNotes": [
+    "A qualified Ethiopian Orthodox editor should review Genesis 11 motive framing and John 2's temple/body interpretation before publication.",
+    "Review wording and distractor plausibility in context before publication.",
+    "English-only; no Amharic source was supplied or assumed."
+  ]
+}

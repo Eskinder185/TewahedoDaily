@@ -50,11 +50,10 @@ async function main() {
     assert.equal(meskel.matchSource, 'exact-title')
 
     const yared = resolveMedia({ title: 'Saint Yared', legacyFallbackUrl: '/images/calendar-web/SaintYared.webp', allowLegacyFallback: true })
-    // No approved upload exists for the general Saint Yared card: the bundled legacy image is used
+    // The CMS Saint Yared upload (shared by two published cards, byte-identical) now wins over the bundled legacy image
     assert.equal(yared.hasImage, true)
-    assert.equal(yared.matchSource, 'legacy-fallback')
-    assert.equal(yared.storagePath, null)
-    assert.equal(yared.imageUrl, '/images/calendar-web/SaintYared.webp')
+    assert.equal(yared.matchSource, 'exact-title')
+    assert.equal(yared.storagePath, 'calendar/general/yared-96548f68-1792449396141.webp')
     console.log('✓ 1. Exact English title matching: PASS')
   }
 
@@ -303,8 +302,8 @@ async function main() {
 
     // Tewahedo Play: all 22 PLAY_IMAGES now point to content-media URLs with local fallbackSrc
     assert.equal(PLAY_IMAGES.length, 22)
-    // Subjects without an approved upload keep the bundled legacy image (currently only Saint Yared)
-    const legacyOnlyPlayImages = new Set(['yared'])
+    // Every subject now has an approved upload; the set is kept so a future legacy-only subject can be listed here
+    const legacyOnlyPlayImages = new Set<string>()
     for (const playImg of PLAY_IMAGES) {
       if (legacyOnlyPlayImages.has(playImg.id)) {
         assert.equal(playImg.src, playImg.fallbackSrc, `Expected PLAY_IMAGES[${playImg.id}].src to be the bundled fallback`)

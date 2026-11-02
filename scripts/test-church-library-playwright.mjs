@@ -37,7 +37,6 @@ async function main() {
   await page.getByRole('button', { name: 'Enable Search Buddy access' }).click()
   if (!await page.getByText('Complete processing and rights checks first.').isVisible()) failures.push('rights gate did not block premature retrieval')
   await page.getByRole('button', { name: 'Reprocess book' }).click()
-  await page.locator('#rights').selectOption('permission_granted')
   await page.locator('#ready').check()
   await page.locator('#quotes').check()
   await page.getByRole('button', { name: 'Enable Search Buddy access' }).click()

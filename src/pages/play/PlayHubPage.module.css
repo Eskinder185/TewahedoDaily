@@ -225,7 +225,6 @@
 }
 
 /* ---------- sections ---------- */
-.featured { padding-top: clamp(3rem, 7vw, 5rem); }
 .gamesSection { padding-top: clamp(3rem, 7vw, 5rem); scroll-margin-top: 5.5rem; }
 
 .sectionHeading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.25rem 2rem; margin-bottom: 1.5rem; }
@@ -244,7 +243,6 @@
 
 .sectionHeading > div > p:last-child:not(.eyebrow) { margin: 0.75rem 0 0; color: var(--color-text-muted); line-height: var(--leading-body); }
 
-.featuredGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(0.85rem, 2vw, 1.4rem); }
 
 .filters { display: flex; gap: 0.4rem; margin: 0 -1rem; padding: 0 1rem 0.25rem; overflow-x: auto; scrollbar-width: none; }
 .filters::-webkit-scrollbar { display: none; }
@@ -303,8 +301,7 @@
 
 /* ---------- responsive ---------- */
 @media (max-width: 1000px) {
-  .gameGrid, .featuredGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .featuredGrid > :last-child { grid-column: 1 / -1; }
+  .gameGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -322,8 +319,7 @@
   .heroIcon figcaption { font-size: 0.78rem; }
   .heroActions > * { flex: 1 1 100%; }
   .heroFacts { gap: 0.5rem 1.2rem; }
-  .gameGrid, .featuredGrid { grid-template-columns: 1fr; }
-  .featuredGrid > :last-child { grid-column: auto; }
+  .gameGrid { grid-template-columns: 1fr; }
   .dailyCard::before { background: linear-gradient(180deg, rgba(10, 21, 36, 0.35) 0%, rgba(10, 21, 36, 0.92) 55%); }
   .dailyCard { min-height: 19rem; }
 }

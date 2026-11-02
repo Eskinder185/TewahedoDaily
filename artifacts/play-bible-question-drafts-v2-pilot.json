@@ -1,0 +1,478 @@
+{
+  "status": "draft",
+  "publish": false,
+  "sourceSnapshot": "play-bible-snapshot-1793487606836.json",
+  "edition": "web",
+  "questions": [
+    {
+      "id": "bible-v2-genesis-8-bird-sequence",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which order matches how Noah tested whether the waters had gone down?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Dove that returned, raven, dove with an olive leaf, dove that stayed away"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Raven, dove with an olive leaf, dove that returned, dove that stayed away"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Raven, dove that returned, dove with an olive leaf, dove that stayed away"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Dove with an olive leaf, raven, dove that returned, dove that stayed away"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "Noah first sent a raven, then a dove that found no resting place. Seven days later the dove brought an olive leaf, and after seven more days it did not return."
+      },
+      "source": {
+        "label": "Genesis 8:6–12",
+        "route": "/bible/genesis/8",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-genesis-13-separation-reason",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Why did Abram propose that he and Lot separate?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "The land could not support both households, and their herdsmen fought"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "A famine had left too little food in Canaan for both households to share"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "God had commanded Abram to send Lot back to their relatives in Haran"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Lot’s household had refused to worship at the altar Abram had built"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "Their possessions were too great for the land to bear, strife arose between the herdsmen, and Abram sought peace between relatives."
+      },
+      "source": {
+        "label": "Genesis 13:5–9",
+        "route": "/bible/genesis/13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-genesis-45-joseph-purpose",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "When Joseph revealed himself, what purpose did he tell his brothers lay behind his being in Egypt?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Pharaoh had needed a wise ruler to govern all of his household"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "His suffering had been a punishment that would test his brothers’ repentance"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He had been taken there so Israel could later inherit the land of Egypt"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "God had sent him ahead of them to preserve life through the famine"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Joseph told his brothers not to be grieved, because God had sent him before them to preserve life and save them by a great deliverance."
+      },
+      "source": {
+        "label": "Genesis 45:5–8",
+        "route": "/bible/genesis/45",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-exodus-12-blood-token",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "What did Yahweh say the blood on the houses would do on the night He struck Egypt?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Show the Egyptians which families belonged to the people of Israel"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Serve as a token, so He would pass over and no plague would destroy them"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Mark the households who would be first to leave Egypt the next morning"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Consecrate each firstborn son of Israel for service at the altar of Yahweh"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "The blood was a token on the houses. When Yahweh saw it He would pass over, and no plague would destroy those inside."
+      },
+      "source": {
+        "label": "Exodus 12:12–13",
+        "route": "/bible/exodus/12",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-exodus-18-shared-judging",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What change did Moses’ father-in-law counsel so that Moses would not wear himself out?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Hear the people’s cases only on set days at the start of each month"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Let Aaron and the seventy elders take over every case in his place"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Appoint able judges; bring major cases to Moses"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Send all disputes back to the head of each tribe to settle alone"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "He advised Moses to place able, God-fearing men over the people. They would judge small matters and bring great matters to Moses, sharing the load."
+      },
+      "source": {
+        "label": "Exodus 18:17–23",
+        "route": "/bible/exodus/18",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-exodus-20-sabbath-reason",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What reason does the Sabbath commandment in Exodus 20 itself give for keeping the seventh day holy?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Yahweh made heaven and earth in six days and rested on the seventh"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Israel crossed through the sea and left Egypt behind on the seventh day"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Yahweh gave the law to Moses at Sinai on the seventh day of the month"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Manna did not fall on the seventh day, so no food could be gathered"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The commandment grounds the Sabbath in creation: Yahweh made all things in six days and rested on the seventh, so He blessed that day and made it holy."
+      },
+      "source": {
+        "label": "Exodus 20:8–11",
+        "route": "/bible/exodus/20",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-matthew-13-thorns-meaning",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "In Jesus’ explanation of the parable of the farmer, what do the thorns represent?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Hardship and persecution that make a new believer fall away"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "The evil one stealing the message before it is understood"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "False teachers who mix their own words with the truth"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Worries and wealth crowding out the word"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Jesus said the seed among thorns is one who hears the word, but worldly cares and the deceitfulness of riches choke it, leaving him unfruitful."
+      },
+      "source": {
+        "label": "Matthew 13:18–23",
+        "route": "/bible/matthew/13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-matthew-18-unforgiving-servant",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "In the parable of the king settling accounts, why was the first servant finally handed to the tormentors?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He had no means of repaying the ten thousand talents he owed"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He showed no mercy after his debt was forgiven"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He hid his family’s wealth from the king while begging for patience"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He complained to the king about what his fellow servants had done"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "The king forgave his huge debt, but the servant jailed a fellow servant over a far smaller one. The king then held him to account for showing no mercy."
+      },
+      "source": {
+        "label": "Matthew 18:23–35",
+        "route": "/bible/matthew/18",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-john-4-worship-place",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What disagreement about worship did the Samaritan woman raise with Jesus?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Whether people ought to worship on her people’s mountain or in Jerusalem"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Whether Samaritans were allowed to offer sacrifices at the temple in Jerusalem"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Whether the Sabbath should be kept by Jews and Samaritans on the same day"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Whether worship could rightly be offered at Jacob’s well instead of the temple"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "She said her fathers worshiped on this mountain, while Jews said Jerusalem was the place. Jesus answered that an hour was coming when neither would be the place."
+      },
+      "source": {
+        "label": "John 4:19–21",
+        "route": "/bible/john/4",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v2-john-9-blindness-cause",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "When the disciples asked who had sinned, how did Jesus explain why the man was born blind?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "His parents had sinned, and the consequence had fallen upon their son"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He would be healed only when he confessed sins known to God alone"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Neither had sinned; God’s works would be revealed in him"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "An evil spirit had bound him from birth and kept him from seeing"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "Jesus rejected both options the disciples offered, saying neither the man nor his parents had sinned, but that the works of God might be revealed in him."
+      },
+      "source": {
+        "label": "John 9:1–3",
+        "route": "/bible/john/9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    }
+  ]
+}

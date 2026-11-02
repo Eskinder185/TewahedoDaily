@@ -1,0 +1,160 @@
+﻿import { resolveContentMediaUrl } from '../cms/contentMedia';
+import type { CalendarCard } from '../synaxarium/synaxariumService';
+
+export type MediaDomain =
+  | 'calendar'
+  | 'hymn-collection'
+  | 'hymn-section'
+  | 'zemari'
+  | 'play'
+  | 'fallback';
+
+export type MediaMatchSource =
+  | 'explicit-new-media'
+  | 'verified-relationship'
+  | 'exact-title'
+  | 'verified-alias'
+  | 'legacy-fallback'
+  | 'none';
+
+export interface VerifiedMediaEntry {
+  /** Canonical subject/entry identifier */
+  id: string;
+  /** Storage path inside the `content-media` public bucket */
+  storagePath: string;
+  /** Domain scope (zemari portraits are strictly isolated to 'zemari') */
+  domain: MediaDomain;
+  /** Optional source_type from calendar_cards */
+  sourceType?: string;
+  /** Optional source_id from calendar_cards */
+  sourceId?: string;
+  /** Optional source_slug from calendar_cards / mezmur tables */
+  sourceSlug?: string;
+  /** Card or section slug */
+  slug?: string;
+  /** Original English title (preserved) */
+  title: string;
+  /** Original Amharic title (preserved) */
+  titleAmharic?: string;
+  /** Original alt text from media_assets */
+  altText?: string;
+  /** Original uploaded filename from media_assets */
+  fileName?: string;
+  /** Optional object-position CSS value */
+  imagePosition?: string | null;
+  /** Deterministic priority/timestamp for duplicate resolution (higher wins) */
+  updatedAtMs?: number;
+  /** Explicit verified aliases (English, Amharic, bilingual, liturgical) */
+  aliases?: readonly string[];
+  /** Explicit verified source IDs or slugs that map to this media entry */
+  relatedIds?: readonly string[];
+}
+
+export interface MediaResolutionQuery {
+  /** Content or entity ID (e.g. observance id, section slug, play image id) */
+  id?: string | null;
+  /** Content slug */
+  slug?: string | null;
+  /** Source type (e.g. 'observance', 'fast', 'season', 'monthly', 'zemari') */
+  sourceType?: string | null;
+  /** English or bilingual title */
+  title?: string | null;
+  /** Amharic title */
+  titleAmharic?: string | null;
+  /** Additional candidate titles or alt texts */
+  altText?: string | null;
+  /** Explicit storage path or URL already attached to the record */
+  explicitPath?: string | null;
+  /** Explicit fallback URL (e.g. legacy `/images/calendar-web/*.webp`) */
+  legacyFallbackUrl?: string | null;
+  /** Optional domain restriction (defaults to excluding 'zemari' unless 'zemari' is requested) */
+  domain?: MediaDomain | 'any';
+  /** Optional runtime calendar cards to include in resolution */
+  cards?: readonly CalendarCard[] | null;
+  /** Whether to allow legacy `/images/calendar-web/*` fallback when no new media matches */
+  allowLegacyFallback?: boolean;
+}
+
+export interface MediaResolutionResult {
+  hasImage: boolean;
+  /** Resolved public URL (either Supabase `content-media` URL or legacy fallback) */
+  imageUrl: string | null;
+  /** Storage path in `content-media` if resolved from new uploaded media */
+  storagePath: string | null;
+  /** Preserved English title */
+  title: string | null;
+  /** Preserved Amharic title */
+  titleAmharic: string | null;
+  /** Optional CSS object-position */
+  imagePosition: string | null;
+  /** How the image was matched */
+  matchSource: MediaMatchSource;
+  /** Matched catalog entry ID if matched from verified catalog */
+  matchedEntryId: string | null;
+  /** Legacy fallback URL if available for `<img onError>` */
+  fallbackUrl: string | null;
+}
+
+/**
+ * Known mislabeled early uploads in `media_assets` where a file was uploaded with
+ * a mismatched filename or replaced by a canonical upload for the same subject.
+ * These paths are deprioritized / excluded from automatic title/filename matching
+ * when canonical uploads exist.
+ */
+const DEPRIORITIZED_STORAGE_PATHS = new Set<string>([
+  // Uploaded with file_name `ArchangelUriel.webp` under `annunciation` path; replaced by canonical `annunciation-4ff2109c-1790970788849.webp`
+  'calendar/mary/annunciation-e695e78a-1790963029629.webp',
+  // Uploaded with file_name `Kidus-Michael.webp` under `demera` path; replaced by canonical `demera-42d44792-1790968174923.webp`
+  'calendar/cross/demera-1790953956789.webp',
+]);
+
+/**
+ * Ethiopic homophone / orthographic variant normalization map.
+ * Maps historically distinct Ge'ez/Amharic fidel series that are used interchangeably
+ * in modern Amharic titles (áˆ/áŠ€ -> áˆ€, áˆ  -> áˆ°, á‹ -> áŠ , á€ -> áŒ¸, á‹‰ -> á‹, á‹ª -> á‹­, 4th-order laryngeal áˆƒ/áˆ“/áŠƒ/á‹“/áŠ£ -> áˆ€/áŠ ).
+ * Note: This is used ONLY for internal comparison keys; original Amharic titles are always preserved.
+ */
+const ETHIOPIC_CANONICAL_CHAR_MAP: Record<string, string> = {
+  // áˆ series -> áˆ€ series
+  áˆ: 'áˆ€', áˆ‘: 'áˆ', áˆ’: 'áˆ‚', áˆ“: 'áˆ€', áˆ”: 'áˆ„', áˆ•: 'áˆ…', áˆ–: 'áˆ†', áˆ—: 'áŠ‹',
+  // áŠ€ series -> áˆ€ series
+  áŠ€: 'áˆ€', áŠ: 'áˆ', áŠ‚: 'áˆ‚', áŠƒ: 'áˆ€', áŠ„: 'áˆ„', áŠ…: 'áˆ…', áŠ†: 'áˆ†', áŠ‹: 'áŠ‹',
+  // áˆ€ 4th order (áˆƒ) -> áˆ€ (handles á‹®áˆáŠ•áˆµ/á‹®áˆƒáŠ•áˆµ, á‰¥áˆ­áˆƒáŠ•/á‰¥áˆ­áˆ€áŠ•, áˆ˜á‹µáŠƒáŠ”/áˆ˜á‹µáˆƒáŠ”)
+  áˆƒ: 'áˆ€',
+  // áˆ  series -> áˆ° series (handles áˆ¥áˆ‹áˆ´/áˆµáˆ‹áˆ´, á‰µáŠ•áˆ£áŠ¤/á‰µáŠ•áˆ³áŠ¤, áˆ†áˆ£á‹•áŠ“/áˆ†áˆ³á‹•áŠ“, á‰¥áˆ¥áˆ«á‰°/á‰¥áˆµáˆ«á‰°)
+  áˆ : 'áˆ°', áˆ¡: 'áˆ±', áˆ¢: 'áˆ²', áˆ£: 'áˆ³', áˆ¤: 'áˆ´', áˆ¥: 'áˆµ', áˆ¦: 'áˆ¶', áˆ§: 'áˆ·',
+  // á‹ series & áŠ£ -> áŠ  series (handles á‹“áˆˆáˆ/áŠ áˆˆáˆ, á‹á‰¢á‹­/áŠ á‰¥á‹­, á‰ á‹“áˆˆ/á‰ áŠ áˆˆ, áˆ†áˆ£á‹•áŠ“/áˆ†áˆ³áŠ¥áŠ“)
+  á‹: 'áŠ ', á‹‘: 'áŠ¡', á‹’: 'áŠ¢', á‹“: 'áŠ ', á‹”: 'áŠ¤', á‹•: 'áŠ¥', á‹–: 'áŠ¦',
+  áŠ£: 'áŠ ',
+  // á€ series -> áŒ¸ series (handles á…áŠ•áˆ°á‰µ/áŒ½áŠ•áˆ°á‰µ, á€áˆŽá‰°/áŒ¸áˆŽá‰°, á…á‹®áŠ•/áŒ½á‹®áŠ•, á€á‹°áŠ’á‹«/á€á‹°áŠ•á‹«, áˆ•áŠ•á€á‰°/áˆ•áŠ•áŒ¸á‰°)
+  á€: 'áŒ¸', á: 'áŒ¹', áŒº: 'áŒº', áƒ: 'áŒ»', á„: 'áŒ¼', á…: 'áŒ½', á†: 'áŒ¾',
+  // Common vowel/glide orthographic variants in Amharic names
+  á‹‰: 'á‹',
+  á‹ª: 'á‹­',
+};
+
+/**
+ * Common English and Amharic honorific prefixes that may be present on one record
+ * (`Saint George`, `á‰…á‹±áˆµ áŒŠá‹®áˆ­áŒŠáˆµ`, `Archangel Michael`) and omitted on another (`áŒŠá‹®áˆ­áŒŠáˆµ`, `Michael`).
+ */
+const ENGLISH_HONORIFIC_PREFIXES = [
+  'archangel ',
+  'saint ',
+  'saints ',
+  'st. ',
+  'st ',
+  'apostle ',
+  'prophet ',
+  'martyr ',
+  'righteous ',
+  'abune ',
+  'abba ',
+  'aba ',
+  'kidus ',
+  'kidist ',
+  'kidan ',
+  'feast of the ',
+  'feast of ',
+  'commemoration of ',
+];
+

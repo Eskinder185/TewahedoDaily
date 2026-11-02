@@ -58,6 +58,11 @@ linkOcc(10, 'new-year-enkutatash') // legacy slug
 linkOcc(11, 'general-anytime') // legacy slug
 linkOcc(12, 'holy-week')
 linkCat(13, 'kidus-michael') // existing live section
+linkCat(13, 'Kidus Mikael')
+linkCat(13, 'ቅዱስ ሚካኤል')
+linkCat(14, 'Saint George')
+linkOcc(14, 'Genna')
+linkOcc(99, 'Gena')
 linkCat(99, 'salvation') // draft — must not count
 // no links for "baptism" → that fallback section must stay hidden
 
@@ -112,6 +117,9 @@ process.env.VITE_SUPABASE_URL = `http://127.0.0.1:${port}`
 process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'test-publishable-key'
 
 const browse = await import('../src/lib/publicContent/hymnBrowse')
+const taxonomy = await import('../src/lib/publicContent/browseTaxonomy')
+const { CATEGORY_ENTRIES, OCCASION_ENTRIES } = await import('../src/lib/mezmur/taxonomyAliases')
+const { MEZMUR_CATEGORY_BROWSE_GROUPS, MEZMUR_OCCASION_BROWSE_GROUPS } = await import('../src/lib/publicContent/mezmurBrowseGroups')
 
 let passed = 0
 const failures: string[] = []
@@ -192,6 +200,60 @@ await test('collection counts are not truncated at 1,000 rows (English Mezmur = 
   const english = (await browse.getHymnCollections()).find((c) => c.slug === 'english-mezmur')
   assert.ok(english, 'english-mezmur collection missing')
   assert.equal(english.mezmurCount, 1200)
+})
+await test('every canonical CMS entry has a public subcategory route', async () => {
+  const categories = new Set(MEZMUR_CATEGORY_BROWSE_GROUPS.flatMap((g) => g.taxonomySlugs))
+  const occasions = new Set(MEZMUR_OCCASION_BROWSE_GROUPS.flatMap((g) => g.taxonomySlugs))
+  for (const entry of CATEGORY_ENTRIES) assert.ok(categories.has(entry.slug), `category ${entry.slug}`)
+  for (const entry of OCCASION_ENTRIES) assert.ok(occasions.has(entry.slug), `occasion ${entry.slug}`)
+  for (const group of [...MEZMUR_CATEGORY_BROWSE_GROUPS, ...MEZMUR_OCCASION_BROWSE_GROUPS]) {
+    const children = (await browse.loadBrowseGroupChildren(group.slug)).children
+    const keys = children.map((child) => `${child.kind}:${child.slug}`)
+    assert.equal(new Set(keys).size, keys.length, `duplicate in ${group.slug}`)
+    for (const slug of group.taxonomySlugs) {
+      assert.ok(keys.includes(`${group.kind}:${slug}`), `missing ${group.kind}:${slug} in ${group.slug}`)
+    }
+  }
+})
+await test('public cards merge CMS spelling variants and exclude draft links', async () => {
+  const categories = await browse.getHymnCategories()
+  const occasions = await browse.getHymnOccasions()
+  assert.equal(categories.find((c) => c.slug === 'kidus-michael')?.mezmurCount, 1)
+  assert.equal(categories.find((c) => c.slug === 'kidus-giorgis')?.mezmurCount, 1)
+  assert.equal(occasions.find((c) => c.slug === 'gena')?.mezmurCount, 1)
+  assert.equal(occasions.find((c) => c.slug === 'funeral')?.mezmurCount, 1)
+  assert.equal(occasions.find((c) => c.slug === 'new-year')?.mezmurCount, 1)
+  assert.ok(!categories.some((c) => ['Kidus Mikael', 'ቅዱስ ሚካኤል', 'Saint George'].includes(c.slug)))
+  assert.ok(!occasions.some((c) => ['Genna', 'funeral-memorial', 'new-year-enkutatash'].includes(c.slug)))
+})
+await test('browse group children have canonical routes, counts, and no duplicates', async () => {
+  const saints = (await browse.loadBrowseGroupChildren('category-angels-saints')).children
+  const feasts = (await browse.loadBrowseGroupChildren('occasion-holidays-feasts')).children
+  assert.equal(saints.filter((c) => c.slug === 'kidus-michael').length, 1)
+  assert.equal(saints.find((c) => c.slug === 'kidus-giorgis')?.href, '/hymns/category/kidus-giorgis')
+  assert.equal(saints.find((c) => c.slug === 'kidus-giorgis')?.mezmurCount, 1)
+  assert.equal(feasts.find((c) => c.slug === 'gena')?.href, '/hymns/occasion/gena')
+  assert.equal(feasts.find((c) => c.slug === 'gena')?.mezmurCount, 1)
+  assert.equal(new Set(saints.map((c) => `${c.kind}:${c.slug}`)).size, saints.length)
+})
+await test('relationship filters select assigned published hymns, with category and occasion separate', async () => {
+  const published = await browse.listImportMezmurCards()
+  const categories = await browse.fetchAllCategoryLinks()
+  const occasions = await browse.fetchAllOccasionLinks()
+  const results = (kind: 'category' | 'occasion', slug: string) => {
+    const links = kind === 'category' ? categories : occasions
+    const matching = links.filter((link) => taxonomy.matchesBrowseLink(kind, [slug],
+      kind === 'category' ? String((link as { category_slug: string }).category_slug) : String((link as { occasion_slug: string }).occasion_slug)))
+    const ids = new Set(matching.map((link) => link.mezmur_id))
+    const slugs = new Set(matching.map((link) => link.mezmur_slug))
+    return published.filter((row) => ids.has(row.id) || slugs.has(row.slug)).map((row) => row.slug)
+  }
+  assert.deepEqual(results('category', 'kidus-michael'), ['test-mezmur-13'])
+  assert.deepEqual(results('category', 'saint-george'), ['test-mezmur-14'])
+  assert.deepEqual(results('occasion', 'gena'), ['test-mezmur-14'])
+  assert.deepEqual(results('occasion', 'funeral'), ['test-mezmur-9'])
+  assert.deepEqual(results('category', 'salvation').sort(), ['test-mezmur-1', 'test-mezmur-2'])
+  assert.deepEqual(results('occasion', 'salvation'), [])
 })
 await test('mock data was read, never written', async () => {
   assert.equal(mezmurs.length, 1215)

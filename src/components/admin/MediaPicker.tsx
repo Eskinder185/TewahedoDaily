@@ -11,6 +11,7 @@ import {
 } from '../../lib/cms/contentMedia'
 import { errorMessage } from '../../lib/cms/mezmurService'
 import { CalendarEventImage } from '../calendar/CalendarEventImage'
+import { extractTitleCandidates, isPublicCmsImage, suggestMediaAssets, type MediaResolutionQuery } from '../../lib/media/mediaResolver'
 import styles from './MediaPicker.module.css'
 
 export type MediaPickerValue = {
@@ -37,6 +38,8 @@ type Props = {
   convertToWebp?: boolean
   /** Use 4:3 cover preview (hymn section / collection cards). */
   previewAspect?: 'default' | '4/3'
+  /** Optional content identity for review-only suggestions. */
+  matchQuery?: MediaResolutionQuery & { intentionallyNoImage?: boolean }
 }
 
 export function MediaPicker({
@@ -49,6 +52,7 @@ export function MediaPicker({
   suggestedPath = null,
   convertToWebp = true,
   previewAspect = 'default',
+  matchQuery,
 }: Props) {
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -56,11 +60,17 @@ export function MediaPicker({
   const [search, setSearch] = useState('')
   const [filterFolder, setFilterFolder] = useState<string>(folder)
   const [assets, setAssets] = useState<MediaAsset[]>([])
+  const [page, setPage] = useState(1)
+  const [total, setTotal] = useState(0)
+  const [failedImages, setFailedImages] = useState<string[]>([])
   const [localAlt, setLocalAlt] = useState(altText || '')
   const [progress, setProgress] = useState<number | null>(null)
   const [duplicate, setDuplicate] = useState<DuplicatePrompt | null>(null)
 
   const previewUrl = resolveContentMediaUrl(value)
+  const suggestions = matchQuery
+    ? suggestMediaAssets({ ...matchQuery, explicitPath: value || matchQuery.explicitPath }, assets)
+    : []
   const isCalendarFolder =
     (folder || '').startsWith('calendar') || (value || '').startsWith('calendar/')
   const preferUniqueUploadPath =
@@ -83,16 +93,18 @@ export function MediaPicker({
       const result = await listMediaAssets({
         search,
         folder: filterFolder || undefined,
-        page: 1,
+        page,
         pageSize: 48,
       })
       setAssets(result.items)
+      setTotal(result.total)
+      setFailedImages([])
     } catch (cause) {
       setError(errorMessage(cause))
     } finally {
       setBusy(false)
     }
-  }, [search, filterFolder])
+  }, [search, filterFolder, page])
 
   useEffect(() => {
     if (!open) return
@@ -350,13 +362,13 @@ export function MediaPicker({
                 Search
                 <input
                   value={search}
-                  onChange={(e) => setSearch(e.target.value)}
+                  onChange={(e) => { setSearch(e.target.value); setPage(1) }}
                   placeholder="File name or alt text"
                 />
               </label>
               <label>
                 Folder
-                <select value={filterFolder} onChange={(e) => setFilterFolder(e.target.value)}>
+                <select value={filterFolder} onChange={(e) => { setFilterFolder(e.target.value); setPage(1) }}>
                   <option value="">All</option>
                   {MEDIA_FOLDER_OPTIONS.map((f) => (
                     <option key={f.value} value={f.value}>
@@ -382,6 +394,17 @@ export function MediaPicker({
               </label>
             </div>
 
+            {matchQuery && !value && !matchQuery.intentionallyNoImage && (matchQuery.title || matchQuery.titleAmharic) ? (
+              <button type="button" onClick={() => {
+                const title = matchQuery.title || matchQuery.titleAmharic || ''
+                setSearch(extractTitleCandidates(title, { includeHonorificStripped: false })[1] || title)
+                setFilterFolder('')
+                setPage(1)
+              }}>
+                Find matching media for {matchQuery.title || matchQuery.titleAmharic}
+              </button>
+            ) : null}
+
             {progress !== null ? <p role="status">Uploading {progress}%</p> : null}
             {busy && progress === null ? <p role="status">Loading…</p> : null}
             {error ? (
@@ -390,13 +413,43 @@ export function MediaPicker({
               </p>
             ) : null}
 
+            {suggestions.length > 0 ? (
+              <section aria-label="Suggested images for review" className={styles.suggestionPanel}>
+                <h4>Suggested images for review</h4>
+                <p>Check the subject and usage rights before selecting. Selecting may save the image in this editor.</p>
+                <ul className={styles.suggestionList}>
+                  {suggestions.map(({ asset, title, reason, relatedContentId }) => {
+                    const unavailable = failedImages.includes(asset.id)
+                    return (
+                      <li key={asset.id} className={styles.suggestionItem}>
+                        {unavailable ? <span className={styles.unavailable}>Preview unavailable</span> : (
+                          <img src={resolveContentMediaUrl(asset.storage_path)} alt="" loading="lazy"
+                            onError={() => setFailedImages((previous) => previous.includes(asset.id) ? previous : [...previous, asset.id])} />
+                        )}
+                        <div>
+                          <strong>{title}</strong>
+                          <small>Filename: {asset.file_name || 'Not recorded'}</small>
+                          <small>Reason: {reason}</small>
+                          <small>Content ID: {relatedContentId || 'Not recorded'}</small>
+                          <small>Approval: Not recorded · Rights: Not recorded</small>
+                          <button type="button" disabled={unavailable} onClick={() => selectAsset(asset)}>Select this image</button>
+                        </div>
+                      </li>
+                    )
+                  })}
+                </ul>
+              </section>
+            ) : null}
+
             <ul className={styles.grid}>
-              {assets.map((asset) => {
+              {assets.filter(isPublicCmsImage).map((asset) => {
                 const url = resolveContentMediaUrl(asset.storage_path)
                 return (
                   <li key={asset.id}>
-                    <button type="button" className={styles.tile} onClick={() => selectAsset(asset)}>
-                      <img src={url} alt={asset.alt_text || ''} />
+                    <button type="button" className={styles.tile} onClick={() => selectAsset(asset)} disabled={failedImages.includes(asset.id)}>
+                      {failedImages.includes(asset.id) ? <span>Preview unavailable</span> :
+                        <img src={url} alt={asset.alt_text || ''} loading="lazy"
+                          onError={() => setFailedImages((previous) => previous.includes(asset.id) ? previous : [...previous, asset.id])} />}
                       <span>{asset.file_name}</span>
                       <small>{asset.storage_path}</small>
                     </button>
@@ -404,6 +457,13 @@ export function MediaPicker({
                 )
               })}
             </ul>
+            {total > 48 ? (
+              <div className={styles.pagination}>
+                <button type="button" disabled={busy || page === 1} onClick={() => setPage((current) => current - 1)}>Previous</button>
+                <span>Page {page} of {Math.ceil(total / 48)}</span>
+                <button type="button" disabled={busy || page * 48 >= total} onClick={() => setPage((current) => current + 1)}>Next</button>
+              </div>
+            ) : null}
             {!busy && assets.length === 0 ? (
               <p className={styles.empty}>No media found in this folder.</p>
             ) : null}

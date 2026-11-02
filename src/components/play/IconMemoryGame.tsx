@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
@@ -7,7 +7,9 @@ import { recordPlayCompletion } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
 import { localized } from '../../lib/play/types'
 import { Celebration } from './Celebration'
+import { GameProgress } from './GameProgress'
 import g from './PlayGames.module.css'
+import m from './IconMemory.module.css'
 
 type Card = { key: string; id: string; face: 'picture' | 'name'; item: PlayImage }
 
@@ -52,23 +54,39 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
     queueMicrotask(() => setSaved(result.xpEarned))
   }, [done, moves, pairs, saved, started, user])
 
+  // Focus the title when a deal starts or the game completes (the clicked card / button is gone or disabled).
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  const prevFocus = useRef({ deal, done })
+  useEffect(() => {
+    const prev = prevFocus.current
+    if (prev.deal === deal && prev.done === done) return
+    prevFocus.current = { deal, done }
+    if (started) headingRef.current?.focus()
+  }, [deal, done, started])
+
   const reset = (again: boolean) => {
     setDeal((d) => d + 1); setOpen([]); setMatched([]); setMoves(0); setSaved(null); setStarted(again); setAnnounce('')
   }
+
+  const matchPrefix = am ? 'ተዛመደ፦' : 'Match:'
+  const noMatchText = am ? 'አልተዛመደም' : 'Not a match'
 
   const flip = (card: Card) => {
     if (open.length === 2 || open.includes(card.key) || matched.includes(card.id)) return
     const next = [...open, card.key]
     setOpen(next)
     if (next.length < 2) { setAnnounce(cardLabel(card)); return }
-    setMoves((m) => m + 1)
+    setMoves((mv) => mv + 1)
     const first = cards.find((c) => c.key === next[0])!
     if (first.id === card.id && first.face !== card.face) {
-      setMatched((m) => [...m, card.id])
+      setMatched((mt) => [...mt, card.id])
       setOpen([])
-      setAnnounce(am ? `ተዛመደ፦ ${localized(card.item.answer, locale).text}` : `Match: ${localized(card.item.answer, locale).text}`)
+      const total = moves + 1
+      setAnnounce(matched.length + 1 === pairs
+        ? (am ? `ሁሉም ተዛመዱ፣ ${total} ሙከራ` : `All pairs found in ${total} ${total === 1 ? 'move' : 'moves'}`)
+        : `${matchPrefix} ${localized(card.item.answer, locale).text}`)
     } else {
-      setAnnounce(am ? 'አልተዛመደም' : 'Not a match')
+      setAnnounce(noMatchText)
       window.setTimeout(() => setOpen([]), 900)
     }
   }
@@ -97,17 +115,21 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
   }
 
   return (
-    <section className={g.board} aria-labelledby="mem-title">
+    <section className={`${g.board} ${am ? m.am : ''}`} aria-labelledby="mem-title">
       {done ? <Celebration /> : null}
       <div className={g.hud}>
-        <h2 id="mem-title" className={g.hudTitle}>{done ? (am ? 'ሁሉም ተዛመዱ!' : 'All pairs found!') : (am ? 'ጥንዶቹን ያግኙ' : 'Find the pairs')}</h2>
+        <h2 id="mem-title" className={`${g.hudTitle} ${m.focusTarget}`} ref={headingRef} tabIndex={-1}>{done ? (am ? 'ሁሉም ተዛመዱ!' : 'All pairs found!') : (am ? 'ጥንዶቹን ያግኙ' : 'Find the pairs')}</h2>
         <div className={g.hudStats}>
-          <span><strong>{matched.length}</strong>/{pairs}</span>
           <span>{moves} {am ? 'ሙከራ' : moves === 1 ? 'move' : 'moves'}</span>
           {saved !== null ? <span className={g.streak}>+{saved} XP</span> : null}
         </div>
       </div>
-      <p className={g.srOnly} aria-live="polite">{announce}</p>
+      <GameProgress locale={locale} current={matched.length} total={pairs} label={am ? 'የተገኙ ጥንዶች' : 'Pairs found'} valueText={am ? `የተገኙ ጥንዶች ${matched.length} ከ ${pairs}` : `${matched.length} of ${pairs} pairs found`} />
+      <p className={g.srOnly} role="status" aria-live="polite" aria-atomic="true">{announce}</p>
+      <div className={m.chipRow} aria-hidden="true">
+        {announce === noMatchText ? <span className={`${m.chip} ${m.chipWrong}`}><span>✕</span>{noMatchText}</span> : null}
+        {announce.startsWith(matchPrefix) ? <span className={`${m.chip} ${m.chipRight}`}><span>✓</span>{announce}</span> : null}
+      </div>
       <div className={`${g.memoryGrid} ${pairs > 6 ? g.memoryGridWide : ''}`}>
         {cards.map((c, i) => {
           const shown = open.includes(c.key) || matched.includes(c.id)
@@ -118,14 +140,15 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
               className={`${g.memoryCard} ${shown ? g.memoryShown : ''} ${matched.includes(c.id) ? g.memoryMatched : ''}`}
               onClick={() => flip(c)}
               disabled={matched.includes(c.id)}
-              aria-label={shown ? cardLabel(c) : (am ? `ካርድ ${i + 1}፣ የተዘጋ` : `Card ${i + 1}, face down`)}
+              aria-label={shown ? (matched.includes(c.id) ? `${cardLabel(c)}, ${am ? 'ተዛመደ' : 'matched'}` : cardLabel(c)) : (am ? `ካርድ ${i + 1}፣ የተዘጋ` : `Card ${i + 1}, face down`)}
             >
               <span className={g.memoryInner}>
                 <span className={g.memoryBack} aria-hidden="true">✠</span>
                 <span className={g.memoryFront} aria-hidden="true">
                   {c.face === 'picture'
                     ? <img src={c.item.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, c.item.fallbackSrc)} style={{ objectPosition: c.item.focus }} />
-                    : <span className={g.memoryName}>{localized(c.item.answer, locale).text}{locale === 'en' && c.item.answer.am ? <small lang="am">{c.item.answer.am}</small> : null}</span>}
+                    : <span className={g.memoryName}><span lang={localized(c.item.answer, locale).fallback ? 'en' : undefined}>{localized(c.item.answer, locale).text}</span>{locale === 'en' && c.item.answer.am ? <small lang="am">{c.item.answer.am}</small> : null}</span>}
+                  {matched.includes(c.id) ? <span className={m.mark} aria-hidden="true">✓</span> : null}
                 </span>
               </span>
             </button>
@@ -134,6 +157,12 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
       </div>
       {done ? (
         <div className={g.results}>
+          <p className={g.kicker}>{am ? 'ጨዋታው ተጠናቋል' : 'Game complete'}</p>
+          <div className={g.scoreRow}>
+            <div><strong>{pairs}</strong><span>{am ? 'ጥንድ' : 'Pairs'}</span></div>
+            <div><strong>{moves}</strong><span>{am ? 'ሙከራ' : 'Moves'}</span></div>
+            <div><strong>{saved !== null ? `+${saved}` : '…'}</strong><span>{am ? 'የተገኘ XP' : 'XP earned'}</span></div>
+          </div>
           <div className={g.actions}>
             <button className={g.primary} type="button" onClick={() => reset(true)}>{am ? 'እንደገና ያድሉ' : 'Deal again'}</button>
             <button className={g.secondary} type="button" onClick={() => reset(false)}>{am ? 'የጥንድ ብዛት ይቀይሩ' : 'Change pairs'}</button>
@@ -143,7 +172,7 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
             {cards.filter((c) => c.face === 'picture').map((c) => (
               <li key={c.key} className={g.reviewRight}>
                 <img src={c.item.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, c.item.fallbackSrc)} style={{ objectPosition: c.item.focus }} />
-                <div><strong>{localized(c.item.answer, locale).text}</strong><span>{localized(c.item.explanation, locale).text}</span><Link to={c.item.source.route}>{c.item.source.label}</Link></div>
+                <div><strong lang={localized(c.item.answer, locale).fallback ? 'en' : undefined}>{localized(c.item.answer, locale).text}</strong><span lang={localized(c.item.explanation, locale).fallback ? 'en' : undefined}>{localized(c.item.explanation, locale).text}</span><Link to={c.item.source.route}>{c.item.source.label}</Link></div>
               </li>
             ))}
           </ol>

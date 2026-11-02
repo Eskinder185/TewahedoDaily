@@ -5,6 +5,7 @@
  * Calendar page and Homepage MUST both use this — no parallel card lookups.
  */
 import { resolveContentMediaUrl } from '../cms/contentMedia'
+import { resolveMedia, resolveRecordImagePath } from '../media/mediaResolver'
 import {
   inheritField,
   imagePositionToObjectPosition,
@@ -86,7 +87,16 @@ export function resolveCalendarImage(
   card?: CalendarCardSourceMatch | ResolvedCalendarCard | null,
   _sourceImagePath?: string | null,
 ): ResolvedCalendarImage {
-  const path = trim(card?.imagePath) || null
+  const stored = trim(card?.imagePath) || null
+  // A card still pointing at a known-missing upload falls back to the verified catalog match for the same subject.
+  const path = resolveRecordImagePath(stored, {
+    id: trim((card as CalendarCardSourceMatch | undefined)?.sourceId) || null,
+    slug: trim((card as CalendarCardSourceMatch | undefined)?.sourceSlug) || null,
+    sourceType: trim(card?.sourceType) || null,
+    title: card?.title ?? null,
+    titleAmharic: card?.titleAmharic ?? null,
+    domain: 'calendar',
+  })
   const updatedAt = trim((card as CalendarCardSourceMatch | undefined)?.updatedAt) || null
   let url = ''
   if (path) {
@@ -127,13 +137,41 @@ export function resolveCalendarEventPresentation(
     sourceSlug,
   )
 
-  const image = resolveCalendarImage(card, input.source.imagePath)
+  let image = resolveCalendarImage(card, input.source.imagePath)
   const title = inheritField(card?.title, input.source.title) || input.source.title
   const titleAmharic = inheritField(card?.titleAmharic, input.source.titleAmharic)
+
+  // When an observance, fast, season, or monthly source has no linked calendar_cards row yet,
+  // check the verified uploaded content-media catalog (by canonical ID, bilingual title, or alias).
+  // Note: If a card row explicitly exists with imagePath = null, we preserve its explicit null state.
+  if (!card && !image.hasImage) {
+    const resolved = resolveMedia({
+      id: sourceId,
+      slug: sourceSlug,
+      sourceType,
+      title,
+      titleAmharic,
+      explicitPath: input.source.imagePath,
+      domain: 'calendar',
+      allowLegacyFallback: false,
+    })
+    if (resolved.hasImage && resolved.imageUrl) {
+      const position = normalizeImagePosition(resolved.imagePosition || 'center')
+      image = {
+        imagePath: resolved.storagePath,
+        imageUrl: resolved.imageUrl,
+        imageAlt: trim(input.source.imageAlt) || title,
+        imagePosition: position,
+        objectPosition: imagePositionToObjectPosition(position),
+        hasImage: true,
+        cardUpdatedAt: null,
+      }
+    }
+  }
   const occurrenceDate = toIsoDay(input.occurrenceDate)
   const occurrenceKey = `${occurrenceDate || 'undated'}:${sourceType}:${sourceId || sourceSlug || 'unknown'}`
 
-  if (import.meta.env.DEV && typeof console !== 'undefined') {
+  if (import.meta.env?.DEV && typeof console !== 'undefined') {
     const channel =
       input.surface === 'homepage' ? '[homepage-card-resolution]' : '[calendar-card-resolution]'
     console.debug(channel, {

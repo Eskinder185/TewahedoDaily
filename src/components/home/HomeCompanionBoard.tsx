@@ -48,7 +48,7 @@ function eventHeading(event: PresentableCalendarEvent, locale: 'en' | 'am'): str
   return locale === 'am' && event.titleAmharic ? event.titleAmharic : event.title
 }
 
-function ResourceIcon({ name }: { name: 'bible' | 'hymns' | 'pray' | 'calendar' }) {
+function ResourceIcon({ name }: { name: 'bible' | 'hymns' | 'pray' | 'challenges' }) {
   if (name === 'bible') {
     return (
       <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
@@ -87,11 +87,7 @@ function ResourceIcon({ name }: { name: 'bible' | 'hymns' | 'pray' | 'calendar' 
   }
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-      <rect x="10" y="11" width="28" height="26" rx="3" fill="none" stroke="currentColor" strokeWidth="1.7" />
-      <path d="M10 18.5h28M16 11v-3.2M32 11v-3.2" stroke="currentColor" strokeWidth="1.6" />
-      <rect x="16" y="23" width="5" height="5" rx="0.8" fill="currentColor" />
-      <rect x="22.5" y="23" width="5" height="5" rx="0.8" fill="currentColor" opacity="0.55" />
-      <rect x="29" y="23" width="5" height="5" rx="0.8" fill="currentColor" opacity="0.35" />
+      <path d="M9 10h10v3.2a3.2 3.2 0 1 0 6.4 0V10H38v11h-3.2a3.2 3.2 0 1 0 0 6.4H38V38H27v-3.2a3.2 3.2 0 1 0-6.4 0V38H9V27h3.2a3.2 3.2 0 1 0 0-6.4H9V10Z" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -399,11 +395,11 @@ export function HomeCompanionBoard() {
       className: styles.resourcePray,
     },
     {
-      key: 'calendar' as const,
-      to: '/calendar',
-      title: t('home.board.calendarTitle'),
-      deck: t('home.board.calendarDeck'),
-      className: styles.resourceCalendar,
+      key: 'challenges' as const,
+      to: '/play',
+      title: t('home.board.challengesTitle'),
+      deck: t('home.board.challengesDeck'),
+      className: styles.resourceChallenges,
     },
   ]
 
@@ -562,33 +558,30 @@ export function HomeCompanionBoard() {
                   />
                   <div className={styles.eventArea}>
                     {loading ? (
-                      <p className={styles.eventEmpty}>{t('home.board.loading')}</p>
-                    ) : error ? (
-                      <p className={styles.eventEmpty}>{t('home.board.unableLoad')}</p>
-                    ) : activeEvent ? (
                       <>
-                        <EventVisual event={activeEvent} locale={locale} t={t} />
-                        <Link
-                          className={styles.eventAction}
-                          to={calendarHref}
-                          onPointerDown={() => prefetchRoute(calendarHref)}
-                        >
-                          {t('home.board.openDay')}
-                        </Link>
+                        <div className={styles.eventFallback} aria-hidden="true" />
+                        <p className={styles.eventEmpty}>{t('home.board.loading')}</p>
                       </>
+                    ) : error ? (
+                      <>
+                        <div className={styles.eventFallback} aria-hidden="true" />
+                        <p className={styles.eventEmpty}>{t('home.board.unableLoad')}</p>
+                      </>
+                    ) : activeEvent ? (
+                      <EventVisual event={activeEvent} locale={locale} t={t} />
                     ) : (
                       <>
                         <div className={styles.eventFallback} aria-hidden="true" />
                         <p className={styles.eventEmpty}>{t('home.board.noObservances')}</p>
-                        <Link
-                          className={styles.eventAction}
-                          to={calendarHref}
-                          onPointerDown={() => prefetchRoute(calendarHref)}
-                        >
-                          {t('home.board.openDay')}
-                        </Link>
                       </>
                     )}
+                    <Link
+                      className={styles.eventAction}
+                      to={calendarHref}
+                      onPointerDown={() => prefetchRoute(calendarHref)}
+                    >
+                      {t('home.board.openDay')}
+                    </Link>
                   </div>
                   {meter}
                   <span className={styles.curl} aria-hidden="true" />

@@ -1,0 +1,27 @@
+{
+  "status": "draft",
+  "questions": 10,
+  "structuralChecks": "PASS",
+  "duplicateIds": 0,
+  "duplicatePrompts": 0,
+  "sourceReferenceChecks": "PASS",
+  "answerLength": {
+    "correctMin": 40,
+    "correctMax": 73,
+    "correctMean": 60.7,
+    "optionMin": 40,
+    "optionMax": 78,
+    "correctAnswersThatAreLongest": 1
+  },
+  "changes": [
+    "Shortened the correct answer for Exodus 18:17-23.",
+    "Shortened the correct answer for Matthew 13:18-23.",
+    "Shortened the correct answer for Matthew 18:23-35.",
+    "Shortened the correct answer for John 9:1-3.",
+    "Shortened one Genesis 13 distractor for closer option balance."
+  ],
+  "remainingEditorialConcerns": [
+    "Naturalness and plausibility of distractors still require subject-matter review.",
+    "English-only pilot; no Amharic review performed."
+  ]
+}

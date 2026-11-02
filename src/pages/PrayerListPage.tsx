@@ -421,14 +421,14 @@ export function PrayerListPage() {
     <PageSection variant="tint">
       <div className={styles.shell}>
         <header className={styles.head}>
-          <p className={styles.eyebrow}>{t('navPrayers')}</p>
+          <p className={styles.eyebrow}><span className={styles.cross} aria-hidden="true">✠</span>{t('navPrayers')}</p>
           <h1 className={styles.title}>{tr('prayers.hero.title')}</h1>
           <p className={styles.deck}>{tr('prayers.hero.description')}</p>
+          {searchField}
         </header>
 
         {isSearching ? (
           <section className={styles.searchResults} aria-label={tr('prayers.search.resultsAria')}>
-            {searchField}
             <div className={styles.resultsHead}>
               <h2>
                 {hasStrongMatch ? tr('prayers.search.resultsTitle') : 'No exact match found'}
@@ -614,50 +614,6 @@ export function PrayerListPage() {
               </section>
             ) : null}
 
-            {searchField}
-
-            <section className={styles.learn} aria-label={tr('prayers.learnHowToPray.sectionAria')}>
-              <p className={styles.learnEyebrow}>{tr('prayers.learnHowToPray.eyebrow')}</p>
-              <ul className={styles.learnGrid}>
-                {guides.map((guide) => (
-                  <li key={guide.id}>
-                    <article className={styles.learnCard}>
-                      <div className={styles.learnBody}>
-                        <h2 className={styles.learnTitle}>{guide.title}</h2>
-                        {guide.titleAmharic ? (
-                          <p className={styles.learnAmharic} lang="am">
-                            {guide.titleAmharic}
-                          </p>
-                        ) : null}
-                        <p className={styles.learnText}>
-                          {guide.slug === 'learn-how-to-pray'
-                            ? tr('prayers.learnHowToPray.foundation')
-                            : guide.summary || LEARN_HOW_TO_PRAY_CARD.summary}
-                        </p>
-                      </div>
-                      {guide.slug === 'learn-how-to-pray' ? (
-                        <div className={styles.learnActions}>
-                          <Link className={styles.openLink} to="/pray/learn-how-to-pray">
-                            Start Guided Practice
-                          </Link>
-                          <Link
-                            className={styles.openLinkSecondary}
-                            to="/pray/learn-how-to-pray#learn-about-prayer"
-                          >
-                            Explore the Guide
-                          </Link>
-                        </div>
-                      ) : (
-                        <Link className={styles.openLink} to={`/pray/${guide.slug}`}>
-                          Read guide →
-                        </Link>
-                      )}
-                    </article>
-                  </li>
-                ))}
-              </ul>
-            </section>
-
             {collectionsLoading ? <p role="status">Loading prayers…</p> : null}
             {collectionsError ? (
               <div className={styles.empty} role="alert">
@@ -706,14 +662,56 @@ export function PrayerListPage() {
                           {description ? <p className={styles.collectionText}>{description}</p> : null}
                           <p className={styles.collectionMeta}>{collectionCountLabel(collection, tr)}</p>
                         </div>
-                        <Link className={styles.openLink} to={libraryCollectionPath(collection)}>
-                          {tr('prayers.collection.openCollection')}
+                        <Link className={styles.collectionOpen} to={libraryCollectionPath(collection)}>
+                          {tr('prayers.collection.openCollection')} <span aria-hidden="true">→</span>
                         </Link>
                       </article>
                     </li>
                   )
                 })}
             </ul>
+
+            <section className={styles.learn} aria-label={tr('prayers.learnHowToPray.sectionAria')}>
+              <p className={styles.learnEyebrow}>{tr('prayers.learnHowToPray.eyebrow')}</p>
+              <ul className={styles.learnGrid}>
+                {guides.map((guide) => (
+                  <li key={guide.id}>
+                    <article className={styles.learnCard}>
+                      <div className={styles.learnBody}>
+                        <h2 className={styles.learnTitle}>{guide.title}</h2>
+                        {guide.titleAmharic ? (
+                          <p className={styles.learnAmharic} lang="am">
+                            {guide.titleAmharic}
+                          </p>
+                        ) : null}
+                        <p className={styles.learnText}>
+                          {guide.slug === 'learn-how-to-pray'
+                            ? tr('prayers.learnHowToPray.foundation')
+                            : guide.summary || LEARN_HOW_TO_PRAY_CARD.summary}
+                        </p>
+                      </div>
+                      {guide.slug === 'learn-how-to-pray' ? (
+                        <div className={styles.learnActions}>
+                          <Link className={styles.openLink} to="/pray/learn-how-to-pray">
+                            Start Guided Practice
+                          </Link>
+                          <Link
+                            className={styles.openLinkSecondary}
+                            to="/pray/learn-how-to-pray#learn-about-prayer"
+                          >
+                            Explore the Guide
+                          </Link>
+                        </div>
+                      ) : (
+                        <Link className={styles.openLink} to={`/pray/${guide.slug}`}>
+                          Read guide →
+                        </Link>
+                      )}
+                    </article>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </>
         )}
 

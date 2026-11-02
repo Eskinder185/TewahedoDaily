@@ -1,8 +1,8 @@
 /**
- * Faith & Learning navigation checks (Playwright Chromium) against the running app.
+ * Primary Explore navigation checks (Playwright Chromium) against the running app.
  *
  * Desktop: header disclosure, aria-expanded, Escape and outside-click dismissal,
- * Church Library → /library, Prayers → /pray.
+ * Calendar, Church Library, and Faith Challenges use their existing routes.
  * Mobile: drawer disclosure, aria-expanded, Escape dismissal, same links.
  *
  * Start the app first (`npm run dev` or `npm run preview`), then:
@@ -25,7 +25,7 @@ async function check(name, fn) {
     console.log(`  ok  ${name}`)
   } catch (error) {
     results.push({ name, ok: false })
-    console.error(`  FAIL  ${name}: ${error.message.split('\n')[0]}`)
+    console.error(`  FAIL  ${name}: ${error.message}`)
   }
 }
 
@@ -37,14 +37,14 @@ async function open(page, viewport) {
   await page.locator('#main').waitFor({ state: 'visible', timeout: 30000 })
 }
 
-/** Desktop disclosure button lives in the header nav, whose label toggles Open/Close. */
+/** Desktop Explore disclosure button lives in the header nav. */
 function desktopButton(page) {
-  return page.locator('header [data-faith-learning] > button')
+  return page.locator('header nav').getByRole('button', { name: 'Explore' })
 }
 
 async function openDrawer(page) {
-  await page.getByRole('button', { name: /Open menu/i }).click()
-  const drawer = page.getByRole('dialog', { name: /Menu/i })
+  await page.getByRole('button', { name: /Open menu|ምናሌ ክፈት/i }).click()
+  const drawer = page.getByRole('dialog', { name: /Menu|ምናሌ/i })
   await drawer.waitFor({ state: 'visible', timeout: 10000 })
   return drawer
 }
@@ -56,15 +56,38 @@ async function runDesktop(browser) {
     await open(page, DESKTOP)
     const button = desktopButton(page)
 
+    await check('desktop: primary order and routes', async () => {
+      const labels = await page.locator('header nav > a, header nav > div > button').evaluateAll((elements) =>
+        elements.map((element) => element.getAttribute('aria-label') ?? element.querySelector('span')?.textContent?.trim() ?? element.textContent?.trim()),
+      )
+      assert.deepEqual(labels, [
+        'Home', 'Bible', 'Mezmur', 'Prayer', 'Explore',
+      ])
+      for (const [label, path] of [['Home', '/'], ['Bible', '/bible'], ['Mezmur', '/hymns'], ['Prayer', '/pray']]) {
+        assert.equal(await page.locator('header nav').getByRole('link', { name: label, exact: true }).getAttribute('href'), path)
+      }
+    })
+
+    await check('desktop: keyboard focus, ArrowDown, and Escape', async () => {
+      await button.focus()
+      assert.equal(await button.evaluate((element) => getComputedStyle(element).outlineStyle), 'solid', 'Explore needs a visible focus outline')
+      await page.keyboard.press('ArrowDown')
+      assert.equal(await button.getAttribute('aria-expanded'), 'true', 'ArrowDown opens Explore')
+      assert.equal(await page.locator('header nav').getByRole('link', { name: 'Calendar' }).evaluate((element) => element === document.activeElement), true, 'ArrowDown focuses Calendar')
+      await page.keyboard.press('Escape')
+      assert.equal(await button.getAttribute('aria-expanded'), 'false', 'Escape closes Explore')
+      assert.equal(await button.evaluate((element) => element === document.activeElement), true, 'Escape restores trigger focus')
+    })
+
     await check('desktop: disclosure opens and closes with aria-expanded', async () => {
       await button.waitFor({ state: 'visible', timeout: 10000 })
       assert.equal(await button.getAttribute('aria-expanded'), 'false')
       await button.click()
       assert.equal(await button.getAttribute('aria-expanded'), 'true')
-      await page.getByRole('link', { name: 'Church Library' }).waitFor({ state: 'visible', timeout: 5000 })
+      await page.locator('header nav').getByRole('link', { name: 'Church Library' }).waitFor({ state: 'visible', timeout: 5000 })
       await button.click()
       assert.equal(await button.getAttribute('aria-expanded'), 'false')
-      assert.equal(await page.getByRole('link', { name: 'Church Library' }).count(), 0)
+      assert.equal(await page.locator('header nav').getByRole('link', { name: 'Church Library' }).count(), 0)
     })
 
     await check('desktop: Escape dismisses the disclosure', async () => {
@@ -88,11 +111,12 @@ async function runDesktop(browser) {
       assert.equal(await button.getAttribute('aria-expanded'), 'false')
     })
 
-    await check('desktop: Prayers → /pray', async () => {
+    await check('desktop: Faith Challenges → /play', async () => {
       await button.click()
-      await page.getByRole('link', { name: 'Prayers' }).click()
-      await page.waitForURL(/\/pray$/, { timeout: 15000 })
+      await page.locator('header nav').getByRole('link', { name: 'Faith Challenges' }).click()
+      await page.waitForURL(/\/play$/, { timeout: 15000 })
       assert.equal(await button.getAttribute('aria-expanded'), 'false')
+      assert.equal(await button.evaluate((element) => getComputedStyle(element).boxShadow !== 'none'), true)
     })
   } finally {
     await context.close()
@@ -107,7 +131,7 @@ async function runMobile(browser) {
 
     await check('mobile: drawer disclosure opens and closes with aria-expanded', async () => {
       const drawer = await openDrawer(page)
-      const button = drawer.locator('[data-faith-learning] > button')
+      const button = drawer.getByRole('button', { name: 'Explore' })
       assert.equal(await button.getAttribute('aria-expanded'), 'false')
       await button.click()
       assert.equal(await button.getAttribute('aria-expanded'), 'true')
@@ -118,9 +142,9 @@ async function runMobile(browser) {
     })
 
     await check('mobile: Escape dismisses the disclosure', async () => {
-      const drawer = page.getByRole('dialog', { name: /Menu/i })
+      const drawer = page.getByRole('dialog', { name: /Menu|ምናሌ/i })
       if (!(await drawer.isVisible())) await openDrawer(page)
-      const button = page.locator('[role="dialog"] [data-faith-learning] > button')
+      const button = page.getByRole('dialog', { name: /Menu|ምናሌ/i }).getByRole('button', { name: 'Explore' })
       await button.click()
       assert.equal(await button.getAttribute('aria-expanded'), 'true')
       await page.keyboard.press('Escape')
@@ -131,19 +155,31 @@ async function runMobile(browser) {
     })
 
     for (const [label, path] of [
+      ['Calendar', '/calendar'],
       ['Church Library', '/library'],
-      ['Prayers', '/pray'],
+      ['Faith Challenges', '/play'],
     ]) {
       await check(`mobile: ${label} → ${path}`, async () => {
         await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 60000 })
         await page.locator('#main').waitFor({ state: 'visible', timeout: 30000 })
         const drawer = await openDrawer(page)
-        await drawer.locator('[data-faith-learning] > button').click()
+        await drawer.getByRole('button', { name: 'Explore' }).click()
         await drawer.getByRole('link', { name: label }).click()
         await page.waitForURL(new RegExp(`${path}$`), { timeout: 15000 })
         await drawer.waitFor({ state: 'hidden', timeout: 5000 })
       })
     }
+
+    await check('mobile: Amharic primary and Explore labels', async () => {
+      await page.evaluate(() => localStorage.setItem('tewahedo-daily-locale', 'am'))
+      await page.goto(BASE, { waitUntil: 'domcontentloaded', timeout: 60000 })
+      const drawer = await openDrawer(page)
+      for (const label of ['መነሻ', 'መጽሐፍ ቅዱስ', 'መዝሙር', 'ጸሎት']) {
+        await drawer.getByRole('link', { name: label, exact: true }).waitFor({ state: 'visible' })
+      }
+      await drawer.getByRole('button', { name: 'ያስሱ' }).click()
+      await drawer.getByRole('link', { name: 'የእምነት ፈተናዎች' }).waitFor({ state: 'visible' })
+    })
   } finally {
     await context.close()
   }

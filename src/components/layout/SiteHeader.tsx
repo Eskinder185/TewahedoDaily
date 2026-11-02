@@ -32,12 +32,12 @@ function getFocusableIn(container: HTMLElement | null): HTMLElement[] {
 function useIsDesktop() {
   const [isDesktop, setIsDesktop] = useState(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return true
-    return window.matchMedia('(min-width: 768px)').matches
+    return window.matchMedia('(min-width: 1280px)').matches
   })
 
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return
-    const mq = window.matchMedia('(min-width: 768px)')
+    const mq = window.matchMedia('(min-width: 1280px)')
     const onChange = () => setIsDesktop(mq.matches)
     mq.addEventListener('change', onChange)
     return () => mq.removeEventListener('change', onChange)
@@ -58,24 +58,29 @@ export function SiteHeader() {
   const showSignIn = false
   const showAdmin = !authLoading && signedIn && (isStaff || hasCmsRole(profile))
   const [menuOpen, setMenuOpen] = useState(false)
-  const [faithLearningOpen, setFaithLearningOpen] = useState(false)
+  const [exploreOpen, setExploreOpen] = useState(false)
+  const [mobileExploreOpen, setMobileExploreOpen] = useState(false)
   const isDesktop = useIsDesktop()
   const menuButtonRef = useRef<HTMLButtonElement>(null)
   const drawerCloseRef = useRef<HTMLButtonElement>(null)
   const drawerPanelRef = useRef<HTMLDivElement>(null)
   const drawerTitleId = useId()
   const drawerId = useId()
-  const faithLearningDesktopMenuId = useId()
-  const faithLearningMobileMenuId = useId()
+  const exploreDesktopMenuId = useId()
+  const exploreMobileMenuId = useId()
+  const exploreButtonRef = useRef<HTMLButtonElement>(null)
+  const exploreMenuRef = useRef<HTMLDivElement>(null)
+  const exploreRootRef = useRef<HTMLDivElement>(null)
 
   const closeMenu = useCallback(() => setMenuOpen(false), [])
-  const closeFaithLearning = useCallback(() => setFaithLearningOpen(false), [])
+  const closeExplore = useCallback(() => setExploreOpen(false), [])
   // Close the drawer after any navigation (including browser Back/Forward).
   const [menuPath, setMenuPath] = useState(location.pathname)
   if (menuPath !== location.pathname) {
     setMenuPath(location.pathname)
     setMenuOpen(false)
-    setFaithLearningOpen(false)
+    setExploreOpen(false)
+    setMobileExploreOpen(false)
   }
 
   const isHome = location.pathname === '/'
@@ -86,24 +91,29 @@ export function SiteHeader() {
       desc: t('navModeBibleDesc'),
     },
     {
-      to: '/calendar',
-      label: t('navKeepDay'),
-      desc: t('navModeKeepDayDesc'),
-    },
-    {
       to: '/hymns',
       label: t('navMezmur'),
       desc: t('navModeLearnDesc'),
     },
+    {
+      to: '/pray',
+      label: t('navPrayer'),
+      desc: t('navModePrayDesc'),
+    },
   ]
 
-  const faithLearningActive =
+  const exploreItems = [
+    { to: '/calendar', label: t('navCalendar') },
+    { to: '/library', label: t('navChurchLibrary') },
+    { to: '/play', label: t('navFaithChallenges') },
+  ]
+  const exploreActive =
+    location.pathname === '/calendar' ||
+    location.pathname.startsWith('/calendar/') ||
     location.pathname === '/library' ||
     location.pathname.startsWith('/library/') ||
-    location.pathname === '/pray' ||
-    location.pathname.startsWith('/pray/') ||
-    location.pathname === '/prayers' ||
-    location.pathname.startsWith('/prayers/')
+    location.pathname === '/play' ||
+    location.pathname.startsWith('/play/')
 
   useEffect(() => {
     if (!menuOpen) return
@@ -111,19 +121,20 @@ export function SiteHeader() {
   }, [menuOpen])
 
   useEffect(() => {
-    if (!faithLearningOpen) return
+    if (!exploreOpen) return
 
     const onPointerDown = (event: PointerEvent) => {
       const target = event.target
-      if (target instanceof Element && !target.closest('[data-faith-learning]')) {
-        setFaithLearningOpen(false)
+      if (target instanceof Node && !exploreRootRef.current?.contains(target)) {
+        setExploreOpen(false)
       }
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault()
-        setFaithLearningOpen(false)
+        setExploreOpen(false)
+        if (exploreRootRef.current?.contains(document.activeElement)) exploreButtonRef.current?.focus()
       }
     }
 
@@ -133,7 +144,7 @@ export function SiteHeader() {
       document.removeEventListener('pointerdown', onPointerDown)
       document.removeEventListener('keydown', onKeyDown)
     }
-  }, [faithLearningOpen])
+  }, [exploreOpen])
 
   useEffect(() => {
     if (!menuOpen) return
@@ -244,52 +255,37 @@ export function SiteHeader() {
                 {item.label}
               </NavLink>
             ))}
-            <div data-faith-learning className={styles.drawerDisclosure}>
+            <div className={styles.drawerDisclosure}>
               <button
                 type="button"
-                className={`${styles.drawerLink} ${styles.drawerDisclosureButton} ${faithLearningActive ? styles.drawerLinkOn : ''}`.trim()}
-                aria-expanded={faithLearningOpen}
-                aria-controls={faithLearningMobileMenuId}
-                onClick={() => setFaithLearningOpen((open) => !open)}
+                className={`${styles.drawerLink} ${styles.drawerDisclosureButton} ${exploreActive ? styles.drawerLinkOn : ''}`.trim()}
+                aria-expanded={mobileExploreOpen}
+                aria-controls={exploreMobileMenuId}
+                onClick={() => setMobileExploreOpen((open) => !open)}
               >
-                <span>{t('navFaithLearning')}</span>
+                <span>{t('navExplore')}</span>
                 <span className={styles.disclosureChevron} aria-hidden="true">
-                  {faithLearningOpen ? '−' : '+'}
+                  {mobileExploreOpen ? '−' : '+'}
                 </span>
               </button>
-              {faithLearningOpen ? (
-                <div id={faithLearningMobileMenuId} className={styles.drawerSubnav}>
-                  <NavLink
-                    to="/library"
-                    onClick={closeMenu}
-                    className={({ isActive }) =>
-                      `${styles.drawerLink} ${styles.drawerSubLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-                    }
-                  >
-                    {t('navChurchLibrary')}
-                  </NavLink>
-                  <NavLink
-                    to="/pray"
-                    onClick={closeMenu}
-                    className={({ isActive }) =>
-                      `${styles.drawerLink} ${styles.drawerSubLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-                    }
-                  >
-                    {t('navPrayers')}
-                  </NavLink>
+              {mobileExploreOpen ? (
+                <div id={exploreMobileMenuId} className={styles.drawerSubnav}>
+                  {exploreItems.map((item) => (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      onClick={closeMenu}
+                      onPointerDown={() => prefetchRoute(item.to)}
+                      className={({ isActive }) =>
+                        `${styles.drawerLink} ${styles.drawerSubLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  ))}
                 </div>
               ) : null}
             </div>
-            <NavLink
-              to="/play"
-              onClick={closeMenu}
-              onPointerDown={() => prefetchRoute('/play')}
-              className={({ isActive }) =>
-                `${styles.drawerLink} ${isActive ? styles.drawerLinkOn : ''}`.trim()
-              }
-            >
-              {t('navPlay')}
-            </NavLink>
             <div className={styles.drawerDivider} role="separator" />
             <div className={styles.drawerSecondary}>
               <NavLink
@@ -406,59 +402,70 @@ export function SiteHeader() {
                 </span>
               </NavLink>
             ))}
-            <div data-faith-learning className={styles.navDisclosure}>
+            <div
+              ref={exploreRootRef}
+              className={styles.navDisclosure}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) closeExplore()
+              }}
+            >
               <button
+                ref={exploreButtonRef}
                 type="button"
-                className={`${styles.modeLink} ${styles.navDisclosureButton} ${faithLearningActive ? styles.modeLinkOn : ''}`.trim()}
-                aria-expanded={faithLearningOpen}
-                aria-controls={faithLearningDesktopMenuId}
-                aria-label={t(faithLearningOpen ? 'navFaithLearningClose' : 'navFaithLearningOpen')}
-                onClick={() => setFaithLearningOpen((open) => !open)}
-                onPointerDown={() => prefetchRoute('/library')}
+                className={`${styles.modeLink} ${styles.navDisclosureButton} ${exploreActive ? styles.modeLinkOn : ''}`.trim()}
+                aria-expanded={exploreOpen}
+                aria-haspopup="true"
+                aria-controls={exploreDesktopMenuId}
+                onClick={() => setExploreOpen((open) => !open)}
+                onKeyDown={(event) => {
+                  if (event.key === 'ArrowDown') {
+                    event.preventDefault()
+                    setExploreOpen(true)
+                    requestAnimationFrame(() => exploreMenuRef.current?.querySelector('a')?.focus())
+                  }
+                }}
               >
-                <span className={styles.modeLabel}>{t('navFaithLearning')}</span>
+                <span className={styles.modeLabel}>{t('navExplore')}</span>
                 <span className={styles.disclosureChevron} aria-hidden="true">
-                  {faithLearningOpen ? '−' : '+'}
+                  {exploreOpen ? '−' : '+'}
                 </span>
               </button>
-              {faithLearningOpen ? (
-                <div id={faithLearningDesktopMenuId} className={styles.navSubmenu}>
-                  <NavLink
-                    to="/library"
-                    onClick={closeFaithLearning}
-                    onPointerDown={() => prefetchRoute('/library')}
-                    className={({ isActive }) =>
-                      `${styles.navSubmenuLink} ${isActive ? styles.navSubmenuLinkOn : ''}`.trim()
+              {exploreOpen ? (
+                <div
+                  ref={exploreMenuRef}
+                  id={exploreDesktopMenuId}
+                  className={styles.navSubmenu}
+                  onKeyDown={(event) => {
+                    const links = Array.from(exploreMenuRef.current?.querySelectorAll<HTMLAnchorElement>('a') ?? [])
+                    if (links.length === 0) return
+                    const currentIndex = links.indexOf(document.activeElement as HTMLAnchorElement)
+                    if (event.key === 'ArrowDown') {
+                      event.preventDefault()
+                      const next = (currentIndex + 1) % links.length
+                      links[next]?.focus()
+                    } else if (event.key === 'ArrowUp') {
+                      event.preventDefault()
+                      const prev = (currentIndex - 1 + links.length) % links.length
+                      links[prev]?.focus()
                     }
-                  >
-                    {t('navChurchLibrary')}
-                  </NavLink>
-                  <NavLink
-                    to="/pray"
-                    onClick={closeFaithLearning}
-                    onPointerDown={() => prefetchRoute('/pray')}
-                    className={({ isActive }) =>
-                      `${styles.navSubmenuLink} ${isActive ? styles.navSubmenuLinkOn : ''}`.trim()
-                    }
-                  >
-                    {t('navPrayers')}
-                  </NavLink>
+                  }}
+                >
+                  {exploreItems.map((item) => (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      onClick={closeExplore}
+                      onPointerDown={() => prefetchRoute(item.to)}
+                      className={({ isActive }) =>
+                        `${styles.navSubmenuLink} ${isActive ? styles.navSubmenuLinkOn : ''}`.trim()
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  ))}
                 </div>
               ) : null}
             </div>
-            <NavLink
-              to="/play"
-              title={t('navModePlayDesc')}
-              aria-label={t('navPlay')}
-              onPointerEnter={() => prefetchRoute('/play')}
-              onFocus={() => prefetchRoute('/play')}
-              onPointerDown={() => prefetchRoute('/play')}
-              className={({ isActive }) =>
-                `${styles.modeLink} ${isActive ? styles.modeLinkOn : ''}`.trim()
-              }
-            >
-              <span className={styles.modeLabel}>{t('navPlay')}</span>
-            </NavLink>
           </nav>
 
           <div className={styles.headerTools}>

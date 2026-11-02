@@ -382,6 +382,10 @@ a.gameCard:focus-visible {
   font-variant-numeric: tabular-nums;
 }
 
+/* Only rendered when GameProgress receives a trailing slot; existing callers are unaffected. */
+.gameProgressEnd { display: inline-flex; align-items: center; gap: 0.5rem; }
+.gameProgressTrailing { display: inline-flex; align-items: center; gap: 0.4rem; }
+
 .gameProgressTrack {
   height: 0.45rem;
   overflow: hidden;

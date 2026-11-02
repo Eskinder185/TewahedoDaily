@@ -1,0 +1,160 @@
+﻿/**
+ * Normalizes Unicode text consistently:
+ * - Applies NFC normalization
+ * - Strips zero-width and bidirectional control characters (e.g. U+202C in uploaded filenames)
+ * - Replaces Ethiopic punctuation (á¡ á¢ á£ á¤ á¥ á¦ á§ á¨) and ASCII punctuation/hyphens with spaces
+ * - Collapses whitespace and lowercases Latin characters while preserving Ethiopic script
+ */
+export function normalizeUnicodeText(input: string | null | undefined): string {
+  if (!input) return '';
+  return input
+    .normalize('NFC')
+    // Strip zero-width & bidi control characters
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, '')
+    // Normalize curly quotes/apostrophes
+    .replace(/['â€™â€˜`Â´]/g, '')
+    // Convert Ethiopic wordspace/punctuation and common separators to spaces
+    .replace(/[á¡á¢á£á¤á¥á¦á§á¨/_â€”â€“\-.,:;!?()[\]{}"â€œâ€|Â·+]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+}
+
+/**
+ * Produces a canonical Amharic/Ethiopic comparison key that normalizes
+ * homophone character series (áˆ€/áˆ/áŠ€, áˆ°/áˆ , áŠ /á‹, áŒ¸/á€) and common orthographic
+ * variations (e.g., `á€á‹°áŠ’á‹«` vs `á€á‹°áŠ•á‹«`, `á‹á‰¢á‹­` vs `áŠ á‰¥á‹­`, `áˆ†áˆ³á‹•áŠ“` vs `áˆ†áˆ£á‹•áŠ“`, `á‰µáŠ•áˆ³áŠ¤` vs `á‰µáŠ•áˆ£áŠ¤`).
+ */
+export function normalizeAmharicCanonical(input: string | null | undefined): string {
+  const base = normalizeUnicodeText(input);
+  if (!base) return '';
+
+  let mapped = '';
+  for (const ch of base) {
+    mapped += ETHIOPIC_CANONICAL_CHAR_MAP[ch] ?? ch;
+  }
+
+  // Handle common Amharic medial vowel/consonant spelling variants:
+  // - áŠ’á‹« -> áŠ•á‹« (e.g. á€á‹°áŠ’á‹« -> á€á‹°áŠ•á‹«)
+  // - á‰¢á‹­ -> á‰¥á‹­ (e.g. á‹á‰¢á‹­ -> áŠ á‰¥á‹­)
+  // - á‹²á‹«á‰†áŠ• -> á‹µá‹«á‰†áŠ•
+  mapped = mapped
+    .replace(/áŠ’á‹«/g, 'áŠ•á‹«')
+    .replace(/á‰¢á‹­/g, 'á‰¥á‹­')
+    .replace(/á‹²á‹«/g, 'á‹µá‹«');
+
+  return mapped.replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Produces a space-collapsed canonical key to match compound Amharic/English titles
+ * regardless of word spacing (e.g. `á‰ áŠ á‰³áˆˆáˆ›áˆ­á‹«áˆ` vs `á‰ áŠ á‰³ áˆˆáˆ›áˆ­á‹«áˆ`, `á‰ á‹“áˆˆá‹ˆáˆá‹µ` vs `á‰ á‹“áˆˆ á‹ˆáˆá‹µ`,
+ * `áˆ˜á‹µáˆáŠ”áŠ áˆˆáˆ` vs `áˆ˜á‹µáŠƒáŠ”á‹“áˆˆáˆ`, `áˆ•áŠ•á€á‰°á‰¤á‰°áŠ­áˆ­áˆµá‰²á‹«áŠ•` vs `áˆ•áŠ•á€á‰° á‰¤á‰° áŠ­áˆ­áˆµá‰²á‹«áŠ•`).
+ */
+export function normalizeCompactCanonical(input: string | null | undefined): string {
+  return normalizeAmharicCanonical(input).replace(/\s+/g, '');
+}
+
+/**
+ * Strips storage extensions, upload copy suffixes (` (2)`), and content-media hash/timestamp suffixes
+ * (`-4ff2109c-1790970788849.webp`, `-1790969755396.webp`) from a filename or path segment.
+ */
+export function cleanMediaFileNameStem(fileNameOrPath: string | null | undefined): string {
+  if (!fileNameOrPath) return '';
+  const baseName = fileNameOrPath.split('/').pop() ?? fileNameOrPath;
+  return baseName
+    .normalize('NFC')
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, '')
+    .replace(/\.(webp|png|jpe?g|avif|gif|svg)$/i, '')
+    .replace(/-[0-9a-f]{8}-\d{10,15}$/i, '')
+    .replace(/-\d{10,15}$/i, '')
+    .replace(/\s*\(\d+\)\s*$/, '')
+    .trim();
+}
+
+/**
+ * Extracts deterministic title candidates from a potentially bilingual or composite title
+ * (e.g., `"Timket / Baptism of Christ"`, `"Saint Uriel â€” Hamle"`, `"áˆá‹°á‰µ (áŒˆáŠ“)"`, `"Good Friday / Siklet"`).
+ * Does NOT perform loose word tokenization that could cause false positives.
+ */
+export function extractTitleCandidates(
+  raw: string | null | undefined,
+  options?: { includeHonorificStripped?: boolean }
+): string[] {
+  if (!raw) return [];
+  const cleaned = raw
+    .normalize('NFC')
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, '')
+    .trim();
+  if (!cleaned) return [];
+
+  const candidates = new Set<string>();
+  const addCandidate = (value: string) => {
+    const trimmed = value.trim();
+    if (trimmed.length >= 2) {
+      candidates.add(trimmed);
+    }
+  };
+
+  addCandidate(cleaned);
+
+  // Extract parenthetical alternate titles: e.g. "áˆá‹°á‰µ (áŒˆáŠ“)" -> "áˆá‹°á‰µ" and "áŒˆáŠ“"
+  const parenMatches = [...cleaned.matchAll(/\(([^()]+)\)/g)];
+  if (parenMatches.length > 0) {
+    const withoutParens = cleaned.replace(/\([^()]*\)/g, ' ').replace(/\s+/g, ' ').trim();
+    addCandidate(withoutParens);
+    for (const match of parenMatches) {
+      const inner = match[1]?.trim();
+      // Only add parenthetical if it's not a month/date disambiguator like "(áŒáŠ•á‰¦á‰µ)" or "(2)"
+      if (inner && !/^\d+$/.test(inner)) {
+        addCandidate(inner);
+      }
+    }
+  }
+
+  // Split composite / bilingual titles separated by `/`, `â€”`, `â€“`, `|`
+  const segments = cleaned.split(/\s*(?:\/|â€”|â€“|\|)\s*/);
+  if (segments.length > 1) {
+    // For "Saint Uriel â€” Hamle", the first segment "Saint Uriel" is the subject,
+    // while the second segment might be a month ("Hamle", "Hidar", "Tahsas", "Miyazia", "Ginbot", "Sene", "Meskerem", "Tikimt", "Tir", "Yekatit", "Megabit", "Nehase", "Pagumen").
+    const ethiopianMonths = new Set([
+      'meskerem', 'tikimt', 'hidar', 'tahsas', 'tir', 'yekatit',
+      'megabit', 'miyazia', 'ginbot', 'sene', 'hamle', 'nehase', 'pagumen',
+      'áˆ˜áˆµáŠ¨áˆ¨áˆ', 'áŒ¥á‰…áˆá‰µ', 'áŠ…á‹³áˆ­', 'áˆ…á‹³áˆ­', 'á‰³áŠ…áˆ£áˆ¥', 'á‰³áˆ…áˆ³áˆµ', 'áŒ¥áˆ­', 'á‹¨áŠ«á‰²á‰µ',
+      'áˆ˜áŒ‹á‰¢á‰µ', 'áˆšá‹«á‹á‹«', 'áŒáŠ•á‰¦á‰µ', 'áˆ°áŠ”', 'áˆáˆáˆŒ', 'áˆ€áˆáˆŒ', 'áŠáˆáˆ´', 'áŠáˆ€áˆ´', 'áŒ³áŒ‰áˆœáŠ•', 'áŒ³áŒ‰áˆœ',
+    ]);
+    for (const segment of segments) {
+      const segNorm = normalizeUnicodeText(segment);
+      if (segNorm && !ethiopianMonths.has(segNorm)) {
+        addCandidate(segment);
+      }
+    }
+  }
+
+  if (options?.includeHonorificStripped !== false) {
+    for (const current of [...candidates]) {
+      const lower = current.toLowerCase();
+      for (const prefix of ENGLISH_HONORIFIC_PREFIXES) {
+        if (lower.startsWith(prefix)) {
+          const stripped = current.slice(prefix.length).trim();
+          if (stripped.length >= 3) {
+            addCandidate(stripped);
+          }
+        }
+      }
+      for (const prefix of AMHARIC_HONORIFIC_PREFIXES) {
+        if (current.startsWith(prefix)) {
+          const stripped = current.slice(prefix.length).trim();
+          if (stripped.length >= 2) {
+            addCandidate(stripped);
+          }
+        }
+      }
+    }
+  }
+
+  return [...candidates];
+}
+
+/**
+ * Checks whether a path or URL points to legacy local calendar artwork (`/images/calendar-web/*` or `/images/calendar/*` or `/images/chants/*`).

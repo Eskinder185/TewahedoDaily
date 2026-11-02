@@ -5,10 +5,12 @@ import { PageLoadingFallback } from '../components/ui/PageLoadingFallback'
 import { getSynaxariumDays } from '../lib/prayers/synaxariumSupabase'
 import type { SynaxariumDay } from '../lib/prayers/prayerLibraryTypes'
 import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
 import styles from './PrayerCollectionPage.module.css'
 
 export function SynaxariumIndexPage() {
   const tr = useTranslation()
+  const { locale } = useLocale()
   const [days, setDays] = useState<SynaxariumDay[] | null>()
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
@@ -80,12 +82,11 @@ export function SynaxariumIndexPage() {
 
         <header className={styles.head}>
           <p className={styles.eyebrow}>{tr('prayers.collection.label')}</p>
-          <h1>Synaxarium</h1>
-          <p className={styles.amharic} lang="am">
-            ስንክሳር
-          </p>
+          <h1 lang={locale}>{locale === 'am' ? 'ስንክሳር' : 'Synaxarium'}</h1>
           <p className={styles.deck}>
-            Daily Ethiopian Orthodox commemorations, saints, feasts, and church history.
+            {locale === 'am'
+              ? 'ዕለታዊ የኢትዮጵያ ኦርቶዶክስ መታሰቢያዎች፣ ቅዱሳን፣ በዓላትና የቤተ ክርስቲያን ታሪክ።'
+              : 'Daily Ethiopian Orthodox commemorations, saints, feasts, and church history.'}
           </p>
           <p className={styles.count}>
             {(days?.length ?? 0) === 1

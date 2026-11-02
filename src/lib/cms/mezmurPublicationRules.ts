@@ -44,6 +44,16 @@ export type MezmurPublicationCheck = {
   title: string | null | undefined
   slug: string | null | undefined
   lyricsAmharic?: string | null | undefined
+  lyricsEnglish?: string | null | undefined
+  lyricsGeez?: string | null | undefined
+  lyricsOromo?: string | null | undefined
+  lyricsTransliteration?: string | null | undefined
+}
+
+/** Publication needs lyrics in at least one supported language; Amharic is not mandatory. */
+export function hasAnyMezmurLyrics(input: Pick<MezmurPublicationCheck, 'lyricsAmharic' | 'lyricsEnglish' | 'lyricsGeez' | 'lyricsOromo' | 'lyricsTransliteration'>): boolean {
+  return [input.lyricsAmharic, input.lyricsEnglish, input.lyricsGeez, input.lyricsOromo, input.lyricsTransliteration]
+    .some((value) => Boolean(value?.trim()))
 }
 
 /** Publication checks for the simple owner-authorized staff workflow. */
@@ -51,8 +61,8 @@ export function publicationBlockReason(input: MezmurPublicationCheck): string | 
   if (!canPublishMezmur(input.role)) {
     return 'An editor, admin, or super admin role is required to publish.'
   }
-  if (!input.title?.trim() || !input.slug?.trim() || !input.lyricsAmharic?.trim()) {
-    return 'Title, slug, and Amharic lyrics are required to publish.'
+  if (!input.title?.trim() || !input.slug?.trim() || !hasAnyMezmurLyrics(input)) {
+    return 'Title, slug, and lyrics in at least one language are required to publish.'
   }
   return null
 }

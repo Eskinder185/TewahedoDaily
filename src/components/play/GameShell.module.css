@@ -169,6 +169,48 @@
 
 .fallback { padding: 0.65rem 0.8rem; border-radius: var(--radius-sm); background: var(--color-gold-soft); color: var(--color-heading); font-size: 0.8rem; }
 
+.contentStatus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.contentStatusError {
+  border-color: var(--color-border-gold);
+  background: var(--color-gold-faint);
+  color: var(--color-heading);
+}
+
+.contentStatus button {
+  flex: 0 0 auto;
+  min-height: var(--tap-min);
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-elevated);
+  color: inherit;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.contentStatus button:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+  .contentStatus { align-items: stretch; flex-direction: column; }
+}
+
 .results { text-align: center; }
 .results > p:first-child { margin: 0; color: var(--color-gold-ink); font-size: var(--text-xs); font-weight: 800; letter-spacing: var(--letter-eyebrow); text-transform: uppercase; }
 .results .actions { justify-content: center; }
@@ -191,7 +233,7 @@
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
 [data-theme='night'] .choiceRow button[aria-pressed='true'],
-[data-theme='night'] .action { border-color: var(--color-gold-bright); background: var(--color-gold-bright); color: var(--color-midnight-ink); }
+[data-theme='night'] .action { border-color: var(--color-gold-bright); background: var(--color-gold-bright); color: var(--color-midnight); }
 
 @media (max-width: 650px) {
   .setupGrid, .options { grid-template-columns: 1fr; }
@@ -201,3 +243,5 @@
 }
 
 .streak { flex: 0 0 auto; padding: 0.2rem 0.65rem; border-radius: var(--radius-pill); background: var(--color-gold-bright); color: var(--color-midnight-ink) !important; font-size: 0.82rem; }
+/* Night: --color-midnight-ink is a light cream there, so the gold badge needs the dark midnight text (light theme unchanged). */
+[data-theme='night'] .streak { color: var(--color-midnight) !important; }

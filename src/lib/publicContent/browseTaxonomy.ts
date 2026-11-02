@@ -91,6 +91,28 @@ export function taxonomyLinkSlug(kind: 'category' | 'occasion', label: string | 
   return entries.find((e) => e.canonical === canonical)?.slug || null
 }
 
+/** Resolve a CMS relationship identifier without inferring a hymn's subject from its title. */
+export function canonicalBrowseLinkSlug(kind: 'category' | 'occasion', value: string): string | null {
+  const raw = value.trim()
+  if (!raw) return null
+  const entries = kind === 'category' ? CATEGORY_ENTRIES : OCCASION_ENTRIES
+  const bySlug = entries.find((entry) => sameLinkSlug(entry.slug, raw))
+  return bySlug?.slug || taxonomyLinkSlug(kind, raw)
+}
+
+/** Preserve unknown CMS link identifiers while merging known spelling variants. */
+export function browseLinkSlug(kind: 'category' | 'occasion', value: string): string {
+  return canonicalBrowseLinkSlug(kind, value) || value.trim()
+}
+
+export function matchesBrowseLink(kind: 'category' | 'occasion', targets: Iterable<string>, linkSlug: string): boolean {
+  const resolved = browseLinkSlug(kind, linkSlug)
+  for (const target of targets) {
+    if (browseLinkSlug(kind, target) === resolved) return true
+  }
+  return false
+}
+
 // ---------------------------------------------------------------------------
 // Group → taxonomy map (moved from hymnBrowse.ts)
 // ---------------------------------------------------------------------------

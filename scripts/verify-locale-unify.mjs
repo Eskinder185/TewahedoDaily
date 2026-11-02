@@ -64,6 +64,21 @@ async function setLanguage(page, modeId) {
   await page.locator('[class*="drawerRoot"]').waitFor({ state: 'hidden', timeout: 2000 }).catch(() => {})
 }
 
+/** Share of Ethiopic letters among all visible letters in <body>. */
+async function ethiopicShare(page) {
+  return page.evaluate(() => {
+    const text = document.body.innerText || ''
+    const eth = (text.match(/[ሀ-፿]/g) || []).length
+    const lat = (text.match(/[A-Za-z]/g) || []).length
+    return { eth, lat, share: eth + lat ? eth / (eth + lat) : 0 }
+  })
+}
+
+/** EN must be mostly Latin, AM mostly Ethiopic (loose bounds; proper names and fallbacks allowed). */
+function scriptOk(mode, share) {
+  return mode === 'en' ? share < 0.25 : share > 0.5
+}
+
 async function main() {
   await fs.mkdir(OUT, { recursive: true })
   const browser = await chromium.launch({ headless: true })
@@ -83,6 +98,8 @@ async function main() {
         htmlLang: document.documentElement.lang,
         dataLang: document.documentElement.dataset.lang,
       }))
+      await page.waitForTimeout(200)
+      const script = await ethiopicShare(page)
       const shot = path.join(OUT, `home-${mode}-${width}.png`)
       await page.screenshot({ path: shot, fullPage: false })
       report.pages[`home:${mode}@${width}`] = {
@@ -132,7 +149,8 @@ async function main() {
       )
       const shot = path.join(OUT, `am-320-${route.replace(/\//g, '_') || 'home'}.png`)
       await page.screenshot({ path: shot, fullPage: false })
-      report.pages[`am@320:${route}`] = { overflowX: overflow, ok: !overflow, shot }
+      const script = await ethiopicShare(page)
+      report.pages[`am@320:${route}`] = { overflowX: overflow, script, ok: !overflow && scriptOk('am', script.share), shot }
     }
     await page.close()
   }

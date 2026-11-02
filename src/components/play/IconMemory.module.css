@@ -1,0 +1,52 @@
+/* Icon Memory additions: visible matched marker, match/no-match chip, focus target. */
+
+.focusTarget:focus { outline: none; }
+
+/* ✓ on a matched card face (the face is rotated with the card, so it only shows when revealed). */
+.mark {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #1f6143;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+/* Visible duplicate of the match / no-match announcement. The reserved height avoids layout shift. */
+.chipRow { display: flex; align-items: center; min-height: 2.25rem; margin: 0.6rem 0; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2rem;
+  padding: 0.2rem 0.8rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.chipRight { color: #1f6143; }
+.chipWrong { color: #8e2f38; }
+[data-theme='night'] .chipRight { color: #7fd1a6; }
+[data-theme='night'] .chipWrong { color: #f0a0a7; }
+
+.am { line-height: 1.7; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .chip { animation: chipIn 180ms ease-out; }
+}
+
+@keyframes chipIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: none; }
+}

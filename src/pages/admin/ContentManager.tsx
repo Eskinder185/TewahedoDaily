@@ -370,6 +370,7 @@ function Editor({
           {supportsContentField(kind, 'image_path') ? (
             <MediaPicker
               folder={kind === 'saints' ? 'saints' : kind === 'feasts' ? 'feasts' : 'fallback'}
+              matchQuery={{ title: input.title, domain: 'calendar' }}
               value={input.image_path || input.thumbnail_url}
               altText={input.image_alt}
               onChange={({ storagePath, altText }) => {

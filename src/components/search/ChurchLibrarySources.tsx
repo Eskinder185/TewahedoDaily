@@ -65,6 +65,12 @@ export function ChurchLibrarySources({
       {onRetry ? <button type="button" onClick={() => onRetry(outcome.query)}>Retry Church Library search</button> : null}
     </div>
   )
+  const { response } = outcome
+  // The FastAPI route answers with its first result and sends no id; the Supabase
+  // fallback names the quoted passage so the citation always matches the answer.
+  const answerHit = response.answer
+    ? response.results.find((hit) => hit.passage_id === response.answer_passage_id) ?? response.results[0]
+    : undefined
   return (
     <section aria-labelledby="church-library-sources">
       <h3 id="church-library-sources">{t('searchBuddy.churchLibrarySources')}</h3>
@@ -73,7 +79,12 @@ export function ChurchLibrarySources({
         <div className={styles.passageCard} role="status">
           <strong>Source-grounded answer</strong>
           <p className={styles.passageText}>{outcome.response.answer}</p>
-          <small>This is an exact excerpt from the highest-ranked source; the citation below identifies it.</small>
+          {answerHit ? (
+            <small>
+              Exact excerpt from <strong>{answerHit.title}</strong>
+              {answerHit.author ? ` — ${answerHit.author}` : ''} · {locator(answerHit)}
+            </small>
+          ) : null}
         </div>
       ) : null}
       {outcome.response.results.map((hit) => {

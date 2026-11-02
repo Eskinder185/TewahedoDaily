@@ -110,6 +110,30 @@ const DEPRIORITIZED_STORAGE_PATHS = new Set<string>([
 ]);
 
 /**
+ * Stored `image_path` values that answered HTTP 400 from the public `content-media` bucket in a read-only
+ * audit (2026-11-01). Rows still carrying one of these are treated as having no usable image so a verified
+ * catalog match can be used instead. The CMS rows themselves are not modified here.
+ */
+const KNOWN_MISSING_STORAGE_PATHS = new Set<string>([
+  'calendar/christ/ketera-8266580b-1792011322259.webp',
+  'hymns/zemaris/muhaze-sibihat-zemari-dagimawi-deribe-1793159399237.webp',
+  'hymns/zemaris/yosph-1792789779639.webp',
+]);
+
+export function isKnownMissingStoragePath(path: string | null | undefined): boolean {
+  return Boolean(path && KNOWN_MISSING_STORAGE_PATHS.has(path.trim()));
+}
+
+/**
+ * Different storage paths proven byte-identical (same MD5) in the audit; they are one image, so two cards that
+ * use them are not an "ambiguous" title match. Maps duplicate path -> canonical path.
+ */
+const IDENTICAL_UPLOAD_CANONICAL = new Map<string, string>([
+  ['calendar/saints/yared-ginbot-58251eac-1792614254840.webp', 'calendar/general/yared-96548f68-1792449396141.webp'],
+]);
+const canonicalUploadPath = (path: string) => IDENTICAL_UPLOAD_CANONICAL.get(path) ?? path;
+
+/**
  * Ethiopic homophone / orthographic variant normalization map.
  * Maps historically distinct Ge'ez/Amharic fidel series that are used interchangeably
  * in modern Amharic titles (ሐ/ኀ -> ሀ, ሠ -> ሰ, ዐ -> አ, ፀ -> ጸ, ዉ -> ው, ዪ -> ይ, 4th-order laryngeal ሃ/ሓ/ኃ/ዓ/ኣ -> ሀ/አ).
@@ -234,6 +258,25 @@ export function normalizeAmharicCanonical(input: string | null | undefined): str
  */
 export function normalizeCompactCanonical(input: string | null | undefined): string {
   return normalizeAmharicCanonical(input).replace(/\s+/g, '');
+}
+
+/**
+ * Conservative comparison key for Latin-script Amharic transliterations, so common spelling variants of the
+ * same name compare equal (`Qidus Giyorgis` = `Kidus Giorgis`, `Kidist Mariam` = `Qidist Maryam`,
+ * `Genna` = `Gena`). Returns '' for Ethiopic text and for keys shorter than 6 letters. It is only ever applied
+ * against verified aliases, never against free text or filenames.
+ */
+export function normalizeTransliterationKey(input: string | null | undefined): string {
+  const base = normalizeUnicodeText(input).normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  if (!base || /[\u1200-\u137F]/.test(base)) return '';
+  const key = base
+    .replace(/[^a-z]/g, '')
+    .replace(/q/g, 'k')
+    .replace(/kh/g, 'k')
+    .replace(/iy/g, 'y')
+    .replace(/i(?=[aeou])/g, 'y')
+    .replace(/(.)\1+/g, '$1');
+  return key.length >= 6 ? key : '';
 }
 
 /**
@@ -1799,6 +1842,44 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
     relatedIds: ['zemari-singers', 'collection-zemari-singers'],
     aliases: ['Zemari / Singers', 'By Singer (Zemari)', 'ዘማርያን', 'በዘማርያን'],
   },
+  // ─── Saint Yared (two CMS cards share one byte-identical upload; canonical path is the general card's) ───
+  {
+    id: 'yared',
+    storagePath: 'calendar/general/yared-96548f68-1792449396141.webp',
+    domain: 'calendar',
+    sourceType: 'monthly_commemoration',
+    sourceSlug: 'yared-monthly',
+    slug: 'monthly-yared-monthly',
+    title: 'Saint Yared',
+    titleAmharic: 'ቅዱስ ያሬድ',
+    altText: 'Saint Yared',
+    fileName: 'Saint Yared.webp',
+    updatedAtMs: 1792449396141,
+    relatedIds: ['yared', 'saint-yared', 'yared-monthly', 'yared-ginbot', 'observance-yared-ginbot', 'monthly-yared-monthly'],
+    aliases: ['Saint Yared', 'St. Yared', 'Kidus Yared', 'Qidus Yared', 'ቅዱስ ያሬድ', 'ያሬድ'],
+  },
+  // ─── Zemari portraits whose CMS row points at a missing file; the replacement is the same person's upload ───
+  {
+    id: 'zemari-muhaze-sibihat-zemari-dagimawi-deribe',
+    storagePath: 'hymns/zemaris/muhaze-sibihat-zemari-dagimawi-deribe-1793159386778.webp',
+    domain: 'zemari',
+    slug: 'muhaze-sibihat-zemari-dagimawi-deribe',
+    title: 'Muhaze Sibihat Zemari Dagimawi Deribe',
+    titleAmharic: 'ሙሐዘ ስብሀት ዘማሪ ዳግማዊ ደርቤ',
+    altText: 'Muhaze Sibihat Zemari Dagimawi Deribe',
+    fileName: 'Zemari Dagimawi Deribe.webp',
+    updatedAtMs: 1793159386778,
+  },
+  {
+    id: 'zemari-like-mezemiran-tewodros-yoseph',
+    storagePath: 'hymns/zemaris/4b59d618-ef00-4d48-9fac-251b1004668c-Tewodros-Yoseph.webp',
+    domain: 'zemari',
+    slug: 'like-mezemiran-tewodros-yoseph',
+    title: 'Like Mezemiran Tewodros Yoseph',
+    titleAmharic: 'ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ',
+    fileName: 'Tewodros Yoseph.webp',
+    updatedAtMs: 1792789766836,
+  },
 
   // ─── Key Hymn Sections (content-media `hymns/sections/*`) ───────────
   {
@@ -1846,9 +1927,8 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
 ];
 
 /**
- * Runtime registry for dynamically loaded `calendar_cards` and `media_assets` rows.
- * Merged with `VERIFIED_CONTENT_MEDIA_INDEX` so newly uploaded assets in Supabase
- * take immediate precedence without requiring a code rebuild.
+ * Runtime registry for linked calendar cards and media paths already in the catalog.
+ * Newly uploaded assets without a cataloged relationship stay in admin review.
  */
 const runtimeEntriesById = new Map<string, VerifiedMediaEntry>();
 
@@ -1894,41 +1974,95 @@ export interface RuntimeMediaAssetRecord {
   alt_text?: string | null;
   caption?: string | null;
   created_at?: string | null;
+  media_type?: string | null;
+  mime_type?: string | null;
+}
+
+/** Metadata gate for media that may be previewed through the public bucket. */
+export function isPublicCmsImage(asset: RuntimeMediaAssetRecord): boolean {
+  return asset.storage_bucket === 'content-media' &&
+    Boolean(asset.storage_path) &&
+    !asset.storage_path.startsWith('/') &&
+    !asset.storage_path.includes('..') &&
+    !asset.storage_path.includes('://') &&
+    !isLegacyLocalMediaPath(asset.storage_path) &&
+    !DEPRIORITIZED_STORAGE_PATHS.has(asset.storage_path) &&
+    (!asset.media_type || asset.media_type === 'image') &&
+    (!asset.mime_type || /^image\/(?:jpeg|png|webp|avif|gif)$/i.test(asset.mime_type));
 }
 
 /**
- * Registers runtime `media_assets` records into the shared media resolver index.
+ * Only refreshes media already present in the public catalog. An upload's
+ * filename or alt text alone is not evidence for automatic public assignment.
  */
 export function registerMediaAssets(assets: readonly RuntimeMediaAssetRecord[] | null | undefined): void {
   if (!assets || assets.length === 0) return;
   for (const asset of assets) {
-    if (!asset.storage_path || isLegacyLocalMediaPath(asset.storage_path)) continue;
-    if (asset.storage_bucket && asset.storage_bucket !== 'content-media') continue;
-    if (DEPRIORITIZED_STORAGE_PATHS.has(asset.storage_path)) continue;
+    if (!isPublicCmsImage(asset)) continue;
+    const reviewed = VERIFIED_CONTENT_MEDIA_INDEX.find((entry) => entry.storagePath === asset.storage_path);
+    if (!reviewed) continue;
 
-    const domain: MediaDomain = asset.storage_path.startsWith('hymns/zemaris/')
-      ? 'zemari'
-      : asset.storage_path.startsWith('hymns/collections/')
-      ? 'hymn-collection'
-      : asset.storage_path.startsWith('hymns/sections/')
-      ? 'hymn-section'
-      : asset.storage_path.startsWith('fallback/')
-      ? 'fallback'
-      : 'calendar';
-
-    const stem = cleanMediaFileNameStem(asset.file_name || asset.storage_path);
     const updatedAtMs = asset.created_at ? Date.parse(asset.created_at) || Date.now() : 1790000000000;
 
     runtimeEntriesById.set(`runtime-asset:${asset.id}`, {
+      ...reviewed,
       id: `runtime-asset:${asset.id}`,
-      storagePath: asset.storage_path,
-      domain,
-      title: asset.alt_text || stem,
-      altText: asset.alt_text ?? undefined,
-      fileName: asset.file_name ?? undefined,
       updatedAtMs,
     });
   }
+}
+
+export interface MediaSuggestion<T extends RuntimeMediaAssetRecord = RuntimeMediaAssetRecord> {
+  asset: T;
+  title: string;
+  reason: string;
+  relatedContentId: string | null;
+  matchSource: 'verified-relationship' | 'exact-title' | 'verified-alias' | 'admin-review';
+}
+
+/** Suggests only public-bucket image rows already loaded by the admin picker.
+ * Suggestions never enter the automatic resolver or save a relationship.
+ */
+export function suggestMediaAssets<T extends RuntimeMediaAssetRecord>(
+  query: MediaResolutionQuery & { intentionallyNoImage?: boolean },
+  assets: readonly T[],
+): MediaSuggestion<T>[] {
+  if (query.intentionallyNoImage || query.explicitPath?.trim()) return [];
+  const titles = [query.title, query.titleAmharic]
+    .flatMap((title) => extractTitleCandidates(title, { includeHonorificStripped: false }))
+    .map(normalizeAmharicCanonical)
+    .filter(Boolean);
+  const titleKeys = new Set(titles);
+  if (!titleKeys.size && !query.id && !query.slug) return [];
+
+  const resolved = resolveMedia({ ...query, allowLegacyFallback: false });
+  const suggestions: MediaSuggestion<T>[] = [];
+  for (const asset of assets) {
+    if (!isPublicCmsImage(asset)) continue;
+    const verified = VERIFIED_CONTENT_MEDIA_INDEX.find((entry) => entry.storagePath === asset.storage_path);
+    const verifiedMatch = verified && resolved.storagePath === asset.storage_path &&
+      (resolved.matchSource === 'verified-relationship' || resolved.matchSource === 'exact-title' || resolved.matchSource === 'verified-alias')
+      ? resolved.matchSource : null;
+    const altMatches = asset.alt_text && extractTitleCandidates(asset.alt_text, { includeHonorificStripped: false })
+      .some((title) => titleKeys.has(normalizeAmharicCanonical(title)));
+    if (!verifiedMatch && !altMatches) continue;
+    suggestions.push({
+      asset,
+      title: verified?.title || asset.alt_text || cleanMediaFileNameStem(asset.file_name),
+      reason: verifiedMatch === 'verified-relationship' ? 'Cataloged content relationship' :
+        verifiedMatch === 'exact-title' ? 'Unique cataloged title match' :
+        verifiedMatch === 'verified-alias' ? 'Cataloged subject alias' :
+        'CMS alt text matches exactly; verify subject and rights before selecting',
+      relatedContentId: query.id || query.slug || null,
+      matchSource: verifiedMatch || 'admin-review',
+    });
+  }
+  if (suggestions.length > 1) {
+    return suggestions.map((suggestion) => suggestion.matchSource === 'admin-review'
+      ? { ...suggestion, reason: 'Multiple exact CMS alt-text matches; review each image' }
+      : suggestion);
+  }
+  return suggestions;
 }
 
 function getAllActiveEntries(queryCards?: readonly CalendarCard[] | null): VerifiedMediaEntry[] {
@@ -2070,12 +2204,12 @@ export function resolveMedia(query: MediaResolutionQuery): MediaResolutionResult
       }
     }
 
+    const exactMatches = new Map<string, VerifiedMediaEntry>();
     for (const entry of compatibleEntries) {
       const entryPrimaryTitles = [
         entry.title,
         entry.titleAmharic,
         entry.altText,
-        cleanMediaFileNameStem(entry.fileName),
       ].filter((v): v is string => Boolean(v && v.trim()));
 
       for (const entryPhrase of entryPrimaryTitles) {
@@ -2089,35 +2223,48 @@ export function resolveMedia(query: MediaResolutionQuery): MediaResolutionResult
             (entryAmh && primaryAmharicCandidates.has(entryAmh)) ||
             (entryCompact.length >= 4 && primaryCompactCandidates.has(entryCompact))
           ) {
-            const resolvedUrl = resolveContentMediaUrl(entry.storagePath);
-            if (resolvedUrl) {
-              return {
-                hasImage: true,
-                imageUrl: resolvedUrl,
-                storagePath: entry.storagePath,
-                title: preservedTitle ?? entry.title,
-                titleAmharic: preservedTitleAmharic ?? entry.titleAmharic ?? null,
-                imagePosition: entry.imagePosition ?? null,
-                matchSource: 'exact-title',
-                matchedEntryId: entry.id,
-                fallbackUrl,
-              };
-            }
+            exactMatches.set(canonicalUploadPath(entry.storagePath), entry);
           }
         }
       }
+    }
+    if (exactMatches.size === 1) {
+      const entry = exactMatches.values().next().value!;
+      const resolvedUrl = resolveContentMediaUrl(entry.storagePath);
+      if (resolvedUrl) return {
+        hasImage: true, imageUrl: resolvedUrl, storagePath: entry.storagePath,
+        title: preservedTitle ?? entry.title,
+        titleAmharic: preservedTitleAmharic ?? entry.titleAmharic ?? null,
+        imagePosition: entry.imagePosition ?? null, matchSource: 'exact-title',
+        matchedEntryId: entry.id, fallbackUrl,
+      };
+    }
+    // Several different images with the same title need an editor's decision.
+    if (exactMatches.size > 1) {
+      const ambiguousFallback = fallbackUrl ??
+        (explicitPath && isLegacyLocalMediaPath(explicitPath) && isLocalAssetAvailable(explicitPath) ? explicitPath : null);
+      return {
+        hasImage: Boolean(allowLegacy && ambiguousFallback),
+        imageUrl: allowLegacy ? ambiguousFallback : null,
+        storagePath: null, title: preservedTitle, titleAmharic: preservedTitleAmharic,
+        imagePosition: null, matchSource: allowLegacy && ambiguousFallback ? 'legacy-fallback' : 'none',
+        matchedEntryId: null, fallbackUrl,
+      };
     }
 
     // ── Priority 4: Verified alias & honorific-normalized canonical match ──
     const allQueryKeys = new Set<string>();
     const allQueryCompactKeys = new Set<string>();
+    const allQueryTranslitKeys = new Set<string>();
 
     for (const phrase of rawQueryPhrases) {
       for (const candidate of extractTitleCandidates(phrase, { includeHonorificStripped: true })) {
         const amhNorm = normalizeAmharicCanonical(candidate);
         const compactNorm = normalizeCompactCanonical(candidate);
+        const translitNorm = normalizeTransliterationKey(candidate);
         if (amhNorm.length >= 2) allQueryKeys.add(amhNorm);
         if (compactNorm.length >= 3) allQueryCompactKeys.add(compactNorm);
+        if (translitNorm) allQueryTranslitKeys.add(translitNorm);
       }
     }
 
@@ -2134,10 +2281,12 @@ export function resolveMedia(query: MediaResolutionQuery): MediaResolutionResult
         for (const aliasCandidate of extractTitleCandidates(aliasPhrase, { includeHonorificStripped: true })) {
           const aliasAmh = normalizeAmharicCanonical(aliasCandidate);
           const aliasCompact = normalizeCompactCanonical(aliasCandidate);
+          const aliasTranslit = normalizeTransliterationKey(aliasCandidate);
 
           if (
             (aliasAmh && allQueryKeys.has(aliasAmh)) ||
-            (aliasCompact.length >= 4 && allQueryCompactKeys.has(aliasCompact))
+            (aliasCompact.length >= 4 && allQueryCompactKeys.has(aliasCompact)) ||
+            (aliasTranslit && allQueryTranslitKeys.has(aliasTranslit))
           ) {
             const resolvedUrl = resolveContentMediaUrl(entry.storagePath);
             if (resolvedUrl) {
@@ -2192,6 +2341,21 @@ export function resolveMedia(query: MediaResolutionQuery): MediaResolutionResult
     matchedEntryId: null,
     fallbackUrl,
   };
+}
+
+/**
+ * Keeps a record's own stored image path (including an explicitly blank one) unless that path is a known-missing
+ * upload, in which case the verified
+ * catalog is consulted (never legacy art). Used by cards whose CMS row still points at a missing file.
+ */
+export function resolveRecordImagePath(
+  storedPath: string | null | undefined,
+  query: Omit<MediaResolutionQuery, 'explicitPath' | 'allowLegacyFallback'>,
+): string | null {
+  const stored = storedPath?.trim() || null;
+  if (!stored || !isKnownMissingStoragePath(stored)) return stored; // blank paths stay blank (explicit editorial state)
+  const resolved = resolveMedia({ ...query, allowLegacyFallback: false });
+  return resolved.storagePath && !isKnownMissingStoragePath(resolved.storagePath) ? resolved.storagePath : stored;
 }
 
 /**

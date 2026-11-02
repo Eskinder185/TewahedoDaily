@@ -1,0 +1,40 @@
+/* Picture Quiz additions. Layers on PlayGames.module.css and AnswerFeedback.module.css without editing them. */
+
+.focusTarget:focus { outline: none; }
+
+/* Unselected choices stay readable after an answer (the shared dim is 0.5 opacity). */
+.readable.readable { opacity: 0.88; }
+/* The global button:disabled rule (opacity 0.6) would otherwise fade the correct and picked choices too. */
+.answered.answered { opacity: 1; }
+
+.choiceBody { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; min-width: 0; }
+.choiceText { min-width: 0; overflow-wrap: anywhere; }
+
+/* Reveal bar button: 44px minimum touch target. */
+.revealMore.revealMore { min-height: 2.75rem; padding-block: 0.5rem; }
+
+.badgeList { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.badgeList li { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: var(--radius-pill); background: var(--color-gold-soft); color: var(--color-gold-ink); font-weight: 800; }
+.badgeHeading { margin: 1rem 0 0; font-weight: 800; }
+
+/* Progress card with the answer-history dots under it; takes the free width in the HUD. */
+.progressStack { display: grid; flex: 1 1 14rem; gap: 0.55rem; min-width: 0; }
+/* The HUD pill is already the card, so the shared progress card inside it drops its own border, shadow and padding. */
+.progressStack > :first-child { padding: 0; border: 0; background: transparent; box-shadow: none; }
+
+/* Answer history: shape and glyph as well as colour (circle + check, square + cross), so it does not rely on colour alone. */
+.history.history { gap: 0.4rem; }
+.history.history > li { box-sizing: border-box; display: inline-grid; place-items: center; width: 1.15rem; height: 1.15rem; border-radius: 50%; background: var(--color-bg-muted); box-shadow: inset 0 0 0 1px var(--color-border-strong); color: #fff; font-size: 0.7rem; font-weight: 800; line-height: 1; transform: none; }
+.history.history > .hNow { background: var(--color-bg-elevated); box-shadow: 0 0 0 2px var(--color-gold-bright); }
+.history.history > .hRight { background: #1f6143; box-shadow: none; }
+.history.history > .hWrong { border-radius: 0.2rem; background: #8e2f38; box-shadow: none; }
+[data-theme='night'] .history.history > .hRight { background: #7fd1a6; color: #0a1524; }
+[data-theme='night'] .history.history > .hWrong { background: #f0a0a7; color: #0a1524; }
+
+.reviewLines { display: grid; gap: 0.2rem; }
+.reviewLines b { color: var(--color-heading); }
+.am { line-height: 1.7; }
+
+@media (max-width: 30rem) {
+  .choiceBody { gap: 0.25rem 0.4rem; }
+}

@@ -325,6 +325,10 @@ export function buildBulkSnapshot(input: {
     const block = publicationBlockReason({
       role: 'super_admin', title: text(row.title), slug: text(row.slug),
       lyricsAmharic: text(row.lyrics_amharic),
+      lyricsEnglish: text(row.lyrics_english),
+      lyricsGeez: text(row.lyrics_geez),
+      lyricsOromo: text(row.lyrics_oromo),
+      lyricsTransliteration: text(row.lyrics_transliteration),
     })
     const zemariMatch = matchZemari({ singerName: text(row.singer_name) || null, singerSlug: text(row.singer_slug) || null, zemariId: text(row.zemari_id) || null }, candidates)
     return {

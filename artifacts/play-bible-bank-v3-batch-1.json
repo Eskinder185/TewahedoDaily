@@ -1,0 +1,1888 @@
+{
+  "status": "draft",
+  "publish": false,
+  "sourceSnapshot": "play-bible-snapshot-1793487606836.json",
+  "edition": "web",
+  "questions": [
+    {
+      "id": "bible-v3-genesis-2-seventh-day",
+      "game": "trivia",
+      "category": "Creation",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "At the start of Genesis 2, what does the passage say was finished?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "The earth, but not the heavens"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "The garden, but not the rest of the earth"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "The animals, but not the land and sky"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "The heavens, earth, and all they contain"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Genesis 2:1 describes the heavens, earth, and their full array as finished. This question concerns the scope of completed creation."
+      },
+      "source": {
+        "label": "Genesis 2:1-3",
+        "route": "/bible/genesis/2?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-5-enoch",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What unusual ending does the genealogy give for Enoch's life?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He stopped walking with God after Methuselah was born"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He lived nine hundred sixty-nine years"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He became the father of Noah"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "God took him after he walked with God"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "The genealogy says Enoch walked with God and then was no longer present because God took him."
+      },
+      "source": {
+        "label": "Genesis 5:21-24",
+        "route": "/bible/genesis/5?edition=web#verse-21",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-6-flood-reason",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which contrast between Noah and the world around him does Genesis 6:9-13 present?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Noah was upright, and violence had left the earth"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Noah was violent, though the people around him were upright"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Noah was corrupt, and only his sons remained upright"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Noah was upright, though violence spread on the earth"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Verse 9 describes Noah as righteous; verses 11-13 describe wrongdoing and violence across the earth."
+      },
+      "source": {
+        "label": "Genesis 6:9-13",
+        "route": "/bible/genesis/6?edition=web#verse-9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-7-clean-animals",
+      "game": "trivia",
+      "category": "Creation",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "How did the number of clean animals Noah was told to take differ from the unclean animals?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He took one pair of each kind"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He took two pairs of each kind"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Seven clean pairs; one unclean pair"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He took seven animals of every kind"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "The instructions distinguish seven pairs of clean animals from two of each unclean kind."
+      },
+      "source": {
+        "label": "Genesis 7:1-5",
+        "route": "/bible/genesis/7?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-16-ishmael-name",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "What reason did the angel give Hagar for naming her son Ishmael?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "The angel had found her beside a spring"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Her descendants would be too many to count"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Her son would live opposite his brothers"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "God listened to Hagar in her distress"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "The angel explicitly connects Ishmael's name with Yahweh hearing Hagar's affliction; the other choices are nearby details, not the stated reason."
+      },
+      "source": {
+        "label": "Genesis 16:7-13",
+        "route": "/bible/genesis/16?edition=web#verse-7",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-18-hospitality",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "How did Abraham respond after seeing the three visitors near his tent?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He waited for Sarah to invite them"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He sent them to Lot's house"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He asked them to guard his flock"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He offered rest, water, and a meal"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Abraham hurried to offer water and rest, then prepared food for the visitors."
+      },
+      "source": {
+        "label": "Genesis 18:1-8",
+        "route": "/bible/genesis/18?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-19-zoar",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Why did Lot ask to flee to the small nearby city rather than the mountains?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He thought the road up the mountain was blocked"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "His daughters had already gone there"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "The angels ordered him to find a city"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He feared he might die on the way"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Lot says he cannot escape to the mountains without danger overtaking him, and asks to flee to a nearby small city."
+      },
+      "source": {
+        "label": "Genesis 19:15-22",
+        "route": "/bible/genesis/19?edition=web#verse-15",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-21-isaac-birth",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "What detail does the passage use to emphasize the timing of Isaac's birth?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "It happened during Abraham's first journey to Canaan"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "It followed the arrival of Lot's family"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Sarah bore him as promised in Abraham's old age"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "It happened before Abraham received the promise"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "The text says Sarah bore Abraham a son in his old age at the appointed time God had spoken about."
+      },
+      "source": {
+        "label": "Genesis 21:1-7",
+        "route": "/bible/genesis/21?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-22-substitute",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What did Abraham offer after the angel stopped him from harming Isaac?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "A young goat from his flock"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "A lamb brought by his servants"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "A pair of doves from the hillside"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "A ram caught in a thicket"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Abraham saw a ram caught by its horns and offered it instead of his son."
+      },
+      "source": {
+        "label": "Genesis 22:9-14",
+        "route": "/bible/genesis/22?edition=web#verse-9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-genesis-24-rebekah-kindness",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What did Rebekah volunteer to do after giving Abraham's servant a drink?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Guide him to Abraham's camp"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Call her brother to meet the visitor"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Find a place for his gifts"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Draw water for all his camels"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "After giving the servant water, Rebekah offers to draw water for the camels until they finish drinking."
+      },
+      "source": {
+        "label": "Genesis 24:10-21",
+        "route": "/bible/genesis/24?edition=web#verse-10",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-2-moses-rescue",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "How did Moses' mother protect him after she could no longer hide him at home?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "She hid him inside Pharaoh's palace"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "She put him in a basket by the river"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "She sent him to another Hebrew family"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "She asked his sister to carry him away"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "Exodus 2:3 says his mother put him in a coated papyrus basket among the reeds by the riverbank; his sister watched from a distance."
+      },
+      "source": {
+        "label": "Exodus 2:1-10",
+        "route": "/bible/exodus/2?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-4-first-sign",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What happened to Moses' hand in the second sign?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "It turned white and stayed diseased"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "It became swollen, then recovered"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "It remained unchanged both times"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "It turned white, then recovered"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "In Exodus 4:6-7 Moses' hand became white and diseased when he took it from his cloak, then returned to normal after he put it back."
+      },
+      "source": {
+        "label": "Exodus 4:1-9",
+        "route": "/bible/exodus/4?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-5-brick-quota",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which change made the existing brick quota harder for the Israelites to meet?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Pharaoh gave them straw but demanded more bricks"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Pharaoh gave no straw but demanded the same bricks"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Pharaoh gave no straw and lowered the brick quota"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Pharaoh gave them straw and lowered the quota"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "Pharaoh stopped supplying straw and still demanded the former number of bricks, forcing the workers to gather stubble themselves."
+      },
+      "source": {
+        "label": "Exodus 5:6-19",
+        "route": "/bible/exodus/5?edition=web#verse-6",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-8-pharaoh-frogs",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What did Pharaoh do after the frogs died and the land had relief?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He immediately let Israel go"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He asked Moses to remain in Egypt"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He hardened his heart and refused to listen"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He ordered the magicians to bring the frogs back"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "After seeing the respite from the frogs, Pharaoh hardened his heart and did not listen."
+      },
+      "source": {
+        "label": "Exodus 8:8-15",
+        "route": "/bible/exodus/8?edition=web#verse-8",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-9-hail-warning",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "How did Pharaoh's servants respond differently to the warning about hail?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "All sheltered their servants and livestock"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "All left their servants and livestock in the fields"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "They sheltered livestock but left servants outside"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Some sheltered both; others left both in the fields"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Exodus 9:20-21 contrasts servants who feared Yahweh's warning and brought people and livestock indoors with those who left both in the fields."
+      },
+      "source": {
+        "label": "Exodus 9:18-26",
+        "route": "/bible/exodus/9?edition=web#verse-18",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-10-locust-response",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "After the locusts were removed, what did Pharaoh do about Israel's departure?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He released all the Israelites at once"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He still refused to let Israel leave"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He released only the Israelite men"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He asked Moses to lead them out at night"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "The locusts were driven into the Red Sea, but Pharaoh did not let the children of Israel go."
+      },
+      "source": {
+        "label": "Exodus 10:16-20",
+        "route": "/bible/exodus/10?edition=web#verse-16",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-11-firstborn",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "What did Moses announce would happen in Egypt around midnight?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Hail would strike people and livestock in the fields"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Locusts would consume what remained of the crops"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Darkness would cover Egypt for three more days"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Egypt's firstborn, including livestock, would die"
+          }
+        }
+      ],
+      "correctKey": "d",
+      "explanation": {
+        "en": "Moses announced that the firstborn throughout Egypt, from Pharaoh's household to servants and livestock, would die around midnight."
+      },
+      "source": {
+        "label": "Exodus 11:1-8",
+        "route": "/bible/exodus/11?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-13-route",
+      "game": "trivia",
+      "category": "Chronology and journeys",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "According to Exodus 13, why did God avoid the nearer Philistine route?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "The route lacked enough water for the people"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "The route was too long for the families"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "War might make them return to Egypt"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Pharaoh's army already blocked that road"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "God said that seeing war might cause the people to change their minds and return to Egypt, so he led them by the wilderness."
+      },
+      "source": {
+        "label": "Exodus 13:17-22",
+        "route": "/bible/exodus/13?edition=web#verse-17",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-16-sixth-day",
+      "game": "trivia",
+      "category": "Commandments and laws",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "What special amount of manna did the people gather on the sixth day?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "One omer per person"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Three omers per person"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Two omers per person"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "None was gathered on that day"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "Exodus 16:22 says that on the sixth day the people gathered twice as much bread: two omers per person."
+      },
+      "source": {
+        "label": "Exodus 16:19-30",
+        "route": "/bible/exodus/16?edition=web#verse-19",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-exodus-17-massah-meribah",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "What reason does Exodus 17:7 explicitly give for the names Massah and Meribah?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "They argued and doubted God's presence"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Moses struck the rock and water came out"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "They camped at Rephidim without water"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Moses took the elders with him to the rock"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "Verse 7 connects those names to the people's quarrel and their question about whether Yahweh was among them."
+      },
+      "source": {
+        "label": "Exodus 17:1-7",
+        "route": "/bible/exodus/17?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-2-magi-gifts",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Why did the visitors from the east return home by a different route?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Herod told them to take a different road"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "A dream warned them not to return to Herod"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "The star showed them a new road home"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "The child's family had already left the house"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "Matthew 2:12 says a dream warned the visitors not to return to Herod, so they went home another way."
+      },
+      "source": {
+        "label": "Matthew 2:7-12",
+        "route": "/bible/matthew/2?edition=web#verse-7",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-3-john-hesitation",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Why did John initially hesitate to baptize Jesus?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He said he needed baptism from Jesus instead"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He said Jesus should first baptize the crowd"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He wanted Jesus to wait until a later day"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He thought Jesus had already been baptized"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "John objected that he needed to be baptized by Jesus, rather than baptizing Jesus himself."
+      },
+      "source": {
+        "label": "Matthew 3:13-17",
+        "route": "/bible/matthew/3?edition=web#verse-13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-4-first-temptation",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which principle did Jesus use when asked to turn stones into bread?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Hunger made changing stones into bread necessary"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "God's words sustain human life beyond food alone"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "His identity as God's Son made a sign necessary"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "The Spirit would end the fast by supplying bread"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "In verse 4 Jesus answers that life depends on God's words, rather than bread alone."
+      },
+      "source": {
+        "label": "Matthew 4:1-4",
+        "route": "/bible/matthew/4?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-8-centurion-authority",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Why did the centurion believe Jesus could heal without entering his house?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He believed his servant had already recovered"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He expected the disciples to visit in Jesus' place"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He trusted Jesus' command to work at a distance"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He thought his soldiers could cure the servant"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "The centurion compared Jesus' authority to his own ability to give a command that is obeyed, and asked Jesus to speak the word."
+      },
+      "source": {
+        "label": "Matthew 8:5-13",
+        "route": "/bible/matthew/8?edition=web#verse-5",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-9-tax-collectors",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "How did Jesus use the physician comparison to explain eating with sinners?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He said the healthy need a physician more than the sick"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "The sick need a physician; he came to call sinners"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He said tax collectors were healthy and needed no help"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He said sinners must leave before they could be healed"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "Jesus says the sick need a physician and that he came to call sinners to repentance, rather than the righteous."
+      },
+      "source": {
+        "label": "Matthew 9:9-13",
+        "route": "/bible/matthew/9?edition=web#verse-9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-14-feed-crowd",
+      "game": "trivia",
+      "category": "Miracles",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "When the disciples suggested sending the crowd away for food, what did Jesus tell them?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Wait until the crowd returned to town"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Ask the nearest village for a meal"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Give the crowd something to eat"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Send only the children to find food"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "Jesus tells the disciples that the crowd need not leave and instructs them to provide food; the available food was five loaves and two fish."
+      },
+      "source": {
+        "label": "Matthew 14:13-21",
+        "route": "/bible/matthew/14?edition=web#verse-13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-15-canaanite-response",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What happened after the Canaanite woman persisted in asking help for her daughter?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Jesus praised her faith, and her daughter was healed"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Jesus praised her faith but delayed the healing"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He healed her daughter only after visiting her home"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He refused and sent her back to her own region"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "After the woman answered him, Jesus praised her faith and said her request would be granted; her daughter was healed from that hour."
+      },
+      "source": {
+        "label": "Matthew 15:21-28",
+        "route": "/bible/matthew/15?edition=web#verse-21",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-16-silence",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "After Peter identified Jesus as the Christ, what did Jesus tell the disciples to do with that identification?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Tell everyone he was the Christ"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Tell no one he was the Christ"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Tell nearby crowds he was the Christ"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Tell religious leaders he was the Christ"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "After Peter's confession, Jesus instructed the disciples not to tell anyone that he was the Christ."
+      },
+      "source": {
+        "label": "Matthew 16:13-20",
+        "route": "/bible/matthew/16?edition=web#verse-13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-17-figures",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Who appeared and spoke with Jesus on the mountain?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Abraham and Isaac"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "David and Solomon"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Moses and Elijah"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Noah and Enoch"
+          }
+        }
+      ],
+      "correctKey": "c",
+      "explanation": {
+        "en": "The disciples see Moses and Elijah appear and speak with Jesus during the transfiguration."
+      },
+      "source": {
+        "label": "Matthew 17:1-8",
+        "route": "/bible/matthew/17?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-matthew-19-young-man",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "After the young man said he had kept the commandments, what further action did Jesus tell him to take?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Keep the commandments while retaining his wealth"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Sell his goods, give to the poor, follow him"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Give a tithe and return to his household"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Join the disciples while keeping his possessions"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "Jesus told him to sell what he had, give to the poor, and follow him; the man went away sad because he had many possessions."
+      },
+      "source": {
+        "label": "Matthew 19:13-22",
+        "route": "/bible/matthew/19?edition=web#verse-13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-7-living-water",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "According to the narrator in John 7, what did Jesus mean by the promised living water?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "The Spirit believers would receive"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "The river water used by the crowd"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "The arrival of the prophet some expected"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "The return of David's royal line"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "John 7:39 explicitly says Jesus spoke about the Spirit whom believers were to receive."
+      },
+      "source": {
+        "label": "John 7:37-44",
+        "route": "/bible/john/7?edition=web#verse-37",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-8-discipleship",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What condition did Jesus give those who believed him for being truly his disciples?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Continue in what he taught"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Rely on their descent from Abraham"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "Claim they had never been enslaved"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "Leave the household permanently"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "Jesus told those who had believed him that they were truly his disciples if they remained in his word."
+      },
+      "source": {
+        "label": "John 8:31-36",
+        "route": "/bible/john/8?edition=web#verse-31",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-11-martha-belief",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Before Lazarus was raised, what did Martha affirm about Jesus?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "That he would become king in Jerusalem"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "That he was the Christ and Son of God"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "That he had arrived before Lazarus died"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "That he would remain in Bethany"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "Martha says she believes Jesus is the Christ, God's Son, who comes into the world."
+      },
+      "source": {
+        "label": "John 11:17-27",
+        "route": "/bible/john/11?edition=web#verse-17",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-12-judas-objection",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Why does the narrator say Judas spoke of giving the ointment money to the poor?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He wanted it kept for Jesus' burial"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He stole from the shared money box"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He believed the poor had already received its value"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He objected because the ointment was not pure"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "The narrator says Judas did not care for the poor; he kept the money box and used to steal from it."
+      },
+      "source": {
+        "label": "John 12:1-8",
+        "route": "/bible/john/12?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-13-example",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Why did Jesus say the disciples ought to wash one another's feet?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "Their Lord had washed their feet"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Peter had asked him to wash everyone"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "The meal had not yet begun"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "They had first washed Jesus' feet"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "Jesus based the instruction on his own act as their Lord and Teacher (John 13:13-15)."
+      },
+      "source": {
+        "label": "John 13:3-15",
+        "route": "/bible/john/13?edition=web#verse-3",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-14-thomas-question",
+      "game": "trivia",
+      "category": "Biblical people",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which idea best explains why Thomas questions Jesus's claim that they know the way?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He cannot identify a route without knowing the destination"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He already knows the destination but doubts the route"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He knows the route but worries Jesus will not return"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He knows both route and destination but fears traveling there alone"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "Thomas says the destination is unknown and then asks how they can know the way; his question links understanding a route to knowing its destination."
+      },
+      "source": {
+        "label": "John 14:1-7",
+        "route": "/bible/john/14?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-15-vine",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What happens to a branch that does not remain in the vine in Jesus' comparison?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "It withers and is thrown into the fire"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "It is pruned so that it bears more fruit"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "It bears fruit on its own after being cut away"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "It stays on the vine without bearing fruit"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "Jesus says a branch that does not remain in him is thrown out, withers, and is gathered for the fire; fruitful branches are pruned."
+      },
+      "source": {
+        "label": "John 15:1-8",
+        "route": "/bible/john/15?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-16-sorrow-joy",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "What everyday experience does Jesus compare to the disciples' sorrow turning into joy?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "A farmer waiting for the harvest"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "Labor pain gives way to joy at birth"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "A traveler returning from a long road"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "A shepherd finding a lost sheep"
+          }
+        }
+      ],
+      "correctKey": "b",
+      "explanation": {
+        "en": "Jesus compares their sorrow and later joy to a woman's anguish during childbirth giving way to joy after the child is born."
+      },
+      "source": {
+        "label": "John 16:16-24",
+        "route": "/bible/john/16?edition=web#verse-16",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-17-prayer-purpose",
+      "game": "trivia",
+      "category": "Teachings",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "In John 17:21 and 23, what purpose does Jesus repeat alongside his prayer that believers be one?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "That the world recognize the Father sent him"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "That believers immediately see his glory"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "That the disciples receive a new name"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "That everyone has already known the Father"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "In both verses Jesus links believers' unity with the world believing or knowing that the Father sent him."
+      },
+      "source": {
+        "label": "John 17:20-26",
+        "route": "/bible/john/17?edition=web#verse-20",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    },
+    {
+      "id": "bible-v3-john-18-peter-sword",
+      "game": "trivia",
+      "category": "Biblical events",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "How did Jesus respond to Peter using a sword during the arrest?"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "He told Peter to put it away and spoke of the cup"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "He told Peter to keep fighting until the officers left"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "He told Peter to hand his sword to the officers"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "He told Peter to wait for the other disciples to arrive"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "Jesus told Peter to put the sword in its sheath and spoke of accepting the cup the Father had given him."
+      },
+      "source": {
+        "label": "John 18:1-11",
+        "route": "/bible/john/18?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ]
+    }
+  ]
+}

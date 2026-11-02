@@ -832,3 +832,159 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* ==========================================================================
+   Premium layer: hero with search, calmer rhythm cards, image-ready collection
+   cards, and an intentional "Learn How to Pray" band. Overrides earlier rules
+   of the same name; uses only existing tokens.
+   ========================================================================== */
+
+.head {
+  position: relative;
+  z-index: 3; /* the search suggestion list overlays the content below */
+  display: grid;
+  gap: var(--space-2);
+  max-width: none;
+  margin-bottom: var(--space-5);
+  padding: clamp(var(--space-5), 3.5vw, var(--space-7)) clamp(var(--space-4), 4vw, var(--space-8));
+  border: 1px solid color-mix(in srgb, var(--color-border-gold) 60%, var(--color-border-card));
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--color-gold-soft) 55%, transparent) 0%, transparent 46%),
+    var(--color-bg-elevated);
+  box-shadow: var(--shadow-card);
+}
+
+.head::after {
+  content: '✠';
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  top: clamp(0.5rem, 2vw, 1.25rem);
+  color: var(--color-gold);
+  font-size: clamp(4rem, 9vw, 7rem);
+  line-height: 1;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.eyebrow { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--color-gold-ink); }
+.cross { font-size: 1rem; line-height: 1; }
+.title { font-size: clamp(2rem, 4.6vw, 3.2rem); }
+.deck { max-width: 36rem; margin-top: var(--space-2); }
+
+/* Search lives in the hero: flat, large, pill-shaped. */
+.head .tools {
+  gap: var(--space-2);
+  max-width: 40rem;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.head .search {
+  min-height: 3.25rem;
+  padding: 0.8rem 1.15rem;
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-card);
+  font-size: var(--text-base);
+}
+
+.head .continueHint { margin: 0; font-size: var(--text-sm); }
+
+/* Today's rhythm: one calm surface, lighter step cards. */
+.rhythm { margin-bottom: var(--space-6); }
+.rhythmLink { min-height: 0; box-shadow: none; }
+.rhythmLink:hover, .rhythmLink:focus-visible { box-shadow: var(--shadow-card); }
+
+/* Collections: even tiles that work with or without CMS artwork. */
+.collectionGrid {
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.collectionCard {
+  position: relative;
+  min-height: 0;
+  gap: 0;
+  padding: 0;
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    border-color var(--duration-fast) var(--ease-out),
+    box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.collectionCard:hover,
+.collectionCard:focus-within {
+  border-color: var(--color-border-gold);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+}
+
+.collectionImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Without CMS artwork a thin gold rule keeps the tiles consistent (no repeated placeholder icons). */
+.collectionCard::before { content: ''; display: block; height: 3px; background: linear-gradient(90deg, var(--color-gold), var(--color-gold-bright)); }
+
+.collectionBody { flex: 1; gap: var(--space-1); padding: var(--space-5) var(--space-4) var(--space-2); }
+.collectionTitle { font-size: clamp(1.3rem, 2.4vw, 1.6rem); }
+.collectionText {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.collectionOpen {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: var(--tap-min);
+  padding: 0 var(--space-4) var(--space-3);
+  color: var(--color-gold-ink);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* The whole tile is the link target; the focus ring wraps the tile. */
+.collectionOpen::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.collectionOpen:focus-visible { outline: none; }
+.collectionOpen:focus-visible::after { outline: 2px solid var(--color-focus-ring); outline-offset: 3px; border-radius: var(--radius-lg); }
+.collectionCard:hover .collectionOpen { text-decoration: underline; text-underline-offset: 0.2em; }
+
+/* Learn How to Pray: a distinct, welcoming band after the collections. */
+.learn { margin: 0 0 var(--space-6); }
+.learnEyebrow { color: var(--color-gold-ink); }
+.learnGrid { gap: var(--space-4); }
+
+.learnCard {
+  position: relative;
+  border-left: 4px solid var(--color-gold);
+  background:
+    radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--color-gold-soft) 50%, transparent) 0%, transparent 55%),
+    var(--color-bg-elevated);
+}
+
+@media (min-width: 900px) {
+  .learnCard { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-7); }
+  .learnActions { min-width: 18rem; margin-top: 0; grid-template-columns: 1fr; }
+}
+
+/* The tag note is a footnote, not a card. */
+.tagNote { margin: var(--space-6) 0 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
+.tagNote h2 { margin: 0 0 var(--space-1); font-size: var(--text-sm); }
+.tagNote p { margin: 0; max-width: 42rem; font-size: var(--text-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  .collectionCard, .collectionCard:hover, .collectionCard:focus-within, .rhythmLink:hover, .rhythmLink:focus-visible { transform: none; transition: none; }
+}

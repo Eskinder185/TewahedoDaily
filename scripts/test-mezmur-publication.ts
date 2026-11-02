@@ -53,19 +53,27 @@ assert.match(publicationBlockReason({ ...eligibleDraft, role: 'contributor' }) |
 assert.match(publicationBlockReason({ ...eligibleDraft, role: 'user' }) || '', /role is required/i)
 assert.match(publicationBlockReason({ ...eligibleDraft, role: null }) || '', /role is required/i)
 
-// 6. Publication requires a title, slug, and Amharic lyrics
+// 6. Publication requires a title, slug, and lyrics in at least one language (Amharic is not mandatory)
 assert.match(
   publicationBlockReason({ ...eligibleDraft, role: 'editor', title: '   ' }) || '',
-  /Title, slug, and Amharic lyrics are required/i,
+  /Title, slug, and lyrics in at least one language are required/i,
 )
 assert.match(
   publicationBlockReason({ ...eligibleDraft, role: 'editor', slug: '' }) || '',
-  /Title, slug, and Amharic lyrics are required/i,
+  /Title, slug, and lyrics in at least one language are required/i,
 )
 assert.match(
   publicationBlockReason({ ...eligibleDraft, role: 'editor', lyricsAmharic: '' }) || '',
-  /Title, slug, and Amharic lyrics are required/i,
+  /Title, slug, and lyrics in at least one language are required/i,
 )
+
+for (const field of ['lyricsEnglish', 'lyricsGeez', 'lyricsOromo', 'lyricsTransliteration'] as const) {
+  assert.equal(
+    publicationBlockReason({ ...eligibleDraft, role: 'editor', lyricsAmharic: '', [field]: 'lyrics' }),
+    null,
+    `${field} alone must satisfy the lyrics requirement`,
+  )
+}
 
 // Rights metadata is retained as audit data and does not gate ordinary Publish.
 assert.equal(publicationBlockReason({ ...eligibleDraft, role: 'super_admin', rightsStatus: 'external_only' }), null)

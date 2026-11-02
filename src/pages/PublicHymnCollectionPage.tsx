@@ -20,6 +20,7 @@ import { isMezmurLanguageFilter, normalizeMezmurLanguage, mezmurLanguageLabel, t
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
 import { ZemariSupportLinks } from '../components/practice/ZemariSupportLinks'
 import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
+import { browseLinkSlug, matchesBrowseLink } from '../lib/publicContent/browseTaxonomy'
 
 const ZEMARIS_PER_PAGE = 8
 
@@ -151,7 +152,9 @@ export function PublicHymnCollectionPage({
               : index.singers
         setAllCards(list)
         if (!isIndex) {
-          const found = list.find((c) => c.slug === slug) || null
+          const found = list.find((c) => c.slug === (detailKind === 'category' || detailKind === 'occasion'
+            ? browseLinkSlug(detailKind, slug)
+            : slug)) || null
           setGroup(found)
         } else {
           setLoading(false)
@@ -261,7 +264,7 @@ export function PublicHymnCollectionPage({
             if (mappedOccasions) {
               for (const occ of mappedOccasions) targetSlugs.add(occ)
             }
-            const matchingLinks = allLinks.filter((l) => targetSlugs.has(l.occasion_slug))
+            const matchingLinks = allLinks.filter((l) => matchesBrowseLink('occasion', targetSlugs, l.occasion_slug))
             const allowedImportIds = new Set<string>()
             const allowedSlugs = new Set<string>()
             const allowedMezmurIds = new Set<string>()
@@ -292,7 +295,7 @@ export function PublicHymnCollectionPage({
             if (mappedCategories) {
               for (const cat of mappedCategories) targetSlugs.add(cat)
             }
-            const matchingLinks = allLinks.filter((l) => targetSlugs.has(l.category_slug))
+            const matchingLinks = allLinks.filter((l) => matchesBrowseLink('category', targetSlugs, l.category_slug))
             const allowedImportIds = new Set<string>()
             const allowedSlugs = new Set<string>()
             const allowedMezmurIds = new Set<string>()
@@ -352,12 +355,12 @@ export function PublicHymnCollectionPage({
         </header>
         {kind === 'singers' ? (
           <label className={s.browseSearch}>
-            <span className={s.srOnly}>Search Zemaris</span>
+            <span className={s.srOnly}>{locale === 'am' ? 'ዘማሪ ፈልግ' : 'Search Zemaris'}</span>
             <input
               type="search"
               value={zemariQuery}
               onChange={(event) => setZemariQuery(event.target.value)}
-              placeholder="Search Zemaris by name... / ዘማሪ ፈልግ..."
+              placeholder={locale === 'am' ? 'ዘማሪን በስም ፈልግ...' : 'Search Zemaris by name...'}
               autoComplete="off"
             />
           </label>

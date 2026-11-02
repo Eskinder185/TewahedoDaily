@@ -1,5 +1,6 @@
 import type { ChurchDaySnapshot, UpcomingObservance } from '../lib/churchCalendar'
 import { availableLocalAsset } from '../lib/media/localAssetAvailability'
+import { resolveMedia } from '../lib/media/mediaResolver'
 
 const CALENDAR_IMAGE_ROOT = '/images/calendar'
 /** Optimized 4:3 WebP derivatives (see scripts/optimize-calendar-images.mjs). */
@@ -255,6 +256,15 @@ const titleKeywordMap: Array<{ pattern: RegExp; image: string }> = [
 export function resolveEventImageById(id?: string | null): string | undefined {
   if (!id) return undefined
   const normalized = id.trim().toLowerCase() as EventImageId
+  const newMedia = resolveMedia({
+    id: normalized,
+    slug: normalized,
+    domain: 'calendar',
+    allowLegacyFallback: false,
+  })
+  if (newMedia.hasImage && newMedia.imageUrl) {
+    return newMedia.imageUrl
+  }
   return calendarImageManifest.eventsById[normalized] || undefined
 }
 
@@ -383,6 +393,17 @@ export function resolveCommemorationImage(
   transliterationTitle?: string,
   catalogEventId?: string | null,
 ): string {
+  const newMedia = resolveMedia({
+    id: catalogEventId,
+    slug: catalogEventId,
+    title,
+    titleAmharic: transliterationTitle,
+    domain: 'calendar',
+    allowLegacyFallback: false,
+  })
+  if (newMedia.hasImage && newMedia.imageUrl) {
+    return newMedia.imageUrl
+  }
   const fromCatalog = resolveEventImageById(catalogEventId)
   if (fromCatalog) return fromCatalog
   const combined = `${title} ${transliterationTitle ?? ''}`

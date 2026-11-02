@@ -1,0 +1,125 @@
+﻿    assert.equal(cleanMediaFileNameStem('Deacon Samson Negash\u202c.webp'), 'Deacon Samson Negash')
+    assert.equal(normalizeAmharicCanonical('áˆ†áˆ³á‹•áŠ“'), normalizeAmharicCanonical('áˆ†áˆ£á‹•áŠ“'))
+    assert.equal(normalizeCompactCanonical('á‰ áŠ á‰³ áˆˆáˆ›áˆ­á‹«áˆ'), normalizeCompactCanonical('á‰ áŠ á‰³áˆˆáˆ›áˆ­á‹«áˆ'))
+    console.log('âœ“ 3. Mixed-language titles & Amharic Unicode normalization: PASS')
+  }
+
+  // â”€â”€ 4. Known Aliases â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    const fasika = resolveMedia({ title: 'Fasika' })
+    assert.equal(fasika.hasImage, true)
+    assert.equal(fasika.storagePath, 'hymns/sections/holidays-feasts/holidays-tinsae.webp')
+
+    const goodFriday = resolveMedia({ title: 'Good Friday' })
+    assert.equal(goodFriday.hasImage, true)
+    assert.equal(goodFriday.storagePath, 'hymns/sections/holidays-feasts/holidays-good-friday.webp')
+
+    const greatLent = resolveMedia({ title: 'Abiy Tsom / Great Lent', titleAmharic: 'áŠ á‰¥á‹­ áŒ¾áˆ' })
+    assert.equal(greatLent.hasImage, true)
+    assert.equal(greatLent.storagePath, 'calendar/general/great-lent-6feda2f3-1792558641939.webp')
+
+    const epiphany = resolveMedia({ title: 'Epiphany' })
+    assert.equal(epiphany.hasImage, true)
+    assert.equal(epiphany.storagePath, 'calendar/christ/timket-436e0376-1792010746233.webp')
+
+    const cana = resolveMedia({ title: 'Wedding at Cana' })
+    assert.equal(cana.hasImage, true)
+    assert.equal(cana.storagePath, 'calendar/christ/kana-ze-galila-fb6df0eb-1790969934507.webp')
+    console.log('âœ“ 4. Known aliases (Bible stories, feasts, saints, fasts): PASS')
+  }
+
+  // â”€â”€ 5. Unrelated Titles & Domain Isolation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    // Register a singer portrait to verify it NEVER bleeds into calendar/saint/Bible queries
+    registerMediaAssets([
+      {
+        id: 'test-zemari-solomon',
+        file_name: 'Zemari Solomon.webp',
+        storage_bucket: 'content-media',
+        storage_path: 'hymns/zemaris/zemari-solomon-1793000000000.webp',
+        alt_text: 'King Solomon',
+        created_at: '2026-10-28T00:00:00Z',
+      },
+    ])
+
+    const unrelatedBibleStory = resolveMedia({
+      title: 'King Solomon Builds the Temple',
+      titleAmharic: 'áŠ•áŒ‰áˆ¥ áˆ°áˆŽáˆžáŠ•',
+      domain: 'calendar',
+      allowLegacyFallback: false,
+    })
+    assert.equal(unrelatedBibleStory.hasImage, false)
+    assert.equal(unrelatedBibleStory.imageUrl, null)
+    assert.equal(unrelatedBibleStory.matchSource, 'none')
+
+    const similarButUnrelated = resolveMedia({
+      title: 'The Book of Ruth and Naomi',
+      titleAmharic: 'áˆ˜áŒ½áˆáˆ áˆ©á‰µ',
+      allowLegacyFallback: false,
+    })
+    assert.equal(similarButUnrelated.hasImage, false)
+    assert.equal(similarButUnrelated.imageUrl, null)
+
+    const partialWordOverlap = resolveMedia({
+      title: 'George Washington',
+      allowLegacyFallback: false,
+    })
+    assert.equal(partialWordOverlap.hasImage, false)
+    assert.equal(partialWordOverlap.imageUrl, null)
+    console.log('âœ“ 5. Unrelated titles & Zemari domain isolation: PASS')
+  }
+
+  // â”€â”€ 6. Missing Images (Graceful Handling) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    const missing = resolveMedia({
+      id: 'non-existent-observance-xyz',
+      title: 'Unknown Ancient Commemoration',
+      titleAmharic: 'á‹«áˆá‰³á‹ˆá‰€ áˆ˜á‰³áˆ°á‰¢á‹«',
+      allowLegacyFallback: false,
+    })
+    assert.equal(missing.hasImage, false)
+    assert.equal(missing.imageUrl, null)
+    assert.equal(missing.storagePath, null)
+    assert.equal(missing.matchSource, 'none')
+    assert.equal(missing.title, 'Unknown Ancient Commemoration')
+    assert.equal(missing.titleAmharic, 'á‹«áˆá‰³á‹ˆá‰€ áˆ˜á‰³áˆ°á‰¢á‹«')
+    console.log('âœ“ 6. Missing images handled gracefully: PASS')
+  }
+
+  // â”€â”€ 7. Legacy Fallback Priority â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    // When new media exists, legacy fallback is NOT used (only kept as fallbackUrl for onError)
+    const withNewMedia = resolveMedia({
+      id: 'timket',
+      title: 'Timket',
+      legacyFallbackUrl: '/images/calendar-web/Timket.webp',
+      allowLegacyFallback: true,
+    })
+    assert.equal(withNewMedia.hasImage, true)
+    assert.notEqual(withNewMedia.matchSource, 'legacy-fallback')
+    assert.ok(withNewMedia.imageUrl?.includes('content-media/calendar/christ/timket'))
+    assert.equal(withNewMedia.fallbackUrl, '/images/calendar-web/Timket.webp')
+
+    // When no new media exists and allowLegacyFallback is true, legacy fallback IS used
+    const onlyLegacy = resolveMedia({
+      id: 'unmapped-atmosphere-card',
+      title: 'Unmapped Atmosphere Card',
+      legacyFallbackUrl: '/images/calendar-web/TodayInChurch.webp',
+      allowLegacyFallback: true,
+    })
+    assert.equal(onlyLegacy.hasImage, true)
+    assert.equal(onlyLegacy.matchSource, 'legacy-fallback')
+    assert.equal(onlyLegacy.imageUrl, '/images/calendar-web/TodayInChurch.webp')
+    console.log('âœ“ 7. Legacy fallback used only when no new media exists: PASS')
+  }
+
+  // â”€â”€ 8. Duplicate & Mislabeled Image Handling â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    // Early upload `calendar/mary/annunciation-e695e78a-1790963029629.webp` had file_name `ArchangelUriel.webp`.
+    // Querying for Archangel Uriel MUST select `calendar/angels/uriel-79df65b6-1790969567919.webp`, NOT annunciation!
+    const uriel = resolveMedia({ title: 'Archangel Uriel', titleAmharic: 'á‰…á‹±áˆµ á‹‘áˆ«áŠ¤áˆ' })
+    assert.equal(uriel.storagePath, 'calendar/angels/uriel-79df65b6-1790969567919.webp')
+
+    // Early upload `calendar/cross/demera-1790953956789.webp` had file_name `Kidus-Michael.webp`.
+    // Querying for Demera MUST select `calendar/cross/demera-42d44792-1790968174923.webp`!
+    const demera = resolveMedia({ id: 'demera', title: 'Demera', titleAmharic: 'á‹°áˆ˜áˆ«' })

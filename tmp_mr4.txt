@@ -1,0 +1,110 @@
+﻿ */
+export function cleanMediaFileNameStem(fileNameOrPath: string | null | undefined): string {
+  if (!fileNameOrPath) return '';
+  const baseName = fileNameOrPath.split('/').pop() ?? fileNameOrPath;
+  return baseName
+    .normalize('NFC')
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, '')
+    .replace(/\.(webp|png|jpe?g|avif|gif|svg)$/i, '')
+    .replace(/-[0-9a-f]{8}-\d{10,15}$/i, '')
+    .replace(/-\d{10,15}$/i, '')
+    .replace(/\s*\(\d+\)\s*$/, '')
+    .trim();
+}
+
+/**
+ * Extracts deterministic title candidates from a potentially bilingual or composite title
+ * (e.g., `"Timket / Baptism of Christ"`, `"Saint Uriel â€” Hamle"`, `"áˆá‹°á‰µ (áŒˆáŠ“)"`, `"Good Friday / Siklet"`).
+ * Does NOT perform loose word tokenization that could cause false positives.
+ */
+export function extractTitleCandidates(
+  raw: string | null | undefined,
+  options?: { includeHonorificStripped?: boolean }
+): string[] {
+  if (!raw) return [];
+  const cleaned = raw
+    .normalize('NFC')
+    .replace(/[\u200B-\u200F\u202A-\u202E\u2060-\u2069\uFEFF]/g, '')
+    .trim();
+  if (!cleaned) return [];
+
+  const candidates = new Set<string>();
+  const addCandidate = (value: string) => {
+    const trimmed = value.trim();
+    if (trimmed.length >= 2) {
+      candidates.add(trimmed);
+    }
+  };
+
+  addCandidate(cleaned);
+
+  // Extract parenthetical alternate titles: e.g. "áˆá‹°á‰µ (áŒˆáŠ“)" -> "áˆá‹°á‰µ" and "áŒˆáŠ“"
+  const parenMatches = [...cleaned.matchAll(/\(([^()]+)\)/g)];
+  if (parenMatches.length > 0) {
+    const withoutParens = cleaned.replace(/\([^()]*\)/g, ' ').replace(/\s+/g, ' ').trim();
+    addCandidate(withoutParens);
+    for (const match of parenMatches) {
+      const inner = match[1]?.trim();
+      // Only add parenthetical if it's not a month/date disambiguator like "(áŒáŠ•á‰¦á‰µ)" or "(2)"
+      if (inner && !/^\d+$/.test(inner)) {
+        addCandidate(inner);
+      }
+    }
+  }
+
+  // Split composite / bilingual titles separated by `/`, `â€”`, `â€“`, `|`
+  const segments = cleaned.split(/\s*(?:\/|â€”|â€“|\|)\s*/);
+  if (segments.length > 1) {
+    // For "Saint Uriel â€” Hamle", the first segment "Saint Uriel" is the subject,
+    // while the second segment might be a month ("Hamle", "Hidar", "Tahsas", "Miyazia", "Ginbot", "Sene", "Meskerem", "Tikimt", "Tir", "Yekatit", "Megabit", "Nehase", "Pagumen").
+    const ethiopianMonths = new Set([
+      'meskerem', 'tikimt', 'hidar', 'tahsas', 'tir', 'yekatit',
+      'megabit', 'miyazia', 'ginbot', 'sene', 'hamle', 'nehase', 'pagumen',
+      'áˆ˜áˆµáŠ¨áˆ¨áˆ', 'áŒ¥á‰…áˆá‰µ', 'áŠ…á‹³áˆ­', 'áˆ…á‹³áˆ­', 'á‰³áŠ…áˆ£áˆ¥', 'á‰³áˆ…áˆ³áˆµ', 'áŒ¥áˆ­', 'á‹¨áŠ«á‰²á‰µ',
+      'áˆ˜áŒ‹á‰¢á‰µ', 'áˆšá‹«á‹á‹«', 'áŒáŠ•á‰¦á‰µ', 'áˆ°áŠ”', 'áˆáˆáˆŒ', 'áˆ€áˆáˆŒ', 'áŠáˆáˆ´', 'áŠáˆ€áˆ´', 'áŒ³áŒ‰áˆœáŠ•', 'áŒ³áŒ‰áˆœ',
+    ]);
+    for (const segment of segments) {
+      const segNorm = normalizeUnicodeText(segment);
+      if (segNorm && !ethiopianMonths.has(segNorm)) {
+        addCandidate(segment);
+      }
+    }
+  }
+
+  if (options?.includeHonorificStripped !== false) {
+    for (const current of [...candidates]) {
+      const lower = current.toLowerCase();
+      for (const prefix of ENGLISH_HONORIFIC_PREFIXES) {
+        if (lower.startsWith(prefix)) {
+          const stripped = current.slice(prefix.length).trim();
+          if (stripped.length >= 3) {
+            addCandidate(stripped);
+          }
+        }
+      }
+      for (const prefix of AMHARIC_HONORIFIC_PREFIXES) {
+        if (current.startsWith(prefix)) {
+          const stripped = current.slice(prefix.length).trim();
+          if (stripped.length >= 2) {
+            addCandidate(stripped);
+          }
+        }
+      }
+    }
+  }
+
+  return [...candidates];
+}
+
+/**
+ * Checks whether a path or URL points to legacy local calendar artwork (`/images/calendar-web/*` or `/images/calendar/*` or `/images/chants/*`).
+ */
+export function isLegacyLocalMediaPath(pathOrUrl: string | null | undefined): boolean {
+  if (!pathOrUrl) return false;
+  const trimmed = pathOrUrl.trim();
+  return (
+    trimmed.startsWith('/images/calendar-web/') ||
+    trimmed.startsWith('/images/calendar/') ||
+    trimmed.startsWith('/images/chants/') ||
+    trimmed.startsWith('images/calendar-web/') ||
+    trimmed.startsWith('images/calendar/')

@@ -1,0 +1,367 @@
+{
+  "status": "planning",
+  "pilotExcluded": [
+    "genesis:8",
+    "genesis:13",
+    "genesis:45",
+    "exodus:12",
+    "exodus:18",
+    "exodus:20",
+    "matthew:13",
+    "matthew:18",
+    "john:4",
+    "john:9"
+  ],
+  "chapters": [
+    {
+      "bookSlug": "genesis",
+      "chapter": 1,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 2,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 3,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 4,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 5,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 6,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 7,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 9,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 10,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 11,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 12,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 14,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "genesis",
+      "chapter": 15,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 1,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 2,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 3,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 4,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 5,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 6,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 7,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 8,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 9,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 10,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 11,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 13,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "exodus",
+      "chapter": 14,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 1,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 2,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 3,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 4,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 5,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 6,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 7,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 8,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 9,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 10,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 11,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "matthew",
+      "chapter": 12,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 1,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 2,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 3,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 5,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 6,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 7,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 8,
+      "suggestedTopic": "chronology",
+      "questionType": "order",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 10,
+      "suggestedTopic": "commandments",
+      "questionType": "reason",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 11,
+      "suggestedTopic": "teachings",
+      "questionType": "meaning",
+      "difficulty": "growing"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 12,
+      "suggestedTopic": "miracles",
+      "questionType": "event",
+      "difficulty": "challenge"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 13,
+      "suggestedTopic": "narrative",
+      "questionType": "sequence",
+      "difficulty": "beginner"
+    },
+    {
+      "bookSlug": "john",
+      "chapter": 14,
+      "suggestedTopic": "people",
+      "questionType": "identity",
+      "difficulty": "growing"
+    }
+  ]
+}

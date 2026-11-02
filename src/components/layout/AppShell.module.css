@@ -102,6 +102,19 @@
   }
 }
 
+/* The floating Search button sits at the bottom-right of the viewport (about 4rem tall incl. its offset).
+   Reserve that band when the browser scrolls a focused or targeted element into view, so keyboard focus never lands under it. */
+@media (max-width: 767.98px) {
+  :global(html) {
+    scroll-padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Same band at the end of the page, so the last controls can scroll clear of the button. */
+  .main {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* Keep the search button above the Hymn Practice mini-player instead of on top of its controls. */
 :global(html[data-practice-mini-player='true']) .searchFab {
   bottom: calc(var(--mini-player-height, 5.75rem) + 0.75rem + env(safe-area-inset-bottom, 0px));

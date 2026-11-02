@@ -1,0 +1,28 @@
+{
+  "status": "draft",
+  "generated": 10,
+  "accepted": 10,
+  "rejected": 0,
+  "books": {"genesis": 2, "exodus": 2, "matthew": 3, "john": 3},
+  "chapters": ["genesis:4", "genesis:15", "exodus:1", "exodus:7", "matthew:7", "matthew:10", "matthew:12", "john:3", "john:5", "john:10"],
+  "difficulties": {"beginner": 3, "growing": 5, "challenge": 2},
+  "questionStyles": {"consequence": 1, "motivation": 1, "moral choice": 1, "event sequence": 1, "parable meaning": 1, "instruction": 1, "reasoning": 1, "testimony": 1, "obstacle": 1, "metaphor": 1},
+  "checks": {
+    "stableUniqueIdsAcrossPilotAndBatch1": "PASS",
+    "uniquePromptsAcrossPilotAndBatch1": "PASS",
+    "oneQuestionPerUnusedPlannedChapter": "PASS",
+    "completeEnglishWebCitationRanges": "PASS",
+    "exactBibleRoutes": "PASS",
+    "fourDistinctOptionsOneValidKey": "PASS",
+    "duplicatePromptFingerprints": "PASS",
+    "PlayQuestionRequiredFields": "PASS",
+    "allDraftsUnpublished": "PASS",
+    "answerPositionDistribution": {"a": 3, "b": 3, "c": 2, "d": 2},
+    "correctAnswerLength": {"minCharacters": 37, "maxCharacters": 49, "meanCharacters": 41.7, "longestOrTied": 2}
+  },
+  "editorialNotes": [
+    "English-only; no Amharic text was supplied or inferred.",
+    "Review distractor naturalness and the Matthew 12 Sabbath-healing framing before publication.",
+    "All keyed answers are grounded in the cited WEB ranges; human theological review remains required before publication."
+  ]
+}

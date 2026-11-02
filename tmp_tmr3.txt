@@ -1,0 +1,100 @@
+﻿    assert.equal(demera.storagePath, 'calendar/cross/demera-42d44792-1790968174923.webp')
+
+    // Querying for Kidus Michael MUST select `calendar/angels/michael-hidar-85b42130-1790968789526.webp`!
+    const michael = resolveMedia({ title: 'Kidus Michael', titleAmharic: 'á‰…á‹±áˆµ áˆšáŠ«áŠ¤áˆ' })
+    assert.equal(michael.storagePath, 'calendar/angels/michael-hidar-85b42130-1790968789526.webp')
+    console.log('âœ“ 8. Duplicate & mislabeled upload handling: PASS')
+  }
+
+  // â”€â”€ 9. Calendar, Hymns & Tewahedo Play Website Integration â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    // Unlinked observance (`hosanna`, `tsedenya-maryam`, `george-miyazia`) resolves via shared media resolver
+    const hosannaPres = resolveCalendarEventPresentation({
+      sourceType: 'observance',
+      sourceId: 'hosanna',
+      sourceSlug: 'hosanna',
+      source: { title: 'Hosanna / Palm Sunday', titleAmharic: 'áˆ†áˆ³á‹•áŠ“' },
+      cards: [],
+    })
+    assert.equal(hosannaPres.hasImage, true)
+    assert.equal(hosannaPres.imagePath, 'hymns/sections/holidays-feasts/holidays-hosanna.webp')
+    assert.ok(hosannaPres.imageUrl?.includes('content-media/hymns/sections/holidays-feasts/holidays-hosanna.webp'))
+
+    // Explicitly empty card (`imagePath: null`) still respects admin's null card state
+    const explicitNullCardPres = resolveCalendarEventPresentation({
+      sourceType: 'observance',
+      sourceId: 'uriel-tir',
+      sourceSlug: 'uriel-tir',
+      source: { title: 'Archangel Uriel', titleAmharic: 'á‰…á‹±áˆµ á‹‘áˆ«áŠ¤áˆ', imagePath: 'calendar/angels/uriel.webp' },
+      cards: [
+        {
+          id: 'card-uriel-empty',
+          slug: 'observance-uriel-tir',
+          title: 'Archangel Uriel',
+          titleAmharic: 'á‰…á‹±áˆµ á‹‘áˆ«áŠ¤áˆ',
+          sourceType: 'observance',
+          sourceId: 'uriel-tir',
+          sourceSlug: 'uriel-tir',
+          imagePath: null,
+          status: 'published',
+        },
+      ],
+    })
+    assert.equal(explicitNullCardPres.hasImage, false)
+    assert.equal(explicitNullCardPres.imagePath, null)
+
+    // Tewahedo Play: all 22 PLAY_IMAGES now point to content-media URLs with local fallbackSrc
+    assert.equal(PLAY_IMAGES.length, 22)
+    for (const playImg of PLAY_IMAGES) {
+      assert.ok(
+        playImg.src.includes('/storage/v1/object/public/content-media/'),
+        `Expected PLAY_IMAGES[${playImg.id}].src to use content-media, got ${playImg.src}`,
+      )
+      assert.ok(
+        playImg.fallbackSrc.startsWith('/images/calendar-web/'),
+        `Expected PLAY_IMAGES[${playImg.id}].fallbackSrc to use /images/calendar-web/, got ${playImg.fallbackSrc}`,
+      )
+    }
+
+    // Hymn collection art fallbacks prioritize content-media
+    const virginMaryColUrl = hymnCollectionArtFallback('category-virgin-mary')
+    assert.ok(virginMaryColUrl.includes('content-media/hymns/collections/virgin-mary.webp'))
+
+    const englishMezmurColUrl = hymnCollectionArtFallback('english-mezmur')
+    assert.ok(englishMezmurColUrl.includes('content-media/hymns/collections/english-mezmur.webp'))
+
+    const zemariColUrl = hymnCollectionArtFallback('zemari-singers')
+    assert.ok(zemariColUrl.includes('content-media/hymns/collections/zemari-singers-1793162587835.webp'))
+
+    // Hymn section art fallbacks prioritize content-media
+    const hosannaSecUrl = resolveHymnSectionImageUrl('holidays-hosanna', null, '')
+    assert.ok(hosannaSecUrl.includes('content-media/hymns/sections/holidays-feasts/holidays-hosanna.webp'))
+
+    // Calendar manifest helpers prioritize content-media
+    assert.ok(resolveEventImageById('timket')?.includes('content-media/calendar/christ/timket'))
+    assert.ok(resolveCommemorationImage('Saint George', 'á‰…á‹±áˆµ áŒŠá‹®áˆ­áŒŠáˆµ')?.includes('content-media/calendar/martyrs/george-tir'))
+    console.log('âœ“ 9. Website integration (Calendar, Hymns, Tewahedo Play): PASS')
+  }
+
+  // â”€â”€ 10. Public Storage Permissions (Live HTTP Verification) â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    const sampleUrls = [
+      resolveMedia({ id: 'timket' }).imageUrl!,
+      resolveMedia({ id: 'hosanna' }).imageUrl!,
+      resolveMedia({ id: 'tinsae' }).imageUrl!,
+      resolveMedia({ id: 'tsedenya-maryam' }).imageUrl!,
+      hymnCollectionArtFallback('zemari-singers'),
+      PLAY_IMAGES[0].src,
+    ]
+    for (const url of sampleUrls) {
+      const response = await fetch(url, { method: 'HEAD' })
+      assert.equal(
+        response.status,
+        200,
+        `Expected HTTP 200 for public content-media URL ${url}, got ${response.status}`,
+      )
+    }
+    console.log(`âœ“ 10. Public storage permissions verified (HTTP 200 on ${sampleUrls.length} sample URLs): PASS`)
+  }
+
+  console.log('\nAll Phase 4 media resolver validation checks passed!')

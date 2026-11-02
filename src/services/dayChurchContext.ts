@@ -16,6 +16,7 @@ import {
   getLiturgySections,
 } from '../lib/prayers/liturgySupabase'
 import { resolveContentMediaUrl } from '../lib/cms/contentMedia'
+import { resolveMedia } from '../lib/media/mediaResolver'
 import { buildDailyFaithContext, recommendDailyMezmurs, recommendDailyScripture, type RecommendedScripture } from '../lib/recommendations/dailyFaithRecommendationEngine'
 import {
   loadOrthodoxCalendarCatalog,
@@ -385,6 +386,17 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
       )
         .map((item) => {
           const path = item.imagePath
+          const directUrl = path ? resolveContentMediaUrl(path) || null : null
+          const resolvedUrl =
+            directUrl ??
+            resolveMedia({
+              id: item.id,
+              slug: item.slug,
+              title: item.title,
+              titleAmharic: item.titleAmharic,
+              domain: 'calendar',
+              allowLegacyFallback: false,
+            }).imageUrl
           return {
             id: item.id,
             slug: item.slug,
@@ -394,7 +406,7 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
             typeLabel: item.categoryLabel,
             summary: item.summary,
             longerSummary: item.body || item.summary,
-            imageUrl: path ? resolveContentMediaUrl(path) || null : null,
+            imageUrl: resolvedUrl,
             imageAlt: item.imageAlt || item.title,
             featured: item.featured,
             sortOrder: item.sortOrder,

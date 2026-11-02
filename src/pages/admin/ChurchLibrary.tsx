@@ -535,7 +535,7 @@ export function ChurchLibrary() {
         draft.processing_status !== 'ready')
     ) {
       setError(
-        'Before enabling Search Buddy, finish processing, mark the book ready for indexing, select a verified rights basis, and permit short search quotations.',
+        'Before enabling Search Buddy, finish processing, mark the book ready for indexing, confirm the book already has a verified rights basis on record, and permit short search quotations.',
       )
       return
     }
@@ -1108,31 +1108,6 @@ export function ChurchLibrary() {
                         <option value="staff">Staff only</option>
                         <option value="public_search">Public Search Buddy excerpts</option>
                       </select>
-                    </label>
-                    <label>
-                      Rights basis
-                      <select
-                        id="rights"
-                        value={draft.rights_status}
-                        onChange={(event) =>
-                          updateDraft('rights_status', event.target.value as ChurchLibraryBook['rights_status'])
-                        }
-                      >
-                        <option value="unknown">Unknown — keep private</option>
-                        <option value="owned">Owned</option>
-                        <option value="licensed">Licensed</option>
-                        <option value="public_domain">Public domain</option>
-                        <option value="permission_granted">Permission granted</option>
-                        <option value="restricted">Restricted</option>
-                      </select>
-                    </label>
-                    <label className={c.wide}>
-                      Rights notes
-                      <textarea
-                        value={draft.rights_notes || ''}
-                        onChange={(event) => updateDraft('rights_notes', event.target.value || null)}
-                        placeholder="Record the actual permission, license, or public-domain basis."
-                      />
                     </label>
                     <label className={s.check}>
                       <input

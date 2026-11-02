@@ -1,0 +1,75 @@
+/* Bible Timeline feedback + review additions. Layers on PlayGames.module.css without editing it. */
+
+.focusTarget:focus { outline: none; }
+.am { line-height: 1.7; }
+
+/* ---------- per-card position badge (text + icon, never colour alone) ---------- */
+.mark.mark { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.8rem; line-height: 1.5; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.1rem 0.55rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.badgeRight { color: #1f6143; }
+.badgeWrong { color: #8e2f38; }
+[data-theme='night'] .badgeRight { color: #7fd1a6; }
+[data-theme='night'] .badgeWrong { color: #f0a0a7; }
+
+/* ---------- feedback panel ---------- */
+.title { display: flex; align-items: center; gap: 0.5rem; }
+.icon {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 1rem;
+  line-height: 1;
+}
+.right .icon { color: #1f6143; }
+.wrong .icon { color: #8e2f38; }
+[data-theme='night'] .right .icon { color: #7fd1a6; }
+[data-theme='night'] .wrong .icon { color: #f0a0a7; }
+.orderHeading { margin: 0.9rem 0 0; color: var(--color-heading); font-weight: 800; }
+.note { display: inline-block; margin-left: 0.4rem; color: var(--color-text-muted); font-size: 0.8rem; font-weight: 600; }
+.caption { margin: 0.5rem 0 0; color: var(--color-text-muted); font-size: 0.9rem; }
+
+/* ---------- results ---------- */
+.badgeHeading { margin: 1rem 0 0; font-weight: 800; }
+.badgeList { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin: 0.5rem 0 0; padding: 0; list-style: none; }
+.badgeList li { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 0.9rem; border-radius: var(--radius-pill); background: var(--color-gold-soft); color: var(--color-gold-ink); font-weight: 800; }
+
+.reviewTitle { margin: 1.75rem 0 0; color: var(--color-heading); font-family: var(--font-display); font-size: 1.3rem; text-align: left; }
+.rounds { display: grid; gap: 0.9rem; margin: 0.75rem 0 0; padding: 0; list-style: none; text-align: left; }
+.round { padding: 0.9rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg); }
+.roundHead { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.7rem; margin: 0 0 0.6rem; color: var(--color-heading); font-weight: 800; }
+.compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.compare h4 { margin: 0 0 0.35rem; color: var(--color-heading); font-size: 0.95rem; }
+.orderList { display: grid; gap: 0.45rem; margin: 0; padding-left: 1.3rem; }
+.orderList li { overflow-wrap: anywhere; }
+.orderList li > span { display: block; }
+.orderList a { color: var(--color-accent); font-weight: 700; overflow-wrap: anywhere; }
+.pos { font-weight: 800; }
+
+@media (max-width: 40rem) {
+  .compare { grid-template-columns: 1fr; }
+  .badge { white-space: normal; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .enter { animation: tlFade 200ms ease-out; }
+}
+
+@keyframes tlFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}

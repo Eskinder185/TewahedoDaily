@@ -3,11 +3,15 @@
  * Do NOT query public.mezmur_occasions / public.singers / public.mezmur.
  */
 import { db, errorMessage } from './mezmurService'
+import { CATEGORY_ENTRIES, OCCASION_ENTRIES } from '../mezmur/taxonomyAliases'
 
 export type DerivedTaxonomyItem = {
   id: string
   slug: string
   name: string
+  name_amharic?: string | null
+  parent_group?: string | null
+  parent_group_slug?: string | null
   mezmur_count: number
 }
 
@@ -20,8 +24,49 @@ const logged = new Set<string>()
 function logOnce(scope: string, error: { message?: string; code?: string } | null) {
   if (!error || logged.has(scope)) return
   logged.add(scope)
-  if (import.meta.env.DEV) {
+  if (import.meta.env?.DEV) {
     console.error(`[hymnTaxonomyImport] ${scope}`, error)
+  }
+}
+
+function getCategoryParent(slug: string): { name: string; slug: string } {
+  switch (slug) {
+    case 'jesus-christ':
+    case 'cross':
+    case 'salvation':
+      return { name: 'Jesus Christ & Salvation', slug: 'jesus-christ-salvation' }
+    case 'virgin-mary':
+      return { name: 'Virgin Mary', slug: 'category-virgin-mary' }
+    case 'holy-trinity':
+    case 'holy-spirit':
+      return { name: 'Holy Trinity & Holy Spirit', slug: 'holy-trinity-holy-spirit' }
+    case 'prayer':
+    case 'praise-worship':
+    case 'general':
+    case 'repentance':
+      return { name: 'Prayer & Worship', slug: 'prayer-worship' }
+    default:
+      return { name: 'Angels & Saints', slug: 'category-angels-saints' }
+  }
+}
+
+function getOccasionParent(slug: string): { name: string; slug: string } {
+  switch (slug) {
+    case 'abiy-tsom':
+    case 'tsome-nineveh':
+    case 'tsome-nebiyat':
+    case 'tsome-hawariat':
+    case 'holy-week':
+      return { name: 'Fasting Seasons', slug: 'fasting-seasons' }
+    case 'wedding':
+    case 'baptism':
+    case 'funeral':
+    case 'communion':
+      return { name: 'Church Life & Sacraments', slug: 'church-life-sacraments' }
+    case 'general':
+      return { name: 'Anytime Mezmurs', slug: 'anytime-mezmurs' }
+    default:
+      return { name: 'Holidays & Feasts', slug: 'occasion-holidays-feasts' }
   }
 }
 
@@ -95,15 +140,74 @@ async function listDistinctSlugs(
     .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
 }
 
-/** Unique occasions from mezmur_occasion_links_import.occasion_slug */
+/** Unique occasions from mezmur_occasion_links_import.occasion_slug, populated with canonical taxonomy metadata */
 export async function listDerivedOccasions(): Promise<DerivedTaxonomyItem[]> {
-  return listDistinctSlugs(OCCASION_LINKS, 'occasion_slug')
+  const dbOccasions = await listDistinctSlugs(OCCASION_LINKS, 'occasion_slug')
+  const countBySlug = new Map(dbOccasions.map((o) => [o.slug, o.mezmur_count]))
+
+  const canonicalItems: DerivedTaxonomyItem[] = OCCASION_ENTRIES.map((entry) => {
+    const parent = getOccasionParent(entry.slug)
+    return {
+      id: entry.slug,
+      slug: entry.slug,
+      name: entry.canonical,
+      name_amharic: entry.amharic,
+      parent_group: parent.name,
+      parent_group_slug: parent.slug,
+      mezmur_count: countBySlug.get(entry.slug) ?? 0,
+    }
+  })
+
+  const canonicalSlugs = new Set(OCCASION_ENTRIES.map((e) => e.slug))
+  const extraItems: DerivedTaxonomyItem[] = dbOccasions
+    .filter((o) => !canonicalSlugs.has(o.slug))
+    .map((o) => {
+      const parent = getOccasionParent(o.slug)
+      return {
+        ...o,
+        name_amharic: null,
+        parent_group: parent.name,
+        parent_group_slug: parent.slug,
+      }
+    })
+
+  return [...canonicalItems, ...extraItems]
 }
 
-/** Unique categories from mezmur_category_links_import.category_slug */
+/** Unique categories from mezmur_category_links_import.category_slug, populated with canonical taxonomy metadata */
 export async function listDerivedCategories(): Promise<DerivedTaxonomyItem[]> {
-  return listDistinctSlugs(CATEGORY_LINKS, 'category_slug')
+  const dbCategories = await listDistinctSlugs(CATEGORY_LINKS, 'category_slug')
+  const countBySlug = new Map(dbCategories.map((c) => [c.slug, c.mezmur_count]))
+
+  const canonicalItems: DerivedTaxonomyItem[] = CATEGORY_ENTRIES.map((entry) => {
+    const parent = getCategoryParent(entry.slug)
+    return {
+      id: entry.slug,
+      slug: entry.slug,
+      name: entry.canonical,
+      name_amharic: entry.amharic,
+      parent_group: parent.name,
+      parent_group_slug: parent.slug,
+      mezmur_count: countBySlug.get(entry.slug) ?? 0,
+    }
+  })
+
+  const canonicalSlugs = new Set(CATEGORY_ENTRIES.map((e) => e.slug))
+  const extraItems: DerivedTaxonomyItem[] = dbCategories
+    .filter((c) => !canonicalSlugs.has(c.slug))
+    .map((c) => {
+      const parent = getCategoryParent(c.slug)
+      return {
+        ...c,
+        name_amharic: null,
+        parent_group: parent.name,
+        parent_group_slug: parent.slug,
+      }
+    })
+
+  return [...canonicalItems, ...extraItems]
 }
+
 
 async function listMezmurLinks(
   table: typeof OCCASION_LINKS | typeof CATEGORY_LINKS,

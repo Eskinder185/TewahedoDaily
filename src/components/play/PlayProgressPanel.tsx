@@ -3,7 +3,9 @@ import { levelFor, type PlayAchievement } from '../../lib/play/progress'
 import { usePlayProgress } from '../../lib/play/usePlayProgress'
 import styles from './PlayComponents.module.css'
 
-const BADGES: Record<PlayAchievement, { en: string; am: string; icon: string }> = {
+// Exported so game results can name earned badges; no circular import (this file does not import any game).
+// eslint-disable-next-line react-refresh/only-export-components
+export const BADGES: Record<PlayAchievement, { en: string; am: string; icon: string }> = {
   'first-steps': { en: 'First Steps', am: 'የመጀመሪያ እርምጃ', icon: '✦' },
   'perfect-round': { en: 'Perfect Round', am: 'ፍጹም ዙር', icon: '★' },
   'curious-explorer': { en: 'Curious Explorer', am: 'ጉጉ አሳሽ', icon: '◇' },

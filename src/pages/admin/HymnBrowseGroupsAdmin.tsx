@@ -182,6 +182,7 @@ export function HymnBrowseGroupsList() {
                     <MediaPicker
                       label={busyId === row.id ? 'Saving image…' : 'Change image'}
                       folder={`hymns/collections`}
+                      matchQuery={{ slug: row.slug, title: row.title, titleAmharic: row.title_amharic, domain: 'hymn-collection' }}
                       value={row.image_path || ''}
                       altText={row.image_alt}
                       previewAspect="4/3"
@@ -595,6 +596,7 @@ function CollectionForm({
           <MediaPicker
             label="Collection image"
             folder="hymns/collections"
+            matchQuery={{ slug: form.slug, title: form.title, titleAmharic: form.title_amharic, domain: 'hymn-collection' }}
             value={form.image_path || ''}
             altText={form.image_alt}
             previewAspect="4/3"
@@ -717,6 +719,7 @@ function CollectionForm({
                         <MediaPicker
                           label={busy ? 'Saving image…' : 'Change image'}
                           folder={`hymns/sections/${form.slug || 'general'}`}
+                          matchQuery={{ slug: section.slug, title: section.title, titleAmharic: section.title_amharic, domain: 'hymn-section' }}
                           value={section.image_path || ''}
                           altText={section.image_alt}
                           previewAspect="4/3"

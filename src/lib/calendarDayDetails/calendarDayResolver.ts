@@ -13,6 +13,7 @@ import {
 } from './synaxariumFromSupabase'
 import { pickSynaxariumImagePath } from '../synaxarium/synaxariumService'
 import { resolveContentMediaUrl } from '../cms/contentMedia'
+import { resolveMedia } from '../media/mediaResolver'
 import type {
   CalendarDayCommemoration,
   CalendarDayDetail,
@@ -667,7 +668,19 @@ export function resolveCalendarDayDetail(
 
   const expandedFromSupabase = commemorations.find((item) => item.expandedContent)?.expandedContent
   const cmsImage = pickSynaxariumImagePath(synaxariumBundle)
-  const imageUrl = cmsImage ? resolveContentMediaUrl(cmsImage.path) : undefined
+  const resolvedNewMedia = !cmsImage
+    ? resolveMedia({
+        id: primaryEotc?.id,
+        slug: primaryEotc?.id,
+        title: clean(primaryEotc?.englishTitle) || title,
+        titleAmharic: clean(primaryEotc?.title),
+        domain: 'calendar',
+        allowLegacyFallback: false,
+      })
+    : null
+  const imageUrl = cmsImage
+    ? resolveContentMediaUrl(cmsImage.path)
+    : resolvedNewMedia?.imageUrl || undefined
 
   return {
     id:

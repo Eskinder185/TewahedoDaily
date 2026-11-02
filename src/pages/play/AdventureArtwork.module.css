@@ -1,0 +1,136 @@
+.artwork{
+  --ink:var(--color-midnight-deep);
+  --sky-top:color-mix(in srgb,var(--color-midnight) 64%,var(--color-sky-deep));
+  --sky-bottom:color-mix(in srgb,var(--color-gold-bright) 56%,var(--color-sky));
+  --cloud:var(--color-bg-elevated);
+  --far-hill:color-mix(in srgb,var(--color-midnight) 70%,var(--color-sky-deep));
+  --near-hill:color-mix(in srgb,var(--color-midnight) 52%,var(--color-gold));
+  --horizon:color-mix(in srgb,var(--color-gold-bright) 62%,var(--color-sky));
+  --water-light:color-mix(in srgb,var(--color-sky-deep) 78%,var(--color-sky));
+  --water-dark:color-mix(in srgb,var(--color-midnight) 68%,var(--color-sky-deep));
+  --water-shadow:var(--color-midnight-deep);
+  --foam:var(--color-sky);
+  --shoreline:var(--color-gold-bright);
+  --sand-light:color-mix(in srgb,var(--color-bg-muted) 80%,var(--color-gold-bright));
+  --sand-dark:color-mix(in srgb,var(--color-gold) 54%,var(--color-midnight));
+  --sand-line:color-mix(in srgb,var(--color-gold-ink) 70%,var(--color-bg-muted));
+  --skin:color-mix(in srgb,var(--color-gold-bright) 65%,var(--color-bg-muted));
+  --hair:var(--color-midnight-ink);
+  --shadow:var(--color-midnight-deep);
+  --cloth-fold:var(--color-midnight-deep);
+  --robe-blue:color-mix(in srgb,var(--color-sky-deep) 65%,var(--color-midnight));
+  --robe-red:color-mix(in srgb,var(--color-burgundy) 70%,var(--color-gold));
+  --robe-cream:var(--color-bg-muted);
+  --robe-gold:color-mix(in srgb,var(--color-gold) 73%,var(--color-bg-muted));
+  --army:color-mix(in srgb,var(--color-midnight) 77%,var(--color-gold));
+  --army-dark:var(--color-midnight-ink);
+  --chariot:var(--color-gold-ink);
+  --dust:var(--color-bg-muted);
+  --staff:var(--color-gold-ink);
+  --wind:color-mix(in srgb,var(--color-gold-bright) 48%,var(--color-sky-deep));
+  --gold:var(--color-gold-bright);
+  --frame:color-mix(in srgb,var(--color-gold-bright) 74%,var(--color-bg-muted));
+  position:relative;
+  min-height:430px;
+  overflow:hidden;
+  isolation:isolate;
+  background:var(--color-midnight);
+}
+.artwork svg{display:block;width:100%;height:100%;position:absolute;inset:0}
+.caption{pointer-events:none;position:absolute;left:1rem;top:1rem;background:color-mix(in srgb,var(--color-midnight-deep) 88%,transparent);color:var(--color-text-inverse);padding:.45rem .75rem;border:1px solid var(--color-gold-line);border-radius:.5rem;font-weight:800;z-index:1}
+.halo{fill:var(--color-gold-bright);opacity:0;filter:blur(14px);transition:opacity .25s ease}
+.active .halo{opacity:.32}
+.selected .halo{opacity:.54}
+.selected.figure,.selected .figure{filter:drop-shadow(0 0 5px var(--color-gold-bright))}
+.hotspot{transition:filter .25s ease, transform .2s ease;cursor:pointer;outline:none;-webkit-tap-highlight-color:transparent}
+.hotspot[aria-disabled=true]{cursor:default}
+.hotspot:focus-visible{filter:drop-shadow(0 0 12px var(--color-gold-bright))}
+@media(hover:hover){.hotspot:hover{filter:drop-shadow(0 0 10px var(--color-gold-bright))}.hotspot:hover .hit{stroke-opacity:1;fill:var(--color-gold-soft)}}
+.hit{fill:transparent;stroke:var(--color-gold-bright);stroke-opacity:.55;stroke-width:2;stroke-dasharray:7 6;vector-effect:non-scaling-stroke;transition:fill .2s ease,stroke-opacity .2s ease}
+.ring{fill:none;stroke:var(--color-midnight-deep);stroke-width:3;opacity:0;vector-effect:non-scaling-stroke;pointer-events:none}
+.hotspot:focus-visible .ring{opacity:1}
+.hotspot:focus-visible .hit{stroke:var(--color-gold-bright);stroke-opacity:1;stroke-width:3;stroke-dasharray:none;fill:var(--color-gold-soft)}
+.active .hit{stroke-opacity:1;fill:var(--color-gold-soft)}
+.selected .hit,.correct .hit,.incorrect .hit{stroke-dasharray:none;stroke-opacity:1}
+.selected .hit{fill:var(--color-gold-soft)}
+.correct .hit{stroke:var(--color-success);stroke-width:3;fill:color-mix(in srgb,var(--color-success) 16%,transparent)}
+.incorrect .hit{stroke:var(--color-danger);stroke-width:3;fill:color-mix(in srgb,var(--color-danger) 16%,transparent)}
+.marker{pointer-events:none}
+.marker circle{fill:var(--color-bg-elevated);stroke:var(--color-gold);stroke-width:2}
+.marker text{fill:var(--color-heading);font:800 14px system-ui,sans-serif}
+.correct .marker circle{stroke:var(--color-success)}.correct .marker text{fill:var(--color-success)}
+.incorrect .marker circle{stroke:var(--color-danger)}.incorrect .marker text{fill:var(--color-danger)}
+.oShadow{fill:var(--color-midnight-deep);opacity:.3}
+.oSkin{fill:color-mix(in srgb,var(--color-gold-bright) 65%,var(--color-bg-muted));stroke:var(--color-midnight-deep);stroke-width:1.5}
+.oHair{fill:var(--color-midnight-ink)}
+.oArm{fill:none;stroke:color-mix(in srgb,var(--color-gold-bright) 65%,var(--color-bg-muted));stroke-width:5;stroke-linecap:round}
+.oBlue,.oRed,.oCream,.oGoldRobe,.oDark{stroke:var(--color-midnight-deep);stroke-width:1.5;stroke-linejoin:round}
+.oBlue{fill:color-mix(in srgb,var(--color-sky-deep) 65%,var(--color-midnight))}
+.oRed{fill:color-mix(in srgb,var(--color-burgundy) 70%,var(--color-gold))}
+.oCream{fill:var(--color-bg-muted)}
+.oGoldRobe{fill:color-mix(in srgb,var(--color-gold) 73%,var(--color-bg-muted))}
+.oDark{fill:var(--color-midnight-deep)}
+.oGold{fill:var(--color-gold-bright);stroke:var(--color-midnight-deep);stroke-width:1.2}
+.oHalo{fill:none;stroke:var(--color-gold-bright);stroke-width:3;opacity:.9}
+.oLine{fill:none;stroke:var(--color-midnight-deep);stroke-linecap:round;stroke-linejoin:round}
+.oLineFill{fill:var(--color-midnight-deep)}
+.oWood,.oWoodLight,.oRoof,.oSail,.oSack,.oWicker,.oBread,.oFish,.oLion,.oMane,.oStone,.oBrass,.oSteel,.oParch,.oCloth,.oWindow{stroke:var(--color-midnight-deep);stroke-width:2;stroke-linejoin:round}
+.oWood{fill:color-mix(in srgb,var(--color-gold-ink) 70%,var(--color-midnight))}
+.oWoodLight{fill:color-mix(in srgb,var(--color-gold) 55%,var(--color-midnight))}
+.oRoof{fill:color-mix(in srgb,var(--color-burgundy) 60%,var(--color-midnight))}
+.oSail{fill:var(--color-bg-muted)}
+.oSack{fill:color-mix(in srgb,var(--color-gold) 62%,var(--color-bg-muted))}
+.oWicker{fill:color-mix(in srgb,var(--color-gold) 70%,var(--color-gold-ink))}
+.oBread{fill:color-mix(in srgb,var(--color-gold) 78%,var(--color-burgundy))}
+.oFish{fill:color-mix(in srgb,var(--color-sky) 70%,var(--color-bg-muted))}
+.oLion{fill:color-mix(in srgb,var(--color-gold) 80%,var(--color-bg-muted))}
+.oMane{fill:color-mix(in srgb,var(--color-gold-ink) 80%,var(--color-burgundy))}
+.oStone{fill:color-mix(in srgb,var(--color-bg-muted) 62%,var(--color-midnight))}
+.oBrass{fill:color-mix(in srgb,var(--color-gold-bright) 80%,var(--color-gold-ink))}
+.oSteel{fill:color-mix(in srgb,var(--color-bg-muted) 80%,var(--color-sky-deep))}
+.oParch{fill:var(--color-bg-muted)}
+.oCloth{fill:color-mix(in srgb,var(--color-burgundy) 40%,var(--color-bg-muted))}
+.oWindow{fill:var(--color-midnight-deep)}
+.oStaff{fill:none;stroke:var(--color-gold-ink);stroke-width:4;stroke-linecap:round}
+.oWing{fill:var(--color-bg-muted);stroke:var(--color-midnight-deep);stroke-width:2;stroke-linejoin:round}
+.oWater{fill:color-mix(in srgb,var(--color-sky-deep) 70%,var(--color-midnight) 30%)}
+.oFoam{fill:none;stroke:var(--color-sky);stroke-width:3;stroke-linecap:round;opacity:.8}
+.oBrook{fill:none;stroke:var(--color-sky);stroke-width:8;stroke-linecap:round;opacity:.7}
+.oRock{fill:color-mix(in srgb,var(--color-midnight) 70%,var(--color-gold))}
+.oGrass{fill:color-mix(in srgb,var(--color-success) 38%,var(--color-midnight))}
+.oBolt{fill:none;stroke:var(--color-gold-bright);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.active{filter:drop-shadow(0 0 7px var(--color-gold-bright))}
+.selected{filter:drop-shadow(0 0 10px var(--color-gold-bright))}
+.cloud{animation:cloudDrift 20s ease-in-out infinite alternate}
+.wave{animation:waterShimmer 5s ease-in-out infinite alternate}
+.wind{animation:windBreathe 4s ease-in-out infinite alternate}
+.artwork svg{animation:sceneAppear .35s ease-out both}
+@keyframes cloudDrift{to{transform:translateX(11px)}}
+@keyframes waterShimmer{to{opacity:.85;transform:translateY(2px)}}
+@keyframes windBreathe{to{opacity:.35;transform:translateX(9px)}}
+@keyframes sceneAppear{from{opacity:.82}to{opacity:1}}
+.stateNote{pointer-events:none;position:absolute;left:1rem;top:3.7rem;max-width:min(24rem,calc(100% - 2rem));background:color-mix(in srgb,var(--color-midnight-deep) 88%,transparent);color:var(--color-text-inverse);padding:.4rem .7rem;border:1px solid var(--color-gold-line);border-radius:.5rem;font-size:.82rem;line-height:1.4;font-weight:700;z-index:1}
+.dust,.closedOnly,.wall,.dryPath,.walker,.moses,.rays,.lifted,.settled{transition:transform 1.2s ease,opacity .9s ease}
+.approach{transform:translate(48px,16px)}
+.tremble{animation:tremble .12s linear 6 alternate}
+.still{animation:none}
+.partClosed .wallLeft{transform:translateX(185px)}
+.partClosed .wallRight{transform:translateX(-185px)}
+.partOpen .closedOnly{opacity:0}
+.partClosed .dryPath,.partClosed .rays,.partClosed .wall{opacity:0}
+.partClosed .walker{opacity:0;transform:translateY(var(--dy))}
+.partOpen .walker{opacity:1;transform:none;transition:transform 3.4s ease-out var(--delay),opacity .6s ease var(--delay)}
+.moses{transform:translateY(0)}
+.partOpen .moses{transform:translateY(-6px)}
+.rays{opacity:1}
+.settled{transform:none}
+.lifted{transform:translateY(-7px)}
+@keyframes tremble{from{transform:translateX(-1.4px)}to{transform:translateX(1.4px)}}
+.move{transform-box:fill-box;transform-origin:var(--origin,center);transform:translate(var(--x0),var(--y0)) rotate(var(--r0)) scale(var(--s0));opacity:var(--o0);transition:transform 1.2s ease var(--d,0s),opacity .9s ease var(--d,0s)}
+.move[data-on=true]{transform:translate(var(--x1),var(--y1)) rotate(var(--r1)) scale(var(--s1));opacity:var(--o1)}
+.drawn{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2s ease var(--d,0s)}
+.drawn[data-on=true]{stroke-dashoffset:0}
+.oGlow{fill:var(--color-gold-bright);opacity:.55}
+@media(max-width:850px){.artwork{min-height:280px}}
+@media(max-width:540px){.artwork{min-height:245px}}
+@media(prefers-reduced-motion:reduce){.artwork svg,.cloud,.wave,.wind,.tremble{animation:none}.hotspot,.halo,.hit,.dust,.wall,.dryPath,.walker,.moses,.rays,.closedOnly,.lifted,.settled,.partOpen .walker,.move,.drawn{transition:none}}

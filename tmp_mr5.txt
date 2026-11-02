@@ -1,0 +1,50 @@
+﻿      'meskerem', 'tikimt', 'hidar', 'tahsas', 'tir', 'yekatit',
+      'megabit', 'miyazia', 'ginbot', 'sene', 'hamle', 'nehase', 'pagumen',
+      'áˆ˜áˆµáŠ¨áˆ¨áˆ', 'áŒ¥á‰…áˆá‰µ', 'áŠ…á‹³áˆ­', 'áˆ…á‹³áˆ­', 'á‰³áŠ…áˆ£áˆ¥', 'á‰³áˆ…áˆ³áˆµ', 'áŒ¥áˆ­', 'á‹¨áŠ«á‰²á‰µ',
+      'áˆ˜áŒ‹á‰¢á‰µ', 'áˆšá‹«á‹á‹«', 'áŒáŠ•á‰¦á‰µ', 'áˆ°áŠ”', 'áˆáˆáˆŒ', 'áˆ€áˆáˆŒ', 'áŠáˆáˆ´', 'áŠáˆ€áˆ´', 'áŒ³áŒ‰áˆœáŠ•', 'áŒ³áŒ‰áˆœ',
+    ]);
+    for (const segment of segments) {
+      const segNorm = normalizeUnicodeText(segment);
+      if (segNorm && !ethiopianMonths.has(segNorm)) {
+        addCandidate(segment);
+      }
+    }
+  }
+
+  if (options?.includeHonorificStripped !== false) {
+    for (const current of [...candidates]) {
+      const lower = current.toLowerCase();
+      for (const prefix of ENGLISH_HONORIFIC_PREFIXES) {
+        if (lower.startsWith(prefix)) {
+          const stripped = current.slice(prefix.length).trim();
+          if (stripped.length >= 3) {
+            addCandidate(stripped);
+          }
+        }
+      }
+      for (const prefix of AMHARIC_HONORIFIC_PREFIXES) {
+        if (current.startsWith(prefix)) {
+          const stripped = current.slice(prefix.length).trim();
+          if (stripped.length >= 2) {
+            addCandidate(stripped);
+          }
+        }
+      }
+    }
+  }
+
+  return [...candidates];
+}
+
+/**
+ * Checks whether a path or URL points to legacy local calendar artwork (`/images/calendar-web/*` or `/images/calendar/*` or `/images/chants/*`).
+ */
+export function isLegacyLocalMediaPath(pathOrUrl: string | null | undefined): boolean {
+  if (!pathOrUrl) return false;
+  const trimmed = pathOrUrl.trim();
+  return (
+    trimmed.startsWith('/images/calendar-web/') ||
+    trimmed.startsWith('/images/calendar/') ||
+    trimmed.startsWith('/images/chants/') ||
+    trimmed.startsWith('images/calendar-web/') ||
+    trimmed.startsWith('images/calendar/')

@@ -529,7 +529,7 @@
   transform: rotate(2.4deg);
 }
 
-.resourceCalendar {
+.resourceChallenges {
   transform: rotate(1.8deg);
 }
 
@@ -631,8 +631,8 @@
     grid-template-areas:
       'calendar calendar'
       'nav nav'
-      'bible pray'
-      'hymns cal';
+      'bible hymns'
+      'pray challenge';
   }
 
   .center {
@@ -661,14 +661,14 @@
     grid-area: pray;
   }
 
-  .resourceCalendar {
-    grid-area: cal;
+  .resourceChallenges {
+    grid-area: challenge;
   }
 
   .resourceBible,
   .resourceHymns,
   .resourcePray,
-  .resourceCalendar {
+  .resourceChallenges {
     transform: none;
     width: 100%;
   }
@@ -683,7 +683,7 @@
       'bible'
       'hymns'
       'pray'
-      'cal';
+      'challenge';
   }
 }
 
@@ -725,7 +725,7 @@
   .resourceBible,
   .resourceHymns,
   .resourcePray,
-  .resourceCalendar {
+  .resourceChallenges {
     transform: none;
   }
 

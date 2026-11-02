@@ -1,0 +1,100 @@
+﻿import { resolveHymnSectionImageUrl } from '../src/lib/publicContent/hymnSectionArtFallbacks'
+import { resolveEventImageById, resolveCommemorationImage } from '../src/content/calendarImageManifest'
+
+async function main() {
+  console.log('=== Phase 4: Media Storage & Bilingual Image Resolver Validation ===\n')
+
+  // â”€â”€ 1. Exact English Title Matching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    const timket = resolveMedia({ title: 'Timket / Baptism of Christ' })
+    assert.equal(timket.hasImage, true)
+    assert.equal(timket.storagePath, 'calendar/christ/timket-436e0376-1792010746233.webp')
+    assert.equal(timket.matchSource, 'exact-title')
+    assert.equal(timket.title, 'Timket / Baptism of Christ')
+    assert.ok(timket.imageUrl?.includes('/storage/v1/object/public/content-media/calendar/christ/timket-436e0376-1792010746233.webp'))
+
+    const meskel = resolveMedia({ title: 'Meskel / Finding of the True Cross' })
+    assert.equal(meskel.hasImage, true)
+    assert.equal(meskel.storagePath, 'calendar/cross/meskel-5d81e2c5-1790968227490.webp')
+    assert.equal(meskel.matchSource, 'exact-title')
+
+    const yared = resolveMedia({ title: 'Saint Yared' })
+    assert.equal(yared.hasImage, true)
+    assert.equal(yared.storagePath, 'calendar/saints/yared-44643f58-1790969148155.webp')
+    console.log('âœ“ 1. Exact English title matching: PASS')
+  }
+
+  // â”€â”€ 2. Exact Amharic Title Matching â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    const timketAm = resolveMedia({ titleAmharic: 'áŒ¥áˆá‰€á‰µ' })
+    assert.equal(timketAm.hasImage, true)
+    assert.equal(timketAm.storagePath, 'calendar/christ/timket-436e0376-1792010746233.webp')
+    assert.equal(timketAm.titleAmharic, 'áŒ¥áˆá‰€á‰µ')
+
+    const kidaneMihretAm = resolveMedia({ titleAmharic: 'áŠªá‹³áŠ áˆáˆ•áˆ¨á‰µ' })
+    assert.equal(kidaneMihretAm.hasImage, true)
+    assert.equal(kidaneMihretAm.storagePath, 'calendar/mary/kidane-mihret-811b63ee-1790968637146.webp')
+
+    const kurbanAm = resolveMedia({ titleAmharic: 'á‰…á‹±áˆµ á‰áˆ­á‰£áŠ•' })
+    assert.equal(kurbanAm.hasImage, true)
+    assert.equal(kurbanAm.storagePath, 'hymns/sections/sacraments-church-life/sacraments-holy-communion-1793162742388.webp')
+
+    const nisihaAm = resolveMedia({ titleAmharic: 'áŠ•áˆµáˆ' })
+    assert.equal(nisihaAm.hasImage, true)
+    assert.equal(nisihaAm.storagePath, 'hymns/sections/repentance-fasting/repentance-general-1793162511334.webp')
+    console.log('âœ“ 2. Exact Amharic title matching: PASS')
+  }
+
+  // â”€â”€ 3. Mixed-Language / Bilingual Titles & Ethiopic Orthographic Variants â”€â”€
+  {
+    // Orthographic variants: áˆ†áˆ³á‹•áŠ“ (observance DB) vs áˆ†áˆ£á‹•áŠ“ (uploaded media_assets.file_name)
+    const hosannaVariant = resolveMedia({
+      title: 'Hosanna â€” Palm Sunday',
+      titleAmharic: 'áˆ†áˆ³á‹•áŠ“',
+    })
+    assert.equal(hosannaVariant.hasImage, true)
+    assert.equal(hosannaVariant.storagePath, 'hymns/sections/holidays-feasts/holidays-hosanna.webp')
+    // Ensure original Amharic spelling passed by caller is preserved
+    assert.equal(hosannaVariant.titleAmharic, 'áˆ†áˆ³á‹•áŠ“')
+
+    // á‰µáŠ•áˆ³áŠ¤ vs á‰µáŠ•áˆ£áŠ¤
+    const tinsaeVariant = resolveMedia({ titleAmharic: 'á‰µáŠ•áˆ³áŠ¤' })
+    assert.equal(tinsaeVariant.hasImage, true)
+    assert.equal(tinsaeVariant.storagePath, 'hymns/sections/holidays-feasts/holidays-tinsae.webp')
+    assert.equal(tinsaeVariant.titleAmharic, 'á‰µáŠ•áˆ³áŠ¤')
+
+    // á…áŠ•áˆ°á‰µ vs áŒ½áŠ•áˆ°á‰µ
+    const tsinsetVariant = resolveMedia({ titleAmharic: 'áŒ½áŠ•áˆ°á‰µ' })
+    assert.equal(tsinsetVariant.hasImage, true)
+    assert.equal(tsinsetVariant.storagePath, 'calendar/mary/annunciation-4ff2109c-1790970788849.webp')
+
+    // á€á‹°áŠ’á‹« áˆ›áˆ­á‹«áˆ (orthodox_observances) vs á€á‹°áŠ•á‹« áˆ›áˆ­á‹«áˆ (calendar_cards)
+    const tsedenyaVariant = resolveMedia({ titleAmharic: 'á€á‹°áŠ’á‹« áˆ›áˆ­á‹«áˆ' })
+    assert.equal(tsedenyaVariant.hasImage, true)
+    assert.equal(tsedenyaVariant.storagePath, 'calendar/mary/virgin-mary-5b77113d-1792449159957.webp')
+
+    // Compound spacing differences: á‰ áŠ á‰³áˆˆáˆ›áˆ­á‹«áˆ vs á‰ áŠ á‰³ áˆˆáˆ›áˆ­á‹«áˆ, áˆ˜á‹µáˆáŠ”áŠ áˆˆáˆ vs áˆ˜á‹µáŠƒáŠ”á‹“áˆˆáˆ
+    const baetaCompound = resolveMedia({ titleAmharic: 'á‰ áŠ á‰³áˆˆáˆ›áˆ­á‹«áˆ' })
+    assert.equal(baetaCompound.hasImage, true)
+    assert.equal(baetaCompound.storagePath, 'calendar/mary/baeta-maryam-205b5cf8-1790969844808.webp')
+
+    const medhaneAlemCompound = resolveMedia({ titleAmharic: 'áˆ˜á‹µáˆáŠ”áŠ áˆˆáˆ' })
+    assert.equal(medhaneAlemCompound.hasImage, true)
+    assert.equal(medhaneAlemCompound.storagePath, 'calendar/christ/medhane-alem-c1534a94-1792449312575.webp')
+
+    // Invisible Unicode bidi characters (e.g. U+202C) stripped cleanly
+    assert.equal(cleanMediaFileNameStem('Deacon Samson Negash\u202c.webp'), 'Deacon Samson Negash')
+    assert.equal(normalizeAmharicCanonical('áˆ†áˆ³á‹•áŠ“'), normalizeAmharicCanonical('áˆ†áˆ£á‹•áŠ“'))
+    assert.equal(normalizeCompactCanonical('á‰ áŠ á‰³ áˆˆáˆ›áˆ­á‹«áˆ'), normalizeCompactCanonical('á‰ áŠ á‰³áˆˆáˆ›áˆ­á‹«áˆ'))
+    console.log('âœ“ 3. Mixed-language titles & Amharic Unicode normalization: PASS')
+  }
+
+  // â”€â”€ 4. Known Aliases â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  {
+    const fasika = resolveMedia({ title: 'Fasika' })
+    assert.equal(fasika.hasImage, true)
+    assert.equal(fasika.storagePath, 'hymns/sections/holidays-feasts/holidays-tinsae.webp')
+
+    const goodFriday = resolveMedia({ title: 'Good Friday' })
+    assert.equal(goodFriday.hasImage, true)
+    assert.equal(goodFriday.storagePath, 'hymns/sections/holidays-feasts/holidays-good-friday.webp')

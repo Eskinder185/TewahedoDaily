@@ -36,7 +36,8 @@ async function main() {
       await assertNoHorizontalOverflow(page, `${width}px homepage`)
 
       await page.getByRole('button', { name: /open menu/i }).click()
-      const account = page.getByRole('link', { name: /account/i }).first()
+      const drawer = page.getByRole('dialog', { name: /menu/i })
+      const account = drawer.getByRole('link', { name: /account/i })
       await assert.equal(await account.isVisible(), true, `${width}px drawer exposes Account`)
       await account.click()
       await page.waitForURL(/\/account$/)

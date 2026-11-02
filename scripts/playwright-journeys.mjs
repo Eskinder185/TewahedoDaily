@@ -15,6 +15,49 @@ const BASE = process.env.BASE_URL ?? 'http://127.0.0.1:5173'
 const VIEW_360 = { width: 360, height: 800 }
 const VIEW_390 = { width: 390, height: 844 }
 
+const fixtureSeason = {
+  id: 'journey-season', slug: 'journey-season', title: 'Journey season',
+  status: 'published', is_movable: false, priority: 1,
+  ethiopian_month_number_start: 1, ethiopian_day_start: 1,
+  ethiopian_month_number_end: 13, ethiopian_day_end: 6,
+}
+const fixtureFast = {
+  id: 'journey-fast', slug: 'journey-fast', name: 'Journey weekly observance',
+  status: 'published', fast_type: 'weekly_fast', priority: 1,
+  weekly_days: 'sunday,monday,tuesday,wednesday,thursday,friday,saturday',
+}
+const fixtureCards = [
+  { id: 'journey-season-card', slug: 'journey-season-card', title: fixtureSeason.title,
+    status: 'published', card_type: 'season', source_type: 'season', source_id: fixtureSeason.id,
+    image_path: '/images/home/home-hero-lalibela-640.webp', sort_order: 1 },
+  { id: 'journey-fast-card', slug: 'journey-fast-card', title: fixtureFast.name,
+    status: 'published', card_type: 'fast', source_type: 'fast', source_id: fixtureFast.id,
+    image_path: '/images/home/home-hero-lalibela-1024.webp', sort_order: 2 },
+]
+
+async function installPublicCalendarFixtures(context, { empty = false, release } = {}) {
+  const rows = {
+    orthodox_observances: [],
+    liturgical_fasts: empty ? [] : [fixtureFast],
+    liturgical_seasons: empty ? [] : [fixtureSeason],
+    monthly_commemorations: [],
+    calendar_cards: empty ? [] : fixtureCards,
+  }
+  await context.route('**/rest/v1/**', async (route) => {
+    if (release) await release
+    const table = new URL(route.request().url()).pathname.split('/').pop()
+    if (!Object.hasOwn(rows, table)) {
+      await route.abort()
+      return
+    }
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify(rows[table]),
+    })
+  })
+}
+
 /** @type {string[]} */
 const failures = []
 /** @type {string[]} */
@@ -48,14 +91,18 @@ async function goto(page, path) {
 
 async function closeOverlays(page) {
   const closeSearch = page.getByRole('button', { name: /^Close$/i })
-  if (await closeSearch.isVisible().catch(() => false)) {
+  if (await closeSearch.isVisible()) {
     await closeSearch.click()
-    await page.getByRole('dialog').waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {})
+    await page.getByRole('dialog').waitFor({ state: 'hidden', timeout: 5000 })
   }
-  const closeMenu = page.getByRole('button', { name: /Close menu/i })
-  if (await closeMenu.isVisible().catch(() => false)) {
-    await closeMenu.click()
-  }
+  await closeMenuDrawer(page)
+}
+
+async function closeMenuDrawer(page) {
+  const drawer = page.getByRole('dialog', { name: /^Menu$/i })
+  if (!(await drawer.isVisible())) return
+  await drawer.getByRole('button', { name: /^Close menu$/i }).click()
+  await drawer.waitFor({ state: 'hidden', timeout: 5000 })
 }
 
 /**
@@ -71,12 +118,20 @@ async function assertNoOverflow(page, name) {
 /**
  * @param {string} name
  * @param {() => Promise<void>} fn
+ * @param {() => Promise<void>} [onFailure]
  */
-async function step(name, fn) {
+async function step(name, fn, onFailure) {
   try {
     await fn()
   } catch (error) {
     fail(name, /** @type {Error} */ (error).message)
+    if (onFailure) {
+      try {
+        await onFailure()
+      } catch (cleanupError) {
+        fail(`${name} cleanup`, /** @type {Error} */ (cleanupError).message)
+      }
+    }
   }
 }
 
@@ -116,11 +171,11 @@ async function runJourneys(page) {
     const bible = page.getByRole('link', { name: /Read Scripture/i })
     const pray = page.getByRole('link', { name: /Browse prayers/i })
     const hymns = page.getByRole('link', { name: /Browse hymns/i })
-    const calendar = page.getByRole('link', { name: /Open the church calendar/i })
+    const challenges = page.getByRole('link', { name: /Faith Challenges.*Explore faith challenges/i })
     if ((await bible.getAttribute('href')) !== '/bible') throw new Error('Bible href')
     if ((await pray.getAttribute('href')) !== '/pray') throw new Error('Pray href')
     if ((await hymns.getAttribute('href')) !== '/practice') throw new Error('Hymns href')
-    if ((await calendar.getAttribute('href')) !== '/calendar') throw new Error('Calendar href')
+    if ((await challenges.getAttribute('href')) !== '/play') throw new Error('Faith Challenges href')
     ok('home resource links')
   })
 
@@ -177,16 +232,15 @@ async function runJourneys(page) {
       timeout: 10000,
     })
     const pause = page.getByRole('button', { name: /Pause events/i })
-    if (await pause.count()) {
-      await pause.click()
-      const play = page.getByRole('button', { name: /Play events/i })
-      await play.waitFor({ state: 'visible', timeout: 4000 })
-      if ((await play.getAttribute('aria-pressed')) !== 'true') {
-        throw new Error('pause did not stick')
-      }
-      await play.click()
-      await page.getByRole('button', { name: /Pause events/i }).waitFor({ state: 'visible', timeout: 4000 })
+    await pause.waitFor({ state: 'visible', timeout: 8000 })
+    await pause.click()
+    const play = page.getByRole('button', { name: /Play events/i })
+    await play.waitFor({ state: 'visible', timeout: 4000 })
+    if ((await play.getAttribute('aria-pressed')) !== 'true') {
+      throw new Error('pause did not stick')
     }
+    await play.click()
+    await pause.waitFor({ state: 'visible', timeout: 4000 })
     ok('home event rotation controls')
   })
 
@@ -194,12 +248,12 @@ async function runJourneys(page) {
     const drawer = await openDrawer(page)
     await drawer.waitFor({ state: 'visible', timeout: 5000 })
     ok('mobile drawer opens')
-  })
+  }, () => closeMenuDrawer(page))
 
   await step('pray page heading', async () => {
     const drawer = page.getByRole('dialog', { name: /Menu/i })
-    if (!(await drawer.isVisible().catch(() => false))) await openDrawer(page)
-    await page.getByRole('dialog', { name: /Menu/i }).getByRole('link', { name: /^Pray$/i }).click()
+    if (!(await drawer.isVisible())) await openDrawer(page)
+    await drawer.getByRole('link', { name: /^Prayer$/i }).click()
     await page.waitForURL(/\/pray(?:\/|$|\?)/, { timeout: 15000 })
     await page.getByRole('heading', { name: /Prayer collections/i }).waitFor({
       state: 'visible',
@@ -210,18 +264,19 @@ async function runJourneys(page) {
     }
     ok('pray page heading')
     await assertNoOverflow(page, 'pray 360 overflow')
-  })
+  }, () => closeMenuDrawer(page))
 
-  await step('nav to hymns /practice', async () => {
+  await step('nav to hymns /hymns', async () => {
     const drawer = await openDrawer(page)
-    await drawer.getByRole('link', { name: /^Hymns$/i }).click()
-    await page.waitForURL(/\/practice/, { timeout: 15000 })
-    ok('nav to hymns /practice')
-    await assertNoOverflow(page, 'practice 360 overflow')
-  })
+    await drawer.getByRole('link', { name: /^Mezmur$/i }).click()
+    await page.waitForURL(/\/hymns/, { timeout: 15000 })
+    ok('nav to hymns /hymns')
+    await assertNoOverflow(page, 'hymns 360 overflow')
+  }, () => closeMenuDrawer(page))
 
   await step('calendar heading', async () => {
     const drawer = await openDrawer(page)
+    await drawer.getByRole('button', { name: /^Explore$/i }).click()
     await drawer.getByRole('link', { name: 'Calendar' }).click()
     await page.waitForURL(/\/calendar/, { timeout: 15000 })
     await page.getByRole('heading', { name: /^Calendar$/i }).waitFor({
@@ -230,7 +285,7 @@ async function runJourneys(page) {
     })
     ok('calendar heading')
     await assertNoOverflow(page, 'calendar 360 overflow')
-  })
+  }, () => closeMenuDrawer(page))
 
   await step('nav to bible', async () => {
     const drawer = await openDrawer(page)
@@ -238,7 +293,7 @@ async function runJourneys(page) {
     await page.waitForURL(/\/bible/, { timeout: 15000 })
     ok('nav to bible')
     await assertNoOverflow(page, 'bible 360 overflow')
-  })
+  }, () => closeMenuDrawer(page))
 
   await step('language switch EN ↔ AM', async () => {
     await goto(page, '/')
@@ -355,6 +410,7 @@ async function runReducedMotion(browser) {
     reducedMotion: 'reduce',
     locale: 'en-US',
   })
+  await installPublicCalendarFixtures(context)
   const page = await context.newPage()
   try {
     await goto(page, '/')
@@ -367,14 +423,11 @@ async function runReducedMotion(browser) {
       throw new Error('autoplay pause control present under reduced motion')
     }
     const nextEvent = page.getByRole('button', { name: /Next event/i })
-    if (await nextEvent.count()) {
-      const before = await readEventState(page)
-      await nextEvent.click()
-      await waitForEventChange(page, before, 4000)
-      ok('reduced-motion: event remains reachable')
-    } else {
-      ok('reduced-motion: single event, no autoplay')
-    }
+    await nextEvent.waitFor({ state: 'visible', timeout: 8000 })
+    const before = await readEventState(page)
+    await nextEvent.click()
+    await waitForEventChange(page, before, 4000)
+    ok('reduced-motion: event remains reachable')
     await page.getByRole('button', { name: /Open search/i }).click()
     await page.getByRole('dialog').waitFor({ state: 'visible', timeout: 8000 })
     ok('reduced-motion: Search Buddy still opens')
@@ -383,6 +436,58 @@ async function runReducedMotion(browser) {
     fail('reduced-motion journey', /** @type {Error} */ (error).message)
   } finally {
     await context.close()
+  }
+}
+
+async function runCalendarLinkStates(browser) {
+  const emptyContext = await browser.newContext({ viewport: VIEW_360, locale: 'en-US' })
+  let releaseResponses
+  const heldResponses = new Promise((resolve) => { releaseResponses = resolve })
+  await installPublicCalendarFixtures(emptyContext, { empty: true, release: heldResponses })
+  const emptyPage = await emptyContext.newPage()
+  try {
+    await goto(emptyPage, '/')
+    const link = emptyPage.getByRole('link', { name: /^Open this day in the calendar$/i })
+    await link.waitFor({ state: 'visible', timeout: 8000 })
+    if ((await link.count()) !== 1) throw new Error('expected one calendar link while loading')
+    const iso = await emptyPage.locator('article[data-iso]').getAttribute('data-iso')
+    if ((await link.getAttribute('href')) !== `/calendar?date=${iso}`) {
+      throw new Error('loading calendar link has wrong date')
+    }
+    await emptyPage.getByText('Loading this day’s observances').waitFor({ state: 'visible' })
+    ok('home calendar link while loading')
+
+    releaseResponses()
+    await emptyPage.getByText('No observances are listed for this day.').waitFor({ state: 'visible' })
+    if ((await link.count()) !== 1 || (await link.getAttribute('href')) !== `/calendar?date=${iso}`) {
+      throw new Error('empty day calendar link changed or duplicated')
+    }
+    ok('home calendar link with no observances')
+  } catch (error) {
+    fail('home calendar link states', /** @type {Error} */ (error).message)
+  } finally {
+    releaseResponses()
+    await emptyContext.close()
+  }
+
+  const errorContext = await browser.newContext({ viewport: VIEW_360, locale: 'en-US' })
+  await installPublicCalendarFixtures(errorContext)
+  await errorContext.route('**/src/lib/calendar/getCalendarEventsForDate.ts*', (route) => route.abort())
+  const errorPage = await errorContext.newPage()
+  try {
+    await goto(errorPage, '/')
+    await errorPage.getByText('This day’s observances could not be loaded.').waitFor({
+      state: 'visible', timeout: 8000,
+    })
+    const link = errorPage.getByRole('link', { name: /^Open this day in the calendar$/i })
+    if ((await link.count()) !== 1 || !(await link.isVisible())) {
+      throw new Error('calendar link missing or duplicated after load error')
+    }
+    ok('home calendar link after load error')
+  } catch (error) {
+    fail('home calendar link after load error', /** @type {Error} */ (error).message)
+  } finally {
+    await errorContext.close()
   }
 }
 
@@ -426,10 +531,7 @@ async function runAutoplayProof(page) {
     state: 'visible',
     timeout: 10000,
   })
-  if (!(await pause.count())) {
-    ok('home autoplay skipped (single event)')
-    return
-  }
+  await pause.waitFor({ state: 'visible', timeout: 8000 })
   const first = await readEventState(page)
   const frameStart = await readImageFrame(page)
   const second = await waitForEventChange(page, first, 12000)
@@ -511,6 +613,7 @@ async function runDesktopAndNight(browser) {
       locale: 'en-US',
       reducedMotion: 'no-preference',
     })
+    await installPublicCalendarFixtures(desktop)
     const desktopPage = await desktop.newPage()
     try {
       await goto(desktopPage, '/')
@@ -544,6 +647,7 @@ async function runDesktopAndNight(browser) {
     viewport: VIEW_360,
     locale: 'en-US',
   })
+  await installPublicCalendarFixtures(night)
   await night.addInitScript(() => {
     localStorage.setItem('tewahedo-theme', 'night')
   })
@@ -564,6 +668,7 @@ async function runDesktopAndNight(browser) {
 async function runOverflowSweep(browser) {
   const paths = ['/', '/pray', '/practice', '/calendar', '/bible']
   const context = await browser.newContext({ viewport: VIEW_390, locale: 'en-US' })
+  await installPublicCalendarFixtures(context)
   const page = await context.newPage()
   try {
     for (const path of paths) {
@@ -589,6 +694,7 @@ async function main() {
 
   const browser = await chromium.launch()
   const context = await browser.newContext({ viewport: VIEW_360, locale: 'en-US' })
+  await installPublicCalendarFixtures(context)
   const page = await context.newPage()
   page.setDefaultTimeout(15000)
 
@@ -600,6 +706,7 @@ async function main() {
   }
   await context.close()
 
+  await runCalendarLinkStates(browser)
   await runReducedMotion(browser)
   await runOverflowSweep(browser)
   await runDesktopAndNight(browser)

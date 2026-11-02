@@ -1,42 +1,176 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { GameProgress } from '../../components/play/GameProgress'
 import { useAuth } from '../../lib/auth/useAuth'
-import { useLocale } from '../../lib/i18n/locale'
-import { recordPlayCompletion } from '../../lib/play/progress'
-import { syncPlayCompletion } from '../../lib/play/progressSync'
+import { useLocale, type AppLocale } from '../../lib/i18n/locale'
+import {
+  adventureSourceLabel,
+  adventureSourceLink,
+  bibleAdventureStories,
+  type AdventureText,
+  type BibleAdventureStory,
+} from '../../lib/play/bibleAdventureStories'
+import { readPlayProgress, recordPlayCompletion, type PlayProgress } from '../../lib/play/progress'
+import { loadSavedPlayProgress, syncPlayCompletion } from '../../lib/play/progressSync'
+import { AdventureArtwork } from './AdventureArtwork'
+import { StoryObjects } from './AdventureObjects'
+import { sceneHasHotspots, type HotspotKit, type ObjectState } from './adventureHotspots'
+import { storyArtState } from './adventureSceneState'
 import styles from './AdventurePage.module.css'
 
-type Scene = 0 | 1 | 2
+const translated = (text: AdventureText, locale: AppLocale) => text[locale] ?? text.en
+
+/** Original vector scenery; clickable objects come from AdventureObjects. */
+function StoryArtwork({ story, scene: sceneIndex, kit }: { story: BibleAdventureStory; scene: number; kit: HotspotKit }) {
+  const { state, note } = storyArtState(kit)
+  return (
+    <div className={`${styles.artwork} ${styles[story.art]}`} role="region" lang="en" aria-label={`${story.title.en}, scene ${sceneIndex + 1}`} data-art-state={state}>
+      <svg viewBox="0 0 600 390" focusable="false">
+        <circle className={styles.glow} cx="466" cy="88" r="57" aria-hidden="true" />
+        <path className={styles.land} d="M0 232 Q125 163 260 226 T600 214 V390 H0Z" aria-hidden="true" />
+        <StoryObjects kit={kit} />
+      </svg>
+      {note && <span className={styles.artNote} role="status" lang="en" data-art-note>{note}</span>}
+      <span className={styles.artCaption}>{story.passage} · {sceneIndex + 1}/3</span>
+    </div>
+  )
+}
+
+function AdventureRun({ story, locale, user }: { story: BibleAdventureStory; locale: AppLocale; user: ReturnType<typeof useAuth>['user'] }) {
+  const [sceneIndex, setSceneIndex] = useState(0)
+  const [found, setFound] = useState<string[]>([])
+  const [answer, setAnswer] = useState('')
+  const [hoveredObject, setHoveredObject] = useState<string | null>(null)
+  const [focusedObject, setFocusedObject] = useState<string | null>(null)
+  const [xpEarned, setXpEarned] = useState<number | null>(null)
+  const finishing = useRef(false)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const scene = story.scenes[sceneIndex]
+  const am = locale === 'am'
+
+  useEffect(() => { titleRef.current?.focus() }, [sceneIndex, story.id])
+
+  const next = () => {
+    setFound([])
+    setAnswer('')
+    setHoveredObject(null)
+    setFocusedObject(null)
+    setSceneIndex((current) => Math.min(current + 1, story.scenes.length - 1))
+  }
+  const replay = () => {
+    setXpEarned(null)
+    setFound([])
+    setAnswer('')
+    setHoveredObject(null)
+    setFocusedObject(null)
+    setSceneIndex(0)
+    titleRef.current?.focus()
+  }
+  // Each story's XP is awarded once per player: the story's passage category in the stored progress is the durable record.
+  const finish = async () => {
+    if (xpEarned !== null || finishing.current) return
+    finishing.current = true
+    try {
+      const input = { game: 'adventure' as const, score: 3, maxScore: 3, category: story.passage }
+      const earned = (progress: PlayProgress | null) => (progress?.categoryMastery?.[story.passage]?.total ?? 0) > 0
+      let alreadyEarned = earned(readPlayProgress())
+      if (!alreadyEarned && user) alreadyEarned = earned(await loadSavedPlayProgress(user).catch(() => null))
+      if (alreadyEarned) { setXpEarned(0); return }
+      const saved = recordPlayCompletion(input)
+      setXpEarned(saved.xpEarned)
+      void syncPlayCompletion(user, { ...input, progress: saved.progress }).catch(() => undefined)
+    } finally {
+      finishing.current = false
+    }
+  }
+  const interaction = scene.interaction
+  const ready = interaction.kind === 'discover'
+    ? interaction.details.every((detail) => found.includes(detail.id))
+    : answer === interaction.correctId
+  // Illustration objects and sidebar buttons share this one selection path (ids are detail/choice ids).
+  const selectObject = (id: string) => {
+    if (interaction.kind === 'discover') {
+      if (interaction.details.some((detail) => detail.id === id)) setFound((items) => (items.includes(id) ? items : [...items, id]))
+    } else if (!ready && interaction.choices.some((choice) => choice.id === id)) {
+      setAnswer(id)
+    }
+  }
+  const objectState = (id: string): ObjectState => {
+    if (interaction.kind === 'discover') return found.includes(id) ? 'selected' : 'idle'
+    return answer === id ? (ready ? 'correct' : 'incorrect') : 'idle'
+  }
+  const kit: HotspotKit = {
+    storyId: story.id,
+    scene: sceneIndex,
+    activeObject: focusedObject ?? hoveredObject,
+    locked: interaction.kind === 'question' && ready,
+    stateOf: objectState,
+    onSelect: selectObject,
+    onHover: setHoveredObject,
+    onFocusObject: setFocusedObject,
+  }
+  const interactive = sceneHasHotspots(story.id, sceneIndex)
+
+  return <div className={styles.stage}>
+    <p className={styles.notice}>{am ? 'ታሪኩ ከተጠቀሰው ቅዱስ መጽሐፍ የተወሰደ ነው። አንዳንድ ታሪኮችና ጥያቄዎች በእንግሊዝኛ ቀርበዋል።' : 'Interactive objects are learning aids. Story details come from the cited WEB passages.'}</p>
+    <GameProgress locale={locale} current={sceneIndex + 1} total={story.scenes.length} label={am ? 'የምዕራፍ እድገት' : 'Story progress'} />
+    <section className={styles.scene} aria-labelledby="adventure-scene-title">
+      <div className={styles.artColumn}>
+        {story.id === 'sea' ? <AdventureArtwork story={story} scene={sceneIndex} kit={kit} /> : <StoryArtwork story={story} scene={sceneIndex} kit={kit} />}
+        {interactive && <p className={styles.sceneHint}>
+          <span lang="en"><span aria-hidden="true">✦ </span><strong>Interactive scene:</strong> tap or click the outlined objects, or use the buttons beside the story.</span>
+          <span lang="am"><strong>ተግባራዊ ትዕይንት፦</strong> በምስሉ ላይ ያሉትን ምልክት የተደረገባቸው ነገሮች ይንኩ፤ ወይም ከታሪኩ አጠገብ ያሉትን አዝራሮች ይጠቀሙ።</span>
+        </p>}
+        {!interactive && <p className={styles.sceneHint} data-sidebar-hint>
+          <span lang="en"><span aria-hidden="true">✦ </span><strong>Answer scene:</strong> choose an answer from the buttons beside the story. The picture responds when you answer.</span>
+          <span lang="am"><strong>የመልስ ትዕይንት፦</strong> ከታሪኩ አጠገብ ካሉት አዝራሮች መልስ ይምረጡ። መልስ ሲሰጡ ምስሉ ይለወጣል።</span>
+        </p>}
+      </div>
+      <div className={styles.story} lang={am && scene.title.am ? 'am' : 'en'}>
+        <p className={styles.eyebrow} lang={locale}>{am ? 'ትዕይንት' : 'Scene'} {sceneIndex + 1} / {story.scenes.length}</p>
+        <h2 id="adventure-scene-title" tabIndex={-1} ref={titleRef}>{translated(scene.title, locale)}</h2>
+        <p>{translated(scene.narrative, locale)}</p>
+        {interaction.kind === 'discover' ? <div className={styles.exploration}>
+          <p lang={locale}>{am ? 'ሁለቱንም ይመርምሩ።' : 'Explore both details to continue.'}</p>
+          <div className={styles.choices}>{interaction.details.map((detail) => <button key={detail.id} type="button" data-object={detail.id} aria-pressed={found.includes(detail.id)} lang={am && detail.label.am ? 'am' : 'en'} onMouseEnter={() => setHoveredObject(detail.id)} onMouseLeave={() => setHoveredObject(null)} onFocus={() => setFocusedObject(detail.id)} onBlur={() => setFocusedObject(null)} onClick={() => selectObject(detail.id)}>{translated(detail.label, locale)}</button>)}</div>
+          <ul className={styles.findings}>{interaction.details.filter((detail) => found.includes(detail.id)).map((detail) => <li key={detail.id} lang={am && detail.finding.am ? 'am' : 'en'}>{translated(detail.finding, locale)}</li>)}</ul>
+        </div> : <div className={styles.challenge}>
+          <h3 lang={am && interaction.prompt.am ? 'am' : 'en'}>{translated(interaction.prompt, locale)}</h3>
+          <div className={styles.choices}>{interaction.choices.map((choice) => <button key={choice.id} type="button" data-object={choice.id} data-state={objectState(choice.id)} aria-pressed={answer === choice.id} disabled={ready} lang={am && choice.label.am ? 'am' : 'en'} onMouseEnter={() => setHoveredObject(choice.id)} onMouseLeave={() => setHoveredObject(null)} onFocus={() => setFocusedObject(choice.id)} onBlur={() => setFocusedObject(null)} onClick={() => selectObject(choice.id)}>{translated(choice.label, locale)}</button>)}</div>
+          <div className={styles.feedback} role="status" aria-live="polite">{answer && (ready ? <><span lang={locale}>{am ? 'ትክክል።' : 'Correct.'}</span>{' '}<span lang={am && interaction.explanation.am ? 'am' : 'en'}>{translated(interaction.explanation, locale)}</span></> : <span lang={locale}>{am ? 'ጥቅሱን እንደገና ይመልከቱ።' : 'Look again at the cited verses. Try another answer.'}</span>)}</div>
+        </div>}
+        <Link className={styles.source} to={adventureSourceLink(scene.source)}><span lang={locale}>{am ? 'ምንጭ: ' : 'Source: '}</span><span lang="en">{adventureSourceLabel(scene.source)} (WEB)</span></Link>
+        {xpEarned !== null ? <div className={styles.complete} role="status">
+          <h3 lang={locale}>{am ? 'ምዕራፉ ተጠናቋል' : 'Story complete'}</h3>
+          {xpEarned > 0 ? <p>+{xpEarned} XP</p> : <p data-practice lang={locale}>{am ? 'የልምምድ ድጋሚ ጨዋታ — የዚህ ታሪክ XP አስቀድሞ ተሰጥቷል።' : 'Practice replay — this story’s XP was already earned.'}</p>}
+          <div className={styles.actions}><button type="button" lang={locale} onClick={replay}>{am ? 'እንደገና ይጫወቱ' : 'Replay story'}</button><Link to="/play/adventures" lang={locale}>{am ? 'ሌላ ታሪክ' : 'Choose another story'}</Link></div>
+        </div> : ready ? <button className={styles.primary} type="button" lang={locale} onClick={sceneIndex === story.scenes.length - 1 ? finish : next}>{sceneIndex === story.scenes.length - 1 ? (am ? 'ምዕራፉን ያጠናቅቁ' : 'Complete story') : (am ? 'ቀጥል' : 'Continue')} →</button> : null}
+      </div>
+    </section>
+  </div>
+}
 
 export function AdventurePage() {
   const { locale } = useLocale()
   const { user } = useAuth()
-  const [scene, setScene] = useState<Scene>(0)
-  const [found, setFound] = useState<string[]>([])
-  const [answer, setAnswer] = useState('')
-  const [complete, setComplete] = useState(false)
+  const [params] = useSearchParams()
+  const storyId = params.get('story')
+  const story = bibleAdventureStories.find((item) => item.id === storyId)
   const am = locale === 'am'
-  const discover = (key: string) => setFound((items) => items.includes(key) ? items : [...items, key])
-  const finish = () => {
-    setComplete(true)
-    const saved = recordPlayCompletion({ game: 'adventure', score: 3, maxScore: 3, category: 'Exodus 14' })
-    void syncPlayCompletion(user, { game: 'adventure', score: 3, maxScore: 3, category: 'Exodus 14', progress: saved.progress }).catch(() => undefined)
-  }
 
   return <div className={styles.page} lang={locale}>
-    <header className={styles.header}><Link to="/play">← {am ? 'ወደ ጨዋታ' : 'Tewahedo Play'}</Link><p>{am ? 'የመጽሐፍ ቅዱስ ጀብዱ' : 'Bible Adventure'}</p><h1>{am ? 'በባሕር ዳር ያለው መንገድ' : 'A Way Through the Sea'}</h1><span>{am ? 'በዘፀአት 14 ላይ የተመሠረተ' : 'A short 2D learning journey based on Exodus 14'}</span></header>
-    <main className={styles.stage}>
-      <p className={styles.notice}>{am ? 'የጨዋታ ምልክቶች ለመማር ብቻ ናቸው፤ ታሪኩ ከታች ከተጠቀሰው ቅዱስ መጽሐፍ የተወሰደ ነው።' : 'Interactive objects are learning aids, not additions to Scripture. The narrative is limited to the cited biblical passage.'}</p>
-      <div className={styles.map} aria-label={am ? 'የምዕራፍ እድገት' : 'Chapter progress'}>{[0,1,2].map((item) => <span key={item} className={scene >= item ? styles.done : ''}>{item + 1}</span>)}</div>
-
-      {scene === 0 ? <section className={styles.scene}>
-        <div className={`${styles.illustration} ${styles.camp}`} role="img" aria-label={am ? 'ሕዝቡ በባሕር ዳር' : 'The people encamped by the sea'}><i className={styles.mountain}/><i className={styles.tent}/><i className={styles.sea}/><span className={styles.figure}>♙</span></div>
-        <div className={styles.story}><p className={styles.eyebrow}>{am ? 'ትዕይንት 1 · በባሕር ዳር' : 'Scene 1 · By the sea'}</p><h2>{am ? 'ሕዝቡ ፈሩ' : 'The people were afraid'}</h2><p>{am ? 'እስራኤላውያን ፈርዖንና ሠራዊቱ ሲቀርቡ አዩ። ሙሴ እንዳይፈሩና የእግዚአብሔርን ማዳን እንዲያዩ ነገራቸው።' : 'The Israelites saw Pharaoh and his army approaching. Moses told the people not to be afraid and to see the deliverance of the Lord.'}</p><div className={styles.objects}><button type="button" onClick={() => discover('camp')}>⛺ {am ? 'ሰፈሩን ይመርምሩ' : 'Inspect the camp'}</button><button type="button" onClick={() => discover('sea')}>≈ {am ? 'ባሕሩን ይመልከቱ' : 'Look at the sea'}</button></div>{found.includes('camp') && found.includes('sea') ? <button className={styles.primary} type="button" onClick={() => setScene(1)}>{am ? 'ወደ ትምህርት ነጥብ' : 'Continue to checkpoint'} →</button> : <small>{am ? 'ለመቀጠል ሁለቱንም ይመርምሩ።' : 'Explore both objects to continue.'}</small>}<Link to="/bible/exodus/14">{am ? 'ምንጭ፦ ዘፀአት 14፥10–14' : 'Source: Exodus 14:10–14'}</Link></div>
-      </section> : null}
-
-      {scene === 1 ? <section className={styles.scene}><div className={`${styles.illustration} ${styles.wind}`} role="img" aria-label={am ? 'ባሕሩ ተከፈለ' : 'The sea divided'}><i className={styles.waveLeft}/><i className={styles.path}/><i className={styles.waveRight}/><span className={styles.figure}>♙</span></div><div className={styles.story}><p className={styles.eyebrow}>{am ? 'ትዕይንት 2 · የትምህርት ነጥብ' : 'Scene 2 · Learning checkpoint'}</p><h2>{am ? 'ሙሴ በባሕሩ ላይ ምን አደረገ?' : 'What did Moses do over the sea?'}</h2><div className={styles.answers}>{[['staff', am ? 'እጁን ዘረጋ' : 'He stretched out his hand'],['boat', am ? 'መርከብ ሠራ' : 'He built a ship'],['stone', am ? 'ድንጋይ ወረወረ' : 'He threw a stone']].map(([key,label]) => <button key={key} type="button" aria-pressed={answer === key} onClick={() => setAnswer(key)}>{label}</button>)}</div>{answer ? <div className={answer === 'staff' ? styles.correct : styles.incorrect} role="status">{answer === 'staff' ? (am ? 'ትክክል። እጁን ዘረጋ፤ እግዚአብሔርም ባሕሩን በኃይለኛ ነፋስ መለሰ።' : 'Correct. He stretched out his hand; the Lord drove back the sea with a strong wind.') : (am ? 'ጥቅሱን እንደገና ይመልከቱ።' : 'Look again at the cited verse.')}</div> : null}{answer === 'staff' ? <button className={styles.primary} type="button" onClick={() => setScene(2)}>{am ? 'በመንገዱ ይቀጥሉ' : 'Follow the path'} →</button> : null}<Link to="/bible/exodus/14">{am ? 'ምንጭ፦ ዘፀአት 14፥21–22' : 'Source: Exodus 14:21–22'}</Link></div></section> : null}
-
-      {scene === 2 ? <section className={styles.scene}><div className={`${styles.illustration} ${styles.dawn}`} role="img" aria-label={am ? 'በሌላኛው ዳር ማለዳ' : 'Morning on the other shore'}><i className={styles.sun}/><i className={styles.shore}/><span className={styles.people}>♙ ♙ ♙</span></div><div className={styles.story}><p className={styles.eyebrow}>{am ? 'ትዕይንት 3 · ሌላኛው ዳር' : 'Scene 3 · The other shore'}</p><h2>{am ? 'ሕዝቡ ማዳኑን አየ' : 'The people saw the deliverance'}</h2><p>{am ? 'እስራኤል እግዚአብሔር ያደረገውን ታላቅ ሥራ አየ፤ ሕዝቡም እግዚአብሔርን ፈራ በእርሱና በባሪያው በሙሴም አመነ።' : 'Israel saw the great work the Lord had done. The people feared the Lord and believed in the Lord and in Moses his servant.'}</p>{complete ? <div className={styles.complete} role="status"><span>✦</span><h3>{am ? 'ምዕራፉ ተጠናቋል' : 'Chapter complete'}</h3><p>+100 XP</p><Link to="/play">{am ? 'ወደ ጨዋታ ማዕከል' : 'Return to game center'}</Link></div> : <button className={styles.primary} type="button" onClick={finish}>{am ? 'ምዕራፉን ያጠናቅቁ' : 'Complete chapter'}</button>}<Link to="/bible/exodus/14">{am ? 'ምንጭ፦ ዘፀአት 14፥30–31' : 'Source: Exodus 14:30–31'}</Link></div></section> : null}
-    </main>
+    <header className={styles.header}><div className={styles.headerInner}>
+      <nav className={styles.breadcrumb} aria-label={am ? 'የገጽ መንገድ' : 'Breadcrumb'}><Link to="/play">← {am ? 'ወደ ጨዋታ' : 'Tewahedo Play'}</Link>{story && <Link to="/play/adventures">{am ? 'ጀብዱዎች' : 'All adventures'}</Link>}</nav>
+      <p className={styles.eyebrow}>{am ? 'የመጽሐፍ ቅዱስ ጀብዱ' : 'Bible Adventure'}</p>
+      <h1 lang={am && story?.title.am ? 'am' : 'en'}>{story ? translated(story.title, locale) : (am ? 'የመጽሐፍ ቅዱስ ጀብዱዎች' : 'Choose an adventure')}</h1>
+      <p className={styles.headerSummary} lang={am && story?.summary.am ? 'am' : 'en'}>{story ? translated(story.summary, locale) : (am ? 'በታሪኮቹ ውስጥ ይጓዙ። የታሪክ ጽሑፉ ከእንግሊዝኛ WEB መጽሐፍ ቅዱስ ነው።' : 'Explore six short stories, each grounded in a cited WEB passage.')}</p>
+    </div></header>
+    {story ? <AdventureRun key={story.id} story={story} locale={locale} user={user} /> : <div className={styles.gallery}>
+      {storyId && <p role="alert">{am ? 'ታሪኩ አልተገኘም።' : 'That adventure was not found.'}</p>}
+      <div className={styles.cards}>{bibleAdventureStories.map((item) => <Link className={`${styles.card} ${styles[item.art]}`} to={`/play/adventures?story=${item.id}`} key={item.id}>
+        <span className={styles.cardArt} aria-hidden="true"><span>{item.passage}</span></span>
+        <span className={styles.cardBody}><strong lang={am && item.title.am ? 'am' : 'en'}>{translated(item.title, locale)}</strong><span lang="en">{item.summary.en}</span><small lang="en">{item.passage} · WEB</small><span className={styles.cardAction}>{am ? 'ታሪኩን ይጀምሩ' : 'Start adventure'} →</span></span>
+      </Link>)}</div>
+    </div>}
   </div>
 }

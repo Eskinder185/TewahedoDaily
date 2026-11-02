@@ -1709,6 +1709,7 @@ function CardForm({ existing }: { existing: CalendarCardRow | null }) {
             )}
             <MediaPicker
               label="Calendar card image"
+              matchQuery={{ id: existing?.id || input.source_slug || input.slug, slug: input.source_slug || input.slug, title: linkedPreview?.title || input.title, titleAmharic: linkedPreview?.titleAmharic || input.title_amharic, domain: 'calendar', intentionallyNoImage: Boolean(existing && existing.image_path === null) }}
               folder={calendarMediaFolderPrefix(
                 linkedPreview?.category || input.category,
                 linkedPreview?.cardType || input.card_type,

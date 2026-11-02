@@ -15,7 +15,7 @@
     0 8px 32px -16px var(--color-sky-glow);
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 1279.98px) {
   .header {
     backdrop-filter: none;
     background: color-mix(in srgb, var(--color-bg-elevated) 96%, var(--color-bg));
@@ -114,7 +114,7 @@
 }
 
 .menuTrigger:focus-visible {
-  outline: 2px solid var(--color-gold-line);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -175,7 +175,7 @@
 
 .navSubmenu {
   position: absolute;
-  top: calc(100% + var(--space-2));
+  top: 100%;
   left: 50%;
   z-index: 2;
   min-width: 13rem;
@@ -213,11 +213,18 @@
   outline-offset: 2px;
 }
 
+.homeLink:focus-visible,
+.modeLink:focus-visible,
+.drawerLink:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
 .disclosureChevron {
   flex: 0 0 auto;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 1279.98px) {
   .nav {
     display: none;
   }
@@ -324,7 +331,7 @@
 }
 
 .drawerClose:focus-visible {
-  outline: 2px solid var(--color-gold-line);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
@@ -643,7 +650,7 @@
   display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   /* Desktop: prefer the segment control; hide the compact globe menu. */
   .languageAlways {
     display: none;
@@ -736,7 +743,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .bar {
     padding-inline: var(--space-6);
     padding-block: 0.55rem;
@@ -866,7 +873,7 @@
   display: inline-flex;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 1279.98px) {
   .desktopOnlyAbout {
     display: none;
   }

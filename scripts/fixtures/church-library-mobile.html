@@ -17,7 +17,7 @@
     <section class="card">
       <h2>Book details</h2><div class="fields"><label>Title<input value="Test Book"></label><label>Author<input value="Trusted Author"></label><label class="wide">Description<textarea>Teaching resource</textarea></label></div>
       <h2>Original document</h2><input id="file" type="file"><div class="actions"><button id="process">Reprocess book</button><button id="preview">Preview extracted content</button></div>
-      <h2>Search Buddy access</h2><div class="fields"><label>Rights basis<select id="rights"><option value="unknown">Unknown — keep private</option><option value="permission_granted">Permission granted</option></select></label><label><input id="ready" type="checkbox"> Ready for indexing</label><label><input id="quotes" type="checkbox"> Permit short grounded excerpts</label></div>
+      <h2>Search Buddy access</h2><div class="fields"><label><input id="ready" type="checkbox"> Ready for indexing</label><label><input id="quotes" type="checkbox"> Permit short grounded excerpts</label></div>
       <button id="enable">Enable Search Buddy access</button><div id="passages"></div>
     </section>
   </div>
@@ -30,5 +30,6 @@ document.querySelector('#new-file').onchange=(event)=>{const file=event.target.f
 document.querySelector('#upload-process').onclick=()=>{const file=document.querySelector('#new-file').files[0];if(!file){status.textContent='Choose a book file.';return}document.querySelector('#upload-progress').value=100;status.textContent='Book uploaded and processed into 3 searchable passages.'}
 document.querySelector('#process').onclick=()=>{processed=true;status.textContent='Extraction complete: 3 searchable passages.'}
 document.querySelector('#preview').onclick=()=>{document.querySelector('#passages').textContent='Page 1 · Sample grounded passage'}
-document.querySelector('#enable').onclick=()=>{const ok=processed&&document.querySelector('#ready').checked&&document.querySelector('#quotes').checked&&document.querySelector('#rights').value!=='unknown';status.textContent=ok?'Search Buddy access enabled for eligible excerpts.':'Complete processing and rights checks first.'}
+const rightsVerified=true // rights_status is recorded outside this UI and is never edited here
+document.querySelector('#enable').onclick=()=>{const ok=processed&&document.querySelector('#ready').checked&&document.querySelector('#quotes').checked&&rightsVerified;status.textContent=ok?'Search Buddy access enabled for eligible excerpts.':'Complete processing and rights checks first.'}
 </script>

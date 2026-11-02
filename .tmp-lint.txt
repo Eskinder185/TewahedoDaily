@@ -1,0 +1,73 @@
+
+C:\Users\eskew\github\TewahedoDaily\scripts\test-media-resolver.ts
+  21:3  error  'normalizeUnicodeText' is defined but never used. Allowed unused vars must match /^_/u    @typescript-eslint/no-unused-vars
+  24:3  error  'extractTitleCandidates' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\admin\CalendarAdmin.tsx
+  258:33  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `result.data`, but the source dependencies were [result.data?.items, result.data?.linkedMap, source, q, listPatch]. Inferred less specific property than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\admin\CalendarAdmin.tsx:258:33
+  256 |   }, [])
+  257 |
+> 258 |   const filteredItems = useMemo(() => {
+      |                                 ^^^^^^^
+> 259 |     const items = (result.data?.items || []).map((row) => listPatch[row.id] || row)
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 260 |     const needle = q.trim().toLowerCase()
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 311 |     })
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 312 |   }, [result.data?.items, result.data?.linkedMap, source, q, listPatch])
+      | ^^^^ Could not preserve existing manual memoization
+  313 |
+  314 |   const missingImageQueue = useMemo(
+  315 |     () => filteredItems.filter((row) => !(row.image_path || '').trim()),  react-hooks/preserve-manual-memoization
+  258:33  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `reviewFilter`, but the source dependencies were [result.data?.items, result.data?.linkedMap, source, q, listPatch]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\admin\CalendarAdmin.tsx:258:33
+  256 |   }, [])
+  257 |
+> 258 |   const filteredItems = useMemo(() => {
+      |                                 ^^^^^^^
+> 259 |     const items = (result.data?.items || []).map((row) => listPatch[row.id] || row)
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 260 |     const needle = q.trim().toLowerCase()
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 311 |     })
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 312 |   }, [result.data?.items, result.data?.linkedMap, source, q, listPatch])
+      | ^^^^ Could not preserve existing manual memoization
+  313 |
+  314 |   const missingImageQueue = useMemo(
+  315 |     () => filteredItems.filter((row) => !(row.image_path || '').trim()),   react-hooks/preserve-manual-memoization
+  258:33  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `reviewsMap`, but the source dependencies were [result.data?.items, result.data?.linkedMap, source, q, listPatch]. Inferred different dependency than source.
+
+C:\Users\eskew\github\TewahedoDaily\src\pages\admin\CalendarAdmin.tsx:258:33
+  256 |   }, [])
+  257 |
+> 258 |   const filteredItems = useMemo(() => {
+      |                                 ^^^^^^^
+> 259 |     const items = (result.data?.items || []).map((row) => listPatch[row.id] || row)
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 260 |     const needle = q.trim().toLowerCase()
+      …
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 311 |     })
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 312 |   }, [result.data?.items, result.data?.linkedMap, source, q, listPatch])
+      | ^^^^ Could not preserve existing manual memoization
+  313 |
+  314 |   const missingImageQueue = useMemo(
+  315 |     () => filteredItems.filter((row) => !(row.image_path || '').trim()),     react-hooks/preserve-manual-memoization
+  312:6   warning  React Hook useMemo has missing dependencies: 'reviewFilter' and 'reviewsMap'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  react-hooks/exhaustive-deps
+
+✖ 6 problems (5 errors, 1 warning)
+

@@ -1,0 +1,84 @@
+{
+  "status": "draft",
+  "snapshot": "artifacts/play-bible-snapshot-1793487606836.json",
+  "edition": "web",
+  "snapshotVerses": 4696,
+  "availableChapters": {
+    "Genesis": 50,
+    "Exodus": 40,
+    "Matthew": 28,
+    "John": 21
+  },
+  "priorPilotAndV2QuestionCount": 30,
+  "priorDistinctChapters": 30,
+  "newBatchQuestions": 40,
+  "newBatchDistinctChapters": 40,
+  "totalDistinctChaptersUsed": 70,
+  "questionsByBook": {
+    "Genesis": 10,
+    "Exodus": 10,
+    "Matthew": 10,
+    "John": 10
+  },
+  "chaptersByBook": {
+    "Genesis": [
+      2,
+      5,
+      6,
+      7,
+      16,
+      18,
+      19,
+      21,
+      22,
+      24
+    ],
+    "Exodus": [
+      2,
+      4,
+      5,
+      8,
+      9,
+      10,
+      11,
+      13,
+      16,
+      17
+    ],
+    "Matthew": [
+      2,
+      3,
+      4,
+      8,
+      9,
+      14,
+      15,
+      16,
+      17,
+      19
+    ],
+    "John": [
+      7,
+      8,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ]
+  },
+  "remainingAvailableChaptersByBook": {
+    "Genesis": 31,
+    "Exodus": 27,
+    "Matthew": 18,
+    "John": 11
+  },
+  "languages": {
+    "en": "verified against supplied English WEB snapshot",
+    "am": "not generated; no matched Amharic snapshot supplied"
+  },
+  "excluded": "Previously rejected 50-question cloze drafts are not counted as approved source coverage."
+}

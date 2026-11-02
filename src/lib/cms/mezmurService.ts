@@ -520,7 +520,7 @@ async function loadDerivedSingers(): Promise<Singer[]> {
       mezmur_count: row.mezmur_count || 0,
     }))
   } catch (cause) {
-    if (import.meta.env.DEV) console.error('[mezmurService] zemaris taxonomy', cause)
+    if (import.meta.env?.DEV) console.error('[mezmurService] zemaris taxonomy', cause)
     return []
   }
 }
@@ -532,14 +532,14 @@ async function loadDerivedCategories(): Promise<Category[]> {
     return rows.map((row) => ({
       id: row.slug,
       name: row.name,
-      name_amharic: null,
+      name_amharic: row.name_amharic || null,
       slug: row.slug,
-      description: null,
+      description: row.parent_group ? `Parent: ${row.parent_group}` : null,
       type: 'mezmur',
       is_archived: false,
     }))
   } catch (cause) {
-    if (import.meta.env.DEV) console.error('[mezmurService] derived categories', cause)
+    if (import.meta.env?.DEV) console.error('[mezmurService] derived categories', cause)
     return []
   }
 }
@@ -563,7 +563,7 @@ export async function getTaxonomy() {
         .range(n, n + 499)
         .then((result) => {
           if (result.error) {
-            if (import.meta.env.DEV) console.error('[mezmurService] tags', result.error)
+            if (import.meta.env?.DEV) console.error('[mezmurService] tags', result.error)
             return { data: [] as Tag[], error: null }
           }
           return result
@@ -582,6 +582,7 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
   const mezmurId = existing?.mezmur_id || existing?.id || crypto.randomUUID()
   const zemariId = input.zemari_id || input.singer_id || null
   const targetStatus: MezmurStatus = input.status === 'published' ? 'published' : 'draft'
+  const imagePath = input.thumbnail_path?.trim() || input.thumbnail_url?.trim() || null
   return {
     mezmur_id: mezmurId,
     slug: input.slug.trim(),
@@ -604,8 +605,11 @@ function toImportPayload(input: MezmurInput, existing?: Mezmur): Record<string, 
     singer_id: zemariId || input.singer_id || null,
     youtube_url: input.youtube_url?.trim() || null,
     audio_url: input.audio_url?.trim() || null,
-    image_path: input.thumbnail_path?.trim() || input.thumbnail_url?.trim() || null,
-    image_alt: input.image_alt?.trim() || null,
+    image_path: imagePath,
+    image_alt: imagePath ? input.image_alt?.trim() || null : null,
+    // A removed thumbnail must not reappear through the legacy column on reopen. Only the Mezmur's own
+    // reference is cleared; the file stays in the Media Library.
+    ...(!imagePath && existing?.thumbnail_url ? { legacy_thumbnail_url: null } : {}),
     status: targetStatus,
     updated_at: new Date().toISOString(),
   }

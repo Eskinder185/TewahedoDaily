@@ -1,15 +1,50 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
-import { recordPlayCompletion } from '../../lib/play/progress'
+import { recordPlayCompletion, type PlayAchievement } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
-import { localized, type PlayDifficulty, type PlayGameType, type PlayQuestion } from '../../lib/play/types'
+import { loadSeen, markSeen, selectUnseen } from '../../lib/play/questionHistory'
+import { localized, type LocalizedText, type PlayDifficulty, type PlayGameType, type PlayQuestion } from '../../lib/play/types'
 import { VerifiedFallback } from './GameShell'
 import { Celebration } from './Celebration'
+import { GameProgress } from './GameProgress'
 import styles from './GameShell.module.css'
+import fb from './AnswerFeedback.module.css'
+import g from './PlayGames.module.css'
+import { BADGES } from './PlayProgressPanel'
 
 type Answer = { question: PlayQuestion; selected: string; correct: boolean; points: number }
+
+const TIMEOUT_KEY = '__timeout__'
+
+function labelsFor(locale: AppLocale) {
+  return locale === 'am'
+    ? {
+        correct: 'ትክክል', correctBang: 'ትክክል!', notQuite: 'ትክክል አይደለም', timeUp: 'ጊዜ አልቋል',
+        yourAnswer: 'የእርስዎ መልስ', correctAnswer: 'ትክክለኛ መልስ', noAnswer: 'መልስ አልተሰጠም',
+        source: 'ምንጭ፦ ', englishOnly: 'በእንግሊዝኛ ብቻ', roundComplete: 'ዙሩ ተጠናቋል', wellPlayed: 'ጥሩ ልምምድ!',
+        finalScore: 'የመጨረሻ ውጤት', xpEarned: 'የተገኘ XP', outOf: (score: number, max: number) => `${score} ከ ${max}`,
+        question: 'ጥያቄ', review: 'መልሶችዎን ይከልሱ', badges: 'ያገኟቸው ምልክቶች', playAgain: 'እንደገና', explore: 'ጨዋታዎችን ያስሱ',
+      }
+    : {
+        correct: 'Correct', correctBang: 'Correct!', notQuite: 'Not quite', timeUp: "Time's up",
+        yourAnswer: 'Your answer', correctAnswer: 'Correct answer', noAnswer: 'No answer given',
+        source: 'Source: ', englishOnly: 'English only', roundComplete: 'Round complete', wellPlayed: 'Well played!',
+        finalScore: 'Final score', xpEarned: 'XP earned', outOf: (score: number, max: number) => `${score} of ${max}`,
+        question: 'Question', review: 'Review your answers', badges: 'Badges earned', playAgain: 'Play again', explore: 'Explore games',
+      }
+}
+
+/** Text with the existing English fallback; the fallback is tagged so it is read and shaped as English. */
+function Loc({ value, locale }: { value: LocalizedText; locale: AppLocale }) {
+  const item = localized(value, locale)
+  return <span lang={item.fallback ? 'en' : undefined}>{item.text}</span>
+}
+
+function optionValue(question: PlayQuestion, key: string) {
+  return question.options.find((option) => option.key === key)?.text ?? null
+}
 
 export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialDifficulty }: { locale: AppLocale; game: PlayGameType; questions: PlayQuestion[]; dailyQuestionIndex?: number; initialDifficulty?: PlayDifficulty }) {
   const { user } = useAuth()
@@ -25,7 +60,7 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
   const [answers, setAnswers] = useState<Answer[]>([])
   const [hints, setHints] = useState(0)
   const [seconds, setSeconds] = useState(30)
-  const [result, setResult] = useState<{ score: number; max: number; xp: number } | null>(null)
+  const [result, setResult] = useState<{ score: number; max: number; xp: number; badges: PlayAchievement[] } | null>(null)
 
   const eligible = useMemo(() => questions.filter((q) =>
     (category === 'all' || q.category === category) &&
@@ -41,6 +76,25 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
     return () => window.clearTimeout(timer)
   }, [round, selected, timed, seconds, result])
 
+  const questionRef = useRef<HTMLHeadingElement>(null)
+  const resultsRef = useRef<HTMLHeadingElement>(null)
+  const nextRef = useRef<HTMLButtonElement>(null)
+  const prevView = useRef({ round, index, result })
+
+  // Move focus when the view changes (never on first render, so a daily-challenge page load keeps its focus).
+  useEffect(() => {
+    const prev = prevView.current
+    if (prev.round === round && prev.index === index && prev.result === result) return
+    prevView.current = { round, index, result }
+    if (result) resultsRef.current?.focus()
+    else if (round) questionRef.current?.focus()
+  }, [round, index, result])
+
+  // The disabled option buttons drop focus, so land on the next action.
+  useEffect(() => {
+    if (selected) nextRef.current?.focus()
+  }, [selected])
+
   if (!questions.length) return (
     <div className={styles.empty} role="status">
       <h2>{locale === 'am' ? 'የተገመገመ ይዘት እየተጠበቀ ነው' : 'Waiting for reviewed content'}</h2>
@@ -55,7 +109,8 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
       return
     }
     const source = eligible.length ? eligible : questions
-    const chosen = [...source].sort((a, b) => a.id.localeCompare(b.id)).slice(0, Math.min(count, source.length))
+    const chosen = selectUnseen(source, (question) => question.id, loadSeen(game), Math.min(count, source.length)).picked
+    markSeen(game, chosen.map((question) => question.id))
     setRound(chosen); setIndex(0); setSelected(null); setAnswers([]); setHints(0); setSeconds(30); setResult(null)
   }
 
@@ -73,13 +128,44 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
     </section>
   )
 
+  const l = labelsFor(locale)
+
   if (result) return (
-    <section className={`${styles.panel} ${styles.results}`} style={{ position: 'relative', overflow: 'hidden' }}>
+    <section className={`${styles.panel} ${styles.results} ${locale === 'am' ? fb.am : ''}`} style={{ position: 'relative', overflow: 'hidden' }} aria-labelledby="quiz-results-title">
       {result.max > 0 && result.score / result.max >= 0.6 ? <Celebration /> : null}
-      <p>{locale === 'am' ? 'ዙሩ ተጠናቋል' : 'Round complete'}</p><h2>{locale === 'am' ? 'ጥሩ ልምምድ!' : 'Well played!'}</h2>
-      <p className={styles.score}>{result.score}/{result.max}</p><p>+{result.xp} XP</p>
-      <div className={styles.actions}><button className={styles.action} type="button" onClick={start}>{locale === 'am' ? 'እንደገና' : 'Play again'}</button><Link className={styles.secondary} to="/play">{locale === 'am' ? 'ወደ ማዕከል' : 'Game center'}</Link></div>
-      <div className={styles.review}>{answers.map((answer, answerIndex) => <article key={`${answer.question.id}-${answerIndex}`}><strong>{answer.correct ? '✓' : '✕'} {localized(answer.question.prompt, locale).text}</strong><p>{localized(answer.question.explanation, locale).text}</p><Link to={answer.question.source.route}>{answer.question.source.label}</Link></article>)}</div>
+      <p>{l.roundComplete}</p><h2 id="quiz-results-title" className={fb.resultsHeading} ref={resultsRef} tabIndex={-1}>{l.wellPlayed}</h2>
+      <div className={g.scoreRow}>
+        <div><strong aria-hidden="true">{result.score}/{result.max}</strong><span className={fb.srOnly}>{l.outOf(result.score, result.max)}</span><span aria-hidden="true">{l.finalScore}</span></div>
+        <div><strong>+{result.xp}</strong><span>{l.xpEarned}</span></div>
+      </div>
+      {result.badges.length ? (
+        <>
+          <p className={fb.badgeHeading} id="quiz-badges">{l.badges}</p>
+          <ul className={fb.badgeList} aria-labelledby="quiz-badges">
+            {result.badges.map((badge) => <li key={badge}><span aria-hidden="true">{BADGES[badge]?.icon ?? '✦'}</span>{BADGES[badge]?.[locale] ?? badge}</li>)}
+          </ul>
+        </>
+      ) : null}
+      <div className={styles.actions}><button className={styles.action} type="button" onClick={start}>{l.playAgain}</button><Link className={styles.secondary} to="/play">{l.explore}</Link></div>
+      <h3 className={fb.reviewTitle}>{l.review}</h3>
+      <ol className={`${styles.review} ${fb.reviewList}`}>{answers.map((answer, answerIndex) => {
+        const timedOut = answer.selected === TIMEOUT_KEY
+        const chosen = timedOut ? null : optionValue(answer.question, answer.selected)
+        const right = optionValue(answer.question, answer.question.correctKey)
+        const explanation = localized(answer.question.explanation, locale)
+        return (
+          <li key={`${answer.question.id}-${answerIndex}`}>
+            <article className={`${fb.reviewItem} ${answer.correct ? fb.feedbackRight : fb.feedbackWrong}`}>
+              <p className={fb.reviewStatus}><span className={fb.feedbackIcon} aria-hidden="true">{answer.correct ? '✓' : '✕'}</span>{answer.correct ? l.correct : timedOut ? l.timeUp : l.notQuite}</p>
+              <p className={fb.reviewPrompt}><Loc value={answer.question.prompt} locale={locale} /></p>
+              <p className={fb.reviewLine}><b>{l.yourAnswer}:</b> {chosen ? <Loc value={chosen} locale={locale} /> : l.noAnswer}</p>
+              {answer.correct || !right ? null : <p className={fb.reviewLine}><b>{l.correctAnswer}:</b> <Loc value={right} locale={locale} /></p>}
+              <p className={fb.reviewLine}><Loc value={answer.question.explanation} locale={locale} />{explanation.fallback ? <span className={fb.note}>({l.englishOnly})</span> : null}</p>
+              <Link className={styles.source} to={answer.question.source.route}>{l.source}{answer.question.source.label}</Link>
+            </article>
+          </li>
+        )
+      })}</ol>
     </section>
   )
 
@@ -103,23 +189,67 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
       const score = nextAnswers.reduce((sum, item) => sum + (item.correct ? 1 : 0), 0)
       const saved = recordPlayCompletion({ game, score, maxScore: round.length, category: category === 'all' ? game : category })
       void syncPlayCompletion(user, { game, score, maxScore: round.length, category: category === 'all' ? game : category, progress: saved.progress }).catch(() => undefined)
-      setResult({ score, max: round.length, xp: saved.xpEarned })
+      setResult({ score, max: round.length, xp: saved.xpEarned, badges: saved.newAchievements })
     } else {
       setIndex((value) => value + 1); setSelected(null); setHints(0); setSeconds(30)
     }
   }
 
+  const isCorrect = selected === question.correctKey
+  const timedOut = selected === TIMEOUT_KEY
+  const correctText = optionValue(question, question.correctKey)
+  const correctLabel = correctText ? localized(correctText, locale).text : ''
+  const announcement = !selected
+    ? ''
+    : isCorrect
+      ? `${l.correctBang}`
+      : `${timedOut ? l.timeUp : l.notQuite}. ${l.correctAnswer}: ${correctLabel}.`
+
   return (
-    <section aria-live="polite">
-      <div className={styles.progress}><span>{index + 1}/{round.length}{timed ? ` · ${seconds}s` : ''}</span>{streak >= 2 ? <span className={styles.streak}>{locale === 'am' ? `${streak} ተከታታይ` : `${streak} in a row`}</span> : null}<div className={styles.bar}><i style={{ width: `${((index + 1) / round.length) * 100}%` }} /></div></div>
+    <section className={locale === 'am' ? fb.am : undefined}>
+      <div className={fb.srOnly} role="status" aria-live="polite" aria-atomic="true">{announcement}</div>
+      <div className={fb.progressWrap}>
+        <GameProgress
+          locale={locale}
+          current={index + 1}
+          total={round.length}
+          label={l.question}
+          valueText={locale === 'am' ? `${l.question} ${index + 1} ከ ${round.length}` : `${l.question} ${index + 1} of ${round.length}`}
+          trailing={timed || streak >= 2 ? (
+            <>
+              {timed ? <span className={fb.timer}>{seconds}s</span> : null}
+              {streak >= 2 ? <span className={styles.streak}>{locale === 'am' ? `${streak} ተከታታይ` : `${streak} in a row`}</span> : null}
+            </>
+          ) : undefined}
+        />
+      </div>
       <article className={styles.questionCard}>
         {question.emoji ? <div className={styles.emoji} aria-label="Emoji clues">{question.emoji}</div> : null}
         {question.excerpt ? <p className={styles.excerpt}>{localized(question.excerpt, locale).text}</p> : null}
         <VerifiedFallback locale={locale === 'am' && !question.verifiedLocales.includes('am') ? locale : 'en'} />
-        <h2>{localized(question.prompt, locale).text}</h2>
+        <h2 className={fb.resultsHeading} ref={questionRef} tabIndex={-1}><Loc value={question.prompt} locale={locale} /></h2>
         {question.hints?.length ? <div className={styles.hintRow}><button className={styles.hint} type="button" disabled={hints >= question.hints.length || Boolean(selected)} onClick={() => setHints((value) => value + 1)}>{locale === 'am' ? 'ፍንጭ' : 'Use hint'} ({hints}/{question.hints.length})</button>{question.hints.slice(0, hints).map((hint, hintIndex) => <p className={styles.hintText} key={hintIndex}>{localized(hint, locale).text}</p>)}</div> : null}
-        <div className={styles.options}>{question.options.map((item) => <button key={item.key} className={`${styles.option} ${selected && item.key === question.correctKey ? styles.correct : ''} ${selected === item.key && item.key !== question.correctKey ? styles.incorrect : ''}`} type="button" disabled={Boolean(selected)} onClick={() => answer(item.key)}>{localized(item.text, locale).text}</button>)}</div>
-        {selected ? <div className={styles.feedback} role="status"><strong>{selected === question.correctKey ? (locale === 'am' ? 'ትክክል!' : 'Correct!') : (locale === 'am' ? 'እንደገና ይማሩ' : 'Keep learning')}</strong><p>{localized(question.explanation, locale).text}</p><Link className={styles.source} to={question.source.route}>{locale === 'am' ? 'ምንጭ፦ ' : 'Source: '}{question.source.label}</Link><div className={styles.actions}><button className={styles.action} type="button" onClick={next}>{index === round.length - 1 ? (locale === 'am' ? 'ውጤት' : 'See results') : (locale === 'am' ? 'ቀጣይ' : 'Next')}</button></div></div> : null}
+        <div className={styles.options}>{question.options.map((item) => {
+          const isRight = Boolean(selected) && item.key === question.correctKey
+          const isChosen = selected === item.key
+          const isWrong = isChosen && !isRight
+          return (
+            <button key={item.key} className={`${styles.option} ${isRight ? styles.correct : ''} ${isWrong ? styles.incorrect : ''}`} type="button" disabled={Boolean(selected)} onClick={() => answer(item.key)}>
+              <span className={fb.optionInner}>
+                <span className={fb.optionText}><Loc value={item.text} locale={locale} /></span>
+                {isRight ? <span className={`${fb.badge} ${fb.badgeRight}`}><span aria-hidden="true">✓</span>{isChosen ? `${l.yourAnswer} · ${l.correct}` : l.correctAnswer}</span> : null}
+                {isWrong ? <span className={`${fb.badge} ${fb.badgeWrong}`}><span aria-hidden="true">✕</span>{l.yourAnswer}</span> : null}
+              </span>
+            </button>
+          )
+        })}</div>
+        {selected ? <div className={`${styles.feedback} ${isCorrect ? fb.feedbackRight : fb.feedbackWrong} ${fb.feedbackEnter}`}>
+          <strong className={fb.feedbackTitle}><span className={fb.feedbackIcon} aria-hidden="true">{isCorrect ? '✓' : '✕'}</span>{isCorrect ? l.correctBang : timedOut ? l.timeUp : l.notQuite}</strong>
+          {isCorrect || !correctText ? null : <p className={fb.answerLine}>{l.correctAnswer}: <Loc value={correctText} locale={locale} /></p>}
+          <p><Loc value={question.explanation} locale={locale} />{localized(question.explanation, locale).fallback ? <span className={fb.note}>({l.englishOnly})</span> : null}</p>
+          <Link className={styles.source} to={question.source.route}>{l.source}{question.source.label}</Link>
+          <div className={styles.actions}><button ref={nextRef} className={styles.action} type="button" onClick={next}>{index === round.length - 1 ? (locale === 'am' ? 'ውጤት' : 'See results') : (locale === 'am' ? 'ቀጣይ' : 'Next')}</button></div>
+        </div> : null}
       </article>
     </section>
   )

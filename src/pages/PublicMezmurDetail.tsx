@@ -185,11 +185,6 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
           />
         </aside>
       ) : null}
-      {import.meta.env.DEV ? (
-        <pre className={s.queueDiagnostics} data-testid="mezmur-queue-diagnostics">
-          {JSON.stringify({ ...queue.diagnostics, history: queue.diagnostics.history.length }, null, 1)}
-        </pre>
-      ) : null}
       <ChantPracticePlayer
         payload={payload}
         queue={queueProps}

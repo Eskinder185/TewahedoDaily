@@ -154,7 +154,7 @@ export const GAME_ART: Record<string, PlayArt> = {
   'game-night': art('JoyfulFeastSeason', 'A congregation celebrating with drums and candles', 'ምእመናን በከበሮና በሻማ ሲያከብሩ', 'center 40%'),
   feasts: art('Timket', 'Timket celebration around the water at night', 'የጥምቀት በዓል', 'center 50%', 'timket'),
   saints: art('KidusGiorgis', 'Icon of Saint George on a white horse', 'የቅዱስ ጊዮርጊስ ሥዕል', 'center 30%', 'giorgis'),
-  'icon-memory': art('SacredCalendarContinuity', 'An illuminated icon of Christ surrounded by saints', 'በቅዱሳን የተከበበ የክርስቶስ ሥዕል', 'center 40%'),
+  'icon-memory': art('SacredCalendarContinuity', 'An icon of the Archangel Michael among angels', 'ሊቀ መላእክት ሚካኤል በመላእክት መካከል', 'center 40%', 'hymn-collection-angels-saints'),
   'faith-order': art('MonasticSaintsRemembrance', 'Monks reading in a candlelit church', 'መነኮሳት በሻማ ብርሃን ሲያነቡ', 'center 45%'),
 }
 

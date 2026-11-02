@@ -95,17 +95,16 @@ function DailyFaithDashboardContent({
   }
 
   // Persisted Bible reading mode: 'parallel' | 'am' | 'en'
-  const [readingMode, setReadingMode] = useState<ReadingMode>(() => {
-    try {
-      const stored = localStorage.getItem('tewahedo_bible_reading_mode')
-      if (stored === 'parallel' || stored === 'am' || stored === 'en') {
-        return stored
-      }
-    } catch {
-      // Fallback
-    }
-    return contentLocale === 'am' ? 'am' : 'parallel'
-  })
+  // Follows the global language; the in-page buttons are an explicit override
+  // that lasts until the global language changes.
+  const [override, setOverride] = useState<{ locale: string; mode: ReadingMode } | null>(null)
+  const readingMode: ReadingMode =
+    override && override.locale === contentLocale
+      ? override.mode
+      : contentLocale === 'am'
+        ? 'am'
+        : 'en'
+  const setReadingMode = (mode: ReadingMode) => setOverride({ locale: contentLocale, mode })
 
   const handleModeChange = (mode: ReadingMode) => {
     setReadingMode(mode)
@@ -608,7 +607,7 @@ function DailyFaithDashboardContent({
             <span className={styles.liturgyFocusValue}>
               {contentLocale === 'am'
                 ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተክርስቲያን ስርዓተ ቅዳሴ (ቅዳሴ እግዚእ)'
-                : 'The Divine Liturgy (ስርዓተ ቅዳሴ) — Liturgy of the Faithful'}
+                : 'The Divine Liturgy — Liturgy of the Faithful'}
               {' '}
               <Link to="/pray/divine-liturgy" className={styles.sectionLink}>
                 {contentLocale === 'am' ? 'ስርዓተ ቅዳሴን ተመልከት' : 'View Divine Liturgy'} →

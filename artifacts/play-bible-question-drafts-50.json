@@ -1,0 +1,2405 @@
+{
+  "status": "draft",
+  "questions": [
+    {
+      "id": "bible-genesis-1-2-2-7249626fb3",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:2? Now the earth was ___ and empty. Darkness was on the surface of the deep. God's Spirit was hovering over the surface of the waters."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "formless"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:2",
+        "route": "/bible/genesis/1?edition=web#verse-2",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-1-1-13494a68b8",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:1? Now these are the names of the sons of Israel, who came into Egypt (every man and his ___ came with Jacob):"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "household"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:1",
+        "route": "/bible/exodus/1?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-1-1-0ddac0030e",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:1? The book of the ___ of Jesus Christ, the son of David, the son of Abraham."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "genealogy"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:1",
+        "route": "/bible/matthew/1?edition=web#verse-1",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-3-3-a11b01e5b3",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:3? All things were made through him. Without him was not ___ made that has been made."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "anything"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:3",
+        "route": "/bible/john/1?edition=web#verse-3",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-4-4-9da6360ffc",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:4? God saw the light, and saw that it was good. God divided the light from the ___."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "darkness"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:4",
+        "route": "/bible/genesis/1?edition=web#verse-4",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-5-5-18dcff2d45",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:5? All the souls who came out of Jacob's body were ___ souls, and Joseph was in Egypt already."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "seventy"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:5",
+        "route": "/bible/exodus/1?edition=web#verse-5",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-2-2-8b492fd83a",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:2? Abraham became the father of Isaac. Isaac became the father of Jacob. Jacob became the father of Judah and his ___."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "brothers"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:2",
+        "route": "/bible/matthew/1?edition=web#verse-2",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-6-6-5c548ea39e",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:6? ___ came a man, sent from God, whose name was John."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "there"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:6",
+        "route": "/bible/john/1?edition=web#verse-6",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-5-5-f2d645e354",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:5? God called the light \"day,\" and the ___ he called \"night.\" There was evening and there was morning, one day."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "darkness"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:5",
+        "route": "/bible/genesis/1?edition=web#verse-5",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-7-7-327bfd8181",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:7? The children of Israel were fruitful, and increased abundantly, and multiplied, and grew ___ mighty; and the land was filled with them."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "exceedingly"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:7",
+        "route": "/bible/exodus/1?edition=web#verse-7",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-3-3-e0726da49a",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:3? Judah ___ the father of Perez and Zerah by Tamar. Perez became the father of Hezron. Hezron became the father of Ram."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "became"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:3",
+        "route": "/bible/matthew/1?edition=web#verse-3",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-7-7-a02066b2a0",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:7? The same came as a ___, that he might testify about the light, that all might believe through him."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "witness"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:7",
+        "route": "/bible/john/1?edition=web#verse-7",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-6-6-0e24c967fb",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:6? God said, \"Let there be an ___ in the middle of the waters, and let it divide the waters from the waters.\""
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "expanse"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:6",
+        "route": "/bible/genesis/1?edition=web#verse-6",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-8-8-cc4a7f9b78",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:8? Now there arose a new king over Egypt, who didn't know ___."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "joseph"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:8",
+        "route": "/bible/exodus/1?edition=web#verse-8",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-5-5-016ad60f62",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:5? ___ became the father of Boaz by Rahab. Boaz became the father of Obed by Ruth. Obed became the father of Jesse."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "salmon"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:5",
+        "route": "/bible/matthew/1?edition=web#verse-5",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-8-8-a16d0f47ba",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:8? He was not the light, but was sent that he might ___ about the light."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "testify"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:8",
+        "route": "/bible/john/1?edition=web#verse-8",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-7-7-66d2f2c5b6",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:7? God made the ___, and divided the waters which were under the expanse from the waters which were above the expanse; and it was so."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "expanse"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:7",
+        "route": "/bible/genesis/1?edition=web#verse-7",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-9-9-0cc4bf2e3d",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:9? He said to his people, \"Behold, the people of the ___ of Israel are more and mightier than we."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "children"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:9",
+        "route": "/bible/exodus/1?edition=web#verse-9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-6-6-c9e79191f7",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:6? Jesse became the father of King David. David became the father of ___ by her who had been the wife of Uriah."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "solomon"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:6",
+        "route": "/bible/matthew/1?edition=web#verse-6",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-9-9-512197d6a9",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:9? The true light that ___ everyone was coming into the world."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "enlightens"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:9",
+        "route": "/bible/john/1?edition=web#verse-9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-8-8-97faae3f17",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:8? God called the ___ \"sky.\" There was evening and there was morning, a second day."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "expanse"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:8",
+        "route": "/bible/genesis/1?edition=web#verse-8",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-10-10-a7a012abab",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:10? Come, let us deal wisely with them, lest they multiply, and it happen that when any war breaks out, they also join ___ to our enemies, and fight against us, and escape out of the land.\""
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "themselves"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:10",
+        "route": "/bible/exodus/1?edition=web#verse-10",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-9-9-d1fcee48fc",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:9? Uzziah became the father of Jotham. Jotham became the father of Ahaz. Ahaz became the father of ___."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "hezekiah"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:9",
+        "route": "/bible/matthew/1?edition=web#verse-9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-12-12-8ada72bb56",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:12? But as many as ___ him, to them he gave the right to become God's children, to those who believe in his name:"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "received"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:12",
+        "route": "/bible/john/1?edition=web#verse-12",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-9-9-d530da019a",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:9? God said, \"Let the waters under the sky be ___ together to one place, and let the dry land appear;\" and it was so."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "gathered"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:9",
+        "route": "/bible/genesis/1?edition=web#verse-9",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-11-11-84ef170e5e",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:11? Therefore they set ___ over them to afflict them with their burdens. They built storage cities for Pharaoh: Pithom and Raamses."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "taskmasters"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:11",
+        "route": "/bible/exodus/1?edition=web#verse-11",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-10-10-a95429e67d",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:10? ___ became the father of Manasseh. Manasseh became the father of Amon. Amon became the father of Josiah."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "hezekiah"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:10",
+        "route": "/bible/matthew/1?edition=web#verse-10",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-14-14-39b70d99f7",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:14? The Word ___ flesh, and lived among us. We saw his glory, such glory as of the one and only Son of the Father, full of grace and truth."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "became"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:14",
+        "route": "/bible/john/1?edition=web#verse-14",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-10-10-795de57af9",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:10? God called the dry land \"earth,\" and the ___ together of the waters he called \"seas.\" God saw that it was good."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "gathering"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:10",
+        "route": "/bible/genesis/1?edition=web#verse-10",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-12-12-56d75701f2",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:12? But the more they afflicted them, the more they ___ and the more they spread out. They were grieved because of the children of Israel."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "multiplied"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:12",
+        "route": "/bible/exodus/1?edition=web#verse-12",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-11-11-29826d4cf9",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:11? Josiah became the father of ___ and his brothers, at the time of the exile to Babylon."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "jechoniah"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:11",
+        "route": "/bible/matthew/1?edition=web#verse-11",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-15-15-f87b9a74d1",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:15? John ___ about him. He cried out, saying, \"This was he of whom I said, 'He who comes after me has surpassed me, for he was before me.'\""
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "testified"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:15",
+        "route": "/bible/john/1?edition=web#verse-15",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-11-11-e9f8e014dd",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:11? God said, \"Let the earth put forth grass, herbs ___ seed, and fruit trees bearing fruit after their kind, with its seed in it, on the earth;\" and it was so."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "yielding"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:11",
+        "route": "/bible/genesis/1?edition=web#verse-11",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-13-13-fd90d74d02",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:13? The Egyptians ___ made the children of Israel serve,"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "ruthlessly"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:13",
+        "route": "/bible/exodus/1?edition=web#verse-13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-12-12-f1dec11457",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:12? After the exile to Babylon, Jechoniah became the father of Shealtiel. Shealtiel became the father of ___."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "zerubbabel"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:12",
+        "route": "/bible/matthew/1?edition=web#verse-12",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-17-17-6f9c97a4fc",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:17? For the law was given through Moses. Grace and truth were ___ through Jesus Christ."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "realized"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:17",
+        "route": "/bible/john/1?edition=web#verse-17",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-12-12-4425e99acc",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:12? The earth brought forth grass, herbs ___ seed after their kind, and trees bearing fruit, with its seed in it, after their kind; and God saw that it was good."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "yielding"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:12",
+        "route": "/bible/genesis/1?edition=web#verse-12",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-14-14-f2fe142e5b",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:14? and they made their lives bitter with hard service, in mortar and in brick, and in all kinds of service in the field, all their service, in which they ___ made them serve."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "ruthlessly"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:14",
+        "route": "/bible/exodus/1?edition=web#verse-14",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-13-13-20034ffe8e",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:13? ___ became the father of Abiud. Abiud became the father of Eliakim. Eliakim became the father of Azor."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "zerubbabel"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:13",
+        "route": "/bible/matthew/1?edition=web#verse-13",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-18-18-f62b49ce2d",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:18? No one has seen God at any time. The one and only Son, who is in the bosom of the Father, he has ___ him."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "declared"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:18",
+        "route": "/bible/john/1?edition=web#verse-18",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-14-14-07868aefcf",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:14? God said, \"Let there be lights in the ___ of sky to divide the day from the night; and let them be for signs, and for seasons, and for days and years;"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "expanse"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:14",
+        "route": "/bible/genesis/1?edition=web#verse-14",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-15-15-382851ae2f",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:15? The king of Egypt spoke to the Hebrew ___, of whom the name of the one was Shiphrah, and the name of the other Puah,"
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "midwives"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:15",
+        "route": "/bible/exodus/1?edition=web#verse-15",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-14-14-0fa300d868",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:14? Azor ___ the father of Sadoc. Sadoc became the father of Achim. Achim became the father of Eliud."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "became"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:14",
+        "route": "/bible/matthew/1?edition=web#verse-14",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-19-19-a7ad68f7f1",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:19? This is John's ___, when the Jews sent priests and Levites from Jerusalem to ask him, \"Who are you?\""
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "testimony"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:19",
+        "route": "/bible/john/1?edition=web#verse-19",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-15-15-56a1781e57",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:15? and let them be for lights in the ___ of sky to give light on the earth;\" and it was so."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "expanse"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:15",
+        "route": "/bible/genesis/1?edition=web#verse-15",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-16-16-1fa4f08125",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:16? and he said, \"When you perform the duty of a midwife to the Hebrew women, and see them on the birth stool; if it is a son, then you shall kill him; but if it is a ___, then she shall live.\""
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "daughter"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:16",
+        "route": "/bible/exodus/1?edition=web#verse-16",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-matthew-1-15-15-b34b058149",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse matthew 1:15? Eliud became the father of ___. Eleazar became the father of Matthan. Matthan became the father of Jacob."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "eleazar"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "ability"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiud"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "matthew 1:15",
+        "route": "/bible/matthew/1?edition=web#verse-15",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-john-1-21-21-b5ba382077",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "challenge",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse john 1:21? They asked him, \"What then? Are you Elijah?\" He said, \"I am not.\" \"Are you the prophet?\" He ___, \"No.\""
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "answered"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "able"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "about"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "above"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "john 1:21",
+        "route": "/bible/john/1?edition=web#verse-21",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-genesis-1-16-16-1b6f6f3958",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "beginner",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse genesis 1:16? God made the two great lights: the ___ light to rule the day, and the lesser light to rule the night. He also made the stars."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "greater"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "abated"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abel"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abida"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "genesis 1:16",
+        "route": "/bible/genesis/1?edition=web#verse-16",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    },
+    {
+      "id": "bible-exodus-1-17-17-63d97efc2d",
+      "game": "trivia",
+      "category": "Bible",
+      "difficulty": "growing",
+      "prompt": {
+        "en": "Which word completes the exact WEB verse exodus 1:17? But the midwives feared God, and didn't do what the king of Egypt ___ them, but saved the baby boys alive."
+      },
+      "options": [
+        {
+          "key": "a",
+          "text": {
+            "en": "commanded"
+          }
+        },
+        {
+          "key": "b",
+          "text": {
+            "en": "aaron"
+          }
+        },
+        {
+          "key": "c",
+          "text": {
+            "en": "abhorred"
+          }
+        },
+        {
+          "key": "d",
+          "text": {
+            "en": "abiasaph"
+          }
+        }
+      ],
+      "correctKey": "a",
+      "explanation": {
+        "en": "The cited WEB verse contains the answer word in this exact source passage."
+      },
+      "source": {
+        "label": "exodus 1:17",
+        "route": "/bible/exodus/1?edition=web#verse-17",
+        "kind": "bible"
+      },
+      "verifiedLocales": [
+        "en"
+      ],
+      "status": "draft"
+    }
+  ]
+}

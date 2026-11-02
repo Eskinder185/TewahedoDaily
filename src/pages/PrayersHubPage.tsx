@@ -4,6 +4,7 @@ import { PageSection } from '../components/ui/PageSection'
 import { usePrayerHubSnapshot } from '../hooks/usePrayerHubSnapshot'
 import type { UiLabelKey } from '../lib/i18n/uiLabels'
 import { useUiLabel } from '../lib/i18n/uiLabels'
+import { useLocale } from '../lib/i18n/locale'
 import type { PrayerHubRoute } from '../lib/prayers/prayerHubActivity'
 import { recordPrayerHubVisit } from '../lib/prayers/prayerHubActivity'
 import { scrollElementNodeIntoView } from '../lib/scrollUtils'
@@ -27,6 +28,7 @@ function scrollToEl(el: HTMLElement | null) {
 
 export function PrayersHubPage() {
   const t = useUiLabel()
+  const { uiLocale } = useLocale()
   const { lastVisit, recent, saved } = usePrayerHubSnapshot()
   const libraryRef = useRef<HTMLDivElement>(null)
   const savedRef = useRef<HTMLDivElement>(null)
@@ -215,8 +217,8 @@ export function PrayersHubPage() {
               onClick={visit('/prayers/yekidane-tselot')}
             >
               <div className={styles.cardHead}>
-                <span className={styles.zemaBadge} lang="am">
-                  ዜማ + ጽሑፍ
+                <span className={styles.zemaBadge}>
+                  {uiLocale === 'am' ? 'ዜማ + ጽሑፍ' : 'Chant + text'}
                 </span>
                 <h3 className={styles.cardTitle}>{t('prayerHubYekidaneTitle')}</h3>
                 <div className={styles.cardMetaRow}>
@@ -240,8 +242,8 @@ export function PrayersHubPage() {
               onClick={visit('/prayers/meharene-ab')}
             >
               <div className={styles.cardHead}>
-                <span className={styles.zemaBadge} lang="am">
-                  ዜማ + ጽሑፍ
+                <span className={styles.zemaBadge}>
+                  {uiLocale === 'am' ? 'ዜማ + ጽሑፍ' : 'Chant + text'}
                 </span>
                 <h3 className={styles.cardTitle}>{t('prayerHubMehareneTitle')}</h3>
                 <div className={styles.cardMetaRow}>

@@ -15,15 +15,15 @@ type HubGame = PlayGameCard & { section: Section }
 const t = (en: string, am: string) => ({ en, am })
 
 const GAMES: HubGame[] = [
-  { id: 'feasts', section: 'pictures', route: '/play/feasts', art: GAME_ART.feasts, badge: t('New', 'አዲስ'),
+  { id: 'feasts', section: 'pictures', route: '/play/feasts', art: GAME_ART.feasts,
     title: t('Church Feast Challenge', 'የበዓላት ፈተና'), category: t('Pictures', 'ሥዕሎች'),
     description: t('Name the feast from its icon or photograph — Gena, Timket, Meskel and more.', 'በዓሉን ከሥዕሉ ይለዩ — ገና፣ ጥምቀት፣ መስቀልና ሌሎችም።'),
     meta: t('12 feasts · reveal mode', '12 በዓላት · የመግለጥ ሁነታ') },
-  { id: 'saints', section: 'pictures', route: '/play/saints', art: GAME_ART.saints, badge: t('New', 'አዲስ'),
+  { id: 'saints', section: 'pictures', route: '/play/saints', art: GAME_ART.saints,
     title: t('Guess the Saint', 'ቅዱሱን ይለዩ'), category: t('Pictures', 'ሥዕሎች'),
     description: t('Recognise the archangels and saints of the Church from their icons.', 'ሊቃነ መላእክትንና ቅዱሳንን ከሥዕላቸው ይለዩ።'),
     meta: t('10 icons', '10 ሥዕሎች') },
-  { id: 'icon-memory', section: 'pictures', route: '/play/icon-memory', art: GAME_ART['icon-memory'], badge: t('New', 'አዲስ'),
+  { id: 'icon-memory', section: 'pictures', route: '/play/icon-memory', art: GAME_ART['icon-memory'],
     title: t('Icon Memory', 'የሥዕል ትውስታ'), category: t('Pictures', 'ሥዕሎች'),
     description: t('Turn the cards and match every holy picture with its name.', 'ካርዶቹን ገልጠው ቅዱስ ሥዕልን ከስሙ ጋር ያዛምዱ።'),
     meta: t('4–8 pairs', '4–8 ጥንዶች') },
@@ -39,14 +39,14 @@ const GAMES: HubGame[] = [
     title: t('Finish the Verse', 'ጥቅሱን ይጨርሱ'), category: t('Scripture', 'መጽሐፍ ቅዱስ'),
     description: t('Complete exact excerpts from the English and Amharic Bible.', 'ከእንግሊዝኛና ከአማርኛ መጽሐፍ ቅዱስ ጥቅሶችን ያሟሉ።'),
     meta: t('English + አማርኛ', 'አማርኛ + English') },
-  { id: 'bible-timeline', section: 'scripture', route: '/play/bible-timeline', art: GAME_ART['bible-timeline'], badge: t('New', 'አዲስ'),
+  { id: 'bible-timeline', section: 'scripture', route: '/play/bible-timeline', art: GAME_ART['bible-timeline'],
     title: t('Bible Timeline Challenge', 'የመጽሐፍ ቅዱስ የጊዜ ቅደም ተከተል'), category: t('Scripture', 'መጽሐፍ ቅዱስ'),
     description: t('Arrange Bible events in the order they happened, with exact references.', 'የመጽሐፍ ቅዱስ ክስተቶችን በተፈጸሙበት ቅደም ተከተል ያስቀምጡ።'),
     meta: t('3–8 events · 3 levels', '3–8 ክስተቶች · 3 ደረጃዎች') },
   { id: 'adventures', section: 'scripture', route: '/play/adventures', art: GAME_ART.adventures,
     title: t('Bible Adventure', 'የመጽሐፍ ቅዱስ ጀብዱ'), category: t('Story', 'ታሪክ'),
-    description: t('Walk through Exodus 14 in three scenes with learning checkpoints.', 'ዘፀአት 14ን በሦስት ትዕይንቶች ይጓዙ።'),
-    meta: t('1 chapter · 3 scenes', '1 ምዕራፍ · 3 ትዕይንቶች') },
+    description: t('Explore 6 interactive stories from Scripture in three scenes with learning checkpoints.', '6 የመጽሐፍ ቅዱስ ታሪኮችን በሦስት ትዕይንቶችና የመማሪያ ነጥቦች ይጓዙ።'),
+    meta: t('6 stories · 3 scenes each', '6 ታሪኮች · 3 ትዕይንቶች') },
   { id: 'mezmur', section: 'music', route: '/play/finish-the-mezmur', art: GAME_ART['finish-the-mezmur'],
     title: t('Finish the Mezmur', 'መዝሙሩን ይጨርሱ'), category: t('Mezmur', 'መዝሙር'),
     description: t('Lyrics, titles and occasions from verified Mezmur records.', 'ከተረጋገጡ የመዝሙር መዝገቦች ግጥም፣ ርዕስና አጋጣሚ።') },
@@ -81,8 +81,7 @@ export function PlayHubPage() {
   const am = locale === 'am'
   const [difficulty, setDifficulty] = useState<GameDifficulty>('beginner')
   const [filter, setFilter] = useState<Section | 'all'>('all')
-  const featured = GAMES.filter((g) => g.section === 'pictures')
-  const visible = useMemo(() => GAMES.filter((g) => filter === 'all' || g.section === filter), [filter])
+  const visible = useMemo(() => GAMES.filter((game) => filter === 'all' || game.section === filter), [filter])
 
   return (
     <div className={styles.page} lang={locale}>
@@ -138,26 +137,13 @@ export function PlayHubPage() {
           </Link>
         </section>
 
-        {/* ---------- Featured: picture games ---------- */}
-        <section className={styles.featured} aria-labelledby="featured-title">
-          <div className={styles.sectionHeading}>
-            <div>
-              <p className={styles.eyebrow}>{am ? 'አዲስ' : 'New'}</p>
-              <h2 id="featured-title">{am ? 'ሥዕሎችና በዓላት' : 'Icons & feasts'}</h2>
-              <p>{am ? 'የቤተ ክርስቲያን ሥዕሎች ራሳቸው ጨዋታው ናቸው። እያንዳንዱ ሥዕል ከቀን መቁጠሪያው ጋር ተረጋግጧል።' : 'The Church’s own icons are the game. Each picture is checked against the TewahedoDaily calendar before it appears.'}</p>
-            </div>
-          </div>
-          <div className={styles.featuredGrid}>
-            {featured.map((game) => <GameCard key={game.id} game={game} locale={locale} size="feature" />)}
-          </div>
-        </section>
-
         {/* ---------- All games ---------- */}
         <section className={styles.gamesSection} id="games" aria-labelledby="games-title">
           <div className={styles.sectionHeading}>
             <div>
-              <p className={styles.eyebrow}>{am ? 'መንገድዎን ይምረጡ' : 'Choose your path'}</p>
-              <h2 id="games-title">{am ? 'ሁሉም ጨዋታዎች' : 'Every game'}</h2>
+              <p className={styles.eyebrow}>{GAMES.length} {am ? 'ጨዋታዎች' : 'games'}</p>
+              <h2 id="games-title">{am ? 'መንገድዎን ይምረጡ' : 'Choose Your Path'}</h2>
+              <p>{am ? 'ሥዕሎች፣ መጽሐፍ ቅዱስ፣ መዝሙር፣ ታሪክና የቡድን ጨዋታ — ሁሉም በአንድ ቦታ።' : 'Icons, Scripture, Mezmur, history and group play — all in one place.'}</p>
             </div>
             <GameDifficultyPicker locale={locale} value={difficulty} onChange={setDifficulty} />
           </div>

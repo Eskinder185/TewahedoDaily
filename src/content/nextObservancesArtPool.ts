@@ -2,6 +2,7 @@ import type { UpcomingObservance } from '../lib/churchCalendar'
 import { resolveUpcomingImage } from './calendarImageManifest'
 import { COMPANION_IMAGE_FILE, isCompanionObservanceId } from './nextObservancesCompanions'
 import { isLocalAssetAvailable } from '../lib/media/localAssetAvailability'
+import { resolveMedia } from '../lib/media/mediaResolver'
 
 const CALENDAR_WEB_ROOT = '/images/calendar-web'
 
@@ -400,6 +401,28 @@ export function assignNextObservanceArts(
   }
 
   return items.map((item, i) => {
+    const newMedia = resolveMedia({
+      id: item.id,
+      slug: item.id,
+      title: item.title,
+      titleAmharic: item.transliterationTitle,
+      domain: 'calendar',
+      allowLegacyFallback: false,
+    })
+    if (newMedia.hasImage && newMedia.imageUrl) {
+      const category = inferObservanceVisualNeed(item)
+      const art: NextObservancesPoolArt = {
+        src: newMedia.imageUrl,
+        fileName: newMedia.storagePath ?? item.id,
+        title: item.title,
+        category,
+        categoryLabel: formatCategoryLabel(category),
+        summary: summaryFromPoolMeta(item.title, category),
+      }
+      used.add(art.src)
+      return { item, art }
+    }
+
     const fromEvent = poolArtFromEventId(item.id)
     if (fromEvent) {
       used.add(fromEvent.src)

@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { GameShell } from '../../components/play/GameShell'
+import { GameShell, PublishedQuestionsStatus } from '../../components/play/GameShell'
 import { MatchGame } from '../../components/play/MatchGame'
 import { QuizGame } from '../../components/play/QuizGame'
 import { WhoAmIGame } from '../../components/play/WhoAmIGame'
 import { HistoryQuestGame } from '../../components/play/HistoryQuestGame'
-import { MezmurGame } from '../../components/play/MezmurGame'
 import { BibleTimelineGame } from '../../components/play/BibleTimelineGame'
+import { FinishMezmurGame } from '../../components/play/FinishMezmurGame'
 import { PictureQuizGame } from '../../components/play/PictureQuizGame'
 import { IconMemoryGame } from '../../components/play/IconMemoryGame'
 import { useLocale } from '../../lib/i18n/locale'
@@ -24,7 +24,7 @@ const META: Record<PageGame, { title: { en: string; am: string }; subtitle: { en
   trivia: { title: { en: 'Bible & Tewahedo Trivia', am: 'የመጽሐፍ ቅዱስና ተዋሕዶ ጥያቄ' }, subtitle: { en: 'Choose a level, answer sourced questions, and learn from every explanation.', am: 'ደረጃ ይምረጡ፣ ምንጭ ያላቸውን ጥያቄዎች ይመልሱ፣ ከማብራሪያውም ይማሩ።' } },
   emoji: { title: { en: 'Holy Emoji Challenge', am: 'የቅዱስ ኢሞጂ ፈተና' }, subtitle: { en: 'Decode visual clues. Fewer hints earn a stronger round.', am: 'የምስል ፍንጮችን ይፍቱ። ጥቂት ፍንጭ የተሻለ ውጤት ያስገኛል።' } },
   'finish-the-verse': { title: { en: 'Finish the Verse', am: 'ጥቅሱን ይጨርሱ' }, subtitle: { en: 'Complete exact excerpts from the site’s English and Amharic Bible sources.', am: 'ከጣቢያው የእንግሊዝኛና የአማርኛ መጽሐፍ ቅዱስ ትክክለኛ ጥቅሶችን ያሟሉ።' } },
-  'finish-the-mezmur': { title: { en: 'Finish the Mezmur', am: 'መዝሙሩን ይጨርሱ' }, subtitle: { en: 'Only editor-published questions tied to verified Mezmur records appear here.', am: 'ከተረጋገጡ የመዝሙር መዝገቦች ጋር የተያያዙ በአርታዒ የታተሙ ጥያቄዎች ብቻ እዚህ ይታያሉ።' } },
+  'finish-the-mezmur': { title: { en: 'Finish the Mezmur', am: 'መዝሙሩን ይጨርሱ' }, subtitle: { en: 'Fill the missing line from the Church’s verified lyrics — choose it, arrange the words, or type it.', am: 'ከተረጋገጡ ግጥሞች የጎደለውን መስመር ይሙሉ — ይምረጡ፣ ቃላቱን ያስተካክሉ ወይም ይጻፉ።' } },
   history: { title: { en: 'History Quest', am: 'የታሪክ ጉዞ' }, subtitle: { en: 'Explore reviewed Ethiopian and worldwide Church history with linked sources.', am: 'የተገመገመውን የኢትዮጵያና የዓለም ቤተ ክርስቲያን ታሪክ በምንጮች ያስሱ።' } },
   'who-am-i': { title: { en: 'Who Am I?', am: 'እኔ ማን ነኝ?' }, subtitle: { en: 'A fast family guessing game—no camera required.', am: 'ፈጣን የቤተሰብ ግምት ጨዋታ—ካሜራ አያስፈልግም።' } },
   match: { title: { en: 'Match & Discover', am: 'ያዛምዱና ያግኙ' }, subtitle: { en: 'Find the relationships, then read why every pair belongs together.', am: 'ግንኙነቶቹን ያግኙ፣ ከዚያም እያንዳንዱ ጥንድ ለምን እንደሚዛመድ ያንብቡ።' } },
@@ -40,26 +40,39 @@ export function PlayGamePage({ game }: { game: PageGame }) {
   const { locale } = useLocale()
   const [searchParams] = useSearchParams()
   const meta = META[game]
-  const isQuiz = !['who-am-i', 'match', 'feasts', 'saints', 'icon-memory', 'bible-timeline'].includes(game)
+  const isQuiz = !['who-am-i', 'match', 'feasts', 'saints', 'icon-memory', 'finish-the-mezmur', 'bible-timeline'].includes(game)
   // Church Library questions only appear once their book is published.
   const staticQuestions = useMemo(() => isQuiz ? withoutLibrarySources(questionsFor(game as QuizPageGame)) : [], [game, isQuiz])
   const [questions, setQuestions] = useState<PlayQuestion[]>(staticQuestions)
+  const [publishedState, setPublishedState] = useState<'loading' | 'ready' | 'error'>(isQuiz ? 'loading' : 'ready')
+  const [retryToken, setRetryToken] = useState(0)
   const level = LEVELS.find((l) => l === searchParams.get('level'))
 
   useEffect(() => {
     if (!isQuiz) return
     let active = true
     void (async () => {
-      const [publicStatic, published] = await Promise.all([
-        withPublicSources(questionsFor(game as QuizPageGame)),
-        loadPublishedPlayQuestions(game as QuizPageGame).then(withPublicSources),
-      ])
-      if (!active) return
-      const merged = new Map([...publicStatic, ...published].map((item) => [item.id, item]))
-      if (merged.size !== staticQuestions.length) setQuestions([...merged.values()])
+      try {
+        const [publicStatic, published] = await Promise.all([
+          withPublicSources(questionsFor(game as QuizPageGame)),
+          loadPublishedPlayQuestions(game as QuizPageGame).then(withPublicSources),
+        ])
+        if (!active) return
+        const merged = new Map([...publicStatic, ...published].map((item) => [item.id, item]))
+        setQuestions([...merged.values()])
+        setPublishedState('ready')
+      } catch {
+        if (active) setPublishedState('error')
+      }
     })()
+
     return () => { active = false }
-  }, [game, isQuiz, staticQuestions])
+  }, [game, isQuiz, retryToken])
+
+  const retryPublishedQuestions = () => {
+    setPublishedState('loading')
+    setRetryToken((value) => value + 1)
+  }
 
   const body = (() => {
     switch (game) {
@@ -67,7 +80,7 @@ export function PlayGamePage({ game }: { game: PageGame }) {
       case 'match': return <MatchGame locale={locale} />
       case 'history': return <HistoryQuestGame locale={locale} questions={questions} />
       case 'bible-timeline': return <BibleTimelineGame locale={locale} />
-      case 'finish-the-mezmur': return <MezmurGame locale={locale} questions={questions} />
+      case 'finish-the-mezmur': return <FinishMezmurGame locale={locale} />
       case 'feasts': return <PictureQuizGame locale={locale} config={{ game: 'feasts', pool: feastImages(), prompt: { en: 'Which feast does this picture show?', am: 'ይህ ሥዕል የትኛውን በዓል ያሳያል?' }, noun: { en: 'feast', am: 'በዓል' } }} />
       case 'saints': return <PictureQuizGame locale={locale} config={{ game: 'saints', pool: holyPersonImages(), prompt: { en: 'Who is shown in this icon?', am: 'በዚህ ሥዕል ያለው ማን ነው?' }, noun: { en: 'saint', am: 'ቅዱስ' } }} />
       case 'icon-memory': return <IconMemoryGame locale={locale} />
@@ -77,6 +90,7 @@ export function PlayGamePage({ game }: { game: PageGame }) {
 
   return (
     <GameShell locale={locale} title={meta.title[locale]} subtitle={meta.subtitle[locale]} art={GAME_ART[game]}>
+      {isQuiz && publishedState !== 'ready' ? <PublishedQuestionsStatus locale={locale} state={publishedState} onRetry={publishedState === 'error' ? retryPublishedQuestions : undefined} /> : null}
       {body}
     </GameShell>
   )

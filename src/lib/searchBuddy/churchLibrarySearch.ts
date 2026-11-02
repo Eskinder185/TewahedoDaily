@@ -38,6 +38,35 @@ export type ChurchLibrarySearchResponse = {
 
 const MAX_RESULTS = 8
 
+// TEMPORARY development-only timing. Records only an event name, a rounded
+// duration and a coarse outcome (never queries, text, URLs, ids or payloads).
+// View: browser console, filter "[church-library-timing]", or run
+// `console.table(window.__churchLibraryTimings)`. Remove once the Amharic
+// timeout investigation is finished.
+const DEV_TIMING = typeof import.meta !== 'undefined' && import.meta.env?.DEV === true
+
+function logTiming(event: string, startedAt: number, outcome: string) {
+  if (!DEV_TIMING) return
+  const ms = Math.round(performance.now() - startedAt)
+  const store = ((globalThis as { __churchLibraryTimings?: unknown[] }).__churchLibraryTimings ??= [])
+  store.push({ event, ms, outcome })
+  if (store.length > 200) store.shift()
+  console.debug('[church-library-timing]', event, `${ms}ms`, outcome)
+}
+
+async function timeRpc<T extends { error: { code?: string } | null }>(event: string, request: PromiseLike<T>): Promise<T> {
+  if (!DEV_TIMING) return request
+  const startedAt = performance.now()
+  try {
+    const result = await request
+    logTiming(event, startedAt, result.error ? `error:${result.error.code ?? 'unknown'}` : 'ok')
+    return result
+  } catch (error) {
+    logTiming(event, startedAt, 'thrown')
+    throw error
+  }
+}
+
 /**
  * Picks the excerpt to quote as the answer. For list-style questions this may be
  * a later hit that actually contains the enumeration; otherwise (and whenever the
@@ -101,11 +130,11 @@ function withQuery(href: string, query: string) {
 
 async function searchStructuredSections(query: string, language: string | null): Promise<ChurchLibraryHit[]> {
   if (!supabase) return []
-  const { data, error } = await supabase.rpc('search_church_library_sections' as never, {
+  const { data, error } = await timeRpc('search_church_library_sections', supabase.rpc('search_church_library_sections' as never, {
     search_query: query,
     result_limit: MAX_RESULTS,
     search_language: language,
-  } as never)
+  } as never))
   if (error) {
     // This RPC is optional on older databases, but installed failures must not
     // be silently presented as “no matching passage”.
@@ -220,11 +249,41 @@ export async function searchChurchLibrary(
   query: string,
   signal?: AbortSignal,
 ): Promise<ChurchLibrarySearchResponse> {
-  const first = await runChurchLibrarySearch(query, query, signal)
+  const startedAt = performance.now()
+  let outcome = 'error'
+  try {
+    const response = await searchWithAmharicRetry(query, signal)
+    outcome = response.results.length ? `results:${response.results.length}` : `empty:${response.availability}`
+    return response
+  } catch (error) {
+    outcome = error instanceof ChurchLibrarySearchError ? `error:${error.code}` : 'error'
+    throw error
+  } finally {
+    logTiming('total', startedAt, outcome)
+  }
+}
+
+async function timedAttempt(event: string, query: string, answerQuestion: string, signal?: AbortSignal) {
+  const startedAt = performance.now()
+  let outcome = 'error'
+  try {
+    const response = await runChurchLibrarySearch(query, answerQuestion, signal)
+    outcome = response.results.length ? `results:${response.results.length}` : `empty:${response.availability}`
+    return response
+  } catch (error) {
+    outcome = error instanceof ChurchLibrarySearchError ? `error:${error.code}` : 'error'
+    throw error
+  } finally {
+    logTiming(event, startedAt, outcome)
+  }
+}
+
+async function searchWithAmharicRetry(query: string, signal?: AbortSignal): Promise<ChurchLibrarySearchResponse> {
+  const first = await timedAttempt('attempt_1', query, query, signal)
   if (first.results.length > 0 || first.availability !== 'no_relevant_passage') return first
   const reduced = reduceAmharicQuestion(query)
   if (!reduced) return first
-  const retry = await runChurchLibrarySearch(reduced, query, signal)
+  const retry = await timedAttempt('attempt_2_amharic_retry', reduced, query, signal)
   return retry.results.length > 0 ? retry : first
 }
 
@@ -241,6 +300,7 @@ async function runChurchLibrarySearch(
   const language = languageForQuery(trimmed)
   const base = getAiApiBaseUrl()
   if (base) {
+    const gatewayStartedAt = performance.now()
     try {
       const response = await fetch(`${base}/api/church-library/search`, {
         method: 'POST',
@@ -249,6 +309,7 @@ async function runChurchLibrarySearch(
         signal,
         cache: 'no-store',
       })
+      logTiming('gateway', gatewayStartedAt, response.ok ? 'ok' : `http:${response.status}`)
       if (response.ok) {
         const payload = await response.json() as Record<string, unknown>
         const results = normalizeHits(payload.results)
@@ -272,6 +333,7 @@ async function runChurchLibrarySearch(
       // that case (and for transient API failures), continue to the database
       // RPC below instead of hiding a working Supabase search behind a 404.
     } catch (error) {
+      if (!(error instanceof ChurchLibrarySearchError)) logTiming('gateway', gatewayStartedAt, 'network_error')
       if (signal?.aborted) throw error
       if (error instanceof ChurchLibrarySearchError && error.code === 'permission') throw error
     }
@@ -288,11 +350,11 @@ async function runChurchLibrarySearch(
             ? cause
             : new ChurchLibrarySearchError('Structured Church Library search failed.', 'database'),
         })),
-      supabase.rpc('search_church_library', {
+      timeRpc('search_church_library', supabase.rpc('search_church_library', {
         search_query: trimmed,
         result_limit: MAX_RESULTS,
         search_language: language,
-      }),
+      })),
     ])
     const structuredHits = structuredResult.hits
     if (error && structuredHits.length) {
@@ -324,9 +386,9 @@ async function runChurchLibrarySearch(
       if (!results.length && structuredResult.error) throw structuredResult.error
       let availability: ChurchLibrarySearchResponse['availability'] = results.length ? 'ok' : 'no_relevant_passage'
       if (!results.length) {
-        let statusResult = await supabase.rpc('church_library_search_status' as never)
+        let statusResult = await timeRpc('church_library_search_status', supabase.rpc('church_library_search_status' as never))
         if (statusResult.error?.code === 'PGRST202' || statusResult.error?.code === '42883') {
-          statusResult = await supabase.rpc('church_library_public_search_status') as typeof statusResult
+          statusResult = await timeRpc('church_library_public_search_status', supabase.rpc('church_library_public_search_status')) as typeof statusResult
         }
         const row = Array.isArray(statusResult.data) ? statusResult.data[0] as Record<string, unknown> | undefined : undefined
         if (!statusResult.error && row) {

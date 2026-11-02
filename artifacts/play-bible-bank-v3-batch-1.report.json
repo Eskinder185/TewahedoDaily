@@ -1,0 +1,228 @@
+{
+  "status": "draft",
+  "publish": false,
+  "sourceSnapshot": "artifacts/play-bible-snapshot-1793487606836.json",
+  "attempted": 40,
+  "accepted": 40,
+  "rejected": 0,
+  "acceptedMeaning": "Structurally valid unpublished drafts; no editorial or ecclesiastical approval.",
+  "priorAudit": {
+    "PASS": 9,
+    "REVISE": 31,
+    "REJECT": 0
+  },
+  "postRemediation": {
+    "automated": {
+      "PASS": 40,
+      "FAIL": 0
+    },
+    "editorial": {
+      "PASS": 9,
+      "REVISE": 31,
+      "REJECT": 0,
+      "note": "The 31 revised items await independent editorial review before any status is raised to PASS."
+    }
+  },
+  "revisedIds": [
+    "bible-v3-genesis-2-seventh-day",
+    "bible-v3-genesis-5-enoch",
+    "bible-v3-genesis-6-flood-reason",
+    "bible-v3-genesis-16-ishmael-name",
+    "bible-v3-genesis-19-zoar",
+    "bible-v3-exodus-2-moses-rescue",
+    "bible-v3-exodus-4-first-sign",
+    "bible-v3-exodus-5-brick-quota",
+    "bible-v3-exodus-9-hail-warning",
+    "bible-v3-exodus-10-locust-response",
+    "bible-v3-exodus-11-firstborn",
+    "bible-v3-exodus-13-route",
+    "bible-v3-exodus-16-sixth-day",
+    "bible-v3-exodus-17-massah-meribah",
+    "bible-v3-matthew-2-magi-gifts",
+    "bible-v3-matthew-3-john-hesitation",
+    "bible-v3-matthew-4-first-temptation",
+    "bible-v3-matthew-8-centurion-authority",
+    "bible-v3-matthew-9-tax-collectors",
+    "bible-v3-matthew-15-canaanite-response",
+    "bible-v3-matthew-16-silence",
+    "bible-v3-matthew-19-young-man",
+    "bible-v3-john-7-living-water",
+    "bible-v3-john-8-discipleship",
+    "bible-v3-john-11-martha-belief",
+    "bible-v3-john-12-judas-objection",
+    "bible-v3-john-13-example",
+    "bible-v3-john-14-thomas-question",
+    "bible-v3-john-15-vine",
+    "bible-v3-john-17-prayer-purpose",
+    "bible-v3-john-18-peter-sword"
+  ],
+  "unchangedPassIds": [
+    "bible-v3-genesis-7-clean-animals",
+    "bible-v3-genesis-18-hospitality",
+    "bible-v3-genesis-21-isaac-birth",
+    "bible-v3-genesis-22-substitute",
+    "bible-v3-genesis-24-rebekah-kindness",
+    "bible-v3-exodus-8-pharaoh-frogs",
+    "bible-v3-matthew-14-feed-crowd",
+    "bible-v3-matthew-17-figures",
+    "bible-v3-john-16-sorrow-joy"
+  ],
+  "exodus2Correction": {
+    "id": "bible-v3-exodus-2-moses-rescue",
+    "oldCorrectKey": "d",
+    "correctKey": "b",
+    "supportedOption": "She put him in a basket by the river",
+    "evidence": "Exodus 2:3 places Moses in a coated papyrus basket among the riverbank reeds."
+  },
+  "validation": {
+    "PlayQuestionStructure": "PASS",
+    "sourceRangeCompleteness": "PASS",
+    "citedVerseRowsChecked": 313,
+    "sourceRoutes": "PASS",
+    "duplicateIdsAcrossV2V3": 0,
+    "duplicateNormalizedPromptsAcrossV2V3": 0,
+    "highPromptOverlapPairsAt0_7": [],
+    "correctKeyAndOptionOrder": "PASS",
+    "fourDistinctEnglishOptions": "PASS",
+    "draftOnly": "PASS",
+    "questionCount": 40,
+    "distinctChapters": 40,
+    "questionsByBook": {
+      "Genesis": 10,
+      "Exodus": 10,
+      "Matthew": 10,
+      "John": 10
+    },
+    "topicCategoryCounts": {
+      "Creation": 2,
+      "Biblical people": 9,
+      "Biblical events": 17,
+      "Chronology and journeys": 1,
+      "Commandments and laws": 1,
+      "Teachings": 9,
+      "Miracles": 1
+    },
+    "difficultyCounts": {
+      "beginner": 16,
+      "growing": 24
+    },
+    "answerPositionCounts": {
+      "a": 10,
+      "b": 11,
+      "c": 8,
+      "d": 11
+    },
+    "answerLength": {
+      "measure": "English option character count",
+      "strictlyLongestCount": 3,
+      "strictlyLongestIds": [
+        "bible-v3-exodus-5-brick-quota",
+        "bible-v3-matthew-15-canaanite-response",
+        "bible-v3-john-17-prayer-purpose"
+      ],
+      "longestOrTiedCount": 8
+    },
+    "duplicateExactCitationAnswerTargetsAcrossV2V3": 0,
+    "semanticKnowledgeTargetCheck": "No exact citation-answer target or high prompt-overlap duplicate across the checked v2/v3 drafts; semantic uniqueness still requires editorial review.",
+    "reportConsistency": "PASS"
+  },
+  "qualityNotes": [
+    "Genesis 2 now tests the scope of completed creation, separate from the v2 Exodus 20 Sabbath-command reason.",
+    "Exodus 4 now tests Moses' hand sign, distinct from the v2 Exodus 7 rod-serpent sign.",
+    "All four former Challenge labels were lowered because the current prompts ask for facts stated directly in the passage; no Challenge items remain in this batch.",
+    "Automated checks do not establish theological correctness, semantic uniqueness, or distractor plausibility.",
+    "The eight final corrections preserve IDs, citations, routes, correct-key positions, draft status, and the other 32 question objects.",
+    "The eight revised items are not declared editorially approved by automated checks.",
+    "The final four corrections use complete WEB passages, retain their IDs and citations, and leave the other 36 question objects unchanged.",
+    "The four newly corrected items remain pending independent passage-level and human editorial review."
+  ],
+  "theologicalReviewFlags": [
+    "bible-v3-matthew-15-canaanite-response",
+    "bible-v3-matthew-16-silence",
+    "bible-v3-matthew-19-young-man",
+    "bible-v3-john-7-living-water",
+    "bible-v3-john-8-discipleship",
+    "bible-v3-john-11-martha-belief",
+    "bible-v3-john-17-prayer-purpose"
+  ],
+  "editorialReviewRequired": true,
+  "postFinalEight": {
+    "preCorrectionIndependentQA": {
+      "PASS": 32,
+      "REVISE": 8,
+      "REJECT": 0,
+      "provenance": "User-provided independent QA summary; individual audit file not supplied here."
+    },
+    "automated": {
+      "PASS": 40,
+      "FAIL": 0,
+      "note": "Structural and source checks only; semantic correctness is not automated."
+    },
+    "editorial": {
+      "PASS": 32,
+      "REVISE": 8,
+      "REJECT": 0,
+      "note": "The 32 previously passing items were preserved. The eight corrected items await independent human editorial review."
+    }
+  },
+  "finalEightCorrection": {
+    "revisedIds": [
+      "bible-v3-genesis-2-seventh-day",
+      "bible-v3-genesis-6-flood-reason",
+      "bible-v3-genesis-16-ishmael-name",
+      "bible-v3-exodus-17-massah-meribah",
+      "bible-v3-matthew-4-first-temptation",
+      "bible-v3-matthew-16-silence",
+      "bible-v3-john-13-example",
+      "bible-v3-john-14-thomas-question"
+    ],
+    "unchangedQuestionCount": 32,
+    "unchangedQuestionsSha256": "71a7add2f8be72a4d0299f3475f2434f8c1e3e449e3edc06f5419e37f0b68c22",
+    "changes": {
+      "bible-v3-genesis-2-seventh-day": "Targets the scope of completed creation rather than the Sabbath command.",
+      "bible-v3-genesis-6-flood-reason": "Replaces the weak blamelessness distractor with a passage-absent barren-earth condition.",
+      "bible-v3-genesis-16-ishmael-name": "Paraphrases the reason for Ishmael?s name.",
+      "bible-v3-exodus-17-massah-meribah": "Asks why the place was named and paraphrases the answer; beginner difficulty.",
+      "bible-v3-matthew-4-first-temptation": "Uses parallel principle-based alternatives; beginner difficulty.",
+      "bible-v3-matthew-16-silence": "Removes the unsupported yet and balances the disclosure alternatives.",
+      "bible-v3-john-13-example": "Asks for the reason given rather than revealing the act; revises alternatives; beginner difficulty.",
+      "bible-v3-john-14-thomas-question": "Asks which uncertainty Thomas voiced; paraphrases the answer and uses contextual alternatives; beginner difficulty."
+    }
+  },
+  "postFinalFour": {
+    "preCorrectionIndependentQA": {
+      "PASS": 36,
+      "REVISE": 4,
+      "REJECT": 0,
+      "provenance": "Prior passage-level QA of all eight final-correction questions; the four identified issues prompted this revision."
+    },
+    "automated": {
+      "PASS": 40,
+      "FAIL": 0,
+      "note": "Structure, complete WEB source ranges, routes, keys, exact duplicates and report statistics only. This is not semantic approval."
+    },
+    "editorial": {
+      "PASS": 36,
+      "REVISE": 4,
+      "REJECT": 0,
+      "note": "Prior decisions for the 36 unchanged objects are retained. The four revised objects await independent review; no new PASS decision is claimed."
+    }
+  },
+  "finalFourCorrection": {
+    "revisedIds": [
+      "bible-v3-genesis-6-flood-reason",
+      "bible-v3-exodus-17-massah-meribah",
+      "bible-v3-matthew-4-first-temptation",
+      "bible-v3-john-14-thomas-question"
+    ],
+    "unchangedQuestionCount": 36,
+    "unchangedQuestionsSha256Before": "732715b9b7765c0f8a7d188fef92a0410c15af3e31b52b5fb3327e7d0cfea70e",
+    "unchangedQuestionsSha256After": "732715b9b7765c0f8a7d188fef92a0410c15af3e31b52b5fb3327e7d0cfea70e",
+    "changes": {
+      "bible-v3-genesis-6-flood-reason": "Contrasts Noah's upright conduct with violence across the earth using paraphrased, parallel options; Beginner difficulty.",
+      "bible-v3-exodus-17-massah-meribah": "Limits the question to the explicit naming reason in verse 7, separating it from the water shortage and other preceding events.",
+      "bible-v3-matthew-4-first-temptation": "Replaces generic alternatives with competing claims drawn from the fast, sonship challenge, and Spirit-led wilderness context.",
+      "bible-v3-john-14-thomas-question": "Asks for the destination-to-route reasoning implied by Thomas's question; parallel alternatives contradict verse 5; Growing difficulty."
+    }
+  }
+}

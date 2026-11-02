@@ -2,8 +2,8 @@ import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8')
-const [app, adventure, gameNight, multiplayer, who, match, history, mezmur, prefetch, pipeline] = await Promise.all([
-  read('src/App.tsx'), read('src/pages/play/AdventurePage.tsx'), read('src/pages/play/GameNightPage.tsx'),
+const [app, adventure, adventureStories, gameNight, multiplayer, who, match, history, mezmur, prefetch, pipeline] = await Promise.all([
+  read('src/App.tsx'), read('src/pages/play/AdventurePage.tsx'), read('src/lib/play/bibleAdventureStories.ts'), read('src/pages/play/GameNightPage.tsx'),
   read('supabase/migrations/20261101120000_tewahedo_play_game_night.sql'), read('src/components/play/WhoAmIGame.tsx'),
   read('src/components/play/MatchGame.tsx'), read('src/components/play/HistoryQuestGame.tsx'),
   read('src/components/play/MezmurGame.tsx'), read('src/lib/routePrefetch.ts'), read('scripts/import-play-content-drafts.ts'),
@@ -11,9 +11,10 @@ const [app, adventure, gameNight, multiplayer, who, match, history, mezmur, pref
 
 assert.match(app, /lazy\(\(\) => import\('\.\/pages\/play\/AdventurePage'\)/)
 assert.match(app, /lazy\(\(\) => import\('\.\/pages\/play\/GameNightPage'\)/)
-assert.match(adventure, /Exodus 14:10–14/)
-assert.match(adventure, /Interactive objects are learning aids, not additions to Scripture/)
-assert.match(adventure, /recordPlayCompletion\(\{ game: 'adventure'/)
+assert.match(adventureStories, /source\('Exodus', 'exodus', 14, 10, 14\)/)
+assert.match(adventure, /Interactive objects are learning aids/)
+assert.match(adventure, /recordPlayCompletion\(input\)/)
+assert.match(adventure, /bibleAdventureStories\.find/)
 assert.match(prefetch, /play\/adventures/)
 assert.match(prefetch, /play\/game-night/)
 

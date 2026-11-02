@@ -2,18 +2,37 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
-import { MIN_PICTURE_CHOICES, type PlayImage } from '../../lib/play/imageCatalog'
+import { handlePlayImageError, MIN_PICTURE_CHOICES, type PlayImage } from '../../lib/play/imageCatalog'
 import { recordPlayCompletion, type PlayAchievement } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
 import { localized } from '../../lib/play/types'
 import { Celebration } from './Celebration'
+import { GameProgress } from './GameProgress'
+import a11y from './AnswerFeedback.module.css'
 import g from './PlayGames.module.css'
+import { BADGES } from './PlayProgressPanel'
+import m from './PictureQuiz.module.css'
 
 type Mode = 'look' | 'reveal'
 type Answer = { item: PlayImage; picked: string; correct: boolean; points: number }
 
 const TILES = 12
 const START_OPEN = 3
+
+// Amharic strings reused from QuizGame / PlayProgressPanel are existing; 'ትክክል፦', 'ያልተመለሰ፦' are the existing review labels.
+function labelsFor(am: boolean) {
+  return am
+    ? {
+        correctAnswer: 'ትክክለኛ መልስ', yourAnswer: 'የእርስዎ መልስ', notQuite: 'ትክክል አይደለም', correctBang: 'ትክክል!', englishOnly: 'በእንግሊዝኛ ብቻ',
+        correct: 'ትክክል', xp: 'የተገኘ XP', points: 'ነጥብ', badges: 'ያገኟቸው ምልክቶች', review: 'መልሶችዎን ይከልሱ', explore: 'ጨዋታዎችን ያስሱ',
+        missed: 'ያልተመለሰ፦', right: 'ትክክል፦', question: 'ጥያቄ',
+      }
+    : {
+        correctAnswer: 'Correct answer', yourAnswer: 'Your answer', notQuite: 'Not quite', correctBang: 'Correct!', englishOnly: 'English only',
+        correct: 'Correct', xp: 'XP earned', points: 'Points', badges: 'Badges earned', review: 'Review your answers', explore: 'Explore games',
+        missed: 'Missed:', right: 'Correct:', question: 'Question',
+      }
+}
 
 function shuffle<T>(items: T[], random = Math.random): T[] {
   const a = [...items]
@@ -39,6 +58,7 @@ export type PictureQuizConfig = {
 export function PictureQuizGame({ locale, config }: { locale: AppLocale; config: PictureQuizConfig }) {
   const { user } = useAuth()
   const am = locale === 'am'
+  const t = labelsFor(am)
   const [mode, setMode] = useState<Mode>('look')
   const [length, setLength] = useState(Math.min(8, config.pool.length))
   const [round, setRound] = useState<{ item: PlayImage; choices: PlayImage[]; order: number[] }[] | null>(null)
@@ -50,6 +70,7 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
   const [result, setResult] = useState<{ score: number; max: number; xp: number; badges: PlayAchievement[] } | null>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
+  const resultsRef = useRef<HTMLHeadingElement>(null)
 
   const start = useCallback(() => {
     const items = shuffle(config.pool).slice(0, length)
@@ -61,7 +82,8 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
   const score = answers.reduce((s, a) => s + a.points, 0)
 
   useEffect(() => { if (picked) nextRef.current?.focus() }, [picked])
-  useEffect(() => { if (round && !picked) headingRef.current?.focus() }, [index, round, picked])
+  useEffect(() => { if (round && !picked && !result) headingRef.current?.focus() }, [index, round, picked, result])
+  useEffect(() => { if (result) resultsRef.current?.focus() }, [result])
 
   const choose = (id: string) => {
     if (!current || picked) return
@@ -88,14 +110,13 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
 
   // ---------- Not enough pictures ----------
   // A round needs four choices of the same kind; never start one without enough usable, approved pictures.
-  // Declared after every hook, so hook order is unchanged.
   if (config.pool.length < MIN_PICTURE_CHOICES) {
     return (
       <section className={g.setup} aria-labelledby="pq-setup">
         <div className={g.setupBody}>
-          <h2 id="pq-setup">{am ? 'በቂ የተረጋገጡ ሥዕሎች ገና የሉም' : 'Not enough pictures yet'}</h2>
-          <p className={g.setupNote}>{am ? 'ይህ ጨዋታ ዙር ለመስራት ቢያንስ አራት የተረጋገጡ ሥዕሎች ያስፈልገዋል። እባክዎ ቆይተው ይመለሱ።' : 'This game needs at least four approved pictures to make a round. Please check back soon.'}</p>
-          <Link className={g.secondary} to="/play">{am ? 'ጨዋታዎችን ያስሱ' : 'Explore games'}</Link>
+          <h2 id="pq-setup">{am ? "በቂ የተረጋገጡ ሥዕሎች ገና የሉም" : "Not enough pictures yet"}</h2>
+          <p className={g.setupNote}>{am ? "ይህ ጨዋታ ዙር ለመስራት ቢያንስ አራት የተረጋገጡ ሥዕሎች ያስፈልገዋል። እባክዎ ቆይተው ይመለሱ።" : "This game needs at least four approved pictures to make a round. Please check back soon."}</p>
+          <Link className={g.secondary} to="/play">{t.explore}</Link>
         </div>
       </section>
     )
@@ -106,7 +127,7 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
     return (
       <section className={g.setup} aria-labelledby="pq-setup">
         <div className={g.setupPreview} aria-hidden="true">
-          {config.pool.slice(0, 5).map((p, i) => <img key={p.id} src={p.src} alt="" loading="lazy" style={{ ['--i' as string]: i, objectPosition: p.focus }} />)}
+          {config.pool.slice(0, 5).map((p, i) => <img key={p.id} src={p.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, p.fallbackSrc)} style={{ ['--i' as string]: i, objectPosition: p.focus }} />)}
         </div>
         <div className={g.setupBody}>
           <h2 id="pq-setup">{am ? 'ዙርዎን ይምረጡ' : 'Choose your round'}</h2>
@@ -142,31 +163,50 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
   if (result) {
     const ratio = result.score / result.max
     return (
-      <section className={g.results} aria-labelledby="pq-results">
+      <section className={`${g.results} ${am ? m.am : ''}`} aria-labelledby="pq-results">
         {ratio >= 0.6 ? <Celebration /> : null}
         <p className={g.kicker}>{am ? 'ዙሩ ተጠናቋል' : 'Round complete'}</p>
-        <h2 id="pq-results">{ratio === 1 ? (am ? 'ፍጹም!' : 'Perfect round!') : ratio >= 0.6 ? (am ? 'በጣም ጥሩ!' : 'Beautifully done!') : (am ? 'ጥሩ ልምምድ!' : 'Good practice!')}</h2>
+        <h2 id="pq-results" ref={resultsRef} tabIndex={-1} className={m.focusTarget}>{ratio === 1 ? (am ? 'ፍጹም!' : 'Perfect round!') : ratio >= 0.6 ? (am ? 'በጣም ጥሩ!' : 'Beautifully done!') : (am ? 'ጥሩ ልምምድ!' : 'Good practice!')}</h2>
         <div className={g.scoreRow}>
-          <div><strong>{result.score}/{result.max}</strong><span>{am ? 'ትክክል' : 'correct'}</span></div>
-          <div><strong>+{result.xp}</strong><span>XP</span></div>
-          {mode === 'reveal' ? <div><strong>{score}</strong><span>{am ? 'ነጥብ' : 'points'}</span></div> : null}
+          <div><strong>{result.score}/{result.max}</strong><span>{t.correct}</span></div>
+          <div><strong>+{result.xp}</strong><span>{t.xp}</span></div>
+          {mode === 'reveal' ? <div><strong>{score}</strong><span>{t.points}</span></div> : null}
         </div>
-        {result.badges.length ? <p className={g.newBadge} role="status">✦ {am ? 'አዲስ ምልክት አግኝተዋል!' : 'New badge earned!'}</p> : null}
+        {result.badges.length ? (
+          <>
+            <p className={m.badgeHeading} id="pq-badges">{t.badges}</p>
+            <ul className={m.badgeList} aria-labelledby="pq-badges">
+              {result.badges.map((b) => <li key={b}><span aria-hidden="true">{BADGES[b]?.icon ?? '✦'}</span>{BADGES[b]?.[locale] ?? b}</li>)}
+            </ul>
+          </>
+        ) : null}
         <div className={g.actions}>
           <button className={g.primary} type="button" onClick={start}>{am ? 'እንደገና ይጫወቱ' : 'Play again'}</button>
           <button className={g.secondary} type="button" onClick={() => setRound(null)}>{am ? 'ሌላ ዙር' : 'Change round'}</button>
-          <Link className={g.secondary} to="/play">{am ? 'ወደ ጨዋታ ማዕከል' : 'All games'}</Link>
+          <Link className={g.secondary} to="/play">{t.explore}</Link>
         </div>
+        <h3 className={a11y.reviewTitle}>{t.review}</h3>
         <ol className={g.reviewGrid}>
-          {answers.map((a) => (
-            <li key={a.item.id} className={a.correct ? g.reviewRight : g.reviewWrong}>
-              <img src={a.item.src} alt="" loading="lazy" style={{ objectPosition: a.item.focus }} />
-              <div>
-                <strong><span aria-hidden="true">{a.correct ? '✓' : '✕'}</span><span className={g.srOnly}>{a.correct ? (am ? 'ትክክል፦' : 'Correct:') : (am ? 'ያልተመለሰ፦' : 'Missed:')}</span> {localized(a.item.answer, locale).text}</strong>
-                <Link to={a.item.source.route}>{a.item.source.label}</Link>
-              </div>
-            </li>
-          ))}
+          {answers.map((a) => {
+            const ans = localized(a.item.answer, locale)
+            const pickedItem = config.pool.find((p) => p.id === a.picked)
+            const mine = pickedItem ? localized(pickedItem.answer, locale) : null
+            const why = localized(a.item.explanation, locale)
+            return (
+              <li key={a.item.id} className={a.correct ? g.reviewRight : g.reviewWrong}>
+                <img src={a.item.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, a.item.fallbackSrc)} style={{ objectPosition: a.item.focus }} />
+                <div>
+                  <strong><span aria-hidden="true">{a.correct ? '✓' : '✕'}</span><span className={g.srOnly}>{a.correct ? t.right : t.missed}</span> <span lang={ans.fallback ? 'en' : undefined}>{ans.text}</span></strong>
+                  <span className={m.reviewLines}>
+                    {a.correct ? null : <span><b>{t.yourAnswer}:</b> <span lang={mine?.fallback ? 'en' : undefined}>{mine?.text ?? a.picked}</span></span>}
+                    <span><b>{t.correctAnswer}:</b> <span lang={ans.fallback ? 'en' : undefined}>{ans.text}</span></span>
+                    <span><span lang={why.fallback ? 'en' : undefined}>{why.text}</span>{why.fallback && am ? <span className={a11y.note}>({t.englishOnly})</span> : null}</span>
+                  </span>
+                  <Link to={a.item.source.route}>{a.item.source.label}</Link>
+                </div>
+              </li>
+            )
+          })}
         </ol>
       </section>
     )
@@ -175,51 +215,80 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
   // ---------- Play ----------
   const item = current!.item
   const isRight = picked === item.id
+  const itemAnswer = localized(item.answer, locale)
+  const pickedChoice = picked ? current!.choices.find((c) => c.id === picked) : undefined
+  const pickedAnswer = pickedChoice ? localized(pickedChoice.answer, locale) : null
+  const why = localized(item.explanation, locale)
+  const announce = !picked ? '' : isRight ? `${t.correctBang} ${itemAnswer.text}` : `${t.notQuite}. ${t.yourAnswer}: ${pickedAnswer?.text}. ${t.correctAnswer}: ${itemAnswer.text}`
   return (
-    <section className={g.board} aria-labelledby="pq-q">
+    <section className={`${g.board} ${am ? m.am : ''}`} aria-labelledby="pq-q">
       <div className={g.hud}>
-        <ol className={g.dots} aria-label={am ? `ጥያቄ ${index + 1} ከ ${round.length}` : `Question ${index + 1} of ${round.length}`}>
-          {round.map((r, i) => {
-            const a = answers[i]
-            return <li key={r.item.id} className={a ? (a.correct ? g.dotRight : g.dotWrong) : i === index ? g.dotNow : ''} />
-          })}
-        </ol>
+        <div className={m.progressStack}>
+          <GameProgress
+            locale={locale}
+            current={index + 1}
+            total={round.length}
+            label={t.question}
+            valueText={am ? `${t.question} ${index + 1} ከ ${round.length}` : `${t.question} ${index + 1} of ${round.length}`}
+          />
+          {/* Answer history: sighted users see the dots; screen readers get each answered result in order. */}
+          <ol className={`${g.dots} ${m.history}`} aria-label={t.yourAnswer}>
+            {round.map((r, i) => {
+              const a = answers[i]
+              return (
+                <li key={r.item.id} className={a ? (a.correct ? m.hRight : m.hWrong) : i === index ? m.hNow : ''} aria-hidden={a ? undefined : true}>
+                  {a ? (
+                    <>
+                      <span aria-hidden="true">{a.correct ? '✓' : '✕'}</span>
+                      <span className={g.srOnly}>{a.correct ? t.correct : t.notQuite}</span>
+                    </>
+                  ) : null}
+                </li>
+              )
+            })}
+          </ol>
+        </div>
         <div className={g.hudStats}>
-          <span><strong>{index + 1}</strong>/{round.length}</span>
           <span aria-label={am ? 'ነጥብ' : 'Score'}>✦ {score}</span>
           {streak >= 2 ? <span className={g.streak}>{am ? `${streak} ተከታታይ` : `${streak} in a row`}</span> : null}
         </div>
       </div>
 
+      <p className={a11y.srOnly} role="status" aria-live="polite" aria-atomic="true">{announce}</p>
       <div className={g.stage}>
         <figure className={g.frame}>
           <div className={g.picture}>
-            <img key={item.id} src={item.src} width={item.width} height={item.height} alt={picked ? `${localized(item.answer, locale).text}. ${item.description}` : item.description} style={{ objectPosition: item.focus }} />
+            <img key={item.id} src={item.src} width={item.width} height={item.height} alt={picked ? `${itemAnswer.text}. ${item.description}` : item.description} onError={(event) => handlePlayImageError(event, item.fallbackSrc)} style={{ objectPosition: item.focus }} />
             {mode === 'reveal' ? (
               <div className={g.tiles} aria-hidden="true">
-                {[...Array(TILES).keys()].map((t) => <i key={t} className={revealed.has(t) ? g.tileOpen : ''} />)}
+                {[...Array(TILES).keys()].map((tile) => <i key={tile} className={revealed.has(tile) ? g.tileOpen : ''} />)}
               </div>
             ) : null}
           </div>
           {mode === 'reveal' && !picked ? (
             <figcaption className={g.revealBar}>
               <span>{am ? `${TILES - opened + 1} ነጥብ በዚህ ጊዜ` : `Worth ${TILES - opened + 1} points now`}</span>
-              <button type="button" className={g.secondary} disabled={opened >= TILES} onClick={() => setOpened((o) => Math.min(TILES, o + 2))}>{am ? 'ተጨማሪ ይግለጡ' : 'Reveal more'}</button>
+              <button type="button" className={`${g.secondary} ${m.revealMore}`} disabled={opened >= TILES} onClick={() => setOpened((o) => Math.min(TILES, o + 2))}>{am ? 'ተጨማሪ ይግለጡ' : 'Reveal more'}</button>
             </figcaption>
           ) : null}
         </figure>
 
         <div className={g.questionSide}>
-          <h2 id="pq-q" ref={headingRef} tabIndex={-1}>{config.prompt[locale]}</h2>
+          <h2 id="pq-q" ref={headingRef} tabIndex={-1} className={m.focusTarget}>{config.prompt[locale]}</h2>
           <div className={g.choices}>
             {current!.choices.map((c, i) => {
-              const state = !picked ? '' : c.id === item.id ? g.choiceRight : c.id === picked ? g.choiceWrong : g.choiceDim
+              const state = !picked ? '' : c.id === item.id ? `${g.choiceRight} ${m.answered}` : c.id === picked ? `${g.choiceWrong} ${m.answered}` : `${g.choiceDim} ${m.readable}`
+              const name = localized(c.answer, locale)
               return (
                 <button key={c.id} type="button" className={`${g.choice} ${state}`} disabled={Boolean(picked)} onClick={() => choose(c.id)}>
                   <span className={g.choiceKey} aria-hidden="true">{'ABCD'[i]}</span>
-                  <span>
-                    {localized(c.answer, locale).text}
-                    {locale === 'en' && c.answer.am ? <small lang="am">{c.answer.am}</small> : null}
+                  <span className={m.choiceBody}>
+                    <span className={m.choiceText}>
+                      <span lang={name.fallback ? 'en' : undefined}>{name.text}</span>
+                      {locale === 'en' && c.answer.am ? <small lang="am">{c.answer.am}</small> : null}
+                    </span>
+                    {picked && c.id === item.id ? <span className={`${a11y.badge} ${a11y.badgeRight}`}><span aria-hidden="true">✓</span>{t.correctAnswer}</span> : null}
+                    {picked && c.id === picked && c.id !== item.id ? <span className={`${a11y.badge} ${a11y.badgeWrong}`}><span aria-hidden="true">✕</span>{t.yourAnswer}</span> : null}
                   </span>
                 </button>
               )
@@ -227,9 +296,12 @@ export function PictureQuizGame({ locale, config }: { locale: AppLocale; config:
           </div>
 
           {picked ? (
-            <div className={`${g.feedback} ${isRight ? g.feedbackRight : g.feedbackWrong}`} role="status">
-              <p className={g.feedbackTitle}>{isRight ? (am ? 'ትክክል!' : 'Correct!') : (am ? `ይህ ${localized(item.answer, locale).text} ነው` : `This is ${localized(item.answer, locale).text}`)}</p>
-              <p>{localized(item.explanation, locale).text}{item.when ? <span className={g.when}> · {item.when}</span> : null}</p>
+            <div className={`${g.feedback} ${isRight ? g.feedbackRight : g.feedbackWrong} ${a11y.feedbackEnter}`}>
+              <p className={`${g.feedbackTitle} ${a11y.feedbackTitle}`}>
+                <span className={a11y.feedbackIcon} aria-hidden="true">{isRight ? '✓' : '✕'}</span>
+                {isRight ? t.correctBang : (am ? `ይህ ${itemAnswer.text} ነው` : `This is ${itemAnswer.text}`)}
+              </p>
+              <p><span lang={why.fallback ? 'en' : undefined}>{why.text}</span>{why.fallback && am ? <span className={a11y.note}>({t.englishOnly})</span> : null}{item.when ? <span className={g.when}> · {item.when}</span> : null}</p>
               <Link className={g.sourceLink} to={item.source.route}>{am ? 'ምንጭ፦ ' : 'Source: '}{item.source.label}</Link>
               <button ref={nextRef} className={g.primary} type="button" onClick={next}>
                 {index === round.length - 1 ? (am ? 'ውጤቱን ይመልከቱ' : 'See results') : (am ? 'ቀጣይ' : 'Next picture')} →

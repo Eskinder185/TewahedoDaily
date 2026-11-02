@@ -41,11 +41,12 @@ import {
 } from '../../lib/cms/hymnTaxonomyImport'
 import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice, Media, MezmurPreview, Modal, Status } from './AdminUi'
+import { isAllowedThumbnailReference } from '../../lib/cms/mezmurMediaRules'
 import { validateMezmurTitleLyrics } from '../../lib/mezmur/titleLyricsValidation'
 import s from './Admin.module.css'
 
 type FieldErrors = Partial<
-  Record<'transliteration_title' | 'title_amharic' | 'slug' | 'lyrics_amharic' | 'transliteration', string>
+  Record<'transliteration_title' | 'title_amharic' | 'slug' | 'lyrics' | 'lyrics_amharic' | 'transliteration', string>
 >
 
 type EditorData = {
@@ -65,15 +66,15 @@ function validatePublishFields(input: MezmurInput): { blocking: string; errors: 
   if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(input.slug)) {
     errors.slug = 'Slug is required and must contain lowercase English letters, numbers, and single hyphens.'
   }
-  if (!input.lyrics_amharic?.trim()) errors.lyrics_amharic = 'Amharic lyrics are required to publish.'
-  if (!input.title_amharic?.trim()) errors.title_amharic = 'Amharic title is required to publish.'
-  if (!input.transliteration?.trim()) {
-    errors.transliteration = 'Transliteration lyrics are strongly recommended before publishing.'
+  if (![input.lyrics_amharic, input.lyrics_english, input.lyrics_geez, input.lyrics_oromo, input.transliteration]
+    .some((lyrics) => lyrics?.trim())) {
+    errors.lyrics = 'Add lyrics in at least one supported language before publishing.'
   }
+  if (!input.title_amharic?.trim()) errors.title_amharic = 'Amharic title is required to publish.'
 
   const blocking =
-    errors.transliteration_title || errors.slug || errors.lyrics_amharic || errors.title_amharic
-      ? [errors.transliteration_title, errors.slug, errors.lyrics_amharic, errors.title_amharic].filter(Boolean).join(' ')
+    errors.transliteration_title || errors.slug || errors.lyrics || errors.title_amharic
+      ? [errors.transliteration_title, errors.slug, errors.lyrics, errors.title_amharic].filter(Boolean).join(' ')
       : ''
   return { blocking, errors }
 }
@@ -92,9 +93,11 @@ function validateMedia(input: MezmurInput, row?: Mezmur): string {
       return 'Enter a valid YouTube URL.'
     }
   }
+  if (input.thumbnail_url && !isAllowedThumbnailReference(input.thumbnail_url, row)) {
+    return 'Choose an image from the Media Library, upload one, or enter an HTTPS image URL.'
+  }
   for (const [value, bucket] of [
     [input.audio_url, 'mezmur-audio'],
-    [input.thumbnail_url, 'mezmur-images'],
   ] as const) {
     if (
       value?.startsWith('storage://') &&
@@ -208,6 +211,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
   )
   const [preview, setPreview] = useState(false)
   const [historyRevision, setHistoryRevision] = useState(0)
+  const [restoreKey, setRestoreKey] = useState(0)
   const navigate = useNavigate()
   const bypass = useRef(false)
   const dirty = JSON.stringify({ input, tags, sectionIds, categorySlugs, occasionSlugs }) !== baseline
@@ -229,10 +233,11 @@ function EditorForm({ initial }: { initial: EditorData }) {
   function set<K extends keyof MezmurInput>(key: K, value: MezmurInput[K]) {
     setInput((previous) => ({ ...previous, [key]: value }))
     setSuccess('')
-    if (key in fieldErrors) {
+    if (key in fieldErrors || ['lyrics_amharic', 'lyrics_english', 'lyrics_geez', 'lyrics_oromo', 'transliteration'].includes(key)) {
       setFieldErrors((current) => {
         const next = { ...current }
         delete next[key as keyof FieldErrors]
+        delete next.lyrics
         return next
       })
     }
@@ -257,8 +262,9 @@ function EditorForm({ initial }: { initial: EditorData }) {
         lyrics_amharic: input.lyrics_amharic,
         lyrics_transliteration: input.transliteration,
       })) {
-        if (issue.severity === 'error' && issue.field in errors) {
-          errors[issue.field as keyof FieldErrors] = issue.message
+        if (issue.severity === 'error') {
+          const field = issue.field === 'lyrics_transliteration' ? 'transliteration' : issue.field
+          if (field in input) errors[field as keyof FieldErrors] = issue.message
         }
       }
       setFieldErrors(errors)
@@ -376,6 +382,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
       return
     }
     setInput({ ...previous.input, status: 'draft' })
+    setRestoreKey((n) => n + 1)
     if (previous.tags) setTags(previous.tags)
     setSuccess('Previous version loaded as a draft. Review the fields and save to apply.')
   }
@@ -486,7 +493,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   <div><span className={s.step}>2</span><h2>Lyrics</h2></div>
                   <p>Write comfortably, switch languages, or open a distraction-free editor.</p>
                 </div>
-                <LyricsWorkspace input={input} fieldErrors={fieldErrors} onChange={set} />
+                <LyricsWorkspace input={input} fieldErrors={fieldErrors} onChange={set} restoreKey={restoreKey} />
               </section>
 
               <section className={`${s.card} ${s.fields}`}>
@@ -498,13 +505,14 @@ function EditorForm({ initial }: { initial: EditorData }) {
                 {textField('source_url', 'Source / external link')}
                 <MediaPicker
                   label="Thumbnail"
+                  matchQuery={{ title: input.title, domain: 'hymn-section' }}
                   folder="mezmur"
                   value={input.thumbnail_path || input.thumbnail_url}
                   altText={input.image_alt}
                   onChange={({ storagePath, altText }) => {
                     set('thumbnail_path', storagePath)
-                    set('image_alt', altText)
-                    if (storagePath) set('thumbnail_url', storagePath)
+                    set('thumbnail_url', storagePath)
+                    set('image_alt', storagePath ? altText : '')
                   }}
                 />
                 <label>
@@ -738,12 +746,27 @@ function LyricsWorkspace({
   input,
   fieldErrors,
   onChange,
+  restoreKey,
 }: {
   input: MezmurInput
   fieldErrors: FieldErrors
   onChange: <K extends keyof MezmurInput>(key: K, value: MezmurInput[K]) => void
+  restoreKey: number
 }) {
-  const [active, setActive] = useState<LyricsKey>('lyrics_amharic')
+  const [active, setActive] = useState<LyricsKey>(() =>
+    LYRIC_TABS.find((tab) => input[tab.key]?.trim())?.key || 'lyrics_amharic',
+  )
+  // Reopen on the language that holds lyrics after a version is restored, and jump to a tab that has a field error.
+  useEffect(() => {
+    if (!restoreKey) return
+    const filled = LYRIC_TABS.find((tab) => input[tab.key]?.trim())
+    if (filled) setActive(filled.key)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restoreKey])
+  const errorTab = LYRIC_TABS.find((tab) => fieldErrors[tab.key as keyof FieldErrors])?.key
+  useEffect(() => {
+    if (errorTab) setActive(errorTab)
+  }, [errorTab])
   const [expanded, setExpanded] = useState(false)
   const [draft, setDraft] = useState('')
   const current = LYRIC_TABS.find((tab) => tab.key === active) || LYRIC_TABS[0]
@@ -755,6 +778,7 @@ function LyricsWorkspace({
 
   return (
     <div className={s.lyricsWorkspace}>
+      {fieldErrors.lyrics ? <small className={s.error} role="alert">{fieldErrors.lyrics}</small> : null}
       <div className={s.lyricsTabs} role="tablist" aria-label="Lyrics language">
         {LYRIC_TABS.map((tab) => (
           <button
@@ -783,7 +807,7 @@ function LyricsWorkspace({
       </div>
       <div id="lyrics-editor-panel" role="tabpanel" className={s.lyricsPanel}>
         <div className={s.lyricsToolbar}>
-          <label htmlFor={`lyrics-${active}`}>{current.label} lyrics{active !== 'lyrics_english' ? ' *' : ''}</label>
+          <label htmlFor={`lyrics-${active}`}>{current.label} lyrics</label>
           <button type="button" onClick={openExpanded}>Expand editor</button>
         </div>
         <textarea

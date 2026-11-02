@@ -86,7 +86,7 @@
 
   --color-accent: #1a4a6e;
   --color-accent-hover: var(--color-midnight);
-  --color-focus-ring: rgba(214, 176, 70, 0.5);
+  --color-focus-ring: #a67c00;
 
   /* Depth: clearer separation from flat “washed” layouts */
   --shadow-soft: 0 16px 44px rgba(8, 14, 26, 0.085);
@@ -315,7 +315,7 @@
 
   --color-accent: #1a4a6e;
   --color-accent-hover: var(--color-midnight);
-  --color-focus-ring: rgba(214, 176, 70, 0.5);
+  --color-focus-ring: #a67c00;
 
   --shadow-soft: 0 16px 44px rgba(8, 14, 26, 0.085);
   --shadow-card: 0 8px 26px rgba(8, 14, 26, 0.065);
