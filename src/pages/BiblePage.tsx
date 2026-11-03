@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useUrlChoice } from '../hooks/useUrlState'
 import { useAsync } from '../lib/cms/useAsync'
 import { useLocale } from '../lib/i18n/locale'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
@@ -122,7 +123,7 @@ function Availability({ am, en, editionCodes = [], editions = [] }: { am: boolea
 export function BibleCatalogPage() {
   const w = useWords()
   const { uiLocale } = useLocale()
-  const [testament, setTestament] = useState<'old' | 'new'>('old')
+  const [testament, setTestament] = useUrlChoice<'old' | 'new'>('testament', 'old', ['old', 'new'])
   const load = useCallback(() => loadBibleCatalog(), [])
   const result = useAsync(load)
   usePageMeta(w.bible, w.subtitle)
@@ -278,9 +279,9 @@ export function BibleBookPage() {
   const availability = detail ? editionAvailability(detail) : { am: false, en: false }
   const availableCodes = useMemo(() => detail ? Object.keys(detail.byEdition) : [], [detail])
   const preferredCode = locale === 'am' ? 'am' : 'web'
-  const [selectedEdition, setSelectedEdition] = useState('')
+  const [selectedEdition, setSelectedEdition] = useUrlChoice('edition', '', availableCodes)
   const gridEdition = availableCodes.includes(selectedEdition) ? selectedEdition : availableCodes.includes(preferredCode) ? preferredCode : availableCodes[0] || ''
-  usePageMeta(detail?.book.name_en || w.bible, w.subtitle)
+  usePageMeta(detail ? displayBookName(detail.book, uiLocale) : w.bible, w.subtitle)
 
   const volumeSources = useMemo(() => {
     if (!detail) return []
@@ -448,7 +449,7 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
     if (next === 'web') setLocale('en')
     const params = new URLSearchParams(location.search)
     params.set('edition', next)
-    navigate({ pathname: location.pathname, search: params.toString(), hash: location.hash }, { replace: true })
+    navigate({ pathname: location.pathname, search: params.toString(), hash: location.hash })
   }
   const [fontScale, setFontScale] = useState<number>(() => {
     try {
@@ -547,13 +548,14 @@ function ChapterBody({ detail, ordinal }: { detail: BibleBookDetail; ordinal: nu
 export function BibleChapterPage() {
   const { bookSlug = '', chapter = '' } = useParams()
   const w = useWords()
+  const { uiLocale } = useLocale()
   const load = useCallback(() => loadBibleBook(bookSlug), [bookSlug])
   const result = useAsync(load)
   const ordinal = Number(chapter)
   const validOrdinal = Number.isSafeInteger(ordinal) && ordinal > 0
-  usePageMeta(result.data?.book.name_en ? `${result.data.book.name_en} ${chapter}` : w.bible, w.subtitle)
+  usePageMeta(result.data ? `${displayBookName(result.data.book, uiLocale)} ${chapter}` : w.bible, w.subtitle)
   return <article className={`${s.shell} ${s.reader}`}>
-    <nav className={s.crumbs} aria-label="Breadcrumb"><Link to="/bible">{w.backBible}</Link><span aria-hidden> / </span><Link to={`/bible/${bookSlug}`}>{w.backBook}</Link></nav>
+    <nav className={s.crumbs} aria-label="Breadcrumb"><Link to="/bible">{w.backBible}</Link><span aria-hidden> / </span><Link to={`/bible/${bookSlug}`}>{result.data ? bookName(result.data.book, uiLocale) : w.backBook}</Link></nav>
     <Status loading={result.loading} error={result.error} onRetry={result.reload} />
     {result.data === null && <p className={s.status}>{w.notFound}</p>}
     {result.data && (!validOrdinal || (ordinal > Math.max(result.data.chapters.am.length, result.data.chapters.web.length))) && <p className={s.status}>{w.invalidChapter}</p>}

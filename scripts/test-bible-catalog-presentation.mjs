@@ -70,7 +70,9 @@ assert.equal(samuel.availability.en, true)
 
 assert.equal(hasCorruptText('መጽሐፍ'), false)
 assert.equal(hasCorruptText('መጽሐ\uFFFD'), true)
-assert.equal(displayBookName({ ...books[2], name_am: 'መጽሐ\uFFFD' }, 'am'), 'Genesis')
+// A corrupt DB label falls back to the verified list name, never to garbled text.
+assert.equal(displayBookName({ ...books[2], name_am: 'መጽሐ\uFFFD' }, 'am'), 'ኦሪት ዘፍጥረት')
+assert.equal(displayBookName({ ...books[2], name_am: 'መጽሐ\uFFFD' }, 'en'), 'Genesis')
 
 const samuelBook = books[0]
 assert.equal(canonicalAmharicDisplayName(samuelBook), 'መጽሐፈ ሳሙኤል')

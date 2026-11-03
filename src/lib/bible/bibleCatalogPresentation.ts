@@ -1,4 +1,11 @@
 import type { BibleEdition, CanonicalBook, SourceBook } from './bibleTypes'
+import {
+  flaggedAmharicForCanonicalSlug,
+  flaggedAmharicForSourceName,
+  verifiedAmharicForCanonicalSlug,
+  verifiedAmharicForSourceName,
+  verifiedSearchNamesForSlug,
+} from './verifiedBookNames.ts'
 
 export type BookAvailability = { am: boolean; en: boolean; editionCodes: string[] }
 
@@ -44,11 +51,17 @@ function cleanName(value: string | null | undefined): string | null {
   return trimmed
 }
 
-/** Resolved Amharic canonical label: DB `name_am`, else slug override, else null. */
+/**
+ * Resolved Amharic canonical label. The Ethiopian Bible list is authoritative:
+ * verified list name (single-volume books) → DB `name_am` → slug override (combined books)
+ * → review-flagged list fallback (OCR-corrupt entries) → null.
+ */
 export function canonicalAmharicDisplayName(book: CanonicalBook): string | null {
   return (
+    cleanName(verifiedAmharicForCanonicalSlug(book.slug)) ||
     cleanName(book.name_am) ||
     cleanName(CANONICAL_AMHARIC_DISPLAY_OVERRIDES[book.slug]) ||
+    cleanName(flaggedAmharicForCanonicalSlug(book.slug)) ||
     null
   )
 }
@@ -78,10 +91,17 @@ export function displaySourceName(
   language: 'en' | 'am',
   fallbackVolume: number,
 ): string {
-  const primary = language === 'am' ? source.source_name_am : source.source_name_en
-  const secondary = language === 'am' ? source.source_name_en : source.source_name_am
-  if (primary && !hasCorruptText(primary)) return primary
-  if (secondary && !hasCorruptText(secondary)) return secondary
+  // The list is authoritative over database labels; English-edition volumes have no database Amharic
+  // name, so an Amharic reader sees "መጽሐፈ ሳሙኤል ቀዳማዊ", not "1 Samuel". Review-flagged entries only fill gaps.
+  const am =
+    cleanName(verifiedAmharicForSourceName(source.source_name_en)) ||
+    cleanName(source.source_name_am) ||
+    cleanName(flaggedAmharicForSourceName(source.source_name_en))
+  const en = cleanName(source.source_name_en)
+  const primary = language === 'am' ? am : en
+  const secondary = language === 'am' ? en : am
+  if (primary) return primary
+  if (secondary) return secondary
   return `Volume ${fallbackVolume}`
 }
 
@@ -153,25 +173,31 @@ export function buildCatalogMeta(
   }))
 }
 
-/** Local catalog book matches for the Bible search field (instant, no network). */
+const foldEnglish = (value: string) => value.normalize('NFKC').toLowerCase().replace(/\s+/g, ' ').trim()
+
+/** Local catalog book matches for the Bible search field (instant, no network). Recognizes English and Amharic. */
 export function matchCatalogBooks(
   query: string,
   books: CanonicalBook[],
   limit = 8,
 ): CanonicalBook[] {
-  const q = query.trim().toLowerCase()
+  const q = foldEnglish(query)
+  const raw = query.normalize('NFC').replace(/\s+/g, ' ').trim()
   if (q.length < 1) return []
   const scored: Array<{ book: CanonicalBook; score: number }> = []
-  const raw = query.trim()
   for (const book of uniqueCanonicalBooks(books)) {
-    const en = (book.name_en || '').toLowerCase()
-    const am = canonicalAmharicDisplayName(book) || ''
+    const en = foldEnglish(book.name_en || '')
     const slug = book.slug.toLowerCase()
+    const verified = verifiedSearchNamesForSlug(book.slug)
+    const amNames = [canonicalAmharicDisplayName(book), cleanName(book.name_am), ...verified.am]
+      .filter((value): value is string => Boolean(value)).map((value) => value.normalize('NFC'))
+    const enNames = [en, slug, slug.replace(/-/g, ' '), ...verified.en.map(foldEnglish)].filter(Boolean)
     let score = 0
-    if (en === q || am === raw || slug === q) score = 100
-    else if (en.startsWith(q) || slug.startsWith(q)) score = 80
-    else if (am.includes(raw)) score = 75
-    else if (en.includes(q) || slug.includes(q)) score = 60
+    if (enNames.includes(q) || amNames.includes(raw)) score = 100
+    else if (enNames.some((name) => name.startsWith(q))) score = 80
+    else if (amNames.some((name) => name.startsWith(raw))) score = 78
+    else if (amNames.some((name) => name.includes(raw))) score = 75
+    else if (enNames.some((name) => name.includes(q))) score = 60
     else continue
     scored.push({ book, score })
   }

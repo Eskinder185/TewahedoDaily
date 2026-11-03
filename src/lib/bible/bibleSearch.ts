@@ -9,8 +9,22 @@ import type {
   CanonicalBook,
   SourceBook,
 } from './bibleTypes'
+import { canonicalAmharicDisplayName } from './bibleCatalogPresentation'
+import {
+  flaggedAmharicForSourceName,
+  verifiedAmharicForSourceName,
+  verifiedSearchNamesForSlug,
+} from './verifiedBookNames'
+
+const nfc = (value: string | null | undefined) => value?.normalize('NFC').trim() || ''
+/** Every Amharic spelling that should find a book: authoritative list name first, then the database spelling. */
+const amharicBookNames = (book: CanonicalBook) =>
+  [...new Set([canonicalAmharicDisplayName(book), book.name_am, ...verifiedSearchNamesForSlug(book.slug).am].map(nfc).filter(Boolean))]
+const amharicSourceNames = (source: SourceBook) =>
+  [...new Set([verifiedAmharicForSourceName(source.source_name_en), source.source_name_am, flaggedAmharicForSourceName(source.source_name_en)].map(nfc).filter(Boolean))]
 import { parseBibleReference, type ParsedBibleReference } from './parseBibleReference'
 import type { SiteSearchResult } from '../search/types'
+import { buildExcerpt, hasEthiopic, ilikePart, matchText, retrievalWords } from '../search/textMatch'
 
 export type BibleSearchLanguage = 'am' | 'en'
 
@@ -50,6 +64,8 @@ type VerseRow = {
 }
 
 const TEXT_LIMIT_DEFAULT = 12
+/** Upper bound on verses fetched per search; ranking happens locally on this bounded set. */
+const TEXT_CANDIDATES = 120
 const CATALOG_TTL_MS = 5 * 60 * 1000
 
 let catalogCache: { at: number; data: BibleCatalog } | null = null
@@ -191,7 +207,7 @@ function scoreBookMatch(
   let best = 0
   let preferredSource: SourceBook | null = null
   let displayNameEn = book.name_en || book.slug
-  let displayNameAm = book.name_am || book.name_en || book.slug
+  let displayNameAm = canonicalAmharicDisplayName(book) || book.name_en || book.slug
 
   const consider = (score: number, labelEn?: string | null, labelAm?: string | null, source?: SourceBook | null) => {
     if (score > best) {
@@ -204,11 +220,11 @@ function scoreBookMatch(
 
   const slug = norm(book.slug.replace(/-/g, ' '))
   const nameEn = book.name_en ? norm(book.name_en) : ''
-  const nameAm = book.name_am?.normalize('NFC').trim() || ''
+  const nameAms = amharicBookNames(book)
 
   if (q && (q === norm(book.slug) || q === slug)) consider(100, book.name_en, book.name_am)
   if (q && nameEn && q === nameEn) consider(98, book.name_en, book.name_am)
-  if (qAm && nameAm && qAm === nameAm) consider(98, book.name_en, book.name_am)
+  if (qAm && nameAms.includes(qAm)) consider(98, book.name_en, book.name_am)
 
   // Alias already expanded to slug-like forms ("1 samuel", "psalms")
   if (q && EN_ALIASES[norm(queryRaw)] && (q === slug || q === nameEn || q === norm(book.slug))) {
@@ -217,14 +233,14 @@ function scoreBookMatch(
 
   for (const source of sources) {
     const snEn = source.source_name_en ? norm(source.source_name_en) : ''
-    const snAm = source.source_name_am?.normalize('NFC').trim() || ''
+    const snAms = amharicSourceNames(source)
     const shortAm = source.source_short_name_am?.normalize('NFC').trim() || ''
     const shortEn = source.source_short_name_en ? norm(source.source_short_name_en) : ''
 
     if (q && snEn && q === snEn) {
       consider(97, source.source_name_en, source.source_name_am || book.name_am, source)
     }
-    if (qAm && snAm && qAm === snAm) {
+    if (qAm && snAms.includes(qAm)) {
       consider(97, source.source_name_en || book.name_en, source.source_name_am, source)
     }
     if (q && shortEn && q === shortEn) {
@@ -243,7 +259,7 @@ function scoreBookMatch(
   }
 
   // Amharic: strip liturgical prefixes, then token / prefix match
-  if (qAm && nameAm) {
+  for (const nameAm of qAm ? nameAms : []) {
     const stripped = stripAmharicPrefixes(nameAm)
     const firstToken = stripped.split(/\s+/)[0] || ''
     if (stripped === qAm || firstToken === qAm) consider(95, book.name_en, book.name_am)
@@ -253,14 +269,15 @@ function scoreBookMatch(
   }
 
   for (const source of sources) {
-    const snAm = source.source_name_am?.normalize('NFC').trim() || ''
-    if (!qAm || !snAm) continue
-    const stripped = stripAmharicPrefixes(snAm)
-    const firstToken = stripped.split(/\s+/)[0] || ''
-    if (stripped === qAm || firstToken === qAm) {
-      consider(94, source.source_name_en || book.name_en, source.source_name_am, source)
-    } else if (stripped.startsWith(qAm)) {
-      consider(84, source.source_name_en || book.name_en, source.source_name_am, source)
+    if (!qAm) break
+    for (const snAm of amharicSourceNames(source)) {
+      const stripped = stripAmharicPrefixes(snAm)
+      const firstToken = stripped.split(/\s+/)[0] || ''
+      if (stripped === qAm || firstToken === qAm) {
+        consider(94, source.source_name_en || book.name_en, source.source_name_am, source)
+      } else if (stripped.startsWith(qAm)) {
+        consider(84, source.source_name_en || book.name_en, source.source_name_am, source)
+      }
     }
   }
 
@@ -784,15 +801,20 @@ export async function searchBibleText(
   queryRaw: string,
   options: BibleSearchOptions = {},
 ): Promise<SiteSearchResult[]> {
-  const q = (queryRaw || '').trim()
+  const q = (queryRaw || '').replace(/\s+/g, ' ').trim()
   if (q.length < 2) return []
   const limit = options.textLimit ?? TEXT_LIMIT_DEFAULT
   const language = options.language || 'en'
 
-  // Escape ILIKE wildcards in user input
-  const pattern = `%${q.replace(/[%_\\]/g, '\\$&')}%`
+  // Bounded candidate retrieval: every distinctive word (at most three) must occur in the verse text.
+  // Punctuation, spacing and Ethiopic variant letters are tolerated here (variant letters become `_`);
+  // the stored verse is then verified and ranked word-by-word below, so nothing is shown that does not match.
+  const words = retrievalWords(q, 3)
+    .map((word) => ilikePart(word))
+    .filter((word) => word.replace(/_/g, '').length >= 1)
+  if (!words.length) return []
 
-  const { data, error } = await db()
+  let builder = db()
     .from('bible_verses')
     .select(
       `
@@ -828,23 +850,41 @@ export async function searchBibleText(
       )
     `,
     )
-    .ilike('text', pattern)
-    .limit(Math.min(40, limit * 3))
+    .limit(TEXT_CANDIDATES)
+  for (const word of words) builder = builder.ilike('text', `%${word}%`)
+  const { data, error } = await builder
 
   if (error) throw new Error(error.message)
-  const rows = (data || []) as unknown as VerseTextEmbed[]
+  const candidates = (data || []) as unknown as VerseTextEmbed[]
 
   const catalog = await getCatalog()
-  const preferCode: BibleEditionCode = language === 'am' ? 'am' : 'web'
+  // Ethiopic text only ever comes from the Amharic edition and Latin text from the English one, so a verse
+  // is never shown beside the wrong edition's label; ties prefer the edition matching the query's script.
+  const preferCode: BibleEditionCode = hasEthiopic(q) ? 'am' : 'web'
+  void language
 
-  const ranked = [...rows].sort((a, b) => {
-    const aCode = a.bible_chapters.bible_source_books.bible_editions.code
-    const bCode = b.bible_chapters.bible_source_books.bible_editions.code
-    const aPref = aCode === preferCode ? 0 : 1
-    const bPref = bCode === preferCode ? 0 : 1
-    if (aPref !== bPref) return aPref - bPref
-    return a.source_order - b.source_order
-  })
+  // Verify + rank: exact phrase first, then the share of query words matched, then edition and book order.
+  type Verified = { row: VerseTextEmbed; match: NonNullable<ReturnType<typeof matchText>> }
+  const verified: Verified[] = []
+  for (const row of candidates) {
+    const match = matchText(row.text, q)
+    if (match) verified.push({ row, match })
+  }
+  const codeOf = (row: VerseTextEmbed) => row.bible_chapters.bible_source_books.bible_editions.code
+  const ranked = verified
+    .sort((a, b) => {
+      const aKind = a.match.kind === 'phrase' ? 0 : 1
+      const bKind = b.match.kind === 'phrase' ? 0 : 1
+      if (aKind !== bKind) return aKind - bKind
+      const aShare = a.match.matched / a.match.total
+      const bShare = b.match.matched / b.match.total
+      if (aShare !== bShare) return bShare - aShare
+      const aPref = codeOf(a.row) === preferCode ? 0 : 1
+      const bPref = codeOf(b.row) === preferCode ? 0 : 1
+      if (aPref !== bPref) return aPref - bPref
+      return a.row.source_order - b.row.source_order
+    })
+    .map((entry) => entry.row)
 
   /** chapterId → reader ordinal within canonical book + edition */
   const ordinalCache = new Map<string, number>()
@@ -935,8 +975,9 @@ export async function searchBibleText(
     const bookName = book.name_en || source.source_name_en || book.slug
     const editionLabel =
       code === 'am' ? 'Amharic' : code === 'web' ? 'English · WEB' : edition.name
-    const excerpt =
-      row.text.length > 220 ? `${row.text.slice(0, 217).trim()}…` : row.text
+    // A slice of the stored verse centred on the match, with highlight ranges into that slice.
+    const found = buildExcerpt(row.text, q, 220)
+    const excerpt = found?.text ?? (row.text.length > 220 ? `${row.text.slice(0, 217).trim()}…` : row.text)
 
     results.push({
       sourceType: 'bible-text',
@@ -953,6 +994,7 @@ export async function searchBibleText(
       matchKind: 'keyword',
       typeLabel: 'Bible text',
       excerpt,
+      highlights: found?.ranges,
       sourceLabel: editionLabel,
     })
   }
@@ -999,11 +1041,16 @@ export async function searchBible(
       }
     }
     if (parsed.isReference) {
-      const ref = await searchBibleReference(parsed, options)
-      return {
-        results: ref.results,
-        intentMessage: ref.intentMessage,
-        directReference: true,
+      // An ordinary sentence that happens to end in a number ("Mark my words 5") is not a reference:
+      // when no book matches a multi-word "book name", search the verse text instead.
+      const sentenceLike = !resolvedBook && parsed.bookQuery.trim().split(/\s+/).length >= 99
+      if (!sentenceLike) {
+        const ref = await searchBibleReference(parsed, options)
+        return {
+          results: ref.results,
+          intentMessage: ref.intentMessage,
+          directReference: true,
+        }
       }
     }
   }
