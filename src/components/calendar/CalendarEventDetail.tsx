@@ -20,8 +20,6 @@ export type CalendarEventDetailProps = {
   onClose: () => void
 }
 
-const DETAIL_HISTORY_KEY = 'td-calendar-detail'
-
 /**
  * Enriched Calendar event detail (modal on desktop, bottom sheet on mobile).
  * CAL-01 sheet height · CAL-02 history Back · CAL-03 focus trap / restore.
@@ -38,59 +36,11 @@ export function CalendarEventDetail({
   const t = useTranslation()
   const panelRef = useRef<HTMLDivElement>(null)
   const previouslyFocused = useRef<HTMLElement | null>(null)
-  const pushedHistory = useRef(false)
-  /** When true, the next popstate is from our own history.back() after UI close — do not double-handle. */
-  const ignoreNextPop = useRef(false)
   const touchStartY = useRef<number | null>(null)
   const titleId = useId()
 
-  // CAL-02: Browser Back closes the sheet instead of leaving Calendar.
-  useEffect(() => {
-    if (!open || !event) return
-
-    const state = { [DETAIL_HISTORY_KEY]: event.id }
-    try {
-      const current = window.history.state
-      if (!current || current[DETAIL_HISTORY_KEY] !== event.id) {
-        window.history.pushState(state, '')
-        pushedHistory.current = true
-      } else {
-        // Remount / Strict Mode: history entry already ours — Back should still dismiss.
-        pushedHistory.current = true
-      }
-    } catch {
-      pushedHistory.current = false
-    }
-
-    const onPop = () => {
-      if (ignoreNextPop.current) {
-        ignoreNextPop.current = false
-        pushedHistory.current = false
-        return
-      }
-      pushedHistory.current = false
-      onClose()
-    }
-    window.addEventListener('popstate', onPop)
-    return () => {
-      window.removeEventListener('popstate', onPop)
-    }
-  }, [open, event?.id, onClose])
-
-  const handleClose = () => {
-    // Always dismiss UI immediately. Relying only on popstate left the sheet stuck
-    // when history.back() did not deliver a popstate (observed on mobile Close taps).
-    onClose()
-    if (pushedHistory.current) {
-      pushedHistory.current = false
-      ignoreNextPop.current = true
-      try {
-        window.history.back()
-      } catch {
-        ignoreNextPop.current = false
-      }
-    }
-  }
+  // The parent owns destination/history state through React Router.
+  const handleClose = onClose
 
   useEffect(() => {
     if (!open) return

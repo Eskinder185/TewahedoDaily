@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom'
+import { useUrlChoice } from '../hooks/useUrlState'
 import { PageSection } from '../components/ui/PageSection'
 import { OrthodoxInteractiveCalendar } from '../components/calendar/OrthodoxInteractiveCalendar'
 import { CalendarDateTimeline } from '../components/calendar/CalendarDateTimeline'
 import { CalendarEventDetail } from '../components/calendar/CalendarEventDetail'
 import { DailyFaithDashboard } from '../components/dailyFaith/DailyFaithDashboard'
 import { useHomeToday } from '../hooks/useHomeToday'
-import {
-  } from '../lib/churchCalendar'
 import { getPublishedCalendarCardsForLinking, type CalendarCard } from '../lib/synaxarium/synaxariumService'
 import { parseGregorianAnchorIso } from '../lib/churchCalendar/upcomingObservanceDisplay'
 import {
@@ -45,44 +44,28 @@ export function CalendarPage() {
   const { contentLocale } = useLocale()
   const t = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams()
-  const [viewYear, setViewYear] = useState(now.getFullYear())
-  const [viewMonth, setViewMonth] = useState(now.getMonth())
-  const [selectedDay, setSelectedDay] = useState<number>(now.getDate())
-    const [dayContext, setDayContext] = useState<DayChurchContext | null>(null)
+  const location = useLocation()
+  const navigate = useNavigate()
+  const dateParam = searchParams.get('date')
+  const selectedDate = useMemo(() => parseGregorianAnchorIso(dateParam || '') || stripLocal(now), [dateParam, now])
+  const viewYear = selectedDate.getFullYear()
+  const viewMonth = selectedDate.getMonth()
+  const selectedDay = selectedDate.getDate()
+  const [dayContext, setDayContext] = useState<DayChurchContext | null>(null)
   const [todayContext, setTodayContext] = useState<DayChurchContext | null>(null)
   const [dayLoading, setDayLoading] = useState(false)
   const [dayError, setDayError] = useState<string | null>(null)
   const [dayReloadTick, setDayReloadTick] = useState(0)
   const [calendarCards, setCalendarCards] = useState<CalendarCard[]>([])
-  const [detailEvent, setDetailEvent] = useState<PresentableCalendarEvent | null>(null)
   const [timelineGroups, setTimelineGroups] = useState<CalendarDayGroup[]>([])
   const [timelineLoading, setTimelineLoading] = useState(true)
   const [rangeStart, setRangeStart] = useState(() => addDays(stripLocal(now), -PAST_DAYS))
   const [rangeEnd, setRangeEnd] = useState(() => addDays(stripLocal(now), FUTURE_DAYS))
-  const [monthGridOpen, setMonthGridOpen] = useState(false)
+  const [grid, setGrid] = useUrlChoice('grid', 'closed', ['closed', 'open'])
+  const monthGridOpen = grid === 'open'
   const monthRef = useRef<HTMLElement | null>(null)
   const dayContextCacheRef = useRef<Map<string, DayChurchContext>>(new Map())
   const dayRequestIdRef = useRef(0)
-  const dateParamApplied = useRef(false)
-  /** CAL-05: restore page scroll after closing detail sheet. */
-  const savedScrollY = useRef(0)
-  const prevScrollRestoration = useRef<ScrollRestoration | null>(null)
-
-  useEffect(() => {
-    if (dateParamApplied.current) return
-    const raw = searchParams.get('date')
-    if (!raw) return
-    const d = parseGregorianAnchorIso(raw)
-    if (!d) return
-    dateParamApplied.current = true
-    setViewYear(d.getFullYear())
-    setViewMonth(d.getMonth())
-    setSelectedDay(d.getDate())
-    const civil = stripLocal(d)
-    setRangeStart(addDays(civil, -PAST_DAYS))
-    setRangeEnd(addDays(civil, FUTURE_DAYS))
-  }, [searchParams])
-
   useEffect(() => {
     let active = true
     const loadCards = (force = false) => {
@@ -126,11 +109,6 @@ export function CalendarPage() {
     }
   }, [now])
 
-
-  const selectedDate = useMemo(
-    () => new Date(viewYear, viewMonth, selectedDay),
-    [viewYear, viewMonth, selectedDay],
-  )
 
   const isSelectedToday =
     selectedDate.getFullYear() === now.getFullYear() &&
@@ -209,23 +187,27 @@ export function CalendarPage() {
     }
   }, [selectedDate, dayReloadTick, isSelectedToday, todayContext, t])
 
+  // Reserve roughly the loaded height only while the placeholders are showing, so the
+  // timeline carousel and dashboard do not push content down when they arrive.
+  const timelineReserveSpace =
+    timelineLoading && timelineGroups.length === 0 && !(dayError && !dayContext)
+  const dashboardLoading = dayLoading && !dayContext
+
   const gregorianLabel = formatGregorianMonth(selectedDate, contentLocale)
   const ethiopianLabel = formatEthiopianDay(selectedDate, contentLocale, true)
 
-  const setSelectedCivilDate = useCallback((d: Date, pushHistory = true) => {
+  const setSelectedCivilDate = useCallback((d: Date) => {
     const civil = stripLocal(d)
-    setViewYear(civil.getFullYear())
-    setViewMonth(civil.getMonth())
-    setSelectedDay(civil.getDate())
-    setDetailEvent(null)
     const iso = toIsoLocalDate(civil)
+    if (searchParams.get('date') === iso && !searchParams.has('month') && !searchParams.has('event')) return
     setSearchParams((prev) => {
       const next = new URLSearchParams(prev)
-      if (next.get("date") === iso) return prev
       next.set("date", iso)
+      next.delete("month")
+      next.delete("event")
       return next
-    }, { replace: !pushHistory })
-  }, [setSearchParams])
+    })
+  }, [searchParams, setSearchParams])
 
   const jumpToday = () => {
     const civil = stripLocal(now)
@@ -249,67 +231,21 @@ export function CalendarPage() {
     })
   }, [viewYear, viewMonth, selectedDay, setSelectedCivilDate])
 
-  const goPrevMonth = () => {
-    const d = new Date(viewYear, viewMonth - 1, 1)
-    const max = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
-    setViewYear(d.getFullYear())
-    setViewMonth(d.getMonth())
-    setSelectedDay((prev) => Math.min(prev, max))
-    setDetailEvent(null)
-  }
-
-  const goNextMonth = () => {
-    const d = new Date(viewYear, viewMonth + 1, 1)
-    const max = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate()
-    setViewYear(d.getFullYear())
-    setViewMonth(d.getMonth())
-    setSelectedDay((prev) => Math.min(prev, max))
-    setDetailEvent(null)
-  }
-
-
+  const eventId = searchParams.get('event')
+  const detailEvent = timelineGroups.find(group => group.iso === toIsoLocalDate(selectedDate))
+    ?.events.find(event => event.id === eventId) || null
   const openEvent = useCallback((event: PresentableCalendarEvent, date: Date) => {
-    savedScrollY.current = window.scrollY
-    try {
-      if (prevScrollRestoration.current == null) {
-        prevScrollRestoration.current = window.history.scrollRestoration
-      }
-      window.history.scrollRestoration = 'manual'
-    } catch {
-      /* ignore */
-    }
-    const civil = stripLocal(date)
-    setViewYear(civil.getFullYear())
-    setViewMonth(civil.getMonth())
-    setSelectedDay(civil.getDate())
-    setDetailEvent(event)
-  }, [])
-
+    const next = new URLSearchParams(searchParams)
+    next.set('date', toIsoLocalDate(date))
+    next.set('event', event.id)
+    setSearchParams(next, { state: { calendarDetailParent: `${location.pathname}${location.search}` } })
+  }, [searchParams, setSearchParams, location.pathname, location.search])
   const closeDetail = useCallback(() => {
-    setDetailEvent(null)
-    const y = savedScrollY.current
-    const restore = () => {
-      const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
-      window.scrollTo({ top: Math.min(y, maxY), left: 0, behavior: 'auto' })
-    }
-    restore()
-    window.requestAnimationFrame(() => {
-      restore()
-      window.requestAnimationFrame(() => {
-        restore()
-        try {
-          if (prevScrollRestoration.current != null) {
-            window.history.scrollRestoration = prevScrollRestoration.current
-            prevScrollRestoration.current = null
-          }
-        } catch {
-          /* ignore */
-        }
-      })
-    })
-    window.setTimeout(restore, 80)
-    window.setTimeout(restore, 200)
-  }, [])
+    if (location.state?.calendarDetailParent) { navigate(-1); return }
+    const next = new URLSearchParams(searchParams)
+    next.delete('event')
+    setSearchParams(next)
+  }, [location.state, navigate, searchParams, setSearchParams])
 
   const loadEarlier = useCallback(() => {
     setRangeStart((prev) => addDays(prev, -EXTEND_DAYS))
@@ -318,26 +254,6 @@ export function CalendarPage() {
   const loadLater = useCallback(() => {
     setRangeEnd((prev) => addDays(prev, EXTEND_DAYS))
   }, [])
-  const touchStartX = useRef<number | null>(null)
-  const touchStartY = useRef<number | null>(null)
-
-  const onMonthTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX
-    touchStartY.current = e.touches[0].clientY
-  }
-
-  const onMonthTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current == null || touchStartY.current == null) return
-    const deltaX = e.changedTouches[0].clientX - touchStartX.current
-    const deltaY = e.changedTouches[0].clientY - touchStartY.current
-    touchStartX.current = null
-    touchStartY.current = null
-    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
-      if (deltaX < 0) goNextMonth()
-      else goPrevMonth()
-    }
-  }
-
   const dayTouchStartX = useRef<number | null>(null)
   const dayTouchStartY = useRef<number | null>(null)
 
@@ -401,7 +317,7 @@ export function CalendarPage() {
           <button
             type="button"
             className={styles.monthToggleBtn}
-            onClick={() => setMonthGridOpen((prev) => !prev)}
+            onClick={() => setGrid(monthGridOpen ? 'closed' : 'open')}
             aria-expanded={monthGridOpen}
           >
             {monthGridOpen
@@ -411,7 +327,10 @@ export function CalendarPage() {
         </div>
       </header>
 
-      <section className={styles.selectedBlock} aria-labelledby="timeline-heading">
+      <section
+        className={`${styles.selectedBlock} ${timelineReserveSpace ? styles.selectedBlockLoading : ''}`}
+        aria-labelledby="timeline-heading"
+      >
         {dayError && !dayContext && timelineGroups.length === 0 ? (
           <div className={styles.errorBox} role="alert">
             <p>{dayError}</p>
@@ -446,8 +365,6 @@ export function CalendarPage() {
           ref={monthRef}
           className={styles.monthAccordionPane}
           aria-label={t('calendar.timeline.month')}
-          onTouchStart={onMonthTouchStart}
-          onTouchEnd={onMonthTouchEnd}
         >
           <div className={styles.monthCardWrapper}>
             <OrthodoxInteractiveCalendar
@@ -460,10 +377,12 @@ export function CalendarPage() {
         </section>
       ) : null}
 
-      <div className={styles.dashboardContainer}>
+      <div
+        className={`${styles.dashboardContainer} ${dashboardLoading ? styles.dashboardContainerLoading : ''}`}
+      >
         <DailyFaithDashboard
           context={dayContext}
-          loading={dayLoading && !dayContext}
+          loading={dashboardLoading}
         />
       </div>
 

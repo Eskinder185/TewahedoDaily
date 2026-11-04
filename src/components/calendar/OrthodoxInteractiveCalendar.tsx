@@ -18,6 +18,8 @@ import {
 } from '../../lib/calendar/ethiopianCalendarEngine'
 import { useLocale } from '../../lib/i18n/locale'
 import styles from './OrthodoxInteractiveCalendar.module.css'
+import { useSearchParams } from 'react-router-dom'
+import { useUrlChoice } from '../../hooks/useUrlState'
 
 export type CalendarViewMode = 'gregorian' | 'ethiopian'
 
@@ -83,18 +85,24 @@ export function OrthodoxInteractiveCalendar({
   const activeLocale = locale || contentLocale || 'en'
   const isAmharic = activeLocale === 'am'
 
-  const [viewMode, setViewMode] = useState<CalendarViewMode>(initialMode)
-  const [activeFilter, setActiveFilter] = useState<CalendarFilterCategory>('all')
+  const [params, setParams] = useSearchParams()
+  const [viewMode] = useUrlChoice<CalendarViewMode>('mode', initialMode, ['gregorian', 'ethiopian'])
+  const [activeFilter, setActiveFilter] = useUrlChoice<CalendarFilterCategory>('filter', 'all', ['all', 'feasts', 'marian', 'saints', 'fasting'])
   const [legendOpen, setLegendOpen] = useState(false)
-
-  // Gregorian view coordinates
-  const [gregYear, setGregYear] = useState(() => selectedDate.getFullYear())
-  const [gregMonth, setGregMonth] = useState(() => selectedDate.getMonth())
-
-  // Ethiopian view coordinates
-  const initialEth = useMemo(() => gregorianToEthiopian(selectedDate), [selectedDate])
-  const [ethYear, setEthYear] = useState(() => initialEth.year)
-  const [ethMonth, setEthMonth] = useState(() => initialEth.month)
+  const eth = gregorianToEthiopian(selectedDate)
+  const rawMonth = /^(\d{4})-(\d{2})$/.exec(params.get('month') || '')
+  const validMonth = rawMonth && Number(rawMonth[1]) >= 1900 && Number(rawMonth[1]) <= 2200
+    && Number(rawMonth[2]) >= 1 && Number(rawMonth[2]) <= (viewMode === 'ethiopian' ? 13 : 12)
+  const gregYear = validMonth && viewMode === 'gregorian' ? Number(rawMonth[1]) : selectedDate.getFullYear()
+  const gregMonth = validMonth && viewMode === 'gregorian' ? Number(rawMonth[2]) - 1 : selectedDate.getMonth()
+  const ethYear = validMonth && viewMode === 'ethiopian' ? Number(rawMonth[1]) : eth.year
+  const ethMonth = validMonth && viewMode === 'ethiopian' ? Number(rawMonth[2]) : eth.month
+  const setMonth = (year: number, month: number, mode = viewMode) => {
+    const next = new URLSearchParams(params)
+    next.set('month', `${year}-${String(month).padStart(2, '0')}`)
+    next.set('mode', mode)
+    setParams(next)
+  }
 
   // Loaded day marks
   const [gregMarks, setGregMarks] = useState<ReadonlyMap<number, CalendarDayCellMark>>(new Map())
@@ -106,25 +114,10 @@ export function OrthodoxInteractiveCalendar({
     rect: DOMRect
   } | null>(null)
 
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const liveRegionId = useId()
   const [liveAnnouncement, setLiveAnnouncement] = useState('')
-
-  // Sync viewed month with selectedDate changes if outside view
-  useEffect(() => {
-    if (viewMode === 'gregorian') {
-      if (selectedDate.getFullYear() !== gregYear || selectedDate.getMonth() !== gregMonth) {
-        setGregYear(selectedDate.getFullYear())
-        setGregMonth(selectedDate.getMonth())
-      }
-    } else {
-      const eth = gregorianToEthiopian(selectedDate)
-      if (eth.year !== ethYear || eth.month !== ethMonth) {
-        setEthYear(eth.year)
-        setEthMonth(eth.month)
-      }
-    }
-  }, [selectedDate, viewMode])
 
   // Fetch marks for Gregorian view
   useEffect(() => {
@@ -163,14 +156,12 @@ export function OrthodoxInteractiveCalendar({
   // Mode switcher with seamless coordinate translation
   const handleModeChange = (mode: CalendarViewMode) => {
     if (mode === viewMode) return
-    setViewMode(mode)
     setHoveredCell(null)
     if (mode === 'ethiopian') {
       // Transition from current Gregorian view to corresponding Ethiopian month
       const midDate = new Date(gregYear, gregMonth, 15)
       const eth = gregorianToEthiopian(midDate)
-      setEthYear(eth.year)
-      setEthMonth(eth.month)
+      setMonth(eth.year, eth.month, mode)
       setLiveAnnouncement(
         isAmharic
           ? `ወደ የኢትዮጵያ አቆጣጠር ተቀይሯል፡ ${ETHIOPIAN_MONTH_NAMES_AM[eth.month - 1]} ${eth.year}`
@@ -179,8 +170,7 @@ export function OrthodoxInteractiveCalendar({
     } else {
       // Transition from current Ethiopian view to corresponding Gregorian month
       const civil = ethiopianToGregorian({ year: ethYear, month: ethMonth, day: 15 })
-      setGregYear(civil.year)
-      setGregMonth(civil.month - 1)
+      setMonth(civil.year, civil.month, mode)
       setLiveAnnouncement(
         isAmharic
           ? `ወደ ግሪጎሪያን አቆጣጠር ተቀይሯል፡ ${GREGORIAN_MONTHS_AM[civil.month - 1]} ${civil.year}`
@@ -190,51 +180,22 @@ export function OrthodoxInteractiveCalendar({
   }
 
   // Navigation handlers
-  const handlePrevMonth = () => {
+  const shiftMonth = (delta: number) => {
     setHoveredCell(null)
     if (viewMode === 'gregorian') {
-      if (gregMonth === 0) {
-        setGregYear((y) => y - 1)
-        setGregMonth(11)
-      } else {
-        setGregMonth((m) => m - 1)
-      }
+      const date = new Date(gregYear, gregMonth + delta, 1)
+      setMonth(date.getFullYear(), date.getMonth() + 1)
     } else {
-      if (ethMonth === 1) {
-        setEthYear((y) => y - 1)
-        setEthMonth(13)
-      } else {
-        setEthMonth((m) => m - 1)
-      }
+      const ordinal = ethYear * 13 + ethMonth - 1 + delta
+      setMonth(Math.floor(ordinal / 13), ordinal % 13 + 1)
     }
   }
-
-  const handleNextMonth = () => {
-    setHoveredCell(null)
-    if (viewMode === 'gregorian') {
-      if (gregMonth === 11) {
-        setGregYear((y) => y + 1)
-        setGregMonth(0)
-      } else {
-        setGregMonth((m) => m + 1)
-      }
-    } else {
-      if (ethMonth === 13) {
-        setEthYear((y) => y + 1)
-        setEthMonth(1)
-      } else {
-        setEthMonth((m) => m + 1)
-      }
-    }
-  }
+  const handlePrevMonth = () => shiftMonth(-1)
+  const handleNextMonth = () => shiftMonth(1)
 
   const handleJumpToday = () => {
     setHoveredCell(null)
     const todayEth = gregorianToEthiopian(today)
-    setGregYear(today.getFullYear())
-    setGregMonth(today.getMonth())
-    setEthYear(todayEth.year)
-    setEthMonth(todayEth.month)
     onSelectDate(today)
     setLiveAnnouncement(
       isAmharic
@@ -424,7 +385,17 @@ export function OrthodoxInteractiveCalendar({
   }
 
   return (
-    <div ref={containerRef} className={styles.calendarContainer} role="region" aria-label={isAmharic ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ የቀን መቁጠሪያ' : 'Ethiopian Orthodox Church Calendar'}>
+    <div ref={containerRef}
+      onTouchStart={event => { touchStart.current = { x: event.touches[0].clientX, y: event.touches[0].clientY } }}
+      onTouchEnd={event => {
+        const start = touchStart.current
+        touchStart.current = null
+        if (!start) return
+        const dx = event.changedTouches[0].clientX - start.x
+        const dy = event.changedTouches[0].clientY - start.y
+        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) shiftMonth(dx < 0 ? 1 : -1)
+      }}
+      className={styles.calendarContainer} role="region" aria-label={isAmharic ? 'የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ የቀን መቁጠሪያ' : 'Ethiopian Orthodox Church Calendar'}>
       {/* Live Region for Screen Readers */}
       <span id={liveRegionId} className="sr-only" aria-live="polite">
         {liveAnnouncement}
@@ -488,7 +459,7 @@ export function OrthodoxInteractiveCalendar({
                 <select
                   className={styles.selectDropdown}
                   value={gregMonth}
-                  onChange={(e) => setGregMonth(parseInt(e.target.value, 10))}
+                  onChange={(e) => setMonth(gregYear, Number(e.target.value) + 1)}
                   aria-label={isAmharic ? 'ወር ይምረጡ' : 'Select Month'}
                 >
                   {(isAmharic ? GREGORIAN_MONTHS_AM : GREGORIAN_MONTHS_EN).map((m, idx) => (
@@ -500,7 +471,7 @@ export function OrthodoxInteractiveCalendar({
                 <select
                   className={styles.selectDropdown}
                   value={gregYear}
-                  onChange={(e) => setGregYear(parseInt(e.target.value, 10))}
+                  onChange={(e) => setMonth(Number(e.target.value), gregMonth + 1)}
                   aria-label={isAmharic ? 'ዓመት ይምረጡ' : 'Select Year'}
                 >
                   {[2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030, 2031, 2032].map((yr) => (
@@ -515,7 +486,7 @@ export function OrthodoxInteractiveCalendar({
                 <select
                   className={styles.selectDropdown}
                   value={ethMonth}
-                  onChange={(e) => setEthMonth(parseInt(e.target.value, 10))}
+                  onChange={(e) => setMonth(ethYear, Number(e.target.value))}
                   aria-label={isAmharic ? 'የኢትዮጵያ ወር ይምረጡ' : 'Select Ethiopian Month'}
                 >
                   {Array.from({ length: 13 }, (_, i) => i + 1).map((mNum) => {
@@ -530,7 +501,7 @@ export function OrthodoxInteractiveCalendar({
                 <select
                   className={styles.selectDropdown}
                   value={ethYear}
-                  onChange={(e) => setEthYear(parseInt(e.target.value, 10))}
+                  onChange={(e) => setMonth(Number(e.target.value), ethMonth)}
                   aria-label={isAmharic ? 'የኢትዮጵያ ዓመት ይምረጡ' : 'Select Ethiopian Year'}
                 >
                   {[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025].map((ey) => (

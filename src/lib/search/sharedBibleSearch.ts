@@ -11,6 +11,7 @@
 import { searchBible, searchBibleText, type BibleSearchOptions } from '../bible/bibleSearch.ts'
 import { AiClientError } from '../ai/aiTypes.ts'
 import { containsEthiopic } from '../searchBuddy/amharicText.ts'
+import { buildExcerpt } from './textMatch.ts'
 import type { SearchBuddyApiResponse } from '../searchBuddy/apiTypes.ts'
 import { resolveBibleDetailPath } from './bibleRoute.ts'
 import { canResolveBibleQuery, resolveBibleQuery } from './resolveBibleQuery.ts'
@@ -203,15 +204,23 @@ export async function searchBibleShared(
       }
 
       if (resolved.response.type === 'bible_search' && !resolved.empty) {
-        const siteResults = siteResultsFromStructured(resolved.response)
-        return {
-          normalizedQuery: resolved.query,
-          structured: resolved.response,
-          siteResults,
-          empty: siteResults.length === 0,
-          source: 'buddy-api',
-          intentMessage: intentForStructured(resolved.response),
-          directReference: false,
+        // Keep only API hits whose own text really contains the query words, and highlight them; hits that
+        // do not match are discarded (never shown as relevant) and the local verse-text search takes over.
+        const siteResults = siteResultsFromStructured(resolved.response).flatMap((hit) => {
+          const found = hit.excerpt ? buildExcerpt(hit.excerpt, rawForChat, 240) : null
+          return found ? [{ ...hit, excerpt: found.text, highlights: found.ranges }] : []
+        })
+        if (siteResults.length) {
+          return {
+            normalizedQuery: resolved.query,
+            // The verified, highlighted hits render as a result list (with direct verse links).
+            structured: null,
+            siteResults,
+            empty: false,
+            source: 'buddy-api',
+            intentMessage: intentForStructured(resolved.response),
+            directReference: false,
+          }
         }
       }
       // Non-bible chat types → ordinary text search (not local reference parsing).

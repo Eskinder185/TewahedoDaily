@@ -16,6 +16,25 @@
   min-width: 0;
 }
 
+.languagePicker { position: relative; }
+
+.languageButton {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.35rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-heading);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.languageButton:focus-visible { outline: 2px solid var(--color-focus-ring); }
+.languageButton:disabled { opacity: 0.55; cursor: not-allowed; }
+
 .compactLangGroup {
   display: inline-flex;
   align-items: center;
@@ -45,6 +64,11 @@
   border-color: var(--color-navy);
   color: #fff8f0;
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-gold) 40%, transparent);
+  animation: voiceMicRing 1.6s ease-out infinite;
+}
+
+@keyframes voiceMicRing {
+  50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--color-gold) 18%, transparent); }
 }
 
 .micBtnError {
@@ -110,9 +134,9 @@
 
 .langMenu {
   position: absolute;
-  left: 0;
-  bottom: calc(100% + 0.45rem);
-  z-index: 5;
+  right: 0;
+  top: calc(100% + 0.45rem);
+  z-index: 40;
   min-width: 11.5rem;
   padding: 0.35rem;
   border: 1px solid var(--color-border);
@@ -122,6 +146,15 @@
   display: grid;
   gap: 0.2rem;
 }
+
+.privacyNote {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.langMenu .privacyNote { padding: 0.45rem 0.7rem; border-top: 1px solid var(--color-border); }
 
 .langOption {
   min-height: 44px;
@@ -202,6 +235,7 @@
     animation: none;
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-gold) 40%, transparent);
   }
+  .micBtnListening { animation: none; }
 }
 
 .voiceSessionCopy {
@@ -378,7 +412,47 @@
 
 .compact {
   margin-top: 0;
-  width: 100%;
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.compact .voiceSession,
+.compact .idleHint {
+  position: absolute;
+  z-index: 35;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: min(20rem, calc(100vw - 2rem));
+  margin: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--color-border-card);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-lift);
+}
+
+.compact .idleHint { font-size: 0.82rem; }
+
+@media (max-width: 600px) {
+  .compact .voiceSession,
+  .compact .idleHint {
+    position: fixed;
+    top: auto;
+    right: 0.65rem;
+    bottom: max(0.65rem, env(safe-area-inset-bottom));
+    left: 0.65rem;
+    width: auto;
+    z-index: 100;
+  }
+
+  .compact .langMenu {
+    position: fixed;
+    top: auto;
+    right: 0.65rem;
+    bottom: max(0.65rem, env(safe-area-inset-bottom));
+    left: 0.65rem;
+    z-index: 100;
+  }
 }
 
 .srOnly {

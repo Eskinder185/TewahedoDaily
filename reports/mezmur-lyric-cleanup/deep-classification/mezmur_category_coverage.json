@@ -1,0 +1,28 @@
+{
+  "total_retained": 2531,
+  "full_lyrics_semantically_reviewed": 25,
+  "not_semantically_reviewed": 2506,
+  "original_unresolved_categories": 863,
+  "reviewed_unresolved_with_supported_proposal": 25,
+  "remaining_unreviewed_unresolved": 838,
+  "proposed_primary_distribution": {
+    "Kidus Uriel": 2,
+    "Virgin Mary": 7,
+    "Cross": 1,
+    "Praise / Worship": 3,
+    "Jesus Christ": 3,
+    "Saints": 1,
+    "Kidus Michael": 4,
+    "Holy Trinity": 1,
+    "Prayer": 1,
+    "Repentance": 1,
+    "Salvation": 1
+  },
+  "specific_named_subjects": 17,
+  "secondary_proposals": 0,
+  "occasion_suggestions": 0,
+  "earlier_suggestion_disagreements": 5,
+  "taxonomy_additions_for_review": [
+    "Abba Kyros"
+  ]
+}

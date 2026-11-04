@@ -1,0 +1,27 @@
+.heading { display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 1rem; }
+.heading h1 { margin: 0; }
+.viewSwitch { display: flex; gap: .35rem; }
+.viewSwitch button[aria-pressed="true"] { outline: 2px solid var(--color-focus-ring); }
+.upload { margin: 1rem 0; }
+.upload h2 { margin-top: 0; }
+.upload input[type="file"] { display: block; width: 100%; max-width: 100%; }
+.workspace { display: grid; grid-template-columns: minmax(0, 1fr) minmax(17rem, 22rem); gap: 1rem; align-items: start; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .85rem; min-width: 0; }
+.list { display: grid; gap: .5rem; min-width: 0; }
+.asset { display: grid; gap: .4rem; text-align: left; min-width: 0; padding: .6rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-elevated); color: var(--color-text); cursor: pointer; }
+.asset:hover, .selected { border-color: var(--color-focus-ring); }
+.asset strong, .asset small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.asset small { color: var(--color-text-muted); }
+.thumbWrap { display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-bg-muted); border-radius: var(--radius-md); }
+.thumbWrap img { width: 100%; height: 100%; object-fit: cover; }
+.list .asset { grid-template-columns: 5rem minmax(0, 1fr); align-items: center; }
+.list .thumbWrap { grid-row: span 2; }
+.editor { position: sticky; top: 1rem; min-width: 0; }
+.editorContent { display: grid; gap: .75rem; }
+.editorContent h2 { margin: 0; }
+.help { color: var(--color-text-muted); font-size: .85rem; white-space: normal; overflow-wrap: anywhere; }
+.editorImage { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: var(--color-bg-muted); }
+.editorImage img { width: 100%; height: 100%; object-fit: contain; }
+.previewButton { padding: 0; width: 100%; border: 0; cursor: zoom-in; }
+.fullPreview { display: block; max-width: 100%; max-height: 68dvh; object-fit: contain; margin: auto; }
+@media (max-width: 950px) { .workspace { grid-template-columns: 1fr; } .editor { position: static; } }

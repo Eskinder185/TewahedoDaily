@@ -6,6 +6,7 @@ import {
   type KeyboardEvent,
 } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useUrlSearchInput } from '../hooks/useUrlState'
 import { PageSection } from '../components/ui/PageSection'
 import {
   libraryCollectionPath,
@@ -22,6 +23,9 @@ import { useDailyPrayerRhythm } from '../hooks/useDailyPrayerRhythm'
 import { resolveContentMediaUrl } from '../lib/cms/contentMedia'
 import { useUiLabel } from '../lib/i18n/uiLabels'
 import { useTranslation } from '../i18n'
+import { useLocale, type AppLocale } from '../lib/i18n/locale'
+import { pickLocalized } from '../lib/prayers/localizedText'
+import { LangFallbackNote } from '../components/prayers/LangFallbackNote'
 import { useAuth } from '../lib/auth/useAuth'
 import { listReadingProgress } from '../lib/userContent/readingProgressService'
 import type { ReadingProgressRecord } from '../lib/userContent/types'
@@ -130,6 +134,7 @@ function PraySearchField({
   hasStrongMatch: boolean
 }) {
   const tr = useTranslation()
+  const { locale } = useLocale()
   const listboxId = useId()
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(-1)
@@ -201,7 +206,9 @@ function PraySearchField({
               No exact match — closest suggestions
             </li>
           ) : null}
-          {suggestions.map((item, index) => (
+          {suggestions.map((item, index) => {
+            const itemTitle = pickLocalized(locale, item.title, item.titleAmharic)
+            return (
             <li key={item.id} role="option" aria-selected={active === index} id={`${listboxId}-opt-${index}`}>
               <button
                 type="button"
@@ -213,23 +220,41 @@ function PraySearchField({
                 }}
               >
                 <span className={styles.resultKicker}>{item.metadata}</span>
-                <strong>{item.title}</strong>
-                {item.titleAmharic ? <span lang="am">{item.titleAmharic}</span> : null}
+                <strong lang={itemTitle.lang}>{itemTitle.text}</strong>
+                <LangFallbackNote pick={itemTitle} />
               </button>
             </li>
-          ))}
+            )
+          })}
         </ul>
       ) : null}
     </div>
   )
 }
 
+function ChipTitle({
+  chip,
+  locale,
+}: {
+  chip: { title: string; titleAmharic?: string }
+  locale: AppLocale
+}) {
+  const pick = pickLocalized(locale, chip.title, chip.titleAmharic)
+  return (
+    <>
+      <strong lang={pick.lang}>{pick.text}</strong>
+      <LangFallbackNote pick={pick} />
+    </>
+  )
+}
+
 export function PrayerListPage() {
   const t = useUiLabel()
   const tr = useTranslation()
+  const { locale } = useLocale()
   const navigate = useNavigate()
   const { session } = useAuth()
-  const [query, setQuery] = useState('')
+  const [query, setQuery] = useUrlSearchInput()
   const [collections, setCollections] = useState<PrayerLibraryCollection[]>([])
   const [collectionsLoading, setCollectionsLoading] = useState(true)
   const [collectionsError, setCollectionsError] = useState<string>()
@@ -393,6 +418,7 @@ export function PrayerListPage() {
     }
   }, [query])
 
+  const weekdayPick = pickLocalized(locale, rhythm?.weekday, rhythm?.weekdayAmharic)
   const isSearching = query.trim().length > 0
   const resultsCountLabel =
     results.length === 1
@@ -455,16 +481,19 @@ export function PrayerListPage() {
             ) : null}
             {results.length > 0 ? (
               <ul className={styles.resultList}>
-                {results.map((result) => (
-                  <li key={result.id}>
-                    <Link className={styles.resultLink} to={result.route}>
-                      <span className={styles.resultKicker}>{result.metadata}</span>
-                      <strong>{result.title}</strong>
-                      {result.titleAmharic ? <span lang="am">{result.titleAmharic}</span> : null}
-                      <small>{result.excerpt}</small>
-                    </Link>
-                  </li>
-                ))}
+                {results.map((result) => {
+                  const resultTitle = pickLocalized(locale, result.title, result.titleAmharic)
+                  return (
+                    <li key={result.id}>
+                      <Link className={styles.resultLink} to={result.route}>
+                        <span className={styles.resultKicker}>{result.metadata}</span>
+                        <strong lang={resultTitle.lang}>{resultTitle.text}</strong>
+                        <LangFallbackNote pick={resultTitle} />
+                        <small>{result.excerpt}</small>
+                      </Link>
+                    </li>
+                  )
+                })}
               </ul>
             ) : null}
           </section>
@@ -478,15 +507,7 @@ export function PrayerListPage() {
                     <div className={styles.rhythmTitleSkeleton} aria-hidden />
                   ) : rhythm ? (
                     <h2>
-                      {rhythm.weekday}
-                      {rhythm.weekdayAmharic &&
-                      rhythm.weekdayAmharic.trim().toLowerCase() !==
-                        rhythm.weekday.trim().toLowerCase() ? (
-                        <>
-                          {' '}
-                          / <span lang="am">{rhythm.weekdayAmharic}</span>
-                        </>
-                      ) : null}
+                      <span lang={weekdayPick.lang}>{weekdayPick.text}</span>
                     </h2>
                   ) : (
                     <h2>{tr('prayers.dailyRhythm.todayFallback')}</h2>
@@ -522,8 +543,7 @@ export function PrayerListPage() {
                                 ? tr('prayers.dailyRhythm.labelCommemoration')
                                 : chip.label}
                       </span>
-                      <strong>{chip.title}</strong>
-                      {chip.titleAmharic ? <span lang="am">{chip.titleAmharic}</span> : null}
+                      <ChipTitle chip={chip} locale={locale} />
                     </li>
                   ))}
                 </ul>
@@ -631,10 +651,9 @@ export function PrayerListPage() {
 
             <ul className={styles.collectionGrid} aria-label={tr('prayers.title')}>
               {collections
-                .filter((collection) => Boolean(collection.title?.trim()))
+                .filter((collection) => Boolean(collection.title?.trim() || collection.titleAmharic?.trim()))
                 .map((collection, index) => {
-                  const title = collection.title.trim()
-                  const titleAmharic = collection.titleAmharic?.trim() || ''
+                  const titlePick = pickLocalized(locale, collection.title, collection.titleAmharic)
                   const description = collection.description?.trim() || ''
                   const imageUrl = collection.imagePath
                     ? resolveContentMediaUrl(collection.imagePath)
@@ -653,12 +672,10 @@ export function PrayerListPage() {
                         ) : null}
                         <div className={styles.collectionBody}>
                           <p className={styles.collectionOrder}>{String(index + 1).padStart(2, '0')}</p>
-                          <h2 className={styles.collectionTitle}>{title}</h2>
-                          {titleAmharic ? (
-                            <p className={styles.collectionAmharic} lang="am">
-                              {titleAmharic}
-                            </p>
-                          ) : null}
+                          <h2 className={styles.collectionTitle} lang={titlePick.lang}>
+                            {titlePick.text}
+                          </h2>
+                          <LangFallbackNote pick={titlePick} />
                           {description ? <p className={styles.collectionText}>{description}</p> : null}
                           <p className={styles.collectionMeta}>{collectionCountLabel(collection, tr)}</p>
                         </div>
@@ -674,20 +691,21 @@ export function PrayerListPage() {
             <section className={styles.learn} aria-label={tr('prayers.learnHowToPray.sectionAria')}>
               <p className={styles.learnEyebrow}>{tr('prayers.learnHowToPray.eyebrow')}</p>
               <ul className={styles.learnGrid}>
-                {guides.map((guide) => (
+                {guides.map((guide) => {
+                  const guideTitle = pickLocalized(locale, guide.title, guide.titleAmharic)
+                  return (
                   <li key={guide.id}>
                     <article className={styles.learnCard}>
                       <div className={styles.learnBody}>
-                        <h2 className={styles.learnTitle}>{guide.title}</h2>
-                        {guide.titleAmharic ? (
-                          <p className={styles.learnAmharic} lang="am">
-                            {guide.titleAmharic}
-                          </p>
-                        ) : null}
+                        <h2 className={styles.learnTitle} lang={guideTitle.lang}>
+                          {guideTitle.text}
+                        </h2>
+                        <LangFallbackNote pick={guideTitle} />
                         <p className={styles.learnText}>
                           {guide.slug === 'learn-how-to-pray'
                             ? tr('prayers.learnHowToPray.foundation')
-                            : guide.summary || LEARN_HOW_TO_PRAY_CARD.summary}
+                            : pickLocalized(locale, guide.summary, guide.summaryAmharic).text ||
+                              LEARN_HOW_TO_PRAY_CARD.summary}
                         </p>
                       </div>
                       {guide.slug === 'learn-how-to-pray' ? (
@@ -709,7 +727,8 @@ export function PrayerListPage() {
                       )}
                     </article>
                   </li>
-                ))}
+                  )
+                })}
               </ul>
             </section>
           </>

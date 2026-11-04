@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { useUrlSearchInput } from '../hooks/useUrlState'
 import { pageNumber, PAGE_SIZE, type MezmurCard } from '../lib/publicContent/service'
 import {
   loadHymnBrowseIndex,
@@ -105,8 +106,9 @@ export function PublicHymnCollectionPage({
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
-  const [withinQ, setWithinQ] = useState(params.get('q') || '')
-  const [zemariQuery, setZemariQuery] = useState('')
+  const [draftQ, setWithinQ] = useUrlSearchInput()
+  const withinQ = params.get('q') || ''
+  const [zemariQuery, setZemariQuery] = useUrlSearchInput('zemari')
   const [visibleZemaris, setVisibleZemaris] = useState(ZEMARIS_PER_PAGE)
   const t = useTranslation()
   const { locale } = useLocale()
@@ -231,7 +233,15 @@ export function PublicHymnCollectionPage({
         } else {
           const { listImportMezmurCards } = await import('../lib/publicContent/hymnBrowse')
           const { supabase } = await import('../lib/supabase/client')
-          const cards = await listImportMezmurCards()
+          // Occasion/category pages only need the linked Mezmurs, not the whole catalog.
+          let scopedSlugs: string[] | null = null
+          if ((detailKind === 'occasion' || detailKind === 'category') && group.slug !== 'fasting-suitable') {
+            const { getScopedMezmurSlugs } = await import('../lib/publicContent/hymnBrowse')
+            scopedSlugs = await getScopedMezmurSlugs(detailKind, group.slug).catch(() => null)
+          }
+          const cards = scopedSlugs
+            ? await (await import('../lib/publicContent/hymnBrowse')).listImportMezmurCardsForSlugs(scopedSlugs)
+            : await listImportMezmurCards()
           rows = cards.map((row) => ({
             id: row.id,
             slug: row.slug,
@@ -455,15 +465,8 @@ export function PublicHymnCollectionPage({
             <span className={s.srOnly}>{t('practice.searchWithin')}</span>
             <input
               className={s.searchInput}
-              value={withinQ}
-              onChange={(e) => {
-                setWithinQ(e.target.value)
-                const next = new URLSearchParams(params)
-                if (e.target.value.trim()) next.set('q', e.target.value.trim())
-                else next.delete('q')
-                next.delete('page')
-                setParams(next, { replace: true })
-              }}
+              value={draftQ}
+              onChange={(e) => setWithinQ(e.target.value)}
               placeholder={t('practice.searchWithinNamed', {
                 name: detailHeading.primary || t('practice.collection'),
               })}

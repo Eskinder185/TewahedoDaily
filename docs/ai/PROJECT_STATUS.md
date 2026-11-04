@@ -1,5 +1,13 @@
 # TewahedoDaily Project Status
 
+## Database-only Faith Challenges readiness — 2026-11-04
+
+Typed opt-in readers now cover all twelve existing Studio/game formats, including separate History chronology and source-only Finish Mezmur selections. Existing engines/routes remain; no static fallback occurs in that opt-in path. Default runtime remains unchanged until equivalent published data and actual staging authorization are verified. Shared activity draft saves are prepared, publication remains blocked, and no flag/configuration, live database, SQL, import or deployment was changed. See `DATABASE-DRIVEN-PLAY-2026-11-04.md` for inventory, exact files, tests and production blockers.
+
+## Play mode organization — 2026-11-03
+
+Implemented five gameplay modes across public Play and the existing Faith Challenges studio. All twelve routes and engines remain. Game Night has a shared-screen mixed guide plus existing Custom/Join room flows; mixed multiplayer is explicitly unavailable. Added a tested anti-repetition selector foundation, not yet wired into runtime games or RPCs. Existing twelve dedicated editors/previews remain: four server question readers, eight local draft formats, with History chronology local. See `PLAY-MODES-REDESIGN-2026-11-03.md` for exact files, commands, capability limits and staging blockers. No SQL or production changes.
+
 Updated: 2026-10-30
 
 ## Verified facts

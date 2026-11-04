@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
+import { useUrlSearchInput } from '../hooks/useUrlState'
 import {
   getHymnCollectionBySlug,
   getHymnSection,
@@ -107,7 +108,8 @@ export function PublicHymnSectionPage() {
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
-  const [withinQ, setWithinQ] = useState(params.get('q') || '')
+  const [draftQ, setWithinQ] = useUrlSearchInput()
+  const withinQ = params.get('q') || ''
   const t = useTranslation()
   const { locale } = useLocale()
   const page = Math.max(1, Number(params.get('page') || '1') || 1)
@@ -225,15 +227,8 @@ export function PublicHymnSectionPage() {
             <span className={s.srOnly}>{t('practice.searchWithinSection')}</span>
             <input
               className={s.searchInput}
-              value={withinQ}
-              onChange={(e) => {
-                setWithinQ(e.target.value)
-                const next = new URLSearchParams(params)
-                if (e.target.value.trim()) next.set('q', e.target.value.trim())
-                else next.delete('q')
-                next.delete('page')
-                setParams(next, { replace: true })
-              }}
+              value={draftQ}
+              onChange={(e) => setWithinQ(e.target.value)}
               placeholder={t('practice.searchWithinNamed', {
                 name: heading.primary || t('practice.section'),
               })}

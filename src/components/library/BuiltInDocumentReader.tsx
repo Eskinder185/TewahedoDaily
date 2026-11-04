@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import * as pdfjsLib from 'pdfjs-dist'
 import pdfWorkerUrl from './pdfWorker?worker&url'
 import mammoth from 'mammoth'
+import { sanitizeDocumentHtml } from '../../lib/cms/documentHtml'
 import { parseEpub, parseTxt, type ParsedEpub } from '../../lib/cms/documentReader'
 import { fetchChurchLibraryDocumentBlob } from '../../lib/cms/churchLibraryService'
 import styles from './BuiltInDocumentReader.module.css'
@@ -178,7 +179,7 @@ export function BuiltInDocumentReader({
           setLoadingMessage('Rendering DOCX document…')
           const converted = await mammoth.convertToHtml({ arrayBuffer: copy })
           if (!active) return
-          setDocxHtml(converted.value)
+          setDocxHtml(sanitizeDocumentHtml(converted.value))
           setDocxWarnings(converted.messages.map((m) => m.message))
         } else if (format === 'txt') {
           setLoadingMessage('Decoding text…')

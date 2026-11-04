@@ -1,6 +1,9 @@
 import { useMemo } from 'react'
 import { TabPanel } from '../ui/TabPanel'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
+import { useLocale } from '../../lib/i18n/locale'
+import { pickLocalized } from '../../lib/prayers/localizedText'
+import { LangFallbackNote } from './LangFallbackNote'
 import { PrayerReadingText } from './PrayerReadingText'
 import type { PrayerLang } from './prayerLang'
 import { PRAYER_LANGS } from './prayerLang'
@@ -28,6 +31,8 @@ function fill(template: string, values: Record<string, string | number>) {
 
 export function PrayerDocumentTabs({ title, content }: Props) {
   const t = useUiLabel()
+  const { locale } = useLocale()
+  const summaryPick = pickLocalized(locale, content.summary.english, content.summary.amharic)
   const aggregate = useMemo(
     () => ({
       geez: content.sections.map((section) => section.text.geez).join('\n'),
@@ -93,15 +98,13 @@ export function PrayerDocumentTabs({ title, content }: Props) {
           <h2 id="yekidane-text-title" className={styles.title}>
             {title}
           </h2>
-          {content.summary.amharic.trim() ? (
-            <p className={styles.summary} lang="am">
-              {content.summary.amharic}
-            </p>
-          ) : null}
-          {content.summary.english.trim() ? (
-            <p className={styles.summary} lang="en">
-              {content.summary.english}
-            </p>
+          {summaryPick.text ? (
+            <>
+              <p className={styles.summary} lang={summaryPick.lang}>
+                {summaryPick.text}
+              </p>
+              <LangFallbackNote pick={summaryPick} />
+            </>
           ) : null}
         </div>
         <a className={styles.pdfLink} href={content.sourcePdfPath} target="_blank" rel="noreferrer">

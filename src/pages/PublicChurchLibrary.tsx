@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useUrlChoice, useUrlSearchInput } from '../hooks/useUrlState'
 import { supabase } from '../lib/supabase/client'
 import { useTranslation } from '../i18n'
 import { useLocale } from '../lib/i18n/locale'
@@ -37,8 +38,8 @@ export function PublicChurchLibrary() {
   const [loading, setLoading] = useState(true)
   const [loadError, setLoadError] = useState(false)
   const [retryTick, setRetryTick] = useState(0)
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [searchQuery, setSearchQuery] = useUrlSearchInput()
+  const [selectedCategory, setSelectedCategory] = useUrlChoice('category', 'All', CATEGORIES)
   const [coverUrls, setCoverUrls] = useState<Record<string, string>>({})
 
   useEffect(() => {

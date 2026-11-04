@@ -404,13 +404,23 @@
 .searchInput {
   width: 100%;
   min-height: 48px;
-  padding: 12px 16px;
+  padding: 12px 7.5rem 12px 16px;
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-md);
   background: var(--color-bg-elevated);
   color: var(--color-text);
   font: inherit;
   box-shadow: var(--shadow-card);
+}
+
+.searchVoice {
+  position: absolute;
+  z-index: 40;
+  top: 0;
+  right: 0.2rem;
+  height: 48px;
+  display: flex;
+  align-items: center;
 }
 
 .searchInput:focus {
@@ -755,6 +765,25 @@
   margin: 0;
   color: var(--color-text-subtle);
   font-size: 0.86rem;
+}
+
+.cardExcerpt {
+  margin: 2px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.match {
+  background: rgba(255, 213, 79, 0.55);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 1px;
 }
 
 .cardActions {

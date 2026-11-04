@@ -1,0 +1,445 @@
+[
+  {
+    "row": 1,
+    "primary": "Kidus Uriel",
+    "broad": "Saints & Angels",
+    "subcategory": "Archangels",
+    "subject": "Saint Uriel",
+    "confidence": "high",
+    "evidence": [
+      "ሊቀ መላክ ኡራኤል አባት",
+      "ኡራኤል መላክ ምልጃህም ፈጣን ነው"
+    ],
+    "reason": "Uriel is addressed and praised throughout every stanza; intercession and healing are attributed to him.",
+    "competing": [
+      "Angels"
+    ],
+    "import_id": "00164295-b8aa-56eb-873e-037f2b33d3a8"
+  },
+  {
+    "row": 2,
+    "primary": "Virgin Mary",
+    "broad": "Virgin Mary",
+    "subcategory": "Marian intercession",
+    "subject": "Virgin Mary at Cana",
+    "confidence": "high",
+    "evidence": [
+      "አማልጅኝ ከልጅሽ በቃሉ እንድሞላ",
+      "ያንቺን እናትነት አምኖ ተናገረ"
+    ],
+    "reason": "The singer addresses the mother of Christ and asks for her intercession; the Cana wine narrative illustrates her motherhood.",
+    "competing": [
+      "Jesus Christ",
+      "Prayer"
+    ],
+    "import_id": "00171558-c750-5ebf-8b89-9cc53586077b"
+  },
+  {
+    "row": 4,
+    "primary": "Cross",
+    "broad": "Spiritual Life",
+    "subcategory": "The Cross",
+    "subject": "The Cross as light and foundation",
+    "confidence": "high",
+    "evidence": [
+      "መስቀል ብርሃነ ለኩሉ ዓለም መሠረተ ቤተክርስቲያን",
+      "መስቀል ብርሃን ነው ለምናምን ሰዎች"
+    ],
+    "reason": "Both the Ge’ez opening and Amharic restatement repeatedly name the Cross as the hymn's subject.",
+    "competing": [
+      "Jesus Christ"
+    ],
+    "import_id": "00303ac8-bf88-5ad9-bd92-d05d1438f103"
+  },
+  {
+    "row": 12,
+    "primary": "Praise / Worship",
+    "broad": "Church Worship",
+    "subcategory": "Thanksgiving",
+    "subject": "Thanksgiving for God's mercy",
+    "confidence": "medium",
+    "evidence": [
+      "አምላክ አለ መሀላችን",
+      "አመስግኑ ዝምም አትበሉ"
+    ],
+    "reason": "Most stanzas celebrate God's mercy and urge praise. Mary appears near the close as intercessor, not the main addressee.",
+    "competing": [
+      "Virgin Mary",
+      "Repentance"
+    ],
+    "import_id": "00ec14a1-3162-51a8-81aa-437729965ff1"
+  },
+  {
+    "row": 17,
+    "primary": "Jesus Christ",
+    "broad": "Jesus Christ",
+    "subcategory": "Resurrection",
+    "subject": "Christ's victory over death",
+    "confidence": "high",
+    "evidence": [
+      "የእኛ መድሃኒዓለም ሞትን ድል አረገው",
+      "አምላክሽ ተነሥቷል ከኃጢአት ያነጻሽ"
+    ],
+    "reason": "The hymn addresses Emmanuel and repeatedly narrates his resurrection and liberation of humanity. Mary Magdalene and the apostles are witnesses.",
+    "competing": [
+      "Salvation",
+      "Virgin Mary"
+    ],
+    "import_id": "0117453f-8226-5ce8-8fec-553be9e1df62"
+  },
+  {
+    "row": 21,
+    "primary": "Saints",
+    "broad": "Saints & Angels",
+    "subcategory": "Ethiopian saints",
+    "subject": "Abba Kyros",
+    "confidence": "high",
+    "evidence": [
+      "አባ ኪሮስ አባታችህን",
+      "መንፈስ ቅዱስ ኪሮስ አለህ"
+    ],
+    "reason": "The full hymn addresses Abba Kyros, recounting his ascetic life and attributed miracles. The supported taxonomy lacks a dedicated Kyros category.",
+    "competing": [
+      "Praise / Worship"
+    ],
+    "proposed_taxonomy_addition": "Abba Kyros",
+    "import_id": "0188d308-ad2d-514d-b661-8267d0f556e0"
+  },
+  {
+    "row": 23,
+    "primary": "Praise / Worship",
+    "broad": "Church Worship",
+    "subcategory": "Praise of God's power",
+    "subject": "God's deliverance in biblical events",
+    "confidence": "high",
+    "evidence": [
+      "እንደ እግዚአብሔር ያለ ማንም የለምና",
+      "ባህር ተከፈለ እስኪታይ መሬቱ"
+    ],
+    "reason": "The refrain calls for praise of God; the sea and Jericho are separate examples of divine power. Trinity and Mary are incidental mentions.",
+    "competing": [
+      "Holy Trinity",
+      "Jesus Christ"
+    ],
+    "import_id": "0197f894-1224-5ae9-be1e-a66fc9654bb9"
+  },
+  {
+    "row": 30,
+    "primary": "Kidus Michael",
+    "broad": "Saints & Angels",
+    "subcategory": "Archangels",
+    "subject": "Saint Michael",
+    "confidence": "high",
+    "evidence": [
+      "አስታርቀን አማልደን ሚካኤል",
+      "አባቴ ሚካኤል"
+    ],
+    "reason": "Michael is invoked line after line for intercession, protection, and rescue; the Bahran story supports the same focus.",
+    "competing": [
+      "Angels"
+    ],
+    "import_id": "023c10e2-56dc-5bbc-aae2-56c846a75bac"
+  },
+  {
+    "row": 31,
+    "primary": "Holy Trinity",
+    "broad": "Holy Trinity",
+    "subcategory": "Trinitarian praise",
+    "subject": "The eternal reign of the Trinity",
+    "confidence": "high",
+    "evidence": [
+      "መንግስተ ሥላሴ ዘለዓለም",
+      "የነሙሴ አባት የአብርሃሙ ስላሴ"
+    ],
+    "reason": "The refrain and closing stanza explicitly praise the Trinity as eternal creator and protector.",
+    "competing": [
+      "Praise / Worship"
+    ],
+    "import_id": "02765f4c-7769-5b8d-b31f-329220b5c00e"
+  },
+  {
+    "row": 33,
+    "primary": "Prayer",
+    "broad": "Spiritual Life",
+    "subcategory": "Intercessory prayer",
+    "subject": "Protection and peace for Ethiopia",
+    "confidence": "high",
+    "evidence": [
+      "ጠብቅ እግዚአብሔር ሠራዊቷን",
+      "ካንተ የመነጨ ሰላም ይስፈንባት"
+    ],
+    "reason": "The repeated direct petition asks God to protect Ethiopia and its defenders and grant peace; it is not a named feast or saint hymn.",
+    "competing": [
+      "Praise / Worship",
+      "General"
+    ],
+    "import_id": "02b41182-7080-54a2-8c97-caf5d385b764"
+  },
+  {
+    "row": 44,
+    "primary": "Kidus Michael",
+    "broad": "Saints & Angels",
+    "subcategory": "Archangels",
+    "subject": "Saint Michael and the Bahran account",
+    "confidence": "high",
+    "evidence": [
+      "ርዒክዎ ለሚካኤል ወስዕንኩ ጠይቆቱ",
+      "ባሕራንን አዳነው"
+    ],
+    "reason": "The Ge’ez opening and repeated Amharic response center Michael's rescue of Bahran; Moses is an additional illustration.",
+    "competing": [
+      "Angels",
+      "Prophets"
+    ],
+    "import_id": "04028311-d7f2-57d7-ada8-b2bdb9713efd"
+  },
+  {
+    "row": 46,
+    "primary": "Repentance",
+    "broad": "Spiritual Life",
+    "subcategory": "Sincere obedience",
+    "subject": "Faith shown through love and works",
+    "confidence": "medium",
+    "evidence": [
+      "መጀመሪያ ልቤ ከፊትህ ይንበርከክ",
+      "ስራ ከሌበት ለእኔ አይጠቅመኝ"
+    ],
+    "reason": "After narrating Christ's suffering, the singer repeatedly examines hollow worship and asks to obey in love. The moral appeal is the dominant purpose.",
+    "competing": [
+      "Jesus Christ",
+      "Cross",
+      "Prayer"
+    ],
+    "import_id": "04260937-1d8b-5a27-9cf0-1e46678523bf"
+  },
+  {
+    "row": 48,
+    "primary": "Virgin Mary",
+    "broad": "Virgin Mary",
+    "subcategory": "Marian feasts",
+    "subject": "The Virgin's assumption",
+    "confidence": "high",
+    "evidence": [
+      "የእርገትሽን ዜና ከቶማስ ሰምተናል",
+      "ድንግል ትንሣኤሽን እስከምናይ ድረስ"
+    ],
+    "reason": "The Virgin is addressed throughout, and Thomas's report of her assumption is the central narrative. This alone does not establish a prescribed occasion.",
+    "competing": [
+      "Jesus Christ"
+    ],
+    "import_id": "0490c951-da4d-5110-b431-5ee96d930866"
+  },
+  {
+    "row": 57,
+    "primary": "Virgin Mary",
+    "broad": "Virgin Mary",
+    "subcategory": "Marian praise",
+    "subject": "Biblical images of the Virgin",
+    "confidence": "high",
+    "evidence": [
+      "የሙሴ ጽላት ነሽ የምሕረት ቃል ኪዳን",
+      "የመላዕክት አኅት የርኅሩኃን ርግብ"
+    ],
+    "reason": "The speaker directly addresses a woman through traditional Marian images; 'sister of angels' is a description, not an angel as subject.",
+    "competing": [
+      "Angels"
+    ],
+    "import_id": "057ce923-2320-4c38-9cb9-950bca561293"
+  },
+  {
+    "row": 61,
+    "primary": "Virgin Mary",
+    "broad": "Virgin Mary",
+    "subcategory": "Marian praise",
+    "subject": "The Virgin's blessedness",
+    "confidence": "high",
+    "evidence": [
+      "ማርያም ቅድስት ናት ማርያም ብጽእት ናት",
+      "ላንቺ ያልዘመረ እንዴት ትውልድ ይባል"
+    ],
+    "reason": "Mary is the repeated subject and addressee; Gabriel and Zechariah's house are parts of her story.",
+    "competing": [
+      "Kidus Gabriel",
+      "Angels"
+    ],
+    "import_id": "05bcca9f-4949-5671-b20d-2e0f78371641"
+  },
+  {
+    "row": 72,
+    "primary": "Virgin Mary",
+    "broad": "Virgin Mary",
+    "subcategory": "Marian intercession",
+    "subject": "The Virgin as intercessor",
+    "confidence": "high",
+    "evidence": [
+      "ቋንቋዬ ነሽ ድንግል መግባቢያዬ",
+      "አስታራቂ እናት አንቺን ስለሰጠኝ"
+    ],
+    "reason": "The singer addresses the Virgin throughout as mother and intercessor; Ephrem and the angels are passing comparisons.",
+    "competing": [
+      "Prayer",
+      "Saints"
+    ],
+    "import_id": "071c7d1e-fc86-598e-8d21-572333ea62ad"
+  },
+  {
+    "row": 75,
+    "primary": "Jesus Christ",
+    "broad": "Jesus Christ",
+    "subcategory": "Resurrection",
+    "subject": "Christ risen from the dead",
+    "confidence": "high",
+    "evidence": [
+      "ክርስቶስ ተንስአ እሙታን በዓብይ ኃይል ወስልጣን",
+      "ሰይጣንን አሰረው አዳምን ነፃ አወጣው"
+    ],
+    "reason": "The Ge’ez proclamation and its Amharic translation both focus on Christ's resurrection and Adam's liberation; liturgical use remains unverified.",
+    "competing": [
+      "Salvation"
+    ],
+    "import_id": "0752e41d-511a-5687-830f-21c1489001f5"
+  },
+  {
+    "row": 77,
+    "primary": "Virgin Mary",
+    "broad": "Virgin Mary",
+    "subcategory": "Marian praise",
+    "subject": "Wudase Maryam devotion",
+    "confidence": "high",
+    "evidence": [
+      "ውዳሴ ማርያም እጮሃለሁ",
+      "አንቺን ለማመስገን"
+    ],
+    "reason": "The recurring address and multiple stanzas praise Mary. Ephrem, Yared, and David are witnesses or hymn makers, not primary subjects.",
+    "competing": [
+      "Praise / Worship",
+      "Saints"
+    ],
+    "import_id": "078406f9-973e-5bc1-a9ec-854cae610038"
+  },
+  {
+    "row": 78,
+    "primary": "Kidus Michael",
+    "broad": "Saints & Angels",
+    "subcategory": "Archangels",
+    "subject": "Saint Michael at the Red Sea",
+    "confidence": "medium",
+    "evidence": [
+      "ሚካኤል/2/ የአምላክ ባለሟል",
+      "ይመራቸው ነበር ሚካኤል በፋና"
+    ],
+    "reason": "The song opens by praising God and narrates Moses at the sea, but its repeated interpretive refrain names Michael as Israel's guide. Editorial review should confirm the intended balance.",
+    "competing": [
+      "Praise / Worship",
+      "Jesus Christ"
+    ],
+    "import_id": "07bb8d42-c7e1-5796-afaa-16d796baca3e"
+  },
+  {
+    "row": 88,
+    "primary": "Kidus Uriel",
+    "broad": "Saints & Angels",
+    "subcategory": "Archangels",
+    "subject": "Saint Uriel",
+    "confidence": "high",
+    "evidence": [
+      "ሊቀ መላእክት ዑራኤል",
+      "መራሄ ብርሃን ዑራኤል ሆይ አትለየን"
+    ],
+    "reason": "The Ge’ez appeal and Amharic stanzas ask Uriel for intercession and help; God is the recipient of the prayer Uriel carries.",
+    "competing": [
+      "Angels",
+      "Prayer"
+    ],
+    "import_id": "08b40caa-92cd-5f9d-a23b-f5acdad44032"
+  },
+  {
+    "row": 95,
+    "primary": "Kidus Michael",
+    "broad": "Saints & Angels",
+    "subcategory": "Archangels",
+    "subject": "Saint Michael's protection",
+    "confidence": "high",
+    "evidence": [
+      "የአምላክ ስም አለበት ስሙ ሚካኤል ነው",
+      "ተጽፏል በልቤ የሚካኤል ስራ"
+    ],
+    "reason": "Multiple stanzas recount Michael's protection and upbringing of the singer; other biblical references are figurative background.",
+    "competing": [
+      "Angels"
+    ],
+    "import_id": "090b64c0-bffe-58df-b303-40e0c166dbb4"
+  },
+  {
+    "row": 98,
+    "primary": "Virgin Mary",
+    "broad": "Virgin Mary",
+    "subcategory": "Marian praise",
+    "subject": "Biblical images of the Virgin",
+    "confidence": "high",
+    "evidence": [
+      "በምን በምን እንመስላት ድንግል ማርያምን",
+      "ድንግል እመቤት ናት የጻድቃኖች በር"
+    ],
+    "reason": "The whole hymn develops biblical images of Mary, including the ark, ladder, and mother of saints; named biblical figures serve as images.",
+    "competing": [
+      "Angels",
+      "Saints"
+    ],
+    "import_id": "09350935-97bc-5451-a8ae-864c88c8edad"
+  },
+  {
+    "row": 99,
+    "primary": "Jesus Christ",
+    "broad": "Jesus Christ",
+    "subcategory": "Christology",
+    "subject": "Christ as way, truth, and life",
+    "confidence": "high",
+    "evidence": [
+      "እየሱስ የጌቶች ጌታ ነው",
+      "መንገድ እርሱ ብቻ ነው የባህሪ"
+    ],
+    "reason": "The full lyric teaches Christ's identity, incarnation, saving death, Eucharistic gift, and return; Mary is mentioned as the mother of his incarnation.",
+    "competing": [
+      "Salvation",
+      "Communion"
+    ],
+    "import_id": "0936f236-de24-58c6-84f6-12843409be9d"
+  },
+  {
+    "row": 109,
+    "primary": "Salvation",
+    "broad": "Spiritual Life",
+    "subcategory": "Healing and deliverance",
+    "subject": "Christ's healing miracles",
+    "confidence": "high",
+    "evidence": [
+      "ከሞት ላወጣን ለአዳኛችን",
+      "እውር የሆነው ዓይኑ በራ"
+    ],
+    "reason": "Separate stanzas recount Bartimaeus, the woman with bleeding, and the sick man at the pool as examples of God's healing and saving action.",
+    "competing": [
+      "Jesus Christ",
+      "Praise / Worship"
+    ],
+    "import_id": "0a81e0ba-4f11-5b74-94b8-b2becb7aa814"
+  },
+  {
+    "row": 117,
+    "primary": "Praise / Worship",
+    "broad": "Church Worship",
+    "subcategory": "Praise of God's power",
+    "subject": "God's sovereignty over creation",
+    "confidence": "high",
+    "evidence": [
+      "እርሱ ነው ጌታ የምናመልከው",
+      "ስልጣን የእርሱ ነው አለቅነት"
+    ],
+    "reason": "Across the opening, middle, and close the song praises God's power over storm, creation, and judgment; Tabor is one image, not proof of a feast occasion.",
+    "competing": [
+      "General",
+      "Jesus Christ"
+    ],
+    "import_id": "0b567616-c7fd-5a33-bf6d-3e685e59cadf"
+  }
+]

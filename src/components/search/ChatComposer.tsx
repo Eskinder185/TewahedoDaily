@@ -113,6 +113,22 @@ export function ChatComposer({
             aria-invalid={invalid || undefined}
             aria-describedby={describedBy}
           />
+          <div className={styles.composerVoice}>
+            <Suspense fallback={null}>
+              <MezmurVoiceSearch
+                key={voiceRemountKey}
+                compact
+                active={voiceActive}
+                startAriaLabel={dictateAria}
+                onTranscript={(text) => {
+                  const transcript = text.trim()
+                  if (!transcript) return
+                  onChange(transcript)
+                  window.setTimeout(() => inputRef.current?.focus(), 0)
+                }}
+              />
+            </Suspense>
+          </div>
           {value.trim() ? (
             <button
               type="button"
@@ -130,26 +146,7 @@ export function ChatComposer({
         </div>
 
         <div className={styles.composerActions}>
-          <div className={styles.composerTools}>
-            <Suspense fallback={null}>
-              <MezmurVoiceSearch
-                key={voiceRemountKey}
-                compact
-                active={voiceActive}
-                startAriaLabel={dictateAria}
-                onTranscript={(text) => {
-                  // Fill the composer only — do not auto-submit or navigate.
-                  // User reviews/corrects, then Send runs the same path as typed text.
-                  const transcript = text.trim()
-                  if (!transcript) return
-                  onChange(transcript)
-                  window.setTimeout(() => {
-                    inputRef.current?.focus()
-                  }, 0)
-                }}
-              />
-            </Suspense>
-          </div>
+          <span aria-hidden />
           {busy && onCancel ? (
             <button
               type="button"

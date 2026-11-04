@@ -381,6 +381,10 @@ function sortCards(cards: HymnBrowseCard[]): HymnBrowseCard[] {
   })
 }
 
+/** Only what mapDataCard + the public-status check read; keeps lyrics and other wide columns out of list queries. */
+const SECTION_CARD_COLUMNS =
+  'mezmur_id, slug, title, title_amharic, title_english, image_path, legacy_thumbnail_url, youtube_url, singer_name, primary_language, status'
+
 function mapDataCard(row: DataImportRow, sortOrder = 0): HymnSectionMezmur {
   const slug = txt(row.slug)
   const image = txt(row.image_path) || txt(row.legacy_thumbnail_url) || null
@@ -416,7 +420,15 @@ function isPublicMezmurRow(row: DataImportRow): boolean {
   return isEligiblePublicMezmurRow(row)
 }
 
-async function selectAllImportRows(
+function selectAllImportRows(
+  columns: string,
+  options: { maxRows?: number; pageSize?: number; language?: MezmurLanguageCode } = {},
+): Promise<DataImportRow[]> {
+  const key = `import:${columns}:${options.language ?? ''}:${options.maxRows ?? ''}:${options.pageSize ?? ''}`
+  return memoBrowseQuery(key, () => selectAllImportRowsUncached(columns, options))
+}
+
+async function selectAllImportRowsUncached(
   columns: string,
   options: { maxRows?: number; pageSize?: number; language?: MezmurLanguageCode } = {},
 ): Promise<DataImportRow[]> {
@@ -644,8 +656,35 @@ function writeStoredCollections(key: string, data: HymnCollection[]) {
   }
 }
 
+const BROWSE_QUERY_TTL_MS = 2 * 60 * 1000
+const browseQueryMemo = new Map<string, { at: number; promise: Promise<unknown> }>()
+
+/**
+ * Short-lived, in-memory sharing of identical browse queries. Concurrent callers
+ * share one in-flight request, and a fresh result is reused for a couple of
+ * minutes. Failed results (per `shouldCache`) are never kept. Cleared by
+ * `invalidateHymnBrowseCaches`.
+ */
+function memoBrowseQuery<T>(
+  key: string,
+  load: () => Promise<T>,
+  shouldCache: (value: T) => boolean = () => true,
+): Promise<T> {
+  const hit = browseQueryMemo.get(key)
+  if (hit && Date.now() - hit.at < BROWSE_QUERY_TTL_MS) return hit.promise as Promise<T>
+  const promise = load()
+  const entry = { at: Date.now(), promise: promise as Promise<unknown> }
+  browseQueryMemo.set(key, entry)
+  const drop = () => {
+    if (browseQueryMemo.get(key) === entry) browseQueryMemo.delete(key)
+  }
+  promise.then((value) => { if (!shouldCache(value)) drop() }, drop)
+  return promise
+}
+
 /** Clear browse metadata after a publication or unpublish operation. */
 export function invalidateHymnBrowseCaches(): void {
+  browseQueryMemo.clear()
   collectionsCache.clear()
   collectionsPromises.clear()
   try {
@@ -904,7 +943,15 @@ export async function getHymnSection(
  * truncated counts and section lists once the catalog passed 1,000 Mezmurs.
  */
 type RangeQuery<T> = { range: (from: number, to: number) => PromiseLike<{ data: unknown; error: unknown }> } & { __row?: T }
-async function selectAllRows<T>(build: () => RangeQuery<T>): Promise<{ data: T[]; error: unknown }> {
+function selectAllRows<T>(
+  build: () => RangeQuery<T>,
+  cacheKey?: string,
+): Promise<{ data: T[]; error: unknown }> {
+  if (!cacheKey) return selectAllRowsUncached(build)
+  return memoBrowseQuery(`rows:${cacheKey}`, () => selectAllRowsUncached(build), (r) => !r.error)
+}
+
+async function selectAllRowsUncached<T>(build: () => RangeQuery<T>): Promise<{ data: T[]; error: unknown }> {
   let firstError: unknown = null
   const data = await collectPagedRows<T>(async (from, to) => {
     const { data: page, error } = await build().range(from, to)
@@ -968,7 +1015,13 @@ async function fetchLinksForSection(
   return rows
 }
 
-export async function fetchAllCategoryLinks(): Promise<
+export function fetchAllCategoryLinks(): Promise<
+  Array<{ mezmur_import_id: string; mezmur_id?: string | null; mezmur_slug: string; category_slug: string }>
+> {
+  return memoBrowseQuery('links:categories', () => fetchAllCategoryLinksUncached())
+}
+
+async function fetchAllCategoryLinksUncached(): Promise<
   Array<{ mezmur_import_id: string; mezmur_id?: string | null; mezmur_slug: string; category_slug: string }>
 > {
   if (!supabase || isMissing(T.categories)) return []
@@ -993,7 +1046,13 @@ export async function fetchAllCategoryLinks(): Promise<
   }
 }
 
-export async function fetchAllOccasionLinks(): Promise<
+export function fetchAllOccasionLinks(): Promise<
+  Array<{ mezmur_import_id: string; mezmur_id?: string | null; mezmur_slug: string; occasion_slug: string }>
+> {
+  return memoBrowseQuery('links:occasions', () => fetchAllOccasionLinksUncached())
+}
+
+async function fetchAllOccasionLinksUncached(): Promise<
   Array<{ mezmur_import_id: string; mezmur_id?: string | null; mezmur_slug: string; occasion_slug: string }>
 > {
   if (!supabase || isMissing(T.occasions)) return []
@@ -1033,7 +1092,7 @@ async function sectionCountsForCollection(
     let q = db.from(T.data as never).select('mezmur_id, slug, primary_language, status').eq('status', 'published')
     if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
     return q as never
-  })
+  }, `published-min:${langFilter ?? ''}`)
   if (pubErr) {
     logSchemaError('sectionCountsForCollection published mezmurs', pubErr)
     return map
@@ -1129,15 +1188,15 @@ async function collectionCountsFromLinks(
           .eq('status', 'published')
         if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
         return q as never
-      }),
-      collectPagedRows<LinkImportRow>(async (from, to) => {
+      }, `published-singer:${langFilter ?? ''}`),
+      memoBrowseQuery('links:sections-all', () => collectPagedRows<LinkImportRow>(async (from, to) => {
         const { data, error } = await db
           .from(T.links as never)
           .select('section_slug, mezmur_slug')
           .range(from, to)
         if (error) return []
         return (data || []) as LinkImportRow[]
-      }, { pageSize: 1000 }),
+      }, { pageSize: 1000 })),
       fetchAllCategoryLinks(),
       fetchAllOccasionLinks(),
     ])
@@ -1296,7 +1355,7 @@ export async function getMezmursForSection(
   const chunkSize = 80
   for (let i = 0; i < slugs.length; i += chunkSize) {
     const chunk = slugs.slice(i, i + chunkSize)
-    const { data, error } = await supabase.from(T.data as never).select('*').in('slug', chunk)
+    const { data, error } = await supabase.from(T.data as never).select(SECTION_CARD_COLUMNS).in('slug', chunk)
     if (error) {
       logSchemaError('getMezmursForSection data', error)
       throw permissionError(T.data, error)
@@ -1881,7 +1940,7 @@ export async function getHymnCategories(language?: MezmurLanguageFilter): Promis
         .select('mezmur_slug, primary_language')
       if (language && language !== 'all') query = query.in('primary_language', mezmurLanguageAliases(language))
       return query as never
-    })
+    }, `fasting-lang:${language && language !== 'all' ? language : ''}`)
     if (error) {
       const code = (error as { code?: string }).code
       if (code === '42P01' || code === 'PGRST205') markMissing(T.fastingSuitability)
@@ -1938,7 +1997,7 @@ export async function fetchAllFastingSuitabilityLinks(): Promise<
     primary_language: string | null
   }>(() => supabase!
     .from(T.fastingSuitability as never)
-    .select('mezmur_import_id, mezmur_slug, primary_language') as never)
+    .select('mezmur_import_id, mezmur_slug, primary_language') as never, 'fasting-all')
   if (error) {
     const code = (error as { code?: string }).code
     if (code === '42P01' || code === 'PGRST205') markMissing(T.fastingSuitability)
@@ -2282,6 +2341,86 @@ export async function searchImportMezmurs(
 }
 
 /** Lightweight approved public cards from mezmur_public for search/catalog. */
+type ImportMezmurCard = Awaited<ReturnType<typeof listImportMezmurCards>>[number]
+
+const IMPORT_CARD_COLUMNS =
+  'mezmur_id, slug, title, title_amharic, image_path, legacy_thumbnail_url, audio_url, youtube_url, singer_name, zemari_id, primary_language, form, search_keywords, status'
+
+/**
+ * Slugs of the Mezmurs linked to one occasion/category group, from the (cached)
+ * link tables. Returns null when any matching link has no slug, because the slug-scoped
+ * fetch could then miss rows; callers should fall back to the full list.
+ */
+export async function getScopedMezmurSlugs(
+  kind: 'category' | 'occasion',
+  groupSlug: string,
+): Promise<string[] | null> {
+  const links = kind === 'occasion' ? await fetchAllOccasionLinks() : await fetchAllCategoryLinks()
+  const map = COLLECTION_TAXONOMY_MAP[groupSlug]
+  const targets = new Set<string>([groupSlug])
+  for (const extra of (kind === 'occasion' ? map?.occasions : map?.categories) || []) targets.add(extra)
+  const slugs = new Set<string>()
+  for (const link of links as Array<{ mezmur_slug?: string; occasion_slug?: string; category_slug?: string }>) {
+    const linkSlug = kind === 'occasion' ? link.occasion_slug : link.category_slug
+    if (!matchesBrowseLink(kind, targets, linkSlug || '')) continue
+    if (!link.mezmur_slug) return null
+    slugs.add(link.mezmur_slug)
+  }
+  return [...slugs]
+}
+
+/** Same card shape as listImportMezmurCards, but fetches only the given slugs (published rows only). */
+export async function listImportMezmurCardsForSlugs(slugs: string[]): Promise<ImportMezmurCard[]> {
+  const client = supabase
+  if (!client || !slugs.length) return []
+  const chunkSize = 80
+  const chunks: string[][] = []
+  for (let i = 0; i < slugs.length; i += chunkSize) chunks.push(slugs.slice(i, i + chunkSize))
+  try {
+    const [pages, catLinks] = await Promise.all([
+      Promise.all(
+        chunks.map(async (chunk) => {
+          const { data, error } = await client
+            .from(T.data as never)
+            .select(IMPORT_CARD_COLUMNS)
+            .eq('status', 'published')
+            .in('slug', chunk)
+          if (error) throw error
+          return (data || []) as DataImportRow[]
+        }),
+      ),
+      fetchAllCategoryLinks().catch(() => []),
+    ])
+    const slugToImportId = new Map<string, string>()
+    for (const l of catLinks) {
+      if (l.mezmur_slug && l.mezmur_import_id) slugToImportId.set(l.mezmur_slug, l.mezmur_import_id)
+    }
+    // The previous full-table path had no ORDER BY (heap order); use a stable title order instead.
+    return pages.flat().sort((x, y) => txt(x.title).localeCompare(txt(y.title))).map((row) => {
+      const slug = txt(row.slug)
+      const importId = slugToImportId.get(slug) || txt(row.mezmur_id) || slug
+      return {
+        id: importId,
+        import_id: importId,
+        slug,
+        title: txt(row.title),
+        title_amharic: txt(row.title_amharic) || null,
+        thumbnail_url: txt(row.image_path) || txt(row.legacy_thumbnail_url) || null,
+        audio_url: txt(row.audio_url) || null,
+        youtube_url: txt(row.youtube_url) || null,
+        singer_name: txt(row.singer_name) || null,
+        zemari_id: txt(row.zemari_id) || null,
+        language: txt(row.primary_language) || null,
+        form: txt(row.form) || null,
+        search_keywords: parseKeywords(row.search_keywords),
+      }
+    })
+  } catch {
+    // Schema drift (e.g. zemari_id not migrated) or a transient error: use the full-list path.
+    return listImportMezmurCards()
+  }
+}
+
 export async function listImportMezmurCards(limit = Number.POSITIVE_INFINITY): Promise<
   Array<{
     id: string

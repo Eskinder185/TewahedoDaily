@@ -8,6 +8,7 @@ import s from './Admin.module.css'
 import { SubmissionAnalytics } from './SubmissionAnalytics'
 import { adminEditPath } from './adminPaths'
 import { AdminReviewSummaryCard } from '../../components/admin/AdminReviewSummaryCard'
+import { ContentHealthAdmin } from './ContentHealthAdmin'
 
 export function AdminDashboard() {
   const result = useAsync(useCallback(() => getDashboard(), []))
@@ -21,7 +22,7 @@ export function AdminDashboard() {
         <h1>Dashboard</h1>
         <p className={s.muted}>Your content and editorial activity at a glance.</p>
       </div>
-      <Link className={s.primary} to="/admin/hymns/mezmur/new">+ Add Mezmur</Link>
+      <div className={s.actions}><Link className={s.primary} to="/admin/hymns/mezmur/new">+ Add Mezmur</Link><Link to="/admin/home/slides">Manage homepage slides</Link><Link to="/admin/calendar/daily">Daily content</Link></div>
     </div>
 
     {profile?.role === 'contributor' && (
@@ -35,6 +36,7 @@ export function AdminDashboard() {
 
     {/* Admin-only Editorial Content Review & Audit Tracker */}
     {profile?.role !== 'contributor' && <AdminReviewSummaryCard />}
+    {profile && ['editor', 'admin', 'super_admin'].includes(profile.role || '') && <ContentHealthAdmin embedded />}
 
     {result.data && <>
       <div className={s.stats}>

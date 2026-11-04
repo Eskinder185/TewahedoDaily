@@ -45,6 +45,7 @@ const AdminAuthLayout = lazy(() => import('./pages/admin/AdminAuth').then(m => (
 const AdminLoginPage = lazy(() => import('./pages/admin/AdminAuth').then(m => ({ default: m.AdminLoginPage })))
 const AdminLayout = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminLayout })))
 const AdminDashboard = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminDashboard })))
+const AdminUsers = lazy(() => import('./pages/admin/AdminUsers').then(m => ({ default: m.AdminUsers })))
 const MezmurList = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurList })))
 const MezmurEditor = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurEditor })))
 const MezmurCsvImportPreview = lazy(() => import('./pages/admin/MezmurCsvImportPreview').then(m => ({ default: m.MezmurCsvImportPreview })))
@@ -105,7 +106,6 @@ const SynaxariumDayEditor = lazy(() => import('./pages/admin/StructureAdmin').th
 const CalendarAdmin = lazy(() => import('./pages/admin/CalendarAdmin').then(m => ({ default: m.CalendarAdmin })))
 const CalendarCardEditor = lazy(() => import('./pages/admin/CalendarAdmin').then(m => ({ default: m.CalendarCardEditor })))
 const HomeAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HomeAdminLayout })))
-const HomeOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HomeOverview })))
 const HymnsAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HymnsAdminLayout })))
 const HymnsOverview = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.HymnsOverview })))
 const PrayAdminLayout = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.PrayAdminLayout })))
@@ -130,10 +130,6 @@ const OrthodoxyMonthlyAdmin = lazy(() =>
 const CalendarMezmurAdmin = lazy(() =>
   import('./pages/admin/CalendarMezmurAdmin').then((m) => ({ default: m.CalendarMezmurAdmin })),
 )
-const AboutAdminPage = lazy(() => import('./pages/admin/CmsPageHubs').then(m => ({ default: m.AboutAdminPage })))
-const ContentHealthAdmin = lazy(() =>
-  import('./pages/admin/ContentHealthAdmin').then((m) => ({ default: m.ContentHealthAdmin })),
-)
 const EditorialBooksPreview = lazy(() =>
   import('./pages/admin/EditorialBooksPreview').then((m) => ({
     default: m.EditorialBooksPreview,
@@ -151,7 +147,8 @@ const ChurchLibraryFaqAdmin = lazy(() =>
 const BibleManager = lazy(() =>
   import('./pages/admin/BibleManager').then((m) => ({ default: m.BibleManager })),
 )
-const PlayContentReview = lazy(() => import('./pages/admin/PlayContentReview').then((m) => ({ default: m.PlayContentReview })))
+const StudioImportTools = lazy(() => import('./pages/admin/studio/StudioImportTools').then((m) => ({ default: m.StudioImportTools })))
+const GameContentStudio = lazy(() => import('./pages/admin/studio/GameContentStudio').then((m) => ({ default: m.GameContentStudio })))
 const PublicContentLibrary = lazy(() => import('./pages/PublicContentLibrary').then(m => ({default:m.PublicContentLibrary})))
 const BibleCatalogPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleCatalogPage })))
 const BibleBookPage = lazy(() => import('./pages/BiblePage').then(m => ({ default: m.BibleBookPage })))
@@ -176,11 +173,11 @@ export default function App() {
 
             {/* Page-based CMS: Home */}
             <Route path="home" element={<HomeAdminLayout />}>
-              <Route index element={<HomeOverview />} />
+              <Route index element={<Navigate to="/admin" replace />} />
               <Route path="slides" element={<HomepageAdmin />} />
               <Route path="slides/new" element={<HomepageSlideEditor />} />
               <Route path="slides/:id/edit" element={<HomepageSlideEditor />} />
-              <Route path="daily" element={<DailyContentAdmin />} />
+              <Route path="daily" element={<Navigate to="/admin/calendar/daily" replace />} />
               <Route path="new" element={<Navigate to="/admin/home/slides/new" replace />} />
               <Route path=":id/edit" element={<LegacyHomeSlideRedirect />} />
             </Route>
@@ -254,15 +251,17 @@ export default function App() {
               <Route path=":id/edit" element={<LegacyCalendarCardRedirect />} />
             </Route>
 
-            <Route path="about" element={<AboutAdminPage />} />
+            <Route path="about" element={<Navigate to="/admin" replace />} />
 
             <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
-              <Route path="content-health" element={<ContentHealthAdmin />} />
+              <Route path="content-health" element={<Navigate to="/admin#content-health" replace />} />
               <Route path="church-library" element={<ChurchLibrary />} />
               <Route path="church-library/import" element={<ChurchLibraryImport />} />
               <Route path="church-library/faqs" element={<ChurchLibraryFaqAdmin />} />
               <Route path="bible" element={<BibleManager />} />
-              <Route path="play" element={<PlayContentReview />} />
+              <Route path="play" element={<GameContentStudio />} />
+              <Route path="play/studio" element={<GameContentStudio />} />
+              <Route path="play/import" element={<StudioImportTools />} />
               <Route path="church-library/legacy-preview" element={<EditorialBooksPreview />} />
               <Route path="editorial-books" element={<Navigate to="/admin/church-library" replace />} />
               <Route path="editorial-books/*" element={<Navigate to="/admin/church-library" replace />} />
@@ -272,6 +271,7 @@ export default function App() {
 
             <Route element={<RequireCmsRole allowed={['admin', 'super_admin']} />}>
               <Route path="media" element={<MediaLibrary />} />
+              <Route path="users" element={<AdminUsers />} />
             </Route>
 
             {/* Articles remain available but not in the page-based sidebar */}
@@ -281,7 +281,7 @@ export default function App() {
               <Route path=":id/edit" element={<ContentEditor kind="articles" />} />
             </Route>
 
-            {['users', 'settings'].map(path => (
+            {['settings'].map(path => (
               <Route key={path} path={path} element={<AdminPlaceholder />} />
             ))}
 
@@ -336,7 +336,7 @@ export default function App() {
         <Route path="/library/read/:bookSlug/:sectionKey?" element={<Suspense fallback={<PageLoadingFallback/>}><ChurchLibraryStructuredReader /></Suspense>}/>
         <Route path="/library/:bookId" element={<Suspense fallback={<PageLoadingFallback/>}><ChurchLibraryReader /></Suspense>}/>
         <Route path="/church-library" element={<Navigate to="/library" replace />} />
-        <Route path="/church-library/:bookId" element={<Navigate to="/library/:bookId" replace />} />
+        <Route path="/church-library/:bookId" element={<LegacyPathRedirect to="/library/:bookId" />} />
         <Route path="/prayer-library" element={<Navigate to="/prayers" replace />} />
         <Route path="/search" element={<Navigate to="/" replace />} />
         <Route path="/teachings" element={<Navigate to="/learn" replace />} />

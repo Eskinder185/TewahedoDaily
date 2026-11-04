@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict'
+import { spawn } from 'node:child_process'
 import { EventEmitter } from 'node:events'
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, symlinkSync, unlinkSync, writeFileSync } from 'node:fs'
 import { PassThrough } from 'node:stream'
@@ -11,12 +12,13 @@ import { budgetStatus, parseBudgetLimits, parseUsd, reconcileAiCall, reserveAiCa
 import { runSimulated } from './runner.mjs'
 import { runWorkflow } from './workflow.mjs'
 import { assessTrustedLocal } from './trusted-local.mjs'
+import { assessPlanningPilot, runPlanningPilot } from './planning-pilot.mjs'
 import { agentProcessStatus, assessAgentCapabilities, buildAgentProcessSpec, prepareClaudePlanning, prepareCodexImplementation, recordAgentProcessFinish, recordAgentProcessStart, recordValidatedClaudePlan, validateAgentConfig, validateClaudePlan } from './agents.mjs'
-import { executeFakeProcess, validateProcessSpec } from './process.mjs'
+import { executeFakeProcess, executePlanningProcess, terminateWindowsProcessTree, validateProcessSpec } from './process.mjs'
 import { probeLiveCapabilities } from './capabilities.mjs'
 import { assessPlanningIsolation, validateCodexOutput } from './isolation.mjs'
 import { assessLaunchSafety, launchGuardedFakeProcess } from './live-gate.mjs'
-import { createDockerTransport, defaultDockerExecutable, dockerCreateArguments, prepareOfflineFixture, probeLocalDocker, readContainerRecord, runOfflineFixture, validateImageDigest } from './container-runtime.mjs'
+import { createDockerTransport, defaultDockerExecutable, dockerCreateArguments, prepareContainerPlanning, prepareOfflineFixture, probeLocalDocker, readContainerRecord, runFakeContainerPlanning, runOfflineFixture, validateImageDigest } from './container-runtime.mjs'
 
 const temporaryRoots = []
 let passed = 0
@@ -26,9 +28,9 @@ if (offlineDockerRequested && (!process.argv.includes('--i-authorize-local-conta
   throw new Error('LOCAL_CONTAINER_EXECUTION_DISABLED')
 }
 
-function fixture() {
+function fixture(prefix = 'tewahedo-v5-selftest-') {
   if (isInside(realpathSync(process.cwd()), realpathSync(tmpdir()))) throw new Error('OFFLINE_FIXTURE_ROOT_UNSAFE')
-  const base = mkdtempSync(join(tmpdir(), 'tewahedo-v5-selftest-'))
+  const base = mkdtempSync(join(tmpdir(), prefix))
   temporaryRoots.push(base)
   const repository = join(base, 'repository')
   const stateRoot = join(base, 'state')
@@ -39,8 +41,8 @@ function fixture() {
   return { base, repository, stateRoot }
 }
 
-function started(options = {}) {
-  const item = fixture()
+function started(options = {}, prefix = 'tewahedo-v5-selftest-') {
+  const item = fixture(prefix)
   const source = inventory(item.repository)
   const manifest = createTask(item.stateRoot, item.repository, 'Update src/example.ts', source, options)
   const paths = taskPaths(item.stateRoot, manifest.id)
@@ -136,6 +138,7 @@ function fakeChild({ output = '{}', exitCode = 0, neverClose = false } = {}) {
   const child = new EventEmitter()
   child.stdout = new PassThrough()
   child.stderr = new PassThrough()
+  child.stdin = { end() {} }
   child.kill = () => { if (!neverClose) queueMicrotask(() => child.emit('close', null)); return true }
   if (!neverClose) queueMicrotask(() => {
     child.stdout.write(output)
@@ -168,7 +171,9 @@ function fakeDocker(prepared, { mismatch = null, start = 'complete', stop = 'con
         Tmpfs: { '/tmp': 'rw,nosuid,noexec,size=64m,mode=1777,uid=10001,gid=10001',
           '/home/agent': 'rw,nosuid,noexec,size=32m,mode=0700,uid=10001,gid=10001' } },
       Config: { User: '10001:10001', WorkingDir: prepared.kind === 'planning' ? '/task/source' : '/task/work',
-        Entrypoint: ['/bin/sh'], Cmd: createArgs.slice(createArgs.indexOf(fakeImageId) + 1),
+        OpenStdin: prepared.profile === 'claude-planning',
+        Entrypoint: [prepared.profile === 'claude-planning' ? '/usr/local/bin/claude' : '/bin/sh'],
+        Cmd: createArgs.slice(createArgs.indexOf(fakeImageId) + 1),
         Labels: { 'tewahedo.v5.policy': prepared.policyHash, 'tewahedo.v5.attempt': prepared.attemptId },
         Env: ['HOME=/home/agent', 'PATH=/usr/bin'] },
       Mounts: prepared.mounts.map((mount) => ({ Type: 'bind', Source: mount.source,
@@ -183,7 +188,7 @@ function fakeDocker(prepared, { mismatch = null, start = 'complete', stop = 'con
     return value
   }
   return { kind: 'fake', calls, inspected,
-    async run(args) {
+    async run(args, options = {}) {
       calls.push(args)
       if (args[0] === 'context') return { status: 0, stdout: JSON.stringify({
         Endpoints: { docker: { Host: 'npipe:////./pipe/docker_engine' } },
@@ -200,6 +205,10 @@ function fakeDocker(prepared, { mismatch = null, start = 'complete', stop = 'con
         ? { status: null, timedOut: true, stdout: '' }
         : { status: 0, stdout: `${fakeContainerId}\n` } }
       if (args[0] === 'start') {
+        if (prepared.profile === 'claude-planning') {
+          assert.equal(args.includes('--interactive'), true)
+          assert.ok(Buffer.byteLength(options.stdin ?? '') <= 65_536)
+        }
         if (prepared.kind === 'implementation' && start === 'complete') {
           writeFileSync(join(prepared.attemptPath, 'src/example.ts'), 'export const value = 2\n')
         }
@@ -207,7 +216,8 @@ function fakeDocker(prepared, { mismatch = null, start = 'complete', stop = 'con
         if (start === 'timeout') return { status: null, timedOut: true, stdout: '' }
         if (start === 'cancel') return { status: null, cancelled: true, stdout: '' }
         if (start === 'missing-fixture') return { status: 127, stdout: '' }
-        return { status: 0, stdout: start === 'invalid-output' ? 'fixture passed' : evidence }
+        return { status: 0, stdout: start === 'invalid-output' ? 'fixture passed'
+          : prepared.profile === 'claude-planning' ? start : evidence }
       }
       if (args[0] === 'stop') {
         if (stop === 'confirmed') running = false
@@ -908,6 +918,173 @@ try {
     assert.equal(result.code, 'AGENT_TIMEOUT')
     assert.equal(result.usage, 'unknown')
     assert.equal(budgetStatus(item.stateRoot, item.manifest.id).code, 'BUDGET_USAGE_UNRECONCILED')
+  })
+
+  await testAsync('planning-only fake Claude saves one validated plan and actual usage', async () => {
+    const item = started({ budget: parseBudgetLimits('1', '1.00'), allowedPaths: ['src/example.ts'], agentConfig },
+      'tewahedo-v5-pilot-')
+    const context = prepareClaudePlanning(item.stateRoot, item.manifest.id, agentConfig, ['src/example.ts'])
+    const plan = { version: 1, inputHash: item.manifest.inputHash, objectiveHash: context.objectiveHash,
+      modelId: agentConfig.claude.modelId, effort: agentConfig.claude.effort,
+      allowedPaths: ['src/example.ts'], steps: [{ path: 'src/example.ts', action: 'Update example' }] }
+    const entrypoint = join(item.base, 'fake-claude.js')
+    writeFileSync(entrypoint, '')
+    const boundaryProbe = ({ snapshot, repository }) => ({ enforced: true, snapshotReadOnly: true,
+      repositoryDenied: true, otherPathsDenied: true, snapshot, repository })
+    const capability = { ...agentConfig.claude, available: true, authenticated: true,
+      modelAvailable: true, effortSupported: true }
+    assert.equal(assessPlanningPilot(item.stateRoot, item.manifest.id, {
+      acknowledgedTaskId: item.manifest.id,
+    }).code, 'PLANNING_OS_BOUNDARY_UNVERIFIED')
+    let invocation
+    const result = await runPlanningPilot(item.stateRoot, item.manifest.id, {
+      acknowledgedTaskId: item.manifest.id, boundaryProbe, entrypoint, capability,
+      spawnProcess: (command, args, options) => {
+        invocation = { command, args, options }
+        return fakeChild({ output: JSON.stringify({ type: 'result', is_error: false, result: JSON.stringify(plan),
+          total_cost_usd: 0.08, usage: { input_tokens: 100, output_tokens: 25 } }) })
+      },
+      terminateTree: () => true,
+    })
+    assert.equal(result.status, 'planned', JSON.stringify(result))
+    assert.equal(result.usage.actualUsd, '0.080000')
+    assert.equal(invocation.options.shell, false)
+    assert.equal(invocation.args[invocation.args.indexOf('--model') + 1], agentConfig.claude.modelId)
+    assert.equal(invocation.args[invocation.args.indexOf('--effort') + 1], agentConfig.claude.effort)
+    assert.equal(invocation.args[invocation.args.indexOf('--output-format') + 1], 'json')
+    assert.equal(readTask(item.stateRoot, item.manifest.id).entries.at(-1).state, 'planned')
+    assert.equal(budgetStatus(item.stateRoot, item.manifest.id).usedCalls, 1)
+    assert.equal(budgetStatus(item.stateRoot, item.manifest.id).calls[0].actualUsd, '0.080000')
+    assert.equal(assessPlanningPilot(item.stateRoot, item.manifest.id, {
+      acknowledgedTaskId: item.manifest.id, boundaryProbe,
+    }).code, 'PILOT_CHECKPOINT_INVALID')
+  })
+
+  await testAsync('planning-only rejects unsafe fixture, invalid JSON and unknown usage', async () => {
+    const options = { budget: parseBudgetLimits('1', '1.00'), allowedPaths: ['src/example.ts'], agentConfig }
+    const unsafe = started(options, 'tewahedo-v5-selftest-')
+    assert.equal(assessPlanningPilot(unsafe.stateRoot, unsafe.manifest.id, {
+      acknowledgedTaskId: unsafe.manifest.id,
+    }).code, 'PILOT_FIXTURE_UNVERIFIED')
+    const item = started(options, 'tewahedo-v5-pilot-')
+    const entrypoint = join(item.base, 'fake-claude.js')
+    writeFileSync(entrypoint, '')
+    const boundaryProbe = ({ snapshot, repository }) => ({ enforced: true, snapshotReadOnly: true,
+      repositoryDenied: true, otherPathsDenied: true, snapshot, repository })
+    const capability = { ...agentConfig.claude, available: true, authenticated: true,
+      modelAvailable: true, effortSupported: true }
+    const result = await runPlanningPilot(item.stateRoot, item.manifest.id, {
+      acknowledgedTaskId: item.manifest.id, boundaryProbe, entrypoint, capability,
+      spawnProcess: () => fakeChild({ output: '{invalid-json' }), terminateTree: () => true,
+    })
+    assert.equal(result.code, 'PILOT_OUTPUT_INVALID')
+    assert.equal(budgetStatus(item.stateRoot, item.manifest.id).code, 'BUDGET_USAGE_UNRECONCILED')
+    assert.equal(budgetStatus(item.stateRoot, item.manifest.id).usedCalls, 1)
+  })
+
+  await testAsync('fake Claude container passes one validated plan through the existing journal', async () => {
+    const item = started({ budget: parseBudgetLimits('1', '1.00'), allowedPaths: ['src/example.ts'], agentConfig },
+      'tewahedo-v5-pilot-')
+    const context = prepareClaudePlanning(item.stateRoot, item.manifest.id, agentConfig, ['src/example.ts'])
+    const plan = { version: 1, inputHash: item.manifest.inputHash, objectiveHash: context.objectiveHash,
+      modelId: agentConfig.claude.modelId, effort: agentConfig.claude.effort,
+      allowedPaths: ['src/example.ts'], steps: [{ path: 'src/example.ts', action: 'Update example' }] }
+    const boundaryProbe = ({ snapshot, repository }) => ({ enforced: true, snapshotReadOnly: true,
+      repositoryDenied: true, otherPathsDenied: true, snapshot, repository })
+    const prepared = prepareContainerPlanning(item.stateRoot, item.manifest.id, {
+      image: fakeImage, attemptId: 'pilot-claude-planning-1', ...agentConfig.claude,
+    })
+    const output = JSON.stringify({ type: 'result', is_error: false, result: JSON.stringify(plan),
+      total_cost_usd: 0.08, usage: { input_tokens: 100, output_tokens: 25 } })
+    const docker = fakeDocker(prepared, { start: output })
+    const result = await runPlanningPilot(item.stateRoot, item.manifest.id, {
+      acknowledgedTaskId: item.manifest.id, boundaryProbe,
+      container: { image: fakeImage, transport: docker },
+    })
+    assert.equal(result.status, 'planned', JSON.stringify(result))
+    assert.equal(result.usage.actualUsd, '0.080000')
+    assert.equal(readContainerRecord(prepared).containerId, fakeContainerId)
+    assert.equal(readTask(item.stateRoot, item.manifest.id).entries.at(-1).state, 'planned')
+    assert.equal(budgetStatus(item.stateRoot, item.manifest.id).usedCalls, 1)
+    assert.equal(docker.calls.find((args) => args[0] === 'create').includes('--network'), true)
+    assert.equal(docker.calls.find((args) => args[0] === 'create').includes('--interactive'), true)
+    assert.equal(docker.calls.some((args) => args[0] === 'rm'), true)
+    await assert.rejects(() => runFakeContainerPlanning(prepared, {
+      transport: { kind: 'docker', run: () => { throw new Error('REAL_LAUNCH') } }, stdin: '{}',
+    }), /DOCKER_CLAUDE_LIVE_DISABLED/)
+  })
+
+  await testAsync('fake Claude container invalid plan, timeout, cancellation and unknown usage block later calls', async () => {
+    for (const scenario of ['invalid-plan', 'timeout', 'cancel', 'unknown-usage']) {
+      const item = started({ budget: parseBudgetLimits('1', '1.00'), allowedPaths: ['src/example.ts'], agentConfig },
+        'tewahedo-v5-pilot-')
+      const context = prepareClaudePlanning(item.stateRoot, item.manifest.id, agentConfig, ['src/example.ts'])
+      const valid = { version: 1, inputHash: item.manifest.inputHash, objectiveHash: context.objectiveHash,
+        modelId: agentConfig.claude.modelId, effort: agentConfig.claude.effort,
+        allowedPaths: ['src/example.ts'], steps: [{ path: 'src/example.ts', action: 'Update example' }] }
+      const plan = scenario === 'invalid-plan' ? { ...valid, steps: [{ path: 'escape.ts', action: 'Escape' }] } : valid
+      const output = JSON.stringify({ type: 'result', is_error: false, result: JSON.stringify(plan),
+        ...(scenario === 'unknown-usage' ? {} : { total_cost_usd: 0.08,
+          usage: { input_tokens: 100, output_tokens: 25 } }) })
+      const prepared = prepareContainerPlanning(item.stateRoot, item.manifest.id, {
+        image: fakeImage, attemptId: 'pilot-claude-planning-1', ...agentConfig.claude,
+      })
+      const docker = fakeDocker(prepared, { start: scenario === 'timeout' ? 'timeout'
+        : scenario === 'cancel' ? 'cancel' : output })
+      const boundaryProbe = ({ snapshot, repository }) => ({ enforced: true, snapshotReadOnly: true,
+        repositoryDenied: true, otherPathsDenied: true, snapshot, repository })
+      const result = await runPlanningPilot(item.stateRoot, item.manifest.id, {
+        acknowledgedTaskId: item.manifest.id, boundaryProbe,
+        container: { image: fakeImage, transport: docker },
+      })
+      assert.equal(result.status, 'blocked', scenario)
+      assert.equal(result.usage, 'unknown', scenario)
+      assert.equal(budgetStatus(item.stateRoot, item.manifest.id).code, 'BUDGET_USAGE_UNRECONCILED')
+      assert.equal(docker.calls.some((args) => args[0] === 'rm'), true)
+      if (['timeout', 'cancel'].includes(scenario)) assert.equal(docker.calls.some((args) => args[0] === 'stop'), true)
+    }
+  })
+
+  await testAsync('planning transport requires confirmed process-tree cancellation', async () => {
+    const item = started()
+    const spec = { agent: 'claude', executable: process.execPath, args: [], cwd: item.paths.snapshot,
+      snapshot: item.paths.snapshot, writeRoot: null, env: {}, stdin: '{}', timeoutMs: 1000 }
+    const controller = new AbortController()
+    const tree = { parent: true, nestedChild: true }
+    const run = executePlanningProcess(spec, {
+      spawnProcess: () => fakeChild({ neverClose: true }), signal: controller.signal,
+      terminateTree: () => { tree.parent = false; tree.nestedChild = false; return !tree.parent && !tree.nestedChild },
+    })
+    controller.abort()
+    assert.equal((await run).code, 'AGENT_CANCELLED')
+    assert.deepEqual(tree, { parent: false, nestedChild: false })
+    const timed = executePlanningProcess({ ...spec, timeoutMs: 1 }, {
+      spawnProcess: () => fakeChild({ neverClose: true }), terminateTree: () => true,
+    })
+    assert.equal((await timed).code, 'AGENT_TIMEOUT')
+    const failed = executePlanningProcess({ ...spec, timeoutMs: 1 }, {
+      spawnProcess: () => fakeChild({ neverClose: true }), terminateTree: () => false,
+    })
+    assert.equal((await failed).code, 'AGENT_TREE_TERMINATION_UNCONFIRMED')
+  })
+
+  if (process.platform === 'win32') await testAsync('Windows taskkill terminates a disposable nested process tree', async () => {
+    const code = "const {spawn}=require('node:child_process'); const child=spawn(process.execPath,['-e','setInterval(()=>{},1000)'],{stdio:'ignore'}); console.log(child.pid); setInterval(()=>{},1000)"
+    const parent = spawn(process.execPath, ['-e', code], { shell: false, windowsHide: true, stdio: ['ignore', 'pipe', 'ignore'] })
+    let nestedPid = null
+    try {
+      nestedPid = await Promise.race([
+        new Promise((resolve) => parent.stdout.once('data', (chunk) => resolve(Number(String(chunk).trim())))),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('TREE_TEST_START_TIMEOUT')), 3000)),
+      ])
+      assert.ok(Number.isSafeInteger(nestedPid) && nestedPid > 0)
+      const confirmed = await terminateWindowsProcessTree(parent)
+      if (confirmed) assert.throws(() => process.kill(nestedPid, 0))
+      else console.log('  OS denied process-tree termination; live planning remains blocked')
+    } finally {
+      try { parent.kill() } catch { /* already stopped */ }
+      if (nestedPid) try { process.kill(nestedPid) } catch { /* already stopped */ }
+    }
   })
 
   test('offline Docker policy rejects invalid digests, mounts, and path escapes', () => {

@@ -10,6 +10,83 @@ This repository is a monorepo:
 | `src/`, `public/`, `functions/` | Frontend + Cloudflare Pages Functions |
 | `backend/` | FastAPI Search Buddy / CMS / RAG service (maintained AI backend) |
 
+## Development update — November 3, 2026
+
+### Implemented locally and verified
+
+- **Mezmur classification and publishing:** strengthened canonical taxonomy,
+  classification/error handling, editor and bulk-review flows, source-backed
+  publishing guards, and the distinction between published Mezmur lyrics and
+  lyric-derived Finish the Mezmur content. Unsupported quiz publication remains
+  blocked rather than implying a database capability that has not been verified.
+- **Mezmur and Bible search:** added lyric-aware Mezmur results with matched
+  excerpts and highlighting, bounded fallback search, restricted-lyric
+  protection, Unicode/Ethiopic normalization, and URL-backed search state.
+  Bible search now supports sentence queries, structured references, ranked
+  word matching, edition-aware results, and source-text excerpts.
+- **Calendar, Synaxarium, and Mezmur:** connected calendar and event navigation
+  with source-backed Synaxarium and Mezmur relationships, preserved media
+  fallbacks, and kept publication and private-media gates in place.
+- **Navigation and browser history:** added URL state and Back/Forward
+  restoration for Mezmur, Calendar, Bible, prayer, Church Library, Play, and
+  relevant CMS filters, with keyed scroll restoration and direct-link support.
+- **Game Night and Faith Challenges:** organized the twelve games into five
+  shared modes, added the Game Night shared-screen guide and Custom/Join
+  boundaries, exposed static content and Bible campaign drafts in the existing
+  Studio, and added a tested anti-repetition foundation. These are not mixed
+  multiplayer, cross-game runtime deduplication, or universal server-backed
+  publishing.
+- **Security safeguards:** removed browser-authorized solo completion syncing,
+  added local Game Night reward-receipt handling and reviewed reward SQL
+  proposals, tightened localized answer projection and CMS auth recovery
+  checks, and prepared a plan-only staging harness. Staging execution is
+  blocked pending an approved disposable environment and effective permission
+  checks.
+
+### Testing, status, and limitations
+
+Focused browser, unit, authorization-structure, TypeScript, targeted ESLint,
+backend, and production-build checks passed as recorded in the dated AI
+reports. One Mezmur API-search check and one shared Bible-search check remain
+environmental/live-service failures; a legacy search regression also remains
+unresolved. An intermittent mobile history-scroll timeout was reproduced once
+and passed on rerun. Full-repository lint is still not clean.
+
+This update describes current local work, including uncommitted changes in the
+working tree; it does not represent a commit, push, merge, staging execution,
+production deployment, hosted Supabase/RLS verification, or live backend
+rollout. Remaining limitations include native Amharic review, deployed
+permission/concurrency checks, private Game Night question provisioning,
+unsupported local-only game adapters, and the reported GitHub Actions
+deployment failure.
+
+## Development update — November 2, 2026
+
+### Completed and locally verified
+
+- **Mezmur and CMS:** improved Mezmur administration, bulk review/classification,
+  language and taxonomy handling, public visibility checks, and editor
+  reliability; related CMS and responsive UI audits were recorded.
+- **Bible, Calendar, and Synaxarium:** completed local source/data audits,
+  calendar-card and media relationship review, and Bible/Synaxarium content
+  checks while preserving source-backed fallbacks.
+- **Play and UI:** retained the Bible Timeline challenge and its responsive,
+  bilingual interaction improvements; local Play, mobile, night-mode, and
+  performance checks were recorded.
+
+### Work in progress and local-only changes
+
+Further Mezmur, Bible, Calendar, Synaxarium, Play, CMS, and UI integration work
+remains uncommitted. Proposed migrations, imports, structured Library content,
+and security/staging verification are local review artifacts only; no hosted
+database or production change is implied.
+
+### Known issues
+
+Full-repository lint is not clean, and a reported GitHub Actions deployment
+failure remains undiagnosed. Local checks do not establish that uncommitted
+changes were committed, pushed, or deployed.
+
 Pages/static hosting must build **only** the frontend (`npm run build` → `dist/`).
 Never publish `backend/`, secrets, or the private five-book `content-review`
 package. See [backend/README.md](backend/README.md) and

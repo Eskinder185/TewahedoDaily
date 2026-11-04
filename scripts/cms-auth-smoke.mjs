@@ -26,7 +26,8 @@ try {
         status = 400; body = { error: 'invalid_grant', error_description: 'Invalid login credentials' }
       } else body = { access_token: token, refresh_token: 'test-refresh', expires_in: 3600, token_type: 'bearer', user }
     } else if (url.pathname === '/rest/v1/profiles') {
-      if (profileFails) { status = 500; body = { message: 'Test failure' } }
+      if (profileFails === 'denied') { status = 403; body = { code: '42501', message: 'permission denied for table profiles' } }
+      else if (profileFails === 'unavailable') { status = 500; body = { code: 'PGRST000', message: 'PostgREST connection unavailable' } }
       else body = memberRole ? { id: user.id, email: user.email, display_name: 'Test editor', avatar_url: null, role: memberRole, created_at: user.created_at, updated_at: user.created_at } : null
     } else if (url.pathname === '/auth/v1/user') body = user
     else if (url.pathname === '/auth/v1/logout') { status = 204; body = null }
@@ -43,19 +44,30 @@ try {
     await page.getByRole('button', { name: 'Sign in', exact: true }).click()
   }
   await login('wrong-password')
-  await page.getByRole('alert').filter({ hasText: 'Sign-in failed' }).waitFor()
+  await page.getByRole('alert').filter({ hasText: 'The email or password is incorrect.' }).waitFor()
   await login()
   await page.getByRole('heading', { name: 'Dashboard' }).waitFor()
   await page.reload()
   await page.getByRole('heading', { name: 'Dashboard' }).waitFor()
-  profileFails = true
+  profileFails = 'denied'
   await page.reload()
-  await page.getByRole('alert').filter({ hasText: 'Unable to verify CMS access' }).waitFor()
+  await page.getByRole('alert').filter({ hasText: 'Signed in, but profile access was denied.' }).waitFor()
+  assert.equal(await page.getByRole('heading', { name: 'Dashboard', exact: true }).count(), 0)
+  // Permission failures stay blocked until the user explicitly retries.
+  await page.goto('http://127.0.0.1:4175/admin')
+  await page.getByRole('alert').filter({ hasText: 'Signed in, but profile access was denied.' }).waitFor()
   profileFails = false
-  await page.getByRole('button', { name: 'Retry' }).click()
+  await page.getByRole('button', { name: 'Check access again', exact: true }).click()
+  await page.getByRole('heading', { name: 'Dashboard' }).waitFor()
+  profileFails = 'unavailable'
+  await page.reload()
+  await page.getByRole('alert').filter({ hasText: 'Unable to load your account. Try again.' }).waitFor()
+  assert.equal(await page.getByRole('heading', { name: 'Dashboard', exact: true }).count(), 0)
+  profileFails = false
+  await page.getByRole('button', { name: 'Check access again', exact: true }).click()
   await page.getByRole('heading', { name: 'Dashboard' }).waitFor()
   page.once('dialog', dialog => dialog.accept())
-  await page.getByRole('button', { name: 'Sign out' }).click()
+  await page.getByRole('banner').getByRole('button', { name: 'Sign out', exact: true }).click()
   await page.getByRole('heading', { name: 'CMS sign in' }).waitFor()
   memberRole = null
   await login()
@@ -64,7 +76,7 @@ try {
   await page.getByRole('alert').filter({ hasText: 'not been assigned CMS access' }).waitFor()
   assert.ok(page.url().endsWith('/admin/login'))
   assert.deepEqual(errors, [])
-  console.log('CMS Auth smoke passed: login failure/success, restoration, profile failure/retry, sign-out, unassigned denial.')
+  console.log('CMS Auth smoke passed: login failure/success, restoration, profile permission denial and outage/retry, sign-out, unassigned denial.')
 } finally {
   await browser?.close()
   await server.close()

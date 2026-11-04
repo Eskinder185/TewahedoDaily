@@ -201,8 +201,6 @@ export type UploadContentMediaOptions = {
   storagePath?: string
   /** Prefer WebP conversion for JPEG/PNG uploads */
   convertToWebp?: boolean
-  /** Overwrite existing object at storagePath */
-  upsert?: boolean
 }
 
 export async function uploadContentMedia(
@@ -223,14 +221,12 @@ export async function uploadContentMedia(
       prepared.name.replace(/\.[^.]+$/, ''),
     )}.${extension}`
 
-  if (!options?.upsert) {
-    const exists = await contentMediaPathExists(path)
-    if (exists) {
-      const err = new Error(`An image already exists at this path: ${path}`)
-      ;(err as Error & { code?: string; storagePath?: string }).code = 'STORAGE_PATH_EXISTS'
-      ;(err as Error & { storagePath?: string }).storagePath = path
-      throw err
-    }
+  const exists = await contentMediaPathExists(path)
+  if (exists) {
+    const err = new Error(`An image already exists at this path: ${path}`)
+    ;(err as Error & { code?: string; storagePath?: string }).code = 'STORAGE_PATH_EXISTS'
+    ;(err as Error & { storagePath?: string }).storagePath = path
+    throw err
   }
 
   const {
@@ -256,7 +252,7 @@ export async function uploadContentMedia(
     xhr.setRequestHeader('apikey', key)
     xhr.setRequestHeader('Authorization', `Bearer ${session.access_token}`)
     xhr.setRequestHeader('Content-Type', prepared.type)
-    xhr.setRequestHeader('x-upsert', options?.upsert ? 'true' : 'false')
+    xhr.setRequestHeader('x-upsert', 'false')
     xhr.timeout = 180000
     xhr.upload.onprogress = (e) => {
       if (e.lengthComputable && options?.onProgress) {
@@ -325,6 +321,8 @@ export async function uploadContentMedia(
 export async function listMediaAssets(options?: {
   search?: string
   folder?: string
+  mediaType?: string
+  sort?: 'newest' | 'oldest' | 'name'
   page?: number
   pageSize?: number
 }) {
@@ -336,15 +334,16 @@ export async function listMediaAssets(options?: {
   let query = db()
     .from('media_assets' as never)
     .select('*', { count: 'exact' })
-    .order('created_at', { ascending: false })
+    .order(options?.sort === 'name' ? 'file_name' : 'created_at', { ascending: options?.sort === 'oldest' || options?.sort === 'name' })
     .range(from, to)
 
   if (options?.folder) {
     const prefix = options.folder.replace(/\/$/, '')
     query = query.ilike('storage_path', `${prefix}/%`)
   }
+  if (options?.mediaType) query = query.eq('media_type', options.mediaType)
   if (options?.search?.trim()) {
-    const q = options.search.trim()
+    const q = options.search.trim().replace(/[,%()\\]/g, '').slice(0, 80)
     query = query.or(
       `file_name.ilike.%${q}%,storage_path.ilike.%${q}%,alt_text.ilike.%${q}%,caption.ilike.%${q}%`,
     )
@@ -370,16 +369,8 @@ export async function updateMediaAsset(
 }
 
 export async function deleteMediaAsset(asset: MediaAsset) {
-  const { error: storageError } = await db()
-    .storage.from(asset.storage_bucket || CONTENT_MEDIA_BUCKET)
-    .remove([asset.storage_path])
-  if (storageError) throw storageError
-
-  const { error } = await db()
-    .from('media_assets' as never)
-    .delete()
-    .eq('id', asset.id)
-  if (error) throw error
+  void asset
+  throw new Error('Deletion is disabled until all CMS references can be checked and recovery is available.')
 }
 
 export function mediaFolderFromPath(path: string | null | undefined): string {

@@ -17,7 +17,7 @@ export type VoiceTranscriptionControlProps = {
   compact?: boolean
   helperCaption?: string
   active?: boolean
-  /** Mezmur page should pass "am" so the badge is አማ by default. */
+  /** Optional override; otherwise the site language is used. */
   defaultLanguage?: VoiceInputLanguage
   /** Mezmur: lock to Amharic + /api/transcribe (no browser SpeechRecognition). */
   amharicOnly?: boolean
@@ -29,7 +29,7 @@ export function VoiceTranscriptionControl({
   compact = true,
   helperCaption,
   active = true,
-  defaultLanguage = 'en',
+  defaultLanguage,
   amharicOnly = false,
 }: VoiceTranscriptionControlProps) {
   return (

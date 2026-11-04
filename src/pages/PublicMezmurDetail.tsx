@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useLyricMatchHighlight } from '../lib/search/lyricHighlight'
 import {
   detail,
   publicMezmurToPracticePayload,
@@ -56,6 +57,9 @@ export function PublicMezmurDetail() {
 
 function PracticeBody({ item }: { item: PublicMezmur }) {
   const navigate = useNavigate()
+  // `?q=` comes from a lyric search result: show the matched passage in the viewer.
+  const [searchParams] = useSearchParams()
+  const lyricsRef = useLyricMatchHighlight(searchParams.get('q') || '')
   const [customDraft, setCustomDraft] = useState('')
   const [customError, setCustomError] = useState('')
   const [copied, setCopied] = useState(false)
@@ -193,7 +197,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
         openPlayerOnLoad={queue.openPlayerOnLoad}
         formLabel={item.form === 'werb' ? 'Werb' : 'Mezmur'}
         badges={badges}
-        onBack={() => navigate('/practice')}
+        onBack={() => navigate(queue.href && /^\/(hymns|practice)([/?]|$)/.test(queue.href) ? queue.href : '/hymns')}
         backLabel="Back to library"
         footerActions={
           activeUrl || payload.videoId ? (
@@ -205,6 +209,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
           ) : undefined
         }
         lyricsContent={
+          <div ref={lyricsRef}>
           <HymnLyricsExperience
             item={item}
             canonical={canonical}
@@ -219,6 +224,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
               />
             }
           />
+          </div>
         }
       />
 

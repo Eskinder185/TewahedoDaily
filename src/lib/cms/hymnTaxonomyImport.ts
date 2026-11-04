@@ -3,6 +3,7 @@
  * Do NOT query public.mezmur_occasions / public.singers / public.mezmur.
  */
 import { db, errorMessage } from './mezmurService'
+import { classificationRpcErrorMessage } from './classificationErrors'
 import { CATEGORY_ENTRIES, OCCASION_ENTRIES } from '../mezmur/taxonomyAliases'
 
 export type DerivedTaxonomyItem = {
@@ -258,9 +259,5 @@ export async function setMezmurClassificationLinks(
     p_occasion_slugs: cleanOccasions,
   } as never)
   if (!error) return
-  const rendered = errorMessage(error)
-  if (/function .*set_mezmur_classification_import|PGRST202/i.test(error.message || '')) {
-    throw new Error('The UUID-safe Mezmur classification RPC is not installed. Apply migration 20261025020000_mezmur_bulk_classification.sql before editing classifications.')
-  }
-  throw new Error(rendered)
+  throw new Error(classificationRpcErrorMessage(error))
 }

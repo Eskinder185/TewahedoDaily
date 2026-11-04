@@ -89,8 +89,13 @@ export default defineConfig({
           if (norm.includes('node_modules')) {
             // Parsers load only with document routes; never make initial public
             // navigation download their implementation.
+            // pdfjs-dist is deliberately NOT given a named chunk: a named chunk also
+            // absorbed Vite's shared preload helper, which put the whole 420 KB PDF
+            // library on every page's critical path. Returning undefined (instead of
+            // falling through to the generic 'vendor' chunk below) leaves it in the
+            // lazy document reader's chunk.
             if (norm.includes('pdfjs-dist')) {
-              return 'pdf-vendor'
+              return undefined
             }
             if (norm.includes('mammoth')) {
               return 'document-vendor'

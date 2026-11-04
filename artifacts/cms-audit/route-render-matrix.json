@@ -1,0 +1,848 @@
+[
+  {
+    "route": "/admin",
+    "resolved": "/admin",
+    "heading": "Dashboard",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/home",
+    "resolved": "/admin",
+    "heading": "Home",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/home/slides",
+    "resolved": "/admin/home/slides",
+    "heading": "Home",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/home/slides/new",
+    "resolved": "/admin/home/slides/new",
+    "heading": "Home",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/home/daily",
+    "resolved": "/admin/calendar/daily",
+    "heading": "Home",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/about",
+    "resolved": "/admin",
+    "heading": "Dashboard",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/content-health",
+    "resolved": "/admin",
+    "heading": "Dashboard",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns",
+    "resolved": "/admin/hymns",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/mezmur",
+    "resolved": "/admin/hymns/mezmur",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/mezmur/new",
+    "resolved": "/admin/hymns/mezmur/new",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/import",
+    "resolved": "/admin/hymns/import",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/bulk",
+    "resolved": "/admin/hymns/bulk",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/browse-groups",
+    "resolved": "/admin/hymns/browse-groups",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/browse-groups/new",
+    "resolved": "/admin/hymns/browse-groups/new",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/zemaris",
+    "resolved": "/admin/hymns/zemaris",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/zemaris/new",
+    "resolved": "/admin/hymns/zemaris/new",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/trash",
+    "resolved": "/admin/hymns/trash",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/categories",
+    "resolved": "/admin/hymns/categories",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/occasions",
+    "resolved": "/admin/hymns/occasions",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/tags",
+    "resolved": "/admin/hymns/tags",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray",
+    "resolved": "/admin/pray",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/collections",
+    "resolved": "/admin/pray/collections",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/collections/new",
+    "resolved": "/admin/pray/collections/new",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/prayers",
+    "resolved": "/admin/pray/prayers",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/prayers/new",
+    "resolved": "/admin/pray/prayers/new",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/liturgy",
+    "resolved": "/admin/pray/liturgy",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/liturgy/new",
+    "resolved": "/admin/pray/liturgy/new",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/guides",
+    "resolved": "/admin/pray/guides",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/guides/new",
+    "resolved": "/admin/pray/guides/new",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/images",
+    "resolved": "/admin/pray/images",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar",
+    "resolved": "/admin/calendar",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/cards",
+    "resolved": "/admin/calendar/cards",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/cards/new",
+    "resolved": "/admin/calendar/cards/new",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/mezmurs",
+    "resolved": "/admin/calendar/mezmurs",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/observances",
+    "resolved": "/admin/calendar/observances",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/fasts",
+    "resolved": "/admin/calendar/fasts",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/seasons",
+    "resolved": "/admin/calendar/seasons",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/monthly",
+    "resolved": "/admin/calendar/monthly",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/synaxarium",
+    "resolved": "/admin/calendar/synaxarium",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/saints",
+    "resolved": "/admin/calendar/saints",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/saints/new",
+    "resolved": "/admin/calendar/saints/new",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/feasts",
+    "resolved": "/admin/calendar/feasts",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/feasts/new",
+    "resolved": "/admin/calendar/feasts/new",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/daily",
+    "resolved": "/admin/calendar/daily",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/church-library",
+    "resolved": "/admin/church-library",
+    "heading": "Church Library",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/church-library/import",
+    "resolved": "/admin/church-library/import",
+    "heading": "Import & review",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/church-library/faqs",
+    "resolved": "/admin/church-library/faqs",
+    "heading": "Approved FAQ Answers",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/church-library/legacy-preview",
+    "resolved": "/admin/church-library/legacy-preview",
+    "heading": "Legacy five-book package preview",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "Failed to fetch"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/bible",
+    "resolved": "/admin/bible",
+    "heading": "Bible Manager",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/play",
+    "resolved": "/admin/play",
+    "heading": "Game Content Studio",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/play/studio",
+    "resolved": "/admin/play/studio",
+    "heading": "Game Content Studio",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/play/import",
+    "resolved": "/admin/play/import",
+    "heading": "Import & data tools / የማስገቢያ መሣሪያዎች",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/submissions",
+    "resolved": "/admin/submissions",
+    "heading": "Submissions",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/media",
+    "resolved": "/admin/media",
+    "heading": "Media library",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/users",
+    "resolved": "/admin/users",
+    "heading": "Users",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/settings",
+    "resolved": "/admin/settings",
+    "heading": "settings",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/articles",
+    "resolved": "/admin/articles",
+    "heading": "articles",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/articles/new",
+    "resolved": "/admin/articles/new",
+    "heading": "Create articles",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/mezmur",
+    "resolved": "/admin/hymns/mezmur",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/prayers",
+    "resolved": "/admin/pray/collections",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/liturgy",
+    "resolved": "/admin/pray/liturgy",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/synaxarium",
+    "resolved": "/admin/calendar/synaxarium",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/saints",
+    "resolved": "/admin/calendar/saints",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/feasts",
+    "resolved": "/admin/calendar/feasts",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/categories",
+    "resolved": "/admin/hymns/categories",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/singers",
+    "resolved": "/admin/hymns/zemaris",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/tags",
+    "resolved": "/admin/hymns/tags",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/daily",
+    "resolved": "/admin/calendar/daily",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/login",
+    "resolved": "/admin",
+    "heading": "Dashboard",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/home/new",
+    "resolved": "/admin/home/slides/new",
+    "heading": "Home",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/home/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/home/slides/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Home",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/home/slides/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/home/slides/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Home",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/mezmur/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/hymns/mezmur/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/browse-groups/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/hymns/browse-groups/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "Collection not found. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/zemaris/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/hymns/zemaris/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "Zemari not found."
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/hymns/singers",
+    "resolved": "/admin/hymns/zemaris",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/collections/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/pray/collections/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/prayers/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/pray/prayers/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/liturgy/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/pray/liturgy/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/pray/guides/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/pray/guides/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "Guide not found. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/cards/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/cards/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/synaxarium/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/synaxarium/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/saints/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/saints/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/feasts/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/feasts/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/new",
+    "resolved": "/admin/calendar/cards/new",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/calendar/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/cards/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/editorial-books",
+    "resolved": "/admin/church-library",
+    "heading": "Church Library",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/editorial-books/legacy",
+    "resolved": "/admin/church-library",
+    "heading": "Church Library",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/submissions/33333333-3333-4333-8333-333333333333",
+    "resolved": "/admin/submissions/33333333-3333-4333-8333-333333333333",
+    "heading": null,
+    "status": "UNKNOWN",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/articles/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/articles/33333333-3333-4333-8333-333333333333/edit",
+    "heading": null,
+    "status": "UNKNOWN",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/mezmur/new",
+    "resolved": "/admin/hymns/mezmur/new",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/mezmur/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/hymns/mezmur/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Hymns Practice",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/prayers/new",
+    "resolved": "/admin/pray/collections/new",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/prayers/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/pray/collections/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/liturgy/new",
+    "resolved": "/admin/pray/liturgy/new",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/liturgy/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/pray/liturgy/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Pray",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/synaxarium/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/synaxarium/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/saints/new",
+    "resolved": "/admin/calendar/saints/new",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/saints/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/saints/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/feasts/new",
+    "resolved": "/admin/calendar/feasts/new",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [],
+    "runtimeErrors": []
+  },
+  {
+    "route": "/admin/feasts/33333333-3333-4333-8333-333333333333/edit",
+    "resolved": "/admin/calendar/feasts/33333333-3333-4333-8333-333333333333/edit",
+    "heading": "Calendar",
+    "status": "PASS_MOCK_SHELL",
+    "alerts": [
+      "This item was not found, or you do not have permission to view it. Try again"
+    ],
+    "runtimeErrors": []
+  }
+]

@@ -404,6 +404,8 @@ export const UI_LABELS = {
     am: 'ለዚህ ክፍል የግዕዝ ጽሑፍ አልተገኘም።',
   },
   prayerLangUnavailableShort: { en: 'not available', am: 'አልተገኘም' },
+  prayerShownInEnglish: { en: 'Shown in English', am: 'በእንግሊዝኛ ታይቷል' },
+  prayerShownInAmharic: { en: 'Shown in Amharic', am: 'በአማርኛ ታይቷል' },
   prayerDocumentEyebrow: { en: 'Prayer text', am: 'የጸሎት ጽሑፍ' },
   prayerDocumentSection: { en: 'Section {number}', am: 'ክፍል {number}' },
   prayerDocumentPdf: { en: 'View source PDF', am: 'የምንጭ ፒዲኤፍ ይመልከቱ' },

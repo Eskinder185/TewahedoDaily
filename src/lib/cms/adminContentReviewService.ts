@@ -128,9 +128,8 @@ export async function fetchReviewsForContent(
   // Try fetching authoritative data from Supabase if online
   if (supabase) {
     try {
-      const client = supabase as any
-      let query = client
-        .from(ADMIN_CONTENT_REVIEW_TABLE)
+      let query = supabase
+        .from(ADMIN_CONTENT_REVIEW_TABLE as never)
         .select('*')
         .eq('content_type', contentType)
 
@@ -141,7 +140,7 @@ export async function fetchReviewsForContent(
       const { data, error } = await query
       if (error) throw error
       if (!data) throw new Error('Review lookup returned no data.')
-      data.forEach((row: AdminContentReviewRecord) => {
+      ;(data as AdminContentReviewRecord[]).forEach((row) => {
         const canonicalId = normalizedIds?.find((contentId) =>
           contentId === row.content_id ||
           (aliases?.get(contentId) || []).includes(row.content_id),
@@ -232,9 +231,8 @@ export async function saveReviewStatus(
   // successful review or cache an optimistic value before the server confirms.
   if (supabase) {
     try {
-      const client = supabase as any
-      const { data, error } = await client
-        .from(ADMIN_CONTENT_REVIEW_TABLE)
+      const { data, error } = await supabase
+        .from(ADMIN_CONTENT_REVIEW_TABLE as never)
         .upsert(
           {
             content_type: contentType,
@@ -245,7 +243,7 @@ export async function saveReviewStatus(
             reviewed_at: record.reviewed_at,
             review_note: record.review_note,
             updated_at: now,
-          },
+          } as never,
           { onConflict: 'content_type,content_id' }
         )
         .select()
@@ -253,12 +251,12 @@ export async function saveReviewStatus(
 
       if (error) throw error
       if (!data) throw new Error('Review update returned no record.')
-      local[key] = data
+      local[key] = data as AdminContentReviewRecord
       saveLocalStore(local)
       if (typeof window !== 'undefined') {
         window.dispatchEvent(new CustomEvent('td:admin-review-updated', { detail: data }))
       }
-      return data
+      return data as AdminContentReviewRecord
     } catch (err) {
       throw reviewError(err, 'Review update failed.')
     }
@@ -278,62 +276,22 @@ export async function saveReviewStatus(
  * Generates an aggregated count of items needing review vs reviewed across Mezmurs and Calendar.
  */
 export async function getReviewSummary(): Promise<ReviewSummary> {
-  let mezmursTotal = 0
-  let mezmursReviewed = 0
-  let calendarTotal = 0
-  let calendarReviewed = 0
-
-  const local = getLocalStore()
-
-  // Count from local cache first
-  Object.values(local).forEach((r) => {
-    if (r.review_status === 'reviewed') {
-      if (r.content_type === 'mezmur') mezmursReviewed++
-      if (r.content_type === 'calendar_card') calendarReviewed++
-    }
-  })
-
-  // Try real database queries
-  if (supabase) {
-    try {
-      const client = supabase as any
-
-      // 1. Total Mezmurs count
-      const { count: mCount } = await client
-        .from('mezmur_public')
-        .select('mezmur_id', { count: 'exact', head: true })
-      if (mCount != null) mezmursTotal = mCount
-
-      // 2. Reviewed Mezmurs count
-      const { count: mrCount } = await client
-        .from(ADMIN_CONTENT_REVIEW_TABLE)
-        .select('id', { count: 'exact', head: true })
-        .eq('content_type', 'mezmur')
-        .eq('review_status', 'reviewed')
-      if (mrCount != null) mezmursReviewed = mrCount
-
-      // 3. Total Calendar cards count
-      const { count: cCount } = await client
-        .from('calendar_cards')
-        .select('id', { count: 'exact', head: true })
-      if (cCount != null) calendarTotal = cCount
-
-      // 4. Reviewed Calendar cards count
-      const { count: crCount } = await client
-        .from(ADMIN_CONTENT_REVIEW_TABLE)
-        .select('id', { count: 'exact', head: true })
-        .eq('content_type', 'calendar_card')
-        .eq('review_status', 'reviewed')
-      if (crCount != null) calendarReviewed = crCount
-    } catch (err) {
-      // Local fallback counts
-      if (mezmursTotal === 0) mezmursTotal = 994
-      if (calendarTotal === 0) calendarTotal = 113
-    }
+  if (!supabase) throw new Error('Supabase is not configured for editorial review counts.')
+  const client = supabase
+  const [mezmurs, reviewedMezmurs, cards, reviewedCards] = await Promise.all([
+    client.from('mezmur_data_import' as never).select('mezmur_id', { count: 'exact', head: true }).is('deleted_at', null),
+    client.from(ADMIN_CONTENT_REVIEW_TABLE as never).select('id', { count: 'exact', head: true }).eq('content_type', 'mezmur').eq('review_status', 'reviewed'),
+    client.from('calendar_cards' as never).select('id', { count: 'exact', head: true }),
+    client.from(ADMIN_CONTENT_REVIEW_TABLE as never).select('id', { count: 'exact', head: true }).eq('content_type', 'calendar_card').eq('review_status', 'reviewed'),
+  ])
+  for (const result of [mezmurs, reviewedMezmurs, cards, reviewedCards]) {
+    if (result.error) throw result.error
+    if (typeof result.count !== 'number') throw new Error('Editorial review count was unavailable.')
   }
-
-  if (mezmursTotal === 0) mezmursTotal = 994
-  if (calendarTotal === 0) calendarTotal = 113
+  const mezmursTotal = mezmurs.count as number
+  const mezmursReviewed = Math.min(mezmursTotal, reviewedMezmurs.count as number)
+  const calendarTotal = cards.count as number
+  const calendarReviewed = Math.min(calendarTotal, reviewedCards.count as number)
 
   const mezmursNeedsReview = Math.max(0, mezmursTotal - mezmursReviewed)
   const calendarNeedsReview = Math.max(0, calendarTotal - calendarReviewed)

@@ -5,6 +5,8 @@
  * Preserves Amharic and Geʽez Unicode text.
  */
 
+import { sanitizeDocumentHtml } from './documentHtml'
+
 export type EpubChapter = {
   id: string
   title: string
@@ -41,15 +43,31 @@ type ZipEntry = {
   localHeaderOffset: number
 }
 
-async function decompressDeflate(compressedBytes: Uint8Array): Promise<Uint8Array> {
+const MAX_ENTRY_BYTES = 64 * 1024 * 1024
+const MAX_ARCHIVE_BYTES = 128 * 1024 * 1024
+
+async function decompressDeflate(compressedBytes: Uint8Array, limit: number): Promise<Uint8Array> {
   // Use native DecompressionStream available in modern browsers and Node 18+
   const blob = new Blob([compressedBytes as unknown as BlobPart])
   const stream = blob.stream().pipeThrough(new DecompressionStream('deflate-raw'))
-  const arrayBuffer = await new Response(stream).arrayBuffer()
-  return new Uint8Array(arrayBuffer)
+  const reader = stream.getReader()
+  const chunks: Uint8Array[] = []
+  let size = 0
+  while (true) {
+    const { value, done } = await reader.read()
+    if (done) break
+    size += value.byteLength
+    if (size > limit) { await reader.cancel(); throw new Error('Document archive exceeds its unpacked size limit.') }
+    chunks.push(value)
+  }
+  const result = new Uint8Array(size)
+  let offset = 0
+  for (const chunk of chunks) { result.set(chunk, offset); offset += chunk.byteLength }
+  return result
 }
 
 export async function unzipEntries(buffer: ArrayBuffer): Promise<Map<string, Uint8Array>> {
+  if (buffer.byteLength > MAX_ARCHIVE_BYTES) throw new Error('Document archive is too large.')
   const bytes = new Uint8Array(buffer)
   const view = new DataView(buffer)
   const entries = new Map<string, Uint8Array>()
@@ -70,6 +88,7 @@ export async function unzipEntries(buffer: ArrayBuffer): Promise<Map<string, Uin
 
   const centralDirectoryOffset = view.getUint32(eocdOffset + 16, true)
   const totalEntries = view.getUint16(eocdOffset + 10, true)
+  if (totalEntries > 4096) throw new Error('Document archive contains too many entries.')
 
   let cdPtr = centralDirectoryOffset
   const textDecoder = new TextDecoder('utf-8')
@@ -102,9 +121,11 @@ export async function unzipEntries(buffer: ArrayBuffer): Promise<Map<string, Uin
     cdPtr += 46 + fileNameLength + extraFieldLength + commentLength
   }
 
-  // Decompress each entry
+  // Enforce actual expansion as well as untrusted declared sizes.
+  let totalUnpacked = 0
   for (const entry of parsedEntries) {
     if (entry.fileName.endsWith('/')) continue // skip directories
+    if (entry.uncompressedSize > MAX_ENTRY_BYTES) throw new Error('Document archive entry is too large.')
 
     const lhOffset = entry.localHeaderOffset
     const lhSignature = view.getUint32(lhOffset, true)
@@ -117,17 +138,16 @@ export async function unzipEntries(buffer: ArrayBuffer): Promise<Map<string, Uin
     const compressedSlice = bytes.subarray(fileDataOffset, fileDataOffset + entry.compressedSize)
 
     if (entry.compressionMethod === 0) {
+      if (compressedSlice.byteLength > MAX_ENTRY_BYTES) throw new Error('Document archive entry is too large.')
       // Stored (no compression)
       entries.set(entry.fileName, new Uint8Array(compressedSlice))
     } else if (entry.compressionMethod === 8) {
       // Deflate
-      try {
-        const decompressed = await decompressDeflate(compressedSlice)
-        entries.set(entry.fileName, decompressed)
-      } catch (err) {
-        console.warn(`Failed to decompress entry ${entry.fileName}:`, err)
-      }
+      const decompressed = await decompressDeflate(compressedSlice, Math.min(MAX_ENTRY_BYTES, MAX_ARCHIVE_BYTES - totalUnpacked))
+      entries.set(entry.fileName, decompressed)
     }
+    totalUnpacked += entries.get(entry.fileName)?.byteLength || 0
+    if (totalUnpacked > MAX_ARCHIVE_BYTES) throw new Error('Document archive exceeds its unpacked size limit.')
   }
 
   return entries
@@ -136,18 +156,6 @@ export async function unzipEntries(buffer: ArrayBuffer): Promise<Map<string, Uin
 // ---------------------------------------------------------------------------
 // EPUB Parser
 // ---------------------------------------------------------------------------
-
-function sanitizeHtml(html: string): string {
-  // Strip script, style, iframe, object tags and unsafe event handlers
-  return html
-    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
-    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
-    .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
-    .replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '')
-    .replace(/\son\w+="[^"]*"/gi, '')
-    .replace(/\son\w+='[^']*'/gi, '')
-    .replace(/javascript:[^"']*/gi, '#')
-}
 
 function extractTextFromHtml(html: string): string {
   return html
@@ -242,7 +250,7 @@ export async function parseEpub(buffer: ArrayBuffer): Promise<ParsedEpub> {
     if (!chapterBytes) continue
 
     const chapterHtml = decoder.decode(chapterBytes)
-    const sanitized = sanitizeHtml(chapterHtml)
+    const sanitized = sanitizeDocumentHtml(chapterHtml)
     const text = extractTextFromHtml(sanitized)
 
     // Find title

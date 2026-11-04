@@ -195,6 +195,54 @@
   min-width: 0;
 }
 
+/*
+ * Loading placeholders. Both use min-height (never height) so loaded content can
+ * grow freely, and the reservation is removed as soon as loading ends.
+ */
+.selectedBlockLoading {
+  min-height: 28.75rem; /* loaded timeline carousel is ~460px tall on mobile */
+}
+
+@media (min-width: 900px) {
+  .selectedBlockLoading {
+    min-height: 27.5rem; /* ~447px on desktop */
+  }
+}
+
+.dashboardContainerLoading {
+  display: flex;
+  flex-direction: column;
+  min-height: 18rem;
+}
+
+.selectedBlockLoading::after,
+.dashboardContainerLoading::after {
+  content: '';
+  flex: 1 1 auto;
+  min-height: 8rem;
+  border-radius: 1rem;
+  background: linear-gradient(
+    100deg,
+    color-mix(in srgb, currentColor 5%, transparent) 30%,
+    color-mix(in srgb, currentColor 11%, transparent) 50%,
+    color-mix(in srgb, currentColor 5%, transparent) 70%
+  );
+  background-size: 200% 100%;
+  animation: calendarSkeletonShimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes calendarSkeletonShimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .selectedBlockLoading::after,
+  .dashboardContainerLoading::after {
+    animation: none;
+  }
+}
+
 .srOnly {
   position: absolute;
   width: 1px;

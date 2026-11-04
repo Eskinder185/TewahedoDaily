@@ -285,6 +285,8 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const [restoreKey, setRestoreKey] = useState(0)
   const navigate = useNavigate()
   const bypass = useRef(false)
+  // The category/occasion selections last confirmed by the database (the load-time values until a save succeeds).
+  const persistedClassification = useRef({ categorySlugs: initial.categorySlugs, occasionSlugs: initial.occasionSlugs })
   const dirty = JSON.stringify({ input, tags, sectionIds, categorySlugs, occasionSlugs }) !== baseline
   const canEdit = staff || !row || (row.created_by === profile?.id && row.status === 'draft')
   const blocker = useBlocker(() => !bypass.current && (dirty || busy))
@@ -383,35 +385,54 @@ function EditorForm({ initial }: { initial: EditorData }) {
           secondaryWarnings.push('hymn-section links were not updated')
         }
       }
+      // Compare with what is actually stored (not the page-load snapshot) and always retry after a failure.
+      let classificationError = ''
       if (
         wasCreate ||
         slugChanged ||
-        !sameSelection(categorySlugs, initial.categorySlugs) ||
-        !sameSelection(occasionSlugs, initial.occasionSlugs)
+        !sameSelection(categorySlugs, persistedClassification.current.categorySlugs) ||
+        !sameSelection(occasionSlugs, persistedClassification.current.occasionSlugs)
       ) {
         try {
           await setMezmurClassificationLinks(saved.import_id, categorySlugs, occasionSlugs)
+          persistedClassification.current = { categorySlugs, occasionSlugs }
         } catch (classificationErr) {
           if (import.meta.env.DEV) console.warn('[MezmurEditor] classification links', classificationErr)
-          secondaryWarnings.push('category/occasion links were not updated')
+          classificationError = errorMessage(classificationErr instanceof Error ? classificationErr.message : classificationErr)
         }
       }
       setRow(saved)
       const savedInput = { ...editable(saved), category_id: primaryCategorySlug, category: payload.category, occasion: payload.occasion }
       setInput(savedInput)
-      setBaseline(JSON.stringify({ input: savedInput, tags, sectionIds, categorySlugs, occasionSlugs }))
+      // A failed classification save leaves the baseline on the stored selections, so the editor still
+      // reports unsaved changes, keeps the pending choices selected, and the next Save retries them.
+      setBaseline(JSON.stringify({
+        input: savedInput,
+        tags,
+        sectionIds,
+        categorySlugs: classificationError ? persistedClassification.current.categorySlugs : categorySlugs,
+        occasionSlugs: classificationError ? persistedClassification.current.occasionSlugs : occasionSlugs,
+      }))
       setHistoryRevision((n) => n + 1)
       setFieldErrors({})
       const baseSuccess =
         saved.status === 'published'
           ? 'Mezmur published successfully.'
           : 'Mezmur saved as draft.'
+      // After a classification failure the error below states exactly what was and was not saved;
+      // a green success banner next to it would read as if the categories and occasions were stored.
       setSuccess(
-        secondaryWarnings.length
-          ? `${baseSuccess} However, ${secondaryWarnings.join(' and ')}; please retry saving the category, occasion, or section selections.`
-          : baseSuccess,
+        classificationError
+          ? ''
+          : secondaryWarnings.length
+            ? `${baseSuccess} However, ${secondaryWarnings.join(' and ')}; please retry saving the section selections.`
+            : baseSuccess,
       )
-      if (wasCreate) {
+      if (classificationError) {
+        setError(`${baseSuccess.replace(/\.$/, '')}, but categories and occasions were NOT saved. ${classificationError} Your selections are still here; press Save again once this is fixed.`)
+      }
+      // After a classification failure stay on this page: navigating would reload it and drop the pending selections.
+      if (wasCreate && !classificationError) {
         bypass.current = true
         navigate(`${ADMIN_PATHS.hymnsMezmur}/${saved.id}/edit`, { replace: true, state: { saved: true } })
       }

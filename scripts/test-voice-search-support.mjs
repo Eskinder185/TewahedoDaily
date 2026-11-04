@@ -20,7 +20,8 @@ import {
 } from '../src/lib/speech/speechTypes.ts'
 
 assert.equal(speechLocales.en, 'en-US')
-assert.equal(toSpeechLocale('am'), 'en-US')
+assert.equal(speechLocales.am, 'am-ET')
+assert.equal(toSpeechLocale('am'), 'am-ET')
 assert.equal(toSpeechLocale('en'), 'en-US')
 assert.equal(toSpeechLocale('both'), 'en-US')
 assert.equal(VOICE_RECOGNITION_LANG, 'en-US')
@@ -123,7 +124,8 @@ const player = readFileSync(
 // Hymn search records Amharic and reviews the whole transcript. The old
 // English "spell the letters" line would contradict that, so it must stay off
 // this page. Users see the localized heard line instead.
-assert.match(hymns, /defaultLanguage="am"/)
+assert.match(hymns, /VoiceTranscriptionControl/)
+assert.doesNotMatch(hymns, /defaultLanguage="am"/)
 assert.doesNotMatch(hymns, /amharicOnly/)
 assert.match(hymns, /t\('practice\.heard'\)/)
 assert.doesNotMatch(hymns, /Say the letters separately/)

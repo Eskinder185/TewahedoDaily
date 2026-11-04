@@ -1,0 +1,5 @@
+.modes { display: flex; flex-wrap: wrap; gap: .6rem; margin-block: .5rem; }
+.modes a { display: inline-flex; align-items: center; gap: .4rem; min-height: 44px; padding: .7rem 1rem; border: 1px solid var(--color-border-strong); border-radius: var(--radius-md); background: var(--color-bg-elevated); color: var(--color-text); text-decoration: none; font-weight: 650; }
+.modes a[aria-current="page"] { border-color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.modes a:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 3px; }
+@media (max-width: 540px) { .modes a { flex: 1 1 140px; } }

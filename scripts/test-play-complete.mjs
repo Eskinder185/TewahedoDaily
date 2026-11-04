@@ -14,7 +14,11 @@ assert.match(app, /lazy\(\(\) => import\('\.\/pages\/play\/GameNightPage'\)/)
 assert.match(adventureStories, /source\('Exodus', 'exodus', 14, 10, 14\)/)
 assert.match(adventure, /Interactive objects are learning aids/)
 assert.match(adventure, /recordPlayCompletion\(input\)/)
-assert.match(adventure, /bibleAdventureStories\.find/)
+assert.match(adventure, /const story = stories\.find\(\(item\) => item\.id === storyId\)/)
+assert.match(adventure, /usePublishedPlayContent\('adventures'\)/)
+const databaseAdventure = adventure.split('function DatabaseAdventures()')[1]?.split('export function AdventureContent')[0]
+assert.ok(databaseAdventure, 'database Adventure route exists')
+assert.doesNotMatch(databaseAdventure, /bibleAdventureStories/, 'database mode must never fall back to the static registry')
 assert.match(prefetch, /play\/adventures/)
 assert.match(prefetch, /play\/game-night/)
 

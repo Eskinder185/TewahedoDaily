@@ -17,6 +17,9 @@ import { StoryObjects } from './AdventureObjects'
 import { sceneHasHotspots, type HotspotKit, type ObjectState } from './adventureHotspots'
 import { storyArtState } from './adventureSceneState'
 import styles from './AdventurePage.module.css'
+import { databasePlayEnabled } from '../../lib/play/publishedContent'
+import { usePublishedPlayContent } from '../../hooks/usePublishedPlayContent'
+import { DatabaseContentStatus } from '../../components/play/DatabaseContentStatus'
 
 const translated = (text: AdventureText, locale: AppLocale) => text[locale] ?? text.en
 
@@ -151,11 +154,21 @@ function AdventureRun({ story, locale, user }: { story: BibleAdventureStory; loc
 }
 
 export function AdventurePage() {
+  return databasePlayEnabled() ? <DatabaseAdventures /> : <AdventureContent stories={bibleAdventureStories} />
+}
+function DatabaseAdventures() {
+  const { locale } = useLocale()
+  const { drafts, state, retry } = usePublishedPlayContent('adventures')
+  const stories = drafts.flatMap(draft => draft.game === 'adventures' ? [draft.content] : [])
+  if (state !== 'ready' || !stories.length) return <div className={styles.page}><Link to="/play">← {locale === 'am' ? 'ጨዋታዎች' : 'Tewahedo Play'}</Link><DatabaseContentStatus locale={locale} state={state === 'ready' ? 'empty' : state} retry={retry} /></div>
+  return <AdventureContent stories={stories} />
+}
+export function AdventureContent({ stories }: { stories: BibleAdventureStory[] }) {
   const { locale } = useLocale()
   const { user } = useAuth()
   const [params] = useSearchParams()
   const storyId = params.get('story')
-  const story = bibleAdventureStories.find((item) => item.id === storyId)
+  const story = stories.find((item) => item.id === storyId)
   const am = locale === 'am'
 
   return <div className={styles.page} lang={locale}>
@@ -163,11 +176,11 @@ export function AdventurePage() {
       <nav className={styles.breadcrumb} aria-label={am ? 'የገጽ መንገድ' : 'Breadcrumb'}><Link to="/play">← {am ? 'ወደ ጨዋታ' : 'Tewahedo Play'}</Link>{story && <Link to="/play/adventures">{am ? 'ጀብዱዎች' : 'All adventures'}</Link>}</nav>
       <p className={styles.eyebrow}>{am ? 'የመጽሐፍ ቅዱስ ጀብዱ' : 'Bible Adventure'}</p>
       <h1 lang={am && story?.title.am ? 'am' : 'en'}>{story ? translated(story.title, locale) : (am ? 'የመጽሐፍ ቅዱስ ጀብዱዎች' : 'Choose an adventure')}</h1>
-      <p className={styles.headerSummary} lang={am && story?.summary.am ? 'am' : 'en'}>{story ? translated(story.summary, locale) : (am ? 'በታሪኮቹ ውስጥ ይጓዙ። የታሪክ ጽሑፉ ከእንግሊዝኛ WEB መጽሐፍ ቅዱስ ነው።' : 'Explore six short stories, each grounded in a cited WEB passage.')}</p>
+      <p className={styles.headerSummary} lang={am && story?.summary.am ? 'am' : 'en'}>{story ? translated(story.summary, locale) : (am ? 'በታሪኮቹ ውስጥ ይጓዙ። የታሪክ ጽሑፉ ከእንግሊዝኛ WEB መጽሐፍ ቅዱስ ነው።' : `Explore ${stories.length} short stories, each grounded in a cited WEB passage.`)}</p>
     </div></header>
     {story ? <AdventureRun key={story.id} story={story} locale={locale} user={user} /> : <div className={styles.gallery}>
       {storyId && <p role="alert">{am ? 'ታሪኩ አልተገኘም።' : 'That adventure was not found.'}</p>}
-      <div className={styles.cards}>{bibleAdventureStories.map((item) => <Link className={`${styles.card} ${styles[item.art]}`} to={`/play/adventures?story=${item.id}`} key={item.id}>
+      <div className={styles.cards}>{stories.map((item) => <Link className={`${styles.card} ${styles[item.art]}`} to={`/play/adventures?story=${item.id}`} key={item.id}>
         <span className={styles.cardArt} aria-hidden="true"><span>{item.passage}</span></span>
         <span className={styles.cardBody}><strong lang={am && item.title.am ? 'am' : 'en'}>{translated(item.title, locale)}</strong><span lang="en">{item.summary.en}</span><small lang="en">{item.passage} · WEB</small><span className={styles.cardAction}>{am ? 'ታሪኩን ይጀምሩ' : 'Start adventure'} →</span></span>
       </Link>)}</div>

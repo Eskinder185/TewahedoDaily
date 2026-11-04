@@ -7,6 +7,9 @@ import { FavoriteButton } from '../components/publicContent/FavoriteButton'
 import type { CollectionPrayer } from '../lib/prayers/prayerCollections'
 import { loadPrayer } from '../lib/prayers/prayerSupabase'
 import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
+import { pickLocalized } from '../lib/prayers/localizedText'
+import { LangFallbackNote } from '../components/prayers/LangFallbackNote'
 import { prayerDetailPath, prayerShareUrl } from '../lib/prayers/prayerSlug'
 import { useReadingProgressTracker } from '../lib/userContent/useReadingProgressTracker'
 import styles from './PrayerDetailPage.module.css'
@@ -20,6 +23,7 @@ function youtubeEmbedUrl(youtubeId?: string, youtubeUrl?: string): string {
 
 export function PrayerDetailPage() {
   const tr = useTranslation()
+  const { locale } = useLocale()
   const { collectionSlug, prayerSlug, slug } = useParams()
   const [prayer, setPrayer] = useState<CollectionPrayer | null>()
   const [error, setError] = useState<string>()
@@ -121,10 +125,12 @@ export function PrayerDetailPage() {
     )
   }
 
-  const summaries = [
-    prayer.summary.english.trim() ? { label: tr('prayers.languages.english'), text: prayer.summary.english } : null,
-    prayer.summary.amharic.trim() ? { label: tr('prayers.languages.amharic'), text: prayer.summary.amharic } : null,
-  ].filter(Boolean) as { label: string; text: string }[]
+  const titlePick = pickLocalized(
+    locale,
+    prayer.titles?.english || prayer.transliterationTitle,
+    prayer.titles?.amharic || prayer.title,
+  )
+  const summaryPick = pickLocalized(locale, prayer.summary.english, prayer.summary.amharic)
   const embedUrl = youtubeEmbedUrl(prayer.youtubeId, prayer.youtubeUrl)
 
   return (
@@ -161,24 +167,18 @@ export function PrayerDetailPage() {
             {prayer.psalmNumber ? <span>{`Psalm ${prayer.psalmNumber}`}</span> : null}
             {!prayer.psalmNumber && prayer.chapter ? <span>{prayer.chapter}</span> : null}
           </div>
-          <h1 className={styles.title} lang="am">
-            {prayer.titles?.amharic || prayer.title}
+          <h1 className={styles.title} lang={titlePick.lang}>
+            {titlePick.text}
           </h1>
-          {prayer.titles?.english && prayer.titles.english !== prayer.title ? (
-            <p className={styles.subtitle}>{prayer.titles.english}</p>
-          ) : prayer.transliterationTitle && prayer.transliterationTitle !== prayer.title ? (
-            <p className={styles.subtitle}>{prayer.transliterationTitle}</p>
-          ) : null}
+          <LangFallbackNote pick={titlePick} />
         </header>
 
-        {summaries.length > 0 ? (
+        {summaryPick.text ? (
           <section className={styles.summary} aria-label={tr('prayers.detail.summaryAria')}>
-            {summaries.map((summary) => (
-              <div key={summary.label} className={styles.summaryBlock}>
-                <h2>{summary.label}</h2>
-                <p lang={summary.label === tr('prayers.languages.amharic') ? 'am' : undefined}>{summary.text}</p>
-              </div>
-            ))}
+            <div className={styles.summaryBlock}>
+              <p lang={summaryPick.lang}>{summaryPick.text}</p>
+              <LangFallbackNote pick={summaryPick} />
+            </div>
           </section>
         ) : null}
 

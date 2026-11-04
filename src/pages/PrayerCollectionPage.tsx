@@ -8,6 +8,9 @@ import {
   type PrayerCollectionBundle,
 } from '../lib/prayers/prayerSupabase'
 import { useTranslation } from '../i18n'
+import { useLocale } from '../lib/i18n/locale'
+import { pickLocalized } from '../lib/prayers/localizedText'
+import { LangFallbackNote } from '../components/prayers/LangFallbackNote'
 import { MEHARENE_AB_ENTRY, YEKIDANE_TSELOT_ENTRY } from '../lib/prayers/mediaPrayerEntries'
 import { prayerDetailPath } from '../lib/prayers/prayerSlug'
 import styles from './PrayerCollectionPage.module.css'
@@ -55,23 +58,20 @@ function PrayerLink({
   const orderLabel = isPsalm && psalmNumber
     ? String(psalmNumber).padStart(2, '0')
     : String(prayer.order).padStart(2, '0')
-  const primaryTitle =
+  const { locale } = useLocale()
+  const englishTitle =
     isPsalm && psalmNumber
       ? `Psalm ${psalmNumber}`
-      : prayer.title
-  const secondary =
-    isPsalm && psalmNumber
-      ? prayer.titles?.amharic || prayer.title
-      : prayer.transliterationTitle
+      : prayer.titles?.english || prayer.transliterationTitle
+  const amharicTitle = prayer.titles?.amharic || prayer.title
+  const titlePick = pickLocalized(locale, englishTitle, amharicTitle)
 
   return (
     <Link className={styles.item} to={prayerDetailPath(prayer.slug, collectionSlug)}>
       <span className={styles.order}>{orderLabel}</span>
       <span className={styles.itemText}>
-        <strong lang={isPsalm ? undefined : 'am'}>{primaryTitle}</strong>
-        {secondary && secondary !== primaryTitle ? (
-          <span lang="am">{secondary}</span>
-        ) : null}
+        <strong lang={titlePick.lang}>{titlePick.text}</strong>
+        <LangFallbackNote pick={titlePick} />
         {!isPsalm && (prayer.chapter || prayer.section) ? (
           <small>
             {[prayer.chapter, prayer.section]
@@ -89,6 +89,7 @@ function PrayerLink({
 
 export function PrayerCollectionPage() {
   const tr = useTranslation()
+  const { locale } = useLocale()
   const { collectionSlug } = useParams()
   const [bundle, setBundle] = useState<PrayerCollectionBundle | null>()
   const [error, setError] = useState<string>()
@@ -154,6 +155,7 @@ export function PrayerCollectionPage() {
   }
 
   const { collection, sections, prayers } = bundle
+  const collectionTitle = pickLocalized(locale, collection.title, collection.amharicTitle)
   const media = collectionMedia(collection.id)
   const useSections = sections.length > 0 && sections.some((section) => section.prayers.length > 0)
   const emptyPublished =
@@ -170,10 +172,8 @@ export function PrayerCollectionPage() {
 
         <header className={styles.head}>
           <p className={styles.eyebrow}>{tr('prayers.collection.label')}</p>
-          <h1>{collection.title}</h1>
-          <p className={styles.amharic} lang="am">
-            {collection.amharicTitle}
-          </p>
+          <h1 lang={collectionTitle.lang}>{collectionTitle.text}</h1>
+          <LangFallbackNote pick={collectionTitle} />
           <p className={styles.deck}>{collection.description}</p>
           <p className={styles.count}>{countLabel(collection, tr)}</p>
         </header>

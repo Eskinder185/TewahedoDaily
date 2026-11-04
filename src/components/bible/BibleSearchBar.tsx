@@ -1,5 +1,5 @@
 import { useEffect, useId, useMemo, useRef, useState, type FormEvent, type ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import {
   displayBookName,
   hasBilingualBookNames,
@@ -12,6 +12,7 @@ import { looksLikeAmharicBibleReference } from '../../lib/searchBuddy/amharicStr
 import type { SiteSearchResult } from '../../lib/search/types'
 import { useLocale } from '../../lib/i18n/locale'
 import { VoiceTranscriptionControl } from '../search/VoiceTranscriptionControl'
+import { HighlightedText } from '../search/HighlightedText'
 import { SearchBuddyResults } from '../search/results/SearchBuddyResults'
 import styles from './BibleSearchBar.module.css'
 
@@ -85,7 +86,9 @@ export function BibleSearchBar({ catalogBooks = [] }: Props) {
   const copy = COPY[uiLocale]
   const inputId = useId()
   const listId = useId()
-  const [query, setQuery] = useState('')
+  // The committed query lives in the URL (`?q=`) so a shared link, refresh, Back and Forward restore the search.
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [query, setQuery] = useState(() => searchParams.get('q') || '')
   const [siteResults, setSiteResults] = useState<SiteSearchResult[]>([])
   const [structured, setStructured] = useState<SearchBuddyApiResponse | null>(null)
   const [status, setStatus] = useState<'idle' | 'loading' | 'empty' | 'error' | 'ready'>('idle')
@@ -108,9 +111,29 @@ export function BibleSearchBar({ catalogBooks = [] }: Props) {
     }
   }, [])
 
+  // Direct link / Back / Forward with `?q=`: run the search once for the restored query.
+  const restoredRef = useRef(false)
+  useEffect(() => {
+    if (restoredRef.current) return
+    restoredRef.current = true
+    const initial = searchParams.get('q')?.trim()
+    if (initial) void runSearch(initial)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  function syncUrl(q: string) {
+    setSearchParams((previous) => {
+      const next = new URLSearchParams(previous)
+      if (q) next.set('q', q)
+      else next.delete('q')
+      return next.toString() === previous.toString() ? previous : next
+    }, { replace: true })
+  }
+
   async function runSearch(raw: string) {
     const q = raw.trim()
     setVoicePending(false)
+    syncUrl(q)
     if (!q) {
       abortRef.current?.abort()
       setSiteResults([])
@@ -233,19 +256,12 @@ export function BibleSearchBar({ catalogBooks = [] }: Props) {
               {copy.clear}
             </button>
           ) : null}
-        </div>
-        <div className={styles.voiceRow}>
           <VoiceTranscriptionControl
             ariaLabel={copy.voiceAria}
-            defaultLanguage="am"
             onTranscript={applyTranscript}
           />
-          {voicePending ? (
-            <p className={styles.voiceHint} role="status">
-              {copy.voiceHint}
-            </p>
-          ) : null}
         </div>
+        {voicePending ? <p className={styles.voiceHint} role="status">{copy.voiceHint}</p> : null}
       </form>
 
       {status === 'loading' ? (
@@ -326,7 +342,9 @@ export function BibleSearchBar({ catalogBooks = [] }: Props) {
                     ) : null}
                     {result.excerpt ? (
                       <p className={styles.resultExcerpt} lang={ethiopic ? 'am' : undefined}>
-                        {highlightExcerpt(result.excerpt, query)}
+                        {result.highlights?.length ? (
+                          <HighlightedText text={result.excerpt} ranges={result.highlights} markClassName={styles.match} />
+                        ) : highlightExcerpt(result.excerpt, query)}
                       </p>
                     ) : null}
                   </div>

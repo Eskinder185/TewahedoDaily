@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { flaggedAmharicForCanonicalSlug, verifiedAmharicForCanonicalSlug } from '../../../lib/bible/verifiedBookNames'
 import type { BibleBookRef, BibleReferenceResponse } from '../../../lib/searchBuddy/apiTypes.ts'
 import {
   flattenBibleBookFields,
@@ -26,8 +27,10 @@ export function BibleReferenceResult({ data }: { data: BibleReferenceResponse })
   const searchBuddy = useSearchBuddyOptional()
   const flat = flattenBibleBookFields(data)
   const bookAm =
+    (flat.book_slug ? verifiedAmharicForCanonicalSlug(flat.book_slug) : null) || // verified list is authoritative
     flat.book_name_amharic ||
     (isBookRef(data.book) ? (data.book.name_am || '').trim() : '') ||
+    (flat.book_slug ? flaggedAmharicForCanonicalSlug(flat.book_slug) : null) ||
     null
   const bookEn =
     flat.book_name ||

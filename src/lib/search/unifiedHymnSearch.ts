@@ -15,6 +15,8 @@ import { resolveMezmurDetailPath } from '../searchBuddy/mezmurRoute.ts'
 import type { HymnRow } from '../searchBuddy/apiTypes.ts'
 import { canAttemptStructuredSearchApi } from './structuredSearchApi.ts'
 import { searchHymns } from './searchHymns.ts'
+import { attachLyricExcerpts, searchPublicMezmurLyrics, type LyricExcerpt, type LyricSearchItem } from './mezmurLyricSearch.ts'
+import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezmurLanguage.ts'
 
 export type UnifiedMezmurSearchItem = {
   id: string
@@ -31,6 +33,8 @@ export type UnifiedMezmurSearchItem = {
   /** @deprecated prefer zemari — kept for card art helpers */
   singer_name: string | null
   thumbnail_url: string | null
+  /** Public lyric passage that matched the query, with highlight ranges into `excerpt.text`. Never invented. */
+  excerpt?: LyricExcerpt | null
 }
 
 export type UnifiedHymnSearchResult = {
@@ -97,6 +101,8 @@ export async function searchMezmursUnified(
     pageSize?: number
     limit?: number
     signal?: AbortSignal
+    /** Restrict to one Mezmur language; applied to API and fallback results alike. */
+    language?: MezmurLanguageCode
   } = {},
 ): Promise<UnifiedHymnSearchResult> {
   const q = (query || '').replace(/\s+/g, ' ').trim()
@@ -114,13 +120,16 @@ export async function searchMezmursUnified(
         limit,
         signal: options.signal,
       })
-      const items = api.results
+      const mapped = api.results
         .map((row) => hymnRowToItem(row))
         .filter((row): row is UnifiedMezmurSearchItem => Boolean(row))
-      if (items.length > 0) {
+        .filter((row) => !options.language || normalizeMezmurLanguage(row.primary_language) === options.language)
+      if (mapped.length > 0) {
+        // Backend order stays authoritative; excerpts come only from the public projection.
+        const items = await attachLyricExcerpts(mapped, q)
         return {
           items,
-          total: typeof api.count === 'number' ? api.count : items.length,
+          total: options.language ? items.length : typeof api.count === 'number' ? api.count : items.length,
           page: 1,
           source: 'api',
           query: api.query || q,
@@ -131,51 +140,40 @@ export async function searchMezmursUnified(
       throw new Error('search service returned no results')
     } catch (error) {
       if (error instanceof AiClientError && error.code === 'aborted') throw error
-      // Fall back to the same published Supabase projection used by the browse
-      // catalog. This is not a private-table or draft fallback.
-      const local = await searchImportMezmurs(q, { page: 1, pageSize: limit })
-      const items = local.items.map((item) => ({
-        id: item.id,
-        slug: item.slug,
-        title: item.title,
-        title_amharic: item.title_amharic,
-        title_english: item.title_english,
-        primary_language: item.language,
-        form: item.form,
-        preview: null,
-        youtube_url: item.youtube_url,
-        audio_url: null,
-        zemari: item.singer_name,
-        singer_name: item.singer_name,
-        thumbnail_url: item.thumbnail_url,
-      }))
-      return { items, total: local.total, page: 1, source: 'local-fallback', query: q }
+      // Bounded public-projection search (titles, keywords AND lyrics): same ranking classes as the API.
+      const local = await localSearch(q, limit, options.language)
+      return { ...local, page: 1, source: 'local-fallback', query: q }
     }
   }
 
   // Dev / offline only — AI URL not configured.
-  const local = await searchImportMezmurs(q, { page: 1, pageSize: limit })
-  const items: UnifiedMezmurSearchItem[] = local.items.map((item) => ({
-    id: item.id,
-    slug: item.slug,
-    title: item.title,
-    title_amharic: item.title_amharic,
-    title_english: item.title_english,
-    primary_language: item.language,
-    form: item.form,
-    preview: null,
-    youtube_url: item.youtube_url,
-    audio_url: null,
-    zemari: item.singer_name,
-    singer_name: item.singer_name,
-    thumbnail_url: item.thumbnail_url,
-  }))
+  const local = await localSearch(q, limit, options.language)
+  return { ...local, page: 1, source: 'local', query: q }
+}
 
-  return {
-    items,
-    total: local.total,
-    page: 1,
-    source: 'local',
-    query: q,
+function lyricItemToUnified(item: LyricSearchItem): UnifiedMezmurSearchItem {
+  const { tier: _tier, ...rest } = item
+  return rest
+}
+
+/**
+ * Public projection search. Lyric-aware first; if the lyric columns are not available in this
+ * environment, degrade to the title/keyword catalog search so published hymns never disappear.
+ */
+async function localSearch(q: string, limit: number, language?: MezmurLanguageCode): Promise<{ items: UnifiedMezmurSearchItem[]; total: number }> {
+  try {
+    const found = await searchPublicMezmurLyrics(q, { limit, language })
+    return { items: found.items.map(lyricItemToUnified), total: found.total }
+  } catch (error) {
+    if (import.meta.env?.DEV) console.warn('[mezmur search] lyric search unavailable, using title search', error)
+    const local = await searchImportMezmurs(q, { page: 1, pageSize: limit, language })
+    return {
+      items: local.items.map((item) => ({
+        id: item.id, slug: item.slug, title: item.title, title_amharic: item.title_amharic, title_english: item.title_english,
+        primary_language: item.language, form: item.form, preview: null, youtube_url: item.youtube_url, audio_url: null,
+        zemari: item.singer_name, singer_name: item.singer_name, thumbnail_url: item.thumbnail_url, excerpt: null,
+      })),
+      total: local.total,
+    }
   }
 }

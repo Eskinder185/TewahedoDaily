@@ -9,6 +9,8 @@ import {
   scrambledOrder,
   timelineText,
   TL_SIZE,
+  TIMELINE_CHAINS,
+  type TlChain,
   type TlDifficulty,
   type TlRound,
 } from '../../lib/play/bibleTimeline'
@@ -48,7 +50,7 @@ function labelsFor(am: boolean) {
       }
 }
 
-export function BibleTimelineGame({ locale }: { locale: AppLocale }) {
+export function BibleTimelineGame({ locale, chains = TIMELINE_CHAINS }: { locale: AppLocale; chains?: TlChain[] }) {
   const { user } = useAuth()
   const am = locale === 'am'
   const t = labelsFor(am)
@@ -72,7 +74,7 @@ export function BibleTimelineGame({ locale }: { locale: AppLocale }) {
   const listRef = useRef<HTMLOListElement>(null)
   const sessionSeen = useRef(new Set<string>())
 
-  const bank = useMemo(() => buildTimelineBank(difficulty), [difficulty])
+  const bank = useMemo(() => buildTimelineBank(difficulty, 24, Math.random, chains), [difficulty, chains])
   const round = rounds?.[index]
   const byId = useMemo(() => new Map((round?.events ?? []).map((ev) => [ev.id, ev])), [round])
 

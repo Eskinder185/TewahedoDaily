@@ -12,6 +12,7 @@ const CONTAINER_ID = /^[a-f0-9]{64}$/
 const ATTEMPT = /^[a-z][a-z0-9-]{2,60}$/
 const LOCAL_ENDPOINT = /^npipe:\/\/\/\/\.\/pipe\/(?:docker_engine|dockerDesktopLinuxEngine)$/i
 const FIXTURE_SHELL = '/bin/sh'
+const CLAUDE_ENTRYPOINT = '/usr/local/bin/claude'
 const FIXTURE_SCRIPT = [
   'set -eu',
   'mode="$1"',
@@ -232,10 +233,41 @@ export function prepareOfflineFixture(stateRoot, taskId, { image, kind, attemptI
     policyHash: hash(JSON.stringify({ image, kind, mounts, scenario, network: 'none', shell: FIXTURE_SHELL, script: FIXTURE_SCRIPT })) }
 }
 
+// A command profile for a future Claude image. It is executable only through the
+// fake transport below until the offline boundary is verified on this machine.
+export function prepareContainerPlanning(stateRoot, taskId, { image, attemptId, modelId, effort }) {
+  if (!/^[A-Za-z0-9][A-Za-z0-9._-]{2,99}$/.test(modelId) ||
+      !/^(?:low|medium|high|max|xhigh)$/.test(effort)) fail('DOCKER_CLAUDE_CONFIG_INVALID')
+  const base = prepareOfflineFixture(stateRoot, taskId, { image, kind: 'planning', attemptId })
+  const { manifest } = readTask(stateRoot, taskId)
+  if (manifest.agentConfig?.claude?.modelId !== modelId || manifest.agentConfig?.claude?.effort !== effort) {
+    fail('DOCKER_CLAUDE_CONFIG_MISMATCH')
+  }
+  const profile = 'claude-planning'
+  return { ...base, profile, modelId, effort,
+    policyHash: hash(JSON.stringify({ base: base.policyHash, profile, modelId, effort,
+      entrypoint: CLAUDE_ENTRYPOINT, network: 'none' })) }
+}
+
+function containerCommand(prepared) {
+  return prepared.profile === 'claude-planning'
+    ? ['-p', '--model', prepared.modelId, '--effort', prepared.effort, '--tools', '',
+      '--output-format', 'json', '--permission-mode', 'plan']
+    : FIXTURE_CMD(prepared.kind, prepared.scenario)
+}
+
+function containerEntrypoint(prepared) {
+  return prepared.profile === 'claude-planning' ? CLAUDE_ENTRYPOINT : FIXTURE_SHELL
+}
+
 export function dockerCreateArguments(prepared, imageId) {
   if (!prepared || !ID.test(imageId) || !['planning', 'implementation'].includes(prepared.kind) ||
       !['checks', 'nested-cancel'].includes(prepared.scenario) ||
       (prepared.scenario === 'nested-cancel' && prepared.kind !== 'planning') ||
+      (prepared.profile && (prepared.profile !== 'claude-planning' || prepared.kind !== 'planning' ||
+        prepared.scenario !== 'checks' ||
+        !/^[A-Za-z0-9][A-Za-z0-9._-]{2,99}$/.test(prepared.modelId) ||
+        !/^(?:low|medium|high|max|xhigh)$/.test(prepared.effort))) ||
       !Array.isArray(prepared.mounts) || prepared.mounts.length !== (prepared.kind === 'planning' ? 1 : 2)) fail('DOCKER_POLICY_INVALID')
   const expected = prepared.kind === 'planning' ? [['/task/source', true]] : [['/task/work', false], ['/task/plan.json', true]]
   if (prepared.mounts.some((mount, index) => mount.target !== expected[index][0] || mount.readOnly !== expected[index][1] ||
@@ -246,16 +278,17 @@ export function dockerCreateArguments(prepared, imageId) {
   const args = ['create', '--name', prepared.name,
     '--label', `tewahedo.v5.policy=${prepared.policyHash}`,
     '--label', `tewahedo.v5.attempt=${prepared.attemptId}`,
-    '--network', 'none', '--read-only', '--entrypoint', FIXTURE_SHELL,
+    '--network', 'none', '--read-only', '--entrypoint', containerEntrypoint(prepared),
     '--user', '10001:10001', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges:true',
     '--pids-limit', '64', '--memory', '1073741824', '--memory-swap', '1073741824',
     '--cpus', '2', '--ulimit', 'nofile=1024:1024', '--ipc', 'none', '--cgroupns', 'private',
     '--init', '--stop-timeout', '5', '--env', 'HOME=/home/agent',
     '--tmpfs', `/tmp:${TMPFS['/tmp']}`, '--tmpfs', `/home/agent:${TMPFS['/home/agent']}`]
+  if (prepared.profile === 'claude-planning') args.push('--interactive')
   for (const mount of prepared.mounts) {
     args.push('--mount', `type=bind,source=${mount.source},target=${mount.target}${mount.readOnly ? ',readonly' : ''}`)
   }
-  args.push('--workdir', prepared.kind === 'planning' ? '/task/source' : '/task/work', imageId, ...FIXTURE_CMD(prepared.kind, prepared.scenario))
+  args.push('--workdir', prepared.kind === 'planning' ? '/task/source' : '/task/work', imageId, ...containerCommand(prepared))
   return args
 }
 
@@ -274,8 +307,9 @@ export function verifyContainerInspect(prepared, imageId, containerId, inspected
       !host.SecurityOpt?.includes('no-new-privileges:true') || config.User !== '10001:10001' ||
       host.Init !== true || host.StopTimeout !== 5 ||
       config.WorkingDir !== (prepared.kind === 'planning' ? '/task/source' : '/task/work') ||
-      JSON.stringify(config.Entrypoint) !== JSON.stringify([FIXTURE_SHELL]) ||
-      JSON.stringify(config.Cmd) !== JSON.stringify(FIXTURE_CMD(prepared.kind, prepared.scenario)) ||
+      JSON.stringify(config.Entrypoint) !== JSON.stringify([containerEntrypoint(prepared)]) ||
+      JSON.stringify(config.Cmd) !== JSON.stringify(containerCommand(prepared)) ||
+      (prepared.profile === 'claude-planning' && config.OpenStdin !== true) ||
       config.Labels?.['tewahedo.v5.policy'] !== prepared.policyHash ||
       config.Labels?.['tewahedo.v5.attempt'] !== prepared.attemptId ||
       host.PortBindings && Object.keys(host.PortBindings).length ||
@@ -380,6 +414,7 @@ export function validateFixtureEvidence(output, kind) {
 
 export async function runOfflineFixture(prepared, { transport, allowLocalContainerExecution = false,
   signal = null, timeoutMs = 30_000 } = {}) {
+  if (prepared?.profile) fail('DOCKER_FIXTURE_POLICY_INVALID')
   if (!(allowLocalContainerExecution === true && process.env.TEWAHEDO_V5_ALLOW_OFFLINE_DOCKER === '1')) {
     fail('LOCAL_CONTAINER_EXECUTION_DISABLED')
   }
@@ -454,6 +489,70 @@ export async function runOfflineFixture(prepared, { transport, allowLocalContain
     withTaskLock(prepared.taskDirectory, () => atomicRecord(join(directory, 'outcome.json'), outcome))
     return { status, code, attemptId: prepared.attemptId, containerId: created,
       inspection: 'verified', outputVerification, network: 'none', usage: 'not_applicable', rawOutputLogged: false }
+  } finally {
+    if (created) await cleanupCreated(transport, created, prepared)
+  }
+}
+
+/** Exercises the Claude container lifecycle without permitting a real Docker launch. */
+export async function runFakeContainerPlanning(prepared, { transport, stdin, signal = null,
+  timeoutMs = 60_000 } = {}) {
+  if (prepared?.profile !== 'claude-planning' || transport?.kind !== 'fake' ||
+      typeof transport.run !== 'function') fail('DOCKER_CLAUDE_LIVE_DISABLED')
+  if (typeof stdin !== 'string' || Buffer.byteLength(stdin) > 65_536 ||
+      !Number.isSafeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 300_000) fail('DOCKER_CLAUDE_INPUT_INVALID')
+  if (signal?.aborted) return { status: 'cancelled', code: 'DOCKER_CANCELLED', stdout: '' }
+  const stateRoot = dirname(dirname(prepared.taskDirectory))
+  const current = prepareContainerPlanning(stateRoot, prepared.taskId, prepared)
+  if (current.policyHash !== prepared.policyHash || current.snapshotHash !== prepared.snapshotHash ||
+      JSON.stringify(current.mounts) !== JSON.stringify(prepared.mounts)) fail('DOCKER_POLICY_STALE')
+  if (existsSync(join(prepared.taskDirectory, 'container-attempts', prepared.attemptId))) fail('DOCKER_ATTEMPT_EXISTS')
+  const ready = await probeLocalDocker(prepared.image, transport)
+  const orphan = await transport.run(['container', 'inspect', prepared.name, '--format', '{{json .}}'])
+  if (orphan?.status === 0) fail('DOCKER_ORPHAN_UNCERTAIN')
+  const args = dockerCreateArguments(prepared, ready.imageId)
+  let created = null
+  try {
+    let creation
+    try { creation = await transport.run(args, { timeoutMs: 10_000 }) } catch { creation = null }
+    if (creation?.status === 0 && CONTAINER_ID.test(creation.stdout?.trim())) created = creation.stdout.trim()
+    else {
+      const found = await transport.run(['container', 'inspect', prepared.name, '--format', '{{json .}}'])
+      if (found?.status !== 0) fail('DOCKER_CREATE_FAILED')
+      const item = json(found.stdout, 'DOCKER_CREATE_UNCERTAIN')
+      if (!CONTAINER_ID.test(item?.Id) || item?.Name !== `/${prepared.name}` ||
+          item?.Config?.Labels?.['tewahedo.v5.policy'] !== prepared.policyHash ||
+          item?.Config?.Labels?.['tewahedo.v5.attempt'] !== prepared.attemptId) fail('DOCKER_CREATE_UNCERTAIN')
+      created = item.Id
+      recordCreated(prepared, created, ready.imageId)
+      fail('DOCKER_CREATE_UNCERTAIN')
+    }
+    recordCreated(prepared, created, ready.imageId)
+    verifyContainerInspect(prepared, ready.imageId, created, await inspectContainer(transport, created))
+    const { manifest } = readTask(stateRoot, prepared.taskId)
+    verifyWorkspace(manifest.repository, stateRoot, prepared.taskId, manifest.workspace, manifest.sourceInventoryHash)
+    const beforeRepositoryHash = inventory(manifest.repository).hash
+    let started
+    try { started = await transport.run(['start', '--attach', '--interactive', created], { timeoutMs, signal, stdin }) }
+    catch { started = { status: null } }
+    let final
+    try { final = await inspectContainer(transport, created) } catch { final = null }
+    const uncertain = started?.timedOut || started?.cancelled || started?.outputLimit ||
+      started?.status !== 0 || final?.State?.Running !== false
+    if (uncertain && !(await terminate(transport, created))) fail('DOCKER_TERMINATION_UNCONFIRMED')
+    verifyWorkspace(manifest.repository, stateRoot, prepared.taskId, manifest.workspace, manifest.sourceInventoryHash)
+    if (inventory(manifest.repository).hash !== beforeRepositoryHash) fail('DOCKER_MAIN_REPOSITORY_CHANGED')
+    if (Buffer.byteLength(started?.stdout ?? '') > MAX_OUTPUT) fail('DOCKER_OUTPUT_LIMIT')
+    const status = uncertain ? started?.timedOut ? 'timed_out' : started?.cancelled ? 'cancelled' : 'failed' : 'completed'
+    const code = status === 'completed' ? 'DOCKER_CLAUDE_COMPLETED' : status === 'timed_out' ? 'DOCKER_TIMEOUT'
+      : status === 'cancelled' ? 'DOCKER_CANCELLED' : 'DOCKER_OUTCOME_UNCERTAIN'
+    const directory = attemptDirectory(prepared)
+    const outcome = { version: 1, containerId: created, status, code, usage: 'unknown',
+      outputHash: hash(started?.stdout ?? ''), outputBytes: Buffer.byteLength(started?.stdout ?? ''),
+      previousHash: readContainerRecord(prepared).hash }
+    outcome.hash = hash(JSON.stringify(outcome))
+    withTaskLock(prepared.taskDirectory, () => atomicRecord(join(directory, 'outcome.json'), outcome))
+    return { status, code, stdout: status === 'completed' ? started.stdout : '', containerId: created }
   } finally {
     if (created) await cleanupCreated(transport, created, prepared)
   }

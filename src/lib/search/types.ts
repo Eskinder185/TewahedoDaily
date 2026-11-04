@@ -44,6 +44,8 @@ export type SiteSearchResult = {
   dateLabel?: string
   /** Short verified excerpt (never invented) */
   excerpt?: string
+  /** Matching word ranges [start, end) inside `excerpt`, for highlighting. Never alters the text. */
+  highlights?: Array<[number, number]>
   /** Source label when available (e.g. Synaxarium) */
   sourceLabel?: string
 }

@@ -325,7 +325,7 @@
   max-height: 120px;
   border: 0;
   border-radius: inherit;
-  padding: 0.85rem 2.75rem 0.85rem 0.95rem;
+  padding: 0.85rem 2.75rem 0.85rem 7.2rem;
   background: transparent;
   color: var(--color-text);
   font: inherit;
@@ -337,6 +337,13 @@
   overflow-y: auto;
   overflow-wrap: anywhere;
   word-break: break-word;
+}
+
+.composerVoice {
+  position: absolute;
+  z-index: 30;
+  top: 0.15rem;
+  left: 0.25rem;
 }
 
 .composerField:focus-within {

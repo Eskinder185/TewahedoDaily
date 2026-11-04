@@ -18,7 +18,9 @@ test-results/
 tmp/
 **/__pycache__/
 *.py[cod]
-The_Ethiopian_Synaxarium.pdf
+# Local exports and faith challenges artifacts
+exports/
+artifacts/faith-challenges/
 
 # Backend (Python) — secrets, caches, private editorial package
 backend/.env

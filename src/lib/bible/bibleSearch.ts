@@ -1043,7 +1043,7 @@ export async function searchBible(
     if (parsed.isReference) {
       // An ordinary sentence that happens to end in a number ("Mark my words 5") is not a reference:
       // when no book matches a multi-word "book name", search the verse text instead.
-      const sentenceLike = !resolvedBook && parsed.bookQuery.trim().split(/\s+/).length >= 99
+      const sentenceLike = !resolvedBook && parsed.bookQuery.trim().split(/\s+/).length >= 3
       if (!sentenceLike) {
         const ref = await searchBibleReference(parsed, options)
         return {

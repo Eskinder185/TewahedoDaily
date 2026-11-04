@@ -23,10 +23,10 @@ function shuffle<T>(items: T[]): T[] {
 }
 
 /** Visual memory: match each holy picture to its name. */
-export function IconMemoryGame({ locale }: { locale: AppLocale }) {
+export function IconMemoryGame({ locale, pool = PLAY_IMAGES }: { locale: AppLocale; pool?: PlayImage[] }) {
   const { user } = useAuth()
   const am = locale === 'am'
-  const [pairs, setPairs] = useState(6)
+  const [pairs, setPairs] = useState(Math.min(6, pool.length))
   const [deal, setDeal] = useState(0)
   const [started, setStarted] = useState(false)
   const [open, setOpen] = useState<string[]>([])
@@ -37,12 +37,12 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
 
   const cards = useMemo<Card[]>(() => {
     void deal
-    const items = shuffle(PLAY_IMAGES).slice(0, pairs)
+    const items = shuffle(pool).slice(0, pairs)
     return shuffle(items.flatMap((item) => [
       { key: `${item.id}-p`, id: item.id, face: 'picture' as const, item },
       { key: `${item.id}-n`, id: item.id, face: 'name' as const, item },
     ]))
-  }, [pairs, deal])
+  }, [pairs, deal, pool])
 
   const done = matched.length === pairs
 
@@ -97,7 +97,7 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
     return (
       <section className={g.setup} aria-labelledby="mem-setup">
         <div className={g.setupPreview} aria-hidden="true">
-          {PLAY_IMAGES.slice(12, 17).map((p, i) => <img key={p.id} src={p.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, p.fallbackSrc)} style={{ ['--i' as string]: i, objectPosition: p.focus }} />)}
+          {pool.slice(0, 5).map((p, i) => <img key={p.id} src={p.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, p.fallbackSrc)} style={{ ['--i' as string]: i, objectPosition: p.focus }} />)}
         </div>
         <div className={g.setupBody}>
           <h2 id="mem-setup">{am ? 'ሥዕልና ስም ያዛምዱ' : 'Match each picture to its name'}</h2>
@@ -105,7 +105,7 @@ export function IconMemoryGame({ locale }: { locale: AppLocale }) {
           <fieldset className={g.optionGroup}>
             <legend>{am ? 'የጥንድ ብዛት' : 'Pairs'}</legend>
             <div className={g.pills}>
-              {[4, 6, 8].map((n) => <button key={n} type="button" aria-pressed={pairs === n} onClick={() => setPairs(n)}>{n} {am ? 'ጥንድ' : 'pairs'}</button>)}
+              {[4, 6, 8].map((n) => <button key={n} type="button" disabled={n > pool.length} aria-pressed={pairs === n} onClick={() => setPairs(n)}>{n} {am ? 'ጥንድ' : 'pairs'}</button>)}
             </div>
           </fieldset>
           <button className={g.primary} type="button" onClick={() => reset(true)}>{am ? 'ካርዶቹን ያድሉ' : 'Deal the cards'}</button>

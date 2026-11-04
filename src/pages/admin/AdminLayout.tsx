@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react'
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
+import { useLocale } from '../../lib/i18n/locale'
 import { errorMessage } from '../../lib/cms/mezmurService'
 import s from './Admin.module.css'
 
@@ -13,19 +14,16 @@ type NavItem = {
 
 const NAV: NavItem[] = [
   { label: 'Dashboard', to: '/admin', end: true },
-  { label: 'Home', to: '/admin/home' },
   { label: 'Hymns', to: '/admin/hymns' },
   { label: 'Pray', to: '/admin/pray' },
   { label: 'Calendar', to: '/admin/calendar' },
-  { label: 'About', to: '/admin/about' },
-  { label: 'Content Health', to: '/admin/content-health', roles: ['editor', 'admin', 'super_admin'] },
   {
     label: 'Church Library',
     to: '/admin/church-library',
     roles: ['editor', 'admin', 'super_admin'],
   },
   { label: 'Bible Manager', to: '/admin/bible', roles: ['editor', 'admin', 'super_admin'] },
-  { label: 'Play Review', to: '/admin/play', roles: ['editor', 'admin', 'super_admin'] },
+  { label: 'Faith Challenges', to: '/admin/play', roles: ['editor', 'admin', 'super_admin'] },
   { label: 'Submissions', to: '/admin/submissions', roles: ['editor', 'admin', 'super_admin'] },
   { label: 'Media', to: '/admin/media', roles: ['admin', 'super_admin'] },
   { label: 'Users', to: '/admin/users', roles: ['admin', 'super_admin'] },
@@ -49,7 +47,7 @@ function sectionLabel(pathname: string): string {
     'editorial-books': 'Church Library',
     'church-library': 'Church Library',
     bible: 'Bible Manager',
-    play: 'Play Review',
+    play: 'Faith Challenges',
     submissions: 'Submissions',
     media: 'Media',
     users: 'Users',
@@ -70,6 +68,7 @@ function sectionLabel(pathname: string): string {
 
 export function AdminLayout() {
   const { profile, signOut } = useAuth()
+  const { uiLocale } = useLocale()
   const navigate = useNavigate()
   const [menu, setMenu] = useState(false)
   const [logoutError, setLogoutError] = useState('')
@@ -136,7 +135,7 @@ export function AdminLayout() {
                 return isActive || nested ? s.active : ''
               }}
             >
-              {item.label}
+              {item.to === '/admin/play' && uiLocale === 'am' ? 'የእምነት ፈተናዎች' : item.label}
             </NavLink>
           ))}
         </nav>
@@ -157,7 +156,7 @@ export function AdminLayout() {
             Menu
           </button>
           <span className={s.breadcrumb}>
-            Admin <span>/</span> {sectionLabel(location.pathname)}
+            Admin <span>/</span> {location.pathname.startsWith('/admin/play') && uiLocale === 'am' ? 'የእምነት ፈተናዎች' : sectionLabel(location.pathname)}
           </span>
           <div className={s.topUser}>
             <strong>{displayName}</strong>

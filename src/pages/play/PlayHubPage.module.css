@@ -2,6 +2,22 @@
    Uses only the site tokens (src/styles/tokens.css). */
 
 .page { width: 100%; min-width: 0; overflow: clip; color: var(--color-text); }
+.modeSection { margin-block: clamp(2.5rem, 6vw, 4rem); }
+.modeGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.modeCard { display: grid; align-content: start; gap: .7rem; min-width: 0; padding: clamp(1.2rem, 3vw, 1.7rem); border: 1px solid var(--color-border-card); border-top: 3px solid var(--color-gold-ink); border-radius: var(--radius-xl); background: var(--color-bg-elevated); color: var(--color-text); text-decoration: none; box-shadow: var(--shadow-soft); }
+.modeCard h3 { margin: 0; font-family: var(--font-display); font-size: 1.5rem; color: var(--color-heading); }
+.modeCard p { margin: 0; line-height: 1.6; }
+.modeCard small { color: var(--color-text-muted); line-height: 1.6; }
+.modeCard strong { color: var(--color-gold-ink); margin-top: .5rem; }
+.modeCard[aria-current="page"] { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.modeIcon { font-size: 2rem; color: var(--color-gold-ink); }
+.allGamesLink { display: inline-flex; align-items: center; min-height: 44px; margin-bottom: 1rem; font-weight: 750; }
+.modeCard:focus-visible, .allGamesLink:focus-visible, .recentGames a:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: 4px; }
+.recentGames { display: grid; align-content: start; gap: 1rem; padding: 1.5rem; border: 1px solid var(--color-border-card); border-radius: var(--radius-xl); background: var(--color-bg-elevated); }
+.recentGames h2, .recentGames p { margin: 0; }
+.recentGames a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 700; }
+@media (max-width: 900px) { .modeGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 540px) { .modeGrid { grid-template-columns: 1fr; } }
 
 .eyebrow,
 .eyebrowLight {
@@ -195,7 +211,7 @@
 /* ---------- content ---------- */
 .content { width: min(100% - 2rem, var(--content-max)); margin-inline: auto; padding-block: clamp(2rem, 5vw, 3.5rem) clamp(3rem, 7vw, 5rem); }
 
-.dashboard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1rem; margin-top: clamp(-4.5rem, -6vw, -3rem); position: relative; z-index: 1; }
+.dashboard { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 1rem; margin-top: clamp(2rem, 5vw, 3.5rem); position: relative; z-index: 1; }
 
 .dailyCard {
   position: relative;
@@ -272,7 +288,7 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  margin-top: clamp(3.5rem, 8vw, 5.5rem);
+  margin-top: 0;
   border-radius: var(--radius-xl);
   background: var(--color-midnight);
   color: #efe3c4;

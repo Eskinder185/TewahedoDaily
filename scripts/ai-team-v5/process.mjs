@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { spawn } from 'node:child_process'
 import { isAbsolute, resolve } from 'node:path'
 
 const MAX_OUTPUT_BYTES = 65_536
@@ -87,6 +88,114 @@ export function executeFakeProcess(spec, { spawnProcess, signal = null, onStdout
     child.on('close', (exitCode) => {
       if (stopCode) finish(stopCode === 'AGENT_TIMEOUT' ? 'timed_out' : stopCode === 'AGENT_CANCELLED' ? 'cancelled' : 'failed', stopCode)
       else finish(exitCode === 0 ? 'succeeded' : 'failed', exitCode === 0 ? 'AGENT_EXIT_OK' : 'AGENT_EXIT_NONZERO')
+    })
+  })
+}
+
+/** Bounded planning transport. The injected terminator must confirm the whole process tree is gone. */
+export function executePlanningProcess(spec, { spawnProcess, terminateTree, signal = null } = {}) {
+  validateProcessSpec(spec)
+  if (spec.agent !== 'claude' || typeof spawnProcess !== 'function' || typeof terminateTree !== 'function') {
+    throw new Error('PILOT_PROCESS_BOUNDARY_UNAVAILABLE')
+  }
+  if (signal?.aborted) return Promise.resolve({ status: 'cancelled', code: 'AGENT_CANCELLED', stdout: '' })
+  return new Promise((resolveResult) => {
+    let child
+    try {
+      child = spawnProcess(spec.executable, [...spec.args], {
+        cwd: spec.cwd, env: { ...spec.env }, shell: false, windowsHide: true,
+        stdio: ['pipe', 'pipe', 'pipe'],
+      })
+      if (!child?.on || !child.stdout?.on || !child.stderr?.on || !child.stdin?.end) throw new Error('invalid child')
+    } catch {
+      resolveResult({ status: 'failed', code: 'AGENT_PROCESS_START_FAILED', stdout: '' })
+      return
+    }
+    let finished = false
+    let stopping = false
+    let stdoutBytes = 0
+    let stderrBytes = 0
+    const chunks = []
+    const finish = (status, code) => {
+      if (finished) return
+      finished = true
+      clearTimeout(timer)
+      signal?.removeEventListener('abort', cancel)
+      resolveResult({ status, code, stdout: status === 'succeeded' ? Buffer.concat(chunks).toString('utf8') : '' })
+    }
+    const stop = async (status, code) => {
+      if (finished || stopping) return
+      stopping = true
+      let confirmed = false
+      let deadline
+      try {
+        confirmed = await Promise.race([
+          Promise.resolve().then(() => terminateTree(child)),
+          new Promise((resolve) => { deadline = setTimeout(() => resolve(false), 5_000) }),
+        ]) === true
+      } catch { /* unconfirmed */ }
+      clearTimeout(deadline)
+      finish(confirmed ? status : 'failed', confirmed ? code : 'AGENT_TREE_TERMINATION_UNCONFIRMED')
+    }
+    const cancel = () => { void stop('cancelled', 'AGENT_CANCELLED') }
+    const timer = setTimeout(() => { void stop('timed_out', 'AGENT_TIMEOUT') }, spec.timeoutMs)
+    signal?.addEventListener('abort', cancel, { once: true })
+    try { child.stdin.end(spec.stdin) } catch { void stop('failed', 'AGENT_PROCESS_FAILED') }
+    child.stdout.on('data', (chunk) => {
+      if (finished || stopping) return
+      const bytes = Buffer.from(chunk)
+      stdoutBytes += bytes.length
+      if (stdoutBytes + stderrBytes > MAX_OUTPUT_BYTES) { void stop('failed', 'AGENT_OUTPUT_LIMIT'); return }
+      chunks.push(bytes)
+    })
+    child.stderr.on('data', (chunk) => {
+      if (finished || stopping) return
+      stderrBytes += Buffer.byteLength(chunk)
+      if (stdoutBytes + stderrBytes > MAX_OUTPUT_BYTES) void stop('failed', 'AGENT_OUTPUT_LIMIT')
+    })
+    child.on('error', () => { void stop('failed', 'AGENT_PROCESS_FAILED') })
+    child.on('close', (exitCode) => {
+      if (stopping) return
+      finish(exitCode === 0 ? 'succeeded' : 'failed', exitCode === 0 ? 'AGENT_EXIT_OK' : 'AGENT_EXIT_NONZERO')
+    })
+  })
+}
+
+/** Windows taskkill /T terminates descendants; confirmation also requires the parent PID to disappear. */
+export function terminateWindowsProcessTree(child, { spawnCommand = spawn } = {}) {
+  if (process.platform !== 'win32' || !Number.isSafeInteger(child?.pid) || child.pid <= 0) {
+    return Promise.resolve(false)
+  }
+  const systemRoot = process.env.SystemRoot
+  if (!systemRoot || !isAbsolute(systemRoot)) return Promise.resolve(false)
+  return new Promise((resolveResult) => {
+    let command
+    let settled = false
+    const finish = (confirmed) => {
+      if (settled) return
+      settled = true
+      clearTimeout(deadline)
+      resolveResult(confirmed)
+    }
+    try {
+      command = spawnCommand(resolve(systemRoot, 'System32', 'taskkill.exe'),
+        ['/PID', String(child.pid), '/T', '/F'], { shell: false, windowsHide: true,
+          stdio: 'ignore', timeout: 3000 })
+      if (!command?.on) throw new Error('invalid taskkill process')
+    } catch { resolveResult(false); return }
+    const deadline = setTimeout(() => finish(false), 3_500)
+    command.on('error', () => finish(false))
+    command.on('close', (code) => {
+      if (code !== 0) { finish(false); return }
+      const check = () => {
+        if (settled) return
+        try { process.kill(child.pid, 0) } catch {
+          finish(true)
+          return
+        }
+        setTimeout(check, 25)
+      }
+      check()
     })
   })
 }

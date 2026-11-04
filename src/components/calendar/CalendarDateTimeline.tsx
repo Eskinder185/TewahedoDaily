@@ -4,7 +4,7 @@ import type { CalendarDayGroup } from '../../lib/calendar/getCalendarEventsForDa
 import { filterRepeatedSeasonsForTimeline } from '../../lib/calendar/getCalendarEventsForDate'
 import type { PresentableCalendarEvent } from '../../lib/calendar/calendarPresentation'
 import type { CalendarLocaleMode } from '../../lib/calendar/calendarEnrichedContent'
-import { sameLocalCalendarDay, toIsoLocalDate } from '../../lib/churchCalendar/pascha'
+import { toIsoLocalDate } from '../../lib/churchCalendar/pascha'
 import { useTranslation } from '../../i18n'
 import {
   formatEthiopianDay,
@@ -272,9 +272,6 @@ export function CalendarDateTimeline({
                       variant="timeline"
                       selected={isSelected}
                       onOpen={(ev) => {
-                        if (!sameLocalCalendarDay(group.date, selectedDate)) {
-                          onSelectDate(group.date)
-                        }
                         onOpenEvent(ev, group.date)
                       }}
                     />

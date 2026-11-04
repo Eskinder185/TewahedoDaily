@@ -48,6 +48,7 @@ const { data: existingRows, error: existingError } = await supabase.from('play_c
 if (existingError) throw existingError
 const existing = new Set((existingRows || []).map((row) => String(row.stable_id)))
 const rows = candidates.filter(({ item }) => !existing.has(item.id)).map(({ item }) => ({
+  question_id: item.id,
   stable_id: item.id,
   game_type: item.game,
   category: item.category,

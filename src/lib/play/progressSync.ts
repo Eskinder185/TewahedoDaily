@@ -2,7 +2,6 @@ import type { User } from '@supabase/supabase-js'
 import { supabase } from '../supabase/client'
 import type { PlayProgress } from './progress'
 
-type RpcClient = { rpc: (name: string, args: Record<string, unknown>) => Promise<{ error: { message: string } | null }> }
 type ProgressClient = {
   from: (table: string) => {
     select: (columns: string) => {
@@ -13,17 +12,12 @@ type ProgressClient = {
   }
 }
 
-export async function syncPlayCompletion(user: User | null, input: { game: string; score: number; maxScore: number; category: string; progress: PlayProgress }) {
+export async function syncPlayCompletion(user: User | null, _input: { game: string; score: number; maxScore: number; category: string; progress: PlayProgress }) {
   if (!user || !supabase) return
-  const client = supabase as unknown as RpcClient
-  const { error } = await client.rpc('record_play_completion', {
-    p_game_type: input.game,
-    p_score: input.score,
-    p_max_score: input.maxScore,
-    p_category: input.category,
-    p_snapshot: input.progress,
-  })
-  if (error && !/not find|schema cache/i.test(error.message)) throw new Error(error.message)
+  // Browser scores/snapshots are not completion evidence. Preserve local play,
+  // but never submit them to the legacy XP-awarding RPC. Verified Game Night
+  // rewards use claimVerifiedRoomReward; other games need trusted verifiers.
+  return { status: 'local-only' as const }
 }
 
 export async function loadSavedPlayProgress(user: User | null): Promise<PlayProgress | null> {

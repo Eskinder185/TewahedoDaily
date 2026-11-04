@@ -42,10 +42,10 @@ function LyricLine({ reading, line, className }: { reading: Reading; line: { am:
   )
 }
 
-export function FinishMezmurGame({ locale }: { locale: AppLocale }) {
+export function FinishMezmurGame({ locale, providedSongs }: { locale: AppLocale; providedSongs?: MezmurSong[] }) {
   const { user } = useAuth()
   const am = locale === 'am'
-  const [songs, setSongs] = useState<MezmurSong[] | null>(null)
+  const [songs, setSongs] = useState<MezmurSong[] | null>(providedSongs || null)
   const [loadError, setLoadError] = useState(false)
   const [mode, setMode] = useState<FmMode>('choose')
   const [difficulty, setDifficulty] = useState<FmDifficulty>('easy')
@@ -65,15 +65,15 @@ export function FinishMezmurGame({ locale }: { locale: AppLocale }) {
   const loadRequest = useRef(0)
 
   const loadLyrics = useCallback(() => {
+    if (providedSongs) return
     const request = ++loadRequest.current
-    setSongs(null)
-    setLoadError(false)
     void fetchMezmurLyrics({ sample: 240 }).then((data) => {
       if (request !== loadRequest.current) return
       if (data.length < 4) setLoadError(true)
       else setSongs(data)
     }).catch(() => { if (request === loadRequest.current) setLoadError(true) })
-  }, [])
+  }, [providedSongs])
+  const retryLyrics = () => { setSongs(null); setLoadError(false); loadLyrics() }
 
   useEffect(() => {
     loadLyrics()
@@ -120,7 +120,7 @@ export function FinishMezmurGame({ locale }: { locale: AppLocale }) {
         <h2>{am ? 'ግጥሞች አሁን አልተገኙም' : 'Lyrics are not available right now'}</h2>
         <p className={g.setupNote}>{am ? 'የተረጋገጡ የመዝሙር ግጥሞችን ማምጣት አልተቻለም። እባክዎ ቆይተው ይሞክሩ።' : 'Could not load verified Mezmur lyrics. Please try again shortly — the game never shows unverified text.'}</p>
         <div className={g.actions}>
-          <button className={g.primary} type="button" onClick={loadLyrics}>{am ? 'ደግመው ይሞክሩ' : 'Try again'}</button>
+          <button className={g.primary} type="button" onClick={retryLyrics}>{am ? 'ደግመው ይሞክሩ' : 'Try again'}</button>
           <Link className={g.secondary} to="/play">{am ? 'ወደ ጨዋታ ማዕከል' : 'All games'}</Link>
         </div>
       </div>

@@ -33,6 +33,7 @@ import { disposeWhisperClient } from '../../lib/speech/whisperClient'
 import styles from './MezmurVoiceSearch.module.css'
 
 const VOICE_MAX_SECONDS = Math.round(VOICE_MAX_DURATION_MS / 1000)
+let activeVoiceOwner: { stop: () => void } | null = null
 
 export type VoiceInputLanguage = 'en' | 'am'
 
@@ -57,7 +58,7 @@ export function MezmurVoiceSearch({
   compact = false,
   helperCaption,
   startAriaLabel,
-  defaultLanguage = 'en',
+  defaultLanguage,
   amharicOnly = false,
 }: {
   onTranscript: (text: string) => void
@@ -82,8 +83,9 @@ export function MezmurVoiceSearch({
   const { locale } = useLocale()
   const langGroupId = useId()
   const [voiceLang, setVoiceLang] = useState<VoiceInputLanguage>(
-    amharicOnly ? 'am' : defaultLanguage,
+    amharicOnly ? 'am' : defaultLanguage ?? (locale === 'am' ? 'am' : 'en'),
   )
+  const [languageMenuOpen, setLanguageMenuOpen] = useState(false)
   const [phase, setPhase] = useState<VoicePhase>('idle')
   const [status, setStatus] = useState('')
   const recognitionRef = useRef<BrowserSpeechRecognition | null>(null)
@@ -96,6 +98,7 @@ export function MezmurVoiceSearch({
   const voiceTimeoutRef = useRef<number | null>(null)
   const voiceCountdownRef = useRef<number | null>(null)
   const voiceSessionRef = useRef(0)
+  const voiceOwnerRef = useRef<{ stop: () => void }>({ stop: () => {} })
   const amharicFinishRef = useRef(false)
   const heardFinalRef = useRef(false)
   const ui = locale === 'am' ? 'am' : 'en'
@@ -211,6 +214,7 @@ export function MezmurVoiceSearch({
   }
 
   function stopAll(reason: 'user' | 'inactive' | 'unmount') {
+    if (activeVoiceOwner === voiceOwnerRef.current) activeVoiceOwner = null
     voiceSessionRef.current += 1
     clearVoiceTimeout()
     clearStartWatchdog()
@@ -222,6 +226,16 @@ export function MezmurVoiceSearch({
       setPhaseSafe('idle')
       setStatusSafe(voiceStoppedMessage(ui))
     }
+  }
+
+  function claimVoice() {
+    if (activeVoiceOwner && activeVoiceOwner !== voiceOwnerRef.current) activeVoiceOwner.stop()
+    voiceOwnerRef.current.stop = () => stopAll('inactive')
+    activeVoiceOwner = voiceOwnerRef.current
+  }
+
+  function releaseVoice() {
+    if (activeVoiceOwner === voiceOwnerRef.current) activeVoiceOwner = null
   }
 
   useEffect(() => {
@@ -250,9 +264,25 @@ export function MezmurVoiceSearch({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ui])
 
-  const showAmharicOption = amharicReady && canRecordAmharic
+  useEffect(() => {
+    if (defaultLanguage || amharicOnly) return
+    setVoiceLang(locale === 'am' ? 'am' : 'en')
+  }, [locale, defaultLanguage, amharicOnly])
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      if (languageMenuOpen) setLanguageMenuOpen(false)
+      if (activeVoiceOwner === voiceOwnerRef.current) stopAll('user')
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [languageMenuOpen])
+
+  const showAmharicOption = (amharicReady && canRecordAmharic) || nativeSupport.ok
   // Mezmur: keep አማ (never auto-flip to EN). Search Buddy (default en) may fall back.
-  const lockAmharicDefault = amharicOnly || defaultLanguage === 'am'
+  const lockAmharicDefault = amharicOnly || defaultLanguage === 'am' || locale === 'am'
 
   useEffect(() => {
     if (amharicOnly && voiceLang !== 'am') setVoiceLang('am')
@@ -266,6 +296,7 @@ export function MezmurVoiceSearch({
 
   function handleNativeFailure(code: NativeSpeechErrorCode) {
     hardStopNative(code)
+    releaseVoice()
     const decision = decideNativeFallback(code, whisperCapable)
     voiceDebug('native failure decision', { code, decision, whisperCapable })
 
@@ -302,6 +333,7 @@ export function MezmurVoiceSearch({
       return
     }
 
+    claimVoice()
     const sessionId = ++voiceSessionRef.current
     heardFinalRef.current = false
 
@@ -322,6 +354,7 @@ export function MezmurVoiceSearch({
     }
 
     recognition.onresult = (speechEvent) => {
+      if (voiceSessionRef.current !== sessionId) return
       const { transcript, isFinal } = extractTranscript(speechEvent)
       if (!transcript) return
       onTranscript(transcript)
@@ -357,15 +390,18 @@ export function MezmurVoiceSearch({
     }
 
     recognition.onend = () => {
+      if (voiceSessionRef.current !== sessionId) return
       clearStartWatchdog()
       clearVoiceTimeout()
       if (recognitionRef.current === recognition) recognitionRef.current = null
       const prior = phaseRef.current
-      if (prior === 'processing' || heardFinalRef.current) {
+      if (heardFinalRef.current) {
+        releaseVoice()
         setPhaseSafe('idle')
         return
       }
-      if (prior === 'listening-native' || prior === 'starting-native') {
+      if (prior === 'processing' || prior === 'listening-native' || prior === 'starting-native') {
+        releaseVoice()
         setPhaseSafe('error')
         setStatusSafe(voiceMessage(ui, 'noSpeech'))
       }
@@ -418,8 +454,9 @@ export function MezmurVoiceSearch({
     try {
       blob = await session.stop()
     } catch {
-      if (!mountedRef.current) return
+      if (!mountedRef.current || voiceSessionRef.current !== sessionId) return
       recordSessionRef.current = null
+      releaseVoice()
       setPhaseSafe('error')
       setStatusSafe(voiceMessage(ui, 'audioCapture'))
       return
@@ -440,6 +477,7 @@ export function MezmurVoiceSearch({
       })
       if (!mountedRef.current) return
       if (controller.signal.aborted) return
+      if (voiceSessionRef.current !== sessionId) return
 
       const transcript = result.text?.trim() || ''
       if (import.meta.env.DEV) {
@@ -456,6 +494,7 @@ export function MezmurVoiceSearch({
       // bumps from accidental Stop clicks during "Transcribing…".
       onTranscript(transcript)
       onFinalTranscript?.(transcript)
+      releaseVoice()
       setPhaseSafe('idle')
       setStatusSafe(voiceMessage(ui, 'heard', { transcript }))
     } catch (error) {
@@ -475,6 +514,7 @@ export function MezmurVoiceSearch({
       setStatusSafe(notice)
     } finally {
       if (transcribeAbortRef.current === controller) transcribeAbortRef.current = null
+      if (voiceSessionRef.current === sessionId) releaseVoice()
     }
   }
 
@@ -494,6 +534,7 @@ export function MezmurVoiceSearch({
       return
     }
 
+    claimVoice()
     const sessionId = ++voiceSessionRef.current
     amharicFinishRef.current = false
     setPhaseSafe('requesting-mic')
@@ -521,6 +562,7 @@ export function MezmurVoiceSearch({
       setStatusSafe(voiceMessage(ui, 'recordingCountdown', { seconds: String(VOICE_MAX_SECONDS) }))
     } catch (error) {
       if (voiceSessionRef.current !== sessionId || !mountedRef.current) return
+      releaseVoice()
       const name = error instanceof DOMException ? error.name : ''
       setPhaseSafe('error')
       if (name === 'NotAllowedError' || name === 'PermissionDeniedError') {
@@ -539,12 +581,14 @@ export function MezmurVoiceSearch({
   ) {
     event.preventDefault()
     event.stopPropagation()
+    setLanguageMenuOpen(false)
 
     // While uploading/transcribing, ignore clicks — aborting here was dropping
     // successful transcripts before they reached the Search Buddy input.
-    if (phaseRef.current === 'processing' || phaseRef.current === 'requesting-mic') {
+    if (phaseRef.current === 'processing') {
       return
     }
+    if (phaseRef.current === 'requesting-mic') { stopAll('user'); return }
 
     if (phaseRef.current === 'recording' && recordSessionRef.current) {
       const sessionId = voiceSessionRef.current
@@ -553,11 +597,13 @@ export function MezmurVoiceSearch({
       return
     }
 
-    if (
-      phaseRef.current === 'starting-native' ||
-      phaseRef.current === 'listening-native' ||
-      recognitionRef.current
-    ) {
+    if (phaseRef.current === 'listening-native' && recognitionRef.current) {
+      softStopNative('user')
+      setPhaseSafe('processing')
+      setStatusSafe(voiceMessage(ui, 'processing'))
+      return
+    }
+    if (phaseRef.current === 'starting-native' || recognitionRef.current) {
       stopAll('user')
       return
     }
@@ -584,6 +630,7 @@ export function MezmurVoiceSearch({
     phase === 'requesting-mic' ||
     phase === 'recording' ||
     phase === 'processing'
+  const captureActive = phase === 'listening-native' || phase === 'recording'
   const sessionActive =
     phase === 'starting-native' ||
     phase === 'listening-native' ||
@@ -624,7 +671,7 @@ export function MezmurVoiceSearch({
         : phase === 'recording'
           ? voiceMessage(ui, 'recording')
           : phase === 'listening-native' || phase === 'starting-native'
-            ? voiceMessage(ui, 'listening')
+            ? voiceMessage(ui, phase === 'starting-native' ? 'starting' : 'listening')
             : ''
 
   function selectLang(next: VoiceInputLanguage) {
@@ -657,52 +704,52 @@ export function MezmurVoiceSearch({
     return (
       <div className={`${styles.root} ${styles.compact}`}>
         <div className={styles.composerBar}>
-          {amharicOnly ? (
-            <span className={styles.langChip} aria-label={voiceMessage(ui, 'voiceLanguageAmharic')}>
-              አማ
-            </span>
-          ) : showLangPicker ? (
-            <div className={styles.compactLangGroup} role="radiogroup" aria-label={voiceMessage(ui, 'voiceLanguage')}>
-              <button
-                type="button"
-                className={`${styles.langChip} ${effectiveLang === 'en' ? styles.langChipActive : ''}`}
-                role="radio"
-                aria-checked={effectiveLang === 'en'}
-                disabled={busy}
-                onClick={() => selectLang('en')}
-                title={voiceMessage(ui, 'languageEnglish')}
-              >
-                EN
-              </button>
-              <button
-                type="button"
-                role="radio"
-                className={`${styles.langChip} ${effectiveLang === 'am' ? styles.langChipActive : ''}`}
-                aria-checked={effectiveLang === 'am'}
-                disabled={busy}
-                onClick={() => selectLang('am')}
-                title={voiceMessage(ui, 'languageAmharic')}
-              >
-                አማ
-              </button>
-            </div>
-          ) : (
-            <span className={styles.srOnly}>{voiceMessage(ui, 'englishVoice')}</span>
-          )}
-
           <button
             type="button"
-            className={`${styles.micBtn} ${sessionActive ? styles.micBtnListening : ''} ${phase === 'error' || phase === 'native-failed' ? styles.micBtnError : ''}`}
+            className={`${styles.micBtn} ${captureActive ? styles.micBtnListening : ''} ${phase === 'error' || phase === 'native-failed' ? styles.micBtnError : ''}`}
             onClick={(e) => {
               if (voiceLang !== effectiveLang) setVoiceLang(effectiveLang)
               toggleListening(e, effectiveLang)
             }}
             disabled={disabled}
-            aria-pressed={busy}
+            aria-pressed={captureActive}
             aria-label={ariaLabel}
+            title={ariaLabel}
           >
             {micIcon}
           </button>
+          {showLangPicker ? (
+            <div className={styles.languagePicker}>
+              <button
+                type="button"
+                className={styles.languageButton}
+                aria-label={`${voiceMessage(ui, 'voiceLanguage')}: ${voiceMessage(ui, effectiveLang === 'am' ? 'languageAmharic' : 'languageEnglish')}`}
+                aria-expanded={languageMenuOpen}
+                aria-haspopup="menu"
+                disabled={busy}
+                onClick={() => setLanguageMenuOpen((open) => !open)}
+              >
+                {effectiveLang === 'am' ? 'አማ' : 'EN'} <span aria-hidden>⌄</span>
+              </button>
+              {languageMenuOpen ? (
+                <div className={styles.langMenu} role="menu" aria-label={voiceMessage(ui, 'voiceLanguage')}>
+                  {(['en', 'am'] as const).map((language) => (
+                    <button
+                      key={language}
+                      type="button"
+                      role="menuitemradio"
+                      aria-checked={effectiveLang === language}
+                      className={`${styles.langOption} ${effectiveLang === language ? styles.langOptionActive : ''}`}
+                      onClick={() => { selectLang(language); setLanguageMenuOpen(false) }}
+                    >
+                      {voiceMessage(ui, language === 'am' ? 'languageAmharic' : 'languageEnglish')}
+                    </button>
+                  ))}
+                  <p className={styles.privacyNote}>{voiceMessage(ui, 'providerNotice')}</p>
+                </div>
+              ) : null}
+            </div>
+          ) : null}
         </div>
 
         {sessionActive ? (
@@ -734,24 +781,15 @@ export function MezmurVoiceSearch({
                   {phase === 'recording' ? voiceMessage(ui, 'stopAndUse') : voiceMessage(ui, 'stop')}
                 </button>
               ) : null}
-              {phase !== 'processing' ? (
-                <button
-                  type="button"
-                  className={`${styles.voiceAction} ${styles.voiceActionSecondary}`}
-                  onClick={cancelSession}
-                >
-                  {voiceMessage(ui, 'cancel')}
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  className={`${styles.voiceAction} ${styles.voiceActionSecondary}`}
-                  disabled
-                >
-                  {voiceMessage(ui, 'transcribing')}
-                </button>
-              )}
+              <button
+                type="button"
+                className={`${styles.voiceAction} ${styles.voiceActionSecondary}`}
+                onClick={cancelSession}
+              >
+                {voiceMessage(ui, 'cancel')}
+              </button>
             </div>
+            <p className={styles.privacyNote}>{voiceMessage(ui, effectiveLang === 'am' && amharicReady && canRecordAmharic ? 'serverNotice' : 'providerNotice')}</p>
           </div>
         ) : null}
 

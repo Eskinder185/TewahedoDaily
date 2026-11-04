@@ -302,3 +302,9 @@ button:disabled,
     box-shadow: none !important;
   }
 }
+
+/* Lyric search match inside the Mezmur lyrics viewer (CSS Custom Highlight API; ignored where unsupported). */
+::highlight(lyric-match) {
+  background-color: rgba(255, 213, 79, 0.6);
+  color: inherit;
+}

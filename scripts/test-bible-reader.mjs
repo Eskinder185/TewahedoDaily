@@ -76,6 +76,8 @@ try {
   await page.getByRole('link', { name: /Genesis/ }).waitFor()
   assert.equal(await page.locator('ol[class*=bookList] > li').count(), 46)
   await page.getByRole('button', { name: /New Testament/ }).click()
+  // The testament is URL state; the list updates after the router commits, so wait instead of counting at once.
+  await page.waitForFunction(() => document.querySelectorAll('ol[class*=bookList] > li').length === 35)
   assert.equal(await page.locator('ol[class*=bookList] > li').count(), 35)
   await page.goto(`${base}/bible/enoch`)
   await page.getByRole('heading', { name: /Enoch/ }).waitFor()

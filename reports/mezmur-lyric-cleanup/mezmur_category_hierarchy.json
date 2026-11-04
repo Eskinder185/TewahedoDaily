@@ -1,0 +1,462 @@
+{
+  "source": "src/lib/mezmur/taxonomyAliases.ts",
+  "note": "Conceptual browse relationships only; no database parent columns are asserted.",
+  "categories": [
+    {
+      "canonical": "Jesus Christ",
+      "slug": "jesus-christ",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "jesus-christ"
+      ]
+    },
+    {
+      "canonical": "Virgin Mary",
+      "slug": "virgin-mary",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "virgin-mary"
+      ]
+    },
+    {
+      "canonical": "Holy Trinity",
+      "slug": "holy-trinity",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "praise-general"
+      ]
+    },
+    {
+      "canonical": "Holy Spirit",
+      "slug": "holy-spirit",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "praise-general"
+      ]
+    },
+    {
+      "canonical": "Kidus Michael",
+      "slug": "kidus-michael",
+      "existing": true,
+      "conceptual_parent": "Angels",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Kidus Gabriel",
+      "slug": "kidus-gabriel",
+      "existing": true,
+      "conceptual_parent": "Angels",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Kidus Raphael",
+      "slug": "kidus-raphael",
+      "existing": true,
+      "conceptual_parent": "Angels",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Kidus Uriel",
+      "slug": "kidus-uriel",
+      "existing": true,
+      "conceptual_parent": "Angels",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Kidus Giorgis",
+      "slug": "kidus-giorgis",
+      "existing": true,
+      "conceptual_parent": "Saints",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Abune Tekle Haymanot",
+      "slug": "abune-tekle-haymanot",
+      "existing": true,
+      "conceptual_parent": "Saints",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Abune Gebre Menfes Kidus",
+      "slug": "abune-gebre-menfes-kidus",
+      "existing": true,
+      "conceptual_parent": "Saints",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Kidus Yared",
+      "slug": "kidus-yared",
+      "existing": true,
+      "conceptual_parent": "Saints",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Yohannes Metmek / John the Baptist",
+      "slug": "yohannes-metmek-john-the-baptist",
+      "existing": true,
+      "conceptual_parent": "Saints",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Kidus Estifanos / Saint Stephen",
+      "slug": "kidus-estifanos-saint-stephen",
+      "existing": true,
+      "conceptual_parent": "Martyrs",
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Apostles",
+      "slug": "apostles",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Martyrs",
+      "slug": "martyrs",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Saints",
+      "slug": "saints",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Angels",
+      "slug": "angels",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Prophets",
+      "slug": "prophets",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "person",
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Cross",
+      "slug": "cross",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "theme",
+      "browse_sections": [
+        "praise-general"
+      ]
+    },
+    {
+      "canonical": "Repentance",
+      "slug": "repentance",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "theme",
+      "browse_sections": [
+        "repentance-fasting"
+      ]
+    },
+    {
+      "canonical": "Praise / Worship",
+      "slug": "praise-worship",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "theme",
+      "browse_sections": [
+        "praise-general"
+      ]
+    },
+    {
+      "canonical": "Prayer",
+      "slug": "prayer",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "theme",
+      "browse_sections": [
+        "praise-general"
+      ]
+    },
+    {
+      "canonical": "Salvation",
+      "slug": "salvation",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "theme",
+      "browse_sections": [
+        "jesus-christ"
+      ]
+    },
+    {
+      "canonical": "General",
+      "slug": "general",
+      "existing": true,
+      "conceptual_parent": null,
+      "group": "general",
+      "browse_sections": [
+        "praise-general"
+      ]
+    }
+  ],
+  "occasions": [
+    {
+      "canonical": "Gena",
+      "slug": "gena",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "jesus-christ",
+        "virgin-mary"
+      ]
+    },
+    {
+      "canonical": "Timket",
+      "slug": "timket",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "jesus-christ"
+      ]
+    },
+    {
+      "canonical": "Meskel",
+      "slug": "meskel",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts"
+      ]
+    },
+    {
+      "canonical": "Hosanna",
+      "slug": "hosanna",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "jesus-christ"
+      ]
+    },
+    {
+      "canonical": "Siklet",
+      "slug": "siklet",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "jesus-christ"
+      ]
+    },
+    {
+      "canonical": "Tinsae",
+      "slug": "tinsae",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "jesus-christ"
+      ]
+    },
+    {
+      "canonical": "Erget",
+      "slug": "erget",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts"
+      ]
+    },
+    {
+      "canonical": "Pentecost",
+      "slug": "pentecost",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts"
+      ]
+    },
+    {
+      "canonical": "Debre Tabor",
+      "slug": "debre-tabor",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "jesus-christ"
+      ]
+    },
+    {
+      "canonical": "Filseta",
+      "slug": "filseta",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "virgin-mary"
+      ]
+    },
+    {
+      "canonical": "Kidane Mihret",
+      "slug": "kidane-mihret",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "virgin-mary"
+      ]
+    },
+    {
+      "canonical": "Lideta Maryam",
+      "slug": "lideta-maryam",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "virgin-mary"
+      ]
+    },
+    {
+      "canonical": "Abiy Tsom",
+      "slug": "abiy-tsom",
+      "existing": true,
+      "browse_sections": [
+        "repentance-fasting"
+      ]
+    },
+    {
+      "canonical": "Tsome Nineveh",
+      "slug": "tsome-nineveh",
+      "existing": true,
+      "browse_sections": [
+        "repentance-fasting"
+      ]
+    },
+    {
+      "canonical": "Tsome Nebiyat",
+      "slug": "tsome-nebiyat",
+      "existing": true,
+      "browse_sections": [
+        "repentance-fasting"
+      ]
+    },
+    {
+      "canonical": "Tsome Hawariat",
+      "slug": "tsome-hawariat",
+      "existing": true,
+      "browse_sections": [
+        "repentance-fasting"
+      ]
+    },
+    {
+      "canonical": "Holy Week",
+      "slug": "holy-week",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts",
+        "repentance-fasting"
+      ]
+    },
+    {
+      "canonical": "New Year / Enkutatash",
+      "slug": "new-year",
+      "existing": true,
+      "browse_sections": [
+        "holidays-feasts"
+      ]
+    },
+    {
+      "canonical": "Annual Saint Feast",
+      "slug": "annual-saint-feast",
+      "existing": true,
+      "browse_sections": [
+        "angels-saints"
+      ]
+    },
+    {
+      "canonical": "Wedding",
+      "slug": "wedding",
+      "existing": true,
+      "browse_sections": [
+        "sacraments-church-life"
+      ]
+    },
+    {
+      "canonical": "Baptism",
+      "slug": "baptism",
+      "existing": true,
+      "browse_sections": [
+        "sacraments-church-life"
+      ]
+    },
+    {
+      "canonical": "Funeral / Memorial",
+      "slug": "funeral",
+      "existing": true,
+      "browse_sections": [
+        "sacraments-church-life"
+      ]
+    },
+    {
+      "canonical": "Communion",
+      "slug": "communion",
+      "existing": true,
+      "browse_sections": [
+        "sacraments-church-life"
+      ]
+    },
+    {
+      "canonical": "General / Anytime",
+      "slug": "general",
+      "existing": true,
+      "browse_sections": [
+        "praise-general"
+      ]
+    }
+  ],
+  "proposed_additions": []
+}

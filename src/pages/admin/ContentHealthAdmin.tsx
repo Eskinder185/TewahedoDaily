@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../lib/auth/useAuth'
 import {
   runContentHealthCheck,
   type ContentHealthIssue,
@@ -23,6 +24,7 @@ const DOMAINS: Array<HealthDomain | 'all'> = [
   'relationships',
   'system',
 ]
+const reportCache = new Map<string, ContentHealthReport>()
 
 function severityClass(severity: HealthSeverity): string {
   if (severity === 'critical') return styles.sevCritical
@@ -42,8 +44,10 @@ function formatCheckedAt(iso: string): string {
   }
 }
 
-export function ContentHealthAdmin() {
-  const [report, setReport] = useState<ContentHealthReport | null>(null)
+export function ContentHealthAdmin({ embedded = false }: { embedded?: boolean }) {
+  const { user, profile } = useAuth()
+  const authorized = !!user && ['editor', 'admin', 'super_admin'].includes(profile?.role || '')
+  const [report, setReport] = useState<ContentHealthReport | null>(() => user ? reportCache.get(user.id) || null : null)
   const [running, setRunning] = useState(false)
   const [phase, setPhase] = useState('')
   const [error, setError] = useState('')
@@ -90,6 +94,7 @@ export function ContentHealthAdmin() {
     setSelected(null)
     try {
       const next = await runContentHealthCheck((progress) => setPhase(progress.phase))
+      if (user) reportCache.set(user.id, next)
       setReport(next)
       setPhase('')
     } catch (cause) {
@@ -122,12 +127,17 @@ export function ContentHealthAdmin() {
     })
   }, [report, severity, domain, query])
 
+  if (!authorized) return null
+  const mediaIssues = report?.issues.filter(issue => issue.domain === 'media' || /image|media|thumbnail/.test(issue.issueType)).length || 0
+  const translationIssues = report?.issues.filter(issue => /amharic|english|translation|transliteration/.test(issue.issueType)).length || 0
+  const relationshipIssues = report?.issues.filter(issue => issue.domain === 'relationships' || /orphan|mismatch|not_found/.test(issue.issueType)).length || 0
+
   return (
     <>
       <div className={s.heading}>
         <div>
-          <p className={s.eyebrow}>CMS DIAGNOSTICS</p>
-          <h1>Content Health</h1>
+          {!embedded && <p className={s.eyebrow}>CMS DIAGNOSTICS</p>}
+          {embedded ? <h2 id="content-health">Content health</h2> : <h1>Content Health</h1>}
           <p className={s.muted}>
             Check the site&apos;s content, relationships, media, and publishing data. Read-only —
             religious content is never auto-rewritten.
@@ -206,6 +216,9 @@ export function ContentHealthAdmin() {
               <strong className={s.stat}>{report.totals.healthyEstimate}</strong>
             </div>
           </div>
+
+          {embedded && <p className={s.muted}>Missing media: {mediaIssues} · Translation issues: {translationIssues} · Broken relationships: {relationshipIssues}. Counts reflect the last scan only.</p>}
+          <details open={!embedded}><summary>Diagnostic details and filters</summary>
 
           {report.psalms.collectionSlug ? (
             <section className={`${s.card} ${styles.psalmPanel}`}>
@@ -441,6 +454,7 @@ export function ContentHealthAdmin() {
               )}
             </aside>
           </div>
+          </details>
         </>
       ) : null}
     </>

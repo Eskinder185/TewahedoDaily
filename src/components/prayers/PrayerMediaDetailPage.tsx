@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { PageSection } from '../ui/PageSection'
 import { useUiLabel } from '../../lib/i18n/uiLabels'
 import { useTranslation } from '../../i18n'
+import { useLocale } from '../../lib/i18n/locale'
+import { pickLocalized } from '../../lib/prayers/localizedText'
 import type { PrayerMediaEntry } from '../../lib/prayers/mediaPrayerEntries'
 import { PrayerMediaPlayer } from './PrayerMediaPlayer'
 import { scrollTargetIntoView } from '../../lib/scrollUtils'
@@ -33,6 +35,10 @@ export function PrayerMediaDetailPage({
 }: Props) {
   const t = useUiLabel()
   const tr = useTranslation()
+  const { locale } = useLocale()
+  const titlePick = pickLocalized(locale, prayer.transliteration, prayer.title)
+  const heroNote = pickLocalized(locale, prayer.noteEnglish, prayer.noteAmharic)
+  const sideNote = pickLocalized(locale, noteEnglish, noteAmharic)
 
   const handleSectionClick = (sectionId: string) => {
     scrollTargetIntoView(sectionId, { smooth: false })
@@ -47,7 +53,9 @@ export function PrayerMediaDetailPage({
         <span className={styles.crumbSep} aria-hidden>
           /
         </span>
-        <span className={styles.crumbCurrent}>{prayer.title}</span>
+        <span className={styles.crumbCurrent} lang={titlePick.lang}>
+          {titlePick.text}
+        </span>
       </nav>
 
       <section className={styles.headCard}>
@@ -55,11 +63,9 @@ export function PrayerMediaDetailPage({
           <div>
             <p className={styles.pageEyebrow}>{tr('prayers.media.title')}</p>
             <span className={styles.badge}>{prayer.badge}</span>
-            <h1 className={styles.pageTitle} lang="am">
-              {prayer.title}
+            <h1 className={styles.pageTitle} lang={titlePick.lang}>
+              {titlePick.text}
             </h1>
-            <p className={styles.transliteration}>{prayer.transliteration}</p>
-            <p className={styles.heroNote}>{prayer.noteEnglish}</p>
           </div>
           <div className={styles.headActions}>
             <a
@@ -119,10 +125,9 @@ export function PrayerMediaDetailPage({
         </div>
 
         <div className={styles.statusBlock}>
-          <p className={styles.statusAm} lang="am">
-            {prayer.noteAmharic}
+          <p className={styles.heroNote} lang={heroNote.lang}>
+            {heroNote.text}
           </p>
-          <p className={styles.statusEn}>{prayer.noteEnglish}</p>
         </div>
       </section>
 
@@ -139,18 +144,14 @@ export function PrayerMediaDetailPage({
         <aside className={styles.sideColumn} id="prayer-notes">
           <section className={styles.sideCard}>
             <h2 className={styles.sideTitle}>{noteTitle}</h2>
-            <p className={styles.sideBody} lang="am">
-              {noteAmharic}
+            <p className={styles.sideBody} lang={sideNote.lang}>
+              {sideNote.text}
             </p>
-            <p className={styles.sideBody}>{noteEnglish}</p>
           </section>
 
           <details className={styles.sideCard}>
             <summary className={styles.summaryToggle}>{tr('prayers.media.lyricsPlaceholder')}</summary>
             <div className={styles.summaryBody}>
-              <p className={styles.sideBody} lang="am">
-                ግጥም በቅርብ ይጨመራል።
-              </p>
               <p className={styles.sideBody}>
                 {tr('prayers.media.lyricsPlaceholderDescription')}
               </p>
@@ -163,10 +164,12 @@ export function PrayerMediaDetailPage({
               <div className={styles.relatedList}>
                 {relatedPrayers.map((item) => (
                   <Link key={item.to} className={styles.relatedCard} to={item.to}>
-                    <span className={styles.relatedTitle} lang="am">
-                      {item.title}
+                    <span
+                      className={styles.relatedTitle}
+                      lang={pickLocalized(locale, item.transliteration, item.title).lang}
+                    >
+                      {pickLocalized(locale, item.transliteration, item.title).text}
                     </span>
-                    <span className={styles.relatedSub}>{item.transliteration}</span>
                   </Link>
                 ))}
               </div>

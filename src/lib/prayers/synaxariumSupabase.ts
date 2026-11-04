@@ -399,7 +399,26 @@ export async function getSynaxariumCommemorationsForEthiopianDay(
   })
 }
 
-export async function getSynaxariumDayWithCommemorations(
+const DAY_BUNDLE_TTL_MS = 60 * 1000
+const dayBundleCache = new Map<string, { at: number; promise: Promise<SynaxariumDayBundle | null> }>()
+
+/** Concurrent and near-simultaneous callers for the same day share one set of queries. */
+export function getSynaxariumDayWithCommemorations(
+  monthNumber: number,
+  day: number,
+): Promise<SynaxariumDayBundle | null> {
+  const key = `${monthNumber}-${day}`
+  const hit = dayBundleCache.get(key)
+  if (hit && Date.now() - hit.at < DAY_BUNDLE_TTL_MS) return hit.promise
+  const promise = loadSynaxariumDayWithCommemorations(monthNumber, day)
+  dayBundleCache.set(key, { at: Date.now(), promise })
+  promise.catch(() => {
+    if (dayBundleCache.get(key)?.promise === promise) dayBundleCache.delete(key)
+  })
+  return promise
+}
+
+async function loadSynaxariumDayWithCommemorations(
   monthNumber: number,
   day: number,
 ): Promise<SynaxariumDayBundle | null> {

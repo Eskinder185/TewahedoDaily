@@ -40,10 +40,67 @@ export interface BilingualPassageResult {
 // In-memory cache to prevent repeated database roundtrips
 const passageCache = new Map<string, BiblePassageResult | null>()
 
+const inflightPassages = new Map<string, Promise<BiblePassageResult | null>>()
+
+type BookWithSources = {
+  book: { id: string; slug: string; name_en?: string | null; name_am?: string | null }
+  sources: (SourceBook & { bible_editions: BibleEdition | null })[]
+}
+
+/** Book + source-book lookups are edition-independent, so Amharic and English share one pair of requests. */
+const bookSourcesCache = new Map<string, Promise<BookWithSources | null>>()
+
+function loadBookWithSources(bookSlug: string): Promise<BookWithSources | null> {
+  const existing = bookSourcesCache.get(bookSlug)
+  if (existing) return existing
+  const pending = (async () => {
+    if (!supabase) return null
+    const { data: book, error: bookErr } = await supabase
+      .from('bible_canonical_books')
+      .select('*')
+      .eq('slug', bookSlug)
+      .maybeSingle()
+    if (bookErr || !book) return null
+    const { data: sources, error: sourceErr } = await supabase
+      .from('bible_source_books')
+      .select('*, bible_editions(*)')
+      .eq('canonical_book_id', book.id)
+    if (sourceErr || !sources || sources.length === 0) return null
+    return {
+      book,
+      sources: sources as unknown as (SourceBook & { bible_editions: BibleEdition | null })[],
+    } as BookWithSources
+  })()
+  bookSourcesCache.set(bookSlug, pending)
+  // Do not keep failures: a transient error must not block later attempts.
+  void pending.then((value) => {
+    if (!value) bookSourcesCache.delete(bookSlug)
+  }, () => bookSourcesCache.delete(bookSlug))
+  return pending
+}
+
 /**
  * Fetches a specific verse range for a given book slug, chapter, and edition.
+ * Identical concurrent requests share one in-flight promise.
  */
-export async function fetchBiblePassage(params: {
+export function fetchBiblePassage(params: {
+  bookSlug: string
+  chapterNumber: number
+  verseStart: number
+  verseEnd?: number
+  preferredEdition?: 'am' | 'web'
+}): Promise<BiblePassageResult | null> {
+  const verseEnd = params.verseEnd || params.verseStart
+  const edition = params.preferredEdition === 'am' ? 'am' : 'web'
+  const key = `${params.bookSlug}:${params.chapterNumber}:${params.verseStart}-${verseEnd}:${edition}`
+  const existing = inflightPassages.get(key)
+  if (existing) return existing
+  const pending = fetchBiblePassageUncached(params).finally(() => inflightPassages.delete(key))
+  inflightPassages.set(key, pending)
+  return pending
+}
+
+async function fetchBiblePassageUncached(params: {
   bookSlug: string
   chapterNumber: number
   verseStart: number
@@ -65,31 +122,16 @@ export async function fetchBiblePassage(params: {
   }
 
   try {
-    // 1. Resolve canonical book
-    const { data: book, error: bookErr } = await supabase
-      .from('bible_canonical_books')
-      .select('*')
-      .eq('slug', bookSlug)
-      .maybeSingle()
-
-    if (bookErr || !book) {
+    // 1-2. Resolve canonical book + its source books (shared across editions)
+    const bookWithSources = await loadBookWithSources(bookSlug)
+    if (!bookWithSources) {
       passageCache.set(cacheKey, null)
       return null
     }
-
-    // 2. Fetch source books and editions for this canonical book
-    const { data: sources, error: sourceErr } = await supabase
-      .from('bible_source_books')
-      .select('*, bible_editions(*)')
-      .eq('canonical_book_id', book.id)
-
-    if (sourceErr || !sources || sources.length === 0) {
-      passageCache.set(cacheKey, null)
-      return null
-    }
+    const { book, sources } = bookWithSources
 
     // Never show an English edition under the Amharic label (or vice versa).
-    const matchedSource = (sources as unknown as (SourceBook & { bible_editions: BibleEdition | null })[]).find((s) => s.bible_editions?.code === targetEditionCode)
+    const matchedSource = sources.find((s) => s.bible_editions?.code === targetEditionCode)
     if (!matchedSource) {
       return null
     }

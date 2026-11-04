@@ -10,12 +10,15 @@ import { FinishMezmurGame } from '../../components/play/FinishMezmurGame'
 import { PictureQuizGame } from '../../components/play/PictureQuizGame'
 import { IconMemoryGame } from '../../components/play/IconMemoryGame'
 import { useLocale } from '../../lib/i18n/locale'
-import { questionsFor } from '../../lib/play/approvedContent'
-import { loadPublishedPlayQuestions } from '../../lib/play/contentService'
+import { questionsFor, WHO_AM_I_CARDS, MATCH_PAIRS } from '../../lib/play/approvedContent'
+import { loadPublishedPlayQuestions, loadPublishedGameCards } from '../../lib/play/contentService'
+import { mergeCardBank } from '../../lib/play/cardContent'
 import { GAME_ART, feastImages, holyPersonImages } from '../../lib/play/imageCatalog'
 import { getDailyChallenge } from '../../lib/play/progress'
 import { withoutLibrarySources, withPublicSources } from '../../lib/play/sourceAvailability'
-import type { PlayDifficulty, PlayGameType, PlayQuestion } from '../../lib/play/types'
+import type { MatchPair, WhoAmICard, PlayDifficulty, PlayGameType, PlayQuestion } from '../../lib/play/types'
+import { databasePlayEnabled } from '../../lib/play/publishedContent'
+import { DatabasePlayGame } from './DatabasePlayGame'
 
 type QuizPageGame = Exclude<PlayGameType, 'adventure'>
 type PageGame = QuizPageGame | 'who-am-i' | 'match' | 'feasts' | 'saints' | 'icon-memory' | 'bible-timeline'
@@ -37,14 +40,25 @@ const META: Record<PageGame, { title: { en: string; am: string }; subtitle: { en
 const LEVELS: PlayDifficulty[] = ['beginner', 'growing', 'challenge']
 
 export function PlayGamePage({ game }: { game: PageGame }) {
+  if (databasePlayEnabled()) return <DatabasePlayPage key={game} game={game} />
+  return <PlayGameView key={game} game={game} />
+}
+function DatabasePlayPage({ game }: { game: PageGame }) {
+  const { locale } = useLocale()
+  return <GameShell locale={locale} title={META[game].title[locale]} subtitle={META[game].subtitle[locale]} art={GAME_ART[game]}><DatabasePlayGame game={game} locale={locale} /></GameShell>
+}
+function PlayGameView({ game }: { game: PageGame }) {
   const { locale } = useLocale()
   const [searchParams] = useSearchParams()
   const meta = META[game]
   const isQuiz = !['who-am-i', 'match', 'feasts', 'saints', 'icon-memory', 'finish-the-mezmur', 'bible-timeline'].includes(game)
+  const isCardGame = game === 'who-am-i' || game === 'match'
+  const [whoCards, setWhoCards] = useState<WhoAmICard[]>(() => withoutLibrarySources(WHO_AM_I_CARDS))
+  const [matchPairs, setMatchPairs] = useState<MatchPair[]>(() => withoutLibrarySources(MATCH_PAIRS))
   // Church Library questions only appear once their book is published.
   const staticQuestions = useMemo(() => isQuiz ? withoutLibrarySources(questionsFor(game as QuizPageGame)) : [], [game, isQuiz])
   const [questions, setQuestions] = useState<PlayQuestion[]>(staticQuestions)
-  const [publishedState, setPublishedState] = useState<'loading' | 'ready' | 'error'>(isQuiz ? 'loading' : 'ready')
+  const [publishedState, setPublishedState] = useState<'loading' | 'ready' | 'error'>(isQuiz || isCardGame ? 'loading' : 'ready')
   const [retryToken, setRetryToken] = useState(0)
   const level = LEVELS.find((l) => l === searchParams.get('level'))
 
@@ -69,6 +83,27 @@ export function PlayGamePage({ game }: { game: PageGame }) {
     return () => { active = false }
   }, [game, isQuiz, retryToken])
 
+  useEffect(() => {
+    if (!isCardGame) return
+    let active = true
+    void (async () => {
+      try {
+        if (game === 'who-am-i') {
+          const [fallback, published] = await Promise.all([withPublicSources(WHO_AM_I_CARDS), loadPublishedGameCards('who-am-i').then(withPublicSources)])
+          if (active) setWhoCards(mergeCardBank('who-am-i', fallback, published))
+        } else {
+          const [fallback, published] = await Promise.all([withPublicSources(MATCH_PAIRS), loadPublishedGameCards('match').then(withPublicSources)])
+          if (active) setMatchPairs(mergeCardBank('match', fallback, published))
+        }
+        if (active) setPublishedState('ready')
+      } catch { if (active) {
+        setWhoCards(withoutLibrarySources(WHO_AM_I_CARDS)); setMatchPairs(withoutLibrarySources(MATCH_PAIRS))
+        setPublishedState('error')
+      } }
+    })()
+    return () => { active = false }
+  }, [game, isCardGame, retryToken])
+
   const retryPublishedQuestions = () => {
     setPublishedState('loading')
     setRetryToken((value) => value + 1)
@@ -76,8 +111,8 @@ export function PlayGamePage({ game }: { game: PageGame }) {
 
   const body = (() => {
     switch (game) {
-      case 'who-am-i': return <WhoAmIGame locale={locale} />
-      case 'match': return <MatchGame locale={locale} />
+      case 'who-am-i': return publishedState === 'loading' ? null : <WhoAmIGame locale={locale} cards={whoCards} />
+      case 'match': return publishedState === 'loading' ? null : <MatchGame locale={locale} pairs={matchPairs} />
       case 'history': return <HistoryQuestGame locale={locale} questions={questions} />
       case 'bible-timeline': return <BibleTimelineGame locale={locale} />
       case 'finish-the-mezmur': return <FinishMezmurGame locale={locale} />
@@ -90,7 +125,7 @@ export function PlayGamePage({ game }: { game: PageGame }) {
 
   return (
     <GameShell locale={locale} title={meta.title[locale]} subtitle={meta.subtitle[locale]} art={GAME_ART[game]}>
-      {isQuiz && publishedState !== 'ready' ? <PublishedQuestionsStatus locale={locale} state={publishedState} onRetry={publishedState === 'error' ? retryPublishedQuestions : undefined} /> : null}
+      {(isQuiz || isCardGame) && publishedState !== 'ready' ? <PublishedQuestionsStatus locale={locale} state={publishedState} onRetry={publishedState === 'error' ? retryPublishedQuestions : undefined} /> : null}
       {body}
     </GameShell>
   )

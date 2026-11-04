@@ -3,7 +3,8 @@ import { useTranslation } from '../../i18n'
 import { PageSection } from '../ui/PageSection'
 import { useHomeToday } from '../../hooks/useHomeToday'
 import { CalendarEventCard } from '../calendar/CalendarEventCard'
-import { CalendarEventDetail } from '../calendar/CalendarEventDetail'
+import { useNavigate } from 'react-router-dom'
+import { toIsoLocalDate } from '../../lib/churchCalendar/pascha'
 import { getHomepageTodayEvents, invalidateCalendarCardsCache } from '../../lib/calendar/getCalendarEventsForDate'
 import type { PresentableCalendarEvent } from '../../lib/calendar/calendarPresentation'
 import { useLocale } from '../../lib/i18n/locale'
@@ -21,7 +22,7 @@ export function HomeTodayInChurchPreview() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
   const [slide, setSlide] = useState(0)
-  const [detailEvent, setDetailEvent] = useState<PresentableCalendarEvent | null>(null)
+  const navigate = useNavigate()
   const [paused, setPaused] = useState(false)
   const regionRef = useRef<HTMLDivElement>(null)
 
@@ -77,7 +78,7 @@ export function HomeTodayInChurchPreview() {
   )
 
   useEffect(() => {
-    if (count <= 1 || paused || detailEvent) return
+    if (count <= 1 || paused) return
     const reduce =
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -86,7 +87,7 @@ export function HomeTodayInChurchPreview() {
       setSlide((prev) => (prev + 1) % count)
     }, AUTOPLAY_MS)
     return () => window.clearInterval(id)
-  }, [count, paused, detailEvent])
+  }, [count, paused])
 
   const dateLine = useMemo(() => {
     const eth = ethiopian.labelLong || ''
@@ -147,7 +148,7 @@ export function HomeTodayInChurchPreview() {
                     dateLabel={ethiopian.labelLong || undefined}
                     lang={lang}
                     variant="home"
-                    onOpen={setDetailEvent}
+                    onOpen={(event) => navigate(`/calendar?date=${toIsoLocalDate(now)}&event=${encodeURIComponent(event.id)}`)}
                   />
                 ) : null}
 
@@ -200,13 +201,7 @@ export function HomeTodayInChurchPreview() {
         </div>
       </div>
 
-      <CalendarEventDetail
-        open={detailEvent != null}
-        event={detailEvent}
-        dateLabel={gregorian.labelLong}
-        ethiopianLabel={ethiopian.labelLong}
-        onClose={() => setDetailEvent(null)}
-      />
+
     </PageSection>
   )
 }

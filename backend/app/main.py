@@ -1350,6 +1350,64 @@ def compact_hymn_search_text(value: str):
     return normalize_hymn_search_text(value).replace(" ", "")
 
 
+HYMN_LYRIC_FIELDS = (
+    "lyrics_amharic",
+    "lyrics_transliteration",
+    "lyrics_english",
+    "lyrics_geez",
+    "lyrics_oromo",
+)
+
+# Ethiopic letters affected by normalize_hymn_search_text (variants and their canonical targets).
+_HYMN_VARIANT_CHARS = {
+    ch
+    for ch in map(chr, range(0x1200, 0x1380))
+    if normalize_hymn_search_text(ch) != ch
+} | {
+    normalize_hymn_search_text(ch)
+    for ch in map(chr, range(0x1200, 0x1380))
+    if normalize_hymn_search_text(ch) != ch
+}
+
+
+def public_hymn_row(row: dict):
+    """Return the row as the public may see it, or None.
+
+    Mirrors public.mezmur_public: external_only rows are not searchable at all, and
+    restricted rows keep their title/metadata but NEVER contribute lyrics, either for
+    matching or for the preview. Lyrics are blanked on a copy, not on the caller's row.
+    """
+    rights = str(row.get("rights_status") or "").strip().lower()
+
+    if rights == "external_only":
+        return None
+
+    if rights == "restricted":
+        clean = dict(row)
+        for field in HYMN_LYRIC_FIELDS:
+            clean[field] = None
+        return clean
+
+    return row
+
+
+# Characters that separate words in a hymn query (ASCII + Ethiopic punctuation) or would change a filter.
+_HYMN_PATTERN_PUNCTUATION = set("።፣፤፥፦፧፡?!,.:;\"'()[]{}_/\\-–—*%")
+
+
+def hymn_ilike_pattern(value: str):
+    """Text for a PostgREST ilike filter that tolerates Ethiopic orthographic variants.
+
+    The stored text is NOT normalized, so a normalized query ("ሀ") cannot match stored
+    variant letters ("ሐ") in the database prefilter. Each variant letter becomes the
+    single-character wildcard "_"; scoring in Python still normalizes both sides.
+    """
+    raw = str(value or "").strip().lower()
+    raw = "".join(" " if ch in _HYMN_PATTERN_PUNCTUATION else ch for ch in raw)
+    pattern = "".join("_" if ch in _HYMN_VARIANT_CHARS else ch for ch in raw)
+    return re.sub(r"\s+", " ", pattern).strip()
+
+
 def hymn_text_similarity(query: str, candidate: str):
     query_norm = normalize_hymn_search_text(query)
     candidate_norm = normalize_hymn_search_text(candidate)
@@ -1597,7 +1655,9 @@ async def search_hymns(
             if str(row.get("status") or "").strip().lower() != "published":
                 continue
 
-            if str(row.get("rights_status") or "").strip().lower() == "external_only":
+            row = public_hymn_row(row)
+
+            if row is None:
                 continue
 
             score = max(
@@ -1617,7 +1677,7 @@ async def search_hymns(
     # ---------------------------------------------------------
     # PASS 1: normal substring search using the complete query.
     # ---------------------------------------------------------
-    safe_query = normalized_query.replace(",", " ")
+    safe_query = hymn_ilike_pattern(query)
 
     search_filter = (
         f"(title.ilike.*{safe_query}*,"
@@ -1634,14 +1694,18 @@ async def search_hymns(
     )
 
     try:
-        direct_rows = await supabase_get(
-            "mezmur_data_import",
-            {
-                "select": select_fields,
-                "or": search_filter,
-                "status": "eq.published",
-                "limit": str(max(limit * 2, 30)),
-            },
+        direct_rows = (
+            await supabase_get(
+                "mezmur_data_import",
+                {
+                    "select": select_fields,
+                    "or": search_filter,
+                    "status": "eq.published",
+                    "limit": str(max(limit * 2, 30)),
+                },
+            )
+            if safe_query
+            else []
         )
 
         # Let field-aware scoring decide relevance.
@@ -1665,7 +1729,7 @@ async def search_hymns(
     # ---------------------------------------------------------
     tokens = [
         token
-        for token in normalized_query.split()
+        for token in safe_query.split()
         if len(token) >= 3
     ]
 
@@ -1683,6 +1747,9 @@ async def search_hymns(
             f"title_english.ilike.*{token}*,"
             f"description_amharic.ilike.*{token}*,"
             f"lyrics_amharic.ilike.*{token}*,"
+            f"lyrics_transliteration.ilike.*{token}*,"
+            f"lyrics_english.ilike.*{token}*,"
+            f"lyrics_geez.ilike.*{token}*,"
             f"search_keywords.ilike.*{token}*)"
         )
 
@@ -1736,7 +1803,8 @@ async def search_hymns(
             for row in metadata_rows:
                 if str(row.get("status") or "").strip().lower() != "published":
                     continue
-                if str(row.get("rights_status") or "").strip().lower() == "external_only":
+                row = public_hymn_row(row)
+                if row is None:
                     continue
                 score = score_hymn_candidate(
                     normalized_query,
@@ -1849,7 +1917,9 @@ async def search_hymns(
                 if str(row.get("status") or "").strip().lower() != "published":
                     continue
 
-                if str(row.get("rights_status") or "").strip().lower() == "external_only":
+                row = public_hymn_row(row)
+
+                if row is None:
                     continue
 
                 singer_result_score = max(
@@ -2106,10 +2176,10 @@ async def hymns_by_occasion(
     )
 
     row_map = {
-        row["slug"]: row
+        row["slug"]: clean
         for row in rows
         if str(row.get("status") or "").strip().lower() == "published"
-        and str(row.get("rights_status") or "").strip().lower() != "external_only"
+        and (clean := public_hymn_row(row)) is not None
     }
 
     results = []

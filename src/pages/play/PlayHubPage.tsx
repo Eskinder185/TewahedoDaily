@@ -1,77 +1,23 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useMemo } from 'react'
+import { useUrlChoice } from '../../hooks/useUrlState'
+import { Link, useSearchParams } from 'react-router-dom'
 import { GameCard, type PlayGameCard } from '../../components/play/GameCard'
 import { GameDifficultyPicker, type GameDifficulty } from '../../components/play/GameDifficultyPicker'
 import { PlayProgressPanel } from '../../components/play/PlayProgressPanel'
 import { useAuth } from '../../lib/auth/useAuth'
-import { useLocale, type AppLocale } from '../../lib/i18n/locale'
+import { useLocale } from '../../lib/i18n/locale'
 import { GAME_ART, handlePlayImageError, PLAY_IMAGES, imageById } from '../../lib/play/imageCatalog'
+import { HUB_GAMES, HUB_SECTIONS, type HubSection } from '../../lib/play/gameCatalog'
+import { GAME_MODES, GAME_MODE_IDS, gameInMode, recentGames, type GameModeId } from '../../lib/play/gameModes'
+import { usePlayProgress } from '../../lib/play/usePlayProgress'
 import styles from './PlayHubPage.module.css'
 
-type Section = 'scripture' | 'pictures' | 'music' | 'history' | 'group'
+type Section = HubSection
 
 type HubGame = PlayGameCard & { section: Section }
 
-const t = (en: string, am: string) => ({ en, am })
-
-const GAMES: HubGame[] = [
-  { id: 'feasts', section: 'pictures', route: '/play/feasts', art: GAME_ART.feasts,
-    title: t('Church Feast Challenge', 'የበዓላት ፈተና'), category: t('Pictures', 'ሥዕሎች'),
-    description: t('Name the feast from its icon or photograph — Gena, Timket, Meskel and more.', 'በዓሉን ከሥዕሉ ይለዩ — ገና፣ ጥምቀት፣ መስቀልና ሌሎችም።'),
-    meta: t('12 feasts · reveal mode', '12 በዓላት · የመግለጥ ሁነታ') },
-  { id: 'saints', section: 'pictures', route: '/play/saints', art: GAME_ART.saints,
-    title: t('Guess the Saint', 'ቅዱሱን ይለዩ'), category: t('Pictures', 'ሥዕሎች'),
-    description: t('Recognise the archangels and saints of the Church from their icons.', 'ሊቃነ መላእክትንና ቅዱሳንን ከሥዕላቸው ይለዩ።'),
-    meta: t('10 icons', '10 ሥዕሎች') },
-  { id: 'icon-memory', section: 'pictures', route: '/play/icon-memory', art: GAME_ART['icon-memory'],
-    title: t('Icon Memory', 'የሥዕል ትውስታ'), category: t('Pictures', 'ሥዕሎች'),
-    description: t('Turn the cards and match every holy picture with its name.', 'ካርዶቹን ገልጠው ቅዱስ ሥዕልን ከስሙ ጋር ያዛምዱ።'),
-    meta: t('4–8 pairs', '4–8 ጥንዶች') },
-  { id: 'trivia', section: 'scripture', route: '/play/trivia', art: GAME_ART.trivia, levels: true,
-    title: t('Bible & Tewahedo Trivia', 'የመጽሐፍ ቅዱስና ተዋሕዶ ጥያቄ'), category: t('Scripture', 'መጽሐፍ ቅዱስ'),
-    description: t('Sourced questions, clear explanations, and a pace you choose.', 'ምንጭ ያላቸው ጥያቄዎች፣ ግልጽ ማብራሪያና በሚመርጡት ፍጥነት።'),
-    meta: t('5–20 questions', '5–20 ጥያቄዎች') },
-  { id: 'emoji', section: 'scripture', route: '/play/emoji', art: GAME_ART.emoji, levels: true,
-    title: t('Holy Emoji Challenge', 'የቅዱስ ኢሞጂ ፈተና'), category: t('Scripture', 'መጽሐፍ ቅዱስ'),
-    description: t('Decode emoji clues to Bible stories. Fewer hints, stronger round.', 'የኢሞጂ ፍንጮችን ወደ መጽሐፍ ቅዱስ ታሪኮች ይፍቱ።'),
-    meta: t('Hints available', 'ፍንጭ አለ') },
-  { id: 'finish-the-verse', section: 'scripture', route: '/play/finish-the-verse', art: GAME_ART['finish-the-verse'], levels: true,
-    title: t('Finish the Verse', 'ጥቅሱን ይጨርሱ'), category: t('Scripture', 'መጽሐፍ ቅዱስ'),
-    description: t('Complete exact excerpts from the English and Amharic Bible.', 'ከእንግሊዝኛና ከአማርኛ መጽሐፍ ቅዱስ ጥቅሶችን ያሟሉ።'),
-    meta: t('English + አማርኛ', 'አማርኛ + English') },
-  { id: 'bible-timeline', section: 'scripture', route: '/play/bible-timeline', art: GAME_ART['bible-timeline'],
-    title: t('Bible Timeline Challenge', 'የመጽሐፍ ቅዱስ የጊዜ ቅደም ተከተል'), category: t('Scripture', 'መጽሐፍ ቅዱስ'),
-    description: t('Arrange Bible events in the order they happened, with exact references.', 'የመጽሐፍ ቅዱስ ክስተቶችን በተፈጸሙበት ቅደም ተከተል ያስቀምጡ።'),
-    meta: t('3–8 events · 3 levels', '3–8 ክስተቶች · 3 ደረጃዎች') },
-  { id: 'adventures', section: 'scripture', route: '/play/adventures', art: GAME_ART.adventures,
-    title: t('Bible Adventure', 'የመጽሐፍ ቅዱስ ጀብዱ'), category: t('Story', 'ታሪክ'),
-    description: t('Explore 6 interactive stories from Scripture in three scenes with learning checkpoints.', '6 የመጽሐፍ ቅዱስ ታሪኮችን በሦስት ትዕይንቶችና የመማሪያ ነጥቦች ይጓዙ።'),
-    meta: t('6 stories · 3 scenes each', '6 ታሪኮች · 3 ትዕይንቶች') },
-  { id: 'mezmur', section: 'music', route: '/play/finish-the-mezmur', art: GAME_ART['finish-the-mezmur'],
-    title: t('Finish the Mezmur', 'መዝሙሩን ይጨርሱ'), category: t('Mezmur', 'መዝሙር'),
-    description: t('Lyrics, titles and occasions from verified Mezmur records.', 'ከተረጋገጡ የመዝሙር መዝገቦች ግጥም፣ ርዕስና አጋጣሚ።') },
-  { id: 'history', section: 'history', route: '/play/history', art: GAME_ART.history, levels: true,
-    title: t('History Quest', 'የታሪክ ጉዞ'), category: t('History', 'ታሪክ'),
-    description: t('Order the councils and meet figures of Ethiopian and world Church history.', 'ጉባኤያትን በቅደም ተከተል ያስቀምጡ፣ የታሪክ ሰዎችን ያግኙ።'),
-    meta: t('Timeline + quiz', 'የጊዜ መስመር + ጥያቄ') },
-  { id: 'who-am-i', section: 'group', route: '/play/who-am-i', art: GAME_ART['who-am-i'],
-    title: t('Who Am I?', 'እኔ ማን ነኝ?'), category: t('Group play', 'የቡድን ጨዋታ'),
-    description: t('A fast guessing game for families and youth groups.', 'ለቤተሰብና ለወጣቶች ፈጣን የግምት ጨዋታ።'),
-    meta: t('60-second rounds', '60 ሰከንድ ዙሮች') },
-  { id: 'match', section: 'group', route: '/play/match', art: GAME_ART.match,
-    title: t('Match & Discover', 'ያዛምዱና ያግኙ'), category: t('Learning', 'ትምህርት'),
-    description: t('Pair people with the moments Scripture remembers them for.', 'ሰዎችን ቅዱስ መጽሐፍ ከሚያስታውሳቸው ክስተቶች ጋር ያዛምዱ።'),
-    meta: t('4–8 pairs', '4–8 ጥንዶች') },
-]
-
-const SECTIONS: { id: Section | 'all'; label: Record<AppLocale, string> }[] = [
-  { id: 'all', label: t('All games', 'ሁሉም') },
-  { id: 'pictures', label: t('Icons & feasts', 'ሥዕሎችና በዓላት') },
-  { id: 'scripture', label: t('Scripture', 'መጽሐፍ ቅዱስ') },
-  { id: 'music', label: t('Mezmur', 'መዝሙር') },
-  { id: 'history', label: t('History', 'ታሪክ') },
-  { id: 'group', label: t('Family & group', 'ቤተሰብና ቡድን') },
-]
+const GAMES: HubGame[] = HUB_GAMES
+const SECTIONS = HUB_SECTIONS
 
 const HERO_ICONS = ['gena', 'michael', 'timket'].map((id) => imageById(id)!)
 
@@ -79,9 +25,23 @@ export function PlayHubPage() {
   const { locale } = useLocale()
   const { session } = useAuth()
   const am = locale === 'am'
-  const [difficulty, setDifficulty] = useState<GameDifficulty>('beginner')
-  const [filter, setFilter] = useState<Section | 'all'>('all')
-  const visible = useMemo(() => GAMES.filter((game) => filter === 'all' || game.section === filter), [filter])
+  const [difficulty, setDifficulty] = useUrlChoice<GameDifficulty>('level', 'beginner', ['beginner', 'growing', 'challenge'])
+  const [filter] = useUrlChoice<Section | 'all'>('section', 'all', ['all', 'scripture', 'pictures', 'music', 'history', 'group'])
+  const [mode] = useUrlChoice<GameModeId | 'all'>('mode', 'all', ['all', ...GAME_MODE_IDS])
+  const [params, setParams] = useSearchParams()
+  const progress = usePlayProgress()
+  const recent = recentGames(progress.history)
+  const visible = useMemo(() => GAMES.filter((game) => (filter === 'all' || game.section === filter) && gameInMode(game.id, mode)), [filter, mode])
+  const modeHref = (id: string) => {
+    const next = new URLSearchParams(params); next.delete('section')
+    if (id === 'all') next.delete('mode'); else next.set('mode', id)
+    return { pathname: '/play', search: next.toString(), hash: '#games' }
+  }
+  const selectSection = (section: string) => {
+    const next = new URLSearchParams(params); next.delete('mode')
+    if (section === 'all') next.delete('section'); else next.set('section', section)
+    setParams(next)
+  }
 
   return (
     <div className={styles.page} lang={locale}>
@@ -123,18 +83,25 @@ export function PlayHubPage() {
       </section>
 
       <div className={styles.content}>
-        {/* ---------- Journey + daily ---------- */}
-        <section className={styles.dashboard} aria-label={am ? 'የተጫዋች ገጽ' : 'Your progress'}>
-          <PlayProgressPanel locale={locale} signedIn={Boolean(session)} />
-          <Link className={styles.dailyCard} to="/play/trivia?daily=1">
-            {GAME_ART.trivia.src ? <img src={GAME_ART.trivia.src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, GAME_ART.trivia.fallbackSrc)} style={{ objectPosition: GAME_ART.trivia.focus }} /> : null}
-            <div>
-              <p className={styles.eyebrowLight}>{am ? 'የዕለቱ ፈተና' : 'Daily challenge'}</p>
-              <h2>{am ? 'አንድ ጥያቄ፣ አንድ ጥቅስ፣ አምስት ደቂቃ' : 'One question. One source. Five minutes.'}</h2>
-              <p>{am ? 'በየቀኑ ከተገመገሙ ጥያቄዎች አንዱ ይቀርባል። ተከታታይ ቀናትዎን ይጠብቁ።' : 'A new reviewed question every day. Keep your streak gently going.'}</p>
-              <span className={styles.dailyAction}>{am ? 'ይጫወቱ' : 'Play today’s'} →</span>
-            </div>
-          </Link>
+        <section className={styles.gameNight} aria-labelledby="gn-title">
+          {GAME_ART['game-night'].src ? <img src={GAME_ART['game-night'].src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, GAME_ART['game-night'].fallbackSrc)} /> : null}
+          <div className={styles.gameNightInner}>
+            <p className={styles.eyebrowLight}>{am ? 'ተለዋዋጭ ጨዋታዎች' : 'Featured · a different way to play'}</p>
+            <h2 id="gn-title">{am ? 'የተቀላቀለ ፈተና ምሽት' : 'Mixed Challenge Night'}</h2>
+            <p>{am ? 'በአንድ ማያ ገጽ የተለያዩ ጨዋታዎችን አብረው ይሞክሩ። የተቀላቀለ የብዙ ተጫዋች ክፍል ገና አይደገፍም።' : 'Try a five-round shared-screen guide through different games. Mixed-mechanic multiplayer rooms are not available yet.'}</p>
+            <Link className={styles.primaryActionLight} to="/play/game-night?view=mixed">{am ? 'መመሪያውን ይክፈቱ' : 'Explore the evening'} →</Link>
+          </div>
+        </section>
+        <section className={styles.modeSection} aria-labelledby="modes-title">
+          <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{am ? 'እንዴት መጫወት ይፈልጋሉ?' : 'How do you want to play?'}</p>
+            <h2 id="modes-title">{am ? 'አምስት የጨዋታ መንገዶች' : 'Five ways to discover'}</h2></div></div>
+          <nav className={styles.modeGrid} aria-label={am ? 'የጨዋታ ሁነታዎች' : 'Game modes'}>
+            {GAME_MODES.map(entry => <Link key={entry.id} data-play-mode={entry.id} className={styles.modeCard} to={modeHref(entry.id)} aria-current={mode === entry.id ? 'page' : undefined}>
+              <span className={styles.modeIcon} aria-hidden="true">{entry.icon}</span><h3>{entry[locale]}</h3><p>{entry.description[locale]}</p>
+              <small>{GAMES.filter(game => gameInMode(game.id, entry.id)).map(game => game.title[locale]).join(' · ')}</small>
+              <strong>{am ? 'ጨዋታዎችን ይመልከቱ' : 'Explore games'} →</strong>
+            </Link>)}
+          </nav>
         </section>
 
         {/* ---------- All games ---------- */}
@@ -142,33 +109,36 @@ export function PlayHubPage() {
           <div className={styles.sectionHeading}>
             <div>
               <p className={styles.eyebrow}>{GAMES.length} {am ? 'ጨዋታዎች' : 'games'}</p>
-              <h2 id="games-title">{am ? 'መንገድዎን ይምረጡ' : 'Choose Your Path'}</h2>
+              <h2 id="games-title">{mode === 'all' ? (am ? 'ሁሉም 12 ጨዋታዎች' : 'All 12 Games') : GAME_MODES.find(entry => entry.id === mode)?.[locale]}</h2>
               <p>{am ? 'ሥዕሎች፣ መጽሐፍ ቅዱስ፣ መዝሙር፣ ታሪክና የቡድን ጨዋታ — ሁሉም በአንድ ቦታ።' : 'Icons, Scripture, Mezmur, history and group play — all in one place.'}</p>
             </div>
             <GameDifficultyPicker locale={locale} value={difficulty} onChange={setDifficulty} />
           </div>
+          <Link className={styles.allGamesLink} to={modeHref('all')}>{am ? 'ሁሉንም 12 ጨዋታዎች አሳይ' : 'Show all 12 games'}</Link>
+          <details open={params.has('section')}><summary>{am ? 'በርዕስ ያጣሩ' : 'Browse by topic'}</summary>
           <div className={styles.filters} role="group" aria-label={am ? 'ጨዋታዎችን አጣራ' : 'Filter games'}>
             {SECTIONS.map((category) => (
-              <button key={category.id} type="button" aria-pressed={filter === category.id} onClick={() => setFilter(category.id)}>{category.label[locale]}</button>
+              <button key={category.id} type="button" aria-pressed={filter === category.id} onClick={() => selectSection(category.id)}>{category.label[locale]}</button>
             ))}
-          </div>
+          </div></details>
           <p className={styles.levelNote} aria-live="polite">
+            {am ? `${visible.length} ጨዋታዎች። ` : `${visible.length} games available. `}
             {am ? 'ደረጃው በጥያቄ ጨዋታዎች ላይ ይተገበራል።' : 'Your level applies to the question games (Trivia, Emoji, Verse, History).'}
           </p>
+          {!visible.length && <p>{am ? 'ከእነዚህ ማጣሪያዎች ጋር የሚዛመድ ጨዋታ የለም። ሁሉንም ጨዋታዎች ይመልከቱ።' : 'No games match these filters. Choose “Show all 12 games” to explore the library.'}</p>}
           <div className={styles.gameGrid}>
             {visible.map((game) => <GameCard key={game.id} game={game} locale={locale} level={difficulty} />)}
           </div>
         </section>
 
-        {/* ---------- Game Night ---------- */}
-        <section className={styles.gameNight} aria-labelledby="gn-title">
-          {GAME_ART['game-night'].src ? <img src={GAME_ART['game-night'].src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, GAME_ART['game-night'].fallbackSrc)} style={{ objectPosition: GAME_ART['game-night'].focus }} /> : null}
-          <div className={styles.gameNightInner}>
-            <p className={styles.eyebrowLight}>{am ? 'ለቤተሰብና ለሰበካ' : 'For families & parishes'}</p>
-            <h2 id="gn-title">{am ? 'የጨዋታ ምሽት' : 'Game Night'}</h2>
-            <p>{am ? 'የግል ክፍል ይፍጠሩ፣ አጭር ኮድ ያጋሩ፣ ሁሉም ከስልካቸው አብረው ይመልሳሉ።' : 'Open a private room, share a short code, and answer together from everyone’s phone.'}</p>
-            <Link className={styles.primaryActionLight} to="/play/game-night">{am ? 'የጨዋታ ምሽት ይክፈቱ' : 'Open Game Night'} →</Link>
-          </div>
+        <section className={styles.dashboard} aria-label={am ? 'የተጫዋች ገጽ' : 'Your progress'}>
+          <PlayProgressPanel locale={locale} signedIn={Boolean(session)} />
+          <aside className={styles.recentGames}><h2>{am ? 'መጫወትዎን ይቀጥሉ' : 'Keep exploring'}</h2>
+            <p>{am ? 'የተጠናቀቁ ጨዋታዎችን እንደገና ይጀምሩ።' : 'Replay a recent game. Completed results are saved; partial rounds are not resumed.'}</p>
+            {recent.map(id => GAMES.find(game => game.id === id || (game.id === 'mezmur' && id === 'finish-the-mezmur'))).filter((game): game is HubGame => !!game).map(game => <Link key={game.id} to={game.route}>{game.title[locale]} →</Link>)}
+            <Link to="/play/trivia?daily=1">{am ? 'የዕለቱ ፈተና' : 'Daily challenge'} →</Link>
+            <Link to="/play/game-night">{am ? 'የጨዋታ ምሽት ይክፈቱ' : 'Host or join Game Night'} →</Link>
+          </aside>
         </section>
 
         {/* ---------- Trust ---------- */}
@@ -179,7 +149,7 @@ export function PlayHubPage() {
             <li><b aria-hidden="true">ፊ</b><span><strong>{am ? 'አማርኛና እንግሊዝኛ' : 'English & Amharic'}</strong>{am ? 'በሁለቱም ቋንቋዎች' : 'Switch language any time'}</span></li>
             <li><b aria-hidden="true">◷</b><span><strong>{am ? 'ያለ ጫና' : 'No pressure'}</strong>{am ? 'ሰዓት ቆጣሪ አማራጭ ነው' : 'Timers are always optional'}</span></li>
           </ul>
-          {!session ? <Link to="/login">{am ? 'እድገትዎን በሁሉም መሣሪያ ለማስቀመጥ ይግቡ' : 'Sign in to keep your progress across devices'} →</Link> : null}
+          {!session ? <Link to="/login">{am ? 'ለግል የጨዋታ ክፍል ይግቡ' : 'Sign in to host a private room'} →</Link> : null}
         </section>
       </div>
     </div>

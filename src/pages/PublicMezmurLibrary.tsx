@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { useUrlSearchInput } from '../hooks/useUrlState'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { responsiveImageAttrs } from '../lib/media/responsiveImage'
 import { publicMedia } from '../lib/publicContent/service'
 import {
   getHymnCollections,
   getHymnSingersPage,
-  searchImportMezmurs,
   searchHymns,
   type HymnBrowseCard,
   type HymnCollection,
@@ -24,6 +24,7 @@ import { useLocale } from '../lib/i18n/locale'
 import { useTranslation } from '../i18n'
 import { prefetchRoute } from '../lib/routePrefetch'
 import { VoiceTranscriptionControl } from '../components/search/VoiceTranscriptionControl'
+import { HighlightedText } from '../components/search/HighlightedText'
 import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
 import s from './HymnPractice.module.css'
 import { MEZMUR_LANGUAGES, isMezmurLanguageFilter, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
@@ -34,15 +35,6 @@ import {
 } from '../lib/publicContent/mezmurBrowseGroups'
 
 type SearchItem = UnifiedMezmurSearchItem
-
-function useDebounced(value: string, ms = 280) {
-  const [debounced, setDebounced] = useState(value)
-  useEffect(() => {
-    const id = window.setTimeout(() => setDebounced(value), ms)
-    return () => window.clearTimeout(id)
-  }, [value, ms])
-  return debounced
-}
 
 function CardArt({ item }: { item: SearchItem }) {
   const [src, setSrc] = useState('')
@@ -402,6 +394,7 @@ function MezmurResultGrid({
   return (
     <div className={s.grid}>
       {items.map((item) => {
+        const searchQuery = (new URLSearchParams(window.location.search).get('q') || '').replace(/\s+/g, ' ').trim()
         const heading = hymnSourceHeading(
           item.title_english || item.title,
           item.title_amharic,
@@ -419,7 +412,8 @@ function MezmurResultGrid({
         return (
           <Link
             key={item.id || item.slug}
-            to={`/hymns/mezmur/${item.slug}`}
+            // A lyric match opens the hymn with the query so the viewer can show the matched passage.
+            to={item.excerpt && searchQuery ? `/hymns/mezmur/${item.slug}?q=${encodeURIComponent(searchQuery)}` : `/hymns/mezmur/${item.slug}`}
             className={s.card}
             onClick={() => rememberBrowseQueue(
               new URLSearchParams(window.location.search).get('q') ? 'Search results' : 'Mezmur Library',
@@ -441,7 +435,11 @@ function MezmurResultGrid({
                 </h3>
               ) : null}
               {meta ? <p className={s.cardMeta}>{meta}</p> : null}
-              {item.preview ? (
+              {item.excerpt ? (
+                <p className={s.cardExcerpt} data-testid="mezmur-lyric-excerpt" lang={/[ሀ-፿]/.test(item.excerpt.text) ? 'am' : undefined}>
+                  <HighlightedText text={item.excerpt.text} ranges={item.excerpt.ranges} markClassName={s.match} />
+                </p>
+              ) : item.preview ? (
                 <p className={s.cardMeta} lang={/[\u1200-\u137F]/.test(item.preview) ? 'am' : undefined}>
                   {item.preview.length > 160 ? `${item.preview.slice(0, 157).trim()}…` : item.preview}
                 </p>
@@ -464,8 +462,7 @@ export function PublicMezmurLibrary() {
   const [params, setParams] = useSearchParams()
   const languageParam = params.get('language')
   const language: MezmurLanguageFilter = isMezmurLanguageFilter(languageParam) ? languageParam : 'all'
-  const [draftQ, setDraftQ] = useState(params.get('q') || '')
-  const debouncedQ = useDebounced(draftQ, 280)
+  const [draftQ, setDraftQ] = useUrlSearchInput()
   const [browse, setBrowse] = useState<HymnCollection[] | null>(null)
   const browseLoadedRef = useRef(false)
   const [browseError, setBrowseError] = useState<string>()
@@ -500,16 +497,6 @@ export function PublicMezmurLibrary() {
     t('practice.metaTitle'),
     t('practice.metaDescription'),
   )
-
-  useEffect(() => {
-    const current = params.get('q') || ''
-    if (debouncedQ === current) return
-    const next = new URLSearchParams(params)
-    if (debouncedQ) next.set('q', debouncedQ)
-    else next.delete('q')
-    next.delete('page')
-    setParams(next, { replace: true })
-  }, [debouncedQ, params, setParams])
 
   useEffect(() => {
     if (showResults) return
@@ -622,12 +609,14 @@ export function PublicMezmurLibrary() {
     const controller = new AbortController()
     void (async () => {
       try {
-        const localLanguageData = language === 'all' ? null : await searchImportMezmurs(q, { page, pageSize: 24, language })
+        // One lyric-aware search for every language filter (API first, bounded public fallback).
+        // A language filter pages the (at most 50) matches 24 at a time.
         const [data, hits] = await Promise.all([
-          localLanguageData ? Promise.resolve({
-            items: localLanguageData.items.map((item) => ({ ...item, primary_language: item.language, preview: null, audio_url: null, zemari: item.singer_name })),
-            total: localLanguageData.total, page: localLanguageData.page,
-          }) : searchMezmursUnified(q, { limit: 20, signal: controller.signal }),
+          language === 'all'
+            ? searchMezmursUnified(q, { limit: 20, signal: controller.signal })
+            : searchMezmursUnified(q, { limit: 50, language, signal: controller.signal }).then((found) => ({
+                items: found.items.slice((page - 1) * 24, page * 24), total: found.total, page,
+              })),
           // Browse discovery only (sections/singers) — does not drive hymn ranking.
           searchHymns(expandSearchAliases(q), 8).catch(() => [] as HymnDiscoveryHit[]),
         ])
@@ -671,7 +660,7 @@ export function PublicMezmurLibrary() {
     const next = new URLSearchParams(params)
     next.delete('q'); next.delete('page')
     setParams(next)
-  }, [params, setParams])
+  }, [params, setParams, setDraftQ])
 
   const selectLanguage = (nextLanguage: MezmurLanguageFilter) => {
     const next = new URLSearchParams(params)
@@ -760,6 +749,19 @@ export function PublicMezmurLibrary() {
               aria-controls={listboxId}
               aria-autocomplete="list"
             />
+            <div className={s.searchVoice}>
+              <VoiceTranscriptionControl
+                ariaLabel={t('practice.voiceSearchAria')}
+                onTranscript={(text) => {
+                  const transcript = text.trim()
+                  if (!transcript) return
+                  setHeardTranscript(transcript)
+                  setDraftQ(transcript)
+                  setSuggestOpen(false)
+                  window.setTimeout(() => searchInputRef.current?.focus(), 0)
+                }}
+              />
+            </div>
             {suggestOpen && discoveryHits.length > 0 && !showResults ? (
               <ul id={listboxId} className={s.suggestList} role="listbox">
                 {discoveryHits.map((hit) => {
@@ -789,18 +791,6 @@ export function PublicMezmurLibrary() {
             </button>
           ) : null}
         </div>
-        <VoiceTranscriptionControl
-          ariaLabel={t('practice.voiceSearchAria')}
-          defaultLanguage="am"
-          onTranscript={(text) => {
-            const transcript = text.trim()
-            if (!transcript) return
-            // Voice → raw transcript → same GET /api/hymns/search as typed (via draftQ).
-            setHeardTranscript(transcript)
-            setDraftQ(transcript)
-            setSuggestOpen(false)
-          }}
-        />
       </div>
 
       {heardTranscript ? (

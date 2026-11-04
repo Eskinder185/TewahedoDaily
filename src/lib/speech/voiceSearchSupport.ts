@@ -7,7 +7,7 @@ const messages = {
     notAllowed:
       'Microphone access was blocked. Allow microphone access in your browser settings and try again.',
     serviceNotAllowed:
-      'Browser voice recognition is unavailable for this language right now. Trying a local fallback…',
+      'Browser voice recognition is unavailable for this language right now. Try another language or type your search.',
     noSpeech: "I didn't hear anything. Try again.",
     audioCapture: 'No microphone was detected.',
     network: "Voice recognition couldn't connect. Try again.",
@@ -55,6 +55,8 @@ const messages = {
     cancel: 'Cancel',
     amharicUnavailable: 'Amharic voice transcription is temporarily unavailable.',
     amharicVoiceUnavailable: 'Amharic voice is temporarily unavailable. You can still type your search.',
+    providerNotice: 'Browser voice recognition may process audio through your browser provider. Review the text before searching.',
+    serverNotice: 'Amharic audio is sent to this site for transcription. Review the text before searching.',
   },
   am: {
     insecure:
@@ -118,15 +120,17 @@ const messages = {
     cancel: 'ሰርዝ',
     amharicUnavailable: 'የአማርኛ ድምፅ ግልባጭ ለጊዜው አይገኝም።',
     amharicVoiceUnavailable: 'የአማርኛ ድምፅ ለጊዜው አይገኝም። በጽሑፍ መፈለግ ይችላሉ።',
+    providerNotice: 'የአሳሽዎ የድምፅ አገልግሎት ድምፅን ሊያስኬድ ይችላል። ከመፈለግዎ በፊት ጽሑፉን ያረጋግጡ።',
+    serverNotice: 'የአማርኛ ድምፅ ለግልባጭ ወደ ዚህ ድረ ገጽ ይላካል። ከመፈለግዎ በፊት ጽሑፉን ያረጋግጡ።',
   },
 } as const
 
-/** Voice recognition is English-only. UI locale remains separate for status copy. */
 export const speechLocales = {
   en: 'en-US',
+  am: 'am-ET',
 } as const
 
-export type VoiceSearchLang = 'en-US'
+export type VoiceSearchLang = 'en-US' | 'am-ET'
 export type VoiceUiLang = 'en' | 'am'
 export type VoicePhase =
   | 'idle'
@@ -181,10 +185,8 @@ function msg(ui: VoiceUiLang, key: MsgKey, params?: Record<string, string>): str
   return text
 }
 
-/** Always English recognition, regardless of UI/content locale. */
-export function toSpeechLocale(_appLocale?: string | null): VoiceSearchLang {
-  void _appLocale
-  return speechLocales.en
+export function toSpeechLocale(appLocale?: string | null): VoiceSearchLang {
+  return appLocale === 'am' ? speechLocales.am : speechLocales.en
 }
 
 export function getSpeechConstructor(

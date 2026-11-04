@@ -17,12 +17,16 @@
     "lint:backend": "cd backend && python -m pytest -q --collect-only",
     "lint:cms": "eslint src/pages/admin src/lib/cms src/lib/auth src/lib/supabase src/App.tsx src/main.tsx",
     "test:cms:auth": "node scripts/cms-auth-smoke.mjs",
+    "test:studio-integration": "npx --yes tsx scripts/test-studio-catalog.ts && node scripts/test-studio-coverage-browser.mjs",
+    "test:lyric-verse-search": "npx --yes tsx scripts/test-lyric-verse-search.ts && node scripts/test-lyric-verse-search-browser.mjs",
+    "test:mezmur:classification-rpc": "npx --yes tsx scripts/test-mezmur-classification-rpc.mjs",
     "test:cms:admin": "node scripts/cms-admin-smoke.mjs",
     "preview": "vite preview",
     "smoke:mobile": "node scripts/mobile-smoke.mjs",
     "test:mobile-shell": "node scripts/test-mobile-shell-regressions.mjs",
     "test:mobile-phase1": "node scripts/test-mobile-phase1-regressions.mjs",
     "test:journeys": "node scripts/playwright-journeys.mjs",
+    "test:faith-challenges:authorization": "npx --yes tsx scripts/test-faith-challenges-authorization.mjs",
     "test:editorial-books-access": "node scripts/test-editorial-books-access.mjs",
     "test:editorial-books-mobile": "node scripts/test-editorial-books-mobile.mjs",
     "test:church-library": "node scripts/test-church-library.mjs && node --experimental-strip-types --no-warnings scripts/test-church-library-upload.ts",
@@ -31,9 +35,10 @@
     "probe:church-library-api": "node --env-file-if-exists=.env.local scripts/probe-church-library-api.mjs",
     "test:church-library:e2e": "node scripts/test-church-library-playwright.mjs",
     "test:mobile-calendar-language": "node scripts/test-mobile-calendar-language.mjs",
-    "test:bible-catalog-presentation": "node --experimental-strip-types --no-warnings scripts/test-bible-catalog-presentation.mjs",
+    "test:bible-catalog-presentation": "node --experimental-strip-types --no-warnings scripts/test-bible-catalog-presentation.mjs && node --experimental-strip-types --no-warnings scripts/test-bible-verified-book-names.mjs",
     "test:bible-cms": "npx --yes tsx scripts/test-bible-cms.ts",
     "test:bible-cms:e2e": "node scripts/test-bible-manager-playwright.mjs",
+    "test:bible-names:browser": "node scripts/test-bible-name-language-browser.mjs",
     "probe:mobile-reaudit": "node scripts/mobile-reaudit-probe.mjs",
     "normalize:english-chants": "npx --yes tsx scripts/normalize-english-chants.ts",
     "normalize:amharic-chants": "node scripts/normalize-amharic-chants.mjs",
@@ -120,12 +125,12 @@
     "test:mezmur-browse-queue": "tsx scripts/test-mezmur-browse-queue.ts",
     "test:play-foundation": "node scripts/test-play-foundation.mjs",
     "test:play-milestones": "tsx scripts/test-play-milestones-2-4.ts",
-    "test:play-complete": "node scripts/test-play-complete.mjs"
-    ,"play:plan-drafts": "tsx scripts/import-play-content-drafts.ts"
-    ,"play:import-drafts": "tsx --env-file-if-exists=.env.local scripts/import-play-content-drafts.ts --apply"
-    ,"test:play-image-catalog": "tsx scripts/test-play-image-catalog.ts"
-    ,"test:finish-mezmur": "tsx scripts/test-finish-mezmur.ts"
-    ,"test:bible-timeline": "tsx scripts/test-bible-timeline.ts"
+    "test:play-complete": "node scripts/test-play-complete.mjs",
+    "play:plan-drafts": "tsx scripts/import-play-content-drafts.ts",
+    "play:import-drafts": "tsx --env-file-if-exists=.env.local scripts/import-play-content-drafts.ts --apply",
+    "test:play-image-catalog": "tsx scripts/test-play-image-catalog.ts",
+    "test:finish-mezmur": "tsx scripts/test-finish-mezmur.ts",
+    "test:bible-timeline": "tsx scripts/test-bible-timeline.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.5.1",
@@ -133,15 +138,15 @@
     "fuse.js": "^7.3.0",
     "mammoth": "^1.13.0",
     "pdfjs-dist": "^6.4.299",
-    "playwright": "^1.49.1",
+    "playwright": "^1.55.1",
     "pptxgenjs": "^3.12.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.14.0"
+    "react-router-dom": "^7.18.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
-    "@types/node": "^24.12.2",
+    "@types/node": "^24.19.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",

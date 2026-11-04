@@ -42,6 +42,12 @@ const addZemari = (row) => {
 addZemari({ id: 'z-dawit', slug: 'zemari-diyakon-dawit-tilahun', name: 'Zemari Diyakon Dawit Tilahun', name_amharic: 'ዘማሪ ዲያቆን ዳዊት ጥላሁን' })
 addZemari({ id: 'z-kidist', slug: 'zemarit-kidisit-mitiku', name: 'Zemarit Kidisit Mitiku', name_amharic: 'ዘማሪት ቅድስት ምትኩ' })
 addZemari({ id: 'z-tewodros', slug: 'like-mezemiran-tewodros-yoseph', name: 'Like Mezemiran Tewodros Yoseph', name_amharic: 'ሊቀ መዘምራን ቴዎድሮስ ዮሴፍ' })
+// Classification taxonomy as stored in the database: 'cross', 'prayer' and 'baptism' are canonical in code but not yet present.
+const dbCategories = new Set(['jesus-christ', 'virgin-mary', 'general', 'saints'])
+const dbOccasions = new Set(['gena', 'timket', 'general'])
+const classificationLinks = new Map()
+let classificationRpcDefect = false
+let classificationRpcCalls = 0
 let counter = 0
 const blankRow = (overrides = {}) => {
   const n = ++counter
@@ -90,6 +96,24 @@ async function installBackend(context) {
       if (!hasLyrics) return json({ code: '23514', message: 'Title, slug, and at least one supported lyrics field are required to publish' }, 400)
       row.status = 'published'
       return json({ public_visible: true })
+    }
+    if (url.pathname.endsWith('/rpc/set_mezmur_classification_import')) {
+      const body = JSON.parse(request.postData() || '{}')
+      classificationRpcCalls += 1
+      if (classificationRpcDefect) return json({ code: '42703', message: 'column "value" does not exist', details: null, hint: null }, 400)
+      const invalidCategories = body.p_category_slugs.filter((slug) => !dbCategories.has(slug))
+      if (invalidCategories.length) return json({ code: '23503', message: `Invalid category slug(s): ${invalidCategories.join(', ')}`, details: null, hint: null }, 409)
+      const invalidOccasions = body.p_occasion_slugs.filter((slug) => !dbOccasions.has(slug))
+      if (invalidOccasions.length) return json({ code: '23503', message: `Invalid occasion slug(s): ${invalidOccasions.join(', ')}`, details: null, hint: null }, 409)
+      classificationLinks.set(body.p_mezmur_import_id, { categories: [...body.p_category_slugs], occasions: [...body.p_occasion_slugs] })
+      return json(null, 204)
+    }
+    if (/\/rest\/v1\/mezmur_(category|occasion)_links_import$/.test(url.pathname) && method === 'GET') {
+      const importId = (url.searchParams.get('mezmur_import_id') || '').replace(/^eq\./, '')
+      const stored = classificationLinks.get(importId) || { categories: [], occasions: [] }
+      return url.pathname.includes('category')
+        ? json(stored.categories.map((category_slug) => ({ category_slug })))
+        : json(stored.occasions.map((occasion_slug) => ({ occasion_slug })))
     }
     const wantsObject = (request.headers().accept || '').includes('vnd.pgrst.object')
     if (url.pathname.endsWith('/rest/v1/profiles')) return wantsObject ? json({ id: 'staff-1', role: 'editor' }) : json([{ id: 'staff-1', role: 'editor' }])
@@ -401,6 +425,123 @@ try {
     const field = await zemariBox(page).boundingBox()
     assert.ok(field.x >= 0 && field.x + field.width <= 360 + 1, 'Zemari field fits the 360px viewport')
     await page.close()
+  })
+
+  const pick = async (page, label, search, optionName) => {
+    const box = page.getByRole('combobox', { name: label })
+    await box.click()
+    await box.fill(search)
+    await page.getByRole('option', { name: optionName }).first().click()
+    await page.keyboard.press('Escape')
+  }
+  const chips = (page, label) => page.getByLabel(`Selected ${label}`)
+
+  await t('Classification saves categories and occasions that exist in the database, and they reopen selected', async () => {
+    const row = seed()
+    const page = await open(edit(row))
+    await pick(page, 'Categories', 'Virgin', /Virgin Mary \/ ድንግል ማርያም/)
+    await pick(page, 'Occasions', 'Gena', /Gena \/ ገና/)
+    await page.getByRole('button', { name: 'Save Draft' }).click()
+    await waitSaved(page, 'saved as draft')
+    assert.equal(await page.getByRole('alert').filter({ hasText: /NOT saved/ }).count(), 0)
+    assert.deepEqual(classificationLinks.get(row.import_id), { categories: ['virgin-mary'], occasions: ['gena'] })
+    assert.ok(await page.getByText('All changes saved').isVisible())
+    await page.close()
+    const reopened = await open(edit(row))
+    await chips(reopened, 'categories').getByText(/Virgin Mary/).waitFor()
+    await chips(reopened, 'occasions').getByText(/Gena/).waitFor()
+    await reopened.close()
+  })
+
+  await t('A canonical slug missing from the database shows the real RPC error and keeps the pending selections until the taxonomy exists', async () => {
+    const row = seed({ lyrics_english: 'Original lyrics' })
+    const page = await open(edit(row))
+    await pick(page, 'Categories', 'Cross', /Cross \/ መስቀል/)
+    await pick(page, 'Categories', 'Prayer', /Prayer \/ ጸሎት/)
+    await pick(page, 'Occasions', 'Baptism', /Baptism \/ ሥርዓተ ጥምቀት/)
+    await tab(page, /^English/).click()
+    await lyricsBox(page).fill('Edited lyrics are saved even though the classification is rejected')
+    await page.getByRole('button', { name: 'Save Draft' }).click()
+    const alert = page.getByRole('alert').filter({ hasText: /NOT saved/ })
+    await alert.waitFor({ timeout: 15000 })
+    const text = await alert.innerText()
+    assert.match(text, /Invalid category slug\(s\): cross, prayer/, 'shows the actual RPC message')
+    assert.match(text, /23503/, 'shows the error code')
+    assert.match(text, /20261101130000_mezmur_canonical_taxonomy_slugs\.sql/, 'points to the taxonomy migration')
+    assert.doesNotMatch(text, /in use/, 'does not use the misleading generic 23503 text')
+    assert.equal(classificationLinks.has(row.import_id), false, 'no partial classification was stored')
+    assert.equal(store.get(row.import_id).lyrics_english, 'Edited lyrics are saved even though the classification is rejected', 'the Mezmur itself was saved')
+    await chips(page, 'categories').getByText(/Cross/).waitFor()
+    await chips(page, 'categories').getByText(/Prayer/).waitFor()
+    await chips(page, 'occasions').getByText(/Baptism/).waitFor()
+    assert.ok(await page.getByText('Unsaved changes').isVisible(), 'the editor still reports unsaved classification changes')
+
+    // The administrator applies the additive taxonomy migration; the same pending selections now save.
+    for (const slug of ['cross', 'prayer']) dbCategories.add(slug)
+    dbOccasions.add('baptism')
+    await page.getByRole('button', { name: 'Save Draft' }).click()
+    await waitSaved(page, 'saved as draft')
+    assert.equal(await page.getByRole('alert').filter({ hasText: /NOT saved/ }).count(), 0)
+    assert.deepEqual(classificationLinks.get(row.import_id), { categories: ['cross', 'prayer'], occasions: ['baptism'] })
+    await page.close()
+    const reopened = await open(edit(row))
+    await chips(reopened, 'categories').getByText(/Cross/).waitFor()
+    await chips(reopened, 'occasions').getByText(/Baptism/).waitFor()
+    await reopened.close()
+    for (const slug of ['cross', 'prayer']) dbCategories.delete(slug)
+    dbOccasions.delete('baptism')
+  })
+
+  await t('A SQLSTATE 42703 defect inside the classification RPC saves the Mezmur once, keeps selections, never shows them as saved, and a retry after the fix is idempotent', async () => {
+    const row = seed({ lyrics_english: 'Original lyrics' })
+    const rowsBefore = store.size
+    classificationRpcDefect = true
+    classificationRpcCalls = 0
+    const page = await open(edit(row))
+    await pick(page, 'Categories', 'Virgin', /Virgin Mary \/ ድንግል ማርያም/)
+    await pick(page, 'Occasions', 'Gena', /Gena \/ ገና/)
+    await tab(page, /^English/).click()
+    await lyricsBox(page).fill('Lyrics saved even though classification links hit the SQL defect')
+    await page.getByRole('button', { name: 'Save Draft' }).click()
+    const alert = page.getByRole('alert').filter({ hasText: /NOT saved/ })
+    await alert.waitFor({ timeout: 15000 })
+    const text = await alert.innerText()
+    assert.match(text, /42703/, 'shows the SQLSTATE')
+    assert.match(text, /column "value" does not exist/, 'shows the real database message')
+    assert.match(text, /20261104_mezmur_classification_rpc_unnest_alias\.sql/, 'points an administrator at the reviewed patch')
+    assert.match(text, /not a problem with your selections/)
+    assert.doesNotMatch(text, /in use|not installed/, 'does not misreport the cause')
+    assert.equal(classificationLinks.has(row.import_id), false, 'no partial classification was stored')
+    assert.equal(store.get(row.import_id).lyrics_english, 'Lyrics saved even though classification links hit the SQL defect', 'the Mezmur itself was saved')
+    assert.equal(store.size, rowsBefore + 0, 'saving did not create a duplicate Mezmur')
+    await chips(page, 'categories').getByText(/Virgin Mary/).waitFor()
+    await chips(page, 'occasions').getByText(/Gena/).waitFor()
+    assert.ok(await page.getByText('Unsaved changes').isVisible(), 'the editor does not claim the classifications are saved')
+    assert.equal(await page.getByRole('status').filter({ hasText: /^Mezmur (saved as draft|published successfully)\.$/ }).count(), 0, 'no unqualified success banner')
+
+    // Pressing Save while the defect persists retries the links only; still exactly one Mezmur and no stored links.
+    await page.getByRole('button', { name: 'Save Draft' }).click()
+    await alert.waitFor({ timeout: 15000 })
+    assert.ok(classificationRpcCalls >= 2, 'the retry calls the RPC again')
+    assert.equal(store.size, rowsBefore)
+    assert.equal(classificationLinks.has(row.import_id), false)
+
+    // An administrator applies the reviewed SQL patch; the same pending selections now save, once.
+    classificationRpcDefect = false
+    classificationRpcCalls = 0
+    await page.getByRole('button', { name: 'Save Draft' }).click()
+    await waitSaved(page, 'saved as draft')
+    assert.equal(await page.getByRole('alert').filter({ hasText: /NOT saved/ }).count(), 0)
+    assert.deepEqual(classificationLinks.get(row.import_id), { categories: ['virgin-mary'], occasions: ['gena'] })
+    assert.equal(classificationRpcCalls, 1, 'one successful write, no duplicate calls')
+    assert.equal(store.size, rowsBefore, 'still exactly one Mezmur')
+    assert.equal(await page.getByText('Unsaved changes').count(), 0, 'now genuinely saved')
+    await page.close()
+    const reopened = await open(edit(row))
+    await chips(reopened, 'categories').getByText(/Virgin Mary/).waitFor()
+    await chips(reopened, 'occasions').getByText(/Gena/).waitFor()
+    await reopened.close()
+    classificationLinks.delete(row.import_id)
   })
 
   assert.deepEqual(consoleErrors, [], 'no uncaught page errors')

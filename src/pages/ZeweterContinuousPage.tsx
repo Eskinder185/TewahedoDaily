@@ -45,6 +45,9 @@ function prayerDisplayTitle(
     fallback: prayer.title,
   }
   const bodyLang = resolvePrayerLang(prayer.text, preferred) || preferred
+  if (preferred === 'english' && !titles.english.trim() && prayer.transliterationTitle?.trim()) {
+    return { title: prayer.transliterationTitle.trim(), bodyLang }
+  }
   const order: PrayerLang[] = [preferred, 'amharic', 'geez', 'english']
   for (const lang of order) {
     const pick =
@@ -213,6 +216,8 @@ export function ZeweterContinuousPage() {
 
   const collectionTitle = bundle.collection.title || t('prayerZeweterTitle')
   const amharicTitle = bundle.collection.amharicTitle || 'ዘወትር ጸሎት'
+  const headingIsEnglish = lang === 'english'
+  const headingTitle = headingIsEnglish ? collectionTitle : amharicTitle
 
   return (
     <PageSection variant="tint">
@@ -239,12 +244,9 @@ export function ZeweterContinuousPage() {
 
         <header className={styles.head}>
           <p className={styles.eyebrow}>{t('prayerZeweterEyebrow')}</p>
-          <h1 className={styles.title}>{collectionTitle}</h1>
-          {amharicTitle && amharicTitle !== collectionTitle ? (
-            <p className={styles.amharic} lang="am">
-              {amharicTitle}
-            </p>
-          ) : null}
+          <h1 className={styles.title} lang={headingIsEnglish ? 'en' : 'am'}>
+            {headingTitle}
+          </h1>
           <p className={styles.deck}>{t('prayerZeweterIntro')}</p>
         </header>
 
@@ -336,12 +338,11 @@ export function ZeweterContinuousPage() {
                 const sectionId = zewterSectionAnchorId(block.slug)
                 return (
                   <section key={`section-${block.id}`} id={sectionId} className={styles.sectionHeading} tabIndex={-1}>
-                    <h2 className={styles.sectionTitle}>
-                      {block.titleAmharic || block.title}
+                    <h2 className={styles.sectionTitle} lang={headingIsEnglish && block.title ? 'en' : 'am'}>
+                      {headingIsEnglish
+                        ? block.title || block.titleAmharic
+                        : block.titleAmharic || block.title}
                     </h2>
-                    {block.titleAmharic && block.title && block.titleAmharic !== block.title ? (
-                      <p className={styles.sectionSub}>{block.title}</p>
-                    ) : null}
                   </section>
                 )
               }
@@ -350,11 +351,6 @@ export function ZeweterContinuousPage() {
               const { title, bodyLang } = prayerDisplayTitle(prayer, lang)
               const body = prayerBodyForLang(prayer.text, bodyLang)
               const anchor = zewterPrayerAnchorId(prayer.slug)
-              const secondary =
-                prayer.transliterationTitle &&
-                prayer.transliterationTitle !== title
-                  ? prayer.transliterationTitle
-                  : null
 
               return (
                 <section key={prayer.id} id={anchor} className={styles.prayer} tabIndex={-1}>
@@ -362,7 +358,6 @@ export function ZeweterContinuousPage() {
                     <h2 className={styles.prayerTitle} lang={htmlLangForPrayerLang(bodyLang)}>
                       {title}
                     </h2>
-                    {secondary ? <p className={styles.prayerSub}>{secondary}</p> : null}
                   </header>
                   {body ? (
                     <PrayerReadingText text={body} lang={bodyLang} variant="plain" allowCollapse={false} />

@@ -111,7 +111,7 @@ export function MediaPicker({
     void load()
   }, [open, load])
 
-  async function performUpload(file: File, opts: { upsert: boolean; storagePath?: string }) {
+  async function performUpload(file: File, opts: { storagePath?: string }) {
     setBusy(true)
     setError('')
     setProgress(0)
@@ -128,7 +128,6 @@ export function MediaPicker({
         altText: localAlt,
         onProgress: setProgress,
         convertToWebp,
-        upsert: opts.upsert,
         storagePath: targetPath,
       })
       onChange({
@@ -161,7 +160,7 @@ export function MediaPicker({
         : '.webp'
       const base = suggestedPath.replace(/\.[^.]+$/, '').replace(/-\d{10,}$/, '')
       const uniquePath = `${base}-${Date.now()}${ext}`
-      await performUpload(file, { upsert: false, storagePath: uniquePath })
+      await performUpload(file, { storagePath: uniquePath })
       return
     }
     const targetPath = suggestedPath || undefined
@@ -172,7 +171,7 @@ export function MediaPicker({
         return
       }
     }
-    await performUpload(file, { upsert: false, storagePath: targetPath })
+    await performUpload(file, { storagePath: targetPath })
   }
 
   function selectAsset(asset: MediaAsset) {
@@ -327,18 +326,11 @@ export function MediaPicker({
                   ? duplicate.path.slice(duplicate.path.lastIndexOf('.'))
                   : '.webp'
                 const uniquePath = `${base}-${Date.now()}${ext}`
-                void performUpload(duplicate.file, { upsert: false, storagePath: uniquePath })
+                void performUpload(duplicate.file, { storagePath: uniquePath })
               }}
               disabled={busy}
             >
               Upload as new file
-            </button>
-            <button
-              type="button"
-              onClick={() => void performUpload(duplicate.file, { upsert: true, storagePath: duplicate.path })}
-              disabled={busy}
-            >
-              Replace (may cache)
             </button>
             <button type="button" onClick={() => setDuplicate(null)}>
               Cancel

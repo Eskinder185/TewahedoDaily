@@ -352,7 +352,26 @@ function buildWhyThisDay(input: {
  * Load the full Day Experience model for a civil (Gregorian) date.
  * Individual sources fail soft — one missing table does not crash the panel.
  */
-export async function loadDayChurchContext(date: Date): Promise<DayChurchContext> {
+const DAY_CONTEXT_TTL_MS = 5 * 60 * 1000
+const dayContextCache = new Map<string, { at: number; promise: Promise<DayChurchContext> }>()
+
+/**
+ * Same-day callers (e.g. "today" and "selected day") share one load, and a recent
+ * result is reused for a few minutes. Failures are never cached.
+ */
+export function loadDayChurchContext(date: Date): Promise<DayChurchContext> {
+  const key = toIsoLocal(stripLocal(date))
+  const hit = dayContextCache.get(key)
+  if (hit && Date.now() - hit.at < DAY_CONTEXT_TTL_MS) return hit.promise
+  const promise = loadDayChurchContextUncached(date)
+  dayContextCache.set(key, { at: Date.now(), promise })
+  promise.catch(() => {
+    if (dayContextCache.get(key)?.promise === promise) dayContextCache.delete(key)
+  })
+  return promise
+}
+
+async function loadDayChurchContextUncached(date: Date): Promise<DayChurchContext> {
   const day = stripLocal(date)
   const eth = gregorianToEthiopian(day)
   const monthName = ETHIOPIAN_MONTH_NAMES[eth.month - 1] || `Month ${eth.month}`
@@ -369,6 +388,14 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
     loadedAt: Date.now(),
   }))
   const orthodox = resolveOrthodoxDay(day, catalog)
+
+  // Independent of the Synaxarium lookup below: start now, await where the values are used.
+  const liturgySummaryPromise = buildLiturgySummary(orthodox.primaryObservance).catch(() => null)
+  const faithPromise = buildDailyFaithContext(day)
+    .then((ctx) =>
+      Promise.all([recommendDailyMezmurs(ctx, 4), recommendDailyScripture(ctx)]),
+    )
+    .catch(() => null)
 
   let synaxarium: DayCommemorationItem[] = []
   let synaxariumDaySlug: string | null = null
@@ -420,10 +447,10 @@ export async function loadDayChurchContext(date: Date): Promise<DayChurchContext
     if (import.meta.env.DEV) console.error('[dayChurchContext] synaxarium', cause)
   }
 
-  const liturgySummary = await buildLiturgySummary(orthodox.primaryObservance).catch(() => null)
-  const dailyFaith = await buildDailyFaithContext(day).catch(() => null)
-  const recommendedMezmurs = dailyFaith ? await recommendDailyMezmurs(dailyFaith, 4) : []
-  const recommendedScriptures = dailyFaith ? await recommendDailyScripture(dailyFaith) : []
+  const liturgySummary = await liturgySummaryPromise
+  const faith = await faithPromise
+  const recommendedMezmurs = faith ? faith[0] : []
+  const recommendedScriptures = faith ? faith[1] : []
 
   const mezmurRecommendations: DayMezmurRecommendation[] = recommendedMezmurs.map((m) => ({
     id: m.id,
