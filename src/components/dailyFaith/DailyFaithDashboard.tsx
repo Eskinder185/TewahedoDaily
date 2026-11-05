@@ -1,5 +1,6 @@
 import { useId, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { classificationLabel } from '../../lib/publicContent/labels'
 import type { DayChurchContext, DayCommemorationItem } from '../../services/dayChurchContext'
 import { useLocale } from '../../lib/i18n/locale'
 import { useTranslation } from '../../i18n'
@@ -517,7 +518,7 @@ function DailyFaithDashboardContent({
           <div className={styles.sectionTitleRow}>
             <h3 id="mezmur-heading" className={styles.sectionHeading}>
               <span className={styles.sectionIcon} aria-hidden="true">🎵</span>
-              <span>{contentLocale === 'am' ? 'የዕለቱ የተመረጡ መዝሙራት' : "Today's Recommended Mezmurs"}</span>
+              <span>{contentLocale === 'am' ? 'ከዕለቱ ጋር የተያያዙ መዝሙራት' : 'Relevant hymns for this day'}</span>
             </h3>
             <Link to="/practice" className={styles.sectionLink}>
               {contentLocale === 'am' ? 'ሁሉንም መዝሙራት' : 'Mezmur Library'} →
@@ -540,19 +541,22 @@ function DailyFaithDashboardContent({
                   <div key={m.id} className={`${styles.mezmurRow} ${index > 1 ? styles.revealedContent : ''}`}>
                     <div className={styles.mezmurContentCol}>
                       <p className={styles.mezmurTitle} title={m.title}>
-                        {m.title}
+                        {contentLocale === 'am' && m.titleAmharic ? m.titleAmharic : m.title}
                       </p>
                       <div className={styles.mezmurSubline}>
-                        {m.titleAmharic ? (
+                        {contentLocale !== 'am' && m.titleAmharic ? (
                           <span className={styles.mezmurAmharic}>{m.titleAmharic}</span>
                         ) : null}
+                        {m.category ? <span className={styles.mezmurSinger}>{contentLocale === 'am' ? 'ምድብ' : 'Category'}: {classificationLabel(m.category)}</span> : null}
+                        {m.language ? <span className={styles.mezmurSinger}>{contentLocale === 'am' ? 'ቋንቋ' : 'Language'}: {classificationLabel(m.language)}</span> : null}
+                        {m.applicableEntity ? <span className={styles.mezmurSinger}>{contentLocale === 'am' ? 'ተዛማጅ' : 'Related to'}: {m.applicableEntity}</span> : null}
                         {m.singerName ? (
                           <span className={styles.mezmurSinger}>
                             {contentLocale === 'am' ? `ዘማሪ: ${m.singerName}` : m.singerName}
                           </span>
                         ) : null}
                         <span className={styles.mezmurMatch}>
-                          {m.matchReason}
+                          {contentLocale === 'am' && m.matchReasonAm ? m.matchReasonAm : m.matchReason}
                         </span>
                       </div>
                     </div>

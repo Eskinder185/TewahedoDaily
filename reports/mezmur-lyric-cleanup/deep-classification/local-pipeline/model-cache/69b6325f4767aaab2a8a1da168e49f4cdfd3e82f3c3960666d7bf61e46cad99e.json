@@ -1,0 +1,29 @@
+{
+  "group": "838b15277bff843985b8eebb53ee480e90d9d48e07f8f2dca5c203b0fa736df4",
+  "member_ids": [
+    "41da10ce-19d9-48c2-a317-e6b757f7eb2b"
+  ],
+  "item": {
+    "hash": "838b15277bff843985b8eebb53ee480e90d9d48e07f8f2dca5c203b0fa736df4",
+    "primary_slug": "martyrs",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ደማቸውን ስለ እግዚአብሔር አፈሰሱ/2/",
+      "ስለ መንግሥተ ሰማያት መራራ ሞትን"
+    ],
+    "reason": "Lyrics explicitly describe shedding blood for God and suffering death for the Kingdom.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1173,
+    "eval_count": 607,
+    "total_duration_ns": 8267058800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

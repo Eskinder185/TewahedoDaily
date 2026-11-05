@@ -1,0 +1,50 @@
+{
+  "group_hashes": [
+    "245c004da3abff4be51efa47161edd43916d7bf60c363b4fed272b954b7a617e",
+    "e2f5b5220ecad121f65256150805670a1161d378a136d3a83197b293ceecbea9",
+    "4780fff0e84e1cfa88959aeb94fb8745f41b3c3d056b7133b20eb2e4c7ae1372"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "245c004da3abff4be51efa47161edd43916d7bf60c363b4fed272b954b7a617e",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are too fragmented to determine a specific subject or category.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "e2f5b5220ecad121f65256150805670a1161d378a136d3a83197b293ceecbea9",
+        "primary_slug": "prophets",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ነብዩ ዳንኤል በፆም ስላመነ/2/",
+          "ኤልያስ �የወጣው በእሳት ሰረገላ/2/"
+        ],
+        "reason": "Lyrics explicitly name prophets Daniel and Elijah as central subjects.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "4780fff0e84e1cfa88959aeb94fb8745f41b3c3d056b7133b20eb2e4c7ae1372",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics mention Eve and creation but lack sufficient context for a specific category.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1333,
+    "eval_count": 468,
+    "total_duration_ns": 6705209200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

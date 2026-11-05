@@ -1,0 +1,29 @@
+{
+  "group": "929a085f9c508b385102c0ef2df4a37ad6eba4058a8ff38409780a3ca65ef69b",
+  "member_ids": [
+    "3305feeb-3f78-5da8-a410-71932e0af69e"
+  ],
+  "item": {
+    "hash": "929a085f9c508b385102c0ef2df4a37ad6eba4058a8ff38409780a3ca65ef69b",
+    "primary_slug": "saints",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "tsatsiqu abatachn Kidus yusef",
+      "lemlny yusef amaldenny keamlakh"
+    ],
+    "reason": "Lyrics explicitly address 'Kidus Yosef' (Saint Joseph) as a protector and servant of God.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2619,
+    "eval_count": 493,
+    "total_duration_ns": 7383895100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

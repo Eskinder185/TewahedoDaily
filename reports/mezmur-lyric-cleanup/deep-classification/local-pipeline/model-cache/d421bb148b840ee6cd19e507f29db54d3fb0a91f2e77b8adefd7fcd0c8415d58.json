@@ -1,0 +1,31 @@
+{
+  "group": "ee6724e2e4a565b3fe5d3e15ca4a3f8ecb3b4f9149a2c6e9e396e2c719de8116",
+  "member_ids": [
+    "575e10ae-728b-5f9f-a8ca-94fab65e2e40"
+  ],
+  "item": {
+    "hash": "ee6724e2e4a565b3fe5d3e15ca4a3f8ecb3b4f9149a2c6e9e396e2c719de8116",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የተዋህዶ ልጆች አሁን ነው ሰዓቱ"
+    ],
+    "reason": "The song is a hymn of praise to the Tewahedo faith and its martyrs, celebrating their legacy.",
+    "competing_slugs": [
+      "martyrs",
+      "saints"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2564,
+    "eval_count": 580,
+    "total_duration_ns": 8537637000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

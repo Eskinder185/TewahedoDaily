@@ -1,0 +1,29 @@
+{
+  "group": "386cf4f7cdad00568effa3b40b2440f0dea01bfb91543d76e4405c0503b8d4cc",
+  "member_ids": [
+    "119cb758-721e-4c91-bff2-d6db28a06c22"
+  ],
+  "item": {
+    "hash": "386cf4f7cdad00568effa3b40b2440f0dea01bfb91543d76e4405c0503b8d4cc",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Wetsa wegeba beselam /2/ wegeba beselam/2/",
+      "Tirgum -beselam wetto beselam geba"
+    ],
+    "reason": "Lyrics describe entering in peace, a common theme of praise and worship.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 921,
+    "eval_count": 513,
+    "total_duration_ns": 7220600200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

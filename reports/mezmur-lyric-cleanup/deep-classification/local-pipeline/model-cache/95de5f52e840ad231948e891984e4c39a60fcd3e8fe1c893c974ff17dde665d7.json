@@ -1,0 +1,30 @@
+{
+  "group": "788dd5af4c0e2852ff31976c61a7b63b76ecd9572d3deb2652da08946e4ae26c",
+  "member_ids": [
+    "1c8f5de5-6097-4524-952d-8e454b46cc35"
+  ],
+  "item": {
+    "hash": "788dd5af4c0e2852ff31976c61a7b63b76ecd9572d3deb2652da08946e4ae26c",
+    "primary_slug": "prayer",
+    "confidence": "medium",
+    "uncertain": false,
+    "evidence": [
+      "አምላክ የለም ብለህ ካድከው ፈጣሪህን"
+    ],
+    "reason": "Lyrics address God directly and warn against denying Him, fitting a prayer or admonition context.",
+    "competing_slugs": [
+      "repentance"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1104,
+    "eval_count": 475,
+    "total_duration_ns": 6822495200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

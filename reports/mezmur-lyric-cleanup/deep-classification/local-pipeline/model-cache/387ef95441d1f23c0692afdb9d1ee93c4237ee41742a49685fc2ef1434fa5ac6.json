@@ -1,0 +1,29 @@
+{
+  "group": "bbe13b7b90caf66dce608ef6f7b4dc59a51fe1a5ecebe68752b00077842cd46f",
+  "member_ids": [
+    "4a5f0629-af01-5f8a-9ff1-ac35f7817ee1"
+  ],
+  "item": {
+    "hash": "bbe13b7b90caf66dce608ef6f7b4dc59a51fe1a5ecebe68752b00077842cd46f",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ደስ ይበልሽ /2/ ማርያም ንፅህት ድንግል",
+      "የልዑል ማደርያ ለመሆን የበቃሽ"
+    ],
+    "reason": "Lyrics explicitly praise Mary as pure, blessed among women, and the mother of God.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2172,
+    "eval_count": 623,
+    "total_duration_ns": 8715550900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

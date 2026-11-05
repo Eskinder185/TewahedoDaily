@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "d9a6eb74637727cd8a7698008783a9e687b980db12c9d65b754f0a3bfc268dcc",
+    "72d100bc1610abcf87f44f613518dcde598ddc3a6638e021d580d912f9e3a931",
+    "bbe3f13fb55718fd95ec9c4e1d19948682ffc0c85f7564dbcbf11ab523810d45"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "d9a6eb74637727cd8a7698008783a9e687b980db12c9d65b754f0a3bfc268dcc",
+        "primary_slug": "jesus-christ",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "የአባታችን የዳዊት መንግስት ቡርክት ናት"
+        ],
+        "reason": "Lyrics reference 'Abune Dawit' (King David), whose lineage and kingdom are central to Jesus Christ's identity in Christian theology.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "72d100bc1610abcf87f44f613518dcde598ddc3a6638e021d580d912f9e3a931",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የትም ቦታ ያለህ ሁሉን የምታውቅ"
+        ],
+        "reason": "The lyrics are a direct address to God asking for His presence and knowledge in all places, characteristic of prayer.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "bbe3f13fb55718fd95ec9c4e1d19948682ffc0c85f7564dbcbf11ab523810d45",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የሚቃጠለው ስብ በፊትህ ምንድን ነው"
+        ],
+        "reason": "The text is a song of intense praise ('zemr') and worship directed at God's mercy and glory.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1759,
+    "eval_count": 551,
+    "total_duration_ns": 7802023900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

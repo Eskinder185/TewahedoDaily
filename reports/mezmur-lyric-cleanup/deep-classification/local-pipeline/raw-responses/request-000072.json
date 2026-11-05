@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "8a66e01b05dc583beb9301fafd6683c5e7b10bdc1c5cd69d9a790d1d8f2a05b8",
+    "2d343b888860aac9880288b6d82cce48cefb70b35cc8d880519e241ddf91bc95",
+    "d5daa6b8ce1c773591e9aabeb3b41890aede57381a393a9b2b6b2f713eb61bc5"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "8a66e01b05dc583beb9301fafd6683c5e7b10bdc1c5cd69d9a790d1d8f2a05b8",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are incomplete and lack sufficient context to determine a specific subject.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "2d343b888860aac9880288b6d82cce48cefb70b35cc8d880519e241ddf91bc95",
+        "primary_slug": "kidus-michael=Kidus Michael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ኃያሉ ሚካኤል ድንቅን አደረገ",
+          "ከእኛ ጋር ነው ሚካኤል ሰልፋችንን ይመራል"
+        ],
+        "reason": "Lyrics repeatedly name Kidus Michael and describe his actions as the dominant subject.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "d5daa6b8ce1c773591e9aabeb3b41890aede57381a393a9b2b6b2f713eb61bc5",
+        "primary_slug": "praise-worship=Praise / Worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ዘምሩ ለእግዚአብሔር ለጌታ ዘምሩ",
+          "ስትመሰገን በሰማይ ላይ"
+        ],
+        "reason": "The text focuses on praising God and singing hymns of worship.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3181,
+    "eval_count": 552,
+    "total_duration_ns": 8357683500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

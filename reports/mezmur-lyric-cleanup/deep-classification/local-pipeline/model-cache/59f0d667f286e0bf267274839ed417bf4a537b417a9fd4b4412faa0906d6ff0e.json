@@ -1,0 +1,29 @@
+{
+  "group": "94e2f362f8c202c979a6b4e9f8b6d1b8940ce96d9ce558616f296e7814737ca5",
+  "member_ids": [
+    "0d5335e2-cade-43c1-9df6-e10212c248e1"
+  ],
+  "item": {
+    "hash": "94e2f362f8c202c979a6b4e9f8b6d1b8940ce96d9ce558616f296e7814737ca5",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Fragmented lyrics do not provide enough context to identify a specific saint or subject.",
+    "competing_slugs": [
+      "general",
+      "prayer"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1149,
+    "eval_count": 526,
+    "total_duration_ns": 7393244200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

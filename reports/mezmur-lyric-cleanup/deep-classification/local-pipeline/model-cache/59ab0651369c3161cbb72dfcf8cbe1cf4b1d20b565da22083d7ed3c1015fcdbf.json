@@ -1,0 +1,28 @@
+{
+  "group": "a9c9bccbd1d36c9b51cfa6580f2993b39ba504d74f211507657b01694a088edf",
+  "member_ids": [
+    "11f51db0-0640-47d3-966a-4aea7c5e5b29"
+  ],
+  "item": {
+    "hash": "a9c9bccbd1d36c9b51cfa6580f2993b39ba504d74f211507657b01694a088edf",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Hatiatachnin liyaswegdiln"
+    ],
+    "reason": "Lyrics explicitly mention removing sins, which is the core of repentance.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 921,
+    "eval_count": 513,
+    "total_duration_ns": 7220600200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

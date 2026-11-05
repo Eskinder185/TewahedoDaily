@@ -1,0 +1,29 @@
+{
+  "group": "a250f89e97069f76a44a2b50e5ff84fd969a05973f58f5d0afd002309dfbf5d6",
+  "member_ids": [
+    "30b0ab08-0d77-5fcc-9b47-95b3a4b6e26a"
+  ],
+  "item": {
+    "hash": "a250f89e97069f76a44a2b50e5ff84fd969a05973f58f5d0afd002309dfbf5d6",
+    "primary_slug": "kidus-yared",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "/2yared tsehey zeityopya amdebrhan zebetekrstiyan melak zebemdr",
+      "yeityopya tsehey yebetekrstiyan yebrhan amd yemdr melektenya yared"
+    ],
+    "reason": "Lyrics explicitly name Kidus Yared as the sun of Ethiopia and teacher of the church.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2056,
+    "eval_count": 560,
+    "total_duration_ns": 8158631200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

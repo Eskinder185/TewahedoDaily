@@ -1,0 +1,26 @@
+{
+  "group": "5908621ee4b9075a7d5499f0caff6353f6d213a242915d7eba10361bc5f61a44",
+  "member_ids": [
+    "21d2dc81-889d-4b26-b61c-73d536fa0aad"
+  ],
+  "item": {
+    "hash": "5908621ee4b9075a7d5499f0caff6353f6d213a242915d7eba10361bc5f61a44",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Insufficient lyrics provided to determine the subject; only a fragment mentioning 'Amba' is present.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1906,
+    "eval_count": 532,
+    "total_duration_ns": 7581899900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

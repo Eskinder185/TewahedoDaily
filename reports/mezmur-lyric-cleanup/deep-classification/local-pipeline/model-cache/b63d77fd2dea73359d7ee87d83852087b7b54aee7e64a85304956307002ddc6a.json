@@ -1,0 +1,29 @@
+{
+  "group": "f0552667527e437b0a6e1497e1ca68d95c0ad8b79c05c32f6239f6c49be9466d",
+  "member_ids": [
+    "23ff6f9e-7761-57c7-8a5c-73aeaf6f824e"
+  ],
+  "item": {
+    "hash": "f0552667527e437b0a6e1497e1ca68d95c0ad8b79c05c32f6239f6c49be9466d",
+    "primary_slug": "holy-trinity",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የስላሴን መንበር ቅዱሳን ከበውት",
+      "ካህናተ ሰማይ ስሉስ ቅዱስ ሲሉ"
+    ],
+    "reason": "Lyrics explicitly mention the 'Throne of the Trinity' and the 'Holy Trinity', focusing on the triune nature of God.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3012,
+    "eval_count": 652,
+    "total_duration_ns": 9637364400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

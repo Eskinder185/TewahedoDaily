@@ -1,0 +1,31 @@
+{
+  "group": "37ecc07606dacf8ac03d8e20ea701e156c27110b7a5c1a175d85b112b6192203",
+  "member_ids": [
+    "13568093-cdf7-5122-adbe-3ee85c2c7cfa"
+  ],
+  "item": {
+    "hash": "37ecc07606dacf8ac03d8e20ea701e156c27110b7a5c1a175d85b112b6192203",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ተፅናንቷል አርፏል ልባችን",
+      "አንወድቅም አንሸነፍም"
+    ],
+    "reason": "Lyrics describe the heart being tested and the resolve to not fall away, central to repentance.",
+    "competing_slugs": [
+      "prayer"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2012,
+    "eval_count": 620,
+    "total_duration_ns": 8986803100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

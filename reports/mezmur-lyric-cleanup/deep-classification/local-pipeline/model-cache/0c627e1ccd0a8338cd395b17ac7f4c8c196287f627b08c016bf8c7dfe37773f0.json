@@ -1,0 +1,26 @@
+{
+  "group": "fc18ea2be915255691ab25b168793c86e7322fe56db5042dac9575874f7ea7c1",
+  "member_ids": [
+    "280b4938-d2f6-4807-bf05-ed317b7f24a6"
+  ],
+  "item": {
+    "hash": "fc18ea2be915255691ab25b168793c86e7322fe56db5042dac9575874f7ea7c1",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics provided are only a title fragment and transliteration without substantive text to determine subject.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2999,
+    "eval_count": 537,
+    "total_duration_ns": 7760727600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

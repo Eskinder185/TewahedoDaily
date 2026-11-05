@@ -1,0 +1,29 @@
+{
+  "group": "dcd6494bdf1f9deecb89ca23ae556fb40d56831a64e71fb632a4ba4742defe16",
+  "member_ids": [
+    "185f2420-0ae3-4dda-863a-85bd692bf885"
+  ],
+  "item": {
+    "hash": "dcd6494bdf1f9deecb89ca23ae556fb40d56831a64e71fb632a4ba4742defe16",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ብዘካ መድሕነይ እቲ ኣምላኽ ሓቂ",
+      "ንሱ ግን ኔሩኒ ለዋህ እሙን ጓሳ"
+    ],
+    "reason": "Lyrics explicitly mention 'Medhiney' (Savior) and 'Amlah Haqi' (True God), referring to Jesus Christ.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2965,
+    "eval_count": 444,
+    "total_duration_ns": 7572999400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

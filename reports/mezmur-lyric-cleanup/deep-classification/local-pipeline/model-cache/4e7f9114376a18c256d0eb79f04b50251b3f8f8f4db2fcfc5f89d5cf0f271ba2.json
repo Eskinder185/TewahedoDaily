@@ -1,0 +1,29 @@
+{
+  "group": "c2f22448d84e389a06e80788e6d693fc1fa17bce9db58263d2cff08e4c65ade8",
+  "member_ids": [
+    "277de01e-321a-4c17-8d01-f1ba06254a40"
+  ],
+  "item": {
+    "hash": "c2f22448d84e389a06e80788e6d693fc1fa17bce9db58263d2cff08e4c65ade8",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Keinya yemifelegew mamen",
+      "Afim yitsum kemawrat yikelkel"
+    ],
+    "reason": "The text describes the need to believe and warns against speaking, hearing, or seeing without faith.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1780,
+    "eval_count": 529,
+    "total_duration_ns": 7393476000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

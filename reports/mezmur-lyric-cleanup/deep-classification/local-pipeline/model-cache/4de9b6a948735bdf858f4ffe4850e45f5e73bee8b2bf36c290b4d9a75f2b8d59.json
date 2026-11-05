@@ -1,0 +1,29 @@
+{
+  "group": "e9f18f21768fa05d9d23fdaba068d885b10916429cdb112af2a07c89aaf22872",
+  "member_ids": [
+    "4ac0c7ae-d32b-5e20-884a-ec1212c29164"
+  ],
+  "item": {
+    "hash": "e9f18f21768fa05d9d23fdaba068d885b10916429cdb112af2a07c89aaf22872",
+    "primary_slug": "kidus-gabriel",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ገብርኤል ሀያል መላከ ሰላም መላከ ብስራት",
+      "አንተ ስላለህ መሃከላቸዉ"
+    ],
+    "reason": "The hymn directly addresses Gabriel as the messenger of peace and protector.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2172,
+    "eval_count": 623,
+    "total_duration_ns": 8715550900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,28 @@
+{
+  "group": "48fd8e07a95b24b9b3c23b043a47d19e8840b97e0bf95915f8968a3d15973ab2",
+  "member_ids": [
+    "0a209f11-e10d-4c2c-9120-ccd6c6e86fc2"
+  ],
+  "item": {
+    "hash": "48fd8e07a95b24b9b3c23b043a47d19e8840b97e0bf95915f8968a3d15973ab2",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አንቺ ነሽ ለእኔ የኔስ መጽናኛዬ"
+    ],
+    "reason": "The lyrics directly address 'Anchi' (You/Female) as a refuge for the speaker, characteristic of Marian hymns.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1134,
+    "eval_count": 611,
+    "total_duration_ns": 8819960900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

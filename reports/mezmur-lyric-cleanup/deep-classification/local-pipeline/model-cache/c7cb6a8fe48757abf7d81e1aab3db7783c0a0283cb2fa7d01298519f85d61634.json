@@ -1,0 +1,28 @@
+{
+  "group": "b79586beb14b6c5303f922364e41d4fe63626f15007ec35612601c3770683716",
+  "member_ids": [
+    "0f30d4dc-0fc9-4e51-b2ba-07efb1b2a602"
+  ],
+  "item": {
+    "hash": "b79586beb14b6c5303f922364e41d4fe63626f15007ec35612601c3770683716",
+    "primary_slug": "cross",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Mesqel teshekeme lihonen medhanit /2/"
+    ],
+    "reason": "The lyrics directly reference the cross (Mesqel) as a bearer of healing or salvation.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 990,
+    "eval_count": 527,
+    "total_duration_ns": 7439912500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

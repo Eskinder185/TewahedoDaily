@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "7f2ebb9dd706f771bb11c4dba32fe0e1b6017dd87e6fcda317c27bbc2198df9e",
+    "9819f5740a1152b560dc841a0602476e833e8005ad28684880ee2461bbce1471",
+    "71452c33220b082699eefc3a604ff42bf12b746433d6537648813633df617be7"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "7f2ebb9dd706f771bb11c4dba32fe0e1b6017dd87e6fcda317c27bbc2198df9e",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Nuri lezelealem tekebresh behulachin"
+        ],
+        "reason": "Lyrics explicitly address the eternal light and command worship.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "9819f5740a1152b560dc841a0602476e833e8005ad28684880ee2461bbce1471",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Bemdir lay redi hono magelgelun"
+        ],
+        "reason": "Text describes a request for service and resurrection through grace.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "71452c33220b082699eefc3a604ff42bf12b746433d6537648813633df617be7",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Kahnu yibarkwat burkit sew tihun"
+        ],
+        "reason": "Lyrics are a direct petition for blessing upon the person.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 905,
+    "eval_count": 461,
+    "total_duration_ns": 6878620800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "group": "c932df9f43cfb34041671e473d2cb202a166dabe3137fa9b36866842a403e8ba",
+  "member_ids": [
+    "1408592d-1176-59d3-9060-30d5c3458d75"
+  ],
+  "item": {
+    "hash": "c932df9f43cfb34041671e473d2cb202a166dabe3137fa9b36866842a403e8ba",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የጌታዬ እናት ንጹህ አክሊላችን",
+      "እመቤታችን ድንግል ሆይ"
+    ],
+    "reason": "Lyrics explicitly address Mary as 'our pure mother' and 'Virgin', focusing entirely on her attributes.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2493,
+    "eval_count": 597,
+    "total_duration_ns": 8943017100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

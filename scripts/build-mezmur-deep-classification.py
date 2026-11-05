@@ -35,6 +35,16 @@ hierarchy = json.loads((BASE / 'mezmur_category_hierarchy.json').read_text(encod
 categories = {item['canonical']: item['slug'] for item in hierarchy['categories'] if item['existing']}
 occasions = {item['canonical']: item['slug'] for item in hierarchy['occasions'] if item['existing']}
 reviews = json.loads(REVIEW.read_text(encoding='utf-8'))
+local_dir = OUT / 'local-pipeline'
+local_summary = json.loads((local_dir / 'preprocess_summary.json').read_text(encoding='utf-8')) if (local_dir / 'preprocess_summary.json').exists() else {}
+local_verification = json.loads((local_dir / 'verification.json').read_text(encoding='utf-8')) if (local_dir / 'verification.json').exists() else {}
+local_candidates = {row['import_id']: row for row in read_csv(local_dir / 'automated_candidates.csv')[0]} if (local_dir / 'automated_candidates.csv').exists() else {}
+local_models = {row['import_id']: row for row in read_csv(local_dir / 'model_proposals.csv')[0]} if (local_dir / 'model_proposals.csv').exists() else {}
+if local_summary:
+    assert local_summary['source_sha256'] == hashlib.sha256(SOURCE.read_bytes()).hexdigest()
+    assert local_summary['taxonomy_sha256'] == hashlib.sha256((BASE / 'mezmur_category_hierarchy.json').read_bytes() + (BASE / 'mezmur_category_aliases.json').read_bytes()).hexdigest()
+assert all(not row['candidate_slug'] or row['candidate_slug'] in categories.values() for row in local_candidates.values())
+assert all(not row['primary_slug'] or row['primary_slug'] in categories.values() for row in local_models.values())
 assert len(source) == len(audit) == 2531
 assert len(reviews) == 25
 assert len({row['import_id'] for row in source}) == 2531
@@ -61,6 +71,9 @@ proposal_fields = [
     'proposed_broad_category', 'proposed_subcategory', 'proposed_specific_subject',
     'proposed_secondary_categories', 'proposed_occasions', 'semantic_confidence',
     'semantic_reason', 'competing_categories', 'manual_review_flag',
+    'local_candidate_slug', 'local_candidate_status', 'local_candidate_evidence',
+    'local_model_slug', 'local_model_confidence', 'local_model_uncertain',
+    'local_model_evidence', 'local_model_quality_flags', 'local_model_provenance',
 ]
 master = []
 primary = []
@@ -72,6 +85,20 @@ review_queue = []
 for index, row in enumerate(source):
     review = review_by_id.get(row['import_id'])
     extra = {field: '' for field in proposal_fields}
+    extra['semantic_review_status'] = 'not_reviewed'
+    candidate = local_candidates.get(row['import_id'])
+    model = local_models.get(row['import_id'])
+    if candidate and not review:
+        extra.update({'local_candidate_slug': candidate['candidate_slug'],
+                      'local_candidate_status': candidate['candidate_status'],
+                      'local_candidate_evidence': candidate['candidate_evidence']})
+    if model and not review:
+        extra.update({'local_model_slug': model['primary_slug'],
+                      'local_model_confidence': model['effective_confidence'],
+                      'local_model_uncertain': model['uncertain'],
+                      'local_model_evidence': model['evidence'],
+                      'local_model_quality_flags': model['quality_flags'],
+                      'local_model_provenance': model['model'] + ':' + model['taxonomy_sha256'][:12]})
     if review:
         extra.update({
             'semantic_review_status': 'full_lyrics_reviewed',
@@ -122,10 +149,20 @@ for index, row in enumerate(source):
                              'confidence': review['confidence'], 'reason': review['reason']})
     elif row['import_id'] in manual_by_id:
         unresolved = not row['category'].strip()
-        review_queue.append({'priority': 'medium' if unresolved else 'low', 'import_id': row['import_id'], 'title': row['title'],
+        review_queue.append({'priority': 'high' if model and model['quality_flags'] else 'medium' if unresolved else 'low', 'import_id': row['import_id'], 'title': row['title'],
                              'semantic_review_status': 'not_reviewed', 'current_category': row['category'],
-                             'proposed_category': '', 'confidence': '',
-                             'reason': 'Unresolved category; full lyrics not yet reviewed.' if unresolved else manual_by_id[row['import_id']]['reason']})
+                             'proposed_category': model['primary_slug'] if model else '', 'confidence': model['effective_confidence'] if model else '',
+                             'reason': ('Local model proposal requires review: ' + model['quality_flags']) if model and model['quality_flags'] else
+                                       'Unresolved category; full lyrics not yet reviewed.' if unresolved else manual_by_id[row['import_id']]['reason']})
+    elif model:
+        review_queue.append({'priority': 'medium', 'import_id': row['import_id'], 'title': row['title'],
+                             'semantic_review_status': 'not_reviewed', 'current_category': row['category'],
+                             'proposed_category': model['primary_slug'], 'confidence': model['effective_confidence'],
+                             'reason': 'Local model proposal; editorial review required.'})
+    if model and 'conflicts_with_current_category' in model['quality_flags']:
+        conflicts.append({'import_id': row['import_id'], 'title': row['title'], 'conflict_type': 'local_model_vs_current',
+                          'current_approved_category': row['category'], 'earlier_suggestion': audit_by_id[row['import_id']]['proposed_category'],
+                          'semantic_proposal': model['primary_slug'], 'reason': model['reason'], 'lyric_evidence': model['evidence']})
     master.append({**row, **extra})
 
 review_queue.sort(key=lambda item: {'high': 0, 'medium': 1, 'low': 2}[item['priority']])
@@ -147,7 +184,12 @@ coverage = {
     'proposed_primary_distribution': dict(Counter(row['proposed_category'] for row in primary)),
     'specific_named_subjects': sum(row['proposed_category'] in {'Kidus Uriel', 'Kidus Michael', 'Virgin Mary', 'Jesus Christ', 'Holy Trinity'} for row in primary),
     'secondary_proposals': len(secondary), 'occasion_suggestions': len(occasion_rows),
-    'earlier_suggestion_disagreements': len(conflicts),
+    'earlier_suggestion_disagreements': sum(item['conflict_type'] == 'earlier_automated_suggestion' for item in conflicts),
+    'local_model_conflicts_with_current': sum(item['conflict_type'] == 'local_model_vs_current' for item in conflicts),
+    'automated_candidate_records': len(local_candidates),
+    'strong_automated_candidates': local_summary.get('strong_automated_candidates', 0),
+    'local_model_proposals': len(local_models),
+    'local_model_confidence_distribution': dict(Counter(item['effective_confidence'] for item in local_models.values())),
     'taxonomy_additions_for_review': sorted({review['proposed_taxonomy_addition'] for review in reviews if review.get('proposed_taxonomy_addition')}),
 }
 (OUT / 'mezmur_category_coverage.json').write_text(json.dumps(coverage, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
@@ -159,6 +201,24 @@ progress = {
     'completed_batches': [{'batch_id': 'batch-001', 'count': len(reviews), 'source_rows': [review['row'] + 1 for review in reviews],
                            'import_ids': [review['import_id'] for review in reviews]}],
     'automated_candidates_are_semantic_reviews': False,
+    'local_pipeline': {
+        'taxonomy_sha256': local_summary.get('taxonomy_sha256'),
+        'unique_original_lyric_groups': local_summary.get('unique_original_lyric_groups', 0),
+        'exact_duplicate_members_reusable_after_validation': local_summary.get('exact_duplicate_members_reusable_after_validation', 0),
+        'near_duplicate_pairs_for_review_only': local_summary.get('near_duplicate_pairs_for_review_only', 0),
+        'automated_candidate_records': len(local_candidates),
+        'local_model_proposal_records': len(local_models),
+        'local_model_classification_proposals': local_verification.get('local_model_classification_proposals', 0),
+        'unresolved_total': local_verification.get('unresolved_total', len(source) - len(reviews)),
+        'reused_near_duplicate_classifications': 0,
+        'exact_duplicate_reused_records': local_verification.get('exact_duplicate_reused_records', 0),
+        'model_requests': local_verification.get('model_requests', 0),
+        'prompt_tokens': local_verification.get('prompt_tokens', 0),
+        'output_tokens': local_verification.get('output_tokens', 0),
+        'failed_groups': local_verification.get('failed_groups', {}),
+        'next_group_hash': local_verification.get('next_group_hash'),
+        'human_verified_model_proposals': 0,
+    },
 }
 (OUT / 'classification_progress.json').write_text(json.dumps(progress, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
@@ -169,8 +229,11 @@ This is an offline editorial proposal. No original category, occasion, lyric, ID
 - Retained source records accounted for: {len(source):,}.
 - Complete lyrics semantically reviewed in this batch: {len(reviews)}.
 - Records awaiting semantic review: {len(source) - len(reviews):,}.
+- Retained records in the prior manual-review queue: {len(review_queue):,}. The prior queue's other {len(manual) - len(review_queue)} IDs are outside the 2,531 retained source rows.
 - Previously unresolved categories with a supported category proposal: {len(primary)}.
-- Earlier automated category suggestions disputed after full lyric review: {len(conflicts)}.
+- Reviewed records with a named person or divine subject in the supported category: {coverage['specific_named_subjects']}.
+- Unreviewed records whose current category remains unresolved: {coverage['remaining_unreviewed_unresolved']}.
+- Earlier automated category suggestions disputed after full lyric review: {coverage['earlier_suggestion_disagreements']}.
 - Secondary categories proposed: {len(secondary)}. No separate substantial evidence justified one in this batch.
 - Occasions proposed: {len(occasion_rows)}. Hymn subject alone did not establish traditional use.
 - Source lyric excerpts checked for literal presence: {len(evidence_rows)}.
@@ -179,7 +242,22 @@ The supported taxonomy has no dedicated Abba Kyros category. His hymn uses the s
 
 The 25 reviewed records are published with empty existing category fields. Their current database-facing values remain blank in the master proposal; all suggested classifications require editorial approval. The earlier alias pass suggested **Angels** for a Marian hymn because the lyric calls Mary a sister of angels. Full-lyric review instead found Mary directly addressed through several biblical images.
 
-The initial batch prioritizes unresolved categories with enough lyrics to support analysis. The unreviewed 2,506 records are explicitly marked `not_reviewed`; automated suggestions were not copied into the semantic proposal fields. Continue with a new batch of 25–50 unresolved records, review their complete lyrics, append new review entries, and regenerate the outputs. Preserve the source hash or audit any source revision before continuing.
+The initial batch prioritizes unresolved categories with enough lyrics to support analysis. The 2,506 records without human semantic review remain marked `not_reviewed`; automated suggestions were not copied into the semantic proposal fields. Continue local processing with `python scripts/mezmur-local-classification.py run --max-packs 40`, then run `verify` and rebuild this report. Preserve the source hash or audit any source revision before continuing.
+'''
+report += f'''
+
+## Local batch pipeline
+
+- Unreviewed records preprocessed: {len(local_candidates):,}; strong lexical candidates: {local_summary.get('strong_automated_candidates', 0):,}. These are automated suggestions, not semantic reviews.
+- Distinct original-lyric groups: {local_summary.get('unique_original_lyric_groups', 0):,}; exact duplicate members: {local_summary.get('exact_duplicate_members_reusable_after_validation', 0)}. Near-duplicate similarity is a review hint only.
+- Reused exact-duplicate classifications: {local_verification.get('exact_duplicate_reused_records', 0)}; reused near-duplicate classifications: 0.
+- Local Ollama records: {len(local_models)}; supported classification proposals: {local_verification.get('local_model_classification_proposals', 0)}; unresolved hymns: {local_verification.get('unresolved_total', len(source) - len(reviews)):,}. Human-verified model proposals: 0.
+- Local model requests: {local_verification.get('model_requests', 0)}; measured prompt tokens: {local_verification.get('prompt_tokens', 0):,}; measured output tokens: {local_verification.get('output_tokens', 0):,}.
+- Effective model-proposal confidence: {coverage['local_model_confidence_distribution']}.
+- Model/current-category conflicts: {coverage['local_model_conflicts_with_current']}; groups with failed validation: {len(local_verification.get('failed_groups', {}))}.
+- Next local checkpoint: `{local_verification.get('next_group_hash') or 'queue exhausted'}`.
+
+Model proposals have separate provenance and require editorial review. Existing category and occasion values remain intact. Similar lyrics never authorize category reuse without a validated result for the actual record.
 '''
 (OUT / 'deep_classification_report.md').write_text(report, encoding='utf-8')
 print(json.dumps(coverage, ensure_ascii=False, indent=2))

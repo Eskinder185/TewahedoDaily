@@ -1,0 +1,55 @@
+{
+  "group_hashes": [
+    "43cc3f788d73c0242edd1f03932df6343ed48c3bab61d80fd006ea71cd095607",
+    "55f89139b243cf575e4e37d047aa80301aaba90070d0b5046690ba280e339000",
+    "5ee1e9d9ddc8f625dd581df88f144733b1cf4b59e59ac3620ebfbbcca52608b5"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "43cc3f788d73c0242edd1f03932df6343ed48c3bab61d80fd006ea71cd095607",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ኢትዮጵያ ሆይ እግዚአብሔርን አመስግኚ",
+          "የምስጋና ነጎድጓድ ከአፍሽ ይውጣ"
+        ],
+        "reason": "Lyrics explicitly call for praise and worship of God, with repeated phrases about singing praises.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "55f89139b243cf575e4e37d047aa80301aaba90070d0b5046690ba280e339000",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ዘወትር አቀርባለሁ ለጌታ ምስጋና",
+          "በረከት ይሞላል ዝማሬው ይገርማል"
+        ],
+        "reason": "The hymn focuses on offering continuous praise and worship to God, emphasizing joy and unity in singing.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5ee1e9d9ddc8f625dd581df88f144733b1cf4b59e59ac3620ebfbbcca52608b5",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ልባችን ለጌታ መልካም መንገድ ይሁን"
+        ],
+        "reason": "The lyrics express a desire for the heart to be a good path for God, indicating praise and devotion.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2110,
+    "eval_count": 614,
+    "total_duration_ns": 9296953600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

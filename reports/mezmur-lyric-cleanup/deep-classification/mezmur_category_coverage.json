@@ -22,6 +22,15 @@
   "secondary_proposals": 0,
   "occasion_suggestions": 0,
   "earlier_suggestion_disagreements": 5,
+  "local_model_conflicts_with_current": 0,
+  "automated_candidate_records": 2506,
+  "strong_automated_candidates": 827,
+  "local_model_proposals": 262,
+  "local_model_confidence_distribution": {
+    "medium": 133,
+    "low": 55,
+    "high": 74
+  },
   "taxonomy_additions_for_review": [
     "Abba Kyros"
   ]

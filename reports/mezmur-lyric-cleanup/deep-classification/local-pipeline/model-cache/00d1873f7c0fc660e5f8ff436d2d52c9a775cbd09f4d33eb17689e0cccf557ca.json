@@ -1,0 +1,29 @@
+{
+  "group": "100d6e5ae36cdc372c3cf73ae88dec5bea487ba13da80d4b82cf58e87c5f2ce1",
+  "member_ids": [
+    "47143518-5bdf-45ce-b1d6-d79aed04bd7c"
+  ],
+  "item": {
+    "hash": "100d6e5ae36cdc372c3cf73ae88dec5bea487ba13da80d4b82cf58e87c5f2ce1",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የማያልቅበት ቸር እረኛ ነው",
+      "ሰማይና ምድርን የፈጠረ"
+    ],
+    "reason": "Lyrics praise God's creation and mercy without focusing on a specific saint or person.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1052,
+    "eval_count": 539,
+    "total_duration_ns": 7745054100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

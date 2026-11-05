@@ -1,0 +1,29 @@
+{
+  "group": "35b421f610d64a1f381a6d4b13f11ca7d0a027e0ad1c1c289809aa0e7977627e",
+  "member_ids": [
+    "0f262a91-a728-4015-8e79-c0efa78e4c96"
+  ],
+  "item": {
+    "hash": "35b421f610d64a1f381a6d4b13f11ca7d0a027e0ad1c1c289809aa0e7977627e",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Hatiat widqet tifat ayazenaganym",
+      "Timkihte ante neh belela almekam"
+    ],
+    "reason": "Lyrics explicitly mention sin (Hatiat), failure, and seeking refuge only in the speaker, indicating a theme of repentance.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 990,
+    "eval_count": 527,
+    "total_duration_ns": 7439912500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

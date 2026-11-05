@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "763e258788816b8314e7d118b3197a3ec7ca22b1c2eec6ff0d0aa16ebaba4c2b",
+    "49be5f29a382c78459a89010e6d29cd7e406273b23349f32435883a648ff13f0",
+    "f8a3a29bb3a4e84c01ed555b56cf5f4ae417b90c11b8546d948df4bbcc796fbd"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "763e258788816b8314e7d118b3197a3ec7ca22b1c2eec6ff0d0aa16ebaba4c2b",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ከአንተ ጋር ነኝ አለኝ መድኀኒቴ",
+          "የረከሰው ቤቴን ጌታዬ ሳይንቀው"
+        ],
+        "reason": "Lyrics explicitly address Jesus as 'Medhenite' (Savior) and 'Getaye' (Lord), focusing on salvation and devotion to Him.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "49be5f29a382c78459a89010e6d29cd7e406273b23349f32435883a648ff13f0",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የክብር አክሊል ተቀዳጁ",
+          "ለዚህ እድል ተዘጋጁ"
+        ],
+        "reason": "The text is a repetitive call to prepare for glory and honor, functioning as an anthem of praise.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "f8a3a29bb3a4e84c01ed555b56cf5f4ae417b90c11b8546d948df4bbcc796fbd",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ልሰዋ ጠዋት ማታ ክብሬ ነህ የኔ ጌታ",
+          "በባሕርይህ ባለጸጋ"
+        ],
+        "reason": "The hymn directly addresses Jesus as 'Gete' (Lord) and attributes salvation to His blood, centering on Him.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2048,
+    "eval_count": 631,
+    "total_duration_ns": 8951335600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

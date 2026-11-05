@@ -435,6 +435,7 @@ function MezmurResultGrid({
                 </h3>
               ) : null}
               {meta ? <p className={s.cardMeta}>{meta}</p> : null}
+              {item.confirmedVersionCount && item.confirmedVersionCount > 1 ? <p className={s.cardMeta}>{item.confirmedVersionCount} confirmed versions · open to view each original</p> : null}
               {item.excerpt ? (
                 <p className={s.cardExcerpt} data-testid="mezmur-lyric-excerpt" lang={/[ሀ-፿]/.test(item.excerpt.text) ? 'am' : undefined}>
                   <HighlightedText text={item.excerpt.text} ranges={item.excerpt.ranges} markClassName={s.match} />

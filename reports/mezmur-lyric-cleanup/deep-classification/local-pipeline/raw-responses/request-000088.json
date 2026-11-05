@@ -1,0 +1,60 @@
+{
+  "group_hashes": [
+    "63a066082d029e01c9d9ae28b97bb8c72cb6dbf1ecc6f5484384e265536d103f",
+    "aa9b7df58dfa5f18b01b10f23fee17af68d8cd1948affabbae32b35f9dc05561",
+    "ca1a77f9ca899e6a0f1ce8fd2090bc30029ff36b1a3d191e1c6038df2c61e491"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "63a066082d029e01c9d9ae28b97bb8c72cb6dbf1ecc6f5484384e265536d103f",
+        "primary_slug": "holy-spirit",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "መንፈስቅዱስ መጣ ሊሆነው ምስክር",
+          "ከአብ መወለዱን ልጅነቱን ሊያከብር"
+        ],
+        "reason": "Lyrics explicitly mention the Holy Spirit coming and honoring the Son born of the Father.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "aa9b7df58dfa5f18b01b10f23fee17af68d8cd1948affabbae32b35f9dc05561",
+        "primary_slug": "cross",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እሠይ እልል በሉ ተገኘ መስቀሉ /2/",
+          "የዕምነት ምልክት አበባ መስቀል ነውና አበባ"
+        ],
+        "reason": "The song repeatedly focuses on the Cross as a place of meeting, faith, and resurrection.",
+        "competing_slugs": [
+          "jesus-christ"
+        ]
+      },
+      {
+        "hash": "ca1a77f9ca899e6a0f1ce8fd2090bc30029ff36b1a3d191e1c6038df2c61e491",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ወደ አምላከ ምሕረት ለምኑልን",
+          "የመረጥከውን ማን ይከሳል"
+        ],
+        "reason": "The lyrics express a plea for mercy and judgment, characteristic of prayer.",
+        "competing_slugs": [
+          "salvation"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2208,
+    "eval_count": 628,
+    "total_duration_ns": 8882707000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "group": "1523e833242c6e5f6d07ee2626a7b0e443c02d83c73711f9ed12e02a9ede439c",
+  "member_ids": [
+    "3b551c6a-a512-5d80-8a66-f8511e49270f"
+  ],
+  "item": {
+    "hash": "1523e833242c6e5f6d07ee2626a7b0e443c02d83c73711f9ed12e02a9ede439c",
+    "primary_slug": "salvation",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ማዳንህ ይደንቃል ለወደኩት ልጅህ",
+      "የፍቅርህን ሚዛን ማንስ ያዛባዋል"
+    ],
+    "reason": "The lyrics focus on God's mercy, love, and the salvation of the speaker through His grace.",
+    "competing_slugs": [
+      "prayer",
+      "jesus-christ"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2761,
+    "eval_count": 628,
+    "total_duration_ns": 9143311700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

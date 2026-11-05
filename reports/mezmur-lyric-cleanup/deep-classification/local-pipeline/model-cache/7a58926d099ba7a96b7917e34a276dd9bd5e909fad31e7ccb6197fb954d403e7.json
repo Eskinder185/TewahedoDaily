@@ -1,0 +1,29 @@
+{
+  "group": "3df38943330c86059987af3934586b84afaadc37e83d2c131603568733f57887",
+  "member_ids": [
+    "2c5cadb7-146d-4a45-9ed9-533f5df0623e"
+  ],
+  "item": {
+    "hash": "3df38943330c86059987af3934586b84afaadc37e83d2c131603568733f57887",
+    "primary_slug": "holy-spirit",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "በመንፍስ ቅዱስ ኃይል ልባቸው ሞሉ",
+      "የፈጠረን አምላክ ያድናል ሲሉ"
+    ],
+    "reason": "Lyrics explicitly invoke the power of the Holy Spirit to fill hearts and praise the Creator.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1219,
+    "eval_count": 661,
+    "total_duration_ns": 8992644100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

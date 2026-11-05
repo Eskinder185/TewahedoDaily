@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "a250f89e97069f76a44a2b50e5ff84fd969a05973f58f5d0afd002309dfbf5d6",
+    "78cc7c941b90b77665b73e58d401774e50d943406ed075c48fcdb3046212ce8b",
+    "17a735334d401bf4eb77556bc4fdc8302a198c250c3946e7e4d58667cdb8b2f6"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "a250f89e97069f76a44a2b50e5ff84fd969a05973f58f5d0afd002309dfbf5d6",
+        "primary_slug": "kidus-yared",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "/2yared tsehey zeityopya amdebrhan zebetekrstiyan melak zebemdr",
+          "yeityopya tsehey yebetekrstiyan yebrhan amd yemdr melektenya yared"
+        ],
+        "reason": "Lyrics explicitly name Kidus Yared as the sun of Ethiopia and teacher of the church.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "78cc7c941b90b77665b73e58d401774e50d943406ed075c48fcdb3046212ce8b",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "/2yared tsehey zeityopya amdebrhan zebetekrstiyan melak zebemdr",
+          "yeityopya tsehey yebetekrstiyan yebrhan amd yemdr melektenya yared"
+        ],
+        "reason": "Lyrics address God as Father and Lord, focusing on personal relationship and salvation.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "17a735334d401bf4eb77556bc4fdc8302a198c250c3946e7e4d58667cdb8b2f6",
+        "primary_slug": "holy-trinity",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Zewetir and new dimtsachew",
+          "Beandinet honew teselefu"
+        ],
+        "reason": "Lyrics emphasize unity of voice and life in oneness, reflecting Trinitarian doctrine.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2056,
+    "eval_count": 560,
+    "total_duration_ns": 8158631200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

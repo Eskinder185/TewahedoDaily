@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "813022da2fcc6226ffe34bcdf55a1e92a347b21d6e513127b1985da0c45c4b37",
+    "6c588e265a504b1c1040f3dc51c42a53056cff4e9b2fa14b4e72a00900632b74",
+    "4ada4131acc965fcb4d7703852caf43d805a742359ba17e1f9f68ba9bdc87839"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "813022da2fcc6226ffe34bcdf55a1e92a347b21d6e513127b1985da0c45c4b37",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ሳኦል እኔን ሲያሳድደኝ\nጎልያድም ሲዝትብኝ",
+          "አይዞህ ብሎ አምላኬ አጽናናኝ"
+        ],
+        "reason": "Lyrics reference Saul and Goliath, biblical figures associated with Jesus Christ's ministry and victory.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "6c588e265a504b1c1040f3dc51c42a53056cff4e9b2fa14b4e72a00900632b74",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are too fragmented to determine a specific subject or category.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "4ada4131acc965fcb4d7703852caf43d805a742359ba17e1f9f68ba9bdc87839",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እራሱን የሠዋው የዓለም ብርሃን ልዩ ነው\nእካሉን መድኃነት አድርጐ የሰጠን ልዩ ነው",
+          "የፈውሳችን ፀሐይ የጽድቃችን ጮራ ልዩ ነው"
+        ],
+        "reason": "Lyrics describe the Savior as light, salvation, and sun, clearly referring to Jesus Christ.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1584,
+    "eval_count": 611,
+    "total_duration_ns": 8793242800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

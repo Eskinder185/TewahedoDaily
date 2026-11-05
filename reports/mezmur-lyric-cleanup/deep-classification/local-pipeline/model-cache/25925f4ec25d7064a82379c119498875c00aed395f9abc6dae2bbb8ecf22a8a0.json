@@ -1,0 +1,29 @@
+{
+  "group": "5df20c6055d9b166b91af47ca2e16c255a4dc9700cb0ef9272034ffed09ceebd",
+  "member_ids": [
+    "2a529e4d-2963-59df-8519-f67abb30c38c"
+  ],
+  "item": {
+    "hash": "5df20c6055d9b166b91af47ca2e16c255a4dc9700cb0ef9272034ffed09ceebd",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "እሄብህ ጸጋኪ ኦ እግዝእየ ማርያም",
+      "ለአብ መርዓቱ ለወልዱ ወላዲቱ"
+    ],
+    "reason": "Lyrics directly address Mary and describe her role as the mother of God.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2219,
+    "eval_count": 567,
+    "total_duration_ns": 8001781300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

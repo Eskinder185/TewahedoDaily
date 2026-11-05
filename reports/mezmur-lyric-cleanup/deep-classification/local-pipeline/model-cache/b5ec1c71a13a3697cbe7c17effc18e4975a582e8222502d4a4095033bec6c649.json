@@ -1,0 +1,28 @@
+{
+  "group": "5487a6068e24c6612256cc49f93874378910a3443072c6eb0f81707c29ac35c0",
+  "member_ids": [
+    "07e54ff5-ad32-48ce-abfc-6579946a7afc"
+  ],
+  "item": {
+    "hash": "5487a6068e24c6612256cc49f93874378910a3443072c6eb0f81707c29ac35c0",
+    "primary_slug": "kidus-michael",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Mikael liqe melaikit"
+    ],
+    "reason": "Lyrics explicitly name Mikael (Michael) as Archangel.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1010,
+    "eval_count": 446,
+    "total_duration_ns": 6443660800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

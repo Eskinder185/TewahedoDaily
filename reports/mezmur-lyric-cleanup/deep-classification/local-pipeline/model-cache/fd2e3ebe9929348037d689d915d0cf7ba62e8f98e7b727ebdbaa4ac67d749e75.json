@@ -1,0 +1,28 @@
+{
+  "group": "5ee1e9d9ddc8f625dd581df88f144733b1cf4b59e59ac3620ebfbbcca52608b5",
+  "member_ids": [
+    "25de90cd-5b28-459d-93dd-741ee981f74d"
+  ],
+  "item": {
+    "hash": "5ee1e9d9ddc8f625dd581df88f144733b1cf4b59e59ac3620ebfbbcca52608b5",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ልባችን ለጌታ መልካም መንገድ ይሁን"
+    ],
+    "reason": "The lyrics express a desire for the heart to be a good path for God, indicating praise and devotion.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2110,
+    "eval_count": 614,
+    "total_duration_ns": 9296953600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

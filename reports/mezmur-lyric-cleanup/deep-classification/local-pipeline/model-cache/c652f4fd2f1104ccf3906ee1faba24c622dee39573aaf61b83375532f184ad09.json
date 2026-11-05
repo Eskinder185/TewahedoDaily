@@ -1,0 +1,29 @@
+{
+  "group": "d9ae15027e47f8af16c4192a5ae2b3d810638498edd2eae30406e0bc843ba560",
+  "member_ids": [
+    "193b7641-cd32-5ea6-9c61-b730d2b338bf"
+  ],
+  "item": {
+    "hash": "d9ae15027e47f8af16c4192a5ae2b3d810638498edd2eae30406e0bc843ba560",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "መሐርኒ ድንግል ወተሰሐለኒ በበዘመኑ",
+      "ማሪኝ ድንግል ማርያም ይቅርም በይኝ በየዘመኑ"
+    ],
+    "reason": "The hymn repeatedly addresses Mary as 'Dingil' (Virgin) and asks for her intercession.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2965,
+    "eval_count": 444,
+    "total_duration_ns": 7572999400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

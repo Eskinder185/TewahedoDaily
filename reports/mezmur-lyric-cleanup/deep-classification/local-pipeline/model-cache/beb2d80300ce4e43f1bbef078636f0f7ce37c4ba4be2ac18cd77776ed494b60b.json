@@ -1,0 +1,29 @@
+{
+  "group": "9dfe3d874ecf50ce657c6d9d0f84de6d2b09d4142dc7121bb36c7d055dc93fd1",
+  "member_ids": [
+    "29b1ab00-d1ac-5212-8681-e3268446a526"
+  ],
+  "item": {
+    "hash": "9dfe3d874ecf50ce657c6d9d0f84de6d2b09d4142dc7121bb36c7d055dc93fd1",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "በባህር ውስጥ ጠልቀህ ›› ማርልኝ ብለሃል",
+      "የቅዱሳን እራስ ›› ገብረ መንፈስ ቅዱስ"
+    ],
+    "reason": "Lyrics explicitly reference Jesus' baptism and identity as the Holy Spirit's vessel.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2219,
+    "eval_count": 567,
+    "total_duration_ns": 8001781300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "0b6682e002c693f1502219c9aa1e43ac4c5f704efb11447dec727f8f18fba075",
+    "c2f22448d84e389a06e80788e6d693fc1fa17bce9db58263d2cff08e4c65ade8",
+    "ff456420ea97dcd0a3b70cb434e75b6b6637eab7868f68c61aa88eaf5d328ac0"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "0b6682e002c693f1502219c9aa1e43ac4c5f704efb11447dec727f8f18fba075",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "karaadhaafdhugaa iyyasuus jirreenyiikoo",
+          "Inno ilma yooseffi tokko raajota keessa"
+        ],
+        "reason": "Lyrics explicitly mention Jesus and the one born of a woman, focusing on his unique nature.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "c2f22448d84e389a06e80788e6d693fc1fa17bce9db58263d2cff08e4c65ade8",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Keinya yemifelegew mamen",
+          "Afim yitsum kemawrat yikelkel"
+        ],
+        "reason": "The text describes the need to believe and warns against speaking, hearing, or seeing without faith.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "ff456420ea97dcd0a3b70cb434e75b6b6637eab7868f68c61aa88eaf5d328ac0",
+        "primary_slug": "holy-spirit",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Menfesqidus taye berasu lay arfo",
+          "Bergib misale kinfan aseyfo"
+        ],
+        "reason": "The lyrics directly address the Holy Spirit appearing and giving wind-like power.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1780,
+    "eval_count": 529,
+    "total_duration_ns": 7393476000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

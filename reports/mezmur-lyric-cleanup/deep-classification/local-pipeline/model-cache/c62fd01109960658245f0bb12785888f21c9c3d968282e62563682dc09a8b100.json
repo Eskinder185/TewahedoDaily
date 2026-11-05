@@ -1,0 +1,29 @@
+{
+  "group": "1dc887a6e505e07e2efb87870da23ba567af9ea8ec29f257b1323d51ae0e499d",
+  "member_ids": [
+    "182eacc2-335a-4b09-8127-bb204cb93444"
+  ],
+  "item": {
+    "hash": "1dc887a6e505e07e2efb87870da23ba567af9ea8ec29f257b1323d51ae0e499d",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ማኅበረነ ማኅበረነ ዕቀብ በሰላም",
+      "ጠብቅልን በሰላም ማኅበራችንን"
+    ],
+    "reason": "The hymn is a congregational song of praise, peace, and unity without specific saint or theological focus.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2102,
+    "eval_count": 594,
+    "total_duration_ns": 8657957600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,55 @@
+{
+  "group_hashes": [
+    "b16fa85251b202a555bc5f171a5d74adf7d06c93e641c72f775003f619618623",
+    "eb6b6e47fa2c1e5abfa7040e8a2019049c912b2e6d082d759a0516f92350cdbd",
+    "0b1e8b362f30644e00d60fab8b2570ccb8063e27e27b6790683f3e44805bfda1"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b16fa85251b202a555bc5f171a5d74adf7d06c93e641c72f775003f619618623",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እተማመናለው በጌታዬ አላፍርም",
+          "ከነአን ባልገባ ከእርሱ ጋር አብሬ"
+        ],
+        "reason": "Lyrics express deep trust in God and a plea for companionship, fitting the prayer category.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "eb6b6e47fa2c1e5abfa7040e8a2019049c912b2e6d082d759a0516f92350cdbd",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ስብራትሽን ይጠግናል በምሕረት",
+          "ለሕዝብሽ እግዚአብሔር ኃይላቸው ነው"
+        ],
+        "reason": "The text explicitly praises God's mercy and power for the people, which is praise/worship.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "0b1e8b362f30644e00d60fab8b2570ccb8063e27e27b6790683f3e44805bfda1",
+        "primary_slug": "angels",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ወርዶ ከለላቸው ደመና ጸዓዳ"
+        ],
+        "reason": "The phrase 'descending from the clouds' describes a celestial being, typically an angel.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1858,
+    "eval_count": 593,
+    "total_duration_ns": 8401347900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

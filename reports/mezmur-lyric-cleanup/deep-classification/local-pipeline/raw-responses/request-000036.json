@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "53434db5b639b2f67255b7b30a43005bb4307278c5fbe4706e097365d57e51ab",
+    "eb179619c17ea3dd791579317e4f7d8889431fd839666ce79ae11fc3c86060e6",
+    "12e26190a9ac59682af60ac566bc933b61c6dfd1cadee421dd9ca0d76ec466d4"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "53434db5b639b2f67255b7b30a43005bb4307278c5fbe4706e097365d57e51ab",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ናና አማኑኤል ና መድኃኒቴ",
+          "የምሕረት አባት አማኑኤል"
+        ],
+        "reason": "The lyrics explicitly address Emmanuel (Jesus) as 'my Savior' and 'Father of mercy', focusing entirely on his redemptive work.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "eb179619c17ea3dd791579317e4f7d8889431fd839666ce79ae11fc3c86060e6",
+        "primary_slug": "kidus-raphael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ብሉ ጠጡ ብለህ ለዓለም ሰጠህ",
+          "ደሙን የረጨኸው ቅዱስ ዑራኤል"
+        ],
+        "reason": "The text repeatedly names Kidus Uriel (Raphael) as the one who shed blood for the world and prays for Ethiopia.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "12e26190a9ac59682af60ac566bc933b61c6dfd1cadee421dd9ca0d76ec466d4",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ድንግል ማርያም ንጽህት ቅድስት",
+          "የጌታዬ እናት ምሥጋና ይገባሻል"
+        ],
+        "reason": "The hymn directly praises Virgin Mary as the pure, holy mother of God and the one chosen above all women.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2949,
+    "eval_count": 632,
+    "total_duration_ns": 9200284700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

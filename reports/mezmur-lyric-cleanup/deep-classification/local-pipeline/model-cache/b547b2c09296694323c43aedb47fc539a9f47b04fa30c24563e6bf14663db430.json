@@ -1,0 +1,32 @@
+{
+  "group": "b9abcdda96db05d11d282db2772ea5907ddc7932d910e811644a1ee405a1c08c",
+  "member_ids": [
+    "42ac1ab8-b0b2-5e25-a7a6-285ffbb3fc6b"
+  ],
+  "item": {
+    "hash": "b9abcdda96db05d11d282db2772ea5907ddc7932d910e811644a1ee405a1c08c",
+    "primary_slug": "angels",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ምስለ ሚካኤል/4/ ፍሡህ ወገብርኤል",
+      "ትርጉም፡- ድንግል ሆይ ልጅሽን ታቅፈሽ ከሚካኤልና ከገብርኤል ጋር ነይ"
+    ],
+    "reason": "The text explicitly mentions the names of Archangels Michael and Gabriel as protectors.",
+    "competing_slugs": [
+      "kidus-michael",
+      "kidus-gabriel"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1904,
+    "eval_count": 636,
+    "total_duration_ns": 9348259600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

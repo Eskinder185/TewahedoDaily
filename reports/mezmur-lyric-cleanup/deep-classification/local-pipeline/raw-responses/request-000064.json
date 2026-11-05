@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "a01542a812a37d5331fb3c01a52c8553176d6322d923f80bc3480ab319e95fb9",
+    "d7d2f522bba108752a39012877bbe5cf72e3f864fd87918152cbc7bcec130a51",
+    "7750990af05174e48597ab23c05b7593aea4d72f234928279caf76cf33893a49"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "a01542a812a37d5331fb3c01a52c8553176d6322d923f80bc3480ab319e95fb9",
+        "primary_slug": "cross",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የመስቀሉ ሃይል ለሚጠፉት ይመስላል ሞኝነት",
+          "የሚሰጥ ሕይወት ነውና በዕምነት"
+        ],
+        "reason": "Lyrics explicitly focus on the power of the cross and salvation through faith.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "d7d2f522bba108752a39012877bbe5cf72e3f864fd87918152cbc7bcec130a51",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ጎስቋላው ልጅህ ደካማው ልጅህ ጌታ ሆይ ዛሬ መጣሁኝ",
+          "ወደ አባቴ ቤት /2/ ዳግመኛ ተመልሻለሁ"
+        ],
+        "reason": "The text describes Jesus' incarnation, suffering, and return to the Father's house.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "7750990af05174e48597ab23c05b7593aea4d72f234928279caf76cf33893a49",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የምድር ፍጥረታት ማርያም ማርያም ሲሉሽ/2/",
+          "እናቴ መመኪያዬ ምርኩዜ ሆነሻል/2/"
+        ],
+        "reason": "The hymn is a direct address to Mary, the Mother of God, praising her virtues.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2693,
+    "eval_count": 667,
+    "total_duration_ns": 9659939000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

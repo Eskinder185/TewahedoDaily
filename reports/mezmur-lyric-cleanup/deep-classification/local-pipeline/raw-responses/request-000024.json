@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "c932df9f43cfb34041671e473d2cb202a166dabe3137fa9b36866842a403e8ba",
+    "ecdec720f36f6ca4eaf0b1889ae3f73e6d2594a6be1ef082a2dff89d7e77882f",
+    "08f7df66c69d47862f2bfc64e1087920fa8e308a2a99427970b30bbecd0bbbb5"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "c932df9f43cfb34041671e473d2cb202a166dabe3137fa9b36866842a403e8ba",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የጌታዬ እናት ንጹህ አክሊላችን",
+          "እመቤታችን ድንግል ሆይ"
+        ],
+        "reason": "Lyrics explicitly address Mary as 'our pure mother' and 'Virgin', focusing entirely on her attributes.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "ecdec720f36f6ca4eaf0b1889ae3f73e6d2594a6be1ef082a2dff89d7e77882f",
+        "primary_slug": "praise-worship",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "ዝንቱ ኩሉ ኮነ ኮነ በማኅደረ ስብሐት",
+          "በፈቃደ/4/ እግዚአብሔር"
+        ],
+        "reason": "Text contains general praise and mentions God's will without specific saint or event focus.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "08f7df66c69d47862f2bfc64e1087920fa8e308a2a99427970b30bbecd0bbbb5",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ንጽሕት ድንግል ቡሩክት",
+          "የአምላክ እናት እመቤት"
+        ],
+        "reason": "Lyrics directly address Mary as 'pure Virgin' and 'Mother of God', central to the hymn.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2493,
+    "eval_count": 597,
+    "total_duration_ns": 8943017100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

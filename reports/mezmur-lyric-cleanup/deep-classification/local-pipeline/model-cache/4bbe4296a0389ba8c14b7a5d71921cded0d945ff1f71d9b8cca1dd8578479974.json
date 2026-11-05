@@ -1,0 +1,29 @@
+{
+  "group": "c527cecf99680473f2521f376da3efcc42ff96ece22837eda0c58150b2ce8775",
+  "member_ids": [
+    "58d4ee0a-27d0-5d4f-857b-4af2f21d4e5c"
+  ],
+  "item": {
+    "hash": "c527cecf99680473f2521f376da3efcc42ff96ece22837eda0c58150b2ce8775",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ነዪ ነዪ ማርያም ነዪ ነዪ",
+      "ድንግል ሆይ ነዪ ነዪ"
+    ],
+    "reason": "The lyrics repeatedly address Mary by name and title 'Virgin', focusing entirely on her.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3172,
+    "eval_count": 603,
+    "total_duration_ns": 9112929500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

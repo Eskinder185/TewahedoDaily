@@ -1,0 +1,32 @@
+{
+  "group": "31fd4eb705c3c56b14d6975ad91cae09318c6fdc3a7425df0160e114f2eab028",
+  "member_ids": [
+    "22be4292-3458-543e-ac5c-fbb38dee5336"
+  ],
+  "item": {
+    "hash": "31fd4eb705c3c56b14d6975ad91cae09318c6fdc3a7425df0160e114f2eab028",
+    "primary_slug": "prayer",
+    "confidence": "medium",
+    "uncertain": false,
+    "evidence": [
+      "እንመሰክራለን ፈጣሪያችን አለ",
+      "የመስቀሉ ቃል ለእኛ የእግዚአብሔር ሃይል ነው"
+    ],
+    "reason": "The text functions as a prayer of confession and praise, though it also mentions saints.",
+    "competing_slugs": [
+      "jesus-christ",
+      "virgin-mary"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2925,
+    "eval_count": 664,
+    "total_duration_ns": 9575330500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

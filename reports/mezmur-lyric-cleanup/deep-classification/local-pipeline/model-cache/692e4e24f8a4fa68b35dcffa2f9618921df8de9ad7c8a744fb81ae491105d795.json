@@ -1,0 +1,29 @@
+{
+  "group": "b90325eba938fc03fe92a04f96a9a3eecd5115091d6722f85615aae37eebe030",
+  "member_ids": [
+    "2bc7782c-9b81-4ac8-84eb-6d8ec5f665e8"
+  ],
+  "item": {
+    "hash": "b90325eba938fc03fe92a04f96a9a3eecd5115091d6722f85615aae37eebe030",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ጎይታይ ንቅዱስ ስምካ",
+      "እሙን ኢኻ ጎይታይ"
+    ],
+    "reason": "Lyrics explicitly address Jesus as 'Goytay' (My Lord) and affirm faith in His name.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3326,
+    "eval_count": 593,
+    "total_duration_ns": 8624842500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

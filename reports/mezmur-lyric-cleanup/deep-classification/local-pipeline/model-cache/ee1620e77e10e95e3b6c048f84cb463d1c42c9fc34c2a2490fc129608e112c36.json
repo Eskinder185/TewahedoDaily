@@ -1,0 +1,29 @@
+{
+  "group": "6a78a902c817dfc5b01a21cf90ef6422ae932a6e45ca07b40bdb7cd18bb0569b",
+  "member_ids": [
+    "4415c89c-2f2b-487f-910c-4626ffea6f76"
+  ],
+  "item": {
+    "hash": "6a78a902c817dfc5b01a21cf90ef6422ae932a6e45ca07b40bdb7cd18bb0569b",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ጌታችን ሲመጣ በግራ ከመቆም",
+      "ካሁኑ እንዘጋጅ ነገ የእኛ አይደለም"
+    ],
+    "reason": "Lyrics explicitly address 'our Lord' (Getachin) and prepare for His coming, focusing on Christ's return.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2547,
+    "eval_count": 645,
+    "total_duration_ns": 9543402600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

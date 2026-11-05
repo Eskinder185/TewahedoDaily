@@ -1,0 +1,29 @@
+{
+  "group": "9bc424c4613e3ef7d6ce702e217f7233d03282085aaf132255866e87672b5e70",
+  "member_ids": [
+    "43395089-7481-4b2c-8d35-1e7082d60fbe"
+  ],
+  "item": {
+    "hash": "9bc424c4613e3ef7d6ce702e217f7233d03282085aaf132255866e87672b5e70",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ለጽድቅ ሥራ ለእውነት ብለን መጥተናል እንጂ",
+      "በጽድቅ ሥራ ለእውነት ብለን መጥተናል እንጂ"
+    ],
+    "reason": "Lyrics explicitly call for truth and righteousness, rejecting falsehood, which aligns with repentance themes.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1951,
+    "eval_count": 630,
+    "total_duration_ns": 9024944000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,59 @@
+{
+  "group_hashes": [
+    "f0552667527e437b0a6e1497e1ca68d95c0ad8b79c05c32f6239f6c49be9466d",
+    "af4c1ef38a03a0efbfe77726342370fc2057a946497b2ec14013cf745e9b8483",
+    "f3014e17a7ba1135be8ca8b8270ba15e406cfd1758475734cc000a4eb60f3d74"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "f0552667527e437b0a6e1497e1ca68d95c0ad8b79c05c32f6239f6c49be9466d",
+        "primary_slug": "holy-trinity",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የስላሴን መንበር ቅዱሳን ከበውት",
+          "ካህናተ ሰማይ ስሉስ ቅዱስ ሲሉ"
+        ],
+        "reason": "Lyrics explicitly mention the 'Throne of the Trinity' and the 'Holy Trinity', focusing on the triune nature of God.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "af4c1ef38a03a0efbfe77726342370fc2057a946497b2ec14013cf745e9b8483",
+        "primary_slug": "kidus-michael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የመላዕክ አለቃ ስሙ ነው ሚካኤል",
+          "መልአኩ ሚካኤል አማላጃችን"
+        ],
+        "reason": "The hymn is entirely dedicated to Kidus Michael, identifying him as the leader of angels and protector.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "f3014e17a7ba1135be8ca8b8270ba15e406cfd1758475734cc000a4eb60f3d74",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ይቅርታህ በአይኔ በፊቴ ነውና",
+          "እግዚአብሔር የሕይወቴ መሸሸጊያዬ ነው"
+        ],
+        "reason": "The lyrics focus on confession, seeking forgiveness for sins, and the Lord as a refuge from sin.",
+        "competing_slugs": [
+          "praise-worship",
+          "salvation"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3012,
+    "eval_count": 652,
+    "total_duration_ns": 9637364400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

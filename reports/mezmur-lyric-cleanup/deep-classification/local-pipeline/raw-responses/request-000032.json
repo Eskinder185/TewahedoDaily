@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "be569006dfa45fa7f9f6430d4015706bbdecd4241b24ed675520222bbca315fc",
+    "fd04ea83fa33c5488c93229eaa7cec3cee37985e87c7fb7bc71356e528596605",
+    "26ba2b812604fd8b61b7d2fa5b0a3fb7d62f4cb5c8b22619043f1a5d1847a037"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "be569006dfa45fa7f9f6430d4015706bbdecd4241b24ed675520222bbca315fc",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics only repeat 'Timetalech beiwnet' (She will come in truth) without specific theological context to match categories.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "fd04ea83fa33c5488c93229eaa7cec3cee37985e87c7fb7bc71356e528596605",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ድንግል ማርያምን ቅድስት\nእንለምናት",
+          "የድንግል ማርያም"
+        ],
+        "reason": "Lyrics explicitly name and praise Virgin Mary as a saint, making her the dominant subject.",
+        "competing_slugs": [
+          "praise-worship"
+        ]
+      },
+      {
+        "hash": "26ba2b812604fd8b61b7d2fa5b0a3fb7d62f4cb5c8b22619043f1a5d1847a037",
+        "primary_slug": "angels",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ወከመ አያያተ መአር /2/ ጥዑም ፈድፋደ ሊቀ\nመላእክት /2/"
+        ],
+        "reason": "The term 'Melaikit' (Angels) appears directly, and the context of seeing them fits the angels category.",
+        "competing_slugs": [
+          "kidus-michael"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1739,
+    "eval_count": 561,
+    "total_duration_ns": 8489249200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

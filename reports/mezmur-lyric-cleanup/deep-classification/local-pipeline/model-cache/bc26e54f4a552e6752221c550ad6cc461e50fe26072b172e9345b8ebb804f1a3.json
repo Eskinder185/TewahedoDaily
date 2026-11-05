@@ -1,0 +1,28 @@
+{
+  "group": "9a2e68bf8d804a442c0a4cb2f66c3614bf8eeaa943a661876fb1de6d31c89f13",
+  "member_ids": [
+    "204e46a6-c75d-4061-9234-30bb3ce1b87c"
+  ],
+  "item": {
+    "hash": "9a2e68bf8d804a442c0a4cb2f66c3614bf8eeaa943a661876fb1de6d31c89f13",
+    "primary_slug": "general",
+    "confidence": "medium",
+    "uncertain": true,
+    "evidence": [
+      "ነፍስም ለሥጋዋ ትመክረው ጀመረች"
+    ],
+    "reason": "Abstract metaphorical text without specific saint or theological subject.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1419,
+    "eval_count": 528,
+    "total_duration_ns": 7467438700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

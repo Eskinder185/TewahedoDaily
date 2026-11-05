@@ -1,0 +1,29 @@
+{
+  "group": "913f51a843ef533214f2f750e2505394107ce71d4abec0759d6adcb1b306d64c",
+  "member_ids": [
+    "0973486d-c62c-440b-aac8-7102bb6398f1"
+  ],
+  "item": {
+    "hash": "913f51a843ef533214f2f750e2505394107ce71d4abec0759d6adcb1b306d64c",
+    "primary_slug": "salvation",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ለምስኪንዋ ጐጆ በረከት ሰጥተሃል",
+      "ድሀ ነኝ አልልም ሀብቴ አንተ ነህና"
+    ],
+    "reason": "Lyrics focus on divine blessing, poverty, and the speaker's reliance on God for salvation.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1113,
+    "eval_count": 658,
+    "total_duration_ns": 9135904400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "776433ecf42ea746c3d47b5305f47b5fff28cc4a139f5fea6b678e7ba0a7d336",
+    "86d52ee08329f86798c1024d284247b4f05721c1581901ba2f33f076ad80a89e",
+    "92e40fd8fbb76c6f4cd953ec2494190431740fa73cf7facaf01217b3bdc1809f"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "776433ecf42ea746c3d47b5305f47b5fff28cc4a139f5fea6b678e7ba0a7d336",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የጌታ መስቀል የኛ",
+          "በኢየሱስ አምኖ የኛ"
+        ],
+        "reason": "Lyrics explicitly mention Jesus and the Cross as central to faith.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "86d52ee08329f86798c1024d284247b4f05721c1581901ba2f33f076ad80a89e",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አማላጄ ድንግል አማላጄ",
+          "ደርሶኝ ጥበቃሽ አማላጄ"
+        ],
+        "reason": "Lyrics repeatedly address Mary as 'Virgin' and seek her protection.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "92e40fd8fbb76c6f4cd953ec2494190431740fa73cf7facaf01217b3bdc1809f",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ምስጋና አቀርባለሁ",
+          "እንማልዳለን"
+        ],
+        "reason": "Lyrics express gratitude and worship without specific saint or event focus.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2530,
+    "eval_count": 541,
+    "total_duration_ns": 7831530500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

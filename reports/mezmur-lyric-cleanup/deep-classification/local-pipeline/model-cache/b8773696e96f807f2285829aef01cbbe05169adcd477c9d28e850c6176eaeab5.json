@@ -1,0 +1,31 @@
+{
+  "group": "848be6ad5eeee05078b14a67c1c288b8b45482eefea3c0619aec12d413c0a47d",
+  "member_ids": [
+    "4474d277-68f7-5a8b-aaaa-0c4a5cc567d2"
+  ],
+  "item": {
+    "hash": "848be6ad5eeee05078b14a67c1c288b8b45482eefea3c0619aec12d413c0a47d",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የአምላክን እናት እናወድስ",
+      "ቀርባችሁ ተማሩ ማርያም ፊደል ነች"
+    ],
+    "reason": "The hymn repeatedly praises Mary as God's mother and calls her a shield, centering on her veneration.",
+    "competing_slugs": [
+      "holy-spirit"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2547,
+    "eval_count": 645,
+    "total_duration_ns": 9543402600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

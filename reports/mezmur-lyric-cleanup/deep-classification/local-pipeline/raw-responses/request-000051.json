@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "3df38943330c86059987af3934586b84afaadc37e83d2c131603568733f57887",
+    "953e9fe7abce72e228d3d4af5a3be29615cbb2da739915811a8eb91243e5f544",
+    "274eb620c1cb6672026429a17845bfc4341a0950c7ea6beae4421ba8ad5c2b74"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "3df38943330c86059987af3934586b84afaadc37e83d2c131603568733f57887",
+        "primary_slug": "holy-spirit",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "በመንፍስ ቅዱስ ኃይል ልባቸው ሞሉ",
+          "የፈጠረን አምላክ ያድናል ሲሉ"
+        ],
+        "reason": "Lyrics explicitly invoke the power of the Holy Spirit to fill hearts and praise the Creator.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "953e9fe7abce72e228d3d4af5a3be29615cbb2da739915811a8eb91243e5f544",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እንዘ የአምር እምቅድመ ኅሊና ዘይሄሊ ልበ",
+          "የአምር የአምር/2/"
+        ],
+        "reason": "The text repeatedly expresses praise to the Creator and focuses on the act of worship.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "274eb620c1cb6672026429a17845bfc4341a0950c7ea6beae4421ba8ad5c2b74",
+        "primary_slug": "kidus-michael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ውእቱ ሚካኤል መልአከ ኃይል ልዑል ውእቱ ልዑል ለመንበር /2/",
+          "ትርጉም፡- የመላዕክት አለቃ ቅ/ሚካኤል ከልዑላን መላዕክት በላይ ነው"
+        ],
+        "reason": "The hymn is dedicated to Mikael (Michael), describing him as the Lord of angels and protector.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1219,
+    "eval_count": 661,
+    "total_duration_ns": 8992644100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

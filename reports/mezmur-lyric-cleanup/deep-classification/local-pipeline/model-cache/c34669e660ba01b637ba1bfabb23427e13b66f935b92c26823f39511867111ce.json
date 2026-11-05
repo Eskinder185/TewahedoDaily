@@ -1,0 +1,29 @@
+{
+  "group": "a4c26e18d559d38cc98a914e987fc9f37560600d797302a63c4d61305d79a6b0",
+  "member_ids": [
+    "2bb1d389-b0e5-40c0-a43b-fb930bb759f9"
+  ],
+  "item": {
+    "hash": "a4c26e18d559d38cc98a914e987fc9f37560600d797302a63c4d61305d79a6b0",
+    "primary_slug": "praise-worship",
+    "confidence": "medium",
+    "uncertain": false,
+    "evidence": [
+      "Asme kemahu azezezene",
+      "Asme lelihu medhanine tsome"
+    ],
+    "reason": "Lyrics focus on praise and calling God Savior without naming specific saints or figures.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1099,
+    "eval_count": 529,
+    "total_duration_ns": 7551982000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

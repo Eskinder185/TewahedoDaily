@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "fc18ea2be915255691ab25b168793c86e7322fe56db5042dac9575874f7ea7c1",
+    "b98cac7da95d7d5e36bc95debc205572d96b195de8d7d8fa30a7a2ac9098ca24",
+    "0687d98dd74d52a5ff27f5f57feaa5c6c7e3a19deae2e8bdaa71ccafd030ac7d"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "fc18ea2be915255691ab25b168793c86e7322fe56db5042dac9575874f7ea7c1",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics provided are only a title fragment and transliteration without substantive text to determine subject.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "b98cac7da95d7d5e36bc95debc205572d96b195de8d7d8fa30a7a2ac9098ca24",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ምስሊ ወዱ ንኽንመስል",
+          "ብደም ፍቑር ወዱ ናብ ዝፋኑ ኣቕሪቡና"
+        ],
+        "reason": "Lyrics explicitly focus on imitating the Son's image and His blood, centering on Jesus Christ.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "0687d98dd74d52a5ff27f5f57feaa5c6c7e3a19deae2e8bdaa71ccafd030ac7d",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ክርስቶስ በስምህ ይዘናል ቀኑና",
+          "ስቅለት ትንሳኤህን እናያለንና"
+        ],
+        "reason": "Title and lyrics directly address Christ, His crucifixion, resurrection, and fasting in relation to Him.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2999,
+    "eval_count": 537,
+    "total_duration_ns": 7760727600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

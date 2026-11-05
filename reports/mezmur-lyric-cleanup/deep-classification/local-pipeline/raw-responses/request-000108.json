@@ -1,0 +1,59 @@
+{
+  "group_hashes": [
+    "b0df497f1bed8721827dc83c9ff3569ab46e885247e55a1972b5dc77a509b5a6",
+    "a0d3ec8ba0a8b3f8ade364774bca1d9dec475b044ec1f64e918a4a3612d21eaa",
+    "5c41deee7c1244f4ff645595e06edf2cde529dd4cb076d7b66a9c240c4cdab49"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b0df497f1bed8721827dc83c9ff3569ab46e885247e55a1972b5dc77a509b5a6",
+        "primary_slug": "yohannes-metmek-john-the-baptist=Yohannes Metmek / John the Baptist",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ዮሐንስኒ ያጠምቅ/2/",
+          "ዮሐንስ ሲያስተምር .....ያጠምቅ"
+        ],
+        "reason": "Lyrics explicitly name Yohannes (John) and describe his baptismal ministry in the Jordan.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "a0d3ec8ba0a8b3f8ade364774bca1d9dec475b044ec1f64e918a4a3612d21eaa",
+        "primary_slug": "virgin-mary=Virgin Mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ስለዚህ ማርያም ሆይ ከፍ አደርግሻለሁ",
+          "ድንግል ሆይ ምልጃሽን አድርጊያለሁ ተስፋ"
+        ],
+        "reason": "The hymn directly addresses Mary as 'Dingil' (Virgin) and praises her role in salvation.",
+        "competing_slugs": [
+          "holy-trinity=Holy Trinity",
+          "praise-worship=Praise / Worship"
+        ]
+      },
+      {
+        "hash": "5c41deee7c1244f4ff645595e06edf2cde529dd4cb076d7b66a9c240c4cdab49",
+        "primary_slug": "prophets=Prophets",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ሙሴ ዘርእያ ዘርእያ በደብረ ሲና ማኅደረ",
+          "Muse zeriya zeriya bedebre sina mahdere"
+        ],
+        "reason": "The text explicitly names Moses (Muse), a major prophet, and his vision on Sinai.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2189,
+    "eval_count": 669,
+    "total_duration_ns": 9373355600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

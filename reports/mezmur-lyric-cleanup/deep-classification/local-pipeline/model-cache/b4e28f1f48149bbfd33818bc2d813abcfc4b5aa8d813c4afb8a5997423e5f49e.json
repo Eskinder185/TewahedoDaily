@@ -1,0 +1,29 @@
+{
+  "group": "a01542a812a37d5331fb3c01a52c8553176d6322d923f80bc3480ab319e95fb9",
+  "member_ids": [
+    "38a97c8b-6379-5c70-a902-480c82740d62"
+  ],
+  "item": {
+    "hash": "a01542a812a37d5331fb3c01a52c8553176d6322d923f80bc3480ab319e95fb9",
+    "primary_slug": "cross",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የመስቀሉ ሃይል ለሚጠፉት ይመስላል ሞኝነት",
+      "የሚሰጥ ሕይወት ነውና በዕምነት"
+    ],
+    "reason": "Lyrics explicitly focus on the power of the cross and salvation through faith.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2693,
+    "eval_count": 667,
+    "total_duration_ns": 9659939000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

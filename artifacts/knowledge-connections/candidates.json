@@ -1,0 +1,3246 @@
+{
+  "schema": "knowledge-connections-v1",
+  "sourceSha256": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808",
+  "relationships": [
+    {
+      "id": "legacy-calendar:observance-enkutatash:ametun-asalfeh",
+      "from": {
+        "kind": "hymn",
+        "id": "979f6b1f-693d-4748-9275-b787d14f5066",
+        "slug": "ametun-asalfeh",
+        "name": "Ametun Asalfeh"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "1d5afbd7-0dad-4d2e-b624-698f74a4cd4e",
+        "name": "Enkutatash / Ethiopian New Year"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Hymn of thanksgiving for passing into the new year",
+          "sourceId": "1d5afbd7-0dad-4d2e-b624-698f74a4cd4e"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:observance-debre-tabor:tabor-abera",
+      "from": {
+        "kind": "hymn",
+        "id": "d9bd9e2d-8201-4613-b6fe-3937ac405994",
+        "slug": "tabor-abera",
+        "name": "Tabor Abera"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "b98e604a-6ba8-4748-a28d-118be2b9c51f",
+        "name": "Debre Tabor / Transfiguration"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Feast of the Transfiguration on Mount Tabor (Buhe)",
+          "sourceId": "b98e604a-6ba8-4748-a28d-118be2b9c51f"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:observance-debre-tabor:aman-beaman-tesebha",
+      "from": {
+        "kind": "hymn",
+        "id": "df6fa259-53e8-4910-9a0b-870647530722",
+        "slug": "aman-beaman-tesebha",
+        "name": "Aman be'aman Tesebha"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "b98e604a-6ba8-4748-a28d-118be2b9c51f",
+        "name": "Debre Tabor / Transfiguration"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Hymn praising Christ transfigured in Divine Glory",
+          "sourceId": "b98e604a-6ba8-4748-a28d-118be2b9c51f"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:observance-filseta:saint-mary-has-ascended",
+      "from": {
+        "kind": "hymn",
+        "id": "d7bb2a53-49b1-4acd-8607-2097aa465914",
+        "slug": "saint-mary-has-ascended",
+        "name": "Saint Mary Has Ascended"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "164a7c7c-df3b-48e1-9ccc-29195dc2d53a",
+        "name": "Filseta / Assumption of Mary"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Feast hymn for the Holy Assumption of Our Lady Virgin Mary (Filseta)",
+          "sourceId": "164a7c7c-df3b-48e1-9ccc-29195dc2d53a"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:observance-maryam-presentation:azekri-dingil",
+      "from": {
+        "kind": "hymn",
+        "id": "6939522d-5211-4ad9-8fc3-f658f279352e",
+        "slug": "azekri-dingil",
+        "name": "Azekri Dingil"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "b8904b25-0a9a-4e93-a792-bdbdd357eb33",
+        "name": "Presentation of Mary in the Temple"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Feast of Ba'ata: Entrance of the three-year-old Virgin into the Temple",
+          "sourceId": "b8904b25-0a9a-4e93-a792-bdbdd357eb33"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:observance-qusquam-maryam:azekri-dingil",
+      "from": {
+        "kind": "hymn",
+        "id": "6939522d-5211-4ad9-8fc3-f658f279352e",
+        "slug": "azekri-dingil",
+        "name": "Azekri Dingil"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "d53881ca-6716-4793-b5a8-c97e1a73838b",
+        "name": "Qusquam Maryam"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Commemoration of the Flight into Egypt and refuge at Mount Qusquam",
+          "sourceId": "d53881ca-6716-4793-b5a8-c97e1a73838b"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:observance-maryam-flight-egypt:azekri-dingil",
+      "from": {
+        "kind": "hymn",
+        "id": "6939522d-5211-4ad9-8fc3-f658f279352e",
+        "slug": "azekri-dingil",
+        "name": "Azekri Dingil"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "b1bd5e60-1279-4c4a-927b-36a3f1ff40d1",
+        "name": "Flight into Egypt"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Commemoration of the Flight of the Holy Family into Egypt",
+          "sourceId": "b1bd5e60-1279-4c4a-927b-36a3f1ff40d1"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:observance-bisrate-gabriel:absera-gebriel",
+      "from": {
+        "kind": "hymn",
+        "id": "c560903e-5d40-42d6-89a6-930b2631c43b",
+        "slug": "absera-gebriel",
+        "name": "Absera Gebriel"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "041a15b8-641f-448d-aee6-10cae9102562",
+        "name": "Bisrate Gabriel"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Feast of the Annunciation: Archangel Gabriel announcing the Good News to the Virgin Mary",
+          "sourceId": "041a15b8-641f-448d-aee6-10cae9102562"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:apostles-fast-period:the-holy-apostle",
+      "from": {
+        "kind": "hymn",
+        "id": "b1deebb1-6fe4-4149-9f72-dc18d53609d5",
+        "slug": "the-holy-apostle",
+        "name": "The Holy Apostle"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "4b757189-8431-4456-9f9c-97364e61823a",
+        "name": "Apostles Fast period"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Hymn commemorating the Fast and ministry of the Holy Apostles",
+          "sourceId": "4b757189-8431-4456-9f9c-97364e61823a"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:filseta-period:saint-mary-has-ascended",
+      "from": {
+        "kind": "hymn",
+        "id": "d7bb2a53-49b1-4acd-8607-2097aa465914",
+        "slug": "saint-mary-has-ascended",
+        "name": "Saint Mary Has Ascended"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "4b9c0b44-ae60-4724-940f-9481541f5a13",
+        "name": "Filseta period"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Appointed hymn for the sixteen days of the Filseta Fast (Nehase 1–16)",
+          "sourceId": "4b9c0b44-ae60-4724-940f-9481541f5a13"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-beata-maryam-monthly:azekri-dingil",
+      "from": {
+        "kind": "hymn",
+        "id": "6939522d-5211-4ad9-8fc3-f658f279352e",
+        "slug": "azekri-dingil",
+        "name": "Azekri Dingil"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "69dbd7f5-baf6-445e-b7dd-41e4a392d6ea",
+        "name": "Presentation of Mary / Beata"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Monthly commemoration of the Presentation of Saint Mary in the Temple (Ba'ata, 3rd of month)",
+          "sourceId": "69dbd7f5-baf6-445e-b7dd-41e4a392d6ea"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-qusquam-maryam-monthly:azekri-dingil",
+      "from": {
+        "kind": "hymn",
+        "id": "6939522d-5211-4ad9-8fc3-f658f279352e",
+        "slug": "azekri-dingil",
+        "name": "Azekri Dingil"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "1cfb5b0e-72b9-4b17-9578-a799807a0713",
+        "name": "Qusquam Maryam"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Monthly commemoration of Mount Qusquam and refuge of the Holy Family (6th of month)",
+          "sourceId": "1cfb5b0e-72b9-4b17-9578-a799807a0713"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-raphael-monthly:rufael-abate",
+      "from": {
+        "kind": "hymn",
+        "id": "2f0bb4a7-c18e-410a-b0be-a6543382ee39",
+        "slug": "rufael-abate",
+        "name": "Rufael Abate"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "48d07ffe-bc2d-46f8-bdde-a6daec2e9072",
+        "name": "Archangel Raphael"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Prayer hymn: Saint Raphael our spiritual father and intercessor",
+          "sourceId": "48d07ffe-bc2d-46f8-bdde-a6daec2e9072"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-cyriacus-julitta-monthly:qirqos-iyelutan",
+      "from": {
+        "kind": "hymn",
+        "id": "2daa446c-dcc8-432c-bdcc-581fad2b620f",
+        "slug": "qirqos-iyelutan",
+        "name": "Selestun Dekikan"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "084690cd-19ee-455c-9aee-123708b9b5e8",
+        "name": "Saints Cyriacus and Julitta"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Monthly commemoration of the child martyr Saint Cyriacus and his mother Julitta (15th of month)",
+          "sourceId": "084690cd-19ee-455c-9aee-123708b9b5e8"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-maryam-monthly:azekri-dingil",
+      "from": {
+        "kind": "hymn",
+        "id": "6939522d-5211-4ad9-8fc3-f658f279352e",
+        "slug": "azekri-dingil",
+        "name": "Azekri Dingil"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "b6c1d41e-9e67-4879-8a4b-3a62060f1083",
+        "name": "Virgin Mary"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Traditional Marian prayer: Remember us, O Holy Virgin",
+          "sourceId": "b6c1d41e-9e67-4879-8a4b-3a62060f1083"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-tsedenya-maryam-monthly:azekri-dingil",
+      "from": {
+        "kind": "hymn",
+        "id": "6939522d-5211-4ad9-8fc3-f658f279352e",
+        "slug": "azekri-dingil",
+        "name": "Azekri Dingil"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "bf1ff211-309a-4f63-924f-7afd3a10d478",
+        "name": "Tsedenya Maryam"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Commemoration of the Miraculous Icon of Saint Mary of Tsedenya",
+          "sourceId": "bf1ff211-309a-4f63-924f-7afd3a10d478"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-emmanuel-monthly:amanuel-temesgen",
+      "from": {
+        "kind": "hymn",
+        "id": "24f3057c-0c0d-4914-a9ff-e602bd2acf89",
+        "slug": "amanuel-temesgen",
+        "name": "Amanuel Temesgen"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "6838c7c9-cf6a-46e3-ba12-388aab7b67d1",
+        "name": "Emmanuel"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Monthly commemoration of Emmanuel — God with Us (28th of month)",
+          "sourceId": "6838c7c9-cf6a-46e3-ba12-388aab7b67d1"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-nativity-monthly:amanuel-temesgen",
+      "from": {
+        "kind": "hymn",
+        "id": "24f3057c-0c0d-4914-a9ff-e602bd2acf89",
+        "slug": "amanuel-temesgen",
+        "name": "Amanuel Temesgen"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "91feb74a-00b4-4777-a761-48246345a5bd",
+        "name": "Ba’ale Wold / Feast of God the Son"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Praising God the Son Incarnate for our salvation",
+          "sourceId": "91feb74a-00b4-4777-a761-48246345a5bd"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "legacy-calendar:monthly-annunciation-monthly:absera-gebriel",
+      "from": {
+        "kind": "hymn",
+        "id": "c560903e-5d40-42d6-89a6-930b2631c43b",
+        "slug": "absera-gebriel",
+        "name": "Absera Gebriel"
+      },
+      "to": {
+        "kind": "feast",
+        "id": "90e0ca8b-01fd-4442-b314-b38a117e2c28",
+        "name": "Annunciation / Bisrate Gabriel"
+      },
+      "relation": "hymn-feast",
+      "sourceType": "calendar-link",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Monthly commemoration of the Annunciation of the Lord (Bisrate Gabriel, 29th of month)",
+          "sourceId": "90e0ca8b-01fd-4442-b314-b38a117e2c28"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "src/lib/recommendations/calendarMezmursData.ts",
+        "version": "knowledge-links-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-primary-saint:00164295-b8aa-56eb-873e-037f2b33d3a8",
+      "from": {
+        "kind": "hymn",
+        "id": "00164295-b8aa-56eb-873e-037f2b33d3a8",
+        "slug": "mezmeu1-0100",
+        "name": "ሊቀ መላክ"
+      },
+      "to": {
+        "kind": "saint",
+        "id": "archangel:uriel",
+        "name": "Kidus Uriel"
+      },
+      "relation": "primary-saint",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "ሊቀ መላክ ኡራኤል አባት",
+          "sourceId": "00164295-b8aa-56eb-873e-037f2b33d3a8"
+        },
+        {
+          "kind": "thematic",
+          "text": "ኡራኤል መላክ ምልጃህም ፈጣን ነው",
+          "sourceId": "00164295-b8aa-56eb-873e-037f2b33d3a8"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Uriel is addressed and praised throughout every stanza; intercession and healing are attributed to him.",
+          "sourceId": "00164295-b8aa-56eb-873e-037f2b33d3a8"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-theme:00303ac8-bf88-5ad9-bd92-d05d1438f103",
+      "from": {
+        "kind": "hymn",
+        "id": "00303ac8-bf88-5ad9-bd92-d05d1438f103",
+        "slug": "mezmeu1-0226",
+        "name": "መስቀል ብርሃነ"
+      },
+      "to": {
+        "kind": "theme",
+        "id": "theme:cross",
+        "name": "Cross"
+      },
+      "relation": "theological-theme",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "መስቀል ብርሃነ ለኩሉ ዓለም መሠረተ ቤተክርስቲያን",
+          "sourceId": "00303ac8-bf88-5ad9-bd92-d05d1438f103"
+        },
+        {
+          "kind": "thematic",
+          "text": "መስቀል ብርሃን ነው ለምናምን ሰዎች",
+          "sourceId": "00303ac8-bf88-5ad9-bd92-d05d1438f103"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Both the Ge’ez opening and Amharic restatement repeatedly name the Cross as the hymn's subject.",
+          "sourceId": "00303ac8-bf88-5ad9-bd92-d05d1438f103"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-theme:00ec14a1-3162-51a8-81aa-437729965ff1",
+      "from": {
+        "kind": "hymn",
+        "id": "00ec14a1-3162-51a8-81aa-437729965ff1",
+        "slug": "mezmeu1-0422",
+        "name": "ደስ ይበለን"
+      },
+      "to": {
+        "kind": "theme",
+        "id": "theme:praise-worship",
+        "name": "Praise / Worship"
+      },
+      "relation": "theological-theme",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "አምላክ አለ መሀላችን",
+          "sourceId": "00ec14a1-3162-51a8-81aa-437729965ff1"
+        },
+        {
+          "kind": "thematic",
+          "text": "አመስግኑ ዝምም አትበሉ",
+          "sourceId": "00ec14a1-3162-51a8-81aa-437729965ff1"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Most stanzas celebrate God's mercy and urge praise. Mary appears near the close as intercessor, not the main addressee.",
+          "sourceId": "00ec14a1-3162-51a8-81aa-437729965ff1"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-theme:0197f894-1224-5ae9-be1e-a66fc9654bb9",
+      "from": {
+        "kind": "hymn",
+        "id": "0197f894-1224-5ae9-be1e-a66fc9654bb9",
+        "slug": "mezmeu1-0429",
+        "name": "እንደ እግዚአብሔር ያለ"
+      },
+      "to": {
+        "kind": "theme",
+        "id": "theme:praise-worship",
+        "name": "Praise / Worship"
+      },
+      "relation": "theological-theme",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "እንደ እግዚአብሔር ያለ ማንም የለምና",
+          "sourceId": "0197f894-1224-5ae9-be1e-a66fc9654bb9"
+        },
+        {
+          "kind": "thematic",
+          "text": "ባህር ተከፈለ እስኪታይ መሬቱ",
+          "sourceId": "0197f894-1224-5ae9-be1e-a66fc9654bb9"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "The refrain calls for praise of God; the sea and Jericho are separate examples of divine power. Trinity and Mary are incidental mentions.",
+          "sourceId": "0197f894-1224-5ae9-be1e-a66fc9654bb9"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-primary-saint:023c10e2-56dc-5bbc-aae2-56c846a75bac",
+      "from": {
+        "kind": "hymn",
+        "id": "023c10e2-56dc-5bbc-aae2-56c846a75bac",
+        "slug": "mezmeu1-0250",
+        "name": "እረድተሃልና"
+      },
+      "to": {
+        "kind": "saint",
+        "id": "archangel:michael",
+        "name": "Kidus Michael"
+      },
+      "relation": "primary-saint",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "አስታርቀን አማልደን ሚካኤል",
+          "sourceId": "023c10e2-56dc-5bbc-aae2-56c846a75bac"
+        },
+        {
+          "kind": "thematic",
+          "text": "አባቴ ሚካኤል",
+          "sourceId": "023c10e2-56dc-5bbc-aae2-56c846a75bac"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Michael is invoked line after line for intercession, protection, and rescue; the Bahran story supports the same focus.",
+          "sourceId": "023c10e2-56dc-5bbc-aae2-56c846a75bac"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-theme:02b41182-7080-54a2-8c97-caf5d385b764",
+      "from": {
+        "kind": "hymn",
+        "id": "02b41182-7080-54a2-8c97-caf5d385b764",
+        "slug": "mezmeu1-0157",
+        "name": "ኢትዮጵያንና ህዝቦቿን"
+      },
+      "to": {
+        "kind": "theme",
+        "id": "theme:prayer",
+        "name": "Prayer"
+      },
+      "relation": "theological-theme",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "ጠብቅ እግዚአብሔር ሠራዊቷን",
+          "sourceId": "02b41182-7080-54a2-8c97-caf5d385b764"
+        },
+        {
+          "kind": "thematic",
+          "text": "ካንተ የመነጨ ሰላም ይስፈንባት",
+          "sourceId": "02b41182-7080-54a2-8c97-caf5d385b764"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "The repeated direct petition asks God to protect Ethiopia and its defenders and grant peace; it is not a named feast or saint hymn.",
+          "sourceId": "02b41182-7080-54a2-8c97-caf5d385b764"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-primary-saint:04028311-d7f2-57d7-ada8-b2bdb9713efd",
+      "from": {
+        "kind": "hymn",
+        "id": "04028311-d7f2-57d7-ada8-b2bdb9713efd",
+        "slug": "mezmeu1-0092",
+        "name": "ባሕራንኒ ይቤ"
+      },
+      "to": {
+        "kind": "saint",
+        "id": "archangel:michael",
+        "name": "Kidus Michael"
+      },
+      "relation": "primary-saint",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "ርዒክዎ ለሚካኤል ወስዕንኩ ጠይቆቱ",
+          "sourceId": "04028311-d7f2-57d7-ada8-b2bdb9713efd"
+        },
+        {
+          "kind": "thematic",
+          "text": "ባሕራንን አዳነው",
+          "sourceId": "04028311-d7f2-57d7-ada8-b2bdb9713efd"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "The Ge’ez opening and repeated Amharic response center Michael's rescue of Bahran; Moses is an additional illustration.",
+          "sourceId": "04028311-d7f2-57d7-ada8-b2bdb9713efd"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-theme:04260937-1d8b-5a27-9cf0-1e46678523bf",
+      "from": {
+        "kind": "hymn",
+        "id": "04260937-1d8b-5a27-9cf0-1e46678523bf",
+        "slug": "mezmeu1-0003",
+        "name": "አደባባይ ቆሜ"
+      },
+      "to": {
+        "kind": "theme",
+        "id": "theme:repentance",
+        "name": "Repentance"
+      },
+      "relation": "theological-theme",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "መጀመሪያ ልቤ ከፊትህ ይንበርከክ",
+          "sourceId": "04260937-1d8b-5a27-9cf0-1e46678523bf"
+        },
+        {
+          "kind": "thematic",
+          "text": "ስራ ከሌበት ለእኔ አይጠቅመኝ",
+          "sourceId": "04260937-1d8b-5a27-9cf0-1e46678523bf"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "After narrating Christ's suffering, the singer repeatedly examines hollow worship and asks to obey in love. The moral appeal is the dominant purpose.",
+          "sourceId": "04260937-1d8b-5a27-9cf0-1e46678523bf"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-primary-saint:07bb8d42-c7e1-5796-afaa-16d796baca3e",
+      "from": {
+        "kind": "hymn",
+        "id": "07bb8d42-c7e1-5796-afaa-16d796baca3e",
+        "slug": "mezmeu1-0105",
+        "name": "አምላከ እስራኤል"
+      },
+      "to": {
+        "kind": "saint",
+        "id": "archangel:michael",
+        "name": "Kidus Michael"
+      },
+      "relation": "primary-saint",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "ሚካኤል/2/ የአምላክ ባለሟል",
+          "sourceId": "07bb8d42-c7e1-5796-afaa-16d796baca3e"
+        },
+        {
+          "kind": "thematic",
+          "text": "ይመራቸው ነበር ሚካኤል በፋና",
+          "sourceId": "07bb8d42-c7e1-5796-afaa-16d796baca3e"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "The song opens by praising God and narrates Moses at the sea, but its repeated interpretive refrain names Michael as Israel's guide. Editorial review should confirm the intended balance.",
+          "sourceId": "07bb8d42-c7e1-5796-afaa-16d796baca3e"
+        }
+      ],
+      "confidence": 0.65,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-primary-saint:08b40caa-92cd-5f9d-a23b-f5acdad44032",
+      "from": {
+        "kind": "hymn",
+        "id": "08b40caa-92cd-5f9d-a23b-f5acdad44032",
+        "slug": "mezmeu1-0086",
+        "name": "መልአከ ሰላምነ"
+      },
+      "to": {
+        "kind": "saint",
+        "id": "archangel:uriel",
+        "name": "Kidus Uriel"
+      },
+      "relation": "primary-saint",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "ሊቀ መላእክት ዑራኤል",
+          "sourceId": "08b40caa-92cd-5f9d-a23b-f5acdad44032"
+        },
+        {
+          "kind": "thematic",
+          "text": "መራሄ ብርሃን ዑራኤል ሆይ አትለየን",
+          "sourceId": "08b40caa-92cd-5f9d-a23b-f5acdad44032"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "The Ge’ez appeal and Amharic stanzas ask Uriel for intercession and help; God is the recipient of the prayer Uriel carries.",
+          "sourceId": "08b40caa-92cd-5f9d-a23b-f5acdad44032"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-primary-saint:090b64c0-bffe-58df-b303-40e0c166dbb4",
+      "from": {
+        "kind": "hymn",
+        "id": "090b64c0-bffe-58df-b303-40e0c166dbb4",
+        "slug": "mezmeu1-0269",
+        "name": "ይበራል በክንፉ"
+      },
+      "to": {
+        "kind": "saint",
+        "id": "archangel:michael",
+        "name": "Kidus Michael"
+      },
+      "relation": "primary-saint",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "የአምላክ ስም አለበት ስሙ ሚካኤል ነው",
+          "sourceId": "090b64c0-bffe-58df-b303-40e0c166dbb4"
+        },
+        {
+          "kind": "thematic",
+          "text": "ተጽፏል በልቤ የሚካኤል ስራ",
+          "sourceId": "090b64c0-bffe-58df-b303-40e0c166dbb4"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Multiple stanzas recount Michael's protection and upbringing of the singer; other biblical references are figurative background.",
+          "sourceId": "090b64c0-bffe-58df-b303-40e0c166dbb4"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-theme:0a81e0ba-4f11-5b74-94b8-b2becb7aa814",
+      "from": {
+        "kind": "hymn",
+        "id": "0a81e0ba-4f11-5b74-94b8-b2becb7aa814",
+        "slug": "mezmeu1-0161",
+        "name": "ሰዎች እንዘምር"
+      },
+      "to": {
+        "kind": "theme",
+        "id": "theme:salvation",
+        "name": "Salvation"
+      },
+      "relation": "theological-theme",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "ከሞት ላወጣን ለአዳኛችን",
+          "sourceId": "0a81e0ba-4f11-5b74-94b8-b2becb7aa814"
+        },
+        {
+          "kind": "thematic",
+          "text": "እውር የሆነው ዓይኑ በራ",
+          "sourceId": "0a81e0ba-4f11-5b74-94b8-b2becb7aa814"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Separate stanzas recount Bartimaeus, the woman with bleeding, and the sick man at the pool as examples of God's healing and saving action.",
+          "sourceId": "0a81e0ba-4f11-5b74-94b8-b2becb7aa814"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "semantic-theme:0b567616-c7fd-5a33-bf6d-3e685e59cadf",
+      "from": {
+        "kind": "hymn",
+        "id": "0b567616-c7fd-5a33-bf6d-3e685e59cadf",
+        "slug": "mezmeu1-0311",
+        "name": "ኃያል ነው እግዚአብሔር ኃያል ነው ቅዱሱ(2)"
+      },
+      "to": {
+        "kind": "theme",
+        "id": "theme:praise-worship",
+        "name": "Praise / Worship"
+      },
+      "relation": "theological-theme",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "thematic",
+          "text": "እርሱ ነው ጌታ የምናመልከው",
+          "sourceId": "0b567616-c7fd-5a33-bf6d-3e685e59cadf"
+        },
+        {
+          "kind": "thematic",
+          "text": "ስልጣን የእርሱ ነው አለቅነት",
+          "sourceId": "0b567616-c7fd-5a33-bf6d-3e685e59cadf"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Across the opening, middle, and close the song praises God's power over storm, creation, and judgment; Tabor is one image, not proof of a feast occasion.",
+          "sourceId": "0b567616-c7fd-5a33-bf6d-3e685e59cadf"
+        }
+      ],
+      "confidence": 0.85,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/deep-classification/mezmur_deep_classified.csv",
+        "version": "batch-001",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "calendar-date:2d2b3fca-2640-460b-ac11-2b91c550f50f",
+      "from": {
+        "kind": "feast",
+        "id": "2d2b3fca-2640-460b-ac11-2b91c550f50f",
+        "name": "Megabit Meskel"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:7:10"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Megabit Meskel",
+          "sourceId": "2d2b3fca-2640-460b-ac11-2b91c550f50f"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:06fbe4d6-78f6-4c25-a8f5-28519aa7e610",
+      "from": {
+        "kind": "feast",
+        "id": "06fbe4d6-78f6-4c25-a8f5-28519aa7e610",
+        "name": "Gena / Nativity of Christ"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:29"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Gena / Nativity of Christ",
+          "sourceId": "06fbe4d6-78f6-4c25-a8f5-28519aa7e610"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:b477167c-3384-4f65-a6c2-7624bafd5fab",
+      "from": {
+        "kind": "feast",
+        "id": "b477167c-3384-4f65-a6c2-7624bafd5fab",
+        "name": "Saint Uriel — Tir"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:22"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Uriel — Tir",
+          "sourceId": "b477167c-3384-4f65-a6c2-7624bafd5fab"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:aed7e953-3e04-4030-99c0-c6440efa20cf",
+      "from": {
+        "kind": "feast",
+        "id": "aed7e953-3e04-4030-99c0-c6440efa20cf",
+        "name": "Saint George — Tir"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:18"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint George — Tir",
+          "sourceId": "aed7e953-3e04-4030-99c0-c6440efa20cf"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:6370d1e2-215b-46d9-acc3-323c9b498ede",
+      "from": {
+        "kind": "feast",
+        "id": "6370d1e2-215b-46d9-acc3-323c9b498ede",
+        "name": "John the Baptist — Martyrdom"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:1:2"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "John the Baptist — Martyrdom",
+          "sourceId": "6370d1e2-215b-46d9-acc3-323c9b498ede"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:5dc3cfb2-d7a5-472f-9c60-ae3ff75bc625",
+      "from": {
+        "kind": "feast",
+        "id": "5dc3cfb2-d7a5-472f-9c60-ae3ff75bc625",
+        "name": "Holy Trinity — Tir"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:7"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Holy Trinity — Tir",
+          "sourceId": "5dc3cfb2-d7a5-472f-9c60-ae3ff75bc625"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:f30da4bf-745f-4e8d-b2d5-1aae38953640",
+      "from": {
+        "kind": "feast",
+        "id": "f30da4bf-745f-4e8d-b2d5-1aae38953640",
+        "name": "Saint John the Evangelist — Tir"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:4"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint John the Evangelist — Tir",
+          "sourceId": "f30da4bf-745f-4e8d-b2d5-1aae38953640"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:6a60321e-00d2-4ef4-b2b0-f604be607060",
+      "from": {
+        "kind": "feast",
+        "id": "6a60321e-00d2-4ef4-b2b0-f604be607060",
+        "name": "Apostle Thomas — Ginbot"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:9:26"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Apostle Thomas — Ginbot",
+          "sourceId": "6a60321e-00d2-4ef4-b2b0-f604be607060"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:f19d0aaa-4837-44ef-bd85-740027cf3cda",
+      "from": {
+        "kind": "feast",
+        "id": "f19d0aaa-4837-44ef-bd85-740027cf3cda",
+        "name": "Timket / Baptism of Christ"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:11"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Timket / Baptism of Christ",
+          "sourceId": "f19d0aaa-4837-44ef-bd85-740027cf3cda"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:c89c6eaa-ca1c-4635-b818-83bf11b75647",
+      "from": {
+        "kind": "feast",
+        "id": "c89c6eaa-ca1c-4635-b818-83bf11b75647",
+        "name": "Ketera / Eve of Timket"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:10"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Ketera / Eve of Timket",
+          "sourceId": "c89c6eaa-ca1c-4635-b818-83bf11b75647"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:1f2ae743-f817-4a6a-a49a-8f5e528da912",
+      "from": {
+        "kind": "feast",
+        "id": "1f2ae743-f817-4a6a-a49a-8f5e528da912",
+        "name": "Saint Uriel — Hamle"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:11:22"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Uriel — Hamle",
+          "sourceId": "1f2ae743-f817-4a6a-a49a-8f5e528da912"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:1d5afbd7-0dad-4d2e-b624-698f74a4cd4e",
+      "from": {
+        "kind": "feast",
+        "id": "1d5afbd7-0dad-4d2e-b624-698f74a4cd4e",
+        "name": "Enkutatash / Ethiopian New Year"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:1:1"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Enkutatash / Ethiopian New Year",
+          "sourceId": "1d5afbd7-0dad-4d2e-b624-698f74a4cd4e"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:b98e604a-6ba8-4748-a28d-118be2b9c51f",
+      "from": {
+        "kind": "feast",
+        "id": "b98e604a-6ba8-4748-a28d-118be2b9c51f",
+        "name": "Debre Tabor / Transfiguration"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:12:13"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Debre Tabor / Transfiguration",
+          "sourceId": "b98e604a-6ba8-4748-a28d-118be2b9c51f"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:164a7c7c-df3b-48e1-9ccc-29195dc2d53a",
+      "from": {
+        "kind": "feast",
+        "id": "164a7c7c-df3b-48e1-9ccc-29195dc2d53a",
+        "name": "Filseta / Assumption of Mary"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:12:16"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Filseta / Assumption of Mary",
+          "sourceId": "164a7c7c-df3b-48e1-9ccc-29195dc2d53a"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:9cf33ac0-6abd-476d-98a6-6ccdac0d06aa",
+      "from": {
+        "kind": "feast",
+        "id": "9cf33ac0-6abd-476d-98a6-6ccdac0d06aa",
+        "name": "Dormition of Mary"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:21"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Dormition of Mary",
+          "sourceId": "9cf33ac0-6abd-476d-98a6-6ccdac0d06aa"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:b1bd5e60-1279-4c4a-927b-36a3f1ff40d1",
+      "from": {
+        "kind": "feast",
+        "id": "b1bd5e60-1279-4c4a-927b-36a3f1ff40d1",
+        "name": "Flight into Egypt"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:9:24"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Flight into Egypt",
+          "sourceId": "b1bd5e60-1279-4c4a-927b-36a3f1ff40d1"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:31b3fd03-5c17-4366-bfca-06d522347222",
+      "from": {
+        "kind": "feast",
+        "id": "31b3fd03-5c17-4366-bfca-06d522347222",
+        "name": "Debre Mitmaq"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:9:21"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Debre Mitmaq",
+          "sourceId": "31b3fd03-5c17-4366-bfca-06d522347222"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:a554e9e7-5f32-4915-a5b1-4fbaff799ff2",
+      "from": {
+        "kind": "feast",
+        "id": "a554e9e7-5f32-4915-a5b1-4fbaff799ff2",
+        "name": "Saint Michael — Hidar"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:3:12"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Michael — Hidar",
+          "sourceId": "a554e9e7-5f32-4915-a5b1-4fbaff799ff2"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:2d9cfadf-351d-4017-a11f-b97db04a8339",
+      "from": {
+        "kind": "feast",
+        "id": "2d9cfadf-351d-4017-a11f-b97db04a8339",
+        "name": "Saint Gabriel — Tahsas"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:19"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Gabriel — Tahsas",
+          "sourceId": "2d9cfadf-351d-4017-a11f-b97db04a8339"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:a21b29a1-7ea3-4595-bf1a-03df20310416",
+      "from": {
+        "kind": "feast",
+        "id": "a21b29a1-7ea3-4595-bf1a-03df20310416",
+        "name": "Saint Gabriel — Hamle"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:11:19"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Gabriel — Hamle",
+          "sourceId": "a21b29a1-7ea3-4595-bf1a-03df20310416"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:ec8134b0-4f97-4046-a043-a5f5278712f5",
+      "from": {
+        "kind": "feast",
+        "id": "ec8134b0-4f97-4046-a043-a5f5278712f5",
+        "name": "Abune Tekle Haymanot — Birth"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:24"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Abune Tekle Haymanot — Birth",
+          "sourceId": "ec8134b0-4f97-4046-a043-a5f5278712f5"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:665cbccf-7506-40e1-b0c3-d82a945c5dd1",
+      "from": {
+        "kind": "feast",
+        "id": "665cbccf-7506-40e1-b0c3-d82a945c5dd1",
+        "name": "Abune Gebre Menfes Kidus — Great Feast"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:2:5"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Abune Gebre Menfes Kidus — Great Feast",
+          "sourceId": "665cbccf-7506-40e1-b0c3-d82a945c5dd1"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:cf7d65a3-6181-484a-9c57-257864ba7d2e",
+      "from": {
+        "kind": "feast",
+        "id": "cf7d65a3-6181-484a-9c57-257864ba7d2e",
+        "name": "Saint Yared"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:9:11"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Yared",
+          "sourceId": "cf7d65a3-6181-484a-9c57-257864ba7d2e"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:2da2c0ec-621a-4b53-8118-88639f568131",
+      "from": {
+        "kind": "feast",
+        "id": "2da2c0ec-621a-4b53-8118-88639f568131",
+        "name": "Gizret / Circumcision of Christ"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:6"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Gizret / Circumcision of Christ",
+          "sourceId": "2da2c0ec-621a-4b53-8118-88639f568131"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:041a15b8-641f-448d-aee6-10cae9102562",
+      "from": {
+        "kind": "feast",
+        "id": "041a15b8-641f-448d-aee6-10cae9102562",
+        "name": "Bisrate Gabriel"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:22"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Bisrate Gabriel",
+          "sourceId": "041a15b8-641f-448d-aee6-10cae9102562"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:eb4c7a6d-d70f-4af5-b5d2-c0bd44c38990",
+      "from": {
+        "kind": "feast",
+        "id": "eb4c7a6d-d70f-4af5-b5d2-c0bd44c38990",
+        "name": "Kidane Mihret / Covenant of Mercy"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:6:16"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Kidane Mihret / Covenant of Mercy",
+          "sourceId": "eb4c7a6d-d70f-4af5-b5d2-c0bd44c38990"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:4b9c0b44-ae60-4724-940f-9481541f5a13",
+      "from": {
+        "kind": "feast",
+        "id": "4b9c0b44-ae60-4724-940f-9481541f5a13",
+        "name": "Filseta period"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:12:1"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Filseta period",
+          "sourceId": "4b9c0b44-ae60-4724-940f-9481541f5a13"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:9890caa2-8a34-4f35-aec0-a2380197d575",
+      "from": {
+        "kind": "feast",
+        "id": "9890caa2-8a34-4f35-aec0-a2380197d575",
+        "name": "Zemene Berhan / Light"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:14"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Zemene Berhan / Light",
+          "sourceId": "9890caa2-8a34-4f35-aec0-a2380197d575"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:b8904b25-0a9a-4e93-a792-bdbdd357eb33",
+      "from": {
+        "kind": "feast",
+        "id": "b8904b25-0a9a-4e93-a792-bdbdd357eb33",
+        "name": "Presentation of Mary in the Temple"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:3"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Presentation of Mary in the Temple",
+          "sourceId": "b8904b25-0a9a-4e93-a792-bdbdd357eb33"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:f2b41607-6df2-4a6a-9e0d-85665c90083f",
+      "from": {
+        "kind": "feast",
+        "id": "f2b41607-6df2-4a6a-9e0d-85665c90083f",
+        "name": "Saint Michael — Sene"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:10:12"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Michael — Sene",
+          "sourceId": "f2b41607-6df2-4a6a-9e0d-85665c90083f"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:c1cd6bf1-df57-47ed-9eb1-01fda3c301fb",
+      "from": {
+        "kind": "feast",
+        "id": "c1cd6bf1-df57-47ed-9eb1-01fda3c301fb",
+        "name": "Abune Tekle Haymanot — Departure"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:12:24"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Abune Tekle Haymanot — Departure",
+          "sourceId": "c1cd6bf1-df57-47ed-9eb1-01fda3c301fb"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:37052d11-fa58-4ee1-8e0c-0edfd36e1af4",
+      "from": {
+        "kind": "feast",
+        "id": "37052d11-fa58-4ee1-8e0c-0edfd36e1af4",
+        "name": "Abune Gebre Menfes Kidus — Departure"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:7:5"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Abune Gebre Menfes Kidus — Departure",
+          "sourceId": "37052d11-fa58-4ee1-8e0c-0edfd36e1af4"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:569ea752-3fa1-4739-84e2-e1be7710e055",
+      "from": {
+        "kind": "feast",
+        "id": "569ea752-3fa1-4739-84e2-e1be7710e055",
+        "name": "Saint Stephen the Protomartyr"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:1"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Stephen the Protomartyr",
+          "sourceId": "569ea752-3fa1-4739-84e2-e1be7710e055"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:5a6f04d7-1541-47f8-9873-a8f176c329ca",
+      "from": {
+        "kind": "feast",
+        "id": "5a6f04d7-1541-47f8-9873-a8f176c329ca",
+        "name": "Saints Peter and Paul — Martyrdom"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:11:5"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saints Peter and Paul — Martyrdom",
+          "sourceId": "5a6f04d7-1541-47f8-9873-a8f176c329ca"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:37b543d2-d7e7-4850-8835-0f42826a0757",
+      "from": {
+        "kind": "feast",
+        "id": "37b543d2-d7e7-4850-8835-0f42826a0757",
+        "name": "Abba Salama / Frumentius"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:11:26"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Abba Salama / Frumentius",
+          "sourceId": "37b543d2-d7e7-4850-8835-0f42826a0757"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:d53881ca-6716-4793-b5a8-c97e1a73838b",
+      "from": {
+        "kind": "feast",
+        "id": "d53881ca-6716-4793-b5a8-c97e1a73838b",
+        "name": "Qusquam Maryam"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:3:6"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Qusquam Maryam",
+          "sourceId": "d53881ca-6716-4793-b5a8-c97e1a73838b"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:8eab5b75-0361-49f3-81e0-ab6f932d0e1c",
+      "from": {
+        "kind": "feast",
+        "id": "8eab5b75-0361-49f3-81e0-ab6f932d0e1c",
+        "name": "Lideta Maryam / Nativity of Mary"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:9:1"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Lideta Maryam / Nativity of Mary",
+          "sourceId": "8eab5b75-0361-49f3-81e0-ab6f932d0e1c"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:62811ba6-8be4-4375-9a0c-ee681baa3071",
+      "from": {
+        "kind": "feast",
+        "id": "62811ba6-8be4-4375-9a0c-ee681baa3071",
+        "name": "Tsige Fast / Fast of the Holy Family"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:1:26"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Tsige Fast / Fast of the Holy Family",
+          "sourceId": "62811ba6-8be4-4375-9a0c-ee681baa3071"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:ee9b335d-666f-4e43-8162-cf0fb228baf1",
+      "from": {
+        "kind": "feast",
+        "id": "ee9b335d-666f-4e43-8162-cf0fb228baf1",
+        "name": "Advent / Sibket"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:3:15"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Advent / Sibket",
+          "sourceId": "ee9b335d-666f-4e43-8162-cf0fb228baf1"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:ba819864-2df2-4f0d-b3cb-39dd32841fb7",
+      "from": {
+        "kind": "feast",
+        "id": "ba819864-2df2-4f0d-b3cb-39dd32841fb7",
+        "name": "Zemene Tsige / Season of Flower"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:1:26"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Zemene Tsige / Season of Flower",
+          "sourceId": "ba819864-2df2-4f0d-b3cb-39dd32841fb7"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:06c8cc5d-bf6c-426a-bb98-c1b77beee54f",
+      "from": {
+        "kind": "feast",
+        "id": "06c8cc5d-bf6c-426a-bb98-c1b77beee54f",
+        "name": "Zemene Nolawi / Good Shepherd"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:21"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Zemene Nolawi / Good Shepherd",
+          "sourceId": "06c8cc5d-bf6c-426a-bb98-c1b77beee54f"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:7a30b8e1-6a23-4c14-b663-13f98fe3dcde",
+      "from": {
+        "kind": "feast",
+        "id": "7a30b8e1-6a23-4c14-b663-13f98fe3dcde",
+        "name": "Age of Aster’eyo / Revelation"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:29"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Age of Aster’eyo / Revelation",
+          "sourceId": "7a30b8e1-6a23-4c14-b663-13f98fe3dcde"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:c7dd8db1-b3c9-4f52-92f1-175da33229bc",
+      "from": {
+        "kind": "feast",
+        "id": "c7dd8db1-b3c9-4f52-92f1-175da33229bc",
+        "name": "Conception of Mary"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:12:7"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Conception of Mary",
+          "sourceId": "c7dd8db1-b3c9-4f52-92f1-175da33229bc"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:a9890db7-59b9-4343-b06e-5dc3bc1435fd",
+      "from": {
+        "kind": "feast",
+        "id": "a9890db7-59b9-4343-b06e-5dc3bc1435fd",
+        "name": "Saint Raphael — Pagumen"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:13:3"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Saint Raphael — Pagumen",
+          "sourceId": "a9890db7-59b9-4343-b06e-5dc3bc1435fd"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:eb95e16e-6543-4ac1-a7e2-bc3969fc471e",
+      "from": {
+        "kind": "feast",
+        "id": "eb95e16e-6543-4ac1-a7e2-bc3969fc471e",
+        "name": "Judith Fast"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:13:1"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Judith Fast",
+          "sourceId": "eb95e16e-6543-4ac1-a7e2-bc3969fc471e"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:5008f173-a4a9-4855-a5c7-51d75c7472ac",
+      "from": {
+        "kind": "feast",
+        "id": "5008f173-a4a9-4855-a5c7-51d75c7472ac",
+        "name": "Prophet Elijah — Tir"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:6"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Prophet Elijah — Tir",
+          "sourceId": "5008f173-a4a9-4855-a5c7-51d75c7472ac"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:19b47474-c1db-4bba-9c85-09f161241d25",
+      "from": {
+        "kind": "feast",
+        "id": "19b47474-c1db-4bba-9c85-09f161241d25",
+        "name": "Kana Ze Galila / Wedding at Cana"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:5:12"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Kana Ze Galila / Wedding at Cana",
+          "sourceId": "19b47474-c1db-4bba-9c85-09f161241d25"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:59999441-a2e1-47f8-b84f-65539eaa6def",
+      "from": {
+        "kind": "feast",
+        "id": "59999441-a2e1-47f8-b84f-65539eaa6def",
+        "name": "Zemene Sibket / Proclamation"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:4:7"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Zemene Sibket / Proclamation",
+          "sourceId": "59999441-a2e1-47f8-b84f-65539eaa6def"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:330d35ab-1c1e-4bb8-aca7-a7d0fffd06ff",
+      "from": {
+        "kind": "feast",
+        "id": "330d35ab-1c1e-4bb8-aca7-a7d0fffd06ff",
+        "name": "Demera / Eve of Meskel"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:1:16"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Demera / Eve of Meskel",
+          "sourceId": "330d35ab-1c1e-4bb8-aca7-a7d0fffd06ff"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "calendar-date:cd44f8af-e05d-4efe-80cd-c8f8e6e20b0b",
+      "from": {
+        "kind": "feast",
+        "id": "cd44f8af-e05d-4efe-80cd-c8f8e6e20b0b",
+        "name": "Meskel / Finding of the True Cross"
+      },
+      "to": {
+        "kind": "calendar-day",
+        "id": "ethiopian:1:17"
+      },
+      "relation": "commemoration-date",
+      "sourceType": "calendar-catalog",
+      "evidence": [
+        {
+          "kind": "source-metadata",
+          "text": "Meskel / Finding of the True Cross",
+          "sourceId": "cd44f8af-e05d-4efe-80cd-c8f8e6e20b0b"
+        }
+      ],
+      "confidence": 1,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "scripts/calendar_cards_dump.json",
+        "version": "calendar-export-v1"
+      }
+    },
+    {
+      "id": "biblical-event:transfiguration:3cd7eb85-9ec0-5c59-87df-e06242d98345",
+      "from": {
+        "kind": "hymn",
+        "id": "3cd7eb85-9ec0-5c59-87df-e06242d98345",
+        "slug": "mezmeu1-0180",
+        "name": "ኦ ክርስቶስ"
+      },
+      "to": {
+        "kind": "biblical-event",
+        "id": "transfiguration",
+        "name": "Transfiguration"
+      },
+      "relation": "biblical-event",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር",
+          "sourceId": "3cd7eb85-9ec0-5c59-87df-e06242d98345"
+        },
+        {
+          "kind": "clear-event",
+          "text": "ሙሴ",
+          "sourceId": "3cd7eb85-9ec0-5c59-87df-e06242d98345"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Matthew 17:1-5 (reviewed, published passage snapshot)",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.75,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/mezmur_cleaned_classified.csv",
+        "version": "two-clue-event-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "scripture-event:matthew-17:3cd7eb85-9ec0-5c59-87df-e06242d98345",
+      "from": {
+        "kind": "hymn",
+        "id": "3cd7eb85-9ec0-5c59-87df-e06242d98345",
+        "slug": "mezmeu1-0180",
+        "name": "ኦ ክርስቶስ"
+      },
+      "to": {
+        "kind": "scripture",
+        "id": "passage:19b9fbc7-f942-5d88-a4b6-580b903dc450:17:1-5",
+        "name": "Matthew 17:1-5"
+      },
+      "relation": "scripture-reference",
+      "sourceType": "bible-passage",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር … ሙሴ",
+          "sourceId": "3cd7eb85-9ec0-5c59-87df-e06242d98345"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Reviewed and published Amharic source passage; this is an event match, not a quotation.",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.7,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "artifacts/faith-challenges/batch-*/source-batch.json",
+        "version": "event-passages-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "biblical-event:transfiguration:60029398-4a0a-4356-a52a-d2fd257eb350",
+      "from": {
+        "kind": "hymn",
+        "id": "60029398-4a0a-4356-a52a-d2fd257eb350",
+        "slug": "buhe-belu",
+        "name": "Buhe Belu"
+      },
+      "to": {
+        "kind": "biblical-event",
+        "id": "transfiguration",
+        "name": "Transfiguration"
+      },
+      "relation": "biblical-event",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር",
+          "sourceId": "60029398-4a0a-4356-a52a-d2fd257eb350"
+        },
+        {
+          "kind": "clear-event",
+          "text": "ሙሴ",
+          "sourceId": "60029398-4a0a-4356-a52a-d2fd257eb350"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Matthew 17:1-5 (reviewed, published passage snapshot)",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.75,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/mezmur_cleaned_classified.csv",
+        "version": "two-clue-event-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "scripture-event:matthew-17:60029398-4a0a-4356-a52a-d2fd257eb350",
+      "from": {
+        "kind": "hymn",
+        "id": "60029398-4a0a-4356-a52a-d2fd257eb350",
+        "slug": "buhe-belu",
+        "name": "Buhe Belu"
+      },
+      "to": {
+        "kind": "scripture",
+        "id": "passage:19b9fbc7-f942-5d88-a4b6-580b903dc450:17:1-5",
+        "name": "Matthew 17:1-5"
+      },
+      "relation": "scripture-reference",
+      "sourceType": "bible-passage",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር … ሙሴ",
+          "sourceId": "60029398-4a0a-4356-a52a-d2fd257eb350"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Reviewed and published Amharic source passage; this is an event match, not a quotation.",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.7,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "artifacts/faith-challenges/batch-*/source-batch.json",
+        "version": "event-passages-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "biblical-event:transfiguration:73ed9a9c-90f8-5477-a478-b6648ff762b0",
+      "from": {
+        "kind": "hymn",
+        "id": "73ed9a9c-90f8-5477-a478-b6648ff762b0",
+        "slug": "mezmeu1-0469",
+        "name": "አፌ ለምስጋና"
+      },
+      "to": {
+        "kind": "biblical-event",
+        "id": "transfiguration",
+        "name": "Transfiguration"
+      },
+      "relation": "biblical-event",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር",
+          "sourceId": "73ed9a9c-90f8-5477-a478-b6648ff762b0"
+        },
+        {
+          "kind": "clear-event",
+          "text": "ሙሴ",
+          "sourceId": "73ed9a9c-90f8-5477-a478-b6648ff762b0"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Matthew 17:1-5 (reviewed, published passage snapshot)",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.75,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/mezmur_cleaned_classified.csv",
+        "version": "two-clue-event-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "scripture-event:matthew-17:73ed9a9c-90f8-5477-a478-b6648ff762b0",
+      "from": {
+        "kind": "hymn",
+        "id": "73ed9a9c-90f8-5477-a478-b6648ff762b0",
+        "slug": "mezmeu1-0469",
+        "name": "አፌ ለምስጋና"
+      },
+      "to": {
+        "kind": "scripture",
+        "id": "passage:19b9fbc7-f942-5d88-a4b6-580b903dc450:17:1-5",
+        "name": "Matthew 17:1-5"
+      },
+      "relation": "scripture-reference",
+      "sourceType": "bible-passage",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር … ሙሴ",
+          "sourceId": "73ed9a9c-90f8-5477-a478-b6648ff762b0"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Reviewed and published Amharic source passage; this is an event match, not a quotation.",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.7,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "artifacts/faith-challenges/batch-*/source-batch.json",
+        "version": "event-passages-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "biblical-event:transfiguration:9bc8f75e-2dc8-48c1-b2ab-396bfc21c058",
+      "from": {
+        "kind": "hymn",
+        "id": "9bc8f75e-2dc8-48c1-b2ab-396bfc21c058",
+        "slug": "hoya-hoye",
+        "name": "Hoya Hoye"
+      },
+      "to": {
+        "kind": "biblical-event",
+        "id": "transfiguration",
+        "name": "Transfiguration"
+      },
+      "relation": "biblical-event",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር",
+          "sourceId": "9bc8f75e-2dc8-48c1-b2ab-396bfc21c058"
+        },
+        {
+          "kind": "clear-event",
+          "text": "ሙሴ",
+          "sourceId": "9bc8f75e-2dc8-48c1-b2ab-396bfc21c058"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Matthew 17:1-5 (reviewed, published passage snapshot)",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.75,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/mezmur_cleaned_classified.csv",
+        "version": "two-clue-event-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "scripture-event:matthew-17:9bc8f75e-2dc8-48c1-b2ab-396bfc21c058",
+      "from": {
+        "kind": "hymn",
+        "id": "9bc8f75e-2dc8-48c1-b2ab-396bfc21c058",
+        "slug": "hoya-hoye",
+        "name": "Hoya Hoye"
+      },
+      "to": {
+        "kind": "scripture",
+        "id": "passage:19b9fbc7-f942-5d88-a4b6-580b903dc450:17:1-5",
+        "name": "Matthew 17:1-5"
+      },
+      "relation": "scripture-reference",
+      "sourceType": "bible-passage",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር … ሙሴ",
+          "sourceId": "9bc8f75e-2dc8-48c1-b2ab-396bfc21c058"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Reviewed and published Amharic source passage; this is an event match, not a quotation.",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.7,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "artifacts/faith-challenges/batch-*/source-batch.json",
+        "version": "event-passages-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "biblical-event:transfiguration:c68458ec-3a63-40df-86c1-25f36ce5aff5",
+      "from": {
+        "kind": "hymn",
+        "id": "c68458ec-3a63-40df-86c1-25f36ce5aff5",
+        "slug": "bemn-bemn-inmeslat",
+        "name": "Bemn Bemn Inmeslat"
+      },
+      "to": {
+        "kind": "biblical-event",
+        "id": "transfiguration",
+        "name": "Transfiguration"
+      },
+      "relation": "biblical-event",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር",
+          "sourceId": "c68458ec-3a63-40df-86c1-25f36ce5aff5"
+        },
+        {
+          "kind": "clear-event",
+          "text": "ሙሴ",
+          "sourceId": "c68458ec-3a63-40df-86c1-25f36ce5aff5"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Matthew 17:1-5 (reviewed, published passage snapshot)",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.75,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/mezmur_cleaned_classified.csv",
+        "version": "two-clue-event-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "scripture-event:matthew-17:c68458ec-3a63-40df-86c1-25f36ce5aff5",
+      "from": {
+        "kind": "hymn",
+        "id": "c68458ec-3a63-40df-86c1-25f36ce5aff5",
+        "slug": "bemn-bemn-inmeslat",
+        "name": "Bemn Bemn Inmeslat"
+      },
+      "to": {
+        "kind": "scripture",
+        "id": "passage:19b9fbc7-f942-5d88-a4b6-580b903dc450:17:1-5",
+        "name": "Matthew 17:1-5"
+      },
+      "relation": "scripture-reference",
+      "sourceType": "bible-passage",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር … ሙሴ",
+          "sourceId": "c68458ec-3a63-40df-86c1-25f36ce5aff5"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Reviewed and published Amharic source passage; this is an event match, not a quotation.",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.7,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "artifacts/faith-challenges/batch-*/source-batch.json",
+        "version": "event-passages-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "biblical-event:transfiguration:d9bd9e2d-8201-4613-b6fe-3937ac405994",
+      "from": {
+        "kind": "hymn",
+        "id": "d9bd9e2d-8201-4613-b6fe-3937ac405994",
+        "slug": "tabor-abera",
+        "name": "Tabor Abera"
+      },
+      "to": {
+        "kind": "biblical-event",
+        "id": "transfiguration",
+        "name": "Transfiguration"
+      },
+      "relation": "biblical-event",
+      "sourceType": "hymn-lyrics",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር",
+          "sourceId": "d9bd9e2d-8201-4613-b6fe-3937ac405994"
+        },
+        {
+          "kind": "clear-event",
+          "text": "ሙሴ",
+          "sourceId": "d9bd9e2d-8201-4613-b6fe-3937ac405994"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Matthew 17:1-5 (reviewed, published passage snapshot)",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.75,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "reports/mezmur-lyric-cleanup/mezmur_cleaned_classified.csv",
+        "version": "two-clue-event-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    },
+    {
+      "id": "scripture-event:matthew-17:d9bd9e2d-8201-4613-b6fe-3937ac405994",
+      "from": {
+        "kind": "hymn",
+        "id": "d9bd9e2d-8201-4613-b6fe-3937ac405994",
+        "slug": "tabor-abera",
+        "name": "Tabor Abera"
+      },
+      "to": {
+        "kind": "scripture",
+        "id": "passage:19b9fbc7-f942-5d88-a4b6-580b903dc450:17:1-5",
+        "name": "Matthew 17:1-5"
+      },
+      "relation": "scripture-reference",
+      "sourceType": "bible-passage",
+      "evidence": [
+        {
+          "kind": "clear-event",
+          "text": "ታቦር … ሙሴ",
+          "sourceId": "d9bd9e2d-8201-4613-b6fe-3937ac405994"
+        },
+        {
+          "kind": "source-metadata",
+          "text": "Reviewed and published Amharic source passage; this is an event match, not a quotation.",
+          "sourceId": "93e341ad-ebdb-59cc-ac34-c97de10ca1c0"
+        }
+      ],
+      "confidence": 0.7,
+      "editorialStatus": "proposed",
+      "provenance": {
+        "source": "artifacts/faith-challenges/batch-*/source-batch.json",
+        "version": "event-passages-v1",
+        "sourceHash": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808"
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "id": "legacy-calendar:observance-enkutatash:awde-amet-le-barko",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-meskel:eleni-nigist-haseset-meskelu",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-meskel:meskel-birhane",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-meskel:meskelike-yikunene-beza",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-megabit-meskel:meskel-birhane",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-demera:meskel-abeba-wub-abeba",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gena:beza-kulu-alem-yom-tewolede",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gena:reiywo-nolot",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gena:begol-sekebe-beatsrqt",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gena:eyesus-tewelidu-gena-mezmur-eritrean-orthodox-mezmur-zemari-bereket-tiku",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-timket:our-lord-and-king-of-peace",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-ketera:our-lord-and-king-of-peace",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-kana-ze-galila:zemarit-mirtineshi-tilahun-kana-ze-gelila-ye-d-daniel-wendimu-ye-sergi-m",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-filseta:wede-misraq-eyu",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-maryam-dormition:dingil-fetariwan",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-lideta-maryam:akilile-tsige-mariyam",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-debre-mitmaq:yebrhan-gorf-nat-dingl-enatachn",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-kidane-mihret:kidane-mihret-emebet",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-kidane-mihret:kidane-mihiret-enate",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-michael-hidar:tewedaj-yekidus-mikael-mezimurat-liredagn-meta-yeafomiya-eredat-neh-bebe",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-michael-hidar:liredan-meta-mikael",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-michael-sene:mar-mikael-libelih",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gabriel-tahsas:gebriel-hayal-melake-selam",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gabriel-tahsas:yeramaw-gebriel",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gabriel-hamle:gebriel-hayal-melake-selam",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-trinity-tir:silassen-amesgnu",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-trinity-tir:kibir-lesilase",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-george-tir:nu-beegiziabiher-des-yibeleni-dinik-adigolignal-giyorigis-hayal",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-stephen-tir:estifanos-semeat",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-tekle-haymanot-birth:le-teklehaimanot-tsadiq",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-tekle-haymanot-departure:amlak-tekle-haymanot",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gebre-menfes-kidus-tikimt:gebremenfes-kidus-yealem-birhan",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-gebre-menfes-kidus-megabit:gebire-menifes-kidus-yealem-birihan-nachew",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-yared-ginbot:ye-yared-wub-zema",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:observance-yared-ginbot:yared-kahenu-zemre",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:tsige-season:akilile-tsige-mariyam",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:fast-tsige-fast:akilile-tsige-mariyam",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:great-lent:nitsum-tsoma",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:great-lent:dinik-yeabiy-tsom-mezimur",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:fast-weekly-wednesday-friday:nitsum-tsoma",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:fast-weekly-wednesday-friday:tilin-bemeskelu-gedele",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:holy-week:weredo-emeskelu",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:holy-week:yesiklet-mezmur",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:heraclius-week:nitsum-tsoma",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:paschal-season:kirstos-tensae",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:paschal-season:wemidrni-tigebir-fasika",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:resurrection-period:tinsaeke-leele-amene",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:bright-week:enidetenagere-tenesitwal",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:advent-sibket:reiywo-nolot",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:sibket-period:reiywo-nolot",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:nolawi-period:anferatsu-sebea-segel",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:astereyo:dingil-fetariwan",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:berhan-period:meskel-birhane",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-lideta-maryam-monthly:akilile-tsige-mariyam",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-lideta-maryam-monthly:dingil-fetariwan",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-gebre-menfes-kidus-monthly:gebremenfes-kidus-yealem-birhan",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-gebre-menfes-kidus-monthly:gebire-menifes-kidus-yealem-birihan-nachew",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-jesus-monthly:eyesus-tewelidu-gena-mezmur-eritrean-orthodox-mezmur-zemari-bereket-tiku",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-trinity-monthly:silassen-amesgnu",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-trinity-monthly:kibir-lesilase",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-trinity-monthly:menigisite-silase",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-cross-monthly:meskel-birhane",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-cross-monthly:tilin-bemeskelu-gedele",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-michael-monthly:liredan-meta-mikael",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-michael-monthly:mar-mikael-libelih",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-michael-monthly:tewedaj-yekidus-mikael-mezimurat-liredagn-meta-yeafomiya-eredat-neh-bebe",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-raphael-monthly:rufael-tekebel-tseloten",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-god-father-monthly:silassen-amesgnu",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-aregawi-monthly:abunearegawi-zemarit-betselot-asmare",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-kidane-mihret-monthly:kidane-mihret-emebet",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-kidane-mihret-monthly:kidane-mihiret-enate",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-kidane-mihret-monthly:enat-alegn-kidane-mihiret",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-stephen-monthly:estifanos-semeat",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-gabriel-monthly:gebriel-hayal-melake-selam",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-gabriel-monthly:yeramaw-gebriel",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-gabriel-monthly:gebirielin-lakew",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-maryam-monthly:dingil-fetariwan",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-maryam-monthly:adegnegn-enate-kesega-fetena",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-maryam-church-monthly:dingil-embete-yehiywete-redat",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-giorgis-monthly:nu-beegiziabiher-des-yibeleni-dinik-adigolignal-giyorigis-hayal",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-tekle-haymanot-monthly:le-teklehaimanot-tsadiq",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-tekle-haymanot-monthly:teklehaymanot-live-mezmur",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-passion-monthly:medhanealem-simeh-genana",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-passion-monthly:medihanealem-yelem-yemisanew",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-emmanuel-monthly:nana-amanuel-na-medhanite",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-nativity-monthly:beza-kulu-alem-yom-tewolede",
+      "reason": "Missing current published hymn or calendar card"
+    },
+    {
+      "id": "legacy-calendar:monthly-yared-monthly:ye-yared-wub-zema",
+      "reason": "Missing current published hymn or calendar card"
+    }
+  ]
+}

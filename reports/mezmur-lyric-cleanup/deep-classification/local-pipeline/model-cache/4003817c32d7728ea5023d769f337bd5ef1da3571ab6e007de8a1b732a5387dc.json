@@ -1,0 +1,31 @@
+{
+  "group": "ca1a77f9ca899e6a0f1ce8fd2090bc30029ff36b1a3d191e1c6038df2c61e491",
+  "member_ids": [
+    "4d3164d2-1c81-4f58-9016-a3980e026172"
+  ],
+  "item": {
+    "hash": "ca1a77f9ca899e6a0f1ce8fd2090bc30029ff36b1a3d191e1c6038df2c61e491",
+    "primary_slug": "prayer",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ወደ አምላከ ምሕረት ለምኑልን",
+      "የመረጥከውን ማን ይከሳል"
+    ],
+    "reason": "The lyrics express a plea for mercy and judgment, characteristic of prayer.",
+    "competing_slugs": [
+      "salvation"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2208,
+    "eval_count": 628,
+    "total_duration_ns": 8882707000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

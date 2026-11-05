@@ -1,0 +1,59 @@
+{
+  "group_hashes": [
+    "c72240510db106b110cae807e5e02ede14083402ce49b7237de6a308454f860c",
+    "6a26a6ae2dcd421c28c345640639e1230461c33a2e6f3e1c99eab428c4f305c3",
+    "5486d5ff7e046f4322f59430e70f9ad3e8babffd7b55fd5b48a6a6dc3a6f7d06"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "c72240510db106b110cae807e5e02ede14083402ce49b7237de6a308454f860c",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አንድትደርሽልኝ በመከራ ጊዜ",
+          "Azanytwa Maryam Beterahush Gize"
+        ],
+        "reason": "Title explicitly references Mary and lyrics address her in times of suffering.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "6a26a6ae2dcd421c28c345640639e1230461c33a2e6f3e1c99eab428c4f305c3",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ተገኝተሻል ድንግል ከልጅሽ ጋራ",
+          "Dingil enatachn bezawit Alem"
+        ],
+        "reason": "Lyrics focus on the Virgin Mary at Cana and her role as mother of God.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5486d5ff7e046f4322f59430e70f9ad3e8babffd7b55fd5b48a6a6dc3a6f7d06",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ሊታዘዝህ ሊገዛልህ ሊያገለግልህ",
+          "ለፍርድ አትቸኩልም በልጆችህ ላይ"
+        ],
+        "reason": "Lyrics express personal devotion, asking for forgiveness and service to God.",
+        "competing_slugs": [
+          "jesus-christ",
+          "repentance"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2266,
+    "eval_count": 600,
+    "total_duration_ns": 8449370300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

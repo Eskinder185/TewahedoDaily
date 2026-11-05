@@ -1,0 +1,51 @@
+{
+  "group_hashes": [
+    "5487a6068e24c6612256cc49f93874378910a3443072c6eb0f81707c29ac35c0",
+    "17f1312d56badb429cb2f4caaaaff483ae7762ad5655e3b4b896e07f7525b3d0",
+    "de0de54441852f8802b6baf55051895fba144fa68205073097907e7ee73c8c4a"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "5487a6068e24c6612256cc49f93874378910a3443072c6eb0f81707c29ac35c0",
+        "primary_slug": "kidus-michael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Mikael liqe melaikit"
+        ],
+        "reason": "Lyrics explicitly name Mikael (Michael) as Archangel.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "17f1312d56badb429cb2f4caaaaff483ae7762ad5655e3b4b896e07f7525b3d0",
+        "primary_slug": "general",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "Metsa merawi fisha lekulu"
+        ],
+        "reason": "Lyrics describe a general message of peace and joy without specific saint or theological focus.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "de0de54441852f8802b6baf55051895fba144fa68205073097907e7ee73c8c4a",
+        "primary_slug": "general",
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics describe nature and a secret without identifying a specific subject or saint.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1010,
+    "eval_count": 446,
+    "total_duration_ns": 6443660800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

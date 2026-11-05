@@ -3,7 +3,6 @@ import { resolve } from 'node:path'
 import {
   CALENDAR_MEZMUR_LINKS,
   getMezmursForCalendarCardSlug,
-  type CalendarMezmurLink,
 } from '../src/lib/recommendations/calendarMezmursData'
 import {
   buildDailyFaithContext,
@@ -167,14 +166,14 @@ async function runVerificationSuite() {
   // -------------------------------------------------------------------------
   // TEST 9: High-priority feasts return Priority 1 or 2 Mezmurs ahead of general
   // -------------------------------------------------------------------------
-  console.log('\nTest 9: Verifying feast priority ordering on major feast days...')
+  console.log('\nTest 9: Verifying unreviewed legacy links stay below authoritative priority...')
   // Test Meskel (Sept 27, 2026)
   const meskelCtx = await buildDailyFaithContext(new Date(2026, 8, 27))
   const meskelRecs = await recommendDailyMezmurs(meskelCtx, 4, mezmurs)
   const topMeskel = meskelRecs[0]
   assert(
-    topMeskel && topMeskel.score >= 85 && (topMeskel.matchReasonEn.includes('Cross') || topMeskel.matchReasonEn.includes('Meskel') || topMeskel.title.toLowerCase().includes('meskel')),
-    `Meskel feast returns high-scoring feast hymn at #1 (${topMeskel?.title}: score ${topMeskel?.score})`
+    topMeskel && topMeskel.relationshipStatus === 'candidate' && topMeskel.score < 85 && topMeskel.matchReasonEn.includes('pending review'),
+    `Meskel legacy match remains a review candidate (${topMeskel?.title}: score ${topMeskel?.score})`
   )
 
   // -------------------------------------------------------------------------
@@ -216,9 +215,9 @@ async function runVerificationSuite() {
   console.log('\nTest 13: Verifying internal link structure (/practice/mezmur/:slug)...')
   const testCardSlug = 'observance-bisrate-gabriel'
   const cardMezmurs = getMezmursForCalendarCardSlug(testCardSlug)
-  assert(cardMezmurs.length >= 1, `Card ${testCardSlug} yields verified hymns via getMezmursForCalendarCardSlug`)
-  const sampleLinkHref = `/practice/mezmur/${cardMezmurs[0].mezmur_slug}`
-  assert(sampleLinkHref === '/practice/mezmur/absera-gebriel', `Hymn link resolves to canonical internal route (${sampleLinkHref})`)
+  assert(cardMezmurs.length >= 1, `Card ${testCardSlug} yields legacy hymn candidates for published-record validation`)
+  const sampleLinkHref = `/hymns/mezmur/${cardMezmurs[0].mezmur_slug}`
+  assert(sampleLinkHref === '/hymns/mezmur/absera-gebriel', `Hymn link resolves to canonical internal route (${sampleLinkHref})`)
 
   // -------------------------------------------------------------------------
   // TEST 14: Review queue contains only cards with legitimate reasons

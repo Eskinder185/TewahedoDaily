@@ -1,0 +1,32 @@
+{
+  "group": "9f690b0bb7a12069951bb360436cde3cf535760762defc0fdd339bc8c7052243",
+  "member_ids": [
+    "0d825ee0-60dd-4e04-852c-6cb2475534a0"
+  ],
+  "item": {
+    "hash": "9f690b0bb7a12069951bb360436cde3cf535760762defc0fdd339bc8c7052243",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ወደ ሕይወት መንገድ ይመራኛል ጌታ ፪",
+      "ምሕረትን አድለኝ\nፈጣሪ ቸል አትበል ፪"
+    ],
+    "reason": "Lyrics explicitly address 'Gete' (Lord) and 'Fetari' (Creator), referring to Jesus Christ.",
+    "competing_slugs": [
+      "prayer",
+      "salvation"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1149,
+    "eval_count": 526,
+    "total_duration_ns": 7393244200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

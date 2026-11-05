@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "b90325eba938fc03fe92a04f96a9a3eecd5115091d6722f85615aae37eebe030",
+    "2dcdb700c3b9dd7533a67976e806ba4b7f993cc0be06a94d3b802184b1cf9ee8",
+    "1717e2edb6b22c348fa1cc03d68fa450698edeec468279ada07d86ae2c58935f"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b90325eba938fc03fe92a04f96a9a3eecd5115091d6722f85615aae37eebe030",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ጎይታይ ንቅዱስ ስምካ",
+          "እሙን ኢኻ ጎይታይ"
+        ],
+        "reason": "Lyrics explicitly address Jesus as 'Goytay' (My Lord) and affirm faith in His name.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "2dcdb700c3b9dd7533a67976e806ba4b7f993cc0be06a94d3b802184b1cf9ee8",
+        "primary_slug": "holy-spirit",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ቅዱሱ መንፈስ ስጦታዬ",
+          "አለህኝ አንተ የኔ ወዳጅ መንፈስ ቅዱስ"
+        ],
+        "reason": "The text directly addresses the Holy Spirit as 'Qidusu menfes' (Holy Spirit) and 'menfes qidus'.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "1717e2edb6b22c348fa1cc03d68fa450698edeec468279ada07d86ae2c58935f",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አዳነኝ ጌታ አዳነኝ",
+          "እግዚአብሔር አዳነኝ"
+        ],
+        "reason": "The hymn is a direct address to Jesus ('Geta') and God, focusing on salvation through Him.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3326,
+    "eval_count": 593,
+    "total_duration_ns": 8624842500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

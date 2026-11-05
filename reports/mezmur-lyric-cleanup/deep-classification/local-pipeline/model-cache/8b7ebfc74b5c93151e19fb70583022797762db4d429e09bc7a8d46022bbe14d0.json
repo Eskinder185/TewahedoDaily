@@ -1,0 +1,28 @@
+{
+  "group": "91273f8ea0c5dc51bceeb101fe5950da588838828aa861a48cb6377a75ef09b1",
+  "member_ids": [
+    "1c912264-51cc-432a-8efe-443af6ab7769"
+  ],
+  "item": {
+    "hash": "91273f8ea0c5dc51bceeb101fe5950da588838828aa861a48cb6377a75ef09b1",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Sibhat lewelde legebare kulu fitret"
+    ],
+    "reason": "The lyrics express praise to the Creator and Redeemer, fitting the general theme of worship.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 957,
+    "eval_count": 483,
+    "total_duration_ns": 6690562000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

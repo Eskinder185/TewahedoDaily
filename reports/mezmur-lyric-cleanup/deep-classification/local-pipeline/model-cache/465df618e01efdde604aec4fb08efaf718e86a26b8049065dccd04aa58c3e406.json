@@ -1,0 +1,28 @@
+{
+  "group": "8f2dbf2f43a59c3741b056eba4b926c46f000af78e8fb6d7061d64f5838dc5ff",
+  "member_ids": [
+    "03a86164-3198-4738-b30c-dd30a72645d2"
+  ],
+  "item": {
+    "hash": "8f2dbf2f43a59c3741b056eba4b926c46f000af78e8fb6d7061d64f5838dc5ff",
+    "primary_slug": "virgin-mary",
+    "confidence": "medium",
+    "uncertain": false,
+    "evidence": [
+      "Inatna dingil huletun honshiw"
+    ],
+    "reason": "Lyrics mention 'Mother and Virgin' together; in Ethiopian context this often refers to Mary.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 901,
+    "eval_count": 475,
+    "total_duration_ns": 6930004300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

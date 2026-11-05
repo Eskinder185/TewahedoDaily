@@ -1,0 +1,29 @@
+{
+  "group": "4c33756be3b27c1d22abbee2955ac2a758d3f408be9ab4ca157b3de5bac3a918",
+  "member_ids": [
+    "43b7c8cb-e495-5541-a9c6-b6e50238b177"
+  ],
+  "item": {
+    "hash": "4c33756be3b27c1d22abbee2955ac2a758d3f408be9ab4ca157b3de5bac3a918",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "እናቴ ነሽ ዋሴ ለሕይወቴ",
+      "ድንግል ንጽህናሽ ለእኔ ሆኖ ይገኝ"
+    ],
+    "reason": "Lyrics directly address Mary as 'mother' and 'virgin', seeking her intercession, clearly indicating Virgin Mary.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1951,
+    "eval_count": 630,
+    "total_duration_ns": 9024944000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

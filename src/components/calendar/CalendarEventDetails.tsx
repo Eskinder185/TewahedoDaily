@@ -52,6 +52,7 @@ function SectionBody({
   if (section.id === 'mezmurs') {
     return (
       <CalendarRelatedMezmurs
+        key={cardSlug}
         cardSlug={cardSlug}
         fallbackRaw={section.english || section.amharic}
         lang={lang}
@@ -89,7 +90,7 @@ export function CalendarEventDetails({
   ) {
     sections.push({
       id: 'mezmurs',
-      title: 'Recommended Mezmurs',
+      title: 'Related hymns to explore',
       english: '',
       amharic: '',
     })

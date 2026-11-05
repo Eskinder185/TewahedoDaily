@@ -1,0 +1,28 @@
+{
+  "group": "71452c33220b082699eefc3a604ff42bf12b746433d6537648813633df617be7",
+  "member_ids": [
+    "07d94ebf-ebe0-424a-bc26-f1aaa1dea93d"
+  ],
+  "item": {
+    "hash": "71452c33220b082699eefc3a604ff42bf12b746433d6537648813633df617be7",
+    "primary_slug": "prayer",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Kahnu yibarkwat burkit sew tihun"
+    ],
+    "reason": "Lyrics are a direct petition for blessing upon the person.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 905,
+    "eval_count": 461,
+    "total_duration_ns": 6878620800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

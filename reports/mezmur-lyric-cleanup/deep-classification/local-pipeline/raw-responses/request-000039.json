@@ -1,0 +1,52 @@
+{
+  "group_hashes": [
+    "9f0eb6a47e7daa2040bcae5164caf51b0b2d75af6d963c53fa3ba41564fd7ea5",
+    "5908621ee4b9075a7d5499f0caff6353f6d213a242915d7eba10361bc5f61a44",
+    "73207c77ac09995e3cfa1e36d1085e6a47e0c935ae12eb6a89a5aa8f49caf3d9"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "9f0eb6a47e7daa2040bcae5164caf51b0b2d75af6d963c53fa3ba41564fd7ea5",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አትመልስ ጌታ የምህረት ዓይንህን",
+          "ርስት ጉልታችን አምላክ አብርሃም"
+        ],
+        "reason": "The lyrics address God as 'Get' (Lord) and Medhanealem, focusing on Christ's mercy and salvation rather than specific saints.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5908621ee4b9075a7d5499f0caff6353f6d213a242915d7eba10361bc5f61a44",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Insufficient lyrics provided to determine the subject; only a fragment mentioning 'Amba' is present.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "73207c77ac09995e3cfa1e36d1085e6a47e0c935ae12eb6a89a5aa8f49caf3d9",
+        "primary_slug": "abune-tekle-haymanot",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "በዓለም ሲያሰጠራህ ተክለ ሃይማኖት"
+        ],
+        "reason": "The lyrics explicitly name 'Tekle Haymanot' as the subject of praise.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1906,
+    "eval_count": 532,
+    "total_duration_ns": 7581899900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "group_hashes": [
+    "ad441db3259fece8132512bb2cc71c8ef28532a38a7137abdfb13e7665a39554",
+    "2b09e86cee05c93d9b032cb491b5603ee3e47fd3295d5fa59e03d01992b23b75",
+    "5b7ba88724864d3e6f3524f3a52cebf09ec37ef15f4a406c2eb9fffcc8e6d2af"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "ad441db3259fece8132512bb2cc71c8ef28532a38a7137abdfb13e7665a39554",
+        "primary_slug": "kidus-tekle-haymanot=Abune Tekle Haymanot",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የተክለሃይማኖትን ዝና አውሪ",
+          "ነፍሴን ታደግልኝ በምልጃህ"
+        ],
+        "reason": "Lyrics explicitly mention 'Tekle Haymanot' and address him directly as the subject of praise.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "2b09e86cee05c93d9b032cb491b5603ee3e47fd3295d5fa59e03d01992b23b75",
+        "primary_slug": "salvation=Salvation",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አምላኬ መጥቶ ፈወሰኝ",
+          "ሙሉ ጤነኛ አድርገኝ"
+        ],
+        "reason": "The text focuses entirely on the narrator's sickness, plea for help, and ultimate healing/salvation by God.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5b7ba88724864d3e6f3524f3a52cebf09ec37ef15f4a406c2eb9fffcc8e6d2af",
+        "primary_slug": "prayer=Prayer",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "ምስጋና እንድንሰዋ እኛም ለአምላካችን",
+          "እልል /2/ በሉ እንድታሸንፉ"
+        ],
+        "reason": "The lyrics are a petition for God's power to heal Saul and the church, functioning as a prayer.",
+        "competing_slugs": [
+          "angels=Angels",
+          "prophets=Prophets"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2787,
+    "eval_count": 640,
+    "total_duration_ns": 9196352800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

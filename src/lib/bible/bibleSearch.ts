@@ -24,7 +24,8 @@ const amharicSourceNames = (source: SourceBook) =>
   [...new Set([verifiedAmharicForSourceName(source.source_name_en), source.source_name_am, flaggedAmharicForSourceName(source.source_name_en)].map(nfc).filter(Boolean))]
 import { parseBibleReference, type ParsedBibleReference } from './parseBibleReference'
 import type { SiteSearchResult } from '../search/types'
-import { buildExcerpt, hasEthiopic, ilikePart, matchText, retrievalWords } from '../search/textMatch'
+import { buildExcerpt, hasEthiopic, ilikePart, retrievalWords } from '../search/textMatch'
+import { matchContent } from '../language/index.ts'
 
 export type BibleSearchLanguage = 'am' | 'en'
 
@@ -864,10 +865,10 @@ export async function searchBibleText(
   void language
 
   // Verify + rank: exact phrase first, then the share of query words matched, then edition and book order.
-  type Verified = { row: VerseTextEmbed; match: NonNullable<ReturnType<typeof matchText>> }
+  type Verified = { row: VerseTextEmbed; match: NonNullable<ReturnType<typeof matchContent>> }
   const verified: Verified[] = []
   for (const row of candidates) {
-    const match = matchText(row.text, q)
+    const match = matchContent(row.text, q)
     if (match) verified.push({ row, match })
   }
   const codeOf = (row: VerseTextEmbed) => row.bible_chapters.bible_source_books.bible_editions.code

@@ -1,0 +1,31 @@
+{
+  "group": "646a3e92a22a3549019111d076528eb517c7aceebaee17bc413700859cc06703",
+  "member_ids": [
+    "1340bc9a-857a-57b5-aa85-5def757cde20"
+  ],
+  "item": {
+    "hash": "646a3e92a22a3549019111d076528eb517c7aceebaee17bc413700859cc06703",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ለጊዜው ነውና ሁሉም ያልፋልና",
+      "ከአምላክህ ተስማማ እራስህን አዋርድ"
+    ],
+    "reason": "Focuses on enduring trials through faith, repentance ('tsna'), and aligning oneself with God's will.",
+    "competing_slugs": [
+      "salvation"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2012,
+    "eval_count": 620,
+    "total_duration_ns": 8986803100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

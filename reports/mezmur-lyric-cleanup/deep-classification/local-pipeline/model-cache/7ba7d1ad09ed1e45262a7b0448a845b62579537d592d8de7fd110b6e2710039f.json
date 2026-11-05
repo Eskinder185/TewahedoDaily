@@ -1,0 +1,29 @@
+{
+  "group": "84e86f5d1d67fbb56587ba09b0a7d2b35955971affd80fd1525b26a529b6a2e8",
+  "member_ids": [
+    "5a3275c6-c51d-46ee-adc2-2fc65c0dbb72"
+  ],
+  "item": {
+    "hash": "84e86f5d1d67fbb56587ba09b0a7d2b35955971affd80fd1525b26a529b6a2e8",
+    "primary_slug": "salvation",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የኃጢአት ኑሮ ጨለማ ሕይወቴን",
+      "ብርሃን ሆነልኝ ቃሉን በመስማቴ"
+    ],
+    "reason": "Lyrics explicitly describe moving from a life of sin to light through the Word, indicating salvation.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1167,
+    "eval_count": 638,
+    "total_duration_ns": 9089840600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

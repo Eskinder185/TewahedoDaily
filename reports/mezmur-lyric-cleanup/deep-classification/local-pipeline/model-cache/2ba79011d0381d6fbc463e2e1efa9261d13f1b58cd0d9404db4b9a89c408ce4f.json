@@ -1,0 +1,32 @@
+{
+  "group": "7321a20ffcc0db4de0b3e8730d1e44227869310559ea07627da6d6415f4386dc",
+  "member_ids": [
+    "586a7164-3c60-5e3d-9fb2-52d2c3f51166"
+  ],
+  "item": {
+    "hash": "7321a20ffcc0db4de0b3e8730d1e44227869310559ea07627da6d6415f4386dc",
+    "primary_slug": "holy-trinity",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "በቅዱሳን አድሮ ሲያድን ሲፈውስ",
+      "አብ አንድያ ልጁን እስኪ ሰጥ ወዶናል"
+    ],
+    "reason": "Lyrics explicitly describe the Trinity and the Holy Spirit within the context of the three persons.",
+    "competing_slugs": [
+      "holy-spirit",
+      "praise-worship"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2841,
+    "eval_count": 575,
+    "total_duration_ns": 8628019600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

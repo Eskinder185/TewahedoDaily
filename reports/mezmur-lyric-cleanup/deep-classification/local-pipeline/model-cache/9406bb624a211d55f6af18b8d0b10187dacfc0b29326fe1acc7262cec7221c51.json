@@ -1,0 +1,28 @@
+{
+  "group": "83f8dcfdfbe98ac49d7e2593ef5de12a3323cdd4bf175ad9aaacddcd0dae988f",
+  "member_ids": [
+    "513ad7e4-7a1d-4489-b6d0-f84dcbf5ba77"
+  ],
+  "item": {
+    "hash": "83f8dcfdfbe98ac49d7e2593ef5de12a3323cdd4bf175ad9aaacddcd0dae988f",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Arefatihani beiyerusalem wemahdefedihani bewerq"
+    ],
+    "reason": "Lyrics describe Jesus' presence in Jerusalem and glory.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 920,
+    "eval_count": 443,
+    "total_duration_ns": 6276344100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,29 @@
+{
+  "group": "557dce6ec666342e1b913cf0c3a0f38fa3f866ffb2f113194e28442489baf03e",
+  "member_ids": [
+    "5148241f-bc96-46d0-a72c-8d4cf2072e7c"
+  ],
+  "item": {
+    "hash": "557dce6ec666342e1b913cf0c3a0f38fa3f866ffb2f113194e28442489baf03e",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Tewahdo haymanot inken yelelat",
+      "Anketelat /2/ aske mot /2/ beiwnet"
+    ],
+    "reason": "Lyrics express unity of faith and truth, typical of praise/worship hymns.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1384,
+    "eval_count": 534,
+    "total_duration_ns": 7510989700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

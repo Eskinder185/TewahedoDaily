@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "fd0b155ab615b6edd7565cefdec21d02dd7ef85ff964a234aab34fbf950d691f",
+    "5a814e8b51d3d588b10347d645daf8776ed256f75692519f0476119cbbc7b58b",
+    "072e3884d1ffa21bb00fbc259fc93ddc12561aac6b772988f4c63ab4adc4a5dd"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "fd0b155ab615b6edd7565cefdec21d02dd7ef85ff964a234aab34fbf950d691f",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are incomplete and lack specific theological references to resolve a category.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5a814e8b51d3d588b10347d645daf8776ed256f75692519f0476119cbbc7b58b",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "በቃና ገሊላ ሁላችን አየን",
+          "እግዚአብሔር ከኖረ በመካከላችን"
+        ],
+        "reason": "Lyrics describe God's presence and blessing, indicating a theme of praise and worship.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "072e3884d1ffa21bb00fbc259fc93ddc12561aac6b772988f4c63ab4adc4a5dd",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ይናፍቀኛል ስምሽን ሳልጠራው ስቀር ማርያም",
+          "የጌታዬ እናት ነሽ"
+        ],
+        "reason": "The lyrics explicitly address Mary as the mother of God and ask for her intercession.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1579,
+    "eval_count": 533,
+    "total_duration_ns": 7419353100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

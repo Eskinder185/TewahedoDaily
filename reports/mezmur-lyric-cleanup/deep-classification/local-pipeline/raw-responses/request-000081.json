@@ -1,0 +1,58 @@
+{
+  "group_hashes": [
+    "b57a57ea3bf1a45c64b14065fbd6a0ae70424957c8e7ff2ed3ed8718dda3d8b0",
+    "365682dbd52ae91bbc5038e1b5da3b50e3e474bc8bcf6e53d8cd9d6dfcb2e9b0",
+    "e45d61779ecf29d202db3baeb0478a3828f50ee025389943737490e9394b2a4e"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b57a57ea3bf1a45c64b14065fbd6a0ae70424957c8e7ff2ed3ed8718dda3d8b0",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አንቺን ከነልጅሽ በክብር ጠርተው",
+          "Anchin keneljish bekbir tertew"
+        ],
+        "reason": "Lyrics explicitly address 'Anchin' (You) with honor and glory, referring to the Virgin Mary.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "365682dbd52ae91bbc5038e1b5da3b50e3e474bc8bcf6e53d8cd9d6dfcb2e9b0",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የሞተልኝ ኢየሱስ ነው",
+          "yemotelny Iyesus new"
+        ],
+        "reason": "The text explicitly identifies Jesus as the one who died for the singer and praises His love.",
+        "competing_slugs": [
+          "praise-worship"
+        ]
+      },
+      {
+        "hash": "e45d61779ecf29d202db3baeb0478a3828f50ee025389943737490e9394b2a4e",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እመቤቴ ማርያም እመቤቴ",
+          "Emebete Maryam Emebete"
+        ],
+        "reason": "The hymn repeatedly addresses 'Maryam' (Mary) as the Mother and asks for her intercession.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2877,
+    "eval_count": 558,
+    "total_duration_ns": 8092473200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "group": "d54d4a0f3a4db0fd71af6f16b5421f8cda96f13d89c3c045bb7591945f21a6aa",
+  "member_ids": [
+    "5706dab4-5682-44d9-bb16-0eca6402e241"
+  ],
+  "item": {
+    "hash": "d54d4a0f3a4db0fd71af6f16b5421f8cda96f13d89c3c045bb7591945f21a6aa",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ፍቅር ስሐቦ ለወልድ ኃያል እመንበሩ",
+      "አደረሰው /3/ አስከ መሞት /2/"
+    ],
+    "reason": "Lyrics describe the love and sacrifice of the Son (Jesus) unto death.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1790,
+    "eval_count": 543,
+    "total_duration_ns": 7848092700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

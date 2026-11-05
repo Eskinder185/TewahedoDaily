@@ -1,0 +1,29 @@
+{
+  "group": "3694eef389f780f90f9ffc87df481b907baabb7f2e32002f5fa7a75862293951",
+  "member_ids": [
+    "4011cfbe-ce47-5e1d-9c9d-3fa6781e5104"
+  ],
+  "item": {
+    "hash": "3694eef389f780f90f9ffc87df481b907baabb7f2e32002f5fa7a75862293951",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ቅድስት ኤልሣቤጥ ሆይ",
+      "የእመቤቴ ድምጿ ስንቅ እንዲሆነኝ"
+    ],
+    "reason": "Lyrics address Mary directly as 'Holy Elizabeth' (referring to her role) and focus on her voice and intercession.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2874,
+    "eval_count": 590,
+    "total_duration_ns": 8724313600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

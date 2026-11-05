@@ -1,0 +1,58 @@
+{
+  "group_hashes": [
+    "d1509fd047d41e8be7b33866b51a9585e1cd442ed324e4a2b077b748b492852c",
+    "bed0ee8dff94034fae958ac73bbd588621b40531e3779067b480d35a65ca0b2c",
+    "c527cecf99680473f2521f376da3efcc42ff96ece22837eda0c58150b2ce8775"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "d1509fd047d41e8be7b33866b51a9585e1cd442ed324e4a2b077b748b492852c",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አዛኝ ጌታ ነው ሁሉን ቻይ",
+          "መስቀል ታቅፎ ክንዱ ዛለ"
+        ],
+        "reason": "Lyrics explicitly describe Jesus as Lord, Savior, and the one who died on the cross.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "bed0ee8dff94034fae958ac73bbd588621b40531e3779067b480d35a65ca0b2c",
+        "primary_slug": "holy-spirit",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ቅዱስ መንፈስህ አንድ ሃሳብ አድርገን",
+          "አስምሪን እማምላክ ድንግል ወላዲቱ"
+        ],
+        "reason": "The hymn directly addresses the Holy Spirit and mentions the Virgin Mary as His mother.",
+        "competing_slugs": [
+          "virgin-mary"
+        ]
+      },
+      {
+        "hash": "c527cecf99680473f2521f376da3efcc42ff96ece22837eda0c58150b2ce8775",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ነዪ ነዪ ማርያም ነዪ ነዪ",
+          "ድንግል ሆይ ነዪ ነዪ"
+        ],
+        "reason": "The lyrics repeatedly address Mary by name and title 'Virgin', focusing entirely on her.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3172,
+    "eval_count": 603,
+    "total_duration_ns": 9112929500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

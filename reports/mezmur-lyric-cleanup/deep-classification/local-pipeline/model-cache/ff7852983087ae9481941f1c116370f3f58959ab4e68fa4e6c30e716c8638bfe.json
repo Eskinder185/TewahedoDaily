@@ -1,0 +1,31 @@
+{
+  "group": "eda421a9d0fcec3816fb66b2510ab941b0fcf302b7e7ec27457728a03f9cdba3",
+  "member_ids": [
+    "3a0ee570-f144-5cc4-a989-6e6c76ffb6a7"
+  ],
+  "item": {
+    "hash": "eda421a9d0fcec3816fb66b2510ab941b0fcf302b7e7ec27457728a03f9cdba3",
+    "primary_slug": "salvation",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የዳግም ልደትሽ የሠርግሽ ዕለት ነው",
+      "መንፈሳዊ ሐሴት ይሙላ በልብሽ"
+    ],
+    "reason": "Focuses on the Second Coming, resurrection, and spiritual fulfillment.",
+    "competing_slugs": [
+      "jesus-christ"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1738,
+    "eval_count": 602,
+    "total_duration_ns": 8708137600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

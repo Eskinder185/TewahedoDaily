@@ -1,0 +1,28 @@
+{
+  "group": "36d9841a3d841e1e699ebf3ce8e53f983c8efebf188222b5919cbe3d03d84e4f",
+  "member_ids": [
+    "1cf7209a-a70a-432d-8394-c044e294ef62"
+  ],
+  "item": {
+    "hash": "36d9841a3d841e1e699ebf3ce8e53f983c8efebf188222b5919cbe3d03d84e4f",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Melsom keafer indihon kemeret"
+    ],
+    "reason": "The text describes returning to the earth and humility, central themes of repentance.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 957,
+    "eval_count": 483,
+    "total_duration_ns": 6690562000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

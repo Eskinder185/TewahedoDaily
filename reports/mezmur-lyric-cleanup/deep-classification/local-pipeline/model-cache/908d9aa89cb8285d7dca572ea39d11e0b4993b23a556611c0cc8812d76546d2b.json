@@ -1,0 +1,29 @@
+{
+  "group": "641f35c9f1fa07ebd30944820caa8fcf775d1c2441fd38aac400b5262075e9c3",
+  "member_ids": [
+    "4b2aa134-4923-5f77-8143-de2e479d1602"
+  ],
+  "item": {
+    "hash": "641f35c9f1fa07ebd30944820caa8fcf775d1c2441fd38aac400b5262075e9c3",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ወረደ ወልድ/6/",
+      "(ትርጉም፦ ወልድ ክርስቶስ ከሰማያት ወደ ወንዞች ወረደ።)"
+    ],
+    "reason": "The text explicitly identifies the subject as the Son of God descending from heaven.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2172,
+    "eval_count": 623,
+    "total_duration_ns": 8715550900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

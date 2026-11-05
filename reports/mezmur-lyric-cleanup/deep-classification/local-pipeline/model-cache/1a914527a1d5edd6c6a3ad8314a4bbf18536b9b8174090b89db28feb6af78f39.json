@@ -1,0 +1,29 @@
+{
+  "group": "de2fdc5fd41fc84269d9ccac2288db0fa715ebf3b90ebef6a8147488b04aab61",
+  "member_ids": [
+    "3e9543c6-1512-415f-96e2-0d32c5076ce2"
+  ],
+  "item": {
+    "hash": "de2fdc5fd41fc84269d9ccac2288db0fa715ebf3b90ebef6a8147488b04aab61",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics describe a night vigil and blessing children but lack specific names or theological subjects to map to the provided categories.",
+    "competing_slugs": [
+      "praise-worship",
+      "general"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1600,
+    "eval_count": 551,
+    "total_duration_ns": 7960552600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

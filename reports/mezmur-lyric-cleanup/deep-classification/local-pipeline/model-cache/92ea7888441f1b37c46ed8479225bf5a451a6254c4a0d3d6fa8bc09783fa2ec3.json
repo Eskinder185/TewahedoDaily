@@ -1,0 +1,28 @@
+{
+  "group": "2f40d823d45cf47fe3943a40a18a67cb82afd33c553474a661ab5f5f597baffb",
+  "member_ids": [
+    "29f68acf-e765-4fab-83b5-c1a12a4ba4b7"
+  ],
+  "item": {
+    "hash": "2f40d823d45cf47fe3943a40a18a67cb82afd33c553474a661ab5f5f597baffb",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics are too brief to determine a specific subject beyond general praise.",
+    "competing_slugs": [
+      "praise-worship"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2219,
+    "eval_count": 567,
+    "total_duration_ns": 8001781300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

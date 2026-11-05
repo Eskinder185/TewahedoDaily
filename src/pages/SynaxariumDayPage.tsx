@@ -7,6 +7,7 @@ import {
   getSynaxariumDayBySlug,
 } from '../lib/prayers/synaxariumSupabase'
 import type { SynaxariumCommemoration, SynaxariumDay } from '../lib/prayers/prayerLibraryTypes'
+import { synaxariumSaintConnection } from '../lib/knowledge/synaxariumConnections.ts'
 import { useTranslation } from '../i18n'
 import { useSearchBuddyOptional } from '../lib/search/searchBuddySession'
 import styles from './PrayerDetailPage.module.css'
@@ -29,8 +30,7 @@ export function SynaxariumDayPage() {
 
   useEffect(() => {
     let active = true
-    setDay(undefined)
-    setError(undefined)
+    queueMicrotask(() => { if (active) { setDay(undefined); setError(undefined) } })
     void (async () => {
       try {
         const nextDay = await getSynaxariumDayBySlug(resolvedDaySlug)
@@ -126,8 +126,9 @@ export function SynaxariumDayPage() {
 
         <section className={styles.summary} aria-label={tr('synaxariumPage.commemorations')}>
           {items.length === 0 ? <p>{tr('synaxariumPage.emptyDay')}</p> : null}
-          {items.map((item) => (
-            <article key={item.id} className={styles.summaryBlock}>
+          {items.map((item) => {
+            const saintConnection = synaxariumSaintConnection(item)
+            return <article key={item.id} className={styles.summaryBlock}>
               {item.commemorationType && item.commemorationType !== 'other' ? (
                 <h2>{item.commemorationType.replace(/[-_]+/g, ' ')}</h2>
               ) : null}
@@ -147,8 +148,9 @@ export function SynaxariumDayPage() {
               ) : null}
               {item.bodyEnglish ? <p style={{ whiteSpace: 'pre-wrap' }}>{item.bodyEnglish}</p> : null}
               {item.scriptureReferences ? <p>{item.scriptureReferences}</p> : null}
+              {saintConnection ? <p><Link to={`/saints?q=${encodeURIComponent(saintConnection.to.name || item.title)}`}>Explore this saint in the Saints library</Link></p> : null}
             </article>
-          ))}
+          })}
         </section>
       </article>
     </PageSection>

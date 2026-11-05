@@ -1,0 +1,31 @@
+{
+  "group": "b19513f8a5e3d5f0443bffd4d29401082332c8558f374cda44eeff56c432b06e",
+  "member_ids": [
+    "57d45021-6b6f-5d29-9c21-67be061cd785"
+  ],
+  "item": {
+    "hash": "b19513f8a5e3d5f0443bffd4d29401082332c8558f374cda44eeff56c432b06e",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የአብ ቃል አክብሮሽ እናት ያደረገሽ"
+    ],
+    "reason": "The lyrics address the Virgin Mary as 'Mother' and praise her role in salvation.",
+    "competing_slugs": [
+      "holy-trinity",
+      "praise-worship"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2564,
+    "eval_count": 580,
+    "total_duration_ns": 8537637000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

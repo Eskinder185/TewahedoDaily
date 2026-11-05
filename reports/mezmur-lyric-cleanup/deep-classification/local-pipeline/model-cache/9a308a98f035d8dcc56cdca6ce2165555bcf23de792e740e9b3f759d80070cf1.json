@@ -1,0 +1,28 @@
+{
+  "group": "479f840bd41b4e0a771a0ebed3598e7fe68e7afd097ee4d34fafd520ba8ff867",
+  "member_ids": [
+    "1fd7ebe5-7876-44bd-b655-bc6ee11681ee"
+  ],
+  "item": {
+    "hash": "479f840bd41b4e0a771a0ebed3598e7fe68e7afd097ee4d34fafd520ba8ff867",
+    "primary_slug": "prophets",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ነቢያትን በትንቢት ሲያናግር የኖረው"
+    ],
+    "reason": "Lyrics explicitly mention 'prophets' speaking in prophecy.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1419,
+    "eval_count": 528,
+    "total_duration_ns": 7467438700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

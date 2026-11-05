@@ -1,0 +1,29 @@
+{
+  "group": "d1509fd047d41e8be7b33866b51a9585e1cd442ed324e4a2b077b748b492852c",
+  "member_ids": [
+    "58c4e100-dde1-5b64-b8ce-0dea1740032b"
+  ],
+  "item": {
+    "hash": "d1509fd047d41e8be7b33866b51a9585e1cd442ed324e4a2b077b748b492852c",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አዛኝ ጌታ ነው ሁሉን ቻይ",
+      "መስቀል ታቅፎ ክንዱ ዛለ"
+    ],
+    "reason": "Lyrics explicitly describe Jesus as Lord, Savior, and the one who died on the cross.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3172,
+    "eval_count": 603,
+    "total_duration_ns": 9112929500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

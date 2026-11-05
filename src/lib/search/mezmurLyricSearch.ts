@@ -7,11 +7,12 @@
  *
  * - `attachLyricExcerpts` decorates results ranked by GET /api/hymns/search (the API order stays authoritative).
  * - `searchPublicMezmurLyrics` is the bounded, server-filtered fallback used when the API is unavailable.
- *   It never downloads the catalog: at most two filtered requests of MAX_CANDIDATES rows each.
+ *   It never downloads the catalog: at most three filtered requests of MAX_CANDIDATES rows each.
  */
 import { supabase } from '../supabase/client.ts'
 import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezmurLanguage.ts'
 import { buildExcerpt, hasEthiopic, matchText, orIlike, queryWords, retrievalWords, type Excerpt } from './textMatch.ts'
+import { entitySearchVariants } from '../language/index.ts'
 
 export type LyricField = 'lyrics_amharic' | 'lyrics_geez' | 'lyrics_transliteration' | 'lyrics_english' | 'lyrics_oromo'
 export type LyricExcerpt = Excerpt & { field: LyricField }
@@ -83,7 +84,11 @@ export function tierForRow(row: PublicMezmurRow, query: string): { tier: MezmurM
   const partial =
     titles.some((title) => matchText(title, query)) ||
     Boolean(matchText(text(row.search_keywords), query)) ||
-    LYRIC_FIELDS.some((field) => matchText(text(row[field]), query))
+    LYRIC_FIELDS.some((field) => matchText(text(row[field]), query)) ||
+    // A mixed-script query can have its words in different stored language fields.
+    (hasEthiopic(query) && /[a-z]/i.test(query) && Boolean(matchText(
+      [...titles, text(row.search_keywords), ...LYRIC_FIELDS.map((field) => text(row[field]))].join(' '), query,
+    )))
   return partial ? { tier: 'partial', rank: 3 } : { tier: null, rank: 99 }
 }
 
@@ -96,11 +101,16 @@ export type MezmurLyricHit = {
 /** Rank candidate rows. Rows that do not actually contain the query are dropped, never shown as matches. */
 export function rankPublicRows(rows: PublicMezmurRow[], query: string): MezmurLyricHit[] {
   const hits: Array<MezmurLyricHit & { rank: number }> = []
+  const variants = entitySearchVariants(query)
   for (const row of rows) {
     if (text(row.status).toLowerCase() !== 'published' || !text(row.slug)) continue
-    const { tier, rank } = tierForRow(row, query)
-    if (!tier) continue
-    hits.push({ row, tier, rank, excerpt: excerptForRow(row, query) })
+    let best: { tier: Exclude<MezmurMatchTier, null>; rank: number; query: string } | null = null
+    for (const variant of variants) {
+      const { tier, rank } = tierForRow(row, variant)
+      if (tier && (!best || rank < best.rank)) best = { tier, rank, query: variant }
+    }
+    if (!best) continue
+    hits.push({ row, tier: best.tier, rank: best.rank, excerpt: excerptForRow(row, best.query) })
   }
   return hits.sort((a, b) => a.rank - b.rank || text(a.row.title).localeCompare(text(b.row.title)))
 }
@@ -157,7 +167,7 @@ async function run(query: PublicQuery): Promise<PublicMezmurRow[]> {
  * Bounded server-side search of the public projection. Two filtered requests at most:
  *  A) the whole phrase in any title/keyword/lyric column,
  *  B) every distinctive word (up to three) in some column, for punctuation and word-order differences.
- * Candidates are then verified and ranked locally, so a database hit that does not truly match is dropped.
+ * An optional third alias request is used for a unique entity query. Candidates are then verified locally.
  */
 export async function searchPublicMezmurLyrics(
   query: string,
@@ -179,6 +189,14 @@ export async function searchPublicMezmurLyrics(
       if (filter) builder = builder.or(filter)
     }
     queries.push(run(builder.limit(MAX_CANDIDATES)))
+  }
+  // A single extra filtered request covers verified saint/feast spellings in either script.
+  // Never expand a partial or ambiguous query, and never download the whole catalog.
+  const alternativeFilters = entitySearchVariants(q).slice(1)
+    .map((variant) => orIlike(SEARCH_COLUMNS, variant))
+    .filter(Boolean)
+  if (alternativeFilters.length) {
+    queries.push(run(client.from('mezmur_public').select(ROW_COLUMNS).or(alternativeFilters.join(',')).limit(MAX_CANDIDATES)))
   }
   const results = await Promise.all(queries)
   const bySlug = new Map<string, PublicMezmurRow>()
@@ -208,7 +226,11 @@ export async function attachLyricExcerpts<T extends { slug: string }>(
     const bySlug = new Map(rows.filter((row) => text(row.status).toLowerCase() === 'published').map((row) => [text(row.slug), row]))
     return items
       .filter((item) => bySlug.has(item.slug))
-      .map((item) => ({ ...item, excerpt: excerptForRow(bySlug.get(item.slug) as PublicMezmurRow, query) }))
+      .map((item) => {
+        const row = bySlug.get(item.slug) as PublicMezmurRow
+        const excerpt = entitySearchVariants(query).map((variant) => excerptForRow(row, variant)).find(Boolean) ?? null
+        return { ...item, excerpt }
+      })
   } catch {
     return none // excerpts are an enhancement; the ranked list must still render
   }

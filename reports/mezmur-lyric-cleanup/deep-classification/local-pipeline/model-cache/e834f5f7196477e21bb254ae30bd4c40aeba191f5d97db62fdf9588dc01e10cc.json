@@ -1,0 +1,29 @@
+{
+  "group": "248f08cc63b3eedb14b1fb3cbb8c1a523cb4579e6f6d4d628f2767ca455cd824",
+  "member_ids": [
+    "2b939440-491a-4220-b2b6-681e6315b3a3"
+  ],
+  "item": {
+    "hash": "248f08cc63b3eedb14b1fb3cbb8c1a523cb4579e6f6d4d628f2767ca455cd824",
+    "primary_slug": "holy-spirit",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Tirgum menfes qidus bemeqdes",
+      "Lehatiatachin mancha wihan seten"
+    ],
+    "reason": "Lyrics explicitly mention 'menfes qidus' (Holy Spirit) and His role in the church.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1099,
+    "eval_count": 529,
+    "total_duration_ns": 7551982000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

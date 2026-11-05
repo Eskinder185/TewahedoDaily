@@ -1,0 +1,31 @@
+{
+  "group": "fd04ea83fa33c5488c93229eaa7cec3cee37985e87c7fb7bc71356e528596605",
+  "member_ids": [
+    "0ec2a383-e400-5d22-ba95-e2d3780765af"
+  ],
+  "item": {
+    "hash": "fd04ea83fa33c5488c93229eaa7cec3cee37985e87c7fb7bc71356e528596605",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ድንግል ማርያምን ቅድስት\nእንለምናት",
+      "የድንግል ማርያም"
+    ],
+    "reason": "Lyrics explicitly name and praise Virgin Mary as a saint, making her the dominant subject.",
+    "competing_slugs": [
+      "praise-worship"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1739,
+    "eval_count": 561,
+    "total_duration_ns": 8489249200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

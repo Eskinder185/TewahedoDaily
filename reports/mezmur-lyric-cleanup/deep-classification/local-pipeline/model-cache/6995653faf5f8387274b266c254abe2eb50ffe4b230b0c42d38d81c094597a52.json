@@ -1,0 +1,29 @@
+{
+  "group": "53434db5b639b2f67255b7b30a43005bb4307278c5fbe4706e097365d57e51ab",
+  "member_ids": [
+    "1dcc6cc8-3ed0-5f47-b116-bf5aed896f44"
+  ],
+  "item": {
+    "hash": "53434db5b639b2f67255b7b30a43005bb4307278c5fbe4706e097365d57e51ab",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ናና አማኑኤል ና መድኃኒቴ",
+      "የምሕረት አባት አማኑኤል"
+    ],
+    "reason": "The lyrics explicitly address Emmanuel (Jesus) as 'my Savior' and 'Father of mercy', focusing entirely on his redemptive work.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2949,
+    "eval_count": 632,
+    "total_duration_ns": 9200284700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

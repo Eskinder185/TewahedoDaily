@@ -1,0 +1,29 @@
+{
+  "group": "63a066082d029e01c9d9ae28b97bb8c72cb6dbf1ecc6f5484384e265536d103f",
+  "member_ids": [
+    "4cd5e5ff-db22-4ca5-ac5c-8fa2b3bac9f2"
+  ],
+  "item": {
+    "hash": "63a066082d029e01c9d9ae28b97bb8c72cb6dbf1ecc6f5484384e265536d103f",
+    "primary_slug": "holy-spirit",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "መንፈስቅዱስ መጣ ሊሆነው ምስክር",
+      "ከአብ መወለዱን ልጅነቱን ሊያከብር"
+    ],
+    "reason": "Lyrics explicitly mention the Holy Spirit coming and honoring the Son born of the Father.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2208,
+    "eval_count": 628,
+    "total_duration_ns": 8882707000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

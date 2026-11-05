@@ -1,0 +1,26 @@
+{
+  "group": "5606bd39da39574b70a96bc3013973a91d5a16b595b60e5a0ef8fdef924479e9",
+  "member_ids": [
+    "0c31829f-97eb-413b-9158-620960545de1"
+  ],
+  "item": {
+    "hash": "5606bd39da39574b70a96bc3013973a91d5a16b595b60e5a0ef8fdef924479e9",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Fragmentary lyrics describe a queen but lack sufficient context for classification.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1712,
+    "eval_count": 461,
+    "total_duration_ns": 7086052300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

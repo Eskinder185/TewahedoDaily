@@ -1,0 +1,29 @@
+{
+  "group": "6fd9e9d06cff4d09763b25922f209fea74310c2b5004ae3f85f7792345579ef6",
+  "member_ids": [
+    "5b0eb487-2177-5934-94b1-9a8fb38d0e0e"
+  ],
+  "item": {
+    "hash": "6fd9e9d06cff4d09763b25922f209fea74310c2b5004ae3f85f7792345579ef6",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አይናችን ነሽ ማርያም አንቺን አይንኩብን",
+      "የወይን ሀረግ ድንግል"
+    ],
+    "reason": "Lyrics explicitly address Mary as 'our mother' and refer to her as the 'virgin', focusing entirely on her role.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3103,
+    "eval_count": 620,
+    "total_duration_ns": 9189335700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

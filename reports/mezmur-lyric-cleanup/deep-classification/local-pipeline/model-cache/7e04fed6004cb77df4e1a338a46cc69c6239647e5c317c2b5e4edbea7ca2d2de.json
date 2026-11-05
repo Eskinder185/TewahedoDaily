@@ -1,0 +1,28 @@
+{
+  "group": "d9a6eb74637727cd8a7698008783a9e687b980db12c9d65b754f0a3bfc268dcc",
+  "member_ids": [
+    "2ae4409d-1c30-5098-a88a-1ff80bec8936"
+  ],
+  "item": {
+    "hash": "d9a6eb74637727cd8a7698008783a9e687b980db12c9d65b754f0a3bfc268dcc",
+    "primary_slug": "jesus-christ",
+    "confidence": "medium",
+    "uncertain": false,
+    "evidence": [
+      "የአባታችን የዳዊት መንግስት ቡርክት ናት"
+    ],
+    "reason": "Lyrics reference 'Abune Dawit' (King David), whose lineage and kingdom are central to Jesus Christ's identity in Christian theology.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1759,
+    "eval_count": 551,
+    "total_duration_ns": 7802023900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

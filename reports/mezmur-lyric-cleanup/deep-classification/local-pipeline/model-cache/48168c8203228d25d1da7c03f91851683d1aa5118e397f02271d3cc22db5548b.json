@@ -1,0 +1,30 @@
+{
+  "group": "f54bc4e39a866ddb58226c16b173165bd4d49c8a6ed0a780d8d1e94c67d8ae2a",
+  "member_ids": [
+    "0ade8440-9e8a-5266-96b9-ebe6692037af"
+  ],
+  "item": {
+    "hash": "f54bc4e39a866ddb58226c16b173165bd4d49c8a6ed0a780d8d1e94c67d8ae2a",
+    "primary_slug": "praise-worship",
+    "confidence": "medium",
+    "uncertain": false,
+    "evidence": [
+      "አምላክ ሆይ ህዝቦችህ ዳኑ በጥምቀትህ"
+    ],
+    "reason": "The text praises God ('Amlak hoy') regarding baptism and birth, though the specific title 'Luya' is ambiguous without full context.",
+    "competing_slugs": [
+      "holy-spirit"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1134,
+    "eval_count": 611,
+    "total_duration_ns": 8819960900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

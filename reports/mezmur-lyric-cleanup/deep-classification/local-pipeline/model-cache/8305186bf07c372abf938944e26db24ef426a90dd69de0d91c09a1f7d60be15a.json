@@ -1,0 +1,26 @@
+{
+  "group": "4780fff0e84e1cfa88959aeb94fb8745f41b3c3d056b7133b20eb2e4c7ae1372",
+  "member_ids": [
+    "15bf1c7c-4e33-4551-b2d3-074b71cbceec"
+  ],
+  "item": {
+    "hash": "4780fff0e84e1cfa88959aeb94fb8745f41b3c3d056b7133b20eb2e4c7ae1372",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics mention Eve and creation but lack sufficient context for a specific category.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1333,
+    "eval_count": 468,
+    "total_duration_ns": 6705209200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

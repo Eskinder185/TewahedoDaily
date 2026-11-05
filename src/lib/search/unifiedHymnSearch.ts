@@ -17,6 +17,8 @@ import { canAttemptStructuredSearchApi } from './structuredSearchApi.ts'
 import { searchHymns } from './searchHymns.ts'
 import { attachLyricExcerpts, searchPublicMezmurLyrics, type LyricExcerpt, type LyricSearchItem } from './mezmurLyricSearch.ts'
 import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezmurLanguage.ts'
+import { entitySearchVariants } from '../language/index.ts'
+import { groupConfirmedSearchResults } from '../mezmur/confirmedVersions.ts'
 
 export type UnifiedMezmurSearchItem = {
   id: string
@@ -35,6 +37,7 @@ export type UnifiedMezmurSearchItem = {
   thumbnail_url: string | null
   /** Public lyric passage that matched the query, with highlight ranges into `excerpt.text`. Never invented. */
   excerpt?: LyricExcerpt | null
+  confirmedVersionCount?: number
 }
 
 export type UnifiedHymnSearchResult = {
@@ -126,10 +129,25 @@ export async function searchMezmursUnified(
         .filter((row) => !options.language || normalizeMezmurLanguage(row.primary_language) === options.language)
       if (mapped.length > 0) {
         // Backend order stays authoritative; excerpts come only from the public projection.
-        const items = await attachLyricExcerpts(mapped, q)
+        const items: UnifiedMezmurSearchItem[] = await attachLyricExcerpts(mapped, q)
+        // Add bounded public-projection alias hits after the API's ranked results.
+        if (entitySearchVariants(q).length > 1) {
+          try {
+            const aliases = await searchPublicMezmurLyrics(q, { limit, language: options.language })
+            const seen = new Set(items.map((item) => item.slug))
+            for (const alias of aliases.items) {
+              if (seen.has(alias.slug) || items.length >= limit) continue
+              seen.add(alias.slug)
+              items.push(lyricItemToUnified(alias))
+            }
+          } catch {
+            // The API's successful result still renders when the optional alias lookup fails.
+          }
+        }
+        const grouped = groupConfirmedSearchResults(items)
         return {
-          items,
-          total: options.language ? items.length : typeof api.count === 'number' ? api.count : items.length,
+          items: grouped,
+          total: options.language ? grouped.length : Math.max(grouped.length, (typeof api.count === 'number' ? api.count : items.length) - (items.length - grouped.length)),
           page: 1,
           source: 'api',
           query: api.query || q,
@@ -163,7 +181,8 @@ function lyricItemToUnified(item: LyricSearchItem): UnifiedMezmurSearchItem {
 async function localSearch(q: string, limit: number, language?: MezmurLanguageCode): Promise<{ items: UnifiedMezmurSearchItem[]; total: number }> {
   try {
     const found = await searchPublicMezmurLyrics(q, { limit, language })
-    return { items: found.items.map(lyricItemToUnified), total: found.total }
+    const items = groupConfirmedSearchResults(found.items.map(lyricItemToUnified))
+    return { items, total: Math.max(items.length, found.total - (found.items.length - items.length)) }
   } catch (error) {
     if (import.meta.env?.DEV) console.warn('[mezmur search] lyric search unavailable, using title search', error)
     const local = await searchImportMezmurs(q, { page: 1, pageSize: limit, language })

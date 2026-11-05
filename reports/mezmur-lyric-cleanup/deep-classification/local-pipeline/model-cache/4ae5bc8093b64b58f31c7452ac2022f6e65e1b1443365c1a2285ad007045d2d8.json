@@ -1,0 +1,29 @@
+{
+  "group": "9f7dfd980cb40c47517f03c8afa4750814d8e45aa77ad9ebb4a9ff85bde95372",
+  "member_ids": [
+    "3283ff20-e3e9-55e6-8503-9e4a1f5765dd"
+  ],
+  "item": {
+    "hash": "9f7dfd980cb40c47517f03c8afa4750814d8e45aa77ad9ebb4a9ff85bde95372",
+    "primary_slug": "salvation",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "fetanye qerbo fetena abztwal",
+      "tesfa yarekut teftwal kefite"
+    ],
+    "reason": "The text describes passing through trials and receiving hope/salvation from the Lord.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2307,
+    "eval_count": 519,
+    "total_duration_ns": 7590239600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

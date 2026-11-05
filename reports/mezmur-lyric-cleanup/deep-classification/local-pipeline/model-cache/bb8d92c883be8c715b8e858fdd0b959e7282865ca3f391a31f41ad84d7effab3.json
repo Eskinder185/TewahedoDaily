@@ -1,0 +1,32 @@
+{
+  "group": "b37c949d24b0390d4370ee0d0e19a2ae0655d06387b6abb86fdc77fcce86628f",
+  "member_ids": [
+    "58080661-02de-5e1f-88bd-4393cdfdad37"
+  ],
+  "item": {
+    "hash": "b37c949d24b0390d4370ee0d0e19a2ae0655d06387b6abb86fdc77fcce86628f",
+    "primary_slug": "cross",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አልቀረም ተቀብሮ ተገኘ መስቀሉ",
+      "ቅዱስ መስቀሉንም ሸሽገው ቢሰውሩ"
+    ],
+    "reason": "Lyrics explicitly focus on the history, protection, and glory of the Cross.",
+    "competing_slugs": [
+      "jesus-christ",
+      "praise-worship"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1480,
+    "eval_count": 556,
+    "total_duration_ns": 7870312100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

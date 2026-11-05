@@ -1,0 +1,29 @@
+{
+  "group": "0d73006b4c52c71ef9569ef218092b33eb1a78cb3751f3aa9caf3e290a07b409",
+  "member_ids": [
+    "341fa6a2-ef2d-591e-9de5-9101e14f9833"
+  ],
+  "item": {
+    "hash": "0d73006b4c52c71ef9569ef218092b33eb1a78cb3751f3aa9caf3e290a07b409",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ቅድስተ ቅዱሳን ማርያም ድንግል አንቺ ነሽ",
+      "እመቤታችን እናታችን ማርያም"
+    ],
+    "reason": "Lyrics explicitly address Mary as the Queen of Saints and Mother of God.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2417,
+    "eval_count": 537,
+    "total_duration_ns": 8291917100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,58 @@
+{
+  "group_hashes": [
+    "79af517eade56d3264a34bd1277dc2909519f1c5e26299032439b971d18264b4",
+    "5e35d0e3fc7f2919a0eb3286f604d78f3095a3efb3d47d6cf545edfe4d8c2eeb",
+    "b2929e5e2d1e30ef2ea8e9e4bf962521961eeaf8de5796f24967f8f6721610ed"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "79af517eade56d3264a34bd1277dc2909519f1c5e26299032439b971d18264b4",
+        "primary_slug": "abune-tekle-haymanot=Abune Tekle Haymanot",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ተክለሐይማኖት ፀሐይ የኢትዮጵያ ሲሳይ",
+          "የቅዱሳን እርስት የኢትዮጵያው ብርሃን"
+        ],
+        "reason": "Lyrics explicitly name Abune Tekle Haymanot and describe his specific miracles like standing on one leg.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5e35d0e3fc7f2919a0eb3286f604d78f3095a3efb3d47d6cf545edfe4d8c2eeb",
+        "primary_slug": "abune-tekle-haymanot=Abune Tekle Haymanot",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አባ ተክለሃይማኖት ዘኢትዮጵያ",
+          "የባረከው ውሃ የረገጥከው መሬት"
+        ],
+        "reason": "The hymn directly addresses Abune Tekle Haymanot as the father of Ethiopia and recounts his miracles.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "b2929e5e2d1e30ef2ea8e9e4bf962521961eeaf8de5796f24967f8f6721610ed",
+        "primary_slug": "prayer=Prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ተባረኩኝ ጠራኝ ፀሎቷ",
+          "አንደበትም ስጥቶኝ እመሰክራለሁ"
+        ],
+        "reason": "The lyrics are a personal prayer to the Virgin Mary, expressing sorrow and seeking forgiveness.",
+        "competing_slugs": [
+          "virgin-mary=Virgin Mary"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3517,
+    "eval_count": 675,
+    "total_duration_ns": 10147830100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "group": "7f2ebb9dd706f771bb11c4dba32fe0e1b6017dd87e6fcda317c27bbc2198df9e",
+  "member_ids": [
+    "06dbb68c-697c-48aa-87cb-2c27f1b43ec8"
+  ],
+  "item": {
+    "hash": "7f2ebb9dd706f771bb11c4dba32fe0e1b6017dd87e6fcda317c27bbc2198df9e",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Nuri lezelealem tekebresh behulachin"
+    ],
+    "reason": "Lyrics explicitly address the eternal light and command worship.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 905,
+    "eval_count": 461,
+    "total_duration_ns": 6878620800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

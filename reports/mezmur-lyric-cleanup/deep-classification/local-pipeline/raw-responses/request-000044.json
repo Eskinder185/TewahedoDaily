@@ -1,0 +1,51 @@
+{
+  "group_hashes": [
+    "c7a3bf16829aa6456c8513d2cc5d23559a315f78d22abc3f7a2df0e7f5b5fb57",
+    "3420ca9625ae0a55a0df1fc487c8c4e248eaea1c4f3a2004cf992d3c8f87d332",
+    "00e1ebcc134abf979516aaf6ec86a46702121e290457680b30ac070ac7bc5d34"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "c7a3bf16829aa6456c8513d2cc5d23559a315f78d22abc3f7a2df0e7f5b5fb57",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics fragment lacks sufficient context to determine specific subject.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "3420ca9625ae0a55a0df1fc487c8c4e248eaea1c4f3a2004cf992d3c8f87d332",
+        "primary_slug": "yohannes-metmek-john-the-baptist=Yohannes Metmek / John the Baptist",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "በዮሐንስ /2/ ዮርዳኖስ/2/ ተጠምቀ በዮሐንስ"
+        ],
+        "reason": "Lyrics explicitly mention John baptizing in the Jordan.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "00e1ebcc134abf979516aaf6ec86a46702121e290457680b30ac070ac7bc5d34",
+        "primary_slug": "jesus-christ=Jesus Christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ተባረክ ቸር ጌታዬ"
+        ],
+        "reason": "Lyrics address Jesus directly as 'Lord' and 'Source of joy'.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1689,
+    "eval_count": 493,
+    "total_duration_ns": 7218991200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

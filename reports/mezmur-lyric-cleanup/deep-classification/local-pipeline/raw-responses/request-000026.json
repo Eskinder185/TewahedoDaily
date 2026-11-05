@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "b4f6d28933ae380922ea0ef9ad17ec47dba62a20c33994b7388bda600a571d38",
+    "9d432c29dc6cefc6390f659a55ed7f2cec8e2ea62cc6d64e76fd825a45265879",
+    "c158c19a84bcda4765ed4fc82f0f829f064eaa81522a74f68167007c7736a036"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b4f6d28933ae380922ea0ef9ad17ec47dba62a20c33994b7388bda600a571d38",
+        "primary_slug": "prophets",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ትርጉም፡- ቃል ከሰማይ ለመናገር በመጣ",
+          "Gize isat yeyordanosin bahir kebebew"
+        ],
+        "reason": "Lyrics describe the Word coming to speak and John baptizing, identifying the subject as a prophet.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "9d432c29dc6cefc6390f659a55ed7f2cec8e2ea62cc6d64e76fd825a45265879",
+        "primary_slug": "angels",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የነብያት ሀገራቸው እህተ መላእክት",
+          "Anamesginat /2/ inawedsat"
+        ],
+        "reason": "Lyrics explicitly mention 'angels' (melaikit) and call for them to be honored.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "c158c19a84bcda4765ed4fc82f0f829f064eaa81522a74f68167007c7736a036",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እስከ መቼ ነው የማልለወጠው",
+          "መኖርን እሻለሁ ልቤ ተለውጦ"
+        ],
+        "reason": "Lyrics focus on changing one's heart, breaking the world, and repenting.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1952,
+    "eval_count": 587,
+    "total_duration_ns": 8387975900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

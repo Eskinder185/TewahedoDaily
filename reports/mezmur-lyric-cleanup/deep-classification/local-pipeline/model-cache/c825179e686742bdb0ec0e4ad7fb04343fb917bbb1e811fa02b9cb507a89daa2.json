@@ -1,0 +1,29 @@
+{
+  "group": "347576a6f21fb26447675e50dc4c01727368808eafedbaacc55f3ea371cba41b",
+  "member_ids": [
+    "0f6c55f7-96db-4844-ab20-c1d3627a2cdf"
+  ],
+  "item": {
+    "hash": "347576a6f21fb26447675e50dc4c01727368808eafedbaacc55f3ea371cba41b",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Adebabey qeme simhin kemesebek",
+      "Keagelgilot befit anten liweqih"
+    ],
+    "reason": "The text expresses lifting up the name and offering oneself in service before God, characteristic of praise.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 990,
+    "eval_count": 527,
+    "total_duration_ns": 7439912500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

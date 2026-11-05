@@ -1,0 +1,29 @@
+{
+  "group": "86d52ee08329f86798c1024d284247b4f05721c1581901ba2f33f076ad80a89e",
+  "member_ids": [
+    "3f9a3ff5-2b64-584b-8276-e83028b58244"
+  ],
+  "item": {
+    "hash": "86d52ee08329f86798c1024d284247b4f05721c1581901ba2f33f076ad80a89e",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አማላጄ ድንግል አማላጄ",
+      "ደርሶኝ ጥበቃሽ አማላጄ"
+    ],
+    "reason": "Lyrics repeatedly address Mary as 'Virgin' and seek her protection.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2530,
+    "eval_count": 541,
+    "total_duration_ns": 7831530500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

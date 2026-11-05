@@ -1,0 +1,29 @@
+{
+  "group": "9f0eb6a47e7daa2040bcae5164caf51b0b2d75af6d963c53fa3ba41564fd7ea5",
+  "member_ids": [
+    "20662bb4-3927-57d8-a3b4-8ad7f5145c2b"
+  ],
+  "item": {
+    "hash": "9f0eb6a47e7daa2040bcae5164caf51b0b2d75af6d963c53fa3ba41564fd7ea5",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አትመልስ ጌታ የምህረት ዓይንህን",
+      "ርስት ጉልታችን አምላክ አብርሃም"
+    ],
+    "reason": "The lyrics address God as 'Get' (Lord) and Medhanealem, focusing on Christ's mercy and salvation rather than specific saints.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1906,
+    "eval_count": 532,
+    "total_duration_ns": 7581899900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

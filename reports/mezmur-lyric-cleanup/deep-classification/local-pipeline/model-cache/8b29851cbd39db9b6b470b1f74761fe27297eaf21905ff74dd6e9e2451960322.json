@@ -1,0 +1,29 @@
+{
+  "group": "5c8c73564fa07e6d9df2938fd77bc8b0b50e17251e8feac676047f899fd26559",
+  "member_ids": [
+    "438cc576-12d2-47db-b46c-6b1016c95a85"
+  ],
+  "item": {
+    "hash": "5c8c73564fa07e6d9df2938fd77bc8b0b50e17251e8feac676047f899fd26559",
+    "primary_slug": "general",
+    "confidence": "medium",
+    "uncertain": true,
+    "evidence": [
+      "በሥጋዊው ዓይን ባናየው",
+      "የዓለም ጥንስስ ተዋሕዷል"
+    ],
+    "reason": "Lyrics describe worldly conditions without specific religious figures or themes, making general the best fit.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1951,
+    "eval_count": 630,
+    "total_duration_ns": 9024944000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

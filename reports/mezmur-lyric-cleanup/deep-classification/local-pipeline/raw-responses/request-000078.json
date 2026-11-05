@@ -1,0 +1,59 @@
+{
+  "group_hashes": [
+    "298398bdb0848b5ecd7d54e583541b8c7b635b5dffe7f2a9473d15a032f40890",
+    "b9abcdda96db05d11d282db2772ea5907ddc7932d910e811644a1ee405a1c08c",
+    "553cc9a58f2b8af0e76a288f22bfe0dac68ba1781945c2813fd3db4c8db095d2"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "298398bdb0848b5ecd7d54e583541b8c7b635b5dffe7f2a9473d15a032f40890",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እግዚአብሔር ሆይ እርዳኝ ቸርነት አድርገህ",
+          "ልጅህ ሆኖ ውሎ ኃላ መኮብለል"
+        ],
+        "reason": "The lyrics are a direct plea for help, repentance, and forgiveness addressed to God.",
+        "competing_slugs": [
+          "repentance",
+          "salvation"
+        ]
+      },
+      {
+        "hash": "b9abcdda96db05d11d282db2772ea5907ddc7932d910e811644a1ee405a1c08c",
+        "primary_slug": "angels",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ምስለ ሚካኤል/4/ ፍሡህ ወገብርኤል",
+          "ትርጉም፡- ድንግል ሆይ ልጅሽን ታቅፈሽ ከሚካኤልና ከገብርኤል ጋር ነይ"
+        ],
+        "reason": "The text explicitly mentions the names of Archangels Michael and Gabriel as protectors.",
+        "competing_slugs": [
+          "kidus-michael",
+          "kidus-gabriel"
+        ]
+      },
+      {
+        "hash": "553cc9a58f2b8af0e76a288f22bfe0dac68ba1781945c2813fd3db4c8db095d2",
+        "primary_slug": "general",
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "The lyrics consist only of a title fragment without sufficient lyrical content to determine a specific subject.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1904,
+    "eval_count": 636,
+    "total_duration_ns": 9348259600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

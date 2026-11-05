@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "b9dafd6f17fb718573b5de29167a63767282e404e84e056b34635c089e41cc7f",
+    "b1286ac7cec9ff48654d67d31e05b404c5a3fd15e5223015459706de5b15fada",
+    "be569006dfa45fa7f9f6430d4015706bbdecd4241b24ed675520222bbca315fc"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b9dafd6f17fb718573b5de29167a63767282e404e84e056b34635c089e41cc7f",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የማይሞተው ሞቶ የተቀበረው",
+          "ከገሃነም እሳት እኛን ሊያድን ነው"
+        ],
+        "reason": "Lyrics describe the death, burial, and resurrection of Jesus Christ.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "b1286ac7cec9ff48654d67d31e05b404c5a3fd15e5223015459706de5b15fada",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ድንግል እመቤቴ የህይወቴ ረዳት",
+          "ፍቅርዋ የማርያም ድንግል እመቤቴ"
+        ],
+        "reason": "The hymn repeatedly addresses the Virgin Mary as 'Mother' and praises her.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "be569006dfa45fa7f9f6430d4015706bbdecd4241b24ed675520222bbca315fc",
+        "primary_slug": "general",
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are too short to determine a specific subject or dominant theme.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2047,
+    "eval_count": 533,
+    "total_duration_ns": 7850529800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

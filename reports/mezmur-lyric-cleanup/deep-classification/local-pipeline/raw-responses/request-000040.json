@@ -1,0 +1,59 @@
+{
+  "group_hashes": [
+    "0b512cd3f7b4f3525c0c79ad86a4560005b33f460b71717fe6ea8601a26ea941",
+    "2a2fd2e4d7982535d5d7e7acdb856ad6ed31474c4fa44c85f7c775fbfedc728b",
+    "31fd4eb705c3c56b14d6975ad91cae09318c6fdc3a7425df0160e114f2eab028"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "0b512cd3f7b4f3525c0c79ad86a4560005b33f460b71717fe6ea8601a26ea941",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እስመ ውዕቱ ክብሮሙ ለቅዱሳን መድኃኔዓለም",
+          "ትርጉም፡- ምድርን በአበባ አስጌጣት መድኃኒዓለም"
+        ],
+        "reason": "Lyrics explicitly identify the subject as 'Medhanealem' (Savior of the World), a title for Jesus Christ.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "2a2fd2e4d7982535d5d7e7acdb856ad6ed31474c4fa44c85f7c775fbfedc728b",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ድንግል ፈጣሪዋን ወለደችው",
+          "ማርያምም በልቧ ትጠብቀው ነበር"
+        ],
+        "reason": "The hymn focuses entirely on Mary's role in the Incarnation and her perpetual watchfulness.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "31fd4eb705c3c56b14d6975ad91cae09318c6fdc3a7425df0160e114f2eab028",
+        "primary_slug": "prayer",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "እንመሰክራለን ፈጣሪያችን አለ",
+          "የመስቀሉ ቃል ለእኛ የእግዚአብሔር ሃይል ነው"
+        ],
+        "reason": "The text functions as a prayer of confession and praise, though it also mentions saints.",
+        "competing_slugs": [
+          "jesus-christ",
+          "virgin-mary"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2925,
+    "eval_count": 664,
+    "total_duration_ns": 9575330500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

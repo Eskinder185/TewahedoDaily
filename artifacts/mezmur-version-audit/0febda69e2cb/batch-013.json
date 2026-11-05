@@ -1,0 +1,8 @@
+{
+  "schema": "mezmur-version-batch-v1",
+  "detectorRevision": "6",
+  "sourceSha256": "0febda69e2cb2c8d721339b17b2145d629672aa0014003e40685d02b41a7e808",
+  "start": 2400,
+  "end": 2531,
+  "proposals": []
+}

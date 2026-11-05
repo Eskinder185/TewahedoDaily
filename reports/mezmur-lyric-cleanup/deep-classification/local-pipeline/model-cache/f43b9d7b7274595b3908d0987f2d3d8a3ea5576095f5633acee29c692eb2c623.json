@@ -1,0 +1,29 @@
+{
+  "group": "77d6d392626214c417d850756e2d47154c3132e4e69c5d7b637a20b0318b1a6a",
+  "member_ids": [
+    "10829852-f61c-4533-8f62-b7106cb34b7f"
+  ],
+  "item": {
+    "hash": "77d6d392626214c417d850756e2d47154c3132e4e69c5d7b637a20b0318b1a6a",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ከኃጢአት ፍላጻ ጸጋህ ይታደገኝ",
+      "አዳሼ መድኃኒቴ ሰላምን ላክልኝ"
+    ],
+    "reason": "Lyrics address Jesus as Savior and source of grace.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1038,
+    "eval_count": 622,
+    "total_duration_ns": 8615256200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

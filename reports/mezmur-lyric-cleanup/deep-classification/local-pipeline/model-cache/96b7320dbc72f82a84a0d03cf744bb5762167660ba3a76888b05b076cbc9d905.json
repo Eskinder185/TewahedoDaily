@@ -1,0 +1,29 @@
+{
+  "group": "43cc3f788d73c0242edd1f03932df6343ed48c3bab61d80fd006ea71cd095607",
+  "member_ids": [
+    "24c05164-5db5-5982-bac3-a5f0024a296b"
+  ],
+  "item": {
+    "hash": "43cc3f788d73c0242edd1f03932df6343ed48c3bab61d80fd006ea71cd095607",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ኢትዮጵያ ሆይ እግዚአብሔርን አመስግኚ",
+      "የምስጋና ነጎድጓድ ከአፍሽ ይውጣ"
+    ],
+    "reason": "Lyrics explicitly call for praise and worship of God, with repeated phrases about singing praises.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2110,
+    "eval_count": 614,
+    "total_duration_ns": 9296953600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

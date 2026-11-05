@@ -1,0 +1,29 @@
+{
+  "group": "a758c396542e407e0df19af0579ca17b36d38d6a6ef923d2a0744753775876d0",
+  "member_ids": [
+    "0f9972b5-bfe5-42e0-82d3-84095c9ff78b"
+  ],
+  "item": {
+    "hash": "a758c396542e407e0df19af0579ca17b36d38d6a6ef923d2a0744753775876d0",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ሊጠመቅ ሲል ገና አሰይ አሰይ",
+      "ዮርዳኖስ ፈራና አሰይ አሰይ"
+    ],
+    "reason": "Lyrics describe baptism in the Jordan and repentance.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1038,
+    "eval_count": 622,
+    "total_duration_ns": 8615256200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

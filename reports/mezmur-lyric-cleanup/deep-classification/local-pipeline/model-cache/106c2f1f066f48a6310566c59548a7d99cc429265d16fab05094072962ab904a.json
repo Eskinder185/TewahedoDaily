@@ -1,0 +1,32 @@
+{
+  "group": "298398bdb0848b5ecd7d54e583541b8c7b635b5dffe7f2a9473d15a032f40890",
+  "member_ids": [
+    "42530ba8-cdb3-569b-b431-14f3b90e454d"
+  ],
+  "item": {
+    "hash": "298398bdb0848b5ecd7d54e583541b8c7b635b5dffe7f2a9473d15a032f40890",
+    "primary_slug": "prayer",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "እግዚአብሔር ሆይ እርዳኝ ቸርነት አድርገህ",
+      "ልጅህ ሆኖ ውሎ ኃላ መኮብለል"
+    ],
+    "reason": "The lyrics are a direct plea for help, repentance, and forgiveness addressed to God.",
+    "competing_slugs": [
+      "repentance",
+      "salvation"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1904,
+    "eval_count": 636,
+    "total_duration_ns": 9348259600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

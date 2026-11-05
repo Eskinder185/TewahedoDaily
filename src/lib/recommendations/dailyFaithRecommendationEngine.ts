@@ -24,6 +24,9 @@ import {
   CALENDAR_MEZMUR_LINKS,
   type CalendarMezmurLink,
 } from './calendarMezmursData'
+import { CONFIRMED_KNOWLEDGE_CONNECTIONS, validatedConnections, type KnowledgeConnection } from '../knowledge/connections.ts'
+import { canonicalizeOccasion } from '../publicContent/taxonomy.ts'
+import { KNOWLEDGE_HYMN_METADATA } from '../../data/knowledgeHymnMetadata.ts'
 
 export type ScripturePriority =
   | 'appointed_reading'
@@ -62,6 +65,9 @@ export interface RecommendedMezmur {
   thumbnailUrl?: string | null
   category?: string | null
   occasion?: string | null
+  language?: string | null
+  applicableEntity?: string | null
+  relationshipStatus?: 'confirmed' | 'verified-occasion' | 'occasion-metadata' | 'candidate' | 'general'
   score: number
   matchReasonEn: string
   matchReasonAm: string
@@ -258,15 +264,20 @@ export async function recommendDailyMezmurs(
     singer_name?: string | null
     occasion?: string | null
     category?: string | null
+    language?: string | null
+    primary_language?: string | null
+    occasion_verified?: boolean
     youtube_url?: string | null
     audio_url?: string | null
     search_keywords?: string | null
     lyrics_amharic?: string | null
-  }>
+  }>,
+  confirmedConnections: readonly KnowledgeConnection[] = CONFIRMED_KNOWLEDGE_CONNECTIONS,
 ): Promise<RecommendedMezmur[]> {
   type CatalogItem = NonNullable<typeof customCatalog>[number]
   type CatalogClient = SupabaseClient<{ public: { Tables: Record<string, never>; Views: { mezmur_public: { Row: CatalogItem; Relationships: [] } }; Functions: Record<string, never> } }>
   try {
+    const approvedRelationships = validatedConnections(confirmedConnections).filter(item => item.editorialStatus === 'confirmed')
     const cardSlugs = new Set<string>(context.cardSlugs || [])
 
     // Also match card slugs inferred from context strings
@@ -283,12 +294,43 @@ export async function recommendDailyMezmurs(
       cardSlugs.add('great-lent')
     }
 
-    // 1. Gather all approved candidate associations from verified links
+    const cardOccasions = new Map([...cardSlugs].map(slug => [slug,
+      canonicalizeOccasion(slug.replace(/^(observance|fast|monthly|season)-/u, '').replace(/-/gu, ' '))]))
+    const matchingOccasionCard = (occasion: string | null | undefined) => {
+      const normalized = canonicalizeOccasion(occasion)
+      if (!normalized || normalized === 'General / Anytime') return null
+      return [...cardOccasions].find(([, value]) => value === normalized)?.[0] || null
+    }
+    const isConfirmed = (link: CalendarMezmurLink) => approvedRelationships.some(connection => connection.editorialStatus === 'confirmed'
+      && connection.from.kind === 'hymn'
+      && (connection.from.id === link.mezmur_slug || connection.from.slug === link.mezmur_slug
+        || connection.from.id === KNOWLEDGE_HYMN_METADATA[link.mezmur_slug]?.importId)
+      && connection.to.id === (link.calendar_card_id || link.calendar_card_slug))
+
+    const linkPool = [...CALENDAR_MEZMUR_LINKS]
+    for (const connection of approvedRelationships) {
+      if (connection.from.kind !== 'hymn' || !['hymn-feast', 'primary-saint', 'theological-theme'].includes(connection.relation)) continue
+      const hymnSlug = connection.from.slug || Object.entries(KNOWLEDGE_HYMN_METADATA)
+        .find(([, value]) => value.importId === connection.from.id)?.[0] || connection.from.id
+      const cardSlug = connection.to.slug || CALENDAR_MEZMUR_LINKS.find(link => link.calendar_card_id === connection.to.id)?.calendar_card_slug || connection.to.id
+      if (!cardSlugs.has(cardSlug) && !(context.sourceIds || []).includes(connection.to.id)) continue
+      if (linkPool.some(link => link.mezmur_slug === hymnSlug && (link.calendar_card_id === connection.to.id || link.calendar_card_slug === cardSlug))) continue
+      linkPool.push({ calendar_card_id: connection.to.id, calendar_card_slug: cardSlug,
+        event_kind: cardSlug.startsWith('monthly-') ? 'monthly' : cardSlug.startsWith('fast-') ? 'fast' : 'observance',
+        event_title: connection.to.name || cardSlug, mezmur_slug: hymnSlug,
+        mezmur_title: connection.from.name || hymnSlug,
+        relationship_type: connection.relation === 'primary-saint' ? 'saint_angel'
+          : connection.relation === 'theological-theme' ? 'thematic' : 'feast',
+        priority: 1, reason_en: connection.evidence[0].text, reason_am: connection.evidence[0].text,
+        review_status: 'approved' })
+    }
+
+    // 1. Gather historical candidates and separately confirmed associations.
     const candidateLinks: Array<CalendarMezmurLink & { computedScore: number }> = []
-    for (const link of CALENDAR_MEZMUR_LINKS) {
+    for (const link of linkPool) {
       if (link.review_status !== 'approved') continue
 
-      let matches = cardSlugs.has(link.calendar_card_slug)
+      let matches = cardSlugs.has(link.calendar_card_slug) || (context.sourceIds || []).includes(link.calendar_card_id || '')
 
       // Fallback matching by title/keywords if slug didn't match directly
       if (!matches) {
@@ -309,8 +351,11 @@ export async function recommendDailyMezmurs(
       }
 
       if (matches) {
-        let computedScore = 50
-        switch (link.relationship_type) {
+        // The legacy generator defaulted all links to "approved". Only a separately
+        // reviewed connection may receive an authoritative feast/saint score.
+        const confirmed = isConfirmed(link)
+        let computedScore = confirmed ? 50 : 35
+        if (confirmed) switch (link.relationship_type) {
           case 'exact_commemoration':
             computedScore = 100
             break
@@ -394,7 +439,7 @@ export async function recommendDailyMezmurs(
         const slugsToFetch = Array.from(chosenSlugs)
         const { data } = await client
           .from('mezmur_public')
-          .select('mezmur_id, slug, title, title_amharic, singer_name, youtube_url, audio_url, lyrics_amharic')
+          .select('mezmur_id, slug, title, title_amharic, singer_name, youtube_url, audio_url, primary_language')
           .in('slug', slugsToFetch)
         catalogItems = (data || []) as unknown as CatalogItem[]
       }
@@ -403,10 +448,18 @@ export async function recommendDailyMezmurs(
 
       for (const link of chosenLinks) {
         const cat = catalogMap.get(link.mezmur_slug)
+        // A historical calendar map is not proof that the hymn remains published.
+        if (!cat) continue
+        const snapshot = KNOWLEDGE_HYMN_METADATA[link.mezmur_slug]
+        const category = cat.category || snapshot?.category || null
+        const occasion = cat.occasion || snapshot?.occasion || null
+        const confirmed = isConfirmed(link)
+        const occasionMatches = matchingOccasionCard(occasion) === link.calendar_card_slug
+        const verifiedOccasion = !confirmed && cat.occasion_verified === true && Boolean(cat.occasion) && occasionMatches
+        const sourceOccasion = !confirmed && !verifiedOccasion && occasionMatches
         const hasMedia = Boolean(cat?.youtube_url || cat?.audio_url)
-        let finalScore = link.computedScore
+        let finalScore = verifiedOccasion ? 70 : sourceOccasion ? 45 : link.computedScore
         if (hasMedia) finalScore += 5
-        if (cat?.lyrics_amharic) finalScore += 3
 
         hydratedMezmurs.push({
           id: cat?.mezmur_id || cat?.id || link.mezmur_slug,
@@ -417,11 +470,17 @@ export async function recommendDailyMezmurs(
           audioUrl: cat?.audio_url || null,
           youtubeUrl: cat?.youtube_url || null,
           thumbnailUrl: null,
-          category: link.relationship_type,
-          occasion: link.event_title,
+          category,
+          occasion,
+          language: cat.language || cat.primary_language || snapshot?.language || null,
+          applicableEntity: link.event_title,
+          relationshipStatus: confirmed ? 'confirmed' : verifiedOccasion ? 'verified-occasion' : sourceOccasion ? 'occasion-metadata' : 'candidate',
           score: finalScore,
-          matchReasonEn: link.reason_en,
-          matchReasonAm: link.reason_am,
+          matchReasonEn: confirmed ? link.reason_en : verifiedOccasion
+            ? `Verified occasion metadata matches ${link.event_title}`
+            : sourceOccasion ? `Source occasion metadata matches ${link.event_title}; editorial association pending review`
+            : `Related to ${link.event_title}; editorial association pending review`,
+          matchReasonAm: confirmed ? link.reason_am : `ከ${link.event_title_amharic || link.event_title} ጋር የተያያዘ፤ ግንኙነቱ ለአርትኦት ይጠብቃል`,
           playHref: `/hymns/mezmur/${link.mezmur_slug}`,
           lyricsHref: `/hymns/mezmur/${link.mezmur_slug}`,
           hasPlayableMedia: hasMedia,
@@ -439,7 +498,7 @@ export async function recommendDailyMezmurs(
         const needed = limit - hydratedMezmurs.length
         const { data } = await client
           .from('mezmur_public')
-          .select('mezmur_id, slug, title, title_amharic, singer_name, youtube_url, audio_url, lyrics_amharic')
+          .select('mezmur_id, slug, title, title_amharic, singer_name, youtube_url, audio_url, primary_language')
           .limit(needed + 5)
         fallbackList = ((data || []) as unknown as CatalogItem[]).filter((m) => m.slug && !chosenSlugs.has(m.slug))
       }
@@ -450,6 +509,10 @@ export async function recommendDailyMezmurs(
 
         chosenSlugs.add(fb.slug)
         const hasMedia = Boolean(fb.youtube_url || fb.audio_url)
+        const snapshot = KNOWLEDGE_HYMN_METADATA[fb.slug]
+        const occasion = fb.occasion || snapshot?.occasion || null
+        const occasionCard = matchingOccasionCard(occasion)
+        const verifiedOccasion = Boolean(occasionCard && fb.occasion_verified === true && fb.occasion)
         hydratedMezmurs.push({
           id: fb.mezmur_id || fb.id || fb.slug,
           slug: fb.slug,
@@ -459,10 +522,14 @@ export async function recommendDailyMezmurs(
           audioUrl: fb.audio_url || null,
           youtubeUrl: fb.youtube_url || null,
           thumbnailUrl: null,
-          category: 'general_worship',
-          occasion: null,
-          score: 20 + (hasMedia ? 5 : 0),
-          matchReasonEn: 'General worship suggestion',
+          category: fb.category || snapshot?.category || null,
+          occasion,
+          language: fb.language || fb.primary_language || snapshot?.language || null,
+          applicableEntity: occasionCard ? CALENDAR_MEZMUR_LINKS.find(link => link.calendar_card_slug === occasionCard)?.event_title || null : null,
+          relationshipStatus: verifiedOccasion ? 'verified-occasion' : occasionCard ? 'occasion-metadata' : 'general',
+          score: (verifiedOccasion ? 70 : occasionCard ? 45 : 20) + (hasMedia ? 5 : 0),
+          matchReasonEn: verifiedOccasion ? 'Verified occasion metadata matches this day'
+            : occasionCard ? 'Source occasion metadata matches this day; editorial association pending review' : 'General worship suggestion',
           matchReasonAm: 'አጠቃላይ የምስጋና መዝሙር',
           playHref: `/hymns/mezmur/${fb.slug}`,
           lyricsHref: `/hymns/mezmur/${fb.slug}`,

@@ -16,6 +16,8 @@ import s from './Admin.module.css'
 const HYMNS_TABS = [
   { to: '/admin/hymns', label: 'Overview', end: true },
   { to: '/admin/hymns/mezmur', label: 'Mezmur' },
+  { to: '/admin/hymns/mezmur/editorial', label: 'Editorial Review' },
+  { to: '/admin/hymns/mezmur/versions', label: 'Version Review' },
   { to: '/admin/hymns/import', label: 'CSV Import' },
   { to: '/admin/hymns/bulk', label: 'Bulk Management' },
   { to: '/admin/hymns/browse-groups', label: 'Browse Groups' },

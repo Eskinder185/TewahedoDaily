@@ -1,0 +1,31 @@
+{
+  "group": "365682dbd52ae91bbc5038e1b5da3b50e3e474bc8bcf6e53d8cd9d6dfcb2e9b0",
+  "member_ids": [
+    "450902fb-8c49-56ec-bcf3-9e77a9dd1599"
+  ],
+  "item": {
+    "hash": "365682dbd52ae91bbc5038e1b5da3b50e3e474bc8bcf6e53d8cd9d6dfcb2e9b0",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የሞተልኝ ኢየሱስ ነው",
+      "yemotelny Iyesus new"
+    ],
+    "reason": "The text explicitly identifies Jesus as the one who died for the singer and praises His love.",
+    "competing_slugs": [
+      "praise-worship"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2877,
+    "eval_count": 558,
+    "total_duration_ns": 8092473200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

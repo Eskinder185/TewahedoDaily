@@ -1,0 +1,54 @@
+{
+  "group_hashes": [
+    "fa6a5337d8212f6197600ed710657f63631c2cd6e0cecf47e62efa0ef7183d52",
+    "905e8ec23284c1f896fa91ee10e24b192354a47665158b15b5e1866510bf29a7",
+    "36d8da1c8db2ede46354e85dda6dca77db13f4be9f87ed1e55421752ee1ff29f"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "fa6a5337d8212f6197600ed710657f63631c2cd6e0cecf47e62efa0ef7183d52",
+        "primary_slug": "cross",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Aberh bemesqelye"
+        ],
+        "reason": "Lyrics explicitly mention 'bemesqelye' (on the cross), making the Cross the dominant subject.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "905e8ec23284c1f896fa91ee10e24b192354a47665158b15b5e1866510bf29a7",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "smh behulu temesegene",
+          "anten mawedes yasdestenal"
+        ],
+        "reason": "Lyrics focus on praising God's name and worshipping Him in all creation.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "36d8da1c8db2ede46354e85dda6dca77db13f4be9f87ed1e55421752ee1ff29f",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ni Maryam bemhret we sahl"
+        ],
+        "reason": "Lyrics directly address and praise 'Maryam' (Virgin Mary) for her mercy.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1510,
+    "eval_count": 482,
+    "total_duration_ns": 6887072000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

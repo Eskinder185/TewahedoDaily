@@ -1,0 +1,29 @@
+{
+  "group": "daab52af6caa844022b24970d81b1437eaf91fe811acaa354926a4b7eb723aae",
+  "member_ids": [
+    "5e0e98a6-dd77-4287-82c5-b31272b4b1d0"
+  ],
+  "item": {
+    "hash": "daab52af6caa844022b24970d81b1437eaf91fe811acaa354926a4b7eb723aae",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ዓለም ተቀድሷል ነጻ ወጥቷል ዛሬ",
+      "ከአንቺ በተገኘው በመልካሙ ፍሬ"
+    ],
+    "reason": "Lyrics celebrate the world's liberation and praise the 'fruit' of Mary.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1209,
+    "eval_count": 589,
+    "total_duration_ns": 8255799600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

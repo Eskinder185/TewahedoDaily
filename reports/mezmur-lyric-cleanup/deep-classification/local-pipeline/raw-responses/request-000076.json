@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "3694eef389f780f90f9ffc87df481b907baabb7f2e32002f5fa7a75862293951",
+    "841531ddd39b29e2e825c0e8385f732cbc9d0a61bbce5236e9885f4fa84d5763",
+    "7ad5d7dad45320b0044d85903fe1f9ed72898df9f4584fae86c154c60eb77dd5"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "3694eef389f780f90f9ffc87df481b907baabb7f2e32002f5fa7a75862293951",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ቅድስት ኤልሣቤጥ ሆይ",
+          "የእመቤቴ ድምጿ ስንቅ እንዲሆነኝ"
+        ],
+        "reason": "Lyrics address Mary directly as 'Holy Elizabeth' (referring to her role) and focus on her voice and intercession.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "841531ddd39b29e2e825c0e8385f732cbc9d0a61bbce5236e9885f4fa84d5763",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ድንግል እመቤቴ ወላዲተ ቃል",
+          "ማርያም እናቴ ነሽ"
+        ],
+        "reason": "The hymn explicitly names Mary and addresses her as the Virgin Mother of God.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "7ad5d7dad45320b0044d85903fe1f9ed72898df9f4584fae86c154c60eb77dd5",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ሁሉ ተችሎ ላንተ ጌታ",
+          "ጌታ በፍቅርህ ተማረኩኝ"
+        ],
+        "reason": "The lyrics are a prayer addressed directly to Jesus Christ as 'Lord' and 'Savior'.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2874,
+    "eval_count": 590,
+    "total_duration_ns": 8724313600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "group": "8137441f9215e188c12579d22f65f978dce8640a9fe007d01c7dbe9309aee566",
+  "member_ids": [
+    "5143702b-97c4-414b-925d-c95580674a19"
+  ],
+  "item": {
+    "hash": "8137441f9215e188c12579d22f65f978dce8640a9fe007d01c7dbe9309aee566",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Selamawit mahdere sibhat"
+    ],
+    "reason": "Lyrics explicitly mention 'peaceful assembly of praise' and worship.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 920,
+    "eval_count": 443,
+    "total_duration_ns": 6276344100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

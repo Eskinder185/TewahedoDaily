@@ -1,278 +1,297 @@
 ﻿priority,import_id,title,semantic_review_status,current_category,proposed_category,confidence,reason
+high,000b9c70-b705-4539-a6d1-85485a89987d,Lemayneger Sitotah Temesgen Inlitsalen,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
 high,00164295-b8aa-56eb-873e-037f2b33d3a8,ሊቀ መላክ,full_lyrics_reviewed,,Kidus Uriel,high,Uriel is addressed and praised throughout every stanza; intercession and healing are attributed to him.
 high,00171558-c750-5ebf-8b89-9cc53586077b,የዶኪማስ ጓዳ,full_lyrics_reviewed,,Virgin Mary,high,The singer addresses the mother of Christ and asks for her intercession; the Cana wine narrative illustrates her motherhood.
+high,002ae5a4-92cb-4ae6-8539-ed6bdf934585,Hilmim Honobnyal Yesew Hulu Tesfa,not_reviewed,,prayer,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
 high,00303ac8-bf88-5ad9-bd92-d05d1438f103,መስቀል ብርሃነ,full_lyrics_reviewed,,Cross,high,Both the Ge’ez opening and Amharic restatement repeatedly name the Cross as the hymn's subject.
+high,00dbae2f-32c7-415c-84af-14e855d10a94,JIREENYADHA. M/K/O/T/ Itoophiyaatti Faarfannaa Afaan Oromoo Hangafa Far.D/N Firaanol Moosisaatiin,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
 high,00ec14a1-3162-51a8-81aa-437729965ff1,ደስ ይበለን,full_lyrics_reviewed,,Praise / Worship,medium,"Most stanzas celebrate God's mercy and urge praise. Mary appears near the close as intercessor, not the main addressee."
+high,010c4040-e998-4c74-a138-638177c4ec0e,Yihnin Gubae,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,011035fa-f0ef-4533-a4db-b2eea1f998fc,Yeityopya Ortodokis,not_reviewed,,general,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
 high,0117453f-8226-5ce8-8fec-553be9e1df62,አማኑኤል አምላክ,full_lyrics_reviewed,,Jesus Christ,high,The hymn addresses Emmanuel and repeatedly narrates his resurrection and liberation of humanity. Mary Magdalene and the apostles are witnesses.
 high,0188d308-ad2d-514d-b661-8267d0f556e0,አባ ኪሮስ,full_lyrics_reviewed,,Saints,high,"The full hymn addresses Abba Kyros, recounting his ascetic life and attributed miracles. The supported taxonomy lacks a dedicated Kyros category."
 high,0197f894-1224-5ae9-be1e-a66fc9654bb9,እንደ እግዚአብሔር ያለ,full_lyrics_reviewed,,Praise / Worship,high,The refrain calls for praise of God; the sea and Jericho are separate examples of divine power. Trinity and Mary are incidental mentions.
 high,023c10e2-56dc-5bbc-aae2-56c846a75bac,እረድተሃልና,full_lyrics_reviewed,,Kidus Michael,high,"Michael is invoked line after line for intercession, protection, and rescue; the Bahran story supports the same focus."
 high,02765f4c-7769-5b8d-b31f-329220b5c00e,መንግስተ ሥላሴ,full_lyrics_reviewed,,Holy Trinity,high,The refrain and closing stanza explicitly praise the Trinity as eternal creator and protector.
 high,02b41182-7080-54a2-8c97-caf5d385b764,ኢትዮጵያንና ህዝቦቿን,full_lyrics_reviewed,,Prayer,high,The repeated direct petition asks God to protect Ethiopia and its defenders and grant peace; it is not a named feast or saint hymn.
+high,03a86164-3198-4738-b30c-dd30a72645d2,Yeabriham Irsha Yemsitir Washaw,not_reviewed,,virgin-mary,low,Local model proposal requires review: short_lyrics
 high,04028311-d7f2-57d7-ada8-b2bdb9713efd,ባሕራንኒ ይቤ,full_lyrics_reviewed,,Kidus Michael,high,The Ge’ez opening and repeated Amharic response center Michael's rescue of Bahran; Moses is an additional illustration.
 high,04260937-1d8b-5a27-9cf0-1e46678523bf,አደባባይ ቆሜ,full_lyrics_reviewed,,Repentance,medium,"After narrating Christ's suffering, the singer repeatedly examines hollow worship and asks to obey in love. The moral appeal is the dominant purpose."
 high,0490c951-da4d-5110-b431-5ee96d930866,ድንግል ትንሣኤሽን,full_lyrics_reviewed,,Virgin Mary,high,"The Virgin is addressed throughout, and Thomas's report of her assumption is the central narrative. This alone does not establish a prescribed occasion."
-high,057ce923-2320-4c38-9cb9-950bca561293,Bemn Inmeslat Dingil Maryam,full_lyrics_reviewed,,Virgin Mary,high,"The speaker directly addresses a woman through traditional Marian images; 'sister of angels' is a description, not an angel as subject."
+high,04a71449-e3bc-4569-8365-543bb185934c,Yemsirach Teweledech Isey Isey,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,057ce923-2320-4c38-9cb9-950bca561293,Bemn Inmeslat Dingil Maryam,full_lyrics_reviewed,,Virgin Mary,medium,"The speaker directly addresses a woman through traditional Marian images; 'sister of angels' is a description, not an angel as subject."
 high,05bcca9f-4949-5671-b20d-2e0f78371641,አይሸሸግ እውነቱ,full_lyrics_reviewed,,Virgin Mary,high,Mary is the repeated subject and addressee; Gabriel and Zechariah's house are parts of her story.
+high,063c5965-2fc0-4e5d-b668-0f16d778810c,Kenetenkolwa Alem Mwach Nech,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,06dbb68c-697c-48aa-87cb-2c27f1b43ec8,Tewahdo Nitshit Qidsit Imnetachin,not_reviewed,,praise-worship,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
 high,071c7d1e-fc86-598e-8d21-572333ea62ad,ቋንቋዬ ነሽ ድንግል,full_lyrics_reviewed,,Virgin Mary,high,The singer addresses the Virgin throughout as mother and intercessor; Ephrem and the angels are passing comparisons.
 high,0752e41d-511a-5687-830f-21c1489001f5,ክርስቶስ ተንስአ,full_lyrics_reviewed,,Jesus Christ,high,The Ge’ez proclamation and its Amharic translation both focus on Christ's resurrection and Adam's liberation; liturgical use remains unverified.
+high,075a4be1-2690-4780-8e9c-dc2044541ec6,Ande Surafel Besemay Siyatin,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
 high,078406f9-973e-5bc1-a9ec-854cae610038,ውዳሴ ማርያም,full_lyrics_reviewed,,Virgin Mary,high,"The recurring address and multiple stanzas praise Mary. Ephrem, Yared, and David are witnesses or hymn makers, not primary subjects."
 high,07bb8d42-c7e1-5796-afaa-16d796baca3e,አምላከ እስራኤል,full_lyrics_reviewed,,Kidus Michael,medium,"The song opens by praising God and narrates Moses at the sea, but its repeated interpretive refrain names Michael as Israel's guide. Editorial review should confirm the intended balance."
+high,07d94ebf-ebe0-424a-bc26-f1aaa1dea93d,Yemushraw Hiywet Melkam Indihon,not_reviewed,,prayer,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
+high,07e54ff5-ad32-48ce-abfc-6579946a7afc,Tolo Yidersilnal Fitune Redet,not_reviewed,,kidus-michael,low,Local model proposal requires review: short_lyrics
+high,080ac6a6-c1a8-44e6-ac4b-b37faa70421d,Metsa Merawi,not_reviewed,,general,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
 high,08b40caa-92cd-5f9d-a23b-f5acdad44032,መልአከ ሰላምነ,full_lyrics_reviewed,,Kidus Uriel,high,The Ge’ez appeal and Amharic stanzas ask Uriel for intercession and help; God is the recipient of the prayer Uriel carries.
+high,08f82973-ed8d-4da9-9f48-2851af5b9984,Igziabher Hoy Yibza Mihretih,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
 high,090b64c0-bffe-58df-b303-40e0c166dbb4,ይበራል በክንፉ,full_lyrics_reviewed,,Kidus Michael,high,Multiple stanzas recount Michael's protection and upbringing of the singer; other biblical references are figurative background.
 high,09350935-97bc-5451-a8ae-864c88c8edad,በምን በምን,full_lyrics_reviewed,,Virgin Mary,high,"The whole hymn develops biblical images of Mary, including the ark, ladder, and mother of saints; named biblical figures serve as images."
 high,0936f236-de24-58c6-84f6-12843409be9d,እውነት ነው,full_lyrics_reviewed,,Jesus Christ,high,"The full lyric teaches Christ's identity, incarnation, saving death, Eucharistic gift, and return; Mary is mentioned as the mother of his incarnation."
+high,093b5eff-7ffd-5812-90e5-2cc21d3fc86f,ንጽሕተ ንጹሓን,not_reviewed,,martyrs,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0973486d-c62c-440b-aac8-7102bb6398f1,Amlak Hoy Misgana Leante Yigebahal,not_reviewed,,salvation,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0a06de3b-b4d3-45ca-a2e7-df35af95d0ea,Dingil Hoy Hul Gize Ayleyen Miljashe :,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0a209f11-e10d-4c2c-9120-ccd6c6e86fc2,Kehatiat Idif Nitsuh Mehonyaye,not_reviewed,,virgin-mary,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
 high,0a81e0ba-4f11-5b74-94b8-b2becb7aa814,ሰዎች እንዘምር,full_lyrics_reviewed,,Salvation,high,"Separate stanzas recount Bartimaeus, the woman with bleeding, and the sick man at the pool as examples of God's healing and saving action."
 high,0b567616-c7fd-5a33-bf6d-3e685e59cadf,ኃያል ነው እግዚአብሔር ኃያል ነው ቅዱሱ(2),full_lyrics_reviewed,,Praise / Worship,high,"Across the opening, middle, and close the song praises God's power over storm, creation, and judgment; Tabor is one image, not proof of a feast occasion."
-medium,000b9c70-b705-4539-a6d1-85485a89987d,Lemayneger Sitotah Temesgen Inlitsalen,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,002ae5a4-92cb-4ae6-8539-ed6bdf934585,Hilmim Honobnyal Yesew Hulu Tesfa,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,00dbae2f-32c7-415c-84af-14e855d10a94,JIREENYADHA. M/K/O/T/ Itoophiyaatti Faarfannaa Afaan Oromoo Hangafa Far.D/N Firaanol Moosisaatiin,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,010c4040-e998-4c74-a138-638177c4ec0e,Yihnin Gubae,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,011035fa-f0ef-4533-a4db-b2eea1f998fc,Yeityopya Ortodokis,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,03a86164-3198-4738-b30c-dd30a72645d2,Yeabriham Irsha Yemsitir Washaw,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,04a71449-e3bc-4569-8365-543bb185934c,Yemsirach Teweledech Isey Isey,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,063c5965-2fc0-4e5d-b668-0f16d778810c,Kenetenkolwa Alem Mwach Nech,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+high,0b590f91-f853-53df-b9dc-b8c8d821b972,አምሀኆሙ,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,0b6dc751-699e-5269-ad25-b99eb6e31292,እመ ብርሃን,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0bb2518b-44b8-4c96-b1e7-b6657d1dc49a,Kotalala,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,0c31829f-97eb-413b-9158-620960545de1,Wedaje Hoy,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,0c6572fa-dad7-525e-96da-c4f9463928cc,ለእኔስ ወደ እግዚአብሔር,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0c89956c-1ac8-5458-bb66-3afbea9f6a83,ሁለቱም አንድ ሆኑ,not_reviewed,,holy-trinity,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0ca168fa-7447-402c-b049-e1955697ccc7,Wetbelo Yikweneni,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,0ca5c34d-b772-4436-9e9b-3c363f830489,Amlake Sileyeny Yisemanyal,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,0d5335e2-cade-43c1-9df6-e10212c248e1,Yeiyareko Qitir Yemaydeferew,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,0d825ee0-60dd-4e04-852c-6cb2475534a0,Wede Hiywet Menged,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0d9de38a-e94b-5546-be93-4850ff9e7b43,እስመ ለዓለም,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0e4cfff9-7902-46cd-96dc-ebb835c18158,Timetalech Beiwnet,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,0e85e47f-bec6-4f01-89d0-ea16435eff60,Nolawi Tiguh Zeitnewm,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,0ebcc7d0-b607-5c02-92f8-4b6c00c5166a,ሁላችን እንጸልይ,not_reviewed,,holy-trinity,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0f262a91-a728-4015-8e79-c0efa78e4c96,Hiywet Mot Dihnet Menorachewn Bamnim,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0f30d4dc-0fc9-4e51-b2ba-07efb1b2a602,Kirubel Menberun Yemishekemulet,not_reviewed,,cross,low,Local model proposal requires review: short_lyrics
+high,0f6c55f7-96db-4844-ab20-c1d3627a2cdf,Adebabay Qome,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,0f9972b5-bfe5-42e0-82d3-84095c9ff78b,Geta Beyohans Asey Isey,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,10799504-53a5-41aa-af5e-88e44d2230a5,Fidan Teqebele Lesew Lijoch Dihnet,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,10829852-f61c-4533-8f62-b7106cb34b7f,Mehari Yiqir Bay Mihretih Yigobnyeny,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,10c5ec52-c272-45a4-9b5e-173604f7efcd,Abel Semereab,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1139ed7f-9cf5-44fa-937d-9caf7a7e34b6,Litatbeny Demh Fesese,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,114a053c-14e8-46aa-bdc0-b14dfc7843f8,Destawn Ayto Amlak Fitsum Tedestwal,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,119cb758-721e-4c91-bff2-d6db28a06c22,Wetsa Wegeba,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,11f51db0-0640-47d3-966a-4aea7c5e5b29,Siganm Nesto Keinatachin,not_reviewed,,repentance,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
+high,124485ae-5184-411f-af9c-9b528de19d9c,Zemenatin Bezemenat Yaferarqal,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,12768990-c3ff-4b7d-828d-f457af83b72d,Yefetariwn Sim Bekentu Yemaytera,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1340bc9a-857a-57b5-aa85-5def757cde20,በመከራ ጽና,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,13568093-cdf7-5122-adbe-3ee85c2c7cfa,ፈተና ወጀብ ቢበዛ,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,137f79d5-7460-5821-af60-c6cdd389246c,የይሁዳ ጉዞ,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,13e3b0b2-be1e-47b3-887b-df00e51bf20b,Setoch Tinsaehin Defrew Tenageru,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,1517e962-ad1b-406b-82cd-111919116057,Wendim Wendimun Iyekesese Lefrid Aqumo,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,15bf1c7c-4e33-4551-b2d3-074b71cbceec,Keadam And Atnit Kegwanu Wesdeh,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,15e0223b-3673-4b5b-b1dd-2ec062465d41,Sobe Metsa,not_reviewed,,prophets,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,166162f2-2878-44b6-81f6-cbff9578160d,Iske Meche New,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,16c7267a-2991-4e3e-af3a-2c812b8dc295,Metsa Qal,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,182eacc2-335a-4b09-8127-bb204cb93444,Nolawi Tiguh Zeitnewm,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,185a4db1-d82e-4793-a217-af0deefce22a,Zike Witu Mikael Hibsite Mena Zeawredke,not_reviewed,,angels,low,Local model proposal requires review: short_lyrics
+high,185f2420-0ae3-4dda-863a-85bd692bf885,Itsesabeq,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,19a728fa-490e-569e-9604-8dd9cd66f4d5,የእቲሳ አንበሳ,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,19af43d4-1f4e-4734-add1-d8a5c24b78d2,Kewegene Gara Izemralehuny,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1a7fd09a-1a10-4870-9488-f4cb748c6d67,Andenefsih Argeh Inditwedat,not_reviewed,,virgin-mary,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1b762f56-4e0c-4cd7-ae9a-131c3c26096e,Kinefe Rigib,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,1c6fa25a-10f4-48c1-bd13-f26411d5073e,Yealem Medhanit -----------:,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1c8f5de5-6097-4524-952d-8e454b46cc35,Yesew Lij Defaru Amlak Yelem Ale,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1c912264-51cc-432a-8efe-443af6ab7769,Sibhat Leab Leahaze Kulu Alem,not_reviewed,,praise-worship,low,Local model proposal requires review: short_lyrics
+high,1cf7209a-a70a-432d-8394-c044e294ef62,Yeadam Lij Ketbiya Wede Neberebet,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1d3c6d2d-c897-5d3b-af2a-4c92c2c198ac,በወንጌሉ ያመናችሁ,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1df489ac-01ff-584a-9a8a-f861a2003062,ተስፋችን ነህ አንተ,not_reviewed,,kidus-raphael,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,1fd7ebe5-7876-44bd-b655-bc6ee11681ee,And Imnet New Tsinu Haymanot New,not_reviewed,,prophets,low,Local model proposal requires review: short_lyrics
+high,204e46a6-c75d-4061-9234-30bb3ce1b87c,Betsom Besubae Tinoralech Tatqa,not_reviewed,,general,low,Local model proposal requires review: model_uncertain|category_not_supported_by_alias_candidates
+high,21d2dc81-889d-4b26-b61c-73d536fa0aad,Yeqdusan Beat Yetselot Washachew,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,21dac194-cea5-4042-a619-5c973f9edf37,Zelealem Yinoral Tekle Haymanot,not_reviewed,,abune-tekle-haymanot,low,Local model proposal requires review: short_lyrics
+high,22be4292-3458-543e-ac5c-fbb38dee5336,ቤተ ክርስቲያን,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,22edbd76-fc0e-4801-adad-9974854194c3,Kule Kentu,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,23c75536-21c0-5428-b137-4af09edbb303,ተልሄም ተወልደ አማኑኤል,not_reviewed,,angels,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,23ff6f9e-7761-57c7-8a5c-73aeaf6f824e,የስላሴን መንበር,not_reviewed,,holy-trinity,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,24a109d4-03b5-5d7b-ab20-0e84d5a35183,ጠላቴን ጌታዬ,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,24c05164-5db5-5982-bac3-a5f0024a296b,ኢትዮጵያ ሆይ,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,25de90cd-5b28-459d-93dd-741ee981f74d,Libachin Legeta Melkam Menged Yihun,not_reviewed,,praise-worship,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
+high,2637c0c4-20ef-4178-bc68-0086ad4dc8ff,Beandinet Honew Iyerusalem,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,272a06cf-7587-4c5e-ae28-fb65fc0768bc,Itti hin leeyya'u Angafa Faarfattootaa Dn Firaanol Moosisaa Faarfannaa Durii,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,277de01e-321a-4c17-8d01-f1ba06254a40,Bearayaw Fetronal Hulu Beiju New::,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,280b4938-d2f6-4807-bf05-ed317b7f24a6,Iyesus Kirsitos Yiwedenal Yitebqenal,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,2828a01f-2b03-4e30-ae7e-a4f2bf2852ac,Misli : Nay Hibret Mezmur #,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,29b1ab00-d1ac-5212-8681-e3268446a526,ገብረሕይወት,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,29f68acf-e765-4fab-83b5-c1a12a4ba4b7,Besemayna Bemdir Bebahrina,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,2ae4409d-1c30-5098-a88a-1ff80bec8936,ሆሣዕና እምርት,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2ae7ce3d-2358-4a73-9f69-76df47aa8524,Qidusan Ijochih Yefitiny Tasrew,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2b6bfc72-1050-4429-a59b-c1e55d4ddac9,Asme Lealem Mihretu,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2bb1d389-b0e5-40c0-a43b-fb930bb759f9,Nitsum Tsome Wenafqir Bitsene Wentifaqer Bebeynatine,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2bc7782c-9b81-4ac8-84eb-6d8ec5f665e8,Imun Iha,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2c5211d0-c6b5-5467-a5e9-92896d58edcb,አዳነኝ ጌታ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2c5cadb7-146d-4a45-9ed9-533f5df0623e,Leserahew Tayat Ansegdim Iyalu,not_reviewed,,holy-spirit,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2c61f555-39e5-4d7b-b228-1be595fffaf2,Inze Iyemr,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2cd6f771-3d84-49cc-9867-31878fa38f59,Afer Birebereb Satin Bidereder,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,2d4b7b66-28a4-4971-a734-2f11b22054a6,Wihaw Telewto Yeweyn Tej Sihon,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2e699554-dbbe-481f-9654-0442a06af49e,Tegerfo Teseqlo Yemotew Anbesa,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2e9c3002-4a49-4357-9fef-86bf67bf8d46,Moche Silemalqer,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2ebcbe7c-3387-4c97-961a-dab660f7b2c0,Minm Satbedil,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,2fa13cd3-0178-4d2e-ac5f-07409aa45d25,Yomse,not_reviewed,,cross,low,Local model proposal requires review: short_lyrics
+high,31b6c0de-894a-4862-ac2d-aea89268748b,Itsub Bereket Setesh,not_reviewed,,holy-trinity,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,31b857eb-c608-4e03-9a07-e1bab789c1b0,Habe Abuhu Arge Semayat Arge Semayat,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3283ff20-e3e9-55e6-8503-9e4a1f5765dd,የማያልፍ የለም,not_reviewed,,salvation,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,328dccc9-10a4-4763-9321-cd89de78d75b,Beyedeqiqaw Hatiat Sisera,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,32a6ce76-e69f-5f57-9c87-204fe4b92bb7,ኢትዮጵያ,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3305feeb-3f78-5da8-a410-71932e0af69e,ጥሪህም ድንቅ ነው,not_reviewed,,saints,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,332f24de-6535-4ee1-8f4d-0825e645d833,Ainbey Nez Aimru,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,33c6e1d1-6cf2-4eb8-83bc-c630bd0ec40f,Yehatiat Guzo Tafach Bimeslim,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,348cedaa-daba-552c-90fa-af379ddaf092,ቸርነትህ ነው,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,34c042ac-b2f5-4517-a5dc-2b148454ec94,Besemayni Webemdirni Webebahrini Webekulu,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,34d00776-08e1-5730-939c-925c98785973,በገና አንስተን,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,356ac3e4-2393-4b05-9d35-2d1241148d21,Yelbachin Desta Indinalen,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,36c12b24-e179-4de5-81f6-eb6ced5257c4,Ketfat Tebqo Agannitnim Yiwagal,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,36cbdccc-38c1-4976-a236-a1bc03ae67e8,Amlak Hoy Misgana Leante Yigebahal,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,38aa9269-e54d-51d6-a193-5a5d4c99bcce,ዓለምን ዞሬ አየሁት,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,39f9171e-7f70-4379-87dd-fabc982f4f07,Hizbu Tesbisbo Bebete Kirsitiyan,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3a0ee570-f144-5cc4-a989-6e6c76ffb6a7,አጅቡት በእልልታ,not_reviewed,,salvation,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3a1def54-82c6-4036-85c7-6ce542ab8fd1,Beqana Zegelila Qu.1,not_reviewed,,jesus-christ,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
+high,3a3ef8d6-7455-551e-bbe6-d5973899b9d7,አለቴ ነህ አንባዬ,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3aa79379-e4f2-485b-bd92-3c9433054416,You Are Without Fault,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3c0ed99b-d92c-5f5b-8835-f7d1d2a55e6a,እግዚአብሔር ሆይ እወድሃለሁ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3c6b8839-07e9-440f-9242-0483ccb1ac2d,Yeiyesusin Himam Denaglim Aytew,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,3cada034-d804-4502-a97a-444b6eb83943,Bebereket Kindu Atbiqo Yeyazen Liyu New,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3d6ffb9a-55f7-45a0-883d-55b5ae4086dc,Teklehaymanotin Tsadqun Yaferut,not_reviewed,,prayer,low,Local model proposal requires review: short_lyrics
+high,3dd0a803-874e-481f-8e67-afe978d6b639,Tiqit Neger Yizhe,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3e29b523-ac04-497b-aea4-0592ec246911,Hosaina Belu Hosaina,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,3e402df6-30ef-5944-b7b0-07b8ed584227,ተዋሕዶ ሀይማኖቴ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,3e9543c6-1512-415f-96e2-0d32c5076ce2,Filseta Sijemer Qal Kidan Gebtalech,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,4007da3d-ad59-54bc-8fa4-db89ba898e9b,ቤተ ክርስቲያንን አንተውም,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,40098eed-f414-49fe-95a2-7b1a1af809c0,[kem Fiqadu ],not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,40789299-9b48-5c8e-8d6c-b33084d17a1a,ሞገድ ሲገፋኝ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,40cec4ab-de2c-4775-8142-f950e6d3e2f9,Keherodis Wede Pelatos,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,41da10ce-19d9-48c2-a317-e6b757f7eb2b,Semaitat Yezihchin Alem Taim Beiwnet,not_reviewed,,martyrs,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,42530ba8-cdb3-569b-b431-14f3b90e454d,እግዚአብሔር ሆይ እርዳኝ,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,42ac1ab8-b0b2-5e25-a7a6-285ffbb3fc6b,እንዘ ተሀቅፊዮ,not_reviewed,,angels,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,43395089-7481-4b2c-8d35-1e7082d60fbe,Aytenal Inji Letelatochu Mihret Silemn,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,438cc576-12d2-47db-b46c-6b1016c95a85,Keinya Gar Yalew Hayl New,not_reviewed,,general,low,Local model proposal requires review: model_uncertain|category_not_supported_by_alias_candidates
+high,4415c89c-2f2b-487f-910c-4626ffea6f76,Besiol Bereha Indanqer Wedqen,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,44fc2baf-1c89-421c-b2d4-45e69cc32bbe,Anchin Keneljish Bekbir Tertew,not_reviewed,,virgin-mary,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,45eea14b-816a-57e2-b2a8-6bbc129e5d8e,ያዕቆብ ከቤርሳቤ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4658f6e0-3b86-4bba-8f3e-ed1e8dd2e250,Aynenm Feweskeny Zare Mayet Chalkuny,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,47143518-5bdf-45ce-b1d6-d79aed04bd7c,Letelat Kindu Birtu Hayal New,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,471c3dd1-9c11-4d8a-9136-d05150d4e269,Neger Hulu Beirsu Tekenawene,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,471d2e79-c967-430b-b57f-4f5dea750015,Ityopya Bahil Qwanqwash Yemiyakorash,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,474da28c-b8b5-520e-b7a6-ef19a68b01cb,ዝናውን ሰምቼ ፈለኩት,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,483f5842-a6bf-440a-ae8d-fc7a50c86ed0,Lezih Idil Tezegaju,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,492d5633-8adf-5d4a-8c9d-98a1e2ce4b9a,ምስጋና በመቅደስህ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4b474c68-6394-4ddf-911c-abbc55f4c890,Bezih Bicha Aybeqam Tergwami Yashawal,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4b77b09b-b777-4570-b3e4-6dac082fb54f,Zarem Beinya Lay Tsegawn Yafsis,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4c20f8ef-dbce-569c-b91e-af8825f06666,አለ ለኔ,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4c620e23-cc2a-49f1-81c2-78e30b65ca8d,Beshbisheba Leamlakish Zemrilet,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4c6df5a1-42ed-4932-9324-f51f348811a6,Werdo Kelelachew Demena Tseada,not_reviewed,,angels,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4d3164d2-1c81-4f58-9016-a3980e026172,Lemnuln Tsadqan Semaitat,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4e669f15-5454-4d6e-8af8-251a061fdca5,Libe Tegeny Zimare,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4f570c68-39da-47f8-97a7-44783fb93375,Getachin Siweled Bebetelhem,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4f8a71c3-ec79-547d-8610-c1a8e69b273b,ኢየሀድጋ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,4f9d9a93-50ed-44b5-82ae-81ffea429bfa,Inamesginash Yeamlak Inat Bezmare,not_reviewed,,jesus-christ,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
+high,504be6a3-04eb-4d44-b6a1-496327c56a27,Dingil Gwajoachewn Qedsesh,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,513ad7e4-7a1d-4489-b6d0-f84dcbf5ba77,Wesenper Webekerkedin Beinqu Wesenper,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5143702b-97c4-414b-925d-c95580674a19,Selam Ileki,not_reviewed,,praise-worship,low,Local model proposal requires review: short_lyrics
+high,5148241f-bc96-46d0-a72c-8d4cf2072e7c,Tewahdo Haymanot,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,517006e3-ef94-4b8d-b0fd-581abbb3f049,Libezarew Timqetu,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,517aedfe-2539-5ac5-b17f-ae5d91d550a1,ምስክርነቱን ገለጸ,not_reviewed,,saints,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5233ba26-c349-4fb9-8ac3-c6b389795d56,Abet Mekerash Abet Sidetish,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,536a8be9-9be0-460e-9f77-da7caa18beec,Kirsitos Liyo New Wederm Yelew,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,566b803c-bcd6-588d-9d2d-c2a746f94296,ፍቅርና ሰላምን,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,56a049c2-b286-4fd0-81ef-3c2477a3d96f,Ahilifkayen,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5704c9a3-4910-5e2b-8a85-18e782eda13f,የወደደኝ ጌታ,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5706dab4-5682-44d9-bb16-0eca6402e241,Fiqir Sihabo,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5739636a-42db-4103-ac69-7b1f7560ab9d,Yetaot Misil Kemishetbet,not_reviewed,,repentance,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,575e10ae-728b-5f9f-a8ca-94fab65e2e40,ተዋህዶ,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,57f80fed-20e6-45c4-b348-e93e378cfc7f,Astarqiny Gefche Wetche,not_reviewed,,,low,Local model proposal requires review: model_uncertain
+high,582296a4-bed1-4d19-bb64-7090549ea7ea,Kekbir Belay Kibrih Genene,not_reviewed,,jesus-christ,low,Local model proposal requires review: short_lyrics|category_not_supported_by_alias_candidates
+high,584d1e92-d567-4590-8c96-a0efcfa43334,Hawaryat Semtew Zena Tinsaewn Alachew,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,58c4e100-dde1-5b64-b8ce-0dea1740032b,እጹብ ድንቅ ነው,not_reviewed,,jesus-christ,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,59d38078-c437-4117-8f3e-009c2e25e3b2,Bilo Neber Irsu Yemisemaw Tefa,not_reviewed,,,low,Local model proposal requires review: short_lyrics|model_uncertain
+high,5a3275c6-c51d-46ee-adc2-2fc65c0dbb72,Irsu Gin Tadegeny Anetsany Befqir,not_reviewed,,salvation,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5a4d2059-03b1-422e-bdc5-85eb03898aac,Qidus Fetariyen Anten Tamlikih,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5a52d6d1-a836-4b96-bb4f-27dc204a3b2c,Selam Latu Selam Fiqrin Latu Fiqrin,not_reviewed,,general,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5a9224c2-80b9-506d-8d6a-6ff234d1cf8d,ምህረት ከአምላክህ,not_reviewed,,general,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5c1ed669-e6e7-5693-be44-777764812c51,በዕምነታቸው,not_reviewed,,saints,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5d4320bc-db70-4e2c-abff-b9451fcba789,Birhan Yelebesew,not_reviewed,,holy-trinity,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5dacba86-e424-4ac2-adb6-b1775f051fc2,Sheantimus Niberu Hagere Iyerusalem,not_reviewed,,prayer,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
+high,5e0e98a6-dd77-4287-82c5-b31272b4b1d0,Keanchi Betegenyew Bemelkamu Fire,not_reviewed,,praise-worship,medium,Local model proposal requires review: category_not_supported_by_alias_candidates
 medium,06cf8288-71ef-4278-a33d-bef09ccb49ec,Lib Yemiyasbewn Kemasebu Befit,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,06dbb68c-697c-48aa-87cb-2c27f1b43ec8,Tewahdo Nitshit Qidsit Imnetachin,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,075a4be1-2690-4780-8e9c-dc2044541ec6,Ande Surafel Besemay Siyatin,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,07d94ebf-ebe0-424a-bc26-f1aaa1dea93d,Yemushraw Hiywet Melkam Indihon,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,07e54ff5-ad32-48ce-abfc-6579946a7afc,Tolo Yidersilnal Fitune Redet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,080ac6a6-c1a8-44e6-ac4b-b37faa70421d,Metsa Merawi,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,08e8432f-b0a6-441c-a7ed-a59decadd478,Iyemesekere Yeljun Getnet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,08f82973-ed8d-4da9-9f48-2851af5b9984,Igziabher Hoy Yibza Mihretih,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,093b5eff-7ffd-5812-90e5-2cc21d3fc86f,ንጽሕተ ንጹሓን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0973486d-c62c-440b-aac8-7102bb6398f1,Amlak Hoy Misgana Leante Yigebahal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,09c14161-d87d-4fa6-9c77-ebb23162ed0e,Yadanenyn Awqewalehu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0a06de3b-b4d3-45ca-a2e7-df35af95d0ea,Dingil Hoy Hul Gize Ayleyen Miljashe :,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0a209f11-e10d-4c2c-9120-ccd6c6e86fc2,Kehatiat Idif Nitsuh Mehonyaye,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0ade8440-9e8a-5266-96b9-ebe6692037af,ሃሌ ሃሌ ሉያ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0b465fd8-6a6d-5b39-98fb-37cd50441d8f,የኪዳን ፅላት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0b590f91-f853-53df-b9dc-b8c8d821b972,አምሀኆሙ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0b6dc751-699e-5269-ad25-b99eb6e31292,እመ ብርሃን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0bb2518b-44b8-4c96-b1e7-b6657d1dc49a,Kotalala,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,0ade8440-9e8a-5266-96b9-ebe6692037af,ሃሌ ሃሌ ሉያ,not_reviewed,,praise-worship,medium,Unresolved category; full lyrics not yet reviewed.
+medium,0b465fd8-6a6d-5b39-98fb-37cd50441d8f,የኪዳን ፅላት,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
 medium,0c1b4c58-a388-536e-8659-f7369953dae9,የአፎሚያ ረዳት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0c31829f-97eb-413b-9158-620960545de1,Wedaje Hoy,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0c6572fa-dad7-525e-96da-c4f9463928cc,ለእኔስ ወደ እግዚአብሔር,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0c89956c-1ac8-5458-bb66-3afbea9f6a83,ሁለቱም አንድ ሆኑ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0ca168fa-7447-402c-b049-e1955697ccc7,Wetbelo Yikweneni,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0ca5c34d-b772-4436-9e9b-3c363f830489,Amlake Sileyeny Yisemanyal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0d5335e2-cade-43c1-9df6-e10212c248e1,Yeiyareko Qitir Yemaydeferew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0d825ee0-60dd-4e04-852c-6cb2475534a0,Wede Hiywet Menged,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0d9de38a-e94b-5546-be93-4850ff9e7b43,እስመ ለዓለም,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0da42b71-948b-5935-b9a7-17f63134d60a,ድንግል እመቤቴ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0e4cfff9-7902-46cd-96dc-ebb835c18158,Timetalech Beiwnet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0e85e47f-bec6-4f01-89d0-ea16435eff60,Nolawi Tiguh Zeitnewm,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0ebcc7d0-b607-5c02-92f8-4b6c00c5166a,ሁላችን እንጸልይ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0ec2a383-e400-5d22-ba95-e2d3780765af,አበባየሆሽ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0f262a91-a728-4015-8e79-c0efa78e4c96,Hiywet Mot Dihnet Menorachewn Bamnim,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0f30d4dc-0fc9-4e51-b2ba-07efb1b2a602,Kirubel Menberun Yemishekemulet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0f6c55f7-96db-4844-ab20-c1d3627a2cdf,Adebabay Qome,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,0f9972b5-bfe5-42e0-82d3-84095c9ff78b,Geta Beyohans Asey Isey,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,10799504-53a5-41aa-af5e-88e44d2230a5,Fidan Teqebele Lesew Lijoch Dihnet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,10829852-f61c-4533-8f62-b7106cb34b7f,Mehari Yiqir Bay Mihretih Yigobnyeny,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,10c5ec52-c272-45a4-9b5e-173604f7efcd,Abel Semereab,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1139ed7f-9cf5-44fa-937d-9caf7a7e34b6,Litatbeny Demh Fesese,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,114a053c-14e8-46aa-bdc0-b14dfc7843f8,Destawn Ayto Amlak Fitsum Tedestwal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,119cb758-721e-4c91-bff2-d6db28a06c22,Wetsa Wegeba,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,11f51db0-0640-47d3-966a-4aea7c5e5b29,Siganm Nesto Keinatachin,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,124485ae-5184-411f-af9c-9b528de19d9c,Zemenatin Bezemenat Yaferarqal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,12768990-c3ff-4b7d-828d-f457af83b72d,Yefetariwn Sim Bekentu Yemaytera,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1340bc9a-857a-57b5-aa85-5def757cde20,በመከራ ጽና,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,13568093-cdf7-5122-adbe-3ee85c2c7cfa,ፈተና ወጀብ ቢበዛ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1357b17d-4b7a-5da3-adba-1a146dce05e3,ድንቅ ነው በጣም,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,137f79d5-7460-5821-af60-c6cdd389246c,የይሁዳ ጉዞ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,13e3b0b2-be1e-47b3-887b-df00e51bf20b,Setoch Tinsaehin Defrew Tenageru,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1408592d-1176-59d3-9060-30d5c3458d75,የጽድቅ በር ነሽ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1493ae32-65c3-464b-b3d1-49c1df336ba1,Zintu Kulu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,14f763a4-9dcb-5205-a770-55d4c85ad8e8,ንጽሕት ድንግል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1517e962-ad1b-406b-82cd-111919116057,Wendim Wendimun Iyekesese Lefrid Aqumo,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1594bbe2-634e-5963-9587-d321d2c65fa6,ነብዩ ዳንኤል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,15bf1c7c-4e33-4551-b2d3-074b71cbceec,Keadam And Atnit Kegwanu Wesdeh,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,15e0223b-3673-4b5b-b1dd-2ec062465d41,Sobe Metsa,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,15f850dd-3155-4559-832b-6706717efcd3,Liyu Kibir,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,166162f2-2878-44b6-81f6-cbff9578160d,Iske Meche New,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,16685c01-41f9-5720-b665-55a5821b80c8,የብርሃን ጎርፍ ናት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,16c7267a-2991-4e3e-af3a-2c812b8dc295,Metsa Qal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,17531a54-4ff8-556e-a2aa-6d6d130b3729,ማርያም ማርያም ብዬ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,17b7bad3-9f4c-599a-8442-65fa21012bec,አልፋና ኦሜጋ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,182eacc2-335a-4b09-8127-bb204cb93444,Nolawi Tiguh Zeitnewm,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,185a4db1-d82e-4793-a217-af0deefce22a,Zike Witu Mikael Hibsite Mena Zeawredke,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,185f2420-0ae3-4dda-863a-85bd692bf885,Itsesabeq,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,193b7641-cd32-5ea6-9c61-b730d2b338bf,መሐረኒ ድንግል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,19a728fa-490e-569e-9604-8dd9cd66f4d5,የእቲሳ አንበሳ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,19af43d4-1f4e-4734-add1-d8a5c24b78d2,Kewegene Gara Izemralehuny,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1a7fd09a-1a10-4870-9488-f4cb748c6d67,Andenefsih Argeh Inditwedat,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1b762f56-4e0c-4cd7-ae9a-131c3c26096e,Kinefe Rigib,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1c6fa25a-10f4-48c1-bd13-f26411d5073e,Yealem Medhanit -----------:,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1c8f5de5-6097-4524-952d-8e454b46cc35,Yesew Lij Defaru Amlak Yelem Ale,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1c912264-51cc-432a-8efe-443af6ab7769,Sibhat Leab Leahaze Kulu Alem,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1cf7209a-a70a-432d-8394-c044e294ef62,Yeadam Lij Ketbiya Wede Neberebet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1d3c6d2d-c897-5d3b-af2a-4c92c2c198ac,በወንጌሉ ያመናችሁ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1dcc6cc8-3ed0-5f47-b116-bf5aed896f44,ናና አማኑኤል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1df489ac-01ff-584a-9a8a-f861a2003062,ተስፋችን ነህ አንተ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1eeb808d-24a2-52da-bcd8-c85cf810c366,በጎል በጎል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,0da42b71-948b-5935-b9a7-17f63134d60a,ድንግል እመቤቴ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,0ec2a383-e400-5d22-ba95-e2d3780765af,አበባየሆሽ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,1357b17d-4b7a-5da3-adba-1a146dce05e3,ድንቅ ነው በጣም,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,1408592d-1176-59d3-9060-30d5c3458d75,የጽድቅ በር ነሽ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,1493ae32-65c3-464b-b3d1-49c1df336ba1,Zintu Kulu,not_reviewed,,praise-worship,medium,Unresolved category; full lyrics not yet reviewed.
+medium,14f763a4-9dcb-5205-a770-55d4c85ad8e8,ንጽሕት ድንግል,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,1594bbe2-634e-5963-9587-d321d2c65fa6,ነብዩ ዳንኤል,not_reviewed,,prophets,high,Unresolved category; full lyrics not yet reviewed.
+medium,15f850dd-3155-4559-832b-6706717efcd3,Liyu Kibir,not_reviewed,,angels,high,Unresolved category; full lyrics not yet reviewed.
+medium,16685c01-41f9-5720-b665-55a5821b80c8,የብርሃን ጎርፍ ናት,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,17531a54-4ff8-556e-a2aa-6d6d130b3729,ማርያም ማርያም ብዬ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,17b7bad3-9f4c-599a-8442-65fa21012bec,አልፋና ኦሜጋ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,193b7641-cd32-5ea6-9c61-b730d2b338bf,መሐረኒ ድንግል,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,1dcc6cc8-3ed0-5f47-b116-bf5aed896f44,ናና አማኑኤል,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,1eeb808d-24a2-52da-bcd8-c85cf810c366,በጎል በጎል,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
 medium,1f38f9a7-d88b-4f8e-8a08-ce3fe6b51c60,Yante Lihun,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,1f4bc974-3477-4f6e-81be-d1b7dd69c5c4,Tenageru,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,1fa96cb7-62ec-5feb-ba8d-6f912ff58565,የዓለም በደል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,1fd7ebe5-7876-44bd-b655-bc6ee11681ee,And Imnet New Tsinu Haymanot New,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,204e46a6-c75d-4061-9234-30bb3ce1b87c,Betsom Besubae Tinoralech Tatqa,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2051db76-6f07-525d-82c0-94ec6a92fb7d,እመቤቴ የአምላክ እናት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,20662bb4-3927-57d8-a3b4-8ad7f5145c2b,ይለመነናል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,21d2dc81-889d-4b26-b61c-73d536fa0aad,Yeqdusan Beat Yetselot Washachew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,21dac194-cea5-4042-a619-5c973f9edf37,Zelealem Yinoral Tekle Haymanot,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,222bcb28-723f-5c0d-b8d6-64d2a7ca186f,አሰርገዋ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,228bb09e-5e6a-5dfa-9600-dc61dc3d26aa,ድንግል ፈጣሪዋን ወለደችው,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,22be4292-3458-543e-ac5c-fbb38dee5336,ቤተ ክርስቲያን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,22e5c191-377f-5da9-b4b2-2058905e8e12,ይዌድስዋ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,22edbd76-fc0e-4801-adad-9974854194c3,Kule Kentu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,23c75536-21c0-5428-b137-4af09edbb303,ተልሄም ተወልደ አማኑኤል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,23ff6f9e-7761-57c7-8a5c-73aeaf6f824e,የስላሴን መንበር,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,24588249-2def-5d3f-a506-0408cd720a2e,አማላጅ ነው,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,24a109d4-03b5-5d7b-ab20-0e84d5a35183,ጠላቴን ጌታዬ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,24c05164-5db5-5982-bac3-a5f0024a296b,ኢትዮጵያ ሆይ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,25564ca7-5621-596d-b692-565780e532e9,ከወገኔ ጋር,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,25de90cd-5b28-459d-93dd-741ee981f74d,Libachin Legeta Melkam Menged Yihun,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2637c0c4-20ef-4178-bc68-0086ad4dc8ff,Beandinet Honew Iyerusalem,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,2051db76-6f07-525d-82c0-94ec6a92fb7d,እመቤቴ የአምላክ እናት,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,20662bb4-3927-57d8-a3b4-8ad7f5145c2b,ይለመነናል,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,222bcb28-723f-5c0d-b8d6-64d2a7ca186f,አሰርገዋ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,228bb09e-5e6a-5dfa-9600-dc61dc3d26aa,ድንግል ፈጣሪዋን ወለደችው,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,22e5c191-377f-5da9-b4b2-2058905e8e12,ይዌድስዋ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,24588249-2def-5d3f-a506-0408cd720a2e,አማላጅ ነው,not_reviewed,,kidus-michael,high,Unresolved category; full lyrics not yet reviewed.
+medium,25564ca7-5621-596d-b692-565780e532e9,ከወገኔ ጋር,not_reviewed,,praise-worship,high,Unresolved category; full lyrics not yet reviewed.
 medium,269adec2-62c6-5857-9fda-9a7a1af6f23c,በሠላሳ ክረምት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,271f5a99-51f0-454e-8b7c-82664406a679,Yalante Kibir Yelenym,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,272a06cf-7587-4c5e-ae28-fb65fc0768bc,Itti hin leeyya'u Angafa Faarfattootaa Dn Firaanol Moosisaa Faarfannaa Durii,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,277de01e-321a-4c17-8d01-f1ba06254a40,Bearayaw Fetronal Hulu Beiju New::,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,27944c44-6ca3-4e23-b961-9a6d14a2c2cf,Andetenagerew Dawit Betnibitu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,280b4938-d2f6-4807-bf05-ed317b7f24a6,Iyesus Kirsitos Yiwedenal Yitebqenal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2828a01f-2b03-4e30-ae7e-a4f2bf2852ac,Misli : Nay Hibret Mezmur #,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,28d2dfc0-7142-5247-bbba-34f47fcb226e,ክርስቶስ በስምህ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,29b1ab00-d1ac-5212-8681-e3268446a526,ገብረሕይወት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,29f68acf-e765-4fab-83b5-c1a12a4ba4b7,Besemayna Bemdir Bebahrina,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2a529e4d-2963-59df-8519-f67abb30c38c,እሴብህ ጸጋኪ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2ae4409d-1c30-5098-a88a-1ff80bec8936,ሆሣዕና እምርት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2ae7ce3d-2358-4a73-9f69-76df47aa8524,Qidusan Ijochih Yefitiny Tasrew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2b54ce28-47dd-544b-b168-94f4038d7cbd,ዘምር ዘምር አለኝ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2b6bfc72-1050-4429-a59b-c1e55d4ddac9,Asme Lealem Mihretu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2b939440-491a-4220-b2b6-681e6315b3a3,Weqdisat,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2bb1d389-b0e5-40c0-a43b-fb930bb759f9,Nitsum Tsome Wenafqir Bitsene Wentifaqer Bebeynatine,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2bc7782c-9b81-4ac8-84eb-6d8ec5f665e8,Imun Iha,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2c0aa1af-6a23-449d-af8e-884eb04c1e05,Menfes Qidus,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2c5211d0-c6b5-5467-a5e9-92896d58edcb,አዳነኝ ጌታ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2c5cadb7-146d-4a45-9ed9-533f5df0623e,Leserahew Tayat Ansegdim Iyalu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2c61f555-39e5-4d7b-b228-1be595fffaf2,Inze Iyemr,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2cc4f8f6-2a5e-5f47-b3b8-f9707cde1960,ውእቱ ሚካኤል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2cd6f771-3d84-49cc-9867-31878fa38f59,Afer Birebereb Satin Bidereder,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2d4b7b66-28a4-4971-a734-2f11b22054a6,Wihaw Telewto Yeweyn Tej Sihon,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2dfa3d00-8e86-59aa-bdee-818a475b7ccf,የፍቅር እናት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2e699554-dbbe-481f-9654-0442a06af49e,Tegerfo Teseqlo Yemotew Anbesa,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2e9c3002-4a49-4357-9fef-86bf67bf8d46,Moche Silemalqer,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2ebcbe7c-3387-4c97-961a-dab660f7b2c0,Minm Satbedil,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2f3654b3-1e13-58ca-bac1-dea11c206bac,ጽርሐ አርያም,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2f5a7322-16d0-5772-b86e-fc39aa58fc8f,ትህትናሽ ግሩም,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2f9e6062-442c-5b0f-a2e1-98b39b9fc5d9,ያሬድ ካህኑ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,2fa13cd3-0178-4d2e-ac5f-07409aa45d25,Yomse,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,305bbdd1-a041-5c08-ade0-d68b0fa88e74,ስምህ በሁሉ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,30a7941a-99cc-598f-b85d-e166b977f90f,አውደ ዓመት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,30b0ab08-0d77-5fcc-9b47-95b3a4b6e26a,ሰባኪ ወንጌል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,27944c44-6ca3-4e23-b961-9a6d14a2c2cf,Andetenagerew Dawit Betnibitu,not_reviewed,,holy-spirit,high,Unresolved category; full lyrics not yet reviewed.
+medium,28d2dfc0-7142-5247-bbba-34f47fcb226e,ክርስቶስ በስምህ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,2a529e4d-2963-59df-8519-f67abb30c38c,እሴብህ ጸጋኪ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,2b54ce28-47dd-544b-b168-94f4038d7cbd,ዘምር ዘምር አለኝ,not_reviewed,,praise-worship,medium,Unresolved category; full lyrics not yet reviewed.
+medium,2b939440-491a-4220-b2b6-681e6315b3a3,Weqdisat,not_reviewed,,holy-spirit,high,Unresolved category; full lyrics not yet reviewed.
+medium,2c0aa1af-6a23-449d-af8e-884eb04c1e05,Menfes Qidus,not_reviewed,,holy-spirit,high,Unresolved category; full lyrics not yet reviewed.
+medium,2cc4f8f6-2a5e-5f47-b3b8-f9707cde1960,ውእቱ ሚካኤል,not_reviewed,,kidus-michael,high,Unresolved category; full lyrics not yet reviewed.
+medium,2dfa3d00-8e86-59aa-bdee-818a475b7ccf,የፍቅር እናት,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,2f3654b3-1e13-58ca-bac1-dea11c206bac,ጽርሐ አርያም,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,2f5a7322-16d0-5772-b86e-fc39aa58fc8f,ትህትናሽ ግሩም,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,2f9e6062-442c-5b0f-a2e1-98b39b9fc5d9,ያሬድ ካህኑ,not_reviewed,,kidus-yared,high,Unresolved category; full lyrics not yet reviewed.
+medium,305bbdd1-a041-5c08-ade0-d68b0fa88e74,ስምህ በሁሉ,not_reviewed,,praise-worship,high,Unresolved category; full lyrics not yet reviewed.
+medium,30a7941a-99cc-598f-b85d-e166b977f90f,አውደ ዓመት,not_reviewed,,virgin-mary,medium,Unresolved category; full lyrics not yet reviewed.
+medium,30b0ab08-0d77-5fcc-9b47-95b3a4b6e26a,ሰባኪ ወንጌል,not_reviewed,,kidus-yared,high,Unresolved category; full lyrics not yet reviewed.
 medium,316a2253-872a-57d0-bc2c-e276d3eb1893,ይላል አንደበቴ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,31b6c0de-894a-4862-ac2d-aea89268748b,Itsub Bereket Setesh,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,31b857eb-c608-4e03-9a07-e1bab789c1b0,Habe Abuhu Arge Semayat Arge Semayat,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,325d4be8-394a-5774-a3bd-2be21daf81f3,መቼ ነው ጌታ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3283ff20-e3e9-55e6-8503-9e4a1f5765dd,የማያልፍ የለም,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,328dccc9-10a4-4763-9321-cd89de78d75b,Beyedeqiqaw Hatiat Sisera,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,32a6ce76-e69f-5f57-9c87-204fe4b92bb7,ኢትዮጵያ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3305feeb-3f78-5da8-a410-71932e0af69e,ጥሪህም ድንቅ ነው,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,332f24de-6535-4ee1-8f4d-0825e645d833,Ainbey Nez Aimru,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,334ca354-3b3d-5f3f-990e-ed11c3ece3e8,ውለታሽ አለብኝ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,33958be2-871a-5cca-be02-5c7392da14a4,ገድሉ ታምራቱ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,33c6e1d1-6cf2-4eb8-83bc-c630bd0ec40f,Yehatiat Guzo Tafach Bimeslim,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,341fa6a2-ef2d-591e-9de5-9101e14f9833,ግነዩ ለእግዚአብሔር,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,348cedaa-daba-552c-90fa-af379ddaf092,ቸርነትህ ነው,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,34c042ac-b2f5-4517-a5dc-2b148454ec94,Besemayni Webemdirni Webebahrini Webekulu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,34d00776-08e1-5730-939c-925c98785973,በገና አንስተን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,353de3c4-3107-4ecd-9def-e7c897c9ef16,Sew Hulu Kemiwedat,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,356ac3e4-2393-4b05-9d35-2d1241148d21,Yelbachin Desta Indinalen,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,368a7b62-51a5-59ad-92dc-c83132192cdd,መንክረ ግርማ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,36c12b24-e179-4de5-81f6-eb6ced5257c4,Ketfat Tebqo Agannitnim Yiwagal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,36cbdccc-38c1-4976-a236-a1bc03ae67e8,Amlak Hoy Misgana Leante Yigebahal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,325d4be8-394a-5774-a3bd-2be21daf81f3,መቼ ነው ጌታ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,334ca354-3b3d-5f3f-990e-ed11c3ece3e8,ውለታሽ አለብኝ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,33958be2-871a-5cca-be02-5c7392da14a4,ገድሉ ታምራቱ,not_reviewed,,abune-tekle-haymanot,high,Unresolved category; full lyrics not yet reviewed.
+medium,341fa6a2-ef2d-591e-9de5-9101e14f9833,ግነዩ ለእግዚአብሔር,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,353de3c4-3107-4ecd-9def-e7c897c9ef16,Sew Hulu Kemiwedat,not_reviewed,,praise-worship,high,Unresolved category; full lyrics not yet reviewed.
+medium,368a7b62-51a5-59ad-92dc-c83132192cdd,መንክረ ግርማ,not_reviewed,,angels,high,Unresolved category; full lyrics not yet reviewed.
 medium,37d5d59b-ed60-56ec-871b-8b506dd4403d,ኃያሉ ሚካኤል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,383493f8-5a1f-5771-bcd0-bb83ceb72d54,በዘባነ ኪሩብ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,38a97c8b-6379-5c70-a902-480c82740d62,የመስቀሉ ሃይል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,38aa9269-e54d-51d6-a193-5a5d4c99bcce,ዓለምን ዞሬ አየሁት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,38dda236-30ba-5ea1-8367-6e210b6abfa8,ኪዳነ ምህረት እመቤት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,39f9171e-7f70-4379-87dd-fabc982f4f07,Hizbu Tesbisbo Bebete Kirsitiyan,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3a0ee570-f144-5cc4-a989-6e6c76ffb6a7,አጅቡት በእልልታ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3a1def54-82c6-4036-85c7-6ce542ab8fd1,Beqana Zegelila Qu.1,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3a3ef8d6-7455-551e-bbe6-d5973899b9d7,አለቴ ነህ አንባዬ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3aa79379-e4f2-485b-bd92-3c9433054416,You Are Without Fault,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3b551c6a-a512-5d80-8a66-f8511e49270f,ሰዎች ፈረዱብኝ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3c0ed99b-d92c-5f5b-8835-f7d1d2a55e6a,እግዚአብሔር ሆይ እወድሃለሁ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3c6b8839-07e9-440f-9242-0483ccb1ac2d,Yeiyesusin Himam Denaglim Aytew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3cada034-d804-4502-a97a-444b6eb83943,Bebereket Kindu Atbiqo Yeyazen Liyu New,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3cd7eb85-9ec0-5c59-87df-e06242d98345,ኦ ክርስቶስ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3d6ffb9a-55f7-45a0-883d-55b5ae4086dc,Teklehaymanotin Tsadqun Yaferut,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3dd0a803-874e-481f-8e67-afe978d6b639,Tiqit Neger Yizhe,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3e29b523-ac04-497b-aea4-0592ec246911,Hosaina Belu Hosaina,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3e402df6-30ef-5944-b7b0-07b8ed584227,ተዋሕዶ ሀይማኖቴ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3e9543c6-1512-415f-96e2-0d32c5076ce2,Filseta Sijemer Qal Kidan Gebtalech,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3ea3c37d-84aa-5bcf-a0dc-0dfd6c38df2d,እመብርሃን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3f4cb06c-67d2-5259-b7fb-cf2f09f1cdff,ያላንተ ጌታ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3f77af58-313c-575d-88e6-cead97a1579e,የኛ ነው,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,3f9a3ff5-2b64-584b-8276-e83028b58244,አማላጄ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,38a97c8b-6379-5c70-a902-480c82740d62,የመስቀሉ ሃይል,not_reviewed,,cross,high,Unresolved category; full lyrics not yet reviewed.
+medium,38dda236-30ba-5ea1-8367-6e210b6abfa8,ኪዳነ ምህረት እመቤት,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,3b551c6a-a512-5d80-8a66-f8511e49270f,ሰዎች ፈረዱብኝ,not_reviewed,,salvation,high,Unresolved category; full lyrics not yet reviewed.
+medium,3cd7eb85-9ec0-5c59-87df-e06242d98345,ኦ ክርስቶስ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,3ea3c37d-84aa-5bcf-a0dc-0dfd6c38df2d,እመብርሃን,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,3f4cb06c-67d2-5259-b7fb-cf2f09f1cdff,ያላንተ ጌታ,not_reviewed,,praise-worship,high,Unresolved category; full lyrics not yet reviewed.
+medium,3f77af58-313c-575d-88e6-cead97a1579e,የኛ ነው,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,3f9a3ff5-2b64-584b-8276-e83028b58244,አማላጄ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
 medium,3fb06423-d325-44f9-84da-0ef99d699543,Zewetir Tewat Mata,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,3fbb3167-f602-4f7d-a43a-afdc59628692,Igziabher Yimesgen,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4007da3d-ad59-54bc-8fa4-db89ba898e9b,ቤተ ክርስቲያንን አንተውም,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,40098eed-f414-49fe-95a2-7b1a1af809c0,[kem Fiqadu ],not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4011cfbe-ce47-5e1d-9c9d-3fa6781e5104,የሰላምታሽን ድምፅ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4061b73c-0480-5934-bf22-c9c5b68cc621,በሀዘኔ ደራሽ ነሽ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,40789299-9b48-5c8e-8d6c-b33084d17a1a,ሞገድ ሲገፋኝ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,40cec4ab-de2c-4775-8142-f950e6d3e2f9,Keherodis Wede Pelatos,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,41da10ce-19d9-48c2-a317-e6b757f7eb2b,Semaitat Yezihchin Alem Taim Beiwnet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4245bc19-f7cd-51e9-829e-6a439ded109d,ነዋ ሚካኤል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,42530ba8-cdb3-569b-b431-14f3b90e454d,እግዚአብሔር ሆይ እርዳኝ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,42ac1ab8-b0b2-5e25-a7a6-285ffbb3fc6b,እንዘ ተሀቅፊዮ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,4011cfbe-ce47-5e1d-9c9d-3fa6781e5104,የሰላምታሽን ድምፅ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,4061b73c-0480-5934-bf22-c9c5b68cc621,በሀዘኔ ደራሽ ነሽ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,4245bc19-f7cd-51e9-829e-6a439ded109d,ነዋ ሚካኤል,not_reviewed,,kidus-michael,high,Unresolved category; full lyrics not yet reviewed.
 medium,42ce0eea-f884-483d-9bbf-1283b10a950b,Werede Weld,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,43395089-7481-4b2c-8d35-1e7082d60fbe,Aytenal Inji Letelatochu Mihret Silemn,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,438cc576-12d2-47db-b46c-6b1016c95a85,Keinya Gar Yalew Hayl New,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,43b7c8cb-e495-5541-a9c6-b6e50238b177,መጠጊያዬ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4415c89c-2f2b-487f-910c-4626ffea6f76,Besiol Bereha Indanqer Wedqen,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4474d277-68f7-5a8b-aaaa-0c4a5cc567d2,ወደ ቀድሞ ነገር,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,44d5d42e-bf40-5c91-8192-261732275faa,እርግብየ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,44fc2baf-1c89-421c-b2d4-45e69cc32bbe,Anchin Keneljish Bekbir Tertew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,450902fb-8c49-56ec-bcf3-9e77a9dd1599,ያዳነኝን አውቀዋለሁ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,451a1d33-f1c9-5074-86dc-6b2016a3c854,እመቤቴ ማርያም,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,45eea14b-816a-57e2-b2a8-6bbc129e5d8e,ያዕቆብ ከቤርሳቤ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4658f6e0-3b86-4bba-8f3e-ed1e8dd2e250,Aynenm Feweskeny Zare Mayet Chalkuny,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,468c849e-1c7b-5373-8e6a-a64655ad1324,የቃናው ደስታ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,47143518-5bdf-45ce-b1d6-d79aed04bd7c,Letelat Kindu Birtu Hayal New,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,471c3dd1-9c11-4d8a-9136-d05150d4e269,Neger Hulu Beirsu Tekenawene,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,471d2e79-c967-430b-b57f-4f5dea750015,Ityopya Bahil Qwanqwash Yemiyakorash,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,474da28c-b8b5-520e-b7a6-ef19a68b01cb,ዝናውን ሰምቼ ፈለኩት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,483f5842-a6bf-440a-ae8d-fc7a50c86ed0,Lezih Idil Tezegaju,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,492d5633-8adf-5d4a-8c9d-98a1e2ce4b9a,ምስጋና በመቅደስህ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4a5f0629-af01-5f8a-9ff1-ac35f7817ee1,ደስ ይበልሽ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4ac0c7ae-d32b-5e20-884a-ec1212c29164,ገብርኤል ሀያል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4b2aa134-4923-5f77-8143-de2e479d1602,ወረደ ወልድ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4b474c68-6394-4ddf-911c-abbc55f4c890,Bezih Bicha Aybeqam Tergwami Yashawal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4b77b09b-b777-4570-b3e4-6dac082fb54f,Zarem Beinya Lay Tsegawn Yafsis,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4b785112-4509-5fec-a7b8-8ba5056ac156,እንድናለን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4c20f8ef-dbce-569c-b91e-af8825f06666,አለ ለኔ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4c620e23-cc2a-49f1-81c2-78e30b65ca8d,Beshbisheba Leamlakish Zemrilet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4c6df5a1-42ed-4932-9324-f51f348811a6,Werdo Kelelachew Demena Tseada,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4cd5e5ff-db22-4ca5-ac5c-8fa2b3bac9f2,Bahir Techeneqech Sheshechim Befrihat,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,43b7c8cb-e495-5541-a9c6-b6e50238b177,መጠጊያዬ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,4474d277-68f7-5a8b-aaaa-0c4a5cc567d2,ወደ ቀድሞ ነገር,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,44d5d42e-bf40-5c91-8192-261732275faa,እርግብየ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,450902fb-8c49-56ec-bcf3-9e77a9dd1599,ያዳነኝን አውቀዋለሁ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,451a1d33-f1c9-5074-86dc-6b2016a3c854,እመቤቴ ማርያም,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,468c849e-1c7b-5373-8e6a-a64655ad1324,የቃናው ደስታ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,4a5f0629-af01-5f8a-9ff1-ac35f7817ee1,ደስ ይበልሽ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,4ac0c7ae-d32b-5e20-884a-ec1212c29164,ገብርኤል ሀያል,not_reviewed,,kidus-gabriel,high,Unresolved category; full lyrics not yet reviewed.
+medium,4b2aa134-4923-5f77-8143-de2e479d1602,ወረደ ወልድ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,4b785112-4509-5fec-a7b8-8ba5056ac156,እንድናለን,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,4cd5e5ff-db22-4ca5-ac5c-8fa2b3bac9f2,Bahir Techeneqech Sheshechim Befrihat,not_reviewed,,holy-spirit,high,Unresolved category; full lyrics not yet reviewed.
 medium,4d2e7b1b-f93d-54f6-b5b2-bd70d7616e67,እሠይ እልል በሉ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4d3164d2-1c81-4f58-9016-a3980e026172,Lemnuln Tsadqan Semaitat,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,4d34ebec-576a-4821-9eda-40b0e8e3b9a6,Azanytwa Maryam Beterahush Gize,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4e1337a5-9c6d-52d4-a360-17fc21a51b4f,ቃና ዘገሊላ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4e669f15-5454-4d6e-8af8-251a061fdca5,Libe Tegeny Zimare,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4f570c68-39da-47f8-97a7-44783fb93375,Getachin Siweled Bebetelhem,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4f8a71c3-ec79-547d-8610-c1a8e69b273b,ኢየሀድጋ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,4f9d9a93-50ed-44b5-82ae-81ffea429bfa,Inamesginash Yeamlak Inat Bezmare,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,504be6a3-04eb-4d44-b6a1-496327c56a27,Dingil Gwajoachewn Qedsesh,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,513ad7e4-7a1d-4489-b6d0-f84dcbf5ba77,Wesenper Webekerkedin Beinqu Wesenper,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5143702b-97c4-414b-925d-c95580674a19,Selam Ileki,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5148241f-bc96-46d0-a72c-8d4cf2072e7c,Tewahdo Haymanot,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,517006e3-ef94-4b8d-b0fd-581abbb3f049,Libezarew Timqetu,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,517aedfe-2539-5ac5-b17f-ae5d91d550a1,ምስክርነቱን ገለጸ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,51e7c313-9aec-57d2-ac10-4f0479f50630,የአፎሚያ እረዳት ነህ ሚካኤል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5233ba26-c349-4fb9-8ac3-c6b389795d56,Abet Mekerash Abet Sidetish,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,4e1337a5-9c6d-52d4-a360-17fc21a51b4f,ቃና ዘገሊላ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,51e7c313-9aec-57d2-ac10-4f0479f50630,የአፎሚያ እረዳት ነህ ሚካኤል,not_reviewed,,kidus-michael,high,Unresolved category; full lyrics not yet reviewed.
 medium,527e4300-7e6b-5226-b3c1-473bf5daf8f7,ነአምን በአብ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,536a8be9-9be0-460e-9f77-da7caa18beec,Kirsitos Liyo New Wederm Yelew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,536d7a0c-6a99-4c15-b8d0-68fea808e7d7,O Aba Qidus,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,53dc49db-2e80-5096-8f0a-d9120a841177,ኃያል ነህ አንተ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,5420f247-d094-5ff4-a4ab-49fc2b77556f,ተክለሐይማኖት ፀሐይ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
@@ -281,43 +300,24 @@ medium,546831c7-d974-5ed9-b886-e36942fdb5d7,ተባረኩኝ ጠራኝ ፀሎቷ,
 medium,54a53f49-9da5-5521-821d-0c3c4adeb868,ይርየኒ ዓይነሞት,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,55223e68-eecb-4e91-8442-e32a5e721db0,Beiyerusalem,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,563b8db9-3d64-55e3-a94a-f1cc0a20f742,በረከትህ ይደር,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,56431656-ee7d-57ec-9078-8e6524f74a94,እግዚአብሔር እኛን ይወደናል,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,566b803c-bcd6-588d-9d2d-c2a746f94296,ፍቅርና ሰላምን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,56431656-ee7d-57ec-9078-8e6524f74a94,እግዚአብሔር እኛን ይወደናል,not_reviewed,,kidus-raphael,high,Unresolved category; full lyrics not yet reviewed.
 medium,567c8cb5-aed9-4b22-aeb7-6a17700b4911,Bealem Tsilmet Letewatew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,56975a70-45b5-5642-9de2-eb336941e92e,ነዓ ነዓ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,56a049c2-b286-4fd0-81ef-3c2477a3d96f,Ahilifkayen,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,56975a70-45b5-5642-9de2-eb336941e92e,ነዓ ነዓ,not_reviewed,,angels,high,Unresolved category; full lyrics not yet reviewed.
 medium,56e3608d-d4db-47db-8f02-349437d20a40,Abrihi Tsiyon Tsiyon Abrihi,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5704c9a3-4910-5e2b-8a85-18e782eda13f,የወደደኝ ጌታ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5706dab4-5682-44d9-bb16-0eca6402e241,Fiqir Sihabo,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5739636a-42db-4103-ac69-7b1f7560ab9d,Yetaot Misil Kemishetbet,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,575e10ae-728b-5f9f-a8ca-94fab65e2e40,ተዋህዶ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,57d45021-6b6f-5d29-9c21-67be061cd785,የአብ ቃል አክብሮሽ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,57f80fed-20e6-45c4-b348-e93e378cfc7f,Astarqiny Gefche Wetche,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,58080661-02de-5e1f-88bd-4393cdfdad37,ደስ ይበለን እልል በሉ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,582296a4-bed1-4d19-bb64-7090549ea7ea,Kekbir Belay Kibrih Genene,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,584d1e92-d567-4590-8c96-a0efcfa43334,Hawaryat Semtew Zena Tinsaewn Alachew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,586a7164-3c60-5e3d-9fb2-52d2c3f51166,ሀይሌ ብርታቴ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,57d45021-6b6f-5d29-9c21-67be061cd785,የአብ ቃል አክብሮሽ,not_reviewed,,virgin-mary,medium,Unresolved category; full lyrics not yet reviewed.
+medium,58080661-02de-5e1f-88bd-4393cdfdad37,ደስ ይበለን እልል በሉ,not_reviewed,,cross,high,Unresolved category; full lyrics not yet reviewed.
+medium,586a7164-3c60-5e3d-9fb2-52d2c3f51166,ሀይሌ ብርታቴ,not_reviewed,,holy-trinity,high,Unresolved category; full lyrics not yet reviewed.
 medium,589d0cd8-f9c0-5e26-aeef-8caec2f8df01,በፍቅር ተስቦ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,58c4e100-dde1-5b64-b8ce-0dea1740032b,እጹብ ድንቅ ነው,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,58c61331-e2c7-5a0a-81ab-6ea2f81bf130,ባርከን ባርከን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,58d4ee0a-27d0-5d4f-857b-4af2f21d4e5c,ነዪ ነዪ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,590aeb13-9a21-5d9e-a110-0501cfcc98e6,ምስጋና ነው ስራዬ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,59d38078-c437-4117-8f3e-009c2e25e3b2,Bilo Neber Irsu Yemisemaw Tefa,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,59d4c271-c884-5cd7-ac83-3735f5df6cc3,እውነት ስለሆነ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5a3275c6-c51d-46ee-adc2-2fc65c0dbb72,Irsu Gin Tadegeny Anetsany Befqir,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5a4d2059-03b1-422e-bdc5-85eb03898aac,Qidus Fetariyen Anten Tamlikih,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5a52d6d1-a836-4b96-bb4f-27dc204a3b2c,Selam Latu Selam Fiqrin Latu Fiqrin,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5a9224c2-80b9-506d-8d6a-6ff234d1cf8d,ምህረት ከአምላክህ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5af062d6-6547-5a3d-94d4-1edf3e90d9c9,ዘጠኝ ሰዓት ሲሆን,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5b0eb487-2177-5934-94b1-9a8fb38d0e0e,አይናችን ነሽ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5b174a18-203c-56b8-97e0-8d5906cddcc0,ጌታዬ ሆነህ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5c1ed669-e6e7-5693-be44-777764812c51,በዕምነታቸው,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
+medium,58c61331-e2c7-5a0a-81ab-6ea2f81bf130,ባርከን ባርከን,not_reviewed,,holy-spirit,high,Unresolved category; full lyrics not yet reviewed.
+medium,58d4ee0a-27d0-5d4f-857b-4af2f21d4e5c,ነዪ ነዪ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,590aeb13-9a21-5d9e-a110-0501cfcc98e6,ምስጋና ነው ስራዬ,not_reviewed,,praise-worship,high,Unresolved category; full lyrics not yet reviewed.
+medium,59d4c271-c884-5cd7-ac83-3735f5df6cc3,እውነት ስለሆነ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,5af062d6-6547-5a3d-94d4-1edf3e90d9c9,ዘጠኝ ሰዓት ሲሆን,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
+medium,5b0eb487-2177-5934-94b1-9a8fb38d0e0e,አይናችን ነሽ,not_reviewed,,virgin-mary,high,Unresolved category; full lyrics not yet reviewed.
+medium,5b174a18-203c-56b8-97e0-8d5906cddcc0,ጌታዬ ሆነህ,not_reviewed,,jesus-christ,high,Unresolved category; full lyrics not yet reviewed.
 medium,5c9b1a13-6578-5035-aa94-62da2f8753fd,ዮሐንስኒ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,5ca4dbea-c0c1-5c1d-beb3-68a5cf1a3146,እኔም ትውልድ ነኝ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,5d14757d-a90a-4747-8da8-e9474f9d11a8,Hamelmalawit,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5d4320bc-db70-4e2c-abff-b9451fcba789,Birhan Yelebesew,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5dacba86-e424-4ac2-adb6-b1775f051fc2,Sheantimus Niberu Hagere Iyerusalem,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
-medium,5e0e98a6-dd77-4287-82c5-b31272b4b1d0,Keanchi Betegenyew Bemelkamu Fire,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,5e5829d5-6758-4000-b4d6-aea1166f560c,Lezih Hule Wiletah Min Yikefelzal,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,5e7c55cb-e21a-4b42-aece-9cb85524a837,Ande Gebrehyiwet Letsdiq Innesa,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.
 medium,5ed26c30-5fa6-505e-80f1-ab6ad185294b,በንጹህ ደሙ,not_reviewed,,,,Unresolved category; full lyrics not yet reviewed.

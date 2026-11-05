@@ -1,0 +1,32 @@
+{
+  "group": "f49c4a9df4de18efa37d373bf6603b4b9d1dcbad580ce1f56ca7dd8432027241",
+  "member_ids": [
+    "3f4cb06c-67d2-5259-b7fb-cf2f09f1cdff"
+  ],
+  "item": {
+    "hash": "f49c4a9df4de18efa37d373bf6603b4b9d1dcbad580ce1f56ca7dd8432027241",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ያላንተ ጌታ ደስታ መች አለ",
+      "ምስጋና ሆኖ ምግቤ መጠጤ"
+    ],
+    "reason": "The hymn is a direct address of praise to God for salvation and mercy.",
+    "competing_slugs": [
+      "salvation",
+      "prayer"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2342,
+    "eval_count": 411,
+    "total_duration_ns": 6803238800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

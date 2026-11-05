@@ -1,0 +1,29 @@
+{
+  "group": "08f7df66c69d47862f2bfc64e1087920fa8e308a2a99427970b30bbecd0bbbb5",
+  "member_ids": [
+    "14f763a4-9dcb-5205-a770-55d4c85ad8e8"
+  ],
+  "item": {
+    "hash": "08f7df66c69d47862f2bfc64e1087920fa8e308a2a99427970b30bbecd0bbbb5",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ንጽሕት ድንግል ቡሩክት",
+      "የአምላክ እናት እመቤት"
+    ],
+    "reason": "Lyrics directly address Mary as 'pure Virgin' and 'Mother of God', central to the hymn.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2493,
+    "eval_count": 597,
+    "total_duration_ns": 8943017100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "group": "4e89b8124a6bb76ef1f97ca9d351f6d22178e11e95312c1844f92b1a2eea53d2",
+  "member_ids": [
+    "4658f6e0-3b86-4bba-8f3e-ed1e8dd2e250"
+  ],
+  "item": {
+    "hash": "4e89b8124a6bb76ef1f97ca9d351f6d22178e11e95312c1844f92b1a2eea53d2",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ጌታ ሆይ ጠረኸኝ ዘኬዎስ ሆይ አልከኝ",
+      "ቤቴ አንድትገባ ፍቃድህ ሆነልኝ"
+    ],
+    "reason": "The singer directly addresses Jesus as 'Geta' (Lord) and asks for entry into his home, indicating a prayer to Christ.",
+    "competing_slugs": [
+      "prayer"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2586,
+    "eval_count": 658,
+    "total_duration_ns": 9664023400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

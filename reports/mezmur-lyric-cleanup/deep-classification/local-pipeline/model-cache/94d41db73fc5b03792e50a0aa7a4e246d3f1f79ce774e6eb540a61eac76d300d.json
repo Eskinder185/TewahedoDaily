@@ -1,0 +1,29 @@
+{
+  "group": "af91f2c5cb6f97ba5437d80eb7bc4c349490a831faa7e339a0ebf1bf6ff54a40",
+  "member_ids": [
+    "4b77b09b-b777-4570-b3e4-6dac082fb54f"
+  ],
+  "item": {
+    "hash": "af91f2c5cb6f97ba5437d80eb7bc4c349490a831faa7e339a0ebf1bf6ff54a40",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "በጥሩ ምግባር እንድንታደስ",
+      "ዛሬም በእኛ ላይ ጸጋውን ያፍስስ"
+    ],
+    "reason": "The text expresses gratitude for blessings and asks for grace, which are acts of praise and worship.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1751,
+    "eval_count": 633,
+    "total_duration_ns": 8737762900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

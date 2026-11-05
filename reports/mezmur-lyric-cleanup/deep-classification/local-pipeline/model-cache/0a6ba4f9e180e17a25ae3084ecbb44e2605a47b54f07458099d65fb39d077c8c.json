@@ -1,0 +1,31 @@
+{
+  "group": "5cebd42de8ea0e981395bafc31d9d184cb103ac3db7306e58f5e41384a30e5f1",
+  "member_ids": [
+    "093b5eff-7ffd-5812-90e5-2cc21d3fc86f"
+  ],
+  "item": {
+    "hash": "5cebd42de8ea0e981395bafc31d9d184cb103ac3db7306e58f5e41384a30e5f1",
+    "primary_slug": "martyrs",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ንጽሕተ ንጹሓን ከዊና ከመታቦር ዘደር ዘሲና",
+      "ውስተ ቤተ መቅደስ ነበረት በድንግልና ነበረት"
+    ],
+    "reason": "Text explicitly mentions 'martyrs' and references the martyrdom of Stephen at Mount Martyr.",
+    "competing_slugs": [
+      "kidus-estifanos-saint-stephen"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1113,
+    "eval_count": 658,
+    "total_duration_ns": 9135904400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

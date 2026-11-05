@@ -1,0 +1,26 @@
+{
+  "group": "9f555e4911e282424a61301696ace2f4bd86752e38b18e8490e21f330c64cd12",
+  "member_ids": [
+    "504be6a3-04eb-4d44-b6a1-496327c56a27"
+  ],
+  "item": {
+    "hash": "9f555e4911e282424a61301696ace2f4bd86752e38b18e8490e21f330c64cd12",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics express general love and presence without specific saint or theological subject.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 920,
+    "eval_count": 443,
+    "total_duration_ns": 6276344100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

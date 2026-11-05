@@ -1,0 +1,29 @@
+{
+  "group": "6edac1d7e217624846251571f8f3cf64248f5f2bfc84cea5f767b0d1b836a676",
+  "member_ids": [
+    "0b465fd8-6a6d-5b39-98fb-37cd50441d8f"
+  ],
+  "item": {
+    "hash": "6edac1d7e217624846251571f8f3cf64248f5f2bfc84cea5f767b0d1b836a676",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "በድንግል ማርያም ያደረው የእግዚአብሔር አብ ልጁ ነው",
+      "ይኸውም መና የተባለው"
+    ],
+    "reason": "Lyrics explicitly mention Virgin Mary and the term 'Mena' (Virgin) in relation to her.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1836,
+    "eval_count": 550,
+    "total_duration_ns": 8041130700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

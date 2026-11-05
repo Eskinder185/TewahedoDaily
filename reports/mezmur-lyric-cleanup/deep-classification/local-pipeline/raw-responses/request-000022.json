@@ -1,0 +1,60 @@
+{
+  "group_hashes": [
+    "c0086a27e37d22fe8ac0d642dcda9ad259de09696657068c1aa759b5a20455f2",
+    "646a3e92a22a3549019111d076528eb517c7aceebaee17bc413700859cc06703",
+    "37ecc07606dacf8ac03d8e20ea701e156c27110b7a5c1a175d85b112b6192203"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "c0086a27e37d22fe8ac0d642dcda9ad259de09696657068c1aa759b5a20455f2",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ይጎበኛል በምድር ከሰማዩ ስፍራ",
+          "በቀኝ ይቀመጣል ከቅዱሳን ጋራ"
+        ],
+        "reason": "Lyrics explicitly describe the act of praying ('Yigobenyal') and positioning oneself before God.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "646a3e92a22a3549019111d076528eb517c7aceebaee17bc413700859cc06703",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ለጊዜው ነውና ሁሉም ያልፋልና",
+          "ከአምላክህ ተስማማ እራስህን አዋርድ"
+        ],
+        "reason": "Focuses on enduring trials through faith, repentance ('tsna'), and aligning oneself with God's will.",
+        "competing_slugs": [
+          "salvation"
+        ]
+      },
+      {
+        "hash": "37ecc07606dacf8ac03d8e20ea701e156c27110b7a5c1a175d85b112b6192203",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ተፅናንቷል አርፏል ልባችን",
+          "አንወድቅም አንሸነፍም"
+        ],
+        "reason": "Lyrics describe the heart being tested and the resolve to not fall away, central to repentance.",
+        "competing_slugs": [
+          "prayer"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2012,
+    "eval_count": 620,
+    "total_duration_ns": 8986803100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

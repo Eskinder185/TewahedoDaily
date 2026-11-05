@@ -1,0 +1,43 @@
+{
+  "group_hashes": [
+    "ffe37766354be9bb5418c86b7cf29b64f21601af163f3b49fc0c495945fe9cd1",
+    "c47f87d9f4d09b9fb9e09e3d41b403a48b2dcc1487fe49a4f25b8eefacb8e642"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "ffe37766354be9bb5418c86b7cf29b64f21601af163f3b49fc0c495945fe9cd1",
+        "primary_slug": "angels",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ሊቀ መላእክት   \\===== ሚካኤል ነዓ",
+          "ብርሃናዊ መልአክ \\====   ራጉኤል ነዓ"
+        ],
+        "reason": "Lyrics explicitly name Michael, Gabriel, Raphael, and Uriel as angels or archangels.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "c47f87d9f4d09b9fb9e09e3d41b403a48b2dcc1487fe49a4f25b8eefacb8e642",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ኣሕሊፍካየን ንስኻ \"ኣሕሊፋካየን\"",
+          "መሕብኢ ስኢና ነፍሰይ ከተእዊ እንከላ"
+        ],
+        "reason": "Text contains direct petitions and pleas for forgiveness and help, characteristic of prayer.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3271,
+    "eval_count": 424,
+    "total_duration_ns": 6607794300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

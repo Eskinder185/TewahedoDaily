@@ -1,0 +1,52 @@
+{
+  "group_hashes": [
+    "67d61dbd0219fda73b7d8263415a686e1eb437e8d564b58763e7fa124a9569f9",
+    "e80ac618f3111368082693f4c561dee0ce408523404769c9e8d38e4e6fb6246a",
+    "67606a19f07e799333e6ee722b66cfa24af78e17cb6f8af5527058d33131be0f"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "67d61dbd0219fda73b7d8263415a686e1eb437e8d564b58763e7fa124a9569f9",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are incomplete fragments without clear theological subject matter.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "e80ac618f3111368082693f4c561dee0ce408523404769c9e8d38e4e6fb6246a",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are incomplete fragments without clear theological subject matter.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "67606a19f07e799333e6ee722b66cfa24af78e17cb6f8af5527058d33131be0f",
+        "primary_slug": "prayer=Prayer",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "የሚውያቅ እግዚአብሔር ኃይሉን\nአየን አየን በጎ ሥራን በላያችን"
+        ],
+        "reason": "Lyrics express a plea to God for strength and good works, indicating prayer.",
+        "competing_slugs": [
+          "praise-worship=Praise / Worship",
+          "salvation=Salvation"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 968,
+    "eval_count": 490,
+    "total_duration_ns": 6830093300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

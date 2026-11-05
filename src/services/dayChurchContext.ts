@@ -84,6 +84,8 @@ export type DayMezmurRecommendation = {
   language: string | null
   category: string | null
   occasion: string | null
+  applicableEntity?: string | null
+  relationshipStatus?: 'confirmed' | 'verified-occasion' | 'occasion-metadata' | 'candidate' | 'general'
   thumbnailUrl: string | null
   imageAlt: string
   youtubeUrl: string | null
@@ -91,6 +93,7 @@ export type DayMezmurRecommendation = {
   practiceHref: string
   playHref: string | null
   matchReason: string
+  matchReasonAm?: string
 }
 
 export type DayChurchContext = {
@@ -457,11 +460,13 @@ async function loadDayChurchContextUncached(date: Date): Promise<DayChurchContex
     slug: m.slug,
     title: m.title,
     titleAmharic: m.titleAmharic || m.title,
-    singerName: (m as any).singerName ?? null,
-    hasPlayableMedia: !!((m as any).hasPlayableMedia || m.audioUrl || m.youtubeUrl),
-    language: null,
+    singerName: m.singerName ?? null,
+    hasPlayableMedia: !!(m.hasPlayableMedia || m.audioUrl || m.youtubeUrl),
+    language: m.language ?? null,
     category: m.category ?? null,
     occasion: m.occasion ?? null,
+    applicableEntity: m.applicableEntity ?? null,
+    relationshipStatus: m.relationshipStatus ?? 'general',
     thumbnailUrl: m.thumbnailUrl ?? null,
     imageAlt: m.title,
     youtubeUrl: m.youtubeUrl ?? null,
@@ -469,6 +474,7 @@ async function loadDayChurchContextUncached(date: Date): Promise<DayChurchContex
     practiceHref: m.lyricsHref,
     playHref: m.playHref,
     matchReason: m.matchReasonEn,
+    matchReasonAm: m.matchReasonAm,
   }))
 
   const badges = buildBadges({

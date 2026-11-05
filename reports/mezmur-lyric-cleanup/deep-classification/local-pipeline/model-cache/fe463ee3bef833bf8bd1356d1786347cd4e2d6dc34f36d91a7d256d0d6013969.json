@@ -1,0 +1,29 @@
+{
+  "group": "24ddebf51e2e755d3f187f5aa79b4997e3510b29e6ae693a6948eaccbb70bc5e",
+  "member_ids": [
+    "0c6572fa-dad7-525e-96da-c4f9463928cc"
+  ],
+  "item": {
+    "hash": "24ddebf51e2e755d3f187f5aa79b4997e3510b29e6ae693a6948eaccbb70bc5e",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ይምረናልና መሃሪ ነው እርሱ",
+      "ተስፋዬ እርሱ ነው ይጠራኛልና"
+    ],
+    "reason": "Lyrics explicitly refer to 'Hersu' (He) as the Savior, Hope, and Master, identifying Him as Jesus Christ.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2408,
+    "eval_count": 536,
+    "total_duration_ns": 8727378400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "d2c5f50a2da81171450cc965d08bbcf720e4021f3e013befbc4007296c3184d0",
+    "a06fe7d99fec292744e8a7dac6e234a34423eb436ce35860c29254d21c40e781",
+    "8f2dbf2f43a59c3741b056eba4b926c46f000af78e8fb6d7061d64f5838dc5ff"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "d2c5f50a2da81171450cc965d08bbcf720e4021f3e013befbc4007296c3184d0",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Qalhin yematatif ante keine attifa"
+        ],
+        "reason": "Lyrics address God directly with a plea not to remove His word or the speaker.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "a06fe7d99fec292744e8a7dac6e234a34423eb436ce35860c29254d21c40e781",
+        "primary_slug": "general",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Yeityopaya ortodokes tewahdo"
+        ],
+        "reason": "Text identifies the church as children of Ethiopia's Orthodox Tewahedo faith without specific saint focus.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "8f2dbf2f43a59c3741b056eba4b926c46f000af78e8fb6d7061d64f5838dc5ff",
+        "primary_slug": "virgin-mary",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "Inatna dingil huletun honshiw"
+        ],
+        "reason": "Lyrics mention 'Mother and Virgin' together; in Ethiopian context this often refers to Mary.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 901,
+    "eval_count": 475,
+    "total_duration_ns": 6930004300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "91273f8ea0c5dc51bceeb101fe5950da588838828aa861a48cb6377a75ef09b1",
+    "36d9841a3d841e1e699ebf3ce8e53f983c8efebf188222b5919cbe3d03d84e4f",
+    "458ae86c73465e30c4edde6821f3eaf14800c18f4d7082ecbe177431ac5eaeb3"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "91273f8ea0c5dc51bceeb101fe5950da588838828aa861a48cb6377a75ef09b1",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Sibhat lewelde legebare kulu fitret"
+        ],
+        "reason": "The lyrics express praise to the Creator and Redeemer, fitting the general theme of worship.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "36d9841a3d841e1e699ebf3ce8e53f983c8efebf188222b5919cbe3d03d84e4f",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Melsom keafer indihon kemeret"
+        ],
+        "reason": "The text describes returning to the earth and humility, central themes of repentance.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "458ae86c73465e30c4edde6821f3eaf14800c18f4d7082ecbe177431ac5eaeb3",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "enkwan lebrhane mesqelu aderesachhu /2/"
+        ],
+        "reason": "The lyrics explicitly mention praising the light of the cross, a clear act of worship.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 957,
+    "eval_count": 483,
+    "total_duration_ns": 6690562000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

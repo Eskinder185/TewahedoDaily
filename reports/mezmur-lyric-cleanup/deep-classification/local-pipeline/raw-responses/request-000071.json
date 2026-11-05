@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "3420ca9625ae0a55a0df1fc487c8c4e248eaea1c4f3a2004cf992d3c8f87d332",
+    "00e1ebcc134abf979516aaf6ec86a46702121e290457680b30ac070ac7bc5d34",
+    "78cc7c941b90b77665b73e58d401774e50d943406ed075c48fcdb3046212ce8b"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "3420ca9625ae0a55a0df1fc487c8c4e248eaea1c4f3a2004cf992d3c8f87d332",
+        "primary_slug": "yohannes-metmek-john-the-baptist=Yohannes Metmek / John the Baptist",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "በሠላሳ ክረምት በዮርዳኖስ ተጠምቀ",
+          "በዮሐንስ /2/ ዮርዳኖስ/2/ ተጠምቀ"
+        ],
+        "reason": "Lyrics explicitly mention John the Baptist (Yohannes) and his baptism in the Jordan.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "00e1ebcc134abf979516aaf6ec86a46702121e290457680b30ac070ac7bc5d34",
+        "primary_slug": "jesus-christ=Jesus Christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ተባረክ ቸር ጌታዬ",
+          "አፍሯል ከሳሼ አንተን ለብሼ"
+        ],
+        "reason": "The hymn is a direct address to Jesus as 'Lord' and 'Truth', expressing devotion and salvation through Him.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "78cc7c941b90b77665b73e58d401774e50d943406ed075c48fcdb3046212ce8b",
+        "primary_slug": "jesus-christ=Jesus Christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ይላል አንደበቴ እግዚአብሔር ቅዱስ ነው",
+          "የጌታዬ ሃሳብ ፍቅር ነው በኔ ላይ"
+        ],
+        "reason": "The lyrics identify God as Holy and refer to Him as 'My Lord', focusing on Christ's love and protection.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2494,
+    "eval_count": 658,
+    "total_duration_ns": 9301777600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

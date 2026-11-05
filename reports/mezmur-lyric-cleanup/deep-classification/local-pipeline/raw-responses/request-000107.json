@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "6fd9e9d06cff4d09763b25922f209fea74310c2b5004ae3f85f7792345579ef6",
+    "c94d989eff6d6500d9a7d6e24131f6a92b56213d97ba169fe5fe185ed912cded",
+    "e9d5944f4d5729492957b0ac1b62bf2c51ea858e6c3b065497c9778291875ede"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "6fd9e9d06cff4d09763b25922f209fea74310c2b5004ae3f85f7792345579ef6",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አይናችን ነሽ ማርያም አንቺን አይንኩብን",
+          "የወይን ሀረግ ድንግል"
+        ],
+        "reason": "Lyrics explicitly address Mary as 'our mother' and refer to her as the 'virgin', focusing entirely on her role.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "c94d989eff6d6500d9a7d6e24131f6a92b56213d97ba169fe5fe185ed912cded",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ጌታዬ ሆነህ ደም ግባት አልባ",
+          "ተወጋህ ስለኔ ኢየሱስ መድህኔ"
+        ],
+        "reason": "The hymn is a direct prayer to Jesus, recounting his passion and calling him 'Savior'.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "e9d5944f4d5729492957b0ac1b62bf2c51ea858e6c3b065497c9778291875ede",
+        "primary_slug": "saints",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አናንያ አዛርያ ሚሳኤል",
+          "ወጣቶች ተነሱ በቅናት መንፈስ"
+        ],
+        "reason": "The lyrics focus on the three holy children (Anania, Azarya, Misael) who stood firm in faith.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3103,
+    "eval_count": 620,
+    "total_duration_ns": 9189335700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

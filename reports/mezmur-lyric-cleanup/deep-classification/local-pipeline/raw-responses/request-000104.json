@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "23d9e9263050e964262d454c25ea694dc202559c6736cbd4c0eae1a7ebb6885c",
+    "92008cb701cf755077166d318e20e0f8bf610828f09c10fb17a1e83b5b012b88",
+    "bc8fb2284e979c05133d2e893a1f9c3659db3f6233de13ef8ae2dbc282e9bcbb"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "23d9e9263050e964262d454c25ea694dc202559c6736cbd4c0eae1a7ebb6885c",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ምግበ ስጋ ምግበ ነፍስ ነው ጌታ ለእኔ",
+          "በዝማሬ ስሙን ማክበር ነው የእኔ ስራ"
+        ],
+        "reason": "Lyrics explicitly state that praising God's name is the work of the singer.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "92008cb701cf755077166d318e20e0f8bf610828f09c10fb17a1e83b5b012b88",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Fragmentary lyrics lack sufficient context to determine a specific subject or category.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "bc8fb2284e979c05133d2e893a1f9c3659db3f6233de13ef8ae2dbc282e9bcbb",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እውነት ስለሆነ ኢየሱስ ክርስቶስ",
+          "ፈውስን ለሰጣቸው ልባቸውን ሞልተው"
+        ],
+        "reason": "The hymn focuses entirely on Jesus Christ's life, death, and salvation.",
+        "competing_slugs": [
+          "cross",
+          "salvation"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2397,
+    "eval_count": 577,
+    "total_duration_ns": 8531923000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

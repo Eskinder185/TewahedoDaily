@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "92e4a916440cb5b6d607de9e35c37e281ab04d9c957bff938690ba1cfdebc07d",
+    "f2d788d45ec8b4f7ad807e7856baa97c8f6edcaf40ddfa2a440c612dbdb8ebb6",
+    "186a424f61a786f3195cb6185dcbd4a4c0da6ae361fee80fe5e686d0d2e6a857"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "92e4a916440cb5b6d607de9e35c37e281ab04d9c957bff938690ba1cfdebc07d",
+        "primary_slug": "prayer=Prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ለጥያቄዬ መልስ ቀን አለህ አባቴ",
+          "አትዘገይም አንተ ታውቃለህ ስራህን"
+        ],
+        "reason": "The lyrics are a direct petition to God the Father for answers and faithfulness, characteristic of prayer.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "f2d788d45ec8b4f7ad807e7856baa97c8f6edcaf40ddfa2a440c612dbdb8ebb6",
+        "primary_slug": "praise-worship=Praise / Worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ተናገሩ ድንቅ ሥራውን መስክሩ",
+          "ተአምሩን ለዓለም ንገሩ"
+        ],
+        "reason": "The text explicitly instructs believers to proclaim and sing about God's wonderful works, which is an act of praise.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "186a424f61a786f3195cb6185dcbd4a4c0da6ae361fee80fe5e686d0d2e6a857",
+        "primary_slug": "jesus-christ=Jesus Christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አምላክ ተወለደ ተጠመቀ ለእኛ",
+          "ልጁ በዮርዳኖስ ጽድቅን ሲመሠርት"
+        ],
+        "reason": "The lyrics describe the Incarnation, baptism, and ministry of Jesus Christ, making Him the central subject.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2367,
+    "eval_count": 624,
+    "total_duration_ns": 9127034400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

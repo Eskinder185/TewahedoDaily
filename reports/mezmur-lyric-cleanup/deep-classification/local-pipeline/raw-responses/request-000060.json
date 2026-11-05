@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "8a66e01b05dc583beb9301fafd6683c5e7b10bdc1c5cd69d9a790d1d8f2a05b8",
+    "0d73006b4c52c71ef9569ef218092b33eb1a78cb3751f3aa9caf3e290a07b409",
+    "9be62151f16c4b3b3fe75d194536375ed196e72ff753276ee3d35fe29327bd3a"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "8a66e01b05dc583beb9301fafd6683c5e7b10bdc1c5cd69d9a790d1d8f2a05b8",
+        "primary_slug": "general",
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are too fragmented to identify a specific subject or dominant theme.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "0d73006b4c52c71ef9569ef218092b33eb1a78cb3751f3aa9caf3e290a07b409",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ቅድስተ ቅዱሳን ማርያም ድንግል አንቺ ነሽ",
+          "እመቤታችን እናታችን ማርያም"
+        ],
+        "reason": "Lyrics explicitly address Mary as the Queen of Saints and Mother of God.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "9be62151f16c4b3b3fe75d194536375ed196e72ff753276ee3d35fe29327bd3a",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ለይቅርታህ መጣሁ ተቀበለኝ",
+          "አምላክ ቸርነትህን አደንቃለሁ"
+        ],
+        "reason": "The text focuses entirely on seeking forgiveness, God's mercy, and personal repentance.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2417,
+    "eval_count": 537,
+    "total_duration_ns": 8291917100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

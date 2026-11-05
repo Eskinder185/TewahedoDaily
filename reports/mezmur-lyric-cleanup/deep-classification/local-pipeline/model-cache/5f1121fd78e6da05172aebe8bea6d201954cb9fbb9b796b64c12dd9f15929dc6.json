@@ -1,0 +1,29 @@
+{
+  "group": "95960d35f059a61d422c5d30e6869407c1cf85e4fd7b3f7e1bf587ff60dd4965",
+  "member_ids": [
+    "2b6bfc72-1050-4429-a59b-c1e55d4ddac9"
+  ],
+  "item": {
+    "hash": "95960d35f059a61d422c5d30e6869407c1cf85e4fd7b3f7e1bf587ff60dd4965",
+    "primary_slug": "praise-worship",
+    "confidence": "medium",
+    "uncertain": false,
+    "evidence": [
+      "Asme lealem mihretu",
+      "Yemyimotew moto yeteqeberew"
+    ],
+    "reason": "Lyrics express general praise and devotion to God's mercy without specific saint or theological focus.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1099,
+    "eval_count": 529,
+    "total_duration_ns": 7551982000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

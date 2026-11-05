@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "b46f1b7a22c9b9d668119ed544a96d2130280af00361f25d9c850a8fe8cba5e2",
+    "75511e294d5a98f9360bf858b61162eae4b11f142f673b34cd2eb53be03a9619",
+    "59892f04c7a44822eef3d525de43ecc60a312e1ae5bf0858f1060d5b50addb6c"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b46f1b7a22c9b9d668119ed544a96d2130280af00361f25d9c850a8fe8cba5e2",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ውራን ቢያበራ የሞተን ቢያስነሣ",
+          "በመመስገን ፈንገታ ሆነበት አበሳ"
+        ],
+        "reason": "Lyrics explicitly mention praise and rejoicing in the context of resurrection.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "75511e294d5a98f9360bf858b61162eae4b11f142f673b34cd2eb53be03a9619",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ኦ አባ ቅዱስ አቀቦሙ /2/ ለስምከ ወበኃይልክ",
+          "እቀቦሙ//2/"
+        ],
+        "reason": "Direct address to God ('O Father') asking for strength and name glorification.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "59892f04c7a44822eef3d525de43ecc60a312e1ae5bf0858f1060d5b50addb6c",
+        "primary_slug": "kidus-gabriel",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ደጉ መላክ ገብርኤል /2/",
+          "በሶስቱ ህፃናት"
+        ],
+        "reason": "Lyrics repeatedly name Kidus Gabriel and reference the three children story.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1817,
+    "eval_count": 582,
+    "total_duration_ns": 8381122600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

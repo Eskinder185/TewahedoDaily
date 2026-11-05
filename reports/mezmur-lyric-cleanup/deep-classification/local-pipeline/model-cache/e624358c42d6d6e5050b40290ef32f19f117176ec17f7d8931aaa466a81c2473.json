@@ -1,0 +1,29 @@
+{
+  "group": "2be5ab358c91c04428d067fd656e5d726ce2874a285fb28fcd9166c26cbd4fba",
+  "member_ids": [
+    "40098eed-f414-49fe-95a2-7b1a1af809c0"
+  ],
+  "item": {
+    "hash": "2be5ab358c91c04428d067fd656e5d726ce2874a285fb28fcd9166c26cbd4fba",
+    "primary_slug": "prayer",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "Kem fiqadu gerna ante lemena",
+      "Amunn tsadqin'yu kihbenayu diletna"
+    ],
+    "reason": "The text is a direct petition to God for faith and truth.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2526,
+    "eval_count": 515,
+    "total_duration_ns": 7559864800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

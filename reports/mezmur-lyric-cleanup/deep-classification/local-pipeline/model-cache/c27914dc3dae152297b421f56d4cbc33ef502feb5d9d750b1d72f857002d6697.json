@@ -1,0 +1,26 @@
+{
+  "group": "be569006dfa45fa7f9f6430d4015706bbdecd4241b24ed675520222bbca315fc",
+  "member_ids": [
+    "0e4cfff9-7902-46cd-96dc-ebb835c18158"
+  ],
+  "item": {
+    "hash": "be569006dfa45fa7f9f6430d4015706bbdecd4241b24ed675520222bbca315fc",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics only repeat 'Timetalech beiwnet' (She will come in truth) without specific theological context to match categories.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1739,
+    "eval_count": 561,
+    "total_duration_ns": 8489249200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

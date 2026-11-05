@@ -1,0 +1,29 @@
+{
+  "group": "af4c1ef38a03a0efbfe77726342370fc2057a946497b2ec14013cf745e9b8483",
+  "member_ids": [
+    "24588249-2def-5d3f-a506-0408cd720a2e"
+  ],
+  "item": {
+    "hash": "af4c1ef38a03a0efbfe77726342370fc2057a946497b2ec14013cf745e9b8483",
+    "primary_slug": "kidus-michael",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የመላዕክ አለቃ ስሙ ነው ሚካኤል",
+      "መልአኩ ሚካኤል አማላጃችን"
+    ],
+    "reason": "The hymn is entirely dedicated to Kidus Michael, identifying him as the leader of angels and protector.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3012,
+    "eval_count": 652,
+    "total_duration_ns": 9637364400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,31 @@
+{
+  "group": "7a8a0ef32e9722913577fa0cce697f1924c40da0fbafec578506dece8b8464a7",
+  "member_ids": [
+    "137f79d5-7460-5821-af60-c6cdd389246c"
+  ],
+  "item": {
+    "hash": "7a8a0ef32e9722913577fa0cce697f1924c40da0fbafec578506dece8b8464a7",
+    "primary_slug": "repentance",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ዴማስ ወደ ህይወት እባክህ ቶሎና",
+      "ወንድሜ ተመለስ ወዴት ትሔዳለህ"
+    ],
+    "reason": "The song urges conversion and returning to God, central themes of repentance.",
+    "competing_slugs": [
+      "jesus-christ"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2493,
+    "eval_count": 544,
+    "total_duration_ns": 8623891000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

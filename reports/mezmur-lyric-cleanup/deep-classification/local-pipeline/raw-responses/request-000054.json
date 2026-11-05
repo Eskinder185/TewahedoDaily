@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "769fd54a55dccc93b09ac715cbeb7eb4dc73d7ef932609c6a211a17dd5faa3af",
+    "5d38a11a109f269539db18c84ec6285d403f131bfa943f1d88223d5eaebc8669",
+    "500e6bf280f87d40cba6a740e27448cf2eab6aa9a4de69f3a2dc8ee1e08e0f98"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "769fd54a55dccc93b09ac715cbeb7eb4dc73d7ef932609c6a211a17dd5faa3af",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አለም የዳነባት ድንግል ማርያም ነች",
+          "ማርያም በግርማሽ ከሳሻችን ያፍራል"
+        ],
+        "reason": "The lyrics explicitly praise Mary as the Virgin and describe her virtues, making her the central subject.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5d38a11a109f269539db18c84ec6285d403f131bfa943f1d88223d5eaebc8669",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እናቱ ሆነሻል ለመድሃኒዓለም",
+          "ድንግል የድል አክሊል"
+        ],
+        "reason": "The hymn addresses Mary directly as 'Mother' and praises her purity, identifying her as the primary subject.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "500e6bf280f87d40cba6a740e27448cf2eab6aa9a4de69f3a2dc8ee1e08e0f98",
+        "primary_slug": "kidus-yared",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ያሬድ ካህኑ ዘመረ",
+          "ዘመረ ያሬድ ዘመረ አምላኩን አመሰገነ"
+        ],
+        "reason": "The lyrics repeatedly name Kidus Yared and celebrate his life, music, and legacy as the main theme.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3164,
+    "eval_count": 607,
+    "total_duration_ns": 8786306900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

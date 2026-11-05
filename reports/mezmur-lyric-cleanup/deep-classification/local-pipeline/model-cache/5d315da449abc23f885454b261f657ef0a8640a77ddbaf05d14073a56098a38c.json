@@ -1,0 +1,29 @@
+{
+  "group": "7a4afd0d7d0d730f9c5ce4b62e9161efbf59c1cb305c3052e6c43b19135ad607",
+  "member_ids": [
+    "39f9171e-7f70-4379-87dd-fabc982f4f07"
+  ],
+  "item": {
+    "hash": "7a4afd0d7d0d730f9c5ce4b62e9161efbf59c1cb305c3052e6c43b19135ad607",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ሲዘምር ደስ ይላል በአንድነት ሆነን",
+      "በረከት የሞላው ዝማሬ ይገርማል"
+    ],
+    "reason": "Lyrics express joy, unity, and praise to the Lord's grace.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1738,
+    "eval_count": 602,
+    "total_duration_ns": 8708137600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -1,0 +1,50 @@
+{
+  "group_hashes": [
+    "5a898ca2e0ca74aeb643d63b2a4414dab7d25cb46303f09f413cdf9d44ba2520",
+    "1eec37e68dc1b21de3c4bdac0b1e28be07b0b05ea260487740ec571297680ad6",
+    "c1b7949552de93873d3e73e4eacc0580eaf3c2e2130c5c3163b493595ba55169"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "5a898ca2e0ca74aeb643d63b2a4414dab7d25cb46303f09f413cdf9d44ba2520",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are fragmented and lack clear subject identification.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "1eec37e68dc1b21de9c4bdac0b1e28be07b0b05ea260487740ec571297680ad6",
+        "primary_slug": "kidus-michael=Kidus Michael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የአፎሚያ እረዳት ነህ ሚካኤል /2/",
+          "እንጠራሃለን ሚካኤል ብለን"
+        ],
+        "reason": "Lyrics explicitly address and praise Kidus Michael.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "c1b7949552de93873d3e73e4eacc0580eaf3c2e2130c5c3163b493595ba55169",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are repetitive and lack identifiable subject context.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1773,
+    "eval_count": 459,
+    "total_duration_ns": 7480244000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

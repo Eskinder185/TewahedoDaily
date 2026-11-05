@@ -1,0 +1,29 @@
+{
+  "group": "5d38a11a109f269539db18c84ec6285d403f131bfa943f1d88223d5eaebc8669",
+  "member_ids": [
+    "2f5a7322-16d0-5772-b86e-fc39aa58fc8f"
+  ],
+  "item": {
+    "hash": "5d38a11a109f269539db18c84ec6285d403f131bfa943f1d88223d5eaebc8669",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "እናቱ ሆነሻል ለመድሃኒዓለም",
+      "ድንግል የድል አክሊል"
+    ],
+    "reason": "The hymn addresses Mary directly as 'Mother' and praises her purity, identifying her as the primary subject.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3164,
+    "eval_count": 607,
+    "total_duration_ns": 8786306900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

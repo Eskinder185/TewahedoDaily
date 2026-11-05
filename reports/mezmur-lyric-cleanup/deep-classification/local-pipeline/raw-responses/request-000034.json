@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "b5b6e04cb44e743dfb072201ec801dde7bb86c8a770b2570249a2bf7df2f48a2",
+    "ba82efbb15adcb0a1eae696f013db182cc6d06098569e1ee1acb9ce34c8cdaca",
+    "788dd5af4c0e2852ff31976c61a7b63b76ecd9572d3deb2652da08946e4ae26c"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b5b6e04cb44e743dfb072201ec801dde7bb86c8a770b2570249a2bf7df2f48a2",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics contain no identifiable names or specific theological subjects from the allowed list.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "ba82efbb15adcb0a1eae696f013db182cc6d06098569e1ee1acb9ce34c8cdaca",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የዓለም መድኃኒት"
+        ],
+        "reason": "The phrase 'Yealem medhanit' (Savior of the world) explicitly refers to Jesus Christ.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "788dd5af4c0e2852ff31976c61a7b63b76ecd9572d3deb2652da08946e4ae26c",
+        "primary_slug": "prayer",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "አምላክ የለም ብለህ ካድከው ፈጣሪህን"
+        ],
+        "reason": "Lyrics address God directly and warn against denying Him, fitting a prayer or admonition context.",
+        "competing_slugs": [
+          "repentance"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1104,
+    "eval_count": 475,
+    "total_duration_ns": 6822495200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

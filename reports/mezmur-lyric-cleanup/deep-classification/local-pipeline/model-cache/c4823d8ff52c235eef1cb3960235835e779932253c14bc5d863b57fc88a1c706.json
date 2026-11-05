@@ -1,0 +1,29 @@
+{
+  "group": "04f2e7682cc08a92c55163e4440b0359a1f17cab4347dfebb7b900cad7dd9682",
+  "member_ids": [
+    "5d4320bc-db70-4e2c-abff-b9451fcba789"
+  ],
+  "item": {
+    "hash": "04f2e7682cc08a92c55163e4440b0359a1f17cab4347dfebb7b900cad7dd9682",
+    "primary_slug": "holy-trinity",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "እንደ እግዚአብሔር ከቶ ማንም የለም",
+      "ተራሮችን በሚዛን የመዘነ"
+    ],
+    "reason": "Lyrics describe God's omnipotence and unity, referencing 'Igziabher' (God) directly.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1209,
+    "eval_count": 589,
+    "total_duration_ns": 8255799600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

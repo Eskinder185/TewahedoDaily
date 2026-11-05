@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "de704fd4bda03978ce783b06ec28a538e01b239347da59de0f14e9fb1bb628e5",
+    "75a875446e3161891fb809b95937bdbfea4ae7f6aaad05ee7ed23345d0c27424",
+    "479ffdc0d8de334a7ebb47a76b09de6c6080b86f6d723e3ecfb407018619f1b6"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "de704fd4bda03978ce783b06ec28a538e01b239347da59de0f14e9fb1bb628e5",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are fragmented and lack clear subject identification for classification.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "75a875446e3161891fb809b95937bdbfea4ae7f6aaad05ee7ed23345d0c27424",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ውለታሽ አለብኝ የ ፃድቃኔ ማርያም",
+          "በጌታዬ እናት በ ፃድቃኔ የታመነ"
+        ],
+        "reason": "Lyrics explicitly address and praise the Virgin Mary as the righteous mother of God.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "479ffdc0d8de334a7ebb47a76b09de6c6080b86f6d723e3ecfb407018619f1b6",
+        "primary_slug": "abune-tekle-haymanot",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አባ ተክለ ሃይማኖት ዘኢትዮጵያ",
+          "ኢትዮጲያዊው ቅዱስ አባ ተክለሀይማኖት"
+        ],
+        "reason": "The hymn directly names and praises Abune Tekle Haymanot as a saint.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2766,
+    "eval_count": 548,
+    "total_duration_ns": 8041794000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

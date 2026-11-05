@@ -48,6 +48,8 @@ const AdminDashboard = lazy(() => import('./pages/admin/adminPages').then(m => (
 const AdminUsers = lazy(() => import('./pages/admin/AdminUsers').then(m => ({ default: m.AdminUsers })))
 const MezmurList = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurList })))
 const MezmurEditor = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.MezmurEditor })))
+const MezmurVersionReview = lazy(() => import('./pages/admin/MezmurVersionReview').then(m => ({ default: m.MezmurVersionReview })))
+const MezmurEditorialStudio = lazy(() => import('./pages/admin/MezmurEditorialStudio').then(m => ({ default: m.MezmurEditorialStudio })))
 const MezmurCsvImportPreview = lazy(() => import('./pages/admin/MezmurCsvImportPreview').then(m => ({ default: m.MezmurCsvImportPreview })))
 const TaxonomyPage = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.TaxonomyPage })))
 const HymnBrowseGroupsList = lazy(() =>
@@ -186,6 +188,10 @@ export default function App() {
             <Route path="hymns" element={<HymnsAdminLayout />}>
               <Route index element={<HymnsOverview />} />
               <Route path="mezmur" element={<MezmurList />} />
+              <Route path="mezmur/versions" element={<MezmurVersionReview />} />
+              <Route element={<RequireCmsRole allowed={['editor', 'admin', 'super_admin']} />}>
+                <Route path="mezmur/editorial" element={<MezmurEditorialStudio />} />
+              </Route>
               <Route path="mezmur/new" element={<MezmurEditor />} />
               <Route path="mezmur/:id/edit" element={<MezmurEditor />} />
               <Route path="import" element={<MezmurCsvImportPreview />} />

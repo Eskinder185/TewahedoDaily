@@ -1,0 +1,29 @@
+{
+  "group": "782e823eccd85720a018b8631b78d50958ac167ab84c6c7ab6408d337c4ac54a",
+  "member_ids": [
+    "5a9224c2-80b9-506d-8d6a-6ff234d1cf8d"
+  ],
+  "item": {
+    "hash": "782e823eccd85720a018b8631b78d50958ac167ab84c6c7ab6408d337c4ac54a",
+    "primary_slug": "general",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ተክለሃይማኖት ክብር ይገባሃል",
+      "ምህረት ከአምላክህ ለምንላት"
+    ],
+    "reason": "Lyrics praise 'Tekle Haymanot' (a saint) and general faith, but do not focus on Jesus, Mary, or specific archangels as the primary subject.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2504,
+    "eval_count": 433,
+    "total_duration_ns": 6707197700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

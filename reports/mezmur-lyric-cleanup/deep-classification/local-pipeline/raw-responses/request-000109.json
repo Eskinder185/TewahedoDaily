@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "04f2e7682cc08a92c55163e4440b0359a1f17cab4347dfebb7b900cad7dd9682",
+    "afbf656fd193b7e1dc88435e90fd0348df20654b97dc80ef2dadd1abe8047ebd",
+    "daab52af6caa844022b24970d81b1437eaf91fe811acaa354926a4b7eb723aae"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "04f2e7682cc08a92c55163e4440b0359a1f17cab4347dfebb7b900cad7dd9682",
+        "primary_slug": "holy-trinity",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እንደ እግዚአብሔር ከቶ ማንም የለም",
+          "ተራሮችን በሚዛን የመዘነ"
+        ],
+        "reason": "Lyrics describe God's omnipotence and unity, referencing 'Igziabher' (God) directly.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "afbf656fd193b7e1dc88435e90fd0348df20654b97dc80ef2dadd1abe8047ebd",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አስከትለብሱ ኃይለ እምአርያም",
+          "አስክምታገኙ ኃይል ከሰማይ"
+        ],
+        "reason": "Lyrics are direct petitions asking for strength from God and heaven.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "daab52af6caa844022b24970d81b1437eaf91fe811acaa354926a4b7eb723aae",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ዓለም ተቀድሷል ነጻ ወጥቷል ዛሬ",
+          "ከአንቺ በተገኘው በመልካሙ ፍሬ"
+        ],
+        "reason": "Lyrics celebrate the world's liberation and praise the 'fruit' of Mary.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1209,
+    "eval_count": 589,
+    "total_duration_ns": 8255799600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

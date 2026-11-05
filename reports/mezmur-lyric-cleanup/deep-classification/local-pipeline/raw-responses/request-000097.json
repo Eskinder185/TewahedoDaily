@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "a885729c0549541765a8fedb98f45e06c8c22d31b7813adf5d4177470412c4e4",
+    "120504d217e8efe366721e0d9ccdf117a70c7da6894041c6cafb442662a1d4c8",
+    "1f5849d096d5f10ee82992b0f15464afe6db757079e2f7de0f120fe2278d5ad3"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "a885729c0549541765a8fedb98f45e06c8c22d31b7813adf5d4177470412c4e4",
+        "primary_slug": "kidus-raphael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ሩፉኤል ነው ለኛ ሚራራ",
+          "ህይወትሽን ሩፋኤል ዋጀው"
+        ],
+        "reason": "Lyrics explicitly name Kidus Raphael (Rufael/Rufayel) and describe his actions.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "120504d217e8efe366721e0d9ccdf117a70c7da6894041c6cafb442662a1d4c8",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ቅዱስ አምላካችን ኃይላችን ነህና",
+          "ፍቅርና ሰላምን ታፈራለች"
+        ],
+        "reason": "The hymn praises God's power, love, and peace without focusing on a specific saint or figure.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "1f5849d096d5f10ee82992b0f15464afe6db757079e2f7de0f120fe2278d5ad3",
+        "primary_slug": "general",
+        "confidence": "medium",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are extremely short and lack specific names or themes to categorize definitively.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2488,
+    "eval_count": 550,
+    "total_duration_ns": 8317559900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

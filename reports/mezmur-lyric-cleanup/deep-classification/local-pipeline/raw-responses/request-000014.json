@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "24ddebf51e2e755d3f187f5aa79b4997e3510b29e6ae693a6948eaccbb70bc5e",
+    "6395b9b9386752caa3cab314f62cc19ceaaf307ec61cda18fe2fe34d041782bd",
+    "c1b7949552de93873d3e73e4eacc0580eaf3c2e2130c5c3163b493595ba55169"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "24ddebf51e2e755d3f187f5aa79b4997e3510b29e6ae693a6948eaccbb70bc5e",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ይምረናልና መሃሪ ነው እርሱ",
+          "ተስፋዬ እርሱ ነው ይጠራኛልና"
+        ],
+        "reason": "Lyrics explicitly refer to 'Hersu' (He) as the Savior, Hope, and Master, identifying Him as Jesus Christ.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "6395b9b9386752caa3cab314f62cc19ceaaf307ec61cda18fe2fe34d041782bd",
+        "primary_slug": "holy-trinity",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ሁለቱም አንድ ሆኑ ዛሬ",
+          "በእግዚአብሔር በሕያው ቃሉ"
+        ],
+        "reason": "The hymn focuses on the unity of Father and Son, referencing God's living word and creation.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "c1b7949552de93873d3e73e4eacc0580eaf3c2e2130c5c3163b493595ba55169",
+        "primary_slug": "general",
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are repetitive and lack specific theological context to identify a particular saint or subject.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2408,
+    "eval_count": 536,
+    "total_duration_ns": 8727378400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

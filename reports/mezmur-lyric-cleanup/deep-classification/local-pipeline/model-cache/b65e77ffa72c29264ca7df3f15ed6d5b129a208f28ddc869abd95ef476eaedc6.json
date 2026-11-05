@@ -1,0 +1,29 @@
+{
+  "group": "49be5f29a382c78459a89010e6d29cd7e406273b23349f32435883a648ff13f0",
+  "member_ids": [
+    "483f5842-a6bf-440a-ae8d-fc7a50c86ed0"
+  ],
+  "item": {
+    "hash": "49be5f29a382c78459a89010e6d29cd7e406273b23349f32435883a648ff13f0",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "የክብር አክሊል ተቀዳጁ",
+      "ለዚህ እድል ተዘጋጁ"
+    ],
+    "reason": "The text is a repetitive call to prepare for glory and honor, functioning as an anthem of praise.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2048,
+    "eval_count": 631,
+    "total_duration_ns": 8951335600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

@@ -20,12 +20,12 @@ const ETHIOPIC_VARIANTS: Record<string, string> = {
   'ዐ': 'አ', 'ዑ': 'ኡ', 'ዒ': 'ኢ', 'ዓ': 'ኣ', 'ዔ': 'ኤ', 'ዕ': 'እ', 'ዖ': 'ኦ',
 }
 const VARIANT_CHARS = new Set([...Object.keys(ETHIOPIC_VARIANTS), ...Object.values(ETHIOPIC_VARIANTS)])
-const ETHIOPIC = /[ሀ-፿]/
+const ETHIOPIC = /[\u1200-\u139f\u2d80-\u2ddf\uab00-\uab2f]/u
 
 // Small English function-word list: a query matches on its meaningful words, not on "the" and "of".
 const STOPWORDS = new Set(['a', 'an', 'and', 'the', 'of', 'to', 'in', 'on', 'is', 'it', 'at', 'by', 'or', 'as', 'be', 'my', 'me', 'we', 'he', 'his', 'her', 'for', 'with', 'that', 'this', 'you', 'your', 'are', 'was'])
 
-const WORD = /[\p{L}\p{N}]+(?:['’ʼ][\p{L}\p{N}]+)*/gu
+const WORD = /[\p{L}\p{N}][\p{L}\p{N}\p{M}]*(?:['’ʼ][\p{L}\p{N}\p{M}]+)*/gu
 
 /** Fold one word for comparison. Conservative: no phonetic guessing beyond the documented rules. */
 export function foldWord(raw: string): string {
@@ -96,24 +96,36 @@ export function matchText(text: string, query: string): TextMatch | null {
   if (!significant.length) return null // only function words: a phrase may match, scattered words may not
   const unique = [...new Set(significant)]
   const required = unique.length === 1 ? 1 : Math.max(2, Math.ceil(unique.length * 0.6))
-  const hits: Array<{ term: string; span: WordSpan }> = []
-  for (const span of spans) {
-    for (const term of unique) if (wordMatches(span.folded, term)) hits.push({ term, span })
+  const hits: Array<{ term: string; span: WordSpan; index: number }> = []
+  for (let index = 0; index < spans.length; index += 1) {
+    const span = spans[index]
+    for (const term of unique) if (wordMatches(span.folded, term)) hits.push({ term, span, index })
   }
   if (!hits.length) return null
 
-  // Best window of 16 words containing the most distinct terms.
-  let best: typeof hits = []
-  for (let i = 0; i < hits.length; i += 1) {
-    const windowStart = spans.indexOf(hits[i].span)
-    const inWindow = hits.filter((hit) => {
-      const index = spans.indexOf(hit.span)
-      return index >= windowStart && index < windowStart + 16
-    })
-    if (new Set(inWindow.map((hit) => hit.term)).size > new Set(best.map((hit) => hit.term)).size) best = inWindow
+  // Sliding window over hits: O(words * query terms), including long lyrics.
+  let right = 0
+  let bestStart = 0
+  let bestEnd = 0
+  let bestDistinct = 0
+  const counts = new Map<string, number>()
+  for (let left = 0; left < hits.length; left += 1) {
+    while (right < hits.length && hits[right].index < hits[left].index + 16) {
+      counts.set(hits[right].term, (counts.get(hits[right].term) ?? 0) + 1)
+      right += 1
+    }
+    if (counts.size > bestDistinct) {
+      bestDistinct = counts.size
+      bestStart = left
+      bestEnd = right
+    }
+    const remaining = (counts.get(hits[left].term) ?? 1) - 1
+    if (remaining) counts.set(hits[left].term, remaining)
+    else counts.delete(hits[left].term)
   }
-  const distinct = new Set(best.map((hit) => hit.term)).size
+  const distinct = bestDistinct
   if (distinct < required) return null
+  const best = hits.slice(bestStart, bestEnd)
   return { kind: 'words', matched: distinct, total: unique.length, ranges: best.map((hit) => [hit.span.start, hit.span.end] as [number, number]) }
 }
 

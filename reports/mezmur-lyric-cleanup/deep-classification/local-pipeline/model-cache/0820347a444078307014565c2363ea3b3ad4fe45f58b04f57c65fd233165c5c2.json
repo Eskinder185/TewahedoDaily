@@ -1,0 +1,29 @@
+{
+  "group": "5a88d9e25f21f0bb85aa4eafbe2c9f29f025f10994ca5c833fe8cbefcda81b3b",
+  "member_ids": [
+    "2e9c3002-4a49-4357-9fef-86bf67bf8d46"
+  ],
+  "item": {
+    "hash": "5a88d9e25f21f0bb85aa4eafbe2c9f29f025f10994ca5c833fe8cbefcda81b3b",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ዓለም አታላይ ናት ዘላቁ አይደለች",
+      "ዘላለማዊ ሕይወት ለሰጠኽኝ"
+    ],
+    "reason": "Hymn addresses the eternal life giver and world ruler, consistent with worship of Jesus Christ.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1575,
+    "eval_count": 607,
+    "total_duration_ns": 8437960600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

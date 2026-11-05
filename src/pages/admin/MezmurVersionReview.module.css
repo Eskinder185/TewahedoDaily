@@ -1,0 +1,18 @@
+.page { display: grid; gap: 1rem; }
+.heading, .toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+.heading h1 { margin: .15rem 0; }
+.eyebrow { font-size: .75rem; letter-spacing: .1em; font-weight: 700; }
+.toolbar label, .review label { display: grid; gap: .35rem; }
+.toolbar select { max-width: min(72vw, 32rem); }
+.evidence, .review, .lyricColumn { padding: 1rem; border: 1px solid var(--border, #d5d9df); border-radius: .5rem; }
+.evidence p { margin: .5rem 0; }
+.columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.lyricColumn { min-width: 0; }
+.lyricColumn h3 { margin-top: 0; }
+.meta { font-size: .82rem; overflow-wrap: anywhere; line-height: 1.5; }
+.lyrics { max-height: 32rem; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; font-family: inherit; line-height: 1.7; }
+.changed { background: #fff0ad; color: #242016; }
+.review { display: grid; gap: .75rem; }
+.review textarea { width: 100%; box-sizing: border-box; }
+.error { color: #9b1c1c; }
+@media (max-width: 760px) { .columns { grid-template-columns: 1fr; } }

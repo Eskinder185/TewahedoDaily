@@ -1,0 +1,29 @@
+{
+  "group": "7a25384d27871a1243075dbabd231a3b572d5babc98e52d8daa2b9991b3e2557",
+  "member_ids": [
+    "3cd7eb85-9ec0-5c59-87df-e06242d98345"
+  ],
+  "item": {
+    "hash": "7a25384d27871a1243075dbabd231a3b572d5babc98e52d8daa2b9991b3e2557",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ኦ ክርስቶስ ኦ አምላክ ብሩህ ነህ",
+      "የዓለም መድሃኒት ክርስቶስ"
+    ],
+    "reason": "Lyrics repeatedly address Jesus Christ as God, Savior, and Lord throughout the text.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3294,
+    "eval_count": 572,
+    "total_duration_ns": 8560020500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

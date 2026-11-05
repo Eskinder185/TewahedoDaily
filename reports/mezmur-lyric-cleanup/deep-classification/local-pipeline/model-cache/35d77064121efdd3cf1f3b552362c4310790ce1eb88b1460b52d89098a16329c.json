@@ -1,0 +1,29 @@
+{
+  "group": "500e6bf280f87d40cba6a740e27448cf2eab6aa9a4de69f3a2dc8ee1e08e0f98",
+  "member_ids": [
+    "2f9e6062-442c-5b0f-a2e1-98b39b9fc5d9"
+  ],
+  "item": {
+    "hash": "500e6bf280f87d40cba6a740e27448cf2eab6aa9a4de69f3a2dc8ee1e08e0f98",
+    "primary_slug": "kidus-yared",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ያሬድ ካህኑ ዘመረ",
+      "ዘመረ ያሬድ ዘመረ አምላኩን አመሰገነ"
+    ],
+    "reason": "The lyrics repeatedly name Kidus Yared and celebrate his life, music, and legacy as the main theme.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3164,
+    "eval_count": 607,
+    "total_duration_ns": 8786306900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

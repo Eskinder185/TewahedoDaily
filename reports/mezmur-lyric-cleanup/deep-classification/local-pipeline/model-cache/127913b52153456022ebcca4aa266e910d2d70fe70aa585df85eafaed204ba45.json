@@ -1,0 +1,29 @@
+{
+  "group": "c1de408938aeb3fd16d6a97bd68599be14edcfdfce2aa5b68fa041265ca8ed8f",
+  "member_ids": [
+    "34d00776-08e1-5730-939c-925c98785973"
+  ],
+  "item": {
+    "hash": "c1de408938aeb3fd16d6a97bd68599be14edcfdfce2aa5b68fa041265ca8ed8f",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "እናመስግነው ስምህን",
+      "ይክበር ይመስገን ለዘለዓለም"
+    ],
+    "reason": "The text explicitly calls for singing praises to God's name forever.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1507,
+    "eval_count": 606,
+    "total_duration_ns": 8387754000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

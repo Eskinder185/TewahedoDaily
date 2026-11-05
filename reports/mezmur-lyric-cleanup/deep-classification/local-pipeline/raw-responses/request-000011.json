@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "462fdd11557bf4a2f43b775f6f35f8a395653b5256b259df0c4b77f119c582c6",
+    "48fd8e07a95b24b9b3c23b043a47d19e8840b97e0bf95915f8968a3d15973ab2",
+    "f54bc4e39a866ddb58226c16b173165bd4d49c8a6ed0a780d8d1e94c67d8ae2a"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "462fdd11557bf4a2f43b775f6f35f8a395653b5256b259df0c4b77f119c582c6",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "በምሕረትህ ጉብኘን አንተ ሁነን ተስፋ",
+          "አንድነት ስናጣ ፍቅር ስትመነምን"
+        ],
+        "reason": "Lyrics express devotion, unity in love, and reliance on divine mercy without focusing on a specific saint or person.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "48fd8e07a95b24b9b3c23b043a47d19e8840b97e0bf95915f8968a3d15973ab2",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "አንቺ ነሽ ለእኔ የኔስ መጽናኛዬ"
+        ],
+        "reason": "The lyrics directly address 'Anchi' (You/Female) as a refuge for the speaker, characteristic of Marian hymns.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "f54bc4e39a866ddb58226c16b173165bd4d49c8a6ed0a780d8d1e94c67d8ae2a",
+        "primary_slug": "praise-worship",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "አምላክ ሆይ ህዝቦችህ ዳኑ በጥምቀትህ"
+        ],
+        "reason": "The text praises God ('Amlak hoy') regarding baptism and birth, though the specific title 'Luya' is ambiguous without full context.",
+        "competing_slugs": [
+          "holy-spirit"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1134,
+    "eval_count": 611,
+    "total_duration_ns": 8819960900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

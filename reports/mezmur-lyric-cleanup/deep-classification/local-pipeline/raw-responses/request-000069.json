@@ -1,0 +1,59 @@
+{
+  "group_hashes": [
+    "b33fc5c6617559707a4d2475781585fd747c8c59e8d46e0b3502ff705e56f2bf",
+    "ab07a2427d01c673f6e807cd0202aa0ad70f4dc22556d5b20feb14bcc6613343",
+    "de2fdc5fd41fc84269d9ccac2288db0fa715ebf3b90ebef6a8147488b04aab61"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "b33fc5c6617559707a4d2475781585fd747c8c59e8d46e0b3502ff705e56f2bf",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics mention 'Lewelde dawit' (Son of David) but lack specific theological context to definitively classify as Jesus Christ versus general praise or a saint.",
+        "competing_slugs": [
+          "jesus-christ",
+          "praise-worship"
+        ]
+      },
+      {
+        "hash": "ab07a2427d01c673f6e807cd0202aa0ad70f4dc22556d5b20feb14bcc6613343",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ጴጥሮስ ተሰቀለ ጳውሎስ ተሰየፈ",
+          "የተዋሕዶ ልጆች አሁን ነው ሰዓቱ"
+        ],
+        "reason": "Lyrics explicitly reference Peter and Paul (apostles of Jesus) and the 'children of Tewahedo' (Christians), centering on Christian martyrdom.",
+        "competing_slugs": [
+          "martyrs",
+          "saints"
+        ]
+      },
+      {
+        "hash": "de2fdc5fd41fc84269d9ccac2288db0fa715ebf3b90ebef6a8147488b04aab61",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics describe a night vigil and blessing children but lack specific names or theological subjects to map to the provided categories.",
+        "competing_slugs": [
+          "praise-worship",
+          "general"
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1600,
+    "eval_count": 551,
+    "total_duration_ns": 7960552600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "group": "2dcdb700c3b9dd7533a67976e806ba4b7f993cc0be06a94d3b802184b1cf9ee8",
+  "member_ids": [
+    "2c0aa1af-6a23-449d-af8e-884eb04c1e05"
+  ],
+  "item": {
+    "hash": "2dcdb700c3b9dd7533a67976e806ba4b7f993cc0be06a94d3b802184b1cf9ee8",
+    "primary_slug": "holy-spirit",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ቅዱሱ መንፈስ ስጦታዬ",
+      "አለህኝ አንተ የኔ ወዳጅ መንፈስ ቅዱስ"
+    ],
+    "reason": "The text directly addresses the Holy Spirit as 'Qidusu menfes' (Holy Spirit) and 'menfes qidus'.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3326,
+    "eval_count": 593,
+    "total_duration_ns": 8624842500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

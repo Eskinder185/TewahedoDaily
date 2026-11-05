@@ -1,0 +1,45 @@
+.page { display: grid; gap: 1rem; padding-bottom: 3rem; }
+.heading, .loader, .toolbar, .recordHead, .buttons { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; }
+.heading h1 { margin: .15rem 0; }
+.heading p { max-width: 55rem; }
+.eyebrow { font-size: .72rem; font-weight: 800; letter-spacing: .12em; }
+.loader, .bulk, .empty { padding: 1rem; border: 1px solid #d4d8dc; border-radius: .65rem; background: #fff; }
+.loader label, .toolbar label, .actions label { display: grid; gap: .3rem; }
+.loader small { overflow-wrap: anywhere; }
+.error { color: #8b1d1d; border: 1px solid #e3a8a8; padding: .65rem; border-radius: .4rem; }
+.dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .5rem; }
+.metric { display: grid; gap: .2rem; padding: .8rem; border: 1px solid #d4d8dc; border-radius: .55rem; background: #fff; }
+.metric span { color: #424e5b; font-size: .78rem; }
+.metric strong { font-size: 1.35rem; }
+.toolbar { justify-content: flex-start; background: #f2f5f7; padding: .75rem; border-radius: .55rem; }
+.toolbar input[type=search] { min-width: min(80vw, 22rem); }
+.workspace { display: grid; grid-template-columns: minmax(14rem, 21rem) minmax(0, 1fr); gap: .8rem; align-items: start; }
+.list, .detail { background: #fff; border: 1px solid #d4d8dc; border-radius: .65rem; }
+.list { max-height: 70vh; overflow: auto; padding: .55rem; }
+.list > p { margin: .4rem; font-size: .85rem; }
+.listItem { display: flex; align-items: center; gap: .4rem; border-bottom: 1px solid #e9ecef; padding: .35rem; }
+.listItem.active { background: #e7f2ef; border-radius: .35rem; }
+.listItem button { text-align: left; border: 0; background: transparent; flex: 1; cursor: pointer; padding: .25rem; }
+.listItem button strong, .listItem button small { display: block; }
+.listItem button small { margin-top: .25rem; color: #4c5662; }
+.detail { padding: 1rem; min-width: 0; }
+.recordHead { border-bottom: 1px solid #d4d8dc; padding-bottom: .7rem; }
+.recordHead h2 { margin: 0; }
+.recordHead p { margin: .35rem 0; }
+.recordHead small { overflow-wrap: anywhere; }
+.columns { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(17rem, .8fr); gap: 1rem; margin-top: 1rem; }
+.lyricPanel, .reviewPanel { min-width: 0; }
+.lyricPanel h3, .reviewPanel h3 { margin-top: 0; }
+.lyricPanel h4 { text-transform: capitalize; margin-bottom: .35rem; }
+.lyricPanel pre { font-family: inherit; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.8; max-height: 35rem; overflow: auto; padding: .8rem; background: #faf9f5; border-radius: .4rem; }
+.lyricPanel mark { background: #fff0a3; color: #272214; }
+.reviewPanel { display: grid; gap: .8rem; }
+.reviewPanel section { border: 1px solid #d9dee1; border-radius: .5rem; padding: .85rem; overflow-wrap: anywhere; }
+.reviewPanel section p { margin: .45rem 0; }
+.actions { display: grid; gap: .7rem; }
+.actions select, .actions textarea { width: 100%; box-sizing: border-box; }
+.buttons { justify-content: flex-start; }
+.buttons button, .bulk button { min-height: 2.5rem; }
+.bulk h2 { margin-top: 0; }
+@media (max-width: 900px) { .workspace, .columns { grid-template-columns: 1fr; } .list { max-height: 17rem; } }
+@media (max-width: 600px) { .toolbar label, .toolbar input, .toolbar select { width: 100%; } .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

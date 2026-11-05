@@ -1,0 +1,23 @@
+{
+  "group_hashes": [
+    "7414a5b8774f75ed0180d0b1f9bef4f794a8b55d549e1bf03cd3a91c0958e885"
+  ],
+  "output": {
+    "hash": "7414a5b8774f75ed0180d0b1f9bef4f794a8b55d549e1bf03cd3a91c0958e885",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics contain only Cloudflare challenge scripts and no hymn text.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1414,
+    "eval_count": 104,
+    "total_duration_ns": 3141857000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

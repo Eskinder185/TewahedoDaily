@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "f4b64c903bef77e8e06c99a26c34d682f4750e1aed427819c452ced9b9a4d37d",
+    "8a02292e2a76f11574cd4d0f1e37a2746b4905454c4a6099fb05c5392c98fb45",
+    "6fe7841cedd42e8f7ee504cf33a2f45df8b7c7632b0e32538e6c3eaf569fbab7"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "f4b64c903bef77e8e06c99a26c34d682f4750e1aed427819c452ced9b9a4d37d",
+        "primary_slug": "kidus-michael",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የአፎሚያ እረዳት ነህ ሚካኤል",
+          "እንጠራሃለን ሚካኤል ብለን"
+        ],
+        "reason": "Lyrics repeatedly address Saint Michael as 'helper of Afomia' and explicitly name him.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "8a02292e2a76f11574cd4d0f1e37a2746b4905454c4a6099fb05c5392c98fb45",
+        "primary_slug": "prayer",
+        "confidence": "medium",
+        "uncertain": false,
+        "evidence": [
+          "እኔ ልካፈለው ወራዳው ልጅሽ",
+          "መሰደድ ያለብኝ እኔ ነበርኩኝ"
+        ],
+        "reason": "Short lyrics express personal petition and need for guidance, fitting a prayer theme.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "6fe784cedd42e8f7ee504cf33a2f45df8b7c7632b0e32538e6c3eaf569fbab7",
+        "primary_slug": "holy-trinity",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ነአምን በአብ ወነአምን በወልድ",
+          "እናምናለን በመንፈስ ቅዱስ"
+        ],
+        "reason": "Lyrics explicitly affirm belief in the Father, Son, and Holy Spirit.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2052,
+    "eval_count": 594,
+    "total_duration_ns": 8304656500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

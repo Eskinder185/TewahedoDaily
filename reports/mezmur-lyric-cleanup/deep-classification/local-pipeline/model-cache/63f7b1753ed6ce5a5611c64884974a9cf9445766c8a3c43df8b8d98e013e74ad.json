@@ -1,0 +1,29 @@
+{
+  "group": "b4f6d28933ae380922ea0ef9ad17ec47dba62a20c33994b7388bda600a571d38",
+  "member_ids": [
+    "15e0223b-3673-4b5b-b1dd-2ec062465d41"
+  ],
+  "item": {
+    "hash": "b4f6d28933ae380922ea0ef9ad17ec47dba62a20c33994b7388bda600a571d38",
+    "primary_slug": "prophets",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ትርጉም፡- ቃል ከሰማይ ለመናገር በመጣ",
+      "Gize isat yeyordanosin bahir kebebew"
+    ],
+    "reason": "Lyrics describe the Word coming to speak and John baptizing, identifying the subject as a prophet.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1952,
+    "eval_count": 587,
+    "total_duration_ns": 8387975900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

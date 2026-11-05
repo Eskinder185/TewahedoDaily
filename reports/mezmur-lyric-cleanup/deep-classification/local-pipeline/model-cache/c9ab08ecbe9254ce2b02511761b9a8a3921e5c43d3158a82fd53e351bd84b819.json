@@ -1,0 +1,32 @@
+{
+  "group": "ab07a2427d01c673f6e807cd0202aa0ad70f4dc22556d5b20feb14bcc6613343",
+  "member_ids": [
+    "3e402df6-30ef-5944-b7b0-07b8ed584227"
+  ],
+  "item": {
+    "hash": "ab07a2427d01c673f6e807cd0202aa0ad70f4dc22556d5b20feb14bcc6613343",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ጴጥሮስ ተሰቀለ ጳውሎስ ተሰየፈ",
+      "የተዋሕዶ ልጆች አሁን ነው ሰዓቱ"
+    ],
+    "reason": "Lyrics explicitly reference Peter and Paul (apostles of Jesus) and the 'children of Tewahedo' (Christians), centering on Christian martyrdom.",
+    "competing_slugs": [
+      "martyrs",
+      "saints"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1600,
+    "eval_count": 551,
+    "total_duration_ns": 7960552600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

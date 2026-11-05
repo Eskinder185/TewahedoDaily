@@ -1,0 +1,31 @@
+{
+  "group": "7b63b6038652ebeb80bcaab47d5b4fb56d03e22d471d674afb0e588d610f2a74",
+  "member_ids": [
+    "468c849e-1c7b-5373-8e6a-a64655ad1324"
+  ],
+  "item": {
+    "hash": "7b63b6038652ebeb80bcaab47d5b4fb56d03e22d471d674afb0e588d610f2a74",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አማኑኤል ድንግል ማርያም ስለአሉ ቤታቸው",
+      "የድንግልና አክሊል"
+    ],
+    "reason": "The lyrics explicitly mention Mary (Maria) as the Virgin and focus on her role in the Nativity.",
+    "competing_slugs": [
+      "jesus-christ"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2586,
+    "eval_count": 658,
+    "total_duration_ns": 9664023400,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

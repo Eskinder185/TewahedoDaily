@@ -1,0 +1,53 @@
+{
+  "group_hashes": [
+    "100d6e5ae36cdc372c3cf73ae88dec5bea487ba13da80d4b82cf58e87c5f2ce1",
+    "afc30e82d8f9d2a5ab57e901b3ee1336d103db581a3ceaf3f9b11fabfddf8c0e",
+    "7205c782512209e026b40ff741b736a3570f5e010375446288ef9c2b4499f4b7"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "100d6e5ae36cdc372c3cf73ae88dec5bea487ba13da80d4b82cf58e87c5f2ce1",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የማያልቅበት ቸር እረኛ ነው",
+          "ሰማይና ምድርን የፈጠረ"
+        ],
+        "reason": "Lyrics praise God's creation and mercy without focusing on a specific saint or person.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "afc30e82d8f9d2a5ab57e901b3ee1336d103db581a3ceaf3f9b11fabfddf8c0e",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ፈጥሮአቸዋልና እንዲገለጥ ክብሩ",
+          "እግዚአብሔር ይመስገን ስሙን አወድሱ"
+        ],
+        "reason": "Text explicitly praises God's glory and commands blessing His name.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "7205c782512209e026b40ff741b736a3570f5e010375446288ef9c2b4499f4b7",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics mention Ethiopian culture and language but lack specific religious subject matter for classification.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1052,
+    "eval_count": 539,
+    "total_duration_ns": 7745054100,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

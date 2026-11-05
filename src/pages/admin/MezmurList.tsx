@@ -119,6 +119,7 @@ export function MezmurList() {
       <div className={s.actions}>
         <Link to="/admin/hymns/trash">Trash</Link>
         <Link to="/admin/hymns/import">Bulk CSV Import Preview</Link>
+        <Link to="/admin/hymns/mezmur/versions">Version Review</Link>
         <Link className={s.primary} to="/admin/hymns/mezmur/new">+ Add Mezmur</Link>
       </div>
     </div>

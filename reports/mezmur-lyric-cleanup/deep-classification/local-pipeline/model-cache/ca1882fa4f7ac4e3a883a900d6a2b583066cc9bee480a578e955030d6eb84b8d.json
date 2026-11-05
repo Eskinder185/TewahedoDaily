@@ -1,0 +1,26 @@
+{
+  "group": "8e662339613ad66708158a54315f1701bf7c197e8c930115124f590f2cad67a9",
+  "member_ids": [
+    "0e85e47f-bec6-4f01-89d0-ea16435eff60"
+  ],
+  "item": {
+    "hash": "8e662339613ad66708158a54315f1701bf7c197e8c930115124f590f2cad67a9",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics are incomplete and lack specific theological references to resolve a category.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2037,
+    "eval_count": 586,
+    "total_duration_ns": 8768530800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

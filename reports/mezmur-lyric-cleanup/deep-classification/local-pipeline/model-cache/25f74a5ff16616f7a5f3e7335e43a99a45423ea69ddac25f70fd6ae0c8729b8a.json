@@ -1,0 +1,29 @@
+{
+  "group": "769fd54a55dccc93b09ac715cbeb7eb4dc73d7ef932609c6a211a17dd5faa3af",
+  "member_ids": [
+    "2f3654b3-1e13-58ca-bac1-dea11c206bac"
+  ],
+  "item": {
+    "hash": "769fd54a55dccc93b09ac715cbeb7eb4dc73d7ef932609c6a211a17dd5faa3af",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "አለም የዳነባት ድንግል ማርያም ነች",
+      "ማርያም በግርማሽ ከሳሻችን ያፍራል"
+    ],
+    "reason": "The lyrics explicitly praise Mary as the Virgin and describe her virtues, making her the central subject.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3164,
+    "eval_count": 607,
+    "total_duration_ns": 8786306900,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

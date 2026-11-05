@@ -1,0 +1,29 @@
+{
+  "group": "21209a2b89620926ef28fd84c4844c130a77a4e395c551d04c04d948d69620e4",
+  "member_ids": [
+    "10c5ec52-c272-45a4-9b5e-173604f7efcd"
+  ],
+  "item": {
+    "hash": "21209a2b89620926ef28fd84c4844c130a77a4e395c551d04c04d948d69620e4",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ዝገርመኒ ኣበይ ኔርካ ዘይበልካኒ ጎይታ",
+      "ካብቲ ቅዱስ ማኣድኻ ብጉጤት ተመንጣሊ"
+    ],
+    "reason": "Lyrics address Jesus directly as 'Goita' (Lord) and reference His judgment seat and mercy.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2928,
+    "eval_count": 620,
+    "total_duration_ns": 9076741700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

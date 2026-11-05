@@ -1,0 +1,31 @@
+{
+  "group": "0128e7ac7646b7a3dbf2803272c973eed09702f8f6e63344cefa621340987da7",
+  "member_ids": [
+    "517aedfe-2539-5ac5-b17f-ae5d91d550a1"
+  ],
+  "item": {
+    "hash": "0128e7ac7646b7a3dbf2803272c973eed09702f8f6e63344cefa621340987da7",
+    "primary_slug": "saints",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "mskrnetun geletse qirqos htsan",
+      "Gebriel telake enesun lemawtat"
+    ],
+    "reason": "Hymn recounts martyrdom of infant and mother, invoking Gabriel; fits saints/martyrs.",
+    "competing_slugs": [
+      "martyrs"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1384,
+    "eval_count": 534,
+    "total_duration_ns": 7510989700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

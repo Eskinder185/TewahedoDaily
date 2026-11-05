@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "9bc424c4613e3ef7d6ce702e217f7233d03282085aaf132255866e87672b5e70",
+    "5c8c73564fa07e6d9df2938fd77bc8b0b50e17251e8feac676047f899fd26559",
+    "4c33756be3b27c1d22abbee2955ac2a758d3f408be9ab4ca157b3de5bac3a918"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "9bc424c4613e3ef7d6ce702e217f7233d03282085aaf132255866e87672b5e70",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ለጽድቅ ሥራ ለእውነት ብለን መጥተናል እንጂ",
+          "በጽድቅ ሥራ ለእውነት ብለን መጥተናል እንጂ"
+        ],
+        "reason": "Lyrics explicitly call for truth and righteousness, rejecting falsehood, which aligns with repentance themes.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "5c8c73564fa07e6d9df2938fd77bc8b0b50e17251e8feac676047f899fd26559",
+        "primary_slug": "general",
+        "confidence": "medium",
+        "uncertain": true,
+        "evidence": [
+          "በሥጋዊው ዓይን ባናየው",
+          "የዓለም ጥንስስ ተዋሕዷል"
+        ],
+        "reason": "Lyrics describe worldly conditions without specific religious figures or themes, making general the best fit.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "4c33756be3b27c1d22abbee2955ac2a758d3f408be9ab4ca157b3de5bac3a918",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "እናቴ ነሽ ዋሴ ለሕይወቴ",
+          "ድንግል ንጽህናሽ ለእኔ ሆኖ ይገኝ"
+        ],
+        "reason": "Lyrics directly address Mary as 'mother' and 'virgin', seeking her intercession, clearly indicating Virgin Mary.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1951,
+    "eval_count": 630,
+    "total_duration_ns": 9024944000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

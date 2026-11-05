@@ -24,6 +24,8 @@ import s from './HymnPractice.module.css'
 import { HymnLyricsExperience } from '../components/hymns/HymnLyricsExperience'
 import { useMezmurQueue } from '../lib/mezmur/useMezmurQueue'
 import { QueueTransport } from '../components/mezmur/QueueTransport'
+import { confirmedAlternatesFor } from '../lib/mezmur/confirmedVersions.ts'
+import { KNOWLEDGE_CANDIDATE_PASSAGES } from '../data/knowledgeCandidatePassages.ts'
 
 export function PublicMezmurDetail() {
   const { slug } = useParams()
@@ -64,6 +66,21 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
   const [customError, setCustomError] = useState('')
   const [copied, setCopied] = useState(false)
   const [customUrl, setCustomUrl] = useState<string | null>(() => readCustomHymnVideo(item.slug))
+  const [confirmedAlternates, setConfirmedAlternates] = useState<Array<{ slug: string; title: string }>>([])
+
+  useEffect(() => {
+    let active = true
+    const candidates = confirmedAlternatesFor(item.slug)
+    if (!candidates.length) {
+      queueMicrotask(() => { if (active) setConfirmedAlternates([]) })
+      return () => { active = false }
+    }
+    void Promise.all(candidates.map(async (candidate) => {
+      const published = await detail(candidate.slug).catch(() => null)
+      return published ? { slug: published.slug, title: published.title } : null
+    })).then((matches) => { if (active) setConfirmedAlternates(matches.filter((match): match is { slug: string; title: string } => Boolean(match))) })
+    return () => { active = false }
+  }, [item.slug])
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -118,6 +135,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
   ].filter(Boolean) as string[]
 
   const relatedBrowse = relatedBrowseLinks(item)
+  const suggestedPassages = KNOWLEDGE_CANDIDATE_PASSAGES.filter(candidate => candidate.hymnSlug === item.slug)
 
   usePageMeta(
     item.title,
@@ -231,6 +249,15 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
       {classificationLines.length > 0 ? (
         <p className={s.metaLine}>{classificationLines.join(' · ')}</p>
       ) : null}
+
+      {confirmedAlternates.length > 0 ? <nav className={s.relatedBrowse} aria-label="Confirmed alternate versions"><p className={s.relatedBrowseLabel}>Confirmed alternate versions</p><ul className={s.relatedBrowseList}>{confirmedAlternates.map((alternate) => <li key={alternate.slug}><Link to={`/hymns/mezmur/${alternate.slug}`}>{alternate.title}</Link></li>)}</ul></nav> : null}
+
+      {suggestedPassages.length > 0 ? <nav className={s.relatedBrowse} aria-label="Suggested Scripture connections">
+        <p className={s.relatedBrowseLabel}>Explore the biblical event</p>
+        <p>The lyrics mention Tabor and Moses. These Scripture links are suggested event connections awaiting editorial review, not direct quotations.</p>
+        <ul className={s.relatedBrowseList}>{suggestedPassages.map(candidate =>
+          <li key={`${candidate.bookSlug}-${candidate.chapter}`}><Link to={`/bible/${candidate.bookSlug}/${candidate.chapter}`}>{candidate.reference}</Link></li>)}</ul>
+      </nav> : null}
 
       {relatedBrowse.length > 0 ? (
         <nav className={s.relatedBrowse} aria-label="Related browsing">

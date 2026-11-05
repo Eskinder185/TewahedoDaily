@@ -1,0 +1,55 @@
+{
+  "group_hashes": [
+    "7a25384d27871a1243075dbabd231a3b572d5babc98e52d8daa2b9991b3e2557",
+    "6657288fb36052d6d0f22a5f717e24ff6ae5ed7c5b474363032320704af8487c",
+    "c270a40425678f3bd1b1f69c96747b809630c7cb51dd7cfbeb3e7783ccf6662d"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "7a25384d27871a1243075dbabd231a3b572d5babc98e52d8daa2b9991b3e2557",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ኦ ክርስቶስ ኦ አምላክ ብሩህ ነህ",
+          "የዓለም መድሃኒት ክርስቶስ"
+        ],
+        "reason": "Lyrics repeatedly address Jesus Christ as God, Savior, and Lord throughout the text.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "6657288fb36052d6d0f22a5f717e24ff6ae5ed7c5b474363032320704af8487c",
+        "primary_slug": "prayer",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ቀን ከሌት ተግተው ነው በጾምና ጸሎት"
+        ],
+        "reason": "The lyrics explicitly mention fasting and prayer as central themes of devotion.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "c270a40425678f3bd1b1f69c96747b809630c7cb51dd7cfbeb3e7783ccf6662d",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "የአለም ሀብታት ሁሉ በአንድ ቢደመሩ",
+          "በእርሱ ደስ ይለኛል"
+        ],
+        "reason": "The text focuses on Jesus as the source of love, peace, and salvation for the world.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3294,
+    "eval_count": 572,
+    "total_duration_ns": 8560020500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

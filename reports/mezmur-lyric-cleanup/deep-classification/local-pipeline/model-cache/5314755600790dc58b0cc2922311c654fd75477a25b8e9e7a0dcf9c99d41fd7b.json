@@ -1,0 +1,29 @@
+{
+  "group": "336d6d8ff4e241ebac43e9376e89510031035dcf81652cff25598787789d77a0",
+  "member_ids": [
+    "010c4040-e998-4c74-a138-638177c4ec0e"
+  ],
+  "item": {
+    "hash": "336d6d8ff4e241ebac43e9376e89510031035dcf81652cff25598787789d77a0",
+    "primary_slug": "praise-worship",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ይህንን ጉባኤ ባርክልን ጌታችን",
+      "ሰላም ስጠን ፍቅርን ስጠን ዛሬ ለሁላችን"
+    ],
+    "reason": "Title 'Yihnin Gubae' (This Assembly) and lyrics bless the assembly and offer peace/love.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2218,
+    "eval_count": 797,
+    "total_duration_ns": 29079551500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

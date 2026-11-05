@@ -1,0 +1,26 @@
+{
+  "group": "c8f1193f2928632179eb2facd5328882c9e3dca254a79aaed3ada6de850a1212",
+  "member_ids": [
+    "0bb2518b-44b8-4c96-b1e7-b6657d1dc49a"
+  ],
+  "item": {
+    "hash": "c8f1193f2928632179eb2facd5328882c9e3dca254a79aaed3ada6de850a1212",
+    "primary_slug": null,
+    "confidence": "low",
+    "uncertain": true,
+    "evidence": [],
+    "reason": "Lyrics are unintelligible transliteration without clear subject matter.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1712,
+    "eval_count": 461,
+    "total_duration_ns": 7086052300,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

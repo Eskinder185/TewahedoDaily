@@ -1,0 +1,56 @@
+{
+  "group_hashes": [
+    "7dbaf5e78a03fa0df49b6947460877a47427c56e7fe20495c6f0590fece1c73c",
+    "9173aadc71a9960309e4a42618e50c29c2a15c6ee98ce9ea4532770095eee37e",
+    "9f7dfd980cb40c47517f03c8afa4750814d8e45aa77ad9ebb4a9ff85bde95372"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "7dbaf5e78a03fa0df49b6947460877a47427c56e7fe20495c6f0590fece1c73c",
+        "primary_slug": "praise-worship",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "Habe abuhu arge semayat arge semayat",
+          "Paraqlitosza menfesetsdiq awrede"
+        ],
+        "reason": "The lyrics are a direct address of praise to the Father and Son in heaven.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "9173aadc71a9960309e4a42618e50c29c2a15c6ee98ce9ea4532770095eee37e",
+        "primary_slug": "jesus-christ",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "meche new geta here meche new /2/ Getaye",
+          "ende qalh yemihon guzoye"
+        ],
+        "reason": "The hymn is entirely focused on the Lord (Gete) and following His word.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "9f7dfd980cb40c47517f03c8afa4750814d8e45aa77ad9ebb4a9ff85bde95372",
+        "primary_slug": "salvation",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "fetanye qerbo fetena abztwal",
+          "tesfa yarekut teftwal kefite"
+        ],
+        "reason": "The text describes passing through trials and receiving hope/salvation from the Lord.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2307,
+    "eval_count": 519,
+    "total_duration_ns": 7590239600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

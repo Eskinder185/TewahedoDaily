@@ -1,0 +1,29 @@
+{
+  "group": "841531ddd39b29e2e825c0e8385f732cbc9d0a61bbce5236e9885f4fa84d5763",
+  "member_ids": [
+    "4061b73c-0480-5934-bf22-c9c5b68cc621"
+  ],
+  "item": {
+    "hash": "841531ddd39b29e2e825c0e8385f732cbc9d0a61bbce5236e9885f4fa84d5763",
+    "primary_slug": "virgin-mary",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ድንግል እመቤቴ ወላዲተ ቃል",
+      "ማርያም እናቴ ነሽ"
+    ],
+    "reason": "The hymn explicitly names Mary and addresses her as the Virgin Mother of God.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2874,
+    "eval_count": 590,
+    "total_duration_ns": 8724313600,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

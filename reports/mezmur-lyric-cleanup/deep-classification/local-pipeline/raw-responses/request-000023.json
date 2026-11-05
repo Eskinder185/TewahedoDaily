@@ -1,0 +1,55 @@
+{
+  "group_hashes": [
+    "6bd3a3f494708570a34f988633bedfe91e2cca6ba242b13e59681dc055890f07",
+    "7a8a0ef32e9722913577fa0cce697f1924c40da0fbafec578506dece8b8464a7",
+    "0eea2a9aeabfe12081806bafbe160660a6eefc4c1f28354d43f826391fdc3f23"
+  ],
+  "output": {
+    "items": [
+      {
+        "hash": "6bd3a3f494708570a34f988633bedfe91e2cca6ba242b13e59681dc055890f07",
+        "primary_slug": "virgin-mary",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "በሠርጋችን እለት ተገኘች ድንግል ማርያም",
+          "አጋር እንድትሆነው ሔዋንን ሰጠህ"
+        ],
+        "reason": "Lyrics explicitly address Virgin Mary and her role in salvation alongside Eve.",
+        "competing_slugs": []
+      },
+      {
+        "hash": "7a8a0ef32e9722913577fa0cce697f1924c40da0fbafec578506dece8b8464a7",
+        "primary_slug": "repentance",
+        "confidence": "high",
+        "uncertain": false,
+        "evidence": [
+          "ዴማስ ወደ ህይወት እባክህ ቶሎና",
+          "ወንድሜ ተመለስ ወዴት ትሔዳለህ"
+        ],
+        "reason": "The song urges conversion and returning to God, central themes of repentance.",
+        "competing_slugs": [
+          "jesus-christ"
+        ]
+      },
+      {
+        "hash": "0eea2a9aeabfe12081806bafbe160660a6eefc4c1f28354d43f826391fdc3f23",
+        "primary_slug": null,
+        "confidence": "low",
+        "uncertain": true,
+        "evidence": [],
+        "reason": "Lyrics are incomplete and lack specific theological content to classify.",
+        "competing_slugs": []
+      }
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2493,
+    "eval_count": 544,
+    "total_duration_ns": 8623891000,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  }
+}

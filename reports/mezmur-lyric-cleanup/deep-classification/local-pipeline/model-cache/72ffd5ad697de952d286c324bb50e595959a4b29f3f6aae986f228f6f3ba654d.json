@@ -1,0 +1,29 @@
+{
+  "group": "4ada4131acc965fcb4d7703852caf43d805a742359ba17e1f9f68ba9bdc87839",
+  "member_ids": [
+    "3cada034-d804-4502-a97a-444b6eb83943"
+  ],
+  "item": {
+    "hash": "4ada4131acc965fcb4d7703852caf43d805a742359ba17e1f9f68ba9bdc87839",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "እራሱን የሠዋው የዓለም ብርሃን ልዩ ነው\nእካሉን መድኃነት አድርጐ የሰጠን ልዩ ነው",
+      "የፈውሳችን ፀሐይ የጽድቃችን ጮራ ልዩ ነው"
+    ],
+    "reason": "Lyrics describe the Savior as light, salvation, and sun, clearly referring to Jesus Christ.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1584,
+    "eval_count": 611,
+    "total_duration_ns": 8793242800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

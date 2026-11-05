@@ -1,0 +1,31 @@
+{
+  "group": "bed0ee8dff94034fae958ac73bbd588621b40531e3779067b480d35a65ca0b2c",
+  "member_ids": [
+    "58c61331-e2c7-5a0a-81ab-6ea2f81bf130"
+  ],
+  "item": {
+    "hash": "bed0ee8dff94034fae958ac73bbd588621b40531e3779067b480d35a65ca0b2c",
+    "primary_slug": "holy-spirit",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ቅዱስ መንፈስህ አንድ ሃሳብ አድርገን",
+      "አስምሪን እማምላክ ድንግል ወላዲቱ"
+    ],
+    "reason": "The hymn directly addresses the Holy Spirit and mentions the Virgin Mary as His mother.",
+    "competing_slugs": [
+      "virgin-mary"
+    ]
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 3172,
+    "eval_count": 603,
+    "total_duration_ns": 9112929500,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

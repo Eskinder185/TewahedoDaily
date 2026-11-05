@@ -1,0 +1,29 @@
+{
+  "group": "b1cc97ccd3ad87e549f4613b0e1fabe5a675f54c47ee26f557f9cfa53cf408c0",
+  "member_ids": [
+    "4f8a71c3-ec79-547d-8610-c1a8e69b273b"
+  ],
+  "item": {
+    "hash": "b1cc97ccd3ad87e549f4613b0e1fabe5a675f54c47ee26f557f9cfa53cf408c0",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ቃሉን የማይረሳ የማይተውሽ ጌታ",
+      "qalun yemayresa yemaytewsh geta"
+    ],
+    "reason": "The hymn addresses the 'Geta' (Lord) who does not cease His word, clearly referring to Jesus Christ.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1847,
+    "eval_count": 584,
+    "total_duration_ns": 8329674200,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

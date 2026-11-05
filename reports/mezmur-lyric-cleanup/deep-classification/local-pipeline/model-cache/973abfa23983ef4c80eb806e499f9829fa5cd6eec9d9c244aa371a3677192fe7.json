@@ -1,0 +1,29 @@
+{
+  "group": "a0649d525790b8532963ecac5af0fa4c4da4d0247db9752473d7e529de8db5a4",
+  "member_ids": [
+    "5af062d6-6547-5a3d-94d4-1edf3e90d9c9"
+  ],
+  "item": {
+    "hash": "a0649d525790b8532963ecac5af0fa4c4da4d0247db9752473d7e529de8db5a4",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ጌታችን ክርስቶስ በመስቀል ላይ ሳለ",
+      "ድምጽህን በማሰማት አባት ሆይ"
+    ],
+    "reason": "The hymn explicitly describes the crucifixion of Jesus Christ and addresses Him as 'Father' during His death.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 2504,
+    "eval_count": 433,
+    "total_duration_ns": 6707197700,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}

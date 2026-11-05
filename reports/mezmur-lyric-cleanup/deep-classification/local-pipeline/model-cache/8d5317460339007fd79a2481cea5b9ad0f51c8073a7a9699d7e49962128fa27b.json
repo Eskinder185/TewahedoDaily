@@ -1,0 +1,29 @@
+{
+  "group": "813022da2fcc6226ffe34bcdf55a1e92a347b21d6e513127b1985da0c45c4b37",
+  "member_ids": [
+    "3c0ed99b-d92c-5f5b-8835-f7d1d2a55e6a"
+  ],
+  "item": {
+    "hash": "813022da2fcc6226ffe34bcdf55a1e92a347b21d6e513127b1985da0c45c4b37",
+    "primary_slug": "jesus-christ",
+    "confidence": "high",
+    "uncertain": false,
+    "evidence": [
+      "ሳኦል እኔን ሲያሳድደኝ\nጎልያድም ሲዝትብኝ",
+      "አይዞህ ብሎ አምላኬ አጽናናኝ"
+    ],
+    "reason": "Lyrics reference Saul and Goliath, biblical figures associated with Jesus Christ's ministry and victory.",
+    "competing_slugs": []
+  },
+  "provenance": {
+    "model": "qwen3.5:9b",
+    "prompt_eval_count": 1584,
+    "eval_count": 611,
+    "total_duration_ns": 8793242800,
+    "runner": "ollama",
+    "taxonomy_sha256": "79560a9cca69cc2a68fe81443f1b63e05cd2ce9aba0e3bb6e699134b51da6848",
+    "version": "local-classification-v1"
+  },
+  "review_kind": "local_model_proposal",
+  "human_verified": false
+}
