@@ -47,3 +47,5 @@ backend/**/__pycache__/
 backend/*.egg-info/
 backend/.coverage
 backend/htmlcov/
+
+scratch-test-media-resolver/
