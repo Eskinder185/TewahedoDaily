@@ -1,21 +1,24 @@
-name: Deploy to GitHub Pages
+# GitHub Pages is not enabled for this repository. This workflow validates the
+# public frontend without attempting to publish to a nonexistent Pages site.
+# The production hosting/deployment pipeline is managed separately.
+name: Validate frontend build
 
 on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: frontend-build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,21 +39,13 @@ jobs:
       - name: Guard — never publish backend or private packages
         run: |
           if [ -d dist/backend ] || [ -d dist/content-review ] || [ -f dist/content-review.zip ]; then
-            echo "Refusing to publish backend or private editorial package via Pages"
+            echo "Refusing to publish backend or private editorial package"
             exit 1
           fi
           if find dist -name 'main.py' -o -name 'Dockerfile.optimized' | grep -q .; then
-            echo "Refusing to publish Python backend artifacts via Pages"
+            echo "Refusing to package Python backend artifacts"
             exit 1
           fi
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
-
-      - name: Deploy
-        uses: actions/deploy-pages@v4
+      - name: Verify public output exists
+        run: test -s dist/index.html
