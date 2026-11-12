@@ -1,3 +1,4 @@
+import { publicErrorMessage } from '../lib/errors/publicError'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { useUrlSearchInput } from '../hooks/useUrlState'
@@ -549,7 +550,7 @@ export function PublicMezmurLibrary() {
       .catch((cause) => {
         if (!active) return
         if (import.meta.env.DEV) console.error('[hymn practice] zemaris', cause)
-        setZemariError(cause instanceof Error ? cause.message : t('practice.loadError'))
+        setZemariError(publicErrorMessage(cause, t('practice.loadError')))
         setZemariLoading(false)
       })
     return () => {
@@ -698,7 +699,7 @@ export function PublicMezmurLibrary() {
       })
       .catch((cause) => {
         if (import.meta.env.DEV) console.error('[hymn practice] more zemaris', cause)
-        setZemariError(cause instanceof Error ? cause.message : t('practice.loadError'))
+        setZemariError(publicErrorMessage(cause, t('practice.loadError')))
         setZemariLoading(false)
       })
   }
