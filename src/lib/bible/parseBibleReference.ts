@@ -3,6 +3,8 @@
  * Number-word conversion applies only inside a detected reference shape.
  */
 
+import { ethiopicNumeralsToDigits, normalizeEthiopicReferencePunctuation } from '../search/ethiopicNumerals.ts'
+
 export type ParsedBibleReference = {
   bookQuery: string
   chapter: number | null
@@ -54,6 +56,19 @@ const BOOK_ORDINAL_WORDS: Record<string, string> = {
   i: '1',
   ii: '2',
   iii: '3',
+}
+
+/**
+ * Search representation of a reference query: Ethiopic numerals become digits (፫፥፲፮ → 3:16), Ethiopic punctuation
+ * is folded, and the Amharic words for chapter (ምዕራፍ) and verse (ቁጥር) become the markers the parser already handles.
+ * The original query is kept in `ParsedBibleReference.raw`.
+ */
+export function prepareReferenceText(input: string): string {
+  return normalizeEthiopicReferencePunctuation(ethiopicNumeralsToDigits(input.normalize('NFC')))
+    .replace(/ምዕራፍ/g, ' chapter ')
+    .replace(/ቁጥር/g, ' verse ')
+    .replace(/\s+/g, ' ')
+    .trim()
 }
 
 function collapseWs(value: string): string {
@@ -143,7 +158,7 @@ export function parseBibleReference(queryRaw: string): ParsedBibleReference {
   }
   if (!raw) return empty
 
-  const converted = convertReferenceNumberWords(raw)
+  const converted = convertReferenceNumberWords(prepareReferenceText(raw))
   let text = converted
     .replace(/[–—]/g, '-')
     .replace(/\s*:\s*/g, ':')

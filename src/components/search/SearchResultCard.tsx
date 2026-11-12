@@ -3,6 +3,8 @@ import { useTranslation } from '../../i18n'
 import type { SiteSearchResult, SiteSearchSourceType } from '../../lib/search/types'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
 import styles from './SearchBuddy.module.css'
+import { Highlighted } from './Highlighted'
+import { MATCH_KEY } from './matchLabels'
 
 const TYPE_KEY: Record<SiteSearchSourceType, string> = {
   page: 'searchBuddy.types.page',
@@ -71,7 +73,10 @@ export function SearchResultCard({
         <div className={styles.cardArtEmpty} aria-hidden />
       )}
       <div className={styles.cardBody}>
-        <p className={styles.cardType}>{typeLabel}</p>
+        <p className={styles.cardType}>
+          {typeLabel}
+          {result.matchLabel && MATCH_KEY[result.matchLabel] ? ` · ${t(MATCH_KEY[result.matchLabel])}` : ''}
+        </p>
         {result.titleAmharic ? (
           <p className={styles.cardAm} lang="am">
             {result.titleAmharic}
@@ -83,7 +88,7 @@ export function SearchResultCard({
         {desc ? <p className={styles.cardDesc}>{desc}</p> : null}
         {excerpt && !preferPreview ? (
           <p className={styles.cardExcerpt} lang={excerptLang}>
-            {excerpt}
+            <Highlighted text={result.excerpt ?? ''} ranges={result.highlights} />
           </p>
         ) : null}
         {result.sourceLabel && (preferPreview || bible) ? (

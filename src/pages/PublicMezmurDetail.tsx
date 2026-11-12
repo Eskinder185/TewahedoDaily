@@ -27,6 +27,8 @@ import { QueueTransport } from '../components/mezmur/QueueTransport'
 import { confirmedAlternatesFor } from '../lib/mezmur/confirmedVersions.ts'
 import { KNOWLEDGE_CANDIDATE_PASSAGES } from '../data/knowledgeCandidatePassages.ts'
 
+import { publicErrorMessage } from '../lib/errors/publicError'
+
 export function PublicMezmurDetail() {
   const { slug } = useParams()
   const result = useAsync(useCallback(() => detail(slug || ''), [slug]))
@@ -36,7 +38,7 @@ export function PublicMezmurDetail() {
       {result.loading ? <p role="status">Loading hymn…</p> : null}
       {result.error ? (
         <div className={s.errorBox} role="alert">
-          <p>{result.error}</p>
+          <p>{publicErrorMessage(result.error, 'This hymn could not be loaded right now. Please try again.')}</p>
           <button type="button" className={s.primaryBtn} onClick={result.reload}>
             Try again
           </button>

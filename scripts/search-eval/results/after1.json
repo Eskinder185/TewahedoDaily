@@ -1,0 +1,1930 @@
+{
+ "summary": {
+  "label": "after1",
+  "when": "2026-11-12T17:06:18.322Z",
+  "systems": {
+   "catalog": {
+    "all": {
+     "n": 92,
+     "top1": 52,
+     "top3": 53,
+     "top5": 53,
+     "top20": 54,
+     "miss": 38,
+     "empty": 34,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 70,
+     "p95ms": 220
+    },
+    "title-exact": {
+     "n": 18,
+     "top1": 18,
+     "top3": 18,
+     "top5": 18,
+     "top20": 18,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 57,
+     "p95ms": 218
+    },
+    "split:tune": {
+     "n": 74,
+     "top1": 42,
+     "top3": 43,
+     "top5": 43,
+     "top20": 44,
+     "miss": 30,
+     "empty": 27,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 70,
+     "p95ms": 220
+    },
+    "split:heldout": {
+     "n": 18,
+     "top1": 10,
+     "top3": 10,
+     "top5": 10,
+     "top20": 10,
+     "miss": 8,
+     "empty": 7,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 76,
+     "p95ms": 415
+    },
+    "title-spelling-drift": {
+     "n": 13,
+     "top1": 12,
+     "top3": 12,
+     "top5": 12,
+     "top20": 13,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 84,
+     "p95ms": 308
+    },
+    "title-partial": {
+     "n": 5,
+     "top1": 5,
+     "top3": 5,
+     "top5": 5,
+     "top20": 5,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 36,
+     "p95ms": 42
+    },
+    "title-amharic": {
+     "n": 16,
+     "top1": 15,
+     "top3": 16,
+     "top5": 16,
+     "top20": 16,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 31,
+     "p95ms": 71
+    },
+    "lyric-transliteration": {
+     "n": 18,
+     "top1": 0,
+     "top3": 0,
+     "top5": 0,
+     "top20": 0,
+     "miss": 18,
+     "empty": 16,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 97,
+     "p95ms": 207
+    },
+    "lyric-amharic": {
+     "n": 14,
+     "top1": 1,
+     "top3": 1,
+     "top5": 1,
+     "top20": 1,
+     "miss": 13,
+     "empty": 12,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 70,
+     "p95ms": 220
+    },
+    "lyric-with-request": {
+     "n": 8,
+     "top1": 1,
+     "top3": 1,
+     "top5": 1,
+     "top20": 1,
+     "miss": 7,
+     "empty": 6,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 208,
+     "p95ms": 415
+    }
+   },
+   "specialist": {
+    "all": {
+     "n": 92,
+     "top1": 82,
+     "top3": 88,
+     "top5": 88,
+     "top20": 88,
+     "miss": 4,
+     "empty": 4,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 164,
+     "p95ms": 238
+    },
+    "title-exact": {
+     "n": 18,
+     "top1": 18,
+     "top3": 18,
+     "top5": 18,
+     "top20": 18,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 178,
+     "p95ms": 373
+    },
+    "split:tune": {
+     "n": 74,
+     "top1": 68,
+     "top3": 73,
+     "top5": 73,
+     "top20": 73,
+     "miss": 1,
+     "empty": 1,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 161,
+     "p95ms": 263
+    },
+    "split:heldout": {
+     "n": 18,
+     "top1": 14,
+     "top3": 15,
+     "top5": 15,
+     "top20": 15,
+     "miss": 3,
+     "empty": 3,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 164,
+     "p95ms": 181
+    },
+    "title-spelling-drift": {
+     "n": 13,
+     "top1": 8,
+     "top3": 9,
+     "top5": 9,
+     "top20": 9,
+     "miss": 4,
+     "empty": 4,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 173,
+     "p95ms": 323
+    },
+    "title-partial": {
+     "n": 5,
+     "top1": 4,
+     "top3": 5,
+     "top5": 5,
+     "top20": 5,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 177,
+     "p95ms": 822
+    },
+    "title-amharic": {
+     "n": 16,
+     "top1": 14,
+     "top3": 16,
+     "top5": 16,
+     "top20": 16,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 164,
+     "p95ms": 213
+    },
+    "lyric-transliteration": {
+     "n": 18,
+     "top1": 17,
+     "top3": 18,
+     "top5": 18,
+     "top20": 18,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 147,
+     "p95ms": 207
+    },
+    "lyric-amharic": {
+     "n": 14,
+     "top1": 13,
+     "top3": 14,
+     "top5": 14,
+     "top20": 14,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 164,
+     "p95ms": 199
+    },
+    "lyric-with-request": {
+     "n": 8,
+     "top1": 8,
+     "top3": 8,
+     "top5": 8,
+     "top20": 8,
+     "miss": 0,
+     "empty": 0,
+     "failed": 0,
+     "dup": 0,
+     "p50ms": 150,
+     "p95ms": 178
+    }
+   }
+  }
+ },
+ "detail": [
+  {
+   "system": "catalog",
+   "id": "m001",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m002",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m003",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m004",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m005",
+   "kind": "title-exact",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m006",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 17,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m007",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 5,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m008",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 5,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m009",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m010",
+   "kind": "title-exact",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m011",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m012",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m013",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m014",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m015",
+   "kind": "title-exact",
+   "split": "heldout",
+   "rank": 1,
+   "results": 9,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m016",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m017",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m018",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m019",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 16,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m020",
+   "kind": "title-spelling-drift",
+   "split": "heldout",
+   "rank": 1,
+   "results": 14,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m021",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 8,
+   "results": 9,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m022",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m023",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m024",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m025",
+   "kind": "title-spelling-drift",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m026",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m027",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m028",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m029",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m030",
+   "kind": "title-spelling-drift",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m031",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m032",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m033",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m034",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 18,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m035",
+   "kind": "title-partial",
+   "split": "heldout",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m036",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 14,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m037",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m038",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m039",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m040",
+   "kind": "title-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m041",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m042",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m043",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m044",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m045",
+   "kind": "title-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m046",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m047",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m048",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m049",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m050",
+   "kind": "title-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m051",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m052",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m053",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m054",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m055",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": null,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m056",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m057",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m058",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m059",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m060",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m061",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m062",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m063",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m064",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m065",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m066",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m067",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m068",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m069",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m070",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m071",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m072",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m073",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m074",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m075",
+   "kind": "lyric-amharic",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m076",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m077",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m078",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m079",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m080",
+   "kind": "lyric-amharic",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m081",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m082",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m083",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m084",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m085",
+   "kind": "lyric-with-request",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m086",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m087",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": null,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m088",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m089",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m090",
+   "kind": "lyric-with-request",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m091",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "catalog",
+   "id": "m092",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m001",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m002",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m003",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m004",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m005",
+   "kind": "title-exact",
+   "split": "heldout",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m006",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 9,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m007",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m008",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m009",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m010",
+   "kind": "title-exact",
+   "split": "heldout",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m011",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m012",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m013",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 12,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m014",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m015",
+   "kind": "title-exact",
+   "split": "heldout",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m016",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m017",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m018",
+   "kind": "title-exact",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m019",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m020",
+   "kind": "title-spelling-drift",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m021",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m022",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m023",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m024",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m025",
+   "kind": "title-spelling-drift",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m026",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m027",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m028",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m029",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m030",
+   "kind": "title-spelling-drift",
+   "split": "heldout",
+   "rank": null,
+   "results": 0,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m031",
+   "kind": "title-spelling-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m032",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m033",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m034",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m035",
+   "kind": "title-partial",
+   "split": "heldout",
+   "rank": 2,
+   "results": 14,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m036",
+   "kind": "title-partial",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m037",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m038",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m039",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 20,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m040",
+   "kind": "title-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m041",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m042",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m043",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m044",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m045",
+   "kind": "title-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m046",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m047",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 2,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m048",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m049",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m050",
+   "kind": "title-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m051",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 6,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m052",
+   "kind": "title-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 5,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m053",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m054",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m055",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m056",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m057",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m058",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m059",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m060",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m061",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m062",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m063",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m064",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m065",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m066",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m067",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m068",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m069",
+   "kind": "lyric-transliteration",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m070",
+   "kind": "lyric-transliteration",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m071",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m072",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m073",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m074",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m075",
+   "kind": "lyric-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m076",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m077",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m078",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m079",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m080",
+   "kind": "lyric-amharic",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m081",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m082",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m083",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m084",
+   "kind": "lyric-amharic",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m085",
+   "kind": "lyric-with-request",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m086",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m087",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m088",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m089",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m090",
+   "kind": "lyric-with-request",
+   "split": "heldout",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m091",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "system": "specialist",
+   "id": "m092",
+   "kind": "lyric-with-request",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  }
+ ]
+}

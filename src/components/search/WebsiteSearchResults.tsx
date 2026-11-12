@@ -4,6 +4,8 @@ import { isPublicContentRoute } from '../../lib/search/searchCore'
 import { isNavigationResult } from '../../lib/search/siteSearchStatus'
 import type { SiteSearchResponse, SiteSearchResult, SiteSourceReport } from '../../lib/search/types'
 import styles from './SearchBuddy.module.css'
+import { Highlighted } from './Highlighted'
+import { MATCH_KEY } from './matchLabels'
 
 export type WebsiteOutcome =
   | { kind: 'idle' }
@@ -107,7 +109,10 @@ function ResultList({
           return (
             <li key={`${result.sourceType}:${result.sourceId}`}>
               <article className={styles.passageCard}>
-                <p className={styles.contextLabel}>{resultTypeLabel(result, t)}</p>
+                <p className={styles.contextLabel}>
+                  {resultTypeLabel(result, t)}
+                  {result.matchLabel && MATCH_KEY[result.matchLabel] ? ` · ${t(MATCH_KEY[result.matchLabel])}` : ''}
+                </p>
                 <h3 className={styles.sectionTitle}>
                   <Link className={styles.websiteLink} to={href} onClick={onOpen}>
                     {result.title}
@@ -116,7 +121,7 @@ function ResultList({
                 {amharic && amharic !== result.title ? <p lang="am">{amharic}</p> : null}
                 {excerpt ? (
                   <p className={styles.websiteExcerpt} lang={excerptLang(result)}>
-                    {excerpt}
+                    {result.excerpt?.trim() ? <Highlighted text={result.excerpt} ranges={result.highlights} /> : excerpt}
                   </p>
                 ) : null}
                 {result.dateLabel ? <p className={styles.passageLocator}>{result.dateLabel}</p> : null}

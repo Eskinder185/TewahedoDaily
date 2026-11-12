@@ -224,7 +224,8 @@ await expectType('John 3', 'bible-chapter', { expectDirect: true })
 {
   const rows = await expectType('John 3:16', 'bible-verse', { expectDirect: true })
   assert.match(rows[0].excerpt || '', /God so loved/i)
-  assert.match(rows[0].route, /^\/bible\/john\/\d+$/)
+  // Exact destination: chapter (and edition, when selectable) anchored at the verse.
+  assert.match(rows[0].route, /^\/bible\/john\/\d+(\?edition=(am|web))?#verse-16$/)
 }
 await expectType('Jn 3:16', 'bible-verse')
 await expectType('John chapter 3 verse 16', 'bible-verse')

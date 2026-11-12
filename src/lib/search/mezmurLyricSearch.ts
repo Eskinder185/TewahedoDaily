@@ -13,6 +13,8 @@ import { supabase } from '../supabase/client.ts'
 import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezmurLanguage.ts'
 import { buildExcerpt, hasEthiopic, matchText, orIlike, queryWords, retrievalWords, type Excerpt } from './textMatch.ts'
 import { entitySearchVariants } from '../language/index.ts'
+import { extractSearchRequest } from './queryRequest.ts'
+import { fuzzyEligible, fuzzyTitleMatches } from './translitSkeleton.ts'
 
 export type LyricField = 'lyrics_amharic' | 'lyrics_geez' | 'lyrics_transliteration' | 'lyrics_english' | 'lyrics_oromo'
 export type LyricExcerpt = Excerpt & { field: LyricField }
@@ -46,6 +48,8 @@ export type PublicQuery = PromiseLike<QueryResult> & {
   or(filter: string): PublicQuery
   in(column: string, values: string[]): PublicQuery
   limit(count: number): PublicQuery
+  /** Optional: only the real client pages; test doubles may omit it. */
+  range?(from: number, to: number): PublicQuery
 }
 export type PublicClient = { from(table: string): PublicQuery }
 
@@ -71,7 +75,7 @@ export function excerptForRow(row: PublicMezmurRow, query: string): LyricExcerpt
   return best
 }
 
-export type MezmurMatchTier = 'title-exact' | 'title-phrase' | 'lyric-phrase' | 'partial' | null
+export type MezmurMatchTier = 'title-exact' | 'title-phrase' | 'lyric-phrase' | 'partial' | 'similar-spelling' | null
 
 /** Ranking class: exact title, then a phrase in a title, then a lyric phrase, then partial/keyword matches. */
 export function tierForRow(row: PublicMezmurRow, query: string): { tier: MezmurMatchTier; rank: number } {
@@ -173,7 +177,8 @@ export async function searchPublicMezmurLyrics(
   query: string,
   options: { limit?: number; language?: MezmurLanguageCode; client?: PublicClient | null } = {},
 ): Promise<{ items: LyricSearchItem[]; total: number }> {
-  const q = query.replace(/\s+/g, ' ').trim()
+  // A request wrapper ("find the hymn with the words …") is not part of the search.
+  const q = extractSearchRequest(query).text
   const client = options.client === undefined ? (supabase as unknown as PublicClient | null) : options.client
   const limit = Math.min(50, Math.max(1, options.limit ?? 20))
   const words = retrievalWords(q)
@@ -205,7 +210,59 @@ export async function searchPublicMezmurLyrics(
   let rows = [...bySlug.values()]
   if (options.language) rows = rows.filter((row) => normalizeMezmurLanguage(row.primary_language) === options.language)
   const ranked = rankPublicRows(rows, q).map(rowToItem)
+  // Controlled fuzzy tier: only when nothing matched as a title or phrase, and never ahead of a real match.
+  if (!ranked.some((item) => item.tier === 'title-exact' || item.tier === 'title-phrase' || item.tier === 'lyric-phrase') && fuzzyEligible(q)) {
+    try {
+      const similar = await similarSpellingItems(client, q, options.language, new Set(ranked.map((item) => item.slug)))
+      ranked.push(...similar)
+    } catch {
+      // The fuzzy tier is an enhancement; a failure keeps the strict results.
+    }
+  }
   return { items: ranked.slice(0, limit), total: ranked.length }
+}
+
+type TitleIndexEntry = { slug: string; title: string; title_amharic: string; title_english: string }
+let titleIndexCache: { client: PublicClient; at: number; entries: TitleIndexEntry[] } | null = null
+const TITLE_INDEX_TTL_MS = 5 * 60 * 1000
+
+/** One lightweight, cached read of published titles, used only for similar-spelling matching. */
+async function loadTitleIndex(client: PublicClient): Promise<TitleIndexEntry[]> {
+  if (titleIndexCache && titleIndexCache.client === client && Date.now() - titleIndexCache.at < TITLE_INDEX_TTL_MS) return titleIndexCache.entries
+  // PostgREST caps a response (commonly 1,000 rows), so page explicitly instead of trusting one large limit.
+  const rows: PublicMezmurRow[] = []
+  for (let from = 0; from < 20_000; from += 1000) {
+    const base = client.from('mezmur_public').select('slug,title,title_amharic,title_english,status')
+    const page = await run(base.range ? base.range(from, from + 999) : base.limit(1000))
+    rows.push(...page)
+    if (page.length < 1000 || !base.range) break
+  }
+  const entries = rows
+    .filter((row) => text(row.status).toLowerCase() === 'published' && text(row.slug))
+    .map((row) => ({ slug: text(row.slug), title: text(row.title), title_amharic: text(row.title_amharic), title_english: text(row.title_english) }))
+  titleIndexCache = { client, at: Date.now(), entries }
+  return entries
+}
+
+/** Forget the cached title index (after publish/unpublish) so updated or removed hymns leave the fuzzy tier too. */
+export function invalidateTitleIndex(): void {
+  titleIndexCache = null
+}
+
+async function similarSpellingItems(client: PublicClient, query: string, language: MezmurLanguageCode | undefined, seen: Set<string>): Promise<LyricSearchItem[]> {
+  const index = await loadTitleIndex(client)
+  const matches = fuzzyTitleMatches(index, query, (entry) => `${entry.title} ${entry.title_english}`, 8).filter((hit) => !seen.has(hit.item.slug))
+  if (!matches.length) return []
+  const rows = await run(client.from('mezmur_public').select(ROW_COLUMNS).in('slug', matches.map((hit) => hit.item.slug)).limit(matches.length))
+  const bySlug = new Map(rows.map((row) => [text(row.slug), row]))
+  const out: LyricSearchItem[] = []
+  for (const hit of matches) {
+    const row = bySlug.get(hit.item.slug)
+    if (!row || text(row.status).toLowerCase() !== 'published') continue
+    if (language && normalizeMezmurLanguage(row.primary_language) !== language) continue
+    out.push(rowToItem({ row, tier: 'similar-spelling', excerpt: null }))
+  }
+  return out
 }
 
 /**

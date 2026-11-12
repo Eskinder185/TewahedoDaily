@@ -948,6 +948,12 @@
       "prayers": "ጸሎቶችን ፈልግ",
       "synaxarium": "የዛሬ ስንክሳር"
     },
+    "match": {
+      "title": "የርዕስ ተዛማጅ",
+      "lyric": "የግጥም ተዛማጅ",
+      "similar": "ተመሳሳይ አጻጻፍ",
+      "related": "ተዛማጅ"
+    },
     "types": {
       "page": "ገጽ",
       "mezmur": "መዝሙር",

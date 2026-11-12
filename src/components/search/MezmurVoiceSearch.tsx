@@ -1,3 +1,4 @@
+import { publicErrorMessage } from '../../lib/errors/publicError'
 import { useEffect, useId, useRef, useState, type MouseEvent } from 'react'
 import {
   AiClientError,
@@ -433,7 +434,7 @@ export function MezmurVoiceSearch({
   function amharicTranscriptionErrorMessage(error: unknown): string {
     if (error instanceof AiClientError) {
       if (error.code === 'aborted') return ''
-      if (error.code === 'transcription_failed' && error.message.trim()) return error.message
+      if (error.code === 'transcription_failed' && error.message.trim()) return publicErrorMessage(error, voiceMessage(ui, 'amharicUnavailable'))
       if (error.code === 'not_configured') {
         return import.meta.env.DEV
           ? error.message

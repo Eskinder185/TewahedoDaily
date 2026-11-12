@@ -1,3 +1,4 @@
+import { publicErrorMessage } from '../../lib/errors/publicError'
 import { useCallback, useEffect, useId, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useTranslation } from '../../i18n'
@@ -384,7 +385,7 @@ export function SearchBuddy() {
               ? 'Church Library search is not installed or the database schema cache is stale.'
               : cause.code === 'timeout'
                 ? 'Church Library search timed out. Other Search Buddy catalogs remain available.'
-                : cause.message
+                : publicErrorMessage(cause, t('searchBuddy.churchLibraryUnavailable'))
           : t('searchBuddy.churchLibraryUnavailable')
         setLibraryOutcome({ kind: 'error', query, notice })
       })
