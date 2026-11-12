@@ -1,3 +1,4 @@
+import { isWerb } from '../mezmur/mezmurForm'
 /** Friendly labels for language / form and display helpers. */
 
 import {
@@ -87,7 +88,7 @@ export function hymnCardMeta(
           ? 'Oromo'
           : ''
   const form =
-    item.form === 'werb' ? 'Werb' : item.form === 'mezmur' || !item.form ? 'Mezmur' : classificationLabel(item.form)
+    isWerb(item.form) ? 'Werb' : item.form === 'mezmur' || !item.form ? 'Mezmur' : classificationLabel(item.form)
   const line = [language, form].filter(Boolean).join(' · ')
   if (locale !== 'am') return line
   return line

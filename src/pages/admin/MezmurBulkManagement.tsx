@@ -5,6 +5,7 @@ import { formatErrorMessage } from '../../lib/cms/errorMessage'
 import { MEZMUR_LANGUAGES, mezmurLanguageLabel, type MezmurLanguageCode } from '../../lib/mezmur/mezmurLanguage'
 import { classifyZemariMatch, type ZemariCandidate } from '../../lib/mezmur/zemariMatching'
 import { Modal } from './AdminUi'
+import { CATEGORY_ENTRIES } from '../../lib/mezmur/taxonomyAliases'
 import { isMezmeu1Published } from '../../lib/mezmur/mezmeu1BatchScope'
 import {
   applyMezmurSuggestions, assignCategoryToMezmurs, assignLanguageToMezmurs,
@@ -46,6 +47,13 @@ export function MezmurBulkManagement() {
   const [dashboard, setDashboard] = useState(EMPTY)
   const [records, setRecords] = useState<BulkMezmurRecord[]>([])
   const [categories, setCategories] = useState<string[]>([])
+  // Every canonical category is listed with its name; one whose database row does not exist yet is shown but cannot be chosen.
+  const categoryChoices = useMemo(() => {
+    const inDatabase = new Set(categories)
+    const canonical = CATEGORY_ENTRIES.map((entry) => ({ slug: entry.slug, label: `${entry.canonical} / ${entry.amharic}${inDatabase.size && !inDatabase.has(entry.slug) ? ' (not set up yet)' : ''}`, disabled: inDatabase.size > 0 && !inDatabase.has(entry.slug) }))
+    const known = new Set(CATEGORY_ENTRIES.map((entry) => entry.slug))
+    return [...canonical, ...categories.filter((slug) => !known.has(slug)).map((slug) => ({ slug, label: slug, disabled: false }))]
+  }, [categories])
   const [singers, setSingers] = useState<ZemariCandidate[]>([])
   const [jobs, setJobs] = useState<EnrichmentJob[]>([])
   const [job, setJob] = useState<EnrichmentJob | null>(null)
@@ -498,7 +506,7 @@ export function MezmurBulkManagement() {
       <div className={s.filters}>
         <label>Search<input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Title, Amharic title, slug, or import ID" /></label>
         <label>Status<select value={statusFilter} onChange={(event) => setStatusFilter(event.target.value)}><option value="">All</option><option value="draft">Draft</option><option value="published">Published</option></select></label>
-        <label>Category<select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}><option value="">All</option><option value="__missing__">Missing category</option>{categories.map((value) => <option key={value}>{value}</option>)}</select></label>
+        <label>Category<select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}><option value="">All</option><option value="__missing__">Missing category</option>{categoryChoices.map((choice) => <option key={choice.slug} value={choice.slug} disabled={choice.disabled}>{choice.label}</option>)}</select></label>
         <label>Zemari relationship<select value={singerFilter} onChange={(event) => setSingerFilter(event.target.value)}><option value="">All</option><option value="__linked__">Linked</option><option value="__matchable__">Ready to auto-link</option><option value="__unlinked__">Not linked</option><option value="__ambiguous__">Needs review</option><option value="__missing__">Singer name missing</option>{singers.map((value) => <option key={value.id} value={value.id}>{value.name || value.nameAmharic || value.slug}</option>)}</select></label>
         <label>Lyrics<select value={lyricsFilter} onChange={(event) => setLyricsFilter(event.target.value)}><option value="">All</option><option value="with">With lyrics</option><option value="missing">Missing lyrics</option></select></label>
         <label>Publication<select value={eligibilityFilter} onChange={(event) => setEligibilityFilter(event.target.value)}><option value="">All</option><option value="eligible">Eligible</option><option value="blocked">Blocked</option></select></label>
@@ -549,7 +557,7 @@ export function MezmurBulkManagement() {
       </div>
       <div className={s.actions}>
         <button type="button" disabled={!selectedRows.length || Boolean(busy)} onClick={() => void run('selected', selectedRows.map((row) => row.import_id))}>Analyze Selected ({selectedRows.length})</button>
-        <select aria-label="Manual category" value={manualCategory} onChange={(event) => setManualCategory(event.target.value)}><option value="">Choose existing category…</option>{categories.map((value) => <option key={value}>{value}</option>)}</select>
+        <select aria-label="Manual category" value={manualCategory} onChange={(event) => setManualCategory(event.target.value)}><option value="">Choose existing category…</option>{categoryChoices.map((choice) => <option key={choice.slug} value={choice.slug} disabled={choice.disabled}>{choice.label}</option>)}</select>
         <button type="button" disabled={!canApply || !manualCategory || !selectedRows.length || Boolean(busy)} onClick={() => void applyManualCategory()}>Add Category to Selected</button>
         <select aria-label="Bulk language" value={manualLanguage} onChange={(event) => setManualLanguage(event.target.value as MezmurLanguageCode | '')}><option value="">Choose language…</option>{MEZMUR_LANGUAGES.map((value) => <option key={value.code} value={value.code}>{value.label} / {value.nativeLabel}</option>)}</select>
         <button type="button" disabled={!canApply || !manualLanguage || !selectedRows.length || Boolean(busy)} onClick={() => void applyManualLanguage()}>Assign Language ({selectedRows.length})</button>

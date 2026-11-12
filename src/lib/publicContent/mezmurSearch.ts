@@ -1,3 +1,4 @@
+import { normalizeMezmurForm } from '../mezmur/mezmurForm'
 import Fuse from 'fuse.js'
 import { supabase } from '../supabase/client'
 import { normalizeStringList } from '../normalize/stringList'
@@ -107,7 +108,7 @@ function mapSearchDoc(row: RawRow): MezmurSearchDoc {
   const keywords = normalizeStringList(row.search_keywords)
   const title = row.title || ''
   const titleAmharic = row.title_amharic || ''
-  const form = row.form === 'werb' || row.form === 'mezmur' ? row.form : 'mezmur'
+  const form = normalizeMezmurForm(row.form)
 
   return {
     id: row.id,

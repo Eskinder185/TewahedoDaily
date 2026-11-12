@@ -78,6 +78,16 @@ export const CATEGORY_ENTRIES: TaxonomyEntry[] = [
   { kind: 'category', canonical: 'Kidus Yared', slug: 'kidus-yared', amharic: 'ቅዱስ ያሬድ', browseSections: ['angels-saints'], group: 'person' },
   { kind: 'category', canonical: 'Yohannes Metmek / John the Baptist', slug: 'yohannes-metmek-john-the-baptist', amharic: 'ዮሐንስ መጥምቅ', browseSections: ['angels-saints'], group: 'person' },
   { kind: 'category', canonical: 'Kidus Estifanos / Saint Stephen', slug: 'kidus-estifanos-saint-stephen', amharic: 'ቅዱስ እስጢፋኖስ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidus Petros / Saint Peter', slug: 'kidus-petros', amharic: 'ቅዱስ ጴጥሮስ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidus Pawlos / Saint Paul', slug: 'kidus-pawlos', amharic: 'ቅዱስ ጳውሎስ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidus Yohannes Wengelawi / John the Evangelist', slug: 'kidus-yohannes-wengelawi', amharic: 'ቅዱስ ዮሐንስ ወንጌላዊ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidus Markos / Saint Mark', slug: 'kidus-markos', amharic: 'ቅዱስ ማርቆስ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Abune Aregawi', slug: 'abune-aregawi', amharic: 'አቡነ አረጋዊ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidus Lalibela', slug: 'kidus-lalibela', amharic: 'ቅዱስ ላሊበላ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidist Arsema', slug: 'kidist-arsema', amharic: 'ቅድስት አርሴማ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidus Merkorios', slug: 'kidus-merkorios', amharic: 'ቅዱስ መርቆሬዎስ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Kidus Tewodros / Saint Theodore', slug: 'kidus-tewodros', amharic: 'ቅዱስ ቴዎድሮስ', browseSections: ['angels-saints'], group: 'person' },
+  { kind: 'category', canonical: 'Nine Saints', slug: 'nine-saints', amharic: 'ዘጠኙ ቅዱሳን', browseSections: ['angels-saints'], group: 'person' },
   { kind: 'category', canonical: 'Apostles', slug: 'apostles', amharic: 'ሐዋርያት', browseSections: ['angels-saints'], group: 'person' },
   { kind: 'category', canonical: 'Martyrs', slug: 'martyrs', amharic: 'ሰማዕታት', browseSections: ['angels-saints'], group: 'person' },
   { kind: 'category', canonical: 'Saints', slug: 'saints', amharic: 'ቅዱሳን', browseSections: ['angels-saints'], group: 'person' },
@@ -108,6 +118,9 @@ export const OCCASION_ENTRIES: TaxonomyEntry[] = [
   { kind: 'occasion', canonical: 'Tsome Nineveh', slug: 'tsome-nineveh', amharic: 'ጾመ ነነዌ', browseSections: ['repentance-fasting'] },
   { kind: 'occasion', canonical: 'Tsome Nebiyat', slug: 'tsome-nebiyat', amharic: 'ጾመ ነቢያት', browseSections: ['repentance-fasting'] },
   { kind: 'occasion', canonical: 'Tsome Hawariat', slug: 'tsome-hawariat', amharic: 'ጾመ ሐዋርያት', browseSections: ['repentance-fasting'] },
+  { kind: 'occasion', canonical: 'Tsige (Flower Season / Fast)', slug: 'tsige', amharic: 'ጽጌ', browseSections: ['holidays-feasts', 'virgin-mary', 'repentance-fasting'] },
+  { kind: 'occasion', canonical: 'Tsome Gehad', slug: 'tsome-gehad', amharic: 'ጾመ ገሃድ', browseSections: ['repentance-fasting'] },
+  { kind: 'occasion', canonical: 'Hidar Tsion / Tsion Maryam', slug: 'hidar-tsion', amharic: 'ጽዮን ማርያም', browseSections: ['holidays-feasts', 'virgin-mary'] },
   { kind: 'occasion', canonical: 'Holy Week', slug: 'holy-week', amharic: 'ሰሙነ ሕማማት', browseSections: ['holidays-feasts', 'repentance-fasting'] },
   { kind: 'occasion', canonical: 'New Year / Enkutatash', slug: 'new-year', amharic: 'እንቁጣጣሽ', browseSections: ['holidays-feasts'] },
   { kind: 'occasion', canonical: 'Annual Saint Feast', slug: 'annual-saint-feast', amharic: 'የቅዱሳን ዓመታዊ በዓላት', browseSections: ['angels-saints'] },
@@ -319,6 +332,70 @@ define('category', 'Abune Gebre Menfes Kidus', [
   ['honorific', 2, ['አቦ'], { ambiguous: true, exactOnly: true }],
   ['transliteration', 5, ['gebre menfes kidus', 'gabra manfas qeddus', 'abune gebre menfes kidus', 'gebremenfes kidus']],
   ['contextual_phrase', 3, ['zuqualla', 'zuquala']],
+])
+
+define('category', 'Kidus Petros / Saint Peter', [
+  ['exact_name', 5, ['ቅዱስ ጴጥሮስ', 'ሐዋርያው ጴጥሮስ', 'ሐዋርያው ቅዱስ ጴጥሮስ']],
+  ['exact_name', 5, ['ጴጥሮስ'], { ambiguous: true, notes: 'A common first name: needs supporting context' }],
+  ['exact_name', 5, ['saint peter', 'st peter', 'st. peter', 'apostle peter']],
+  ['transliteration', 5, ['kidus petros', 'qedus petros', 'kidus peteros']],
+])
+
+define('category', 'Kidus Pawlos / Saint Paul', [
+  ['exact_name', 5, ['ቅዱስ ጳውሎስ', 'ሐዋርያው ጳውሎስ', 'ሐዋርያው ቅዱስ ጳውሎስ']],
+  ['exact_name', 5, ['ጳውሎስ'], { ambiguous: true, notes: 'A common first name: needs supporting context' }],
+  ['exact_name', 5, ['saint paul', 'st paul', 'st. paul', 'apostle paul']],
+  ['transliteration', 5, ['kidus pawlos', 'qedus pawlos', 'kidus paulos']],
+])
+
+define('category', 'Kidus Yohannes Wengelawi / John the Evangelist', [
+  ['exact_name', 5, ['ዮሐንስ ወንጌላዊ', 'ቅዱስ ዮሐንስ ወንጌላዊ', 'ዮሐንስ ሐዋርያ']],
+  ['exact_name', 5, ['john the evangelist', 'saint john the evangelist', 'st john the evangelist', 'john the theologian']],
+  ['transliteration', 5, ['yohannes wengelawi', 'kidus yohannes wengelawi']],
+])
+
+define('category', 'Kidus Markos / Saint Mark', [
+  ['exact_name', 5, ['ቅዱስ ማርቆስ', 'ማርቆስ ወንጌላዊ']],
+  ['exact_name', 5, ['ማርቆስ'], { ambiguous: true, notes: 'A common first name: needs supporting context' }],
+  ['exact_name', 5, ['mark the evangelist', 'saint mark', 'st mark', 'st. mark']],
+  ['transliteration', 5, ['kidus markos', 'qedus markos']],
+])
+
+define('category', 'Abune Aregawi', [
+  ['exact_name', 5, ['አቡነ አረጋዊ', 'አባ አረጋዊ', 'ቅዱስ አረጋዊ']],
+  ['exact_name', 5, ['አረጋዊ'], { ambiguous: true, notes: 'Also means "elder": needs supporting context' }],
+  ['contextual_phrase', 3, ['ደብረ ዳሞ', 'ዳሞ']],
+  ['transliteration', 5, ['abune aregawi', 'abba aregawi', 'aregawi', 'debre damo']],
+])
+
+define('category', 'Kidus Lalibela', [
+  ['exact_name', 5, ['ቅዱስ ላሊበላ', 'ንጉሥ ላሊበላ', 'ላሊበላ']],
+  ['transliteration', 5, ['kidus lalibela', 'saint lalibela', 'st lalibela', 'king lalibela', 'lalibela']],
+])
+
+define('category', 'Kidist Arsema', [
+  ['exact_name', 5, ['ቅድስት አርሴማ', 'አርሴማ']],
+  ['transliteration', 5, ['kidist arsema', 'qedist arsema', 'saint arsema', 'st arsema', 'arsema']],
+])
+
+define('category', 'Kidus Merkorios', [
+  ['exact_name', 5, ['ቅዱስ መርቆሬዎስ', 'መርቆሬዎስ', 'መርቆርዮስ', 'አባ መርቆሬዎስ']],
+  ['exact_name', 5, ['saint mercurius', 'st mercurius', 'saint merkorios', 'abu seifein']],
+  ['transliteration', 5, ['kidus merkorios', 'qedus merkorios', 'merkorios', 'mercurius']],
+])
+
+define('category', 'Kidus Tewodros / Saint Theodore', [
+  ['exact_name', 5, ['ቅዱስ ቴዎድሮስ', 'ቅዱስ ቴዎድሮስ ሰማዕት']],
+  ['exact_name', 5, ['ቴዎድሮስ'], { ambiguous: true, notes: 'Also a royal and common name: needs supporting context' }],
+  ['exact_name', 5, ['saint theodore', 'st theodore', 'st. theodore']],
+  ['transliteration', 5, ['kidus tewodros', 'qedus tewodros']],
+  ['transliteration', 3, ['tewodros'], { ambiguous: true }],
+])
+
+define('category', 'Nine Saints', [
+  ['exact_name', 5, ['ዘጠኙ ቅዱሳን', 'ዘጠኝ ቅዱሳን', 'ተስዓቱ ቅዱሳን']],
+  ['exact_name', 5, ['nine saints', 'the nine saints']],
+  ['transliteration', 5, ['zetegnu kidusan', 'tesaatu kidusan']],
 ])
 
 define('category', 'Kidus Yared', [
@@ -576,6 +653,25 @@ define('occasion', 'Tsome Hawariat', [
   ['exact_name', 5, ['ጾመ ሐዋርያት', 'ጾመ ሰኔ']],
   ['exact_name', 5, ['fast of the apostles', 'apostles fast']],
   ['transliteration', 5, ['tsome hawariat', 'tsome hawaryat', 'tsome sene']],
+])
+
+define('occasion', 'Tsome Gehad', [
+  ['exact_name', 5, ['ጾመ ገሃድ', 'ጾመ ጋድ', 'ገሃድ']],
+  ['exact_name', 5, ['fast of gehad', 'gehad fast', 'eve of epiphany']],
+  ['transliteration', 5, ['tsome gehad', 'tsome gahad', 'gehad', 'gahad']],
+])
+
+define('occasion', 'Tsige (Flower Season / Fast)', [
+  ['exact_name', 5, ['ጽጌ', 'ወርኃ ጽጌ', 'ጾመ ጽጌ', 'ጽጌ ድንግል']],
+  ['exact_name', 5, ['tsige', 'tsome tsige', 'tsige dingil', 'tsige season', 'flower season', 'season of the flower']],
+  ['transliteration', 5, ['tsige', 'tsome tsige', 'tsige dingil', 'tsige maryam']],
+  ['contextual_phrase', 3, ['ጽጌ ድንግል', 'ጽጌ ማርያም'], { ambiguous: true, notes: 'Hymns of the flower season honouring Mary' }],
+])
+
+define('occasion', 'Hidar Tsion / Tsion Maryam', [
+  ['exact_name', 5, ['ጽዮን ማርያም', 'ሕዳር ጽዮን', 'ኅዳር ጽዮን', 'ኅዳር ፳፩']],
+  ['exact_name', 5, ['tsion maryam', 'tsion mariam', 'zion mary', 'mary of zion']],
+  ['transliteration', 5, ['hidar tsion', 'tsion maryam', 'tsion mariam']],
 ])
 
 define('occasion', 'Holy Week', [

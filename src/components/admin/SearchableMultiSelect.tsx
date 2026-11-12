@@ -6,6 +6,8 @@ export type MultiSelectOption = {
   label: string
   detail?: string
   count?: number
+  /** Listed so people can see it exists, but not selectable yet (for example its database row has not been created). */
+  unavailable?: boolean
 }
 
 type Props = {
@@ -52,6 +54,8 @@ export function SearchableMultiSelect({
   }, [])
 
   function toggle(idToToggle: string) {
+    // An unavailable option can only be removed, never added: saving it would be rejected.
+    if (byId.get(idToToggle)?.unavailable && !selected.includes(idToToggle)) return
     onChange(
       selected.includes(idToToggle)
         ? selected.filter((value) => value !== idToToggle)
@@ -147,13 +151,14 @@ export function SearchableMultiSelect({
                   key={option.id}
                   role="option"
                   aria-selected={isSelected}
+                  aria-disabled={option.unavailable && !isSelected ? true : undefined}
                   className={`${styles.option} ${index === activeIndex ? styles.optionActive : ''} ${isSelected ? styles.optionSelected : ''}`}
                   onMouseDown={(event) => event.preventDefault()}
                   onMouseEnter={() => setActiveIndex(index)}
                   onClick={() => toggle(option.id)}
                 >
                   <span className={styles.checkmark} aria-hidden="true">{isSelected ? '✓' : ''}</span>
-                  <span>{option.label}{option.detail ? ` · ${option.detail}` : ''}</span>
+                  <span style={option.unavailable && !isSelected ? { opacity: 0.55 } : undefined}>{option.label}{option.detail ? ` · ${option.detail}` : ''}</span>
                   {typeof option.count === 'number' && <span className={styles.count}>{option.count}</span>}
                 </li>
               )

@@ -402,9 +402,9 @@ test('a fallback disappears once the database has a section for the same entity'
 })
 
 console.log('\n# Browse-only shortcuts')
-test('shortcuts create no new categories or occasions (still 25 / 24)', () => {
-  assert.equal(CATEGORY_ENTRIES.length, 25)
-  assert.equal(OCCASION_ENTRIES.length, 24)
+test('shortcuts create no new categories or occasions (still 35 / 27)', () => {
+  assert.equal(CATEGORY_ENTRIES.length, 35)
+  assert.equal(OCCASION_ENTRIES.length, 27)
   const occSlugs = new Set(OCCASION_ENTRIES.map((e) => e.slug))
   for (const sc of BROWSE_SHORTCUTS) {
     assert.ok(!occSlugs.has(sc.slug), `${sc.slug} would duplicate a canonical occasion`)
