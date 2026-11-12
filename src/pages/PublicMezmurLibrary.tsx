@@ -643,7 +643,8 @@ export function PublicMezmurLibrary() {
     }
     let active = true
     queueMicrotask(() => {
-      if (active) { setLoading(true); setError(undefined); setResult(null) }
+      // Keep the previous results on screen while a refined search loads: no blank flash on every keystroke.
+      if (active) { setLoading(true); setError(undefined) }
     })
     // Raw query → GET /api/hymns/search (same path for typed and voice).
     // Do not expand aliases or run local exact-match before the backend.
@@ -902,7 +903,7 @@ export function PublicMezmurLibrary() {
           ) : null}
           <MezmurResultGrid
             items={result?.items || []}
-            loading={loading || !result}
+            loading={!result}
             error={error}
             onRetry={() => setReloadTick((n) => n + 1)}
             emptyMessage={emptyMessage}

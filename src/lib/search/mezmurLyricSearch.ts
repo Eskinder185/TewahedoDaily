@@ -11,7 +11,7 @@
  */
 import { supabase } from '../supabase/client.ts'
 import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezmurLanguage.ts'
-import { buildExcerpt, hasEthiopic, matchText, orIlike, queryWords, retrievalWords, type Excerpt } from './textMatch.ts'
+import { buildExcerpt, hasEthiopic, matchText, orIlike, queryWords, retrievalWords, wordSpans, type Excerpt } from './textMatch.ts'
 import { entitySearchVariants } from '../language/index.ts'
 import { extractSearchRequest } from './queryRequest.ts'
 import { fuzzyEligible, fuzzyTitleMatches } from './translitSkeleton.ts'
@@ -102,9 +102,27 @@ export type MezmurLyricHit = {
   excerpt: LyricExcerpt | null
 }
 
+/**
+ * Within one tier, the closest title comes first: every query word equal to a WHOLE title word (not just the start of a
+ * longer word) beats a prefix match, then shorter titles beat longer ones. "selam" lists "Selam Leki" before
+ * "Awnetenya Amlak Selamhin Siteny" instead of sorting alphabetically.
+ */
+export function titleCloseness(row: PublicMezmurRow, query: string): number {
+  const terms = queryWords(query)
+  let best = 200 // lyric and keyword matches rank after any title match
+  for (const field of TITLE_FIELDS) {
+    const title = text(row[field])
+    if (!title || matchText(title, query)?.kind !== 'phrase') continue
+    const words = wordSpans(title).map((span) => span.folded)
+    const whole = terms.every((term) => words.includes(term)) ? 0 : 1
+    best = Math.min(best, whole * 100 + words.length)
+  }
+  return best
+}
+
 /** Rank candidate rows. Rows that do not actually contain the query are dropped, never shown as matches. */
 export function rankPublicRows(rows: PublicMezmurRow[], query: string): MezmurLyricHit[] {
-  const hits: Array<MezmurLyricHit & { rank: number }> = []
+  const hits: Array<MezmurLyricHit & { rank: number; close: number }> = []
   const variants = entitySearchVariants(query)
   for (const row of rows) {
     if (text(row.status).toLowerCase() !== 'published' || !text(row.slug)) continue
@@ -114,9 +132,9 @@ export function rankPublicRows(rows: PublicMezmurRow[], query: string): MezmurLy
       if (tier && (!best || rank < best.rank)) best = { tier, rank, query: variant }
     }
     if (!best) continue
-    hits.push({ row, tier: best.tier, rank: best.rank, excerpt: excerptForRow(row, best.query) })
+    hits.push({ row, tier: best.tier, rank: best.rank, close: titleCloseness(row, best.query), excerpt: excerptForRow(row, best.query) })
   }
-  return hits.sort((a, b) => a.rank - b.rank || text(a.row.title).localeCompare(text(b.row.title)))
+  return hits.sort((a, b) => a.rank - b.rank || a.close - b.close || text(a.row.title).localeCompare(text(b.row.title)))
 }
 
 export type LyricSearchItem = {

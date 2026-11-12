@@ -17,7 +17,8 @@ import { GAME_ART, feastImages, holyPersonImages } from '../../lib/play/imageCat
 import { getDailyChallenge } from '../../lib/play/progress'
 import { withoutLibrarySources, withPublicSources } from '../../lib/play/sourceAvailability'
 import type { MatchPair, WhoAmICard, PlayDifficulty, PlayGameType, PlayQuestion } from '../../lib/play/types'
-import { isGeneratedQuizGame, loadGeneratedCards, loadGeneratedQuestions, mergeById } from '../../lib/play/generatedBank'
+import { isGeneratedQuizGame, loadGeneratedCards, loadGeneratedQuestions, loadGeneratedTimelineChains, mergeById } from '../../lib/play/generatedBank'
+import { TIMELINE_CHAINS, type TlChain } from '../../lib/play/bibleTimeline'
 import { databasePlayEnabled } from '../../lib/play/publishedContent'
 import { DatabasePlayGame } from './DatabasePlayGame'
 
@@ -39,6 +40,17 @@ const META: Record<PageGame, { title: { en: string; am: string }; subtitle: { en
 }
 
 const LEVELS: PlayDifficulty[] = ['beginner', 'growing', 'challenge']
+
+/** Built-in chains first, then the validated generated chains once they have loaded (the game works from the first without waiting). */
+function GeneratedTimelineGame({ locale }: { locale: 'en' | 'am' }) {
+  const [chains, setChains] = useState<TlChain[]>(TIMELINE_CHAINS)
+  useEffect(() => {
+    let active = true
+    void loadGeneratedTimelineChains().then((extra) => { if (active) setChains(mergeById(TIMELINE_CHAINS, extra)) }).catch(() => undefined)
+    return () => { active = false }
+  }, [])
+  return <BibleTimelineGame key={chains.length} locale={locale} chains={chains} />
+}
 
 export function PlayGamePage({ game }: { game: PageGame }) {
   if (databasePlayEnabled()) return <DatabasePlayPage key={game} game={game} />
@@ -118,7 +130,7 @@ function PlayGameView({ game }: { game: PageGame }) {
       case 'who-am-i': return publishedState === 'loading' ? null : <WhoAmIGame locale={locale} cards={whoCards} />
       case 'match': return publishedState === 'loading' ? null : <MatchGame locale={locale} pairs={matchPairs} />
       case 'history': return <HistoryQuestGame locale={locale} questions={questions} />
-      case 'bible-timeline': return <BibleTimelineGame locale={locale} />
+      case 'bible-timeline': return <GeneratedTimelineGame locale={locale} />
       case 'finish-the-mezmur': return <FinishMezmurGame locale={locale} />
       case 'feasts': return <PictureQuizGame locale={locale} config={{ game: 'feasts', pool: feastImages(), prompt: { en: 'Which feast does this picture show?', am: 'ይህ ሥዕል የትኛውን በዓል ያሳያል?' }, noun: { en: 'feast', am: 'በዓል' } }} />
       case 'saints': return <PictureQuizGame locale={locale} config={{ game: 'saints', pool: holyPersonImages(), prompt: { en: 'Who is shown in this icon?', am: 'በዚህ ሥዕል ያለው ማን ነው?' }, noun: { en: 'saint', am: 'ቅዱስ' } }} />

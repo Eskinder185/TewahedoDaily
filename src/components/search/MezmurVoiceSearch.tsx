@@ -720,35 +720,22 @@ export function MezmurVoiceSearch({
             {micIcon}
           </button>
           {showLangPicker ? (
-            <div className={styles.languagePicker}>
-              <button
-                type="button"
-                className={styles.languageButton}
-                aria-label={`${voiceMessage(ui, 'voiceLanguage')}: ${voiceMessage(ui, effectiveLang === 'am' ? 'languageAmharic' : 'languageEnglish')}`}
-                aria-expanded={languageMenuOpen}
-                aria-haspopup="menu"
-                disabled={busy}
-                onClick={() => setLanguageMenuOpen((open) => !open)}
-              >
-                {effectiveLang === 'am' ? 'አማ' : 'EN'} <span aria-hidden>⌄</span>
-              </button>
-              {languageMenuOpen ? (
-                <div className={styles.langMenu} role="menu" aria-label={voiceMessage(ui, 'voiceLanguage')}>
-                  {(['en', 'am'] as const).map((language) => (
-                    <button
-                      key={language}
-                      type="button"
-                      role="menuitemradio"
-                      aria-checked={effectiveLang === language}
-                      className={`${styles.langOption} ${effectiveLang === language ? styles.langOptionActive : ''}`}
-                      onClick={() => { selectLang(language); setLanguageMenuOpen(false) }}
-                    >
-                      {voiceMessage(ui, language === 'am' ? 'languageAmharic' : 'languageEnglish')}
-                    </button>
-                  ))}
-                  <p className={styles.privacyNote}>{voiceMessage(ui, 'providerNotice')}</p>
-                </div>
-              ) : null}
+            // Both languages stay visible: one tap switches, no menu to open (easier on a phone).
+            <div className={styles.langToggle} role="group" aria-label={voiceMessage(ui, 'voiceLanguage')}>
+              {(['en', 'am'] as const).map((language) => (
+                <button
+                  key={language}
+                  type="button"
+                  className={`${styles.langToggleBtn} ${effectiveLang === language ? styles.langToggleBtnActive : ''}`}
+                  aria-pressed={effectiveLang === language}
+                  aria-label={`${voiceMessage(ui, 'voiceLanguage')}: ${voiceMessage(ui, language === 'am' ? 'languageAmharic' : 'languageEnglish')}`}
+                  lang={language === 'am' ? 'am' : 'en'}
+                  disabled={busy}
+                  onClick={() => selectLang(language)}
+                >
+                  {language === 'am' ? 'አማርኛ' : 'English'}
+                </button>
+              ))}
             </div>
           ) : null}
         </div>

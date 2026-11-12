@@ -5,6 +5,7 @@
  * ['en']), so the games show their existing English-fallback notice for it.
  */
 import type { MatchPair, PlayQuestion, WhoAmICard } from './types'
+import type { TlChain } from './bibleTimeline'
 
 type QuizGame = 'trivia' | 'finish-the-verse' | 'emoji'
 const quiz: Record<QuizGame, () => Promise<{ default: unknown }>> = {
@@ -20,6 +21,10 @@ export async function loadGeneratedQuestions(game: QuizGame): Promise<PlayQuesti
 export async function loadGeneratedCards(game: 'who-am-i' | 'match'): Promise<WhoAmICard[] | MatchPair[]> {
   const module = game === 'who-am-i' ? await import('./generated/who-am-i.json') : await import('./generated/match.json')
   return module.default as WhoAmICard[] | MatchPair[]
+}
+/** Validated generated Bible Timeline chains (see build-published-bank.ts). */
+export async function loadGeneratedTimelineChains(): Promise<TlChain[]> {
+  return (await import('./generated/timeline.json')).default as TlChain[]
 }
 /** Merge by ID: built-in and server-published items win over generated ones, so existing IDs are preserved. */
 export function mergeById<T extends { id: string }>(preferred: readonly T[], generated: readonly T[]): T[] {
