@@ -189,3 +189,44 @@ export function gradeTyped(input: string, answer: LyricReading): boolean {
   if (!got) return false
   return got === normalizeForCompare(answer.am) || (Boolean(answer.tr) && got === normalizeForCompare(answer.tr))
 }
+
+export const FM_MODES: readonly FmMode[] = ['choose', 'arrange', 'type']
+
+/**
+ * A round that mixes formats: each slot gets the next format from a freshly shuffled cycle (so a 6-question
+ * round has two of each, in a different order every time), preferring questions the player has not seen.
+ * A format with no questions at this level is skipped, never faked. Pure; `random` is injectable for tests.
+ */
+export function selectMixedRound(
+  banks: Record<FmMode, FmQuestion[]>,
+  seen: { has: (id: string) => boolean },
+  count: number,
+  random: () => number = Math.random,
+): { picked: FmQuestion[]; exhausted: boolean } {
+  const shuffled = <T,>(items: T[]) => {
+    const a = [...items]
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(random() * (i + 1))
+      ;[a[i], a[j]] = [a[j], a[i]]
+    }
+    return a
+  }
+  const queues = new Map<FmMode, FmQuestion[]>()
+  for (const mode of FM_MODES) {
+    const unique = [...new Map(banks[mode].map((q) => [q.id, q])).values()]
+    queues.set(mode, [...shuffled(unique.filter((q) => !seen.has(q.id))), ...shuffled(unique.filter((q) => seen.has(q.id)))])
+  }
+  const picked: FmQuestion[] = []
+  let cycle: FmMode[] = []
+  let guard = 0
+  while (picked.length < count && guard++ < count * 6) {
+    if (!cycle.length) cycle = shuffled(FM_MODES.filter((mode) => (queues.get(mode) ?? []).length > 0))
+    if (!cycle.length) break
+    const mode = cycle.pop()!
+    const next = queues.get(mode)!.shift()
+    if (next) picked.push(next)
+  }
+  const all = FM_MODES.flatMap((mode) => banks[mode])
+  const freshLeft = all.filter((q) => !seen.has(q.id)).length
+  return { picked, exhausted: picked.some((q) => seen.has(q.id)) && freshLeft < count }
+}

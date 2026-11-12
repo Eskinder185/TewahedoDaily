@@ -4,6 +4,7 @@ import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
 import {
   buildFinishMezmurBank,
+  selectMixedRound,
   gradeTyped,
   type FmDifficulty,
   type FmMode,
@@ -22,6 +23,8 @@ const ROUND = 6
 
 type Reading = 'amharic' | 'transliteration'
 type Answered = { q: FmQuestion; correct: boolean }
+
+type FmChoice = FmMode | 'mix'
 
 const MODES: { key: FmMode; en: string; am: string; hint: { en: string; am: string } }[] = [
   { key: 'choose', en: 'Choose the line', am: 'መስመሩን ይምረጡ', hint: { en: 'Pick the missing lyric from four real lines.', am: 'የጎደለውን ግጥም ከአራት እውነተኛ መስመሮች ይምረጡ።' } },
@@ -47,7 +50,8 @@ export function FinishMezmurGame({ locale, providedSongs }: { locale: AppLocale;
   const am = locale === 'am'
   const [songs, setSongs] = useState<MezmurSong[] | null>(providedSongs || null)
   const [loadError, setLoadError] = useState(false)
-  const [mode, setMode] = useState<FmMode>('choose')
+  // 'mix' (default) varies the format question by question, in a new order every round.
+  const [mode, setMode] = useState<FmChoice>('mix')
   const [difficulty, setDifficulty] = useState<FmDifficulty>('easy')
   const [reading, setReading] = useState<Reading>(am ? 'amharic' : 'transliteration')
   const [round, setRound] = useState<FmQuestion[] | null>(null)
@@ -80,15 +84,18 @@ export function FinishMezmurGame({ locale, providedSongs }: { locale: AppLocale;
     return () => { loadRequest.current += 1 }
   }, [loadLyrics])
 
-  const bank = useMemo(() => (songs ? buildFinishMezmurBank(songs, mode, difficulty) : []), [songs, mode, difficulty])
+  const banks = useMemo(() => (songs
+    ? { choose: buildFinishMezmurBank(songs, 'choose', difficulty), arrange: buildFinishMezmurBank(songs, 'arrange', difficulty), type: buildFinishMezmurBank(songs, 'type', difficulty) }
+    : { choose: [], arrange: [], type: [] }), [songs, difficulty])
+  const bank = useMemo(() => (mode === 'mix' ? [...banks.choose, ...banks.arrange, ...banks.type] : banks[mode]), [banks, mode])
 
   const begin = useCallback((freshStart = false) => {
     if (freshStart) resetSeen(GAME)
-    const sel = selectUnseen(bank, (q) => q.id, loadSeen(GAME), ROUND)
+    const sel = mode === 'mix' ? selectMixedRound(banks, loadSeen(GAME), ROUND) : selectUnseen(bank, (q) => q.id, loadSeen(GAME), ROUND)
     setRound(sel.picked)
     setExhausted(sel.exhausted && !freshStart)
     setIndex(0); setAnswers([]); setPicked(null); setArranged([]); setTyped(''); setRevealed(false); setResult(null)
-  }, [bank])
+  }, [bank, banks, mode])
 
   const current = round?.[index]
 
@@ -146,6 +153,9 @@ export function FinishMezmurGame({ locale, providedSongs }: { locale: AppLocale;
           <fieldset className={g.optionGroup}>
             <legend>{am ? 'የጨዋታ ዓይነት' : 'How to play'}</legend>
             <div className={g.modeGrid}>
+              <button type="button" data-fm-mode-choice="mix" aria-pressed={mode === 'mix'} onClick={() => setMode('mix')}>
+                <strong>{am ? 'ድብልቅ' : 'Mix it up'}</strong><span>{am ? 'በእያንዳንዱ ዙር የተለያዩ ዓይነቶች፤ ሁልጊዜ በተለየ ቅደም ተከተል።' : 'A different mix of formats every round, in a new order each time.'}</span>
+              </button>
               {MODES.map((m) => (
                 <button key={m.key} type="button" aria-pressed={mode === m.key} onClick={() => setMode(m.key)}>
                   <strong>{m[locale]}</strong><span>{m.hint[locale]}</span>

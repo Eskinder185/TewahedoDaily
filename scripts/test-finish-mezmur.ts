@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import {
   buildFinishMezmurBankSeeded,
+  selectMixedRound,
   cleanLyricLine,
   gradeTyped,
   normalizeForCompare,
@@ -129,6 +130,36 @@ t('selectUnseen reports exhaustion and then reuses seen', () => {
   assert.equal(r.exhausted, true)
   assert.equal(r.reusedSeen, true)
   assert.equal(new Set(r.picked.map((q) => q.id)).size, r.picked.length, 'still no in-round repeat')
+})
+
+t('Mix it up: every round mixes formats and the order changes between rounds', () => {
+  const banks = {
+    choose: buildFinishMezmurBankSeeded(songs, 'choose', 'easy', 1),
+    arrange: buildFinishMezmurBankSeeded(songs, 'arrange', 'easy', 2),
+    type: buildFinishMezmurBankSeeded(songs, 'type', 'easy', 3),
+  }
+  const none = { has: () => false }
+  const rand = seeded()
+  const orders = new Set<string>()
+  for (let i = 0; i < 12; i++) {
+    const { picked } = selectMixedRound(banks, none, 6, rand)
+    assert.equal(picked.length, 6)
+    assert.equal(new Set(picked.map((q) => q.id)).size, 6, 'no repeat inside a round')
+    const counts = { choose: 0, arrange: 0, type: 0 }
+    for (const q of picked) counts[q.mode]++
+    assert.deepEqual(counts, { choose: 2, arrange: 2, type: 2 }, 'balanced formats')
+    orders.add(picked.map((q) => q.mode).join(','))
+  }
+  assert.ok(orders.size > 3, 'format order differs between rounds: ' + orders.size)
+})
+
+t('Mix it up: a format with no questions is skipped, and seen questions are avoided', () => {
+  const choose = buildFinishMezmurBankSeeded(songs, 'choose', 'easy', 1)
+  const { picked } = selectMixedRound({ choose, arrange: [], type: [] }, { has: () => false }, 4, seeded())
+  assert.ok(picked.length > 0 && picked.every((q) => q.mode === 'choose'))
+  const seen = new Set(choose.slice(0, 3).map((q) => q.id))
+  const fresh = selectMixedRound({ choose, arrange: [], type: [] }, seen, 4, seeded()).picked
+  assert.ok(fresh.every((q) => !seen.has(q.id)))
 })
 
 console.log(`\n${passed} passed`)
