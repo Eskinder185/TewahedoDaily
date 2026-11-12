@@ -413,6 +413,35 @@ export function dedupeResults(results: SiteSearchResult[]): SiteSearchResult[] {
   return out
 }
 
+const QUESTION_WORDS = new Set(['why', 'what', 'how', 'who', 'when', 'where', 'which', 'does', 'do', 'is', 'are', 'can', 'did', 'should', 'explain', 'tell'])
+const QUESTION_NOISE = new Set(['orthodox', 'christians', 'christian', 'tewahedo', 'church', 'teaching', 'teach', 'about', 'does', 'said', 'mean', 'means', 'there'])
+
+/** A question about the faith ("why do Orthodox Christians fast…"), not a name lookup. */
+export function isTeachingQuestion(query: string): boolean {
+  const words = normalizeSearchText(query).split(/\s+/).filter(Boolean)
+  if (words.length < 4) return false
+  // "who is Saint Michael" is a name lookup, not a teaching question.
+  if (words.length <= 4 && /^(who|what) (is|are|was)\b/.test(words.slice(0, 2).join(' '))) return false
+  return QUESTION_WORDS.has(words[0]) || /\?\s*$/.test(query.trim())
+}
+
+const TEACHING_SOURCES = new Set<SiteSearchSourceType>(['church_library', 'learn', 'guide'])
+// Records match a question only through their title; everything here is demoted without a title hit.
+const RECORD_SOURCES = new Set<SiteSearchSourceType>(['synaxarium', 'synaxarium_commemoration', 'zemari', 'mezmur', 'hymn_collection', 'hymn_section', 'liturgy', 'prayer', 'prayer_section', 'saint', 'feast'])
+
+/**
+ * Question mode: sources that explain (library passages, articles, guides) come first; calendar/commemoration/
+ * artist/hymn records appear only when their TITLE carries a meaningful word of the question (stem match), so a
+ * saint's story that merely contains "Christians" or "teaching" cannot outrank the answer.
+ */
+function questionSpecificity(result: SiteSearchResult, topics: string[]): number | null {
+  if (TEACHING_SOURCES.has(result.sourceType)) return -1
+  if (!RECORD_SOURCES.has(result.sourceType)) return null
+  const title = normalizeSearchText(`${result.title} ${result.titleAmharic}`)
+  const hit = topics.some((topic) => topic.length >= 4 && title.split(/\s+/).some((word) => word.startsWith(topic.slice(0, Math.max(4, topic.length - 2)))))
+  return hit ? 0 : 3
+}
+
 export function rankSearchResults(
   results: SiteSearchResult[],
   queryRaw: string,
@@ -432,10 +461,12 @@ export function rankSearchResults(
       ),
   )
 
+  const questionMode = isTeachingQuestion(queryRaw)
+  const topics = tokens.filter((t) => !QUESTION_WORDS.has(t) && !QUESTION_NOISE.has(t))
   const prepared = dedupeResults(results).map((r) => ({
     ...r,
     _adj: relevanceAdjustedScore(r, tokens),
-    _spec: specificityRank(r.sourceType, { wantsPrayer: prayerMode, route: r.route }),
+    _spec: (questionMode ? questionSpecificity(r, topics) : null) ?? specificityRank(r.sourceType, { wantsPrayer: prayerMode, route: r.route }),
   }))
 
   prepared.sort((a, b) => {

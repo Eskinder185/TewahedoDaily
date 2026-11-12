@@ -50,3 +50,20 @@ assert.equal(merged.length, 2)
 assert.equal(merged[0].excerpt, 'Aba abune')
 assert.equal(merged[0].matchLabel, 'Lyric match')
 console.log('test-search-dedupe: ok')
+
+// Teaching questions: explanatory sources outrank records that only share a generic word.
+import { isTeachingQuestion, rankSearchResults } from '../src/lib/search/searchCore.ts'
+assert.equal(isTeachingQuestion('why do Orthodox Christians fast on Wednesday and Friday'), true)
+assert.equal(isTeachingQuestion('who is Saint Michael'), false)
+assert.equal(isTeachingQuestion('Kidus Mikael'), false)
+const rec = (sourceType: SiteSearchResult['sourceType'], title: string, route: string, matchKind: SiteSearchResult['matchKind'] = 'alias'): SiteSearchResult => ({
+  ...base, sourceType, sourceId: route, title, route, score: 0.05, matchKind, typeLabel: sourceType,
+})
+const ranked = rankSearchResults([
+  rec('synaxarium_commemoration', 'Christians shall celebrate the festival of Peter', '/pray/synaxarium/1'),
+  rec('hymn_section', 'General Fasting / Lent', '/hymns/browse/fasting/general'),
+  rec('church_library', 'Fasting in the Tewahedo Church', '/library/b1?passage=p1', 'keyword'),
+], 'why do Orthodox Christians fast on Wednesday and Friday', 10)
+assert.equal(ranked[0].sourceType, 'church_library')
+assert.equal(ranked.at(-1)?.sourceType, 'synaxarium_commemoration')
+console.log('test-search-question-ranking: ok')
