@@ -1,0 +1,2412 @@
+[
+ {
+  "id": "who-bethlehem",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Bethlehem of Judea",
+   "am": "ቤተልሔም ኤፍራታ"
+  },
+  "explanation": {
+   "en": "City of David and setting of Ruth, Micah prophesied that out of me would come forth the Ruler of Israel, born in the flesh.",
+   "am": "የዳዊት ከተማ ነኝ፤ ሚክያስ አለቃ እንደሚወጣብኝ ተነበየ፤ መድኃኒታችን ኢየሱስ ክርስቶስ በሥጋ የተወለደብኝ ቅድስት ስፍራ ነኝ።"
+  },
+  "source": {
+   "label": "Luke 2:4",
+   "route": "/bible/luke/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-elijah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Elijah the Tishbite",
+   "am": "ነቢዩ ኤልያስ"
+  },
+  "explanation": {
+   "en": "I confronted the prophets of Baal on Mount Carmel, prayed for fire from heaven, and was taken up in a chariot of fire.",
+   "am": "በቀርሜሎስ ተራራ የሐሰት ነቢያትን ተጋፈጥሁ፤ እሳት ከሰማይ በጸሎት አወረድሁ፤ በእሳት ሰረገላም ወደ ሰማይ ዐረግሁ።"
+  },
+  "source": {
+   "label": "1 Kings 18:38",
+   "route": "/bible/kings/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-elisha",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Elisha the Prophet",
+   "am": "ነቢዩ ኤልሳዕ"
+  },
+  "explanation": {
+   "en": "I took up the mantle of Elijah, asked for a double portion of his spirit, and healed Naaman of leprosy in the Jordan.",
+   "am": "የኤልያስን ካባ ወረስሁ፤ የመንፈሱን ሁለት ዕጥፍ ተቀበልሁ፤ ሶርያዊውን ንዕማንን በዮርዳኖስ ውኃ ፈወስሁ።"
+  },
+  "source": {
+   "label": "2 Kings 2:9",
+   "route": "/bible/kings/24",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-esther",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Queen Esther",
+   "am": "ንግሥት አስቴር"
+  },
+  "explanation": {
+   "en": "Raised by Mordecai in Shushan, I fasted for three days and risked my life before King Ahasuerus to save my people.",
+   "am": "በሱሳ በመርዶክዮስ እጅ አደግሁ፤ ለሦስት ቀን ጾም አወጅሁ፤ “ከጠፋሁም ልጥፋ” ብዬ ሕዝቤን ከመጥፋት አዳንሁ።"
+  },
+  "source": {
+   "label": "Esther 4:16",
+   "route": "/bible/esther/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-jerusalem",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Holy City of Jerusalem",
+   "am": "ቅድስት ከተማ ኢየሩሳሌም"
+  },
+  "explanation": {
+   "en": "Encompassed by mountains, home to Mount Zion and the holy Temple, where Christ entered with palms and achieved our redemption.",
+   "am": "በተራሮች የተከበብሁ የሰላም ከተማ ነኝ፤ ሰሎሞን መቅደሱን ሠራብኝ፤ ጌታችን በሆሣዕና ገብቶ በጎልጎታ የመስቀል ድነት ፈጸመብኝ።"
+  },
+  "source": {
+   "label": "Psalm 122:3",
+   "route": "/bible/psalms/122",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-john-baptist",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Saint John the Baptist",
+   "am": "ቅዱስ ዮሐንስ መጥምቅ"
+  },
+  "explanation": {
+   "en": "I wore camel’s hair, cried in the wilderness to prepare the way of the Lord, and baptized Christ in the Jordan.",
+   "am": "የግመል ጠጕር ለበስሁ፤ በምድረ በዳ የጌታን መንገድ ጠረግሁ፤ ጌታችን ኢየሱስ ክርስቶስን በዮርዳኖስ አጠመቅሁ።"
+  },
+  "source": {
+   "label": "Matthew 3:13",
+   "route": "/bible/matthew/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-joseph",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Joseph the Patriarch",
+   "am": "ዮሴፍ ጻድቅ"
+  },
+  "explanation": {
+   "en": "Sold by my brothers into Egypt, I interpreted Pharaoh’s dreams of seven kine and preserved life during the famine.",
+   "am": "በወንድሞቼ ወደ ግብፅ ተሸጥሁ፤ የፈርዖንን ሕልም ፈታሁ፤ በራብ ዘመን ቤተሰቦቼንና ዓለምን በምግብ አዳንሁ።"
+  },
+  "source": {
+   "label": "Genesis 45:5",
+   "route": "/bible/genesis/45",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-joshua",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Joshua son of Nun",
+   "am": "ኢያሱ ወልደ ነዌ"
+  },
+  "explanation": {
+   "en": "I succeeded Moses, led the twelve tribes across the Jordan behind the Ark of the Covenant, and took Jericho.",
+   "am": "ሙሴን ተክቼ ሕዝቡን መራሁ፤ በቃል ኪዳኑ ታቦት ፊት ዮርዳኖስን አሻገርሁ፤ የኢያሪኮንም ቅጥር አፈረስሁ።"
+  },
+  "source": {
+   "label": "Joshua 3:17",
+   "route": "/bible/joshua/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-mount-sinai",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Mount Sinai (Horeb)",
+   "am": "ደብረ ሲና (ኮሬብ)"
+  },
+  "explanation": {
+   "en": "I trembled with smoke and lightning as God descended, Moses spoke face-to-face, and the stone tablets of the Law were given.",
+   "am": "እግዚአብሔር በእሳት ሲወርድ በጭስና በመብረቅ ተናወጥሁ፤ ሙሴ አርባ ቀን ቆየብኝ፤ አሥርቱ ትእዛዛት የተጻፉባቸው ጽላቶች ተሰጡብኝ።"
+  },
+  "source": {
+   "label": "Exodus 19:18",
+   "route": "/bible/exodus/19",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-aaron",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Aaron",
+   "am": "አሮን"
+  },
+  "explanation": {
+   "en": "I was the older brother of Moses who served as his spokesman and became the first High Priest of Israel."
+  },
+  "source": {
+   "label": "Exodus 28:1",
+   "route": "/bible/exodus/28",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-abigail",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Abigail",
+   "am": "አቢግያ"
+  },
+  "explanation": {
+   "en": "I was a woman of good understanding and beauty who intervened with gifts to prevent David from shedding blood over Nabal’s folly."
+  },
+  "source": {
+   "label": "1 Samuel 25:32",
+   "route": "/bible/samuel/25",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-andrew",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Andrew the Apostle",
+   "am": "እንዲርያስ ሐዋርያ"
+  },
+  "explanation": {
+   "en": "I was a disciple of John the Baptist who first found my brother Simon Peter and brought him to Jesus."
+  },
+  "source": {
+   "label": "John 1:41",
+   "route": "/bible/john/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-anna",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Anna the Prophetess",
+   "am": "ሐና ነቢይት"
+  },
+  "explanation": {
+   "en": "I was an eighty-four-year-old widow who departed not from the Temple with fastings and gave thanks when the Christ child arrived."
+  },
+  "source": {
+   "label": "Luke 2:38",
+   "route": "/bible/luke/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-barnabas",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Barnabas",
+   "am": "በርናባስ"
+  },
+  "explanation": {
+   "en": "My name means Son of Encouragement; I sold a field to lay the money at the apostles’ feet and vouched for Saul in Jerusalem."
+  },
+  "source": {
+   "label": "Acts 4:36",
+   "route": "/bible/acts/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-boaz",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Boaz",
+   "am": "ቦዔዝ"
+  },
+  "explanation": {
+   "en": "I was a wealthy and righteous man of Bethlehem who showed kindness to Ruth in my barley fields and redeemed her as my wife."
+  },
+  "source": {
+   "label": "Ruth 4:10",
+   "route": "/bible/ruth/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-brazen-altar",
+  "category": "holy-objects",
+  "answer": {
+   "en": "Altar of Burnt Offering",
+   "am": "የሚቃጠል መሥዋዕት መሠዊያ"
+  },
+  "explanation": {
+   "en": "I was the bronze-covered wooden altar set before the door of the Tabernacle where morning and evening sacrifices were offered."
+  },
+  "source": {
+   "label": "Exodus 27:1",
+   "route": "/bible/exodus/27",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-caleb",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Caleb",
+   "am": "ካሌብ"
+  },
+  "explanation": {
+   "en": "I was one of the two faithful spies who believed God would give Israel the promised land, and I inherited Hebron in my old age."
+  },
+  "source": {
+   "label": "Joshua 14:14",
+   "route": "/bible/joshua/14",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-cornelius",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Cornelius the Centurion",
+   "am": "ቆርኔሌዎስ"
+  },
+  "explanation": {
+   "en": "I was a devout Roman centurion in Caesarea who gave alms and prayed continually, to whom Peter was sent to preach the Gospel."
+  },
+  "source": {
+   "label": "Acts 10:2",
+   "route": "/bible/acts/10",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-deborah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Deborah",
+   "am": "ዲቦራ"
+  },
+  "explanation": {
+   "en": "I was a prophetess and judge in Israel who held court under a palm tree and inspired Barak to victory over Sisera."
+  },
+  "source": {
+   "label": "Judges 4:4",
+   "route": "/bible/judges/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-elizabeth",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Elizabeth",
+   "am": "ኤልሳቤጥ"
+  },
+  "explanation": {
+   "en": "I was the wife of Zechariah the priest who, filled with the Holy Spirit, welcomed the Virgin Mary as the mother of my Lord."
+  },
+  "source": {
+   "label": "Luke 1:43",
+   "route": "/bible/luke/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-ezra",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Ezra",
+   "am": "ዕዝራ"
+  },
+  "explanation": {
+   "en": "I was a priest and skilled scribe who led exiles back from Babylon and taught the statutes and laws of God to the community."
+  },
+  "source": {
+   "label": "Ezra 7:10",
+   "route": "/bible/ezra-nehemiah/7",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-gideon",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Gideon",
+   "am": "ጌዴዎን"
+  },
+  "explanation": {
+   "en": "God tested my faith with the morning dew on a fleece, and I defeated the Midianite multitude with only three hundred men."
+  },
+  "source": {
+   "label": "Judges 7:7",
+   "route": "/bible/judges/7",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-golden-censer",
+  "category": "holy-objects",
+  "answer": {
+   "en": "Golden Censer",
+   "am": "ማዕጠንት (የወርቅ ጥና)"
+  },
+  "explanation": {
+   "en": "I hold fragrant incense before the presence of the Lord, symbolizing the acceptable prayers of all the saints ascending to heaven."
+  },
+  "source": {
+   "label": "Revelation 8:3",
+   "route": "/bible/revelation/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-hannah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Hannah",
+   "am": "ሐና"
+  },
+  "explanation": {
+   "en": "I prayed with tears in the tabernacle at Shiloh for a son, and after God gave me Samuel, I dedicated him to divine service."
+  },
+  "source": {
+   "label": "1 Samuel 1:28",
+   "route": "/bible/samuel/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-hezekiah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "King Hezekiah",
+   "am": "ንጉሥ ሕዝቅያስ"
+  },
+  "explanation": {
+   "en": "I trusted in the Lord, reopened the Temple, held a great Passover, and God added fifteen years to my life after I prayed."
+  },
+  "source": {
+   "label": "2 Kings 20:6",
+   "route": "/bible/kings/42",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-hosea",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Hosea",
+   "am": "ሆሴዕ"
+  },
+  "explanation": {
+   "en": "God instructed me to marry an unfaithful wife as a living sign of His enduring, merciful love for wayward Israel."
+  },
+  "source": {
+   "label": "Hosea 1:2",
+   "route": "/bible/hosea/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-isaac",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Isaac",
+   "am": "ይስሐቅ"
+  },
+  "explanation": {
+   "en": "I was the child of promise born to Abraham and Sarah in their old age, and I carried the wood for the sacrifice on Mount Moriah."
+  },
+  "source": {
+   "label": "Genesis 22:6",
+   "route": "/bible/genesis/22",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-jacob",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Jacob (Israel)",
+   "am": "ያዕቆብ (እስራኤል)"
+  },
+  "explanation": {
+   "en": "I wrestled with an angel until dawn at Peniel, received the name Israel, and fathered the twelve tribes."
+  },
+  "source": {
+   "label": "Genesis 32:28",
+   "route": "/bible/genesis/32",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-james-zebedee",
+  "category": "biblical-people",
+  "answer": {
+   "en": "James son of Zebedee",
+   "am": "ያዕቆብ ዘዘብዴዎስ"
+  },
+  "explanation": {
+   "en": "I was John’s brother, one of the three who witnessed the Transfiguration, and the first of the Twelve Apostles martyred by Herod."
+  },
+  "source": {
+   "label": "Acts 12:2",
+   "route": "/bible/acts/12",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-job",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Job",
+   "am": "ኢዮብ"
+  },
+  "explanation": {
+   "en": "I remained steadfast in faith through severe trials and loss, declaring: I know that my Redeemer lives."
+  },
+  "source": {
+   "label": "Job 19:25",
+   "route": "/bible/job/19",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-jonah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Jonah",
+   "am": "ዮናስ"
+  },
+  "explanation": {
+   "en": "I was in the belly of a great fish for three days and three nights before preaching repentance to the people of Nineveh."
+  },
+  "source": {
+   "label": "Jonah 1:17",
+   "route": "/bible/jonah/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-jonathan",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Jonathan",
+   "am": "ዮናታን"
+  },
+  "explanation": {
+   "en": "I was King Saul’s son who formed a covenant of deep, selfless friendship with David and protected him from my father’s wrath."
+  },
+  "source": {
+   "label": "1 Samuel 18:3",
+   "route": "/bible/samuel/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-jordan-river",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Jordan River",
+   "am": "የዮርዳኖስ ወንዝ"
+  },
+  "explanation": {
+   "en": "I was the waters where Joshua led the ark into the promised land, where Naaman washed seven times, and where Jesus was baptized."
+  },
+  "source": {
+   "label": "Matthew 3:13",
+   "route": "/bible/matthew/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-josiah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "King Josiah",
+   "am": "ንጉሥ ኢዮስያስ"
+  },
+  "explanation": {
+   "en": "I became king at eight years old, wept when the Book of the Law was discovered in the Temple, and purged the land of idolatry."
+  },
+  "source": {
+   "label": "2 Kings 22:11",
+   "route": "/bible/kings/44",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-leah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Leah",
+   "am": "ሊያ"
+  },
+  "explanation": {
+   "en": "I was the elder daughter of Laban who became Jacob’s first wife and bore Judah, from whose line the Messiah came."
+  },
+  "source": {
+   "label": "Genesis 29:35",
+   "route": "/bible/genesis/29",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-matthew",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Matthew the Evangelist",
+   "am": "ማቴዎስ ወንጌላዊ"
+  },
+  "explanation": {
+   "en": "I was sitting at the tax collector’s booth when Jesus called me to follow Him, and I wrote the Gospel opening with His royal genealogy."
+  },
+  "source": {
+   "label": "Matthew 9:9",
+   "route": "/bible/matthew/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-miriam",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Miriam",
+   "am": "ማርያም (እህተ ሙሴ)"
+  },
+  "explanation": {
+   "en": "I watched over my baby brother Moses in the Nile and led the women in singing praise with timbrels after crossing the Red Sea."
+  },
+  "source": {
+   "label": "Exodus 15:20",
+   "route": "/bible/exodus/15",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-mordecai",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Mordecai",
+   "am": "መርዶክዮስ"
+  },
+  "explanation": {
+   "en": "I uncovered a plot against the king, refused to bow to Haman, and urged Queen Esther to advocate for our people."
+  },
+  "source": {
+   "label": "Esther 4:14",
+   "route": "/bible/esther/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-mount-carmel",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Mount Carmel",
+   "am": "ደብረ ቀርሜሎስ"
+  },
+  "explanation": {
+   "en": "I was the coastal mountain where the prophet Elijah confronted the four hundred and fifty prophets of Baal and fire fell from heaven."
+  },
+  "source": {
+   "label": "1 Kings 18:20",
+   "route": "/bible/kings/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-nazareth",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Nazareth",
+   "am": "ናዝሬት"
+  },
+  "explanation": {
+   "en": "I was the Galilean town where the Archangel Gabriel appeared to Mary and where Jesus grew up with Joseph and His Mother."
+  },
+  "source": {
+   "label": "Luke 2:51",
+   "route": "/bible/luke/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-philip",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Philip the Apostle",
+   "am": "ፊልጶስ ሐዋርያ"
+  },
+  "explanation": {
+   "en": "I was from Bethsaida, invited Nathanael to come and see Jesus, and asked the Lord to show us the Father at the Last Supper."
+  },
+  "source": {
+   "label": "John 14:8",
+   "route": "/bible/john/14",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-rachel",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Rachel",
+   "am": "ራሔል"
+  },
+  "explanation": {
+   "en": "I was Jacob’s beloved wife whom he met at the well in Haran, and the mother of Joseph and Benjamin."
+  },
+  "source": {
+   "label": "Genesis 30:22",
+   "route": "/bible/genesis/30",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-samson",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Samson",
+   "am": "ሶምሶን"
+  },
+  "explanation": {
+   "en": "I was a Nazirite blessed with extraordinary strength who fought the Philistines with a donkey’s jawbone."
+  },
+  "source": {
+   "label": "Judges 15:15",
+   "route": "/bible/judges/15",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p2-simeon",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Simeon the Elder",
+   "am": "ስምዖን አረጋዊ"
+  },
+  "explanation": {
+   "en": "The Holy Spirit promised I would not see death before beholding the Lord’s Christ, whom I cradled in the Temple."
+  },
+  "source": {
+   "label": "Luke 2:29",
+   "route": "/bible/luke/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-aarons-rod",
+  "category": "holy-objects",
+  "answer": {
+   "en": "Aaron’s Rod",
+   "am": "የአሮን በትር"
+  },
+  "explanation": {
+   "en": "I was an almond staff that miraculously blossomed, budded, and yielded ripe almonds overnight to confirm the divine choice of the priesthood."
+  },
+  "source": {
+   "label": "Numbers 17:8",
+   "route": "/bible/numbers/17",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-abel",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Abel",
+   "am": "አቤል"
+  },
+  "explanation": {
+   "en": "I was a keeper of sheep who offered to God the firstlings of my flock with sincere faith, whose righteous blood cried out from the ground."
+  },
+  "source": {
+   "label": "Genesis 4:4",
+   "route": "/bible/genesis/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-abner",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Abner",
+   "am": "አበኔር"
+  },
+  "explanation": {
+   "en": "I was the commander-in-chief of King Saul’s army who later sought to unite all Israel under King David in Hebron."
+  },
+  "source": {
+   "label": "2 Samuel 3:20",
+   "route": "/bible/samuel/34",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-adam",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Adam",
+   "am": "አዳም"
+  },
+  "explanation": {
+   "en": "I was formed from the dust of the earth in the image and likeness of God, named the living creatures, and was placed in the Garden of Eden."
+  },
+  "source": {
+   "label": "Genesis 2:7",
+   "route": "/bible/genesis/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-apollos",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Apollos",
+   "am": "አጵሎስ"
+  },
+  "explanation": {
+   "en": "I was an eloquent Alexandrian who was fervent in spirit and mighty in the Scriptures, whom Aquila and Priscilla instructed more perfectly."
+  },
+  "source": {
+   "label": "Acts 18:24",
+   "route": "/bible/acts/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-aquila",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Aquila",
+   "am": "አቂላ"
+  },
+  "explanation": {
+   "en": "I was a Jewish tentmaker from Pontus who fled Rome with my wife Priscilla, lodged Paul in Corinth, and risked my neck for the church."
+  },
+  "source": {
+   "label": "Acts 18:2",
+   "route": "/bible/acts/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-barak",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Barak",
+   "am": "ባርቅ"
+  },
+  "explanation": {
+   "en": "I led ten thousand men from Naphtali and Zebulun to Mount Tabor when Deborah called me, routing the army of Sisera."
+  },
+  "source": {
+   "label": "Judges 4:14",
+   "route": "/bible/judges/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-baruch",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Baruch",
+   "am": "ባሮክ"
+  },
+  "explanation": {
+   "en": "I was the faithful scribe of Jeremiah who recorded his prophecies on a scroll and read them boldly in the Lord’s house."
+  },
+  "source": {
+   "label": "Jeremiah 36:4",
+   "route": "/bible/jeremiah-collection/36",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-barzillai",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Barzillai the Gileadite",
+   "am": "በርዚላይ"
+  },
+  "explanation": {
+   "en": "I was an eighty-year-old elder of Rogelim who provided food and supplies for David and his men while fleeing Absalom at Mahanaim."
+  },
+  "source": {
+   "label": "2 Samuel 19:32",
+   "route": "/bible/samuel/50",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-benaiah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Benaiah son of Jehoiada",
+   "am": "በናያስ"
+  },
+  "explanation": {
+   "en": "I was a valiant captain of David’s mighty men who struck down a lion in a pit on a snowy day and guarded the king’s throne."
+  },
+  "source": {
+   "label": "2 Samuel 23:20",
+   "route": "/bible/samuel/54",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-benjamin",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Benjamin",
+   "am": "ብንያም"
+  },
+  "explanation": {
+   "en": "I was Jacob’s youngest son born on the journey near Bethlehem, in whose grain sack the silver cup was placed in Egypt."
+  },
+  "source": {
+   "label": "Genesis 44:12",
+   "route": "/bible/genesis/44",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-bethany-village",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Bethany",
+   "am": "ቢታንያ"
+  },
+  "explanation": {
+   "en": "I was the village fifteen stadia from Jerusalem, the home of Mary, Martha, and Lazarus, where Christ was welcomed and lodged."
+  },
+  "source": {
+   "label": "John 11:18",
+   "route": "/bible/john/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-bronze-serpent",
+  "category": "holy-objects",
+  "answer": {
+   "en": "Bronze Serpent (Nehushtan)",
+   "am": "የናስ እባብ"
+  },
+  "explanation": {
+   "en": "I was fashioned by Moses and mounted upon a pole in the wilderness so that whoever looked upon me was healed from venomous serpent bites."
+  },
+  "source": {
+   "label": "Numbers 21:9",
+   "route": "/bible/numbers/21",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-capernaum",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Capernaum",
+   "am": "ቅፍርናሆም"
+  },
+  "explanation": {
+   "en": "I was the lakeside city in Galilee that served as the center of Jesus’ public ministry, called His own city, where He taught in the synagogue."
+  },
+  "source": {
+   "label": "Matthew 4:13",
+   "route": "/bible/matthew/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-daniel-prophet",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Daniel the Prophet",
+   "am": "ዳንኤል ነቢይ"
+  },
+  "explanation": {
+   "en": "I resolved not to defile myself with the king’s delicacies, interpreted Nebuchadnezzar’s dreams, and survived unharmed in the den of lions."
+  },
+  "source": {
+   "label": "Daniel 6:22",
+   "route": "/bible/daniel/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-ehud",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Ehud",
+   "am": "ናዖድ"
+  },
+  "explanation": {
+   "en": "I was a left-handed judge from the tribe of Benjamin who delivered Israel from Moabite oppression by striking King Eglon with a double-edged dagger."
+  },
+  "source": {
+   "label": "Judges 3:15",
+   "route": "/bible/judges/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-enoch-patriarch",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Enoch",
+   "am": "ሄኖክ"
+  },
+  "explanation": {
+   "en": "I walked faithfully with God for three hundred years, and God took me so that I did not see death."
+  },
+  "source": {
+   "label": "Genesis 5:24",
+   "route": "/bible/genesis/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-eve",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Eve",
+   "am": "ሔዋን"
+  },
+  "explanation": {
+   "en": "I was formed from Adam’s rib to be his helper and companion, and I was called the mother of all living."
+  },
+  "source": {
+   "label": "Genesis 3:20",
+   "route": "/bible/genesis/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-gad-seer",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Gad the Seer",
+   "am": "ጋድ ባለ ራእይ"
+  },
+  "explanation": {
+   "en": "I was King David’s seer who gave him the choice of three divine chastisements and instructed him to build an altar on Araunah’s threshing floor."
+  },
+  "source": {
+   "label": "2 Samuel 24:18",
+   "route": "/bible/samuel/55",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-haggai",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Haggai",
+   "am": "ሐጌ ነቢይ"
+  },
+  "explanation": {
+   "en": "I challenged the returned exiles saying: Is it time for you to dwell in paneled houses while this house lies in ruins? Build the temple!"
+  },
+  "source": {
+   "label": "Haggai 1:4",
+   "route": "/bible/haggai/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-hananiah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Hananiah (Shadrach)",
+   "am": "አናንያ"
+  },
+  "explanation": {
+   "en": "I was one of the three holy youths who refused to bow before the golden image in Babylon and walked freely through the blazing fiery furnace."
+  },
+  "source": {
+   "label": "Daniel 3:17",
+   "route": "/bible/daniel/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-hur",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Hur",
+   "am": "ሆር"
+  },
+  "explanation": {
+   "en": "I stood alongside Aaron on the hill at Rephidim to support Moses’ uplifted arms until sunset so Israel could prevail."
+  },
+  "source": {
+   "label": "Exodus 17:12",
+   "route": "/bible/exodus/17",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-james-alphaeus",
+  "category": "biblical-people",
+  "answer": {
+   "en": "James son of Alphaeus",
+   "am": "ያዕቆብ ወልደ እልፍዮስ"
+  },
+  "explanation": {
+   "en": "I was one of the Twelve Apostles chosen by the Lord Jesus Christ, distinguished in the apostolic lists from the son of Zebedee."
+  },
+  "source": {
+   "label": "Matthew 10:3",
+   "route": "/bible/matthew/10",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-jehoshaphat",
+  "category": "biblical-people",
+  "answer": {
+   "en": "King Jehoshaphat",
+   "am": "ንጉሥ ኢዮሣፍጥ"
+  },
+  "explanation": {
+   "en": "I sent Levites throughout Judah with the Book of the Law to teach the people and appointed singers before the army singing: Praise the Lord."
+  },
+  "source": {
+   "label": "2 Chronicles 20:21",
+   "route": "/bible/second-chronicles/20",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-jephthah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Jephthah",
+   "am": "ዮፍታሔ"
+  },
+  "explanation": {
+   "en": "I was a mighty warrior from Gilead who defeated the Ammonites after making a solemn vow to the Lord."
+  },
+  "source": {
+   "label": "Judges 11:29",
+   "route": "/bible/judges/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-jesse",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Jesse of Bethlehem",
+   "am": "እሴይ"
+  },
+  "explanation": {
+   "en": "I was the father of eight sons in Bethlehem who sent young David with bread to his brothers, from whose root the Messiah sprouted."
+  },
+  "source": {
+   "label": "1 Samuel 16:11",
+   "route": "/bible/samuel/16",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-jethro",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Jethro (Reuel)",
+   "am": "ዮቶር"
+  },
+  "explanation": {
+   "en": "I was the priest of Midian whose daughter Zipporah married Moses, and I advised Moses to appoint capable judges over Israel."
+  },
+  "source": {
+   "label": "Exodus 18:17",
+   "route": "/bible/exodus/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-joseph-arimathea",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Joseph of Arimathea",
+   "am": "ዮሴፍ ዘአርማትያስ"
+  },
+  "explanation": {
+   "en": "I was a honorable counselor and secret disciple who boldly asked Pilate for the body of Jesus and wrapped Him in linen in my own tomb."
+  },
+  "source": {
+   "label": "Mark 15:43",
+   "route": "/bible/mark/15",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-joseph-betrothed",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Joseph the Betrothed",
+   "am": "ጻድቁ ዮሴፍ"
+  },
+  "explanation": {
+   "en": "I was a righteous craftsman from Nazareth whom an angel warned in dreams to take Mary and the Child into Egypt to escape Herod."
+  },
+  "source": {
+   "label": "Matthew 2:13",
+   "route": "/bible/matthew/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-joshua-priest",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Joshua son of Jozadak",
+   "am": "ኢያሱ ሊቀ ካህናት"
+  },
+  "explanation": {
+   "en": "I was the post-exilic High Priest who stood before the Angel of the Lord while Satan accused me, and my filthy garments were replaced with rich robes."
+  },
+  "source": {
+   "label": "Zechariah 3:4",
+   "route": "/bible/zechariah/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-judah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Judah",
+   "am": "ይሁዳ"
+  },
+  "explanation": {
+   "en": "I offered myself as surety for Benjamin before Joseph in Egypt, and my father prophesied that the scepter would not depart from my line."
+  },
+  "source": {
+   "label": "Genesis 49:10",
+   "route": "/bible/genesis/49",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-judith-heroine",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Judith",
+   "am": "ዮዲት"
+  },
+  "explanation": {
+   "en": "I was a devout widow who fasted on my roof in Bethulia, entered the enemy camp, and delivered Israel by striking Holofernes."
+  },
+  "source": {
+   "label": "Judith 13:8",
+   "route": "/bible/judith/13",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-king-asa",
+  "category": "biblical-people",
+  "answer": {
+   "en": "King Asa",
+   "am": "ንጉሥ አሳ"
+  },
+  "explanation": {
+   "en": "I reigned in Judah with righteousness, removed pagan shrines, relied on God to defeat Zerah the Ethiopian’s army, and repaired the Lord’s altar."
+  },
+  "source": {
+   "label": "2 Chronicles 14:11",
+   "route": "/bible/second-chronicles/14",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-king-uzziah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "King Uzziah",
+   "am": "ንጉሥ ዖዝያን"
+  },
+  "explanation": {
+   "en": "I prospered greatly as king in building towers and agriculture, but became proud and attempted to burn incense in the sanctuary."
+  },
+  "source": {
+   "label": "2 Chronicles 26:16",
+   "route": "/bible/second-chronicles/26",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-lazarus",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Lazarus of Bethany",
+   "am": "አልዓዛር ጻድቅ"
+  },
+  "explanation": {
+   "en": "I was Jesus’ friend who lay four days in the tomb until He stood outside and called out with a loud voice: Come forth!"
+  },
+  "source": {
+   "label": "John 11:43",
+   "route": "/bible/john/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-lydia",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Lydia of Thyatira",
+   "am": "ልድያ"
+  },
+  "explanation": {
+   "en": "I was a seller of purple cloth in Philippi whose heart the Lord opened to heed Paul’s words, and the first European convert baptized with my household."
+  },
+  "source": {
+   "label": "Acts 16:14",
+   "route": "/bible/acts/16",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-manoah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Manoah",
+   "am": "ማኑሄ"
+  },
+  "explanation": {
+   "en": "I was Samson’s father from the tribe of Dan who offered a young goat upon a rock while the Angel of the Lord ascended in the flame."
+  },
+  "source": {
+   "label": "Judges 13:19",
+   "route": "/bible/judges/13",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-martha-bethany",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Martha of Bethany",
+   "am": "ማርታ"
+  },
+  "explanation": {
+   "en": "I was serving diligently in my house when Jesus visited and confessed: Yes, Lord, I believe that You are the Christ, the Son of God."
+  },
+  "source": {
+   "label": "John 11:27",
+   "route": "/bible/john/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-mary-bethany",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Mary of Bethany",
+   "am": "ማርያም እህተ አልዓዛር"
+  },
+  "explanation": {
+   "en": "I sat at Jesus’ feet listening to His teaching and later anointed His feet with costly spikenard, wiping them with my hair."
+  },
+  "source": {
+   "label": "John 12:3",
+   "route": "/bible/john/12",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-matthias",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Matthias the Apostle",
+   "am": "ማትያስ ሐዋርያ"
+  },
+  "explanation": {
+   "en": "I accompanied the Lord from John’s baptism to the Ascension, and was chosen by prayer and lot in the upper room to fill the twelfth apostolic seat."
+  },
+  "source": {
+   "label": "Acts 1:26",
+   "route": "/bible/acts/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-melchizedek",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Melchizedek",
+   "am": "መልከ ጼዴቅ"
+  },
+  "explanation": {
+   "en": "I was the King of Salem and priest of the Most High God who brought forth bread and wine and blessed Abraham."
+  },
+  "source": {
+   "label": "Genesis 14:18",
+   "route": "/bible/genesis/14",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-mephibosheth",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Mephibosheth",
+   "am": "ሜፊቦስቴ"
+  },
+  "explanation": {
+   "en": "I was Jonathan’s son, lame in both feet, whom David welcomed to eat continually at the royal table for the sake of his father."
+  },
+  "source": {
+   "label": "2 Samuel 9:7",
+   "route": "/bible/samuel/40",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-mount-ararat",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Mount Ararat",
+   "am": "ደብረ አራራት"
+  },
+  "explanation": {
+   "en": "I was the mountain range upon which Noah’s ark came to rest on the seventeenth day of the seventh month as the floodwaters receded."
+  },
+  "source": {
+   "label": "Genesis 8:4",
+   "route": "/bible/genesis/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-mount-horeb",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Mount Horeb",
+   "am": "ደብረ ሖሬብ"
+  },
+  "explanation": {
+   "en": "I was the mountain of God where Moses saw the burning bush unconsumed and where Elijah heard the still, small voice in the cave."
+  },
+  "source": {
+   "label": "1 Kings 19:8",
+   "route": "/bible/kings/19",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-mount-moriah",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Mount Moriah",
+   "am": "ደብረ ሞሪያ"
+  },
+  "explanation": {
+   "en": "I was the mountain where Abraham bound Isaac for sacrifice and where King Solomon later constructed the glorious Temple of Jerusalem."
+  },
+  "source": {
+   "label": "2 Chronicles 3:1",
+   "route": "/bible/second-chronicles/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-mount-of-olives",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Mount of Olives",
+   "am": "ደብረ ዘይት"
+  },
+  "explanation": {
+   "en": "I was the eastern ridge overlooking Jerusalem where Christ wept over the city, delivered the end-times discourse, and ascended into heaven."
+  },
+  "source": {
+   "label": "Acts 1:12",
+   "route": "/bible/acts/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-mount-tabor",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Mount Tabor",
+   "am": "ደብረ ታቦር"
+  },
+  "explanation": {
+   "en": "I was the high mountain in Galilee where the Lord Jesus Christ was transfigured in divine glory before Peter, James, and John."
+  },
+  "source": {
+   "label": "Matthew 17:1",
+   "route": "/bible/matthew/17",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-nahum",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Nahum",
+   "am": "ናሆም ነቢይ"
+  },
+  "explanation": {
+   "en": "I was the Elkoshite who proclaimed comfort to Judah by foretelling the utter destruction and overthrow of Nineveh."
+  },
+  "source": {
+   "label": "Nahum 1:1",
+   "route": "/bible/nahum/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-naomi",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Naomi",
+   "am": "ኑኃሚን"
+  },
+  "explanation": {
+   "en": "I returned from the land of Moab to Bethlehem in grief calling myself Mara, but rejoiced when Ruth bore Obed, David’s grandfather."
+  },
+  "source": {
+   "label": "Ruth 1:20",
+   "route": "/bible/ruth/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-nathan",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Nathan the Prophet",
+   "am": "ናታን ነቢይ"
+  },
+  "explanation": {
+   "en": "I confronted King David with the parable of the poor man’s ewe lamb, announced God’s eternal covenant, and anointed Solomon."
+  },
+  "source": {
+   "label": "2 Samuel 12:7",
+   "route": "/bible/samuel/43",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-nathanael",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Nathanael (Bartholomew)",
+   "am": "ናትናኤል (በርተሎሜዎስ)"
+  },
+  "explanation": {
+   "en": "Jesus saw me sitting under the fig tree before Philip called me, and declared me an Israelite indeed in whom there is no deceit."
+  },
+  "source": {
+   "label": "John 1:47",
+   "route": "/bible/john/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-nicodemus",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Nicodemus",
+   "am": "ኒቆዲሞስ"
+  },
+  "explanation": {
+   "en": "I was a ruler of the Jews who came to Jesus by night to ask about being born again, and later brought myrrh and aloes for His burial."
+  },
+  "source": {
+   "label": "John 3:1",
+   "route": "/bible/john/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-obadiah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Obadiah",
+   "am": "አብድዩ ነቢይ"
+  },
+  "explanation": {
+   "en": "I wrote a single-chapter prophecy denouncing Edom’s arrogance in the rock clefts and proclaiming deliverance upon Mount Zion."
+  },
+  "source": {
+   "label": "Obadiah 1:17",
+   "route": "/bible/obadiah/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-othniel",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Othniel",
+   "am": "ጎቶንያል"
+  },
+  "explanation": {
+   "en": "I was Caleb’s younger nephew who conquered Kiriath-sepher, received Achsah as my wife, and became the very first judge of Israel."
+  },
+  "source": {
+   "label": "Judges 3:9",
+   "route": "/bible/judges/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-philemon",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Philemon",
+   "am": "ፊልሞና"
+  },
+  "explanation": {
+   "en": "I was a hospitable Christian leader in Colossae whose house hosted the church, to whom Paul appealed to welcome Onesimus as a beloved brother."
+  },
+  "source": {
+   "label": "Philemon 1:1",
+   "route": "/bible/philemon/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-phinehas",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Phinehas",
+   "am": "ፊንሐስ"
+  },
+  "explanation": {
+   "en": "I was the grandson of Aaron zealous for God’s holiness who turned away the divine plague and received a covenant of perpetual priesthood."
+  },
+  "source": {
+   "label": "Numbers 25:11",
+   "route": "/bible/numbers/25",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-pool-of-bethesda",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Pool of Bethesda",
+   "am": "ቤተ ሳይዳ መጠመቂያ"
+  },
+  "explanation": {
+   "en": "I was the pool with five porches by the Sheep Gate where Jesus healed a paralyzed man who had suffered for thirty-eight years."
+  },
+  "source": {
+   "label": "John 5:2",
+   "route": "/bible/john/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-pool-of-siloam",
+  "category": "biblical-locations",
+  "answer": {
+   "en": "Pool of Siloam",
+   "am": "የሰሊሆም መጠመቂያ"
+  },
+  "explanation": {
+   "en": "I was the pool in Jerusalem whose name means Sent, where Jesus sent the man blind from birth to wash the clay and receive sight."
+  },
+  "source": {
+   "label": "John 9:7",
+   "route": "/bible/john/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-rahab",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Rahab",
+   "am": "ረዓብ"
+  },
+  "explanation": {
+   "en": "I welcomed the two spies into Jericho, hid them under stalks of flax, hung a scarlet cord in my window, and was saved with my family."
+  },
+  "source": {
+   "label": "Joshua 2:18",
+   "route": "/bible/joshua/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-rebekah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Rebekah",
+   "am": "ርብቃ"
+  },
+  "explanation": {
+   "en": "I drew water from the well for Abraham’s servant and his ten camels in Mesopotamia, and I became Isaac’s beloved wife."
+  },
+  "source": {
+   "label": "Genesis 24:19",
+   "route": "/bible/genesis/24",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-seth",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Seth",
+   "am": "ሴት"
+  },
+  "explanation": {
+   "en": "I was granted to Adam and Eve in place of Abel, and in my days men began to call upon the name of the Lord."
+  },
+  "source": {
+   "label": "Genesis 4:26",
+   "route": "/bible/genesis/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-shamgar",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Shamgar",
+   "am": "ሰሜጋር"
+  },
+  "explanation": {
+   "en": "I was the son of Anath who struck down six hundred Philistine warriors with an oxgoad to deliver Israel."
+  },
+  "source": {
+   "label": "Judges 3:31",
+   "route": "/bible/judges/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-showbread-table",
+  "category": "holy-objects",
+  "answer": {
+   "en": "Table of Showbread",
+   "am": "የገጽ ኅብስት ገበታ"
+  },
+  "explanation": {
+   "en": "I was an acacia table overlaid with pure gold in the Holy Place, carrying twelve loaves of presentation bread continually before God."
+  },
+  "source": {
+   "label": "Exodus 25:23",
+   "route": "/bible/exodus/25",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-silas",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Silas (Silvanus)",
+   "am": "ሲላስ"
+  },
+  "explanation": {
+   "en": "I was a leading brother from Jerusalem who accompanied Paul on his second missionary journey, singing hymns at midnight in the Philippian jail."
+  },
+  "source": {
+   "label": "Acts 16:25",
+   "route": "/bible/acts/16",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-simon-zealot",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Simon the Zealot",
+   "am": "ስምዖን ቀነናዊ"
+  },
+  "explanation": {
+   "en": "I was called the Zealot or Canaanite among the Twelve, who abandoned worldly political fervor to follow Christ with fervent spiritual zeal."
+  },
+  "source": {
+   "label": "Luke 6:15",
+   "route": "/bible/luke/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-tabitha",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Tabitha (Dorcas)",
+   "am": "ጣቢታ (ዶርቃ)"
+  },
+  "explanation": {
+   "en": "I was a disciple in Joppa full of good works and almsgiving who made tunics for widows, whom the apostle Peter raised from the dead."
+  },
+  "source": {
+   "label": "Acts 9:36",
+   "route": "/bible/acts/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-tamar",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Tamar",
+   "am": "ትዕማር"
+  },
+  "explanation": {
+   "en": "I kept the pledge of the signet ring and staff, gave birth to Perez and Zerah, and am named in the royal genealogy of Jesus Christ."
+  },
+  "source": {
+   "label": "Genesis 38:25",
+   "route": "/bible/genesis/38",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-thomas-apostle",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Thomas the Apostle",
+   "am": "ቶማስ ሐዋርያ"
+  },
+  "explanation": {
+   "en": "I declared: My Lord and my God, after seeing the wounds of the Risen Christ, and preached the Gospel unto India."
+  },
+  "source": {
+   "label": "John 20:28",
+   "route": "/bible/john/20",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-timothy-apostle",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Timothy",
+   "am": "ጢሞቴዎስ"
+  },
+  "explanation": {
+   "en": "I learned the Holy Scriptures from my youth through my grandmother Lois and mother Eunice, and was appointed bishop of Ephesus by Paul."
+  },
+  "source": {
+   "label": "2 Timothy 1:5",
+   "route": "/bible/second-timothy/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-titus-disciple",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Titus",
+   "am": "ቲቶ"
+  },
+  "explanation": {
+   "en": "I was Paul’s loyal true child in our common faith whom he left in Crete to set in order things that were lacking and appoint elders in every city."
+  },
+  "source": {
+   "label": "Titus 1:5",
+   "route": "/bible/titus/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-tobit",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Tobit",
+   "am": "ጦቢት"
+  },
+  "explanation": {
+   "en": "I was a righteous captive in Nineveh who buried the dead and gave alms, whose blindness was healed by the gall of a fish guided by Archangel Raphael."
+  },
+  "source": {
+   "label": "Tobit 11:13",
+   "route": "/bible/tobit/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-zacchaeus",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Zacchaeus",
+   "am": "ዘኬዎስ"
+  },
+  "explanation": {
+   "en": "I was a wealthy chief tax collector of Jericho of short stature who climbed a sycamore tree to see Jesus and pledged half my goods to the poor."
+  },
+  "source": {
+   "label": "Luke 19:4",
+   "route": "/bible/luke/19",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-zadok",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Zadok the Priest",
+   "am": "ሳዶቅ ካህን"
+  },
+  "explanation": {
+   "en": "I was the faithful priest who remained loyal to David during Absalom’s rebellion and anointed Solomon king at Gihon Spring."
+  },
+  "source": {
+   "label": "1 Kings 1:39",
+   "route": "/bible/kings/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-zechariah-priest",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Zechariah the Priest",
+   "am": "ዘካርያስ ካህን"
+  },
+  "explanation": {
+   "en": "I was burning incense in the sanctuary of the Lord when the Archangel Gabriel appeared on the right side of the altar promising me a son."
+  },
+  "source": {
+   "label": "Luke 1:11",
+   "route": "/bible/luke/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-p3-zerubbabel",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Zerubbabel",
+   "am": "ዘሩባቤል"
+  },
+  "explanation": {
+   "en": "I was the governor of Judah from David’s line who laid the foundation stone of the Second Temple alongside Joshua the high priest."
+  },
+  "source": {
+   "label": "Zechariah 4:9",
+   "route": "/bible/zechariah/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-paul",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Saint Paul the Apostle",
+   "am": "ቅዱስ ጳውሎስ ሐዋርያ"
+  },
+  "explanation": {
+   "en": "Struck down by heavenly light on the road to Damascus, I became the Apostle to the Gentiles and penned fourteen epistles.",
+   "am": "ወደ ደማስቆ ስጓዝ በሰማያዊ ብርሃን ወደቅሁ፤ የአሕዛብ ሐዋርያ ሆንሁ፤ አሥራ አራት መልእክታትንም ጻፍሁ።"
+  },
+  "source": {
+   "label": "Acts 9:4",
+   "route": "/bible/acts/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-peter",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Saint Peter the Apostle",
+   "am": "ቅዱስ ጴጥሮስ ሐዋርያ"
+  },
+  "explanation": {
+   "en": "Called from casting nets in Galilee, I confessed Christ as the Son of the living God and preached at Pentecost.",
+   "am": "ከገሊላ ዓሣ አጥማጅነት ተጠራሁ፤ “አንተ ክርስቶስ የሕያው እግዚአብሔር ልጅ ነህ” አልሁ፤ በበዓለ ኀምሳ ሦስት ሺህ አሳመንሁ።"
+  },
+  "source": {
+   "label": "Matthew 16:16",
+   "route": "/bible/matthew/16",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-ruth",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Ruth the Moabitess",
+   "am": "ሞዓባዊቷ ሩት"
+  },
+  "explanation": {
+   "en": "I clave to Naomi saying “Thy God shall be my God”, gleaned in the fields of Bethlehem, and became ancestor to King David.",
+   "am": "ኑኃሚንን “አምላክሽ አምላኬ ይሆናል” ብዬ ተከተልኋት፤ በቦዔዝ እርሻ ቃረምሁ፤ የንጉሥ ዳዊትም ቅድመ አያት ሆንሁ።"
+  },
+  "source": {
+   "label": "Ruth 1:16",
+   "route": "/bible/ruth/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-samuel",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Samuel the Prophet",
+   "am": "ነቢዩ ሳሙኤል"
+  },
+  "explanation": {
+   "en": "Dedicated to God by Hannah at Shiloh, I answered God’s midnight call and later anointed Saul and David as kings.",
+   "am": "እናቴ ሐና በሴሎ ለእግዚአብሔር ሰጠችኝ፤ በሌሊት “እነሆኝ ተናገር” ብዬ መለስሁ፤ ሳኦልንና ዳዊትን በንጉሥነት ቀባሁ።"
+  },
+  "source": {
+   "label": "1 Samuel 3:10",
+   "route": "/bible/samuel/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-sarah",
+  "category": "biblical-people",
+  "answer": {
+   "en": "Sarah",
+   "am": "ሣራ"
+  },
+  "explanation": {
+   "en": "I was the wife of Abraham who received strength to conceive Isaac in my old age according to God’s faithful promise.",
+   "am": "የአብርሃም ሚስት ነኝ፤ በእርጅናዬ ወራት በእግዚአብሔር ታማኝ ተስፋ ይስሐቅን በፀነሰ ጊዜ በደስታ ሳቅሁ።"
+  },
+  "source": {
+   "label": "Genesis 21:2",
+   "route": "/bible/genesis/21",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-solomon",
+  "category": "biblical-people",
+  "answer": {
+   "en": "King Solomon",
+   "am": "ንጉሥ ሰሎሞን"
+  },
+  "explanation": {
+   "en": "I prayed for wisdom rather than riches, ruled over Israel at its golden peak, and built the holy Temple in Jerusalem.",
+   "am": "ከሀብትና ከክብር ይልቅ ጥበብን ለመንሁ፤ እስራኤልን በሰላም መራሁ፤ በኢየሩሳሌምም የመጀመሪያውን ቤተ መቅደስ ሠራሁ።"
+  },
+  "source": {
+   "label": "1 Kings 3:9",
+   "route": "/bible/kings/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "who-stephen",
+  "category": "saints",
+  "answer": {
+   "en": "Saint Stephen the Protomartyr",
+   "am": "ቅዱስ እስጢፋኖስ ቀዳሜ ሰማዕት"
+  },
+  "explanation": {
+   "en": "Chosen as first of seven deacons, I saw the heavens opened and the Son of Man standing at the right hand of God.",
+   "am": "ከሰባቱ ዲያቆናት የመጀመሪያው ሆንሁ፤ ሰማያት ተከፍተው የሰው ልጅ በእግዚአብሔር ቀኝ ቆሞ አየሁ፤ በድንጋይ ተወግሬ ሰማዕት ሆንሁ።"
+  },
+  "source": {
+   "label": "Acts 7:55",
+   "route": "/bible/acts/7",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ }
+]

@@ -1,0 +1,2943 @@
+[
+ {
+  "id": "match-apo-james",
+  "category": "Apostles",
+  "left": {
+   "en": "Apostle James",
+   "am": "ቅዱስ ያዕቆብ"
+  },
+  "right": {
+   "en": "First among the twelve apostles to suffer martyrdom by the sword",
+   "am": "ከአሥራ ሁለቱ ሐዋርያት በሰይፍ ተመቶ የመጀመሪያው ሰማዕት ሆነ"
+  },
+  "explanation": {
+   "en": "Acts 12:2 records Herod killing James the brother of John with the sword.",
+   "am": "በሐዋርያት ሥራ 12፥2 ሄሮድስ የዮሐንስን ወንድም ያዕቆብን በሰይፍ እንዳስገደለው ይናገራል።"
+  },
+  "source": {
+   "label": "Acts 12:2",
+   "route": "/bible/acts/12",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-apo-john",
+  "category": "Apostles",
+  "left": {
+   "en": "Apostle John",
+   "am": "ቅዱስ ዮሐንስ"
+  },
+  "right": {
+   "en": "Leaned on the Lord’s bosom and received the Revelation on Patmos",
+   "am": "በጌታችን ደረት ተደገፈ፤ በፍጥሞ ደሴትም ራእይን ተመለከተ"
+  },
+  "explanation": {
+   "en": "John 13:23 and Revelation 1:9 record the beloved disciple’s closeness and vision on Patmos.",
+   "am": "በዮሐንስ 13፥23 እና በራእይ 1፥9 የተወደደው ደቀ መዝሙር በደረት መደገፉና ራእይ ማየቱ ተጽፏል።"
+  },
+  "source": {
+   "label": "John 13:23",
+   "route": "/bible/john/13",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-apo-matthew",
+  "category": "Apostles",
+  "left": {
+   "en": "Apostle Matthew",
+   "am": "ቅዱስ ማቴዎስ"
+  },
+  "right": {
+   "en": "Left the tax booth at Capernaum to write the first Gospel",
+   "am": "በቅፍርናሆም የቀረጥ መሰብሰቢያውን ትቶ የመጀመሪያውን ወንጌል ጻፈ"
+  },
+  "explanation": {
+   "en": "Matthew 9:9 records Jesus seeing Matthew sitting at the receipt of custom and calling him.",
+   "am": "በማቴዎስ 9፥9 ጌታችን ማቴዎስን በቀረጥ መቀበያው ተቀምጦ አይቶ ተከተለኝ አለው።"
+  },
+  "source": {
+   "label": "Matthew 9:9",
+   "route": "/bible/matthew/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-apo-paul",
+  "category": "Apostles",
+  "left": {
+   "en": "Apostle Paul",
+   "am": "ቅዱስ ጳውሎስ"
+  },
+  "right": {
+   "en": "Saw the heavenly light near Damascus and wrote fourteen epistles",
+   "am": "በደማስቆ ሰማያዊ ብርሃን አየ፤ አሥራ አራት መልእክታትንም ጻፈ"
+  },
+  "explanation": {
+   "en": "Acts 9:3 records the light from heaven shining round about him on the way to Damascus.",
+   "am": "በሐዋርያት ሥራ 9፥3 ወደ ደማስቆ ሲሄድ ድንገት ከሰማይ ብርሃን በዙሪያው አበራ።"
+  },
+  "source": {
+   "label": "Acts 9:3",
+   "route": "/bible/acts/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-apo-peter",
+  "category": "Apostles",
+  "left": {
+   "en": "Apostle Peter",
+   "am": "ቅዱስ ጴጥሮስ"
+  },
+  "right": {
+   "en": "Preached at Pentecost and received the keys of the Kingdom",
+   "am": "በበዓለ ኀምሳ ሰበከ፤ የመንግሥተ ሰማያትንም መክፈቻ ተቀበለ"
+  },
+  "explanation": {
+   "en": "Matthew 16:19 records Christ giving Peter the keys of the kingdom of heaven.",
+   "am": "በማቴዎስ 16፥19 ጌታችን ለጴጥሮስ የመንግሥተ ሰማያትን መክፈቻ እንደሰጠው ተመዝግቧል።"
+  },
+  "source": {
+   "label": "Matthew 16:19",
+   "route": "/bible/matthew/16",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-cov-abraham",
+  "category": "Covenants",
+  "left": {
+   "en": "Abraham’s Covenant",
+   "am": "የአብርሃም ኪዳን"
+  },
+  "right": {
+   "en": "Circumcision and the promise of land and many nations",
+   "am": "ግርዛትና የብዙ አሕዛብ እንዲሁም የርስቱ ተስፋ"
+  },
+  "explanation": {
+   "en": "Genesis 17:10 records circumcision as the token of the covenant with Abraham and his seed.",
+   "am": "በዘፍጥረት 17፥10 ግርዛት ለአብርሃምና ለዘሩ የኪዳን ምልክት እንዲሆን ተሰጠ።"
+  },
+  "source": {
+   "label": "Genesis 17:10",
+   "route": "/bible/genesis/17",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-cov-david",
+  "category": "Covenants",
+  "left": {
+   "en": "Davidic Covenant",
+   "am": "የዳዊት ኪዳን"
+  },
+  "right": {
+   "en": "An enduring throne established forever through Christ",
+   "am": "በክርስቶስ ለዘላለም የሚጸና የዘላለማዊ መንግሥት ዙፋን"
+  },
+  "explanation": {
+   "en": "2 Samuel 7:16 promises that David’s house and kingdom shall be established forever.",
+   "am": "በ2ኛ ሳሙኤል 7፥16 የዳዊት ቤትና መንግሥት ለዘላለም እንደሚጸና ቃል ተገባለት።"
+  },
+  "source": {
+   "label": "2 Samuel 7:16",
+   "route": "/bible/samuel/38",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-cov-new",
+  "category": "Covenants",
+  "left": {
+   "en": "The New Covenant",
+   "am": "ሐዲስ ኪዳን"
+  },
+  "right": {
+   "en": "The Blood of Christ shed on the Cross for the remission of sins",
+   "am": "ስለ ኀጢአት ስርየት በመስቀል ላይ የፈሰሰው የክርስቶስ ክቡር ደም"
+  },
+  "explanation": {
+   "en": "Matthew 26:28 declares the Blood of the new covenant shed for many for the remission of sins.",
+   "am": "በማቴዎስ 26፥28 ጌታችን ይህ ስለ ብዙዎች ለኀጢአት ስርየት የሚፈስ የሐዲስ ኪዳን ደሜ ነው አለ።"
+  },
+  "source": {
+   "label": "Matthew 26:28",
+   "route": "/bible/matthew/26",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-cov-noah",
+  "category": "Covenants",
+  "left": {
+   "en": "Noah’s Covenant",
+   "am": "የኖኅ ኪዳን"
+  },
+  "right": {
+   "en": "The rainbow set in the cloud as a token of peace",
+   "am": "ቀስተ ደመና በደመና ውስጥ የሰላም ምልክት ሆነ"
+  },
+  "explanation": {
+   "en": "Genesis 9:13 records the rainbow given to Noah as the token of the covenant between God and the earth.",
+   "am": "በዘፍጥረት 9፥13 ቀስተ ደመና በእግዚአብሔርና በምድር መካከል የኪዳን ምልክት ሆኖ ተሰጠ።"
+  },
+  "source": {
+   "label": "Genesis 9:13",
+   "route": "/bible/genesis/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-cov-sinai",
+  "category": "Covenants",
+  "left": {
+   "en": "Sinai Covenant",
+   "am": "የሲና ኪዳን"
+  },
+  "right": {
+   "en": "Two stone tablets of the Law written with the finger of God",
+   "am": "በእግዚአብሔር ጣት የተጻፉ ሁለት የድንጋይ ጽላቶች"
+  },
+  "explanation": {
+   "en": "Exodus 31:18 records the two tables of testimony, tables of stone, written with the finger of God.",
+   "am": "በዘፀአት 31፥18 በእግዚአብሔር ጣት የተጻፉ የድንጋይ ጽላቶች ለሙሴ ተሰጡ።"
+  },
+  "source": {
+   "label": "Exodus 31:18",
+   "route": "/bible/exodus/31",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-fst-hosanna",
+  "category": "Feasts",
+  "left": {
+   "en": "Hosanna (Palm Sunday)",
+   "am": "ሆሣዕና"
+  },
+  "right": {
+   "en": "Triumphal entry into Jerusalem with palm branches and praise",
+   "am": "በዘንባባ ዝንጣፊና በምስጋና ወደ ቅድስት ከተማ በድል መግባት"
+  },
+  "explanation": {
+   "en": "John 12:13 records taking branches of palm trees and going forth to meet Him, crying “Hosanna”.",
+   "am": "በዮሐንስ 12፥13 የዘንባባ ዛፍ ዝንጣፊ ይዘው “ሆሣዕና... የተባረከ ነው” እያሉ ሊቀበሉት ወጡ።"
+  },
+  "source": {
+   "label": "John 12:13",
+   "route": "/bible/john/12",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-fst-lidet",
+  "category": "Feasts",
+  "left": {
+   "en": "Lidet (Nativity of Christ)",
+   "am": "ልደት (ገና)"
+  },
+  "right": {
+   "en": "The birth of our Lord in the flesh in a Bethlehem manger",
+   "am": "የጌታችን በሥጋ በቤተልሔም በግርግም መወለድ"
+  },
+  "explanation": {
+   "en": "Luke 2:7 records Mary bringing forth her firstborn Son and wrapping Him in swaddling clothes.",
+   "am": "በሉቃስ 2፥7 ድንግል ማርያም በቤተልሔም በግርግም የወለደችውን ጌታ በጨርቅ ጠቀለለችው።"
+  },
+  "source": {
+   "label": "Luke 2:7",
+   "route": "/bible/luke/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-fst-tabor",
+  "category": "Feasts",
+  "left": {
+   "en": "Debre Tabor (Transfiguration)",
+   "am": "ደብረ ታቦር"
+  },
+  "right": {
+   "en": "Christ manifested His divine glory before Moses and Elijah",
+   "am": "ክርስቶስ መለኮታዊ ክብሩን በሙሴና በኤልያስ ፊት የገለጠበት"
+  },
+  "explanation": {
+   "en": "Matthew 17:2 records His face shining as the sun and His raiment white as the light on the mount.",
+   "am": "በማቴዎስ 17፥2 ፊቱ እንደ ፀሐይ በራ፥ ልብሱም እንደ ብርሃን ነጭ ሆነ።"
+  },
+  "source": {
+   "label": "Matthew 17:2",
+   "route": "/bible/matthew/17",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-fst-tensae",
+  "category": "Feasts",
+  "left": {
+   "en": "Tensae (Holy Resurrection)",
+   "am": "ትንሣኤ"
+  },
+  "right": {
+   "en": "The third-day victory of Christ overcoming death and Hades",
+   "am": "ክርስቶስ በሦስተኛው ቀን ሞትንና ሲኦልን ድል አድርጎ መነሣቱ"
+  },
+  "explanation": {
+   "en": "1 Corinthians 15:20 proclaims: “Now is Christ risen from the dead, and become the firstfruits of them that slept.”",
+   "am": "በ1ኛ ቆሮንቶስ 15፥20 “አሁን ግን ክርስቶስ ላንቀላፉት በኵራት ሆኖ ከሙታን ተነሥቷል” ተብሎ ተጽፏል።"
+  },
+  "source": {
+   "label": "1 Corinthians 15:20",
+   "route": "/bible/first-corinthians/15",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-fst-timket",
+  "category": "Feasts",
+  "left": {
+   "en": "Timket (Epiphany)",
+   "am": "ጥምቀት"
+  },
+  "right": {
+   "en": "The baptism of Christ in Jordan revealing the Holy Trinity",
+   "am": "ቅድስት ሥላሴ የተገለጡበት የጌታችን በዮርዳኖስ መጠመቅ"
+  },
+  "explanation": {
+   "en": "Matthew 3:16–17 records the heavens opening, the Spirit descending like a dove, and the Father’s voice.",
+   "am": "በማቴዎስ 3፥16-17 መንፈስ ቅዱስ በርግብ አምሳል ሲወርድ የአብ ድምፅ ተሰማ።"
+  },
+  "source": {
+   "label": "Matthew 3:16",
+   "route": "/bible/matthew/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-ararat",
+  "category": "biblical-mountains",
+  "left": {
+   "en": "Mount Ararat",
+   "am": "የአራራት ተራራ"
+  },
+  "right": {
+   "en": "Where Noah’s Ark Came to Rest",
+   "am": "የኖኅ መርከብ ያረፈበት"
+  },
+  "explanation": {
+   "en": "The waters abated and the ark grounded on the mountains of Ararat."
+  },
+  "source": {
+   "label": "Genesis 8:4",
+   "route": "/bible/genesis/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-belt",
+  "category": "armor-of-god",
+  "left": {
+   "en": "Belt of Truth",
+   "am": "የእውነት ዝናር"
+  },
+  "right": {
+   "en": "Girding with Sincerity and Integrity",
+   "am": "ወገብን በእውነት መታጠቅ"
+  },
+  "explanation": {
+   "en": "Truth anchors every defense and protects the believer from deception."
+  },
+  "source": {
+   "label": "Ephesians 6:14",
+   "route": "/bible/ephesians/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-bethesda",
+  "category": "miracles-of-john",
+  "left": {
+   "en": "Invalid at the Pool of Bethesda",
+   "am": "በቤተሳይዳ 38 ዓመት የታመመው ሰው"
+  },
+  "right": {
+   "en": "Rise, Take Up Your Bed, and Walk",
+   "am": "ተነሣና አልጋህን ተሸክመህ ሂድ"
+  },
+  "explanation": {
+   "en": "The man sick thirty-eight years had no one to help him until Christ commanded him to walk."
+  },
+  "source": {
+   "label": "John 5:8",
+   "route": "/bible/john/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-blind-shiloah",
+  "category": "miracles-of-john",
+  "left": {
+   "en": "Man Born Blind at Pool of Siloam",
+   "am": "በሰሊሆም የታጠበው ዕውር ሆኖ የተወለደው"
+  },
+  "right": {
+   "en": "Christ as the Light of the World",
+   "am": "ክርስቶስ የዓለም ብርሃን መሆኑ"
+  },
+  "explanation": {
+   "en": "Jesus made clay, anointed his eyes, and sent him to wash in Siloam to receive sight."
+  },
+  "source": {
+   "label": "John 9:7",
+   "route": "/bible/john/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-breastplate",
+  "category": "armor-of-god",
+  "left": {
+   "en": "Breastplate of Righteousness",
+   "am": "የጽድቅ ጥሩር"
+  },
+  "right": {
+   "en": "Protecting the Heart against Evil",
+   "am": "ልብን ከክፋት መጠበቅ"
+  },
+  "explanation": {
+   "en": "Righteousness granted through Christ shields the heart from spiritual harm."
+  },
+  "source": {
+   "label": "Ephesians 6:14",
+   "route": "/bible/ephesians/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-carmel-mt",
+  "category": "biblical-mountains",
+  "left": {
+   "en": "Mount Carmel",
+   "am": "ደብረ ቀርሜሎስ"
+  },
+  "right": {
+   "en": "Where Elijah’s Sacrifice Was Answered",
+   "am": "የኤልያስ መሥዋዕት በእሳት የተቃጠለበት"
+  },
+  "explanation": {
+   "en": "Fire fell from the Lord consuming the waterlogged burnt sacrifice before all Israel."
+  },
+  "source": {
+   "label": "1 Kings 18:38",
+   "route": "/bible/kings/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-elizabeth-mother",
+  "category": "old-testament-mothers",
+  "left": {
+   "en": "Elizabeth",
+   "am": "ኤልሳቤጥ"
+  },
+  "right": {
+   "en": "Mother of John the Baptist",
+   "am": "የመጥምቁ ዮሐንስ እናት"
+  },
+  "explanation": {
+   "en": "Elizabeth conceived in her old age and bore the Lord’s forerunner."
+  },
+  "source": {
+   "label": "Luke 1:57",
+   "route": "/bible/luke/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-faithfulness",
+  "category": "fruits-of-the-spirit",
+  "left": {
+   "en": "Faithfulness",
+   "am": "ታማኝነት"
+  },
+  "right": {
+   "en": "Steadfast Loyalty to God’s Covenant",
+   "am": "ለእግዚአብሔር ኪዳን ጽኑ መሆን"
+  },
+  "explanation": {
+   "en": "He who is faithful in little is trusted with much in the kingdom."
+  },
+  "source": {
+   "label": "Luke 16:10",
+   "route": "/bible/luke/16",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-feeding-john",
+  "category": "miracles-of-john",
+  "left": {
+   "en": "Feeding the Multitude with Five Loaves",
+   "am": "በአምስት እንጀራ ብዙዎችን መመገብ"
+  },
+  "right": {
+   "en": "Christ Revealed as Bread of Life",
+   "am": "ክርስቶስ የሕይወት እንጀራ መሆኑን መግለጥ"
+  },
+  "explanation": {
+   "en": "After multiplying barley loaves, Jesus declared Himself the Bread from heaven."
+  },
+  "source": {
+   "label": "John 6:35",
+   "route": "/bible/john/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-four-creatures",
+  "category": "gospel-symbols",
+  "left": {
+   "en": "The Four Living Creatures (Arba’etu Insesat)",
+   "am": "አራቱ እንስሳት"
+  },
+  "right": {
+   "en": "Heavenly Bearers of the Chariot of Glory",
+   "am": "የክብር ሰረገላ ተሸካሚዎች"
+  },
+  "explanation": {
+   "en": "Ezekiel and John beheld the four living creatures around the throne, representing the mystery of Christ portrayed by the four Evangelists."
+  },
+  "source": {
+   "label": "Ezekiel 1:10",
+   "route": "/bible/ezekiel/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-gentleness",
+  "category": "fruits-of-the-spirit",
+  "left": {
+   "en": "Gentleness",
+   "am": "የዋህነት"
+  },
+  "right": {
+   "en": "Meekness Reflecting Christ’s Heart",
+   "am": "የክርስቶስን ልብ የሚያንጸባርቅ"
+  },
+  "explanation": {
+   "en": "Christ declared: Learn of me, for I am meek and lowly in heart."
+  },
+  "source": {
+   "label": "Matthew 11:29",
+   "route": "/bible/matthew/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-hannah-mother",
+  "category": "old-testament-mothers",
+  "left": {
+   "en": "Hannah",
+   "am": "ሐና"
+  },
+  "right": {
+   "en": "Mother of Samuel",
+   "am": "የሳሙኤል እናት"
+  },
+  "explanation": {
+   "en": "Hannah prayed in the tabernacle and dedicated her promised child to God."
+  },
+  "source": {
+   "label": "1 Samuel 1:20",
+   "route": "/bible/samuel/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-helmet",
+  "category": "armor-of-god",
+  "left": {
+   "en": "Helmet of Salvation",
+   "am": "የመዳን ራስ ቁር"
+  },
+  "right": {
+   "en": "Guarding the Mind with Eternal Hope",
+   "am": "አእምሮን በዘላለም ተስፋ መጠበቅ"
+  },
+  "explanation": {
+   "en": "The assurance of salvation guards the mind against despair and confusion."
+  },
+  "source": {
+   "label": "Ephesians 6:17",
+   "route": "/bible/ephesians/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-jochebed",
+  "category": "old-testament-mothers",
+  "left": {
+   "en": "Jochebed",
+   "am": "ዮካቤድ"
+  },
+  "right": {
+   "en": "Mother of Moses",
+   "am": "የሙሴ እናት"
+  },
+  "explanation": {
+   "en": "Jochebed hid Moses in the papyrus basket on the Nile to preserve his life."
+  },
+  "source": {
+   "label": "Exodus 2:3",
+   "route": "/bible/exodus/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-john-sym",
+  "category": "gospel-symbols",
+  "left": {
+   "en": "Saint John",
+   "am": "ቅዱስ ዮሐንስ"
+  },
+  "right": {
+   "en": "Soaring Eagle / Divine Eternity",
+   "am": "ንስር / የመለኮት ረቂቅ ምሥጢር"
+  },
+  "explanation": {
+   "en": "John soars to the highest heavens proclaiming: In the beginning was the Word."
+  },
+  "source": {
+   "label": "Ezekiel 1:10",
+   "route": "/bible/john/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-love",
+  "category": "fruits-of-the-spirit",
+  "left": {
+   "en": "Love",
+   "am": "ፍቅር"
+  },
+  "right": {
+   "en": "The Bond of Perfect Union",
+   "am": "የፍጹምነት ማሰሪያ"
+  },
+  "explanation": {
+   "en": "Love is patient and kind; it bears all things and never fails."
+  },
+  "source": {
+   "label": "Galatians 5:22",
+   "route": "/bible/galatians/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-luke-sym",
+  "category": "gospel-symbols",
+  "left": {
+   "en": "Saint Luke",
+   "am": "ቅዱስ ሉቃስ"
+  },
+  "right": {
+   "en": "Winged Ox / Priestly Sacrifice",
+   "am": "ላም / የክህነት መሥዋዕት"
+  },
+  "explanation": {
+   "en": "Luke begins with Zechariah offering incense in the Temple altar of sacrifice."
+  },
+  "source": {
+   "label": "Ezekiel 1:10",
+   "route": "/bible/luke/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-mark-sym",
+  "category": "gospel-symbols",
+  "left": {
+   "en": "Saint Mark",
+   "am": "ቅዱስ ማርቆስ"
+  },
+  "right": {
+   "en": "Winged Lion / Voice in Wilderness",
+   "am": "አንበሳ / በምድረ በዳ የሚጮኽ ድምፅ"
+  },
+  "explanation": {
+   "en": "Mark begins with the roaring herald John the Baptist in the wilderness."
+  },
+  "source": {
+   "label": "Ezekiel 1:10",
+   "route": "/bible/mark/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-matthew-sym",
+  "category": "gospel-symbols",
+  "left": {
+   "en": "Saint Matthew",
+   "am": "ቅዱስ ማቴዎስ"
+  },
+  "right": {
+   "en": "Winged Man / Human Genealogy",
+   "am": "ሰብአዊ ገጽ / የትውልድ ሐረግ"
+  },
+  "explanation": {
+   "en": "Matthew’s Gospel opens with the royal ancestry and human incarnation of Christ."
+  },
+  "source": {
+   "label": "Ezekiel 1:10",
+   "route": "/bible/matthew/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-moriah",
+  "category": "biblical-mountains",
+  "left": {
+   "en": "Mount Moriah",
+   "am": "የሞሪያ ተራራ"
+  },
+  "right": {
+   "en": "Where Abraham Proved His Faith",
+   "am": "አብርሃም እምነቱን ያረጋገጠበት"
+  },
+  "explanation": {
+   "en": "God provided the ram caught in a thicket on the mountain of the Lord."
+  },
+  "source": {
+   "label": "Genesis 22:14",
+   "route": "/bible/genesis/22",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-mustard",
+  "category": "parables-and-meanings",
+  "left": {
+   "en": "The Mustard Seed",
+   "am": "የሰናፍጭ ቅንጣት ምሳሌ"
+  },
+  "right": {
+   "en": "Growth of the Church from Smallness",
+   "am": "የቤተ ክርስቲያን ታላቅ ዕድገት"
+  },
+  "explanation": {
+   "en": "The smallest seed grows into a great tree sheltering the birds of the air."
+  },
+  "source": {
+   "label": "Matthew 13:32",
+   "route": "/bible/matthew/13",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-nicanor",
+  "category": "seven-deacons",
+  "left": {
+   "en": "Nicanor",
+   "am": "ኒቃኖር"
+  },
+  "right": {
+   "en": "Faithful Servant of the Tables",
+   "am": "የማዕድ ታማኝ አገልጋይ"
+  },
+  "explanation": {
+   "en": "Chosen by the multitude for good reputation and wisdom to minister to widows."
+  },
+  "source": {
+   "label": "Acts 6:5",
+   "route": "/bible/acts/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-nobleman-son",
+  "category": "miracles-of-john",
+  "left": {
+   "en": "Healing of the Nobleman’s Son",
+   "am": "የሹሙን ልጅ በሩቅ ማዳን"
+  },
+  "right": {
+   "en": "Healing Granted through Spoken Authority",
+   "am": "በቃሉ ሥልጣን የተገኘ ፈውስ"
+  },
+  "explanation": {
+   "en": "Jesus said: Go your way, your son lives; the official believed the word."
+  },
+  "source": {
+   "label": "John 4:50",
+   "route": "/bible/john/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-olives",
+  "category": "biblical-mountains",
+  "left": {
+   "en": "Mount of Olives",
+   "am": "ደብረ ዘይት"
+  },
+  "right": {
+   "en": "Where Christ Ascended to Heaven",
+   "am": "ክርስቶስ ወደ ሰማይ ያረገበት"
+  },
+  "explanation": {
+   "en": "Christ blessed His disciples and ascended in glory from the Mount of Olives."
+  },
+  "source": {
+   "label": "Acts 1:12",
+   "route": "/bible/acts/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-patience",
+  "category": "fruits-of-the-spirit",
+  "left": {
+   "en": "Patience",
+   "am": "ትዕግሥት"
+  },
+  "right": {
+   "en": "Enduring Trials with Hope",
+   "am": "መከራን በተስፋ መጽናት"
+  },
+  "explanation": {
+   "en": "Longsuffering enables the faithful to inherit the promises through faith."
+  },
+  "source": {
+   "label": "Hebrews 6:12",
+   "route": "/bible/hebrews/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-peace",
+  "category": "fruits-of-the-spirit",
+  "left": {
+   "en": "Peace",
+   "am": "ሰላም"
+  },
+  "right": {
+   "en": "Surpassing All Human Understanding",
+   "am": "ከማስተዋል ሁሉ በላይ የሆነ"
+  },
+  "explanation": {
+   "en": "The peace of God guards hearts and minds through Jesus Christ."
+  },
+  "source": {
+   "label": "Philippians 4:7",
+   "route": "/bible/philippians/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-pearl",
+  "category": "parables-and-meanings",
+  "left": {
+   "en": "The Pearl of Great Price",
+   "am": "የከበረ ዕንቁ ምሳሌ"
+  },
+  "right": {
+   "en": "The Supreme Value of the Kingdom",
+   "am": "የመንግሥተ ሰማያት የላቀ ክብር"
+  },
+  "explanation": {
+   "en": "A merchant sold all his possessions to buy the one pearl of incomparable worth."
+  },
+  "source": {
+   "label": "Matthew 13:46",
+   "route": "/bible/matthew/13",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-philip-deacon",
+  "category": "seven-deacons",
+  "left": {
+   "en": "Philip the Evangelist",
+   "am": "ፊልጶስ ወንጌላዊ"
+  },
+  "right": {
+   "en": "Baptized the Ethiopian Official",
+   "am": "ኢትዮጵያዊውን ጃንደረባ ያጠመቀ"
+  },
+  "explanation": {
+   "en": "Philip explained the prophet Isaiah to the Queen’s treasurer on the desert road."
+  },
+  "source": {
+   "label": "Acts 8:38",
+   "route": "/bible/acts/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-prochorus",
+  "category": "seven-deacons",
+  "left": {
+   "en": "Prochorus",
+   "am": "ጵሮኮሮስ"
+  },
+  "right": {
+   "en": "Companion and Scribe of Saint John",
+   "am": "የዮሐንስ ረዳትና ጸሐፊ"
+  },
+  "explanation": {
+   "en": "One of the chosen seven who later accompanied the beloved apostle in ministry."
+  },
+  "source": {
+   "label": "Acts 6:5",
+   "route": "/bible/acts/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-prodigal",
+  "category": "parables-and-meanings",
+  "left": {
+   "en": "The Prodigal Son",
+   "am": "የጠፋው ልጅ ምሳሌ"
+  },
+  "right": {
+   "en": "The Father’s Joyful Forgiveness",
+   "am": "የአብ ይቅርታና ደስታ"
+  },
+  "explanation": {
+   "en": "The compassionate father ran to embrace and restore his repentant younger son."
+  },
+  "source": {
+   "label": "Luke 15:20",
+   "route": "/bible/luke/15",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-rebekah",
+  "category": "old-testament-mothers",
+  "left": {
+   "en": "Rebekah",
+   "am": "ርብቃ"
+  },
+  "right": {
+   "en": "Mother of Jacob and Esau",
+   "am": "የያዕቆብና የዔሳው እናት"
+  },
+  "explanation": {
+   "en": "Rebekah was chosen at the well and bore twin sons to Isaac."
+  },
+  "source": {
+   "label": "Genesis 25:24",
+   "route": "/bible/genesis/25",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-samaritan",
+  "category": "parables-and-meanings",
+  "left": {
+   "en": "The Good Samaritan",
+   "am": "የቸሩ ሳምራዊ ምሳሌ"
+  },
+  "right": {
+   "en": "Mercy toward One’s Neighbor",
+   "am": "ለባልንጀራ የሚደረግ ምሕረት"
+  },
+  "explanation": {
+   "en": "The traveler cared for the wounded man with oil and wine regardless of boundary."
+  },
+  "source": {
+   "label": "Luke 10:37",
+   "route": "/bible/luke/10",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-sarah",
+  "category": "old-testament-mothers",
+  "left": {
+   "en": "Sarah",
+   "am": "ሣራ"
+  },
+  "right": {
+   "en": "Mother of Isaac",
+   "am": "የይስሐቅ እናት"
+  },
+  "explanation": {
+   "en": "Sarah bore Isaac to Abraham according to God’s promise in their old age."
+  },
+  "source": {
+   "label": "Genesis 21:2",
+   "route": "/bible/genesis/21",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-shield",
+  "category": "armor-of-god",
+  "left": {
+   "en": "Shield of Faith",
+   "am": "የእምነት ጋሻ"
+  },
+  "right": {
+   "en": "Extinguishing Fiery Darts",
+   "am": "የሚነድዱትን ፍላጾች ማጥፋት"
+  },
+  "explanation": {
+   "en": "Active faith quenches all the burning temptations of the adversary."
+  },
+  "source": {
+   "label": "Ephesians 6:16",
+   "route": "/bible/ephesians/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-sinai",
+  "category": "biblical-mountains",
+  "left": {
+   "en": "Mount Sinai",
+   "am": "ደብረ ሲና"
+  },
+  "right": {
+   "en": "Where the Law Was Given",
+   "am": "ሕጉ ለሙሴ የተሰጠበት"
+  },
+  "explanation": {
+   "en": "God descended in fire and gave the Ten Commandments to Moses."
+  },
+  "source": {
+   "label": "Exodus 19:20",
+   "route": "/bible/exodus/19",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-sower",
+  "category": "parables-and-meanings",
+  "left": {
+   "en": "The Sower",
+   "am": "የዘሪው ምሳሌ"
+  },
+  "right": {
+   "en": "The Seed is the Word of God",
+   "am": "ዘሩ የእግዚአብሔር ቃል ነው"
+  },
+  "explanation": {
+   "en": "Christ explained that the seed falling on various soils is the proclaimed Word."
+  },
+  "source": {
+   "label": "Luke 8:11",
+   "route": "/bible/luke/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-stephen-deacon",
+  "category": "seven-deacons",
+  "left": {
+   "en": "Stephen",
+   "am": "እስጢፋኖስ"
+  },
+  "right": {
+   "en": "First Protomartyr of the Church",
+   "am": "የመጀመሪያው ሰማዕት"
+  },
+  "explanation": {
+   "en": "Full of grace and power, Stephen bore witness to Christ and prayed for his persecutors."
+  },
+  "source": {
+   "label": "Acts 7:59",
+   "route": "/bible/acts/7",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-sword",
+  "category": "armor-of-god",
+  "left": {
+   "en": "Sword of the Spirit",
+   "am": "የመንፈስ ሰይፍ"
+  },
+  "right": {
+   "en": "The Living Word of God",
+   "am": "ሕያው የሆነው የእግዚአብሔር ቃል"
+  },
+  "explanation": {
+   "en": "The Word of God is living, active, and sharper than any two-edged sword."
+  },
+  "source": {
+   "label": "Ephesians 6:17",
+   "route": "/bible/ephesians/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-tsenatsil-obj",
+  "category": "church-objects-liturgy",
+  "left": {
+   "en": "Sistrum (Tsenatsil)",
+   "am": "ጸናጽል"
+  },
+  "right": {
+   "en": "Chiming Sacred Liturgical Hymns",
+   "am": "የምስጋና ዝማሬ ዜማ ማጀቢያ"
+  },
+  "explanation": {
+   "en": "Used by debteras and clergy during vigils to accompany rhythmic chanting."
+  },
+  "source": {
+   "label": "Psalm 150:5",
+   "route": "/bible/psalms/150",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p2-water-wine",
+  "category": "miracles-of-john",
+  "left": {
+   "en": "Water into Wine at Cana",
+   "am": "በቃና ውኃን የወይን ጠጅ ማድረግ"
+  },
+  "right": {
+   "en": "First Sign Manifesting Divine Glory",
+   "am": "ክብሩን የገለጠበት የመጀመሪያው ምልክት"
+  },
+  "explanation": {
+   "en": "Christ transformed six stone waterpots of water into choice wine at the wedding."
+  },
+  "source": {
+   "label": "John 2:11",
+   "route": "/bible/john/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-aga-belt",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Agabus Binding Paul’s Belt",
+   "am": "አጋቦስ የጳውሎስን መታጠቂያ ማሰሩ"
+  },
+  "right": {
+   "en": "Prophecy of Paul’s Imprisonment in Jerusalem",
+   "am": "ጳውሎስ በኢየሩሳሌም የመታሰሩ ትንቢት"
+  },
+  "explanation": {
+   "en": "The prophet Agabus bound his own hands and feet with Paul’s girdle to foretell his arrest."
+  },
+  "source": {
+   "label": "Acts 21:11",
+   "route": "/bible/acts/21",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ahi-cloak",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Ahijah Tearing His New Garment into Twelve Pieces",
+   "am": "አኪያ አዲሱን ልብስ ዐሥራ ሁለት ቦታ መቅደዱ"
+  },
+  "right": {
+   "en": "Dividing the Kingdom of Israel into Ten Tribes",
+   "am": "የእስራኤል መንግሥት ለዐሥር ነገድ መከፈሉ"
+  },
+  "explanation": {
+   "en": "The Shilohite prophet gave ten pieces to Jeroboam to declare the tearing of Solomon’s kingdom."
+  },
+  "source": {
+   "label": "1 Kings 11:31",
+   "route": "/bible/kings/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-andrew",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "Apostle Andrew",
+   "am": "ሐዋርያው እንድርያስ"
+  },
+  "right": {
+   "en": "Diagonal Decussate Cross (Saltire)",
+   "am": "ሰያፍ የመስቀል ቅርጽ"
+  },
+  "explanation": {
+   "en": "The first-called apostle who preached in Greece and was martyred on an X-shaped cross."
+  },
+  "source": {
+   "label": "John 1:40",
+   "route": "/bible/john/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-bartho",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "Bartholomew (Nathanael)",
+   "am": "በርተሎሜዎስ (ናትናኤል)"
+  },
+  "right": {
+   "en": "Flaying Knife of Glorious Martyrdom",
+   "am": "የሰማዕትነት ጽኑ መከራ ምልክት"
+  },
+  "explanation": {
+   "en": "Preached in Armenia and India, enduring severe tortures for the testimony of Jesus."
+  },
+  "source": {
+   "label": "Matthew 10:3",
+   "route": "/bible/matthew/10",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-james-a",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "James son of Alphaeus",
+   "am": "ያዕቆብ ወልደ እልፍዮስ"
+  },
+  "right": {
+   "en": "Fuller’s Club of Faithful Witness",
+   "am": "የመከራ ጽናትና የትዕግሥት ምስክር"
+  },
+  "explanation": {
+   "en": "Laborer in Judea and neighboring lands who sealed his apostolic witness with blood."
+  },
+  "source": {
+   "label": "Mark 3:18",
+   "route": "/bible/mark/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-james-z",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "James son of Zebedee",
+   "am": "ያዕቆብ ዘዘብዴዎስ"
+  },
+  "right": {
+   "en": "Pilgrim’s Staff and Martyr’s Sword",
+   "am": "የመንገደኛ በትርና የሰማዕትነት ሰይፍ"
+  },
+  "explanation": {
+   "en": "The first of the Twelve martyred by King Herod Agrippa with the sword in Jerusalem."
+  },
+  "source": {
+   "label": "Acts 12:2",
+   "route": "/bible/acts/12",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-john-ev",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "John the Theologian",
+   "am": "ዮሐንስ ወንጌላዊ"
+  },
+  "right": {
+   "en": "High-Soaring Heavenly Eagle",
+   "am": "ወደ ላይ የሚበር የንስር አርማ"
+  },
+  "explanation": {
+   "en": "His Gospel begins from celestial heights: In the beginning was the Word."
+  },
+  "source": {
+   "label": "Ezekiel 1:10",
+   "route": "/bible/john/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-peter",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "Simon Peter (Cephas)",
+   "am": "ስምዖን ጴጥሮስ (ኬፋ)"
+  },
+  "right": {
+   "en": "Keys of the Kingdom and Inverted Cross",
+   "am": "የመንግሥተ ሰማያት መክፈቻና የዘቀዘቀ መስቀል"
+  },
+  "explanation": {
+   "en": "Given the keys to loose and bind, he suffered martyrdom upside-down in Rome."
+  },
+  "source": {
+   "label": "Matthew 16:19",
+   "route": "/bible/matthew/16",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-philip",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "Apostle Philip",
+   "am": "ሐዋርያው ፊልጶስ"
+  },
+  "right": {
+   "en": "Loaves of Bread and Patriarchal Cross",
+   "am": "የኅብስት ቅርጫትና ባለ ሁለት እጅ መስቀል"
+  },
+  "explanation": {
+   "en": "Tested by Christ concerning bread for the crowd, he brought Nathanael to see Jesus."
+  },
+  "source": {
+   "label": "John 6:5",
+   "route": "/bible/john/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-simon-z",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "Simon the Zealot",
+   "am": "ስምዖን ቀነናዊ"
+  },
+  "right": {
+   "en": "Carpenter’s Saw and Sacred Fish",
+   "am": "የመጋዝ ምልክትና ቅዱስ ዓሣ"
+  },
+  "explanation": {
+   "en": "Preached zealously in Egypt, Persia, and the East, laying down his life for the Savior."
+  },
+  "source": {
+   "label": "Luke 6:15",
+   "route": "/bible/luke/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ap-thomas",
+  "category": "apostles-and-emblems",
+  "left": {
+   "en": "Apostle Thomas",
+   "am": "ሐዋርያው ቶማስ"
+  },
+  "right": {
+   "en": "Architect’s Rule and Piercing Spear",
+   "am": "የግንበኛ መለኪያና የሰማዕትነት ጦር"
+  },
+  "explanation": {
+   "en": "Confessed My Lord and My God, built churches, and was martyred by spears in India."
+  },
+  "source": {
+   "label": "John 20:28",
+   "route": "/bible/john/20",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-hunger",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are Those Who Hunger for Righteousness",
+   "am": "ጽድቅን የሚራቡና የሚጠሙ ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "For They Shall Be Abundantly Filled",
+   "am": "ይጠግባሉና"
+  },
+  "explanation": {
+   "en": "Longing for divine virtue and conformity to God’s will is met with heavenly satisfaction."
+  },
+  "source": {
+   "label": "Matthew 5:6",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-meek",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are the Meek and Gentle",
+   "am": "የዋሆች ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "For They Shall Inherit the Earth",
+   "am": "ምድርን ይወርሳሉና"
+  },
+  "explanation": {
+   "en": "Gentleness that refuses vengeful anger will receive the restored inheritance of creation."
+  },
+  "source": {
+   "label": "Matthew 5:5",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-merciful",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are the Merciful and Compassionate",
+   "am": "የሚምሩ ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "For They Shall Obtain Plentiful Mercy",
+   "am": "ምሕረትን ያገኛሉና"
+  },
+  "explanation": {
+   "en": "Those who forgive others and care for the needy receive abundant mercy at the Judgment."
+  },
+  "source": {
+   "label": "Matthew 5:7",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-mourn",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are Those Who Mourn",
+   "am": "የሚያዝኑ ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "For They Shall Be Comforted by Divine Grace",
+   "am": "መጽናናትን ያገኛሉና"
+  },
+  "explanation": {
+   "en": "Those who grieve over sin and brokenness will receive the divine consolation of the Paraclete."
+  },
+  "source": {
+   "label": "Matthew 5:4",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-peace",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are the Peacemakers",
+   "am": "የሚያስታርቁ ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "For They Shall Be Called Sons of God",
+   "am": "የእግዚአብሔር ልጆች ይባላሉና"
+  },
+  "explanation": {
+   "en": "Those who reconcile enemies and bring peace reflect the nature of the Prince of Peace."
+  },
+  "source": {
+   "label": "Matthew 5:9",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-persecuted",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are the Persecuted for Righteousness",
+   "am": "ስለ ጽድቅ የሚሰደዱ ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "Crown of the Heavenly Kingdom Awaiting Sufferers",
+   "am": "የመንግሥተ ሰማያት የጽድቅ አክሊል ተስፋቸው ነው"
+  },
+  "explanation": {
+   "en": "Suffering injustice and loss for obeying God’s truth wins an eternal crown in heaven."
+  },
+  "source": {
+   "label": "Matthew 5:10",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-poor",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are the Poor in Spirit",
+   "am": "በመንፈስ ድሆች የሆኑ ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "For Theirs Is the Kingdom of Heaven",
+   "am": "መንግሥተ ሰማያት የእነርሱ ናትና"
+  },
+  "explanation": {
+   "en": "Spiritual humility and dependence on God opens the entrance to the heavenly realm."
+  },
+  "source": {
+   "label": "Matthew 5:3",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-pure",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed Are the Pure in Heart",
+   "am": "ልበ ንጹሖች ብፁዓን ናቸው"
+  },
+  "right": {
+   "en": "For They Shall Behold God in Glory",
+   "am": "እግዚአብሔርን ያዩታልና"
+  },
+  "explanation": {
+   "en": "Cleansing the inner heart from lust, pride, and hypocrisy grants the beatific vision of God."
+  },
+  "source": {
+   "label": "Matthew 5:8",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-reviled",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "Blessed When Men Revile You Falsely for Christ",
+   "am": "ስለ እኔ ሲነቅፉአችሁና ሲያሳድዱአችሁ ብፁዓን ናችሁ"
+  },
+  "right": {
+   "en": "Great Is Your Heavenly Reward with the Prophets",
+   "am": "በሰማያት ዋጋችሁ ታላቅ ነውና"
+  },
+  "explanation": {
+   "en": "Patient endurance under slander aligns believers with the ancient holy prophets."
+  },
+  "source": {
+   "label": "Matthew 5:11",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-bea-salt",
+  "category": "beatitudes-and-promises",
+  "left": {
+   "en": "You Are the Salt of the Earth",
+   "am": "እናንተ የምድር ጨው ናችሁ"
+  },
+  "right": {
+   "en": "Preserving and Flavoring Creation with Faith",
+   "am": "ዓለምን በእምነት የሚያጣፍጥና የሚጠብቅ"
+  },
+  "explanation": {
+   "en": "Christians prevent moral rot and impart the flavor of kingdom grace to the surrounding world."
+  },
+  "source": {
+   "label": "Matthew 5:13",
+   "route": "/bible/matthew/5",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-abraham",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Abrahamic Covenant of Blessing",
+   "am": "የአብርሃም የበረከት ኪዳን"
+  },
+  "right": {
+   "en": "In His Seed Shall All Nations of the Earth Be Blessed",
+   "am": "በዘሩ የምድር አሕዛብ ሁሉ እንዲባረኩ"
+  },
+  "explanation": {
+   "en": "The unconditional promise of seed, land, and global blessing fulfilled in Jesus Christ."
+  },
+  "source": {
+   "label": "Genesis 22:18",
+   "route": "/bible/genesis/22",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-adam",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Promise of the Seed (Protoevangelium)",
+   "am": "የዘሩ ተስፋ (የመጀመሪያው ወንጌል)"
+  },
+  "right": {
+   "en": "The Woman’s Seed Bruising the Serpent’s Head",
+   "am": "የሴቲቱ ዘር የእባቡን ራስ እንደሚቀጠቅጥ"
+  },
+  "explanation": {
+   "en": "After the Fall, God promised that the Redeemer born of the Woman would conquer the devil."
+  },
+  "source": {
+   "label": "Genesis 3:15",
+   "route": "/bible/genesis/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-christ",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "New Covenant in Christ’s Blood",
+   "am": "በክርስቶስ ክቡር ደም የተመሠረተ አዲስ ኪዳን"
+  },
+  "right": {
+   "en": "Eucharistic Chalice for the Remission of Sins",
+   "am": "ስለ ኃጢአት ስርየት የሚፈሰው የቅዱስ ቁርባን ጽዋ"
+  },
+  "explanation": {
+   "en": "This cup is the new covenant in my blood which is poured out for many for forgiveness."
+  },
+  "source": {
+   "label": "Luke 22:20",
+   "route": "/bible/luke/22",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-david",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Davidic Covenant of the Throne",
+   "am": "የዳዊት የመንግሥት ኪዳን"
+  },
+  "right": {
+   "en": "An Enduring Royal Throne Established Forever",
+   "am": "ለዘላለም የሚጸና የንጉሥ ዙፋን"
+  },
+  "explanation": {
+   "en": "God promised David through Nathan that his throne would be established forever in Messiah."
+  },
+  "source": {
+   "label": "2 Samuel 7:16",
+   "route": "/bible/samuel/38",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-eden",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Edenic Covenant of Innocence",
+   "am": "በገነት የተደረገ የንጽሕና ኪዳን"
+  },
+  "right": {
+   "en": "Tree of Life and Holy Fellowship with the Creator",
+   "am": "የሕይወት ዛፍና ከፈጣሪ ጋር የነበረ ኅብረት"
+  },
+  "explanation": {
+   "en": "Man was placed in the Garden of delight to keep it and enjoy communion with God."
+  },
+  "source": {
+   "label": "Genesis 2:16",
+   "route": "/bible/genesis/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-jeremiah",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "New Covenant Prophesied by Jeremiah",
+   "am": "በኤርምያስ የተነገረው አዲስ ኪዳን"
+  },
+  "right": {
+   "en": "God’s Law Inscribed upon the Tablets of the Heart",
+   "am": "የእግዚአብሔር ሕግ በልብ ጽላት ላይ መጻፉ"
+  },
+  "explanation": {
+   "en": "I will put my law in their minds and write it on their hearts; I will forgive their iniquity."
+  },
+  "source": {
+   "label": "Jeremiah 31:33",
+   "route": "/bible/jeremiah-collection/31",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-moses",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Mosaic Covenant at Mount Sinai",
+   "am": "የደብረ ሲና የሕግ ኪዳን"
+  },
+  "right": {
+   "en": "Ten Commandments Inscribed on Tablets of Stone",
+   "am": "በድንጋይ ጽላት ላይ የተጻፉት ዐሥሩ ትእዛዛት"
+  },
+  "explanation": {
+   "en": "The moral law delivered with thunder and smoke forming Israel into a holy priestly nation."
+  },
+  "source": {
+   "label": "Exodus 20:1",
+   "route": "/bible/exodus/20",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-noah",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Noahic Covenant of Peace",
+   "am": "የኖኅ የሰላም ኪዳን"
+  },
+  "right": {
+   "en": "Rainbow Sign that the Earth Shall Not Be Flooded",
+   "am": "ምድር ዳግመኛ በውኃ እንዳትጠፋ የቀስተ ደመና ምልክት"
+  },
+  "explanation": {
+   "en": "God placed His bow in the cloud as an everlasting sign of forbearance toward all flesh."
+  },
+  "source": {
+   "label": "Genesis 9:13",
+   "route": "/bible/genesis/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-phinehas",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Priestly Covenant with Phinehas",
+   "am": "ከፊንሐስ ጋር የተደረገ የክህነት ኪዳን"
+  },
+  "right": {
+   "en": "Everlasting Priesthood for Zealous Faithfulness",
+   "am": "ስለ ቅንዓቱ የተሰጠ የዘላለም ክህነት"
+  },
+  "explanation": {
+   "en": "Given a covenant of peace and perpetual priesthood for turning away wrath from Israel."
+  },
+  "source": {
+   "label": "Numbers 25:13",
+   "route": "/bible/numbers/25",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-cov-revelation",
+  "category": "holy-covenants-scripture",
+  "left": {
+   "en": "Everlasting Consummation in New Jerusalem",
+   "am": "በአዲሲቱ ኢየሩሳሌም የሚፈጸም የዘላለም ተስፋ"
+  },
+  "right": {
+   "en": "God Dwelling with Men Wiping Away Every Tear",
+   "am": "እግዚአብሔር ከሰዎች ጋር ማደሩና እንባን ሁሉ ማበሱ"
+  },
+  "explanation": {
+   "en": "He will dwell with them and they shall be His people; there shall be no more death or crying."
+  },
+  "source": {
+   "label": "Revelation 21:3",
+   "route": "/bible/revelation/21",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-eli-mantle",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Elijah Striking the Jordan with His Mantle",
+   "am": "ኤልያስ መጎናጸፊያውን በዮርዳኖስ መምታቱ"
+  },
+  "right": {
+   "en": "Parting of the Waters for Dry Crossing",
+   "am": "ውኃው ተከፍሎ በደረቅ መሻገር"
+  },
+  "explanation": {
+   "en": "Elijah struck the waters with his rolled mantle, and they parted to the right and left."
+  },
+  "source": {
+   "label": "2 Kings 2:8",
+   "route": "/bible/kings/24",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-els-salt",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Elisha Casting Salt into the Spring",
+   "am": "ኤልሳዕ ጨው ወደ ውኃው ምንጭ መጣሉ"
+  },
+  "right": {
+   "en": "Purifying Jericho’s Bitter Waters of Death",
+   "am": "የኢያሪኮ መራራ ውኃ መፈወሱ"
+  },
+  "explanation": {
+   "en": "Elisha put salt into a new bowl and cast it into the spring, purifying it of death and barrenness."
+  },
+  "source": {
+   "label": "2 Kings 2:21",
+   "route": "/bible/kings/24",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-ezk-brick",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Ezekiel’s Engraved Clay Brick",
+   "am": "የሕዝቅኤል የተቀረጸ ጡብ"
+  },
+  "right": {
+   "en": "Portrayal of the Siege of Jerusalem",
+   "am": "የኢየሩሳሌም ከበባ ምሳሌ"
+  },
+  "explanation": {
+   "en": "Ezekiel drew the besieged city on a clay tile as an urgent sign to the house of Israel."
+  },
+  "source": {
+   "label": "Ezekiel 4:1",
+   "route": "/bible/ezekiel/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-hos-gomer",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Hosea Marrying Gomer",
+   "am": "የሆሴዕና የጎሜር ጋብቻ"
+  },
+  "right": {
+   "en": "God’s Enduring Covenant Love for Wayward People",
+   "am": "የእግዚአብሔር የማያልቀው ጽኑ ፍቅር"
+  },
+  "explanation": {
+   "en": "Hosea’s marriage illustrated the divine heartache and faithful love restoring fallen Israel."
+  },
+  "source": {
+   "label": "Hosea 3:1",
+   "route": "/bible/hosea/3",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-isa-barefoot",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Isaiah Walking Barefoot for Three Years",
+   "am": "ኢሳይያስ በባዶ እግሩ መመላለሱ"
+  },
+  "right": {
+   "en": "Coming Captivity of Egypt and Ethiopia",
+   "am": "የግብፅና የኢትዮጵያ ምርኮ ምልክት"
+  },
+  "explanation": {
+   "en": "Isaiah walked stripped and barefoot as a prophetic sign of impending exile under Assyria."
+  },
+  "source": {
+   "label": "Isaiah 20:3",
+   "route": "/bible/isaiah/20",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-jer-potter",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Jeremiah’s Potter’s Wheel",
+   "am": "የኤርምያስ የሸክላ ሠሪ ዕቃ"
+  },
+  "right": {
+   "en": "God Reshaping Israel by His Sovereign Will",
+   "am": "እግዚአብሔር እንደ ወደደ ሕዝቡን ማበጀት"
+  },
+  "explanation": {
+   "en": "Jeremiah watched the potter rework spoiled clay on the wheel, showing God’s power to reshape His people."
+  },
+  "source": {
+   "label": "Jeremiah 18:4",
+   "route": "/bible/jeremiah-collection/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-blind-born",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Anointing Eyes of the Man Born Blind with Clay",
+   "am": "ከዕውርነቱ የተወለደውን ሰው በጭቃ ዓይኑን ማብራቱ"
+  },
+  "right": {
+   "en": "Washing at Siloam to Receive True Sight",
+   "am": "በሰሊሆም ታጥቦ ብርሃን ማግኘቱ"
+  },
+  "explanation": {
+   "en": "Christ spat on the ground, made clay, anointed his eyes, and sent him to wash in Siloam."
+  },
+  "source": {
+   "label": "John 9:6",
+   "route": "/bible/john/9",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-cana",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Water Made Wine at Cana in Galilee",
+   "am": "በቃና ዘገሊላ ውኃው ወደ ወይን መለወጡ"
+  },
+  "right": {
+   "en": "First Sign Manifesting His Divine Glory",
+   "am": "መለኮታዊ ክብሩ የተገለጠበት የመጀመሪያው ምልክት"
+  },
+  "explanation": {
+   "en": "At the request of His Mother, Christ transformed six stone water jars into choice wine."
+  },
+  "source": {
+   "label": "John 2:11",
+   "route": "/bible/john/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-centurion",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "The Faith of the Roman Centurion of Capernaum",
+   "am": "የቅፍርናሆሙ የመቶ አለቃ ታላቅ እምነት"
+  },
+  "right": {
+   "en": "Healing the Paralyzed Servant with a Word from Afar",
+   "am": "አገልጋዩን በሩቅ ሆኖ በቃሉ ብቻ መፈወሱ"
+  },
+  "explanation": {
+   "en": "Christ marveled at his faith, saying He had not found such great faith even in Israel."
+  },
+  "source": {
+   "label": "Matthew 8:10",
+   "route": "/bible/matthew/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-five-loaves",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Multiplying Five Barley Loaves and Two Fish",
+   "am": "አምስቱን እንጀራና ሁለቱን ዓሣ ማበርከቱ"
+  },
+  "right": {
+   "en": "Abundant Feeding of Five Thousand Men",
+   "am": "አምስት ሺህ ሰዎችን አትረፍርፎ መመገቡ"
+  },
+  "explanation": {
+   "en": "Christ blessed the boy’s small provision, feeding the multitude with twelve baskets leftover."
+  },
+  "source": {
+   "label": "John 6:11",
+   "route": "/bible/john/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-issue-blood",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Touching the Hem of His Garment in the Crowd",
+   "am": "የልብሱን ጫፍ በሕዝቡ መሀል መንካቷ"
+  },
+  "right": {
+   "en": "Twelve Years of Hemorrhage Instantly Healed",
+   "am": "ዐሥራ ሁለት ዓመት የፈሰሰው ደም መቆሙ"
+  },
+  "explanation": {
+   "en": "The woman said: If only I touch His clothes, I shall be made whole, and power went out from Him."
+  },
+  "source": {
+   "label": "Luke 8:44",
+   "route": "/bible/luke/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-lazarus",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Calling Lazarus from the Tomb after Four Days",
+   "am": "አልዓዛርን ከአራት ቀን በኋላ ከመቃብር መጥራቱ"
+  },
+  "right": {
+   "en": "The Resurrection and the Defeat of Corruption",
+   "am": "የትንሣኤ ጌታና የሙስና አሸናፊ መሆኑ"
+  },
+  "explanation": {
+   "en": "Christ wept, commanded the stone removed, and cried with a loud voice: Lazarus, come forth!"
+  },
+  "source": {
+   "label": "John 11:43",
+   "route": "/bible/john/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-roof-paralytic",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Paralytic Lowered through the Tiled Roof",
+   "am": "በጣሪያ ተቆፍሮ የወረደው ሽባ ሰው"
+  },
+  "right": {
+   "en": "Forgiving Sins and Restoring Paralyzed Limbs",
+   "am": "ኃጢአትን ይቅር የማለትና የመፈወስ ሥልጣን"
+  },
+  "explanation": {
+   "en": "Seeing their faith, Christ said: Your sins are forgiven, and commanded him to take up his bed."
+  },
+  "source": {
+   "label": "Mark 2:5",
+   "route": "/bible/mark/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-storm",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Rebuking the Winds and the Raging Sea",
+   "am": "ኃይለኛውን ነፋስና ባሕር ገሥፆ ጸጥ ማድረጉ"
+  },
+  "right": {
+   "en": "Total Authority over Nature and Creation",
+   "am": "በፍጥረት ሁሉ ላይ ፍጹም ሥልጣን መኖሩ"
+  },
+  "explanation": {
+   "en": "Christ arose from sleep in the boat, rebuked the tempest, and there was a great calm."
+  },
+  "source": {
+   "label": "Mark 4:39",
+   "route": "/bible/mark/4",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-ten-lepers",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Cleansing Ten Lepers on the Road",
+   "am": "ዐሥሩን ለምጻሞች በመንገድ ላይ ማንጻቱ"
+  },
+  "right": {
+   "en": "Gratitude of the Samaritan Who Returned",
+   "am": "ተመልሶ ያመሰገነው የሳምራዊው ምስጋና"
+  },
+  "explanation": {
+   "en": "Ten were cleansed as they went, but only one returned falling at Christ’s feet to give thanks."
+  },
+  "source": {
+   "label": "Luke 17:15",
+   "route": "/bible/luke/17",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mir-waterwalk",
+  "category": "miracles-of-christ",
+  "left": {
+   "en": "Walking upon the Waves of the Sea of Galilee",
+   "am": "በገሊላ ባሕር ማዕበል ላይ በእግሩ መሄዱ"
+  },
+  "right": {
+   "en": "Delivering the Terrified Disciples in the Storm",
+   "am": "በማዕበል የተጨነቁትን ደቀ መዛሙርት ማዳኑ"
+  },
+  "explanation": {
+   "en": "In the fourth watch of the night, Christ walked upon the deep to strengthen Peter and the apostles."
+  },
+  "source": {
+   "label": "Matthew 14:25",
+   "route": "/bible/matthew/14",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-mos-serpent",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Moses Raising the Bronze Serpent on a Pole",
+   "am": "ሙሴ የናሱን እባብ በዓላማ ላይ መስቀሉ"
+  },
+  "right": {
+   "en": "Healing of All Who Look in Faith",
+   "am": "በእምነት የተመለከቱ ሁሉ መዳናቸው"
+  },
+  "explanation": {
+   "en": "Whoever looked upon the uplifted bronze serpent was healed from venomous bites, prefiguring the Cross."
+  },
+  "source": {
+   "label": "Numbers 21:9",
+   "route": "/bible/numbers/21",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-abraham",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Abraham",
+   "am": "አብርሃም"
+  },
+  "right": {
+   "en": "Father of a Multitude of Nations",
+   "am": "የብዙ አሕዛብ አባት"
+  },
+  "explanation": {
+   "en": "God changed Abram’s name when establishing the everlasting covenant of faith."
+  },
+  "source": {
+   "label": "Genesis 17:5",
+   "route": "/bible/genesis/17",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-elijah",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Elijah",
+   "am": "ኤልያስ"
+  },
+  "right": {
+   "en": "Yahweh is My God",
+   "am": "እግዚአብሔር አምላኬ ነው"
+  },
+  "explanation": {
+   "en": "The fiery prophet whose name embodied his entire life contest against Baal worship."
+  },
+  "source": {
+   "label": "1 Kings 18:39",
+   "route": "/bible/kings/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-isaac",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Isaac",
+   "am": "ይስሐቅ"
+  },
+  "right": {
+   "en": "Laughter and Holy Joy",
+   "am": "ሣቅና ቅዱስ ደስታ"
+  },
+  "explanation": {
+   "en": "Sarah rejoiced when God fulfilled the impossible promise, bringing holy laughter to her home."
+  },
+  "source": {
+   "label": "Genesis 21:6",
+   "route": "/bible/genesis/21",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-israel",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Israel",
+   "am": "እስራኤል"
+  },
+  "right": {
+   "en": "One Who Strives with God and Prevails",
+   "am": "ከእግዚአብሔር ጋር ታግሎ ያሸነፈ"
+  },
+  "explanation": {
+   "en": "The angel bestowed this new name upon Jacob after his night of wrestling at Peniel."
+  },
+  "source": {
+   "label": "Genesis 32:28",
+   "route": "/bible/genesis/32",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-joshua",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Joshua (Yeshua)",
+   "am": "ኢያሱ"
+  },
+  "right": {
+   "en": "The Lord is Salvation",
+   "am": "እግዚአብሔር መድኃኒት ነው"
+  },
+  "explanation": {
+   "en": "Moses renamed Hoshea son of Nun to Joshua as he led Israel into the Promised Land."
+  },
+  "source": {
+   "label": "Numbers 13:16",
+   "route": "/bible/numbers/13",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-moses",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Moses",
+   "am": "ሙሴ"
+  },
+  "right": {
+   "en": "Drawn Out of the Waters",
+   "am": "ከውኃ የወጣ"
+  },
+  "explanation": {
+   "en": "Pharaoh’s daughter named him Moses because she drew him out of the reed-beds of the Nile."
+  },
+  "source": {
+   "label": "Exodus 2:10",
+   "route": "/bible/exodus/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-samuel",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Samuel",
+   "am": "ሳሙኤል"
+  },
+  "right": {
+   "en": "Asked and Heard of God",
+   "am": "ከእግዚአብሔር የተለመነና የተሰማ"
+  },
+  "explanation": {
+   "en": "Hannah named him Samuel because she had asked for him from the Lord in tearful prayer."
+  },
+  "source": {
+   "label": "1 Samuel 1:20",
+   "route": "/bible/samuel/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-name-solomon",
+  "category": "names-and-meanings",
+  "left": {
+   "en": "Solomon (Jedidiah)",
+   "am": "ሰሎሞን (ይዲድያ)"
+  },
+  "right": {
+   "en": "Peaceful and Beloved of Yahweh",
+   "am": "የሰላም ሰውና በእግዚአብሔር የተወደደ"
+  },
+  "explanation": {
+   "en": "David called him Solomon for the peace of his reign, and Nathan called him Jedidiah."
+  },
+  "source": {
+   "label": "2 Samuel 12:25",
+   "route": "/bible/samuel/43",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-alpha-omega",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Alpha and the Omega",
+   "am": "አልፋና ዖሜጋ"
+  },
+  "right": {
+   "en": "The Beginning and the End, Who Was and Is",
+   "am": "መጀመሪያውና መጨረሻው፥ የነበረውና ያለው"
+  },
+  "explanation": {
+   "en": "The Almighty Word who encompasses all eternity, creation, and consummation."
+  },
+  "source": {
+   "label": "Revelation 1:8",
+   "route": "/bible/revelation/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-bread",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Bread of Life",
+   "am": "የሕይወት እንጀራ"
+  },
+  "right": {
+   "en": "Whoever Comes to Him Shall Never Hunger",
+   "am": "ወደ እርሱ የሚመጣ ከቶ አይራብም"
+  },
+  "explanation": {
+   "en": "Christ declared: I am the bread of life which came down from heaven to give life to the world."
+  },
+  "source": {
+   "label": "John 6:35",
+   "route": "/bible/john/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-cornerstone",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Chief Cornerstone",
+   "am": "የማዕዘን ራስ ድንጋይ"
+  },
+  "right": {
+   "en": "Rejected by Builders but Chosen and Precious",
+   "am": "በግንበኞች የተናቀ ነገር ግን የተመረጠ"
+  },
+  "explanation": {
+   "en": "The stone the builders rejected has become the chief cornerstone of God’s holy temple."
+  },
+  "source": {
+   "label": "1 Peter 2:6",
+   "route": "/bible/first-peter/2",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-door",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Door of the Sheepfold",
+   "am": "የበጎች ደጅ"
+  },
+  "right": {
+   "en": "Entrance to Safety, Pasture, and Salvation",
+   "am": "ለመዳንና ለማሰማሪያ መግቢያ መንገድ"
+  },
+  "explanation": {
+   "en": "Christ is the true door through whom whoever enters shall be saved and find pasture."
+  },
+  "source": {
+   "label": "John 10:9",
+   "route": "/bible/john/10",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-lamb",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Lamb of God",
+   "am": "የእግዚአብሔር በግ"
+  },
+  "right": {
+   "en": "Taking Away the Sin of the Whole World",
+   "am": "የዓለምን ኃጢአት የሚያስወግድ"
+  },
+  "explanation": {
+   "en": "John the Baptist saw Jesus approaching and cried: Behold the Lamb of God who takes away sin."
+  },
+  "source": {
+   "label": "John 1:29",
+   "route": "/bible/john/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-light",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Light of the World",
+   "am": "የዓለም ብርሃን"
+  },
+  "right": {
+   "en": "Whoever Follows Him Shall Not Walk in Darkness",
+   "am": "እርሱን የሚከተል በጨለማ አይመላለስም"
+  },
+  "explanation": {
+   "en": "Christ proclaims that whoever follows Him shall possess the light of everlasting life."
+  },
+  "source": {
+   "label": "John 8:12",
+   "route": "/bible/john/8",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-resurrection",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Resurrection and the Life",
+   "am": "ትንሣኤና ሕይወት"
+  },
+  "right": {
+   "en": "Whoever Believes in Him Lives Though He Die",
+   "am": "በእርሱ የሚያምን ቢሞት እንኳ በሕይወት ይኖራል"
+  },
+  "explanation": {
+   "en": "Christ promised Martha that faith in Him overcomes physical death with everlasting life."
+  },
+  "source": {
+   "label": "John 11:25",
+   "route": "/bible/john/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-shepherd",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Good Shepherd",
+   "am": "መልካም እረኛ"
+  },
+  "right": {
+   "en": "Laying Down His Life for the Sheep",
+   "am": "ነፍሱን ስለ በጎቹ አሳልፎ የሚሰጥ"
+  },
+  "explanation": {
+   "en": "The Good Shepherd knows His own by name and voluntarily gives His life for the flock."
+  },
+  "source": {
+   "label": "John 10:11",
+   "route": "/bible/john/10",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-vine",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The True Vine",
+   "am": "እውነተኛ የወይን ግንድ"
+  },
+  "right": {
+   "en": "Branches Bearing Abundant Fruit in Union",
+   "am": "በእርሱ የጸኑ ቅርንጫፎች ብዙ ፍሬ ያፈራሉ"
+  },
+  "explanation": {
+   "en": "Abiding in Christ as branches in the vine enables believers to bear fruits of righteousness."
+  },
+  "source": {
+   "label": "John 15:5",
+   "route": "/bible/john/15",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-title-way",
+  "category": "titles-of-christ-gospels",
+  "left": {
+   "en": "The Way, the Truth, and the Life",
+   "am": "መንገድና እውነት ሕይወትም"
+  },
+  "right": {
+   "en": "No One Comes to the Father Except Through Him",
+   "am": "በእርሱ በቀር ወደ አብ የሚመጣ ማንም የለም"
+  },
+  "explanation": {
+   "en": "Christ answered Thomas that He alone is the living road uniting humanity with God the Father."
+  },
+  "source": {
+   "label": "John 14:6",
+   "route": "/bible/john/14",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-p3-zec-staffs",
+  "category": "prophets-symbolic-actions",
+  "left": {
+   "en": "Zechariah’s Two Shepherding Staffs",
+   "am": "የዘካርያስ ሁለቱ በትር"
+  },
+  "right": {
+   "en": "Favor and Union Broken by Rebellion",
+   "am": "ጸጋና አንድነት በመሸፈት መቋረጡ"
+  },
+  "explanation": {
+   "en": "The prophet named his staffs Favor and Union, breaking them when the covenant flock went astray."
+  },
+  "source": {
+   "label": "Zechariah 11:7",
+   "route": "/bible/zechariah/11",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-pro-elijah",
+  "category": "Prophets",
+  "left": {
+   "en": "Prophet Elijah",
+   "am": "ነቢዩ ኤልያስ"
+  },
+  "right": {
+   "en": "Fire from heaven consuming the offering on Mount Carmel",
+   "am": "በደብረ ቀርሜሎስ መሥዋዕቱ በእሳት ተበላ"
+  },
+  "explanation": {
+   "en": "1 Kings 18:38 tells how the fire of the Lord fell and consumed the burnt sacrifice.",
+   "am": "በ1ኛ ነገሥት 18፥38 የእግዚአብሔር እሳት ወርዳ የሚቃጠለውን መሥዋዕት በላች።"
+  },
+  "source": {
+   "label": "1 Kings 18:38",
+   "route": "/bible/kings/18",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-pro-elisha",
+  "category": "Prophets",
+  "left": {
+   "en": "Prophet Elisha",
+   "am": "ነቢዩ ኤልሳዕ"
+  },
+  "right": {
+   "en": "The iron axe head swimming upon the Jordan water",
+   "am": "በዮርዳኖስ ውኃ ላይ የዋኘው የበረተው ምሳር"
+  },
+  "explanation": {
+   "en": "2 Kings 6:6 records the miracle where the iron axe head did swim upon the Jordan.",
+   "am": "በ2ኛ ነገሥት 6፥6 ወደ ውኃ የወደቀው የብረት ምሳር ተንሳፍፎ ዋኘ።"
+  },
+  "source": {
+   "label": "2 Kings 6:6",
+   "route": "/bible/kings/28",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-pro-ezekiel",
+  "category": "Prophets",
+  "left": {
+   "en": "Prophet Ezekiel",
+   "am": "ነቢዩ ሕዝቅኤል"
+  },
+  "right": {
+   "en": "The vision of dry bones rising up to life by the breath of God",
+   "am": "በእግዚአብሔር እስትንፋስ ሕያው ሆነው የተነሡ የደረቁ አጥንቶች ራእይ"
+  },
+  "explanation": {
+   "en": "Ezekiel 37:10 describes breath entering into the dry bones and they lived and stood up.",
+   "am": "በሕዝቅኤል 37፥10 እስትንፋስ በደረቁ አጥንቶች ውስጥ ገባ፥ ሕያዋንም ሆነው በእግራቸው ቆሙ።"
+  },
+  "source": {
+   "label": "Ezekiel 37:10",
+   "route": "/bible/ezekiel/37",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-pro-isaiah",
+  "category": "Prophets",
+  "left": {
+   "en": "Prophet Isaiah",
+   "am": "ነቢዩ ኢሳይያስ"
+  },
+  "right": {
+   "en": "Vision of the Seraphim chanting Thrice-Holy in the Temple",
+   "am": "ሱራፌል በቤተ መቅደስ ቅዱስ ቅዱስ ቅዱስ ሲሉ ያየው ራእይ"
+  },
+  "explanation": {
+   "en": "Isaiah 6:3 records the Seraphim crying “Holy, holy, holy is the LORD of hosts.”",
+   "am": "በኢሳይያስ 6፥3 ሱራፌል “ቅዱስ፥ ቅዱስ፥ ቅዱስ የሠራዊት ጌታ እግዚአብሔር” ሲሉ አየ።"
+  },
+  "source": {
+   "label": "Isaiah 6:3",
+   "route": "/bible/isaiah/6",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "match-pro-jeremiah",
+  "category": "Prophets",
+  "left": {
+   "en": "Prophet Jeremiah",
+   "am": "ነቢዩ ኤርምያስ"
+  },
+  "right": {
+   "en": "The vision of the almond rod and the seething pot",
+   "am": "የለውዝ በትርና የሚፈላ ምንቸት ራእይ"
+  },
+  "explanation": {
+   "en": "Jeremiah 1:11–13 records the rod of an almond tree and the seething pot facing from the north.",
+   "am": "በኤርምያስ 1፥11-13 የለውዝ በትርንና ከሰሜን አቅጣጫ የሚፈላውን ምንቸት አየ።"
+  },
+  "source": {
+   "label": "Jeremiah 1:11",
+   "route": "/bible/jeremiah-collection/1",
+   "kind": "bible"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ }
+]

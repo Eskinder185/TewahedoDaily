@@ -47,8 +47,16 @@ try {
   await test('Five modes and all twelve existing route links', async () => {
     await page.locator('[data-play-mode]').first().waitFor()
     assert.equal(await page.locator('[data-play-mode]').count(), 5)
-    assert.equal(await page.locator('[data-game-card]').count(), 12)
-    const routes = await page.locator('[data-game-card]').evaluateAll(cards => cards.map(card => new URL(card.href).pathname))
+    // One way in: no second, all-games list under the modes. Games appear after a way to play is chosen.
+    assert.equal(await page.locator('[data-game-card]').count(), 0)
+    assert.equal(await page.getByRole('link', { name: /Show all 12 games/i }).count(), 0)
+    assert.equal(await page.getByText('Browse by topic').count(), 0)
+    const routes = []
+    for (const mode of Object.keys(modeCounts)) {
+      await page.goto(`${base}/play?mode=${mode}`)
+      await page.locator('[data-game-card]').first().waitFor()
+      routes.push(...await page.locator('[data-game-card]').evaluateAll(cards => cards.map(card => new URL(card.href).pathname)))
+    }
     assert.equal(new Set(routes).size, 12)
     for (const route of routes) {
       await page.goto(`${base}${route}`)
@@ -72,20 +80,18 @@ try {
     assert.equal(new URL(page.url()).searchParams.get('mode'), 'word')
     assert.equal(await page.locator('[data-game-card]').count(), 2)
     await page.goForward(); await page.locator('[data-play-mode="story"][aria-current="page"]').waitFor()
-    await page.getByRole('link', { name: 'Show all 12 games', exact: true }).click()
-    await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 12)
-    assert.equal(await page.locator('[data-game-card]').count(), 12)
+    await page.getByRole('link', { name: /All ways to play/ }).click()
+    await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 0)
+    assert.equal(new URL(page.url()).searchParams.get('mode'), null)
   })
   await test('Legacy topic URLs and keyboard controls remain functional', async () => {
     await page.goto(`${base}/play?section=music&level=challenge`)
     await page.locator('[data-game-card]').first().waitFor()
     assert.equal(await page.locator('[data-game-card]').count(), 1)
-    const scripture = page.getByRole('button', { name: 'Scripture', exact: true })
-    await scripture.focus(); await page.keyboard.press('Enter')
-    await page.waitForURL(url => url.searchParams.get('section') === 'scripture')
-    await page.getByRole('button', { name: 'Scripture', exact: true, pressed: true }).waitFor()
-    assert.equal(await page.locator('[data-game-card]').count(), 5)
-    await page.goBack(); await page.getByRole('button', { name: 'Mezmur', exact: true, pressed: true }).waitFor()
+    assert.equal(await page.getByRole('button', { name: 'Scripture', exact: true }).count(), 0, 'topic filter buttons are gone')
+    const mode = page.locator('[data-play-mode="knowledge"]')
+    await mode.focus(); await page.keyboard.press('Enter')
+    await page.waitForURL(url => url.searchParams.get('mode') === 'knowledge')
   })
   await test('History supports replay links, without claiming partial-round resume', async () => {
     await page.evaluate(() => localStorage.setItem('tewahedo-play-progress-v1', JSON.stringify({ xp: 40, achievements: [], history: [{ id: 'fixture', game: 'adventure', score: 1, maxScore: 1, xpEarned: 40, completedAt: new Date().toISOString() }] })))
@@ -95,6 +101,7 @@ try {
     assert.ok(await recent.getByText(/partial rounds are not resumed/).isVisible())
   })
   await test('Progress section never overlaps the last row of game cards', async () => {
+    await page.goto(`${base}/play?mode=visual`); await page.locator('[data-game-card]').first().waitFor()
     assert.ok(await page.evaluate(() => document.querySelector('[aria-label="Your progress"]').getBoundingClientRect().top >= [...document.querySelectorAll('[data-game-card]')].at(-1).getBoundingClientRect().bottom + 16))
   })
   await test('Game Night mixed guide is explicit, linked and history-safe', async () => {

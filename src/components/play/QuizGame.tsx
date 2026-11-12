@@ -5,6 +5,8 @@ import { useAuth } from '../../lib/auth/useAuth'
 import { recordPlayCompletion, type PlayAchievement } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
 import { loadSeen, markSeen, selectUnseen } from '../../lib/play/questionHistory'
+import { withOptionOrder, withShuffledOptions } from '../../lib/play/sessionRandom'
+import { clearSession, loadSession, saveSession } from '../../lib/play/playSession'
 import { localized, type LocalizedText, type PlayDifficulty, type PlayGameType, type PlayQuestion } from '../../lib/play/types'
 import { VerifiedFallback } from './GameShell'
 import { Celebration } from './Celebration'
@@ -76,6 +78,30 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
     return () => window.clearTimeout(timer)
   }, [round, selected, timed, seconds, result])
 
+  // Resume an unfinished session after a refresh: restore once every saved question is present in the bank.
+  const restored = useRef(false)
+  useEffect(() => {
+    if (restored.current || dailyQuestion || round) return
+    const saved = loadSession(game)
+    if (!saved) { restored.current = true; return }
+    const byId = new Map(questions.map((q) => [q.id, q]))
+    if (!saved.ids.every((id) => byId.has(id))) return // bank still loading; try again when it changes
+    restored.current = true
+    const picked = saved.ids.map((id) => withOptionOrder(byId.get(id)!, saved.orders[id] || []))
+    // Restoring an unfinished session from storage is a sync with an external system, which is what effects are for.
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setCategory(saved.settings.category); setDifficulty(saved.settings.difficulty as PlayDifficulty); setCount(saved.settings.count); setTimed(saved.settings.timed)
+    setRound(picked); setIndex(saved.index); setSelected(saved.selected); setHints(saved.hints)
+    setAnswers(saved.answers.flatMap((a) => (byId.has(a.id) ? [{ question: withOptionOrder(byId.get(a.id)!, saved.orders[a.id] || []), selected: a.selected, correct: a.correct, points: a.points }] : [])))
+  }, [questions, game, dailyQuestion, round])
+  useEffect(() => {
+    if (!restored.current && !round) return
+    if (!round || result || dailyQuestion) { if (result) clearSession(game); return }
+    saveSession({ game, ids: round.map((q) => q.id), orders: Object.fromEntries(round.map((q) => [q.id, q.options.map((o) => o.key)])),
+      index, selected, hints, answers: answers.map((a) => ({ id: a.question.id, selected: a.selected, correct: a.correct, points: a.points })),
+      settings: { category, difficulty, count, timed } })
+  }, [round, index, selected, hints, answers, result, category, difficulty, count, timed, game, dailyQuestion])
+
   const questionRef = useRef<HTMLHeadingElement>(null)
   const resultsRef = useRef<HTMLHeadingElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
@@ -108,9 +134,17 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
       setRound([dailyQuestion]); setIndex(0); setSelected(null); setAnswers([]); setHints(0); setSeconds(30); setResult(null)
       return
     }
-    const source = eligible.length ? eligible : questions
-    const chosen = selectUnseen(source, (question) => question.id, loadSeen(game), Math.min(count, source.length)).picked
+    // Keep the round at the requested length: when the chosen level has too few questions, top up with the
+    // nearest levels (beginner is topped up by growing first, and so on) rather than silently shortening the game.
+    const levels: PlayDifficulty[] = ['beginner', 'growing', 'challenge']
+    const distance = (item: PlayQuestion) => Math.abs(levels.indexOf(item.difficulty) - levels.indexOf(difficulty))
+    const inCategory = questions.filter((q) => category === 'all' || q.category === category)
+    const topUp = eligible.length >= count ? [] : inCategory.filter((q) => !eligible.includes(q)).sort((a, b) => distance(a) - distance(b) || a.id.localeCompare(b.id)).slice(0, count - eligible.length)
+    const source = eligible.length ? [...eligible, ...topUp] : questions
+    // Unseen-first sampling without replacement, then fresh answer positions (answer IDs stay stable).
+    const chosen = selectUnseen(source, (question) => question.id, loadSeen(game), Math.min(count, source.length)).picked.map((question) => withShuffledOptions(question))
     markSeen(game, chosen.map((question) => question.id))
+    restored.current = true
     setRound(chosen); setIndex(0); setSelected(null); setAnswers([]); setHints(0); setSeconds(30); setResult(null)
   }
 
