@@ -46,6 +46,7 @@ import {
   humanizeTaxonomySlug,
   listDerivedCategories,
   listDerivedOccasions,
+  listConfiguredTaxonomySlugs,
   listMezmurCategoryLinks,
   listMezmurOccasionLinks,
   setMezmurClassificationLinks,
@@ -54,6 +55,7 @@ import { ADMIN_PATHS } from './adminPaths'
 import { AsyncNotice, Media, MezmurPreview, Modal, Status } from './AdminUi'
 import { isAllowedThumbnailReference } from '../../lib/cms/mezmurMediaRules'
 import { validateMezmurTitleLyrics } from '../../lib/mezmur/titleLyricsValidation'
+import { normalizeMezmurForm } from '../../lib/mezmur/mezmurForm'
 import s from './Admin.module.css'
 
 type FieldErrors = Partial<
@@ -70,6 +72,7 @@ type EditorData = {
   categories: Awaited<ReturnType<typeof listDerivedCategories>>
   sections: Awaited<ReturnType<typeof listAllHymnSections>>
   taxonomy: Awaited<ReturnType<typeof getTaxonomy>>
+  configured: Awaited<ReturnType<typeof listConfiguredTaxonomySlugs>>
 }
 
 function validatePublishFields(input: MezmurInput): { blocking: string; errors: FieldErrors } {
@@ -148,16 +151,19 @@ function canonicalClassificationOptions(
   kind: 'category' | 'occasion',
   selected: string[],
   derived: Array<{ slug: string; name: string; name_amharic?: string | null; mezmur_count: number }>,
+  configured: Set<string> | null = null,
 ) {
   const entries = kind === 'category' ? CATEGORY_ENTRIES : OCCASION_ENTRIES
   const derivedBySlug = new Map(derived.map((item) => [item.slug, item]))
   const canonical = entries.map((entry) => {
     const stored = derivedBySlug.get(entry.slug)
+    const missing = Boolean(configured) && !configured!.has(entry.slug)
     return {
       id: entry.slug,
       label: `${entry.canonical} / ${entry.amharic}`,
-      detail: browseGroupFor(kind, entry.slug),
+      detail: missing ? 'not set up yet: ask an admin to add it' : browseGroupFor(kind, entry.slug),
       count: stored?.mezmur_count || 0,
+      unavailable: missing,
     }
   })
   const canonicalSlugs = new Set(entries.map((entry) => entry.slug))
@@ -185,12 +191,13 @@ export function MezmurEditor() {
   const result = useAsync(
     useCallback(async (): Promise<EditorData> => {
       const taxonomy = await getTaxonomy()
+      const configured = await listConfiguredTaxonomySlugs()
       const [sections, categories, occasions] = await Promise.all([
         listAllHymnSections().catch(() => []),
         listDerivedCategories().catch(() => []),
         listDerivedOccasions().catch(() => []),
       ])
-      if (!id) return { taxonomy, row: undefined, tags: [], sectionIds: [], categorySlugs: [], occasionSlugs: [], sections, categories, occasions }
+      if (!id) return { taxonomy, row: undefined, tags: [], sectionIds: [], categorySlugs: [], occasionSlugs: [], sections, categories, occasions, configured }
       const row = await getMezmur(id)
       const tags = row ? await getTagIds(row.id) : []
       const sectionIds = row
@@ -209,7 +216,7 @@ export function MezmurEditor() {
           updated_at: row?.updated_at ?? null,
         })
       }
-      return { taxonomy, row, tags, sectionIds, categorySlugs, occasionSlugs, sections, categories, occasions }
+      return { taxonomy, row, tags, sectionIds, categorySlugs, occasionSlugs, sections, categories, occasions, configured }
     }, [id]),
   )
 
@@ -678,7 +685,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   Form (Mezmur / Wereb)
                   <select
                     aria-label="Form"
-                    value={input.form || 'mezmur'}
+                    value={normalizeMezmurForm(input.form)}
                     onChange={(event) => set('form', event.target.value as MezmurInput['form'])}
                   >
                     <option value="mezmur">Mezmur</option>
@@ -689,7 +696,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   label="Categories"
                   selected={categorySlugs}
                   onChange={setCategorySlugs}
-                  options={canonicalClassificationOptions('category', categorySlugs, initial.categories)}
+                  options={canonicalClassificationOptions('category', categorySlugs, initial.categories, initial.configured?.categories ?? null)}
                   placeholder="Search categories…"
                   helpText="Canonical public categories, ordered by public browse group. The first selected category is primary."
                 />
@@ -697,7 +704,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   label="Occasions"
                   selected={occasionSlugs}
                   onChange={setOccasionSlugs}
-                  options={canonicalClassificationOptions('occasion', occasionSlugs, initial.occasions)}
+                  options={canonicalClassificationOptions('occasion', occasionSlugs, initial.occasions, initial.configured?.occasions ?? null)}
                   placeholder="Search occasions…"
                   helpText="Canonical public occasions, ordered by public browse group. Existing legacy links remain selectable."
                 />

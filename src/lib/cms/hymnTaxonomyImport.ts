@@ -54,6 +54,7 @@ function getCategoryParent(slug: string): { name: string; slug: string } {
 function getOccasionParent(slug: string): { name: string; slug: string } {
   switch (slug) {
     case 'abiy-tsom':
+    case 'tsome-gehad':
     case 'tsome-nineveh':
     case 'tsome-nebiyat':
     case 'tsome-hawariat':
@@ -142,6 +143,24 @@ async function listDistinctSlugs(
 }
 
 /** Unique occasions from mezmur_occasion_links_import.occasion_slug, populated with canonical taxonomy metadata */
+/**
+ * Category and occasion slugs that already exist in the database. A hymn can only be linked to these; the editor uses
+ * this to show which canonical entries still need their database row. Returns null when it cannot be read.
+ */
+export async function listConfiguredTaxonomySlugs(): Promise<{ categories: Set<string>; occasions: Set<string> } | null> {
+  try {
+    const [categories, occasions] = await Promise.all([
+      db().from('categories' as never).select('slug').limit(1000),
+      db().from('mezmur_occasions' as never).select('slug').limit(1000),
+    ])
+    if (categories.error || occasions.error) return null
+    const slugs = (rows: unknown) => new Set(((rows as Array<{ slug?: string }> | null) ?? []).map((row) => String(row.slug ?? '').trim()).filter(Boolean))
+    return { categories: slugs(categories.data), occasions: slugs(occasions.data) }
+  } catch {
+    return null
+  }
+}
+
 export async function listDerivedOccasions(): Promise<DerivedTaxonomyItem[]> {
   const dbOccasions = await listDistinctSlugs(OCCASION_LINKS, 'occasion_slug')
   const countBySlug = new Map(dbOccasions.map((o) => [o.slug, o.mezmur_count]))

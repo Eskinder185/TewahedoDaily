@@ -82,6 +82,8 @@
     "test:mezmur-language": "node --experimental-strip-types --no-warnings scripts/test-mezmur-language.ts",
     "test:mezmur-language:e2e": "node scripts/test-mezmur-language-playwright.mjs",
     "test:mezmur-title-lyrics": "node --experimental-strip-types --no-warnings scripts/test-mezmur-title-lyrics-separation.ts",
+    "test:mezmur-form-taxonomy": "tsx scripts/test-mezmur-form-taxonomy.ts",
+    "test:werb-card": "node scripts/test-werb-card-browser.mjs",
     "test:mezmur-aliases": "tsx scripts/test-mezmur-taxonomy-aliases.ts",
     "test:hymn-browse-sections": "tsx scripts/test-hymn-browse-canonical-sections.ts",
     "test:mezmur-presentation": "tsx scripts/test-mezmur-presentation.ts",
