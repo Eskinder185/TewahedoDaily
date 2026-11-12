@@ -38,6 +38,8 @@ export type UnifiedMezmurSearchItem = {
   /** Public lyric passage that matched the query, with highlight ranges into `excerpt.text`. Never invented. */
   excerpt?: LyricExcerpt | null
   confirmedVersionCount?: number
+  /** True when this hymn matched only by similar spelling (consonants/vowel forms), not exactly. */
+  similar?: boolean
 }
 
 export type UnifiedHymnSearchResult = {
@@ -170,8 +172,8 @@ export async function searchMezmursUnified(
 }
 
 function lyricItemToUnified(item: LyricSearchItem): UnifiedMezmurSearchItem {
-  const { tier: _tier, ...rest } = item
-  return rest
+  const { tier, ...rest } = item
+  return tier === 'similar-spelling' ? { ...rest, similar: true } : rest
 }
 
 /**
