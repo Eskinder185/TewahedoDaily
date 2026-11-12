@@ -92,6 +92,20 @@ a.gameCard:focus-visible {
   transform: scale(1.001);
 }
 
+/* Icon cards: a calm midnight panel with one gold line icon, no photograph. */
+.cardMediaIcon {
+  display: grid;
+  aspect-ratio: 16 / 8;
+  place-items: center;
+  color: var(--color-gold-bright, #e3c576);
+  background:
+    radial-gradient(circle at 50% 45%, rgba(227, 197, 118, 0.14), transparent 62%),
+    var(--color-midnight-deep);
+}
+.cardMediaIcon svg { width: 5rem; height: 5rem; }
+.cardMediaIcon::after { display: none; }
+.gameCardUnavailable .cardMediaIcon { color: rgba(239, 227, 196, 0.45); }
+
 .cardMedia::after {
   position: absolute;
   inset: 0;
