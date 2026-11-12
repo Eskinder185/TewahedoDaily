@@ -159,6 +159,8 @@ const NotFoundPage = lazy(() => import('./pages/NotFoundPage').then(m => ({ defa
 const PlayHubPage = lazy(() => import('./pages/play/PlayHubPage').then(m => ({ default: m.PlayHubPage })))
 const PlayGamePage = lazy(() => import('./pages/play/PlayGamePage').then(m => ({ default: m.PlayGamePage })))
 const AdventurePage = lazy(() => import('./pages/play/AdventurePage').then(m => ({ default: m.AdventurePage })))
+const LiveRoomPage = lazy(() => import('./pages/play/LiveRoomPage').then(m => ({ default: m.LiveRoomPage })))
+const LiveRoomEntry = lazy(() => import('./pages/play/LiveRoomPage').then(m => ({ default: m.LiveRoomEntry })))
 const GameNightPage = lazy(() => import('./pages/play/GameNightPage').then(m => ({ default: m.GameNightPage })))
 
 export default function App() {
@@ -331,6 +333,8 @@ export default function App() {
         <Route path="/play/saints" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="saints" /></Suspense>} />
         <Route path="/play/icon-memory" element={<Suspense fallback={<PageLoadingFallback />}><PlayGamePage game="icon-memory" /></Suspense>} />
         <Route path="/play/adventures" element={<Suspense fallback={<PageLoadingFallback />}><AdventurePage /></Suspense>} />
+        <Route path="/play/live" element={<Suspense fallback={<PageLoadingFallback />}><LiveRoomEntry /></Suspense>} />
+        <Route path="/play/live/:code" element={<Suspense fallback={<PageLoadingFallback />}><LiveRoomPage /></Suspense>} />
         <Route path="/play/game-night" element={<Suspense fallback={<PageLoadingFallback />}><GameNightPage /></Suspense>} />
         <Route path="/bible" element={<Suspense fallback={<PageLoadingFallback />}><BibleCatalogPage /></Suspense>} />
         <Route path="/bible/:bookSlug" element={<Suspense fallback={<PageLoadingFallback />}><BibleBookPage /></Suspense>} />
