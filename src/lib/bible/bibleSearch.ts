@@ -24,7 +24,9 @@ const amharicSourceNames = (source: SourceBook) =>
   [...new Set([verifiedAmharicForSourceName(source.source_name_en), source.source_name_am, flaggedAmharicForSourceName(source.source_name_en)].map(nfc).filter(Boolean))]
 import { parseBibleReference, type ParsedBibleReference } from './parseBibleReference'
 import type { SiteSearchResult } from '../search/types'
-import { buildExcerpt, hasEthiopic, ilikePart, retrievalWords } from '../search/textMatch'
+import { buildExcerpt, hasEthiopic, ilikePart, retrievalWords, type Excerpt } from '../search/textMatch'
+import { approximateAmharicMatch, approximateLatinMatch, latinLooseRegex, latinQueryWords, type ApproximateMatch } from '../search/approximateText'
+import { ethiopicLooseRegex, ethiopicSkeletonWord } from '../search/translitSkeleton'
 import { matchContent } from '../language/index.ts'
 
 export type BibleSearchLanguage = 'am' | 'en'
@@ -67,6 +69,8 @@ type VerseRow = {
 const TEXT_LIMIT_DEFAULT = 12
 /** Upper bound on verses fetched per search; ranking happens locally on this bounded set. */
 const TEXT_CANDIDATES = 120
+/** Approximate search has to look at more rows, because a misspelled word cannot narrow the query as tightly. */
+const APPROXIMATE_CANDIDATES = 400
 const CATALOG_TTL_MS = 5 * 60 * 1000
 
 let catalogCache: { at: number; data: BibleCatalog } | null = null
@@ -821,7 +825,7 @@ export async function searchBibleText(
     .filter((word) => word.replace(/_/g, '').length >= 1)
   if (!words.length) return []
 
-  let builder = db()
+  const verseQuery = () => db()
     .from('bible_verses')
     .select(
       `
@@ -858,6 +862,7 @@ export async function searchBibleText(
     `,
     )
     .limit(TEXT_CANDIDATES)
+  let builder = verseQuery()
   for (const word of words) builder = builder.ilike('text', `%${word}%`)
   const { data, error } = await builder
 
@@ -878,7 +883,7 @@ export async function searchBibleText(
     if (match) verified.push({ row, match })
   }
   const codeOf = (row: VerseTextEmbed) => row.bible_chapters.bible_source_books.bible_editions.code
-  const ranked = verified
+  let ranked = verified
     .sort((a, b) => {
       const aKind = a.match.kind === 'phrase' ? 0 : 1
       const bKind = b.match.kind === 'phrase' ? 0 : 1
@@ -892,6 +897,31 @@ export async function searchBibleText(
       return a.row.source_order - b.row.source_order
     })
     .map((entry) => entry.row)
+
+  // Nothing matched exactly: look for approximate matches (a misspelled English word, or an Amharic word typed with
+  // a different vowel form). Candidates come from one bounded regex request; each is verified against the stored verse.
+  let approximate: Map<string, ApproximateMatch> | null = null
+  if (!ranked.length) {
+    const ethiopic = hasEthiopic(q)
+    const patterns = ethiopic
+      ? [...new Set([...q.matchAll(/[ሀ-፿]+/gu)].map((m) => m[0]))].filter((w) => ethiopicSkeletonWord(w).length >= 2).sort((a, b) => b.length - a.length).slice(0, 3).map(ethiopicLooseRegex)
+      : latinQueryWords(q).sort((a, b) => b.folded.length - a.folded.length).slice(0, 3).map((w) => latinLooseRegex(w.raw)).filter(Boolean)
+    if (patterns.length) {
+      let fuzzy = verseQuery().limit(APPROXIMATE_CANDIDATES)
+      for (const pattern of patterns) fuzzy = fuzzy.filter('text', 'imatch', pattern)
+      const { data: nearData, error: nearError } = await fuzzy
+      if (!nearError) {
+        const near: Array<{ row: VerseTextEmbed; match: ApproximateMatch }> = []
+        for (const row of (nearData || []) as unknown as VerseTextEmbed[]) {
+          const match = ethiopic ? approximateAmharicMatch(row.text, q) : approximateLatinMatch(row.text, q)
+          if (match && codeOf(row) === (ethiopic ? 'am' : 'web')) near.push({ row, match })
+        }
+        near.sort((a, b) => a.match.distance - b.match.distance || b.match.coverage - a.match.coverage || a.match.span - b.match.span || a.row.source_order - b.row.source_order)
+        approximate = new Map(near.map((entry) => [entry.row.id, entry.match]))
+        ranked = near.map((entry) => entry.row)
+      }
+    }
+  }
 
   /** chapterId → reader ordinal within canonical book + edition */
   const ordinalCache = new Map<string, number>()
@@ -983,7 +1013,8 @@ export async function searchBibleText(
     const editionLabel =
       code === 'am' ? 'Amharic' : code === 'web' ? 'English · WEB' : edition.name
     // A slice of the stored verse centred on the match, with highlight ranges into that slice.
-    const found = buildExcerpt(row.text, q, 220)
+    const near = approximate?.get(row.id)
+    const found: Excerpt | null = near ? near.excerpt : buildExcerpt(row.text, q, 220)
     const excerpt = found?.text ?? (row.text.length > 220 ? `${row.text.slice(0, 217).trim()}…` : row.text)
 
     results.push({
@@ -998,8 +1029,9 @@ export async function searchBibleText(
       route: `/bible/${book.slug}/${ordinal}?edition=${code}#verse-${row.verse_number}`,
       imagePath: null,
       score: 0.015,
-      matchKind: 'keyword',
+      matchKind: near ? 'fuzzy' : 'keyword',
       typeLabel: 'Bible text',
+      ...(near ? { matchLabel: 'Similar spelling' } : {}),
       excerpt,
       highlights: found?.ranges,
       sourceLabel: editionLabel,
