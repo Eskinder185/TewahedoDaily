@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { useUrlChoice } from '../../hooks/useUrlState'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { GameCard, type PlayGameCard } from '../../components/play/GameCard'
 import { GameDifficultyPicker, type GameDifficulty } from '../../components/play/GameDifficultyPicker'
 import { PlayProgressPanel } from '../../components/play/PlayProgressPanel'
@@ -10,6 +10,7 @@ import { GAME_ART, handlePlayImageError, PLAY_IMAGES, imageById } from '../../li
 import { HUB_GAMES, HUB_SECTIONS, type HubSection } from '../../lib/play/gameCatalog'
 import { GAME_MODES, GAME_MODE_IDS, gameInMode, recentGames, type GameModeId } from '../../lib/play/gameModes'
 import { usePlayProgress } from '../../lib/play/usePlayProgress'
+import { resumableGames } from '../../lib/play/playSession'
 import styles from './PlayHubPage.module.css'
 
 type Section = HubSection
@@ -18,6 +19,9 @@ type HubGame = PlayGameCard & { section: Section }
 
 const GAMES: HubGame[] = HUB_GAMES
 const SECTIONS = HUB_SECTIONS
+
+/** Games that can also be hosted as a live room (see src/lib/play/liveRoom.ts). */
+const LIVE_HUB_GAMES = new Set(['trivia', 'finish-the-verse', 'emoji', 'who-am-i'])
 
 const HERO_ICONS = ['gena', 'michael', 'timket'].map((id) => imageById(id)!)
 
@@ -31,6 +35,14 @@ export function PlayHubPage() {
   const [params, setParams] = useSearchParams()
   const progress = usePlayProgress()
   const recent = recentGames(progress.history)
+  const navigate = useNavigate()
+  const resume = useMemo(() => resumableGames(['trivia', 'finish-the-verse', 'emoji']), [])
+  const quickGame = GAMES.find(game => game.id === 'trivia') ?? GAMES[0]
+  const surprise = () => {
+    const pool = GAMES.filter(game => !game.unavailable)
+    const game = pool[Math.floor(Math.random() * pool.length)]
+    navigate(`${game.route}${game.levels ? `?level=${difficulty}` : ''}`)
+  }
   const visible = useMemo(() => GAMES.filter((game) => (filter === 'all' || game.section === filter) && gameInMode(game.id, mode)), [filter, mode])
   const modeHref = (id: string) => {
     const next = new URLSearchParams(params); next.delete('section')
@@ -92,6 +104,15 @@ export function PlayHubPage() {
             <Link className={styles.primaryActionLight} to="/play/game-night?view=mixed">{am ? 'መመሪያውን ይክፈቱ' : 'Explore the evening'} →</Link>
           </div>
         </section>
+        <section className={styles.startStrip} aria-label={am ? 'መጫወት ይጀምሩ' : 'Start playing'} data-play-actions>
+          <Link className={styles.stripPrimary} to={`${quickGame.route}${quickGame.levels ? `?level=${difficulty}` : ''}`} data-play-now>▶ {am ? 'አሁን ይጫወቱ' : 'Play now'}<small>{quickGame.title[locale]}</small></Link>
+          <button type="button" className={styles.stripButton} onClick={surprise} data-surprise>🎲 {am ? 'አስገርመኝ' : 'Surprise me'}<small>{am ? 'በዘፈቀደ የተመረጠ ጨዋታ' : 'A random game'}</small></button>
+          <a className={styles.stripButton} href="#games" data-play-solo>👤 {am ? 'ብቻዎን' : 'Play solo'}<small>{am ? 'ጨዋታ ይምረጡ' : 'Pick any of 12 games'}</small></a>
+          <Link className={styles.stripButton} to="/play/live" data-host>📣 {am ? 'ክፍል ይክፈቱ' : 'Host a game'}<small>{am ? 'ከጓደኞች ጋር' : 'Trivia, Verse, Emoji, Who Am I'}</small></Link>
+          <Link className={styles.stripButton} to="/play/live" data-join>🔑 {am ? 'ይቀላቀሉ' : 'Join a game'}<small>{am ? 'በክፍል ኮድ' : 'With a room code'}</small></Link>
+          {resume.length ? <div className={styles.resumeRow} data-resume>{resume.map(item => { const game = GAMES.find(g => g.id === item.game || (g.id === 'mezmur' && item.game === 'finish-the-mezmur')); return game ? <Link key={item.game} to={game.route}>↻ {am ? 'ቀጥሉ' : 'Continue'} {game.title[locale]} ({item.done}/{item.total})</Link> : null })}</div> : null}
+        </section>
+
         <section className={styles.modeSection} aria-labelledby="modes-title">
           <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{am ? 'እንዴት መጫወት ይፈልጋሉ?' : 'How do you want to play?'}</p>
             <h2 id="modes-title">{am ? 'አምስት የጨዋታ መንገዶች' : 'Five ways to discover'}</h2></div></div>
@@ -127,7 +148,7 @@ export function PlayHubPage() {
           </p>
           {!visible.length && <p>{am ? 'ከእነዚህ ማጣሪያዎች ጋር የሚዛመድ ጨዋታ የለም። ሁሉንም ጨዋታዎች ይመልከቱ።' : 'No games match these filters. Choose “Show all 12 games” to explore the library.'}</p>}
           <div className={styles.gameGrid}>
-            {visible.map((game) => <GameCard key={game.id} game={game} locale={locale} level={difficulty} />)}
+            {visible.map((game) => <GameCard key={game.id} game={LIVE_HUB_GAMES.has(game.id) ? { ...game, badge: { en: 'Solo + Live room', am: 'ብቻ + የቀጥታ ክፍል' } } : game} locale={locale} level={difficulty} />)}
           </div>
         </section>
 
@@ -137,7 +158,8 @@ export function PlayHubPage() {
             <p>{am ? 'የተጠናቀቁ ጨዋታዎችን እንደገና ይጀምሩ።' : 'Replay a recent game. Completed results are saved; partial rounds are not resumed.'}</p>
             {recent.map(id => GAMES.find(game => game.id === id || (game.id === 'mezmur' && id === 'finish-the-mezmur'))).filter((game): game is HubGame => !!game).map(game => <Link key={game.id} to={game.route}>{game.title[locale]} →</Link>)}
             <Link to="/play/trivia?daily=1">{am ? 'የዕለቱ ፈተና' : 'Daily challenge'} →</Link>
-            <Link to="/play/game-night">{am ? 'የጨዋታ ምሽት ይክፈቱ' : 'Host or join Game Night'} →</Link>
+            <Link to="/play/live">{am ? 'ከጓደኞች ጋር ይጫወቱ' : 'Host or join a live room'} →</Link>
+            <Link to="/play/game-night?view=mixed">{am ? 'የጨዋታ ምሽት መመሪያ' : 'Game Night guide'} →</Link>
           </aside>
         </section>
 

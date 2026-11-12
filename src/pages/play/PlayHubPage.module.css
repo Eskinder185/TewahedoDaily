@@ -340,3 +340,14 @@
   .dailyCard { min-height: 19rem; }
 }
 
+
+/* Start strip: Play now, Surprise me, solo / host / join */
+.startStrip { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: .65rem; margin: 1rem 0 1.5rem; }
+.stripPrimary, .stripButton { display: grid; gap: .15rem; align-content: center; min-height: 64px; padding: .7rem .9rem; border-radius: 14px; text-decoration: none; font: inherit; font-weight: 700; cursor: pointer; text-align: start; box-sizing: border-box; }
+.stripPrimary { background: var(--color-gold-bright, #d8a63a); color: var(--color-midnight-ink, #0e1c33); border: 0; }
+.stripButton { background: var(--color-bg-elevated, #fff); color: var(--color-heading); border: 1px solid var(--color-border-card); }
+.stripPrimary small, .stripButton small { font-weight: 400; opacity: .8; overflow-wrap: anywhere; }
+.stripButton:hover { border-color: var(--color-gold-bright, #d8a63a); }
+.startStrip :is(a, button):focus-visible { outline: 3px solid var(--color-focus-ring, var(--color-accent)); outline-offset: 3px; }
+.resumeRow { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .5rem; }
+.resumeRow a { padding: .5rem .9rem; border-radius: 999px; border: 1px solid var(--color-gold-bright, #d8a63a); color: var(--color-heading); text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
