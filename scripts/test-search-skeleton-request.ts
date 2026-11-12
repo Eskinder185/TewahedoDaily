@@ -31,3 +31,22 @@ for (const [input, text, wants] of cases) {
 assert.equal(extractSearchRequest('find').text, 'find')
 assert.equal(extractSearchRequest('the song').text, 'the song')
 console.log('test-search-skeleton-request: ok')
+
+// Search Buddy: one hymn is one result, whichever route or source produced it.
+import { dedupeResults, canonicalMezmurSlug } from '../src/lib/search/searchCore.ts'
+import type { SiteSearchResult } from '../src/lib/search/types.ts'
+const base = { titleAmharic: '', description: '', imagePath: null, typeLabel: 'Mezmur' } as const
+const hymn = (route: string, extra: Partial<SiteSearchResult> = {}): SiteSearchResult => ({
+  ...base, sourceType: 'mezmur', sourceId: route, title: 'Aba Abune', route, score: 0.05, matchKind: 'fuzzy', ...extra,
+})
+assert.equal(canonicalMezmurSlug('/practice/mezmur/aba-abune'), 'aba-abune')
+assert.equal(canonicalMezmurSlug('/practice/browse/x'), null)
+const merged = dedupeResults([
+  hymn('/practice/mezmur/aba-abune'),
+  hymn('/practice/mezmur/aba-abune', { sourceId: 'other', excerpt: 'Aba abune', highlights: [[0, 3]], matchLabel: 'Lyric match', matchKind: 'keyword', score: 0.02 }),
+  hymn('/practice/mezmur/other-hymn'),
+])
+assert.equal(merged.length, 2)
+assert.equal(merged[0].excerpt, 'Aba abune')
+assert.equal(merged[0].matchLabel, 'Lyric match')
+console.log('test-search-dedupe: ok')

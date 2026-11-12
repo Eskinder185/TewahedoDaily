@@ -370,17 +370,41 @@ export function relevanceAdjustedScore(
   return score
 }
 
+/** One hymn, one result: /hymns/…, /practice/mezmur/… and lyric hits for the same slug are the same hymn. */
+export function canonicalMezmurSlug(route: string): string | null {
+  const match = /^\/(?:practice\/mezmur|hymns\/mezmur|mezmur)\/([^/?#]+)/i.exec(route)
+  return match ? decodeURIComponent(match[1]).toLowerCase() : null
+}
+
 export function dedupeResults(results: SiteSearchResult[]): SiteSearchResult[] {
-  const seen = new Set<string>()
+  const byKey = new Map<string, number>()
   const out: SiteSearchResult[] = []
   for (const r of results) {
     if (!isPublicContentRoute(r.route)) continue
     // Bible hits can share a chapter route; keep distinct verse/text rows.
+    const slug = r.sourceType === 'mezmur' ? canonicalMezmurSlug(r.route) : null
     const key = r.sourceType.startsWith('bible')
       ? `${r.sourceType}:${r.sourceId}`
-      : `${r.sourceType}:${r.route}`
-    if (seen.has(key)) continue
-    seen.add(key)
+      : slug
+        ? `mezmur:${slug}`
+        : `${r.sourceType}:${r.route}`
+    const existing = byKey.get(key)
+    if (existing !== undefined) {
+      // Merge duplicates: keep the stronger ranking, and any verified excerpt / reason from either copy.
+      const kept = out[existing]
+      const better = kindRank(r.matchKind) < kindRank(kept.matchKind) || (kindRank(r.matchKind) === kindRank(kept.matchKind) && r.score < kept.score)
+      out[existing] = {
+        ...(better ? { ...kept, ...r } : kept),
+        excerpt: kept.excerpt ?? r.excerpt,
+        highlights: kept.excerpt ? kept.highlights : r.highlights,
+        matchLabel: kept.matchLabel ?? r.matchLabel,
+        titleAmharic: kept.titleAmharic || r.titleAmharic,
+        imagePath: kept.imagePath || r.imagePath,
+        title: displayTitle(kept.title || r.title, kept.route),
+      }
+      continue
+    }
+    byKey.set(key, out.length)
     out.push({
       ...r,
       title: displayTitle(r.title, r.route),

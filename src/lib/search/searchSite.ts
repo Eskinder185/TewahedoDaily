@@ -27,6 +27,7 @@ import {
 } from './siteSearchStatus'
 import type { SiteSearchResponse, SiteSearchResult } from './types'
 import { runCatalog, type CatalogRun } from './catalogRunner'
+import { extractSearchRequest } from './queryRequest'
 
 export type { SearchSessionContext }
 
@@ -222,7 +223,10 @@ export async function searchSite(
     })
   }
 
-  const expanded = expandSearchAliases(query)
+  // "find the hymn with the words …": the request wrapper is not part of what we look for.
+  const request = extractSearchRequest(query)
+  const searchText = request.text
+  const expanded = expandSearchAliases(searchText)
   const bibleLanguage = options.language === 'am' ? 'am' : 'en'
 
   const [
@@ -252,7 +256,7 @@ export async function searchSite(
   let bibleDirect = false
   const bibleRun = run(
     'bible',
-    () => searchBible(query, { language: bibleLanguage, textLimit: 12 }),
+    () => searchBible(searchText, { language: bibleLanguage, textLimit: 12 }),
     (bible) => {
       bibleDirect = bible.directReference
       return bible.results
@@ -318,6 +322,28 @@ export async function searchSite(
       }
       return out
     }),
+    run(
+      'mezmurLyrics',
+      async () => {
+        const { searchPublicMezmurLyrics } = await import('./mezmurLyricSearch')
+        return searchPublicMezmurLyrics(searchText, { limit: 8 })
+      },
+      (found) =>
+        found.items.map((item) => ({
+          sourceType: 'mezmur' as const,
+          sourceId: item.id || item.slug,
+          title: displayTitle(item.title, `/practice/mezmur/${item.slug}`),
+          titleAmharic: item.title_amharic || '',
+          description: [item.zemari, item.primary_language].filter(Boolean).join(' · ') || 'Mezmur',
+          route: `/practice/mezmur/${item.slug}`,
+          imagePath: item.thumbnail_url || null,
+          score: item.tier === 'title-exact' ? 0.002 : item.tier === 'title-phrase' ? 0.01 : item.tier === 'lyric-phrase' ? 0.02 : item.tier === 'similar-spelling' ? 0.06 : 0.04,
+          matchKind: (item.tier === 'title-exact' ? 'exact' : item.tier === 'title-phrase' ? 'prefix' : item.tier === 'similar-spelling' ? 'fuzzy' : 'keyword') as SiteSearchResult['matchKind'],
+          typeLabel: 'Mezmur',
+          matchLabel: item.tier === 'title-exact' || item.tier === 'title-phrase' ? 'Title match' : item.tier === 'similar-spelling' ? 'Similar spelling' : item.excerpt ? 'Lyric match' : 'Related',
+          ...(item.excerpt ? { excerpt: item.excerpt.text, highlights: item.excerpt.ranges } : {}),
+        })),
+    ),
     run(
       'mezmurCatalog',
       async () => {

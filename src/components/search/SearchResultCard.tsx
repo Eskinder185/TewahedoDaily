@@ -31,6 +31,29 @@ const TYPE_KEY: Record<SiteSearchSourceType, string> = {
   other: 'searchBuddy.types.page',
 }
 
+const MATCH_KEY: Record<string, string> = {
+  'Title match': 'searchBuddy.match.title',
+  'Lyric match': 'searchBuddy.match.lyric',
+  'Similar spelling': 'searchBuddy.match.similar',
+  Related: 'searchBuddy.match.related',
+}
+
+/** Text with the matched ranges wrapped in <mark>. The text itself is never altered; bad ranges are ignored. */
+function Highlighted({ text, ranges }: { text: string; ranges?: Array<[number, number]> }) {
+  if (!ranges?.length) return <>{text}</>
+  const sorted = [...ranges].filter(([a, b]) => a >= 0 && b > a && b <= text.length).sort((x, y) => x[0] - y[0])
+  const parts: React.ReactNode[] = []
+  let cursor = 0
+  for (const [start, end] of sorted) {
+    if (start < cursor) continue
+    if (start > cursor) parts.push(text.slice(cursor, start))
+    parts.push(<mark key={start}>{text.slice(start, end)}</mark>)
+    cursor = end
+  }
+  if (cursor < text.length) parts.push(text.slice(cursor))
+  return <>{parts}</>
+}
+
 function isBibleResult(result: SiteSearchResult): boolean {
   return result.sourceType.startsWith('bible')
 }
@@ -71,7 +94,10 @@ export function SearchResultCard({
         <div className={styles.cardArtEmpty} aria-hidden />
       )}
       <div className={styles.cardBody}>
-        <p className={styles.cardType}>{typeLabel}</p>
+        <p className={styles.cardType}>
+          {typeLabel}
+          {result.matchLabel && MATCH_KEY[result.matchLabel] ? ` · ${t(MATCH_KEY[result.matchLabel])}` : ''}
+        </p>
         {result.titleAmharic ? (
           <p className={styles.cardAm} lang="am">
             {result.titleAmharic}
@@ -83,7 +109,7 @@ export function SearchResultCard({
         {desc ? <p className={styles.cardDesc}>{desc}</p> : null}
         {excerpt && !preferPreview ? (
           <p className={styles.cardExcerpt} lang={excerptLang}>
-            {excerpt}
+            <Highlighted text={result.excerpt ?? ''} ranges={result.highlights} />
           </p>
         ) : null}
         {result.sourceLabel && (preferPreview || bible) ? (

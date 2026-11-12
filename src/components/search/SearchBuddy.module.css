@@ -982,6 +982,13 @@
   font-weight: 600;
 }
 
+.cardExcerpt mark {
+  background: color-mix(in srgb, var(--color-gold, #c9a227) 28%, transparent);
+  color: var(--color-text, inherit);
+  border-radius: 2px;
+  padding: 0 0.1em;
+}
+
 .sessionBar {
   display: flex;
   justify-content: flex-end;

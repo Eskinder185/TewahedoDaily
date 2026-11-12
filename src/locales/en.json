@@ -969,6 +969,12 @@
       "calendar": "Open Calendar",
       "prayers": "Find prayers"
     },
+    "match": {
+      "title": "Title match",
+      "lyric": "Lyric match",
+      "similar": "Similar spelling",
+      "related": "Related"
+    },
     "types": {
       "page": "Page",
       "mezmur": "Mezmur",

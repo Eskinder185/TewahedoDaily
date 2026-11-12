@@ -48,6 +48,8 @@ export type SiteSearchResult = {
   highlights?: Array<[number, number]>
   /** Source label when available (e.g. Synaxarium) */
   sourceLabel?: string
+  /** Why this matched, in plain words, for the result card: "Title match", "Lyric match", "Similar spelling". */
+  matchLabel?: string
 }
 
 export type SiteSearchResponse = {

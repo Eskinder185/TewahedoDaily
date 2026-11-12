@@ -37,6 +37,16 @@ const systems: Record<string, (q: string) => Promise<Out>> = {
   },
 }
 
+systems.buddy = async (q) => {
+  const { searchSite } = await import('../../src/lib/search/searchSite.ts')
+  const t = performance.now()
+  try {
+    const res = await searchSite(q, { limit: 12 })
+    const slugs = res.results.filter((r) => r.sourceType === 'mezmur').map((r) => r.route.split('/').pop() as string)
+    return { slugs, ms: performance.now() - t, failed: false }
+  } catch { return { slugs: [], ms: performance.now() - t, failed: true } }
+}
+
 const summary: any = { label, when: new Date().toISOString(), systems: {} }
 const detail: any[] = []
 for (const [name, fn] of Object.entries(systems)) {
