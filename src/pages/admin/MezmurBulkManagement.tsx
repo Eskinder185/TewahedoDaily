@@ -8,14 +8,12 @@ import { Modal } from './AdminUi'
 import { isMezmeu1Published } from '../../lib/mezmur/mezmeu1BatchScope'
 import {
   applyMezmurSuggestions, assignCategoryToMezmurs, assignLanguageToMezmurs,
-  autoCategorizeMezmurs, autoFormatMezmurLyrics, cancelMezmurEnrichmentJob, checkMezmurAiAvailability, linkMezmursToZemaris,
+  autoCategorizeMezmurs, cancelMezmurEnrichmentJob, checkMezmurAiAvailability, linkMezmursToZemaris,
   createMezmurEnrichmentJob, exportClassificationResultsCsv, exportFailedClassificationsCsv,
-  exportFailedLyricsFormatCsv, exportLyricsFormatResultsCsv,
   exportPublicationResultsCsv, exportSuggestionsCsv,
   formatRecordedDate, getMezmurEnrichmentJob, getSupabaseMezmurBulkSnapshot,
   listMezmurSuggestions, publishEligibleMezmurs, resumeMezmurEnrichmentJob, auditPublishedMezmurVisibility,
-  type AutoCategorizeMode, type AutoCategorizeResult, type AutoFormatLyricsMode,
-  type AutoFormatLyricsProgress, type AutoFormatLyricsResult,
+  type AutoCategorizeMode, type AutoCategorizeResult,
   type BulkDashboard, type BulkJobMode,
   type BulkMezmurRecord, type BulkPublishResult, type ClassificationRunProgress, type PublicVisibilityAudit,
   type EnrichmentJob, type EnrichmentSuggestion,
@@ -74,11 +72,7 @@ export function MezmurBulkManagement() {
   const [categorizeOverwrite, setCategorizeOverwrite] = useState(false)
   const [categorizeProgress, setCategorizeProgress] = useState<ClassificationRunProgress | null>(null)
   const [categorizeResult, setCategorizeResult] = useState<AutoCategorizeResult | null>(null)
-  const [formatModalMode, setFormatModalMode] = useState<AutoFormatLyricsMode | null>(null)
-  const [formatProgress, setFormatProgress] = useState<AutoFormatLyricsProgress | null>(null)
-  const [formatResult, setFormatResult] = useState<AutoFormatLyricsResult | null>(null)
   const abortRef = useRef<AbortController | null>(null)
-  const formatAbortRef = useRef<AbortController | null>(null)
   const initialLoadStarted = useRef(false)
   const aiCheckStarted = useRef(false)
   const superAdmin = profile?.role === 'super_admin'
@@ -174,23 +168,6 @@ export function MezmurBulkManagement() {
     return []
   }, [categorizeModalMode, filtered, selectedRows, records])
 
-  const totalMezmurs = records.length
-  const totalDraftsCount = useMemo(() => records.filter((r) => r.status === 'draft').length, [records])
-  const totalPublishedCount = useMemo(() => records.filter((r) => r.status === 'published').length, [records])
-  const totalWithLyrics = useMemo(() => records.filter((r) => r.has_lyrics).length, [records])
-
-  const formatModalTargetsCount = useMemo(() => {
-    if (!formatModalMode) return 0
-    switch (formatModalMode) {
-      case 'all': return records.length
-      case 'draft': return totalDraftsCount
-      case 'published': return totalPublishedCount
-      case 'selected': return selectedRecords.size
-      case 'unformatted_only': return totalWithLyrics
-      case 'reformat_existing': return totalWithLyrics
-      default: return 0
-    }
-  }, [formatModalMode, records.length, totalDraftsCount, totalPublishedCount, selectedRecords.size, totalWithLyrics])
 
   const autoLinkBreakdown = useMemo(() => {
     const alreadyLinked: BulkMezmurRecord[] = []
@@ -402,36 +379,6 @@ export function MezmurBulkManagement() {
     }
   }
 
-  async function runLyricsFormatting() {
-    if (!formatModalMode) return
-    const mode = formatModalMode
-    setFormatModalMode(null)
-    setBusy('lyrics-format')
-    setError(null)
-    setFormatResult(null)
-    const ac = new AbortController()
-    formatAbortRef.current = ac
-
-    try {
-      const result = await autoFormatMezmurLyrics(records, {
-        mode,
-        selectedIds: selectedRecords,
-        onProgress: (p) => setFormatProgress(p),
-        signal: ac.signal,
-      })
-      setFormatResult(result)
-      setNotice(
-        `Auto-format lyrics complete: ${result.total} analyzed (${result.draftCount} Draft, ${result.publishedCount} Published), ${result.formatted} formatted & saved, ${result.pairedAligned} pairs aligned, ${result.paragraphsAligned} sections aligned, ${result.alreadyFormatted} already formatted, ${result.missingLyrics} missing lyrics, ${result.failed} failed.`,
-      )
-      await refresh(job?.id)
-    } catch (cause) {
-      setError(causeText(cause))
-    } finally {
-      setBusy(null)
-      formatAbortRef.current = null
-    }
-  }
-
   async function changeJobState(action: 'cancel' | 'resume') {
     if (!job) return
     setBusy(action); setAiError(null)
@@ -465,27 +412,6 @@ export function MezmurBulkManagement() {
           {categorizeProgress.saved} saved · {categorizeProgress.categoriesAssigned} categories · {categorizeProgress.occasionsAssigned} occasions ·{' '}
           {categorizeProgress.generalFallback} general fallback · {categorizeProgress.skipped} preserved ·{' '}
           {categorizeProgress.failed} failed · {categorizeProgress.remaining} remaining
-        </p>
-      </div>
-    ) : null}
-    {busy === 'lyrics-format' && formatProgress ? (
-      <div className={s.card} style={{ borderLeft: '4px solid var(--color-accent)' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <strong>Auto-Formatting Lyrics: {formatProgress.currentTitle || 'Working…'}</strong>
-          <button type="button" className={s.danger} onClick={() => formatAbortRef.current?.abort()}>Stop / Cancel</button>
-        </div>
-        <div className={b.progress} style={{ margin: '0.75rem 0' }}>
-          <progress
-            max={Math.max(formatProgress.total, 1)}
-            value={formatProgress.formatted + formatProgress.alreadyFormatted + formatProgress.missingLyrics + formatProgress.failed}
-          />
-          <span>{formatProgress.formatted + formatProgress.alreadyFormatted + formatProgress.missingLyrics + formatProgress.failed} / {formatProgress.total}</span>
-        </div>
-        <p style={{ margin: 0, fontSize: '0.85rem' }}>
-          {formatProgress.draftCount} Draft · {formatProgress.publishedCount} Published ·{' '}
-          {formatProgress.formatted} formatted · {formatProgress.pairedAligned} pairs aligned ·{' '}
-          {formatProgress.paragraphsAligned} sections aligned · {formatProgress.alreadyFormatted} already formatted ·{' '}
-          {formatProgress.missingLyrics} missing lyrics · {formatProgress.failed} failed · {formatProgress.remaining} remaining
         </p>
       </div>
     ) : null}
@@ -570,76 +496,15 @@ export function MezmurBulkManagement() {
       <div className={s.pagination}><button type="button" disabled={page <= 1} onClick={() => setPage((value) => value - 1)}>Previous</button><span>Page {Math.min(page, pages)} of {pages}</span><button type="button" disabled={page >= pages} onClick={() => setPage((value) => value + 1)}>Next</button></div>
     </section>
 
-    <section className={`${s.card} ${b.workflow}`}>
-      <div className={b.sectionHead}>
-        <div>
-          <h2>2. Auto-Format Lyrics (Chorus/Verse) · የዜማ ግጥም ማስተካከያ</h2>
-          <p>
-            Enforces standard alternating Chorus/Verse structure across all Mezmurs. Aligns Ethiopic original lyrics and Latin transliteration paragraph-by-paragraph and section-by-section without losing text or inventing words. Works on Draft and Published records alike.
-          </p>
-        </div>
-      </div>
-      <div className={s.actions}>
-        <button
-          type="button"
-          className={s.primary}
-          disabled={!canApply || totalMezmurs === 0 || Boolean(busy)}
-          onClick={() => setFormatModalMode('all')}
-          title="Format all Mezmurs in database"
-        >
-          Format All Mezmurs ({totalMezmurs})
-        </button>
-        <button
-          type="button"
-          disabled={!canApply || totalDraftsCount === 0 || Boolean(busy)}
-          onClick={() => setFormatModalMode('draft')}
-          title="Format Draft Mezmurs only"
-        >
-          Format Draft Mezmurs ({totalDraftsCount})
-        </button>
-        <button
-          type="button"
-          disabled={!canApply || totalPublishedCount === 0 || Boolean(busy)}
-          onClick={() => setFormatModalMode('published')}
-          title="Format Published Mezmurs only"
-        >
-          Format Published Mezmurs ({totalPublishedCount})
-        </button>
-        <button
-          type="button"
-          disabled={!canApply || selectedRecords.size === 0 || Boolean(busy)}
-          onClick={() => setFormatModalMode('selected')}
-          title="Format currently selected Mezmurs"
-        >
-          Format Selected Mezmurs ({selectedRecords.size})
-        </button>
-        <button
-          type="button"
-          disabled={!canApply || totalWithLyrics === 0 || Boolean(busy)}
-          onClick={() => setFormatModalMode('unformatted_only')}
-          title="Format only Mezmurs whose lyrics do not yet follow standard Chorus/Verse structure"
-        >
-          Format Unformatted Only ({totalWithLyrics})
-        </button>
-        <button
-          type="button"
-          disabled={!canApply || totalWithLyrics === 0 || Boolean(busy)}
-          onClick={() => setFormatModalMode('reformat_existing')}
-          title="Deconstruct and reformat all existing lyrics to standard structure"
-        >
-          Reformat Existing Lyrics ({totalWithLyrics})
-        </button>
-      </div>
-    </section>
 
-    <section className={`${s.card} ${b.workflow}`}><div><h2>3. Optional AI enrichment</h2><p>Uses actual lyrics and existing taxonomy. If unavailable, the Supabase inventory and publishing controls above continue to work.</p></div>
+    <section className={`${s.card} ${b.workflow}`}><div><h2>2. Optional AI enrichment</h2><p>Uses actual lyrics and existing taxonomy. If unavailable, the Supabase inventory and publishing controls above continue to work.</p></div>
       <div className={s.actions}><button type="button" onClick={() => void run('zemari')} disabled={Boolean(busy)}>AI Zemari Analysis</button><button type="button" onClick={() => void run('classification')} disabled={Boolean(busy)}>Analyze Lyrics</button><button type="button" onClick={() => void run('missing_categories')} disabled={Boolean(busy)}>Analyze Missing Categories</button><button type="button" onClick={() => void run('missing_occasions')} disabled={Boolean(busy)}>Analyze Missing Occasions</button><button type="button" onClick={() => void run('retry_failed')} disabled={Boolean(busy)}>Retry Failed</button>
         {job && ['queued', 'running'].includes(job.status) ? <button type="button" className={s.danger} onClick={() => void changeJobState('cancel')}>Cancel</button> : null}{job && ['cancelled', 'failed'].includes(job.status) ? <button type="button" onClick={() => void changeJobState('resume')}>Resume</button> : null}</div>
       {job ? <div className={b.progress}><strong>{job.status.split('_').join(' ')}</strong><progress max={Math.max(job.total_count, 1)} value={job.processed_count} /><span>{job.processed_count} / {job.total_count} · {job.review_count} review · {job.failed_count} failed</span>{job.error_message ? <small className={s.error}>{job.error_message}</small> : null}</div> : null}
       {jobs.length ? <label>Recent job<select value={job?.id || ''} onChange={(event) => void refresh(event.target.value).catch((cause) => setError(causeText(cause)))}>{jobs.map((item) => <option key={item.id} value={item.id}>{new Date(item.created_at).toLocaleString()} · {item.mode} · {item.status}</option>)}</select></label> : <p className={s.muted}>No persisted enrichment jobs are available.</p>}
     </section>
 
-    <section className={`${s.card} ${b.review}`}><div className={b.sectionHead}><div><h2>4. Review saved suggestions</h2><p>Existing manual classifications remain visible and are not replaced automatically.</p></div><div className={s.actions}><button type="button" disabled={!suggestions.length} onClick={() => exportSuggestionsCsv(suggestions)}>Export CSV</button><button type="button" className={s.primary} disabled={!canApply || !selectedSuggestions.size || Boolean(busy)} onClick={() => void applySelectedSuggestions()}>Apply Selected ({selectedSuggestions.size})</button></div></div>
+    <section className={`${s.card} ${b.review}`}><div className={b.sectionHead}><div><h2>3. Review saved suggestions</h2><p>Existing manual classifications remain visible and are not replaced automatically.</p></div><div className={s.actions}><button type="button" disabled={!suggestions.length} onClick={() => exportSuggestionsCsv(suggestions)}>Export CSV</button><button type="button" className={s.primary} disabled={!canApply || !selectedSuggestions.size || Boolean(busy)} onClick={() => void applySelectedSuggestions()}>Apply Selected ({selectedSuggestions.size})</button></div></div>
       <div className={s.tableWrap}><table><thead><tr><th>Select</th><th>Mezmur</th><th>Existing categories</th><th>Suggested categories</th><th>Existing occasions</th><th>Suggested occasions</th><th>Confidence</th><th>Evidence / review</th></tr></thead><tbody>
         {suggestions.map((row) => { const current = recordById.get(row.mezmur_import_id); return <tr key={row.id}><td><input type="checkbox" aria-label={`Select ${row.mezmur?.title || row.mezmur_import_id}`} checked={selectedSuggestions.has(row.id)} disabled={row.status !== 'suggested'} onChange={(event) => setSelectedSuggestions((values) => { const next = new Set(values); if (event.target.checked) next.add(row.id); else next.delete(row.id); return next })} /></td><td>{row.mezmur?.title || current?.title || row.mezmur_import_id}</td><td>{current?.category_slugs.join(', ') || '—'}</td><td>{row.category_slugs.join(', ') || '—'}</td><td>{current?.occasion_slugs.join(', ') || '—'}</td><td>{row.occasion_slugs.join(', ') || '—'}</td><td>{pct(row.classification_confidence)}</td><td>{row.evidence?.map((value) => typeof value === 'string' ? value : JSON.stringify(value)).join(' · ') || row.explanation || (row.requires_review ? 'Review required' : 'Ready')}</td></tr> })}
         {!suggestions.length ? <tr><td colSpan={8}>No saved suggestions for this job.</td></tr> : null}
@@ -940,148 +805,5 @@ export function MezmurBulkManagement() {
       </Modal>
     ) : null}
 
-    {formatModalMode ? (
-      <Modal
-        title={`Auto-Format Chorus/Verse Lyrics: ${
-          formatModalMode === 'all'
-            ? 'All Mezmurs'
-            : formatModalMode === 'draft'
-            ? 'Draft Mezmurs Only'
-            : formatModalMode === 'published'
-            ? 'Published Mezmurs Only'
-            : formatModalMode === 'selected'
-            ? `Selected Mezmurs (${selectedRecords.size})`
-            : formatModalMode === 'unformatted_only'
-            ? 'Unformatted Only'
-            : 'Reformat Existing Lyrics'
-        }`}
-        close={() => setFormatModalMode(null)}
-      >
-        <div>
-          <p>
-            This operation will format lyrics according to the standard Tewahedo Hymn Chorus/Verse structure:
-          </p>
-          <ul style={{ paddingLeft: '1.25rem', fontSize: '0.9rem', lineHeight: '1.6' }}>
-            <li>Alternating structure: <strong>CHORUS</strong> → <strong>VERSE 1</strong> → <strong>CHORUS</strong> → <strong>VERSE 2</strong> … ending with <strong>CHORUS</strong>.</li>
-            <li>Single-paragraph hymns: <strong>CHORUS</strong> → <strong>VERSE 1</strong> → <strong>CHORUS</strong>.</li>
-            <li>Paired Ethiopic (Amharic, Tigrinya, Geʽez) and Latin transliteration are matched section-by-section with identical paragraph and section counts.</li>
-            <li>No original lyrics will be discarded, and no transliteration will be invented.</li>
-            <li>Works on both <strong>Draft</strong> and <strong>Published</strong> records in Supabase.</li>
-            <li>All formatted lyrics remain fully editable in the Mezmur Editor without review locks.</li>
-          </ul>
-
-          <div className={b.previewGrid} style={{ margin: '1rem 0' }}>
-            <div className={`${b.previewCard} ${b.previewCardAffected}`}>
-              <strong>{formatModalTargetsCount}</strong>
-              <span>Targeted Mezmurs</span>
-              <small>Mode: {formatModalMode.replace('_', ' ')}</small>
-            </div>
-            <div className={b.previewCard}>
-              <strong>{totalDraftsCount}</strong>
-              <span>Total Drafts</span>
-              <small>in database</small>
-            </div>
-            <div className={b.previewCard}>
-              <strong>{totalPublishedCount}</strong>
-              <span>Total Published</span>
-              <small>in database</small>
-            </div>
-            <div className={b.previewCard}>
-              <strong>{totalWithLyrics}</strong>
-              <span>With Lyrics</span>
-              <small>ready for formatting</small>
-            </div>
-          </div>
-
-          <div className={s.actions} style={{ marginTop: '1.25rem' }}>
-            <button
-              type="button"
-              className={s.primary}
-              disabled={formatModalTargetsCount === 0 || Boolean(busy)}
-              onClick={() => void runLyricsFormatting()}
-            >
-              Start Lyrics Formatting ({formatModalTargetsCount})
-            </button>
-            <button
-              type="button"
-              onClick={() => setFormatModalMode(null)}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      </Modal>
-    ) : null}
-
-    {formatResult ? (
-      <Modal title="Lyrics Auto-Formatting Results" close={() => setFormatResult(null)} wide>
-        <div>
-          <p>
-            Chorus/Verse formatting complete. All modified records have been saved directly to Supabase.
-          </p>
-
-          <div className={b.previewGrid}>
-            <div className={b.previewCard}>
-              <strong>{formatResult.total}</strong>
-              <span>Total Analyzed</span>
-              <small>{formatResult.draftCount} Draft · {formatResult.publishedCount} Published</small>
-            </div>
-            <div className={`${b.previewCard} ${b.previewCardAffected}`}>
-              <strong>{formatResult.formatted}</strong>
-              <span>Formatted & Saved</span>
-              <small>Standard structure applied</small>
-            </div>
-            <div className={`${b.previewCard} ${b.previewCardAffected}`}>
-              <strong>{formatResult.pairedAligned}</strong>
-              <span>Pairs Aligned</span>
-              <small>Ethiopic + Translit matched</small>
-            </div>
-            <div className={`${b.previewCard} ${b.previewCardAffected}`}>
-              <strong>{formatResult.paragraphsAligned}</strong>
-              <span>Sections Aligned</span>
-              <small>Total verse/chorus stanzas</small>
-            </div>
-            <div className={b.previewCard}>
-              <strong>{formatResult.alreadyFormatted}</strong>
-              <span>Already Formatted</span>
-              <small>Met standard already</small>
-            </div>
-            <div className={b.previewCard}>
-              <strong>{formatResult.missingLyrics}</strong>
-              <span>Missing Lyrics</span>
-              <small>No lyrics to format</small>
-            </div>
-            <div className={b.previewCard}>
-              <strong style={{ color: formatResult.failed ? '#c5221f' : undefined }}>
-                {formatResult.failed}
-              </strong>
-              <span>Failed</span>
-              <small>Errors encountered</small>
-            </div>
-          </div>
-
-          <div className={s.actions} style={{ marginTop: '1.25rem' }}>
-            <button
-              type="button"
-              className={s.primary}
-              onClick={() => exportLyricsFormatResultsCsv(formatResult.items)}
-            >
-              Download Full Report (CSV)
-            </button>
-            {formatResult.failed > 0 ? (
-              <button
-                type="button"
-                onClick={() => exportFailedLyricsFormatCsv(formatResult.items)}
-              >
-                Download Failed Records (CSV)
-              </button>
-            ) : null}
-            <button type="button" onClick={() => setFormatResult(null)}>
-              Close
-            </button>
-          </div>
-        </div>
-      </Modal>
-    ) : null}
   </div>
 }
