@@ -3,6 +3,8 @@ import { useTranslation } from '../../i18n'
 import type { SiteSearchResult, SiteSearchSourceType } from '../../lib/search/types'
 import { resolveContentMediaUrl } from '../../lib/cms/contentMedia'
 import styles from './SearchBuddy.module.css'
+import { Highlighted } from './Highlighted'
+import { MATCH_KEY } from './matchLabels'
 
 const TYPE_KEY: Record<SiteSearchSourceType, string> = {
   page: 'searchBuddy.types.page',
@@ -29,29 +31,6 @@ const TYPE_KEY: Record<SiteSearchSourceType, string> = {
   church_library: 'searchBuddy.types.churchLibrary',
   account: 'searchBuddy.types.account',
   other: 'searchBuddy.types.page',
-}
-
-const MATCH_KEY: Record<string, string> = {
-  'Title match': 'searchBuddy.match.title',
-  'Lyric match': 'searchBuddy.match.lyric',
-  'Similar spelling': 'searchBuddy.match.similar',
-  Related: 'searchBuddy.match.related',
-}
-
-/** Text with the matched ranges wrapped in <mark>. The text itself is never altered; bad ranges are ignored. */
-function Highlighted({ text, ranges }: { text: string; ranges?: Array<[number, number]> }) {
-  if (!ranges?.length) return <>{text}</>
-  const sorted = [...ranges].filter(([a, b]) => a >= 0 && b > a && b <= text.length).sort((x, y) => x[0] - y[0])
-  const parts: React.ReactNode[] = []
-  let cursor = 0
-  for (const [start, end] of sorted) {
-    if (start < cursor) continue
-    if (start > cursor) parts.push(text.slice(cursor, start))
-    parts.push(<mark key={start}>{text.slice(start, end)}</mark>)
-    cursor = end
-  }
-  if (cursor < text.length) parts.push(text.slice(cursor))
-  return <>{parts}</>
 }
 
 function isBibleResult(result: SiteSearchResult): boolean {
