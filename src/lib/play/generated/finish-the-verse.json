@@ -1,0 +1,6614 @@
+[
+ {
+  "id": "bible-am-000f077a31c8",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ሆሴዕ 9:3 ያለውን ቃል ያሟሉ፦ “ኤፍሬምም በግብፅ ይቀመጣል፤ ___”",
+   "en": "Complete the verse in hosea 9:3: “Ephraim will dwell in Egypt; ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሕዝቡን ሰበሰቡ",
+     "en": "they gathered the people"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በምድር ውስጥ አፍስሱ",
+     "en": "pour them out upon the earth"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በአሦርም ርኩስ ነገርን ይበላሉ",
+     "en": "and in Assyria they will eat unclean food"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ዕድሜአችሁም ይረዝም ዘንድ",
+     "en": "so that your days may be long"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በትንቢተ ሆሴዕ 9:3 ውስጥ “ኤፍሬምም በግብፅ ይቀመጣል፤ በአሦርም ርኩስ ነገርን ይበላሉ” ተጽፏል።",
+   "en": "hosea 9:3 continues: “Ephraim will dwell in Egypt; and in Assyria they will eat unclean food.”"
+  },
+  "excerpt": {
+   "am": "ኤፍሬምም በግብፅ ይቀመጣል፤",
+   "en": "Ephraim will dwell in Egypt;"
+  },
+  "source": {
+   "label": "ትንቢተ ሆሴዕ 9:1, 2, 3, 4, 5",
+   "route": "/bible/hosea/9?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "7b1f1e08-f891-59d7-a654-498749609683"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-04e8ab3d8f05",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ካልዕ 11፡5 ያለውን ኃይለ ቃል ያሟሉ፦ “ሮብዓምም በኢየሩሳሌም ተቀመጠ፤ ___”",
+   "en": "Complete the verse in 2 Chronicles 11:5: \"And Rehoboam dwelt in Jerusalem, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ከግብፅም ጋር ታላቅ ሰላም አደረገ",
+     "en": "made great peace with Egypt"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የእስራኤልን ነገዶች በሙሉ ሰበሰበ",
+     "en": "gathered all tribes of Israel"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የሠራዊቱን አለቆች ሾመ",
+     "en": "appointed captains of his host"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በይሁዳም የተመሸጉትን ከተሞች ሠራ",
+     "en": "built cities for defence in Judah"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ2 ዜና መዋዕል 11፡5 “ሮብዓምም በኢየሩሳሌም ተቀመጠ፤ በይሁዳም የተመሸጉትን ከተሞች ሠራ” ይላል።",
+   "en": "2 Chronicles 11:5 states: \"And Rehoboam dwelt in Jerusalem, and built cities for defence in Judah.\""
+  },
+  "excerpt": {
+   "am": "ሮብዓምም በኢየሩሳሌም ተቀመጠ፤",
+   "en": "And Rehoboam dwelt in Jerusalem, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ካልዕ 11:1, 2, 3, 4, 5",
+   "route": "/bible/second-chronicles/11?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "70fe16f4-0cee-58d4-ad31-f5a045b4a6fb"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-08623aa1e996",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ካልዕ 9፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “ሰሎሞንም የጠየቀችውን ሁሉ ፈታላት፤ ___”",
+   "en": "Complete the verse in 2 Chronicles 9:2: \"And Solomon told her all her questions: and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ንግሥቲቱም እጅግ ተደነቀች",
+     "en": "and the queen was greatly amazed"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሰሎሞንም ያልፈታው ነገር አልነበረም",
+     "en": "there was nothing hid from Solomon which he told her not"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የወርቅ ስጦታዎችንም ሰጣት",
+     "en": "and gave her golden gifts"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በሰላምም ወደ ሀገሯ ተመለሰች",
+     "en": "and she returned in peace to her land"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በ2 ዜና መዋዕል 9፡2 “ሰሎሞንም የጠየቀችውን ሁሉ ፈታላት፤ ሰሎሞንም ያልፈታው ነገር አልነበረም” ይላል።",
+   "en": "2 Chronicles 9:2 states: \"And Solomon told her all her questions: and there was nothing hid from Solomon which he told her not.\""
+  },
+  "excerpt": {
+   "am": "ሰሎሞንም የጠየቀችውን ሁሉ ፈታላት፤",
+   "en": "And Solomon told her all her questions: and"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ካልዕ 9:1, 2, 3, 4, 5",
+   "route": "/bible/second-chronicles/9?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "11946862-a3f3-5f04-a73d-152d45e70c9b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-09508e2185af",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ኢያሱ 6:3 ያለውን ቃል ያሟሉ፦ “እንዲሁም ___”",
+   "en": "Complete the verse in joshua 6:3: “Do so for ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሦስት ቀን",
+     "en": "three days"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ዐሥራ ሁለት ሰዎችን",
+     "en": "twelve people"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ስድስት ቀን",
+     "en": "six days"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ሰላሳ ቀንና ሰላሳ ሌሊት",
+     "en": "thirty days and thirty nights"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ኢያሱ 6:3 ውስጥ “እንዲሁም ስድስት ቀን” ተጽፏል።",
+   "en": "joshua 6:3 continues: “Do so for six days.”"
+  },
+  "excerpt": {
+   "am": "እንዲሁም",
+   "en": "Do so for"
+  },
+  "source": {
+   "label": "መጽሐፈ ኢያሱ 6:1, 2, 3, 4, 5",
+   "route": "/bible/joshua/6?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "d018c9e5-07d9-5d59-aa04-e2bb3f50de2b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-095aed89350c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ኩፋሌ 8፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “በዚህ ኢዮቤልዩ በሰባተኛው ሱባዔ በመጀመሪያው ዓመት መርከቢቱ ባረፈችበት ስሙ ሉባር በሚባል ከአራራት ተራሮች በአንዱ ተራራ ላይ ___”",
+   "en": "Complete the verse in Jubilees 8:1: \"In the seventh week in the first year thereof, in this jubilee, Noah planted vines on the mountain on which the ark had rested, named Lubar, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "መሠዊያን ሠራ",
+     "en": "built an altar"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ድንኳን ተከለ",
+     "en": "pitched a tent"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከተማን መሠረተ",
+     "en": "founded a city"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ኖኅ ወይንን ተከለ",
+     "en": "Noah planted vines"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ኩፋሌ 8፡1 “ከአራራት ተራሮች በአንዱ ተራራ ላይ ኖኅ ወይንን ተከለ” ይላል።",
+   "en": "Jubilees 8:1 records that Noah planted vines on mount Lubar."
+  },
+  "excerpt": {
+   "am": "በዚህ ኢዮቤልዩ በሰባተኛው ሱባዔ በመጀመሪያው ዓመት መርከቢቱ ባረፈችበት ስሙ ሉባር በሚባል ከአራራት ተራሮች በአንዱ ተራራ ላይ",
+   "en": "In the seventh week in the first year thereof, in this jubilee, on the mountain named Lubar of the mountains of Ararat,"
+  },
+  "source": {
+   "label": "መጽሐፈ ኩፋሌ 8:1, 2, 3, 4, 5",
+   "route": "/bible/jubilees/8?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "394a5b1b-6983-5780-a98e-9fec4e243145"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-0b5272cd99df",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ሚልክያስ 1፡2 ላይ እግዚአብሔር ስለ ያዕቆብና ዔሳው የተናገረውን ቃል ያጠናቅቁ።",
+   "en": "Complete the statement of the Lord regarding Jacob and Esau in Malachi 1:2."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ዔሳውንም ጠላሁ።",
+     "en": "and Esau I hated."
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ዔሳውንም ባረክሁ።",
+     "en": "and Esau I blessed."
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ዔሳውንም መረጥሁ።",
+     "en": "and Esau I chose."
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ዔሳውንም ጠራሁ።",
+     "en": "and Esau I called."
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በሚልክያስ 1፡2 ላይ እግዚአብሔር “ያዕቆብንም ወደድሁ፥ ዔሳውንም ጠላሁ” በማለት ተናግሯል።",
+   "en": "In Malachi 1:2 the Lord declares: \"Yet I loved Jacob, and I hated Esau.\""
+  },
+  "excerpt": {
+   "am": "ያዕቆብንም ወደድሁ፥",
+   "en": "Yet Jacob have I loved,"
+  },
+  "source": {
+   "label": "ትንቢተ ሚልክያስ 1:1, 2, 3, 4, 5",
+   "route": "/bible/malachi/1?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "94f58a52-e215-52b2-adac-b6cf7a93a032"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-0f06258b519a",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “አባቱ ጦቢት ግን ______ ቀጠሮውም አልቆ ሳይመጡ በቀሩ ጊዜ፥” (ጦቢት 10፡1)",
+   "en": "Complete the verse: \"Now Tobit his father ______: and when the days of the journey were expired, and they came not,\" (Tobit 10:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "መኝታውን አዘጋጀ፤",
+     "en": "prepared his bed;"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ቀኑን ይቈጥር ነበር።",
+     "en": "counted every day:"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ወደ ከተማ ወጣ፤",
+     "en": "went out into the city;"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በደስታ ተቀመጠ፤",
+     "en": "sat down in joy;"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ጦቢት 10፡1 “አባቱ ጦቢት ግን ቀኑን ይቈጥር ነበር። ቀጠሮውም አልቆ ሳይመጡ በቀሩ ጊዜ፥” ይላል።",
+   "en": "Tobit 10:1 records: \"Now Tobit his father counted every day: and when the days of the journey were expired, and they came not.\""
+  },
+  "excerpt": {
+   "am": "አባቱ ጦቢት ግን",
+   "en": "Now Tobit his father"
+  },
+  "source": {
+   "label": "መጽሐፈ ጦቢት 10:1, 2, 3, 4, 5",
+   "route": "/bible/tobit/10?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "83768dfe-ebed-5b2d-a4cc-8a2e2ee477c9"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-0fc3e88d6d9b",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “ከእነርሱም ______ አሉ።” (1 መቃብያን 16፡3)",
+   "en": "Complete the verse: \"And among them there were those whose works were good and ______.\" (1 Meqabyan 16:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በምድረ በዳ የሚኖሩ",
+     "en": "dwelling in the wilderness"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሥራቸው ያማረና እግዚአብሔርን የሚያውቁት",
+     "en": "whose works were fair and who knew God"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በጦርነት የበረቱ",
+     "en": "valiant in battle"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በከተማ የተሰበሰቡ",
+     "en": "gathered in the city"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በ1 መቃብያን 16፡3 “ከእነርሱም ሥራቸው ያማረና እግዚአብሔርን የሚያውቁት አሉ።” ይላል።",
+   "en": "1 Meqabyan 16:3 states: \"And among them there were those whose works were fair and who knew God.\""
+  },
+  "excerpt": {
+   "am": "ከእነርሱም",
+   "en": "And among them there were those"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 16:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/16?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "57a852f3-892f-50b5-a03f-a3e5977cd484"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-11cf8d10a902",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘሌዋውያን 16፡3 ያለውን ኃይለ ቃል ያሟሉ፦ “እንዲሁ አሮን ለኀጢአት መሥዋዕት ከላሞች ወይፈን፥ ለሚቃጠል መሥዋዕትም ___”",
+   "en": "Complete the verse in Leviticus 16:3: \"Thus shall Aaron come into the holy place: with a young bullock for a sin offering, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የፍየል ጠቦት ይዞ ወደ መቅደስ ይግባ",
+     "en": "a kid of the goats into the sanctuary"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "አውራ በግ ይዞ ወደ ተቀደሰው ስፍራ ይግባ",
+     "en": "a ram for a burnt offering into the holy place"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የዕጣን ጥና ይዞ ወደ ታቦቱ ይቅረብ",
+     "en": "a censer of incense before the ark"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የወርቅ ጽዋ ይዞ በካህናቱ ፊት ይቁም",
+     "en": "a golden cup before the priests"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 16፡3 “እንዲሁ አሮን ለኀጢአት መሥዋዕት ከላሞች ወይፈን፥ ለሚቃጠል መሥዋዕትም አውራ በግ ይዞ ወደ ተቀደሰው ስፍራ ይግባ” ይላል።",
+   "en": "Leviticus 16:3 specifies: \"Thus shall Aaron come into the holy place: with a young bullock for a sin offering, and a ram for a burnt offering.\""
+  },
+  "excerpt": {
+   "am": "እንዲሁ አሮን ለኀጢአት መሥዋዕት ከላሞች ወይፈን፥ ለሚቃጠል መሥዋዕትም",
+   "en": "Thus shall Aaron come into the holy place: with a young bullock for a sin offering, and"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 16:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/16?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "0229bf70-59d5-5aed-a9c4-77182cb470a4"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-11deb15838a3",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ዮዲት 5፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “እርሱም ፈጽሞ ተቈጣ፤ የሞአብን አለቆችና የአሞንን ሹሞች፥ ___”",
+   "en": "Complete the verse in Judith 5:2: \"Then was he exceedingly wroth, and he called all the princes of Moab, and the captains of Ammon, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሠራዊቱን በሙሉ ወደ ጦርነት ላከ",
+     "en": "sent all his army to battle"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በባሕር ዙሪያ ያሉ ገዢዎችንም ጠራቸው",
+     "en": "all the governors of the sea coast"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የከተማይቱን በሮች በሙሉ ዘጋ",
+     "en": "shut all the gates of the city"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የሰላም መልእክተኞችን ላከ",
+     "en": "sent messengers of peace"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ዮዲት 5፡2 “እርሱም ፈጽሞ ተቈጣ፤ የሞአብን አለቆችና የአሞንን ሹሞች፥ በባሕር ዙሪያ ያሉ ገዢዎችንም ጠራቸው” ይላል።",
+   "en": "Judith 5:2 records Holofernes calling the leaders of Moab, Ammon, and the governors of the sea coast."
+  },
+  "excerpt": {
+   "am": "እርሱም ፈጽሞ ተቈጣ፤ የሞአብን አለቆችና የአሞንን ሹሞች፥",
+   "en": "Then was he exceedingly wroth, and he called all the princes of Moab, and the captains of Ammon, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ዮዲት 5:1, 2, 3, 4",
+   "route": "/bible/judith/5?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "338da077-4d58-545b-ab22-b18bf61f4e4a"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-12a6820882d6",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በኦሪት ዘፍጥረት 9:1 ያለውን ቃል ያሟሉ፦ “ብዙ፤ ተባዙ፤ ___”",
+   "en": "Complete the verse in genesis 9:1: “Be fruitful and multiply; ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ምድርንም ሙሉአት",
+     "en": "fill the earth"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ጠላትም ያሳድደዋልና",
+     "en": "an enemy will pursue him"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በተዘረጋችም ክንድ",
+     "en": "with an outstretched arm"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "አዳምም ሁሉን በየስማቸው ጠራቸው",
+     "en": "Adam named them all"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በኦሪት ዘፍጥረት 9:1 ውስጥ “ብዙ፤ ተባዙ፤ ምድርንም ሙሉአት” ተጽፏል።",
+   "en": "genesis 9:1 continues: “Be fruitful and multiply; fill the earth.”"
+  },
+  "excerpt": {
+   "am": "ብዙ፤ ተባዙ፤",
+   "en": "Be fruitful and multiply;"
+  },
+  "source": {
+   "label": "ኦሪት ዘፍጥረት 9:1, 2, 3, 4, 5",
+   "route": "/bible/genesis/9?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "1739fc40-690d-5a7f-aad9-faab53292294"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-131cea4f6ba6",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ መሳፍንት 4፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “በዚያም ወራት ነቢይቱ የለፊዶት ሚስት ዲቦራ ___”",
+   "en": "Complete the verse in Judges 4:4: \"And Deborah, a prophetess, the wife of Lapidoth, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሠራዊት መሪ ነበረች",
+     "en": "was leader of the host"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በድንኳን ውስጥ ተቀመጠች",
+     "en": "sat within the tent"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የዕጣን መሥዋዕት አቀረበች",
+     "en": "offered incense"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "እስራኤልን ትገዛቸው ነበረች",
+     "en": "she judged Israel at that time"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ መሳፍንት 4፡4 “በዚያም ወራት ነቢይቱ የለፊዶት ሚስት ዲቦራ እስራኤልን ትገዛቸው ነበረች” ይላል።",
+   "en": "Judges 4:4 states: \"And Deborah, a prophetess, the wife of Lapidoth, she judged Israel at that time.\""
+  },
+  "excerpt": {
+   "am": "በዚያም ወራት ነቢይቱ የለፊዶት ሚስት ዲቦራ",
+   "en": "And Deborah, a prophetess, the wife of Lapidoth,"
+  },
+  "source": {
+   "label": "መጽሐፈ መሳፍንት 4:1, 2, 3, 4, 5",
+   "route": "/bible/judges/4?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "d40cb6b7-2c6b-5118-afc6-fd5f5d9d4d24"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-1470ace771e5",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በኦሪት ዘጸአት 6:1 ያለውን ቃል ያሟሉ፦ “በጸናች እጅ ይለቅቃቸዋልና፥ ___”",
+   "en": "Complete the verse in exodus 6:1: “For he will let them go with a strong hand, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ድኆች ባልንጀሮችን አምጣ",
+     "en": "bring poor companions"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ወደ ምድረ በዳ ሄዱ",
+     "en": "they went into the wilderness"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በሰላም ተመለሱ",
+     "en": "they returned in peace"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በተዘረጋችም ክንድ",
+     "en": "with an outstretched arm"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በኦሪት ዘጸአት 6:1 ውስጥ “በጸናች እጅ ይለቅቃቸዋልና፥ በተዘረጋችም ክንድ” ተጽፏል።",
+   "en": "exodus 6:1 continues: “For he will let them go with a strong hand, with an outstretched arm.”"
+  },
+  "excerpt": {
+   "am": "በጸናች እጅ ይለቅቃቸዋልና፥",
+   "en": "For he will let them go with a strong hand,"
+  },
+  "source": {
+   "label": "ኦሪት ዘጸአት 6:1, 2, 3, 4, 5",
+   "route": "/bible/exodus/6?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "63ca8a92-0ddd-524b-a3cf-f348c11cc618"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-178b785b7cce",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “ሕግ ከጽዮን፥ ______ ብዙዎች አሕዛብ መጥተው፥ ኑ፤ ወደ እግዚአብሔር ተራራ፥ ወደ ያዕቆብ አምላክ ቤት እንውጣ ... ይላሉ።” (ኢሳይያስ 2፡3)",
+   "en": "Complete the verse: \"for out of Zion shall go forth the law, ______ And many people shall go and say, Come ye, and let us go up to the mountain of the Lord...\" (Isaiah 2:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በረከትም ከኢየሩሳሌም ይዘንባልና",
+     "en": "and blessing shall pour from Jerusalem"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሰላምም በምድር ሁሉ ይሆናልና",
+     "en": "and peace shall be upon all the earth"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ብርሃንም ከአሕዛብ ይወጣልና",
+     "en": "and light shall shine upon the nations"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የእግዚአብሔርም ቃል ከኢየሩሳሌም ይወጣልና",
+     "en": "and the word of the Lord from Jerusalem"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በትንቢተ ኢሳይያስ 2፡3 “ሕግ ከጽዮን፥ የእግዚአብሔርም ቃል ከኢየሩሳሌም ይወጣልና ብዙዎች አሕዛብ መጥተው ... ይላሉ” ይላል።",
+   "en": "Isaiah 2:3 states: \"for out of Zion shall go forth the law, and the word of the Lord from Jerusalem.\""
+  },
+  "excerpt": {
+   "am": "ሕግ ከጽዮን፥",
+   "en": "for out of Zion shall go forth the law,"
+  },
+  "source": {
+   "label": "ትንቢተ ኢሳይያስ 2:1, 2, 3, 4, 5",
+   "route": "/bible/isaiah/2?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "b096a7e3-8d37-542b-a0a2-200a7992d9fa"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-17b15c97dedc",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ጦቢት 2:2 ያለውን ቃል ያሟሉ፦ “ከወንድሞቻችን ያገኘሃቸውን ___”",
+   "en": "Complete the verse in tobit 2:2: “those of our people whom you find, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ጠላትም ያሳድደዋልና",
+     "en": "an enemy will pursue him"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ድኆች ባልንጀሮችን አምጣ",
+     "en": "bring poor companions"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በተዘረጋችም ክንድ",
+     "en": "with an outstretched arm"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "አዳምም ሁሉን በየስማቸው ጠራቸው",
+     "en": "Adam named them all"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ጦቢት 2:2 ውስጥ “ከወንድሞቻችን ያገኘሃቸውን ድኆች ባልንጀሮችን አምጣ” ተጽፏል።",
+   "en": "tobit 2:2 continues: “those of our people whom you find, bring poor companions.”"
+  },
+  "excerpt": {
+   "am": "ከወንድሞቻችን ያገኘሃቸውን",
+   "en": "those of our people whom you find,"
+  },
+  "source": {
+   "label": "መጽሐፈ ጦቢት 2:1, 2, 3, 4, 5",
+   "route": "/bible/tobit/2?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "b6367ce7-1a86-577a-a7e1-b3830fa044f0"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-1f55fcc2f752",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ሆሴዕ 10:2 ያለውን ቃል ያሟሉ፦ “አሁንም ይጠፋሉ፤ እርሱ ___”",
+   "en": "Complete the verse in hosea 10:2: “Now they will be punished; he ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በእምነት ጸኑ",
+     "en": "they remained steadfast in faith"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሕዝቡን ሰበሰቡ",
+     "en": "they gathered the people"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "መሠዊያቸውን ያፈርሳል",
+     "en": "he will tear down their altars"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ከዘመዶቻቸው ጋር በአንድነት እንዲነሡ",
+     "en": "to rise together with their relatives"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በትንቢተ ሆሴዕ 10:2 ውስጥ “አሁንም ይጠፋሉ፤ እርሱ መሠዊያቸውን ያፈርሳል” ተጽፏል።",
+   "en": "hosea 10:2 continues: “Now they will be punished; he he will tear down their altars.”"
+  },
+  "excerpt": {
+   "am": "አሁንም ይጠፋሉ፤ እርሱ",
+   "en": "Now they will be punished; he"
+  },
+  "source": {
+   "label": "ትንቢተ ሆሴዕ 10:1, 2, 3, 4, 5",
+   "route": "/bible/hosea/10?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "7a80f8ee-3837-5319-af5a-01744205a382"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-2033292f613e",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የኦሪት መሥዋዕትን ሕግ ባዶ ቦታ አሟሉ፦ “ለእግዚአብሔር የሚቀርበው ቍርባን የደኅንነት መሥዋዕት ቢሆን፥ ከላሞች መንጋ ተባት ወይም እንስት ቢያቀርብ፥ ___ በእግዚአብሔር ፊት ያቅርብ።” (ዘሌዋውያን 3፡1)",
+   "en": "Fill in the blank to complete the Levitical law of sacrifice: \"And if his oblation be a sacrifice of peace offering... he shall offer it ___ before the LORD.\" (Leviticus 3:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የበኵር የሆነውን",
+     "en": "the firstborn"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ነውር የሌለበትን",
+     "en": "without blemish"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የወፈረውን ምርጥ",
+     "en": "the fattest selection"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በጨው የተቀመመውን",
+     "en": "the salted offering"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 3፡1 ላይ ለእግዚአብሔር የሚቀርበው የደኅንነት መሥዋዕት ነውር የሌለበትና ንጹሕ መሆን እንዳለበት ታዟል።",
+   "en": "Leviticus 3:1 commands that an offering of peace before the Lord, whether male or female, must be offered without blemish."
+  },
+  "excerpt": {
+   "am": "ለእግዚአብሔር የሚቀርበው ቍርባን የደኅንነት መሥዋዕት ቢሆን፥ ከላሞች መንጋ ተባት ወይም እንስት ቢያቀርብ፥",
+   "en": "And if his oblation be a sacrifice of peace offering, if he offer it of the herd, whether it be a male or female,"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 3:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/3?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "860e01b6-2331-57bf-afdf-fd90c1729964"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-20c32d87f8a4",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “የእግዚአብሔርንም ታቦት ይዘው ገቡ፤ ዳዊትም በተከለላት ድንኳን ውስጥ አኖሩአት፤ ______ በእግዚአብሔር ፊት አቀረቡ።” (1 ዜና 16፡1)",
+   "en": "Complete the verse: \"So they brought the ark of God, and set it in the midst of the tent that David had pitched for it: and they offered ______ before God.\" (1 Chronicles 16:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የእህል ስጦታንና ዘይትን",
+     "en": "grain offerings and oil"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የወርቅ ጽዋዎችንና ዕጣንን",
+     "en": "golden cups and incense"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የመጀመሪያውን ፍሬና በኵራትን",
+     "en": "the firstfruits and tithes"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የሚቃጠለውን መሥዋዕትና የደኅንነቱን መሥዋዕትም",
+     "en": "burnt sacrifices and peace offerings"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ1 ዜና 16፡1 “ዳዊትም በተከለላት ድንኳን ውስጥ አኖሩአት፤ የሚቃጠለውን መሥዋዕትና የደኅንነቱን መሥዋዕትም በእግዚአብሔር ፊት አቀረቡ” ይላል።",
+   "en": "1 Chronicles 16:1 records: \"and they offered burnt sacrifices and peace offerings before God.\""
+  },
+  "excerpt": {
+   "am": "የእግዚአብሔርንም ታቦት ይዘው ገቡ፤ ዳዊትም በተከለላት ድንኳን ውስጥ አኖሩአት፤",
+   "en": "So they brought the ark of God, and set it in the midst of the tent that David had pitched for it: and they offered"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 16:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/16?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "d9995e26-2339-5070-a238-6e87323b026f"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-228cd51b088a",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘኍልቍ 14:1 ያለውን ቃል ያሟሉ፦ “ማኅበሩም ሁሉ ድምፃቸውን አንስተው ጮኹ፤ ___”",
+   "en": "Complete the verse in numbers 14:1: “The whole assembly raised their voices and cried out; ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሕዝቡም ሌሊቱን ሁሉ አለቀሱ",
+     "en": "and the people wept all night"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ወደ ምድረ በዳ ሄዱ",
+     "en": "they went into the wilderness"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በሰላም ተመለሱ",
+     "en": "they returned in peace"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በእምነት ጸኑ",
+     "en": "they remained steadfast in faith"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በኦሪት ዘኍልቍ 14:1 ውስጥ “ማኅበሩም ሁሉ ድምፃቸውን አንስተው ጮኹ፤ ሕዝቡም ሌሊቱን ሁሉ አለቀሱ” ተጽፏል።",
+   "en": "numbers 14:1 continues: “The whole assembly raised their voices and cried out; and the people wept all night.”"
+  },
+  "excerpt": {
+   "am": "ማኅበሩም ሁሉ ድምፃቸውን አንስተው ጮኹ፤",
+   "en": "The whole assembly raised their voices and cried out;"
+  },
+  "source": {
+   "label": "ኦሪት ዘኍልቍ 14:1, 2, 3, 4, 5",
+   "route": "/bible/numbers/14?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "04ed61bd-43f0-58ce-a431-3e257b006e51"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-234b414b3fc2",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ኢዮብ 8፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “አውኬናዊው በልዳዶስ መለሰ፥ ___”",
+   "en": "Complete the verse in Job 8:1: \"Then answered Bildad the Shuhite, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በፍርሃትም ዝም አለ",
+     "en": "and held his peace in fear"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ፈጽሞም አለቀሰ",
+     "en": "and wept bitterly"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ድምፁን ከፍ አደረገ",
+     "en": "and lifted up his voice"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "እንዲህም አለ",
+     "en": "and said"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ኢዮብ 8፡1 “አውኬናዊው በልዳዶስ መለሰ፥ እንዲህም አለ” ይላል።",
+   "en": "Job 8:1 opens: \"Then answered Bildad the Shuhite, and said.\""
+  },
+  "excerpt": {
+   "am": "አውኬናዊው በልዳዶስ መለሰ፥",
+   "en": "Then answered Bildad the Shuhite, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ኢዮብ 8:1, 2, 3, 4, 5",
+   "route": "/bible/job/8?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "026e45ed-f91d-5ee2-acf7-67a8f928f052"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-23aa8b01a55d",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ሆሴዕ 8:3 ያለውን ቃል ያሟሉ፦ “እስራኤል ደግነቱን ጥሎአልና፤ ___”",
+   "en": "Complete the verse in hosea 8:3: “For Israel has cast off what is good; ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በእምነት ጸኑ",
+     "en": "they remained steadfast in faith"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሕዝቡን ሰበሰቡ",
+     "en": "they gathered the people"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ጠላትም ያሳድደዋልና",
+     "en": "an enemy will pursue him"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ምድርንም ሙሉአት",
+     "en": "fill the earth"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በትንቢተ ሆሴዕ 8:3 ውስጥ “እስራኤል ደግነቱን ጥሎአልና፤ ጠላትም ያሳድደዋልና” ተጽፏል።",
+   "en": "hosea 8:3 continues: “For Israel has cast off what is good; an enemy will pursue him.”"
+  },
+  "excerpt": {
+   "am": "እስራኤል ደግነቱን ጥሎአልና፤",
+   "en": "For Israel has cast off what is good;"
+  },
+  "source": {
+   "label": "ትንቢተ ሆሴዕ 8:1, 2, 3, 4, 5",
+   "route": "/bible/hosea/8?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "778a086f-f409-5597-a522-6563c5969880"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-2a1e65682781",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በኦሪት ዘፀአት 11፡5 ያለውን ኃይለ ቃል ያሟሉ፦ “በግብፅም ሀገር ያለ በኵር ሁሉ፥ በዙፋኑ ከሚቀመጠው ከፈርዖን በኵር ጀምሮ በወፍጮ እግር እስካለችው እስከ አገልጋዪቱ በኵር ድረስ፥ ___”",
+   "en": "Complete the verse in Exodus 11:5: \"And all the firstborn in the land of Egypt shall die, from the firstborn of Pharaoh that sitteth upon his throne, even unto the firstborn of the maidservant that is behind the mill; and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የምድሪቱ ንብረት ሁሉ ይጠፋል",
+     "en": "all wealth of the land shall perish"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የከብቱም በኵር ሁሉ ይሞታል",
+     "en": "all the firstborn of beasts"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የግብፅ ሠራዊት ሁሉ ይደነግጣል",
+     "en": "all Egypt’s army shall be dismayed"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የከተማይቱ ቅጥሮች ሁሉ ይፈርሳሉ",
+     "en": "all walls of the city shall crumble"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘፀአት 11፡5 “በግብፅም ሀገር ያለ በኵር ሁሉ፥ በዙፋኑ ከሚቀመጠው ከፈርዖን በኵር ጀምሮ በወፍጮ እግር እስካለችው እስከ አገልጋዪቱ በኵር ድረስ፥ የከብቱም በኵር ሁሉ ይሞታል” ይላል።",
+   "en": "Exodus 11:5 declares the death of all firstborn in Egypt, from Pharaoh’s firstborn unto the maidservant’s and of beasts."
+  },
+  "excerpt": {
+   "am": "በግብፅም ሀገር ያለ በኵር ሁሉ፥ በዙፋኑ ከሚቀመጠው ከፈርዖን በኵር ጀምሮ በወፍጮ እግር እስካለችው እስከ አገልጋዪቱ በኵር ድረስ፥",
+   "en": "from the firstborn of Pharaoh that sitteth upon his throne, even unto the firstborn of the maidservant that is behind the mill; and"
+  },
+  "source": {
+   "label": "ኦሪት ዘጸአት 11:1, 2, 3, 4, 5",
+   "route": "/bible/exodus/11?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "d2f4357b-e13a-5f96-a82b-07e06a2f6f2c"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-2e26467273bb",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በየዮሐንስ ራእይ 22፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “በአደባባይዋም መካከል ከእግዚአብሔርና ከበጉ ዙፋን የሚወጣውን ___”",
+   "en": "Complete the verse in Revelation 22:1: \"And he shewed me a pure river of water of life, clear as crystal, proceeding out of ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሰማያትን ብርሃን በግልጽ ተመለከትሁ",
+     "en": "the light of heaven seen clearly"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እንደ ብርሌ የሚያንጸባርቀውን የሕይወትን ውሃ ወንዝ አሳየኝ",
+     "en": "a pure river of water of life, clear as crystal"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የካህናቱን ማኅበር በአንድነት አየሁ",
+     "en": "the company of priests gathered"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የወርቅ መቅረዞችን ተቀምጠው አገኘሁ",
+     "en": "golden candlesticks set in order"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በራእይ 22፡1 “በአደባባይዋም መካከል ከእግዚአብሔርና ከበጉ ዙፋን የሚወጣውን እንደ ብርሌ የሚያንጸባርቀውን የሕይወትን ውሃ ወንዝ አሳየኝ” ይላል።",
+   "en": "Revelation 22:1 reads: \"And he shewed me a pure river of water of life, clear as crystal, proceeding out of the throne of God and of the Lamb.\""
+  },
+  "excerpt": {
+   "am": "በአደባባይዋም መካከል ከእግዚአብሔርና ከበጉ ዙፋን የሚወጣውን",
+   "en": "proceeding out of the throne of God and of the Lamb"
+  },
+  "source": {
+   "label": "የዮሐንስ ራዕይ 22:1, 2, 3, 4, 5",
+   "route": "/bible/revelation/22?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "345678b5-5424-5024-a27c-611d6da74580"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-32eebdf1a40b",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ቀዳማዊ 11፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “እስራኤልም ሁሉ በኬብሮን ወደ ዳዊት ተሰብስበው እንዲህ አሉት፥ “እነሆ፥ እኛ ___”",
+   "en": "Complete the verse in 1 Chronicles 11:1: \"Then all Israel gathered themselves to David unto Hebron, saying, Behold, we ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የአባቶችህ ልጆች ነን",
+     "en": "are sons of thy fathers"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የሠራዊትህ አገልጋዮች ነን",
+     "en": "are servants of thy host"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የቀደሙት ወገኖችህ ነን",
+     "en": "are thy ancient people"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የአጥንትህ ፍላጭ የሥጋህ ቍራጭ ነን",
+     "en": "are thy bone and thy flesh"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ1 ዜና መዋዕል 11፡1 “እስራኤልም ሁሉ በኬብሮን ወደ ዳዊት ተሰብስበው እንዲህ አሉት፥ “እነሆ፥ እኛ የአጥንትህ ፍላጭ የሥጋህ ቍራጭ ነን” ይላል።",
+   "en": "1 Chronicles 11:1 reads: \"Then all Israel gathered themselves to David unto Hebron, saying, Behold, we are thy bone and thy flesh.\""
+  },
+  "excerpt": {
+   "am": "እስራኤልም ሁሉ በኬብሮን ወደ ዳዊት ተሰብስበው እንዲህ አሉት፥ “እነሆ፥ እኛ",
+   "en": "Then all Israel gathered themselves to David unto Hebron, saying, Behold, we"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 11:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/11?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "7cef20f6-873b-5f26-a440-64f1ac10dc49"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-35678278605a",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ሆሴዕ 7፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “እስራኤልን እፈውስ ዘንድ በወደድሁ ጊዜ ___”",
+   "en": "Complete the verse in Hosea 7:1: \"When I would have healed Israel, then ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ምድሪቱ በሙሉ ሰላም አገኘች",
+     "en": "the entire land found peace"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሕዝቡ ሁሉ በአንድነት እልል አሉ",
+     "en": "all the people shouted together"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ጠላቶቻቸው ሁሉ ድል ተነሡ",
+     "en": "all their enemies were defeated"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የኤፍሬም ኀጢአትና የሰማርያ ክፋት ተገለጠ",
+     "en": "the iniquity of Ephraim was discovered, and the wickedness of Samaria"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በትንቢተ ሆሴዕ 7፡1 “እስራኤልን እፈውስ ዘንድ በወደድሁ ጊዜ የኤፍሬም ኀጢአትና የሰማርያ ክፋት ተገለጠ” ይላል።",
+   "en": "Hosea 7:1 states: \"When I would have healed Israel, then the iniquity of Ephraim was discovered, and the wickedness of Samaria.\""
+  },
+  "excerpt": {
+   "am": "እስራኤልን እፈውስ ዘንድ በወደድሁ ጊዜ",
+   "en": "When I would have healed Israel, then"
+  },
+  "source": {
+   "label": "ትንቢተ ሆሴዕ 7:1, 2, 3, 4, 5",
+   "route": "/bible/hosea/7?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "22ba0736-1fc8-5186-a219-4e97533458a2"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-37363156bc66",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ መሳፍንት 11፡3 ያለውን ኃይለ ቃል ያሟሉ፦ “ዮፍታሔም ከወንድሞቹ ፊት ሸሽቶ በጦብ ምድር ተቀመጠ፤ ___”",
+   "en": "Complete the verse in Judges 11:3: \"Then Jephthah fled from his brethren, and dwelt in the land of Tob: and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የአሞን ልጆችም በዚያ ወጉት",
+     "en": "the children of Ammon fought against him"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የገለዓድ ሰዎችም ፈለጉት",
+     "en": "the men of Gilead sought him"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በዚያም ብቻውን አደረ",
+     "en": "dwelt there alone"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ድሆች ሰዎችም ተሰብስበው ዮፍታሔን ተከተሉት",
+     "en": "there were gathered vain men to Jephthah, and went out with him"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ መሳፍንት 11፡3 “ዮፍታሔም ከወንድሞቹ ፊት ሸሽቶ በጦብ ምድር ተቀመጠ፤ ድሆች ሰዎችም ተሰብስበው ዮፍታሔን ተከተሉት” ይላል።",
+   "en": "Judges 11:3 records: \"Then Jephthah fled from his brethren, and dwelt in the land of Tob: and there were gathered vain men to Jephthah, and went out with him.\""
+  },
+  "excerpt": {
+   "am": "ዮፍታሔም ከወንድሞቹ ፊት ሸሽቶ በጦብ ምድር ተቀመጠ፤",
+   "en": "Then Jephthah fled from his brethren, and dwelt in the land of Tob: and"
+  },
+  "source": {
+   "label": "መጽሐፈ መሳፍንት 11:1, 2, 3, 4, 5",
+   "route": "/bible/judges/11?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "d70be484-1fb5-536d-ab68-7ddad23f766b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-3ca98cb8570c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ጥበብ 1፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “የምድር ገዥዎች ሆይ፥ ጽድቅን ውደዷት፥ የእግዚአብሔርንም ኀይል በበጎ ዕውቀት አስቡት፥ ___”",
+   "en": "Complete the verse in Wisdom 1:1: \"Love righteousness, ye that be judges of the earth: think of the Lord with a good (heart), and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በፍርሃት ተገዙለት",
+     "en": "serve him in fear"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በመቅደሱ ውስጥ አመስግኑት",
+     "en": "praise him in his holy place"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ትእዛዙንም ዘወትር ጠብቁ",
+     "en": "keep his commandments always"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በቅን ልቡናም ፈልጉት",
+     "en": "in simplicity of heart seek him"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ጥበብ 1፡1 “የምድር ገዥዎች ሆይ፥ ጽድቅን ውደዷት፥ የእግዚአብሔርንም ኀይል በበጎ ዕውቀት አስቡት፥ በቅን ልቡናም ፈልጉት” ይላል።",
+   "en": "Wisdom 1:1 advises: \"Love righteousness, ye that be judges of the earth: think of the Lord with a good (heart), and in simplicity of heart seek him.\""
+  },
+  "excerpt": {
+   "am": "የምድር ገዥዎች ሆይ፥ ጽድቅን ውደዷት፥ የእግዚአብሔርንም ኀይል በበጎ ዕውቀት አስቡት፥",
+   "en": "Love righteousness, ye that be judges of the earth: think of the Lord with a good (heart), and"
+  },
+  "source": {
+   "label": "መጽሐፈ ጥበብ 1:1, 2, 3, 4, 5",
+   "route": "/bible/wisdom/1?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "05d0fde4-5d33-5aec-a04a-383d14513952"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-3f615dab9850",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በየሐዋርያት ሥራ 14፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “ኢቆንዮን በምትባል ከተማም እንደ ሁልጊዜው ወደ አይሁድ ምኵራብ ገቡ፤ ___”",
+   "en": "Complete the verse in Acts 14:1: \"And it came to pass in Iconium, that they went both together into the synagogue of the Jews, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የከተማው አለቆችም በደስታ ተቀበሉአቸው",
+     "en": "the rulers of the city received them gladly"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ተአምራትንም ብቻ እያደረጉ ዝም አሉ",
+     "en": "held their peace doing only miracles"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከአይሁድ በቀር ለማንም አልተናገሩም",
+     "en": "spoke to none but Jews only"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ከአይሁድና ከአረማውያንም ብዙ ሰዎች እስኪያምኑ ድረስ አስተማሩ",
+     "en": "so spake, that a great multitude both of the Jews and also of the Greeks believed"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በየሐዋርያት ሥራ 14፡1 “ኢቆንዮን በምትባል ከተማም እንደ ሁልጊዜው ወደ አይሁድ ምኵራብ ገቡ፤ ከአይሁድና ከአረማውያንም ብዙ ሰዎች እስኪያምኑ ድረስ አስተማሩ” ይላል።",
+   "en": "Acts 14:1 records: \"they went both together into the synagogue of the Jews, and so spake, that a great multitude both of the Jews and also of the Greeks believed.\""
+  },
+  "excerpt": {
+   "am": "ኢቆንዮን በምትባል ከተማም እንደ ሁልጊዜው ወደ አይሁድ ምኵራብ ገቡ፤",
+   "en": "they went both together into the synagogue of the Jews, and"
+  },
+  "source": {
+   "label": "የሐዋርያት ሥራ 14:1, 2, 3, 4, 5",
+   "route": "/bible/acts/14?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "2dd9301f-944c-51fe-ac7f-61d0fa78bb0d"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-3f905aaef4d0",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ሆሴዕ 1፡1 መሠረት የተጻፈውን ቃል ያጠናቅቁ።",
+   "en": "Complete the verse from Hosea 1:1."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ሆሴዕ የመጣ",
+     "en": "came unto Hosea"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ወደ ኢዩኤል የመጣ",
+     "en": "came unto Joel"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ወደ አሞጽ የመጣ",
+     "en": "came unto Amos"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ወደ ሚክያስ የመጣ",
+     "en": "came unto Micah"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በሆሴዕ 1፡1 “ወደ ብኤሪ ልጅ ወደ ሆሴዕ የመጣ የእግዚአብሔር ቃል ይህ ነው” ተብሎ ተጽፏል።",
+   "en": "Hosea 1:1 begins: \"The word of the Lord that came unto Hosea, the son of Beeri.\""
+  },
+  "excerpt": {
+   "am": "ወደ ብኤሪ ልጅ",
+   "en": "unto the son of Beeri,"
+  },
+  "source": {
+   "label": "ትንቢተ ሆሴዕ 1:1",
+   "route": "/bible/hosea/1?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "aef7b94e-2811-5444-a269-12b12bea99e5"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-415d4e9737cb",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በየዮሐንስ ራዕይ 16:1 ያለውን ቃል ያሟሉ፦ “የእግዚአብሔርን ቁጣ ጽዋዎች ___”",
+   "en": "Complete the verse in revelation 16:1: “the bowls of God's wrath ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ምድረ በዳ ሄዱ",
+     "en": "they went into the wilderness"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በሰላም ተመለሱ",
+     "en": "they returned in peace"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በምድር ውስጥ አፍስሱ",
+     "en": "pour them out upon the earth"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በእምነት ጸኑ",
+     "en": "they remained steadfast in faith"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በየዮሐንስ ራዕይ 16:1 ውስጥ “የእግዚአብሔርን ቁጣ ጽዋዎች በምድር ውስጥ አፍስሱ” ተጽፏል።",
+   "en": "revelation 16:1 continues: “the bowls of God's wrath pour them out upon the earth.”"
+  },
+  "excerpt": {
+   "am": "የእግዚአብሔርን ቁጣ ጽዋዎች",
+   "en": "the bowls of God's wrath"
+  },
+  "source": {
+   "label": "የዮሐንስ ራዕይ 16:1, 2, 3, 4, 5",
+   "route": "/bible/revelation/16?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "a0e0ed08-5d40-5665-a0f0-7261c247ad42"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-47389cb23363",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "እግዚአብሔር ለሙሴ በደብረ ሲና የተናገረውን ቃል ባዶ ቦታ አሟሉ፦ “አንተ የቆምህባት ስፍራ የተቀደሰች መሬት ናትና፥ ___” (ዘጸአት 3፡5)",
+   "en": "Fill in the blank to complete God’s command to Moses: \"for the place whereon thou standest is holy ground: ___\" (Exodus 3:5)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በግንባርህ ተደፋ",
+     "en": "fall on thy face"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ጫማህን ከእግርህ አውጣ",
+     "en": "put off thy shoes from off thy feet"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "እጆችህን ወደ ሰማይ አንሣ",
+     "en": "lift up thy hands unto heaven"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ፊትን በመጎናጸፊያ ሸፍን",
+     "en": "cover thy face with a mantle"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘጸአት 3፡5 “አንተ የቆምህባት ስፍራ የተቀደሰች መሬት ናትና፥ ጫማህን ከእግርህ አውጣ አለው” በማለት የመቅደሱን ቅድስና አስተማረ።",
+   "en": "Exodus 3:5 commands: \"Put off thy shoes from off thy feet, for the place whereon thou standest is holy ground.\""
+  },
+  "excerpt": {
+   "am": "አንተ የቆምህባት ስፍራ የተቀደሰች መሬት ናትና፥",
+   "en": "for the place whereon thou standest is holy ground,"
+  },
+  "source": {
+   "label": "ኦሪት ዘጸአት 3:1, 2, 3, 4, 5",
+   "route": "/bible/exodus/3?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "0f342240-c02f-5a33-a966-26a5e903a997"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-497733b52f85",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ መሳፍንት 9፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “ከበዓልም ቤት ሰባ ብር ሰጡት፤ በዚያም አቤሜሌክ ___”",
+   "en": "Complete the verse in Judges 9:4: \"And they gave him threescore and ten pieces of silver out of the house of Baal-berith, wherewith Abimelech ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "አምስት መቶ ፈረሰኞችን አዘጋጀ",
+     "en": "prepared five hundred horsemen"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ወንበዴዎችንና አስደንጋጮችን ቀጠረበት",
+     "en": "hired vain and light persons"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የጦር መሣሪያዎችን ገዛ",
+     "en": "bought weapons of war"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የሰቂማን ሽማግሌዎች ሰበሰበ",
+     "en": "gathered the elders of Shechem"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መሳፍንት 9፡4 “ከበዓልም ቤት ሰባ ብር ሰጡት፤ በዚያም አቤሜሌክ ወንበዴዎችንና አስደንጋጮችን ቀጠረበት፤ እነርሱም ተከትለውት ሄዱ” ይላል።",
+   "en": "Judges 9:4 states: \"And they gave him threescore and ten pieces of silver out of the house of Baal-berith, wherewith Abimelech hired vain and light persons, which followed him.\""
+  },
+  "excerpt": {
+   "am": "ከበዓልም ቤት ሰባ ብር ሰጡት፤ በዚያም አቤሜሌክ",
+   "en": "And they gave him threescore and ten pieces of silver out of the house of Baal-berith, wherewith Abimelech"
+  },
+  "source": {
+   "label": "መጽሐፈ መሳፍንት 9:1, 2, 3, 4, 5",
+   "route": "/bible/judges/9?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "e08bba94-a329-5ff3-a163-60750861e35d"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-4a4ab9ebd97a",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመኃልየ መኃልይ ዘሰሎሞን 7:1 ያለውን ቃል ያሟሉ፦ “አንቺ ሱላማጢስ ሆይ፥ ___”",
+   "en": "Complete the verse in song of songs 7:1: “O Shulammite, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በእምነት ጸኑ",
+     "en": "they remained steadfast in faith"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሕዝቡን ሰበሰቡ",
+     "en": "they gathered the people"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የእግዚአብሔርን ፈቃድ አድርገዋልና",
+     "en": "because they did the will of God"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ተመለሽ፥ ተመለሽ",
+     "en": "return, return"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመኃልየ መኃልይ ዘሰሎሞን 7:1 ውስጥ “አንቺ ሱላማጢስ ሆይ፥ ተመለሽ፥ ተመለሽ” ተጽፏል።",
+   "en": "song of songs 7:1 continues: “O Shulammite, return, return.”"
+  },
+  "excerpt": {
+   "am": "አንቺ ሱላማጢስ ሆይ፥",
+   "en": "O Shulammite,"
+  },
+  "source": {
+   "label": "መኃልየ መኃልይ ዘሰሎሞን 7:1, 2, 3, 4, 5",
+   "route": "/bible/song-of-songs/7?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "df6420be-d4a7-5801-a393-b96e95214e9d"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-4c119c5bb595",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘሌዋውያን 1፡1 የተጻፈውን ኃይለ ቃል ያጠናቅቁ።",
+   "en": "Complete the verse from Leviticus 1:1."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሙሴን ጠርቶ",
+     "en": "called Moses"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "አሮንን ጠርቶ",
+     "en": "called Aaron"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ካህናቱን ጠርቶ",
+     "en": "called the priests"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ሽማግሌዎችን ጠርቶ",
+     "en": "called the elders"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በዘሌዋውያን 1፡1 መሠረት እግዚአብሔር ከምስክሩ ድንኳን ውስጥ ሙሴን ጠርቶ ተናገረው።",
+   "en": "According to Leviticus 1:1, the Lord called Moses out of the tabernacle of testimony."
+  },
+  "excerpt": {
+   "am": "እግዚአብሔርም ከምስክሩ ድንኳን ውስጥ",
+   "en": "And the Lord out of the tent of testimony"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 1:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/1?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "11328703-fd14-562e-ad99-e8a1c68a6e44"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-4d1776f06b9d",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “ከበጎነት ጋር አለመውለድ ፍጹም ሥራ ነው፤ ______ ስም አጠራሯ ሕይወት ነውና።” (ጥበብ 4፡1)",
+   "en": "Complete the verse: \"Better it is to have no children, and to have virtue: for the memorial thereof is immortal: because ______.\" (Wisdom 4:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በምድር ላይ ፍሬ ስላላት",
+     "en": "because it yields fruit on earth"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በእግአብሔር ዘንድ፥ በሰውም ዘንድ የታወቀች ስለ ሆነች",
+     "en": "it is known with God, and with men"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የጽድቅን መንገድ ስለምታሳይ",
+     "en": "because it guides in righteous paths"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ሰላምን ለሁሉ ስለምትሰጥ",
+     "en": "because it gives peace to all"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ጥበብ 4፡1 “በእግአብሔር ዘንድ፥ በሰውም ዘንድ የታወቀች ስለ ሆነች ስም አጠራሯ ሕይወት ነውና” ይላል።",
+   "en": "Wisdom 4:1 states: \"because it is known with God, and with men.\""
+  },
+  "excerpt": {
+   "am": "ከበጎነት ጋር አለመውለድ ፍጹም ሥራ ነው፤",
+   "en": "Better it is to have no children, and to have virtue: for"
+  },
+  "source": {
+   "label": "መጽሐፈ ጥበብ 4:1, 2, 3, 4, 5",
+   "route": "/bible/wisdom/4?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "d427c22c-87f9-5b1c-a625-c93ebcaa2ef5"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-52acb90838a1",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በ2ኛ ወደ ቆሮንቶስ ሰዎች 6:1 ያለውን ቃል ያሟሉ፦ “የተቀበላችኋትን የእግዚአብሔር ጸጋ ___”",
+   "en": "Complete the verse in second corinthians 6:1: “the grace of God that you received, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ተመለሽ፥ ተመለሽ",
+     "en": "return, return"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እርሱም ይፈውሰናል",
+     "en": "and he will heal us"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "መስማታቸው እንዲታወቅ",
+     "en": "to learn whether they would obey"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ለከንቱ እንዳታደርጓት",
+     "en": "do not let it be in vain"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ2ኛ ወደ ቆሮንቶስ ሰዎች 6:1 ውስጥ “የተቀበላችኋትን የእግዚአብሔር ጸጋ ለከንቱ እንዳታደርጓት” ተጽፏል።",
+   "en": "second corinthians 6:1 continues: “the grace of God that you received, do not let it be in vain.”"
+  },
+  "excerpt": {
+   "am": "የተቀበላችኋትን የእግዚአብሔር ጸጋ",
+   "en": "the grace of God that you received,"
+  },
+  "source": {
+   "label": "2ኛ ወደ ቆሮንቶስ ሰዎች 6:1, 2, 3, 4, 5",
+   "route": "/bible/second-corinthians/6?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "f1d7f27f-0957-5a78-a159-1b6188bf025b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-573871e165e9",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘዳግም 10፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “እግዚአብሔርም በተራራው ላይ በእሳት መካከል የተናገራችሁን ዐሠርቱን ቃላት ቀድሞ ተጽፈው እንደ ነበረ በጽላቱ ላይ ጻፈ፤ ___”",
+   "en": "Complete the verse in Deuteronomy 10:4: \"And he wrote on the tables, according to the first writing, the ten commandments, which the LORD spake unto you in the mount out of the midst of the fire: and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሕዝቡም ሁሉ በአንድነት ሰሙ",
+     "en": "and all the people heard together"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በታቦቱም ውስጥ አኖራቸው",
+     "en": "and laid them in the ark"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ካህናቱም በፊቱ አከበሩት",
+     "en": "and the priests sanctified it"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "እግዚአብሔርም እነርሱን ለእኔ ሰጠኝ",
+     "en": "the LORD gave them unto me"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በኦሪት ዘዳግም 10፡4 “እግዚአብሔርም በተራራው ላይ በእሳት መካከል የተናገራችሁን ዐሠርቱን ቃላት ቀድሞ ተጽፈው እንደ ነበረ በጽላቱ ላይ ጻፈ፤ እግዚአብሔርም እነርሱን ለእኔ ሰጠኝ” ይላል።",
+   "en": "Deuteronomy 10:4 records: \"and the LORD gave them unto me.\""
+  },
+  "excerpt": {
+   "am": "እግዚአብሔርም በተራራው ላይ በእሳት መካከል የተናገራችሁን ዐሠርቱን ቃላት ቀድሞ ተጽፈው እንደ ነበረ በጽላቱ ላይ ጻፈ፤",
+   "en": "the ten commandments, which the LORD spake unto you in the mount out of the midst of the fire: and"
+  },
+  "source": {
+   "label": "ኦሪት ዘዳግም 10:1, 2, 3, 4, 5",
+   "route": "/bible/deuteronomy/10?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "82d333e6-139a-52e7-a042-7973c8a3c3bc"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-59c9ac6ead17",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመጽሐፈ ኢያሱን ቃል ባዶ ቦታ አሟሉ፦ “ኢያሱም ማልዶ ተነሣ፤ እርሱና እስራኤልም ሁሉ ከሰጢም ተጕዘው ___ ሳይሻገሩም በዚያ አደሩ።” (ኢያሱ 3፡1)",
+   "en": "Fill in the blank to complete the verse in Joshua: \"And Joshua rose early in the morning; and they removed from Shittim, and ___ and lodged there before they passed over.\" (Joshua 3:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ተስፋይቱ ምድር ደረሱ",
+     "en": "reached the promised land"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ወደ ኢያሪኮ ቅጥር ገቡ",
+     "en": "entered the wall of Jericho"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ወደ ዮርዳኖስ መጡ",
+     "en": "came to Jordan"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ድንኳኖቻቸውን ተከሉ",
+     "en": "pitched their tents"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ኢያሱ 3፡1 ላይ “ኢያሱም ማልዶ ተነሣ፤ እርሱና እስራኤልም ሁሉ ከሰጢም ተጕዘው ወደ ዮርዳኖስ መጡ፤ ሳይሻገሩም በዚያ አደሩ” ተብሎ ተጽፏል።",
+   "en": "Joshua 3:1 states: \"And Joshua rose early in the morning; and they removed from Shittim, and came to Jordan, he and all the children of Israel, and lodged there before they passed over.\""
+  },
+  "excerpt": {
+   "am": "ኢያሱም ማልዶ ተነሣ፤ እርሱና እስራኤልም ሁሉ ከሰጢም ተጕዘው",
+   "en": "And Joshua rose early in the morning; and they removed from Shittim, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ኢያሱ 3:1, 2, 3, 4, 5",
+   "route": "/bible/joshua/3?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "c53f6998-a454-5d07-a939-396abe71b552"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-59fde5e54510",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በየሐዋርያት ሥራ 7፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “እርሱም እንዲህ አለ፥ “ወንድሞቻችንና አባቶቻችን ሆይ፥ ___”",
+   "en": "Complete the verse in Acts 7:2: \"And he said, Men, brethren, and fathers, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ መቅደሱ ግቡ",
+     "en": "enter the sanctuary"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ስሙ",
+     "en": "hearken"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ጸልዩ",
+     "en": "pray"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ተመልከቱ",
+     "en": "behold"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በየሐዋርያት ሥራ 7፡2 “እርሱም እንዲህ አለ፥ “ወንድሞቻችንና አባቶቻችን ሆይ፥ ስሙ” በማለት እስጢፋኖስ ንግግሩን ጀመረ።",
+   "en": "Acts 7:2 records Stephen’s words: \"And he said, Men, brethren, and fathers, hearken.\""
+  },
+  "excerpt": {
+   "am": "እርሱም እንዲህ አለ፥ “ወንድሞቻችንና አባቶቻችን ሆይ፥",
+   "en": "And he said, Men, brethren, and fathers,"
+  },
+  "source": {
+   "label": "የሐዋርያት ሥራ 7:1, 2, 3, 4, 5",
+   "route": "/bible/acts/7?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "4db01dd7-62eb-56cf-a9c5-c431b8547578"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-5dbdca22041b",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘኍልቍ 18፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “እግዚአብሔርም አሮንን እንዲህ ብሎ ነገረው፥ “አንተ ከአንተም ጋር ልጆችህና የአባቶችህ ወገኖች፥ ___”",
+   "en": "Complete the verse in Numbers 18:1: \"And the LORD said unto Aaron, Thou and thy sons and thy father’s house with thee ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በድንኳኑ ውስጥ ሁልጊዜ አገልግሉ",
+     "en": "shall minister in the tent continually"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "መሥዋዕቱን ለሕዝቡ አቅርቡ",
+     "en": "shall offer the sacrifice for the people"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የመሠዊያውን ቅባት ጠብቁ",
+     "en": "shall keep the anointing of the altar"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የክህነታችሁን ኀጢአት ትሸከማላችሁ",
+     "en": "shall bear the iniquity of the sanctuary"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በኦሪት ዘኍልቍ 18፡1 “እግዚአብሔርም አሮንን እንዲህ ብሎ ነገረው፥ “አንተ ከአንተም ጋር ልጆችህና የአባቶችህ ወገኖች፥ የክህነታችሁን ኀጢአት ትሸከማላችሁ” ይላል።",
+   "en": "Numbers 18:1 states: \"Thou and thy sons and thy father’s house with thee shall bear the iniquity of the sanctuary.\""
+  },
+  "excerpt": {
+   "am": "እግዚአብሔርም አሮንን እንዲህ ብሎ ነገረው፥ “አንተ ከአንተም ጋር ልጆችህና የአባቶችህ ወገኖች፥",
+   "en": "And the LORD said unto Aaron, Thou and thy sons and thy father’s house with thee"
+  },
+  "source": {
+   "label": "ኦሪት ዘኍልቍ 18:1, 2, 3, 4, 5",
+   "route": "/bible/numbers/18?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "a55c207d-a4db-5ace-a7ab-2eae19d64a3c"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-5ea2990926cb",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በየሐዋርያት ሥራ 13፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “የእግዚአብሔርን ሥራ ሲሠሩ፥ ሲጾሙም መንፈስ ቅዱስ፥ ___”",
+   "en": "Complete the verse in Acts 13:2: \"As they ministered to the Lord, and fasted, the Holy Ghost said, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ኢየሩሳሌም ፈጥናችሁ ሂዱ አላቸው",
+     "en": "go quickly unto Jerusalem"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የወንጌልን ቃል ለአሕዛብ አስተምሩ አላቸው",
+     "en": "teach the word of the Gospel to the Gentiles"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በጸሎትና በምልጃ ተግታችሁ ኑሩ አላቸው",
+     "en": "continue steadfast in prayer and supplication"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "“በርናባስንና ሳውልን እኔ ለፈለግኋቸው ሥራ ለዩልኝ” አላቸው",
+     "en": "Separate me Barnabas and Saul for the work whereunto I have called them"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በየሐዋርያት ሥራ 13፡2 “የእግዚአብሔርን ሥራ ሲሠሩ፥ ሲጾሙም መንፈስ ቅዱስ፥ “በርናባስንና ሳውልን እኔ ለፈለግኋቸው ሥራ ለዩልኝ” አላቸው” ይላል።",
+   "en": "Acts 13:2 records the Holy Spirit saying: \"Separate me Barnabas and Saul for the work whereunto I have called them.\""
+  },
+  "excerpt": {
+   "am": "የእግዚአብሔርን ሥራ ሲሠሩ፥ ሲጾሙም መንፈስ ቅዱስ፥",
+   "en": "As they ministered to the Lord, and fasted, the Holy Ghost said,"
+  },
+  "source": {
+   "label": "የሐዋርያት ሥራ 13:1, 2, 3",
+   "route": "/bible/acts/13?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "13fffcc3-2bce-5aba-a9f1-8c0506ae21d0"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-607452a8ad63",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ዮዲት 4፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “ከመቅረቡም የተነሣ ስለ ኢየሩሳሌምና ስለ አምላካቸው ስለ እግዚአብሔር ቤተ መቅደስ ___”",
+   "en": "Complete the verse in Judith 4:2: \"Therefore they were exceedingly afraid of him, and were troubled for Jerusalem, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "እልል አሉ።",
+     "en": "shouted with joy"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ፈጽመው ፈሩ",
+     "en": "for the temple of the Lord their God"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በሰላም ዐረፉ",
+     "en": "rested in peace"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ደስታን አደረጉ",
+     "en": "made great celebration"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ዮዲት 4፡2 “ከመቅረቡም የተነሣ ስለ ኢየሩሳሌምና ስለ አምላካቸው ስለ እግዚአብሔር ቤተ መቅደስ ፈጽመው ፈሩ” ይላል።",
+   "en": "Judith 4:2 describes how they were exceedingly afraid for Jerusalem and the temple."
+  },
+  "excerpt": {
+   "am": "ከመቅረቡም የተነሣ ስለ ኢየሩሳሌምና ስለ አምላካቸው ስለ እግዚአብሔር ቤተ መቅደስ",
+   "en": "Therefore they were exceedingly afraid of him, and were troubled for Jerusalem, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ዮዲት 4:1, 2, 3, 4, 5",
+   "route": "/bible/judith/4?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "fc390ba4-0660-5b7e-a4d8-4779ed610dae"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-632da1555e86",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘዳግም 12፡3 ያለውን ኃይለ ቃል ያሟሉ፦ “መሠዊያቸውንም አፍርሱ፤ ሐውልቶቻቸውንም ሰባብሩ፤ የማምለኪያ ዐጸዶቻቸውንም ቁረጡ፤ ___”",
+   "en": "Complete the verse in Deuteronomy 12:3: \"And ye shall overthrow their altars, and break their pillars, and burn their groves with fire; and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወርቃቸውንና ብራቸውን ውሰዱ",
+     "en": "take their silver and gold"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የአማልክቶቻቸውንም ምስሎች በእሳት አቃጥሉ",
+     "en": "ye shall burn the graven images of their gods with fire"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ቤቶቻቸውንም በሙሉ ደምስሱ",
+     "en": "utterly destroy their dwellings"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ለካህናቱ ምንም አትስጡ",
+     "en": "give nothing unto their priests"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘዳግም 12፡3 “መሠዊያቸውንም አፍርሱ፤ ሐውልቶቻቸውንም ሰባብሩ፤ የማምለኪያ ዐጸዶቻቸውንም ቁረጡ፤ የአማልክቶቻቸውንም ምስሎች በእሳት አቃጥሉ” ይላል።",
+   "en": "Deuteronomy 12:3 commands: \"And ye shall overthrow their altars, and break their pillars, and burn their groves with fire; and ye shall hew down the graven images of their gods.\""
+  },
+  "excerpt": {
+   "am": "መሠዊያቸውንም አፍርሱ፤ ሐውልቶቻቸውንም ሰባብሩ፤ የማምለኪያ ዐጸዶቻቸውንም ቁረጡ፤",
+   "en": "And ye shall overthrow their altars, and break their pillars, and burn their groves with fire; and"
+  },
+  "source": {
+   "label": "ኦሪት ዘዳግም 12:1, 2, 3, 4, 5",
+   "route": "/bible/deuteronomy/12?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "c0783df6-0063-5b1f-a91b-44ca90ffb18f"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-665836eca1d4",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘሌዋውያን 18፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “ፍርዴን አድርጉ፤ በእርስዋም ትሄዱ ዘንድ ሥርዐቴን ጠብቁ፤ ___”",
+   "en": "Complete the verse in Leviticus 18:4: \"Ye shall do my judgments, and keep mine ordinances, to walk therein: ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ምድሪቱ በረከቷን ትሰጣለች",
+     "en": "the land shall yield her increase"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እኔ እግዚአብሔር አምላካችሁ ነኝ",
+     "en": "I am the LORD your God"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከጠላቶቻችሁም ትድናላችሁ",
+     "en": "ye shall be saved from your enemies"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በሕይወትም ትኖራላችሁ",
+     "en": "ye shall live in safety"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 18፡4 “ፍርዴን አድርጉ፤ በእርስዋም ትሄዱ ዘንድ ሥርዐቴን ጠብቁ፤ እኔ እግዚአብሔር አምላካችሁ ነኝ” ይላል።",
+   "en": "Leviticus 18:4 commands: \"Ye shall do my judgments, and keep mine ordinances, to walk therein: I am the LORD your God.\""
+  },
+  "excerpt": {
+   "am": "ፍርዴን አድርጉ፤ በእርስዋም ትሄዱ ዘንድ ሥርዐቴን ጠብቁ፤",
+   "en": "Ye shall do my judgments, and keep mine ordinances, to walk therein:"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 18:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/18?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "539d44c0-3e1e-57c8-a0a3-1fa01d1272bd"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-673ae4d1dce9",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በወንጌል ቅዱስ ዘማርቆስ 10፡1 የተጻፈውን የማስተማር አገልግሎት ቃል ያጠናቅቁ።",
+   "en": "Complete the phrase regarding Christ’s ministry in Mark 10:1."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ያስተምራቸው ነበር።",
+     "en": "He taught them."
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ይፈውሳቸው ነበር።",
+     "en": "He healed them."
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ያጠምቃቸው ነበር።",
+     "en": "He baptized them."
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ያጽናናቸው ነበር።",
+     "en": "He comforted them."
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በማርቆስ 10፡1 “እንደ ልማዱም ደግሞ ያስተምራቸው ነበር” ተብሎ ተጽፏል።",
+   "en": "Mark 10:1 records that as He was accustomed, He taught them again."
+  },
+  "excerpt": {
+   "am": "እንደ ልማዱም ደግሞ",
+   "en": "and as he was wont,"
+  },
+  "source": {
+   "label": "የማርቆስ ወንጌል 10:1, 2, 3, 4, 5",
+   "route": "/bible/mark/10?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "ca4f1274-e265-5887-ace1-d41f4db3c4cc"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-68629441a70f",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በየሐዋርያት ሥራ 12፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “የዮሐንስንም ወንድም ያዕቆብን ___”",
+   "en": "Complete the verse in Acts 12:2: \"And he killed James the brother of John ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ወኅኒ ቤት አገባው",
+     "en": "put him in prison"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በአደባባይ አቆመው",
+     "en": "stood him in the street"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከሀገር አሳደደው",
+     "en": "exiled him from the country"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በሰይፍ ገደለው",
+     "en": "with the sword"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በየሐዋርያት ሥራ 12፡2 “የዮሐንስንም ወንድም ያዕቆብን በሰይፍ ገደለው” ይላል።",
+   "en": "Acts 12:2 records: \"And he killed James the brother of John with the sword.\""
+  },
+  "excerpt": {
+   "am": "የዮሐንስንም ወንድም ያዕቆብን",
+   "en": "And he killed James the brother of John"
+  },
+  "source": {
+   "label": "የሐዋርያት ሥራ 12:1, 2, 3, 4, 5",
+   "route": "/bible/acts/12?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "a07e6d07-7e3c-57f5-a2cb-8be5bd3498ac"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-6da1abfc4291",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘዳግም 6:2 ያለውን ቃል ያሟሉ፦ “ትጠብቁ ዘንድ፥ ___”",
+   "en": "Complete the verse in deuteronomy 6:2: “that you may keep them, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሕዝቡን ሰበሰቡ",
+     "en": "they gathered the people"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ዕድሜአችሁም ይረዝም ዘንድ",
+     "en": "so that your days may be long"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በአሦርም ርኩስ ነገርን ይበላሉ",
+     "en": "and in Assyria they will eat unclean food"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በምድር ውስጥ አፍስሱ",
+     "en": "pour them out upon the earth"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘዳግም 6:2 ውስጥ “ትጠብቁ ዘንድ፥ ዕድሜአችሁም ይረዝም ዘንድ” ተጽፏል።",
+   "en": "deuteronomy 6:2 continues: “that you may keep them, so that your days may be long.”"
+  },
+  "excerpt": {
+   "am": "ትጠብቁ ዘንድ፥",
+   "en": "that you may keep them,"
+  },
+  "source": {
+   "label": "ኦሪት ዘዳግም 6:1, 2, 3, 4, 5",
+   "route": "/bible/deuteronomy/6?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "11195fa6-f6be-5c73-af06-f754ee9fb69f"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-6e519686063f",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘኍልቍ 17፡3 ያለውን ኃይለ ቃል ያሟሉ፦ “ለየአባቶቻቸው ቤት ወገን አንድ በትር ይሰጣሉና በሌዊ በትር ላይ ___”",
+   "en": "Complete the verse in Numbers 17:3: \"And thou shalt write Aaron’s name upon the rod of Levi: for one rod shall be ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሙሴን ስም ጻፍ",
+     "en": "write the name of Moses"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የካህኑን ስም ጻፍ",
+     "en": "write the priest’s name"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የነገዱን ስም ጻፍ",
+     "en": "write the tribe’s name"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የአሮንን ስም ጻፍ",
+     "en": "write Aaron’s name"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በኦሪት ዘኍልቍ 17፡3 “ለየአባቶቻቸው ቤት ወገን አንድ በትር ይሰጣሉና በሌዊ በትር ላይ የአሮንን ስም ጻፍ” ይላል።",
+   "en": "Numbers 17:3 commands to write Aaron’s name upon the rod of Levi."
+  },
+  "excerpt": {
+   "am": "ለየአባቶቻቸው ቤት ወገን አንድ በትር ይሰጣሉና በሌዊ በትር ላይ",
+   "en": "for one rod shall be for the head of the house of their fathers. And thou shalt write upon the rod of Levi"
+  },
+  "source": {
+   "label": "ኦሪት ዘኍልቍ 17:1, 2, 3, 4, 5",
+   "route": "/bible/numbers/17?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "d2027587-96f8-55ea-a098-c201f5b17dae"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-6f5f4984112c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በመዝሙረ ዳዊት 1፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “ነገር ግን በእግዚአብሔር ሕግ ደስ ይለዋል ሕጉንም ___”",
+   "en": "Complete the verse in Psalm 1:2: \"But his delight is in the law of the LORD; and in his law ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በወር አንድ ጊዜ ያነበዋል",
+     "en": "reads once a month"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በመቅደሱ ውስጥ ብቻ ይናገራል",
+     "en": "speaks only in the sanctuary"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከሽማግሌዎች ጋር ይማረዋል",
+     "en": "learns with the elders"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በቀንና በሌሊት ያስባል",
+     "en": "doth he meditate day and night"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመዝሙረ ዳዊት 1፡2 “ነገር ግን በእግዚአብሔር ሕግ ደስ ይለዋል ሕጉንም በቀንና በሌሊት ያስባል” ተብሎ ተጽፏል።",
+   "en": "Psalm 1:2 states: \"But his delight is in the law of the LORD; and in his law doth he meditate day and night.\""
+  },
+  "excerpt": {
+   "am": "ነገር ግን በእግዚአብሔር ሕግ ደስ ይለዋል ሕጉንም",
+   "en": "But his delight is in the law of the LORD; and in his law"
+  },
+  "source": {
+   "label": "መዝሙረ ዳዊት 1:1, 2, 3, 4, 5",
+   "route": "/bible/psalms/1?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "56cf8615-e799-5a6b-a467-7bba7f2ac5a6"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-6fe38593aa51",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ካልዕ 3፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “በነገሠም በአራተኛው ዓመት ___”",
+   "en": "Complete the verse in 2 Chronicles 3:2: \"And he began to build in the fourth year of his reign, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በመጀመሪያው ወር መሥራት ጀመረ",
+     "en": "in the first month"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በሁለተኛው ወር መሥራት ጀመረ",
+     "en": "in the second month"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በሰባተኛው ወር መሥራት ጀመረ",
+     "en": "in the seventh month"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በዐሥረኛው ወር መሥራት ጀመረ",
+     "en": "in the tenth month"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በ2 ዜና መዋዕል 3፡2 “በነገሠም በአራተኛው ዓመት በሁለተኛው ወር መሥራት ጀመረ” ይላል።",
+   "en": "2 Chronicles 3:2 states: \"And he began to build in the second day of the second month, in the fourth year of his reign.\""
+  },
+  "excerpt": {
+   "am": "በነገሠም በአራተኛው ዓመት",
+   "en": "And he began to build in the fourth year of his reign,"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ካልዕ 3:1, 2, 3, 4, 5",
+   "route": "/bible/second-chronicles/3?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "f0b11bbe-14b2-5801-a38e-d410dfb7c2a0"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-72bda6a1749d",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “እግዚአብሔር ጦርነትን ያጠፋል፤ ______” (ኦሪት ዘጸአት 15፡3)",
+   "en": "Complete the verse: \"The Lord is a man of war: ______.\" (Exodus 15:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ኃይሉ ዘላለማዊ ነው",
+     "en": "His power is everlasting"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "መንግሥቱ ለዘላለም ትኖራለች",
+     "en": "His kingdom endures forever"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ክብሩ በምድር ላይ ከፍ ከፍ አለ",
+     "en": "His glory is exalted upon earth"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ስሙም እግዚአብሔር ነው፤",
+     "en": "the Lord is His name"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በኦሪት ዘጸአት 15፡3 “እግዚአብሔር ጦርነትን ያጠፋል፤ ስሙም እግዚአብሔር ነው፤” ይላል።",
+   "en": "Exodus 15:3 proclaims: \"The Lord is a man of war: the Lord is his name.\""
+  },
+  "excerpt": {
+   "am": "እግዚአብሔር ጦርነትን ያጠፋል፤",
+   "en": "The Lord is a man of war:"
+  },
+  "source": {
+   "label": "ኦሪት ዘጸአት 15:1, 2, 3, 4, 5",
+   "route": "/bible/exodus/15?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "ce826ccf-aa95-50ae-afd2-af2a36925866"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-731c697907fb",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 12፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “የኢየሩሳሌም ልጅ! በነቢዩ የተጻፈው ውርደትሽ ይህ ነው፤ የኢየሩሳሌም ልጅ! ___”",
+   "en": "Complete the verse in 1 Meqabyan 12:1: \"O daughter of Jerusalem! this is thy reproach written in the prophet; O daughter of Jerusalem! ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ምሕረትሽና በረከትሽ በምድር ላይ ፈሰሰ",
+     "en": "thy mercy and blessing poured upon earth"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሥራሽና በደልሽ እንደ ሰዶምና ገሞራ ሰዎች ሥራና በደል ነውና",
+     "en": "for thy work and transgression is as Sodom and Gomorrah"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከአሕዛብ ሁሉ ይልቅ ከፍ ከፍ አልሽ",
+     "en": "thou art exalted above all Gentiles"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የሰላምሽ ዜና በከተሞች ሁሉ ተሰማ",
+     "en": "news of thy peace was heard in all cities"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 12፡1 “ሥራሽና በደልሽ እንደ ሰዶምና ገሞራ ሰዎች ሥራና በደል ነውና” ይላል።",
+   "en": "1 Meqabyan 12:1 compares the works and transgressions to Sodom and Gomorrah."
+  },
+  "excerpt": {
+   "am": "የኢየሩሳሌም ልጅ! በነቢዩ የተጻፈው ውርደትሽ ይህ ነው፤ የኢየሩሳሌም ልጅ!",
+   "en": "O daughter of Jerusalem! this is thy reproach written in the prophet; O daughter of Jerusalem!"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 12:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/12?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "227bde03-b756-5a87-a8ac-571607e0a599"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-75d5479a75d5",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ጦቢት 3:1 ያለውን ቃል ያሟሉ፦ “በልብ ጭንቀት ተከዝሁ፤ ___”",
+   "en": "Complete the verse in tobit 3:1: “I was grieved in heart; ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ምድረ በዳ ሄዱ",
+     "en": "they went into the wilderness"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "አልቅሼም ጸለይሁ",
+     "en": "I wept and prayed"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በሰላም ተመለሱ",
+     "en": "they returned in peace"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በእምነት ጸኑ",
+     "en": "they remained steadfast in faith"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ጦቢት 3:1 ውስጥ “በልብ ጭንቀት ተከዝሁ፤ አልቅሼም ጸለይሁ” ተጽፏል።",
+   "en": "tobit 3:1 continues: “I was grieved in heart; I wept and prayed.”"
+  },
+  "excerpt": {
+   "am": "በልብ ጭንቀት ተከዝሁ፤",
+   "en": "I was grieved in heart;"
+  },
+  "source": {
+   "label": "መጽሐፈ ጦቢት 3:1, 2, 3, 4, 5",
+   "route": "/bible/tobit/3?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "7a69d9f3-e2d5-5ecf-a487-d56643a22294"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-7891980af16a",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የጥበብን ምክር ባዶ ቦታ አሟሉ፦ “ሌላ ያመስግንህ እንጂ ___ እንግዳም እንጂ የገዛ ከንፈርህ አይደለም።” (ተግሣጽ 3፡2)",
+   "en": "Fill in the blank to complete the proverb of humility: \"Let another man praise thee, and not ___ a stranger, and not thine own lips.\" (Tegsats 3:2)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወዳጅህ አይደለም",
+     "en": "not thy friend"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ዘመድህ አይደለም",
+     "en": "not thy kinsman"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "አፍህ አይደለም",
+     "en": "thine own mouth"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ጠላትህ አይደለም",
+     "en": "not thine enemy"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ተግሣጽ 3፡2 ላይ “ሌላ ያመስግንህ እንጂ አፍህ አይደለም” በማለት የትሕትናንና ራስን ያለማወደስን ጥበብ ይመክራል።",
+   "en": "Tegsats (Proverbs) 3:2 teaches: \"Let another man praise thee, and not thine own mouth; a stranger, and not thine own lips.\""
+  },
+  "excerpt": {
+   "am": "ሌላ ያመስግንህ እንጂ",
+   "en": "Let another man praise thee, and not"
+  },
+  "source": {
+   "label": "መጽሐፈ ተግሣጽ 3:1, 2, 3, 4, 5",
+   "route": "/bible/tegsats/3?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "6145c1a2-de1d-5448-ac6a-eac43b7ebb3e"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-7a6a0a47eaee",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በየዮሐንስ ራእይ 13፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “በቀንዶቹም ላይ ዐሥር ዘውዶች በራሶቹም ላይ ___”",
+   "en": "Complete the verse in Revelation 13:1: \"and upon his horns ten crowns, and upon his heads ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የእሳት ነበልባል ነበረ",
+     "en": "flames of fire"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ጽኑዕ ኃይል ነበረ",
+     "en": "great power"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የክብር አክሊል ነበረ",
+     "en": "crown of glory"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የስድብ ስም ነበረ",
+     "en": "the name of blasphemy"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በራእይ 13፡1 “በቀንዶቹም ላይ ዐሥር ዘውዶች በራሶቹም ላይ የስድብ ስም ነበረ” ይላል።",
+   "en": "Revelation 13:1 reads: \"and upon his horns ten crowns, and upon his heads the name of blasphemy.\""
+  },
+  "excerpt": {
+   "am": "በቀንዶቹም ላይ ዐሥር ዘውዶች በራሶቹም ላይ",
+   "en": "and upon his horns ten crowns, and upon his heads"
+  },
+  "source": {
+   "label": "የዮሐንስ ራዕይ 13:1, 2, 3, 4, 5",
+   "route": "/bible/revelation/13?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "794f323f-0022-5055-a4a2-f68925f9441f"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-7a6cdc8f5491",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በመኃልየ መኃልይ ዘሰሎሞን 1፡1 የሚገኘውን ኃይለ ቃል ያጠናቅቁ።",
+   "en": "Complete the opening title of Song of Songs 1:1."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሰሎሞን መዝሙር።",
+     "en": "Song of Solomon."
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የዳዊት መዝሙር።",
+     "en": "Psalm of David."
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የአሳፍ መዝሙር።",
+     "en": "Psalm of Asaph."
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የኤማን መዝሙር።",
+     "en": "Psalm of Heman."
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በመኃልየ መኃልይ 1፡1 “ከመዝሙር ሁሉ የሚበልጥ የሰሎሞን መዝሙር” ይላል።",
+   "en": "Song of Songs 1:1 begins: \"The Song of songs, which is Solomon's.\""
+  },
+  "excerpt": {
+   "am": "ከመዝሙር ሁሉ የሚበልጥ",
+   "en": "The song that is greater than all songs,"
+  },
+  "source": {
+   "label": "መኃልየ መኃልይ ዘሰሎሞን 1:1, 2, 3, 4, 5",
+   "route": "/bible/song-of-songs/1?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "ba63bd22-8543-5bb3-a203-17ee0bc3e2d4"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-7cbea1e96fa6",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የጥበብን ምሳሌ ባዶ ቦታ አሟሉ፦ “አለንጋ ለፈረስ፥ ___ እንደ ሆነ፥” (ተግሣጽ 2፡3)",
+   "en": "Fill in the blank to complete the proverb: \"A whip for the horse, ___ and a rod for the fool's back.\" (Tegsats 2:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ልጓም ለበቅሎ",
+     "en": "a bridle for the mule"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ቀንበር ለበሬ",
+     "en": "a yoke for the ox"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "መውጊያ ለአህያ",
+     "en": "a bridle (goad) for the ass"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "መጓጓዣ ለግመል",
+     "en": "a burden for the camel"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ተግሣጽ 2፡3 ላይ “አለንጋ ለፈረስ፥ መውጊያ ለአህያ እንደ ሆነ” በማለት ተግሣጽና መመሪያ እንደሚያስፈልግ ያስተምራል።",
+   "en": "Tegsats (Proverbs) 2:3 contrasts discipline with folly: \"A whip for the horse, a bridle for the ass, and a rod for the fool's back.\""
+  },
+  "excerpt": {
+   "am": "አለንጋ ለፈረስ፥",
+   "en": "A whip for the horse,"
+  },
+  "source": {
+   "label": "መጽሐፈ ተግሣጽ 2:1, 2, 3, 4, 5",
+   "route": "/bible/tegsats/2?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "9c3a8b32-80a9-5cfe-a72b-a467e10920c0"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-7cee76e1e9ed",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በየዮሐንስ ራእይ 20፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “የጥልቁንም መክፈቻና ታላቁን ሰንሰለት በእጁ የያዘ መልአክ ___”",
+   "en": "Complete the verse in Revelation 20:1: \"And I saw an angel ___ having the key of the bottomless pit and a great chain in his hand\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በዙፋኑ ፊት ቆመ",
+     "en": "stood before the throne"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ከሰማይ ሲወርድ አየሁ",
+     "en": "come down from heaven"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ድምፁን ከፍ አደረገ",
+     "en": "lifted up his voice"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በምድር ላይ ቆመ",
+     "en": "stood upon the earth"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በራእይ 20፡1 “የጥልቁንም መክፈቻና ታላቁን ሰንሰለት በእጁ የያዘ መልአክ ከሰማይ ሲወርድ አየሁ” ይላል።",
+   "en": "Revelation 20:1 reads: \"And I saw an angel come down from heaven, having the key of the bottomless pit and a great chain in his hand.\""
+  },
+  "excerpt": {
+   "am": "የጥልቁንም መክፈቻና ታላቁን ሰንሰለት በእጁ የያዘ መልአክ",
+   "en": "having the key of the bottomless pit and a great chain in his hand"
+  },
+  "source": {
+   "label": "የዮሐንስ ራዕይ 20:1, 2, 3, 4, 5",
+   "route": "/bible/revelation/20?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "8ad7ca30-e53d-515b-ac3d-8aee8c857739"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-7e94a4882d15",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ጥበብ 3፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “የጻድቃን ነፍስ ግን በእግዚአብሔር እጅ ናት፤ ___”",
+   "en": "Complete the verse in Wisdom 3:1: \"But the souls of the righteous are in the hand of God, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ከሞትም አያመልጡም",
+     "en": "shall not escape death"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "መከራም አያገኛቸውም",
+     "en": "there shall no torment touch them"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በምድርም ብቻ ይኖራሉ",
+     "en": "dwell only upon earth"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ተስፋቸውም ይጠፋል",
+     "en": "their hope shall perish"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ጥበብ 3፡1 “የጻድቃን ነፍስ ግን በእግዚአብሔር እጅ ናት፤ መከራም አያገኛቸውም” ይላል።",
+   "en": "Wisdom 3:1 declares: \"But the souls of the righteous are in the hand of God, and there shall no torment touch them.\""
+  },
+  "excerpt": {
+   "am": "የጻድቃን ነፍስ ግን በእግዚአብሔር እጅ ናት፤",
+   "en": "But the souls of the righteous are in the hand of God, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ጥበብ 3:1, 2, 3, 4, 5",
+   "route": "/bible/wisdom/3?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "183dbf52-c570-542b-a788-2b860392dd33"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-864253cb0dcf",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘሌዋውያን 19፡2 ያለውን ኃይለ ቃል ያሟሉ፦ ““ለእስራኤል ልጆች ማኅበር ሁሉ እንዲህ በላቸው፦ ___”",
+   "en": "Complete the verse in Leviticus 19:2: \"Speak unto all the congregation of the children of Israel, and say unto them, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ትእዛዜን ሁሉ በልባችሁ ጠብቁ",
+     "en": "keep all my commandments in your heart"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እኔ እግዚአብሔር አምላካችሁ ቅዱስ ነኝና እናንተ ቅዱሳን ሁኑ",
+     "en": "Ye shall be holy: for I the LORD your God am holy"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ወደ ተስፋይቱ ምድር በሰላም ግቡ",
+     "en": "enter the promised land in peace"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በየወሩ አዲስ መሥዋዕት አቅርቡ",
+     "en": "offer new sacrifices every month"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 19፡2 “እኔ እግዚአብሔር አምላካችሁ ቅዱስ ነኝና እናንተ ቅዱሳን ሁኑ” ይላል።",
+   "en": "Leviticus 19:2 states: \"Ye shall be holy: for I the LORD your God am holy.\""
+  },
+  "excerpt": {
+   "am": "“ለእስራኤል ልጆች ማኅበር ሁሉ እንዲህ በላቸው፦",
+   "en": "Speak unto all the congregation of the children of Israel, and say unto them,"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 19:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/19?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "d45968c5-4241-5dd0-a94c-c9181768d892"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-879a0c04f65f",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 8:2 ያለውን ቃል ያሟሉ፦ “ዛሬ ግን ጫፎችን፥ ___”",
+   "en": "Complete the verse in first meqabyan 8:2: “But today it has put forth shoots, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የድንጋይ ጽላት",
+     "en": "a stone tablet"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ቅጠልንና ፍሬን",
+     "en": "leaves and fruit"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የእንጨት መርከብ",
+     "en": "a wooden ark"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የብር ጽዋ",
+     "en": "a silver cup"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 8:2 ውስጥ “ዛሬ ግን ጫፎችን፥ ቅጠልንና ፍሬን” ተጽፏል።",
+   "en": "first meqabyan 8:2 continues: “But today it has put forth shoots, leaves and fruit.”"
+  },
+  "excerpt": {
+   "am": "ዛሬ ግን ጫፎችን፥",
+   "en": "But today it has put forth shoots,"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 8:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/8?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "4bb36af9-30b4-5ae6-ae17-b3053bf05e5a"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-8828fd853754",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “ከእስራኤል ልጆች ወይም በእስራኤል ዘንድ ከሚቀመጡ እንግዶች ማናቸውም ሰው ዘሩን ለሞሎክ አገልግሎት ቢሰጥ ______፤ የሀገሩ ሕዝብ በድንጋይ ይውገሩት።” (ዘሌዋውያን 20፡2)",
+   "en": "Complete the verse: \"Whosoever he be of the children of Israel, or of the strangers that sojourn in Israel, that giveth any of his seed unto Molech; ______: the people of the land shall stone him with stones.\" (Leviticus 20:2)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ከከተማ ይውጣ",
+     "en": "he shall depart the city"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ፈጽሞ ይገደል",
+     "en": "he shall surely be put to death"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "መሥዋዕት ያቅርብ",
+     "en": "he shall offer sacrifice"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በዕጣ ይለይ",
+     "en": "he shall be separated by lot"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 20፡2 “ዘሩን ለሞሎክ አገልግሎት ቢሰጥ ፈጽሞ ይገደል፤ የሀገሩ ሕዝብ በድንጋይ ይውገሩት” ይላል።",
+   "en": "Leviticus 20:2 commands: \"he shall surely be put to death: the people of the land shall stone him with stones.\""
+  },
+  "excerpt": {
+   "am": "“ደግሞ የእስራኤልን ልጆች እንዲህ በላቸው፦ ከእስራኤል ልጆች ወይም በእስራኤል ዘንድ ከሚቀመጡ እንግዶች ማናቸውም ሰው ዘሩን ለሞሎክ አገልግሎት ቢሰጥ",
+   "en": "Whosoever he be of the children of Israel, or of the strangers that sojourn in Israel, that giveth any of his seed unto Molech;"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 20:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/20?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "43f98b35-5b4a-522d-a2bb-de5489cf513e"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-8998dbca4c48",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ቀዳማዊ 7፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “የይሳኮርም ልጆች፤ ቶላ፥ ፋዋ፥ ያሱብ፥ ሰምሮን፥ ___”",
+   "en": "Complete the verse in 1 Chronicles 7:1: \"Now the sons of Issachar were, Tola, and Puah, Jashub, and Shimron, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሁለት ናቸው",
+     "en": "two"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሦስት ናቸው",
+     "en": "three"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "አምስት ናቸው",
+     "en": "five"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "አራት ናቸው",
+     "en": "four"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ1 ዜና መዋዕል 7፡1 “የይሳኮርም ልጆች፤ ቶላ፥ ፋዋ፥ ያሱብ፥ ሰምሮን፥ አራት ናቸው” ተብሎ ተጽፏል።",
+   "en": "1 Chronicles 7:1 records: \"Now the sons of Issachar were, Tola, and Puah, Jashub, and Shimron, four.\""
+  },
+  "excerpt": {
+   "am": "የይሳኮርም ልጆች፤ ቶላ፥ ፋዋ፥ ያሱብ፥ ሰምሮን፥",
+   "en": "Now the sons of Issachar were, Tola, and Puah, Jashub, and Shimron,"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 7:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/7?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "dc8238a8-b45c-50fb-ab89-5b008cc6e665"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-8bd822a30b17",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመጽሐፈ ተግሣጽን ምሳሌ ባዶ ቦታ አሟሉ፦ “ኃጥእ ማንም ሳያሳድደው ___፤” (ተግሣጽ 4፡1)",
+   "en": "Fill in the blank to complete the proverb: \"The wicked flee when ___\" (Tegsats 4:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ይወድቃል",
+     "en": "falleth"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ይደነግጣል",
+     "en": "is terrified"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ይሸሻል",
+     "en": "fleeth"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ይጠፋል",
+     "en": "perisheth"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ተግሣጽ 4፡1 “ኃጥእ ማንም ሳያሳድደው ይሸሻል” በማለት የኃጥዕን ውስጣዊ ፍርሃት ያስተምራል።",
+   "en": "Tegsats (Proverbs) 4:1 observes: \"The wicked flee when no man pursueth.\""
+  },
+  "excerpt": {
+   "am": "ኃጥእ ማንም ሳያሳድደው",
+   "en": "The wicked flee when"
+  },
+  "source": {
+   "label": "መጽሐፈ ተግሣጽ 4:1, 2, 3, 4, 5",
+   "route": "/bible/tegsats/4?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "cb6f0cef-0d41-5e6d-a736-2a8cf8bfe90c"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-8d5a457df61a",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ቀዳማዊ 14፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “የጢሮስም ንጉሥ ኪራም ቤት ይሠሩለት ዘንድ መልእክተኞችን፥ የዝግባ እንጨትንም፥ ___”",
+   "en": "Complete the verse in 1 Chronicles 14:1: \"Now Hiram king of Tyre sent messengers to David, and timber of cedars, with ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የወርቅ እቃዎችንና ሽቱዎችን ላከ",
+     "en": "vessels of gold and spices"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሠራዊቱንና ፈረሶቹን አዘጋጀ",
+     "en": "prepared his host and horses"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የሰላም ቃል ኪዳን ሰጠው",
+     "en": "made a covenant of peace"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ጠራቢዎችንም፥ አናጢዎችንም ወደ ዳዊት ላከ",
+     "en": "masons and carpenters, to build him an house"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ1 ዜና መዋዕል 14፡1 “የጢሮስም ንጉሥ ኪራም ቤት ይሠሩለት ዘንድ መልእክተኞችን፥ የዝግባ እንጨትንም፥ ጠራቢዎችንም፥ አናጢዎችንም ወደ ዳዊት ላከ” ይላል።",
+   "en": "1 Chronicles 14:1 reads: \"Now Hiram king of Tyre sent messengers to David, and timber of cedars, with masons and carpenters, to build him an house.\""
+  },
+  "excerpt": {
+   "am": "የጢሮስም ንጉሥ ኪራም ቤት ይሠሩለት ዘንድ መልእክተኞችን፥ የዝግባ እንጨትንም፥",
+   "en": "Now Hiram king of Tyre sent messengers to David, and timber of cedars, with"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 14:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/14?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "6033e33e-c22f-5f0c-acb6-b0aa0fe8cab2"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-8dfea750d37d",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመጽሐፈ ኢያሱን ቃል ባዶ ቦታ አሟሉ፦ “እንዲህም ሆነ፤ ሕዝቡ ሁሉ ዮርዳኖስን ፈጽመው በተሻገሩ ጊዜ ___” (ኢያሱ 4፡1)",
+   "en": "Fill in the blank to complete the verse in Joshua: \"And it came to pass, when all the people were clean passed over Jordan, that ___\" (Joshua 4:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የዮርዳኖስ ውኃ ወዲያው ደረቀ",
+     "en": "the water of Jordan dried up immediately"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ካህናቱ በታቦቱ ዙሪያ ሰገዱ",
+     "en": "the priests bowed around the ark"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "እግዚአብሔር ኢያሱን እንዲህ ብሎ ተናገረው",
+     "en": "the LORD spake unto Joshua, saying"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የእስራኤል ልጆች እልልታ አሰሙ",
+     "en": "the children of Israel shouted for joy"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ኢያሱ 4፡1 “እንዲህም ሆነ፤ ሕዝቡ ሁሉ ዮርዳኖስን ፈጽመው በተሻገሩ ጊዜ እግዚአብሔር ኢያሱን እንዲህ ብሎ ተናገረው” ተብሎ ተጽፏል።",
+   "en": "Joshua 4:1 records: \"And it came to pass, when all the people were clean passed over Jordan, that the LORD spake unto Joshua, saying.\""
+  },
+  "excerpt": {
+   "am": "እንዲህም ሆነ፤ ሕዝቡ ሁሉ ዮርዳኖስን ፈጽመው በተሻገሩ ጊዜ",
+   "en": "And it came to pass, when all the people were clean passed over Jordan, that"
+  },
+  "source": {
+   "label": "መጽሐፈ ኢያሱ 4:1, 2, 3, 4, 5",
+   "route": "/bible/joshua/4?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "ca78dfec-013c-543f-a568-a0c9d878bf9d"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-9160c40414da",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመኃልየ መኃልይን ጥቅስ ባዶ ቦታ አሟሉ፦ “ከተማዪቱን የሚጠብቁት ___ ነፍሴ የወደደችውን አያችሁትን? አልኋቸው።” (መኃልይ 3፡3)",
+   "en": "Fill in the blank to complete the verse of Song of Songs: \"The watchmen that go about the city ___ to whom I said, Saw ye him whom my soul loveth?\" (Song of Songs 3:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ጐልማሶች ጠየቁኝ",
+     "en": "young men asked me"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ካህናት ባረኩኝ",
+     "en": "priests blessed me"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ሽማግሌዎች አደነቁኝ",
+     "en": "elders wondered at me"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ጠባቂዎች አገኙኝ",
+     "en": "found me"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመኃልየ መኃልይ ዘሰሎሞን 3፡3 ላይ “ከተማዪቱን የሚጠብቁት ጠባቂዎች አገኙኝ፤ ነፍሴ የወደደችውን አያችሁትን? አልኋቸው” ይላል።",
+   "en": "Song of Songs 3:3 reads: \"The watchmen that go about the city found me: to whom I said, Saw ye him whom my soul loveth?\""
+  },
+  "excerpt": {
+   "am": "ከተማዪቱን የሚጠብቁት",
+   "en": "The watchmen that go about the city"
+  },
+  "source": {
+   "label": "መኃልየ መኃልይ ዘሰሎሞን 3:1, 2, 3, 4, 5",
+   "route": "/bible/song-of-songs/3?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "104a8451-d738-597a-a49c-5b6e132507af"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-91767de34d7f",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ጦቢት 1፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “ከንፍታሌም ነገድ ከአሳሄል ወገን የገባኤል ልጅ የጦብኤል ልጅ ___”",
+   "en": "Complete the verse in Tobit 1:1: \"The book of the words of Tobit, son of Tobiel, the son of Gabael, of the tribe of Naphtali, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የካህናት አለቃ ነበረ",
+     "en": "was chief of priests"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በኢየሩሳሌም ተቀመጠ",
+     "en": "dwelt in Jerusalem"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በደስታ ተጓዘ",
+     "en": "journeyed with joy"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የጦቢት የነገሩ መጽሓፍ ይህ ነው",
+     "en": "this is the book of the words of Tobit"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ጦቢት 1፡1 “ከንፍታሌም ነገድ ከአሳሄል ወገን የገባኤል ልጅ የጦብኤል ልጅ የጦቢት የነገሩ መጽሓፍ ይህ ነው” በማለት ይጀምራል።",
+   "en": "Tobit 1:1 opens: \"The book of the words of Tobit, son of Tobiel, the son of Gabael, of the tribe of Naphtali.\""
+  },
+  "excerpt": {
+   "am": "ከንፍታሌም ነገድ ከአሳሄል ወገን የገባኤል ልጅ የጦብኤል ልጅ",
+   "en": "The book of the words of Tobit, son of Tobiel, the son of Gabael, of the tribe of Naphtali,"
+  },
+  "source": {
+   "label": "መጽሐፈ ጦቢት 1:1, 2",
+   "route": "/bible/tobit/1?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "f7f17a7c-6ffd-5048-a01c-e6b64110e368"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-9418513c29ce",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 13፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “በቍጣዬ በያዝኋቸው ጊዜ ይዋረዳሉና፥ ይቀሠፋሉምና ዛሬ ራሳቸውን ለሚያስታብዩ ___”",
+   "en": "Complete the verse in 1 Meqabyan 13:1: \"For when I hold them in my wrath they shall be brought low and plagued; therefore today to those that magnify themselves ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ለባቢሎንና ለግብፅ ሰዎች ሁሉ ወዮላቸው",
+     "en": "woe to all people of Babylon and Egypt"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ለጢሮስና ለሲዶና፥ ለይሁዳ ሀገር አውራጃዎችም ሁሉ ወዮላቸው",
+     "en": "woe to Tyre and Sidon and all provinces of Judah"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ለከነዓንና ለአሞጽ አውራጃዎች ወዮላቸው",
+     "en": "woe to the districts of Canaan and Ammon"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ለሰማርያና ለገሊላ ከተሞች ወዮላቸው",
+     "en": "woe to cities of Samaria and Galilee"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 13፡1 “ዛሬ ራሳቸውን ለሚያስታብዩ ለጢሮስና ለሲዶና፥ ለይሁዳ ሀገር አውራጃዎችም ሁሉ ወዮላቸው” ይላል።",
+   "en": "1 Meqabyan 13:1 proclaims woe unto Tyre and Sidon and the districts of Judah."
+  },
+  "excerpt": {
+   "am": "በቍጣዬ በያዝኋቸው ጊዜ ይዋረዳሉና፥ ይቀሠፋሉምና ዛሬ ራሳቸውን ለሚያስታብዩ",
+   "en": "For when I hold them in my wrath they shall be brought low and plagued; therefore today to those that magnify themselves"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 13:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/13?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "03e8b3b9-f43e-5a91-af62-2abc0650a204"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-9489b7f5e030",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በየሐዋርያት ሥራ 11፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “ሐዋርያትና በይሁዳ የነበሩ ወንድሞችም አሕዛብ የእግዚአብሔርን ቃል ___”",
+   "en": "Complete the verse in Acts 11:1: \"And the apostles and brethren that were in Judaea heard that the Gentiles ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "እንዳስተማሩ አዩ",
+     "en": "saw that they taught"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እንዳደነቁ ተረዱ",
+     "en": "understood that they marveled"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "እንደ ጠበቁ ተመለከቱ",
+     "en": "observed that they kept"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "እንደ ተቀበሉ ሰሙ",
+     "en": "had also received the word of God"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በየሐዋርያት ሥራ 11፡1 “ሐዋርያትና በይሁዳ የነበሩ ወንድሞችም አሕዛብ የእግዚአብሔርን ቃል እንደ ተቀበሉ ሰሙ” ይላል።",
+   "en": "Acts 11:1 states: \"And the apostles and brethren that were in Judaea heard that the Gentiles had also received the word of God.\""
+  },
+  "excerpt": {
+   "am": "ሐዋርያትና በይሁዳ የነበሩ ወንድሞችም አሕዛብ የእግዚአብሔርን ቃል",
+   "en": "And the apostles and brethren that were in Judaea heard that the Gentiles had also received the word of God"
+  },
+  "source": {
+   "label": "የሐዋርያት ሥራ 11:1, 2, 3, 4, 5",
+   "route": "/bible/acts/11?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "95f6d4fd-432d-5440-a685-8272a3c5631b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-97ba582d3d27",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ቀዳማዊ 12፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “በሴቅላቅም ከቂስ ልጅ ከሳኦል በተሸሸገ ጊዜ ___”",
+   "en": "Complete the verse in 1 Chronicles 12:1: \"Now these are they that came to David to Ziklag, while he yet kept himself close because of Saul the son of Kish: ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የተሰበሰቡት ካህናት እነዚህ ናቸው",
+     "en": "these are the priests that gathered"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የሳኦል አገልጋዮች በሙሉ ሸሹ",
+     "en": "all Saul’s servants fled"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከዳዊት ጋር የተማከሩት አለቆች ናቸው",
+     "en": "these are chiefs that consulted with David"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ወደ ዳዊት የመጡ እነዚህ ናቸው",
+     "en": "these are they that came to David"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ1 ዜና መዋዕል 12፡1 “በሴቅላቅም ከቂስ ልጅ ከሳኦል በተሸሸገ ጊዜ ወደ ዳዊት የመጡ እነዚህ ናቸው” ይላል።",
+   "en": "1 Chronicles 12:1 reads: \"Now these are they that came to David to Ziklag, while he yet kept himself close because of Saul the son of Kish.\""
+  },
+  "excerpt": {
+   "am": "በሴቅላቅም ከቂስ ልጅ ከሳኦል በተሸሸገ ጊዜ",
+   "en": "while he yet kept himself close because of Saul the son of Kish:"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 12:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/12?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "e2e85a40-0616-568a-a191-20928925fe6f"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-9eceee0b1178",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመኃልየ መኃልይን ምስጋና ባዶ ቦታ አሟሉ፦ “ከንፈሮችሽ እንደ ___ ንግግርሽም ያማረ ነው።” (መኃልይ 4፡3)",
+   "en": "Fill in the blank to complete the verse: \"Thy lips are like ___ and thy speech is comely.\" (Song of Songs 4:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የጽጌረዳ አበባ ናቸው",
+     "en": "are like a rose flower"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የወርቅ ሰንሰለት ናቸው",
+     "en": "are like a golden chain"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የብርሃን ጨረር ናቸው",
+     "en": "are like a ray of light"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ቀይ ሐር ፈትል ናቸው",
+     "en": "a thread of scarlet"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመኃልየ መኃልይ ዘሰሎሞን 4፡3 ላይ “ከንፈሮችሽ እንደ ቀይ ሐር ፈትል ናቸው” በማለት ክብሯን ያወድሳል።",
+   "en": "Song of Songs 4:3 praises: \"Thy lips are like a thread of scarlet, and thy speech is comely.\""
+  },
+  "excerpt": {
+   "am": "ከንፈሮችሽ እንደ",
+   "en": "Thy lips are like"
+  },
+  "source": {
+   "label": "መኃልየ መኃልይ ዘሰሎሞን 4:1, 2, 3, 4, 5",
+   "route": "/bible/song-of-songs/4?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "b6ef570a-6944-5d16-a176-f66ffb932914"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-9fb81d9bd0fa",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በመጽሐፈ መክብብ 1፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “ትውልድ ያልፋል፥ ትውልድም ይመጣል፤ ___”",
+   "en": "Complete the verse in Ecclesiastes 1:4: \"One generation passeth away, and another generation cometh: but ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሰማይ ከዋክብትም ይረግፋሉ",
+     "en": "the stars of heaven fall"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የሰውም ሥራ ሁሉ ያልቃል",
+     "en": "all work of man perisheth"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ፀሐይም ለዘላለም ይቆማል",
+     "en": "the sun standeth still forever"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ምድር ግን ለዘለዓለም ጸንታ ትኖራለች",
+     "en": "the earth abideth for ever"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ መክብብ 1፡4 “ትውልድ ያልፋል፥ ትውልድም ይመጣል፤ ምድር ግን ለዘለዓለም ጸንታ ትኖራለች” ተብሎ ተጽፏል።",
+   "en": "Ecclesiastes 1:4 declares: \"One generation passeth away, and another generation cometh: but the earth abideth for ever.\""
+  },
+  "excerpt": {
+   "am": "ትውልድ ያልፋል፥ ትውልድም ይመጣል፤",
+   "en": "One generation passeth away, and another generation cometh: but"
+  },
+  "source": {
+   "label": "መጽሐፈ መክብብ 1:1, 2, 3, 4, 5",
+   "route": "/bible/ecclesiastes/1?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "3a518cba-fc0b-5dbe-aa89-cfbbfd94515b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-a043ece83f79",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 14፡2 ያለውን ኃይለ ቃል ያሟሉ፦ ““ሰውን ስለ ፈጠርሁት አዘንሁ” ብሏልና በደለኞችን ሁሉ አጠፋ። ___”",
+   "en": "Complete the verse in 1 Meqabyan 14:2: \"Because He said, It repenteth me that I have made man, He destroyed all the transgressors: ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ምድሪቱንም ሁሉ ለዘላለም ባዶ አደረጋት",
+     "en": "and made the earth desolate forever"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ከስምንት ሰዎችም በቀር አላስቀረም፤ ሁሉንም አጠፋ",
+     "en": "and saved none save eight persons, and destroyed all"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከጻድቃኑ ወገን ሰባት ሰዎችን ብቻ አዳነ",
+     "en": "and saved only seven of the righteous"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ለኖኅ ልጆች አዲስ ከተማን መሠረተላቸው",
+     "en": "and founded a new city for Noah’s sons"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 14፡2 “ከስምንት ሰዎችም በቀር አላስቀረም፤ ሁሉንም አጠፋ” ይላል።",
+   "en": "1 Meqabyan 14:2 states that except eight persons, all were destroyed in the flood."
+  },
+  "excerpt": {
+   "am": "“ሰውን ስለ ፈጠርሁት አዘንሁ” ብሏልና በደለኞችን ሁሉ አጠፋ።",
+   "en": "Because He said, It repenteth me that I have made man, He destroyed all the transgressors:"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 14:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/14?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "9a6bdc79-e9e7-5815-a1e8-09eb7cd71f54"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-a1752be213a5",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመኃልየ መኃልይን ምስጢራዊ ቃል ባዶ ቦታ አሟሉ፦ “እኔ ተኝቼ ነበር፥ ___፤” (መኃልይ 5፡2)",
+   "en": "Fill in the blank to complete the verse: \"I sleep, but ___\" (Song of Songs 5:2)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ነፍሴ ግን ፈራች",
+     "en": "but my soul was afraid"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "መንፈሴ ግን ተጨነቀ",
+     "en": "but my spirit was troubled"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ዐይኔ ግን ታወረች",
+     "en": "but my eye was blinded"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ልቤ ግን ነቅታ ነበር",
+     "en": "my heart waketh"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመኃልየ መኃልይ ዘሰሎሞን 5፡2 “እኔ ተኝቼ ነበር፥ ልቤ ግን ነቅታ ነበር” በማለት የመንፈስን ንቃትና ተመስጦ ይገልጻል።",
+   "en": "Song of Songs 5:2 declares spiritual vigilance: \"I sleep, but my heart waketh.\""
+  },
+  "excerpt": {
+   "am": "እኔ ተኝቼ ነበር፥",
+   "en": "I sleep, but"
+  },
+  "source": {
+   "label": "መኃልየ መኃልይ ዘሰሎሞን 5:1, 2, 3, 4, 5",
+   "route": "/bible/song-of-songs/5?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "f4324fc6-da47-5ced-ade9-f54847ac75c4"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-a3afa46a2316",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የትንቢቱን ቃል ባዶ ቦታ አሟሉ፦ “እነሆ፥ መልእክተኛዬን እልካለሁ፥ ___ እናንተም የምትፈልጉት ጌታ በድንገት ወደ መቅደሱ ይመጣል፤” (ሚልክያስ 3፡1)",
+   "en": "Fill in the blank to complete the prophetic promise of the forerunner: \"Behold, I will send my messenger, and ___ and the Lord, whom ye seek, shall suddenly come to his temple.\" (Malachi 3:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የጽዮንን ቅጥር ይጠብቃል",
+     "en": "he shall keep the walls of Zion"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሕዝቡን ከጨለማ ያወጣል",
+     "en": "he shall bring out the people from darkness"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ቀስተ ደመናን በሰማይ ያቆማል",
+     "en": "he shall set a rainbow in heaven"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "መንገድንም በፊቴ ያስተካክላል",
+     "en": "he shall prepare the way before me"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በሚልክያስ 3፡1 ላይ “እነሆ፥ መልእክተኛዬን እልካለሁ፥ መንገድንም በፊቴ ያስተካክላል” በማለት የመጥምቁ ዮሐንስን አገልግሎት ያስተምራል።",
+   "en": "Malachi 3:1 records the messianic herald: \"Behold, I will send my messenger, and he shall prepare the way before me.\""
+  },
+  "excerpt": {
+   "am": "እነሆ፥ መልእክተኛዬን እልካለሁ፥",
+   "en": "Behold, I will send my messenger,"
+  },
+  "source": {
+   "label": "ትንቢተ ሚልክያስ 3:1, 2, 3, 4, 5",
+   "route": "/bible/malachi/3?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "94c62966-9fb3-5fe8-ad83-4f9e4599823c"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-a4b4cfb3c2c8",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘኍልቍ 11፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “ሕዝቡም በክፋት በእግዚአብሔር ፊት አጕረመረሙ፤ ___”",
+   "en": "Complete the verse in Numbers 11:1: \"And when the people complained, it displeased the LORD: and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሰማይ መና ዘነበላቸው",
+     "en": "manna rained upon them"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እግዚአብሔርም ሰምቶ ተቈጣ",
+     "en": "the LORD heard it; and his anger was kindled"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ደመናው ከድንኳኑ ተነሣ",
+     "en": "the cloud was taken up"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ምድሪቱ በረከትን ሰጠች",
+     "en": "the land gave forth blessing"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘኍልቍ 11፡1 “ሕዝቡም በክፋት በእግዚአብሔር ፊት አጕረመረሙ፤ እግዚአብሔርም ሰምቶ ተቈጣ” ይላል።",
+   "en": "Numbers 11:1 states: \"And when the people complained, it displeased the LORD: and the LORD heard it; and his anger was kindled.\""
+  },
+  "excerpt": {
+   "am": "ሕዝቡም በክፋት በእግዚአብሔር ፊት አጕረመረሙ፤",
+   "en": "And when the people complained, it displeased the LORD: and"
+  },
+  "source": {
+   "label": "ኦሪት ዘኍልቍ 11:1, 2, 3",
+   "route": "/bible/numbers/11?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "05a2f7f6-cb94-5894-a47e-f84281fc052c"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-a7098a857461",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በ1ኛ የዮሐንስ መልእክት 1፡5 ያለውን ቃል ያጠናቅቁ።",
+   "en": "Complete the statement in 1 John 1:5."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "እግዚአብሔር ብርሃን ነው",
+     "en": "God is light"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እግዚአብሔር ሰላም ነው",
+     "en": "God is peace"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "እግዚአብሔር እሳት ነው",
+     "en": "God is fire"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "እግዚአብሔር ምሕረት ነው",
+     "en": "God is mercy"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በ1ኛ ዮሐንስ 1፡5 “ከእርሱም የሰማናት ለእናንተም የምናወራላችሁ መልእክት፦ እግዚአብሔር ብርሃን ነው ጨለማም በእርሱ ዘንድ ከቶ የለም የምትል ይህች ናት” ይላል።",
+   "en": "1 John 1:5 declares: \"This then is the message which we have heard of him, and declare unto you, that God is light, and in him is no darkness at all.\""
+  },
+  "excerpt": {
+   "am": "ከእርሱም የሰማናት ለእናንተም የምናወራላችሁ መልእክት፦",
+   "en": "This then is the message which we have heard of him, and declare unto you,"
+  },
+  "source": {
+   "label": "1ኛ የዮሐንስ መልእክት 1:1, 2, 3, 4, 5",
+   "route": "/bible/first-john/1?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "eda5aed6-a3f9-569f-ad1b-c889643674fa"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-a9cc4f45959c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመኃልየ መኃልይን ቃል ባዶ ቦታ አሟሉ፦ “እኔ የዱር ጽጌረዳ፥ ___ ነኝ።” (መኃልይ 2፡1)",
+   "en": "Fill in the blank to complete the verse of the Song of Songs: \"I am the rose of Sharon, and ___.\" (Song of Songs 2:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የተራራው ንጹሕ ዛፍ",
+     "en": "the pure tree of the mountain"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የደጋው አበበ ሎሚ",
+     "en": "the blossom of the highlands"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የበረሃው መልካም ሽቱ",
+     "en": "the sweet scent of the desert"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የቈላም የሱፍ አበባ",
+     "en": "the lily of the valleys"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመኃልየ መኃልይ ዘሰሎሞን 2፡1 ላይ “እኔ የዱር ጽጌረዳ፥ የቈላም የሱፍ አበባ ነኝ” በማለት የቤተ ክርስቲያንና የድንግል ማርያም ምሳሌ ሆኖ ይተረጎማል።",
+   "en": "Song of Songs 2:1 poetically declares: \"I am the rose of Sharon, and the lily of the valleys.\""
+  },
+  "excerpt": {
+   "am": "እኔ የዱር ጽጌረዳ፥",
+   "en": "I am the rose of Sharon,"
+  },
+  "source": {
+   "label": "መኃልየ መኃልይ ዘሰሎሞን 2:1, 2, 3, 4, 5",
+   "route": "/bible/song-of-songs/2?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "dbf68a24-0640-5e58-af7b-39238929a616"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-aabe18f2a9e3",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ኢዮብ 6፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “እነሆ፥ የእግዚአብሔር ፍላጻ ___”",
+   "en": "Complete the verse in Job 6:4: \"For the arrows of the Almighty are ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ከሩቅ ተወርውሯል",
+     "en": "cast from afar"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በሥጋዬ ላይ ነው",
+     "en": "within me"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በልቤ ውስጥ ተተክሏል",
+     "en": "planted in my heart"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በፊቴ ወድቋል",
+     "en": "fallen before me"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ኢዮብ 6፡4 “እነሆ፥ የእግዚአብሔር ፍላጻ በሥጋዬ ላይ ነው፤” ይላል።",
+   "en": "Job 6:4 states: \"For the arrows of the Almighty are within me, the poison whereof drinketh up my spirit.\""
+  },
+  "excerpt": {
+   "am": "እነሆ፥ የእግዚአብሔር ፍላጻ",
+   "en": "For the arrows of the Almighty are"
+  },
+  "source": {
+   "label": "መጽሐፈ ኢዮብ 6:1, 2, 3, 4, 5",
+   "route": "/bible/job/6?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "eca8f4ad-4c9e-5ac9-a8fa-b7d285232932"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-ada651ca6471",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በኦሪት ዘፍጥረት 7:4 ያለውን ቃል ያሟሉ፦ “ከሰባት ቀን በኋላ ___”",
+   "en": "Complete the verse in genesis 7:4: “After seven days ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "አርባ ቀንና አርባ ሌሊት",
+     "en": "forty days and forty nights"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ስድስት ቀን",
+     "en": "six days"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ሰባት ሰዎችን",
+     "en": "seven people"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ሦስት ቀን",
+     "en": "three days"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በኦሪት ዘፍጥረት 7:4 ውስጥ “ከሰባት ቀን በኋላ አርባ ቀንና አርባ ሌሊት” ተጽፏል።",
+   "en": "genesis 7:4 continues: “After seven days forty days and forty nights.”"
+  },
+  "excerpt": {
+   "am": "ከሰባት ቀን በኋላ",
+   "en": "After seven days"
+  },
+  "source": {
+   "label": "ኦሪት ዘፍጥረት 7:1, 2, 3, 4, 5",
+   "route": "/bible/genesis/7?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "a8969c41-60ef-52f2-aac3-55e4a04733ef"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-af74e661b238",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “እግዚአብሔር እንዲህ ይላል፦ እናንተ ተዋችሁኝ፤ ስለዚህ እኔ ደግሞ ______” (2 ዜና 12፡5)",
+   "en": "Complete the verse: \"Thus saith the Lord, Ye have forsaken me, and therefore have I also ______.\" (2 Chronicles 12:5)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ከተማይቱን አፈረሳለሁ",
+     "en": "will destroy the city"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ምድሪቱን አሳልፌ እሰጣለሁ",
+     "en": "will deliver the land"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በረከቴን አርቃለሁ",
+     "en": "will remove my blessing"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በግብፅ ንጉሥ በሱስቀም እጅ ተውኋችሁ።",
+     "en": "left you in the hand of Shishak"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ2 ዜና 12፡5 “እናንተ ተዋችሁኝ፤ ስለዚህ እኔ ደግሞ በግብፅ ንጉሥ በሱስቀም እጅ ተውኋችሁ” ይላል።",
+   "en": "2 Chronicles 12:5 records: \"Ye have forsaken me, and therefore have I also left you in the hand of Shishak.\""
+  },
+  "excerpt": {
+   "am": "መጥቶ እንዲህ አላቸው፥ “እግዚአብሔር እንዲህ ይላል፦ እናንተ ተዋችሁኝ፤ ስለዚህ እኔ ደግሞ",
+   "en": "Thus saith the Lord, Ye have forsaken me, and therefore have I also"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ካልዕ 12:1, 2, 3, 4, 5",
+   "route": "/bible/second-chronicles/12?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "71813beb-9ad2-5f70-a173-8a5fd25e8ca8"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-b0f03572118e",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘኍልቍ 20፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “የእስራኤልም ልጆች ማኅበር ሁሉ በመጀመሪያው ወር ወደ ጺን ምድረ በዳ መጡ፤ ሕዝቡም በቃዴስ ተቀመጡ፤ ___”",
+   "en": "Complete the verse in Numbers 20:1: \"Then came the children of Israel, even the whole congregation, into the desert of Zin in the first month: and the people abode in Kadesh; and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሙሴም መሠዊያን በዚያ ሠራ",
+     "en": "Moses built an altar there"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ማርያምም በዚያ ሞተች፤ ተቀበረችም",
+     "en": "Miriam died there, and was buried there"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "አሮንም ወደ ተራራው ወጣ",
+     "en": "Aaron went up into the mount"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የሰማይ መናም በዚያ ዘነበላቸው",
+     "en": "manna rained upon them there"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘኍልቍ 20፡1 “የእስራኤልም ልጆች ማኅበር ሁሉ በመጀመሪያው ወር ወደ ጺን ምድረ በዳ መጡ፤ ሕዝቡም በቃዴስ ተቀመጡ፤ ማርያምም በዚያ ሞተች፤ ተቀበረችም” ይላል።",
+   "en": "Numbers 20:1 records: \"and the people abode in Kadesh; and Miriam died there, and was buried there.\""
+  },
+  "excerpt": {
+   "am": "የእስራኤልም ልጆች ማኅበር ሁሉ በመጀመሪያው ወር ወደ ጺን ምድረ በዳ መጡ፤ ሕዝቡም በቃዴስ ተቀመጡ፤",
+   "en": "Then came the children of Israel into the desert of Zin in the first month: and the people abode in Kadesh; and"
+  },
+  "source": {
+   "label": "ኦሪት ዘኍልቍ 20:1, 2, 3, 4, 5",
+   "route": "/bible/numbers/20?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "42aaeff8-72e2-543b-afff-27b3224db409"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-bad378478f47",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 11፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “አርሞንና ቅጥሮችዋ ወደቁ፤ እግዚአብሔርም እንደ ክፋታቸውና በእጃቸው እንደ ሠሩት ሥራ ___”",
+   "en": "Complete the verse in 1 Meqabyan 11:1: \"Armon and its walls fell; and God according to their wickedness and the work of their hands ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "አጥፍቶአቸዋልና",
+     "en": "for he destroyed them"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ከፍሎአቸዋልና",
+     "en": "for he recompensed them"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ምሮአቸዋልና",
+     "en": "for he showed them mercy"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ጠርቶአቸዋልና",
+     "en": "for he called them"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 11፡1 “አርሞንና ቅጥሮችዋ ወደቁ፤ እግዚአብሔርም እንደ ክፋታቸውና በእጃቸው እንደ ሠሩት ሥራ ከፍሎአቸዋልና” ይላል።",
+   "en": "1 Meqabyan 11:1 records God’s recompense according to their works."
+  },
+  "excerpt": {
+   "am": "አርሞንና ቅጥሮችዋ ወደቁ፤ እግዚአብሔርም እንደ ክፋታቸውና በእጃቸው እንደ ሠሩት ሥራ",
+   "en": "Armon and its walls fell; and God according to their wickedness and the work of their hands"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 11:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/11?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "a7be08af-d424-58a5-a087-67c474cd32d0"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-bd245873bdbd",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ኩፋሌ 10፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “በዚህ ኢዮቤልዩ በሦስተኛው ሱባዔ ርኩሳን አጋንንት ___”",
+   "en": "Complete the verse in Jubilees 10:1: \"And in the third week of this jubilee the unclean demons began to ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ጥልቁ ባሕር ተጣሉ",
+     "en": "be cast into the deep"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የኖኅን የልጅ ልጆች ያስቱአቸውና አእምሮአቸውን እያሳጡ ያጠፉአቸው ጀመሩ",
+     "en": "lead astray the children of the sons of Noah, and to make them to err and destroy them"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ከሰው ልጆች ፊት ፈጽመው ሸሹ",
+     "en": "flee utterly from the face of men"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በምድረ በዳ ብቻ ተቀመጡ",
+     "en": "dwell only in the wilderness"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ኩፋሌ 10፡1 “ርኩሳን አጋንንት የኖኅን የልጅ ልጆች ያስቱአቸውና አእምሮአቸውን እያሳጡ ያጠፉአቸው ጀመሩ” ይላል።",
+   "en": "Jubilees 10:1 tells of the unclean demons leading astray the grandchildren of Noah."
+  },
+  "excerpt": {
+   "am": "በዚህ ኢዮቤልዩ በሦስተኛው ሱባዔ ርኩሳን አጋንንት",
+   "en": "And in the third week of this jubilee the unclean demons began to"
+  },
+  "source": {
+   "label": "መጽሐፈ ኩፋሌ 10:1, 2, 3, 4, 5",
+   "route": "/bible/jubilees/10?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "d2a4ece2-ec48-5854-a082-7a6c79c7ff6f"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-bd835db3ee53",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ጦቢት 4:3 ያለውን ቃል ያሟሉ፦ “ልጄ በሞትሁ ጊዜ በመልካሙ ቅበረኝ፤ ___”",
+   "en": "Complete the verse in tobit 4:3: “My son, bury me properly when I die; ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "መሠዊያቸውን ያፈርሳል",
+     "en": "he will tear down their altars"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እናትህንም ጠብቃት",
+     "en": "and care for your mother"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ሕዝቡም ሌሊቱን ሁሉ አለቀሱ",
+     "en": "and the people wept all night"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የተወለደባትንም ቀን ረገመ",
+     "en": "cursed the day of his birth"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ጦቢት 4:3 ውስጥ “ልጄ በሞትሁ ጊዜ በመልካሙ ቅበረኝ፤ እናትህንም ጠብቃት” ተጽፏል።",
+   "en": "tobit 4:3 continues: “My son, bury me properly when I die; and care for your mother.”"
+  },
+  "excerpt": {
+   "am": "ልጄ በሞትሁ ጊዜ በመልካሙ ቅበረኝ፤",
+   "en": "My son, bury me properly when I die;"
+  },
+  "source": {
+   "label": "መጽሐፈ ጦቢት 4:1, 2, 3, 4, 5",
+   "route": "/bible/tobit/4?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "7bdd4d2e-da97-5eec-adc8-59867d4c7578"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-c4ec286a7f3e",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ተግሣጽ 6:1 ያለውን ቃል ያሟሉ፦ “ልባም ሴትን ___”",
+   "en": "Complete the verse in tegsats 6:1: “A wise woman— ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በሰላም ተመለሱ",
+     "en": "they returned in peace"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በእምነት ጸኑ",
+     "en": "they remained steadfast in faith"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ማን ያገኛታል",
+     "en": "who can find her?"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ሕዝቡን ሰበሰቡ",
+     "en": "they gathered the people"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ተግሣጽ 6:1 ውስጥ “ልባም ሴትን ማን ያገኛታል” ተጽፏል።",
+   "en": "tegsats 6:1 continues: “A wise woman— who can find her?.”"
+  },
+  "excerpt": {
+   "am": "ልባም ሴትን",
+   "en": "A wise woman—"
+  },
+  "source": {
+   "label": "መጽሐፈ ተግሣጽ 6:1, 2, 3, 4, 5",
+   "route": "/bible/tegsats/6?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "97d7577a-040c-5fac-a227-144b9f1b86e2"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-c7ba490b48e7",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመጽሐፈ ተግሣጽን ቃል ባዶ ቦታ አሟሉ፦ “ጥበብን በሚወድድ ልጅ ___፤” (ተግሣጽ 5፡3)",
+   "en": "Fill in the blank to complete the proverb: \"Whoso loveth wisdom ___\" (Tegsats 5:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሀብቱ ይበዛል",
+     "en": "his wealth multiplieth"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ቤቱ ይከብራል",
+     "en": "his house is honored"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "አባቱ ደስ ይለዋል",
+     "en": "rejoiceth his father"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ክብሩ ይታወቃል",
+     "en": "his glory is known"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በመጽሐፈ ተግሣጽ 5፡3 ላይ “ጥበብን በሚወድድ ልጅ አባቱ ደስ ይለዋል” በማለት የወላጅን ደስታና የጥበብን በረከት ያስተምራል።",
+   "en": "Tegsats (Proverbs) 5:3 teaches: \"Whoso loveth wisdom rejoiceth his father.\""
+  },
+  "excerpt": {
+   "am": "ጥበብን በሚወድድ ልጅ",
+   "en": "Whoso loveth wisdom"
+  },
+  "source": {
+   "label": "መጽሐፈ ተግሣጽ 5:1, 2, 3, 4, 5",
+   "route": "/bible/tegsats/5?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "a27efe9d-621b-5d58-a621-35f7f3e4467c"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-c99e1e704f62",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በመዝሙረ ዳዊት 2፡3 ያለውን ኃይለ ቃል ያሟሉ፦ “ማሰሪያቸውን እንበጥስ ___”",
+   "en": "Complete the verse in Psalm 2:3: \"Let us break their bands asunder, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ቀንበራቸውን እንሰብረው",
+     "en": "break their yoke"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ግዛታቸውን እናጥፋ",
+     "en": "destroy their dominion"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ድንበራቸውን እናፍርስ",
+     "en": "demolish their borders"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ገመዳቸውንም ከእኛ እንጣል",
+     "en": "cast away their cords from us"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመዝሙረ ዳዊት 2፡3 “ማሰሪያቸውን እንበጥስ ገመዳቸውንም ከእኛ እንጣል” ተብሎ ተጽፏል።",
+   "en": "Psalm 2:3 states: \"Let us break their bands asunder, and cast away their cords from us.\""
+  },
+  "excerpt": {
+   "am": "ማሰሪያቸውን እንበጥስ",
+   "en": "Let us break their bands asunder, and"
+  },
+  "source": {
+   "label": "መዝሙረ ዳዊት 2:1, 2, 3, 4, 5",
+   "route": "/bible/psalms/2?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "8a4ad3fe-7691-5908-a222-1d5ca697b254"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-ccdbc5beb4a1",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘሌዋውያን 15፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “ለእስራኤል ልጆች እንዲህ ብላችሁ ንገሩአቸው፦ ከሰውነቱ ዘር የሚፈስሰው ሰው ቢኖር ስለሚፈስሰው ነገር ___”",
+   "en": "Complete the verse in Leviticus 15:2: \"Speak unto the children of Israel, and say unto them, When any man hath a running issue out of his flesh, because of his issue he is ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ንጹሕ ነው",
+     "en": "is clean"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ርኩስ ነው",
+     "en": "is unclean"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የተባረከ ነው",
+     "en": "is blessed"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የተለየ ነው",
+     "en": "is separated"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 15፡2 “ለእስራኤል ልጆች እንዲህ ብላችሁ ንገሩአቸው፦ ከሰውነቱ ዘር የሚፈስሰው ሰው ቢኖር ስለሚፈስሰው ነገር ርኩስ ነው” ይላል።",
+   "en": "Leviticus 15:2 states: \"When any man hath a running issue out of his flesh, because of his issue he is unclean.\""
+  },
+  "excerpt": {
+   "am": "ለእስራኤል ልጆች እንዲህ ብላችሁ ንገሩአቸው፦ ከሰውነቱ ዘር የሚፈስሰው ሰው ቢኖር ስለሚፈስሰው ነገር",
+   "en": "Speak unto the children of Israel, and say unto them, When any man hath a running issue out of his flesh, because of his issue he is"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 15:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/15?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "4dc0b3ec-b0ed-586f-af8c-59fbfdf15d48"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-cd0d58a499d2",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ዮዲት 7፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “በማግሥቱም ሆሎፎርኒስ ወደ ቤጤልዋ ይጓዙ ዘንድ፥ ___”",
+   "en": "Complete the verse in Judith 7:1: \"The next day Holofernes commanded all his army, and all his people which were come to take his part, that they should remove their camp against Bethulia, to ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ወደ ኢየሩሳሌምም በሰላም እንዲገቡ አዘዘ",
+     "en": "and enter Jerusalem in peace"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ከከተማይቱ ሽማግሌዎች ጋር እንዲነጋገሩ ላከ",
+     "en": "and speak with the elders"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የምድሪቱን አዝመራ ብቻ እንዲሰበስቡ አዘዘ",
+     "en": "and gather the harvest of the land"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ቀድመውም የአንባዎቹን መግቢያ ይይዙና የእስራኤልን ልጆች ይዋጓቸው ዘንድ ከእርሱ ጋራ የተሰለፉ ጭፍሮቹንና ወገኖቹን ሁሉ አዘዛቸው",
+     "en": "take beforehand the ascents of the hill country, and to make war against the children of Israel"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ዮዲት 7፡1 “በማግሥቱም ሆሎፎርኒስ ወደ ቤጤልዋ ይጓዙ ዘንድ፥ ቀድመውም የአንባዎቹን መግቢያ ይይዙና የእስራኤልን ልጆች ይዋጓቸው ዘንድ ከእርሱ ጋራ የተሰለፉ ጭፍሮቹንና ወገኖቹን ሁሉ አዘዛቸው” ይላል።",
+   "en": "Judith 7:1 commands his troops to take the ascents of the hill country against Bethulia."
+  },
+  "excerpt": {
+   "am": "በማግሥቱም ሆሎፎርኒስ ወደ ቤጤልዋ ይጓዙ ዘንድ፥",
+   "en": "The next day Holofernes commanded all his army, that they should remove against Bethulia,"
+  },
+  "source": {
+   "label": "መጽሐፈ ዮዲት 7:1, 2, 3, 4, 5",
+   "route": "/bible/judith/7?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "9a7cddd8-e080-51f8-a85e-8509974d76ca"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-d6484727f355",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘሌዋውያን 17፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “ደሙ በዚያ ሰው ላይ ይቈጠርበታል፤ ደም አፍስሶአልና፤ ___”",
+   "en": "Complete the verse in Leviticus 17:4: \"blood shall be imputed unto that man; he hath shed blood; and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ከሰፈሩም ውጭ ይወሰድ",
+     "en": "he shall be taken outside the camp"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ያም ከሕዝቡ ተለይቶ ይጥፋ",
+     "en": "that man shall be cut off from among his people"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "መሥዋዕቱም አይሠምርለትም",
+     "en": "his offering shall not be accepted"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ካህናቱ ይገሥጹት",
+     "en": "the priests shall rebuke him"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 17፡4 “ደሙ በዚያ ሰው ላይ ይቈጠርበታል፤ ደም አፍስሶአልና፤ ያም ከሕዝቡ ተለይቶ ይጥፋ” ይላል።",
+   "en": "Leviticus 17:4 declares that the man who shed blood unlawfully shall be cut off from among his people."
+  },
+  "excerpt": {
+   "am": "ደሙ በዚያ ሰው ላይ ይቈጠርበታል፤ ደም አፍስሶአልና፤",
+   "en": "blood shall be imputed unto that man; he hath shed blood; and"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 17:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/17?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "9736cd11-d87a-56a4-a423-c17176787035"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-d6c54d0a615c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ቀዳማዊ 15፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “ዳዊትም በከተማው ለራሱ ቤቶችን ሠራ፤ ለእግዚአብሔርም ታቦት ስፍራ አዘጋጀ፤ ___”",
+   "en": "Complete the verse in 1 Chronicles 15:1: \"And David made him houses in the city of David, and prepared a place for the ark of God, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "መሠዊያም አቆመ",
+     "en": "and set up an altar"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የወርቅ ሳጥን አደረገ",
+     "en": "and made a chest of gold"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ካህናቱንም ሰበሰበ",
+     "en": "and gathered the priests"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ድንኳንም ተከለላት",
+     "en": "pitched for it a tent"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ1 ዜና መዋዕል 15፡1 “ዳዊትም በከተማው ለራሱ ቤቶችን ሠራ፤ ለእግዚአብሔርም ታቦት ስፍራ አዘጋጀ፤ ድንኳንም ተከለላት” ይላል።",
+   "en": "1 Chronicles 15:1 reads: \"And David made him houses in the city of David, and prepared a place for the ark of God, and pitched for it a tent.\""
+  },
+  "excerpt": {
+   "am": "ዳዊትም በከተማው ለራሱ ቤቶችን ሠራ፤ ለእግዚአብሔርም ታቦት ስፍራ አዘጋጀ፤",
+   "en": "And David made him houses in the city of David, and prepared a place for the ark of God, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 15:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/15?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "5e1eb251-0c42-5983-ab8b-c0f8e2b4d0ea"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-d91991f86e71",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ኢሳይያስ 1፡3 ያለውን ኃይለ ቃል ያሟሉ፦ “በሬ ገዢውን አህያም የጌታውን ጋጥ ዐወቀ፤ ___”",
+   "en": "Complete the verse in Isaiah 1:3: \"The ox knoweth his owner, and the ass his master’s crib: but ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ከመንገዴም ፈጽመው አልራቁም",
+     "en": "departed not from my way"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ስሜንም ሁልጊዜ ጠሩ",
+     "en": "called upon my name alway"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በመቅደሴም ደስ አላቸው",
+     "en": "rejoiced in my sanctuary"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "እስራኤል ግን አላወቁኝም፤ ሕዝቤም አላስተዋሉኝም",
+     "en": "Israel doth not know, my people doth not consider"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በትንቢተ ኢሳይያስ 1፡3 “በሬ ገዢውን አህያም የጌታውን ጋጥ ዐወቀ፤ እስራኤል ግን አላወቁኝም፤ ሕዝቤም አላስተዋሉኝም” ተብሎ ተጽፏል።",
+   "en": "Isaiah 1:3 declares: \"The ox knoweth his owner, and the ass his master’s crib: but Israel doth not know, my people doth not consider.\""
+  },
+  "excerpt": {
+   "am": "በሬ ገዢውን አህያም የጌታውን ጋጥ ዐወቀ፤",
+   "en": "The ox knoweth his owner, and the ass his master’s crib: but"
+  },
+  "source": {
+   "label": "ትንቢተ ኢሳይያስ 1:1, 2, 3, 4, 5",
+   "route": "/bible/isaiah/1?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "c19b4958-a81a-526c-a3ce-4fa98d28782e"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-dd323bf8e5d3",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 15፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “ያንጊዜም የምድያም ሰዎች በጠላትነት ተነሡባቸው፤ እስራኤልንም ይወጓቸው ዘንድ ሠራዊቶቻቸውን አስነሡባቸው፤ ___”",
+   "en": "Complete the verse in 1 Meqabyan 15:1: \"At that time the men of Midian rose up in enmity against them, and stirred up their host to fight against Israel: ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የንጉሣቸውም ስሙ አንቲኦኮስ ይባላል",
+     "en": "and the name of their king was Antiochus"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የንጉሣቸውም ስሙ አክራንድዮስ ይባላል",
+     "en": "and the name of their king was Akrandyos"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የንጉሣቸውም ስሙ አርዮክ ይባላል",
+     "en": "and the name of their king was Arioch"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የንጉሣቸውም ስሙ ዴሜጥሮስ ይባላል",
+     "en": "and the name of their king was Demetrius"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 15፡1 “የንጉሣቸውም ስሙ አክራንድዮስ ይባላል፤ የሶርያንና የኪልቅያን፥ የደማስቆንም ብዙ ሠራዊት በጧት ሰበሰበ” ይላል።",
+   "en": "1 Meqabyan 15:1 records the name of their king as Akrandyos."
+  },
+  "excerpt": {
+   "am": "ያንጊዜም የምድያም ሰዎች በጠላትነት ተነሡባቸው፤ እስራኤልንም ይወጓቸው ዘንድ ሠራዊቶቻቸውን አስነሡባቸው፤",
+   "en": "At that time the men of Midian rose up in enmity against them, and stirred up their host to fight against Israel:"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 15:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/15?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "c3da9e6e-60ac-5647-aeee-877477365373"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-de03f95ef642",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ጦቢት 7፡5 ያለውን ኃይለ ቃል ያሟሉ፦ “እነርሱም፥ “አዎ ደኅና ነው” አሉት፤ ጦብያም፥ ___”",
+   "en": "Complete the verse in Tobit 7:5: \"And they said, He is in good health: and Tobias said, ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "“ወንድሜ ነው” አለው",
+     "en": "He is my brother"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "“ጌታዬ ነው” አለው",
+     "en": "He is my lord"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "“አጎቴ ነው” አለው",
+     "en": "He is my uncle"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "“አባቴ ነው” አለው",
+     "en": "He is my father"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ጦቢት 7፡5 “እነርሱም፥ “አዎ ደኅና ነው” አሉት፤ ጦብያም፥ “አባቴ ነው” አለው” ይላል።",
+   "en": "Tobit 7:5 records: \"And they said, He is in good health: and Tobias said, He is my father.\""
+  },
+  "excerpt": {
+   "am": "እነርሱም፥ “አዎ ደኅና ነው” አሉት፤ ጦብያም፥",
+   "en": "And they said, He is in good health: and Tobias said,"
+  },
+  "source": {
+   "label": "መጽሐፈ ጦቢት 7:1, 2, 3, 4, 5",
+   "route": "/bible/tobit/7?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "0aa40156-e986-5409-a08b-9c84c0ff2b7d"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-def8a5a46b71",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በትንቢተ ሆሴዕ 6:1 ያለውን ቃል ያሟሉ፦ “እርሱ ሰብሮናልና፥ ___”",
+   "en": "Complete the verse in hosea 6:1: “For he has broken us, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "እርሱም ይፈውሰናል",
+     "en": "and he will heal us"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሕዝቡን ሰበሰቡ",
+     "en": "they gathered the people"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የእግዚአብሔርን ፈቃድ አድርገዋልና",
+     "en": "because they did the will of God"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ማን ያገኛታል",
+     "en": "who can find her?"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በትንቢተ ሆሴዕ 6:1 ውስጥ “እርሱ ሰብሮናልና፥ እርሱም ይፈውሰናል” ተጽፏል።",
+   "en": "hosea 6:1 continues: “For he has broken us, and he will heal us.”"
+  },
+  "excerpt": {
+   "am": "እርሱ ሰብሮናልና፥",
+   "en": "For he has broken us,"
+  },
+  "source": {
+   "label": "ትንቢተ ሆሴዕ 6:1, 2, 3, 4, 5",
+   "route": "/bible/hosea/6?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "db2d4d9b-a5da-5514-a439-437f1cea1a66"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-df0ec9af6b0b",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የመጽሐፈ ዜና መዋዕል ካልዕን ቃል ባዶ ቦታ አሟሉ፦ “የዳዊት ልጅ ሰሎሞንም በመንግሥቱ በረታ፤ ___ እጅግም አከበረው፤” (2 ዜና 1፡1)",
+   "en": "Fill in the blank to complete the verse in 2 Chronicles: \"And Solomon the son of David was strengthened in his kingdom, and ___ and magnified him exceedingly.\" (2 Chronicles 1:1)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የጦር ሠራዊቱ በምድር ሞላ",
+     "en": "his host of war filled the earth"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ጠላቶቹም ሁሉ ተንበርከኩ",
+     "en": "and all his enemies knelt down"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "አምላኩም እግዚአብሔር ከእርሱ ጋር ነበረ",
+     "en": "and the LORD his God was with him"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ወርቅና ብር በከተማው በዛ",
+     "en": "and gold and silver abounded in his city"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በ2ኛ ዜና መዋዕል 1፡1 “የዳዊት ልጅ ሰሎሞንም በመንግሥቱ በረታ፤ አምላኩም እግዚአብሔር ከእርሱ ጋር ነበረ፤ እጅግም አከበረው፤ አገነነውም” ተብሎ ተጽፏል።",
+   "en": "2 Chronicles 1:1 records: \"And Solomon the son of David was strengthened in his kingdom, and the LORD his God was with him, and magnified him exceedingly.\""
+  },
+  "excerpt": {
+   "am": "የዳዊት ልጅ ሰሎሞንም በመንግሥቱ በረታ፤",
+   "en": "And Solomon the son of David was strengthened in his kingdom,"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ካልዕ 1:1, 2, 3, 4, 5",
+   "route": "/bible/second-chronicles/1?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "fa9efc30-a7b8-5ae3-a4f8-e29612474f63"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-e037c7148605",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘፀአት 13፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “በእስራኤል ልጆች ዘንድ ከሰውም፥ ከእንስሳም መጀመሪያ የተወለደውን ማሕፀንን የሚከፍት በኵር ሁሉ ለእኔ ለይልኝ፤ ___”",
+   "en": "Complete the verse in Exodus 13:2: \"Sanctify unto me all the firstborn, whatsoever openeth the womb among the children of Israel, both of man and of beast: ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የካህኑ ድርሻ ነው",
+     "en": "it is the priest’s portion"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "የመሠዊያው በረከት ነው",
+     "en": "it is the blessing of the altar"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የተቀደሰ ስጦታ ነው",
+     "en": "it is a holy gift"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የእኔ ነው።",
+     "en": "it is mine"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በኦሪት ዘፀአት 13፡2 “በእስራኤል ልጆች ዘንድ ከሰውም፥ ከእንስሳም መጀመሪያ የተወለደውን ማሕፀንን የሚከፍት በኵር ሁሉ ለእኔ ለይልኝ፤ የእኔ ነው” ይላል።",
+   "en": "Exodus 13:2 records: \"Sanctify unto me all the firstborn, whatsoever openeth the womb among the children of Israel, both of man and of beast: it is mine.\""
+  },
+  "excerpt": {
+   "am": "በእስራኤል ልጆች ዘንድ ከሰውም፥ ከእንስሳም መጀመሪያ የተወለደውን ማሕፀንን የሚከፍት በኵር ሁሉ ለእኔ ለይልኝ፤",
+   "en": "Sanctify unto me all the firstborn, whatsoever openeth the womb among the children of Israel, both of man and of beast:"
+  },
+  "source": {
+   "label": "ኦሪት ዘጸአት 13:1, 2",
+   "route": "/bible/exodus/13?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "82f81bf4-8ee6-5f4d-a574-34780c444f52"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-e18bcaeeef0c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “አምላካችሁን እግዚአብሔርን ተከተሉ፤ ______፤ ትእዛዙንም ጠብቁ፤ ቃሉንም ስሙ፥ እርሱንም ተማጠኑት።” (ዘዳግም 13፡4)",
+   "en": "Complete the verse: \"Ye shall walk after the Lord your God, and ______ his commandments, and obey his voice, and ye shall serve him, and cleave unto him.\" (Deuteronomy 13:4)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ምድርንም ውረሱ",
+     "en": "and inherit the land"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እርሱንም ፍሩ",
+     "en": "fear him, and keep"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "መሥዋዕትን አቅርቡ",
+     "en": "and bring offerings"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በሰላም ኑሩ",
+     "en": "and dwell in safety"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘዳግም 13፡4 “አምላካችሁን እግዚአብሔርን ተከተሉ፤ እርሱንም ፍሩ፤ ትእዛዙንም ጠብቁ” ይላል።",
+   "en": "Deuteronomy 13:4 commands: \"Ye shall walk after the Lord your God, and fear him, and keep his commandments.\""
+  },
+  "excerpt": {
+   "am": "አምላካችሁን እግዚአብሔርን ተከተሉ፤",
+   "en": "Ye shall walk after the Lord your God, and"
+  },
+  "source": {
+   "label": "ኦሪት ዘዳግም 13:1, 2, 3, 4, 5",
+   "route": "/bible/deuteronomy/13?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "a6f35e70-69be-57c7-a69b-ba42ddb561ee"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-e6618ef20c2b",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ኩፋሌ 4:2 ያለውን ቃል ያሟሉ፦ “በውኃ ውስጥ የሚንቀሳቀሰውን ሁሉ። ___”",
+   "en": "Complete the verse in jubilees 4:2: “and everything moving in the water. ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "አዳምም ሁሉን በየስማቸው ጠራቸው",
+     "en": "Adam named them all"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ምድርንም ሙሉአት",
+     "en": "fill the earth"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ጠላትም ያሳድደዋልና",
+     "en": "an enemy will pursue him"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በተዘረጋችም ክንድ",
+     "en": "with an outstretched arm"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በመጽሐፈ ኩፋሌ 4:2 ውስጥ “በውኃ ውስጥ የሚንቀሳቀሰውን ሁሉ። አዳምም ሁሉን በየስማቸው ጠራቸው” ተጽፏል።",
+   "en": "jubilees 4:2 continues: “and everything moving in the water. Adam named them all.”"
+  },
+  "excerpt": {
+   "am": "በውኃ ውስጥ የሚንቀሳቀሰውን ሁሉ።",
+   "en": "and everything moving in the water."
+  },
+  "source": {
+   "label": "መጽሐፈ ኩፋሌ 4:1, 2, 3, 4, 5",
+   "route": "/bible/jubilees/4?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "0cf8c02f-d7c0-5197-a362-cc1518c35cc2"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-e68664c090e9",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ቀዳማዊ 1፡4 ያለውን የትውልድ ሐረግ ያጠናቅቁ።",
+   "en": "Complete the genealogy in 1 Chronicles 1:4."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ልጆቹም ሴም፥ ካም፥ ያፌት።",
+     "en": "his sons: Shem, Ham, Japheth."
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ልጆቹም ኤሳውና ያዕቆብ።",
+     "en": "his sons: Esau and Jacob."
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ልጆቹም ይስሐቅና እስማኤል።",
+     "en": "his sons: Isaac and Ishmael."
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ልጆቹም ፋሬስና ዛራ።",
+     "en": "his sons: Perez and Zerah."
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በዜና መዋዕል ቀዳማዊ 1፡4 ላይ “ኖኅ፥ ልጆቹም ሴም፥ ካም፥ ያፌት” ተብሎ ተዘርዝሯል።",
+   "en": "1 Chronicles 1:4 lists Noah and his sons: Shem, Ham, and Japheth."
+  },
+  "excerpt": {
+   "am": "ኖኅ፥",
+   "en": "Noah,"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 1:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/1?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "ea24ab60-3d72-58cd-aa09-71bec2062c52"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-e9b34cf3eb40",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በወደ ፊልጵስዩስ ሰዎች 1፡1 ያለውን የሰላምታ ቃል ያጠናቅቁ።",
+   "en": "Complete the greeting to the saints in Philippians 1:1."
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በፊልጵስዩስ ለሚኖሩ፤",
+     "en": "which are at Philippi;"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በቆሮንቶስ ለሚኖሩ፤",
+     "en": "which are at Corinth;"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በኤፌሶን ለሚኖሩ፤",
+     "en": "which are at Ephesus;"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በሮሜ ለሚኖሩ፤",
+     "en": "which are at Rome;"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በፊልጵስዩስ 1፡1 “ከኢየሱስ ክርስቶስ ባርያዎች ከጳውሎስና ከጢሞቴዎስ፥ በፊልጵስዩስ ለሚኖሩ... ላሉ ቅዱሳን ሁሉ” ተብሎ ተጽፏል።",
+   "en": "Philippians 1:1 sends greetings from Paul and Timothy to all the saints in Christ Jesus which are at Philippi."
+  },
+  "excerpt": {
+   "am": "ከኢየሱስ ክርስቶስ ባርያዎች ከጳውሎስና ከጢሞቴዎስ፥",
+   "en": "Paul and Timotheus, the servants of Jesus Christ,"
+  },
+  "source": {
+   "label": "ወደ ፊልጵስዩስ ሰዎች 1:1, 2",
+   "route": "/bible/philippians/1?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "375b3574-e761-50c8-aecc-fdccee1edfe4"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-ecebca11853e",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ መሳፍንት 8፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “ጌዴዎንም ወደ ዮርዳኖስ መጥቶ ተሻገረ፤ ከእርሱም ጋር ያሉት ___”",
+   "en": "Complete the verse in Judges 8:4: \"And Gideon came to Jordan, and passed over, he, and the ___ that were with him\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "አንድ ሺህ ሰዎች ተሻገሩ",
+     "en": "one thousand men passed over"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ሦስት መቶ ሰዎች ተሻገሩ",
+     "en": "three hundred men that were with him"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ሰባት መቶ ሰዎች ተሻገሩ",
+     "en": "seven hundred men passed over"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "አምስት መቶ ሰዎች ተሻገሩ",
+     "en": "five hundred men passed over"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መሳፍንት 8፡4 “ጌዴዎንም ወደ ዮርዳኖስ መጥቶ ተሻገረ፤ ከእርሱም ጋር ያሉት ሦስት መቶ ሰዎች ተሻገሩ” ይላል።",
+   "en": "Judges 8:4 states: \"And Gideon came to Jordan, and passed over, he, and the three hundred men that were with him, faint, yet pursuing them.\""
+  },
+  "excerpt": {
+   "am": "ጌዴዎንም ወደ ዮርዳኖስ መጥቶ ተሻገረ፤ ከእርሱም ጋር ያሉት",
+   "en": "And Gideon came to Jordan, and passed over, he, and the"
+  },
+  "source": {
+   "label": "መጽሐፈ መሳፍንት 8:1, 2, 3, 4, 5",
+   "route": "/bible/judges/8?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "27cfd581-a8c5-5fc9-afc5-a5b929668a01"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-ede98fc01956",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በየሐዋርያት ሥራ 6:3 ያለውን ቃል ያሟሉ፦ “መንፈስ ቅዱስና ጥበብ የሞላባቸውን ___”",
+   "en": "Complete the verse in acts 6:3: “filled with the Holy Spirit and wisdom, ___”"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሰላሳ ቀንና ሰላሳ ሌሊት",
+     "en": "thirty days and thirty nights"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "አምስት እንጀራ",
+     "en": "five loaves"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ሰባት ሰዎችን",
+     "en": "seven people"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "አርባ ቀንና አርባ ሌሊት",
+     "en": "forty days and forty nights"
+    }
+   }
+  ],
+  "correctKey": "c",
+  "explanation": {
+   "am": "በየሐዋርያት ሥራ 6:3 ውስጥ “መንፈስ ቅዱስና ጥበብ የሞላባቸውን ሰባት ሰዎችን” ተጽፏል።",
+   "en": "acts 6:3 continues: “filled with the Holy Spirit and wisdom, seven people.”"
+  },
+  "excerpt": {
+   "am": "መንፈስ ቅዱስና ጥበብ የሞላባቸውን",
+   "en": "filled with the Holy Spirit and wisdom,"
+  },
+  "source": {
+   "label": "የሐዋርያት ሥራ 6:1, 2, 3, 4, 5",
+   "route": "/bible/acts/6?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "19d57acf-bb54-5110-a2d8-b3c6ff13cc8b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-ee068cf050e1",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "beginner",
+  "prompt": {
+   "am": "በመዝሙረ ዳዊት 4፡5 ያለውን ኃይለ ቃል ያሟሉ፦ “የጽድቅን መሥዋዕት ሠዉ ___”",
+   "en": "Complete the verse in Psalm 4:5: \"Offer the sacrifices of righteousness, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "በሰው ኃይል አትደገፉ",
+     "en": "lean not on human strength"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በእግዚአብሔርም ታመኑ",
+     "en": "put your trust in the LORD"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በአደባባዩም ዘምሩ",
+     "en": "sing in his courts"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ከክፋትም ራቁ",
+     "en": "depart from evil"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመዝሙረ ዳዊት 4፡5 “የጽድቅን መሥዋዕት ሠዉ በእግዚአብሔርም ታመኑ” ተብሎ ተጽፏል።",
+   "en": "Psalm 4:5 states: \"Offer the sacrifices of righteousness, and put your trust in the LORD.\""
+  },
+  "excerpt": {
+   "am": "የጽድቅን መሥዋዕት ሠዉ",
+   "en": "Offer the sacrifices of righteousness, and"
+  },
+  "source": {
+   "label": "መዝሙረ ዳዊት 4:1, 2, 3, 4, 5",
+   "route": "/bible/psalms/4?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "d29c75fa-6f1e-5d09-a016-2975f47f58b7"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-f0855b541f9c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ኩፋሌ 7፡4 ያለውን ኃይለ ቃል ያሟሉ፦ “ደሙንና ወይኑንም አምጥቶ በሁሉ ላይ ዕጣን ጨመረበት። እግዚአብሔርም የሚወደውን ___”",
+   "en": "Complete the verse in Jubilees 7:4: \"And he brought the blood and the wine and put incense upon all, and offered ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "አዲስ ቃል ኪዳን ሰጠ",
+     "en": "gave a new covenant"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ምልክት አድርጎ አኖረ",
+     "en": "set as a sign"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የተቀደሰ ስም አወጣለት",
+     "en": "gave a holy name"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በጎ መዓዛ አድርጎ አቀረበ",
+     "en": "an acceptable sweet savor unto the LORD"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ኩፋሌ 7፡4 “ደሙንና ወይኑንም አምጥቶ በሁሉ ላይ ዕጣን ጨመረበት። እግዚአብሔርም የሚወደውን በጎ መዓዛ አድርጎ አቀረበ” ይላል።",
+   "en": "Jubilees 7:4 states Noah offered an acceptable sweet savor unto the LORD."
+  },
+  "excerpt": {
+   "am": "ደሙንና ወይኑንም አምጥቶ በሁሉ ላይ ዕጣን ጨመረበት። እግዚአብሔርም የሚወደውን",
+   "en": "And he brought the blood and the wine and put incense upon all, and offered"
+  },
+  "source": {
+   "label": "መጽሐፈ ኩፋሌ 7:1, 2, 3, 4, 5",
+   "route": "/bible/jubilees/7?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "43bc9177-a0ad-5a11-affd-821d89e5ed28"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-f3d70e0e3292",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 7፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “አንተ ንጉሥም ብትሆን፥ ገዥም ብትሆን አንተ ምንድን ነህ? የፈጠረህ ___”",
+   "en": "Complete the verse in 1 Meqabyan 7:1: \"Though thou be a king, or a ruler, what art thou? Is it not ___ that made thee?\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሰው ልጅ አይደለምን",
+     "en": "the son of man"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እግዚአብሔር አይደለምን",
+     "en": "God that made thee"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ንጉሥ አይደለምን",
+     "en": "the king"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የሠራዊት ጌታ አይደለምን",
+     "en": "the Lord of hosts"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ መቃብያን ቀዳማዊ 7፡1 “አንተ ንጉሥም ብትሆን፥ ገዥም ብትሆን አንተ ምንድን ነህ? የፈጠረህ እግዚአብሔር አይደለምን” ይላል።",
+   "en": "1 Meqabyan 7:1 asks: \"Though thou be a king, or a ruler, what art thou? Is it not God that made thee?\""
+  },
+  "excerpt": {
+   "am": "አንተ ንጉሥም ብትሆን፥ ገዥም ብትሆን አንተ ምንድን ነህ? የፈጠረህ",
+   "en": "Though thou be a king, or a ruler, what art thou? Is it not"
+  },
+  "source": {
+   "label": "መጽሐፈ መቃብያን ቀዳማዊ 7:1, 2, 3, 4, 5",
+   "route": "/bible/first-meqabyan/7?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "571fc8a9-5731-523c-adaa-508ab3f49e38"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-f44e982ad9e1",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የሐዋርያውን ምክር ባዶ ቦታ አሟሉ፦ “በክርክርና ከንቱ ውዳሴን በመውደድ አትሥሩ፤ ___ ከራሳችሁ ይልቅ ባልንጀራችሁን አክብሩ እንጂ አትታበዩ።” (ፊልጵስዩስ 2፡3)",
+   "en": "Fill in the blank to complete the apostolic exhortation: \"Let nothing be done through strife or vainglory; but in ___ let each esteem other better than themselves.\" (Philippians 2:3)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ትሕትናን በያዘ ልቡና",
+     "en": "lowliness of mind"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በታላቅ ድምፅ ምስጋና",
+     "en": "with loud thanksgiving"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "በፍጹም የጾም ተጋድሎ",
+     "en": "in fasting and ascetic toil"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "በንጽሕና በተሞላ ልብስ",
+     "en": "in garments of purity"
+    }
+   }
+  ],
+  "correctKey": "a",
+  "explanation": {
+   "am": "በፊልጵስዩስ 2፡3 ላይ “በክርክርና ከንቱ ውዳሴን በመውደድ አትሥሩ፤ ትሕትናን በያዘ ልቡና ከራሳችሁ ይልቅ ባልንጀራችሁን አክብሩ እንጂ አትታበዩ” በማለት ትሕትናን ያስተምራል።",
+   "en": "Philippians 2:3 commands: \"Let nothing be done through strife or vainglory; but in lowliness of mind let each esteem other better than themselves.\""
+  },
+  "excerpt": {
+   "am": "በክርክርና ከንቱ ውዳሴን በመውደድ አትሥሩ፤",
+   "en": "Let nothing be done through strife or vainglory;"
+  },
+  "source": {
+   "label": "ወደ ፊልጵስዩስ ሰዎች 2:1, 2, 3, 4, 5",
+   "route": "/bible/philippians/2?edition=am#verse-3",
+   "kind": "bible",
+   "sourceId": "e4e80b53-1e81-5623-a9c1-6c5e6b8ea90c"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-f65ad079a4b0",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በኦሪት ዘሌዋውያን 10፡2 ያለውን ኃይለ ቃል ያሟሉ፦ “እሳትም ከእግዚአብሔር ዘንድ ወጥቶ ___”",
+   "en": "Complete the verse in Leviticus 10:2: \"And there went out fire from the LORD, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "መሠዊያውን አቃጠለ",
+     "en": "burned the altar"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "በላቸው",
+     "en": "devoured them"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ምድሪቱን ከበበ",
+     "en": "surrounded the land"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ጭሱ ወደ ሰማይ ወጣ",
+     "en": "the smoke went up"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በኦሪት ዘሌዋውያን 10፡2 “እሳትም ከእግዚአብሔር ዘንድ ወጥቶ በላቸው፤ በእግዚአብሔርም ፊት ሞቱ” ይላል።",
+   "en": "Leviticus 10:2 reads: \"And there went out fire from the LORD, and devoured them, and they died before the LORD.\""
+  },
+  "excerpt": {
+   "am": "እሳትም ከእግዚአብሔር ዘንድ ወጥቶ",
+   "en": "And there went out fire from the LORD, and"
+  },
+  "source": {
+   "label": "ኦሪት ዘሌዋውያን 10:1, 2, 3, 4, 5",
+   "route": "/bible/leviticus/10?edition=am#verse-2",
+   "kind": "bible",
+   "sourceId": "55cd715e-4acf-5911-adfe-8fa90a754b7f"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-f7bb1bba1a7c",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "ጥቅሱን ያጠናቅቁ፦ “በልቡ ጠቢብ ነው፥ ______” (መጽሐፈ ኢዮብ 9፡4)",
+   "en": "Complete the verse: \"He is wise in heart, ______.\" (Job 9:4)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሥራውም ሁሉ ቅዱስ ነው፤",
+     "en": "and all His works are holy;"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ቃሉም ለዘላለም ይኖራል፤",
+     "en": "and His word abides forever;"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ምሕረቱ ከሰማያት በላይ ናት፤",
+     "en": "and His mercy is above the heavens;"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ኀይለኛም፥ ታላቅም ነው፤",
+     "en": "and mighty in strength:"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በመጽሐፈ ኢዮብ 9፡4 “በልቡ ጠቢብ ነው፥ ኀይለኛም፥ ታላቅም ነው፤” ይላል።",
+   "en": "Job 9:4 proclaims: \"He is wise in heart, and mighty in strength: who hath hardened himself against him, and hath prospered?\""
+  },
+  "excerpt": {
+   "am": "በልቡ ጠቢብ ነው፥",
+   "en": "He is wise in heart,"
+  },
+  "source": {
+   "label": "መጽሐፈ ኢዮብ 9:1, 2, 3, 4, 5",
+   "route": "/bible/job/9?edition=am#verse-4",
+   "kind": "bible",
+   "sourceId": "b7c354c4-5af3-5eb6-affc-f831dc24678b"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-fb7a1ae4abf3",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "የሐዋርያው ጳውሎስን ምክር ባዶ ቦታ አሟሉ፦ “ፍጹምነታችሁም በሰው ሁሉ ዘንድ ይታወቅ። ___፤” (ፊልጵስዩስ 4፡5)",
+   "en": "Fill in the blank to complete the apostolic exhortation: \"Let your moderation be known unto all men. ___\" (Philippians 4:5)"
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የእምነት ፍሬ ይብዛ",
+     "en": "let the fruit of faith abound"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እግዚአብሔር ቅርብ ነው",
+     "en": "The Lord is at hand"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ሰላም ከእናንተ ጋር ይሁን",
+     "en": "peace be with you"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ጸሎታችሁ ይሰማል",
+     "en": "your prayer is heard"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በፊልጵስዩስ 4፡5 “ፍጹምነታችሁም በሰው ሁሉ ዘንድ ይታወቅ። እግዚአብሔር ቅርብ ነው” በማለት ተስፋንና ንጽሕናን ያሳስባል።",
+   "en": "Philippians 4:5 encourages: \"Let your moderation be known unto all men. The Lord is at hand.\""
+  },
+  "excerpt": {
+   "am": "ፍጹምነታችሁም በሰው ሁሉ ዘንድ ይታወቅ።",
+   "en": "Let your moderation be known unto all men."
+  },
+  "source": {
+   "label": "ወደ ፊልጵስዩስ ሰዎች 4:1, 2, 3, 4, 5",
+   "route": "/bible/philippians/4?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "ab137344-7476-5f05-abbc-67f7b6fbff31"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-fc17d14473ba",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "growing",
+  "prompt": {
+   "am": "በመጽሐፈ ጦቢት 9፡5 ያለውን ኃይለ ቃል ያሟሉ፦ “ሩፋኤልም ሄደ፤ በገባኤልም ቤት አደረ፤ ደብዳቤውንም ሰጠው፤ ___”",
+   "en": "Complete the verse in Tobit 9:5: \"So Raphael went out, and lodged with Gabael, and gave him the handwriting: who ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "የሰርጉንም በዓል አብረው አከበሩ",
+     "en": "and celebrated the feast of marriage together"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "እነዚያንም ከረጢቶች እንደታተሙ አምጥቶ ለሩፋኤል ሰጠው",
+     "en": "brought forth bags which were sealed up, and gave them to him"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "ወዲያውም ወደ ጦቢት ቤት ተመለሰ",
+     "en": "and returned straightway unto the house of Tobit"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "የብሩን መክሊት በሙሉ ለካህናቱ ሰጠ",
+     "en": "and delivered the talents of silver unto the priests"
+    }
+   }
+  ],
+  "correctKey": "b",
+  "explanation": {
+   "am": "በመጽሐፈ ጦቢት 9፡5 “ሩፋኤልም ሄደ፤ በገባኤልም ቤት አደረ፤ ደብዳቤውንም ሰጠው፤ እነዚያንም ከረጢቶች እንደታተሙ አምጥቶ ለሩፋኤል ሰጠው” ይላል።",
+   "en": "Tobit 9:5 states: \"who brought forth bags which were sealed up, and gave them to him.\""
+  },
+  "excerpt": {
+   "am": "ሩፋኤልም ሄደ፤ በገባኤልም ቤት አደረ፤ ደብዳቤውንም ሰጠው፤",
+   "en": "So Raphael went out, and lodged with Gabael, and gave him the handwriting: who"
+  },
+  "source": {
+   "label": "መጽሐፈ ጦቢት 9:1, 2, 3, 4, 5",
+   "route": "/bible/tobit/9?edition=am#verse-5",
+   "kind": "bible",
+   "sourceId": "f5bfc810-d694-560f-a759-c6756782a9b9"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ },
+ {
+  "id": "bible-am-fd3664281f37",
+  "game": "finish-the-verse",
+  "category": "Bible",
+  "difficulty": "challenge",
+  "prompt": {
+   "am": "በመጽሐፈ ዜና መዋዕል ቀዳማዊ 13፡1 ያለውን ኃይለ ቃል ያሟሉ፦ “ዳዊትም ከሻለቆችና ከመቶ አለቆች፥ ___”",
+   "en": "Complete the verse in 1 Chronicles 13:1: \"And David consulted with the captains of thousands and hundreds, and ___\""
+  },
+  "options": [
+   {
+    "key": "a",
+    "text": {
+     "am": "ሠራዊቱን በሙሉ አሰለፈ",
+     "en": "set all his host in array"
+    }
+   },
+   {
+    "key": "b",
+    "text": {
+     "am": "ታቦቱን ሊያመጣ ተነሣ",
+     "en": "arose to bring the ark"
+    }
+   },
+   {
+    "key": "c",
+    "text": {
+     "am": "የምሥጋና ዝማሬን ጀመረ",
+     "en": "began songs of praise"
+    }
+   },
+   {
+    "key": "d",
+    "text": {
+     "am": "ከአለቆቹም ሁሉ ጋር ተማከረ",
+     "en": "with every leader"
+    }
+   }
+  ],
+  "correctKey": "d",
+  "explanation": {
+   "am": "በ1 ዜና መዋዕል 13፡1 “ዳዊትም ከሻለቆችና ከመቶ አለቆች፥ ከአለቆቹም ሁሉ ጋር ተማከረ” ይላል።",
+   "en": "1 Chronicles 13:1 reads: \"And David consulted with the captains of thousands and hundreds, and with every leader.\""
+  },
+  "excerpt": {
+   "am": "ዳዊትም ከሻለቆችና ከመቶ አለቆች፥",
+   "en": "And David consulted with the captains of thousands and hundreds, and"
+  },
+  "source": {
+   "label": "መጽሐፈ ዜና መዋዕል ቀዳማዊ 13:1, 2, 3, 4, 5",
+   "route": "/bible/first-chronicles/13?edition=am#verse-1",
+   "kind": "bible",
+   "sourceId": "adbc040d-8f33-5e65-a6c9-24015a4a2c48"
+  },
+  "verifiedLocales": [
+   "en"
+  ]
+ }
+]

@@ -1,0 +1,5982 @@
+{
+ "builtIn": {
+  "trivia": 20,
+  "finish-the-verse": 5,
+  "emoji": 6,
+  "who-am-i": 6,
+  "match": 8
+ },
+ "published": {
+  "trivia": 206,
+  "finish-the-verse": 114,
+  "emoji": 160,
+  "who-am-i": 126,
+  "match": 127
+ },
+ "summary": {
+  "finish-the-verse": {
+   "published": 114,
+   "duplicate": 0,
+   "rejected": 0,
+   "unresolved": 0
+  },
+  "trivia": {
+   "published": 206,
+   "duplicate": 0,
+   "rejected": 0,
+   "unresolved": 0
+  },
+  "emoji": {
+   "published": 160,
+   "duplicate": 10,
+   "rejected": 0,
+   "unresolved": 0
+  },
+  "history": {
+   "published": 0,
+   "duplicate": 0,
+   "rejected": 0,
+   "unresolved": 120
+  },
+  "who-am-i": {
+   "published": 126,
+   "duplicate": 1,
+   "rejected": 0,
+   "unresolved": 43
+  },
+  "match": {
+   "published": 127,
+   "duplicate": 0,
+   "rejected": 0,
+   "unresolved": 43
+  }
+ },
+ "reasons": {
+  "duplicate: substantially equivalent to <id>": 10,
+  "unresolved: cites a Church Library route that is not a known published document ": 100,
+  "unresolved: history claims need doctrinal review before publication": 20,
+  "unresolved: neither name appears in the cited chapter text, so the claim could not be verified": 25,
+  "unresolved: cites a church-library route that is not verifiable ": 59,
+  "duplicate: exact duplicate of already-published content": 1,
+  "unresolved: cites a calendar route that is not verifiable ": 2
+ },
+ "items": [
+  {
+   "id": "bible-am-000f077a31c8",
+   "game": "finish-the-verse",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-01b0d7ae8f05",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-0235a0ccbd92",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-0328f779431f",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-04e8ab3d8f05",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-075f92050182",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-0816b2f20d1d",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-08623aa1e996",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-09508e2185af",
+   "game": "finish-the-verse",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-095aed89350c",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-0b346bea71f1",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-0b5272cd99df",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-0f06258b519a",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-0fc3e88d6d9b",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-102cde3c665f",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-1084d67825fa",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-109886a8d61a",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-11753ec3a599",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-11cf8d10a902",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-11deb15838a3",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-12a6820882d6",
+   "game": "finish-the-verse",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-131cea4f6ba6",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-1470ace771e5",
+   "game": "finish-the-verse",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-1685f8071e18",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-178b785b7cce",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-17b15c97dedc",
+   "game": "finish-the-verse",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-18a084b21d1c",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-1958ec3c86fb",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-1a5843790ceb",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-1c03ede37c58",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-1f55fcc2f752",
+   "game": "finish-the-verse",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2033292f613e",
+   "game": "finish-the-verse",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-20c32d87f8a4",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-20d7faea7ae1",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-21e5fbbba447",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-228cd51b088a",
+   "game": "finish-the-verse",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2297d8216e9b",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-22a8156ca975",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-234b414b3fc2",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-23aa8b01a55d",
+   "game": "finish-the-verse",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-25d2ea55f10b",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-26906bdd694d",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2716d86bf8d2",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-27b2c45d984c",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-28847cb51477",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-29eb6f742fa1",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-29f075de0143",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2a1e65682781",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2b88bc0b1035",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2e26467273bb",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2ed3b157d1ab",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2f0030122dac",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2f0a27d0832d",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-2fb61e136352",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-305cc3b26faa",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-313461ec29d7",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-32eebdf1a40b",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-35678278605a",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-37363156bc66",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-39546ba5e187",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3b56e07baceb",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3b5d93e213ba",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3c804d902b58",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3ca98cb8570c",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3cd498f3c9ec",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3ec527a7be94",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3f615dab9850",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-3f905aaef4d0",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-40721ae3e93e",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-415d4e9737cb",
+   "game": "finish-the-verse",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-43a3c63fa559",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-44c3b8d0151b",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-47389cb23363",
+   "game": "finish-the-verse",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-494beccd57a8",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-497733b52f85",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-49f0b5262a83",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-4a4ab9ebd97a",
+   "game": "finish-the-verse",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-4b1ef313a606",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-4c119c5bb595",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-4d1776f06b9d",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-4d27d89849e8",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-4edd51bcb995",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-503b7f88b21c",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-51b8d9288bf5",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5272a4d9225e",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-52acb90838a1",
+   "game": "finish-the-verse",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-53c0d26ee756",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-53eab4037b57",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-54ec6c941816",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-56860b3e33ff",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-56ed5933f8aa",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-573871e165e9",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-587f6c5f7c59",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-59c9ac6ead17",
+   "game": "finish-the-verse",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-59fde5e54510",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5aee049942c5",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5b03e541523d",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5b7ad9d304e1",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5c207507beea",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5d1f91f3fe1c",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5dbdca22041b",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-5ea2990926cb",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-607452a8ad63",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-632da1555e86",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-63d8c1c80fc4",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6410a579ffaa",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-65c825e97d75",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-665836eca1d4",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-66efbbd52ea6",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-673ae4d1dce9",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-67411e3e4c26",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-68629441a70f",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-69a2b36e372f",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6b559f71d7fa",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6b5b3c2936a3",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6c64470b7c29",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6d964135da8b",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6da1abfc4291",
+   "game": "finish-the-verse",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6e519686063f",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6f5f4984112c",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-6fe38593aa51",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-716742a78c3c",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7278cb349577",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-72bda6a1749d",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-731c697907fb",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-73571c307089",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-74b28c96bd4e",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-74b47243cb84",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7532da7ea81f",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-75d5479a75d5",
+   "game": "finish-the-verse",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-75f0e3089fbe",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-76378950e011",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-781922a973dd",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7891980af16a",
+   "game": "finish-the-verse",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-78ae3e15b90a",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7a68531de0fe",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7a6a0a47eaee",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7a6cdc8f5491",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7c6f719f53cb",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7cb70ad553c1",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7cbea1e96fa6",
+   "game": "finish-the-verse",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7cee76e1e9ed",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7d05a23a4ca3",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7e94a4882d15",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7ea33f32a278",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-7f0c719f24fd",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-80649e05fe79",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-80e01b80f5dd",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8252d7100194",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-82ef5006a104",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-835ad4d77d18",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-83a94cb0ab0d",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-83cd381ce408",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-84dbacc0e2fb",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-85cecb2901e2",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-864253cb0dcf",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-877dc820631a",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-879a0c04f65f",
+   "game": "finish-the-verse",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8828fd853754",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-891d6f447590",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8936f21589b1",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8998dbca4c48",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-89a17c350cb0",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8bd822a30b17",
+   "game": "finish-the-verse",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8d5a457df61a",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8dfea750d37d",
+   "game": "finish-the-verse",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8e0eb82be0fb",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8e25c32a40f7",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8e89695dd85b",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-8f6d0dfaec4d",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9157c83fcca3",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9160c40414da",
+   "game": "finish-the-verse",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-91767de34d7f",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-91fe81b9a6d4",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9267612c73f0",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-92d2f08b7cba",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-93bb42c5a5e2",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9418513c29ce",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9489b7f5e030",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-94ff8dce3a39",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9537a814b633",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-96927501d7b9",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-97ba582d3d27",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-984a0aa35341",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9940137e3c60",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9a095197a1d1",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9ab2784d9209",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9eceee0b1178",
+   "game": "finish-the-verse",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9ee107b0eb79",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-9fb81d9bd0fa",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a043ece83f79",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a11cdb9710c2",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a1499226df40",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a15f47f02d7e",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a1752be213a5",
+   "game": "finish-the-verse",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a3afa46a2316",
+   "game": "finish-the-verse",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a4b4cfb3c2c8",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a610be0b71c5",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a63132a377be",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a7098a857461",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a82059392123",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a84690222e3b",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a8bd62439c15",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-a9cc4f45959c",
+   "game": "finish-the-verse",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-aabe18f2a9e3",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ab3456657455",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ac7c42b9dc2a",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ad5c43c3a222",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ada651ca6471",
+   "game": "finish-the-verse",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-aec0b73bc827",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-af74e661b238",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b04e61e18ede",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b0f03572118e",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b2b18353de38",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b3204f0c602e",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b53d1ce66b1e",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b5ab16f363de",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b5b1887d5012",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b603c3169fb6",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b6c811b501de",
+   "game": "trivia",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b7e760ab3614",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b8f44ce08593",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-b952773092ac",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ba29c8d28f37",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-bad378478f47",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-bb79ab96dc89",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-bca28aa81870",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-bd245873bdbd",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-bd835db3ee53",
+   "game": "finish-the-verse",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-be2fb412c198",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-bf718f50a8de",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c13b2812c6c9",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c20acedf7d7a",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c36b453bfa72",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c38172e0bced",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c408b86591ff",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c4b0df00ab71",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c4ec286a7f3e",
+   "game": "finish-the-verse",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c605c2f1e45b",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c6f555edb8bf",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c787d0f8e5c7",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c7ba490b48e7",
+   "game": "finish-the-verse",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-c99e1e704f62",
+   "game": "finish-the-verse",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ca8a9e7450ae",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-cb2d26ab4e17",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-cbbe1116d8ec",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ccdbc5beb4a1",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-cd0d58a499d2",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-cd361dfdfcfb",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-cd3d145ccfba",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-cf891399f7ec",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d18c3161525b",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d200fc0f152a",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d2704bc4b4fc",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d6012e285112",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d64319df1c01",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d6484727f355",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d6c54d0a615c",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d791b8f1bccb",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d7d046f6e55e",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d9110f7eae1c",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d91991f86e71",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-d9d7878fb3f2",
+   "game": "trivia",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-da40407f1c14",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-dd20ea0c2058",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-dd323bf8e5d3",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-de03f95ef642",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-de2410cc3f5c",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-de63be8ee437",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-de82f15321f7",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-def8a5a46b71",
+   "game": "finish-the-verse",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-df0ec9af6b0b",
+   "game": "finish-the-verse",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-df8d09e620b9",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-dfb8ff450435",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e037c7148605",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e0908d75b4b2",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e18bcaeeef0c",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e2007a871614",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e6618ef20c2b",
+   "game": "finish-the-verse",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e6721eba82e3",
+   "game": "trivia",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e67f999a9f67",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e68664c090e9",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e79435059908",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e876125dafdb",
+   "game": "trivia",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e89277770542",
+   "game": "trivia",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e95ec4539bc7",
+   "game": "trivia",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-e9b34cf3eb40",
+   "game": "finish-the-verse",
+   "origin": "batch-001",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-eaf3ce88b103",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ec1609c89ae3",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ecc993f3b961",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ece7e86452be",
+   "game": "trivia",
+   "origin": "batch-012",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ecebca11853e",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ecf491396062",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ede98fc01956",
+   "game": "finish-the-verse",
+   "origin": "batch-006",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ee068cf050e1",
+   "game": "finish-the-verse",
+   "origin": "batch-014",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ee3859b0d723",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-eef567ca43f8",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ef531578e583",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-ef6cf01c0013",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f0855b541f9c",
+   "game": "finish-the-verse",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f23470f5f535",
+   "game": "trivia",
+   "origin": "batch-010",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f31d441e3439",
+   "game": "trivia",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f33993e5e56d",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f3867eca2630",
+   "game": "trivia",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f3d70e0e3292",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f44e982ad9e1",
+   "game": "finish-the-verse",
+   "origin": "batch-002",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f50ca6be87a4",
+   "game": "trivia",
+   "origin": "batch-005",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f5809164b8be",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f65ad079a4b0",
+   "game": "finish-the-verse",
+   "origin": "batch-007",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f7607c8d2972",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f7bb1bba1a7c",
+   "game": "finish-the-verse",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-f7eb3fe43b69",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fa9771d87aec",
+   "game": "trivia",
+   "origin": "batch-003",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fb32c1b26999",
+   "game": "trivia",
+   "origin": "batch-009",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fb7a1ae4abf3",
+   "game": "finish-the-verse",
+   "origin": "batch-004",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fb835548e3f2",
+   "game": "trivia",
+   "origin": "batch-008",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fc17d14473ba",
+   "game": "finish-the-verse",
+   "origin": "batch-015",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fc59a743f6d5",
+   "game": "trivia",
+   "origin": "batch-011",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fcc93b3c85ec",
+   "game": "trivia",
+   "origin": "batch-016",
+   "status": "published"
+  },
+  {
+   "id": "bible-am-fd3664281f37",
+   "game": "finish-the-verse",
+   "origin": "batch-013",
+   "status": "published"
+  },
+  {
+   "id": "emoji-annunciation",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-baptism-trinity",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-burning-bush",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-calming-storm",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-creation",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-elijah-carmel",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-fall-of-jericho",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-fiery-chariot",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-good-shepherd",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-holy-resurrection",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-jonah-great-fish",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-manna-wilderness",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-nativity-shepherds",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-annunciation",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-ascension",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-babel",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-calming-storm",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-cleansing-temple",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-crucifixion",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-damascus-road",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-daniel-lions",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-david-harp",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-elijah-chariot",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-elisha-axe",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-emmaus-road",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-empty-tomb",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-esther-banquet",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-eunuch-baptism",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-fiery-furnace",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-flight-egypt",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-gethsemane",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-gideon-fleece",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-good-samaritan",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-joseph-coat",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-last-supper",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-lazarus-raising",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-lost-sheep",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-malta-viper",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-naaman-wash",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-nain-widow",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-nativity",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-nehemiah-walls",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-new-jerusalem",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-palm-sunday",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-paralytic-roof",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-pentecost",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-peter-angel-prison",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-peter-denial",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-peter-vision",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-philippi-earthquake",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-prodigal-son",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-rahab-cord",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-ruth-barley",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-samson-honey",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-solomon-judgment",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-stephen-martyr",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-temptation",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-transfiguration",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-walking-water",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-water-rock",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-wedding-cana",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-wise-men",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p2-zacchaeus-tree",
+   "game": "emoji",
+   "origin": "phase-2/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-abraham-stars",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-ark-dagon",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-balaam-donkey",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-baptism-dove",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-burning-bush",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-cain-abel",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-calming-storm",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-carmel-fire",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-david-goliath",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-eden-fall",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-elijah-ravens",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-1",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-10",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-11",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-pentecost"
+  },
+  {
+   "id": "emoji-p3-extra-12",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-13",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-stephen-martyr"
+  },
+  {
+   "id": "emoji-p3-extra-14",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-15",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-damascus-road"
+  },
+  {
+   "id": "emoji-p3-extra-16",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-17",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-18",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-19",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-2",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-gethsemane"
+  },
+  {
+   "id": "emoji-p3-extra-20",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-21",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-22",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-23",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-24",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-25",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-26",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-27",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-good-samaritan"
+  },
+  {
+   "id": "emoji-p3-extra-28",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-29",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-3",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-30",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-31",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-lost-sheep"
+  },
+  {
+   "id": "emoji-p3-extra-32",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-33",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-34",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-35",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-36",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-37",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-38",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-39",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-4",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-40",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-41",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-42",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-43",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-44",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-45",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-46",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-nain-widow"
+  },
+  {
+   "id": "emoji-p3-extra-47",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-48",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-49",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-5",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-50",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-51",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-52",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-53",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-54",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-55",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-56",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-57",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-58",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-59",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-6",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-60",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-7",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-empty-tomb"
+  },
+  {
+   "id": "emoji-p3-extra-8",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-extra-9",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-ezekiel-bones",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-flight-egypt",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-gideon-jars",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-golden-calf",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-handwriting-wall",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-isaac-moriah",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-jacob-ladder",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-jericho-trumpets",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-jonah-fish",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-joseph-pit",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-manna-dew",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-miraculous-catch",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-nativity-manger",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-noah-dove",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-passover-door",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-red-sea",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-shepherds-angels",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-sodom-salt",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-spies-grapes",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-still-small-voice",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-sun-stand-still",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-temple-boy-jesus",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-temple-cleansing",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-ten-commandments",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-transfiguration-cloud",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-transfiguration"
+  },
+  {
+   "id": "emoji-p3-triumphal-entry",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-widow-oil",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-p3-wilderness-temptation",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "duplicate",
+   "reason": "substantially equivalent to emoji-p2-temptation"
+  },
+  {
+   "id": "emoji-p3-wise-men-gifts",
+   "game": "emoji",
+   "origin": "phase-3/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-pentecost-tongues",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-prodigal-son",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-ten-commandments",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-three-holy-children",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-transfiguration",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-walking-on-water",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "emoji-wise-men-star",
+   "game": "emoji",
+   "origin": "phase-1/emoji",
+   "status": "published"
+  },
+  {
+   "id": "hist-p2-abuna-basilios",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/abuna-basilios)"
+  },
+  {
+   "id": "hist-p2-alexandria-autocephaly",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/autocephaly-1959)"
+  },
+  {
+   "id": "hist-p2-anaphoras",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/liturgy/anaphoras)"
+  },
+  {
+   "id": "hist-p2-basil-great",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/basil-great)"
+  },
+  {
+   "id": "hist-p2-bete-giyorgis",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/bete-giyorgis)"
+  },
+  {
+   "id": "hist-p2-chrysostom",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/chrysostom)"
+  },
+  {
+   "id": "hist-p2-constantinople",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/constantinople)"
+  },
+  {
+   "id": "hist-p2-cyril-ephesus",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/cyril-alexandria)"
+  },
+  {
+   "id": "hist-p2-debre-damos-rope",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/debre-damo)"
+  },
+  {
+   "id": "hist-p2-enoch-canon",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/canon/enoch)"
+  },
+  {
+   "id": "hist-p2-ezana-coins",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ezana-inscriptions)"
+  },
+  {
+   "id": "hist-p2-fasilides",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/fasilides-restoration)"
+  },
+  {
+   "id": "hist-p2-garima-gospels",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/garima-gospels)"
+  },
+  {
+   "id": "hist-p2-gebre-mesqel-yared",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/hymns/yared-life)"
+  },
+  {
+   "id": "hist-p2-homoousios",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/nicaea-creed)"
+  },
+  {
+   "id": "hist-p2-ignatius",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ignatius)"
+  },
+  {
+   "id": "hist-p2-irenaeus",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/irenaeus)"
+  },
+  {
+   "id": "hist-p2-jubilees",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/canon/jubilees)"
+  },
+  {
+   "id": "hist-p2-justin",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/justin-martyr)"
+  },
+  {
+   "id": "hist-p2-kaleb-yemen",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/kaleb)"
+  },
+  {
+   "id": "hist-p2-meqabyan",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/canon/meqabyan)"
+  },
+  {
+   "id": "hist-p2-nine-saints",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/nine-saints)"
+  },
+  {
+   "id": "hist-p2-perpetua",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/perpetua)"
+  },
+  {
+   "id": "hist-p2-polycarp",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/polycarp)"
+  },
+  {
+   "id": "hist-p2-tselot-zeweter",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/prayers/zeweter)"
+  },
+  {
+   "id": "hist-p2-walatta-petros",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/walatta-petros)"
+  },
+  {
+   "id": "hist-p2-wudase-mariam",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/prayers/wudase-mariam)"
+  },
+  {
+   "id": "hist-p2-yemrehana",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/yemrehana-krestos)"
+  },
+  {
+   "id": "hist-p2-zagwe-dynasty",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/zagwe-dynasty)"
+  },
+  {
+   "id": "hist-p2-zara-yaqob",
+   "game": "history",
+   "origin": "phase-2/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/zara-yaqob)"
+  },
+  {
+   "id": "hist-p3-alexander-nicaea",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/alexander-anti-arian)"
+  },
+  {
+   "id": "hist-p3-athanasius-incarnation",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/athanasius-incarnation)"
+  },
+  {
+   "id": "hist-p3-clement-alexandria",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/clement-alexandria)"
+  },
+  {
+   "id": "hist-p3-clement-rome",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/clement-rome)"
+  },
+  {
+   "id": "hist-p3-cyprian-unity",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/cyprian)"
+  },
+  {
+   "id": "hist-p3-didache",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/didache)"
+  },
+  {
+   "id": "hist-p3-nicholas-myra",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/nicholas)"
+  },
+  {
+   "id": "hist-p3-paphnutius-thebes",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/paphnutius)"
+  },
+  {
+   "id": "hist-p3-papias",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/patristics/papias)"
+  },
+  {
+   "id": "hist-p3-q-11",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/ephesus)"
+  },
+  {
+   "id": "hist-p3-q-12",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/hymns/yared-reign)"
+  },
+  {
+   "id": "hist-p3-q-13",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/king-kaleb)"
+  },
+  {
+   "id": "hist-p3-q-14",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/geez-bible)"
+  },
+  {
+   "id": "hist-p3-q-15",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/debre-damo-amba)"
+  },
+  {
+   "id": "hist-p3-q-16",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/lalibela-roha)"
+  },
+  {
+   "id": "hist-p3-q-17",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/tekle-haymanot-shewa)"
+  },
+  {
+   "id": "hist-p3-q-18",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/iyasus-moa)"
+  },
+  {
+   "id": "hist-p3-q-19",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/gebre-menfes-kidus-zuqualla)"
+  },
+  {
+   "id": "hist-p3-q-20",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ewostatewos-travels)"
+  },
+  {
+   "id": "hist-p3-q-21",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/ephesus)"
+  },
+  {
+   "id": "hist-p3-q-22",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/hymns/yared-reign)"
+  },
+  {
+   "id": "hist-p3-q-23",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/king-kaleb)"
+  },
+  {
+   "id": "hist-p3-q-24",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/geez-bible)"
+  },
+  {
+   "id": "hist-p3-q-25",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/debre-damo-amba)"
+  },
+  {
+   "id": "hist-p3-q-26",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/lalibela-roha)"
+  },
+  {
+   "id": "hist-p3-q-27",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/tekle-haymanot-shewa)"
+  },
+  {
+   "id": "hist-p3-q-28",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/iyasus-moa)"
+  },
+  {
+   "id": "hist-p3-q-29",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/gebre-menfes-kidus-zuqualla)"
+  },
+  {
+   "id": "hist-p3-q-30",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ewostatewos-travels)"
+  },
+  {
+   "id": "hist-p3-q-31",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/ephesus)"
+  },
+  {
+   "id": "hist-p3-q-32",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/hymns/yared-reign)"
+  },
+  {
+   "id": "hist-p3-q-33",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/king-kaleb)"
+  },
+  {
+   "id": "hist-p3-q-34",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/geez-bible)"
+  },
+  {
+   "id": "hist-p3-q-35",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/debre-damo-amba)"
+  },
+  {
+   "id": "hist-p3-q-36",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/lalibela-roha)"
+  },
+  {
+   "id": "hist-p3-q-37",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/tekle-haymanot-shewa)"
+  },
+  {
+   "id": "hist-p3-q-38",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/iyasus-moa)"
+  },
+  {
+   "id": "hist-p3-q-39",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/gebre-menfes-kidus-zuqualla)"
+  },
+  {
+   "id": "hist-p3-q-40",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ewostatewos-travels)"
+  },
+  {
+   "id": "hist-p3-q-41",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/ephesus)"
+  },
+  {
+   "id": "hist-p3-q-42",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/hymns/yared-reign)"
+  },
+  {
+   "id": "hist-p3-q-43",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/king-kaleb)"
+  },
+  {
+   "id": "hist-p3-q-44",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/geez-bible)"
+  },
+  {
+   "id": "hist-p3-q-45",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/debre-damo-amba)"
+  },
+  {
+   "id": "hist-p3-q-46",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/lalibela-roha)"
+  },
+  {
+   "id": "hist-p3-q-47",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/tekle-haymanot-shewa)"
+  },
+  {
+   "id": "hist-p3-q-48",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/iyasus-moa)"
+  },
+  {
+   "id": "hist-p3-q-49",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/gebre-menfes-kidus-zuqualla)"
+  },
+  {
+   "id": "hist-p3-q-50",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ewostatewos-travels)"
+  },
+  {
+   "id": "hist-p3-q-51",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/ephesus)"
+  },
+  {
+   "id": "hist-p3-q-52",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/hymns/yared-reign)"
+  },
+  {
+   "id": "hist-p3-q-53",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/king-kaleb)"
+  },
+  {
+   "id": "hist-p3-q-54",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/geez-bible)"
+  },
+  {
+   "id": "hist-p3-q-55",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/debre-damo-amba)"
+  },
+  {
+   "id": "hist-p3-q-56",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/lalibela-roha)"
+  },
+  {
+   "id": "hist-p3-q-57",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/tekle-haymanot-shewa)"
+  },
+  {
+   "id": "hist-p3-q-58",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/iyasus-moa)"
+  },
+  {
+   "id": "hist-p3-q-59",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/gebre-menfes-kidus-zuqualla)"
+  },
+  {
+   "id": "hist-p3-q-60",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ewostatewos-travels)"
+  },
+  {
+   "id": "hist-p3-q-61",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/councils/ephesus)"
+  },
+  {
+   "id": "hist-p3-q-62",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/hymns/yared-reign)"
+  },
+  {
+   "id": "hist-p3-q-63",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/king-kaleb)"
+  },
+  {
+   "id": "hist-p3-q-64",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/geez-bible)"
+  },
+  {
+   "id": "hist-p3-q-65",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/monasteries/debre-damo-amba)"
+  },
+  {
+   "id": "hist-p3-q-66",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/lalibela-roha)"
+  },
+  {
+   "id": "hist-p3-q-67",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/tekle-haymanot-shewa)"
+  },
+  {
+   "id": "hist-p3-q-68",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/iyasus-moa)"
+  },
+  {
+   "id": "hist-p3-q-69",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/gebre-menfes-kidus-zuqualla)"
+  },
+  {
+   "id": "hist-p3-q-70",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/history/ewostatewos-travels)"
+  },
+  {
+   "id": "hist-p3-spyridon-trimithus",
+   "game": "history",
+   "origin": "phase-3/history",
+   "status": "unresolved",
+   "reason": "cites a Church Library route that is not a known published document (/library/saints/spyridon)"
+  },
+  {
+   "id": "history-aksum-ezana",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-anthony-monasticism",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-council-constantinople-spirit",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-council-ephesus-theotokos",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-council-jerusalem-acts",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-council-nicaea-athanasius",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-cyril-alexandria-miaphysite",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-debre-damo-aregawi",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-ewostatewos-reform",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-garima-gospels",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-giyorgis-sagla-mestir",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-king-kaleb-arabia",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-lalibela-churches",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-mark-alexandria-see",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-nine-saints",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-pachomius-koinonia",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-saint-yared-hymnody",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-salama-consecration",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-tekle-haymanot-shewa",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "history-zera-yaqob-writings",
+   "game": "history",
+   "origin": "phase-1/history",
+   "status": "unresolved",
+   "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "match-apo-james",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-apo-john",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-apo-matthew",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-apo-paul",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-apo-peter",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-cov-abraham",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-cov-david",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-cov-new",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-cov-noah",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-cov-sinai",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-fst-hosanna",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-fst-lidet",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-fst-tabor",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-fst-tensae",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-fst-timket",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-aragawi",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/saints/aragawi)"
+  },
+  {
+   "id": "match-p2-ararat",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-belt",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-bethesda",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-blind-shiloah",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-breastplate",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-carmel-mt",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-elizabeth-mother",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-estifanos-father",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/gunda-gunde)"
+  },
+  {
+   "id": "match-p2-ewostatewos",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/ewostatewos)"
+  },
+  {
+   "id": "match-p2-faithfulness",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-feeding-john",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-four-creatures",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-gentleness",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-hannah-mother",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-helmet",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-jochebed",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-john-sym",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-kebero-obj",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "match-p2-love",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-luke-sym",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-maeteb-obj",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/catechism/baptism)"
+  },
+  {
+   "id": "match-p2-makamiya-obj",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/hymns/yared)"
+  },
+  {
+   "id": "match-p2-mark-sym",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-matthew-sym",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-meskel-obj",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/liturgy/anaphora)"
+  },
+  {
+   "id": "match-p2-moriah",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-mustard",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-nicanor",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-nobleman-son",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-olives",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-pantalewon",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/saints/pantalewon)"
+  },
+  {
+   "id": "match-p2-parmenas",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "match-p2-patience",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-peace",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-pearl",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-philip-deacon",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-prochorus",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-prodigal",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-rebekah",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-samaritan",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-sarah",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-shield",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-sinai",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-sower",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-stephen-deacon",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-sword",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-tekle-father",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/saints/tekle-haymanot)"
+  },
+  {
+   "id": "match-p2-tsenatsil-obj",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p2-water-wine",
+   "game": "match",
+   "origin": "phase-2/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-aga-belt",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ahi-cloak",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-andrew",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-bartho",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-james-a",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-james-z",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-john-ev",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-matthew",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "match-p3-ap-peter",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-philip",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-simon-z",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ap-thomas",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-hunger",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-meek",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-merciful",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-mourn",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-peace",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-persecuted",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-poor",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-pure",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-reviled",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-bea-salt",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-abraham",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-adam",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-christ",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-david",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-eden",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-jeremiah",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-moses",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-noah",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-phinehas",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-cov-revelation",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-eli-mantle",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-els-salt",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ezk-brick",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-fa-anthony",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/anthony)"
+  },
+  {
+   "id": "match-p3-fa-arsenius",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/arsenius)"
+  },
+  {
+   "id": "match-p3-fa-ephrem-syrian",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/ephrem)"
+  },
+  {
+   "id": "match-p3-fa-isaac-nineveh",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/isaac-syrian)"
+  },
+  {
+   "id": "match-p3-fa-john-dwarf",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/john-dwarf)"
+  },
+  {
+   "id": "match-p3-fa-macarius",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/macarius)"
+  },
+  {
+   "id": "match-p3-fa-mary-egypt",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/mary-egypt)"
+  },
+  {
+   "id": "match-p3-fa-moses-black",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/moses-strong)"
+  },
+  {
+   "id": "match-p3-fa-pachomius",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/pachomius)"
+  },
+  {
+   "id": "match-p3-fa-poemen",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/poemen)"
+  },
+  {
+   "id": "match-p3-hos-gomer",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-isa-barefoot",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-jer-potter",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-blind-born",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-cana",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-centurion",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-five-loaves",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-issue-blood",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-lazarus",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-roof-paralytic",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-storm",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-ten-lepers",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mir-waterwalk",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-mo-bizen",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/bizen)"
+  },
+  {
+   "id": "match-p3-mo-daga",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/daga)"
+  },
+  {
+   "id": "match-p3-mo-damo",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/debre-damo)"
+  },
+  {
+   "id": "match-p3-mo-gunda",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/gunda-gunde)"
+  },
+  {
+   "id": "match-p3-mo-hayq",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/hayq)"
+  },
+  {
+   "id": "match-p3-mo-libanos",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/debre-libanos)"
+  },
+  {
+   "id": "match-p3-mo-mahbere",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/mahbere-selassie)"
+  },
+  {
+   "id": "match-p3-mo-waldebba",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/waldebba)"
+  },
+  {
+   "id": "match-p3-mo-werk",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/debre-werk)"
+  },
+  {
+   "id": "match-p3-mo-zuqualla",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/zuqualla)"
+  },
+  {
+   "id": "match-p3-mos-serpent",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-abraham",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-david",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "match-p3-name-elijah",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-emmanuel",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "match-p3-name-isaac",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-israel",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-joshua",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-moses",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-samuel",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-name-solomon",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-alpha-omega",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-bread",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-cornerstone",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-door",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-lamb",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-light",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-resurrection",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-shepherd",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-vine",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-title-way",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-p3-ves-akwareq",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vessels)"
+  },
+  {
+   "id": "match-p3-ves-ertban",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vessels)"
+  },
+  {
+   "id": "match-p3-ves-ewdamet",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vessels)"
+  },
+  {
+   "id": "match-p3-ves-kasa",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vessels)"
+  },
+  {
+   "id": "match-p3-ves-kelil",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vestments)"
+  },
+  {
+   "id": "match-p3-ves-maetant",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/incense)"
+  },
+  {
+   "id": "match-p3-ves-marweha",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vessels)"
+  },
+  {
+   "id": "match-p3-ves-tabot",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/tabot)"
+  },
+  {
+   "id": "match-p3-ves-tsiha",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vessels)"
+  },
+  {
+   "id": "match-p3-ves-tsiwa",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/theology/liturgical-vessels)"
+  },
+  {
+   "id": "match-p3-zec-staffs",
+   "game": "match",
+   "origin": "phase-3/match",
+   "status": "published"
+  },
+  {
+   "id": "match-pro-elijah",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-pro-elisha",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-pro-ezekiel",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-pro-isaiah",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "match-pro-jeremiah",
+   "game": "match",
+   "origin": "phase-1/match",
+   "status": "published"
+  },
+  {
+   "id": "who-abraham",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-ark-of-the-covenant",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-bethlehem",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-elijah",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-elisha",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-esther",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-jerusalem",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-john-baptist",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-joseph",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-joshua",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-mount-sinai",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-aaron",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-abigail",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-amos",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-andrew",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-anna",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-athanasius",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/athanasius)"
+  },
+  {
+   "id": "who-p2-barnabas",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-boaz",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-brazen-altar",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-caleb",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-cornelius",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-deborah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-elizabeth",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-ezekiel",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-ezra",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-frumentius",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/frumentius)"
+  },
+  {
+   "id": "who-p2-gebre-menfes-kidus",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/saints/gebre-menfes-kidus)"
+  },
+  {
+   "id": "who-p2-gideon",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-golden-censer",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-habakkuk",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-hannah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-hezekiah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-hosea",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-isaac",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-isaiah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-jacob",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-james-zebedee",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-jeremiah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-job",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-joel",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-john-apostle",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-jonah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-jonathan",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-jordan-river",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-josiah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-lalibela",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/lalibela)"
+  },
+  {
+   "id": "who-p2-leah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-matthew",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-micah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-miriam",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-mordecai",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-mount-carmel",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-nazareth",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-nehemiah",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p2-philip",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-rachel",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-samson",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-simeon",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p2-yared",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/hymns/yared)"
+  },
+  {
+   "id": "who-p2-zechariah-prophet",
+   "game": "who-am-i",
+   "origin": "phase-2/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-aarons-rod",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-abba-aragawi",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/aragawi)"
+  },
+  {
+   "id": "who-p3-abba-garima",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/garima)"
+  },
+  {
+   "id": "who-p3-abba-pantelewon",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/pantelewon)"
+  },
+  {
+   "id": "who-p3-abel",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-abner",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-adam",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-anthony-great",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/anthony)"
+  },
+  {
+   "id": "who-p3-apollos",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-aquila",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-barak",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-baruch",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-barzillai",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-basil-great",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/basil)"
+  },
+  {
+   "id": "who-p3-benaiah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-benjamin",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-bethany-village",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-bronze-serpent",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-capernaum",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-cyril-alexandria",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/cyril)"
+  },
+  {
+   "id": "who-p3-daniel-prophet",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-dioscorus",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/dioscorus)"
+  },
+  {
+   "id": "who-p3-ehud",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-eleazar-scribe",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/eleazar)"
+  },
+  {
+   "id": "who-p3-eli-priest",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-enoch-patriarch",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-estifanos",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/estifanos)"
+  },
+  {
+   "id": "who-p3-eve",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-ewostatewos",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/ewostatewos)"
+  },
+  {
+   "id": "who-p3-gad-seer",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-gethsemane",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-gregory-theologian",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/gregory)"
+  },
+  {
+   "id": "who-p3-haggai",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-hananiah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-hur",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-james-alphaeus",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-jehoshaphat",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-jephthah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-jesse",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-jethro",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-joab",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-john-chrysostom",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/patristics/chrysostom)"
+  },
+  {
+   "id": "who-p3-joseph-arimathea",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-joseph-betrothed",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-joshua-priest",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-judah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-judith-heroine",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-king-asa",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-king-uzziah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-lazarus",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-luke-evangelist",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-lydia",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-macarius-great",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/macarius)"
+  },
+  {
+   "id": "who-p3-malachi",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-manoah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mark-evangelist",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/history/mark)"
+  },
+  {
+   "id": "who-p3-martha-bethany",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mary-bethany",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-matthias",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-melchizedek",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mephibosheth",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mount-ararat",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mount-horeb",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mount-moriah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mount-of-olives",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-mount-tabor",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-nahum",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-naomi",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-nathan",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-nathanael",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-nicodemus",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-noah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "duplicate",
+   "reason": "exact duplicate of already-published content"
+  },
+  {
+   "id": "who-p3-obadiah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-othniel",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-pachomius",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/pachomius)"
+  },
+  {
+   "id": "who-p3-philemon",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-phinehas",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-pool-of-bethesda",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-pool-of-siloam",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-rahab",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-rebekah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-seth",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-shamgar",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-shenouda",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a church-library route that is not verifiable (/library/monasticism/shenouda)"
+  },
+  {
+   "id": "who-p3-showbread-table",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-silas",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-simon-zealot",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-tabitha",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-tamar",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-thaddaeus",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-thomas-apostle",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-timothy-apostle",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-titus-disciple",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-tobias",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-tobit",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-zacchaeus",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-zadok",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-zechariah-priest",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-p3-zephaniah",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "unresolved",
+   "reason": "neither name appears in the cited chapter text, so the claim could not be verified"
+  },
+  {
+   "id": "who-p3-zerubbabel",
+   "game": "who-am-i",
+   "origin": "phase-3/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-paul",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-peter",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-ruth",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-saint-george",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a calendar route that is not verifiable (/calendar)"
+  },
+  {
+   "id": "who-saint-tekle-haymanot",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "unresolved",
+   "reason": "cites a calendar route that is not verifiable (/calendar)"
+  },
+  {
+   "id": "who-samuel",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-sarah",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-solomon",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "who-stephen",
+   "game": "who-am-i",
+   "origin": "phase-1/who-am-i",
+   "status": "published"
+  }
+ ]
+}

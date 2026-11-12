@@ -17,6 +17,7 @@ import { GAME_ART, feastImages, holyPersonImages } from '../../lib/play/imageCat
 import { getDailyChallenge } from '../../lib/play/progress'
 import { withoutLibrarySources, withPublicSources } from '../../lib/play/sourceAvailability'
 import type { MatchPair, WhoAmICard, PlayDifficulty, PlayGameType, PlayQuestion } from '../../lib/play/types'
+import { isGeneratedQuizGame, loadGeneratedCards, loadGeneratedQuestions, mergeById } from '../../lib/play/generatedBank'
 import { databasePlayEnabled } from '../../lib/play/publishedContent'
 import { DatabasePlayGame } from './DatabasePlayGame'
 
@@ -67,13 +68,14 @@ function PlayGameView({ game }: { game: PageGame }) {
     let active = true
     void (async () => {
       try {
-        const [publicStatic, published] = await Promise.all([
+        const [publicStatic, published, generated] = await Promise.all([
           withPublicSources(questionsFor(game as QuizPageGame)),
           loadPublishedPlayQuestions(game as QuizPageGame).then(withPublicSources),
+          // Validated, Bible-grounded bank shipped with the app; failure to load it never hides the built-in questions.
+          isGeneratedQuizGame(game) ? loadGeneratedQuestions(game).then(withPublicSources).catch(() => [] as PlayQuestion[]) : Promise.resolve([] as PlayQuestion[]),
         ])
         if (!active) return
-        const merged = new Map([...publicStatic, ...published].map((item) => [item.id, item]))
-        setQuestions([...merged.values()])
+        setQuestions(mergeById([...publicStatic, ...published], generated))
         setPublishedState('ready')
       } catch {
         if (active) setPublishedState('error')
@@ -89,11 +91,13 @@ function PlayGameView({ game }: { game: PageGame }) {
     void (async () => {
       try {
         if (game === 'who-am-i') {
-          const [fallback, published] = await Promise.all([withPublicSources(WHO_AM_I_CARDS), loadPublishedGameCards('who-am-i').then(withPublicSources)])
-          if (active) setWhoCards(mergeCardBank('who-am-i', fallback, published))
+          const [fallback, published, generated] = await Promise.all([withPublicSources(WHO_AM_I_CARDS), loadPublishedGameCards('who-am-i').then(withPublicSources),
+            loadGeneratedCards('who-am-i').then((cards) => withPublicSources(cards as WhoAmICard[])).catch(() => [] as WhoAmICard[])])
+          if (active) setWhoCards(mergeCardBank('who-am-i', mergeById(fallback, generated), published))
         } else {
-          const [fallback, published] = await Promise.all([withPublicSources(MATCH_PAIRS), loadPublishedGameCards('match').then(withPublicSources)])
-          if (active) setMatchPairs(mergeCardBank('match', fallback, published))
+          const [fallback, published, generated] = await Promise.all([withPublicSources(MATCH_PAIRS), loadPublishedGameCards('match').then(withPublicSources),
+            loadGeneratedCards('match').then((pairs) => withPublicSources(pairs as MatchPair[])).catch(() => [] as MatchPair[])])
+          if (active) setMatchPairs(mergeCardBank('match', mergeById(fallback, generated), published))
         }
         if (active) setPublishedState('ready')
       } catch { if (active) {
