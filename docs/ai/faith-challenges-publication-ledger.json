@@ -4,14 +4,16 @@
   "finish-the-verse": 5,
   "emoji": 6,
   "who-am-i": 6,
-  "match": 8
+  "match": 8,
+  "timeline": 5
  },
  "published": {
   "trivia": 206,
   "finish-the-verse": 114,
   "emoji": 160,
   "who-am-i": 126,
-  "match": 127
+  "match": 127,
+  "timeline": 33
  },
  "summary": {
   "finish-the-verse": {
@@ -49,6 +51,12 @@
    "duplicate": 0,
    "rejected": 0,
    "unresolved": 43
+  },
+  "bible-timeline": {
+   "published": 33,
+   "duplicate": 0,
+   "rejected": 0,
+   "unresolved": 1
   }
  },
  "reasons": {
@@ -58,9 +66,16 @@
   "unresolved: neither name appears in the cited chapter text, so the claim could not be verified": 25,
   "unresolved: cites a church-library route that is not verifiable ": 59,
   "duplicate: exact duplicate of already-published content": 1,
-  "unresolved: cites a calendar route that is not verifiable ": 2
+  "unresolved: cites a calendar route that is not verifiable ": 2,
+  "unresolved: events run backwards through a book, so the stated order needs human review": 1
  },
  "items": [
+  {
+   "id": "apocalypse-new-jerusalem-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
   {
    "id": "bible-am-000f077a31c8",
    "game": "finish-the-verse",
@@ -1982,6 +1997,60 @@
    "status": "published"
   },
   {
+   "id": "christ-ministry-signs",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "conquest-and-judges",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "creation-to-enoch",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "creation-week-days",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "daniel-in-babylon-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "early-church-jerusalem-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "early-church-witness",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "early-public-ministry-christ",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "elijah-and-elisha",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
    "id": "emoji-annunciation",
    "game": "emoji",
    "origin": "phase-1/emoji",
@@ -3012,6 +3081,18 @@
    "status": "published"
   },
   {
+   "id": "gentile-mission-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "gospel-infancy-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
    "id": "hist-p2-abuna-basilios",
    "game": "history",
    "origin": "phase-2/history",
@@ -3850,6 +3931,36 @@
    "origin": "phase-1/history",
    "status": "unresolved",
    "reason": "history claims need doctrinal review before publication"
+  },
+  {
+   "id": "holy-passion-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "holy-week-and-pascha",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "journey-of-joseph",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "judges-era",
+   "game": "bible-timeline",
+   "origin": "timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "life-of-abraham",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
   },
   {
    "id": "match-apo-james",
@@ -4915,6 +5026,97 @@
    "status": "published"
   },
   {
+   "id": "missionary-labors-paul",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "noah-flood-renewal",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "patriarch-jacob-journey",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "paul-ministry",
+   "game": "bible-timeline",
+   "origin": "timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "plagues-of-egypt-exodus",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "prophet-elijah-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "prophet-elisha-ministry",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "prophet-samuel-ministry",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "prophets-and-exile",
+   "game": "bible-timeline",
+   "origin": "timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "reign-of-hezekiah-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "resurrection-to-ascension-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "return-and-restoration",
+   "game": "bible-timeline",
+   "origin": "timeline/chains.json",
+   "status": "unresolved",
+   "reason": "events run backwards through a book, so the stated order needs human review"
+  },
+  {
+   "id": "return-from-exile-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "rise-of-david",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "story-of-ruth-chronology",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
    "id": "who-abraham",
    "game": "who-am-i",
    "origin": "phase-1/who-am-i",
@@ -5976,6 +6178,18 @@
    "id": "who-stephen",
    "game": "who-am-i",
    "origin": "phase-1/who-am-i",
+   "status": "published"
+  },
+  {
+   "id": "wilderness-journey-miracles",
+   "game": "bible-timeline",
+   "origin": "phase-3/timeline/chains.json",
+   "status": "published"
+  },
+  {
+   "id": "wilderness-tabernacle",
+   "game": "bible-timeline",
+   "origin": "phase-2/timeline/chains.json",
    "status": "published"
   }
  ]

@@ -212,12 +212,42 @@ for (const [game, name] of [['who-am-i', 'cards.json'], ['match', 'pairs.json']]
   }
 }
 
+// ---------------------------------------------------------------- Bible Timeline chains
+// A chain qualifies when: it has 3-12 events with English titles and a reference, every cited chapter exists in the
+// repository Bible text, event and chain ids are unique (including the chains built into the app), and consecutive
+// events in the same book never run backwards through its chapters (a cheap guard against a shuffled chain).
+const { TIMELINE_CHAINS } = await import('../../src/lib/play/bibleTimeline.ts')
+const timelineOut: Json[] = []
+{
+  const seenChains = new Set<string>(TIMELINE_CHAINS.map((chain: Json) => chain.id))
+  const seenEvents = new Set<string>(TIMELINE_CHAINS.flatMap((chain: Json) => chain.events.map((event: Json) => event.id)))
+  for (const file of ['timeline', 'phase-2/timeline', 'phase-3/timeline']) {
+    const path = `${ROOT}/${file}/chains.json`
+    if (!existsSync(path)) continue
+    for (const chain of read(path) as Json[]) {
+      const origin = `${file}/chains.json`
+      const events: Json[] = Array.isArray(chain.events) ? chain.events : []
+      if (!chain.id || !chain.title?.en) { mark(String(chain.id || '?'), 'bible-timeline', origin, 'rejected', 'validation: chain needs an id and an English title'); continue }
+      if (seenChains.has(chain.id)) { mark(chain.id, 'bible-timeline', origin, 'duplicate', 'a chain with this id is already published'); continue }
+      if (events.length < 3 || events.length > 12) { mark(chain.id, 'bible-timeline', origin, 'rejected', `validation: ${events.length} events (need 3-12)`); continue }
+      const bad = events.find(event => !event.id || !event.title?.en || !event.ref || !chapterExists(event.route) || seenEvents.has(event.id))
+      if (bad) { mark(chain.id, 'bible-timeline', origin, 'unresolved', `event ${bad.id || '?'} has a missing field, an unknown Bible chapter or a repeated id`); continue }
+      let backwards = false
+      for (let i = 1; i < events.length; i++) { const a = routeChapter(events[i - 1].route)!, b = routeChapter(events[i].route)!; if (a.slug === b.slug && b.chapter < a.chapter) backwards = true }
+      if (backwards) { mark(chain.id, 'bible-timeline', origin, 'unresolved', 'events run backwards through a book, so the stated order needs human review'); continue }
+      seenChains.add(chain.id); for (const event of events) seenEvents.add(event.id)
+      timelineOut.push({ ...chain, events: events.map(event => ({ ...event, route: readerRoute(event.route) })) })
+      mark(chain.id, 'bible-timeline', origin, 'published')
+    }
+  }
+}
+
 // ---------------------------------------------------------------- output
-const published = { ...questionOut, ...cardOut }
+const published = { ...questionOut, ...cardOut, timeline: timelineOut }
 const sortById = (list: Json[]) => [...list].sort((a, b) => a.id.localeCompare(b.id))
 const builtIn: Record<string, number> = {
   trivia: APPROVED_QUESTIONS.filter(q => q.game === 'trivia').length, 'finish-the-verse': APPROVED_QUESTIONS.filter(q => q.game === 'finish-the-verse').length,
-  emoji: APPROVED_QUESTIONS.filter(q => q.game === 'emoji').length, 'who-am-i': WHO_AM_I_CARDS.length, match: MATCH_PAIRS.length,
+  emoji: APPROVED_QUESTIONS.filter(q => q.game === 'emoji').length, 'who-am-i': WHO_AM_I_CARDS.length, match: MATCH_PAIRS.length, timeline: TIMELINE_CHAINS.length,
 }
 const summary: Record<string, Record<string, number>> = {}
 for (const v of ledger) { const g = (summary[v.game] ||= { published: 0, duplicate: 0, rejected: 0, unresolved: 0 }); g[v.status]++ }
