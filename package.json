@@ -94,6 +94,7 @@
     "capture:mezmur-admin-redesign": "node scripts/capture-mezmur-redesign.mjs",
     "capture:mezmur-admin-editor": "node scripts/capture-mezmur-admin-editor.mjs",
     "capture:hymn-lyrics": "node scripts/capture-interactive-hymn.mjs",
+    "test:ethiopic-references": "tsx scripts/test-ethiopic-references.ts",
     "test:search-site": "npx --yes tsx scripts/test-search-site.mjs",
     "test:unified-search": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-unified-search.mjs",
     "test:shared-bible-search": "npx --yes tsx --env-file-if-exists=.env.local scripts/test-shared-bible-search.mjs",
