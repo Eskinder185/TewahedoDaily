@@ -1,0 +1,743 @@
+{
+ "generatedFrom": "published mezmur_public snapshot",
+ "seed": 20261112,
+ "count": 92,
+ "queries": [
+  {
+   "kind": "title-exact",
+   "query": "Kemot Wede Hiywet Yashegageren",
+   "expectedSlug": "kemot-wede-hiywet-yashegageren",
+   "queryLanguage": "latin",
+   "id": "m001",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Irgeta Lemaryam Irgeta Wiste Semayat",
+   "expectedSlug": "irgeta-lemaryam-irgeta-wiste-semayat",
+   "queryLanguage": "latin",
+   "id": "m002",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Undeserving I Am",
+   "expectedSlug": "undeserving-i-am",
+   "queryLanguage": "latin",
+   "id": "m003",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Indeteqotany Alqerem",
+   "expectedSlug": "indeteqotany-alqerem",
+   "queryLanguage": "latin",
+   "id": "m004",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Yedhinete Arma Liyu Milkite",
+   "expectedSlug": "yedhinete-arma-liyu-milkite",
+   "queryLanguage": "latin",
+   "id": "m005",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Des Alachew",
+   "expectedSlug": "des-alachew",
+   "queryLanguage": "latin",
+   "id": "m006",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Yesew Lij Behaylih",
+   "expectedSlug": "yesew-lij-behaylih",
+   "queryLanguage": "latin",
+   "id": "m007",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Ine Ihonn",
+   "expectedSlug": "ine-ihonn",
+   "queryLanguage": "latin",
+   "id": "m008",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Tolo Na",
+   "expectedSlug": "tolo-na",
+   "queryLanguage": "latin",
+   "id": "m009",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Yetsadiq Sew Tselot",
+   "expectedSlug": "yetsadiq-sew-tselot",
+   "queryLanguage": "latin",
+   "id": "m010",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-exact",
+   "query": "You Who Saved From Fire",
+   "expectedSlug": "you-who-saved-from-fire",
+   "queryLanguage": "latin",
+   "id": "m011",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Tsehay Kelekelech Demaq Birtsazanwan",
+   "expectedSlug": "tsehay-kelekelech-demaq-birtsazanwan",
+   "queryLanguage": "latin",
+   "id": "m012",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Maryam Nitshit",
+   "expectedSlug": "maryam-nitshit",
+   "queryLanguage": "latin",
+   "id": "m013",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Hizbu Tesbisbo Bebete Kirsitiyan",
+   "expectedSlug": "hizbu-tesbisbo-bebete-kirsitiyan",
+   "queryLanguage": "latin",
+   "id": "m014",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Iski Lamesginh",
+   "expectedSlug": "iski-lamesginh",
+   "queryLanguage": "latin",
+   "id": "m015",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Ametun Asalfeh",
+   "expectedSlug": "ametun-asalfeh",
+   "queryLanguage": "latin",
+   "id": "m016",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Igziabher Astegabomu",
+   "expectedSlug": "igziabher-astegabomu",
+   "queryLanguage": "latin",
+   "id": "m017",
+   "split": "tune"
+  },
+  {
+   "kind": "title-exact",
+   "query": "Lene Yederegew Mikael Bizu New",
+   "expectedSlug": "lene-yederegew-mikael-bizu-new",
+   "queryLanguage": "latin",
+   "id": "m018",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "mariam mariam belu",
+   "expectedSlug": "maryam-maryam-belu",
+   "queryLanguage": "latin",
+   "id": "m019",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "gebrieln laqew",
+   "expectedSlug": "gebrieln-lakew",
+   "queryLanguage": "latin",
+   "id": "m020",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "amelmale werq",
+   "expectedSlug": "hamelmale-werq",
+   "queryLanguage": "latin",
+   "id": "m021",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "nigus irenyoc ayut",
+   "expectedSlug": "nigus-irenyoch-ayut",
+   "queryLanguage": "latin",
+   "id": "m022",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "tewat mata qidsit oy yilalu",
+   "expectedSlug": "tewat-mata-qidsit-hoy-yilalu",
+   "queryLanguage": "latin",
+   "id": "m023",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "inamesginas yeamlak inat bezmare",
+   "expectedSlug": "inamesginash-yeamlak-inat-bezmare",
+   "queryLanguage": "latin",
+   "id": "m024",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "bemelkam gabca betru tidar new",
+   "expectedSlug": "bemelkam-gabcha-betru-tidar-new",
+   "queryLanguage": "latin",
+   "id": "m025",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "igziaber siraw dinq new bezemenat yesemegele liqesyuman tsige asteraye ye 1nya amet misreta beal",
+   "expectedSlug": "igziabher-siraw-dinq-new-bezemenat-yeshemegele-liqesyuman-tsige-asteraye-ye-1nya",
+   "queryLanguage": "latin",
+   "id": "m026",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "isey isey tewelede adis yeldet mezmur bezemari besufeqad andargacew",
+   "expectedSlug": "isey-isey-tewelede-adis-yeldet-mezmur-bezemari-besufeqad-andargachew",
+   "queryLanguage": "latin",
+   "id": "m027",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "sim lezelealem misgun sileone",
+   "expectedSlug": "simh-lezelealem-misgun-silehone",
+   "queryLanguage": "latin",
+   "id": "m028",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "lematen yebeqa yeslasen menber",
+   "expectedSlug": "lematen-yebeqah-yeslasen-menber",
+   "queryLanguage": "latin",
+   "id": "m029",
+   "split": "tune"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "becediq seleda",
+   "expectedSlug": "betsdiq-seleda",
+   "queryLanguage": "latin",
+   "id": "m030",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-spelling-drift",
+   "query": "rufael teqebel ceeloten",
+   "expectedSlug": "rufael-teqebel-tseloten",
+   "queryLanguage": "latin",
+   "id": "m031",
+   "split": "tune"
+  },
+  {
+   "kind": "title-partial",
+   "query": "belelit mezmur",
+   "expectedSlug": "belelit-mezmur-yeseteheny",
+   "queryLanguage": "latin",
+   "id": "m032",
+   "split": "tune"
+  },
+  {
+   "kind": "title-partial",
+   "query": "fiqrih marekeny",
+   "expectedSlug": "fiqrih-marekeny-selam-leki",
+   "queryLanguage": "latin",
+   "id": "m033",
+   "split": "tune"
+  },
+  {
+   "kind": "title-partial",
+   "query": "antenu mikael",
+   "expectedSlug": "antenu-mikael-mena-mena-zeawredke",
+   "queryLanguage": "latin",
+   "id": "m034",
+   "split": "tune"
+  },
+  {
+   "kind": "title-partial",
+   "query": "yale ante",
+   "expectedSlug": "yale-ante-man-asbonyal",
+   "queryLanguage": "latin",
+   "id": "m035",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-partial",
+   "query": "aklile tsige",
+   "expectedSlug": "aklile-tsige-maryam",
+   "queryLanguage": "latin",
+   "id": "m036",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "እግዚአብሔር ኃያል ነው",
+   "expectedSlug": "igziabher-hayal-new",
+   "queryLanguage": "amharic",
+   "id": "m037",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "እሙን ዓርኪ ልበይ~ ~ ~",
+   "expectedSlug": "imun-arki-libey",
+   "queryLanguage": "amharic",
+   "id": "m038",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "እልል እልል እልል",
+   "expectedSlug": "ill-ill-ill",
+   "queryLanguage": "amharic",
+   "id": "m039",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ግድን ኮኖ",
+   "expectedSlug": "gidin-kono",
+   "queryLanguage": "amharic",
+   "id": "m040",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "እናመስግናሽ የአምላክ እናት በዝማሬ",
+   "expectedSlug": "inamesginash-yeamlak-inat-bezmare",
+   "queryLanguage": "amharic",
+   "id": "m041",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ድንግል ጐጆአቸውን ቀድሰሽ",
+   "expectedSlug": "dingil-gwajoachewn-qedsesh",
+   "queryLanguage": "amharic",
+   "id": "m042",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ድንግል በድንግልና",
+   "expectedSlug": "dingil-bedniglina",
+   "queryLanguage": "amharic",
+   "id": "m043",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "የማኑ ተሐቀፈኒ",
+   "expectedSlug": "yemanu-tehaqefeni",
+   "queryLanguage": "amharic",
+   "id": "m044",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "የሔዋን ተስፋዋ",
+   "expectedSlug": "yehewan-tesfawa",
+   "queryLanguage": "amharic",
+   "id": "m045",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ዛሌ ሃሌ ሉያ አሜን ዛሌ ሉያ",
+   "expectedSlug": "zale-hale-luya-amen-zale-luya",
+   "queryLanguage": "amharic",
+   "id": "m046",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "የማያልፍ የለም",
+   "expectedSlug": "mezmeu1-0420",
+   "queryLanguage": "amharic",
+   "id": "m047",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ውሰተ ምጥማቃት ወረደ ወልድ",
+   "expectedSlug": "wisete-mitmaqat-werede-weld",
+   "queryLanguage": "amharic",
+   "id": "m048",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "አንደበትን ስጠኝ ጌታዬ",
+   "expectedSlug": "mezmeu1-0465",
+   "queryLanguage": "amharic",
+   "id": "m049",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ስማን እግዚአብሔር",
+   "expectedSlug": "siman-igziabher",
+   "queryLanguage": "amharic",
+   "id": "m050",
+   "split": "heldout"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ገሊላ እትዊ",
+   "expectedSlug": "gelila-itwi",
+   "queryLanguage": "amharic",
+   "id": "m051",
+   "split": "tune"
+  },
+  {
+   "kind": "title-amharic",
+   "query": "ሰዎች እንዘምር",
+   "expectedSlug": "mezmeu1-0161",
+   "queryLanguage": "amharic",
+   "id": "m052",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Tewagi new alut dil adragi",
+   "expectedSlug": "yidresew-misgana",
+   "queryLanguage": "latin",
+   "id": "m053",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Lehmuman hulu yehonekachew fews",
+   "expectedSlug": "lematen-yebeqah-yeslasen-menber",
+   "queryLanguage": "latin",
+   "id": "m054",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Weantenu leisrael mena zeawdirke",
+   "expectedSlug": "antenu",
+   "queryLanguage": "latin",
+   "id": "m055",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Amaljiny keand lijish kefetari",
+   "expectedSlug": "dingil-hoy-sile-anchi-newna",
+   "queryLanguage": "latin",
+   "id": "m056",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "trgum፡- Kristos tenesa kemutan betalaq haylna sltan",
+   "expectedSlug": "mezmeu1-0040",
+   "queryLanguage": "latin",
+   "id": "m057",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Kem isat kiqatsel fiqrika ab libey",
+   "expectedSlug": "libona-habeni",
+   "queryLanguage": "latin",
+   "id": "m058",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "hulu siyalf ayehu hulun streta",
+   "expectedSlug": "mezmeu1-0420",
+   "queryLanguage": "latin",
+   "id": "m059",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Qidus yuhansin akbiro setachew",
+   "expectedSlug": "qen-kelet-sitsely-zekaryas-kahin",
+   "queryLanguage": "latin",
+   "id": "m060",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Yihiw indegena hatyat sebereny",
+   "expectedSlug": "bedelku-indegena",
+   "queryLanguage": "latin",
+   "id": "m061",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Sayzeru sayachdu beantema kenoru",
+   "expectedSlug": "yebegena-mezmur-yante-yihun-mirchaye-memhir-abel-tesfaye",
+   "queryLanguage": "latin",
+   "id": "m062",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Geta hoy tereheny zekewos hoy alkeny",
+   "expectedSlug": "aynenm-feweskeny-zare-mayet-chalkuny",
+   "queryLanguage": "latin",
+   "id": "m063",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Kebetih riqo tefto yeheden sew",
+   "expectedSlug": "qen-aleh",
+   "queryLanguage": "latin",
+   "id": "m064",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Birhann abru chibo yizachhu",
+   "expectedSlug": "ityopyawiyan-tarik-yalachhu",
+   "queryLanguage": "latin",
+   "id": "m065",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "beqal kidanh hywetu dane",
+   "expectedSlug": "mezmeu1-0283",
+   "queryLanguage": "latin",
+   "id": "m066",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "yezelalem bete iyerusalem nat",
+   "expectedSlug": "mezmeu1-0333",
+   "queryLanguage": "latin",
+   "id": "m067",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Yakebratal senbetin melaikit besemayat",
+   "expectedSlug": "yakebrewa",
+   "queryLanguage": "latin",
+   "id": "m068",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Itse mesqelu new mesqel haylachin yemayasdefir",
+   "expectedSlug": "bemesqel-anmenlen-andinbetalen",
+   "queryLanguage": "latin",
+   "id": "m069",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-transliteration",
+   "query": "Hulem keirsu gar inoralehu",
+   "expectedSlug": "siwoch-inzemr",
+   "queryLanguage": "latin",
+   "id": "m070",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "ሲኦል እስራት እኛ የዳንብሽ",
+   "expectedSlug": "mezmeu1-0256",
+   "queryLanguage": "amharic",
+   "id": "m071",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "አመ አዶናይ ከሊባኖስ ወደእኛ ነይ",
+   "expectedSlug": "kelibanos",
+   "queryLanguage": "amharic",
+   "id": "m072",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "የቱን እመርጣለሁ አንዱን ትቼ",
+   "expectedSlug": "nisha-zimare-lezih-lehatyat-hig-ketesete",
+   "queryLanguage": "amharic",
+   "id": "m073",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "እርሱ ድል ይነሳል እልል",
+   "expectedSlug": "mezmeu1-0189",
+   "queryLanguage": "amharic",
+   "id": "m074",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "መለኮት ጋሻና ጦሬ መከታዬ",
+   "expectedSlug": "melekot-dejish-lay-qome-silemn",
+   "queryLanguage": "amharic",
+   "id": "m075",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "ጽጌ ጽጌ ዘሰሎሞን ወዳዊት አብርሐ ወአጽብሐ",
+   "expectedSlug": "meaza-afewat",
+   "queryLanguage": "amharic",
+   "id": "m076",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": ">> >> የአዲስ ዘመን ብሥራት",
+   "expectedSlug": "mesheshegiya-taza",
+   "queryLanguage": "amharic",
+   "id": "m077",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "ትርጉም፡-አብርሃም በእግዚአብሔር በመታመን ከካራን ወጥቶ ከንዓን ምድር ገባ",
+   "expectedSlug": "mezmeu1-0026",
+   "queryLanguage": "amharic",
+   "id": "m078",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "እንዘትብል አምላኪየ ነፅረኒ ወአድህንኒ እምዕደ ፀላይ ወፀር",
+   "expectedSlug": "mezmeu1-0031",
+   "queryLanguage": "amharic",
+   "id": "m079",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "ብርሃኑን ጥለን የጠላት ምሽግ በምን ይታያል",
+   "expectedSlug": "tegten-intsely",
+   "queryLanguage": "amharic",
+   "id": "m080",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "የዛን የደግ አባት አማን በአማን",
+   "expectedSlug": "mezmeu1-0341",
+   "queryLanguage": "amharic",
+   "id": "m081",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "ትርጉም፡- ማርያም ንጽሕት ድንግል ታማኝ",
+   "expectedSlug": "iyaqem-wehena-inat-abatish-bete-igziabher",
+   "queryLanguage": "amharic",
+   "id": "m082",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "የጌታችን እናት ማርያም ድንግል ሆይ አንቺ ነሽ",
+   "expectedSlug": "yegetachin-inat-maryam-dingil-hoy-anchi-nesh",
+   "queryLanguage": "amharic",
+   "id": "m083",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-amharic",
+   "query": "ክቡር ምስጉን አምላክ ቅዱስ እንበለው",
+   "expectedSlug": "mezmeu1-0331",
+   "queryLanguage": "amharic",
+   "id": "m084",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words trgum፡-tsdqhn negerkuny adanynethn astemarkuny qalathn leityopya hzb negerkuny",
+   "expectedSlug": "mezmeu1-0038",
+   "queryLanguage": "latin",
+   "id": "m085",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words Kemzi ile keynebir ninsiha abqiani",
+   "expectedSlug": "shefani-gudey-new-eritrean-orthodox-mezmur-shefani-gudey-by-zemari-bereket-tikue",
+   "queryLanguage": "latin",
+   "id": "m086",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words Betsegahu lemenfesqidus wemeharkiwomu ane yibe yared",
+   "expectedSlug": "zenoku-tsidqeke-wenegerku-adhinoteke-kesetku-qalatike",
+   "queryLanguage": "latin",
+   "id": "m087",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words Ortodokis tewahdo hager nat",
+   "expectedSlug": "ortodokis-tewahdo-hager-nat",
+   "queryLanguage": "latin",
+   "id": "m088",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words Cheru hoy hulun talfewaleh",
+   "expectedSlug": "cheru-hoy",
+   "queryLanguage": "latin",
+   "id": "m089",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words Besew lij memekat aqumiyalehu",
+   "expectedSlug": "chernetih-new-yadereseny-iske-zare",
+   "queryLanguage": "latin",
+   "id": "m090",
+   "split": "heldout"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words Igziabher ab lake andiya lijun",
+   "expectedSlug": "mesqelun-teshekmen-beimnet-anramed",
+   "queryLanguage": "latin",
+   "id": "m091",
+   "split": "tune"
+  },
+  {
+   "kind": "lyric-with-request",
+   "query": "find the hymn with the words Wiletah bizu new yante wesin yelew",
+   "expectedSlug": "saygebany",
+   "queryLanguage": "latin",
+   "id": "m092",
+   "split": "tune"
+  }
+ ]
+}
