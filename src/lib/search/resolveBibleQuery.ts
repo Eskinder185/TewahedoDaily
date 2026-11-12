@@ -58,13 +58,15 @@ export async function resolveBibleQuery(
         const targetRoute = `/bible/${bookSlug}/${chapterNum}${verseNum ? `#verse-${verseNum}` : ''}`
         const bookRef = {
           slug: bookSlug,
-          name_en: top.title.split(' ')[0] || parsed.bookQuery,
+          // "1 John 3:16" → "1 John": strip the trailing chapter/verse, never just the first word.
+          name_en: top.title.replace(/\s+\d+(?:[:.]\d+(?:\s*[-–]\s*\d+)?)?\s*$/, '').trim() || parsed.bookQuery,
           name_am: top.titleAmharic || null,
         }
 
         const response: SearchBuddyApiResponse = verseNum
           ? {
               type: 'bible_reference',
+              reference: `${bookRef.name_en} ${chapterNum}:${verseNum}${parsed.verseEnd && parsed.verseEnd !== verseNum ? `-${parsed.verseEnd}` : ''}`,
               book: bookRef,
               book_name: bookRef.name_en,
               book_slug: bookSlug,
@@ -75,6 +77,7 @@ export async function resolveBibleQuery(
             }
           : {
               type: 'bible_chapter',
+              reference: `${bookRef.name_en} ${chapterNum}`,
               book: bookRef,
               book_name: bookRef.name_en,
               book_slug: bookSlug,

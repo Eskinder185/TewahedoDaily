@@ -558,6 +558,11 @@ function toChapterResult(
   }
 }
 
+/** `?edition=` only for the editions the reader page selects by code. */
+function editionQuery(edition: EditionRef): string {
+  return edition.code === 'am' || edition.code === 'web' ? `?edition=${edition.code}` : ''
+}
+
 function toVerseResults(
   resolved: ResolvedBook,
   chapter: LocatedChapter,
@@ -574,7 +579,8 @@ function toVerseResults(
         title: `${resolved.displayNameEn} ${chapter.chapterNumber}:${v.verse_number}`,
         titleAmharic: resolved.displayNameAm || '',
         description: languageLabel(chapter.edition),
-        route: `/bible/${resolved.book.slug}/${chapter.ordinal}`,
+        // Exact destination: the chapter in the matched edition, anchored at the verse.
+        route: `/bible/${resolved.book.slug}/${chapter.ordinal}${editionQuery(chapter.edition)}#verse-${v.verse_number}`,
         imagePath: null,
         score: 0.001,
         matchKind: 'exact',
@@ -602,7 +608,7 @@ function toVerseResults(
       title: label,
       titleAmharic: resolved.displayNameAm || '',
       description: `${languageLabel(chapter.edition)} · ${verses.length} verse row${verses.length === 1 ? '' : 's'}`,
-      route: `/bible/${resolved.book.slug}/${chapter.ordinal}`,
+      route: `/bible/${resolved.book.slug}/${chapter.ordinal}${editionQuery(chapter.edition)}#verse-${verses[0].verse_number}`,
       imagePath: null,
       score: 0.001,
       matchKind: 'exact',
