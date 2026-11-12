@@ -1,0 +1,5 @@
+.qr { display: grid; justify-items: center; gap: 0.5rem; margin: 1rem 0; }
+.qr svg { width: 11rem; max-width: 100%; height: auto; border-radius: 0.5rem; box-shadow: 0 0 0 1px rgba(10, 21, 36, 0.15); }
+.large svg { width: min(26rem, 88vw); }
+.qr figcaption { color: var(--color-text-muted, #5b6573); font-size: 0.88rem; font-weight: 700; }
+.qr button { min-height: 2.5rem; padding: 0 1rem; border: 1px solid var(--color-border-card, #c9b98a); border-radius: 999px; background: transparent; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }

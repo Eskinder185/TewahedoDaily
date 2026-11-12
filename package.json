@@ -142,6 +142,7 @@
     "test:church-library-structured": "tsx scripts/test-church-library-structured-import.ts",
     "test:church-library-db": "bash scripts/church-library/db-test/run.sh",
     "test:mezmur-browse-queue": "tsx scripts/test-mezmur-browse-queue.ts",
+    "test:room-qr": "tsx scripts/test-room-qr.ts",
     "test:play-foundation": "node scripts/test-play-foundation.mjs",
     "test:play-milestones": "tsx scripts/test-play-milestones-2-4.ts",
     "test:play-complete": "node scripts/test-play-complete.mjs",
@@ -160,6 +161,7 @@
     "pdfjs-dist": "^6.4.299",
     "playwright": "^1.55.1",
     "pptxgenjs": "^3.12.0",
+    "qrcode-generator": "^1.4.4",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.18.2"
@@ -174,6 +176,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
+    "jsqr": "^1.4.0",
     "sharp": "^0.35.5",
     "tsx": "^4.23.15",
     "typescript": "~6.0.2",
