@@ -36,7 +36,7 @@ const CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789' // no 0/O/1/I
 export function newRoomCode(random: Rng = Math.random): string {
   return Array.from({ length: 5 }, () => CODE_CHARS[Math.floor(random() * CODE_CHARS.length)]).join('')
 }
-export const normalizeCode = (value: string) => value.toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/O/g, '0').replace(/[IL]/g, '1').slice(0, 5)
+export const normalizeCode = (value: string) => value.toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/O/g, '0').replace(/I/g, '1').slice(0, 5)
 export const validCode = (value: string) => /^[A-HJ-NP-Z2-9]{5}$/.test(value)
 export const cleanName = (value: string) => value.replace(/\p{Cc}|[<>]/gu, '').replace(/\s+/g, ' ').trim().slice(0, 20)
 export const joinLink = (origin: string, code: string) => `${origin}/play/live/${code}`
@@ -254,7 +254,10 @@ export function reduceView(view: PlayerView, msg: HostMsg, me: string, now: numb
       // Roster refreshes must not reset a game in progress; only a rematch (fresh) returns finished players to the lobby.
       if (view.phase === 'round' || view.phase === 'reveal' || (view.phase === 'final' && !msg.fresh)) return view
       return { phase: 'lobby', roster: msg.roster, game: msg.game, total: msg.total, hostName: msg.hostName }
-    case 'round': return { phase: 'round', n: msg.n, total: msg.total, question: msg.question, deadline: now + msg.durationMs, mine: view.phase === 'round' && view.n === msg.n ? view.mine : null, answered: msg.answered.length }
+    case 'round':
+      // Broadcasts can arrive out of order: a round update for a question that is already revealed is stale and must not undo the reveal.
+      if (view.phase === 'reveal' && view.n >= msg.n) return view
+      return { phase: 'round', n: msg.n, total: msg.total, question: msg.question, deadline: now + msg.durationMs, mine: view.phase === 'round' && view.n === msg.n ? view.mine : null, answered: msg.answered.length }
     case 'reveal': return { phase: 'reveal', n: msg.n, correctKey: msg.correctKey, explanation: msg.explanation, source: msg.source, mine: msg.picks[me] ?? null, scores: msg.scores }
     case 'final': return { phase: 'final', scores: msg.scores, total: msg.total }
     case 'closed': return { phase: 'closed', reason: msg.reason }

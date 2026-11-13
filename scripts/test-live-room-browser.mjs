@@ -18,6 +18,7 @@ const shots = mkdtempSync(path.join(tmpdir(), 'tewahedo-live-'))
 const server = await createServer({ optimizeDeps: { include: ['qrcode-generator'] }, server: { host: '127.0.0.1', port, strictPort: true } })
 await server.listen()
 const base = `http://127.0.0.1:${port}`
+let diagnostics = {}; let stage = ''
 let browser
 let passed = 0
 const step = async (name, fn) => { await fn(); passed += 1; console.log(`PASS ${name}`) }
@@ -27,12 +28,13 @@ try {
     const context = await browser.newContext({ viewport: { width, height: 900 }, serviceWorkers: 'block' })
     await context.addInitScript(() => { localStorage.setItem('tewahedo-daily-locale', 'en') })
     const page = await context.newPage(); page.setDefaultTimeout(20000)
-    const errors = []; page.on('pageerror', e => errors.push(e.message))
-    return { context, page, errors }
+    const errors = []; page.on('pageerror', e => errors.push(e.message)); const loads = []; page.on('framenavigated', f => { if (f === page.mainFrame()) loads.push(new URL(f.url()).pathname) })
+    return { context, page, errors, loads }
   }
   const host = await mk(1280)
   const guest = await mk(390)
   const guest2 = await mk(430)
+  diagnostics = { host, guest, guest2 }
   let code = ''
   let decodedLink = ''
   /** Reads the lobby QR the way a phone camera would: render it to pixels, then decode those pixels with a real QR decoder. */
@@ -131,15 +133,20 @@ try {
     await host.page.waitForFunction(() => { const rows = [...document.querySelectorAll('[data-roster] li, [class*="leaderboard"] li')]; return !document.body.innerText.includes('○') }, null, { timeout: 25000 })
     await host.page.waitForTimeout(1500)
     for (let round = 1; round <= 5; round++) {
+      stage = `round ${round}: start`
       await guest.page.locator('[data-option]').first().waitFor({ timeout: 25000 })
       await guest2.page.locator('[data-option]').first().waitFor()
       await guest.page.locator('[data-option]').first().click()
       assert.equal(await guest.page.locator('[data-option]').first().isDisabled(), true, 'locked after one tap')
       await guest.page.locator('[data-option]').nth(1).click({ force: true, timeout: 1500 }).catch(() => undefined) // double tap is ignored
       if (round % 2) await guest2.page.locator('[data-option]').nth(1).click()
-      await host.page.locator('[data-reveal]').click()
+      stage = `round ${round}: host reveal`
+      // When every connected player has answered the host reveals by itself (the button is then replaced by Next);
+      // otherwise the host presses Reveal. Either way the players must see the reveal, and the host must be offered Next.
+      await host.page.locator('[data-reveal]').click({ timeout: 4000 }).catch(() => undefined)
       await guest.page.locator('[data-player-reveal]').waitFor({ timeout: 25000 })
       await guest2.page.locator('[data-player-reveal]').waitFor()
+      stage = `round ${round}: waiting for host Next`
       await host.page.locator('[data-next]').waitFor()
       if (round === 1) await guest2.page.screenshot({ path: path.join(shots, 'player-reveal-430.png'), fullPage: true })
       await host.page.locator('[data-next]').click()
@@ -167,5 +174,9 @@ try {
   console.log(`Live room browser test passed: ${passed} steps. Screenshots: ${shots}`)
 } catch (error) {
   if (process.env.LIVE_ROOM_OFFLINE_OK && /ERR_NAME_NOT_RESOLVED|ERR_INTERNET|ENOTFOUND/.test(String(error))) console.log('Skipped (offline).')
-  else { console.error(error); process.exitCode = 1 }
+  else {
+    console.error(error); process.exitCode = 1; console.error('--- stage when it failed:', stage)
+    // Failure diagnostics: what each screen showed (visible text only; no credentials are ever on these pages).
+    for (const [name, client] of Object.entries(diagnostics)) { try { console.error('--- ' + name + ' screen:', (await client?.page.locator('body').innerText({ timeout: 2000 })).replace(/\s+/g, ' ').slice(0, 400), '| page errors:', JSON.stringify(client.errors), '| navigations:', JSON.stringify(client.loads)) } catch (e) { console.error('--- ' + name + ': no screen text (' + String(e.message).split(String.fromCharCode(10))[0] + ')') } }
+  }
 } finally { await browser?.close(); await server.close() }

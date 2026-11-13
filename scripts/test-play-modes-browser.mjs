@@ -163,9 +163,9 @@ try {
         await page.keyboard.press('Tab'); await control.focus()
         assert.ok(await control.evaluate(el => el.matches(':focus-visible') && getComputedStyle(el).outlineStyle !== 'none'))
         await page.screenshot({ path: join(artifacts, `${width}-${locale}-${route.replaceAll('/', '_')}.png`), fullPage: true })
-        if (route === '/play') await page.locator('[aria-labelledby="modes-title"]').screenshot({ path: join(artifacts, `${width}-${locale}-modes.png`) })
+        if (route === '/play') await page.locator('[aria-labelledby="games-title"]').screenshot({ path: join(artifacts, `${width}-${locale}-modes.png`) })
         if (route === '/play' && width <= 390) {
-          await control.tap()
+          await (route === "/play" ? page.locator('[data-play-mode="knowledge"]') : control).tap()
           await page.waitForURL(url => url.searchParams.get('mode') === 'knowledge')
           await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 3)
         }
