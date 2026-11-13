@@ -115,12 +115,17 @@ try {
     await page.locator('ol li a').first().click(); await page.waitForURL('**/play/trivia')
     await page.goBack(); await page.locator('ol li a').first().waitFor()
     await page.getByRole('button', { name: 'Back to Game Night choices' }).click()
+    // One way to host: the old private-room views now lead to the no-account live rooms.
     await page.getByRole('button', { name: /Host a room/ }).click()
-    await page.getByText(/Hosts must sign in/).waitFor()
-    assert.equal(await page.getByRole('button', { name: 'Create private room' }).count(), 0)
-    await page.goBack(); await page.getByRole('button', { name: /Join with a code/ }).click()
-    await page.getByLabel('Room code').waitFor()
-    assert.ok(await page.getByRole('button', { name: 'Join', exact: true }).isDisabled())
+    await page.waitForURL('**/play/live')
+    await page.getByRole('heading', { name: 'Host a game' }).waitFor()
+    assert.equal(await page.getByText(/Hosts must sign in/).count(), 0)
+    await page.goto(`${base}/play`)
+    await page.locator('[data-host]').waitFor(); await page.locator('[data-join]').waitFor()
+    await page.locator('form[aria-label="Join with a code"] input').fill('AB')
+    await page.locator('[data-join]').click()
+    await page.getByRole('alert').filter({ hasText: '5 letters or numbers' }).waitFor()
+    // A valid code opens the room page, which connects to the live service; that part is covered by test-live-room-browser.
   })
   await test('Compact CMS mode filter retains access to all twelve editors without card grids', async () => {
     await page.evaluate(() => localStorage.setItem('mode-test-role', 'editor'))
