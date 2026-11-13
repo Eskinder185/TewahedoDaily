@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
-import { handlePlayImageError, type PlayArt } from '../../lib/play/imageCatalog'
+import type { PlayArt } from '../../lib/play/imageCatalog'
+import { GameIcon } from './GameIcon'
 import styles from './PlayComponents.module.css'
 
 type Text = Record<AppLocale, string>
@@ -28,19 +29,8 @@ export function GameCard({ game, locale, level, size = 'regular' }: { game: Play
   const className = `${styles.gameCard} ${size === 'feature' ? styles.gameCardFeature : ''} ${game.unavailable ? styles.gameCardUnavailable : ''}`
   const body = (
     <>
-      <div className={styles.cardMedia}>
-        {game.art.src ? (
-          <img
-            src={game.art.src}
-            alt=""
-            loading={size === 'feature' ? 'eager' : 'lazy'}
-            decoding="async"
-            width={800}
-            height={600}
-            onError={(event) => handlePlayImageError(event, game.art.fallbackSrc)}
-            style={game.art.focus ? { objectPosition: game.art.focus } : undefined}
-          />
-        ) : null}
+      <div className={`${styles.cardMedia} ${styles.cardMediaIcon}`}>
+        <GameIcon id={game.id} />
         <span className={styles.cardChip}>{game.category[locale]}</span>
         {game.badge ? <span className={styles.cardBadge}>{game.badge[locale]}</span> : null}
       </div>

@@ -1,3 +1,4 @@
+import { isWerb } from '../../lib/mezmur/mezmurForm'
 import { useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useAsync } from '../../lib/cms/useAsync'
@@ -73,7 +74,7 @@ export function MezmurCards({ items }: { items: MezmurCard[] }) {
           .map((code) => LANGUAGE_LABEL[code] || code)
           .filter(Boolean)
         const meta = [
-          item.form === 'werb' ? 'Werb' : null,
+          isWerb(item.form) ? 'Werb' : null,
           ...languages,
           item.category_name,
           item.featured ? 'Featured' : null,

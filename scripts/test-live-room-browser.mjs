@@ -5,6 +5,7 @@
  */
 import assert from 'node:assert/strict'
 import { chromium } from 'playwright'
+import jsQR from 'jsqr'
 import { createServer } from 'vite'
 import { mkdtempSync } from 'node:fs'
 import { tmpdir } from 'node:os'
@@ -13,7 +14,8 @@ import path from 'node:path'
 process.env.VITE_PLAY_DATABASE_ONLY = 'false'
 const port = 5321
 const shots = mkdtempSync(path.join(tmpdir(), 'tewahedo-live-'))
-const server = await createServer({ server: { host: '127.0.0.1', port, strictPort: true } })
+// Pre-bundle the QR library up front: discovering it on first load makes Vite re-optimize and reload the page mid-test.
+const server = await createServer({ optimizeDeps: { include: ['qrcode-generator'] }, server: { host: '127.0.0.1', port, strictPort: true } })
 await server.listen()
 const base = `http://127.0.0.1:${port}`
 let browser
@@ -32,6 +34,19 @@ try {
   const guest = await mk(390)
   const guest2 = await mk(430)
   let code = ''
+  let decodedLink = ''
+  /** Reads the lobby QR the way a phone camera would: render it to pixels, then decode those pixels with a real QR decoder. */
+  const decodeLobbyQr = async (page) => {
+    const data = await page.evaluate(async () => {
+      const el = document.querySelector('[data-room-qr] svg')
+      const xml = new XMLSerializer().serializeToString(el).replace('<svg', '<svg width="600" height="600"')
+      const img = new Image(); img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(xml); await img.decode()
+      const canvas = document.createElement('canvas'); canvas.width = 600; canvas.height = 600
+      const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, 600, 600)
+      return Array.from(ctx.getImageData(0, 0, 600, 600).data)
+    })
+    return jsQR(new Uint8ClampedArray(data), 600, 600)?.data ?? null
+  }
 
   await step('hub offers Play now, Surprise me, Play solo, Host and Join, and Surprise me starts a game', async () => {
     await host.page.goto(`${base}/play`)
@@ -52,12 +67,26 @@ try {
     assert.match(code, /^[A-HJ-NP-Z2-9]{5}$/)
     await host.page.getByRole('status').filter({ hasText: /Online/ }).waitFor({ timeout: 25000 })
     assert.equal(await host.page.getByLabel('Join link').inputValue(), `${base}/play/live/${code}`)
+    // The lobby offers a scannable QR code for the same join link.
+    await host.page.locator('[data-room-qr] svg[role="img"]').waitFor()
+    assert.match(await host.page.locator('[data-room-qr] svg').getAttribute('aria-label'), new RegExp(code))
+    // The QR decodes to exactly the invite URL, before and after "Enlarge for a screen", and stays inside a phone-width page.
+    const invite = await host.page.getByLabel('Join link').inputValue()
+    decodedLink = (await decodeLobbyQr(host.page)) ?? ''
+    assert.equal(decodedLink, invite, 'the QR encodes the exact invite link')
+    const small = (await host.page.locator('[data-room-qr] svg').boundingBox()).width
+    await host.page.getByRole('button', { name: 'Enlarge for a screen' }).click()
+    assert.ok((await host.page.locator('[data-room-qr] svg').boundingBox()).width > small + 40, 'enlarge makes the code bigger')
+    assert.equal(await decodeLobbyQr(host.page), invite, 'the enlarged code decodes to the same link')
+    await host.page.getByRole('button', { name: 'Make smaller' }).click()
+    assert.ok(Math.abs((await host.page.locator('[data-room-qr] svg').boundingBox()).width - small) < 2, 'it can be made smaller again')
     await host.page.screenshot({ path: path.join(shots, 'host-lobby.png'), fullPage: true })
   })
 
   await step('two players join from independent browsers; lobby roster is live on every screen', async () => {
     for (const [client, name] of [[guest, 'Guest Abel'], [guest2, 'Guest Sara']]) {
-      await client.page.goto(`${base}/play/live/${code}`)
+      // Players arrive through the link the QR code carries, not through a URL the test builds itself.
+      await client.page.goto(decodedLink)
       await client.page.getByLabel('Name').fill(name)
       await client.page.getByRole('button', { name: 'Join', exact: true }).click()
       await client.page.locator('[data-player-lobby]').waitFor({ timeout: 25000 })
@@ -97,6 +126,10 @@ try {
   })
 
   await step('five rounds: answers lock once, reveal shows result and leaderboard, host advances', async () => {
+    // After the refresh step the reloaded player briefly leaves and re-enters presence. The host reveals as soon as every
+    // CONNECTED player has answered, so start only once the roster is stable and everyone is connected again.
+    await host.page.waitForFunction(() => { const rows = [...document.querySelectorAll('[data-roster] li, [class*="leaderboard"] li')]; return !document.body.innerText.includes('○') }, null, { timeout: 25000 })
+    await host.page.waitForTimeout(1500)
     for (let round = 1; round <= 5; round++) {
       await guest.page.locator('[data-option]').first().waitFor({ timeout: 25000 })
       await guest2.page.locator('[data-option]').first().waitFor()

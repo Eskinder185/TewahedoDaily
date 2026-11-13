@@ -24,7 +24,9 @@ for (const required of ['Guest play', 'እንግዳ ጨዋታ', 'Game Night', '�
 }
 
 assert.match(hub, /aria-live="polite"/, 'Difficulty changes need an accessible announcement')
-assert.match(hub, /aria-pressed=\{filter === category\.id\}/, 'Category filters need selected state')
+assert.match(hub, /data-play-mode=\{entry\.id\}/, 'The hub offers the five ways to play')
+assert.doesNotMatch(hub, /Show all 12 games|Browse by topic/, 'No second all-games list or topic filter under the ways to play')
+assert.match(hub, /to="\/play\/live" data-host/, 'Game Night host button on the hub')
 assert.match(hubCss, /prefers-reduced-motion: no-preference/, 'Decorative animation must be opt-in when reduced motion is not requested')
 for (const route of ['/play/trivia', '/play/who-am-i', '/play/emoji', '/play/finish-the-mezmur', '/play/finish-the-verse', '/play/history', '/play/match', '/play/adventures', '/play/game-night']) {
   assert.ok(app.includes(`path="${route}"`), `Missing playable route: ${route}`)
