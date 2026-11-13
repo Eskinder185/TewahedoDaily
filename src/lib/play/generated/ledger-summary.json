@@ -1,0 +1,66 @@
+{
+ "bible-timeline": {
+  "published": 33,
+  "duplicate": 0,
+  "rejected": 0,
+  "held": 1,
+  "reasons": {
+   "events run backwards through a book, so the stated order needs human review": 1
+  }
+ },
+ "emoji": {
+  "published": 160,
+  "duplicate": 10,
+  "rejected": 0,
+  "held": 0,
+  "reasons": {
+   "substantially equivalent to <id>": 10
+  }
+ },
+ "finish-the-verse": {
+  "published": 114,
+  "duplicate": 0,
+  "rejected": 0,
+  "held": 0,
+  "reasons": {}
+ },
+ "history": {
+  "published": 0,
+  "duplicate": 0,
+  "rejected": 0,
+  "held": 120,
+  "reasons": {
+   "cites a Church Library route that is not a known published document": 100,
+   "history claims need doctrinal review before publication": 20
+  }
+ },
+ "match": {
+  "published": 127,
+  "duplicate": 0,
+  "rejected": 0,
+  "held": 43,
+  "reasons": {
+   "cites a church-library route that is not verifiable": 38,
+   "neither name appears in the cited chapter text, so the claim could not be verified": 5
+  }
+ },
+ "trivia": {
+  "published": 206,
+  "duplicate": 0,
+  "rejected": 0,
+  "held": 0,
+  "reasons": {}
+ },
+ "who-am-i": {
+  "published": 126,
+  "duplicate": 1,
+  "rejected": 0,
+  "held": 43,
+  "reasons": {
+   "neither name appears in the cited chapter text, so the claim could not be verified": 20,
+   "cites a church-library route that is not verifiable": 21,
+   "exact duplicate of already-published content": 1,
+   "cites a calendar route that is not verifiable": 2
+  }
+ }
+}

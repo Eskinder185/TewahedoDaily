@@ -1,8 +1,9 @@
 import type { BuiltInItem } from '../../../lib/play/staticContent'
 
-export type StudioView = 'library' | 'settings' | 'coverage' | 'campaign'
+export type StudioView = 'library' | 'content' | 'settings' | 'coverage' | 'campaign'
 export const STUDIO_VIEWS: Array<{ id: StudioView; en: string; am: string }> = [
   { id: 'library', en: 'Library', am: 'ቤተ-መጻሕፍት' },
+  { id: 'content', en: 'Content status', am: 'የይዘት ሁኔታ' },
   { id: 'settings', en: 'Game settings', am: 'የጨዋታ ቅንብር' },
   { id: 'coverage', en: 'Coverage', am: 'ሽፋን' },
   { id: 'campaign', en: 'Campaign drafts', am: 'የዘመቻ ረቂቆች' },
