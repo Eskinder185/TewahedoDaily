@@ -13,21 +13,35 @@ const { APPROVED_QUESTIONS, MATCH_PAIRS, WHO_AM_I_CARDS } = await import('../src
 const { validateQuestionDraft } = await import('../src/lib/play/questionLibrary.ts')
 const { validateCardContent } = await import('../src/lib/play/cardContent.ts')
 const { mergeById } = await import('../src/lib/play/generatedBank.ts')
+const { TIMELINE_CHAINS } = await import('../src/lib/play/bibleTimeline.ts')
 const { withShuffledOptions, withOptionOrder, shuffled, seededRandom } = await import('../src/lib/play/sessionRandom.ts')
 const read = (name: string) => JSON.parse(readFileSync(`src/lib/play/generated/${name}.json`, 'utf8')) as any[]
-const bank = { trivia: read('trivia'), 'finish-the-verse': read('finish-the-verse'), emoji: read('emoji'), 'who-am-i': read('who-am-i'), match: read('match') }
+const bank = { trivia: read('trivia'), 'finish-the-verse': read('finish-the-verse'), emoji: read('emoji'), 'who-am-i': read('who-am-i'), match: read('match'), 'bible-timeline': read('timeline') }
 const ledger = JSON.parse(readFileSync('docs/ai/faith-challenges-publication-ledger.json', 'utf8'))
 let passed = 0
 const test = (name: string, fn: () => void) => { fn(); passed += 1; console.log(`PASS ${name}`) }
 
 test('ledger accounting matches the shipped files and every record has a status', () => {
-  for (const [game, items] of Object.entries(bank)) assert.equal(ledger.published[game], items.length, `${game} published count`)
+  for (const [game, items] of Object.entries(bank)) assert.equal(ledger.published[game === 'bible-timeline' ? 'timeline' : game], items.length, `${game} published count`)
   const statuses = ledger.items.map((i: any) => i.status)
   assert.ok(statuses.every((s: string) => ['published', 'duplicate', 'rejected', 'unresolved'].includes(s)))
   assert.equal(ledger.items.filter((i: any) => i.status === 'published').length, Object.values(bank).flat().length)
   assert.ok(ledger.items.filter((i: any) => i.status !== 'published').every((i: any) => i.reason), 'every held-back item states a specific reason')
   const ids = ledger.items.map((i: any) => `${i.game}:${i.id}`)
   assert.equal(new Set(ids).size, ids.length, 'each draft is recorded once')
+})
+
+test('generated timeline chains are well formed: unique ids, 3-12 events, readable Bible routes, no id clashes with built-in chains', () => {
+  const chains = bank['bible-timeline']
+  assert.ok(chains.length >= 30, `only ${chains.length} chains`)
+  const chainIds = [...TIMELINE_CHAINS.map((c: any) => c.id), ...chains.map((c: any) => c.id)]
+  assert.equal(new Set(chainIds).size, chainIds.length, 'chain ids are unique')
+  const eventIds = [...TIMELINE_CHAINS.flatMap((c: any) => c.events), ...chains.flatMap((c: any) => c.events)].map((e: any) => e.id)
+  assert.equal(new Set(eventIds).size, eventIds.length, 'event ids are unique')
+  for (const chain of chains) {
+    assert.ok(chain.events.length >= 3 && chain.events.length <= 12, chain.id)
+    for (const event of chain.events) assert.match(event.route, /^\/bible\/[a-z0-9-]+\/\d+/,`${chain.id}/${event.id}`)
+  }
 })
 
 test('shipped questions validate with the app validator, with intact answers and distinct options', () => {

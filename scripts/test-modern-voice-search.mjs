@@ -40,7 +40,7 @@ async function setup(viewport) {
   await page.goto(`${base}/bible`, { waitUntil: 'domcontentloaded' })
   const field = page.getByPlaceholder(/Search books/i)
   const mic = page.getByRole('button', { name: /Search the Bible by voice/i })
-  const micState = page.locator('form[role="search"] button[aria-pressed]')
+  const micState = page.locator('form[role="search"] button[aria-pressed]:not([aria-label^="Voice language"])')
   await mic.waitFor()
   return { context, page, field, mic, micState }
 }
@@ -48,13 +48,13 @@ async function setup(viewport) {
 try {
   const desktop = await setup({ width: 1280, height: 850 })
   await desktop.page.screenshot({ path: path.join(output, 'bible-desktop.png'), fullPage: true })
-  await desktop.page.getByRole('button', { name: /Voice language: English/i }).click()
-  await desktop.page.getByRole('menuitemradio', { name: /Amharic/i }).click()
-  await desktop.page.getByRole('button', { name: /Voice language: Amharic/i }).waitFor()
+  // Both languages are always visible; one tap switches (no menu to open).
   await desktop.page.getByRole('button', { name: /Voice language: Amharic/i }).click()
-  await desktop.page.getByRole('menuitemradio', { name: /English/i }).click()
+  await desktop.page.getByRole('button', { name: /Voice language: Amharic/i, pressed: true }).waitFor()
+  await desktop.page.getByRole('button', { name: /Voice language: English/i }).click()
+  await desktop.page.getByRole('button', { name: /Voice language: English/i, pressed: true }).waitFor()
   await desktop.mic.click()
-  await desktop.page.waitForFunction(() => document.querySelector('form[role="search"] button[aria-pressed]')?.getAttribute('aria-pressed') === 'true')
+  await desktop.page.waitForFunction(() => document.querySelector('form[role="search"] button[aria-pressed]:not([aria-label^="Voice language"])')?.getAttribute('aria-pressed') === 'true')
   assert.equal(await desktop.micState.getAttribute('aria-pressed'), 'true')
   assert.equal(await desktop.page.evaluate(() => window.__voice.instances.at(-1).lang), 'en-US')
   await desktop.page.getByRole('button', { name: /^Stop$/i }).click()

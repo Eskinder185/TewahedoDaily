@@ -11,6 +11,7 @@ import {
   searchHymns,
   type HymnBrowseCard,
   type HymnCollection,
+  searchImportMezmurs,
   type HymnDiscoveryHit,
 } from '../lib/publicContent/hymnBrowse'
 import { usePageMeta } from '../lib/publicContent/usePageMeta'
@@ -29,6 +30,7 @@ import { HighlightedText } from '../components/search/HighlightedText'
 import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
 import s from './HymnPractice.module.css'
 import { MEZMUR_LANGUAGES, isMezmurLanguageFilter, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
+import { isWerb } from '../lib/mezmur/mezmurForm'
 import {
   MEZMUR_CATEGORY_BROWSE_GROUPS,
   MEZMUR_OCCASION_BROWSE_GROUPS,
@@ -36,6 +38,43 @@ import {
 } from '../lib/publicContent/mezmurBrowseGroups'
 
 type SearchItem = UnifiedMezmurSearchItem
+
+/**
+ * Werbs only (ወረብ): with no search text, every published werb; with text, the lyric-aware search narrowed to werbs.
+ * A hymn counts as a werb under any stored spelling of its form (see mezmurForm.ts).
+ */
+async function loadWerbs(query: string, language: MezmurLanguageFilter, page: number, signal: AbortSignal) {
+  const only = language === 'all' ? undefined : language
+  if (!query) {
+    const found = await searchImportMezmurs('', { form: 'werb', language: only, page, pageSize: 24 })
+    const items: SearchItem[] = found.items.map((item) => ({
+      id: item.id, slug: item.slug, title: item.title, title_amharic: item.title_amharic, title_english: item.title_english,
+      primary_language: item.language, form: item.form, preview: null, youtube_url: item.youtube_url, audio_url: null,
+      zemari: item.singer_name, singer_name: item.singer_name, thumbnail_url: item.thumbnail_url, excerpt: null,
+    }))
+    return { items, total: found.total, page }
+  }
+  const found = await searchMezmursUnified(query, { limit: 50, language: only, signal })
+  const werbs = found.items.filter((item) => isWerb(item.form))
+  return { items: werbs.slice((page - 1) * 24, page * 24), total: werbs.length, page }
+}
+
+/** One clear way in for people who only want werbs. */
+function WerbFeatureCard({ locale, onOpen }: { locale: string; onOpen: () => void }) {
+  const am = locale === 'am'
+  return (
+    <button type="button" className={s.werbCard} onClick={onOpen} data-testid="werb-card">
+      <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+        <ellipse cx="24" cy="13" rx="13" ry="4.5" /><path d="M11 13c2 7 2 14 0 22M37 13c-2 7-2 14 0 22" /><path d="M11 35c0 2.5 5.8 4.5 13 4.5S37 37.5 37 35" /><path d="M14 18l6 17M24 17.5v22M34 18l-6 17" />
+      </svg>
+      <span className={s.werbText}>
+        <strong>{am ? 'ወረብ' : 'Werb'} · <span lang="am">ወረብ</span></strong>
+        <span>{am ? 'ወረብ ብቻ ይመልከቱ — በዜማ የሚቀርቡ አጫጭር ስንኞች።' : 'Looking only for werbs? See just the werbs, the short sung verses, and nothing else.'}</span>
+      </span>
+      <span className={s.werbGo} aria-hidden="true">→</span>
+    </button>
+  )
+}
 
 function CardArt({ item }: { item: SearchItem }) {
   const [src, setSrc] = useState('')
@@ -493,7 +532,8 @@ export function PublicMezmurLibrary() {
   const browseMode = browseModeFromParam(params.get('browse'))
   const zemariQuery = browseMode === 'zemaris' ? (params.get('q') || '').trim() : ''
   const hasQuery = Boolean((params.get('q') || '').trim())
-  const showResults = hasQuery && browseMode !== 'zemaris'
+  const werbOnly = params.get('form') === 'werb'
+  const showResults = (hasQuery || werbOnly) && browseMode !== 'zemaris'
   const page = Math.max(1, Number(params.get('page')) || 1)
 
   usePageMeta(
@@ -604,7 +644,8 @@ export function PublicMezmurLibrary() {
     }
     let active = true
     queueMicrotask(() => {
-      if (active) { setLoading(true); setError(undefined); setResult(null) }
+      // Keep the previous results on screen while a refined search loads: no blank flash on every keystroke.
+      if (active) { setLoading(true); setError(undefined) }
     })
     // Raw query → GET /api/hymns/search (same path for typed and voice).
     // Do not expand aliases or run local exact-match before the backend.
@@ -615,13 +656,15 @@ export function PublicMezmurLibrary() {
         // One lyric-aware search for every language filter (API first, bounded public fallback).
         // A language filter pages the (at most 50) matches 24 at a time.
         const [data, hits] = await Promise.all([
-          language === 'all'
+          werbOnly
+            ? loadWerbs(q, language, page, controller.signal)
+            : language === 'all'
             ? searchMezmursUnified(q, { limit: 20, signal: controller.signal })
             : searchMezmursUnified(q, { limit: 50, language, signal: controller.signal }).then((found) => ({
                 items: found.items.slice((page - 1) * 24, page * 24), total: found.total, page,
               })),
           // Browse discovery only (sections/singers) — does not drive hymn ranking.
-          searchHymns(expandSearchAliases(q), 8).catch(() => [] as HymnDiscoveryHit[]),
+          werbOnly && !q ? Promise.resolve([] as HymnDiscoveryHit[]) : searchHymns(expandSearchAliases(q), 8).catch(() => [] as HymnDiscoveryHit[]),
         ])
         if (!active) return
         setDiscoveryHits(hits)
@@ -643,7 +686,7 @@ export function PublicMezmurLibrary() {
       active = false
       controller.abort()
     }
-  }, [params, reloadTick, showResults, t, language, page])
+  }, [params, reloadTick, showResults, t, language, page, werbOnly])
 
   const applyDiscoveryHit = (hit: HymnDiscoveryHit) => {
     setSuggestOpen(false)
@@ -670,6 +713,18 @@ export function PublicMezmurLibrary() {
     if (nextLanguage === 'all') next.delete('language')
     else next.set('language', nextLanguage)
     next.delete('page')
+    setParams(next)
+  }
+
+  const selectWerb = () => {
+    const next = new URLSearchParams(params)
+    next.set('form', 'werb'); next.delete('browse'); next.delete('page')
+    setParams(next)
+  }
+
+  const showAllForms = () => {
+    const next = new URLSearchParams(params)
+    next.delete('form'); next.delete('page')
     setParams(next)
   }
 
@@ -711,6 +766,7 @@ export function PublicMezmurLibrary() {
 
   const resultsHeading = (() => {
     if (loading || !result) return t('practice.searching')
+    if (werbOnly) return `${locale === 'am' ? 'ወረብ' : 'Werbs'} · ${result.total}`
     return t('practice.resultsCount', { count: result.total })
   })()
 
@@ -815,6 +871,13 @@ export function PublicMezmurLibrary() {
               {t('practice.backToBrowse')}
             </Link>
           </div>
+
+          {werbOnly ? (
+            <p className={s.werbOnlyNote} data-testid="werb-only-note">
+              {locale === 'am' ? 'ወረብ ብቻ እየታየ ነው።' : 'Showing only werbs.'}{' '}
+              <button type="button" className={s.textBtn} onClick={showAllForms}>{locale === 'am' ? 'ሁሉንም መዝሙራት አሳይ' : 'Show all hymns'}</button>
+            </p>
+          ) : null}
           {!loading && result && result.items.length > 0 && result.items.every((item) => item.similar) ? (
             <p className={s.cardMeta} role="status" data-testid="mezmur-similar-note">{t('practice.similarNote')}</p>
           ) : null}
@@ -845,12 +908,12 @@ export function PublicMezmurLibrary() {
           ) : null}
           <MezmurResultGrid
             items={result?.items || []}
-            loading={loading || !result}
+            loading={!result}
             error={error}
             onRetry={() => setReloadTick((n) => n + 1)}
             emptyMessage={emptyMessage}
           />
-          {language !== 'all' && result && result.total > 24 ? <nav className={s.pager} aria-label={t('practice.pagination')}>
+          {(language !== 'all' || werbOnly) && result && result.total > 24 ? <nav className={s.pager} aria-label={t('practice.pagination')}>
             <button type="button" disabled={page <= 1} onClick={() => { const next = new URLSearchParams(params); next.set('page', String(page - 1)); setParams(next) }}>{t('practice.previous')}</button>
             <span>{t('practice.page', { page })}</span>
             <button type="button" disabled={page * 24 >= result.total} onClick={() => { const next = new URLSearchParams(params); next.set('page', String(page + 1)); setParams(next) }}>{t('practice.next')}</button>
@@ -875,6 +938,8 @@ export function PublicMezmurLibrary() {
               <CollectionSkeletonGrid count={browseMode === 'occasions' ? 4 : browseMode === 'zemaris' ? 8 : 6} />
             </>
           ) : null}
+
+          {browse && !browseError ? <WerbFeatureCard locale={locale} onOpen={selectWerb} /> : null}
 
           {browse && !browseError ? (
             <LibraryNavigation

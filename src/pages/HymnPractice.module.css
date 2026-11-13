@@ -360,6 +360,30 @@
   scrollbar-width: thin;
 }
 
+/* Werb: one prominent way in for people who only want werbs. */
+.werbCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid var(--color-border-gold, #c9a14a);
+  border-radius: var(--radius-lg, 1rem);
+  background: var(--color-midnight, #0e1b2e);
+  color: #fbf3df;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+.werbCard svg { flex: 0 0 auto; color: #e3c576; }
+.werbText { display: grid; gap: 0.2rem; flex: 1 1 auto; }
+.werbText strong { font-size: 1.15rem; }
+.werbText > span { color: rgba(239, 227, 196, 0.86); font-size: 0.92rem; line-height: 1.4; }
+.werbGo { flex: 0 0 auto; color: #e3c576; font-size: 1.4rem; font-weight: 800; }
+.werbCard:hover, .werbCard:focus-visible { box-shadow: 0 0 0 2px #e3c576; outline: none; }
+.werbOnlyNote { margin: 0 0 0.75rem; color: var(--color-text-muted); font-size: 0.92rem; }
+
 .languageChip,
 .languageChipActive {
   flex: 0 0 auto;
@@ -1013,6 +1037,27 @@
 }
 
 @media (max-width: 560px) {
+  /* Search on a phone: the input gets the full width; mic and language switch sit on their own row below it. */
+  .searchField { display: grid; gap: 10px; }
+  .searchInput { padding-right: 16px; font-size: 1rem; }
+  .searchVoice { position: static; height: auto; justify-content: flex-start; }
+  .languageChips { flex-wrap: wrap; gap: 6px; overflow: visible; margin-bottom: 14px; }
+  .languageChips .languageChip, .languageChips .languageChipActive { min-height: 38px; padding: 6px 12px; font-size: 0.86rem; }
+  /* Clear sits at the right end of the mic row instead of taking a row of its own. */
+  .searchRow { position: relative; }
+  .clearBtn { position: absolute; top: 66px; right: 0; min-height: 44px; padding: 0 0.5rem; }
+
+  /* Results as compact rows (small picture left, title right) so several fit on one screen. */
+  .grid { gap: 8px; }
+  .grid .card { flex-direction: row; align-items: center; gap: 12px; padding: 10px; }
+  .grid .card .art { flex: 0 0 76px; width: 76px; min-width: 76px; height: 76px; aspect-ratio: 1; font-size: 1.4rem; }
+  .grid .card > div:last-child { min-width: 0; flex: 1 1 auto; }
+  .grid .card > div:last-child { display: grid; gap: 2px; align-content: start; }
+  .grid .card > div:last-child > * { margin: 0; }
+  .grid .card > div:last-child .cardAm { font-size: 0.95rem; line-height: 1.3; }
+  .grid .card .cardExcerpt { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin: 2px 0 0; font-size: 0.82rem; }
+  .grid .card .cardMeta { margin: 0; font-size: 0.8rem; }
+
   .page {
     padding: 20px 14px 48px;
   }

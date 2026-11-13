@@ -21,6 +21,7 @@ import type { ZemariSocialLinks } from './zemariSocialLinks'
 import { hymnCollectionArtFallback } from './hymnCollectionArtFallbacks'
 import { collectPagedRows, isEligiblePublicMezmurRow, isPublicMezmurStatus } from './mezmurVisibility'
 import { mezmurLanguageAliases, normalizeMezmurLanguage, type MezmurLanguageCode, type MezmurLanguageFilter } from '../mezmur/mezmurLanguage'
+import { normalizeMezmurForm, type MezmurForm } from '../mezmur/mezmurForm'
 import { CATEGORY_ENTRIES, OCCASION_ENTRIES } from '../mezmur/taxonomyAliases'
 import {
   MEZMUR_BROWSE_GROUP_BY_SLUG,
@@ -2261,7 +2262,7 @@ export async function searchHymnDiscovery(query: string, limit = 12): Promise<Hy
  */
 export async function searchImportMezmurs(
   query: string,
-  options?: { page?: number; pageSize?: number; language?: MezmurLanguageCode },
+  options?: { page?: number; pageSize?: number; language?: MezmurLanguageCode; form?: MezmurForm },
 ): Promise<{
   items: Array<{
     id: string
@@ -2301,6 +2302,7 @@ export async function searchImportMezmurs(
   const matched = data
     .filter((row) => isPublicMezmurRow(row))
     .filter((row) => !options?.language || normalizeMezmurLanguage(row.primary_language) === options.language)
+    .filter((row) => !options?.form || normalizeMezmurForm(row.form) === options.form)
     .map((row) => {
       const title = txt(row.title)
       const titleAmharic = txt(row.title_amharic)
