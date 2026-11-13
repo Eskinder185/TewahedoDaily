@@ -18,6 +18,8 @@
     "lint:cms": "eslint src/pages/admin src/lib/cms src/lib/auth src/lib/supabase src/App.tsx src/main.tsx",
     "test:cms:auth": "node scripts/cms-auth-smoke.mjs",
     "build:play-bank": "npx --yes tsx scripts/play/build-published-bank.ts",
+    "test:play-content": "tsx scripts/test-faith-challenge-content.ts",
+    "test:play-hub": "node scripts/test-faith-challenge-hub-browser.mjs",
     "test:play-bank": "npx --yes tsx scripts/play/build-published-bank.ts --check && npx --yes tsx scripts/test-published-bank.ts",
     "test:live-room": "npx --yes tsx scripts/test-live-room.ts",
     "test:live-room:browser": "node scripts/test-live-room-browser.mjs",

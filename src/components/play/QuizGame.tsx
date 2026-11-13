@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { SourceLink } from './SourceLink'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
@@ -134,14 +135,9 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
       setRound([dailyQuestion]); setIndex(0); setSelected(null); setAnswers([]); setHints(0); setSeconds(30); setResult(null)
       return
     }
-    // Keep the round at the requested length: when the chosen level has too few questions, top up with the
-    // nearest levels (beginner is topped up by growing first, and so on) rather than silently shortening the game.
-    const levels: PlayDifficulty[] = ['beginner', 'growing', 'challenge']
-    const distance = (item: PlayQuestion) => Math.abs(levels.indexOf(item.difficulty) - levels.indexOf(difficulty))
-    const inCategory = questions.filter((q) => category === 'all' || q.category === category)
-    const topUp = eligible.length >= count ? [] : inCategory.filter((q) => !eligible.includes(q)).sort((a, b) => distance(a) - distance(b) || a.id.localeCompare(b.id)).slice(0, count - eligible.length)
-    const source = eligible.length ? [...eligible, ...topUp] : questions
-    // Unseen-first sampling without replacement, then fresh answer positions (answer IDs stay stable).
+    // Draw from every question that matches the chosen category and level, unseen first, without replacement. When fewer
+    // match than requested, the round is shorter (and the setup screen says so) rather than repeating or mixing in other levels.
+    const source = eligible.length ? eligible : questions
     const chosen = selectUnseen(source, (question) => question.id, loadSeen(game), Math.min(count, source.length)).picked.map((question) => withShuffledOptions(question))
     markSeen(game, chosen.map((question) => question.id))
     restored.current = true
@@ -158,6 +154,7 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
         <div className={styles.field}><span className={styles.legend}>{locale === 'am' ? 'የጥያቄ ብዛት' : 'Questions'}</span><div className={styles.choiceRow}>{[5, 10, 20].map((item) => <button key={item} type="button" aria-pressed={count === item} onClick={() => setCount(item)}>{item}</button>)}</div></div>
         <div className={styles.field}><span className={styles.legend}>{locale === 'am' ? 'ጊዜ' : 'Timer'}</span><div className={styles.choiceRow}><button type="button" aria-pressed={!timed} onClick={() => setTimed(false)}>{locale === 'am' ? 'አይ' : 'Off'}</button><button type="button" aria-pressed={timed} onClick={() => setTimed(true)}>30s</button></div></div>
       </div>
+      <p className={styles.setupCount} role="status" aria-live="polite" data-eligible-count>{eligible.length === 0 ? (locale === 'am' ? 'ከዚህ ምርጫ ጋር የሚስማማ ጥያቄ የለም፤ ሁሉም ጥያቄዎች ይጠቀማሉ።' : 'Nothing matches this choice, so the round uses every question.') : eligible.length < count ? (locale === 'am' ? `${eligible.length} ጥያቄዎች ብቻ ይስማማሉ፤ ዙሩ ${eligible.length} ጥያቄዎች ይኖሩታል።` : `Only ${eligible.length} match, so this round has ${eligible.length} questions.`) : (locale === 'am' ? `${eligible.length} ጥያቄዎች ይገኛሉ።` : `${eligible.length} questions available for this choice.`)}</p>
       <div className={styles.actions}><button className={styles.action} type="button" onClick={start}>{locale === 'am' ? 'ይጀምሩ' : 'Start round'}</button></div>
     </section>
   )
@@ -195,7 +192,7 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
               <p className={fb.reviewLine}><b>{l.yourAnswer}:</b> {chosen ? <Loc value={chosen} locale={locale} /> : l.noAnswer}</p>
               {answer.correct || !right ? null : <p className={fb.reviewLine}><b>{l.correctAnswer}:</b> <Loc value={right} locale={locale} /></p>}
               <p className={fb.reviewLine}><Loc value={answer.question.explanation} locale={locale} />{explanation.fallback ? <span className={fb.note}>({l.englishOnly})</span> : null}</p>
-              <Link className={styles.source} to={answer.question.source.route}>{l.source}{answer.question.source.label}</Link>
+              <SourceLink className={styles.source} source={answer.question.source} prefix={l.source} locale={locale} />
             </article>
           </li>
         )
@@ -281,7 +278,7 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
           <strong className={fb.feedbackTitle}><span className={fb.feedbackIcon} aria-hidden="true">{isCorrect ? '✓' : '✕'}</span>{isCorrect ? l.correctBang : timedOut ? l.timeUp : l.notQuite}</strong>
           {isCorrect || !correctText ? null : <p className={fb.answerLine}>{l.correctAnswer}: <Loc value={correctText} locale={locale} /></p>}
           <p><Loc value={question.explanation} locale={locale} />{localized(question.explanation, locale).fallback ? <span className={fb.note}>({l.englishOnly})</span> : null}</p>
-          <Link className={styles.source} to={question.source.route}>{l.source}{question.source.label}</Link>
+          <SourceLink className={styles.source} source={question.source} prefix={l.source} locale={locale} />
           <div className={styles.actions}><button ref={nextRef} className={styles.action} type="button" onClick={next}>{index === round.length - 1 ? (locale === 'am' ? 'ውጤት' : 'See results') : (locale === 'am' ? 'ቀጣይ' : 'Next')}</button></div>
         </div> : null}
       </article>

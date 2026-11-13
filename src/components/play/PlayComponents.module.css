@@ -460,3 +460,7 @@ a.gameCard:focus-visible {
   .progressPanel { grid-template-columns: 1fr; justify-items: start; }
   .levelRing { width: 4.75rem; height: 4.75rem; }
 }
+
+.cardContent { margin: 0.2rem 0 0; color: var(--color-heading); font-size: 0.9rem; line-height: 1.4; }
+.cardContent span { color: var(--color-text-muted); }
+.cardProgress { margin: 0.25rem 0 0; color: var(--color-gold-dark, #8a6a1f); font-size: 0.82rem; font-weight: 700; }

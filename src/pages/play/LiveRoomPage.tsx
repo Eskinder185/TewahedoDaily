@@ -242,8 +242,8 @@ function HostRoom({ code, initial }: { code: string; initial: HostEngine }) {
             {engine.phase === 'reveal' ? <p className={s.explain} lang={pick(round.explanation).lang}>{pick(round.explanation).text}</p> : null}
           </QuestionCard>
           <div className={s.actions}>
-            {engine.phase === 'round' ? <button type="button" className={s.primary} onClick={() => publish(engine.reveal())} data-reveal>{am ? 'መልሱን አሳይ' : 'Reveal answers'}</button>
-              : <button type="button" className={s.primary} onClick={() => publish(engine.next())} data-next>{engine.index + 1 >= engine.rounds.length ? (am ? 'ውጤቱን አሳይ' : 'Show final results') : (am ? 'ቀጣይ ጥያቄ' : 'Next question')}</button>}
+            {engine.phase === 'round' ? <button key="reveal" type="button" className={s.primary} onClick={() => publish(engine.reveal())} data-reveal>{am ? 'መልሱን አሳይ' : 'Reveal answers'}</button>
+              : <button key="next" type="button" className={s.primary} onClick={() => publish(engine.next())} data-next>{engine.index + 1 >= engine.rounds.length ? (am ? 'ውጤቱን አሳይ' : 'Show final results') : (am ? 'ቀጣይ ጥያቄ' : 'Next question')}</button>}
           </div>
           <Leaderboard scores={engine.scores()} am={am} />
         </section>

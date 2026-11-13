@@ -521,7 +521,7 @@ try {
       await page.reload()
       await page.getByRole('button', { name: 'ይጀምሩ', exact: true }).click()
       await page.getByText('Synthetic identity', { exact: true }).waitFor()
-      await page.getByRole('note').filter({ hasText: 'English verified content shown' }).waitFor()
+      await page.getByRole('note').filter({ hasText: 'English content shown' }).waitFor()
       assert.equal(await page.getByText('የሙከራ አማርኛ', { exact: true }).count(), 0, 'public play must not present unverified draft translations')
       await page.evaluate(() => localStorage.setItem('tewahedo-daily-locale', 'en'))
       await page.goto(`${base}/play/match`)

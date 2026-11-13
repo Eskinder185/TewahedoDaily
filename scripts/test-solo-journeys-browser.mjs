@@ -37,7 +37,11 @@ try {
   })
 
   async function playRound(game, { shot, again = false } = {}) {
-    if (!again) await page.getByRole('button', { name: /Start round/ }).click() // Play Again starts a fresh round at once
+    if (!again) {
+      // The default level draws only that level's questions (a shorter round when few match, by design); the full level pool gives a 5-question round for every game.
+      await page.getByRole('button', { name: 'challenge', exact: true }).click()
+      await page.getByRole('button', { name: /Start round/ }).click() // Play Again starts a fresh round at once
+    }
     const asked = []
     for (let i = 0; i < 5; i++) {
       await optionButtons().first().waitFor()

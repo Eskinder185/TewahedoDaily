@@ -49,9 +49,9 @@ try {
   await page.goto(`${base}/play`)
   await test('Five modes and all twelve existing route links', async () => {
     await page.locator('[data-play-mode]').first().waitFor()
-    assert.equal(await page.locator('[data-play-mode]').count(), 5)
-    // One way in: no second, all-games list under the modes. Games appear after a way to play is chosen.
-    assert.equal(await page.locator('[data-game-card]').count(), 0)
+    // All, plus the five ways to play, filtering ONE grid that shows all twelve games by default.
+    assert.equal(await page.locator('[data-play-mode]').count(), 6)
+    assert.equal(await page.locator('[data-game-card]').count(), 12)
     assert.equal(await page.getByRole('link', { name: /Show all 12 games/i }).count(), 0)
     assert.equal(await page.getByText('Browse by topic').count(), 0)
     const routes = []
@@ -83,8 +83,8 @@ try {
     assert.equal(new URL(page.url()).searchParams.get('mode'), 'word')
     assert.equal(await page.locator('[data-game-card]').count(), 2)
     await page.goForward(); await page.locator('[data-play-mode="story"][aria-current="page"]').waitFor()
-    await page.getByRole('link', { name: /All ways to play/ }).click()
-    await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 0)
+    await page.locator('[data-play-mode="all"]').click()
+    await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 12)
     assert.equal(new URL(page.url()).searchParams.get('mode'), null)
   })
   await test('Legacy topic URLs and keyboard controls remain functional', async () => {
@@ -163,9 +163,9 @@ try {
         await page.keyboard.press('Tab'); await control.focus()
         assert.ok(await control.evaluate(el => el.matches(':focus-visible') && getComputedStyle(el).outlineStyle !== 'none'))
         await page.screenshot({ path: join(artifacts, `${width}-${locale}-${route.replaceAll('/', '_')}.png`), fullPage: true })
-        if (route === '/play') await page.locator('[aria-labelledby="modes-title"]').screenshot({ path: join(artifacts, `${width}-${locale}-modes.png`) })
+        if (route === '/play') await page.locator('[aria-labelledby="games-title"]').screenshot({ path: join(artifacts, `${width}-${locale}-modes.png`) })
         if (route === '/play' && width <= 390) {
-          await control.tap()
+          await (route === "/play" ? page.locator('[data-play-mode="knowledge"]') : control).tap()
           await page.waitForURL(url => url.searchParams.get('mode') === 'knowledge')
           await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 3)
         }
