@@ -591,6 +591,8 @@
     "resultsFromSections": "ከተገኙ ክፍሎች {hymns} መዝሙሮች",
     "resultsSectionsOnly": "{count} ተዛማጵ ክፍሎች · የመዝሙር ርዕስ አልተገኘም",
     "emptyHymns": "ምንም መዝሙር አልተገኘም።",
+    "similarSpelling": "ተመሳሳይ አጻጻፍ",
+    "similarNote": "ትክክለኛ ተዛማጅ አልተገኘም። እነዚህ መዝሙሮች ከጻፉት ጋር ተመሳሳይ አጻጻፍ አላቸው።",
     "emptyTitlesWithSections": "የመዝሙር ርዕስ አልተገኘም — ከላይ ያለውን ተዛማጵ ክፍል ይክፈቱ።",
     "backToBrowse": "ወደ ዳሰሳ ተመለስ",
     "matchingSectionsAria": "ተዛማጵ ክፍሎች እና ዘማሪዎች",

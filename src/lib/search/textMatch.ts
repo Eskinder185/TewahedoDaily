@@ -160,6 +160,9 @@ export function buildExcerpt(text: string, query: string, maxChars = 180): Excer
   return { text: prefix + slice + suffix, ranges, kind: match.kind }
 }
 
+/** One Ethiopic character folded into its orthographic variant family (ሠ→ሰ, ዐ→አ …); other characters unchanged. */
+export const foldEthiopicChar = (char: string): string => ETHIOPIC_VARIANTS[char] ?? char
+
 /** Escape a user string for a PostgREST/Postgres ILIKE pattern, widening Ethiopic variant letters to `_`. */
 export function ilikePart(raw: string): string {
   let out = ''

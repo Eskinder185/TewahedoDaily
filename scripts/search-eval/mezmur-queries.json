@@ -1,7 +1,7 @@
 {
  "generatedFrom": "published mezmur_public snapshot",
  "seed": 20261112,
- "count": 92,
+ "count": 106,
  "queries": [
   {
    "kind": "title-exact",
@@ -737,6 +737,118 @@
    "expectedSlug": "saygebany",
    "queryLanguage": "latin",
    "id": "m092",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ለኡሳት ለግለት ስጋውን ሲሰጥ",
+   "expectedSlug": "o-fitune-redet-leberutawit-yederese",
+   "queryLanguage": "amharic",
+   "id": "m093",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ልዩ የኡኛን ሞት ስትከላ ለኛ",
+   "expectedSlug": "tinsaeke-adis-yetnisae-zimare-zemarit-rut-demelash-ina-zemarit-winta-atsbiha",
+   "queryLanguage": "amharic",
+   "id": "m094",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "የኑፈሮ ውኃህ ተክለ ሃይማኖት",
+   "expectedSlug": "keamlak-beteseteh-teklehaymanot",
+   "queryLanguage": "amharic",
+   "id": "m095",
+   "split": "heldout"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "በበተክርስቲያን ሠርጋችሁ ውብ ሆኖአል",
+   "expectedSlug": "yeinyama-mushra-inkwan-des-alesh",
+   "queryLanguage": "amharic",
+   "id": "m096",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ከሞኅፀኗ አደረ ቃሉ ሳይፈታ",
+   "expectedSlug": "keadam-lij-mekakel-keinedawit-zer",
+   "queryLanguage": "amharic",
+   "id": "m097",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ትሩጉም፣ የይቅርታ መልአክ ሚካኤል",
+   "expectedSlug": "melake-selamne",
+   "queryLanguage": "amharic",
+   "id": "m098",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ለኆያሉ ጌታ በአንተ ይረካል",
+   "expectedSlug": "fetari-bicha-new-hiywetena-kibre",
+   "queryLanguage": "amharic",
+   "id": "m099",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ያቡባል ይለመልማል እርሱን የተጠጋ",
+   "expectedSlug": "sebhiwo-leamlakne",
+   "queryLanguage": "amharic",
+   "id": "m100",
+   "split": "heldout"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "እማቤቴ ማርያም አንቺ ነሽ",
+   "expectedSlug": "dingil-imebete-yeine-iredat",
+   "queryLanguage": "amharic",
+   "id": "m101",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "የግፍ ግፍ ደሩሶበት የዛን ጊዜ",
+   "expectedSlug": "bemesqel-lay-hono-lijish-singegelata",
+   "queryLanguage": "amharic",
+   "id": "m102",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "አኑቺው አርቂልኝ \"ዝቲ \"",
+   "expectedSlug": "yeelyas-mena",
+   "queryLanguage": "amharic",
+   "id": "m103",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ውቱረ ይከልልዋ በወርቅ ውቱረ ይኬልልዋ",
+   "expectedSlug": "tabote-inte-wisteta",
+   "queryLanguage": "amharic",
+   "id": "m104",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ቤቶችን ይቀደስ ለጾም ለጸሎት",
+   "expectedSlug": "yemtisewriw",
+   "queryLanguage": "amharic",
+   "id": "m105",
+   "split": "heldout"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "የኡመቤቴ ድምጿ ስንቅ እንዲሆነኝ",
+   "expectedSlug": "yeselamtashin-dimts",
+   "queryLanguage": "amharic",
+   "id": "m106",
    "split": "tune"
   }
  ]

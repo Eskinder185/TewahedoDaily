@@ -475,6 +475,7 @@ function MezmurResultGrid({
                 </h3>
               ) : null}
               {meta ? <p className={s.cardMeta}>{meta}</p> : null}
+              {item.similar ? <p className={s.cardMeta} data-testid="mezmur-similar-badge">{t('practice.similarSpelling')}</p> : null}
               {item.confirmedVersionCount && item.confirmedVersionCount > 1 ? <p className={s.cardMeta}>{item.confirmedVersionCount} confirmed versions · open to view each original</p> : null}
               {item.excerpt ? (
                 <p className={s.cardExcerpt} data-testid="mezmur-lyric-excerpt" lang={/[ሀ-፿]/.test(item.excerpt.text) ? 'am' : undefined}>
@@ -870,11 +871,15 @@ export function PublicMezmurLibrary() {
               {t('practice.backToBrowse')}
             </Link>
           </div>
+
           {werbOnly ? (
             <p className={s.werbOnlyNote} data-testid="werb-only-note">
               {locale === 'am' ? 'ወረብ ብቻ እየታየ ነው።' : 'Showing only werbs.'}{' '}
               <button type="button" className={s.textBtn} onClick={showAllForms}>{locale === 'am' ? 'ሁሉንም መዝሙራት አሳይ' : 'Show all hymns'}</button>
             </p>
+          ) : null}
+          {!loading && result && result.items.length > 0 && result.items.every((item) => item.similar) ? (
+            <p className={s.cardMeta} role="status" data-testid="mezmur-similar-note">{t('practice.similarNote')}</p>
           ) : null}
           {!loading && sectionMatchCount > 0 ? (
             <ul className={s.suggestList} aria-label={t('practice.matchingSectionsAria')}>

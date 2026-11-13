@@ -32,6 +32,14 @@ for (const width of WIDTHS) {
     await noOverflow()
   })
 
+  await check(`${width}px Mezmur Library: approximate Amharic (ይብብራል) finds hymns with ይበራል and says so`, async () => {
+    await page.goto(`${BASE}/practice?q=${encodeURIComponent('ይብብራል')}`, { waitUntil: 'networkidle' })
+    await page.getByTestId('mezmur-similar-note').waitFor({ timeout: 20000 })
+    assert.ok(await page.locator('[data-testid="mezmur-similar-badge"]').count() >= 1)
+    assert.ok(/ይበራል|ያበራል/.test(await page.locator('main').innerText()), 'a hymn containing the intended word is listed')
+    await noOverflow()
+  })
+
   await check(`${width}px Bible: Ethiopic-numeral reference opens exact verse`, async () => {
     await page.goto(`${BASE}/bible`, { waitUntil: 'networkidle' })
     const box = page.locator('input[placeholder*="Search"]').first()

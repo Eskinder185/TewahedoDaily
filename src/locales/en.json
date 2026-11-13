@@ -583,6 +583,8 @@
     "resultsFromSections": "{hymns} hymns from matching sections",
     "resultsSectionsOnly": "{count} matching sections · no hymn titles matched",
     "emptyHymns": "No hymns matched your search.",
+    "similarSpelling": "Similar spelling",
+    "similarNote": "No exact match. These hymns have a similar spelling to what you typed.",
     "emptyTitlesWithSections": "No hymn titles matched — open a matching section above.",
     "backToBrowse": "Back to browse",
     "matchingSectionsAria": "Matching sections and singers",

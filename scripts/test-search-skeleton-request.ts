@@ -67,3 +67,22 @@ const ranked = rankSearchResults([
 assert.equal(ranked[0].sourceType, 'church_library')
 assert.equal(ranked.at(-1)?.sourceType, 'synaxarium_commemoration')
 console.log('test-search-question-ranking: ok')
+
+// Amharic approximate matching: vowel forms and doubled letters are ignored, consonants are not.
+import { ethiopicSkeletonWord, ethiopicLooseRegex } from '../src/lib/search/translitSkeleton.ts'
+import { approximateAmharicMatch } from '../src/lib/search/mezmurLyricSearch.ts'
+assert.equal(ethiopicSkeletonWord('ይብብራል'), ethiopicSkeletonWord('ይበራል'))
+assert.equal(ethiopicSkeletonWord('ያበራል'), ethiopicSkeletonWord('ይበራል'))
+assert.equal(ethiopicSkeletonWord('ሠላም'), ethiopicSkeletonWord('ሰላም'), 'orthographic variant families fold')
+assert.notEqual(ethiopicSkeletonWord('ሰላም'), ethiopicSkeletonWord('ሰማይ'), 'different consonants never match')
+assert.ok(new RegExp(ethiopicLooseRegex('ይብብራል'), 'u').test('ጌታ ያበራል'))
+assert.ok(!new RegExp(ethiopicLooseRegex('ይብብራል'), 'u').test('ይበለን'))
+{
+  const stored = 'እንዳንተ ያለ ማን ነው\nጌታ ያበራል ብርሃኑ ለዘላለም\nአሜን'
+  const m = approximateAmharicMatch(stored, 'ይብብራል')!
+  assert.deepEqual(m.excerpt.ranges.map(([a, b]) => m.excerpt.text.slice(a, b)), ['ያበራል'], 'highlight points at the stored word')
+  assert.ok(stored.replace(/\s/g, ' ').includes(m.excerpt.text), 'excerpt is a slice of the stored text')
+  assert.equal(approximateAmharicMatch(stored, 'ይብብራል ዘላለም ኢየሱስ'), null, 'every typed word must be accounted for')
+  assert.equal(approximateAmharicMatch(stored, 'ቅዱስ'), null)
+}
+console.log('test-amharic-approximate: ok')
