@@ -15,7 +15,7 @@ const auth = `import React from 'react';import{AuthContext}from'/src/lib/auth/us
 const staff = `export async function requireCmsStaffSession(){if(localStorage.getItem('mode-test-role')!=='editor')throw new Error('Staff role required');return{profileRole:'editor'}}export function getLastCmsStaffProbe(){return null}export function mapStaffWriteError(error){return error}`
 const server = await createServer({ configFile: false, envDir: false, cacheDir: join(artifacts, 'vite'), logLevel: 'error',
   server: { host: '127.0.0.1', port: 5198, strictPort: true },
-  optimizeDeps: { noDiscovery: true, include: ['react', 'react-dom/client', 'react-router-dom'] }, resolve: { dedupe: ['react', 'react-dom'] },
+  optimizeDeps: { noDiscovery: true, include: ['react', 'react-dom/client', 'react-router-dom', 'qrcode-generator'] }, resolve: { dedupe: ['react', 'react-dom'] },
   define: { 'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(endpoint), 'import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY': JSON.stringify('synthetic-public-key') },
   plugins: [{ name: 'play-mode-fixture', enforce: 'pre',
     resolveId(source) { if (source === '/__mode-entry.jsx') return source; if (/(?:^|\/)AuthProvider(?:\.tsx)?$/.test(source)) return '\0mode-auth.jsx'; if (/(?:^|\/)cmsStaffAuth(?:\.ts)?$/.test(source)) return '\0mode-staff.js' },
@@ -38,8 +38,11 @@ try {
     const request = route.request(), url = new URL(request.url())
     if (url.origin === base) return route.continue()
     if (url.origin !== endpoint) return route.abort()
-    assert.equal(request.method(), 'GET', 'navigation may not mutate the backend')
-    return route.fulfill({ status: 200, contentType: 'application/json', body: '[]' })
+    // PostgREST calls read-only functions with POST; a list_* RPC (the Search Buddy suggestions) reads and never writes.
+    const readOnlyRpc = request.method() === 'POST' && /^\/rest\/v1\/rpc\/list_[a-z_]+$/.test(url.pathname)
+    assert.ok(request.method() === 'GET' || readOnlyRpc, `navigation may not mutate the backend: ${request.method()} ${url.pathname}`)
+    // PostgREST reports the exact row count in Content-Range; the Studio refuses an inventory page without it.
+    return route.fulfill({ status: 200, contentType: 'application/json', headers: { 'content-range': '*/0', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'content-range' }, body: '[]' })
   })
   const page = await context.newPage(); page.setDefaultTimeout(15000)
   page.on('pageerror', error => errors.push(error.message))
