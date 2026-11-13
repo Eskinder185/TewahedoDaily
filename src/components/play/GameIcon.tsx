@@ -113,10 +113,20 @@ const ICONS: Record<string, ReactNode> = {
 /** Game ids used by the hub vary slightly (`mezmur` for Finish the Mezmur, `adventure(s)`); map them to one icon. */
 const ALIASES: Record<string, string> = { mezmur: 'finish-the-mezmur', adventure: 'adventures' }
 
+/** Only an unknown id gets this plain mark; every real game has its own icon (checked by test:game-icons). */
+const FALLBACK = (
+  <>
+    <circle cx="24" cy="24" r="16" />
+    <path d="M24 16v16M16 24h16" />
+  </>
+)
+
 export function GameIcon({ id }: { id: string }) {
-  const shape = ICONS[ALIASES[id] ?? id] ?? CROSS
+  const key = ALIASES[id] ?? id
+  const known = key in ICONS
+  const shape = known ? ICONS[key] : FALLBACK
   return (
-    <svg viewBox="0 0 48 48" width="64" height="64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" data-game-icon={ALIASES[id] ?? id}>
+    <svg viewBox="0 0 48 48" width="64" height="64" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" data-game-icon={known ? key : 'fallback'}>
       {shape}
     </svg>
   )
