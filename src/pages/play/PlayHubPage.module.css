@@ -299,6 +299,17 @@
 .gameNight::before { position: absolute; inset: 0; z-index: -1; content: ''; background: linear-gradient(90deg, rgba(10, 21, 36, 0.95) 0%, rgba(10, 21, 36, 0.8) 50%, rgba(10, 21, 36, 0.35) 100%); }
 .gameNightInner { max-width: 34rem; padding: clamp(1.75rem, 5vw, 3.5rem); }
 .gameNight h2 { margin: 0; color: #fbf3df; font-family: var(--font-display); font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 600; line-height: 1; }
+.gnSteps { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin: 0 0 1.25rem; padding: 0; list-style: none; color: #fbf3df; font-weight: 700; }
+.gnSteps li { display: inline-flex; align-items: center; gap: 0.45rem; }
+.gnSteps b { display: grid; width: 1.6rem; height: 1.6rem; place-items: center; border-radius: 50%; background: rgba(227, 197, 118, 0.2); color: #e3c576; font-size: 0.85rem; }
+.gnActions { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1rem 1.25rem; }
+.gnJoin { display: flex; align-items: flex-end; gap: 0.5rem; }
+.gnJoin label { display: grid; gap: 0.25rem; color: rgba(239, 227, 196, 0.9); font-size: 0.82rem; font-weight: 700; }
+.gnJoin input { width: 7.5rem; min-height: 2.75rem; padding: 0 0.75rem; border: 1px solid rgba(227, 197, 118, 0.5); border-radius: var(--radius-md, 0.6rem); background: rgba(255, 255, 255, 0.95); color: #0a1524; font: inherit; font-size: 1.05rem; font-weight: 800; letter-spacing: 0.18em; text-align: center; text-transform: uppercase; }
+.gnJoin button { min-height: 2.75rem; padding: 0 1.1rem; border: 1px solid rgba(227, 197, 118, 0.6); border-radius: var(--radius-md, 0.6rem); background: transparent; color: #fbf3df; font: inherit; font-weight: 800; cursor: pointer; }
+.gnJoin button:hover { background: rgba(227, 197, 118, 0.18); }
+.gnError { flex-basis: 100%; margin: 0; color: #ffd9d2; font-size: 0.88rem; }
+.gameNightInner { max-width: 40rem; }
 .gameNightInner > p:not(.eyebrowLight) { margin: 0.8rem 0 1.5rem; color: rgba(239, 227, 196, 0.86); line-height: var(--leading-body); }
 
 /* ---------- trust ---------- */

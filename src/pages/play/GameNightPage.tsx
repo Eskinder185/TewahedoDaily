@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useLocale } from '../../lib/i18n/locale'
 import { supabase } from '../../lib/supabase/client'
@@ -88,6 +88,9 @@ export function GameNightPage() {
     await call('submit_play_room_answer', { p_round_id: roundId, p_participant_id: participant?.id, p_join_token: participant?.token, p_answer_key: key })
     if (roundId) setSelection({ roundId, key })
   })
+
+  // One way to host: private rooms with codes live at /play/live (no account, no database). Old host/join links go there.
+  if (!room && (view === 'host' || view === 'join')) return <Navigate to={view === 'join' && code ? `/play/live/${code}` : '/play/live'} replace />
 
   return <div className={styles.page} lang={locale}><header><Link to="/play">← {am ? 'ወደ ጨዋታ' : 'Tewahedo Play'}</Link><p>{am ? 'ለቤተሰብና ለሰበካ' : 'For families and parishes'}</p><h1>{am ? 'የጨዋታ ምሽት' : 'Game Night'}</h1><span>{am ? 'በግል ኮድ ከስልክ ይቀላቀሉ' : 'Private, phone-friendly rooms with server-validated scoring'}</span></header><main>
     {error ? <div className={styles.error} role="alert">{error}</div> : null}

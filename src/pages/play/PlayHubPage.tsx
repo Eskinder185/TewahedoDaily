@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState, type FormEvent } from 'react'
 import { useUrlChoice } from '../../hooks/useUrlState'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { GameCard, type PlayGameCard } from '../../components/play/GameCard'
@@ -37,6 +37,14 @@ export function PlayHubPage() {
   const navigate = useNavigate()
   const resume = useMemo(() => resumableGames(['trivia', 'finish-the-verse', 'emoji']), [])
   const quickGame = GAMES.find(game => game.id === 'trivia') ?? GAMES[0]
+  const [roomCode, setRoomCode] = useState('')
+  const [roomError, setRoomError] = useState('')
+  const joinRoom = (event: FormEvent) => {
+    event.preventDefault()
+    const clean = roomCode.trim().toUpperCase().replace(/[^A-Z0-9]/g, '')
+    if (clean.length !== 5) { setRoomError(am ? 'የክፍል ኮድ 5 ፊደላት ወይም ቁጥሮች ነው።' : 'A room code is 5 letters or numbers.'); return }
+    navigate(`/play/live/${clean}`)
+  }
   const surprise = () => {
     const pool = GAMES.filter(game => !game.unavailable)
     const game = pool[Math.floor(Math.random() * pool.length)]
@@ -94,18 +102,30 @@ export function PlayHubPage() {
         <section className={styles.gameNight} aria-labelledby="gn-title">
           {GAME_ART['game-night'].src ? <img src={GAME_ART['game-night'].src} alt="" loading="lazy" onError={(event) => handlePlayImageError(event, GAME_ART['game-night'].fallbackSrc)} /> : null}
           <div className={styles.gameNightInner}>
-            <p className={styles.eyebrowLight}>{am ? 'ተለዋዋጭ ጨዋታዎች' : 'Featured · a different way to play'}</p>
-            <h2 id="gn-title">{am ? 'የተቀላቀለ ፈተና ምሽት' : 'Mixed Challenge Night'}</h2>
-            <p>{am ? 'በአንድ ማያ ገጽ የተለያዩ ጨዋታዎችን አብረው ይሞክሩ። የተቀላቀለ የብዙ ተጫዋች ክፍል ገና አይደገፍም።' : 'Try a five-round shared-screen guide through different games. Mixed-mechanic multiplayer rooms are not available yet.'}</p>
-            <Link className={styles.primaryActionLight} to="/play/game-night?view=mixed">{am ? 'መመሪያውን ይክፈቱ' : 'Explore the evening'} →</Link>
+            <p className={styles.eyebrowLight}>{am ? 'ጨዋታ ምሽት · ከጓደኞች ጋር' : 'Game Night · play together'}</p>
+            <h2 id="gn-title">{am ? 'የጨዋታ ምሽት ይክፈቱ' : 'Host a Game Night'}</h2>
+            <p>{am ? 'ጨዋታ ይምረጡ፣ ኮዱን ያጋሩ፣ ሁሉም ከራሱ ስልክ ይመልሳል። መለያ አያስፈልግም።' : 'Pick a game, share the code, and everyone answers on their own phone. No account needed.'}</p>
+            <ol className={styles.gnSteps}>
+              <li><b>1</b>{am ? 'ክፍል ይክፈቱ' : 'Open a room'}</li>
+              <li><b>2</b>{am ? 'ኮዱን ያጋሩ' : 'Share the code'}</li>
+              <li><b>3</b>{am ? 'አብራችሁ ተጫወቱ' : 'Play together'}</li>
+            </ol>
+            <div className={styles.gnActions}>
+              <Link className={styles.primaryActionLight} to="/play/live" data-host>📣 {am ? 'የጨዋታ ምሽት ይክፈቱ' : 'Host a Game Night'} →</Link>
+              <form className={styles.gnJoin} onSubmit={joinRoom} aria-label={am ? 'በኮድ ይቀላቀሉ' : 'Join with a code'}>
+                <label>{am ? 'ኮድ አለዎት?' : 'Have a code?'}
+                  <input value={roomCode} maxLength={8} autoCapitalize="characters" autoComplete="off" placeholder="ABCDE" onChange={(event) => { setRoomCode(event.target.value.toUpperCase()); setRoomError('') }} aria-invalid={roomError ? true : undefined} />
+                </label>
+                <button type="submit" data-join>{am ? 'ይቀላቀሉ' : 'Join'}</button>
+              </form>
+              {roomError ? <p className={styles.gnError} role="alert">{roomError}</p> : null}
+            </div>
           </div>
         </section>
         <section className={styles.startStrip} aria-label={am ? 'መጫወት ይጀምሩ' : 'Start playing'} data-play-actions>
           <Link className={styles.stripPrimary} to={`${quickGame.route}${quickGame.levels ? `?level=${difficulty}` : ''}`} data-play-now>▶ {am ? 'አሁን ይጫወቱ' : 'Play now'}<small>{quickGame.title[locale]}</small></Link>
           <button type="button" className={styles.stripButton} onClick={surprise} data-surprise>🎲 {am ? 'አስገርመኝ' : 'Surprise me'}<small>{am ? 'በዘፈቀደ የተመረጠ ጨዋታ' : 'A random game'}</small></button>
           <a className={styles.stripButton} href="#modes" data-play-solo>👤 {am ? 'ብቻዎን' : 'Play solo'}<small>{am ? 'ጨዋታ ይምረጡ' : 'Pick any of 12 games'}</small></a>
-          <Link className={styles.stripButton} to="/play/live" data-host>📣 {am ? 'ክፍል ይክፈቱ' : 'Host a game'}<small>{am ? 'ከጓደኞች ጋር' : 'Trivia, Verse, Emoji, Who Am I'}</small></Link>
-          <Link className={styles.stripButton} to="/play/live" data-join>🔑 {am ? 'ይቀላቀሉ' : 'Join a game'}<small>{am ? 'በክፍል ኮድ' : 'With a room code'}</small></Link>
           {resume.length ? <div className={styles.resumeRow} data-resume>{resume.map(item => { const game = GAMES.find(g => g.id === item.game || (g.id === 'mezmur' && item.game === 'finish-the-mezmur')); return game ? <Link key={item.game} to={game.route}>↻ {am ? 'ቀጥሉ' : 'Continue'} {game.title[locale]} ({item.done}/{item.total})</Link> : null })}</div> : null}
         </section>
 
@@ -149,7 +169,7 @@ export function PlayHubPage() {
             {recent.map(id => GAMES.find(game => game.id === id || (game.id === 'mezmur' && id === 'finish-the-mezmur'))).filter((game): game is HubGame => !!game).map(game => <Link key={game.id} to={game.route}>{game.title[locale]} →</Link>)}
             <Link to="/play/trivia?daily=1">{am ? 'የዕለቱ ፈተና' : 'Daily challenge'} →</Link>
             <Link to="/play/live">{am ? 'ከጓደኞች ጋር ይጫወቱ' : 'Host or join a live room'} →</Link>
-            <Link to="/play/game-night?view=mixed">{am ? 'የጨዋታ ምሽት መመሪያ' : 'Game Night guide'} →</Link>
+            <Link to="/play/game-night?view=mixed">{am ? 'የተቀላቀለ ምሽት መመሪያ' : 'Mixed night guide'} →</Link>
           </aside>
         </section>
 

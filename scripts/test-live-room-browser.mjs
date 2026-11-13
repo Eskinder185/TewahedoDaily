@@ -52,6 +52,9 @@ try {
     assert.match(code, /^[A-HJ-NP-Z2-9]{5}$/)
     await host.page.getByRole('status').filter({ hasText: /Online/ }).waitFor({ timeout: 25000 })
     assert.equal(await host.page.getByLabel('Join link').inputValue(), `${base}/play/live/${code}`)
+    // The lobby offers a scannable QR code for the same join link.
+    await host.page.locator('[data-room-qr] svg[role="img"]').waitFor()
+    assert.match(await host.page.locator('[data-room-qr] svg').getAttribute('aria-label'), new RegExp(code))
     await host.page.screenshot({ path: path.join(shots, 'host-lobby.png'), fullPage: true })
   })
 
