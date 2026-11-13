@@ -10,6 +10,7 @@ import {
 import { createRealtimeTransport, type Transport } from '../../lib/play/liveTransport'
 import { newSeed } from '../../lib/play/sessionRandom'
 import type { WhoAmICard, PlayQuestion } from '../../lib/play/types'
+import { RoomQrCode } from '../../components/play/RoomQrCode'
 import s from './LiveRoom.module.css'
 
 const GAME_TITLES: Record<LiveGame, { en: string; am: string }> = {
@@ -223,6 +224,7 @@ function HostRoom({ code, initial }: { code: string; initial: HostEngine }) {
           <div className={s.linkRow}><input readOnly value={link} aria-label={am ? 'የመቀላቀያ አገናኝ' : 'Join link'} onFocus={(e) => e.currentTarget.select()} />
             <button type="button" onClick={() => void copy()}>{copied ? (am ? 'ተቀድቷል' : 'Copied') : (am ? 'ቅዳ' : 'Copy link')}</button>
             {typeof navigator.share === 'function' ? <button type="button" onClick={() => void share()}>{am ? 'አጋራ' : 'Share'}</button> : null}</div>
+          <RoomQrCode link={link} code={code} am={am} />
           <h3>{am ? 'ተጫዋቾች' : 'Players'} ({roster.length}/{MAX_PLAYERS})</h3>
           {roster.length ? <ul className={s.roster} data-roster>{roster.map((p) => <li key={p.id}><span aria-hidden="true">{p.connected ? '●' : '○'}</span> {p.name}<span className={s.fs}> {p.connected ? '' : (am ? '(ተቋርጧል)' : '(offline)')}</span></li>)}</ul> : <p className={s.hint}>{am ? 'ተጫዋቾችን በመጠበቅ ላይ…' : 'Waiting for players to join…'}</p>}
           <button type="button" className={s.primary} disabled={!roster.length || status !== 'online'} onClick={() => publish(engine.start())} data-start>{am ? 'ጨዋታ ጀምር' : 'Start game'} ({engine.rounds.length} {am ? 'ጥያቄዎች' : 'questions'})</button>
