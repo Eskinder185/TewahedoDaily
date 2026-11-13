@@ -18,7 +18,7 @@ import { fromLibraryRow as fromQuestionRow, toStudioActivityDraft } from '../../
 import { databasePlayEnabled } from '../../../lib/play/publishedContent'
 import { GAME_MODES, GAME_MODE_IDS, gameInMode } from '../../../lib/play/gameModes'
 import { recordFromBuiltIn, builtInContent } from '../../../lib/play/staticContent'
-import { BuiltInSection, CampaignPanel, CoveragePanel, GameOverview, GameSettingsPanel, StudioTabs } from './StudioPanels'
+import { BuiltInSection, CampaignPanel, ContentStatusPanel, CoveragePanel, GameOverview, GameSettingsPanel, StudioTabs } from './StudioPanels'
 import { STUDIO_VIEWS, type SavedCounts, type StudioView } from './studioViews'
 import s from './Studio.module.css'
 
@@ -204,6 +204,7 @@ function StudioLibrary({ owner, role }: { owner: string; role: EditorialRole }) 
     {itemId && initial ? <StudioEditor key={`${game}:${itemId}:${params.get('seed') || ''}:${params.get('format') || ''}`} initial={initial} isSaved={itemId !== 'new'} role={role} onSaved={saved} onDelete={remove} onDuplicate={copy => create(copy.draft.game, copy)} /> : itemId && !loading ? <p role="alert">Draft not found in your authorized library. Unsaved new drafts do not survive refresh. / ረቂቁ አልተገኘም።</p> : null}
     {!itemId && view === 'settings' && <GameSettingsPanel key={`settings:${game || ''}`} owner={owner} role={role} am={am} initialGame={game} onOpenGame={next => query({ view: null, game: next })} />}
     {!itemId && view === 'coverage' && <CoveragePanel am={am} onOpen={target => query({ view: target.view && target.view !== 'library' ? target.view : null, game: target.game ?? null })} />}
+    {!itemId && view === 'content' && <ContentStatusPanel am={am} saved={savedCounts} onOpen={next => query({ view: null, game: next })} />}
     {!itemId && view === 'campaign' && <CampaignPanel owner={owner} am={am} />}
     {!itemId && view === 'library' && <section className={s.librarySection} aria-label="Content library">
       {!game && <details><summary>{am ? 'ነባር ጨዋታዎችና ምንጮች' : 'Browse existing games and their sources'}</summary><GameOverview am={am} saved={savedCounts} mode={mode} onOpen={next => query({ game: next })} /></details>}

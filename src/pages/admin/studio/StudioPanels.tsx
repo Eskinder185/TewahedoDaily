@@ -8,6 +8,8 @@ import { STUDIO_GAMES, isQuizStudioGame, type StudioGame } from '../../../lib/pl
 import { builtInContent, builtInCounts, builtInOrigin } from '../../../lib/play/staticContent'
 import { GAME_LEVELS, THUMBNAIL_KEYS, exportSettings, settingsStorage, validateSettings, type GameSettingsDraft } from '../../../lib/play/gameSettings'
 import { coverageRows, type Capability } from '../../../lib/play/coverage'
+import { bundledStatusRows, loadGeneratedPreview, type GeneratedPreviewItem } from '../../../lib/play/bundledInventory'
+import { databasePlayEnabled } from '../../../lib/play/publishedContent'
 import { importCandidates, parseCampaignFile, reviewStorage, type CampaignItem, type ParsedCampaign, type ReviewRecord, type ReviewState } from '../../../lib/play/campaignDrafts'
 import { BilingualField, TextField } from './StudioFields'
 import { STUDIO_VIEWS, matchesBuiltIn, type BuiltInFilters, type SavedCounts, type StudioView } from './studioViews'
@@ -254,5 +256,69 @@ export function CampaignPanel({ owner, am }: { owner: string; am: boolean }) {
       </div>
       <p className={s.hint}>The file contains drafts only (no status or publish field). The import tool still shows its own preview and asks for confirmation; approval and publication remain separate editorial steps.</p>
     </>}
+  </section>
+}
+
+/* ------------------------------------------------------------------ Content status (bundled vs database vs held back) */
+const unitWord = (unit: string) => unit === 'records' ? 'records' : unit
+/**
+ * What each public game actually plays, by origin. Bundled = shipped in the website build (built-in + generated items that
+ * passed automated checks, NOT human-reviewed). Database = Studio rows, which a website deploy never publishes.
+ */
+export function ContentStatusPanel({ am, saved, onOpen }: { am: boolean; saved: SavedCounts; onOpen: (game: StudioGame) => void }) {
+  const rows = useMemo(() => bundledStatusRows(), [])
+  const [previewGame, setPreviewGame] = useState<StudioGame | null>(null)
+  const [items, setItems] = useState<GeneratedPreviewItem[] | null>(null)
+  const [search, setSearch] = useState('')
+  const [limit, setLimit] = useState(25)
+  const databaseOnly = databasePlayEnabled()
+  const totals = rows.reduce((sum, row) => ({ builtIn: sum.builtIn + row.builtIn, generated: sum.generated + row.generatedBundled, held: sum.held + row.heldBack, dup: sum.dup + row.duplicates }), { builtIn: 0, generated: 0, held: 0, dup: 0 })
+  const open = (game: StudioGame) => {
+    setPreviewGame(game); setItems(null); setSearch(''); setLimit(25)
+    void loadGeneratedPreview(game).then(setItems, () => setItems([]))
+  }
+  const shown = (items ?? []).filter(item => !search.trim() || `${item.id} ${item.title} ${item.detail} ${item.reference}`.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase()))
+  return <section className={s.group} aria-label="Content status" data-content-status>
+    <h2>{am ? 'የይዘት ሁኔታ' : 'Content status'}</h2>
+    <p className={s.hint}>What visitors can play today, split by where it lives and whether a person has reviewed it. Deploying the website never creates, changes or publishes database records.</p>
+    <p role="status" data-content-source>
+      <strong>{databaseOnly ? 'This build plays database-published content only.' : 'This build plays the bundled content below.'}</strong>{' '}
+      {databaseOnly ? 'The bundled counts here are NOT what visitors get; only published database rows play.' : 'Published database rows, when present, are added on top of it.'}
+    </p>
+    <p role="note" data-content-legend>
+      <span className={s.badge}>Built-in</span> written in the source code and hand-approved · <span className={s.badge}>Generated</span> machine-validated (sources, answers, duplicates) and bundled, <strong>awaiting human review</strong> — Amharic text unreviewed ·{' '}
+      <span className={s.badge}>Held back</span> kept out of public play until reviewed · <span className={s.badge}>Database</span> Studio rows: drafts or published through the review workflow.
+    </p>
+    <div className={s.tableWrap}><table className={s.table}>
+      <caption className={s.srOnly}>Content by origin and review state for each Faith Challenge game</caption>
+      <thead><tr><th scope="col">Game</th><th scope="col">Unit</th><th scope="col">Built-in</th><th scope="col">Generated (bundled, awaiting review)</th><th scope="col">Playable now</th><th scope="col">Held back</th><th scope="col">Duplicates removed</th><th scope="col">Database (server / local drafts)</th><th scope="col">Inspect</th></tr></thead>
+      <tbody>{rows.map(row => {
+        const count = saved[row.game] || { server: 0, local: 0 }
+        return <tr key={row.game} data-status-row={row.game}>
+          <th scope="row"><button type="button" onClick={() => onOpen(row.game)}>{gameName(row.game, am)}</button></th>
+          <td>{unitWord(row.unit)}</td>
+          <td>{row.fromDatabase ? '—' : row.builtIn}</td>
+          <td>{row.fromDatabase ? '—' : row.generatedBundled}</td>
+          <td>{row.fromDatabase ? (am ? 'ከታተሙ መዝሙሮች' : 'from published hymns') : row.playable}</td>
+          <td title={Object.entries(row.heldReasons).filter(([reason]) => !reason.startsWith('substantially') && !reason.startsWith('exact')).map(([reason, n]) => `${n} · ${reason}`).join('\n')}>{row.heldBack}</td>
+          <td>{row.duplicates}</td>
+          <td>{count.server} / {count.local}</td>
+          <td>{row.generatedBundled ? <button type="button" data-preview-generated={row.game} onClick={() => open(row.game)}>View generated</button> : '—'}</td>
+        </tr>
+      })}</tbody>
+      <tfoot><tr><th scope="row">All games</th><td>—</td><td>{totals.builtIn}</td><td>{totals.generated}</td><td colSpan={1}>—</td><td>{totals.held}</td><td>{totals.dup}</td><td colSpan={2}>—</td></tr></tfoot>
+    </table></div>
+    <p className={s.hint}>Units differ between games and are not added together: History&apos;s 3 timeline events, Timeline&apos;s events inside its chains, and the picture games&apos; images are separate from question counts. Held-back items stay out of public play: they cite sources that could not be verified, or make claims that need doctrinal review. Their reasons appear when you hover the number, and the full audit is in docs/ai/faith-challenges-publication-ledger.json.</p>
+    {previewGame && <div className={s.group} data-generated-preview={previewGame}>
+      <h3>{gameName(previewGame, am)} — generated items (read-only)</h3>
+      <p className={s.hint}>Machine-validated and awaiting human review. Not database rows; nothing here is marked reviewed or published. Edit or promote an item through its Library draft copy.</p>
+      <TextField label="Search generated items" value={search} onChange={value => { setSearch(value); setLimit(25) }} />
+      {items === null ? <p role="status">Loading…</p> : <>
+        <p className={s.libraryCount} role="status">{shown.length} of {items.length} generated items</p>
+        <ul>{shown.slice(0, limit).map(item => <li key={item.id}><strong>{item.title}</strong> — {item.detail} <small>({item.reference || 'no source'} · {item.id})</small></li>)}</ul>
+        {shown.length > limit && <button type="button" onClick={() => setLimit(limit + 50)}>Show more</button>}
+      </>}
+      <button type="button" onClick={() => setPreviewGame(null)}>Close</button>
+    </div>}
   </section>
 }

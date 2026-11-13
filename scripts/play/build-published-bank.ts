@@ -285,6 +285,19 @@ counts.saints = { unit: 'images', builtIn: holyPersonImages().length, generated:
 counts['icon-memory'] = { unit: 'images', builtIn: PLAY_IMAGES.length, generated: 0, total: PLAY_IMAGES.length }
 outputs['counts.json'] = `${JSON.stringify(counts, null, 1)}\n`
 
+// What the validation pass kept OUT of public play, per game and reason, for the admin Content status view (the full audit
+// stays in the ledger document, which is not bundled). 'held' = unresolved: needs human or source review before it can play.
+const ledgerSummary: Record<string, Json> = {}
+for (const v of ledger) {
+  const entry = (ledgerSummary[v.game] ||= { published: 0, duplicate: 0, rejected: 0, held: 0, reasons: {} })
+  entry[v.status === 'unresolved' ? 'held' : v.status]++
+  if (v.status !== 'published') {
+    const why = String(v.reason || 'no reason recorded').replace(/\(.*\)/, '').replace(/ID \S+/, 'ID').replace(/to \S+$/, 'to <id>').trim()
+    entry.reasons[why] = (entry.reasons[why] || 0) + 1
+  }
+}
+outputs['ledger-summary.json'] = `${JSON.stringify(Object.fromEntries(Object.entries(ledgerSummary).sort(([a], [b]) => a.localeCompare(b))), null, 1)}\n`
+
 const reasons: Record<string, number> = {}
 for (const v of ledger.filter(v => v.status !== 'published')) { const k = `${v.status}: ${(v.reason || '').replace(/\(.*\)/, '').replace(/ID \S+/, 'ID').replace(/to \S+$/, 'to <id>')}`; reasons[k] = (reasons[k] || 0) + 1 }
 const ledgerBody = `${JSON.stringify({ builtIn, published: Object.fromEntries(Object.entries(published).map(([g, l]) => [g, l.length])), summary, reasons, items: ledger.sort((a, b) => a.id.localeCompare(b.id)) }, null, 1)}\n`
