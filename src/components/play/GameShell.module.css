@@ -245,3 +245,18 @@
 .streak { flex: 0 0 auto; padding: 0.2rem 0.65rem; border-radius: var(--radius-pill); background: var(--color-gold-bright); color: var(--color-midnight-ink) !important; font-size: 0.82rem; }
 /* Night: --color-midnight-ink is a light cream there, so the gold badge needs the dark midnight text (light theme unchanged). */
 [data-theme='night'] .streak { color: var(--color-midnight) !important; }
+
+.reviewNotice {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.9rem;
+  border-left: 3px solid var(--color-gold, #c9a14a);
+  border-radius: 0.4rem;
+  /* Solid, above the banner art that the stage overlaps, so the text is always readable. */
+  position: relative;
+  z-index: 1;
+  background: color-mix(in srgb, var(--color-gold, #c9a14a) 14%, var(--color-bg-elevated, #fbf6ea));
+  color: var(--color-text, inherit);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.setupCount { margin: 0.75rem 0 0; color: var(--color-text-muted); font-size: 0.9rem; }

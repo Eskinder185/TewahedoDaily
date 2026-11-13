@@ -253,11 +253,45 @@ const summary: Record<string, Record<string, number>> = {}
 for (const v of ledger) { const g = (summary[v.game] ||= { published: 0, duplicate: 0, rejected: 0, unresolved: 0 }); g[v.status]++ }
 const outputs: Record<string, string> = {}
 for (const [game, list] of Object.entries(published)) outputs[`${game}.json`] = `${JSON.stringify(sortById(list), null, 1)}\n`
+
+// ---------------------------------------------------------------- counts shown on the hub
+// Derived from the actual shipped content so no aggregate is ever typed by hand. Built-in items win on id collisions
+// (see mergeById), so a generated item that repeats a built-in id is not counted twice.
+const { bibleAdventureStories } = await import('../../src/lib/play/bibleAdventureStories.ts')
+const { PLAY_IMAGES, feastImages, holyPersonImages } = await import('../../src/lib/play/imageCatalog.ts')
+const { HISTORY_TIMELINE } = await import('../../src/lib/play/approvedContent.ts')
+const tally = (items: Json[], key: string) => {
+  const out: Record<string, number> = {}
+  for (const item of items) out[item[key] ?? 'none'] = (out[item[key] ?? 'none'] || 0) + 1
+  return Object.fromEntries(Object.entries(out).sort(([a], [b]) => a.localeCompare(b)))
+}
+const merged = (builtIn: Json[], generated: Json[]) => { const ids = new Set(builtIn.map(item => item.id)); return [...builtIn, ...generated.filter(item => !ids.has(item.id))] }
+const quizBuiltIn = (game: string): Json[] => APPROVED_QUESTIONS.filter((q: Json) => q.game === game)
+const counts: Record<string, Json> = {}
+for (const game of ['trivia', 'finish-the-verse', 'emoji']) {
+  const all = merged(quizBuiltIn(game), published[game])
+  counts[game] = { unit: game === 'emoji' ? 'clues' : game === 'finish-the-verse' ? 'excerpts' : 'questions', builtIn: quizBuiltIn(game).length, generated: all.length - quizBuiltIn(game).length, total: all.length, levels: tally(all, 'difficulty'), categories: tally(all, 'category') }
+}
+counts.history = { unit: 'questions', builtIn: quizBuiltIn('history').length, generated: 0, total: quizBuiltIn('history').length, levels: tally(quizBuiltIn('history'), 'difficulty'), timelineEvents: HISTORY_TIMELINE.length }
+for (const [game, builtIn, unit] of [['who-am-i', WHO_AM_I_CARDS, 'cards'], ['match', MATCH_PAIRS, 'pairs']] as const) {
+  const all = merged(builtIn as Json[], published[game])
+  counts[game] = { unit, builtIn: builtIn.length, generated: all.length - builtIn.length, total: all.length, categories: tally(all, 'category') }
+}
+const allChains: Json[] = merged(TIMELINE_CHAINS, published.timeline)
+counts['bible-timeline'] = { unit: 'chains', builtIn: TIMELINE_CHAINS.length, generated: allChains.length - TIMELINE_CHAINS.length, total: allChains.length, events: allChains.reduce((n: number, c: Json) => n + c.events.length, 0), builtInEvents: TIMELINE_CHAINS.reduce((n: number, c: Json) => n + c.events.length, 0) }
+counts.adventures = { unit: 'stories', builtIn: bibleAdventureStories.length, generated: 0, total: bibleAdventureStories.length, scenes: bibleAdventureStories.reduce((n: number, s: Json) => n + s.scenes.length, 0) }
+counts.feasts = { unit: 'images', builtIn: feastImages().length, generated: 0, total: feastImages().length }
+counts.saints = { unit: 'images', builtIn: holyPersonImages().length, generated: 0, total: holyPersonImages().length }
+counts['icon-memory'] = { unit: 'images', builtIn: PLAY_IMAGES.length, generated: 0, total: PLAY_IMAGES.length }
+outputs['counts.json'] = `${JSON.stringify(counts, null, 1)}\n`
+
 const reasons: Record<string, number> = {}
 for (const v of ledger.filter(v => v.status !== 'published')) { const k = `${v.status}: ${(v.reason || '').replace(/\(.*\)/, '').replace(/ID \S+/, 'ID').replace(/to \S+$/, 'to <id>')}`; reasons[k] = (reasons[k] || 0) + 1 }
 const ledgerBody = `${JSON.stringify({ builtIn, published: Object.fromEntries(Object.entries(published).map(([g, l]) => [g, l.length])), summary, reasons, items: ledger.sort((a, b) => a.id.localeCompare(b.id)) }, null, 1)}\n`
 if (CHECK) {
-  const stale = [...Object.entries(outputs), [LEDGER, ledgerBody] as [string, string]].filter(([name, body]) => !existsSync(name.includes('/') ? name : join(OUT, name)) || readFileSync(name.includes('/') ? name : join(OUT, name), 'utf8') !== body).map(([name]) => name)
+  // Git on Windows may check text files out with CRLF, so compare without line-ending differences.
+  const onDisk = (name: string) => readFileSync(name.includes('/') ? name : join(OUT, name), 'utf8').split('\r\n').join('\n')
+  const stale = [...Object.entries(outputs), [LEDGER, ledgerBody] as [string, string]].filter(([name, body]) => !existsSync(name.includes('/') ? name : join(OUT, name)) || onDisk(name) !== body).map(([name]) => name)
   if (stale.length) { console.error(`Generated bank is out of date: ${stale.join(', ')}. Run: npx tsx scripts/play/build-published-bank.ts`); process.exit(1) }
   console.log('Generated bank is up to date.')
 } else {

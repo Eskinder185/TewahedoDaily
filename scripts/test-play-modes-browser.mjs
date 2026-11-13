@@ -15,7 +15,7 @@ const auth = `import React from 'react';import{AuthContext}from'/src/lib/auth/us
 const staff = `export async function requireCmsStaffSession(){if(localStorage.getItem('mode-test-role')!=='editor')throw new Error('Staff role required');return{profileRole:'editor'}}export function getLastCmsStaffProbe(){return null}export function mapStaffWriteError(error){return error}`
 const server = await createServer({ configFile: false, envDir: false, cacheDir: join(artifacts, 'vite'), logLevel: 'error',
   server: { host: '127.0.0.1', port: 5198, strictPort: true },
-  optimizeDeps: { noDiscovery: true, include: ['react', 'react-dom/client', 'react-router-dom'] }, resolve: { dedupe: ['react', 'react-dom'] },
+  optimizeDeps: { noDiscovery: true, include: ['react', 'react-dom/client', 'react-router-dom', 'qrcode-generator'] }, resolve: { dedupe: ['react', 'react-dom'] },
   define: { 'import.meta.env.VITE_SUPABASE_URL': JSON.stringify(endpoint), 'import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY': JSON.stringify('synthetic-public-key') },
   plugins: [{ name: 'play-mode-fixture', enforce: 'pre',
     resolveId(source) { if (source === '/__mode-entry.jsx') return source; if (/(?:^|\/)AuthProvider(?:\.tsx)?$/.test(source)) return '\0mode-auth.jsx'; if (/(?:^|\/)cmsStaffAuth(?:\.ts)?$/.test(source)) return '\0mode-staff.js' },
@@ -38,7 +38,9 @@ try {
     const request = route.request(), url = new URL(request.url())
     if (url.origin === base) return route.continue()
     if (url.origin !== endpoint) return route.abort()
-    assert.equal(request.method(), 'GET', 'navigation may not mutate the backend')
+    // PostgREST calls read-only functions with POST; a list_* RPC (the Search Buddy suggestions) reads, never writes.
+    const readOnlyRpc = request.method() === 'POST' && /^\/rest\/v1\/rpc\/list_[a-z_]+$/.test(url.pathname)
+    assert.ok(request.method() === 'GET' || readOnlyRpc, `navigation may not mutate the backend: ${request.method()} ${url.pathname}`)
     return route.fulfill({ status: 200, contentType: 'application/json', body: '[]' })
   })
   const page = await context.newPage(); page.setDefaultTimeout(15000)
@@ -46,9 +48,9 @@ try {
   await page.goto(`${base}/play`)
   await test('Five modes and all twelve existing route links', async () => {
     await page.locator('[data-play-mode]').first().waitFor()
-    assert.equal(await page.locator('[data-play-mode]').count(), 5)
-    // One way in: no second, all-games list under the modes. Games appear after a way to play is chosen.
-    assert.equal(await page.locator('[data-game-card]').count(), 0)
+    // All, plus the five ways to play, filtering ONE grid that shows all twelve games by default.
+    assert.equal(await page.locator('[data-play-mode]').count(), 6)
+    assert.equal(await page.locator('[data-game-card]').count(), 12)
     assert.equal(await page.getByRole('link', { name: /Show all 12 games/i }).count(), 0)
     assert.equal(await page.getByText('Browse by topic').count(), 0)
     const routes = []
@@ -80,8 +82,8 @@ try {
     assert.equal(new URL(page.url()).searchParams.get('mode'), 'word')
     assert.equal(await page.locator('[data-game-card]').count(), 2)
     await page.goForward(); await page.locator('[data-play-mode="story"][aria-current="page"]').waitFor()
-    await page.getByRole('link', { name: /All ways to play/ }).click()
-    await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 0)
+    await page.locator('[data-play-mode="all"]').click()
+    await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 12)
     assert.equal(new URL(page.url()).searchParams.get('mode'), null)
   })
   await test('Legacy topic URLs and keyboard controls remain functional', async () => {

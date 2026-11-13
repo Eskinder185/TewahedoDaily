@@ -15,7 +15,7 @@ export function GameShell({ locale, title, subtitle, art, kicker, children }: { 
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6" /></svg>
             {am ? 'ሁሉም ጨዋታዎች' : 'All games'}
           </Link>
-          <p>{kicker ?? (am ? 'በተገመገሙ ምንጮች የተዘጋጀ' : 'Built from reviewed sources')}</p>
+          <p>{kicker ?? (am ? 'በተጠቀሱ ምንጮች የተዘጋጀ' : 'Built from cited sources')}</p>
           <h1>{title}</h1>
           <span>{subtitle}</span>
         </div>
@@ -27,7 +27,23 @@ export function GameShell({ locale, title, subtitle, art, kicker, children }: { 
 
 export function VerifiedFallback({ locale }: { locale: AppLocale }) {
   if (locale !== 'am') return null
-  return <p className={styles.fallback} role="note">English verified content shown where an approved Amharic version is not yet available.</p>
+  return <p className={styles.fallback} role="note">English content shown where an approved Amharic version is not yet available.</p>
+}
+
+/**
+ * Generated learning content has passed automated checks (format, Bible grounding, duplicate removal) but not human
+ * review, and its Amharic text is unreviewed. Said once, calmly, on the games that include it.
+ */
+export function GeneratedContentNotice({ locale, generated }: { locale: AppLocale; generated: number }) {
+  if (generated <= 0) return null
+  const am = locale === 'am'
+  return (
+    <p className={styles.reviewNotice} role="note" data-generated-notice>
+      {am
+        ? `በዚህ ጨዋታ ውስጥ ያሉ ${generated} ንጥሎች በራስ-ሰር የተፈጠሩ የመማሪያ ይዘቶች ናቸው። አውቶማቲክ ፍተሻዎችን አልፈዋል፤ የሰው ግምገማ ይጠብቃሉ። የኢትዮጵያ ኦርቶዶክስ ተዋሕዶ ቤተ ክርስቲያን ይፋዊ አቋም አይደሉም።`
+        : `${generated} items in this game are generated learning content. They passed automated checks and are awaiting human review. They are not an official statement of the Ethiopian Orthodox Tewahedo Church.`}
+    </p>
+  )
 }
 
 export function PublishedQuestionsStatus({

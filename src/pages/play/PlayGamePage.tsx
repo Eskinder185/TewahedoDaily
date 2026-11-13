@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
-import { GameShell, PublishedQuestionsStatus } from '../../components/play/GameShell'
+import { GameShell, GeneratedContentNotice, PublishedQuestionsStatus } from '../../components/play/GameShell'
+import { unreviewedGeneratedCount } from '../../lib/play/contentRegistry'
 import { MatchGame } from '../../components/play/MatchGame'
 import { QuizGame } from '../../components/play/QuizGame'
 import { WhoAmIGame } from '../../components/play/WhoAmIGame'
@@ -15,7 +16,6 @@ import { loadPublishedPlayQuestions, loadPublishedGameCards } from '../../lib/pl
 import { mergeCardBank } from '../../lib/play/cardContent'
 import { GAME_ART, feastImages, holyPersonImages } from '../../lib/play/imageCatalog'
 import { getDailyChallenge } from '../../lib/play/progress'
-import { withoutLibrarySources, withPublicSources } from '../../lib/play/sourceAvailability'
 import type { MatchPair, WhoAmICard, PlayDifficulty, PlayGameType, PlayQuestion } from '../../lib/play/types'
 import { isGeneratedQuizGame, loadGeneratedCards, loadGeneratedQuestions, loadGeneratedTimelineChains, mergeById } from '../../lib/play/generatedBank'
 import { TIMELINE_CHAINS, type TlChain } from '../../lib/play/bibleTimeline'
@@ -66,10 +66,11 @@ function PlayGameView({ game }: { game: PageGame }) {
   const meta = META[game]
   const isQuiz = !['who-am-i', 'match', 'feasts', 'saints', 'icon-memory', 'finish-the-mezmur', 'bible-timeline'].includes(game)
   const isCardGame = game === 'who-am-i' || game === 'match'
-  const [whoCards, setWhoCards] = useState<WhoAmICard[]>(() => withoutLibrarySources(WHO_AM_I_CARDS))
-  const [matchPairs, setMatchPairs] = useState<MatchPair[]>(() => withoutLibrarySources(MATCH_PAIRS))
-  // Church Library questions only appear once their book is published.
-  const staticQuestions = useMemo(() => isQuiz ? withoutLibrarySources(questionsFor(game as QuizPageGame)) : [], [game, isQuiz])
+  const [whoCards, setWhoCards] = useState<WhoAmICard[]>(() => [...WHO_AM_I_CARDS])
+  const [matchPairs, setMatchPairs] = useState<MatchPair[]>(() => [...MATCH_PAIRS])
+  // Every bundled question is playable. A citation to a Church Library book that is not published yet shows as plain
+  // text (see SourceLink) instead of hiding the question.
+  const staticQuestions = useMemo(() => isQuiz ? questionsFor(game as QuizPageGame) : [], [game, isQuiz])
   const [questions, setQuestions] = useState<PlayQuestion[]>(staticQuestions)
   const [publishedState, setPublishedState] = useState<'loading' | 'ready' | 'error'>(isQuiz || isCardGame ? 'loading' : 'ready')
   const [retryToken, setRetryToken] = useState(0)
@@ -81,10 +82,10 @@ function PlayGameView({ game }: { game: PageGame }) {
     void (async () => {
       try {
         const [publicStatic, published, generated] = await Promise.all([
-          withPublicSources(questionsFor(game as QuizPageGame)),
-          loadPublishedPlayQuestions(game as QuizPageGame).then(withPublicSources),
+          Promise.resolve(questionsFor(game as QuizPageGame)),
+          loadPublishedPlayQuestions(game as QuizPageGame),
           // Validated, Bible-grounded bank shipped with the app; failure to load it never hides the built-in questions.
-          isGeneratedQuizGame(game) ? loadGeneratedQuestions(game).then(withPublicSources).catch(() => [] as PlayQuestion[]) : Promise.resolve([] as PlayQuestion[]),
+          isGeneratedQuizGame(game) ? loadGeneratedQuestions(game).catch(() => [] as PlayQuestion[]) : Promise.resolve([] as PlayQuestion[]),
         ])
         if (!active) return
         setQuestions(mergeById([...publicStatic, ...published], generated))
@@ -103,17 +104,17 @@ function PlayGameView({ game }: { game: PageGame }) {
     void (async () => {
       try {
         if (game === 'who-am-i') {
-          const [fallback, published, generated] = await Promise.all([withPublicSources(WHO_AM_I_CARDS), loadPublishedGameCards('who-am-i').then(withPublicSources),
-            loadGeneratedCards('who-am-i').then((cards) => withPublicSources(cards as WhoAmICard[])).catch(() => [] as WhoAmICard[])])
+          const [fallback, published, generated] = await Promise.all([Promise.resolve([...WHO_AM_I_CARDS]), loadPublishedGameCards('who-am-i'),
+            loadGeneratedCards('who-am-i').then((cards) => cards as WhoAmICard[]).catch(() => [] as WhoAmICard[])])
           if (active) setWhoCards(mergeCardBank('who-am-i', mergeById(fallback, generated), published))
         } else {
-          const [fallback, published, generated] = await Promise.all([withPublicSources(MATCH_PAIRS), loadPublishedGameCards('match').then(withPublicSources),
-            loadGeneratedCards('match').then((pairs) => withPublicSources(pairs as MatchPair[])).catch(() => [] as MatchPair[])])
+          const [fallback, published, generated] = await Promise.all([Promise.resolve([...MATCH_PAIRS]), loadPublishedGameCards('match'),
+            loadGeneratedCards('match').then((pairs) => pairs as MatchPair[]).catch(() => [] as MatchPair[])])
           if (active) setMatchPairs(mergeCardBank('match', mergeById(fallback, generated), published))
         }
         if (active) setPublishedState('ready')
       } catch { if (active) {
-        setWhoCards(withoutLibrarySources(WHO_AM_I_CARDS)); setMatchPairs(withoutLibrarySources(MATCH_PAIRS))
+        setWhoCards([...WHO_AM_I_CARDS]); setMatchPairs([...MATCH_PAIRS])
         setPublishedState('error')
       } }
     })()
@@ -141,6 +142,7 @@ function PlayGameView({ game }: { game: PageGame }) {
 
   return (
     <GameShell locale={locale} title={meta.title[locale]} subtitle={meta.subtitle[locale]} art={GAME_ART[game]}>
+      <GeneratedContentNotice locale={locale} generated={unreviewedGeneratedCount(game)} />
       {(isQuiz || isCardGame) && publishedState !== 'ready' ? <PublishedQuestionsStatus locale={locale} state={publishedState} onRetry={publishedState === 'error' ? retryPublishedQuestions : undefined} /> : null}
       {body}
     </GameShell>

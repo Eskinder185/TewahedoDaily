@@ -6,7 +6,8 @@ import { GameDifficultyPicker, type GameDifficulty } from '../../components/play
 import { PlayProgressPanel } from '../../components/play/PlayProgressPanel'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useLocale } from '../../lib/i18n/locale'
-import { GAME_ART, handlePlayImageError, PLAY_IMAGES, imageById } from '../../lib/play/imageCatalog'
+import { GAME_ART, handlePlayImageError, imageById } from '../../lib/play/imageCatalog'
+import { describeContent, progressSummary, totalsByUnit } from '../../lib/play/contentRegistry'
 import { HUB_GAMES, type HubSection } from '../../lib/play/gameCatalog'
 import { GAME_MODES, GAME_MODE_IDS, gameInMode, recentGames, type GameModeId } from '../../lib/play/gameModes'
 import { usePlayProgress } from '../../lib/play/usePlayProgress'
@@ -56,8 +57,9 @@ export function PlayHubPage() {
     if (id === 'all') next.delete('mode'); else next.set('mode', id)
     return { pathname: '/play', search: next.toString(), hash: '#games' }
   }
-  /** Games are listed only after a way to play is chosen (legacy ?section= links still filter). */
-  const showGames = mode !== 'all' || filter !== 'all'
+  const activeMode = GAME_MODES.find(entry => entry.id === mode)
+  const totals = totalsByUnit()
+  const quizItems = (totals.questions ?? 0) + (totals.clues ?? 0) + (totals.excerpts ?? 0)
 
   return (
     <div className={styles.page} lang={locale}>
@@ -74,7 +76,7 @@ export function PlayHubPage() {
                 : 'Recognise the saints from their icons, name the feasts, finish the verses. Every answer links back to Scripture or the Church calendar on TewahedoDaily.'}
             </p>
             <div className={styles.heroActions}>
-              <a className={styles.primaryAction} href="#modes">
+              <a className={styles.primaryAction} href="#games">
                 {am ? 'መጫወት ይጀምሩ' : 'Start playing'}
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
               </a>
@@ -82,7 +84,7 @@ export function PlayHubPage() {
             </div>
             <ul className={styles.heroFacts}>
               <li><strong>{GAMES.length}</strong>{am ? 'ጨዋታዎች' : 'games'}</li>
-              <li><strong>{PLAY_IMAGES.length}</strong>{am ? 'የተረጋገጡ ሥዕሎች' : 'verified icons'}</li>
+              <li><strong>{quizItems}</strong>{am ? 'ጥያቄዎች፣ ፍንጮችና ጥቅሶች' : 'questions, clues & verses'}</li>
               <li><strong>2</strong>{am ? 'ቋንቋዎች' : 'languages'}</li>
             </ul>
             <p className={styles.guestBadge}><span aria-hidden="true">●</span>{am ? 'እንግዳ ጨዋታ · መለያ አያስፈልግም' : 'Guest play · no account required'}</p>
@@ -125,42 +127,32 @@ export function PlayHubPage() {
         <section className={styles.startStrip} aria-label={am ? 'መጫወት ይጀምሩ' : 'Start playing'} data-play-actions>
           <Link className={styles.stripPrimary} to={`${quickGame.route}${quickGame.levels ? `?level=${difficulty}` : ''}`} data-play-now>▶ {am ? 'አሁን ይጫወቱ' : 'Play now'}<small>{quickGame.title[locale]}</small></Link>
           <button type="button" className={styles.stripButton} onClick={surprise} data-surprise>🎲 {am ? 'አስገርመኝ' : 'Surprise me'}<small>{am ? 'በዘፈቀደ የተመረጠ ጨዋታ' : 'A random game'}</small></button>
-          <a className={styles.stripButton} href="#modes" data-play-solo>👤 {am ? 'ብቻዎን' : 'Play solo'}<small>{am ? 'ጨዋታ ይምረጡ' : 'Pick any of 12 games'}</small></a>
+          <a className={styles.stripButton} href="#games" data-play-solo>👤 {am ? 'ብቻዎን' : 'Play solo'}<small>{am ? `ከ${GAMES.length} ጨዋታዎች ይምረጡ` : `Pick any of ${GAMES.length} games`}</small></a>
           {resume.length ? <div className={styles.resumeRow} data-resume>{resume.map(item => { const game = GAMES.find(g => g.id === item.game || (g.id === 'mezmur' && item.game === 'finish-the-mezmur')); return game ? <Link key={item.game} to={game.route}>↻ {am ? 'ቀጥሉ' : 'Continue'} {game.title[locale]} ({item.done}/{item.total})</Link> : null })}</div> : null}
         </section>
 
-        <section className={styles.modeSection} id="modes" aria-labelledby="modes-title">
-          <div className={styles.sectionHeading}><div><p className={styles.eyebrow}>{am ? 'እንዴት መጫወት ይፈልጋሉ?' : 'How do you want to play?'}</p>
-            <h2 id="modes-title">{am ? 'አምስት የጨዋታ መንገዶች' : 'Five ways to discover'}</h2></div></div>
-          <nav className={styles.modeGrid} aria-label={am ? 'የጨዋታ ሁነታዎች' : 'Game modes'}>
-            {GAME_MODES.map(entry => <Link key={entry.id} data-play-mode={entry.id} className={styles.modeCard} to={modeHref(entry.id)} aria-current={mode === entry.id ? 'page' : undefined}>
-              <span className={styles.modeIcon} aria-hidden="true">{entry.icon}</span><h3>{entry[locale]}</h3><p>{entry.description[locale]}</p>
-              <small>{GAMES.filter(game => gameInMode(game.id, entry.id)).map(game => game.title[locale]).join(' · ')}</small>
-              <strong>{am ? 'ጨዋታዎችን ይመልከቱ' : 'Explore games'} →</strong>
-            </Link>)}
-          </nav>
-        </section>
-
-        {/* ---------- Games for the chosen way to play ---------- */}
-        {showGames ? (
+        {/* ---------- All games: one grid, with ways to play as filters ---------- */}
         <section className={styles.gamesSection} id="games" aria-labelledby="games-title">
           <div className={styles.sectionHeading}>
             <div>
-              <p className={styles.eyebrow}>{visible.length} {am ? 'ጨዋታዎች' : 'games'}</p>
-              <h2 id="games-title">{mode !== 'all' ? GAME_MODES.find(entry => entry.id === mode)?.[locale] : (am ? 'ጨዋታዎች' : 'Games')}</h2>
-              <p><Link className={styles.allGamesLink} to={{ pathname: '/play', search: (() => { const next = new URLSearchParams(params); next.delete('mode'); next.delete('section'); return next.toString() })(), hash: '#modes' }}>← {am ? 'ወደ ሁሉም የጨዋታ መንገዶች' : 'All ways to play'}</Link></p>
+              <p className={styles.eyebrow}>{visible.length === GAMES.length ? (am ? `${GAMES.length} ጨዋታዎች` : `${GAMES.length} games`) : (am ? `${visible.length} ከ${GAMES.length} ጨዋታዎች` : `${visible.length} of ${GAMES.length} games`)}</p>
+              <h2 id="games-title">{activeMode ? activeMode[locale] : (am ? `ሁሉም ${GAMES.length} ጨዋታዎች` : `All ${GAMES.length} games`)}</h2>
             </div>
             <GameDifficultyPicker locale={locale} value={difficulty} onChange={setDifficulty} />
           </div>
+          <nav className={styles.modeChips} aria-label={am ? 'የጨዋታ መንገዶች' : 'Ways to play'}>
+            <Link data-play-mode="all" className={`${styles.modeChip} ${!activeMode && filter === 'all' ? styles.modeChipActive : ''}`} to={modeHref('all')} aria-current={!activeMode && filter === 'all' ? 'page' : undefined}>{am ? 'ሁሉም' : 'All'} · {GAMES.length}</Link>
+            {GAME_MODES.map(entry => <Link key={entry.id} data-play-mode={entry.id} className={`${styles.modeChip} ${mode === entry.id ? styles.modeChipActive : ''}`} to={modeHref(entry.id)} aria-current={mode === entry.id ? 'page' : undefined}><span aria-hidden="true">{entry.icon}</span> {entry[locale]} · {GAMES.filter(game => gameInMode(game.id, entry.id)).length}</Link>)}
+          </nav>
+          {activeMode ? <p className={styles.modeNote}>{activeMode.description[locale]}</p> : null}
           <p className={styles.levelNote} aria-live="polite">
             {am ? 'ደረጃው በጥያቄ ጨዋታዎች ላይ ይተገበራል።' : 'Your level applies to the question games (Trivia, Emoji, Verse, History).'}
           </p>
-          {!visible.length && <p>{am ? 'ከእነዚህ ማጣሪያዎች ጋር የሚዛመድ ጨዋታ የለም።' : 'No games match this choice. Pick another way to play above.'}</p>}
+          {!visible.length && <p>{am ? 'ከእነዚህ ማጣሪያዎች ጋር የሚዛመድ ጨዋታ የለም።' : 'No games match this choice. Choose “All” above.'}</p>}
           <div className={styles.gameGrid}>
-            {visible.map((game) => <GameCard key={game.id} game={LIVE_HUB_GAMES.has(game.id) ? { ...game, badge: { en: 'Solo + Live room', am: 'ብቻ + የቀጥታ ክፍል' } } : game} locale={locale} level={difficulty} />)}
+            {visible.map((game) => <GameCard key={game.id} game={{ ...game, ...(LIVE_HUB_GAMES.has(game.id) ? { badge: { en: 'Solo + Live room', am: 'ብቻ + የቀጥታ ክፍል' } } : {}), content: describeContent(game.id, locale) ?? undefined, progress: progressSummary(progress.history, game.id) ?? undefined }} locale={locale} level={difficulty} />)}
           </div>
         </section>
-        ) : null}
 
         <section className={styles.dashboard} aria-label={am ? 'የተጫዋች ገጽ' : 'Your progress'}>
           <PlayProgressPanel locale={locale} signedIn={Boolean(session)} />

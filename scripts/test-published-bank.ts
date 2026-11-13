@@ -64,7 +64,7 @@ test('IDs are unique per game, never collide with built-in content, and built-in
   const builtIn = { trivia: APPROVED_QUESTIONS.filter(q => q.game === 'trivia'), 'finish-the-verse': APPROVED_QUESTIONS.filter(q => q.game === 'finish-the-verse'), emoji: APPROVED_QUESTIONS.filter(q => q.game === 'emoji'), 'who-am-i': WHO_AM_I_CARDS, match: MATCH_PAIRS }
   for (const [game, items] of Object.entries(bank)) {
     assert.equal(new Set(items.map(i => i.id)).size, items.length, `${game} unique IDs`)
-    const own = new Set((builtIn as any)[game].map((i: any) => i.id))
+    const own = new Set(((builtIn as any)[game] ?? TIMELINE_CHAINS).map((i: any) => i.id)) // timeline chains are compared with the built-in chains
     assert.ok(items.every(i => !own.has(i.id)), `${game} has no ID collision with built-in items`)
   }
   const clash = { ...bank.trivia[0], id: APPROVED_QUESTIONS.find(q => q.game === 'trivia')!.id }
@@ -73,7 +73,8 @@ test('IDs are unique per game, never collide with built-in content, and built-in
 })
 
 test('sources are real reader routes (no volume-style slugs) and cite Bible content', () => {
-  for (const item of Object.values(bank).flat()) {
+  // Timeline chains carry their citations on each event (checked in the timeline test above).
+  for (const item of Object.entries(bank).filter(([game]) => game !== 'bible-timeline').flatMap(([, items]) => items)) {
     assert.match(item.source.route, /^\/bible\/[a-z0-9-]+\/\d+/, `${item.id}: ${item.source.route}`)
     assert.doesNotMatch(item.source.route, /^\/bible\/[123]-/, `${item.id} uses a volume slug the reader does not serve`)
     assert.equal(item.source.kind, 'bible')

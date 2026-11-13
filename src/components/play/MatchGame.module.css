@@ -4,3 +4,4 @@
 .grid button.open { border-color: var(--color-gold); background: var(--color-bg); color: var(--color-heading); }
 @media (max-width: 700px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.grid button { min-height: 6rem; } }
 @media (prefers-reduced-motion: no-preference) { .grid button { transition: transform 180ms ease, background 180ms ease; }.grid button.open { transform: rotateY(3deg) scale(.98); } }
+.poolNote { margin: 0.5rem 0 0; color: var(--color-text-muted, #5b6573); font-size: 0.9rem; }

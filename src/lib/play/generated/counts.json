@@ -1,0 +1,146 @@
+{
+ "trivia": {
+  "unit": "questions",
+  "builtIn": 20,
+  "generated": 206,
+  "total": 226,
+  "levels": {
+   "beginner": 70,
+   "challenge": 40,
+   "growing": 116
+  },
+  "categories": {
+   "Bible": 208,
+   "Biblical events": 2,
+   "Biblical people": 3,
+   "Miracles": 3,
+   "Seven Sacraments": 10
+  }
+ },
+ "finish-the-verse": {
+  "unit": "excerpts",
+  "builtIn": 5,
+  "generated": 114,
+  "total": 119,
+  "levels": {
+   "beginner": 13,
+   "challenge": 29,
+   "growing": 77
+  },
+  "categories": {
+   "Bible": 114,
+   "Bible verses": 5
+  }
+ },
+ "emoji": {
+  "unit": "clues",
+  "builtIn": 6,
+  "generated": 160,
+  "total": 166,
+  "levels": {
+   "beginner": 30,
+   "challenge": 15,
+   "growing": 121
+  },
+  "categories": {
+   "Apostolic Church": 1,
+   "Bible stories": 4,
+   "biblical-history": 140,
+   "Creation": 1,
+   "Exodus": 2,
+   "Gospel Events": 6,
+   "Holy Prophets": 4,
+   "Joshua": 1,
+   "Miracles": 4,
+   "Parables": 2,
+   "The Law": 1
+  }
+ },
+ "history": {
+  "unit": "questions",
+  "builtIn": 6,
+  "generated": 0,
+  "total": 6,
+  "levels": {
+   "beginner": 2,
+   "challenge": 1,
+   "growing": 3
+  },
+  "timelineEvents": 3
+ },
+ "who-am-i": {
+  "unit": "cards",
+  "builtIn": 6,
+  "generated": 126,
+  "total": 132,
+  "categories": {
+   "biblical-locations": 16,
+   "biblical-people": 110,
+   "holy-objects": 5,
+   "saints": 1
+  }
+ },
+ "match": {
+  "unit": "pairs",
+  "builtIn": 8,
+  "generated": 127,
+  "total": 135,
+  "categories": {
+   "Apostles": 5,
+   "apostles-and-emblems": 9,
+   "armor-of-god": 5,
+   "beatitudes-and-promises": 10,
+   "Biblical people": 4,
+   "biblical-mountains": 5,
+   "church-objects-liturgy": 1,
+   "Covenants": 5,
+   "Feasts": 5,
+   "fruits-of-the-spirit": 5,
+   "gospel-symbols": 5,
+   "holy-covenants-scripture": 10,
+   "miracles-of-christ": 10,
+   "miracles-of-john": 5,
+   "names-and-meanings": 8,
+   "old-testament-mothers": 5,
+   "parables-and-meanings": 5,
+   "Prophets": 5,
+   "prophets-symbolic-actions": 10,
+   "Seven Sacraments": 4,
+   "seven-deacons": 4,
+   "titles-of-christ-gospels": 10
+  }
+ },
+ "bible-timeline": {
+  "unit": "chains",
+  "builtIn": 5,
+  "generated": 33,
+  "total": 38,
+  "events": 240,
+  "builtInEvents": 50
+ },
+ "adventures": {
+  "unit": "stories",
+  "builtIn": 6,
+  "generated": 0,
+  "total": 6,
+  "scenes": 18
+ },
+ "feasts": {
+  "unit": "images",
+  "builtIn": 12,
+  "generated": 0,
+  "total": 12
+ },
+ "saints": {
+  "unit": "images",
+  "builtIn": 10,
+  "generated": 0,
+  "total": 10
+ },
+ "icon-memory": {
+  "unit": "images",
+  "builtIn": 22,
+  "generated": 0,
+  "total": 22
+ }
+}

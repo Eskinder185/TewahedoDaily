@@ -21,6 +21,10 @@ export type PlayGameCard = {
   unavailable?: Text
   /** Small ribbon such as "New". */
   badge?: Text
+  /** Accurate content count with its unit, from the content registry (never typed by hand). */
+  content?: { primary: string; secondary?: string }
+  /** Played-before summary from the completion history. */
+  progress?: { plays: number; bestPercent: number }
 }
 
 export function GameCard({ game, locale, level, size = 'regular' }: { game: PlayGameCard; locale: AppLocale; level?: string; size?: 'regular' | 'feature' }) {
@@ -37,6 +41,8 @@ export function GameCard({ game, locale, level, size = 'regular' }: { game: Play
       <div className={styles.cardBody}>
         <h3>{game.title[locale]}</h3>
         <p>{game.description[locale]}</p>
+        {game.content ? <p className={styles.cardContent} data-game-content><strong>{game.content.primary}</strong>{game.content.secondary ? <span> · {game.content.secondary}</span> : null}</p> : null}
+        {game.progress ? <p className={styles.cardProgress} data-game-progress>{am ? `ተጫውተዋል ${game.progress.plays}× · ምርጥ ${game.progress.bestPercent}%` : `Played ${game.progress.plays}× · best ${game.progress.bestPercent}%`}</p> : null}
         <div className={styles.cardFooter}>
           {game.unavailable ? (
             <span className={styles.cardStatus}>{game.unavailable[locale]}</span>
@@ -44,7 +50,7 @@ export function GameCard({ game, locale, level, size = 'regular' }: { game: Play
             <>
               {game.meta ? <span className={styles.cardMeta}>{game.meta[locale]}</span> : <span />}
               <span className={styles.cardPlay} aria-hidden="true">
-                {am ? 'ይጫወቱ' : 'Play'}
+                {game.progress ? (am ? 'እንደገና' : 'Play again') : (am ? 'ይጫወቱ' : 'Play')}
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               </span>
             </>

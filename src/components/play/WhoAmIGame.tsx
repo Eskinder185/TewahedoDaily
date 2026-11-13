@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { AppLocale } from '../../lib/i18n/locale'
 import { useAuth } from '../../lib/auth/useAuth'
@@ -7,6 +7,9 @@ import { recordPlayCompletion } from '../../lib/play/progress'
 import { syncPlayCompletion } from '../../lib/play/progressSync'
 import { localized, type WhoAmICard } from '../../lib/play/types'
 import { cardLocale } from '../../lib/play/cardContent'
+import { buildRoundOrder, categoriesOf, categoryLabel } from '../../lib/play/whoAmIDeck'
+import { loadSeen, markSeen } from '../../lib/play/questionHistory'
+import { SourceLink } from './SourceLink'
 import { VerifiedFallback } from './GameShell'
 import styles from './GameShell.module.css'
 
@@ -24,30 +27,44 @@ function playTone(frequency: number, duration = 0.09) {
 
 export function WhoAmIGame({ locale, cards = WHO_AM_I_CARDS, preview = false }: { locale: AppLocale; cards?: readonly WhoAmICard[]; preview?: boolean }) {
   const { user } = useAuth()
+  const am = locale === 'am'
   const [duration, setDuration] = useState(60)
   const [active, setActive] = useState(false)
   const [seconds, setSeconds] = useState(60)
+  const [order, setOrder] = useState<WhoAmICard[]>([])
   const [index, setIndex] = useState(0)
   const [correct, setCorrect] = useState(0)
   const [skipped, setSkipped] = useState(0)
   const [finished, setFinished] = useState(false)
+  const [shown, setShown] = useState<WhoAmICard[]>([])
   const [motion, setMotion] = useState(false)
-  const [category, setCategory] = useState<'all' | 'biblical-people' | 'biblical-locations'>('all')
-  const deck = cards.filter((card) => category === 'all' || card.category === category)
+  const [category, setCategory] = useState('all')
+  const categories = useMemo(() => categoriesOf(cards), [cards])
+  const available = category === 'all' ? cards.length : categories.find((item) => item.id === category)?.count ?? 0
 
-  const finish = useCallback(() => {
+  const finish = useCallback((final?: { correct: number; skipped: number }) => {
+    const score = final?.correct ?? correct
+    const passed = final?.skipped ?? skipped
     playTone(660, 0.16)
     setActive(false); setFinished(true)
-    if (preview || !deck.length) return
-    const saved = recordPlayCompletion({ game: 'who-am-i', score: correct, maxScore: Math.max(1, correct + skipped), category: 'Who Am I' })
-    void syncPlayCompletion(user, { game: 'who-am-i', score: correct, maxScore: Math.max(1, correct + skipped), category: 'Who Am I', progress: saved.progress }).catch(() => undefined)
-  }, [correct, skipped, user, preview, deck.length])
+    // Cards the player actually reached (the current card counts as seen); the review never reveals the rest.
+    const reached = order.slice(0, Math.min(index + 1, order.length))
+    setShown(reached)
+    if (preview || !order.length) return
+    markSeen('who-am-i', reached.map((card) => card.id))
+    const saved = recordPlayCompletion({ game: 'who-am-i', score, maxScore: Math.max(1, score + passed), category: 'Who Am I' })
+    void syncPlayCompletion(user, { game: 'who-am-i', score, maxScore: Math.max(1, score + passed), category: 'Who Am I', progress: saved.progress }).catch(() => undefined)
+  }, [correct, skipped, user, preview, order, index])
   const mark = useCallback((isCorrect: boolean) => {
     if (!active) return
     playTone(isCorrect ? 520 : 210)
-    if (isCorrect) setCorrect((value) => value + 1); else setSkipped((value) => value + 1)
-    setIndex((value) => (value + 1) % deck.length)
-  }, [active, deck.length])
+    const nextCorrect = correct + (isCorrect ? 1 : 0)
+    const nextSkipped = skipped + (isCorrect ? 0 : 1)
+    setCorrect(nextCorrect); setSkipped(nextSkipped)
+    // The round ends when the timer does, or when every card in the chosen category has been shown.
+    if (index + 1 >= order.length) finish({ correct: nextCorrect, skipped: nextSkipped })
+    else setIndex(index + 1)
+  }, [active, correct, skipped, index, order.length, finish])
   useEffect(() => {
     if (!active) return
     const timer = window.setTimeout(() => {
@@ -76,7 +93,11 @@ export function WhoAmIGame({ locale, cards = WHO_AM_I_CARDS, preview = false }: 
     window.addEventListener('deviceorientation', tilt)
     return () => window.removeEventListener('deviceorientation', tilt)
   }, [active, mark, motion])
-  const start = () => { setSeconds(duration); setIndex(0); setCorrect(0); setSkipped(0); setFinished(false); setActive(true) }
+  const start = () => {
+    const next = buildRoundOrder(cards, category, loadSeen('who-am-i'))
+    if (!next.length) return
+    setOrder(next); setSeconds(duration); setIndex(0); setCorrect(0); setSkipped(0); setShown([]); setFinished(false); setActive(true)
+  }
   const requestMotion = async () => {
     const orientation = DeviceOrientationEvent as typeof DeviceOrientationEvent & { requestPermission?: () => Promise<string> }
     if (orientation.requestPermission) {
@@ -85,9 +106,67 @@ export function WhoAmIGame({ locale, cards = WHO_AM_I_CARDS, preview = false }: 
     } else setMotion(true)
   }
 
-  if (!active && !finished) return <section className={styles.panel}><h2>{locale === 'am' ? 'ምድብና የዙር ጊዜ' : 'Category and round time'}</h2><div className={styles.field}><label htmlFor="who-category">{locale === 'am' ? 'ምድብ' : 'Category'}</label><select id="who-category" value={category} onChange={(event) => setCategory(event.target.value as typeof category)}><option value="all">{locale === 'am' ? 'ሁሉም' : 'All cards'}</option><option value="biblical-people">{locale === 'am' ? 'የመጽሐፍ ቅዱስ ሰዎች' : 'Biblical people'}</option><option value="biblical-locations">{locale === 'am' ? 'የመጽሐፍ ቅዱስ ቦታዎች' : 'Biblical locations'}</option></select></div><div className={styles.choiceRow}>{[60, 90, 120].map((item) => <button key={item} type="button" aria-pressed={duration === item} onClick={() => setDuration(item)}>{item}s</button>)}</div><p>{locale === 'am' ? 'ካርዱን ሌሎች ይግለጹ፤ ስሙን አይናገሩ።' : 'Hold up the card. Other players describe it without saying the name.'}</p><div className={styles.actions}><button className={styles.action} type="button" disabled={!deck.length} onClick={start}>{locale === 'am' ? 'ይጀምሩ' : 'Start round'}</button><button className={styles.secondary} type="button" onClick={() => void requestMotion()}>{motion ? 'Tilt enabled' : 'Enable optional tilt'}</button></div></section>
-  if (finished) return <section className={`${styles.panel} ${styles.results}`}><p>🎉</p><h2>{locale === 'am' ? 'ዙሩ ተጠናቋል' : 'Round complete'}</h2><p className={styles.score}>{correct}</p><p>{locale === 'am' ? `ያለፉ፦ ${skipped}` : `Skipped: ${skipped}`}</p><div className={styles.actions}><button className={styles.action} type="button" disabled={!deck.length} onClick={start}>{locale === 'am' ? 'እንደገና' : 'Play again'}</button><Link className={styles.secondary} to="/play">Game center</Link></div><div className={styles.review}>{deck.map((item) => <article key={item.id}><strong>{localized(item.answer, cardLocale(item.verifiedLocales, locale, preview)).text}</strong><p>{localized(item.explanation, cardLocale(item.verifiedLocales, locale, preview)).text}</p><Link to={item.source.route}>{item.source.label}</Link></article>)}</div></section>
-  if (!deck.length) return <p role="status">{locale === 'am' ? 'በዚህ ምድብ ካርዶች የሉም።' : 'No cards in this category.'} <button type="button" onClick={() => { setCategory('all'); setActive(false) }}>{locale === 'am' ? 'ሁሉም ካርዶች' : 'All cards'}</button></p>
-  const card = deck[index % deck.length]
-  return <section className={`${styles.panel} ${styles.results}`} aria-live="polite">{!preview && !card.verifiedLocales.includes(locale) && <VerifiedFallback locale={locale} />}{preview && <button type="button" className={styles.secondary} onClick={finish}>{locale === 'am' ? 'የሙከራውን ዙር ጨርስ' : 'End test round'}</button>}<p><strong>{seconds}s</strong> · ✓ {correct} · ↷ {skipped}</p><div className={styles.questionCard}><p>{locale === 'am' ? 'እኔ ማን ነኝ?' : 'Who am I?'}</p><p className={styles.score}>{localized(card.answer, cardLocale(card.verifiedLocales, locale, preview)).text}</p><p>{locale === 'am' ? 'ሌሎች ተጫዋቾች ፍንጭ ይስጡ' : 'Other players give clues'}</p></div><div className={styles.actions}><button className={styles.secondary} type="button" onClick={() => mark(false)}>← {locale === 'am' ? 'እለፍ' : 'Skip'}</button><button className={styles.action} type="button" onClick={() => mark(true)}>{locale === 'am' ? 'ትክክል' : 'Correct'} →</button></div><p>{locale === 'am' ? 'ቁልፍ፦ ← እለፍ · →/Space ትክክል' : 'Keyboard: ← skip · → or Space correct'}</p></section>
+  if (!active && !finished) {
+    return (
+      <section className={styles.panel}>
+        <h2>{am ? 'ምድብና የዙር ጊዜ' : 'Category and round time'}</h2>
+        <div className={styles.field}>
+          <label htmlFor="who-category">{am ? 'ምድብ' : 'Category'}</label>
+          <select id="who-category" value={category} onChange={(event) => setCategory(event.target.value)}>
+            <option value="all">{am ? 'ሁሉም' : 'All cards'} ({cards.length})</option>
+            {categories.map((item) => <option key={item.id} value={item.id}>{categoryLabel(item.id, locale)} ({item.count})</option>)}
+          </select>
+        </div>
+        <div className={styles.choiceRow}>{[60, 90, 120].map((item) => <button key={item} type="button" aria-pressed={duration === item} onClick={() => setDuration(item)}>{item}s</button>)}</div>
+        <p>{am ? 'ካርዱን ሌሎች ይግለጹ፤ ስሙን አይናገሩ።' : 'Hold up the card. Other players describe it without saying the name.'}</p>
+        <p>{am ? `በእያንዳንዱ ዙር ካርዶቹ በዘፈቀደ ይደረደራሉ፤ ካርድ በአንድ ዙር አይደገምም።` : `Cards are shuffled every round, unseen ones first, and no card repeats within a round (${available} available here).`}</p>
+        <div className={styles.actions}>
+          <button className={styles.action} type="button" disabled={!available} onClick={start}>{am ? 'ይጀምሩ' : 'Start round'}</button>
+          <button className={styles.secondary} type="button" onClick={() => void requestMotion()}>{motion ? 'Tilt enabled' : 'Enable optional tilt'}</button>
+        </div>
+      </section>
+    )
+  }
+  if (finished) {
+    return (
+      <section className={`${styles.panel} ${styles.results}`}>
+        <p>🎉</p><h2>{am ? 'ዙሩ ተጠናቋል' : 'Round complete'}</h2>
+        <p className={styles.score}>{correct}</p>
+        <p>{am ? `ያለፉ፦ ${skipped}` : `Skipped: ${skipped}`}</p>
+        {shown.length >= order.length && order.length > 0 ? <p role="note">{am ? 'በዚህ ምድብ ያሉትን ሁሉንም ካርዶች አይተዋል።' : 'You went through every card in this category.'}</p> : null}
+        <div className={styles.actions}>
+          <button className={styles.action} type="button" disabled={!available} onClick={start}>{am ? 'እንደገና' : 'Play again'}</button>
+          <Link className={styles.secondary} to="/play">Game center</Link>
+        </div>
+        <div className={styles.review}>
+          {shown.map((item) => (
+            <article key={item.id}>
+              <strong>{localized(item.answer, cardLocale(item.verifiedLocales, locale, preview)).text}</strong>
+              <p>{localized(item.explanation, cardLocale(item.verifiedLocales, locale, preview)).text}</p>
+              <SourceLink source={item.source} locale={locale} />
+            </article>
+          ))}
+        </div>
+      </section>
+    )
+  }
+  const card = order[Math.min(index, order.length - 1)]
+  if (!card) return <p role="status">{am ? 'በዚህ ምድብ ካርዶች የሉም።' : 'No cards in this category.'} <button type="button" onClick={() => { setCategory('all'); setActive(false) }}>{am ? 'ሁሉም ካርዶች' : 'All cards'}</button></p>
+  return (
+    <section className={`${styles.panel} ${styles.results}`} aria-live="polite">
+      {!preview && !card.verifiedLocales.includes(locale) && <VerifiedFallback locale={locale} />}
+      {preview && <button type="button" className={styles.secondary} onClick={() => finish()}>{am ? 'የሙከራውን ዙር ጨርስ' : 'End test round'}</button>}
+      <p><strong>{seconds}s</strong> · ✓ {correct} · ↷ {skipped} · {Math.min(index + 1, order.length)}/{order.length}</p>
+      <div className={styles.questionCard}>
+        <p>{am ? 'እኔ ማን ነኝ?' : 'Who am I?'}</p>
+        <p className={styles.score}>{localized(card.answer, cardLocale(card.verifiedLocales, locale, preview)).text}</p>
+        <p>{am ? 'ሌሎች ተጫዋቾች ፍንጭ ይስጡ' : 'Other players give clues'}</p>
+      </div>
+      <div className={styles.actions}>
+        <button className={styles.secondary} type="button" onClick={() => mark(false)}>← {am ? 'እለፍ' : 'Skip'}</button>
+        <button className={styles.action} type="button" onClick={() => mark(true)}>{am ? 'ትክክል' : 'Correct'} →</button>
+      </div>
+      <p>{am ? 'ቁልፍ፦ ← እለፍ · →/Space ትክክል' : 'Keyboard: ← skip · → or Space correct'}</p>
+    </section>
+  )
 }

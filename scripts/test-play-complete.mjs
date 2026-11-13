@@ -22,7 +22,8 @@ assert.doesNotMatch(databaseAdventure, /bibleAdventureStories/, 'database mode m
 assert.match(prefetch, /play\/adventures/)
 assert.match(prefetch, /play\/game-night/)
 
-for (const control of ['60, 90, 120', 'biblical-people', 'biblical-locations', 'requestPermission']) assert.ok(who.includes(control), `Who Am I missing ${control}`)
+// Categories are derived from the cards themselves (categoriesOf), so every category that has cards is offered.
+for (const control of ['60, 90, 120', 'categoriesOf', 'who-category', 'requestPermission']) assert.ok(who.includes(control), `Who Am I missing ${control}`)
 assert.match(match, /Optional timer/)
 for (const mode of ['Timeline Challenge', 'Who Was This?', 'Historical Mystery', 'Match the Event']) assert.ok(history.includes(mode), `History Quest missing ${mode}`)
 for (const mode of ['Finish the Lyrics', 'Missing Word', 'Guess the Mezmur', 'Guess the Occasion']) assert.ok(mezmur.includes(mode), `Mezmur game missing ${mode}`)
