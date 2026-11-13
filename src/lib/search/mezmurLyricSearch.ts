@@ -15,6 +15,9 @@ import { buildExcerpt, hasEthiopic, matchText, orIlike, queryWords, retrievalWor
 import { entitySearchVariants } from '../language/index.ts'
 import { extractSearchRequest } from './queryRequest.ts'
 import { ethiopicLooseRegex, ethiopicSkeletonWord, fuzzyEligible, fuzzyTitleMatches } from './translitSkeleton.ts'
+import { approximateAmharicMatch, type ApproximateMatch } from './approximateText.ts'
+
+export { approximateAmharicMatch }
 
 export type LyricField = 'lyrics_amharic' | 'lyrics_geez' | 'lyrics_transliteration' | 'lyrics_english' | 'lyrics_oromo'
 export type LyricExcerpt = Excerpt & { field: LyricField }
@@ -268,47 +271,6 @@ export function invalidateTitleIndex(): void {
 }
 
 const AMHARIC_FIELDS: readonly LyricField[] = ['lyrics_amharic', 'lyrics_geez']
-const edit = (a: string, b: string) => {
-  const row = Array.from({ length: b.length + 1 }, (_, i) => i)
-  for (let i = 1; i <= a.length; i += 1) {
-    let diagonal = row[0]
-    row[0] = i
-    for (let j = 1; j <= b.length; j += 1) {
-      const above = row[j]
-      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, diagonal + (a[i - 1] === b[j - 1] ? 0 : 1))
-      diagonal = above
-    }
-  }
-  return row[b.length]
-}
-
-/**
- * Approximate Amharic/Geʽez match inside stored text: words whose consonants equal a query word's consonants
- * (vowel forms and doubled letters ignored). Returns a slice of the STORED text (whitespace flattened one-for-one,
- * so offsets stay aligned), the highlight ranges, and how far the stored words are from what was typed.
- */
-export function approximateAmharicMatch(stored: string, query: string): { excerpt: Excerpt; distance: number } | null {
-  const typed = [...query.matchAll(/[ሀ-፿]+/gu)].map((m) => m[0])
-  const wanted = [...new Map(typed.map((word) => [ethiopicSkeletonWord(word), word])).entries()].filter(([skeleton]) => skeleton.length >= 2)
-  if (!wanted.length) return null
-  const words = [...stored.matchAll(/[ሀ-፿]+/gu)].map((m) => ({ start: m.index ?? 0, end: (m.index ?? 0) + m[0].length, word: m[0], skeleton: ethiopicSkeletonWord(m[0]) }))
-  const found: Array<{ start: number; end: number; distance: number }> = []
-  for (const [skeleton, word] of wanted) {
-    const hit = words.filter((w) => w.skeleton === skeleton).sort((a, b) => edit(a.word, word) - edit(b.word, word) || a.start - b.start)[0]
-    if (!hit) return null // every typed word must be accounted for; no partial guesses
-    found.push({ start: hit.start, end: hit.end, distance: edit(hit.word, word) })
-  }
-  const first = Math.min(...found.map((f) => f.start))
-  const last = Math.max(...found.map((f) => f.end))
-  const from = Math.max(0, first - 60)
-  const to = Math.min(stored.length, Math.max(last + 60, from + 120))
-  const slice = stored.slice(from, to).replace(/\s/g, ' ')
-  return {
-    excerpt: { text: slice, ranges: found.map((f) => [f.start - from, f.end - from] as [number, number]).sort((a, b) => a[0] - b[0]), kind: 'words' },
-    distance: found.reduce((sum, f) => sum + f.distance, 0),
-  }
-}
-
 /** Candidate rows for an approximate Amharic query: one bounded regex request per distinctive word (consonant classes). */
 async function approximateAmharicItems(client: PublicClient, query: string, language: MezmurLanguageCode | undefined, seen: Set<string>): Promise<LyricSearchItem[]> {
   const words = [...query.matchAll(/[ሀ-፿]+/gu)].map((m) => m[0]).filter((w) => ethiopicSkeletonWord(w).length >= 2)
@@ -320,7 +282,7 @@ async function approximateAmharicItems(client: PublicClient, query: string, lang
     builder = builder.or(['title_amharic', ...AMHARIC_FIELDS].map((column) => `${column}.imatch."${regex}"`).join(','))
   }
   const rows = await run(builder.limit(150))
-  const scored: Array<{ row: PublicMezmurRow; field: LyricField | 'title_amharic'; match: NonNullable<ReturnType<typeof approximateAmharicMatch>> }> = []
+  const scored: Array<{ row: PublicMezmurRow; field: LyricField | 'title_amharic'; match: ApproximateMatch }> = []
   for (const row of rows) {
     if (text(row.status).toLowerCase() !== 'published' || !text(row.slug) || seen.has(text(row.slug))) continue
     if (language && normalizeMezmurLanguage(row.primary_language) !== language) continue

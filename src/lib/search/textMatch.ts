@@ -55,7 +55,7 @@ export function queryWords(query: string): string[] {
   return wordSpans(query).map((span) => span.folded)
 }
 
-function isStopword(word: string): boolean {
+export function isStopword(word: string): boolean {
   return STOPWORDS.has(word)
 }
 

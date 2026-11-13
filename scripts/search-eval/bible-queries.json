@@ -1,0 +1,573 @@
+{
+ "seed": 20261113,
+ "count": 63,
+ "queries": [
+  {
+   "kind": "exact-phrase",
+   "query": "afraid Paul You must stand",
+   "expectedVerseId": "861db3d4-9374-5303-a1cf-98da694dcb68",
+   "ref": "acts 27:24",
+   "queryLanguage": "en",
+   "id": "b001",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "judge so that you won't",
+   "expectedVerseId": "862ff342-4b37-5f0a-af28-7cc02a8b4f1d",
+   "ref": "matthew 7:1",
+   "queryLanguage": "en",
+   "id": "b002",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "with her and they went",
+   "expectedVerseId": "596fd740-4ed2-5457-a390-b608f7e8e9e1",
+   "ref": "ruth 1:7",
+   "queryLanguage": "en",
+   "id": "b003",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "which is being interpreted My",
+   "expectedVerseId": "7eddc5b4-5eb7-51ef-a4bd-df90e23f85f4",
+   "ref": "mark 15:34",
+   "queryLanguage": "en",
+   "id": "b004",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "the sons of Elizaphan Shemaiah",
+   "expectedVerseId": "7664fa48-1af6-5685-ade2-1ca96b6b15cc",
+   "ref": "first-chronicles 15:8",
+   "queryLanguage": "en",
+   "id": "b005",
+   "split": "heldout"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "of adulteresses and with the",
+   "expectedVerseId": "7efc0f89-f9b7-52f2-a17c-22ce934ecd59",
+   "ref": "ezekiel 23:45",
+   "queryLanguage": "en",
+   "id": "b006",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "and the Horites in their",
+   "expectedVerseId": "f4fbf25a-8b59-570e-a143-52ef792b7bfb",
+   "ref": "genesis 14:6",
+   "queryLanguage": "en",
+   "id": "b007",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "My glory don't be united",
+   "expectedVerseId": "596c25a9-b222-5820-abb9-4a195c3508ee",
+   "ref": "genesis 49:6",
+   "queryLanguage": "en",
+   "id": "b008",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "He fell on his brother",
+   "expectedVerseId": "6cfcb82b-80a2-56fe-a1df-5e595b80afee",
+   "ref": "genesis 45:14",
+   "queryLanguage": "en",
+   "id": "b009",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "is your reward in return",
+   "expectedVerseId": "86652f20-b4cb-5ac3-a015-f94ae1bf971c",
+   "ref": "numbers 18:31",
+   "queryLanguage": "en",
+   "id": "b010",
+   "split": "heldout"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "A song for the Sabbath",
+   "expectedVerseId": "50780fc4-0707-5f24-af1c-c1d620d13f4c",
+   "ref": "psalms 91:16",
+   "queryLanguage": "en",
+   "id": "b011",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "there was the readiness to",
+   "expectedVerseId": "6ce9e781-7779-51a8-ab6d-f2a4b963def4",
+   "ref": "second-corinthians 8:11",
+   "queryLanguage": "en",
+   "id": "b012",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "retruned and all Israel with",
+   "expectedVerseId": "59627f13-1dd8-5fbc-a0f3-89ef85e73dd8",
+   "ref": "joshua 10:43",
+   "queryLanguage": "en",
+   "id": "b013",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "away the pepole still sacrificed",
+   "expectedVerseId": "5920e2f7-a472-5df4-ab6f-850521064efd",
+   "ref": "kings 12:3",
+   "queryLanguage": "en",
+   "id": "b014",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "they were retruning the boy",
+   "expectedVerseId": "6cc7dba0-0e90-5615-aa80-af26b49f0aeb",
+   "ref": "luke 2:43",
+   "queryLanguage": "en",
+   "id": "b015",
+   "split": "heldout"
+  },
+  {
+   "kind": "english-typo",
+   "query": "to her Dauhgter cheer up",
+   "expectedVerseId": "7efcb4f9-54df-5e36-a39d-4f87f963efb4",
+   "ref": "luke 8:48",
+   "queryLanguage": "en",
+   "id": "b016",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "on the erath and sends",
+   "expectedVerseId": "f4c8ed4b-9944-5e34-a937-d7f32fd6e94a",
+   "ref": "job 5:10",
+   "queryLanguage": "en",
+   "id": "b017",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "the sons of the huose",
+   "expectedVerseId": "7ae4f34b-7fdb-5218-a167-656b53898b33",
+   "ref": "jeremiah-collection 35:5",
+   "queryLanguage": "en",
+   "id": "b018",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "be etaen on the same",
+   "expectedVerseId": "f4fc1745-27f9-5592-a37a-5e9e091ad52b",
+   "ref": "leviticus 22:30",
+   "queryLanguage": "en",
+   "id": "b019",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "sake whteher to the king",
+   "expectedVerseId": "767e4148-5b0c-5dd4-aca2-fb557c79d3e0",
+   "ref": "first-peter 2:13",
+   "queryLanguage": "en",
+   "id": "b020",
+   "split": "heldout"
+  },
+  {
+   "kind": "english-typo",
+   "query": "and on Beth Gmaul and",
+   "expectedVerseId": "8633689a-77ab-52f6-a272-52ebdf3d3c3d",
+   "ref": "jeremiah-collection 48:23",
+   "queryLanguage": "en",
+   "id": "b021",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "The throns grew up and",
+   "expectedVerseId": "f4ea818f-e20b-5a85-ad0f-f1d44088cbf4",
+   "ref": "matthew 13:7",
+   "queryLanguage": "en",
+   "id": "b022",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "priase Yahweh You who fear",
+   "expectedVerseId": "6cbf04c8-e2f9-5925-a086-cfe896be2c31",
+   "ref": "psalms 135:20",
+   "queryLanguage": "en",
+   "id": "b023",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "the gerat terror which Moses",
+   "expectedVerseId": "76866bc6-6c3e-5a00-a5cc-6743016c9686",
+   "ref": "deuteronomy 34:12",
+   "queryLanguage": "en",
+   "id": "b024",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "were scocrhed with great heat",
+   "expectedVerseId": "507dd520-9b8a-5ceb-a6ef-ca39999eb0cb",
+   "ref": "revelation 16:9",
+   "queryLanguage": "en",
+   "id": "b025",
+   "split": "heldout"
+  },
+  {
+   "kind": "english-typo",
+   "query": "For a vioce declares from",
+   "expectedVerseId": "f4f77a45-92c3-58ee-a6a5-a7c6ee00bc87",
+   "ref": "jeremiah-collection 4:15",
+   "queryLanguage": "en",
+   "id": "b026",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "soul theerfore will I hope",
+   "expectedVerseId": "59365200-07ab-5126-a428-fcb084662694",
+   "ref": "jeremiah-collection 3:24",
+   "queryLanguage": "en",
+   "id": "b027",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "Gad came to Dvaid and",
+   "expectedVerseId": "76895666-0f78-5532-a543-d469ccd049d7",
+   "ref": "first-chronicles 21:11",
+   "queryLanguage": "en",
+   "id": "b028",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "Jehioakim and all that he",
+   "expectedVerseId": "59649f91-475e-55e5-a70b-05f99ac4b397",
+   "ref": "kings 24:5",
+   "queryLanguage": "en",
+   "id": "b029",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "Dvaid sent and inquired after",
+   "expectedVerseId": "7f0b06f3-f7e4-504d-a14f-95dc58521876",
+   "ref": "samuel 11:3",
+   "queryLanguage": "en",
+   "id": "b030",
+   "split": "heldout"
+  },
+  {
+   "kind": "english-typo",
+   "query": "cihef and his brothers two",
+   "expectedVerseId": "76954ce5-c68c-51c5-a4cd-264408f3db85",
+   "ref": "first-chronicles 15:6",
+   "queryLanguage": "en",
+   "id": "b031",
+   "split": "tune"
+  },
+  {
+   "kind": "english-typo",
+   "query": "tehre to Mount Carmel and",
+   "expectedVerseId": "503c56aa-b1a7-59f0-af6e-b2687493e11f",
+   "ref": "kings 2:25",
+   "queryLanguage": "en",
+   "id": "b032",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ዮዲትን የኬጢያዊው የኤሎንን ልጅ",
+   "expectedVerseId": "005e1a49-54df-57ad-a273-67f30aa8ef04",
+   "ref": "genesis 26:34",
+   "queryLanguage": "am",
+   "id": "b033",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "የምድርህን ዝናብ ጭጋግ ያደርጋል",
+   "expectedVerseId": "78bdc59c-0cca-5a35-ab61-2e0ff21e1831",
+   "ref": "deuteronomy 28:24",
+   "queryLanguage": "am",
+   "id": "b034",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "አካል ለመሆን ተጠምቀናል አይሁድ",
+   "expectedVerseId": "35606e3a-2be9-5d25-a003-21f5b751e2db",
+   "ref": "first-corinthians 12:13",
+   "queryLanguage": "am",
+   "id": "b035",
+   "split": "heldout"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ወለደችለት ስሙንም አቤሜሌክ ብሎ",
+   "expectedVerseId": "38a5afe4-4218-52d6-a898-8549f45ffd06",
+   "ref": "judges 8:31",
+   "queryLanguage": "am",
+   "id": "b036",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ጋር ከባቢሎን የወጡ አለቆችም",
+   "expectedVerseId": "78cb295f-1195-54b6-a528-3aba3cac7756",
+   "ref": "second-ezra-and-ezra-sutuel 8:28",
+   "queryLanguage": "am",
+   "id": "b037",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ያለዚያ በሰማያት ባለው አባታችሁ",
+   "expectedVerseId": "5a18252b-9861-5b71-ac6d-83f5094f09f1",
+   "ref": "matthew 6:1",
+   "queryLanguage": "am",
+   "id": "b038",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ተደብቀው የነበሩትም ፈጥነው ወደ",
+   "expectedVerseId": "4df91c82-9422-50f9-aed9-fa2fd1d60661",
+   "ref": "judges 20:37",
+   "queryLanguage": "am",
+   "id": "b039",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ለመንጋዪቱ የማይራሩ ነጣቂዎች ተኵላዎች",
+   "expectedVerseId": "009b6999-9a1a-56ea-aeb7-bdadfdf3ba8a",
+   "ref": "acts 20:29",
+   "queryLanguage": "am",
+   "id": "b040",
+   "split": "heldout"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ከዚህ በኋላ ዮሴፍ ለፈርዖን",
+   "expectedVerseId": "5a0c86dc-0d70-5852-a87c-aa412b9bfd91",
+   "ref": "jubilees 28:38",
+   "queryLanguage": "am",
+   "id": "b041",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "የዘጠና ስምንት ዓመት ሽማግሌ",
+   "expectedVerseId": "4e0c0037-5fd9-55cc-a744-21ac34b93d5e",
+   "ref": "samuel 4:15",
+   "queryLanguage": "am",
+   "id": "b042",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "ልታውቅባቸው ብትወድድ በዮርዳኖስ ውኃ",
+   "expectedVerseId": "5f5e971a-4193-5631-ac5b-09215f0b81e9",
+   "ref": "jeremiah-collection 4:22",
+   "queryLanguage": "am",
+   "id": "b043",
+   "split": "tune"
+  },
+  {
+   "kind": "exact-phrase",
+   "query": "እንደዚሁም ቃሌን ከማይጠብቁ በሕጌና",
+   "expectedVerseId": "5f653e6f-7641-5b37-ab36-86c23e980dc7",
+   "ref": "first-meqabyan 30:3",
+   "queryLanguage": "am",
+   "id": "b044",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ባዶነን በፈጣሪያችን ከእኛ ጋር",
+   "expectedVerseId": "009dd7b7-4fb7-5575-af20-73f4b308908f",
+   "ref": "second-ezra-and-ezra-sutuel 8:61",
+   "queryLanguage": "am",
+   "id": "b045",
+   "split": "heldout"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ፍሉስጥኤማውያንም ዳዊት በእስራኤል ሁሉ",
+   "expectedVerseId": "62245788-f15f-5a48-a782-b295108056dd",
+   "ref": "first-chronicles 14:8",
+   "queryLanguage": "am",
+   "id": "b046",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "በቱከሻው ላይ አንድ አንድ",
+   "expectedVerseId": "3561e0e4-32ff-5f6d-aae3-ed1dbb72c696",
+   "ref": "joshua 4:5",
+   "queryLanguage": "am",
+   "id": "b047",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ራሱህን ለካህን አሳይ ለእነርሱም",
+   "expectedVerseId": "356baadd-0158-59fa-af6c-f4394e4e8b3b",
+   "ref": "mark 1:44",
+   "queryLanguage": "am",
+   "id": "b048",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ልጅ የዛሩባቤል ልጅ የሰላትያል",
+   "expectedVerseId": "5a28ed55-17cf-5fac-a125-8bab48fbcdd1",
+   "ref": "luke 3:27",
+   "queryLanguage": "am",
+   "id": "b049",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "የሞይታወቁ የሚያላልብና የሚፋጅ እሳትን",
+   "expectedVerseId": "35460377-8c23-5ee6-aa19-3445d8083be3",
+   "ref": "wisdom 11:19",
+   "queryLanguage": "am",
+   "id": "b050",
+   "split": "heldout"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ሁሉ ጠቦቂዎችም ነበሩ ከሰሞኑም",
+   "expectedVerseId": "78a9460c-8899-5d37-aad6-a1b5c27f7317",
+   "ref": "second-ezra-and-ezra-sutuel 1:16",
+   "queryLanguage": "am",
+   "id": "b051",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "በኑጉሡ በአርጤክስስ መንግሥት በየሀገራቸውና",
+   "expectedVerseId": "78cb295f-1195-54b6-a528-3aba3cac7756",
+   "ref": "second-ezra-and-ezra-sutuel 8:28",
+   "queryLanguage": "am",
+   "id": "b052",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ታላቅ ወገን መቆወም እንችል",
+   "expectedVerseId": "5f560ad5-a910-52a8-a1b4-0fbe8b4cd559",
+   "ref": "second-chronicles 20:12",
+   "queryLanguage": "am",
+   "id": "b053",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "በማሳፍንትም እጅ ያዳነበት ጊዜ",
+   "expectedVerseId": "624a54d3-85b2-5f7e-aa01-1a94309857e5",
+   "ref": "first-meqabyan 28:24",
+   "queryLanguage": "am",
+   "id": "b054",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ብፁዕ በምልበት አንቀጽ እንዲህ",
+   "expectedVerseId": "78ce12a4-ad81-5584-a7da-812f28663e7a",
+   "ref": "romans 4:6",
+   "queryLanguage": "am",
+   "id": "b055",
+   "split": "heldout"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ወደ ቤተ ልሔም ይማላለስ",
+   "expectedVerseId": "355f6054-1f21-5163-a703-4fe14e768ad5",
+   "ref": "samuel 17:15",
+   "queryLanguage": "am",
+   "id": "b056",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "፡ ስምም ፡ አጡምቋቸው",
+   "expectedVerseId": "355e6c17-8f8f-5f7b-a82c-6e07a2485d8e",
+   "ref": "didascalia 16:34",
+   "queryLanguage": "am",
+   "id": "b057",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ወንድ ልጅ ወላደችለት ስሙንም",
+   "expectedVerseId": "38a5afe4-4218-52d6-a898-8549f45ffd06",
+   "ref": "judges 8:31",
+   "queryLanguage": "am",
+   "id": "b058",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "በኡሳቱ ላይ ባለው በዕንጨቱ",
+   "expectedVerseId": "62280eda-50bb-595b-abe0-f2a610c8fa45",
+   "ref": "leviticus 3:5",
+   "queryLanguage": "am",
+   "id": "b059",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "በሳማይ ሆና ሰከረች እነሆ",
+   "expectedVerseId": "356dc8dd-bc09-5ddc-a675-cf0ab5627d51",
+   "ref": "isaiah 34:5",
+   "queryLanguage": "am",
+   "id": "b060",
+   "split": "heldout"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ግን መኑግሥትህ አይጸናም እግዚአብሔር",
+   "expectedVerseId": "622936d5-b573-59ba-a4e9-f5adca1c9176",
+   "ref": "samuel 13:14",
+   "queryLanguage": "am",
+   "id": "b061",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "ጊዜ ወደ ኤሉያብ ተመልክቶ",
+   "expectedVerseId": "621ea976-feb9-5c54-ad80-f298cafa594a",
+   "ref": "samuel 16:6",
+   "queryLanguage": "am",
+   "id": "b062",
+   "split": "tune"
+  },
+  {
+   "kind": "amharic-vowel-drift",
+   "query": "በቀር ተኣምር ሊያደርግ ምንም",
+   "expectedVerseId": "4e0463fa-feee-5ac2-afbd-cf97af4b620b",
+   "ref": "mark 6:5",
+   "queryLanguage": "am",
+   "id": "b063",
+   "split": "tune"
+  }
+ ]
+}
