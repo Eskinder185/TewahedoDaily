@@ -29,6 +29,8 @@ const COPY = {
     voiceHint: 'Review the transcript, then search.',
     books: 'Books',
     book: 'Bible book',
+    similar: 'Similar spelling',
+    similarNote: 'No exact match. These verses contain words spelled similarly to what you typed.',
   },
   am: {
     label: '\u1218\u133d\u1210\u134d \u1245\u12f1\u1235\u1295 \u1348\u120d\u130d',
@@ -45,6 +47,8 @@ const COPY = {
     voiceHint: 'Review the transcript, then search.',
     books: '\u1218\u133b\u1215\u134d\u1275',
     book: '\u1218\u133d\u1210\u134d',
+    similar: 'ተመሳሳይ አጻጻፍ',
+    similarNote: 'ትክክለኛ ተዛማጅ አልተገኘም። እነዚህ ቁጥሮች ከጻፉት ጋር ተመሳሳይ አጻጻፍ ያላቸው ቃላት አሏቸው።',
   },
 } as const
 
@@ -316,6 +320,10 @@ export function BibleSearchBar({ catalogBooks = [] }: Props) {
         </div>
       ) : null}
 
+      {!showStructured && siteResults.length > 0 && siteResults.every((result) => result.matchLabel === 'Similar spelling') ? (
+        <p className={styles.resultMeta} role="status" data-testid="bible-similar-note">{copy.similarNote}</p>
+      ) : null}
+
       {!showStructured && siteResults.length > 0 ? (
         <ul
           id={showBookHits ? undefined : listId}
@@ -330,7 +338,7 @@ export function BibleSearchBar({ catalogBooks = [] }: Props) {
               <li key={`${result.sourceType}:${result.sourceId}`}>
                 <Link to={result.route} className={styles.result}>
                   <div className={styles.resultBody}>
-                    <p className={styles.resultType}>{result.typeLabel}</p>
+                    <p className={styles.resultType}>{result.typeLabel}{result.matchLabel === 'Similar spelling' ? ` · ${copy.similar}` : ''}</p>
                     <h3
                       className={styles.resultTitle}
                       lang={/[\u1200-\u137F]/.test(result.title) ? 'am' : undefined}

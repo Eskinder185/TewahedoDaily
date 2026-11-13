@@ -67,3 +67,45 @@ const ranked = rankSearchResults([
 assert.equal(ranked[0].sourceType, 'church_library')
 assert.equal(ranked.at(-1)?.sourceType, 'synaxarium_commemoration')
 console.log('test-search-question-ranking: ok')
+
+// Amharic approximate matching: vowel forms and doubled letters are ignored, consonants are not.
+import { ethiopicSkeletonWord, ethiopicLooseRegex } from '../src/lib/search/translitSkeleton.ts'
+import { approximateAmharicMatch } from '../src/lib/search/mezmurLyricSearch.ts'
+assert.equal(ethiopicSkeletonWord('ይብብራል'), ethiopicSkeletonWord('ይበራል'))
+assert.equal(ethiopicSkeletonWord('ያበራል'), ethiopicSkeletonWord('ይበራል'))
+assert.equal(ethiopicSkeletonWord('ሠላም'), ethiopicSkeletonWord('ሰላም'), 'orthographic variant families fold')
+assert.notEqual(ethiopicSkeletonWord('ሰላም'), ethiopicSkeletonWord('ሰማይ'), 'different consonants never match')
+assert.ok(new RegExp(ethiopicLooseRegex('ይብብራል'), 'u').test('ጌታ ያበራል'))
+assert.ok(!new RegExp(ethiopicLooseRegex('ይብብራል'), 'u').test('ይበለን'))
+{
+  const stored = 'እንዳንተ ያለ ማን ነው\nጌታ ያበራል ብርሃኑ ለዘላለም\nአሜን'
+  const m = approximateAmharicMatch(stored, 'ይብብራል')!
+  assert.deepEqual(m.excerpt.ranges.map(([a, b]) => m.excerpt.text.slice(a, b)), ['ያበራል'], 'highlight points at the stored word')
+  assert.ok(stored.replace(/\s/g, ' ').includes(m.excerpt.text), 'excerpt is a slice of the stored text')
+  assert.equal(approximateAmharicMatch(stored, 'ይብብራል ዘላለም ኢየሱስ'), null, 'every typed word must be accounted for')
+  assert.equal(approximateAmharicMatch(stored, 'ቅዱስ'), null)
+}
+console.log('test-amharic-approximate: ok')
+
+// Latin approximate matching (Bible verses): one edit per word, short words exact, every word accounted for.
+import { approximateLatinMatch, latinLooseRegex, withinOneEdit } from '../src/lib/search/approximateText.ts'
+assert.ok(withinOneEdit('erath', 'earth') && withinOneEdit('priase', 'praise') && withinOneEdit('huose', 'house'), 'transpositions')
+assert.ok(withinOneEdit('beleive', 'believe') && withinOneEdit('lovd', 'loved') && withinOneEdit('shpeherd', 'shepherd'))
+assert.ok(!withinOneEdit('light', 'night') === false, 'one substitution is one edit')
+assert.ok(!withinOneEdit('mercy', 'money'), 'two edits are not close enough')
+{
+  const verse = 'The LORD is my shepherd; I shall not want.\nHe makes me lie down in green pastures.'
+  const m = approximateLatinMatch(verse, 'shpeherd shall not')!
+  assert.deepEqual(m.excerpt.ranges.map(([a, b]) => m.excerpt.text.slice(a, b)), ['shepherd', 'shall', 'not'])
+  assert.equal(m.distance, 1)
+  assert.ok(verse.replace(/\s/g, ' ').includes(m.excerpt.text), 'excerpt is a slice of the stored verse')
+  assert.equal(approximateLatinMatch(verse, 'shpeherd mountain'), null, 'every significant word must match')
+  assert.equal(approximateLatinMatch(verse, 'the of'), null, 'stopwords alone never match')
+  assert.equal(approximateLatinMatch(verse, 'shall nat'), null, 'short words must be exact')
+}
+{
+  const re = new RegExp(latinLooseRegex('shepherd'), 'i')
+  for (const typed of ['shepherd', 'shpeherd', 'sheperd', 'shepherrd', 'shepxerd']) assert.ok(re.test(typed), typed)
+  assert.ok(!re.test('mountain'))
+}
+console.log('test-latin-approximate: ok')

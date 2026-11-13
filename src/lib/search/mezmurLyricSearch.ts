@@ -14,7 +14,10 @@ import { normalizeMezmurLanguage, type MezmurLanguageCode } from '../mezmur/mezm
 import { buildExcerpt, hasEthiopic, matchText, orIlike, queryWords, retrievalWords, wordSpans, type Excerpt } from './textMatch.ts'
 import { entitySearchVariants } from '../language/index.ts'
 import { extractSearchRequest } from './queryRequest.ts'
-import { fuzzyEligible, fuzzyTitleMatches } from './translitSkeleton.ts'
+import { ethiopicLooseRegex, ethiopicSkeletonWord, fuzzyEligible, fuzzyTitleMatches } from './translitSkeleton.ts'
+import { approximateAmharicMatch, type ApproximateMatch } from './approximateText.ts'
+
+export { approximateAmharicMatch }
 
 export type LyricField = 'lyrics_amharic' | 'lyrics_geez' | 'lyrics_transliteration' | 'lyrics_english' | 'lyrics_oromo'
 export type LyricExcerpt = Excerpt & { field: LyricField }
@@ -267,10 +270,39 @@ export function invalidateTitleIndex(): void {
   titleIndexCache = null
 }
 
+const AMHARIC_FIELDS: readonly LyricField[] = ['lyrics_amharic', 'lyrics_geez']
+/** Candidate rows for an approximate Amharic query: one bounded regex request per distinctive word (consonant classes). */
+async function approximateAmharicItems(client: PublicClient, query: string, language: MezmurLanguageCode | undefined, seen: Set<string>): Promise<LyricSearchItem[]> {
+  const words = [...query.matchAll(/[ሀ-፿]+/gu)].map((m) => m[0]).filter((w) => ethiopicSkeletonWord(w).length >= 2)
+  const distinct = [...new Set(words)].sort((a, b) => b.length - a.length).slice(0, 3)
+  if (!distinct.length) return []
+  let builder = client.from('mezmur_public').select(ROW_COLUMNS)
+  for (const word of distinct) {
+    const regex = ethiopicLooseRegex(word)
+    builder = builder.or(['title_amharic', ...AMHARIC_FIELDS].map((column) => `${column}.imatch."${regex}"`).join(','))
+  }
+  const rows = await run(builder.limit(150))
+  const scored: Array<{ row: PublicMezmurRow; field: LyricField | 'title_amharic'; match: ApproximateMatch }> = []
+  for (const row of rows) {
+    if (text(row.status).toLowerCase() !== 'published' || !text(row.slug) || seen.has(text(row.slug))) continue
+    if (language && normalizeMezmurLanguage(row.primary_language) !== language) continue
+    let best: (typeof scored)[number] | null = null
+    for (const field of ['title_amharic', ...AMHARIC_FIELDS] as const) {
+      const match = approximateAmharicMatch(text(row[field]), query)
+      if (match && (!best || match.distance < best.match.distance)) best = { row, field, match }
+    }
+    if (best) scored.push(best)
+  }
+  return scored
+    .sort((a, b) => a.match.distance - b.match.distance || text(a.row.title).localeCompare(text(b.row.title)))
+    .slice(0, 8)
+    .map(({ row, field, match }) => rowToItem({ row, tier: 'similar-spelling', excerpt: field === 'title_amharic' ? null : { ...match.excerpt, field } }))
+}
+
 async function similarSpellingItems(client: PublicClient, query: string, language: MezmurLanguageCode | undefined, seen: Set<string>): Promise<LyricSearchItem[]> {
   const index = await loadTitleIndex(client)
-  const matches = fuzzyTitleMatches(index, query, (entry) => `${entry.title} ${entry.title_english}`, 8).filter((hit) => !seen.has(hit.item.slug))
-  if (!matches.length) return []
+  const matches = fuzzyTitleMatches(index, query, (entry) => `${entry.title} ${entry.title_english} ${entry.title_amharic}`, 8).filter((hit) => !seen.has(hit.item.slug))
+  if (!matches.length) return hasEthiopic(query) ? approximateAmharicItems(client, query, language, seen) : []
   const rows = await run(client.from('mezmur_public').select(ROW_COLUMNS).in('slug', matches.map((hit) => hit.item.slug)).limit(matches.length))
   const bySlug = new Map(rows.map((row) => [text(row.slug), row]))
   const out: LyricSearchItem[] = []
@@ -279,6 +311,11 @@ async function similarSpellingItems(client: PublicClient, query: string, languag
     if (!row || text(row.status).toLowerCase() !== 'published') continue
     if (language && normalizeMezmurLanguage(row.primary_language) !== language) continue
     out.push(rowToItem({ row, tier: 'similar-spelling', excerpt: null }))
+  }
+  // Amharic/Geʽez queries also look inside lyrics, after the title matches.
+  if (hasEthiopic(query) && out.length < 8) {
+    const taken = new Set([...seen, ...out.map((item) => item.slug)])
+    out.push(...(await approximateAmharicItems(client, query, language, taken)).slice(0, 8 - out.length))
   }
   return out
 }

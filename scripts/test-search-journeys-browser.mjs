@@ -6,6 +6,10 @@
  */
 import { chromium } from 'playwright'
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
+
+const bibleQueries = JSON.parse(readFileSync(new URL('./search-eval/bible-queries.json', import.meta.url), 'utf8')).queries
+const amharicDrift = bibleQueries.find((q) => q.kind === 'amharic-vowel-drift')
 
 const BASE = process.env.BASE_URL ?? 'http://127.0.0.1:5173'
 const WIDTHS = [375, 390, 430]
@@ -32,6 +36,14 @@ for (const width of WIDTHS) {
     await noOverflow()
   })
 
+  await check(`${width}px Mezmur Library: approximate Amharic (ይብብራል) finds hymns with ይበራል and says so`, async () => {
+    await page.goto(`${BASE}/practice?q=${encodeURIComponent('ይብብራል')}`, { waitUntil: 'networkidle' })
+    await page.getByTestId('mezmur-similar-note').waitFor({ timeout: 20000 })
+    assert.ok(await page.locator('[data-testid="mezmur-similar-badge"]').count() >= 1)
+    assert.ok(/ይበራል|ያበራል/.test(await page.locator('main').innerText()), 'a hymn containing the intended word is listed')
+    await noOverflow()
+  })
+
   await check(`${width}px Bible: Ethiopic-numeral reference opens exact verse`, async () => {
     await page.goto(`${BASE}/bible`, { waitUntil: 'networkidle' })
     const box = page.locator('input[placeholder*="Search"]').first()
@@ -41,6 +53,20 @@ for (const width of WIDTHS) {
     await page.getByRole('link', { name: /Open in Bible/i }).first().click()
     await page.waitForURL(/\/bible\/john\/3/, { timeout: 15000 })
     assert.match(page.url(), /#verse-16/)
+    await noOverflow()
+  })
+
+  await check(`${width}px Bible: misspelled English verse words still find the verse, and say so`, async () => {
+    await page.goto(`${BASE}/bible?q=${encodeURIComponent('The LORD is my shpeherd')}`, { waitUntil: 'networkidle' })
+    await page.getByTestId('bible-similar-note').waitFor({ timeout: 25000 })
+    assert.match(await page.locator('main').innerText(), /shepherd/i)
+    await noOverflow()
+  })
+
+  await check(`${width}px Bible: Amharic verse words with a different vowel form find the verse`, async () => {
+    await page.goto(`${BASE}/bible?q=${encodeURIComponent(amharicDrift.query)}`, { waitUntil: 'networkidle' })
+    await page.getByTestId('bible-similar-note').waitFor({ timeout: 25000 })
+    assert.ok(await page.locator('mark').count() >= 1, 'matched words are highlighted')
     await noOverflow()
   })
 

@@ -1,0 +1,571 @@
+{
+ "label": "bible-after2",
+ "summary": {
+  "all": {
+   "n": 63,
+   "top1": 55,
+   "top3": 62,
+   "found": 62,
+   "empty": 0,
+   "failed": 0,
+   "p50ms": 1698,
+   "p95ms": 2251
+  },
+  "exact-phrase": {
+   "n": 24,
+   "top1": 24,
+   "top3": 24,
+   "found": 24,
+   "empty": 0,
+   "failed": 0,
+   "p50ms": 1058,
+   "p95ms": 1698
+  },
+  "split:tune": {
+   "n": 51,
+   "top1": 43,
+   "top3": 50,
+   "found": 50,
+   "empty": 0,
+   "failed": 0,
+   "p50ms": 1331,
+   "p95ms": 2243
+  },
+  "split:heldout": {
+   "n": 12,
+   "top1": 12,
+   "top3": 12,
+   "found": 12,
+   "empty": 0,
+   "failed": 0,
+   "p50ms": 1940,
+   "p95ms": 2424
+  },
+  "english-typo": {
+   "n": 20,
+   "top1": 14,
+   "top3": 19,
+   "found": 19,
+   "empty": 0,
+   "failed": 0,
+   "p50ms": 2105,
+   "p95ms": 2424
+  },
+  "amharic-vowel-drift": {
+   "n": 19,
+   "top1": 17,
+   "top3": 19,
+   "found": 19,
+   "empty": 0,
+   "failed": 0,
+   "p50ms": 1837,
+   "p95ms": 2061
+  }
+ },
+ "detail": [
+  {
+   "id": "b001",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b002",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "id": "b003",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 12,
+   "failed": false
+  },
+  {
+   "id": "b004",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 7,
+   "failed": false
+  },
+  {
+   "id": "b005",
+   "kind": "exact-phrase",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b006",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b007",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "id": "b008",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b009",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 12,
+   "failed": false
+  },
+  {
+   "id": "b010",
+   "kind": "exact-phrase",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b011",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b012",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b013",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 3,
+   "results": 11,
+   "failed": false
+  },
+  {
+   "id": "b014",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 5,
+   "failed": false
+  },
+  {
+   "id": "b015",
+   "kind": "english-typo",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b016",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b017",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 12,
+   "failed": false
+  },
+  {
+   "id": "b018",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": null,
+   "results": 12,
+   "failed": false
+  },
+  {
+   "id": "b019",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 2,
+   "results": 9,
+   "failed": false
+  },
+  {
+   "id": "b020",
+   "kind": "english-typo",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b021",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b022",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b023",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 2,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "id": "b024",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b025",
+   "kind": "english-typo",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b026",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b027",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b028",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 6,
+   "failed": false
+  },
+  {
+   "id": "b029",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 2,
+   "results": 10,
+   "failed": false
+  },
+  {
+   "id": "b030",
+   "kind": "english-typo",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b031",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b032",
+   "kind": "english-typo",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b033",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b034",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b035",
+   "kind": "exact-phrase",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b036",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b037",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b038",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b039",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b040",
+   "kind": "exact-phrase",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b041",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b042",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b043",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b044",
+   "kind": "exact-phrase",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b045",
+   "kind": "amharic-vowel-drift",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b046",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b047",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b048",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b049",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 2,
+   "results": 2,
+   "failed": false
+  },
+  {
+   "id": "b050",
+   "kind": "amharic-vowel-drift",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b051",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b052",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b053",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b054",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b055",
+   "kind": "amharic-vowel-drift",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b056",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b057",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 3,
+   "failed": false
+  },
+  {
+   "id": "b058",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 7,
+   "failed": false
+  },
+  {
+   "id": "b059",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 4,
+   "failed": false
+  },
+  {
+   "id": "b060",
+   "kind": "amharic-vowel-drift",
+   "split": "heldout",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b061",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b062",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  },
+  {
+   "id": "b063",
+   "kind": "amharic-vowel-drift",
+   "split": "tune",
+   "rank": 1,
+   "results": 1,
+   "failed": false
+  }
+ ]
+}

@@ -37,6 +37,19 @@ for (const r of take(amh, 16)) add('title-amharic', r.title_amharic.trim(), r.sl
 for (const r of take(withLyr, 18)) { const l = lyricLine(r.lyrics_transliteration); if (l) add('lyric-transliteration', l, r.slug, 'latin') }
 for (const r of take(withLyr, 14)) { const l = lyricLine(r.lyrics_amharic); if (l) add('lyric-amharic', l, r.slug, 'amharic') }
 for (const r of take(withLyr, 8)) { const l = lyricLine(r.lyrics_transliteration); if (l) add('lyric-with-request', `find the hymn with the words ${l}`, r.slug, 'latin') }
+// Appended last so earlier query ids and the tune/held-out split stay stable.
+// Amharic vowel drift: a distinctive lyric line with the vowel form of up to two letters changed in one word each
+// (the typo/ear error people make: ይበራል / ያበራል / ይብራል). Strict matching cannot find these.
+const shiftVowel = (w, at) => { const out = [...w]; const k = out[at].codePointAt(0); if (k < 0x1200 || k > 0x1357) return null; const row = Math.floor((k - 0x1200) / 8) * 8; const cur = (k - 0x1200) % 8; const next = 0x1200 + row + ((cur + 3) % 7); out[at] = String.fromCodePoint(next); return out.join('') }
+let made = 0
+for (const r of take(withLyr, 40)) {
+  if (made >= 14) break
+  const l = lyricLine(r.lyrics_amharic); if (!l) continue
+  const words = l.split(' '); const idx = words.findIndex((w) => w.length >= 4 && /[ሀ-ፗ]/.test(w)); if (idx < 0) continue
+  const mutated = shiftVowel(words[idx], 1); if (!mutated || mutated === words[idx]) continue
+  words[idx] = mutated
+  add('amharic-vowel-drift', words.join(' '), r.slug, 'amharic'); made++
+}
 queries.forEach((q, i) => { q.id = `m${String(i + 1).padStart(3, '0')}`; q.split = (i + 1) % 5 === 0 ? 'heldout' : 'tune' })
 fs.writeFileSync(outPath, JSON.stringify({ generatedFrom: 'published mezmur_public snapshot', seed: 20261112, count: queries.length, queries }, null, 1))
 console.log(queries.length, 'queries ->', outPath)

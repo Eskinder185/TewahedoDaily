@@ -38,10 +38,11 @@ try {
     const request = route.request(), url = new URL(request.url())
     if (url.origin === base) return route.continue()
     if (url.origin !== endpoint) return route.abort()
-    // PostgREST calls read-only functions with POST; a list_* RPC (the Search Buddy suggestions) reads, never writes.
+    // PostgREST calls read-only functions with POST; a list_* RPC (the Search Buddy suggestions) reads and never writes.
     const readOnlyRpc = request.method() === 'POST' && /^\/rest\/v1\/rpc\/list_[a-z_]+$/.test(url.pathname)
     assert.ok(request.method() === 'GET' || readOnlyRpc, `navigation may not mutate the backend: ${request.method()} ${url.pathname}`)
-    return route.fulfill({ status: 200, contentType: 'application/json', body: '[]' })
+    // PostgREST reports the exact row count in Content-Range; the Studio refuses an inventory page without it.
+    return route.fulfill({ status: 200, contentType: 'application/json', headers: { 'content-range': '*/0', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'content-range' }, body: '[]' })
   })
   const page = await context.newPage(); page.setDefaultTimeout(15000)
   page.on('pageerror', error => errors.push(error.message))

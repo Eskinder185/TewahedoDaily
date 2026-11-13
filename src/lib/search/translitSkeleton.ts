@@ -12,11 +12,54 @@
  *  - vowels carry the least stable spelling → dropped, except that an initial vowel is kept as one marker
  *  - doubled letters collapse
  */
-import { foldWord } from './textMatch.ts'
+import { foldEthiopicChar, foldWord } from './textMatch.ts'
 
 const WORD = /[\p{L}\p{N}]+/gu
 
+const FIDEL = /[ሀ-ፗ]/u
+const ROW = 8
+const FIDEL_START = 0x1200
+const FIDEL_END = 0x1357
+
+const rowBase = (code: number) => FIDEL_START + Math.floor((code - FIDEL_START) / ROW) * ROW
+
+/**
+ * Ethiopic words: every letter becomes its consonant (the first form of its row of eight), after the documented
+ * orthographic-variant folding (ሠ/ሰ, ዐ/አ …); doubled letters collapse. So ይበራል, ያበራል and ይብብራል compare equal
+ * (the vowel form is the least stable part of a typed or heard word), while different consonants never do.
+ */
+export function ethiopicSkeletonWord(raw: string): string {
+  let out = ''
+  for (const char of raw.normalize('NFC')) {
+    const folded = foldEthiopicChar(char)
+    const code = folded.codePointAt(0) ?? 0
+    if (code < FIDEL_START || code > FIDEL_END) continue
+    const base = String.fromCodePoint(rowBase(code))
+    if (!out.endsWith(base)) out += base
+  }
+  return out
+}
+
+/** A regex source (no groups, safe inside a PostgREST quoted value) matching any vowel form of each consonant in a word. */
+export function ethiopicLooseRegex(raw: string): string {
+  const skeleton = ethiopicSkeletonWord(raw)
+  let out = ''
+  for (const base of skeleton) {
+    const baseCode = base.codePointAt(0) as number
+    // The row itself plus every row folded into the same variant family.
+    let members = ''
+    for (let code = FIDEL_START; code <= FIDEL_END; code += ROW) {
+      const sample = String.fromCodePoint(code)
+      const sameFamily = [...Array(ROW).keys()].some((offset) => rowBase((foldEthiopicChar(String.fromCodePoint(code + offset)).codePointAt(0)) as number) === baseCode)
+      if (sameFamily || code === baseCode) members += `${sample}-${String.fromCodePoint(Math.min(code + ROW - 1, FIDEL_END))}`
+    }
+    out += `[${members}]+`
+  }
+  return out
+}
+
 export function skeletonWord(raw: string): string {
+  if (FIDEL.test(raw)) return ethiopicSkeletonWord(raw)
   let w = foldWord(raw).replace(/[^a-z0-9]/g, '')
   if (!w) return ''
   w = w.replace(/tsh|tch|ch|ts|tz/g, 'c').replace(/sh/g, 's').replace(/zh/g, 'z').replace(/ph/g, 'f').replace(/[qk]/g, 'k').replace(/[vw]/g, 'w').replace(/x/g, 'ks')
