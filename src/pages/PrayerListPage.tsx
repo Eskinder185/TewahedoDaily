@@ -152,11 +152,7 @@ function PraySearchField({
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(-1)
   const wrapRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    setOpen(suggestions.length > 0 && query.trim().length > 0)
-    setActive(-1)
-  }, [suggestions, query])
+  const showSuggestions = open && suggestions.length > 0 && query.trim().length > 0
 
   useEffect(() => {
     function onDoc(event: MouseEvent) {
@@ -167,7 +163,7 @@ function PraySearchField({
   }, [])
 
   function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
-    if (!open || !suggestions.length) {
+    if (!showSuggestions) {
       if (event.key === 'Escape') setOpen(false)
       return
     }
@@ -196,18 +192,22 @@ function PraySearchField({
           className={styles.search}
           type="search"
           role="combobox"
-          aria-expanded={open}
+          aria-expanded={showSuggestions}
           aria-controls={listboxId}
           aria-autocomplete="list"
           aria-activedescendant={active >= 0 ? `${listboxId}-opt-${active}` : undefined}
           value={query}
           placeholder={tr('prayers.search.placeholder')}
-          onChange={(event) => onQueryChange(event.target.value)}
+          onChange={(event) => {
+            onQueryChange(event.target.value)
+            setOpen(event.target.value.trim().length > 0)
+            setActive(-1)
+          }}
           onKeyDown={onKeyDown}
           onFocus={() => suggestions.length && setOpen(true)}
         />
       </label>
-      {open ? (
+      {showSuggestions ? (
         <ul
           id={listboxId}
           className={styles.suggestList}

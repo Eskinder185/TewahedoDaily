@@ -93,7 +93,7 @@ async function readPublishedDrafts(
   client: PublicContentClient | null,
   checkSources: (items: { source: SourceReference }[]) => Promise<{ source: SourceReference }[]>,
   signal: AbortSignal,
-  game?: StudioGame,
+  game?: StudioGame | 'adventure',
   max = MAX,
 ): Promise<StudioDraft[]> {
   if (!client) throw new Error('Published challenges are temporarily unavailable.')
@@ -137,7 +137,17 @@ export function createPublishedContentLoader(client: PublicContentClient | null,
   return (game: StudioGame) => {
     const existing = inFlight.get(game)
     if (existing) return existing
-    const pending = runWithTimeout(timeoutMs, signal => readPublishedDrafts(client, checkSources, signal, game))
+    const pending = runWithTimeout(timeoutMs, async signal => {
+      const current = await readPublishedDrafts(client, checkSources, signal, game)
+      if (game !== 'adventures') return current
+      const legacy = await readPublishedDrafts(client, checkSources, signal, 'adventure')
+      const all = [...current, ...legacy]
+      const ids = all.flatMap(draft => Array.isArray(draft.content)
+        ? draft.content.map(item => item.id)
+        : ['id' in draft.content ? draft.content.id : draft.content.slug])
+      if (new Set(ids).size !== ids.length) throw new Error('Published adventures contain conflicting legacy identities.')
+      return all
+    })
       .finally(() => { inFlight.delete(game) })
     inFlight.set(game, pending)
     return pending

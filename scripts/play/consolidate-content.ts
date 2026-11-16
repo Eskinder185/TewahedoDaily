@@ -4,7 +4,7 @@
  *
  *   npx tsx scripts/play/consolidate-content.ts                         # offline dry run: inventory + validation
  *   npx tsx scripts/play/consolidate-content.ts --compare               # also read existing rows (anon = published only)
- *   npx tsx scripts/play/consolidate-content.ts --apply --project-ref <ref> --backup <new-file.json> [--status published]
+ *   npx tsx scripts/play/consolidate-content.ts --apply --project-ref <ref> --source-commit <sha> --backup <new-file.json> --audit <new-file.json>
  *
  * Rules enforced here:
  *  - Source = the bundled approved banks only (src/lib/play/approvedContent.ts, bibleTimeline.ts, bibleAdventureStories.ts,
@@ -14,8 +14,8 @@
  *    existing ID is reported as a conflict (CMS edits win).
  *  - --apply needs server-side SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY, the matching --project-ref, and a new backup file
  *    (existing rows for the affected IDs are exported before any write). Credentials are never printed.
- *  - Default status is `draft`. `--status published` is explicit; it records provenance in review_notes and only the rows
- *    that validated are written. Verified Amharic is never claimed: generated Amharic stays verifiedLocales ['en'].
+ *  - Apply always calls the audited server RPC and inserts drafts only. There is no publication flag or direct table insert.
+ *    Verified Amharic is never claimed: generated Amharic stays verifiedLocales ['en'].
  */
 import { createHash } from 'node:crypto'
 import { existsSync, writeFileSync } from 'node:fs'
@@ -115,8 +115,7 @@ if (main) {
   const flag = (name: string) => args.includes(name)
   const value = (name: string) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : undefined }
   const apply = flag('--apply')
-  const status = (value('--status') || 'draft') as 'draft' | 'published'
-  if (!['draft', 'published'].includes(status)) throw new Error('--status must be draft or published.')
+  if (value('--status')) throw new Error('--status was removed: consolidation imports drafts only; use the editorial workflow after review.')
   let mezmurSongs: MezmurSong[] = []
   if (flag('--include-mezmur')) {
     const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL
@@ -185,17 +184,34 @@ if (main) {
     if (!backup || existsSync(backup)) throw new Error('Provide --backup <new file>; existing files are never overwritten.')
     writeFileSync(backup, JSON.stringify({ exportedAt: new Date().toISOString(), project: ref, rows: [...existing.values()] }, null, 2), { flag: 'wx' })
     console.log(`Exported ${existing.size} affected existing row(s) to ${backup}`)
-    const now = new Date().toISOString()
-    const rows = toInsert.map(item => ({
-      question_id: item.draft.stable_id, stable_id: item.draft.stable_id, game_type: item.draft.game_type, category: item.draft.category, difficulty: item.draft.difficulty,
-      payload: item.draft.payload, source_references: item.draft.source_references, status: status,
-      review_notes: `Consolidated from bundled approved content (${item.origin}, sha256 ${item.hash.slice(0, 16)}) on ${now.slice(0, 10)}. Amharic not marked reviewed unless the payload says so.`,
-      ...(status === 'published' ? { published_at: now, reviewed_at: now } : {}),
-    }))
-    for (let i = 0; i < rows.length; i += 50) {
-      const { error } = await client.from('play_content_items').insert(rows.slice(i, i + 50))
-      if (error) throw new Error(`Insert failed at batch ${i / 50 + 1}: ${error.message}. Earlier batches remain; re-run to continue (idempotent).`)
+    const auditPath = value('--audit')
+    const sourceCommit = value('--source-commit')
+    if (!auditPath || existsSync(auditPath)) throw new Error('Provide --audit <new file>; existing audit files are never overwritten.')
+    if (!sourceCommit || !/^[0-9a-f]{7,40}$/.test(sourceCommit)) throw new Error('Provide the reviewed --source-commit SHA.')
+    const serverManifest = valid.map(item => ({ origin: item.origin, hash: item.hash, ...item.draft }))
+    const manifestSha256 = hash(serverManifest)
+    const { data: audit, error: importError } = await client.rpc('import_play_content_drafts', {
+      p_manifest: serverManifest,
+      p_source_commit: sourceCommit,
+      p_manifest_sha256: manifestSha256,
+    })
+    if (importError) throw new Error(`Audited draft import failed before a complete result was returned: ${importError.message}`)
+    const localAudit = {
+      version: 2,
+      kind: 'faith-challenges-draft-import-audit',
+      generatedAt: new Date().toISOString(),
+      project: ref,
+      sourceCommit,
+      manifestSha256,
+      candidates: candidates.length,
+      valid: valid.length,
+      excluded,
+      downgraded,
+      preflight: { existing: present.length, conflicts: conflicts.map(item => item.draft.stable_id), wouldInsert: toInsert.length },
+      databaseAudit: audit,
+      rollback: 'Only unchanged draft rows with result=inserted and rollback_eligible=true are in rollback scope. Use the separately authorized rollback_play_content_import(batch_id) RPC.',
     }
-    console.log(`Inserted ${rows.length} row(s) as ${status}. Rollback: set these stable_ids back to draft/archived through the review RPC; nothing was deleted or updated.`)
+    writeFileSync(auditPath, JSON.stringify(localAudit, null, 2) + '\n', { flag: 'wx' })
+    console.log(`Draft import audit written to ${auditPath}. No rows were approved or published.`)
   }
 }

@@ -1,5 +1,6 @@
 -- Synthetic PostgreSQL baseline ONLY. No real Supabase Auth/JWT/PostgREST.
 -- Used only by the disposable loopback-cluster runner; never install as a migration.
+create extension if not exists pgcrypto;
 do $$ begin
  if not exists(select 1 from pg_roles where rolname='anon') then create role anon nologin; end if;
  if not exists(select 1 from pg_roles where rolname='authenticated') then create role authenticated nologin; end if;

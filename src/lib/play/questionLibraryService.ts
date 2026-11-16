@@ -83,12 +83,6 @@ export function createQuestionLibraryApi(
     if (!role || !questionTransitionAllowed(current.status, status, role)) {
       throw new Error('This editorial status transition is not allowed.')
     }
-    if (status === 'published' && isStudioActivity(current.payload)) {
-      throw new Error('Activity publication is blocked until database validation, effective RLS and the published reader are verified in isolated staging.')
-    }
-    if (status === 'published' && (current.game_type === 'who-am-i' || current.game_type === 'match' || current.game_type === 'finish-the-mezmur')) {
-      throw new Error('This format has no verified public question reader publication workflow. A local card bank or published hymn lyrics remains the fallback; verified database support is required before publishing CMS cards.')
-    }
     if (status === 'review' || status === 'approved' || status === 'published') {
       const errors = await validateLibraryInput(current)
       if (errors.length) throw new Error(errors.join(' '))
