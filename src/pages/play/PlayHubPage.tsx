@@ -7,7 +7,10 @@ import { PlayProgressPanel } from '../../components/play/PlayProgressPanel'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useLocale } from '../../lib/i18n/locale'
 import { GAME_ART, handlePlayImageError, imageById } from '../../lib/play/imageCatalog'
-import { describeContent, progressSummary, totalsByUnit } from '../../lib/play/contentRegistry'
+import { describeContent, formatGameCounts, progressSummary, registryId, totalsByUnit } from '../../lib/play/contentRegistry'
+import { databasePlayEnabled } from '../../lib/play/publishedContent'
+import type { StudioGame } from '../../lib/play/contentStudio'
+import { usePublishedHubSummary } from '../../hooks/usePublishedPlayContent'
 import { HUB_GAMES, type HubSection } from '../../lib/play/gameCatalog'
 import { GAME_MODES, GAME_MODE_IDS, gameInMode, recentGames, type GameModeId } from '../../lib/play/gameModes'
 import { usePlayProgress } from '../../lib/play/usePlayProgress'
@@ -58,8 +61,25 @@ export function PlayHubPage() {
     return { pathname: '/play', search: next.toString(), hash: '#games' }
   }
   const activeMode = GAME_MODES.find(entry => entry.id === mode)
+  const dbOnly = databasePlayEnabled()
+  const hubSummary = usePublishedHubSummary(dbOnly)
   const totals = totalsByUnit()
-  const quizItems = (totals.questions ?? 0) + (totals.clues ?? 0) + (totals.excerpts ?? 0)
+  const quizItems = dbOnly
+    ? hubSummary.state === 'ready' && hubSummary.summary
+      ? (hubSummary.summary.trivia?.total ?? 0)
+        + (hubSummary.summary.emoji?.total ?? 0)
+        + (hubSummary.summary['who-am-i']?.total ?? 0)
+        + (hubSummary.summary['finish-the-verse']?.total ?? 0)
+      : hubSummary.state === 'error'
+        ? '—'
+        : '…'
+    : (totals.questions ?? 0) + (totals.clues ?? 0) + (totals.excerpts ?? 0)
+  const cardContent = (gameId: string) => {
+    if (!dbOnly) return describeContent(gameId, locale) ?? undefined
+    if (hubSummary.state === 'loading' || hubSummary.state === 'idle') return { primary: am ? 'በመጫን ላይ…' : 'Loading…' }
+    if (hubSummary.state === 'error') return { primary: am ? 'መጫን አልተቻለም' : 'Unavailable' }
+    return formatGameCounts(gameId, hubSummary.summary?.[registryId(gameId) as StudioGame] ?? null, locale) ?? undefined
+  }
 
   return (
     <div className={styles.page} lang={locale}>
@@ -148,9 +168,15 @@ export function PlayHubPage() {
           <p className={styles.levelNote} aria-live="polite">
             {am ? 'ደረጃው በጥያቄ ጨዋታዎች ላይ ይተገበራል።' : 'Your level applies to the question games (Trivia, Emoji, Verse, History).'}
           </p>
+          {dbOnly && hubSummary.state === 'error' && (
+            <p role="alert">
+              {am ? 'የታተሙ ጨዋታዎችን ቆጠራ መጫን አልተቻለም። ' : 'Published challenge counts could not be loaded. '}
+              <button type="button" onClick={hubSummary.retry}>{am ? 'እንደገና ሞክር' : 'Retry'}</button>
+            </p>
+          )}
           {!visible.length && <p>{am ? 'ከእነዚህ ማጣሪያዎች ጋር የሚዛመድ ጨዋታ የለም።' : 'No games match this choice. Choose “All” above.'}</p>}
           <div className={styles.gameGrid}>
-            {visible.map((game) => <GameCard key={game.id} game={{ ...game, ...(LIVE_HUB_GAMES.has(game.id) ? { badge: { en: 'Solo + Live room', am: 'ብቻ + የቀጥታ ክፍል' } } : {}), content: describeContent(game.id, locale) ?? undefined, progress: progressSummary(progress.history, game.id) ?? undefined }} locale={locale} level={difficulty} />)}
+            {visible.map((game) => <GameCard key={game.id} game={{ ...game, ...(LIVE_HUB_GAMES.has(game.id) ? { badge: { en: 'Solo + Live room', am: 'ብቻ + የቀጥታ ክፍል' } } : {}), content: cardContent(game.id), progress: progressSummary(progress.history, game.id) ?? undefined }} locale={locale} level={difficulty} />)}
           </div>
         </section>
 

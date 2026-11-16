@@ -30,6 +30,31 @@ t('section/chorus labels are excluded as targets', () => {
   assert.ok(yes.every((l) => !/^አዝ/.test(l.am) && l.am !== 'አ.ዝ'), 'no Az label survived')
   const dinq = usableLines(songs.find((s) => s.slug === 'dinq-adrigolnyal')!)
   assert.ok(dinq.every((l) => l.am !== 'አ.ዝ'), 'no አ.ዝ label survived')
+
+  assert.equal(cleanLyricLine('አዝ: ገና እንዘምራለን'), 'ገና እንዘምራለን')
+  assert.equal(cleanLyricLine('አዝ፡ ገና እንዘምራለን'), 'ገና እንዘምራለን')
+  assert.equal(cleanLyricLine('አ.ዝ: ገና እንዘምራለን'), 'ገና እንዘምራለን')
+  assert.equal(cleanLyricLine('Az: Gena inzemralen'), 'Gena inzemralen')
+  assert.equal(cleanLyricLine('ገና (2×) , እንዘምራለን , '), 'ገና, እንዘምራለን')
+
+  const synthetic: MezmurSong = {
+    slug: 'synthetic-chorus-labels',
+    title: 'Synthetic Chorus Labels',
+    title_amharic: 'የሙከራ መዝሙር',
+    title_english: 'Synthetic Chorus Labels',
+    primary_language: 'am',
+    lyrics_amharic: ['Az:', 'አዝ:', 'አዝ፡', 'አ.ዝ:', ' , ', 'አዝ: እግዚአብሔር ዛሬ ይመስገን', 'ገና (2×) , ዛሬ እንዘምራለን'].join('\n'),
+    lyrics_transliteration: ['Az:', 'Az:', 'Az:', 'Az:', ' , ', 'Az: Egziabher zare yimesgen', 'Gena (2x) , zare inzemralen'].join('\n'),
+    lyrics_english: null,
+    youtube_url: null,
+  }
+  assert.deepEqual(
+    usableLines(synthetic).map((l) => [l.am, l.tr]),
+    [
+      ['እግዚአብሔር ዛሬ ይመስገን', 'Egziabher zare yimesgen'],
+      ['ገና, ዛሬ እንዘምራለን', 'Gena, zare inzemralen'],
+    ],
+  )
 })
 
 t('usable lines align amharic and transliteration', () => {

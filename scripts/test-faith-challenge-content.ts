@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any -- test script over loosely typed JSON content files */
 /** Content layer: counts, units, exclusions, boards and decks. Run: npx tsx scripts/test-faith-challenge-content.ts */
 import assert from 'node:assert/strict'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 process.env.VITE_SUPABASE_URL ||= 'https://content-test.invalid'
 process.env.VITE_SUPABASE_PUBLISHABLE_KEY ||= 'synthetic-public-key'
 const { CONTENT_COUNTS, countsFor, describeContent, progressSummary, registryId, totalsByUnit } = await import('../src/lib/play/contentRegistry.ts')
@@ -141,6 +141,15 @@ test('progress summary uses route and hub ids interchangeably', () => {
   const history = [{ game: 'adventure', score: 3, maxScore: 3 }, { game: 'adventures', score: 1, maxScore: 3 }]
   assert.deepEqual(progressSummary(history, 'adventures'), { plays: 2, bestPercent: 100 })
   assert.equal(progressSummary(history, 'trivia'), null)
+})
+
+test('archangel and saint fallback images resolve to existing local files', () => {
+  for (const id of ['michael', 'gabriel', 'raphael', 'uriel']) {
+    const img = PLAY_IMAGES.find((item) => item.id === id)
+    assert.ok(img, `missing PLAY_IMAGES entry for ${id}`)
+    assert.ok(img.fallbackSrc, `missing fallbackSrc for ${id}`)
+    assert.ok(existsSync(`public${decodeURI(img.fallbackSrc)}`), `fallback file missing on disk for ${id}: ${img.fallbackSrc}`)
+  }
 })
 
 console.log(`\n${passed} passed`)

@@ -64,18 +64,25 @@ export function unitLabel(unit: string, count: number, locale: AppLocale): strin
 const phrase = (count: number, unit: string, locale: AppLocale) => `${count.toLocaleString(locale === 'am' ? 'am-ET' : 'en-US')} ${unitLabel(unit, count, locale)}`
 
 /**
- * What a game card says about its content: always the right unit (a picture count is never called a question count),
+ * Format a game's count summary with the right unit (a picture count is never called a question count),
  * with the secondary line carrying levels or the other unit (events, scenes).
  */
-export function describeContent(gameId: string, locale: AppLocale): { primary: string; secondary?: string } | null {
-  const counts = countsFor(gameId)
-  if (registryId(gameId) === 'finish-the-mezmur') return { primary: locale === 'am' ? 'ከታተሙ መዝሙሮች ግጥም የተሠራ' : 'Built from published hymn lyrics' }
+export function formatGameCounts(gameId: string, counts: GameCounts | null, locale: AppLocale): { primary: string; secondary?: string } | null {
+  if (registryId(gameId) === 'finish-the-mezmur') {
+    if (counts && counts.total === 0) return { primary: phrase(0, counts.unit, locale) }
+    return { primary: locale === 'am' ? 'ከታተሙ መዝሙሮች ግጥም የተሠራ' : 'Built from published hymn lyrics' }
+  }
   if (!counts) return null
   const primary = phrase(counts.total, counts.unit, locale)
   if (counts.unit === 'chains' && typeof counts.events === 'number') return { primary: `${primary} · ${phrase(counts.events, 'events', locale)}` }
   if (counts.unit === 'stories' && counts.scenes) return { primary, secondary: locale === 'am' ? `${counts.scenes} ትዕይንቶች (በታሪክ 3)` : `${counts.scenes} scenes (3 per story)` }
   if (typeof counts.timelineEvents === 'number') return { primary: `${primary} · ${phrase(counts.timelineEvents, 'timelineEvents', locale)}`, secondary: levelLine(counts, locale) }
   return { primary, secondary: levelLine(counts, locale) }
+}
+
+/** What a game card says about its bundled content. */
+export function describeContent(gameId: string, locale: AppLocale): { primary: string; secondary?: string } | null {
+  return formatGameCounts(gameId, countsFor(gameId), locale)
 }
 
 function levelLine(counts: GameCounts, locale: AppLocale): string | undefined {

@@ -158,9 +158,22 @@ export function AdventurePage() {
 }
 function DatabaseAdventures() {
   const { locale } = useLocale()
+  const am = locale === 'am'
   const { drafts, state, retry } = usePublishedPlayContent('adventures')
   const stories = drafts.flatMap(draft => draft.game === 'adventures' ? [draft.content] : [])
-  if (state !== 'ready' || !stories.length) return <div className={styles.page}><Link to="/play">← {locale === 'am' ? 'ጨዋታዎች' : 'Tewahedo Play'}</Link><DatabaseContentStatus locale={locale} state={state === 'ready' ? 'empty' : state} retry={retry} /></div>
+  if (state !== 'ready' || !stories.length) {
+    return (
+      <div className={styles.page} lang={locale}>
+        <header className={styles.header}><div className={styles.headerInner}>
+          <nav className={styles.breadcrumb} aria-label={am ? 'የገጽ መንገድ' : 'Breadcrumb'}><Link to="/play">← {am ? 'ወደ ጨዋታ' : 'Tewahedo Play'}</Link></nav>
+          <p className={styles.eyebrow}>{am ? 'የመጽሐፍ ቅዱስ ጀብዱ' : 'Bible Adventure'}</p>
+          <h1>{am ? 'የመጽሐፍ ቅዱስ ጀብዱዎች' : 'Bible Adventure'}</h1>
+          <p className={styles.headerSummary}>{am ? 'በቅዱስ መጽሐፍ ላይ የተመሠረቱ በይነተገናኝ ታሪኮች።' : 'Interactive stories grounded in cited Scripture passages.'}</p>
+        </div></header>
+        <DatabaseContentStatus locale={locale} state={state === 'ready' ? 'empty' : state} retry={retry} />
+      </div>
+    )
+  }
   return <AdventureContent stories={stories} />
 }
 export function AdventureContent({ stories }: { stories: BibleAdventureStory[] }) {
