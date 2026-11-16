@@ -99,7 +99,7 @@ assert.ok(resolveBibleSrc.includes('timezone'))
 
 const mezmurPage = readSrc('src/pages/PublicMezmurLibrary.tsx')
 assert.ok(!mezmurPage.includes('Say the letters separately'), 'remove letter-by-letter hint')
-assert.ok(mezmurPage.includes('amharicOnly'), 'Mezmur voice must lock Amharic')
+assert.ok(!mezmurPage.includes('amharicOnly='), 'Mezmur voice must not force typed or spoken search to Amharic')
 assert.ok(mezmurPage.includes('searchMezmursUnified'), 'Mezmur uses backend hymn search')
 assert.ok(mezmurPage.includes('heardTranscript'), 'Mezmur keeps transcript visible')
 
@@ -139,9 +139,10 @@ const voiceSrc = readSrc('src/components/search/MezmurVoiceSearch.tsx')
 assert.ok(voiceSrc.includes('amharicOnly'))
 assert.ok(voiceSrc.includes('transcribeAudio'))
 assert.ok(
-  voiceSrc.includes("lang === 'am' || amharicOnly") || voiceSrc.includes("amharicOnly ? 'am'"),
-  'Amharic-only must skip browser SpeechRecognition',
+  voiceSrc.includes("defaultLanguage ?? (locale === 'am' ? 'am' : 'en')"),
+  'voice defaults to the explicit language when provided, otherwise the interface locale',
 )
+assert.ok(voiceSrc.includes('setVoiceLang(next)'), 'explicit voice-language selection remains editable')
 assert.ok(readSrc('src/lib/ai/transcribeAudio.ts').includes("path: '/api/transcribe'"))
 
 const leadSrc = readSrc('src/lib/search/assistantLead.ts')
