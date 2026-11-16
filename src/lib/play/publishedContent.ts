@@ -12,20 +12,22 @@ type Query = { select: (s: string) => Query; eq: (k: string, v: string) => Query
 export type PublicContentClient = { from: (name: string) => Query }
 const SELECT = 'id,question_id,stable_id,game_type,category,difficulty,status,published_at,updated_at,payload,source_references'
 const PAGE = 100, MAX = 1000
+/** The hub aggregates every game in one scan, so it needs more headroom than a single game bank. */
+const HUB_MAX = 5000
 /** Explicit rollout switch: production cutover requires separately verified content/RLS. */
 export const databasePlayEnabled = () => import.meta.env.VITE_PLAY_DATABASE_ONLY === 'true'
 
 const UNIT_BY_GAME: Record<StudioGame, ContentUnit> = {
   trivia: 'questions',
-  emoji: 'questions',
+  emoji: 'clues',
   'finish-the-verse': 'excerpts',
   'finish-the-mezmur': 'excerpts',
-  history: 'cards',
-  'who-am-i': 'clues',
+  history: 'questions',
+  'who-am-i': 'cards',
   match: 'pairs',
   'bible-timeline': 'chains',
-  feasts: 'cards',
-  saints: 'cards',
+  feasts: 'images',
+  saints: 'images',
   'icon-memory': 'images',
   adventures: 'stories',
 }
@@ -92,10 +94,11 @@ async function readPublishedDrafts(
   checkSources: (items: { source: SourceReference }[]) => Promise<{ source: SourceReference }[]>,
   signal: AbortSignal,
   game?: StudioGame,
+  max = MAX,
 ): Promise<StudioDraft[]> {
   if (!client) throw new Error('Published challenges are temporarily unavailable.')
   const drafts: { draft: StudioDraft; order: number }[] = [], ids = new Set<string>()
-  for (let start = 0; start < MAX; start += PAGE) {
+  for (let start = 0; start < max; start += PAGE) {
     let query = client.from('play_content_items').select(SELECT)
     if (game) query = query.eq('game_type', game)
     const result = await query.eq('status', 'published').not('published_at', 'is', null)
@@ -146,7 +149,7 @@ export function createPublishedHubSummaryLoader(client: PublicContentClient | nu
   let inFlight: Promise<Record<StudioGame, GameCounts>> | null = null
   return () => {
     if (inFlight) return inFlight
-    inFlight = runWithTimeout(timeoutMs, async signal => summarizePublishedDrafts(await readPublishedDrafts(client, checkSources, signal)))
+    inFlight = runWithTimeout(timeoutMs, async signal => summarizePublishedDrafts(await readPublishedDrafts(client, checkSources, signal, undefined, HUB_MAX)))
       .finally(() => { inFlight = null })
     return inFlight
   }
