@@ -19,7 +19,7 @@ export type VoiceTranscriptionControlProps = {
   active?: boolean
   /** Optional override; otherwise the site language is used. */
   defaultLanguage?: VoiceInputLanguage
-  /** Mezmur: lock to Amharic + /api/transcribe (no browser SpeechRecognition). */
+  /** Exceptional contexts may lock to Amharic; normal hymn search leaves this false. */
   amharicOnly?: boolean
 }
 

@@ -54,9 +54,8 @@ async function loadWerbs(query: string, language: MezmurLanguageFilter, page: nu
     }))
     return { items, total: found.total, page }
   }
-  const found = await searchMezmursUnified(query, { limit: 50, language: only, signal })
-  const werbs = found.items.filter((item) => isWerb(item.form))
-  return { items: werbs.slice((page - 1) * 24, page * 24), total: werbs.length, page }
+  const found = await searchMezmursUnified(query, { page, pageSize: 24, language: only, form: 'werb', signal })
+  return { items: found.items.filter((item) => isWerb(item.form)), total: found.total, page: found.page }
 }
 
 /** One clear way in for people who only want werbs. */
@@ -475,6 +474,7 @@ function MezmurResultGrid({
                 </h3>
               ) : null}
               {meta ? <p className={s.cardMeta}>{meta}</p> : null}
+              {item.match_field ? <p className={s.cardMeta}>Matched in {item.match_field}</p> : null}
               {item.similar ? <p className={s.cardMeta} data-testid="mezmur-similar-badge">{t('practice.similarSpelling')}</p> : null}
               {item.confirmedVersionCount && item.confirmedVersionCount > 1 ? <p className={s.cardMeta}>{item.confirmedVersionCount} confirmed versions · open to view each original</p> : null}
               {item.excerpt ? (
@@ -653,16 +653,18 @@ export function PublicMezmurLibrary() {
     const controller = new AbortController()
     void (async () => {
       try {
-        // One lyric-aware search for every language filter (API first, bounded public fallback).
-        // A language filter pages the (at most 50) matches 24 at a time.
+        // One ranked, server-filtered search for every language filter. The RPC
+        // pages beyond PostgREST's default response cap; older deployments fall
+        // back to the existing bounded search path.
         const [data, hits] = await Promise.all([
           werbOnly
             ? loadWerbs(q, language, page, controller.signal)
-            : language === 'all'
-            ? searchMezmursUnified(q, { limit: 20, signal: controller.signal })
-            : searchMezmursUnified(q, { limit: 50, language, signal: controller.signal }).then((found) => ({
-                items: found.items.slice((page - 1) * 24, page * 24), total: found.total, page,
-              })),
+            : searchMezmursUnified(q, {
+                page,
+                pageSize: 24,
+                language: language === 'all' ? undefined : language,
+                signal: controller.signal,
+              }),
           // Browse discovery only (sections/singers) — does not drive hymn ranking.
           werbOnly && !q ? Promise.resolve([] as HymnDiscoveryHit[]) : searchHymns(expandSearchAliases(q), 8).catch(() => [] as HymnDiscoveryHit[]),
         ])
@@ -913,7 +915,7 @@ export function PublicMezmurLibrary() {
             onRetry={() => setReloadTick((n) => n + 1)}
             emptyMessage={emptyMessage}
           />
-          {(language !== 'all' || werbOnly) && result && result.total > 24 ? <nav className={s.pager} aria-label={t('practice.pagination')}>
+          {result && result.total > 24 ? <nav className={s.pager} aria-label={t('practice.pagination')}>
             <button type="button" disabled={page <= 1} onClick={() => { const next = new URLSearchParams(params); next.set('page', String(page - 1)); setParams(next) }}>{t('practice.previous')}</button>
             <span>{t('practice.page', { page })}</span>
             <button type="button" disabled={page * 24 >= result.total} onClick={() => { const next = new URLSearchParams(params); next.set('page', String(page + 1)); setParams(next) }}>{t('practice.next')}</button>

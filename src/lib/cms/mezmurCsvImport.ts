@@ -4,6 +4,7 @@ import { setMezmurSectionLinks, type HymnSectionRow } from './hymnBrowseAdminSer
 import { setMezmurClassificationLinks } from './hymnTaxonomyImport'
 import { taxonomyLinkSlug } from '../publicContent/browseTaxonomy'
 import { validateMezmurTitleLyrics } from '../mezmur/titleLyricsValidation'
+import { supabase } from '../supabase/client'
 
 export type Taxonomy = Awaited<ReturnType<typeof getTaxonomy>>
 
@@ -16,6 +17,8 @@ export const MANDATORY_CSV_COLUMNS = [
   'amharic_lyrics',
   'transliteration_lyrics',
   'english_lyrics',
+  'geez_lyrics',
+  'oromo_lyrics',
   'lyrics_status',
   'youtube_url',
   'thumbnail_url',
@@ -34,6 +37,10 @@ export const MANDATORY_CSV_COLUMNS = [
   'status',
   'featured',
 ] as const
+
+export const LEGACY_CANONICAL_CSV_COLUMNS = MANDATORY_CSV_COLUMNS.filter(
+  (column) => column !== 'geez_lyrics' && column !== 'oromo_lyrics',
+)
 
 export const EOTCMEDIA_AUDIT_CSV_COLUMNS = [
   'source_id',
@@ -78,6 +85,8 @@ export type StagedMezmurCsvRow = {
   amharic_lyrics: string
   transliteration_lyrics: string
   english_lyrics: string
+  geez_lyrics: string
+  oromo_lyrics: string
   lyrics_status: LyricsStatus
   youtube_url: string
   thumbnail_url: string
@@ -99,6 +108,8 @@ export type StagedMezmurCsvRow = {
   selectedForImport: boolean
   duplicateOfStagingId: string | null
   duplicateReason: string | null
+  conflictWithExisting: string | null
+  sourceValidationErrors: string[]
   validationErrors: string[]
   validationWarnings: string[]
   importReady: boolean
@@ -165,6 +176,10 @@ export function parseCsvText(csvText: string): { headers: string[]; rows: Record
     }
   }
 
+  if (inQuotes) {
+    throw new Error('CSV ended inside a quoted field. Close the quote on the affected record and reprocess the original file.')
+  }
+
   if (currentCell.length > 0 || currentRow.length > 0) {
     currentRow.push(currentCell)
     records.push(currentRow)
@@ -192,6 +207,22 @@ export function parseCsvText(csvText: string): { headers: string[]; rows: Record
   return { headers, rows }
 }
 
+
+export type MezmurCsvInputFormat = 'canonical' | 'legacy-canonical' | 'eotcmedia-audit'
+
+export function detectMezmurCsvInputFormat(headers: string[]): MezmurCsvInputFormat {
+  const available = new Set(headers.map((header) => header.trim()))
+  const has = (columns: readonly string[]) => columns.every((column) => available.has(column))
+  if (has(MANDATORY_CSV_COLUMNS)) return 'canonical'
+  if (has(LEGACY_CANONICAL_CSV_COLUMNS)) return 'legacy-canonical'
+  const auditRequired = ['source_id', 'title_am', 'title_en', 'youtube_url', 'language', 'form']
+  if (has(auditRequired)) return 'eotcmedia-audit'
+  const missingCanonical = LEGACY_CANONICAL_CSV_COLUMNS.filter((column) => !available.has(column))
+  throw new Error(
+    `Unsupported Mezmur CSV structure. Expected the canonical header or EOTC Media audit fields. Missing canonical columns: ${missingCanonical.join(', ')}.`,
+  )
+}
+
 function escapeCsvCell(value: string): string {
   if (/[",\r\n]/.test(value)) {
     return `"${value.replace(/"/g, '""')}"`
@@ -216,6 +247,8 @@ export function serializeStagedRowsToCsv(rows: StagedMezmurCsvRow[]): string {
       amharic_lyrics: row.amharic_lyrics,
       transliteration_lyrics: row.transliteration_lyrics,
       english_lyrics: row.english_lyrics,
+      geez_lyrics: row.geez_lyrics,
+      oromo_lyrics: row.oromo_lyrics,
       lyrics_status: row.lyrics_status,
       youtube_url: row.youtube_url,
       thumbnail_url: row.thumbnail_url,
@@ -252,6 +285,26 @@ function normalizeAmharicTitleKey(title: string): string {
     .normalize('NFC')
     .replace(/[\s\u1361-\u1368\-_|/()[\]"'«»]+/g, '')
     .toLowerCase()
+}
+
+function normalizedStableText(value: string): string {
+  return value
+    .normalize('NFC')
+    .toLocaleLowerCase()
+    .replace(/[\p{P}\p{S}\s]+/gu, ' ')
+    .trim()
+}
+
+function validateOptionalUrl(label: string, value: string, errors: string[]) {
+  if (!value.trim()) return
+  try {
+    const parsed = new URL(value.trim())
+    if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
+      errors.push(`${label} must use http:// or https://.`)
+    }
+  } catch {
+    errors.push(`${label} is not a valid absolute URL.`)
+  }
 }
 
 export function matchZemariProfileId(
@@ -292,7 +345,7 @@ export function validateAndRefreshStagedRows(
   const seenTitleZemari = new Map<string, string>()
 
   return rows.map((row) => {
-    const errors: string[] = []
+    const errors: string[] = [...row.sourceValidationErrors]
     const warnings: string[] = []
 
     const amharicTitle = row.amharic_title.trim()
@@ -335,6 +388,16 @@ export function validateAndRefreshStagedRows(
     if (!VALID_LANGUAGES.has(row.language)) {
       errors.push(`Invalid language "${row.language}".`)
     }
+    validateOptionalUrl('YouTube URL', row.youtube_url, errors)
+    validateOptionalUrl('Thumbnail URL', row.thumbnail_url, errors)
+    validateOptionalUrl('Audio URL', row.audio_url, errors)
+    validateOptionalUrl('Source URL', row.source_url, errors)
+    if (row.id && !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(row.id)) {
+      errors.push('ID must be a valid UUID when provided.')
+    }
+    if (!Number.isFinite(row.classification_confidence) || row.classification_confidence < 0 || row.classification_confidence > 1) {
+      errors.push('Classification confidence must be a number from 0 through 1.')
+    }
     if (row.form !== 'mezmur' && row.form !== 'werb') {
       errors.push(`Invalid form "${row.form}". Expected "mezmur" or "werb".`)
     }
@@ -364,7 +427,7 @@ export function validateAndRefreshStagedRows(
     const videoId = extractYoutubeVideoId(row.youtube_url)
     const sourceKey = row.source_url.trim().toLowerCase().replace(/\/+$/, '')
     const titleKey = normalizeAmharicTitleKey(amharicTitle || translitTitle)
-    const zemariKey = row.zemari.trim().toLowerCase()
+    const zemariKey = normalizedStableText(row.zemari)
 
     if (sourceKey && seenSources.has(sourceKey)) {
       duplicateOfStagingId = seenSources.get(sourceKey) || null
@@ -404,9 +467,10 @@ export function validateAndRefreshStagedRows(
       matched_zemari_id: matchedZemariId,
       duplicateOfStagingId,
       duplicateReason,
+      conflictWithExisting: row.conflictWithExisting || null,
       validationErrors: errors,
       validationWarnings: warnings,
-      importReady,
+      importReady: importReady && !row.conflictWithExisting,
     }
   })
 }
@@ -416,7 +480,8 @@ export function buildStagedRowsFromCsvText(
   singers: Taxonomy['singers'] = [],
   knownSectionSlugs?: Set<string>,
 ): StagedMezmurCsvRow[] {
-  const { rows } = parseCsvText(csvText)
+  const { headers, rows } = parseCsvText(csvText)
+  const inputFormat = detectMezmurCsvInputFormat(headers)
   const allocatedSlugs = new Set<string>()
 
   const initialRows: StagedMezmurCsvRow[] = rows.map((raw, index) => {
@@ -460,6 +525,25 @@ export function buildStagedRowsFromCsvText(
     const form: 'mezmur' | 'werb' = formRaw === 'werb' || formRaw === 'wereb' ? 'werb' : 'mezmur'
     const confidenceNum = Number.parseFloat(raw.classification_confidence ?? '0.75')
     const classification_confidence = Number.isFinite(confidenceNum) ? confidenceNum : 0.75
+    const sourceValidationErrors: string[] = []
+    if (raw.lyrics_status?.trim() && !['available', 'missing', 'rights_review_required'].includes(raw.lyrics_status.trim())) {
+      sourceValidationErrors.push(`Invalid lyrics_status "${raw.lyrics_status.trim()}".`)
+    }
+    if (raw.form?.trim() && !['mezmur', 'werb', 'wereb'].includes(formRaw)) {
+      sourceValidationErrors.push(`Invalid form "${raw.form.trim()}". Expected "mezmur" or "werb".`)
+    }
+    if (raw.classification_confidence?.trim() && !Number.isFinite(confidenceNum)) {
+      sourceValidationErrors.push('Classification confidence must be a number from 0 through 1.')
+    }
+    if (raw.status?.trim() && raw.status.trim().toLowerCase() !== 'draft') {
+      sourceValidationErrors.push('Status must be "draft"; the converter never publishes imported records.')
+    }
+    if (raw.featured?.trim() && raw.featured.trim().toLowerCase() !== 'false') {
+      sourceValidationErrors.push('Featured must be "false" for staged imports.')
+    }
+    if (inputFormat !== 'eotcmedia-audit' && !raw.language?.trim()) {
+      sourceValidationErrors.push('Language is required in canonical CSV records.')
+    }
 
     const reviewStatusRaw = String(raw.review_status ?? '').trim().toLowerCase()
     const review_required =
@@ -494,6 +578,8 @@ export function buildStagedRowsFromCsvText(
       amharic_lyrics,
       transliteration_lyrics: raw.transliteration_lyrics ?? '',
       english_lyrics: raw.english_lyrics ?? '',
+      geez_lyrics: raw.geez_lyrics ?? raw.lyrics_geez ?? '',
+      oromo_lyrics: raw.oromo_lyrics ?? raw.lyrics_oromo ?? '',
       lyrics_status,
       youtube_url,
       thumbnail_url,
@@ -515,6 +601,8 @@ export function buildStagedRowsFromCsvText(
       selectedForImport: false,
       duplicateOfStagingId: null,
       duplicateReason: null,
+      conflictWithExisting: null,
+      sourceValidationErrors,
       validationErrors: [],
       validationWarnings: [],
       importReady: true,
@@ -522,6 +610,117 @@ export function buildStagedRowsFromCsvText(
   })
 
   return validateAndRefreshStagedRows(initialRows, singers, knownSectionSlugs)
+}
+
+export function serializeValidCanonicalRows(rows: StagedMezmurCsvRow[]): {
+  csv: string
+  exportedCount: number
+  excluded: Array<{ rowNumber: number; reason: string }>
+} {
+  const valid = rows.filter((row) => row.importReady)
+  const excluded = rows
+    .filter((row) => !row.importReady)
+    .map((row) => ({
+      rowNumber: row.rowNumber,
+      reason: row.conflictWithExisting || row.duplicateReason || row.validationErrors.join(' ') || 'Record is not import-ready.',
+    }))
+  return { csv: serializeStagedRowsToCsv(valid), exportedCount: valid.length, excluded }
+}
+
+export type ExistingMezmurIdentity = {
+  import_id?: string | null
+  mezmur_id?: string | null
+  slug?: string | null
+  source_url?: string | null
+  youtube_url?: string | null
+  title_amharic?: string | null
+  transliteration_title?: string | null
+  title?: string | null
+  singer_name?: string | null
+}
+
+/**
+ * Compare staged rows with the real CMS table before import. Stable identifiers
+ * win in this order: UUID, slug, normalized source URL, YouTube video ID, then
+ * normalized title + Zemari. Existing rows are reported as conflicts and are
+ * never passed to saveMezmur, so this workflow cannot overwrite CMS content.
+ */
+export async function markExistingMezmurConflicts(
+  rows: StagedMezmurCsvRow[],
+): Promise<StagedMezmurCsvRow[]> {
+  if (!supabase || !rows.length) return rows
+  const identities: ExistingMezmurIdentity[] = []
+  const chunkSize = 80
+  for (let start = 0; start < rows.length; start += chunkSize) {
+    const chunk = rows.slice(start, start + chunkSize)
+    const slugs = [...new Set(chunk.map((row) => row.slug.trim()).filter(Boolean))]
+    const sourceUrls = [...new Set(chunk.map((row) => row.source_url.trim()).filter(Boolean))]
+    const youtubeUrls = [...new Set(chunk.map((row) => row.youtube_url.trim()).filter(Boolean))]
+    const youtubeVideoIds = [...new Set(chunk.map((row) => extractYoutubeVideoId(row.youtube_url)).filter((id): id is string => Boolean(id)))]
+    const titles = [...new Set(chunk.flatMap((row) => [row.amharic_title.trim(), row.transliteration_title.trim()]).filter(Boolean))]
+    const ids = [...new Set(chunk.map((row) => row.id.trim()).filter(Boolean))]
+    const columns = 'import_id,mezmur_id,slug,source_url,youtube_url,title_amharic,transliteration_title,title,singer_name'
+    const requests = [
+      slugs.length ? supabase.from('mezmur_data_import' as never).select(columns).in('slug', slugs) : null,
+      sourceUrls.length ? supabase.from('mezmur_data_import' as never).select(columns).in('source_url', sourceUrls) : null,
+      youtubeUrls.length ? supabase.from('mezmur_data_import' as never).select(columns).in('youtube_url', youtubeUrls) : null,
+      youtubeVideoIds.length ? supabase.from('mezmur_data_import' as never).select(columns).or(youtubeVideoIds.map((id) => `youtube_url.ilike.%${id}%`).join(',')) : null,
+      titles.length ? supabase.from('mezmur_data_import' as never).select(columns).in('title_amharic', titles) : null,
+      titles.length ? supabase.from('mezmur_data_import' as never).select(columns).in('transliteration_title', titles) : null,
+      titles.length ? supabase.from('mezmur_data_import' as never).select(columns).in('title', titles) : null,
+      ids.length ? supabase.from('mezmur_data_import' as never).select(columns).or(`import_id.in.(${ids.join(',')}),mezmur_id.in.(${ids.join(',')})`) : null,
+    ].filter(Boolean)
+    const responses = await Promise.all(requests)
+    for (const response of responses) {
+      if (response!.error) throw new Error(`Could not check existing CMS records: ${response!.error.message}`)
+      identities.push(...(((response!.data || []) as unknown) as ExistingMezmurIdentity[]))
+    }
+  }
+
+  return applyExistingMezmurConflicts(rows, identities)
+}
+
+export function applyExistingMezmurConflicts(
+  rows: StagedMezmurCsvRow[],
+  identities: ExistingMezmurIdentity[],
+): StagedMezmurCsvRow[] {
+  const byUuid = new Map<string, ExistingMezmurIdentity>()
+  const bySlug = new Map<string, ExistingMezmurIdentity>()
+  const bySource = new Map<string, ExistingMezmurIdentity>()
+  const byVideo = new Map<string, ExistingMezmurIdentity>()
+  const byTitleZemari = new Map<string, ExistingMezmurIdentity>()
+  for (const existing of identities) {
+    for (const id of [existing.import_id, existing.mezmur_id]) if (id) byUuid.set(id.toLowerCase(), existing)
+    if (existing.slug) bySlug.set(existing.slug.toLowerCase(), existing)
+    const source = existing.source_url?.trim().toLowerCase().replace(/\/+$/, '')
+    if (source) bySource.set(source, existing)
+    const video = extractYoutubeVideoId(existing.youtube_url || '')
+    if (video) byVideo.set(video, existing)
+    const title = normalizeAmharicTitleKey(existing.title_amharic || existing.transliteration_title || existing.title || '')
+    const zemari = normalizedStableText(existing.singer_name || '')
+    if (title) byTitleZemari.set(`${title}::${zemari}`, existing)
+  }
+
+  return rows.map((row) => {
+    const source = row.source_url.trim().toLowerCase().replace(/\/+$/, '')
+    const video = extractYoutubeVideoId(row.youtube_url)
+    const title = normalizeAmharicTitleKey(row.amharic_title || row.transliteration_title)
+    const titleZemari = `${title}::${normalizedStableText(row.zemari)}`
+    const existing =
+      (row.id ? byUuid.get(row.id.toLowerCase()) : undefined) ||
+      bySlug.get(row.slug.toLowerCase()) ||
+      (source ? bySource.get(source) : undefined) ||
+      (video ? byVideo.get(video) : undefined) ||
+      (title ? byTitleZemari.get(titleZemari) : undefined)
+    if (!existing) return row
+    const identifier = existing.slug || existing.mezmur_id || existing.import_id || 'existing record'
+    return {
+      ...row,
+      conflictWithExisting: `Conflicts with CMS record "${identifier}". Resolve or change the stable identifier before importing.`,
+      selectedForImport: false,
+      importReady: false,
+    }
+  })
 }
 
 export function summarizeStagedRows(rows: StagedMezmurCsvRow[]): CsvImportSummary {
@@ -611,6 +810,8 @@ export async function importSelectedStagedRowsAsDrafts(
         lyrics_amharic: row.amharic_lyrics.trim() || null,
         transliteration: row.transliteration_lyrics.trim() || null,
         lyrics_english: row.english_lyrics.trim() || null,
+        lyrics_geez: row.geez_lyrics.trim() || null,
+        lyrics_oromo: row.oromo_lyrics.trim() || null,
         youtube_url: row.youtube_url.trim() || null,
         thumbnail_url: row.thumbnail_url.trim() || null,
         image_alt: row.image_alt_text.trim() || null,
@@ -628,6 +829,7 @@ export async function importSelectedStagedRowsAsDrafts(
       }
 
       const saved = await saveMezmur(payload, [])
+      const relationshipErrors: string[] = []
 
       // Link hymn sections if matched in database
       const matchedSectionIds = row.hymn_sections
@@ -637,8 +839,8 @@ export async function importSelectedStagedRowsAsDrafts(
       if (matchedSectionIds.length > 0) {
         try {
           await setMezmurSectionLinks(saved.id, matchedSectionIds)
-        } catch {
-          // non-fatal if section link table is unavailable
+        } catch (cause) {
+          relationshipErrors.push(`sections: ${errorMessage(cause)}`)
         }
       }
 
@@ -654,9 +856,17 @@ export async function importSelectedStagedRowsAsDrafts(
       if (categorySlugs.length > 0 || uniqueOccasions.length > 0) {
         try {
           await setMezmurClassificationLinks(saved.import_id, categorySlugs, uniqueOccasions)
-        } catch {
-          // non-fatal
+        } catch (cause) {
+          relationshipErrors.push(`category/occasions: ${errorMessage(cause)}`)
         }
+      }
+
+      if (relationshipErrors.length) {
+        failed.push({
+          slug: saved.slug,
+          error: `Draft was created, but relationship linking failed (${relationshipErrors.join('; ')}). Open the draft and correct its links; retrying this CSV row is blocked by conflict detection.`,
+        })
+        continue
       }
 
       importedSlugs.push(saved.slug)

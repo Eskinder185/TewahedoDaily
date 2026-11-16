@@ -6,7 +6,9 @@ import { listAllHymnSections } from '../../lib/cms/hymnBrowseAdminService'
 import {
   buildStagedRowsFromCsvText,
   importSelectedStagedRowsAsDrafts,
+  markExistingMezmurConflicts,
   SAMPLE_MEZMUR_CSV_TEXT,
+  serializeValidCanonicalRows,
   serializeStagedRowsToCsv,
   summarizeStagedRows,
   validateAndRefreshStagedRows,
@@ -62,9 +64,10 @@ const DEFAULT_HYMN_SECTION_SLUGS = [
 ]
 
 const STORAGE_KEY = 'tewahedo_cms_staged_mezmur_csv_v1'
+const ORIGINAL_STORAGE_KEY = 'tewahedo_cms_original_mezmur_csv_v1'
 const PAGE_SIZE = 25
 
-type ViewMode = 'all' | 'duplicates' | 'missing_lyrics' | 'attribution' | 'review_required'
+type ViewMode = 'all' | 'invalid' | 'duplicates' | 'conflicts' | 'missing_lyrics' | 'attribution' | 'review_required'
 
 export function MezmurCsvImportPreview() {
   const { profile } = useAuth()
@@ -113,6 +116,7 @@ export function MezmurCsvImportPreview() {
   })
 
   const [fileName, setFileName] = useState<string>('Sample Staged Preview (3 rows)')
+  const [originalCsv, setOriginalCsv] = useState(() => sessionStorage.getItem(ORIGINAL_STORAGE_KEY) || SAMPLE_MEZMUR_CSV_TEXT)
   const [viewMode, setViewMode] = useState<ViewMode>('all')
   const [search, setSearch] = useState('')
   const [categoryFilter, setCategoryFilter] = useState('')
@@ -151,6 +155,8 @@ export function MezmurCsvImportPreview() {
     const q = search.trim().toLowerCase()
     return rows.filter((row) => {
       if (viewMode === 'duplicates' && !row.duplicateOfStagingId) return false
+      if (viewMode === 'invalid' && row.validationErrors.length === 0) return false
+      if (viewMode === 'conflicts' && !row.conflictWithExisting) return false
       if (viewMode === 'missing_lyrics' && row.lyrics_status === 'available') return false
       if (viewMode === 'review_required' && !row.review_required) return false
       if (viewMode === 'attribution' && !row.source_url && !row.youtube_url) return false
@@ -214,12 +220,20 @@ export function MezmurCsvImportPreview() {
         setError('Uploaded CSV file contained no data rows.')
         return
       }
+      setOriginalCsv(text)
+      try { sessionStorage.setItem(ORIGINAL_STORAGE_KEY, text) } catch { /* large source stays in component memory */ }
       setRows(staged)
       setFileName(`${file.name} (${staged.length} rows)`)
       setPage(1)
-      setMessage(
-        `Loaded ${staged.length} rows from "${file.name}" into staging preview. No database records have been modified.`,
-      )
+      try {
+        const checked = await markExistingMezmurConflicts(staged)
+        setRows(checked)
+        const conflicts = checked.filter((row) => row.conflictWithExisting).length
+        setMessage(`Loaded ${staged.length} rows from "${file.name}"; ${conflicts} existing-CMS conflict(s) were blocked. No database records have been modified.`)
+      } catch (conflictError) {
+        setError(conflictError instanceof Error ? conflictError.message : 'Could not compare the preview with existing CMS records.')
+        setMessage(`Loaded ${staged.length} rows from "${file.name}". Reprocess when the CMS connection is available to complete conflict checks.`)
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to parse CSV file.')
     }
@@ -228,10 +242,23 @@ export function MezmurCsvImportPreview() {
   function loadSampleRows() {
     const staged = buildStagedRowsFromCsvText(SAMPLE_MEZMUR_CSV_TEXT, singers, knownSectionSlugs)
     setRows(staged)
+    setOriginalCsv(SAMPLE_MEZMUR_CSV_TEXT)
     setFileName('Sample Staged Preview (3 rows)')
     setPage(1)
     setError('')
     setMessage('Loaded sample staging rows.')
+  }
+
+  async function reprocessOriginal() {
+    setError('')
+    try {
+      const staged = buildStagedRowsFromCsvText(originalCsv, singers, knownSectionSlugs)
+      setRows(await markExistingMezmurConflicts(staged))
+      setPage(1)
+      setMessage(`Reprocessed ${staged.length} row(s) from the preserved original input. No database records were modified.`)
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : 'Could not reprocess the original input.')
+    }
   }
 
   function updateRow(
@@ -239,7 +266,11 @@ export function MezmurCsvImportPreview() {
     patch: Partial<StagedMezmurCsvRow>,
   ) {
     setRows((prev) => {
-      const next = prev.map((row) => (row.stagingId === stagingId ? { ...row, ...patch } : row))
+      const identityChanged = ['id', 'slug', 'source_url', 'youtube_url', 'amharic_title', 'transliteration_title', 'zemari']
+        .some((key) => key in patch)
+      const next = prev.map((row) => (row.stagingId === stagingId
+        ? { ...row, ...patch, ...(identityChanged ? { conflictWithExisting: null } : {}) }
+        : row))
       return validateAndRefreshStagedRows(next, singers, knownSectionSlugs)
     })
   }
@@ -268,6 +299,33 @@ export function MezmurCsvImportPreview() {
     URL.revokeObjectURL(url)
   }
 
+
+  function downloadText(name: string, content: string, type: string) {
+    const url = URL.createObjectURL(new Blob([content], { type }))
+    const anchor = document.createElement('a')
+    anchor.href = url
+    anchor.download = name
+    anchor.click()
+    window.setTimeout(() => URL.revokeObjectURL(url), 0)
+  }
+
+  function downloadOriginalCsv() {
+    downloadText('mezmurs_original_input.csv', originalCsv, 'text/csv;charset=utf-8')
+  }
+
+  function downloadValidCanonicalCsv() {
+    const exported = serializeValidCanonicalRows(rows)
+    downloadText('mezmurs_canonical_valid.csv', exported.csv, 'text/csv;charset=utf-8')
+    if (exported.excluded.length) {
+      downloadText(
+        'mezmurs_canonical_excluded_rows.json',
+        JSON.stringify({ schema: 'tewahedodaily-mezmur-converter-exclusions-v1', excluded: exported.excluded }, null, 2),
+        'application/json;charset=utf-8',
+      )
+    }
+    setMessage(`Exported ${exported.exportedCount} valid canonical row(s). ${exported.excluded.length} blocked row(s) were not exported${exported.excluded.length ? ' and are listed in the exclusion report' : ''}.`)
+  }
+
   async function runDraftImport() {
     if (!staff) {
       setError('Only editor, admin, or super_admin roles can import staged drafts.')
@@ -290,9 +348,15 @@ export function MezmurCsvImportPreview() {
     setError('')
     setMessage('')
     try {
+      const conflictChecked = await markExistingMezmurConflicts(selected)
+      const conflicts = conflictChecked.filter((row) => row.conflictWithExisting)
+      if (conflicts.length) {
+        setRows((current) => current.map((row) => conflictChecked.find((checked) => checked.stagingId === row.stagingId) || row))
+        throw new Error(`${conflicts.length} selected row(s) now conflict with existing CMS records. Review the CMS Conflicts tab; nothing was imported.`)
+      }
       const taxonomy = meta.data?.taxonomy ?? { categories: [], singers: [], tags: [] }
       const sections = meta.data?.sections ?? []
-      const res = await importSelectedStagedRowsAsDrafts(selected, {
+      const res = await importSelectedStagedRowsAsDrafts(conflictChecked, {
         taxonomy,
         sections,
         onProgress: (done, total, currentSlug) => {
@@ -329,15 +393,20 @@ export function MezmurCsvImportPreview() {
           <p className={s.eyebrow}>STAGING &amp; BULK IMPORT PREVIEW</p>
           <h1>Mezmur CSV Import Preview</h1>
           <p className={s.muted}>
-            Upload <code>mezmurs_2000.csv</code>, inspect and edit titles, taxonomy, hymn sections, and Zemari
-            profiles, review duplicates and source attribution, and stage records for draft import.
+            Accepted inputs: the canonical Mezmur CSV (current or legacy 25-column layout) and the checked-in
+            EOTC Media audit CSV layout. Files must be UTF-8 CSV with a header row; RFC 4180 quoted commas,
+            quotes, and multiline lyric cells are supported. The canonical output preserves multilingual lyrics,
+            stanza line breaks, media/source references, taxonomy, occasions, sections, and Zemari names.
             <strong> All records remain in staging until explicitly imported as drafts.</strong>
           </p>
         </div>
         <div className={s.actions}>
           <Link to={ADMIN_PATHS.hymnsMezmur}>← Mezmur Library</Link>
           <button type="button" onClick={downloadEditedCsv}>
-            Export Staged CSV (UTF-8 BOM)
+            Export All Staged CSV
+          </button>
+          <button type="button" onClick={downloadValidCanonicalCsv}>
+            Export Valid Canonical CSV
           </button>
         </div>
       </div>
@@ -378,6 +447,12 @@ export function MezmurCsvImportPreview() {
             <button type="button" onClick={loadSampleRows}>
               Reset to Sample Rows
             </button>
+            <button type="button" onClick={() => void reprocessOriginal()}>
+              Reprocess Original
+            </button>
+            <button type="button" onClick={downloadOriginalCsv}>
+              Download Original
+            </button>
           </div>
         </div>
       </section>
@@ -417,7 +492,9 @@ export function MezmurCsvImportPreview() {
         {(
           [
             ['all', `All Staged (${summary.totalRows})`],
+            ['invalid', `Invalid (${rows.filter((row) => row.validationErrors.length > 0).length})`],
             ['duplicates', `Duplicates (${summary.duplicateCount})`],
+            ['conflicts', `CMS Conflicts (${rows.filter((row) => row.conflictWithExisting).length})`],
             [
               'missing_lyrics',
               `Missing / Rights Lyrics (${summary.missingLyricsCount + summary.rightsReviewLyricsCount})`,
@@ -762,6 +839,11 @@ export function MezmurCsvImportPreview() {
                     {row.duplicateOfStagingId && (
                       <div className={s.error} style={{ padding: '4px 6px', margin: '4px 0 0', fontSize: '0.75rem' }}>
                         Duplicate of {row.duplicateOfStagingId} ({row.duplicateReason})
+                      </div>
+                    )}
+                    {row.conflictWithExisting && (
+                      <div className={s.error} style={{ padding: '4px 6px', margin: '4px 0 0', fontSize: '0.75rem' }}>
+                        {row.conflictWithExisting}
                       </div>
                     )}
                     {row.validationErrors.map((errText) => (

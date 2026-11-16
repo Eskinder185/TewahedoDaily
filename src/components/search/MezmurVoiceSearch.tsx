@@ -70,15 +70,9 @@ export function MezmurVoiceSearch({
   helperCaption?: string
   /** Idle-state microphone aria-label (context-specific: hymns / Bible / assistant). */
   startAriaLabel?: string
-  /**
-   * Initial voice language. Mezmur Practice should pass "am" so the badge is አማ
-   * and recording uses POST /api/transcribe (not browser SpeechRecognition).
-   */
+  /** Initial voice language. When omitted, the current interface locale is used. */
   defaultLanguage?: VoiceInputLanguage
-  /**
-   * Mezmur Practice: lock to Amharic + POST /api/transcribe.
-   * Hides the EN language chip and never starts browser SpeechRecognition.
-   */
+  /** Optional exceptional Amharic-only mode; ordinary Mezmur search does not use it. */
   amharicOnly?: boolean
 }) {
   const { locale } = useLocale()
@@ -643,8 +637,7 @@ export function MezmurVoiceSearch({
     phase === 'requesting-mic' ||
     (voiceLang === 'en' && phase === 'unsupported')
 
-  // Mezmur (amharicOnly / default am): always አማ unless the user picks English.
-  // Otherwise only advertise Amharic when /api/transcribe is reachable.
+  // Explicit selection wins. Otherwise the initial selection follows the interface locale.
   const effectiveLang: VoiceInputLanguage = amharicOnly
     ? 'am'
     : voiceLang === 'am' && (showAmharicOption || lockAmharicDefault)
