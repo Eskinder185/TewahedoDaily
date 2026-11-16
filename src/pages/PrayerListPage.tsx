@@ -90,6 +90,19 @@ function humanizePrayerPath(path: string): string {
     .join(' ')
 }
 
+const PRAYER_COLLECTION_IMAGE_FALLBACKS: Record<string, string> = {
+  'zewter-tselot': '/images/tselot/tselot-daily-prayer.jpg',
+  'wudase-mariam': '/images/calendar-web/MarianFeast.webp',
+  'mezmure-dawit': '/images/calendar-web/SaintDavid.webp',
+  'yekidane-tselot': '/images/tselot/tselot-major-devotions.jpg',
+  'meharene-ab': '/images/support/support-prayer-books-manuscripts.jpg',
+}
+
+function fallbackPrayerCollectionImage(slug: string): string {
+  const key = slug.trim().toLowerCase()
+  return PRAYER_COLLECTION_IMAGE_FALLBACKS[key] || '/images/tselot/tselot-daily-prayer.jpg'
+}
+
 function collectionCountLabel(
   collection: PrayerLibraryCollection,
   tr: (key: string, vars?: Record<string, string | number>) => string,
@@ -276,7 +289,10 @@ export function PrayerListPage() {
       setCollectionsLoading(true)
       setCollectionsError(undefined)
     })
-    void Promise.all([loadPrayerLibraryCollections(), listPublishedPrayerGuides()])
+    void Promise.all([
+      loadPrayerLibraryCollections({ includeLiturgy: false, includeSynaxarium: false }),
+      listPublishedPrayerGuides(),
+    ])
       .then(([rows, publishedGuides]) => {
         if (!active) return
         setCollections(rows)
@@ -651,25 +667,33 @@ export function PrayerListPage() {
 
             <ul className={styles.collectionGrid} aria-label={tr('prayers.title')}>
               {collections
-                .filter((collection) => Boolean(collection.title?.trim() || collection.titleAmharic?.trim()))
+                .filter(
+                  (collection) =>
+                    collection.sourceType === 'prayer' &&
+                    Boolean(collection.title?.trim() || collection.titleAmharic?.trim()),
+                )
                 .map((collection, index) => {
                   const titlePick = pickLocalized(locale, collection.title, collection.titleAmharic)
                   const description = collection.description?.trim() || ''
-                  const imageUrl = collection.imagePath
-                    ? resolveContentMediaUrl(collection.imagePath)
-                    : ''
+                  const imageUrl =
+                    (collection.imagePath ? resolveContentMediaUrl(collection.imagePath) : '') ||
+                    fallbackPrayerCollectionImage(collection.slug)
                   return (
                     <li key={`${collection.sourceType}-${collection.id}`}>
                       <article className={styles.collectionCard}>
-                        {imageUrl ? (
-                          <img
-                            className={styles.collectionImage}
-                            src={imageUrl}
-                            alt={collection.imageAlt || ''}
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        ) : null}
+                        <img
+                          className={styles.collectionImage}
+                          src={imageUrl}
+                          alt={collection.imageAlt || ''}
+                          loading="lazy"
+                          decoding="async"
+                          onError={(event) => {
+                            const fallback = fallbackPrayerCollectionImage(collection.slug)
+                            if (event.currentTarget.getAttribute('src') !== fallback) {
+                              event.currentTarget.src = fallback
+                            }
+                          }}
+                        />
                         <div className={styles.collectionBody}>
                           <p className={styles.collectionOrder}>{String(index + 1).padStart(2, '0')}</p>
                           <h2 className={styles.collectionTitle} lang={titlePick.lang}>
