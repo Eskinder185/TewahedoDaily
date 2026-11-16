@@ -86,6 +86,7 @@
     "test:mezmur-title-lyrics": "node --experimental-strip-types --no-warnings scripts/test-mezmur-title-lyrics-separation.ts",
     "test:mezmur-form-taxonomy": "tsx scripts/test-mezmur-form-taxonomy.ts",
     "test:werb-card": "node scripts/test-werb-card-browser.mjs",
+    "test:mezmur-card-art": "tsx --env-file-if-exists=.env.local --tsconfig tsconfig.app.json scripts/test-mezmur-card-art.ts",
     "test:mezmur-ranking": "tsx scripts/test-mezmur-ranking.ts",
     "test:mezmur-mobile": "node scripts/test-mezmur-mobile-browser.mjs",
     "test:mezmur-aliases": "tsx scripts/test-mezmur-taxonomy-aliases.ts",
@@ -161,7 +162,9 @@
     "test:play-image-catalog": "tsx scripts/test-play-image-catalog.ts",
     "test:finish-mezmur:mix": "node scripts/test-finish-mezmur-mix-browser.mjs",
     "test:finish-mezmur": "tsx scripts/test-finish-mezmur.ts",
-    "test:bible-timeline": "tsx scripts/test-bible-timeline.ts"
+    "test:bible-timeline": "tsx scripts/test-bible-timeline.ts",
+    "cw": "tsx --env-file-if-exists=.env.local scripts/content-workflow/cw.ts",
+    "test:content-workflow": "tsx --env-file-if-exists=.env.local scripts/test-content-workflow.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.5.1",
