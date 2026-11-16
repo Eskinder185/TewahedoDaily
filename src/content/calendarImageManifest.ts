@@ -14,7 +14,7 @@ const img = (name: string, ext: 'png' | 'jpg' | 'JPG' | 'webp' = 'webp') => {
 }
 
 export const calendarImageAssets = {
-  abiyTsom: img('AbiyTsom'),
+  abiyTsom: '/images/tselot/tselot-major-devotions.jpg',
   abuneAregawi: img('AbuneAregawi'),
   /** Canonical saint icon (legacy monthly alias remains mapped below). */
   abuneTeklehaymanot: img('AbuneTeklehaymanot'),

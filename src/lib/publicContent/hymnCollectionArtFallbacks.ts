@@ -21,10 +21,11 @@ const CONTENT_MEDIA_BY_COLLECTION: Record<string, string> = {
   'repentance-fasting': 'hymns/collections/repentance-fasting-1793162386004.webp',
   'occasion-holidays-feasts': 'hymns/collections/holidays-feasts-1790969755396.webp',
   'holidays-feasts': 'hymns/collections/holidays-feasts-1790969755396.webp',
-  'fasting-seasons': 'calendar/general/great-lent-6feda2f3-1792558641939.webp',
   'church-life-sacraments': 'hymns/collections/sacraments-church-life-1793162624070.webp',
   'sacraments-church-life': 'hymns/collections/sacraments-church-life-1793162624070.webp',
-  'anytime-mezmurs': 'hymns/collections/praise-general.webp',
+  // 'anytime-mezmurs' intentionally has no content-media entry: it used to reuse the Prayer & Worship
+  // image, so two neighbouring cards looked identical. It now resolves to its own local artwork below
+  // until a dedicated image is uploaded and approved.
   'english-mezmur': 'hymns/collections/english-mezmur.webp',
   'zemari-singers': 'hymns/collections/zemari-singers-1793162587835.webp',
 }
@@ -39,14 +40,15 @@ const LEGACY_BY_COLLECTION: Record<string, string> = {
   'angels-saints': `${CALENDAR}/EthiopianSaintsRemembrance.webp`,
   'prayer-worship': '/images/chants/chants-mezmur-learning.jpg',
   'praise-general': '/images/chants/chants-mezmur-learning.jpg',
-  repentance: `${CALENDAR}/AbiyTsom.webp`,
-  'repentance-fasting': `${CALENDAR}/AbiyTsom.webp`,
-  'occasion-holidays-feasts': `${CALENDAR}/JoyfulFeastSeason.webp`,
-  'holidays-feasts': `${CALENDAR}/JoyfulFeastSeason.webp`,
-  'fasting-seasons': `${CALENDAR}/FastingSeasonAtmosphere.webp`,
+  repentance: '/images/tselot/tselot-major-devotions.jpg',
+  'repentance-fasting': '/images/tselot/tselot-major-devotions.jpg',
+  'occasion-holidays-feasts': `${CALENDAR}/Fasika.webp`,
+  'holidays-feasts': `${CALENDAR}/Fasika.webp`,
+  'fasting-seasons': '/images/tselot/tselot-major-devotions.jpg',
   'church-life-sacraments': `${CALENDAR}/TodayInChurch.webp`,
   'sacraments-church-life': `${CALENDAR}/TodayInChurch.webp`,
-  'anytime-mezmurs': '/images/chants/chants-hero.jpg',
+  // Choir singing in white shammas: general mezmurs sung at any time. 960px WebP of chants-hero.jpg (~79 KB vs 1.2 MB).
+  'anytime-mezmurs': '/images/chants/chants-hero-960.webp',
   'english-mezmur': '/images/chants/chants-hero.jpg',
   'zemari-singers': '/images/chants/chants-mezmur-learning.jpg',
 }

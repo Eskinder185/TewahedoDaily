@@ -21,7 +21,7 @@ import type { ZemariSocialLinks } from './zemariSocialLinks'
 import { hymnCollectionArtFallback } from './hymnCollectionArtFallbacks'
 import { collectPagedRows, isEligiblePublicMezmurRow, isPublicMezmurStatus } from './mezmurVisibility'
 import { mezmurLanguageAliases, normalizeMezmurLanguage, type MezmurLanguageCode, type MezmurLanguageFilter } from '../mezmur/mezmurLanguage'
-import { normalizeMezmurForm, type MezmurForm } from '../mezmur/mezmurForm'
+import { matchesMezmurForm, normalizeMezmurForm, type MezmurForm, type MezmurFormFilter } from '../mezmur/mezmurForm'
 import { CATEGORY_ENTRIES, OCCASION_ENTRIES } from '../mezmur/taxonomyAliases'
 import {
   MEZMUR_BROWSE_GROUP_BY_SLUG,
@@ -631,8 +631,8 @@ const COLLECTIONS_TTL_MS = 5 * 60 * 1000
 
 /** Browse cards survive reloads for this long; they are refreshed in the background. */
 const COLLECTIONS_STORAGE_TTL_MS = 12 * 60 * 60 * 1000
-// v3 prioritizes uploaded content-media collection artwork over legacy local fallbacks.
-const COLLECTIONS_STORAGE_KEY = 'td.hymnCollections.v3'
+// v4 (Anytime Mezmurs gets its own artwork); v3 prioritized uploaded content-media collection artwork over legacy local fallbacks.
+const COLLECTIONS_STORAGE_KEY = 'td.hymnCollections.v4'
 
 function readStoredCollections(key: string): { at: number; data: HymnCollection[] } | null {
   try {
@@ -699,10 +699,10 @@ export function invalidateHymnBrowseCaches(): void {
   }
 }
 
-function refreshCollections(key: string, language?: MezmurLanguageFilter): Promise<HymnCollection[]> {
+function refreshCollections(key: string, language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnCollection[]> {
   const pending = collectionsPromises.get(key)
   if (pending) return pending
-  const promise = loadHymnCollectionsFresh(language)
+  const promise = loadHymnCollectionsFresh(language, form)
     .then((data) => {
       collectionsCache.set(key, { at: Date.now(), data })
       writeStoredCollections(key, data)
@@ -716,12 +716,13 @@ function refreshCollections(key: string, language?: MezmurLanguageFilter): Promi
 }
 
 /**
- * Level 1 — collections from mezmur_collections_import, filtered by language if specified.
+ * Level 1 — collections from mezmur_collections_import, filtered by language and form if specified.
  * Repeat visits render instantly from the last saved copy (up to 12 h old) while
  * fresh counts load in the background for the next view.
  */
-export async function getHymnCollections(language?: MezmurLanguageFilter): Promise<HymnCollection[]> {
-  const key = language || 'all'
+export async function getHymnCollections(language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnCollection[]> {
+  const formKey = form && form !== 'all' ? form : 'all'
+  const key = formKey === 'all' ? (language || 'all') : `${language || 'all'}:${formKey}`
   const cached = collectionsCache.get(key)
   if (cached && Date.now() - cached.at < COLLECTIONS_TTL_MS) {
     return cached.data
@@ -729,17 +730,17 @@ export async function getHymnCollections(language?: MezmurLanguageFilter): Promi
   const stored = cached ? null : readStoredCollections(key)
   if (stored) {
     collectionsCache.set(key, stored)
-    void refreshCollections(key, language).catch(() => undefined)
+    void refreshCollections(key, language, form).catch(() => undefined)
     return stored.data
   }
-  return refreshCollections(key, language)
+  return refreshCollections(key, language, form)
 }
 
-async function loadHymnCollectionsFresh(language?: MezmurLanguageFilter): Promise<HymnCollection[]> {
+async function loadHymnCollectionsFresh(language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnCollection[]> {
   let visibleRows: Record<string, unknown>[] = []
 
   // Start the counts now so they load in parallel with the collection rows.
-  const countsPromise = collectionCountsFromLinks(undefined, language).catch(() => new Map<string, number>())
+  const countsPromise = collectionCountsFromLinks(undefined, language, form).catch(() => new Map<string, number>())
 
   if (supabase) {
     try {
@@ -783,7 +784,7 @@ async function loadHymnCollectionsFresh(language?: MezmurLanguageFilter): Promis
     'occasion-holidays-feasts': 'holidays-feasts',
     'fasting-seasons': 'repentance-fasting',
     'church-life-sacraments': 'sacraments-church-life',
-    'anytime-mezmurs': 'praise-general',
+    // 'anytime-mezmurs' no longer borrows the Prayer & Worship ('praise-general') artwork; see hymnCollectionArtFallbacks.ts.
   }
   return sortCollections(CANONICAL_MAJOR_COLLECTIONS.map((canonical) => {
     const stored = storedBySlug.get(canonical.slug)
@@ -808,13 +809,13 @@ export async function loadMajorBrowseGroups(): Promise<HymnCollection[]> {
   return getHymnCollections()
 }
 
-export async function getHymnCollectionBySlug(slug: string, language?: MezmurLanguageFilter): Promise<HymnCollection | null> {
+export async function getHymnCollectionBySlug(slug: string, language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnCollection | null> {
   const needle = slug.trim()
   if (!needle) return null
 
   // First check the full resolved collections list so canonical groups inherit
   // their stored `mezmur_collections_import.image_path` artwork.
-  const groups = await getHymnCollections(language)
+  const groups = await getHymnCollections(language, form)
   const fromGroups = groups.find((g) => g.slug === needle)
   if (fromGroups) {
     return fromGroups
@@ -834,7 +835,7 @@ export async function getHymnCollectionBySlug(slug: string, language?: MezmurLan
       .limit(1)
     if (!error && data?.[0] && isPublishedStatus((data[0] as Record<string, unknown>).status)) {
       const mapped = mapCollectionFromRow(data[0] as Record<string, unknown>)
-      const counts = await collectionCountsFromLinks(undefined, language)
+      const counts = await collectionCountsFromLinks(undefined, language, form)
       return { ...mapped, mezmurCount: counts.get(mapped.slug) ?? mapped.mezmurCount }
     }
     if (error && error.code !== 'PGRST116') {
@@ -863,7 +864,7 @@ async function fetchAllSections(): Promise<HymnSection[]> {
     .map(mapSectionFromRow)
 }
 
-export async function getSectionsForCollection(collectionSlug: string, language?: MezmurLanguageFilter): Promise<HymnSection[]> {
+export async function getSectionsForCollection(collectionSlug: string, language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnSection[]> {
   if (!supabase || !collectionSlug.trim()) return []
   const { data, error } = await supabase
     .from(T.sections as never)
@@ -892,7 +893,7 @@ export async function getSectionsForCollection(collectionSlug: string, language?
   const fallbackSlugs = new Set(fallbackSections.map((s) => s.slug))
   const sections = sortSections([...liveSections, ...fallbackSections])
 
-  const counts = await sectionCountsForCollection(collectionSlug.trim(), sections, language)
+  const counts = await sectionCountsForCollection(collectionSlug.trim(), sections, language, form)
   return sections
     .map((s) => ({ ...s, mezmurCount: counts.get(s.slug) || 0 }))
     .filter((s) => !fallbackSlugs.has(s.slug) || s.mezmurCount > 0)
@@ -910,6 +911,7 @@ export async function getHymnSection(
   collectionSlugOrId: string,
   sectionSlug: string,
   language?: MezmurLanguageFilter,
+  form?: MezmurFormFilter,
 ): Promise<HymnSection | null> {
   const collectionSlug = collectionSlugOrId.trim()
   const slug = sectionSlug.trim()
@@ -934,7 +936,7 @@ export async function getHymnSection(
   }
   if (!row || !isPublishedStatus(row.status)) return null
   const mapped = mapSectionFromRow(row)
-  const counts = await sectionCountsForCollection(collectionSlug, [mapped], language)
+  const counts = await sectionCountsForCollection(collectionSlug, [mapped], language, form)
   return { ...mapped, mezmurCount: counts.get(mapped.slug) || 0 }
 }
 
@@ -1082,6 +1084,7 @@ async function sectionCountsForCollection(
   _collectionSlug: string,
   sections: HymnSection[],
   language?: MezmurLanguageFilter,
+  form?: MezmurFormFilter,
 ): Promise<Map<string, number>> {
   const map = new Map<string, number>()
   if (!supabase || !sections.length) return map
@@ -1090,7 +1093,7 @@ async function sectionCountsForCollection(
   const db = supabase
   const langFilter = language && language !== 'all' ? language : null
   const { data: pubData, error: pubErr } = await selectAllRows<DataImportRow>(() => {
-    let q = db.from(T.data as never).select('mezmur_id, slug, primary_language, status').eq('status', 'published')
+    let q = db.from(T.data as never).select('mezmur_id, slug, primary_language, status, form').eq('status', 'published')
     if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
     return q as never
   }, `published-min:${langFilter ?? ''}`)
@@ -1104,7 +1107,7 @@ async function sectionCountsForCollection(
   for (const row of (pubData || []) as DataImportRow[]) {
     const slug = txt(row.slug)
     const id = txt(row.mezmur_id)
-    if (isPublicMezmurRow(row)) {
+    if (isPublicMezmurRow(row) && matchesMezmurForm(row.form, form)) {
       if (slug) publishedSlugs.add(slug)
       if (id) publishedIds.add(id)
     }
@@ -1171,6 +1174,7 @@ async function sectionCountsForCollection(
 async function collectionCountsFromLinks(
   sections?: HymnSection[],
   language?: MezmurLanguageFilter,
+  form?: MezmurFormFilter,
 ): Promise<Map<string, number>> {
   const map = new Map<string, number>()
   if (!supabase) return map
@@ -1185,7 +1189,7 @@ async function collectionCountsFromLinks(
       selectAllRows<DataImportRow>(() => {
         let q = db
           .from(T.data as never)
-          .select('mezmur_id, slug, primary_language, singer_name, zemari_id, singer_slug, status')
+          .select('mezmur_id, slug, primary_language, singer_name, zemari_id, singer_slug, status, form')
           .eq('status', 'published')
         if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
         return q as never
@@ -1226,7 +1230,7 @@ async function collectionCountsFromLinks(
 
     for (const row of publishedRows) {
       const slug = txt(row.slug)
-      if (slug && isPublicMezmurRow(row)) {
+      if (slug && isPublicMezmurRow(row) && matchesMezmurForm(row.form, form)) {
         publishedSlugs.add(slug)
         if (txt(row.mezmur_id)) publishedIds.add(txt(row.mezmur_id))
         if (txt(row.singer_name) || txt(row.zemari_id) || txt(row.singer_slug)) {
@@ -1302,13 +1306,13 @@ export async function getMezmursForSection(
   collectionSlugOrSectionId: string,
   sectionSlugOrOptions?:
     | string
-    | { q?: string; page?: number; pageSize?: number; language?: MezmurLanguageFilter },
-  maybeOptions?: { q?: string; page?: number; pageSize?: number; language?: MezmurLanguageFilter },
+    | { q?: string; page?: number; pageSize?: number; language?: MezmurLanguageFilter; form?: MezmurFormFilter },
+  maybeOptions?: { q?: string; page?: number; pageSize?: number; language?: MezmurLanguageFilter; form?: MezmurFormFilter },
 ): Promise<{ items: HymnSectionMezmur[]; total: number; page: number }> {
   // Support both (collectionSlug, sectionSlug, opts) and legacy (sectionId, opts).
   let collectionSlug = ''
   let sectionSlug = ''
-  let options: { q?: string; page?: number; pageSize?: number; language?: MezmurLanguageFilter } = {}
+  let options: { q?: string; page?: number; pageSize?: number; language?: MezmurLanguageFilter; form?: MezmurFormFilter } = {}
 
   if (typeof sectionSlugOrOptions === 'string') {
     collectionSlug = collectionSlugOrSectionId
@@ -1330,7 +1334,7 @@ export async function getMezmursForSection(
 
   let section: HymnSection | null = null
   if (collectionSlug) {
-    section = await getHymnSection(collectionSlug, sectionSlug, options.language).catch(() => null)
+    section = await getHymnSection(collectionSlug, sectionSlug, options.language, options.form).catch(() => null)
   }
 
   const links = await fetchLinksForSection(collectionSlug, sectionSlug.trim(), section)
@@ -1373,6 +1377,7 @@ export async function getMezmursForSection(
     const row = bySlug.get(slug)
     if (!row) continue
     const item = mapDataCard(row, num(link.sort_order))
+    if (!matchesMezmurForm(row.form, options.form)) continue
     if (options.language && (options.language as string) !== 'all' && normalizeMezmurLanguage(item.language) !== options.language) continue
     if (q) {
       const hay =
@@ -1539,7 +1544,7 @@ export async function getOccasionsForMezmur(mezmurSlug: string): Promise<string[
   return [...new Set(((data || []) as LinkImportRow[]).map((r) => txt(r.occasion_slug)).filter(Boolean))]
 }
 
-export async function getHymnSingers(language?: MezmurLanguageFilter): Promise<HymnBrowseCard[]> {
+export async function getHymnSingers(language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnBrowseCard[]> {
   if (!supabase) return []
 
   // Canonical profile source: public.zemaris (+ counts view). Never derive profile from singer_*.
@@ -1586,14 +1591,14 @@ export async function getHymnSingers(language?: MezmurLanguageFilter): Promise<H
   const countByZemari = new Map<string, number>()
   const langFilter = language && language !== 'all' ? language : null
   const db = supabase
-  const linked = await selectAllRows<{ zemari_id?: string; singer_slug?: string; status?: string }>(() => {
-    let q = db.from(T.data as never).select('zemari_id, singer_slug, status, primary_language').eq('status', 'published')
+  const linked = await selectAllRows<{ zemari_id?: string; singer_slug?: string; status?: string; form?: string | null }>(() => {
+    let q = db.from(T.data as never).select('zemari_id, singer_slug, status, primary_language, form').eq('status', 'published')
     if (langFilter) q = q.in('primary_language', mezmurLanguageAliases(langFilter))
     return q as never
   })
   if (!linked.error) {
-    for (const row of (linked.data || []) as Array<{ zemari_id?: string; singer_slug?: string; status?: string }>) {
-      if (!isPublishedStatus(row.status)) continue
+    for (const row of (linked.data || []) as Array<{ zemari_id?: string; singer_slug?: string; status?: string; form?: string | null }>) {
+      if (!isPublishedStatus(row.status) || !matchesMezmurForm(row.form, form)) continue
       const id = txt(row.zemari_id)
       if (id) countByZemari.set(id, (countByZemari.get(id) || 0) + 1)
       const sSlug = txt(row.singer_slug)
@@ -1653,19 +1658,21 @@ export async function getHymnSingersPage(options: {
   limit?: number
   query?: string
   language?: MezmurLanguageFilter
+  form?: MezmurFormFilter
 } = {}): Promise<HymnSingerPage> {
   const offset = Math.max(0, Math.floor(options.offset || 0))
   const limit = Math.min(50, Math.max(1, Math.floor(options.limit || 8)))
   const queryText = txt(options.query)
   const language = options.language || 'all'
+  const form = options.form || 'all'
 
   const sliceFallback = async (): Promise<HymnSingerPage> => {
-    const all = (await getHymnSingers(language)).filter((card) => matchesZemariSearch(card, queryText))
+    const all = (await getHymnSingers(language, form)).filter((card) => matchesZemariSearch(card, queryText))
     const items = all.slice(offset, offset + limit)
     return { items, total: all.length, offset, hasMore: offset + items.length < all.length }
   }
 
-  if (!supabase || language !== 'all' || zemariCountsViewLacksTrashMetadata || zemariCountsViewPermissionDenied) {
+  if (!supabase || language !== 'all' || form !== 'all' || zemariCountsViewLacksTrashMetadata || zemariCountsViewPermissionDenied) {
     return sliceFallback()
   }
 
@@ -1810,7 +1817,7 @@ export async function getZemariPublicBySlug(slug: string): Promise<HymnBrowseCar
 }
 
 /** Published public Mezmurs linked to a Zemari via mezmur_public.zemari_id only. */
-export async function listPublishedMezmursForZemari(zemariId: string): Promise<
+export async function listPublishedMezmursForZemari(zemariId: string, form?: MezmurFormFilter): Promise<
   Array<{
     id: string
     slug: string
@@ -1838,7 +1845,7 @@ export async function listPublishedMezmursForZemari(zemariId: string): Promise<
     throw permissionError(T.data, error)
   }
   return ((data || []) as Record<string, unknown>[])
-    .filter((row) => isPublicMezmurRow(row))
+    .filter((row) => isPublicMezmurRow(row) && matchesMezmurForm(row.form, form))
     .map((row) => {
       const path = txt(row.image_path) || txt(row.legacy_thumbnail_url) || null
       return {
@@ -1856,11 +1863,11 @@ export async function listPublishedMezmursForZemari(zemariId: string): Promise<
     })
 }
 
-export async function getHymnOccasions(language?: MezmurLanguageFilter): Promise<HymnBrowseCard[]> {
+export async function getHymnOccasions(language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnBrowseCard[]> {
   if (!supabase || isMissing(T.occasions)) return []
   const [occLinks, pubRows] = await Promise.all([
     fetchAllOccasionLinks(),
-    selectAllImportRows('mezmur_id, slug, primary_language, status', {
+    selectAllImportRows('mezmur_id, slug, primary_language, status, form', {
       language: language && language !== 'all' ? language : undefined,
     }),
   ])
@@ -1869,7 +1876,7 @@ export async function getHymnOccasions(language?: MezmurLanguageFilter): Promise
   for (const r of pubRows) {
     const slug = txt(r.slug)
     const id = txt(r.mezmur_id)
-    if (isPublicMezmurRow(r)) {
+    if (isPublicMezmurRow(r) && matchesMezmurForm(r.form, form)) {
       if (slug) publishedSlugs.add(slug)
       if (id) publishedIds.add(id)
     }
@@ -1895,7 +1902,7 @@ export async function getHymnOccasions(language?: MezmurLanguageFilter): Promise
         nameAmharic: '',
         description: '',
         imagePath: null,
-        imageUrl: '',
+        imageUrl: resolveHymnSectionImageUrl(slug, null, ''),
         imageAlt: humanizeSlug(slug),
         mezmurCount: set.size,
         featured: false,
@@ -1905,11 +1912,11 @@ export async function getHymnOccasions(language?: MezmurLanguageFilter): Promise
   )
 }
 
-export async function getHymnCategories(language?: MezmurLanguageFilter): Promise<HymnBrowseCard[]> {
+export async function getHymnCategories(language?: MezmurLanguageFilter, form?: MezmurFormFilter): Promise<HymnBrowseCard[]> {
   if (!supabase || isMissing(T.categories)) return []
   const [catLinks, pubRows] = await Promise.all([
     fetchAllCategoryLinks(),
-    selectAllImportRows('mezmur_id, slug, primary_language, status', {
+    selectAllImportRows('mezmur_id, slug, primary_language, status, form', {
       language: language && language !== 'all' ? language : undefined,
     }),
   ])
@@ -1918,7 +1925,7 @@ export async function getHymnCategories(language?: MezmurLanguageFilter): Promis
   for (const r of pubRows) {
     const slug = txt(r.slug)
     const id = txt(r.mezmur_id)
-    if (isPublicMezmurRow(r)) {
+    if (isPublicMezmurRow(r) && matchesMezmurForm(r.form, form)) {
       if (slug) publishedSlugs.add(slug)
       if (id) publishedIds.add(id)
     }
@@ -1947,7 +1954,11 @@ export async function getHymnCategories(language?: MezmurLanguageFilter): Promis
       if (code === '42P01' || code === 'PGRST205') markMissing(T.fastingSuitability)
       else logSchemaError('getHymnCategories fasting suitability', error as { message?: string; code?: string })
     } else {
-      fastingCount = new Set(data.map((row) => row.mezmur_slug).filter(Boolean)).size
+      fastingCount = new Set(
+        data
+          .map((row) => row.mezmur_slug)
+          .filter((slug): slug is string => Boolean(slug) && publishedSlugs.has(slug)),
+      ).size
     }
   }
 
@@ -1961,7 +1972,7 @@ export async function getHymnCategories(language?: MezmurLanguageFilter): Promis
         nameAmharic: '',
         description: '',
         imagePath: null,
-        imageUrl: '',
+        imageUrl: resolveHymnSectionImageUrl(slug, null, ''),
         imageAlt: humanizeSlug(slug),
         mezmurCount: set.size,
         featured: false,
@@ -1977,7 +1988,7 @@ export async function getHymnCategories(language?: MezmurLanguageFilter): Promis
       nameAmharic: 'ለጾም የሚስማሙ ሁሉ',
       description: 'Evidence-reviewed repentance and fasting-suitable Mezmurs.',
       imagePath: null,
-      imageUrl: '',
+      imageUrl: resolveHymnSectionImageUrl('fasting-suitable', null, ''),
       imageAlt: 'All Mezmurs suitable for fasting',
       mezmurCount: fastingCount,
       featured: false,
@@ -2011,8 +2022,9 @@ export async function fetchAllFastingSuitabilityLinks(): Promise<
 export async function loadBrowseGroupChildren(
   collectionSlug: string,
   language?: MezmurLanguageFilter,
+  form?: MezmurFormFilter,
 ): Promise<{ group: HymnCollection | null; children: HymnBrowseCard[] }> {
-  const group = await getHymnCollectionBySlug(collectionSlug, language)
+  const group = await getHymnCollectionBySlug(collectionSlug, language, form)
   if (!group) return { group: null, children: [] }
 
   if (
@@ -2020,15 +2032,15 @@ export async function loadBrowseGroupChildren(
     group.collectionType === 'singer_group' ||
     /zemari|singer/i.test(group.slug)
   ) {
-    const singers = await getHymnSingers(language)
+    const singers = await getHymnSingers(language, form)
     return { group, children: singers }
   }
 
   const classificationGroup = MEZMUR_BROWSE_GROUP_BY_SLUG.get(group.slug)
   if (classificationGroup) {
     const [liveCategories, liveOccasions, allSections] = await Promise.all([
-      getHymnCategories(language),
-      getHymnOccasions(language),
+      getHymnCategories(language, form),
+      getHymnOccasions(language, form),
       fetchAllSections().catch(() => [] as HymnSection[]),
     ])
     const countByKey = new Map([
@@ -2084,19 +2096,22 @@ export async function loadBrowseGroupChildren(
     return { group, children }
   }
 
-  const sections = await getSectionsForCollection(group.slug, language)
+  const sections = await getSectionsForCollection(group.slug, language, form)
   return { group, children: sections.map(sectionToCard) }
 }
 
-export async function loadHymnBrowseIndex(language?: MezmurLanguageFilter): Promise<{
+export async function loadHymnBrowseIndex(
+  language?: MezmurLanguageFilter,
+  form?: MezmurFormFilter,
+): Promise<{
   occasions: HymnBrowseCard[]
   categories: HymnBrowseCard[]
   singers: HymnBrowseCard[]
 }> {
   const [occasions, categories, singers] = await Promise.all([
-    getHymnOccasions(language),
-    getHymnCategories(language),
-    getHymnSingers(language),
+    getHymnOccasions(language, form),
+    getHymnCategories(language, form),
+    getHymnSingers(language, form),
   ])
   return { occasions, categories, singers }
 }
@@ -2104,9 +2119,11 @@ export async function loadHymnBrowseIndex(language?: MezmurLanguageFilter): Prom
 export async function loadBrowseGroupDetail(
   kind: HymnBrowseKind,
   slug: string,
+  language?: MezmurLanguageFilter,
+  form?: MezmurFormFilter,
 ): Promise<HymnBrowseCard | null> {
   if (kind === 'singer') return getZemariPublicBySlug(slug)
-  const index = await loadHymnBrowseIndex()
+  const index = await loadHymnBrowseIndex(language, form)
   const list = kind === 'occasion' ? index.occasions : kind === 'category' ? index.categories : []
   return list.find((c) => c.slug === slug) || null
 }

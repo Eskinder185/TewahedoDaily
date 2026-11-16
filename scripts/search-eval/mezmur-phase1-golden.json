@@ -1,0 +1,12 @@
+[
+  { "id": "amharic-title", "query": "ትመስል እምኪ", "expectedIncludes": ["10-tmesl-emki"] },
+  { "id": "amharic-lyric-exact", "query": "ተንስአ እምነ ሙታን", "expectedIncludes": ["aman-beaman"] },
+  { "id": "amharic-lyric-partial", "query": "የክብር መውረሻ", "expectedIncludes": ["21-mesqel"] },
+  { "id": "english-title", "query": "Before the most high", "language": "en", "expectedIncludes": ["before-the-most-high"] },
+  { "id": "english-lyrics", "query": "bring forth my praise", "language": "en", "expectedIncludes": ["before-the-most-high"] },
+  { "id": "transliteration", "query": "Wede maderyaw gebiche", "expectedIncludes": ["before-the-most-high"] },
+  { "id": "spelling-variant", "query": "Aman Beamen", "expectedFuzzyIncludes": ["aman-beaman"] },
+  { "id": "werb-title", "query": "Ahade Leke", "form": "werb", "expectedIncludes": ["ahade-leke-we-ahade-lemuse"] },
+  { "id": "geez-language-filter", "query": "Aman Beaman", "language": "gez", "form": "werb", "expectedIncludes": ["aman-beaman-3019"] },
+  { "id": "zero-results", "query": "zzqv-no-such-mezmur-2026", "expectedNone": true }
+]
