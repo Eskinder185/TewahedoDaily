@@ -1,5 +1,11 @@
 # TewahedoDaily Task Board
 
+## Release consolidation — 2026-11-16
+
+- Done on release branch (PR open, not merged): Mezmur reader/library/artwork work, hymns CMS review queue, Synaxarium and Liturgy under Church Library, database-aware hub counts, content workflow tooling.
+- Excluded on purpose: generated Mezmur enrichment datasets and scripts (reports/mezmur-enrichment, scripts/mezmur-enrichment: large, approval and rights not documented), screenshot and audit artifacts, scripts/mezmur-ui-capture.mjs.
+- Open: decide on the Mezmur voice-search language lock (test-search-regression asserts a lock the code no longer has); install axe-core and run the accessibility check; confirm the production setting of VITE_PLAY_DATABASE_ONLY before relying on database-driven hub counts; fix the pre-existing lint error in PrayerListPage; investigate the failing Daily Project Maintenance workflow.
+
 ## Multi-Game Faith Challenges Content Expansion Phase 2 — 2026-11-04
 
 - **Complete locally:** 248 newly generated, source-grounded content units across the 10 games in `artifacts/faith-challenges/phase-2/`:

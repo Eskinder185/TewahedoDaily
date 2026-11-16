@@ -2,6 +2,13 @@
 
 Updated: 2026-10-30
 
+## Release 2026-11-16
+
+- Release integration happens in a separate git worktree built from origin/main; uncommitted work in the shared worktree is copied, never reset or cleaned.
+- Generated Mezmur enrichment output is an editorial proposal and stays out of the application release until its purpose, rights, size and approval are documented.
+- Merging to main deploys through the Cloudflare Pages Git integration, so a merge needs explicit approval of the deployment effect.
+- Synaxarium and Liturgy live under Church Library; their existing /prayers/... routes remain so deep links keep working.
+
 ## Architectural
 
 - Preserve existing routes and lazy-loaded page boundaries.

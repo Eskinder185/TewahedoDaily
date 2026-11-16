@@ -1,5 +1,9 @@
 # TewahedoDaily Handoff
 
+## Release consolidation — 2026-11-16
+
+Branch release/consolidation-2026-11-16 (worktree ../TewahedoDaily-release, node_modules and artifacts/faith-challenges are junctions to the main worktree) holds six commits on top of origin/main 2e47248. The shared worktree still holds the original uncommitted copies of the same changes plus items deliberately not released (see TASK_BOARD). Do not run git clean or reset there. Run the smoke with BASE_URL pointing at a dev server: node scripts/test-release-journeys.mjs. Browser suites need the dev server for the worktree you are testing (a stale preview on port 4173 can belong to another worktree). Church content workflow: scripts/content-workflow/README.md.
+
 ## Multi-Game Faith Challenges Content Expansion Phase 2 — 2026-11-04
 
 Phase 2 generation campaign delivered **248 newly validated content units** across the 10 non-trivia Faith Challenges games:
