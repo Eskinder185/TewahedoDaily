@@ -70,6 +70,9 @@ const HymnTrashAdmin = lazy(() =>
 const MezmurBulkManagement = lazy(() =>
   import('./pages/admin/MezmurBulkManagement').then((m) => ({ default: m.MezmurBulkManagement })),
 )
+const HymnsReviewQueue = lazy(() =>
+  import('./pages/admin/HymnsReviewQueue').then((m) => ({ default: m.HymnsReviewQueue })),
+)
 const AdminPlaceholder = lazy(() => import('./pages/admin/adminPages').then(m => ({ default: m.AdminPlaceholder })))
 const RequireCmsRole = lazy(() => import('./lib/auth/RequireCmsRole').then(m => ({ default: m.RequireCmsRole })))
 const CommunityForm = lazy(() => import('./pages/CommunityForm').then(m => ({ default: m.CommunityForm })))
@@ -209,7 +212,8 @@ export default function App() {
               </Route>
               <Route path="singers" element={<Navigate to="/admin/hymns/zemaris" replace />} />
               <Route path="categories" element={<TaxonomyPage kind="categories" />} />
-              <Route path="occasions" element={<TaxonomyPage kind="occasions" />} />
+              <Route path="occasions" element={<Navigate to="/admin/hymns/categories?tab=occasions" replace />} />
+              <Route path="review" element={<HymnsReviewQueue />} />
               <Route path="tags" element={<TaxonomyPage kind="tags" />} />
             </Route>
 

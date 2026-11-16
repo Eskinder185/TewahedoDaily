@@ -156,10 +156,10 @@ export function HymnBrowseGroupsList() {
       <div className={s.heading}>
         <div>
           <p className={s.eyebrow}>HYMNS PRACTICE</p>
-          <h1>Public browse</h1>
+          <h1>Browse Collections</h1>
           <p className={s.muted}>
-            Canonical categories, subcategories, and occasions from the public Mezmur browse
-            definitions. Artwork changes use the matching CMS collection or section record.
+            Top-level collections and subcategories shown in the public Mezmur Library. Update collection
+            artwork and titles here.
           </p>
         </div>
       </div>

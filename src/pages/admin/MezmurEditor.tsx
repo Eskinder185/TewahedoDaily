@@ -252,6 +252,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
   const admin = profile?.role === 'admin' || profile?.role === 'super_admin'
   const staff = canPublishMezmur(profile?.role)
   const [row, setRow] = useState<Mezmur | undefined>(initial.row ?? undefined)
+  const [slugManuallyEdited, setSlugManuallyEdited] = useState(Boolean(initial.row))
   const [input, setInput] = useState<MezmurInput>(() => (initial.row ? editable(initial.row) : emptyMezmur()))
   const [tags, setTags] = useState(initial.tags)
   const [singers, setSingers] = useState(initial.taxonomy.singers)
@@ -311,7 +312,14 @@ function EditorForm({ initial }: { initial: EditorData }) {
   }, [dirty, busy])
 
   function set<K extends keyof MezmurInput>(key: K, value: MezmurInput[K]) {
-    setInput((previous) => ({ ...previous, [key]: value }))
+    setInput((previous) => {
+      const next = { ...previous, [key]: value }
+      if (key === 'transliteration_title' && !row && !slugManuallyEdited) {
+        next.slug = slugify(String(value || ''))
+      }
+      return next
+    })
+    if (key === 'slug') setSlugManuallyEdited(true)
     setSuccess('')
     if (key in fieldErrors || ['lyrics_amharic', 'lyrics_english', 'lyrics_geez', 'lyrics_oromo', 'transliteration'].includes(key)) {
       setFieldErrors((current) => {
@@ -572,12 +580,12 @@ function EditorForm({ initial }: { initial: EditorData }) {
               <section className={`${s.card} ${s.fields}`}>
                 <div className={s.sectionHeading}>
                   <div><span className={s.step}>1</span><h2>Basic information</h2></div>
-                  <p>Names and a short description used throughout the site.</p>
+                  <p>Names and a short description shown to visitors across the site.</p>
                 </div>
                 {textField('transliteration_title', 'Transliterated title', false, undefined, true)}
                 {textField('title_amharic', 'Amharic title', false, 'am', true)}
                 <label>
-                  Slug *
+                  Web link address (Slug) *
                   <input
                     value={input.slug}
                     onChange={(event) => set('slug', event.target.value)}
@@ -585,8 +593,14 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   />
                 </label>
                 <div className={s.actions}>
-                  <small id="slug-help">Lowercase English letters, numbers, and hyphens.</small>
-                  <button type="button" onClick={() => set('slug', slugify(input.transliteration_title || ''))}>
+                  <small id="slug-help">Used in the public link (/hymns/mezmur/your-hymn). Lowercase English letters, numbers, and hyphens.</small>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSlugManuallyEdited(true)
+                      set('slug', slugify(input.transliteration_title || ''))
+                    }}
+                  >
                     Generate from title
                   </button>
                 </div>
@@ -595,21 +609,21 @@ function EditorForm({ initial }: { initial: EditorData }) {
                     {fieldErrors.slug}
                   </small>
                 ) : null}
-                {textField('description', 'Description', true)}
+                {textField('description', 'Short description', true)}
               </section>
 
               <section className={`${s.card} ${s.fields}`}>
                 <div className={s.sectionHeading}>
-                  <div><span className={s.step}>2</span><h2>Lyrics</h2></div>
-                  <p>Write comfortably, switch languages, or open a distraction-free editor.</p>
+                  <div><span className={s.step}>2</span><h2>Lyrics and translations</h2></div>
+                  <p>Add lyrics in at least one language and optional translations, or open a distraction-free editor.</p>
                 </div>
                 <LyricsWorkspace input={input} fieldErrors={fieldErrors} onChange={set} restoreKey={restoreKey} />
               </section>
 
               <section className={`${s.card} ${s.fields}`}>
                 <div className={s.sectionHeading}>
-                  <div><span className={s.step}>4</span><h2>Media</h2></div>
-                  <p>Optional audio, video, and artwork.</p>
+                  <div><span className={s.step}>5</span><h2>Approved media</h2></div>
+                  <p>Optional artwork, YouTube video, and audio for this hymn.</p>
                 </div>
                 {textField('youtube_url', 'YouTube URL')}
                 {textField('source_url', 'Source / external link')}
@@ -626,7 +640,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   }}
                 />
                 <label>
-                  Legacy audio upload (MP3, M4A, Ogg, WAV · 50 MiB)
+                  Audio upload (MP3, M4A, Ogg, WAV · 50 MiB)
                   <input
                     className={s.fileInput}
                     type="file"
@@ -659,13 +673,31 @@ function EditorForm({ initial }: { initial: EditorData }) {
             <aside className={s.stack}>
               <section className={`${s.card} ${s.fields}`}>
                 <div className={s.sectionHeading}>
-                  <div><span className={s.step}>3</span><h2>Classification</h2></div>
-                  <p>Choose every place this Mezmur belongs. The first selection stays primary for older views.</p>
+                  <div><span className={s.step}>3</span><h2>Singer</h2></div>
+                  <p>Link the Zemari (singer) who performs this hymn so it appears on their public singer page.</p>
                 </div>
-                <p className={s.muted} style={{ marginTop: 0, fontSize: '0.85rem' }}>
-                  Browse groups are derived from these taxonomy fields — you do not assign browse
-                  groups on each Mezmur.
+                <ZemariSelect
+                  options={zemariOptions}
+                  value={input.zemari_id || input.singer_id || null}
+                  onChange={(next) => {
+                    set('zemari_id', next)
+                    set('singer_id', next)
+                  }}
+                  onCreated={zemariCreated}
+                  canCreate={staff}
+                  disabled={busy || !canEdit}
+                />
+                <p className={s.muted} style={{ marginTop: -4, fontSize: '0.85rem' }}>
+                  Manage singer profiles under{' '}
+                  <Link to={ADMIN_PATHS.hymnsZemaris}>Zemaris</Link>.
                 </p>
+              </section>
+
+              <section className={`${s.card} ${s.fields}`}>
+                <div className={s.sectionHeading}>
+                  <div><span className={s.step}>4</span><h2>Categories and occasions</h2></div>
+                  <p>Choose where this hymn belongs in the public library. The first selection stays primary.</p>
+                </div>
                 <label>
                   Language
                   <select
@@ -682,7 +714,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   </select>
                 </label>
                 <label>
-                  Form (Mezmur / Wereb)
+                  Hymn type (Mezmur / Wereb)
                   <select
                     aria-label="Form"
                     value={normalizeMezmurForm(input.form)}
@@ -698,7 +730,7 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   onChange={setCategorySlugs}
                   options={canonicalClassificationOptions('category', categorySlugs, initial.categories, initial.configured?.categories ?? null)}
                   placeholder="Search categories…"
-                  helpText="Canonical public categories, ordered by public browse group. The first selected category is primary."
+                  helpText="Saints and themes shown in public Categories. The first selected category is primary."
                 />
                 <SearchableMultiSelect
                   label="Occasions"
@@ -706,23 +738,8 @@ function EditorForm({ initial }: { initial: EditorData }) {
                   onChange={setOccasionSlugs}
                   options={canonicalClassificationOptions('occasion', occasionSlugs, initial.occasions, initial.configured?.occasions ?? null)}
                   placeholder="Search occasions…"
-                  helpText="Canonical public occasions, ordered by public browse group. Existing legacy links remain selectable."
+                  helpText="Church feasts and fasts shown in public Occasions."
                 />
-                <ZemariSelect
-                  options={zemariOptions}
-                  value={input.zemari_id || input.singer_id || null}
-                  onChange={(next) => {
-                    set('zemari_id', next)
-                    set('singer_id', next)
-                  }}
-                  onCreated={zemariCreated}
-                  canCreate={staff}
-                  disabled={busy || !canEdit}
-                />
-                <p className={s.muted} style={{ marginTop: -8, fontSize: '0.85rem' }}>
-                  Manage profiles under{' '}
-                  <Link to={ADMIN_PATHS.hymnsZemaris}>Hymns · Zemaris</Link>.
-                </p>
                 <details className={s.advanced}>
                   <summary>Advanced: hymn sections <span>{sectionIds.length} selected</span></summary>
                   <div className={s.advancedBody}>
@@ -740,38 +757,28 @@ function EditorForm({ initial }: { initial: EditorData }) {
                     />
                   </div>
                 </details>
-                <fieldset>
-                  <legend>Tags</legend>
-                  {!initial.taxonomy.tags.length && <p className={s.muted}>No tags available.</p>}
-                  {initial.taxonomy.tags.map((tag) => (
-                    <label className={s.check} key={tag.id}>
-                      <input
-                        type="checkbox"
-                        checked={tags.includes(tag.id)}
-                        onChange={(event) =>
-                          setTags((previous) =>
-                            event.target.checked ? [...previous, tag.id] : previous.filter((id) => id !== tag.id),
-                          )
-                        }
-                      />
-                      {tag.name}
-                    </label>
-                  ))}
-                </fieldset>
-                {admin && <Link to="/admin/tags">Manage tags →</Link>}
               </section>
 
               <section className={`${s.card} ${s.fields}`}>
                 <div className={s.sectionHeading}>
-                  <div><span className={s.step}>5</span><h2>Preview &amp; publication</h2></div>
+                  <div><span className={s.step}>6</span><h2>Preview and publication</h2></div>
                   <p>Review the unsaved form exactly as it stands, then save a draft or publish.</p>
                 </div>
                 <button type="button" onClick={() => setPreview(true)}>Open live preview</button>
+                <ul className={s.muted} style={{ margin: 0, paddingLeft: 18, fontSize: '0.88rem' }} aria-label="Publish readiness checklist">
+                  <li>{input.transliteration_title?.trim() ? '✓' : '○'} Transliterated title</li>
+                  <li>{input.title_amharic?.trim() ? '✓' : '○'} Amharic title</li>
+                  <li>{/^[a-z0-9]+(-[a-z0-9]+)*$/.test(input.slug) ? '✓' : '○'} Valid web link address</li>
+                  <li>
+                    {[input.lyrics_amharic, input.lyrics_english, input.lyrics_geez, input.lyrics_oromo, input.transliteration].some((v) => v?.trim()) ? '✓' : '○'}{' '}
+                    Lyrics in at least one language
+                  </li>
+                </ul>
                 <p className={s.muted}>
-                  CMS role: {profile?.role || 'none'} · Status: {mezmurStatusLabel(currentStatus)}
+                  Status: {mezmurStatusLabel(currentStatus)} · Role: {profile?.role || 'none'}
                 </p>
                 <p className={s.muted}>
-                  Drafts are private. Publishing requires both titles, a slug, and hymn content.
+                  Drafts are private and never shown on the public site.
                 </p>
               </section>
             </aside>
