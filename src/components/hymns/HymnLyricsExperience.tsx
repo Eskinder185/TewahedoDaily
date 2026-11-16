@@ -719,14 +719,19 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
                   type="button"
                   role="tab"
                   aria-selected={activeLang === tab.id}
-                  aria-controls={`lyrics-tabpanel-${tab.id}`}
+                  aria-controls="lyrics-tabpanel"
                   tabIndex={activeLang === tab.id ? 0 : -1}
                   className={`${styles.languageTab} ${activeLang === tab.id ? styles.languageTabActive : ''}`}
                   onClick={() => setSelectedLang(tab.id)}
                   onKeyDown={(event) => {
-                    if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return
                     const i = availableLangs.findIndex((l) => l.id === tab.id)
-                    const next = availableLangs[(i + (event.key === 'ArrowRight' ? 1 : availableLangs.length - 1)) % availableLangs.length]
+                    let next = tab
+                    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = availableLangs[(i + 1) % availableLangs.length]
+                    else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = availableLangs[(i + availableLangs.length - 1) % availableLangs.length]
+                    else if (event.key === 'Home') next = availableLangs[0]
+                    else if (event.key === 'End') next = availableLangs[availableLangs.length - 1]
+                    else return
+                    event.preventDefault()
                     setSelectedLang(next.id)
                     document.getElementById(`lyrics-tab-${next.id}`)?.focus()
                   }}
@@ -903,7 +908,7 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
 
       {/* Active Tab Panel with Lyrics */}
       <div
-        id={`lyrics-tabpanel-${currentLyric.id}`}
+        id="lyrics-tabpanel"
         role="tabpanel"
         aria-labelledby={availableLangs.length > 1 ? `lyrics-tab-${currentLyric.id}` : 'lyrics-tools-title'}
         className={`${styles.reader} ${themeClass}`}
@@ -929,12 +934,12 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
                   <div className={styles.bothPairedSection}>
                     {sec.lines.map((line) => (
                       <div key={line.id} className={styles.linePair}>
-                        <span className={`${styles.lineOriginal} ${styles.ethiopicTypography}`}>
+                        <span lang="am" className={`${styles.lineOriginal} ${styles.ethiopicTypography}`}>
                           {line.cleanOriginal}
                           {line.repetitionCount > 1 ? ` (${line.repetitionCount}×)` : ''}
                         </span>
                         {line.cleanTransliteration ? (
-                          <span className={`${styles.lineTranslit} ${styles.latinTypography}`}>
+                          <span lang="am-Latn" className={`${styles.lineTranslit} ${styles.latinTypography}`}>
                             {line.cleanTransliteration}
                             {line.repetitionCount > 1 ? ` (${line.repetitionCount}×)` : ''}
                           </span>
@@ -967,7 +972,7 @@ export function HymnLyricsExperience({ item, canonical, isLoading = false, isErr
         {showTransliteration && inlineTransliteration ? (
           <div className={styles.transliteration}>
             <h3>{t.transliteration}</h3>
-            <p>{inlineTransliteration}</p>
+            <p lang="am-Latn">{inlineTransliteration}</p>
           </div>
         ) : null}
       </div>

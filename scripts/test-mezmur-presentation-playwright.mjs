@@ -350,8 +350,18 @@ await test('Present Mezmur: settings update slides immediately (lines, size, lan
   await page.locator('[data-testid="presentation-lang-english"]').click()
   check((await page.locator('[data-testid="presentation-slide-text"]').innerText()).includes('Hallelujah'), 'English')
   await page.locator('[data-testid="presentation-theme-ivory"]').click()
-  const bg = await page.locator('[data-testid="mezmur-presentation"]').evaluate((el) => getComputedStyle(el).backgroundColor)
-  check(bg === 'rgb(251, 246, 234)', `ivory background ${bg}`)
+  await page.locator('[data-testid="mezmur-presentation"][data-presentation-theme="ivory"]').waitFor()
+  await page.waitForFunction(() => {
+    const root = document.querySelector('[data-testid="mezmur-presentation"]')
+    return root && getComputedStyle(root).backgroundColor === 'rgb(251, 246, 234)'
+  })
+  const themeState = await page.locator('[data-testid="mezmur-presentation"]').evaluate((el) => ({
+    background: getComputedStyle(el).backgroundColor,
+    variable: getComputedStyle(el).getPropertyValue('--p-bg'),
+    inline: el.getAttribute('style'),
+    theme: el.getAttribute('data-presentation-theme'),
+  }))
+  check(themeState.background === 'rgb(251, 246, 234)', `ivory background ${JSON.stringify(themeState)}`)
   await context.close()
 })
 

@@ -28,29 +28,32 @@ import { confirmedAlternatesFor } from '../lib/mezmur/confirmedVersions.ts'
 import { KNOWLEDGE_CANDIDATE_PASSAGES } from '../data/knowledgeCandidatePassages.ts'
 
 import { publicErrorMessage } from '../lib/errors/publicError'
+import { useLocale } from '../lib/i18n/locale'
 
 export function PublicMezmurDetail() {
   const { slug } = useParams()
+  const { locale } = useLocale()
+  const am = locale === 'am'
   const result = useAsync(useCallback(() => detail(slug || ''), [slug]))
 
   return (
     <section className={s.page}>
-      {result.loading ? <p role="status">Loading hymn…</p> : null}
+      {result.loading ? <p role="status">{am ? 'መዝሙሩ በመጫን ላይ…' : 'Loading hymn…'}</p> : null}
       {result.error ? (
         <div className={s.errorBox} role="alert">
-          <p>{publicErrorMessage(result.error, 'This hymn could not be loaded right now. Please try again.')}</p>
+          <p>{publicErrorMessage(result.error, am ? 'መዝሙሩን አሁን መጫን አልተቻለም። እንደገና ይሞክሩ።' : 'This hymn could not be loaded right now. Please try again.')}</p>
           <button type="button" className={s.primaryBtn} onClick={result.reload}>
-            Try again
+            {am ? 'እንደገና ይሞክሩ' : 'Try again'}
           </button>
         </div>
       ) : null}
       {!result.loading && !result.error && !result.data ? (
         <div className={s.empty}>
-          <h1 className={s.title}>Hymn not found</h1>
-          <p>This hymn is not currently published.</p>
+          <h1 className={s.title}>{am ? 'መዝሙሩ አልተገኘም' : 'Hymn not found'}</h1>
+          <p>{am ? 'ይህ መዝሙር አሁን አልታተመም።' : 'This hymn is not currently published.'}</p>
           <div className={s.ctaRow}>
-            <Link to="/hymns">Back to library</Link>
-            <Link to="/submit-mezmur">Contribute a Mezmur</Link>
+            <Link to="/hymns">{am ? 'ወደ መዝሙር ቤተ መጻሕፍት ተመለስ' : 'Back to library'}</Link>
+            <Link to="/submit-mezmur">{am ? 'መዝሙር ያቅርቡ' : 'Contribute a Mezmur'}</Link>
           </div>
         </div>
       ) : null}
@@ -61,6 +64,8 @@ export function PublicMezmurDetail() {
 
 function PracticeBody({ item }: { item: PublicMezmur }) {
   const navigate = useNavigate()
+  const { locale } = useLocale()
+  const am = locale === 'am'
   // `?q=` comes from a lyric search result: show the matched passage in the viewer.
   const [searchParams] = useSearchParams()
   const lyricsRef = useLyricMatchHighlight(searchParams.get('q') || '')
@@ -218,7 +223,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
         formLabel={item.form === 'werb' ? 'Werb' : 'Mezmur'}
         badges={badges}
         onBack={() => navigate(queue.href && /^\/(hymns|practice)([/?]|$)/.test(queue.href) ? queue.href : '/hymns')}
-        backLabel="Back to library"
+        backLabel={am ? 'ወደ መዝሙር ቤተ መጻሕፍት ተመለስ' : 'Back to library'}
         footerActions={
           activeUrl || payload.videoId ? (
             <div className={s.customActions}>
@@ -287,6 +292,8 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
         </label>
         <input
           id="custom-youtube"
+          aria-invalid={customError ? 'true' : undefined}
+          aria-describedby={customError ? 'custom-youtube-error' : undefined}
           value={customDraft}
           onChange={(event) => {
             setCustomDraft(event.target.value)
@@ -296,7 +303,7 @@ function PracticeBody({ item }: { item: PublicMezmur }) {
           autoComplete="off"
           inputMode="url"
         />
-        {customError ? <p className={s.fieldError}>{customError}</p> : null}
+        {customError ? <p id="custom-youtube-error" className={s.fieldError} role="alert">{customError}</p> : null}
         <div className={s.customActions}>
           <button type="button" className={s.primaryBtn} onClick={loadCustom}>
             Load video
