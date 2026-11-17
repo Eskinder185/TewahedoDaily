@@ -90,3 +90,12 @@ The evidence does **not** establish complete scoring and replay through live dat
 - [ ] Dry-run exact duplicate, conflict, invalid-row, interrupted-import, unchanged rollback, and edited-row rollback-blocked scenarios.
 - [ ] Review PR #15 independently of PR #14 deployment behavior; do not let a base-branch merge deploy these changes implicitly.
 - [ ] Obtain separate authorization before production SQL, production import, flags, merge, push, or deploy.
+
+## Addendum — rollback security review (local, disposable PostgreSQL only)
+
+- `rollback_play_content_import` must stay `SECURITY DEFINER`: `service_role` has no DELETE grant and bypasses RLS, so as `SECURITY INVOKER` it fails with `permission denied for table play_content_items` (reproduced). Making it work would need a DELETE grant on every row, including published ones, which is strictly broader than the bounded function.
+- The authorization suite now allowlists exactly `public.rollback_play_content_import(uuid)` (`scripts/migration-security-audit.mjs`) and fails on any other definer function, a changed signature, a missing/partial REVOKE, a grant to anyone but `service_role`, a missing empty `search_path`, dynamic SQL, or an unqualified relation. 14 negative mutations prove it. The "no DELETE/TRUNCATE/DROP" rule still applies everywhere except the single conditioned DELETE in that function.
+- The rollback now deletes with one atomic, fully-conditioned statement (stable ID, draft, never reviewed/published, unchanged `updated_at` and payload hash), fails closed on an unknown or null batch, and derives batch status from the audit rows so a repeat call cannot hide a partial rollback.
+- The preflight now verifies `church_library_books.slug` and `publication_status` (text) and the three Supabase roles before any change. Four broken-catalog variants abort with the catalog unchanged.
+- `supabase/tests/faith_challenges_rollback_security.sql` covers catalog shape/ownership/ACL, denial for anon/user/editor/admin, no direct service-role delete/update, cross-import, edited/reviewed/published/returned rows, repeat calls, and a failure injected mid-rollback. A two-session concurrency probe showed a concurrently edited draft is preserved.
+- Still unverified: hosted owner/default privileges, PostgREST/JWT role switching, and any Supabase-managed role behaviour.

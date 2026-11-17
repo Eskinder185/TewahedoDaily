@@ -26,6 +26,21 @@ begin
         where a.attrelid='public.play_content_items'::regclass and a.attname=v.name and not a.attisdropped)) then
     raise exception 'Required play_content_items column is missing';
   end if;
+  -- The publication gate reads public.church_library_books at publish time. Verify the hosted catalog really has the
+  -- columns it needs now, instead of discovering a mismatch (or silently blocking every library-backed item) later.
+  if to_regclass('public.church_library_books') is null then
+    raise exception 'public.church_library_books is missing; the Church Library source gate cannot run';
+  end if;
+  if (select count(*) from pg_attribute a
+        where a.attrelid='public.church_library_books'::regclass and not a.attisdropped
+          and a.attname in ('slug','publication_status')
+          and format_type(a.atttypid,a.atttypmod) in ('text','character varying','citext'))<>2 then
+    raise exception 'public.church_library_books must have text columns slug and publication_status';
+  end if;
+  if not exists(select 1 from pg_roles where rolname='anon') or not exists(select 1 from pg_roles where rolname='authenticated')
+     or not exists(select 1 from pg_roles where rolname='service_role') then
+    raise exception 'Supabase roles anon, authenticated and service_role must exist';
+  end if;
   if exists (select 1 from public.play_content_items
       where question_id is null or question_id !~ '^[a-z0-9]+(-[a-z0-9]+)*$' or
         (stable_id is not null and (stable_id is distinct from question_id or payload->>'id' is distinct from stable_id)) or
@@ -575,14 +590,31 @@ end $$;
 revoke all on function public.import_play_content_drafts(jsonb,text,text) from public,anon,authenticated;
 grant execute on function public.import_play_content_drafts(jsonb,text,text) to service_role;
 
+-- The ONLY SECURITY DEFINER function in this proposal, and it must stay that way (scripts/test-faith-challenges-authorization.mjs
+-- allowlists exactly this signature). Why it is definer: service_role has no DELETE grant on play_content_items and BYPASSRLS, so
+-- SECURITY INVOKER fails with "permission denied" unless service_role were granted DELETE on EVERY row, published ones included.
+-- A definer function limited to "unchanged drafts this batch inserted" is strictly narrower than that grant.
+-- Assumptions to verify on staging: the owner is the migration role (postgres on Supabase); EXECUTE is revoked from PUBLIC, anon
+-- and authenticated below and granted only to service_role; search_path is empty and every reference is schema-qualified; there is
+-- no dynamic SQL. Deletion is ONE atomic statement whose WHERE clause carries every precondition, so a concurrent edit or status
+-- change committed after the audit row was read makes the DELETE match nothing instead of removing a changed row.
 create or replace function public.rollback_play_content_import(p_batch_id uuid)
 returns jsonb language plpgsql security definer set search_path='' as $$
-declare audit_row public.play_content_import_items; removed integer:=0; blocked integer:=0;
+declare audit_row public.play_content_import_items; removed integer:=0; blocked integer:=0; deleted_id uuid;
+  new_status text;
 begin
+  if p_batch_id is null or not exists(select 1 from public.play_content_import_batches b where b.id=p_batch_id) then
+    raise exception 'Unknown import batch' using errcode='P0002';
+  end if;
   for audit_row in select * from public.play_content_import_items where batch_id=p_batch_id and result='inserted' order by ordinal for update loop
-    if exists(select 1 from public.play_content_items p where p.id=audit_row.inserted_id and p.status='draft'
-        and p.updated_at=audit_row.inserted_updated_at and public.play_content_payload_sha256(p.payload)=audit_row.payload_sha256) then
-      delete from public.play_content_items where id=audit_row.inserted_id;
+    deleted_id:=null;
+    delete from public.play_content_items p
+      where p.id=audit_row.inserted_id and p.stable_id=audit_row.stable_id and p.status='draft'
+        and p.published_at is null and p.published_by is null and p.reviewed_by is null and p.reviewed_at is null
+        and p.updated_at=audit_row.inserted_updated_at
+        and public.play_content_payload_sha256(p.payload)=audit_row.payload_sha256
+      returning p.id into deleted_id;
+    if deleted_id is not null then
       update public.play_content_import_items set result='rolled_back',rollback_eligible=false,rollback_reason='Deleted unchanged draft created by this batch'
         where batch_id=p_batch_id and ordinal=audit_row.ordinal; removed:=removed+1;
     else
@@ -591,8 +623,14 @@ begin
         where batch_id=p_batch_id and ordinal=audit_row.ordinal; blocked:=blocked+1;
     end if;
   end loop;
-  update public.play_content_import_batches set status=case when blocked=0 then 'rolled_back' else 'partial_rollback' end,completed_at=now()
-    where id=p_batch_id;
+  -- Derive the batch status from the audit rows so a repeat call can never turn a partial rollback into "rolled_back".
+  new_status:=case
+    when exists(select 1 from public.play_content_import_items i where i.batch_id=p_batch_id and i.result='rollback_blocked') then 'partial_rollback'
+    when exists(select 1 from public.play_content_import_items i where i.batch_id=p_batch_id and i.result='rolled_back') then 'rolled_back'
+    else null end;
+  if new_status is not null then
+    update public.play_content_import_batches set status=new_status,completed_at=now() where id=p_batch_id;
+  end if;
   return jsonb_build_object('batch_id',p_batch_id,'removed',removed,'blocked',blocked);
 end $$;
 revoke all on function public.rollback_play_content_import(uuid) from public,anon,authenticated;
