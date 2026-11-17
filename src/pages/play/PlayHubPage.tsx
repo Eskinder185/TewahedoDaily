@@ -8,8 +8,9 @@ import { LocalPreviewBanner } from '../../components/play/LocalPreviewBanner'
 import { LOCAL_PREVIEW } from '../../lib/localPreview'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useLocale } from '../../lib/i18n/locale'
-import { GAME_ART, handlePlayImageError, imageById } from '../../lib/play/imageCatalog'
-import { describeContent, formatGameCounts, progressSummary, registryId, totalsByUnit } from '../../lib/play/contentRegistry'
+import { GAME_ART, PLAY_IMAGES, feastImages, handlePlayImageError, holyPersonImages, imageById } from '../../lib/play/imageCatalog'
+import { useLoadablePictures } from '../../lib/play/useLoadablePictures'
+import { describeContent, formatGameCounts, progressSummary, registryId, totalsByUnit, unitLabel } from '../../lib/play/contentRegistry'
 import { databasePlayEnabled } from '../../lib/play/publishedContent'
 import type { StudioGame } from '../../lib/play/contentStudio'
 import { usePublishedHubSummary } from '../../hooks/usePublishedPlayContent'
@@ -76,7 +77,23 @@ export function PlayHubPage() {
         ? '—'
         : '…'
     : (totals.questions ?? 0) + (totals.clues ?? 0) + (totals.excerpts ?? 0)
+  // Picture games count the pictures that can actually be shown (a picture whose image and fallback both fail is skipped in play).
+  const feastPictures = useLoadablePictures(feastImages())
+  const saintPictures = useLoadablePictures(holyPersonImages())
+  const memoryPictures = useLoadablePictures(PLAY_IMAGES)
+  const pictureAvailability: Record<string, { usable: number; skipped: number } | undefined> = {
+    feasts: feastPictures.checking ? undefined : { usable: feastPictures.available.length, skipped: feastPictures.skipped.length },
+    saints: saintPictures.checking ? undefined : { usable: saintPictures.available.length, skipped: saintPictures.skipped.length },
+    'icon-memory': memoryPictures.checking ? undefined : { usable: memoryPictures.available.length, skipped: memoryPictures.skipped.length },
+  }
   const cardContent = (gameId: string) => {
+    const availability = pictureAvailability[gameId]
+    if (!dbOnly && availability && availability.skipped > 0) {
+      return {
+        primary: `${availability.usable.toLocaleString(am ? 'am-ET' : 'en-US')} ${unitLabel('images', availability.usable, locale)}`,
+        secondary: am ? `${availability.skipped} ተጨማሪ ሥዕሎች አሁን ሊታዩ አልቻሉም` : `${availability.skipped} more can’t be shown right now`,
+      }
+    }
     if (!dbOnly) return describeContent(gameId, locale) ?? undefined
     if (hubSummary.state === 'loading' || hubSummary.state === 'idle') return { primary: am ? 'በመጫን ላይ…' : 'Loading…' }
     if (hubSummary.state === 'error') return { primary: am ? 'መጫን አልተቻለም' : 'Unavailable' }

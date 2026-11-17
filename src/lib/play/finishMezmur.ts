@@ -165,8 +165,11 @@ export function buildFinishMezmurBank(
           .slice(0, 3)
           .map(([, reading]) => reading)
         if (distractors.length < 3) return
-        const options = shuffle([answer, ...distractors], random).map((reading, k) => ({ key: String(k), am: reading.am, tr: reading.tr }))
-        const correctKey = options.find((o) => normalizeForCompare(o.am) === line.norm)!.key
+        // Track the answer by identity, not by re-normalising option text: cleaning is not idempotent for a few real lines
+        // (e.g. a trailing "/2/" or a bare number), and the re-derived lookup returned undefined and crashed the whole page.
+        const ordered = shuffle([{ reading: answer, correct: true }, ...distractors.map((reading) => ({ reading, correct: false }))], random)
+        const options = ordered.map(({ reading }, k) => ({ key: String(k), am: reading.am, tr: reading.tr }))
+        const correctKey = String(ordered.findIndex((entry) => entry.correct))
         questions.push({ ...base, options, correctKey })
       } else if (mode === 'arrange') {
         const words = line.am.split(/\s+/).filter(Boolean)
