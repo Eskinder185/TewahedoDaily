@@ -4,6 +4,8 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { GameCard, type PlayGameCard } from '../../components/play/GameCard'
 import { GameDifficultyPicker, type GameDifficulty } from '../../components/play/GameDifficultyPicker'
 import { PlayProgressPanel } from '../../components/play/PlayProgressPanel'
+import { LocalPreviewBanner } from '../../components/play/LocalPreviewBanner'
+import { LOCAL_PREVIEW } from '../../lib/localPreview'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useLocale } from '../../lib/i18n/locale'
 import { GAME_ART, handlePlayImageError, imageById } from '../../lib/play/imageCatalog'
@@ -83,6 +85,7 @@ export function PlayHubPage() {
 
   return (
     <div className={styles.page} lang={locale}>
+      {LOCAL_PREVIEW && <LocalPreviewBanner />}
       {/* ---------- Hero ---------- */}
       <section className={styles.hero} aria-labelledby="play-title">
         <div className={styles.heroGlow} aria-hidden="true" />

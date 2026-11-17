@@ -20,6 +20,8 @@
     "build:play-bank": "npx --yes tsx scripts/play/build-published-bank.ts",
     "test:play-content": "tsx scripts/test-faith-challenge-content.ts",
     "test:play-replay": "tsx scripts/test-play-replay-selection.ts",
+    "preview:local": "node scripts/local-preview.mjs",
+    "preview:local:lan": "node scripts/local-preview.mjs --lan",
     "test:play-hub": "node scripts/test-faith-challenge-hub-browser.mjs",
     "play:consolidate": "tsx scripts/play/consolidate-content.ts",
     "test:consolidation": "tsx scripts/test-consolidation.ts",

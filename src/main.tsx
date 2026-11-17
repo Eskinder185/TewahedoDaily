@@ -6,6 +6,11 @@ import { LocaleProvider } from './lib/i18n/locale'
 import { ThemeProvider } from './components/layout/ThemeProvider'
 import './index.css'
 import App from './App.tsx'
+import { LOCAL_PREVIEW } from './lib/localPreview'
+import { installLocalPreviewWriteGuard } from './lib/localPreviewGuard'
+
+// Local preview only (compile-time false in production builds): refuse every non-read request to the hosted Supabase origin.
+if (LOCAL_PREVIEW) installLocalPreviewWriteGuard()
 
 registerSW({ immediate: true })
 

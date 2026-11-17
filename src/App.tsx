@@ -1,3 +1,4 @@
+import { LOCAL_PREVIEW } from './lib/localPreview'
 import { lazy, Suspense } from 'react'
 import { Navigate, Routes, Route, useParams, useLocation } from 'react-router-dom'
 import { AppShell } from './components/layout/AppShell'
@@ -164,6 +165,10 @@ const PlayGamePage = lazy(() => import('./pages/play/PlayGamePage').then(m => ({
 const AdventurePage = lazy(() => import('./pages/play/AdventurePage').then(m => ({ default: m.AdventurePage })))
 const LiveRoomPage = lazy(() => import('./pages/play/LiveRoomPage').then(m => ({ default: m.LiveRoomPage })))
 const LiveRoomEntry = lazy(() => import('./pages/play/LiveRoomPage').then(m => ({ default: m.LiveRoomEntry })))
+// LOCAL PREVIEW only. `import.meta.env.DEV` is written out here (not read through LOCAL_PREVIEW) on purpose: Vite replaces it with the
+// literal `false` in production builds, so the bundler drops this dynamic import and never emits the review screen chunk at all.
+// scripts/test-local-preview-production-safe.mjs fails the build check if that chunk ever ships.
+const LocalPreviewReview = import.meta.env.DEV && import.meta.env.VITE_LOCAL_PREVIEW === 'true' ? lazy(() => import('./pages/play/LocalPreviewReview').then(m => ({ default: m.LocalPreviewReview }))) : null
 const GameNightPage = lazy(() => import('./pages/play/GameNightPage').then(m => ({ default: m.GameNightPage })))
 
 export default function App() {
@@ -339,6 +344,7 @@ export default function App() {
         <Route path="/play/adventures" element={<Suspense fallback={<PageLoadingFallback />}><AdventurePage /></Suspense>} />
         <Route path="/play/live" element={<Suspense fallback={<PageLoadingFallback />}><LiveRoomEntry /></Suspense>} />
         <Route path="/play/live/:code" element={<Suspense fallback={<PageLoadingFallback />}><LiveRoomPage /></Suspense>} />
+        {LOCAL_PREVIEW && LocalPreviewReview && <Route path="/play/local-review" element={<Suspense fallback={<PageLoadingFallback />}><LocalPreviewReview /></Suspense>} />}
         <Route path="/play/game-night" element={<Suspense fallback={<PageLoadingFallback />}><GameNightPage /></Suspense>} />
         <Route path="/bible" element={<Suspense fallback={<PageLoadingFallback />}><BibleCatalogPage /></Suspense>} />
         <Route path="/bible/:bookSlug" element={<Suspense fallback={<PageLoadingFallback />}><BibleBookPage /></Suspense>} />

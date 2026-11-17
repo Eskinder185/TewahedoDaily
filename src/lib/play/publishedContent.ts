@@ -1,4 +1,5 @@
 import { supabase } from '../supabase/client'
+import { LOCAL_PREVIEW } from '../localPreview'
 import { fromLibraryRow, isStudioActivity, publicActivityDraft, activitySources, validateLibraryDraft } from './studioActivity'
 import { STUDIO_GAMES, type StudioDraft, type StudioGame } from './contentStudio'
 import type { ContentUnit, GameCounts } from './contentRegistry'
@@ -15,7 +16,9 @@ const PAGE = 100, MAX = 1000
 /** The hub aggregates every game in one scan, so it needs more headroom than a single game bank. */
 const HUB_MAX = 5000
 /** Explicit rollout switch: production cutover requires separately verified content/RLS. */
-export const databasePlayEnabled = () => import.meta.env.VITE_PLAY_DATABASE_ONLY === 'true'
+/** The local preview always plays the bundled banks, so a leftover database-only flag can never show empty games there.
+ *  LOCAL_PREVIEW is a compile-time false in production builds, so production behaviour is exactly the line below. */
+export const databasePlayEnabled = () => !LOCAL_PREVIEW && import.meta.env.VITE_PLAY_DATABASE_ONLY === 'true'
 
 const UNIT_BY_GAME: Record<StudioGame, ContentUnit> = {
   trivia: 'questions',
