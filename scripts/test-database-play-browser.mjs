@@ -189,11 +189,11 @@ try {
     await page.getByRole('button', { name: /^Save draft/ }).click()
     await page.waitForURL(url => url.searchParams.get('item') !== 'new')
     await page.getByRole('button', { name: /^Save shared activity draft/ }).click()
-    await page.getByText(/Shared activity draft\. Publishing is blocked/).waitFor()
+    await page.getByText(/Shared activity draft\. Publication requires/).waitFor()
     const saved = rows.at(-1)
     assert.equal(saved.status, 'draft'); assert.equal(saved.question_id, saved.stable_id)
     assert.equal(saved.payload.format, 'studio-activity-v1'); assert.equal(saved.payload.draft.game, 'bible-timeline')
-    await page.reload(); await page.getByText(/Shared activity draft\. Publishing is blocked/).waitFor()
+    await page.reload(); await page.getByText(/Shared activity draft\. Publication requires/).waitFor()
     assert.equal(await page.getByRole('button', { name: 'Publish / አትም', exact: true }).count(), 0)
   })
   await run('mobile bilingual empty states and navigation remain usable', async () => {
