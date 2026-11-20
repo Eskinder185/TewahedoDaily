@@ -16,7 +16,10 @@ import { join } from 'node:path'
 import { chromium } from 'playwright'
 
 const PORT = process.env.LOCAL_PREVIEW_PORT || '5274'
-const BASE = `http://127.0.0.1:${PORT}`
+// PLAY_TEST_BASE_URL runs the same journeys against a deployed production build (a Cloudflare preview or the live site) instead of
+// the local preview: no server is started, preview-only checks are inverted (no banner, no guard, no review screen).
+const REMOTE = process.env.PLAY_TEST_BASE_URL ? process.env.PLAY_TEST_BASE_URL.replace(/\/+$/, '') : ''
+const BASE = REMOTE || `http://127.0.0.1:${PORT}`
 const SHOTS = join('.local-preview', 'screenshots')
 mkdirSync(SHOTS, { recursive: true })
 
@@ -50,9 +53,9 @@ const L = {
 
 // ---------------------------------------------------------------- server
 const lines = []
-const server = spawn(process.execPath, ['scripts/local-preview.mjs'], { env: { ...process.env, LOCAL_PREVIEW_PORT: PORT }, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })
-server.stdout.on('data', (d) => lines.push(String(d))); server.stderr.on('data', (d) => lines.push(String(d)))
-const stopServer = () => { if (process.platform === 'win32') spawnSync('taskkill', ['/pid', String(server.pid), '/T', '/F'], { stdio: 'ignore' }); else server.kill() }
+const server = REMOTE ? null : spawn(process.execPath, ['scripts/local-preview.mjs'], { env: { ...process.env, LOCAL_PREVIEW_PORT: PORT }, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })
+server?.stdout.on('data', (d) => lines.push(String(d))); server?.stderr.on('data', (d) => lines.push(String(d)))
+const stopServer = () => { if (!server) return; if (process.platform === 'win32') spawnSync('taskkill', ['/pid', String(server.pid), '/T', '/F'], { stdio: 'ignore' }); else server.kill() }
 process.on('exit', stopServer)
 for (let i = 0; i < 120; i += 1) {
   try { if ((await fetch(`${BASE}/play`)).ok) break } catch { /* not up yet */ }
@@ -345,7 +348,7 @@ async function deterministicChecks(browser) {
     try {
       const seen = []
       for (const theme of ['day', 'night']) {
-        for (const route of ['/play', '/play/match', '/play/feasts', '/play/local-review']) {
+        for (const route of ['/play', '/play/match', '/play/feasts', ...(REMOTE ? [] : ['/play/local-review'])]) {
           await page.goto(`${BASE}${route}`, { waitUntil: 'domcontentloaded' })
           await main(page).first().waitFor({ timeout: 25000 })
           await page.evaluate((value) => { document.documentElement.setAttribute('data-theme', value) }, theme)
@@ -389,7 +392,8 @@ try {
       try {
         await page.goto(`${BASE}/play`, { waitUntil: 'domcontentloaded' })
         await page.waitForFunction(() => document.querySelectorAll('[data-game-card]').length === 12, null, { timeout: 25000 })
-        assert.ok(await page.locator('[data-local-preview-banner]').isVisible(), 'LOCAL PREVIEW banner visible')
+        if (REMOTE) assert.equal(await page.locator('[data-local-preview-banner]').count(), 0, 'no LOCAL PREVIEW banner in a deployed build')
+        else assert.ok(await page.locator('[data-local-preview-banner]').isVisible(), 'LOCAL PREVIEW banner visible')
         const counts = await page.locator('[data-game-content]').allInnerTexts()
         assert.equal(counts.length, 12)
         assert.ok(counts.every((c) => c.trim().length > 0 && !/^0\b/.test(c.trim())), `every card shows an honest non-zero count: ${counts.join(' | ').slice(0, 200)}`)
@@ -438,7 +442,16 @@ try {
       }
 
       // ---- write guard + local review screen (once, at the first viewport)
-      if (viewport === VIEWPORTS[0] && locale === 'en' && !wantGames) {
+      if (REMOTE && viewport === VIEWPORTS[0] && locale === 'en' && !wantGames) {
+        try {
+          const state = await page.evaluate(() => ({ guard: window.__localPreviewGuard, fetchNative: /\[native code\]/.test(Function.prototype.toString.call(window.fetch)) }))
+          assert.equal(state.guard, undefined, 'no write guard in a deployed build'); assert.ok(state.fetchNative, 'window.fetch untouched')
+          await page.goto(`${BASE}/play/local-review`, { waitUntil: 'domcontentloaded' }); await page.waitForTimeout(1500)
+          assert.equal(await page.locator('[data-local-review], [data-review-summary]').count(), 0, 'no review screen in a deployed build')
+          record({ game: 'production-build', viewport: viewport.w, locale, kind: 'safety', ok: true, note: 'deployed build: no banner, no write guard, native fetch, no /play/local-review screen' })
+        } catch (error) { record({ game: 'production-build', viewport: viewport.w, locale, kind: 'safety', ok: false, note: String(error.message).split('\n')[0].slice(0, 200) }) }
+      }
+      if (!REMOTE && viewport === VIEWPORTS[0] && locale === 'en' && !wantGames) {
         try {
           const guard = await page.evaluate(async () => {
             const origin = window.__localPreviewGuard
