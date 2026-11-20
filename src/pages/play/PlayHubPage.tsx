@@ -29,7 +29,8 @@ const GAMES: HubGame[] = HUB_GAMES
 /** Games that can also be hosted as a live room (see src/lib/play/liveRoom.ts). */
 const LIVE_HUB_GAMES = new Set(['trivia', 'finish-the-verse', 'emoji', 'who-am-i'])
 
-const HERO_ICONS = ['gena', 'michael', 'timket'].map((id) => imageById(id)!)
+// A picture with no usable image is left out of the catalog, so a missing one is skipped here rather than crashing the hub.
+const HERO_ICONS = ['gena', 'michael', 'timket'].map((id) => imageById(id)).filter((image): image is NonNullable<typeof image> => Boolean(image?.src))
 
 export function PlayHubPage() {
   const { locale } = useLocale()
