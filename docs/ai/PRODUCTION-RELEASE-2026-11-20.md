@@ -116,4 +116,10 @@ Production before this release is Cloudflare deployment of `2e47248`. To roll ba
 
 ## Deployment
 
-(Filled in after the merge — see below.)
+- PR #18 merged at 2026-11-20 13:41 UTC as merge commit `8a61b5e` (release head `0ee8fbb`). #14 is marked merged by GitHub; #15 and #17 were closed with a note because `main` already contains every one of their commits (GitHub refused to retarget them for that reason).
+- Final release commit checks before merging: Cloudflare Pages build passed; Linux CI on `0ee8fbb` (`npm ci`, production build, `npm audit --audit-level=high`) passed (run 44746333073).
+- Cloudflare production deployment of `8a61b5e`: "Deploy successful". The live site serves the new bundle, `/robots.txt` returns text/plain, `/assets/*` returns `Cache-Control: public, max-age=31536000, immutable`, `/` keeps `max-age=0, must-revalidate`.
+- Live 12-game journeys against https://tewahedodaily.pages.dev (guest, real production build and data): **70/70**. Every game played a full round with scoring checked against the answers actually given, and replay, at 390 EN, 390 AM and 1440 EN; every game opened with content and a start control at 430 and 768; hub counts at every width; Start waits for the question bank; picture counts with mocked failing media; day/night themes; no LOCAL PREVIEW banner, no write guard, native `fetch`, no review screen. 0 table writes, 0 console errors, 0 artwork URLs that failed. The only RPC called was `list_church_library_faq_suggestions`, which is declared STABLE (read-only).
+- Live site smoke (guest): /, /hymns, /bible, /calendar, /library, /prayers, /search, /play, /play/game-night, /about and an unknown URL at 320 EN, 390 EN, 390 AM and 1440 EN: no horizontal overflow, no broken images, no crash screen, 0 page errors, 0 HTTP errors; the unknown URL shows the 404 page.
+- Not verified live: signed-in progress and XP sync (no test account was used), Game Night with real players, and anything database-backed beyond public reads.
+- Rollback target: the previous production deployment of `2e47248` (Cloudflare Pages → Deployments → Rollback), or `git revert -m 1 8a61b5e` on `main`.
