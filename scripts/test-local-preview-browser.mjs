@@ -51,6 +51,15 @@ const L = {
   am: { start: /^(ይጀምሩ|ጨዋታውን ይጀምሩ|ካርዶቹን ያድሉ)$/, next: /^(ቀጣይ|ውጤ)/, again: /^(እንደገና|እንደገና ይጫወቱ|አዲስ ዙሮች)$/, check: /^አረጋግጥ$/, done: /(ዙሩ ተጠናቋል|ጨዋታው ተጠናቋል|ተጠናቋል!|ምዕራፉ ተጠናቋል|ጥሩ ተጫውተዋል|ተጠናቅቋል)/ },
 }
 
+// Bible Timeline answer oracle for deployed builds (they have no /src modules): the same merged chain list the game plays, exported
+// from the repository with tsx. Local runs import it from the dev server instead.
+let REMOTE_CHAINS = null
+if (REMOTE) {
+  const dump = spawnSync(process.execPath, ['node_modules/tsx/dist/cli.mjs', 'scripts/export-timeline-chains.ts'], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024, env: { ...process.env, VITE_SUPABASE_URL: process.env.VITE_SUPABASE_URL || 'https://offline.invalid' } })
+  if (dump.status !== 0) { console.log(dump.stderr); process.exit(1) }
+  REMOTE_CHAINS = JSON.parse(dump.stdout.slice(dump.stdout.indexOf('[')))
+}
+
 // ---------------------------------------------------------------- server
 const lines = []
 const server = REMOTE ? null : spawn(process.execPath, ['scripts/local-preview.mjs'], { env: { ...process.env, LOCAL_PREVIEW_PORT: PORT }, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true })
@@ -194,15 +203,15 @@ async function timelineRound(page, t) {
   for (let round = 0; round < 4; round += 1) {
     await page.locator('#tl-q').waitFor({ timeout: 15000 })
     const shown = await page.locator('ol li[data-tl-id]').locator('[class*="tlText"]').allInnerTexts()
-    const wanted = await page.evaluate(async (texts) => {
-      const mod = await import('/src/lib/play/bibleTimeline.ts'); const bank = await import('/src/lib/play/generatedBank.ts')
-      const all = bank.mergeById(mod.TIMELINE_CHAINS, await bank.loadGeneratedTimelineChains())
+    const wanted = await page.evaluate(async ({ texts, remoteChains }) => {
+      let all = remoteChains
+      if (!all) { const mod = await import('/src/lib/play/bibleTimeline.ts'); const bank = await import('/src/lib/play/generatedBank.ts'); all = bank.mergeById(mod.TIMELINE_CHAINS, await bank.loadGeneratedTimelineChains()) }
       const has = (ev, x) => ev.title.en === x || ev.title.am === x
       const chain = all.find((c) => texts.every((x) => c.events.some((ev) => has(ev, x))))
       if (!chain) return null
       const index = (x) => chain.events.findIndex((ev) => has(ev, x))
       return [...texts].sort((p, q) => index(p) - index(q))
-    }, shown.map((x) => x.trim()))
+    }, { texts: shown.map((x) => x.trim()), remoteChains: REMOTE_CHAINS })
     assert.ok(wanted, 'displayed events map to a real chain')
     for (let i = 0; i < wanted.length; i += 1) {
       let current = (await page.locator('ol li[data-tl-id]').locator('[class*="tlText"]').allInnerTexts()).map((x) => x.trim())
@@ -373,7 +382,7 @@ async function deterministicChecks(browser) {
 
 // ---------------------------------------------------------------- run
 const browser = await chromium.launch()
-const consoleErrors = []; const failedRequests = []; const hostedWrites = []
+const consoleErrors = []; const failedRequests = []; const hostedWrites = []; const hostedRpcCalls = []
 try {
   for (const viewport of VIEWPORTS) {
     for (const locale of ['en', 'am']) {
@@ -385,7 +394,7 @@ try {
       page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(`@${viewport.w}/${locale}: ${m.text().slice(0, 200)}`) })
       page.on('pageerror', (e) => consoleErrors.push(`@${viewport.w}/${locale} pageerror: ${e.message.slice(0, 200)}`))
       page.on('requestfailed', (r) => { const u = r.url(); if (!/favicon|hot-update|\.map$/.test(u)) failedRequests.push(`@${viewport.w}/${locale}: ${u.slice(0, 120)} ${r.failure()?.errorText}`) })
-      page.on('request', (r) => { if (/supabase\.co/.test(r.url()) && !['GET', 'HEAD', 'OPTIONS'].includes(r.method())) hostedWrites.push(`${r.method()} ${r.url().slice(0, 100)}`) })
+      page.on('request', (r) => { if (/supabase\.co/.test(r.url()) && !['GET', 'HEAD', 'OPTIONS'].includes(r.method())) (/\/rest\/v1\/rpc\//.test(r.url()) ? hostedRpcCalls : hostedWrites).push(`${r.method()} ${r.url().slice(0, 100)}`) })
       const tag = `${viewport.w}-${locale}`
 
       // ---- hub
@@ -486,7 +495,9 @@ try {
 const unexpected = consoleErrors.filter((e) => !/Failed to load resource: the server responded with a status of 403/.test(e))
 writeFileSync(join('.local-preview', 'browser-results.json'), JSON.stringify({ results, consoleErrors, failedRequests, hostedWrites }, null, 1))
 console.log(`\n${results.filter((r) => r.ok).length}/${results.length} checks passed; screenshots in ${SHOTS}`)
-console.log(`hosted write requests observed: ${hostedWrites.length}${hostedWrites.length ? ` -> ${hostedWrites.join('; ')}` : ''}`)
+console.log(`hosted table write requests observed: ${hostedWrites.length}${hostedWrites.length ? ` -> ${hostedWrites.join('; ')}` : ''}`)
+const rpcNames = [...new Set(hostedRpcCalls.map((entry) => /\/rpc\/([a-z0-9_]+)/.exec(entry)?.[1] ?? entry))]
+console.log(`hosted RPC calls: ${hostedRpcCalls.length} (functions: ${rpcNames.join(', ') || 'none'}; RPCs use POST even for reads, so each must be checked to be read-only)`)
 console.log(`console errors (excluding the deliberate guard probe): ${unexpected.length}`); for (const e of unexpected.slice(0, 8)) console.log(`  ${e}`)
 const realFailures = failedRequests.filter((e) => !/127\.0\.0\.1:\d+\/.*net::ERR_ABORTED/.test(e)) // Vite module fetches cancelled by navigation are not failures
 const brokenArtwork = [...new Set(realFailures.filter((e) => /ERR_BLOCKED_BY_ORB/.test(e)).map((e) => e.replace(/^@[^:]+: /, '').replace(/ net::.*/, '')))]
