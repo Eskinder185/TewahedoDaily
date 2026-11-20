@@ -1,5 +1,14 @@
 # TewahedoDaily Handoff
 
+## 2026-11-20 — production release
+
+- Release branch `release/2026-11-20`, PR #18 to `main`. Integration worktree: `TewahedoDaily-integration` (own node_modules).
+- Production URL: https://tewahedodaily.pages.dev. Merging to `main` deploys through the Cloudflare Pages Git integration.
+- Cloudflare preview builds have no Supabase variables: database-backed features cannot be judged there.
+- Run the 12-game journeys against any deployed build: `PLAY_TEST_BASE_URL=<url> node scripts/test-local-preview-browser.mjs`.
+- Still open: hosted staging + six-state migration, 834-row draft import, editorial/rights approval, 27 broken registry images, 4 moderate advisories, three pre-existing failing browser suites (Studio, Game Night, editor import timeout).
+
+
 ## Release consolidation — 2026-11-16
 
 Branch release/consolidation-2026-11-16 (worktree ../TewahedoDaily-release, node_modules and artifacts/faith-challenges are junctions to the main worktree) holds six commits on top of origin/main 2e47248. The shared worktree still holds the original uncommitted copies of the same changes plus items deliberately not released (see TASK_BOARD). Do not run git clean or reset there. Run the smoke with BASE_URL pointing at a dev server: node scripts/test-release-journeys.mjs. Browser suites need the dev server for the worktree you are testing (a stale preview on port 4173 can belong to another worktree). Church content workflow: scripts/content-workflow/README.md.

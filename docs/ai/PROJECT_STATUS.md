@@ -1,5 +1,10 @@
 # TewahedoDaily Project Status
 
+## Production release — 2026-11-20
+
+Release PR #18 integrates #14 → #15 → #17 plus release fixes (see `docs/ai/PRODUCTION-RELEASE-2026-11-20.md`). Production keeps playing the approved bundled banks; no database migration, import or publication was run (no hosted credentials; approval and rights not recorded). Fixed: CI/Cloudflare `npm ci` failure (onnxruntime-node CUDA 404), Finish the Mezmur live-data crash, quiz setup race, 17 stale artwork paths and the game picture subjects, robots.txt, asset caching, 10 high-severity dependency advisories, two crash paths when Supabase variables are absent. Studio publication guards restored until the six-state migration is deployed.
+
+
 ## Release consolidation — 2026-11-16
 
 Verified against origin/main (2e47248), which already contains PRs #1–#13 (Amharic and Bible approximate search, Game Night, room QR, gold game icons, live-room transport fixes, all-12-game hub, admin Content status). Release branch release/consolidation-2026-11-16 adds the previously uncommitted working-tree changes in six commits: Mezmur reader fixes; Mezmur library redesign with category/occasion artwork; hymns CMS simplification and review queue; Synaxarium and Liturgy moved from the Prayer page to the Church Library (routes unchanged); database-aware Faith Challenges hub counts, a distinct "insufficient published content" state and Finish the Mezmur line cleaning; and the local church content workflow tooling.

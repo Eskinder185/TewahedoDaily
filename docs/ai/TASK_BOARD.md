@@ -1,5 +1,15 @@
 # TewahedoDaily Task Board
 
+## 2026-11-20 release follow-ups
+
+- [ ] Hosted staging project: apply the six-state migration without committing, verify catalog, real JWT/PostgREST roles; then the 834-row draft import.
+- [ ] Editorial, Amharic and rights review in Studio (787 editorial, 783 translation, 21 source-blocked, 6 Who Am I? Amharic).
+- [ ] Publish the History and Seven Sacraments Church Library books (unblocks 21 questions).
+- [ ] Re-upload or re-link the 27 registry images that return HTTP 400 (list in the release report).
+- [ ] Fix the pre-existing failing suites: test-content-studio-browser, test-game-night-security-browser, test-faith-challenges-editor (intermittent).
+- [ ] Upgrade vite-plugin-pwa to clear the 4 moderate advisories.
+- [ ] Remove the Studio publication guards again only in the release that deploys the six-state database guard.
+
 ## Release consolidation — 2026-11-16
 
 - Done on release branch (PR open, not merged): Mezmur reader/library/artwork work, hymns CMS review queue, Synaxarium and Liturgy under Church Library, database-aware hub counts, content workflow tooling.

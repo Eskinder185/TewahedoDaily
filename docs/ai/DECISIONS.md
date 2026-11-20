@@ -38,3 +38,10 @@ Updated: 2026-10-30
 
 - Report tests as verified only when run in the current worktree. Prior agent reports must be labeled as such.
 - Prefer focused checks for changed files, then production build when unrelated blockers are understood.
+
+## Production release (2026-11-20)
+
+- Faith Challenges stay on the approved bundled banks in production; `VITE_PLAY_DATABASE_ONLY` stays off until published database content exists and every game is verified against it. No draft is published without recorded editorial and rights approval.
+- Client-side Studio publication guards are kept until the six-state database guard is deployed and verified; they are removed in the same release, never before.
+- Game pictures must show their exact subject and must not print the answer; when the calendar image is unsuitable, use the bundled local picture or another published image of the same subject (`preferLocal` / `explicitPath` in imageCatalog).
+- `.npmrc` skips onnxruntime-node's CUDA download (install fails otherwise on Linux); dependency advisories with no in-range fix get scoped `overrides`, not `--force`.
