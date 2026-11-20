@@ -51,7 +51,11 @@ const NEUTRAL_DESCRIPTION: Record<PlayImageKind, string> = {
 const bible = (label: string, route: string): SourceReference => ({ label, route, kind: 'bible' })
 const calendar = (label: string): SourceReference => ({ label: `TewahedoDaily Calendar — ${label}`, route: '/calendar', kind: 'calendar' })
 
-type RawPlayImage = Omit<PlayImage, 'src' | 'fallbackSrc'> & { legacyFile: string }
+/** `explicitPath`: a published content-media path chosen for the game when the subject's default calendar image is unsuitable
+ *  for a picture quiz (for example, it prints the answer as a title). It takes priority in resolveMedia. */
+/** `preferLocal`: use the bundled local picture first, when the remote calendar image for this subject is not right for a picture
+ *  quiz (a different scene of the same angel, or the answer printed on the image). */
+type RawPlayImage = Omit<PlayImage, 'src' | 'fallbackSrc'> & { legacyFile: string; explicitPath?: string; preferLocal?: boolean }
 
 function buildPlayImage(raw: RawPlayImage): PlayImage {
   const fallbackSrc = legacyImg(raw.legacyFile)
@@ -64,11 +68,12 @@ function buildPlayImage(raw: RawPlayImage): PlayImage {
     legacyFallbackUrl: fallbackSrc,
     domain: 'play',
     allowLegacyFallback: true,
+    explicitPath: raw.explicitPath,
   })
   return {
     ...raw,
     description: fallbackSrc ? raw.description : NEUTRAL_DESCRIPTION[raw.kind],
-    src: resolved.imageUrl || fallbackSrc,
+    src: (raw.preferLocal && fallbackSrc) || resolved.imageUrl || fallbackSrc,
     fallbackSrc,
   }
 }
@@ -84,9 +89,13 @@ const RAW_PLAY_IMAGES: RawPlayImage[] = [
   { id: 'erget', kind: 'feast', legacyFile: 'Erget', width: 721, height: 900, focus: 'center 25%', answer: { en: 'Erget — the Ascension', am: 'ዕርገት' }, alt: 'Erget', explanation: { en: 'Commemorates Christ’s ascension into heaven.' }, source: bible('Acts 1:9', '/bible/acts/1'), description: 'Christ rises above clouds and angels with raised hands while people below look up.' }, // [ascension]
   { id: 'peraklitos', kind: 'feast', legacyFile: 'Peraklitos', width: 636, height: 900, focus: 'center 30%', answer: { en: 'Peraklitos — Pentecost', am: 'ጰራቅሊጦስ' }, alt: 'Paracletos', explanation: { en: 'Celebrates the descent of the Holy Spirit upon the Apostles.' }, source: bible('Acts 2:1–4', '/bible/acts/2'), description: 'A gathering of robed figures around a seated woman in blue, with a dove shining above them.' }, // [pentecost]
   { id: 'debre-tabor', kind: 'feast', legacyFile: 'DebreTabor', width: 591, height: 900, focus: 'center 20%', answer: { en: 'Debre Tabor — the Transfiguration', am: 'ደብረ ታቦር' }, alt: 'Debre Tabor', explanation: { en: 'Celebrates the revelation of Christ’s glory on Mount Tabor.' }, when: 'Nehase 13', source: bible('Matthew 17:1–3', '/bible/matthew/17'), description: 'Christ in shining white on a mountain between two figures, with three disciples fallen below.' }, // [debre-tabor]
-  { id: 'tsinset', kind: 'feast', legacyFile: 'Tsinset', width: 651, height: 900, focus: 'center 30%', answer: { en: 'Tsinset — the Annunciation', am: 'ጽንሰት' }, alt: 'Tsinset', explanation: { en: 'Commemorates the Annunciation and the mystery of the Word taking flesh.' }, when: 'Megabit 29', source: bible('Luke 1:26–31', '/bible/luke/1'), description: 'An angel in pink greets a woman in a blue and orange robe while a dove descends from above.' }, // [tsinset-annunciation]
-  { id: 'meskel', kind: 'feast', legacyFile: 'Meskel', width: 1200, height: 600, answer: { en: 'Meskel — the Finding of the True Cross', am: 'መስቀል' }, alt: 'Meskel', explanation: { en: 'Commemorates the finding of the True Cross and the victory of Christ through the Cross.' }, when: 'Meskerem 17', source: calendar('Meskel'), description: 'A vast crowd in white surrounds a tall decorated bonfire structure topped with a cross.' }, // [meskel-finding-of-the-true-cross]
-  { id: 'tsige', kind: 'feast', legacyFile: 'TsigeSeason', width: 721, height: 900, focus: 'center 35%', answer: { en: 'Zemene Tsige — the Season of Flowers', am: 'ዘመነ ጽጌ' }, alt: 'Zemene Tsigie', explanation: { en: 'A sacred season associated with the Flight to Egypt and the flowering of the land.' }, source: calendar('Zemene Tsige'), description: 'A mother and child ride a donkey through a desert path, guided by an elder with an angel above.' }, // [zemene-tsige]
+  // The remote Gabriel calendar image shows Gabriel saving the three youths from the furnace, not the Annunciation.
+  { id: 'tsinset', kind: 'feast', legacyFile: 'Tsinset', preferLocal: true, width: 651, height: 900, focus: 'center 30%', answer: { en: 'Tsinset — the Annunciation', am: 'ጽንሰት' }, alt: 'Tsinset', explanation: { en: 'Commemorates the Annunciation and the mystery of the Word taking flesh.' }, when: 'Megabit 29', source: bible('Luke 1:26–31', '/bible/luke/1'), description: 'An angel in pink greets a woman in a blue and orange robe while a dove descends from above.' }, // [tsinset-annunciation]
+  // The remote Meskel card prints "The finding of the True Cross" on the picture; the local Demera photograph does not.
+  { id: 'meskel', kind: 'feast', legacyFile: 'Meskel', preferLocal: true, width: 1200, height: 600, answer: { en: 'Meskel — the Finding of the True Cross', am: 'መስቀል' }, alt: 'Meskel', explanation: { en: 'Commemorates the finding of the True Cross and the victory of Christ through the Cross.' }, when: 'Meskerem 17', source: calendar('Meskel'), description: 'A vast crowd in white surrounds a tall decorated bonfire structure topped with a cross.' }, // [meskel-finding-of-the-true-cross]
+  // The Zemene Tsige season card prints "Zemene Tsige — The Season of Flowers" across the picture, which would give the answer
+  // away. The published Tsige Fast card's Flight into Egypt icon is the season's traditional iconography, without a title.
+  { id: 'tsige', kind: 'feast', legacyFile: 'TsigeSeason', explicitPath: 'calendar/fasts/tsige-fast-5782786f-1792447869512.webp', width: 721, height: 900, focus: 'center 35%', answer: { en: 'Zemene Tsige — the Season of Flowers', am: 'ዘመነ ጽጌ' }, alt: 'Zemene Tsigie', explanation: { en: 'A sacred season associated with the Flight to Egypt and the flowering of the land.' }, source: calendar('Zemene Tsige'), description: 'A mother and child ride a donkey through a desert path, guided by an elder with an angel above.' }, // [zemene-tsige]
 
   // ---- Angels ----
   { id: 'michael', kind: 'angel', legacyFile: 'SaintMichaelFeast', width: 651, height: 900, focus: 'center 25%', answer: { en: 'Kidus Mikael — Archangel Michael', am: 'ቅዱስ ሚካኤል' }, alt: 'Kidus Mikael', explanation: { en: 'Major annual commemoration of Archangel Michael, protector and defender of the faithful.' }, when: 'Hedar 12', source: calendar('Archangel Michael'), description: 'A winged angel with a sword and a golden ark stands over a fallen figure on a rocky height.' }, // [saint-michael-major]
@@ -98,7 +107,8 @@ const RAW_PLAY_IMAGES: RawPlayImage[] = [
   { id: 'giorgis', kind: 'saint', legacyFile: 'KidusGiorgis', width: 774, height: 900, focus: 'center 30%', answer: { en: 'Kidus Giorgis — Saint George', am: 'ቅዱስ ጊዮርጊስ' }, alt: 'Kidus Giorgis', explanation: { en: 'Commemorates Saint Georgios, the victorious martyr and beloved intercessor.' }, when: 'Miazia 23', source: calendar('Saint Georgios'), description: 'A rider on a white horse pierces a dragon with a long cross-topped spear.' }, // [saint-george-major]
   { id: 'tekle-haymanot', kind: 'saint', legacyFile: 'AbuneTeklehaymanot', width: 687, height: 900, focus: 'center 25%', answer: { en: 'Abune Tekle Haymanot', am: 'አቡነ ተክለ ሃይማኖት' }, alt: 'Abune Tekle Haymanot', explanation: { en: 'Commemorates Abune Tekle Haymanot, one of the greatest Ethiopian saints.' }, when: 'Tahsas 24', source: calendar('Abune Tekle Haymanot'), description: 'A bearded monastic saint with great wings holds a hand cross, with spears on either side of him.' }, // [saint-tekle-haymanot-major]
   { id: 'yared', kind: 'saint', legacyFile: 'SaintYared', width: 1200, height: 900, answer: { en: 'Kidus Yared', am: 'ቅዱስ ያሬድ' }, alt: 'Saint Yared', explanation: { en: 'Commemorates Saint Yared, master of sacred chant and Ethiopian hymnography.' }, source: calendar('Saint Yared'), description: 'A saint in white with a prayer staff and sistrum leads chanters beside a drum, books and a stone stele.' }, // [saint-yared-major]
-  { id: 'estifanos', kind: 'saint', legacyFile: 'SaintStephen', width: 723, height: 900, focus: 'center 35%', answer: { en: 'Kidus Estifanos — Saint Stephen', am: 'ቅዱስ እስጢፋኖስ' }, alt: 'Kidus Estifanos', explanation: { en: 'Commemorates Kidus Estifanos, the first martyr of the Church.' }, when: 'Tir 17', source: bible('Acts 7:59–60', '/bible/acts/7'), description: 'A young deacon in red kneels in prayer under a beam of light as men raise stones.' }, // [saint-stephen-major]
+  // The remote icon prints "Saint Stephen" across the top; the local icon of his stoning does not.
+  { id: 'estifanos', kind: 'saint', legacyFile: 'SaintStephen', preferLocal: true, width: 723, height: 900, focus: 'center 35%', answer: { en: 'Kidus Estifanos — Saint Stephen', am: 'ቅዱስ እስጢፋኖስ' }, alt: 'Kidus Estifanos', explanation: { en: 'Commemorates Kidus Estifanos, the first martyr of the Church.' }, when: 'Tir 17', source: bible('Acts 7:59–60', '/bible/acts/7'), description: 'A young deacon in red kneels in prayer under a beam of light as men raise stones.' }, // [saint-stephen-major]
   { id: 'yohannes', kind: 'saint', legacyFile: 'SaintJohntheBaptist', width: 953, height: 900, answer: { en: 'Yohannes Metmiq — Saint John the Baptist', am: 'ዮሐንስ መጥምቅ' }, alt: 'Yohannes Met’miq', explanation: { en: 'Commemorates Saint John the Baptist, the forerunner of the Lord.' }, source: bible('Matthew 3:13–16', '/bible/matthew/3'), description: 'A man in a rough garment pours water over Christ in a river, with a dove above and angels holding a robe.' }, // [saint-john-the-baptist]
   { id: 'petros-pawlos', kind: 'saint', legacyFile: 'SaintsPeterandPaul', width: 702, height: 900, focus: 'center 30%', answer: { en: 'Saints Peter and Paul', am: 'ቅዱሳን ጴጥሮስ እና ጳውሎስ' }, alt: 'Petros ena Pawlos', explanation: { en: 'Commemorates Saints Peter and Paul, pillars of apostolic witness.' }, when: 'Hamle 5', source: calendar('Saints Peter and Paul'), description: 'Two haloed apostles stand side by side, one holding a large cross, the other a book and a sword.' }, // [saint-peter-and-paul]
 ]

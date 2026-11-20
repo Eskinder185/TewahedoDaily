@@ -461,7 +461,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-debre-tabor',
-    storagePath: 'calendar/christ/debre-tabor-a813bbad-1790968436996.webp',
+    storagePath: 'calendar/christ/debre-tabor-e49611c0-1792011395919.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'debre-tabor',
@@ -480,7 +480,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-ascension',
-    storagePath: 'calendar/christ/ascension-ef91be6c-1790968478137.webp',
+    storagePath: 'calendar/christ/erget-d44ebd66-1793582257935.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'ascension',
@@ -632,7 +632,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-debre-zeit',
-    storagePath: 'calendar/general/debre-zeit-c73e9e49-1792604386662.webp',
+    storagePath: 'calendar/christ/debre-zeit-039f77fc-1792614483411.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'debre-zeit',
@@ -787,7 +787,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   // ─── Cross & New Year Feasts ─────────────────────────────────────────
   {
     id: 'observance-meskel',
-    storagePath: 'calendar/cross/meskel-5d81e2c5-1790968227490.webp',
+    storagePath: 'calendar/cross/meskel-8e1b98c3-1790968212768.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'meskel',
@@ -838,7 +838,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-enkutatash',
-    storagePath: 'calendar/general/enkutatash-62834003-1790968116758.webp',
+    storagePath: 'calendar/general/enkutatash-8f6210e9-1790968127748.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'enkutatash',
@@ -879,7 +879,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-lideta-maryam',
-    storagePath: 'calendar/mary/lideta-maryam-79ab533b-1790969802685.webp',
+    storagePath: 'calendar/mary/virgin-mary-d8a58467-1790968150555.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'lideta-maryam',
@@ -917,7 +917,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-kidane-mihret',
-    storagePath: 'calendar/mary/kidane-mihret-811b63ee-1790968637146.webp',
+    storagePath: 'calendar/mary/kidane-mihret-67d67ee3-1792011415214.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'kidane-mihret',
@@ -958,7 +958,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-filseta',
-    storagePath: 'calendar/mary/filseta-324be60f-1790968590717.webp',
+    storagePath: 'calendar/mary/filseta-6743525f-1792613948758.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'filseta',
@@ -1040,7 +1040,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-debre-mitmaq',
-    storagePath: 'calendar/mary/debre-mitmaq-64e6f81c-1792449202330.webp',
+    storagePath: 'calendar/mary/debre-mitmaq-7b2ae014-1792614092157.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'debre-mitmaq',
@@ -1099,7 +1099,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   // ─── Archangels & Heavenly Hosts ────────────────────────────────────
   {
     id: 'observance-michael-hidar',
-    storagePath: 'calendar/angels/michael-hidar-85b42130-1790968789526.webp',
+    storagePath: 'calendar/angels/michael-hidar-19cfc748-1792614105732.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'michael-hidar',
@@ -1122,7 +1122,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-gabriel-tahsas',
-    storagePath: 'calendar/angels/gabriel-tahsas-2c6f4704-1790968831797.webp',
+    storagePath: 'calendar/angels/gabriel-tahsas-1c22fc89-1792614133173.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'gabriel-tahsas',
@@ -1168,7 +1168,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-uriel-tir',
-    storagePath: 'calendar/angels/uriel-79df65b6-1790969567919.webp',
+    storagePath: 'calendar/angels/uriel-tir-4c0e85e6-1790968919465.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'uriel-tir',
@@ -1191,7 +1191,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'monthly-raguel-monthly',
-    storagePath: 'calendar/angels/raguel-c3a25f13-1792604714855.webp',
+    storagePath: 'calendar/angels/raguel-eee120c3-1790966640794.webp',
     domain: 'calendar',
     sourceType: 'monthly',
     sourceId: 'raguel-monthly',
@@ -1207,7 +1207,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'monthly-phanuel-monthly',
-    storagePath: 'calendar/angels/phanuel-0901db5f-1792604868121.webp',
+    storagePath: 'calendar/angels/phanuel-9d1ca0be-1790968399268.webp',
     domain: 'calendar',
     sourceType: 'monthly',
     sourceId: 'phanuel-monthly',
@@ -1293,7 +1293,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-tekle-haymanot-nehase',
-    storagePath: 'calendar/saints/tekle-haymanot-c586cb64-1790969017981.webp',
+    storagePath: 'calendar/general/tekle-haymanot-425a2002-1792604784013.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'tekle-haymanot-nehase',
@@ -1408,7 +1408,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'observance-peter-paul',
-    storagePath: 'calendar/apostles/peter-and-paul-31de5bd0-1790969203892.webp',
+    storagePath: 'calendar/apostles/peter-paul-164d6df4-1790968543917.webp',
     domain: 'calendar',
     sourceType: 'observance',
     sourceId: 'peter-and-paul',
@@ -1668,7 +1668,7 @@ export const VERIFIED_CONTENT_MEDIA_INDEX: readonly VerifiedMediaEntry[] = [
   },
   {
     id: 'season-zemene-tsige',
-    storagePath: 'calendar/general/zemene-tsige-17fd12fb-1790969515443.webp',
+    storagePath: 'calendar/general/tsige-season-0027c425-1792449453798.webp',
     domain: 'calendar',
     sourceType: 'season',
     sourceId: 'zemene-tsige',

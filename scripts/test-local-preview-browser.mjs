@@ -317,7 +317,7 @@ async function deterministicChecks(browser) {
     const context = await browser.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'block' })
     await context.addInitScript(() => { try { localStorage.setItem('tewahedo-daily-locale', 'en') } catch { /* ignore */ } })
     const page = await context.newPage()
-    await page.route(/\/storage\/v1\/object\/public\/content-media\//, (route) => (/ascension|debre-tabor|zemene-tsige/.test(route.request().url())
+    await page.route(/\/storage\/v1\/object\/public\/content-media\//, (route) => (/\/(erget|debre-tabor|tsige-fast)-[0-9a-f]+-/.test(route.request().url())
       ? route.fulfill({ status: 400, contentType: 'application/json', body: '{"statusCode":"404","error":"not_found"}' })
       : route.fulfill({ status: 200, contentType: 'image/png', body: PNG })))
     try {
