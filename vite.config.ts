@@ -1,11 +1,32 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { existsSync, readFileSync } from 'node:fs'
+
+/**
+ * LOCAL PREVIEW only (`apply: 'serve'`, so it never runs in `vite build`): serves the git-ignored .local-preview/review-inventory.json
+ * to the dev-only /play/local-review screen, and only when the dev server was started with VITE_LOCAL_PREVIEW=true.
+ */
+const localPreviewInventory = () => ({
+  name: 'local-preview-inventory',
+  apply: 'serve' as const,
+  configureServer(server: { config: { env: Record<string, unknown> }; middlewares: { use: (path: string, handler: (request: unknown, response: { statusCode: number; setHeader: (k: string, v: string) => void; end: (body: string) => void }) => void) => void } }) {
+    if (server.config.env.VITE_LOCAL_PREVIEW !== 'true') return
+    server.middlewares.use('/__local-preview/inventory.json', (_request, response) => {
+      const file = '.local-preview/review-inventory.json'
+      if (!existsSync(file)) { response.statusCode = 404; response.end('missing'); return }
+      response.setHeader('content-type', 'application/json')
+      response.setHeader('cache-control', 'no-store')
+      response.end(readFileSync(file, 'utf8'))
+    })
+  },
+})
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
+    localPreviewInventory(),
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'icons.svg'],

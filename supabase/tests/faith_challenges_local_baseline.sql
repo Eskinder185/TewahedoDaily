@@ -1,5 +1,6 @@
 -- Synthetic PostgreSQL baseline ONLY. No real Supabase Auth/JWT/PostgREST.
 -- Used only by the disposable loopback-cluster runner; never install as a migration.
+create extension if not exists pgcrypto;
 do $$ begin
  if not exists(select 1 from pg_roles where rolname='anon') then create role anon nologin; end if;
  if not exists(select 1 from pg_roles where rolname='authenticated') then create role authenticated nologin; end if;
@@ -36,6 +37,10 @@ create table public.play_content_items(
  constraint local_six_states check(status in ('draft','review','approved','rejected','published','archived'))
 );
 create table public.test_play_dependencies(content_id uuid references public.play_content_items(id) on delete restrict);
+-- The live catalog has this table (public read of four published books); the proposal's preflight now requires it.
+create table public.church_library_books(slug text primary key,publication_status text not null);
+insert into public.church_library_books values ('ethiopian-orthodox-church','published');
+grant select on public.church_library_books to anon,authenticated;
 alter table public.play_content_items enable row level security;
 grant select,insert,update,delete on public.play_content_items to anon,authenticated,service_role;
 create policy legacy_staff_all on public.play_content_items for all to authenticated

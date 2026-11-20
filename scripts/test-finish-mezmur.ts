@@ -30,6 +30,31 @@ t('section/chorus labels are excluded as targets', () => {
   assert.ok(yes.every((l) => !/^አዝ/.test(l.am) && l.am !== 'አ.ዝ'), 'no Az label survived')
   const dinq = usableLines(songs.find((s) => s.slug === 'dinq-adrigolnyal')!)
   assert.ok(dinq.every((l) => l.am !== 'አ.ዝ'), 'no አ.ዝ label survived')
+
+  assert.equal(cleanLyricLine('አዝ: ገና እንዘምራለን'), 'ገና እንዘምራለን')
+  assert.equal(cleanLyricLine('አዝ፡ ገና እንዘምራለን'), 'ገና እንዘምራለን')
+  assert.equal(cleanLyricLine('አ.ዝ: ገና እንዘምራለን'), 'ገና እንዘምራለን')
+  assert.equal(cleanLyricLine('Az: Gena inzemralen'), 'Gena inzemralen')
+  assert.equal(cleanLyricLine('ገና (2×) , እንዘምራለን , '), 'ገና, እንዘምራለን')
+
+  const synthetic: MezmurSong = {
+    slug: 'synthetic-chorus-labels',
+    title: 'Synthetic Chorus Labels',
+    title_amharic: 'የሙከራ መዝሙር',
+    title_english: 'Synthetic Chorus Labels',
+    primary_language: 'am',
+    lyrics_amharic: ['Az:', 'አዝ:', 'አዝ፡', 'አ.ዝ:', ' , ', 'አዝ: እግዚአብሔር ዛሬ ይመስገን', 'ገና (2×) , ዛሬ እንዘምራለን'].join('\n'),
+    lyrics_transliteration: ['Az:', 'Az:', 'Az:', 'Az:', ' , ', 'Az: Egziabher zare yimesgen', 'Gena (2x) , zare inzemralen'].join('\n'),
+    lyrics_english: null,
+    youtube_url: null,
+  }
+  assert.deepEqual(
+    usableLines(synthetic).map((l) => [l.am, l.tr]),
+    [
+      ['እግዚአብሔር ዛሬ ይመስገን', 'Egziabher zare yimesgen'],
+      ['ገና, ዛሬ እንዘምራለን', 'Gena, zare inzemralen'],
+    ],
+  )
 })
 
 t('usable lines align amharic and transliteration', () => {
@@ -160,6 +185,27 @@ t('Mix it up: a format with no questions is skipped, and seen questions are avoi
   const seen = new Set(choose.slice(0, 3).map((q) => q.id))
   const fresh = selectMixedRound({ choose, arrange: [], type: [] }, seen, 4, seeded()).picked
   assert.ok(fresh.every((q) => !seen.has(q.id)))
+})
+
+t('lines whose cleaning is not idempotent never crash the choose bank (real published lyrics: "/2/", trailing numbers)', () => {
+  const tricky: MezmurSong = {
+    slug: 'tricky-markers', title: 'Tricky markers', title_amharic: null, title_english: null, primary_language: 'amharic', youtube_url: null, lyrics_transliteration: null,
+    lyrics_english: null,
+    // The first two lines are verbatim from published hymns "how-marvelous-is-mary" and "iftin-alehu" (found 2026-11-17).
+    lyrics_amharic: ['እምርኁቅ ከመ ማኅቶት ደብረ ገነት /2/ ፣', 'ይ ቆረንጦስ 15:3', 'ሰላም ለኪ ማርያም እናታችን', 'እንደ ቀትር ፀሐይ ያበራች ድንግል', 'ድንግል ማርያም የአምላክ እናት'].join('\n'),
+  }
+  const flagged = usableLines(tricky).filter((l) => normalizeForCompare(l.am) !== l.norm)
+  assert.ok(flagged.length >= 1, 'fixture really contains a non-idempotent line (otherwise this test proves nothing)')
+  for (const difficulty of ['easy', 'medium', 'hard'] as const) {
+    const bank = buildFinishMezmurBankSeeded([...songs, tricky], 'choose', difficulty, 5)
+    assert.ok(bank.some((q) => q.slug === 'tricky-markers'), 'questions are still produced for the affected song')
+    for (const q of bank) {
+      assert.equal(q.options!.length, 4)
+      // The correct key points at the real answer line, even when its normalised form differs from the stored one.
+      assert.equal(q.options!.find((o) => o.key === q.correctKey)!.am, q.answer.am)
+      assert.equal(q.options!.filter((o) => o.am === q.answer.am).length, 1, 'answer appears exactly once among the options')
+    }
+  }
 })
 
 console.log(`\n${passed} passed`)

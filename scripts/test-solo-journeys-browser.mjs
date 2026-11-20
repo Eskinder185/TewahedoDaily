@@ -65,7 +65,10 @@ try {
       assert.equal(new Set(first).size, 5, 'no repeats inside a session')
       assert.equal(new Set(second).size, 5)
       const overlap = second.filter(q => first.includes(q)).length
-      assert.ok(overlap < 5, `${game}: consecutive sessions must not be the same set (overlap ${overlap}/5)`)
+      // The selector prefers unseen questions and the banks hold 119+ per level, so overlap should be 0; keep the old bound
+      // but report the stored history so a future failure shows whether storage or selection was at fault.
+      const stored = await page.evaluate((g) => { try { return JSON.parse(localStorage.getItem(`td.play.seen.${g}.v1`) || '[]').length } catch { return 'unreadable' } }, game)
+      assert.ok(overlap < 5, `${game}: consecutive sessions must not be the same set (overlap ${overlap}/5, stored seen ids: ${stored})`)
       prompts.push([game, first[0], second[0]])
     })
   }

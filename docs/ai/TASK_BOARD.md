@@ -1,5 +1,21 @@
 # TewahedoDaily Task Board
 
+## 2026-11-20 release follow-ups
+
+- [ ] Hosted staging project: apply the six-state migration without committing, verify catalog, real JWT/PostgREST roles; then the 834-row draft import.
+- [ ] Editorial, Amharic and rights review in Studio (787 editorial, 783 translation, 21 source-blocked, 6 Who Am I? Amharic).
+- [ ] Publish the History and Seven Sacraments Church Library books (unblocks 21 questions).
+- [ ] Re-upload or re-link the 27 registry images that return HTTP 400 (list in the release report).
+- [ ] Fix the pre-existing failing suites: test-content-studio-browser, test-game-night-security-browser, test-faith-challenges-editor (intermittent).
+- [ ] Upgrade vite-plugin-pwa to clear the 4 moderate advisories.
+- [ ] Remove the Studio publication guards again only in the release that deploys the six-state database guard.
+
+## Release consolidation — 2026-11-16
+
+- Done on release branch (PR open, not merged): Mezmur reader/library/artwork work, hymns CMS review queue, Synaxarium and Liturgy under Church Library, database-aware hub counts, content workflow tooling.
+- Excluded on purpose: generated Mezmur enrichment datasets and scripts (reports/mezmur-enrichment, scripts/mezmur-enrichment: large, approval and rights not documented), screenshot and audit artifacts, scripts/mezmur-ui-capture.mjs.
+- Open: decide on the Mezmur voice-search language lock (test-search-regression asserts a lock the code no longer has); install axe-core and run the accessibility check; confirm the production setting of VITE_PLAY_DATABASE_ONLY before relying on database-driven hub counts; fix the pre-existing lint error in PrayerListPage; investigate the failing Daily Project Maintenance workflow.
+
 ## Multi-Game Faith Challenges Content Expansion Phase 2 — 2026-11-04
 
 - **Complete locally:** 248 newly generated, source-grounded content units across the 10 games in `artifacts/faith-challenges/phase-2/`:

@@ -49,20 +49,25 @@ export type FmQuestion = {
 /** Repeat and section markers that are not part of the sung text. */
 const REPEAT_MARKER = /\s*[/(]?\s*(?:\d+|[፩-፼]+)\s*(?:×|x)?\s*[/)]?\s*$/u
 const INLINE_PAREN = /\s*\([^)]*\)\s*/gu
-const SECTION_LABEL = /^(?:አ\.?\s*ዝ\.*|አዝ[.…]*|az[.…]*|[0-9/×()]+|[፩-፼/×()]+|[.…]+)$/iu
+const CHORUS_PREFIX = /^(?:አ\.?\s*ዝ|አዝ|az)\s*[.…:፡]+\s*/iu
+const SECTION_LABEL = /^(?:አ\.?\s*ዝ[.…:፡]*|አዝ[.…:፡]*|az[.…:፡]*|[0-9/×()]+|[፩-፼/×()]+|[.…,:፡;]+)$/iu
 
 /** Strip trailing repeat markers and parentheticals; collapse whitespace. */
 export function cleanLyricLine(line: string): string {
-  let s = line
+  let s = line.trim().replace(CHORUS_PREFIX, '')
   // Parentheticals may nest, e.g. "(እስራኤል ተነሳ(2×))"; remove repeatedly.
   for (let i = 0; i < 4; i++) {
     const next = s.replace(INLINE_PAREN, ' ')
     if (next === s) break
     s = next
   }
-  s = s.replace(/[()[\]]/gu, ' ')
+  s = s.replace(/[()[\]]/gu, ' ').replace(CHORUS_PREFIX, '')
   // A line may carry several markers (e.g. "… /2/ …/2/"); strip from the end.
   for (let i = 0; i < 3; i++) s = s.replace(REPEAT_MARKER, '')
+  s = s
+    .replace(/\s+([,፣;:])/gu, '$1')
+    .replace(/([,፣])\s*\1+/gu, '$1')
+    .replace(/^[,፣;:፡\s]+|[,፣;:፡\s]+$/gu, '')
   return s.replace(/\s+/g, ' ').trim()
 }
 
@@ -160,8 +165,11 @@ export function buildFinishMezmurBank(
           .slice(0, 3)
           .map(([, reading]) => reading)
         if (distractors.length < 3) return
-        const options = shuffle([answer, ...distractors], random).map((reading, k) => ({ key: String(k), am: reading.am, tr: reading.tr }))
-        const correctKey = options.find((o) => normalizeForCompare(o.am) === line.norm)!.key
+        // Track the answer by identity, not by re-normalising option text: cleaning is not idempotent for a few real lines
+        // (e.g. a trailing "/2/" or a bare number), and the re-derived lookup returned undefined and crashed the whole page.
+        const ordered = shuffle([{ reading: answer, correct: true }, ...distractors.map((reading) => ({ reading, correct: false }))], random)
+        const options = ordered.map(({ reading }, k) => ({ key: String(k), am: reading.am, tr: reading.tr }))
+        const correctKey = String(ordered.findIndex((entry) => entry.correct))
         questions.push({ ...base, options, correctKey })
       } else if (mode === 'arrange') {
         const words = line.am.split(/\s+/).filter(Boolean)

@@ -19,7 +19,17 @@
     "test:cms:auth": "node scripts/cms-auth-smoke.mjs",
     "build:play-bank": "npx --yes tsx scripts/play/build-published-bank.ts",
     "test:play-content": "tsx scripts/test-faith-challenge-content.ts",
+    "test:play-replay": "tsx scripts/test-play-replay-selection.ts",
+    "preview:local": "node scripts/local-preview.mjs",
+    "preview:local:lan": "node scripts/local-preview.mjs --lan",
+    "test:local-preview": "node scripts/test-local-preview-browser.mjs",
+    "test:local-preview:production-safe": "node scripts/test-local-preview-production-safe.mjs",
+    "test:local-review-inventory": "tsx scripts/test-local-review-inventory.ts",
+    "test:loadable-pictures": "tsx scripts/test-loadable-pictures.ts",
     "test:play-hub": "node scripts/test-faith-challenge-hub-browser.mjs",
+    "play:consolidate": "tsx scripts/play/consolidate-content.ts",
+    "test:consolidation": "tsx scripts/test-consolidation.ts",
+    "test:consolidation:browser": "node scripts/test-consolidation-browser.mjs",
     "test:play-bank": "npx --yes tsx scripts/play/build-published-bank.ts --check && npx --yes tsx scripts/test-published-bank.ts",
     "test:live-room": "npx --yes tsx scripts/test-live-room.ts",
     "test:live-room:browser": "node scripts/test-live-room-browser.mjs",
@@ -86,6 +96,7 @@
     "test:mezmur-title-lyrics": "node --experimental-strip-types --no-warnings scripts/test-mezmur-title-lyrics-separation.ts",
     "test:mezmur-form-taxonomy": "tsx scripts/test-mezmur-form-taxonomy.ts",
     "test:werb-card": "node scripts/test-werb-card-browser.mjs",
+    "test:mezmur-card-art": "tsx --env-file-if-exists=.env.local --tsconfig tsconfig.app.json scripts/test-mezmur-card-art.ts",
     "test:mezmur-ranking": "tsx scripts/test-mezmur-ranking.ts",
     "test:mezmur-mobile": "node scripts/test-mezmur-mobile-browser.mjs",
     "test:mezmur-aliases": "tsx scripts/test-mezmur-taxonomy-aliases.ts",
@@ -161,7 +172,9 @@
     "test:play-image-catalog": "tsx scripts/test-play-image-catalog.ts",
     "test:finish-mezmur:mix": "node scripts/test-finish-mezmur-mix-browser.mjs",
     "test:finish-mezmur": "tsx scripts/test-finish-mezmur.ts",
-    "test:bible-timeline": "tsx scripts/test-bible-timeline.ts"
+    "test:bible-timeline": "tsx scripts/test-bible-timeline.ts",
+    "cw": "tsx --env-file-if-exists=.env.local scripts/content-workflow/cw.ts",
+    "test:content-workflow": "tsx --env-file-if-exists=.env.local scripts/test-content-workflow.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^3.5.1",
@@ -193,5 +206,13 @@
     "typescript-eslint": "^8.58.0",
     "vite": "^8.0.4",
     "vite-plugin-pwa": "^2.0.0"
+  },
+  "overrides": {
+    "@huggingface/transformers": {
+      "sharp": "$sharp"
+    },
+    "pptxgenjs": {
+      "image-size": "^2.1.0"
+    }
   }
 }

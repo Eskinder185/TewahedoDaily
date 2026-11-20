@@ -8,7 +8,8 @@ export const ADMIN_PATHS = {
   /** @deprecated Prefer hymnsZemaris */
   hymnsSingers: '/admin/hymns/zemaris',
   hymnsCategories: '/admin/hymns/categories',
-  hymnsOccasions: '/admin/hymns/occasions',
+  hymnsOccasions: '/admin/hymns/categories?tab=occasions',
+  hymnsReview: '/admin/hymns/review',
   hymnsTags: '/admin/hymns/tags',
   prayCollections: '/admin/pray/collections',
   prayPrayers: '/admin/pray/prayers',

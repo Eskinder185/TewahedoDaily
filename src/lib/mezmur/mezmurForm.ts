@@ -4,6 +4,7 @@
  * goes through this one normalizer instead of comparing strings.
  */
 export type MezmurForm = 'mezmur' | 'werb'
+export type MezmurFormFilter = MezmurForm | 'all'
 
 const WERB_SPELLINGS = new Set(['werb', 'wereb', 'werab', 'werub', 'ወረብ'])
 
@@ -13,3 +14,16 @@ export function normalizeMezmurForm(value: unknown): MezmurForm {
 }
 
 export const isWerb = (value: unknown): boolean => normalizeMezmurForm(value) === 'werb'
+
+export function isMezmurFormFilter(value: unknown): value is MezmurFormFilter {
+  return value === 'all' || value === 'mezmur' || value === 'werb'
+}
+
+export function matchesMezmurForm(value: unknown, form?: MezmurFormFilter): boolean {
+  if (!form || form === 'all') return true
+  return normalizeMezmurForm(value) === form
+}
+
+export function mezmurFormAliases(form: MezmurForm): string[] {
+  return form === 'werb' ? [...WERB_SPELLINGS] : ['mezmur']
+}

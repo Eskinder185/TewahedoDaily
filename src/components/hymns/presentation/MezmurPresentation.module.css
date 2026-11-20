@@ -25,6 +25,19 @@
   text-size-adjust: 100%;
 }
 
+/* Keep the light presentation independent of the site-level day/night theme.
+   Some fullscreen engines retain the previous shorthand background value when
+   only the custom property changes, so apply the verified ivory palette to the
+   presentation surface itself. High-contrast mode keeps its white palette. */
+.root[data-presentation-theme='ivory']:not(.highContrast) {
+  --p-bg: #fbf6ea;
+  --p-text: #1f1a16;
+  --p-secondary: #4a3f36;
+  --p-accent: #7a2e3a;
+  background-color: #fbf6ea !important;
+  color: #1f1a16;
+}
+
 .root:fullscreen {
   width: 100vw;
   height: 100vh;

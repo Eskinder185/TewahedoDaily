@@ -27,7 +27,7 @@ function SelectedLyrics({ drafts, locale }: { drafts: StudioDraft[]; locale: App
     void fetchSelectedMezmurLyrics(slugs).then(songs => { if (active) setResult({ songs, state: 'ready' }) }, () => { if (active) setResult({ songs: [], state: 'error' }) })
     return () => { active = false }
   }, [drafts, attempt])
-  if (result.state !== 'ready' || result.songs.length < 4) return <DatabaseContentStatus locale={locale} state={result.state === 'ready' ? 'empty' : result.state} retry={() => { setResult({ songs: [], state: 'loading' }); setAttempt(value => value + 1) }} />
+  if (result.state !== 'ready' || result.songs.length < 4) return <DatabaseContentStatus locale={locale} state={result.state === 'ready' ? 'insufficient' : result.state} retry={() => { setResult({ songs: [], state: 'loading' }); setAttempt(value => value + 1) }} />
   return <FinishMezmurGame locale={locale} providedSongs={result.songs} />
 }
 export function DatabasePlayGame({ game, locale }: { game: StudioGame; locale: AppLocale }) {
@@ -45,7 +45,7 @@ export function DatabasePlayGame({ game, locale }: { game: StudioGame; locale: A
   const level = ['beginner', 'growing', 'challenge'].find(value => value === params.get('level')) as PlayDifficulty | undefined
   switch (game) {
     case 'who-am-i': return <WhoAmIGame locale={locale} cards={content.who} />
-    case 'match': return content.pairs.length < 4 ? <DatabaseContentStatus locale={locale} state="empty" retry={retry} /> : <MatchGame locale={locale} pairs={content.pairs} />
+    case 'match': return content.pairs.length < 4 ? <DatabaseContentStatus locale={locale} state="insufficient" retry={retry} /> : <MatchGame locale={locale} pairs={content.pairs} />
     case 'history': return <HistoryQuestGame locale={locale} questions={content.questions} timeline={content.timeline} useFallbackHints={false} />
     case 'bible-timeline': return <BibleTimelineGame locale={locale} chains={content.chains} />
     case 'finish-the-mezmur': return <SelectedLyrics drafts={drafts} locale={locale} />

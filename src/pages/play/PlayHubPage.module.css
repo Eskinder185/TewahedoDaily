@@ -339,11 +339,15 @@
 }
 
 @media (max-width: 620px) {
+  .page { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
   .content, .heroInner { width: min(100% - 2rem, var(--content-max)); }
-  .hero h1 { font-size: clamp(2.6rem, 13vw, 3.6rem); }
-  .heroIcon { width: clamp(7.5rem, 30vw, 9.5rem); }
-  .heroIcon:nth-child(2) { width: clamp(8.5rem, 35vw, 11rem); }
+  .heroInner { padding-block: 1.5rem 2.5rem; gap: 1.1rem; }
+  .heroArt { min-height: 13.5rem; margin-top: 0; }
+  .hero h1 { font-size: clamp(2.4rem, 11.5vw, 3.6rem); }
+  .heroIcon { width: clamp(7rem, 28vw, 9.5rem); }
+  .heroIcon:nth-child(2) { width: clamp(8rem, 33vw, 11rem); }
   .heroIcon figcaption { font-size: 0.78rem; }
+  .heroActions { margin-top: 1.35rem; }
   .heroActions > * { flex: 1 1 100%; }
   .heroFacts { gap: 0.5rem 1.2rem; }
   .gameGrid { grid-template-columns: 1fr; }

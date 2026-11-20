@@ -18,7 +18,17 @@ import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
 import { isMezmurLanguageFilter, mezmurLanguageLabel, type MezmurLanguageCode, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
+import type { MezmurFormFilter } from '../lib/mezmur/mezmurForm'
 import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
+
+function withSectionParams(href: string, language?: string | null, werbOnly?: boolean) {
+  const [pathPart, existingSearch = ''] = href.split('?')
+  const next = new URLSearchParams(existingSearch)
+  if (language && language !== 'all') next.set('language', language)
+  if (werbOnly) next.set('form', 'werb')
+  const qs = next.toString()
+  return qs ? `${pathPart}?${qs}` : pathPart
+}
 
 function SectionHeroArt({
   imageUrl,
@@ -117,6 +127,8 @@ export function PublicHymnSectionPage() {
   const heading = hymnSourceHeading(section?.title, section?.titleAmharic, locale)
   const description = hymnSourceHeading(section?.description, section?.descriptionAmharic, locale)
   const collectionHeading = hymnSourceHeading(collection?.title, collection?.titleAmharic, locale)
+  const werbOnly = params.get('form') === 'werb'
+  const formFilter: MezmurFormFilter = werbOnly ? 'werb' : 'all'
 
   usePageMeta(heading.primary || t('practice.section'), description.primary || t('practice.metaSection'))
 
@@ -128,7 +140,7 @@ export function PublicHymnSectionPage() {
       try {
         const langParam = params.get('language')
         const langFilter: MezmurLanguageFilter | undefined = isMezmurLanguageFilter(langParam) ? langParam : undefined
-        const col = await getHymnCollectionBySlug(collectionSlug, langFilter)
+        const col = await getHymnCollectionBySlug(collectionSlug, langFilter, formFilter)
         if (!active) return
         setCollection(col)
         if (!col) {
@@ -137,7 +149,7 @@ export function PublicHymnSectionPage() {
           setTotal(0)
           return
         }
-        const sec = await getHymnSection(collectionSlug, sectionSlug, langFilter)
+        const sec = await getHymnSection(collectionSlug, sectionSlug, langFilter, formFilter)
         if (!active) return
         setSection(sec)
         if (!sec) {
@@ -150,6 +162,7 @@ export function PublicHymnSectionPage() {
           page,
           pageSize,
           language: langFilter,
+          form: formFilter,
         })
         if (!active) return
         setItems(result.items)
@@ -164,6 +177,7 @@ export function PublicHymnSectionPage() {
               page: p,
               pageSize: 100,
               language: langFilter,
+              form: formFilter,
             })
             if (!active) return
             if (!chunk.items.length) break
@@ -182,12 +196,20 @@ export function PublicHymnSectionPage() {
     return () => {
       active = false
     }
-  }, [collectionSlug, sectionSlug, withinQ, params, t, page])
+  }, [collectionSlug, sectionSlug, withinQ, params, t, page, formFilter])
+
+  const setForm = (nextWerb: boolean) => {
+    const next = new URLSearchParams(params)
+    if (nextWerb) next.set('form', 'werb')
+    else next.delete('form')
+    next.delete('page')
+    setParams(next)
+  }
 
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-        <Link to={params.get('language') ? `/hymns/browse/${collectionSlug}?language=${encodeURIComponent(params.get('language')!)}` : `/hymns/browse/${collectionSlug}`} className={s.viewAll}>
+        <Link to={withSectionParams(`/hymns/browse/${collectionSlug}`, params.get('language'), werbOnly)} className={s.viewAll}>
           ← {collectionHeading.primary || t('practice.collection')}
         </Link>
       </p>
@@ -222,6 +244,15 @@ export function PublicHymnSectionPage() {
               </p>
             </div>
           </header>
+
+          <div className={s.formSelector} role="group" aria-label={locale === 'am' ? 'የመዝሙር ዓይነት' : 'Hymn type'} data-testid="werb-card">
+            <button type="button" aria-pressed={!werbOnly} className={!werbOnly ? s.formSelectorActive : s.formSelectorButton} onClick={() => setForm(false)}>
+              {locale === 'am' ? 'ሁሉም መዝሙራት' : 'All Hymns'}
+            </button>
+            <button type="button" aria-pressed={werbOnly} className={werbOnly ? s.formSelectorActive : s.formSelectorButton} onClick={() => setForm(true)}>
+              {locale === 'am' ? <span lang="am">ወረብ</span> : <><span>Werb</span><span aria-hidden="true"> · </span><span lang="am">ወረብ</span></>}
+            </button>
+          </div>
 
           <label className={s.withinSearch}>
             <span className={s.srOnly}>{t('practice.searchWithinSection')}</span>
@@ -261,7 +292,18 @@ export function PublicHymnSectionPage() {
           ) : null}
           {!loading && !error && !items.length ? (
             <div className={s.status} role="status">
-              <p>{params.get('language') ? `No ${mezmurLanguageLabel(params.get('language') as MezmurLanguageCode)} Mezmurs found in this section.` : t('practice.noHymnsInSection')}</p>
+              <p>
+                {werbOnly
+                  ? (locale === 'am' ? 'በዚህ ክፍል ውስጥ ወረብ የለም።' : 'No Werb found in this section.')
+                  : params.get('language')
+                    ? `No ${mezmurLanguageLabel(params.get('language') as MezmurLanguageCode)} Mezmurs found in this section.`
+                    : t('practice.noHymnsInSection')}
+              </p>
+              {werbOnly ? (
+                <button type="button" className={s.textBtn} onClick={() => setForm(false)}>
+                  {locale === 'am' ? 'ሁሉንም መዝሙራት በዚህ ክፍል ይመልከቱ' : 'View All Hymns in this section'}
+                </button>
+              ) : null}
               {params.get('language') ? (
                 <button
                   type="button"
@@ -285,7 +327,7 @@ export function PublicHymnSectionPage() {
               return (
                 <Link
                   key={item.id}
-                  to={params.get('language') ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(params.get('language')!)}` : `/hymns/mezmur/${item.slug}`}
+                  to={withSectionParams(`/hymns/mezmur/${item.slug}`, params.get('language'), werbOnly)}
                   className={s.card}
                   onClick={() => rememberBrowseQueue(
                     heading.primary || section?.title || 'This section',

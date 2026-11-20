@@ -1,5 +1,5 @@
-﻿import { useCallback, useState, type FormEvent } from 'react'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { useCallback, useState, type FormEvent } from 'react'
+import { Link, Navigate, useLocation, useSearchParams } from 'react-router-dom'
 import { useAuth } from '../../lib/auth/useAuth'
 import {
   db,
@@ -22,15 +22,44 @@ type Item = Category | Tag | DerivedTaxonomyItem
 
 export function TaxonomyPage({ kind: kindProp }: { kind?: Kind }) {
   const { pathname } = useLocation()
+  const [params, setParams] = useSearchParams()
   const segment = pathname.split('/').filter(Boolean).pop() as Kind
-  const kind = kindProp || segment
-  if (kind === 'singers') {
+  const baseKind = kindProp || segment
+  if (baseKind === 'singers') {
     return <Navigate to={ADMIN_PATHS.hymnsZemaris} replace />
   }
-  return <TaxonomyManager key={kind} kind={kind} />
+  const activeKind: Exclude<Kind, 'singers'> =
+    baseKind === 'tags'
+      ? 'tags'
+      : params.get('tab') === 'occasions' || baseKind === 'occasions'
+        ? 'occasions'
+        : 'categories'
+
+  return (
+    <TaxonomyManager
+      key={activeKind}
+      kind={activeKind}
+      onSwitchTab={
+        baseKind === 'tags'
+          ? undefined
+          : (nextKind) => {
+              const next = new URLSearchParams(params)
+              if (nextKind === 'occasions') next.set('tab', 'occasions')
+              else next.delete('tab')
+              setParams(next)
+            }
+      }
+    />
+  )
 }
 
-function TaxonomyManager({ kind }: { kind: Exclude<Kind, 'singers'> }) {
+function TaxonomyManager({
+  kind,
+  onSwitchTab,
+}: {
+  kind: Exclude<Kind, 'singers'>
+  onSwitchTab?: (next: 'categories' | 'occasions') => void
+}) {
   const derivedReadOnly = kind === 'occasions' || kind === 'categories'
   const result = useAsync(
     useCallback(async () => {
@@ -120,13 +149,13 @@ function TaxonomyManager({ kind }: { kind: Exclude<Kind, 'singers'> }) {
     <>
       <div className={s.heading}>
         <div>
-          <h1>{label}</h1>
+          <h1>{kind === 'tags' ? 'Tags' : 'Categories & Occasions'}</h1>
           <p className={s.muted}>
             {kind === 'occasions'
-              ? 'Derived from mezmur_occasion_links_import.occasion_slug (read-only).'
+              ? 'Church feasts, fasts, and liturgical seasons that group hymns on the public Mezmur Library.'
               : kind === 'categories'
-                ? 'Derived from mezmur_category_links_import.category_slug (read-only).'
-                : 'Manage tags for Hymns Practice discovery.'}
+                ? 'Saints, themes, and subjects that group hymns on the public Mezmur Library.'
+                : 'Legacy tags table. Tags are hidden from everyday Hymns Practice navigation because no public page displays them.'}
           </p>
         </div>
         {canManage ? (
@@ -135,17 +164,35 @@ function TaxonomyManager({ kind }: { kind: Exclude<Kind, 'singers'> }) {
           </button>
         ) : null}
       </div>
-      <div className={s.actions}>
-        <Link to="/admin/hymns/occasions">Occasions</Link>
-        <Link to="/admin/hymns/categories">Categories</Link>
-        <Link to={ADMIN_PATHS.hymnsZemaris}>Zemaris</Link>
-        <Link to="/admin/hymns/tags">Tags</Link>
-      </div>
+      {onSwitchTab ? (
+        <div className={s.actions} role="tablist" aria-label="Taxonomy type">
+          <button
+            type="button"
+            role="tab"
+            aria-selected={kind === 'categories'}
+            className={kind === 'categories' ? s.primary : undefined}
+            onClick={() => onSwitchTab('categories')}
+          >
+            Categories
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={kind === 'occasions'}
+            className={kind === 'occasions' ? s.primary : undefined}
+            onClick={() => onSwitchTab('occasions')}
+          >
+            Occasions
+          </button>
+          <Link to={ADMIN_PATHS.hymnsMezmur}>All Mezmurs</Link>
+          <Link to={ADMIN_PATHS.hymnsZemaris}>Zemaris</Link>
+        </div>
+      ) : null}
       {derivedReadOnly ? (
         <p className={s.notice}>
-          Read-only taxonomy from import link tables. Assign Mezmurs via the Mezmur editor or CSV
-          import. Zemari profiles live under{' '}
-          <Link to={ADMIN_PATHS.hymnsZemaris}>Zemari Library</Link>.
+          Categories and occasions are assigned directly inside each Mezmur&rsquo;s editor. Open{' '}
+          <Link to={ADMIN_PATHS.hymnsMezmur}>All Mezmurs</Link> to add or update classifications, or manage
+          singer profiles under <Link to={ADMIN_PATHS.hymnsZemaris}>Zemaris</Link>.
         </p>
       ) : null}
       {!canManage && !derivedReadOnly ? (

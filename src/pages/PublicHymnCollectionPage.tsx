@@ -17,11 +17,22 @@ import { useLocale } from '../lib/i18n/locale'
 import { parseYoutubeVideoId, youtubeThumbnailUrl } from '../data/utils/youtube'
 import { publicMedia } from '../lib/publicContent/service'
 import s from './HymnPractice.module.css'
-import { isMezmurLanguageFilter, normalizeMezmurLanguage, mezmurLanguageLabel, type MezmurLanguageCode, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
+import { MEZMUR_LANGUAGES, isMezmurLanguageFilter, normalizeMezmurLanguage, mezmurLanguageLabel, type MezmurLanguageCode, type MezmurLanguageFilter } from '../lib/mezmur/mezmurLanguage'
+import { isWerb, type MezmurFormFilter } from '../lib/mezmur/mezmurForm'
 import { HymnBrowseCardView } from '../components/practice/HymnBrowseCard'
+
+function withCollectionParams(href: string, language?: string | null, werbOnly?: boolean) {
+  const [pathPart, existingSearch = ''] = href.split('?')
+  const next = new URLSearchParams(existingSearch)
+  if (language && language !== 'all') next.set('language', language)
+  if (werbOnly) next.set('form', 'werb')
+  const qs = next.toString()
+  return qs ? `${pathPart}?${qs}` : pathPart
+}
 import { ZemariSupportLinks } from '../components/practice/ZemariSupportLinks'
 import { queueItem, rememberBrowseQueue } from '../lib/mezmur/browseQueue'
 import { browseLinkSlug, matchesBrowseLink } from '../lib/publicContent/browseTaxonomy'
+import { hymnSectionArtFallback } from '../lib/publicContent/hymnSectionArtFallbacks'
 
 const ZEMARIS_PER_PAGE = 8
 
@@ -106,6 +117,7 @@ export function PublicHymnCollectionPage({
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string>()
+  const [headerImageFailed, setHeaderImageFailed] = useState(false)
   const [draftQ, setWithinQ] = useUrlSearchInput()
   const withinQ = params.get('q') || ''
   const [zemariQuery, setZemariQuery] = useUrlSearchInput('zemari')
@@ -114,6 +126,7 @@ export function PublicHymnCollectionPage({
   const { locale } = useLocale()
   const detailHeading = hymnSourceHeading(group?.name, group?.nameAmharic, locale)
   const detailDescription = hymnSourceHeading(group?.description, group?.descriptionAmharic, locale)
+  const headerImageUrl = group?.imageUrl || hymnSectionArtFallback(group?.slug)
 
   const title = isIndex
     ? kind === 'occasions'
@@ -126,6 +139,10 @@ export function PublicHymnCollectionPage({
   const page = pageNumber(params)
   const langParam = params.get('language')
   const language: MezmurLanguageFilter | null = isMezmurLanguageFilter(langParam) ? langParam : null
+  const werbOnly = params.get('form') === 'werb'
+  const formFilter: MezmurFormFilter = werbOnly ? 'werb' : 'all'
+
+  useEffect(() => setHeaderImageFailed(false), [headerImageUrl])
 
   usePageMeta(title, detailDescription.primary || t('practice.metaCollection'))
 
@@ -144,7 +161,7 @@ export function PublicHymnCollectionPage({
           return
         }
 
-        const index = await loadHymnBrowseIndex(language || undefined)
+        const index = await loadHymnBrowseIndex(language || undefined, formFilter)
         if (!active) return
         const list =
           detailKind === 'occasion'
@@ -154,9 +171,17 @@ export function PublicHymnCollectionPage({
               : index.singers
         setAllCards(list)
         if (!isIndex) {
-          const found = list.find((c) => c.slug === (detailKind === 'category' || detailKind === 'occasion'
+          const targetSlug = detailKind === 'category' || detailKind === 'occasion'
             ? browseLinkSlug(detailKind, slug)
-            : slug)) || null
+            : slug
+          let found = list.find((c) => c.slug === targetSlug) || null
+          if (!found && (werbOnly || language) && (detailKind === 'category' || detailKind === 'occasion')) {
+            const fallbackIndex = await loadHymnBrowseIndex()
+            if (!active) return
+            const fallbackList = detailKind === 'occasion' ? fallbackIndex.occasions : fallbackIndex.categories
+            const baseGroup = fallbackList.find((c) => c.slug === targetSlug) || null
+            if (baseGroup) found = { ...baseGroup, mezmurCount: 0 }
+          }
           setGroup(found)
         } else {
           setLoading(false)
@@ -170,19 +195,20 @@ export function PublicHymnCollectionPage({
     return () => {
       active = false
     }
-  }, [detailKind, isIndex, slug, t, language])
+  }, [detailKind, isIndex, slug, t, language, formFilter, werbOnly])
 
   const filterKey = useMemo(() => {
     if (isIndex || !group) return ''
     const next = new URLSearchParams()
     if (withinQ.trim()) next.set('q', withinQ.trim())
     if (language) next.set('language', language)
+    if (werbOnly) next.set('form', 'werb')
     if (detailKind === 'occasion') next.set('occasion', group.name)
     if (detailKind === 'category') next.set('category', group.name)
     if (detailKind === 'singer') next.set('singer', group.id)
     next.set('page', String(page))
     return next.toString()
-  }, [detailKind, group, isIndex, page, withinQ, language])
+  }, [detailKind, group, isIndex, page, withinQ, language, werbOnly])
 
   const filteredZemariCards = useMemo(() => {
     if (kind !== 'singers') return allCards
@@ -207,7 +233,7 @@ export function PublicHymnCollectionPage({
         let rows: (MezmurCard & { zemari_id?: string | null })[] = []
 
         if (detailKind === 'singer') {
-          const linked = await listPublishedMezmursForZemari(group.id)
+          const linked = await listPublishedMezmursForZemari(group.id, formFilter)
           rows = linked.map((row) => ({
             id: row.id,
             slug: row.slug,
@@ -331,6 +357,7 @@ export function PublicHymnCollectionPage({
           )
         }
         if (language) rows = rows.filter((item) => normalizeMezmurLanguage(item.language) === language)
+        if (werbOnly) rows = rows.filter((item) => isWerb(item.form))
         if (!active) return
         const from = (page - 1) * PAGE_SIZE
         setItems(rows.slice(from, from + PAGE_SIZE))
@@ -347,13 +374,21 @@ export function PublicHymnCollectionPage({
     return () => {
       active = false
     }
-  }, [detailKind, filterKey, group, isIndex, page, t, withinQ, language])
+  }, [detailKind, filterKey, group, isIndex, page, t, withinQ, language, formFilter, werbOnly])
+
+  const setForm = (nextWerb: boolean) => {
+    const next = new URLSearchParams(params)
+    if (nextWerb) next.set('form', 'werb')
+    else next.delete('form')
+    next.delete('page')
+    setParams(next)
+  }
 
   if (isIndex) {
     return (
       <section className={s.page}>
         <p className={s.backRow}>
-          <Link to={language ? `/hymns?language=${encodeURIComponent(language)}` : '/hymns'} className={s.viewAll}>
+          <Link to={withCollectionParams('/hymns', language, werbOnly)} className={s.viewAll}>
             ← {t('practice.backToHymns')}
           </Link>
         </p>
@@ -392,7 +427,7 @@ export function PublicHymnCollectionPage({
         ) : null}
         <div className={s.browseGrid}>
           {(kind === 'singers' ? filteredZemariCards.slice(0, visibleZemaris) : allCards).map((card) => (
-            <HymnBrowseCardView key={card.id} card={{ ...card, href: language ? `${card.href}${card.href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}` : card.href }} />
+            <HymnBrowseCardView key={card.id} card={{ ...card, href: withCollectionParams(card.href, language, werbOnly) }} />
           ))}
         </div>
         {kind === 'singers' && visibleZemaris < filteredZemariCards.length ? (
@@ -412,7 +447,7 @@ export function PublicHymnCollectionPage({
   return (
     <section className={s.page}>
       <p className={s.backRow}>
-          <Link to={language ? `/hymns?language=${encodeURIComponent(language)}` : '/hymns'} className={s.viewAll}>
+        <Link to={withCollectionParams('/hymns', language, werbOnly)} className={s.viewAll}>
           ← {t('practice.backToHymns')}
         </Link>
       </p>
@@ -421,14 +456,17 @@ export function PublicHymnCollectionPage({
         <p className={s.status}>{t('practice.collectionNotFound')}</p>
       ) : (
         <>
-          <header className={s.collectionHero}>
-            {group?.imageUrl ? (
+          <header className={`${s.collectionHero} ${s.collectionHeroCompact}`}>
+            {headerImageUrl && !headerImageFailed ? (
               <img
                 className={s.collectionArt}
-                src={group.imageUrl}
-                alt={group.imageAlt || group.name}
-                width={640}
-                height={480}
+                src={headerImageUrl}
+                alt={group?.name || ''}
+                width={320}
+                height={200}
+                loading="eager"
+                decoding="async"
+                onError={() => setHeaderImageFailed(true)}
               />
             ) : (
               <div className={s.collectionArtEmpty} aria-hidden>
@@ -452,7 +490,7 @@ export function PublicHymnCollectionPage({
                 <p className={s.subtitle}>{t('practice.singerNotesPending')}</p>
               ) : null}
               <p className={s.collectionCount}>
-                {group ? hymnMezmurCountLabel(group.mezmurCount, locale) : ''}
+                {group ? hymnMezmurCountLabel(loading ? group.mezmurCount : total, locale) : ''}
               </p>
             </div>
           </header>
@@ -473,6 +511,20 @@ export function PublicHymnCollectionPage({
             />
           </label>
 
+          <div className={s.formSelector} role="group" aria-label={locale === 'am' ? 'የመዝሙር ዓይነት' : 'Hymn type'} data-testid="werb-card">
+            <button type="button" aria-pressed={!werbOnly} className={!werbOnly ? s.formSelectorActive : s.formSelectorButton} onClick={() => setForm(false)}>
+              {locale === 'am' ? 'ሁሉም መዝሙራት' : 'All Hymns'}
+            </button>
+            <button type="button" aria-pressed={werbOnly} className={werbOnly ? s.formSelectorActive : s.formSelectorButton} onClick={() => setForm(true)}>
+              {locale === 'am' ? <span lang="am">ወረብ</span> : <><span>Werb</span><span aria-hidden="true"> · </span><span lang="am">ወረብ</span></>}
+            </button>
+          </div>
+
+          <div className={s.languageChipsCompact} role="group" aria-label={t('practice.languageFilter')}>
+            <button type="button" className={!language || language === 'all' ? s.languageChipActive : s.languageChip} aria-pressed={!language || language === 'all'} onClick={() => { const next = new URLSearchParams(params); next.delete('language'); next.delete('page'); setParams(next) }}>{t('practice.languages.all')}</button>
+            {MEZMUR_LANGUAGES.map((entry) => <button type="button" key={entry.code} className={language === entry.code ? s.languageChipActive : s.languageChip} aria-pressed={language === entry.code} onClick={() => { const next = new URLSearchParams(params); next.set('language', entry.code); next.delete('page'); setParams(next) }}>{t(`practice.languages.${entry.code}`)}</button>)}
+          </div>
+
           {loading ? <p className={s.status}>{t('practice.loadingHymns')}</p> : null}
           {error ? (
             <p className={s.status} role="alert">
@@ -481,7 +533,22 @@ export function PublicHymnCollectionPage({
           ) : null}
           {!loading && !items.length ? (
             <div className={s.status} role="status">
-              <p>{language ? `No ${mezmurLanguageLabel(language as MezmurLanguageCode)} Mezmurs found in this collection.` : t('practice.noHymnsInCollection')}</p>
+              <p>
+                {werbOnly
+                  ? (locale === 'am' ? 'በዚህ ምድብ ውስጥ ወረብ የለም።' : 'No Werb found in this collection.')
+                  : language
+                    ? `No ${mezmurLanguageLabel(language as MezmurLanguageCode)} Mezmurs found in this collection.`
+                    : t('practice.noHymnsInCollection')}
+              </p>
+              {werbOnly ? (
+                <button
+                  type="button"
+                  className={s.textBtn}
+                  onClick={() => setForm(false)}
+                >
+                  {locale === 'am' ? 'ሁሉንም መዝሙራት በዚህ ምድብ ይመልከቱ' : 'View All Hymns in this collection'}
+                </button>
+              ) : null}
               {language ? (
                 <button
                   type="button"
@@ -511,7 +578,7 @@ export function PublicHymnCollectionPage({
               return (
                 <Link
                   key={item.id}
-                  to={language ? `/hymns/mezmur/${item.slug}?language=${encodeURIComponent(language)}` : `/hymns/mezmur/${item.slug}`}
+                  to={withCollectionParams(`/hymns/mezmur/${item.slug}`, language, werbOnly)}
                   className={s.card}
                   onClick={() => rememberBrowseQueue(
                     title,

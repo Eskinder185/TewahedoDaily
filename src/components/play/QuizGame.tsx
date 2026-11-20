@@ -49,7 +49,7 @@ function optionValue(question: PlayQuestion, key: string) {
   return question.options.find((option) => option.key === key)?.text ?? null
 }
 
-export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialDifficulty }: { locale: AppLocale; game: PlayGameType; questions: PlayQuestion[]; dailyQuestionIndex?: number; initialDifficulty?: PlayDifficulty }) {
+export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialDifficulty, loading = false }: { locale: AppLocale; game: PlayGameType; questions: PlayQuestion[]; /** True while the full question bank is still loading: Start stays disabled so no short round can begin on the small built-in pool. */ loading?: boolean; dailyQuestionIndex?: number; initialDifficulty?: PlayDifficulty }) {
   const { user } = useAuth()
   const categories = useMemo(() => [...new Set(questions.map((q) => q.category))], [questions])
   const [category, setCategory] = useState('all')
@@ -154,8 +154,8 @@ export function QuizGame({ locale, game, questions, dailyQuestionIndex, initialD
         <div className={styles.field}><span className={styles.legend}>{locale === 'am' ? 'የጥያቄ ብዛት' : 'Questions'}</span><div className={styles.choiceRow}>{[5, 10, 20].map((item) => <button key={item} type="button" aria-pressed={count === item} onClick={() => setCount(item)}>{item}</button>)}</div></div>
         <div className={styles.field}><span className={styles.legend}>{locale === 'am' ? 'ጊዜ' : 'Timer'}</span><div className={styles.choiceRow}><button type="button" aria-pressed={!timed} onClick={() => setTimed(false)}>{locale === 'am' ? 'አይ' : 'Off'}</button><button type="button" aria-pressed={timed} onClick={() => setTimed(true)}>30s</button></div></div>
       </div>
-      <p className={styles.setupCount} role="status" aria-live="polite" data-eligible-count>{eligible.length === 0 ? (locale === 'am' ? 'ከዚህ ምርጫ ጋር የሚስማማ ጥያቄ የለም፤ ሁሉም ጥያቄዎች ይጠቀማሉ።' : 'Nothing matches this choice, so the round uses every question.') : eligible.length < count ? (locale === 'am' ? `${eligible.length} ጥያቄዎች ብቻ ይስማማሉ፤ ዙሩ ${eligible.length} ጥያቄዎች ይኖሩታል።` : `Only ${eligible.length} match, so this round has ${eligible.length} questions.`) : (locale === 'am' ? `${eligible.length} ጥያቄዎች ይገኛሉ።` : `${eligible.length} questions available for this choice.`)}</p>
-      <div className={styles.actions}><button className={styles.action} type="button" onClick={start}>{locale === 'am' ? 'ይጀምሩ' : 'Start round'}</button></div>
+      <p className={styles.setupCount} role="status" aria-live="polite" data-eligible-count data-loading={loading ? 'true' : undefined}>{loading ? (locale === 'am' ? 'ሙሉው የጥያቄ ስብስብ እየተጫነ ነው…' : 'Loading the full question bank…') : eligible.length === 0 ? (locale === 'am' ? 'ከዚህ ምርጫ ጋር የሚስማማ ጥያቄ የለም፤ ሁሉም ጥያቄዎች ይጠቀማሉ።' : 'Nothing matches this choice, so the round uses every question.') : eligible.length < count ? (locale === 'am' ? `${eligible.length} ጥያቄዎች ብቻ ይስማማሉ፤ ዙሩ ${eligible.length} ጥያቄዎች ይኖሩታል።` : `Only ${eligible.length} match, so this round has ${eligible.length} questions.`) : (locale === 'am' ? `${eligible.length} ጥያቄዎች ይገኛሉ።` : `${eligible.length} questions available for this choice.`)}</p>
+      <div className={styles.actions}><button className={styles.action} type="button" onClick={start} disabled={loading} aria-busy={loading || undefined}>{locale === 'am' ? 'ይጀምሩ' : 'Start round'}</button></div>
     </section>
   )
 

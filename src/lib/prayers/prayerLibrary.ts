@@ -36,12 +36,17 @@ function normalizeLibraryText(value: string | null | undefined): string {
   return text
 }
 
-/** Unified Prayer Collections list: normal prayers + liturgy + synaxarium. */
-export async function loadPrayerLibraryCollections(): Promise<PrayerLibraryCollection[]> {
+/** Unified Prayer Collections list: normal prayers + optional liturgy + optional synaxarium. */
+export async function loadPrayerLibraryCollections(options?: {
+  includeLiturgy?: boolean
+  includeSynaxarium?: boolean
+}): Promise<PrayerLibraryCollection[]> {
+  const includeLiturgy = options?.includeLiturgy ?? true
+  const includeSynaxarium = options?.includeSynaxarium ?? true
   const [prayerResult, liturgyResult, synaxResult] = await Promise.allSettled([
     loadPrayerCollections(),
-    getLiturgyCollections(),
-    countSynaxariumDays(),
+    includeLiturgy ? getLiturgyCollections() : Promise.resolve([]),
+    includeSynaxarium ? countSynaxariumDays() : Promise.resolve(0),
   ])
 
   const prayerCollections = prayerResult.status === 'fulfilled' ? prayerResult.value : []
@@ -141,8 +146,8 @@ export async function loadPrayerLibraryCollections(): Promise<PrayerLibraryColle
     countKind: 'days',
   }
 
-  const cards = [...prayerCards, ...liturgyCards]
-  if (synaxResult.status === 'fulfilled') cards.push(synaxariumCard)
+  const cards = [...prayerCards, ...(includeLiturgy ? liturgyCards : [])]
+  if (includeSynaxarium && synaxResult.status === 'fulfilled') cards.push(synaxariumCard)
 
   return cards.sort((a, b) => a.sortOrder - b.sortOrder || a.title.localeCompare(b.title))
 }

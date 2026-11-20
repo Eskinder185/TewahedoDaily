@@ -59,20 +59,32 @@ async function loadWerbs(query: string, language: MezmurLanguageFilter, page: nu
   return { items: werbs.slice((page - 1) * 24, page * 24), total: werbs.length, page }
 }
 
-/** One clear way in for people who only want werbs. */
-function WerbFeatureCard({ locale, onOpen }: { locale: string; onOpen: () => void }) {
+/** Compact, URL-backed form selector. The existing `form=werb` deep link remains canonical. */
+function HymnFormSelector({
+  locale,
+  werbOnly,
+  onAll,
+  onWerb,
+}: {
+  locale: string
+  werbOnly: boolean
+  onAll: () => void
+  onWerb: () => void
+}) {
   const am = locale === 'am'
   return (
-    <button type="button" className={s.werbCard} onClick={onOpen} data-testid="werb-card">
-      <svg viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
-        <ellipse cx="24" cy="13" rx="13" ry="4.5" /><path d="M11 13c2 7 2 14 0 22M37 13c-2 7-2 14 0 22" /><path d="M11 35c0 2.5 5.8 4.5 13 4.5S37 37.5 37 35" /><path d="M14 18l6 17M24 17.5v22M34 18l-6 17" />
-      </svg>
-      <span className={s.werbText}>
-        <strong>{am ? 'ወረብ' : 'Werb'} · <span lang="am">ወረብ</span></strong>
-        <span>{am ? 'ወረብ ብቻ ይመልከቱ — በዜማ የሚቀርቡ አጫጭር ስንኞች።' : 'Looking only for werbs? See just the werbs, the short sung verses, and nothing else.'}</span>
-      </span>
-      <span className={s.werbGo} aria-hidden="true">→</span>
-    </button>
+    <div className={s.formSelector} role="group" aria-label={am ? 'የመዝሙር ዓይነት' : 'Hymn type'} data-testid="werb-card">
+      <button type="button" aria-pressed={!werbOnly} className={!werbOnly ? s.formSelectorActive : s.formSelectorButton} onClick={onAll}>
+        {am ? 'ሁሉም መዝሙራት' : 'All Hymns'}
+      </button>
+      <button type="button" aria-pressed={werbOnly} className={werbOnly ? s.formSelectorActive : s.formSelectorButton} onClick={onWerb}>
+        {am ? (
+          <span lang="am">ወረብ</span>
+        ) : (
+          <><span>Werb</span><span aria-hidden="true"> · </span><span lang="am">ወረብ</span></>
+        )}
+      </button>
+    </div>
   )
 }
 
@@ -164,32 +176,42 @@ type BrowseMode = 'categories' | 'occasions' | 'zemaris'
 const browseModeFromParam = (value: string | null): BrowseMode =>
   value === 'occasions' || value === 'zemaris' ? value : 'categories'
 
+function appendFilterParams(href: string, language: MezmurLanguageFilter, werbOnly: boolean) {
+  const [pathPart, existingSearch = ''] = href.split('?')
+  const next = new URLSearchParams(existingSearch)
+  if (language !== 'all') next.set('language', language)
+  if (werbOnly) next.set('form', 'werb')
+  const qs = next.toString()
+  return qs ? `${pathPart}?${qs}` : pathPart
+}
+
 function libraryGroupHref(
   definition: MezmurBrowseGroup,
   collection: HymnCollection | undefined,
   language: MezmurLanguageFilter,
+  werbOnly: boolean,
 ) {
   const href = collection?.href || `/hymns/browse/${definition.slug}`
-  return language === 'all'
-    ? href
-    : `${href}${href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}`
+  return appendFilterParams(href, language, werbOnly)
 }
 
 function LibraryNavigationCard({
   definition,
   collection,
   language,
+  werbOnly,
   isAmharic,
 }: {
   definition: MezmurBrowseGroup
   collection: HymnCollection | undefined
   language: MezmurLanguageFilter
+  werbOnly: boolean
   isAmharic: boolean
 }) {
   const [imageFailed, setImageFailed] = useState(false)
   const imageUrl = collection?.imageUrl || ''
   const showImage = Boolean(imageUrl) && !imageFailed
-  const primaryHref = libraryGroupHref(definition, collection, language)
+  const primaryHref = libraryGroupHref(definition, collection, language, werbOnly)
 
   const imageAttrs = showImage
     ? responsiveImageAttrs(imageUrl, {
@@ -218,7 +240,7 @@ function LibraryNavigationCard({
             height={imageAttrs?.height || 360}
             loading={imageAttrs?.loading || 'lazy'}
             decoding="async"
-            alt={collection?.imageAlt || definition.title}
+            alt=""
             onError={() => setImageFailed(true)}
           />
         ) : (
@@ -239,7 +261,17 @@ function LibraryNavigationCard({
   )
 }
 
-function ZemariNavigationCard({ card, isAmharic }: { card: HymnBrowseCard; isAmharic: boolean }) {
+function ZemariNavigationCard({
+  card,
+  language,
+  werbOnly,
+  isAmharic,
+}: {
+  card: HymnBrowseCard
+  language: MezmurLanguageFilter
+  werbOnly: boolean
+  isAmharic: boolean
+}) {
   const [imageFailed, setImageFailed] = useState(false)
   const showImage = Boolean(card.imageUrl) && !imageFailed
   const imageAttrs = showImage
@@ -251,7 +283,7 @@ function ZemariNavigationCard({ card, isAmharic }: { card: HymnBrowseCard; isAmh
     : null
 
   return (
-    <Link className={s.libraryNavCard} to={card.href}>
+    <Link className={s.libraryNavCard} to={appendFilterParams(card.href, language, werbOnly)}>
       <span className={s.libraryNavMedia}>
         {showImage ? (
           <img
@@ -288,6 +320,7 @@ function LibraryNavigation({
   mode,
   groups,
   language,
+  werbOnly,
   locale,
   onModeChange,
   onSearchZemaris,
@@ -301,6 +334,7 @@ function LibraryNavigation({
   mode: BrowseMode
   groups: HymnCollection[]
   language: MezmurLanguageFilter
+  werbOnly: boolean
   locale: string
   onModeChange: (mode: BrowseMode) => void
   onSearchZemaris: () => void
@@ -316,7 +350,7 @@ function LibraryNavigation({
     ? MEZMUR_OCCASION_BROWSE_GROUPS
     : MEZMUR_CATEGORY_BROWSE_GROUPS
   const collectionsBySlug = new Map(groups.map((group) => [group.slug, group]))
-  const panelId = `mezmur-library-${mode}`
+  const panelId = 'mezmur-library-panel'
   const tabs: Array<{ id: BrowseMode; label: string; labelAmharic: string }> = [
     { id: 'categories', label: 'Categories', labelAmharic: 'ምድቦች' },
     { id: 'occasions', label: 'Occasions', labelAmharic: 'ወቅቶች' },
@@ -333,9 +367,23 @@ function LibraryNavigation({
             type="button"
             role="tab"
             aria-selected={mode === tab.id}
-            aria-controls={`mezmur-library-${tab.id}`}
+            aria-controls={panelId}
+            tabIndex={mode === tab.id ? 0 : -1}
             className={mode === tab.id ? s.libraryTabActive : s.libraryTab}
             onClick={() => onModeChange(tab.id)}
+            onKeyDown={(event) => {
+              const current = tabs.findIndex((candidate) => candidate.id === tab.id)
+              let next = current
+              if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % tabs.length
+              else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (current - 1 + tabs.length) % tabs.length
+              else if (event.key === 'Home') next = 0
+              else if (event.key === 'End') next = tabs.length - 1
+              else return
+              event.preventDefault()
+              const nextTab = tabs[next]
+              onModeChange(nextTab.id)
+              window.requestAnimationFrame(() => document.getElementById(`mezmur-library-tab-${nextTab.id}`)?.focus())
+            }}
           >
             {isAmharic ? tab.labelAmharic : tab.label}
           </button>
@@ -353,7 +401,11 @@ function LibraryNavigation({
             <div className={s.libraryPanelHead}>
               <div>
                 <h2>{isAmharic ? 'በዘማሪ ይፈልጉ' : 'Browse by Zemari'}</h2>
-                <p>{isAmharic ? 'በአማርኛ ወይም በእንግሊዝኛ ስም ይፈልጉ።' : `${zemariTotal} Zemaris with published Mezmurs`}</p>
+                <p>
+                  {isAmharic
+                    ? (werbOnly ? 'ወረብ ያላቸውን ዘማሪዎች በስም ይፈልጉ።' : 'በአማርኛ ወይም በእንግሊዝኛ ስም ይፈልጉ።')
+                    : `${zemariTotal} Zemaris with published ${werbOnly ? 'Werb' : 'Mezmurs'}`}
+                </p>
               </div>
               <button type="button" className={s.textBtn} onClick={onSearchZemaris}>
                 {isAmharic ? 'ዘማሪ ይፈልጉ' : 'Search Zemaris'}
@@ -366,7 +418,15 @@ function LibraryNavigation({
             ) : null}
             {zemaris.length > 0 ? (
               <div className={s.libraryCardGrid}>
-                {zemaris.map((card) => <ZemariNavigationCard key={card.id} card={card} isAmharic={isAmharic} />)}
+                {zemaris.map((card) => (
+                  <ZemariNavigationCard
+                    key={card.id}
+                    card={card}
+                    language={language}
+                    werbOnly={werbOnly}
+                    isAmharic={isAmharic}
+                  />
+                ))}
               </div>
             ) : null}
             {zemariHasMore ? (
@@ -380,20 +440,38 @@ function LibraryNavigation({
             ) : null}
           </div>
         ) : (
-          <div className={s.libraryCardGrid}>
-            {definitions.map((definition) => {
-              const collection = collectionsBySlug.get(definition.slug)
-              return (
-                <LibraryNavigationCard
-                  key={`${definition.slug}:${collection?.imageUrl || ''}`}
-                  definition={definition}
-                  collection={collection}
-                  language={language}
-                  isAmharic={isAmharic}
-                />
-              )
-            })}
-          </div>
+          <>
+            {werbOnly ? (
+              <div className={s.libraryPanelHead}>
+                <p>
+                  {isAmharic
+                    ? 'ወረቦችን በምድብና በወቅት ያስሱ።'
+                    : 'Browsing Werb by category and occasion.'}
+                </p>
+                <Link
+                  className={s.viewAll}
+                  to={appendFilterParams('/hymns?view=all', language, true)}
+                >
+                  {isAmharic ? 'ሁሉንም ወረቦች ይመልከቱ →' : 'View all Werb →'}
+                </Link>
+              </div>
+            ) : null}
+            <div className={s.libraryCardGrid}>
+              {definitions.map((definition) => {
+                const collection = collectionsBySlug.get(definition.slug)
+                return (
+                  <LibraryNavigationCard
+                    key={`${definition.slug}:${collection?.imageUrl || ''}:${werbOnly ? 'werb' : 'all'}`}
+                    definition={definition}
+                    collection={collection}
+                    language={language}
+                    werbOnly={werbOnly}
+                    isAmharic={isAmharic}
+                  />
+                )
+              })}
+            </div>
+          </>
         )}
       </div>
     </div>
@@ -415,24 +493,24 @@ function MezmurResultGrid({
 }) {
   const t = useTranslation()
   const { locale } = useLocale()
-  if (loading) return <MezmurSkeletonGrid />
-  if (error) {
-    return (
-      <div className={s.status} role="alert">
-        <p>{error}</p>
-          <button type="button" className={s.textBtn} onClick={onRetry}>
-          {t('practice.retry')}
-        </button>
-      </div>
-    )
-  }
-  if (!items.length) {
+  if (loading && !items.length) return <MezmurSkeletonGrid />
+  if (!items.length && !error) {
     return (
       <p className={s.status}>{emptyMessage}</p>
     )
   }
   return (
-    <div className={s.grid}>
+    <>
+      {error ? (
+        <div className={s.status} role="alert">
+          <p>{error}</p>
+          <button type="button" className={s.textBtn} onClick={onRetry}>
+            {t('practice.retry')}
+          </button>
+        </div>
+      ) : null}
+      {loading ? <p className={s.srOnly} role="status">{t('practice.searching')}</p> : null}
+      <div className={s.grid} aria-busy={loading || undefined}>
       {items.map((item) => {
         const searchQuery = (new URLSearchParams(window.location.search).get('q') || '').replace(/\s+/g, ' ').trim()
         const heading = hymnSourceHeading(
@@ -490,7 +568,8 @@ function MezmurResultGrid({
           </Link>
         )
       })}
-    </div>
+      </div>
+    </>
   )
 }
 
@@ -506,7 +585,7 @@ export function PublicMezmurLibrary() {
   const language: MezmurLanguageFilter = isMezmurLanguageFilter(languageParam) ? languageParam : 'all'
   const [draftQ, setDraftQ] = useUrlSearchInput()
   const [browse, setBrowse] = useState<HymnCollection[] | null>(null)
-  const browseLoadedRef = useRef(false)
+  const browseScopeRef = useRef('')
   const [browseError, setBrowseError] = useState<string>()
   const [zemaris, setZemaris] = useState<HymnBrowseCard[]>([])
   const [zemariTotal, setZemariTotal] = useState(0)
@@ -523,6 +602,7 @@ export function PublicMezmurLibrary() {
   const [error, setError] = useState<string>()
   const [reloadTick, setReloadTick] = useState(0)
   const [suggestOpen, setSuggestOpen] = useState(false)
+  const [activeSuggestion, setActiveSuggestion] = useState(-1)
   /** Last voice transcript shown as የተሰማው፦ … */
   const [heardTranscript, setHeardTranscript] = useState<string | null>(null)
   const searchWrapRef = useRef<HTMLDivElement>(null)
@@ -533,7 +613,8 @@ export function PublicMezmurLibrary() {
   const zemariQuery = browseMode === 'zemaris' ? (params.get('q') || '').trim() : ''
   const hasQuery = Boolean((params.get('q') || '').trim())
   const werbOnly = params.get('form') === 'werb'
-  const showResults = (hasQuery || werbOnly) && browseMode !== 'zemaris'
+  const viewAllWerb = werbOnly && params.get('view') === 'all'
+  const showResults = (hasQuery || viewAllWerb) && browseMode !== 'zemaris'
   const page = Math.max(1, Number(params.get('page')) || 1)
 
   usePageMeta(
@@ -544,15 +625,17 @@ export function PublicMezmurLibrary() {
   useEffect(() => {
     if (showResults) return
     let active = true
-    if (!browseLoadedRef.current) {
+    const scopeKey = `${language}:${werbOnly ? 'werb' : 'all'}`
+    if (browseScopeRef.current !== scopeKey) {
+      browseScopeRef.current = scopeKey
       queueMicrotask(() => {
         if (active) { setBrowse(null); setBrowseError(undefined) }
       })
     }
-    void getHymnCollections(language)
+    void getHymnCollections(language, werbOnly ? 'werb' : 'all')
       .then((data) => {
         if (active) {
-          browseLoadedRef.current = true
+          browseScopeRef.current = scopeKey
           setBrowse(data)
           setBrowseError(undefined)
           for (const group of data.slice(0, 3)) {
@@ -569,7 +652,7 @@ export function PublicMezmurLibrary() {
     return () => {
       active = false
     }
-  }, [showResults, reloadTick, t, language])
+  }, [showResults, reloadTick, t, language, werbOnly])
 
   useEffect(() => {
     if (browseMode !== 'zemaris') return
@@ -580,7 +663,7 @@ export function PublicMezmurLibrary() {
       setZemariLoading(true)
       setZemariError(undefined)
     })
-    void getHymnSingersPage({ offset: 0, limit: 8, query: zemariQuery, language })
+    void getHymnSingersPage({ offset: 0, limit: 8, query: zemariQuery, language, form: werbOnly ? 'werb' : 'all' })
       .then((pageResult) => {
         if (!active) return
         setZemaris(pageResult.items)
@@ -597,14 +680,14 @@ export function PublicMezmurLibrary() {
     return () => {
       active = false
     }
-  }, [browseMode, language, zemariQuery, reloadTick, t])
+  }, [browseMode, language, zemariQuery, reloadTick, t, werbOnly])
 
   useEffect(() => {
     const needle = draftQ.trim()
     let active = true
     if (needle.length < 2) {
       queueMicrotask(() => {
-        if (active) setDiscoveryHits([])
+        if (active) { setDiscoveryHits([]); setActiveSuggestion(-1) }
       })
       return () => {
         active = false
@@ -617,6 +700,7 @@ export function PublicMezmurLibrary() {
         .then((hits) => {
           if (active) {
             setDiscoveryHits(hits.filter((hit) => hit.type !== 'mezmur'))
+            setActiveSuggestion(-1)
           }
         })
         .catch(() => {
@@ -631,7 +715,10 @@ export function PublicMezmurLibrary() {
 
   useEffect(() => {
     const onPointer = (event: MouseEvent) => {
-      if (!searchWrapRef.current?.contains(event.target as Node)) setSuggestOpen(false)
+      if (!searchWrapRef.current?.contains(event.target as Node)) {
+        setSuggestOpen(false)
+        setActiveSuggestion(-1)
+      }
     }
     document.addEventListener('mousedown', onPointer)
     return () => document.removeEventListener('mousedown', onPointer)
@@ -678,7 +765,6 @@ export function PublicMezmurLibrary() {
         if (!active || controller.signal.aborted) return
         if (import.meta.env.DEV) console.error('[hymn practice] search', cause)
         setError(t('practice.loadError'))
-        setResult(null)
         setLoading(false)
       }
     })()
@@ -690,7 +776,8 @@ export function PublicMezmurLibrary() {
 
   const applyDiscoveryHit = (hit: HymnDiscoveryHit) => {
     setSuggestOpen(false)
-    const targetHref = language !== 'all' ? `${hit.href}${hit.href.includes('?') ? '&' : '?'}language=${encodeURIComponent(language)}` : hit.href
+    setActiveSuggestion(-1)
+    const targetHref = appendFilterParams(hit.href, language, werbOnly)
     if (hit.type === 'mezmur') {
       navigate(targetHref)
       return
@@ -703,6 +790,7 @@ export function PublicMezmurLibrary() {
     setDraftQ('')
     setDiscoveryHits([])
     setHeardTranscript(null)
+    setActiveSuggestion(-1)
     const next = new URLSearchParams(params)
     next.delete('q'); next.delete('page')
     setParams(next)
@@ -718,13 +806,13 @@ export function PublicMezmurLibrary() {
 
   const selectWerb = () => {
     const next = new URLSearchParams(params)
-    next.set('form', 'werb'); next.delete('browse'); next.delete('page')
+    next.set('form', 'werb'); next.delete('page')
     setParams(next)
   }
 
   const showAllForms = () => {
     const next = new URLSearchParams(params)
-    next.delete('form'); next.delete('page')
+    next.delete('form'); next.delete('view'); next.delete('page')
     setParams(next)
   }
 
@@ -732,6 +820,7 @@ export function PublicMezmurLibrary() {
     const next = new URLSearchParams(params)
     if (nextMode === 'categories') next.delete('browse')
     else next.set('browse', nextMode)
+    next.delete('view')
     next.delete('page')
     setParams(next)
     if (nextMode === 'zemaris') {
@@ -743,7 +832,7 @@ export function PublicMezmurLibrary() {
     if (zemariLoading || !zemariHasMore) return
     setZemariLoading(true)
     setZemariError(undefined)
-    void getHymnSingersPage({ offset: zemaris.length, limit: 8, query: zemariQuery, language })
+    void getHymnSingersPage({ offset: zemaris.length, limit: 8, query: zemariQuery, language, form: werbOnly ? 'werb' : 'all' })
       .then((pageResult) => {
         setZemaris((current) => {
           const seen = new Set(current.map((card) => card.id))
@@ -765,7 +854,7 @@ export function PublicMezmurLibrary() {
   ).length
 
   const resultsHeading = (() => {
-    if (loading || !result) return t('practice.searching')
+    if (!result) return t('practice.searching')
     if (werbOnly) return `${locale === 'am' ? 'ወረብ' : 'Werbs'} · ${result.total}`
     return t('practice.resultsCount', { count: result.total })
   })()
@@ -795,10 +884,28 @@ export function PublicMezmurLibrary() {
                 setDraftQ(event.target.value)
                 setHeardTranscript(null)
                 setSuggestOpen(true)
+                setActiveSuggestion(-1)
               }}
               onFocus={() => setSuggestOpen(true)}
               onKeyDown={(event) => {
-                if (event.key === 'Escape') setSuggestOpen(false)
+                const suggestionsAvailable = !showResults && discoveryHits.length > 0
+                if (event.key === 'Escape') {
+                  setSuggestOpen(false)
+                  setActiveSuggestion(-1)
+                } else if (suggestionsAvailable && (event.key === 'ArrowDown' || event.key === 'ArrowUp')) {
+                  event.preventDefault()
+                  setSuggestOpen(true)
+                  setActiveSuggestion((current) => {
+                    if (event.key === 'ArrowDown') return current < discoveryHits.length - 1 ? current + 1 : 0
+                    return current > 0 ? current - 1 : discoveryHits.length - 1
+                  })
+                } else if (suggestionsAvailable && suggestOpen && event.key === 'Home') {
+                  event.preventDefault(); setActiveSuggestion(0)
+                } else if (suggestionsAvailable && suggestOpen && event.key === 'End') {
+                  event.preventDefault(); setActiveSuggestion(discoveryHits.length - 1)
+                } else if (suggestionsAvailable && suggestOpen && event.key === 'Enter' && activeSuggestion >= 0) {
+                  event.preventDefault(); applyDiscoveryHit(discoveryHits[activeSuggestion])
+                }
               }}
               placeholder={t('practice.searchPlaceholder')}
               maxLength={200}
@@ -807,6 +914,7 @@ export function PublicMezmurLibrary() {
               aria-expanded={suggestOpen && discoveryHits.length > 0}
               aria-controls={listboxId}
               aria-autocomplete="list"
+              aria-activedescendant={suggestOpen && activeSuggestion >= 0 ? `${listboxId}-option-${activeSuggestion}` : undefined}
             />
             <div className={s.searchVoice}>
               <VoiceTranscriptionControl
@@ -823,13 +931,20 @@ export function PublicMezmurLibrary() {
             </div>
             {suggestOpen && discoveryHits.length > 0 && !showResults ? (
               <ul id={listboxId} className={s.suggestList} role="listbox">
-                {discoveryHits.map((hit) => {
+                {discoveryHits.map((hit, index) => {
                   const heading = hymnSourceHeading(hit.title, hit.titleAmharic, locale)
                   return (
-                  <li key={`${hit.type}-${hit.id}`} role="option" aria-selected="false">
+                  <li
+                    key={`${hit.type}-${hit.id}`}
+                    id={`${listboxId}-option-${index}`}
+                    role="option"
+                    aria-selected={activeSuggestion === index}
+                    onMouseMove={() => setActiveSuggestion(index)}
+                  >
                     <button
                       type="button"
                       className={s.suggestItem}
+                      tabIndex={-1}
                       onClick={() => applyDiscoveryHit(hit)}
                     >
                       <strong lang={heading.primaryLang}>{heading.primary}</strong>
@@ -858,26 +973,39 @@ export function PublicMezmurLibrary() {
         </p>
       ) : null}
 
+      <p className={s.srOnly} role="status" aria-live="polite" aria-atomic="true">
+        {loading
+          ? t('practice.searching')
+          : error
+            ? error
+            : showResults && result
+              ? t('practice.resultsCount', { count: result.total })
+              : ''}
+      </p>
+
       <div className={s.languageChips} role="group" aria-label={t('practice.languageFilter')}>
         <button type="button" className={language === 'all' ? s.languageChipActive : s.languageChip} aria-pressed={language === 'all'} onClick={() => selectLanguage('all')}>{t('practice.languages.all')}</button>
         {MEZMUR_LANGUAGES.map((item) => <button type="button" key={item.code} className={language === item.code ? s.languageChipActive : s.languageChip} aria-pressed={language === item.code} onClick={() => selectLanguage(item.code)}>{t(`practice.languages.${item.code}`)}</button>)}
       </div>
 
+      <HymnFormSelector
+        locale={locale}
+        werbOnly={werbOnly}
+        onAll={showAllForms}
+        onWerb={selectWerb}
+      />
+
       {showResults ? (
         <>
           <div className={s.resultsHead}>
             <h2 className={s.browseTitle}>{resultsHeading}</h2>
-            <Link to={language !== 'all' ? `/hymns?language=${encodeURIComponent(language)}` : '/hymns'} className={s.viewAll}>
-              {t('practice.backToBrowse')}
+            <Link to={appendFilterParams('/hymns', language, werbOnly)} className={s.viewAll}>
+              {werbOnly
+                ? (locale === 'am' ? 'ወረቦችን በምድብ ይመልከቱ' : 'Browse Werb by category')
+                : t('practice.backToBrowse')}
             </Link>
           </div>
 
-          {werbOnly ? (
-            <p className={s.werbOnlyNote} data-testid="werb-only-note">
-              {locale === 'am' ? 'ወረብ ብቻ እየታየ ነው።' : 'Showing only werbs.'}{' '}
-              <button type="button" className={s.textBtn} onClick={showAllForms}>{locale === 'am' ? 'ሁሉንም መዝሙራት አሳይ' : 'Show all hymns'}</button>
-            </p>
-          ) : null}
           {!loading && result && result.items.length > 0 && result.items.every((item) => item.similar) ? (
             <p className={s.cardMeta} role="status" data-testid="mezmur-similar-note">{t('practice.similarNote')}</p>
           ) : null}
@@ -908,7 +1036,7 @@ export function PublicMezmurLibrary() {
           ) : null}
           <MezmurResultGrid
             items={result?.items || []}
-            loading={!result}
+            loading={loading}
             error={error}
             onRetry={() => setReloadTick((n) => n + 1)}
             emptyMessage={emptyMessage}
@@ -939,13 +1067,12 @@ export function PublicMezmurLibrary() {
             </>
           ) : null}
 
-          {browse && !browseError ? <WerbFeatureCard locale={locale} onOpen={selectWerb} /> : null}
-
           {browse && !browseError ? (
             <LibraryNavigation
               mode={browseMode}
               groups={browse}
               language={language}
+              werbOnly={werbOnly}
               locale={locale}
               onModeChange={selectBrowseMode}
               onSearchZemaris={() => searchInputRef.current?.focus()}

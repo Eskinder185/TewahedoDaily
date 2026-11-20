@@ -480,6 +480,8 @@ export default function MezmurPresentation({ source, initialLanguage, uiLocale =
 
   const colors = themeColors(prefs.theme, prefs.highContrast)
   const rootStyle = {
+    backgroundColor: colors.background,
+    color: colors.text,
     '--p-bg': colors.background,
     '--p-text': colors.text,
     '--p-secondary': colors.secondary,
@@ -500,6 +502,7 @@ export default function MezmurPresentation({ source, initialLanguage, uiLocale =
       aria-label={`${t.dialog}: ${source.title}`}
       tabIndex={-1}
       data-testid="mezmur-presentation"
+      data-presentation-theme={prefs.theme}
       data-fullscreen={isFullscreen ? 'true' : 'false'}
       onPointerMove={(event) => {
         if (event.pointerType === 'mouse') reveal()

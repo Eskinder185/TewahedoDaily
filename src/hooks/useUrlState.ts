@@ -25,7 +25,10 @@ export function useUrlSearchInput(name = 'q') {
   const committed = params.get(name) || ''
   const [draft, setDraft] = useState({ key: location.key, value: committed })
   const current = draft.key === location.key ? draft : { key: location.key, value: committed }
-  if (draft.key !== location.key) setDraft(current)
+
+  // A draft from another history entry is ignored rather than copied into
+  // state. The next edit is already keyed to the current entry, so there is no
+  // pending synchronization update that can overwrite its first keystroke.
 
   useEffect(() => {
     if (current.value === committed) return

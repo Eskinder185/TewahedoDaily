@@ -44,7 +44,7 @@ export function validateLibraryDraft(value: unknown): string[] {
     ? [] : ['Mezmur activities must contain only a source selection, never copied lyrics or media.']) : validateStudioDraft(payload.draft)
   if (issues.length) return [...errors, ...issues]
   const draft = payload.draft as StudioDraft
-  if (draft.game !== value.game_type) errors.push('Activity game must match its library row.')
+  if (draft.game !== value.game_type && !(draft.game === 'adventures' && value.game_type === 'adventure')) errors.push('Activity game must match its library row.')
   const locales = payload.verifiedLocales
   if (!Array.isArray(locales) || !locales.includes('en') || new Set(locales).size !== locales.length || locales.some(locale => !['en', 'am'].includes(String(locale)))) errors.push('Choose reviewed English/Amharic locales.')
   if (Array.isArray(locales) && locales.includes('am') && !bilingualComplete(draft.content)) errors.push('Complete every bilingual field before marking Amharic reviewed.')

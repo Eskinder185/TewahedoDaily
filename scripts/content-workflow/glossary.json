@@ -1,0 +1,8 @@
+{
+ "note": "Terminology corrections for transcripts. Only entries with status \"approved\" are applied automatically; set approvedBy to the person who approved the spelling. Entries below are PROPOSED starting points taken from spellings the site already uses, and are not applied until someone approves them.",
+ "entries": [
+  { "term": "Tewahedo", "language": "en", "preferred": "Tewahedo", "variants": ["Tewahido", "Tawahedo", "Tewahdo"], "status": "proposed" },
+  { "term": "Timket", "language": "en", "preferred": "Timket", "variants": ["Timkat", "Timqet", "Temket"], "status": "proposed" },
+  { "term": "Meskel", "language": "en", "preferred": "Meskel", "variants": ["Meskal", "Mesqel"], "status": "proposed" }
+ ]
+}

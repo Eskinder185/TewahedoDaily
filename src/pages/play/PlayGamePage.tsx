@@ -10,11 +10,12 @@ import { BibleTimelineGame } from '../../components/play/BibleTimelineGame'
 import { FinishMezmurGame } from '../../components/play/FinishMezmurGame'
 import { PictureQuizGame } from '../../components/play/PictureQuizGame'
 import { IconMemoryGame } from '../../components/play/IconMemoryGame'
+import { LoadablePictures } from '../../components/play/LoadablePictures'
 import { useLocale } from '../../lib/i18n/locale'
 import { questionsFor, WHO_AM_I_CARDS, MATCH_PAIRS } from '../../lib/play/approvedContent'
 import { loadPublishedPlayQuestions, loadPublishedGameCards } from '../../lib/play/contentService'
 import { mergeCardBank } from '../../lib/play/cardContent'
-import { GAME_ART, feastImages, holyPersonImages } from '../../lib/play/imageCatalog'
+import { GAME_ART, PLAY_IMAGES, feastImages, holyPersonImages } from '../../lib/play/imageCatalog'
 import { getDailyChallenge } from '../../lib/play/progress'
 import type { MatchPair, WhoAmICard, PlayDifficulty, PlayGameType, PlayQuestion } from '../../lib/play/types'
 import { isGeneratedQuizGame, loadGeneratedCards, loadGeneratedQuestions, loadGeneratedTimelineChains, mergeById } from '../../lib/play/generatedBank'
@@ -130,13 +131,13 @@ function PlayGameView({ game }: { game: PageGame }) {
     switch (game) {
       case 'who-am-i': return publishedState === 'loading' ? null : <WhoAmIGame locale={locale} cards={whoCards} />
       case 'match': return publishedState === 'loading' ? null : <MatchGame locale={locale} pairs={matchPairs} />
-      case 'history': return <HistoryQuestGame locale={locale} questions={questions} />
+      case 'history': return <HistoryQuestGame locale={locale} questions={questions} loading={publishedState === 'loading'} />
       case 'bible-timeline': return <GeneratedTimelineGame locale={locale} />
       case 'finish-the-mezmur': return <FinishMezmurGame locale={locale} />
-      case 'feasts': return <PictureQuizGame locale={locale} config={{ game: 'feasts', pool: feastImages(), prompt: { en: 'Which feast does this picture show?', am: 'ይህ ሥዕል የትኛውን በዓል ያሳያል?' }, noun: { en: 'feast', am: 'በዓል' } }} />
-      case 'saints': return <PictureQuizGame locale={locale} config={{ game: 'saints', pool: holyPersonImages(), prompt: { en: 'Who is shown in this icon?', am: 'በዚህ ሥዕል ያለው ማን ነው?' }, noun: { en: 'saint', am: 'ቅዱስ' } }} />
-      case 'icon-memory': return <IconMemoryGame locale={locale} />
-      default: return <QuizGame key={level ?? 'default'} locale={locale} game={game} questions={questions} initialDifficulty={level} dailyQuestionIndex={game === 'trivia' && searchParams.get('daily') === '1' ? getDailyChallenge().questionIndex : undefined} />
+      case 'feasts': return <LoadablePictures locale={locale} pool={feastImages()}>{(pool) => <PictureQuizGame key={pool.length} locale={locale} config={{ game: 'feasts', pool, prompt: { en: 'Which feast does this picture show?', am: 'ይህ ሥዕል የትኛውን በዓል ያሳያል?' }, noun: { en: 'feast', am: 'በዓል' } }} />}</LoadablePictures>
+      case 'saints': return <LoadablePictures locale={locale} pool={holyPersonImages()}>{(pool) => <PictureQuizGame key={pool.length} locale={locale} config={{ game: 'saints', pool, prompt: { en: 'Who is shown in this icon?', am: 'በዚህ ሥዕል ያለው ማን ነው?' }, noun: { en: 'saint', am: 'ቅዱስ' } }} />}</LoadablePictures>
+      case 'icon-memory': return <LoadablePictures locale={locale} pool={PLAY_IMAGES}>{(pool) => <IconMemoryGame key={pool.length} locale={locale} pool={pool} />}</LoadablePictures>
+      default: return <QuizGame key={level ?? 'default'} locale={locale} game={game} questions={questions} loading={publishedState === 'loading'} initialDifficulty={level} dailyQuestionIndex={game === 'trivia' && searchParams.get('daily') === '1' ? getDailyChallenge().questionIndex : undefined} />
     }
   })()
 

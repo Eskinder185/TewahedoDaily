@@ -59,8 +59,8 @@ try {
     const request = route.request(), url = new URL(request.url())
     if (url.origin === base) return route.continue()
     if (url.origin !== endpoint) return route.abort()
-    const cors = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-allow-methods': '*' }
-    const reply = (body, status = 200) => route.fulfill({ status, contentType: 'application/json', headers: cors, body: JSON.stringify(body) })
+    const cors = { 'access-control-allow-origin': '*', 'access-control-allow-headers': '*', 'access-control-allow-methods': '*', 'access-control-expose-headers': 'content-range' }
+    const reply = (body, status = 200, headers = {}) => route.fulfill({ status, contentType: 'application/json', headers: { ...cors, ...headers }, body: JSON.stringify(body) })
     if (request.method() === 'OPTIONS') return reply(null)
     if (url.pathname.includes('/storage/')) return route.fulfill({ status: 200, contentType: 'image/png', headers: cors, body: Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==', 'base64') })
     if (url.pathname.endsWith('/mezmur_public')) return reply([1,2,3,4].map(i => ({ ...lyric, slug: 'source-song-' + i })))
@@ -84,7 +84,14 @@ try {
           Object.assign(selected[0], request.postDataJSON(), { updated_at: new Date().toISOString() })
         } else return reply({ message: 'Delete denied' }, 403)
       }
-      return reply(request.headers().accept?.includes('vnd.pgrst.object') ? selected[0] || null : selected)
+      // PostgREST contract used by staffQuestionInventory.ts: order=id, offset/limit paging, Prefer: count=exact -> Content-Range.
+      if (url.searchParams.get('order') === 'id.asc') selected.sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0))
+      const total = selected.length
+      const offset = Number(url.searchParams.get('offset') || 0)
+      const limit = url.searchParams.has('limit') ? Number(url.searchParams.get('limit')) : total
+      const paged = selected.slice(offset, offset + limit)
+      const rangeHeader = total === 0 ? '*/0' : `${offset}-${offset + Math.max(0, paged.length - 1)}/${total}`
+      return reply(request.headers().accept?.includes('vnd.pgrst.object') ? selected[0] || null : paged, 200, request.headers().prefer?.includes('count=exact') ? { 'content-range': rangeHeader } : {})
     }
     if (url.pathname.endsWith('/rpc/review_play_content')) {
       const input = request.postDataJSON(), row = rows.find(row => row.id === input.p_id)
@@ -165,6 +172,16 @@ try {
     await page.getByRole('button', { name: 'Retry', exact: true }).click()
     await page.getByRole('button', { name: 'Start round', exact: true }).click()
     await page.getByRole('heading', { name: 'Database-only question', exact: true }).waitFor()
+  })
+  await run('Play hub shows live database counts and Retry on outage without bundled totals', async () => {
+    failCardReads = true
+    await page.goto(`${base}/play`)
+    await page.getByRole('alert').filter({ hasText: /Published challenge counts could not be loaded/ }).waitFor()
+    assert.equal(await page.getByText('517', { exact: true }).count(), 0)
+    failCardReads = false
+    await page.getByRole('button', { name: 'Retry', exact: true }).click()
+    await page.getByText('1 question', { exact: true }).waitFor()
+    assert.equal(await page.getByText('226 questions', { exact: true }).count(), 0)
   })
   await run('Studio saves a versioned shared activity as Draft and reopens it; publishing remains blocked', async () => {
     await go('?game=bible-timeline')

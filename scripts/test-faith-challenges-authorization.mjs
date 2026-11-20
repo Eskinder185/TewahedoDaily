@@ -7,6 +7,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { questionTransitionAllowed } from '../src/lib/play/questionLibrary.ts'
+import { auditDefinerSurface } from './migration-security-audit.mjs'
 
 const dir = 'docs/ai/proposed-migrations/'
 const sql = readFileSync(`${dir}20261102_faith_challenges_live_reconciliation.sql`, 'utf8').replace(/\r\n/g, '\n')
@@ -56,7 +57,60 @@ assert.match(sql, /New questions must be drafts with matching IDs/)
 assert.match(sql, /Return to draft before editing content/)
 assert.match(sql, /Editorial fields require a status transition/)
 assert.match(sql, /returns public\.play_content_items language plpgsql security invoker/)
-assert.doesNotMatch(sql.replace(/^\s*--.*$/gm, ''), /security definer/i, 'no new SECURITY DEFINER surface')
+// SECURITY DEFINER surface: exactly one allowlisted function (the bounded draft rollback). The previous blanket "no SECURITY
+// DEFINER" rule is replaced by an exact-signature allowlist plus per-function privilege rules, and the negative mutations below prove
+// that an extra, re-signed, unrevoked, over-granted or dynamic definer function still fails.
+const DEFINER_ALLOWLIST = ['public.rollback_play_content_import(uuid)']
+assert.deepEqual(auditDefinerSurface(sql, { allowlist: DEFINER_ALLOWLIST }), [], 'no new SECURITY DEFINER surface')
+{
+  const must = (label, mutated, expected) => {
+    assert.notEqual(mutated, sql, `mutation did not apply: ${label}`)
+    const found = auditDefinerSurface(mutated, { allowlist: DEFINER_ALLOWLIST })
+    assert.ok(found.some((v) => expected.test(v)), `${label}: expected a violation matching ${expected}, got ${JSON.stringify(found)}`)
+  }
+  const rollbackGrant = /grant execute on function public\.rollback_play_content_import\(uuid\) to service_role;/
+  must('extra SECURITY DEFINER function',
+    `${sql}\ncreate or replace function public.evil() returns void language sql security definer set search_path='' as $$ select 1 $$;\n`,
+    /unexpected SECURITY DEFINER function public\.evil\(\)/)
+  must('review RPC silently turned definer', sql.replace(/(create or replace function public\.review_play_content[\s\S]*?)security invoker/, '$1security definer'),
+    /unexpected SECURITY DEFINER function public\.review_play_content/)
+  must('import RPC silently turned definer', sql.replace(/(create or replace function public\.import_play_content_drafts[\s\S]*?)security invoker/, '$1security definer'),
+    /unexpected SECURITY DEFINER function public\.import_play_content_drafts/)
+  must('wrong signature', sql.replace('rollback_play_content_import(p_batch_id uuid)', 'rollback_play_content_import(p_batch_id uuid, p_force boolean)'),
+    /unexpected SECURITY DEFINER function public\.rollback_play_content_import\(uuid,boolean\)/)
+  must('allowlisted function no longer definer', sql.replace(/(function public\.rollback_play_content_import[\s\S]*?)security definer/, '$1security invoker'),
+    /missing or not SECURITY DEFINER/)
+  must('missing revoke', sql.replace(/revoke all on function public\.rollback_play_content_import\(uuid\) from public,anon,authenticated;/, ''), /missing REVOKE ALL/)
+  must('revoke omits authenticated', sql.replace('rollback_play_content_import(uuid) from public,anon,authenticated;', 'rollback_play_content_import(uuid) from public,anon;'),
+    /not revoked from authenticated/)
+  must('revoke omits public', sql.replace('rollback_play_content_import(uuid) from public,anon,authenticated;', 'rollback_play_content_import(uuid) from anon,authenticated;'),
+    /not revoked from public/)
+  must('granted to authenticated too', sql.replace(rollbackGrant, 'grant execute on function public.rollback_play_content_import(uuid) to service_role, authenticated;'),
+    /must not be granted to authenticated/)
+  must('granted to PUBLIC', sql.replace(rollbackGrant, 'grant execute on function public.rollback_play_content_import(uuid) to public;'), /must not be granted to public|granted to PUBLIC/)
+  must('no grant at all', sql.replace(rollbackGrant, ''), /no explicit EXECUTE grant/)
+  must('search_path removed', sql.replace(/(function public\.rollback_play_content_import[\s\S]*?security definer) set search_path=''/, '$1'), /search_path must be fixed/)
+  must('dynamic SQL inside the definer function', sql.replace(/(function public\.rollback_play_content_import[\s\S]*?begin\n)/, "$1  execute 'select 1';\n"), /dynamic SQL/)
+  must('unqualified table inside the definer function', sql.replace(/delete from public\.play_content_items p/, 'delete from play_content_items p'), /unqualified relation/)
+}
+// The rollback must stay one atomic, fully-conditioned DELETE (no read-then-delete race) and must fail closed on an unknown batch.
+{
+  const rollback = sql.split('create or replace function public.rollback_play_content_import')[1].split('end $$;')[0]
+  assert.match(rollback, /delete from public\.play_content_items p\s+where p\.id=audit_row\.inserted_id and p\.stable_id=audit_row\.stable_id and p\.status='draft'/)
+  for (const needle of ['p.published_at is null', 'p.reviewed_by is null', 'p.updated_at=audit_row.inserted_updated_at', 'play_content_payload_sha256(p.payload)=audit_row.payload_sha256', 'returning p.id into deleted_id'])
+    assert.ok(rollback.includes(needle), `rollback predicate missing: ${needle}`)
+  assert.match(rollback, /Unknown import batch/)
+  assert.doesNotMatch(rollback, /\bexecute\b/i)
+}
+// Preflight must verify the Church Library catalog the publication gate depends on, before any change is made.
+{
+  const preflight = sql.split('-- Schema changes are conditional')[0]
+  assert.match(preflight, /to_regclass\('public\.church_library_books'\) is null/)
+  assert.match(preflight, /a\.attname in \('slug','publication_status'\)/)
+  const firstAlter = sql.search(/\balter table\b|\bcreate table\b|\bcreate (?:or replace )?function\b|\bdrop (?:policy|constraint)\b/i)
+  const catalogCheck = sql.indexOf("to_regclass('public.church_library_books')")
+  assert.ok(catalogCheck >= 0 && catalogCheck < firstAlter, 'catalog check precedes every schema change')
+}
 assert.match(sql, /revoke all on public\.play_content_items from public, anon, authenticated/)
 assert.match(sql, /grant select on public\.play_content_items to anon, authenticated/)
 assert.match(sql, /grant insert, update on public\.play_content_items to authenticated/)
@@ -84,7 +138,17 @@ for (const name of ['play_content_staff_select', 'play_content_staff_insert', 'p
 }
 
 // No data loss: nothing deleted; existing review/archived rows stay valid under the new CHECK.
-assert.doesNotMatch(sql, /\bdelete\s+from\b|\btruncate\b|\bdrop\s+(table|column)\b/i)
+// The ONLY permitted DELETE is the single conditioned statement inside the allowlisted draft-rollback function; every other
+// occurrence anywhere in the migration still fails, as do TRUNCATE and DROP TABLE/COLUMN.
+{
+  const code = sql.replace(/^\s*--.*$/gm, '')
+  const [beforeRollback, rest] = code.split('create or replace function public.rollback_play_content_import')
+  const [rollbackBody, afterRollback] = rest.split('end $$;')
+  assert.equal((rollbackBody.match(/\bdelete\s+from\b/gi) || []).length, 1, 'exactly one DELETE, inside the rollback function')
+  assert.match(rollbackBody, /delete from public\.play_content_items p\s+where /)
+  assert.doesNotMatch(beforeRollback + afterRollback, /\bdelete\s+from\b|\btruncate\b|\bdrop\s+(table|column)\b/i)
+  assert.doesNotMatch(rollbackBody, /\btruncate\b|\bdrop\s+(table|column)\b/i)
+}
 assert.match(sql, /begin;\s*select pg_advisory_xact_lock/)
 assert.match(sql, /not valid;\s*alter table public\.play_content_items validate constraint play_content_status_v2/)
 

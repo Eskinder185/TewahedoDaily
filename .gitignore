@@ -49,3 +49,9 @@ backend/.coverage
 backend/htmlcov/
 
 scratch-test-media-resolver/
+
+# Church content workflow: private sources, transcripts, drafts and review records stay local
+content-workflow-data/
+
+# Local-only Faith Challenges preview data (review inventory, screenshots). Never committed.
+.local-preview/

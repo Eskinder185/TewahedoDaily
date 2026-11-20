@@ -3,7 +3,7 @@ process.env.VITE_SUPABASE_URL = 'https://database-play.invalid'
 process.env.VITE_SUPABASE_PUBLISHABLE_KEY = 'synthetic-public-key'
 const { STUDIO_GAMES, newStudioRecord, toQuestionDraft, isServerStudioDraft, newHistoryTimelineRecord } = await import('../src/lib/play/contentStudio')
 const { toStudioActivityDraft, validateLibraryDraft, fromLibraryRow, publicActivityDraft } = await import('../src/lib/play/studioActivity')
-const { createPublishedContentLoader } = await import('../src/lib/play/publishedContent')
+const { createPublishedContentLoader, createPublishedHubSummaryLoader } = await import('../src/lib/play/publishedContent')
 const { createQuestionLibraryApi } = await import('../src/lib/play/questionLibraryService')
 const { fetchSelectedMezmurLyrics } = await import('../src/lib/play/selectedMezmurSource')
 import type { QuestionDraft, QuestionRow } from '../src/lib/play/questionLibrary'
@@ -160,5 +160,19 @@ await test('restricted or malformed lyric projections cannot become playable sou
   assert.deepEqual(await fetchSelectedMezmurLyrics(['fixture-song'], client), [])
   song = { ...song, lyrics_transliteration: { malformed: true } }
   await assert.rejects(fetchSelectedMezmurLyrics(['fixture-song'], client), /invalid format/)
+})
+await test('hub summary counts published items by unit, returns 0 when empty, and rejects on error', async () => {
+  const empty = await createPublishedHubSummaryLoader(fake([]).client, publicSources)()
+  for (const { id } of STUDIO_GAMES) assert.equal(empty[id].total, 0)
+  const trivia = published(toQuestionDraft(fixture('trivia').draft))
+  const timeline = published(toStudioActivityDraft(fixture('bible-timeline')))
+  const summary = await createPublishedHubSummaryLoader(fake([trivia, timeline]).client, publicSources)()
+  assert.equal(summary.trivia.total, 1)
+  assert.equal(summary.trivia.unit, 'questions')
+  assert.equal(summary['bible-timeline'].total, 1)
+  assert.equal(summary['bible-timeline'].unit, 'chains')
+  assert.ok((summary['bible-timeline'].events ?? 0) > 0)
+  const failing = { from() { return { select() { return this }, eq() { return this }, not() { return this }, order() { return this }, abortSignal() { return this }, async range() { return { data: null, error: { message: 'outage' } } } } } } as unknown as PublicContentClient
+  await assert.rejects(createPublishedHubSummaryLoader(failing, publicSources)(), /could not be loaded/)
 })
 console.log(`${passed} passed, 0 failed`)

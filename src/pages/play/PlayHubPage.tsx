@@ -4,10 +4,16 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { GameCard, type PlayGameCard } from '../../components/play/GameCard'
 import { GameDifficultyPicker, type GameDifficulty } from '../../components/play/GameDifficultyPicker'
 import { PlayProgressPanel } from '../../components/play/PlayProgressPanel'
+import { LocalPreviewBanner } from '../../components/play/LocalPreviewBanner'
+import { LOCAL_PREVIEW } from '../../lib/localPreview'
 import { useAuth } from '../../lib/auth/useAuth'
 import { useLocale } from '../../lib/i18n/locale'
-import { GAME_ART, handlePlayImageError, imageById } from '../../lib/play/imageCatalog'
-import { describeContent, progressSummary, totalsByUnit } from '../../lib/play/contentRegistry'
+import { GAME_ART, PLAY_IMAGES, feastImages, handlePlayImageError, holyPersonImages, imageById } from '../../lib/play/imageCatalog'
+import { useLoadablePictures } from '../../lib/play/useLoadablePictures'
+import { describeContent, formatGameCounts, progressSummary, registryId, totalsByUnit, unitLabel } from '../../lib/play/contentRegistry'
+import { databasePlayEnabled } from '../../lib/play/publishedContent'
+import type { StudioGame } from '../../lib/play/contentStudio'
+import { usePublishedHubSummary } from '../../hooks/usePublishedPlayContent'
 import { HUB_GAMES, type HubSection } from '../../lib/play/gameCatalog'
 import { GAME_MODES, GAME_MODE_IDS, gameInMode, recentGames, type GameModeId } from '../../lib/play/gameModes'
 import { usePlayProgress } from '../../lib/play/usePlayProgress'
@@ -23,7 +29,8 @@ const GAMES: HubGame[] = HUB_GAMES
 /** Games that can also be hosted as a live room (see src/lib/play/liveRoom.ts). */
 const LIVE_HUB_GAMES = new Set(['trivia', 'finish-the-verse', 'emoji', 'who-am-i'])
 
-const HERO_ICONS = ['gena', 'michael', 'timket'].map((id) => imageById(id)!)
+// A picture with no usable image is left out of the catalog, so a missing one is skipped here rather than crashing the hub.
+const HERO_ICONS = ['gena', 'michael', 'timket'].map((id) => imageById(id)).filter((image): image is NonNullable<typeof image> => Boolean(image?.src))
 
 export function PlayHubPage() {
   const { locale } = useLocale()
@@ -58,11 +65,45 @@ export function PlayHubPage() {
     return { pathname: '/play', search: next.toString(), hash: '#games' }
   }
   const activeMode = GAME_MODES.find(entry => entry.id === mode)
+  const dbOnly = databasePlayEnabled()
+  const hubSummary = usePublishedHubSummary(dbOnly)
   const totals = totalsByUnit()
-  const quizItems = (totals.questions ?? 0) + (totals.clues ?? 0) + (totals.excerpts ?? 0)
+  const quizItems = dbOnly
+    ? hubSummary.state === 'ready' && hubSummary.summary
+      ? (hubSummary.summary.trivia?.total ?? 0)
+        + (hubSummary.summary.emoji?.total ?? 0)
+        + (hubSummary.summary['who-am-i']?.total ?? 0)
+        + (hubSummary.summary['finish-the-verse']?.total ?? 0)
+      : hubSummary.state === 'error'
+        ? '—'
+        : '…'
+    : (totals.questions ?? 0) + (totals.clues ?? 0) + (totals.excerpts ?? 0)
+  // Picture games count the pictures that can actually be shown (a picture whose image and fallback both fail is skipped in play).
+  const feastPictures = useLoadablePictures(feastImages())
+  const saintPictures = useLoadablePictures(holyPersonImages())
+  const memoryPictures = useLoadablePictures(PLAY_IMAGES)
+  const pictureAvailability: Record<string, { usable: number; skipped: number } | undefined> = {
+    feasts: feastPictures.checking ? undefined : { usable: feastPictures.available.length, skipped: feastPictures.skipped.length },
+    saints: saintPictures.checking ? undefined : { usable: saintPictures.available.length, skipped: saintPictures.skipped.length },
+    'icon-memory': memoryPictures.checking ? undefined : { usable: memoryPictures.available.length, skipped: memoryPictures.skipped.length },
+  }
+  const cardContent = (gameId: string) => {
+    const availability = pictureAvailability[gameId]
+    if (!dbOnly && availability && availability.skipped > 0) {
+      return {
+        primary: `${availability.usable.toLocaleString(am ? 'am-ET' : 'en-US')} ${unitLabel('images', availability.usable, locale)}`,
+        secondary: am ? `${availability.skipped} ተጨማሪ ሥዕሎች አሁን ሊታዩ አልቻሉም` : `${availability.skipped} more can’t be shown right now`,
+      }
+    }
+    if (!dbOnly) return describeContent(gameId, locale) ?? undefined
+    if (hubSummary.state === 'loading' || hubSummary.state === 'idle') return { primary: am ? 'በመጫን ላይ…' : 'Loading…' }
+    if (hubSummary.state === 'error') return { primary: am ? 'መጫን አልተቻለም' : 'Unavailable' }
+    return formatGameCounts(gameId, hubSummary.summary?.[registryId(gameId) as StudioGame] ?? null, locale) ?? undefined
+  }
 
   return (
     <div className={styles.page} lang={locale}>
+      {LOCAL_PREVIEW && <LocalPreviewBanner />}
       {/* ---------- Hero ---------- */}
       <section className={styles.hero} aria-labelledby="play-title">
         <div className={styles.heroGlow} aria-hidden="true" />
@@ -148,9 +189,15 @@ export function PlayHubPage() {
           <p className={styles.levelNote} aria-live="polite">
             {am ? 'ደረጃው በጥያቄ ጨዋታዎች ላይ ይተገበራል።' : 'Your level applies to the question games (Trivia, Emoji, Verse, History).'}
           </p>
+          {dbOnly && hubSummary.state === 'error' && (
+            <p role="alert">
+              {am ? 'የታተሙ ጨዋታዎችን ቆጠራ መጫን አልተቻለም። ' : 'Published challenge counts could not be loaded. '}
+              <button type="button" onClick={hubSummary.retry}>{am ? 'እንደገና ሞክር' : 'Retry'}</button>
+            </p>
+          )}
           {!visible.length && <p>{am ? 'ከእነዚህ ማጣሪያዎች ጋር የሚዛመድ ጨዋታ የለም።' : 'No games match this choice. Choose “All” above.'}</p>}
           <div className={styles.gameGrid}>
-            {visible.map((game) => <GameCard key={game.id} game={{ ...game, ...(LIVE_HUB_GAMES.has(game.id) ? { badge: { en: 'Solo + Live room', am: 'ብቻ + የቀጥታ ክፍል' } } : {}), content: describeContent(game.id, locale) ?? undefined, progress: progressSummary(progress.history, game.id) ?? undefined }} locale={locale} level={difficulty} />)}
+            {visible.map((game) => <GameCard key={game.id} game={{ ...game, ...(LIVE_HUB_GAMES.has(game.id) ? { badge: { en: 'Solo + Live room', am: 'ብቻ + የቀጥታ ክፍል' } } : {}), content: cardContent(game.id), progress: progressSummary(progress.history, game.id) ?? undefined }} locale={locale} level={difficulty} />)}
           </div>
         </section>
 

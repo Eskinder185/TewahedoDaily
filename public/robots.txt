@@ -1,0 +1,9 @@
+# TewahedoDaily: public pages may be indexed; staff, account and sign-in pages may not.
+User-agent: *
+Disallow: /admin
+Disallow: /account
+Disallow: /login
+Disallow: /signup
+Disallow: /saved
+Disallow: /favorites
+Allow: /

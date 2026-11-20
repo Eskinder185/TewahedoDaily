@@ -45,8 +45,11 @@ async function arrangeCorrectly(page) {
   const shown = await cardTexts(page)
   const wanted = await page.evaluate(async (texts) => {
     const mod = await import('/src/lib/play/bibleTimeline.ts')
+    const bank = await import('/src/lib/play/generatedBank.ts')
+    // The page plays the built-in chains merged with the validated generated chains, so the oracle must use the same set.
+    const all = bank.mergeById(mod.TIMELINE_CHAINS, await bank.loadGeneratedTimelineChains())
     const has = (ev, t) => ev.title.en === t || ev.title.am === t
-    const chain = mod.TIMELINE_CHAINS.find((c) => texts.every((t) => c.events.some((ev) => has(ev, t))))
+    const chain = all.find((c) => texts.every((t) => c.events.some((ev) => has(ev, t))))
     if (!chain) return null
     const idx = (t) => chain.events.findIndex((ev) => has(ev, t))
     return [...texts].sort((a, b) => idx(a) - idx(b))
