@@ -57,10 +57,9 @@ const ALLOWED_IMAGE_MIME: Record<string, string> = {
 
 const MAX_IMAGE_BYTES = 10 * 1024 * 1024
 
-function supabaseUrl() {
+function configuredSupabaseUrl(): string | null {
   const url = (typeof import.meta !== 'undefined' && import.meta.env ? (import.meta.env.VITE_SUPABASE_URL as string | undefined) : undefined) || (typeof process !== 'undefined' && process.env ? process.env.VITE_SUPABASE_URL : undefined)
-  if (!url) throw new Error('Supabase is not configured.')
-  return url.replace(/\/$/, '')
+  return url ? url.replace(/\/$/, '') : null
 }
 
 /** True when value is an absolute http(s) URL. */
@@ -97,14 +96,20 @@ export function resolveContentMediaUrl(value: string | null | undefined): string
     const bucket = rest.slice(0, slash)
     const path = rest.slice(slash + 1)
     if (!bucket || !path) return ''
-    return `${supabaseUrl()}/storage/v1/object/public/${bucket}/${path
+    const base = configuredSupabaseUrl()
+    if (!base) return ''
+    return `${base}/storage/v1/object/public/${bucket}/${path
       .split('/')
       .map(encodeURIComponent)
       .join('/')}`
   }
 
   const path = trimmed.replace(/^\/+/, '')
-  return `${supabaseUrl()}/storage/v1/object/public/${CONTENT_MEDIA_BUCKET}/${path
+  // Display helper: with no Supabase origin (for example a preview build without its variables) there is no public URL, so report
+  // "no image" ('') and let the caller use its local fallback, instead of throwing and taking down the whole page.
+  const base = configuredSupabaseUrl()
+  if (!base) return ''
+  return `${base}/storage/v1/object/public/${CONTENT_MEDIA_BUCKET}/${path
     .split('/')
     .map(encodeURIComponent)
     .join('/')}`
